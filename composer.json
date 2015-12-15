@@ -1,0 +1,12 @@
+{
+    "name": "ahancer/frontend",
+    "require": {
+        "league/plates": "^3.1"
+    },
+    "authors": [
+        {
+            "name": "Tanapol Nearunchorn",
+            "email": "tanapol.sh@gmail.com"
+        }
+    ]
+}
