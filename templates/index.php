@@ -2,10 +2,38 @@
 
 <?php $this->start('sidebar') ?>
 <ul class="sidebar-nav no-padding">
-    <li class="sidebar-brand active"><a href="#">Home</a></li>
-    <li><i class="fa fa-home"></i><a href="#">Another link</a></li>
-    <li><a href="#">Next link</a></li>
-    <li><a href="#">Last link</a></li>
+    <li class="sidebar-brand active">
+        <i class="fa fa-home sidebar-font-awesome"></i>
+        <a href="#">Home</a>
+    </li>
+    <li class="sidebar-brand">
+        <i class="fa fa-inbox sidebar-font-awesome"></i>
+        <a href="#">Orders</a>
+    </li>
+    <li class="sidebar-brand">
+        <i class="fa fa-tag sidebar-font-awesome"></i>
+        <a href="#">Products</a>
+    </li>
+    <li class="sidebar-brand">
+        <i class="fa fa-archive sidebar-font-awesome"></i>
+        <a href="#">Inventory</a>
+    </li>
+    <li class="sidebar-brand">
+        <i class="fa fa-bookmark sidebar-font-awesome"></i>
+        <a href="#">Promotion</a>
+    </li>
+    <li class="sidebar-brand">
+        <i class="fa fa-sliders sidebar-font-awesome"></i>
+        <a href="#">Shop Setting</a>
+    </li>
+    <li class="sidebar-brand">
+        <i class="fa fa-line-chart sidebar-font-awesome"></i>
+        <a href="#">Report</a>
+    </li>
+    <li class="sidebar-brand">
+        <i class="fa fa-gear sidebar-font-awesome"></i>
+        <a href="#">Account</a>
+    </li>
 </ul>
 <?php $this->stop() ?>
 

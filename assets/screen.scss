@@ -11,6 +11,7 @@
 @import "override_bootstrap";
 @import "atomic";
 @import "header";
+@import "sidebar";
   
 
 body {
@@ -30,28 +31,7 @@ html, body {
   height: 100%;
 }
 
-#sidebar-wrapper {
-  width: $sidebar-width;
-  background: $sidebar-color;
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-}
-
 #page-content-wrapper {
-	margin-left: $sidebar-width;
-	position: relative;
-}
-
-.sidebar-nav {
-  li {
-    line-height: 40px;
-    a {
-      color: #7b7f8f;
-    }
-  }
-  li:visited {
-    background: blue;
-  }
+  margin-left: $sidebar-width;
+  position: relative;
 }

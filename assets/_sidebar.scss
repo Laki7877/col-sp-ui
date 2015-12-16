@@ -1,0 +1,40 @@
+#sidebar-wrapper {
+  width: $sidebar-width;
+  background: $sidebar-color;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+ul.sidebar-nav {
+  padding-left: 0px;
+}
+
+.sidebar-nav {
+  li {
+    padding-left: 20px;
+    line-height: 50px;
+    list-style: none;
+    a {
+      color: $font-color-grey;
+    }
+    i {
+      color: $font-color-grey;
+      font-size: 16px;
+      margin-right: 20px;
+    }
+  }
+  li:hover {
+    cursor: pointer;
+  }
+  li.active {
+    background: $sidebar-bg-color-active;
+    a {
+      color:  $sidebar-font-color-active;
+    }
+    i {
+      color:  $sidebar-font-color-active;
+    }
+  }
+}

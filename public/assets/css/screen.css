@@ -12183,27 +12183,7 @@ button.close {
   line-height: 60px;
 }
 
-/* line 16, ../../../assets/screen.scss */
-body {
-  overflow-y: scroll;
-  overflow-x: auto;
-}
-
-/* line 21, ../../../assets/screen.scss */
-html, body {
-  height: 100%;
-  min-height: 100%;
-}
-
-/* line 26, ../../../assets/screen.scss */
-#wrapper {
-  position: relative;
-  display: block;
-  min-width: 1200px;
-  height: 100%;
-}
-
-/* line 33, ../../../assets/screen.scss */
+/* line 1, ../../../assets/_sidebar.scss */
 #sidebar-wrapper {
   width: 180px;
   background: #252d40;
@@ -12213,21 +12193,66 @@ html, body {
   bottom: 0;
 }
 
-/* line 42, ../../../assets/screen.scss */
-#page-content-wrapper {
-  margin-left: 180px;
-  position: relative;
+/* line 10, ../../../assets/_sidebar.scss */
+ul.sidebar-nav {
+  padding-left: 0px;
 }
 
-/* line 48, ../../../assets/screen.scss */
+/* line 15, ../../../assets/_sidebar.scss */
 .sidebar-nav li {
-  line-height: 40px;
+  padding-left: 20px;
+  line-height: 50px;
+  list-style: none;
 }
-/* line 50, ../../../assets/screen.scss */
+/* line 19, ../../../assets/_sidebar.scss */
 .sidebar-nav li a {
   color: #7b7f8f;
 }
-/* line 54, ../../../assets/screen.scss */
-.sidebar-nav li:visited {
-  background: blue;
+/* line 22, ../../../assets/_sidebar.scss */
+.sidebar-nav li i {
+  color: #7b7f8f;
+  font-size: 16px;
+  margin-right: 20px;
+}
+/* line 28, ../../../assets/_sidebar.scss */
+.sidebar-nav li:hover {
+  cursor: pointer;
+}
+/* line 31, ../../../assets/_sidebar.scss */
+.sidebar-nav li.active {
+  background: #1e2534;
+}
+/* line 33, ../../../assets/_sidebar.scss */
+.sidebar-nav li.active a {
+  color: #ffffff;
+}
+/* line 36, ../../../assets/_sidebar.scss */
+.sidebar-nav li.active i {
+  color: #ffffff;
+}
+
+/* line 17, ../../../assets/screen.scss */
+body {
+  overflow-y: scroll;
+  overflow-x: auto;
+}
+
+/* line 22, ../../../assets/screen.scss */
+html, body {
+  height: 100%;
+  min-height: 100%;
+}
+
+/* line 27, ../../../assets/screen.scss */
+#wrapper {
+  position: relative;
+  display: block;
+  min-width: 1200px;
+  height: 100%;
+}
+
+/* line 34, ../../../assets/screen.scss */
+#page-content-wrapper {
+  margin-left: 180px;
+  position: relative;
 }
