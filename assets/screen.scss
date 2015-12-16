@@ -6,9 +6,12 @@
 // @import "compass/reset";
 
 @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
+@import "../bower_components/font-awesome/scss/font-awesome.scss";
 @import "variable";
-@import "../bower_components/font-awesome/css/font-awesome.min.css";
-
+@import "override_bootstrap";
+@import "atomic";
+@import "header";
+  
 
 body {
 	overflow-y: scroll;
@@ -48,27 +51,7 @@ html, body {
       color: #7b7f8f;
     }
   }
-}
-
-.header {
-  background: $header-bg-color;
-  height: 60px;
-}
-
-.header-font-subject {
-  font-size: 20px;
-  line-height: 60px;
-  padding-left: 40px;
-  color: #32343c;
-}
-
-.header-font-detail {
-  float: right;
-  color: #7b7f8f;
-  line-height: 60px;
-  padding-right: 20px;
-}
-
-.header-padding-right {
-  padding-right:  30px;
+  li:visited {
+    background: blue;
+  }
 }

@@ -1,0 +1,16 @@
+.header {
+  background: $header-bg-color;
+  height: 60px;
+}
+
+.header-font-subject {
+  font-size: 20px;
+  line-height: 60px;
+  color: #32343c;
+}
+
+.header-font-detail {
+  float: right;
+  color: #7b7f8f;
+  line-height: 60px;
+}
