@@ -1,0 +1,74 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+// @import "compass/reset";
+
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
+@import "variable";
+@import "../bower_components/font-awesome/css/font-awesome.min.css";
+
+
+body {
+	overflow-y: scroll;
+	overflow-x: auto;
+}
+
+html, body {
+	height: 100%;
+	min-height: 100%;
+}
+
+#wrapper {
+  position: relative;
+  display: block;
+  min-width: 1200px;
+  height: 100%;
+}
+
+#sidebar-wrapper {
+  width: $sidebar-width;
+  background: $sidebar-color;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#page-content-wrapper {
+	margin-left: $sidebar-width;
+	position: relative;
+}
+
+.sidebar-nav {
+  li {
+    line-height: 40px;
+    a {
+      color: #7b7f8f;
+    }
+  }
+}
+
+.header {
+  background: $header-bg-color;
+  height: 60px;
+}
+
+.header-font-subject {
+  font-size: 20px;
+  line-height: 60px;
+  padding-left: 40px;
+  color: #32343c;
+}
+
+.header-font-detail {
+  float: right;
+  color: #7b7f8f;
+  line-height: 60px;
+  padding-right: 20px;
+}
+
+.header-padding-right {
+  padding-right:  30px;
+}
