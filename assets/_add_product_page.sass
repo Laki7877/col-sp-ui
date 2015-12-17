@@ -7,6 +7,9 @@
 			border: none
 
 		color: $color-drak-grey
+		padding: 3px 3px 3px
+		margin-right: 20px
+		font-size: 16px
 
 	> li.active > a
 		&, &:hover, &:focus
@@ -14,6 +17,18 @@
 			border-bottom: 3px solid $color-theme
 
 		color: $color-black
+
+	> li.require > a
+		position: relative
+		&:after
+			display: block
+			content: "*"
+			position: absolute
+			color: red
+			top: 0
+			right: -4px
+			font-size: 16px
+
 
 .add-product-body
 	margin-top: 20px
