@@ -4,6 +4,7 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
 // @import "compass/reset";
+@import "compass/css3";
 
 @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
 @import "../bower_components/fontawesome/scss/font-awesome.scss";
@@ -13,6 +14,7 @@
 @import "header";
 @import "sidebar";
 @import "breadcrumb";
+@import "form-section";
 @import "checkbox";
   
 
