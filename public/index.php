@@ -4,4 +4,9 @@ require __DIR__.'/../vendor/autoload.php';
 $templates = new League\Plates\Engine(__DIR__.'/../templates');
 $templates->loadExtension(new League\Plates\Extension\Asset(__DIR__));
 
-echo $templates->render('index', array());
+$page = 'index';
+if (isset($_GET['p'])) {
+	$page = $_GET['p'];
+}
+
+echo $templates->render($page);

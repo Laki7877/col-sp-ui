@@ -6,12 +6,13 @@
 // @import "compass/reset";
 
 @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
-@import "../bower_components/fontawesome/scss/font-awesome";
+@import "../bower_components/fontawesome/scss/font-awesome.scss";
 @import "variable";
 @import "override_bootstrap";
 @import "atomic";
 @import "header";
 @import "sidebar";
+@import "breadcrumb";
   
 
 body {
@@ -52,29 +53,4 @@ html, body {
   color:  $white;
 }
 
-// Page body header
-.page-body-header {
-  border-bottom: 1px solid $header-border-grey;
-  padding-bottom: 14px;
-  .page-name {
-    font-size: 24px;
-  }
-}
-
-//Page body: Search section
-.search-section {
-  margin-top: 30px;
-
-  .button-white {
-    height: 30px;
-  }
-
-  .body-dropdown-button {
-    width: 180px;
-    height: 30px;
-  }
-
-  .dropdown-text {
-    text-align: left;
-  }
-}
+@import "add_product_page";

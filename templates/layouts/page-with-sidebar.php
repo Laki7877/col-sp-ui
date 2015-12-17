@@ -1,6 +1,9 @@
 <?php $this->layout('layouts/simple-sidebar', get_defined_vars()) ?>
 
 <?php $this->start('sidebar') ?>
+	<div class="logo-img-wrapper">
+		<img class="logo-img" src="<?= $this->asset('/assets/img/seller_logo.png') ?>" />
+	</div>
     <?php $this->insert('components/sidebar-nav', ['itemActive' => 'Home']) ?>
 <?php $this->stop() ?>
 

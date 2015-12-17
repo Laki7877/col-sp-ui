@@ -127,3 +127,5 @@ bower_components
 .bower-tmp
 
 .sass-cache
+
+public/assets/css
