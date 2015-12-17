@@ -13,6 +13,7 @@
 @import "header";
 @import "sidebar";
 @import "breadcrumb";
+@import "checkbox";
   
 
 body {
@@ -77,6 +78,23 @@ html, body {
 
   .dropdown-text {
     text-align: left;
+  }
+
+  .search-box {
+    height: 30px;
+    width: 300px;
+  }
+
+  .search-addon {
+    width: 66px;
+    height: 30px;
+    color:  $blue;
+    background: $white;
+  }
+
+  .checkbox-wrapper {
+    margin-top: 5px;
+    text-align: right;
   }
 }
 

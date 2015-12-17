@@ -18,7 +18,7 @@
             </span>
         </div>
         <div class="row search-section">
-          <div class="col-xs-6">
+          <div class="col-xs-3">
             <div class="input-group">
               <div class="input-group-btn">
                 <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
@@ -32,11 +32,22 @@
                   <li><a href="#">Separated link</a></li>
                 </ul>
               </div><!-- /btn-group -->
-              <!-- <input type="text" class="form-control" aria-label="..."> -->
               <button type="button" class="button-white btn btn-default">
                 <span class="button-text-blue">Confirm</span>
               </button>
-            </div><!-- /input-group -->
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="input-group">
+              <input type="text" class="form-control search-box" placeholder="Recipient's username" aria-describedby="basic-addon2">
+              <button class="input-group-addon search-addon" id="basic-addon2">Search</button>
+            </div>
+          </div>
+          <div class="col-xs-3 checkbox-wrapper">
+            <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" />
+            <label for="checkboxG1" class="css-label">
+                Show Online/Offline Status
+            </label>
           </div>
         </div>
 	</div>

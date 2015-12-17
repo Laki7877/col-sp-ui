@@ -12158,17 +12158,28 @@ button.close {
   padding-right: 40px;
 }
 
+/* line 6, ../../../assets/_override_bootstrap.scss */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 /* line 1, ../../../assets/_atomic.scss */
 .margin-right-20 {
   margin-right: 20px;
 }
 
-/* line 4, ../../../assets/_atomic.scss */
+/* line 5, ../../../assets/_atomic.scss */
 .margin-right-10 {
   margin-right: 10px;
 }
 
-/* line 7, ../../../assets/_atomic.scss */
+/* line 9, ../../../assets/_atomic.scss */
+.float-left {
+  float: left;
+}
+
+/* line 13, ../../../assets/_atomic.scss */
 .float-right {
   float: right;
 }
@@ -12242,19 +12253,92 @@ ul.sidebar-nav {
   color: #ffffff;
 }
 
-/* line 17, ../../../assets/screen.scss */
+/* line 43, ../../../assets/_sidebar.scss */
+#sidebar-wrapper .logo-img-wrapper {
+  padding: 20px;
+}
+/* line 46, ../../../assets/_sidebar.scss */
+#sidebar-wrapper .logo-img-wrapper .logo-img {
+  width: 100%;
+}
+
+/* line 2, ../../../assets/_breadcrumb.scss */
+.ah-breadcrumb > span {
+  color: #7B7F8F;
+}
+/* line 7, ../../../assets/_breadcrumb.scss */
+.ah-breadcrumb > .ah-breadcrumb-path:last-child {
+  color: #32343C;
+}
+/* line 12, ../../../assets/_breadcrumb.scss */
+.ah-breadcrumb .ah-breadcrumb-splitter {
+  display: inline-block;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+}
+
+/* line 19, ../../../assets/_breadcrumb.scss */
+.page-title {
+  font-size: 24px;
+}
+
+/* line 1, ../../../assets/_checkbox.scss */
+input[type=checkbox].css-checkbox {
+  position: absolute;
+  z-index: -1000;
+  left: -1000px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+/* line 5, ../../../assets/_checkbox.scss */
+input[type=checkbox].css-checkbox + label.css-label {
+  padding-left: 31px;
+  height: 20px;
+  display: inline-block;
+  line-height: 20px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  font-size: 14px;
+  vertical-align: middle;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+/* line 19, ../../../assets/_checkbox.scss */
+input[type=checkbox].css-checkbox:checked + label.css-label {
+  background-position: 0 -20px;
+}
+
+/* line 22, ../../../assets/_checkbox.scss */
+label.css-label {
+  background-image: url(http://csscheckbox.com/checkboxes/u/csscheckbox_7875fc1239d5ca042ef23656d749e383.png);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* line 19, ../../../assets/screen.scss */
 body {
   overflow-y: scroll;
   overflow-x: auto;
 }
 
-/* line 22, ../../../assets/screen.scss */
+/* line 24, ../../../assets/screen.scss */
 html, body {
   height: 100%;
   min-height: 100%;
 }
 
-/* line 27, ../../../assets/screen.scss */
+/* line 29, ../../../assets/screen.scss */
 #wrapper {
   position: relative;
   display: block;
@@ -12262,25 +12346,25 @@ html, body {
   height: 100%;
 }
 
-/* line 34, ../../../assets/screen.scss */
+/* line 36, ../../../assets/screen.scss */
 #page-content-wrapper {
   margin-left: 180px;
   position: relative;
 }
 
-/* line 39, ../../../assets/screen.scss */
+/* line 41, ../../../assets/screen.scss */
 #page-body-wrapper {
   padding-top: 30px;
 }
 
-/* line 43, ../../../assets/screen.scss */
+/* line 45, ../../../assets/screen.scss */
 .button-white {
   width: 80px;
   height: 34px;
   color: #4899dd;
 }
 
-/* line 48, ../../../assets/screen.scss */
+/* line 50, ../../../assets/screen.scss */
 .button-blue {
   width: 120px;
   height: 34px;
@@ -12288,30 +12372,75 @@ html, body {
   color: #ffffff;
 }
 
-/* line 56, ../../../assets/screen.scss */
+/* line 58, ../../../assets/screen.scss */
 .page-body-header {
   border-bottom: 1px solid #bcc7d5;
   padding-bottom: 14px;
 }
-/* line 59, ../../../assets/screen.scss */
+/* line 61, ../../../assets/screen.scss */
 .page-body-header .page-name {
   font-size: 24px;
 }
 
-/* line 65, ../../../assets/screen.scss */
+/* line 67, ../../../assets/screen.scss */
 .search-section {
   margin-top: 30px;
 }
-/* line 68, ../../../assets/screen.scss */
+/* line 70, ../../../assets/screen.scss */
 .search-section .button-white {
   height: 30px;
 }
-/* line 72, ../../../assets/screen.scss */
+/* line 74, ../../../assets/screen.scss */
 .search-section .body-dropdown-button {
   width: 180px;
   height: 30px;
 }
-/* line 77, ../../../assets/screen.scss */
+/* line 79, ../../../assets/screen.scss */
 .search-section .dropdown-text {
   text-align: left;
+}
+/* line 83, ../../../assets/screen.scss */
+.search-section .search-box {
+  height: 30px;
+  width: 300px;
+}
+/* line 88, ../../../assets/screen.scss */
+.search-section .search-addon {
+  width: 66px;
+  height: 30px;
+  color: #4899dd;
+  background: #ffffff;
+}
+/* line 95, ../../../assets/screen.scss */
+.search-section .checkbox-wrapper {
+  margin-top: 5px;
+  text-align: right;
+}
+
+/* line 1, ../../../assets/_add_product_page.sass */
+.nav-tabs {
+  border-color: #BCC7D5;
+}
+/* line 4, ../../../assets/_add_product_page.sass */
+.nav-tabs > li > a {
+  color: #7B7F8F;
+}
+/* line 5, ../../../assets/_add_product_page.sass */
+.nav-tabs > li > a, .nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
+  background-color: initial;
+  border: none;
+}
+/* line 11, ../../../assets/_add_product_page.sass */
+.nav-tabs > li.active > a {
+  color: #32343C;
+}
+/* line 12, ../../../assets/_add_product_page.sass */
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  border: none;
+  border-bottom: 3px solid #4899DD;
+}
+
+/* line 18, ../../../assets/_add_product_page.sass */
+.add-product-body {
+  margin-top: 20px;
 }
