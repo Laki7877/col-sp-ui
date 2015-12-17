@@ -12163,6 +12163,16 @@ button.close {
   margin-right: 20px;
 }
 
+/* line 4, ../../../assets/_atomic.scss */
+.margin-right-10 {
+  margin-right: 10px;
+}
+
+/* line 7, ../../../assets/_atomic.scss */
+.float-right {
+  float: right;
+}
+
 /* line 1, ../../../assets/_header.scss */
 .header {
   background: #edf2f9;
@@ -12261,4 +12271,47 @@ html, body {
 /* line 39, ../../../assets/screen.scss */
 #page-body-wrapper {
   padding-top: 30px;
+}
+
+/* line 43, ../../../assets/screen.scss */
+.button-white {
+  width: 80px;
+  height: 34px;
+  color: #4899dd;
+}
+
+/* line 48, ../../../assets/screen.scss */
+.button-blue {
+  width: 120px;
+  height: 34px;
+  background: #4899dd;
+  color: #ffffff;
+}
+
+/* line 56, ../../../assets/screen.scss */
+.page-body-header {
+  border-bottom: 1px solid #bcc7d5;
+  padding-bottom: 14px;
+}
+/* line 59, ../../../assets/screen.scss */
+.page-body-header .page-name {
+  font-size: 24px;
+}
+
+/* line 65, ../../../assets/screen.scss */
+.search-section {
+  margin-top: 30px;
+}
+/* line 68, ../../../assets/screen.scss */
+.search-section .button-white {
+  height: 30px;
+}
+/* line 72, ../../../assets/screen.scss */
+.search-section .body-dropdown-button {
+  width: 180px;
+  height: 30px;
+}
+/* line 77, ../../../assets/screen.scss */
+.search-section .dropdown-text {
+  text-align: left;
 }

@@ -23,6 +23,6 @@
         <div id="wrapper">
             <?= $this->section('content') ?>
         </div>
-        
+        <script src="<?= $this->asset('/assets/js/custom-js.js') ?>"></script>
     </body>
 </html>
