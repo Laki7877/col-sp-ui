@@ -1,8 +1,8 @@
 <?php
 $menus = [
-	["id" => "information", "name" => 'Information', "class" => "active require"],
+	["id" => "information", "name" => 'Information', "class" => "require"],
 	["id" => "images", "name" => 'Images', "class" => "require"],
-	["id" => "category", "name" => 'Category'],
+	["id" => "category", "name" => 'Category', "class" => "active"],
 	["id" => "variation", "name" => 'Variation'],
 	["id" => "more_option", "name" => 'More Options'],
 ];
@@ -16,6 +16,15 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 
 		<div class="add-product-body">
 			<? $this->insert('components/tab-nav', ["items" => $menus]) ?>
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane margin-top-20" id="information">info</div>
+				<div role="tabpanel" class="tab-pane margin-top-20" id="images">images</div>
+				<div role="tabpanel" class="tab-pane margin-top-20 active" id="category">
+					<? $this->insert('partials/add-product-category') ?>
+				</div>
+				<div role="tabpanel" class="tab-pane margin-top-20" id="variation">variation</div>
+				<div role="tabpanel" class="tab-pane margin-top-20" id="more_option">more_option</div>
+			</div>
 		</div>
 	</div>
 <?php $this->stop() ?>
