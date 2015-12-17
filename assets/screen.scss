@@ -6,7 +6,7 @@
 // @import "compass/reset";
 
 @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
-@import "../bower_components/font-awesome/scss/font-awesome.scss";
+@import "../bower_components/fontawesome/scss/font-awesome.scss";
 @import "variable";
 @import "override_bootstrap";
 @import "atomic";
@@ -34,4 +34,8 @@ html, body {
 #page-content-wrapper {
   margin-left: $sidebar-width;
   position: relative;
+}
+
+#page-body-wrapper {
+  padding-top: 30px;
 }

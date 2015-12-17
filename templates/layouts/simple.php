@@ -9,17 +9,20 @@
 
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="stylesheet" href="<?=$this->asset('/assets/css/screen.css')?>" />
+        <script src="<?= $this->asset('/assets/js/jquery.min.js') ?>"></script>
+        <script src="<?= $this->asset('/assets/js/bootstrap.min.js') ?>"></script>
     </head>
     <body>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->       
 
+        <div id="debug">
+            <?= $this->section('debug') ?>
+        </div>
         <div id="wrapper">
             <?= $this->section('content') ?>
         </div>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+        
     </body>
 </html>

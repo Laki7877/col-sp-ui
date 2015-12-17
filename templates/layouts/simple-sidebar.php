@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/simple', ['title' => 'User Profile']) ?>
+<?php $this->layout('layouts/simple', get_defined_vars()) ?>
 
 <div id="sidebar-wrapper">
 	<?= $this->section('sidebar', ['title' => 'sidebar hello']); ?>
