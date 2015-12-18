@@ -1,0 +1,257 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>User Profile</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="/assets/css/screen.css?v=1450436273" />
+    <script src="/assets/js/jquery.min.js?v=1430236984"></script>
+    <script src="/assets/js/bootstrap.min.js?v=1448406395"></script>
+  </head>
+  <body>
+    <!--[if lt IE 8]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div id="debug">
+    </div>
+    <div id="wrapper">
+      <div id="sidebar-wrapper">
+        <div class="logo-img-wrapper">
+          <img class="logo-img" src="/assets/img/seller_logo.png?v=1450348926" />
+        </div>
+        <ul class="sidebar-nav no-padding">
+          <li class="sidebar-brand active">
+            <i class="fa fa-home sidebar-font-awesome"></i>
+            <a href="#">Home</a>
+          </li>
+          <li class="sidebar-brand">
+            <i class="fa fa-inbox sidebar-font-awesome"></i>
+            <a href="#">Orders</a>
+          </li>
+          <li class="sidebar-brand">
+            <i class="fa fa-tag sidebar-font-awesome"></i>
+            <a href="#">Products</a>
+          </li>
+          <li class="sidebar-brand">
+            <i class="fa fa-archive sidebar-font-awesome"></i>
+            <a href="#">Inventory</a>
+          </li>
+          <li class="sidebar-brand">
+            <i class="fa fa-bookmark sidebar-font-awesome"></i>
+            <a href="#">Promotion</a>
+          </li>
+          <li class="sidebar-brand">
+            <i class="fa fa-sliders sidebar-font-awesome"></i>
+            <a href="#">Shop Setting</a>
+          </li>
+          <li class="sidebar-brand">
+            <i class="fa fa-line-chart sidebar-font-awesome"></i>
+            <a href="#">Report</a>
+          </li>
+          <li class="sidebar-brand">
+            <i class="fa fa-gear sidebar-font-awesome"></i>
+            <a href="#">Account</a>
+          </li>
+        </ul>
+      </div>
+      <div id="page-content-wrapper">
+        <div class="header container-fluid">
+          <span class="header-font-subject">
+            Lara Thailand
+    </span>
+          <span class="header-font-detail">
+            user1@lara.co.th
+    </span>
+          <span class="header-font-detail margin-right-20">
+            View your store
+    </span>
+        </div>
+        	
+        <div class="container-fluid">
+          <div id="page-body-wrapper">
+            <div class="row">
+              <div class="col-xs-12">
+                <div>
+                  <div class="page-body-header">
+                    <span class="page-name">Products</span>
+                    <span class="float-right">
+                      <button type="button" class="button-white btn btn-default margin-right-10">
+                        <span class="">Export</span>
+                      </button>
+                      <button type="button" class="button-white btn btn-default margin-right-10">
+                        <span class="">Import</span>
+                      </button>
+                      <button type="button" class="button-blue btn btn-default">
+                        <span class="">Add Product</span>
+                      </button>
+                    </span>
+                  </div>
+                      
+                  <div class="row search-section">
+                    <div class="col-xs-3">
+                      <div class="input-group">
+                        <div class="input-group-btn">
+                          <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="dropdown-text margin-right-10">- Choosen Action -</span>
+                            <span class="caret margin-left-10"></span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li><a href="#">Separated link</a></li>
+                          </ul>
+                        </div>
+                        <!-- /btn-group -->
+                        <button type="button" class="button-white btn btn-default">
+                          <span class="button-text-blue">Confirm</span>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="col-xs-6">
+                      <div class="input-group">
+                        <input type="text" class="form-control search-box" placeholder="Recipient's username" aria-describedby="basic-addon2">
+                        <button class="input-group-addon search-addon" id="basic-addon2">Search</button>
+                      </div>
+                    </div>
+                    <div class="col-xs-3 checkbox-wrapper">
+                      <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" />
+                      <label for="checkboxG1" class="css-label">
+                        Show Online/Offline Status
+    </label>
+                    </div>
+                  </div>
+                      
+                  <div class="filter-section">
+                    <div class="filter-container">
+                      <span>Filters:</span>
+                      <a class="filter-first-option filter-active">All</a>
+                      <a class="filter-seperator">Approved</a>
+                      <a class="filter-seperator">Not Approved</a>
+                      <a class="filter-seperator">Wait for Approval</a>
+                      <a class="filter-seperator">Not Approved</a>
+                    </div>
+                  </div>
+                  <div class="table-section">
+                    <table class="table">
+                      <thead>
+                        <tr class="table-head">
+                          <th class="checkbox-column">
+                            <input type="checkbox" aria-label="Checkbox for following text input">
+                          </th>
+                          <th class="display-column"></th>
+                          <th>
+                            <span>Product Name</span>
+                            <span class="caret caret-grey"></span>
+                          </th>
+                          <th class="price-column">
+                            <span>Price</span>
+                            <span class="caret caret-grey"></span>
+                          </th>
+                          <th>Info.</th>
+                          <th>Image</th>
+                          <th class="status-column">
+                            <span>Status</span>
+                            <span class="caret caret-grey"></span>
+                          </th>
+                          <th class="live-column">Live</th>
+                          <th class="visible-column">Visible</th>
+                          <th class="modified-column">
+                            <span>Modified</span>
+                            <span class="caret"></span>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="checkbox-column">
+                            <input type="checkbox" aria-label="Checkbox for following text input">
+                          </td>
+                          <td class="display-column">
+                            <img class="logo-img" src="/assets/img/img40.png?v=1450436270" />
+                          </td>
+                          <td>After all this years</td>
+                          <td class="price-column">9,000,000</td>
+                          <td class="info-column">
+                            <i class="fa fa-check check-green"></i>
+                          </td>
+                          <td class="image-column">
+                            <i class="fa fa-check check-green"></i>
+                          </td>
+                          <td class="status-column">
+                            <span class="red-message">
+                              <i class="fa fa-ban"></i>
+                              Not Approved
+              </span>
+                          </td>
+                          <td class="live-column">
+                            <i class="fa fa-circle color-green"></i>
+                          </td>
+                          <td class="visible-column">
+                            <i class="fa fa-eye color-grey eye-icon"></i>
+                          </td>
+                          <td class="modified-column">
+                            14/12/15
+            </td>
+                        </tr>
+                        <tr>
+                          <td class="checkbox-column">
+                            <input type="checkbox" aria-label="Checkbox for following text input">
+                          </td>
+                          <td class="display-column">
+                            <img class="logo-img" src="/assets/img/img40.png?v=1450436270" />
+                          </td>
+                          <td>After all this years</td>
+                          <td class="price-column">
+                            8,999.99-9,999.99<br>
+                            (99 variants)
+            </td>
+                          <td class="info-column">
+                            <i class="fa fa-check check-green"></i>
+                          </td>
+                          <td class="image-column">
+                            <i class="fa fa-check check-green"></i>
+                          </td>
+                          <td class="status-column"></td>
+                          <td class="live-column"></td>
+                          <td class="visible-column"></td>
+                          <td class="modified-column"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="page-navigation">
+                    <span>
+                      <i class="fa fa-chevron-left grey-chevron"></i>
+                      <span> Page 1 of 1</span>
+                      <i class="fa fa-chevron-right padding-right-15 blue-chevron"></i>
+                      <span class="view-page-separator">View per page</span>
+                      <!-- Split button -->
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-default">20</button>
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="caret"></span>
+                          <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                          <li><a href="#">21</a></li>
+                          <li><a href="#">22</a></li>
+                          <li><a href="#">23</a></li>
+                          <li><a href="#">24</a></li>
+                        </ul>
+                      </div>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+              </div>
+    <script src="/assets/js/custom-js.js?v=1450352003"></script>
+  </body>
+</html>
