@@ -57,6 +57,14 @@ html, body {
   color:  $white;
 }
 
+.color-green {
+  color: $color-green;
+}
+
+.color-grey {
+  color: $color-grey;
+}
+
 // Page body header
 .page-body-header {
   border-bottom: 1px solid $header-border-grey;
@@ -144,10 +152,64 @@ html, body {
     border: solid 1px $color-grey;
   }
 
+  .caret-grey {
+    color:  $color-grey;
+  }
+
+  .check-green {
+    color:  $color-green;
+    font-size: 18px;
+  }
+
+  .red-message {
+    color:  $color-red;
+  }
+
+  .eye-icon {
+    font-size: 20px;
+  }
+
+  .table > thead > tr > th, .table {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-weight: normal;
+  }
+
+  .table > tbody > tr > td {
+    vertical-align: middle;
+  }
+
+  td.info-column, td.image-columnm, td.live-column, td.visible-column {
+    text-align: center;
+  }
+
+  .table-checkbox {
+    margin-top: 0px;
+    margin-bottom: 0;
+  }
+
   .table-head {
     background: $color-light-blue;
     color: $color-black;
     border-top-left-radius: 10px;
+  }
+}
+
+// Page navigation section
+.page-navigation {
+  float: right;
+
+  .grey-chevron {
+    color:  $color-grey
+  }
+
+  .blue-chevron {
+    color:  $color-theme
+  }
+
+  .view-page-separator {
+    border-left: solid 1px $color-grey;
+    padding-left: 15px;
   }
 }
 
