@@ -100,4 +100,39 @@ html, body {
   }
 }
 
+// Filter Section
+
+.filter-section {
+
+  .filter-container {
+    position: relative;
+    padding: 12px 17px 12px;
+    margin-top: 20px;
+    border-color: $color-grey;
+    border-style: solid;
+    border-width: 1px;
+    border-radius:  4px;
+  }
+
+  .filter-seperator {
+    text-decoration: none;
+    cursor: pointer;
+    color:  $color-drak-grey;
+    border-left: solid 1px $color-grey;
+    padding-left: 9px;
+    margin-left: 9px;
+  }
+
+  .filter-first-option {
+    text-decoration: none;
+    cursor: pointer;
+    color:  $color-drak-grey;
+    margin-left: 20px;
+  }
+
+  .filter-active {
+    color:  $color-black;
+  }
+}
+
 @import "add_product_page";
