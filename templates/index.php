@@ -2,21 +2,7 @@
 
 <?php $this->start('page-body') ?>
 	<div>
-    <div class="page-body-header">
-        <span class="page-name">Products</span>
-
-        <span class="float-right">
-            <button type="button" class="button-white btn btn-default margin-right-10">
-              <span class="">Export</span>
-            </button>
-            <button type="button" class="button-white btn btn-default margin-right-10">
-              <span class="">Import</span>
-            </button>
-            <button type="button" class="button-blue btn btn-default">
-              <span class="">Add Product</span>
-            </button>
-        </span>
-    </div>
+    <?= $this->section('page-body-header', $this->fetch('components/page-body-header')); ?>
     <?= $this->section('search-section', $this->fetch('components/search-section')); ?>
     <div class="filter-section">
       <div class="filter-container">
