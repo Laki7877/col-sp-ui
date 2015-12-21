@@ -52,16 +52,16 @@
             <td class="display-column">
               <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
             </td>
-            <td>After all this years</td>
+            <td>Neleus Men's Slim Fit Long Sleave with Wing on the…</td>
             <td class="price-column">9,000,000</td>
             <td class="info-column">
-              <i class="fa fa-check check-green"></i>
+              <i class="fa fa-check color-green icon-size-18px"></i>
             </td>
             <td class="image-column">
-              <i class="fa fa-check check-green"></i>
+              <i class="fa fa-check color-green icon-size-18px"></i>
             </td>
             <td class="status-column">
-              <span class="red-message">
+              <span class="color-red">
                 <i class="fa fa-ban"></i>
                 Not Approved
               </span>
@@ -83,21 +83,94 @@
             <td class="display-column">
               <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
             </td>
-            <td>After all this years</td>
+            <td>Jeansian Men's Slim Fit Long</td>
             <td class="price-column">
-              8,999.99-9,999.99<br>
-              (99 variants)
+              <div>8,999.99-9,999.99</div>
+              <div>(99 variants)</div>
             </td>
             <td class="info-column">
-              <i class="fa fa-check check-green"></i>
+              <i class="fa fa-check color-green icon-size-18px"></i>
             </td>
             <td class="image-column">
-              <i class="fa fa-check check-green"></i> 
+              <i class="fa fa-check color-green icon-size-18px"></i> 
             </td>
-            <td class="status-column"></td>
-            <td class="live-column"></td>
-            <td class="visible-column"></td>
-            <td class="modified-column"></td>
+            <td class="status-column">
+              <span class="color-yellow">
+                <i class="fa fa-clock-o"></i>
+                  Wait for Approval
+              </span>
+            </td>
+            <td class="live-column">
+              <i class="fa fa-circle color-red"></i>
+            </td>
+            <td class="visible-column">
+              <i class="fa fa-eye color-drak-grey eye-icon"></i>
+            </td>
+            <td class="modified-column">
+              14/12/15
+            </td>
+          </tr>
+          <tr>
+            <td class="checkbox-column">
+              <input type="checkbox" aria-label="Checkbox for following text input"> 
+            </td>
+            <td class="display-column">
+              <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
+            </td>
+            <td>Power Bank MD Tech Model B02</td>
+            <td class="price-column">9,000,000</td>
+            <td class="info-column">
+              <i class="fa fa-check color-green icon-size-18px"></i>
+            </td>
+            <td class="image-column">
+              <i class="fa fa-check color-green icon-size-18px"></i>
+            </td>
+            <td class="status-column">
+              <span class="color-green">
+                <i class="fa fa-check-circle-o"></i>
+                Approved
+              </span>
+            </td>
+            <td class="live-column">
+              <i class="fa fa-circle color-green"></i>
+            </td>
+            <td class="visible-column">
+              <i class="fa fa-eye color-drak-grey eye-icon"></i>
+            </td>
+            <td class="modified-column">
+              09/12/15
+            </td>
+          </tr>
+          <tr>
+            <td class="checkbox-column">
+              <input type="checkbox" aria-label="Checkbox for following text input"> 
+            </td>
+            <td class="display-column">
+              <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
+            </td>
+            <td>Power Bank MD Tech Model B02</td>
+            <td class="price-column">1,000</td>
+            <td class="info-column">
+              <i class="fa fa-minus color-grey icon-size-18px"></i>
+            </td>
+            <td class="image-column">
+              <i class="fa fa-check color-green icon-size-18px"></i>
+            </td>
+            <td class="status-column">
+              <span class="color-grey">
+                <i class="fa fa-circle-o"></i>
+                Draft
+              </span>
+            </td>
+            <td class="live-column">
+              <i class="fa fa-circle color-red"></i>
+            </td>
+            <td class="visible-column">
+              <i class="fa fa-eye color-drak-grey eye-icon"></i>
+            </td>
+            <td class="modified-column">
+              09/12/15
+            </td>
           </tr>
         </tbody>
       </table>

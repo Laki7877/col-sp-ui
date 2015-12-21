@@ -67,8 +67,16 @@ html, body {
   color: $color-grey;
 }
 
+.color-red {
+  color: $color-red;
+}
+
 .color-drak-grey {  
-  color:  $color-drak-grey
+  color:  $color-drak-grey;
+}
+
+.color-yellow {
+  color:  $color-yellow;
 }
 
 // Page body header
@@ -162,8 +170,7 @@ html, body {
     color:  $color-grey;
   }
 
-  .check-green {
-    color:  $color-green;
+  .icon-size-18px {
     font-size: 18px;
   }
 
@@ -171,8 +178,23 @@ html, body {
     color:  $color-red;
   }
 
+  .green-message {
+    color:  $color-green;
+  }
+
+  .grey-message {
+    color:  $color-grey;
+  }
+
   .eye-icon {
     font-size: 20px;
+  }
+
+  .display-column {
+    img {
+      max-height: 40px;
+      max-width: 40px;
+    }
   }
 
   .table > thead > tr > th, .table {
