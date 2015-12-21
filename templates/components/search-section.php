@@ -13,9 +13,11 @@
           <li><a href="#">Separated link</a></li>
         </ul>
       </div><!-- /btn-group -->
-      <button type="button" class="btn-white btn">
-        <span class="button-text-blue">Confirm</span>
-      </button>
+      <div class="input-group-btn">
+        <button type="button" class="btn-white btn">
+          <span class="button-text-blue">Confirm</span>
+        </button>
+      </div>
     </div>
   </div>
   <div class="search-section section-search">

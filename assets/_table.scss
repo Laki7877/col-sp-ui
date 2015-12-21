@@ -189,6 +189,12 @@
 
   .body-dropdown-button {
     height: 30px;
+    width: 180px;
+
+    .dropdown-text {
+      width: 135px;
+      display: inline-block;
+    }
   }
 
   .dropdown-text {
