@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="table-section">
-      <table class="table">
+      <table class="table table-curved">
         <thead>
           <tr class="table-head">
             <th class="checkbox-column">
