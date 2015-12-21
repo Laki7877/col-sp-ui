@@ -4,6 +4,19 @@
   }
 }
 
+.link-btn-plain {
+  width: $button-width-default;
+  display: inline-block;
+
+  &.width-xl {
+  	width: $button-width-xl;
+  }
+
+  &.width-xxl {
+  	width: $button-width-xxl;
+  }
+}
+
 .btn-white {
   width: $button-width-default;
   @include button-variant($color-theme, $white, $btn-default-border);

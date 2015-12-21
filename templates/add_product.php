@@ -28,6 +28,16 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 						<? $this->insert('partials/add-product-more-option') ?>
 					</div>
 				</div>
+				<div class="add-product-form-action main-form-action full-width-row">
+					<div class="container-fluid">
+						<div class="float-right">
+							<a href="#" class="link-btn-plain">Cancel</a>
+							<button class="btn btn-white btn-width-xl">Preview</button>
+							<button class="btn btn-white btn-width-xl">Save as Draft</button>
+							<button class="btn btn-blue btn-width-xl">Publish</button>
+						</div>
+					</div>
+				</div>
 			</form>
 		</div>
 	</div>
