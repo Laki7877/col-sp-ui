@@ -5,13 +5,19 @@
 }
 
 .btn-white {
-  // width: 80px;
-  // height: 34px;
+  width: $button-width-default;
   @include button-variant($color-theme, $white, $btn-default-border);
 }
 
 .btn-blue {
-  // width: 120px;
-  // height: 34px;
+  width: $button-width-default;
   @include button-variant($white, $color-theme, $color-theme);
+}
+
+.btn.btn-width-xl {
+	width: $button-width-xl;
+}
+
+.btn.btn-width-xxl {
+	width: $button-width-xxl;
 }

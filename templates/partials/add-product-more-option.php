@@ -53,4 +53,45 @@
 			</div>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="form-section">
+				<div class="form-section-header"><h2>Approve Versions</h2></div>
+				<div class="form-section-content">
+					<div class="table-wrapper">
+						<table class="table" id="add-product-approve-versions">
+							<thead>
+								<tr>
+									<th class="thead-approved-date">Approved Date</th>
+									<th class="thead-submitted-date">Submitted Date</th>
+									<th class="thead-submitted-by">Submitted By</th>
+									<th class="thead-actions">Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>14/10/2015 at 13:14:50</td>
+									<td>10/10/2015 at 13:14:50</td>
+									<td>Andrea Bolan</td>
+									<td>
+										<button class="btn btn-white">View</button>
+										<button class="btn btn-white">Restore</button>
+									</td>
+								</tr>
+								<tr>
+									<td>14/10/2015 at 13:14:50</td>
+									<td>10/10/2015 at 13:14:50</td>
+									<td>John Dara</td>
+									<td>
+										<button class="btn btn-white">View</button>
+										<button class="btn btn-white">Restore</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

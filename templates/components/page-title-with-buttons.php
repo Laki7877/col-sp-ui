@@ -7,7 +7,7 @@
         <button type="button" class="btn-white btn margin-right-10">
           <span class="">Import</span>
         </button>
-        <button type="button" class="btn-blue btn">
+        <button type="button" class="btn-blue btn btn-width-xl">
           <span class="">Add Product</span>
         </button>
     </span>
