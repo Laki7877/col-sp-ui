@@ -7,7 +7,7 @@
 					<div class="form-group">
 						<div class="width-label"><label class="control-label">Relate Products</label></div>
 						<div class="width-field-normal">
-							<input type="text" class="form-control" placeholder="Search by Product Name or UID" />
+							<input type="text" class="form-control input-search-icon" placeholder="Search by Product Name or UID" />
 						</div>
 					</div>
 					<div class="form-group">
@@ -43,9 +43,9 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>More Details</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/input-text-with-label-tooltip', ["label" => "Effective Date"]) ?>
+					<? $this->insert('components/forms/input-text-with-label-tooltip', ["label" => "Effective Date", "input_class" => "input-icon-calendar"]) ?>
 					<? $this->insert('components/forms/input-text-with-label-hint', ["label" => "Effective Time", "hint" => "Example: 19:15:00"]) ?>
-					<? $this->insert('components/forms/input-text-with-label-tooltip', ["label" => "Expire Date"]) ?>
+					<? $this->insert('components/forms/input-text-with-label-tooltip', ["label" => "Expire Date", "input_class" => "input-icon-calendar"]) ?>
 					<? $this->insert('components/forms/input-text-with-label-hint', ["label" => "Expire Time", "hint" => "Example: 19:15:00"]) ?>
 					<? $this->insert('components/forms/input-text-with-label-tooltip', ["label" => "Control Flag"]) ?>
 					<? $this->insert('components/forms/textarea-with-label', ["label" => "Remark"]) ?>
