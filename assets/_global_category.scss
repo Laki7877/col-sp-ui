@@ -19,11 +19,18 @@
 
  		.category-header {
  			// line-height: 30px;
+ 			
  			background: $color-light-grey;
  			border:	1px solid;
  			border-color: $color-grey;
  			border-top-left-radius: 3px;
  			border-top-right-radius: 3px;
+ 			
+ 			.required:after { 
+ 				color: $color-red;
+ 				content:" *"; 
+ 			}
+
  		}
 
  		.category-content {
@@ -31,9 +38,11 @@
     		border: solid 1px $color-grey;
     		border-top:	none;
 
-    		div.col-xs-3 {
+    		.content-column {
     			padding-top: 20px;
     			height: 250px;
+    			max-height:	250px;
+ 				overflow-y: auto;
     			border-right: solid 1px $color-grey;
 
     			div {
