@@ -47,7 +47,7 @@
 					<? $this->insert('components/forms/input-text-with-label-hint', ["label" => "Effective Time", "hint" => "Example: 19:15:00"]) ?>
 					<? $this->insert('components/forms/input-text-with-label-tooltip', ["label" => "Expire Date", "input_class" => "input-icon-calendar"]) ?>
 					<? $this->insert('components/forms/input-text-with-label-hint', ["label" => "Expire Time", "hint" => "Example: 19:15:00"]) ?>
-					<? $this->insert('components/forms/input-text-with-label-tooltip', ["label" => "Control Flag"]) ?>
+					<? $this->insert('components/forms/multiple-checkbox', ["label" => "Control Flag"]) ?>
 					<? $this->insert('components/forms/textarea-with-label', ["label" => "Remark"]) ?>
 				</div>
 			</div>
