@@ -2,8 +2,8 @@
 
 <?php $this->start('page-body') ?>
 	<div>
-    <?= $this->section('page-body-header', $this->fetch('components/page-body-header')); ?>
-    <?= $this->section('search-section', $this->fetch('components/search-section')); ?>
+    <? $this->insert('components/page-title-with-buttons', ['text' => 'Products']) ?>
+    <? $this->insert('components/search-section') ?>
     <div class="filter-section">
       <div class="filter-container">
         <span>Filters:</span>

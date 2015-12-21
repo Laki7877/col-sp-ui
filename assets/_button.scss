@@ -1,0 +1,31 @@
+.btn {
+  &, &:hover, &:active, &:focus {
+    outline: none;
+  }
+}
+
+.btn-white {
+  // @extend .btn-default;
+  width: 80px;
+  height: 34px;
+  // color:  $color-theme;
+
+  // &, &:hover, &:active, &:focus {
+  //   color:  $color-theme;
+  //   background-color: $white;
+  // }
+  @include button-variant($color-theme, $white, $btn-default-border);
+}
+
+.btn-blue {
+  // @extend .btn-default;
+  width: 120px;
+  height: 34px;
+
+  // &, &:hover, &:active, &:focus {
+  //   border-color: $color-theme;
+  //   background-color: $color-theme;
+  //   color:  $white;
+  // }
+  @include button-variant($white, $color-theme, $color-theme);
+}
