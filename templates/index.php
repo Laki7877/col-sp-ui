@@ -70,7 +70,7 @@
               <i class="fa fa-circle color-green"></i>
             </td>
             <td class="visible-column">
-              <i class="fa fa-eye color-grey eye-icon"></i>
+              <i class="fa fa-eye color-drak-grey eye-icon"></i>
             </td>
             <td class="modified-column">
               14/12/15
