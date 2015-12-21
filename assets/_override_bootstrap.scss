@@ -1,6 +1,11 @@
 .container-fluid {
-	padding-left: 40px;
-	padding-right: 40px;
+	padding-left: $container-spacing-size;
+	padding-right: $container-spacing-size;
+}
+
+.full-width-row {
+	margin-left: -$container-spacing-size;
+	margin-right: -$container-spacing-size;
 }
 
 h1,h2,h3,h4,h5,h6 {
