@@ -6,9 +6,11 @@
 // @import "compass/reset";
 @import "compass/css3";
 
+@import "variable";
+
 @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
 @import "../bower_components/fontawesome/scss/font-awesome.scss";
-@import "variable";
+
 @import "override_bootstrap";
 @import "atomic";
 @import "header";

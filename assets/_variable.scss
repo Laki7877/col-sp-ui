@@ -1,3 +1,11 @@
+// ******************* OVERRIDE DEFAULT BOOTSTRAP VARIABLE *********************
+$border-radius-base: 3px;
+// ****************************** END OVERRIDE *********************************
+
+// ****************** OVERRIDE DEFAULT FONT AWESOME VARIABLE *******************
+$fa-font-path: '/assets/fonts';
+// ****************************** END OVERRIDE *********************************
+
 $sidebar-width: 180px;
 
 
@@ -10,13 +18,11 @@ $header-border-grey:	#bcc7d5;
 
 $sidebar-color:	#252d40;
 $sidebar-bg-color-active:	#1e2534;
-$sidebar-font-color-active:	#ffffff;
+$sidebar-font-color-active:	$white;
 
 $header-bg-color:	#edf2f9;
 
 $font-color-grey:	#7b7f8f;
-
-$fa-font-path: '/assets/fonts';
 
 
 $color-black: #32343C;
