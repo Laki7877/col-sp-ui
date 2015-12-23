@@ -1,8 +1,5 @@
 <div id="add-product-category-tab-content">
-	<div class="margin-bottom-30">
-		<span>Global Category:</span>
-		<span>Electronic > Phone > Phone Accessory</span>
-	</div>
+	<? $this->insert('partials/add-product-inner-tab-breadcrumb') ?>
 
 	<div class="row">
 		<div class="col-xs-9">

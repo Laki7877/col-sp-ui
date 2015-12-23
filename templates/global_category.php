@@ -60,7 +60,7 @@
 				</span>
 				<span class="float-right">
 		        	<button type="button" class="btn btn-link button-wide">Cancel</button>
-		       		<button type="button" class="btn btn-primary button-wide">Select</button>
+		       		<button type="button" class="btn btn-blue button-wide">Select</button>
 		      	</span>
 			</div>
 		</div>

@@ -1,4 +1,6 @@
 <div id="add-product-more-option-tab-content">
+	<? $this->insert('partials/add-product-inner-tab-breadcrumb') ?>
+	
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="form-section">
@@ -14,7 +16,7 @@
 						<div class="width-label"></div>
 						<div class="width-field-normal">
 							<a class="like-text form-text">
-								<i class="fa fa-2x fa-plus-circle color-theme vertical-align-middle"></i>
+								<i class="fa fa-plus-circle color-theme"></i>
 								Add more related products
 							</a>
 						</div>
@@ -28,7 +30,7 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>SEO</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/input-text-with-label-tooltip', ["label" => "Meta Title"]) ?>
+					<? $this->insert('components/forms/input-text-with-label-tooltip', ["label" => "Meta Title", "tooltip" => "Test"]) ?>
 					<? $this->insert('components/forms/input-text-with-label-tooltip', ["label" => "Meta Description"]) ?>
 					<? $this->insert('components/forms/input-text-with-label-tooltip', ["label" => "Meta Keywords"]) ?>
 					<? $this->insert('components/forms/input-text-with-label-tooltip', ["label" => "Product URL Key (Thai)"]) ?>
