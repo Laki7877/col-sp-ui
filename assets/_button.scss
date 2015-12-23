@@ -1,0 +1,36 @@
+.btn {
+  &, &:hover, &:active, &:focus {
+    outline: none;
+  }
+}
+
+.link-btn-plain {
+  width: $button-width-default;
+  display: inline-block;
+
+  &.width-xl {
+  	width: $button-width-xl;
+  }
+
+  &.width-xxl {
+  	width: $button-width-xxl;
+  }
+}
+
+.btn-white {
+  width: $button-width-default;
+  @include button-variant($color-theme, $white, $btn-default-border);
+}
+
+.btn-blue {
+  width: $button-width-default;
+  @include button-variant($white, $color-theme, $color-theme);
+}
+
+.btn.btn-width-xl {
+	width: $button-width-xl;
+}
+
+.btn.btn-width-xxl {
+	width: $button-width-xxl;
+}

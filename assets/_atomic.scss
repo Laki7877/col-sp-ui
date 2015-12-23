@@ -14,8 +14,20 @@
 	margin-bottom: 30px;
 }
 
+.margin-bottom-20 {
+	margin-bottom: 20px;
+}
+
 .padding-right-15 {
 	padding-right:	15px;
+}
+
+.padding-bottom-30 {
+	padding-bottom: 30px;
+}
+
+.no-padding {
+	padding: 0;
 }
 
 .float-left {
@@ -36,6 +48,22 @@
 
 .color-grey {
 	color: $color-grey;
+}
+
+.color-green {
+  color: $color-green;
+}
+
+.color-red {
+  color: $color-red;
+}
+
+.color-drak-grey {  
+  color:  $color-drak-grey;
+}
+
+.color-yellow {
+  color:  $color-yellow;
 }
 
 .vertical-align-middle {

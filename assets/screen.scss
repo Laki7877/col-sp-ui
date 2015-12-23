@@ -8,7 +8,7 @@
 
 @import "variable";
 
-@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
+@import "bootstrap";
 @import "../bower_components/fontawesome/scss/font-awesome.scss";
 
 @import "override_bootstrap";
@@ -18,8 +18,10 @@
 @import "breadcrumb";
 @import "form-section";
 @import "checkbox";
-@import "table-column";
+@import "table";
 @import "form";
+@import "input";
+@import "button";
 
 body {
 	overflow-y: scroll;
@@ -47,173 +49,6 @@ html, body {
   padding-top: 30px;
 }
 
-.button-white {
-  width: 80px;
-  height: 34px;
-  color:  $blue;
-}
-.button-blue {
-  width: 120px;
-  height: 34px;
-  background: $blue;
-  color:  $white;
-}
-
-.color-green {
-  color: $color-green;
-}
-
-.color-grey {
-  color: $color-grey;
-}
-
-// Page body header
-.page-body-header {
-  border-bottom: 1px solid $header-border-grey;
-  padding-bottom: 14px;
-  .page-name {
-    font-size: 24px;
-  }
-}
-
-//Page body: Search section
-.search-section {
-  margin-top: 30px;
-
-  .button-white {
-    height: 30px;
-  }
-
-  .body-dropdown-button {
-    width: 180px;
-    height: 30px;
-  }
-
-  .dropdown-text {
-    text-align: left;
-  }
-
-  .search-box {
-    height: 30px;
-    width: 300px;
-  }
-
-  .search-addon {
-    width: 66px;
-    height: 30px;
-    color:  $blue;
-    background: $white;
-  }
-
-  .checkbox-wrapper {
-    margin-top: 5px;
-    text-align: right;
-  }
-}
-
-// Filter Section
-
-.filter-section {
-
-  .filter-container {
-    position: relative;
-    padding: 12px 17px 12px;
-    margin-top: 20px;
-    border-color: $color-grey;
-    border-style: solid;
-    border-width: 1px;
-    border-radius:  4px;
-  }
-
-  .filter-seperator {
-    text-decoration: none;
-    cursor: pointer;
-    color:  $color-drak-grey;
-    border-left: solid 1px $color-grey;
-    padding-left: 9px;
-    margin-left: 9px;
-  }
-
-  .filter-first-option {
-    text-decoration: none;
-    cursor: pointer;
-    color:  $color-drak-grey;
-    margin-left: 20px;
-  }
-
-  .filter-active {
-    color:  $color-black;
-  }
-}
-
-//Table section
-.table-section {
-  margin-top:  30px;
-
-  .table {
-    border: solid 1px $color-grey;
-  }
-
-  .caret-grey {
-    color:  $color-grey;
-  }
-
-  .check-green {
-    color:  $color-green;
-    font-size: 18px;
-  }
-
-  .red-message {
-    color:  $color-red;
-  }
-
-  .eye-icon {
-    font-size: 20px;
-  }
-
-  .table > thead > tr > th, .table {
-    padding-top: 4px;
-    padding-bottom: 4px;
-    font-weight: normal;
-  }
-
-  .table > tbody > tr > td {
-    vertical-align: middle;
-  }
-
-  td.info-column, td.image-columnm, td.live-column, td.visible-column {
-    text-align: center;
-  }
-
-  .table-checkbox {
-    margin-top: 0px;
-    margin-bottom: 0;
-  }
-
-  .table-head {
-    background: $color-light-blue;
-    color: $color-black;
-    border-top-left-radius: 10px;
-  }
-}
-
-// Page navigation section
-.page-navigation {
-  float: right;
-
-  .grey-chevron {
-    color:  $color-grey
-  }
-
-  .blue-chevron {
-    color:  $color-theme
-  }
-
-  .view-page-separator {
-    border-left: solid 1px $color-grey;
-    padding-left: 15px;
-  }
-}
-
 
 @import "add_product_page";
+@import "global_category";

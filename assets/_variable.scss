@@ -6,13 +6,13 @@ $border-radius-base: 3px;
 $fa-font-path: '/assets/fonts';
 // ****************************** END OVERRIDE *********************************
 
+$container-spacing-size: 40px;
+
 $sidebar-width: 180px;
 
 
 // Color
-
 $white:	#ffffff;
-$blue:	#4899dd;
 
 $header-border-grey:	#bcc7d5;
 
@@ -39,8 +39,13 @@ $color-red: #ec0000;
 $color-light-red: #ffc0c0;
 $color-yellow: #f5a623;
 $color-light-yellow: #fffdeb;
-
+$color-blue:	$color-theme;
 $color-light-blue:	#edf2f9;
 
 $font-breadcrumb-color: $color-drak-grey;
 $font-breadcrumb-color-current: $color-black;
+
+
+$button-width-default: 80px;
+$button-width-xl: 120px;
+$button-width-xxl: 180px;

@@ -1,16 +1,35 @@
+// Top Header
 .header {
   background: $header-bg-color;
   height: 60px;
+
+  .header-font-subject {
+    font-size: 20px;
+    line-height: 60px;
+    color: #32343c;
+  }
+
+  .header-font-detail {
+    float: right;
+    color: $font-color-grey;
+    line-height: 60px;
+  }
 }
 
-.header-font-subject {
-  font-size: 20px;
-  line-height: 60px;
-  color: #32343c;
-}
+// Page Header
+.page-header {
+  @extend .clearfix;
+  padding-bottom: 14px;
 
-.header-font-detail {
-  float: right;
-  color: $font-color-grey;
-  line-height: 60px;
+  &.with-border {
+    border-bottom: 1px solid $header-border-grey;  
+  }
+  &.no-padding {
+    padding-bottom: 0;
+  }
+
+  .page-header-title {
+    font-size: 24px;
+    font-weight: normal;
+  }
 }
