@@ -10,7 +10,9 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="stylesheet" href="<?=$this->asset('/assets/css/screen.css')?>" />
         <script src="<?= $this->asset('/assets/js/jquery.min.js') ?>"></script>
-        <script src="<?= $this->asset('/assets/js/bootstrap.min.js') ?>"></script>
+	<script src="<?= $this->asset('/assets/js/bootstrap.min.js') ?>"></script>
+	<script src="<?= $this->asset('/assets/js/jquery.rest.js') ?>"></script>
+	<script src="<?= $this->asset('/assets/js/bundle.js') ?>"></script>
     </head>
     <body>
         <!--[if lt IE 8]>
