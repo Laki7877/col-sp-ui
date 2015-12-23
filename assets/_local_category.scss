@@ -1,0 +1,45 @@
+.local-category-page {
+	.local-category-section {
+ 		margin-top: 25px;
+ 		line-height: 30px;
+
+ 		.category-header {
+ 			background: $color-light-grey;
+ 			border:	1px solid;
+ 			border-color: $color-grey;
+ 			border-top-left-radius: 3px;
+ 			border-top-right-radius: 3px;
+ 			
+ 			.required:after { 
+ 				color: $color-red;
+ 				content:" *"; 
+ 			}
+ 		}
+
+ 		.category-content {
+ 			// height: 250px;
+ 			line-height: 60px;
+    		border: solid 1px $color-grey;
+    		border-top:	none;
+    	} 		
+ 	}
+}
+
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
+}
+
+ol.example li.placeholder {
+  position: relative;
+  /** More li styles **/
+}
+ol.example li.placeholder:before {
+  position: absolute;
+  /** Define arrowhead **/
+}
