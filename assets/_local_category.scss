@@ -16,13 +16,61 @@
  			}
  		}
 
+    .local-table-detail-header {
+      width: 60px;
+    }
+
  		.category-content {
- 			// height: 250px;
- 			line-height: 60px;
-    		border: solid 1px $color-grey;
-    		border-top:	none;
-    	} 		
+			line-height: 60px;
+  	}
+
+    ol.sortable {
+      border: solid 1px $color-grey;
+
+      ol, li {
+        padding-left: 0;
+      }
+
+      .category-content {
+        border-top: solid 1px $color-grey;
+      }
+      > li:first-child > .category-content { //the first top category do not show duplicate border
+        border-top: 0;
+      }
+
+      .ui-sortable-helper .category-content { //prevent border while dragging
+        border-top: 0;
+      }
+
+      $padding-size: 30px;
+      .category-content {
+        padding-left: 15px;
+      }
+
+      > li > .category-content > .category-content-padding > span:first-child {
+        padding-left: $padding-size * 0;
+      }
+      > li > ol > li > .category-content > .category-content-padding > span:first-child {
+        padding-left: $padding-size * 1;
+      }
+      > li > ol > li > ol > li > .category-content > .category-content-padding > span:first-child {
+        padding-left: $padding-size * 2;
+      }
+      > li > ol > li > ol > li > ol > li > .category-content > .category-content-padding > span:first-child {
+        padding-left: $padding-size * 3;
+      }
+      > li > ol > li > ol > li > ol > li > ol > li > .category-content > .category-content-padding > span:first-child{
+        padding-left: $padding-size * 4;
+      }
+      > li > ol > li > ol > li > ol > li > ol > li > ol > li > .category-content > .category-content-padding > span:first-child {
+        padding-left: $padding-size * 5;
+      }
+    }
  	}
+
+  li {
+    list-style-type: none;
+  }
 }
 
 body.dragging, body.dragging * {

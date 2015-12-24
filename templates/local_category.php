@@ -22,21 +22,70 @@
 				</span>
 			</div>
 			<div class="col-xs-12 no-padding">
-				<ol class="sortable">
-				    <li><div>Some content</div></li>
+				<ol class="sortable no-padding">
 				    <li>
-				        <div>Some content</div>
-				        <ol>
-				            <li><div>Some sub-item content</div></li>
-				            <li><div>Some sub-item content</div></li>
-				        </ol>
+				    	<div class="category-content row no-margin">
+				    		<div class="category-content-padding">
+					    		<span class="col-xs-8">
+									Category Name1
+								</span>
+								<span class="col-xs-1">
+									Products
+								</span>
+								<span class="col-xs-1">
+									Visible
+								</span>
+								<span class="col-xs-1">
+									Action	
+								</span>
+								<span class="col-xs-1">
+									Move
+								</span>
+							</div>
+				    	</div>
 				    </li>
-				    <li><div>Some content</div></li>
-				    <li><div>Some content</div></li>
-				    <li><div>Some content</div></li>
-				    <li><div>Some content</div></li>
-				    <li><div>Some content</div></li>
-				    <li><div>Some content</div></li>
+				    <li>
+				    	<div class="category-content row no-margin">
+				    		<div class="category-content-padding">
+					    		<span class="col-xs-8">
+									Category Name2
+								</span>
+								<span class="col-xs-1">
+									Products
+								</span>
+								<span class="col-xs-1">
+									Visible
+								</span>
+								<span class="col-xs-1">
+									Action	
+								</span>
+								<span class="col-xs-1">
+									Move
+								</span>
+							</div>
+				    	</div>
+				    </li>
+				    <li>
+				    	<div class="category-content row no-margin">
+				    		<div class="category-content-padding">
+					    		<span class="col-xs-8">
+									Category Name3
+								</span>
+								<span class="col-xs-1">
+									Products
+								</span>
+								<span class="col-xs-1">
+									Visible
+								</span>
+								<span class="col-xs-1">
+									Action	
+								</span>
+								<span class="col-xs-1">
+									Move
+								</span>
+							</div>
+				    	</div>
+				    </li>
 				</ol>	
 			</div>
 		</div>
