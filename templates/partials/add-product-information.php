@@ -42,8 +42,8 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Keywords</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Search Tag", "tooltip" => "This is a tooltip text", "placeholder" => "Separated by a comma", "size" => "large"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Suggested Search Tag"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Search Tag", "tooltip" => "This is a tooltip text", "placeholder" => "Separated by a comma", "size" => "large", "input_attrs" => 'data-role="tagsinput"']) ?>
+					<? $this->insert('components/forms/tags-with-label', ["label" => "Suggested Search Tag"]) ?>
 				</div>
 			</div>
 			<div class="form-section">
