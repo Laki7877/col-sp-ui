@@ -19,7 +19,7 @@
         <thead>
           <tr class="table-head" >
             <th class="checkbox-column">
-                <input type="checkbox" aria-label="Checkbox for following text input"> 
+                <input type="checkbox" aria-label="Checkbox for following text input" ng-model="checkAll"> 
             </th>
             <th class="display-column"></th>
             <th>
@@ -47,7 +47,7 @@
         <tbody>
           <tr ng-repeat="row in pList">
             <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input"> 
+              <input type="checkbox" aria-label="Checkbox for following text input" ng-model="row.checked"> 
             </td>
             <td class="display-column">
               <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />

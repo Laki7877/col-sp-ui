@@ -9,8 +9,17 @@ var app = angular.module('colspApp', [])
 
 app.controller('ProductListCtrl', ['$scope', '$http', 'Products',  function($scope, $http, Products){
 	$scope.showOnOffStatus = true;
+	$scope.checkAll = false;
 	Products.getAll(0,1).then(function(x){
 		$scope.pList = x.data.data;
 		console.log($scope.pList);
+	});
+
+	$scope.$watch('checkAll', function(newVal, oldVal){
+		if($scope.pList){
+			$scope.pList.forEach(function(d){	
+				d.checked = newVal;
+			});
+		}
 	});
 }]);
