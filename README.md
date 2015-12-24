@@ -5,6 +5,7 @@
  * php 5.5+
  * composer
  * npm
+ * bower
  * *nix OS
 
 
@@ -17,3 +18,6 @@
 ## Current pages
  * index.html
  * add_product.html
+
+## Current controllers
+ * ProductListCtrl 
