@@ -56,8 +56,8 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Shipping Detail</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Shipping Method", "label_class" => "required"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "PID", "tooltip" => "Help text"]) ?>
+					<? $this->insert('components/forms/multiple-radio-multiline', ["label" => "Shipping Method", "choices" => ["Dropship by 3PL", "Central Fulfillment"]]) ?>
+					<? $this->insert('components/forms/input-text-with-label-disabled', ["label" => "PID", "tooltip" => "Help text", "value" => "Only for Central Fulfillment"]) ?>
 				</div>
 			</div>
 			<div class="form-section">

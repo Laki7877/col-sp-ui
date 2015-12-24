@@ -53,11 +53,19 @@ form
 		padding-bottom: 15px
 		border-top: 1px solid $color-grey
 
+	.radio, .checkbox
+		&.multiline > label
+			padding-top: $padding-base-vertical + 1
+			display: block
+			&:first-child
+				padding-top: 0
+
 	.radio.multiple-radio > label
 		margin-right: 15px
 
 	.checkbox.multiple-checkbox > label
 		margin-right: 15px
+
 
 	a.required, span.required, label.required
 		position: relative

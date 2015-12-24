@@ -30,12 +30,12 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>SEO</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/input-text-with-label-tooltip', ["label" => "Meta Title", "tooltip" => "Test"]) ?>
-					<? $this->insert('components/forms/input-text-with-label-tooltip', ["label" => "Meta Description"]) ?>
-					<? $this->insert('components/forms/input-text-with-label-tooltip', ["label" => "Meta Keywords"]) ?>
-					<? $this->insert('components/forms/input-text-with-label-tooltip', ["label" => "Product URL Key (Thai)"]) ?>
-					<? $this->insert('components/forms/input-text-with-label-tooltip', ["label" => "Product URL Key (English)"]) ?>
-					<? $this->insert('components/forms/input-text-with-label-tooltip', ["label" => "Product Boosting Weight"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Meta Title", "tooltip" => "Test", "tooltip" => "This is a tooltip text"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Meta Description", "tooltip" => "This is a tooltip text"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Meta Keywords", "tooltip" => "This is a tooltip text"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Product URL Key (Thai)", "tooltip" => "This is a tooltip text"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Product URL Key (English)", "tooltip" => "This is a tooltip text"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Boosting Weight", "tooltip" => "This is a tooltip text"]) ?>
 				</div>
 			</div>
 		</div>
@@ -45,11 +45,11 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>More Details</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/input-text-with-label-tooltip', ["label" => "Effective Date", "input_class" => "input-icon-calendar"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Effective Date", "input_class" => "input-icon-calendar", "tooltip" => "This is a tooltip text"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Effective Time", "hint" => "Example: 19:15:00"]) ?>
-					<? $this->insert('components/forms/input-text-with-label-tooltip', ["label" => "Expire Date", "input_class" => "input-icon-calendar"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Expire Date", "input_class" => "input-icon-calendar", "tooltip" => "This is a tooltip text"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Expire Time", "hint" => "Example: 19:15:00"]) ?>
-					<? $this->insert('components/forms/multiple-checkbox', ["label" => "Control Flag"]) ?>
+					<? $this->insert('components/forms/multiple-checkbox', ["label" => "Control Flag", "choices" => ["Flag 1", "Flag 2", "Flag 3"]]) ?>
 					<? $this->insert('components/forms/textarea-with-label', ["label" => "Remark"]) ?>
 				</div>
 			</div>
