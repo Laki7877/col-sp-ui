@@ -68,7 +68,17 @@ form
 			position: absolute
 			color: red
 			top: 0
-			right: -9px
+			right: -6px
 			font-size: 16px
 	.btn ~ .btn
 		margin-left: 10px
+
+	.input-with-unit
+		position: relative
+		input.form-control
+			padding-right: 50px
+		.input-unit
+			position: absolute
+			right: 7px
+			top: $padding-base-vertical + 1
+			color: $color-grey
