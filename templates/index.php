@@ -7,11 +7,7 @@
     <div class="filter-section">
       <div class="filter-container">
         <span>Filters:</span>
-        <a class="filter-first-option filter-active">All</a>
-        <a class="filter-seperator">Approved</a>
-        <a class="filter-seperator">Not Approved</a>
-        <a class="filter-seperator">Wait for Approval</a>
-        <a class="filter-seperator">Not Approved</a>            
+        <a class="filter-seperator" ng-repeat="filter in filterOptions" ng-class="{'filter-active': tableParams.filter == filter.value }" ng-click="tableParams.filter = filter.value">{{ filter.name }}</a>
       </div>
     </div>
     <div class="table-section">
@@ -45,7 +41,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="row in pList">
+          <tr ng-repeat="row in pList" >
             <td class="checkbox-column">
               <input type="checkbox" aria-label="Checkbox for following text input" ng-model="row.checked"> 
             </td>

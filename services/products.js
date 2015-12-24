@@ -1,11 +1,13 @@
 //Products Service
 module.exports = ['$q', '$http', function($q, $http){
 	return {
-		getAll: function(page, pageSize, tag, search){
+		getAll: function(parameters){
 			return $q(function(resolve, reject){
+				var flagged = parameters.filter;
+				var path = '/flat/Products' + flagged + '.json'; 
 				$http({
 					method: 'GET',
-					url: '/flat/Products.json'
+					url: path
 				}).then(resolve, reject);
 			});	
 		}
