@@ -51,6 +51,7 @@
 				<div class="form-section-content">
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Inventory Amount", "hint" => "Example: 100"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Safety Stock Amount", "hint" => "Example: 10", "tooltip" => "This is a tooltip text"]) ?>
+					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Stock Type", "options" => ["Stock", "Others"]]) ?>
 				</div>
 			</div>
 			<div class="form-section">
