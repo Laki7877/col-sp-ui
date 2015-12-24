@@ -19,5 +19,5 @@
  * index.html
  * add_product.html
 
-## Current controllers
+## Angular controllers
  * ProductListCtrl 
