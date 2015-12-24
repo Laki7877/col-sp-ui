@@ -1,4 +1,6 @@
 # Seller Portal
+Uses PHP for routing, and rendering (non-SPA)
+However, minimally uses angularJS for data binding and controllers.
 
 ## Development Requirement
  * ruby 2.1+
