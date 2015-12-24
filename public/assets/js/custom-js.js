@@ -19,3 +19,7 @@ $( ".local-category-toggle-area" ).click(function() {
   $(this).closest('li').children('ol').slideToggle('slow');
   $(this).children('i').toggleClass('fa-chevron-right fa-chevron-down')
 });
+
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})

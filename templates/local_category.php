@@ -8,16 +8,16 @@
 				<span class="col-xs-8">
 					Category Name
 				</span>
-				<span class="col-xs-1">
+				<span class="col-xs-1 text-align-center">
 					Products
 				</span>
-				<span class="col-xs-1">
+				<span class="col-xs-1 text-align-center">
 					Visible
 				</span>
-				<span class="col-xs-1">
+				<span class="col-xs-1 text-align-center">
 					Action	
 				</span>
-				<span class="col-xs-1">
+				<span class="col-xs-1 text-align-center">
 					Move
 				</span>
 			</div>
@@ -30,81 +30,19 @@
 									<i class="fa fa-chevron-right toggle-button"></i>Category Name1
 								</span>
 								<span class="col-xs-1">
-									Products
+									20
 								</span>
-								<span class="col-xs-1">
-									Visible
+								<span class="col-xs-1 text-align-center">
+									<i class="fa fa-eye color-dark-grey icon-size-20"></i>
 								</span>
-								<span class="col-xs-1">
-									Action	
+								<span class="col-xs-1 text-align-center">
+									<i class="fa fa-gear color-dark-grey icon-size-20"></i>
+									<i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div>View / Edit</div>
+											<div>View Products</div>
+											<div>Delete</div>"></i>	
 								</span>
-								<span class="col-xs-1">
-									Move
-								</span>
-							</div>
-				    	</div>
-				    </li>
-				    <li>
-				    	<div class="category-content row no-margin">
-				    		<div class="category-content-padding">
-					    		<span class="col-xs-8">
-					    			<i class="fa fa-level-up fa-rotate-90 caret-grey"></i>
-									Category Name2
-								</span>
-								<span class="col-xs-1">
-									Products
-								</span>
-								<span class="col-xs-1">
-									Visible
-								</span>
-								<span class="col-xs-1">
-									Action	
-								</span>
-								<span class="col-xs-1">
-									Move
-								</span>
-							</div>
-				    	</div>
-				    </li>
-				    <li>
-				    	<div class="category-content row no-margin">
-				    		<div class="category-content-padding">
-					    		<span class="col-xs-8">
-					    			<i class="fa fa-level-up fa-rotate-90 caret-grey"></i>
-									Category Name3
-								</span>
-								<span class="col-xs-1">
-									Products
-								</span>
-								<span class="col-xs-1">
-									Visible
-								</span>
-								<span class="col-xs-1">
-									Action	
-								</span>
-								<span class="col-xs-1">
-									Move
-								</span>
-							</div>
-				    	</div>
-				    </li>
-				    <li>
-				    	<div class="category-content row no-margin">
-				    		<div class="category-content-padding">
-					    		<span class="col-xs-8 local-category-toggle-area">
-									<i class="fa fa-chevron-right toggle-button"></i>Category Name1
-								</span>
-								<span class="col-xs-1">
-									Products
-								</span>
-								<span class="col-xs-1">
-									Visible
-								</span>
-								<span class="col-xs-1">
-									Action	
-								</span>
-								<span class="col-xs-1">
-									Move
+								<span class="col-xs-1 text-align-center">
+									<i class="fa fa-arrows color-dark-grey icon-size-20"></i>
 								</span>
 							</div>
 				    	</div>
@@ -117,16 +55,19 @@
 									Category Name2
 								</span>
 								<span class="col-xs-1">
-									Products
+									10
 								</span>
-								<span class="col-xs-1">
-									Visible
+								<span class="col-xs-1 text-align-center">
+									<i class="fa fa-eye color-dark-grey icon-size-20"></i>
 								</span>
-								<span class="col-xs-1">
-									Action	
+								<span class="col-xs-1 text-align-center">
+									<i class="fa fa-gear color-dark-grey icon-size-20"></i>
+									<i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div>View / Edit</div>
+											<div>View Products</div>
+											<div>Delete</div>"></i>	
 								</span>
-								<span class="col-xs-1">
-									Move
+								<span class="col-xs-1 text-align-center">
+									<i class="fa fa-arrows color-dark-grey icon-size-20"></i>
 								</span>
 							</div>
 				    	</div>
@@ -139,16 +80,19 @@
 									Category Name3
 								</span>
 								<span class="col-xs-1">
-									Products
+									10
 								</span>
-								<span class="col-xs-1">
-									Visible
+								<span class="col-xs-1 text-align-center">
+									<i class="fa fa-eye-slash color-grey icon-size-20"></i>
 								</span>
-								<span class="col-xs-1">
-									Action	
+								<span class="col-xs-1 text-align-center">
+									<i class="fa fa-gear color-dark-grey icon-size-20"></i>
+									<i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div>View / Edit</div>
+											<div>View Products</div>
+											<div>Delete</div>"></i>
 								</span>
-								<span class="col-xs-1">
-									Move
+								<span class="col-xs-1 text-align-center">
+									<i class="fa fa-arrows color-dark-grey icon-size-20"></i>
 								</span>
 							</div>
 				    	</div>
