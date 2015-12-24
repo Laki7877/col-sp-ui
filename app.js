@@ -17,9 +17,8 @@ app.controller('ProductListCtrl', ['$scope', '$http', 'Products',  function($sco
 		{ name: "Not Approved", value: 2},
 		{ name: "Wait for Approval", value: 3},
 	];
+	
 	//Default parameters
-	//TODO: maybe create Util class like
-	// new TableParams(f, a,b,y,c,k)
 	$scope.tableParams = {
 		filter: 0,
 		searchText: null,

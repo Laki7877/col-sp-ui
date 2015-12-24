@@ -14,7 +14,7 @@ module.exports = function (grunt) {
   	browserify: {
   	  dist: {
   	    files: {
-  	      'public/assets/js/bundle.js': ['app.js', 'controllers/*.js', 'services/*.js']
+  	      'public/assets/js/bundle.js': ['app.js']
   	    },
   	    options: {
   	    	keepAlive: true
@@ -23,7 +23,7 @@ module.exports = function (grunt) {
   	},
     watch: {
       scripts: {
-        files: ['app.js'],
+        files: ['app.js', 'controllers/*.js', 'services/*.js'],
         tasks: ['browserify']
       }
     }
