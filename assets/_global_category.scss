@@ -1,89 +1,114 @@
+
 .global-category-page {
 
 	.global-category-radio-section {
 		margin-top: 25px;
- 	}
+	}
+}
 
- 	.category-section {
-        $item-column-size: 180px;
-        $item-column-height: 250px;
-        $item-column-gutter: 15px;
+.modal-category-section {
+	$item-column-size: $category-selection-column-size;
 
- 		margin-top: 20px;
- 		line-height: 30px;
-        width: ($item-column-size * 4) + 2px;
+	&.column-1 {
+		width: ($item-column-size * 1) + 60px + 4px;
+	}
 
-        &.column-1 {
-            width: ($item-column-size * 1) + 2px;
-        }
+	&.column-2 {
+		width: ($item-column-size * 2) + 60px + 4px;
+	}
 
-        &.column-2 {
-            width: ($item-column-size * 2) + 2px;
-        }
+	&.column-3 {
+		width: ($item-column-size * 3) + 60px + 4px;
+	}
 
-        &.column-3 {
-            width: ($item-column-size * 3) + 2px;
-        }
+	&.column-4 {
+		width: ($item-column-size * 4) + 60px + 4px;
+	}
 
-        &.column-4 {
-            width: ($item-column-size * 4) + 2px;
-        }
+	&.column-5 {
+		width: ($item-column-size * 5) + 60px + 4px;
+	}
+}
 
-        &.column-5 {
-            width: ($item-column-size * 5) + 2px;
-        }
+.category-section {
+	$item-column-size: $category-selection-column-size;
+	$item-column-height: 250px;
+	$item-column-gutter: 15px;
 
-        .category-section-border-box {
-            border: solid 1px $color-grey;
-            @include border-radius($border-radius-base);
-            @include clearfix();
-        }
+	margin-top: 20px;
+	line-height: 30px;
+	width: ($item-column-size * 4) + 2px;
 
- 		.category-header {
-            @include make-xs-column(12, $gutter: $item-column-gutter * 2);
- 			
- 			background: $color-light-grey;
- 			border-bottom:	1px solid $color-grey;
- 		}
+	&.column-1 {
+		width: ($item-column-size * 1) + 2px;
+	}
 
- 		.category-content {
- 			height: $item-column-height;
-            width: 100%;
-            overflow: hidden;
+	&.column-2 {
+		width: ($item-column-size * 2) + 2px;
+	}
 
-    		> .content-column {
-                @include make-xs-column(3, $gutter: 0);
-                padding: 0px 0 0 0;
-                margin: 0;
-    			height: $item-column-height;
-    			max-height:	$item-column-height;
-                width: $item-column-size;
- 				overflow-y: auto;
+	&.column-3 {
+		width: ($item-column-size * 3) + 2px;
+	}
 
-                border-left: 1px solid  $color-grey;
-                &:first-child {
-                    border-left: none;
-                }
+	&.column-4 {
+		width: ($item-column-size * 4) + 2px;
+	}
 
-    			> li {
-    				padding-left: $item-column-gutter;
-    				padding-right: $item-column-gutter;
-                    cursor: pointer;
-                    &.category-active {
-                        background: $color-blue;
-                        color: $color-white;
-                    }
-    			}
+	&.column-5 {
+		width: ($item-column-size * 5) + 2px;
+	}
 
-                &.empty-column {
-                    background: $color-light-blue;
-                }
-    		}
- 		}
+	.category-section-border-box {
+		border: solid 1px $color-grey;
+		@include border-radius($border-radius-base);
+		@include clearfix();
+	}
 
- 		.category-footer {
- 			margin-top: 15px;
-            @include clearfix();
- 		}
- 	}
+	.category-header {
+		@include make-xs-column(12, $gutter: $item-column-gutter * 2);
+		
+		background: $color-light-grey;
+		border-bottom:	1px solid $color-grey;
+	}
+
+	.category-content {
+		height: $item-column-height;
+		width: 100%;
+		overflow: hidden;
+
+		> .content-column {
+			@include make-xs-column(3, $gutter: 0);
+			padding: 0px 0 0 0;
+			margin: 0;
+			height: $item-column-height;
+			max-height:	$item-column-height;
+			width: $item-column-size;
+			overflow-y: auto;
+
+			border-left: 1px solid  $color-grey;
+			&:first-child {
+				border-left: none;
+			}
+
+			> li {
+				padding-left: $item-column-gutter;
+				padding-right: $item-column-gutter;
+				cursor: pointer;
+				&.category-active {
+					background: $color-blue;
+					color: $color-white;
+				}
+			}
+
+			&.empty-column {
+				background: $color-light-blue;
+			}
+		}
+	}
+
+	.category-footer {
+		margin-top: 15px;
+		@include clearfix();
+	}
 }

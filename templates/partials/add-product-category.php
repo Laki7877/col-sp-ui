@@ -12,7 +12,11 @@
 					</div>
 					<div class="form-group">
 						<div class="width-label"><label class="control-label">Alternative:</label></div>
-						<div class="width-field-normal"><a class="like-text form-text"><i class="fa fa-plus-circle color-theme"></i> Add Category</a></div>
+						<div class="width-field-normal">
+							<a class="like-text form-text" data-toggle="modal" data-target="#global-category">
+								<i class="fa fa-plus-circle color-theme"></i> Add Category
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -30,7 +34,11 @@
 				<div class="form-section-content">
 					<div class="form-group">
 						<div class="width-label"><label class="control-label">Local Category:</label></div>
-						<div class="width-field-normal"><a class="like-text form-text"><i class="fa fa-plus-circle color-theme"></i> Add Category</a></div>
+						<div class="width-field-normal">
+							<a class="like-text form-text" data-toggle="modal" data-target="#local-category">
+								<i class="fa fa-plus-circle color-theme"></i> Add Category
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -41,3 +49,6 @@
 		</div>
 	</div>
 </div>
+
+<? $this->insert('components/modal-add-alternative-global-category', ['id' => 'global-category', 'header' => 'Add Alternative Global Category']) ?>
+<? $this->insert('components/modal-add-local-category', ['id' => 'local-category', 'header' => 'Add Local Category']) ?>
