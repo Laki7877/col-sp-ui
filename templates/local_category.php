@@ -26,8 +26,8 @@
 				    <li>
 				    	<div class="category-content row no-margin">
 				    		<div class="category-content-padding">
-					    		<span class="col-xs-8">
-									Category Name1
+					    		<span class="col-xs-8 local-category-toggle-area">
+									<i class="fa fa-chevron-right toggle-button"></i>Category Name1
 								</span>
 								<span class="col-xs-1">
 									Products
@@ -48,6 +48,7 @@
 				    	<div class="category-content row no-margin">
 				    		<div class="category-content-padding">
 					    		<span class="col-xs-8">
+					    			<i class="fa fa-level-up fa-rotate-90 caret-grey"></i>
 									Category Name2
 								</span>
 								<span class="col-xs-1">
@@ -69,6 +70,72 @@
 				    	<div class="category-content row no-margin">
 				    		<div class="category-content-padding">
 					    		<span class="col-xs-8">
+					    			<i class="fa fa-level-up fa-rotate-90 caret-grey"></i>
+									Category Name3
+								</span>
+								<span class="col-xs-1">
+									Products
+								</span>
+								<span class="col-xs-1">
+									Visible
+								</span>
+								<span class="col-xs-1">
+									Action	
+								</span>
+								<span class="col-xs-1">
+									Move
+								</span>
+							</div>
+				    	</div>
+				    </li>
+				    <li>
+				    	<div class="category-content row no-margin">
+				    		<div class="category-content-padding">
+					    		<span class="col-xs-8 local-category-toggle-area">
+									<i class="fa fa-chevron-right toggle-button"></i>Category Name1
+								</span>
+								<span class="col-xs-1">
+									Products
+								</span>
+								<span class="col-xs-1">
+									Visible
+								</span>
+								<span class="col-xs-1">
+									Action	
+								</span>
+								<span class="col-xs-1">
+									Move
+								</span>
+							</div>
+				    	</div>
+				    </li>
+				    <li>
+				    	<div class="category-content row no-margin">
+				    		<div class="category-content-padding">
+					    		<span class="col-xs-8">
+					    			<i class="fa fa-level-up fa-rotate-90 caret-grey"></i>
+									Category Name2
+								</span>
+								<span class="col-xs-1">
+									Products
+								</span>
+								<span class="col-xs-1">
+									Visible
+								</span>
+								<span class="col-xs-1">
+									Action	
+								</span>
+								<span class="col-xs-1">
+									Move
+								</span>
+							</div>
+				    	</div>
+				    </li>
+				    <li>
+				    	<div class="category-content row no-margin">
+				    		<div class="category-content-padding">
+					    		<span class="col-xs-8">
+					    			<i class="fa fa-level-up fa-rotate-90 caret-grey"></i>
 									Category Name3
 								</span>
 								<span class="col-xs-1">

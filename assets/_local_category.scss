@@ -68,26 +68,38 @@
     }
  	}
 
+  .toggle-button {
+    font-size: 18px;
+    color:  $color-soft-blue;
+    padding-right:  8px;
+  }
+  .caret-grey {
+    font-size: 18px;
+    color:  $color-grey;
+    padding-left: 9px;
+    padding-right:  8px;
+  }
+
   li {
     list-style-type: none;
   }
 }
 
-body.dragging, body.dragging * {
-  cursor: move !important;
-}
+// body.dragging, body.dragging * {
+//   cursor: move !important;
+// }
 
-.dragged {
-  position: absolute;
-  opacity: 0.5;
-  z-index: 2000;
-}
+// .dragged {
+//   position: absolute;
+//   opacity: 0.5;
+//   z-index: 2000;
+// }
 
-ol.example li.placeholder {
-  position: relative;
-  /** More li styles **/
-}
-ol.example li.placeholder:before {
-  position: absolute;
-  /** Define arrowhead **/
-}
+// ol.example li.placeholder {
+//   position: relative;
+//   /** More li styles **/
+// }
+// ol.example li.placeholder:before {
+//   position: absolute;
+//   /** Define arrowhead **/
+// }
