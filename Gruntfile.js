@@ -14,7 +14,7 @@ module.exports = function (grunt) {
   	browserify: {
   	  dist: {
   	    files: {
-  	      'public/assets/js/bundle.js': ['app.js']
+  	      'public/assets/js/bundle.js': ['app.js', 'controllers/**']
   	    },
   	    options: {
   	    	keepAlive: true

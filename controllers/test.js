@@ -1,7 +1,6 @@
 //Set up client for known endpoints
-var client = new $.RestClient('/api/');
-client.add('Users');
-client.add('Products');
+var client = new $.RestClient('/flat/');
+client.add('Products', {url: 'Products.json'});
 
 //Set up service layer
 var services = {
@@ -9,6 +8,10 @@ var services = {
 	products: {}
 };
 
-services.users.getAll(function(order, limit, offset){
-	client.Users.read({ _order : order, _limit: limit, _offset: offset});	
-});
+services.products.getPage = function(pageIdx){
+	var deferred = new $.Deferred();
+	client.Products.read({ _offset: pageIdx }).done(deferred.resolve);
+	return deferred.promise();
+};
+
+module.exports = services;

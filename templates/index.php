@@ -1,10 +1,11 @@
 <?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal']) ?>
 
 <?php $this->start('page-body') ?>
-	<div>
+<div ng-controller="ProductListCtrl">
     <? $this->insert('components/page-title-with-buttons', ['text' => 'Products']) ?>
     <? $this->insert('components/search-section') ?>
     <div class="filter-section">
+      {{ ab }}
       <div class="filter-container">
         <span>Filters:</span>
         <a class="filter-first-option filter-active">All</a>
