@@ -4,7 +4,9 @@
  * ruby 2.1+
  * php 5.5+
  * composer
+ * npm
  * *nix OS
+
 
 ## How to get html
  1. open this directory in terminal
