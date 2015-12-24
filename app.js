@@ -1,14 +1,16 @@
+//App Start here
 var angular = require('angular');
-var services = require('./controllers/test.js');
+//Services
+var services = {};
+services.Products = require('./services/products.js');
 
-/*services.products.getPage(1).then(function(response){
-	console.log(response);	
-}).fail(function(){
-	console.log("Died with error");
-});*/
+var app = angular.module('colspApp', [])
+.factory('Products', services.Products);
 
-var colspApp = angular.module('colspApp', []);
-
-colspApp.controller('ProductListCtrl', ['$scope', function($scope){
-	$scope.ab = "hello World!";
+app.controller('ProductListCtrl', ['$scope', '$http', 'Products',  function($scope, $http, Products){
+	$scope.showOnOffStatus = true;
+	Products.getAll(0,1).then(function(x){
+		$scope.pList = x.data.data;
+		console.log($scope.pList);
+	});
 }]);

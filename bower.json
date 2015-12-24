@@ -17,6 +17,7 @@
   "dependencies": {
     "bootstrap-sass-official": "~3.3.6",
     "fontawesome": "~4.5.0",
-    "angular": "~1.4.8"
+    "angular": "~1.4.8",
+    "ng-currency": "~0.8.12"
   }
 }

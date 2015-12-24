@@ -29,7 +29,7 @@
     </div>
   </div>
   <div class="search-section section-filter checkbox-wrapper">
-    <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" />
+    <input  ng-model="showOnOffStatus"type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" />
     <label for="checkboxG1" class="css-label">
         Show Online/Offline Status
     </label>
