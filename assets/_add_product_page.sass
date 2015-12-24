@@ -37,3 +37,28 @@
 	.thead-actions
 		width: ($button-width-default * 2) + 30px
 		text-align: center
+
+.image-drop-wrapper
+	// $image-drop-wrapper-height: 200px
+	$image-drop-zone-height: 170px
+
+	width: 100%
+
+	.image-drop-zone
+		height: $image-drop-zone-height
+		background-image: url('/assets/img/bg-img-drop.png')
+		margin-bottom: 10px
+		border: dashed 1px $color-grey
+		@include border-radius($border-radius-base)
+		position: relative
+
+		.image-drop-zone-text
+			position: absolute
+			left: 50%
+			top: 50%
+			@include translate(-50%, -50%)
+
+			text-align: center
+
+	.image-select-alternative-text
+		text-align: center
