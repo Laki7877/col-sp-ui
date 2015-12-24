@@ -43,4 +43,25 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 			</form>
 		</div>
 	</div>
+
+	<script src="/assets/libs/ckeditor/ckeditor.js"></script>
+	<script src="/assets/libs/ckeditor/config.js"></script>
+	<script src="/assets/libs/moment/moment.min.js"></script>
+	
+	<script src="/assets/libs/datepicker/js/bootstrap-datetimepicker.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/assets/libs/datepicker/css/bootstrap-datetimepicker.min.css">
+	
+	<script src="/assets/libs/tagsinput/bootstrap-tagsinput.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/assets/libs/tagsinput/bootstrap-tagsinput.css">
+	
+	<script>
+		$('[ckeditor-initialize]').each(function(idx, textarea) {
+			console.log("Initializing ckeditor for:", textarea);
+			CKEDITOR.replace( textarea );
+		});
+		$('.input-icon-calendar').datetimepicker({
+			format: "LL" // this is momentjs format make it show only date, no time will be show. see: http://momentjs.com/docs/#/displaying/format/
+		});
+	</script>
+
 <?php $this->stop() ?>

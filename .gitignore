@@ -129,3 +129,5 @@ bower_components
 .sass-cache
 
 public/assets/css
+
+test/node_modules

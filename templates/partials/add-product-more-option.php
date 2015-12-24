@@ -9,7 +9,7 @@
 					<div class="form-group">
 						<div class="width-label"><label class="control-label">Relate Products</label></div>
 						<div class="width-field-normal">
-							<input type="text" class="form-control input-search-icon" placeholder="Search by Product Name or UID" />
+							<input type="text" class="form-control input-icon-right-search" placeholder="Search by Product Name or UID" />
 						</div>
 					</div>
 					<div class="form-group">

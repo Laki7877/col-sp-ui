@@ -6,6 +6,10 @@
 	margin-right: 10px;
 }
 
+.margin-left-10 {
+	margin-left: 10px;
+}
+
 .margin-right-15 {
 	margin-right: 15px;
 }
@@ -84,4 +88,8 @@
 
 .text-align-center {
 	text-align: center;
+}
+
+.text-align-right {
+	@extend .text-right;
 }
