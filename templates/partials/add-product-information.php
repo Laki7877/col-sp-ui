@@ -42,7 +42,7 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Keywords</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Search Tag", "tooltip" => "This is a tooltip text", "size" => "large"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Search Tag", "tooltip" => "This is a tooltip text", "placeholder" => "Separated by a comma", "size" => "large"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Suggested Search Tag"]) ?>
 				</div>
 			</div>
@@ -58,11 +58,7 @@
 				<div class="form-section-content">
 					<? $this->insert('components/forms/multiple-radio-multiline', ["label" => "Shipping Method", "choices" => ["Dropship by 3PL", "Central Fulfillment"]]) ?>
 					<? $this->insert('components/forms/input-text-with-label-disabled', ["label" => "PID", "tooltip" => "Help text", "value" => "Only for Central Fulfillment"]) ?>
-				</div>
-			</div>
-			<div class="form-section">
-				<div class="form-section-header"><h2>Shipping Detail</h2></div>
-				<div class="form-section-content">
+					<? $this->insert('components/forms/input-text-with-label-unit', ["label" => "Preparation Time", "label_class" => "required", "unit" => "Day"]) ?>
 					<? $this->insert('components/forms/multiple-input-with-label', ["label" => "Package Dimension", "label_class" => "required"]) ?>
 					<? $this->insert('components/forms/multiple-input', ["label" => "Weight", "label_class" => "required"]) ?>
 				</div>
