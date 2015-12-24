@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
 	<div class="local-category-page">
-		<? $this->insert('components/page-title-breadcrumb-border', ['text' => 'Local Category']) ?>
+		<? $this->insert('components/page-title-with-buttons-local-category', ['text' => 'Local Category']) ?>
 		<div class="local-category-section">
 			<div class="col-xs-12 category-header no-padding">
 				<span class="col-xs-8">
