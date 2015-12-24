@@ -6,6 +6,9 @@ form
 .ah-form
 	@extend .form-horizontal
 
+	.control-padding-top
+		padding-top: ($padding-base-vertical + 1) // Default padding plus a border
+
 	.form-group
 		margin-left: 30px
 		margin-right: 30px
@@ -49,3 +52,23 @@ form
 		padding-top: 15px
 		padding-bottom: 15px
 		border-top: 1px solid $color-grey
+
+	.radio.multiple-radio > label
+		margin-right: 15px
+
+	.checkbox.multiple-checkbox > label
+		margin-right: 15px
+
+	a.required, span.required, label.required
+		position: relative
+		display: inline-block
+		&:after
+			display: block
+			content: "*"
+			position: absolute
+			color: red
+			top: 0
+			right: -9px
+			font-size: 16px
+	.btn ~ .btn
+		margin-left: 10px

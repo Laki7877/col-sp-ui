@@ -3,66 +3,63 @@
 <?php $this->start('page-body') ?>
 	<div class="global-category-page">
 		<? $this->insert('components/page-title-breadcrumb-border', ['text' => 'Products/Add Product']) ?>
-		<div class="global-category-radio-section ">
-			<div>
-				Type of upload
-			</div>
-			<div>
-				<span class="radio radio-first">
-				  <label><input type="radio" name="optradio">Single</label>
-				</span>
-				<span class="radio radio-second">
-				  <label><input type="radio" name="optradio">Bulk (via Excel)</label>
-				</span>
-			</div>
-		</div>
-		<div class="category-section">
-			<div class="col-xs-12 category-header">
-				<span class="required">Global Category</span></div>
-			<div class="col-xs-12 category-content no-padding">
-				<div class="col-xs-3 no-padding content-column">
-					<div class="category-active">Electronic</div>
-					<div>Fashion</div>
-					<div>Home & Living</div>
-					<div>Mom & Kids</div>
-					<div class="category-active">Electronic</div>
-					<div>Fashion</div>
-					<div>Home & Living</div>
-					<div>Mom & Kids</div>
-					<div class="category-active">Electronic</div>
-					<div>Fashion</div>
-					<div>Home & Living</div>
-					<div>Mom & Kids</div>
-					<div class="category-active">Electronic</div>
-					<div>Fashion</div>
-					<div>Home & Living</div>
-					<div>Mom & Kids</div>
-					<div class="category-active">Electronic</div>
-					<div>Fashion</div>
-					<div>Home & Living</div>
-					<div>Mom & Kids</div>
-				</div>
-				<div class="col-xs-3 no-padding content-column">
-					<div>Computer</div>
-					<div class="category-active">Phone</div>
-					<div>Speaker</div>
-				</div>
-				<div class="col-xs-3 no-padding content-column">
-					<div>Smart Phone</div>
-					<div>Office Phone</div>
-					<div class="category-active">Accessory</div>
-				</div>
-				<div class="col-xs-3 no-padding empty-column content-column">
+		<form class="ah-form">
+			<div class="global-category-radio-section ">
+				<span>Type of upload</span>
+				<div class="radio multiple-radio">
+					<label><input type="radio" name="optradio" checked="checked">Single</label>
+					<label><input type="radio" name="optradio">Bulk (via Excel)</label>
 				</div>
 			</div>
-			<div class="col-xs-12 category-footer no-padding">
-				<span>Only shown categories that are allowed for this store.
-				</span>
-				<span class="float-right">
-		        	<button type="button" class="btn btn-link button-wide">Cancel</button>
-		       		<button type="button" class="btn btn-blue button-wide">Select</button>
-		      	</span>
+			<div class="category-section column-4">
+				<div class="category-section-border-box">
+					<div class="category-header">
+						<span class="required">Global Category</span>
+					</div>
+					<div class="category-content no-padding">
+						<ul class="content-column">
+							<li class="category-active">Electronic</li>
+							<li>Fashion</li>
+							<li>Home & Living</li>
+							<li>Mom & Kids</li>
+							<li>Electronic</li>
+							<li>Fashion</li>
+							<li>Home & Living</li>
+							<li>Mom & Kids</li>
+							<li>Electronic</li>
+							<li>Fashion</li>
+							<li>Home & Living</li>
+							<li>Mom & Kids</li>
+							<li>Electronic</li>
+							<li>Fashion</li>
+							<li>Home & Living</li>
+							<li>Mom & Kids</li>
+							<li>Electronic</li>
+							<li>Fashion</li>
+							<li>Home & Living</li>
+							<li>Mom & Kids</li>
+						</ul>
+						<ul class="content-column">
+							<li>Computer</li>
+							<li class="category-active">Phone</li>
+							<li>Speaker</li>
+						</ul>
+						<ul class="content-column">
+							<li>Smart Phone</li>
+							<li>Office Phone</li>
+							<li class="category-active">Accessory</li>
+						</ul>
+						<ul class="empty-column content-column"></ul>
+					</div>
+				</div>
+				<div class="category-footer no-padding">
+					<span>Only shown categories that are allowed for this store.</span>
+					<span class="float-right">
+						<button type="button" class="btn btn-link btn-width-xl">Cancel</button>
+						<button type="button" class="btn btn-blue btn-width-xl">Select</button>
+					</span>
+				</div>
 			</div>
-		</div>
+		</form>
 	</div>
 <?php $this->stop() ?>
