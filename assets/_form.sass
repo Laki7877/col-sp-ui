@@ -20,15 +20,21 @@ form
 			padding-right: 0
 			> *
 				float: right
-		.width-field-normal
-			@extend .col-xs-7
-			width: 400px
 		.width-field-small
 			@extend .col-xs-7
 			width: 300px
+		.width-field-normal
+			@extend .col-xs-7
+			width: 400px
 		.width-field-large
 			@extend .col-xs-7
+			width: 500px
+		.width-field-xl
+			@extend .col-xs-7
 			width: 600px
+		.width-field-xxl
+			@extend .col-xs-7
+			width: 700px
 		.width-field-tooltip
 			@extend .col-xs-2
 			width: 24px
@@ -90,3 +96,19 @@ form
 			right: 7px
 			top: $padding-base-vertical + 1
 			color: $color-grey
+
+	.multiple-input
+		$gutter-size: 15px
+		@include make-row($gutter: $gutter-size)
+
+		.input-column
+			> label
+				padding-top: $padding-base-vertical + 1
+			&.no-label
+				padding-top: $padding-base-vertical + 1 + 19 + 5 //base + 1 + label height + label margin bottom
+			
+			@include make-xs-column(12, $gutter: $gutter-size)
+			width: 120px
+
+			&.input-xl
+				width: 150px

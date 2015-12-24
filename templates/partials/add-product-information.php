@@ -63,10 +63,15 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Shipping Detail</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Package Dimension", "label_class" => "required"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Weight", "label_class" => "required"]) ?>
+					<? $this->insert('components/forms/multiple-input-with-label', ["label" => "Package Dimension", "label_class" => "required"]) ?>
+					<? $this->insert('components/forms/multiple-input', ["label" => "Weight", "label_class" => "required"]) ?>
 				</div>
 			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<p class="text-align-right margin-bottom-30"><span class="color-red">*</span> - Required Field</p>
 		</div>
 	</div>
 </div>
