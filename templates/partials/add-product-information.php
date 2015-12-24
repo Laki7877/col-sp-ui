@@ -23,10 +23,10 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Description</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/textarea-with-label', ["label" => "Description (Thai)"]) ?>
-					<? $this->insert('components/forms/textarea-with-label', ["label" => "Short Description (Thai)", "tooltip" => "This is a tooltip text"]) ?>
-					<? $this->insert('components/forms/textarea-with-label', ["label" => "Description (English)"]) ?>
-					<? $this->insert('components/forms/textarea-with-label', ["label" => "Short Description (English)", "tooltip" => "This is a tooltip text"]) ?>
+					<? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (Thai)", "size" => "xxl"]) ?>
+					<? $this->insert('components/forms/textarea-with-label', ["label" => "Short Description (Thai)", "tooltip" => "This is a tooltip text", "size" => "xxl"]) ?>
+					<? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (English)", "size" => "xxl"]) ?>
+					<? $this->insert('components/forms/textarea-with-label', ["label" => "Short Description (English)", "tooltip" => "This is a tooltip text", "size" => "xxl"]) ?>
 				</div>
 			</div>
 			<div class="form-section">

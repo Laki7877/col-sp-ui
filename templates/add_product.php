@@ -43,4 +43,12 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 			</form>
 		</div>
 	</div>
+	<script src="/assets/libs/ckeditor/ckeditor.js"></script>
+	<script src="/assets/libs/ckeditor/config.js"></script>
+	<script>
+		$('[ckeditor-initialize]').each(function(idx, textarea) {
+			console.log("Initializing ckeditor for:", textarea);
+			CKEDITOR.replace( textarea );
+		});
+	</script>
 <?php $this->stop() ?>
