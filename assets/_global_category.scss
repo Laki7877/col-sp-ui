@@ -2,77 +2,88 @@
 
 	.global-category-radio-section {
 		margin-top: 25px;
-
-		.radio-first {
-			display: inline-block;
-		}
-
-		.radio-second {
-			display: inline;
-			margin-left: 17px;
-		}
  	}
 
  	.category-section {
- 		margin-top: 25px;
+        $item-column-size: 180px;
+        $item-column-height: 250px;
+        $item-column-gutter: 15px;
+
+ 		margin-top: 20px;
  		line-height: 30px;
+        width: ($item-column-size * 4) + 2px;
+
+        &.column-1 {
+            width: ($item-column-size * 1) + 2px;
+        }
+
+        &.column-2 {
+            width: ($item-column-size * 2) + 2px;
+        }
+
+        &.column-3 {
+            width: ($item-column-size * 3) + 2px;
+        }
+
+        &.column-4 {
+            width: ($item-column-size * 4) + 2px;
+        }
+
+        &.column-5 {
+            width: ($item-column-size * 5) + 2px;
+        }
+
+        .category-section-border-box {
+            border: solid 1px $color-grey;
+            @include border-radius($border-radius-base);
+            @include clearfix();
+        }
 
  		.category-header {
- 			// line-height: 30px;
+            @include make-xs-column(12, $gutter: $item-column-gutter * 2);
  			
  			background: $color-light-grey;
- 			border:	1px solid;
- 			border-color: $color-grey;
- 			border-top-left-radius: 3px;
- 			border-top-right-radius: 3px;
- 			
- 			.required:after { 
- 				color: $color-red;
- 				content:" *"; 
- 			}
-
+ 			border-bottom:	1px solid $color-grey;
  		}
 
  		.category-content {
- 			height: 250px;
-    		border: solid 1px $color-grey;
-    		border-top:	none;
+ 			height: $item-column-height;
+            width: 100%;
+            overflow: hidden;
 
-    		.content-column {
-    			padding-top: 20px;
-    			height: 250px;
-    			max-height:	250px;
+    		> .content-column {
+                @include make-xs-column(3, $gutter: 0);
+                padding: 0px 0 0 0;
+                margin: 0;
+    			height: $item-column-height;
+    			max-height:	$item-column-height;
+                width: $item-column-size;
  				overflow-y: auto;
-    			border-right: solid 1px $color-grey;
 
-    			div {
-    				padding-left: 15px;
-    				padding-right: 15px;
+                border-left: 1px solid  $color-grey;
+                &:first-child {
+                    border-left: none;
+                }
+
+    			> li {
+    				padding-left: $item-column-gutter;
+    				padding-right: $item-column-gutter;
+                    cursor: pointer;
+                    &.category-active {
+                        background: $color-blue;
+                        color: $color-white;
+                    }
     			}
-    		}
 
-    		div.col-xs-3:last-child {
-    			border-right:	none;
-    		}
-
-    		.empty-column {
-    			background: $color-light-blue;
-    			border-bottom: solid 1px $color-grey;
-    		}
-
-    		.category-active {
-    			background:	$color-blue;
-    			color: $color-white;
+                &.empty-column {
+                    background: $color-light-blue;
+                }
     		}
  		}
 
  		.category-footer {
  			margin-top: 15px;
-
- 			.button-wide {
- 				width: 110px;
- 				padding-left: 10px;
- 			}
+            @include clearfix();
  		}
  	}
 }
