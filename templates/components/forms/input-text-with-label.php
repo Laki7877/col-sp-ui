@@ -1,6 +1,10 @@
+<?
+$inputSize = "width-field-normal";
+if (isset($size)) $inputSize = "width-field-$size";
+?>
 <div class="form-group">
 	<div class="width-label"><label class="control-label <?=$label_class?>"><?= $label ?></label></div>
-	<div class="width-field-normal">
+	<div class="<?= $inputSize ?>">
 		<input type="text" class="form-control <?= $input_class; ?>" placeholder="<?=$placeholder?>" />
 		<? if (!empty($hint)): ?>
 			<span class="help-block"><?= $hint ?></span>

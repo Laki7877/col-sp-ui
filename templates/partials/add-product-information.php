@@ -6,11 +6,11 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Vital Information</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Name (Thai)", "label_class" => "required"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Name (English)", "label_class" => "required"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Brand Name", "label_class" => "required"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "SKU", "label_class" => "required"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "UPC", "tooltip" => "This is a tooltip text"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Name (Thai)", "label_class" => "required", "size" => "large"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Name (English)", "label_class" => "required", "size" => "large"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Brand Name", "label_class" => "required", "size" => "large"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "SKU", "label_class" => "required", "size" => "large"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "UPC", "tooltip" => "This is a tooltip text", "size" => "large"]) ?>
 				</div>
 			</div>
 			<div class="form-section">
@@ -42,7 +42,7 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Keywords</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Search Tag", "tooltip" => "This is a tooltip text"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Search Tag", "tooltip" => "This is a tooltip text", "size" => "large"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Suggested Search Tag"]) ?>
 				</div>
 			</div>
