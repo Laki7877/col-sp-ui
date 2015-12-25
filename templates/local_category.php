@@ -49,7 +49,7 @@
 									</i>	
 								</span>
 								<span  class="col-xs-1 text-align-center">
-									<i class="fa fa-arrows color-dark-grey icon-size-20" 
+									<i data-toggle='modal' data-target='#local-category-detail' class="fa fa-arrows color-dark-grey icon-size-20" 
 									></i>
 								</span>
 							</div>
