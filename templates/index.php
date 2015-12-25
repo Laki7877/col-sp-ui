@@ -41,15 +41,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="row in pList" >
+          <tr ng-repeat="row in productList" >
             <td class="checkbox-column">
               <input type="checkbox" aria-label="Checkbox for following text input" ng-model="row.checked"> 
             </td>
             <td class="display-column">
               <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
             </td>
-            <td>{{ row.ProductName }}</td>
-            <td class="price-column">{{ row.Price | currency: 2 }}</td>
+            <td>{{ row.ProductNameEn }}</td>
+            <td class="price-column">{{ row.SalePrice | currency: ' ' : 2 }}</td>
             <td class="info-column">
               <i class="fa fa-check color-green icon-size-18px"></i>
             </td>
@@ -77,22 +77,29 @@
     </div>
     <div class="page-navigation">
       <span>
-        <i class="fa fa-chevron-left grey-chevron"></i>
-        <span> Page 1 of 1</span>
-        <i class="fa fa-chevron-right padding-right-15 blue-chevron"></i>
+	<!-- prev page button -->
+	<a ng-click="nextPage(-1)">
+		<i class="fa fa-chevron-left" ng-class="{'grey-chevron': tableParams.page == 0"></i>
+	</a>
+	<span> Page {{ tableParams.page + 1 }} of 
+	{{ productTotal / tableParams.pageSize }}</span>
+	<!-- next page button -->
+        <a ng-click="nextPage(1)"><i class="fa fa-chevron-right padding-right-15 blue-chevron" ></i></a>
         <span class="view-page-separator">View per page</span>
         <!-- Split button -->
         <div class="btn-group">
-          <button type="button" class="btn btn-default">{{ tableParams.viewPerPage }}</button>
+	  <button type="button" class="btn btn-default">
+		{{ tableParams.pageSize }}
+	  </button>
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="caret"></span>
             <span class="sr-only">Toggle Dropdown</span>
           </button>
           <ul class="dropdown-menu dropdown-menu-right">
-            <li><a ng-click="tableParams.viewPerPage = 10">10</a></li>
-            <li><a ng-click="tableParams.viewPerPage = 20">20</a></li>
-            <li><a ng-click="tableParams.viewPerPage = 30">30</a></li>
-            <li><a ng-click="tableParams.viewPerPage = 40">40</a></li>
+            <li><a ng-click="setPageSize(1)">1</a></li>
+            <li><a ng-click="setPageSize(2)">2</a></li>
+            <li><a ng-click="setPageSize(3)">3</a></li>
+            <li><a ng-click="setPageSize(4)">4</a></li>
           </ul>
         </div>
       </span>

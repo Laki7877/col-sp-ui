@@ -1,14 +1,26 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 //App Start here
 var angular = require('angular');
+var config = require('./config.js');
 //Services
 var services = {};
+var controllers = {};
 services.Products = require('./services/products.js');
+controllers.Products = require('./controllers/products.js');
 
 var app = angular.module('colspApp', [])
-.factory('Products', services.Products);
+.factory('Products', services.Products)
+.value('config', config);
 
-app.controller('ProductListCtrl', ['$scope', '$http', 'Products',  function($scope, $http, Products){
+app.controller('ProductListCtrl', controllers.Products);
+
+},{"./config.js":2,"./controllers/products.js":3,"./services/products.js":6,"angular":5}],2:[function(require,module,exports){
+var config = {
+	basePath: 'http://localhost:58127'
+};
+
+},{}],3:[function(require,module,exports){
+module.exports = ['$scope', '$http', 'Products',  function($scope, $http, Products){
 	//UI binding variables
 	$scope.showOnOffStatus = true; 
 	$scope.checkAll = false;
@@ -19,24 +31,32 @@ app.controller('ProductListCtrl', ['$scope', '$http', 'Products',  function($sco
 		{ name: "Wait for Approval", value: 3},
 	];
 	
+	//Product List
+	$scope.productList = [];
 	//Default parameters
 	$scope.tableParams = {
 		filter: 0,
 		searchText: null,
 		orderBy: 'ProductName',
 		direction: 'asc',
-		page: 1,
-		viewPerPage: 10,
-		pageSize: 20
+		page: 0,
+		pageSize: 2
 	};
-	
-	$scope.pList = [];
-	
+
+	$scope.nextPage = function(m){
+		$scope.tableParams.page += m;
+	};
+
+	$scope.setPageSize = function(n){
+		$scope.tableParams = n;
+	};
+
+ 	$scope.productTotal = 0;	
 	//Populate Data Source
 	var reloadData = function(){
 		Products.getAll($scope.tableParams).then(function(x){
-			$scope.pList = x.data.data;
-			console.log("pList", $scope.pList);
+			$scope.productTotal = x.data.total;
+			$scope.productList = x.data.data;
 		});
 	};
 	
@@ -48,13 +68,14 @@ app.controller('ProductListCtrl', ['$scope', '$http', 'Products',  function($sco
 
 	//Select All checkbox
 	$scope.$watch('checkAll', function(newVal, oldVal){
+		if(!$scope.pList) return;
 		$scope.pList.forEach(function(d){	
 			d.checked = newVal;
 		});
 	});
-}]);
+}];
 
-},{"./services/products.js":4,"angular":3}],2:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -29073,21 +29094,29 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],3:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":2}],4:[function(require,module,exports){
+},{"./angular":4}],6:[function(require,module,exports){
 //Products Service
+//TODO: beautify this using config and helper
 module.exports = ['$q', '$http', function($q, $http){
 	return {
 		getAll: function(parameters){
 			return $q(function(resolve, reject){
 				var flagged = parameters.filter; 
-				var path = '/flat/Products' + flagged + '.json'; 
+				var path = 'http://localhost:58127/api/ProductStages';
 				$http({
 					method: 'GET',
-					url: path
+					url: path,
+					params: {_order: 'ProductId',
+						_limit: parameters.pageSize,
+						_offset: parameters.page * parameters.pageSize,
+						_direction: 'asc'},
+					headers: {
+						'Authorization' : 'Basic ZHVja3ZhZGVyOnZhZGVy'
+					}
 				}).then(resolve, reject);
 			});	
 		}
