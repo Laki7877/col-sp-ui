@@ -43,12 +43,16 @@ module.exports = ['$scope', '$http', 'Products',  function($scope, $http, Produc
 		pageSize: 2
 	};
 
+	$scope.totalPage = function(x){
+		return Math.ceil($scope.productTotal / $scope.tableParams.pageSize);
+	};
+
 	$scope.nextPage = function(m){
 		$scope.tableParams.page += m;
 	};
 
 	$scope.setPageSize = function(n){
-		$scope.tableParams = n;
+		$scope.tableParams.pageSize = n;
 	};
 
  	$scope.productTotal = 0;	
@@ -68,8 +72,8 @@ module.exports = ['$scope', '$http', 'Products',  function($scope, $http, Produc
 
 	//Select All checkbox
 	$scope.$watch('checkAll', function(newVal, oldVal){
-		if(!$scope.pList) return;
-		$scope.pList.forEach(function(d){	
+		if(!$scope.productList) return;
+		$scope.productList.forEach(function(d){
 			d.checked = newVal;
 		});
 	});

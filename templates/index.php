@@ -81,8 +81,7 @@
 	<a ng-click="nextPage(-1)">
 		<i class="fa fa-chevron-left" ng-class="{'grey-chevron': tableParams.page == 0}"></i>
 	</a>
-	<span> Page {{ tableParams.page + 1 }} of 
-	{{ productTotal / tableParams.pageSize }}</span>
+	<span> Page {{ tableParams.page + 1 }} of {{ totalPage() }}</span>
 	<!-- next page button -->
         <a ng-click="nextPage(1)"><i class="fa fa-chevron-right padding-right-15 blue-chevron" ></i></a>
         <span class="view-page-separator">View per page</span>
