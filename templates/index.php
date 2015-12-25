@@ -182,8 +182,8 @@
         <i class="fa fa-chevron-right padding-right-15 blue-chevron"></i>
         <span class="view-page-separator">View per page</span>
         <!-- Split button -->
-        <div class="btn-group">
-          <button type="button" class="btn btn-default">20</button>
+        <div class="btn-group dropdown-btn">
+          <button type="button" class="btn btn-default dropdown-text">20</button>
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="caret"></span>
             <span class="sr-only">Toggle Dropdown</span>
