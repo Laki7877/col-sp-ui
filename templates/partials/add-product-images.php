@@ -7,17 +7,7 @@
 				<div class="form-section-header">Upload New Product Images</div>
 				<div class="form-section-content padding-left-15 padding-right-15">
 					<div class="col-xs-7">
-						<div class="image-drop-wrapper">
-							<div class="image-drop-zone">
-								<div class="image-drop-zone-text">
-									<p><i class="fa fa-image fa-3x color-theme"></i></p>
-									<p>Drag &amp; drop your product images here</p>
-								</div>
-							</div>
-							<div class="image-select-alternative-text">
-								<span>Or</span> <a href="#">Select Images from your computer</a>
-							</div>
-						</div>
+						<? $this->insert('components/image-dropzone', ["id" => "product-images"]) ?>
 					</div>
 					<div class="col-xs-5">
 						<h4>Product images style guideline</h4>
@@ -30,29 +20,14 @@
 				</div>
 				<div class="section-break"></div>
 				<div class="form-section-content padding-left-15 padding-right-15">
-					<ul class="image-vertical-list">
-						<li class="list-item"></li>
-						<li class="list-section-break"></li>
-						<li class="list-item"></li>
-						<li class="list-item"></li>
-					</ul>
+					<? $this->insert('components/image-thumbs-list', ["action" => 2, "sep" => 1, "images" => ["/assets/img/placeholder-no-image.png", "https://placehold.it/350x150", "https://placehold.it/350x550"]]) ?>
 				</div>
 			</div>
 			<div class="form-section">
 				<div class="form-section-header"><input type="checkbox" /> <span>Upload 360 Degree Images</span></div>
 				<div class="form-section-content padding-left-15 padding-right-15">
 					<div class="col-xs-7">
-						<div class="image-drop-wrapper">
-							<div class="image-drop-zone">
-								<div class="image-drop-zone-text">
-									<p><i class="fa fa-image fa-3x color-theme"></i></p>
-									<p>Drag &amp; drop your product images here</p>
-								</div>
-							</div>
-							<div class="image-select-alternative-text">
-								<span>Or</span> <a href="#">Select Images from your computer</a>
-							</div>
-						</div>
+						<? $this->insert('components/image-dropzone', ["id" => "product-360"]) ?>
 					</div>
 					<div class="col-xs-5">
 						<h4>Product images style guideline</h4>
@@ -65,12 +40,7 @@
 				</div>
 				<div class="section-break"></div>
 				<div class="form-section-content padding-left-15 padding-right-15">
-					<ul class="image-vertical-list">
-						<li class="list-item"></li>
-						<li class="list-section-break"></li>
-						<li class="list-item"></li>
-						<li class="list-item"></li>
-					</ul>
+					<? $this->insert('components/image-thumbs-list', ["action" => 2, "images" => ["/assets/img/placeholder-no-image.png", "https://placehold.it/350x150", "https://placehold.it/350x550"]]) ?>
 				</div>
 			</div>
 			<div class="form-section">
