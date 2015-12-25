@@ -33,6 +33,38 @@
 			</div>
 			<div class="col-xs-12 no-padding">
 				<ol class="sortable no-padding">
+					<li>
+				    	<div class="category-content row no-margin">
+				    		<div class="category-content-padding">
+					    		<span class="col-xs-8 local-category-toggle-area">
+									<span class="no-children-row"></span>Category Name0
+								</span>
+								<span class="col-xs-1">
+									20
+								</span>
+								<span class="col-xs-1 text-align-center">
+									<i class="fa fa-eye color-dark-grey icon-size-20"></i>
+								</span>
+								<span class="col-xs-1 text-align-center">
+									<i class="fa fa-gear color-dark-grey icon-size-20"></i>
+									<i class="fa fa-caret-down color-dark-grey" 
+									   data-container="body" 
+									   data-html="true" 
+									   data-toggle="popover" 
+									   data-placement="bottom" 
+									   data-content="
+										<div  data-toggle='modal' data-target='#local-category-detail'>View / Edit</div>
+										<div>View Products</div>
+										<div>Delete</div>">
+									</i>	
+								</span>
+								<span  class="col-xs-1 text-align-center">
+									<i data-toggle='modal' data-target='#local-category-detail' class="fa fa-arrows color-dark-grey icon-size-20" 
+									></i>
+								</span>
+							</div>
+				    	</div>
+				    </li>
 				    <li>
 				    	<div class="category-content row no-margin">
 				    		<div class="category-content-padding">
