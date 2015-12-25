@@ -64,6 +64,30 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 		$('.input-icon-calendar').datetimepicker({
 			format: "LL" // this is momentjs format make it show only date, no time will be show. see: http://momentjs.com/docs/#/displaying/format/
 		});
+
+		/********** THIS IS ABOUT TO ATTACH EVENT DRAG AND DROP OF IMAGE DROPZONE ************/
+		$('.image-drop-zone').on('dragover', function(e) {
+			var $this = $(this);
+			e.preventDefault();
+			$this.addClass('hover');
+		}).on('dragleave drop', function(e) {
+			var $this = $(this);
+			e.preventDefault();
+			$this.removeClass('hover');
+		});
+		$('[data-trigger="file"]').on('click', function(e) {
+			e.preventDefault();
+			var $this = $(this);
+			var target = $this.data('target');
+			$(target).trigger('click');
+		});
+		$('#product-images, #product-360').on('drop', function(e) {
+			e.preventDefault();
+			console.log(e.type);
+			//TODO: UPLOAD FILE WHEN USER DROPPED INTO DROPZONE
+			return false;
+		})
+		/******************************* END IMAGE DROPZONE **********************************/
 	</script>
 
 <?php $this->stop() ?>
