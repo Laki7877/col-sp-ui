@@ -3,7 +3,7 @@
 	<div class="width-field-normal">
 		<div class="checkbox multiple-checkbox">
 			<? foreach ($choices as $choice): ?>
-				<label><input type="checkbox" class="<?= $input_class; ?>"> <?= $choice ?></label>
+				<label class="<?= $checkbox_class; ?>"><input type="checkbox" class="<?= $input_class; ?>"> <?= $choice ?></label>
 			<? endforeach ?>
 		</div>
 	</div>
