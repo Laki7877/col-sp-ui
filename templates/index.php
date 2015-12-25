@@ -83,16 +83,16 @@
         <span class="view-page-separator">View per page</span>
         <!-- Split button -->
         <div class="btn-group">
-          <button type="button" class="btn btn-default">20</button>
+          <button type="button" class="btn btn-default">{{ tableParams.viewPerPage }}</button>
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="caret"></span>
             <span class="sr-only">Toggle Dropdown</span>
           </button>
           <ul class="dropdown-menu dropdown-menu-right">
-            <li><a href="#">21</a></li>
-            <li><a href="#">22</a></li>
-            <li><a href="#">23</a></li>
-            <li><a href="#">24</a></li>
+            <li><a ng-click="tableParams.viewPerPage = 10">10</a></li>
+            <li><a ng-click="tableParams.viewPerPage = 20">20</a></li>
+            <li><a ng-click="tableParams.viewPerPage = 30">30</a></li>
+            <li><a ng-click="tableParams.viewPerPage = 40">40</a></li>
           </ul>
         </div>
       </span>

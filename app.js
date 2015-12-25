@@ -25,8 +25,10 @@ app.controller('ProductListCtrl', ['$scope', '$http', 'Products',  function($sco
 		orderBy: 'ProductName',
 		direction: 'asc',
 		page: 1,
+		viewPerPage: 10,
 		pageSize: 20
 	};
+	
 	$scope.pList = [];
 	
 	//Populate Data Source
@@ -36,7 +38,8 @@ app.controller('ProductListCtrl', ['$scope', '$http', 'Products',  function($sco
 			console.log("pList", $scope.pList);
 		});
 	};
-
+	
+	//Watch any change in table parameter, trigger reload
 	$scope.$watch('tableParams', function(){
 		reloadData();
 	}, true);
