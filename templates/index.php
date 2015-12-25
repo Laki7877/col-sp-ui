@@ -79,7 +79,7 @@
       <span>
 	<!-- prev page button -->
 	<a ng-click="nextPage(-1)">
-		<i class="fa fa-chevron-left" ng-class="{'grey-chevron': tableParams.page == 0"></i>
+		<i class="fa fa-chevron-left" ng-class="{'grey-chevron': tableParams.page == 0}"></i>
 	</a>
 	<span> Page {{ tableParams.page + 1 }} of 
 	{{ productTotal / tableParams.pageSize }}</span>

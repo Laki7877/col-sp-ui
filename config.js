@@ -1,3 +1,3 @@
-var config = {
-	basePath: 'http://localhost:58127'
+module.exports = {
+	baseUrl: 'http://localhost:58127/api/'
 };

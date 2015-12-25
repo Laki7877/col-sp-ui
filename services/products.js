@@ -1,11 +1,11 @@
 //Products Service
 //TODO: beautify this using config and helper
-module.exports = ['$q', '$http', function($q, $http){
+module.exports = ['$q', '$http', 'config', function($q, $http, config){
 	return {
 		getAll: function(parameters){
 			return $q(function(resolve, reject){
 				var flagged = parameters.filter; 
-				var path = 'http://localhost:58127/api/ProductStages';
+				var path = config.baseUrl + 'ProductStages';
 				$http({
 					method: 'GET',
 					url: path,
