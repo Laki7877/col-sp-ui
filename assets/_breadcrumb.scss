@@ -4,6 +4,8 @@
 	}
 
 	> .ah-breadcrumb-path {	
+		color: $font-breadcrumb-color;
+		
 		&:last-child {
 			color: $font-breadcrumb-color-current;
 		}

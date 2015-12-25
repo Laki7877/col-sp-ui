@@ -22,6 +22,8 @@
 @import "form";
 @import "input";
 @import "button";
+@import "bootstrap_tagsinput";
+@import "modal_custom";
 
 body {
 	overflow-y: scroll;
@@ -52,3 +54,4 @@ html, body {
 
 @import "add_product_page";
 @import "global_category";
+@import "local_category";

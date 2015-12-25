@@ -6,7 +6,7 @@
 			background-color: initial
 			border: none
 
-		color: $color-drak-grey
+		color: $color-dark-grey
 		padding: 3px 3px 5px
 		margin-right: 20px
 		font-size: 16px
@@ -37,3 +37,103 @@
 	.thead-actions
 		width: ($button-width-default * 2) + 30px
 		text-align: center
+
+.image-drop-wrapper
+	// $image-drop-wrapper-height: 200px
+	$image-drop-zone-height: 170px
+	width: 100%
+
+	input[type="file"]
+		display: none
+
+	.image-drop-zone
+		height: $image-drop-zone-height
+		background-image: url('/assets/img/bg-img-drop.png')
+		margin-bottom: 10px
+		border: dashed 1px $color-grey
+		@include border-radius($border-radius-base)
+		position: relative
+
+		&.hover
+			opacity: 0.5
+
+		.image-drop-zone-text
+			position: absolute
+			left: 50%
+			top: 50%
+			@include translate(-50%, -50%)
+
+			text-align: center
+			pointer-events: none
+
+	.image-select-alternative-text
+		text-align: center
+
+.image-vertical-list
+	@extend .clearfix
+
+	.list-item, .list-section-break
+		display: block
+		height: 185px
+		float: left
+		list-style: none
+		margin-left: 30px
+		&:first-child
+			margin-left: 0
+
+	.list-section-break
+		border-left: 1px dashed $color-grey
+
+.image-thumbs-actions
+	$border-size: 1px
+	$all-height: 185px
+	$width: 150px
+	$max-image-height: 150px
+	$image-width: $width - (2 * $border-size)
+	$image-height: $max-image-height - (2 * $border-size)
+	$action-height: $all-height - $max-image-height
+	$action-button-height: 20px
+	$action-padding: ($action-height - $action-button-height) / 2
+
+	width: $width
+	border: $border-size solid $color-grey
+	background-color: $color-light-blue
+	@include border-radius(3px)
+
+	.image-thumbs-img-wrapper
+		width: $image-width
+		height: $image-height
+		position: relative
+		overflow: hidden
+
+		> img
+			min-width: 100%
+			min-height: 100%
+			position: absolute
+			left: 50%
+			top: 50%
+			@include translate(-50%, -50%)
+
+	.actions-wrapper
+		width: 100%
+		padding-top: $action-padding
+		padding-bottom: $action-padding
+		border-top: $border-size solid $color-grey
+		height: $action-height - $border-size
+		@extend .clearfix
+
+		.action
+			display: block
+			text-align: center
+			float: left
+			color: $color-dark-grey
+			cursor: pointer
+			.fa
+				font-size: $action-button-height
+
+		&.actions-2 .action
+			width: 50%
+		&.actions-3 .action
+			width: 33.33%
+		&.actions-4 .action
+			width: 25%

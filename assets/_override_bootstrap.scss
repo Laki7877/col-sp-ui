@@ -32,3 +32,17 @@ a.like-text {
 .table > tbody > tr > td {
 	vertical-align: middle;
 }
+
+.modal {
+	.modal-content {
+		padding: 30px;
+
+		.modal-header {
+			padding: 0 0 15px;
+		}
+
+		.modal-body {
+			padding: 0;
+		}
+	}
+}

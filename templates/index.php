@@ -70,7 +70,7 @@
               <i class="fa fa-circle color-green"></i>
             </td>
             <td class="visible-column">
-              <i class="fa fa-eye color-drak-grey eye-icon"></i>
+              <i class="fa fa-eye color-dark-grey eye-icon"></i>
             </td>
             <td class="modified-column">
               14/12/15
@@ -104,7 +104,7 @@
               <i class="fa fa-circle color-red"></i>
             </td>
             <td class="visible-column">
-              <i class="fa fa-eye color-drak-grey eye-icon"></i>
+              <i class="fa fa-eye color-dark-grey eye-icon"></i>
             </td>
             <td class="modified-column">
               14/12/15
@@ -135,7 +135,7 @@
               <i class="fa fa-circle color-green"></i>
             </td>
             <td class="visible-column">
-              <i class="fa fa-eye color-drak-grey eye-icon"></i>
+              <i class="fa fa-eye color-dark-grey eye-icon"></i>
             </td>
             <td class="modified-column">
               09/12/15
@@ -166,7 +166,7 @@
               <i class="fa fa-circle color-red"></i>
             </td>
             <td class="visible-column">
-              <i class="fa fa-eye color-drak-grey eye-icon"></i>
+              <i class="fa fa-eye color-dark-grey eye-icon"></i>
             </td>
             <td class="modified-column">
               09/12/15

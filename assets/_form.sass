@@ -3,8 +3,25 @@ form
 		font-weight: inherit
 		font-size: inherit
 
+form
+	h1 
+		font-size: $font-size-h1
+	h2 
+		font-size: $font-size-h2
+	h3 
+		font-size: $font-size-h3
+	h4 
+		font-size: $font-size-h4
+	h5 
+		font-size: $font-size-h5
+	h6 
+		font-size: $font-size-h6
+
 .ah-form
 	@extend .form-horizontal
+
+	.control-padding-top
+		padding-top: ($padding-base-vertical + 1) // Default padding plus a border
 
 	.form-group
 		margin-left: 30px
@@ -17,15 +34,21 @@ form
 			padding-right: 0
 			> *
 				float: right
-		.width-field-normal
-			@extend .col-xs-7
-			width: 400px
 		.width-field-small
 			@extend .col-xs-7
 			width: 300px
+		.width-field-normal
+			@extend .col-xs-7
+			width: 400px
 		.width-field-large
 			@extend .col-xs-7
+			width: 500px
+		.width-field-xl
+			@extend .col-xs-7
 			width: 600px
+		.width-field-xxl
+			@extend .col-xs-7
+			width: 700px
 		.width-field-tooltip
 			@extend .col-xs-2
 			width: 24px
@@ -49,3 +72,57 @@ form
 		padding-top: 15px
 		padding-bottom: 15px
 		border-top: 1px solid $color-grey
+
+	.radio, .checkbox
+		&.multiline > label
+			padding-top: $padding-base-vertical + 1
+			display: block
+			&:first-child
+				padding-top: 0
+
+	.radio.multiple-radio > label
+		margin-right: 15px
+
+	.checkbox.multiple-checkbox > label
+		margin-right: 15px
+
+
+	a.required, span.required, label.required
+		position: relative
+		display: inline-block
+		&:after
+			display: block
+			content: "*"
+			position: absolute
+			color: red
+			top: 0
+			right: -6px
+			font-size: 16px
+	.btn ~ .btn
+		margin-left: 10px
+
+	.input-with-unit
+		position: relative
+		input.form-control
+			padding-right: 50px
+		.input-unit
+			position: absolute
+			right: 7px
+			top: $padding-base-vertical + 1
+			color: $color-grey
+
+	.multiple-input
+		$gutter-size: 15px
+		@include make-row($gutter: $gutter-size)
+
+		.input-column
+			> label
+				padding-top: $padding-base-vertical + 1
+			&.no-label
+				padding-top: $padding-base-vertical + 1 + 19 + 5 //base + 1 + label height + label margin bottom
+			
+			@include make-xs-column(12, $gutter: $gutter-size)
+			width: 120px
+
+			&.input-xl
+				width: 150px
