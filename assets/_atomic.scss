@@ -93,3 +93,7 @@
 .text-align-right {
 	@extend .text-right;
 }
+
+.hide-component {
+	display:	none;
+}

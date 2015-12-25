@@ -30,7 +30,7 @@
       </span>
     </div>
   </div>
-  <div class="search-section section-filter checkbox-wrapper">
+  <div class="search-section section-filter checkbox-wrapper <?=$optional_class?>">
     <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" />
     <label for="checkboxG1" class="css-label">
         Show Online/Offline Status
