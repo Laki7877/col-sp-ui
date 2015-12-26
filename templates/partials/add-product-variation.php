@@ -34,6 +34,7 @@
 							</div>
 						</div>
 					</div>
+					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Default Variant", "options" => ["Wood, 10000 mAh", "Wood, 20000 mAh"]]) ?>
 				</div>
 			</div>
 			<div class="form-section">
