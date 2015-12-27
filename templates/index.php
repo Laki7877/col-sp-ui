@@ -52,7 +52,7 @@
             <td class="display-column">
               <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
             </td>
-            <td>Neleus Men's Slim Fit Long Sleave with Wing on the…</td>
+            <td class="column-text-ellipsis">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</td>
             <td class="price-column">9,000,000</td>
             <td class="info-column">
               <i class="fa fa-check color-green icon-size-18px"></i>
