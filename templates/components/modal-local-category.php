@@ -24,19 +24,18 @@
                 </div>
               </div>
             </div>
+            <div class="category-footer col-xs-12">
+              <span class="float-right">
+                  <a class="link-btn-plain" data-dismiss="modal">Cancel</a>
+                  <button type="button" class="btn btn-blue btn-width-xl">Select</button>
+              </span>
+            </div>
           </div>
         </form>
       </div>
       <!-- <div class="modal-footer">
             
       </div> -->
-      <div class="category-footer no-padding row">
-                <!-- <span>Not found in here? <a>Create new local category</a></span> -->
-        <span class="float-right">
-            <a class="link-btn-plain" data-dismiss="modal">Cancel</a>
-            <button type="button" class="btn btn-blue btn-width-xl">Select</button>
-        </span>
-      </div>
     </div>
   </div>
 </div>
