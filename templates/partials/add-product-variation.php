@@ -29,7 +29,10 @@
 						</div>
 						<div class="width-field-normal">
 							<div class="input-with-unit">
-								<input type="text" class="form-control" />
+								<select class="form-control select2-init" multiple="multiple" data-tags="true">
+									<option selected value="10000">10000</option>
+									<option selected value="20000">20000</option>
+								</select>
 								<span class="input-unit">mAh</span>
 							</div>
 						</div>
