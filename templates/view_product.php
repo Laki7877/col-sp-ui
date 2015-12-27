@@ -1,10 +1,10 @@
 <?php
 $menus = [
-	["id" => "information", "name" => 'Information', "class" => "require active"],
-	["id" => "images", "name" => 'Images', "class" => "require"],
-	["id" => "category", "name" => 'Category'],
-	["id" => "variation", "name" => 'Variation'],
-	["id" => "more_option", "name" => 'More Options'],
+	["id" => "information", "name" => 'Information', "class" => "active"],
+	["id" => "images", "name" => 'Images', "class" => ""],
+	["id" => "category", "name" => 'Category', "class" => ""],
+	["id" => "variation", "name" => 'Variation', "class" => ""],
+	["id" => "more_option", "name" => 'More Options', "class" => ""],
 ];
 
 $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
