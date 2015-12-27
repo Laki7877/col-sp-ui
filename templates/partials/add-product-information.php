@@ -10,7 +10,7 @@
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Name (English)", "label_class" => "required", "size" => "large"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Brand Name", "label_class" => "required", "size" => "large"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "SKU", "label_class" => "required", "size" => "large"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "UPC", "tooltip" => "This is a tooltip text", "size" => "large"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "UPC", "tooltip" => "The Universal Product Code (UPC) is a barcode symbology (i.e., a specific type of barcode) that is widely used in the USAX.", "size" => "large"]) ?>
 				</div>
 			</div>
 			<div class="form-section">

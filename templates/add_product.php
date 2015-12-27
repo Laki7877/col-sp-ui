@@ -60,7 +60,6 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 	
 	<script>
 		$('[ckeditor-initialize]').each(function(idx, textarea) {
-			console.log("Initializing ckeditor for:", textarea);
 			CKEDITOR.replace( textarea );
 		});
 		$('.input-icon-calendar').datetimepicker({
@@ -70,6 +69,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 		$.fn.select2.defaults.set("tokenSeparators", [",", " "]);
 		var select2Init = $(".select2-init")
 		$(document).on('shown.bs.tab ready', select2Init.select2.bind(select2Init));
+
+		$("body").tooltip({ selector: '[data-toggle=tooltip]' });
 
 		/********** THIS IS ABOUT TO ATTACH EVENT DRAG AND DROP OF IMAGE DROPZONE ************/
 		$('.image-drop-zone').on('dragover', function(e) {
