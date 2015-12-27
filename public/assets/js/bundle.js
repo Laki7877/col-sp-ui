@@ -17,7 +17,8 @@ app.controller('ProductListCtrl', controllers.Products);
 },{"./config.js":2,"./controllers/products.js":3,"./services/products.js":6,"angular":5}],2:[function(require,module,exports){
 //remote baseUrl - 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/'
 module.exports = {
-	baseUrl: 'http://localhost:58127/api/'
+	baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/'
+
 };
 
 },{}],3:[function(require,module,exports){
