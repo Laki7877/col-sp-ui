@@ -40,6 +40,11 @@
 .table-section {
   margin-top:  30px;
 
+  // Override Bootstrap's th width that set to 2px
+  .table > thead > tr > th {
+    border-bottom-width : 1px;
+  }
+
   .table {
     border: solid 1px $color-grey;
   }
