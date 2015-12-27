@@ -1,5 +1,6 @@
 <div id="add-product-information-tab-content">
 	<? $this->insert('components/alert-text', ['color' => 'green', 'close' => false, 'text' => 'This version has been approved on 15/12/2015 at 10:20. Click “Restore” to revert to this version.']) ?>
+	<? $this->insert('components/alert-text', ['color' => 'yellow', 'close' => false, 'text' => 'This product is waiting for approval for the admin. You cannot edit any product detail now.']) ?>
 	<? $this->insert('components/alert-text-with-header', ['color' => 'red', 'close' => false, 'header' => 'Message from Admin (11/12/2015 at 10:20)', 'text' => 'This product is not approved because the image does not match with the description. Please change it and published again.']) ?>
 
 	<? $this->insert('partials/add-product-inner-tab-breadcrumb') ?>
@@ -10,7 +11,7 @@
 				<div class="form-section-header"><h2>Overview</h2></div>
 				<div class="form-section-content padding-left-30 padding-right-30">
 					<div class="view-product-overview-table">
-						<table class="table margin-0">
+						<table class="table margin-0 ah-table ah-table-line ah-table-extra-padding">
 							<thead>
 								<tr>
 									<th>Product Name</th>
@@ -50,6 +51,39 @@
 									<td class="live-column"><i class="fa fa-circle color-green"></i></td>
 									<td class="visible-column"><i class="fa fa-eye color-dark-grey eye-icon"></i></td>
 									<td class="modified-column">14/12/15</td>
+								</tr>
+								<tr>
+									<td class="">Power Bank MD Tech Model B02</td>
+									<td class="info-column"><i class="fa fa-check color-green icon-size-18px"></i></td>
+									<td class="image-column"><i class="fa fa-check color-green icon-size-18px"></i></td>
+									<td class="status-column">
+										<span class="color-yellow">
+											<i class="fa fa-circle-o"></i>
+											Wait for Approval
+										</span>
+									</td>
+									<td class="live-column"><i class="fa fa-circle color-green"></i></td>
+									<td class="visible-column"><i class="fa fa-eye-slash color-grey eye-icon"></i></td>
+									<td class="modified-column">14/12/15</td>
+								</tr>
+								<tr>
+									<td class="">Power Bank MD Tech Model B02</td>
+									<td class="info-column"><i class="fa fa-check color-green icon-size-18px"></i></td>
+									<td class="image-column"><i class="fa fa-check color-green icon-size-18px"></i></td>
+									<td class="status-column">
+										<span class="color-grey">
+											<i class="fa fa-circle-o"></i>
+											Draft
+										</span>
+									</td>
+									<td class="live-column"><i class="fa fa-circle color-red"></i></td>
+									<td class="visible-column"><i class="fa fa-eye-slash color-grey eye-icon"></i></td>
+									<td class="modified-column">14/12/15</td>
+								</tr>
+								<tr>
+									<td colspan="7">
+										This product was previously approved on 15/12/2015 at 10:20. <a href="#">View Approved Version</a>
+									</td>
 								</tr>
 							</tbody>
 						</table>

@@ -229,6 +229,23 @@
   > tbody > tr > td {
     border-top: none;
   }
+
+  &.ah-table-extra-padding {
+    > tbody > tr > td {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+
+  &.ah-table-line {
+    > tbody > tr:first-child > td {
+      border-top: none;
+    }
+
+    > tbody > tr > td {
+      border-top: 1px solid $color-grey;
+    }    
+  }
   
   margin-bottom: 0;
 }

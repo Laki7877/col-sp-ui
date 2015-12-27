@@ -92,3 +92,6 @@ a.like-text {
 .alert-red {
   @include alert-variant($color-light-red, $color-light-red, $color-black);
 }
+.alert-yellow {
+  @include alert-variant($color-light-yellow, $color-light-yellow, $color-black);
+}
