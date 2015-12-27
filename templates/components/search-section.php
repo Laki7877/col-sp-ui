@@ -2,8 +2,8 @@
   <div class="search-section section-action">
     <div class="input-group">
       <div class="input-group-btn">
-        <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-            <span class="dropdown-text margin-right-10">- Choosen Action -</span>
+        <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="dropdown-text margin-right-10">- Chosen Action -</span>
             <span class="caret margin-left-10"></span>
         </button>
         <ul class="dropdown-menu">
@@ -22,10 +22,11 @@
   </div>
   <div class="search-section section-search">
     <div class="input-group">
-      <input type="text" class="form-control input-search-icon search-box" placeholder="Search for Product SKU, Name, ..." aria-describedby="basic-addon2">
-      <span class="input-group-btn">
-        <button class="btn btn-white" type="button">Search</button>
-      </span>
+        <input type="text" ng-model="searchText"
+          class="form-control input-search-icon search-box" placeholder="Search for Product SKU, Name, ..." aria-describedby="basic-addon2">
+        <span class="input-group-btn">
+          <button class="btn btn-white" ng-click="applySearch()" type="button">Search</button>
+        </span>
     </div>
   </div>
   <div class="search-section section-filter checkbox-wrapper">

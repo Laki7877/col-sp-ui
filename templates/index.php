@@ -15,27 +15,27 @@
         <thead>
           <tr class="table-head" >
             <th class="checkbox-column">
-                <input type="checkbox" aria-label="Checkbox for following text input" ng-model="checkAll"> 
+                <input type="checkbox" aria-label="Checkbox for following text input" ng-model="checkAll">
             </th>
             <th class="display-column"></th>
             <th>
-              <span>Product Name</span>
+              <a ng-click="setOrderBy('ProductNameEn')"><span>Product Name</span></a>
               <span class="caret caret-grey"></span>
             </th>
             <th class="price-column">
-              <span>Price</span>
+              <a ng-click="setOrderBy('Price')"><span>Price</span></a>
               <span class="caret caret-grey"></span>
             </th>
             <th>Info.</th>
             <th>Image</th>
             <th class="status-column">
-              <span>Status</span>
+              <a ng-click="setOrderBy('Status')">Status<span>
               <span class="caret caret-grey"></span>
             </th>
             <th class="live-column" ng-if="showOnOffStatus">Live</th>
             <th class="visible-column">Visible</th>
             <th class="modified-column">
-              <span>Modified</span>
+              <a ng-click="setOrderBy('UpdatedDt')">Modified<span>
               <span class="caret"></span>
             </th>
           </tr>
@@ -43,7 +43,7 @@
         <tbody>
           <tr ng-repeat="row in productList" >
             <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input" ng-model="row.checked"> 
+              <input type="checkbox" aria-label="Checkbox for following text input" ng-model="row.checked">
             </td>
             <td class="display-column">
               <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
