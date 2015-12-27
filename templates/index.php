@@ -23,23 +23,23 @@
             </th>
             <th class="display-column"></th>
             <th>
-              <span>Product Name</span>
+              <a class="header-link" href="#"><span>Product Name</span></a>
               <i class="fa fa-caret-down color-grey">
             </th>
             <th class="price-column">
-              <span>Price</span>
+              <a class="header-link" href="#"><span>Price</span></a>
               <i class="fa fa-caret-up color-grey">
             </th>
-            <th>Info.</th>
-            <th>Image</th>
+            <th><a class="header-link" href="#"><span>Info.</span></a></th>
+            <th><a class="header-link" href="#"><span>Image</span></a></th>
             <th class="status-column">
-              <span>Status</span>
+              <a class="header-link" href="#"><span>Status</span></a>
               <i class="fa fa-caret-down color-grey">
             </th>
-            <th class="live-column">Live</th>
-            <th class="visible-column">Visible</th>
+            <th class="live-column"><a class="header-link" href="#"><span>Live</span></a></th>
+            <th class="visible-column"><a class="header-link" href="#"><span>Visible</span></a></th>
             <th class="modified-column">
-              <span>Modified</span>
+              <a class="header-link" href="#"><span>Modified</span></a>
               <i class="fa fa-caret-up">
             </th>
           </tr>
