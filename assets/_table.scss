@@ -216,6 +216,23 @@
     margin-top: 5px;
   }
 }
+
+
+.table.ah-table {
+  > thead > tr > th {
+    border-bottom: 1px solid $color-grey;
+    &, > * {
+      vertical-align: middle;
+    }
+  }
+
+  > tbody > tr > td {
+    border-top: none;
+  }
+  
+  margin-bottom: 0;
+}
+
 .table {
   .column-text-ellipsis {
     max-width: 0;

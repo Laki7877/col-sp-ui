@@ -137,3 +137,12 @@
 			width: 33.33%
 		&.actions-4 .action
 			width: 25%
+
+.variation-table
+	$table-column-padding: $table-cell-padding * 2
+	.column-sku, .column-price, .column-sale-price, .column-inventory, .column-pid
+		width: 90px + $table-column-padding // + 16px for table's column padding
+	.column-detail
+		width: $button-width-xl + $table-column-padding // + 16px for table's column padding
+	.column-visibility
+		width: $button-width-default + $table-column-padding // + 16px for table's column padding
