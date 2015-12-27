@@ -84,3 +84,14 @@ a.like-text {
 	width: 180px;
 	max-width: 300px;
 }
+
+
+.alert-green {
+  @include alert-variant($color-light-green, $color-light-green, $color-black);
+}
+.alert-red {
+  @include alert-variant($color-light-red, $color-light-red, $color-black);
+}
+.alert-yellow {
+  @include alert-variant($color-light-yellow, $color-light-yellow, $color-black);
+}
