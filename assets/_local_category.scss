@@ -26,6 +26,7 @@
 
     ol.sortable {
       border: solid 1px $color-grey;
+      border-top: none;
 
       ol, li {
         padding-left: 0;
