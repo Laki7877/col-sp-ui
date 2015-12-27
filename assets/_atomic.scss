@@ -75,7 +75,11 @@
 }
 
 .color-green {
-  color: $color-green;
+ 	color: $color-green;
+}
+
+.color-dark-green {
+	color:	$color-dark-green;
 }
 
 .color-red {
@@ -108,4 +112,8 @@
 
 .font-size-18 {
 	font-size: 18px
+}
+
+.opacity-1 {
+	opacity: 1;
 }

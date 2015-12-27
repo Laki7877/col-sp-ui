@@ -3,12 +3,12 @@
 <?php $this->start('page-body') ?>
 	<div class="local-category-page">
 		<div class="alert alert-success">
-		  <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">x</a>
+		  <a href="#" class="close color-dark-green opacity-1" data-dismiss="alert" aria-label="close" title="close">x</a>
 		  <!-- <strong>Success!</strong>  -->
 		  Your changes have been saved.
 		</div>
 		<div class="alert alert-danger">
-		  <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">x</a>	
+		  <a href="#" class="close color-red opacity-1" data-dismiss="alert" aria-label="close" title="close">x</a>	
 		  <!-- <strong>Danger!</strong>  -->
 		  There is an error!
 		</div>
@@ -59,7 +59,7 @@
 									</i>	
 								</span>
 								<span  class="col-xs-1 text-align-center">
-									<i data-toggle='modal' data-target='#local-category-detail' class="fa fa-arrows color-dark-grey icon-size-20" 
+									<i class="fa fa-arrows color-dark-grey icon-size-20" 
 									></i>
 								</span>
 							</div>
@@ -91,7 +91,7 @@
 									</i>	
 								</span>
 								<span  class="col-xs-1 text-align-center">
-									<i data-toggle='modal' data-target='#local-category-detail' class="fa fa-arrows color-dark-grey icon-size-20" 
+									<i class="fa fa-arrows color-dark-grey icon-size-20" 
 									></i>
 								</span>
 							</div>
