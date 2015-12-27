@@ -70,5 +70,8 @@
 	</div>
 </div>
 
+<a data-toggle="modal" data-target="#leave-page-warning">Show Warning</a>
+
 <? $this->insert('components/modal-add-alternative-global-category', ['id' => 'global-category', 'header' => 'Add Alternative Global Category']) ?>
 <? $this->insert('components/modal-add-local-category', ['id' => 'local-category', 'header' => 'Add Local Category']) ?>
+<? $this->insert('components/modal-warning-leave-page', ['id' => 'leave-page-warning']) ?>

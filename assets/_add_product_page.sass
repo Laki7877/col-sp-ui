@@ -146,3 +146,30 @@
 		width: $button-width-xl + $table-column-padding // + 16px for table's column padding
 	.column-visibility
 		width: $button-width-default + $table-column-padding // + 16px for table's column padding
+
+.modal-size-warning
+	width: 400px
+
+.confirmation-modal
+	margin-top: 20px
+	
+	.confirmation-modal-text
+		@extend .clearfix
+		@include make-xs-column(12)
+
+		.sign-icon
+			float: left
+			width: 60px
+			height: 50px
+			> .fa
+				font-size: 50px
+
+		.warning-text
+			display: block
+
+	.confirmation-action
+		@include make-xs-column(12)
+		text-align: center
+		margin-top: 30px
+		.btn
+			width: 150px

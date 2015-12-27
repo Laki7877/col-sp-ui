@@ -34,19 +34,48 @@ a.like-text {
 }
 
 .modal {
+	$close-button-size: 20px;
 	.modal-content {
 		padding: 30px;
 
 		.modal-header {
-			padding: 0 0 15px;
+			$padding-bottom: 15px;
+			padding: 0 0 $padding-bottom;
+			position: relative;
+
+			button.close {
+				top: 50%;
+				right: 0;
+				margin-top: -(($close-button-size / 2) + ($padding-bottom / 2));
+			}
 		}
 
 		.modal-body {
 			padding: 0;
 		}
+
+		button.close {
+		    position: absolute;
+			right: 20px;
+			top: 20px;
+			width: $close-button-size;
+			height: $close-button-size;
+			
+			> span {
+				line-height: 1;
+				display: block;
+				font-size: $close-button-size * 2.1;
+				font-weight: 100;
+				margin-top: -$close-button-size / 1.42;
+			}
+		}
 	}
 
 	.modal-xl {
 		width: 1100px;
+	}
+
+	.modal-header.modal-header-no-border {
+		border-bottom: none
 	}
 }
