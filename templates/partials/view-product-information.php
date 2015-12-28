@@ -98,7 +98,7 @@
 					<? $this->insert('components/forms/input-text-with-label-disabled', ["label" => "SKU", "label_class" => "required", "size" => "large", 'value' => 'OFM4002933']) ?>
 					<? $this->insert('components/forms/input-text-with-label-disabled', ["label" => "UPC", "tooltip" => "The Universal Product Code (UPC) is a barcode symbology (i.e., a specific type of barcode) that is widely used in the USAX.", "size" => "large", 'value' => '']) ?>
 					<? $this->insert('components/forms/input-text-with-label-disabled', ["label" => "PID", "tooltip" => "Help text", "value" => "Only for Central Fulfillment", 'value' => '', 'size' => 'large']) ?>
-					<? $this->insert('components/forms/input-text-with-label-disabled', ["label" => "Brand Name", "label_class" => "required", 'value' => 'MDTECH', 'input_class' => 'input-icon-right-search']) ?>
+					<? $this->insert('components/forms/input-text-with-label-disabled', ["label" => "Brand Name", "label_class" => "required", 'value' => 'MDTECH', 'input_class' => 'input-icon-right-search', 'placeholder' => 'Search for Brand Name']) ?>
 				</div>
 			</div>
 			<div class="form-section">
