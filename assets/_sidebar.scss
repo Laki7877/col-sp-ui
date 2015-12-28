@@ -47,3 +47,40 @@ ul.sidebar-nav {
     width: 100%;
   }
 }
+
+ul.sub-sidebar {
+  width: $sub-sidebar-width;
+  position: absolute;
+  left: $sidebar-width;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+  background-color: $color-light-grey;
+  list-style: none;
+  padding-left: 30px;
+  padding-top: 100px;
+  margin: 0;
+
+  @include box-shadow(1px 0px 2px 0px rgba(0,0,0,0.3));
+
+  .sub-sidebar-header {
+    font-size: 24px;
+  }
+
+  .item {
+    color: $color-dark-grey;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    &.active {
+      color: $color-black;
+      font-weight: bold;
+    }
+
+    > a {
+      color: inherit;
+      font-weight: inherit;
+      text-decoration: none;
+    }
+  }
+}
