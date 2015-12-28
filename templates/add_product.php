@@ -67,6 +67,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 		});
 
 		$.fn.select2.defaults.set("tokenSeparators", [",", " "]);
+		$.fn.select2.defaults.set("minimumResultsForSearch", Infinity);
 		var select2Init = $(".select2-init")
 		$(document).on('shown.bs.tab ready', select2Init.select2.bind(select2Init));
 

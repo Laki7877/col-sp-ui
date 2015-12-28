@@ -6,11 +6,13 @@
 				<input type="text" class="form-control" />
 			</div>
 			<div class="input-column select input-xl">
-				<select class="form-control">
-					<option> - Select Unit - </option>
-					<option> grams </option>
-					<option> Kilograms </option>
-				</select>
+				<div class="ah-select2-dropdown">
+					<select class="form-control select2-init">
+						<option> - Select Unit - </option>
+						<option> grams </option>
+						<option> Kilograms </option>
+					</select>
+				</div>
 			</div>
 		</div>
 	</div>

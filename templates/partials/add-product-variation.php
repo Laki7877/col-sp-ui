@@ -8,24 +8,30 @@
 				<div class="form-section-content">
 					<div class="form-group">
 						<div class="width-label">
-							<select class="form-control">
-								<option value="">Material</option>
-							</select>
+							<div class="ah-select2-dropdown">
+								<select class="form-control select2-init">
+									<option value="">Material</option>
+								</select>
+							</div>
 						</div>
 						<div class="width-field-normal">
-							<select class="form-control select2-init" multiple="multiple">
-								<option selected value="Wood">Wood</option>
-								<option value="Plastic">Plastic</option>
-								<option value="Steel">Steel</option>
-								<option value="Fiber">Fiber</option>
-							</select>
+							<div class="ah-select2-dropdown">
+								<select class="form-control select2-init" multiple="multiple">
+									<option selected value="Wood">Wood</option>
+									<option value="Plastic">Plastic</option>
+									<option value="Steel">Steel</option>
+									<option value="Fiber">Fiber</option>
+								</select>	
+							</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="width-label">
-							<select class="form-control">
-								<option value="">Capacity</option>
-							</select>
+							<div class="ah-select2-dropdown">
+								<select class="form-control select2-init">
+									<option value="">Capacity</option>
+								</select>
+							</div>
 						</div>
 						<div class="width-field-normal">
 							<div class="input-with-unit">
