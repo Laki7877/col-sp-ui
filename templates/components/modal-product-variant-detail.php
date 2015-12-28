@@ -16,6 +16,15 @@
 								<? $this->insert('components/forms/multiple-radio-multiline', ["label" => "Display", "choices" => ["Show as group of variants", "Show as individual product"]]) ?>
 							</div>
 						</div>
+						<? $this->insert('components/forms/form-section-upload-new-product-image') ?>
+						<div class="form-section">
+							<div class="form-section-header"><input type="checkbox" /> <span>Embed Video</span></div>
+							<div class="form-section-content">
+								<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 1", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "This is a tooltip"]) ?>
+								<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 2", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "This is a tooltip"]) ?>
+								<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 3", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "This is a tooltip"]) ?>
+							</div>
+						</div>
 						<div class="form-section">
 							<div class="form-section-header"><h2>Description</h2></div>
 							<div class="form-section-content">
@@ -30,15 +39,6 @@
 							<div class="form-section-content">
 								<? $this->insert('components/forms/multiple-input-with-label', ["label" => "Package Dimension"]) ?>
 								<? $this->insert('components/forms/multiple-input', ["label" => "Weight"]) ?>
-							</div>
-						</div>
-						<? $this->insert('components/forms/form-section-upload-new-product-image') ?>
-						<div class="form-section">
-							<div class="form-section-header"><input type="checkbox" /> <span>Embed Video</span></div>
-							<div class="form-section-content">
-								<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 1", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "This is a tooltip"]) ?>
-								<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 2", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "This is a tooltip"]) ?>
-								<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 3", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "This is a tooltip"]) ?>
 							</div>
 						</div>
 					</div> <!-- end .col-xs-12 -->
