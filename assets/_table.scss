@@ -42,9 +42,18 @@
 .table-section {
   margin-top:  30px;
 
+  // Set border-table's color to $color-grey
+  table.table.table-curved.product-list-table {
+    border-color: $color-grey;
+  }
+
+  table > tbody > tr > td, table > thead > tr > th {
+    border-color: $color-grey;
+  }
+  // End setting border color
 
   .product-list-table {
-   border-color: $color-grey;
+   
     > tbody >tr:first-child > td {
       border-top: none;
     }
@@ -108,7 +117,7 @@
   .table-curved {
     // overflow:hidden;
     border-collapse:separate;
-    border: solid $color-grey 1px;
+    // border: solid $color-grey 1px;
     border-radius: 3px;
   }
 
