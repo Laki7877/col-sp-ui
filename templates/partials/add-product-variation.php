@@ -53,11 +53,11 @@
 						<thead>
 							<tr>
 								<th class="column-variant">Variant</th>
+								<th class="column-pid">PID</th>
 								<th class="column-sku"><span class="required">SKU</span></th>
 								<th class="column-price">Price</th>
 								<th class="column-sale-price">Sale Price</th>
 								<th class="column-inventory">Inventory</th>
-								<th class="column-pid"><span>PID</span> <i class="fa fa-2x fa-question-circle color-grey"></i></th>
 								<th class="column-detail text-center">Detail</th>
 								<th class="column-visibility">Visibility</th>
 							</tr>
@@ -66,7 +66,7 @@
 							<? foreach(["Wood, 10000 mAh", "Plastic, 10000 mAh", "Wood, 12000 mAh", "Plastic, 12000 mAh"] as $item): ?>
 								<tr>
 									<td class="column-text-ellipsis"><?= $item?></td>
-									<td><input type="text" class="form-control" /></td>
+									<td>1234567</td>
 									<td><input type="text" class="form-control" /></td>
 									<td><input type="text" class="form-control" /></td>
 									<td><input type="text" class="form-control" /></td>
