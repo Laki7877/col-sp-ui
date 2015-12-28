@@ -22,6 +22,10 @@
 @import "form";
 @import "input";
 @import "button";
+@import "bootstrap_tagsinput";
+@import "select2";
+@import "modal_custom";
+@import "dropdown";
 
 body {
 	overflow-y: scroll;
@@ -52,3 +56,4 @@ html, body {
 
 @import "add_product_page";
 @import "global_category";
+@import "local_category";

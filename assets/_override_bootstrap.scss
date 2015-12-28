@@ -32,3 +32,69 @@ a.like-text {
 .table > tbody > tr > td {
 	vertical-align: middle;
 }
+
+.modal {
+	$close-button-size: 20px;
+	.modal-content {
+		padding: 30px;
+
+		.modal-header {
+			$padding-bottom: 15px;
+			padding: 0 0 $padding-bottom;
+			position: relative;
+
+			button.close {
+				top: 50%;
+				right: 0;
+				margin-top: -(($close-button-size / 2) + ($padding-bottom / 2));
+			}
+		}
+
+		.modal-body {
+			padding: 0;
+		}
+
+		button.close {
+		    position: absolute;
+			right: 20px;
+			top: 20px;
+			width: $close-button-size;
+			height: $close-button-size;
+			
+			> span {
+				line-height: 1;
+				display: block;
+				font-size: $close-button-size * 2.1;
+				font-weight: 100;
+				margin-top: -$close-button-size / 1.42;
+			}
+		}
+	}
+
+	.modal-xl {
+		width: 1100px;
+	}
+
+	.modal-header.modal-header-no-border {
+		border-bottom: none
+	}
+}
+
+.tooltip {
+	width: 180px;
+	max-width: 300px;
+}
+
+
+.alert-green {
+  @include alert-variant($color-light-green, $color-light-green, $color-black);
+}
+.alert-red {
+  @include alert-variant($color-light-red, $color-light-red, $color-black);
+}
+.alert-yellow {
+  @include alert-variant($color-light-yellow, $color-light-yellow, $color-black);
+}
+.alert .close {
+	@include text-shadow(none);
+}

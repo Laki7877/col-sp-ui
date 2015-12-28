@@ -2,7 +2,7 @@
     $items = [
         [ "name" => "Home", "icon" => "fa-home" ],
         [ "name" => "Orders", "icon" => "fa-inbox" ],
-        [ "name" => "Products", "icon" => "fa-tag" ],
+        [ "name" => "Products", "icon" => "fa-tag", "sub_sidebar" => "#sub-sidebar-product" ],
         [ "name" => "Inventory", "icon" => "fa-archive" ],
         [ "name" => "Promotion", "icon" => "fa-bookmark" ],
         [ "name" => "Shop Setting", "icon" => "fa-sliders" ],

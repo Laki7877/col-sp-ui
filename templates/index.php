@@ -26,8 +26,8 @@
               <a ng-click="setOrderBy('Price')"><span>Price</span></a>
               <span class="caret caret-grey"></span>
             </th>
-            <th>Info.</th>
-            <th>Image</th>
+            <th><a class="header-link" href="#"><span>Info.</span></a></th>
+            <th><a class="header-link" href="#"><span>Image</span></a></th>
             <th class="status-column">
               <a ng-click="setOrderBy('Status')">Status<span>
               <span class="caret caret-grey"></span>
@@ -67,7 +67,7 @@
               <i class="fa fa-circle color-green"></i>
             </td>
             <td class="visible-column">
-              <i class="fa fa-eye color-drak-grey eye-icon"></i>
+              <i class="fa fa-eye-slash color-grey eye-icon"></i>
             </td>
             <td class="modified-column">
               14/12/15

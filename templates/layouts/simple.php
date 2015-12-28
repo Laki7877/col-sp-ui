@@ -14,7 +14,7 @@
 	<script src="<?= $this->asset('/assets/js/jquery.rest.js') ?>"></script>
 	<script src="<?= $this->asset('/assets/js/bundle.js') ?>"></script>
     </head>
-    <body>
+    <body class="ahpt">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->       
@@ -25,6 +25,8 @@
         <div id="wrapper">
             <?= $this->section('content') ?>
         </div>
+        <script src="<?= $this->asset('/assets/js/jquery-ui.js') ?>"></script>   
+        <script src="<?= $this->asset('/assets/js/jquery.ui.nestedSortable.js') ?>"></script>   
         <script src="<?= $this->asset('/assets/js/custom-js.js') ?>"></script>
     </body>
 </html>
