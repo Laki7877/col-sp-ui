@@ -2,7 +2,7 @@
 $inputSize = "width-field-normal";
 if (isset($size)) $inputSize = "width-field-$size";
 ?>
-<div class="form-group">
+<div class="form-group <?=$form_group_class?>">
 	<div class="width-label"><label class="control-label <?=$label_class?>"><?= $label ?></label></div>
 	<div class="<?= $inputSize ?>">
 		<div class="ah-select2-dropdown">
