@@ -18,9 +18,9 @@
                 </div>
               </div>
               <div class="form-section">
-                <div class="form-section-header"><h2>Local Category Detail</h2></div>
+                <div class="form-section-header"><h2>Category Visibility</h2></div>
                 <div class="form-section-content modal-custom">
-                  <? $this->insert('components/forms/multiple-radio-multiline', ["label" => "URL (ENG)", "choices" =>["Hide", "Show"] ]) ?>
+                  <? $this->insert('components/forms/multiple-radio-multiline', ["label" => "Visibility", "choices" =>["Hide", "Show"] ]) ?>
                 </div>
               </div>
             </div>
