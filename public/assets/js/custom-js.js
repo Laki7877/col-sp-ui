@@ -5,6 +5,7 @@ $(document).ready(function () {
 		var isPopover = $target.is('[data-toggle="popover"]');
 
 		if (isPopover) {
+			$('[data-toggle="popover"]').not($target).popover('hide');
 			$target.popover('show');
 		}
 		else {
