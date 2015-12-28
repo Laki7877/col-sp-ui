@@ -1,11 +1,3 @@
-// ******************* OVERRIDE DEFAULT BOOTSTRAP VARIABLE *********************
-$border-radius-base: 3px;
-// ****************************** END OVERRIDE *********************************
-
-// ****************** OVERRIDE DEFAULT FONT AWESOME VARIABLE *******************
-$fa-font-path: '/assets/fonts';
-// ****************************** END OVERRIDE *********************************
-
 $container-spacing-size: 40px;
 
 $sidebar-width: 180px;
@@ -54,4 +46,17 @@ $button-width-xl: 120px;
 $button-width-xxl: 180px;
 
 
-$category-selection-column-size: 180px;
+$category-selection-column-size: 236px;
+
+
+
+
+// ******************* OVERRIDE DEFAULT BOOTSTRAP VARIABLE *********************
+$border-radius-base: 3px;
+$link-color: $color-theme;
+$icon-font-path: '/assets/fonts/';
+// ****************************** END OVERRIDE *********************************
+
+// ****************** OVERRIDE DEFAULT FONT AWESOME VARIABLE *******************
+$fa-font-path: '/assets/fonts';
+// ****************************** END OVERRIDE *********************************
