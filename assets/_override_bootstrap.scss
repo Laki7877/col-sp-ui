@@ -95,3 +95,6 @@ a.like-text {
 .alert-yellow {
   @include alert-variant($color-light-yellow, $color-light-yellow, $color-black);
 }
+.alert .close {
+	@include text-shadow(none);
+}

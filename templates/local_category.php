@@ -2,17 +2,11 @@
 
 <?php $this->start('page-body') ?>
 	<div class="local-category-page">
-		<div class="alert alert-success">
-		  <a href="#" class="close color-dark-green opacity-1" data-dismiss="alert" aria-label="close" title="close">x</a>
-		  <!-- <strong>Success!</strong>  -->
-		  Your changes have been saved.
-		</div>
-		<div class="alert alert-danger">
-		  <a href="#" class="close color-red opacity-1" data-dismiss="alert" aria-label="close" title="close">x</a>	
-		  <!-- <strong>Danger!</strong>  -->
-		  There is an error!
-		</div>
+		<? $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => 'Your changes have been saved.']) ?>
+		<? $this->insert('components/alert-text', ['close' => true, 'color' => 'red', 'text' => 'There is an error!']) ?>
+
 		<? $this->insert('components/page-title-with-buttons-local-category', ['text' => 'Local Category']) ?>
+
 		<div class="local-category-section">
 			<div class="col-xs-12 category-header no-padding">
 				<span class="col-xs-8">
