@@ -42,6 +42,14 @@
 .table-section {
   margin-top:  30px;
 
+
+  .product-list-table {
+   border-color: $color-grey;
+    > tbody >tr:first-child > td {
+      border-top: none;
+    }
+  }
+
   // Override Bootstrap's th width that set to 2px
   .table > thead > tr > th {
     border-bottom-width : 1px;
