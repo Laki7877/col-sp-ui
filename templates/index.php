@@ -23,24 +23,24 @@
             </th>
             <th class="display-column"></th>
             <th>
-              <span>Product Name</span>
-              <span class="caret caret-grey"></span>
+              <a class="header-link" href="#"><span>Product Name</span></a>
+              <i class="fa fa-caret-down color-grey">
             </th>
             <th class="price-column">
-              <span>Price</span>
-              <span class="caret caret-grey"></span>
+              <a class="header-link" href="#"><span>Price</span></a>
+              <i class="fa fa-caret-up color-grey">
             </th>
-            <th>Info.</th>
-            <th>Image</th>
+            <th><a class="header-link" href="#"><span>Info.</span></a></th>
+            <th><a class="header-link" href="#"><span>Image</span></a></th>
             <th class="status-column">
-              <span>Status</span>
-              <span class="caret caret-grey"></span>
+              <a class="header-link" href="#"><span>Status</span></a>
+              <i class="fa fa-caret-down color-grey">
             </th>
-            <th class="live-column">Live</th>
-            <th class="visible-column">Visible</th>
+            <th class="live-column"><a class="header-link" href="#"><span>Live</span></a></th>
+            <th class="visible-column"><a class="header-link" href="#"><span>Visible</span></a></th>
             <th class="modified-column">
-              <span>Modified</span>
-              <span class="caret"></span>
+              <a class="header-link" href="#"><span>Modified</span></a>
+              <i class="fa fa-caret-up">
             </th>
           </tr>
         </thead>
@@ -52,7 +52,7 @@
             <td class="display-column">
               <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
             </td>
-            <td>Neleus Men's Slim Fit Long Sleave with Wing on the…</td>
+            <td class="column-text-ellipsis">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</td>
             <td class="price-column">9,000,000</td>
             <td class="info-column">
               <i class="fa fa-check color-green icon-size-18px"></i>
@@ -70,7 +70,7 @@
               <i class="fa fa-circle color-green"></i>
             </td>
             <td class="visible-column">
-              <i class="fa fa-eye color-dark-grey eye-icon"></i>
+              <i class="fa fa-eye-slash color-grey eye-icon"></i>
             </td>
             <td class="modified-column">
               14/12/15
@@ -182,8 +182,8 @@
         <i class="fa fa-chevron-right padding-right-15 blue-chevron"></i>
         <span class="view-page-separator">View per page</span>
         <!-- Split button -->
-        <div class="btn-group">
-          <button type="button" class="btn btn-default">20</button>
+        <div class="btn-group dropdown-btn">
+          <button type="button" class="btn btn-default dropdown-text">20</button>
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="caret"></span>
             <span class="sr-only">Toggle Dropdown</span>

@@ -12,15 +12,17 @@
 	}
 
 	.info-column {
+    text-align: center;
 		width: 50px;
 	}
 
 	.image-column {
+    text-align: center;
 		width: 50px;
 	}
 
 	.status-column {
-		width: 140px;	
+		width: 150px;	
 	}
 
 	.live-column {
@@ -39,6 +41,11 @@
 //Table section
 .table-section {
   margin-top:  30px;
+
+  // Override Bootstrap's th width that set to 2px
+  .table > thead > tr > th {
+    border-bottom-width : 1px;
+  }
 
   .table {
     border: solid 1px $color-grey;
@@ -73,6 +80,20 @@
       max-height: 40px;
       max-width: 40px;
       border-radius:  3px;
+    }
+  }
+
+  // Add underline to header link
+  a.header-link {
+    color: $color-black;
+
+    &:focus {
+      text-decoration: none;
+
+      span{
+        border-bottom:2px solid $color-soft-blue;
+        padding-bottom:3px;
+      }
     }
   }
 
@@ -207,5 +228,47 @@
 
   .checkbox-wrapper {
     margin-top: 5px;
+  }
+}
+
+
+.table.ah-table {
+  > thead > tr > th {
+    border-bottom: 1px solid $color-grey;
+    &, > * {
+      vertical-align: middle;
+    }
+  }
+
+  > tbody > tr > td {
+    border-top: none;
+  }
+
+  &.ah-table-extra-padding {
+    > tbody > tr > td {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+
+  &.ah-table-line {
+    > tbody > tr:first-child > td {
+      border-top: none;
+    }
+
+    > tbody > tr > td {
+      border-top: 1px solid $color-grey;
+    }    
+  }
+  
+  margin-bottom: 0;
+}
+
+.table {
+  .column-text-ellipsis {
+    max-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }

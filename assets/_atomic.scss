@@ -14,8 +14,20 @@
 	margin-right: 15px;
 }
 
+.margin-top-5 {
+	margin-top: 5px;
+}
+
+.margin-top-10 {
+	margin-top: 10px;
+}
+
 .margin-top-20 {
 	margin-top: 20px;
+}
+
+.margin-top-30 {
+	margin-top: 30px;
 }
 
 .margin-bottom-30 {
@@ -30,8 +42,16 @@
 	padding-left:	15px;
 }
 
+.padding-left-30 {
+	padding-left:	30px;
+}
+
 .padding-right-15 {
 	padding-right:	15px;
+}
+
+.padding-right-30 {
+	padding-right:	30px;
 }
 
 .padding-bottom-30 {
@@ -67,7 +87,11 @@
 }
 
 .color-green {
-  color: $color-green;
+ 	color: $color-green;
+}
+
+.color-dark-green {
+	color:	$color-dark-green;
 }
 
 .color-red {
@@ -92,4 +116,24 @@
 
 .text-align-right {
 	@extend .text-right;
+}
+
+.hide-component {
+	display:	none;
+}
+
+.font-size-18 {
+	font-size: 18px
+}
+
+.margin-0 {
+	margin: 0;
+}
+
+.font-weight-bold {
+	font-weight: bold;
+}
+
+.opacity-1 {
+	opacity: 1;
 }

@@ -2,16 +2,18 @@
   <div class="search-section section-action">
     <div class="input-group">
       <div class="input-group-btn">
-        <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-            <span class="dropdown-text margin-right-10">- Choosen Action -</span>
-            <span class="caret margin-left-10"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
+        <div class="dropdown-btn">
+          <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+              <span class="dropdown-text margin-right-10 search-prodcut-text">- Choosen Action -</span>
+              <span class="caret margin-left-10"></span>
+          </button>
+          <ul class="dropdown-menu search-product-dropdown">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div>
       </div><!-- /btn-group -->
       <div class="input-group-btn">
         <button type="button" class="btn-white btn">
@@ -28,7 +30,7 @@
       </span>
     </div>
   </div>
-  <div class="search-section section-filter checkbox-wrapper">
+  <div class="search-section section-filter checkbox-wrapper <?=$optional_class?>">
     <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" />
     <label for="checkboxG1" class="css-label">
         Show Online/Offline Status
