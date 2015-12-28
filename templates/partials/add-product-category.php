@@ -12,7 +12,7 @@
 					</div>
 					<div class="form-group">
 						<div class="width-label"><label class="control-label">1st Alternative:</label></div>
-						<div class="width-field-normal"><a class="form-text">Electronic Gadget</a><i class="clickable fa fa-trash margin-left-10"></i></div>
+						<div class="width-field-normal"><a class="form-text">Electronic Gadget</a><i class="clickable color-dark-grey fa fa-trash margin-left-10"></i></div>
 					</div>
 					<div class="form-group">
 						<div class="width-label"><label class="control-label">2nd Alternative:</label></div>
