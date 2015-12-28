@@ -83,7 +83,11 @@
 }
 
 .color-green {
-  color: $color-green;
+ 	color: $color-green;
+}
+
+.color-dark-green {
+	color:	$color-dark-green;
 }
 
 .color-red {
@@ -124,4 +128,8 @@
 
 .font-weight-bold {
 	font-weight: bold;
+}
+
+.opacity-1 {
+	opacity: 1;
 }

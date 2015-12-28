@@ -26,6 +26,7 @@
 
     ol.sortable {
       border: solid 1px $color-grey;
+      border-top: none;
 
       ol, li {
         padding-left: 0;
@@ -81,8 +82,7 @@
   .caret-grey {
     font-size: 18px;
     color:  $color-grey;
-    padding-left: 9px;
-    padding-right:  8px;
+    margin-right: 6px;
   }
 
   .icon-size-20 {
