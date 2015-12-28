@@ -45,6 +45,7 @@ module.exports = ['$scope', '$http', 'Products',  function($scope, $http, Produc
 		pageSize: 4
 	};
 
+	$scope.notReady = true;
 	$scope.applySearch = function(){
 		$scope.tableParams.searchText = $scope.searchText;
 	};
@@ -71,9 +72,11 @@ module.exports = ['$scope', '$http', 'Products',  function($scope, $http, Produc
  	$scope.productTotal = 0;
 	//Populate Data Source
 	var reloadData = function(){
+		$scope.notReady = true;
 		Products.getAll($scope.tableParams).then(function(x){
 			$scope.productTotal = x.data.total;
 			$scope.productList = x.data.data;
+			$scope.notReady = false;
 		});
 	};
 

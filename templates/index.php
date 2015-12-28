@@ -41,7 +41,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="row in productList" >
+	  <tr ng-if="notReady"><td colspan="9"><center>Loading..</center></td></tr>
+	  <tr ng-repeat="row in productList" >
             <td class="checkbox-column">
               <input type="checkbox" aria-label="Checkbox for following text input" ng-model="row.checked">
             </td>
