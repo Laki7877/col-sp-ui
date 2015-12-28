@@ -120,14 +120,17 @@
 
     > .local-category-empty-text {
       font-size: 18px;
+      display: inline-block;
     }
     .zero-category-image {
+      width: 180px;
+      height: 80px;
       background-image: url("../img/graphic-zero-category.png");
       background-size: 80px 80px;
       background-repeat: no-repeat;
-      margin-top: 50px;
       margin-left: 50px;
-      height: 80px;
+      vertical-align: middle;
+      display: inline-block;
     } 
   }
 }
