@@ -152,6 +152,9 @@
 
 .confirmation-modal
 	margin-top: 20px
+
+	&.no-margin
+		margin-top: 0
 	
 	.confirmation-modal-text
 		@extend .clearfix
@@ -171,5 +174,11 @@
 		@include make-xs-column(12)
 		text-align: center
 		margin-top: 30px
+		&.no-margin
+			margin-top: 0
 		.btn
-			width: 150px
+			width: 160px
+			float: left
+
+		.btn + .btn
+			margin-left: 18px

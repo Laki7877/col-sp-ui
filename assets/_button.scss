@@ -27,6 +27,11 @@
   @include button-variant($white, $color-theme, $color-theme);
 }
 
+.btn-green {
+  width: $button-width-default;
+  @include button-variant($white, $color-green, $color-green);
+}
+
 .btn.btn-width-xl {
 	width: $button-width-xl;
 }
