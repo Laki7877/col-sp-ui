@@ -3,7 +3,7 @@
 		<span class="col-xs-8 column-lc-name">
 			<span class="lc-icon-name-warpper">
 				<? if ($parent): ?>
-					<i class="fa fa-chevron-right toggle-button local-category-toggle-area"></i>
+					<i class="fa fa-chevron-down toggle-button local-category-toggle-area"></i>
 				<? elseif ($no_child): ?>
 					<span class="no-children-row"></span>
 				<? else: ?>
