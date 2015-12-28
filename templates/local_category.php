@@ -27,124 +27,35 @@
 			</div>
 			<div class="col-xs-12 no-padding">
 				<ol class="sortable no-padding">
+					<li><? $this->insert('components/local-category-category-content', ['no_child' => true, 'category' => 'Category Name 0', 'product_count' => 20, 'visible' => true]) ?></li>
 					<li>
-				    	<div class="category-content row no-margin">
-				    		<div class="category-content-padding">
-					    		<span class="col-xs-8 local-category-toggle-area">
-									<span class="no-children-row"></span>Category Name0
-								</span>
-								<span class="col-xs-1">
-									20
-								</span>
-								<span class="col-xs-1 text-align-center">
-									<i class="fa fa-eye color-dark-grey icon-size-20"></i>
-								</span>
-								<span class="col-xs-1 text-align-center">
-									<i class="fa fa-gear color-dark-grey icon-size-20"></i>
-									<i class="fa fa-caret-down color-dark-grey" 
-									   data-container="body" 
-									   data-html="true" 
-									   data-toggle="popover" 
-									   data-placement="bottom" 
-									   data-content="
-										<div  data-toggle='modal' data-target='#local-category-detail'>View / Edit</div>
-										<div>View Products</div>
-										<div>Delete</div>">
-									</i>	
-								</span>
-								<span  class="col-xs-1 text-align-center">
-									<i class="fa fa-arrows color-dark-grey icon-size-20" 
-									></i>
-								</span>
-							</div>
-				    	</div>
-				    </li>
-				    <li>
-				    	<div class="category-content row no-margin">
-				    		<div class="category-content-padding">
-					    		<span class="col-xs-8 local-category-toggle-area">
-									<i class="fa fa-chevron-right toggle-button"></i>Category Name1
-								</span>
-								<span class="col-xs-1">
-									20
-								</span>
-								<span class="col-xs-1 text-align-center">
-									<i class="fa fa-eye color-dark-grey icon-size-20"></i>
-								</span>
-								<span class="col-xs-1 text-align-center">
-									<i class="fa fa-gear color-dark-grey icon-size-20"></i>
-									<i class="fa fa-caret-down color-dark-grey" 
-									   data-container="body" 
-									   data-html="true" 
-									   data-toggle="popover" 
-									   data-placement="bottom" 
-									   data-content="
-										<div  data-toggle='modal' data-target='#local-category-detail'>View / Edit</div>
-										<div>View Products</div>
-										<div>Delete</div>">
-									</i>	
-								</span>
-								<span  class="col-xs-1 text-align-center">
-									<i class="fa fa-arrows color-dark-grey icon-size-20" 
-									></i>
-								</span>
-							</div>
-				    	</div>
-				    </li>
-				    <li>
-				    	<div class="category-content row no-margin">
-				    		<div class="category-content-padding">
-					    		<span class="col-xs-8">
-					    			<i class="fa fa-level-up fa-rotate-90 caret-grey"></i>
-									Category Name2
-								</span>
-								<span class="col-xs-1">
-									10
-								</span>
-								<span class="col-xs-1 text-align-center">
-									<i class="fa fa-eye color-dark-grey icon-size-20"></i>
-								</span>
-								<span class="col-xs-1 text-align-center">
-									<i class="fa fa-gear color-dark-grey icon-size-20"></i>
-									<i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div>View / Edit</div>
-											<div>View Products</div>
-											<div>Delete</div>"></i>	
-								</span>
-								<span class="col-xs-1 text-align-center">
-									<i class="fa fa-arrows color-dark-grey icon-size-20"></i>
-								</span>
-							</div>
-				    	</div>
-				    </li>
-				    <li>
-				    	<div class="category-content row no-margin">
-				    		<div class="category-content-padding">
-					    		<span class="col-xs-8">
-					    			<i class="fa fa-level-up fa-rotate-90 caret-grey"></i>
-									Category Name3
-								</span>
-								<span class="col-xs-1">
-									10
-								</span>
-								<span class="col-xs-1 text-align-center">
-									<i class="fa fa-eye-slash color-grey icon-size-20"></i>
-								</span>
-								<span class="col-xs-1 text-align-center">
-									<i class="fa fa-gear color-dark-grey icon-size-20"></i>
-									<i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div>View / Edit</div>
-											<div>View Products</div>
-											<div>Delete</div>"></i>
-								</span>
-								<span class="col-xs-1 text-align-center">
-									<i class="fa fa-arrows color-dark-grey icon-size-20"></i>
-								</span>
-							</div>
-				    	</div>
-				    </li>
+						<? $this->insert('components/local-category-category-content', ['parent' => true, 'category' => 'Category Name 1', 'product_count' => 20, 'visible' => true]) ?>
+						<ol>
+							<li><? $this->insert('components/local-category-category-content', ['parent' => false, 'category' => 'Category Name 2', 'product_count' => 10, 'visible' => true]) ?></li>
+							<li><? $this->insert('components/local-category-category-content', ['parent' => false, 'category' => 'Category Name 3', 'product_count' => 10, 'visible' => false]) ?></li>
+						</ol>
+					</li>
 				</ol>	
 			</div>
 		</div>
 	</div>
+
+	<script>
+		$(document).ready(function() {
+			$('.sortable').nestedSortable({
+				handle: 'div',
+				items: 'li',
+				toleranceElement: '> div',
+				maxLevels: '5'
+			});
+
+			// Toggle Local Category page
+			$( "i.local-category-toggle-area" ).click(function() {
+				$(this).closest('li').children('ol').slideToggle('slow');
+				$(this).toggleClass('fa-chevron-right fa-chevron-down');
+			});
+		});
+	</script>
 
 <? $this->insert('components/modal-local-category', ['id' => 'local-category-detail', 'header' => 'Local Category Detail']) ?>
 

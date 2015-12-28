@@ -48,22 +48,36 @@
         padding-left: 15px;
       }
 
-      > li > .category-content > .category-content-padding > span:first-child {
+      .lc-icon-name-warpper {
+        padding-left: 24px;
+        display: block;
+        position: relative;
+
+        > i.fa, .no-children-row {
+          position: absolute;
+          left: 0;
+          font-size: 17px;
+          top: 50%;
+          margin-top: -8.5px;
+        }
+      }
+
+      > li > .category-content > .category-content-padding > .column-lc-name {
         padding-left: $padding-size * 0;
       }
-      > li > ol > li > .category-content > .category-content-padding > span:first-child {
+      > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
         padding-left: $padding-size * 1;
       }
-      > li > ol > li > ol > li > .category-content > .category-content-padding > span:first-child {
+      > li > ol > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
         padding-left: $padding-size * 2;
       }
-      > li > ol > li > ol > li > ol > li > .category-content > .category-content-padding > span:first-child {
+      > li > ol > li > ol > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
         padding-left: $padding-size * 3;
       }
-      > li > ol > li > ol > li > ol > li > ol > li > .category-content > .category-content-padding > span:first-child{
+      > li > ol > li > ol > li > ol > li > ol > li > .category-content > .category-content-padding > .column-lc-name{
         padding-left: $padding-size * 4;
       }
-      > li > ol > li > ol > li > ol > li > ol > li > ol > li > .category-content > .category-content-padding > span:first-child {
+      > li > ol > li > ol > li > ol > li > ol > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
         padding-left: $padding-size * 5;
       }
     }
