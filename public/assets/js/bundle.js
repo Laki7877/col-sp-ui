@@ -1,25 +1,34 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 //App Start here
 var angular = require('angular');
-var config = require('./config.js');
-//Services
-var services = {};
-var controllers = {};
-services.Products = require('./services/products');
-controllers.ProductsList = require('./controllers/products_list');
-controllers.ProductsAdd = require('./controllers/products_add');
+var bulk = ({"controllers":({"products":require("./controllers\\products.js"),"products_add":require("./controllers\\products_add.js"),"products_list":require("./controllers\\products_list.js")}),"services":({"products":require("./services\\products.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js")})});
+var config = require('./config');
+
+var controllers = bulk.controllers;
+var services = bulk.services;
+var helpers = bulk.helpers;
 
 var app = angular.module('colspApp', [])
-.factory('Products', services.Products)
-.value('config', config);
 
-app.controller('ProductListCtrl', controllers.ProductsList);
-app.controller('ProductAddCtrl', controllers.ProductsAdd);
+// Configuration
+.value('config', config)
 
-},{"./config.js":2,"./controllers/products_add":3,"./controllers/products_list":4,"./services/products":7,"angular":6}],2:[function(require,module,exports){
+// Services
+.factory('common', helpers.common)
+.factory('storage', helpers.storage)
+.factory('util', helpers.util)
+.factory('base64', helpers.base64)
+.factory('Products', services.products)
+
+
+// Controllers
+.controller('ProductListCtrl', controllers.products_list)
+.controller('ProductAddCtrl', controllers.products_add);
+},{"./config":2,"./controllers\\products.js":3,"./controllers\\products_add.js":4,"./controllers\\products_list.js":5,"./helpers\\base64.js":6,"./helpers\\common.js":7,"./helpers\\storage.js":8,"./helpers\\util.js":9,"./services\\products.js":12,"angular":11}],2:[function(require,module,exports){
 //remote baseUrl - 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/'
 module.exports = {
-	baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/'
+	baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/',
+	REST_SERVICE_BASE_URL: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/'
 };
 
 },{}],3:[function(require,module,exports){
@@ -99,6 +108,153 @@ module.exports = ['$scope', '$http', 'Products',  function($scope, $http, Produc
 },{}],4:[function(require,module,exports){
 arguments[4][3][0].apply(exports,arguments)
 },{"dup":3}],5:[function(require,module,exports){
+module.exports = ['$scope', '$http', 'Products',  function($scope, $http, Products){
+
+}];
+
+},{}],6:[function(require,module,exports){
+'use strict';
+
+module.exports = [function () {
+        var service = {};
+
+        /**
+         * Encode a array buffer data into base64 string
+         */
+        service.arrayBufferToBase64 = function (buffer) {
+            var binary = '';
+            var bytes = new Uint8Array(buffer);
+            var len = bytes.byteLength;
+            for (var i = 0; i < len; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return window.btoa(binary);
+        };
+        return service;
+    }];
+},{}],7:[function(require,module,exports){
+'use strict';
+
+
+module.exports = ['$http', '$q', '$log', 'storage', 'config', 
+        function ($http, $q, $log, storage, config) {
+            return {
+                /**
+                 * Make an http request and add access token
+                 * @param {Object} options the options for $http call
+                 * @returns {Promise} promise
+                 */
+                makeRequest: function (options) {
+                    var deferred = $q.defer();
+                    var accessToken = storage.getSessionToken();
+                    if (!options.headers) {
+                        options.headers = {};
+                    }
+                    if (accessToken && !options.headers.Authorization) {
+                        options.headers.Authorization = 'Basic ' + accessToken;
+                    }
+                    if (options.url.indexOf("http") !== 0) {
+                        options.url = config.REST_SERVICE_BASE_URL + options.url;
+                    }
+                    $http(options)
+                        .success(function (data) {
+                            deferred.resolve(data);
+                        })
+                        .error(function (data, status, headers, config) {
+                            $log.error(status, config.method, config.url, data);
+                            deferred.reject(data || {"error": "Unknown error"});
+                        });
+                    return deferred.promise;
+                }
+            };
+        }];
+},{}],8:[function(require,module,exports){
+'use strict';
+
+module.exports = [function () {
+        var service = {};
+        /**
+         * Returns the stored sessionToken
+         * This method first checks in sessionStorage if sessionToken is not found in sessionStorage
+         * this method checks in localStorage, if sessionToken still not found in localStorage,
+         * then it will return null or undefined
+         * The controllers has to implement the logic that if sessionToken is null/undefined then user is not authorized
+         */
+        service.getSessionToken = function () {
+            var token = sessionStorage.getItem('central.seller.portal.auth.token');
+            if (!token) {
+                token = localStorage.getItem('central.seller.portal.auth.token');
+            }
+            return token;
+        };
+        /**
+         * Store the session token in sessionStorage
+         * A boolean flag is passed which when true indicate that user chose remember me option and data should
+         * also be stored in localStorage
+         */
+        service.storeSessionToken = function (sessionToken, flag) {
+            sessionStorage.setItem('central.seller.portal.auth.token', sessionToken);
+            if (flag) {
+                localStorage.setItem('central.seller.portal.auth.token', sessionToken);
+            }
+        };
+
+        /**
+         * Get current user profile stored in sessionStorage or localStorage
+         */
+        service.getCurrentUserProfile = function () {
+            var profile = sessionStorage.getItem('central.seller.portal.auth.profile');
+            if (!profile) {
+                profile = localStorage.getItem('central.seller.portal.auth.profile');
+            }
+            return angular.fromJson(profile);
+        };
+
+        /**
+         * Store the current user profile in sessionStorage
+         * A boolean flag is passed which when true indicate that user chose remember me option and data
+         * should also be stored in localStorage
+         */
+        service.storeCurrentUserProfile = function (profile, flag) {
+            profile = angular.toJson(profile);
+            sessionStorage.setItem('central.seller.portal.auth.profile', profile);
+            if (flag) {
+                localStorage.setItem('central.seller.portal.auth.profile', profile);
+            }
+        };
+
+        /**
+         * Utility method to clear the sessionStorage
+         */
+        service.clear = function () {
+            sessionStorage.removeItem('central.seller.portal.auth.token');
+            sessionStorage.removeItem('central.seller.portal.auth.profile');
+
+            localStorage.removeItem('central.seller.portal.auth.actions');
+            localStorage.removeItem('central.seller.portal.auth.profile');
+        };
+
+        return service;
+    }];
+},{}],9:[function(require,module,exports){
+'use strict';
+
+module.exports = ['storage', function (storage) {
+        var service = {};
+
+        /**
+         * Function to check if any user is currently logged in
+         */
+        service.isLoggedIn = function () {
+            var profile = storage.getCurrentUserProfile();
+            var sessionToken = storage.getSessionToken();
+            return !!(profile && sessionToken);
+        };
+
+        return service;
+    }];
+
+},{}],10:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -29117,11 +29273,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],6:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":5}],7:[function(require,module,exports){
+},{"./angular":10}],12:[function(require,module,exports){
 //Products Service
 //TODO: move Authorization to commons
 module.exports = ['$q', '$http', 'config', function($q, $http, config){

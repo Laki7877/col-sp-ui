@@ -17,7 +17,9 @@ module.exports = function (grunt) {
   	      'public/assets/js/bundle.js': ['app.js']
   	    },
   	    options: {
-  	    	keepAlive: true
+          transform: [require('bulkify')],
+  	    	keepAlive: true,
+          watch: false
   	    }
   	  }
   	},
@@ -32,9 +34,9 @@ module.exports = function (grunt) {
 
   // Load local tasks.
   // grunt.loadTasks('tasks');
-  grunt.loadNpmTasks('grunt-browserify');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-connect');
+  
+  // Load plugins
+  require('load-grunt-tasks')(grunt);
 
   // Default task.
   grunt.registerTask('default', ['browserify']);
