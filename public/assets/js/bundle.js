@@ -1,7 +1,7 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 //App Start here
 var angular = require('angular');
-var bulk = ({"controllers":({"products_add":require("./controllers/products_add.js"),"products_list":require("./controllers/products_list.js")}),"services":({"products":require("./services/products.js")}),"helpers":({"base64":require("./helpers/base64.js"),"common":require("./helpers/common.js"),"storage":require("./helpers/storage.js"),"util":require("./helpers/util.js")})});
+var bulk = ({"controllers":({"products_add":require("./controllers\\products_add.js"),"products_list":require("./controllers\\products_list.js")}),"services":({"products":require("./services\\products.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js")})});
 var config = require('./config');
 
 var controllers = bulk.controllers;
@@ -24,7 +24,7 @@ var app = angular.module('colspApp', [])
 // Controllers
 .controller('ProductListCtrl', controllers.products_list)
 .controller('ProductAddCtrl', controllers.products_add);
-},{"./config":2,"./controllers/products_add.js":3,"./controllers/products_list.js":4,"./helpers/base64.js":5,"./helpers/common.js":6,"./helpers/storage.js":7,"./helpers/util.js":8,"./services/products.js":11,"angular":10}],2:[function(require,module,exports){
+},{"./config":2,"./controllers\\products_add.js":3,"./controllers\\products_list.js":4,"./helpers\\base64.js":5,"./helpers\\common.js":6,"./helpers\\storage.js":7,"./helpers\\util.js":8,"./services\\products.js":9,"angular":11}],2:[function(require,module,exports){
 //remote baseUrl - 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/'
 module.exports = {
 	baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/',
@@ -253,6 +253,41 @@ module.exports = ['storage', function (storage) {
     }];
 
 },{}],9:[function(require,module,exports){
+//Products Service
+//TODO: move Authorization to commons
+module.exports = ['$q', '$http', 'config', function($q, $http, config){
+	return {
+		getAll: function(parameters){
+			//Default parameters
+			var params = {
+				_order: parameters.orderBy,
+				_limit: parameters.pageSize,
+				_offset: parameters.page * parameters.pageSize,
+				_direction: parameters.direction
+			};
+			//Optional parameters
+			if(parameters.searchText && parameters.searchText != ""){
+				//TODO: Sku should be variable search text, since its a multifield search
+				params.SearchText = parameters.searchText;
+			}
+			//Promise
+			return $q(function(resolve, reject){
+				var flagged = parameters.filter;
+				var path = config.baseUrl + 'ProductStages';
+				$http({
+					method: 'GET',
+					url: path,
+					params: params,
+					headers: {
+						'Authorization' : 'Basic ZHVja3ZhZGVyOnZhZGVy'
+					}
+				}).then(resolve, reject);
+			});
+		}
+	}
+}];
+
+},{}],10:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -29271,43 +29306,8 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":9}],11:[function(require,module,exports){
-//Products Service
-//TODO: move Authorization to commons
-module.exports = ['$q', '$http', 'config', function($q, $http, config){
-	return {
-		getAll: function(parameters){
-			//Default parameters
-			var params = {
-				_order: parameters.orderBy,
-				_limit: parameters.pageSize,
-				_offset: parameters.page * parameters.pageSize,
-				_direction: parameters.direction
-			};
-			//Optional parameters
-			if(parameters.searchText && parameters.searchText != ""){
-				//TODO: Sku should be variable search text, since its a multifield search
-				params.SearchText = parameters.searchText;
-			}
-			//Promise
-			return $q(function(resolve, reject){
-				var flagged = parameters.filter;
-				var path = config.baseUrl + 'ProductStages';
-				$http({
-					method: 'GET',
-					url: path,
-					params: params,
-					headers: {
-						'Authorization' : 'Basic ZHVja3ZhZGVyOnZhZGVy'
-					}
-				}).then(resolve, reject);
-			});
-		}
-	}
-}];
-
-},{}]},{},[1]);
+},{"./angular":10}]},{},[1]);

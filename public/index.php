@@ -1,12 +1,7 @@
 <?php
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__ . '/unicorn.php';
+includeAll(__DIR__ . '/../controllers/*.php');
 
-$templates = new League\Plates\Engine(__DIR__.'/../templates');
-$templates->loadExtension(new League\Plates\Extension\Asset(__DIR__));
-
-$page = 'index';
-if (isset($_GET['p'])) {
-	$page = $_GET['p'];
-}
-
-echo $templates->render($page);
+Route::add('/products', 'ProductController::index');
+Route::add('/products/add', 'ProductController::add');
+Route::process();

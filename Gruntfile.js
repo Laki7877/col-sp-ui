@@ -14,7 +14,7 @@ module.exports = function (grunt) {
   	browserify: {
   	  dist: {
   	    files: {
-  	      'public/assets/js/bundle.js': ['app.js']
+  	      'public/assets/js/bundle.js': ['angular/app.js']
   	    },
   	    options: {
           transform: [require('bulkify')],
@@ -25,7 +25,7 @@ module.exports = function (grunt) {
   	},
     watch: {
       scripts: {
-        files: ['app.js', 'controllers/*.js', 'services/*.js', 'config.js'],
+        files: ['angular/**/*'],
         tasks: ['browserify']
       }
     }
