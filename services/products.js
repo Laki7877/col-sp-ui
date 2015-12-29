@@ -13,7 +13,7 @@ module.exports = ['$q', '$http', 'config', function($q, $http, config){
 			//Optional parameters
 			if(parameters.searchText && parameters.searchText != ""){
 				//TODO: Sku should be variable search text, since its a multifield search
-				params.Sku = parameters.searchText;
+				params.SearchText = parameters.searchText;
 			}
 			//Promise
 			return $q(function(resolve, reject){

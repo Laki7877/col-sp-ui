@@ -5,20 +5,21 @@ var config = require('./config.js');
 //Services
 var services = {};
 var controllers = {};
-services.Products = require('./services/products.js');
-controllers.Products = require('./controllers/products.js');
+services.Products = require('./services/products');
+controllers.ProductsList = require('./controllers/products_list');
+controllers.ProductsAdd = require('./controllers/products_add');
 
 var app = angular.module('colspApp', [])
 .factory('Products', services.Products)
 .value('config', config);
 
-app.controller('ProductListCtrl', controllers.Products);
+app.controller('ProductListCtrl', controllers.ProductsList);
+app.controller('ProductAddCtrl', controllers.ProductsAdd);
 
-},{"./config.js":2,"./controllers/products.js":3,"./services/products.js":6,"angular":5}],2:[function(require,module,exports){
+},{"./config.js":2,"./controllers/products_add":3,"./controllers/products_list":4,"./services/products":7,"angular":6}],2:[function(require,module,exports){
 //remote baseUrl - 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/'
 module.exports = {
 	baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/'
-
 };
 
 },{}],3:[function(require,module,exports){
@@ -96,6 +97,8 @@ module.exports = ['$scope', '$http', 'Products',  function($scope, $http, Produc
 }];
 
 },{}],4:[function(require,module,exports){
+arguments[4][3][0].apply(exports,arguments)
+},{"dup":3}],5:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -29114,11 +29117,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":4}],6:[function(require,module,exports){
+},{"./angular":5}],7:[function(require,module,exports){
 //Products Service
 //TODO: move Authorization to commons
 module.exports = ['$q', '$http', 'config', function($q, $http, config){
@@ -29134,7 +29137,7 @@ module.exports = ['$q', '$http', 'config', function($q, $http, config){
 			//Optional parameters
 			if(parameters.searchText && parameters.searchText != ""){
 				//TODO: Sku should be variable search text, since its a multifield search
-				params.Sku = parameters.searchText;
+				params.SearchText = parameters.searchText;
 			}
 			//Promise
 			return $q(function(resolve, reject){
