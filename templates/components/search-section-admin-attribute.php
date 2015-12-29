@@ -21,7 +21,7 @@
   </div>
   <div class="search-section section-search">
     <div class="input-group">
-      <input type="text" class="form-control input-search-icon search-box" placeholder="Search for Attribute Name" aria-describedby="basic-addon2">
+      <input type="text" class="form-control input-search-icon search-box" placeholder="Search" aria-describedby="basic-addon2">
       <span class="input-group-btn">
         <button class="btn btn-white" type="button">Search</button>
       </span>

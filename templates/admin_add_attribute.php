@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'User Profile']) ?>
 
 <?php $this->start('page-body') ?>
 	<div>
