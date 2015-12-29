@@ -112,16 +112,16 @@
 				<div class="form-section-header"><h2>Description</h2></div>
 				<div class="form-section-content">
 					<? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (Thai)", "size" => "xxl"]) ?>
-					<? $this->insert('components/forms/textarea-with-label', ["label" => "Short Description (Thai)", "tooltip" => "This is a tooltip text", "size" => "xxl"]) ?>
-					<? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (English)", "size" => "xxl"]) ?>
-					<? $this->insert('components/forms/textarea-with-label', ["label" => "Short Description (English)", "tooltip" => "This is a tooltip text", "size" => "xxl"]) ?>
+					<? $this->insert('components/forms/textarea-with-label', ["label" => "Short Description (Thai)", "tooltip" => "This is a tooltip text", "size" => "xxl", "form_group_class" => "margin-top-30"]) ?>
+					<? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (English)", "size" => "xxl", "form_group_class" => "margin-top-40"]) ?>
+					<? $this->insert('components/forms/textarea-with-label', ["label" => "Short Description (English)", "tooltip" => "This is a tooltip text", "size" => "xxl", "form_group_class" => "margin-top-30"]) ?>
 				</div>
 			</div>
 			<div class="form-section">
 				<div class="form-section-header"><h2>Detail</h2></div>
 				<div class="form-section-content">
 					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Attribute Set", "options" => ["แบตเตอรี่เสริม / Power Bank", "สมาร์ทโฟน / Smart Phone"]]) ?>
-					<? $this->insert('components/forms/input-text-with-label-unit', ["label" => "Capacity", "unit" => "mAh"]) ?>
+					<? $this->insert('components/forms/input-text-with-label-unit', ["label" => "Capacity", "unit" => "mAh", "form_group_class" => "margin-top-30"]) ?>
 					<? $this->insert('components/forms/input-text-with-label-disabled', ["label" => "Body Color (Thai)", 'value' => 'ขาว']) ?>
 					<? $this->insert('components/forms/input-text-with-label-disabled', ["label" => "Body Color (English)", 'value' => 'White']) ?>
 					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Material", "options" => ["พลาสติก / Plastic", "โลหะ / Iron"]]) ?>
@@ -146,8 +146,8 @@
 				<div class="form-section-header"><h2>Shipping Detail</h2></div>
 				<div class="form-section-content">
 					<? $this->insert('components/forms/multiple-radio-multiline', ["label" => "Shipping Method", "choices" => ["Dropship by 3PL", "Central Fulfillment"]]) ?>
-					<? $this->insert('components/forms/input-text-with-label-unit', ["label" => "Preparation Time", "label_class" => "required", "unit" => "Day"]) ?>
-					<? $this->insert('components/forms/multiple-input-with-label', ["label" => "Package Dimension", "label_class" => "required"]) ?>
+					<? $this->insert('components/forms/input-text-with-label-unit', ["label" => "Preparation Time", "label_class" => "required", "unit" => "Day", "form_group_class" => "margin-top-30"]) ?>
+					<? $this->insert('components/forms/multiple-input-with-label', ["label" => "Package Dimension", "label_class" => "required", "form_group_class" => "margin-top-30"]) ?>
 					<? $this->insert('components/forms/multiple-input', ["label" => "Weight", "label_class" => "required"]) ?>
 				</div>
 			</div>

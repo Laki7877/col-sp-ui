@@ -3,9 +3,11 @@
         Lara Thailand
     </span>
     <span class="header-font-detail">
-        user1@lara.co.th
+        <span>user1@lara.co.th</span>
+        <i class="fa fa-angle-down"></i>
     </span>
     <span class="header-font-detail margin-right-20">
-        View your store
+        <span>View your store</span>
+        <i class="fa fa-angle-down"></i>
     </span>
 </div>

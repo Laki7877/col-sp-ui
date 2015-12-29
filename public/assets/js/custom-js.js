@@ -1,5 +1,17 @@
 $(document).ready(function () {
-	$('[data-toggle="popover"]').popover();
+	$('[data-toggle="popover"]').popover({trigger: 'manual'});
+	$(document).on('click', function(e) {
+		var $target = $(e.target);
+		var isPopover = $target.is('[data-toggle="popover"]');
+
+		if (isPopover) {
+			$('[data-toggle="popover"]').not($target).popover('hide');
+			$target.popover('show');
+		}
+		else {
+			$('[data-toggle="popover"]').popover('hide');
+		}
+	});
 
 	// Logic for add text to dropdown at Product page top filter
 	$(".dropdown-btn .dropdown-menu a").click(function() {

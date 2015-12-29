@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="table-section">
-      <table class="table table-curved">
+      <table class="table table-curved product-list-table">
         <thead>
           <tr class="table-head">
             <th class="checkbox-column">
@@ -39,7 +39,7 @@
             <th class="live-column"><a class="header-link" href="#"><span>Live</span></a></th>
             <th class="visible-column"><a class="header-link" href="#"><span>Visible</span></a></th>
             <th class="modified-column">
-              <a class="header-link" href="#"><span>Modified</span></a>
+              <a class="header-link" href="#"><span class="active-underline">Modified</span></a>
               <i class="fa fa-caret-up">
             </th>
           </tr>
