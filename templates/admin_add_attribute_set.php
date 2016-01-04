@@ -76,7 +76,7 @@
                       <span class="column-3"><input type="checkbox" aria-label="Checkbox for following text input"></span>
                     </li>
                     <li>
-                      <span class="column-1">Attribute Z/span>
+                      <span class="column-1">Attribute Z</span>
                       <span class="column-2"><input type="checkbox" aria-label="Checkbox for following text input"></span>
                       <span class="column-3"><input type="checkbox" aria-label="Checkbox for following text input"></span>
                     </li>
@@ -110,7 +110,7 @@
 	</form>
 
   <div class="add-product-form-action main-form-action full-width-row">
-    <div class="container-fluid">
+    <div class="container-fluid sticky-footer">
       <div class="float-right">
         <a href="#" class="link-btn-plain">Cancel</a>
         <button class="btn btn-blue btn-width-xl">Save</button>
