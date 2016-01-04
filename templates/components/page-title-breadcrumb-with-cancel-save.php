@@ -8,8 +8,8 @@ $newText = implode('<span class="ah-breadcrumb-splitter">/</span>', $extracted);
 <div class="page-header with-border">
     <h1 class="float-left page-header-title ah-breadcrumb"><?= $newText ?></h1>
     <div class="page-actions float-right">
-		<button class="btn btn-white btn-width-xl">Cancel</button>
-		<button class="btn btn-blue btn-width-xl">Save</button>
+		<a class="btn btn-white btn-width-xl" href="?p=<?= $link ?>">Cancel</a>
+		<a class="btn btn-blue btn-width-xl" href="?p=<?= $link ?>">Save</a>
 	</div>
 </div>
 

@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
 	<div>
-    <? $this->insert('components/page-title-breadcrumb-admin-add-attribute', ['text' => "Attribute/Add Attribute Set"]) ?>
+    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute/Add Attribute Set", 'link' => "admin_attribute_set"]) ?>
     <form class="ah-form margin-top-30">
       <div class="row">
       <div class="col-xs-12">
@@ -76,7 +76,7 @@
                       <span class="column-3"><input type="checkbox" aria-label="Checkbox for following text input"></span>
                     </li>
                     <li>
-                      <span class="column-1">Attribute Z</span>
+                      <span class="column-1">Attribute Z/span>
                       <span class="column-2"><input type="checkbox" aria-label="Checkbox for following text input"></span>
                       <span class="column-3"><input type="checkbox" aria-label="Checkbox for following text input"></span>
                     </li>

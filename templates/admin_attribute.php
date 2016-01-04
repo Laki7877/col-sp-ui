@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
 	<div>
-    <? $this->insert('components/page-title-with-one-button', ['text' => 'Attribute Set','button' => 'Add Attribute', 'button_class' => 'btn-width-xl']) ?>
+    <? $this->insert('components/page-title-with-one-button', ['text' => 'Attribute','button' => 'Add Attribute', 'button_class' => 'btn-width-xl', 'link' => 'admin_add_attribute']) ?>
     <? $this->insert('components/search-section-admin-attribute') ?>
     <div class="filter-section">
       <div class="filter-container">

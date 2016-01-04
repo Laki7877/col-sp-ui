@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
 	<div>
-    <? $this->insert('components/page-title-breadcrumb-admin-add-attribute', ['text' => "Attribute/Add Attribute"]) ?>
+    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute/Add Attribute", 'link' => "admin_attribute"]) ?>
     <form class="ah-form margin-top-30">
       <div class="row">
       <div class="col-xs-12">
