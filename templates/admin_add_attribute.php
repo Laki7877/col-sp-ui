@@ -115,7 +115,7 @@
     </div>
 	</form>
 
-  <div class="add-product-form-action main-form-action full-width-row">
+  <div class="add-product-form-action main-form-action full-width-row sticky-footer">
     <div class="container-fluid">
       <div class="float-right">
         <a href="#" class="link-btn-plain">Cancel</a>

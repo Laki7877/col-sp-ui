@@ -109,8 +109,8 @@
     </div>
 	</form>
 
-  <div class="add-product-form-action main-form-action full-width-row">
-    <div class="container-fluid sticky-footer">
+  <div class="add-product-form-action main-form-action full-width-row sticky-footer">
+    <div class="container-fluid">
       <div class="float-right">
         <a href="#" class="link-btn-plain">Cancel</a>
         <button class="btn btn-blue btn-width-xl">Save</button>

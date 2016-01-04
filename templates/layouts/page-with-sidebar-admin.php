@@ -5,17 +5,28 @@
 		<img class="logo-img" src="<?= $this->asset('/assets/img/seller_logo.png') ?>" />
 	</div>
     
-    <?php $this->insert('components/sidebar-nav', ['itemActive' => 'Home']) ?>
-    
-    <ul class="sub-sidebar" style="display: none;" id="sub-sidebar-product">
-        <li class="sub-sidebar-header">Product</li>
-        <li class="item active margin-top-20"><a href="">View</a></li>
-        <li class="item"><a href="">Add</a></li>
-        <li class="item"><a href="">Import</a></li>
-        <li class="item"><a href="">Export</a></li>
-        <li class="item margin-top-30"><a href="">Local Category</a></li>
-        <li class="item"><a href="">Product Review</a></li>
-        <li class="item"><a href="">Product Images</a></li>
+    <?php $this->insert('components/sidebar-nav-admin', ['itemActive' => 'Home']) ?>
+
+    <ul class="sub-sidebar" style="display: none;" id="sub-attribute">
+        <li class="sub-sidebar-header">Attribute</li>
+        <li class="item active margin-top-20"><a href="?p=admin_attribute">View</a></li>
+        <li class="item"><a href="?p=admin_add_attribute">Add</a></li>
+    </ul>
+
+    <ul class="sub-sidebar" style="display: none;" id="sub-attribute-set">
+        <li class="sub-sidebar-header">Attribute Set</li>
+        <li class="item active margin-top-20"><a href="?p=admin_attribute_set">View</a></li>
+        <li class="item"><a href="?p=admin_add_attribute_set">Add</a></li>
+    </ul>
+
+    <ul class="sub-sidebar" style="display: none;" id="sub-attribute-set">
+        <li class="sub-sidebar-header">Brand</li>
+        <li class="item active margin-top-20"><a href="?p=admin_brand">View</a></li>
+    </ul>
+
+    <ul class="sub-sidebar" style="display: none;" id="sub-category">
+        <li class="sub-sidebar-header">Global Category</li>
+        <li class="item active margin-top-20"><a href="?p=admin_category">View</a></li>
     </ul>
 <?php $this->stop() ?>
 
