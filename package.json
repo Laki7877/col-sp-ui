@@ -19,6 +19,8 @@
     "compile": "grunt browserify && compass compile"
   },
   "dependencies": {
-    "angular": "~1.4.8"
+    "angular": "~1.4.8",
+    "angular-sanitize": "^1.4.8",
+    "ui-select": "^0.13.2"
   }
 }
