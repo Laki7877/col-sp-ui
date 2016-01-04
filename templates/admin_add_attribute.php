@@ -29,7 +29,7 @@
         <div class="form-section">
           <div class="form-section-header"><h2>Attribute Input</h2></div>
           <div class="form-section-content">
-            <? $this->insert('components/forms/dropdown-with-label', ["label" => "Attribute Input Type", "options" => ["Free Text", "HTML Box", "Dropdown"]]) ?>
+            <? $this->insert('components/forms/dropdown-with-label', ["label" => "Attribute Input Type", "options" => ["Dropdown", "HTML Box", "Free Text"]]) ?>
             
             <div class="form-group">
               <div class="width-label"><label class="control-label required">

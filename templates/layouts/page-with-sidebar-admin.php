@@ -19,9 +19,10 @@
         <li class="item"><a href="?p=admin_add_attribute_set">Add</a></li>
     </ul>
 
-    <ul class="sub-sidebar" style="display: none;" id="sub-attribute-set">
+    <ul class="sub-sidebar" style="display: none;" id="sub-brand">
         <li class="sub-sidebar-header">Brand</li>
         <li class="item active margin-top-20"><a href="?p=admin_brand">View</a></li>
+        <li class="item"><a href="?p=admin_add_brand">Add</a></li>
     </ul>
 
     <ul class="sub-sidebar" style="display: none;" id="sub-category">

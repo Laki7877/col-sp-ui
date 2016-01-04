@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
 	<div>
-    <? $this->insert('components/page-title-with-one-button', ['text' => 'Attribute Set','button' => 'Add Attribute Set', 'button_class' => 'btn-width-xxl', 'link' => 'admin_add_attribute_set']) ?>
+    <? $this->insert('components/page-title-with-one-button', ['text' => 'Attribute Set','button' => 'Add Attribute Set', 'button_class' => 'btn-width-xxl', 'link' => '?p=admin_add_attribute_set']) ?>
     <? $this->insert('components/search-section-admin-attribute') ?>
     <div class="filter-section">
       <div class="filter-container">
@@ -57,7 +57,7 @@
             <td class="modified-column">
               14/12/15
             </td>
-            <td>
+            <td class="action-column">
               <i class="fa fa-gear color-dark-grey icon-size-20"></i>
               <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div>View / Edit</div> <div>Duplicate</div> <div>Delete</div>" data-original-title="" title=""></i>
             </td>
@@ -79,7 +79,7 @@
             <td class="modified-column">
               14/12/15
             </td>
-            <td>
+            <td class="action-column">
               <i class="fa fa-gear color-dark-grey icon-size-20"></i>
               <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div>View / Edit</div> <div>Duplicate</div> <div>Delete</div>" data-original-title="" title=""></i>
             </td>

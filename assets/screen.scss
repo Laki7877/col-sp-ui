@@ -145,4 +145,11 @@ html, body {
   border-top: 1px solid $color-grey;
   background: #FFFFFF;
 }
+.table{
+  .action-column{
+    width: 60px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+}
 
