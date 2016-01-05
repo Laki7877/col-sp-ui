@@ -5,6 +5,8 @@ var config = require('./config');
 
 //External dependencies
 require('angular-file-upload');
+require('angular-sanitize');
+require('ui-select');
 
 //Internal dependencies
 var controllers = bulk.controllers;
@@ -12,7 +14,7 @@ var services = bulk.services;
 var helpers = bulk.helpers;
 var directives = bulk.directives;
 
-var app = angular.module('colspApp', ['angularFileUpload'])
+var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'angularFileUpload'])
 
 //Configuration
 .value('config', config)
