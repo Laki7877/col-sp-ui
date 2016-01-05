@@ -16,7 +16,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 
 		<div class="add-product-body">
 			<? $this->insert('components/tab-nav', ["items" => $menus]) ?>
-			<form class="ah-form">
+			<form class="ah-form sticky-mainform-action">
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
 						<? $this->insert('partials/add-product-information') ?>
@@ -35,7 +35,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 					</div>
 				</div>
 				<div class="add-product-form-action main-form-action full-width-row">
-					<div class="container-fluid sticky-footer">
+					<div class="container-fluid">
 						<div class="float-right">
 							<a href="#" class="link-btn-plain">Cancel</a>
 							<button class="btn btn-white btn-width-xl">Preview</button>
