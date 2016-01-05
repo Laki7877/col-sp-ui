@@ -14,7 +14,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 	<div>
 		<? $this->insert('components/page-title-breadcrumb', ['text' => "Products/Add Product"]) ?>
 
-		<div class="add-product-body">
+		<div ng-controller="ProductAddCtrl" class="add-product-body">
 			<? $this->insert('components/tab-nav', ["items" => $menus]) ?>
 			<form class="ah-form">
 				<div class="tab-content">
@@ -73,7 +73,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 		$("body").tooltip({ selector: '[data-toggle=tooltip]' });
 
 		/********** THIS IS ABOUT TO ATTACH EVENT DRAG AND DROP OF IMAGE DROPZONE ************/
-		$('.image-drop-zone').on('dragover', function(e) {
+		/*$('.image-drop-zone').on('dragover', function(e) {
 			var $this = $(this);
 			e.preventDefault();
 			$this.addClass('hover');

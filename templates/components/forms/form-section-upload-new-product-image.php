@@ -2,7 +2,7 @@
 	<div class="form-section-header">Upload New Product Images</div>
 	<div class="form-section-content padding-left-15 padding-right-15">
 		<div class="col-xs-7">
-			<? $this->insert('components/image-dropzone', ["id" => "product-images"]) ?>
+			<? $this->insert('components/image-dropzone', ["id" => "product-images", "uploader" => $uploader]) ?>
 		</div>
 		<div class="col-xs-5">
 			<h4>Product images style guideline</h4>

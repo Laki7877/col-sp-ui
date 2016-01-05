@@ -1,4 +1,4 @@
-module.exports = ['$scope', '$http', 'Products',  function($scope, $http, Products){
+module.exports = ['$scope', '$http', 'Product',  function($scope, $http, Product){
 	//UI binding variables
 	$scope.showOnOffStatus = true;
 	$scope.checkAll = false;
@@ -49,7 +49,7 @@ module.exports = ['$scope', '$http', 'Products',  function($scope, $http, Produc
 	//Populate Data Source
 	var reloadData = function(){
 		$scope.notReady = true;
-		Products.getAll($scope.tableParams).then(function(x){
+		Product.getAll($scope.tableParams).then(function(x){
 			$scope.productTotal = x.data.total;
 			$scope.productList = x.data.data;
 			$scope.notReady = false;

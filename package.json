@@ -19,6 +19,7 @@
     "compile": "grunt browserify && compass compile"
   },
   "dependencies": {
-    "angular": "~1.4.8"
+    "angular": "~1.4.8",
+    "angular-file-upload": "^2.2.0"
   }
 }

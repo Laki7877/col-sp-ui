@@ -4,7 +4,7 @@ class ProductController extends Controller
 {
 	public static function index($params) 
 	{
-		return View::render('index');
+		return View::render('list_product');
 	}
 
 	public static function add($params)
