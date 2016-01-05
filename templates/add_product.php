@@ -35,7 +35,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 					</div>
 				</div>
 				<div class="add-product-form-action main-form-action full-width-row">
-					<div class="container-fluid">
+					<div class="container-fluid sticky-footer">
 						<div class="float-right">
 							<a href="#" class="link-btn-plain">Cancel</a>
 							<button class="btn btn-white btn-width-xl">Preview</button>
