@@ -131,3 +131,4 @@ bower_components
 public/assets/css
 
 test/node_modules
+test/backstop_data/bitmaps_test
