@@ -15,8 +15,9 @@
 	</div>
 	<div class="section-break"></div>
 	<div class="form-section-content padding-left-15 padding-right-15">
-		<div class="col-xs-12">
-			<? $this->insert('components/image-thumbs-list', ["action" => 4, "sep" => 1, "images" => ["/assets/img/placeholder-no-image.png", "https://placehold.it/350x150", "https://placehold.it/350x550"]]) ?>
-		</div>
+		<? $this->insert('components/image-thumbs-list', [
+			"sep" => 1,
+			"action" => 4, 
+			"images" => $images]) ?>
 	</div>
 </div>
