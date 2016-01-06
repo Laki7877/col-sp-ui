@@ -6,8 +6,7 @@
         <title><?=$title?></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="stylesheet" href="<?=$this->asset('/assets/css/screen.css')?>" />
         <script src="<?= $this->asset('/assets/js/jquery.min.js') ?>"></script>
 	<script src="<?= $this->asset('/assets/js/bootstrap.min.js') ?>"></script>

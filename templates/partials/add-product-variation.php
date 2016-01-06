@@ -1,30 +1,40 @@
 <div id="add-product-variation-tab-content">
 	<? $this->insert('partials/add-product-inner-tab-breadcrumb') ?>
-
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="form-section">
 				<div class="form-section-header"><h2>Variation Option</h2></div>
 				<div class="form-section-content">
-					<div class="form-group" ng-repeat="j in [0,1]">
+					<div class="form-group" ng-repeat="jth in [0,1]">
 						<div class="width-label">
-							<select class="form-control">
-								<option ng-repeat="v in variation_options" value="{{ v.value }}">{{ v.name }}</option>
+							<select class="form-control"
+							ng-options="i as i.name 
+							for i in available_attribute_options track by i.id"
+						       	ng-model="attribute_options[jth].attribute">
 							</select>
 						</div>
 						<div class="width-field-normal">
-							<div class="ah-select2-dropdown">
-								<select class="form-control select2-init" multiple="multiple">
-									<option selected value="Wood">Wood</option>
-									<option value="Plastic">Plastic</option>
-									<option value="Steel">Steel</option>
-									<option value="Fiber">Fiber</option>
-								</select>	
+							<div class="input-with-unit">
+								<select ng-options="i as i.Name for i in attribute_options[jth].attribute.available_options track by i.Id" ng-model="attribute_options[jth].options" class="form-control select2-init" multiple="multiple">
+								</select>
+								<span class="input-unit">
+									{{ available_attribute_options[jth].unit }}
+								</span>
 							</div>
 						</div>
 					</div>
-					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Default Variant", "options" => ["Wood, 10000 mAh", "Wood, 20000 mAh"]]) ?>
-				</div>
+	
+	<div class="form-group">
+	<div class="width-label"><label class="control-label">Default Variant</label></div>
+	<div class="width-field-normal">
+		<div class="ah-select2-dropdown">
+			<select ng-model="amd" class="form-control select2-init" 
+			ng-options="i as i.text for i in variants track by i.hash">
+			</select>
+		</div>
+	</div></div>
+
+			</div>
 			</div> <!-- end .form-section -->
 			<div class="form-section">
 				<div class="form-section-header">Variant</div>
@@ -33,7 +43,6 @@
 						<thead>
 							<tr>
 								<th class="column-variant">Variant</th>
-								<th class="column-pid">PID</th>
 								<th class="column-sku"><span class="required">SKU</span></th>
 								<th class="column-price">Price</th>
 								<th class="column-sale-price">Sale Price</th>
@@ -43,10 +52,8 @@
 							</tr>
 						</thead>
 						<tbody>
-							<? foreach(["Wood, 10000 mAh", "Plastic, 10000 mAh", "Wood, 12000 mAh", "Plastic, 12000 mAh"] as $item): ?>
-								<tr>
-									<td class="column-text-ellipsis"><?= $item?></td>
-									<td>1234567</td>
+								<tr ng-repeat="pair in variants">
+									<td class="column-text-ellipsis"> {{ pair.text}}</td>
 									<td><input type="text" class="form-control" /></td>
 									<td><input type="text" class="form-control" /></td>
 									<td><input type="text" class="form-control" /></td>
@@ -54,7 +61,6 @@
 									<td><a class="btn btn-white btn-width-xl" data-toggle="modal" data-target="#variant-detail-1">More Detail</a></td>
 									<td><a class="btn btn-white">Hide</a></td>
 								</tr>
-							<? endforeach ?>
 						</tbody>
 					</table>
 				</div>

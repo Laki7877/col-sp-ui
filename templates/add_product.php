@@ -13,8 +13,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 <?php $this->start('page-body') ?>
 	<div ng-controller="ProductAddCtrl">
 		<? $this->insert('components/page-title-breadcrumb', ['text' => "Products/Add Product"]) ?>
-
-		<div ng-controller="ProductAddCtrl" class="add-product-body">
+		<div>
 			<? $this->insert('components/tab-nav', ["items" => $menus]) ?>
 			<form class="ah-form sticky-mainform-action">
 				<div class="tab-content">
