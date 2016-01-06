@@ -88,7 +88,6 @@ module.exports = ['$scope', '$http', 'Product', 'Image', 'FileUploader',  functi
 	});
 */
 	$("body").tooltip({ selector: '[data-toggle=tooltip]' });
-	*/
 	
 	//Product Image
 	$scope.uploader360 = Image.getUploader();
