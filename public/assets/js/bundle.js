@@ -50,7 +50,7 @@ module.exports = {
 };
 
 },{}],3:[function(require,module,exports){
-module.exports = ['$scope', '$http', 'Product', 'Image', 'FileUploader',  function($scope, $http, Product, Image, FileUploader){
+module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader',  function($scope, $window, Product, ImageService, FileUploader){
 	'use strict';
 	//Variation Options Available
 	$scope.variation_options = [{
@@ -80,9 +80,9 @@ module.exports = ['$scope', '$http', 'Product', 'Image', 'FileUploader',  functi
 	*/
 	
 	//Product Image
-	$scope.uploader360 = Image.getUploader();
+	$scope.uploader360 = ImageService.getUploader();
 	$scope.images360 = [];
-	$scope.uploader = Image.getUploader('images', {
+	$scope.uploader = ImageService.getUploader('images', {
 		autoUpload: false
 	});
 	$scope.images = [];
@@ -100,7 +100,7 @@ module.exports = ['$scope', '$http', 'Product', 'Image', 'FileUploader',  functi
         reader.onloadend = loadend(reader);
         reader.readAsDataURL(fileItem._file);
     };
-    $scope.$on('left', function(item, array, index) {
+    $scope.$on('left', function(evt, item, array, index) {
     	var to = index - 1;
     	if(to < 0) to = array.length - 1;
     	
@@ -108,14 +108,25 @@ module.exports = ['$scope', '$http', 'Product', 'Image', 'FileUploader',  functi
     	array[to] = item;
     	array[index] = tmp;
     });
-    $scope.$on('right', function(item, array, index) {
+    $scope.$on('right', function(evt, item, array, index) {
     	var to = index + 1;
     	if(to >= array.length) to = 0;
     	
     	var tmp = array[to];
     	array[to] = item;
     	array[index] = tmp;
-    });
+   	});
+   	$scope.$on('delete', function(evt, item, array, index) {
+   		console.log('delete');
+   		array.splice(index, 1);
+   	});
+   	$scope.$on('zoom', function(evt, item, array, index) {
+        var image = new Image();
+        image.src = item.src;
+
+        var w = $window.open("");
+        w.document.write(image.outerHTML);
+   	});
 }];
 
 },{}],4:[function(require,module,exports){
