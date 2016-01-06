@@ -1,34 +1,28 @@
-module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader',  function($scope, $window, Product, ImageService, FileUploader){
+module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'AttributeSet',  function($scope, $window, Product, ImageService, FileUploader, AttributeSet){
 	'use strict';
-	//Variation Options Available
-	$scope.available_attribute_options = [{
-		name: 'Capacity',
-		id: 5,
-		unit: 'mAh',
-		available_options: [
-			{ Id: 51, Name: '1000 mAh'},
-			{ Id: 31, Name: '2500 mAh'},
-			{ Id: 92, Name: '10000 mAh' }
-		]
-	},{
-		name: 'Material',
-		id: 1,
-		unit: '',
-		available_options: [
-			{ Id: 1, Name: "Palladium" },
-			{ Id: 2, Name: "Carbon Fiber" },
-			{ Id: 3, Name: "Nano Polymer" }
-		]
-	}];
+	$scope.formData = {};
+	//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
+	$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
+	//Test
+	$scope.items = [{text: "hello"}, {text:"world"}];	
+	//Attribute Options to be filled via API
+	$scope.available_attribute_options = [];
+  	AttributeSet.getByCategory(11).then(function(data){
+		$scope.available_attribute_options = data; 		
+		console.log("Attribute Set", data);	
+	});	
 
-	var Pair = function(a,b){ 
+	//Struct for Variant Pair
+	var Pair = function(a,b){
 		this.first = a; 
 		this.second = b; 
-		this.hash = a.Id + "-" + b.Id;
-		this.text = (a.Name + ", " + b.Name)
+		this.hash = a+b;
+		this.text = (a + ", " + b);
 	};
 
+	//Multiplied Variants (product)
 	$scope.variants = [];
+	//Unmultiplied Variants (factor)
 	$scope.attribute_options = {
 		0: {
 			attribute: null,
@@ -41,13 +35,22 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader',  func
 	};
 
 	//When selected attribute change we have to regen cross multiply
-	$scope.$watch('attribute_options[0].attribute_id', function(oldv, newv){
+	$scope.$watch('attribute_options[0].attribute', function(oldv, newv){
 		//Reset Options
-		$scope.attribute_options[0].options = [];
+		$(".select2-init").select2({
+			tags: true
+		});
+		$scope.attribute_options[0].options = [];	
 
 	});	
-	$scope.$watch('attribute_options[1].attribute_id', function(oldv, newv){
+
+	$scope.$watch('attribute_options[1].attribute', function(oldv, newv){	
 		//Reset Options
+		$(".select2-init").select2({
+			tags: true
+		});
+		//TODO: does this need $digest listener again?
+
 		$scope.attribute_options[1].options = [];
 	});	
 	//Multiply attributes into variants
@@ -57,6 +60,7 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader',  func
 	
 		//TODO: Don't clear but only removed changed/stale	
 		$scope.variants = [];
+		//Multiply out unmultiplied options
 		$scope.attribute_options[0].options.forEach(function(A){
 			$scope.attribute_options[1].options.forEach(function(B){
 				$scope.variants.push(new Pair(A,B));
@@ -69,10 +73,13 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader',  func
 	//When selected attribute change, the other box wil not allow to have selected option
 
 	//Initialize Select2 (variation select)
-	$.fn.select2.defaults.set("tokenSeparators", [",", " "]);
+	$.fn.select2.defaults.set("tokenSeparators", [","]);
 	$(document).on('shown.bs.tab ready', function(){
-		$(".select2-init").select2();
+		$(".select2-init").select2({
+			tags: true
+		});
 		$(".select2-init").on("change", function(ev){
+			console.log("select:change @ Digest Loop");
 			$scope.$digest();
 		});
 	});

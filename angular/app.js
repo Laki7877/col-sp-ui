@@ -31,7 +31,7 @@ var app = angular.module('colspApp', ['angularFileUpload', 'base64'])
 .factory('base64', helpers.base64)
 .factory('Product', services.product)
 .factory('Image', services.image)
-
+.factory('AttributeSet', services.attributeSet)
 //Directives
 .directive('ngDelegate', directives.ngDelegate)
 

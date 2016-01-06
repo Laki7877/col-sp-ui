@@ -8,17 +8,19 @@
 					<div class="form-group" ng-repeat="jth in [0,1]">
 						<div class="width-label">
 							<select class="form-control"
-							ng-options="i as i.name 
-							for i in available_attribute_options track by i.id"
-						       	ng-model="attribute_options[jth].attribute">
+								ng-options="i as i.Attribute.AttributeNameEn for i in formData.attribute_set.AttributeSetMaps track by i.$id"
+						       		ng-model="attribute_options[jth].attribute">
 							</select>
 						</div>
 						<div class="width-field-normal">
 							<div class="input-with-unit">
-								<select ng-options="i as i.Name for i in attribute_options[jth].attribute.available_options track by i.Id" ng-model="attribute_options[jth].options" class="form-control select2-init" multiple="multiple">
+								<select ng-model="attribute_options[jth].options" class="form-control select2-init" multiple="multiple">
+									<option ng-repeat="i in attribute_options[jth].attribute.Attribute.AttributeValueMaps">
+										{{ i.AttributeValue.AttributeValueEn }}
+									</option>
 								</select>
 								<span class="input-unit">
-									{{ available_attribute_options[jth].unit }}
+									{{ attribute_options[jth].attribute.unit }}
 								</span>
 							</div>
 						</div>

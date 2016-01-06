@@ -32,7 +32,10 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Detail</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Attribute Set", "options" => ["แบตเตอรี่เสริม / Power Bank", "สมาร์ทโฟน / Smart Phone"]]) ?>
+					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Attribute Set",
+       							"ng_options"=>"i as _attrEnTh(i) for i in available_attribute_options", 
+							"ng_model"=>"formData.attribute_set"
+							]) ?>
 					<? $this->insert('components/forms/input-text-with-label-unit', ["label" => "Capacity", "unit" => "mAh", "form_group_class" => "margin-top-30"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Body Color (Thai)"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Body Color (English)"]) ?>
