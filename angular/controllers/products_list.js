@@ -50,8 +50,8 @@ module.exports = ['$scope', '$http', 'Product',  function($scope, $http, Product
 	var reloadData = function(){
 		$scope.notReady = true;
 		Product.getAll($scope.tableParams).then(function(x){
-			$scope.productTotal = x.data.total;
-			$scope.productList = x.data.data;
+			$scope.productTotal = x.total;
+			$scope.productList = x.data;
 			$scope.notReady = false;
 		});
 	};
