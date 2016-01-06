@@ -18,7 +18,6 @@ module.exports = ['$scope', '$http', 'Product', 'Image', 'FileUploader',  functi
 	$('.input-icon-calendar').datetimepicker({
 		format: "LL" // this is momentjs format make it show only date, no time will be show. see: http://momentjs.com/docs/#/displaying/format/
 	});
-
 	//Initialize Select2
 	$.fn.select2.defaults.set("tokenSeparators", [",", " "]);
 	$(document).on('shown.bs.tab ready', function(){
@@ -43,7 +42,6 @@ module.exports = ['$scope', '$http', 'Product', 'Image', 'FileUploader',  functi
 	        $scope.$apply();
 		};
 	}
-	console.log('wut');
     $scope.uploader.onAfterAddingFile = function(fileItem) {
         console.info('onAfterAddingFile', fileItem);
         var reader = new FileReader();

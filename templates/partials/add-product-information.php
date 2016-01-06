@@ -8,9 +8,9 @@
 				<div class="form-section-content">
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Name (Thai)", "label_class" => "required", "size" => "large"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Name (English)", "label_class" => "required", "size" => "large"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Brand Name", "label_class" => "required", "size" => "large"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "SKU", "label_class" => "required", "size" => "large"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "UPC", "tooltip" => "The Universal Product Code (UPC) is a barcode symbology (i.e., a specific type of barcode) that is widely used in the USAX.", "size" => "large"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Brand Name", "label_class" => "required", 'input_class' => 'input-icon-right-search', 'placeholder' => 'Search for Brand Name']) ?>
 				</div>
 			</div>
 			<div class="form-section">
@@ -24,16 +24,16 @@
 				<div class="form-section-header"><h2>Description</h2></div>
 				<div class="form-section-content">
 					<? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (Thai)", "size" => "xxl"]) ?>
-					<? $this->insert('components/forms/textarea-with-label', ["label" => "Short Description (Thai)", "tooltip" => "This is a tooltip text", "size" => "xxl"]) ?>
-					<? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (English)", "size" => "xxl"]) ?>
-					<? $this->insert('components/forms/textarea-with-label', ["label" => "Short Description (English)", "tooltip" => "This is a tooltip text", "size" => "xxl"]) ?>
+					<? $this->insert('components/forms/textarea-with-label', ["label" => "Short Description (Thai)", "tooltip" => "This is a tooltip text", "size" => "xxl", "form_group_class" => "margin-top-30"]) ?>
+					<? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (English)", "size" => "xxl", "form_group_class" => "margin-top-40"]) ?>
+					<? $this->insert('components/forms/textarea-with-label', ["label" => "Short Description (English)", "tooltip" => "This is a tooltip text", "size" => "xxl", "form_group_class" => "margin-top-30"]) ?>
 				</div>
 			</div>
 			<div class="form-section">
 				<div class="form-section-header"><h2>Detail</h2></div>
 				<div class="form-section-content">
 					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Attribute Set", "options" => ["แบตเตอรี่เสริม / Power Bank", "สมาร์ทโฟน / Smart Phone"]]) ?>
-					<? $this->insert('components/forms/input-text-with-label-unit', ["label" => "Capacity", "unit" => "mAh"]) ?>
+					<? $this->insert('components/forms/input-text-with-label-unit', ["label" => "Capacity", "unit" => "mAh", "form_group_class" => "margin-top-30"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Body Color (Thai)"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Body Color (English)"]) ?>
 					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Material", "options" => ["พลาสติก / Plastic", "โลหะ / Iron"]]) ?>
@@ -58,9 +58,8 @@
 				<div class="form-section-header"><h2>Shipping Detail</h2></div>
 				<div class="form-section-content">
 					<? $this->insert('components/forms/multiple-radio-multiline', ["label" => "Shipping Method", "choices" => ["Dropship by 3PL", "Central Fulfillment"]]) ?>
-					<? $this->insert('components/forms/input-text-with-label-disabled', ["label" => "PID", "tooltip" => "Help text", "value" => "Only for Central Fulfillment"]) ?>
-					<? $this->insert('components/forms/input-text-with-label-unit', ["label" => "Preparation Time", "label_class" => "required", "unit" => "Day"]) ?>
-					<? $this->insert('components/forms/multiple-input-with-label', ["label" => "Package Dimension", "label_class" => "required"]) ?>
+					<? $this->insert('components/forms/input-text-with-label-unit', ["label" => "Preparation Time", "label_class" => "required", "unit" => "Day", "form_group_class" => "margin-top-30"]) ?>
+					<? $this->insert('components/forms/multiple-input-with-label', ["label" => "Package Dimension", "label_class" => "required", "form_group_class" => "margin-top-30"]) ?>
 					<? $this->insert('components/forms/multiple-input', ["label" => "Weight", "label_class" => "required"]) ?>
 				</div>
 			</div>
@@ -68,7 +67,7 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
-			<p class="text-align-right margin-bottom-30"><span class="color-red">*</span> - Required Field</p>
+			<p class="text-align-right margin-bottom-30"><span class="color-red"><i class="fa fa-asterisk"></i></span> - Required Field</p>
 		</div>
 	</div>
 </div>

@@ -95,7 +95,7 @@ form
 			content: "*"
 			position: absolute
 			color: red
-			top: 0
+			top: 3px
 			right: -6px
 			font-size: 16px
 			line-height: 1
@@ -131,9 +131,27 @@ form
 			&.input-xl
 				width: 150px
 
+			&.input-xxl
+				width: 200px
+
+
+
+
 	select.form-control
 		@include appearance(none)
 		background-position: right 6px center
 		background-repeat: no-repeat
 		background-image: url("/assets/img/dropdown.png")
 		background-size: 9px 6px
+
+	.ah-select2-dropdown
+		width: 100%
+
+	&.sticky-mainform-action
+		padding-bottom: 64px
+		.main-form-action
+			position: fixed
+			bottom: 0
+			width: 100%
+			padding-right: $sidebar-width
+			background: #fff

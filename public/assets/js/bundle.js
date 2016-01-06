@@ -70,7 +70,6 @@ module.exports = ['$scope', '$http', 'Product', 'Image', 'FileUploader',  functi
 	$('.input-icon-calendar').datetimepicker({
 		format: "LL" // this is momentjs format make it show only date, no time will be show. see: http://momentjs.com/docs/#/displaying/format/
 	});
-
 	//Initialize Select2
 	$.fn.select2.defaults.set("tokenSeparators", [",", " "]);
 	$(document).on('shown.bs.tab ready', function(){
@@ -95,7 +94,6 @@ module.exports = ['$scope', '$http', 'Product', 'Image', 'FileUploader',  functi
 	        $scope.$apply();
 		};
 	}
-	console.log('wut');
     $scope.uploader.onAfterAddingFile = function(fileItem) {
         console.info('onAfterAddingFile', fileItem);
         var reader = new FileReader();
@@ -103,7 +101,6 @@ module.exports = ['$scope', '$http', 'Product', 'Image', 'FileUploader',  functi
         reader.readAsDataURL(fileItem._file);
     };
     $scope.$on('left', function(item, array, index) {
-    	console.log('left');
     	var to = index - 1;
     	if(to < 0) to = array.length - 1;
     	
@@ -112,7 +109,6 @@ module.exports = ['$scope', '$http', 'Product', 'Image', 'FileUploader',  functi
     	array[index] = tmp;
     });
     $scope.$on('right', function(item, array, index) {
-    	console.log('right');
     	var to = index + 1;
     	if(to >= array.length) to = 0;
     	

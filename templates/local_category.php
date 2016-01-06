@@ -51,8 +51,7 @@
 
 			// Toggle Local Category page
 			$( "i.local-category-toggle-area" ).click(function() {
-				$(this).closest('li').children('ol').slideToggle('slow');
-				$(this).toggleClass('fa-chevron-right fa-chevron-down');
+				$(this).toggleClass('fa-chevron-right fa-chevron-down').closest('li').children('ol').slideToggle('slow');
 			});
 		});
 	</script>

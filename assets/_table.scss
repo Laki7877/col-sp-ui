@@ -42,6 +42,23 @@
 .table-section {
   margin-top:  30px;
 
+  // Set border-table's color to $color-grey
+  table.table.table-curved.product-list-table {
+    border-color: $color-grey;
+  }
+
+  table > tbody > tr > td, table > thead > tr > th {
+    border-color: $color-grey;
+  }
+  // End setting border color
+
+  .product-list-table {
+   
+    > tbody >tr:first-child > td {
+      border-top: none;
+    }
+  }
+
   // Override Bootstrap's th width that set to 2px
   .table > thead > tr > th {
     border-bottom-width : 1px;
@@ -86,21 +103,19 @@
   // Add underline to header link
   a.header-link {
     color: $color-black;
-
+      span.active-underline {
+        border-bottom:  2px solid $color-soft-blue;
+        padding-bottom: 4px;
+      }
     &:focus {
       text-decoration: none;
-
-      span{
-        border-bottom:2px solid $color-soft-blue;
-        padding-bottom:3px;
-      }
     }
   }
 
   .table-curved {
     // overflow:hidden;
     border-collapse:separate;
-    border: solid $color-grey 1px;
+    // border: solid $color-grey 1px;
     border-radius: 3px;
   }
 
