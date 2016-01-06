@@ -32,15 +32,34 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Detail</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Attribute Set",
-       							"ng_options"=>"i as _attrEnTh(i) for i in available_attribute_options", 
-							"ng_model"=>"formData.attribute_set"
-							]) ?>
-					<? $this->insert('components/forms/input-text-with-label-unit', ["label" => "Capacity", "unit" => "mAh", "form_group_class" => "margin-top-30"]) ?>
+					<? $this->insert('components/forms/dropdown-with-label', 
+						["label" => "Attribute Set",
+       					 "ng_options"=> "i as _attrEnTh(i) for i in availableAttributeSets", 
+				  		 "ng_model"=> "formData.AttributeSet"
+						]) 
+					?>
+
+					<div class="form-group" ng-repeat="amap in formData.AttributeSet.AttributeSetMaps">
+						<div class="width-label"><label class="control-label">
+							{{ amap.Attribute.AttributeNameEn }}
+						</label></div>
+						<div class="width-field-normal">
+							<select ng-if="_isListInput(amap.Attribute.DataType)" class="form-control">
+								<option ng-repeat="vmap in amap.Attribute.AttributeValueMaps">
+									{{ vmap.AttributeValue.AttributeValueEn }}
+								</option>
+							</select>
+							<input ng-if="_isFreeTextInput(amap.Attribute.DataType)" type="text" class="form-control"/>
+						</div>
+					</div>
+
+
+<!-- 				<? $this->insert('components/forms/input-text-with-label-unit', ["label" => "Capacity", "unit" => "mAh", "form_group_class" => "margin-top-30"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Body Color (Thai)"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Body Color (English)"]) ?>
 					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Material", "options" => ["พลาสติก / Plastic", "โลหะ / Iron"]]) ?>
-				</div>
+ -->				
+ 					</div>
 			</div>
 			<div class="form-section">
 				<div class="form-section-header"><h2>Keywords</h2></div>

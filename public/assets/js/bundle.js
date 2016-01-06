@@ -53,14 +53,20 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'Attr
 	$scope.formData = {};
 	//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
 	$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
-	//Test
-	$scope.items = [{text: "hello"}, {text:"world"}];	
+	
 	//Attribute Options to be filled via API
-	$scope.available_attribute_options = [];
+	$scope.availableAttributeSets = [];
+
+	$scope._isFreeTextInput = function(t){
+		return (t == "ST");
+	};
+	$scope._isListInput = function(t){
+		return (t == "LT");
+	};
+
   	AttributeSet.getByCategory(11).then(function(data){
-		$scope.available_attribute_options = data; 		
-		console.log("Attribute Set", data);	
-	});	
+		$scope.availableAttributeSets = data; 		
+	});
 
 	//Struct for Variant Pair
 	var Pair = function(a,b){
@@ -73,7 +79,7 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'Attr
 	//Multiplied Variants (product)
 	$scope.variants = [];
 	//Unmultiplied Variants (factor)
-	$scope.attribute_options = {
+	$scope.attributeOptions = {
 		0: {
 			attribute: null,
 			options: []
@@ -84,40 +90,44 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'Attr
 		}	
 	};
 
-	//When selected attribute change we have to regen cross multiply
-	$scope.$watch('attribute_options[0].attribute', function(oldv, newv){
+	//Regen select2 field for attribute option
+	var initAttributeOptionSelect2 = function(index){
+		var freeText = false;
+		if($scope.attributeOptions[index].attribute){
+			freeText = ($scope._isListInput($scope.attributeOptions[index].attribute.Attribute.DataType));
+		}
 		//Reset Options
-		$(".select2-init").select2({
-			tags: true
+		$(".select2-init-" + index).select2({
+			tags: !freeText
 		});
-		$scope.attribute_options[0].options = [];	
 
+		$scope.attributeOptions[index].options = [];
+	};
+
+	$scope.$watch('attributeOptions[0].attribute', function(){
+		initAttributeOptionSelect2(0);
 	});	
 
-	$scope.$watch('attribute_options[1].attribute', function(oldv, newv){	
-		//Reset Options
-		$(".select2-init").select2({
-			tags: true
-		});
-		//TODO: does this need $digest listener again?
-
-		$scope.attribute_options[1].options = [];
+	$scope.$watch('attributeOptions[1].attribute', function(){	
+		initAttributeOptionSelect2(1);
 	});	
+
 	//Multiply attributes into variants
-	$scope.$watch('attribute_options', function(oldv, newv){
-		if($scope.attribute_options[1].options.length == 0) return;
-		if($scope.attribute_options[0].options.length == 0) return;
-	
+	$scope.$watch('attributeOptions', function(oldv, newv){
+		if($scope.attributeOptions[1].options.length == 0) return;
+		if($scope.attributeOptions[0].options.length == 0) return;
+		
 		//TODO: Don't clear but only removed changed/stale	
 		$scope.variants = [];
 		//Multiply out unmultiplied options
-		$scope.attribute_options[0].options.forEach(function(A){
-			$scope.attribute_options[1].options.forEach(function(B){
+		$scope.attributeOptions[0].options.forEach(function(A){
+			$scope.attributeOptions[1].options.forEach(function(B){
 				$scope.variants.push(new Pair(A,B));
 			});
 		});
+
+		$scope.formData.DefaultVariant = $scope.variants[0];
 		
-		console.log($scope.variants);
 	}, true);
 
 	//When selected attribute change, the other box wil not allow to have selected option
@@ -125,25 +135,26 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'Attr
 	//Initialize Select2 (variation select)
 	$.fn.select2.defaults.set("tokenSeparators", [","]);
 	$(document).on('shown.bs.tab ready', function(){
-		$(".select2-init").select2({
-			tags: true
-		});
+		initAttributeOptionSelect2(0);
+		initAttributeOptionSelect2(1);
+
 		$(".select2-init").on("change", function(ev){
-			console.log("select:change @ Digest Loop");
 			$scope.$digest();
 		});
+
 	});
 
 
 	//TODO: Init CK Editor (apparently this breaks)
 	
-/*	$('[ckeditor-initialize]').each(function(idx, textarea) {
+	/*	$('[ckeditor-initialize]').each(function(idx, textarea) {
 		CKEDITOR.readyplace( textarea );
 	});
 	$('.input-icon-calendar').datetimepicker({
 		format: "LL" // this is momentjs format make it show only date, no time will be show. see: http://momentjs.com/docs/#/displaying/format/
 	});
-*/
+	*/
+
 	$("body").tooltip({ selector: '[data-toggle=tooltip]' });
 	
 	//Product Image
