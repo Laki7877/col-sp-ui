@@ -1,5 +1,6 @@
 //Products Service
 module.exports = ['$q', '$http', 'common', function($q, $http, common){
+	'use strict';
 	var service = {};
 
 	/**

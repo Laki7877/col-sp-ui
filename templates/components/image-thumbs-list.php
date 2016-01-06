@@ -1,13 +1,19 @@
 <?php
+	if(!isset($images)) $images = "[]";
+	if(isset($sep)) {
+		$sep = ' $index == '. $sep;
+	}
+	else {
+		$sep = '';
+	}
 ?>
 <ul class="image-vertical-list">
-	<? foreach ($images as $idx => $image): ?>
-		<? if (isset($sep) && $sep == $idx): ?>
-			<li class="list-section-break"></li>
-		<? endif ?>
-
-		<li class="list-item">
-			<? $this->insert('components/image-thumbs-actions-'.$action, ["image_url" => $image]) ?>
-		</li>
-	<? endforeach ?>
+	<li class="list-section-break" ng-if="<?=$sep?>" ng-repeat-start="item in <?=$images?>">
+	</li>
+	<li class="list-item" ng-repeat-end="">
+		<? $this->insert('components/image-thumbs-actions-'. $action, [
+			"image" => "item", 
+			"image_url" => "item.src",
+			"array" => $images ]) ?>
+	</li>
 </ul>

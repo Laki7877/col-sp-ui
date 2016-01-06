@@ -1,7 +1,8 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+'use strict';
 //App Start here
 var angular = require('angular');
-var bulk = ({"controllers":({"products_add":require("./controllers/products_add.js"),"products_list":require("./controllers/products_list.js")}),"services":({"images":require("./services/images.js"),"products":require("./services/products.js")}),"helpers":({"base64":require("./helpers/base64.js"),"common":require("./helpers/common.js"),"storage":require("./helpers/storage.js"),"util":require("./helpers/util.js")}),"directives":({"ngDelegate":require("./directives/ngDelegate.js")})});
+var bulk = ({"controllers":({"products_add":require("./controllers\\products_add.js"),"products_list":require("./controllers\\products_list.js")}),"services":({"images":require("./services\\images.js"),"products":require("./services\\products.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js")}),"directives":({"ngDelegate":require("./directives\\ngDelegate.js")})});
 var config = require('./config');
 
 //External dependencies
@@ -20,6 +21,7 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'angularFileUpl
 
 //App init
 .run(['$base64', 'storage', function($base64, storage) {
+	//TODO: login page
 	storage.storeSessionToken($base64.encode('duckvader:vader'));
 }])
 //Configuration
@@ -40,7 +42,7 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'angularFileUpl
 .controller('ProductListCtrl', controllers.products_list)
 .controller('ProductAddCtrl', controllers.products_add);
 
-},{"./config":2,"./controllers/products_add.js":3,"./controllers/products_list.js":4,"./directives/ngDelegate.js":5,"./helpers/base64.js":6,"./helpers/common.js":7,"./helpers/storage.js":8,"./helpers/util.js":9,"./services/images.js":10,"./services/products.js":11,"angular":17,"angular-base64":12,"angular-file-upload":13,"angular-sanitize":15,"ui-select":18}],2:[function(require,module,exports){
+},{"./config":2,"./controllers\\products_add.js":3,"./controllers\\products_list.js":4,"./directives\\ngDelegate.js":5,"./helpers\\base64.js":6,"./helpers\\common.js":7,"./helpers\\storage.js":8,"./helpers\\util.js":9,"./services\\images.js":10,"./services\\products.js":11,"angular":17,"angular-base64":12,"angular-file-upload":13,"angular-sanitize":15,"ui-select":18}],2:[function(require,module,exports){
 //remote baseUrl - 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/'
 module.exports = {
 	baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/',
@@ -49,6 +51,7 @@ module.exports = {
 
 },{}],3:[function(require,module,exports){
 module.exports = ['$scope', '$http', 'Product', 'Image', 'FileUploader',  function($scope, $http, Product, Image, FileUploader){
+	'use strict';
 	//Variation Options Available
 	$scope.variation_options = [{
 		name: 'Capacity',
@@ -60,9 +63,9 @@ module.exports = ['$scope', '$http', 'Product', 'Image', 'FileUploader',  functi
 		unit: ''
 	}];
 
-  //Will Replace or wrap with angular equivalent
-	$('[ckeditor-initialize]').each(function(idx, textarea) {
-		CKEDITOR.replace( textarea );
+  	//Will Replace or wrap with angular equivalent
+	/*$('[ckeditor-initialize]').each(function(idx, textarea) {
+		CKEDITOR.readyplace( textarea );
 	});
 	$('.input-icon-calendar').datetimepicker({
 		format: "LL" // this is momentjs format make it show only date, no time will be show. see: http://momentjs.com/docs/#/displaying/format/
@@ -75,10 +78,48 @@ module.exports = ['$scope', '$http', 'Product', 'Image', 'FileUploader',  functi
 	});
 
 	$("body").tooltip({ selector: '[data-toggle=tooltip]' });
-
+	*/
 	
 	//Product Image
-	$scope.uploader = Image.getUploader();
+	$scope.uploader360 = Image.getUploader();
+	$scope.images360 = [];
+	$scope.uploader = Image.getUploader('images', {
+		autoUpload: false
+	});
+	$scope.images = [];
+	var loadend = function(reader) {
+		return function() {
+	        $scope.images.push({
+	        	src: reader.result
+	        });
+	        $scope.$apply();
+		};
+	}
+	console.log('wut');
+    $scope.uploader.onAfterAddingFile = function(fileItem) {
+        console.info('onAfterAddingFile', fileItem);
+        var reader = new FileReader();
+        reader.onloadend = loadend(reader);
+        reader.readAsDataURL(fileItem._file);
+    };
+    $scope.$on('left', function(item, array, index) {
+    	console.log('left');
+    	var to = index - 1;
+    	if(to < 0) to = array.length - 1;
+    	
+    	var tmp = array[to];
+    	array[to] = item;
+    	array[index] = tmp;
+    });
+    $scope.$on('right', function(item, array, index) {
+    	console.log('right');
+    	var to = index + 1;
+    	if(to >= array.length) to = 0;
+    	
+    	var tmp = array[to];
+    	array[to] = item;
+    	array[index] = tmp;
+    });
 }];
 
 },{}],4:[function(require,module,exports){
@@ -162,7 +203,6 @@ module.exports = [function() {
 	return {
 		restrict: 'A',
 		link: function(scope, element, attributes) {
-			console.log('yo');
 			element.bind('click', function() {
 				var delegate = attributes.ngDelegate;
 				if(!angular.isString(delegate)) {
@@ -179,182 +219,190 @@ module.exports = [function() {
 	};
 }];
 },{"angular":17}],6:[function(require,module,exports){
-'use strict';
-
 module.exports = [function () {
-        var service = {};
+    'use strict';
+    var service = {};
 
-        /**
-         * Encode a array buffer data into base64 string
-         */
-        service.arrayBufferToBase64 = function (buffer) {
-            var binary = '';
-            var bytes = new Uint8Array(buffer);
-            var len = bytes.byteLength;
-            for (var i = 0; i < len; i++) {
-                binary += String.fromCharCode(bytes[i]);
-            }
-            return window.btoa(binary);
-        };
-        return service;
-    }];
+    /**
+     * Encode a array buffer data into base64 string
+     */
+    service.arrayBufferToBase64 = function (buffer) {
+        var binary = '';
+        var bytes = new Uint8Array(buffer);
+        var len = bytes.byteLength;
+        for (var i = 0; i < len; i++) {
+            binary += String.fromCharCode(bytes[i]);
+        }
+        return window.btoa(binary);
+    };
+    return service;
+}];
 },{}],7:[function(require,module,exports){
-'use strict';
-
-
-module.exports = ['$http', '$q', '$log', 'storage', 'config', 
-        function ($http, $q, $log, storage, config) {
-            return {
-                /**
-                 * Make an http request and add access token
-                 * @param {Object} options the options for $http call
-                 * @returns {Promise} promise
-                 */
-                makeRequest: function (options) {
-                    var deferred = $q.defer();
-                    var accessToken = storage.getSessionToken();
-                    if (!options.headers) {
-                        options.headers = {};
-                    }
-                    if (accessToken && !options.headers.Authorization) {
-                        options.headers.Authorization = 'Basic ' + accessToken;
-                    }
-                    if (options.url.indexOf("http") !== 0) {
-                        options.url = config.REST_SERVICE_BASE_URL + options.url;
-                    }
-                    $http(options)
-                        .success(function (data) {
-                            deferred.resolve(data);
-                        })
-                        .error(function (data, status, headers, config) {
-                            $log.error(status, config.method, config.url, data);
-                            deferred.reject(data || {"error": "Unknown error"});
-                        });
-                    return deferred.promise;
+module.exports = ['$http', '$q', '$log', 'storage', 'config', function ($http, $q, $log, storage, config) {
+    'use strict';
+        return {
+            /**
+             * Make an http request and add access token
+             * @param {Object} options the options for $http call
+             * @returns {Promise} promise
+             */
+            makeRequest: function (options) {
+                var deferred = $q.defer();
+                var accessToken = storage.getSessionToken();
+                if (!options.headers) {
+                    options.headers = {};
                 }
-            };
-        }];
+                if (accessToken && !options.headers.Authorization) {
+                    options.headers.Authorization = 'Basic ' + accessToken;
+                }
+                if (options.url.indexOf("http") !== 0) {
+                    options.url = config.REST_SERVICE_BASE_URL + options.url;
+                }
+                $http(options)
+                    .success(function (data) {
+                        deferred.resolve(data);
+                    })
+                    .error(function (data, status, headers, config) {
+                        $log.error(status, config.method, config.url, data);
+                        deferred.reject(data || {"error": "Unknown error"});
+                    });
+                return deferred.promise;
+            }
+        };
+}];
 },{}],8:[function(require,module,exports){
-'use strict';
-
 module.exports = [function () {
-        var service = {};
-        /**
-         * Returns the stored sessionToken
-         * This method first checks in sessionStorage if sessionToken is not found in sessionStorage
-         * this method checks in localStorage, if sessionToken still not found in localStorage,
-         * then it will return null or undefined
-         * The controllers has to implement the logic that if sessionToken is null/undefined then user is not authorized
-         */
-        service.getSessionToken = function () {
-            var token = sessionStorage.getItem('central.seller.portal.auth.token');
-            if (!token) {
-                token = localStorage.getItem('central.seller.portal.auth.token');
-            }
-            return token;
-        };
-        /**
-         * Store the session token in sessionStorage
-         * A boolean flag is passed which when true indicate that user chose remember me option and data should
-         * also be stored in localStorage
-         */
-        service.storeSessionToken = function (sessionToken, flag) {
-            sessionStorage.setItem('central.seller.portal.auth.token', sessionToken);
-            if (flag) {
-                localStorage.setItem('central.seller.portal.auth.token', sessionToken);
-            }
-        };
+    'use strict';
+    var service = {};
+    /**
+     * Returns the stored sessionToken
+     * This method first checks in sessionStorage if sessionToken is not found in sessionStorage
+     * this method checks in localStorage, if sessionToken still not found in localStorage,
+     * then it will return null or undefined
+     * The controllers has to implement the logic that if sessionToken is null/undefined then user is not authorized
+     */
+    service.getSessionToken = function () {
+        var token = sessionStorage.getItem('central.seller.portal.auth.token');
+        if (!token) {
+            token = localStorage.getItem('central.seller.portal.auth.token');
+        }
+        return token;
+    };
+    /**
+     * Store the session token in sessionStorage
+     * A boolean flag is passed which when true indicate that user chose remember me option and data should
+     * also be stored in localStorage
+     */
+    service.storeSessionToken = function (sessionToken, flag) {
+        sessionStorage.setItem('central.seller.portal.auth.token', sessionToken);
+        if (flag) {
+            localStorage.setItem('central.seller.portal.auth.token', sessionToken);
+        }
+    };
 
-        /**
-         * Get current user profile stored in sessionStorage or localStorage
-         */
-        service.getCurrentUserProfile = function () {
-            var profile = sessionStorage.getItem('central.seller.portal.auth.profile');
-            if (!profile) {
-                profile = localStorage.getItem('central.seller.portal.auth.profile');
-            }
-            return angular.fromJson(profile);
-        };
+    /**
+     * Get current user profile stored in sessionStorage or localStorage
+     */
+    service.getCurrentUserProfile = function () {
+        var profile = sessionStorage.getItem('central.seller.portal.auth.profile');
+        if (!profile) {
+            profile = localStorage.getItem('central.seller.portal.auth.profile');
+        }
+        return angular.fromJson(profile);
+    };
 
-        /**
-         * Store the current user profile in sessionStorage
-         * A boolean flag is passed which when true indicate that user chose remember me option and data
-         * should also be stored in localStorage
-         */
-        service.storeCurrentUserProfile = function (profile, flag) {
-            profile = angular.toJson(profile);
-            sessionStorage.setItem('central.seller.portal.auth.profile', profile);
-            if (flag) {
-                localStorage.setItem('central.seller.portal.auth.profile', profile);
-            }
-        };
+    /**
+     * Store the current user profile in sessionStorage
+     * A boolean flag is passed which when true indicate that user chose remember me option and data
+     * should also be stored in localStorage
+     */
+    service.storeCurrentUserProfile = function (profile, flag) {
+        profile = angular.toJson(profile);
+        sessionStorage.setItem('central.seller.portal.auth.profile', profile);
+        if (flag) {
+            localStorage.setItem('central.seller.portal.auth.profile', profile);
+        }
+    };
 
-        /**
-         * Utility method to clear the sessionStorage
-         */
-        service.clear = function () {
-            sessionStorage.removeItem('central.seller.portal.auth.token');
-            sessionStorage.removeItem('central.seller.portal.auth.profile');
+    /**
+     * Utility method to clear the sessionStorage
+     */
+    service.clear = function () {
+        sessionStorage.removeItem('central.seller.portal.auth.token');
+        sessionStorage.removeItem('central.seller.portal.auth.profile');
 
-            localStorage.removeItem('central.seller.portal.auth.actions');
-            localStorage.removeItem('central.seller.portal.auth.profile');
-        };
+        localStorage.removeItem('central.seller.portal.auth.actions');
+        localStorage.removeItem('central.seller.portal.auth.profile');
+    };
 
-        return service;
-    }];
+    return service;
+}];
 },{}],9:[function(require,module,exports){
-'use strict';
-
 module.exports = ['storage', function (storage) {
-        var service = {};
+    'use strict';
+    var service = {};
 
-        /**
-         * Function to check if any user is currently logged in
-         */
-        service.isLoggedIn = function () {
-            var profile = storage.getCurrentUserProfile();
-            var sessionToken = storage.getSessionToken();
-            return !!(profile && sessionToken);
-        };
+    /**
+     * Function to check if any user is currently logged in
+     */
+    service.isLoggedIn = function () {
+        var profile = storage.getCurrentUserProfile();
+        var sessionToken = storage.getSessionToken();
+        return !!(profile && sessionToken);
+    };
 
-        return service;
-    }];
+    return service;
+}];
 
 },{}],10:[function(require,module,exports){
+var angular = require('angular');
 //Image Service
 module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', function($q, $http, common, storage, config, FileUploader){
+	'use strict';
 	var service = {};
 
 	/**
 	 * Get image uploader
 	 */
-	service.getUploader = function(url) {
+	service.getUploader = function(url, opt) {
+		opt = opt || {};
+
 		var accessToken = storage.getSessionToken();
-		var uploader = new FileUploader({
+		var options = angular.merge({
 			url: config.REST_SERVICE_BASE_URL + url,
 			autoUpload: true,
 			headers: {
 				Authorization: 'Basic ' + accessToken
 			},
-			filters: []
-		});
-
-		uploader.filters.push({
+			queueLimit: 10,
+			filters: [{
             name: 'imageFilter',
             fn: function(item /*{File|FileLikeObject}*/, options) {
                 var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
                 return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
-            }
-        });
+            }}]
+		}, opt);
+		var uploader = new FileUploader(options);
+
         return uploader;
+	}
+
+	/**
+	 * Get all images
+	 */
+	service.getAll = function() {
+		common.makeRequest({
+
+		});
 	}
 
 	return service;
 }];
 
-},{}],11:[function(require,module,exports){
+},{"angular":17}],11:[function(require,module,exports){
 //Products Service
 module.exports = ['$q', '$http', 'common', function($q, $http, common){
+	'use strict';
 	var service = {};
 
 	/**

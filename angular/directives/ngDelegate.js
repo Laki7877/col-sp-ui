@@ -4,7 +4,6 @@ module.exports = [function() {
 	return {
 		restrict: 'A',
 		link: function(scope, element, attributes) {
-			console.log('yo');
 			element.bind('click', function() {
 				var delegate = attributes.ngDelegate;
 				if(!angular.isString(delegate)) {
