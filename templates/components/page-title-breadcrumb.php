@@ -1,7 +1,7 @@
 <?php
 $extracted = explode('/', $text);
 $extracted = array_map(function($item, $idx) {
-  return "<a class=\"ah-breadcrumb-path ah-breadcrumb-idx-$idx\">".$item.'</a>';
+  return "<a href=\"/?p=index\" class=\"ah-breadcrumb-path ah-breadcrumb-idx-$idx\">".$item.'</a>';
 }, $extracted, array_keys($extracted));
 $newText = implode('<span class="ah-breadcrumb-splitter">/</span>', $extracted);
 ?>

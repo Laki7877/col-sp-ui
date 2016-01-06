@@ -1,4 +1,4 @@
-<div class="form-group">
+<div class="form-group <?=$form_group_class?>">
 	<div class="width-label"><label class="control-label <?=$label_class?>"><?= $label ?></label></div>
 	<div class="width-field-xl">
 		<div class="bootstrap-tagsinput tagsinput-plain">

@@ -1,10 +1,10 @@
 <?php
 $menus = [
-	["id" => "information", "name" => 'Information', "class" => "require"],
+	["id" => "information", "name" => 'Information', "class" => "require active"],
 	["id" => "images", "name" => 'Images', "class" => "require"],
-	["id" => "category", "name" => 'Category', 'class' => 'active'],
-	["id" => "variation", "name" => 'Variation'],
-	["id" => "more_option", "name" => 'More Options'],
+	["id" => "category", "name" => 'Category', 'class' => ''],
+	["id" => "variation", "name" => 'Variation', 'class' => ''],
+	["id" => "more_option", "name" => 'More Options', 'class' => ''],
 ];
 
 $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
@@ -16,15 +16,15 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 
 		<div ng-controller="ProductAddCtrl" class="add-product-body">
 			<? $this->insert('components/tab-nav', ["items" => $menus]) ?>
-			<form class="ah-form">
+			<form class="ah-form sticky-mainform-action">
 				<div class="tab-content">
-					<div role="tabpanel" class="tab-pane margin-top-20" id="information">
+					<div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
 						<? $this->insert('partials/add-product-information') ?>
 					</div>
 					<div role="tabpanel" class="tab-pane margin-top-20" id="images">
 						<? $this->insert('partials/add-product-images') ?>
 					</div>
-					<div role="tabpanel" class="tab-pane margin-top-20 active" id="category">
+					<div role="tabpanel" class="tab-pane margin-top-20" id="category">
 						<? $this->insert('partials/add-product-category') ?>
 					</div>
 					<div role="tabpanel" class="tab-pane margin-top-20" id="variation">
@@ -57,4 +57,46 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 
 	<script src="/assets/libs/select2/js/select2.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/assets/libs/select2/css/select2.min.css">
+
+	<script>
+		/**
+		$('[ckeditor-initialize]').each(function(idx, textarea) {
+			CKEDITOR.replace( textarea );
+		});
+		$('.input-icon-calendar').datetimepicker({
+			format: "LL" // this is momentjs format make it show only date, no time will be show. see: http://momentjs.com/docs/#/displaying/format/
+		});
+
+		$.fn.select2.defaults.set("tokenSeparators", [",", " "]);
+		$.fn.select2.defaults.set("minimumResultsForSearch", Infinity);
+		var select2Init = $(".select2-init")
+		$(document).on('shown.bs.tab ready', select2Init.select2.bind(select2Init));
+
+		$("body").tooltip({ selector: '[data-toggle=tooltip]' });
+
+		$('.image-drop-zone').on('dragover', function(e) {
+			var $this = $(this);
+			e.preventDefault();
+			$this.addClass('hover');
+		}).on('dragleave drop', function(e) {
+			var $this = $(this);
+			e.preventDefault();
+			$this.removeClass('hover');
+		});
+		$('[data-trigger="file"]').on('click', function(e) {
+			e.preventDefault();
+			var $this = $(this);
+			var target = $this.data('target');
+			$(target).trigger('click');
+		});
+		$('#product-images, #product-360').on('drop', function(e) {
+			e.preventDefault();
+			console.log(e.type);
+			//TODO: UPLOAD FILE WHEN USER DROPPED INTO DROPZONE
+			return false;
+		})
+			--- For reference only ---
+		**/
+	</script>
+
 <?php $this->stop() ?>

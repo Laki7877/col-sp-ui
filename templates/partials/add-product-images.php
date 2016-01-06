@@ -5,6 +5,7 @@
 		<div class="col-xs-12">
 			<? $this->insert('components/forms/form-section-upload-new-product-image', ['uploader' => 'uploader']) ?>
 			<? $this->insert('components/forms/form-section-upload-new-product-image-360', ['uploader' => 'uploader']) ?>
+
 			<div class="form-section">
 				<div class="form-section-header"><input type="checkbox" /> <span>Embed Video</span></div>
 				<div class="form-section-content">
