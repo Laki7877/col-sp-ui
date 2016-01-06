@@ -16,7 +16,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 
 		<div class="add-product-body">
 			<? $this->insert('components/tab-nav', ["items" => $menus]) ?>
-			<form class="ah-form">
+			<form class="ah-form sticky-mainform-action">
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
 						<? $this->insert('partials/add-product-information') ?>
