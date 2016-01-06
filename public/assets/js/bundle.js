@@ -60,14 +60,14 @@ module.exports = ['$scope', '$http', 'Product', 'Image', 'FileUploader',  functi
 		unit: ''
 	}];
 
-  //Will Replace or wrap with angular equivalent
-	$('[ckeditor-initialize]').each(function(idx, textarea) {
+	  //Will Replace or wrap with angular equivalent
+/*	$('[ckeditor-initialize]').each(function(idx, textarea) {
 		CKEDITOR.replace( textarea );
 	});
 	$('.input-icon-calendar').datetimepicker({
 		format: "LL" // this is momentjs format make it show only date, no time will be show. see: http://momentjs.com/docs/#/displaying/format/
 	});
-
+*/
 	//Initialize Select2
 	$.fn.select2.defaults.set("tokenSeparators", [",", " "]);
 	$(document).on('shown.bs.tab ready', function(){
