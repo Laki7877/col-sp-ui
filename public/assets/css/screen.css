@@ -13695,12 +13695,13 @@ html, body {
 }
 /* line 104, ../../../assets/_add_product_page.sass */
 .image-thumbs-actions .image-thumbs-img-wrapper {
+  background: white;
   width: 148px;
   height: 148px;
   position: relative;
   overflow: hidden;
 }
-/* line 110, ../../../assets/_add_product_page.sass */
+/* line 111, ../../../assets/_add_product_page.sass */
 .image-thumbs-actions .image-thumbs-img-wrapper > img {
   width: 100%;
   height: 100%;
@@ -13712,7 +13713,7 @@ html, body {
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-/* line 118, ../../../assets/_add_product_page.sass */
+/* line 119, ../../../assets/_add_product_page.sass */
 .image-thumbs-actions .actions-wrapper {
   width: 100%;
   padding-top: 7.5px;
@@ -13720,7 +13721,7 @@ html, body {
   border-top: 1px solid #BCC7D5;
   height: 34px;
 }
-/* line 126, ../../../assets/_add_product_page.sass */
+/* line 127, ../../../assets/_add_product_page.sass */
 .image-thumbs-actions .actions-wrapper .action {
   display: block;
   text-align: center;
@@ -13728,59 +13729,59 @@ html, body {
   color: #7B7F8F;
   cursor: pointer;
 }
-/* line 132, ../../../assets/_add_product_page.sass */
+/* line 133, ../../../assets/_add_product_page.sass */
 .image-thumbs-actions .actions-wrapper .action .fa {
   font-size: 20px;
 }
-/* line 135, ../../../assets/_add_product_page.sass */
+/* line 136, ../../../assets/_add_product_page.sass */
 .image-thumbs-actions .actions-wrapper.actions-2 .action {
   width: 50%;
 }
-/* line 137, ../../../assets/_add_product_page.sass */
+/* line 138, ../../../assets/_add_product_page.sass */
 .image-thumbs-actions .actions-wrapper.actions-3 .action {
   width: 33.33%;
 }
-/* line 139, ../../../assets/_add_product_page.sass */
+/* line 140, ../../../assets/_add_product_page.sass */
 .image-thumbs-actions .actions-wrapper.actions-4 .action {
   width: 25%;
 }
 
-/* line 142, ../../../assets/_add_product_page.sass */
+/* line 143, ../../../assets/_add_product_page.sass */
 .variation-table {
   width: 878px;
 }
-/* line 146, ../../../assets/_add_product_page.sass */
+/* line 147, ../../../assets/_add_product_page.sass */
 .variation-table .column-sku, .variation-table .column-price, .variation-table .column-sale-price, .variation-table .column-inventory, .variation-table .column-pid {
   width: 106px;
 }
-/* line 148, ../../../assets/_add_product_page.sass */
+/* line 149, ../../../assets/_add_product_page.sass */
 .variation-table .column-detail {
   width: 136px;
 }
-/* line 150, ../../../assets/_add_product_page.sass */
+/* line 151, ../../../assets/_add_product_page.sass */
 .variation-table .column-visibility {
   width: 96px;
 }
 
-/* line 153, ../../../assets/_add_product_page.sass */
+/* line 154, ../../../assets/_add_product_page.sass */
 .modal-size-warning {
   width: 400px;
 }
 
-/* line 156, ../../../assets/_add_product_page.sass */
+/* line 157, ../../../assets/_add_product_page.sass */
 .modal-product-image img {
   width: 100%;
 }
 
-/* line 158, ../../../assets/_add_product_page.sass */
+/* line 159, ../../../assets/_add_product_page.sass */
 .confirmation-modal {
   margin-top: 20px;
 }
-/* line 161, ../../../assets/_add_product_page.sass */
+/* line 162, ../../../assets/_add_product_page.sass */
 .confirmation-modal.no-margin {
   margin-top: 0;
 }
-/* line 164, ../../../assets/_add_product_page.sass */
+/* line 165, ../../../assets/_add_product_page.sass */
 .confirmation-modal .confirmation-modal-text {
   position: relative;
   float: left;
@@ -13789,21 +13790,21 @@ html, body {
   padding-left: 15px;
   padding-right: 15px;
 }
-/* line 168, ../../../assets/_add_product_page.sass */
+/* line 169, ../../../assets/_add_product_page.sass */
 .confirmation-modal .confirmation-modal-text .sign-icon {
   float: left;
   width: 60px;
   height: 50px;
 }
-/* line 172, ../../../assets/_add_product_page.sass */
+/* line 173, ../../../assets/_add_product_page.sass */
 .confirmation-modal .confirmation-modal-text .sign-icon > .fa {
   font-size: 50px;
 }
-/* line 175, ../../../assets/_add_product_page.sass */
+/* line 176, ../../../assets/_add_product_page.sass */
 .confirmation-modal .confirmation-modal-text .warning-text {
   display: block;
 }
-/* line 178, ../../../assets/_add_product_page.sass */
+/* line 179, ../../../assets/_add_product_page.sass */
 .confirmation-modal .confirmation-action {
   position: relative;
   float: left;
@@ -13814,16 +13815,16 @@ html, body {
   text-align: center;
   margin-top: 30px;
 }
-/* line 182, ../../../assets/_add_product_page.sass */
+/* line 183, ../../../assets/_add_product_page.sass */
 .confirmation-modal .confirmation-action.no-margin {
   margin-top: 0;
 }
-/* line 184, ../../../assets/_add_product_page.sass */
+/* line 185, ../../../assets/_add_product_page.sass */
 .confirmation-modal .confirmation-action .btn {
   width: 160px;
   float: left;
 }
-/* line 188, ../../../assets/_add_product_page.sass */
+/* line 189, ../../../assets/_add_product_page.sass */
 .confirmation-modal .confirmation-action .btn + .btn {
   margin-left: 18px;
 }

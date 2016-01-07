@@ -6,18 +6,21 @@ module.exports = ['$scope', 'config', 'GlobalCategory', function($scope, config,
 	$scope.columns = [];
 	$scope.data = [];
 
+	//Procedurally generated all columns
 	for (var i = 0; i < config.MAX_GLOBAL_CAT_COLUMN; i++) {
 		$scope.columns.push({
 			active: -1,
 			list: []
 		})
 	};
+
+	//Get global cat from api
 	GlobalCategory.getAll().then(function(result) {
-		console.log(result);
 		$scope.data = create(result);
 		$scope.columns[0].list = $scope.data;
 	});
 
+	//Select a category (for ng-click)
 	$scope.select = function(item, indx, parentIndx) {
 		$scope.columns[parentIndx].active = indx;
 
@@ -37,6 +40,8 @@ module.exports = ['$scope', 'config', 'GlobalCategory', function($scope, config,
 			$scope.selected = null;
 		}
 	};
+
+	//Create nested object from raw data
 	var create = function(data) {
 		var array = [];
 		angular.forEach(data, function(item) {
@@ -44,6 +49,7 @@ module.exports = ['$scope', 'config', 'GlobalCategory', function($scope, config,
 		});
 		return array;
 	};
+	//Internal insert to create object
 	var insert = function(depth, obj, array) {
 		var parent = depth - 1;
 		var ptr = array;

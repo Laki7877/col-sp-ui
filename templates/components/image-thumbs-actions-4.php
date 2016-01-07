@@ -4,7 +4,7 @@
 ?>
 <div class="image-thumbs-actions">
 	<div class="image-thumbs-img-wrapper">
-		<img ng-src="{{<?= $image_url ?>}}" />
+		<img ng-src="{{ <?=$image_url?>.length > 0 && <?= $image_url ?> || '/assets/img/loader.gif'	}}" />
 	</div>
 	<div class="actions-wrapper actions-4">
 		<a class="action" ng-click="$emit('zoom', <?= $image ?>, <?= $array ?>, $index)"><i class="fa fa-search-plus"></i></a>

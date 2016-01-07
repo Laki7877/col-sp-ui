@@ -225,18 +225,21 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'Attr
 	$scope.images360 = [];
 	$scope.imagesModal = [];
 
-	var loadend = function(reader) {
+	var loadend = function(reader, img) {
 		return function() {
-	        $scope.images.push({
-	        	src: reader.result
-	        });
+	        img.src = reader.result;
 	        $scope.$apply();
 		};
 	}
+	$scope.images.push({src: ''});
     $scope.uploader.onAfterAddingFile = function(fileItem) {
         console.info('onAfterAddingFile', fileItem);
         var reader = new FileReader();
-        reader.onloadend = loadend(reader);
+        var img = {
+        	src: ''
+        };
+        $scope.images.push(img);
+        reader.onloadend = loadend(reader, img);
         reader.readAsDataURL(fileItem._file);
     };
     $scope.$on('left', function(evt, item, array, index) {
