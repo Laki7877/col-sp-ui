@@ -9,7 +9,7 @@ we should just make it modular by creating initializer -->
         <a href="#" class="btn-white btn margin-right-10">
           <span class="">Import</span>
         </button>
-        <a href="/products/add" class="btn-blue btn btn-width-xl">
+        <a href="/products/select" class="btn-blue btn btn-width-xl">
           <span class="">Add Product</span>
         </a>
     </span>

@@ -10,8 +10,7 @@ $menus = [
 $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 ?>
 <?php $this->start('page-body') ?>
-	<div ng-controller="ProductAddCtrl">
-
+	<div ng-controller="ProductAddCtrl" ng-init="init('<?= $catid ?>')">
 		<? $this->insert('components/page-title-breadcrumb', ['text' => "Products/Add Product"]) ?>
 		<div class="add-product-body">
 			<? $this->insert('components/tab-nav', ["items" => $menus]) ?>

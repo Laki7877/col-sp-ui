@@ -2,6 +2,9 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'Attr
 	'use strict';
 	$scope.formData = {};
 	//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
+	$scope.init = function(catId) {
+		$scope.categoryId = catId;
+	}
 	$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
 	
 	//Attribute Options to be filled via API
@@ -151,25 +154,28 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'Attr
 	$("body").tooltip({ selector: '[data-toggle=tooltip]' });
 	
 	//Product Image
-	$scope.uploader360 = ImageService.getUploader();
-	$scope.images360 = [];
 	$scope.uploader = ImageService.getUploader('images', {
 		autoUpload: false
 	});
+	$scope.uploader360 = ImageService.getUploader();
+	$scope.uploaderModal = ImageService.getUploader();
+
 	$scope.images = [];
-	var loadend = function(reader) {
+	$scope.images360 = [];
+	$scope.imagesModal = [];
+
+	var loadend = function(reader, img) {
 		return function() {
-	        $scope.images.push({
-	        	src: reader.result
-	        });
+	        img.src = reader.result;
 	        $scope.$apply();
 		};
 	}
     $scope.uploader.onAfterAddingFile = function(fileItem) {
-        console.info('onAfterAddingFile', fileItem);
         var reader = new FileReader();
-        reader.onloadend = loadend(reader);
-        reader.readAsDataURL(fileItem._file);
+        var img = {
+        	src: ''
+        };
+        $scope.images.push(img);
     };
     $scope.$on('left', function(evt, item, array, index) {
     	var to = index - 1;
@@ -188,14 +194,10 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'Attr
     	array[index] = tmp;
    	});
    	$scope.$on('delete', function(evt, item, array, index) {
-   		console.log('delete');
    		array.splice(index, 1);
    	});
    	$scope.$on('zoom', function(evt, item, array, index) {
-        var image = new Image();
-        image.src = item.src;
-
-        var w = $window.open("");
-        w.document.write(image.outerHTML);
+        $('#product-image-zoom img').attr('src', item.src);
+        $('#product-image-zoom').modal('show');
    	});
 }];

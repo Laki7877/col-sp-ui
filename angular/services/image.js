@@ -28,7 +28,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 		var uploader = new FileUploader(options);
 
         return uploader;
-	}
+	};
 
 	/**
 	 * Get all images
@@ -37,7 +37,13 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 		common.makeRequest({
 
 		});
-	}
+	};
+
+	service.shift = function(from, to) {
+		common.makeRequest({
+
+		});
+	};
 
 	return service;
 }];
