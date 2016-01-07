@@ -69,4 +69,4 @@
 	</div> <!-- end .row -->
 </div> <!-- end #add-product-variation-tab-content -->
 
-<? $this->insert('components/modal-product-variant-detail', ["id" => "variant-detail-1", "header" => "Variant Detail"]) ?>
+<? $this->insert('components/modal-product-variant-detail', ["uploader" => "uploaderModal", "images" => "imagesModal"]) ?>

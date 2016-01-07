@@ -1,5 +1,9 @@
-module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader',  function($scope, $window, Product, ImageService, FileUploader){
+module.exports = ['$scope', 'Product', 'Image', 'FileUploader',  function($scope, Product, ImageService, FileUploader){
 	'use strict';
+
+	$scope.init = function(catId) {
+		$scope.categoryId = catId;
+	}
 	//Variation Options Available
 	$scope.available_attribute_options = [{
 		name: 'Capacity',
@@ -90,12 +94,16 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader',  func
 	$("body").tooltip({ selector: '[data-toggle=tooltip]' });
 	
 	//Product Image
-	$scope.uploader360 = ImageService.getUploader();
-	$scope.images360 = [];
 	$scope.uploader = ImageService.getUploader('images', {
 		autoUpload: false
 	});
+	$scope.uploader360 = ImageService.getUploader();
+	$scope.uploaderModal = ImageService.getUploader();
+
 	$scope.images = [];
+	$scope.images360 = [];
+	$scope.imagesModal = [];
+
 	var loadend = function(reader) {
 		return function() {
 	        $scope.images.push({
@@ -127,14 +135,10 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader',  func
     	array[index] = tmp;
    	});
    	$scope.$on('delete', function(evt, item, array, index) {
-   		console.log('delete');
    		array.splice(index, 1);
    	});
    	$scope.$on('zoom', function(evt, item, array, index) {
-        var image = new Image();
-        image.src = item.src;
-
-        var w = $window.open("");
-        w.document.write(image.outerHTML);
+        $('#product-image-zoom img').attr('src', item.src);
+        $('#product-image-zoom').modal('show');
    	});
 }];

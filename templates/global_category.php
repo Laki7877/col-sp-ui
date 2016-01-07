@@ -1,9 +1,10 @@
 <?php $this->layout('layouts/page-with-sidebar', ['title' => 'Global Category']) ?>
 
 <?php $this->start('page-body') ?>
-	<div class="global-category-page">
+	<div ng-controller="ProductSelectCatCtrl" class="global-category-page">
 		<? $this->insert('components/page-title-breadcrumb-border', ['text' => 'Products/Add Product']) ?>
-		<form class="ah-form">
+		<form class="ah-form" method="POST" action="/products/add">
+			<input type="hidden" name="category" ng-value="selected" />
 			<div class="global-category-radio-section ">
 				<span>Type of upload</span>
 				<div class="radio multiple-radio">
@@ -17,46 +18,16 @@
 						<span class="required">Global Category</span>
 					</div>
 					<div class="category-content no-padding">
-						<ul class="content-column">
-							<li class="category-active">Electronic</li>
-							<li>Fashion</li>
-							<li>Home & Living</li>
-							<li>Mom & Kids</li>
-							<li>Electronic</li>
-							<li>Fashion</li>
-							<li>Home & Living</li>
-							<li>Mom & Kids</li>
-							<li>Electronic</li>
-							<li>Fashion</li>
-							<li>Home & Living</li>
-							<li>Mom & Kids</li>
-							<li>Electronic</li>
-							<li>Fashion</li>
-							<li>Home & Living</li>
-							<li>Mom & Kids</li>
-							<li>Electronic</li>
-							<li>Fashion</li>
-							<li>Home & Living</li>
-							<li>Mom & Kids</li>
+						<ul ng-repeat="column in columns track by $index" ng-class="{'empty-column': column.list.length <= 0 }" class="content-column">
+							<li ng-repeat="row in column.list track by $index" ng-class="{'category-active' : $index == column.active }" ng-click="select(row, $index, $parent.$index)" ng-cloak>{{row.NameEn}}</li>
 						</ul>
-						<ul class="content-column">
-							<li>Computer</li>
-							<li class="category-active">Phone</li>
-							<li>Speaker</li>
-						</ul>
-						<ul class="content-column">
-							<li>Smart Phone</li>
-							<li>Office Phone</li>
-							<li class="category-active">Accessory</li>
-						</ul>
-						<ul class="empty-column content-column"></ul>
 					</div>
 				</div>
 				<div class="category-footer no-padding">
 					<span>Only shown categories that are allowed for this store.</span>
 					<span class="float-right">
 						<button type="button" class="btn btn-link btn-width-xl">Cancel</button>
-						<button type="button" class="btn btn-blue btn-width-xl">Select</button>
+						<button type="submit" class="btn btn-blue btn-width-xl" ng-class="{'disabled' : !selected}">Select</button>
 					</span>
 				</div>
 			</div>

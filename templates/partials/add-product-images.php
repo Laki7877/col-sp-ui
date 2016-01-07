@@ -16,3 +16,4 @@
 		</div>
 	</div>
 </div>
+<? $this->insert('components/modal-product-image', ['id' => 'product-image-zoom']) ?>
