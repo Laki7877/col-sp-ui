@@ -2,7 +2,7 @@
 'use strict';
 //App Start here
 var angular = require('angular');
-var bulk = ({"controllers":({"productAdd":require("./controllers/productAdd.js"),"productList":require("./controllers/productList.js"),"productSelectCat":require("./controllers/productSelectCat.js")}),"services":({"attributeSet":require("./services/attributeSet.js"),"brand":require("./services/brand.js"),"globalCategory":require("./services/globalCategory.js"),"image":require("./services/image.js"),"product":require("./services/product.js")}),"helpers":({"base64":require("./helpers/base64.js"),"common":require("./helpers/common.js"),"storage":require("./helpers/storage.js"),"util":require("./helpers/util.js")}),"directives":({"ngDelegate":require("./directives/ngDelegate.js")}),"filters":({"capitalize":require("./filters/capitalize.js")})});
+var bulk = ({"controllers":({"productAdd":require("./controllers\\productAdd.js"),"productList":require("./controllers\\productList.js"),"productSelectCat":require("./controllers\\productSelectCat.js")}),"services":({"attributeSet":require("./services\\attributeSet.js"),"brand":require("./services\\brand.js"),"globalCategory":require("./services\\globalCategory.js"),"image":require("./services\\image.js"),"product":require("./services\\product.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js")}),"directives":({"ngDelegate":require("./directives\\ngDelegate.js")}),"filters":({"capitalize":require("./filters\\capitalize.js")})});
 var config = require('./config');
 
 //External dependencies
@@ -48,7 +48,7 @@ var app = angular.module('colspApp', ['angularFileUpload', 'base64'])
 .controller('ProductAddCtrl', controllers.productAdd)
 .controller('ProductSelectCatCtrl', controllers.productSelectCat);
 
-},{"./config":2,"./controllers/productAdd.js":3,"./controllers/productList.js":4,"./controllers/productSelectCat.js":5,"./directives/ngDelegate.js":6,"./filters/capitalize.js":7,"./helpers/base64.js":8,"./helpers/common.js":9,"./helpers/storage.js":10,"./helpers/util.js":11,"./services/attributeSet.js":12,"./services/brand.js":13,"./services/globalCategory.js":14,"./services/image.js":15,"./services/product.js":16,"angular":20,"angular-base64":17,"angular-file-upload":18}],2:[function(require,module,exports){
+},{"./config":2,"./controllers\\productAdd.js":3,"./controllers\\productList.js":4,"./controllers\\productSelectCat.js":5,"./directives\\ngDelegate.js":6,"./filters\\capitalize.js":7,"./helpers\\base64.js":8,"./helpers\\common.js":9,"./helpers\\storage.js":10,"./helpers\\util.js":11,"./services\\attributeSet.js":12,"./services\\brand.js":13,"./services\\globalCategory.js":14,"./services\\image.js":15,"./services\\product.js":16,"angular":20,"angular-base64":17,"angular-file-upload":18}],2:[function(require,module,exports){
 //remote baseUrl - 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/'
 module.exports = {
 	baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/',
@@ -57,12 +57,16 @@ module.exports = {
 };
 
 },{}],3:[function(require,module,exports){
-module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'AttributeSet', 'Brand',  function($scope, $window, Product, ImageService, FileUploader, AttributeSet, Brand){
+module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 'Brand',  function($scope, Product, ImageService, FileUploader, AttributeSet, Brand){
 	'use strict';
 	$scope.logForm = function(){
 		console.log('formData', $scope.formData);
 	};
-	$scope.formData = {};
+	$scope.formData = {
+		MasterImages: [],
+		MasterImages360: [],
+		VideoLinks: []
+	};
 	//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
 	$scope.init = function(catId) {
 		$scope.categoryId = catId;
@@ -217,26 +221,31 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'Attr
 	
 	//Product Image
 	$scope.uploader = ImageService.getUploader('/ProductImages');
-	$scope.uploader360 = ImageService.getUploader('/ProductImages');
-	$scope.uploaderModal = ImageService.getUploader();
+	$scope.uploaderModal = ImageService.getUploader('/ProductImages');
+	$scope.uploader360 = ImageService.getUploader('/ProductImages', {
+		queueLimit: 60
+	});
 
-	$scope.images = [];
-	$scope.images360 = [];
-	$scope.imagesModal = [];
-
-	var loadend = function(reader, img) {
-		return function() {
-	        img.src = reader.result;
-	        $scope.$apply();
+	$scope.setUploaderEvents = function(uploader, images) {
+		uploader.onAfterAddingFile = function(item) {
+			var obj = {
+				url: ''
+			};
+			images.push(obj);
+			item.indx = images.length-1;
 		};
+	    uploader.onSuccessItem = function(item, response, status, headers) {
+	    	images[item.indx] = response;
+	    };
+	    uploader.onErrorItem = function(item, response, status, headers) {
+	    	images.splice(item.indx, 1);
+	    };
 	}
-    $scope.uploader.onAfterAddingFile = function(fileItem) {
-        var reader = new FileReader();
-        var img = {
-        	src: ''
-        };
-        $scope.images.push(img);
-    };
+
+	$scope.setUploaderEvents($scope.uploader, $scope.formData.MasterImages);
+    $scope.setUploaderEvents($scope.uploader360, $scope.formData.MasterImages360);
+
+    //Image gallery event
     $scope.$on('left', function(evt, item, array, index) {
     	var to = index - 1;
     	if(to < 0) to = array.length - 1;
@@ -257,9 +266,39 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'Attr
    		array.splice(index, 1);
    	});
    	$scope.$on('zoom', function(evt, item, array, index) {
-        $('#product-image-zoom img').attr('src', item.src);
+        $('#product-image-zoom img').attr('src', item.url);
         $('#product-image-zoom').modal('show');
    	});
+
+   	//Variants open image modal
+   	$scope.$on('openPairModal', function(evt, pair, array, index){
+   		$scope.pairBefore = angular.copy(pair);
+
+   		if(angular.isUndefined(pair.Images)) {
+   			pair.Images = [];
+   		}
+   		if(angular.isUndefined(pair.queue)) {
+   			pair.queue = [];
+   		}
+	   	$scope.setUploaderEvents($scope.uploaderModal, pair.Images);	
+   		$scope.uploaderModal.queue = pair.queue;
+   		$scope.pairModal = pair;
+   		$scope.pairIndex = index;
+   		$('#variant-detail-1').modal('show');
+   	});
+   	$scope.$on('cancelPairModal', function(evt){
+   		$scope.formData.Variants[$scope.pairIndex] = $scope.pairBefore;
+   		$scope.pairModal = null;
+   		$('#variant-detail-1').modal('hide');
+   	});
+   	$scope.$on('savePairModal', function(evt){
+   		$('#variant-detail-1').modal('hide');
+   	});
+   	//Final saving
+   	$scope.save = function() {
+   		//TURN $scope.formData into api-able format
+   		var formData = {};
+   	}
 }];
 
 },{}],4:[function(require,module,exports){
@@ -637,11 +676,11 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 			},
 			queueLimit: 10,
 			filters: [{
-            name: 'imageFilter',
-            fn: function(item /*{File|FileLikeObject}*/, options) {
-                var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
-                return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
-            }}]
+	            name: 'imageFilter',
+	            fn: function(item /*{File|FileLikeObject}*/, options) {
+	                var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+	                return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+	            }}]
 		}, opt);
 		var uploader = new FileUploader(options);
 
@@ -653,13 +692,13 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	 */
 	service.getAll = function() {
 		common.makeRequest({
-
+			
 		});
 	};
 
 	service.shift = function(from, to) {
 		common.makeRequest({
-
+			
 		});
 	};
 

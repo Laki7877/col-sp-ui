@@ -19,11 +19,11 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 			},
 			queueLimit: 10,
 			filters: [{
-            name: 'imageFilter',
-            fn: function(item /*{File|FileLikeObject}*/, options) {
-                var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
-                return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
-            }}]
+	            name: 'imageFilter',
+	            fn: function(item /*{File|FileLikeObject}*/, options) {
+	                var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+	                return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+	            }}]
 		}, opt);
 		var uploader = new FileUploader(options);
 
@@ -35,13 +35,13 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	 */
 	service.getAll = function() {
 		common.makeRequest({
-
+			
 		});
 	};
 
 	service.shift = function(from, to) {
 		common.makeRequest({
-
+			
 		});
 	};
 

@@ -1,9 +1,13 @@
-module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'AttributeSet', 'Brand',  function($scope, $window, Product, ImageService, FileUploader, AttributeSet, Brand){
+module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 'Brand',  function($scope, Product, ImageService, FileUploader, AttributeSet, Brand){
 	'use strict';
 	$scope.logForm = function(){
 		console.log('formData', $scope.formData);
 	};
-	$scope.formData = {};
+	$scope.formData = {
+		MasterImages: [],
+		MasterImages360: [],
+		VideoLinks: []
+	};
 	//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
 	$scope.init = function(catId) {
 		$scope.categoryId = catId;
@@ -158,26 +162,31 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'Attr
 	
 	//Product Image
 	$scope.uploader = ImageService.getUploader('/ProductImages');
-	$scope.uploader360 = ImageService.getUploader('/ProductImages');
-	$scope.uploaderModal = ImageService.getUploader();
+	$scope.uploaderModal = ImageService.getUploader('/ProductImages');
+	$scope.uploader360 = ImageService.getUploader('/ProductImages', {
+		queueLimit: 60
+	});
 
-	$scope.images = [];
-	$scope.images360 = [];
-	$scope.imagesModal = [];
-
-	var loadend = function(reader, img) {
-		return function() {
-	        img.src = reader.result;
-	        $scope.$apply();
+	$scope.setUploaderEvents = function(uploader, images) {
+		uploader.onAfterAddingFile = function(item) {
+			var obj = {
+				url: ''
+			};
+			images.push(obj);
+			item.indx = images.length-1;
 		};
+	    uploader.onSuccessItem = function(item, response, status, headers) {
+	    	images[item.indx] = response;
+	    };
+	    uploader.onErrorItem = function(item, response, status, headers) {
+	    	images.splice(item.indx, 1);
+	    };
 	}
-    $scope.uploader.onAfterAddingFile = function(fileItem) {
-        var reader = new FileReader();
-        var img = {
-        	src: ''
-        };
-        $scope.images.push(img);
-    };
+
+	$scope.setUploaderEvents($scope.uploader, $scope.formData.MasterImages);
+    $scope.setUploaderEvents($scope.uploader360, $scope.formData.MasterImages360);
+
+    //Image gallery event
     $scope.$on('left', function(evt, item, array, index) {
     	var to = index - 1;
     	if(to < 0) to = array.length - 1;
@@ -198,7 +207,50 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'Attr
    		array.splice(index, 1);
    	});
    	$scope.$on('zoom', function(evt, item, array, index) {
-        $('#product-image-zoom img').attr('src', item.src);
+        $('#product-image-zoom img').attr('src', item.url);
         $('#product-image-zoom').modal('show');
    	});
+
+   	//Variants open image modal
+   	$scope.$on('openPairModal', function(evt, pair, array, index){
+   		$scope.pairBefore = angular.copy(pair);
+
+   		//Define if not defined
+   		if(angular.isUndefined(pair.Images)) {
+   			pair.Images = [];
+   		}
+   		if(angular.isUndefined(pair.queue)) {
+   			pair.queue = [];
+   		}
+
+   		//Set uploader event
+	   	$scope.setUploaderEvents($scope.uploaderModal, pair.Images);	
+   		
+	   	//Assign uploader queue
+   		$scope.uploaderModal.queue = pair.queue;
+   		
+   		//Modal target (for viewing pair)
+   		$scope.pairModal = pair;
+   		$scope.pairIndex = index;
+
+   		//Show modal
+   		$('#variant-detail-1').modal('show');
+   	});
+   	$scope.$on('cancelPairModal', function(evt){
+   		//Reset to before change
+   		$scope.formData.Variants[$scope.pairIndex] = $scope.pairBefore;
+   		$scope.pairModal = null;
+   		
+   		//Hide modal
+   		$('#variant-detail-1').modal('hide');
+   	});
+   	$scope.$on('savePairModal', function(evt){
+   		//Hide without doing anything
+   		$('#variant-detail-1').modal('hide');
+   	});
+   	//Final saving
+   	$scope.save = function() {
+   		//TURN $scope.formData into api-able format
+   		var formData = {};
+   	}
 }];

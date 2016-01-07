@@ -60,13 +60,13 @@
 							</tr>
 						</thead>
 						<tbody>
-								<tr ng-repeat="pair in formData.Variants">
+								<tr ng-repeat="pair in formData.Variants track by $index">
 									<td class="column-text-ellipsis"> {{ pair.text}}</td>
 									<td><input type="text" class="form-control" /></td>
 									<td><input type="text" class="form-control" /></td>
 									<td><input type="text" class="form-control" /></td>
 									<td><input type="text" class="form-control" /></td>
-									<td><a class="btn btn-white btn-width-xl" data-toggle="modal" data-target="#variant-detail-1">More Detail</a></td>
+									<td><a class="btn btn-white btn-width-xl" ng-click="$emit('openPairModal', pair, formData.Variants, $index)">More Detail</a></td>
 									<td><a class="btn btn-white">Hide</a></td>
 								</tr>
 						</tbody>
@@ -77,4 +77,4 @@
 	</div> <!-- end .row -->
 </div> <!-- end #add-product-variation-tab-content -->
 
-<? $this->insert('components/modal-product-variant-detail', ["id" => "variant-detail-1", "uploader" => "uploaderModal", "images" => "imagesModal"]) ?>
+<? $this->insert('components/modal-product-variant-detail', ["id" => "variant-detail-1", "model" => "pairModal"]) ?>

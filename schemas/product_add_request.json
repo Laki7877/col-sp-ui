@@ -21,6 +21,7 @@
 			SalePrice: 0.00,
 			DescriptionFullEn: "",
 			DescriptionFullTh: "",
+			DescriptionShortEn: "",
 			DescriptionShortTh: "",
 			Stock: 0,
 			SafetyStock: 0,

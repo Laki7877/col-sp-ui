@@ -13,7 +13,7 @@
 	<li class="list-item" ng-repeat-end="">
 		<? $this->insert('components/image-thumbs-actions-'. $action, [
 			"image" => "item", 
-			"image_url" => "item.src",
+			"image_url" => "item.url",
 			"array" => $images ]) ?>
 	</li>
 </ul>
