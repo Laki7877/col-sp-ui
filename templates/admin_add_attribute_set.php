@@ -89,7 +89,14 @@
           </div>
         </div>
 
-         <div class="form-section">
+        <div class="form-section">
+          <div class="form-section-header"><h2>Suggested Search Tag</h2></div>
+          <div class="form-section-content">
+            <? $this->insert('components/forms/dropdown-with-label', ["label" => "Search Tag", "tooltip" => "This is a tooltip text", "input_class" => "select2-init", "size" => "large", "input_attrs" => 'data-tags="true" data-placeholder="Separated by a comma" multiple="multiple"', "options" => []]) ?>
+          </div>
+        </div>
+
+        <div class="form-section">
           <div class="form-section-header"><h2>Visibility</h2></div>
           <div class="form-section-content">
             <? $this->insert('components/forms/dropdown-with-label', ["label" => "Attribute Set Visibility", "label_class" => "required", "options" => ["No", "Yes"]]) ?>
