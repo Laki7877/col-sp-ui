@@ -1,9 +1,16 @@
 module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'AttributeSet', 'Brand',  function($scope, $window, Product, ImageService, FileUploader, AttributeSet, Brand){
 	'use strict';
+	$scope.logForm = function(){
+		console.log('formData', $scope.formData);
+	};
 	$scope.formData = {};
 	//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
 	$scope.init = function(catId) {
 		$scope.categoryId = catId;
+		//Load Attrib. Set
+		AttributeSet.getByCategory($scope.categoryId).then(function(data){
+			$scope.availableAttributeSets = data; 		
+		});
 	}
 	$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
 	
@@ -19,10 +26,6 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'Attr
 		return (t == "LT");
 	};
 
-	//Load Attrib. Set
-  	AttributeSet.getByCategory(11).then(function(data){
-		$scope.availableAttributeSets = data; 		
-	});
 
 	//Struct for Variant Pair
 	var Pair = function(a,b){
@@ -154,10 +157,8 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'Attr
 	$("body").tooltip({ selector: '[data-toggle=tooltip]' });
 	
 	//Product Image
-	$scope.uploader = ImageService.getUploader('images', {
-		autoUpload: false
-	});
-	$scope.uploader360 = ImageService.getUploader();
+	$scope.uploader = ImageService.getUploader('/ProductImages');
+	$scope.uploader360 = ImageService.getUploader('/ProductImages');
 	$scope.uploaderModal = ImageService.getUploader();
 
 	$scope.images = [];

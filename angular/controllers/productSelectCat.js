@@ -35,7 +35,8 @@ module.exports = ['$scope', 'config', 'GlobalCategory', function($scope, config,
 		}
 
 		if (angular.isUndefined(item.children)) {
-			$scope.selected = item.CategoryAbbreviation;
+			console.log(item);
+			$scope.selected = item.CategoryId;
 		} else {
 			$scope.selected = null;
 		}

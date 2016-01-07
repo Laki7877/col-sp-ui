@@ -13,6 +13,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 	<div ng-controller="ProductAddCtrl" ng-init="init('<?= $catid ?>')">
 		<? $this->insert('components/page-title-breadcrumb', ['text' => "Products/Add Product"]) ?>
 		<div class="add-product-body">
+
+			<button ng-click="logForm()" class="btn">Log</button>
 			<? $this->insert('components/tab-nav', ["items" => $menus]) ?>
 			<form class="ah-form sticky-mainform-action">
 				<div class="tab-content">

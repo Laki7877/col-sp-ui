@@ -21,7 +21,6 @@
 				  		 "ng_model"=> "formData.Brand.\$id"
 						]) 
 					?>
-					<pre>{{ formData }}</pre>
 				</div>
 			</div>
 			<div class="form-section">

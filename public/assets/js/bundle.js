@@ -2,7 +2,7 @@
 'use strict';
 //App Start here
 var angular = require('angular');
-var bulk = ({"controllers":({"productAdd":require("./controllers\\productAdd.js"),"productList":require("./controllers\\productList.js"),"productSelectCat":require("./controllers\\productSelectCat.js")}),"services":({"attributeSet":require("./services\\attributeSet.js"),"brand":require("./services\\brand.js"),"globalCategory":require("./services\\globalCategory.js"),"image":require("./services\\image.js"),"product":require("./services\\product.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js")}),"directives":({"ngDelegate":require("./directives\\ngDelegate.js")}),"filters":({"capitalize":require("./filters\\capitalize.js")})});
+var bulk = ({"controllers":({"productAdd":require("./controllers/productAdd.js"),"productList":require("./controllers/productList.js"),"productSelectCat":require("./controllers/productSelectCat.js")}),"services":({"attributeSet":require("./services/attributeSet.js"),"brand":require("./services/brand.js"),"globalCategory":require("./services/globalCategory.js"),"image":require("./services/image.js"),"product":require("./services/product.js")}),"helpers":({"base64":require("./helpers/base64.js"),"common":require("./helpers/common.js"),"storage":require("./helpers/storage.js"),"util":require("./helpers/util.js")}),"directives":({"ngDelegate":require("./directives/ngDelegate.js")}),"filters":({"capitalize":require("./filters/capitalize.js")})});
 var config = require('./config');
 
 //External dependencies
@@ -48,7 +48,7 @@ var app = angular.module('colspApp', ['angularFileUpload', 'base64'])
 .controller('ProductAddCtrl', controllers.productAdd)
 .controller('ProductSelectCatCtrl', controllers.productSelectCat);
 
-},{"./config":2,"./controllers\\productAdd.js":3,"./controllers\\productList.js":4,"./controllers\\productSelectCat.js":5,"./directives\\ngDelegate.js":6,"./filters\\capitalize.js":7,"./helpers\\base64.js":8,"./helpers\\common.js":9,"./helpers\\storage.js":10,"./helpers\\util.js":11,"./services\\attributeSet.js":12,"./services\\brand.js":13,"./services\\globalCategory.js":14,"./services\\image.js":15,"./services\\product.js":16,"angular":20,"angular-base64":17,"angular-file-upload":18}],2:[function(require,module,exports){
+},{"./config":2,"./controllers/productAdd.js":3,"./controllers/productList.js":4,"./controllers/productSelectCat.js":5,"./directives/ngDelegate.js":6,"./filters/capitalize.js":7,"./helpers/base64.js":8,"./helpers/common.js":9,"./helpers/storage.js":10,"./helpers/util.js":11,"./services/attributeSet.js":12,"./services/brand.js":13,"./services/globalCategory.js":14,"./services/image.js":15,"./services/product.js":16,"angular":20,"angular-base64":17,"angular-file-upload":18}],2:[function(require,module,exports){
 //remote baseUrl - 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/'
 module.exports = {
 	baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/',
@@ -59,10 +59,17 @@ module.exports = {
 },{}],3:[function(require,module,exports){
 module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'AttributeSet', 'Brand',  function($scope, $window, Product, ImageService, FileUploader, AttributeSet, Brand){
 	'use strict';
+	$scope.logForm = function(){
+		console.log('formData', $scope.formData);
+	};
 	$scope.formData = {};
 	//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
 	$scope.init = function(catId) {
 		$scope.categoryId = catId;
+		//Load Attrib. Set
+		AttributeSet.getByCategory($scope.categoryId).then(function(data){
+			$scope.availableAttributeSets = data; 		
+		});
 	}
 	$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
 	
@@ -78,10 +85,6 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'Attr
 		return (t == "LT");
 	};
 
-	//Load Attrib. Set
-  	AttributeSet.getByCategory(11).then(function(data){
-		$scope.availableAttributeSets = data; 		
-	});
 
 	//Struct for Variant Pair
 	var Pair = function(a,b){
@@ -213,10 +216,8 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'Attr
 	$("body").tooltip({ selector: '[data-toggle=tooltip]' });
 	
 	//Product Image
-	$scope.uploader = ImageService.getUploader('images', {
-		autoUpload: false
-	});
-	$scope.uploader360 = ImageService.getUploader();
+	$scope.uploader = ImageService.getUploader('/ProductImages');
+	$scope.uploader360 = ImageService.getUploader('/ProductImages');
 	$scope.uploaderModal = ImageService.getUploader();
 
 	$scope.images = [];
@@ -229,16 +230,12 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'Attr
 	        $scope.$apply();
 		};
 	}
-	$scope.images.push({src: ''});
     $scope.uploader.onAfterAddingFile = function(fileItem) {
-        console.info('onAfterAddingFile', fileItem);
         var reader = new FileReader();
         var img = {
         	src: ''
         };
         $scope.images.push(img);
-        reader.onloadend = loadend(reader, img);
-        reader.readAsDataURL(fileItem._file);
     };
     $scope.$on('left', function(evt, item, array, index) {
     	var to = index - 1;
@@ -348,18 +345,21 @@ module.exports = ['$scope', 'config', 'GlobalCategory', function($scope, config,
 	$scope.columns = [];
 	$scope.data = [];
 
+	//Procedurally generated all columns
 	for (var i = 0; i < config.MAX_GLOBAL_CAT_COLUMN; i++) {
 		$scope.columns.push({
 			active: -1,
 			list: []
 		})
 	};
+
+	//Get global cat from api
 	GlobalCategory.getAll().then(function(result) {
-		console.log(result);
 		$scope.data = create(result);
 		$scope.columns[0].list = $scope.data;
 	});
 
+	//Select a category (for ng-click)
 	$scope.select = function(item, indx, parentIndx) {
 		$scope.columns[parentIndx].active = indx;
 
@@ -374,11 +374,14 @@ module.exports = ['$scope', 'config', 'GlobalCategory', function($scope, config,
 		}
 
 		if (angular.isUndefined(item.children)) {
-			$scope.selected = item.CategoryAbbreviation;
+			console.log(item);
+			$scope.selected = item.CategoryId;
 		} else {
 			$scope.selected = null;
 		}
 	};
+
+	//Create nested object from raw data
 	var create = function(data) {
 		var array = [];
 		angular.forEach(data, function(item) {
@@ -386,6 +389,7 @@ module.exports = ['$scope', 'config', 'GlobalCategory', function($scope, config,
 		});
 		return array;
 	};
+	//Internal insert to create object
 	var insert = function(depth, obj, array) {
 		var parent = depth - 1;
 		var ptr = array;
@@ -397,6 +401,7 @@ module.exports = ['$scope', 'config', 'GlobalCategory', function($scope, config,
 	};
 
 }];
+
 },{"angular":20}],6:[function(require,module,exports){
 var angular = require('angular');
 module.exports = [function() {
