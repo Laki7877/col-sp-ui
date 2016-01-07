@@ -2,7 +2,7 @@
 'use strict';
 //App Start here
 var angular = require('angular');
-var bulk = ({"controllers":({"productAdd":require("./controllers\\productAdd.js"),"productList":require("./controllers\\productList.js"),"productSelectCat":require("./controllers\\productSelectCat.js")}),"services":({"attributeSet":require("./services\\attributeSet.js"),"brand":require("./services\\brand.js"),"globalCategory":require("./services\\globalCategory.js"),"image":require("./services\\image.js"),"product":require("./services\\product.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js")}),"directives":({"ngDelegate":require("./directives\\ngDelegate.js")}),"filters":({"capitalize":require("./filters\\capitalize.js")})});
+var bulk = ({"controllers":({"productAdd":require("./controllers/productAdd.js"),"productList":require("./controllers/productList.js"),"productSelectCat":require("./controllers/productSelectCat.js")}),"services":({"attributeSet":require("./services/attributeSet.js"),"brand":require("./services/brand.js"),"globalCategory":require("./services/globalCategory.js"),"image":require("./services/image.js"),"product":require("./services/product.js")}),"helpers":({"base64":require("./helpers/base64.js"),"common":require("./helpers/common.js"),"storage":require("./helpers/storage.js"),"util":require("./helpers/util.js")}),"directives":({"ngDelegate":require("./directives/ngDelegate.js")}),"filters":({"capitalize":require("./filters/capitalize.js")})});
 var config = require('./config');
 
 //External dependencies
@@ -48,7 +48,7 @@ var app = angular.module('colspApp', ['angularFileUpload', 'base64'])
 .controller('ProductAddCtrl', controllers.productAdd)
 .controller('ProductSelectCatCtrl', controllers.productSelectCat);
 
-},{"./config":2,"./controllers\\productAdd.js":3,"./controllers\\productList.js":4,"./controllers\\productSelectCat.js":5,"./directives\\ngDelegate.js":6,"./filters\\capitalize.js":7,"./helpers\\base64.js":8,"./helpers\\common.js":9,"./helpers\\storage.js":10,"./helpers\\util.js":11,"./services\\attributeSet.js":12,"./services\\brand.js":13,"./services\\globalCategory.js":14,"./services\\image.js":15,"./services\\product.js":16,"angular":20,"angular-base64":17,"angular-file-upload":18}],2:[function(require,module,exports){
+},{"./config":2,"./controllers/productAdd.js":3,"./controllers/productList.js":4,"./controllers/productSelectCat.js":5,"./directives/ngDelegate.js":6,"./filters/capitalize.js":7,"./helpers/base64.js":8,"./helpers/common.js":9,"./helpers/storage.js":10,"./helpers/util.js":11,"./services/attributeSet.js":12,"./services/brand.js":13,"./services/globalCategory.js":14,"./services/image.js":15,"./services/product.js":16,"angular":20,"angular-base64":17,"angular-file-upload":18}],2:[function(require,module,exports){
 //remote baseUrl - 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/'
 module.exports = {
 	baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/',
@@ -62,24 +62,28 @@ module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 
 	$scope.logForm = function(){
 		console.log('formData', $scope.formData);
 	};
+
 	$scope.formData = {
 		MasterImages: [],
 		MasterImages360: [],
-		VideoLinks: []
+		VideoLinks: [],
+		Variants: []
 	};
-	//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
+
+	//Attribute Options to be filled via API
+	$scope.availableAttributeSets = [];
+
+
 	$scope.init = function(catId) {
 		$scope.categoryId = catId;
 		//Load Attrib. Set
 		AttributeSet.getByCategory($scope.categoryId).then(function(data){
-			$scope.availableAttributeSets = data; 		
+			$scope.availableAttributeSets = data; 
 		});
 	}
-	$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
-	
-	//Attribute Options to be filled via API
-	$scope.availableAttributeSets = [];
 
+	//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
+	$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
 	//Constant Comparison Functions
 	//TODO: Move this to commons or something
 	$scope._isFreeTextInput = function(t){
@@ -90,12 +94,16 @@ module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 
 	};
 
 
+	
 	//Struct for Variant Pair
-	var Pair = function(a,b){
-		this.first = a; 
-		this.second = b; 
-		this.hash = a+b;
-		this.text = (a + ", " + b);
+	var VariantPair = function(a,b){
+		//Variant is a cross of First and Second Attribute
+		this.FirstAttribute = a; 
+		this.SecondAttribute = b;
+		this.hash = (a.AttributeKey.AttributeId + "-" +
+		 a.AttributeValue.trim() + "-" + b.AttributeKey.AttributeId +
+		  "-" + b.AttributeValue.trim());
+		this.text = (a.AttributeValue.trim() + ", " + b.AttributeValue.trim());
 	};
 
 	//Unmultiplied Variants (factor)
@@ -133,24 +141,61 @@ module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 
 	});	
 
 	//Multiply attributes into variants
-	$scope.$watch('attributeOptions', function(oldv, newv){
-		if($scope.attributeOptions[1].options.length == 0) return;
-		if($scope.attributeOptions[0].options.length == 0) return;
+	$scope.$watch('attributeOptions', function(){
+		console.log("Attribute Option Changed", $scope.attributeOptions);
+		// if($scope.attributeOptions[1].options.length == 0) return;
+		// if($scope.attributeOptions[0].options.length == 0) return;
 		
-		//TODO: Don't clear but only removed changed/stale	
-		$scope.formData.Variants = [];
-		//Multiply out unmultiplied options
-		$scope.attributeOptions[0].options.forEach(function(A){
-			$scope.attributeOptions[1].options.forEach(function(B){
-				$scope.formData.Variants.push(new Pair(A,B));
-			});
+		var variantHashes = {};
+		//Product Hash Tracking Table
+		$scope.formData.Variants.forEach(function(elem, index){
+			//Keep track of the index of the hashed item
+			variantHashes[elem.hash] = index;
 		});
+
+		//Multiply out unmultiplied options
+		for(var aKey in $scope.attributeOptions[0].options){
+			var A = $scope.attributeOptions[0].options[aKey];
+			for(var bKey in $scope.attributeOptions[1].options){
+				var B = $scope.attributeOptions[1].options[bKey];
+
+				console.log("multing", A,B)
+
+				var kpair = new VariantPair({
+					AttributeKey: $scope.attributeOptions[0].attribute,
+					AttributeValue: A 
+				},{
+					AttributeKey: $scope.attributeOptions[1].attribute,
+					AttributeValue: B
+				});
+
+				//Only push if don't exist
+				if(!(kpair.hash in variantHashes)){
+					console.log("Appending Pair", variantHashes, kpair.hash)
+					$scope.formData.Variants.push(kpair);
+				}
+				
+				//Mark hash as used
+				variantHashes[kpair.hash] = -1;
+			}
+		}
+
+		//Remove deleted variants
+		for(var rhash in variantHashes){
+			//Only if its unused
+			if(variantHashes[rhash] == -1) continue;
+			console.log("removing", rhash);
+			$scope.formData.Variants.splice(variantHashes[rhash], 1);
+		}
+
 
 		$scope.formData.DefaultVariant = $scope.formData.Variants[0];
 		
 	}, true);
 
-	//When selected attribute change, the other box wil not allow to have selected option
+	//When selected attribute change, 
+	//the other box wil not allow to have selected option
+
 	var tabPage = {};
 	tabPage.global = {
 		init: function(){
@@ -274,24 +319,37 @@ module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 
    	$scope.$on('openPairModal', function(evt, pair, array, index){
    		$scope.pairBefore = angular.copy(pair);
 
+   		//Define if not defined
    		if(angular.isUndefined(pair.Images)) {
    			pair.Images = [];
    		}
    		if(angular.isUndefined(pair.queue)) {
    			pair.queue = [];
    		}
+
+   		//Set uploader event
 	   	$scope.setUploaderEvents($scope.uploaderModal, pair.Images);	
+   		
+	   	//Assign uploader queue
    		$scope.uploaderModal.queue = pair.queue;
+   		
+   		//Modal target (for viewing pair)
    		$scope.pairModal = pair;
    		$scope.pairIndex = index;
+
+   		//Show modal
    		$('#variant-detail-1').modal('show');
    	});
    	$scope.$on('cancelPairModal', function(evt){
+   		//Reset to before change
    		$scope.formData.Variants[$scope.pairIndex] = $scope.pairBefore;
    		$scope.pairModal = null;
+   		
+   		//Hide modal
    		$('#variant-detail-1').modal('hide');
    	});
    	$scope.$on('savePairModal', function(evt){
+   		//Hide without doing anything
    		$('#variant-detail-1').modal('hide');
    	});
    	//Final saving

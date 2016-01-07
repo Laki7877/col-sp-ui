@@ -3,24 +3,28 @@ module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 
 	$scope.logForm = function(){
 		console.log('formData', $scope.formData);
 	};
+
 	$scope.formData = {
 		MasterImages: [],
 		MasterImages360: [],
-		VideoLinks: []
+		VideoLinks: [],
+		Variants: []
 	};
-	//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
+
+	//Attribute Options to be filled via API
+	$scope.availableAttributeSets = [];
+
+
 	$scope.init = function(catId) {
 		$scope.categoryId = catId;
 		//Load Attrib. Set
 		AttributeSet.getByCategory($scope.categoryId).then(function(data){
-			$scope.availableAttributeSets = data; 		
+			$scope.availableAttributeSets = data; 
 		});
 	}
-	$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
-	
-	//Attribute Options to be filled via API
-	$scope.availableAttributeSets = [];
 
+	//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
+	$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
 	//Constant Comparison Functions
 	//TODO: Move this to commons or something
 	$scope._isFreeTextInput = function(t){
@@ -31,12 +35,16 @@ module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 
 	};
 
 
+	
 	//Struct for Variant Pair
-	var Pair = function(a,b){
-		this.first = a; 
-		this.second = b; 
-		this.hash = a+b;
-		this.text = (a + ", " + b);
+	var VariantPair = function(a,b){
+		//Variant is a cross of First and Second Attribute
+		this.FirstAttribute = a; 
+		this.SecondAttribute = b;
+		this.hash = (a.AttributeKey.AttributeId + "-" +
+		 a.AttributeValue.trim() + "-" + b.AttributeKey.AttributeId +
+		  "-" + b.AttributeValue.trim());
+		this.text = (a.AttributeValue.trim() + ", " + b.AttributeValue.trim());
 	};
 
 	//Unmultiplied Variants (factor)
@@ -74,24 +82,59 @@ module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 
 	});	
 
 	//Multiply attributes into variants
-	$scope.$watch('attributeOptions', function(oldv, newv){
-		if($scope.attributeOptions[1].options.length == 0) return;
-		if($scope.attributeOptions[0].options.length == 0) return;
+	$scope.$watch('attributeOptions', function(){
+		console.log("Attribute Option Changed", $scope.attributeOptions);
+		// if($scope.attributeOptions[1].options.length == 0) return;
+		// if($scope.attributeOptions[0].options.length == 0) return;
 		
-		//TODO: Don't clear but only removed changed/stale	
-		$scope.formData.Variants = [];
-		//Multiply out unmultiplied options
-		$scope.attributeOptions[0].options.forEach(function(A){
-			$scope.attributeOptions[1].options.forEach(function(B){
-				$scope.formData.Variants.push(new Pair(A,B));
-			});
+		var variantHashes = {};
+		//Product Hash Tracking Table
+		$scope.formData.Variants.forEach(function(elem, index){
+			//Keep track of the index of the hashed item
+			variantHashes[elem.hash] = index;
 		});
+
+		//Multiply out unmultiplied options
+		for(var aKey in $scope.attributeOptions[0].options){
+			var A = $scope.attributeOptions[0].options[aKey];
+			for(var bKey in $scope.attributeOptions[1].options){
+				var B = $scope.attributeOptions[1].options[bKey];
+
+				var kpair = new VariantPair({
+					AttributeKey: $scope.attributeOptions[0].attribute,
+					AttributeValue: A 
+				},{
+					AttributeKey: $scope.attributeOptions[1].attribute,
+					AttributeValue: B
+				});
+
+				//Only push if don't exist
+				if(!(kpair.hash in variantHashes)){
+					console.log("Appending Pair", variantHashes, kpair.hash)
+					$scope.formData.Variants.push(kpair);
+				}
+				
+				//Mark hash as used
+				variantHashes[kpair.hash] = -1;
+			}
+		}
+
+		//Remove deleted variants
+		for(var rhash in variantHashes){
+			//Only if its unused
+			if(variantHashes[rhash] == -1) continue;
+			console.log("removing", rhash);
+			$scope.formData.Variants.splice(variantHashes[rhash], 1);
+		}
+
 
 		$scope.formData.DefaultVariant = $scope.formData.Variants[0];
 		
 	}, true);
 
-	//When selected attribute change, the other box wil not allow to have selected option
+	//When selected attribute change, 
+	//the other box wil not allow to have selected option
+
 	var tabPage = {};
 	tabPage.global = {
 		init: function(){
