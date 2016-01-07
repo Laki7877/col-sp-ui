@@ -29,8 +29,6 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'Attr
 		this.text = (a + ", " + b);
 	};
 
-	//Multiplied Variants (product)
-	$scope.variants = [];
 	//Unmultiplied Variants (factor)
 	$scope.attributeOptions = {
 		0: {
@@ -71,15 +69,15 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'Attr
 		if($scope.attributeOptions[0].options.length == 0) return;
 		
 		//TODO: Don't clear but only removed changed/stale	
-		$scope.variants = [];
+		$scope.formData.Variants = [];
 		//Multiply out unmultiplied options
 		$scope.attributeOptions[0].options.forEach(function(A){
 			$scope.attributeOptions[1].options.forEach(function(B){
-				$scope.variants.push(new Pair(A,B));
+				$scope.formData.Variants.push(new Pair(A,B));
 			});
 		});
 
-		$scope.formData.DefaultVariant = $scope.variants[0];
+		$scope.formData.DefaultVariant = $scope.formData.Variants[0];
 		
 	}, true);
 
@@ -101,10 +99,10 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'Attr
 		init: function(){
 			$(".select2-init-brand").select2({
 				templateResult: function(d){
-					return d.BrandNameEn;
+					return d.BrandNameEn + " (" + d.BrandNameTh + ")";
 				},
 				templateSelection: function(d){
-					return d.BrandNameEn;	
+					return d.BrandNameEn + " (" + d.BrandNameTh + ")";	
 				},
 				ajax: {
 					processResults: function (data) {

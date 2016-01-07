@@ -37,14 +37,14 @@
 	<div class="width-field-normal">
 		<div class="ah-select2-dropdown">
 			<select ng-model="formData.DefaultVariant" class="form-control select2-init-std select2-init" 
-				ng-options="i as i.text for i in variants">
+				ng-options="i as i.text for i in formData.Variants">
 			</select>
 		</div>
 	</div></div>
 
 			</div>
 			</div> <!-- end .form-section -->
-			<div class="form-section" ng-if="formData.AttributeSet && variants.length > 0">
+			<div class="form-section" ng-if="formData.AttributeSet && formData.Variants.length > 0">
 				<div class="form-section-header">Variant</div>
 				<div class="form-section-content padding-left-30 padding-right-30">
 					<table class="table ah-table variation-table">
@@ -60,7 +60,7 @@
 							</tr>
 						</thead>
 						<tbody>
-								<tr ng-repeat="pair in variants">
+								<tr ng-repeat="pair in formData.Variants">
 									<td class="column-text-ellipsis"> {{ pair.text}}</td>
 									<td><input type="text" class="form-control" /></td>
 									<td><input type="text" class="form-control" /></td>

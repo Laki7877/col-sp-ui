@@ -5,7 +5,11 @@ if (isset($size)) $inputSize = "width-field-$size";
 <div class="form-group <?=$form_group_class?>">
 	<div class="width-label"><label class="control-label <?=$label_class?>"><?= $label ?></label></div>
 	<div class="<?= $inputSize ?>">
-		<input type="text" class="form-control <?= $input_class; ?>" placeholder="<?=$placeholder?>" <?=$input_attrs?> />
+		<input 
+			<?php if(isset($ng_model)): ?>
+			ng-model="<?=$ng_model?>"
+			<?php endif; ?>
+			type="text" class="form-control <?= $input_class; ?>" placeholder="<?=$placeholder?>" <?=$input_attrs?> />
 		<? if (!empty($hint)): ?>
 			<span class="help-block"><?= $hint ?></span>
 		<? endif ?>

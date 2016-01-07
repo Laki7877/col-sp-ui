@@ -1,85 +1,43 @@
-//v1
+//v2
 {
-	"ProductNameEn": "",
-	"ProductNameTh": "",
-	"BrandName": "",
-	"SKU": "",
-	"UPC": "",
-	"OriginalPrice": 0.00,
-	"SalePrice": 0.00,
-	"DescriptionTH": "",
-	"DescriptionEN": "",
-	"ShortDescriptionTH": "",
-	"ShortDescriptionEN": "",
-	"Attributes": {
-		//Will populate from attribute set
-	},
-	"Keywords": [],
-	"InventoryAmount": 0,
-	"SafetyStockAmount": 0,
-	"StockType": "",
-	"ShippingMethod": "",
-	"PreparationTime": 0,
-	"Length": 0,
-	"Height": 0,
-	"Width": 0,
-	"DimensionUnit": "",
-	"WeightUnit": "",
-	"Weight": "",
-	"Variants": [{
-		"Variant": {
-			"Material" : "Wood",
-			"Capacity" : "10000 mAh",
-			"SKU" : "",
-			"Price": 0,
-			"Inventory": 0,
-			"SalePrice": 0.00,
-			"OriginalPrice": 0.00,
-			"PID": "<AES-256(GENERATED, Secret[KeyID])>",
-			"KeyId": "<KeyID>",
-			"Visible": true,
-			"ProductNameTH": "",
-			"ProductNameEN": "",
-			"DisplayAs" : "indi",
-			"DescriptionTH": "",
-			"DescriptionEN": "",
-			"ShortDescriptionTH": "",
-			"ShortDescriptionEN": "",
-			"Length" : 0,
-			"Height": 0,
-			"Width": 0,
-			"DimensionUnit": "mm",
-			"WeightUnit": "kg",
-			"Weight": 0,
-			"VideoLink1": "",
-			"VideoLink2": "",
-			"VideoLink3": "",
-			"PrimaryImageID": "<indicate which image is primary>"	
+	..SomeOtherFields ....
+	MasterImages: [
+		{
+			TmpPath: "<String>",
+			Position: "<int>"
 		}
-	}],
-	"RelatedProducts": [{
-		//Product Object
-		"SomeKey" : ..
-	}],
-	"SEO": {
-		"MetaTitle: "",
-		"MetaDescription", "",
-		"MetaKeywords": "",
-		"ProductURLKeyTH": "",
-		"ProductURLKeyEN": "",
-		"ProductBoostingWeight": 0.00,
-		"EffectiveTime": "<Time>",
-		"ExpireDate": "<Date>",
-		"ControlFlag1" : true,
-		"ControlFlag2" : false,
-		"ControlFlag3" : false,
-		"Remark" : ""
-	},
-	"GlobalCategory": <id>,
-	"GlobalCategory_Alt": [
-		<id>, <id>
 	],
-	"LocalCategory": [
-		<id>, <id>, <id>
-	]
+	MasterAttributes: {
+		"<AttributeId>" : "ValueTH/EN"
+	},
+	Variants: [{
+			ValueEn: "Wat is this",
+			ValueTh: "Wat is this",			
+			ProductNameEn: "",
+		        ProductNameTh: "",
+			Sku: "",
+			Upc: "",
+			OriginalPrice: 0.00,
+			SalePrice: 0.00,
+			DescriptionFullEn: "",
+			DescriptionFullTh: "",
+			DescriptionShortTh: "",
+			Stock: 0,
+			SafetyStock: 0,
+			VideoLink: "<url>",
+			ShippingMethod: "",
+			Length: 0.00,
+			Width: 0.00,
+			Height: 0.00,
+			DimenstionUnit: "Typo",
+			Weight: 0,
+			DimenstionWeight: "Typo",	
+			Images: [{
+				TmpPath: "<String>",
+				Position: "<int>"	
+			}],
+			Image360: [],
+			Attribute: {}, //What? 
+			ProductStage: {} //What the deuce
+	}]
 }

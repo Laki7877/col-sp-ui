@@ -9,11 +9,16 @@ if (isset($size)) $inputSize = "width-field-$size";
 			<select 
 			<?php if(isset($ng_options)): ?>			
 			ng-options="<?=$ng_options?>"
+			<?php endif; ?>
+			<?php if(isset($ng_model)): ?>
 			ng-model="<?=$ng_model?>"
 			<?php endif; ?>
-
 			 class="form-control select2-init-normal <?= $input_class; ?>" <?= $input_attrs ?> >
-				
+
+			<?php foreach($options as $opt): ?>
+			<option><?php echo $opt; ?></option>
+			<?php endforeach; ?>
+
 			</select>
 		</div>
 	</div>
