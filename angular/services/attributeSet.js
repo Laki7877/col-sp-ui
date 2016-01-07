@@ -4,7 +4,7 @@ module.exports = ['common', function(common){
 	service.getByCategory = function(catId){
 		var req = {
 			method: 'GET',
-			url: '/AttributeSets/GetFromAttributeSetCat/' + catId
+			url: '/GlobalCategories/' + catId + '/AttributeSets'
 		};
 
 		return common.makeRequest(req);	

@@ -1,4 +1,4 @@
-module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'AttributeSet',  function($scope, $window, Product, ImageService, FileUploader, AttributeSet){
+module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'AttributeSet', 'Brand',  function($scope, $window, Product, ImageService, FileUploader, AttributeSet, Brand){
 	'use strict';
 	$scope.formData = {};
 	//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
@@ -34,11 +34,11 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'Attr
 	//Unmultiplied Variants (factor)
 	$scope.attributeOptions = {
 		0: {
-			attribute: null,
+			attribute: false,
 			options: []
 		},
 		1: {
-			attribute: null,
+			attribute: false,
 			options: []
 		}	
 	};
@@ -84,17 +84,61 @@ module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'Attr
 	}, true);
 
 	//When selected attribute change, the other box wil not allow to have selected option
+	var tabPage = {};
+	tabPage.global = {
+		init: function(){
+			//TODO:select2-init classes should probably be named in a more
+			//meaningful way	
+			$(".select2-init-normal").select2();
+			$(".select2-init, .select2-init-normal").on("change", function(ev){
+				$scope.$digest();
+			});
 
-	//Initialize Select2 (variation select)
+			
+		}
+	};
+	tabPage.information = {
+		init: function(){
+			$(".select2-init-brand").select2({
+				templateResult: function(d){
+					return d.BrandNameEn;
+				},
+				templateSelection: function(d){
+					return d.BrandNameEn;	
+				},
+				ajax: {
+					processResults: function (data) {
+						var mapped = data.map(function(obj){
+							obj.id = obj.$id;
+							return obj;
+						});
+
+						console.log(mapped);
+						return {results: mapped};
+					},
+					transport: function(params, success, failure){
+						//Call Brand Service
+						return Brand.getAll(params.data.q).then(success, failure);
+					}
+				}
+			});
+		}
+	};
+	tabPage.variation = {
+		init: function(){
+			initAttributeOptionSelect2(0);
+			initAttributeOptionSelect2(1);
+		}
+	};	
+
+	//Initialize Select2 stuff
 	$.fn.select2.defaults.set("tokenSeparators", [","]);
 	$(document).on('shown.bs.tab ready', function(){
-		initAttributeOptionSelect2(0);
-		initAttributeOptionSelect2(1);
-
-		$(".select2-init").on("change", function(ev){
-			$scope.$digest();
-		});
-
+		//Initialize All Tab
+		tabPage.global.init();
+	        for(var page in tabPage){
+			tabPage[page].init();
+		}	
 	});
 
 	//TODO: Init CK Editor (apparently this breaks)

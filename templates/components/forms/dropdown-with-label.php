@@ -12,7 +12,8 @@ if (isset($size)) $inputSize = "width-field-$size";
 			ng-model="<?=$ng_model?>"
 			<?php endif; ?>
 
-			 class="form-control select2-init <?= $input_class; ?>" <?= $input_attrs ?> >
+			 class="form-control select2-init-normal <?= $input_class; ?>" <?= $input_attrs ?> >
+				
 			</select>
 		</div>
 	</div>

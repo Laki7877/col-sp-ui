@@ -10,7 +10,13 @@
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Name (English)", "label_class" => "required", "size" => "large"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "SKU", "label_class" => "required", "size" => "large"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "UPC", "tooltip" => "The Universal Product Code (UPC) is a barcode symbology (i.e., a specific type of barcode) that is widely used in the USAX.", "size" => "large"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Brand Name", "label_class" => "required", 'input_class' => 'input-icon-right-search', 'placeholder' => 'Search for Brand Name']) ?>
+					<? $this->insert('components/forms/dropdown-with-label', 
+						["label" => "Brand Name",
+						"input_class" => "select2-init-brand",
+				  		 "ng_model"=> "formData.Brand"
+						]) 
+					?>
+
 				</div>
 			</div>
 			<div class="form-section">
@@ -34,7 +40,7 @@
 				<div class="form-section-content">
 					<? $this->insert('components/forms/dropdown-with-label', 
 						["label" => "Attribute Set",
-       					 "ng_options"=> "i as _attrEnTh(i) for i in availableAttributeSets", 
+       						 "ng_options"=> "i as _attrEnTh(i) for i in availableAttributeSets", 
 				  		 "ng_model"=> "formData.AttributeSet"
 						]) 
 					?>
@@ -64,7 +70,10 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Keywords</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Search Tag", "tooltip" => "This is a tooltip text", "input_class" => "select2-init", "size" => "large", "input_attrs" => 'data-tags="true" data-placeholder="Separated by a comma" multiple="multiple"', "options" => []]) ?>
+					<? $this->insert('components/forms/dropdown-with-label', 
+							["label" => "Search Tag", 
+							"tooltip" => "This is a tooltip text", 
+							"input_class" => "select2-init", "size" => "large", "input_attrs" => 'data-tags="true" data-placeholder="Separated by a comma" multiple="multiple"', "options" => []]) ?>
 					<? $this->insert('components/forms/tags-with-label', ["label" => "Suggested Search Tag"]) ?>
 				</div>
 			</div>
