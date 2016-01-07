@@ -6,10 +6,14 @@ if (isset($size)) $inputSize = "width-field-$size";
 	<div class="width-label"><label class="control-label <?=$label_class?>"><?= $label ?></label></div>
 	<div class="<?= $inputSize ?>">
 		<div class="ah-select2-dropdown">
-			<select class="form-control select2-init <?= $input_class; ?>" <?= $input_attrs ?> >
-				<? foreach ($options as $option): ?>
-					<option><?=$option?></option>
-				<? endforeach ?>
+			<select 
+			<?php if(isset($ng_options)): ?>			
+			ng-options="<?=$ng_options?>"
+			ng-model="<?=$ng_model?>"
+			<?php endif; ?>
+
+			 class="form-control select2-init-normal <?= $input_class; ?>" <?= $input_attrs ?> >
+				
 			</select>
 		</div>
 	</div>

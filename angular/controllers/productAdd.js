@@ -1,96 +1,158 @@
-module.exports = ['$scope', 'Product', 'Image', 'FileUploader',  function($scope, Product, ImageService, FileUploader){
+module.exports = ['$scope', '$window', 'Product', 'Image', 'FileUploader', 'AttributeSet', 'Brand',  function($scope, $window, Product, ImageService, FileUploader, AttributeSet, Brand){
 	'use strict';
-
+	$scope.formData = {};
+	//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
 	$scope.init = function(catId) {
 		$scope.categoryId = catId;
 	}
-	//Variation Options Available
-	$scope.available_attribute_options = [{
-		name: 'Capacity',
-		id: 5,
-		unit: 'mAh',
-		available_options: [
-			{ Id: 51, Name: '1000 mAh'},
-			{ Id: 31, Name: '2500 mAh'},
-			{ Id: 92, Name: '10000 mAh' }
-		]
-	},{
-		name: 'Material',
-		id: 1,
-		unit: '',
-		available_options: [
-			{ Id: 1, Name: "Palladium" },
-			{ Id: 2, Name: "Carbon Fiber" },
-			{ Id: 3, Name: "Nano Polymer" }
-		]
-	}];
+	$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
+	
+	//Attribute Options to be filled via API
+	$scope.availableAttributeSets = [];
 
-	var Pair = function(a,b){ 
-		this.first = a; 
-		this.second = b; 
-		this.hash = a.Id + "-" + b.Id;
-		this.text = (a.Name + ", " + b.Name)
+	//Constant Comparison Functions
+	//TODO: Move this to commons or something
+	$scope._isFreeTextInput = function(t){
+		return (t == "ST");
+	};
+	$scope._isListInput = function(t){
+		return (t == "LT");
 	};
 
+	//Load Attrib. Set
+  	AttributeSet.getByCategory(11).then(function(data){
+		$scope.availableAttributeSets = data; 		
+	});
+
+	//Struct for Variant Pair
+	var Pair = function(a,b){
+		this.first = a; 
+		this.second = b; 
+		this.hash = a+b;
+		this.text = (a + ", " + b);
+	};
+
+	//Multiplied Variants (product)
 	$scope.variants = [];
-	$scope.attribute_options = {
+	//Unmultiplied Variants (factor)
+	$scope.attributeOptions = {
 		0: {
-			attribute: null,
+			attribute: false,
 			options: []
 		},
 		1: {
-			attribute: null,
+			attribute: false,
 			options: []
 		}	
 	};
 
-	//When selected attribute change we have to regen cross multiply
-	$scope.$watch('attribute_options[0].attribute_id', function(oldv, newv){
+	//Regen select2 field for attribute option
+	var initAttributeOptionSelect2 = function(index){
+		var freeText = false;
+		if($scope.attributeOptions[index].attribute){
+			freeText = ($scope._isListInput($scope.attributeOptions[index].attribute.Attribute.DataType));
+		}
 		//Reset Options
-		$scope.attribute_options[0].options = [];
+		$(".select2-init-" + index).select2({
+			tags: !freeText
+		});
 
+		$scope.attributeOptions[index].options = [];
+	};
+
+	$scope.$watch('attributeOptions[0].attribute', function(){
+		initAttributeOptionSelect2(0);
 	});	
-	$scope.$watch('attribute_options[1].attribute_id', function(oldv, newv){
-		//Reset Options
-		$scope.attribute_options[1].options = [];
+
+	$scope.$watch('attributeOptions[1].attribute', function(){	
+		initAttributeOptionSelect2(1);
 	});	
+
 	//Multiply attributes into variants
-	$scope.$watch('attribute_options', function(oldv, newv){
-		if($scope.attribute_options[1].options.length == 0) return;
-		if($scope.attribute_options[0].options.length == 0) return;
-	
+	$scope.$watch('attributeOptions', function(oldv, newv){
+		if($scope.attributeOptions[1].options.length == 0) return;
+		if($scope.attributeOptions[0].options.length == 0) return;
+		
 		//TODO: Don't clear but only removed changed/stale	
 		$scope.variants = [];
-		$scope.attribute_options[0].options.forEach(function(A){
-			$scope.attribute_options[1].options.forEach(function(B){
+		//Multiply out unmultiplied options
+		$scope.attributeOptions[0].options.forEach(function(A){
+			$scope.attributeOptions[1].options.forEach(function(B){
 				$scope.variants.push(new Pair(A,B));
 			});
 		});
+
+		$scope.formData.DefaultVariant = $scope.variants[0];
 		
-		console.log($scope.variants);
 	}, true);
 
 	//When selected attribute change, the other box wil not allow to have selected option
+	var tabPage = {};
+	tabPage.global = {
+		init: function(){
+			//TODO:select2-init classes should probably be named in a more
+			//meaningful way	
+			$(".select2-init-normal").select2();
+			$(".select2-init, .select2-init-normal").on("change", function(ev){
+				$scope.$digest();
+			});
 
-	//Initialize Select2 (variation select)
-	$.fn.select2.defaults.set("tokenSeparators", [",", " "]);
+			
+		}
+	};
+	tabPage.information = {
+		init: function(){
+			$(".select2-init-brand").select2({
+				templateResult: function(d){
+					return d.BrandNameEn;
+				},
+				templateSelection: function(d){
+					return d.BrandNameEn;	
+				},
+				ajax: {
+					processResults: function (data) {
+						var mapped = data.map(function(obj){
+							obj.id = obj.$id;
+							return obj;
+						});
+
+						console.log(mapped);
+						return {results: mapped};
+					},
+					transport: function(params, success, failure){
+						//Call Brand Service
+						return Brand.getAll(params.data.q).then(success, failure);
+					}
+				}
+			});
+		}
+	};
+	tabPage.variation = {
+		init: function(){
+			initAttributeOptionSelect2(0);
+			initAttributeOptionSelect2(1);
+		}
+	};	
+
+	//Initialize Select2 stuff
+	$.fn.select2.defaults.set("tokenSeparators", [","]);
 	$(document).on('shown.bs.tab ready', function(){
-		$(".select2-init").select2();
-		$(".select2-init").on("change", function(ev){
-			$scope.$digest();
-		});
+		//Initialize All Tab
+		tabPage.global.init();
+	        for(var page in tabPage){
+			tabPage[page].init();
+		}	
 	});
 
-
 	//TODO: Init CK Editor (apparently this breaks)
-	
-/*	$('[ckeditor-initialize]').each(function(idx, textarea) {
+	/*	$('[ckeditor-initialize]').each(function(idx, textarea) {
 		CKEDITOR.readyplace( textarea );
 	});
 	$('.input-icon-calendar').datetimepicker({
 		format: "LL" // this is momentjs format make it show only date, no time will be show. see: http://momentjs.com/docs/#/displaying/format/
 	});
-*/
+	*/
+
 	$("body").tooltip({ selector: '[data-toggle=tooltip]' });
 	
 	//Product Image
