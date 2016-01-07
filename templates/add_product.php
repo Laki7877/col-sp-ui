@@ -48,6 +48,4 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 		</div>
 	</div>
 
-	
-
 <?php $this->stop() ?>

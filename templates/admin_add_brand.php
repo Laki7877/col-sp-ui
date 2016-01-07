@@ -3,11 +3,10 @@
 <?php $this->start('page-body') ?>
 	<div>
     <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Brand/Add Brand", 'link' => "admin_brand"]) ?>
-    <form class="ah-form margin-top-30">
-      <div class="row">
+    <div class="row margin-top-30">
       <div class="col-xs-12">
         
-        <form class="ah-form">
+        <form class="ah-form sticky-mainform-action">
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-section">
@@ -49,24 +48,25 @@
                 </div>
               </div> <!-- end .col-xs-12 -->
             </div> <!-- end .row -->
-          </form>
 
+            <div class="row">
+              <div class="col-xs-12">
+                <p class="text-align-right margin-bottom-30"><span class="color-red">*</span> - Required Field</p>
+              </div>
+            </div>
+
+            <div class="main-form-action full-width-row">
+              <div class="container-fluid">
+                <div class="float-right">
+                  <a href="#" class="link-btn-plain">Cancel</a>
+                  <button class="btn btn-blue btn-width-xl">Save</button>
+                </div>
+              </div>
+            </div>
+        </form>
 
       </div>
     </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <p class="text-align-right margin-bottom-30"><span class="color-red">*</span> - Required Field</p>
-      </div>
-    </div>
-	</form>
 
-  <div class="add-product-form-action main-form-action full-width-row sticky-footer">
-    <div class="container-fluid">
-      <div class="float-right">
-        <a href="#" class="link-btn-plain">Cancel</a>
-        <button class="btn btn-blue btn-width-xl">Save</button>
-      </div>
-    </div>
-  </div>
+
 <?php $this->stop() ?>
