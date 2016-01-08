@@ -50,6 +50,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 
 	<script src="/assets/libs/ckeditor/ckeditor.js"></script>
 	<script src="/assets/libs/ckeditor/config.js"></script>
+	<script src="/assets/libs/ckfinder/ckfinder.js"></script>
 	<script src="/assets/libs/moment/moment.min.js"></script>
 
 	<script src="/assets/libs/datepicker/js/bootstrap-datetimepicker.min.js"></script>

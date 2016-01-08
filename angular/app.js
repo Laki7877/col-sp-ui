@@ -43,6 +43,7 @@ var app = angular.module('colspApp', ['angularFileUpload', 'base64'])
 .factory('VariantPair', helpers.variantPair)
 //Directives
 .directive('ngDelegate', directives.ngDelegate)
+.directive('ngCkeditor', directives.ngCkeditor)
 
 //Filters
 .filter('capitalize', filters.capitalize)

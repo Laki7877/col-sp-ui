@@ -20,9 +20,9 @@
   },
   "dependencies": {
     "angular": "~1.4.8",
+    "angular-base64": "~2.0.5",
     "angular-file-upload": "^2.2.0",
     "angular-sanitize": "^1.4.8",
-    "ui-select": "^0.13.2",
-    "angular-base64": "~2.0.5"
+    "ui-select": "^0.13.2"
   }
 }

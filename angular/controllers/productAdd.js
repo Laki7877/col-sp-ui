@@ -1,6 +1,6 @@
 var angular = require('angular');
 
-module.exports = ['$scope', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', function($scope, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair){
+module.exports = ['$scope', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', function($scope, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair){
 	'use strict';
 	$scope.logForm = function(){
 		console.log('formData', $scope.formData);
@@ -15,6 +15,9 @@ module.exports = ['$scope', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop',
 		LocalCategories: [null,null,null]
 	};
 
+	//CK editor options
+	$scope.ckOptions = config.CK_DEFAULT_OPTIONS;
+
 	/**
 	 * All Tabs
 	 * Seperated by jquery parts and angular parts
@@ -23,15 +26,9 @@ module.exports = ['$scope', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop',
 	var tabPage = {};
 	tabPage.global = {
 		jquery: function(){
-
-			//TODO: Init CK Editor (apparently this breaks)
-			/*	$('[ckeditor-initialize]').each(function(idx, textarea) {
-				CKEDITOR.readyplace( textarea );
-			});
 			$('.input-icon-calendar').datetimepicker({
 				format: "LL" // this is momentjs format make it show only date, no time will be show. see: http://momentjs.com/docs/#/displaying/format/
 			});
-			*/
 
 			$("body").tooltip({ selector: '[data-toggle=tooltip]' });
 
@@ -49,7 +46,7 @@ module.exports = ['$scope', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop',
 					catId = 13;
 				}
 				var shopId = 1;
-				
+
 				//Load Attribute Set
 				AttributeSet.getByCategory(catId).then(function(data){
 					$scope.availableAttributeSets = data; 
