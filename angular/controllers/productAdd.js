@@ -46,6 +46,8 @@ module.exports = ['$scope', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop',
 				if(angular.isUndefined(catId)) {
 					catId = 13;
 				}
+				var shopId = 1;
+				
 				//Load Attribute Set
 				AttributeSet.getByCategory(catId).then(function(data){
 					$scope.availableAttributeSets = data; 
@@ -58,7 +60,7 @@ module.exports = ['$scope', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop',
 				});
 
 				//Load Local Cat
-				Shop.getLocalCategories(1).then(function(data) {
+				Shop.getLocalCategories(shopId).then(function(data) {
 					$scope.availableLocalCategories = Category.convertDepthArrayToNestedArray(data);
 				});
 			}
@@ -159,15 +161,45 @@ module.exports = ['$scope', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop',
 			//For viewing only
 			$scope.viewCategoryColumns = [];
 			$scope.viewCategorySelected = null;
-			$scope.$on('openGlobalCat', function(evt, item) {
-				$scope.viewCategoryColumns = Category.createColumns(item);
+			$scope.viewCategoryIndex = 0;
+			$scope.selectCategory = angular.noop;
+
+			//Events
+			$scope.$on('openGlobalCat', function(evt, item, indx) {
+				$scope.viewCategoryColumns = Category.createColumns(item, $scope.availableGlobalCategories);
 				$scope.viewCategorySelected = item;
+				$scope.viewCategoryIndex = indx;
+				$scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function(selectedItem) {
+					$scope.viewCategorySelected = selectedItem;
+				});
 			});
-			$scope.$on('selectGlobalCat', function(evt, model) {
-
+			$scope.$on('deleteGlobalCat', function(evt, indx) {
+				$scope.formData.GlobalCategories[indx] = null;
 			});
-			$scope.$on('saveGlobalCat', function(evt, model) {
+			$scope.$on('selectGlobalCat', function(evt, row, indx, parentIndx) {
+				$scope.selectCategory(row, indx, parentIndx);
+			});
+			$scope.$on('saveGlobalCat', function(evt) {
+				$scope.formData.GlobalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected;
+			});
 
+			//Events
+			$scope.$on('openLocalCat', function(evt, item, indx) {
+				$scope.viewCategoryColumns = Category.createColumns(item, $scope.availableLocalCategories);
+				$scope.viewCategorySelected = item;
+				$scope.viewCategoryIndex = indx;
+				$scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function(selectedItem) {
+					$scope.viewCategorySelected = selectedItem;
+				});
+			});
+			$scope.$on('deleteLocalCat', function(evt, indx) {
+				$scope.formData.LocalCategories[indx] = null;
+			});
+			$scope.$on('selectLocalCat', function(evt, row, indx, parentIndx) {
+				$scope.selectCategory(row, indx, parentIndx);
+			});
+			$scope.$on('saveLocalCat', function(evt) {
+				$scope.formData.LocalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected;
 			});
 		}
 	}
@@ -279,13 +311,9 @@ module.exports = ['$scope', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop',
 		   		$scope.pairIndex = index;
 		   		$scope.uploaderModal.queue = $scope.pairModal;
 			   	ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images);
-
-		   		//Show modal
-		   		$('#variant-detail-1').modal('show');
 		   	});
 		   	$scope.$on('savePairModal', function(evt){
 		   		$scope.formData.Variants[$scope.pairIndex] = $scope.pairModal;
-		   		$('#variant-detail-1').modal('hide');
 		   	});
 		}
 	};

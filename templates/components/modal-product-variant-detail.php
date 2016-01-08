@@ -45,7 +45,7 @@
 					<div class="col-xs-12">
 						<span class="float-right">
 							<a class="link-btn-plain" data-dismiss="modal">Cancel</a>
-							<button type="button" class="btn btn-blue btn-width-xl" ng-click="$emit('savePairModal')">Save</button>
+							<button type="button" class="btn btn-blue btn-width-xl" ng-click="$emit('savePairModal')" data-dismiss="modal">Save</button>
 						</span>
 					</div> <!-- end .col-xs-12 -->
 				</div> <!-- end .row -->
