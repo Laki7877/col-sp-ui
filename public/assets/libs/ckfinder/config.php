@@ -66,10 +66,10 @@ $config['images'] = array(
 $config['backends'][] = array(
     'name'         => 'default',
     'adapter'      => 'local',
-    'baseUrl'      => '/ckfinder/userfiles/',
-//  'root'         => '', // Can be used to explicitly set the CKFinder user files directory.
+    'baseUrl'      => 'files/',
+    'root'         => '', // Can be used to explicitly set the CKFinder user files directory.
     'chmodFiles'   => 0777,
-    'chmodFolders' => 0755,
+    'chmodFolders' => 0777,
     'filesystemEncoding' => 'UTF-8',
 );
 
@@ -128,7 +128,7 @@ $config['accessControl'][] = array(
 $config['overwriteOnUpload'] = false;
 $config['checkDoubleExtension'] = true;
 $config['disallowUnsafeCharacters'] = false;
-$config['secureImageUploads'] = true;
+$config['secureImageUploads'] = false;
 $config['checkSizeAfterScaling'] = true;
 $config['htmlExtensions'] = array('html', 'htm', 'xml', 'js');
 $config['hideFolders'] = array('.*', 'CVS', '__thumbs');
