@@ -2,7 +2,49 @@ var angular = require('angular');
 
 module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair',  function($scope, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair){
 	'use strict';
-	$scope.logForm = function(){
+
+	/*
+	 * Transform Form Data into APIable form data
+	 */
+	var transformFormData = function(fd){
+		/*
+		 * - Convert all category into single { CategoryId } Structure
+		 * - Add position to image {} request
+		 * - Multiply base attributes into each variants
+		 */
+
+		var hasVariants = false;  //TODO
+		var clean = {
+			Keywords: fd.Keywords.join(',')
+		};
+
+		if(hasVariants){
+			var variants = [];
+			fd.Variants.forEach(function(variant){
+				
+				var pvariant = {
+					Images: []	
+				};
+				
+				//Save into images
+
+
+				//Save into variants
+				variants.push(pvariant);
+					
+			});		
+			//save into clean
+			clean.Variants = variants;
+		}else{
+			clean.Images = []; //List of image request
+		}
+
+		return clean;
+	};
+
+	$scope.publish = function(){
+		var apiRequest = transformFormData($scope.formData);
+		console.log('clean formData', apiRequest);
 		console.log('formData', $scope.formData);
 	};
 
@@ -14,8 +56,9 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		GlobalCategories: [null,null,null],
 		LocalCategories: [null,null,null],
 		SEO: {},
-		ControlFlags: []
+		ControlFlags: [],
 	};
+
 
 	//CK editor options
 	$scope.ckOptions = config.CK_DEFAULT_OPTIONS;
