@@ -1,4 +1,4 @@
-module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 'Brand',  function($scope, Product, ImageService, FileUploader, AttributeSet, Brand){
+module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 'Brand', 'VariantPair', function($scope, Product, ImageService, FileUploader, AttributeSet, Brand, VariantPair){
 	'use strict';
 	$scope.logForm = function(){
 		console.log('formData', $scope.formData);
@@ -32,19 +32,6 @@ module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 
 	};
 	$scope._isListInput = function(t){
 		return (t == "LT");
-	};
-
-
-	
-	//Struct for Variant Pair
-	var VariantPair = function(a,b){
-		//Variant is a cross of First and Second Attribute
-		this.FirstAttribute = a; 
-		this.SecondAttribute = b;
-		this.hash = (a.AttributeKey.AttributeId + "-" +
-		 a.AttributeValue.trim() + "-" + b.AttributeKey.AttributeId +
-		  "-" + b.AttributeValue.trim());
-		this.text = (a.AttributeValue.trim() + ", " + b.AttributeValue.trim());
 	};
 
 	//Unmultiplied Variants (factor)
