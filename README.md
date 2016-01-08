@@ -1,4 +1,5 @@
-# Seller Portal
+[![Gitter](https://badges.gitter.im/Laki7877/col-sp-ui.svg)](https://gitter.im/Laki7877/col-sp-ui?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+# Seller Portal (Super Bleeding Edge)
 Uses PHP for routing, and rendering (non-SPA)
 However, minimally uses angularJS for data binding and controllers.
 
