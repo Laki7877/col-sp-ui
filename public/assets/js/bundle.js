@@ -57,7 +57,7 @@ module.exports = {
 };
 
 },{}],3:[function(require,module,exports){
-module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 'Brand', 'VariantPair', function($scope, Product, ImageService, FileUploader, AttributeSet, Brand, VariantPair){
+module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 'Brand', 'VariantPair', 'util', function($scope, Product, ImageService, FileUploader, AttributeSet, Brand, VariantPair, util){
 	'use strict';
 	$scope.logForm = function(){
 		console.log('formData', $scope.formData);
@@ -68,29 +68,6 @@ module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 
 		MasterImages360: [],
 		VideoLinks: [],
 		Variants: []
-	};
-
-	//Attribute Options to be filled via API
-	$scope.availableAttributeSets = [];
-
-
-	$scope.init = function(catId) {
-		$scope.categoryId = catId;
-		//Load Attrib. Set
-		AttributeSet.getByCategory($scope.categoryId).then(function(data){
-			$scope.availableAttributeSets = data; 
-		});
-	}
-
-	//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
-	$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
-	//Constant Comparison Functions
-	//TODO: Move this to commons or something
-	$scope._isFreeTextInput = function(t){
-		return (t == "ST");
-	};
-	$scope._isListInput = function(t){
-		return (t == "LT");
 	};
 
 	//Unmultiplied Variants (factor)
@@ -105,95 +82,40 @@ module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 
 		}	
 	};
 
-	//Regen select2 field for attribute option
-	var initAttributeOptionSelect2 = function(index){
-		var freeText = false;
-		if($scope.attributeOptions[index].attribute){
-			freeText = ($scope._isListInput($scope.attributeOptions[index].attribute.Attribute.DataType));
-		}
-		//Reset Options
-		$(".select2-init-" + index).select2({
-			tags: !freeText
+	//Data Sources
+	$scope.availableAttributeSets = [];
+
+	//On Controller init
+	$scope.init = function(catId) {
+		$scope.categoryId = catId;
+		//Load Attrib. Set
+		AttributeSet.getByCategory($scope.categoryId).then(function(data){
+			$scope.availableAttributeSets = data; 
 		});
-
-		$scope.attributeOptions[index].options = [];
-	};
-
-	$scope.$watch('attributeOptions[0].attribute', function(){
-		initAttributeOptionSelect2(0);
-	});	
-
-	$scope.$watch('attributeOptions[1].attribute', function(){	
-		initAttributeOptionSelect2(1);
-	});	
-
-	//Multiply attributes into variants
-	$scope.$watch('attributeOptions', function(){
-		console.log("Attribute Option Changed", $scope.attributeOptions);
-		// if($scope.attributeOptions[1].options.length == 0) return;
-		// if($scope.attributeOptions[0].options.length == 0) return;
-		
-		var variantHashes = {};
-		//Product Hash Tracking Table
-		$scope.formData.Variants.forEach(function(elem, index){
-			//Keep track of the index of the hashed item
-			variantHashes[elem.hash] = index;
+		//TODO:select2-init classes should be named more meaningfully
+		$(".select2-init-normal").select2();
+		$(".select2-init, .select2-init-normal").on("change", function(ev){
+			$scope.$digest();
 		});
+		//Initialize Select2 stuff
+		$.fn.select2.defaults.set("tokenSeparators", [","]);
+		$(document).on('shown.bs.tab ready', function(){
+			//Initialize All Tab
+			for(var page in tabPage){
+				tabPage[page].init();
+			}	
+		});
+	}
 
-		//Multiply out unmultiplied options
-		for(var aKey in $scope.attributeOptions[0].options){
-			var A = $scope.attributeOptions[0].options[aKey];
-			for(var bKey in $scope.attributeOptions[1].options){
-				var B = $scope.attributeOptions[1].options[bKey];
-
-				var kpair = new VariantPair({
-					AttributeKey: $scope.attributeOptions[0].attribute,
-					AttributeValue: A 
-				},{
-					AttributeKey: $scope.attributeOptions[1].attribute,
-					AttributeValue: B
-				});
-
-				//Only push if don't exist
-				if(!(kpair.hash in variantHashes)){
-					console.log("Appending Pair", variantHashes, kpair.hash)
-					$scope.formData.Variants.push(kpair);
-				}
-				
-				//Mark hash as used
-				variantHashes[kpair.hash] = -1;
-			}
-		}
-
-		//Remove deleted variants
-		for(var rhash in variantHashes){
-			//Only if its unused
-			if(variantHashes[rhash] == -1) continue;
-			console.log("removing", rhash);
-			$scope.formData.Variants.splice(variantHashes[rhash], 1);
-		}
-
-
-		$scope.formData.DefaultVariant = $scope.formData.Variants[0];
-		
-	}, true);
+	//Expose Util  
+	$scope._isListInput = util.isListDataType;
+	$scope._isFreeTextInput = util.isFreeTextDataType;
+	//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
+	$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
 
 	//When selected attribute change, 
 	//the other box wil not allow to have selected option
-
 	var tabPage = {};
-	tabPage.global = {
-		init: function(){
-			//TODO:select2-init classes should probably be named in a more
-			//meaningful way	
-			$(".select2-init-normal").select2();
-			$(".select2-init, .select2-init-normal").on("change", function(ev){
-				$scope.$digest();
-			});
-
-			
-		}
-	};
 	tabPage.information = {
 		init: function(){
 			$(".select2-init-brand").select2({
@@ -223,20 +145,91 @@ module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 
 	};
 	tabPage.variation = {
 		init: function(){
+			/*
+			 * Call to initialize select box
+			 */
+			var initAttributeOptionSelect2 = function(index){
+				var listMode = false;
+				if($scope.attributeOptions[index].attribute){
+					listMode = (util.isListDataType($scope.attributeOptions[index].attribute.Attribute.DataType));
+				}
+				//Reset Options
+				$(".select2-init-" + index).select2({
+					tags: !listMode
+				});
+
+				$scope.attributeOptions[index].options = [];
+			};
+
+			/*
+			 * Re init select2 component based on LT or ST type everytime
+			 * attribute option changes
+			 */
+			$scope.$watch('attributeOptions[0].attribute', function(){
+				initAttributeOptionSelect2(0);
+			});	
+			$scope.$watch('attributeOptions[1].attribute', function(){	
+				initAttributeOptionSelect2(1);
+			});	
+
+			/* If any attribute option change
+			   Update formData.Variants
+			   by cross multiplying each Variant into VariantPair
+			*/
+			$scope.$watch('attributeOptions', function(){
+				
+				var variantHashes = {};
+				//Product Hash Tracking Table
+				$scope.formData.Variants.forEach(function(elem, index){
+					//Keep track of the index of the hashed item
+					variantHashes[elem.hash] = index;
+				});
+
+				//Multiply out unmultiplied options
+				for(var aKey in $scope.attributeOptions[0].options){
+					var A = $scope.attributeOptions[0].options[aKey];
+					for(var bKey in $scope.attributeOptions[1].options){
+						var B = $scope.attributeOptions[1].options[bKey];
+
+						var kpair = new VariantPair({
+							AttributeKey: $scope.attributeOptions[0].attribute,
+							AttributeValue: A 
+						},{
+							AttributeKey: $scope.attributeOptions[1].attribute,
+							AttributeValue: B
+						});
+
+						//Only push if don't exist
+						if(!(kpair.hash in variantHashes)){
+							console.log("Appending Pair", variantHashes, kpair.hash)
+							$scope.formData.Variants.push(kpair);
+						}
+						
+						//Mark hash as used
+						variantHashes[kpair.hash] = -1;
+					}
+				}
+
+				//Remove deleted variants
+				for(var rhash in variantHashes){
+					//Only if its unused
+					if(variantHashes[rhash] == -1) continue;
+					console.log("removing", rhash);
+					$scope.formData.Variants.splice(variantHashes[rhash], 1);
+				}
+
+				//Set Default Variant
+				$scope.formData.DefaultVariant = $scope.formData.Variants[0];
+				
+			}, true);
+
+
 			initAttributeOptionSelect2(0);
 			initAttributeOptionSelect2(1);
 		}
 	};	
 
-	//Initialize Select2 stuff
-	$.fn.select2.defaults.set("tokenSeparators", [","]);
-	$(document).on('shown.bs.tab ready', function(){
-		//Initialize All Tab
-		tabPage.global.init();
-	        for(var page in tabPage){
-			tabPage[page].init();
-		}	
-	});
+
 
 	//TODO: Init CK Editor (apparently this breaks)
 	/*	$('[ckeditor-initialize]').each(function(idx, textarea) {
@@ -646,6 +639,15 @@ module.exports = ['storage', function (storage) {
         var sessionToken = storage.getSessionToken();
         return !!(profile && sessionToken);
     };
+
+    service.isFreeTextDataType = function(dataType){
+	return (dataType == "ST");
+    };
+
+    service.isListDataType = function(dataType){
+	return (dataType == "LT");
+    }
+
 
     return service;
 }];
