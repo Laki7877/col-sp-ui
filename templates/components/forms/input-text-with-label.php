@@ -16,4 +16,7 @@ if (isset($size)) $inputSize = "width-field-$size";
 	<? if (!empty($tooltip)): ?>
 		<div class="width-field-tooltip no-padding-left"><i class="fa fa-2x fa-question-circle color-grey" data-toggle="tooltip" data-placement="right" title="<?= $tooltip ?>"></i></div>
 	<? endif ?>
+	<? if (!empty($loading)): ?>
+		<div class="no-padding-left"><img class="logo-img" src="<?= $this->asset('/assets/img/loader.gif') ?>" width="30" /></div>
+	<? endif ?>
 </div>

@@ -36,10 +36,10 @@
               <input type="checkbox" aria-label="Checkbox for following text input"> 
             </td>
             <td class="column-text-ellipsis">
-              1234567
+              <a href="#">1234567</a>
             </td>
             <td>
-              Nike
+              <a href="#">Nike</a>
             </td>
             <td class="modified-column">
               14/12/15
@@ -56,10 +56,10 @@
               <input type="checkbox" aria-label="Checkbox for following text input"> 
             </td>
             <td class="column-text-ellipsis">
-              1234567
+              <a href="#">1234567</a>
             </td>
             <td>
-              Addidas
+              <a href="#">Addidas</a>
             </td>
             <td class="modified-column">
               14/12/15
