@@ -13,6 +13,9 @@ if (isset($size)) $inputSize = "width-field-$size";
 			<?php if(isset($ng_model)): ?>
 			ng-model="<?=$ng_model?>"
 			<?php endif; ?>
+			<?php if(isset($multiple)): ?>
+			multiple="multiple"
+			<?php endif; ?>
 			 class="form-control select2-init-normal <?= $input_class; ?>" <?= $input_attrs ?> >
 
 			<?php foreach($options as $opt): ?>

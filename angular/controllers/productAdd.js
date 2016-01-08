@@ -12,7 +12,9 @@ module.exports = ['$scope', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop',
 		VideoLinks: [],
 		Variants: [],
 		GlobalCategories: [null,null,null],
-		LocalCategories: [null,null,null]
+		LocalCategories: [null,null,null],
+		SEO: {},
+		ControlFlags: []
 	};
 
 	/**
@@ -27,19 +29,22 @@ module.exports = ['$scope', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop',
 			/*	$('[ckeditor-initialize]').each(function(idx, textarea) {
 				CKEDITOR.readyplace( textarea );
 			});
+			*/
+
 			$('.input-icon-calendar').datetimepicker({
 				format: "LL" // this is momentjs format make it show only date, no time will be show.		
 			});
-			*/
 
 			$("body").tooltip({ selector: '[data-toggle=tooltip]' });
 
-			//TODO:select2-init classes should probably be named in a more meaningfulway
 			$.fn.select2.defaults.set("tokenSeparators", [","]);
-			$(".select2-init-normal").select2();
-			$(".select2-init, .select2-init-normal").on("change", function(ev){
+
+			$(".select2-init-simple").select2();
+			$(".select2-init-track").on("change", function(ev){
 				$scope.$digest();
 			});
+
+			//$(".select2-init-related").select2();
 		},
 		angular: function() {
 			$scope.init = function(catId) {
@@ -80,15 +85,17 @@ module.exports = ['$scope', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop',
 		jquery: function(){
 			$(".select2-init-brand").select2({
 				templateResult: function(d){
+					if(!d || !d.BrandNameEn) return "Loading..";
 					return d.BrandNameEn + " (" + d.BrandNameTh + ")";
 				},
 				templateSelection: function(d){
+					if(d.BrandNameEn == undefined) return null;
 					return d.BrandNameEn + " (" + d.BrandNameTh + ")";	
 				},
 				ajax: {
 					processResults: function (data) {
 						var mapped = data.map(function(obj){
-							obj.id = obj.$id;
+							obj.id = obj.BrandId;
 							return obj;
 						});
 
@@ -205,14 +212,14 @@ module.exports = ['$scope', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop',
 	}
 	tabPage.variation = {
 		initSelect2: function(index){
-			var freeText = false;
+			var isListInput	= false;
 			if($scope.attributeOptions[index].attribute){
-				freeText = ($scope._isListInput($scope.attributeOptions[index].attribute.Attribute.DataType));
+				isListInput = ($scope._isListInput($scope.attributeOptions[index].attribute.Attribute.DataType));
 			}
 			
 			//Reset Options
 			$(".select2-init-" + index).select2({
-				tags: !freeText
+				tags: !isListInput
 			});
 
 			$scope.attributeOptions[index].options = [];
@@ -319,6 +326,31 @@ module.exports = ['$scope', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop',
 	};
 	tabPage.options = {
 		jquery: function() {
+			$(".select2-init-related").select2({
+				tags: false,
+				templateResult: function(d){
+					if(!("ProductNameEn" in d)) return null;
+					return d.ProductNameEn + " / " + d.ProductNameTh;
+				},
+				templateSelection: function(d){	
+					return d.ProductNameEn + " / " + d.ProductNameTh;
+				},
+				ajax: {
+					processResults: function (data) {
+						var mapped = data.data.map(function(obj){
+							obj.id = obj.ProductId;
+							return obj;
+						});
+
+						return {results: mapped};
+					},
+					transport: function(params, success, failure){
+						return Product.getAll({
+							searchText: params.data.q
+						}).then(success, failure);
+					}
+				}
+			});
 
 		},
 		angular: function() {
