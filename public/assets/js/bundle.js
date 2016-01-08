@@ -194,7 +194,6 @@ module.exports = ['$scope', 'config', 'Product', 'Image', 'AttributeSet', 'Brand
 			 * PRODUCT IMAGE
 			 */
 			$scope.uploader = ImageService.getUploader('/ProductImages');
-			$scope.uploaderModal = ImageService.getUploader('/ProductImages');
 			$scope.uploader360 = ImageService.getUploader('/ProductImages', {
 				queueLimit: 60
 			});
@@ -380,6 +379,7 @@ module.exports = ['$scope', 'config', 'Product', 'Image', 'AttributeSet', 'Brand
 		   	/**
 		   	 * This part handles when user click on More Detail and open pair form
 		   	 */
+			$scope.uploaderModal = ImageService.getUploader('/ProductImages');
 		   	$scope.$on('openPairModal', function(evt, pair, array, index){
 		   		//Define if not defined
 		   		if(angular.isUndefined(pair.Images)) {
@@ -388,11 +388,10 @@ module.exports = ['$scope', 'config', 'Product', 'Image', 'AttributeSet', 'Brand
 		   		if(angular.isUndefined(pair.queue)) {
 		   			pair.queue = [];
 		   		}
-		   		
 		   		//Modal target (for viewing pair)
 		   		$scope.pairModal = angular.copy(pair);
 		   		$scope.pairIndex = index;
-		   		$scope.uploaderModal.queue = $scope.pairModal;
+		   		$scope.uploaderModal.queue = $scope.pairModal.queue;
 			   	ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images);
 		   	});
 		   	$scope.$on('savePairModal', function(evt){
