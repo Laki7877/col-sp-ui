@@ -74,7 +74,7 @@ module.exports = {
 },{}],3:[function(require,module,exports){
 var angular = require('angular');
 
-module.exports = ['$scope', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', function($scope, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair){
+module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair',  function($scope, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair){
 	'use strict';
 	$scope.logForm = function(){
 		console.log('formData', $scope.formData);
@@ -86,7 +86,9 @@ module.exports = ['$scope', 'config', 'Product', 'Image', 'AttributeSet', 'Brand
 		VideoLinks: [],
 		Variants: [],
 		GlobalCategories: [null,null,null],
-		LocalCategories: [null,null,null]
+		LocalCategories: [null,null,null],
+		SEO: {},
+		ControlFlags: []
 	};
 
 	//CK editor options
@@ -95,24 +97,24 @@ module.exports = ['$scope', 'config', 'Product', 'Image', 'AttributeSet', 'Brand
 	/**
 	 * All Tabs
 	 * Seperated by jquery parts and angular parts
-	 * WWWW
 	 */
 	var tabPage = {};
 	tabPage.global = {
 		jquery: function(){
 			$('.input-icon-calendar').datetimepicker({
-				format: "LL" // this is momentjs format make it show only date, no time will be show. see: http://momentjs.com/docs/#/displaying/format/
+				format: "LL" // this is momentjs format make it show only date, no time will be show.		
 			});
 
 			$("body").tooltip({ selector: '[data-toggle=tooltip]' });
 
-			//TODO:select2-init classes should probably be named in a more
-			//meaningful way	
 			$.fn.select2.defaults.set("tokenSeparators", [","]);
-			$(".select2-init-normal").select2();
-			$(".select2-init, .select2-init-normal").on("change", function(ev){
+
+			$(".select2-init-simple").select2();
+			$(".select2-init-track").on("change", function(ev){
 				$scope.$digest();
 			});
+
+			//$(".select2-init-related").select2();
 		},
 		angular: function() {
 			$scope.init = function(catId) {
@@ -145,29 +147,25 @@ module.exports = ['$scope', 'config', 'Product', 'Image', 'AttributeSet', 'Brand
 
 			//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
 			$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
-			//Constant Comparison Functions
-			//TODO: Move this to commons or something
-			$scope._isFreeTextInput = function(t){
-				return (t == "ST");
-			};
-			$scope._isListInput = function(t){
-				return (t == "LT");
-			};
+			$scope._isFreeTextInput = util.isFreeTextDataType; 
+			$scope._isListInput = util.isListDataType;
 		}
 	};
 	tabPage.information = {
 		jquery: function(){
 			$(".select2-init-brand").select2({
 				templateResult: function(d){
+					if(!d || !d.BrandNameEn) return "Loading..";
 					return d.BrandNameEn + " (" + d.BrandNameTh + ")";
 				},
 				templateSelection: function(d){
+					if(d.BrandNameEn == undefined) return null;
 					return d.BrandNameEn + " (" + d.BrandNameTh + ")";	
 				},
 				ajax: {
 					processResults: function (data) {
 						var mapped = data.map(function(obj){
-							obj.id = obj.$id;
+							obj.id = obj.BrandId;
 							return obj;
 						});
 
@@ -282,7 +280,23 @@ module.exports = ['$scope', 'config', 'Product', 'Image', 'AttributeSet', 'Brand
 		}
 	}
 	tabPage.variation = {
+		initSelect2: function(index){
+			var isListInput	= false;
+			if($scope.attributeOptions[index].attribute){
+				isListInput = ($scope._isListInput($scope.attributeOptions[index].attribute.Attribute.DataType));
+			}
+			
+			//Reset Options
+			$(".select2-init-" + index).select2({
+				tags: !isListInput
+			});
+
+			$scope.attributeOptions[index].options = [];
+
+		},
 		jquery: function(){
+			tabPage.variation.initSelect2(0);
+			tabPage.variation.initSelect2(1);
 		},
 		angular: function() {
 			//Unmultiplied Variants (factor)
@@ -297,36 +311,19 @@ module.exports = ['$scope', 'config', 'Product', 'Image', 'AttributeSet', 'Brand
 				}	
 			};
 
-			//Regen select2 field for attribute option
-			var initAttributeOptionSelect2 = function(index){
-				var freeText = false;
-				if($scope.attributeOptions[index].attribute){
-					freeText = ($scope._isListInput($scope.attributeOptions[index].attribute.Attribute.DataType));
-				}
-				//Reset Options
-				$(".select2-init-" + index).select2({
-					tags: !freeText
-				});
-
-				$scope.attributeOptions[index].options = [];
-			};
-
-			initAttributeOptionSelect2(0);
-			initAttributeOptionSelect2(1);
 
 			$scope.$watch('attributeOptions[0].attribute', function(){
-				initAttributeOptionSelect2(0);
+				tabPage.variation.initSelect2(0);
 			});	
 
 			$scope.$watch('attributeOptions[1].attribute', function(){	
-				initAttributeOptionSelect2(1);
+				tabPage.variation.initSelect2(1);
 			});	
 
-			//Multiply attributes into variants
+			/*
+			 * Multiplying options into VariantPairs
+			 */
 			$scope.$watch('attributeOptions', function(){
-				console.log("Attribute Option Changed", $scope.attributeOptions);
-				// if($scope.attributeOptions[1].options.length == 0) return;
-				// if($scope.attributeOptions[0].options.length == 0) return;
 				
 				var variantHashes = {};
 				//Product Hash Tracking Table
@@ -351,20 +348,18 @@ module.exports = ['$scope', 'config', 'Product', 'Image', 'AttributeSet', 'Brand
 
 						//Only push if don't exist
 						if(!(kpair.hash in variantHashes)){
-							console.log("Appending Pair", variantHashes, kpair.hash)
 							$scope.formData.Variants.push(kpair);
 						}
 						
 						//Mark hash as used
+						//This will not be deleted
 						variantHashes[kpair.hash] = -1;
 					}
 				}
 
 				//Remove deleted variants
 				for(var rhash in variantHashes){
-					//Only if its unused
 					if(variantHashes[rhash] == -1) continue;
-					console.log("removing", rhash);
 					$scope.formData.Variants.splice(variantHashes[rhash], 1);
 				}
 
@@ -372,9 +367,8 @@ module.exports = ['$scope', 'config', 'Product', 'Image', 'AttributeSet', 'Brand
 				$scope.formData.DefaultVariant = $scope.formData.Variants[0];	
 			}, true);
 
-			//When selected attribute change, 
+			//TODO: When selected attribute change, 
 			//the other box wil not allow to have selected option
-			
 			
 		   	/**
 		   	 * This part handles when user click on More Detail and open pair form
@@ -401,6 +395,31 @@ module.exports = ['$scope', 'config', 'Product', 'Image', 'AttributeSet', 'Brand
 	};
 	tabPage.options = {
 		jquery: function() {
+			$(".select2-init-related").select2({
+				tags: false,
+				templateResult: function(d){
+					if(!("ProductNameEn" in d)) return null;
+					return d.ProductNameEn + " / " + d.ProductNameTh;
+				},
+				templateSelection: function(d){	
+					return d.ProductNameEn + " / " + d.ProductNameTh;
+				},
+				ajax: {
+					processResults: function (data) {
+						var mapped = data.data.map(function(obj){
+							obj.id = obj.ProductId;
+							return obj;
+						});
+
+						return {results: mapped};
+					},
+					transport: function(params, success, failure){
+						return Product.getAll({
+							searchText: params.data.q
+						}).then(success, failure);
+					}
+				}
+			});
 
 		},
 		angular: function() {
@@ -410,9 +429,9 @@ module.exports = ['$scope', 'config', 'Product', 'Image', 'AttributeSet', 'Brand
 
 	//Initialize Angular stuff
 	tabPage.global.angular();
-		for (var page in tabPage) {
-			tabPage[page].angular();
-		}
+	for (var page in tabPage) {
+		tabPage[page].angular();
+	}
 
 	//Initialize Jquery stuff
 	$(document).on('shown.bs.tab ready', function(){
@@ -719,7 +738,14 @@ module.exports = ['storage', function (storage) {
         var sessionToken = storage.getSessionToken();
         return !!(profile && sessionToken);
     };
-    
+    service.isFreeTextDataType = function(dataType){
+	return (dataType == "ST");
+    };
+
+    service.isListDataType = function(dataType){
+	return (dataType == "LT");
+    }
+
     return service;
 }];
 
@@ -994,18 +1020,15 @@ module.exports = ['$q', '$http', 'common', function($q, $http, common){
 	'use strict';
 	var service = {};
 
-	/**
-	 * Get all product entry
-	 */
 	service.getAll = function(parameters){
 			var req = {
 				method: 'GET',
 				url: '/ProductStages',
 				params: {	
-					_order: parameters.orderBy,
-					_limit: parameters.pageSize,
-					_offset: parameters.page * parameters.pageSize,
-					_direction: parameters.direction,
+					_order: parameters.orderBy || 'ProductId',
+					_limit: parameters.pageSize || 10,
+					_offset: parameters.page * parameters.pageSize || 0,
+					_direction: parameters.direction || 'asc',
 					searchText: (parameters.searchText && parameters.searchText.length > 0 ) ? parameters.searchText : undefined
 				}
 			};

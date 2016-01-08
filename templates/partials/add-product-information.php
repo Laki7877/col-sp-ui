@@ -17,8 +17,8 @@
 						"tooltip" => "The Universal Product Code (UPC) is a barcode symbology (i.e., a specific type of barcode) that is widely used in the USAX.", "size" => "large"]) ?>
 					<? $this->insert('components/forms/dropdown-with-label', 
 						["label" => "Brand Name",
-					 	 "input_class" => "select2-init-brand",
-				  		 "ng_model"=> "formData.Brand.\$id"
+					 	 "input_class" => "select2-init-brand select2-init-track",
+				  		 "ng_model"=> "formData.Brand.BrandId"
 						]) 
 					?>
 				</div>
@@ -46,7 +46,8 @@
 				<div class="form-section-content">
 					<? $this->insert('components/forms/dropdown-with-label', 
 						["label" => "Attribute Set",
-       						 "ng_options"=> "i as _attrEnTh(i) for i in availableAttributeSets", 
+						"ng_options"=> "i as _attrEnTh(i) for i in availableAttributeSets",
+					        "input_class" => "select2-init-simple select2-init-track",	
 				  		 "ng_model"=> "formData.AttributeSet"
 						]) 
 					?>
@@ -74,7 +75,11 @@
 					["label" => "Search Tag",
 				       			"ng_model" => "formData.Keywords",	
 							"tooltip" => "This is a tooltip text", 
-							"input_class" => "select2-init", "size" => "large", "input_attrs" => 'data-tags="true" data-placeholder="Separated by a comma" multiple="multiple"', "options" => []]) ?>
+							"input_class" => "select2-init-simple select2-init-track",
+							"size" => "large", 
+							"input_attrs" => 
+							'data-tags="true" data-placeholder="Separated by a comma" multiple="multiple"', 
+							"options" => []]) ?>
 					<? $this->insert('components/forms/tags-with-label', ["label" => "Suggested Search Tag"]) ?>
 				</div>
 			</div>

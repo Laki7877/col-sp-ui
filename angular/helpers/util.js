@@ -12,6 +12,13 @@ module.exports = ['storage', function (storage) {
         var sessionToken = storage.getSessionToken();
         return !!(profile && sessionToken);
     };
-    
+    service.isFreeTextDataType = function(dataType){
+	return (dataType == "ST");
+    };
+
+    service.isListDataType = function(dataType){
+	return (dataType == "LT");
+    }
+
     return service;
 }];

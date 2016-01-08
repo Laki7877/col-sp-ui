@@ -5,7 +5,6 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Variation Option</h2></div>
 				<div class="form-section-content padding-left-30" ng-if="!formData.AttributeSet">
-					<h4>Placeholder Warning Text</h4>
 					Please first select an attribute set from Information tab
 				</div>
 				<div class="form-section-content" ng-if="formData.AttributeSet">
@@ -19,7 +18,7 @@
 						<div class="width-field-normal">
 							<div class="input-with-unit">
 								<select ng-model="attributeOptions[jth].options" 
-									class="form-control select2-init-{{jth}} select2-init" 
+									class="form-control select2-init-{{jth}} select2-track" 
 									multiple="multiple">
 									<option ng-repeat="i in attributeOptions[jth].attribute.Attribute.AttributeValueMaps">
 										{{ i.AttributeValue.AttributeValueEn }}
@@ -36,7 +35,7 @@
 	<div class="width-label"><label class="control-label">Default Variant</label></div>
 	<div class="width-field-normal">
 		<div class="ah-select2-dropdown">
-			<select ng-model="formData.DefaultVariant" class="form-control select2-init-std select2-init" 
+			<select ng-model="formData.DefaultVariant" class="form-control select2-init-track select2-init-simple" 
 				ng-options="i as i.text for i in formData.Variants">
 			</select>
 		</div>
@@ -66,7 +65,7 @@
 									<td><input type="text" class="form-control" /></td>
 									<td><input type="text" class="form-control" /></td>
 									<td><input type="text" class="form-control" /></td>
-									<td><a class="btn btn-white btn-width-xl" ng-click="$emit('openPairModal', pair, formData.Variants, $index)">More Detail</a></td>
+									<td><a class="btn btn-white btn-width-xl" data-toggle="modal" data-target="#variant-detail-1" ng-click="$emit('openPairModal', pair, formData.Variants, $index)">More Detail</a></td>
 									<td><a class="btn btn-white">Hide</a></td>
 								</tr>
 						</tbody>
