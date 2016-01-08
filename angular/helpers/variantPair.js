@@ -5,10 +5,10 @@ module.exports = [function () {
 		//Variant is a cross of First and Second Attribute
 		this.FirstAttribute = a; 
 		this.SecondAttribute = b;
-		this.hash = (a.AttributeKey.AttributeId + "-" +
-		 a.AttributeValue.trim() + "-" + b.AttributeKey.AttributeId +
-		  "-" + b.AttributeValue.trim());
-		this.text = (a.AttributeValue.trim() + ", " + b.AttributeValue.trim());
+		this.hash = (a.AttributeId + "-" +
+		 a.ValueEn.trim() + "-" + b.AttributeId +
+		  "-" + b.ValueEn.trim());
+		this.text = (a.ValueEn.trim() + ", " + b.ValueEn.trim());
 	};
 
 	return VariantPair;

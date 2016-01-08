@@ -11,7 +11,7 @@
 			</div>
 			<div class="input-column select input-xl">
 				<div class="ah-select2-dropdown">
-					<select class="form-control select2-init"
+					<select ng-model="formData.WeightUnit" class="form-control select2-init"
 						<?php if(isset($ng_model_dimension)): ?>
 							ng-model="<?=$ng_model_dimension?>"
 						<?php endif; ?>

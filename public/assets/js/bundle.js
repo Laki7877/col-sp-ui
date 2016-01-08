@@ -2,7 +2,7 @@
 'use strict';
 //App Start here
 var angular = require('angular');
-var bulk = ({"controllers":({"productAdd":require("./controllers\\productAdd.js"),"productList":require("./controllers\\productList.js"),"productSelectCat":require("./controllers\\productSelectCat.js")}),"services":({"attributeSet":require("./services\\attributeSet.js"),"brand":require("./services\\brand.js"),"category":require("./services\\category.js"),"globalCategory":require("./services\\globalCategory.js"),"image":require("./services\\image.js"),"localCategory":require("./services\\localCategory.js"),"product":require("./services\\product.js"),"shop":require("./services\\shop.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDelegate":require("./directives\\ngDelegate.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"ordinal":require("./filters\\ordinal.js")})});
+var bulk = ({"controllers":({"productAdd":require("./controllers/productAdd.js"),"productList":require("./controllers/productList.js"),"productSelectCat":require("./controllers/productSelectCat.js")}),"services":({"attributeSet":require("./services/attributeSet.js"),"brand":require("./services/brand.js"),"category":require("./services/category.js"),"globalCategory":require("./services/globalCategory.js"),"image":require("./services/image.js"),"localCategory":require("./services/localCategory.js"),"product":require("./services/product.js"),"shop":require("./services/shop.js")}),"helpers":({"base64":require("./helpers/base64.js"),"common":require("./helpers/common.js"),"storage":require("./helpers/storage.js"),"util":require("./helpers/util.js"),"variantPair":require("./helpers/variantPair.js")}),"directives":({"ngCkeditor":require("./directives/ngCkeditor.js"),"ngDelegate":require("./directives/ngDelegate.js")}),"filters":({"capitalize":require("./filters/capitalize.js"),"ordinal":require("./filters/ordinal.js")})});
 var config = require('./config');
 
 //External dependencies
@@ -55,7 +55,7 @@ var app = angular.module('colspApp', ['angularFileUpload', 'base64'])
 .controller('ProductAddCtrl', controllers.productAdd)
 .controller('ProductSelectCatCtrl', controllers.productSelectCat);
 
-},{"./config":2,"./controllers\\productAdd.js":3,"./controllers\\productList.js":4,"./controllers\\productSelectCat.js":5,"./directives\\ngCkeditor.js":6,"./directives\\ngDelegate.js":7,"./filters\\capitalize.js":8,"./filters\\ordinal.js":9,"./helpers\\base64.js":10,"./helpers\\common.js":11,"./helpers\\storage.js":12,"./helpers\\util.js":13,"./helpers\\variantPair.js":14,"./services\\attributeSet.js":15,"./services\\brand.js":16,"./services\\category.js":17,"./services\\globalCategory.js":18,"./services\\image.js":19,"./services\\localCategory.js":20,"./services\\product.js":21,"./services\\shop.js":22,"angular":26,"angular-base64":23,"angular-file-upload":24}],2:[function(require,module,exports){
+},{"./config":2,"./controllers/productAdd.js":3,"./controllers/productList.js":4,"./controllers/productSelectCat.js":5,"./directives/ngCkeditor.js":6,"./directives/ngDelegate.js":7,"./filters/capitalize.js":8,"./filters/ordinal.js":9,"./helpers/base64.js":10,"./helpers/common.js":11,"./helpers/storage.js":12,"./helpers/util.js":13,"./helpers/variantPair.js":14,"./services/attributeSet.js":15,"./services/brand.js":16,"./services/category.js":17,"./services/globalCategory.js":18,"./services/image.js":19,"./services/localCategory.js":20,"./services/product.js":21,"./services/shop.js":22,"angular":26,"angular-base64":23,"angular-file-upload":24}],2:[function(require,module,exports){
 //remote baseUrl - 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/'
 module.exports = {
 	baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/',
@@ -76,8 +76,80 @@ var angular = require('angular');
 
 module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair',  function($scope, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair){
 	'use strict';
-	$scope.logForm = function(){
+
+	/*
+	 * Transform Form Data into APIable form data
+	 */
+	var transformFormData = function(fd){
+		/*
+		 * - Convert all category into single { CategoryId } Structure
+		 * - Add position to image {} request
+		 * - Multiply base attributes into each variants
+		 */
+
+		var hasVariants = (("Variants" in fd) && fd.Variants.length > 0); 
+
+		//Cleaned data
+		var clean = {
+			Keywords: fd.Keywords.join(',')
+		};
+
+		//Mapper functions
+		var mapper = {
+			Images: function(image, pos){
+					image.position = pos;
+					return image;
+			},
+			Variants: function(variant){
+				delete variant.queue; //circular
+				variant.Images = variant.Images.map(mapper.Images);
+				return variant;
+			},
+			Categories: function(lcat){
+				return {
+					CategoryId: lcat.CategoryId
+				};
+			}
+		}
+
+		clean.AttributeSet = {
+			AttributeSetId: fd.AttributeSet.AttributeId
+		};
+		clean.GlobalCategories = fd.GlobalCategories.map(mapper.Categories);
+		clean.LocalCategories = fd.LocalCategories.map(mapper.Categories);
+		clean.DefaultVariant = mapper.Variants(fd.DefaultVariant);
+		clean.MasterAttribute = [];
+		Object.keys(fd.MasterAttribute).forEach(function(key){
+			clean.MasterAttribute.push({
+				AttributeId: key,
+				ValueEn:  fd.MasterAttribute[key]
+			});
+		});
+
+		if(hasVariants){
+			clean.Variants = fd.Variants.map(mapper.Variants);
+
+		}else{
+			clean.Images = fd.MasterImages.map(mapper.Images);
+		}
+
+		//Copy the rest as is
+		Object.keys(fd).forEach(function(key){
+			if(!(key in clean)){
+				clean[key] = fd[key];
+			}
+		});
+		
+
+		//TODO: Master360 
+
+		return clean;
+	};
+
+	$scope.publish = function(){
 		console.log('formData', $scope.formData);
+		var apiRequest = transformFormData($scope.formData);
+		console.log('clean formData', JSON.stringify(apiRequest));
 	};
 
 	$scope.formData = {
@@ -88,8 +160,9 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		GlobalCategories: [null,null,null],
 		LocalCategories: [null,null,null],
 		SEO: {},
-		ControlFlags: []
+		ControlFlags: [],
 	};
+
 
 	//CK editor options
 	$scope.ckOptions = config.CK_DEFAULT_OPTIONS;
@@ -339,11 +412,11 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 						var B = $scope.attributeOptions[1].options[bKey];
 
 						var kpair = new VariantPair({
-							AttributeKey: $scope.attributeOptions[0].attribute,
-							AttributeValue: A 
+							AttributeId: $scope.attributeOptions[0].attribute.AttributeId,
+							ValueEn: A 
 						},{
-							AttributeKey: $scope.attributeOptions[1].attribute,
-							AttributeValue: B
+							AttributeId: $scope.attributeOptions[1].attribute.AttributeId,
+							ValueEn: B
 						});
 
 						//Only push if don't exist
@@ -757,10 +830,10 @@ module.exports = [function () {
 		//Variant is a cross of First and Second Attribute
 		this.FirstAttribute = a; 
 		this.SecondAttribute = b;
-		this.hash = (a.AttributeKey.AttributeId + "-" +
-		 a.AttributeValue.trim() + "-" + b.AttributeKey.AttributeId +
-		  "-" + b.AttributeValue.trim());
-		this.text = (a.AttributeValue.trim() + ", " + b.AttributeValue.trim());
+		this.hash = (a.AttributeId + "-" +
+		 a.ValueEn.trim() + "-" + b.AttributeId +
+		  "-" + b.ValueEn.trim());
+		this.text = (a.ValueEn.trim() + ", " + b.ValueEn.trim());
 	};
 
 	return VariantPair;

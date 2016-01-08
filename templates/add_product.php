@@ -14,7 +14,6 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 		<? $this->insert('components/page-title-breadcrumb', ['text' => "Products/Add Product"]) ?>
 		<div class="add-product-body">
 
-			<button ng-click="logForm()" class="btn">Log</button>
 			<? $this->insert('components/tab-nav', ["items" => $menus]) ?>
 			<form class="ah-form sticky-mainform-action">
 				<div class="tab-content">
@@ -39,8 +38,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 						<div class="float-right">
 							<a href="#" class="link-btn-plain">Cancel</a>
 							<button class="btn btn-white btn-width-xl">Preview</button>
-							<button class="btn btn-white btn-width-xl">Save as Draft</button>
-							<button class="btn btn-blue btn-width-xl">Publish</button>
+							<button class="btn btn-white btn-width-xl" ng-click="saveDraft()">Save as Draft</button>
+							<button class="btn btn-blue btn-width-xl" ng-click="publish()">Publish</button>
 						</div>
 					</div>
 				</div>

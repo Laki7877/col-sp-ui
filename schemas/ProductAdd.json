@@ -1,0 +1,163 @@
+{
+   "Keywords":"Eneloop,Light Saber,Nazi",
+   "AttributeSet":{
+
+   },
+   "GlobalCategories":[
+      {
+         "CategoryId":13
+      },
+      {
+         "CategoryId":19
+      },
+      {
+         "CategoryId":20
+      }
+   ],
+   "LocalCategories":[
+      {
+         "CategoryId":3
+      },
+      {
+         "CategoryId":6
+      },
+      {
+         "CategoryId":7
+      }
+   ],
+   "DefaultVariant":{
+      "FirstAttribute":{
+         "AttributeId":1,
+         "ValueEn":"\n\t\t\t\t\t\t\t\t\t\tRed\n\t\t\t\t\t\t\t\t\t"
+      },
+      "SecondAttribute":{
+         "AttributeId":2,
+         "ValueEn":"Dual"
+      },
+      "hash":"1-Red-2-Dual",
+      "text":"Red, Dual",
+      "Images":[
+         {
+            "$id":"1",
+            "tmpPath":"D:\\home\\site\\wwwroot\\Images\\Tmp\\BodyPart_afa4704d-e994-4aca-a055-882f264ef9c0.png",
+            "url":"https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/Images/Tmp/BodyPart_afa4704d-e994-4aca-a055-882f264ef9c0.png",
+            "$$hashKey":"object:207",
+            "position":0
+         }
+      ],
+      "ValueEn":"Dual Light Saber",
+      "ValueTh":"Dual Light Saber",
+      "Display":"GROUP",
+      "VideoLinks":{
+         "0":"youtube.com"
+      },
+      "Length":"1",
+      "Height":"1",
+      "Width":"1",
+      "Weight":"1",
+      "$$hashKey":"object:209"
+   },
+   "MasterAttribute":[
+      {
+         "AttributeId":"3",
+         "ValueEn":"\n\t\t\t\t\t\t\t\t\tOrange\n\t\t\t\t\t\t\t\t"
+      },
+      {
+         "AttributeId":"19",
+         "ValueEn":"Single Combat"
+      }
+   ],
+   "Variants":[
+      {
+         "FirstAttribute":{
+            "AttributeId":1,
+            "ValueEn":"\n\t\t\t\t\t\t\t\t\t\tRed\n\t\t\t\t\t\t\t\t\t"
+         },
+         "SecondAttribute":{
+            "AttributeId":2,
+            "ValueEn":"Dual"
+         },
+         "hash":"1-Red-2-Dual",
+         "text":"Red, Dual",
+         "Images":[
+            {
+               "$id":"1",
+               "tmpPath":"D:\\home\\site\\wwwroot\\Images\\Tmp\\BodyPart_afa4704d-e994-4aca-a055-882f264ef9c0.png",
+               "url":"https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/Images/Tmp/BodyPart_afa4704d-e994-4aca-a055-882f264ef9c0.png",
+               "$$hashKey":"object:207",
+               "position":0
+            }
+         ],
+         "ValueEn":"Dual Light Saber",
+         "ValueTh":"Dual Light Saber",
+         "Display":"GROUP",
+         "VideoLinks":{
+            "0":"youtube.com"
+         },
+         "Length":"1",
+         "Height":"1",
+         "Width":"1",
+         "Weight":"1",
+         "$$hashKey":"object:209"
+      }
+   ],
+   "MasterImages":[
+      {
+         "$id":"1",
+         "tmpPath":"D:\\home\\site\\wwwroot\\Images\\Tmp\\BodyPart_ac7368d2-8bb3-49db-9a2a-96f0c241d2fe.png",
+         "url":"https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/Images/Tmp/BodyPart_ac7368d2-8bb3-49db-9a2a-96f0c241d2fe.png",
+         "$$hashKey":"object:79"
+      }
+   ],
+   "MasterImages360":[
+      {
+         "$id":"1",
+         "tmpPath":"D:\\home\\site\\wwwroot\\Images\\Tmp\\BodyPart_4688049c-9528-495a-9134-49ced7567e70.png",
+         "url":"https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/Images/Tmp/BodyPart_4688049c-9528-495a-9134-49ced7567e70.png",
+         "$$hashKey":"object:83"
+      }
+   ],
+   "VideoLinks":[
+      "youtube.com"
+   ],
+   "SEO":{
+      "MetaTitle":"Japanese Light Saber",
+      "MetaDescription":"Made in China",
+      "MetaKeywords":"Japanese",
+      "ProductUrlKeyTh":"Yeah",
+      "ProductUrlKeyEn":"China",
+      "ProductBoostingWeight":"22"
+   },
+   "ControlFlags":[
+      true,
+      true,
+      true
+   ],
+   "ProductNameTh":"ดาบเลเซอร์ด้านมือแห่งพลัง",
+   "ProductNameEn":"Dark Side Light Saber",
+   "Sku":"KRAB5010-101",
+   "Upc":"1000UPC01010",
+   "Brand":{
+      "BrandId":"8"
+   },
+   "OriginalPrice":"1020.15",
+   "SalePrice":"999",
+   "DescriptionFullTh":"<p>ฮิตเลอร์เป็นทหารผ่านศึก<a href=\"https://th.wikipedia.org/wiki/%E0%B8%AA%E0%B8%87%E0%B8%84%E0%B8%A3%E0%B8%B2…7%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%AB%E0%B8%99%E0%B8%B6%E0%B9%88%E0%B8%87\">สงครามโลกครั้งที่หนึ่ง</a>ผู้ได้รับการประดับอิสริยาภรณ์จากการรบ ต่อมา ฮิตเลอร์ได้เข้าร่วม<a href=\"https://th.wikipedia.org/w/index.php?title=%E0%B8%9E%E0%B8%A3%E0%B8%A3%E0%B…0%B8%AD%E0%B8%A3%E0%B8%A1%E0%B8%B1%E0%B8%99&amp;action=edit&amp;redlink=1\">พรรคกรรมกรเยอรมัน</a>ใน ค.ศ. 1919 ซึ่งเป็นพรรคการเมืองก่อนหน้าพรรคนาซี ก่อนจะได้เป็นหัวหน้าพรรคนาซีใน ค.ศ. 1921 เขาพยายามก่อ<a href=\"https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B1%E0%B8%90%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%B2%E0%B8%A3\">รัฐป</a><a href=\"https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B1%E0%B8%90%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%B2%E0%B8%A3\">ระหาร</a>ซึ่งเป็นที่รู้จักกันว่า&nbsp;<a href=\"https://th.wikipedia.org/wiki/%E0%B8%81%E0%B8%9A%E0%B8%8F%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%A3%E0%B9%8C\">กบฏโรงเบียร์</a>&nbsp;ในเมือง<a href=\"https://th.wikipedia.org/wiki/%E0%B8%A1%E0%B8%B4%E0%B8%A7%E0%B8%99%E0%B8%B4%E0%B8%81\">มิวนิก</a>&nbsp;เมื่อวันที่ 8-9 พฤศจิกายน ค.ศ. 1923 แต่ล้มเหลว</p>",
+   "DescriptionFullEn":"<p><strong>Adolf Hitler</strong>&nbsp;(20 April 1889&nbsp;&ndash; 30 April 1945) was an&nbsp;<a href=\"https://en.wikipedia.org/wiki/Austria-Hungary\">Austrian</a>-born German politician who was the leader of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Nazi_Party\">Nazi Party</a>(NSDAP),&nbsp;<a href=\"https://en.wikipedia.org/wiki/Chancellor_of_Germany\">Chancellor of Germany</a>&nbsp;from 1933 to 1945, and&nbsp;<a href=\"https://en.wikipedia.org/wiki/F%C3%BChrer\">F&uuml;hrer</a>&nbsp;(&quot;leader&quot;) of&nbsp;<a href=\"https://en.wikipedia.org/wiki/Nazi_Germany\">Nazi Germany</a>&nbsp;from 1934 to 1945. He was effectively&nbsp;<a href=\"https://en.wikipedia.org/wiki/Dictatorship\">dictator</a>&nbsp;of Nazi Germany, and was at the centre of&nbsp;<a href=\"https://en.wikipedia.org/wiki/European_theatre_of_World_War_II\">World War II in Europe</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/The_Holocaust\">the Holocaust</a>.</p>",
+   "DescriptionShortTh":"ฮิตเลอร์เป็นทหารผ่านศึก",
+   "DescriptionShortEn":"Adolf Hitler is bad ass.",
+   "Quantity":"1000",
+   "SafetyStock":"999",
+   "StockType":"Stock",
+   "ShippingMethod":"1",
+   "WeightUnit":"G",
+   "RelatedProducts":[
+      "7",
+      "9"
+   ],
+   "EffectiveDate":"January 20, 2018",
+   "EffectiveTime":"10:00",
+   "ExpireDate":"January 23, 2018",
+   "ExpireTime":"10:00",
+   "Remark":"Yea Remark Bitch"
+}
