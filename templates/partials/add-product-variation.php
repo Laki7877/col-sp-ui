@@ -65,7 +65,7 @@
 									<td><input type="text" class="form-control" /></td>
 									<td><input type="text" class="form-control" /></td>
 									<td><input type="text" class="form-control" /></td>
-									<td><a class="btn btn-white btn-width-xl" ng-click="$emit('openPairModal', pair, formData.Variants, $index)">More Detail</a></td>
+									<td><a class="btn btn-white btn-width-xl" data-toggle="modal" data-target="#variant-detail-1" ng-click="$emit('openPairModal', pair, formData.Variants, $index)">More Detail</a></td>
 									<td><a class="btn btn-white">Hide</a></td>
 								</tr>
 						</tbody>
