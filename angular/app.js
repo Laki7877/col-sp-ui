@@ -40,7 +40,7 @@ var app = angular.module('colspApp', ['angularFileUpload', 'base64'])
 .factory('GlobalCategory', services.globalCategory)
 .factory('AttributeSet', services.attributeSet)
 .factory('Brand', services.brand)
-
+.factory('VariantPair', helpers.variantPair)
 //Directives
 .directive('ngDelegate', directives.ngDelegate)
 

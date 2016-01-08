@@ -1,4 +1,4 @@
-module.exports = ['$scope', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category',  function($scope, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category){
+module.exports = ['$scope', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', function($scope, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair){
 	'use strict';
 	$scope.logForm = function(){
 		console.log('formData', $scope.formData);
@@ -43,18 +43,7 @@ module.exports = ['$scope', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop',
 	$scope._isListInput = function(t){
 		return (t == "LT");
 	};
-
-	//Struct for Variant Pair
-	var VariantPair = function(a,b){
-		//Variant is a cross of First and Second Attribute
-		this.FirstAttribute = a; 
-		this.SecondAttribute = b;
-		this.hash = (a.AttributeKey.AttributeId + "-" +
-		 a.AttributeValue.trim() + "-" + b.AttributeKey.AttributeId +
-		  "-" + b.AttributeValue.trim());
-		this.text = (a.AttributeValue.trim() + ", " + b.AttributeValue.trim());
-	};
-
+	
 	//Unmultiplied Variants (factor)
 	$scope.attributeOptions = {
 		0: {
