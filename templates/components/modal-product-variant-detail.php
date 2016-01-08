@@ -2,7 +2,7 @@
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<button type="button" class="close" aria-label="Close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
 				<h3 class="modal-title"><?=$header?></h3>
 			</div>
 			<div class="modal-body margin-top-20">
@@ -44,7 +44,7 @@
 					</div> <!-- end .col-xs-12 -->
 					<div class="col-xs-12">
 						<span class="float-right">
-							<a class="link-btn-plain" ng-click="$emit('cancelPairModal')">Cancel</a>
+							<a class="link-btn-plain" data-dismiss="modal">Cancel</a>
 							<button type="button" class="btn btn-blue btn-width-xl" ng-click="$emit('savePairModal')">Save</button>
 						</span>
 					</div> <!-- end .col-xs-12 -->

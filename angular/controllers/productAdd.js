@@ -1,4 +1,4 @@
-module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 'Brand',  function($scope, Product, ImageService, FileUploader, AttributeSet, Brand){
+module.exports = ['$scope', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category',  function($scope, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category){
 	'use strict';
 	$scope.logForm = function(){
 		console.log('formData', $scope.formData);
@@ -13,13 +13,23 @@ module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 
 
 	//Attribute Options to be filled via API
 	$scope.availableAttributeSets = [];
-
+	$scope.availableGlobalCategories = [];
+	$scope.availableLocalCategories = [];
 
 	$scope.init = function(catId) {
-		$scope.categoryId = catId;
-		//Load Attrib. Set
-		AttributeSet.getByCategory($scope.categoryId).then(function(data){
+		//Load Attribute Set
+		AttributeSet.getByCategory(catId).then(function(data){
 			$scope.availableAttributeSets = data; 
+		});
+
+		//Load Global Cat
+		GlobalCategory.getAll().then(function(data) {
+			$scope.availableGlobalCategories = Category.convertDepthArrayToNestedArray(data);
+		});
+
+		//Load Local Cat
+		LocalCategory.getAll().then(function(data) {
+			$scope.availableLocalCategories = Category.convertDepthArrayToNestedArray(data);
 		});
 	}
 
@@ -34,8 +44,6 @@ module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 
 		return (t == "LT");
 	};
 
-
-	
 	//Struct for Variant Pair
 	var VariantPair = function(a,b){
 		//Variant is a cross of First and Second Attribute
@@ -128,8 +136,7 @@ module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 
 		}
 
 
-		$scope.formData.DefaultVariant = $scope.formData.Variants[0];
-		
+		$scope.formData.DefaultVariant = $scope.formData.Variants[0];	
 	}, true);
 
 	//When selected attribute change, 
@@ -144,8 +151,6 @@ module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 
 			$(".select2-init, .select2-init-normal").on("change", function(ev){
 				$scope.$digest();
 			});
-
-			
 		}
 	};
 	tabPage.information = {
@@ -187,7 +192,7 @@ module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 
 	$(document).on('shown.bs.tab ready', function(){
 		//Initialize All Tab
 		tabPage.global.init();
-	        for(var page in tabPage){
+	        for (var page in tabPage){
 			tabPage[page].init();
 		}	
 	});
@@ -203,33 +208,22 @@ module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 
 
 	$("body").tooltip({ selector: '[data-toggle=tooltip]' });
 	
-	//Product Image
+	/**
+	 * PRODUCT IMAGE
+	 */
 	$scope.uploader = ImageService.getUploader('/ProductImages');
 	$scope.uploaderModal = ImageService.getUploader('/ProductImages');
 	$scope.uploader360 = ImageService.getUploader('/ProductImages', {
 		queueLimit: 60
 	});
 
-	$scope.setUploaderEvents = function(uploader, images) {
-		uploader.onAfterAddingFile = function(item) {
-			var obj = {
-				url: ''
-			};
-			images.push(obj);
-			item.indx = images.length-1;
-		};
-	    uploader.onSuccessItem = function(item, response, status, headers) {
-	    	images[item.indx] = response;
-	    };
-	    uploader.onErrorItem = function(item, response, status, headers) {
-	    	images.splice(item.indx, 1);
-	    };
-	}
-
-	$scope.setUploaderEvents($scope.uploader, $scope.formData.MasterImages);
-    $scope.setUploaderEvents($scope.uploader360, $scope.formData.MasterImages360);
-
-    //Image gallery event
+	//Assign uploader images
+	ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages);
+    ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360);
+    
+    /**
+     * IMAGE THUMBNAIL EVENTS
+     */
     $scope.$on('left', function(evt, item, array, index) {
     	var to = index - 1;
     	if(to < 0) to = array.length - 1;
@@ -250,14 +244,18 @@ module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 
    		array.splice(index, 1);
    	});
    	$scope.$on('zoom', function(evt, item, array, index) {
+   		//Should use angular way, but ok whatever
         $('#product-image-zoom img').attr('src', item.url);
         $('#product-image-zoom').modal('show');
    	});
+   	/**
+   	 * 
+   	 */
 
-   	//Variants open image modal
+   	/**
+   	 * MODALS EVENTS
+   	 */
    	$scope.$on('openPairModal', function(evt, pair, array, index){
-   		$scope.pairBefore = angular.copy(pair);
-
    		//Define if not defined
    		if(angular.isUndefined(pair.Images)) {
    			pair.Images = [];
@@ -265,32 +263,27 @@ module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 
    		if(angular.isUndefined(pair.queue)) {
    			pair.queue = [];
    		}
-
-   		//Set uploader event
-	   	$scope.setUploaderEvents($scope.uploaderModal, pair.Images);	
-   		
-	   	//Assign uploader queue
-   		$scope.uploaderModal.queue = pair.queue;
    		
    		//Modal target (for viewing pair)
-   		$scope.pairModal = pair;
+   		$scope.pairModal = angular.copy(pair);
    		$scope.pairIndex = index;
+   		$scope.uploaderModal.queue = $scope.pairModal;
+	   	ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images);
 
    		//Show modal
    		$('#variant-detail-1').modal('show');
    	});
-   	$scope.$on('cancelPairModal', function(evt){
-   		//Reset to before change
-   		$scope.formData.Variants[$scope.pairIndex] = $scope.pairBefore;
-   		$scope.pairModal = null;
-   		
-   		//Hide modal
-   		$('#variant-detail-1').modal('hide');
-   	});
    	$scope.$on('savePairModal', function(evt){
-   		//Hide without doing anything
+   		$scope.formData.Variants[$scope.pairIndex] = $scope.pairModal;
    		$('#variant-detail-1').modal('hide');
    	});
+   	$scope.$on('openGlobalCat', function(evt, model) {
+   		
+   	});
+   	/**
+   	 * 
+   	 */
+
    	//Final saving
    	$scope.save = function() {
    		//TURN $scope.formData into api-able format
