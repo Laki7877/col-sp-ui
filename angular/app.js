@@ -46,6 +46,7 @@ var app = angular.module('colspApp', ['angularFileUpload', 'base64'])
 
 //Filters
 .filter('capitalize', filters.capitalize)
+.filter('ordinal', filters.ordinal)
 
 //Controllers
 .controller('ProductListCtrl', controllers.productList)

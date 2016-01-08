@@ -65,8 +65,9 @@ module.exports = ['config', function(config) {
 
     /**
      * Create array of column from item in template or blank
+     * template should be in nested array (tree) form
      */
-    service.createColumns = function(item) {
+    service.createColumns = function(item, template) {
         var array = [];
         for (var i = 0; i < config.MAX_GLOBAL_CAT_COLUMN; i++) {
             array.push({
@@ -75,13 +76,16 @@ module.exports = ['config', function(config) {
             })
         }
 
-        if(angular.isDefined(catId) && item != null) {
+        if(angular.isDefined(item) && item != null) {
             var parent = item.parent;
             for (var i = item.Depth - 1; i >= 0; i--) {
                 array[i].list = parent.children;
                 array[i].active = array[i].list.indexOf(item);
                 parent = parent.parent;
             }
+        }
+        else if (angular.isDefined(template)) {
+            array[0].list = template;
         }
         return array;
     };
@@ -92,11 +96,10 @@ module.exports = ['config', function(config) {
     
     service.findByCatId = function(catId, tmp) {
         if(angular.isArray(tmp)) {
-            
             //Init
             var search = [];
             for (var t in tmp) {
-                search.push(t);
+                search.push(tmp[t]);
             }
 
             //Recursion
@@ -106,7 +109,7 @@ module.exports = ['config', function(config) {
                     return head;
                 if(angular.isDefined(head.children)) {
                     for (var j in head.children) {
-                        search.push(j);
+                        search.push(head.children[j]);
                     }
                 }
             }
