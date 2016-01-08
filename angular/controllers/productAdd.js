@@ -13,39 +13,69 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		 * - Multiply base attributes into each variants
 		 */
 
-		var hasVariants = false;  //TODO
+		var hasVariants = (("Variants" in fd) && fd.Variants.length > 0); 
+
+		//Cleaned data
 		var clean = {
 			Keywords: fd.Keywords.join(',')
 		};
 
-		if(hasVariants){
-			var variants = [];
-			fd.Variants.forEach(function(variant){
-				
-				var pvariant = {
-					Images: []	
+		//Mapper functions
+		var mapper = {
+			Images: function(image, pos){
+					image.position = pos;
+					return image;
+			},
+			Variants: function(variant){
+				delete variant.queue; //circular
+				variant.Images = variant.Images.map(mapper.Images);
+				return variant;
+			},
+			Categories: function(lcat){
+				return {
+					CategoryId: lcat.CategoryId
 				};
-				
-				//Save into images
-
-
-				//Save into variants
-				variants.push(pvariant);
-					
-			});		
-			//save into clean
-			clean.Variants = variants;
-		}else{
-			clean.Images = []; //List of image request
+			}
 		}
+
+		clean.AttributeSet = {
+			AttributeSetId: fd.AttributeSet.AttributeId
+		};
+		clean.GlobalCategories = fd.GlobalCategories.map(mapper.Categories);
+		clean.LocalCategories = fd.LocalCategories.map(mapper.Categories);
+		clean.DefaultVariant = mapper.Variants(fd.DefaultVariant);
+		clean.MasterAttribute = [];
+		Object.keys(fd.MasterAttribute).forEach(function(key){
+			clean.MasterAttribute.push({
+				AttributeId: key,
+				ValueEn:  fd.MasterAttribute[key]
+			});
+		});
+
+		if(hasVariants){
+			clean.Variants = fd.Variants.map(mapper.Variants);
+
+		}else{
+			clean.Images = fd.MasterImages.map(mapper.Images);
+		}
+
+		//Copy the rest as is
+		Object.keys(fd).forEach(function(key){
+			if(!(key in clean)){
+				clean[key] = fd[key];
+			}
+		});
+		
+
+		//TODO: Master360 
 
 		return clean;
 	};
 
 	$scope.publish = function(){
-		var apiRequest = transformFormData($scope.formData);
-		console.log('clean formData', apiRequest);
 		console.log('formData', $scope.formData);
+		var apiRequest = transformFormData($scope.formData);
+		console.log('clean formData', JSON.stringify(apiRequest));
 	};
 
 	$scope.formData = {
@@ -308,11 +338,11 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 						var B = $scope.attributeOptions[1].options[bKey];
 
 						var kpair = new VariantPair({
-							AttributeKey: $scope.attributeOptions[0].attribute,
-							AttributeValue: A 
+							AttributeId: $scope.attributeOptions[0].attribute.AttributeId,
+							ValueEn: A 
 						},{
-							AttributeKey: $scope.attributeOptions[1].attribute,
-							AttributeValue: B
+							AttributeId: $scope.attributeOptions[1].attribute.AttributeId,
+							ValueEn: B
 						});
 
 						//Only push if don't exist

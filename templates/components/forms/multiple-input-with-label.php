@@ -27,7 +27,7 @@
 				/>
 			</div>
 			<div class="input-column no-label select input-xl">
-				<select class="form-control"
+				<select ng-model="DimensionUnit" class="form-control"
 					<?php if(isset($ng_model_dimension)): ?>
 						ng-model="<?=$ng_model_dimension?>"
 					<?php endif; ?>
