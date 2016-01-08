@@ -4,7 +4,7 @@
 	<div ng-controller="ProductSelectCatCtrl" class="global-category-page">
 		<? $this->insert('components/page-title-breadcrumb-border', ['text' => 'Products/Add Product']) ?>
 		<form class="ah-form" method="POST" action="/products/add">
-			<input type="hidden" name="category" ng-value="selected" />
+			<input type="hidden" name="category" ng-value="selected.CategoryId" />
 			<div class="global-category-radio-section ">
 				<span>Type of upload</span>
 				<div class="radio multiple-radio">

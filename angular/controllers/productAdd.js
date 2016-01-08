@@ -1,4 +1,6 @@
-module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 'Brand', 'VariantPair', 'util', function($scope, Product, ImageService, FileUploader, AttributeSet, Brand, VariantPair, util){
+var angular = require('angular');
+
+module.exports = ['$scope', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', 'util', function($scope, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, util){
 	'use strict';
 	$scope.logForm = function(){
 		console.log('formData', $scope.formData);
@@ -8,57 +10,72 @@ module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 
 		MasterImages: [],
 		MasterImages360: [],
 		VideoLinks: [],
-		Variants: []
+		Variants: [],
+		GlobalCategories: [null,null,null],
+		LocalCategories: [null,null,null]
 	};
 
-	//Unmultiplied Variants (factor)
-	$scope.attributeOptions = {
-		0: {
-			attribute: false,
-			options: []
-		},
-		1: {
-			attribute: false,
-			options: []
-		}	
-	};
-
-	//Data Sources
-	$scope.availableAttributeSets = [];
-
-	//On Controller init
-	$scope.init = function(catId) {
-		$scope.categoryId = catId;
-		//Load Attrib. Set
-		AttributeSet.getByCategory($scope.categoryId).then(function(data){
-			$scope.availableAttributeSets = data; 
-		});
-		//TODO:select2-init classes should be named more meaningfully
-		$(".select2-init-normal").select2();
-		$(".select2-init, .select2-init-normal").on("change", function(ev){
-			$scope.$digest();
-		});
-		//Initialize Select2 stuff
-		$.fn.select2.defaults.set("tokenSeparators", [","]);
-		$(document).on('shown.bs.tab ready', function(){
-			//Initialize All Tab
-			for(var page in tabPage){
-				tabPage[page].init();
-			}	
-		});
-	}
-
-	//Expose Util  
-	$scope._isListInput = util.isListDataType;
-	$scope._isFreeTextInput = util.isFreeTextDataType;
-	//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
-	$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
-
-	//When selected attribute change, 
-	//the other box wil not allow to have selected option
+	/**
+	 * All Tabs
+	 * Seperated by jquery parts and angular parts
+	 */
 	var tabPage = {};
+	tabPage.global = {
+		jquery: function(){
+
+			//TODO: Init CK Editor (apparently this breaks)
+			/*	$('[ckeditor-initialize]').each(function(idx, textarea) {
+				CKEDITOR.readyplace( textarea );
+			});
+			$('.input-icon-calendar').datetimepicker({
+				format: "LL" // this is momentjs format make it show only date, no time will be show.		
+			});
+			*/
+
+			$("body").tooltip({ selector: '[data-toggle=tooltip]' });
+
+			//TODO:select2-init classes should probably be named in a more meaningfulway
+			$.fn.select2.defaults.set("tokenSeparators", [","]);
+			$(".select2-init-normal").select2();
+			$(".select2-init, .select2-init-normal").on("change", function(ev){
+				$scope.$digest();
+			});
+		},
+		angular: function() {
+			$scope.init = function(catId) {
+				if(angular.isUndefined(catId)) {
+					catId = 13;
+				}
+				//Load Attribute Set
+				AttributeSet.getByCategory(catId).then(function(data){
+					$scope.availableAttributeSets = data; 
+				});
+
+				//Load Global Cat
+				GlobalCategory.getAll().then(function(data) {
+					$scope.availableGlobalCategories = Category.convertDepthArrayToNestedArray(data);
+					$scope.formData.GlobalCategories[0] = Category.findByCatId(catId, $scope.availableGlobalCategories);
+				});
+
+				//Load Local Cat
+				Shop.getLocalCategories(1).then(function(data) {
+					$scope.availableLocalCategories = Category.convertDepthArrayToNestedArray(data);
+				});
+			}
+
+			//Attribute Options to be filled via API
+			$scope.availableAttributeSets = [];
+			$scope.availableGlobalCategories = [];
+			$scope.availableLocalCategories = [];
+
+			//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
+			$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
+			$scope._isFreeTextInput = util.isFreeTextDataType; 
+			$scope._isListInput = util.isListDataType;
+		}
+	};
 	tabPage.information = {
-		init: function(){
+		jquery: function(){
 			$(".select2-init-brand").select2({
 				templateResult: function(d){
 					return d.BrandNameEn + " (" + d.BrandNameTh + ")";
@@ -82,41 +99,122 @@ module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 
 					}
 				}
 			});
+		},
+		angular: function() {
+
 		}
 	};
-	tabPage.variation = {
-		init: function(){
-			/*
-			 * Call to initialize select box
-			 */
-			var initAttributeOptionSelect2 = function(index){
-				var listMode = false;
-				if($scope.attributeOptions[index].attribute){
-					listMode = (util.isListDataType($scope.attributeOptions[index].attribute.Attribute.DataType));
-				}
-				//Reset Options
-				$(".select2-init-" + index).select2({
-					tags: !listMode
-				});
+	tabPage.images = {
+		jquery: function() {
 
-				$scope.attributeOptions[index].options = [];
+		},
+		angular: function() {
+			/**
+			 * PRODUCT IMAGE
+			 */
+			$scope.uploader = ImageService.getUploader('/ProductImages');
+			$scope.uploaderModal = ImageService.getUploader('/ProductImages');
+			$scope.uploader360 = ImageService.getUploader('/ProductImages', {
+				queueLimit: 60
+			});
+
+			//Assign uploader images
+			ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages);
+		    ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360);
+		    
+		    /**
+		     * IMAGE THUMBNAIL EVENTS
+		     */
+		    $scope.$on('left', function(evt, item, array, index) {
+		    	var to = index - 1;
+		    	if(to < 0) to = array.length - 1;
+		    	
+		    	var tmp = array[to];
+		    	array[to] = item;
+		    	array[index] = tmp;
+		    });
+		    $scope.$on('right', function(evt, item, array, index) {
+		    	var to = index + 1;
+		    	if(to >= array.length) to = 0;
+		    	
+		    	var tmp = array[to];
+		    	array[to] = item;
+		    	array[index] = tmp;
+		   	});
+		   	$scope.$on('delete', function(evt, item, array, index) {
+		   		array.splice(index, 1);
+		   	});
+		   	$scope.$on('zoom', function(evt, item, array, index) {
+		   		//Should use angular way, but ok whatever
+		        $('#product-image-zoom img').attr('src', item.url);
+		        $('#product-image-zoom').modal('show');
+		   	});
+		}
+	};
+	tabPage.category = {
+		jquery: function() {
+
+		},
+		angular: function() {
+			//For viewing only
+			$scope.viewCategoryColumns = [];
+			$scope.viewCategorySelected = null;
+			$scope.$on('openGlobalCat', function(evt, item) {
+				$scope.viewCategoryColumns = Category.createColumns(item);
+				$scope.viewCategorySelected = item;
+			});
+			$scope.$on('selectGlobalCat', function(evt, model) {
+
+			});
+			$scope.$on('saveGlobalCat', function(evt, model) {
+
+			});
+		}
+	}
+	tabPage.variation = {
+		initSelect2: function(index){
+			var freeText = false;
+			if($scope.attributeOptions[index].attribute){
+				freeText = ($scope._isListInput($scope.attributeOptions[index].attribute.Attribute.DataType));
+			}
+			
+			//Reset Options
+			$(".select2-init-" + index).select2({
+				tags: !freeText
+			});
+
+			$scope.attributeOptions[index].options = [];
+
+		},
+		jquery: function(){
+			tabPage.variation.initSelect2(0);
+			tabPage.variation.initSelect2(1);
+		},
+		angular: function() {
+			//Unmultiplied Variants (factor)
+			$scope.attributeOptions = {
+				0: {
+					attribute: false,
+					options: []
+				},
+				1: {
+					attribute: false,
+					options: []
+				}	
 			};
 
-			/*
-			 * Re init select2 component based on LT or ST type everytime
-			 * attribute option changes
-			 */
+
 			$scope.$watch('attributeOptions[0].attribute', function(){
-				initAttributeOptionSelect2(0);
-			});	
-			$scope.$watch('attributeOptions[1].attribute', function(){	
-				initAttributeOptionSelect2(1);
+				tabPage.variation.initSelect2(0);
 			});	
 
-			/* If any attribute option change
-			   Update formData.Variants
-			   by cross multiplying each Variant into VariantPair
-			*/
+			$scope.$watch('attributeOptions[1].attribute', function(){	
+				tabPage.variation.initSelect2(1);
+			});	
+
+			/*
+			 * Multiplying options into VariantPairs
+			 */
 			$scope.$watch('attributeOptions', function(){
 				
 				var variantHashes = {};
@@ -142,138 +240,81 @@ module.exports = ['$scope', 'Product', 'Image', 'FileUploader', 'AttributeSet', 
 
 						//Only push if don't exist
 						if(!(kpair.hash in variantHashes)){
-							console.log("Appending Pair", variantHashes, kpair.hash)
 							$scope.formData.Variants.push(kpair);
 						}
 						
 						//Mark hash as used
+						//This will not be deleted
 						variantHashes[kpair.hash] = -1;
 					}
 				}
 
 				//Remove deleted variants
 				for(var rhash in variantHashes){
-					//Only if its unused
 					if(variantHashes[rhash] == -1) continue;
-					console.log("removing", rhash);
 					$scope.formData.Variants.splice(variantHashes[rhash], 1);
 				}
 
-				//Set Default Variant
-				$scope.formData.DefaultVariant = $scope.formData.Variants[0];
-				
+
+				$scope.formData.DefaultVariant = $scope.formData.Variants[0];	
 			}, true);
 
+			//TODO: When selected attribute change, 
+			//the other box wil not allow to have selected option
+			
+		   	/**
+		   	 * This part handles when user click on More Detail and open pair form
+		   	 */
+		   	$scope.$on('openPairModal', function(evt, pair, array, index){
+		   		//Define if not defined
+		   		if(angular.isUndefined(pair.Images)) {
+		   			pair.Images = [];
+		   		}
+		   		if(angular.isUndefined(pair.queue)) {
+		   			pair.queue = [];
+		   		}
+		   		
+		   		//Modal target (for viewing pair)
+		   		$scope.pairModal = angular.copy(pair);
+		   		$scope.pairIndex = index;
+		   		$scope.uploaderModal.queue = $scope.pairModal;
+			   	ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images);
 
-			initAttributeOptionSelect2(0);
-			initAttributeOptionSelect2(1);
+		   		//Show modal
+		   		$('#variant-detail-1').modal('show');
+		   	});
+		   	$scope.$on('savePairModal', function(evt){
+		   		$scope.formData.Variants[$scope.pairIndex] = $scope.pairModal;
+		   		$('#variant-detail-1').modal('hide');
+		   	});
 		}
-	};	
+	};
+	tabPage.options = {
+		jquery: function() {
 
+		},
+		angular: function() {
 
-
-	//TODO: Init CK Editor (apparently this breaks)
-	/*	$('[ckeditor-initialize]').each(function(idx, textarea) {
-		CKEDITOR.readyplace( textarea );
-	});
-	$('.input-icon-calendar').datetimepicker({
-		format: "LL" // this is momentjs format make it show only date, no time will be show. see: http://momentjs.com/docs/#/displaying/format/
-	});
-	*/
-
-	$("body").tooltip({ selector: '[data-toggle=tooltip]' });
-	
-	//Product Image
-	$scope.uploader = ImageService.getUploader('/ProductImages');
-	$scope.uploaderModal = ImageService.getUploader('/ProductImages');
-	$scope.uploader360 = ImageService.getUploader('/ProductImages', {
-		queueLimit: 60
-	});
-
-	$scope.setUploaderEvents = function(uploader, images) {
-		uploader.onAfterAddingFile = function(item) {
-			var obj = {
-				url: ''
-			};
-			images.push(obj);
-			item.indx = images.length-1;
-		};
-	    uploader.onSuccessItem = function(item, response, status, headers) {
-	    	images[item.indx] = response;
-	    };
-	    uploader.onErrorItem = function(item, response, status, headers) {
-	    	images.splice(item.indx, 1);
-	    };
+		}
 	}
 
-	$scope.setUploaderEvents($scope.uploader, $scope.formData.MasterImages);
-    $scope.setUploaderEvents($scope.uploader360, $scope.formData.MasterImages360);
+	//Initialize Angular stuff
+	tabPage.global.angular();
+	for (var page in tabPage) {
+		tabPage[page].angular();
+	}
 
-    //Image gallery event
-    $scope.$on('left', function(evt, item, array, index) {
-    	var to = index - 1;
-    	if(to < 0) to = array.length - 1;
-    	
-    	var tmp = array[to];
-    	array[to] = item;
-    	array[index] = tmp;
-    });
-    $scope.$on('right', function(evt, item, array, index) {
-    	var to = index + 1;
-    	if(to >= array.length) to = 0;
-    	
-    	var tmp = array[to];
-    	array[to] = item;
-    	array[index] = tmp;
-   	});
-   	$scope.$on('delete', function(evt, item, array, index) {
-   		array.splice(index, 1);
-   	});
-   	$scope.$on('zoom', function(evt, item, array, index) {
-        $('#product-image-zoom img').attr('src', item.url);
-        $('#product-image-zoom').modal('show');
-   	});
+	//Initialize Jquery stuff
+	$(document).on('shown.bs.tab ready', function(){
+		//Initialize All Tab
+		tabPage.global.jquery();
+	        for (var page in tabPage){
+			tabPage[page].jquery();
+		}	
+	});
 
-   	//Variants open image modal
-   	$scope.$on('openPairModal', function(evt, pair, array, index){
-   		$scope.pairBefore = angular.copy(pair);
-
-   		//Define if not defined
-   		if(angular.isUndefined(pair.Images)) {
-   			pair.Images = [];
-   		}
-   		if(angular.isUndefined(pair.queue)) {
-   			pair.queue = [];
-   		}
-
-   		//Set uploader event
-	   	$scope.setUploaderEvents($scope.uploaderModal, pair.Images);	
-   		
-	   	//Assign uploader queue
-   		$scope.uploaderModal.queue = pair.queue;
-   		
-   		//Modal target (for viewing pair)
-   		$scope.pairModal = pair;
-   		$scope.pairIndex = index;
-
-   		//Show modal
-   		$('#variant-detail-1').modal('show');
-   	});
-   	$scope.$on('cancelPairModal', function(evt){
-   		//Reset to before change
-   		$scope.formData.Variants[$scope.pairIndex] = $scope.pairBefore;
-   		$scope.pairModal = null;
-   		
-   		//Hide modal
-   		$('#variant-detail-1').modal('hide');
-   	});
-   	$scope.$on('savePairModal', function(evt){
-   		//Hide without doing anything
-   		$('#variant-detail-1').modal('hide');
-   	});
    	//Final saving
    	$scope.save = function() {
-   		//TURN $scope.formData into api-able format
-   		var formData = {};
+   		//TURN $scope.formData into api-able formats
    	}
 }];

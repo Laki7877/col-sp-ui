@@ -1,3 +1,5 @@
+var angular = require('angular');
+
 module.exports = ['storage', function (storage) {
     'use strict';
     var service = {};
@@ -10,7 +12,6 @@ module.exports = ['storage', function (storage) {
         var sessionToken = storage.getSessionToken();
         return !!(profile && sessionToken);
     };
-
     service.isFreeTextDataType = function(dataType){
 	return (dataType == "ST");
     };
@@ -18,7 +19,6 @@ module.exports = ['storage', function (storage) {
     service.isListDataType = function(dataType){
 	return (dataType == "LT");
     }
-
 
     return service;
 }];

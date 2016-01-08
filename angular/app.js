@@ -25,13 +25,18 @@ var app = angular.module('colspApp', ['angularFileUpload', 'base64'])
 //Configuration
 .value('config', config)
 
-//Services
+//Helpers
 .factory('common', helpers.common)
 .factory('storage', helpers.storage)
 .factory('util', helpers.util)
 .factory('base64', helpers.base64)
+
+//Services
 .factory('Product', services.product)
 .factory('Image', services.image)
+.factory('Category', services.category)
+.factory('Shop', services.shop)
+.factory('LocalCategory', services.localCategory)
 .factory('GlobalCategory', services.globalCategory)
 .factory('AttributeSet', services.attributeSet)
 .factory('Brand', services.brand)
