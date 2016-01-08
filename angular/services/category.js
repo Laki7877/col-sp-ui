@@ -41,7 +41,7 @@ module.exports = ['config', function(config) {
      * select in category columns 
      * **can only be used with NestedArray
      */
-    service.createSelectFunc = function(columns, selected) {
+    service.createSelectFunc = function(columns, selectEvent) {
     	return function(item, indx, parentIndx) {
 			columns[parentIndx].active = indx;
 
@@ -56,15 +56,15 @@ module.exports = ['config', function(config) {
 			}
 
 			if (angular.isUndefined(item.children)) {
-				selected = item;
+				selectEvent(item);
 			} else {
-				selected = null;
+                selectEvent(null);
 			}
 		};
     };
 
     /**
-     * Create array of column from item or blank
+     * Create array of column from item in template or blank
      */
     service.createColumns = function(item) {
         var array = [];
@@ -75,7 +75,7 @@ module.exports = ['config', function(config) {
             })
         }
 
-        if(angular.isDefined(item)) {
+        if(angular.isDefined(catId) && item != null) {
             var parent = item.parent;
             for (var i = item.Depth - 1; i >= 0; i--) {
                 array[i].list = parent.children;
@@ -84,6 +84,34 @@ module.exports = ['config', function(config) {
             }
         }
         return array;
+    };
+
+    /**
+     * Search tree for catId
+     */
+    
+    service.findByCatId = function(catId, tmp) {
+        if(angular.isArray(tmp)) {
+            
+            //Init
+            var search = [];
+            for (var t in tmp) {
+                search.push(t);
+            }
+
+            //Recursion
+            while(search.length > 0) {
+                var head = search.pop();
+                if(head.CategoryId == catId)
+                    return head;
+                if(angular.isDefined(head.children)) {
+                    for (var j in head.children) {
+                        search.push(j);
+                    }
+                }
+            }
+        }
+        return null;
     };
 
     return service;
