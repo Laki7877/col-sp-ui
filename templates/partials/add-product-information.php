@@ -7,11 +7,21 @@
 				<div class="form-section-header"><h2>Vital Information</h2></div>
 				<div class="form-section-content">
 					<? $this->insert('components/forms/input-text-with-label', 
-						["label" => "Product Name (Thai)", "ng_model" => "formData.ProductNameTh", "label_class" => "required", "size" => "large"]) ?>
+						["label" => "Product Name (Thai)", "ng_model" => 
+						"formData.ProductNameTh", 
+						"label_class" => "required", 
+						"required" => true,
+						"size" => "large"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', 
-						["label" => "Product Name (English)", "ng_model" => "formData.ProductNameEn", "label_class" => "required", "size" => "large"]) ?>
+						["label" => "Product Name (English)", 
+						"ng_model" => "formData.ProductNameEn", 
+						"label_class" => "required", 
+						"required" => true,
+						"size" => "large"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', 
-						["label" => "SKU", "ng_model" => "formData.Sku", "label_class" => "required", "size" => "large"]) ?>
+						["label" => "SKU", "ng_model" => "formData.Sku", 
+						"required" => true,
+						"label_class" => "required", "size" => "large"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', 
 						["label" => "UPC", "ng_model" => "formData.Upc",
 						"tooltip" => "The Universal Product Code (UPC) is a barcode symbology (i.e., a specific type of barcode) that is widely used in the USAX.", "size" => "large"]) ?>
@@ -26,7 +36,11 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Price</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/input-text-with-label', ["ng_model" => "formData.OriginalPrice", "label" => "Original Price", "hint" => "Example: 200 or 125.50", "label_class" => "required"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', 
+					["ng_model" => "formData.OriginalPrice", 
+					"required" => true,
+					"label" => "Original Price", 
+					"hint" => "Example: 200 or 125.50", "label_class" => "required"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["ng_model" => "formData.SalePrice", "label" => "Sale Price", "hint" => "Example: 100"]) ?>
 				</div>
 			</div>
@@ -96,7 +110,10 @@
 				<div class="form-section-header"><h2>Shipping Detail</h2></div>
 				<div class="form-section-content">
 					<? $this->insert('components/forms/multiple-radio-multiline', ["label" => "Shipping Method", "ng_model" => "formData.ShippingMethod", "choices" => ["Dropship by 3PL", "Central Fulfillment"]]) ?>
-					<? $this->insert('components/forms/input-text-with-label-unit', ["label" => "Preparation Time", "ng_model" => "formData.PreparationTime", "label_class" => "required", "unit" => "Day", "form_group_class" => "margin-top-30"]) ?>
+					<? $this->insert('components/forms/input-text-with-label-unit', 
+					["label" => "Preparation Time", 
+					"required" => true,
+					"ng_model" => "formData.PreparationTime", "label_class" => "required", "unit" => "Day", "form_group_class" => "margin-top-30"]) ?>
 					<? $this->insert('components/forms/multiple-input-with-label', ["label" => "Package Dimension", "label_class" => "required", "form_group_class" => "margin-top-30"]) ?>
 					<? $this->insert('components/forms/multiple-input', ["label" => "Weight", "ng_model" => "formData.Weight", "label_class" => "required"]) ?>
 				</div>

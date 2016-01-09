@@ -6,6 +6,10 @@ if (isset($size)) $inputSize = "width-field-$size";
 	<div class="width-label"><label class="control-label <?=$label_class?>"><?= $label ?></label></div>
 	<div class="<?= $inputSize ?>">
 		<input 
+
+			<?php if(isset($required)): ?>
+			required
+			<?php endif; ?>
 			<?php if(isset($ng_model)): ?>
 			ng-model="<?=$ng_model?>"
 			<?php endif; ?>

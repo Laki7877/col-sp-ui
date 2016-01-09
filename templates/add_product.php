@@ -15,7 +15,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 		<div class="add-product-body">
 
 			<? $this->insert('components/tab-nav', ["items" => $menus]) ?>
-			<form class="ah-form sticky-mainform-action">
+			<form ng-submit="publish(addProductForm.$valid)" name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
 						<? $this->insert('partials/add-product-information') ?>
@@ -39,7 +39,12 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 							<a href="#" class="link-btn-plain">Cancel</a>
 							<button class="btn btn-white btn-width-xl">Preview</button>
 							<button class="btn btn-white btn-width-xl" ng-click="saveDraft()">Save as Draft</button>
-							<button class="btn btn-blue btn-width-xl" ng-click="publish()">Publish</button>
+							<!-- does not support other option yet -->
+
+							<button ng-disabled="addProductForm.$invalid" 
+							type="submit" class="btn btn-blue btn-width-xl" 
+							ng-click="publish()">Publish</button>
+							
 						</div>
 					</div>
 				</div>

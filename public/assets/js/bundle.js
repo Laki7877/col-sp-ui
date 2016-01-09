@@ -91,7 +91,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 		//Cleaned data
 		var clean = {
-			Keywords: fd.Keywords.join(',')
+			
 		};
 
 		//Mapper functions
@@ -112,20 +112,32 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			}
 		}
 
-		clean.AttributeSet = {
-			AttributeSetId: fd.AttributeSet.AttributeId
-		};
-		clean.GlobalCategories = fd.GlobalCategories.map(mapper.Categories);
-		clean.LocalCategories = fd.LocalCategories.map(mapper.Categories);
-		clean.DefaultVariant = mapper.Variants(fd.DefaultVariant);
-		clean.MasterAttribute = [];
-		Object.keys(fd.MasterAttribute).forEach(function(key){
-			clean.MasterAttribute.push({
-				AttributeId: key,
-				ValueEn:  fd.MasterAttribute[key]
-			});
-		});
+		try{
+			clean.GlobalCategories = fd.GlobalCategories.map(mapper.Categories);
+			clean.LocalCategories = fd.LocalCategories.map(mapper.Categories);
+			clean.Keywords =  fd.Keywords.join(',');
+			Object.keys(fd.VideoLinks).forEach(function(key){
+				var value = fd.VideoLinks[key];
+				var obj = {
+					'Url': value
+				};
 
+			});
+			clean.AttributeSet = {
+				AttributeSetId: fd.AttributeSet.AttributeId
+			};
+			clean.DefaultVariant = mapper.Variants(fd.DefaultVariant);
+			clean.MasterAttribute = [];
+			Object.keys(fd.MasterAttribute).forEach(function(key){
+				clean.MasterAttribute.push({
+					AttributeId: key,
+					ValueEn:  fd.MasterAttribute[key]
+				});
+			});
+		}catch(ex){
+			console.warn(ex);
+		}
+		
 		if(hasVariants){
 			clean.Variants = fd.Variants.map(mapper.Variants);
 
@@ -146,10 +158,12 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		return clean;
 	};
 
-	$scope.publish = function(){
+	$scope.publish = function(isValid){
+
 		console.log('formData', $scope.formData);
 		var apiRequest = transformFormData($scope.formData);
-		console.log('clean formData', JSON.stringify(apiRequest));
+		console.log('apiRequest', apiRequest);
+		console.log('apiRequest JSON', JSON.stringify(apiRequest));
 	};
 
 	$scope.formData = {
@@ -157,8 +171,8 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		MasterImages360: [],
 		VideoLinks: [],
 		Variants: [],
-		GlobalCategories: [null,null,null],
-		LocalCategories: [null,null,null],
+		GlobalCategories: [],
+		LocalCategories: [],
 		SEO: {},
 		ControlFlags: [],
 	};
