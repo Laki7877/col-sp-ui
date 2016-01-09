@@ -97,7 +97,9 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	 * All Tabs
 	 * Seperated by jquery parts and angular parts
 	 */
-	var tabPage = {};
+	var tabPage = {
+		
+	};
 	tabPage.global = {
 		jquery: function(){
 			$('.input-icon-calendar').datetimepicker({
@@ -392,7 +394,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		   	});
 		}
 	};
-	tabPage.options = {
+	tabPage.more_option = {
 		jquery: function() {
 			$(".select2-init-related").select2({
 				tags: false,
@@ -432,13 +434,27 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		tabPage[page].angular();
 	}
 
-	//Initialize Jquery stuff
-	$(document).on('shown.bs.tab ready', function(){
-		//Initialize All Tab
+	var loadedTabs = {};
+
+	//init global jquery
+	$(document).on('ready',function(){
 		tabPage.global.jquery();
-	        for (var page in tabPage){
-			tabPage[page].jquery();
-		}	
+		//init first page
+		//TODO: This may not be information page 
+		//it depends on the link
+		var pageId = 'information';		
+	    tabPage[pageId].jquery();
+	    loadedTabs[pageId] = true;
+	});
+
+	//init tab jquery
+	$(document).on('shown.bs.tab shown', function(tab){
+		var pageId = tab.target.dataset.id;	
+		if(pageId in loadedTabs) return;
+		console.log(tab, loadedTabs);	
+		console.log("initing ", pageId);
+	    tabPage[pageId].jquery();
+	    loadedTabs[pageId] = true;
 	});
 
    	//Final saving
