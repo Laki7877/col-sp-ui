@@ -35,7 +35,8 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 				return {
 					CategoryId: lcat.CategoryId
 				};
-			}
+			},
+			VideoLinks
 		}
 
 		clean.AttributeSet = {
@@ -51,6 +52,18 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 				ValueEn:  fd.MasterAttribute[key]
 			});
 		});
+		try{
+			Object.keys(fd.VideoLinks).forEach(function(key){
+				var value = fd.VideoLinks[key];
+				var obj = {
+					'Url': value
+				};
+
+			});
+		}catch(er){
+			console.warn(er);
+		}
+		
 
 		if(hasVariants){
 			clean.Variants = fd.Variants.map(mapper.Variants);
