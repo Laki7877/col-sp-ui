@@ -7,13 +7,14 @@ if (isset($size)) $inputSize = "width-field-$size";
 	<div class="<?= $inputSize ?>">
 		<input 
 
-			<?php if(isset($required)): ?>
-			required
-			<?php endif; ?>
-			<?php if(isset($ng_model)): ?>
-			ng-model="<?=$ng_model?>"
-			<?php endif; ?>
-			type="text" class="form-control <?= $input_class; ?>" placeholder="<?=$placeholder?>" <?=$input_attrs?> />
+		<? if(isset($required)): ?>
+		required
+		<? endif; ?>
+		<? if(isset($ng_model)): ?>
+		ng-model="<?=$ng_model?>"
+		<? endif; ?>
+		
+		type="text" class="form-control <?= $input_class; ?>" placeholder="<?=$placeholder?>" <?=$input_attrs?> />
 		<? if (!empty($hint)): ?>
 			<span class="help-block"><?= $hint ?></span>
 		<? endif ?>

@@ -32,6 +32,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 				return variant;
 			},
 			Categories: function(lcat){
+				if(lcat == null) return null;
 				return {
 					CategoryId: lcat.CategoryId
 				};
@@ -99,8 +100,8 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		MasterImages360: [],
 		VideoLinks: [],
 		Variants: [],
-		GlobalCategories: [],
-		LocalCategories: [],
+		GlobalCategories: [null, null, null],
+		LocalCategories: [null, null, null],
 		SEO: {},
 		ControlFlags: [],
 	};
@@ -131,7 +132,6 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 				$scope.$digest();
 			});
 
-			//$(".select2-init-related").select2();
 		},
 		angular: function() {
 			$scope.init = function(catId) {
@@ -424,6 +424,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 				ajax: {
 					processResults: function (data) {
 						var mapped = data.data.map(function(obj){
+							console.log(obj);
 							obj.id = obj.ProductId;
 							return obj;
 						});
