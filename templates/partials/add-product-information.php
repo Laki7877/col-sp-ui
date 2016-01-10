@@ -114,8 +114,8 @@
 					["label" => "Preparation Time", 
 					"required" => true,
 					"ng_model" => "formData.PrepareDay", "label_class" => "required", "unit" => "Day", "form_group_class" => "margin-top-30"]) ?>
-					<? $this->insert('components/forms/multiple-input-with-label', ["label" => "Package Dimension", "label_class" => "required", "form_group_class" => "margin-top-30"]) ?>
-					<? $this->insert('components/forms/multiple-input', ["label" => "Weight", "ng_model" => "formData.Weight", "label_class" => "required"]) ?>
+					<? $this->insert('components/forms/multiple-input-with-label', ["label" => "Package Dimension", "label_class" => "required", "ng_model_width"=>"formData.Width", "ng_model_height"=>"formData.Height", "ng_model_length"=>"formData.Length", "form_group_class" => "margin-top-30"]) ?>
+					<? $this->insert('components/forms/multiple-input', ["label" => "Weight", "ng_model_unit" => "formData.WeightUnit", "ng_model" => "formData.Weight", "label_class" => "required"]) ?>
 				</div>
 			</div>
 		</div>

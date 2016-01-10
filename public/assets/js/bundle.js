@@ -90,10 +90,22 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		var hasVariants = (("Variants" in fd) && fd.Variants.length > 0); 
 
 		//Cleaned data
-		var clean = {
-			
-		};
+		var clean = {};
 
+		var objectMapper = {
+			VideoLinks: function(vlink){
+				var f = [];
+				Object.keys(vlink).forEach(function(key){
+					var value = vlink[key];
+					var obj = {
+						'Url': value
+					};
+
+					f.push(obj);
+				});
+				return f;
+			}
+		};
 		//Mapper functions
 		var mapper = {
 			Images: function(image, pos){
@@ -103,6 +115,8 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			Variants: function(variant){
 				delete variant.queue; //circular
 				variant.Images = variant.Images.map(mapper.Images);
+				variant.Images360 = []; //for future
+				variant.VideoLinks = objectMapper.VideoLinks(variant.VideoLinks);
 				return variant;
 			},
 			Categories: function(lcat){
@@ -116,18 +130,25 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		try{
 			clean.GlobalCategories = fd.GlobalCategories.map(mapper.Categories);
 			clean.LocalCategories = fd.LocalCategories.map(mapper.Categories);
-			clean.Keywords =  fd.Keywords.join(',');
-			Object.keys(fd.VideoLinks).forEach(function(key){
-				var value = fd.VideoLinks[key];
-				var obj = {
-					'Url': value
-				};
+		}catch(ex){
+			console.warn("Cat Map",ex);
+		}		
 
-			});
+		try{
+			clean.Keywords = (!fd.Keywords ? "" : fd.Keywords.join(','));
+		}catch(ex){
+			console.warn("Keyword join", ex);
+		}
+		try{
 			clean.AttributeSet = {
-				AttributeSetId: fd.AttributeSet.AttributeId
+				AttributeSetId: fd.AttributeSet.AttributeSetId
 			};
-			clean.DefaultVariant = mapper.Variants(fd.DefaultVariant);
+		}catch(ex){
+			console.warn("error while mapping setId", ex);
+		}
+		
+		try{
+
 			clean.MasterAttribute = [];
 			Object.keys(fd.MasterAttribute).forEach(function(key){
 				clean.MasterAttribute.push({
@@ -136,27 +157,77 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 				});
 			});
 		}catch(ex){
-			//TODO: In production, remove this and try catch in publish
-			//with error messsage
 			console.warn(ex);
 		}
-		
-		if(hasVariants){
-			clean.Variants = fd.Variants.map(mapper.Variants);
 
-		}else{
-			clean.Images = fd.MasterImages.map(mapper.Images);
+		try{
+			//Move first entry of Categories out into Category
+			clean.GlobalCategory = clean.GlobalCategories[0].CategoryId;
+			clean.LocalCategory = clean.LocalCategories[0].CategoryId;
+			clean.GlobalCategories.shift();
+			clean.LocalCategories.shift();
+			clean.SafetyStock = fd.SafetyStock;
+			clean.StockType = fd.StockType;
+			clean.SEO = fd.SEO;
+			clean.ControlFlags = fd.ControlFlags;
+			clean.Brand = fd.Brand;
+			clean.ShippingMethod = fd.ShippingMethod;
+			clean.PrepareDay = fd.PrepareDay;
+			clean.EffectiveDate = fd.EffectiveDate;
+			clean.EffectiveTime = fd.EffectiveTime;
+			clean.ExpireDate = fd.ExpireDate;
+			clean.ExpireTime = fd.ExpireTime;
+			clean.Remark = fd.Remark;
+		}catch(ex){
+			console.warn(ex);
 		}
 
-		//Copy the rest as is
-		Object.keys(fd).forEach(function(key){
-			if(!(key in clean)){
-				clean[key] = fd[key];
-			}
-		});
-		
+		try{
+			clean.RelatedProducts = [];
+			Object.keys(fd.RelatedProducts).forEach(function(key){
+				clean.RelatedProducts.push(
+					fd.RelatedProducts[key]	
+				);
+			});
+		}catch(ex){
+			console.warn(ex);
+		}
+			
+		try{
+			if(hasVariants){
+				//TODO: Pop DefaultVariant out of Variant 	
+				clean.DefaultVariant = mapper.Variants(fd.DefaultVariant);
+				clean.Variants = fd.Variants.map(mapper.Variants);
+			}else{
+			
+				//Variant Level Property
+				var masterProps = ['ProductNameEn', 'ProductNameTh', 'Sku', 'Upc', 
+				    'ValueEn', 'ValueTh',
+			   	    'Display', 'OriginalPrice', 'SalePrice', 'DescriptionFullTh', 
+				    'DescriptionFullEn', 'DescriptionShortEn', 'DescriptionShortTh',
+				    'Quantity', 'Length', 'Height', 'Sku',
+				    'OriginalPrice', 'SalePrice',
+			   	    'Width', 'Weight', 'WeightUnit', 'DimensionUnit'];
 
-		//TODO: Master360 
+				//We have to copy because `Variant` in UI is in top level
+				//DefaultVariant is master
+				clean.DefaultVariant = {};
+				masterProps.forEach(function(k){
+					clean.DefaultVariant[k] = fd[k];
+				});
+						
+				clean.DefaultVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
+				clean.DefaultVariant.Images360 = fd.MasterImages360.map(mapper.Images);
+				clean.DefaultVariant.Images = fd.MasterImages.map(mapper.Images);
+			}
+		}catch(ex){
+			console.warn(ex);
+		}
+
+
+		clean.SellerId = 1;
+		clean.ShopId = 1;
+
 
 		return clean;
 	};
@@ -166,7 +237,11 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		console.log('formData', $scope.formData);
 		var apiRequest = transformFormData($scope.formData);
 		console.log('apiRequest', apiRequest);
-		console.log('apiRequest JSON', JSON.stringify(apiRequest));
+		Product.publish(apiRequest, "WA").then(function(){
+			console.log("Save successful");
+		}, function(er){
+			console.warn("Unable to save", er);	
+		});			
 	};
 
 	$scope.formData = {
@@ -453,7 +528,6 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 					if(variantHashes[rhash] == -1) continue;
 					$scope.formData.Variants.splice(variantHashes[rhash], 1);
 				}
-
 
 				$scope.formData.DefaultVariant = $scope.formData.Variants[0];	
 			}, true);
@@ -1127,21 +1201,30 @@ module.exports = ['$q', '$http', 'common', function($q, $http, common){
 	var service = {};
 
 	service.getAll = function(parameters){
-			var req = {
-				method: 'GET',
-				url: '/ProductStages',
-				params: {	
-					_order: parameters.orderBy || 'ProductId',
-					_limit: parameters.pageSize || 10,
-					_offset: parameters.page * parameters.pageSize || 0,
-					_direction: parameters.direction || 'asc',
-					searchText: (parameters.searchText && parameters.searchText.length > 0 ) ? parameters.searchText : undefined
-				}
-			};
-			
-			return common.makeRequest(req);
+		var req = {
+			method: 'GET',
+			url: '/ProductStages',
+			params: {	
+				_order: parameters.orderBy || 'ProductId',
+				_limit: parameters.pageSize || 10,
+				_offset: parameters.page * parameters.pageSize || 0,
+				_direction: parameters.direction || 'asc',
+				searchText: (parameters.searchText && parameters.searchText.length > 0 ) ? parameters.searchText : undefined
+			}
+		};
+		
+		return common.makeRequest(req);
 	};
 
+	service.publish = function(tobj, Status){
+		tobj.Status = Status;
+		return common.makeRequest({
+			method: 'POST',
+		        url: '/ProductStages',
+		        data: tobj
+		});
+	};
+	
 	return service;
 }];
 
