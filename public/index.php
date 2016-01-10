@@ -13,5 +13,9 @@ Route::add('/attributes','AttributeController::index');
 //attribute set rounting
 Route::add('/attributesets/add','AttributeSetController::add');
 Route::add('/attributesets','AttributeSetController::index');
+//admin routing
+Route::add('/admin/category', 'GlobalCategoryController::add');
+//
+Route::add('/test/:name', 'TestController::any');
 
 Route::process();
