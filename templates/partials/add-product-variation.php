@@ -11,7 +11,7 @@
 					<div class="form-group" ng-repeat="jth in [0,1]">
 						<div class="width-label">
 							<select class="form-control"
-								ng-options="i as i.Attribute.AttributeNameEn for i in formData.AttributeSet.AttributeSetMaps track by i.$id"
+								ng-options="i as i.Attribute.AttributeNameEn for i in formData.AttributeSet.AttributeSetMaps track by i.Attribute.AttributeId"
 						       		ng-model="attributeOptions[jth].attribute">
 							</select>
 						</div>

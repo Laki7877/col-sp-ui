@@ -1,173 +1,19 @@
 var angular = require('angular');
 
-module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair',  function($scope, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair){
+module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', 'transformer',
+	function($scope, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, transformer){
 	'use strict';
-
-	/*
-	 * Transform Form Data into APIable form data
-	 */
-	var transformFormData = function(fd){
-		/*
-		 * - Convert all category into single { CategoryId } Structure
-		 * - Add position to image {} request
-		 * - Multiply base attributes into each variants
-		 */
-
-		var hasVariants = (("Variants" in fd) && fd.Variants.length > 0); 
-
-		//Cleaned data
-		var clean = {};
-
-		var objectMapper = {
-			VideoLinks: function(vlink){
-				var f = [];
-				Object.keys(vlink).forEach(function(key){
-					var value = vlink[key];
-					var obj = {
-						'Url': value
-					};
-
-					f.push(obj);
-				});
-				return f;
-			}
-		};
-		//Mapper functions
-		var mapper = {
-			Images: function(image, pos){
-					image.position = pos;
-					return image;
-			},
-			Variants: function(variant){
-				delete variant.queue; //circular
-				variant.Images = variant.Images.map(mapper.Images);
-				variant.Images360 = []; //for future
-				variant.VideoLinks = objectMapper.VideoLinks(variant.VideoLinks);
-				return variant;
-			},
-			Categories: function(lcat){
-				if(lcat == null) return null;
-				return {
-					CategoryId: lcat.CategoryId
-				};
-			}
-		}
-
-		try{
-			clean.GlobalCategories = fd.GlobalCategories.map(mapper.Categories);
-			clean.LocalCategories = fd.LocalCategories.map(mapper.Categories);
-		}catch(ex){
-			console.warn("Cat Map",ex);
-		}		
-
-		try{
-			clean.Keywords = (!fd.Keywords ? "" : fd.Keywords.join(','));
-		}catch(ex){
-			console.warn("Keyword join", ex);
-		}
-		try{
-			clean.AttributeSet = {
-				AttributeSetId: fd.AttributeSet.AttributeSetId
-			};
-		}catch(ex){
-			console.warn("error while mapping setId", ex);
-		}
-		
-		try{
-
-			clean.MasterAttribute = [];
-			Object.keys(fd.MasterAttribute).forEach(function(key){
-				clean.MasterAttribute.push({
-					AttributeId: key,
-					ValueEn:  fd.MasterAttribute[key]
-				});
-			});
-		}catch(ex){
-			console.warn(ex);
-		}
-
-		try{
-			//Move first entry of Categories out into Category
-			clean.GlobalCategory = clean.GlobalCategories[0].CategoryId;
-			clean.LocalCategory = clean.LocalCategories[0].CategoryId;
-			clean.GlobalCategories.shift();
-			clean.LocalCategories.shift();
-			clean.SafetyStock = fd.SafetyStock;
-			clean.StockType = fd.StockType;
-			clean.SEO = fd.SEO;
-			clean.ControlFlags = fd.ControlFlags;
-			clean.Brand = fd.Brand;
-			clean.ShippingMethod = fd.ShippingMethod;
-			clean.PrepareDay = fd.PrepareDay;
-			clean.EffectiveDate = fd.EffectiveDate;
-			clean.EffectiveTime = fd.EffectiveTime;
-			clean.ExpireDate = fd.ExpireDate;
-			clean.ExpireTime = fd.ExpireTime;
-			clean.Remark = fd.Remark;
-		}catch(ex){
-			console.warn(ex);
-		}
-
-		try{
-			clean.RelatedProducts = [];
-			Object.keys(fd.RelatedProducts).forEach(function(key){
-				clean.RelatedProducts.push(
-					fd.RelatedProducts[key]	
-				);
-			});
-		}catch(ex){
-			console.warn(ex);
-		}
-			
-		try{
-			if(hasVariants){
-				//TODO: Pop DefaultVariant out of Variant 	
-				clean.DefaultVariant = mapper.Variants(fd.DefaultVariant);
-				clean.Variants = fd.Variants.map(mapper.Variants);
-			}else{
-			
-				//Variant Level Property
-				var masterProps = ['ProductNameEn', 'ProductNameTh', 'Sku', 'Upc', 
-				    'ValueEn', 'ValueTh',
-			   	    'Display', 'OriginalPrice', 'SalePrice', 'DescriptionFullTh', 
-				    'DescriptionFullEn', 'DescriptionShortEn', 'DescriptionShortTh',
-				    'Quantity', 'Length', 'Height', 'Sku',
-				    'OriginalPrice', 'SalePrice',
-			   	    'Width', 'Weight', 'WeightUnit', 'DimensionUnit'];
-
-				//We have to copy because `Variant` in UI is in top level
-				//DefaultVariant is master
-				clean.DefaultVariant = {};
-				masterProps.forEach(function(k){
-					clean.DefaultVariant[k] = fd[k];
-				});
-						
-				clean.DefaultVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
-				clean.DefaultVariant.Images360 = fd.MasterImages360.map(mapper.Images);
-				clean.DefaultVariant.Images = fd.MasterImages.map(mapper.Images);
-			}
-		}catch(ex){
-			console.warn(ex);
-		}
-
-
-		clean.SellerId = 1;
-		clean.ShopId = 1;
-
-
-		return clean;
-	};
 
 	$scope.publish = function(isValid){
 
 		console.log('formData', $scope.formData);
-		var apiRequest = transformFormData($scope.formData);
+		var apiRequest = transformer.productTransform($scope.formData);
 		console.log('apiRequest', apiRequest);
-		Product.publish(apiRequest, "WA").then(function(){
+		Product.publish(apiRequest, "DF").then(function(){
 			console.log("Save successful");
 		}, function(er){
-			console.warn("Unable to save", er);	
-		});			
+			console.warn("Unable to save", er);
+		});
 	};
 
 	$scope.formData = {
@@ -181,7 +27,6 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		ControlFlags: [],
 	};
 
-
 	//CK editor options
 	$scope.ckOptions = config.CK_DEFAULT_OPTIONS;
 
@@ -190,12 +35,12 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	 * Seperated by jquery parts and angular parts
 	 */
 	var tabPage = {
-		
+
 	};
 	tabPage.global = {
 		jquery: function(){
 			$('.input-icon-calendar').datetimepicker({
-				format: "LL" // this is momentjs format make it show only date, no time will be show.		
+				format: "LL" // this is momentjs format make it show only date, no time will be show.
 			});
 
 			$("body").tooltip({ selector: '[data-toggle=tooltip]' });
@@ -217,7 +62,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 				//Load Attribute Set
 				AttributeSet.getByCategory(catId).then(function(data){
-					$scope.availableAttributeSets = data; 
+					$scope.availableAttributeSets = data;
 				});
 
 				//Load Global Cat
@@ -239,7 +84,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 			//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
 			$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
-			$scope._isFreeTextInput = util.isFreeTextDataType; 
+			$scope._isFreeTextInput = util.isFreeTextDataType;
 			$scope._isListInput = util.isListDataType;
 		}
 	};
@@ -252,7 +97,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 				},
 				templateSelection: function(d){
 					if(d.BrandNameEn == undefined) return null;
-					return d.BrandNameEn + " (" + d.BrandNameTh + ")";	
+					return d.BrandNameEn + " (" + d.BrandNameTh + ")";
 				},
 				ajax: {
 					processResults: function (data) {
@@ -291,14 +136,14 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			//Assign uploader images
 			ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages);
 		    ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360);
-		    
+
 		    /**
 		     * IMAGE THUMBNAIL EVENTS
 		     */
 		    $scope.$on('left', function(evt, item, array, index) {
 		    	var to = index - 1;
 		    	if(to < 0) to = array.length - 1;
-		    	
+
 		    	var tmp = array[to];
 		    	array[to] = item;
 		    	array[index] = tmp;
@@ -306,7 +151,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		    $scope.$on('right', function(evt, item, array, index) {
 		    	var to = index + 1;
 		    	if(to >= array.length) to = 0;
-		    	
+
 		    	var tmp = array[to];
 		    	array[to] = item;
 		    	array[index] = tmp;
@@ -377,7 +222,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			if($scope.attributeOptions[index].attribute){
 				isListInput = ($scope._isListInput($scope.attributeOptions[index].attribute.Attribute.DataType));
 			}
-			
+
 			//Reset Options
 			$(".select2-init-" + index).select2({
 				tags: !isListInput
@@ -400,23 +245,23 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 				1: {
 					attribute: false,
 					options: []
-				}	
+				}
 			};
 
 
 			$scope.$watch('attributeOptions[0].attribute', function(){
 				tabPage.variation.initSelect2(0);
-			});	
+			});
 
-			$scope.$watch('attributeOptions[1].attribute', function(){	
+			$scope.$watch('attributeOptions[1].attribute', function(){
 				tabPage.variation.initSelect2(1);
-			});	
+			});
 
 			/*
 			 * Multiplying options into VariantPairs
 			 */
 			$scope.$watch('attributeOptions', function(){
-				
+
 				var variantHashes = {};
 				//Product Hash Tracking Table
 				$scope.formData.Variants.forEach(function(elem, index){
@@ -432,7 +277,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 						var kpair = new VariantPair({
 							AttributeId: $scope.attributeOptions[0].attribute.AttributeId,
-							ValueEn: A 
+							ValueEn: A
 						},{
 							AttributeId: $scope.attributeOptions[1].attribute.AttributeId,
 							ValueEn: B
@@ -442,7 +287,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 						if(!(kpair.hash in variantHashes)){
 							$scope.formData.Variants.push(kpair);
 						}
-						
+
 						//Mark hash as used
 						//This will not be deleted
 						variantHashes[kpair.hash] = -1;
@@ -455,12 +300,12 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 					$scope.formData.Variants.splice(variantHashes[rhash], 1);
 				}
 
-				$scope.formData.DefaultVariant = $scope.formData.Variants[0];	
+				$scope.formData.DefaultVariant = $scope.formData.Variants[0];
 			}, true);
 
-			//TODO: When selected attribute change, 
+			//TODO: When selected attribute change,
 			//the other box wil not allow to have selected option
-			
+
 		   	/**
 		   	 * This part handles when user click on More Detail and open pair form
 		   	 */
@@ -492,7 +337,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 					if(!("ProductNameEn" in d)) return null;
 					return d.ProductNameEn + " / " + d.ProductNameTh;
 				},
-				templateSelection: function(d){	
+				templateSelection: function(d){
 					return d.ProductNameEn + " / " + d.ProductNameTh;
 				},
 				ajax: {
@@ -531,18 +376,18 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	$(document).on('ready',function(){
 		tabPage.global.jquery();
 		//init first page
-		//TODO: This may not be information page 
+		//TODO: This may not be information page
 		//it depends on the link
-		var pageId = 'information';		
+		var pageId = 'information';
 	    tabPage[pageId].jquery();
 	    loadedTabs[pageId] = true;
 	});
 
 	//init tab jquery
 	$(document).on('shown.bs.tab shown', function(tab){
-		var pageId = tab.target.dataset.id;	
+		var pageId = tab.target.dataset.id;
 		if(pageId in loadedTabs) return;
-		console.log(tab, loadedTabs);	
+		console.log(tab, loadedTabs);
 		console.log("initing ", pageId);
 	    tabPage[pageId].jquery();
 	    loadedTabs[pageId] = true;

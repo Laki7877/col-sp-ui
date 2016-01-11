@@ -30,6 +30,7 @@ var app = angular.module('colspApp', ['angularFileUpload', 'base64'])
 .factory('storage', helpers.storage)
 .factory('util', helpers.util)
 .factory('base64', helpers.base64)
+.factory('transformer', helpers.transformer)
 
 //Services
 .factory('Product', services.product)
