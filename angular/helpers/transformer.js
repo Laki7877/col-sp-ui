@@ -133,8 +133,8 @@ module.exports = [function () {
 
 	try{
 		if(hasVariants){
-			//TODO: Pop DefaultVariant out of Variant
-			clean.DefaultVariant = mapper.Variants(fd.DefaultVariant);
+			//clean.DefaultVariant = mapper.Variants(fd.DefaultVariant);
+			//TODO: assign Defaultvarint T/F
 			clean.Variants = fd.Variants.map(mapper.Variants);
 		}else{
 
@@ -144,18 +144,18 @@ module.exports = [function () {
 			    'DescriptionFullEn', 'DescriptionShortEn', 'DescriptionShortTh',
 			    'Quantity', 'Length', 'Height', 'Sku',
 			    'OriginalPrice', 'SalePrice',
-			  'Width', 'Weight', 'WeightUnit', 'DimensionUnit'];
+			     'Width', 'Weight', 'WeightUnit', 'DimensionUnit'];
 
 			//We have to copy because `Variant` in UI is in top level
 			//DefaultVariant is master
-			clean.DefaultVariant = {};
+			clean.MasterVariant = {};
 			masterProps.forEach(function(k){
-				clean.DefaultVariant[k] = fd[k];
+				clean.MasterVariant[k] = fd[k];
 			});
 
-			clean.DefaultVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
-			clean.DefaultVariant.Images360 = fd.MasterImages360.map(mapper.Images);
-			clean.DefaultVariant.Images = fd.MasterImages.map(mapper.Images);
+			clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
+			clean.MasterVariant.Images360 = fd.MasterImages360.map(mapper.Images);
+			clean.MasterVariant.Images = fd.MasterImages.map(mapper.Images);
 		}
 	}catch(ex){
 		console.warn("Variant Distribute", ex);
