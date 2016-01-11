@@ -5,7 +5,8 @@ module.exports = [function () {
     var tra = {};
 
     tra.productTransform = function(fd){
-    		/*
+	//TODO: REmove [A] from [A, B,C] Variant
+	    /*
     		 * - Convert all category into single { CategoryId } Structure
     		 * - Add position to image {} request
     		 * - Multiply base attributes into each variants
@@ -38,7 +39,7 @@ module.exports = [function () {
     			},
     			Variants: function(_variant){
     				var variant = angular.copy(_variant);
-    				delete variant.queue; //circular
+    				if("queue" in variant) delete variant.queue; //circular
     				variant.Images = variant.Images.map(mapper.Images);
     				variant.Images360 = []; //for future
     				variant.VideoLinks = objectMapper.VideoLinks(variant.VideoLinks);
@@ -69,7 +70,7 @@ module.exports = [function () {
     				AttributeSetId: fd.AttributeSet.AttributeSetId
     			};
     		}catch(ex){
-    			console.warn("error while mapping setId", ex);
+    			console.warn("Error while mapping setId", ex);
     		}
 
     		try{
@@ -109,64 +110,62 @@ module.exports = [function () {
           console.warn("One-To-One Fields", ex);
         }
 
-    		try{
-    			//Move first entry of Categories out into Category
-    			clean.GlobalCategory = clean.GlobalCategories[0].CategoryId;
-    			clean.LocalCategory = clean.LocalCategories[0].CategoryId;
-    			clean.GlobalCategories.shift();
-    			clean.LocalCategories.shift();
-    		}catch(ex){
-    			console.warn("Shifting Categories", ex);
-    		}
+	try{
+		//Move first entry of Categories out into Category
+		clean.GlobalCategory = clean.GlobalCategories[0].CategoryId;
+		clean.LocalCategory = clean.LocalCategories[0].CategoryId;
+		clean.GlobalCategories.shift();
+		clean.LocalCategories.shift();
+	}catch(ex){
+		console.warn("Shifting Categories", ex);
+	}
 
-    		try{
-    			clean.RelatedProducts = [];
-    			Object.keys(fd.RelatedProducts).forEach(function(key){
-    				clean.RelatedProducts.push(
-    					fd.RelatedProducts[key]
-    				);
-    			});
-    		}catch(ex){
-    			console.warn("Organizing Related Products", ex);
-    		}
+	try{
+		clean.RelatedProducts = [];
+		Object.keys(fd.RelatedProducts).forEach(function(key){
+			clean.RelatedProducts.push(
+				fd.RelatedProducts[key]
+			);
+		});
+	}catch(ex){
+		console.warn("Organizing Related Products", ex);
+	}
 
-    		try{
-    			if(hasVariants){
-    				//TODO: Pop DefaultVariant out of Variant
-    				clean.DefaultVariant = mapper.Variants(fd.DefaultVariant);
-    				clean.Variants = fd.Variants.map(mapper.Variants);
-    			}else{
+	try{
+		if(hasVariants){
+			//TODO: Pop DefaultVariant out of Variant
+			clean.DefaultVariant = mapper.Variants(fd.DefaultVariant);
+			clean.Variants = fd.Variants.map(mapper.Variants);
+		}else{
 
-    				//Move these into Variant Level Property
-    				var masterProps = ['ProductNameEn', 'ProductNameTh', 'Sku', 'Upc',
-    				    'ValueEn', 'ValueTh',
-    			   	  'Display', 'OriginalPrice', 'SalePrice', 'DescriptionFullTh',
-    				    'DescriptionFullEn', 'DescriptionShortEn', 'DescriptionShortTh',
-    				    'Quantity', 'Length', 'Height', 'Sku',
-    				    'OriginalPrice', 'SalePrice',
-    			   	  'Width', 'Weight', 'WeightUnit', 'DimensionUnit'];
+			//Move these into Variant Level Property
+			var masterProps = ['ProductNameEn', 'ProductNameTh', 'Sku', 'Upc',
+			    'ValueEn', 'ValueTh', 'Display', 'OriginalPrice', 'SalePrice', 'DescriptionFullTh',
+			    'DescriptionFullEn', 'DescriptionShortEn', 'DescriptionShortTh',
+			    'Quantity', 'Length', 'Height', 'Sku',
+			    'OriginalPrice', 'SalePrice',
+			  'Width', 'Weight', 'WeightUnit', 'DimensionUnit'];
 
-    				//We have to copy because `Variant` in UI is in top level
-    				//DefaultVariant is master
-    				clean.DefaultVariant = {};
-    				masterProps.forEach(function(k){
-    					clean.DefaultVariant[k] = fd[k];
-    				});
+			//We have to copy because `Variant` in UI is in top level
+			//DefaultVariant is master
+			clean.DefaultVariant = {};
+			masterProps.forEach(function(k){
+				clean.DefaultVariant[k] = fd[k];
+			});
 
-    				clean.DefaultVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
-    				clean.DefaultVariant.Images360 = fd.MasterImages360.map(mapper.Images);
-    				clean.DefaultVariant.Images = fd.MasterImages.map(mapper.Images);
-    			}
-    		}catch(ex){
-    			console.warn(ex);
-    		}
-
-
-    		clean.SellerId = 1;
-    		clean.ShopId = 1;
+			clean.DefaultVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
+			clean.DefaultVariant.Images360 = fd.MasterImages360.map(mapper.Images);
+			clean.DefaultVariant.Images = fd.MasterImages.map(mapper.Images);
+		}
+	}catch(ex){
+		console.warn("Variant Distribute", ex);
+	}
 
 
-    		return clean;
+	clean.SellerId = 1;
+	clean.ShopId = 1;
+
+	return clean;
     };
 
     tra.inverseProductTransform = function(){

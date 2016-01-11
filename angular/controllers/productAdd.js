@@ -9,6 +9,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		console.log('formData', $scope.formData);
 		var apiRequest = transformer.productTransform($scope.formData);
 		console.log('apiRequest', apiRequest);
+		console.log('aJSON', JSON.stringify(apiRequest));
 		Product.publish(apiRequest, "DF").then(function(){
 			console.log("Save successful");
 		}, function(er){
@@ -39,8 +40,14 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	};
 	tabPage.global = {
 		jquery: function(){
+
+			//TODO: this wont play well with angular, not sure why
+			//maybe use this: http://dalelotts.github.io/angular-bootstrap-datetimepicker/ 
 			$('.input-icon-calendar').datetimepicker({
-				format: "LL" // this is momentjs format make it show only date, no time will be show.
+				format: "LL"	
+			}).on('dp.change', function(sd){
+				$scope.$digest();
+				console.log($scope.formData);
 			});
 
 			$("body").tooltip({ selector: '[data-toggle=tooltip]' });
