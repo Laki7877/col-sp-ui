@@ -1,98 +1,20 @@
 var angular = require('angular');
 
-module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair',  function($scope, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair){
+module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', 'transformer',
+	function($scope, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, transformer){
 	'use strict';
-
-	/*
-	 * Transform Form Data into APIable form data
-	 */
-	var transformFormData = function(fd){
-		/*
-		 * - Convert all category into single { CategoryId } Structure
-		 * - Add position to image {} request
-		 * - Multiply base attributes into each variants
-		 */
-
-		var hasVariants = (("Variants" in fd) && fd.Variants.length > 0); 
-
-		//Cleaned data
-		var clean = {
-			
-		};
-
-		//Mapper functions
-		var mapper = {
-			Images: function(image, pos){
-					image.position = pos;
-					return image;
-			},
-			Variants: function(variant){
-				delete variant.queue; //circular
-				variant.Images = variant.Images.map(mapper.Images);
-				return variant;
-			},
-			Categories: function(lcat){
-				if(lcat == null) return null;
-				return {
-					CategoryId: lcat.CategoryId
-				};
-			}
-		}
-
-		try{
-			clean.GlobalCategories = fd.GlobalCategories.map(mapper.Categories);
-			clean.LocalCategories = fd.LocalCategories.map(mapper.Categories);
-			clean.Keywords =  fd.Keywords.join(',');
-			Object.keys(fd.VideoLinks).forEach(function(key){
-				var value = fd.VideoLinks[key];
-				var obj = {
-					'Url': value
-				};
-
-			});
-			clean.AttributeSet = {
-				AttributeSetId: fd.AttributeSet.AttributeId
-			};
-			clean.DefaultVariant = mapper.Variants(fd.DefaultVariant);
-			clean.MasterAttribute = [];
-			Object.keys(fd.MasterAttribute).forEach(function(key){
-				clean.MasterAttribute.push({
-					AttributeId: key,
-					ValueEn:  fd.MasterAttribute[key]
-				});
-			});
-		}catch(ex){
-			//TODO: In production, remove this and try catch in publish
-			//with error messsage
-			console.warn(ex);
-		}
-		
-		if(hasVariants){
-			clean.Variants = fd.Variants.map(mapper.Variants);
-
-		}else{
-			clean.Images = fd.MasterImages.map(mapper.Images);
-		}
-
-		//Copy the rest as is
-		Object.keys(fd).forEach(function(key){
-			if(!(key in clean)){
-				clean[key] = fd[key];
-			}
-		});
-		
-
-		//TODO: Master360 
-
-		return clean;
-	};
 
 	$scope.publish = function(isValid){
 
 		console.log('formData', $scope.formData);
-		var apiRequest = transformFormData($scope.formData);
+		var apiRequest = transformer.productTransform($scope.formData);
 		console.log('apiRequest', apiRequest);
-		console.log('apiRequest JSON', JSON.stringify(apiRequest));
+		console.log('aJSON', JSON.stringify(apiRequest));
+		Product.publish(apiRequest, "DF").then(function(){
+			console.log("Save successful");
+		}, function(er){
+			console.warn("Unable to save", er);
+		});
 	};
 
 	$scope.formData = {
@@ -106,7 +28,6 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		ControlFlags: [],
 	};
 
-
 	//CK editor options
 	$scope.ckOptions = config.CK_DEFAULT_OPTIONS;
 
@@ -115,12 +36,18 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	 * Seperated by jquery parts and angular parts
 	 */
 	var tabPage = {
-		
+
 	};
 	tabPage.global = {
 		jquery: function(){
+
+			//TODO: this wont play well with angular, not sure why
+			//maybe use this: http://dalelotts.github.io/angular-bootstrap-datetimepicker/ 
 			$('.input-icon-calendar').datetimepicker({
-				format: "LL" // this is momentjs format make it show only date, no time will be show.		
+				format: "LL"	
+			}).on('dp.change', function(sd){
+				$scope.$digest();
+				console.log($scope.formData);
 			});
 
 			$("body").tooltip({ selector: '[data-toggle=tooltip]' });
@@ -142,7 +69,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 				//Load Attribute Set
 				AttributeSet.getByCategory(catId).then(function(data){
-					$scope.availableAttributeSets = data; 
+					$scope.availableAttributeSets = data;
 				});
 
 				//Load Global Cat
@@ -164,7 +91,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 			//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
 			$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
-			$scope._isFreeTextInput = util.isFreeTextDataType; 
+			$scope._isFreeTextInput = util.isFreeTextDataType;
 			$scope._isListInput = util.isListDataType;
 		}
 	};
@@ -177,7 +104,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 				},
 				templateSelection: function(d){
 					if(d.BrandNameEn == undefined) return null;
-					return d.BrandNameEn + " (" + d.BrandNameTh + ")";	
+					return d.BrandNameEn + " (" + d.BrandNameTh + ")";
 				},
 				ajax: {
 					processResults: function (data) {
@@ -216,14 +143,14 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			//Assign uploader images
 			ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages);
 		    ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360);
-		    
+
 		    /**
 		     * IMAGE THUMBNAIL EVENTS
 		     */
 		    $scope.$on('left', function(evt, item, array, index) {
 		    	var to = index - 1;
 		    	if(to < 0) to = array.length - 1;
-		    	
+
 		    	var tmp = array[to];
 		    	array[to] = item;
 		    	array[index] = tmp;
@@ -231,7 +158,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		    $scope.$on('right', function(evt, item, array, index) {
 		    	var to = index + 1;
 		    	if(to >= array.length) to = 0;
-		    	
+
 		    	var tmp = array[to];
 		    	array[to] = item;
 		    	array[index] = tmp;
@@ -302,7 +229,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			if($scope.attributeOptions[index].attribute){
 				isListInput = ($scope._isListInput($scope.attributeOptions[index].attribute.Attribute.DataType));
 			}
-			
+
 			//Reset Options
 			$(".select2-init-" + index).select2({
 				tags: !isListInput
@@ -325,23 +252,23 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 				1: {
 					attribute: false,
 					options: []
-				}	
+				}
 			};
 
 
 			$scope.$watch('attributeOptions[0].attribute', function(){
 				tabPage.variation.initSelect2(0);
-			});	
+			});
 
-			$scope.$watch('attributeOptions[1].attribute', function(){	
+			$scope.$watch('attributeOptions[1].attribute', function(){
 				tabPage.variation.initSelect2(1);
-			});	
+			});
 
 			/*
 			 * Multiplying options into VariantPairs
 			 */
 			$scope.$watch('attributeOptions', function(){
-				
+
 				var variantHashes = {};
 				//Product Hash Tracking Table
 				$scope.formData.Variants.forEach(function(elem, index){
@@ -357,7 +284,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 						var kpair = new VariantPair({
 							AttributeId: $scope.attributeOptions[0].attribute.AttributeId,
-							ValueEn: A 
+							ValueEn: A
 						},{
 							AttributeId: $scope.attributeOptions[1].attribute.AttributeId,
 							ValueEn: B
@@ -367,7 +294,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 						if(!(kpair.hash in variantHashes)){
 							$scope.formData.Variants.push(kpair);
 						}
-						
+
 						//Mark hash as used
 						//This will not be deleted
 						variantHashes[kpair.hash] = -1;
@@ -380,13 +307,12 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 					$scope.formData.Variants.splice(variantHashes[rhash], 1);
 				}
 
-
-				$scope.formData.DefaultVariant = $scope.formData.Variants[0];	
+				$scope.formData.DefaultVariant = $scope.formData.Variants[0];
 			}, true);
 
-			//TODO: When selected attribute change, 
+			//TODO: When selected attribute change,
 			//the other box wil not allow to have selected option
-			
+
 		   	/**
 		   	 * This part handles when user click on More Detail and open pair form
 		   	 */
@@ -418,7 +344,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 					if(!("ProductNameEn" in d)) return null;
 					return d.ProductNameEn + " / " + d.ProductNameTh;
 				},
-				templateSelection: function(d){	
+				templateSelection: function(d){
 					return d.ProductNameEn + " / " + d.ProductNameTh;
 				},
 				ajax: {
@@ -457,18 +383,18 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	$(document).on('ready',function(){
 		tabPage.global.jquery();
 		//init first page
-		//TODO: This may not be information page 
+		//TODO: This may not be information page
 		//it depends on the link
-		var pageId = 'information';		
+		var pageId = 'information';
 	    tabPage[pageId].jquery();
 	    loadedTabs[pageId] = true;
 	});
 
 	//init tab jquery
 	$(document).on('shown.bs.tab shown', function(tab){
-		var pageId = tab.target.dataset.id;	
+		var pageId = tab.target.dataset.id;
 		if(pageId in loadedTabs) return;
-		console.log(tab, loadedTabs);	
+		console.log(tab, loadedTabs);
 		console.log("initing ", pageId);
 	    tabPage[pageId].jquery();
 	    loadedTabs[pageId] = true;

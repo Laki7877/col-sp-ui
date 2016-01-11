@@ -15,10 +15,10 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 	$scope.tableParams = {
 		filter: 0,
 		searchText: null,
-		orderBy: 'ProductId',
-		direction: 'asc',
+		orderBy: 'ProductNameEn',
+		direction: 'desc',
 		page: 0,
-		pageSize: 4
+		pageSize: 8
 	};
 
 	$scope.notReady = true;

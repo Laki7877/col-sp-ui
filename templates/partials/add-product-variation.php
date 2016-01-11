@@ -11,7 +11,7 @@
 					<div class="form-group" ng-repeat="jth in [0,1]">
 						<div class="width-label">
 							<select class="form-control"
-								ng-options="i as i.Attribute.AttributeNameEn for i in formData.AttributeSet.AttributeSetMaps track by i.$id"
+								ng-options="i as i.Attribute.AttributeNameEn for i in formData.AttributeSet.AttributeSetMaps track by i.Attribute.AttributeId"
 						       		ng-model="attributeOptions[jth].attribute">
 							</select>
 						</div>
@@ -61,12 +61,18 @@
 						<tbody>
 								<tr ng-repeat="pair in formData.Variants track by $index">
 									<td class="column-text-ellipsis"> {{ pair.text}}</td>
-									<td><input type="text" class="form-control" /></td>
-									<td><input type="text" class="form-control" /></td>
-									<td><input type="text" class="form-control" /></td>
-									<td><input type="text" class="form-control" /></td>
+									<td><input type="text" class="form-control" 
+										ng-model="pair.Sku" /></td>
+									<td><input type="text" 
+										ng-model="pair.OriginalPrice"
+										class="form-control" /></td>
+									<td><input type="text"
+										ng-model="pair.SalePrice"
+								       		class="form-control" /></td>
+									<td><input type="text" ng-model="pair.Quantity"
+										class="form-control" /></td>
 									<td><a class="btn btn-white btn-width-xl" data-toggle="modal" data-target="#variant-detail-1" ng-click="$emit('openPairModal', pair, formData.Variants, $index)">More Detail</a></td>
-									<td><a class="btn btn-white">Hide</a></td>
+									<td><a class="btn btn-white disabled">Hide</a></td>
 								</tr>
 						</tbody>
 					</table>

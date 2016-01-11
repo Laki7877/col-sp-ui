@@ -11,8 +11,8 @@
 						<div class="form-section">
 							<div class="form-section-header"><h2>Vital Information</h2></div>
 							<div class="form-section-content modal-custom">
-								<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Name (Thai)", "ng_model" => $model . ".ValueEn"]) ?>
-								<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Name (English)", "ng_model" => $model . ".ValueTh"]) ?>
+								<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Name (Thai)", "ng_model" => $model . ".ProductNameTh"]) ?>
+								<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Name (English)", "ng_model" => $model . ".ProductNameEn"]) ?>
 								<? $this->insert('components/forms/multiple-radio-multiline', ["label" => "Display", "choices" => ["GROUP" => "Show as group of variants", "INDIVIDUAL" => "Show as individual product"], "ng_model" => $model . ".Display" ]) ?>
 							</div>
 						</div>
@@ -38,7 +38,7 @@
 							<div class="form-section-header"><h2>Package Detail</h2></div>
 							<div class="form-section-content">
 								<? $this->insert('components/forms/multiple-input-with-label', ["label" => "Package Dimension", "ng_model_length" => $model.".Length", "ng_model_height" => $model.".Height", "ng_model_width" => $model.".Width", "ng_model_dimension" => $model.".DimensionUnit"]) ?>
-								<? $this->insert('components/forms/multiple-input', ["label" => "Weight", "ng_model" => $model.".Weight", "ng_model_dimension" => $model."DimensionWeight"]) ?>
+								<? $this->insert('components/forms/multiple-input', ["label" => "Weight", "ng_model" => $model.".Weight", "ng_model_dimension" => $model."WeightUnit"]) ?>
 							</div>
 						</div>
 					</div> <!-- end .col-xs-12 -->

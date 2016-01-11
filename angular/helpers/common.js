@@ -1,4 +1,4 @@
-module.exports = ['$http', '$q', '$log', 'storage', 'config', function ($http, $q, $log, storage, config) {
+module.exports = ['$http', '$q', 'storage', 'config', function ($http, $q, storage, config) {
     'use strict';
         return {
             /**
@@ -23,7 +23,7 @@ module.exports = ['$http', '$q', '$log', 'storage', 'config', function ($http, $
                         deferred.resolve(data);
                     })
                     .error(function (data, status, headers, config) {
-                        $log.error(status, config.method, config.url, data);
+                        console.warn(status, config.method, config.url, data);
                         deferred.reject(data || {"error": "Unknown error"});
                     });
                 return deferred.promise;
