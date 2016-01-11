@@ -7,7 +7,14 @@ module.exports = ['common', function(common) {
 			url: '/Shops/' + id + '/LocalCategories',
 			method: 'GET'
 		});
-	}
+	};
+	service.upsertLocalCategories = function(id, data) {
+		return common.makeRequest({
+			url: '/Shops/' + id + '/LocalCategories',
+			method: 'PUT',
+			data: data
+		});
+	};
 
 	return service;
 }];

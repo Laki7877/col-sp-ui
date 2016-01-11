@@ -10,7 +10,7 @@ module.exports = ['config', function(config) {
 
     /**
      * Convert array of object with Depth to Nested array of object
-     * Used in category
+     * Used in category selection
      */
     service.convertDepthArrayToNestedArray = function(depthArray) {
         //Create nested object from raw data
@@ -37,8 +37,100 @@ module.exports = ['config', function(config) {
     };
 
     /**
+     * Transform angular-ui-tree data to nested set
+     * see https://en.wikipedia.org/wiki/Nested_set_model
+     */
+    service.transformUITreeToNestedSet = function(tree) {
+        var set = [];
+        var inc = 1; //start with 1, left-right exclusive
+        var traverse = function(node) {
+            //Create shallow copy
+            var cnode = angular.extend({}, node);
+
+            //Assign Left
+            cnode.Lft = inc++;
+
+            //Navigate to sub children
+            if(angular.isDefined(node.nodes)) {
+                for (var i = 0; i < node.nodes.length; i++) {
+                    traverse(node.nodes[i]);
+                }
+            }
+            
+            //Assign Right
+            cnode.Rgt = inc++;
+
+            //Remove subnodes ptr
+            delete cnode['nodes'];  
+            delete cnode['reverse'];  
+            set.push(cnode);
+        };
+
+        for (var i = 0; i < tree.length; i++) {
+            traverse(tree[i]);
+        }
+        return set;
+    }
+
+    /**
+     * Transform nested set to angular-ui-tree
+     */
+    service.transformNestedSetToUITree = function(set) {
+        var tree = [];
+        var compare = function(a, b) {
+            return a.Lft - b.Lft;
+        };
+        var reverse = function(set) {
+            var array = [];
+            var pivot = null;
+
+            while(set.length > 0) {
+                //Get front queue item
+                var item = set.shift();
+                if(angular.isUndefined(item.nodes)) {
+                    item.nodes = [];
+                }
+
+                if (array.length <= 0) {
+                    //First item, set as pivot
+                    pivot = item;
+                    array.push(pivot);
+                } else {
+                    if (item.Rgt < pivot.Rgt) {
+                        //This item belong to pivot's children
+                        pivot.nodes.push(item);
+                    } else {
+                        //Run reverse on current pivot if any
+                        if(pivot.nodes.length > 0) {
+                            pivot.nodes = reverse(pivot.nodes);
+                            pivot.reverse = true; 
+                        }
+                        
+                        //Change pivot
+                        pivot = item;
+                        array.push(pivot);
+                    }
+                }
+            }
+
+            if (angular.isUndefined(pivot.reverse) && pivot.nodes.length > 0) {
+                pivot.nodes = reverse(pivot.nodes);
+                pivot.reverse = true;
+            }
+
+            return array;
+        }
+        
+        //Sort array by Lft
+        set.sort(compare);
+
+        //Reverse of deep copy
+        return reverse(angular.copy(set));
+    }
+
+    /**
      * Create selection function for ng-click 
-     * select in category columns 
+     * use in category selection 
      * **can only be used with NestedArray
      */
     service.createSelectFunc = function(columns, selectEvent) {
@@ -65,7 +157,7 @@ module.exports = ['config', function(config) {
 
     /**
      * Create array of column from item in template or blank
-     * template should be in nested array (tree) form
+     * use in category selection
      */
     service.createColumns = function(item, template) {
         var array = [];
@@ -91,9 +183,8 @@ module.exports = ['config', function(config) {
     };
 
     /**
-     * Search tree for catId
+     * Search Depth Array for catId
      */
-    
     service.findByCatId = function(catId, tmp) {
         if(angular.isArray(tmp)) {
             //Init

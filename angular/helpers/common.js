@@ -27,6 +27,15 @@ module.exports = ['$http', '$q', '$log', 'storage', 'config', function ($http, $
                         deferred.reject(data || {"error": "Unknown error"});
                     });
                 return deferred.promise;
+            },
+
+            /**
+             * Get error message from response
+             */
+            getError: function(response) {
+                if(response.message)
+                    return response.message;
+                return response;
             }
         };
 }];

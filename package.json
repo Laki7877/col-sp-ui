@@ -10,9 +10,12 @@
     "bulk-require": "^0.2.1",
     "bulkify": "^1.1.1",
     "grunt": "^0.4.5",
+    "grunt-angular-templates": "^0.5.9",
     "grunt-browserify": "^4.0.1",
+    "grunt-concurrent": "^2.1.0",
     "grunt-contrib-connect": "^0.11.2",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-exec": "^0.4.6",
     "load-grunt-tasks": "^3.4.0"
   },
   "scripts": {
@@ -20,9 +23,12 @@
   },
   "dependencies": {
     "angular": "~1.4.8",
+    "angular-animate": "^1.4.8",
     "angular-base64": "~2.0.5",
     "angular-file-upload": "^2.2.0",
     "angular-sanitize": "^1.4.8",
+    "angular-ui-bootstrap": "^0.14.3",
+    "angular-ui-tree": "^2.13.0",
     "ui-select": "^0.13.2"
   }
 }

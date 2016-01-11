@@ -15,7 +15,9 @@ Route::add('/attributesets/add','AttributeSetController::add');
 Route::add('/attributesets','AttributeSetController::index');
 //admin routing
 Route::add('/admin/category', 'GlobalCategoryController::add');
-//
+//seller category routing
+Route::add('/category/add', 'LocalCategoryController::add');
+
 Route::add('/test/:name', 'TestController::any');
 
 Route::process();

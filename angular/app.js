@@ -3,9 +3,13 @@
 var angular = require('angular');
 var bulk = require('bulk-require')(__dirname, ['controllers/*.js', 'services/*.js', 'helpers/*.js', 'directives/*.js', 'filters/*.js']);
 var config = require('./config');
+var template = require('./template');
 
 //External dependencies
+require('angular-ui-bootstrap');
+require('angular-animate');
 require('angular-file-upload');
+require('angular-ui-tree');
 require('angular-base64');
 
 //Internal dependencies
@@ -15,7 +19,21 @@ var helpers = bulk.helpers;
 var directives = bulk.directives;
 var filters = bulk.filters;
 
-var app = angular.module('colspApp', ['angularFileUpload', 'base64'])
+var app = angular.module('colspApp', ['ngAnimate', 'angularFileUpload', 'ui.tree', 'base64', 'ui.bootstrap'])
+
+//App config
+.config(['$uibTooltipProvider', function($tooltipProvider) {
+	//Default close tooltip when click again
+	$tooltipProvider.setTriggers({
+		'clickanystart' : 'clickanyend'
+	});
+	$tooltipProvider.options({
+		trigger: 'clickanystart'
+	});
+}])
+
+//App template cache load
+.run(template)
 
 //App init
 .run(['$base64', 'storage', function($base64, storage) {
@@ -44,6 +62,9 @@ var app = angular.module('colspApp', ['angularFileUpload', 'base64'])
 //Directives
 .directive('ngDelegate', directives.ngDelegate)
 .directive('ngCkeditor', directives.ngCkeditor)
+.directive('ngSlideToggle', directives.ngSlideToggle)
+.directive('ngTemplate', directives.ngTemplate)
+.directive('popoverAny', directives.popoverAny)
 
 //Filters
 .filter('capitalize', filters.capitalize)
@@ -52,4 +73,7 @@ var app = angular.module('colspApp', ['angularFileUpload', 'base64'])
 //Controllers
 .controller('ProductListCtrl', controllers.productList)
 .controller('ProductAddCtrl', controllers.productAdd)
-.controller('ProductSelectCatCtrl', controllers.productSelectCat);
+.controller('ProductAddSelectCategoryCtrl', controllers.productAddSelectCategory)
+.controller('ProductListLocalCategoryCtrl', controllers.productListLocalCategory)
+.controller('LocalCategoryCtrl', controllers.localCategory)
+.controller('AdminCatCtrl', controllers.adminCatCtrl);

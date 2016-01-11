@@ -1,8 +1,8 @@
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Local Category']) ?>
 
 <?php $this->start('page-body') ?>
-	<div class="local-category-page">
-
+	<div ng-controller="AdminCatCtrl" class="local-category-page">
+		<? $this->insert('components/global-category-category-content')?>
 		<div class="page-header with-border">
 		    <h1 class="float-left page-header-title">Global Category</h1>
 		    <span class="float-right page-header-action">
@@ -39,37 +39,14 @@
 					Move
 				</span>
 			</div>
-			<div class="col-xs-12 no-padding">
-				<ol class="sortable no-padding">
-					<li><? $this->insert('components/global-category-category-content', ['no_child' => true, 'category' => 'Category Name 0', 'category_id' => 1234567, 'product_count' => 20, 'visible' => true]) ?></li>
-					<li>
-						<? $this->insert('components/global-category-category-content', ['parent' => true, 'category' => 'Category Name 1', 'category_id' => 1234567, 'product_count' => 20, 'visible' => true]) ?>
-						<ol>
-							<li><? $this->insert('components/global-category-category-content', ['parent' => false, 'category' => 'Category Name 2', 'category_id' => 1234567, 'product_count' => 10, 'visible' => true]) ?></li>
-							<li><? $this->insert('components/global-category-category-content', ['parent' => false, 'category' => 'Category Name 3', 'category_id' => 1234567, 'product_count' => 10, 'visible' => false]) ?></li>
-						</ol>
-					</li>
+			<div class="col-xs-12 no-padding" ui-tree max-depth="5">
+				<ol class="sortable no-padding" ui-tree-nodes ng-model="categories">
+					<li ng-repeat="node in categories" ui-tree-node ng-include="'nodes_renderer.html'"></li>
 				</ol>	
 			</div>
 		</div>
 	</div>
-
-	<script>
-		$(document).ready(function() {
-			$('.sortable').nestedSortable({
-				handle: 'div',
-				items: 'li',
-				toleranceElement: '> div',
-				maxLevels: '5'
-			});
-
-			// Toggle Local Category page
-			$( "i.local-category-toggle-area" ).click(function() {
-				$(this).toggleClass('fa-chevron-right fa-chevron-down').closest('li').children('ol').slideToggle('slow');
-			});
-		});
-	</script>
-
+	
 	<!-- Modal -->
 	<div class="modal fade" tabindex="-1" role="dialog" id="modal-category-detail">
 		<div class="modal-dialog modal-xl">

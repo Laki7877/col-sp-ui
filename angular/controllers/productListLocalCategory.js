@@ -1,17 +1,16 @@
-module.exports = ['$scope', 'Product',  function($scope, Product) {
+module.exports = ['$scope', 'LocalCategory', function($scope, LocalCategory) {
 	//UI binding variables
 	$scope.showOnOffStatus = true;
 	$scope.checkAll = false;
+	$scope.notReady = true;
 	$scope.filterOptions = [
 		{ name: "All", value: 0},
 		{ name: "Approved", value: 1},
 		{ name: "Not Approved", value: 2},
 		{ name: "Wait for Approval", value: 3},
 	];
-
-	//Product List
+ 	$scope.productTotal = 0;
 	$scope.productList = [];
-	//Default parameters
 	$scope.tableParams = {
 		filter: 0,
 		searchText: null,
@@ -20,8 +19,10 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 		page: 0,
 		pageSize: 4
 	};
-
-	$scope.notReady = true;
+	$scope.init = function(catId) {
+		$scope.categoryId = catId || 1;
+		reloadData();
+	}
 	$scope.applySearch = function(){
 		$scope.tableParams.searchText = $scope.searchText;
 	};
@@ -45,11 +46,10 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 		$scope.tableParams.orderBy = nextOrderBy;
 	}
 
- 	$scope.productTotal = 0;
 	//Populate Data Source
 	var reloadData = function(){
 		$scope.notReady = true;
-		Product.getAll($scope.tableParams).then(function(x){
+		LocalCategory.getProducts($scope.categoryId, $scope.tableParams).then(function(x){
 			$scope.productTotal = x.total;
 			$scope.productList = x.data;
 			$scope.notReady = false;

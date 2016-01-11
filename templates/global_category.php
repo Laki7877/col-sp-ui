@@ -1,7 +1,7 @@
 <?php $this->layout('layouts/page-with-sidebar', ['title' => 'Global Category']) ?>
 
 <?php $this->start('page-body') ?>
-	<div ng-controller="ProductSelectCatCtrl" class="global-category-page">
+	<div ng-controller="ProductAddSelectCategoryCtrl" class="global-category-page">
 		<? $this->insert('components/page-title-breadcrumb-border', ['text' => 'Products/Add Product']) ?>
 		<form class="ah-form" method="POST" action="/products/add">
 			<input type="hidden" name="category" ng-value="selected.CategoryId" />

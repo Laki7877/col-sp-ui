@@ -13,16 +13,20 @@ if (isset($size)) $inputSize = "width-field-$size";
 		<? if(isset($ng_model)): ?>
 		ng-model="<?=$ng_model?>"
 		<? endif; ?>
+		<? if(isset($name)): ?>
+		name="<?=$name?>"
+		<? endif; ?>
 		
-		type="text" class="form-control <?= $input_class; ?>" placeholder="<?=$placeholder?>" <?=$input_attrs?> />
+		type="text" class="form-control" ng-class="<?= $input_class; ?>" placeholder="<?=$placeholder?>" <?=$input_attrs?> />
 		<? if (!empty($hint)): ?>
 			<span class="help-block"><?= $hint ?></span>
 		<? endif ?>
 		<? if (!empty($error_message)): ?>
-			<span class="help-block color-red"><?= $error_message ?></span>
+			<span class="help-block color-red" ng-show="<?=$name?>.$invalid"><?= $error_message ?></span>
 		<? endif ?>
 	</div>
 	<? if (!empty($tooltip)): ?>
 		<div class="width-field-tooltip no-padding-left"><i class="fa fa-2x fa-question-circle color-grey" data-toggle="tooltip" data-placement="right" title="<?= $tooltip ?>"></i></div>
 	<? endif ?>
-</div>
+</div
+g>
