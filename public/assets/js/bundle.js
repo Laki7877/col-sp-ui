@@ -572,6 +572,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 			$.fn.select2.defaults.set("tokenSeparators", [","]);
 
+			console.log($scope.formData, "at global jquery");
 			$(".select2-init-simple").select2();
 			$(".select2-init-track").on("change", function(ev){
 				$scope.$digest();
@@ -581,15 +582,18 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		angular: function() {
 
 			$scope.init = function(viewBag) {
+
+				//TODO: Refactor 
+
 				var shopId = 1;
 				var angularReady = function(){
 					//Angular dependent
-					tabPage.global.jquery();
+				  tabPage.global.jquery();
 				  tabPage.information.jquery();
 				  loadedTabs.information = true;
 				};
 
-				var catReady = function(catId){
+				var catReady = function(catId, callback){
 					AttributeSet.getByCategory(catId).then(function(data){
 						$scope.availableAttributeSets = data;
 						if($scope.formData.AttributeSet && $scope.formData.AttributeSet.AttributeSetId){
@@ -599,40 +603,50 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 							}).indexOf($scope.formData.AttributeSet.AttributeSetId);
 							$scope.formData.AttributeSet = $scope.availableAttributeSets[idx];
 						}
+
+						//Load Global Cat
+						GlobalCategory.getAll().then(function(data) {
+							$scope.availableGlobalCategories = Category.transformNestedSetToUITree(data);
+							$scope.formData.GlobalCategories[0] = Category.findByCatId(catId, $scope.availableGlobalCategories);
+
+							callback();
+						});
+
 					});
-					//Load Global Cat
-					GlobalCategory.getAll().then(function(data) {
-						$scope.availableGlobalCategories = Category.transformNestedSetToUITree(data);
-						$scope.formData.GlobalCategories[0] = Category.findByCatId(catId, $scope.availableGlobalCategories);
-					});
+					
 
 				};
 
 				if("productId" in viewBag){
 					//EDIT MODE
+
 					var productId = viewBag.productId;
 					Product.getOne(productId).then(function(ivFormData){
 						var gcat = ivFormData.GlobalCategory;
 						console.log("formData (INVERSE)", ivFormData);
 						$scope.formData = productProxy.inverseProductTransform(ivFormData);
 						console.log("formData", $scope.formData);
-						catReady(gcat);
 
-						//Load Brand
-						Brand.getOne($scope.formData.Brand.BrandId).then(function(data){
-							$scope.formData.Brand = data;
-							delete $scope.formData.Brand.$id;
-							$scope.formData.Brand.id = $scope.formData.Brand.BrandId;
-							angularReady();
+						catReady(gcat, function(){
+							//Load Brand
+							Brand.getOne($scope.formData.Brand.BrandId).then(function(data){
+								$scope.formData.Brand = data;
+								delete $scope.formData.Brand.$id;
+								$scope.formData.Brand.id = $scope.formData.Brand.BrandId;
+								//MUST HAPPEN LAST
+								angularReady();
+							});
 						});
+
+						//auxiliary object (non-persist)
+						//$scope.attributeOptions[0] = $scope.formData.Variants[0].FirstAttribute;
 
 					});
 				}
 
 				if("catId" in viewBag){
 					//ADD MODE
-					catReady(viewBag.catId);
-					angularReady();
+					catReady(viewBag.catId, angularReady);
 				}
 
 				//Load Local Cat
@@ -1566,11 +1580,13 @@ module.exports = ['util', function (util) {
 			return m.Url;
 		},
 		Variants: function(m){
+			console.log(m);
 			m.hash = util.variant.hash(m.FirstAttribute, m.SecondAttribute);
 			m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
 			return m;
 		}
 	};
+
 
 	try{
 		invFd.Variants = invFd.Variants.map(invMapper.Variants);
@@ -1605,7 +1621,7 @@ module.exports = ['util', function (util) {
 	delete invFd.MasterVariant.Images360;
 
 	invFd.MasterVariant.WeightUnit = invFd.MasterVariant.WeightUnit.trim();
-	invFd.MasterVariant.DimensionUnit = invFd.MasterVariant.WeightUnit.trim();
+	invFd.MasterVariant.DimensionUnit = invFd.MasterVariant.DimensionUnit.trim();
 
 
 	invFd.Keywords = invFd.Keywords.split(",");
@@ -1694,11 +1710,13 @@ module.exports = ['storage', function (storage) {
     service.variant = {};
 
     service.variant.hash = function(a,b){
-	return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + b.AttributeId + "-" + b.ValueEn.trim());
+        if(!("ValueEn" in a)) return "[API Error]";
+	    return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + b.AttributeId + "-" + b.ValueEn.trim());
     };
 
     service.variant.toString = function(a,b){
-	return (a.ValueEn.trim() + ", " + b.ValueEn.trim());	
+        if(!("ValueEn" in a)) return "[API Error]";
+	    return (a.ValueEn.trim() + ", " + b.ValueEn.trim());	
     };
 
     /**

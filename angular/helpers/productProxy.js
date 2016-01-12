@@ -166,11 +166,13 @@ module.exports = ['util', function (util) {
 			return m.Url;
 		},
 		Variants: function(m){
+			console.log(m);
 			m.hash = util.variant.hash(m.FirstAttribute, m.SecondAttribute);
 			m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
 			return m;
 		}
 	};
+
 
 	try{
 		invFd.Variants = invFd.Variants.map(invMapper.Variants);

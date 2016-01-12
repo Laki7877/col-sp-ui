@@ -16,13 +16,13 @@ if (isset($size)) $inputSize = "width-field-$size";
 			<?php if(isset($multiple)): ?>
 			multiple="multiple"
 			<?php endif; ?>
-			 class="form-control select2-init-normal <?= $input_class; ?>" <?= $input_attrs ?> >
-
+			 class="form-control select2-init-simple <?= $input_class; ?>" <?= $input_attrs ?> >
 			<?php foreach($options as $opt): ?>
 			<option><?php echo $opt; ?></option>
 			<?php endforeach; ?>
 
 			</select>
+
 		</div>
 	</div>
 	<? if (!empty($tooltip)): ?>

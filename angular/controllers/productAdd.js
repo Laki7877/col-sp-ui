@@ -5,7 +5,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	'use strict';
 
 	$scope.preview = function(){
-		console.log('formData', $scope.formData);
+		console.log('Form Data', $scope.formData);
 		var apiRequest = productProxy.productTransform($scope.formData);
 		console.log('API JSON', JSON.stringify(apiRequest));
 
@@ -13,9 +13,10 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 	$scope.publish = function(isValid){
 		if(!isValid) return;
-		console.log('formData', $scope.formData);
+		console.log('Form Data', $scope.formData);
 		var apiRequest = productProxy.productTransform($scope.formData);
 		console.log('API JSON', JSON.stringify(apiRequest));
+		//Save
 		Product.publish(apiRequest, $scope.Status).then(function(){
 			console.log("Save successful");
 		}, function(er){
@@ -56,14 +57,13 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 				format: "LL"
 			}).on('dp.change', function(sd){
 				$scope.$apply();
-				console.log($(".input-icon-calendar").val());
-				console.log("FDA", $scope.formData);
 			});
 
 			$("body").tooltip({ selector: '[data-toggle=tooltip]' });
 
 			$.fn.select2.defaults.set("tokenSeparators", [","]);
 
+			console.log($scope.formData, "at global jquery");
 			$(".select2-init-simple").select2();
 			$(".select2-init-track").on("change", function(ev){
 				$scope.$digest();
@@ -73,15 +73,18 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		angular: function() {
 
 			$scope.init = function(viewBag) {
+
+				//TODO: Refactor 
+
 				var shopId = 1;
 				var angularReady = function(){
 					//Angular dependent
-					tabPage.global.jquery();
+				  tabPage.global.jquery();
 				  tabPage.information.jquery();
 				  loadedTabs.information = true;
 				};
 
-				var catReady = function(catId){
+				var catReady = function(catId, callback){
 					AttributeSet.getByCategory(catId).then(function(data){
 						$scope.availableAttributeSets = data;
 						if($scope.formData.AttributeSet && $scope.formData.AttributeSet.AttributeSetId){
@@ -91,40 +94,50 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 							}).indexOf($scope.formData.AttributeSet.AttributeSetId);
 							$scope.formData.AttributeSet = $scope.availableAttributeSets[idx];
 						}
+
+						//Load Global Cat
+						GlobalCategory.getAll().then(function(data) {
+							$scope.availableGlobalCategories = Category.transformNestedSetToUITree(data);
+							$scope.formData.GlobalCategories[0] = Category.findByCatId(catId, $scope.availableGlobalCategories);
+
+							callback();
+						});
+
 					});
-					//Load Global Cat
-					GlobalCategory.getAll().then(function(data) {
-						$scope.availableGlobalCategories = Category.transformNestedSetToUITree(data);
-						$scope.formData.GlobalCategories[0] = Category.findByCatId(catId, $scope.availableGlobalCategories);
-					});
+					
 
 				};
 
 				if("productId" in viewBag){
 					//EDIT MODE
+
 					var productId = viewBag.productId;
 					Product.getOne(productId).then(function(ivFormData){
 						var gcat = ivFormData.GlobalCategory;
 						console.log("formData (INVERSE)", ivFormData);
 						$scope.formData = productProxy.inverseProductTransform(ivFormData);
 						console.log("formData", $scope.formData);
-						catReady(gcat);
 
-						//Load Brand
-						Brand.getOne($scope.formData.Brand.BrandId).then(function(data){
-							$scope.formData.Brand = data;
-							delete $scope.formData.Brand.$id;
-							$scope.formData.Brand.id = $scope.formData.Brand.BrandId;
-							angularReady();
+						catReady(gcat, function(){
+							//Load Brand
+							Brand.getOne($scope.formData.Brand.BrandId).then(function(data){
+								$scope.formData.Brand = data;
+								delete $scope.formData.Brand.$id;
+								$scope.formData.Brand.id = $scope.formData.Brand.BrandId;
+								//MUST HAPPEN LAST
+								angularReady();
+							});
 						});
+
+						//auxiliary object (non-persist)
+						//$scope.attributeOptions[0] = $scope.formData.Variants[0].FirstAttribute;
 
 					});
 				}
 
 				if("catId" in viewBag){
 					//ADD MODE
-					catReady(viewBag.catId);
-					angularReady();
+					catReady(viewBag.catId, angularReady);
 				}
 
 				//Load Local Cat
@@ -257,6 +270,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			});
 		}
 	}
+	
 	tabPage.variation = {
 		initSelect2: function(index){
 			var isListInput	= false;

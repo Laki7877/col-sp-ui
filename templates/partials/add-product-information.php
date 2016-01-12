@@ -58,8 +58,8 @@
 					<? $this->insert('components/forms/dropdown-with-label',
 						["label" => "Attribute Set",
 						"ng_options"=> "i as _attrEnTh(i) for i in availableAttributeSets",
-					        "input_class" => "select2-init-simple select2-init-track",
-				  		 "ng_model"=> "formData.AttributeSet"
+					    "input_class" => "select2-init-simple select2-init-track",
+				  		"ng_model"=> "formData.AttributeSet"
 						])
 					?>
 
@@ -85,12 +85,12 @@
 					<? $this->insert('components/forms/dropdown-with-label',
 					["label" => "Search Tag",
 				       			"ng_model" => "formData.Keywords",
-							"tooltip" => "This is a tooltip text",
-							"input_class" => "select2-init-simple select2-init-track",
-							"size" => "large",
-							"input_attrs" =>
-							'data-tags="true" data-placeholder="Separated by a comma" multiple="multiple"',
-							"options" => []]) ?>
+							    "tooltip" => "This is a tooltip text",
+							    "input_class" => "select2-init-simple select2-init-track",
+						     	"size" => "large",
+						    	"input_attrs" =>
+						    	'data-tags="true" data-placeholder="Separated by a comma" multiple="multiple"',
+						    	"options" => []]) ?>
 					<? $this->insert('components/forms/tags-with-label', ["label" => "Suggested Search Tag"]) ?>
 				</div>
 			</div>
