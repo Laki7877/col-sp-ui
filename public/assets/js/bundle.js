@@ -1130,9 +1130,10 @@ module.exports = ['util', function (util) {
 	clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
 	clean.MasterVariant.Images360 = fd.MasterImages360.map(mapper.Images);
 	clean.MasterVariant.Images = fd.MasterImages.map(mapper.Images);
-	clean.MasterVariant.StockType = fd.StockType;
-	clean.MasterVariant.Quantity = fd.Quantity || 0;
- 	clean.MasterVariant.SafetyStock = fd.SafetyStock || 0;
+
+	//clean.MasterVariant.StockType = fd.StockType;
+	//clean.MasterVariant.Quantity = fd.Quantity || 0;
+ 	//clean.MasterVariant.SafetyStock = fd.SafetyStock || 0;
 
 	try{
 		if(hasVariants){
@@ -1141,7 +1142,7 @@ module.exports = ['util', function (util) {
 			//Find DefaultVariant
 			var targetHash = fd.DefaultVariant.hash;
 			clean.Variants.forEach(function(vari, index){
-				vari.SafetyStock = 0; //Placeholder
+				vari.SafetyStock = 0; //Placeholder, no UI yet
 				vari.StockType = 0;  //Placeholder
 				vari.DefaultVariant = false;
 				if(vari.hash == targetHash){
@@ -1184,7 +1185,6 @@ module.exports = ['util', function (util) {
 	invFd.LocalCategories.unshift({
 		CategoryId: invFd.LocalCategory
 	});
-
 	if(invFd.MasterVariant.VideoLinks) invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
 	invFd.Variants.forEach(function(variant, index){
 		variant.VideoLinks = variant.VideoLinks.map(invMapper.VideoLinks);

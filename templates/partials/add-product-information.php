@@ -98,9 +98,9 @@
 				<div class="form-section-header"><h2>Inventory</h2></div>
 				<div class="form-section-content">
 					<? $this->insert('components/forms/input-text-with-label',
-						["label" => "Inventory Amount", "ng_model" => "formData.Quantity", "hint" => "Example: 100"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Safety Stock Amount", "ng_model" => "formData.SafetyStock", "hint" => "Example: 10", "tooltip" => "This is a tooltip text"]) ?>
-					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Stock Type", "ng_model" => "formData.StockType", "options" => ["Stock", "Pre-Order"]]) ?>
+						["label" => "Inventory Amount", "ng_model" => "formData.MasterVariant.Quantity", "hint" => "Example: 100"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Safety Stock Amount", "ng_model" => "formData.MasterVariant.SafetyStock", "hint" => "Example: 10", "tooltip" => "This is a tooltip text"]) ?>
+					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Stock Type", "ng_model" => "formData.MasterVariant.StockType", "options" => ["Stock", "Pre-Order"]]) ?>
 				</div>
 			</div>
 			<div class="form-section">
