@@ -35,7 +35,7 @@
         <script src="/assets/libs/datepicker/js/bootstrap-datetimepicker.min.js"></script>
         <link rel="stylesheet" type="text/css" href="/assets/libs/datepicker/css/bootstrap-datetimepicker.min.css">
 
-        <script src="/assets/libs/select2/js/select2.min.js"></script>
+        <script src="/assets/libs/select2/js/select2.js"></script>
         <link rel="stylesheet" type="text/css" href="/assets/libs/select2/css/select2.min.css">
         
         <script>

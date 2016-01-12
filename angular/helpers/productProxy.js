@@ -33,6 +33,7 @@ module.exports = ['util', function (util) {
     		//Mapper functions
     		var mapper = {
     			Images: function(image, pos){
+					if(image.$id) delete image.$id;
     					image.position = pos;
     					return image;
     			},
@@ -146,7 +147,6 @@ module.exports = ['util', function (util) {
 					clean.Variants[index].DefaultVariant = true;
 				}
 			});
-
 		}
 	}catch(ex){
 		console.warn("Variant Distribute", ex);
@@ -172,7 +172,11 @@ module.exports = ['util', function (util) {
 		}
 	};
 
-	//invFd.Variants = invFd.Variants.map(invMapper.Variants);
+	try{
+		invFd.Variants = invFd.Variants.map(invMapper.Variants);
+	}catch(er){
+		console.warn("Variants Map Error", er);
+	}
 
 	var MasterAttribute = {};
 	invFd.MasterAttribute.forEach(function(ma){

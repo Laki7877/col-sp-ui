@@ -169,9 +169,9 @@ module.exports = ['config', function(config) {
                 var head = search.pop();
                 if(head.CategoryId == catId)
                     return head;
-                if(angular.isDefined(head.children)) {
-                    for (var j in head.children) {
-                        search.push(head.children[j]);
+                if(angular.isDefined(head.nodes)) {
+                    for (var j in head.nodes) {
+                        search.push(head.nodes[j]);
                     }
                 }
             }

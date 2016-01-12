@@ -1,14 +1,21 @@
 var angular = require('angular');
 
-module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', 'productProxy',
-	function($scope, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, productProxy){
+module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', 'productProxy', 'BrandAdapter',
+	function($scope, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, productProxy, brandAdapter){
 	'use strict';
 
-	$scope.publish = function(isValid){
+	$scope.preview = function(){
 		console.log('formData', $scope.formData);
 		var apiRequest = productProxy.productTransform($scope.formData);
-		console.log('apiRequest', apiRequest);
-		console.log('aJSON', JSON.stringify(apiRequest));
+		console.log('API JSON', JSON.stringify(apiRequest));
+
+	};
+
+	$scope.publish = function(isValid){
+		if(!isValid) return;
+		console.log('formData', $scope.formData);
+		var apiRequest = productProxy.productTransform($scope.formData);
+		console.log('API JSON', JSON.stringify(apiRequest));
 		Product.publish(apiRequest, $scope.Status).then(function(){
 			console.log("Save successful");
 		}, function(er){
@@ -35,6 +42,8 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	 * All Tabs
 	 * Seperated by jquery parts and angular parts
 	 */
+	//TODO: Please don't separate by jquery part and angular part
+	//Because some jquery part has angular dependencies
 	var tabPage = {
 
 	};
@@ -42,9 +51,9 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		jquery: function(){
 
 			//TODO: this wont play well with angular, not sure why
-			//maybe use this: http://dalelotts.github.io/angular-bootstrap-datetimepicker/ 
+			//maybe use this: http://dalelotts.github.io/angular-bootstrap-datetimepicker/
 			$('.input-icon-calendar').datetimepicker({
-				format: "LL"	
+				format: "LL"
 			}).on('dp.change', function(sd){
 				$scope.$apply();
 				console.log($(".input-icon-calendar").val());
@@ -62,15 +71,26 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 		},
 		angular: function() {
+
 			$scope.init = function(viewBag) {
-		
 				var shopId = 1;
-				var productId;
+				var angularReady = function(){
+					//Angular dependent
+					tabPage.global.jquery();
+				  tabPage.information.jquery();
+				  loadedTabs.information = true;
+				};
 
 				var catReady = function(catId){
-					console.log("Cat Ready", catId);
 					AttributeSet.getByCategory(catId).then(function(data){
 						$scope.availableAttributeSets = data;
+						if($scope.formData.AttributeSet && $scope.formData.AttributeSet.AttributeSetId){
+							//Find attribute set and assign it as object
+							var idx = $scope.availableAttributeSets.map(function(o){
+								return o.AttributeSetId
+							}).indexOf($scope.formData.AttributeSet.AttributeSetId);
+							$scope.formData.AttributeSet = $scope.availableAttributeSets[idx];
+						}
 					});
 					//Load Global Cat
 					GlobalCategory.getAll().then(function(data) {
@@ -80,24 +100,33 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 				};
 
-				console.log(viewBag);
 				if("productId" in viewBag){
-					productId = viewBag.productId;
+					//EDIT MODE
+					var productId = viewBag.productId;
 					Product.getOne(productId).then(function(ivFormData){
 						var gcat = ivFormData.GlobalCategory;
-						console.log("formData^-1", ivFormData);
+						console.log("formData (INVERSE)", ivFormData);
 						$scope.formData = productProxy.inverseProductTransform(ivFormData);
 						console.log("formData", $scope.formData);
 						catReady(gcat);
-					});	
-				}	
+
+						//Load Brand
+						Brand.getOne($scope.formData.Brand.BrandId).then(function(data){
+							$scope.formData.Brand = data;
+							delete $scope.formData.Brand.$id;
+							$scope.formData.Brand.id = $scope.formData.Brand.BrandId;
+							angularReady();
+						});
+
+					});
+				}
 
 				if("catId" in viewBag){
-					var catId = viewBag.catId;
-					catReady(catId);
+					//ADD MODE
+					catReady(viewBag.catId);
+					angularReady();
 				}
-				
-			
+
 				//Load Local Cat
 				Shop.getLocalCategories(shopId).then(function(data) {
 					$scope.availableLocalCategories = Category.transformNestedSetToUITree(data);
@@ -115,52 +144,37 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			$scope._isListInput = util.isListDataType;
 		}
 	};
+
 	tabPage.information = {
 		jquery: function(){
+			brandAdapter.load($scope.formData);
 			$(".select2-init-brand").select2({
+				dataAdapter:  $.fn.select2.amd.require('select2/data/brandAdapter'),
 				templateResult: function(d){
 					if(!d || !d.BrandNameEn) return "Loading..";
 					return d.BrandNameEn + " (" + d.BrandNameTh + ")";
 				},
 				templateSelection: function(d){
-					if(d.BrandNameEn == undefined) return null;
+					if(!d || !d.BrandNameEn) return "Loading..";
 					return d.BrandNameEn + " (" + d.BrandNameTh + ")";
-				},
-				ajax: {
-					processResults: function (data) {
-						var mapped = data.map(function(obj){
-							obj.id = obj.BrandId;
-							return obj;
-						});
-
-						console.log(mapped);
-						return {results: mapped};
-					},
-					transport: function(params, success, failure){
-						//Call Brand Service
-						return Brand.getAll(params.data.q).then(success, failure);
-					}
 				}
 			});
 		},
-		angular: function() {
-
-		}
+		angular: function() {}
 	};
+
 	tabPage.images = {
 		jquery: function() {
 
 		},
 		angular: function() {
-			/**
-			 * PRODUCT IMAGE
-			 */
-			$scope.uploader = ImageService.getUploader('/ProductImages');
-			$scope.uploader360 = ImageService.getUploader('/ProductImages', {
-				queueLimit: 60
-			});
 
-			//Assign uploader images
+		    $scope.uploader = ImageService.getUploader('/ProductImages');
+		    $scope.uploader360 = ImageService.getUploader('/ProductImages', {
+			queueLimit: 60
+		    });
+
+		    //Assign uploader images
 		    ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages);
 		    ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360);
 
@@ -401,13 +415,6 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 	//init global jquery
 	$(document).on('ready',function(){
-		tabPage.global.jquery();
-		//init first page
-		//TODO: This may not be information page
-		//it depends on the link
-		var pageId = 'information';
-	    tabPage[pageId].jquery();
-	    loadedTabs[pageId] = true;
 	});
 
 	//init tab jquery
