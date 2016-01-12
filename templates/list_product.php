@@ -41,37 +41,35 @@
           </tr>
         </thead>
         <tbody>
-	  <tr ng-if="notReady"><td colspan="9"><center>Loading..</center></td></tr>
-	  <tr ng-repeat="row in productList" >
-            <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input" ng-model="row.checked">
-            </td>
-            <td class="display-column">
-              <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
-            </td>
-            <td>{{ row.ProductNameEn }}</td>
-            <td class="price-column">{{ row.SalePrice | currency: ' ' : 2 }}</td>
-            <td class="info-column">
-              <i class="fa fa-check color-green icon-size-18px"></i>
-            </td>
-            <td class="image-column">
-              <i class="fa fa-check color-green icon-size-18px"></i>
-            </td>
-            <td class="status-column">
-              <span class="color-red">
-                <i class="fa fa-ban"></i>
-                Not Approved
-              </span>
-            </td>
-            <td class="live-column" ng-if="showOnOffStatus">
-              <i class="fa fa-circle color-green"></i>
-            </td>
-            <td class="visible-column">
-              <i class="fa fa-eye-slash color-grey eye-icon"></i>
-            </td>
-            <td class="modified-column">
-              14/12/15
-            </td>
+      	  <tr ng-if="notReady"><td colspan="9"><center>Loading..</center></td></tr>
+      	  <tr ng-repeat="row in productList" >
+                  <td class="checkbox-column">
+                    <input type="checkbox" aria-label="Checkbox for following text input" ng-model="row.checked">
+                  </td>
+                  <td class="display-column">
+                    <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
+                  </td>
+                  <td>{{ row.ProductNameEn }}</td>
+                  <td class="price-column">{{ row.SalePrice | currency: ' ' : 2 }}</td>
+                  <td class="info-column">
+                    <i class="fa fa-check color-green icon-size-18px"></i>
+                  </td>
+                  <td class="image-column">
+                    <i class="fa fa-check color-green icon-size-18px"></i>
+                  </td>
+                  <td class="status-column">
+                    <span class="color-red">
+                      <i class="fa fa-ban"></i>
+                      Not Approved
+                    </span>
+                  </td>
+                  <td class="live-column" ng-if="showOnOffStatus">
+                    <i class="fa fa-circle color-green"></i>
+                  </td>
+                  <td class="visible-column">
+                    <i class="fa fa-eye-slash color-grey eye-icon"></i>
+                  </td>
+                  <td class="modified-column">{{ row.UpdatedDt | date:'shortDate':'+700' }}</td>
           </tr>
         </tbody>
       </table>

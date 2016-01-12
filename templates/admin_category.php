@@ -13,7 +13,7 @@
 		        <button type="button" class="btn-white btn margin-right-10" data-toggle="modal" data-target="#modal-category-detail" ng-click="$emit('openEditGlobalCategory')">
 		          <span class="">Add New Category</span>
 		        </button>
-		        <button type="button" class="btn-blue btn btn-width-xl">
+		        <button type="button" class="btn-blue btn btn-width-xl" ng-click="$emit('saveGlobalCategory')">
 		          <span class="">Save Changes</span>
 		        </button>
 		    </span>
@@ -64,65 +64,65 @@
 										</div>
 										<div class="form-section-content modal-custom">
 						                  <input type="text"
-							                    name="NameTh"
-							                    class="form-control"
-							                    autocomplete="off"
-							                    ng-class="{ 'has-error' : editingForm.NameTh.$invalid }"
-							                    ng-model="editingCategory.NameTh"
-							                    ng-pattern="/^[a-zA-Z0-9ก-๙ ]+$/" 
-							                    ng-template="common/input/text" 
-							                    ng-template-options="{
-							                      'label': 'Category Name (Thai)',
-							                      'labelClass': 'required',
-							                      'error' : {
-							                        'message': 'Cannot use special characters such as ! # $ % ^ &',
-							                        'show' : editingForm.NameTh.$invalid
-							                      }
-							                    }"
-							                    required
-							                  />
-							                  <input type="text" 
-							                    name="NameEn"
-							                    class="form-control"
-							                    autocomplete="off"
-							                    ng-class="{ 'has-error' : editingForm.NameEn.$invalid }"
-							                    ng-model="editingCategory.NameEn" 
-							                    ng-pattern="/^[a-zA-Z0-9 ]+$/" 
-							                    ng-template="common/input/text" 
-							                    ng-template-options="{
-							                      'label': 'Category Name (Eng)',
-							                      'labelClass': 'required',
-							                      'error' : {
-							                        'message': 'Cannot use special characters such as ! # $ % ^ &',
-							                        'show' : editingForm.NameEn.$invalid
-							                      }
-							                    }"
-							                    required
-							                  />
-							                  <input type="text" 
-							                    name="UrlKeyEn"
-							                    class="form-control"
-							                    ng-model="editingCategory.UrlKeyEn"
-							                    ng-template="common/input/text" 
-							                    ng-template-options="{
-							                      'label': 'Url (Eng)'
-							                    }"
-							                  />
-							                  <input type="text" 
-							                    name="Commission"
-							                    class="form-control" 
-							                    ng-pattern="/^[0-9]+$/" 
-							                    ng-model="editingCategory.Commission"
-							                    ng-template="common/input/text" 
-							                    ng-template-options="{
-							                      'label': 'Commission (%)',
-							                      'inputSize': 'small',
-							                      'error' : {
-							                        'message': 'Must be a number',
-							                        'show' : editingForm.Commission.$invalid
-							                      }
-							                    }"
-							                  />
+						                    name="NameTh"
+						                    class="form-control"
+						                    autocomplete="off"
+						                    ng-class="{ 'has-error' : editingForm.NameTh.$invalid && editingForm.NameTh.$dirty }"
+						                    ng-model="editingCategory.NameTh"
+						                    ng-pattern="/^[a-zA-Z0-9ก-๙ ]+$/" 
+						                    ng-template="common/input/text" 
+						                    ng-template-options="{
+						                      'label': 'Category Name (Thai)',
+						                      'labelClass': 'required',
+						                      'error' : {
+						                        'message': 'Cannot use special characters such as ! # $ % ^ &',
+						                        'show' : editingForm.NameTh.$invalid && editingForm.NameTh.$dirty
+						                      }
+						                    }"
+						                    required
+						                  />
+						                  <input type="text" 
+						                    name="NameEn"
+						                    class="form-control"
+						                    autocomplete="off"
+						                    ng-class="{ 'has-error' : editingForm.NameEn.$invalid && editingForm.NameEn.$dirty }"
+						                    ng-model="editingCategory.NameEn" 
+						                    ng-pattern="/^[a-zA-Z0-9 ]+$/" 
+						                    ng-template="common/input/text" 
+						                    ng-template-options="{
+						                      'label': 'Category Name (Eng)',
+						                      'labelClass': 'required',
+						                      'error' : {
+						                        'message': 'Cannot use special characters such as ! # $ % ^ &',
+						                        'show' : editingForm.NameEn.$invalid && editingForm.NameEn.$dirty
+						                      }
+						                    }"
+						                    required
+						                  />
+						                  <input type="text" 
+						                    name="UrlKeyEn"
+						                    class="form-control"
+						                    ng-model="editingCategory.UrlKeyEn"
+						                    ng-template="common/input/text" 
+						                    ng-template-options="{
+						                      'label': 'Url (Eng)'
+						                    }"
+						                  />
+						                  <input type="text" 
+						                    name="Commission"
+						                    class="form-control" 
+						                    ng-pattern="/^[0-9.]+$/" 
+						                    ng-model="editingCategory.Commission"
+						                    ng-template="common/input/text" 
+						                    ng-template-options="{
+						                      'label': 'Commission (%)',
+						                      'inputSize': 'small',
+						                      'error' : {
+						                        'message': 'Must be a number',
+						                        'show' : editingForm.Commission.$invalid && editingForm.Commission.$dirty
+						                      }
+						                    }"
+						                  />
 										</div>
 									</div>
 									<div class="form-section">
@@ -130,66 +130,7 @@
 											<h2>Map Attribute Set</h2>
 										</div>
 										<div class="form-section-content modal-custom">
-											<div class="tradable-list">
-	              
-								              <div class="left-column">
-								                <div class="search-section section-search">
-								                  <div class="input-group">
-								                    <input type="text" class="form-control input-search-icon search-box" placeholder="Search Attribute Set" aria-describedby="basic-addon2">
-								                    <span class="input-group-btn">
-								                      <button class="btn btn-white" type="button">Search</button>
-								                    </span>
-								                  </div>
-								                </div>
-								                <div class="clickable-list">
-								                  <ul class="content-column">
-								                    <li>Attribute Set A</li>
-								                    <li class="active">Attribute Set B</li>
-								                    <li>Attribute Set C</li>
-								                    <li>Attribute Set D</li>
-								                    <li>Attribute Set E</li>
-								                    <li>Attribute Set F</li>
-								                    <li>Attribute Set G</li>
-								                    <li>Attribute Set H</li>
-								                    <li>Attribute Set J</li>
-								                    <li>Attribute Set K</li>
-								                    <li>Attribute Set G</li>
-								                    <li>Attribute Set H</li>
-								                    <li>Attribute Set J</li>
-								                  </ul>
-								                </div>
-								              </div>
-
-								              <div class="center-column">
-								                <div class="trade-button active"> 
-								                   <i class="fa fa-chevron-right"></i>
-								                </div>
-								                <div class="trade-button"> 
-								                  <i class="fa fa-chevron-left"></i>
-								                </div>
-								              </div>
-
-								              <div class="right-column">
-								                <div class="list-header">
-								                  <span class="column-1">Attribute Set in This Category</span>
-								                </div>
-								                <div class="clickable-list">
-								                  <ul class="content-column">
-								                    <li>
-								                      <span class="column-1">Attribute Set W</span>
-								                    </li>
-								                    <li class="active">
-								                      <span class="column-1">Attribute Set X</span>
-								                    </li>
-								                    <li>
-								                      <span class="column-1">Attribute Set Z</span>
-								                    </li>
-								                    
-								                  </ul>
-								                </div>
-								              </div>
-
-								            </div>  
+											<div nc-tradable-select nc-model="editingCategory.AttributeSets" nc-select-options="attributeSetOptions" nc-options="{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }"></div> 
 										</div>
 									</div>
 						            <div class="form-section">

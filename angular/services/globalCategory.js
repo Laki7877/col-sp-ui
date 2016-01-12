@@ -11,6 +11,7 @@ module.exports = ['common', '$q' , function(common, $q) {
 			Commission: 0,
 			Status: "NA",
 			ProductCount: 0,
+			AttributeSets: [],
 			nodes: []
 		}, extend);
 	}
@@ -31,7 +32,8 @@ module.exports = ['common', '$q' , function(common, $q) {
 	service.upsert = function(data) {
 		return common.makeRequest({
 			method: 'PUT',
-			url: '/GlobalCategories'
+			url: '/GlobalCategories',
+			data: data
 		});
 	}
 

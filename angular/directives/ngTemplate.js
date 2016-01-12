@@ -19,12 +19,13 @@ module.exports = ['$templateCache', '$compile', function($templateCache, $compil
       return templateHTML;
     },
     link: function(scope, element, attrs, ctrl, transclude) {
+      scope.$parent[scope.name] = scope[scope.name];
       angular.forEach(attrs.$attr, function(a) {
         element.removeAttr(a);
       });
       angular.forEach(originalAttr, function(value, a) {
         element.attr(a, value);
-      })
+      });
       element.find('ng-transclude').replaceWith(transclude());
 
       //TODO: add functional ngs to parent form

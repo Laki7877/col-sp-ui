@@ -48,6 +48,7 @@ module.exports = ['$scope', 'LocalCategory', function($scope, LocalCategory) {
 
 	//Populate Data Source
 	var reloadData = function(){
+		$scope.productList = [];
 		$scope.notReady = true;
 		LocalCategory.getProducts($scope.categoryId, $scope.tableParams).then(function(x){
 			$scope.productTotal = x.total;

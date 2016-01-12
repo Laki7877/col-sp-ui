@@ -21,9 +21,9 @@
   </div>
   <div class="search-section section-search">
     <div class="input-group">
-      <input type="text" class="form-control input-search-icon search-box" placeholder="Search" aria-describedby="basic-addon2">
+      <input type="text" class="form-control input-search-icon search-box" ng-model="searchText" placeholder="Search" aria-describedby="basic-addon2">
       <span class="input-group-btn">
-        <button class="btn btn-white" type="button">Search</button>
+        <button class="btn btn-white" ng-click="applySearch()" type="button">Search</button>
       </span>
     </div>
   </div>
