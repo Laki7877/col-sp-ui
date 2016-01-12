@@ -118,10 +118,10 @@ module.exports = ['config', function(config) {
 				columns[parentIndx+1].active = -1;
 			}
 
-			if (angular.isUndefined(item.nodes)) {
+			if (item.nodes.length <= 0) {
 				selectEvent(item);
 			} else {
-                selectEvent(null);
+            		        selectEvent(null);
 			}
 		};
     };

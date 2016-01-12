@@ -361,7 +361,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 					});
 					//Load Global Cat
 					GlobalCategory.getAll().then(function(data) {
-						$scope.availableGlobalCategories = Category.convertDepthArrayToNestedArray(data);
+						$scope.availableGlobalCategories = Category.transformNestedSetToUITree(data);
 						$scope.formData.GlobalCategories[0] = Category.findByCatId(catId, $scope.availableGlobalCategories);
 					});
 
@@ -727,6 +727,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 		console.log($scope.columns);
 		$scope.select = Category.createSelectFunc($scope.columns, function(item) {
 			$scope.selected = item;
+			console.log(item);
 		});
 	});
 }];
@@ -1588,10 +1589,10 @@ module.exports = ['config', function(config) {
 				columns[parentIndx+1].active = -1;
 			}
 
-			if (angular.isUndefined(item.nodes)) {
+			if (item.nodes.length <= 0) {
 				selectEvent(item);
 			} else {
-                selectEvent(null);
+            		        selectEvent(null);
 			}
 		};
     };
@@ -1651,6 +1652,7 @@ module.exports = ['config', function(config) {
 
     return service;
 }];
+
 },{"angular":42}],27:[function(require,module,exports){
 module.exports = ['common', '$q' , function(common, $q) {
 	'use strict';

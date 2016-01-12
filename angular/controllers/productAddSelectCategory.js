@@ -11,6 +11,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 		console.log($scope.columns);
 		$scope.select = Category.createSelectFunc($scope.columns, function(item) {
 			$scope.selected = item;
+			console.log(item);
 		});
 	});
 }];
