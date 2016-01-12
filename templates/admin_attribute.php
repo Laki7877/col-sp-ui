@@ -53,7 +53,7 @@
               <input type="checkbox" aria-label="Checkbox for following text input"> 
             </td>
             <td class="column-text-ellipsis">
-              Size (Shoes)
+              <a href="#">Size (Shoes)</a>
             </td>
             <td>
               Size
@@ -80,7 +80,7 @@
               <input type="checkbox" aria-label="Checkbox for following text input"> 
             </td>
             <td class="column-text-ellipsis">
-              Color
+              <a href="#">Color</a>
             </td>
             <td>
               Color
