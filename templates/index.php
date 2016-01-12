@@ -38,6 +38,7 @@
             </th>
             <th class="live-column"><a class="header-link" href="#"><span>Live</span></a></th>
             <th class="visible-column"><a class="header-link" href="#"><span>Visible</span></a></th>
+            <th class="action-column"><a class="header-link" href="#"><span>Action</span></a></th> 
             <th class="modified-column">
               <a class="header-link" href="#"><span class="active-underline">Modified</span></a>
               <i class="fa fa-caret-up">
@@ -71,6 +72,16 @@
             </td>
             <td class="visible-column">
               <i class="fa fa-eye-slash color-grey eye-icon"></i>
+            </td>
+            <td class="action-column">
+              <span class="text-align-center popover-gear">
+                <i class="fa fa-gear color-dark-grey icon-size-20"></i>
+                <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
+                  <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
+                  <div><a href='#'>View Products</a></div>
+                  <div><a href='#'>Delete</a></div>
+                  "></i>  
+              </span>
             </td>
             <td class="modified-column">
               14/12/15
@@ -106,6 +117,16 @@
             <td class="visible-column">
               <i class="fa fa-eye color-dark-grey eye-icon"></i>
             </td>
+            <td class="action-column">
+              <span class="text-align-center popover-gear">
+                <i class="fa fa-gear color-dark-grey icon-size-20"></i>
+                <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
+                  <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
+                  <div><a href='#'>View Products</a></div>
+                  <div><a href='#'>Delete</a></div>
+                  "></i>  
+              </span>
+            </td>
             <td class="modified-column">
               14/12/15
             </td>
@@ -136,6 +157,16 @@
             </td>
             <td class="visible-column">
               <i class="fa fa-eye color-dark-grey eye-icon"></i>
+            </td>
+            <td class="action-column">
+              <span class="text-align-center popover-gear">
+                <i class="fa fa-gear color-dark-grey icon-size-20"></i>
+                <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
+                  <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
+                  <div><a href='#'>View Products</a></div>
+                  <div><a href='#'>Delete</a></div>
+                  "></i>  
+              </span>
             </td>
             <td class="modified-column">
               09/12/15
@@ -168,6 +199,16 @@
             <td class="visible-column">
               <i class="fa fa-eye color-dark-grey eye-icon"></i>
             </td>
+            <td class="action-column">
+              <span class="text-align-center popover-gear">
+                <i class="fa fa-gear color-dark-grey icon-size-20"></i>
+                <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
+                  <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
+                  <div><a href='#'>View Products</a></div>
+                  <div><a href='#'>Delete</a></div>
+                  "></i>  
+              </span>
+            </td>
             <td class="modified-column">
               09/12/15
             </td>
@@ -197,5 +238,6 @@
         </div>
       </span>
     </div>
-	</div>
+  </div>
+
 <?php $this->stop() ?>

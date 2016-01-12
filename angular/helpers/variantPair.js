@@ -1,14 +1,12 @@
-module.exports = [function () {
+module.exports = ['util', function (util) {
 	
 	//Struct for Variant Pair
 	var VariantPair = function(a,b){
 		//Variant is a cross of First and Second Attribute
 		this.FirstAttribute = a; 
 		this.SecondAttribute = b;
-		this.hash = (a.AttributeId + "-" +
-		 a.ValueEn.trim() + "-" + b.AttributeId +
-		  "-" + b.ValueEn.trim());
-		this.text = (a.ValueEn.trim() + ", " + b.ValueEn.trim());
+		this.hash = util.variant.hash(a,b); 
+		this.text = util.variant.toString(a,b);
 	};
 
 	return VariantPair;

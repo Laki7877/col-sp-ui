@@ -1,11 +1,10 @@
 var angular = require('angular');
 
-module.exports = [function () {
+module.exports = ['util', function (util) {
     'use strict';
     var tra = {};
 
     tra.productTransform = function(fd){
-	//TODO: REmove [A] from [A, B,C] Variant
 	    /*
     		 * - Convert all category into single { CategoryId } Structure
     		 * - Add position to image {} request
@@ -88,16 +87,8 @@ module.exports = [function () {
 
 		try{
 		  clean.Remark = fd.Remark;
-		  clean.Width = fd.Width || 0;
-		  clean.Length = fd.Length || 0;
-		  clean.Height = fd.Height || 0;
-		  clean.WeightUnit = fd.WeightUnit;
-		  clean.Weight = fd.Weight || 0;
-		  clean.DimensionUnit = fd.DimensionUnit;
 		  //TODO: PrepareDay is not getting through
 		  clean.PrepareDay = fd.PrepareDay || 0;
-		  clean.StockType = fd.StockType;
-		  clean.SafetyStock = fd.SafetyStock;
 		  clean.SEO = fd.SEO;
 		  clean.ControlFlags = fd.ControlFlags;
 		  clean.Brand = fd.Brand;
@@ -131,22 +122,15 @@ module.exports = [function () {
 		console.warn("Organizing Related Products", ex);
 	}
 
-	//Move these into Variant Level Property
-	var masterProps = ['ProductNameEn', 'ProductNameTh', 'Sku', 'Upc',
-			    'ValueEn', 'ValueTh', 'Display', 'OriginalPrice', 'SalePrice', 'DescriptionFullTh',
-			    'DescriptionFullEn', 'DescriptionShortEn', 'DescriptionShortTh',
-			    'Quantity', 'Length', 'Height', 'Sku',
-			    'OriginalPrice', 'SalePrice',
-			     'Width', 'Weight', 'WeightUnit', 'DimensionUnit'];
-
-	clean.MasterVariant = {};
-	masterProps.forEach(function(k){
-		clean.MasterVariant[k] = fd[k];
-	});
-
+	//MasterVariant
+	clean.MasterVariant = fd.MasterVariant;
 	clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
 	clean.MasterVariant.Images360 = fd.MasterImages360.map(mapper.Images);
 	clean.MasterVariant.Images = fd.MasterImages.map(mapper.Images);
+
+	//clean.MasterVariant.StockType = fd.StockType;
+	//clean.MasterVariant.Quantity = fd.Quantity || 0;
+ 	//clean.MasterVariant.SafetyStock = fd.SafetyStock || 0;
 
 	try{
 		if(hasVariants){
@@ -155,6 +139,8 @@ module.exports = [function () {
 			//Find DefaultVariant
 			var targetHash = fd.DefaultVariant.hash;
 			clean.Variants.forEach(function(vari, index){
+				vari.SafetyStock = 0; //Placeholder, no UI yet
+				vari.StockType = 0;  //Placeholder
 				vari.DefaultVariant = false;
 				if(vari.hash == targetHash){
 					clean.Variants[index].DefaultVariant = true;
@@ -173,8 +159,51 @@ module.exports = [function () {
 	return clean;
     };
 
-    tra.inverseProductTransform = function(){
+    tra.inverseProductTransform = function(invFd){
 
+	var invMapper ={
+		VideoLinks: function(m){
+			return m.Url;
+		},
+		Variants: function(m){
+			m.hash = util.variant.hash(m.FirstAttribute, m.SecondAttribute);
+			m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
+			return m;
+		}
+	};
+
+	//invFd.Variants = invFd.Variants.map(invMapper.Variants);
+
+	var MasterAttribute = {};
+	invFd.MasterAttribute.forEach(function(ma){
+		MasterAttribute[ma.AttributeId]  = ma.ValueEn;
+	});
+	invFd.MasterAttribute = MasterAttribute;
+	invFd.LocalCategories.unshift({
+		CategoryId: invFd.LocalCategory
+	});
+	if(invFd.MasterVariant.VideoLinks) invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
+	invFd.Variants.forEach(function(variant, index){
+		variant.VideoLinks = variant.VideoLinks.map(invMapper.VideoLinks);
+	});
+
+	//TODO: This should fetch entire Object
+	invFd.GlobalCategories.unshift({
+		CategoryId: invFd.GlobalCategory
+	});
+	delete invFd.GlobalCategory;
+	delete invFd.LocalCategory;
+
+	//TODO: Just change ngmodel to bind to MasterVariant.MasterImages Directly
+	invFd.MasterImages = invFd.MasterVariant.Images;
+	delete invFd.MasterVariant.Images;
+	invFd.MasterImages360 = invFd.MasterVariant.Images360;
+	delete invFd.MasterVariant.Images360;
+
+	invFd.Keywords = invFd.Keywords.split(",");
+	if(invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; //TODO: Hardcode
+
+    	return invFd;	    
     };
 
     return tra;

@@ -4,6 +4,16 @@ module.exports = ['storage', function (storage) {
     'use strict';
     var service = {};
 
+    service.variant = {};
+
+    service.variant.hash = function(a,b){
+	return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + b.AttributeId + "-" + b.ValueEn.trim());
+    };
+
+    service.variant.toString = function(a,b){
+	return (a.ValueEn.trim() + ", " + b.ValueEn.trim());	
+    };
+
     /**
      * Function to check if any user is currently logged in
      */

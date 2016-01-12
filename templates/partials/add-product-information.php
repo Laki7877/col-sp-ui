@@ -8,22 +8,23 @@
 				<div class="form-section-content">
 					<? $this->insert('components/forms/input-text-with-label',
 						["label" => "Product Name (Thai)", "ng_model" =>
-						"formData.ProductNameTh",
+						"formData.MasterVariant.ProductNameTh",
 						"label_class" => "required",
 						"required" => true,
 						"size" => "large"]) ?>
 					<? $this->insert('components/forms/input-text-with-label',
 						["label" => "Product Name (English)",
-						"ng_model" => "formData.ProductNameEn",
+						"ng_model" => "formData.MasterVariant.ProductNameEn",
 						"label_class" => "required",
 						"required" => true,
 						"size" => "large"]) ?>
 					<? $this->insert('components/forms/input-text-with-label',
-						["label" => "SKU", "ng_model" => "formData.Sku",
+						["label" => "SKU", 
+						"ng_model" => "formData.MasterVariant.Sku",
 						"required" => true,
 						"label_class" => "required", "size" => "large"]) ?>
 					<? $this->insert('components/forms/input-text-with-label',
-						["label" => "UPC", "ng_model" => "formData.Upc",
+						["label" => "UPC", "ng_model" => "formData.MasterVariant.Upc",
 						"tooltip" => "The Universal Product Code (UPC) is a barcode symbology (i.e., a specific type of barcode) that is widely used in the USAX.", "size" => "large"]) ?>
 					<? $this->insert('components/forms/dropdown-with-label',
 						["label" => "Brand Name",
@@ -36,18 +37,18 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Price</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/input-text-with-label', ["ng_model" => "formData.OriginalPrice", "required" => true, "label" => "Original Price", "hint" => "Example: 200 or 125.50", "label_class" => "required"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["ng_model" => "formData.SalePrice", "label" => "Sale Price", "hint" => "Example: 100", "loading" => "load"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["ng_model" => "formData.MasterVariant.OriginalPrice", "required" => true, "label" => "Original Price", "hint" => "Example: 200 or 125.50", "label_class" => "required"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["ng_model" => "formData.MasterVariant.SalePrice", "label" => "Sale Price", "hint" => "Example: 100", "loading" => "load"]) ?>
 				</div>
 			</div>
 			<div class="form-section">
 				<div class="form-section-header"><h2>Description</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (Thai)", "ng_model" => "formData.DescriptionFullTh", "size" => "xxl"]) ?>
-					<? $this->insert('components/forms/textarea-with-label', ["label" => "Short Description (Thai)", "ng_model" => "formData.DescriptionShortTh",
+					<? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (Thai)", "ng_model" => "formData.MasterVariant.DescriptionFullTh", "size" => "xxl"]) ?>
+					<? $this->insert('components/forms/textarea-with-label', ["label" => "Short Description (Thai)", "ng_model" => "formData.MasterVariant.DescriptionShortTh",
 							"tooltip" => "This is a tooltip text", "size" => "xxl", "form_group_class" => "margin-top-30"]) ?>
-					<? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (English)", "ng_model" => "formData.DescriptionFullEn", "size" => "xxl", "form_group_class" => "margin-top-40"]) ?>
-					<? $this->insert('components/forms/textarea-with-label', ["label" => "Short Description (English)", "ng_model" => "formData.DescriptionShortEn",
+					<? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (English)", "ng_model" => "formData.MasterVariant.DescriptionFullEn", "size" => "xxl", "form_group_class" => "margin-top-40"]) ?>
+					<? $this->insert('components/forms/textarea-with-label', ["label" => "Short Description (English)", "ng_model" => "formData.MasterVariant.DescriptionShortEn",
 						"tooltip" => "This is a tooltip text", "size" => "xxl", "form_group_class" => "margin-top-30"]) ?>
 				</div>
 			</div>
@@ -97,9 +98,9 @@
 				<div class="form-section-header"><h2>Inventory</h2></div>
 				<div class="form-section-content">
 					<? $this->insert('components/forms/input-text-with-label',
-						["label" => "Inventory Amount", "ng_model" => "formData.Quantity", "hint" => "Example: 100"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Safety Stock Amount", "ng_model" => "formData.SafetyStock", "hint" => "Example: 10", "tooltip" => "This is a tooltip text"]) ?>
-					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Stock Type", "ng_model" => "formData.StockType", "options" => ["Stock", "Pre-Order"]]) ?>
+						["label" => "Inventory Amount", "ng_model" => "formData.MasterVariant.Quantity", "hint" => "Example: 100"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Safety Stock Amount", "ng_model" => "formData.MasterVariant.SafetyStock", "hint" => "Example: 10", "tooltip" => "This is a tooltip text"]) ?>
+					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Stock Type", "ng_model" => "formData.MasterVariant.StockType", "options" => ["Stock", "Pre-Order"]]) ?>
 				</div>
 			</div>
 			<div class="form-section">
@@ -113,12 +114,15 @@
 					"label_class" => "required", "unit" => "Day",
 					"form_group_class" => "margin-top-30"]) ?>
 					<? $this->insert('components/forms/multiple-input-with-label', ["label" => "Package Dimension", "label_class" => "required",
-					"ng_model_width"=>"formData.Width",
-					"ng_model_height"=>"formData.Height",
-					"ng_model_unit" => "formData.DimensionUnit",
-					"ng_model_length"=>"formData.Length",
+					"ng_model_width"=>"formData.MasterVariant.Width",
+					"ng_model_height"=>"formData.MasterVariant.Height",
+					"ng_model_unit" => "formData.MasterVariant.DimensionUnit",
+					"ng_model_length"=>"formData.MasterVariant.Length",
 					"form_group_class" => "margin-top-30"]) ?>
-					<? $this->insert('components/forms/multiple-input', ["label" => "Weight", "ng_model_unit" => "formData.WeightUnit", "ng_model" => "formData.Weight", "label_class" => "required"]) ?>
+					<? $this->insert('components/forms/multiple-input', ["label" => "Weight", 
+						"ng_model_unit" => "formData.MasterVariant.WeightUnit", 
+						"ng_model" => "formData.MasterVariant.Weight", 
+						"label_class" => "required"]) ?>
 				</div>
 			</div>
 		</div>

@@ -9,7 +9,19 @@ class ProductController extends Controller
 
 	public static function add($params)
 	{
-		return View::render('add_product', ['catid' => $_POST['category']]);
+		return View::render('add_product', [
+			'title' => 'Add Product',
+			'viewBag' => array('catId' => $_POST['category'])
+		]);
+	}
+
+	public static function edit($params){
+		return View::render('add_product', [
+				'title' => 'Product Detail',
+				'viewBag' => array(
+					'productId'=> $params['productid']
+				)
+			]);
 	}
 
 	public static function select($params)

@@ -1,13 +1,12 @@
 var angular = require('angular');
 
-module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', 'transformer',
-	function($scope, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, transformer){
+module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', 'productProxy',
+	function($scope, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, productProxy){
 	'use strict';
 
 	$scope.publish = function(isValid){
-
 		console.log('formData', $scope.formData);
-		var apiRequest = transformer.productTransform($scope.formData);
+		var apiRequest = productProxy.productTransform($scope.formData);
 		console.log('apiRequest', apiRequest);
 		console.log('aJSON', JSON.stringify(apiRequest));
 		Product.publish(apiRequest, $scope.Status).then(function(){
@@ -18,6 +17,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	};
 
 	$scope.formData = {
+		MasterVariant: {},
 		MasterImages: [],
 		MasterImages360: [],
 		VideoLinks: [],
@@ -62,23 +62,42 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 		},
 		angular: function() {
-			$scope.init = function(catId) {
-				if(angular.isUndefined(catId)) {
-					catId = 13;
-				}
+			$scope.init = function(viewBag) {
+		
 				var shopId = 1;
+				var productId;
 
-				//Load Attribute Set
-				AttributeSet.getByCategory(catId).then(function(data){
-					$scope.availableAttributeSets = data;
-				});
+				var catReady = function(catId){
+					console.log("Cat Ready", catId);
+					AttributeSet.getByCategory(catId).then(function(data){
+						$scope.availableAttributeSets = data;
+					});
+					//Load Global Cat
+					GlobalCategory.getAll().then(function(data) {
+						$scope.availableGlobalCategories = Category.transformNestedSetToUITree(data);
+						$scope.formData.GlobalCategories[0] = Category.findByCatId(catId, $scope.availableGlobalCategories);
+					});
 
-				//Load Global Cat
-				GlobalCategory.getAll().then(function(data) {
-					$scope.availableGlobalCategories = Category.transformNestedSetToUITree(data);
-					$scope.formData.GlobalCategories[0] = Category.findByCatId(catId, $scope.availableGlobalCategories);
-				});
+				};
 
+				console.log(viewBag);
+				if("productId" in viewBag){
+					productId = viewBag.productId;
+					Product.getOne(productId).then(function(ivFormData){
+						var gcat = ivFormData.GlobalCategory;
+						console.log("formData^-1", ivFormData);
+						$scope.formData = productProxy.inverseProductTransform(ivFormData);
+						console.log("formData", $scope.formData);
+						catReady(gcat);
+					});	
+				}	
+
+				if("catId" in viewBag){
+					var catId = viewBag.catId;
+					catReady(catId);
+				}
+				
+			
 				//Load Local Cat
 				Shop.getLocalCategories(shopId).then(function(data) {
 					$scope.availableLocalCategories = Category.transformNestedSetToUITree(data);
@@ -142,7 +161,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			});
 
 			//Assign uploader images
-			ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages);
+		    ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages);
 		    ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360);
 
 		    /**

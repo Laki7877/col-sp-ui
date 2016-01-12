@@ -10,6 +10,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 		$scope.columns = Category.createColumns(null, Category.transformNestedSetToUITree(data));
 		$scope.select = Category.createSelectFunc($scope.columns, function(item) {
 			$scope.selected = item;
+			console.log(item);
 		});
 	});
 }];
