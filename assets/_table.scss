@@ -64,6 +64,10 @@
     border-bottom-width : 1px;
   }
 
+  .table > tbody > tr:hover{
+    background: $color-light-grey;
+  }
+
   .table {
     border: solid 1px $color-grey;
   }
@@ -119,7 +123,7 @@
     border-radius: 3px;
   }
 
-  .table > thead > tr > th, .table {
+  .table > thead > tr > th {
     padding-bottom: 4px;
     font-weight: normal;
   }

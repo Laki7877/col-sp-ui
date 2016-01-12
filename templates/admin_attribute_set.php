@@ -46,7 +46,7 @@
               <input type="checkbox" aria-label="Checkbox for following text input"> 
             </td>
             <td class="column-text-ellipsis">
-              Shirt
+              <a href="#">Shirt</a>
             </td>
             <td>
               3
@@ -68,7 +68,7 @@
               <input type="checkbox" aria-label="Checkbox for following text input"> 
             </td>
             <td class="column-text-ellipsis">
-              Dress
+              <a href="#">Dress</a>
             </td>
             <td>
               5

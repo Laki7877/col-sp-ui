@@ -38,13 +38,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 						<div class="float-right">
 							<a href="#" class="link-btn-plain">Cancel</a>
 							<button class="btn btn-white btn-width-xl">Preview</button>
-							<button class="btn btn-white btn-width-xl" ng-click="saveDraft()">Save as Draft</button>
-							<!-- does not support other option yet -->
-
-							<button ng-disabled="addProductForm.$invalid" 
-							type="submit" class="btn btn-blue btn-width-xl" 
-							ng-click="publish()">Publish</button>
-							
+							<button class="btn btn-white btn-width-xl" type="submit"
+							ng-click="Status = 'DF'">Save as Draft</button>
 						</div>
 					</div>
 				</div>

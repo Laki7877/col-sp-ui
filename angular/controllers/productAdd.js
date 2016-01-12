@@ -10,7 +10,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		var apiRequest = transformer.productTransform($scope.formData);
 		console.log('apiRequest', apiRequest);
 		console.log('aJSON', JSON.stringify(apiRequest));
-		Product.publish(apiRequest, "DF").then(function(){
+		Product.publish(apiRequest, $scope.Status).then(function(){
 			console.log("Save successful");
 		}, function(er){
 			console.warn("Unable to save", er);
@@ -25,7 +25,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		GlobalCategories: [null, null, null],
 		LocalCategories: [null, null, null],
 		SEO: {},
-		ControlFlags: [],
+		ControlFlags: []
 	};
 
 	//CK editor options
@@ -46,8 +46,9 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			$('.input-icon-calendar').datetimepicker({
 				format: "LL"	
 			}).on('dp.change', function(sd){
-				$scope.$digest();
-				console.log($scope.formData);
+				$scope.$apply();
+				console.log($(".input-icon-calendar").val());
+				console.log("FDA", $scope.formData);
 			});
 
 			$("body").tooltip({ selector: '[data-toggle=tooltip]' });

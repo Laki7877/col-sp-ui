@@ -52,7 +52,7 @@
             <td class="display-column">
               <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
             </td>
-            <td class="column-text-ellipsis">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</td>
+            <td class="column-text-ellipsis"><a href="#">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</a></td>
             <td class="price-column">9,000,000</td>
             <td class="info-column">
               <i class="fa fa-check color-green icon-size-18px"></i>
@@ -83,7 +83,7 @@
             <td class="display-column">
               <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
             </td>
-            <td>Jeansian Men's Slim Fit Long</td>
+            <td><a href="#">Jeansian Men's Slim Fit Long</a></td>
             <td class="price-column">
               <div>8,999.99-9,999.99</div>
               <div>(99 variants)</div>
@@ -117,7 +117,7 @@
             <td class="display-column">
               <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
             </td>
-            <td>Power Bank MD Tech Model B02</td>
+            <td><a href="#">Power Bank MD Tech Model B02</a></td>
             <td class="price-column">9,000,000</td>
             <td class="info-column">
               <i class="fa fa-check color-green icon-size-18px"></i>
@@ -148,7 +148,7 @@
             <td class="display-column">
               <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
             </td>
-            <td>Power Bank MD Tech Model B02</td>
+            <td><a href="#">Power Bank MD Tech Model B02</a></td>
             <td class="price-column">1,000</td>
             <td class="info-column">
               <i class="fa fa-minus color-grey icon-size-18px"></i>

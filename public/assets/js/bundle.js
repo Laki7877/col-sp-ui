@@ -297,7 +297,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		var apiRequest = transformer.productTransform($scope.formData);
 		console.log('apiRequest', apiRequest);
 		console.log('aJSON', JSON.stringify(apiRequest));
-		Product.publish(apiRequest, "DF").then(function(){
+		Product.publish(apiRequest, $scope.Status).then(function(){
 			console.log("Save successful");
 		}, function(er){
 			console.warn("Unable to save", er);
@@ -312,7 +312,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		GlobalCategories: [null, null, null],
 		LocalCategories: [null, null, null],
 		SEO: {},
-		ControlFlags: [],
+		ControlFlags: []
 	};
 
 	//CK editor options
@@ -333,8 +333,9 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			$('.input-icon-calendar').datetimepicker({
 				format: "LL"	
 			}).on('dp.change', function(sd){
-				$scope.$digest();
-				console.log($scope.formData);
+				$scope.$apply();
+				console.log($(".input-icon-calendar").val());
+				console.log("FDA", $scope.formData);
 			});
 
 			$("body").tooltip({ selector: '[data-toggle=tooltip]' });
@@ -1238,29 +1239,29 @@ module.exports = [function () {
     			console.warn("Master Attributes", ex);
     		}
 
-        try{
-          clean.Remark = fd.Remark;
-          clean.Width = fd.Width || 0;
-          clean.Length = fd.Length || 0;
-          clean.Height = fd.Height || 0;
-          clean.WeightUnit = fd.WeightUnit;
-          clean.Weight = fd.Weight || 0;
-          clean.DimensionUnit = fd.DimensionUnit;
-          //TODO: PrepareDay is not getting through
-          clean.PrepareDay = fd.PrepareDay || 0;
-          clean.StockType = fd.StockType;
-          clean.SafetyStock = fd.SafetyStock;
-    			clean.SEO = fd.SEO;
-    			clean.ControlFlags = fd.ControlFlags;
-    			clean.Brand = fd.Brand;
-    			clean.ShippingMethod = fd.ShippingMethod;
-    			clean.EffectiveDate = fd.EffectiveDate;
-    			clean.EffectiveTime = fd.EffectiveTime;
-    			clean.ExpireDate = fd.ExpireDate;
-    			clean.ExpireTime = fd.ExpireTime;
-        }catch(ex){
-          console.warn("One-To-One Fields", ex);
-        }
+		try{
+		  clean.Remark = fd.Remark;
+		  clean.Width = fd.Width || 0;
+		  clean.Length = fd.Length || 0;
+		  clean.Height = fd.Height || 0;
+		  clean.WeightUnit = fd.WeightUnit;
+		  clean.Weight = fd.Weight || 0;
+		  clean.DimensionUnit = fd.DimensionUnit;
+		  //TODO: PrepareDay is not getting through
+		  clean.PrepareDay = fd.PrepareDay || 0;
+		  clean.StockType = fd.StockType;
+		  clean.SafetyStock = fd.SafetyStock;
+		  clean.SEO = fd.SEO;
+		  clean.ControlFlags = fd.ControlFlags;
+		  clean.Brand = fd.Brand;
+		  clean.ShippingMethod = fd.ShippingMethod;
+		  clean.EffectiveDate = fd.EffectiveDate;
+		  clean.EffectiveTime = fd.EffectiveTime;
+		  clean.ExpireDate = fd.ExpireDate;
+		  clean.ExpireTime = fd.ExpireTime;
+		}catch(ex){
+		  console.warn("One-To-One Fields", ex);
+		}
 
 	try{
 		//Move first entry of Categories out into Category
@@ -1283,37 +1284,42 @@ module.exports = [function () {
 		console.warn("Organizing Related Products", ex);
 	}
 
-	try{
-		if(hasVariants){
-			//clean.DefaultVariant = mapper.Variants(fd.DefaultVariant);
-			//TODO: assign Defaultvarint T/F
-			clean.Variants = fd.Variants.map(mapper.Variants);
-		}else{
-
-			//Move these into Variant Level Property
-			var masterProps = ['ProductNameEn', 'ProductNameTh', 'Sku', 'Upc',
+	//Move these into Variant Level Property
+	var masterProps = ['ProductNameEn', 'ProductNameTh', 'Sku', 'Upc',
 			    'ValueEn', 'ValueTh', 'Display', 'OriginalPrice', 'SalePrice', 'DescriptionFullTh',
 			    'DescriptionFullEn', 'DescriptionShortEn', 'DescriptionShortTh',
 			    'Quantity', 'Length', 'Height', 'Sku',
 			    'OriginalPrice', 'SalePrice',
 			     'Width', 'Weight', 'WeightUnit', 'DimensionUnit'];
 
-			//We have to copy because `Variant` in UI is in top level
-			//DefaultVariant is master
-			clean.MasterVariant = {};
-			masterProps.forEach(function(k){
-				clean.MasterVariant[k] = fd[k];
+	clean.MasterVariant = {};
+	masterProps.forEach(function(k){
+		clean.MasterVariant[k] = fd[k];
+	});
+
+	clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
+	clean.MasterVariant.Images360 = fd.MasterImages360.map(mapper.Images);
+	clean.MasterVariant.Images = fd.MasterImages.map(mapper.Images);
+
+	try{
+		if(hasVariants){
+			var masterProps = [];
+			clean.Variants = fd.Variants.map(mapper.Variants);
+			//Find DefaultVariant
+			var targetHash = fd.DefaultVariant.hash;
+			clean.Variants.forEach(function(vari, index){
+				vari.DefaultVariant = false;
+				if(vari.hash == targetHash){
+					clean.Variants[index].DefaultVariant = true;
+				}
 			});
 
-			clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
-			clean.MasterVariant.Images360 = fd.MasterImages360.map(mapper.Images);
-			clean.MasterVariant.Images = fd.MasterImages.map(mapper.Images);
 		}
 	}catch(ex){
 		console.warn("Variant Distribute", ex);
 	}
 
-
+	//HardCoD
 	clean.SellerId = 1;
 	clean.ShopId = 1;
 
