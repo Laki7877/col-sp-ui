@@ -1,24 +1,24 @@
-module.exports = ['$scope', 'Product',  function($scope, Product) {
+module.exports = ['$scope', 'AttributeSet', function($scope, AttributeSet) {
 	//UI binding variables
 	$scope.showOnOffStatus = true;
 	$scope.checkAll = false;
 	$scope.filterOptions = [
-		{ name: "All", value: 0},
-		{ name: "Approved", value: 1},
-		{ name: "Not Approved", value: 2},
-		{ name: "Wait for Approval", value: 3},
+		{ name: "All", value: 'All'},
+		{ name: "Visible", value: 'Visible'},
+		{ name: "Not Visible", value: 'Not Visible'}
 	];
 
-	//Product List
-	$scope.productList = [];
+	//attributeSet List
+	$scope.attributeSetList = [];
+	
 	//Default parameters
 	$scope.tableParams = {
-		filter: 0,
+		filter: $scope.filterOptions,
 		searchText: null,
-		orderBy: 'ProductNameEn',
+		orderBy: 'AttributeSetNameEn',
 		direction: 'desc',
 		page: 0,
-		pageSize: 8
+		pageSize: 10
 	};
 
 	$scope.notReady = true;
@@ -27,7 +27,7 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 	};
 
 	$scope.totalPage = function(x){
-		return Math.ceil($scope.productTotal / $scope.tableParams.pageSize);
+		return Math.ceil($scope.attributeSetTotal / $scope.tableParams.pageSize);
 	};
 
 	$scope.nextPage = function(m){
@@ -45,14 +45,14 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 		$scope.tableParams.orderBy = nextOrderBy;
 	}
 
- 	$scope.productTotal = 0;
+ 	$scope.attributeSetTotal = 0;
 	//Populate Data Source
 	var reloadData = function(){
-		$scope.productList = [];
+		$scope.attributeSetList = [];
 		$scope.notReady = true;
-		Product.getAll($scope.tableParams).then(function(x){
-			$scope.productTotal = x.total;
-			$scope.productList = x.data;
+		AttributeSet.getAll($scope.tableParams).then(function(x){
+			$scope.attributeSetTotal = x.total;
+			$scope.attributeSetList = x.data;
 			$scope.notReady = false;
 		});
 	};
@@ -62,11 +62,10 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 		reloadData();
 	}, true);
 
-
 	//Select All checkbox
 	$scope.$watch('checkAll', function(newVal, oldVal){
-		if(!$scope.productList) return;
-		$scope.productList.forEach(function(d){
+		if(!$scope.attributeSetList) return;
+		$scope.attributeSetList.forEach(function(d){
 			d.checked = newVal;
 		});
 	});

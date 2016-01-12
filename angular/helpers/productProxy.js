@@ -204,6 +204,10 @@ module.exports = ['util', function (util) {
 	invFd.MasterImages360 = invFd.MasterVariant.Images360;
 	delete invFd.MasterVariant.Images360;
 
+	invFd.MasterVariant.WeightUnit = invFd.MasterVariant.WeightUnit.trim();
+	invFd.MasterVariant.DimensionUnit = invFd.MasterVariant.DimensionUnit.trim();
+
+
 	invFd.Keywords = invFd.Keywords.split(",");
 	if(invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; //TODO: Hardcode
 

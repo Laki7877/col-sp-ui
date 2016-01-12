@@ -64,6 +64,7 @@ var app = angular.module('colspApp', ['ngAnimate', 'angularFileUpload', 'ui.tree
 .factory('VariantPair', helpers.variantPair)
 .factory('BrandAdapter', adapters.brand)
 //Directives
+.directive('ncTradableSelect', directives.ncTradableSelect)
 .directive('ngDelegate', directives.ngDelegate)
 .directive('ngCkeditor', directives.ngCkeditor)
 .directive('ngSlideToggle', directives.ngSlideToggle)
@@ -80,8 +81,8 @@ var app = angular.module('colspApp', ['ngAnimate', 'angularFileUpload', 'ui.tree
 .controller('ProductAddSelectCategoryCtrl', controllers.productAddSelectCategory)
 .controller('ProductListLocalCategoryCtrl', controllers.productListLocalCategory)
 .controller('LocalCategoryCtrl', controllers.localCategory)
-.controller('AdminAttribute', controllers.adminAttribute)
-.controller('AdminAttributeSet', controllers.adminAttribute)
-.controller('AdminAttributeAdd', controllers.adminAttributeAdd)
-.controller('AdminAttributeSetAdd', controllers.adminAttribute)
+.controller('AdminAttributeCtrl', controllers.adminAttribute)
+.controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)
+.controller('AdminAttributeAddCtrl', controllers.adminAttributeAdd)
+.controller('AdminAttributeSetAddCtrl', controllers.adminAttributeSetAdd)
 .controller('AdminCategoryCtrl', controllers.adminCategory);

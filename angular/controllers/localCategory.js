@@ -57,7 +57,6 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 		});
 	});
 	$rootScope.$on('saveEditLocalCategory', function(evt) {
-		console.log($scope.editingForm);
 		if($scope.editingForm.$valid) {
 			if($scope.editing) {
 				for (var k in $scope.editingCategory) {

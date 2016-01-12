@@ -2,7 +2,7 @@
   <div class="left-column">
     <div class="search-section section-search">
       <div class="input-group">
-        <input type="text" class="form-control input-search-icon search-box" placeholder="Search Attribute Set" aria-describedby="basic-addon2">
+        <input type="text" ng-model="search[options.map.text]" class="form-control input-search-icon search-box" placeholder="Search Attribute Set" aria-describedby="basic-addon2">
         <span class="input-group-btn">
           <button class="btn btn-white" type="button">Search</button>
         </span>
@@ -10,28 +10,16 @@
     </div>
     <div class="clickable-list">
       <ul class="content-column">
-        <li>Attribute Set A</li>
-        <li class="active">Attribute Set B</li>
-        <li>Attribute Set C</li>
-        <li>Attribute Set D</li>
-        <li>Attribute Set E</li>
-        <li>Attribute Set F</li>
-        <li>Attribute Set G</li>
-        <li>Attribute Set H</li>
-        <li>Attribute Set J</li>
-        <li>Attribute Set K</li>
-        <li>Attribute Set G</li>
-        <li>Attribute Set H</li>
-        <li>Attribute Set J</li>
+        <li ng-repeat="item in selectable | filter:search:strict track by $index" ng-class="{ 'active' : activeLeft == $index }" ng-click="select($index, true)" ng-if="!contain(item)">{{ options.map.text == null ? item : item[options.map.text] }}</li>
       </ul>
     </div>
   </div>
 
   <div class="center-column">
-    <div class="trade-button active"> 
+    <div class="trade-button" ng-class="{'active' : activeLeft >= 0}" ng-click="transfer(true)"> 
        <i class="fa fa-chevron-right"></i>
     </div>
-    <div class="trade-button"> 
+    <div class="trade-button" ng-class="{'active' : activeRight >= 0}" ng-click="transfer(false)"> 
       <i class="fa fa-chevron-left"></i>
     </div>
   </div>
@@ -42,16 +30,9 @@
     </div>
     <div class="clickable-list">
       <ul class="content-column">
-        <li>
-          <span class="column-1">Attribute Set W</span>
+        <li ng-repeat="item in model track by $index" ng-class="{ 'active' : activeRight == $index }" ng-click="select($index, false)">
+          <span class="column-1">{{ options.map.text == null ? item : item[options.map.text] }}</span>
         </li>
-        <li class="active">
-          <span class="column-1">Attribute Set X</span>
-        </li>
-        <li>
-          <span class="column-1">Attribute Set Z</span>
-        </li>
-        
       </ul>
     </div>
   </div>

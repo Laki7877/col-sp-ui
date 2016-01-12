@@ -1,5 +1,6 @@
-module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory',  function($scope, $rootScope, common, Category, GlobalCategory){
+module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory', 'AttributeSet',  function($scope, $rootScope, common, Category, GlobalCategory, AttributeSet){
 	$scope.categories = [];
+	$scope.attributeSetOptions = [];
 	$scope.editingStatusOptions = [{
 		text: 'Hide',
 		value: 'NA'
@@ -29,10 +30,15 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 
 	$scope.init = function() {
 		$scope.reload();
+		$scope.loadAttributeSets();
 	};
+	$scope.loadAttributeSets = function() {
+		AttributeSet.getAll({pageSize: 0}).then(function(data) { 
+			$scope.attributeSetOptions = data;
+		});
+	}
 	$scope.reload = function() {
 		GlobalCategory.getAll().then(function(data) {
-			console.log(data);
 			$scope.categories = Category.transformNestedSetToUITree(data);
 		}, function(err) {
 			$scope.alert.open(false, common.getError(err));

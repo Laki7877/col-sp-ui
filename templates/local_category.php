@@ -1,7 +1,6 @@
 <?php $this->layout('layouts/page-with-sidebar', ['title' => 'Local Category']) ?>
 
 <?php $this->start('page-body') ?>
-<<<<<<< HEAD
 	<div ng-controller="LocalCategoryCtrl" ng-init="init()" class="local-category-page">
 		<div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()">{{alert.message}}</div>
 		<div class="page-header with-border">
