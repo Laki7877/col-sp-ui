@@ -8,12 +8,12 @@ module.exports = ['common', function(common) {
 			NameEn: "New Category",
 			NameTh: "",
 			UrlKeyEn: "",
-			Status: "NV",
+			Status: "NA",
 			ProductCount: 0,
 			nodes: []
 		}, extend);
 	}
-
+	
 	service.getProducts = function(catId, parameters) {
 		return common.makeRequest({
 			method: 'GET',

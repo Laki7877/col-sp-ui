@@ -2,6 +2,19 @@ module.exports = ['common', '$q' , function(common, $q) {
 	'use strict';
 	var service = {};
 
+	//Generate empty template
+	service.generate = function(extend) {
+		return angular.extend({
+			NameEn: "New Category",
+			NameTh: "",
+			UrlKeyEn: "",
+			Commission: 0,
+			Status: "NA",
+			ProductCount: 0,
+			nodes: []
+		}, extend);
+	}
+
 	/**
 	 * Get all global cat
 	 **/
@@ -11,6 +24,16 @@ module.exports = ['common', '$q' , function(common, $q) {
 			url: '/GlobalCategories'
 		});
 	};
+
+	/**
+	 * Upsert Global category
+	 **/
+	service.upsert = function(data) {
+		return common.makeRequest({
+			method: 'PUT',
+			url: '/GlobalCategories'
+		});
+	}
 
 	return service;
 }];

@@ -6,7 +6,7 @@
         <h3 class="modal-title"><?=$header?></h3>
       </div>
       <div class="modal-body">
-        <form class="ah-form margin-top-20" name="editingForm">
+        <form class="ah-form margin-top-20" name="editingForm" ng-submit="$emit('saveEditLocalCategory')" novalidate>
           <div class="row">
             <div class="col-xs-12">
               <div class="form-section">
@@ -15,47 +15,47 @@
                   <input type="text"
                     name="NameTh"
                     class="form-control"
-                    ng-class="{ 'has-error' : editingForm.NameTh.$invalid }"
+                    autocomplete="off"
+                    ng-class="{ 'has-error' : editingForm.NameTh.$invalid && editingForm.NameTh.$dirty }"
                     ng-model="editingCategory.NameTh"
-                    ng-pattern="/^[a-zA-Z0-9 ]*$/" 
+                    ng-pattern="/^[a-zA-Z0-9ก-๙ ]+$/" 
                     ng-template="common/input/text" 
                     ng-template-options="{
                       'label': 'Category Name (Thai)',
                       'labelClass': 'required',
-                      'formGroupClass': '',
                       'error' : {
                         'message': 'Cannot use special characters such as ! # $ % ^ &',
-                        'show' : editingForm.NameTh.$invalid
+                        'show' : editingForm.NameTh.$invalid && editingForm.NameTh.$dirty
                       }
                     }"
+                    required
                   />
                   <input type="text" 
                     name="NameEn"
                     class="form-control"
-                    ng-class="{ 'has-error' : editingForm.NameEn.$invalid }"
+                    autocomplete="off"
+                    ng-class="{ 'has-error' : editingForm.NameEn.$invalid && editingForm.NameEn.$dirty }"
                     ng-model="editingCategory.NameEn" 
-                    ng-pattern="/^[a-zA-Z0-9 ]*$/" 
+                    ng-pattern="/^[a-zA-Z0-9 ]+$/" 
                     ng-template="common/input/text" 
                     ng-template-options="{
                       'label': 'Category Name (Eng)',
                       'labelClass': 'required',
-                      'formGroupClass': '',
                       'error' : {
                         'message': 'Cannot use special characters such as ! # $ % ^ &',
-                        'show' : editingForm.NameEn.$invalid 
+                        'show' : editingForm.NameEn.$invalid && editingForm.NameEn.$dirty
                       }
-                    }" 
+                    }"
+                    required
                   />
-
                   <input type="text" 
                     name="UrlKeyEn"
                     class="form-control"
                     ng-model="editingCategory.UrlKeyEn"
                     ng-template="common/input/text" 
                     ng-template-options="{
-                      'label': 'Url (Eng)',
-                      'labelClass': 'required'
-                    }" 
+                      'label': 'Url (Eng)'
+                    }"
                   />
                 </div>
               </div>
@@ -69,7 +69,7 @@
             <div class="category-footer col-xs-12">
               <span class="float-right">
                   <a class="link-btn-plain" data-dismiss="modal">Cancel</a>
-                  <button type="button" class="btn btn-blue btn-width-xl" ng-click="$emit('saveEditLocalCategory')">Select</button>
+                  <button type="submit" class="btn btn-blue btn-width-xl">Save</button>
               </span>
             </div>
           </div>

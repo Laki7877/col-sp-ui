@@ -98,10 +98,9 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 				}
 				
 			
-			
 				//Load Local Cat
 				Shop.getLocalCategories(shopId).then(function(data) {
-					$scope.availableLocalCategories = Category.convertDepthArrayToNestedArray(data);
+					$scope.availableLocalCategories = Category.transformNestedSetToUITree(data);
 				});
 			}
 

@@ -1,4 +1,4 @@
-module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory', 'Shop', function($scope, $rootScope, common, Category, LocalCategory, Shop) {
+module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory',  function($scope, $rootScope, common, Category, GlobalCategory){
 	$scope.categories = [];
 	$scope.editingStatusOptions = [{
 		text: 'Hide',
@@ -27,38 +27,37 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 	};
 
 
-	$scope.init = function(shopid) {
-		$scope.shopId = shopid || 1;
+	$scope.init = function() {
 		$scope.reload();
 	};
 	$scope.reload = function() {
-		Shop.getLocalCategories($scope.shopId).then(function(data) {
+		GlobalCategory.getAll().then(function(data) {
+			console.log(data);
 			$scope.categories = Category.transformNestedSetToUITree(data);
 		}, function(err) {
 			$scope.alert.open(false, common.getError(err));
 		});
-	}
-	$rootScope.$on('createLocalCategory', function(evt) {
-		$scope.categories.push(LocalCategory.generate());
-	});
-	$rootScope.$on('saveLocalCategory', function(evt) {
+	};
+	$rootScope.$on('saveGlobalCategory', function(evt) {
 		//Call endpoint
 		$scope.alert.close();
 		$scope.formData = Category.transformUITreeToNestedSet($scope.categories);
 		$scope.formData = $scope.formData.map(function(item) {
 			delete item['ProductCount'];
+			item['Commission'] = parseInt(item['Commission']);
 			return item;
 		});
-		Shop.upsertLocalCategories($scope.shopId, $scope.formData).then(function() {
+		
+		GlobalCategory.upsert($scope.formData).then(function() {
 			$scope.alert.open(true);
 		}, function(err) {
 			$scope.alert.open(false, common.getError(err));
 			$scope.reload();
 		});
 	});
-	$rootScope.$on('saveEditLocalCategory', function(evt) {
-		console.log($scope.editingForm);
+	$rootScope.$on('saveEditGlobalCategory', function(evt) {
 		if($scope.editingForm.$valid) {
+			//Edit or add
 			if($scope.editing) {
 				for (var k in $scope.editingCategory) {
 					$scope.editingCategoryOriginal[k] = $scope.editingCategory[k];
@@ -67,18 +66,20 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 				$scope.categories.push($scope.editingCategory);
 			}
 			//Close modal
-			$('#local-category-detail').modal('hide');
+			$('#modal-category-detail').modal('hide');
 		}
 	});
-	$rootScope.$on('openEditLocalCategory', function(evt, node) {
+	$rootScope.$on('openEditGlobalCategory', function(evt, node) {
+		//Edit or add
 		if (angular.isDefined(node)) {
 			$scope.editingCategoryOriginal = node;
 			$scope.editingCategory = angular.extend({}, node);
 			$scope.editing = true;
 		} else {
-			$scope.editingCategory = LocalCategory.generate();
+			$scope.editingCategory = GlobalCategory.generate();
 			$scope.editing = false;
 		}
 		$scope.editingForm.$setPristine();
 	});
+
 }];
