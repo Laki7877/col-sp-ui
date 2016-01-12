@@ -11,7 +11,7 @@
 					<label><input type="radio" name="optradio" checked="checked">Single</label>
 					<label><input type="radio" name="optradio">Bulk (via Excel)</label>
 				</div>
-			</div>
+			</div>	
 			<div class="category-section column-4">
 				<div class="category-section-border-box">
 					<div class="category-header">

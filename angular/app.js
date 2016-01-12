@@ -57,6 +57,7 @@ var app = angular.module('colspApp', ['ngAnimate', 'angularFileUpload', 'ui.tree
 .factory('Shop', services.shop)
 .factory('LocalCategory', services.localCategory)
 .factory('GlobalCategory', services.globalCategory)
+.factory('Attribute', services.attribute)
 .factory('AttributeSet', services.attributeSet)
 .factory('Brand', services.brand)
 .factory('VariantPair', helpers.variantPair)
@@ -77,4 +78,8 @@ var app = angular.module('colspApp', ['ngAnimate', 'angularFileUpload', 'ui.tree
 .controller('ProductAddSelectCategoryCtrl', controllers.productAddSelectCategory)
 .controller('ProductListLocalCategoryCtrl', controllers.productListLocalCategory)
 .controller('LocalCategoryCtrl', controllers.localCategory)
-.controller('AdminCatCtrl', controllers.adminCatCtrl);
+.controller('AdminAttribute', controllers.adminAttribute)
+.controller('AdminAttributeSet', controllers.adminAttribute)
+.controller('AdminAttributeAdd', controllers.adminAttributeAdd)
+.controller('AdminAttributeSetAdd', controllers.adminAttribute)
+.controller('AdminCategoryCtrl', controllers.adminCategory);

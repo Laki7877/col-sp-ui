@@ -7,35 +7,6 @@ var angular = require('angular');
 module.exports = ['config', function(config) {
     'use strict';
 	var service = {};
-
-    /**
-     * Convert array of object with Depth to Nested array of object
-     * Used in category selection
-     */
-    service.convertDepthArrayToNestedArray = function(depthArray) {
-        //Create nested object from raw data
-        var create = function(data) {
-            var array = [];
-            angular.forEach(data, function(item) {
-                insert(item.Depth, item, array);
-            });
-            return array;
-        };
-        //Internal insert to create object
-        var insert = function(depth, obj, array) {
-            var parent = depth - 1;
-            var ptr = array;
-            var ptrToParent = null;
-            for (var i = 0; i < parent; i++) {
-                ptrToParent = ptr[ptr.length - 1];
-                ptr = angular.isUndefined(ptrToParent.children) ? (ptrToParent.children = []) : ptrToParent.children;
-            }
-            obj.parent = ptrToParent;
-            ptr.push(obj);
-        };        
-        return create(depthArray);
-    };
-
     /**
      * Transform angular-ui-tree data to nested set
      * see https://en.wikipedia.org/wiki/Nested_set_model
@@ -131,7 +102,7 @@ module.exports = ['config', function(config) {
     /**
      * Create selection function for ng-click 
      * use in category selection 
-     * **can only be used with NestedArray
+     * **can only be used with UITree
      */
     service.createSelectFunc = function(columns, selectEvent) {
     	return function(item, indx, parentIndx) {
@@ -143,11 +114,11 @@ module.exports = ['config', function(config) {
 			};
 			
 			if (parentIndx+1 < columns.length) {
-				columns[parentIndx+1].list = item.children || [];
+				columns[parentIndx+1].list = item.nodes || [];
 				columns[parentIndx+1].active = -1;
 			}
 
-			if (angular.isUndefined(item.children)) {
+			if (angular.isUndefined(item.nodes)) {
 				selectEvent(item);
 			} else {
                 selectEvent(null);
@@ -171,7 +142,7 @@ module.exports = ['config', function(config) {
         if(angular.isDefined(item) && item != null) {
             var parent = item.parent;
             for (var i = item.Depth - 1; i >= 0; i--) {
-                array[i].list = parent.children;
+                array[i].list = parent.nodes;
                 array[i].active = array[i].list.indexOf(item);
                 parent = parent.parent;
             }

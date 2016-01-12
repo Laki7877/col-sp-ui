@@ -97,7 +97,7 @@
 		<span class="sr-only">Toggle Dropdown</span>
 		</button>
 		<ul class="dropdown-menu dropdown-menu-right">
-			<li ng-repeat="size in [1,2,3,4]"><a ng-click="setPageSize(size)">{{size}}</a></li>
+			<li ng-repeat="size in [4,8,16,20]"><a ng-click="setPageSize(size)">{{size}}</a></li>
 		</ul>
 		</div>
 		</span>
