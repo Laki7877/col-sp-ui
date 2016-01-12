@@ -49,7 +49,7 @@
             <td>
               Super Admin
             </td>
-            <td class="action-column">
+            <td class="action-column popover-gear">
               <i class="fa fa-gear color-dark-grey icon-size-20"></i>
               <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div>View / Edit</div> <div>Delete</div>" data-original-title="" title=""></i>
             </td>
@@ -70,7 +70,7 @@
             <td>
               Content Admin
             </td>
-            <td class="action-column">
+            <td class="action-column popover-gear">
               <i class="fa fa-gear color-dark-grey icon-size-20"></i>
               <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div>View / Edit</div> <div>Delete</div>" data-original-title="" title=""></i>
             </td>
