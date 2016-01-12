@@ -5,7 +5,7 @@
 		<? $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => 'Your changes have been saved.']) ?>
 		<? $this->insert('components/alert-text', ['close' => true, 'color' => 'red', 'text' => 'There is an error!']) ?>
 
-		<? $this->insert('components/page-title-with-buttons-local-category', ['text' => 'Local Category']) ?>
+		<? $this->insert('components/page-title-with-buttons-local-category', ['text' => 'Local Category','modal_id' => '#local-category-detail']) ?>
 
 		<div class="local-category-section">
 			<div class="col-xs-12 category-header no-padding">
