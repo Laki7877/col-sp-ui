@@ -17,7 +17,7 @@ if (isset($size)) $inputSize = "width-field-$size";
 		name="<?=$name?>"
 		<? endif; ?>
 		
-		type="text" class="form-control" ng-class="<?= $input_class; ?>" placeholder="<?=$placeholder?>" <?=$input_attrs?> />
+		type="text" class="form-control <?= $input_class; ?>" placeholder="<?=$placeholder?>" <?=$input_attrs?> />
 		<? if (!empty($hint)): ?>
 			<span class="help-block"><?= $hint ?></span>
 		<? endif ?>

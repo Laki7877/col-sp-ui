@@ -2,7 +2,7 @@
 'use strict';
 //App Start here
 var angular = require('angular');
-var bulk = ({"controllers":({"adminCatCtrl":require("./controllers\\adminCatCtrl.js"),"localCategory":require("./controllers\\localCategory.js"),"productAdd":require("./controllers\\productAdd.js"),"productAddSelectCategory":require("./controllers\\productAddSelectCategory.js"),"productList":require("./controllers\\productList.js"),"productListLocalCategory":require("./controllers\\productListLocalCategory.js")}),"services":({"attributeSet":require("./services\\attributeSet.js"),"brand":require("./services\\brand.js"),"category":require("./services\\category.js"),"globalCategory":require("./services\\globalCategory.js"),"image":require("./services\\image.js"),"localCategory":require("./services\\localCategory.js"),"product":require("./services\\product.js"),"shop":require("./services\\shop.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"transformer":require("./helpers\\transformer.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"popoverAny":require("./directives\\popoverAny.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"ordinal":require("./filters\\ordinal.js")})});
+var bulk = ({"controllers":({"adminCatCtrl":require("./controllers/adminCatCtrl.js"),"localCategory":require("./controllers/localCategory.js"),"productAdd":require("./controllers/productAdd.js"),"productAddSelectCategory":require("./controllers/productAddSelectCategory.js"),"productList":require("./controllers/productList.js"),"productListLocalCategory":require("./controllers/productListLocalCategory.js")}),"services":({"attributeSet":require("./services/attributeSet.js"),"brand":require("./services/brand.js"),"category":require("./services/category.js"),"globalCategory":require("./services/globalCategory.js"),"image":require("./services/image.js"),"localCategory":require("./services/localCategory.js"),"product":require("./services/product.js"),"shop":require("./services/shop.js")}),"helpers":({"base64":require("./helpers/base64.js"),"common":require("./helpers/common.js"),"storage":require("./helpers/storage.js"),"transformer":require("./helpers/transformer.js"),"util":require("./helpers/util.js"),"variantPair":require("./helpers/variantPair.js")}),"directives":({"ngCkeditor":require("./directives/ngCkeditor.js"),"ngDelegate":require("./directives/ngDelegate.js"),"ngSlideToggle":require("./directives/ngSlideToggle.js"),"ngTemplate":require("./directives/ngTemplate.js"),"popoverAny":require("./directives/popoverAny.js")}),"filters":({"capitalize":require("./filters/capitalize.js"),"ordinal":require("./filters/ordinal.js")})});
 var config = require('./config');
 var template = require('./template');
 
@@ -80,7 +80,7 @@ var app = angular.module('colspApp', ['ngAnimate', 'angularFileUpload', 'ui.tree
 .controller('LocalCategoryCtrl', controllers.localCategory)
 .controller('AdminCatCtrl', controllers.adminCatCtrl);
 
-},{"./config":2,"./controllers\\adminCatCtrl.js":3,"./controllers\\localCategory.js":4,"./controllers\\productAdd.js":5,"./controllers\\productAddSelectCategory.js":6,"./controllers\\productList.js":7,"./controllers\\productListLocalCategory.js":8,"./directives\\ngCkeditor.js":9,"./directives\\ngDelegate.js":10,"./directives\\ngSlideToggle.js":11,"./directives\\ngTemplate.js":12,"./directives\\popoverAny.js":13,"./filters\\capitalize.js":14,"./filters\\ordinal.js":15,"./helpers\\base64.js":16,"./helpers\\common.js":17,"./helpers\\storage.js":18,"./helpers\\transformer.js":19,"./helpers\\util.js":20,"./helpers\\variantPair.js":21,"./services\\attributeSet.js":22,"./services\\brand.js":23,"./services\\category.js":24,"./services\\globalCategory.js":25,"./services\\image.js":26,"./services\\localCategory.js":27,"./services\\product.js":28,"./services\\shop.js":29,"./template":30,"angular":40,"angular-animate":32,"angular-base64":33,"angular-file-upload":34,"angular-ui-bootstrap":35,"angular-ui-tree":38}],2:[function(require,module,exports){
+},{"./config":2,"./controllers/adminCatCtrl.js":3,"./controllers/localCategory.js":4,"./controllers/productAdd.js":5,"./controllers/productAddSelectCategory.js":6,"./controllers/productList.js":7,"./controllers/productListLocalCategory.js":8,"./directives/ngCkeditor.js":9,"./directives/ngDelegate.js":10,"./directives/ngSlideToggle.js":11,"./directives/ngTemplate.js":12,"./directives/popoverAny.js":13,"./filters/capitalize.js":14,"./filters/ordinal.js":15,"./helpers/base64.js":16,"./helpers/common.js":17,"./helpers/storage.js":18,"./helpers/transformer.js":19,"./helpers/util.js":20,"./helpers/variantPair.js":21,"./services/attributeSet.js":22,"./services/brand.js":23,"./services/category.js":24,"./services/globalCategory.js":25,"./services/image.js":26,"./services/localCategory.js":27,"./services/product.js":28,"./services/shop.js":29,"./template":30,"angular":40,"angular-animate":32,"angular-base64":33,"angular-file-upload":34,"angular-ui-bootstrap":35,"angular-ui-tree":38}],2:[function(require,module,exports){
 //remote baseUrl - 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/'
 module.exports = {
 	baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/',
@@ -221,7 +221,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		var apiRequest = transformer.productTransform($scope.formData);
 		console.log('apiRequest', apiRequest);
 		console.log('aJSON', JSON.stringify(apiRequest));
-		Product.publish(apiRequest, "DF").then(function(){
+		Product.publish(apiRequest, $scope.Status).then(function(){
 			console.log("Save successful");
 		}, function(er){
 			console.warn("Unable to save", er);
@@ -236,7 +236,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		GlobalCategories: [null, null, null],
 		LocalCategories: [null, null, null],
 		SEO: {},
-		ControlFlags: [],
+		ControlFlags: []
 	};
 
 	//CK editor options
@@ -257,8 +257,9 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			$('.input-icon-calendar').datetimepicker({
 				format: "LL"	
 			}).on('dp.change', function(sd){
-				$scope.$digest();
-				console.log($scope.formData);
+				$scope.$apply();
+				console.log($(".input-icon-calendar").val());
+				console.log("FDA", $scope.formData);
 			});
 
 			$("body").tooltip({ selector: '[data-toggle=tooltip]' });
@@ -1130,29 +1131,29 @@ module.exports = [function () {
     			console.warn("Master Attributes", ex);
     		}
 
-        try{
-          clean.Remark = fd.Remark;
-          clean.Width = fd.Width || 0;
-          clean.Length = fd.Length || 0;
-          clean.Height = fd.Height || 0;
-          clean.WeightUnit = fd.WeightUnit;
-          clean.Weight = fd.Weight || 0;
-          clean.DimensionUnit = fd.DimensionUnit;
-          //TODO: PrepareDay is not getting through
-          clean.PrepareDay = fd.PrepareDay || 0;
-          clean.StockType = fd.StockType;
-          clean.SafetyStock = fd.SafetyStock;
-    			clean.SEO = fd.SEO;
-    			clean.ControlFlags = fd.ControlFlags;
-    			clean.Brand = fd.Brand;
-    			clean.ShippingMethod = fd.ShippingMethod;
-    			clean.EffectiveDate = fd.EffectiveDate;
-    			clean.EffectiveTime = fd.EffectiveTime;
-    			clean.ExpireDate = fd.ExpireDate;
-    			clean.ExpireTime = fd.ExpireTime;
-        }catch(ex){
-          console.warn("One-To-One Fields", ex);
-        }
+		try{
+		  clean.Remark = fd.Remark;
+		  clean.Width = fd.Width || 0;
+		  clean.Length = fd.Length || 0;
+		  clean.Height = fd.Height || 0;
+		  clean.WeightUnit = fd.WeightUnit;
+		  clean.Weight = fd.Weight || 0;
+		  clean.DimensionUnit = fd.DimensionUnit;
+		  //TODO: PrepareDay is not getting through
+		  clean.PrepareDay = fd.PrepareDay || 0;
+		  clean.StockType = fd.StockType;
+		  clean.SafetyStock = fd.SafetyStock;
+		  clean.SEO = fd.SEO;
+		  clean.ControlFlags = fd.ControlFlags;
+		  clean.Brand = fd.Brand;
+		  clean.ShippingMethod = fd.ShippingMethod;
+		  clean.EffectiveDate = fd.EffectiveDate;
+		  clean.EffectiveTime = fd.EffectiveTime;
+		  clean.ExpireDate = fd.ExpireDate;
+		  clean.ExpireTime = fd.ExpireTime;
+		}catch(ex){
+		  console.warn("One-To-One Fields", ex);
+		}
 
 	try{
 		//Move first entry of Categories out into Category
@@ -1175,37 +1176,42 @@ module.exports = [function () {
 		console.warn("Organizing Related Products", ex);
 	}
 
-	try{
-		if(hasVariants){
-			//clean.DefaultVariant = mapper.Variants(fd.DefaultVariant);
-			//TODO: assign Defaultvarint T/F
-			clean.Variants = fd.Variants.map(mapper.Variants);
-		}else{
-
-			//Move these into Variant Level Property
-			var masterProps = ['ProductNameEn', 'ProductNameTh', 'Sku', 'Upc',
+	//Move these into Variant Level Property
+	var masterProps = ['ProductNameEn', 'ProductNameTh', 'Sku', 'Upc',
 			    'ValueEn', 'ValueTh', 'Display', 'OriginalPrice', 'SalePrice', 'DescriptionFullTh',
 			    'DescriptionFullEn', 'DescriptionShortEn', 'DescriptionShortTh',
 			    'Quantity', 'Length', 'Height', 'Sku',
 			    'OriginalPrice', 'SalePrice',
 			     'Width', 'Weight', 'WeightUnit', 'DimensionUnit'];
 
-			//We have to copy because `Variant` in UI is in top level
-			//DefaultVariant is master
-			clean.MasterVariant = {};
-			masterProps.forEach(function(k){
-				clean.MasterVariant[k] = fd[k];
+	clean.MasterVariant = {};
+	masterProps.forEach(function(k){
+		clean.MasterVariant[k] = fd[k];
+	});
+
+	clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
+	clean.MasterVariant.Images360 = fd.MasterImages360.map(mapper.Images);
+	clean.MasterVariant.Images = fd.MasterImages.map(mapper.Images);
+
+	try{
+		if(hasVariants){
+			var masterProps = [];
+			clean.Variants = fd.Variants.map(mapper.Variants);
+			//Find DefaultVariant
+			var targetHash = fd.DefaultVariant.hash;
+			clean.Variants.forEach(function(vari, index){
+				vari.DefaultVariant = false;
+				if(vari.hash == targetHash){
+					clean.Variants[index].DefaultVariant = true;
+				}
 			});
 
-			clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
-			clean.MasterVariant.Images360 = fd.MasterImages360.map(mapper.Images);
-			clean.MasterVariant.Images = fd.MasterImages.map(mapper.Images);
 		}
 	}catch(ex){
 		console.warn("Variant Distribute", ex);
 	}
 
-
+	//HardCoD
 	clean.SellerId = 1;
 	clean.ShopId = 1;
 
