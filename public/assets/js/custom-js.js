@@ -38,4 +38,9 @@ $(document).ready(function () {
 		var $this = $(this);
 		$this.hide();
 	});
+	$(".popover-gear .fa-gear").click(function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      $(this).closest('.popover-gear').find('.fa-caret-down').trigger( "click" );
+    });
 });

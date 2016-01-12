@@ -48,7 +48,7 @@ var app = angular.module('colspApp', ['ngAnimate', 'angularFileUpload', 'ui.tree
 .factory('storage', helpers.storage)
 .factory('util', helpers.util)
 .factory('base64', helpers.base64)
-.factory('transformer', helpers.transformer)
+.factory('productProxy', helpers.productProxy)
 
 //Services
 .factory('Product', services.product)

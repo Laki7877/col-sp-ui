@@ -3,6 +3,14 @@ module.exports = ['$q', '$http', 'common', function($q, $http, common){
 	'use strict';
 	var service = {};
 
+	service.getOne = function(productId){
+		var req = {
+			method: 'GET',
+			url: '/ProductStages/' + productId
+		};
+		return common.makeRequest(req);
+	};
+
 	service.getAll = function(parameters){
 		var req = {
 			method: 'GET',

@@ -12266,7 +12266,7 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 /* line 8, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-red hr {
-  border-top-color: #ffa6a6;
+  border-top-color: #ffa7a7;
 }
 /* line 11, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-red .alert-link {
@@ -12281,7 +12281,7 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 /* line 8, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-yellow hr {
-  border-top-color: #fffad1;
+  border-top-color: #fffad2;
 }
 /* line 11, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-yellow .alert-link {
@@ -12788,126 +12788,135 @@ label.css-label {
   width: 50px;
 }
 /* line 36, ../../../assets/_table.scss */
+.table .action-column {
+  width: 50px;
+  text-align: center;
+}
+/* line 41, ../../../assets/_table.scss */
 .table .modified-column {
   width: 88px;
 }
 
-/* line 42, ../../../assets/_table.scss */
+/* line 47, ../../../assets/_table.scss */
 .table-section {
   margin-top: 30px;
 }
-/* line 46, ../../../assets/_table.scss */
+/* line 51, ../../../assets/_table.scss */
 .table-section table.table.table-curved.product-list-table {
   border-color: #BCC7D5;
 }
-/* line 50, ../../../assets/_table.scss */
+/* line 55, ../../../assets/_table.scss */
 .table-section table > tbody > tr > td, .table-section table > thead > tr > th {
   border-color: #BCC7D5;
 }
-/* line 57, ../../../assets/_table.scss */
+/* line 62, ../../../assets/_table.scss */
 .table-section .product-list-table > tbody > tr:first-child > td {
   border-top: none;
 }
-/* line 63, ../../../assets/_table.scss */
+/* line 68, ../../../assets/_table.scss */
 .table-section .table > thead > tr > th {
   border-bottom-width: 1px;
 }
-/* line 67, ../../../assets/_table.scss */
+/* line 72, ../../../assets/_table.scss */
+.table-section .table > tbody > tr:hover {
+  background: #EDF2F9;
+}
+/* line 76, ../../../assets/_table.scss */
 .table-section .table {
   border: solid 1px #BCC7D5;
 }
-/* line 71, ../../../assets/_table.scss */
+/* line 80, ../../../assets/_table.scss */
 .table-section .caret-grey {
   color: #BCC7D5;
 }
-/* line 75, ../../../assets/_table.scss */
+/* line 84, ../../../assets/_table.scss */
 .table-section .icon-size-18px {
   font-size: 18px;
 }
-/* line 79, ../../../assets/_table.scss */
+/* line 88, ../../../assets/_table.scss */
 .table-section .red-message {
   color: #ec0000;
 }
-/* line 83, ../../../assets/_table.scss */
+/* line 92, ../../../assets/_table.scss */
 .table-section .green-message {
   color: #33bb5b;
 }
-/* line 87, ../../../assets/_table.scss */
+/* line 96, ../../../assets/_table.scss */
 .table-section .grey-message {
   color: #BCC7D5;
 }
-/* line 91, ../../../assets/_table.scss */
+/* line 100, ../../../assets/_table.scss */
 .table-section .eye-icon {
   font-size: 20px;
 }
-/* line 96, ../../../assets/_table.scss */
+/* line 105, ../../../assets/_table.scss */
 .table-section .display-column img {
   max-height: 40px;
   max-width: 40px;
   border-radius: 3px;
 }
-/* line 104, ../../../assets/_table.scss */
+/* line 113, ../../../assets/_table.scss */
 .table-section a.header-link {
   color: #32343C;
 }
-/* line 106, ../../../assets/_table.scss */
+/* line 115, ../../../assets/_table.scss */
 .table-section a.header-link span.active-underline {
   border-bottom: 2px solid #4891d2;
   padding-bottom: 4px;
 }
-/* line 110, ../../../assets/_table.scss */
+/* line 119, ../../../assets/_table.scss */
 .table-section a.header-link:focus {
   text-decoration: none;
 }
-/* line 115, ../../../assets/_table.scss */
+/* line 124, ../../../assets/_table.scss */
 .table-section .table-curved {
   border-collapse: separate;
   border-radius: 3px;
 }
-/* line 122, ../../../assets/_table.scss */
-.table-section .table > thead > tr > th, .table-section .table {
+/* line 131, ../../../assets/_table.scss */
+.table-section .table > thead > tr > th {
   padding-bottom: 4px;
   font-weight: normal;
 }
-/* line 127, ../../../assets/_table.scss */
+/* line 136, ../../../assets/_table.scss */
 .table-section .table > tbody > tr > td {
   vertical-align: middle;
 }
-/* line 131, ../../../assets/_table.scss */
+/* line 140, ../../../assets/_table.scss */
 .table-section td.info-column, .table-section td.image-columnm, .table-section td.live-column, .table-section td.visible-column {
   text-align: center;
 }
-/* line 135, ../../../assets/_table.scss */
+/* line 144, ../../../assets/_table.scss */
 .table-section .table-checkbox {
   margin-top: 0px;
   margin-bottom: 0;
 }
-/* line 140, ../../../assets/_table.scss */
+/* line 149, ../../../assets/_table.scss */
 .table-section .table-head {
   background: #edf2f9;
   color: #32343C;
   border-top-left-radius: 10px;
 }
 
-/* line 148, ../../../assets/_table.scss */
+/* line 157, ../../../assets/_table.scss */
 .page-navigation {
   float: right;
 }
-/* line 151, ../../../assets/_table.scss */
+/* line 160, ../../../assets/_table.scss */
 .page-navigation .grey-chevron {
   color: #BCC7D5;
 }
-/* line 155, ../../../assets/_table.scss */
+/* line 164, ../../../assets/_table.scss */
 .page-navigation .blue-chevron {
   color: #4899DD;
 }
-/* line 159, ../../../assets/_table.scss */
+/* line 168, ../../../assets/_table.scss */
 .page-navigation .view-page-separator {
   border-left: solid 1px #BCC7D5;
   padding-left: 15px;
 }
 
-/* line 169, ../../../assets/_table.scss */
+/* line 178, ../../../assets/_table.scss */
 .filter-section .filter-container {
   position: relative;
   padding: 12px 17px 12px;
@@ -12917,7 +12926,7 @@ label.css-label {
   border-width: 1px;
   border-radius: 4px;
 }
-/* line 179, ../../../assets/_table.scss */
+/* line 188, ../../../assets/_table.scss */
 .filter-section .filter-seperator {
   text-decoration: none;
   cursor: pointer;
@@ -12926,98 +12935,98 @@ label.css-label {
   padding-left: 9px;
   margin-left: 9px;
 }
-/* line 188, ../../../assets/_table.scss */
+/* line 197, ../../../assets/_table.scss */
 .filter-section .filter-first-option {
   text-decoration: none;
   cursor: pointer;
   color: #7B7F8F;
   margin-left: 20px;
 }
-/* line 195, ../../../assets/_table.scss */
+/* line 204, ../../../assets/_table.scss */
 .filter-section .filter-active {
   color: #32343C;
 }
 
-/* line 201, ../../../assets/_table.scss */
+/* line 210, ../../../assets/_table.scss */
 .search-section-wrapper {
   margin-top: 30px;
 }
-/* line 204, ../../../assets/_table.scss */
+/* line 213, ../../../assets/_table.scss */
 .search-section-wrapper .search-section {
   padding-left: 15px;
   padding-right: 15px;
   float: left;
 }
-/* line 210, ../../../assets/_table.scss */
+/* line 219, ../../../assets/_table.scss */
 .search-section-wrapper .section-action {
   width: 280px;
 }
-/* line 214, ../../../assets/_table.scss */
+/* line 223, ../../../assets/_table.scss */
 .search-section-wrapper .section-search {
   width: 410px;
 }
-/* line 218, ../../../assets/_table.scss */
+/* line 227, ../../../assets/_table.scss */
 .search-section-wrapper .search-section.section-filter {
   float: right;
 }
-/* line 222, ../../../assets/_table.scss */
+/* line 231, ../../../assets/_table.scss */
 .search-section-wrapper .search-section .btn-white {
   height: 30px;
 }
-/* line 226, ../../../assets/_table.scss */
+/* line 235, ../../../assets/_table.scss */
 .search-section-wrapper .body-dropdown-button {
   height: 30px;
   width: 180px;
 }
-/* line 230, ../../../assets/_table.scss */
+/* line 239, ../../../assets/_table.scss */
 .search-section-wrapper .body-dropdown-button .dropdown-text {
   width: 135px;
   display: inline-block;
 }
-/* line 236, ../../../assets/_table.scss */
+/* line 245, ../../../assets/_table.scss */
 .search-section-wrapper .dropdown-text {
   text-align: left;
 }
-/* line 240, ../../../assets/_table.scss */
+/* line 249, ../../../assets/_table.scss */
 .search-section-wrapper .search-box {
   height: 30px;
 }
-/* line 244, ../../../assets/_table.scss */
+/* line 253, ../../../assets/_table.scss */
 .search-section-wrapper .checkbox-wrapper {
   margin-top: 5px;
 }
 
-/* line 250, ../../../assets/_table.scss */
+/* line 259, ../../../assets/_table.scss */
 .table.ah-table {
   margin-bottom: 0;
 }
-/* line 251, ../../../assets/_table.scss */
+/* line 260, ../../../assets/_table.scss */
 .table.ah-table > thead > tr > th {
   border-bottom: 1px solid #BCC7D5;
 }
-/* line 253, ../../../assets/_table.scss */
+/* line 262, ../../../assets/_table.scss */
 .table.ah-table > thead > tr > th, .table.ah-table > thead > tr > th > * {
   vertical-align: middle;
 }
-/* line 258, ../../../assets/_table.scss */
+/* line 267, ../../../assets/_table.scss */
 .table.ah-table > tbody > tr > td {
   border-top: none;
 }
-/* line 263, ../../../assets/_table.scss */
+/* line 272, ../../../assets/_table.scss */
 .table.ah-table.ah-table-extra-padding > tbody > tr > td {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-/* line 270, ../../../assets/_table.scss */
+/* line 279, ../../../assets/_table.scss */
 .table.ah-table.ah-table-line > tbody > tr:first-child > td {
   border-top: none;
 }
-/* line 274, ../../../assets/_table.scss */
+/* line 283, ../../../assets/_table.scss */
 .table.ah-table.ah-table-line > tbody > tr > td {
   border-top: 1px solid #BCC7D5;
 }
 
-/* line 283, ../../../assets/_table.scss */
+/* line 292, ../../../assets/_table.scss */
 .table .column-text-ellipsis {
   max-width: 0;
   overflow: hidden;
@@ -13910,7 +13919,7 @@ html, body {
 }
 /* line 75, ../../../assets/_global_category.scss */
 .category-section .category-content {
-  height: 250px;
+  height: 285px;
   width: 100%;
   overflow: hidden;
 }
@@ -13924,8 +13933,8 @@ html, body {
   padding-right: 0;
   padding: 0px 0 0 0;
   margin: 0;
-  height: 250px;
-  max-height: 250px;
+  height: 285px;
+  max-height: 285px;
   width: 236px;
   overflow-y: auto;
   border-left: 1px solid #BCC7D5;
@@ -14318,17 +14327,7 @@ html, body {
   color: #FFFFFF;
 }
 
-/* line 140, ../../../assets/screen.scss */
-.sticky-footer {
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  padding: 15px 180px 15px 0px;
-  border-top: 1px solid #BCC7D5;
-  background: #FFFFFF;
-}
-
-/* line 149, ../../../assets/screen.scss */
+/* line 141, ../../../assets/screen.scss */
 .table .action-column {
   width: 60px;
   padding-top: 14px;

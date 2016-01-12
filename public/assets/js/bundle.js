@@ -2,7 +2,7 @@
 'use strict';
 //App Start here
 var angular = require('angular');
-var bulk = ({"controllers":({"adminCatCtrl":require("./controllers/adminCatCtrl.js"),"localCategory":require("./controllers/localCategory.js"),"productAdd":require("./controllers/productAdd.js"),"productAddSelectCategory":require("./controllers/productAddSelectCategory.js"),"productList":require("./controllers/productList.js"),"productListLocalCategory":require("./controllers/productListLocalCategory.js")}),"services":({"attributeSet":require("./services/attributeSet.js"),"brand":require("./services/brand.js"),"category":require("./services/category.js"),"globalCategory":require("./services/globalCategory.js"),"image":require("./services/image.js"),"localCategory":require("./services/localCategory.js"),"product":require("./services/product.js"),"shop":require("./services/shop.js")}),"helpers":({"base64":require("./helpers/base64.js"),"common":require("./helpers/common.js"),"storage":require("./helpers/storage.js"),"transformer":require("./helpers/transformer.js"),"util":require("./helpers/util.js"),"variantPair":require("./helpers/variantPair.js")}),"directives":({"ngCkeditor":require("./directives/ngCkeditor.js"),"ngDelegate":require("./directives/ngDelegate.js"),"ngSlideToggle":require("./directives/ngSlideToggle.js"),"ngTemplate":require("./directives/ngTemplate.js"),"popoverAny":require("./directives/popoverAny.js")}),"filters":({"capitalize":require("./filters/capitalize.js"),"ordinal":require("./filters/ordinal.js")})});
+var bulk = ({"controllers":({"adminCatCtrl":require("./controllers/adminCatCtrl.js"),"localCategory":require("./controllers/localCategory.js"),"productAdd":require("./controllers/productAdd.js"),"productAddSelectCategory":require("./controllers/productAddSelectCategory.js"),"productList":require("./controllers/productList.js"),"productListLocalCategory":require("./controllers/productListLocalCategory.js")}),"services":({"attributeSet":require("./services/attributeSet.js"),"brand":require("./services/brand.js"),"category":require("./services/category.js"),"globalCategory":require("./services/globalCategory.js"),"image":require("./services/image.js"),"localCategory":require("./services/localCategory.js"),"product":require("./services/product.js"),"shop":require("./services/shop.js")}),"helpers":({"base64":require("./helpers/base64.js"),"common":require("./helpers/common.js"),"productProxy":require("./helpers/productProxy.js"),"storage":require("./helpers/storage.js"),"util":require("./helpers/util.js"),"variantPair":require("./helpers/variantPair.js")}),"directives":({"ngCkeditor":require("./directives/ngCkeditor.js"),"ngDelegate":require("./directives/ngDelegate.js"),"ngSlideToggle":require("./directives/ngSlideToggle.js"),"ngTemplate":require("./directives/ngTemplate.js"),"popoverAny":require("./directives/popoverAny.js")}),"filters":({"capitalize":require("./filters/capitalize.js"),"ordinal":require("./filters/ordinal.js")})});
 var config = require('./config');
 var template = require('./template');
 
@@ -49,7 +49,7 @@ var app = angular.module('colspApp', ['ngAnimate', 'angularFileUpload', 'ui.tree
 .factory('storage', helpers.storage)
 .factory('util', helpers.util)
 .factory('base64', helpers.base64)
-.factory('transformer', helpers.transformer)
+.factory('productProxy', helpers.productProxy)
 
 //Services
 .factory('Product', services.product)
@@ -80,7 +80,7 @@ var app = angular.module('colspApp', ['ngAnimate', 'angularFileUpload', 'ui.tree
 .controller('LocalCategoryCtrl', controllers.localCategory)
 .controller('AdminCatCtrl', controllers.adminCatCtrl);
 
-},{"./config":2,"./controllers/adminCatCtrl.js":3,"./controllers/localCategory.js":4,"./controllers/productAdd.js":5,"./controllers/productAddSelectCategory.js":6,"./controllers/productList.js":7,"./controllers/productListLocalCategory.js":8,"./directives/ngCkeditor.js":9,"./directives/ngDelegate.js":10,"./directives/ngSlideToggle.js":11,"./directives/ngTemplate.js":12,"./directives/popoverAny.js":13,"./filters/capitalize.js":14,"./filters/ordinal.js":15,"./helpers/base64.js":16,"./helpers/common.js":17,"./helpers/storage.js":18,"./helpers/transformer.js":19,"./helpers/util.js":20,"./helpers/variantPair.js":21,"./services/attributeSet.js":22,"./services/brand.js":23,"./services/category.js":24,"./services/globalCategory.js":25,"./services/image.js":26,"./services/localCategory.js":27,"./services/product.js":28,"./services/shop.js":29,"./template":30,"angular":40,"angular-animate":32,"angular-base64":33,"angular-file-upload":34,"angular-ui-bootstrap":35,"angular-ui-tree":38}],2:[function(require,module,exports){
+},{"./config":2,"./controllers/adminCatCtrl.js":3,"./controllers/localCategory.js":4,"./controllers/productAdd.js":5,"./controllers/productAddSelectCategory.js":6,"./controllers/productList.js":7,"./controllers/productListLocalCategory.js":8,"./directives/ngCkeditor.js":9,"./directives/ngDelegate.js":10,"./directives/ngSlideToggle.js":11,"./directives/ngTemplate.js":12,"./directives/popoverAny.js":13,"./filters/capitalize.js":14,"./filters/ordinal.js":15,"./helpers/base64.js":16,"./helpers/common.js":17,"./helpers/productProxy.js":18,"./helpers/storage.js":19,"./helpers/util.js":20,"./helpers/variantPair.js":21,"./services/attributeSet.js":22,"./services/brand.js":23,"./services/category.js":24,"./services/globalCategory.js":25,"./services/image.js":26,"./services/localCategory.js":27,"./services/product.js":28,"./services/shop.js":29,"./template":30,"angular":40,"angular-animate":32,"angular-base64":33,"angular-file-upload":34,"angular-ui-bootstrap":35,"angular-ui-tree":38}],2:[function(require,module,exports){
 //remote baseUrl - 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/'
 module.exports = {
 	baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/',
@@ -211,14 +211,13 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 },{}],5:[function(require,module,exports){
 var angular = require('angular');
 
-module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', 'transformer',
-	function($scope, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, transformer){
+module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', 'productProxy',
+	function($scope, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, productProxy){
 	'use strict';
 
 	$scope.publish = function(isValid){
-
 		console.log('formData', $scope.formData);
-		var apiRequest = transformer.productTransform($scope.formData);
+		var apiRequest = productProxy.productTransform($scope.formData);
 		console.log('apiRequest', apiRequest);
 		console.log('aJSON', JSON.stringify(apiRequest));
 		Product.publish(apiRequest, $scope.Status).then(function(){
@@ -229,6 +228,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	};
 
 	$scope.formData = {
+		MasterVariant: {},
 		MasterImages: [],
 		MasterImages360: [],
 		VideoLinks: [],
@@ -273,23 +273,43 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 		},
 		angular: function() {
-			$scope.init = function(catId) {
-				if(angular.isUndefined(catId)) {
-					catId = 13;
-				}
+			$scope.init = function(viewBag) {
+		
 				var shopId = 1;
+				var productId;
 
-				//Load Attribute Set
-				AttributeSet.getByCategory(catId).then(function(data){
-					$scope.availableAttributeSets = data;
-				});
+				var catReady = function(catId){
+					console.log("Cat Ready", catId);
+					AttributeSet.getByCategory(catId).then(function(data){
+						$scope.availableAttributeSets = data;
+					});
+					//Load Global Cat
+					GlobalCategory.getAll().then(function(data) {
+						$scope.availableGlobalCategories = Category.convertDepthArrayToNestedArray(data);
+						$scope.formData.GlobalCategories[0] = Category.findByCatId(catId, $scope.availableGlobalCategories);
+					});
 
-				//Load Global Cat
-				GlobalCategory.getAll().then(function(data) {
-					$scope.availableGlobalCategories = Category.convertDepthArrayToNestedArray(data);
-					$scope.formData.GlobalCategories[0] = Category.findByCatId(catId, $scope.availableGlobalCategories);
-				});
+				};
 
+				console.log(viewBag);
+				if("productId" in viewBag){
+					productId = viewBag.productId;
+					Product.getOne(productId).then(function(ivFormData){
+						var gcat = ivFormData.GlobalCategory;
+						console.log("formData^-1", ivFormData);
+						$scope.formData = productProxy.inverseProductTransform(ivFormData);
+						console.log("formData", $scope.formData);
+						catReady(gcat);
+					});	
+				}	
+
+				if("catId" in viewBag){
+					var catId = viewBag.catId;
+					catReady(catId);
+				}
+				
+			
+			
 				//Load Local Cat
 				Shop.getLocalCategories(shopId).then(function(data) {
 					$scope.availableLocalCategories = Category.convertDepthArrayToNestedArray(data);
@@ -353,7 +373,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			});
 
 			//Assign uploader images
-			ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages);
+		    ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages);
 		    ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360);
 
 		    /**
@@ -785,7 +805,8 @@ module.exports = ['$scope', 'LocalCategory', function($scope, LocalCategory) {
 },{}],9:[function(require,module,exports){
 module.exports = [function () {
     return {
-        require: '?ngModel',
+	priority: 1010,
+	require: '?ngModel',
         link: function ($scope, elm, attr, ngModel) {
             var ck = CKEDITOR.replace(elm[0], attr.ngCkeditor || {});
             CKFinder.setupCKEditor(ck, '../')
@@ -794,13 +815,17 @@ module.exports = [function () {
                     ngModel.$setViewValue(ck.getData());
                 });
             });
-
+	    ck.on('instanceReady' , function(){
+	    	ck.setData(ngModel.$modelValue);
+	    });
+	
             ngModel.$render = function (value) {
                 ck.setData(ngModel.$modelValue);
             };
         }
     };
 }];
+
 },{}],10:[function(require,module,exports){
 var angular = require('angular');
 module.exports = [function() {
@@ -976,81 +1001,13 @@ module.exports = ['$http', '$q', 'storage', 'config', function ($http, $q, stora
 }];
 
 },{}],18:[function(require,module,exports){
-module.exports = [function () {
-    'use strict';
-    var service = {};
-    /**
-     * Returns the stored sessionToken
-     * This method first checks in sessionStorage if sessionToken is not found in sessionStorage
-     * this method checks in localStorage, if sessionToken still not found in localStorage,
-     * then it will return null or undefined
-     * The controllers has to implement the logic that if sessionToken is null/undefined then user is not authorized
-     */
-    service.getSessionToken = function () {
-        var token = sessionStorage.getItem('central.seller.portal.auth.token');
-        if (!token) {
-            token = localStorage.getItem('central.seller.portal.auth.token');
-        }
-        return token;
-    };
-    /**
-     * Store the session token in sessionStorage
-     * A boolean flag is passed which when true indicate that user chose remember me option and data should
-     * also be stored in localStorage
-     */
-    service.storeSessionToken = function (sessionToken, flag) {
-        sessionStorage.setItem('central.seller.portal.auth.token', sessionToken);
-        if (flag) {
-            localStorage.setItem('central.seller.portal.auth.token', sessionToken);
-        }
-    };
-
-    /**
-     * Get current user profile stored in sessionStorage or localStorage
-     */
-    service.getCurrentUserProfile = function () {
-        var profile = sessionStorage.getItem('central.seller.portal.auth.profile');
-        if (!profile) {
-            profile = localStorage.getItem('central.seller.portal.auth.profile');
-        }
-        return angular.fromJson(profile);
-    };
-
-    /**
-     * Store the current user profile in sessionStorage
-     * A boolean flag is passed which when true indicate that user chose remember me option and data
-     * should also be stored in localStorage
-     */
-    service.storeCurrentUserProfile = function (profile, flag) {
-        profile = angular.toJson(profile);
-        sessionStorage.setItem('central.seller.portal.auth.profile', profile);
-        if (flag) {
-            localStorage.setItem('central.seller.portal.auth.profile', profile);
-        }
-    };
-
-    /**
-     * Utility method to clear the sessionStorage
-     */
-    service.clear = function () {
-        sessionStorage.removeItem('central.seller.portal.auth.token');
-        sessionStorage.removeItem('central.seller.portal.auth.profile');
-
-        localStorage.removeItem('central.seller.portal.auth.actions');
-        localStorage.removeItem('central.seller.portal.auth.profile');
-    };
-
-    return service;
-}];
-},{}],19:[function(require,module,exports){
 var angular = require('angular');
 
-module.exports = [function () {
+module.exports = ['util', function (util) {
     'use strict';
     var tra = {};
 
     tra.productTransform = function(fd){
-	//TODO: REmove [A] from [A, B,C] Variant
 	    /*
     		 * - Convert all category into single { CategoryId } Structure
     		 * - Add position to image {} request
@@ -1133,16 +1090,8 @@ module.exports = [function () {
 
 		try{
 		  clean.Remark = fd.Remark;
-		  clean.Width = fd.Width || 0;
-		  clean.Length = fd.Length || 0;
-		  clean.Height = fd.Height || 0;
-		  clean.WeightUnit = fd.WeightUnit;
-		  clean.Weight = fd.Weight || 0;
-		  clean.DimensionUnit = fd.DimensionUnit;
 		  //TODO: PrepareDay is not getting through
 		  clean.PrepareDay = fd.PrepareDay || 0;
-		  clean.StockType = fd.StockType;
-		  clean.SafetyStock = fd.SafetyStock;
 		  clean.SEO = fd.SEO;
 		  clean.ControlFlags = fd.ControlFlags;
 		  clean.Brand = fd.Brand;
@@ -1176,22 +1125,14 @@ module.exports = [function () {
 		console.warn("Organizing Related Products", ex);
 	}
 
-	//Move these into Variant Level Property
-	var masterProps = ['ProductNameEn', 'ProductNameTh', 'Sku', 'Upc',
-			    'ValueEn', 'ValueTh', 'Display', 'OriginalPrice', 'SalePrice', 'DescriptionFullTh',
-			    'DescriptionFullEn', 'DescriptionShortEn', 'DescriptionShortTh',
-			    'Quantity', 'Length', 'Height', 'Sku',
-			    'OriginalPrice', 'SalePrice',
-			     'Width', 'Weight', 'WeightUnit', 'DimensionUnit'];
-
-	clean.MasterVariant = {};
-	masterProps.forEach(function(k){
-		clean.MasterVariant[k] = fd[k];
-	});
-
+	//MasterVariant
+	clean.MasterVariant = fd.MasterVariant;
 	clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
 	clean.MasterVariant.Images360 = fd.MasterImages360.map(mapper.Images);
 	clean.MasterVariant.Images = fd.MasterImages.map(mapper.Images);
+	clean.MasterVariant.StockType = fd.StockType;
+	clean.MasterVariant.Quantity = fd.Quantity || 0;
+ 	clean.MasterVariant.SafetyStock = fd.SafetyStock || 0;
 
 	try{
 		if(hasVariants){
@@ -1200,6 +1141,8 @@ module.exports = [function () {
 			//Find DefaultVariant
 			var targetHash = fd.DefaultVariant.hash;
 			clean.Variants.forEach(function(vari, index){
+				vari.SafetyStock = 0; //Placeholder
+				vari.StockType = 0;  //Placeholder
 				vari.DefaultVariant = false;
 				if(vari.hash == targetHash){
 					clean.Variants[index].DefaultVariant = true;
@@ -1218,19 +1161,140 @@ module.exports = [function () {
 	return clean;
     };
 
-    tra.inverseProductTransform = function(){
+    tra.inverseProductTransform = function(invFd){
 
+	var invMapper ={
+		VideoLinks: function(m){
+			return m.Url;
+		},
+		Variants: function(m){
+			m.hash = util.variant.hash(m.FirstAttribute, m.SecondAttribute);
+			m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
+			return m;
+		}
+	};
+
+	//invFd.Variants = invFd.Variants.map(invMapper.Variants);
+
+	var MasterAttribute = {};
+	invFd.MasterAttribute.forEach(function(ma){
+		MasterAttribute[ma.AttributeId]  = ma.ValueEn;
+	});
+	invFd.MasterAttribute = MasterAttribute;
+	invFd.LocalCategories.unshift({
+		CategoryId: invFd.LocalCategory
+	});
+
+	if(invFd.MasterVariant.VideoLinks) invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
+	invFd.Variants.forEach(function(variant, index){
+		variant.VideoLinks = variant.VideoLinks.map(invMapper.VideoLinks);
+	});
+
+	//TODO: This should fetch entire Object
+	invFd.GlobalCategories.unshift({
+		CategoryId: invFd.GlobalCategory
+	});
+	delete invFd.GlobalCategory;
+	delete invFd.LocalCategory;
+
+	//TODO: Just change ngmodel to bind to MasterVariant.MasterImages Directly
+	invFd.MasterImages = invFd.MasterVariant.Images;
+	delete invFd.MasterVariant.Images;
+	invFd.MasterImages360 = invFd.MasterVariant.Images360;
+	delete invFd.MasterVariant.Images360;
+
+	invFd.Keywords = invFd.Keywords.split(",");
+	if(invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; //TODO: Hardcode
+
+    	return invFd;	    
     };
 
     return tra;
 }];
 
-},{"angular":40}],20:[function(require,module,exports){
+},{"angular":40}],19:[function(require,module,exports){
+module.exports = [function () {
+    'use strict';
+    var service = {};
+    /**
+     * Returns the stored sessionToken
+     * This method first checks in sessionStorage if sessionToken is not found in sessionStorage
+     * this method checks in localStorage, if sessionToken still not found in localStorage,
+     * then it will return null or undefined
+     * The controllers has to implement the logic that if sessionToken is null/undefined then user is not authorized
+     */
+    service.getSessionToken = function () {
+        var token = sessionStorage.getItem('central.seller.portal.auth.token');
+        if (!token) {
+            token = localStorage.getItem('central.seller.portal.auth.token');
+        }
+        return token;
+    };
+    /**
+     * Store the session token in sessionStorage
+     * A boolean flag is passed which when true indicate that user chose remember me option and data should
+     * also be stored in localStorage
+     */
+    service.storeSessionToken = function (sessionToken, flag) {
+        sessionStorage.setItem('central.seller.portal.auth.token', sessionToken);
+        if (flag) {
+            localStorage.setItem('central.seller.portal.auth.token', sessionToken);
+        }
+    };
+
+    /**
+     * Get current user profile stored in sessionStorage or localStorage
+     */
+    service.getCurrentUserProfile = function () {
+        var profile = sessionStorage.getItem('central.seller.portal.auth.profile');
+        if (!profile) {
+            profile = localStorage.getItem('central.seller.portal.auth.profile');
+        }
+        return angular.fromJson(profile);
+    };
+
+    /**
+     * Store the current user profile in sessionStorage
+     * A boolean flag is passed which when true indicate that user chose remember me option and data
+     * should also be stored in localStorage
+     */
+    service.storeCurrentUserProfile = function (profile, flag) {
+        profile = angular.toJson(profile);
+        sessionStorage.setItem('central.seller.portal.auth.profile', profile);
+        if (flag) {
+            localStorage.setItem('central.seller.portal.auth.profile', profile);
+        }
+    };
+
+    /**
+     * Utility method to clear the sessionStorage
+     */
+    service.clear = function () {
+        sessionStorage.removeItem('central.seller.portal.auth.token');
+        sessionStorage.removeItem('central.seller.portal.auth.profile');
+
+        localStorage.removeItem('central.seller.portal.auth.actions');
+        localStorage.removeItem('central.seller.portal.auth.profile');
+    };
+
+    return service;
+}];
+},{}],20:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['storage', function (storage) {
     'use strict';
     var service = {};
+
+    service.variant = {};
+
+    service.variant.hash = function(a,b){
+	return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + b.AttributeId + "-" + b.ValueEn.trim());
+    };
+
+    service.variant.toString = function(a,b){
+	return (a.ValueEn.trim() + ", " + b.ValueEn.trim());	
+    };
 
     /**
      * Function to check if any user is currently logged in
@@ -1252,17 +1316,15 @@ module.exports = ['storage', function (storage) {
 }];
 
 },{"angular":40}],21:[function(require,module,exports){
-module.exports = [function () {
+module.exports = ['util', function (util) {
 	
 	//Struct for Variant Pair
 	var VariantPair = function(a,b){
 		//Variant is a cross of First and Second Attribute
 		this.FirstAttribute = a; 
 		this.SecondAttribute = b;
-		this.hash = (a.AttributeId + "-" +
-		 a.ValueEn.trim() + "-" + b.AttributeId +
-		  "-" + b.ValueEn.trim());
-		this.text = (a.ValueEn.trim() + ", " + b.ValueEn.trim());
+		this.hash = util.variant.hash(a,b); 
+		this.text = util.variant.toString(a,b);
 	};
 
 	return VariantPair;
@@ -1638,6 +1700,14 @@ module.exports = ['common', function(common) {
 module.exports = ['$q', '$http', 'common', function($q, $http, common){
 	'use strict';
 	var service = {};
+
+	service.getOne = function(productId){
+		var req = {
+			method: 'GET',
+			url: '/ProductStages/' + productId
+		};
+		return common.makeRequest(req);
+	};
 
 	service.getAll = function(parameters){
 		var req = {

@@ -10,8 +10,12 @@ $menus = [
 $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 ?>
 <?php $this->start('page-body') ?>
-	<div ng-controller="ProductAddCtrl" ng-init="init(<?= $catid ?>)">
-		<? $this->insert('components/page-title-breadcrumb', ['text' => "Products/Add Product"]) ?>
+<div ng-controller="ProductAddCtrl" ng-init="init({
+		<?php foreach($viewBag as $key=>$value): ?>
+			<?=$key?> : '<?=$value?>'	
+		<?php endforeach; ?>
+		})">
+		<? $this->insert('components/page-title-breadcrumb', ['text' => "Products/ " . $title]) ?>
 		<div class="add-product-body">
 
 			<? $this->insert('components/tab-nav', ["items" => $menus]) ?>
@@ -40,6 +44,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 							<button class="btn btn-white btn-width-xl">Preview</button>
 							<button class="btn btn-white btn-width-xl" type="submit"
 							ng-click="Status = 'DF'">Save as Draft</button>
+							
+							<button ng-disabled="addProductForm.$invalid" 		
+							type="submit" class="btn btn-blue btn-width-xl" ng-click="Status ='WA'">Publish</button>
 						</div>
 					</div>
 				</div>

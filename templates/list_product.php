@@ -49,7 +49,7 @@
             <td class="display-column">
               <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
             </td>
-            <td>{{ row.ProductNameEn }}</td>
+            <td><a href="products/edit">{{ row.ProductNameEn }}</a></td>
             <td class="price-column">{{ row.SalePrice | currency: ' ' : 2 }}</td>
             <td class="info-column">
               <i class="fa fa-check color-green icon-size-18px"></i>
