@@ -2,7 +2,6 @@
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminCategoryCtrl" ng-init="init()" class="local-category-page">
-		<pre>{{formData}}</pre>
 		<div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()">{{alert.message}}</div>
 		<div class="page-header with-border">
 		    <h1 class="float-left page-header-title">Global Category</h1>
