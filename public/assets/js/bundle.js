@@ -75,7 +75,7 @@ module.exports = ['Brand', function(Brand){
 'use strict';
 //App Start here
 var angular = require('angular');
-var bulk = ({"controllers":({"adminAttribute":require("./controllers\\adminAttribute.js"),"adminAttributeAdd":require("./controllers\\adminAttributeAdd.js"),"adminAttributeSet":require("./controllers\\adminAttributeSet.js"),"adminAttributeSetAdd":require("./controllers\\adminAttributeSetAdd.js"),"adminCategory":require("./controllers\\adminCategory.js"),"brand":require("./controllers\\brand.js"),"localCategory":require("./controllers\\localCategory.js"),"productAdd":require("./controllers\\productAdd.js"),"productAddSelectCategory":require("./controllers\\productAddSelectCategory.js"),"productList":require("./controllers\\productList.js"),"productListLocalCategory":require("./controllers\\productListLocalCategory.js"),"root":require("./controllers\\root.js")}),"services":({"attribute":require("./services\\attribute.js"),"attributeSet":require("./services\\attributeSet.js"),"brand":require("./services\\brand.js"),"category":require("./services\\category.js"),"globalCategory":require("./services\\globalCategory.js"),"image":require("./services\\image.js"),"localCategory":require("./services\\localCategory.js"),"product":require("./services\\product.js"),"shop":require("./services\\shop.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"productProxy":require("./helpers\\productProxy.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"popoverAny":require("./directives\\popoverAny.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"ordinal":require("./filters\\ordinal.js")}),"adapters":({"brand":require("./adapters\\brand.js")})});
+var bulk = ({"controllers":({"adminAttribute":require("./controllers/adminAttribute.js"),"adminAttributeAdd":require("./controllers/adminAttributeAdd.js"),"adminAttributeSet":require("./controllers/adminAttributeSet.js"),"adminAttributeSetAdd":require("./controllers/adminAttributeSetAdd.js"),"adminCategory":require("./controllers/adminCategory.js"),"brand":require("./controllers/brand.js"),"localCategory":require("./controllers/localCategory.js"),"productAdd":require("./controllers/productAdd.js"),"productAddSelectCategory":require("./controllers/productAddSelectCategory.js"),"productList":require("./controllers/productList.js"),"productListLocalCategory":require("./controllers/productListLocalCategory.js"),"root":require("./controllers/root.js")}),"services":({"attribute":require("./services/attribute.js"),"attributeSet":require("./services/attributeSet.js"),"brand":require("./services/brand.js"),"category":require("./services/category.js"),"globalCategory":require("./services/globalCategory.js"),"image":require("./services/image.js"),"localCategory":require("./services/localCategory.js"),"product":require("./services/product.js"),"shop":require("./services/shop.js")}),"helpers":({"base64":require("./helpers/base64.js"),"common":require("./helpers/common.js"),"productProxy":require("./helpers/productProxy.js"),"storage":require("./helpers/storage.js"),"util":require("./helpers/util.js"),"variantPair":require("./helpers/variantPair.js")}),"directives":({"ncTradableSelect":require("./directives/ncTradableSelect.js"),"ngCkeditor":require("./directives/ngCkeditor.js"),"ngDelegate":require("./directives/ngDelegate.js"),"ngSlideToggle":require("./directives/ngSlideToggle.js"),"ngTemplate":require("./directives/ngTemplate.js"),"popoverAny":require("./directives/popoverAny.js")}),"filters":({"capitalize":require("./filters/capitalize.js"),"ordinal":require("./filters/ordinal.js")}),"adapters":({"brand":require("./adapters/brand.js")})});
 var config = require('./config');
 var template = require('./template');
 
@@ -200,7 +200,7 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 .controller('AdminCategoryCtrl', controllers.adminCategory)
 .controller('AdminBrandCtrl',controllers.brand);
 
-},{"./adapters\\brand.js":1,"./config":3,"./controllers\\adminAttribute.js":4,"./controllers\\adminAttributeAdd.js":5,"./controllers\\adminAttributeSet.js":6,"./controllers\\adminAttributeSetAdd.js":7,"./controllers\\adminCategory.js":8,"./controllers\\brand.js":9,"./controllers\\localCategory.js":10,"./controllers\\productAdd.js":11,"./controllers\\productAddSelectCategory.js":12,"./controllers\\productList.js":13,"./controllers\\productListLocalCategory.js":14,"./controllers\\root.js":15,"./directives\\ncTradableSelect.js":16,"./directives\\ngCkeditor.js":17,"./directives\\ngDelegate.js":18,"./directives\\ngSlideToggle.js":19,"./directives\\ngTemplate.js":20,"./directives\\popoverAny.js":21,"./filters\\capitalize.js":22,"./filters\\ordinal.js":23,"./helpers\\base64.js":24,"./helpers\\common.js":25,"./helpers\\productProxy.js":26,"./helpers\\storage.js":27,"./helpers\\util.js":28,"./helpers\\variantPair.js":29,"./services\\attribute.js":30,"./services\\attributeSet.js":31,"./services\\brand.js":32,"./services\\category.js":33,"./services\\globalCategory.js":34,"./services\\image.js":35,"./services\\localCategory.js":36,"./services\\product.js":37,"./services\\shop.js":38,"./template":39,"angular":51,"angular-animate":41,"angular-base64":42,"angular-file-upload":43,"angular-sanitize":45,"angular-ui-bootstrap":46,"angular-ui-tree":49,"ui-select":52}],3:[function(require,module,exports){
+},{"./adapters/brand.js":1,"./config":3,"./controllers/adminAttribute.js":4,"./controllers/adminAttributeAdd.js":5,"./controllers/adminAttributeSet.js":6,"./controllers/adminAttributeSetAdd.js":7,"./controllers/adminCategory.js":8,"./controllers/brand.js":9,"./controllers/localCategory.js":10,"./controllers/productAdd.js":11,"./controllers/productAddSelectCategory.js":12,"./controllers/productList.js":13,"./controllers/productListLocalCategory.js":14,"./controllers/root.js":15,"./directives/ncTradableSelect.js":16,"./directives/ngCkeditor.js":17,"./directives/ngDelegate.js":18,"./directives/ngSlideToggle.js":19,"./directives/ngTemplate.js":20,"./directives/popoverAny.js":21,"./filters/capitalize.js":22,"./filters/ordinal.js":23,"./helpers/base64.js":24,"./helpers/common.js":25,"./helpers/productProxy.js":26,"./helpers/storage.js":27,"./helpers/util.js":28,"./helpers/variantPair.js":29,"./services/attribute.js":30,"./services/attributeSet.js":31,"./services/brand.js":32,"./services/category.js":33,"./services/globalCategory.js":34,"./services/image.js":35,"./services/localCategory.js":36,"./services/product.js":37,"./services/shop.js":38,"./template":39,"angular":51,"angular-animate":41,"angular-base64":42,"angular-file-upload":43,"angular-sanitize":45,"angular-ui-bootstrap":46,"angular-ui-tree":49,"ui-select":52}],3:[function(require,module,exports){
 //remote baseUrl - 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/'
 module.exports = {
 	baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/',
@@ -597,6 +597,14 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 	};
 
+	$scope.refreshRelatedProducts = function(q){
+		return Product.getAll({
+			searchText: q
+		}).then(function(dataSet){
+			console.log("Refreshing", dataSet);
+			$scope.availableRelatedProducts = dataSet.data;
+		});
+	};
 
 	$scope.refreshBrands = function(q){
 		Brand.getAll(q).then(function(dataSet){
@@ -621,6 +629,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	$scope.formData = {
 		Brand: {},
 		MasterVariant: {},
+		RelatedProducts: [],
 		MasterImages: [],
 		MasterImages360: [],
 		VideoLinks: [],
@@ -655,13 +664,14 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 			console.log($scope.formData, "at global jquery");
 			
+			/*
 			$(".select2-init-simple").select2();
 			$('.select2-init-keywords').select2();
 
 			$(".select2-init-track").on("change", function(ev){
 				$scope.$digest();
 			});
-
+			*/
 		},
 		angular: function() {
 
@@ -701,6 +711,13 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 							var A = $scope.attributeOptions[0].options[aKey];
 							for(var bKey in $scope.attributeOptions[1].options){
 								var B = $scope.attributeOptions[1].options[bKey];
+
+								if(A['AttributeValue']){
+									A = A.AttributeValue.AttributeValueEn;
+								}
+								if(B['AttributeValue']){
+									B = B.AttributeValue.AttributeValueEn;
+								}
 
 								var kpair = new VariantPair({
 									AttributeId: $scope.attributeOptions[0].Attribute.AttributeId,
@@ -824,6 +841,9 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			$scope.availableGlobalCategories = [];
 			$scope.availableLocalCategories = [];
 			$scope.availableBrands = [];
+			$scope.availableSearchTags = ["Eneloop", "Extra Battery"];
+			$scope.availableRelatedProducts = [];
+			$scope.availableStockTypes = ['Stock', 'Pre-Order'];
 
 			//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
 			$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
@@ -839,21 +859,6 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		jquery: function(){
 			//NOTE: as of now this is only called in EDIT mode
 			//TODO: which is wrong
-			brandAdapter.load($scope.formData);
-	
-			$('.select2-init-brand').select2({
-				dataAdapter:  $.fn.select2.amd.require('select2/data/brandAdapter'),
-				templateResult: function(d){
-					if(!d || !d.BrandNameEn) return "Loading..";
-					return d.BrandNameEn + " (" + d.BrandNameTh + ")";
-				},
-				templateSelection: function(d){
-					if(!d || !d.BrandNameEn) return "No Brand";
-					return d.BrandNameEn + " (" + d.BrandNameTh + ")";
-				}
-			});
-
-			$('.select2-init-keywords').select2();
 
 		},
 		angular: function() {}
@@ -960,18 +965,11 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			if($scope.attributeOptions[index].attribute){
 				isListInput = ($scope._isListInput($scope.attributeOptions[index].Attribute.Attribute.DataType));
 			}
-
-			//Reset Options
-			$(".select2-init-" + index).select2({
-				tags: !isListInput
-			});
-
-			//$scope.attributeOptions[index].options = [];
 		},
 		jquery: function(){
-			tabPage.variation.initSelect2(0);
-			tabPage.variation.initSelect2(1);
-			$('.select2-init-default-variation').select2();
+			//tabPage.variation.initSelect2(0);
+			//tabPage.variation.initSelect2(1);
+			//$('.select2-init-default-variation').select2();
 		},
 		angular: function() {
 			//Unmultiplied Variants (factor)
@@ -1014,7 +1012,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	};
 	tabPage.more_option = {
 		jquery: function() {
-			$(".select2-init-related").select2({
+			/*$(".select2-init-related").select2({
 				tags: false,
 				templateResult: function(d){
 					if(!("ProductNameEn" in d)) return null;
@@ -1039,8 +1037,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 						}).then(success, failure);
 					}
 				}
-			});
-
+			});*/
 		},
 		angular: function() {
 

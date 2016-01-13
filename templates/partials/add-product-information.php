@@ -5,6 +5,7 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Vital Information</h2></div>
 				<div class="form-section-content">
+
 					<? $this->insert('components/forms/input-text-with-label',
 						["label" => "Product Name (Thai)", "ng_model" =>
 						"formData.MasterVariant.ProductNameTh",
@@ -88,14 +89,15 @@
 				<div class="form-section-header"><h2>Keywords</h2></div>
 				<div class="form-section-content">
 					<? $this->insert('components/forms/dropdown-with-label',
-					["label" => "Search Tag",
-				       			"ng_model" => "formData.Keywords",
-							    "tooltip" => "This is a tooltip text",
-							    "input_class" => "select2-init-keywords select2-init-track",
-						     	"size" => "large",
-						    	"input_attrs" =>
-						    	'data-tags="true" data-placeholder="Separated by a comma" multiple="multiple"',
-						    	"options" => []]) ?>
+							["label" => "Search Tag",
+				       		"ng_model" => "formData.Keywords",
+					     	"tooltip" => "This is a tooltip text",
+							"size" => "large",
+							"choices" => "availableSearchTags",
+							"multiple" => true,
+							"tagging" => true
+						]) ?>
+
 					<? $this->insert('components/forms/tags-with-label', ["label" => "Suggested Search Tag"]) ?>
 				</div>
 			</div>
@@ -105,7 +107,11 @@
 					<? $this->insert('components/forms/input-text-with-label',
 						["label" => "Inventory Amount", "ng_model" => "formData.MasterVariant.Quantity", "hint" => "Example: 100"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Safety Stock Amount", "ng_model" => "formData.MasterVariant.SafetyStock", "hint" => "Example: 10", "tooltip" => "This is a tooltip text"]) ?>
-					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Stock Type", "ng_model" => "formData.MasterVariant.StockType", "options" => ["Stock", "Pre-Order"]]) ?>
+					<? $this->insert('components/forms/dropdown-with-label', 
+						["label" => "Stock Type", 
+						"ng_model" => "formData.MasterVariant.StockType", 
+						"choices" => "availableStockTypes",
+						"options" => ["Stock", "Pre-Order"]]) ?>
 				</div>
 			</div>
 			<div class="form-section">

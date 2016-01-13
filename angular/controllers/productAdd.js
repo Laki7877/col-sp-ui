@@ -13,6 +13,14 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 	};
 
+	$scope.refreshRelatedProducts = function(q){
+		return Product.getAll({
+			searchText: q
+		}).then(function(dataSet){
+			console.log("Refreshing", dataSet);
+			$scope.availableRelatedProducts = dataSet.data;
+		});
+	};
 
 	$scope.refreshBrands = function(q){
 		Brand.getAll(q).then(function(dataSet){
@@ -37,6 +45,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	$scope.formData = {
 		Brand: {},
 		MasterVariant: {},
+		RelatedProducts: [],
 		MasterImages: [],
 		MasterImages360: [],
 		VideoLinks: [],
@@ -71,13 +80,14 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 			console.log($scope.formData, "at global jquery");
 			
+			/*
 			$(".select2-init-simple").select2();
 			$('.select2-init-keywords').select2();
 
 			$(".select2-init-track").on("change", function(ev){
 				$scope.$digest();
 			});
-
+			*/
 		},
 		angular: function() {
 
@@ -117,6 +127,13 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 							var A = $scope.attributeOptions[0].options[aKey];
 							for(var bKey in $scope.attributeOptions[1].options){
 								var B = $scope.attributeOptions[1].options[bKey];
+
+								if(A['AttributeValue']){
+									A = A.AttributeValue.AttributeValueEn;
+								}
+								if(B['AttributeValue']){
+									B = B.AttributeValue.AttributeValueEn;
+								}
 
 								var kpair = new VariantPair({
 									AttributeId: $scope.attributeOptions[0].Attribute.AttributeId,
@@ -240,6 +257,9 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			$scope.availableGlobalCategories = [];
 			$scope.availableLocalCategories = [];
 			$scope.availableBrands = [];
+			$scope.availableSearchTags = ["Eneloop", "Extra Battery"];
+			$scope.availableRelatedProducts = [];
+			$scope.availableStockTypes = ['Stock', 'Pre-Order'];
 
 			//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
 			$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
@@ -255,21 +275,6 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		jquery: function(){
 			//NOTE: as of now this is only called in EDIT mode
 			//TODO: which is wrong
-			brandAdapter.load($scope.formData);
-	
-			$('.select2-init-brand').select2({
-				dataAdapter:  $.fn.select2.amd.require('select2/data/brandAdapter'),
-				templateResult: function(d){
-					if(!d || !d.BrandNameEn) return "Loading..";
-					return d.BrandNameEn + " (" + d.BrandNameTh + ")";
-				},
-				templateSelection: function(d){
-					if(!d || !d.BrandNameEn) return "No Brand";
-					return d.BrandNameEn + " (" + d.BrandNameTh + ")";
-				}
-			});
-
-			$('.select2-init-keywords').select2();
 
 		},
 		angular: function() {}
@@ -376,18 +381,11 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			if($scope.attributeOptions[index].attribute){
 				isListInput = ($scope._isListInput($scope.attributeOptions[index].Attribute.Attribute.DataType));
 			}
-
-			//Reset Options
-			$(".select2-init-" + index).select2({
-				tags: !isListInput
-			});
-
-			//$scope.attributeOptions[index].options = [];
 		},
 		jquery: function(){
-			tabPage.variation.initSelect2(0);
-			tabPage.variation.initSelect2(1);
-			$('.select2-init-default-variation').select2();
+			//tabPage.variation.initSelect2(0);
+			//tabPage.variation.initSelect2(1);
+			//$('.select2-init-default-variation').select2();
 		},
 		angular: function() {
 			//Unmultiplied Variants (factor)
@@ -430,7 +428,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	};
 	tabPage.more_option = {
 		jquery: function() {
-			$(".select2-init-related").select2({
+			/*$(".select2-init-related").select2({
 				tags: false,
 				templateResult: function(d){
 					if(!("ProductNameEn" in d)) return null;
@@ -455,8 +453,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 						}).then(success, failure);
 					}
 				}
-			});
-
+			});*/
 		},
 		angular: function() {
 
