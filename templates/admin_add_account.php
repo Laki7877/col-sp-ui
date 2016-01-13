@@ -5,10 +5,9 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 
 <?php $this->start('page-body') ?>
 	<div>
-		<? $this->insert('components/page-title-breadcrumb', ['text' => "Admin Accounts/Create New Admin Account"]) ?>
+		<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Admin Accounts/Create New Admin Account"]) ?>
 
-		<div class="add-product-body">
-			<? $this->insert('components/tab-nav') ?>
+		<div>
 			<form class="ah-form sticky-mainform-action">
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
