@@ -21,6 +21,8 @@ Route::add('/admin/attributes','AttributeController::listAttribute');
 Route::add('/admin/attributesets/add','AdminController::addAttributeSet');
 Route::add('/admin/attributesets','AdminController::listAttributeSet');
 Route::add('/admin/categories', 'AdminController::category');
+Route::add('/admin/brands', 'AdminController::listBrand');
+Route::add('/admin/brands/add', 'AdminController::addBrand');
 
 //test route
 Route::add('/test/:name', 'TestController::any');
