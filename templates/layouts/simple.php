@@ -37,7 +37,10 @@
 
         <script src="/assets/libs/select2/js/select2.js"></script>
         <link rel="stylesheet" type="text/css" href="/assets/libs/select2/css/select2.min.css">
-        
+	
+        <script src="/assets/libs/angular-select2/select.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/assets/libs/angular-select2/select.min.css">
+
         <script>
 /*
 	    $('[ckeditor-initialize]').each(function(idx, textarea) {

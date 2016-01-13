@@ -2,6 +2,7 @@
 
 <?php $this->start('page-body') ?>
 <div ng-controller="ProductListCtrl">
+
     <? $this->insert('components/page-title-with-buttons', ['text' => 'Products']) ?>
     <? $this->insert('components/search-section') ?>
     <div class="filter-section">
