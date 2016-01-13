@@ -15,7 +15,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 			<?=$key?> : '<?=$value?>'	
 		<?php endforeach; ?>
 		})">
-		<? $this->insert('components/page-title-breadcrumb', ['text' => "Products/ " . $title]) ?>
+		<? $this->insert('components/page-title-breadcrumb', ['text' => "Products/ " . $title, 'urls' => ['/products']]) ?>
 		<div class="add-product-body">
 
 			<? $this->insert('components/tab-nav', ["items" => $menus]) ?>
@@ -40,7 +40,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 				<div class="add-product-form-action main-form-action full-width-row">
 					<div class="container-fluid">
 						<div class="float-right">
-							<a href="#" class="link-btn-plain">Cancel</a>
+							<a href="/products" class="link-btn-plain">Cancel</a>
 							<button class="btn btn-white btn-width-xl" ng-click="preview()"
 >Preview</button>
 							<button class="btn btn-white btn-width-xl" type="submit"

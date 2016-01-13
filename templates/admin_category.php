@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminCategoryCtrl" ng-init="init()" class="local-category-page">
-		<div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()">{{alert.message}}</div>
+		<div ng-show="alert.show" uib-alert template-url="common/alert" type="{{alert.type}}" close="alert.close()">{{alert.message}}</div>
 		<div class="page-header with-border">
 		    <h1 class="float-left page-header-title">Global Category</h1>
 		    <span class="float-right page-header-action">

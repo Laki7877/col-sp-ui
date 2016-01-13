@@ -25,7 +25,7 @@
         <input type="text" ng-model="searchText"
           class="form-control input-search-icon search-box" placeholder="Search for Product SKU, Name, ..." aria-describedby="basic-addon2">
         <span class="input-group-btn">
-          <button class="btn btn-white" ng-click="applySearch()" type="button">Search</button>
+          <button class="btn btn-white" ng-click="applySearch()">Search</button>
         </span>
     </div>
   </div>

@@ -7,23 +7,23 @@ class AdminController extends Controller
 		return View::render('admin_category');
 	}
 
-	public static function attribute($params)
+	public static function listAttribute($params)
 	{
 		return View::render('admin_attribute');
 	}
 
-	public static function attributeSet($params)
+	public static function listAttributeSet($params)
 	{
 		return View::render('admin_attribute_set');
 	}
 
-	public static function attributeAdd($params)
+	public static function addAttribute($params)
 	{
-		return View::render('admin_attribute_add');
+		return View::render('admin_add_attribute');
 	}
 
-	public static function attributeSetAdd($params)
+	public static function addAttributeSet($params)
 	{
-		return View::render('admin_attribute_set_add');
+		return View::render('admin_add_attribute_set');
 	}
 }

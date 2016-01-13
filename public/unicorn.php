@@ -25,6 +25,7 @@ function includeAll($uri)
  */
 class Route
 {
+	private static $_map = [];
 	private static $_routes = [];
 	private static $_currentRoute = null;
 
@@ -51,6 +52,10 @@ class Route
 			'method'		=> $method,
 			'id'			=> $id
 		];
+
+		if($id != null) {
+			$_map[$id] = $uri;
+		}
 	} 
 
 	// process route
@@ -58,6 +63,10 @@ class Route
 	{
 		// base uri
 		$uri = $_SERVER['REQUEST_URI'];
+
+		if(substr($uri,-1) == "/") {
+			$uri = substr($uri, 0, -1);
+		}
 
 		// match route uri
 		foreach (self::$_routes as $route) 

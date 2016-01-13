@@ -1,8 +1,8 @@
 <?php
     $items = [
-        [ "name" => "Home", "icon" => "fa-home" ],
-        [ "name" => "Orders", "icon" => "fa-inbox" ],
-        [ "name" => "Products", "icon" => "fa-tag", "sub_sidebar" => "#sub-sidebar-product" ],
+        [ "name" => "Home", "icon" => "fa-home"],
+        [ "name" => "Orders", "icon" => "fa-inbox"],
+        [ "name" => "Products", "icon" => "fa-tag", "sub_sidebar" => "#sub-sidebar-product", "url" => "/products" ],
         [ "name" => "Inventory", "icon" => "fa-archive" ],
         [ "name" => "Promotion", "icon" => "fa-bookmark" ],
         [ "name" => "Shop Setting", "icon" => "fa-sliders" ],
@@ -10,6 +10,7 @@
         [ "name" => "Account", "icon" => "fa-gear" ],
     ];
 ?>
+
 <ul class="sidebar-nav no-padding">
     <?php
         foreach ($items as $item) {

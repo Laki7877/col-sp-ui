@@ -178,6 +178,34 @@ module.exports = ['config', function(config) {
         }
         return null;
     };
+    /**
+     * Search Depth Array for catId
+     */
+    service.createCatStringById = function(catId, tree) {
+        if(angular.isArray(tree)) {
+            for(var i = 0; i < tree.length; i++) { 
+                var catString = service.createCatStringById(catId, tree[i]);
+                if(catString != null) {
+                    return catString;
+                }
+            }
+            return '';
+        } else {
+            if(tree.CategoryId == catId) {
+                return tree.NameEn;
+            } else if (tree.nodes.length < 0 && tree.CategoryId != catId) {
+                return null;
+            } else {
+                for (var i = 0; i < tree.nodes.length; i++) {
+                    var check = service.createCatStringById(catId, tree.nodes[i]);
+                    if(check != null) {
+                        return tree.NameEn + ' > ' + check;
+                    }
+                }
+                return null;
+            }
+        }
+    };
 
     return service;
 }];

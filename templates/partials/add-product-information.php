@@ -1,10 +1,6 @@
 <div id="add-product-information-tab-content">
-
-	<div class="margin-bottom-20">
-		<span>Global Category:</span>
-		<span>{{ formData.GlobalCategories[0].NameEn }}</span>
-	</div>
-
+	<? $this->insert('partials/add-product-inner-tab-breadcrumb') ?>
+	
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="form-section">

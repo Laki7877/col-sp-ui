@@ -101,12 +101,12 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 							}).indexOf($scope.formData.AttributeSet.AttributeSetId);
 							$scope.formData.AttributeSet = $scope.availableAttributeSets[idx];
 						}
-
+ 
 						//Load Global Cat
 						GlobalCategory.getAll().then(function(data) {
 							$scope.availableGlobalCategories = Category.transformNestedSetToUITree(data);
 							$scope.formData.GlobalCategories[0] = Category.findByCatId(catId, $scope.availableGlobalCategories);
-
+							$scope.globalCategoryBreadcrumb = Category.createCatStringById(catId, $scope.availableGlobalCategories);
 							callback();
 						});
 
