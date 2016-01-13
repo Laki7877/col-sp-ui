@@ -7,5 +7,13 @@ module.exports = ['$q', 'common', function($q, common){
 		});
 
 	}
+
+	service.getOne = function(id){
+		return common.makeRequest({
+			method: 'GET',
+			url: '/Brands/' + id
+		});
+
+	}
 	return service;
 }];

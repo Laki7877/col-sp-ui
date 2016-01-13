@@ -1,7 +1,9 @@
 'use strict';
 //App Start here
 var angular = require('angular');
-var bulk = require('bulk-require')(__dirname, ['controllers/*.js', 'services/*.js', 'helpers/*.js', 'directives/*.js', 'filters/*.js']);
+var bulk = require('bulk-require')(__dirname, 
+	['controllers/*.js', 'services/*.js', 'helpers/*.js', 
+	'directives/*.js', 'filters/*.js', 'adapters/*.js']);
 var config = require('./config');
 var template = require('./template');
 
@@ -18,6 +20,7 @@ var services = bulk.services;
 var helpers = bulk.helpers;
 var directives = bulk.directives;
 var filters = bulk.filters;
+var adapters = bulk.adapters;
 
 var app = angular.module('colspApp', ['ngAnimate', 'angularFileUpload', 'ui.tree', 'base64', 'ui.bootstrap'])
 
@@ -66,6 +69,7 @@ var app = angular.module('colspApp', ['ngAnimate', 'angularFileUpload', 'ui.tree
 .factory('AttributeSet', services.attributeSet)
 .factory('Brand', services.brand)
 .factory('VariantPair', helpers.variantPair)
+.factory('brandAdapter', adapters.brand)
 
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)

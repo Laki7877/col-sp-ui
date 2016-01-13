@@ -33,6 +33,7 @@ module.exports = ['util', function (util) {
     		//Mapper functions
     		var mapper = {
     			Images: function(image, pos){
+					if(image.$id) delete image.$id;
     					image.position = pos;
     					return image;
     			},
@@ -146,7 +147,6 @@ module.exports = ['util', function (util) {
 					clean.Variants[index].DefaultVariant = true;
 				}
 			});
-
 		}
 	}catch(ex){
 		console.warn("Variant Distribute", ex);
@@ -166,13 +166,19 @@ module.exports = ['util', function (util) {
 			return m.Url;
 		},
 		Variants: function(m){
+			console.log(m);
 			m.hash = util.variant.hash(m.FirstAttribute, m.SecondAttribute);
 			m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
 			return m;
 		}
 	};
 
-	//invFd.Variants = invFd.Variants.map(invMapper.Variants);
+
+	try{
+		invFd.Variants = invFd.Variants.map(invMapper.Variants);
+	}catch(er){
+		console.warn("Variants Map Error", er);
+	}
 
 	var MasterAttribute = {};
 	invFd.MasterAttribute.forEach(function(ma){
@@ -199,6 +205,10 @@ module.exports = ['util', function (util) {
 	delete invFd.MasterVariant.Images;
 	invFd.MasterImages360 = invFd.MasterVariant.Images360;
 	delete invFd.MasterVariant.Images360;
+
+	invFd.MasterVariant.WeightUnit = invFd.MasterVariant.WeightUnit.trim();
+	invFd.MasterVariant.DimensionUnit = invFd.MasterVariant.DimensionUnit.trim();
+
 
 	invFd.Keywords = invFd.Keywords.split(",");
 	if(invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; //TODO: Hardcode

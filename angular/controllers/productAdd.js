@@ -1,17 +1,29 @@
 var angular = require('angular');
 
-module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', 'productProxy',
-	function($scope, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, productProxy){
+module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 
+'GlobalCategory', 'Category', 'VariantPair', 'productProxy', 'brandAdapter',
+	function($scope, util, config, Product, ImageService, AttributeSet, Brand, Shop, 
+		GlobalCategory, Category, VariantPair, productProxy, brandAdapter){
 	'use strict';
 
-	$scope.publish = function(isValid){
-		console.log('formData', $scope.formData);
+	$scope.preview = function(){
+		console.log('Form Data', $scope.formData);
 		var apiRequest = productProxy.productTransform($scope.formData);
-		console.log('apiRequest', apiRequest);
-		console.log('aJSON', JSON.stringify(apiRequest));
+		console.log('API JSON', JSON.stringify(apiRequest));
+
+	};
+
+	$scope.publish = function(isValid){
+		if(!isValid) return;
+		console.log('Form Data', $scope.formData);
+		var apiRequest = productProxy.productTransform($scope.formData);
+		console.log('API JSON', JSON.stringify(apiRequest));
+		//Save
 		Product.publish(apiRequest, $scope.Status).then(function(){
 			console.log("Save successful");
+			alert("Just FYI, its saved. ")
 		}, function(er){
+			alert("FYI - Unable to save due to error - Send this message to a wizard near you: \n\n" + JSON.stringify(er));
 			console.warn("Unable to save", er);
 		});
 	};
@@ -35,6 +47,8 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	 * All Tabs
 	 * Seperated by jquery parts and angular parts
 	 */
+	//TODO: Please don't separate by jquery part and angular part
+	//Because some jquery part has angular dependencies
 	var tabPage = {
 
 	};
@@ -42,62 +56,97 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		jquery: function(){
 
 			//TODO: this wont play well with angular, not sure why
-			//maybe use this: http://dalelotts.github.io/angular-bootstrap-datetimepicker/ 
+			//maybe use this: http://dalelotts.github.io/angular-bootstrap-datetimepicker/
 			$('.input-icon-calendar').datetimepicker({
-				format: "LL"	
+				format: "LL"
 			}).on('dp.change', function(sd){
 				$scope.$apply();
-				console.log($(".input-icon-calendar").val());
-				console.log("FDA", $scope.formData);
 			});
 
 			$("body").tooltip({ selector: '[data-toggle=tooltip]' });
 
 			$.fn.select2.defaults.set("tokenSeparators", [","]);
 
+			console.log($scope.formData, "at global jquery");
+			
 			$(".select2-init-simple").select2();
+			$('.select2-init-keywords').select2();
+
 			$(".select2-init-track").on("change", function(ev){
 				$scope.$digest();
 			});
 
 		},
 		angular: function() {
-			$scope.init = function(viewBag) {
-		
-				var shopId = 1;
-				var productId;
 
-				var catReady = function(catId){
-					console.log("Cat Ready", catId);
+			$scope.init = function(viewBag) {
+
+				//TODO: Refactor 
+
+				var shopId = 1;
+				var angularReady = function(){
+					//Angular dependent
+				  tabPage.global.jquery();
+				  tabPage.information.jquery();
+				  loadedTabs.information = true;
+				};
+
+				var catReady = function(catId, callback){
 					AttributeSet.getByCategory(catId).then(function(data){
 						$scope.availableAttributeSets = data;
+						if($scope.formData.AttributeSet && $scope.formData.AttributeSet.AttributeSetId){
+							//Find attribute set and assign it as object
+							var idx = $scope.availableAttributeSets.map(function(o){
+								return o.AttributeSetId
+							}).indexOf($scope.formData.AttributeSet.AttributeSetId);
+							$scope.formData.AttributeSet = $scope.availableAttributeSets[idx];
+						}
+
+						//Load Global Cat
+						GlobalCategory.getAll().then(function(data) {
+							$scope.availableGlobalCategories = Category.transformNestedSetToUITree(data);
+							$scope.formData.GlobalCategories[0] = Category.findByCatId(catId, $scope.availableGlobalCategories);
+
+							callback();
+						});
+
 					});
-					//Load Global Cat
-					GlobalCategory.getAll().then(function(data) {
-						$scope.availableGlobalCategories = Category.transformNestedSetToUITree(data);
-						$scope.formData.GlobalCategories[0] = Category.findByCatId(catId, $scope.availableGlobalCategories);
-					});
+					
 
 				};
 
-				console.log(viewBag);
 				if("productId" in viewBag){
-					productId = viewBag.productId;
+					//EDIT MODE
+
+					var productId = viewBag.productId;
 					Product.getOne(productId).then(function(ivFormData){
 						var gcat = ivFormData.GlobalCategory;
-						console.log("formData^-1", ivFormData);
+						console.log("formData (INVERSE)", ivFormData);
 						$scope.formData = productProxy.inverseProductTransform(ivFormData);
 						console.log("formData", $scope.formData);
-						catReady(gcat);
-					});	
-				}	
+
+						catReady(gcat, function(){
+							//Load Brand
+							Brand.getOne($scope.formData.Brand.BrandId).then(function(data){
+								$scope.formData.Brand = data;
+								delete $scope.formData.Brand.$id;
+								$scope.formData.Brand.id = $scope.formData.Brand.BrandId;
+								//MUST HAPPEN LAST
+								angularReady();
+							});
+						});
+
+						//auxiliary object (non-persist)
+						//$scope.attributeOptions[0] = $scope.formData.Variants[0].FirstAttribute;
+
+					});
+				}
 
 				if("catId" in viewBag){
-					var catId = viewBag.catId;
-					catReady(catId);
+					//ADD MODE
+					catReady(viewBag.catId, angularReady);
 				}
-				
-			
+
 				//Load Local Cat
 				Shop.getLocalCategories(shopId).then(function(data) {
 					$scope.availableLocalCategories = Category.transformNestedSetToUITree(data);
@@ -115,52 +164,87 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			$scope._isListInput = util.isListDataType;
 		}
 	};
+
 	tabPage.information = {
+		load: function(){
+			//Call Load and Load will determine which part will be called
+		},
 		jquery: function(){
-			$(".select2-init-brand").select2({
+			//NOTE: as of now this is only called in EDIT mode
+			//TODO: which is wrong
+			brandAdapter.load($scope.formData);
+
+
+			//define simple tag adapter
+			//WILL USE UI-SELECT
+			$.fn.select2.amd.define('select2/data/simpleTagsAdapter',[
+				'select2/data/array',
+				'select2/utils',
+				'select2/selection/multiple'
+			    ],
+			    function (ArrayAdapter, Utils, Multiple) {
+
+					function CustomDataAdapter ($element, options) {
+					    CustomDataAdapter.__super__.constructor.call(this, $element, options);
+					}
+
+					Utils.Extend(CustomDataAdapter, ArrayAdapter);
+
+					//current is called every time match list is queried
+					 CustomDataAdapter.prototype.current = function (callback) {
+		
+						var data = $scope.formData.Keywords.map(function(m){
+							return {
+								'id': m,
+								'text': m
+							}
+						}) || [];
+
+						this.$element.find(':selected').each(function () {
+							var $option = $(this);
+							var option = self.item($option);
+							data.push(option);
+						});
+
+						callback(data)
+					};
+
+					return CustomDataAdapter;
+				 }
+			); //end_define
+
+			$('.select2-init-brand').select2({
+				dataAdapter:  $.fn.select2.amd.require('select2/data/brandAdapter'),
 				templateResult: function(d){
 					if(!d || !d.BrandNameEn) return "Loading..";
 					return d.BrandNameEn + " (" + d.BrandNameTh + ")";
 				},
 				templateSelection: function(d){
-					if(d.BrandNameEn == undefined) return null;
+					if(!d || !d.BrandNameEn) return "No Brand";
 					return d.BrandNameEn + " (" + d.BrandNameTh + ")";
-				},
-				ajax: {
-					processResults: function (data) {
-						var mapped = data.map(function(obj){
-							obj.id = obj.BrandId;
-							return obj;
-						});
-
-						console.log(mapped);
-						return {results: mapped};
-					},
-					transport: function(params, success, failure){
-						//Call Brand Service
-						return Brand.getAll(params.data.q).then(success, failure);
-					}
 				}
 			});
-		},
-		angular: function() {
 
-		}
+			$('.select2-init-keywords').select2({
+				dataAdapter: $.fn.select2.amd.require('select2/data/simpleTagsAdapter')
+			});
+
+		},
+		angular: function() {}
 	};
+
 	tabPage.images = {
 		jquery: function() {
 
 		},
 		angular: function() {
-			/**
-			 * PRODUCT IMAGE
-			 */
-			$scope.uploader = ImageService.getUploader('/ProductImages');
-			$scope.uploader360 = ImageService.getUploader('/ProductImages', {
-				queueLimit: 60
-			});
 
-			//Assign uploader images
+		    $scope.uploader = ImageService.getUploader('/ProductImages');
+		    $scope.uploader360 = ImageService.getUploader('/ProductImages', {
+			queueLimit: 60
+		    });
+
+		    //Assign uploader images
 		    ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages);
 		    ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360);
 
@@ -243,6 +327,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			});
 		}
 	}
+	
 	tabPage.variation = {
 		initSelect2: function(index){
 			var isListInput	= false;
@@ -401,13 +486,6 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 	//init global jquery
 	$(document).on('ready',function(){
-		tabPage.global.jquery();
-		//init first page
-		//TODO: This may not be information page
-		//it depends on the link
-		var pageId = 'information';
-	    tabPage[pageId].jquery();
-	    loadedTabs[pageId] = true;
 	});
 
 	//init tab jquery

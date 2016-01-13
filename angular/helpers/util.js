@@ -7,11 +7,13 @@ module.exports = ['storage', function (storage) {
     service.variant = {};
 
     service.variant.hash = function(a,b){
-	return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + b.AttributeId + "-" + b.ValueEn.trim());
+        if(!("ValueEn" in a)) return "[API Error]";
+	    return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + b.AttributeId + "-" + b.ValueEn.trim());
     };
 
     service.variant.toString = function(a,b){
-	return (a.ValueEn.trim() + ", " + b.ValueEn.trim());	
+        if(!("ValueEn" in a)) return "[API Error]";
+	    return (a.ValueEn.trim() + ", " + b.ValueEn.trim());	
     };
 
     /**

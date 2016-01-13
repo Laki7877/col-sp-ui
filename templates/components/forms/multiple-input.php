@@ -11,11 +11,11 @@
 			</div>
 			<div class="input-column select input-xl">
 				<div class="ah-select2-dropdown">
-					<select class="form-control select2-init"
+					<select class="form-control"
 						<?php if(isset($ng_model_unit)): ?>
 							ng-model="<?=$ng_model_unit ?>"
 						<?php endif; ?>
-					>
+					
 						<option> - Select Unit - </option>
 						<option value="G"> Grams </option>
 						<option value="KG"> Kilograms </option>

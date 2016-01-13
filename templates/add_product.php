@@ -41,7 +41,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 					<div class="container-fluid">
 						<div class="float-right">
 							<a href="#" class="link-btn-plain">Cancel</a>
-							<button class="btn btn-white btn-width-xl">Preview</button>
+							<button class="btn btn-white btn-width-xl" ng-click="preview()"
+>Preview</button>
 							<button class="btn btn-white btn-width-xl" type="submit"
 							ng-click="Status = 'DF'">Save as Draft</button>
 							

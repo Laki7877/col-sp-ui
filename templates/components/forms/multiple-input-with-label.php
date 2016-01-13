@@ -31,7 +31,7 @@
 				<?php if(isset($ng_model_unit)): ?>
 					ng-model="<?=$ng_model_unit?>"
 				<?php endif; ?>
-				 class="form-control"	>
+				 class="form-control">
 					<option> - Select Unit - </option>
 					<option value="MM"> Millimeter </option>
 					<option value="CM"> Centimeter </option>
