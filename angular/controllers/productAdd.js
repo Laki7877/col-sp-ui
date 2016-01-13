@@ -13,6 +13,17 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 	};
 
+	$scope.FakeBrands = [
+	{
+		BrandId: 5,
+		BrandNameEn : "Yeah Bitch"
+	},
+	{
+		BrandId: 6,
+		BrandNameEn: "Jack Ma"
+	}
+	];
+
 	$scope.publish = function(isValid){
 		if(!isValid) return;
 		console.log('Form Data', $scope.formData);

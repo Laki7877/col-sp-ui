@@ -25,9 +25,12 @@
 					<? $this->insert('components/forms/input-text-with-label',
 						["label" => "UPC", "ng_model" => "formData.MasterVariant.Upc",
 						"tooltip" => "The Universal Product Code (UPC) is a barcode symbology (i.e., a specific type of barcode) that is widely used in the USAX.", "size" => "large"]) ?>
+				
 					<? $this->insert('components/forms/dropdown-with-label',
 						["label" => "Brand Name",
-					 	 "input_class" => "select2-init-brand select2-init-track",
+					 	 "trackBy" => "BrandId",
+					 	 "showBy" => "BrandNameEn",
+					 	 "choices" => "FakeBrands",
 				  		 "ng_model"=> "formData.Brand.BrandId"
 						])
 					?>

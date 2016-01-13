@@ -10,9 +10,11 @@ if (isset($size)) $inputSize = "width-field-$size";
 			<?php if(isset($ng_options)): ?>			
 			ng-options="<?=$ng_options?>"
 			<?php endif; ?>
+
 			<?php if(isset($ng_model)): ?>
 			ng-model="<?=$ng_model?>"
 			<?php endif; ?>
+
 			<?php if(isset($multiple)): ?>
 			multiple="multiple"
 			<?php endif; ?>
@@ -20,12 +22,20 @@ if (isset($size)) $inputSize = "width-field-$size";
 			<?php foreach($options as $opt): ?>
 			<option><?php echo $opt; ?></option>
 			<?php endforeach; ?>
-
 			</select>
+			
+			<ui-select ng-model="<?=$ng_model?>">
+			    <ui-select-match>
+			        <span ng-bind="$select.selected.<?=$showBy?>"></span>
+			    </ui-select-match>
+			    <ui-select-choices repeat="item in (<?= $choices ?> | filter: $select.search) track by item.<?= $trackBy ?>">
+			        <span ng-bind="item.<?=$showBy?>"></span>
+			    </ui-select-choices>
+			</ui-select>
 
 		</div>
 	</div>
 	<? if (!empty($tooltip)): ?>
-		<div class="width-field-tooltip no-padding-left"><i class="fa fa-2x fa-question-circle color-grey" data-toggle="tooltip" data-placement="right" title="<?= $tooltip ?>"></i></div>
+		<div class="width-field-tooltip no-padding-left"><i class="fa fa-2x fa-question-circle color-grey" data-toggle="btooltip" data-placement="right" title="<?= $tooltip ?>"></i></div>
 	<? endif ?>
 </div>
