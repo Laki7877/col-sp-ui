@@ -13,16 +13,12 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 	};
 
-	$scope.FakeBrands = [
-	{
-		BrandId: 5,
-		BrandNameEn : "Yeah Bitch"
-	},
-	{
-		BrandId: 6,
-		BrandNameEn: "Jack Ma"
-	}
-	];
+
+	$scope.refreshBrands = function(q){
+		Brand.getAll(q).then(function(dataSet){
+			$scope.availableBrands = dataSet.data;
+		});			
+	};
 
 	$scope.publish = function(isValid){
 		if(!isValid) return;
@@ -39,6 +35,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	};
 
 	$scope.formData = {
+		Brand: {},
 		MasterVariant: {},
 		MasterImages: [],
 		MasterImages360: [],
@@ -242,6 +239,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			$scope.availableAttributeSets = [];
 			$scope.availableGlobalCategories = [];
 			$scope.availableLocalCategories = [];
+			$scope.availableBrands = [];
 
 			//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
 			$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }

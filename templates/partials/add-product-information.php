@@ -28,10 +28,11 @@
 				
 					<? $this->insert('components/forms/dropdown-with-label',
 						["label" => "Brand Name",
-					 	 "trackBy" => "BrandId",
-					 	 "showBy" => "BrandNameEn",
-					 	 "choices" => "FakeBrands",
-				  		 "ng_model"=> "formData.Brand.BrandId"
+						"showBy" => "BrandNameEn",
+						"refresh" => "refreshBrands",
+						 "trackBy" => "BrandId",
+					 	 "choices" => "availableBrands",
+				  		 "ng_model"=> "formData.Brand"
 						])
 					?>
 				</div>
@@ -59,11 +60,13 @@
 				<div class="form-section-content">
 					<? $this->insert('components/forms/dropdown-with-label',
 						["label" => "Attribute Set",
-						"ng_options"=> "i as _attrEnTh(i) for i in availableAttributeSets",
-					    "input_class" => "select2-init-simple select2-init-track",
-				  		"ng_model"=> "formData.AttributeSet"
+						"showBy" => "AttributeSetNameEn",
+						 "trackBy" => "AttributeSetId",
+					 	 "choices" => "availableAttributeSets",
+				  		 "ng_model"=> "formData.AttributeSet"
 						])
 					?>
+
 
 					<div class="form-group" ng-repeat="amap in formData.AttributeSet.AttributeSetMaps">
 						<div class="width-label"><label class="control-label">
