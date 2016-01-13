@@ -297,3 +297,9 @@
     white-space: nowrap;
   }
 }
+
+.table-border-none {
+  > tbody > tr:first-child > td {
+    border-top: none;
+  }
+}
