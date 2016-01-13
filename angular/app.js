@@ -13,6 +13,7 @@ require('angular-animate');
 require('angular-file-upload');
 require('angular-ui-tree');
 require('angular-base64');
+require('ui-select');
 
 //Internal dependencies
 var controllers = bulk.controllers;

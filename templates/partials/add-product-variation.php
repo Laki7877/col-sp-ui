@@ -12,7 +12,7 @@
 						<div class="width-label">
 							<select class="form-control"
 								ng-options="i as i.Attribute.AttributeNameEn for i in formData.AttributeSet.AttributeSetMaps track by i.Attribute.AttributeId"
-						       		ng-model="attributeOptions[jth].attribute">
+						       		ng-model="attributeOptions[jth]">
 							</select>
 						</div>
 						<div class="width-field-normal">
@@ -20,12 +20,12 @@
 								<select ng-model="attributeOptions[jth].options" 
 									class="form-control select2-init-{{jth}} select2-track" 
 									multiple="multiple">
-									<option ng-repeat="i in attributeOptions[jth].attribute.Attribute.AttributeValueMaps">
+									<option ng-repeat="i in attributeOptions[jth].Attribute.AttributeValueMaps">
 										{{ i.AttributeValue.AttributeValueEn }}
 									</option>
 								</select>
 								<span class="input-unit">
-									{{ attributeOptions[jth].attribute.unit }}
+									{{ attributeOptions[jth].Attribute.unit }}
 								</span>
 							</div>
 						</div>
@@ -35,7 +35,7 @@
 	<div class="width-label"><label class="control-label">Default Variant</label></div>
 	<div class="width-field-normal">
 		<div class="ah-select2-dropdown">
-			<select ng-model="formData.DefaultVariant" class="form-control select2-init-track select2-init-simple" 
+			<select ng-model="formData.DefaultVariant" class="form-control select2-init-track select2-init-default-variation" 
 				ng-options="i as i.text for i in formData.Variants">
 			</select>
 		</div>

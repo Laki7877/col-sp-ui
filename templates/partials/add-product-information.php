@@ -1,9 +1,6 @@
 <div id="add-product-information-tab-content">
 
-	<div class="margin-bottom-20">
-		<span>Global Category:</span>
-		<span>{{ formData.GlobalCategories[0].NameEn }}</span>
-	</div>
+	<? $this->insert('partials/add-product-inner-tab-breadcrumb') ?>
 
 	<div class="row">
 		<div class="col-xs-12">
@@ -115,7 +112,8 @@
 					["label" => "Preparation Time",
 					"required" => true,
 					"ng_model" => "formData.PrepareDay",
-					"label_class" => "required", "unit" => "Day",
+					"label_class" => "required",
+					"unit" => "Day",
 					"form_group_class" => "margin-top-30"]) ?>
 					<? $this->insert('components/forms/multiple-input-with-label', ["label" => "Package Dimension", "label_class" => "required",
 					"ng_model_width"=>"formData.MasterVariant.Width",
