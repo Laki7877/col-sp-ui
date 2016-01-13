@@ -1,4 +1,6 @@
 $(document).ready(function () {
+	$('[data-toggle="btooltip"]').btooltip();
+
 	$('[data-toggle="popover"]').popover({trigger: 'manual'});
 	$(document).on('click', function(e) {
 		var $target = $(e.target);
