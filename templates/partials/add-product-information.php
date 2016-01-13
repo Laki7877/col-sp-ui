@@ -17,7 +17,7 @@
 				<div class="form-section-header"><h2>Price</h2></div>
 				<div class="form-section-content">
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Original Price", "hint" => "Example: 200 or 125.50", "label_class" => "required"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Sale Price", "hint" => "Example: 100"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Sale Price", "hint" => "Example: 100", "loading" => "load"]) ?>
 				</div>
 			</div>
 			<div class="form-section">

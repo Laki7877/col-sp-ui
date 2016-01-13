@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="table-section">
-      <table class="table table-curved">
+      <table class="table table-curved product-list-table">
         <thead>
           <tr class="table-head">
             <th class="checkbox-column">
@@ -38,8 +38,9 @@
             </th>
             <th class="live-column"><a class="header-link" href="#"><span>Live</span></a></th>
             <th class="visible-column"><a class="header-link" href="#"><span>Visible</span></a></th>
+            <th class="action-column"><a class="header-link" href="#"><span>Action</span></a></th> 
             <th class="modified-column">
-              <a class="header-link" href="#"><span>Modified</span></a>
+              <a class="header-link" href="#"><span class="active-underline">Modified</span></a>
               <i class="fa fa-caret-up">
             </th>
           </tr>
@@ -52,7 +53,7 @@
             <td class="display-column">
               <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
             </td>
-            <td class="column-text-ellipsis">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</td>
+            <td class="column-text-ellipsis"><a href="#">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</a></td>
             <td class="price-column">9,000,000</td>
             <td class="info-column">
               <i class="fa fa-check color-green icon-size-18px"></i>
@@ -72,6 +73,16 @@
             <td class="visible-column">
               <i class="fa fa-eye-slash color-grey eye-icon"></i>
             </td>
+            <td class="action-column">
+              <span class="text-align-center popover-gear">
+                <i class="fa fa-gear color-dark-grey icon-size-20"></i>
+                <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
+                  <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
+                  <div><a href='#'>View Products</a></div>
+                  <div><a href='#'>Delete</a></div>
+                  "></i>  
+              </span>
+            </td>
             <td class="modified-column">
               14/12/15
             </td>
@@ -83,7 +94,7 @@
             <td class="display-column">
               <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
             </td>
-            <td>Jeansian Men's Slim Fit Long</td>
+            <td><a href="#">Jeansian Men's Slim Fit Long</a></td>
             <td class="price-column">
               <div>8,999.99-9,999.99</div>
               <div>(99 variants)</div>
@@ -106,6 +117,16 @@
             <td class="visible-column">
               <i class="fa fa-eye color-dark-grey eye-icon"></i>
             </td>
+            <td class="action-column">
+              <span class="text-align-center popover-gear">
+                <i class="fa fa-gear color-dark-grey icon-size-20"></i>
+                <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
+                  <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
+                  <div><a href='#'>View Products</a></div>
+                  <div><a href='#'>Delete</a></div>
+                  "></i>  
+              </span>
+            </td>
             <td class="modified-column">
               14/12/15
             </td>
@@ -117,7 +138,7 @@
             <td class="display-column">
               <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
             </td>
-            <td>Power Bank MD Tech Model B02</td>
+            <td><a href="#">Power Bank MD Tech Model B02</a></td>
             <td class="price-column">9,000,000</td>
             <td class="info-column">
               <i class="fa fa-check color-green icon-size-18px"></i>
@@ -137,6 +158,16 @@
             <td class="visible-column">
               <i class="fa fa-eye color-dark-grey eye-icon"></i>
             </td>
+            <td class="action-column">
+              <span class="text-align-center popover-gear">
+                <i class="fa fa-gear color-dark-grey icon-size-20"></i>
+                <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
+                  <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
+                  <div><a href='#'>View Products</a></div>
+                  <div><a href='#'>Delete</a></div>
+                  "></i>  
+              </span>
+            </td>
             <td class="modified-column">
               09/12/15
             </td>
@@ -148,7 +179,7 @@
             <td class="display-column">
               <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
             </td>
-            <td>Power Bank MD Tech Model B02</td>
+            <td><a href="#">Power Bank MD Tech Model B02</a></td>
             <td class="price-column">1,000</td>
             <td class="info-column">
               <i class="fa fa-minus color-grey icon-size-18px"></i>
@@ -167,6 +198,16 @@
             </td>
             <td class="visible-column">
               <i class="fa fa-eye color-dark-grey eye-icon"></i>
+            </td>
+            <td class="action-column">
+              <span class="text-align-center popover-gear">
+                <i class="fa fa-gear color-dark-grey icon-size-20"></i>
+                <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
+                  <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
+                  <div><a href='#'>View Products</a></div>
+                  <div><a href='#'>Delete</a></div>
+                  "></i>  
+              </span>
             </td>
             <td class="modified-column">
               09/12/15
@@ -197,5 +238,6 @@
         </div>
       </span>
     </div>
-	</div>
+  </div>
+
 <?php $this->stop() ?>

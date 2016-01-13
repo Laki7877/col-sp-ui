@@ -20,7 +20,7 @@
 				<i class="fa fa-eye-slash color-grey icon-size-20"></i>
 			<? endif ?>
 		</span>
-		<span class="col-xs-1 text-align-center">
+		<span class="col-xs-1 text-align-center popover-gear">
 			<i class="fa fa-gear color-dark-grey icon-size-20"></i>
 			<i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
 				<div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>

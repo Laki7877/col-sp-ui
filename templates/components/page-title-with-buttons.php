@@ -7,7 +7,7 @@
         <a href="#" class="btn-white btn margin-right-10">
           <span class="">Import</span>
         </a>
-        <a href="/?p=add_product" class="btn-blue btn btn-width-xl">
+        <a href="/?p=global_category" class="btn-blue btn btn-width-xl">
           <span class="">Add Product</span>
         </a>
     </span>
