@@ -137,6 +137,7 @@ var app = angular.module('colspApp', ['ngAnimate', 'angularFileUpload', 'ui.tree
 .factory('Brand', services.brand)
 .factory('VariantPair', helpers.variantPair)
 .factory('BrandAdapter', adapters.brand)
+.factory('SimpleTagAdapter', adapters.simpleTags)
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)
 .directive('ngDelegate', directives.ngDelegate)
@@ -508,12 +509,14 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 },{}],8:[function(require,module,exports){
 var angular = require('angular');
 
-module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', 'productProxy', 'BrandAdapter',
-	function($scope, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, productProxy, brandAdapter){
+module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 
+'GlobalCategory', 'Category', 'VariantPair', 'productProxy', 'BrandAdapter',
+	function($scope, util, config, Product, ImageService, AttributeSet, Brand, Shop, 
+		GlobalCategory, Category, VariantPair, productProxy, brandAdapter){
 	'use strict';
 
 	$scope.preview = function(){
-		console.log('formData', $scope.formData);
+		console.log('Form Data', $scope.formData);
 		var apiRequest = productProxy.productTransform($scope.formData);
 		console.log('API JSON', JSON.stringify(apiRequest));
 
@@ -521,9 +524,10 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 	$scope.publish = function(isValid){
 		if(!isValid) return;
-		console.log('formData', $scope.formData);
+		console.log('Form Data', $scope.formData);
 		var apiRequest = productProxy.productTransform($scope.formData);
 		console.log('API JSON', JSON.stringify(apiRequest));
+		//Save
 		Product.publish(apiRequest, $scope.Status).then(function(){
 			console.log("Save successful");
 		}, function(er){
@@ -564,8 +568,6 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 				format: "LL"
 			}).on('dp.change', function(sd){
 				$scope.$apply();
-				console.log($(".input-icon-calendar").val());
-				console.log("FDA", $scope.formData);
 			});
 
 			$("body").tooltip({ selector: '[data-toggle=tooltip]' });
@@ -668,6 +670,9 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	};
 
 	tabPage.information = {
+		load: function(){
+			//Call Load and Load will determine which part will be called
+		},
 		jquery: function(){
 			brandAdapter.load($scope.formData);
 			$(".select2-init-brand").select2({
@@ -677,7 +682,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 					return d.BrandNameEn + " (" + d.BrandNameTh + ")";
 				},
 				templateSelection: function(d){
-					if(!d || !d.BrandNameEn) return "Loading..";
+					if(!d || !d.BrandNameEn) return "No Brand";
 					return d.BrandNameEn + " (" + d.BrandNameTh + ")";
 				}
 			});
@@ -779,6 +784,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			});
 		}
 	}
+	
 	tabPage.variation = {
 		initSelect2: function(index){
 			var isListInput	= false;

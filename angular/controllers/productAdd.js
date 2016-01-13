@@ -1,7 +1,9 @@
 var angular = require('angular');
 
-module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', 'productProxy', 'BrandAdapter',
-	function($scope, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, productProxy, brandAdapter){
+module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 
+'GlobalCategory', 'Category', 'VariantPair', 'productProxy', 'BrandAdapter',
+	function($scope, util, config, Product, ImageService, AttributeSet, Brand, Shop, 
+		GlobalCategory, Category, VariantPair, productProxy, brandAdapter){
 	'use strict';
 
 	$scope.preview = function(){
@@ -159,6 +161,9 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	};
 
 	tabPage.information = {
+		load: function(){
+			//Call Load and Load will determine which part will be called
+		},
 		jquery: function(){
 			brandAdapter.load($scope.formData);
 			$(".select2-init-brand").select2({
@@ -168,7 +173,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 					return d.BrandNameEn + " (" + d.BrandNameTh + ")";
 				},
 				templateSelection: function(d){
-					if(!d || !d.BrandNameEn) return "Loading..";
+					if(!d || !d.BrandNameEn) return "No Brand";
 					return d.BrandNameEn + " (" + d.BrandNameTh + ")";
 				}
 			});
