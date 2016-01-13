@@ -247,46 +247,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			//NOTE: as of now this is only called in EDIT mode
 			//TODO: which is wrong
 			brandAdapter.load($scope.formData);
-
-
-			//define simple tag adapter
-			//WILL USE UI-SELECT
-			$.fn.select2.amd.define('select2/data/simpleTagsAdapter',[
-				'select2/data/array',
-				'select2/utils',
-				'select2/selection/multiple'
-			    ],
-			    function (ArrayAdapter, Utils, Multiple) {
-
-					function CustomDataAdapter ($element, options) {
-					    CustomDataAdapter.__super__.constructor.call(this, $element, options);
-					}
-
-					Utils.Extend(CustomDataAdapter, ArrayAdapter);
-
-					//current is called every time match list is queried
-					 CustomDataAdapter.prototype.current = function (callback) {
-		
-						var data = $scope.formData.Keywords.map(function(m){
-							return {
-								'id': m,
-								'text': m
-							}
-						}) || [];
-
-						this.$element.find(':selected').each(function () {
-							var $option = $(this);
-							var option = self.item($option);
-							data.push(option);
-						});
-
-						callback(data)
-					};
-
-					return CustomDataAdapter;
-				 }
-			); //end_define
-
+	
 			$('.select2-init-brand').select2({
 				dataAdapter:  $.fn.select2.amd.require('select2/data/brandAdapter'),
 				templateResult: function(d){
@@ -299,9 +260,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 				}
 			});
 
-			$('.select2-init-keywords').select2({
-				dataAdapter: $.fn.select2.amd.require('select2/data/simpleTagsAdapter')
-			});
+			$('.select2-init-keywords').select2();
 
 		},
 		angular: function() {}
