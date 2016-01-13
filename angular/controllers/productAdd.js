@@ -1,7 +1,7 @@
 var angular = require('angular');
 
 module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 
-'GlobalCategory', 'Category', 'VariantPair', 'productProxy', 'BrandAdapter',
+'GlobalCategory', 'Category', 'VariantPair', 'productProxy', 'brandAdapter',
 	function($scope, util, config, Product, ImageService, AttributeSet, Brand, Shop, 
 		GlobalCategory, Category, VariantPair, productProxy, brandAdapter){
 	'use strict';
@@ -21,7 +21,9 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		//Save
 		Product.publish(apiRequest, $scope.Status).then(function(){
 			console.log("Save successful");
+			alert("Just FYI, its saved. ")
 		}, function(er){
+			alert("FYI - Unable to save due to error - Send this message to a wizard near you: \n\n" + JSON.stringify(er));
 			console.warn("Unable to save", er);
 		});
 	};
@@ -66,7 +68,10 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			$.fn.select2.defaults.set("tokenSeparators", [","]);
 
 			console.log($scope.formData, "at global jquery");
+			
 			$(".select2-init-simple").select2();
+			$('.select2-init-keywords').select2();
+
 			$(".select2-init-track").on("change", function(ev){
 				$scope.$digest();
 			});
@@ -166,7 +171,9 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		},
 		jquery: function(){
 			brandAdapter.load($scope.formData);
-			$(".select2-init-brand").select2({
+			//simpleTagsAdapter.load($scope.formData);
+
+			$('.select2-init-brand').select2({
 				dataAdapter:  $.fn.select2.amd.require('select2/data/brandAdapter'),
 				templateResult: function(d){
 					if(!d || !d.BrandNameEn) return "Loading..";
