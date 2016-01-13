@@ -317,83 +317,48 @@ module.exports = ['$scope', 'Alert', 'Attribute', function($scope, Alert, Attrib
 	$scope.form = {};
 	$scope.formData = {};
 	$scope.alert = new Alert();
-	$scope.dataTypeOptions = [
-		{
-			name: 'Free Text',
-			value: 'ST'
-		},
-		{
-			name: 'Dropdown',
-			value: 'LS'
-		},
-		{
-			name: 'HTML Box',
-			value: 'HB'
-		}
-	];
-	$scope.boolOptions = [
-		{
-			name: 'No',
-			value: false
-		},
-		{
-			name: 'Yes',
-			value: true
-		}
-	];
-	$scope.validationOptions = [
-		{
-			name: 'No Validation',
-			value: 'NO'
-		},
-		{
-			name: 'Number Only',
-			value: 'NUM'
-		},
-		{
-			name: 'Text Only',
-			value: 'TXT'
-		},
-		{
-			name: 'Email Address',
-			value: 'EML'
-		},
-		{
-			name: 'Phone Number',
-			value: 'PHO'
-		}
-	];
-	$scope.edit = false;
-	$scope.editId = 0;
+	$scope.dataTypeOptions = Attribute.dataTypeOptions;
+	$scope.boolOptions = Attribute.boolOptions;
+	$scope.validationOptions = Attribute.validationOptions;
+	$scope.edit = 0;
+	$scope.formDataSerialized = '';
 
 	$scope.init = function(params) {
 		if(angular.isDefined(params)) {
 			//edit mode
-			$scope.edit = true;
-			$scope.editId = params.id;
-			Attribute.get($scope.editId).then(function(data) {
-				console.log(data);
+			$scope.edit = params.id;
+			Attribute.get($scope.edit).then(function(data) {
+				$scope.formData = Attribute.deserialize(data);
+				console.log($scope.formData);
 			});
 		} else {
 			//create mode!
-			$scope.edit = false;
+			$scope.edit = 0;
 			$scope.formData = Attribute.generate();
-			console.log($scope.formData);
 		}
-	}
+	};
 	$scope.save = function() {
 		$scope.alert.close();
+		//TODO: validate
+		$scope.formDataSerialized = Attribute.serialize($scope.formData);
+		console.log($scope.formDataSerialized);
 		if ($scope.edit) {
-			//Attribute.update($scope.formData)
-		}
-		else {
-			var formData = Attribute.create($scope.formData).then(function(data) {
+			Attribute.update($scope.edit, $scope.formDataSerialized).then(function(data) {
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
+				console.log(err);
 			});
 		}
-	}
+		else {
+			Attribute.create($scope.formData, $scope.formDataSerialized).then(function(data) {
+				$scope.alert.success();
+			}, function(err) {
+				$scope.alert.error(err);
+				console.log(err);
+			});
+		}
+	};
 }];
 },{"angular":54}],6:[function(require,module,exports){
 module.exports = ['$scope', 'AttributeSet', function($scope, AttributeSet) {
@@ -469,10 +434,62 @@ module.exports = ['$scope', 'AttributeSet', function($scope, AttributeSet) {
 	});
 }];
 },{}],7:[function(require,module,exports){
+var angular = require('angular');
 
-},{}],8:[function(require,module,exports){
-arguments[4][7][0].apply(exports,arguments)
-},{"dup":7}],9:[function(require,module,exports){
+module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scope, Alert, AttributeSet, Attribute) {
+	$scope.form = {};
+	$scope.formData = {};
+	$scope.tagOptions = [];
+	$scope.alert = new Alert();
+	$scope.edit = false;
+	$scope.editId = 0;
+	$scope.attributeOptions = [];
+	$scope.visibleOptions = AttributeSet.visibleOptions;
+
+	$scope.loadAttribute = function() {
+		Attribute.getAll().then(function(data) {
+			$scope.attributeOptions = data;
+		});
+	};
+	$scope.init = function(params) {
+		if(angular.isDefined(params)) {
+			//edit mode
+			$scope.edit = params.id;
+			AttributeSet.get($scope.edit).then(function(data) {
+				$scope.formData = AttributeSet.deserialize(data);
+			});
+		} else {
+			//create mode!
+			$scope.edit = false;
+			$scope.formData = AttributeSet.generate();
+		}
+		$scope.loadAttribute();
+	};
+	$scope.save = function() {
+		$scope.alert.close();
+		//TODO: validate
+		$scope.formDataSerialized = AttributeSet.serialize($scope.formData);
+		if ($scope.edit) {
+			AttributeSet.update($scope.edit, $scope.formDataSerialized).then(function(data) {
+				$scope.alert.success();
+			}, function(err) {
+				$scope.alert.error(err);
+				console.log(err);
+			});
+		}
+		else {
+			AttributeSet.create($scope.formData, $scope.formDataSerialized).then(function(data) {
+				$scope.alert.success();
+			}, function(err) {
+				$scope.alert.error(err);
+				console.log(err);
+			});
+		}
+	};
+}];
+},{"angular":54}],8:[function(require,module,exports){
+
+},{}],9:[function(require,module,exports){
 module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory', 'AttributeSet',  function($scope, $rootScope, common, Category, GlobalCategory, AttributeSet){
 	$scope.categories = [];
 	$scope.attributeSetOptions = [];
@@ -1339,8 +1356,8 @@ module.exports = ['$rootScope', function($rootScope) {
 	//Root ctrl
 }];
 },{}],16:[function(require,module,exports){
-arguments[4][7][0].apply(exports,arguments)
-},{"dup":7}],17:[function(require,module,exports){
+arguments[4][8][0].apply(exports,arguments)
+},{"dup":8}],17:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$templateCache', function($templateCache) {
 	return {
@@ -1402,12 +1419,9 @@ module.exports = ['$templateCache', function($templateCache) {
 				}
 			};
 			var findClosestIndexLeft = function() {
-				if ($scope.selectable.length - $scope.model.length === 0) {
+				if ($scope.selectable.length - $scope.model.length <= 1) {
 					return -1;
-				} 
-				else if ($scope.selectable.length - $scope.model.length === 1) {
-					return 0;
-				} 
+				}
 				else {
 					var item = $scope.selectable[$scope.activeLeft];
 					var outersect = $scope.selectable.filter(function(obj) {
@@ -1431,7 +1445,7 @@ module.exports = ['$templateCache', function($templateCache) {
 					}
 					var next = findClosestIndexLeft();
 					var item = $scope.selectable[$scope.activeLeft];
-					$scope.model.push(item);
+					$scope.model.push(angular.copy(item));
 					$scope.activeLeft = next;
 
 				} else {
@@ -1653,6 +1667,8 @@ module.exports = ['$http', '$q', 'storage', 'config', function ($http, $q, stora
             getError: function(response) {
                 if(response.message)
                     return response.message;
+                if(response.error)
+                    return response.error;
                 return response;
             }
         };
@@ -2096,9 +2112,64 @@ module.exports = ['common', function(common) {
 	};
 }];
 },{"angular":54}],33:[function(require,module,exports){
+var angular = require('angular');
 module.exports = ['common', function(common){
 	'use strict';
 	var service = {};
+	var find = function(array, value) {
+		return array.find(function(element) {
+			if (element.value === value) {
+				return true;
+			}
+			return false;
+		});
+	};
+	service.boolOptions = [
+		{
+			name: 'No',
+			value: false
+		},
+		{
+			name: 'Yes',
+			value: true
+		}
+	];
+	service.dataTypeOptions = [
+		{
+			name: 'Free Text',
+			value: 'ST'
+		},
+		{
+			name: 'Dropdown',
+			value: 'LS'
+		},
+		{
+			name: 'HTML Box',
+			value: 'HB'
+		}
+	];
+	service.validationOptions = [
+		{
+			name: 'No Validation',
+			value: 'NO'
+		},
+		{
+			name: 'Number Only',
+			value: 'NUM'
+		},
+		{
+			name: 'Text Only',
+			value: 'TXT'
+		},
+		{
+			name: 'Email Address',
+			value: 'EML'
+		},
+		{
+			name: 'Phone Number',
+			value: 'PHO'
+		}
+	];
 	service.get = function(id) {
 		return common.makeRequest({
 			method: 'GET',
@@ -2108,13 +2179,15 @@ module.exports = ['common', function(common){
 	service.create = function(obj) {
 		return common.makeRequest({
 			method: 'POST',
-			url: '/Attributes'
+			url: '/Attributes',
+			data: obj
 		});
 	};
 	service.update = function(id, obj) {
 		return common.makeRequest({
 			method: 'PUT',
-			url: '/Attributes/' + id
+			url: '/Attributes/' + id,
+			data: obj
 		});
 	};
 	service.getAll = function(parameters) {
@@ -2141,60 +2214,107 @@ module.exports = ['common', function(common){
 	service.generate = function() {
 		return {
 			AttributeNameEn: '',
+			AttributeNameTh: '',
 			DisplayNameEn: '',
 			DisplayNameTh: '',
-			DataType: {
-				name: 'Free Text',
-				value: 'ST'
-			},
+			DataValidation: service.validationOptions[0],
+			DataType: service.dataTypeOptions[0],
+			VariantStatus: service.boolOptions[0],
 			HB: {
 				DefaultValue: ''
 			},
 			LS: {
-				Options: [{}]
+				AttributeValues: [{}]
 			},
 			ST: {
 				AttributeUnitEn: '',
 				AttributeUnitTh: '',
-				DataValidation: '',
+				DataValidation: service.validationOptions[0],
 				DefaultValue: ''
 			},
-			ShowGlobalSearchFlag: {
-				name: 'No',
-				value: false
-			},
-			ShowLocalSearchFlag: {
-				name: 'No',
-				value: false
-			},
-			VariantDataType: {
-				name: 'Free Text',
-				value: 'ST'
-			},
-			VariantDataType: {
-				name: 'Free Text',
-				value: 'ST'
-			}
+			ShowGlobalSearchFlag: service.boolOptions[0],
+			ShowLocalSearchFlag: service.boolOptions[0],
+			VariantDataType: service.dataTypeOptions[0]
 		};
 	};
 	service.deserialize = function(data) {
-		var template = {
-			HB: {},
-			LS: {},
-			ST: {}
-		};
-		
+		var processed = angular.extend(service.generate(), data);
+		processed.VariantStatus = find(service.boolOptions,data.VariantStatus);
+		processed.VariantDataType = find(service.dataTypeOptions,data.VariantDataType);
+		processed.DataType = find(service.dataTypeOptions,data.DataType);
+		processed.DataValidation = find(service.validationOptions, data.DataValidation);
+		processed.ShowLocalSearchFlag = find(service.boolOptions, data.ShowLocalSearchFlag);
+		processed.ShowGlobalSearchFlag = find(service.boolOptions, data.ShowGlobalSearchFlag);
+
+		switch(data.DataType) {
+			case 'ST':
+				processed[data.DataType] = {
+					AttributeUnitEn: data.AttributeUnitEn,
+					AttributeUnitTh: data.AttributeUnitTh,
+					DataValidation: data.DataValidation,
+					DefaultValue: data.DefaultValue
+				};
+			break;
+			case 'LS':
+				processed[data.DataType] = {
+					AttributeValues: data.AttributeValues
+				};
+			break;
+			case 'HB':
+				processed[data.DataType] = {
+					DefaultValue: data.DefaultValue
+				}
+			break;
+		}
+		return processed;
 	};
 	service.serialize = function(data) {
-		
+		var processed = angular.extend(service.generate(), data);
+
+		processed.VariantStatus = processed.VariantStatus ? processed.VariantStatus.value : undefined;
+		processed.VariantDataType = processed.VariantDataType ? processed.VariantDataType.value : undefined;
+		processed.DataType = processed.DataType ? processed.DataType.value : undefined;
+		processed.ShowLocalSearchFlag = processed.ShowLocalSearchFlag ? processed.ShowLocalSearchFlag.value : undefined;
+		processed.ShowGlobalSearchFlag = processed.ShowGlobalSearchFlag ? processed.ShowGlobalSearchFlag.value : undefined;
+
+		switch(processed.DataType) {
+			case 'ST':
+				processed.AttributeUnitEn = data.ST.AttributeUnitEn;
+				processed.AttributeUnitTh = data.ST.AttributeUnitTh;
+				processed.DataValidation = data.ST.DataValidation.value;
+				processed.DefaultValue = data.ST.DefaultValue;
+			break;
+			case 'LS':
+				processed.AttributeValues = data.LS.AttributeValues;
+			break;
+			case 'HB':
+				processed.DefaultValue = data.HB.DefaultValue;
+			break;
+		}
+
+		angular.forEach(service.dataTypeOptions, function(item) {
+			delete processed[item.value];
+		});
+
+		return processed
 	};
 	return service;
 }];
 
-},{}],34:[function(require,module,exports){
+},{"angular":54}],34:[function(require,module,exports){
 module.exports = ['common', function(common){
 	'use strict';
 	var service = {};
+	service.visibleOptions = [
+		{
+			name: 'No',
+			value: 'NA'
+		},
+		{
+			name: 'Yes',
+			value: 'AT'
+		}
+	];
 	service.getByCategory = function(catId){
 		var req = {
 			method: 'GET',
@@ -2203,7 +2323,26 @@ module.exports = ['common', function(common){
 
 		return common.makeRequest(req);	
 	};
-
+	service.get = function(id) {
+		return common.makeRequest({
+			method: 'GET',
+			url: '/AttributeSets/' + id
+		});
+	};
+	service.create = function(obj) {
+		return common.makeRequest({
+			method: 'POST',
+			url: '/AttributeSets',
+			data: obj
+		});
+	};
+	service.update = function(id, obj) {
+		return common.makeRequest({
+			method: 'PUT',
+			url: '/AttributeSets/' + id,
+			data: obj
+		});
+	};
 	service.getAll = function(parameters) {
 		if(parameters) {
 			return common.makeRequest({
@@ -2224,7 +2363,25 @@ module.exports = ['common', function(common){
 				url: '/AttributeSets'
 			});
 		}
-	}
+	};
+	service.generate = function() {
+		return {
+			AttributeSetNameEn: '',
+			AttributeSetNameTh: '',
+			AttributeSetDescriptionEn: '',
+			AttributeSetDescriptionTh: '',
+			Status: 'AT',
+			Tags: []
+		};
+	};
+	service.deserialize = function(data) {
+		var processed = angular.merge(service.generate(), data);
+		return processed;
+	};
+	service.serialize = function(data) {
+		var processed = angular.copy(data);
+		return processed;
+	};
 	return service;
 }];
 
@@ -2680,7 +2837,7 @@ module.exports = ['common', function(common) {
 },{}],42:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Wed Jan 13 2016 23:56:35 GMT+0700 (SE Asia Standard Time)
+ * Thu Jan 14 2016 01:34:18 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -2719,8 +2876,18 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
   );
 
 
+  $templateCache.put('common/input/textarea',
+    "<div class=form-group><div class=width-label><label class=control-label ng-class=\"options.labelClass || {}\" ng-bind-html=options.label></label></div><div ng-class=\"['width-field-' + (options.inputSize || 'normal')]\" ng-transclude></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" uib-tooltip-html=options.tooltip tooltip-trigger=mouseenter tooltip-placement=right ng-if=\"options.tooltip && options.tooltip.length > 0\"></i></div></div>"
+  );
+
+
   $templateCache.put('common/input/tradable-select',
     "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><div class=input-group><input ng-model=search[options.map.text] class=\"form-control input-search-icon search-box\" placeholder=\"Search Attribute Set\" aria-describedby=basic-addon2> <span class=input-group-btn><button class=\"btn btn-white\" type=button>Search</button></span></div></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable | filter:search:strict track by $index\" ng-class=\"{ 'active' : activeLeft == $index }\" ng-click=\"select($index, true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=\"{'active' : activeLeft >= 0}\" ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=\"{'active' : activeRight >= 0}\" ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>Attribute Set in This Category</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == $index }\" ng-click=\"select($index, false)\"><span class=column-1>{{ options.map.text == null ? item : item[options.map.text] }}</span></li></ul></div></div></div>"
+  );
+
+
+  $templateCache.put('common/input/tradable-select2',
+    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><div class=input-group><input ng-model=search[options.map.text] class=\"form-control input-search-icon search-box\" placeholder=\"Search Attribute Set\" aria-describedby=basic-addon2> <span class=input-group-btn><button class=\"btn btn-white\" type=button>Search</button></span></div></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable | filter:search:strict track by $index\" ng-class=\"{ 'active' : activeLeft == $index }\" ng-click=\"select($index, true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=\"{'active' : activeLeft >= 0}\" ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=\"{'active' : activeRight >= 0}\" ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>Attribute</span> <span class=column-2>Required?</span> <span class=column-3>Filterable?</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == $index }\" ng-click=\"select($index, false)\"><span class=column-1>{{ options.map.text == null ? item : item[options.map.text] }}</span> <span class=column-2><input type=checkbox ng-model=item.required aria-label=\"Checkbox for following text input\"></span> <span class=column-3><input type=checkbox ng-model=item.filter aria-label=\"Checkbox for following text input\"></span></li></ul></div></div></div>"
   );
 
 

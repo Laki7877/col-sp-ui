@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Local Category']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Category']) ?>
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminCategoryCtrl" ng-init="init()" class="local-category-page">
@@ -146,12 +146,6 @@
 						                	</div>
 						                </div>
 						            </div>
-									<!--div class="form-section">
-										<div class="form-section-header"><h2>Category Visibility</h2></div>
-										<div class="form-section-content">
-											<? $this->insert('components/forms/dropdown-with-label', ["label" => "Visibility", "options" => ["Hide", "Show"]]) ?>
-										</div>
-									</div-->
 								</div> <!-- end .col-xs-12 -->
 								<div class="col-xs-12">
 									<span class="float-right">

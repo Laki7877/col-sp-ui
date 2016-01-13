@@ -35,6 +35,8 @@ module.exports = ['$http', '$q', 'storage', 'config', function ($http, $q, stora
             getError: function(response) {
                 if(response.message)
                     return response.message;
+                if(response.error)
+                    return response.error;
                 return response;
             }
         };

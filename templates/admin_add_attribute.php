@@ -1,5 +1,4 @@
-<?php $title = "Add Attribute"; ?>
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'User Profile']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attribute']) ?>
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminAttributeAddCtrl" ng-init="init(<?=$params?>)">
@@ -23,6 +22,19 @@
                   name="AttributeNameEn"
                   ng-model="formData.AttributeNameEn"
                   ng-class="{ 'has-error' : $root.isInvalid(form.AttributeNameEn) }"
+                  required />
+              </div>
+              <div ng-template="common/input/text"
+                ng-template-options="{
+                  'label': 'Attribute Name (Thai)',
+                  'labelClass': 'required',
+                  'inputSize': 'large'
+                }">
+                <input
+                  class="form-control"
+                  name="AttributeNameTh"
+                  ng-model="formData.AttributeNameTh"
+                  ng-class="{ 'has-error' : $root.isInvalid(form.AttributeNameTh) }"
                   required />
               </div>
               <div ng-template="common/input/text"
@@ -62,7 +74,7 @@
                   'label' : 'Attribute Input Type'
                 }">
                 <ui-select ng-model="formData.DataType" search-enabled="false">
-                  <ui-select-match>
+                  <ui-select-match placeholder="- Select Input Type -">
                       <span ng-bind="$select.selected.name"></span>
                   </ui-select-match>
                   <ui-select-choices repeat="item in dataTypeOptions">
@@ -100,7 +112,7 @@
                     ng-template-options="{
                       'label' : 'Input Validation'
                     }">
-                    <ui-select ng-model="formData.DataValidation" search-enabled="false">
+                    <ui-select ng-model="formData.ST.DataValidation" search-enabled="false">
                       <ui-select-match>
                           <span ng-bind="$select.selected.name"></span>
                       </ui-select-match>
@@ -121,26 +133,26 @@
                   </div>
                 </div>
                 <div ng-switch-when="LS">
-                  <div ng-repeat="choice in formData.LS.Options track by $index" class="form-group">
+                  <div ng-repeat="choice in formData.LS.AttributeValues track by $index" class="form-group">
                     <div class="width-label"><label class="control-label required" ng-if="$index == 0">
                       Dropdown Choice</label>
                     </div>
                     <div class="width-field-xxl">
                       <div class="multiple-input">
                         <div class="input-column input-xxl">
-                          <input type="text" class="form-control" ng-model="choice.Th" placeholder="Option {{$index+1}} (Thai)"/>
+                          <input type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (Thai)"/>
                         </div>
                         <div class="input-column input-xxl">
-                          <input type="text" class="form-control" ng-model="choice.En" placeholder="Option {{$index+1}} (English)"/>
+                          <input type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)"/>
                         </div>
-                        <i ng-if="$index > 0" class="clickable fa fa-trash fa-2x margin-left-10 color-grey margin-top-5" ng-click="formData.LS.Options.splice($index,1)"></i>
+                        <i ng-if="$index > 0" class="clickable fa fa-trash fa-2x margin-left-10 color-grey margin-top-5" ng-click="formData.LS.AttributeValues.splice($index,1)"></i>
                       </div>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="width-label"></div>
                     <div class="width-field-normal  margin-bottom-20">
-                      <a class="like-text form-text" ng-click="formData.LS.Options.push({})">
+                      <a class="like-text form-text" ng-click="formData.LS.AttributeValues.push({})">
                         <i class="fa fa-plus-circle color-theme"></i>
                         Add more option
                       </a>
@@ -184,8 +196,8 @@
                 'label' : 'Variant Display Type'
               }">
               <ui-select ng-model="formData.VariantDataType" search-enabled="false">
-                <ui-select-match placeholder="- Select Display Variantion -">
-                    <span ng-bind="$select.selected.name" placeholder="- Select Display Type -"></span>
+                <ui-select-match placeholder="- Select Display Type -">
+                    <span ng-bind="$select.selected.name"></span>
                 </ui-select-match>
                 <ui-select-choices repeat="item in dataTypeOptions">
                     <span ng-bind="item.name"></span>
