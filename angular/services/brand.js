@@ -3,7 +3,7 @@ module.exports = ['$q', 'common', function($q, common){
 	service.getAll = function(q){
 		return common.makeRequest({
 			method: 'GET',
-			url: '/Brands/' + (q ? '?searchText=' + q : '')
+			url: '/Brands/?_limit=5' + (q ? '&searchText=' + q : '')
 		});
 
 	}

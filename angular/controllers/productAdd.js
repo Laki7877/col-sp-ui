@@ -6,6 +6,11 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		GlobalCategory, Category, VariantPair, productProxy, brandAdapter){
 	'use strict';
 
+	$scope._loading = {
+		state : true,
+		message: 'Loading..'
+	};
+
 	$scope.preview = function(){
 		console.log('Form Data', $scope.formData);
 		var apiRequest = productProxy.transform($scope.formData);
@@ -13,33 +18,46 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 	};
 
-	$scope.FakeBrands = [
-	{
-		BrandId: 5,
-		BrandNameEn : "Yeah Bitch"
-	},
-	{
-		BrandId: 6,
-		BrandNameEn: "Jack Ma"
-	}
-	];
-
-	$scope.publish = function(isValid){
-		if(!isValid) return;
-		console.log('Form Data', $scope.formData);
-		var apiRequest = productProxy.transform($scope.formData);
-		console.log('API JSON', JSON.stringify(apiRequest));
-		Product.publish(apiRequest, $scope.Status).then(function(){
-			console.log("Save successful");
-			alert("Just FYI, its saved. ")
-		}, function(er){
-			alert("FYI - Unable to save due to error - Send this message to a wizard near you: \n\n" + JSON.stringify(er));
-			console.warn("Unable to save", er);
+	$scope.refreshRelatedProducts = function(q){
+		return Product.getAll({
+			searchText: q
+		}).then(function(dataSet){
+			console.log("Refreshing", dataSet);
+			$scope.availableRelatedProducts = dataSet.data;
 		});
 	};
 
+	$scope.refreshBrands = function(q){
+		Brand.getAll(q).then(function(dataSet){
+			$scope.availableBrands = dataSet.data;
+		});			
+	};
+
+	$scope.publish = function(Status){
+		console.log("Publishing with Status = ", $scope.Status);
+		try{
+			console.log('Form Data', $scope.formData);
+			var apiRequest = productProxy.transform($scope.formData);
+			console.log('API JSON', JSON.stringify(apiRequest), $scope.Status);
+
+			Product.publish(apiRequest, Status).then(function(){
+				console.log("Save successful");
+				alert("Just FYI, its saved. ")
+			}, function(er){
+				alert("FYI - Unable to save due to error - Send this message to a wizard near you: \n\n" + JSON.stringify(er));
+				console.warn("Unable to save", er);
+			});
+
+		}catch(ex){
+			console.log(ex);
+			alert("Known error occurred while publishing : \n" + JSON.stringify(ex));
+		}
+	};
+
 	$scope.formData = {
+		Brand: {},
 		MasterVariant: {},
+		RelatedProducts: [],
 		MasterImages: [],
 		MasterImages360: [],
 		VideoLinks: [],
@@ -74,13 +92,14 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 			console.log($scope.formData, "at global jquery");
 			
+			/*
 			$(".select2-init-simple").select2();
 			$('.select2-init-keywords').select2();
 
 			$(".select2-init-track").on("change", function(ev){
 				$scope.$digest();
 			});
-
+			*/
 		},
 		angular: function() {
 
@@ -90,13 +109,18 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 				var shopId = 1;
 				var angularReady = function(){
-					//Angular dependent
-				  tabPage.global.jquery();
-				  tabPage.information.jquery();
-				  loadedTabs.information = true;
+					//Angular dependent 
+					//TODO : probably not needed anymore
+				    tabPage.global.jquery();
+				    tabPage.information.jquery();
+				    loadedTabs.information = true;
+					$scope._loading.message = "Done";
+					$scope._loading.state = false;
 				};
 
 				var watchVariantChanges = function(){
+
+					$scope._loading.message = "Setting up watch..";
 
 					$scope.$watch('attributeOptions[0].Attribute', function(){
 						tabPage.variation.initSelect2(0);
@@ -120,6 +144,13 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 							var A = $scope.attributeOptions[0].options[aKey];
 							for(var bKey in $scope.attributeOptions[1].options){
 								var B = $scope.attributeOptions[1].options[bKey];
+
+								if(A['AttributeValue']){
+									A = A.AttributeValue.AttributeValueEn;
+								}
+								if(B['AttributeValue']){
+									B = B.AttributeValue.AttributeValueEn;
+								}
 
 								var kpair = new VariantPair({
 									AttributeId: $scope.attributeOptions[0].Attribute.AttributeId,
@@ -153,6 +184,8 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 				var loadFormData = function(ivFormData, FullAttributeSet){
 
+					$scope._loading.message = "Crunching Data..";
+
 					//Dependency Chain
 					//  catId -> AttributeSet -> Inverse
 
@@ -174,11 +207,15 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 					//Dependecy chain
 					// catId
 
+					$scope._loading.message = "Downloading Attribute Sets..";
+
 					AttributeSet.getByCategory(catId).then(function(data){
 						$scope.availableAttributeSets = data;
 
 						//Load Attribute Set (edit mode only, in add mode AttributeSet is not set)
 						if(ivFormData.AttributeSet && ivFormData.AttributeSet.AttributeSetId){
+
+							$scope._loading.message = "Indexing..";
 
 							var idx = $scope.availableAttributeSets.map(function(o){
 								return o.AttributeSetId
@@ -192,6 +229,8 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
  
 						//Load Global Cat
 						GlobalCategory.getAll().then(function(data) {
+
+							$scope._loading.message = "Downloading Category Tree..";
 							$scope.availableGlobalCategories = Category.transformNestedSetToUITree(data);
 							$scope.formData.GlobalCategories[0] = Category.findByCatId(catId, $scope.availableGlobalCategories);
 							$scope.globalCategoryBreadcrumb = Category.createCatStringById(catId, $scope.availableGlobalCategories);
@@ -199,18 +238,21 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 						});
 
 
-						//watchVariantChanges();
+						watchVariantChanges();
 					});
 				};
 
 				if("productId" in viewBag){
 					//EDIT MODE
-					var productId = viewBag.productId;
-					Product.getOne(productId).then(function(ivFormData){
 
+					var productId = viewBag.productId;
+					$scope._loading.message = "Downloading Product..";
+					Product.getOne(productId).then(function(ivFormData){
 						var gcat = ivFormData.GlobalCategory;
 						catReady(gcat, ivFormData, function(){
+							$scope.formData.ProductId = Number(productId);
 							//Load Brand
+							$scope._loading.message = "Downloading Brand..";
 							Brand.getOne($scope.formData.Brand.BrandId).then(function(data){
 								$scope.formData.Brand = data;
 								delete $scope.formData.Brand.$id;
@@ -228,6 +270,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 				if("catId" in viewBag){
 					//ADD MODE
+					$scope._loading.state = false;
 					catReady(viewBag.catId, {}, angularReady);
 					watchVariantChanges();
 				}
@@ -242,6 +285,10 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			$scope.availableAttributeSets = [];
 			$scope.availableGlobalCategories = [];
 			$scope.availableLocalCategories = [];
+			$scope.availableBrands = [];
+			$scope.availableSearchTags = ["Eneloop", "Extra Battery"];
+			$scope.availableRelatedProducts = [];
+			$scope.availableStockTypes = ['Stock', 'Pre-Order'];
 
 			//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
 			$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
@@ -257,21 +304,6 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		jquery: function(){
 			//NOTE: as of now this is only called in EDIT mode
 			//TODO: which is wrong
-			brandAdapter.load($scope.formData);
-	
-			$('.select2-init-brand').select2({
-				dataAdapter:  $.fn.select2.amd.require('select2/data/brandAdapter'),
-				templateResult: function(d){
-					if(!d || !d.BrandNameEn) return "Loading..";
-					return d.BrandNameEn + " (" + d.BrandNameTh + ")";
-				},
-				templateSelection: function(d){
-					if(!d || !d.BrandNameEn) return "No Brand";
-					return d.BrandNameEn + " (" + d.BrandNameTh + ")";
-				}
-			});
-
-			$('.select2-init-keywords').select2();
 
 		},
 		angular: function() {}
@@ -378,18 +410,11 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			if($scope.attributeOptions[index].attribute){
 				isListInput = ($scope._isListInput($scope.attributeOptions[index].Attribute.Attribute.DataType));
 			}
-
-			//Reset Options
-			$(".select2-init-" + index).select2({
-				tags: !isListInput
-			});
-
-			//$scope.attributeOptions[index].options = [];
 		},
 		jquery: function(){
-			tabPage.variation.initSelect2(0);
-			tabPage.variation.initSelect2(1);
-			$('.select2-init-default-variation').select2();
+			//tabPage.variation.initSelect2(0);
+			//tabPage.variation.initSelect2(1);
+			//$('.select2-init-default-variation').select2();
 		},
 		angular: function() {
 			//Unmultiplied Variants (factor)
@@ -432,7 +457,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	};
 	tabPage.more_option = {
 		jquery: function() {
-			$(".select2-init-related").select2({
+			/*$(".select2-init-related").select2({
 				tags: false,
 				templateResult: function(d){
 					if(!("ProductNameEn" in d)) return null;
@@ -457,8 +482,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 						}).then(success, failure);
 					}
 				}
-			});
-
+			});*/
 		},
 		angular: function() {
 

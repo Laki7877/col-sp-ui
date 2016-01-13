@@ -75,7 +75,7 @@ module.exports = ['Brand', function(Brand){
 'use strict';
 //App Start here
 var angular = require('angular');
-var bulk = ({"controllers":({"adminAttribute":require("./controllers\\adminAttribute.js"),"adminAttributeAdd":require("./controllers\\adminAttributeAdd.js"),"adminAttributeSet":require("./controllers\\adminAttributeSet.js"),"adminAttributeSetAdd":require("./controllers\\adminAttributeSetAdd.js"),"adminCategory":require("./controllers\\adminCategory.js"),"brand":require("./controllers\\brand.js"),"localCategory":require("./controllers\\localCategory.js"),"productAdd":require("./controllers\\productAdd.js"),"productAddSelectCategory":require("./controllers\\productAddSelectCategory.js"),"productList":require("./controllers\\productList.js"),"productListLocalCategory":require("./controllers\\productListLocalCategory.js"),"root":require("./controllers\\root.js")}),"services":({"alert":require("./services\\alert.js"),"attribute":require("./services\\attribute.js"),"attributeSet":require("./services\\attributeSet.js"),"brand":require("./services\\brand.js"),"category":require("./services\\category.js"),"globalCategory":require("./services\\globalCategory.js"),"image":require("./services\\image.js"),"localCategory":require("./services\\localCategory.js"),"product":require("./services\\product.js"),"shop":require("./services\\shop.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"productProxy":require("./helpers\\productProxy.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncBreadcrumb":require("./directives\\ncBreadcrumb.js"),"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"popoverAny":require("./directives\\popoverAny.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"html":require("./filters\\html.js"),"ordinal":require("./filters\\ordinal.js")}),"adapters":({"brand":require("./adapters\\brand.js")})});
+var bulk = ({"controllers":({"adminAttribute":require("./controllers\\adminAttribute.js"),"adminAttributeAdd":require("./controllers\\adminAttributeAdd.js"),"adminAttributeSet":require("./controllers\\adminAttributeSet.js"),"adminAttributeSetAdd":require("./controllers\\adminAttributeSetAdd.js"),"adminBrand":require("./controllers\\adminBrand.js"),"adminCategory":require("./controllers\\adminCategory.js"),"localCategory":require("./controllers\\localCategory.js"),"productAdd":require("./controllers\\productAdd.js"),"productAddSelectCategory":require("./controllers\\productAddSelectCategory.js"),"productList":require("./controllers\\productList.js"),"productListLocalCategory":require("./controllers\\productListLocalCategory.js"),"root":require("./controllers\\root.js")}),"services":({"alert":require("./services\\alert.js"),"attribute":require("./services\\attribute.js"),"attributeSet":require("./services\\attributeSet.js"),"brand":require("./services\\brand.js"),"category":require("./services\\category.js"),"globalCategory":require("./services\\globalCategory.js"),"image":require("./services\\image.js"),"localCategory":require("./services\\localCategory.js"),"product":require("./services\\product.js"),"shop":require("./services\\shop.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"productProxy":require("./helpers\\productProxy.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncBreadcrumb":require("./directives\\ncBreadcrumb.js"),"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"popoverAny":require("./directives\\popoverAny.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"html":require("./filters\\html.js"),"ordinal":require("./filters\\ordinal.js")}),"adapters":({"brand":require("./adapters\\brand.js")})});
 var config = require('./config');
 var template = require('./template');
 
@@ -210,9 +210,9 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 .controller('AdminAttributeAddCtrl', controllers.adminAttributeAdd)
 .controller('AdminAttributeSetAddCtrl', controllers.adminAttributeSetAdd)
 .controller('AdminCategoryCtrl', controllers.adminCategory)
-.controller('AdminBrandCtrl',controllers.brand);
+.controller('AdminBrandCtrl',controllers.adminBrand);
 
-},{"./adapters\\brand.js":1,"./config":3,"./controllers\\adminAttribute.js":4,"./controllers\\adminAttributeAdd.js":5,"./controllers\\adminAttributeSet.js":6,"./controllers\\adminAttributeSetAdd.js":7,"./controllers\\adminCategory.js":8,"./controllers\\brand.js":9,"./controllers\\localCategory.js":10,"./controllers\\productAdd.js":11,"./controllers\\productAddSelectCategory.js":12,"./controllers\\productList.js":13,"./controllers\\productListLocalCategory.js":14,"./controllers\\root.js":15,"./directives\\ncBreadcrumb.js":16,"./directives\\ncTradableSelect.js":17,"./directives\\ngCkeditor.js":18,"./directives\\ngDelegate.js":19,"./directives\\ngSlideToggle.js":20,"./directives\\ngTemplate.js":21,"./directives\\popoverAny.js":22,"./filters\\capitalize.js":23,"./filters\\html.js":24,"./filters\\ordinal.js":25,"./helpers\\base64.js":26,"./helpers\\common.js":27,"./helpers\\productProxy.js":28,"./helpers\\storage.js":29,"./helpers\\util.js":30,"./helpers\\variantPair.js":31,"./services\\alert.js":32,"./services\\attribute.js":33,"./services\\attributeSet.js":34,"./services\\brand.js":35,"./services\\category.js":36,"./services\\globalCategory.js":37,"./services\\image.js":38,"./services\\localCategory.js":39,"./services\\product.js":40,"./services\\shop.js":41,"./template":42,"angular":54,"angular-animate":44,"angular-base64":45,"angular-file-upload":46,"angular-sanitize":48,"angular-ui-bootstrap":49,"angular-ui-tree":52,"ui-select":55}],3:[function(require,module,exports){
+},{"./adapters\\brand.js":1,"./config":3,"./controllers\\adminAttribute.js":4,"./controllers\\adminAttributeAdd.js":5,"./controllers\\adminAttributeSet.js":6,"./controllers\\adminAttributeSetAdd.js":7,"./controllers\\adminBrand.js":8,"./controllers\\adminCategory.js":9,"./controllers\\localCategory.js":10,"./controllers\\productAdd.js":11,"./controllers\\productAddSelectCategory.js":12,"./controllers\\productList.js":13,"./controllers\\productListLocalCategory.js":14,"./controllers\\root.js":15,"./directives\\ncBreadcrumb.js":16,"./directives\\ncTradableSelect.js":17,"./directives\\ngCkeditor.js":18,"./directives\\ngDelegate.js":19,"./directives\\ngSlideToggle.js":20,"./directives\\ngTemplate.js":21,"./directives\\popoverAny.js":22,"./filters\\capitalize.js":23,"./filters\\html.js":24,"./filters\\ordinal.js":25,"./helpers\\base64.js":26,"./helpers\\common.js":27,"./helpers\\productProxy.js":28,"./helpers\\storage.js":29,"./helpers\\util.js":30,"./helpers\\variantPair.js":31,"./services\\alert.js":32,"./services\\attribute.js":33,"./services\\attributeSet.js":34,"./services\\brand.js":35,"./services\\category.js":36,"./services\\globalCategory.js":37,"./services\\image.js":38,"./services\\localCategory.js":39,"./services\\product.js":40,"./services\\shop.js":41,"./template":42,"angular":54,"angular-animate":44,"angular-base64":45,"angular-file-upload":46,"angular-sanitize":48,"angular-ui-bootstrap":49,"angular-ui-tree":52,"ui-select":55}],3:[function(require,module,exports){
 //remote baseUrl - 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/'
 module.exports = {
 	baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/',
@@ -471,6 +471,8 @@ module.exports = ['$scope', 'AttributeSet', function($scope, AttributeSet) {
 },{}],7:[function(require,module,exports){
 
 },{}],8:[function(require,module,exports){
+arguments[4][7][0].apply(exports,arguments)
+},{"dup":7}],9:[function(require,module,exports){
 module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory', 'AttributeSet',  function($scope, $rootScope, common, Category, GlobalCategory, AttributeSet){
 	$scope.categories = [];
 	$scope.attributeSetOptions = [];
@@ -561,9 +563,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 	});
 
 }];
-},{}],9:[function(require,module,exports){
-arguments[4][7][0].apply(exports,arguments)
-},{"dup":7}],10:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory', 'Shop', function($scope, $rootScope, common, Category, LocalCategory, Shop) {
 	$scope.categories = [];
 	$scope.editingStatusOptions = [{
@@ -656,6 +656,11 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		GlobalCategory, Category, VariantPair, productProxy, brandAdapter){
 	'use strict';
 
+	$scope._loading = {
+		state : true,
+		message: 'Loading..'
+	};
+
 	$scope.preview = function(){
 		console.log('Form Data', $scope.formData);
 		var apiRequest = productProxy.transform($scope.formData);
@@ -663,33 +668,46 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 	};
 
-	$scope.FakeBrands = [
-	{
-		BrandId: 5,
-		BrandNameEn : "Yeah Bitch"
-	},
-	{
-		BrandId: 6,
-		BrandNameEn: "Jack Ma"
-	}
-	];
-
-	$scope.publish = function(isValid){
-		if(!isValid) return;
-		console.log('Form Data', $scope.formData);
-		var apiRequest = productProxy.transform($scope.formData);
-		console.log('API JSON', JSON.stringify(apiRequest));
-		Product.publish(apiRequest, $scope.Status).then(function(){
-			console.log("Save successful");
-			alert("Just FYI, its saved. ")
-		}, function(er){
-			alert("FYI - Unable to save due to error - Send this message to a wizard near you: \n\n" + JSON.stringify(er));
-			console.warn("Unable to save", er);
+	$scope.refreshRelatedProducts = function(q){
+		return Product.getAll({
+			searchText: q
+		}).then(function(dataSet){
+			console.log("Refreshing", dataSet);
+			$scope.availableRelatedProducts = dataSet.data;
 		});
 	};
 
+	$scope.refreshBrands = function(q){
+		Brand.getAll(q).then(function(dataSet){
+			$scope.availableBrands = dataSet.data;
+		});			
+	};
+
+	$scope.publish = function(Status){
+		console.log("Publishing with Status = ", $scope.Status);
+		try{
+			console.log('Form Data', $scope.formData);
+			var apiRequest = productProxy.transform($scope.formData);
+			console.log('API JSON', JSON.stringify(apiRequest), $scope.Status);
+
+			Product.publish(apiRequest, Status).then(function(){
+				console.log("Save successful");
+				alert("Just FYI, its saved. ")
+			}, function(er){
+				alert("FYI - Unable to save due to error - Send this message to a wizard near you: \n\n" + JSON.stringify(er));
+				console.warn("Unable to save", er);
+			});
+
+		}catch(ex){
+			console.log(ex);
+			alert("Known error occurred while publishing : \n" + JSON.stringify(ex));
+		}
+	};
+
 	$scope.formData = {
+		Brand: {},
 		MasterVariant: {},
+		RelatedProducts: [],
 		MasterImages: [],
 		MasterImages360: [],
 		VideoLinks: [],
@@ -724,13 +742,14 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 			console.log($scope.formData, "at global jquery");
 			
+			/*
 			$(".select2-init-simple").select2();
 			$('.select2-init-keywords').select2();
 
 			$(".select2-init-track").on("change", function(ev){
 				$scope.$digest();
 			});
-
+			*/
 		},
 		angular: function() {
 
@@ -740,13 +759,18 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 				var shopId = 1;
 				var angularReady = function(){
-					//Angular dependent
-				  tabPage.global.jquery();
-				  tabPage.information.jquery();
-				  loadedTabs.information = true;
+					//Angular dependent 
+					//TODO : probably not needed anymore
+				    tabPage.global.jquery();
+				    tabPage.information.jquery();
+				    loadedTabs.information = true;
+					$scope._loading.message = "Done";
+					$scope._loading.state = false;
 				};
 
 				var watchVariantChanges = function(){
+
+					$scope._loading.message = "Setting up watch..";
 
 					$scope.$watch('attributeOptions[0].Attribute', function(){
 						tabPage.variation.initSelect2(0);
@@ -770,6 +794,13 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 							var A = $scope.attributeOptions[0].options[aKey];
 							for(var bKey in $scope.attributeOptions[1].options){
 								var B = $scope.attributeOptions[1].options[bKey];
+
+								if(A['AttributeValue']){
+									A = A.AttributeValue.AttributeValueEn;
+								}
+								if(B['AttributeValue']){
+									B = B.AttributeValue.AttributeValueEn;
+								}
 
 								var kpair = new VariantPair({
 									AttributeId: $scope.attributeOptions[0].Attribute.AttributeId,
@@ -803,6 +834,8 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 				var loadFormData = function(ivFormData, FullAttributeSet){
 
+					$scope._loading.message = "Crunching Data..";
+
 					//Dependency Chain
 					//  catId -> AttributeSet -> Inverse
 
@@ -824,11 +857,15 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 					//Dependecy chain
 					// catId
 
+					$scope._loading.message = "Downloading Attribute Sets..";
+
 					AttributeSet.getByCategory(catId).then(function(data){
 						$scope.availableAttributeSets = data;
 
 						//Load Attribute Set (edit mode only, in add mode AttributeSet is not set)
 						if(ivFormData.AttributeSet && ivFormData.AttributeSet.AttributeSetId){
+
+							$scope._loading.message = "Indexing..";
 
 							var idx = $scope.availableAttributeSets.map(function(o){
 								return o.AttributeSetId
@@ -842,6 +879,8 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
  
 						//Load Global Cat
 						GlobalCategory.getAll().then(function(data) {
+
+							$scope._loading.message = "Downloading Category Tree..";
 							$scope.availableGlobalCategories = Category.transformNestedSetToUITree(data);
 							$scope.formData.GlobalCategories[0] = Category.findByCatId(catId, $scope.availableGlobalCategories);
 							$scope.globalCategoryBreadcrumb = Category.createCatStringById(catId, $scope.availableGlobalCategories);
@@ -849,18 +888,21 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 						});
 
 
-						//watchVariantChanges();
+						watchVariantChanges();
 					});
 				};
 
 				if("productId" in viewBag){
 					//EDIT MODE
-					var productId = viewBag.productId;
-					Product.getOne(productId).then(function(ivFormData){
 
+					var productId = viewBag.productId;
+					$scope._loading.message = "Downloading Product..";
+					Product.getOne(productId).then(function(ivFormData){
 						var gcat = ivFormData.GlobalCategory;
 						catReady(gcat, ivFormData, function(){
+							$scope.formData.ProductId = Number(productId);
 							//Load Brand
+							$scope._loading.message = "Downloading Brand..";
 							Brand.getOne($scope.formData.Brand.BrandId).then(function(data){
 								$scope.formData.Brand = data;
 								delete $scope.formData.Brand.$id;
@@ -878,6 +920,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 				if("catId" in viewBag){
 					//ADD MODE
+					$scope._loading.state = false;
 					catReady(viewBag.catId, {}, angularReady);
 					watchVariantChanges();
 				}
@@ -892,6 +935,10 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			$scope.availableAttributeSets = [];
 			$scope.availableGlobalCategories = [];
 			$scope.availableLocalCategories = [];
+			$scope.availableBrands = [];
+			$scope.availableSearchTags = ["Eneloop", "Extra Battery"];
+			$scope.availableRelatedProducts = [];
+			$scope.availableStockTypes = ['Stock', 'Pre-Order'];
 
 			//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
 			$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
@@ -907,21 +954,6 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		jquery: function(){
 			//NOTE: as of now this is only called in EDIT mode
 			//TODO: which is wrong
-			brandAdapter.load($scope.formData);
-	
-			$('.select2-init-brand').select2({
-				dataAdapter:  $.fn.select2.amd.require('select2/data/brandAdapter'),
-				templateResult: function(d){
-					if(!d || !d.BrandNameEn) return "Loading..";
-					return d.BrandNameEn + " (" + d.BrandNameTh + ")";
-				},
-				templateSelection: function(d){
-					if(!d || !d.BrandNameEn) return "No Brand";
-					return d.BrandNameEn + " (" + d.BrandNameTh + ")";
-				}
-			});
-
-			$('.select2-init-keywords').select2();
 
 		},
 		angular: function() {}
@@ -1028,18 +1060,11 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			if($scope.attributeOptions[index].attribute){
 				isListInput = ($scope._isListInput($scope.attributeOptions[index].Attribute.Attribute.DataType));
 			}
-
-			//Reset Options
-			$(".select2-init-" + index).select2({
-				tags: !isListInput
-			});
-
-			//$scope.attributeOptions[index].options = [];
 		},
 		jquery: function(){
-			tabPage.variation.initSelect2(0);
-			tabPage.variation.initSelect2(1);
-			$('.select2-init-default-variation').select2();
+			//tabPage.variation.initSelect2(0);
+			//tabPage.variation.initSelect2(1);
+			//$('.select2-init-default-variation').select2();
 		},
 		angular: function() {
 			//Unmultiplied Variants (factor)
@@ -1082,7 +1107,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	};
 	tabPage.more_option = {
 		jquery: function() {
-			$(".select2-init-related").select2({
+			/*$(".select2-init-related").select2({
 				tags: false,
 				templateResult: function(d){
 					if(!("ProductNameEn" in d)) return null;
@@ -1107,8 +1132,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 						}).then(success, failure);
 					}
 				}
-			});
-
+			});*/
 		},
 		angular: function() {
 
@@ -1647,7 +1671,7 @@ module.exports = ['util', function (util) {
     * - Add position to image {} request
     * - Multiply base attributes into each variants
     */
-    tra.productTransform = function(fd){
+    tra.transform = function(fd){
     		var hasVariants = (("Variants" in fd) && fd.Variants.length > 0);
 
     		//Cleaned data
@@ -1762,7 +1786,15 @@ module.exports = ['util', function (util) {
 
 	//MasterVariant
 	clean.MasterVariant = fd.MasterVariant;
-	clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
+	clean.MasterVariant.VideoLinks = [];
+	if(fd.ProductId) clean.ProductId = fd.ProductId;
+
+	try{
+		 clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
+	}catch(ex){
+		console.warn("Video Link map error", ex);
+	}
+
 	clean.MasterVariant.Images360 = fd.MasterImages360.map(mapper.Images);
 	clean.MasterVariant.Images = fd.MasterImages.map(mapper.Images);
 
@@ -1838,7 +1870,13 @@ module.exports = ['util', function (util) {
 		invFd.LocalCategories.unshift({
 			CategoryId: invFd.LocalCategory
 		});
-		if(invFd.MasterVariant.VideoLinks) invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
+
+		if(invFd.MasterVariant.VideoLinks){
+			invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
+		}else{
+			invFd.MasterVariant.VideoLinks = [];
+		}
+
 		invFd.Variants.forEach(function(variant, index){
 			variant.VideoLinks = variant.VideoLinks.map(invMapper.VideoLinks);
 		});
@@ -2196,7 +2234,7 @@ module.exports = ['$q', 'common', function($q, common){
 	service.getAll = function(q){
 		return common.makeRequest({
 			method: 'GET',
-			url: '/Brands/' + (q ? '?searchText=' + q : '')
+			url: '/Brands/?_limit=5' + (q ? '&searchText=' + q : '')
 		});
 
 	}
@@ -2604,8 +2642,12 @@ module.exports = ['$q', '$http', 'common', function($q, $http, common){
 
 	service.publish = function(tobj, Status){
 		tobj.Status = Status;
+		var mode = 'POST';
+		if(tobj.ProductId){
+			mode = 'PUT';
+		}
 		return common.makeRequest({
-			method: 'POST',
+			method: mode,
 		        url: '/ProductStages',
 		        data: tobj
 		});
@@ -2638,7 +2680,7 @@ module.exports = ['common', function(common) {
 },{}],42:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Wed Jan 13 2016 23:52:32 GMT+0700 (SE Asia Standard Time)
+ * Wed Jan 13 2016 23:56:35 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
