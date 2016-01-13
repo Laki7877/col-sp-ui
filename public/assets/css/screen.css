@@ -13035,6 +13035,11 @@ label.css-label {
   white-space: nowrap;
 }
 
+/* line 302, ../../../assets/_table.scss */
+.table-border-none > tbody > tr:first-child > td {
+  border-top: none;
+}
+
 /* line 2, ../../../assets/_form.sass */
 form * {
   font-weight: inherit;
@@ -13453,6 +13458,11 @@ form h6 {
 /* line 39, ../../../assets/_button.scss */
 .btn.btn-width-xxl {
   width: 180px;
+}
+
+/* line 43, ../../../assets/_button.scss */
+.btn.btn-width-xxxl {
+  width: 200px;
 }
 
 /* line 2, ../../../assets/_bootstrap_tagsinput.sass */
