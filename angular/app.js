@@ -14,6 +14,7 @@ require('angular-file-upload');
 require('angular-ui-tree');
 require('angular-base64');
 require('ui-select');
+require('angular-sanitize');
 
 //Internal dependencies
 var controllers = bulk.controllers;
@@ -23,7 +24,7 @@ var directives = bulk.directives;
 var filters = bulk.filters;
 var adapters = bulk.adapters;
 
-var app = angular.module('colspApp', ['ngAnimate', 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
+var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
 
 //App config
 .config(['$uibTooltipProvider', function($tooltipProvider) {
@@ -124,4 +125,5 @@ var app = angular.module('colspApp', ['ngAnimate', 'angularFileUpload', 'ui.tree
 .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)
 .controller('AdminAttributeAddCtrl', controllers.adminAttributeAdd)
 .controller('AdminAttributeSetAddCtrl', controllers.adminAttributeSetAdd)
-.controller('AdminCategoryCtrl', controllers.adminCategory);
+.controller('AdminCategoryCtrl', controllers.adminCategory)
+.controller('AdminBrandCtrl',controllers.brand);

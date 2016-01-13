@@ -4,13 +4,13 @@ module.exports = ['util', function (util) {
     'use strict';
     var tra = {};
 
-    tra.productTransform = function(fd){
-	    /*
-    		 * - Convert all category into single { CategoryId } Structure
-    		 * - Add position to image {} request
-    		 * - Multiply base attributes into each variants
-    		 */
 
+	/*
+    * - Convert all category into single { CategoryId } Structure
+    * - Add position to image {} request
+    * - Multiply base attributes into each variants
+    */
+    tra.productTransform = function(fd){
     		var hasVariants = (("Variants" in fd) && fd.Variants.length > 0);
 
     		//Cleaned data
@@ -129,10 +129,6 @@ module.exports = ['util', function (util) {
 	clean.MasterVariant.Images360 = fd.MasterImages360.map(mapper.Images);
 	clean.MasterVariant.Images = fd.MasterImages.map(mapper.Images);
 
-	//clean.MasterVariant.StockType = fd.StockType;
-	//clean.MasterVariant.Quantity = fd.Quantity || 0;
- 	//clean.MasterVariant.SafetyStock = fd.SafetyStock || 0;
-
 	try{
 		if(hasVariants){
 			var masterProps = [];
@@ -152,68 +148,129 @@ module.exports = ['util', function (util) {
 		console.warn("Variant Distribute", ex);
 	}
 
-	//HardCoD
-	clean.SellerId = 1;
-	clean.ShopId = 1;
+		//HardCoD
+		clean.SellerId = 1;
+		clean.ShopId = 1;
 
-	return clean;
+		return clean;
     };
 
-    tra.inverseProductTransform = function(invFd){
+    /* 
+    *  Reverse serialization
+    */
+    tra.inverseTransform = function(invFd, FullAttributeSet){
 
-	var invMapper ={
-		VideoLinks: function(m){
-			return m.Url;
-		},
-		Variants: function(m){
-			console.log(m);
-			m.hash = util.variant.hash(m.FirstAttribute, m.SecondAttribute);
-			m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
-			return m;
+    	console.log('FullAttributeSet', FullAttributeSet);
+
+    	invFd.AttributeSet = FullAttributeSet;
+    	invFd.PrepareDay = invFd.PrepareDay;
+
+		var invMapper ={
+			VideoLinks: function(m){
+				return m.Url;
+			},
+			Variants: function(m){
+				console.log(m);
+				m.hash = util.variant.hash(m.FirstAttribute, m.SecondAttribute);
+				m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
+				return m;
+			}
+		};
+
+		try{
+			var DefaultVariantIndex = invFd.Variants.map(function(o){
+				return o.DefaultVariant || false;
+			}).indexOf(true);
+
+			invFd.DefaultVariant = invFd.Variants[DefaultVariantIndex];
+		}catch(er){
+			console.warn("Unable to find DefaultVariant", er);
 		}
-	};
+
+		try{
+			invFd.Variants = invFd.Variants.map(invMapper.Variants);
+		}catch(er){
+			console.warn("Variants Map Error", er);
+		}
+
+		var MasterAttribute = {};
+		invFd.MasterAttribute.forEach(function(ma){
+			MasterAttribute[ma.AttributeId]  = ma.ValueEn;
+		});
+		invFd.MasterAttribute = MasterAttribute;
+		invFd.LocalCategories.unshift({
+			CategoryId: invFd.LocalCategory
+		});
+		if(invFd.MasterVariant.VideoLinks) invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
+		invFd.Variants.forEach(function(variant, index){
+			variant.VideoLinks = variant.VideoLinks.map(invMapper.VideoLinks);
+		});
+
+		//TODO: This should fetch entire Object
+		invFd.GlobalCategories.unshift({
+			CategoryId: invFd.GlobalCategory
+		});
+		delete invFd.GlobalCategory;
+		delete invFd.LocalCategory;
+
+		//TODO: Just change ngmodel to bind to MasterVariant.MasterImages Directly
+		invFd.MasterImages = invFd.MasterVariant.Images;
+		delete invFd.MasterVariant.Images;
+		invFd.MasterImages360 = invFd.MasterVariant.Images360;
+		delete invFd.MasterVariant.Images360;
+
+		invFd.MasterVariant.WeightUnit = invFd.MasterVariant.WeightUnit.trim();
+		invFd.MasterVariant.DimensionUnit = invFd.MasterVariant.DimensionUnit.trim();
 
 
-	try{
-		invFd.Variants = invFd.Variants.map(invMapper.Variants);
-	}catch(er){
-		console.warn("Variants Map Error", er);
-	}
+		invFd.Keywords = invFd.Keywords.split(",");
+		if(invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; //TODO: Hardcode
 
-	var MasterAttribute = {};
-	invFd.MasterAttribute.forEach(function(ma){
-		MasterAttribute[ma.AttributeId]  = ma.ValueEn;
-	});
-	invFd.MasterAttribute = MasterAttribute;
-	invFd.LocalCategories.unshift({
-		CategoryId: invFd.LocalCategory
-	});
-	if(invFd.MasterVariant.VideoLinks) invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
-	invFd.Variants.forEach(function(variant, index){
-		variant.VideoLinks = variant.VideoLinks.map(invMapper.VideoLinks);
-	});
+		var transformed = {
+    		formData: invFd
+    	};
 
-	//TODO: This should fetch entire Object
-	invFd.GlobalCategories.unshift({
-		CategoryId: invFd.GlobalCategory
-	});
-	delete invFd.GlobalCategory;
-	delete invFd.LocalCategory;
+    	if(invFd.Variants.length > 0){
 
-	//TODO: Just change ngmodel to bind to MasterVariant.MasterImages Directly
-	invFd.MasterImages = invFd.MasterVariant.Images;
-	delete invFd.MasterVariant.Images;
-	invFd.MasterImages360 = invFd.MasterVariant.Images360;
-	delete invFd.MasterVariant.Images360;
+ 
+    		//Generate attributeOptions
+    		var map0_index = FullAttributeSet.AttributeSetMaps.map(function(a){
+					return a.Attribute.AttributeId;
+			}).indexOf(invFd.Variants[0].FirstAttribute.AttributeId);
+    		
+    		var map1_index = FullAttributeSet.AttributeSetMaps.map(function(a){
+					return a.Attribute.AttributeId;
+			}).indexOf(invFd.Variants[0].SecondAttribute.AttributeId);
 
-	invFd.MasterVariant.WeightUnit = invFd.MasterVariant.WeightUnit.trim();
-	invFd.MasterVariant.DimensionUnit = invFd.MasterVariant.DimensionUnit.trim();
+    		var FirstArray = invFd.Variants.map(function(variant){
+	   			return variant.FirstAttribute.ValueEn.trim();
+			});
+
+			var SecondArray = invFd.Variants.map(function(variant){
+	   			return variant.SecondAttribute.ValueEn.trim();
+			});
 
 
-	invFd.Keywords = invFd.Keywords.split(",");
-	if(invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; //TODO: Hardcode
+			console.log(FirstArray, SecondArray, "FSS");
+			//Get updated map from invFd.AttributeSet
+			//and load factorization array
+			transformed.attributeOptions = [
+				{
+					Attribute: FullAttributeSet.AttributeSetMaps[map0_index].Attribute,
+					options: FirstArray
+				}, 
+				{
+					Attribute: FullAttributeSet.AttributeSetMaps[map1_index].Attribute,
+					options: SecondArray
+				}
+			];
 
-    	return invFd;	    
+
+    	}
+
+    	console.log('transformation array', transformed);
+
+    	return transformed;	    
     };
 
     return tra;

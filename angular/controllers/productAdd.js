@@ -8,7 +8,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 	$scope.preview = function(){
 		console.log('Form Data', $scope.formData);
-		var apiRequest = productProxy.productTransform($scope.formData);
+		var apiRequest = productProxy.transform($scope.formData);
 		console.log('API JSON', JSON.stringify(apiRequest));
 
 	};
@@ -16,9 +16,8 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	$scope.publish = function(isValid){
 		if(!isValid) return;
 		console.log('Form Data', $scope.formData);
-		var apiRequest = productProxy.productTransform($scope.formData);
+		var apiRequest = productProxy.transform($scope.formData);
 		console.log('API JSON', JSON.stringify(apiRequest));
-		//Save
 		Product.publish(apiRequest, $scope.Status).then(function(){
 			console.log("Save successful");
 			alert("Just FYI, its saved. ")
@@ -43,16 +42,11 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	//CK editor options
 	$scope.ckOptions = config.CK_DEFAULT_OPTIONS;
 
-	/**
-	 * All Tabs
-	 * Seperated by jquery parts and angular parts
-	 */
-	//TODO: Please don't separate by jquery part and angular part
-	//Because some jquery part has angular dependencies
-	var tabPage = {
-
-	};
+	var tabPage = {};
 	tabPage.global = {
+		load: function(){
+
+		},
 		jquery: function(){
 
 			//TODO: this wont play well with angular, not sure why
@@ -91,15 +85,98 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 				  loadedTabs.information = true;
 				};
 
-				var catReady = function(catId, callback){
+				var watchVariantChanges = function(){
+
+					$scope.$watch('attributeOptions[0].Attribute', function(){
+						tabPage.variation.initSelect2(0);
+					});
+
+					$scope.$watch('attributeOptions[1].Attribute', function(){
+						tabPage.variation.initSelect2(1);
+					});
+
+					$scope.$watch('attributeOptions', function(){
+
+						var variantHashes = {};
+						//Product Hash Tracking Table
+						$scope.formData.Variants.forEach(function(elem, index){
+							//Keep track of the index of the hashed item
+							variantHashes[elem.hash] = index;
+						});
+
+						//Multiply out unmultiplied options
+						for(var aKey in $scope.attributeOptions[0].options){
+							var A = $scope.attributeOptions[0].options[aKey];
+							for(var bKey in $scope.attributeOptions[1].options){
+								var B = $scope.attributeOptions[1].options[bKey];
+
+								var kpair = new VariantPair({
+									AttributeId: $scope.attributeOptions[0].Attribute.AttributeId,
+									ValueEn: A
+								},{
+									AttributeId: $scope.attributeOptions[1].Attribute.AttributeId,
+									ValueEn: B
+								});
+
+								//Only push if don't exist
+								if(!(kpair.hash in variantHashes)){
+									$scope.formData.Variants.push(kpair);
+								}
+
+								//Mark hash as used
+								//This will not be deleted
+								variantHashes[kpair.hash] = -1;
+							}
+						}
+
+						//Remove deleted variants
+						for(var rhash in variantHashes){
+							if(variantHashes[rhash] == -1) continue;
+							$scope.formData.Variants.splice(variantHashes[rhash], 1);
+						}
+
+						$scope.formData.DefaultVariant = $scope.formData.Variants[0];
+					}, true);
+
+				}
+
+				var loadFormData = function(ivFormData, FullAttributeSet){
+
+					//Dependency Chain
+					//  catId -> AttributeSet -> Inverse
+
+					console.log("Before Inverse Transformation", ivFormData);
+					var inverseResult = productProxy.inverseTransform(ivFormData, FullAttributeSet);
+					$scope.formData = inverseResult.formData;
+					console.log("After Inverse Transformation", $scope.formData);
+					console.log('inverseResult.attributeOptions', inverseResult.attributeOptions);
+					$scope.attributeOptions = inverseResult.attributeOptions;
+
+					/*		
+					console.log("ATTR OPT", inverseResult.attributeOptions);
+					$scope.Variants = _variants;
+					$scope.attributeOptions.Options = _options;
+					*/
+				};
+
+				var catReady = function(catId, ivFormData, callback){
+					//Dependecy chain
+					// catId
+
 					AttributeSet.getByCategory(catId).then(function(data){
 						$scope.availableAttributeSets = data;
-						if($scope.formData.AttributeSet && $scope.formData.AttributeSet.AttributeSetId){
-							//Find attribute set and assign it as object
+
+						//Load Attribute Set (edit mode only, in add mode AttributeSet is not set)
+						if(ivFormData.AttributeSet && ivFormData.AttributeSet.AttributeSetId){
+
 							var idx = $scope.availableAttributeSets.map(function(o){
 								return o.AttributeSetId
-							}).indexOf($scope.formData.AttributeSet.AttributeSetId);
+							}).indexOf(ivFormData.AttributeSet.AttributeSetId);
+
+							console.log("idx", idx);
+						
 							$scope.formData.AttributeSet = $scope.availableAttributeSets[idx];
+							loadFormData(ivFormData, $scope.formData.AttributeSet);
 						}
  
 						//Load Global Cat
@@ -110,22 +187,18 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 							callback();
 						});
 
-					});
-					
 
+						//watchVariantChanges();
+					});
 				};
 
 				if("productId" in viewBag){
 					//EDIT MODE
-
 					var productId = viewBag.productId;
 					Product.getOne(productId).then(function(ivFormData){
-						var gcat = ivFormData.GlobalCategory;
-						console.log("formData (INVERSE)", ivFormData);
-						$scope.formData = productProxy.inverseProductTransform(ivFormData);
-						console.log("formData", $scope.formData);
 
-						catReady(gcat, function(){
+						var gcat = ivFormData.GlobalCategory;
+						catReady(gcat, ivFormData, function(){
 							//Load Brand
 							Brand.getOne($scope.formData.Brand.BrandId).then(function(data){
 								$scope.formData.Brand = data;
@@ -137,14 +210,15 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 						});
 
 						//auxiliary object (non-persist)
-						//$scope.attributeOptions[0] = $scope.formData.Variants[0].FirstAttribute;
+						// $scope.attributeOptions[0] = $scope.formData.Variants[0].FirstAttribute;
 
 					});
 				}
 
 				if("catId" in viewBag){
 					//ADD MODE
-					catReady(viewBag.catId, angularReady);
+					catReady(viewBag.catId, {}, angularReady);
+					watchVariantChanges();
 				}
 
 				//Load Local Cat
@@ -173,46 +247,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 			//NOTE: as of now this is only called in EDIT mode
 			//TODO: which is wrong
 			brandAdapter.load($scope.formData);
-
-
-			//define simple tag adapter
-			//WILL USE UI-SELECT
-			$.fn.select2.amd.define('select2/data/simpleTagsAdapter',[
-				'select2/data/array',
-				'select2/utils',
-				'select2/selection/multiple'
-			    ],
-			    function (ArrayAdapter, Utils, Multiple) {
-
-					function CustomDataAdapter ($element, options) {
-					    CustomDataAdapter.__super__.constructor.call(this, $element, options);
-					}
-
-					Utils.Extend(CustomDataAdapter, ArrayAdapter);
-
-					//current is called every time match list is queried
-					 CustomDataAdapter.prototype.current = function (callback) {
-		
-						var data = $scope.formData.Keywords.map(function(m){
-							return {
-								'id': m,
-								'text': m
-							}
-						}) || [];
-
-						this.$element.find(':selected').each(function () {
-							var $option = $(this);
-							var option = self.item($option);
-							data.push(option);
-						});
-
-						callback(data)
-					};
-
-					return CustomDataAdapter;
-				 }
-			); //end_define
-
+	
 			$('.select2-init-brand').select2({
 				dataAdapter:  $.fn.select2.amd.require('select2/data/brandAdapter'),
 				templateResult: function(d){
@@ -225,9 +260,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 				}
 			});
 
-			$('.select2-init-keywords').select2({
-				dataAdapter: $.fn.select2.amd.require('select2/data/simpleTagsAdapter')
-			});
+			$('.select2-init-keywords').select2();
 
 		},
 		angular: function() {}
@@ -332,7 +365,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		initSelect2: function(index){
 			var isListInput	= false;
 			if($scope.attributeOptions[index].attribute){
-				isListInput = ($scope._isListInput($scope.attributeOptions[index].attribute.Attribute.DataType));
+				isListInput = ($scope._isListInput($scope.attributeOptions[index].Attribute.Attribute.DataType));
 			}
 
 			//Reset Options
@@ -340,80 +373,25 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 				tags: !isListInput
 			});
 
-			$scope.attributeOptions[index].options = [];
-
+			//$scope.attributeOptions[index].options = [];
 		},
 		jquery: function(){
 			tabPage.variation.initSelect2(0);
 			tabPage.variation.initSelect2(1);
+			$('.select2-init-default-variation').select2();
 		},
 		angular: function() {
 			//Unmultiplied Variants (factor)
 			$scope.attributeOptions = {
 				0: {
-					attribute: false,
+					Attribute: false,
 					options: []
 				},
 				1: {
-					attribute: false,
+					Attribute: false,
 					options: []
 				}
 			};
-
-
-			$scope.$watch('attributeOptions[0].attribute', function(){
-				tabPage.variation.initSelect2(0);
-			});
-
-			$scope.$watch('attributeOptions[1].attribute', function(){
-				tabPage.variation.initSelect2(1);
-			});
-
-			/*
-			 * Multiplying options into VariantPairs
-			 */
-			$scope.$watch('attributeOptions', function(){
-
-				var variantHashes = {};
-				//Product Hash Tracking Table
-				$scope.formData.Variants.forEach(function(elem, index){
-					//Keep track of the index of the hashed item
-					variantHashes[elem.hash] = index;
-				});
-
-				//Multiply out unmultiplied options
-				for(var aKey in $scope.attributeOptions[0].options){
-					var A = $scope.attributeOptions[0].options[aKey];
-					for(var bKey in $scope.attributeOptions[1].options){
-						var B = $scope.attributeOptions[1].options[bKey];
-
-						var kpair = new VariantPair({
-							AttributeId: $scope.attributeOptions[0].attribute.AttributeId,
-							ValueEn: A
-						},{
-							AttributeId: $scope.attributeOptions[1].attribute.AttributeId,
-							ValueEn: B
-						});
-
-						//Only push if don't exist
-						if(!(kpair.hash in variantHashes)){
-							$scope.formData.Variants.push(kpair);
-						}
-
-						//Mark hash as used
-						//This will not be deleted
-						variantHashes[kpair.hash] = -1;
-					}
-				}
-
-				//Remove deleted variants
-				for(var rhash in variantHashes){
-					if(variantHashes[rhash] == -1) continue;
-					$scope.formData.Variants.splice(variantHashes[rhash], 1);
-				}
-
-				$scope.formData.DefaultVariant = $scope.formData.Variants[0];
-			}, true);
 
 			//TODO: When selected attribute change,
 			//the other box wil not allow to have selected option

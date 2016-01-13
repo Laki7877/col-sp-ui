@@ -16,6 +16,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 		<?php endforeach; ?>
 		})">
 		<? $this->insert('components/page-title-breadcrumb', ['text' => "Products/ " . $title, 'urls' => ['/products']]) ?>
+
 		<div class="add-product-body">
 
 			<? $this->insert('components/tab-nav', ["items" => $menus]) ?>
