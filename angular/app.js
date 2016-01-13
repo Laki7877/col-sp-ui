@@ -36,9 +36,14 @@ var app = angular.module('colspApp', ['ngAnimate', 'angularFileUpload', 'ui.tree
 .run(template)
 
 //App init
-.run(['$base64', 'storage', function($base64, storage) {
+.run(['$rootScope', '$base64', 'storage', function($rootScope, $base64, storage) {
 	//TODO: login page
 	storage.storeSessionToken($base64.encode('duckvader:vader'));
+
+	//Create generic form validator functions
+	$rootScope.isValid = function(form, attribute) {
+		return form[attribute].$invalid && form[attribute].$dirty;
+	};
 }])
 //Configuration
 .value('config', config)
@@ -61,6 +66,7 @@ var app = angular.module('colspApp', ['ngAnimate', 'angularFileUpload', 'ui.tree
 .factory('AttributeSet', services.attributeSet)
 .factory('Brand', services.brand)
 .factory('VariantPair', helpers.variantPair)
+
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)
 .directive('ngDelegate', directives.ngDelegate)

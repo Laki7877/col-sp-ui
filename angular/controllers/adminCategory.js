@@ -27,7 +27,6 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 		message: ''
 	};
 
-
 	$scope.init = function() {
 		$scope.reload();
 		$scope.loadAttributeSets();
@@ -39,6 +38,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 	}
 	$scope.reload = function() {
 		GlobalCategory.getAll().then(function(data) {
+			console.log(data);
 			$scope.categories = Category.transformNestedSetToUITree(data);
 		}, function(err) {
 			$scope.alert.open(false, common.getError(err));
@@ -53,7 +53,8 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 			item['Commission'] = parseInt(item['Commission']);
 			return item;
 		});
-		
+
+		console.log($scope.formData);		
 		GlobalCategory.upsert($scope.formData).then(function() {
 			$scope.alert.open(true);
 		}, function(err) {
