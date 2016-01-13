@@ -1,6 +1,6 @@
 <?php
 
-$this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
+$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System'])
 ?>
 
 <?php $this->start('page-body') ?>
@@ -19,9 +19,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 					<div class="container-fluid">
 						<div class="float-right">
 							<a href="#" class="link-btn-plain">Cancel</a>
-							<button class="btn btn-white btn-width-xl">Preview</button>
-							<button class="btn btn-white btn-width-xl">Save as Draft</button>
-							<button class="btn btn-blue btn-width-xl">Publish</button>
+							<button class="btn btn-blue btn-width-xl">Save</button>
 						</div>
 					</div>
 				</div>

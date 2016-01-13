@@ -27,14 +27,12 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="form-section">
-				<div class="form-section-header"><h2>SEO</h2></div>
+				<div class="form-section-header"><h2>Admin Account Information</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Meta Title", "tooltip" => "Test", "tooltip" => "This is a tooltip text"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Meta Description", "tooltip" => "This is a tooltip text"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Meta Keywords", "tooltip" => "This is a tooltip text"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Product URL Key (Thai)", "tooltip" => "This is a tooltip text"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Product URL Key (English)", "tooltip" => "This is a tooltip text"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Boosting Weight", "tooltip" => "This is a tooltip text"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Email", "label_class" => "required"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Name", "label_class" => "required"]) ?>
+					<? $this->insert('components/forms/password-field', ["label" => "Password", "label_class" => "required"]) ?>
+					<? $this->insert('components/forms/password-field', ["label" => "Confirm Password", "label_class" => "required"]) ?>
 				</div>
 			</div>
 		</div>
