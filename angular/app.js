@@ -126,4 +126,4 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 .controller('AdminAttributeAddCtrl', controllers.adminAttributeAdd)
 .controller('AdminAttributeSetAddCtrl', controllers.adminAttributeSetAdd)
 .controller('AdminCategoryCtrl', controllers.adminCategory)
-.controller('AdminBrandCtrl',controllers.brand);
+.controller('AdminBrandCtrl',controllers.adminBrand);
