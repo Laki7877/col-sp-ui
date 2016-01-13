@@ -23,16 +23,6 @@ if (isset($size)) $inputSize = "width-field-$size";
 			<option><?php echo $opt; ?></option>
 			<?php endforeach; ?>
 			</select>
-			
-			<ui-select ng-model="<?=$ng_model?>">
-			    <ui-select-match>
-			        <span ng-bind="$select.selected.<?=$showBy?>"></span>
-			    </ui-select-match>
-			    <ui-select-choices repeat="item in (<?= $choices ?> | filter: $select.search) track by item.<?= $trackBy ?>">
-			        <span ng-bind="item.<?=$showBy?>"></span>
-			    </ui-select-choices>
-			</ui-select>
-
 		</div>
 	</div>
 	<? if (!empty($tooltip)): ?>

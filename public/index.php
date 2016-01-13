@@ -24,7 +24,7 @@ Route::add('/products/select', 'ProductController::select');
 Route::add('/products/:productid', 'ProductController::edit');
 
 //category routing
-Route::add('/categories', 'LocalCategoryController::add');
+Route::add('/categories', 'CategoryController::index');
 
 //admin routing
 Route::add('/admin/attributes/add','AdminController::addAttribute');

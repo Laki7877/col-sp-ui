@@ -13,22 +13,23 @@ module.exports = ['$scope', 'Attribute', function($scope, Attribute) {
 		'ST' : 'Free Text',
 		'LT' : 'Dropdown',
 		'HB' : 'HTML Box'
-	}
+	};
 
-	//attribute List
+	//Attribute List
 	$scope.attributeList = [];
+ 	$scope.attributeTotal = 0;
 	
 	//Default parameters
 	$scope.tableParams = {
-		filter: $scope.filterOptions,
+		filter: $scope.filterOptions[0].value,
 		searchText: null,
 		orderBy: 'AttributeNameEn',
 		direction: 'desc',
 		page: 0,
 		pageSize: 10
 	};
-
 	$scope.notReady = true;
+	
 	$scope.applySearch = function(){
 		$scope.tableParams.searchText = $scope.searchText;
 	};
@@ -51,16 +52,17 @@ module.exports = ['$scope', 'Attribute', function($scope, Attribute) {
 		}
 		$scope.tableParams.orderBy = nextOrderBy;
 	}
-
- 	$scope.attributeTotal = 0;
+	
 	//Populate Data Source
 	var reloadData = function(){
 		$scope.attributeList = [];
 		$scope.notReady = true;
+		$('#modal-loading').modal('show');
 		Attribute.getAll($scope.tableParams).then(function(x){
 			$scope.attributeTotal = x.total;
 			$scope.attributeList = x.data;
 			$scope.notReady = false;
+			$('#modal-loading').modal('hide');
 		});
 	};
 

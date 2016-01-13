@@ -12,57 +12,62 @@
               <div class="form-section">
                 <div class="form-section-header"><h2>Local Category Detail</h2></div>
                 <div class="form-section-content modal-custom">
-                  <input type="text"
-                    name="NameTh"
-                    class="form-control"
-                    autocomplete="off"
-                    ng-class="{ 'has-error' : editingForm.NameTh.$invalid && editingForm.NameTh.$dirty }"
-                    ng-model="editingCategory.NameTh"
-                    ng-pattern="/^[a-zA-Z0-9ก-๙ ]+$/" 
-                    ng-template="common/input/text" 
-                    ng-template-options="{
-                      'label': 'Category Name (Thai)',
-                      'labelClass': 'required',
-                      'error' : {
-                        'message': 'Cannot use special characters such as ! # $ % ^ &',
-                        'show' : editingForm.NameTh.$invalid && editingForm.NameTh.$dirty
-                      }
-                    }"
-                    required
-                  />
-                  <input type="text" 
-                    name="NameEn"
-                    class="form-control"
-                    autocomplete="off"
-                    ng-class="{ 'has-error' : editingForm.NameEn.$invalid && editingForm.NameEn.$dirty }"
-                    ng-model="editingCategory.NameEn" 
-                    ng-pattern="/^[a-zA-Z0-9 ]+$/" 
-                    ng-template="common/input/text" 
-                    ng-template-options="{
-                      'label': 'Category Name (Eng)',
-                      'labelClass': 'required',
-                      'error' : {
-                        'message': 'Cannot use special characters such as ! # $ % ^ &',
-                        'show' : editingForm.NameEn.$invalid && editingForm.NameEn.$dirty
-                      }
-                    }"
-                    required
-                  />
-                  <input type="text" 
-                    name="UrlKeyEn"
-                    class="form-control"
-                    ng-model="editingCategory.UrlKeyEn"
-                    ng-template="common/input/text" 
-                    ng-template-options="{
-                      'label': 'Url (Eng)'
-                    }"
-                  />
+                      <div ng-template="common/input/text" 
+                          ng-template-options="{
+                            'label': 'Category Name (Thai)',
+                            'labelClass': 'required',
+                            'error' : {
+                              'message': 'Cannot use special characters such as ! # $ % ^ &',
+                              'show' : $root.isInvalid(editingForm.NameTh)
+                            }
+                          }">
+                        <input type="text"
+                          name="NameTh"
+                          class="form-control"
+                          autocomplete="off"
+                          ng-class="{ 'has-error' : $root.isInvalid(editingForm.NameTh) }"
+                          ng-model="editingCategory.NameTh"
+                          ng-pattern="/^[a-zA-Z0-9ก-๙ ]+$/" 
+                          required
+                        />
+                      </div>
+                      <div ng-template="common/input/text" 
+                          ng-template-options="{
+                            'label': 'Category Name (Eng)',
+                            'labelClass': 'required',
+                            'error' : {
+                              'message': 'Cannot use special characters such as ! # $ % ^ &',
+                              'show' : $root.isInvalid(editingForm.NameEn)
+                            }
+                          }">
+                        <input type="text" 
+                          name="NameEn"
+                          class="form-control"
+                          autocomplete="off"
+                          ng-class="{ 'has-error' : $root.isInvalid(editingForm.NameEn) }"
+                          ng-model="editingCategory.NameEn" 
+                          ng-pattern="/^[a-zA-Z0-9 ]+$/" 
+                          required
+                        />
+                      </div>
+                      <div ng-template="common/input/text" 
+                          ng-template-options="{
+                            'label': 'Url (Eng)'
+                          }">
+                        <input type="text" 
+                          name="UrlKeyEn"
+                          class="form-control"
+                          ng-model="editingCategory.UrlKeyEn"
+                        />
+                      </div>
                 </div>
               </div>
               <div class="form-section">
                 <div class="form-section-header"><h2>Category Visibility</h2></div>
                 <div class="form-section-content modal-custom">
-                    <label ng-template="common/input/multiline-radio" ng-template-options="{ 'label' : 'Visibility' }" ng-repeat="choice in editingStatusOptions"><input type="radio" ng-model="editingCategory.Status" ng-value="choice.value"/>{{choice.text}}</label>
+                    <div ng-template="common/input/multiline-radio" ng-template-options="{ 'label' : 'Visibility' }">
+                      <label ng-repeat="choice in editingStatusOptions"><input type="radio" ng-model="editingCategory.Status" ng-value="choice.value"/>{{choice.text}}</label>
+                    </div>
                 </div>
               </div>
             </div>

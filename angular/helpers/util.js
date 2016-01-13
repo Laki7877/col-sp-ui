@@ -30,7 +30,7 @@ module.exports = ['storage', function (storage) {
 
     service.isListDataType = function(dataType){
 	return (dataType == "LT");
-    }
+    };
 
     return service;
 }];
