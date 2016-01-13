@@ -65,7 +65,6 @@ var app = angular.module('colspApp', ['ngAnimate', 'angularFileUpload', 'ui.tree
 .factory('Brand', services.brand)
 .factory('VariantPair', helpers.variantPair)
 .factory('brandAdapter', adapters.brand)
-.factory('simpleTagAdapter', adapters.simpleTags)
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)
 .directive('ngDelegate', directives.ngDelegate)
