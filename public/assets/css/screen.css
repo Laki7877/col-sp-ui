@@ -12875,48 +12875,49 @@ label.css-label {
 }
 /* line 131, ../../../assets/_table.scss */
 .table-section .table > thead > tr > th {
+  padding-top: 6px;
   padding-bottom: 4px;
   font-weight: normal;
 }
-/* line 136, ../../../assets/_table.scss */
+/* line 137, ../../../assets/_table.scss */
 .table-section .table > tbody > tr > td {
   vertical-align: middle;
 }
-/* line 140, ../../../assets/_table.scss */
+/* line 141, ../../../assets/_table.scss */
 .table-section td.info-column, .table-section td.image-columnm, .table-section td.live-column, .table-section td.visible-column {
   text-align: center;
 }
-/* line 144, ../../../assets/_table.scss */
+/* line 145, ../../../assets/_table.scss */
 .table-section .table-checkbox {
   margin-top: 0px;
   margin-bottom: 0;
 }
-/* line 149, ../../../assets/_table.scss */
+/* line 150, ../../../assets/_table.scss */
 .table-section .table-head {
   background: #edf2f9;
   color: #32343C;
   border-top-left-radius: 10px;
 }
 
-/* line 157, ../../../assets/_table.scss */
+/* line 158, ../../../assets/_table.scss */
 .page-navigation {
   float: right;
 }
-/* line 160, ../../../assets/_table.scss */
+/* line 161, ../../../assets/_table.scss */
 .page-navigation .grey-chevron {
   color: #BCC7D5;
 }
-/* line 164, ../../../assets/_table.scss */
+/* line 165, ../../../assets/_table.scss */
 .page-navigation .blue-chevron {
   color: #4899DD;
 }
-/* line 168, ../../../assets/_table.scss */
+/* line 169, ../../../assets/_table.scss */
 .page-navigation .view-page-separator {
   border-left: solid 1px #BCC7D5;
   padding-left: 15px;
 }
 
-/* line 178, ../../../assets/_table.scss */
+/* line 179, ../../../assets/_table.scss */
 .filter-section .filter-container {
   position: relative;
   padding: 12px 17px 12px;
@@ -12926,7 +12927,7 @@ label.css-label {
   border-width: 1px;
   border-radius: 4px;
 }
-/* line 188, ../../../assets/_table.scss */
+/* line 189, ../../../assets/_table.scss */
 .filter-section .filter-seperator {
   text-decoration: none;
   cursor: pointer;
@@ -12935,108 +12936,103 @@ label.css-label {
   padding-left: 9px;
   margin-left: 9px;
 }
-/* line 197, ../../../assets/_table.scss */
+/* line 198, ../../../assets/_table.scss */
 .filter-section .filter-first-option {
   text-decoration: none;
   cursor: pointer;
   color: #7B7F8F;
   margin-left: 20px;
 }
-/* line 204, ../../../assets/_table.scss */
+/* line 205, ../../../assets/_table.scss */
 .filter-section .filter-active {
   color: #32343C;
 }
 
-/* line 210, ../../../assets/_table.scss */
+/* line 211, ../../../assets/_table.scss */
 .search-section-wrapper {
   margin-top: 30px;
 }
-/* line 213, ../../../assets/_table.scss */
+/* line 214, ../../../assets/_table.scss */
 .search-section-wrapper .search-section {
   padding-left: 15px;
   padding-right: 15px;
   float: left;
 }
-/* line 219, ../../../assets/_table.scss */
+/* line 220, ../../../assets/_table.scss */
 .search-section-wrapper .section-action {
   width: 280px;
 }
-/* line 223, ../../../assets/_table.scss */
+/* line 224, ../../../assets/_table.scss */
 .search-section-wrapper .section-search {
   width: 410px;
 }
-/* line 227, ../../../assets/_table.scss */
+/* line 228, ../../../assets/_table.scss */
 .search-section-wrapper .search-section.section-filter {
   float: right;
 }
-/* line 231, ../../../assets/_table.scss */
+/* line 232, ../../../assets/_table.scss */
 .search-section-wrapper .search-section .btn-white {
   height: 30px;
 }
-/* line 235, ../../../assets/_table.scss */
+/* line 236, ../../../assets/_table.scss */
 .search-section-wrapper .body-dropdown-button {
   height: 30px;
   width: 180px;
 }
-/* line 239, ../../../assets/_table.scss */
+/* line 240, ../../../assets/_table.scss */
 .search-section-wrapper .body-dropdown-button .dropdown-text {
   width: 135px;
   display: inline-block;
 }
-/* line 245, ../../../assets/_table.scss */
+/* line 246, ../../../assets/_table.scss */
 .search-section-wrapper .dropdown-text {
   text-align: left;
 }
-/* line 249, ../../../assets/_table.scss */
+/* line 250, ../../../assets/_table.scss */
 .search-section-wrapper .search-box {
   height: 30px;
 }
-/* line 253, ../../../assets/_table.scss */
+/* line 254, ../../../assets/_table.scss */
 .search-section-wrapper .checkbox-wrapper {
   margin-top: 5px;
 }
 
-/* line 259, ../../../assets/_table.scss */
+/* line 260, ../../../assets/_table.scss */
 .table.ah-table {
   margin-bottom: 0;
 }
-/* line 260, ../../../assets/_table.scss */
+/* line 261, ../../../assets/_table.scss */
 .table.ah-table > thead > tr > th {
   border-bottom: 1px solid #BCC7D5;
 }
-/* line 262, ../../../assets/_table.scss */
+/* line 263, ../../../assets/_table.scss */
 .table.ah-table > thead > tr > th, .table.ah-table > thead > tr > th > * {
   vertical-align: middle;
 }
-/* line 267, ../../../assets/_table.scss */
+/* line 268, ../../../assets/_table.scss */
 .table.ah-table > tbody > tr > td {
   border-top: none;
 }
-/* line 272, ../../../assets/_table.scss */
+/* line 273, ../../../assets/_table.scss */
 .table.ah-table.ah-table-extra-padding > tbody > tr > td {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-/* line 279, ../../../assets/_table.scss */
+/* line 280, ../../../assets/_table.scss */
 .table.ah-table.ah-table-line > tbody > tr:first-child > td {
   border-top: none;
 }
-/* line 283, ../../../assets/_table.scss */
+/* line 284, ../../../assets/_table.scss */
 .table.ah-table.ah-table-line > tbody > tr > td {
   border-top: 1px solid #BCC7D5;
 }
 
-/* line 292, ../../../assets/_table.scss */
+/* line 293, ../../../assets/_table.scss */
 .table .column-text-ellipsis {
   max-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-/* line 301, ../../../assets/_table.scss */
-.table-border-none > tbody > tr:first-child > td {
-  border-top: none;
 }
 
 /* line 2, ../../../assets/_form.sass */
@@ -13457,11 +13453,6 @@ form h6 {
 /* line 39, ../../../assets/_button.scss */
 .btn.btn-width-xxl {
   width: 180px;
-}
-
-/* line 43, ../../../assets/_button.scss */
-.btn.btn-width-xxxl {
-  width: 200px;
 }
 
 /* line 2, ../../../assets/_bootstrap_tagsinput.sass */
