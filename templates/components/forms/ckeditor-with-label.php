@@ -8,6 +8,6 @@ if (isset($size)) $inputSize = "width-field-$size";
 		<textarea class="form-control" ckeditor-initialize></textarea>
 	</div>
 	<? if (!empty($tooltip)): ?>
-		<div class="width-field-tooltip no-padding-left"><i class="fa fa-2x fa-question-circle color-grey" data-toggle="tooltip" data-placement="right" title="<?= $tooltip ?>"></i></div>
+		<div class="width-field-tooltip no-padding-left"><i class="fa fa-2x fa-question-circle color-grey" data-toggle="btooltip" data-placement="right" title="<?= $tooltip ?>"></i></div>
 	<? endif ?>
 </div>

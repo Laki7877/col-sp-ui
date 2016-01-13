@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="<?=$this->asset('/assets/css/screen.css')?>" />
         <script src="<?= $this->asset('/assets/js/jquery.min.js') ?>"></script>
         <script src="<?= $this->asset('/assets/js/bootstrap.min.js') ?>"></script>
+        <script src="<?= $this->asset('/assets/js/bootstrap-fixconflict.js') ?>"></script>
     </head>
     <body class="ahpt">
         <!--[if lt IE 8]>
