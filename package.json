@@ -29,6 +29,7 @@
     "angular-sanitize": "^1.4.8",
     "angular-ui-bootstrap": "^0.14.3",
     "angular-ui-tree": "^2.13.0",
+    "jquery": "^2.2.0",
     "ui-select": "^0.13.2"
   }
 }

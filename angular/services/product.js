@@ -20,6 +20,7 @@ module.exports = ['$q', '$http', 'common', function($q, $http, common){
 				_limit: parameters.pageSize || 10,
 				_offset: parameters.page * parameters.pageSize || 0,
 				_direction: parameters.direction || 'asc',
+				_filter: parameters.filter,
 				searchText: (parameters.searchText && parameters.searchText.length > 0 ) ? parameters.searchText : undefined
 			}
 		};

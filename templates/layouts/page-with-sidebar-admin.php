@@ -9,25 +9,25 @@
 
     <ul class="sub-sidebar" style="display: none;" id="sub-attribute">
         <li class="sub-sidebar-header">Attribute</li>
-        <li class="item active margin-top-20"><a href="/admin/attributes">View</a></li>
-        <li class="item"><a href="/admin/attributes/add">Add</a></li>
+        <li ng-class="$root.activeUrl('/admin/attributes')" class="item margin-top-20"><a href="/admin/attributes">View</a></li>
+        <li ng-class="$root.activeUrl('/admin/attributes/add')" class="item"><a href="/admin/attributes/add">Add</a></li>
     </ul>
 
     <ul class="sub-sidebar" style="display: none;" id="sub-attribute-set">
         <li class="sub-sidebar-header">Attribute Set</li>
-        <li class="item active margin-top-20"><a href="/admin/attributesets">View</a></li>
-        <li class="item"><a href="/admin/attributesets/add">Add</a></li>
+        <li ng-class="$root.activeUrl('/admin/attributesets')" class="item margin-top-20"><a href="/admin/attributesets">View</a></li>
+        <li ng-class="$root.activeUrl('/admin/attributesets/add')" class="item"><a href="/admin/attributesets/add">Add</a></li>
     </ul>
 
     <ul class="sub-sidebar" style="display: none;" id="sub-brand">
         <li class="sub-sidebar-header">Brand</li>
-        <li class="item active margin-top-20"><a href="/admin/brands">View</a></li>
-        <li class="item"><a href="/admin/brands/add">Add</a></li>
+        <li ng-class="$root.activeUrl('/admin/brands')" class="item margin-top-20"><a href="/admin/brands">View</a></li>
+        <li ng-class="$root.activeUrl('/admin/brands/add')" class="item"><a href="/admin/brands/add">Add</a></li>
     </ul>
 
     <ul class="sub-sidebar" style="display: none;" id="sub-category">
         <li class="sub-sidebar-header">Global Category</li>
-        <li class="item active margin-top-20"><a href="/admin/categories">View</a></li>
+        <li ng-class="$root.activeUrl('/admin/categories')" class="item margin-top-20"><a href="/admin/categories">View</a></li>
     </ul>
 <?php $this->stop() ?>
 

@@ -11,7 +11,8 @@ module.exports = ['$scope', 'Attribute', function($scope, Attribute) {
 	];
 	$scope.dataType = {
 		'ST' : 'Free Text',
-		'LT' : 'Dropdown'
+		'LT' : 'Dropdown',
+		'HB' : 'HTML Box'
 	}
 
 	//attribute List
