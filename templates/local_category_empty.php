@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Local Category']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => '404']) ?>
 
 <?php $this->start('page-body') ?>
 	<div class="local-category-page">
