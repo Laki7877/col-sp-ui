@@ -2,23 +2,27 @@
 require __DIR__ . '/unicorn.php';
 includeAll(__DIR__ . '/../controllers/*.php');
 
-//product routing
+//index
 Route::add('/', 'ProductController::index');
+Route::add('/admin', 'AdminController::category');
+
+//product routing
 Route::add('/products', 'ProductController::index');
 Route::add('/products/add', 'ProductController::add');
 Route::add('/products/select', 'ProductController::select');
 Route::add('/products/:productid', 'ProductController::edit');
-//attribute routing
-Route::add('/attributes/add','AttributeController::add');
-Route::add('/attributes','AttributeController::index');
-//attribute set rounting
-Route::add('/attributesets/add','AttributeSetController::add');
-Route::add('/attributesets','AttributeSetController::index');
-//admin routing
-Route::add('/admin/category', 'GlobalCategoryController::add');
-//seller category routing
-Route::add('/category/add', 'LocalCategoryController::add');
 
+//category routing
+Route::add('/categories', 'LocalCategoryController::add');
+
+//admin routing
+Route::add('/admin/attributes/add','AdminController::addAttribute');
+Route::add('/admin/attributes','AttributeController::listAttribute');
+Route::add('/admin/attributesets/add','AdminController::addAttributeSet');
+Route::add('/admin/attributesets','AdminController::listAttributeSet');
+Route::add('/admin/categories', 'AdminController::category');
+
+//test route
 Route::add('/test/:name', 'TestController::any');
 
 Route::process();

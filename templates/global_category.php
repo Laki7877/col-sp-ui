@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="ProductAddSelectCategoryCtrl" class="global-category-page">
-		<? $this->insert('components/page-title-breadcrumb-border', ['text' => 'Products/Add Product']) ?>
+		<? $this->insert('components/page-title-breadcrumb-border', ['text' => 'Products/Add Product', 'urls' => ['/products']]) ?>
 		<form class="ah-form margin-top-30" method="POST" action="/products/add">
 			<input type="hidden" name="category" ng-value="selected.CategoryId" />
 <!--			<div class="global-category-radio-section ">
@@ -26,7 +26,7 @@
 				<div class="category-footer no-padding">
 					<span>Only shown categories that are allowed for this store.</span>
 					<span class="float-right">
-						<button type="button" class="btn btn-link btn-width-xl">Cancel</button>
+						<button type="button" class="btn btn-link btn-width-xl" href="/products" >Cancel</button>
 						<button type="submit" class="btn btn-blue btn-width-xl" ng-class="{'disabled' : !selected}">Select</button>
 					</span>
 				</div>

@@ -1,17 +1,64 @@
+<?php $title = "Add Attribute"; ?>
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'User Profile']) ?>
 
 <?php $this->start('page-body') ?>
-	<div>
-    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute/Add Attribute", 'link' => "admin_attribute"]) ?>
-    <form class="ah-form sticky-mainform-action margin-top-30">
+	<div ng-controller="AdminAttributeAddCtrl" ng-init="init({
+    <?php foreach($viewBag as $key=>$value): ?>
+      <?=$key?> : '<?=$value?>' 
+    <?php endforeach; ?>
+    })">
+    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute/" . $title, 'link' => "admin_attribute"]) ?>
+    <form ng-submit="save()" name="attributeForm" class="ah-form sticky-mainform-action margin-top-30" novalidate>
       <div class="row">
         <div class="col-xs-12">
           <div class="form-section">
             <div class="form-section-header"><h2>Attribute Information</h2></div>
             <div class="form-section-content">
+              <input
+                class="form-control"
+                name="attributeForm.AttributeNameEn"
+                ng-model="attribute.AttributeNameEn"
+                ng-class="{ 'has-error' : $root.isValid(attributeForm, 'AttributeNameEn') }"
+                ng-template="common/input/text"
+                ng-template-options="{
+                  'label': 'Attribute Name (English)',
+                  'labelClass': 'required',
+                  'tooltip' : 'The Universal Product Code (UPC) is a barcode symbology (i.e., a specific type of barcode) that is widely used in the USAX.',
+                  'inputSize': 'large'
+                }" 
+                required 
+              />
+              <input
+                class="form-control"
+                name="attributeForm.DisplayNameEn"
+                ng-model="attribute.DisplayNameEn"
+                ng-class="{ 'has-error' : $root.isValid(attributeForm, 'DisplayNameEn') }"
+                ng-template="common/input/text"
+                ng-template-options="{
+                  'label': 'Display Name (English)',
+                  'labelClass': 'required'
+                  'inputSize': 'large'
+                }" 
+                required 
+              />
+              <input
+                class="form-control"
+                name="attributeForm.DisplayNameTh"
+                ng-model="attribute.DisplayNameTh"
+                ng-class="{ 'has-error' : $root.isValid(attributeForm, 'DisplayNameTh') }"
+                ng-template="common/input/text"
+                ng-template-options="{
+                  'label': 'Display Name (Thai)',
+                  'labelClass': 'required'
+                  'inputSize': 'large'
+                }" 
+                required 
+              />
+              <!--
               <? $this->insert('components/forms/input-text-with-label', ["label" => "Attribute Name (English)", "label_class" => "required", "tooltip" => "The Universal Product Code (UPC) is a barcode symbology (i.e., a specific type of barcode) that is widely used in the USAX.", "size" => "large"]) ?>
               <? $this->insert('components/forms/input-text-with-label', ["label" => "Display Name (English)", "label_class" => "required", "size" => "large"]) ?>
               <? $this->insert('components/forms/input-text-with-label', ["label" => "Display Name (Thai)", "label_class" => "required", "size" => "large"]) ?>
+            -->
             </div>
           </div>
 

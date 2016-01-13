@@ -23,7 +23,7 @@ var directives = bulk.directives;
 var filters = bulk.filters;
 var adapters = bulk.adapters;
 
-var app = angular.module('colspApp', ['ngAnimate', 'angularFileUpload', 'ui.tree', 'base64', 'ui.bootstrap'])
+var app = angular.module('colspApp', ['ngAnimate', 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
 
 //App config
 .config(['$uibTooltipProvider', function($tooltipProvider) {
@@ -40,9 +40,30 @@ var app = angular.module('colspApp', ['ngAnimate', 'angularFileUpload', 'ui.tree
 .run(template)
 
 //App init
-.run(['$base64', 'storage', function($base64, storage) {
+.run(['$rootScope', '$window', '$base64', 'storage', function($rootScope, $window, $base64, storage) {
 	//TODO: login page
 	storage.storeSessionToken($base64.encode('duckvader:vader'));
+
+	//Create generic form validator functions
+	$rootScope.isValid = function(form, attribute) {
+		return form[attribute].$invalid && form[attribute].$dirty;
+	};
+
+	//Match route with
+	$rootScope.isUrl = function(url) {
+		if(url.length > 0) {
+			var path = $window.location.pathname;
+			if(path == url) {
+				return true;
+			} else if (path.startsWith(url) && path.charAt(url.length) != '/') {
+				return false;
+			} else  {
+				return path.startsWith(url);
+			}
+		} else {
+			return false;
+		}
+	};
 }])
 //Configuration
 .value('config', config)
@@ -66,6 +87,7 @@ var app = angular.module('colspApp', ['ngAnimate', 'angularFileUpload', 'ui.tree
 .factory('Brand', services.brand)
 .factory('VariantPair', helpers.variantPair)
 .factory('brandAdapter', adapters.brand)
+
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)
 .directive('ngDelegate', directives.ngDelegate)
@@ -79,6 +101,7 @@ var app = angular.module('colspApp', ['ngAnimate', 'angularFileUpload', 'ui.tree
 .filter('ordinal', filters.ordinal)
 
 //Controllers
+.controller('RootCtrl', controllers.root)
 .controller('ProductListCtrl', controllers.productList)
 .controller('ProductAddCtrl', controllers.productAdd)
 .controller('ProductAddSelectCategoryCtrl', controllers.productAddSelectCategory)

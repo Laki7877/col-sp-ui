@@ -27,8 +27,6 @@ module.exports = ['$templateCache', '$compile', function($templateCache, $compil
         element.attr(a, value);
       });
       element.find('ng-transclude').replaceWith(transclude());
-
-      //TODO: add functional ngs to parent form
     }
   };
 }];

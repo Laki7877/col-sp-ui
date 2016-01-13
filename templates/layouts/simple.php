@@ -14,7 +14,7 @@
 	<script src="<?= $this->asset('/assets/js/jquery.rest.js') ?>"></script>
 	<script src="<?= $this->asset('/assets/js/bundle.js') ?>"></script>
     </head>
-    <body class="ahpt" ng-cloak>
+    <body class="ahpt" ng-cloak ng-controller="RootCtrl">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->       
