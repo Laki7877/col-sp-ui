@@ -46,7 +46,7 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 	storage.storeSessionToken($base64.encode('duckvader:vader'));
 
 	//Create generic form validator functions
-	$rootScope.isValid = function(form, attribute) {
+	$rootScope.isInvalid = function(form, attribute) {
 		return form[attribute].$invalid && form[attribute].$dirty;
 	};
 
@@ -64,6 +64,19 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 		} else {
 			return false;
 		}
+	};
+
+	$rootScope.activeParentUrl = function(url,sub) {
+		return {
+			'active': $rootScope.isUrl(url)
+		};
+	};
+
+	//For active class url
+	$rootScope.activeUrl = function(url) {
+		return {
+			'active': $window.location.pathname == url
+		};
 	};
 }])
 //Configuration

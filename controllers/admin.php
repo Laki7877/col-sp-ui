@@ -22,6 +22,11 @@ class AdminController extends Controller
 		return View::render('admin_brand');
 	}
 
+	public static function editAttribute($params)
+	{
+		return View::render('admin_add_attribute', ["params" =>  json_encode_n($params)]);
+	}
+
 	public static function addAttribute($params)
 	{
 		return View::render('admin_add_attribute');

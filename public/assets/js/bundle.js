@@ -75,7 +75,7 @@ module.exports = ['Brand', function(Brand){
 'use strict';
 //App Start here
 var angular = require('angular');
-var bulk = ({"controllers":({"adminAttribute":require("./controllers/adminAttribute.js"),"adminAttributeAdd":require("./controllers/adminAttributeAdd.js"),"adminAttributeSet":require("./controllers/adminAttributeSet.js"),"adminAttributeSetAdd":require("./controllers/adminAttributeSetAdd.js"),"adminCategory":require("./controllers/adminCategory.js"),"brand":require("./controllers/brand.js"),"localCategory":require("./controllers/localCategory.js"),"productAdd":require("./controllers/productAdd.js"),"productAddSelectCategory":require("./controllers/productAddSelectCategory.js"),"productList":require("./controllers/productList.js"),"productListLocalCategory":require("./controllers/productListLocalCategory.js"),"root":require("./controllers/root.js")}),"services":({"attribute":require("./services/attribute.js"),"attributeSet":require("./services/attributeSet.js"),"brand":require("./services/brand.js"),"category":require("./services/category.js"),"globalCategory":require("./services/globalCategory.js"),"image":require("./services/image.js"),"localCategory":require("./services/localCategory.js"),"product":require("./services/product.js"),"shop":require("./services/shop.js")}),"helpers":({"base64":require("./helpers/base64.js"),"common":require("./helpers/common.js"),"productProxy":require("./helpers/productProxy.js"),"storage":require("./helpers/storage.js"),"util":require("./helpers/util.js"),"variantPair":require("./helpers/variantPair.js")}),"directives":({"ncTradableSelect":require("./directives/ncTradableSelect.js"),"ngCkeditor":require("./directives/ngCkeditor.js"),"ngDelegate":require("./directives/ngDelegate.js"),"ngSlideToggle":require("./directives/ngSlideToggle.js"),"ngTemplate":require("./directives/ngTemplate.js"),"popoverAny":require("./directives/popoverAny.js")}),"filters":({"capitalize":require("./filters/capitalize.js"),"ordinal":require("./filters/ordinal.js")}),"adapters":({"brand":require("./adapters/brand.js")})});
+var bulk = ({"controllers":({"adminAttribute":require("./controllers\\adminAttribute.js"),"adminAttributeAdd":require("./controllers\\adminAttributeAdd.js"),"adminAttributeSet":require("./controllers\\adminAttributeSet.js"),"adminAttributeSetAdd":require("./controllers\\adminAttributeSetAdd.js"),"adminCategory":require("./controllers\\adminCategory.js"),"brand":require("./controllers\\brand.js"),"localCategory":require("./controllers\\localCategory.js"),"productAdd":require("./controllers\\productAdd.js"),"productAddSelectCategory":require("./controllers\\productAddSelectCategory.js"),"productList":require("./controllers\\productList.js"),"productListLocalCategory":require("./controllers\\productListLocalCategory.js"),"root":require("./controllers\\root.js")}),"services":({"attribute":require("./services\\attribute.js"),"attributeSet":require("./services\\attributeSet.js"),"brand":require("./services\\brand.js"),"category":require("./services\\category.js"),"globalCategory":require("./services\\globalCategory.js"),"image":require("./services\\image.js"),"localCategory":require("./services\\localCategory.js"),"product":require("./services\\product.js"),"shop":require("./services\\shop.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"productProxy":require("./helpers\\productProxy.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"popoverAny":require("./directives\\popoverAny.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"ordinal":require("./filters\\ordinal.js")}),"adapters":({"brand":require("./adapters\\brand.js")})});
 var config = require('./config');
 var template = require('./template');
 
@@ -118,7 +118,7 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 	storage.storeSessionToken($base64.encode('duckvader:vader'));
 
 	//Create generic form validator functions
-	$rootScope.isValid = function(form, attribute) {
+	$rootScope.isInvalid = function(form, attribute) {
 		return form[attribute].$invalid && form[attribute].$dirty;
 	};
 
@@ -136,6 +136,19 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 		} else {
 			return false;
 		}
+	};
+
+	$rootScope.activeParentUrl = function(url,sub) {
+		return {
+			'active': $rootScope.isUrl(url)
+		};
+	};
+
+	//For active class url
+	$rootScope.activeUrl = function(url) {
+		return {
+			'active': $window.location.pathname == url
+		};
 	};
 }])
 //Configuration
@@ -186,7 +199,8 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 .controller('AdminAttributeSetAddCtrl', controllers.adminAttributeSetAdd)
 .controller('AdminCategoryCtrl', controllers.adminCategory)
 .controller('AdminBrandCtrl',controllers.brand);
-},{"./adapters/brand.js":1,"./config":3,"./controllers/adminAttribute.js":4,"./controllers/adminAttributeAdd.js":5,"./controllers/adminAttributeSet.js":6,"./controllers/adminAttributeSetAdd.js":7,"./controllers/adminCategory.js":8,"./controllers/brand.js":9,"./controllers/localCategory.js":10,"./controllers/productAdd.js":11,"./controllers/productAddSelectCategory.js":12,"./controllers/productList.js":13,"./controllers/productListLocalCategory.js":14,"./controllers/root.js":15,"./directives/ncTradableSelect.js":16,"./directives/ngCkeditor.js":17,"./directives/ngDelegate.js":18,"./directives/ngSlideToggle.js":19,"./directives/ngTemplate.js":20,"./directives/popoverAny.js":21,"./filters/capitalize.js":22,"./filters/ordinal.js":23,"./helpers/base64.js":24,"./helpers/common.js":25,"./helpers/productProxy.js":26,"./helpers/storage.js":27,"./helpers/util.js":28,"./helpers/variantPair.js":29,"./services/attribute.js":30,"./services/attributeSet.js":31,"./services/brand.js":32,"./services/category.js":33,"./services/globalCategory.js":34,"./services/image.js":35,"./services/localCategory.js":36,"./services/product.js":37,"./services/shop.js":38,"./template":39,"angular":51,"angular-animate":41,"angular-base64":42,"angular-file-upload":43,"angular-sanitize":45,"angular-ui-bootstrap":46,"angular-ui-tree":49,"ui-select":52}],3:[function(require,module,exports){
+
+},{"./adapters\\brand.js":1,"./config":3,"./controllers\\adminAttribute.js":4,"./controllers\\adminAttributeAdd.js":5,"./controllers\\adminAttributeSet.js":6,"./controllers\\adminAttributeSetAdd.js":7,"./controllers\\adminCategory.js":8,"./controllers\\brand.js":9,"./controllers\\localCategory.js":10,"./controllers\\productAdd.js":11,"./controllers\\productAddSelectCategory.js":12,"./controllers\\productList.js":13,"./controllers\\productListLocalCategory.js":14,"./controllers\\root.js":15,"./directives\\ncTradableSelect.js":16,"./directives\\ngCkeditor.js":17,"./directives\\ngDelegate.js":18,"./directives\\ngSlideToggle.js":19,"./directives\\ngTemplate.js":20,"./directives\\popoverAny.js":21,"./filters\\capitalize.js":22,"./filters\\ordinal.js":23,"./helpers\\base64.js":24,"./helpers\\common.js":25,"./helpers\\productProxy.js":26,"./helpers\\storage.js":27,"./helpers\\util.js":28,"./helpers\\variantPair.js":29,"./services\\attribute.js":30,"./services\\attributeSet.js":31,"./services\\brand.js":32,"./services\\category.js":33,"./services\\globalCategory.js":34,"./services\\image.js":35,"./services\\localCategory.js":36,"./services\\product.js":37,"./services\\shop.js":38,"./template":39,"angular":51,"angular-animate":41,"angular-base64":42,"angular-file-upload":43,"angular-sanitize":45,"angular-ui-bootstrap":46,"angular-ui-tree":49,"ui-select":52}],3:[function(require,module,exports){
 //remote baseUrl - 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/'
 module.exports = {
 	baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/',
@@ -216,7 +230,8 @@ module.exports = ['$scope', 'Attribute', function($scope, Attribute) {
 	];
 	$scope.dataType = {
 		'ST' : 'Free Text',
-		'LT' : 'Dropdown'
+		'LT' : 'Dropdown',
+		'HB' : 'HTML Box'
 	}
 
 	//attribute List
@@ -282,8 +297,37 @@ module.exports = ['$scope', 'Attribute', function($scope, Attribute) {
 	});
 }];
 },{}],5:[function(require,module,exports){
+var angular = require('angular');
 
-},{}],6:[function(require,module,exports){
+module.exports = ['$scope', 'Attribute', function($scope, Attribute) {
+	$scope.form = {};
+	$scope.formData = {};
+	$scope.dataTypeOptions = [
+		{
+			name: 'Free Text',
+			value: 'ST'
+		},
+		{
+			name: 'Dropdown',
+			value: 'LS'
+		},
+		{
+			name: 'HTML Box',
+			value: 'HB'
+		}
+	];
+	$scope.edit = false;
+	$scope.init = function(params) {
+		if(angular.isDefined(params.id)) {
+			//edit mode
+			$scope.edit = true;
+		} else {
+			//create mode!
+			$scope.edit = false;
+		}
+	}
+}];
+},{"angular":51}],6:[function(require,module,exports){
 module.exports = ['$scope', 'AttributeSet', function($scope, AttributeSet) {
 	//UI binding variables
 	$scope.showOnOffStatus = true;
@@ -357,8 +401,8 @@ module.exports = ['$scope', 'AttributeSet', function($scope, AttributeSet) {
 	});
 }];
 },{}],7:[function(require,module,exports){
-arguments[4][5][0].apply(exports,arguments)
-},{"dup":5}],8:[function(require,module,exports){
+
+},{}],8:[function(require,module,exports){
 module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory', 'AttributeSet',  function($scope, $rootScope, common, Category, GlobalCategory, AttributeSet){
 	$scope.categories = [];
 	$scope.attributeSetOptions = [];
@@ -452,8 +496,8 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 
 }];
 },{}],9:[function(require,module,exports){
-arguments[4][5][0].apply(exports,arguments)
-},{"dup":5}],10:[function(require,module,exports){
+arguments[4][7][0].apply(exports,arguments)
+},{"dup":7}],10:[function(require,module,exports){
 module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory', 'Shop', function($scope, $rootScope, common, Category, LocalCategory, Shop) {
 	$scope.categories = [];
 	$scope.editingStatusOptions = [{
@@ -2366,6 +2410,7 @@ module.exports = ['$q', '$http', 'common', function($q, $http, common){
 				_limit: parameters.pageSize || 10,
 				_offset: parameters.page * parameters.pageSize || 0,
 				_direction: parameters.direction || 'asc',
+				_filter: parameters.filter,
 				searchText: (parameters.searchText && parameters.searchText.length > 0 ) ? parameters.searchText : undefined
 			}
 		};
@@ -2409,7 +2454,7 @@ module.exports = ['common', function(common) {
 },{}],39:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Wed Jan 13 2016 15:10:50 GMT+0700 (ICT)
+ * Wed Jan 13 2016 17:25:38 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -2438,6 +2483,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
   );
 
 
+  $templateCache.put('common/input/select',
+    "<div class=form-group><div class=width-label><label class=control-label ng-class=options.labelClass>{{options.label}}</label></div><div ng-class=\"['width-field-' + (options.inputSize || 'normal')]\"><div class=\"form-control ah-select2-dropdown\"><ng-transclude></ng-transclude></div></div><div ng-if=options.tooltip class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" data-toggle=tooltip data-placement=right title=\"<?= $tooltip ?>\"></i></div></div>"
+  );
+
+
   $templateCache.put('common/input/text',
     "<div class=form-group><div class=width-label><label class=control-label ng-class=\"options.labelClass || {}\">{{options.label}}</label></div><div ng-class=\"['width-field-' + (options.inputSize || 'normal')]\"><ng-transclude></ng-transclude><span class=input-unit ng-if=options.unit>{{ options.unit }}</span> <span class=help-block ng-if=options.hint ng-show=options.hint.show>{{options.hint.message}}</span> <span class=\"help-block color-red\" ng-if=options.error ng-show=options.error.show>{{options.error.message}}</span></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" data-toggle=tooltip data-placement=right title=\"{{ options.tooltip }}\" ng-if=\"options.tooltip && options.tooltip.length > 0\"></i></div></div>"
   );
@@ -2449,8 +2499,10 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('global_category/nodes',
-    "<div class=\"category-content row no-margin\"><div class=category-content-padding><span class=\"col-xs-7 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\n" +
-    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this)></i> <i class=\"fa fa-level-up fa-rotate-90 caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\"></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\"></span> <span class=inline-block>{{ node.NameEn }}</span></span></span> <span class=col-xs-1>{{ node.CategoryAbbreviation }}</span> <span class=col-xs-1>{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\"><i ng-class=\"{\t'fa fa-eye color-dark-grey icon-size-20' : node.Status == 'AT',\n" +
+    "<div class=\"category-content row no-margin\"><div class=category-content-padding><span class=\"col-xs-7 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this)></i> <i class=\"fa fa-level-up fa-rotate-90 caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\"></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\"></span> <span class=inline-block>{{ node.NameEn }}</span></span></span> <span class=col-xs-1>{{ node.CategoryAbbreviation }}</span> <span class=col-xs-1>{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\"><i ng-class=\"{\t'fa fa-eye color-dark-grey icon-size-20' : node.Status == 'AT',\r" +
+    "\n" +
     "\t\t\t\t\t\t\t'fa fa-eye-slash color-grey icon-size-20' : node.Status != 'AT' }\"></i></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-gear color-dark-grey icon-size-20\"></i> <i class=\"fa fa-caret-down color-dark-grey\" uib-popover-template=\"'global_category/nodes_action'\" popover-placement=bottom popover-append-to-body=true popover-any></i></span> <span class=\"col-xs-1 text-align-center\" ui-tree-handle><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'global_category/nodes'\"></li></ol>"
   );
 
@@ -2461,8 +2513,10 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('local_category/nodes',
-    "<div class=\"category-content row no-margin\"><div class=category-content-padding><span class=\"col-xs-8 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\n" +
-    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this)></i> <i class=\"fa fa-level-up fa-rotate-90 caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\"></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\"></span> <span class=inline-block>{{ node.NameEn }}</span></span></span> <span class=col-xs-1>{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\"><i ng-class=\"{\t'fa fa-eye color-dark-grey icon-size-20' : node.Status == 'AT',\n" +
+    "<div class=\"category-content row no-margin\"><div class=category-content-padding><span class=\"col-xs-8 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this)></i> <i class=\"fa fa-level-up fa-rotate-90 caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\"></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\"></span> <span class=inline-block>{{ node.NameEn }}</span></span></span> <span class=col-xs-1>{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\"><i ng-class=\"{\t'fa fa-eye color-dark-grey icon-size-20' : node.Status == 'AT',\r" +
+    "\n" +
     "\t\t\t\t\t\t\t'fa fa-eye-slash color-grey icon-size-20' : node.Status != 'AT' }\"></i></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-gear color-dark-grey icon-size-20\"></i> <i class=\"fa fa-caret-down color-dark-grey\" uib-popover-template=\"'local_category/nodes_action'\" popover-placement=bottom popover-append-to-body=true popover-any></i></span> <span class=\"col-xs-1 text-align-center\" ui-tree-handle><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'local_category/nodes'\"></li></ol>"
   );
 

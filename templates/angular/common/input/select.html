@@ -1,0 +1,9 @@
+<div class="form-group">
+	<div class="width-label"><label class="control-label" ng-class="options.labelClass">{{options.label}}</label></div>
+	<div ng-class="['width-field-' + (options.inputSize || 'normal')]">
+		<div class="form-control ah-select2-dropdown">
+          <ng-transclude></ng-transclude>
+		</div>
+	</div>
+	<div ng-if="options.tooltip" class="width-field-tooltip no-padding-left"><i class="fa fa-2x fa-question-circle color-grey" data-toggle="tooltip" data-placement="right" title="<?= $tooltip ?>"></i></div>
+</div>

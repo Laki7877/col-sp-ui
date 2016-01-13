@@ -2,9 +2,20 @@
 require __DIR__ . '/unicorn.php';
 includeAll(__DIR__ . '/../controllers/*.php');
 
+
+//LOL redirect functions
+class Redirect {
+	public static function index($params) {
+		header('Location: /products');
+	}
+	public static function admin($params) {
+		header('Location: /admin/categories');
+	}
+}
+
 //index
-Route::add('/', 'ProductController::index');
-Route::add('/admin', 'AdminController::category');
+Route::add('/', 'Redirect::index');
+Route::add('/admin', 'Redirect::admin');
 
 //product routing
 Route::add('/products', 'ProductController::index');
@@ -17,7 +28,8 @@ Route::add('/categories', 'LocalCategoryController::add');
 
 //admin routing
 Route::add('/admin/attributes/add','AdminController::addAttribute');
-Route::add('/admin/attributes','AttributeController::listAttribute');
+Route::add('/admin/attributes/:id','AdminController::editAttribute');
+Route::add('/admin/attributes','AdminController::listAttribute');
 Route::add('/admin/attributesets/add','AdminController::addAttributeSet');
 Route::add('/admin/attributesets','AdminController::listAttributeSet');
 Route::add('/admin/categories', 'AdminController::category');

@@ -2,13 +2,9 @@
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'User Profile']) ?>
 
 <?php $this->start('page-body') ?>
-	<div ng-controller="AdminAttributeAddCtrl" ng-init="init({
-    <?php foreach($viewBag as $key=>$value): ?>
-      <?=$key?> : '<?=$value?>' 
-    <?php endforeach; ?>
-    })">
+	<div ng-controller="AdminAttributeAddCtrl" ng-init="init(<?=$params?>)">
     <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute/" . $title, 'link' => "admin_attribute"]) ?>
-    <form ng-submit="save()" name="attributeForm" class="ah-form sticky-mainform-action margin-top-30" novalidate>
+    <form ng-submit="save()" name="form" class="ah-form sticky-mainform-action margin-top-30" novalidate>
       <div class="row">
         <div class="col-xs-12">
           <div class="form-section">
@@ -16,9 +12,9 @@
             <div class="form-section-content">
               <input
                 class="form-control"
-                name="attributeForm.AttributeNameEn"
-                ng-model="attribute.AttributeNameEn"
-                ng-class="{ 'has-error' : $root.isValid(attributeForm, 'AttributeNameEn') }"
+                name="AttributeNameEn"
+                ng-model="formData.AttributeNameEn"
+                ng-class="{ 'has-error' : $root.isInvalid(form, 'AttributeNameEn') }"
                 ng-template="common/input/text"
                 ng-template-options="{
                   'label': 'Attribute Name (English)',
@@ -30,26 +26,26 @@
               />
               <input
                 class="form-control"
-                name="attributeForm.DisplayNameEn"
-                ng-model="attribute.DisplayNameEn"
-                ng-class="{ 'has-error' : $root.isValid(attributeForm, 'DisplayNameEn') }"
+                name="DisplayNameEn"
+                ng-model="formData.DisplayNameEn"
+                ng-class="{ 'has-error' : $root.isInvalid(form, 'DisplayNameEn') }"
                 ng-template="common/input/text"
                 ng-template-options="{
                   'label': 'Display Name (English)',
-                  'labelClass': 'required'
+                  'labelClass': 'required',
                   'inputSize': 'large'
                 }" 
                 required 
               />
               <input
                 class="form-control"
-                name="attributeForm.DisplayNameTh"
-                ng-model="attribute.DisplayNameTh"
-                ng-class="{ 'has-error' : $root.isValid(attributeForm, 'DisplayNameTh') }"
+                name="DisplayNameTh"
+                ng-model="formData.DisplayNameTh"
+                ng-class="{ 'has-error' : $root.isInvalid(form, 'DisplayNameTh') }"
                 ng-template="common/input/text"
                 ng-template-options="{
                   'label': 'Display Name (Thai)',
-                  'labelClass': 'required'
+                  'labelClass': 'required',
                   'inputSize': 'large'
                 }" 
                 required 
@@ -65,8 +61,36 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Attribute Input</h2></div>
             <div class="form-section-content">
+              {{formData.DataType}}
+              <div class="form-group">
+                <div class="width-field-normal">
+                  <ui-select ng-model="formData.DataType" search-enabled="false">
+                    <ui-select-match>
+                        <span ng-bind="$select.selected.name"></span>
+                    </ui-select-match>
+                    <ui-select-choices repeat="item in dataTypeOptions">
+                        <span ng-bind="item.name"></span>
+                    </ui-select-choices>
+                  </ui-select>
+                </div>
+              </div>
+              <!--
               <? $this->insert('components/forms/dropdown-with-label', ["label" => "Attribute Input Type", "options" => ["Free Text", "Dropdown", "HTML Box"]]) ?>
-              <? $this->insert('components/forms/input-text-with-label', ["label" => "Attribute Unit (Thai)", "label_class" => "required"]) ?>
+              -->
+              <input
+                class="form-control"
+                name="AttributeUnitTh"
+                ng-model="formData.AttributeUnitTh"
+                ng-class="{ 'has-error' : $root.isInvalid(form, 'AttributeUnitTh') }"
+                ng-template="common/input/text"
+                ng-template-options="{
+                  'label': 'Attribute (Thai)',
+                  'labelClass': 'required',
+                  'inputSize': 'large'
+                }" 
+                required 
+              />
+              <!--<? $this->insert('components/forms/input-text-with-label', ["label" => "Attribute Unit (Thai)", "label_class" => "required"]) ?> -->
               <? $this->insert('components/forms/input-text-with-label', ["label" => "Attribute Unit (English)", "label_class" => "required"]) ?>
               <? $this->insert('components/forms/dropdown-with-label', ["label" => "Input Validation", "options" => ["No Validation", "Number Only", "Text Only"]]) ?>
               <? $this->insert('components/forms/input-text-with-label', ["label" => "If empty, value equals"]) ?>

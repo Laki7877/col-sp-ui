@@ -19,6 +19,10 @@ function includeAll($uri)
 		include $filename;
 	}
 }
+function json_encode_n($array)
+{
+	return htmlspecialchars(json_encode($array));
+}
 
 /**
  * Route class
