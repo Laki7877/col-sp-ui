@@ -10,7 +10,7 @@ module.exports = ['util', function (util) {
     * - Add position to image {} request
     * - Multiply base attributes into each variants
     */
-    tra.productTransform = function(fd){
+    tra.transform = function(fd){
     		var hasVariants = (("Variants" in fd) && fd.Variants.length > 0);
 
     		//Cleaned data
@@ -125,7 +125,15 @@ module.exports = ['util', function (util) {
 
 	//MasterVariant
 	clean.MasterVariant = fd.MasterVariant;
-	clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
+	clean.MasterVariant.VideoLinks = [];
+	if(fd.ProductId) clean.ProductId = fd.ProductId;
+
+	try{
+		 clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
+	}catch(ex){
+		console.warn("Video Link map error", ex);
+	}
+
 	clean.MasterVariant.Images360 = fd.MasterImages360.map(mapper.Images);
 	clean.MasterVariant.Images = fd.MasterImages.map(mapper.Images);
 
@@ -201,7 +209,13 @@ module.exports = ['util', function (util) {
 		invFd.LocalCategories.unshift({
 			CategoryId: invFd.LocalCategory
 		});
-		if(invFd.MasterVariant.VideoLinks) invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
+
+		if(invFd.MasterVariant.VideoLinks){
+			invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
+		}else{
+			invFd.MasterVariant.VideoLinks = [];
+		}
+
 		invFd.Variants.forEach(function(variant, index){
 			variant.VideoLinks = variant.VideoLinks.map(invMapper.VideoLinks);
 		});

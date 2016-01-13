@@ -30,8 +30,12 @@ module.exports = ['$q', '$http', 'common', function($q, $http, common){
 
 	service.publish = function(tobj, Status){
 		tobj.Status = Status;
+		var mode = 'POST';
+		if(tobj.ProductId){
+			mode = 'PUT';
+		}
 		return common.makeRequest({
-			method: 'POST',
+			method: mode,
 		        url: '/ProductStages',
 		        data: tobj
 		});

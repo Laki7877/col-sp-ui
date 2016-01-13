@@ -15,12 +15,16 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 			<?=$key?> : '<?=$value?>'	
 		<?php endforeach; ?>
 		})">
+		
+		<form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
 		<? $this->insert('components/page-title-breadcrumb', ['text' => "Products/ " . $title, 'urls' => ['/products']]) ?>
 
-		<div class="add-product-body">
+		<div ng-if="_loading.state">
+			<img src="/assets/img/loader.gif" width="40"> <small>{{ _loading.message }}..</small>
+		</div>
+		<div class="add-product-body" ng-if="!_loading.state">
 
 			<? $this->insert('components/tab-nav', ["items" => $menus]) ?>
-			<form ng-submit="publish(addProductForm.$valid)" name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
 						<? $this->insert('partials/add-product-information') ?>
@@ -42,19 +46,16 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 					<div class="container-fluid">
 						<div class="float-right">
 							<a href="/products" class="link-btn-plain">Cancel</a>
-							<button class="btn btn-white btn-width-xl" ng-click="preview()"
->Preview</button>
-							<button class="btn btn-white btn-width-xl" type="submit"
-							ng-click="Status = 'DF'">Save as Draft</button>
-							
-							<button ng-disabled="addProductForm.$invalid" 		
-							type="submit" class="btn btn-blue btn-width-xl" ng-click="Status ='WA'">Publish</button>
+
+							<button class="btn btn-white btn-width-xl" ng-click="preview()">Preview</button>
+							<button class="btn btn-white btn-width-xl" type="submit"ng-click="publish('DF')">Save as Draft</button>
+							<button ng-disabled="addProductForm.$invalid" type="submit" class="btn btn-blue btn-width-xl" ng-click="publish('WA')">Publish</button>
 						</div>
 					</div>
 				</div>
-			</form>
 		</div>
 	</div>
+	</form>
 
 	<script src="/assets/libs/ckeditor/ckeditor.js"></script>
 	<script src="/assets/libs/ckeditor/config.js"></script>

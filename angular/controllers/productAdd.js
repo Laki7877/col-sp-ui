@@ -6,6 +6,11 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		GlobalCategory, Category, VariantPair, productProxy, brandAdapter){
 	'use strict';
 
+	$scope._loading = {
+		state : true,
+		message: 'Loading..'
+	};
+
 	$scope.preview = function(){
 		console.log('Form Data', $scope.formData);
 		var apiRequest = productProxy.transform($scope.formData);
@@ -28,18 +33,25 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		});			
 	};
 
-	$scope.publish = function(isValid){
-		if(!isValid) return;
-		console.log('Form Data', $scope.formData);
-		var apiRequest = productProxy.transform($scope.formData);
-		console.log('API JSON', JSON.stringify(apiRequest));
-		Product.publish(apiRequest, $scope.Status).then(function(){
-			console.log("Save successful");
-			alert("Just FYI, its saved. ")
-		}, function(er){
-			alert("FYI - Unable to save due to error - Send this message to a wizard near you: \n\n" + JSON.stringify(er));
-			console.warn("Unable to save", er);
-		});
+	$scope.publish = function(Status){
+		console.log("Publishing with Status = ", $scope.Status);
+		try{
+			console.log('Form Data', $scope.formData);
+			var apiRequest = productProxy.transform($scope.formData);
+			console.log('API JSON', JSON.stringify(apiRequest), $scope.Status);
+
+			Product.publish(apiRequest, Status).then(function(){
+				console.log("Save successful");
+				alert("Just FYI, its saved. ")
+			}, function(er){
+				alert("FYI - Unable to save due to error - Send this message to a wizard near you: \n\n" + JSON.stringify(er));
+				console.warn("Unable to save", er);
+			});
+
+		}catch(ex){
+			console.log(ex);
+			alert("Known error occurred while publishing : \n" + JSON.stringify(ex));
+		}
 	};
 
 	$scope.formData = {
@@ -97,13 +109,18 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 				var shopId = 1;
 				var angularReady = function(){
-					//Angular dependent
-				  tabPage.global.jquery();
-				  tabPage.information.jquery();
-				  loadedTabs.information = true;
+					//Angular dependent 
+					//TODO : probably not needed anymore
+				    tabPage.global.jquery();
+				    tabPage.information.jquery();
+				    loadedTabs.information = true;
+					$scope._loading.message = "Done";
+					$scope._loading.state = false;
 				};
 
 				var watchVariantChanges = function(){
+
+					$scope._loading.message = "Setting up watch..";
 
 					$scope.$watch('attributeOptions[0].Attribute', function(){
 						tabPage.variation.initSelect2(0);
@@ -167,6 +184,8 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 				var loadFormData = function(ivFormData, FullAttributeSet){
 
+					$scope._loading.message = "Crunching Data..";
+
 					//Dependency Chain
 					//  catId -> AttributeSet -> Inverse
 
@@ -188,11 +207,15 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 					//Dependecy chain
 					// catId
 
+					$scope._loading.message = "Downloading Attribute Sets..";
+
 					AttributeSet.getByCategory(catId).then(function(data){
 						$scope.availableAttributeSets = data;
 
 						//Load Attribute Set (edit mode only, in add mode AttributeSet is not set)
 						if(ivFormData.AttributeSet && ivFormData.AttributeSet.AttributeSetId){
+
+							$scope._loading.message = "Indexing..";
 
 							var idx = $scope.availableAttributeSets.map(function(o){
 								return o.AttributeSetId
@@ -206,6 +229,8 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
  
 						//Load Global Cat
 						GlobalCategory.getAll().then(function(data) {
+
+							$scope._loading.message = "Downloading Category Tree..";
 							$scope.availableGlobalCategories = Category.transformNestedSetToUITree(data);
 							$scope.formData.GlobalCategories[0] = Category.findByCatId(catId, $scope.availableGlobalCategories);
 							$scope.globalCategoryBreadcrumb = Category.createCatStringById(catId, $scope.availableGlobalCategories);
@@ -213,18 +238,21 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 						});
 
 
-						//watchVariantChanges();
+						watchVariantChanges();
 					});
 				};
 
 				if("productId" in viewBag){
 					//EDIT MODE
-					var productId = viewBag.productId;
-					Product.getOne(productId).then(function(ivFormData){
 
+					var productId = viewBag.productId;
+					$scope._loading.message = "Downloading Product..";
+					Product.getOne(productId).then(function(ivFormData){
 						var gcat = ivFormData.GlobalCategory;
 						catReady(gcat, ivFormData, function(){
+							$scope.formData.ProductId = Number(productId);
 							//Load Brand
+							$scope._loading.message = "Downloading Brand..";
 							Brand.getOne($scope.formData.Brand.BrandId).then(function(data){
 								$scope.formData.Brand = data;
 								delete $scope.formData.Brand.$id;
@@ -242,6 +270,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 				if("catId" in viewBag){
 					//ADD MODE
+					$scope._loading.state = false;
 					catReady(viewBag.catId, {}, angularReady);
 					watchVariantChanges();
 				}
