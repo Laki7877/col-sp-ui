@@ -33,6 +33,11 @@
 		width: 50px;
 	}
 
+  .action-column {
+    width: 50px;
+    text-align: center;
+  }
+
 	.modified-column {
 		width: 88px;
 	}
@@ -289,5 +294,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+}
+
+.table-border-none {
+  > tbody > tr:first-child > td {
+    border-top: none;
   }
 }

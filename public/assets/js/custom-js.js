@@ -36,8 +36,19 @@ $(document).ready(function () {
 	$('.sub-sidebar').hover(function(e) { //mouse enter
 		var $this = $(this);
 		$this.show();
+		var id = $this.attr('id');
+		var parent = $('[data-toggle="sub-sidebar"][data-target="#'+ id +'"');
+		parent.addClass('active');
 	}, function(e) { //mouse leave
 		var $this = $(this);
 		$this.hide();
+		var id = $this.attr('id');
+		var parent = $('[data-toggle="sub-sidebar"][data-target="#'+ id +'"');
+		parent.removeClass('active');
 	});
+	$(".popover-gear .fa-gear").click(function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      $(this).closest('.popover-gear').find('.fa-caret-down').trigger( "click" );
+    });
 });
