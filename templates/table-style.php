@@ -1,7 +1,11 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Table Style']) ?>
 
 <?php $this->start('page-body') ?>
 	<div>
+
+    <? $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => 'Your changes have been saved.']) ?>
+    <? $this->insert('components/alert-text', ['close' => true, 'color' => 'red', 'text' => 'There is an error!']) ?>
+
     <? $this->insert('components/page-title-with-buttons', ['text' => 'Table Stlye']) ?>
     <? $this->insert('components/search-section') ?>
     <div class="filter-section">
