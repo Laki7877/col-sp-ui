@@ -24,20 +24,7 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 			}
 		}
 	];
-	$scope.sort = function(id) {
-        var classes = ['fa'];
-        if($scope.tableParams.orderBy == id) {
-            if($scope.tableParams.direction == 'desc') {
-                classes.push('fa-caret-down');
-            } else {
-                classes.push('fa-caret-up');
-            }
-        } else {
-            classes.push('fa-caret-up');
-            classes.push('color-grey');
-        }
-        return classes;
-	};
+	$scope.sort = util.tableSortClass($scope);
 	//Populate Data Source
 	$scope.reloadData = function(){
 		$scope.attributeList = [];
