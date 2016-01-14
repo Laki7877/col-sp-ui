@@ -13,7 +13,7 @@
         <li ng-class="$root.activeUrl('/products/add')" class="item"><a href="/products/select">Add</a></li>
         <li class="item"><a href="">Import</a></li>
         <li class="item"><a href="">Export</a></li>
-        <li ng-class="$root.activeUrl('/products/categories')" class="item margin-top-30"><a href="/products/categories">Local Category</a></li>
+        <li ng-class="$root.activeUrl('/categories')" class="item margin-top-30"><a href="/categories">Local Category</a></li>
         <li class="item"><a href="">Product Review</a></li>
         <li class="item"><a href="">Product Images</a></li>
     </ul>
