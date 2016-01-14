@@ -31,8 +31,8 @@
               <a ng-click="setOrderBy('SalePrice')"><span>Sale Price</span></a>
               <span class="caret caret-grey"></span>
             </th>
-            <th><a class="header-link" href="#"><span>Info.</span></a></th>
-            <th><a class="header-link" href="#"><span>Image</span></a></th>
+            <th><span>Info.</span></th>
+            <th><span>Image</span></th>
             <th class="status-column">
               Status
             </th>
