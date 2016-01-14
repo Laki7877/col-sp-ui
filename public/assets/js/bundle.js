@@ -2226,7 +2226,11 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 		}
 
 		invFd.Variants.forEach(function(variant, index){
-			variant.VideoLinks = variant.VideoLinks.map(invMapper.VideoLinks);
+			try{
+				variant.VideoLinks = variant.VideoLinks.map(invMapper.VideoLinks);
+			}catch(ex){
+				variant.VideoLinks = [];
+			}
 		});
 
 		//TODO: This should fetch entire Object
