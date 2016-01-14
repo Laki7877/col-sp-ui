@@ -75,7 +75,7 @@
                     <i class="fa fa-circle color-green"></i>
                   </td>
                   <td class="visible-column">
-                    <i class="fa fa-eye-slash color-grey eye-icon"></i>
+                    <i class="fa color-grey eye-icon" ng-class="{'fa-eye-slash': row.Visible, 'fa-eye': row.Visible}"></i>
                   </td>
                   <td class="modified-column">{{ row.UpdatedDt | date:'shortDate':'+700' }}</td>
           </tr>
