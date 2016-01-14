@@ -244,12 +244,13 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 		{ name: "No Variation", value: 'No Variation'}
 	];
 	$scope.alert = new Alert();
-	$scope.bulk = null;
-	$scope.bulkActions = [
-		{ 	name: 'Delete', 
+	$scope.bulk = { fn: angular.noop };
+	$scope.bulkOptions = [
+		{ 	
+			name: 'Delete', 
 			value: 'delete', 
-			fn: function(row) {
-				var arr = util.getCheckedArray(row);
+			fn: function() {
+				var arr = util.getCheckedArray($scope.tableParams);
 				angular.forEach(arr, function(item) {
 					Attribute.delete(item.AttributeId);
 				});
@@ -308,11 +309,17 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 		pageSize: 10
 	};
 	$scope.notReady = true;
-	
+	$scope.init = function(params) {
+		if(params) {
+			if(angular.isDefined(params.success)) {
+				$scope.alert.success();
+			}
+		}
+	};
 	$scope.applySearch = function(){
 		$scope.tableParams.searchText = $scope.searchText;
 	};
-
+	
 	$scope.totalPage = function(x){
 		return Math.ceil($scope.attributeTotal / $scope.tableParams.pageSize);
 	};
@@ -364,7 +371,6 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 			$scope.edit = params.id;
 			Attribute.get($scope.edit).then(function(data) {
 				$scope.formData = Attribute.deserialize(data);
-				console.log($scope.formData);
 			});
 		} else {
 			//create mode!
@@ -376,18 +382,24 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 		$window.location.href = '/admin/attributes';
 	};
 	$scope.save = function() {
+		if($scope.saving) {
+			return;
+		}
 		$scope.alert.close();
 		$scope.formDataSerialized = Attribute.serialize($scope.formData);
 		if ($scope.edit) {
+			$scope.saving = true;
 			Attribute.update($scope.edit, $scope.formDataSerialized).then(function(data) {
-				$window.location.href = '/admin/attributes';
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
 			});
 		}
 		else {
+			$scope.saving = true;
 			Attribute.create($scope.formDataSerialized).then(function(data) {
+				$scope.saving = false;
+				$('#success').submit();
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
@@ -397,7 +409,8 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 	};
 }];
 },{"angular":56}],6:[function(require,module,exports){
-module.exports = ['$scope', 'AttributeSet', function($scope, AttributeSet) {
+var angular = require('angular');
+module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function($scope, $window, util, AttributeSet, Alert) {
 	//UI binding variables
 	$scope.showOnOffStatus = true;
 	$scope.checkAll = false;
@@ -406,25 +419,139 @@ module.exports = ['$scope', 'AttributeSet', function($scope, AttributeSet) {
 		{ name: "Visible", value: 'Visible'},
 		{ name: "Not Visible", value: 'Not Visible'}
 	];
+	$scope.alert = new Alert();
+	$scope.bulk = { 
+		fn: function() {
+			var bulk = $scope.bulkOptions.find(function(item) {
+				return item.name == $('#bulk').html();
+			});
+			if(bulk) {
+				bulk.fn();
+			}
+		} 
+	};
+	$scope.bulkOptions = [
+		{ 	
+			name: 'Delete', 
+			value: 'delete', 
+			fn: function() {
+				$scope.alert.close();
+				var arr = util.getCheckedArray($scope.attributeSetList).map(function(elem) {
+					return {
+						AttributeSetId: elem.AttributeSetId
+					};
+				});
+				if(arr.length > 0) {
+					AttributeSet.deleteBulk(arr).then(function() {
+						$scope.alert.success('Successfully deleted');
+						$scope.reloadData();
+					});
+				}
+			}
+		},
+		{
+			name: 'Show',
+			value: 'show',
+			fn: function() {
+				var arr = util.getCheckedArray($scope.attributeSetList).map(function(elem) {
+					return {
+						AttributeSetId: elem.AttributeSetId,
+						Status: 'VI'
+					};
+				});
 
-	//attributeSet List
+				if(arr.length > 0) {
+					AttributeSet.visible(arr).then(function() {
+						$scope.reloadData();
+					});
+				}
+			}
+		},
+		{
+			name: 'Hide',
+			value: 'hide',
+			fn: function() {
+				var arr = util.getCheckedArray($scope.attributeSetList).map(function(elem) {
+					return {
+						AttributeSetId: elem.AttributeSetId,
+						Status: 'NV'
+					};
+				});
+
+				if(arr.length > 0) {
+					AttributeSet.visible(arr).then(function() {
+						$scope.reloadData();
+					});
+				}
+			}
+		}
+	];
+	$scope.sort = util.tableSortClass($scope);
+	//Populate Data Source
+	$scope.reloadData = function(){
+		$scope.attributeSetList = [];
+		$scope.notReady = true;
+		AttributeSet.getAll($scope.tableParams).then(function(x){
+			$scope.attributeSetTotal = x.total;
+			$scope.attributeSetList = x.data;
+			$scope.notReady = false;
+		});
+	};
+	$scope.actions = {
+		edit: function(row) {
+			$window.location.href="/admin/attributesets/" + row.AttributeSetId;
+		},
+		delete: function(row) {
+			$scope.alert.close();
+			AttributeSet.delete(row.AttributeSetId).then(function() {
+				$scope.alert.success('You have successfully deleted an entry.');
+			}, function(err) {
+				$scope.alert.error(err);
+			});
+		},
+		duplicate: function(row) {
+			$scope.alert.close();
+			AttributeSet.duplicate(row.AttributeSetId).then(function() {
+				$scope.alert.success();
+			}, function(err) {
+				$scope.alert.error(err);
+			});
+		},
+		toggle: function(row) {
+			row.Status = (row.Status == 'VI')? 'NV' : 'VI';
+			AttributeSet.visible(row).then(function() {
+
+			}, function(err) {
+				$scope.alert.error(err);
+			});
+		}
+	};
+	//AttributeSet List
 	$scope.attributeSetList = [];
-	
+ 	$scope.attributeSetTotal = 0;
+
 	//Default parameters
 	$scope.tableParams = {
-		filter: $scope.filterOptions,
+		filter: $scope.filterOptions[0].value,
 		searchText: null,
 		orderBy: 'AttributeSetNameEn',
 		direction: 'desc',
 		page: 0,
 		pageSize: 10
 	};
-
 	$scope.notReady = true;
+	
+	$scope.init = function(params) {
+		if(params) {
+			if(angular.isDefined(params.success)) {
+				$scope.alert.success();
+			}
+		}
+	};
 	$scope.applySearch = function(){
 		$scope.tableParams.searchText = $scope.searchText;
 	};
-
+	
 	$scope.totalPage = function(x){
 		return Math.ceil($scope.attributeSetTotal / $scope.tableParams.pageSize);
 	};
@@ -442,23 +569,11 @@ module.exports = ['$scope', 'AttributeSet', function($scope, AttributeSet) {
 			$scope.tableParams.direction = ($scope.tableParams.direction == 'asc' ? 'desc': 'asc');
 		}
 		$scope.tableParams.orderBy = nextOrderBy;
+
 	}
-
- 	$scope.attributeSetTotal = 0;
-	//Populate Data Source
-	var reloadData = function(){
-		$scope.attributeSetList = [];
-		$scope.notReady = true;
-		AttributeSet.getAll($scope.tableParams).then(function(x){
-			$scope.attributeSetTotal = x.total;
-			$scope.attributeSetList = x.data;
-			$scope.notReady = false;
-		});
-	};
-
 	//Watch any change in table parameter, trigger reload
 	$scope.$watch('tableParams', function(){
-		reloadData();
+		$scope.reloadData();
 	}, true);
 
 	//Select All checkbox
@@ -469,7 +584,7 @@ module.exports = ['$scope', 'AttributeSet', function($scope, AttributeSet) {
 		});
 	});
 }];
-},{}],7:[function(require,module,exports){
+},{"angular":56}],7:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scope, Alert, AttributeSet, Attribute) {
@@ -481,6 +596,7 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 	$scope.visibleOptions = AttributeSet.visibleOptions;
 	$scope.formDataSerialized = {};
 	$scope.edit = 0;
+	$scope.saving = false;
 
 	$scope.loadAttribute = function() {
 		Attribute.getAll().then(function(data) {
@@ -505,18 +621,27 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 		$window.location.href = '/admin/attributesets';
 	};
 	$scope.save = function() {
+		if($scope.saving) {
+			return;
+		}
+
 		$scope.alert.close();
 		$scope.formDataSerialized = AttributeSet.serialize($scope.formData);
+
 		if ($scope.edit) {
+			$scope.saving = true;
 			AttributeSet.update($scope.edit, $scope.formDataSerialized).then(function(data) {
-				$window.location.href = '/admin/attributesets';
+				$scope.saving = false;
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
 			});
 		}
 		else {
+			$scope.saving = true;
 			AttributeSet.create($scope.formDataSerialized).then(function(data) {
+				$scope.saving = false;
+				$('#success').submit();
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
@@ -1826,6 +1951,7 @@ module.exports = ['$http', '$q', 'storage', 'config', function ($http, $q, stora
                 if (!options.headers) {
                     options.headers = {};
                 }
+
                 if (accessToken && !options.headers.Authorization) {
                     options.headers.Authorization = 'Basic ' + accessToken;
                 }
@@ -2305,6 +2431,11 @@ module.exports = ['storage', function (storage) {
             return classes;
         }
     }
+    service.getCheckedArray = function(arr) {
+        return arr.filter(function(elem) {
+            return angular.isDefined(elem.checked) && elem.checked;
+        });
+    };
     return service;
 }];
 
@@ -2424,7 +2555,20 @@ module.exports = ['common', function(common){
 			method: 'DELETE',
 			url: '/Attributes/' + id
 		});
-	}
+	};
+	service.deleteBulk = function(arr) {
+		return common.makeRequest({
+			method: 'DELETE',
+			url: '/Attributes',
+			data: arr
+		});
+	};
+	service.duplicate = function(id) {
+		return common.makeRequest({
+			method: 'POST',
+			url: '/Attributes/' + id
+		});
+	};
 	service.update = function(id, obj) {
 		return common.makeRequest({
 			method: 'PUT',
@@ -2486,7 +2630,8 @@ module.exports = ['common', function(common){
 		};
 	};
 	service.deserialize = function(data) {
-		var processed = angular.extend(service.generate(), data);
+		var processed = angular.copy(data);
+		console.log(data);
 		processed.VariantStatus = find(service.boolOptions,data.VariantStatus);
 		processed.VariantDataType = find(service.dataTypeOptions,data.VariantDataType);
 		processed.DataType = find(service.dataTypeOptions,data.DataType);
@@ -2553,14 +2698,6 @@ module.exports = ['common', function(common){
 module.exports = ['common', function(common){
 	'use strict';
 	var service = {};
-	var find = function(array, value) {
-		return array.find(function(element) {
-			if (element.value === value) {
-				return true;
-			}
-			return false;
-		});
-	};
 	service.visibleOptions = [
 		{
 			name: 'No',
@@ -2571,6 +2708,14 @@ module.exports = ['common', function(common){
 			value: 'VI'
 		}
 	];
+	var find = function(array, value) {
+		return array.find(function(element) {
+			if (element.value === value) {
+				return true;
+			}
+			return false;
+		});
+	};
 	service.getByCategory = function(catId){
 		var req = {
 			method: 'GET',
@@ -2578,6 +2723,38 @@ module.exports = ['common', function(common){
 		};
 
 		return common.makeRequest(req);	
+	};
+	service.delete = function(id) {
+		return common.makeRequest({
+			method: 'DELETE',
+			url: '/AttributeSets/' + id
+		});
+	};
+	service.duplicate = function(id) {
+		return common.makeRequest({
+			method: 'POST',
+			url: '/AttributeSets/' + id
+		});
+	};
+	service.visible = function(obj) {
+		return common.makeRequest({
+			method: 'PUT',
+			url: '/AttributeSets/Visibility',
+			data: obj,
+			headers: {
+				'Content-Type': 'application/json;charset=UTF-8'
+			}
+		});
+	};
+	service.deleteBulk = function(arr) {
+		return common.makeRequest({
+			method: 'DELETE',
+			url: '/AttributeSets',
+			data: arr,
+			headers: {
+				'Content-Type': 'application/json;charset=UTF-8'
+			}
+		});
 	};
 	service.get = function(id) {
 		return common.makeRequest({
@@ -2626,7 +2803,7 @@ module.exports = ['common', function(common){
 			AttributeSetNameTh: '',
 			AttributeSetDescriptionEn: '',
 			AttributeSetDescriptionTh: '',
-			Status: 'AT',
+			Status: service.visibleOptions[0],
 			Tags: []
 		};
 	};
@@ -3145,7 +3322,7 @@ module.exports = ['common', function(common) {
 },{}],44:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Jan 14 2016 15:32:08 GMT+0700 (ICT)
+ * Thu Jan 14 2016 20:10:43 GMT+0700 (ICT)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -3155,7 +3332,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('attribute_set/action',
-    "<div><a ng-click=\"edit('edit', row)\">View / Edit</a></div><div><a ng-click=\"duplicate('duplicate', row)\">Duplicate</a></div><div><a ng-click=\"remove('remove', row)\">Delete</a></div>"
+    "<div><a ng-click=\"actions.edit(row, true)\">View / Edit</a></div><div><a ng-click=\"actions.duplicate(row, true)\">Duplicate</a></div><div><a ng-click=\"actions.delete(row, true)\">Delete</a></div>"
   );
 
 
@@ -3190,12 +3367,12 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/input/tradable-select',
-    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><div class=input-group><input ng-model=search[options.map.text] class=\"form-control input-search-icon search-box\" placeholder=\"Search Attribute Set\" aria-describedby=basic-addon2> <span class=input-group-btn><button class=\"btn btn-white\" type=button>Search</button></span></div></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable | filter:search:strict track by $index\" ng-class=\"{ 'active' : activeLeft == $index }\" ng-click=\"select($index, true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=\"{'active' : activeLeft >= 0}\" ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=\"{'active' : activeRight >= 0}\" ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>Attribute Set in This Category</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == $index }\" ng-click=\"select($index, false)\"><span class=column-1>{{ options.map.text == null ? item : item[options.map.text] }}</span></li></ul></div></div></div>"
+    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><div class=input-group><input ng-model=search[options.map.text] class=\"form-control input-search-icon search-box\" placeholder=\"Search Attribute Set\" aria-describedby=basic-addon2> <span class=input-group-btn><button class=\"btn btn-white\" type=button>Search</button></span></div></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable | filter:search:strict track by $index\" ng-class=\"{ 'active' : activeLeft == $index }\" ng-click=\"select($index, true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=\"{'active' : activeLeft >= 0}\" ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=\"{'active' : activeRight >= 0}\" ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>Attribute Set in This Category</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == $index }\" ng-click=\"select($index, false)\">{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div></div>"
   );
 
 
   $templateCache.put('common/input/tradable-select2',
-    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><div class=input-group><input ng-model=search[options.map.text] class=\"form-control input-search-icon search-box\" placeholder=\"Search Attribute Set\" aria-describedby=basic-addon2> <span class=input-group-btn><button class=\"btn btn-white\" type=button>Search</button></span></div></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable | filter:search:strict track by $index\" ng-class=\"{ 'active' : activeLeft == $index }\" ng-click=\"select($index, true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=\"{'active' : activeLeft >= 0}\" ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=\"{'active' : activeRight >= 0}\" ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>Attribute</span> <span class=column-2>Required?</span> <span class=column-3>Filterable?</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == $index }\" ng-click=\"select($index, false)\"><span class=column-1>{{ options.map.text == null ? item : item[options.map.text] }}</span> <span class=column-2><input type=checkbox ng-model=item.Required aria-label=\"Checkbox for following text input\"></span> <span class=column-3><input type=checkbox ng-model=item.Filterable aria-label=\"Checkbox for following text input\"></span></li></ul></div></div></div>"
+    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><input ng-model=search[options.map.text] class=\"form-control input-search-icon search-box\" placeholder=\"Search Attribute Set\" aria-describedby=basic-addon2></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable | filter:search:strict track by $index\" ng-class=\"{ 'active' : activeLeft == $index }\" ng-click=\"select($index, true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=\"{'active' : activeLeft >= 0}\" ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=\"{'active' : activeRight >= 0}\" ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>Attribute</span> <span class=column-2>Required?</span> <span class=column-3>Filterable?</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == $index }\" ng-click=\"select($index, false)\"><div class=row><div class=column-1>{{ options.map.text == null ? item : item[options.map.text] }}</div><div class=column-2><input type=checkbox ng-model=item.Required aria-label=\"Checkbox for following text input\"></div><div class=column-3><input type=checkbox ng-model=item.Filterable aria-label=\"Checkbox for following text input\"></div></div></li></ul></div></div></div>"
   );
 
 

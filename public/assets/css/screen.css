@@ -12875,48 +12875,50 @@ label.css-label {
 }
 /* line 131, ../../../assets/_table.scss */
 .table-section .table > thead > tr > th {
+  padding-top: 6px;
   padding-bottom: 4px;
   font-weight: normal;
 }
-/* line 136, ../../../assets/_table.scss */
+/* line 137, ../../../assets/_table.scss */
 .table-section .table > tbody > tr > td {
   vertical-align: middle;
 }
-/* line 140, ../../../assets/_table.scss */
+/* line 141, ../../../assets/_table.scss */
 .table-section td.info-column, .table-section td.image-columnm, .table-section td.live-column, .table-section td.visible-column {
   text-align: center;
 }
-/* line 144, ../../../assets/_table.scss */
+/* line 145, ../../../assets/_table.scss */
 .table-section .table-checkbox {
   margin-top: 0px;
   margin-bottom: 0;
 }
-/* line 149, ../../../assets/_table.scss */
+/* line 150, ../../../assets/_table.scss */
 .table-section .table-head {
   background: #edf2f9;
   color: #32343C;
   border-top-left-radius: 10px;
 }
 
-/* line 157, ../../../assets/_table.scss */
+/* line 158, ../../../assets/_table.scss */
 .page-navigation {
+  margin-bottom: 100px;
   float: right;
 }
-/* line 160, ../../../assets/_table.scss */
+/* line 162, ../../../assets/_table.scss */
 .page-navigation .grey-chevron {
   color: #BCC7D5;
 }
-/* line 164, ../../../assets/_table.scss */
+/* line 166, ../../../assets/_table.scss */
 .page-navigation .blue-chevron {
   color: #4899DD;
 }
-/* line 168, ../../../assets/_table.scss */
+/* line 170, ../../../assets/_table.scss */
 .page-navigation .view-page-separator {
   border-left: solid 1px #BCC7D5;
   padding-left: 15px;
 }
 
-/* line 178, ../../../assets/_table.scss */
+/* line 180, ../../../assets/_table.scss */
 .filter-section .filter-container {
   position: relative;
   padding: 12px 17px 12px;
@@ -12926,7 +12928,7 @@ label.css-label {
   border-width: 1px;
   border-radius: 4px;
 }
-/* line 188, ../../../assets/_table.scss */
+/* line 190, ../../../assets/_table.scss */
 .filter-section .filter-seperator {
   text-decoration: none;
   cursor: pointer;
@@ -12935,103 +12937,108 @@ label.css-label {
   padding-left: 9px;
   margin-left: 9px;
 }
-/* line 197, ../../../assets/_table.scss */
+/* line 199, ../../../assets/_table.scss */
 .filter-section .filter-first-option {
   text-decoration: none;
   cursor: pointer;
   color: #7B7F8F;
   margin-left: 20px;
 }
-/* line 204, ../../../assets/_table.scss */
+/* line 206, ../../../assets/_table.scss */
 .filter-section .filter-active {
   color: #32343C;
 }
 
-/* line 210, ../../../assets/_table.scss */
+/* line 212, ../../../assets/_table.scss */
 .search-section-wrapper {
   margin-top: 30px;
 }
-/* line 213, ../../../assets/_table.scss */
+/* line 215, ../../../assets/_table.scss */
 .search-section-wrapper .search-section {
   padding-left: 15px;
   padding-right: 15px;
   float: left;
 }
-/* line 219, ../../../assets/_table.scss */
+/* line 221, ../../../assets/_table.scss */
 .search-section-wrapper .section-action {
   width: 280px;
 }
-/* line 223, ../../../assets/_table.scss */
+/* line 225, ../../../assets/_table.scss */
 .search-section-wrapper .section-search {
   width: 410px;
 }
-/* line 227, ../../../assets/_table.scss */
+/* line 229, ../../../assets/_table.scss */
 .search-section-wrapper .search-section.section-filter {
   float: right;
 }
-/* line 231, ../../../assets/_table.scss */
+/* line 233, ../../../assets/_table.scss */
 .search-section-wrapper .search-section .btn-white {
   height: 30px;
 }
-/* line 235, ../../../assets/_table.scss */
+/* line 237, ../../../assets/_table.scss */
 .search-section-wrapper .body-dropdown-button {
   height: 30px;
   width: 180px;
 }
-/* line 239, ../../../assets/_table.scss */
+/* line 241, ../../../assets/_table.scss */
 .search-section-wrapper .body-dropdown-button .dropdown-text {
   width: 135px;
   display: inline-block;
 }
-/* line 245, ../../../assets/_table.scss */
+/* line 247, ../../../assets/_table.scss */
 .search-section-wrapper .dropdown-text {
   text-align: left;
 }
-/* line 249, ../../../assets/_table.scss */
+/* line 251, ../../../assets/_table.scss */
 .search-section-wrapper .search-box {
   height: 30px;
 }
-/* line 253, ../../../assets/_table.scss */
+/* line 255, ../../../assets/_table.scss */
 .search-section-wrapper .checkbox-wrapper {
   margin-top: 5px;
 }
 
-/* line 259, ../../../assets/_table.scss */
+/* line 261, ../../../assets/_table.scss */
 .table.ah-table {
   margin-bottom: 0;
 }
-/* line 260, ../../../assets/_table.scss */
+/* line 262, ../../../assets/_table.scss */
 .table.ah-table > thead > tr > th {
   border-bottom: 1px solid #BCC7D5;
 }
-/* line 262, ../../../assets/_table.scss */
+/* line 264, ../../../assets/_table.scss */
 .table.ah-table > thead > tr > th, .table.ah-table > thead > tr > th > * {
   vertical-align: middle;
 }
-/* line 267, ../../../assets/_table.scss */
+/* line 269, ../../../assets/_table.scss */
 .table.ah-table > tbody > tr > td {
   border-top: none;
 }
-/* line 272, ../../../assets/_table.scss */
+/* line 274, ../../../assets/_table.scss */
 .table.ah-table.ah-table-extra-padding > tbody > tr > td {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-/* line 279, ../../../assets/_table.scss */
+/* line 281, ../../../assets/_table.scss */
 .table.ah-table.ah-table-line > tbody > tr:first-child > td {
   border-top: none;
 }
-/* line 283, ../../../assets/_table.scss */
+/* line 285, ../../../assets/_table.scss */
 .table.ah-table.ah-table-line > tbody > tr > td {
   border-top: 1px solid #BCC7D5;
 }
 
-/* line 292, ../../../assets/_table.scss */
+/* line 294, ../../../assets/_table.scss */
 .table .column-text-ellipsis {
   max-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* line 303, ../../../assets/_table.scss */
+.table-border-none > tbody > tr:first-child > td {
+  border-top: none;
 }
 
 /* line 2, ../../../assets/_form.sass */
@@ -13452,6 +13459,11 @@ form h6 {
 /* line 39, ../../../assets/_button.scss */
 .btn.btn-width-xxl {
   width: 180px;
+}
+
+/* line 43, ../../../assets/_button.scss */
+.btn.btn-width-xxxl {
+  width: 200px;
 }
 
 /* line 2, ../../../assets/_bootstrap_tagsinput.sass */
@@ -14118,7 +14130,7 @@ html, body {
 }
 /* line 139, ../../../assets/_local_category.scss */
 .local-category-page .local-category-empty-section .zero-category-image {
-  width: 180px;
+  width: 130px;
   height: 80px;
   background-image: url("../img/graphic-zero-category.png");
   background-size: 80px 80px;
@@ -14311,32 +14323,58 @@ html, body {
 }
 /* line 122, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-1 {
-  margin-left: 0px;
+  margin-left: 15px;
+  display: inline-block;
+  width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  float: left;
 }
-/* line 125, ../../../assets/screen.scss */
+/* line 131, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-2 {
-  margin-left: 130px;
+  margin-left: 40px;
+  display: inline-block;
+  float: left;
 }
-/* line 128, ../../../assets/screen.scss */
+/* line 136, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-3 {
-  margin-left: 80px;
+  margin-left: 90px;
+  display: inline-block;
+  float: left;
 }
-/* line 132, ../../../assets/screen.scss */
+/* line 142, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li.active {
   background: #4899DD;
   color: #FFFFFF;
 }
 
-/* line 141, ../../../assets/screen.scss */
+/* line 151, ../../../assets/screen.scss */
 .table .action-column {
   width: 60px;
   padding-top: 14px;
   padding-bottom: 14px;
 }
 
-/* line 147, ../../../assets/screen.scss */
+/* line 157, ../../../assets/screen.scss */
 input.form-control.has-error {
   border-color: #ec0000;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+/* line 163, ../../../assets/screen.scss */
+.empty-section {
+  border: 1px solid;
+  border-color: #BCC7D5;
+  border-radius: 3px;
+  height: 80px;
+  line-height: 80px;
+}
+/* line 169, ../../../assets/screen.scss */
+.empty-section .loading-img {
+  width: 40px;
+  height: 40px;
+  margin-left: 15px;
+  margin-right: 15px;
 }

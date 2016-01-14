@@ -31,7 +31,7 @@
     <div class="clickable-list">
       <ul class="content-column">
         <li ng-repeat="item in model track by $index" ng-class="{ 'active' : activeRight == $index }" ng-click="select($index, false)">
-          <span class="column-1">{{ options.map.text == null ? item : item[options.map.text] }}</span>
+          {{ options.map.text == null ? item : item[options.map.text] }}
         </li>
       </ul>
     </div>

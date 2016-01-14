@@ -36,7 +36,7 @@ class Route
 	// add new route
 	public static function add($uri, $method, $id = null)
 	{
-		$tokens = explode('/', $uri);
+		$tokens = explode('/', strtolower($uri));
 		$params = [];
 
 		foreach ($tokens as &$t) {
@@ -66,7 +66,7 @@ class Route
 	public static function process() 
 	{
 		// base uri
-		$uri = $_SERVER['REQUEST_URI'];
+		$uri = strtolower($_SERVER['REQUEST_URI']);
 
 		if(substr($uri,-1) == "/") {
 			$uri = substr($uri, 0, -1);

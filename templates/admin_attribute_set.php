@@ -1,9 +1,39 @@
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attribute Set']) ?>
 
 <?php $this->start('page-body') ?>
-	<div ng-controller="AdminAttributeSetCtrl">
+	<div ng-controller="AdminAttributeSetCtrl" ng-init="init(<?=$params?>)">
     <? $this->insert('components/page-title-with-one-button', ['text' => 'Attribute Set','button' => 'Add Attribute Set', 'button_class' => 'btn-width-xxl', 'link' => '/admin/attributesets/add']) ?>
-    <? $this->insert('components/search-section-admin-attribute') ?>
+    <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()">{{alert.message}}</div>
+    <div class="row search-section-wrapper">
+      <form ng-submit="bulk.fn()" class="search-section section-action">
+        <div class="input-group">
+          <div class="input-group-btn">
+            <div class="dropdown-btn">
+              <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                  <span id="bulk" class="dropdown-text margin-right-10 search-product-text">- Choose Action -</span>
+                  <span class="caret margin-left-10"></span>
+              </button>
+              <ul class="dropdown-menu search-product-dropdown">
+                <li ng-repeat="option in bulkOptions"><a>{{option.name}}</a></li>
+              </ul>
+            </div>
+          </div><!-- /btn-group -->
+          <div class="input-group-btn">
+            <button class="btn-white btn">
+              <span class="button-text-blue">Confirm</span>
+            </button>
+          </div>
+        </div>
+      </form>
+      <form ng-submit="applySearch()" class="search-section section-search">
+        <div class="input-group">
+          <input type="text" class="form-control input-search-icon search-box" ng-model="searchText" placeholder="Search" aria-describedby="basic-addon2">
+          <span class="input-group-btn">
+            <button class="btn btn-white">Search</button>
+          </span>
+        </div>
+      </form>
+    </div>
     <div class="filter-section">  
       <div class="filter-container">
         <span>Filters:</span>
@@ -17,21 +47,21 @@
             <th class="checkbox-column">
                 <input type="checkbox" aria-label="Checkbox for following text input" ng-model="checkAll"> 
             </th>
-            <th>
-              <a class="header-link" href="#" ng-click="setOrderBy('AttributeSetNameEn')"><span>Attribute Set Name</span></a>
-              <i class="fa fa-caret-down color-grey">
+            <th ng-click="setOrderBy('AttributeSetNameEn')">
+              <a class="header-link" href="#"><span>Attribute Set Name</span></a>
+              <i ng-class="sort('AttributeSetNameEn')">
             </th>
-            <th>
-              <a class="header-link" href="#" ng-click="setOrderBy('AttributeCount')"><span>Attribute in Set</span></a>
-              <i class="fa fa-caret-up color-grey">
+            <th ng-click="setOrderBy('AttributeCount')">
+              <a class="header-link" href="#"><span>Attribute in Set</span></a>
+              <i ng-class="sort('AttributeCount')">
             </th>
-            <th>
-              <a class="header-link" href="#"  ng-click="setOrderBy('Status')"><span>Visible</span></a>
-              <i class="fa fa-caret-up color-grey">
+            <th ng-click="setOrderBy('Status')">
+              <a class="header-link" href="#" ><span>Visible</span></a>
+              <i ng-class="sort('Status')">
             </th>
-            <th class="modified-column">
-              <a class="header-link" href="#"  ng-click="setOrderBy('UpdatedDt')"><span>Modified</span></a>
-              <i class="fa fa-caret-up">
+            <th class="modified-column" ng-click="setOrderBy('UpdatedDt')">
+              <a class="header-link" href="#" ><span>Modified</span></a>
+              <i ng-class="sort('UpdatedDt')">
             </th>
             <th>
               Action
@@ -45,12 +75,12 @@
               <input type="checkbox" aria-label="Checkbox for following text input" ng-model="row.checked"> 
             </td>
             <td class="column-text-ellipsis">
-              <a href="#">{{ row.AttributeSetNameEn }}</a>
+              <a ng-click="actions.edit(row)">{{ row.AttributeSetNameEn }}</a>
             </td>
             <td>{{ row.AttributeCount }}</td>
             <td>
-              <i ng-class="{'fa fa-eye-slash color-grey eye-icon' : row.Status != 'AT',
-                            'fa fa-eye color-dark-grey eye-icon' : row.Status == 'AT'}"></i>
+              <a ng-click="actions.toggle(row)"><i ng-class="{'fa fa-eye-slash color-grey eye-icon' : row.Status != 'VI',
+                            'fa fa-eye color-dark-grey eye-icon' : row.Status == 'VI'}"></i></a>
             </td>
                   <td class="modified-column">{{ row.UpdatedDt | date:'shortDate':'+700' }}</td>
             <td class="action-column">

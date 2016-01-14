@@ -1,4 +1,5 @@
-module.exports = ['$scope', 'AttributeSet', function($scope, AttributeSet) {
+var angular = require('angular');
+module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function($scope, $window, util, AttributeSet, Alert) {
 	//UI binding variables
 	$scope.showOnOffStatus = true;
 	$scope.checkAll = false;
@@ -7,25 +8,139 @@ module.exports = ['$scope', 'AttributeSet', function($scope, AttributeSet) {
 		{ name: "Visible", value: 'Visible'},
 		{ name: "Not Visible", value: 'Not Visible'}
 	];
+	$scope.alert = new Alert();
+	$scope.bulk = { 
+		fn: function() {
+			var bulk = $scope.bulkOptions.find(function(item) {
+				return item.name == $('#bulk').html();
+			});
+			if(bulk) {
+				bulk.fn();
+			}
+		} 
+	};
+	$scope.bulkOptions = [
+		{ 	
+			name: 'Delete', 
+			value: 'delete', 
+			fn: function() {
+				$scope.alert.close();
+				var arr = util.getCheckedArray($scope.attributeSetList).map(function(elem) {
+					return {
+						AttributeSetId: elem.AttributeSetId
+					};
+				});
+				if(arr.length > 0) {
+					AttributeSet.deleteBulk(arr).then(function() {
+						$scope.alert.success('Successfully deleted');
+						$scope.reloadData();
+					});
+				}
+			}
+		},
+		{
+			name: 'Show',
+			value: 'show',
+			fn: function() {
+				var arr = util.getCheckedArray($scope.attributeSetList).map(function(elem) {
+					return {
+						AttributeSetId: elem.AttributeSetId,
+						Status: 'VI'
+					};
+				});
 
-	//attributeSet List
+				if(arr.length > 0) {
+					AttributeSet.visible(arr).then(function() {
+						$scope.reloadData();
+					});
+				}
+			}
+		},
+		{
+			name: 'Hide',
+			value: 'hide',
+			fn: function() {
+				var arr = util.getCheckedArray($scope.attributeSetList).map(function(elem) {
+					return {
+						AttributeSetId: elem.AttributeSetId,
+						Status: 'NV'
+					};
+				});
+
+				if(arr.length > 0) {
+					AttributeSet.visible(arr).then(function() {
+						$scope.reloadData();
+					});
+				}
+			}
+		}
+	];
+	$scope.sort = util.tableSortClass($scope);
+	//Populate Data Source
+	$scope.reloadData = function(){
+		$scope.attributeSetList = [];
+		$scope.notReady = true;
+		AttributeSet.getAll($scope.tableParams).then(function(x){
+			$scope.attributeSetTotal = x.total;
+			$scope.attributeSetList = x.data;
+			$scope.notReady = false;
+		});
+	};
+	$scope.actions = {
+		edit: function(row) {
+			$window.location.href="/admin/attributesets/" + row.AttributeSetId;
+		},
+		delete: function(row) {
+			$scope.alert.close();
+			AttributeSet.delete(row.AttributeSetId).then(function() {
+				$scope.alert.success('You have successfully deleted an entry.');
+			}, function(err) {
+				$scope.alert.error(err);
+			});
+		},
+		duplicate: function(row) {
+			$scope.alert.close();
+			AttributeSet.duplicate(row.AttributeSetId).then(function() {
+				$scope.alert.success();
+			}, function(err) {
+				$scope.alert.error(err);
+			});
+		},
+		toggle: function(row) {
+			row.Status = (row.Status == 'VI')? 'NV' : 'VI';
+			AttributeSet.visible(row).then(function() {
+
+			}, function(err) {
+				$scope.alert.error(err);
+			});
+		}
+	};
+	//AttributeSet List
 	$scope.attributeSetList = [];
-	
+ 	$scope.attributeSetTotal = 0;
+
 	//Default parameters
 	$scope.tableParams = {
-		filter: $scope.filterOptions,
+		filter: $scope.filterOptions[0].value,
 		searchText: null,
 		orderBy: 'AttributeSetNameEn',
 		direction: 'desc',
 		page: 0,
 		pageSize: 10
 	};
-
 	$scope.notReady = true;
+	
+	$scope.init = function(params) {
+		if(params) {
+			if(angular.isDefined(params.success)) {
+				$scope.alert.success();
+			}
+		}
+	};
 	$scope.applySearch = function(){
 		$scope.tableParams.searchText = $scope.searchText;
 	};
-
+	
 	$scope.totalPage = function(x){
 		return Math.ceil($scope.attributeSetTotal / $scope.tableParams.pageSize);
 	};
@@ -43,23 +158,11 @@ module.exports = ['$scope', 'AttributeSet', function($scope, AttributeSet) {
 			$scope.tableParams.direction = ($scope.tableParams.direction == 'asc' ? 'desc': 'asc');
 		}
 		$scope.tableParams.orderBy = nextOrderBy;
+
 	}
-
- 	$scope.attributeSetTotal = 0;
-	//Populate Data Source
-	var reloadData = function(){
-		$scope.attributeSetList = [];
-		$scope.notReady = true;
-		AttributeSet.getAll($scope.tableParams).then(function(x){
-			$scope.attributeSetTotal = x.total;
-			$scope.attributeSetList = x.data;
-			$scope.notReady = false;
-		});
-	};
-
 	//Watch any change in table parameter, trigger reload
 	$scope.$watch('tableParams', function(){
-		reloadData();
+		$scope.reloadData();
 	}, true);
 
 	//Select All checkbox

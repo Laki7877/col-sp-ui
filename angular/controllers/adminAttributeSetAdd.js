@@ -9,6 +9,7 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 	$scope.visibleOptions = AttributeSet.visibleOptions;
 	$scope.formDataSerialized = {};
 	$scope.edit = 0;
+	$scope.saving = false;
 
 	$scope.loadAttribute = function() {
 		Attribute.getAll().then(function(data) {
@@ -33,18 +34,27 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 		$window.location.href = '/admin/attributesets';
 	};
 	$scope.save = function() {
+		if($scope.saving) {
+			return;
+		}
+
 		$scope.alert.close();
 		$scope.formDataSerialized = AttributeSet.serialize($scope.formData);
+
 		if ($scope.edit) {
+			$scope.saving = true;
 			AttributeSet.update($scope.edit, $scope.formDataSerialized).then(function(data) {
-				$window.location.href = '/admin/attributesets';
+				$scope.saving = false;
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
 			});
 		}
 		else {
+			$scope.saving = true;
 			AttributeSet.create($scope.formDataSerialized).then(function(data) {
+				$scope.saving = false;
+				$('#success').submit();
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);

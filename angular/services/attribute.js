@@ -74,7 +74,20 @@ module.exports = ['common', function(common){
 			method: 'DELETE',
 			url: '/Attributes/' + id
 		});
-	}
+	};
+	service.deleteBulk = function(arr) {
+		return common.makeRequest({
+			method: 'DELETE',
+			url: '/Attributes',
+			data: arr
+		});
+	};
+	service.duplicate = function(id) {
+		return common.makeRequest({
+			method: 'POST',
+			url: '/Attributes/' + id
+		});
+	};
 	service.update = function(id, obj) {
 		return common.makeRequest({
 			method: 'PUT',
@@ -136,7 +149,8 @@ module.exports = ['common', function(common){
 		};
 	};
 	service.deserialize = function(data) {
-		var processed = angular.extend(service.generate(), data);
+		var processed = angular.copy(data);
+		console.log(data);
 		processed.VariantStatus = find(service.boolOptions,data.VariantStatus);
 		processed.VariantDataType = find(service.dataTypeOptions,data.VariantDataType);
 		processed.DataType = find(service.dataTypeOptions,data.DataType);
