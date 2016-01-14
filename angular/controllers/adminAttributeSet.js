@@ -9,21 +9,30 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 		{ name: "Not Visible", value: 'Not Visible'}
 	];
 	$scope.alert = new Alert();
-	$scope.bulk = { fn: angular.noop };
+	$scope.bulk = { 
+		fn: function() {
+			var bulk = $scope.bulkOptions.find(function(item) {
+				return item.name == $('#bulk').html();
+			});
+			if(bulk) {
+				bulk.fn();
+			}
+		} 
+	};
 	$scope.bulkOptions = [
 		{ 	
 			name: 'Delete', 
 			value: 'delete', 
 			fn: function() {
 				$scope.alert.close();
-				var arr = util.getCheckedArray($scope.tableParams).map(function(elem) {
+				var arr = util.getCheckedArray($scope.attributeSetList).map(function(elem) {
 					return {
 						AttributeSetId: elem.AttributeSetId
 					};
 				});
-				
 				if(arr.length > 0) {
-					AttributeSet.visible(arr).then(function() {
+					AttributeSet.deleteBulk(arr).then(function() {
+						$scope.alert.success('Successfully deleted');
 						$scope.reloadData();
 					});
 				}
@@ -33,7 +42,7 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 			name: 'Show',
 			value: 'show',
 			fn: function() {
-				var arr = util.getCheckedArray($scope.tableParams).map(function(elem) {
+				var arr = util.getCheckedArray($scope.attributeSetList).map(function(elem) {
 					return {
 						AttributeSetId: elem.AttributeSetId,
 						Status: 'VI'
@@ -41,7 +50,7 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 				});
 
 				if(arr.length > 0) {
-					AttributeSet.setVisible(arr).then(function() {
+					AttributeSet.visible(arr).then(function() {
 						$scope.reloadData();
 					});
 				}
@@ -51,7 +60,7 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 			name: 'Hide',
 			value: 'hide',
 			fn: function() {
-				var arr = util.getCheckedArray($scope.tableParams).map(function(elem) {
+				var arr = util.getCheckedArray($scope.attributeSetList).map(function(elem) {
 					return {
 						AttributeSetId: elem.AttributeSetId,
 						Status: 'NV'
@@ -59,7 +68,7 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 				});
 
 				if(arr.length > 0) {
-					AttributeSet.setVisible(arr).then(function() {
+					AttributeSet.visible(arr).then(function() {
 						$scope.reloadData();
 					});
 				}

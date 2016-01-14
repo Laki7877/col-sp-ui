@@ -12,6 +12,7 @@ module.exports = ['$http', '$q', 'storage', 'config', function ($http, $q, stora
                 if (!options.headers) {
                     options.headers = {};
                 }
+
                 if (accessToken && !options.headers.Authorization) {
                     options.headers.Authorization = 'Basic ' + accessToken;
                 }

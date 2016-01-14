@@ -48,5 +48,10 @@ module.exports = ['storage', function (storage) {
             return classes;
         }
     }
+    service.getCheckedArray = function(arr) {
+        return arr.filter(function(elem) {
+            return angular.isDefined(elem.checked) && elem.checked;
+        });
+    };
     return service;
 }];

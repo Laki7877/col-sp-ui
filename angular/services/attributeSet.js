@@ -39,11 +39,24 @@ module.exports = ['common', function(common){
 			url: '/AttributeSets/' + id
 		});
 	};
+	service.visible = function(obj) {
+		return common.makeRequest({
+			method: 'PUT',
+			url: '/AttributeSets/Visibility',
+			data: obj,
+			headers: {
+				'Content-Type': 'application/json;charset=UTF-8'
+			}
+		});
+	};
 	service.deleteBulk = function(arr) {
 		return common.makeRequest({
 			method: 'DELETE',
 			url: '/AttributeSets',
-			data: arr
+			data: arr,
+			headers: {
+				'Content-Type': 'application/json;charset=UTF-8'
+			}
 		});
 	};
 	service.get = function(id) {

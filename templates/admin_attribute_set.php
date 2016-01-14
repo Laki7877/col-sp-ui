@@ -1,24 +1,25 @@
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attribute Set']) ?>
 
 <?php $this->start('page-body') ?>
-	<div ng-controller="AdminAttributeSetCtrl">
+	<div ng-controller="AdminAttributeSetCtrl" ng-init="init(<?=$params?>)">
     <? $this->insert('components/page-title-with-one-button', ['text' => 'Attribute Set','button' => 'Add Attribute Set', 'button_class' => 'btn-width-xxl', 'link' => '/admin/attributesets/add']) ?>
+    <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()">{{alert.message}}</div>
     <div class="row search-section-wrapper">
       <form ng-submit="bulk.fn()" class="search-section section-action">
         <div class="input-group">
           <div class="input-group-btn">
             <div class="dropdown-btn">
               <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                  <span class="dropdown-text margin-right-10 search-product-text">- Choose Action -</span>
+                  <span id="bulk" class="dropdown-text margin-right-10 search-product-text">- Choose Action -</span>
                   <span class="caret margin-left-10"></span>
               </button>
               <ul class="dropdown-menu search-product-dropdown">
-                <li ng-repeat="option in bulkOptions" ng-click="bulk=option"><a>{{option.name}}</a></li>
+                <li ng-repeat="option in bulkOptions"><a>{{option.name}}</a></li>
               </ul>
             </div>
           </div><!-- /btn-group -->
           <div class="input-group-btn">
-            <button type="button" class="btn-white btn">
+            <button class="btn-white btn">
               <span class="button-text-blue">Confirm</span>
             </button>
           </div>
@@ -78,8 +79,8 @@
             </td>
             <td>{{ row.AttributeCount }}</td>
             <td>
-              <i ng-class="{'fa fa-eye-slash color-grey eye-icon' : row.Status != 'VI',
-                            'fa fa-eye color-dark-grey eye-icon' : row.Status == 'VI'}"></i>
+              <a ng-click=""><i ng-class="{'fa fa-eye-slash color-grey eye-icon' : row.Status != 'VI',
+                            'fa fa-eye color-dark-grey eye-icon' : row.Status == 'VI'}"></i></a>
             </td>
                   <td class="modified-column">{{ row.UpdatedDt | date:'shortDate':'+700' }}</td>
             <td class="action-column">

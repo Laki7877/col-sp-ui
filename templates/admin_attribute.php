@@ -10,7 +10,7 @@
           <div class="input-group-btn">
             <div class="dropdown-btn">
               <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                  <span class="dropdown-text margin-right-10 search-product-text">- Choose Action -</span>
+                  <span id="#bulk" class="dropdown-text margin-right-10 search-product-text">- Choose Action -</span>
                   <span class="caret margin-left-10"></span>
               </button>
               <ul class="dropdown-menu search-product-dropdown">
@@ -19,7 +19,7 @@
             </div>
           </div><!-- /btn-group -->
           <div class="input-group-btn">
-            <button type="button" class="btn-white btn">
+            <button type="button" class="btn-white btn" ng-click="bulk.fn()">
               <span class="button-text-blue">Confirm</span>
             </button>
           </div>

@@ -45,7 +45,6 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 			$scope.saving = true;
 			AttributeSet.update($scope.edit, $scope.formDataSerialized).then(function(data) {
 				$scope.saving = false;
-				$window.location.href = '/admin/attributesets';
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
@@ -55,6 +54,7 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 			$scope.saving = true;
 			AttributeSet.create($scope.formDataSerialized).then(function(data) {
 				$scope.saving = false;
+				$('#success').submit();
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);

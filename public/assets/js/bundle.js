@@ -370,7 +370,6 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 			$scope.edit = params.id;
 			Attribute.get($scope.edit).then(function(data) {
 				$scope.formData = Attribute.deserialize(data);
-				console.log($scope.formData);
 			});
 		} else {
 			//create mode!
@@ -385,7 +384,6 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 		if($scope.saving) {
 			return;
 		}
-
 		$scope.alert.close();
 		$scope.formDataSerialized = Attribute.serialize($scope.formData);
 		if ($scope.edit) {
@@ -421,21 +419,30 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 		{ name: "Not Visible", value: 'Not Visible'}
 	];
 	$scope.alert = new Alert();
-	$scope.bulk = { fn: angular.noop };
+	$scope.bulk = { 
+		fn: function() {
+			var bulk = $scope.bulkOptions.find(function(item) {
+				return item.name == $('#bulk').html();
+			});
+			if(bulk) {
+				bulk.fn();
+			}
+		} 
+	};
 	$scope.bulkOptions = [
 		{ 	
 			name: 'Delete', 
 			value: 'delete', 
 			fn: function() {
 				$scope.alert.close();
-				var arr = util.getCheckedArray($scope.tableParams).map(function(elem) {
+				var arr = util.getCheckedArray($scope.attributeSetList).map(function(elem) {
 					return {
 						AttributeSetId: elem.AttributeSetId
 					};
 				});
-				
 				if(arr.length > 0) {
-					AttributeSet.visible(arr).then(function() {
+					AttributeSet.deleteBulk(arr).then(function() {
+						$scope.alert.success('Successfully deleted');
 						$scope.reloadData();
 					});
 				}
@@ -445,7 +452,7 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 			name: 'Show',
 			value: 'show',
 			fn: function() {
-				var arr = util.getCheckedArray($scope.tableParams).map(function(elem) {
+				var arr = util.getCheckedArray($scope.attributeSetList).map(function(elem) {
 					return {
 						AttributeSetId: elem.AttributeSetId,
 						Status: 'VI'
@@ -453,7 +460,7 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 				});
 
 				if(arr.length > 0) {
-					AttributeSet.setVisible(arr).then(function() {
+					AttributeSet.visible(arr).then(function() {
 						$scope.reloadData();
 					});
 				}
@@ -463,7 +470,7 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 			name: 'Hide',
 			value: 'hide',
 			fn: function() {
-				var arr = util.getCheckedArray($scope.tableParams).map(function(elem) {
+				var arr = util.getCheckedArray($scope.attributeSetList).map(function(elem) {
 					return {
 						AttributeSetId: elem.AttributeSetId,
 						Status: 'NV'
@@ -471,7 +478,7 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 				});
 
 				if(arr.length > 0) {
-					AttributeSet.setVisible(arr).then(function() {
+					AttributeSet.visible(arr).then(function() {
 						$scope.reloadData();
 					});
 				}
@@ -619,7 +626,6 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 			$scope.saving = true;
 			AttributeSet.update($scope.edit, $scope.formDataSerialized).then(function(data) {
 				$scope.saving = false;
-				$window.location.href = '/admin/attributesets';
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
@@ -629,6 +635,7 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 			$scope.saving = true;
 			AttributeSet.create($scope.formDataSerialized).then(function(data) {
 				$scope.saving = false;
+				$('#success').submit();
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
@@ -1882,6 +1889,7 @@ module.exports = ['$http', '$q', 'storage', 'config', function ($http, $q, stora
                 if (!options.headers) {
                     options.headers = {};
                 }
+
                 if (accessToken && !options.headers.Authorization) {
                     options.headers.Authorization = 'Basic ' + accessToken;
                 }
@@ -2335,6 +2343,11 @@ module.exports = ['storage', function (storage) {
             return classes;
         }
     }
+    service.getCheckedArray = function(arr) {
+        return arr.filter(function(elem) {
+            return angular.isDefined(elem.checked) && elem.checked;
+        });
+    };
     return service;
 }];
 
@@ -2635,11 +2648,24 @@ module.exports = ['common', function(common){
 			url: '/AttributeSets/' + id
 		});
 	};
+	service.visible = function(obj) {
+		return common.makeRequest({
+			method: 'PUT',
+			url: '/AttributeSets/Visibility',
+			data: obj,
+			headers: {
+				'Content-Type': 'application/json;charset=UTF-8'
+			}
+		});
+	};
 	service.deleteBulk = function(arr) {
 		return common.makeRequest({
 			method: 'DELETE',
 			url: '/AttributeSets',
-			data: arr
+			data: arr,
+			headers: {
+				'Content-Type': 'application/json;charset=UTF-8'
+			}
 		});
 	};
 	service.get = function(id) {

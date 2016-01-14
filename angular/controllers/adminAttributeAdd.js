@@ -16,7 +16,6 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 			$scope.edit = params.id;
 			Attribute.get($scope.edit).then(function(data) {
 				$scope.formData = Attribute.deserialize(data);
-				console.log($scope.formData);
 			});
 		} else {
 			//create mode!
@@ -31,7 +30,6 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 		if($scope.saving) {
 			return;
 		}
-
 		$scope.alert.close();
 		$scope.formDataSerialized = Attribute.serialize($scope.formData);
 		if ($scope.edit) {
