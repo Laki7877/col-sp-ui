@@ -69,6 +69,12 @@ module.exports = ['common', function(common){
 			data: obj
 		});
 	};
+	service.delete = function(id) {
+		return common.makeRequest({
+			method: 'DELETE',
+			url: '/Attributes/' + id
+		});
+	}
 	service.update = function(id, obj) {
 		return common.makeRequest({
 			method: 'PUT',

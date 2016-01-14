@@ -1,4 +1,4 @@
-module.exports = ['$scope', 'Attribute', function($scope, Attribute) {
+module.exports = ['$scope', '$window', 'Attribute', function($scope,$window, Attribute) {
 	//UI binding variables
 	$scope.showOnOffStatus = true;
 	$scope.checkAll = false;
@@ -57,14 +57,24 @@ module.exports = ['$scope', 'Attribute', function($scope, Attribute) {
 	var reloadData = function(){
 		$scope.attributeList = [];
 		$scope.notReady = true;
-		$('#modal-loading').modal('show');
 		Attribute.getAll($scope.tableParams).then(function(x){
 			$scope.attributeTotal = x.total;
 			$scope.attributeList = x.data;
 			$scope.notReady = false;
-			$('#modal-loading').modal('hide');
 		});
 	};
+
+	$scope.$on('edit', function(evt, row) {
+		$window.location.href='/admin/attributes/' + row.AttributeId;
+	});
+
+	$scope.$on('remove', function(evt, row) {
+		Attribute.delete(row.AttributeId);
+	});
+
+	$scope.$on('duplicate', function(evt, row) {
+		Attribute.duplicate(row.AttributeId);
+	});
 
 	//Watch any change in table parameter, trigger reload
 	$scope.$watch('tableParams', function(){

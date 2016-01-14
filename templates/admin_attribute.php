@@ -50,7 +50,7 @@
               <input type="checkbox" aria-label="Checkbox for following text input" ng-model="row.checked"> 
             </td>
             <td class="column-text-ellipsis">
-              <a href="#">{{row.AttributeNameEn}}</a>
+              <a ng-href="/{{row.AttributeId}}">{{row.AttributeNameEn}}</a>
             </td>
             <td>
               {{row.DisplayNameEn}}
