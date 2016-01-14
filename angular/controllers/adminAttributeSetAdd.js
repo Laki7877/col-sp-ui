@@ -47,6 +47,7 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 				$scope.saving = false;
 				$('#success').submit();
 			}, function(err) {
+				$scope.saving = false;
 				$scope.alert.error(err);
 			});
 		}
@@ -56,6 +57,7 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 				$scope.saving = false;
 				$('#success').submit();
 			}, function(err) {
+				$scope.saving = false;
 				$scope.alert.error(err);
 			});
 		}

@@ -12,11 +12,7 @@
       </div>
     </div>
     <div class="table-section">
-      <div ng-if='productList.length == 0 && searchText.length > 0'>
-        <h2>Product Not Found</h2>
-        No Product matched your search term {{ searchText }}
-      </div>
-      <table class="table table-curved" ng-show='productList.length > 0'>
+      <table ng-show="productList.length > 0" class="table table-curved">
         <thead>
           <tr class="table-head" >
             <th class="checkbox-column">
@@ -81,6 +77,19 @@
           </tr>
         </tbody>
       </table>
+      <div ng-show="notReady">
+          <? $this->insert('components/table-loading', ['text' => 'Loading...']) ?>
+      </div>
+      <div ng-show="!notReady && productList.length == 0 && tableParams.searchText.length > 0">
+          <div class="local-category-page margin-bottom-20">
+            <? $this->insert('components/local-category-empty-content', ['text' => 'No Search Result']) ?>      
+          </div>
+      </div>
+      <div ng-show="!notReady && productList.length == 0 && tableParams.searchText.length <= 0">
+          <div class="local-category-page margin-bottom-20">
+            <? $this->insert('components/local-category-empty-content', ['text' => 'You do not have a Product']) ?>      
+          </div>
+      </div>
     </div>
     <div class="page-navigation">
       <span>

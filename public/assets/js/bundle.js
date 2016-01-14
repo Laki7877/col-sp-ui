@@ -412,6 +412,7 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 				$scope.saving = false;
 				$('#success').submit();
 			}, function(err) {
+				$scope.saving = false;
 				$scope.alert.error(err);
 			});
 		}
@@ -421,6 +422,7 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 				$scope.saving = false;
 				$('#success').submit();
 			}, function(err) {
+				$scope.saving = false;
 				$scope.alert.error(err);
 				console.log(err);
 			});
@@ -654,6 +656,7 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 				$scope.saving = false;
 				$('#success').submit();
 			}, function(err) {
+				$scope.saving = false;
 				$scope.alert.error(err);
 			});
 		}
@@ -663,6 +666,7 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 				$scope.saving = false;
 				$('#success').submit();
 			}, function(err) {
+				$scope.saving = false;
 				$scope.alert.error(err);
 			});
 		}
@@ -2527,7 +2531,7 @@ module.exports = ['common', function(common){
 		},
 		{
 			name: 'Dropdown',
-			value: 'LS'
+			value: 'LT'
 		},
 		{
 			name: 'HTML Box',
@@ -2637,7 +2641,7 @@ module.exports = ['common', function(common){
 			HB: {
 				DefaultValue: ''
 			},
-			LS: {
+			LT: {
 				AttributeValues: [{}]
 			},
 			ST: {
@@ -2652,8 +2656,7 @@ module.exports = ['common', function(common){
 		};
 	};
 	service.deserialize = function(data) {
-		var processed = angular.copy(data);
-		console.log(data);
+		var processed = angular.merge(service.generate(), data);
 		processed.VariantStatus = find(service.boolOptions,data.VariantStatus);
 		processed.VariantDataType = find(service.dataTypeOptions,data.VariantDataType);
 		processed.DataType = find(service.dataTypeOptions,data.DataType);
@@ -2663,20 +2666,20 @@ module.exports = ['common', function(common){
 
 		switch(data.DataType) {
 			case 'ST':
-				processed[data.DataType] = {
+				processed['ST'] = {
 					AttributeUnitEn: data.AttributeUnitEn,
 					AttributeUnitTh: data.AttributeUnitTh,
 					DataValidation: data.DataValidation,
 					DefaultValue: data.DefaultValue
 				};
 			break;
-			case 'LS':
-				processed[data.DataType] = {
+			case 'LT':
+				processed['LT'] = {
 					AttributeValues: data.AttributeValues
 				};
 			break;
 			case 'HB':
-				processed[data.DataType] = {
+				processed['HB'] = {
 					DefaultValue: data.DefaultValue
 				}
 			break;
@@ -2699,8 +2702,8 @@ module.exports = ['common', function(common){
 				processed.DataValidation = data.ST.DataValidation.value;
 				processed.DefaultValue = data.ST.DefaultValue;
 			break;
-			case 'LS':
-				processed.AttributeValues = data.LS.AttributeValues;
+			case 'LT':
+				processed.AttributeValues = data.LT.AttributeValues;
 			break;
 			case 'HB':
 				processed.DefaultValue = data.HB.DefaultValue;
@@ -2711,6 +2714,8 @@ module.exports = ['common', function(common){
 			delete processed[item.value];
 		});
 
+		console.log(processed);
+		
 		return processed
 	};
 	return service;

@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="table-section">
-      <table class="table table-curved">
+      <table ng-show="attributeSetList.length > 0" class="table table-curved">
         <thead>
           <tr class="table-head">
             <th class="checkbox-column">
@@ -69,7 +69,6 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-if="notReady"><td colspan="6"><center>Loading..</center></td></tr>
           <tr ng-repeat="row in attributeSetList">
             <td class="checkbox-column">
               <input type="checkbox" aria-label="Checkbox for following text input" ng-model="row.checked"> 
@@ -90,6 +89,19 @@
           </tr>
         </tbody>
       </table>
+      <div ng-show="notReady">
+          <? $this->insert('components/table-loading', ['text' => 'Loading...']) ?>
+      </div>
+      <div ng-show="!notReady && attributeSetList.length == 0 && tableParams.searchText.length > 0">
+          <div class="local-category-page margin-bottom-20">
+            <? $this->insert('components/local-category-empty-content', ['text' => 'No Search Result']) ?>      
+          </div>
+      </div>
+      <div ng-show="!notReady && attributeSetList.length == 0 && tableParams.searchText.length <= 0">
+          <div class="local-category-page margin-bottom-20">
+            <? $this->insert('components/local-category-empty-content', ['text' => 'You do not have an Attribute Set']) ?>      
+          </div>
+      </div>
     </div>
     <div class="page-navigation">
       <span>

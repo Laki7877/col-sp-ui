@@ -133,8 +133,8 @@
                       />
                   </div>
                 </div>
-                <div ng-switch-when="LS">
-                  <div ng-repeat="choice in formData.LS.AttributeValues track by $index" class="form-group">
+                <div ng-switch-when="LT">
+                  <div ng-repeat="choice in formData.LT.AttributeValues track by $index" class="form-group">
                     <div class="width-label"><label class="control-label required" ng-if="$index == 0">
                       Dropdown Choice</label>
                     </div>
@@ -146,14 +146,14 @@
                         <div class="input-column input-xxl">
                           <input type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)"/>
                         </div>
-                        <i ng-if="$index > 0" class="clickable fa fa-trash fa-2x margin-left-10 color-grey margin-top-5" ng-click="formData.LS.AttributeValues.splice($index,1)"></i>
+                        <i ng-if="$index > 0" class="clickable fa fa-trash fa-2x margin-left-10 color-grey margin-top-5" ng-click="formData.LT.AttributeValues.splice($index,1)"></i>
                       </div>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="width-label"></div>
                     <div class="width-field-normal  margin-bottom-20">
-                      <a class="like-text form-text" ng-click="formData.LS.AttributeValues.push({})">
+                      <a class="like-text form-text" ng-click="formData.LT.AttributeValues.push({})">
                         <i class="fa fa-plus-circle color-theme"></i>
                         Add more option
                       </a>
