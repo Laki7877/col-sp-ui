@@ -25,7 +25,6 @@ module.exports = ['$templateCache', function($templateCache) {
 				}
 			}, scope.options);
 			scope.model = scope.model || [];
-
 			//Required attr
 			if(angular.isUndefined(scope.selectable)) {
 				throw 'Please set required field "ncSelectOptions"';

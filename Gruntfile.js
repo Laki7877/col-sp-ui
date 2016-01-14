@@ -85,7 +85,7 @@ module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
 
   // Default task.
-  grunt.registerTask('default', ['browserify']);
+  grunt.registerTask('default', ['ngtemplates','browserify']);
   grunt.registerTask('template', ['ngtemplates']);
   grunt.registerTask('watchall', ['concurrent:dev']);
   grunt.registerTask('compass', ['exec:compass']);

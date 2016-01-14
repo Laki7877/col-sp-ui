@@ -5,10 +5,10 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 	$scope.formData = {};
 	$scope.tagOptions = [];
 	$scope.alert = new Alert();
-	$scope.edit = false;
-	$scope.editId = 0;
 	$scope.attributeOptions = [];
 	$scope.visibleOptions = AttributeSet.visibleOptions;
+	$scope.formDataSerialized = {};
+	$scope.edit = 0;
 
 	$scope.loadAttribute = function() {
 		Attribute.getAll().then(function(data) {
@@ -24,29 +24,30 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 			});
 		} else {
 			//create mode!
-			$scope.edit = false;
+			$scope.edit = 0;
 			$scope.formData = AttributeSet.generate();
 		}
 		$scope.loadAttribute();
 	};
+	$scope.cancel= function() {
+		$window.location.href = '/admin/attributesets';
+	};
 	$scope.save = function() {
 		$scope.alert.close();
-		//TODO: validate
 		$scope.formDataSerialized = AttributeSet.serialize($scope.formData);
 		if ($scope.edit) {
 			AttributeSet.update($scope.edit, $scope.formDataSerialized).then(function(data) {
+				$window.location.href = '/admin/attributesets';
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
-				console.log(err);
 			});
 		}
 		else {
-			AttributeSet.create($scope.formData, $scope.formDataSerialized).then(function(data) {
+			AttributeSet.create($scope.formDataSerialized).then(function(data) {
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
-				console.log(err);
 			});
 		}
 	};

@@ -1,3 +1,4 @@
+var angular = require('angular');
 module.exports = ['$scope', '$window', 'Attribute', function($scope,$window, Attribute) {
 	//UI binding variables
 	$scope.showOnOffStatus = true;
@@ -9,6 +10,25 @@ module.exports = ['$scope', '$window', 'Attribute', function($scope,$window, Att
 		{ name: "Has Variation", value: 'Has Variation'},
 		{ name: "No Variation", value: 'No Variation'}
 	];
+	$scope.bulkOptions = [
+		{ name: 'Delete', value: 'delete' },
+		{ name: 'Hide', value: 'hide' },
+		{ name: 'Show', value: 'show' }
+	];
+	$scope.bulk = {
+		delete: function(array) {
+			
+		},
+		hide: function(array) {
+
+		},
+		show: function(array) {
+
+		}
+	};
+	$scope.actions = {
+
+	};
 	$scope.dataType = {
 		'ST' : 'Free Text',
 		'LT' : 'Dropdown',
@@ -18,7 +38,7 @@ module.exports = ['$scope', '$window', 'Attribute', function($scope,$window, Att
 	//Attribute List
 	$scope.attributeList = [];
  	$scope.attributeTotal = 0;
-	
+
 	//Default parameters
 	$scope.tableParams = {
 		filter: $scope.filterOptions[0].value,
@@ -74,6 +94,9 @@ module.exports = ['$scope', '$window', 'Attribute', function($scope,$window, Att
 
 	$scope.$on('duplicate', function(evt, row) {
 		Attribute.duplicate(row.AttributeId);
+	});
+	$scope.$on('toggle', function(evt, row) {
+
 	});
 
 	//Watch any change in table parameter, trigger reload

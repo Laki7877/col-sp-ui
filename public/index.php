@@ -14,6 +14,7 @@ class Redirect {
 }
 
 //index
+Route::add('', 'Redirect::index');
 Route::add('/', 'Redirect::index');
 Route::add('/admin', 'Redirect::admin');
 

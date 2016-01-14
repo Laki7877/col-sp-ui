@@ -229,6 +229,7 @@ module.exports = {
 };
 
 },{}],4:[function(require,module,exports){
+var angular = require('angular');
 module.exports = ['$scope', '$window', 'Attribute', function($scope,$window, Attribute) {
 	//UI binding variables
 	$scope.showOnOffStatus = true;
@@ -240,6 +241,25 @@ module.exports = ['$scope', '$window', 'Attribute', function($scope,$window, Att
 		{ name: "Has Variation", value: 'Has Variation'},
 		{ name: "No Variation", value: 'No Variation'}
 	];
+	$scope.bulkOptions = [
+		{ name: 'Delete', value: 'delete' },
+		{ name: 'Hide', value: 'hide' },
+		{ name: 'Show', value: 'show' }
+	];
+	$scope.bulk = {
+		delete: function(array) {
+			
+		},
+		hide: function(array) {
+
+		},
+		show: function(array) {
+
+		}
+	};
+	$scope.actions = {
+
+	};
 	$scope.dataType = {
 		'ST' : 'Free Text',
 		'LT' : 'Dropdown',
@@ -249,7 +269,7 @@ module.exports = ['$scope', '$window', 'Attribute', function($scope,$window, Att
 	//Attribute List
 	$scope.attributeList = [];
  	$scope.attributeTotal = 0;
-	
+
 	//Default parameters
 	$scope.tableParams = {
 		filter: $scope.filterOptions[0].value,
@@ -306,6 +326,9 @@ module.exports = ['$scope', '$window', 'Attribute', function($scope,$window, Att
 	$scope.$on('duplicate', function(evt, row) {
 		Attribute.duplicate(row.AttributeId);
 	});
+	$scope.$on('toggle', function(evt, row) {
+
+	});
 
 	//Watch any change in table parameter, trigger reload
 	$scope.$watch('tableParams', function(){
@@ -320,7 +343,7 @@ module.exports = ['$scope', '$window', 'Attribute', function($scope,$window, Att
 		});
 	});
 }];
-},{}],5:[function(require,module,exports){
+},{"angular":54}],5:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $window, Alert, Attribute) {
@@ -330,8 +353,8 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 	$scope.dataTypeOptions = Attribute.dataTypeOptions;
 	$scope.boolOptions = Attribute.boolOptions;
 	$scope.validationOptions = Attribute.validationOptions;
+	$scope.formDataSerialized = {};
 	$scope.edit = 0;
-	$scope.formDataSerialized = '';
 
 	$scope.init = function(params) {
 		if(angular.isDefined(params)) {
@@ -347,9 +370,11 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 			$scope.formData = Attribute.generate();
 		}
 	};
+	$scope.cancel= function() {
+		$window.location.href = '/admin/attributes';
+	};
 	$scope.save = function() {
 		$scope.alert.close();
-		//TODO: validate
 		$scope.formDataSerialized = Attribute.serialize($scope.formData);
 		if ($scope.edit) {
 			Attribute.update($scope.edit, $scope.formDataSerialized).then(function(data) {
@@ -360,7 +385,7 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 			});
 		}
 		else {
-			Attribute.create($scope.formData, $scope.formDataSerialized).then(function(data) {
+			Attribute.create($scope.formDataSerialized).then(function(data) {
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
@@ -450,10 +475,10 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 	$scope.formData = {};
 	$scope.tagOptions = [];
 	$scope.alert = new Alert();
-	$scope.edit = false;
-	$scope.editId = 0;
 	$scope.attributeOptions = [];
 	$scope.visibleOptions = AttributeSet.visibleOptions;
+	$scope.formDataSerialized = {};
+	$scope.edit = 0;
 
 	$scope.loadAttribute = function() {
 		Attribute.getAll().then(function(data) {
@@ -469,29 +494,30 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 			});
 		} else {
 			//create mode!
-			$scope.edit = false;
+			$scope.edit = 0;
 			$scope.formData = AttributeSet.generate();
 		}
 		$scope.loadAttribute();
 	};
+	$scope.cancel= function() {
+		$window.location.href = '/admin/attributesets';
+	};
 	$scope.save = function() {
 		$scope.alert.close();
-		//TODO: validate
 		$scope.formDataSerialized = AttributeSet.serialize($scope.formData);
 		if ($scope.edit) {
 			AttributeSet.update($scope.edit, $scope.formDataSerialized).then(function(data) {
+				$window.location.href = '/admin/attributesets';
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
-				console.log(err);
 			});
 		}
 		else {
-			AttributeSet.create($scope.formData, $scope.formDataSerialized).then(function(data) {
+			AttributeSet.create($scope.formDataSerialized).then(function(data) {
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
-				console.log(err);
 			});
 		}
 	};
@@ -1452,7 +1478,6 @@ module.exports = ['$templateCache', function($templateCache) {
 				}
 			}, scope.options);
 			scope.model = scope.model || [];
-
 			//Required attr
 			if(angular.isUndefined(scope.selectable)) {
 				throw 'Please set required field "ncSelectOptions"';
@@ -2379,14 +2404,22 @@ module.exports = ['common', function(common){
 module.exports = ['common', function(common){
 	'use strict';
 	var service = {};
+	var find = function(array, value) {
+		return array.find(function(element) {
+			if (element.value === value) {
+				return true;
+			}
+			return false;
+		});
+	};
 	service.visibleOptions = [
 		{
 			name: 'No',
-			value: 'NA'
+			value: 'NV'
 		},
 		{
 			name: 'Yes',
-			value: 'AT'
+			value: 'VI'
 		}
 	];
 	service.getByCategory = function(catId){
@@ -2449,11 +2482,33 @@ module.exports = ['common', function(common){
 		};
 	};
 	service.deserialize = function(data) {
-		var processed = angular.merge(service.generate(), data);
+		var processed = angular.copy(data);
+
+		processed.Tags = [];
+		processed.Status = processed.Status ? find(service.visibleOptions, processed.Status) : service.visibleOptions[0];
+		angular.forEach(data.Tags, function(tag) {
+			processed.Tags.push(tag.TagName);
+		});
+		angular.forEach(processed.Attributes, function(attr) {
+			attr.Required = attr.Required || false;
+			attr.Filterable = attr.Filterable || false;
+		});
 		return processed;
 	};
 	service.serialize = function(data) {
 		var processed = angular.copy(data);
+
+		processed.Tags = [];
+		processed.Status = processed.Status.value;
+		angular.forEach(data.Tags, function(tag) {
+			processed.Tags.push({
+				TagName: tag
+			});
+		});
+		angular.forEach(processed.Attributes, function(attr) {
+			attr.Required = attr.Required || false;
+			attr.Filterable = attr.Filterable || false;
+		});
 		return processed;
 	};
 	return service;
@@ -2677,7 +2732,7 @@ module.exports = ['config', function(config) {
         return null;
     };
     /**
-     * Search Depth Array for catId
+     * Create category string "Foo > Foo2 > Foo3"
      */
     service.createCatStringById = function(catId, tree) {
         if(angular.isArray(tree)) {
@@ -2705,6 +2760,12 @@ module.exports = ['config', function(config) {
         }
     };
 
+    /**
+     * Remove leaf of tree that matched with CatId
+     */
+    service.removeLeafByCatId = function(catId, tree) {
+        
+    };
     return service;
 }];
 
@@ -2928,17 +2989,17 @@ module.exports = ['common', function(common) {
 },{}],42:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Jan 14 2016 12:28:48 GMT+0700 (ICT)
+ * Thu Jan 14 2016 14:33:21 GMT+0700 (ICT)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('attribute/action',
-    "<div><a ng-click=\"$emit('edit', row)\">View / Edit</a></div><div><a ng-click=\"$emit('duplicate', row)\">Duplicate</a></div><div><a ng-click=\"$emit('remove', row)\">Delete</a></div>"
+    "<div><a ng-click=\"edit(row, true)\">View / Edit</a></div><div><a ng-click=\"duplicate(row, true)\">Duplicate</a></div><div><a ng-click=\"delete(row, true)\">Delete</a></div>"
   );
 
 
   $templateCache.put('attribute_set/action',
-    "<div><a href=#>View / Edit</a></div><div><a href=# ng-click=\"$emit('duplicate', row)\">Duplicate</a></div><div><a href=# ng-click=\"$emit('remove', row)\">Delete</a></div>"
+    "<div><a ng-click=\"edit('edit', row)\">View / Edit</a></div><div><a ng-click=\"duplicate('duplicate', row)\">Duplicate</a></div><div><a ng-click=\"remove('remove', row)\">Delete</a></div>"
   );
 
 
@@ -2978,7 +3039,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/input/tradable-select2',
-    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><div class=input-group><input ng-model=search[options.map.text] class=\"form-control input-search-icon search-box\" placeholder=\"Search Attribute Set\" aria-describedby=basic-addon2> <span class=input-group-btn><button class=\"btn btn-white\" type=button>Search</button></span></div></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable | filter:search:strict track by $index\" ng-class=\"{ 'active' : activeLeft == $index }\" ng-click=\"select($index, true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=\"{'active' : activeLeft >= 0}\" ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=\"{'active' : activeRight >= 0}\" ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>Attribute</span> <span class=column-2>Required?</span> <span class=column-3>Filterable?</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == $index }\" ng-click=\"select($index, false)\"><span class=column-1>{{ options.map.text == null ? item : item[options.map.text] }}</span> <span class=column-2><input type=checkbox ng-model=item.required aria-label=\"Checkbox for following text input\"></span> <span class=column-3><input type=checkbox ng-model=item.filter aria-label=\"Checkbox for following text input\"></span></li></ul></div></div></div>"
+    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><div class=input-group><input ng-model=search[options.map.text] class=\"form-control input-search-icon search-box\" placeholder=\"Search Attribute Set\" aria-describedby=basic-addon2> <span class=input-group-btn><button class=\"btn btn-white\" type=button>Search</button></span></div></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable | filter:search:strict track by $index\" ng-class=\"{ 'active' : activeLeft == $index }\" ng-click=\"select($index, true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=\"{'active' : activeLeft >= 0}\" ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=\"{'active' : activeRight >= 0}\" ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>Attribute</span> <span class=column-2>Required?</span> <span class=column-3>Filterable?</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == $index }\" ng-click=\"select($index, false)\"><span class=column-1>{{ options.map.text == null ? item : item[options.map.text] }}</span> <span class=column-2><input type=checkbox ng-model=item.Required aria-label=\"Checkbox for following text input\"></span> <span class=column-3><input type=checkbox ng-model=item.Filterable aria-label=\"Checkbox for following text input\"></span></li></ul></div></div></div>"
   );
 
 

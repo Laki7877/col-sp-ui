@@ -4,7 +4,7 @@
 	<div ng-controller="AdminAttributeSetAddCtrl" ng-init="init(<?=$params?>)">
     <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute/" . $title, 'urls' => ['/admin/attributesets']]) ?>
     <pre>{{ formDataSerialized }}</pre>
-    <form class="ah-form sticky-mainform-action margin-top-30" name="form">
+    <form ng-submit="save()" class="ah-form sticky-mainform-action margin-top-30" name="form">
       <div class="row">
         <div class="col-xs-12">
           <div class="form-section">
@@ -34,7 +34,7 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Attribute Mapping</h2></div>
             <div class="form-section-content">
-                <div nc-tradable-select nc-template="common/input/tradable-select2" nc-model="form.Attributes" nc-select-options="attributeOptions" nc-options="{ 'map' : { 'text': 'AttributeNameEn', 'value' : 'AttributeId' } }"></div> 
+                <div nc-tradable-select nc-template="common/input/tradable-select2" nc-model="formData.Attributes" nc-select-options="attributeOptions" nc-options="{ 'map' : { 'text': 'AttributeNameEn', 'value' : 'AttributeId' } }"></div> 
             </div>
           </div>
 
@@ -70,12 +70,11 @@
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>
                   </ui-select-match>
-                  <ui-select-choices repeat="item in boolOptions">
+                  <ui-select-choices repeat="item in visibleOptions">
                       <span ng-bind="item.name"></span>
                   </ui-select-choices>
                 </ui-select>
               </div>
-              <? $this->insert('components/forms/dropdown-with-label', ["label" => "Attribute Set Visibility", "label_class" => "required", "options" => ["No", "Yes"]]) ?>
             </div>
           </div>
           <div class="col-xs-12">
@@ -86,8 +85,8 @@
       <div class="main-form-action full-width-row">
         <div class="container-fluid">
           <div class="float-right">
-            <a href="#" class="link-btn-plain">Cancel</a>
-            <button class="btn btn-blue btn-width-xl">Save</button>
+            <a class="link-btn-plain" ng-click="cancel()">Cancel</a>
+            <button type="submit" class="btn btn-blue btn-width-xl">Save</button>
           </div>
         </div>
       </div>
