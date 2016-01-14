@@ -229,7 +229,7 @@ module.exports = {
 };
 
 },{}],4:[function(require,module,exports){
-module.exports = ['$scope', 'Attribute', function($scope, Attribute) {
+module.exports = ['$scope', '$window', 'Attribute', function($scope,$window, Attribute) {
 	//UI binding variables
 	$scope.showOnOffStatus = true;
 	$scope.checkAll = false;
@@ -288,14 +288,24 @@ module.exports = ['$scope', 'Attribute', function($scope, Attribute) {
 	var reloadData = function(){
 		$scope.attributeList = [];
 		$scope.notReady = true;
-		$('#modal-loading').modal('show');
 		Attribute.getAll($scope.tableParams).then(function(x){
 			$scope.attributeTotal = x.total;
 			$scope.attributeList = x.data;
 			$scope.notReady = false;
-			$('#modal-loading').modal('hide');
 		});
 	};
+
+	$scope.$on('edit', function(evt, row) {
+		$window.location.href='/admin/attributes/' + row.AttributeId;
+	});
+
+	$scope.$on('remove', function(evt, row) {
+		Attribute.delete(row.AttributeId);
+	});
+
+	$scope.$on('duplicate', function(evt, row) {
+		Attribute.duplicate(row.AttributeId);
+	});
 
 	//Watch any change in table parameter, trigger reload
 	$scope.$watch('tableParams', function(){
@@ -313,7 +323,7 @@ module.exports = ['$scope', 'Attribute', function($scope, Attribute) {
 },{}],5:[function(require,module,exports){
 var angular = require('angular');
 
-module.exports = ['$scope', 'Alert', 'Attribute', function($scope, Alert, Attribute) {
+module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $window, Alert, Attribute) {
 	$scope.form = {};
 	$scope.formData = {};
 	$scope.alert = new Alert();
@@ -341,13 +351,12 @@ module.exports = ['$scope', 'Alert', 'Attribute', function($scope, Alert, Attrib
 		$scope.alert.close();
 		//TODO: validate
 		$scope.formDataSerialized = Attribute.serialize($scope.formData);
-		console.log($scope.formDataSerialized);
 		if ($scope.edit) {
 			Attribute.update($scope.edit, $scope.formDataSerialized).then(function(data) {
+				$window.location.href = '/admin/attributes';
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
-				console.log(err);
 			});
 		}
 		else {
@@ -2226,6 +2235,12 @@ module.exports = ['common', function(common){
 			data: obj
 		});
 	};
+	service.delete = function(id) {
+		return common.makeRequest({
+			method: 'DELETE',
+			url: '/Attributes/' + id
+		});
+	}
 	service.update = function(id, obj) {
 		return common.makeRequest({
 			method: 'PUT',

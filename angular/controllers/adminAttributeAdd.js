@@ -1,6 +1,6 @@
 var angular = require('angular');
 
-module.exports = ['$scope', 'Alert', 'Attribute', function($scope, Alert, Attribute) {
+module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $window, Alert, Attribute) {
 	$scope.form = {};
 	$scope.formData = {};
 	$scope.alert = new Alert();
@@ -28,13 +28,12 @@ module.exports = ['$scope', 'Alert', 'Attribute', function($scope, Alert, Attrib
 		$scope.alert.close();
 		//TODO: validate
 		$scope.formDataSerialized = Attribute.serialize($scope.formData);
-		console.log($scope.formDataSerialized);
 		if ($scope.edit) {
 			Attribute.update($scope.edit, $scope.formDataSerialized).then(function(data) {
+				$window.location.href = '/admin/attributes';
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
-				console.log(err);
 			});
 		}
 		else {
