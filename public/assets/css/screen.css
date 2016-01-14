@@ -14323,7 +14323,7 @@ html, body {
 }
 /* line 122, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-1 {
-  margin-left: 0px;
+  margin-left: 15px;
   display: inline-block;
   width: 160px;
   white-space: nowrap;
