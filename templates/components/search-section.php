@@ -7,10 +7,9 @@
             <span class="caret margin-left-10"></span>
         </button>
         <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li><a href="#">Separated link</a></li>
+            <li><a ng-click="bulk.delete()">Delete Products</a></li>
+            <li><a ng-click="bulk.hide()">Hide Products</a></li>
+            <li><a ng-click="bulk.show()">Show Products</a></li>
         </ul>
       </div><!-- /btn-group -->
       <div class="input-group-btn">
@@ -23,7 +22,7 @@
   <form ng-submit="applySearch()" class="search-section section-search">
     <div class="input-group">
         <input type="text" ng-model="searchText"
-          class="form-control input-search-icon search-box" placeholder="Search for Product SKU, Name, ..." aria-describedby="basic-addon2">
+          class="form-control input-search-icon search-box" ng-model="searchText" placeholder="Search for Product SKU, Name, ..." aria-describedby="basic-addon2">
         <span class="input-group-btn">
           <button class="btn btn-white">Search</button>
         </span>

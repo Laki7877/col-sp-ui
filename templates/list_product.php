@@ -48,20 +48,22 @@
                     <input type="checkbox" aria-label="Checkbox for following text input" ng-model="row.checked">
                   </td>
                   <td class="display-column">
-                    <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
+                    <img ng-if='!row.ImageUrl' class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
+                    <img ng-if='row.ImageUrl' class="logo-img" src="{{ row.ImageUrl }}"/>
                   </td>
-                  <td><a href="/products/{{ row.ProductId }}">{{ row.ProductNameEn }}</a></td>
+                  <td class="column-text-ellipsis"><a href="/products/{{ row.ProductId }}">{{ row.ProductNameEn }}</a></td>
                   <td class="price-column">{{ row.SalePrice | currency: ' ' : 2 }}</td>
                   <td class="info-column">
-                    <i class="fa fa-check color-green icon-size-18px"></i>
+                    <i ng-if="!row.ImageFlag" class="fa fa-minus color-grey icon-size-18px"></i>
+                    <i ng-if="row.ImageFlag" class="fa fa-check color-green icon-size-18px"></i>
                   </td>
                   <td class="image-column">
                     <i class="fa fa-check color-green icon-size-18px"></i>
                   </td>
                   <td class="status-column">
-                    <span class="color-red">
-                      <i class="fa fa-ban"></i>
-                      Not Approved
+                    <span class="{{ asStatus(row.Status).Color }}">
+                      <i class="fa {{ asStatus(row.Status).Class }}"></i>
+                      {{ asStatus(row.Status).Text }}
                     </span>
                   </td>
                   <td class="live-column" ng-if="showOnOffStatus">

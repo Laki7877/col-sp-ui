@@ -499,7 +499,13 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 var angular = require('angular');
 
 module.exports = ['$scope','util', 'config', 'Brand', function($scope, util, config, Brand){
-	
+	$scope.brands =  [];
+	$scope.params = {
+		
+	};
+	Brand.getAll($scope.params).then(function(brands){
+		$scope.brands = brands.data;
+	});
 }];
 },{"angular":54}],9:[function(require,module,exports){
 module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory', 'AttributeSet',  function($scope, $rootScope, common, Category, GlobalCategory, AttributeSet){
@@ -1226,11 +1232,37 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 	$scope.showOnOffStatus = true;
 	$scope.checkAll = false;
 	$scope.filterOptions = [
-		{ name: "All", value: 0},
-		{ name: "Approved", value: 1},
-		{ name: "Not Approved", value: 2},
-		{ name: "Wait for Approval", value: 3},
+		{ name: "All", value: 'All'},
+		{ name: "Approved", value: 'Approved'},
+		{ name: 'Draft', value: 'Draft'},
+		{ name: "Not Approved", value: 'Not Approved'},
+		{ name: "Wait for Approval", value: 'Wait for Approval'},
 	];
+
+	$scope.bulk = {
+		delete: function(){},
+		show: function() {},
+		hide: function(){}
+	};
+
+	var StatusLookup = {
+			'DF' : {
+				Class: 'fa-circle-o',
+				Text: 'Draft',
+				Color: 'color-grey'
+			},
+			'WA' : {
+				Class: 'fa-clock-o',
+				Text: 'Wait for Approval',
+				Color: 'color-yellow'
+			}
+
+	}
+
+	$scope.asStatus = function(ab){
+
+		return StatusLookup[ab];
+	};
 
 	//Product List
 	$scope.productList = [];
@@ -1245,6 +1277,7 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 	};
 
 	$scope.notReady = true;
+
 	$scope.applySearch = function(){
 		$scope.tableParams.searchText = $scope.searchText;
 	};
