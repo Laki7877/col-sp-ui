@@ -20,8 +20,9 @@
             </th>
             <th class="display-column"></th>
             <th>
-              <a ng-click="setOrderBy('ProductNameEn')"><span>Product Name</span></a>
+              <a ng-click="setOrderBy('ProductNameEn')"><span>Product Name</span>
               <span class="caret caret-grey"></span>
+              </a>
             </th>
             <th class="price-column">
               <a ng-click="setOrderBy('SalePrice')"><span>Sale Price</span></a>
@@ -69,7 +70,7 @@
                     </span>
                   </td>
                   <td class="live-column" ng-if="showOnOffStatus">
-                    <i class="fa fa-circle color-green"></i>
+                    <i class="fa fa-circle color-grey"></i>
                   </td>
                   <td class="visible-column">
                     <i class="fa color-grey eye-icon" ng-class="{'fa-eye-slash': row.Visible, 'fa-eye': row.Visible}"></i>
