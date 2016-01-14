@@ -144,13 +144,13 @@
 							                <div class="clickable-list">
 							                  <ul class="content-column">
 							                    <li>
-							                      <span class="column-1">Attribute Set W</span>
+							                    	Attribute Set W
 							                    </li>
 							                    <li class="active">
-							                      <span class="column-1">Attribute Set X</span>
+							                      	Attribute Set X
 							                    </li>
 							                    <li>
-							                      <span class="column-1">Attribute Set Z</span>
+							                      	Attribute Set Z
 							                    </li>
 							                    
 							                  </ul>
