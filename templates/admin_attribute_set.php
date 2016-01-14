@@ -79,7 +79,7 @@
             </td>
             <td>{{ row.AttributeCount }}</td>
             <td>
-              <a ng-click=""><i ng-class="{'fa fa-eye-slash color-grey eye-icon' : row.Status != 'VI',
+              <a ng-click="actions.toggle(row)"><i ng-class="{'fa fa-eye-slash color-grey eye-icon' : row.Status != 'VI',
                             'fa fa-eye color-dark-grey eye-icon' : row.Status == 'VI'}"></i></a>
             </td>
                   <td class="modified-column">{{ row.UpdatedDt | date:'shortDate':'+700' }}</td>

@@ -107,7 +107,12 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 			});
 		},
 		toggle: function(row) {
-			AttributeSet.visible()
+			row.Status = (row.Status == 'VI')? 'NV' : 'VI';
+			AttributeSet.visible(row).then(function() {
+
+			}, function(err) {
+				$scope.alert.error(err);
+			});
 		}
 	};
 	//AttributeSet List
