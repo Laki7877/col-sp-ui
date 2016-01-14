@@ -1,14 +1,6 @@
 module.exports = ['common', function(common){
 	'use strict';
 	var service = {};
-	var find = function(array, value) {
-		return array.find(function(element) {
-			if (element.value === value) {
-				return true;
-			}
-			return false;
-		});
-	};
 	service.visibleOptions = [
 		{
 			name: 'No',
@@ -19,6 +11,14 @@ module.exports = ['common', function(common){
 			value: 'VI'
 		}
 	];
+	var find = function(array, value) {
+		return array.find(function(element) {
+			if (element.value === value) {
+				return true;
+			}
+			return false;
+		});
+	};
 	service.getByCategory = function(catId){
 		var req = {
 			method: 'GET',
@@ -26,6 +26,25 @@ module.exports = ['common', function(common){
 		};
 
 		return common.makeRequest(req);	
+	};
+	service.delete = function(id) {
+		return common.makeRequest({
+			method: 'DELETE',
+			url: '/AttributeSets/' + id
+		});
+	};
+	service.duplicate = function(id) {
+		return common.makeRequest({
+			method: 'POST',
+			url: '/AttributeSets/' + id
+		});
+	};
+	service.deleteBulk = function(arr) {
+		return common.makeRequest({
+			method: 'DELETE',
+			url: '/AttributeSets',
+			data: arr
+		});
 	};
 	service.get = function(id) {
 		return common.makeRequest({
@@ -74,7 +93,7 @@ module.exports = ['common', function(common){
 			AttributeSetNameTh: '',
 			AttributeSetDescriptionEn: '',
 			AttributeSetDescriptionTh: '',
-			Status: 'AT',
+			Status: service.visibleOptions[0],
 			Tags: []
 		};
 	};

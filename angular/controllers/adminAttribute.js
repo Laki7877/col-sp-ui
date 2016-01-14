@@ -11,12 +11,13 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 		{ name: "No Variation", value: 'No Variation'}
 	];
 	$scope.alert = new Alert();
-	$scope.bulk = null;
-	$scope.bulkActions = [
-		{ 	name: 'Delete', 
+	$scope.bulk = { fn: angular.noop };
+	$scope.bulkOptions = [
+		{ 	
+			name: 'Delete', 
 			value: 'delete', 
-			fn: function(row) {
-				var arr = util.getCheckedArray(row);
+			fn: function() {
+				var arr = util.getCheckedArray($scope.tableParams);
 				angular.forEach(arr, function(item) {
 					Attribute.delete(item.AttributeId);
 				});
@@ -75,11 +76,17 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 		pageSize: 10
 	};
 	$scope.notReady = true;
-	
+	$scope.init = function(params) {
+		if(params) {
+			if(angular.isDefined(params.success)) {
+				$scope.alert.success();
+			}
+		}
+	};
 	$scope.applySearch = function(){
 		$scope.tableParams.searchText = $scope.searchText;
 	};
-
+	
 	$scope.totalPage = function(x){
 		return Math.ceil($scope.attributeTotal / $scope.tableParams.pageSize);
 	};

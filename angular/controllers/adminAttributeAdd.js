@@ -28,18 +28,25 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 		$window.location.href = '/admin/attributes';
 	};
 	$scope.save = function() {
+		if($scope.saving) {
+			return;
+		}
+
 		$scope.alert.close();
 		$scope.formDataSerialized = Attribute.serialize($scope.formData);
 		if ($scope.edit) {
+			$scope.saving = true;
 			Attribute.update($scope.edit, $scope.formDataSerialized).then(function(data) {
-				$window.location.href = '/admin/attributes';
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
 			});
 		}
 		else {
+			$scope.saving = true;
 			Attribute.create($scope.formDataSerialized).then(function(data) {
+				$scope.saving = false;
+				$('#success').submit();
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);

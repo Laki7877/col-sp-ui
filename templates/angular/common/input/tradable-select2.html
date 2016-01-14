@@ -33,9 +33,9 @@
     <div class="clickable-list">
       <ul class="content-column">
         <li ng-repeat="item in model track by $index" ng-class="{ 'active' : activeRight == $index }" ng-click="select($index, false)">
-          <span class="column-1">{{ options.map.text == null ? item : item[options.map.text] }}</span>
-          <span class="column-2"><input type="checkbox" ng-model="item.Required" aria-label="Checkbox for following text input"></span>
-          <span class="column-3"><input type="checkbox" ng-model="item.Filterable" aria-label="Checkbox for following text input"></span>
+          <div class="column-1">{{ options.map.text == null ? item : item[options.map.text] }}</div>
+          <div class="column-2"><input type="checkbox" ng-model="item.Required" aria-label="Checkbox for following text input"></div>
+          <div class="column-3"><input type="checkbox" ng-model="item.Filterable" aria-label="Checkbox for following text input"></div>
         </li>
       </ul>
     </div>

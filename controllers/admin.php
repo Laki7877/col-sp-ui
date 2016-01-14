@@ -9,7 +9,8 @@ class AdminController extends Controller
 
 	public static function listAttribute($params)
 	{
-		return View::render('admin_attribute');
+		$params['success'] = $_POST['success'];
+		return View::render('admin_attribute', ['params' => json_encode_n($params)]);
 	}
 
 	public static function listAttributeSet($params)

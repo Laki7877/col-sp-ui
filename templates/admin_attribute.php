@@ -1,10 +1,11 @@
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attribute']) ?>
 
 <?php $this->start('page-body') ?>
-	<div ng-controller="AdminAttributeCtrl">
+	<div ng-controller="AdminAttributeCtrl" ng-init="init(<?=$params?>)">
     <? $this->insert('components/page-title-with-one-button', ['text' => 'Attribute','button' => 'Add Attribute', 'button_class' => 'btn-width-xl', 'link' => '/admin/attributes/add']) ?>
+    <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()">{{alert.message}}</div>
     <div class="row search-section-wrapper">
-      <div class="search-section section-action">
+      <form ng-submit="bulk.fn()" class="search-section section-action">
         <div class="input-group">
           <div class="input-group-btn">
             <div class="dropdown-btn">
@@ -13,7 +14,7 @@
                   <span class="caret margin-left-10"></span>
               </button>
               <ul class="dropdown-menu search-product-dropdown">
-                <li ng-repeat="option in bulkOptions" ng-click="bulk"><a>{{option.name}}</a></li>
+                <li ng-repeat="option in bulkOptions" ng-click="bulk=option"><a>{{option.name}}</a></li>
               </ul>
             </div>
           </div><!-- /btn-group -->
@@ -23,7 +24,7 @@
             </button>
           </div>
         </div>
-      </div>
+      </form>
       <form ng-submit="applySearch()" class="search-section section-search">
         <div class="input-group">
           <input type="text" class="form-control input-search-icon search-box" ng-model="searchText" placeholder="Search" aria-describedby="basic-addon2">
@@ -46,25 +47,25 @@
             <th class="checkbox-column">
                 <input type="checkbox" aria-label="Checkbox for following text input" ng-model="checkAll"> 
             </th>
-            <th>
-              <a class="header-link" href="#" ng-click="setOrderBy('AttributeNameEn')"><span>Attribute Name</span></a>
+            <th ng-click="setOrderBy('AttributeNameEn')">
+              <a class="header-link" href="#"><span>Attribute Name</span></a>
               <i class="fa" ng-class="sort('AttributeNameEn')">
             </th>
-            <th>
-              <a class="header-link" href="#" ng-click="setOrderBy('DisplayNameEn')"><span>Display Name</span></a>
+            <th ng-click="setOrderBy('DisplayNameEn')">
+              <a class="header-link" href="#"><span>Display Name</span></a>
               <i class="fa" ng-class="sort('DisplayNameEn')">
             </th>
-            <th>
-              <a class="header-link" href="#" ng-click="setOrderBy('DataType')"><span>Field Type</span></a>
+            <th ng-click="setOrderBy('DataType')">
+              <a class="header-link" href="#"><span>Field Type</span></a>
               <i class="fa" ng-class="sort('DataType')">
             </th>
-            <th>
-              <a class="header-link" href="#" ng-click="setOrderBy('Variation')"><span>Variation</span></a>
+            <th ng-click="setOrderBy('Variation')">
+              <a class="header-link" href="#"><span>Variation</span></a>
                <i class="fa" ng-class="sort('Variation')">
             </th>
             <th><a class="header-link" href="#"><span>Mapped Set</span></a></th>
-            <th class="modified-column">
-              <a class="header-link" href="#" ng-click="setOrderBy('UpdateDt')"><span>Modified</span></a>
+            <th class="modified-column" ng-click="setOrderBy('UpdateDt')">
+              <a class="header-link" href="#"><span>Modified</span></a>
               <i class="fa" ng-class="sort('UpdateDt')">
             </th>
             <th>

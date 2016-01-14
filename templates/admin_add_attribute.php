@@ -254,5 +254,8 @@
       </div>
     </div>
 	</form>
+  <form id="success" action="/admin/attributes" method="POST">
+    <input type="hidden" name="success" value="true">
+  </form>
 
 <?php $this->stop() ?>
