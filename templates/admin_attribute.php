@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="table-section">
-      <table class="table table-curved">
+      <table ng-show="attributeList.length > 0" class="table table-curved">
         <thead>
           <tr class="table-head">
             <th class="checkbox-column">
@@ -104,6 +104,19 @@
           </tr>
         </tbody>
       </table>
+      <div ng-show="notReady">
+          <? $this->insert('components/table-loading', ['text' => 'Loading...']) ?>
+      </div>
+      <div ng-show="!notReady && attributeList.length == 0 && tableParams.searchText.length > 0">
+          <div class="local-category-page margin-bottom-20">
+            <? $this->insert('components/local-category-empty-content', ['text' => 'No Search Result']) ?>      
+          </div>
+      </div>
+      <div ng-show="!notReady && attributeList.length == 0 && tableParams.searchText.length <= 0">
+          <div class="local-category-page margin-bottom-20">
+            <? $this->insert('components/local-category-empty-content', ['text' => 'You do not have an Attribute']) ?>      
+          </div>
+      </div>
     </div>
     <div class="page-navigation">
       <span>

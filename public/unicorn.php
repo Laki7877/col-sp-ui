@@ -103,7 +103,7 @@ class Route
 		// no match
 		// TODO: change this
 		self::$_currentRoute = null;
-		die('not found 404');
+		return View::render('404');
 	}
 }
 
