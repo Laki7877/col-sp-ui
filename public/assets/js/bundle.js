@@ -612,7 +612,10 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	};
 
 	$scope.refreshBrands = function(q){
-		Brand.getAll(q).then(function(dataSet){
+		Brand.getAll({
+			pageSize: 5,
+			searchText: q
+		}).then(function(dataSet){
 			$scope.availableBrands = dataSet.data;
 		});			
 	};
@@ -706,13 +709,13 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 					$scope._loading.message = "Setting up watch..";
 
-					$scope.$watch('attributeOptions[0].Attribute', function(){
-						tabPage.variation.initSelect2(0);
-					});
+					// $scope.$watch('attributeOptions[0].Attribute', function(){
+					// 	tabPage.variation.initSelect2(0);
+					// });
 
-					$scope.$watch('attributeOptions[1].Attribute', function(){
-						tabPage.variation.initSelect2(1);
-					});
+					// $scope.$watch('attributeOptions[1].Attribute', function(){
+					// 	tabPage.variation.initSelect2(1);
+					// });
 
 					$scope.$watch('attributeOptions', function(){
 
@@ -724,36 +727,39 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 						});
 
 						//Multiply out unmultiplied options
-						for(var aKey in $scope.attributeOptions[0].options){
-							var A = $scope.attributeOptions[0].options[aKey];
-							for(var bKey in $scope.attributeOptions[1].options){
-								var B = $scope.attributeOptions[1].options[bKey];
+						if($scope.attributeOptions && $scope.attributeOptions.length > 0){
+							for(var aKey in $scope.attributeOptions[0].options){
+								var A = $scope.attributeOptions[0].options[aKey];
+								for(var bKey in $scope.attributeOptions[1].options){
+									var B = $scope.attributeOptions[1].options[bKey];
 
-								if(A['AttributeValue']){
-									A = A.AttributeValue.AttributeValueEn;
+									if(A['AttributeValue']){
+										A = A.AttributeValue.AttributeValueEn;
+									}
+									if(B['AttributeValue']){
+										B = B.AttributeValue.AttributeValueEn;
+									}
+
+									var kpair = new VariantPair({
+										AttributeId: $scope.attributeOptions[0].Attribute.AttributeId,
+										ValueEn: A
+									},{
+										AttributeId: $scope.attributeOptions[1].Attribute.AttributeId,
+										ValueEn: B
+									});
+
+									//Only push if don't exist
+									if(!(kpair.hash in variantHashes)){
+										$scope.formData.Variants.push(kpair);
+									}
+
+									//Mark hash as used
+									//This will not be deleted
+									variantHashes[kpair.hash] = -1;
 								}
-								if(B['AttributeValue']){
-									B = B.AttributeValue.AttributeValueEn;
-								}
-
-								var kpair = new VariantPair({
-									AttributeId: $scope.attributeOptions[0].Attribute.AttributeId,
-									ValueEn: A
-								},{
-									AttributeId: $scope.attributeOptions[1].Attribute.AttributeId,
-									ValueEn: B
-								});
-
-								//Only push if don't exist
-								if(!(kpair.hash in variantHashes)){
-									$scope.formData.Variants.push(kpair);
-								}
-
-								//Mark hash as used
-								//This will not be deleted
-								variantHashes[kpair.hash] = -1;
 							}
 						}
+						
 
 						//Remove deleted variants
 						for(var rhash in variantHashes){
@@ -2049,10 +2055,26 @@ module.exports = ['common', function(common){
 },{}],32:[function(require,module,exports){
 module.exports = ['$q', 'common', function($q, common){
 	var service = {};
-	service.getAll = function(q){
+	//TODO: change searchText -> q
+	//TODO: not clean
+	service.getAll = function(params){
+
+		var _params = {
+			_limit: 5,
+			_order: params.orderBy || 'BrandId',
+			_limit: params.pageSize || 10,
+			_offset: params.page * params.pageSize || 0,
+			_direction: params.direction || 'asc'
+		};
+
+		if(params.searchText){
+			_params.searchText = params.searchText;
+		}
+
 		return common.makeRequest({
 			method: 'GET',
-			url: '/Brands/?_limit=5' + (q ? '&searchText=' + q : '')
+			url: '/Brands/',
+			params: _params
 		});
 
 	}
@@ -2066,7 +2088,6 @@ module.exports = ['$q', 'common', function($q, common){
 	}
 	return service;
 }];
-
 },{}],33:[function(require,module,exports){
 /**
  * Util class for category
@@ -2461,12 +2482,14 @@ module.exports = ['$q', '$http', 'common', function($q, $http, common){
 	service.publish = function(tobj, Status){
 		tobj.Status = Status;
 		var mode = 'POST';
+		var path  = '/ProductStages';
 		if(tobj.ProductId){
 			mode = 'PUT';
+			path = path + '/' + tobj.ProductId;
 		}
 		return common.makeRequest({
 			method: mode,
-		        url: '/ProductStages',
+		        url: path,
 		        data: tobj
 		});
 	};
