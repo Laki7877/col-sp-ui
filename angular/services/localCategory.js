@@ -28,5 +28,12 @@ module.exports = ['common', function(common) {
 		});
 	}
 
+	service.getOne = function(catId){
+		return common.makeRequest({
+			method: 'GET',
+			url: '/LocalCategories/' + catId
+		});
+	}
+
 	return service;
 }];

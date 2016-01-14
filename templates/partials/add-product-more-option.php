@@ -39,7 +39,7 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="form-section">
-				<div class="form-section-header"><h2>e Details</h2></div>
+				<div class="form-section-header"><h2>More Details</h2></div>
 				<div class="form-section-content">
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Effective Date", "ng_model" => "formData.EffectiveDate", "input_class" => "input-icon-calendar", "tooltip" => "This is a tooltip text"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Effective Time", "ng_model" => "formData.EffectiveTime", "hint" => "Example: 19:15:00"]) ?>

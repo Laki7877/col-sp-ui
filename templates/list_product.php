@@ -12,7 +12,11 @@
       </div>
     </div>
     <div class="table-section">
-      <table class="table table-curved">
+      <div ng-if='productList.length == 0 && searchText.length > 0'>
+        <h2>Product Not Found</h2>
+        No Product matched your search term {{ searchText }}
+      </div>
+      <table class="table table-curved" ng-show='productList.length > 0'>
         <thead>
           <tr class="table-head" >
             <th class="checkbox-column">
@@ -54,11 +58,12 @@
                   <td class="column-text-ellipsis"><a href="/products/{{ row.ProductId }}">{{ row.ProductNameEn }}</a></td>
                   <td class="price-column">{{ row.SalePrice | currency: ' ' : 2 }}</td>
                   <td class="info-column">
-                    <i ng-if="!row.ImageFlag" class="fa fa-minus color-grey icon-size-18px"></i>
-                    <i ng-if="row.ImageFlag" class="fa fa-check color-green icon-size-18px"></i>
+                    <i ng-if="!row.InfoFlag" class="fa fa-minus color-grey icon-size-18px"></i>
+                    <i ng-if="row.InfoFlag" class="fa fa-check color-green icon-size-18px"></i>
                   </td>
                   <td class="image-column">
-                    <i class="fa fa-check color-green icon-size-18px"></i>
+                    <i ng-if="!row.ImageFlag" class="fa fa-minus color-grey icon-size-18px"></i>
+                    <i ng-if="row.ImageFlag" class="fa fa-check color-green icon-size-18px"></i>
                   </td>
                   <td class="status-column">
                     <span class="{{ asStatus(row.Status).Color }}">

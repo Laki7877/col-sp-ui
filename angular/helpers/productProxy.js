@@ -1,6 +1,6 @@
 var angular = require('angular');
 
-module.exports = ['util', function (util) {
+module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
     'use strict';
     var tra = {};
 
@@ -15,6 +15,7 @@ module.exports = ['util', function (util) {
 
     		//Cleaned data
     		var clean = {};
+    		clean.Variants = [];
 
     		var objectMapper = {
     			VideoLinks: function(vlink){
@@ -206,9 +207,20 @@ module.exports = ['util', function (util) {
 			MasterAttribute[ma.AttributeId]  = ma.ValueEn;
 		});
 		invFd.MasterAttribute = MasterAttribute;
-		invFd.LocalCategories.unshift({
-			CategoryId: invFd.LocalCategory
-		});
+
+
+		invFd.LocalCategories = invFd.LocalCategories || [null, null];
+
+		if(invFd.LocalCategories[0] == null){
+			invFd.LocalCategories.unshift(null);
+		}else{
+			LocalCategory.getOne(invFd.LocalCategory).then(function(locat){
+				invFd.LocalCategories.unshift(locat);
+			})
+		}
+
+		
+		
 
 		if(invFd.MasterVariant.VideoLinks){
 			invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);

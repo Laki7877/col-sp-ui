@@ -12,6 +12,10 @@
 				ng-model="<?php echo $ng_model; ?>"
 			<? endif; ?>
 
+			<? if(isset($value)): ?>
+				ng-model="<?php echo $value; ?>"
+			<? endif; ?>
+
 			placeholder="<?=$placeholder?>" />
 			<span class="input-unit"><?=$unit?></span>
 		</div>
