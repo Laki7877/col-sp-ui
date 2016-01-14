@@ -59,12 +59,9 @@ module.exports = ['$templateCache', function($templateCache) {
 				}
 			};
 			var findClosestIndexLeft = function() {
-				if ($scope.selectable.length - $scope.model.length === 0) {
+				if ($scope.selectable.length - $scope.model.length <= 1) {
 					return -1;
-				} 
-				else if ($scope.selectable.length - $scope.model.length === 1) {
-					return 0;
-				} 
+				}
 				else {
 					var item = $scope.selectable[$scope.activeLeft];
 					var outersect = $scope.selectable.filter(function(obj) {
@@ -88,7 +85,7 @@ module.exports = ['$templateCache', function($templateCache) {
 					}
 					var next = findClosestIndexLeft();
 					var item = $scope.selectable[$scope.activeLeft];
-					$scope.model.push(item);
+					$scope.model.push(angular.copy(item));
 					$scope.activeLeft = next;
 
 				} else {

@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Brand']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Brand']) ?>
 
 <?php $this->start('page-body') ?>
 	<div>

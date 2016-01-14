@@ -1,8 +1,8 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Attribute Set']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attribute Set']) ?>
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminAttributeSetCtrl">
-    <? $this->insert('components/page-title-with-one-button', ['text' => 'Attribute Set','button' => 'Add Attribute Set', 'button_class' => 'btn-width-xxl', 'link' => '?p=admin_add_attribute_set']) ?>
+    <? $this->insert('components/page-title-with-one-button', ['text' => 'Attribute Set','button' => 'Add Attribute Set', 'button_class' => 'btn-width-xxl', 'link' => '/admin/attributesets/add']) ?>
     <? $this->insert('components/search-section-admin-attribute') ?>
     <div class="filter-section">  
       <div class="filter-container">

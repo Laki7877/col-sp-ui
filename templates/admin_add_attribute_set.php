@@ -1,107 +1,81 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Add Attribute Set']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attribute Set']) ?>
 
 <?php $this->start('page-body') ?>
-	<div>
-    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute/Add Attribute Set", 'link' => "admin_attribute_set"]) ?>
-    
-    <form class="ah-form sticky-mainform-action margin-top-30">
+	<div ng-controller="AdminAttributeSetAddCtrl" ng-init="init(<?=$params?>)">
+    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute/" . $title, 'urls' => ['/admin/attributesets']]) ?>
+    <pre>{{ formDataSerialized }}</pre>
+    <form class="ah-form sticky-mainform-action margin-top-30" name="form">
       <div class="row">
         <div class="col-xs-12">
           <div class="form-section">
             <div class="form-section-header"><h2>Attribute Set Information</h2></div>
             <div class="form-section-content">
-              <? $this->insert('components/forms/input-text-with-label', ["label" => "Attribute Set Name", "label_class" => "required", "size" => "small"]) ?>
-              <? $this->insert('components/forms/textarea-with-label', ["label" => "Attribute Set Description"]) ?>
+              <div ng-template="common/input/text"
+                ng-template-options="{
+                  'label': 'Attribute Name (English)',
+                  'labelClass': 'required',
+                }">
+                <input
+                  class="form-control"
+                  name="AttributeSetNameEn"
+                  ng-model="formData.AttributeSetNameEn"
+                  ng-class="{ 'has-error' : $root.isInvalid(form.AttributeSetNameEn) }"
+                  required />
+              </div>
+              <div ng-template="common/input/textarea"
+                  ng-template-options="{
+                    'label' : 'Attribute Set Description'
+                  }">
+                  <textarea class="form-control" ng-model="formData.AttributeSetDescriptionEn"></textarea>
+              </div>
             </div>
           </div>
 
           <div class="form-section">
             <div class="form-section-header"><h2>Attribute Mapping</h2></div>
             <div class="form-section-content">
-              
-              <div class="tradable-list">
-                
-                <div class="left-column">
-                  <div class="search-section section-search">
-                    <div class="input-group">
-                      <input type="text" class="form-control input-search-icon search-box" placeholder="Search Attribute Name" aria-describedby="basic-addon2">
-                      <span class="input-group-btn">
-                        <button class="btn btn-white" type="button">Search</button>
-                      </span>
-                    </div>
-                  </div>
-                  <div class="clickable-list">
-                    <ul class="content-column">
-                      <li>Attribute A</li>
-                      <li class="active">Attribute B</li>
-                      <li>Attribute C</li>
-                      <li>Attribute D</li>
-                      <li>Attribute E</li>
-                      <li>Attribute F</li>
-                      <li>Attribute G</li>
-                      <li>Attribute H</li>
-                      <li>Attribute J</li>
-                      <li>Attribute K</li>
-                      <li>Attribute G</li>
-                      <li>Attribute H</li>
-                      <li>Attribute J</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div class="center-column">
-                  <div class="trade-button active"> 
-                     <i class="fa fa-chevron-right"></i>
-                  </div>
-                  <div class="trade-button"> 
-                    <i class="fa fa-chevron-left"></i>
-                  </div>
-                </div>
-
-                <div class="right-column">
-                  <div class="list-header">
-                    <span class="column-1">Attribute</span>
-                    <span class="column-2">Required?</span>
-                    <span class="column-3">Filterable?</span>
-                  </div>
-                  <div class="clickable-list">
-                    <ul class="content-column">
-                      <li>
-                        <span class="column-1">Attribute X</span>
-                        <span class="column-2"><input type="checkbox" aria-label="Checkbox for following text input"></span>
-                        <span class="column-3"><input type="checkbox" aria-label="Checkbox for following text input"></span>
-                      </li>
-                      <li class="active">
-                        <span class="column-1">Attribute Y</span>
-                        <span class="column-2"><input type="checkbox" aria-label="Checkbox for following text input"></span>
-                        <span class="column-3"><input type="checkbox" aria-label="Checkbox for following text input"></span>
-                      </li>
-                      <li>
-                        <span class="column-1">Attribute Z</span>
-                        <span class="column-2"><input type="checkbox" aria-label="Checkbox for following text input"></span>
-                        <span class="column-3"><input type="checkbox" aria-label="Checkbox for following text input"></span>
-                      </li>
-                      
-                    </ul>
-                  </div>
-                </div>
-
-              </div>  
+                <div nc-tradable-select nc-template="common/input/tradable-select2" nc-model="form.Attributes" nc-select-options="attributeOptions" nc-options="{ 'map' : { 'text': 'AttributeNameEn', 'value' : 'AttributeId' } }"></div> 
             </div>
           </div>
 
           <div class="form-section">
             <div class="form-section-header"><h2>Suggested Search Tag</h2></div>
             <div class="form-section-content">
-              <? $this->insert('components/forms/dropdown-with-label', ["label" => "Search Tag", "tooltip" => "This is a tooltip text", "input_class" => "select2-init", "size" => "large", "input_attrs" => 'data-tags="true" data-placeholder="Separated by a comma" multiple="multiple"', "options" => []]) ?>
+              <div ng-template="common/input/dropdown"
+                ng-template-options="{
+                  'label' : 'Search Tag',
+                  'size' : 'large',
+                  'tooltip' : 'Search tag name'
+                }">
+                <ui-select ng-model="formData.Tags" multiple tagging tagging-label="">
+                  <ui-select-match placeholder="Separated by a comma">
+                      {{ $item }}
+                  </ui-select-match>
+                  <ui-select-choices repeat="i in tagOptions">
+                      {{ i }}
+                  </ui-select-choices>
+                </ui-select>
+              </div>
             </div>
           </div>
 
           <div class="form-section">
             <div class="form-section-header"><h2>Visibility</h2></div>
             <div class="form-section-content">
+              <div ng-template="common/input/dropdown"
+                ng-template-options="{
+                  'label' : 'Attribute Set Visibility'
+                }">
+                <ui-select ng-model="formData.Status" search-enabled="false">
+                  <ui-select-match>
+                      <span ng-bind="$select.selected.name"></span>
+                  </ui-select-match>
+                  <ui-select-choices repeat="item in boolOptions">
+                      <span ng-bind="item.name"></span>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
               <? $this->insert('components/forms/dropdown-with-label', ["label" => "Attribute Set Visibility", "label_class" => "required", "options" => ["No", "Yes"]]) ?>
-
             </div>
           </div>
           <div class="col-xs-12">

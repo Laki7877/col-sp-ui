@@ -1,8 +1,8 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Attribute']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attribute']) ?>
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminAttributeCtrl">
-    <? $this->insert('components/page-title-with-one-button', ['text' => 'Attribute','button' => 'Add Attribute', 'button_class' => 'btn-width-xl', 'link' => '?p=admin_add_attribute']) ?>
+    <? $this->insert('components/page-title-with-one-button', ['text' => 'Attribute','button' => 'Add Attribute', 'button_class' => 'btn-width-xl', 'link' => '/admin/attributes/add']) ?>
     <? $this->insert('components/search-section-admin-attribute') ?>
     <div class="filter-section">
       <div class="filter-container">
@@ -101,24 +101,4 @@
       </span>
     </div>
 	</div>
-
-  <a data-toggle="modal" data-target="#modal-loading">Loading Modal</a>
-
-    <!-- Modal -->
-  <div class="modal fade" tabindex="-1" role="dialog" id="modal-loading">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body">
-          <h3 class="modal-title margin-bottom-20">Processing...</h3>
-          <div class="progress margin-0">
-            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-            </div>
-          </div>
-        </div> <!-- end .modal-body -->
-      </div> <!-- end .modal-content -->
-    </div> <!-- end .modal-dialog -->
-  </div> <!-- end .modal -->
-
-
- 
 <?php $this->stop() ?>

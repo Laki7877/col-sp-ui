@@ -1,0 +1,5 @@
+<div class="form-group">
+	<div class="width-label"><label class="control-label" ng-class="options.labelClass || {}" ng-bind-html="options.label"></label></div>
+	<div ng-class="['width-field-' + (options.inputSize || 'normal')]" ng-transclude></div>
+	<div class="width-field-tooltip no-padding-left"><i class="fa fa-2x fa-question-circle color-grey" uib-tooltip-html="options.tooltip" tooltip-trigger="mouseenter" tooltip-placement="right" ng-if="options.tooltip && options.tooltip.length > 0"></i></div>
+</div>

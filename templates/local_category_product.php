@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Local Category Product']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Local Category Product']) ?>
 <?php $this->start('page-body') ?>
 <div ng-controller="ProductListLocalCategoryCtrl" ng-init="init(<?= $catid ?>)" ng-cloak>
 	<? $this->insert('components/page-title-breadcrumb-local-category', ['text' => "Products/Add Product"]) ?>

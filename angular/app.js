@@ -27,7 +27,7 @@ var adapters = bulk.adapters;
 var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
 
 //App config
-.config(['$uibTooltipProvider', function($tooltipProvider) {
+.config(['$uibTooltipProvider', 'uiSelectConfig', function($tooltipProvider, uiSelectConfig) {
 	//Default close tooltip when click again
 	$tooltipProvider.setTriggers({
 		'clickanystart' : 'clickanyend'
@@ -35,6 +35,7 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 	$tooltipProvider.options({
 		trigger: 'clickanystart'
 	});
+	uiSelectConfig.appendToBody = true;
 }])
 
 //App template cache load
@@ -46,9 +47,14 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 	storage.storeSessionToken($base64.encode('duckvader:vader'));
 
 	//Create generic form validator functions
-	$rootScope.isInvalid = function(form, attribute) {
-		return form[attribute].$invalid && form[attribute].$dirty;
-	};
+	$rootScope.isInvalid = function(form) {
+		if(angular.isDefined(form) && 
+			angular.isDefined(form.$invalid) && 
+			angular.isDefined(form.$dirty)) {
+			return form.$invalid && form.$dirty;
+		}
+		return false;
+	}; 
 
 	//Match route with
 	$rootScope.isUrl = function(url) {
@@ -78,6 +84,10 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 			'active': $window.location.pathname == url
 		};
 	};
+	$rootScope.test = function(form) {
+		console.log(form);
+		return false;
+	}
 }])
 //Configuration
 .value('config', config)
@@ -101,6 +111,7 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 .factory('Brand', services.brand)
 .factory('VariantPair', helpers.variantPair)
 .factory('brandAdapter', adapters.brand)
+.factory('Alert', services.alert)
 
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)
@@ -113,6 +124,7 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 //Filters
 .filter('capitalize', filters.capitalize)
 .filter('ordinal', filters.ordinal)
+.filter('html', filters.html)
 
 //Controllers
 .controller('RootCtrl', controllers.root)

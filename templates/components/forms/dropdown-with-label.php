@@ -68,7 +68,6 @@ if (isset($size)) $inputSize = "width-field-$size";
 			    </ui-select-choices>
 			</ui-select>
 			<?php endif; ?>
-
 		</div>
 	</div>
 	<? if (!empty($tooltip)): ?>

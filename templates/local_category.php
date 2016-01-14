@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Local Category']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Local Category']) ?>
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="LocalCategoryCtrl" ng-init="init()" class="local-category-page">
