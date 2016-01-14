@@ -1218,10 +1218,10 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 	$scope.showOnOffStatus = true;
 	$scope.checkAll = false;
 	$scope.filterOptions = [
-		{ name: "All", value: 0},
-		{ name: "Approved", value: 1},
-		{ name: "Not Approved", value: 2},
-		{ name: "Wait for Approval", value: 3},
+		{ name: "All", value: 'ALL'},
+		{ name: "Approved", value: 'Approved'},
+		{ name: "Not Approved", value: 'Not Approved'},
+		{ name: "Wait for Approval", value: 'Wait for Approval'},
 	];
 
 	//Product List
