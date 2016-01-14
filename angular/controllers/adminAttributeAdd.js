@@ -37,7 +37,7 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 			});
 		}
 		else {
-			Attribute.create($scope.formData, $scope.formDataSerialized).then(function(data) {
+			Attribute.create($scope.formDataSerialized).then(function(data) {
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
