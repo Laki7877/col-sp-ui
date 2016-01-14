@@ -978,7 +978,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		Product.publish(apiRequest, Status).then(function(res){
 				//TODO: remove this , 
 				if(res.ProductId){
-					alert("Just FYI, its saved. ");
+
+					$window.onbeforeunload = function(){};
 					console.log("Save successful");
 					$window.location.href = "/products";
 				}else{
