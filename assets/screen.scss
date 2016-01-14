@@ -155,3 +155,17 @@ html, body {
   }
 }
 
+.empty-section{
+    border: 1px solid;
+    border-color: #BCC7D5;
+    border-radius: 3px;
+    height: 80px;
+    line-height: 80px;
+    .loading-img{
+      width: 40px;
+      height: 40px;
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+}
+
