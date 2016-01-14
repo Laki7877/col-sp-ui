@@ -244,17 +244,33 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 		{ name: "No Variation", value: 'No Variation'}
 	];
 	$scope.alert = new Alert();
-	$scope.bulk = { fn: angular.noop };
+	$scope.bulk = { 
+		fn: function() {
+			var bulk = $scope.bulkOptions.find(function(item) {
+				return item.name == $('#bulk').html();
+			});
+			if(bulk) {
+				bulk.fn();
+			}
+		} 
+	};
 	$scope.bulkOptions = [
 		{ 	
 			name: 'Delete', 
 			value: 'delete', 
 			fn: function() {
-				var arr = util.getCheckedArray($scope.tableParams);
-				angular.forEach(arr, function(item) {
-					Attribute.delete(item.AttributeId);
+				$scope.alert.close();
+				var arr = util.getCheckedArray($scope.attributeList).map(function(elem) {
+					return {
+						AttributeId: elem.AttributeId
+					};
 				});
-				$scope.reloadData();
+				if(arr.length > 0) {
+					Attribute.deleteBulk(arr).then(function() {
+						$scope.alert.success('You have successfully remove entries');
+						$scope.reloadData();
+					});
+				}
 			}
 		}
 	];
@@ -275,7 +291,9 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 		},
 		delete: function(row) {
 			$scope.alert.close();
-			Attribute.delete(row.AttributeId).then(function() {
+			Attribute.deleteBulk([{AttributeId: row.AttributeId}]).then(function() {
+				$scope.alert.success('You have successfully remove an entry.');
+				$scope.reloadData();
 			}, function(err) {
 				$scope.alert.error(err);
 			});
@@ -284,6 +302,7 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 			$scope.alert.close();
 			Attribute.duplicate(row.AttributeId).then(function() {
 				$scope.alert.success();
+				$scope.reloadData();
 			}, function(err) {
 				$scope.alert.error(err);
 			});
@@ -310,8 +329,8 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 	};
 	$scope.notReady = true;
 	$scope.init = function(params) {
-		if(params) {
-			if(angular.isDefined(params.success)) {
+		if(angular.isDefined(params)) {
+			if(angular.isDefined(params.success) && params.success != null) {
 				$scope.alert.success();
 			}
 		}
@@ -390,7 +409,8 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 		if ($scope.edit) {
 			$scope.saving = true;
 			Attribute.update($scope.edit, $scope.formDataSerialized).then(function(data) {
-				$scope.alert.success();
+				$scope.saving = false;
+				$('#success').submit();
 			}, function(err) {
 				$scope.alert.error(err);
 			});
@@ -400,7 +420,6 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 			Attribute.create($scope.formDataSerialized).then(function(data) {
 				$scope.saving = false;
 				$('#success').submit();
-				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
 				console.log(err);
@@ -503,8 +522,9 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 		},
 		delete: function(row) {
 			$scope.alert.close();
-			AttributeSet.delete(row.AttributeSetId).then(function() {
+			AttributeSet.deleteBulk([{AttributeSetId: row.AttributeSetId}]).then(function() {
 				$scope.alert.success('You have successfully deleted an entry.');
+				$scope.reloadData();
 			}, function(err) {
 				$scope.alert.error(err);
 			});
@@ -513,14 +533,14 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 			$scope.alert.close();
 			AttributeSet.duplicate(row.AttributeSetId).then(function() {
 				$scope.alert.success();
+				$scope.reloadData();
 			}, function(err) {
 				$scope.alert.error(err);
 			});
 		},
 		toggle: function(row) {
 			row.Status = (row.Status == 'VI')? 'NV' : 'VI';
-			AttributeSet.visible(row).then(function() {
-
+			AttributeSet.visible([row]).then(function() {
 			}, function(err) {
 				$scope.alert.error(err);
 			});
@@ -542,8 +562,8 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 	$scope.notReady = true;
 	
 	$scope.init = function(params) {
-		if(params) {
-			if(angular.isDefined(params.success)) {
+		if(angular.isDefined(params)) {
+			if(angular.isDefined(params.success) && params.success != null) {
 				$scope.alert.success();
 			}
 		}
@@ -632,7 +652,7 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 			$scope.saving = true;
 			AttributeSet.update($scope.edit, $scope.formDataSerialized).then(function(data) {
 				$scope.saving = false;
-				$scope.alert.success();
+				$('#success').submit();
 			}, function(err) {
 				$scope.alert.error(err);
 			});
@@ -642,7 +662,6 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 			AttributeSet.create($scope.formDataSerialized).then(function(data) {
 				$scope.saving = false;
 				$('#success').submit();
-				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
 			});
@@ -2564,7 +2583,10 @@ module.exports = ['common', function(common){
 		return common.makeRequest({
 			method: 'DELETE',
 			url: '/Attributes',
-			data: arr
+			data: arr,
+			headers: {
+				'Content-Type': 'application/json;charset=UTF-8'
+			}
 		});
 	};
 	service.duplicate = function(id) {
@@ -3326,7 +3348,7 @@ module.exports = ['common', function(common) {
 },{}],44:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Jan 14 2016 20:10:43 GMT+0700 (ICT)
+ * Thu Jan 14 2016 20:45:38 GMT+0700 (ICT)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 

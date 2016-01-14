@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title><?=$title?></title>
+        <meta http-equiv="expires" content="Sun, 01 Jan 2014 00:00:00 GMT"/>
+        <meta http-equiv="pragma" content="no-cache" />
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="<?= $this->asset('/assets/favicon.ico') ?>">

@@ -79,7 +79,10 @@ module.exports = ['common', function(common){
 		return common.makeRequest({
 			method: 'DELETE',
 			url: '/Attributes',
-			data: arr
+			data: arr,
+			headers: {
+				'Content-Type': 'application/json;charset=UTF-8'
+			}
 		});
 	};
 	service.duplicate = function(id) {

@@ -92,8 +92,9 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 		},
 		delete: function(row) {
 			$scope.alert.close();
-			AttributeSet.delete(row.AttributeSetId).then(function() {
+			AttributeSet.deleteBulk([{AttributeSetId: row.AttributeSetId}]).then(function() {
 				$scope.alert.success('You have successfully deleted an entry.');
+				$scope.reloadData();
 			}, function(err) {
 				$scope.alert.error(err);
 			});
@@ -102,14 +103,14 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 			$scope.alert.close();
 			AttributeSet.duplicate(row.AttributeSetId).then(function() {
 				$scope.alert.success();
+				$scope.reloadData();
 			}, function(err) {
 				$scope.alert.error(err);
 			});
 		},
 		toggle: function(row) {
 			row.Status = (row.Status == 'VI')? 'NV' : 'VI';
-			AttributeSet.visible(row).then(function() {
-
+			AttributeSet.visible([row]).then(function() {
 			}, function(err) {
 				$scope.alert.error(err);
 			});
@@ -131,8 +132,8 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 	$scope.notReady = true;
 	
 	$scope.init = function(params) {
-		if(params) {
-			if(angular.isDefined(params.success)) {
+		if(angular.isDefined(params)) {
+			if(angular.isDefined(params.success) && params.success != null) {
 				$scope.alert.success();
 			}
 		}
