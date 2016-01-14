@@ -51,8 +51,10 @@
                     <input type="checkbox" aria-label="Checkbox for following text input" ng-model="row.checked">
                   </td>
                   <td class="display-column">
-                    <img ng-if='!row.ImageUrl' class="logo-img" src="<?= $this->asset('/assets/img/placeholder-no-image.png') ?>" />
-                    <img ng-if='row.ImageUrl' class="logo-img" src="{{ row.ImageUrl }}"/>
+                    <div class="img-holder">
+                      <img ng-if='!row.ImageUrl' class="logo-img" src="<?= $this->asset('/assets/img/placeholder-no-image.png') ?>" />
+                      <img ng-if='row.ImageUrl' class="logo-img" src="{{ row.ImageUrl }}"/>
+                    </div>
                   </td>
                   <td class="column-text-ellipsis"><a href="/products/{{ row.ProductId }}">{{ row.ProductNameEn }}</a></td>
                   <td class="price-column">{{ row.SalePrice | currency: ' ' : 2 }}</td>
