@@ -8,12 +8,18 @@
 	}
 ?>
 <ul class="image-vertical-list">
-	<li class="list-section-break" ng-if="<?=$sep?>" ng-repeat-start="item in <?=$images?>">
+	<li class="list-section-break" ng-if="<?=$sep?>" ng-repeat-start="item in <?=$images?> track by $index">
 	</li>
+
 	<li class="list-item" ng-repeat-end="">
-		<? $this->insert('components/image-thumbs-actions-'. $action, [
+
+		<div><? $this->insert('components/image-thumbs-actions-'. $action, [
 			"image" => "item", 
 			"image_url" => "item.url",
 			"array" => $images ]) ?>
+		</div>
+		<div style="text-align:center; padding-top: 10px; color: grey" ng-if="$index == 0">
+			Featured Image
+		</div>
 	</li>
 </ul>

@@ -7,9 +7,9 @@
             <span class="caret margin-left-10"></span>
         </button>
         <ul class="dropdown-menu">
-            <li><a ng-click="bulk.delete()">Delete Products</a></li>
-            <li><a ng-click="bulk.hide()">Hide Products</a></li>
-            <li><a ng-click="bulk.show()">Show Products</a></li>
+            <li><a ng-click="bulk.delete()">Delete </a></li>
+            <li><a ng-click="bulk.hide()">Hide </a></li>
+            <li><a ng-click="bulk.show()">Show </a></li>
         </ul>
       </div><!-- /btn-group -->
       <div class="input-group-btn">
