@@ -35,7 +35,8 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 		if ($scope.edit) {
 			$scope.saving = true;
 			Attribute.update($scope.edit, $scope.formDataSerialized).then(function(data) {
-				$scope.alert.success();
+				$scope.saving = false;
+				$('#success').submit();
 			}, function(err) {
 				$scope.alert.error(err);
 			});
@@ -45,7 +46,6 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 			Attribute.create($scope.formDataSerialized).then(function(data) {
 				$scope.saving = false;
 				$('#success').submit();
-				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
 				console.log(err);

@@ -11,17 +11,33 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 		{ name: "No Variation", value: 'No Variation'}
 	];
 	$scope.alert = new Alert();
-	$scope.bulk = { fn: angular.noop };
+	$scope.bulk = { 
+		fn: function() {
+			var bulk = $scope.bulkOptions.find(function(item) {
+				return item.name == $('#bulk').html();
+			});
+			if(bulk) {
+				bulk.fn();
+			}
+		} 
+	};
 	$scope.bulkOptions = [
 		{ 	
 			name: 'Delete', 
 			value: 'delete', 
 			fn: function() {
-				var arr = util.getCheckedArray($scope.tableParams);
-				angular.forEach(arr, function(item) {
-					Attribute.delete(item.AttributeId);
+				$scope.alert.close();
+				var arr = util.getCheckedArray($scope.attributeList).map(function(elem) {
+					return {
+						AttributeId: elem.AttributeId
+					};
 				});
-				$scope.reloadData();
+				if(arr.length > 0) {
+					Attribute.deleteBulk(arr).then(function() {
+						$scope.alert.success('You have successfully remove entries');
+						$scope.reloadData();
+					});
+				}
 			}
 		}
 	];
@@ -42,7 +58,9 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 		},
 		delete: function(row) {
 			$scope.alert.close();
-			Attribute.delete(row.AttributeId).then(function() {
+			Attribute.deleteBulk([{AttributeId: row.AttributeId}]).then(function() {
+				$scope.alert.success('You have successfully remove an entry.');
+				$scope.reloadData();
 			}, function(err) {
 				$scope.alert.error(err);
 			});
@@ -51,6 +69,7 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 			$scope.alert.close();
 			Attribute.duplicate(row.AttributeId).then(function() {
 				$scope.alert.success();
+				$scope.reloadData();
 			}, function(err) {
 				$scope.alert.error(err);
 			});
@@ -77,8 +96,8 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 	};
 	$scope.notReady = true;
 	$scope.init = function(params) {
-		if(params) {
-			if(angular.isDefined(params.success)) {
+		if(angular.isDefined(params)) {
+			if(angular.isDefined(params.success) && params.success != null) {
 				$scope.alert.success();
 			}
 		}
