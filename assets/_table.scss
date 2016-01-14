@@ -132,7 +132,9 @@
     padding-top: 6px;
     padding-bottom: 4px;
     font-weight: normal;
+    border-bottom: 0px;
   }
+
 
   .table > tbody > tr > td {
     vertical-align: middle;
@@ -190,7 +192,7 @@
   .filter-seperator {
     text-decoration: none;
     cursor: pointer;
-    color:  $color-dark-grey;
+    color:  $color-grey;
     border-left: solid 1px $color-grey;
     padding-left: 9px;
     margin-left: 9px;
