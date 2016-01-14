@@ -34,8 +34,7 @@
             <th><a class="header-link" href="#"><span>Info.</span></a></th>
             <th><a class="header-link" href="#"><span>Image</span></a></th>
             <th class="status-column">
-              <a ng-click="setOrderBy('Status')">Status<span>
-              <span class="caret caret-grey"></span>
+              Status
             </th>
             <th class="live-column" ng-if="showOnOffStatus">Live</th>
             <th class="visible-column">Visible</th>
