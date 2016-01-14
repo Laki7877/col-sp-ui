@@ -13,7 +13,13 @@
 namespace Composer\Autoload;
 
 /**
+<<<<<<< HEAD
  * ClassLoader implements a PSR-0, PSR-4 and classmap class loader.
+=======
+ * ClassLoader implements a PSR-0 class loader
+ *
+ * See https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
+>>>>>>> master
  *
  *     $loader = new \Composer\Autoload\ClassLoader();
  *
@@ -37,8 +43,11 @@ namespace Composer\Autoload;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Jordi Boggiano <j.boggiano@seld.be>
+<<<<<<< HEAD
  * @see    http://www.php-fig.org/psr/psr-0/
  * @see    http://www.php-fig.org/psr/psr-4/
+=======
+>>>>>>> master
  */
 class ClassLoader
 {
