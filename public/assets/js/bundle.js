@@ -1218,11 +1218,17 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 	$scope.showOnOffStatus = true;
 	$scope.checkAll = false;
 	$scope.filterOptions = [
-		{ name: "All", value: 'ALL'},
+		{ name: "All", value: 'All'},
 		{ name: "Approved", value: 'Approved'},
 		{ name: "Not Approved", value: 'Not Approved'},
 		{ name: "Wait for Approval", value: 'Wait for Approval'},
 	];
+
+	$scope.bulk = {
+		delete: function(){},
+		show: function() {},
+		hide: function(){}
+	};
 
 	//Product List
 	$scope.productList = [];

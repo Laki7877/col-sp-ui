@@ -9,6 +9,12 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 		{ name: "Wait for Approval", value: 'Wait for Approval'},
 	];
 
+	$scope.bulk = {
+		delete: function(){},
+		show: function() {},
+		hide: function(){}
+	};
+
 	//Product List
 	$scope.productList = [];
 	//Default parameters
