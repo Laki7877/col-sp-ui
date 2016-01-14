@@ -107,11 +107,19 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 	try{
 		//Move first entry of Categories out into Category
 		clean.GlobalCategory = clean.GlobalCategories[0].CategoryId;
+		clean.GlobalCategories.shift();		
+	}catch(ex){
+		console.warn("shift global cat", ex);
+	}
+
+	try{
 		clean.LocalCategory = clean.LocalCategories[0].CategoryId;
-		clean.GlobalCategories.shift();
 		clean.LocalCategories.shift();
 	}catch(ex){
-		console.warn("Shifting Categories", ex);
+		console.warn("shfiting local cat", ex);
+		//Local cat can be null
+		clean.LocalCategories = [null, null];
+		clean.LocalCategory = null;
 	}
 
 	try{

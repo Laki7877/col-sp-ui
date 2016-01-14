@@ -31,5 +31,18 @@ module.exports = ['$q', 'common', function($q, common){
 		});
 
 	}
+
+	service.publish = function(tobj, Status){
+		tobj.Status = Status;
+		var mode = 'POST';
+		var path  = '/Brands';
+		return common.makeRequest({
+			method: mode,
+		    url: path,
+		    data: tobj
+		});
+	};
+
+
 	return service;
 }];

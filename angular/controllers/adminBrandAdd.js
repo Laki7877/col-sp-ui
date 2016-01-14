@@ -1,6 +1,6 @@
 var angular = require('angular');
 
-module.exports = ['$scope', '$window', 'Image', function($scope, $window, ImageService) {
+module.exports = ['$scope', '$window', 'Image', 'Brand', function($scope, $window, ImageService, Brand) {
 	$scope.uploader = ImageService.getUploader('/BrandImages', {
 		queueLimit: 1
 	});
@@ -18,10 +18,15 @@ module.exports = ['$scope', '$window', 'Image', function($scope, $window, ImageS
 	$scope.$on('delete', function(e, item, arr, indx){
 		arr.splice(indx, 1)
 	});
+
 	$scope.init = function(params) {
 		
 	};
+	
 	$scope.save = function() {
 		console.log("FormData", $scope.formData);
+		Brand.publish($scope.formData).then(function(res){
+			alert("Brand Added");
+		});
 	};
 }];

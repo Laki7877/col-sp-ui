@@ -689,7 +689,7 @@ module.exports = ['$scope','util', 'config', 'Brand', function($scope, util, con
 },{"angular":57}],9:[function(require,module,exports){
 var angular = require('angular');
 
-module.exports = ['$scope', '$window', 'Image', function($scope, $window, ImageService) {
+module.exports = ['$scope', '$window', 'Image', 'Brand', function($scope, $window, ImageService, Brand) {
 	$scope.uploader = ImageService.getUploader('/BrandImages', {
 		queueLimit: 1
 	});
@@ -707,11 +707,16 @@ module.exports = ['$scope', '$window', 'Image', function($scope, $window, ImageS
 	$scope.$on('delete', function(e, item, arr, indx){
 		arr.splice(indx, 1)
 	});
+
 	$scope.init = function(params) {
 		
 	};
+	
 	$scope.save = function() {
 		console.log("FormData", $scope.formData);
+		Brand.publish($scope.formData).then(function(res){
+			alert("Brand Added");
+		});
 	};
 }];
 },{"angular":57}],10:[function(require,module,exports){
@@ -902,6 +907,18 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		state : true,
 		message: 'Loading..'
 	};
+
+	$window.onbeforeunload = function (e) {
+		  var message = "Your confirmation message goes here.",
+		  e = e || window.event;
+		  // For IE and Firefox
+		  if (e) {
+		    e.returnValue = message;
+		  }
+
+		  // For Safari
+		  return message;
+		};
 
 
 
@@ -2141,11 +2158,19 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 	try{
 		//Move first entry of Categories out into Category
 		clean.GlobalCategory = clean.GlobalCategories[0].CategoryId;
+		clean.GlobalCategories.shift();		
+	}catch(ex){
+		console.warn("shift global cat", ex);
+	}
+
+	try{
 		clean.LocalCategory = clean.LocalCategories[0].CategoryId;
-		clean.GlobalCategories.shift();
 		clean.LocalCategories.shift();
 	}catch(ex){
-		console.warn("Shifting Categories", ex);
+		console.warn("shfiting local cat", ex);
+		//Local cat can be null
+		clean.LocalCategories = [null, null];
+		clean.LocalCategory = null;
 	}
 
 	try{
@@ -2931,6 +2956,19 @@ module.exports = ['$q', 'common', function($q, common){
 		});
 
 	}
+
+	service.publish = function(tobj, Status){
+		tobj.Status = Status;
+		var mode = 'POST';
+		var path  = '/Brands';
+		return common.makeRequest({
+			method: mode,
+		    url: path,
+		    data: tobj
+		});
+	};
+
+
 	return service;
 }];
 },{}],39:[function(require,module,exports){
