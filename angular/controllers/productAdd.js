@@ -143,7 +143,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 						});
 
 						//Multiply out unmultiplied options
-						if($scope.attributeOptions && $scope.attributeOptions.length > 0){
+						if($scope.attributeOptions && Object.keys($scope.attributeOptions).length > 0){
 							for(var aKey in $scope.attributeOptions[0].options){
 								var A = $scope.attributeOptions[0].options[aKey];
 								for(var bKey in $scope.attributeOptions[1].options){
@@ -193,7 +193,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 					$scope._loading.message = "Crunching Data..";
 
 					//Dependency Chain
-					//  catId -> AttributeSet -> Inverse
+					//catId -> AttributeSet -> Inverse
 
 					console.log("Before Inverse Transformation", ivFormData);
 					var inverseResult = productProxy.inverseTransform(ivFormData, FullAttributeSet);

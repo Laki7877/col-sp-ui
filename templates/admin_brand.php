@@ -1,7 +1,7 @@
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Brand']) ?>
 
 <?php $this->start('page-body') ?>
-	<div>
+	<div ng-controller="AdminBrandCtrl">
     <? $this->insert('components/page-title-with-one-button', ['text' => 'Brand','button' => 'Add Brand', 'button_class' => 'btn-width-xl', 'link' => '?p=admin_add_brand']) ?>
     <? $this->insert('components/search-section-admin-attribute') ?>
 
