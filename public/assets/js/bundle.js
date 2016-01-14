@@ -1525,7 +1525,7 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 		orderBy: 'ProductId',
 		direction: 'desc',
 		page: 0,
-		pageSize: 8
+		pageSize: 20
 	};
 
 	$scope.notReady = true;

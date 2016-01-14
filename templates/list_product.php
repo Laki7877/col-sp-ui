@@ -102,10 +102,7 @@
             <span class="sr-only">Toggle Dropdown</span>
           </button>
           <ul class="dropdown-menu dropdown-menu-right">
-            <li><a ng-click="setPageSize(1)">1</a></li>
-            <li><a ng-click="setPageSize(2)">2</a></li>
-            <li><a ng-click="setPageSize(3)">3</a></li>
-            <li><a ng-click="setPageSize(4)">4</a></li>
+            <li ng-repeat="i in [20, 30, 500]"><a ng-click="setPageSize({{ i }})"> {{ i }}</a></li>
           </ul>
         </div>
       </span>
