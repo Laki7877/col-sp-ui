@@ -17,7 +17,7 @@ module.exports = ['$scope', '$window', 'Attribute', function($scope,$window, Att
 	];
 	$scope.bulk = {
 		delete: function(array) {
-
+			
 		},
 		hide: function(array) {
 
