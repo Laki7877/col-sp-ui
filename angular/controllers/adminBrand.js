@@ -5,6 +5,7 @@ module.exports = ['$scope','util', 'config', 'Brand', function($scope, util, con
 	$scope.params = {
 		
 	};
+	
 	Brand.getAll($scope.params).then(function(brands){
 		$scope.brands = brands.data;
 	});
