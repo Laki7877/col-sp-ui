@@ -13,7 +13,7 @@
                   <span class="caret margin-left-10"></span>
               </button>
               <ul class="dropdown-menu search-product-dropdown">
-                <li ng-repeat="option in bulkOptions">{{option.name}}</li>
+                <li ng-repeat="option in bulkOptions" ng-click="bulk"><a>{{option.name}}</a></li>
               </ul>
             </div>
           </div><!-- /btn-group -->
@@ -48,24 +48,24 @@
             </th>
             <th>
               <a class="header-link" href="#" ng-click="setOrderBy('AttributeNameEn')"><span>Attribute Name</span></a>
-              <i class="fa fa-caret-down color-grey">
+              <i class="fa" ng-class="sort('AttributeNameEn')">
             </th>
             <th>
               <a class="header-link" href="#" ng-click="setOrderBy('DisplayNameEn')"><span>Display Name</span></a>
-              <i class="fa fa-caret-up color-grey">
+              <i class="fa" ng-class="sort('DisplayNameEn')">
             </th>
             <th>
               <a class="header-link" href="#" ng-click="setOrderBy('DataType')"><span>Field Type</span></a>
-              <i class="fa fa-caret-up color-grey">
+              <i class="fa" ng-class="sort('DataType')">
             </th>
             <th>
               <a class="header-link" href="#" ng-click="setOrderBy('Variation')"><span>Variation</span></a>
-               <i class="fa fa-caret-up color-grey">
+               <i class="fa" ng-class="sort('Variation')">
             </th>
             <th><a class="header-link" href="#"><span>Mapped Set</span></a></th>
             <th class="modified-column">
               <a class="header-link" href="#" ng-click="setOrderBy('UpdateDt')"><span>Modified</span></a>
-              <i class="fa fa-caret-up">
+              <i class="fa" ng-class="sort('UpdateDt')">
             </th>
             <th>
               Action
@@ -79,7 +79,7 @@
               <input type="checkbox" aria-label="Checkbox for following text input" ng-model="row.checked"> 
             </td>
             <td class="column-text-ellipsis">
-              <a ng-href="/{{row.AttributeId}}">{{row.AttributeNameEn}}</a>
+              <a ng-click="actions.edit(row, true)">{{row.AttributeNameEn}}</a>
             </td>
             <td>
               {{row.DisplayNameEn}}

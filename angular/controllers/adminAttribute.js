@@ -1,5 +1,5 @@
 var angular = require('angular');
-module.exports = ['$scope', '$window', 'Attribute', function($scope,$window, Attribute) {
+module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($scope, $window, util, Attribute, Alert) {
 	//UI binding variables
 	$scope.showOnOffStatus = true;
 	$scope.checkAll = false;
@@ -10,24 +10,63 @@ module.exports = ['$scope', '$window', 'Attribute', function($scope,$window, Att
 		{ name: "Has Variation", value: 'Has Variation'},
 		{ name: "No Variation", value: 'No Variation'}
 	];
-	$scope.bulkOptions = [
-		{ name: 'Delete', value: 'delete' },
-		{ name: 'Hide', value: 'hide' },
-		{ name: 'Show', value: 'show' }
-	];
-	$scope.bulk = {
-		delete: function(array) {
-			
-		},
-		hide: function(array) {
-
-		},
-		show: function(array) {
-
+	$scope.alert = new Alert();
+	$scope.bulk = null;
+	$scope.bulkActions = [
+		{ 	name: 'Delete', 
+			value: 'delete', 
+			fn: function(row) {
+				var arr = util.getCheckedArray(row);
+				angular.forEach(arr, function(item) {
+					Attribute.delete(item.AttributeId);
+				});
+				$scope.reloadData();
+			}
 		}
+	];
+	$scope.sort = function(id) {
+        var classes = ['fa'];
+        if($scope.tableParams.orderBy == id) {
+            if($scope.tableParams.direction == 'desc') {
+                classes.push('fa-caret-down');
+            } else {
+                classes.push('fa-caret-up');
+            }
+        } else {
+            classes.push('fa-caret-up');
+            classes.push('color-grey');
+        }
+        return classes;
+	};
+	//Populate Data Source
+	$scope.reloadData = function(){
+		$scope.attributeList = [];
+		$scope.notReady = true;
+		Attribute.getAll($scope.tableParams).then(function(x){
+			$scope.attributeTotal = x.total;
+			$scope.attributeList = x.data;
+			$scope.notReady = false;
+		});
 	};
 	$scope.actions = {
-
+		edit: function(row) {
+			$window.location.href="/admin/attributes/" + row.AttributeId;
+		},
+		delete: function(row) {
+			$scope.alert.close();
+			Attribute.delete(row.AttributeId).then(function() {
+			}, function(err) {
+				$scope.alert.error(err);
+			});
+		},
+		duplicate: function(row) {
+			$scope.alert.close();
+			Attribute.duplicate(row.AttributeId).then(function() {
+				$scope.alert.success();
+			}, function(err) {
+				$scope.alert.error(err);
+			});
+		}
 	};
 	$scope.dataType = {
 		'ST' : 'Free Text',
@@ -71,37 +110,11 @@ module.exports = ['$scope', '$window', 'Attribute', function($scope,$window, Att
 			$scope.tableParams.direction = ($scope.tableParams.direction == 'asc' ? 'desc': 'asc');
 		}
 		$scope.tableParams.orderBy = nextOrderBy;
+
 	}
-	
-	//Populate Data Source
-	var reloadData = function(){
-		$scope.attributeList = [];
-		$scope.notReady = true;
-		Attribute.getAll($scope.tableParams).then(function(x){
-			$scope.attributeTotal = x.total;
-			$scope.attributeList = x.data;
-			$scope.notReady = false;
-		});
-	};
-
-	$scope.$on('edit', function(evt, row) {
-		$window.location.href='/admin/attributes/' + row.AttributeId;
-	});
-
-	$scope.$on('remove', function(evt, row) {
-		Attribute.delete(row.AttributeId);
-	});
-
-	$scope.$on('duplicate', function(evt, row) {
-		Attribute.duplicate(row.AttributeId);
-	});
-	$scope.$on('toggle', function(evt, row) {
-
-	});
-
 	//Watch any change in table parameter, trigger reload
 	$scope.$watch('tableParams', function(){
-		reloadData();
+		$scope.reloadData();
 	}, true);
 
 	//Select All checkbox

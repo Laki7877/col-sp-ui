@@ -82,6 +82,12 @@ module.exports = ['common', function(common){
 			data: obj
 		});
 	};
+	service.duplicate = function(id) {
+		return common.makeRequest({
+			method: 'POST',
+			url: '/Attributes/' + id
+		});
+	};
 	service.getAll = function(parameters) {
 		if(parameters) {
 			return common.makeRequest({
