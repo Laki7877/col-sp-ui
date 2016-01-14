@@ -8,12 +8,14 @@ module.exports = ['storage', function (storage) {
 
     service.variant.hash = function(a,b){
         if(!("ValueEn" in a)) return "[API Error]";
+        if(!('ValueEn' in b)) return  (a.AttributeId + "-" + a.ValueEn.trim() + "-" + "null" + "-" );
 	    return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + b.AttributeId + "-" + b.ValueEn.trim());
     };
 
     service.variant.toString = function(a,b){
         if(!("ValueEn" in a)) return "[API Error]";
-	    return (a.ValueEn.trim() + ", " + b.ValueEn.trim());	
+        if(!('ValueEn' in b)) return a.ValueEn.trim();
+	    return (a.ValueEn.trim() + (b.ValueEn == '' ? '' : (", " + b.ValueEn.trim())));	
     };
 
     /**

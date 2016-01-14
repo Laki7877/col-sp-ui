@@ -67,11 +67,9 @@
 				  		 "ng_model"=> "formData.AttributeSet"
 						])
 					?>
-
-
 					<div class="form-group" ng-repeat="amap in formData.AttributeSet.AttributeSetMaps">
 						<div class="width-label"><label class="control-label">
-							{{ amap.Attribute.AttributeNameEn }}
+							{{ amap.Attribute.AttributeNameEn }} 
 						</label></div>
 						<div class="width-field-normal">
 							<select ng-if="_isListInput(amap.Attribute.DataType)" class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" >

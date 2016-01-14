@@ -11,8 +11,10 @@
 					<div class="form-group" ng-repeat="jth in [0,1]">
 						<div class="width-label">
 							<select class="form-control"
-								ng-options="i as i.Attribute.AttributeNameEn for i in formData.AttributeSet.AttributeSetMaps track by i.Attribute.AttributeId"
-						       		ng-model="attributeOptions[jth]">
+								ng-options="i as i.Attribute.AttributeNameEn
+								 for i in formData.AttributeSet.AttributeSetMaps | truth: 'Attribute.VariantStatus'
+								 track by i.Attribute.AttributeId "
+						       	ng-model="attributeOptions[jth]">
 							</select>
 						</div>
 						<div class="width-field-normal">
@@ -25,8 +27,7 @@
 									</option>
 								</select>-->
 
-								<ui-select
-								 ng-if="_isListInput(attributeOptions[jth].Attribute.DataType)" 
+								<ui-select ng-if="_isListInput(attributeOptions[jth].Attribute.DataType)" 
 								multiple ng-model="attributeOptions[jth].options">
 									<ui-select-match>
 										{{ $item.AttributeValue.AttributeValueEn || $item }}	
@@ -36,8 +37,7 @@
 									</ui-select-choices>
 								</ui-select>
 			
-								<ui-select
-								 ng-if="_isFreeTextInput(attributeOptions[jth].Attribute.DataType)" 
+								<ui-select ng-if="_isFreeTextInput(attributeOptions[jth].Attribute.DataType)" 
 								multiple tagging tagging-label="" ng-model="attributeOptions[jth].options">
 									<ui-select-match>
 										{{ $item.AttributeValue.AttributeValueEn || $item }}	

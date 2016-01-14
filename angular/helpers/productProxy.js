@@ -40,6 +40,9 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
     			},
     			Variants: function(_variant){
     				var variant = angular.copy(_variant);
+
+    				if(!('VideoLinks' in variant)) variant.VideoLinks = [];
+    				if(!('Images' in variant)) variant.Images = [];	
     				if("queue" in variant) delete variant.queue; //circular
     				variant.Images = variant.Images.map(mapper.Images);
     				variant.Images360 = []; //for future
@@ -75,7 +78,6 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
     		}
 
     		try{
-
     			clean.MasterAttribute = [];
     			Object.keys(fd.MasterAttribute).forEach(function(key){
     				clean.MasterAttribute.push({
@@ -89,7 +91,6 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 
 		try{
 		  clean.Remark = fd.Remark;
-		  //TODO: PrepareDay is not getting through
 		  clean.PrepareDay = fd.PrepareDay || 0;
 		  clean.SEO = fd.SEO;
 		  clean.ControlFlags = fd.ControlFlags;
@@ -115,7 +116,7 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 
 	try{
 		clean.RelatedProducts = [];
-		Object.keys(fd.RelatedProducts).forEach(function(key){
+		Object.keys(fd.RelatedProducts || []).forEach(function(key){
 			clean.RelatedProducts.push(
 				fd.RelatedProducts[key]
 			);
@@ -126,17 +127,26 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 
 	//MasterVariant
 	clean.MasterVariant = fd.MasterVariant;
-	clean.MasterVariant.VideoLinks = [];
+	
 	if(fd.ProductId) clean.ProductId = fd.ProductId;
 
 	try{
-		 clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
+		clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
 	}catch(ex){
-		console.warn("Video Link map error", ex);
+		clean.MasterVariant.VideoLinks = [];
 	}
 
-	clean.MasterVariant.Images360 = fd.MasterImages360.map(mapper.Images);
-	clean.MasterVariant.Images = fd.MasterImages.map(mapper.Images);
+	try{
+		clean.MasterVariant.Images360 = fd.MasterImages360.map(mapper.Images);
+	}catch(ex){
+		clean.MasterVariant.Images360 = [];
+	}
+
+	try{
+		clean.MasterVariant.Images = fd.MasterImages.map(mapper.Images);
+	}catch(ex){
+		clean.MasterVariant.Images = [];
+	}
 
 	try{
 		if(hasVariants){
@@ -170,6 +180,8 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
     tra.inverseTransform = function(invFd, FullAttributeSet){
 
     	console.log('FullAttributeSet', FullAttributeSet);
+
+
 
     	invFd.AttributeSet = FullAttributeSet;
     	invFd.PrepareDay = invFd.PrepareDay;
@@ -258,24 +270,28 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 
     	if(invFd.Variants.length > 0){
 
- 
+ 			var HasTwoAttr = ('AttributeId' in invFd.Variants[0].SecondAttribute);
     		//Generate attributeOptions
     		var map0_index = FullAttributeSet.AttributeSetMaps.map(function(a){
 					return a.Attribute.AttributeId;
 			}).indexOf(invFd.Variants[0].FirstAttribute.AttributeId);
     		
-    		var map1_index = FullAttributeSet.AttributeSetMaps.map(function(a){
+    		var map1_index, SecondArray;
+    		if(HasTwoAttr){
+    			map1_index = FullAttributeSet.AttributeSetMaps.map(function(a){
 					return a.Attribute.AttributeId;
-			}).indexOf(invFd.Variants[0].SecondAttribute.AttributeId);
+				}).indexOf(invFd.Variants[0].SecondAttribute.AttributeId);
+    		}
 
     		var FirstArray = invFd.Variants.map(function(variant){
 	   			return variant.FirstAttribute.ValueEn.trim();
 			});
 
-			var SecondArray = invFd.Variants.map(function(variant){
-	   			return variant.SecondAttribute.ValueEn.trim();
-			});
-
+    		if(HasTwoAttr){
+				SecondArray = invFd.Variants.map(function(variant){
+		   			return variant.SecondAttribute.ValueEn.trim();
+				});
+			}
 
 			console.log(FirstArray, SecondArray, "FSS");
 			//Get updated map from invFd.AttributeSet
@@ -284,12 +300,20 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 				{
 					Attribute: FullAttributeSet.AttributeSetMaps[map0_index].Attribute,
 					options: FirstArray
-				}, 
-				{
-					Attribute: FullAttributeSet.AttributeSetMaps[map1_index].Attribute,
-					options: SecondArray
 				}
 			];
+
+			if(HasTwoAttr){
+				transformed.attributeOptions.push({
+					Attribute: FullAttributeSet.AttributeSetMaps[map1_index].Attribute,
+					options: SecondArray
+				});
+			}else{
+				transformed.attributeOptions.push({
+					Attribute: null,
+					options: []
+				});
+			}
 
 
     	}
