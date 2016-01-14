@@ -14393,3 +14393,8 @@ input.form-control.has-error {
   margin-left: 15px;
   margin-right: 15px;
 }
+
+/* line 176, ../../../assets/screen.scss */
+.disabled-chevron {
+  cursor: not-allowed;
+}
