@@ -1,6 +1,6 @@
 var angular = require('angular');
 
-module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scope, Alert, AttributeSet, Attribute) {
+module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', function($scope, Alert, AttributeSet, Attribute, $window) {
 	$scope.form = {};
 	$scope.formData = {};
 	$scope.tagOptions = [];

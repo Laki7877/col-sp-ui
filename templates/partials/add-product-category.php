@@ -59,4 +59,3 @@
 
 <? $this->insert('components/modal-add-alternative-global-category', ['id' => 'global-category', 'header' => 'Add Alternative Global Category', 'ng_model' => 'viewCategorySelected', 'template' => 'viewCategoryColumns']) ?>
 <? $this->insert('components/modal-add-local-category', ['id' => 'local-category', 'header' => 'Add Local Category', 'ng_model' => 'viewCategorySelected', 'template' => 'viewCategoryColumns']) ?>
-<? $this->insert('components/modal-warning-leave-page', ['id' => 'leave-page-warning']) ?>

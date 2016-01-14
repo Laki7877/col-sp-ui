@@ -386,6 +386,37 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 	$scope.formDataSerialized = {};
 	$scope.edit = 0;
 
+	/*(function () {
+	    var location = $window.document.location;
+
+	    var preventNavigation = function () {
+	        var originalHashValue = location.hash;
+	        
+	        $window.setTimeout(function () {
+	            location.hash = 'preventNavigation' + ~~ (9999 * Math.random());
+	            location.hash = originalHashValue;
+	        }, 0);
+
+			$('#leave-page-warning').modal('show');
+	    };
+	    $window.addEventListener('beforeunload', preventNavigation, false);
+	    $window.addEventListener('unload', preventNavigation, false);
+	})();*/
+	
+	/*
+	$window.onbeforeunload = function (e) {
+		$('#leave-page-warning').modal('show');
+		var message = "Your confirmation message goes here.",
+		e = e || window.event;
+		// For IE and Firefox
+		if (e) {
+		//  e.returnValue = message;
+		}
+
+		//e.preventDefault();
+		// For Safari
+		return message;
+	};*/
 	$scope.init = function(params) {
 		if(angular.isDefined(params)) {
 			//edit mode
@@ -611,7 +642,7 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 },{"angular":57}],7:[function(require,module,exports){
 var angular = require('angular');
 
-module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scope, Alert, AttributeSet, Attribute) {
+module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', function($scope, Alert, AttributeSet, Attribute, $window) {
 	$scope.form = {};
 	$scope.formData = {};
 	$scope.tagOptions = [];
@@ -1078,17 +1109,18 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		message: 'Loading..'
 	};
 
-	$window.onbeforeunload = function (e) {
-		  var message = "Your confirmation message goes here.",
-		  e = e || window.event;
-		  // For IE and Firefox
-		  if (e) {
-		    e.returnValue = message;
-		  }
+/*	$window.onbeforeunload = function (e) {
+		$('#modal-warning-leave-page').modal('show');
+		var message = "Your confirmation message goes here.",
+		e = e || window.event;
+		// For IE and Firefox
+		if (e) {
+		  e.returnValue = message;
+		}
 
-		  // For Safari
-		  return message;
-	};
+		// For Safari
+		return message;
+	};*/
 
 
 
@@ -1688,10 +1720,11 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 }];
 
 },{"angular":57}],14:[function(require,module,exports){
-module.exports = ['$scope', 'Product', 'util', 'Alert',  function($scope, Product, util, Alert) {
+module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($scope, Product, util, Alert, $window) {
 	//UI binding variables
 	$scope.showOnOffStatus = true;
 	$scope.checkAll = false;
+	$scope.alert = new Alert();
 	$scope.filterOptions = [
 		{ name: "All", value: 'All'},
 		{ name: "Approved", value: 'Approved'},
@@ -1736,7 +1769,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert',  function($scope, Produc
 				var arr = util.getCheckedArray($scope.productList).map(function(elem) {
 					return {
 						ProductId: elem.ProductId,
-						Status: 'VI'
+						Visibility: true
 					};
 				});
 
@@ -1754,7 +1787,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert',  function($scope, Produc
 				var arr = util.getCheckedArray($scope.productList).map(function(elem) {
 					return {
 						ProductId: elem.ProductId,
-						Status: 'NV'
+						Visibility: false
 					};
 				});
 
@@ -1768,11 +1801,11 @@ module.exports = ['$scope', 'Product', 'util', 'Alert',  function($scope, Produc
 	];
 	$scope.actions = {
 		edit: function(row) {
-			$window.location.href="/admin/attributes/" + row.AttributeId;
+			$window.location.href="/products/" + row.ProductId;
 		},
 		delete: function(row) {
 			$scope.alert.close();
-			Attribute.deleteBulk([{AttributeId: row.AttributeId}]).then(function() {
+			Product.deleteBulk([{ProductId: row.ProductId}]).then(function() {
 				$scope.alert.success('You have successfully remove an entry.');
 				$scope.reloadData();
 			}, function(err) {
@@ -1781,9 +1814,17 @@ module.exports = ['$scope', 'Product', 'util', 'Alert',  function($scope, Produc
 		},
 		duplicate: function(row) {
 			$scope.alert.close();
-			Attribute.duplicate(row.AttributeId).then(function() {
+			Product.duplicate(row.ProductId).then(function() {
 				$scope.alert.success();
 				$scope.reloadData();
+			}, function(err) {
+				$scope.alert.error(err);
+			});
+		},
+		toggle: function(row) {
+			$scope.alert.close();
+			row.Visibility = !row.Visibility;
+			Product.visible([row]).then(function() {
 			}, function(err) {
 				$scope.alert.error(err);
 			});
@@ -1803,6 +1844,13 @@ module.exports = ['$scope', 'Product', 'util', 'Alert',  function($scope, Produc
 			}
 
 	}
+	$scope.init = function(params) {
+		if(angular.isDefined(params)) {
+			if(angular.isDefined(params.success) && params.success != null) {
+				$scope.alert.success();
+			}
+		}
+	};
 	$scope.asStatus = function(ab){
 		return StatusLookup[ab];
 	};
@@ -1846,7 +1894,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert',  function($scope, Produc
 
  	$scope.productTotal = 0;
 	//Populate Data Source
-	var reloadData = function(){
+	$scope.reloadData = function(){
 		$scope.productList = [];
 		$scope.notReady = true;
 		Product.getAll($scope.tableParams).then(function(x){
@@ -1858,7 +1906,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert',  function($scope, Produc
 
 	//Watch any change in table parameter, trigger reload
 	$scope.$watch('tableParams', function(){
-		reloadData();
+		$scope.reloadData();
 	}, true);
 
 

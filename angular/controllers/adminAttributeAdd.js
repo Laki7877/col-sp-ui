@@ -11,6 +11,37 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 	$scope.formDataSerialized = {};
 	$scope.edit = 0;
 
+	/*(function () {
+	    var location = $window.document.location;
+
+	    var preventNavigation = function () {
+	        var originalHashValue = location.hash;
+	        
+	        $window.setTimeout(function () {
+	            location.hash = 'preventNavigation' + ~~ (9999 * Math.random());
+	            location.hash = originalHashValue;
+	        }, 0);
+
+			$('#leave-page-warning').modal('show');
+	    };
+	    $window.addEventListener('beforeunload', preventNavigation, false);
+	    $window.addEventListener('unload', preventNavigation, false);
+	})();*/
+	
+	/*
+	$window.onbeforeunload = function (e) {
+		$('#leave-page-warning').modal('show');
+		var message = "Your confirmation message goes here.",
+		e = e || window.event;
+		// For IE and Firefox
+		if (e) {
+		//  e.returnValue = message;
+		}
+
+		//e.preventDefault();
+		// For Safari
+		return message;
+	};*/
 	$scope.init = function(params) {
 		if(angular.isDefined(params)) {
 			//edit mode

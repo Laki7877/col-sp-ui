@@ -11,17 +11,18 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		message: 'Loading..'
 	};
 
-	$window.onbeforeunload = function (e) {
-		  var message = "Your confirmation message goes here.",
-		  e = e || window.event;
-		  // For IE and Firefox
-		  if (e) {
-		    e.returnValue = message;
-		  }
+/*	$window.onbeforeunload = function (e) {
+		$('#modal-warning-leave-page').modal('show');
+		var message = "Your confirmation message goes here.",
+		e = e || window.event;
+		// For IE and Firefox
+		if (e) {
+		  e.returnValue = message;
+		}
 
-		  // For Safari
-		  return message;
-	};
+		// For Safari
+		return message;
+	};*/
 
 
 

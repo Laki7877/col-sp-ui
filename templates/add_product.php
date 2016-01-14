@@ -15,6 +15,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 			<?=$key?> : '<?=$value?>'	
 		<?php endforeach; ?>
 		})">
+
+		<? $this->insert('components/modal-warning-leave-page', ['id' => 'leave-page-warning']) ?>
 		
 		<form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
 		<? $this->insert('components/page-title-breadcrumb', ['text' => "Products/ " . $title, 'urls' => ['/products']]) ?>

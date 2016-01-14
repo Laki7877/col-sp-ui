@@ -1,8 +1,7 @@
 <?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product']) ?>
 
 <?php $this->start('page-body') ?>
-<div ng-controller="ProductListCtrl">
-
+<div ng-controller="ProductListCtrl" ng-init="init(<?= $params ?>)">
     <? $this->insert('components/page-title-with-buttons', ['text' => 'Products']) ?>
     <div class="row search-section-wrapper">
       <form ng-submit="bulk.fn()" class="search-section section-action">
@@ -67,10 +66,12 @@
               <a><span>Modified</span></a>
               <i class="fa" ng-class="sort('UpdatedDt')">
             </th>
+            <th>
+              Action
+            </th>
           </tr>
         </thead>
         <tbody>
-      	  <tr ng-if="notReady"><td colspan="9"><center>Loading..</center></td></tr>
       	  <tr ng-repeat="row in productList" >
                   <td class="checkbox-column">
                     <input type="checkbox" aria-label="Checkbox for following text input" ng-model="row.checked">
@@ -101,9 +102,15 @@
                     <i class="fa fa-circle color-grey"></i>
                   </td>
                   <td class="visible-column">
-                    <i class="fa color-grey eye-icon" ng-class="{'fa-eye-slash': row.Visible, 'fa-eye': row.Visible}"></i>
+                   
+              <a ng-click="actions.toggle(row)"><i ng-class="{'fa fa-eye-slash color-grey eye-icon' : !row.Visibility,
+                            'fa fa-eye color-dark-grey eye-icon' : row.Visibility}"></i></a>
                   </td>
                   <td class="modified-column">{{ row.UpdatedDt | date:'shortDate':'+700' }}</td>
+                  <td class="action-column">
+                    <i class="fa fa-gear color-dark-grey icon-size-20"></i>
+                    <i class="fa fa-caret-down color-dark-grey" uib-popover-template="'product/action'" popover-placement="bottom" popover-append-to-body="true" popover-any></i>
+                  </td>
           </tr>
         </tbody>
       </table>
