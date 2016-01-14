@@ -1,16 +1,19 @@
 <div class="category-content row no-margin">
 	<div class="category-content-padding">
-		<span class="col-xs-7 column-lc-name">
-			<span class="lc-icon-name-warpper">
+		<span class="col-xs-7 column-lc-name" >
+			<span class="lc-icon-name-warpper" ui-tree-handle>
 				<i 	class ="fa toggle-button"
 					ng-if="node.nodes && node.nodes.length > 0"
 					ng-class="{	'fa-chevron-down' : !collapsed,
 								'fa-chevron-right' : collapsed }"
-					ng-click="toggle(this)"></i>
+					ng-click="toggle(this)"
+					data-nodrag ></i>
 				<i  class = "fa fa-level-up fa-rotate-90 caret-grey"
-					ng-if="(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0"></i>
+					ng-if="(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0"
+					data-nodrag></i>
 				<span class="no-children-row"
-					ng-if="$parentNodesScope.depth() == 0"></span>
+					ng-if="$parentNodesScope.depth() == 0"
+					data-nodrag></span>
 				<span class="inline-block">{{ node.NameEn }}</span>
 			</span>
 		</span>
@@ -24,7 +27,7 @@
 			<i class="fa fa-gear color-dark-grey icon-size-20"></i>
 			<i class="fa fa-caret-down color-dark-grey" uib-popover-template="'global_category/nodes_action'" popover-placement="bottom" popover-append-to-body="true" popover-any></i>	
 		</span>
-		<span class="col-xs-1 text-align-center" ui-tree-handle>
+		<span class="col-xs-1 text-align-center">
 			<i class="fa fa-arrows color-dark-grey icon-size-20"></i>
 		</span>
 	</div>

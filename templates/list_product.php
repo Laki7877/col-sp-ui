@@ -25,7 +25,7 @@
               </a>
             </th>
             <th class="price-column">
-              <a ng-click="setOrderBy('SalePrice')"><span>Sale Price</span></a>
+              <a ng-click="setOrderBy('SalePrice')"><span>Price</span></a>
               <span class="caret caret-grey"></span>
             </th>
             <th><span>Info.</span></th>

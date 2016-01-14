@@ -8,9 +8,9 @@
 			<div class="form-section">
 				<div class="form-section-header"><input type="checkbox" /> <span>Embed Video</span></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 1", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "This is a tooltip", "ng_model" => "formData.VideoLinks[0]"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 2", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "This is a tooltip", "ng_model" => "formData.VideoLinks[1]"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 3", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "This is a tooltip", "ng_model" => "formData.VideoLinks[2]"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 1", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "Only YouTube link is allowed.", "ng_model" => "formData.VideoLinks[0]"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 2", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "Only YouTube link is allowed.", "ng_model" => "formData.VideoLinks[1]"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 3", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "Only YouTube link is allowed.", "ng_model" => "formData.VideoLinks[2]"]) ?>
 				</div>
 			</div>
 		</div>
