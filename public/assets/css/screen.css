@@ -12359,136 +12359,141 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 
 /* line 53, ../../../assets/_atomic.scss */
+.margin-bottom-0 {
+  margin-bottom: 0px;
+}
+
+/* line 57, ../../../assets/_atomic.scss */
 .padding-left-15 {
   padding-left: 15px;
 }
 
-/* line 57, ../../../assets/_atomic.scss */
+/* line 61, ../../../assets/_atomic.scss */
 .padding-left-30 {
   padding-left: 30px;
 }
 
-/* line 61, ../../../assets/_atomic.scss */
+/* line 65, ../../../assets/_atomic.scss */
 .padding-right-15 {
   padding-right: 15px;
 }
 
-/* line 65, ../../../assets/_atomic.scss */
+/* line 69, ../../../assets/_atomic.scss */
 .padding-right-30 {
   padding-right: 30px;
 }
 
-/* line 69, ../../../assets/_atomic.scss */
+/* line 73, ../../../assets/_atomic.scss */
 .padding-bottom-30 {
   padding-bottom: 30px;
 }
 
-/* line 73, ../../../assets/_atomic.scss */
+/* line 77, ../../../assets/_atomic.scss */
 .padding-bottom-60 {
   padding-bottom: 60px;
 }
 
-/* line 77, ../../../assets/_atomic.scss */
+/* line 81, ../../../assets/_atomic.scss */
 .padding-top-30 {
   padding-top: 30px;
 }
 
-/* line 81, ../../../assets/_atomic.scss */
+/* line 85, ../../../assets/_atomic.scss */
 .no-margin {
   margin: 0;
 }
 
-/* line 85, ../../../assets/_atomic.scss */
+/* line 89, ../../../assets/_atomic.scss */
 .no-padding {
   padding: 0;
 }
 
-/* line 89, ../../../assets/_atomic.scss */
+/* line 93, ../../../assets/_atomic.scss */
 .float-left {
   float: left;
 }
 
-/* line 93, ../../../assets/_atomic.scss */
+/* line 97, ../../../assets/_atomic.scss */
 .float-right {
   float: right;
 }
 
-/* line 97, ../../../assets/_atomic.scss */
+/* line 101, ../../../assets/_atomic.scss */
 .color-theme-light {
   color: #b4ddff;
 }
 
-/* line 101, ../../../assets/_atomic.scss */
+/* line 105, ../../../assets/_atomic.scss */
 .color-theme {
   color: #4899DD;
 }
 
-/* line 105, ../../../assets/_atomic.scss */
+/* line 109, ../../../assets/_atomic.scss */
 .color-grey {
   color: #BCC7D5;
 }
 
-/* line 109, ../../../assets/_atomic.scss */
+/* line 113, ../../../assets/_atomic.scss */
 .color-green {
   color: #33bb5b;
 }
 
-/* line 113, ../../../assets/_atomic.scss */
+/* line 117, ../../../assets/_atomic.scss */
 .color-dark-green {
   color: #68d485;
 }
 
-/* line 117, ../../../assets/_atomic.scss */
+/* line 121, ../../../assets/_atomic.scss */
 .color-red {
   color: #ec0000;
 }
 
-/* line 121, ../../../assets/_atomic.scss */
+/* line 125, ../../../assets/_atomic.scss */
 .color-dark-grey {
   color: #7B7F8F;
 }
 
-/* line 125, ../../../assets/_atomic.scss */
+/* line 129, ../../../assets/_atomic.scss */
 .color-yellow {
   color: #f5a623;
 }
 
-/* line 129, ../../../assets/_atomic.scss */
+/* line 133, ../../../assets/_atomic.scss */
 .vertical-align-middle {
   vertical-align: middle;
 }
 
-/* line 133, ../../../assets/_atomic.scss */
+/* line 137, ../../../assets/_atomic.scss */
 .text-align-center {
   text-align: center;
 }
 
-/* line 141, ../../../assets/_atomic.scss */
+/* line 145, ../../../assets/_atomic.scss */
 .hide-component {
   display: none;
 }
 
-/* line 145, ../../../assets/_atomic.scss */
+/* line 149, ../../../assets/_atomic.scss */
 .font-size-18 {
   font-size: 18px;
 }
 
-/* line 149, ../../../assets/_atomic.scss */
+/* line 153, ../../../assets/_atomic.scss */
 .icon-size-20 {
   font-size: 20px;
 }
 
-/* line 153, ../../../assets/_atomic.scss */
+/* line 157, ../../../assets/_atomic.scss */
 .margin-0 {
   margin: 0;
 }
 
-/* line 157, ../../../assets/_atomic.scss */
+/* line 161, ../../../assets/_atomic.scss */
 .font-weight-bold {
   font-weight: bold;
 }
 
-/* line 161, ../../../assets/_atomic.scss */
+/* line 165, ../../../assets/_atomic.scss */
 .opacity-1 {
   opacity: 1;
 }
@@ -13702,14 +13707,12 @@ html, body {
   float: left;
   list-style: none;
   margin-left: 30px;
+  margin-bottom: 40px;
 }
-/* line 82, ../../../assets/_add_product_page.sass */
-.image-vertical-list .list-item:first-child, .image-vertical-list .list-section-break:first-child {
-  margin-left: 0;
-}
-/* line 85, ../../../assets/_add_product_page.sass */
+/* line 84, ../../../assets/_add_product_page.sass */
 .image-vertical-list .list-section-break {
   border-left: 1px dashed #BCC7D5;
+  display: none;
 }
 
 /* line 88, ../../../assets/_add_product_page.sass */

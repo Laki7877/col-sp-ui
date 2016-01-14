@@ -17,8 +17,7 @@
 			<?php endif; ?>
 		</div>
 	</div>
-	<div class="section-break"></div>
-	<div class="form-section-content padding-left-15 padding-right-15">
+	<div class="form-section-content padding-left-15 padding-right-15" style="margin-bottom:0px;">
 		<? $this->insert('components/image-thumbs-list', [
 			"sep" => 1,
 			"action" => 4, 
