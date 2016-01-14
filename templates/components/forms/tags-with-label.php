@@ -2,9 +2,9 @@
 	<div class="width-label"><label class="control-label <?=$label_class?>"><?= $label ?></label></div>
 	<div class="width-field-xl">
 		<div class="bootstrap-tagsinput tagsinput-plain">
-			<span class="tag label label-info">Eneloop</span>
-			<span class="tag label label-info">แบตไอโฟน</span>
-			<span class="tag label label-info">Extra Battery</span>
+			<a class="tag label label-info" ng-click="formData.Keywords.push('Eneloop')">Eneloop</a>
+			<a class="tag label label-info" ng-click="formData.Keywords.push('แบตไอโฟน')">แบตไอโฟน</a>
+			<a class="tag label label-info" ng-click="formData.Keywords.push('Extra Battery')">Extra Battery</a>
 		</div>
 	</div>
 </div>

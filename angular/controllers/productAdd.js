@@ -94,7 +94,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		GlobalCategories: [null, null, null],
 		LocalCategories: [null, null, null],
 		SEO: {},
-		ControlFlags: []
+		ControlFlags: [],
+		Keywords: []
 	};
 
 	//CK editor options

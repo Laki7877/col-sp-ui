@@ -36,6 +36,7 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 		trigger: 'clickanystart'
 	});
 	uiSelectConfig.appendToBody = true;
+	uiSelectConfig.taggingTokens = [',', 'ENTER']
 }])
 
 //App template cache load
