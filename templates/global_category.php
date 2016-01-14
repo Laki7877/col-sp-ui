@@ -3,7 +3,7 @@
 <?php $this->start('page-body') ?>
 	<div ng-controller="ProductAddSelectCategoryCtrl" class="global-category-page">
 		<? $this->insert('components/page-title-breadcrumb-border', ['text' => 'Products/Add Product', 'urls' => ['/products']]) ?>
-		<form class="ah-form margin-top-30" method="POST" action="/products/add">
+		<form ng-submit="validate($event)" class="ah-form margin-top-30" method="POST" action="/products/add">
 			<input type="hidden" name="category" ng-value="selected.CategoryId" />
 <!--			<div class="global-category-radio-section ">
 				<span>Type of upload</span>

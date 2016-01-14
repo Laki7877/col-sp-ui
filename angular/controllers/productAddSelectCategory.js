@@ -2,8 +2,13 @@ var angular = require('angular');
 
 module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Category, GlobalCategory) {
 	'use strict';
-	$scope.selected = {};
+	$scope.selected = null;
 	$scope.columns = [];
+	$scope.validate = function(e){
+		if(null === $scope.selected){
+			e.preventDefault();
+		}
+	};
 
 	//Get global cat from api
 	GlobalCategory.getAll().then(function(data) {
