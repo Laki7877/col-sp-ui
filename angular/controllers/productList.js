@@ -15,7 +15,7 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 	$scope.tableParams = {
 		filter: 0,
 		searchText: null,
-		orderBy: 'ProductNameEn',
+		orderBy: 'ProductId',
 		direction: 'desc',
 		page: 0,
 		pageSize: 8

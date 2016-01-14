@@ -497,8 +497,12 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 	};
 }];
 },{"angular":54}],8:[function(require,module,exports){
+var angular = require('angular');
 
-},{}],9:[function(require,module,exports){
+module.exports = ['$scope','util', 'config', 'Brand', function($scope, util, config, Brand){
+	
+}];
+},{"angular":54}],9:[function(require,module,exports){
 module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory', 'AttributeSet',  function($scope, $rootScope, common, Category, GlobalCategory, AttributeSet){
 	$scope.categories = [];
 	$scope.attributeSetOptions = [];
@@ -704,7 +708,10 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	};
 
 	$scope.refreshBrands = function(q){
-		Brand.getAll(q).then(function(dataSet){
+		Brand.getAll({
+			pageSize: 5,
+			searchText: q
+		}).then(function(dataSet){
 			$scope.availableBrands = dataSet.data;
 		});			
 	};
@@ -798,13 +805,13 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 					$scope._loading.message = "Setting up watch..";
 
-					$scope.$watch('attributeOptions[0].Attribute', function(){
-						tabPage.variation.initSelect2(0);
-					});
+					// $scope.$watch('attributeOptions[0].Attribute', function(){
+					// 	tabPage.variation.initSelect2(0);
+					// });
 
-					$scope.$watch('attributeOptions[1].Attribute', function(){
-						tabPage.variation.initSelect2(1);
-					});
+					// $scope.$watch('attributeOptions[1].Attribute', function(){
+					// 	tabPage.variation.initSelect2(1);
+					// });
 
 					$scope.$watch('attributeOptions', function(){
 
@@ -816,36 +823,39 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 						});
 
 						//Multiply out unmultiplied options
-						for(var aKey in $scope.attributeOptions[0].options){
-							var A = $scope.attributeOptions[0].options[aKey];
-							for(var bKey in $scope.attributeOptions[1].options){
-								var B = $scope.attributeOptions[1].options[bKey];
+						if($scope.attributeOptions && Object.keys($scope.attributeOptions).length > 0){
+							for(var aKey in $scope.attributeOptions[0].options){
+								var A = $scope.attributeOptions[0].options[aKey];
+								for(var bKey in $scope.attributeOptions[1].options){
+									var B = $scope.attributeOptions[1].options[bKey];
 
-								if(A['AttributeValue']){
-									A = A.AttributeValue.AttributeValueEn;
+									if(A['AttributeValue']){
+										A = A.AttributeValue.AttributeValueEn;
+									}
+									if(B['AttributeValue']){
+										B = B.AttributeValue.AttributeValueEn;
+									}
+
+									var kpair = new VariantPair({
+										AttributeId: $scope.attributeOptions[0].Attribute.AttributeId,
+										ValueEn: A
+									},{
+										AttributeId: $scope.attributeOptions[1].Attribute.AttributeId,
+										ValueEn: B
+									});
+
+									//Only push if don't exist
+									if(!(kpair.hash in variantHashes)){
+										$scope.formData.Variants.push(kpair);
+									}
+
+									//Mark hash as used
+									//This will not be deleted
+									variantHashes[kpair.hash] = -1;
 								}
-								if(B['AttributeValue']){
-									B = B.AttributeValue.AttributeValueEn;
-								}
-
-								var kpair = new VariantPair({
-									AttributeId: $scope.attributeOptions[0].Attribute.AttributeId,
-									ValueEn: A
-								},{
-									AttributeId: $scope.attributeOptions[1].Attribute.AttributeId,
-									ValueEn: B
-								});
-
-								//Only push if don't exist
-								if(!(kpair.hash in variantHashes)){
-									$scope.formData.Variants.push(kpair);
-								}
-
-								//Mark hash as used
-								//This will not be deleted
-								variantHashes[kpair.hash] = -1;
 							}
 						}
+						
 
 						//Remove deleted variants
 						for(var rhash in variantHashes){
@@ -863,7 +873,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 					$scope._loading.message = "Crunching Data..";
 
 					//Dependency Chain
-					//  catId -> AttributeSet -> Inverse
+					//catId -> AttributeSet -> Inverse
 
 					console.log("Before Inverse Transformation", ivFormData);
 					var inverseResult = productProxy.inverseTransform(ivFormData, FullAttributeSet);
@@ -1229,7 +1239,7 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 	$scope.tableParams = {
 		filter: 0,
 		searchText: null,
-		orderBy: 'ProductNameEn',
+		orderBy: 'ProductId',
 		direction: 'desc',
 		page: 0,
 		pageSize: 8
@@ -1365,8 +1375,8 @@ module.exports = ['$rootScope', function($rootScope) {
 	//Root ctrl
 }];
 },{}],16:[function(require,module,exports){
-arguments[4][8][0].apply(exports,arguments)
-},{"dup":8}],17:[function(require,module,exports){
+
+},{}],17:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$templateCache', function($templateCache) {
 	return {
@@ -2403,10 +2413,26 @@ module.exports = ['common', function(common){
 },{}],35:[function(require,module,exports){
 module.exports = ['$q', 'common', function($q, common){
 	var service = {};
-	service.getAll = function(q){
+	//TODO: change searchText -> q
+	//TODO: not clean
+	service.getAll = function(params){
+
+		var _params = {
+			_limit: 5,
+			_order: params.orderBy || 'BrandId',
+			_limit: params.pageSize || 10,
+			_offset: params.page * params.pageSize || 0,
+			_direction: params.direction || 'asc'
+		};
+
+		if(params.searchText){
+			_params.searchText = params.searchText;
+		}
+
 		return common.makeRequest({
 			method: 'GET',
-			url: '/Brands/?_limit=5' + (q ? '&searchText=' + q : '')
+			url: '/Brands/',
+			params: _params
 		});
 
 	}
@@ -2420,7 +2446,6 @@ module.exports = ['$q', 'common', function($q, common){
 	}
 	return service;
 }];
-
 },{}],36:[function(require,module,exports){
 /**
  * Util class for category
@@ -2815,12 +2840,14 @@ module.exports = ['$q', '$http', 'common', function($q, $http, common){
 	service.publish = function(tobj, Status){
 		tobj.Status = Status;
 		var mode = 'POST';
+		var path  = '/ProductStages';
 		if(tobj.ProductId){
 			mode = 'PUT';
+			path = path + '/' + tobj.ProductId;
 		}
 		return common.makeRequest({
 			method: mode,
-		        url: '/ProductStages',
+		        url: path,
 		        data: tobj
 		});
 	};
@@ -2852,7 +2879,7 @@ module.exports = ['common', function(common) {
 },{}],42:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Jan 14 2016 01:34:18 GMT+0700 (SE Asia Standard Time)
+ * Thu Jan 14 2016 11:14:26 GMT+0700 (ICT)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -2907,10 +2934,8 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('global_category/nodes',
-    "<div class=\"category-content row no-margin\"><div class=category-content-padding><span class=\"col-xs-7 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this)></i> <i class=\"fa fa-level-up fa-rotate-90 caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\"></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\"></span> <span class=inline-block>{{ node.NameEn }}</span></span></span> <span class=col-xs-1>{{ node.CategoryAbbreviation }}</span> <span class=col-xs-1>{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\"><i ng-class=\"{\t'fa fa-eye color-dark-grey icon-size-20' : node.Status == 'AT',\r" +
-    "\n" +
+    "<div class=\"category-content row no-margin\"><div class=category-content-padding><span class=\"col-xs-7 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\n" +
+    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this)></i> <i class=\"fa fa-level-up fa-rotate-90 caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\"></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\"></span> <span class=inline-block>{{ node.NameEn }}</span></span></span> <span class=col-xs-1>{{ node.CategoryAbbreviation }}</span> <span class=col-xs-1>{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\"><i ng-class=\"{\t'fa fa-eye color-dark-grey icon-size-20' : node.Status == 'AT',\n" +
     "\t\t\t\t\t\t\t'fa fa-eye-slash color-grey icon-size-20' : node.Status != 'AT' }\"></i></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-gear color-dark-grey icon-size-20\"></i> <i class=\"fa fa-caret-down color-dark-grey\" uib-popover-template=\"'global_category/nodes_action'\" popover-placement=bottom popover-append-to-body=true popover-any></i></span> <span class=\"col-xs-1 text-align-center\" ui-tree-handle><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'global_category/nodes'\"></li></ol>"
   );
 
@@ -2921,10 +2946,8 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('local_category/nodes',
-    "<div class=\"category-content row no-margin\"><div class=category-content-padding><span class=\"col-xs-8 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this)></i> <i class=\"fa fa-level-up fa-rotate-90 caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\"></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\"></span> <span class=inline-block>{{ node.NameEn }}</span></span></span> <span class=col-xs-1>{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\"><i ng-class=\"{\t'fa fa-eye color-dark-grey icon-size-20' : node.Status == 'AT',\r" +
-    "\n" +
+    "<div class=\"category-content row no-margin\"><div class=category-content-padding><span class=\"col-xs-8 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\n" +
+    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this)></i> <i class=\"fa fa-level-up fa-rotate-90 caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\"></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\"></span> <span class=inline-block>{{ node.NameEn }}</span></span></span> <span class=col-xs-1>{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\"><i ng-class=\"{\t'fa fa-eye color-dark-grey icon-size-20' : node.Status == 'AT',\n" +
     "\t\t\t\t\t\t\t'fa fa-eye-slash color-grey icon-size-20' : node.Status != 'AT' }\"></i></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-gear color-dark-grey icon-size-20\"></i> <i class=\"fa fa-caret-down color-dark-grey\" uib-popover-template=\"'local_category/nodes_action'\" popover-placement=bottom popover-append-to-body=true popover-any></i></span> <span class=\"col-xs-1 text-align-center\" ui-tree-handle><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'local_category/nodes'\"></li></ol>"
   );
 

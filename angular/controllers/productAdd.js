@@ -28,7 +28,10 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 	};
 
 	$scope.refreshBrands = function(q){
-		Brand.getAll(q).then(function(dataSet){
+		Brand.getAll({
+			pageSize: 5,
+			searchText: q
+		}).then(function(dataSet){
 			$scope.availableBrands = dataSet.data;
 		});			
 	};
@@ -122,13 +125,13 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 					$scope._loading.message = "Setting up watch..";
 
-					$scope.$watch('attributeOptions[0].Attribute', function(){
-						tabPage.variation.initSelect2(0);
-					});
+					// $scope.$watch('attributeOptions[0].Attribute', function(){
+					// 	tabPage.variation.initSelect2(0);
+					// });
 
-					$scope.$watch('attributeOptions[1].Attribute', function(){
-						tabPage.variation.initSelect2(1);
-					});
+					// $scope.$watch('attributeOptions[1].Attribute', function(){
+					// 	tabPage.variation.initSelect2(1);
+					// });
 
 					$scope.$watch('attributeOptions', function(){
 
@@ -140,36 +143,39 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 						});
 
 						//Multiply out unmultiplied options
-						for(var aKey in $scope.attributeOptions[0].options){
-							var A = $scope.attributeOptions[0].options[aKey];
-							for(var bKey in $scope.attributeOptions[1].options){
-								var B = $scope.attributeOptions[1].options[bKey];
+						if($scope.attributeOptions && Object.keys($scope.attributeOptions).length > 0){
+							for(var aKey in $scope.attributeOptions[0].options){
+								var A = $scope.attributeOptions[0].options[aKey];
+								for(var bKey in $scope.attributeOptions[1].options){
+									var B = $scope.attributeOptions[1].options[bKey];
 
-								if(A['AttributeValue']){
-									A = A.AttributeValue.AttributeValueEn;
+									if(A['AttributeValue']){
+										A = A.AttributeValue.AttributeValueEn;
+									}
+									if(B['AttributeValue']){
+										B = B.AttributeValue.AttributeValueEn;
+									}
+
+									var kpair = new VariantPair({
+										AttributeId: $scope.attributeOptions[0].Attribute.AttributeId,
+										ValueEn: A
+									},{
+										AttributeId: $scope.attributeOptions[1].Attribute.AttributeId,
+										ValueEn: B
+									});
+
+									//Only push if don't exist
+									if(!(kpair.hash in variantHashes)){
+										$scope.formData.Variants.push(kpair);
+									}
+
+									//Mark hash as used
+									//This will not be deleted
+									variantHashes[kpair.hash] = -1;
 								}
-								if(B['AttributeValue']){
-									B = B.AttributeValue.AttributeValueEn;
-								}
-
-								var kpair = new VariantPair({
-									AttributeId: $scope.attributeOptions[0].Attribute.AttributeId,
-									ValueEn: A
-								},{
-									AttributeId: $scope.attributeOptions[1].Attribute.AttributeId,
-									ValueEn: B
-								});
-
-								//Only push if don't exist
-								if(!(kpair.hash in variantHashes)){
-									$scope.formData.Variants.push(kpair);
-								}
-
-								//Mark hash as used
-								//This will not be deleted
-								variantHashes[kpair.hash] = -1;
 							}
 						}
+						
 
 						//Remove deleted variants
 						for(var rhash in variantHashes){
@@ -187,7 +193,7 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 					$scope._loading.message = "Crunching Data..";
 
 					//Dependency Chain
-					//  catId -> AttributeSet -> Inverse
+					//catId -> AttributeSet -> Inverse
 
 					console.log("Before Inverse Transformation", ivFormData);
 					var inverseResult = productProxy.inverseTransform(ivFormData, FullAttributeSet);

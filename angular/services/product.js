@@ -31,12 +31,14 @@ module.exports = ['$q', '$http', 'common', function($q, $http, common){
 	service.publish = function(tobj, Status){
 		tobj.Status = Status;
 		var mode = 'POST';
+		var path  = '/ProductStages';
 		if(tobj.ProductId){
 			mode = 'PUT';
+			path = path + '/' + tobj.ProductId;
 		}
 		return common.makeRequest({
 			method: mode,
-		        url: '/ProductStages',
+		        url: path,
 		        data: tobj
 		});
 	};
