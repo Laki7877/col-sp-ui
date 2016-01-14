@@ -29,15 +29,17 @@ module.exports = ['$q', 'common', function($q, common){
 			method: 'GET',
 			url: '/Brands/' + id
 		});
+	}
 
-	};
-	service.create = function(obj) {
+	service.publish = function(tobj, Status){
+		tobj.Status = Status;
+		var mode = 'POST';
+		var path  = '/Brands';
 		return common.makeRequest({
-			method: 'POST',
-			url: '/Brands'
+			method: mode,
+		    url: path,
+		    data: tobj
 		});
-	};
-	service.update = function(obj) {
 	};
 	return service;
 }];

@@ -20,8 +20,9 @@
             </th>
             <th class="display-column"></th>
             <th>
-              <a ng-click="setOrderBy('ProductNameEn')"><span>Product Name</span></a>
+              <a ng-click="setOrderBy('ProductNameEn')"><span>Product Name</span>
               <span class="caret caret-grey"></span>
+              </a>
             </th>
             <th class="price-column">
               <a ng-click="setOrderBy('SalePrice')"><span>Sale Price</span></a>
@@ -36,7 +37,7 @@
             <th class="visible-column">Visible</th>
             <th class="modified-column">
               <a ng-click="setOrderBy('UpdatedDt')">Modified<span>
-              <span class="caret"></span>
+              <span class="caret caret-grey"></span>
             </th>
           </tr>
         </thead>
@@ -69,7 +70,7 @@
                     </span>
                   </td>
                   <td class="live-column" ng-if="showOnOffStatus">
-                    <i class="fa fa-circle color-green"></i>
+                    <i class="fa fa-circle color-grey"></i>
                   </td>
                   <td class="visible-column">
                     <i class="fa color-grey eye-icon" ng-class="{'fa-eye-slash': row.Visible, 'fa-eye': row.Visible}"></i>
@@ -96,7 +97,7 @@
       <span>
 	<!-- prev page button -->
 	<a ng-click="nextPage(-1)">
-		<i class="fa fa-chevron-left" ng-class="{'grey-chevron': tableParams.page == 0}"></i>
+		<i class="fa fa-chevron-left" ng-class="{'grey-chevron disabled-chevron': tableParams.page == 0}"></i>
 	</a>
 	<span> Page {{ tableParams.page + 1 }} of {{ totalPage() }}</span>
 	<!-- next page button -->
@@ -112,7 +113,7 @@
             <span class="sr-only">Toggle Dropdown</span>
           </button>
           <ul class="dropdown-menu dropdown-menu-right">
-            <li ng-repeat="i in [20, 30, 500]"><a ng-click="setPageSize(i)"> {{ i }}</a></li>
+            <li ng-repeat="i in [20, 50, 100]"><a ng-click="setPageSize(i)"> {{ i }}</a></li>
           </ul>
         </div>
       </span>

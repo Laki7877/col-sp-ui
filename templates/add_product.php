@@ -47,9 +47,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 						<div class="float-right">
 							<a href="/products" class="link-btn-plain">Cancel</a>
 
-							<button class="btn btn-white btn-width-xl" ng-click="preview()">Preview</button>
-							<button class="btn btn-white btn-width-xl" type="submit"ng-click="publish('DF')">Save as Draft</button>
-							<button ng-disabled="addProductForm.$invalid" type="submit" class="btn btn-blue btn-width-xl" ng-click="publish('WA')">Publish</button>
+							<button ng-show="formData.Status != 'WA'" class="btn btn-white btn-width-xl" ng-click="preview()">Preview</button>
+							<button ng-show="formData.Status != 'WA'" class="btn btn-white btn-width-xl" type="submit"ng-click="publish('DF')">Save as Draft</button>
+							<button ng-show="formData.Status != 'WA'" ng-disabled="addProductForm.$invalid" type="submit" class="btn btn-blue btn-width-xl" ng-click="publish('WA')">Publish</button>
 						</div>
 					</div>
 				</div>
