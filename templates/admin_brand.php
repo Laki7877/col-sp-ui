@@ -3,8 +3,36 @@
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminBrandCtrl">
     <? $this->insert('components/page-title-with-one-button', ['text' => 'Brand','button' => 'Add Brand', 'button_class' => 'btn-width-xl', 'link' => '?p=admin_add_brand']) ?>
-    <? $this->insert('components/search-section-admin-attribute') ?>
-
+  <div class="row search-section-wrapper">
+    <div class="search-section section-action">
+      <div class="input-group">
+        <div class="input-group-btn">
+          <div class="dropdown-btn">
+            <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                <span class="dropdown-text margin-right-10 search-prodcut-text">- Choose Action -</span>
+                <span class="caret margin-left-10"></span>
+            </button>
+            <ul class="dropdown-menu search-product-dropdown">
+              <li><a href="#">Delete</a></li>
+            </ul>
+          </div>
+        </div><!-- /btn-group -->
+        <div class="input-group-btn">
+          <button type="button" class="btn-white btn">
+            <span class="button-text-blue">Confirm</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <form ng-submit="applySearch()" class="search-section section-search">
+      <div class="input-group">
+        <input ng-model="params.searchText" type="text" class="form-control input-search-icon search-box" ng-model="searchText" placeholder="Search" aria-describedby="basic-addon2">
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-white">Search</button>
+        </span>
+      </div>
+    </form>
+  </div>
     <div class="table-section">
       <table class="table table-curved">
         <thead>
@@ -31,38 +59,18 @@
         </thead>
         <tbody>
           
-           <tr>
+           <tr ng-repeat="brand in brands">
             <td class="checkbox-column">
               <input type="checkbox" aria-label="Checkbox for following text input"> 
             </td>
             <td class="column-text-ellipsis">
-              <a href="#">1234567</a>
+              <a href="#">{{ brand.BrandId }}</a>
             </td>
             <td>
-              <a href="#">Nike</a>
+              <a href="#"> {{ brand.BrandNameEn }} / {{ brand.BrandNameTh }}</a>
             </td>
             <td class="modified-column">
-              14/12/15
-            </td>
-            <td class="action-column">
-              <i class="fa fa-gear color-dark-grey icon-size-20"></i>
-              <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div>View / Edit</div> <div>Delete</div>" data-original-title="" title=""></i>
-            </td>
-          </tr>
-
-
-          <tr>
-            <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input"> 
-            </td>
-            <td class="column-text-ellipsis">
-              <a href="#">1234567</a>
-            </td>
-            <td>
-              <a href="#">Addidas</a>
-            </td>
-            <td class="modified-column">
-              14/12/15
+                  {{ brand.ModifiedDate || '-' }}
             </td>
             <td class="action-column">
               <i class="fa fa-gear color-dark-grey icon-size-20"></i>

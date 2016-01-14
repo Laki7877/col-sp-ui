@@ -491,7 +491,13 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 var angular = require('angular');
 
 module.exports = ['$scope','util', 'config', 'Brand', function($scope, util, config, Brand){
-	
+	$scope.brands =  [];
+	$scope.params = {
+		
+	};
+	Brand.getAll($scope.params).then(function(brands){
+		$scope.brands = brands.data;
+	});
 }];
 },{"angular":54}],9:[function(require,module,exports){
 module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory', 'AttributeSet',  function($scope, $rootScope, common, Category, GlobalCategory, AttributeSet){
@@ -1263,6 +1269,7 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 	};
 
 	$scope.notReady = true;
+
 	$scope.applySearch = function(){
 		$scope.tableParams.searchText = $scope.searchText;
 	};

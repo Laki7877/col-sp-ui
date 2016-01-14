@@ -48,6 +48,7 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 	};
 
 	$scope.notReady = true;
+
 	$scope.applySearch = function(){
 		$scope.tableParams.searchText = $scope.searchText;
 	};
