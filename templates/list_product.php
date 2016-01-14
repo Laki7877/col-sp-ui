@@ -54,7 +54,8 @@
                   <td class="column-text-ellipsis"><a href="/products/{{ row.ProductId }}">{{ row.ProductNameEn }}</a></td>
                   <td class="price-column">{{ row.SalePrice | currency: ' ' : 2 }}</td>
                   <td class="info-column">
-                    <i class="fa fa-check color-green icon-size-18px"></i>
+                    <i ng-if="!row.ImageFlag" class="fa fa-minus color-grey icon-size-18px"></i>
+                    <i ng-if="row.ImageFlag" class="fa fa-check color-green icon-size-18px"></i>
                   </td>
                   <td class="image-column">
                     <i class="fa fa-check color-green icon-size-18px"></i>
