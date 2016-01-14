@@ -3,7 +3,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" aria-label="Close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-				<h3 class="modal-title"><?=$header?></h3>
+				<h3 class="modal-title">Variant Detail</h3>
 			</div>
 			<div class="modal-body margin-top-20">
 				<div class="row">

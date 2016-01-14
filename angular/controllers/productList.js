@@ -31,7 +31,6 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 	}
 
 	$scope.asStatus = function(ab){
-
 		return StatusLookup[ab];
 	};
 
@@ -70,7 +69,7 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 			$scope.tableParams.direction = ($scope.tableParams.direction == 'asc' ? 'desc': 'asc');
 		}
 		$scope.tableParams.orderBy = nextOrderBy;
-	}
+	};
 
  	$scope.productTotal = 0;
 	//Populate Data Source
@@ -92,9 +91,9 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 
 	//Select All checkbox
 	$scope.$watch('checkAll', function(newVal, oldVal){
-		if(!$scope.productList) return;
+		console.log($scope.productList, "WWWWW");
 		$scope.productList.forEach(function(d){
-			d.checked = newVal;
+			d.checked = $scope.checkAll;
 		});
-	});
+	}, true);
 }];

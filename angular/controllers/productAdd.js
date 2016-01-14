@@ -1,8 +1,8 @@
 var angular = require('angular');
 
-module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 
+module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 
 'GlobalCategory', 'Category', 'VariantPair', 'productProxy', 'brandAdapter',
-	function($scope, util, config, Product, ImageService, AttributeSet, Brand, Shop, 
+	function($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, 
 		GlobalCategory, Category, VariantPair, productProxy, brandAdapter){
 	'use strict';
 
@@ -36,16 +36,37 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 		});			
 	};
 
+
+	var cleanData = function(){
+		if( !$scope.formData.MasterVariant.SalePrice ||
+			$scope.formData.MasterVariant.SalePrice == "" ||  
+			$scope.formData.MasterVariant.SalePrice == 0)
+		{
+			
+			$scope.formData.MasterVariant.SalePrice = $scope.formData.MasterVariant.OriginalPrice;
+		}
+	};
+	
 	$scope.publish = function(Status){
+
+		cleanData();
+
 		console.log("Publishing with Status = ", $scope.Status);
 		try{
 			console.log('Form Data', $scope.formData);
 			var apiRequest = productProxy.transform($scope.formData);
 			console.log('API JSON', JSON.stringify(apiRequest), $scope.Status);
 
-			Product.publish(apiRequest, Status).then(function(){
-				console.log("Save successful");
-				alert("Just FYI, its saved. ")
+			Product.publish(apiRequest, Status).then(function(res){
+				//TODO: remove this , 
+				if(res.ProductId){
+					alert("Just FYI, its saved. ");
+					console.log("Save successful");
+					$window.location.href = "/products";
+				}else{
+					alert("Unable to save");
+				}
+
 			}, function(er){
 				alert("FYI - Unable to save due to error - Send this message to a wizard near you: \n\n" + JSON.stringify(er));
 				console.warn("Unable to save", er);
@@ -125,14 +146,6 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 
 					$scope._loading.message = "Setting up watch..";
 
-					// $scope.$watch('attributeOptions[0].Attribute', function(){
-					// 	tabPage.variation.initSelect2(0);
-					// });
-
-					// $scope.$watch('attributeOptions[1].Attribute', function(){
-					// 	tabPage.variation.initSelect2(1);
-					// });
-
 					$scope.$watch('attributeOptions', function(){
 
 						var variantHashes = {};
@@ -163,6 +176,9 @@ module.exports = ['$scope','util', 'config', 'Product', 'Image', 'AttributeSet',
 										AttributeId: $scope.attributeOptions[1].Attribute.AttributeId,
 										ValueEn: B
 									});
+
+									kpair.ProductNameEn = $scope.formData.MasterVariant.ProductNameEn;
+									kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
 
 									//Only push if don't exist
 									if(!(kpair.hash in variantHashes)){

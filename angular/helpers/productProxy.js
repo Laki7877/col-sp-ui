@@ -15,6 +15,7 @@ module.exports = ['util', function (util) {
 
     		//Cleaned data
     		var clean = {};
+    		clean.Variants = [];
 
     		var objectMapper = {
     			VideoLinks: function(vlink){
