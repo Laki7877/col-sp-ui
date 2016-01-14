@@ -5,7 +5,7 @@ module.exports = ['common', '$q' , function(common, $q) {
 	//Generate empty template
 	service.generate = function(extend) {
 		return angular.extend({
-			NameEn: "New Category",
+			NameEn: "",
 			NameTh: "",
 			UrlKeyEn: "",
 			Commission: 0,

@@ -111,7 +111,7 @@ module.exports = ['common', function(common){
 		};
 	};
 	service.deserialize = function(data) {
-		var processed = angular.copy(data);
+		var processed = angular.merge(service.generate(), data);
 
 		processed.Tags = [];
 		processed.Status = processed.Status ? find(service.visibleOptions, processed.Status) : service.visibleOptions[0];

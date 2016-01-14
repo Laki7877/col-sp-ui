@@ -379,6 +379,7 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 	$scope.formData = {};
 	$scope.alert = new Alert();
 	$scope.dataTypeOptions = Attribute.dataTypeOptions;
+	$scope.variantOptions = Attribute.variantOptions;
 	$scope.boolOptions = Attribute.boolOptions;
 	$scope.validationOptions = Attribute.validationOptions;
 	$scope.formDataSerialized = {};
@@ -654,6 +655,7 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 			$scope.saving = true;
 			AttributeSet.update($scope.edit, $scope.formDataSerialized).then(function(data) {
 				$scope.saving = false;
+				return;
 				$('#success').submit();
 			}, function(err) {
 				$scope.saving = false;
@@ -706,7 +708,9 @@ module.exports = ['$scope', '$window', 'Image', function($scope, $window, ImageS
 	$scope.$on('delete', function(e, item, arr, indx){
 		arr.splice(indx, 1)
 	});
-
+	$scope.init = function(params) {
+		
+	};
 	$scope.save = function() {
 		console.log("FormData", $scope.formData);
 	};
@@ -769,6 +773,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 			
 		GlobalCategory.upsert($scope.formData).then(function() {
 			$scope.alert.open(true);
+			$scope.reload();
 		}, function(err) {
 			$scope.alert.open(false, common.getError(err));
 			$scope.reload();
@@ -784,6 +789,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 			} else {
 				$scope.categories.push($scope.editingCategory);
 			}
+			$scope.$emit('saveGlobalCategory');
 			//Close modal
 			$('#modal-category-detail').modal('hide');
 		}
@@ -831,7 +837,6 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 		message: ''
 	};
 
-
 	$scope.init = function(shopid) {
 		$scope.shopId = shopid || 1;
 		$scope.reload();
@@ -856,6 +861,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 		});
 		Shop.upsertLocalCategories($scope.shopId, $scope.formData).then(function() {
 			$scope.alert.open(true);
+			$scope.reload();
 		}, function(err) {
 			$scope.alert.open(false, common.getError(err));
 			$scope.reload();
@@ -870,6 +876,8 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 			} else {
 				$scope.categories.push($scope.editingCategory);
 			}
+
+			$scope.$emit('saveLocalCategory');
 			//Close modal
 			$('#local-category-detail').modal('hide');
 		}
@@ -1666,7 +1674,7 @@ module.exports = ['$rootScope', function($rootScope) {
 
 },{}],18:[function(require,module,exports){
 var angular = require('angular');
-module.exports = ['$templateCache', function($templateCache) {
+module.exports = ['$templateCache', '$filter', function($templateCache, $filter) {
 	return {
 		restrict: 'EA',
 		replace: true,
@@ -1731,7 +1739,7 @@ module.exports = ['$templateCache', function($templateCache) {
 				else {
 					var item = $scope.selectable[$scope.activeLeft];
 					var outersect = $scope.selectable.filter(function(obj) {
-						return !$scope.contain(obj);
+						return !$scope.contain(obj) && ($filter('filter')($scope.selectable, $scope.search, 'strict').findIndex(findFn, obj) != -1);
 					});
 
 					var oIndex = outersect.indexOf(item);
@@ -1749,16 +1757,16 @@ module.exports = ['$templateCache', function($templateCache) {
 					if ($scope.activeLeft < 0) {
 						return;
 					}
-					var next = findClosestIndexLeft();
 					var item = $scope.selectable[$scope.activeLeft];
 					$scope.model.push(angular.copy(item));
+					var next = findClosestIndexLeft();
 					$scope.activeLeft = next;
 
 				} else {
 					if ($scope.activeRight < 0) {
 						return;
 					}
-					$scope.model.splice($scope.model[$scope.activeRight], 1);
+					$scope.model.splice($scope.activeRight, 1);
 					var next = findClosestIndexRight();
 					$scope.activeRight = next;
 				}
@@ -2528,6 +2536,20 @@ module.exports = ['common', function(common){
 			value: true
 		}
 	];
+	service.variantOptions = [
+		{
+			name: 'Image Only',
+			value: 'IO'
+		},
+		{
+			name: 'Text Only',
+			value: 'TO'
+		},
+		{
+			name: 'Dropdown',
+			value: 'DD'
+		}
+	];
 	service.dataTypeOptions = [
 		{
 			name: 'Free Text',
@@ -2549,19 +2571,19 @@ module.exports = ['common', function(common){
 		},
 		{
 			name: 'Number Only',
-			value: 'NUM'
+			value: 'NU'
 		},
 		{
 			name: 'Text Only',
-			value: 'TXT'
+			value: 'TX'
 		},
 		{
 			name: 'Email Address',
-			value: 'EML'
+			value: 'EM'
 		},
 		{
 			name: 'Phone Number',
-			value: 'PHO'
+			value: 'PH'
 		}
 	];
 	service.get = function(id) {
@@ -2656,13 +2678,13 @@ module.exports = ['common', function(common){
 			},
 			ShowGlobalSearchFlag: service.boolOptions[0],
 			ShowLocalSearchFlag: service.boolOptions[0],
-			VariantDataType: service.dataTypeOptions[0]
+			VariantDataType: service.variantOptions[0]
 		};
 	};
 	service.deserialize = function(data) {
 		var processed = angular.merge(service.generate(), data);
 		processed.VariantStatus = find(service.boolOptions,data.VariantStatus);
-		processed.VariantDataType = find(service.dataTypeOptions,data.VariantDataType);
+		processed.VariantDataType = find(service.variantOptions,data.VariantDataType);
 		processed.DataType = find(service.dataTypeOptions,data.DataType);
 		processed.DataValidation = find(service.validationOptions, data.DataValidation);
 		processed.ShowLocalSearchFlag = find(service.boolOptions, data.ShowLocalSearchFlag);
@@ -2671,20 +2693,20 @@ module.exports = ['common', function(common){
 		switch(data.DataType) {
 			case 'ST':
 				processed['ST'] = {
-					AttributeUnitEn: data.AttributeUnitEn,
-					AttributeUnitTh: data.AttributeUnitTh,
-					DataValidation: data.DataValidation,
-					DefaultValue: data.DefaultValue
+					AttributeUnitEn: processed.AttributeUnitEn,
+					AttributeUnitTh: processed.AttributeUnitTh,
+					DataValidation: processed.DataValidation,
+					DefaultValue: processed.DefaultValue
 				};
 			break;
 			case 'LT':
 				processed['LT'] = {
-					AttributeValues: data.AttributeValues
+					AttributeValues: processed.AttributeValues
 				};
 			break;
 			case 'HB':
 				processed['HB'] = {
-					DefaultValue: data.DefaultValue
+					DefaultValue: processed.DefaultValue
 				}
 			break;
 		}
@@ -2705,21 +2727,22 @@ module.exports = ['common', function(common){
 				processed.AttributeUnitTh = data.ST.AttributeUnitTh;
 				processed.DataValidation = data.ST.DataValidation.value;
 				processed.DefaultValue = data.ST.DefaultValue;
+				delete processed['AttributeValues'];
 			break;
 			case 'LT':
 				processed.AttributeValues = data.LT.AttributeValues;
 			break;
 			case 'HB':
 				processed.DefaultValue = data.HB.DefaultValue;
+				delete processed['AttributeValues'];
 			break;
 		}
 
 		angular.forEach(service.dataTypeOptions, function(item) {
 			delete processed[item.value];
 		});
-
-		console.log(processed);
 		
+		console.log(processed);
 		return processed
 	};
 	return service;
@@ -2839,7 +2862,7 @@ module.exports = ['common', function(common){
 		};
 	};
 	service.deserialize = function(data) {
-		var processed = angular.copy(data);
+		var processed = angular.merge(service.generate(), data);
 
 		processed.Tags = [];
 		processed.Status = processed.Status ? find(service.visibleOptions, processed.Status) : service.visibleOptions[0];
@@ -2892,11 +2915,11 @@ module.exports = ['$q', 'common', function($q, common){
 
 		return common.makeRequest({
 			method: 'GET',
-			url: '/Brands/',
+			url: '/Brands',
 			params: _params
 		});
 
-	}
+	};
 
 	service.getOne = function(id){
 		return common.makeRequest({
@@ -2904,7 +2927,15 @@ module.exports = ['$q', 'common', function($q, common){
 			url: '/Brands/' + id
 		});
 
-	}
+	};
+	service.create = function(obj) {
+		return common.makeRequest({
+			method: 'POST',
+			url: '/Brands'
+		});
+	};
+	service.update = function(obj) {
+	};
 	return service;
 }];
 },{}],38:[function(require,module,exports){
@@ -3134,7 +3165,7 @@ module.exports = ['common', '$q' , function(common, $q) {
 	//Generate empty template
 	service.generate = function(extend) {
 		return angular.extend({
-			NameEn: "New Category",
+			NameEn: "",
 			NameTh: "",
 			UrlKeyEn: "",
 			Commission: 0,
@@ -3353,7 +3384,7 @@ module.exports = ['common', function(common) {
 },{}],44:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Jan 14 2016 22:19:23 GMT+0700 (Russia TZ 6 Standard Time)
+ * Thu Jan 14 2016 23:20:20 GMT+0700 (Russia TZ 6 Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -3398,21 +3429,21 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/input/tradable-select',
-    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><div class=input-group><input ng-model=search[options.map.text] class=\"form-control input-search-icon search-box\" placeholder=\"Search Attribute Set\" aria-describedby=basic-addon2> <span class=input-group-btn><button class=\"btn btn-white\" type=button>Search</button></span></div></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable | filter:search:strict track by $index\" ng-class=\"{ 'active' : activeLeft == $index }\" ng-click=\"select($index, true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=\"{'active' : activeLeft >= 0}\" ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=\"{'active' : activeRight >= 0}\" ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>Attribute Set in This Category</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == $index }\" ng-click=\"select($index, false)\">{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div></div>"
+    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><div class=input-group><input ng-model=search[options.map.text] class=\"form-control input-search-icon search-box\" placeholder=\"Search Attribute Set\" aria-describedby=basic-addon2> <span class=input-group-btn><button class=\"btn btn-white\" type=button>Search</button></span></div></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable | filter:search:strict track by $index\" ng-class=\"{ 'active' : activeLeft == selectable.indexOf(item) }\" ng-click=\"select(selectable.indexOf(item), true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=\"{'active' : activeLeft >= 0 && !contain(selectable[activeLeft])}\" ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=\"{'active' : activeRight >= 0}\" ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>Attribute Set in This Category</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == model.indexOf(item) }\" ng-click=\"select(model.indexOf(item), false)\">{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div></div>"
   );
 
 
   $templateCache.put('common/input/tradable-select2',
-    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><input ng-model=search[options.map.text] class=\"form-control input-search-icon search-box\" placeholder=\"Search Attribute Set\" aria-describedby=basic-addon2></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable | filter:search:strict track by $index\" ng-class=\"{ 'active' : activeLeft == $index }\" ng-click=\"select($index, true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=\"{'active' : activeLeft >= 0}\" ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=\"{'active' : activeRight >= 0}\" ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>Attribute</span> <span class=column-2>Required?</span> <span class=column-3>Filterable?</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == $index }\" ng-click=\"select($index, false)\"><div class=row><div class=column-1>{{ options.map.text == null ? item : item[options.map.text] }}</div><div class=column-2><input type=checkbox ng-model=item.Required aria-label=\"Checkbox for following text input\"></div><div class=column-3><input type=checkbox ng-model=item.Filterable aria-label=\"Checkbox for following text input\"></div></div></li></ul></div></div></div>"
+    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><input ng-model=search[options.map.text] class=\"form-control input-search-icon search-box\" placeholder=\"Search Attribute Set\" aria-describedby=basic-addon2></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable | filter:search:strict track by $index\" ng-class=\"{ 'active' : activeLeft == selectable.indexOf(item) }\" ng-click=\"select(selectable.indexOf(item), true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=\"{'active' : activeLeft >= 0 && !contain(selectable[activeLeft])}\" ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=\"{'active' : activeRight >= 0}\" ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>Attribute</span> <span class=column-2>Required?</span> <span class=column-3>Filterable?</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == model.indexOf(item) }\" ng-click=\"select(model.indexOf(item), false)\"><div class=row><div class=column-1>{{ options.map.text == null ? item : item[options.map.text] }}</div><div class=column-2><input type=checkbox ng-model=item.Required aria-label=\"Checkbox for following text input\"></div><div class=column-3><input type=checkbox ng-model=item.Filterable aria-label=\"Checkbox for following text input\"></div></div></li></ul></div></div></div>"
   );
 
 
   $templateCache.put('global_category/nodes',
-    "<div class=\"category-content row no-margin\"><div class=category-content-padding><span class=\"col-xs-7 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\r" +
+    "<div class=\"category-content row no-margin\"><div class=category-content-padding><span class=\"col-xs-7 column-lc-name\"><span class=lc-icon-name-warpper ui-tree-handle><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\r" +
     "\n" +
-    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this)></i> <i class=\"fa fa-level-up fa-rotate-90 caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\"></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\"></span> <span class=inline-block>{{ node.NameEn }}</span></span></span> <span class=col-xs-1>{{ node.CategoryAbbreviation }}</span> <span class=col-xs-1>{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\"><i ng-class=\"{\t'fa fa-eye color-dark-grey icon-size-20' : node.Status == 'AT',\r" +
+    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this) data-nodrag></i> <i class=\"fa fa-level-up fa-rotate-90 caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\" data-nodrag></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\" data-nodrag></span> <span class=inline-block>{{ node.NameEn }}</span></span></span> <span class=col-xs-1>{{ node.CategoryAbbreviation }}</span> <span class=col-xs-1>{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\"><i ng-class=\"{\t'fa fa-eye color-dark-grey icon-size-20' : node.Status == 'AT',\r" +
     "\n" +
-    "\t\t\t\t\t\t\t'fa fa-eye-slash color-grey icon-size-20' : node.Status != 'AT' }\"></i></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-gear color-dark-grey icon-size-20\"></i> <i class=\"fa fa-caret-down color-dark-grey\" uib-popover-template=\"'global_category/nodes_action'\" popover-placement=bottom popover-append-to-body=true popover-any></i></span> <span class=\"col-xs-1 text-align-center\" ui-tree-handle><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'global_category/nodes'\"></li></ol>"
+    "\t\t\t\t\t\t\t'fa fa-eye-slash color-grey icon-size-20' : node.Status != 'AT' }\"></i></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-gear color-dark-grey icon-size-20\"></i> <i class=\"fa fa-caret-down color-dark-grey\" uib-popover-template=\"'global_category/nodes_action'\" popover-placement=bottom popover-append-to-body=true popover-any></i></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'global_category/nodes'\"></li></ol>"
   );
 
 
@@ -3422,11 +3453,9 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('local_category/nodes',
-    "<div class=\"category-content row no-margin\"><div class=category-content-padding><span class=\"col-xs-8 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\r" +
+    "<div class=\"category-content row no-margin\"><div class=category-content-padding><span class=\"col-xs-8 column-lc-name\"><span class=lc-icon-name-warpper ui-tree-handle><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\r" +
     "\n" +
-    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this)></i> <i class=\"fa fa-level-up fa-rotate-90 caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\"></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\"></span> <span class=inline-block>{{ node.NameEn }}</span></span></span> <span class=col-xs-1>{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\"><i ng-class=\"{\t'fa fa-eye color-dark-grey icon-size-20' : node.Status == 'AT',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t'fa fa-eye-slash color-grey icon-size-20' : node.Status != 'AT' }\"></i></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-gear color-dark-grey icon-size-20\"></i> <i class=\"fa fa-caret-down color-dark-grey\" uib-popover-template=\"'local_category/nodes_action'\" popover-placement=bottom popover-append-to-body=true popover-any></i></span> <span class=\"col-xs-1 text-align-center\" ui-tree-handle><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'local_category/nodes'\"></li></ol>"
+    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this) data-nodrag></i> <i class=\"fa fa-level-up fa-rotate-90 caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\" data-nodrag></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\" data-nodrag></span> <span class=inline-block>{{ node.NameEn }}</span></span></span> <span class=col-xs-1>{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\"><i ng-class=\"{\t'fa fa-eye color-dark-grey icon-size-20' : node.Status == 'AT', 'fa fa-eye-slash color-grey icon-size-20' : node.Status != 'AT' }\"></i></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-gear color-dark-grey icon-size-20\"></i> <i class=\"fa fa-caret-down color-dark-grey\" uib-popover-template=\"'local_category/nodes_action'\" popover-placement=bottom popover-append-to-body=true popover-any></i></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'local_category/nodes'\"></li></ol>"
   );
 
 

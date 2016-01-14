@@ -26,7 +26,6 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 		message: ''
 	};
 
-
 	$scope.init = function(shopid) {
 		$scope.shopId = shopid || 1;
 		$scope.reload();
@@ -51,6 +50,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 		});
 		Shop.upsertLocalCategories($scope.shopId, $scope.formData).then(function() {
 			$scope.alert.open(true);
+			$scope.reload();
 		}, function(err) {
 			$scope.alert.open(false, common.getError(err));
 			$scope.reload();
@@ -65,6 +65,8 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 			} else {
 				$scope.categories.push($scope.editingCategory);
 			}
+
+			$scope.$emit('saveLocalCategory');
 			//Close modal
 			$('#local-category-detail').modal('hide');
 		}

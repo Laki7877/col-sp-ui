@@ -18,11 +18,11 @@ module.exports = ['$q', 'common', function($q, common){
 
 		return common.makeRequest({
 			method: 'GET',
-			url: '/Brands/',
+			url: '/Brands',
 			params: _params
 		});
 
-	}
+	};
 
 	service.getOne = function(id){
 		return common.makeRequest({
@@ -30,6 +30,14 @@ module.exports = ['$q', 'common', function($q, common){
 			url: '/Brands/' + id
 		});
 
-	}
+	};
+	service.create = function(obj) {
+		return common.makeRequest({
+			method: 'POST',
+			url: '/Brands'
+		});
+	};
+	service.update = function(obj) {
+	};
 	return service;
 }];
