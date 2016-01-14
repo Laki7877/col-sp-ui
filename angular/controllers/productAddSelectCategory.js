@@ -4,6 +4,11 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 	'use strict';
 	$scope.selected = null;
 	$scope.columns = [];
+	$scope.validate = function(e){
+		if(null === $scope.selected){
+			e.preventDefault();
+		}
+	};
 
 	//Get global cat from api
 	GlobalCategory.getAll().then(function(data) {
