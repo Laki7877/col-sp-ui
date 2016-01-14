@@ -25,7 +25,7 @@
 						"label_class" => "required", "size" => "large"]) ?>
 					<? $this->insert('components/forms/input-text-with-label',
 						["label" => "UPC", "ng_model" => "formData.MasterVariant.Upc",
-						"tooltip" => "The Universal Product Code (UPC) is a barcode symbology (i.e., a specific type of barcode) that is widely used in the USAX.", "size" => "large"]) ?>
+						"tooltip" => "The Universal Product Code (UPC) is a barcode symbology (i.e., a specific type of barcode) that is widely used in the USA.", "size" => "large"]) ?>
 				
 					<? $this->insert('components/forms/dropdown-with-label',
 						["label" => "Brand Name",
@@ -49,11 +49,9 @@
 				<div class="form-section-header"><h2>Description</h2></div>
 				<div class="form-section-content">
 					<? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (Thai)", "ng_model" => "formData.MasterVariant.DescriptionFullTh", "size" => "xxl"]) ?>
-					<? $this->insert('components/forms/textarea-with-label', ["label" => "Short Description (Thai)", "ng_model" => "formData.MasterVariant.DescriptionShortTh",
-							"tooltip" => "This is a tooltip text", "size" => "xxl", "form_group_class" => "margin-top-30"]) ?>
+					<? $this->insert('components/forms/textarea-with-label', ["label" => "Short Description (Thai)", "ng_model" => "formData.MasterVariant.DescriptionShortTh", "size" => "xxl", "form_group_class" => "margin-top-30"]) ?>
 					<? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (English)", "ng_model" => "formData.MasterVariant.DescriptionFullEn", "size" => "xxl", "form_group_class" => "margin-top-40"]) ?>
-					<? $this->insert('components/forms/textarea-with-label', ["label" => "Short Description (English)", "ng_model" => "formData.MasterVariant.DescriptionShortEn",
-						"tooltip" => "This is a tooltip text", "size" => "xxl", "form_group_class" => "margin-top-30"]) ?>
+					<? $this->insert('components/forms/textarea-with-label', ["label" => "Short Description (English)", "ng_model" => "formData.MasterVariant.DescriptionShortEn","size" => "xxl", "form_group_class" => "margin-top-30"]) ?>
 				</div>
 			</div>
 			<div class="form-section">
@@ -89,7 +87,7 @@
 					<? $this->insert('components/forms/dropdown-with-label',
 							["label" => "Search Tag",
 				       		"ng_model" => "formData.Keywords",
-					     	"tooltip" => "This is a tooltip text",
+					     	"tooltip" => "Search Tag will help you product easier to be discovered",
 							"size" => "large",
 							"choices" => "availableSearchTags",
 							"multiple" => true,
@@ -104,7 +102,7 @@
 				<div class="form-section-content">
 					<? $this->insert('components/forms/input-text-with-label',
 						["label" => "Inventory Amount", "ng_model" => "formData.MasterVariant.Quantity", "hint" => "Example: 100"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Safety Stock Amount", "ng_model" => "formData.MasterVariant.SafetyStock", "hint" => "Example: 10", "tooltip" => "This is a tooltip text"]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Safety Stock Amount", "ng_model" => "formData.MasterVariant.SafetyStock", "hint" => "Example: 10", "tooltip" => "When your inventory gets lower than saftety stock, you will get a warning"]) ?>
 					<? $this->insert('components/forms/dropdown-with-label', 
 						["label" => "Stock Type", 
 						"ng_model" => "formData.MasterVariant.StockType", 

@@ -223,9 +223,13 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 		}
 
 		var MasterAttribute = {};
-		invFd.MasterAttribute.forEach(function(ma){
-			MasterAttribute[ma.AttributeId]  = ma.ValueEn;
-		});
+		try{
+			invFd.MasterAttribute.forEach(function(ma){
+				MasterAttribute[ma.AttributeId]  = ma.ValueEn;
+			});
+		}catch(ex){
+			console.warn("NO master attri", ex);
+		}
 		invFd.MasterAttribute = MasterAttribute;
 
 
@@ -275,9 +279,17 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 		invFd.MasterImages360 = invFd.MasterVariant.Images360;
 		delete invFd.MasterVariant.Images360;
 
-		invFd.MasterVariant.WeightUnit = invFd.MasterVariant.WeightUnit.trim();
-		invFd.MasterVariant.DimensionUnit = invFd.MasterVariant.DimensionUnit.trim();
+		try{
+			invFd.MasterVariant.WeightUnit = invFd.MasterVariant.WeightUnit.trim();
+		}catch(ex){
+			invFd.MasterVariant.WeightUnit = undefined;	
+		}
 
+		try{
+			invFd.MasterVariant.DimensionUnit = invFd.MasterVariant.DimensionUnit.trim();
+		}catch(ex){
+			invFd.MasterVariant.DimensionUnit = undefined;
+		}
 
 		invFd.Keywords = invFd.Keywords.split(",");
 		if(invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; //TODO: Hardcode

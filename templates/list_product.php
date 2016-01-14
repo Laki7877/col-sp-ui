@@ -53,7 +53,7 @@
               <i class="fa" ng-class="sort('ProductNameEn')">
             </th>
             <th class="price-column" ng-click="setOrderBy('SalePrice')">
-              <a><span>Sale Price</span></a>
+              <a><span>Price</span></a>
               <i class="fa" ng-class="sort('SalePrice')">
             </th>
             <th><span>Info.</span></th>
