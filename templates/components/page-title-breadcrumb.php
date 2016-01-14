@@ -16,8 +16,8 @@ $newText = implode('<span class="ah-breadcrumb-splitter">/</span>', $extracted);
     	<a href="\"<?= $newText ?>
     </h1>
     <div class="page-actions float-right">
-		<button class="btn btn-white btn-width-xl">Preview</button>
-		<button class="btn btn-white btn-width-xl">Save as Draft</button>
-		<button class="btn btn-blue btn-width-xl">Publish</button>
+              <button class="btn btn-white btn-width-xl" ng-click="preview()">Preview</button>
+              <button class="btn btn-white btn-width-xl" type="submit"ng-click="publish('DF')">Save as Draft</button>
+              <button ng-disabled="addProductForm.$invalid" type="submit" class="btn btn-blue btn-width-xl" ng-click="publish('WA')">Publish</button>
 	</div>
 </div>

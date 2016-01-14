@@ -27,11 +27,10 @@
               <a ng-click="setOrderBy('SalePrice')"><span>Sale Price</span></a>
               <span class="caret caret-grey"></span>
             </th>
-            <th><a class="header-link" href="#"><span>Info.</span></a></th>
-            <th><a class="header-link" href="#"><span>Image</span></a></th>
+            <th><span>Info.</span></th>
+            <th><span>Image</span></th>
             <th class="status-column">
-              <a ng-click="setOrderBy('Status')">Status<span>
-              <span class="caret caret-grey"></span>
+              Status
             </th>
             <th class="live-column" ng-if="showOnOffStatus">Live</th>
             <th class="visible-column">Visible</th>
@@ -48,8 +47,10 @@
                     <input type="checkbox" aria-label="Checkbox for following text input" ng-model="row.checked">
                   </td>
                   <td class="display-column">
-                    <img ng-if='!row.ImageUrl' class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
-                    <img ng-if='row.ImageUrl' class="logo-img" src="{{ row.ImageUrl }}"/>
+                    <div class="img-holder">
+                      <img ng-if='!row.ImageUrl' class="logo-img" src="<?= $this->asset('/assets/img/placeholder-no-image.png') ?>" />
+                      <img ng-if='row.ImageUrl' class="logo-img" src="{{ row.ImageUrl }}"/>
+                    </div>
                   </td>
                   <td class="column-text-ellipsis"><a href="/products/{{ row.ProductId }}">{{ row.ProductNameEn }}</a></td>
                   <td class="price-column">{{ row.SalePrice | currency: ' ' : 2 }}</td>
@@ -71,7 +72,7 @@
                     <i class="fa fa-circle color-green"></i>
                   </td>
                   <td class="visible-column">
-                    <i class="fa fa-eye-slash color-grey eye-icon"></i>
+                    <i class="fa color-grey eye-icon" ng-class="{'fa-eye-slash': row.Visible, 'fa-eye': row.Visible}"></i>
                   </td>
                   <td class="modified-column">{{ row.UpdatedDt | date:'shortDate':'+700' }}</td>
           </tr>
@@ -111,10 +112,7 @@
             <span class="sr-only">Toggle Dropdown</span>
           </button>
           <ul class="dropdown-menu dropdown-menu-right">
-            <li><a ng-click="setPageSize(1)">1</a></li>
-            <li><a ng-click="setPageSize(2)">2</a></li>
-            <li><a ng-click="setPageSize(3)">3</a></li>
-            <li><a ng-click="setPageSize(4)">4</a></li>
+            <li ng-repeat="i in [20, 30, 500]"><a ng-click="setPageSize(i)"> {{ i }}</a></li>
           </ul>
         </div>
       </span>

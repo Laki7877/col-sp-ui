@@ -26,7 +26,7 @@
 				<div class="category-footer no-padding">
 					<span>Only shown categories that are allowed for this store.</span>
 					<span class="float-right">
-						<button type="button" class="btn btn-link btn-width-xl" href="/products" >Cancel</button>
+						<a type="button" class="btn btn-link btn-width-xl" href="/products" >Cancel</a>
 						<button type="submit" class="btn btn-blue btn-width-xl" ng-class="{'disabled' : !selected}">Select</button>
 					</span>
 				</div>
