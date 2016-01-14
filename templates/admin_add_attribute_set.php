@@ -23,12 +23,7 @@
                 
                 <div class="left-column">
                   <div class="search-section section-search">
-                    <div class="input-group">
                       <input type="text" class="form-control input-search-icon search-box" placeholder="Search Attribute Name" aria-describedby="basic-addon2">
-                      <span class="input-group-btn">
-                        <button class="btn btn-white" type="button">Search</button>
-                      </span>
-                    </div>
                   </div>
                   <div class="clickable-list">
                     <ul class="content-column">
@@ -67,20 +62,34 @@
                   <div class="clickable-list">
                     <ul class="content-column">
                       <li>
-                        <span class="column-1">Attribute X</span>
-                        <span class="column-2"><input type="checkbox" aria-label="Checkbox for following text input"></span>
-                        <span class="column-3"><input type="checkbox" aria-label="Checkbox for following text input"></span>
+                        <div class="row">
+                          <div class="column-1">Attribute X (Ultrasuperman)</div>
+                          <div class="column-2"><input type="checkbox" aria-label="Checkbox for following text input"></div>
+                          <div class="column-3"><input type="checkbox" aria-label="Checkbox for following text input"></div>
+                        </div>
                       </li>
                       <li class="active">
-                        <span class="column-1">Attribute Y</span>
-                        <span class="column-2"><input type="checkbox" aria-label="Checkbox for following text input"></span>
-                        <span class="column-3"><input type="checkbox" aria-label="Checkbox for following text input"></span>
+                        <div class="row">
+                          <div class="column-1">Attribute A</div>
+                          <div class="column-2"><input type="checkbox" aria-label="Checkbox for following text input"></div>
+                          <div class="column-3"><input type="checkbox" aria-label="Checkbox for following text input"></div>
+                        </div>
                       </li>
                       <li>
-                        <span class="column-1">Attribute Z</span>
-                        <span class="column-2"><input type="checkbox" aria-label="Checkbox for following text input"></span>
-                        <span class="column-3"><input type="checkbox" aria-label="Checkbox for following text input"></span>
+                        <div class="row">
+                          <div class="column-1">Attribute C</div>
+                          <div class="column-2"><input type="checkbox" aria-label="Checkbox for following text input"></div>
+                          <div class="column-3"><input type="checkbox" aria-label="Checkbox for following text input"></div>
+                        </div>
                       </li>
+                      <li>
+                        <div class="row">
+                          <div class="column-1">Attribute X</div>
+                          <div class="column-2"><input type="checkbox" aria-label="Checkbox for following text input"></div>
+                          <div class="column-3"><input type="checkbox" aria-label="Checkbox for following text input"></div>
+                        </div>
+                      </li>
+                     
                       
                     </ul>
                   </div>

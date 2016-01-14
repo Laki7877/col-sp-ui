@@ -14197,23 +14197,33 @@ html, body {
 }
 /* line 122, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-1 {
-  margin-left: 0px;
+  margin-left: 15px;
+  display: inline-block;
+  width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  float: left;
 }
-/* line 125, ../../../assets/screen.scss */
+/* line 131, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-2 {
-  margin-left: 130px;
+  margin-left: 50px;
+  display: inline-block;
+  float: left;
 }
-/* line 128, ../../../assets/screen.scss */
+/* line 136, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-3 {
   margin-left: 80px;
+  display: inline-block;
+  float: left;
 }
-/* line 132, ../../../assets/screen.scss */
+/* line 142, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li.active {
   background: #4899DD;
   color: #FFFFFF;
 }
 
-/* line 141, ../../../assets/screen.scss */
+/* line 151, ../../../assets/screen.scss */
 .table .action-column {
   width: 60px;
   padding-top: 14px;
