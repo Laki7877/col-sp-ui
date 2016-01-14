@@ -30,26 +30,13 @@
 
                   </div>
                 </div>
-                <div class="form-section">
-                  <div class="form-section-header">
-                    <h2>Image</h2>
-                  </div>
-                  <div class="form-section-content modal-custom">
-                    <div class="form-group ">
-                      <div class="width-label"><label class="control-label required">Logo File</label></div>
-                      <div class="width-field-normal margin-top-7">
-                        <input type="file" name="img">
-                        <span class="help-block">Must be 160 px by 60 px in JPG or PNG</span>
-                      </div>
-                    </div>
-                    <div class="form-group ">
-                      <div class="width-label"><label class="control-label">Current Logo</label></div>
-                      <div class="width-field-normal margin-top-7">
-                        <a href="#">Logo-ABC.png</a> <span class="color-grey">None</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <? $this->insert('components/forms/form-section-upload-new-product-image-single',
+                    ["uploader" => "uploader", 
+                    "no_guideline" => true,
+                    "header" => "Upload New Brand Image (512 x 512)",
+                    "images" => "formData.BrandImages"]) 
+                ?>
+                
                 <div class="form-section">
                   <div class="form-section-header"><h2>SEO</h2></div>
                   <div class="form-section-content">

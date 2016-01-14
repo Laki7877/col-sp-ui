@@ -339,7 +339,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 		    $scope.uploader = ImageService.getUploader('/ProductImages');
 		    $scope.uploader360 = ImageService.getUploader('/ProductImages', {
-			queueLimit: 60
+				queueLimit: 60
 		    });
 
 		    //Assign uploader images
