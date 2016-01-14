@@ -94,7 +94,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		GlobalCategories: [null, null, null],
 		LocalCategories: [null, null, null],
 		SEO: {},
-		ControlFlags: []
+		ControlFlags: [],
+		Keywords: []
 	};
 
 	//CK editor options
@@ -264,7 +265,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					AttributeSet.getByCategory(catId).then(function(data){
 						$scope.availableAttributeSets = data;
 						//TODO: Mock for fun
-						if(data.length > 0) $scope.formData.AttributeSet = data[0];
+						// if(data.length > 0) $scope.formData.AttributeSet = data[0];
 
 						//Load Attribute Set (edit mode only, in add mode AttributeSet is not set)
 						if(ivFormData.AttributeSet && ivFormData.AttributeSet.AttributeSetId){
@@ -369,7 +370,9 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		},
 		angular: function() {
 
-		    $scope.uploader = ImageService.getUploader('/ProductImages');
+		    $scope.uploader = ImageService.getUploader('/ProductImages', {
+		    	queueLimit: 20
+		    });
 		    $scope.uploader360 = ImageService.getUploader('/ProductImages', {
 				queueLimit: 60
 		    });

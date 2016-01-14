@@ -38,6 +38,7 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 				$scope.saving = false;
 				$('#success').submit();
 			}, function(err) {
+				$scope.saving = false;
 				$scope.alert.error(err);
 			});
 		}
@@ -47,6 +48,7 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 				$scope.saving = false;
 				$('#success').submit();
 			}, function(err) {
+				$scope.saving = false;
 				$scope.alert.error(err);
 				console.log(err);
 			});

@@ -18,7 +18,9 @@ module.exports = ['$scope', '$window', 'Image', function($scope, $window, ImageS
 	$scope.$on('delete', function(e, item, arr, indx){
 		arr.splice(indx, 1)
 	});
-
+	$scope.init = function(params) {
+		
+	};
 	$scope.save = function() {
 		console.log("FormData", $scope.formData);
 	};
