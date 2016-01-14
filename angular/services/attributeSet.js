@@ -1,14 +1,22 @@
 module.exports = ['common', function(common){
 	'use strict';
 	var service = {};
+	var find = function(array, value) {
+		return array.find(function(element) {
+			if (element.value === value) {
+				return true;
+			}
+			return false;
+		});
+	};
 	service.visibleOptions = [
 		{
 			name: 'No',
-			value: 'NA'
+			value: 'NV'
 		},
 		{
 			name: 'Yes',
-			value: 'AT'
+			value: 'VI'
 		}
 	];
 	service.getByCategory = function(catId){
@@ -71,11 +79,33 @@ module.exports = ['common', function(common){
 		};
 	};
 	service.deserialize = function(data) {
-		var processed = angular.merge(service.generate(), data);
+		var processed = angular.copy(data);
+
+		processed.Tags = [];
+		processed.Status = processed.Status ? find(service.visibleOptions, processed.Status) : service.visibleOptions[0];
+		angular.forEach(data.Tags, function(tag) {
+			processed.Tags.push(tag.TagName);
+		});
+		angular.forEach(processed.Attributes, function(attr) {
+			attr.Required = attr.Required || false;
+			attr.Filterable = attr.Filterable || false;
+		});
 		return processed;
 	};
 	service.serialize = function(data) {
 		var processed = angular.copy(data);
+
+		processed.Tags = [];
+		processed.Status = processed.Status.value;
+		angular.forEach(data.Tags, function(tag) {
+			processed.Tags.push({
+				TagName: tag
+			});
+		});
+		angular.forEach(processed.Attributes, function(attr) {
+			attr.Required = attr.Required || false;
+			attr.Filterable = attr.Filterable || false;
+		});
 		return processed;
 	};
 	return service;

@@ -5,8 +5,7 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 	$scope.formData = {};
 	$scope.tagOptions = [];
 	$scope.alert = new Alert();
-	$scope.edit = false;
-	$scope.editId = 0;
+	$scope.edit = 0;
 	$scope.attributeOptions = [];
 	$scope.visibleOptions = AttributeSet.visibleOptions;
 
@@ -24,7 +23,7 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 			});
 		} else {
 			//create mode!
-			$scope.edit = false;
+			$scope.edit = 0;
 			$scope.formData = AttributeSet.generate();
 		}
 		$scope.loadAttribute();
@@ -33,20 +32,20 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 		$scope.alert.close();
 		//TODO: validate
 		$scope.formDataSerialized = AttributeSet.serialize($scope.formData);
+		console.log($scope.formDataSerialized);
+		return;
 		if ($scope.edit) {
 			AttributeSet.update($scope.edit, $scope.formDataSerialized).then(function(data) {
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
-				console.log(err);
 			});
 		}
 		else {
-			AttributeSet.create($scope.formData, $scope.formDataSerialized).then(function(data) {
+			AttributeSet.create($scope.formDataSerialized).then(function(data) {
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
-				console.log(err);
 			});
 		}
 	};
