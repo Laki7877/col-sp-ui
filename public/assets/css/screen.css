@@ -12901,23 +12901,24 @@ label.css-label {
 
 /* line 158, ../../../assets/_table.scss */
 .page-navigation {
+  margin-bottom: 100px;
   float: right;
 }
-/* line 161, ../../../assets/_table.scss */
+/* line 162, ../../../assets/_table.scss */
 .page-navigation .grey-chevron {
   color: #BCC7D5;
 }
-/* line 165, ../../../assets/_table.scss */
+/* line 166, ../../../assets/_table.scss */
 .page-navigation .blue-chevron {
   color: #4899DD;
 }
-/* line 169, ../../../assets/_table.scss */
+/* line 170, ../../../assets/_table.scss */
 .page-navigation .view-page-separator {
   border-left: solid 1px #BCC7D5;
   padding-left: 15px;
 }
 
-/* line 179, ../../../assets/_table.scss */
+/* line 180, ../../../assets/_table.scss */
 .filter-section .filter-container {
   position: relative;
   padding: 12px 17px 12px;
@@ -12927,7 +12928,7 @@ label.css-label {
   border-width: 1px;
   border-radius: 4px;
 }
-/* line 189, ../../../assets/_table.scss */
+/* line 190, ../../../assets/_table.scss */
 .filter-section .filter-seperator {
   text-decoration: none;
   cursor: pointer;
@@ -12936,98 +12937,98 @@ label.css-label {
   padding-left: 9px;
   margin-left: 9px;
 }
-/* line 198, ../../../assets/_table.scss */
+/* line 199, ../../../assets/_table.scss */
 .filter-section .filter-first-option {
   text-decoration: none;
   cursor: pointer;
   color: #7B7F8F;
   margin-left: 20px;
 }
-/* line 205, ../../../assets/_table.scss */
+/* line 206, ../../../assets/_table.scss */
 .filter-section .filter-active {
   color: #32343C;
 }
 
-/* line 211, ../../../assets/_table.scss */
+/* line 212, ../../../assets/_table.scss */
 .search-section-wrapper {
   margin-top: 30px;
 }
-/* line 214, ../../../assets/_table.scss */
+/* line 215, ../../../assets/_table.scss */
 .search-section-wrapper .search-section {
   padding-left: 15px;
   padding-right: 15px;
   float: left;
 }
-/* line 220, ../../../assets/_table.scss */
+/* line 221, ../../../assets/_table.scss */
 .search-section-wrapper .section-action {
   width: 280px;
 }
-/* line 224, ../../../assets/_table.scss */
+/* line 225, ../../../assets/_table.scss */
 .search-section-wrapper .section-search {
   width: 410px;
 }
-/* line 228, ../../../assets/_table.scss */
+/* line 229, ../../../assets/_table.scss */
 .search-section-wrapper .search-section.section-filter {
   float: right;
 }
-/* line 232, ../../../assets/_table.scss */
+/* line 233, ../../../assets/_table.scss */
 .search-section-wrapper .search-section .btn-white {
   height: 30px;
 }
-/* line 236, ../../../assets/_table.scss */
+/* line 237, ../../../assets/_table.scss */
 .search-section-wrapper .body-dropdown-button {
   height: 30px;
   width: 180px;
 }
-/* line 240, ../../../assets/_table.scss */
+/* line 241, ../../../assets/_table.scss */
 .search-section-wrapper .body-dropdown-button .dropdown-text {
   width: 135px;
   display: inline-block;
 }
-/* line 246, ../../../assets/_table.scss */
+/* line 247, ../../../assets/_table.scss */
 .search-section-wrapper .dropdown-text {
   text-align: left;
 }
-/* line 250, ../../../assets/_table.scss */
+/* line 251, ../../../assets/_table.scss */
 .search-section-wrapper .search-box {
   height: 30px;
 }
-/* line 254, ../../../assets/_table.scss */
+/* line 255, ../../../assets/_table.scss */
 .search-section-wrapper .checkbox-wrapper {
   margin-top: 5px;
 }
 
-/* line 260, ../../../assets/_table.scss */
+/* line 261, ../../../assets/_table.scss */
 .table.ah-table {
   margin-bottom: 0;
 }
-/* line 261, ../../../assets/_table.scss */
+/* line 262, ../../../assets/_table.scss */
 .table.ah-table > thead > tr > th {
   border-bottom: 1px solid #BCC7D5;
 }
-/* line 263, ../../../assets/_table.scss */
+/* line 264, ../../../assets/_table.scss */
 .table.ah-table > thead > tr > th, .table.ah-table > thead > tr > th > * {
   vertical-align: middle;
 }
-/* line 268, ../../../assets/_table.scss */
+/* line 269, ../../../assets/_table.scss */
 .table.ah-table > tbody > tr > td {
   border-top: none;
 }
-/* line 273, ../../../assets/_table.scss */
+/* line 274, ../../../assets/_table.scss */
 .table.ah-table.ah-table-extra-padding > tbody > tr > td {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-/* line 280, ../../../assets/_table.scss */
+/* line 281, ../../../assets/_table.scss */
 .table.ah-table.ah-table-line > tbody > tr:first-child > td {
   border-top: none;
 }
-/* line 284, ../../../assets/_table.scss */
+/* line 285, ../../../assets/_table.scss */
 .table.ah-table.ah-table-line > tbody > tr > td {
   border-top: 1px solid #BCC7D5;
 }
 
-/* line 293, ../../../assets/_table.scss */
+/* line 294, ../../../assets/_table.scss */
 .table .column-text-ellipsis {
   max-width: 0;
   overflow: hidden;
@@ -13035,7 +13036,7 @@ label.css-label {
   white-space: nowrap;
 }
 
-/* line 302, ../../../assets/_table.scss */
+/* line 303, ../../../assets/_table.scss */
 .table-border-none > tbody > tr:first-child > td {
   border-top: none;
 }
