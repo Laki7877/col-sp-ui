@@ -57,7 +57,11 @@ if (isset($size)) $inputSize = "width-field-$size";
 					repeat="item in (<?= $choices ?>) | filter : $select.search 
 					<?php if(isset($trackBy)): ?>
 						track by item.<?=$trackBy?>
-					<?php endif; ?>">
+					<?php endif; ?>
+					<?php if(isset($trackByIndex)): ?>
+						track by $index
+					<?php endif; ?>
+				">
 				<?php if(isset($showBy)): ?>
 					<span ng-bind="item.<?=$showBy?>"></span>
 				<?php endif; ?>

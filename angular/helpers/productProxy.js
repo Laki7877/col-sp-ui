@@ -256,10 +256,16 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 			}
 		});
 
-		//TODO: This should fetch entire Object
-		invFd.GlobalCategories.unshift({
-			CategoryId: invFd.GlobalCategory
-		});
+
+		try{
+			//TODO: This should fetch entire Object
+			invFd.GlobalCategories.unshift({
+				CategoryId: invFd.GlobalCategory
+			});
+		}catch(ex){
+			invFd.GlobalCategories = [null, null, null];
+		}
+
 		delete invFd.GlobalCategory;
 		delete invFd.LocalCategory;
 
