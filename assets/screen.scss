@@ -120,7 +120,7 @@ html, body {
         line-height: 30px;
         cursor: pointer;
         .column-1{
-          margin-left: 15px;
+          margin-left: 0px;
           display: inline-block;
           width: 160px;
           white-space: nowrap;
@@ -129,12 +129,12 @@ html, body {
           float: left;
         }
         .column-2{
-          margin-left: 50px;
+          margin-left: 40px;
           display: inline-block;
           float: left;
         }
         .column-3{
-          margin-left: 80px;
+          margin-left: 90px;
           display: inline-block;
           float: left;
         }
