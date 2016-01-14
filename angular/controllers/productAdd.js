@@ -11,7 +11,22 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		message: 'Loading..'
 	};
 
+
+
+	var cleanData = function(){
+		if( !$scope.formData.MasterVariant.SalePrice ||
+			$scope.formData.MasterVariant.SalePrice == "" ||  
+			$scope.formData.MasterVariant.SalePrice == 0)
+		{
+			
+			$scope.formData.MasterVariant.SalePrice = $scope.formData.MasterVariant.OriginalPrice;
+		}
+
+	};
+	
+
 	$scope.preview = function(){
+		cleanData();
 		console.log('Form Data', $scope.formData);
 		var apiRequest = productProxy.transform($scope.formData);
 		console.log('API JSON', JSON.stringify(apiRequest));
@@ -36,28 +51,22 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		});			
 	};
 
-
-	var cleanData = function(){
-		if( !$scope.formData.MasterVariant.SalePrice ||
-			$scope.formData.MasterVariant.SalePrice == "" ||  
-			$scope.formData.MasterVariant.SalePrice == 0)
-		{
-			
-			$scope.formData.MasterVariant.SalePrice = $scope.formData.MasterVariant.OriginalPrice;
-		}
-	};
-	
 	$scope.publish = function(Status){
 
 		cleanData();
-
 		console.log("Publishing with Status = ", $scope.Status);
+		var apiRequest;
 		try{
 			console.log('Form Data', $scope.formData);
-			var apiRequest = productProxy.transform($scope.formData);
+			apiRequest = productProxy.transform($scope.formData);
 			console.log('API JSON', JSON.stringify(apiRequest), $scope.Status);
+		}catch(ex){
+			console.log(ex);
+			alert("Unable to serialize data", ex);
+			return;
+		}
 
-			Product.publish(apiRequest, Status).then(function(res){
+		Product.publish(apiRequest, Status).then(function(res){
 				//TODO: remove this , 
 				if(res.ProductId){
 					alert("Just FYI, its saved. ");
@@ -70,12 +79,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			}, function(er){
 				alert("FYI - Unable to save due to error - Send this message to a wizard near you: \n\n" + JSON.stringify(er));
 				console.warn("Unable to save", er);
-			});
+		});
 
-		}catch(ex){
-			console.log(ex);
-			alert("Known error occurred while publishing : \n" + JSON.stringify(ex));
-		}
 	};
 
 	$scope.formData = {
@@ -155,39 +160,61 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 							variantHashes[elem.hash] = index;
 						});
 
+
+						var expand = function(A,B){
+
+							if(A['AttributeValue']){
+								A = A.AttributeValue.AttributeValueEn;
+							}
+
+							var BId = null;
+
+							if(angular.isDefined(B)){
+								BId = $scope.attributeOptions[1].Attribute.AttributeId;
+								if(B['AttributeValue']){
+									B = B.AttributeValue.AttributeValueEn;
+								}
+							}else{
+								B = ''
+								BId = null;
+							}
+
+							var kpair = new VariantPair({
+								AttributeId: $scope.attributeOptions[0].Attribute.AttributeId,
+								ValueEn: A
+							},{
+								AttributeId: BId,
+								ValueEn: B
+							});
+
+							kpair.ProductNameEn = $scope.formData.MasterVariant.ProductNameEn;
+							kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
+
+							//Only push if don't exist
+							if(!(kpair.hash in variantHashes)){
+								$scope.formData.Variants.push(kpair);
+							}
+
+							//Mark hash as used
+							//This will not be deleted
+							variantHashes[kpair.hash] = -1;
+						}
+
+
 						//Multiply out unmultiplied options
 						if($scope.attributeOptions && Object.keys($scope.attributeOptions).length > 0){
 							for(var aKey in $scope.attributeOptions[0].options){
 								var A = $scope.attributeOptions[0].options[aKey];
+
+								if(angular.isDefined($scope.attributeOptions[1].options) && 
+									$scope.attributeOptions[1].options.length == 0){
+									
+									expand(A);
+								}
+
 								for(var bKey in $scope.attributeOptions[1].options){
 									var B = $scope.attributeOptions[1].options[bKey];
-
-									if(A['AttributeValue']){
-										A = A.AttributeValue.AttributeValueEn;
-									}
-									if(B['AttributeValue']){
-										B = B.AttributeValue.AttributeValueEn;
-									}
-
-									var kpair = new VariantPair({
-										AttributeId: $scope.attributeOptions[0].Attribute.AttributeId,
-										ValueEn: A
-									},{
-										AttributeId: $scope.attributeOptions[1].Attribute.AttributeId,
-										ValueEn: B
-									});
-
-									kpair.ProductNameEn = $scope.formData.MasterVariant.ProductNameEn;
-									kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
-
-									//Only push if don't exist
-									if(!(kpair.hash in variantHashes)){
-										$scope.formData.Variants.push(kpair);
-									}
-
-									//Mark hash as used
-									//This will not be deleted
-									variantHashes[kpair.hash] = -1;
+									expand(A, B);
 								}
 							}
 						}
@@ -211,6 +238,9 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					//Dependency Chain
 					//catId -> AttributeSet -> Inverse
 
+					if(!('VideoLinks' in ivFormData)){
+						ivFormData['VideoLinks'] = [];
+					}
 					console.log("Before Inverse Transformation", ivFormData);
 					var inverseResult = productProxy.inverseTransform(ivFormData, FullAttributeSet);
 					$scope.formData = inverseResult.formData;
@@ -233,6 +263,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 					AttributeSet.getByCategory(catId).then(function(data){
 						$scope.availableAttributeSets = data;
+						//TODO: Mock for fun
+						if(data.length > 0) $scope.formData.AttributeSet = data[0];
 
 						//Load Attribute Set (edit mode only, in add mode AttributeSet is not set)
 						if(ivFormData.AttributeSet && ivFormData.AttributeSet.AttributeSetId){

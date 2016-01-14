@@ -125,6 +125,7 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 .filter('capitalize', filters.capitalize)
 .filter('ordinal', filters.ordinal)
 .filter('html', filters.html)
+.filter('truth', filters.truth)
 
 //Controllers
 .controller('RootCtrl', controllers.root)
