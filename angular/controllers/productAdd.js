@@ -73,7 +73,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					console.log("Save successful");
 					$window.location.href = "/products";
 				}else{
-					alert("Unable to save");
+					alert("Unable to save", res);
 				}
 
 			}, function(er){

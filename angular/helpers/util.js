@@ -8,7 +8,7 @@ module.exports = ['storage', function (storage) {
 
     service.variant.hash = function(a,b){
         if(!("ValueEn" in a)) return "[API Error]";
-        if(!('ValueEn' in b)) return "<no-hash>";
+        if(!('ValueEn' in b)) return  (a.AttributeId + "-" + a.ValueEn.trim() + "-" + "null" + "-" );
 	    return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + b.AttributeId + "-" + b.ValueEn.trim());
     };
 

@@ -939,7 +939,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					console.log("Save successful");
 					$window.location.href = "/products";
 				}else{
-					alert("Unable to save");
+					alert("Unable to save", res);
 				}
 
 			}, function(er){
@@ -2389,7 +2389,7 @@ module.exports = ['storage', function (storage) {
 
     service.variant.hash = function(a,b){
         if(!("ValueEn" in a)) return "[API Error]";
-        if(!('ValueEn' in b)) return "<no-hash>";
+        if(!('ValueEn' in b)) return  (a.AttributeId + "-" + a.ValueEn.trim() + "-" + "null" + "-" );
 	    return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + b.AttributeId + "-" + b.ValueEn.trim());
     };
 
