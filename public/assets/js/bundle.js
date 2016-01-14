@@ -1220,6 +1220,7 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 	$scope.filterOptions = [
 		{ name: "All", value: 'All'},
 		{ name: "Approved", value: 'Approved'},
+		{ name: 'Draft', value: 'Draft'},
 		{ name: "Not Approved", value: 'Not Approved'},
 		{ name: "Wait for Approval", value: 'Wait for Approval'},
 	];
@@ -1228,6 +1229,25 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 		delete: function(){},
 		show: function() {},
 		hide: function(){}
+	};
+
+	var StatusLookup = {
+			'DF' : {
+				Class: 'fa-circle-o',
+				Text: 'Draft',
+				Color: 'color-grey'
+			},
+			'WA' : {
+				Class: 'fa-clock-o',
+				Text: 'Wait for Approval',
+				Color: 'color-yellow'
+			}
+
+	}
+
+	$scope.asStatus = function(ab){
+
+		return StatusLookup[ab];
 	};
 
 	//Product List

@@ -60,9 +60,9 @@
                     <i class="fa fa-check color-green icon-size-18px"></i>
                   </td>
                   <td class="status-column">
-                    <span class="color-red">
-                      <i class="fa fa-ban"></i>
-                      Not Approved
+                    <span class="{{ asStatus(row.Status).Color }}">
+                      <i class="fa {{ asStatus(row.Status).Class }}"></i>
+                      {{ asStatus(row.Status).Text }}
                     </span>
                   </td>
                   <td class="live-column" ng-if="showOnOffStatus">
