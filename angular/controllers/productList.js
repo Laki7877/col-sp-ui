@@ -10,11 +10,72 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 		{ name: "Wait for Approval", value: 'Wait for Approval'},
 	];
 
-	$scope.bulk = {
-		delete: function(){},
-		show: function() {},
-		hide: function(){}
+	$scope.bulk = { 
+		fn: function() {
+			var bulk = $scope.bulkOptions.find(function(item) {
+				return item.name == $('#bulk').html();
+			});
+			if(bulk) {
+				bulk.fn();
+			}
+		} 
 	};
+	$scope.bulkOptions = [
+		{ 	
+			name: 'Delete', 
+			value: 'delete', 
+			fn: function() {
+				$scope.alert.close();
+				var arr = util.getCheckedArray($scope.productList).map(function(elem) {
+					return {
+						AttributeSetId: elem.AttributeSetId
+					};
+				});
+				if(arr.length > 0) {
+					AttributeSet.deleteBulk(arr).then(function() {
+						$scope.alert.success('Successfully deleted');
+						$scope.reloadData();
+					});
+				}
+			}
+		},
+		{
+			name: 'Show',
+			value: 'show',
+			fn: function() {
+				var arr = util.getCheckedArray($scope.productList).map(function(elem) {
+					return {
+						AttributeSetId: elem.AttributeSetId,
+						Status: 'VI'
+					};
+				});
+
+				if(arr.length > 0) {
+					AttributeSet.visible(arr).then(function() {
+						$scope.reloadData();
+					});
+				}
+			}
+		},
+		{
+			name: 'Hide',
+			value: 'hide',
+			fn: function() {
+				var arr = util.getCheckedArray($scope.productList).map(function(elem) {
+					return {
+						AttributeSetId: elem.AttributeSetId,
+						Status: 'NV'
+					};
+				});
+
+				if(arr.length > 0) {
+					AttributeSet.visible(arr).then(function() {
+						$scope.reloadData();
+					});
+				}
+			}
+		}
+	];
 
 	var StatusLookup = {
 			'DF' : {

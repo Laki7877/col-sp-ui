@@ -20,6 +20,20 @@ module.exports = ['common', function(common){
 			value: true
 		}
 	];
+	service.variantOptions = [
+		{
+			name: 'Image Only',
+			value: 'IO'
+		},
+		{
+			name: 'Text Only',
+			value: 'TO'
+		},
+		{
+			name: 'Dropdown',
+			value: 'DD'
+		}
+	];
 	service.dataTypeOptions = [
 		{
 			name: 'Free Text',
@@ -41,19 +55,19 @@ module.exports = ['common', function(common){
 		},
 		{
 			name: 'Number Only',
-			value: 'NUM'
+			value: 'NU'
 		},
 		{
 			name: 'Text Only',
-			value: 'TXT'
+			value: 'TX'
 		},
 		{
 			name: 'Email Address',
-			value: 'EML'
+			value: 'EM'
 		},
 		{
 			name: 'Phone Number',
-			value: 'PHO'
+			value: 'PH'
 		}
 	];
 	service.get = function(id) {
@@ -148,13 +162,13 @@ module.exports = ['common', function(common){
 			},
 			ShowGlobalSearchFlag: service.boolOptions[0],
 			ShowLocalSearchFlag: service.boolOptions[0],
-			VariantDataType: service.dataTypeOptions[0]
+			VariantDataType: service.variantOptions[0]
 		};
 	};
 	service.deserialize = function(data) {
 		var processed = angular.merge(service.generate(), data);
 		processed.VariantStatus = find(service.boolOptions,data.VariantStatus);
-		processed.VariantDataType = find(service.dataTypeOptions,data.VariantDataType);
+		processed.VariantDataType = find(service.variantOptions,data.VariantDataType);
 		processed.DataType = find(service.dataTypeOptions,data.DataType);
 		processed.DataValidation = find(service.validationOptions, data.DataValidation);
 		processed.ShowLocalSearchFlag = find(service.boolOptions, data.ShowLocalSearchFlag);
@@ -163,20 +177,20 @@ module.exports = ['common', function(common){
 		switch(data.DataType) {
 			case 'ST':
 				processed['ST'] = {
-					AttributeUnitEn: data.AttributeUnitEn,
-					AttributeUnitTh: data.AttributeUnitTh,
-					DataValidation: data.DataValidation,
-					DefaultValue: data.DefaultValue
+					AttributeUnitEn: processed.AttributeUnitEn,
+					AttributeUnitTh: processed.AttributeUnitTh,
+					DataValidation: processed.DataValidation,
+					DefaultValue: processed.DefaultValue
 				};
 			break;
 			case 'LT':
 				processed['LT'] = {
-					AttributeValues: data.AttributeValues
+					AttributeValues: processed.AttributeValues
 				};
 			break;
 			case 'HB':
 				processed['HB'] = {
-					DefaultValue: data.DefaultValue
+					DefaultValue: processed.DefaultValue
 				}
 			break;
 		}
@@ -197,21 +211,22 @@ module.exports = ['common', function(common){
 				processed.AttributeUnitTh = data.ST.AttributeUnitTh;
 				processed.DataValidation = data.ST.DataValidation.value;
 				processed.DefaultValue = data.ST.DefaultValue;
+				delete processed['AttributeValues'];
 			break;
 			case 'LT':
 				processed.AttributeValues = data.LT.AttributeValues;
 			break;
 			case 'HB':
 				processed.DefaultValue = data.HB.DefaultValue;
+				delete processed['AttributeValues'];
 			break;
 		}
 
 		angular.forEach(service.dataTypeOptions, function(item) {
 			delete processed[item.value];
 		});
-
-		console.log(processed);
 		
+		console.log(processed);
 		return processed
 	};
 	return service;

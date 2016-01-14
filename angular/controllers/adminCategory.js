@@ -55,6 +55,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 			
 		GlobalCategory.upsert($scope.formData).then(function() {
 			$scope.alert.open(true);
+			$scope.reload();
 		}, function(err) {
 			$scope.alert.open(false, common.getError(err));
 			$scope.reload();
@@ -70,6 +71,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 			} else {
 				$scope.categories.push($scope.editingCategory);
 			}
+			$scope.$emit('saveGlobalCategory');
 			//Close modal
 			$('#modal-category-detail').modal('hide');
 		}

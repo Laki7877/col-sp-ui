@@ -13,7 +13,7 @@
 		          <span class="">Add New Category</span>
 		        </button>
 		        <button type="button" class="btn-blue btn btn-width-xl" ng-click="$emit('saveGlobalCategory')">
-		          <span class="">Save Changes</span>
+	          <span class="">Save Changes</span>
 		        </button>
 		    </span>
 		</div>
@@ -113,6 +113,7 @@
 							                <div ng-template="common/input/text" 
 							                    ng-template-options="{
 						                      	  'label': 'Commission (%)',
+						                      	  'labelClass': 'required',
 							                      'error' : {
 							                        'message': 'Must be a number',
 							                        'show' : $root.isInvalid(editingForm.Commission)

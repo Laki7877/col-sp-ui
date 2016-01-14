@@ -1,5 +1,5 @@
 var angular = require('angular');
-module.exports = ['$templateCache', function($templateCache) {
+module.exports = ['$templateCache', '$filter', function($templateCache, $filter) {
 	return {
 		restrict: 'EA',
 		replace: true,
@@ -64,7 +64,7 @@ module.exports = ['$templateCache', function($templateCache) {
 				else {
 					var item = $scope.selectable[$scope.activeLeft];
 					var outersect = $scope.selectable.filter(function(obj) {
-						return !$scope.contain(obj);
+						return !$scope.contain(obj) && ($filter('filter')($scope.selectable, $scope.search, 'strict').findIndex(findFn, obj) != -1);
 					});
 
 					var oIndex = outersect.indexOf(item);
@@ -82,16 +82,16 @@ module.exports = ['$templateCache', function($templateCache) {
 					if ($scope.activeLeft < 0) {
 						return;
 					}
-					var next = findClosestIndexLeft();
 					var item = $scope.selectable[$scope.activeLeft];
 					$scope.model.push(angular.copy(item));
+					var next = findClosestIndexLeft();
 					$scope.activeLeft = next;
 
 				} else {
 					if ($scope.activeRight < 0) {
 						return;
 					}
-					$scope.model.splice($scope.model[$scope.activeRight], 1);
+					$scope.model.splice($scope.activeRight, 1);
 					var next = findClosestIndexRight();
 					$scope.activeRight = next;
 				}

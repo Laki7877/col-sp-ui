@@ -18,18 +18,17 @@ module.exports = ['$q', 'common', function($q, common){
 
 		return common.makeRequest({
 			method: 'GET',
-			url: '/Brands/',
+			url: '/Brands',
 			params: _params
 		});
 
-	}
+	};
 
 	service.getOne = function(id){
 		return common.makeRequest({
 			method: 'GET',
 			url: '/Brands/' + id
 		});
-
 	}
 
 	service.publish = function(tobj, Status){
@@ -42,7 +41,5 @@ module.exports = ['$q', 'common', function($q, common){
 		    data: tobj
 		});
 	};
-
-
 	return service;
 }];

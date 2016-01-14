@@ -5,6 +5,7 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 	$scope.formData = {};
 	$scope.alert = new Alert();
 	$scope.dataTypeOptions = Attribute.dataTypeOptions;
+	$scope.variantOptions = Attribute.variantOptions;
 	$scope.boolOptions = Attribute.boolOptions;
 	$scope.validationOptions = Attribute.validationOptions;
 	$scope.formDataSerialized = {};

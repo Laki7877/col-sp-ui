@@ -199,7 +199,7 @@
                 <ui-select-match placeholder="- Select Display Type -">
                     <span ng-bind="$select.selected.name"></span>
                 </ui-select-match>
-                <ui-select-choices repeat="item in dataTypeOptions">
+                <ui-select-choices repeat="item in variantOptions">
                     <span ng-bind="item.name"></span>
                 </ui-select-choices>
               </ui-select>
