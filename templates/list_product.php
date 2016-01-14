@@ -37,7 +37,7 @@
             <th class="visible-column">Visible</th>
             <th class="modified-column">
               <a ng-click="setOrderBy('UpdatedDt')">Modified<span>
-              <span class="caret"></span>
+              <span class="caret caret-grey"></span>
             </th>
           </tr>
         </thead>
