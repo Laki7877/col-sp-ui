@@ -75,7 +75,7 @@ module.exports = ['Brand', function(Brand){
 'use strict';
 //App Start here
 var angular = require('angular');
-var bulk = ({"controllers":({"adminAttribute":require("./controllers/adminAttribute.js"),"adminAttributeAdd":require("./controllers/adminAttributeAdd.js"),"adminAttributeSet":require("./controllers/adminAttributeSet.js"),"adminAttributeSetAdd":require("./controllers/adminAttributeSetAdd.js"),"adminBrand":require("./controllers/adminBrand.js"),"adminCategory":require("./controllers/adminCategory.js"),"localCategory":require("./controllers/localCategory.js"),"productAdd":require("./controllers/productAdd.js"),"productAddSelectCategory":require("./controllers/productAddSelectCategory.js"),"productList":require("./controllers/productList.js"),"productListLocalCategory":require("./controllers/productListLocalCategory.js"),"root":require("./controllers/root.js")}),"services":({"alert":require("./services/alert.js"),"attribute":require("./services/attribute.js"),"attributeSet":require("./services/attributeSet.js"),"brand":require("./services/brand.js"),"category":require("./services/category.js"),"globalCategory":require("./services/globalCategory.js"),"image":require("./services/image.js"),"localCategory":require("./services/localCategory.js"),"product":require("./services/product.js"),"shop":require("./services/shop.js")}),"helpers":({"base64":require("./helpers/base64.js"),"common":require("./helpers/common.js"),"productProxy":require("./helpers/productProxy.js"),"storage":require("./helpers/storage.js"),"util":require("./helpers/util.js"),"variantPair":require("./helpers/variantPair.js")}),"directives":({"ncBreadcrumb":require("./directives/ncBreadcrumb.js"),"ncTradableSelect":require("./directives/ncTradableSelect.js"),"ngCkeditor":require("./directives/ngCkeditor.js"),"ngDelegate":require("./directives/ngDelegate.js"),"ngSlideToggle":require("./directives/ngSlideToggle.js"),"ngTemplate":require("./directives/ngTemplate.js"),"popoverAny":require("./directives/popoverAny.js")}),"filters":({"capitalize":require("./filters/capitalize.js"),"html":require("./filters/html.js"),"ordinal":require("./filters/ordinal.js")}),"adapters":({"brand":require("./adapters/brand.js")})});
+var bulk = ({"controllers":({"adminAttribute":require("./controllers\\adminAttribute.js"),"adminAttributeAdd":require("./controllers\\adminAttributeAdd.js"),"adminAttributeSet":require("./controllers\\adminAttributeSet.js"),"adminAttributeSetAdd":require("./controllers\\adminAttributeSetAdd.js"),"adminBrand":require("./controllers\\adminBrand.js"),"adminCategory":require("./controllers\\adminCategory.js"),"localCategory":require("./controllers\\localCategory.js"),"productAdd":require("./controllers\\productAdd.js"),"productAddSelectCategory":require("./controllers\\productAddSelectCategory.js"),"productList":require("./controllers\\productList.js"),"productListLocalCategory":require("./controllers\\productListLocalCategory.js"),"root":require("./controllers\\root.js")}),"services":({"alert":require("./services\\alert.js"),"attribute":require("./services\\attribute.js"),"attributeSet":require("./services\\attributeSet.js"),"brand":require("./services\\brand.js"),"category":require("./services\\category.js"),"globalCategory":require("./services\\globalCategory.js"),"image":require("./services\\image.js"),"localCategory":require("./services\\localCategory.js"),"product":require("./services\\product.js"),"shop":require("./services\\shop.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"productProxy":require("./helpers\\productProxy.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncBreadcrumb":require("./directives\\ncBreadcrumb.js"),"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"popoverAny":require("./directives\\popoverAny.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"html":require("./filters\\html.js"),"ordinal":require("./filters\\ordinal.js")}),"adapters":({"brand":require("./adapters\\brand.js")})});
 var config = require('./config');
 var template = require('./template');
 
@@ -212,7 +212,7 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 .controller('AdminCategoryCtrl', controllers.adminCategory)
 .controller('AdminBrandCtrl',controllers.adminBrand);
 
-},{"./adapters/brand.js":1,"./config":3,"./controllers/adminAttribute.js":4,"./controllers/adminAttributeAdd.js":5,"./controllers/adminAttributeSet.js":6,"./controllers/adminAttributeSetAdd.js":7,"./controllers/adminBrand.js":8,"./controllers/adminCategory.js":9,"./controllers/localCategory.js":10,"./controllers/productAdd.js":11,"./controllers/productAddSelectCategory.js":12,"./controllers/productList.js":13,"./controllers/productListLocalCategory.js":14,"./controllers/root.js":15,"./directives/ncBreadcrumb.js":16,"./directives/ncTradableSelect.js":17,"./directives/ngCkeditor.js":18,"./directives/ngDelegate.js":19,"./directives/ngSlideToggle.js":20,"./directives/ngTemplate.js":21,"./directives/popoverAny.js":22,"./filters/capitalize.js":23,"./filters/html.js":24,"./filters/ordinal.js":25,"./helpers/base64.js":26,"./helpers/common.js":27,"./helpers/productProxy.js":28,"./helpers/storage.js":29,"./helpers/util.js":30,"./helpers/variantPair.js":31,"./services/alert.js":32,"./services/attribute.js":33,"./services/attributeSet.js":34,"./services/brand.js":35,"./services/category.js":36,"./services/globalCategory.js":37,"./services/image.js":38,"./services/localCategory.js":39,"./services/product.js":40,"./services/shop.js":41,"./template":42,"angular":54,"angular-animate":44,"angular-base64":45,"angular-file-upload":46,"angular-sanitize":48,"angular-ui-bootstrap":49,"angular-ui-tree":52,"ui-select":55}],3:[function(require,module,exports){
+},{"./adapters\\brand.js":1,"./config":3,"./controllers\\adminAttribute.js":4,"./controllers\\adminAttributeAdd.js":5,"./controllers\\adminAttributeSet.js":6,"./controllers\\adminAttributeSetAdd.js":7,"./controllers\\adminBrand.js":8,"./controllers\\adminCategory.js":9,"./controllers\\localCategory.js":10,"./controllers\\productAdd.js":11,"./controllers\\productAddSelectCategory.js":12,"./controllers\\productList.js":13,"./controllers\\productListLocalCategory.js":14,"./controllers\\root.js":15,"./directives\\ncBreadcrumb.js":16,"./directives\\ncTradableSelect.js":17,"./directives\\ngCkeditor.js":18,"./directives\\ngDelegate.js":19,"./directives\\ngSlideToggle.js":20,"./directives\\ngTemplate.js":21,"./directives\\popoverAny.js":22,"./filters\\capitalize.js":23,"./filters\\html.js":24,"./filters\\ordinal.js":25,"./helpers\\base64.js":26,"./helpers\\common.js":27,"./helpers\\productProxy.js":28,"./helpers\\storage.js":29,"./helpers\\util.js":30,"./helpers\\variantPair.js":31,"./services\\alert.js":32,"./services\\attribute.js":33,"./services\\attributeSet.js":34,"./services\\brand.js":35,"./services\\category.js":36,"./services\\globalCategory.js":37,"./services\\image.js":38,"./services\\localCategory.js":39,"./services\\product.js":40,"./services\\shop.js":41,"./template":42,"angular":54,"angular-animate":44,"angular-base64":45,"angular-file-upload":46,"angular-sanitize":48,"angular-ui-bootstrap":49,"angular-ui-tree":52,"ui-select":55}],3:[function(require,module,exports){
 //remote baseUrl - 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/'
 module.exports = {
 	baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/',
@@ -229,6 +229,7 @@ module.exports = {
 };
 
 },{}],4:[function(require,module,exports){
+var angular = require('angular');
 module.exports = ['$scope', '$window', 'Attribute', function($scope,$window, Attribute) {
 	//UI binding variables
 	$scope.showOnOffStatus = true;
@@ -240,6 +241,25 @@ module.exports = ['$scope', '$window', 'Attribute', function($scope,$window, Att
 		{ name: "Has Variation", value: 'Has Variation'},
 		{ name: "No Variation", value: 'No Variation'}
 	];
+	$scope.bulkOptions = [
+		{ name: 'Delete', value: 'delete' },
+		{ name: 'Hide', value: 'hide' },
+		{ name: 'Show', value: 'show' }
+	];
+	$scope.bulk = {
+		delete: function(array) {
+
+		},
+		hide: function(array) {
+
+		},
+		show: function(array) {
+
+		}
+	};
+	$scope.actions = {
+
+	};
 	$scope.dataType = {
 		'ST' : 'Free Text',
 		'LT' : 'Dropdown',
@@ -249,7 +269,7 @@ module.exports = ['$scope', '$window', 'Attribute', function($scope,$window, Att
 	//Attribute List
 	$scope.attributeList = [];
  	$scope.attributeTotal = 0;
-	
+
 	//Default parameters
 	$scope.tableParams = {
 		filter: $scope.filterOptions[0].value,
@@ -306,6 +326,9 @@ module.exports = ['$scope', '$window', 'Attribute', function($scope,$window, Att
 	$scope.$on('duplicate', function(evt, row) {
 		Attribute.duplicate(row.AttributeId);
 	});
+	$scope.$on('toggle', function(evt, row) {
+
+	});
 
 	//Watch any change in table parameter, trigger reload
 	$scope.$watch('tableParams', function(){
@@ -320,7 +343,7 @@ module.exports = ['$scope', '$window', 'Attribute', function($scope,$window, Att
 		});
 	});
 }];
-},{}],5:[function(require,module,exports){
+},{"angular":54}],5:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $window, Alert, Attribute) {
@@ -330,8 +353,8 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 	$scope.dataTypeOptions = Attribute.dataTypeOptions;
 	$scope.boolOptions = Attribute.boolOptions;
 	$scope.validationOptions = Attribute.validationOptions;
+	$scope.formDataSerialized = {};
 	$scope.edit = 0;
-	$scope.formDataSerialized = '';
 
 	$scope.init = function(params) {
 		if(angular.isDefined(params)) {
@@ -347,9 +370,11 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 			$scope.formData = Attribute.generate();
 		}
 	};
+	$scope.cancel= function() {
+		$window.location.href = '/admin/attributes';
+	};
 	$scope.save = function() {
 		$scope.alert.close();
-		//TODO: validate
 		$scope.formDataSerialized = Attribute.serialize($scope.formData);
 		if ($scope.edit) {
 			Attribute.update($scope.edit, $scope.formDataSerialized).then(function(data) {
@@ -450,9 +475,10 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 	$scope.formData = {};
 	$scope.tagOptions = [];
 	$scope.alert = new Alert();
-	$scope.edit = 0;
 	$scope.attributeOptions = [];
 	$scope.visibleOptions = AttributeSet.visibleOptions;
+	$scope.formDataSerialized = {};
+	$scope.edit = 0;
 
 	$scope.loadAttribute = function() {
 		Attribute.getAll().then(function(data) {
@@ -473,14 +499,15 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 		}
 		$scope.loadAttribute();
 	};
+	$scope.cancel= function() {
+		$window.location.href = '/admin/attributesets';
+	};
 	$scope.save = function() {
 		$scope.alert.close();
-		//TODO: validate
 		$scope.formDataSerialized = AttributeSet.serialize($scope.formData);
-		console.log($scope.formDataSerialized);
-		return;
 		if ($scope.edit) {
 			AttributeSet.update($scope.edit, $scope.formDataSerialized).then(function(data) {
+				$window.location.href = '/admin/attributesets';
 				$scope.alert.success();
 			}, function(err) {
 				$scope.alert.error(err);
@@ -2689,7 +2716,7 @@ module.exports = ['config', function(config) {
         return null;
     };
     /**
-     * Search Depth Array for catId
+     * Create category string "Foo > Foo2 > Foo3"
      */
     service.createCatStringById = function(catId, tree) {
         if(angular.isArray(tree)) {
@@ -2717,6 +2744,12 @@ module.exports = ['config', function(config) {
         }
     };
 
+    /**
+     * Remove leaf of tree that matched with CatId
+     */
+    service.removeLeafByCatId = function(catId, tree) {
+        
+    };
     return service;
 }];
 

@@ -7,8 +7,8 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 	$scope.dataTypeOptions = Attribute.dataTypeOptions;
 	$scope.boolOptions = Attribute.boolOptions;
 	$scope.validationOptions = Attribute.validationOptions;
+	$scope.formDataSerialized = {};
 	$scope.edit = 0;
-	$scope.formDataSerialized = '';
 
 	$scope.init = function(params) {
 		if(angular.isDefined(params)) {
@@ -24,9 +24,11 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 			$scope.formData = Attribute.generate();
 		}
 	};
+	$scope.cancel= function() {
+		$window.location.href = '/admin/attributes';
+	};
 	$scope.save = function() {
 		$scope.alert.close();
-		//TODO: validate
 		$scope.formDataSerialized = Attribute.serialize($scope.formData);
 		if ($scope.edit) {
 			Attribute.update($scope.edit, $scope.formDataSerialized).then(function(data) {

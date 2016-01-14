@@ -179,7 +179,7 @@ module.exports = ['config', function(config) {
         return null;
     };
     /**
-     * Search Depth Array for catId
+     * Create category string "Foo > Foo2 > Foo3"
      */
     service.createCatStringById = function(catId, tree) {
         if(angular.isArray(tree)) {
@@ -207,5 +207,11 @@ module.exports = ['config', function(config) {
         }
     };
 
+    /**
+     * Remove leaf of tree that matched with CatId
+     */
+    service.removeLeafByCatId = function(catId, tree) {
+        
+    };
     return service;
 }];

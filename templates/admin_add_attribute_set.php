@@ -85,7 +85,7 @@
       <div class="main-form-action full-width-row">
         <div class="container-fluid">
           <div class="float-right">
-            <a href="/admin/attributesets" class="link-btn-plain">Cancel</a>
+            <a class="link-btn-plain" ng-click="cancel()">Cancel</a>
             <button type="submit" class="btn btn-blue btn-width-xl">Save</button>
           </div>
         </div>
