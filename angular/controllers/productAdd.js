@@ -49,7 +49,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		return Product.getAll({
 			searchText: q
 		}).then(function(dataSet){
-			console.log("Refreshing", dataSet);
+			console.log("Refreshing Related Products", dataSet);
 			$scope.availableRelatedProducts = dataSet.data;
 		});
 	};
@@ -291,6 +291,10 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 							console.log("idx", idx);
 						
+							
+						}
+
+						if(ivFormData.ProductId){
 							$scope.formData.AttributeSet = $scope.availableAttributeSets[idx];
 							loadFormData(ivFormData, $scope.formData.AttributeSet);
 						}
@@ -318,16 +322,22 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					Product.getOne(productId).then(function(ivFormData){
 						var gcat = ivFormData.GlobalCategory;
 						catReady(gcat, ivFormData, function(){
+
 							$scope.formData.ProductId = Number(productId);
 							//Load Brand
 							$scope._loading.message = "Downloading Brand..";
+
 							Brand.getOne($scope.formData.Brand.BrandId).then(function(data){
-								$scope.formData.Brand = data;
-								delete $scope.formData.Brand.$id;
-								$scope.formData.Brand.id = $scope.formData.Brand.BrandId;
-								//MUST HAPPEN LAST
-								angularReady();
+									$scope.formData.Brand = data;
+									delete $scope.formData.Brand.$id;
+									$scope.formData.Brand.id = $scope.formData.Brand.BrandId;
+									//MUST HAPPEN LAST
+									angularReady();
+							}, function(){
+									console.log("resolve failure", $scope.formData);
+									angularReady();
 							});
+
 						});
 
 						//auxiliary object (non-persist)
