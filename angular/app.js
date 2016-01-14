@@ -35,7 +35,6 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 	$tooltipProvider.options({
 		trigger: 'clickanystart'
 	});
-	uiSelectConfig.appendToBody = true;
 	uiSelectConfig.taggingTokens = [',', 'ENTER']
 }])
 
@@ -121,6 +120,7 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 .directive('ngSlideToggle', directives.ngSlideToggle)
 .directive('ngTemplate', directives.ngTemplate)
 .directive('popoverAny', directives.popoverAny)
+.directive('tagOnBlur', directives.tagOnBlur)
 
 //Filters
 .filter('capitalize', filters.capitalize)
