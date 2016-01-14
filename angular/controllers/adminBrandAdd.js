@@ -1,10 +1,10 @@
 var angular = require('angular');
 
 module.exports = ['$scope', '$window', function($scope, $window) {
-	$scope.formData = {};
 	
+
 	$scope.init = function(params) {
-		
+		$scope.formData = {};
 	};
 	
 	$scope.cancel= function() {
@@ -12,7 +12,7 @@ module.exports = ['$scope', '$window', function($scope, $window) {
 	};
 
 	$scope.save = function() {
-		
+		console.log("FormData", $scope.formData);
 	};
 
 }];

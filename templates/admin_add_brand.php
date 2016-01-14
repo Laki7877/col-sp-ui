@@ -6,7 +6,7 @@
     <div class="row margin-top-30">
       <div class="col-xs-12">
         
-        <form class="ah-form sticky-mainform-action">
+        <form class="ah-form sticky-mainform-action" ng-submit="save()">
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-section">
@@ -22,10 +22,10 @@
                     ?>
 
                     <? $this->insert('components/forms/input-text-with-label', 
-                    ["label" => "Brand Name (Thai)",
-                     "ng_model" => "formData.BrandNameTh",
-                     "label_class" => "required"
-                    ]) 
+                      ["label" => "Brand Name (Thai)",
+                       "ng_model" => "formData.BrandNameTh",
+                       "label_class" => "required"
+                      ]) 
                     ?>
 
                   </div>

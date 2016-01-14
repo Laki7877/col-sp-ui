@@ -540,10 +540,10 @@ module.exports = ['$scope','util', 'config', 'Brand', function($scope, util, con
 var angular = require('angular');
 
 module.exports = ['$scope', '$window', function($scope, $window) {
-	$scope.formData = {};
 	
+
 	$scope.init = function(params) {
-		
+		$scope.formData = {};
 	};
 	
 	$scope.cancel= function() {
@@ -551,7 +551,7 @@ module.exports = ['$scope', '$window', function($scope, $window) {
 	};
 
 	$scope.save = function() {
-		
+		console.log("FormData", $scope.formData);
 	};
 
 }];
@@ -1279,7 +1279,7 @@ var angular = require('angular');
 
 module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Category, GlobalCategory) {
 	'use strict';
-	$scope.selected = {};
+	$scope.selected = null;
 	$scope.columns = [];
 
 	//Get global cat from api
