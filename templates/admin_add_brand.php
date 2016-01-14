@@ -1,12 +1,12 @@
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Brand']) ?>
 
 <?php $this->start('page-body') ?>
-	<div ng-controller='AdminBrandAddCtrl'>
+	<div ng-controller='AdminBrandAddCtrl' ng-init="init(<?=$params?>)">
     <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Brand/Add Brand", 'link' => "admin_brand"]) ?>
     <div class="row margin-top-30">
       <div class="col-xs-12">
         
-        <form class="ah-form sticky-mainform-action" ng-submit="save()">
+        <form class="ah-form sticky-mainform-action">
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-section">
@@ -60,10 +60,13 @@
               <div class="container-fluid">
                 <div class="float-right">
                   <a href="#" class="link-btn-plain" ng-click="cancel()">Cancel</a>
-                  <button class="btn btn-blue btn-width-xl" type="submit">Save</button>
+                  <button class="btn btn-blue btn-width-xl" type="button" ng-click="save()">Save</button>
                 </div>
               </div>
             </div>
+        </form>
+        <form id="success" action="/admin/brands" method="POST">
+          <input type="hidden" name="success" value="true">
         </form>
 
       </div>

@@ -656,7 +656,6 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 			$scope.saving = true;
 			AttributeSet.update($scope.edit, $scope.formDataSerialized).then(function(data) {
 				$scope.saving = false;
-				return;
 				$('#success').submit();
 			}, function(err) {
 				$scope.saving = false;
@@ -678,20 +677,158 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 },{"angular":57}],8:[function(require,module,exports){
 var angular = require('angular');
 
-module.exports = ['$scope','util', 'config', 'Brand', function($scope, util, config, Brand){
+module.exports = ['$scope','util', 'config', 'Brand', 'Alert', '$window', function($scope, util, config, Brand, Alert, $window){
 	$scope.brands =  [];
-	$scope.params = {
-		
+	$scope.checkAll = false;
+	$scope.alert = new Alert();
+	$scope.bulk = {
+		fn: function() {
+			var bulk = $scope.bulkOptions.find(function(item) {
+				return item.name == $('#bulk').html();
+			});
+			if(bulk) {
+				bulk.fn();
+			}
+		} 
+	};
+	$scope.bulkOptions = [
+		{ 	
+			name: 'Delete', 
+			value: 'delete', 
+			fn: function() {
+				$scope.alert.close();
+				var arr = util.getCheckedArray($scope.brands).map(function(elem) {
+					return {
+						BrandId: elem.BrandId
+					};
+				});
+				console.log(arr);
+				if(arr.length > 0) {
+					Brand.deleteBulk(arr).then(function() {
+						$scope.alert.success('You have successfully remove entries.');
+						$scope.reloadData();
+					});
+				}
+			}
+		}
+	];
+	$scope.actions = {
+		edit: function(row) {
+			$window.location.href="/admin/brands/" + row.BrandId;
+		},
+		delete: function(row) {
+			$scope.alert.close();
+			Brand.deleteBulk([{BrandId: row.BrandId}]).then(function() {
+				$scope.alert.success('You have successfully remove an entry.');
+				$scope.reloadData();
+			}, function(err) {
+				$scope.alert.error(err);
+			});
+		}
+	};
+	$scope.sort = util.tableSortClass($scope);
+	//Populate Data Source
+	$scope.reloadData = function(){
+		$scope.brands = [];
+		$scope.notReady = true;
+		Brand.getAll($scope.tableParams).then(function(x){
+			$scope.brandTotal = x.total;
+			$scope.brands = x.data;
+			$scope.notReady = false;
+		});
+	};
+	$scope.actions = {
+		edit: function(row) {
+			$window.location.href="/admin/brands/" + row.BrandId;
+		},
+		delete: function(row) {
+			$scope.alert.close();
+			Brand.deleteBulk([{BrandId: row.BrandId}]).then(function() {
+				$scope.alert.success('You have successfully remove an entry.');
+				$scope.reloadData();
+			}, function(err) {
+				$scope.alert.error(err);
+			});
+		},
+		duplicate: function(row) {
+			$scope.alert.close();
+			Brand.duplicate(row.BrandId).then(function() {
+				$scope.alert.success();
+				$scope.reloadData();
+			}, function(err) {
+				$scope.alert.error(err);
+			});
+		}
+	};
+	$scope.dataType = {
+		'ST' : 'Free Text',
+		'LT' : 'Dropdown',
+		'HB' : 'HTML Box'
+	};
+
+	//Brand List
+	$scope.brands = [];
+ 	$scope.brandTotal = 0;
+
+	//Default parameters
+	$scope.tableParams = {
+		searchText: null,
+		orderBy: 'BrandId',
+		direction: 'desc',
+		page: 0,
+		pageSize: 10
+	};
+	$scope.notReady = true;
+	$scope.init = function(params) {
+		if(angular.isDefined(params)) {
+			if(angular.isDefined(params.success) && params.success != null) {
+				$scope.alert.success();
+			}
+		}
+	};
+	$scope.applySearch = function(){
+		$scope.tableParams.searchText = $scope.searchText;
 	};
 	
-	Brand.getAll($scope.params).then(function(brands){
-		$scope.brands = brands.data;
-	});
+	$scope.totalPage = function(x){
+		return Math.ceil($scope.brandTotal / $scope.tableParams.pageSize);
+	};
+
+	$scope.nextPage = function(m){
+		$scope.tableParams.page += m;
+	};
+
+	$scope.setPageSize = function(n){
+		$scope.tableParams.pageSize = n;
+	};
+
+	$scope.setOrderBy = function(nextOrderBy){
+		if($scope.tableParams.orderBy == nextOrderBy){
+			$scope.tableParams.direction = ($scope.tableParams.direction == 'asc' ? 'desc': 'asc');
+		}
+		$scope.tableParams.orderBy = nextOrderBy;
+
+	}
+
+	//Watch any change in table parameter, trigger reload
+	$scope.$watch('tableParams', function(){
+		$scope.reloadData();
+	}, true);
+
+	//Select All checkbox
+	$scope.$watch('checkAll', function(newVal, oldVal){
+		if(!$scope.brands) return;
+		$scope.brands.forEach(function(d){
+			d.checked = newVal;
+		});
+	});;
+	$scope.reloadData();
 }];
 },{"angular":57}],9:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', '$window', 'Image', 'Brand', function($scope, $window, ImageService, Brand) {
+	$scope.edit = 0;
 	$scope.uploader = ImageService.getUploader('/BrandImages', {
 		queueLimit: 1
 	});
@@ -711,14 +848,41 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', function($scope, $windo
 	});
 
 	$scope.init = function(params) {
-		
+		if(angular.isDefined(params) && angular.isDefined(params.id)) {
+			$scope.edit = params.id;
+			Brand.getOne(params.id).then(function(data) {
+				$scope.formData = Brand.deserialize(data);
+				console.log($scope.formData);
+			}, function(err) {
+				$window.location.href = '/admin/brands';
+			});
+		}
 	};
+
+	$scope.cancel = function() {
+		$window.location.href = '/admin/brands';
+	}
 	
 	$scope.save = function() {
-		console.log("FormData", $scope.formData);
-		Brand.publish($scope.formData).then(function(res){
-			alert("Brand Added");
-		});
+		$scope.saving = true;
+		$scope.formDataSerialized = Brand.serialize($scope.formData);
+		if($scope.edit > 0) {
+			Brand.update($scope.edit, $scope.formDataSerialized).then(function(res){			
+				$scope.saving = false;
+				$('#success').submit();		
+			}, function(err) {
+				$scope.saving = false;
+				$scope.alert.error(err);
+			});
+		} else {
+			Brand.publish($scope.formDataSerialized).then(function(res){			
+				$scope.saving = false;
+				$('#success').submit();		
+			}, function(err) {
+				$scope.saving = false;
+				$scope.alert.error(err);
+			});
+		}
 	};
 }];
 },{"angular":57}],10:[function(require,module,exports){
@@ -1514,7 +1678,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 }];
 
 },{"angular":57}],14:[function(require,module,exports){
-module.exports = ['$scope', 'Product',  function($scope, Product) {
+module.exports = ['$scope', 'Product', 'util', 'Alert',  function($scope, Product, util, Alert) {
 	//UI binding variables
 	$scope.showOnOffStatus = true;
 	$scope.checkAll = false;
@@ -1544,11 +1708,11 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 				$scope.alert.close();
 				var arr = util.getCheckedArray($scope.productList).map(function(elem) {
 					return {
-						AttributeSetId: elem.AttributeSetId
+						ProductId: elem.ProductId
 					};
 				});
 				if(arr.length > 0) {
-					AttributeSet.deleteBulk(arr).then(function() {
+					Product.deleteBulk(arr).then(function() {
 						$scope.alert.success('Successfully deleted');
 						$scope.reloadData();
 					});
@@ -1561,13 +1725,13 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 			fn: function() {
 				var arr = util.getCheckedArray($scope.productList).map(function(elem) {
 					return {
-						AttributeSetId: elem.AttributeSetId,
+						ProductId: elem.ProductId,
 						Status: 'VI'
 					};
 				});
 
 				if(arr.length > 0) {
-					AttributeSet.visible(arr).then(function() {
+					Product.visible(arr).then(function() {
 						$scope.reloadData();
 					});
 				}
@@ -1579,20 +1743,43 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 			fn: function() {
 				var arr = util.getCheckedArray($scope.productList).map(function(elem) {
 					return {
-						AttributeSetId: elem.AttributeSetId,
+						ProductId: elem.ProductId,
 						Status: 'NV'
 					};
 				});
 
 				if(arr.length > 0) {
-					AttributeSet.visible(arr).then(function() {
+					Product.visible(arr).then(function() {
 						$scope.reloadData();
 					});
 				}
 			}
 		}
 	];
-
+	$scope.actions = {
+		edit: function(row) {
+			$window.location.href="/admin/attributes/" + row.AttributeId;
+		},
+		delete: function(row) {
+			$scope.alert.close();
+			Attribute.deleteBulk([{AttributeId: row.AttributeId}]).then(function() {
+				$scope.alert.success('You have successfully remove an entry.');
+				$scope.reloadData();
+			}, function(err) {
+				$scope.alert.error(err);
+			});
+		},
+		duplicate: function(row) {
+			$scope.alert.close();
+			Attribute.duplicate(row.AttributeId).then(function() {
+				$scope.alert.success();
+				$scope.reloadData();
+			}, function(err) {
+				$scope.alert.error(err);
+			});
+		}
+	};
+	$scope.sort = util.tableSortClass($scope);
 	var StatusLookup = {
 			'DF' : {
 				Class: 'fa-circle-o',
@@ -1606,7 +1793,6 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 			}
 
 	}
-
 	$scope.asStatus = function(ab){
 		return StatusLookup[ab];
 	};
@@ -2980,9 +3166,9 @@ module.exports = ['common', function(common){
 	};
 	service.deserialize = function(data) {
 		var processed = angular.merge(service.generate(), data);
-
 		processed.Tags = [];
-		processed.Status = processed.Status ? find(service.visibleOptions, processed.Status) : service.visibleOptions[0];
+		processed.Status = angular.isDefined(data.Status) ? find(service.visibleOptions, data.Status) : service.visibleOptions[0];
+
 		angular.forEach(data.Tags, function(tag) {
 			processed.Tags.push(tag.TagName);
 		});
@@ -3012,12 +3198,12 @@ module.exports = ['common', function(common){
 }];
 
 },{}],38:[function(require,module,exports){
+var angular = require('angular');
 module.exports = ['$q', 'common', function($q, common){
 	var service = {};
 	//TODO: change searchText -> q
 	//TODO: not clean
 	service.getAll = function(params){
-
 		var _params = {
 			_limit: 5,
 			_order: params.orderBy || 'BrandId',
@@ -3037,6 +3223,16 @@ module.exports = ['$q', 'common', function($q, common){
 		});
 
 	};
+	service.deleteBulk = function(arr) {
+		return common.makeRequest({
+			method: 'DELETE',
+			url: '/Brands',
+			data: arr,
+			headers: {
+				'Content-Type': 'application/json;charset=UTF-8'
+			}
+		});
+	};
 
 	service.getOne = function(id){
 		return common.makeRequest({
@@ -3045,19 +3241,50 @@ module.exports = ['$q', 'common', function($q, common){
 		});
 	}
 
+	service.update = function(id, obj){
+		var mode = 'PUT';
+		var path  = '/Brands/' + id;
+		return common.makeRequest({
+			method: mode,
+		    url: path,
+		    data: obj
+		});
+	};
+
 	service.publish = function(tobj, Status){
 		tobj.Status = Status;
 		var mode = 'POST';
 		var path  = '/Brands';
-		return common.makeRequest({
+		return common.makeRequest({	
 			method: mode,
 		    url: path,
 		    data: tobj
 		});
 	};
+
+	service.deserialize = function(data) {
+		var processed = angular.copy(data);
+		if(angular.isDefined(processed.BrandImage) && processed.BrandImage != null) {
+			processed.BrandImages = [processed.BrandImage];
+		} else {
+			processed.BrandImages = [];
+		}
+		console.log(processed);
+		return processed;
+	};
+
+	service.serialize = function(data) {
+		var processed = angular.copy(data);
+		if(processed.BrandImages.length > 0) {
+			processed.BrandImage = processed.BrandImages[0];
+		} else {
+			processed.BrandImage = null;
+		}
+		return processed;
+	};
 	return service;
 }];
-},{}],39:[function(require,module,exports){
+},{"angular":57}],39:[function(require,module,exports){
 /**
  * Util class for category
  * @author poonwu
@@ -3475,6 +3702,26 @@ module.exports = ['$q', '$http', 'common', function($q, $http, common){
 		        data: tobj
 		});
 	};
+	service.visible = function(obj) {
+		return common.makeRequest({
+			method: 'PUT',
+			url: '/ProductStages/Visibility',
+			data: obj,
+			headers: {
+				'Content-Type': 'application/json;charset=UTF-8'
+			}
+		});
+	};
+	service.deleteBulk = function(arr) {
+		return common.makeRequest({
+			method: 'DELETE',
+			url: '/ProductStages',
+			data: arr,
+			headers: {
+				'Content-Type': 'application/json;charset=UTF-8'
+			}
+		});
+	};
 	
 	return service;
 }];
@@ -3503,7 +3750,7 @@ module.exports = ['common', function(common) {
 },{}],45:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Jan 14 2016 23:48:34 GMT+0700 (Russia TZ 6 Standard Time)
+ * Fri Jan 15 2016 01:55:22 GMT+0700 (Russia TZ 6 Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -3585,6 +3832,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('local_category/nodes_action',
     "<div><a href=# data-toggle=modal data-target=#local-category-detail ng-click=\"$emit('openEditLocalCategory', node)\">View / Edit</a></div><div><a href=# ng-click=\"$emit('viewLocalCategory', node)\">View Products</a></div><div><a href=# ng-click=remove()>Delete</a></div>"
+  );
+
+
+  $templateCache.put('product/action',
+    "<div><a ng-click=\"actions.edit(row, true)\">View / Edit</a></div><div><a ng-click=\"actions.delete(row, true)\">Delete</a></div>"
   );
  }];
 },{}],46:[function(require,module,exports){

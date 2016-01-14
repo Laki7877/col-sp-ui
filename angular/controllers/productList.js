@@ -1,4 +1,4 @@
-module.exports = ['$scope', 'Product',  function($scope, Product) {
+module.exports = ['$scope', 'Product', 'util', 'Alert',  function($scope, Product, util, Alert) {
 	//UI binding variables
 	$scope.showOnOffStatus = true;
 	$scope.checkAll = false;
@@ -28,11 +28,11 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 				$scope.alert.close();
 				var arr = util.getCheckedArray($scope.productList).map(function(elem) {
 					return {
-						AttributeSetId: elem.AttributeSetId
+						ProductId: elem.ProductId
 					};
 				});
 				if(arr.length > 0) {
-					AttributeSet.deleteBulk(arr).then(function() {
+					Product.deleteBulk(arr).then(function() {
 						$scope.alert.success('Successfully deleted');
 						$scope.reloadData();
 					});
@@ -45,13 +45,13 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 			fn: function() {
 				var arr = util.getCheckedArray($scope.productList).map(function(elem) {
 					return {
-						AttributeSetId: elem.AttributeSetId,
+						ProductId: elem.ProductId,
 						Status: 'VI'
 					};
 				});
 
 				if(arr.length > 0) {
-					AttributeSet.visible(arr).then(function() {
+					Product.visible(arr).then(function() {
 						$scope.reloadData();
 					});
 				}
@@ -63,20 +63,43 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 			fn: function() {
 				var arr = util.getCheckedArray($scope.productList).map(function(elem) {
 					return {
-						AttributeSetId: elem.AttributeSetId,
+						ProductId: elem.ProductId,
 						Status: 'NV'
 					};
 				});
 
 				if(arr.length > 0) {
-					AttributeSet.visible(arr).then(function() {
+					Product.visible(arr).then(function() {
 						$scope.reloadData();
 					});
 				}
 			}
 		}
 	];
-
+	$scope.actions = {
+		edit: function(row) {
+			$window.location.href="/admin/attributes/" + row.AttributeId;
+		},
+		delete: function(row) {
+			$scope.alert.close();
+			Attribute.deleteBulk([{AttributeId: row.AttributeId}]).then(function() {
+				$scope.alert.success('You have successfully remove an entry.');
+				$scope.reloadData();
+			}, function(err) {
+				$scope.alert.error(err);
+			});
+		},
+		duplicate: function(row) {
+			$scope.alert.close();
+			Attribute.duplicate(row.AttributeId).then(function() {
+				$scope.alert.success();
+				$scope.reloadData();
+			}, function(err) {
+				$scope.alert.error(err);
+			});
+		}
+	};
+	$scope.sort = util.tableSortClass($scope);
 	var StatusLookup = {
 			'DF' : {
 				Class: 'fa-circle-o',
@@ -90,7 +113,6 @@ module.exports = ['$scope', 'Product',  function($scope, Product) {
 			}
 
 	}
-
 	$scope.asStatus = function(ab){
 		return StatusLookup[ab];
 	};

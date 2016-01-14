@@ -42,6 +42,26 @@ module.exports = ['$q', '$http', 'common', function($q, $http, common){
 		        data: tobj
 		});
 	};
+	service.visible = function(obj) {
+		return common.makeRequest({
+			method: 'PUT',
+			url: '/ProductStages/Visibility',
+			data: obj,
+			headers: {
+				'Content-Type': 'application/json;charset=UTF-8'
+			}
+		});
+	};
+	service.deleteBulk = function(arr) {
+		return common.makeRequest({
+			method: 'DELETE',
+			url: '/ProductStages',
+			data: arr,
+			headers: {
+				'Content-Type': 'application/json;charset=UTF-8'
+			}
+		});
+	};
 	
 	return service;
 }];

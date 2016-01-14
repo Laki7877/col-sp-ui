@@ -45,7 +45,6 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute', function($scop
 			$scope.saving = true;
 			AttributeSet.update($scope.edit, $scope.formDataSerialized).then(function(data) {
 				$scope.saving = false;
-				return;
 				$('#success').submit();
 			}, function(err) {
 				$scope.saving = false;

@@ -4,7 +4,36 @@
 <div ng-controller="ProductListCtrl">
 
     <? $this->insert('components/page-title-with-buttons', ['text' => 'Products']) ?>
-    <? $this->insert('components/search-section') ?>
+    <div class="row search-section-wrapper">
+      <form ng-submit="bulk.fn()" class="search-section section-action">
+        <div class="input-group">
+          <div class="input-group-btn">
+            <div class="dropdown-btn">
+              <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                  <span id="bulk" class="dropdown-text margin-right-10 search-product-text">- Choose Action -</span>
+                  <span class="caret margin-left-10"></span>
+              </button>
+              <ul class="dropdown-menu search-product-dropdown">
+                <li ng-repeat="option in bulkOptions"><a>{{option.name}}</a></li>
+              </ul>
+            </div>
+          </div><!-- /btn-group -->
+          <div class="input-group-btn">
+            <button class="btn-white btn">
+              <span class="button-text-blue">Confirm</span>
+            </button>
+          </div>
+        </div>
+      </form>
+      <form ng-submit="applySearch()" class="search-section section-search">
+        <div class="input-group">
+          <input type="text" class="form-control input-search-icon search-box" ng-model="searchText" placeholder="Search" aria-describedby="basic-addon2">
+          <span class="input-group-btn">
+            <button class="btn btn-white">Search</button>
+          </span>
+        </div>
+      </form>
+    </div>
     <div class="filter-section">
       <div class="filter-container">
         <span>Filters:</span>
@@ -19,14 +48,13 @@
                 <input type="checkbox" aria-label="Checkbox for following text input" ng-model="checkAll">
             </th>
             <th class="display-column"></th>
-            <th>
-              <a ng-click="setOrderBy('ProductNameEn')"><span>Product Name</span>
-              <span class="caret caret-grey"></span>
-              </a>
+            <th ng-click="setOrderBy('ProductNameEn')">
+              <a><span>Product Name</span></a>
+              <i class="fa" ng-class="sort('ProductNameEn')">
             </th>
-            <th class="price-column">
-              <a ng-click="setOrderBy('SalePrice')"><span>Sale Price</span></a>
-              <span class="caret caret-grey"></span>
+            <th class="price-column" ng-click="setOrderBy('SalePrice')">
+              <a><span>Sale Price</span></a>
+              <i class="fa" ng-class="sort('SalePrice')">
             </th>
             <th><span>Info.</span></th>
             <th><span>Image</span></th>
@@ -35,9 +63,9 @@
             </th>
             <th class="live-column" ng-if="showOnOffStatus">Live</th>
             <th class="visible-column">Visible</th>
-            <th class="modified-column">
-              <a ng-click="setOrderBy('UpdatedDt')">Modified<span>
-              <span class="caret caret-grey"></span>
+            <th class="modified-column" ng-click="setOrderBy('UpdatedDt')">
+              <a><span>Modified</span></a>
+              <i class="fa" ng-class="sort('UpdatedDt')">
             </th>
           </tr>
         </thead>

@@ -4,8 +4,7 @@
 	<div ng-controller="AdminAttributeSetAddCtrl" ng-init="init(<?=$params?>)">
     <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute/" . $title, 'urls' => ['/admin/attributesets']]) ?>
     <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()">{{alert.message}}</div>
-    <pre>{{formDataSerialized}}</pre>
-    <form ng-submit="save()" class="ah-form sticky-mainform-action margin-top-30" name="form">
+    <form class="ah-form sticky-mainform-action margin-top-30" name="form">
       <div class="row">
         <div class="col-xs-12">
           <div class="form-section">
@@ -87,7 +86,7 @@
         <div class="container-fluid">
           <div class="float-right">
             <a class="link-btn-plain" ng-click="cancel()">Cancel</a>
-            <button type="submit" class="btn btn-blue btn-width-xl">Save</button>
+            <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
           </div>
         </div>
       </div>

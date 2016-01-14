@@ -235,7 +235,7 @@
                     <span ng-bind="item.name"></span>
                 </ui-select-choices>
               </ui-select>
-            </div>
+           </div>
           </div>
         </div>
       </div>

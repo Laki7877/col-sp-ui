@@ -19,7 +19,7 @@
             </div>
           </div><!-- /btn-group -->
           <div class="input-group-btn">
-            <button class="btn-white btn">
+            <button class="btn-white btn" type="submit">
               <span class="button-text-blue">Confirm</span>
             </button>
           </div>
