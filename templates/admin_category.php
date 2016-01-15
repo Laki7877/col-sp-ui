@@ -28,9 +28,9 @@
 				<span class="col-xs-1">
 					Products
 				</span>
-				<span class="col-xs-1 text-align-center">
+				<!-- <span class="col-xs-1 text-align-center">
 					Visible
-				</span>
+				</span> -->
 					<span class="col-xs-1 text-align-center">
 						Action	
 					</span>
