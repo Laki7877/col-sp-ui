@@ -1,6 +1,6 @@
 var angular = require('angular');
 
-module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
+module.exports = ['util', 'LocalCategory', 'Brand', function (util, LocalCategory, Brand) {
     'use strict';
     var tra = {};
 
@@ -192,12 +192,27 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
     /* 
     *  Reverse serialization
     */
-    tra.inverseTransform = function(invFd, FullAttributeSet){
+    tra.inverseTransform = function(invFd, FullAttributeSet, _Loading){
 
     	console.log('FullAttributeSet', FullAttributeSet);
 
     	invFd.AttributeSet = FullAttributeSet;
     	invFd.PrepareDay = invFd.PrepareDay || '';
+
+		try{
+			//Load Brand
+			var BrandId = invFd.Brand.BrandId;
+			Brand.getOne(BrandId).then(function(data){
+				invFd.Brand = data;
+				delete invFd.Brand.$id;
+				invFd.Brand.id = BrandId;
+			}, function(){
+				console.log("brand resolve failure");
+			});
+		}catch(ex){
+			invFd.Brand = undefined;
+		}
+
 
 		var invMapper ={
 			VideoLinks: function(m){
@@ -211,6 +226,7 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 		};
 
 		try{
+			_Loading.message = "Setting Default Variant..";
 			var DefaultVariantIndex = invFd.Variants.map(function(o){
 				return o.DefaultVariant || false;
 			}).indexOf(true);
@@ -221,6 +237,7 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 		}
 
 		try{
+			_Loading.message = "Setting Variants..";
 			invFd.Variants = invFd.Variants.map(invMapper.Variants);
 		}catch(er){
 			console.warn("Unable to set Variants, will set empty", er);
@@ -229,6 +246,7 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 
 		var MasterAttribute = {};
 		try{
+			_Loading.message = "Setting Master Attributes..";
 			invFd.MasterAttribute.forEach(function(ma){
 				MasterAttribute[ma.AttributeId]  = ma.ValueEn;
 			});
@@ -237,7 +255,7 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 		}
 		invFd.MasterAttribute = MasterAttribute;
 
-
+		_Loading.message = "Setting Local Categories..";
 		invFd.LocalCategories = invFd.LocalCategories || [null, null];
 
 		if(invFd.LocalCategories[0] == null){
@@ -248,12 +266,14 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 			})
 		}
 
+		_Loading.message = "Setting Video Links..";
 		//TODO: replace with try-catch
 		if(invFd.MasterVariant.VideoLinks){
 			invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
 		}else{
 			invFd.MasterVariant.VideoLinks = [];
 		}
+
 
 		invFd.Variants.forEach(function(variant, index){
 			try{
@@ -275,6 +295,7 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 
 		delete invFd.GlobalCategory;
 		delete invFd.LocalCategory;
+
 
 		//TODO: Just change ngmodel to bind to MasterVariant.MasterImages Directly
 		invFd.MasterImages = invFd.MasterVariant.Images;
@@ -306,6 +327,7 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
     		formData: invFd
     	};
 
+		_Loading.message = "Producing Variation Factorization..";
     	if(invFd.Variants.length > 0){
 
  			var HasTwoAttr = ('AttributeId' in invFd.Variants[0].SecondAttribute);
@@ -327,6 +349,7 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 
     		if(HasTwoAttr){
 				SecondArray = invFd.Variants.map(function(variant){
+					console.log(variant, 'var')
 		   			return variant.SecondAttribute.ValueEn.trim();
 				});
 			}

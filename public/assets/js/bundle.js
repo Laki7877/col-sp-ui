@@ -1226,18 +1226,18 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 				};
 
 				var watchVariantChanges = function(){
-					console.log('setting up $watch');
-					$scope._loading.message = "Setting up watch..";
+					$scope._loading.message = "Cleaning up..";
 
 					$scope.$watch('attributeOptions', function(){
 
-						var variantHashes = {};
+						//var variantHashes = {};
 						//Product Hash Tracking Table
-						$scope.formData.Variants.forEach(function(elem, index){
+						//$scope.formData.Variants.forEach(function(elem, index){
 							//Keep track of the index of the hashed item
-							variantHashes[elem.hash] = index;
-						});
+						//	variantHashes[elem.hash] = index;
+						//});
 
+						$scope.formData.Variants = [];
 
 						var expand = function(A,B){
 
@@ -1269,16 +1269,17 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 							kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
 
 							//Only push if don't exist
-							if(!(kpair.hash in variantHashes)){
+							//if(!(kpair.hash in variantHashes)){
 								$scope.formData.Variants.push(kpair);
-							}
+						//	}
 
 							//Mark hash as used
 							//This will not be deleted
-							variantHashes[kpair.hash] = -1;
+						//	variantHashes[kpair.hash] = -1;
 						}
 
 
+						console.log("Recalculating Factors", $scope.attributeOptions);
 						//Multiply out unmultiplied options
 						if($scope.attributeOptions && Object.keys($scope.attributeOptions).length > 0){
 							for(var aKey in $scope.attributeOptions[0].options){
@@ -1286,24 +1287,28 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 								if(angular.isDefined($scope.attributeOptions[1].options) && 
 									$scope.attributeOptions[1].options.length == 0){
-									
+									console.log("expanding A");
 									expand(A);
 								}
 
 								for(var bKey in $scope.attributeOptions[1].options){
 									var B = $scope.attributeOptions[1].options[bKey];
+									console.log("Expanding A,B");
 									expand(A, B);
 								}
 							}
 						}
 						
-
+						//console.log("vairantHashes", variantHashes);
+						//console.log("variants", $scope.formData.Variants);
 						//Remove deleted variants
-						for(var rhash in variantHashes){
-							if(variantHashes[rhash] == -1) continue;
-							$scope.formData.Variants.splice(variantHashes[rhash], 1);
-						}
+						//for(var rhash in variantHashes){
+						//	if(variantHashes[rhash] == -1) continue;
+						//	$scope.formData.Variants.splice(variantHashes[rhash], 1);
+						//}
 
+
+						//TODO: this doesnt seem to be working
 						$scope.formData.DefaultVariant = $scope.formData.Variants[0];
 					}, true);
 
@@ -1311,16 +1316,16 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 				var loadFormData = function(ivFormData, FullAttributeSet){
 
-					$scope._loading.message = "Crunching Data..";
-
+					$scope._loading.message = "Processing..";
 					//Dependency Chain
 					//catId -> AttributeSet -> Inverse
-
 					if(!('VideoLinks' in ivFormData)){
 						ivFormData['VideoLinks'] = [];
 					}
-					console.log("Before Inverse Transformation", ivFormData);
-					var inverseResult = productProxy.inverseTransform(ivFormData, FullAttributeSet);
+					var inverseResult = productProxy.inverseTransform(ivFormData, 
+						FullAttributeSet, 
+						$scope._loading);
+
 					$scope.formData = inverseResult.formData;
 					console.log("After Inverse Transformation", $scope.formData);
 					console.log('inverseResult.attributeOptions', inverseResult.attributeOptions);
@@ -1336,9 +1341,22 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					$scope._loading.message = "Downloading Attribute Sets..";
 
 					AttributeSet.getByCategory(catId).then(function(data){
-						$scope.availableAttributeSets = data;
-						//TODO: Mock for fun
-						// if(data.length > 0) $scope.formData.AttributeSet = data[0];
+						
+						console.log(angular.copy(data), "ATTRSET");
+						//remove complex structure we dont need
+						$scope.availableAttributeSets = data.map(function(aset){
+							
+							aset.AttributeSetMaps = aset.AttributeSetMaps.map(function(asetmapi){
+								asetmapi.Attribute.AttributeValueMaps = asetmapi.Attribute.AttributeValueMaps.map(function(value){
+									return value.AttributeValue.AttributeValueEn;
+								});
+
+								return asetmapi;
+							});
+
+							return aset;
+						});
+						//MAP ATTR SET
 
 						//Load Attribute Set (edit mode only, in add mode AttributeSet is not set)
 						if(ivFormData.AttributeSet && ivFormData.AttributeSet.AttributeSetId){
@@ -1349,13 +1367,11 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 								return o.AttributeSetId
 							}).indexOf(ivFormData.AttributeSet.AttributeSetId);
 
-							console.log("idx", idx);
-						
-							
 						}
 
 						if(ivFormData.ProductId){
 							$scope.formData.AttributeSet = $scope.availableAttributeSets[idx];
+							console.log("FullAttributeSet", $scope.formData.AttributeSet);
 							loadFormData(ivFormData, $scope.formData.AttributeSet);
 						}
  
@@ -1381,23 +1397,10 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					$scope._loading.message = "Downloading Product..";
 					Product.getOne(productId).then(function(ivFormData){
 						var gcat = ivFormData.GlobalCategory;
+					
 						catReady(gcat, ivFormData, function(){
-
 							$scope.formData.ProductId = Number(productId);
-							//Load Brand
-							$scope._loading.message = "Downloading Brand..";
-
-							Brand.getOne($scope.formData.Brand.BrandId).then(function(data){
-									$scope.formData.Brand = data;
-									delete $scope.formData.Brand.$id;
-									$scope.formData.Brand.id = $scope.formData.Brand.BrandId;
-									//MUST HAPPEN LAST
-									angularReady();
-							}, function(){
-									console.log("resolve failure", $scope.formData);
-									angularReady();
-							});
-
+							angularReady();
 						});
 
 						//auxiliary object (non-persist)
@@ -2159,7 +2162,6 @@ var angular = require('angular');
 module.exports = [function() {
   return function(arr, other, trackBy) {
 
-     console.log('arr', arr, 'other', other, trackBy);     
      return arr.filter(function(elem){
         return elem[trackBy] != (other[trackBy] || null);
      });
@@ -2284,7 +2286,7 @@ module.exports = ['$http', '$q', 'storage', 'config', function ($http, $q, stora
 },{}],31:[function(require,module,exports){
 var angular = require('angular');
 
-module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
+module.exports = ['util', 'LocalCategory', 'Brand', function (util, LocalCategory, Brand) {
     'use strict';
     var tra = {};
 
@@ -2476,12 +2478,27 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
     /* 
     *  Reverse serialization
     */
-    tra.inverseTransform = function(invFd, FullAttributeSet){
+    tra.inverseTransform = function(invFd, FullAttributeSet, _Loading){
 
     	console.log('FullAttributeSet', FullAttributeSet);
 
     	invFd.AttributeSet = FullAttributeSet;
     	invFd.PrepareDay = invFd.PrepareDay || '';
+
+		try{
+			//Load Brand
+			var BrandId = invFd.Brand.BrandId;
+			Brand.getOne(BrandId).then(function(data){
+				invFd.Brand = data;
+				delete invFd.Brand.$id;
+				invFd.Brand.id = BrandId;
+			}, function(){
+				console.log("brand resolve failure");
+			});
+		}catch(ex){
+			invFd.Brand = undefined;
+		}
+
 
 		var invMapper ={
 			VideoLinks: function(m){
@@ -2495,6 +2512,7 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 		};
 
 		try{
+			_Loading.message = "Setting Default Variant..";
 			var DefaultVariantIndex = invFd.Variants.map(function(o){
 				return o.DefaultVariant || false;
 			}).indexOf(true);
@@ -2505,6 +2523,7 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 		}
 
 		try{
+			_Loading.message = "Setting Variants..";
 			invFd.Variants = invFd.Variants.map(invMapper.Variants);
 		}catch(er){
 			console.warn("Unable to set Variants, will set empty", er);
@@ -2513,6 +2532,7 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 
 		var MasterAttribute = {};
 		try{
+			_Loading.message = "Setting Master Attributes..";
 			invFd.MasterAttribute.forEach(function(ma){
 				MasterAttribute[ma.AttributeId]  = ma.ValueEn;
 			});
@@ -2521,7 +2541,7 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 		}
 		invFd.MasterAttribute = MasterAttribute;
 
-
+		_Loading.message = "Setting Local Categories..";
 		invFd.LocalCategories = invFd.LocalCategories || [null, null];
 
 		if(invFd.LocalCategories[0] == null){
@@ -2532,12 +2552,14 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 			})
 		}
 
+		_Loading.message = "Setting Video Links..";
 		//TODO: replace with try-catch
 		if(invFd.MasterVariant.VideoLinks){
 			invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
 		}else{
 			invFd.MasterVariant.VideoLinks = [];
 		}
+
 
 		invFd.Variants.forEach(function(variant, index){
 			try{
@@ -2559,6 +2581,7 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 
 		delete invFd.GlobalCategory;
 		delete invFd.LocalCategory;
+
 
 		//TODO: Just change ngmodel to bind to MasterVariant.MasterImages Directly
 		invFd.MasterImages = invFd.MasterVariant.Images;
@@ -2590,6 +2613,7 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
     		formData: invFd
     	};
 
+		_Loading.message = "Producing Variation Factorization..";
     	if(invFd.Variants.length > 0){
 
  			var HasTwoAttr = ('AttributeId' in invFd.Variants[0].SecondAttribute);
@@ -2611,6 +2635,7 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 
     		if(HasTwoAttr){
 				SecondArray = invFd.Variants.map(function(variant){
+					console.log(variant, 'var')
 		   			return variant.SecondAttribute.ValueEn.trim();
 				});
 			}
@@ -2735,10 +2760,12 @@ module.exports = ['storage', function (storage) {
 	    return (a.ValueEn.trim() + (b.ValueEn == '' ? '' : (", " + b.ValueEn.trim())));	
     };
 
-    service.uniqueSet = function(a){
+    service.uniqueSet = function(a, prop){
         var seen = new Set();
         return a.filter(function(x) {
-            return !seen.has(x) && seen.add(x);
+            var y = x;
+            if(prop) y = x[prop];
+            return !seen.has(y) && seen.add(y);
         })
     };
 
