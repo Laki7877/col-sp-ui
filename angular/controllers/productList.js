@@ -137,7 +137,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 	$scope.productList = [];
 	//Default parameters
 	$scope.tableParams = {
-		filter: 0,
+		filter: 'All',
 		searchText: null,
 		orderBy: 'ProductId',
 		direction: 'desc',
