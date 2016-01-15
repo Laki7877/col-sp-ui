@@ -32,6 +32,12 @@
           </span>
         </div>
       </form>
+       <div class="search-section section-filter checkbox-wrapper">
+          <input ng-model="showOnOffStatus"type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" />
+          <label for="checkboxG1" class="css-label">
+              Show Online/Offline Status
+          </label>
+        </div>
     </div>
     <div class="filter-section">
       <div class="filter-container">
@@ -82,7 +88,7 @@
                       <img ng-if='row.ImageUrl' class="logo-img" src="{{ row.ImageUrl }}"/>
                     </div>
                   </td>
-                  <td class="column-text-ellipsis"><a href="/products/{{ row.ProductId }}">{{ row.ProductNameEn }}</a></td>
+                  <td class="column-text-ellipsis"><a href="/products/{{ row.ProductId }}">{{ row.ProductNameEn || '(Untitled Product)' }}</a></td>
                   <td class="price-column">{{ row.SalePrice | currency: ' ' : 2 }}</td>
                   <td class="info-column">
                     <i ng-if="!row.InfoFlag" class="fa fa-minus color-grey icon-size-18px"></i>
