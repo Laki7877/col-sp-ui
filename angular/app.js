@@ -110,7 +110,6 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 .factory('AttributeSet', services.attributeSet)
 .factory('Brand', services.brand)
 .factory('VariantPair', helpers.variantPair)
-.factory('brandAdapter', adapters.brand)
 .factory('Alert', services.alert)
 .factory('Blocker', services.blocker)
 

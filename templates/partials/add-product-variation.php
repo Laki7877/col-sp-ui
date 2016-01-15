@@ -19,14 +19,6 @@
 						</div>
 						<div class="width-field-normal">
 							<div class="input-with-unit">
-								<!--<select ng-model="attributeOptions[jth].options" 
-									class="form-control select2-init-{{jth}} select2-track" 
-									multiple="multiple">
-									<option ng-repeat="i in attributeOptions[jth].Attribute.AttributeValueMaps">
-										{{ i.AttributeValue.AttributeValueEn }}
-									</option>
-								</select>-->
-
 								<ui-select ng-if="_isListInput(attributeOptions[jth].Attribute.DataType)" 
 								multiple ng-model="attributeOptions[jth].options">
 									<ui-select-match>

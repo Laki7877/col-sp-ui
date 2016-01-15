@@ -1,9 +1,9 @@
 var angular = require('angular');
 
 module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 
-'GlobalCategory', 'Category', 'VariantPair', 'productProxy', 'brandAdapter',
+'GlobalCategory', 'Category', 'VariantPair', 'productProxy',
 	function($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, 
-		GlobalCategory, Category, VariantPair, productProxy, brandAdapter){
+		GlobalCategory, Category, VariantPair, productProxy){
 	'use strict';
 
 	$scope._loading = {

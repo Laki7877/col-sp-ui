@@ -70,6 +70,7 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
     		}
 
     		try{
+    			fd.Keywords = util.uniqueSet(fd.Keywords);
     			clean.Keywords = (!fd.Keywords ? "" : fd.Keywords.join(','));
     		}catch(ex){
     			console.warn("Keyword not set, will not serialize", ex);
@@ -203,7 +204,6 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 				return m.Url;
 			},
 			Variants: function(m){
-				console.log(m);
 				m.hash = util.variant.hash(m.FirstAttribute, m.SecondAttribute);
 				m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
 				return m;
@@ -294,7 +294,12 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 			invFd.MasterVariant.DimensionUnit = undefined;
 		}
 
-		invFd.Keywords = invFd.Keywords.split(",");
+		try{
+			invFd.Keywords = util.uniqueSet(invFd.Keywords.split(","));
+		}catch(ex){
+			invFd.Keywords = [];
+		}
+
 		if(invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; //TODO: Hardcode
 
 		var transformed = {
@@ -326,20 +331,19 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 				});
 			}
 
-			console.log(FirstArray, SecondArray, "FSS");
 			//Get updated map from invFd.AttributeSet
 			//and load factorization array
 			transformed.attributeOptions = [
 				{
 					Attribute: FullAttributeSet.AttributeSetMaps[map0_index].Attribute,
-					options: FirstArray
+					options: util.uniqueSet(FirstArray)
 				}
 			];
 
 			if(HasTwoAttr){
 				transformed.attributeOptions.push({
 					Attribute: FullAttributeSet.AttributeSetMaps[map1_index].Attribute,
-					options: SecondArray
+					options: util.uniqueSet(SecondArray)
 				});
 			}else{
 				transformed.attributeOptions.push({
