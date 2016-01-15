@@ -112,6 +112,7 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 .factory('VariantPair', helpers.variantPair)
 .factory('brandAdapter', adapters.brand)
 .factory('Alert', services.alert)
+.factory('Blocker', services.blocker)
 
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)

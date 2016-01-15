@@ -1,9 +1,14 @@
 var angular = require('angular');
 
-module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $window, Alert, Attribute) {
+module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function($scope, $window, Alert, Attribute, Blocker) {
 	$scope.form = {};
 	$scope.formData = {};
 	$scope.alert = new Alert();
+	$scope.blocker = new Blocker(function() {
+		$('#leave-page-warning').modal('show');
+	},function() {
+		$('#leave-page-warning').modal('hide');
+	});
 	$scope.dataTypeOptions = Attribute.dataTypeOptions;
 	$scope.variantOptions = Attribute.variantOptions;
 	$scope.boolOptions = Attribute.boolOptions;
@@ -11,37 +16,9 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 	$scope.formDataSerialized = {};
 	$scope.edit = 0;
 
-	/*(function () {
-	    var location = $window.document.location;
+	//Block normal href flow
+	$scope.blocker.block();
 
-	    var preventNavigation = function () {
-	        var originalHashValue = location.hash;
-	        
-	        $window.setTimeout(function () {
-	            location.hash = 'preventNavigation' + ~~ (9999 * Math.random());
-	            location.hash = originalHashValue;
-	        }, 0);
-
-			$('#leave-page-warning').modal('show');
-	    };
-	    $window.addEventListener('beforeunload', preventNavigation, false);
-	    $window.addEventListener('unload', preventNavigation, false);
-	})();*/
-	
-	/*
-	$window.onbeforeunload = function (e) {
-		$('#leave-page-warning').modal('show');
-		var message = "Your confirmation message goes here.",
-		e = e || window.event;
-		// For IE and Firefox
-		if (e) {
-		//  e.returnValue = message;
-		}
-
-		//e.preventDefault();
-		// For Safari
-		return message;
-	};*/
 	$scope.init = function(params) {
 		if(angular.isDefined(params)) {
 			//edit mode
@@ -55,13 +32,18 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 			$scope.formData = Attribute.generate();
 		}
 	};
-	$scope.cancel= function() {
-		$window.location.href = '/admin/attributes';
+	$scope.cancel= function(location) {
+		if(angular.isDefined(location)) {
+			$window.location.href = location.href;
+		} else {
+			$window.location.href = '/admin/attributes';
+		}
 	};
 	$scope.save = function() {
 		if($scope.saving) {
 			return;
 		}
+		$scope.blocker.allow();
 		$scope.alert.close();
 		$scope.formDataSerialized = Attribute.serialize($scope.formData);
 		if ($scope.edit) {
@@ -71,6 +53,7 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 				$('#success').submit();
 			}, function(err) {
 				$scope.saving = false;
+				$scope.blocker.block();
 				$scope.alert.error(err);
 			});
 		}
@@ -81,6 +64,7 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', function($scope, $w
 				$('#success').submit();
 			}, function(err) {
 				$scope.saving = false;
+				$scope.blocker.block();
 				$scope.alert.error(err);
 				console.log(err);
 			});

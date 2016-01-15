@@ -114,7 +114,7 @@ module.exports = ['common', function(common){
 		var processed = angular.merge(service.generate(), data);
 		processed.Tags = [];
 		processed.Status = angular.isDefined(data.Status) ? find(service.visibleOptions, data.Status) : service.visibleOptions[0];
-
+		console.log(data);
 		angular.forEach(data.Tags, function(tag) {
 			processed.Tags.push(tag.TagName);
 		});
@@ -126,7 +126,7 @@ module.exports = ['common', function(common){
 	};
 	service.serialize = function(data) {
 		var processed = angular.copy(data);
-
+		console.log(data);
 		processed.Tags = [];
 		processed.Status = processed.Status.value;
 		angular.forEach(data.Tags, function(tag) {

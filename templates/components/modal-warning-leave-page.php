@@ -10,8 +10,8 @@
 						<span class="warning-text">Do you want to save changes before exit?</span>
 					</div>
 					<div class="confirmation-action">
-						<button class="col-xs-6 btn btn-white" data-dismiss="modal">Don't Save and Exit</button>
-						<button type="button" class="col-xs-6 btn btn-blue">Save and Exit</button>
+						<button class="col-xs-6 btn btn-white" ng-click="<?= $exit ?>">Don't Save and Exit</button>
+						<button class="col-xs-6 btn btn-blue" type="button" ng-click="<?= $save ?>">Save and Exit</button>
 					</div> <!-- end .col-xs-12 -->
 				</div> <!-- end .row -->
 			</div> <!-- end .modal-body -->
