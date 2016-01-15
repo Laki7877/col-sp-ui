@@ -11,9 +11,9 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		message: 'Loading..'
 	};
 
-/*	$window.onbeforeunload = function (e) {
+	$window.onbeforeunload = function (e) {
 		$('#modal-warning-leave-page').modal('show');
-		var message = "Your confirmation message goes here.",
+		var message = "Are you sure you want to leave the page?",
 		e = e || window.event;
 		// For IE and Firefox
 		if (e) {
@@ -22,8 +22,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 		// For Safari
 		return message;
-	};*/
-
+	};
 
 
 	var cleanData = function(){
