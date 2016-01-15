@@ -4,7 +4,6 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
     'use strict';
     var tra = {};
 
-
 	/*
     * - Convert all category into single { CategoryId } Structure
     * - Add position to image {} request
@@ -59,22 +58,29 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 
     		try{
     			clean.GlobalCategories = fd.GlobalCategories.map(mapper.Categories);
+    		}catch(ex){
+    			console.warn("Unable to map Global Cat Array, Global Cat array is mandatory",ex);
+    		}
+
+    		try{
     			clean.LocalCategories = fd.LocalCategories.map(mapper.Categories);
     		}catch(ex){
-    			console.warn("Cat Map",ex);
+    			console.warn("Unable to map Local Cat array, Initializing",ex);
+    			clean.LocalCategories = [null,null,null];
     		}
 
     		try{
     			clean.Keywords = (!fd.Keywords ? "" : fd.Keywords.join(','));
     		}catch(ex){
-    			console.warn("Keyword join", ex);
+    			console.warn("Keyword not set, will not serialize", ex);
     		}
+
     		try{
     			clean.AttributeSet = {
     				AttributeSetId: fd.AttributeSet.AttributeSetId
     			};
     		}catch(ex){
-    			console.warn("Error while mapping setId", ex);
+    			console.warn("AttributeSet not set, will not serialize", ex);
     		}
 
     		try{
@@ -189,10 +195,8 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 
     	console.log('FullAttributeSet', FullAttributeSet);
 
-
-
     	invFd.AttributeSet = FullAttributeSet;
-    	invFd.PrepareDay = invFd.PrepareDay;
+    	invFd.PrepareDay = invFd.PrepareDay || '';
 
 		var invMapper ={
 			VideoLinks: function(m){
@@ -213,13 +217,14 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 
 			invFd.DefaultVariant = invFd.Variants[DefaultVariantIndex];
 		}catch(er){
-			console.warn("Unable to find DefaultVariant", er);
+			console.warn("Unable to set DefaultVariant, will not set", er);
 		}
 
 		try{
 			invFd.Variants = invFd.Variants.map(invMapper.Variants);
 		}catch(er){
-			console.warn("Variants Map Error", er);
+			console.warn("Unable to set Variants, will set empty", er);
+			invFd.Variants = [];
 		}
 
 		var MasterAttribute = {};
@@ -228,7 +233,7 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 				MasterAttribute[ma.AttributeId]  = ma.ValueEn;
 			});
 		}catch(ex){
-			console.warn("NO master attri", ex);
+			console.warn("Unable to set MasterAttribute", ex);
 		}
 		invFd.MasterAttribute = MasterAttribute;
 
@@ -243,9 +248,7 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 			})
 		}
 
-		
-		
-
+		//TODO: replace with try-catch
 		if(invFd.MasterVariant.VideoLinks){
 			invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
 		}else{

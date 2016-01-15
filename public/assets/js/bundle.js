@@ -75,7 +75,7 @@ module.exports = ['Brand', function(Brand){
 'use strict';
 //App Start here
 var angular = require('angular');
-var bulk = ({"controllers":({"adminAttribute":require("./controllers\\adminAttribute.js"),"adminAttributeAdd":require("./controllers\\adminAttributeAdd.js"),"adminAttributeSet":require("./controllers\\adminAttributeSet.js"),"adminAttributeSetAdd":require("./controllers\\adminAttributeSetAdd.js"),"adminBrand":require("./controllers\\adminBrand.js"),"adminBrandAdd":require("./controllers\\adminBrandAdd.js"),"adminCategory":require("./controllers\\adminCategory.js"),"localCategory":require("./controllers\\localCategory.js"),"productAdd":require("./controllers\\productAdd.js"),"productAddSelectCategory":require("./controllers\\productAddSelectCategory.js"),"productList":require("./controllers\\productList.js"),"productListLocalCategory":require("./controllers\\productListLocalCategory.js"),"root":require("./controllers\\root.js")}),"services":({"alert":require("./services\\alert.js"),"attribute":require("./services\\attribute.js"),"attributeSet":require("./services\\attributeSet.js"),"brand":require("./services\\brand.js"),"category":require("./services\\category.js"),"globalCategory":require("./services\\globalCategory.js"),"image":require("./services\\image.js"),"localCategory":require("./services\\localCategory.js"),"product":require("./services\\product.js"),"shop":require("./services\\shop.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"productProxy":require("./helpers\\productProxy.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncBreadcrumb":require("./directives\\ncBreadcrumb.js"),"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"popoverAny":require("./directives\\popoverAny.js"),"tagOnBlur":require("./directives\\tagOnBlur.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"html":require("./filters\\html.js"),"ordinal":require("./filters\\ordinal.js"),"truth":require("./filters\\truth.js")}),"adapters":({"brand":require("./adapters\\brand.js")})});
+var bulk = ({"controllers":({"adminAttribute":require("./controllers/adminAttribute.js"),"adminAttributeAdd":require("./controllers/adminAttributeAdd.js"),"adminAttributeSet":require("./controllers/adminAttributeSet.js"),"adminAttributeSetAdd":require("./controllers/adminAttributeSetAdd.js"),"adminBrand":require("./controllers/adminBrand.js"),"adminBrandAdd":require("./controllers/adminBrandAdd.js"),"adminCategory":require("./controllers/adminCategory.js"),"localCategory":require("./controllers/localCategory.js"),"productAdd":require("./controllers/productAdd.js"),"productAddSelectCategory":require("./controllers/productAddSelectCategory.js"),"productList":require("./controllers/productList.js"),"productListLocalCategory":require("./controllers/productListLocalCategory.js"),"root":require("./controllers/root.js")}),"services":({"alert":require("./services/alert.js"),"attribute":require("./services/attribute.js"),"attributeSet":require("./services/attributeSet.js"),"brand":require("./services/brand.js"),"category":require("./services/category.js"),"globalCategory":require("./services/globalCategory.js"),"image":require("./services/image.js"),"localCategory":require("./services/localCategory.js"),"product":require("./services/product.js"),"shop":require("./services/shop.js")}),"helpers":({"base64":require("./helpers/base64.js"),"common":require("./helpers/common.js"),"productProxy":require("./helpers/productProxy.js"),"storage":require("./helpers/storage.js"),"util":require("./helpers/util.js"),"variantPair":require("./helpers/variantPair.js")}),"directives":({"ncBreadcrumb":require("./directives/ncBreadcrumb.js"),"ncTradableSelect":require("./directives/ncTradableSelect.js"),"ngCkeditor":require("./directives/ngCkeditor.js"),"ngDelegate":require("./directives/ngDelegate.js"),"ngSlideToggle":require("./directives/ngSlideToggle.js"),"ngTemplate":require("./directives/ngTemplate.js"),"popoverAny":require("./directives/popoverAny.js"),"tagOnBlur":require("./directives/tagOnBlur.js")}),"filters":({"capitalize":require("./filters/capitalize.js"),"html":require("./filters/html.js"),"ordinal":require("./filters/ordinal.js"),"truth":require("./filters/truth.js")}),"adapters":({"brand":require("./adapters/brand.js")})});
 var config = require('./config');
 var template = require('./template');
 
@@ -215,7 +215,7 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 .controller('AdminBrandCtrl',controllers.adminBrand)
 .controller('AdminBrandAddCtrl', controllers.adminBrandAdd)
 
-},{"./adapters\\brand.js":1,"./config":3,"./controllers\\adminAttribute.js":4,"./controllers\\adminAttributeAdd.js":5,"./controllers\\adminAttributeSet.js":6,"./controllers\\adminAttributeSetAdd.js":7,"./controllers\\adminBrand.js":8,"./controllers\\adminBrandAdd.js":9,"./controllers\\adminCategory.js":10,"./controllers\\localCategory.js":11,"./controllers\\productAdd.js":12,"./controllers\\productAddSelectCategory.js":13,"./controllers\\productList.js":14,"./controllers\\productListLocalCategory.js":15,"./controllers\\root.js":16,"./directives\\ncBreadcrumb.js":17,"./directives\\ncTradableSelect.js":18,"./directives\\ngCkeditor.js":19,"./directives\\ngDelegate.js":20,"./directives\\ngSlideToggle.js":21,"./directives\\ngTemplate.js":22,"./directives\\popoverAny.js":23,"./directives\\tagOnBlur.js":24,"./filters\\capitalize.js":25,"./filters\\html.js":26,"./filters\\ordinal.js":27,"./filters\\truth.js":28,"./helpers\\base64.js":29,"./helpers\\common.js":30,"./helpers\\productProxy.js":31,"./helpers\\storage.js":32,"./helpers\\util.js":33,"./helpers\\variantPair.js":34,"./services\\alert.js":35,"./services\\attribute.js":36,"./services\\attributeSet.js":37,"./services\\brand.js":38,"./services\\category.js":39,"./services\\globalCategory.js":40,"./services\\image.js":41,"./services\\localCategory.js":42,"./services\\product.js":43,"./services\\shop.js":44,"./template":45,"angular":57,"angular-animate":47,"angular-base64":48,"angular-file-upload":49,"angular-sanitize":51,"angular-ui-bootstrap":52,"angular-ui-tree":55,"ui-select":58}],3:[function(require,module,exports){
+},{"./adapters/brand.js":1,"./config":3,"./controllers/adminAttribute.js":4,"./controllers/adminAttributeAdd.js":5,"./controllers/adminAttributeSet.js":6,"./controllers/adminAttributeSetAdd.js":7,"./controllers/adminBrand.js":8,"./controllers/adminBrandAdd.js":9,"./controllers/adminCategory.js":10,"./controllers/localCategory.js":11,"./controllers/productAdd.js":12,"./controllers/productAddSelectCategory.js":13,"./controllers/productList.js":14,"./controllers/productListLocalCategory.js":15,"./controllers/root.js":16,"./directives/ncBreadcrumb.js":17,"./directives/ncTradableSelect.js":18,"./directives/ngCkeditor.js":19,"./directives/ngDelegate.js":20,"./directives/ngSlideToggle.js":21,"./directives/ngTemplate.js":22,"./directives/popoverAny.js":23,"./directives/tagOnBlur.js":24,"./filters/capitalize.js":25,"./filters/html.js":26,"./filters/ordinal.js":27,"./filters/truth.js":28,"./helpers/base64.js":29,"./helpers/common.js":30,"./helpers/productProxy.js":31,"./helpers/storage.js":32,"./helpers/util.js":33,"./helpers/variantPair.js":34,"./services/alert.js":35,"./services/attribute.js":36,"./services/attributeSet.js":37,"./services/brand.js":38,"./services/category.js":39,"./services/globalCategory.js":40,"./services/image.js":41,"./services/localCategory.js":42,"./services/product.js":43,"./services/shop.js":44,"./template":45,"angular":57,"angular-animate":47,"angular-base64":48,"angular-file-upload":49,"angular-sanitize":51,"angular-ui-bootstrap":52,"angular-ui-tree":55,"ui-select":58}],3:[function(require,module,exports){
 //remote baseUrl - 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/'
 module.exports = {
 	baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/',
@@ -1261,7 +1261,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 				};
 
 				var watchVariantChanges = function(){
-
+					console.log('setting up $watch');
 					$scope._loading.message = "Setting up watch..";
 
 					$scope.$watch('attributeOptions', function(){
@@ -1359,7 +1359,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					$scope.formData = inverseResult.formData;
 					console.log("After Inverse Transformation", $scope.formData);
 					console.log('inverseResult.attributeOptions', inverseResult.attributeOptions);
-					$scope.attributeOptions = inverseResult.attributeOptions;
+
+					$scope.attributeOptions = inverseResult.attributeOptions || $scope.attributeOptions;
 
 					/*		
 					console.log("ATTR OPT", inverseResult.attributeOptions);
@@ -2367,7 +2368,6 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
     'use strict';
     var tra = {};
 
-
 	/*
     * - Convert all category into single { CategoryId } Structure
     * - Add position to image {} request
@@ -2422,22 +2422,29 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 
     		try{
     			clean.GlobalCategories = fd.GlobalCategories.map(mapper.Categories);
+    		}catch(ex){
+    			console.warn("Unable to map Global Cat Array, Global Cat array is mandatory",ex);
+    		}
+
+    		try{
     			clean.LocalCategories = fd.LocalCategories.map(mapper.Categories);
     		}catch(ex){
-    			console.warn("Cat Map",ex);
+    			console.warn("Unable to map Local Cat array, Initializing",ex);
+    			clean.LocalCategories = [null,null,null];
     		}
 
     		try{
     			clean.Keywords = (!fd.Keywords ? "" : fd.Keywords.join(','));
     		}catch(ex){
-    			console.warn("Keyword join", ex);
+    			console.warn("Keyword not set, will not serialize", ex);
     		}
+
     		try{
     			clean.AttributeSet = {
     				AttributeSetId: fd.AttributeSet.AttributeSetId
     			};
     		}catch(ex){
-    			console.warn("Error while mapping setId", ex);
+    			console.warn("AttributeSet not set, will not serialize", ex);
     		}
 
     		try{
@@ -2552,10 +2559,8 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 
     	console.log('FullAttributeSet', FullAttributeSet);
 
-
-
     	invFd.AttributeSet = FullAttributeSet;
-    	invFd.PrepareDay = invFd.PrepareDay;
+    	invFd.PrepareDay = invFd.PrepareDay || '';
 
 		var invMapper ={
 			VideoLinks: function(m){
@@ -2576,13 +2581,14 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 
 			invFd.DefaultVariant = invFd.Variants[DefaultVariantIndex];
 		}catch(er){
-			console.warn("Unable to find DefaultVariant", er);
+			console.warn("Unable to set DefaultVariant, will not set", er);
 		}
 
 		try{
 			invFd.Variants = invFd.Variants.map(invMapper.Variants);
 		}catch(er){
-			console.warn("Variants Map Error", er);
+			console.warn("Unable to set Variants, will set empty", er);
+			invFd.Variants = [];
 		}
 
 		var MasterAttribute = {};
@@ -2591,7 +2597,7 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 				MasterAttribute[ma.AttributeId]  = ma.ValueEn;
 			});
 		}catch(ex){
-			console.warn("NO master attri", ex);
+			console.warn("Unable to set MasterAttribute", ex);
 		}
 		invFd.MasterAttribute = MasterAttribute;
 
@@ -2606,9 +2612,7 @@ module.exports = ['util', 'LocalCategory', function (util, LocalCategory) {
 			})
 		}
 
-		
-		
-
+		//TODO: replace with try-catch
 		if(invFd.MasterVariant.VideoLinks){
 			invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
 		}else{

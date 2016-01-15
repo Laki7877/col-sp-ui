@@ -8,7 +8,7 @@
 					Please first select an attribute set from Information tab
 				</div>
 				<div class="form-section-content" ng-if="formData.AttributeSet">
-					<div class="form-group" ng-repeat="jth in [0,1]">
+					<div class="form-group" ng-repeat="jth in [0,1]" ng-show="(attributeOptions[0].options.length > 0) || (jth == 0)">
 						<div class="width-label">
 							<select class="form-control"
 								ng-options="i as i.Attribute.AttributeNameEn

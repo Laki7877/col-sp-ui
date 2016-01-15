@@ -163,7 +163,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 				};
 
 				var watchVariantChanges = function(){
-
+					console.log('setting up $watch');
 					$scope._loading.message = "Setting up watch..";
 
 					$scope.$watch('attributeOptions', function(){
@@ -261,7 +261,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					$scope.formData = inverseResult.formData;
 					console.log("After Inverse Transformation", $scope.formData);
 					console.log('inverseResult.attributeOptions', inverseResult.attributeOptions);
-					$scope.attributeOptions = inverseResult.attributeOptions;
+
+					$scope.attributeOptions = inverseResult.attributeOptions || $scope.attributeOptions;
 
 					/*		
 					console.log("ATTR OPT", inverseResult.attributeOptions);
