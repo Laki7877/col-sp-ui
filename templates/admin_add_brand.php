@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
 	<div ng-controller='AdminBrandAddCtrl' ng-init="init(<?=$params?>)">
-    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Brand/Add Brand", 'link' => "admin_brand"]) ?>
+    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Brand/" . $title, 'link' => "admin_brand"]) ?>
     <div class="row margin-top-30">
       <div class="col-xs-12">
         

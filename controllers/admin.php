@@ -44,7 +44,7 @@ class AdminController extends Controller
 	}
 	public static function addBrand($params)
 	{
-		return View::render('admin_add_brand');
+		return View::render('admin_add_brand' , ['title' => 'Add Brand']);
 	}
 	public static function editBrand($params)
 	{

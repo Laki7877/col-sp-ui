@@ -9,8 +9,6 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', function($scope, $windo
 	$scope.formData = {
 		BrandImages: []
 	};
-	//Assign uploader images
-	ImageService.assignUploaderEvents($scope.uploader, $scope.formData.BrandImages);
 	
 	$scope.cancel= function() {
 		$window.location.href = '/admin/brands';
@@ -25,10 +23,13 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', function($scope, $windo
 			$scope.edit = params.id;
 			Brand.getOne(params.id).then(function(data) {
 				$scope.formData = Brand.deserialize(data);
-				console.log($scope.formData);
+				ImageService.assignUploaderEvents($scope.uploader, $scope.formData.BrandImages);
 			}, function(err) {
 				$window.location.href = '/admin/brands';
 			});
+		} else {
+			//Assign uploader images
+			ImageService.assignUploaderEvents($scope.uploader, $scope.formData.BrandImages);
 		}
 	};
 

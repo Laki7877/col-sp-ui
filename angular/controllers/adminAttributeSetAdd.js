@@ -37,10 +37,8 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 		if($scope.saving) {
 			return;
 		}
-
 		$scope.alert.close();
 		$scope.formDataSerialized = AttributeSet.serialize($scope.formData);
-
 		if ($scope.edit) {
 			$scope.saving = true;
 			AttributeSet.update($scope.edit, $scope.formDataSerialized).then(function(data) {

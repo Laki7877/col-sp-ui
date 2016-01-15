@@ -3,12 +3,12 @@ module.exports = ['common', function(common){
 	var service = {};
 	service.visibleOptions = [
 		{
-			name: 'No',
-			value: 'NV'
+			name: 'Visible',
+			value: 'VI'
 		},
 		{
-			name: 'Yes',
-			value: 'VI'
+			name: 'Not Visible',
+			value: 'NV'
 		}
 	];
 	var find = function(array, value) {
@@ -122,11 +122,11 @@ module.exports = ['common', function(common){
 			attr.Required = attr.Required || false;
 			attr.Filterable = attr.Filterable || false;
 		});
+		console.log('deserialize', data, processed);
 		return processed;
 	};
 	service.serialize = function(data) {
 		var processed = angular.copy(data);
-		console.log(data);
 		processed.Tags = [];
 		processed.Status = processed.Status.value;
 		angular.forEach(data.Tags, function(tag) {
@@ -138,6 +138,7 @@ module.exports = ['common', function(common){
 			attr.Required = attr.Required || false;
 			attr.Filterable = attr.Filterable || false;
 		});
+		console.log('serialize', data, processed);
 		return processed;
 	};
 	return service;
