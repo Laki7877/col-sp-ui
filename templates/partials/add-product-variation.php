@@ -12,8 +12,10 @@
 						<div class="width-label">
 							<select class="form-control"
 								ng-options="i as i.Attribute.AttributeNameEn
-								 for i in formData.AttributeSet.AttributeSetMaps | truth: 'Attribute.VariantStatus'
-								 track by i.Attribute.AttributeId "
+								 for i in formData.AttributeSet.AttributeSetMaps | 
+								 truth: 'Attribute.VariantStatus' | 
+								 exclude: attributeOptions[1 - jth].Attribute : 'AttributeId'
+								 track by i.Attribute.AttributeId"
 						       	ng-model="attributeOptions[jth]">
 							</select>
 						</div>

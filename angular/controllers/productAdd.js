@@ -130,19 +130,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			});
 
 			$("body").tooltip({ selector: '[data-toggle=tooltip]' });
-
-			$.fn.select2.defaults.set("tokenSeparators", [","]);
-
-			console.log($scope.formData, "at global jquery");
 			
-			/*
-			$(".select2-init-simple").select2();
-			$('.select2-init-keywords').select2();
-
-			$(".select2-init-track").on("change", function(ev){
-				$scope.$digest();
-			});
-			*/
 		},
 		angular: function() {
 
@@ -263,11 +251,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 					$scope.attributeOptions = inverseResult.attributeOptions || $scope.attributeOptions;
 
-					/*		
-					console.log("ATTR OPT", inverseResult.attributeOptions);
-					$scope.Variants = _variants;
-					$scope.attributeOptions.Options = _options;
-					*/
 				};
 
 				var catReady = function(catId, ivFormData, callback){
@@ -493,9 +476,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			}
 		},
 		jquery: function(){
-			//tabPage.variation.initSelect2(0);
-			//tabPage.variation.initSelect2(1);
-			//$('.select2-init-default-variation').select2();
 		},
 		angular: function() {
 			//Unmultiplied Variants (factor)
@@ -538,32 +518,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 	};
 	tabPage.more_option = {
 		jquery: function() {
-			/*$(".select2-init-related").select2({
-				tags: false,
-				templateResult: function(d){
-					if(!("ProductNameEn" in d)) return null;
-					return d.ProductNameEn + " / " + d.ProductNameTh;
-				},
-				templateSelection: function(d){
-					return d.ProductNameEn + " / " + d.ProductNameTh;
-				},
-				ajax: {
-					processResults: function (data) {
-						var mapped = data.data.map(function(obj){
-							console.log(obj);
-							obj.id = obj.ProductId;
-							return obj;
-						});
 
-						return {results: mapped};
-					},
-					transport: function(params, success, failure){
-						return Product.getAll({
-							searchText: params.data.q
-						}).then(success, failure);
-					}
-				}
-			});*/
 		},
 		angular: function() {
 
@@ -578,10 +533,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 	var loadedTabs = {};
 
-	//init global jquery
-	$(document).on('ready',function(){
-	});
-
 	//init tab jquery
 	$(document).on('shown.bs.tab shown', function(tab){
 		var pageId = tab.target.dataset.id;
@@ -592,8 +543,4 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 	    loadedTabs[pageId] = true;
 	});
 
-   	//Final saving
-   	$scope.save = function() {
-   		//TURN $scope.formData into api-able formats
-   	}
 }];

@@ -1,6 +1,10 @@
 var angular = require('angular');
 
-//TODO: refactor
+/*
+*
+* find truth of property nested in each
+* object in array
+*/
 module.exports = [function() {
   return function(arr, value) {
   	 var i = [];

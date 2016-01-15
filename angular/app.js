@@ -120,13 +120,13 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 .directive('ngSlideToggle', directives.ngSlideToggle)
 .directive('ngTemplate', directives.ngTemplate)
 .directive('popoverAny', directives.popoverAny)
-.directive('tagOnBlur', directives.tagOnBlur)
 
 //Filters
 .filter('capitalize', filters.capitalize)
 .filter('ordinal', filters.ordinal)
 .filter('html', filters.html)
 .filter('truth', filters.truth)
+.filter('exclude', filters.exclude)
 
 //Controllers
 .controller('RootCtrl', controllers.root)
