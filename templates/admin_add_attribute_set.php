@@ -48,7 +48,7 @@
                   'tooltip' : 'Search tag name'
                 }">
                 <ui-select ng-model="formData.Tags" multiple tagging tagging-label="">
-                  <ui-select-match placeholder="Separated by a comma">
+                  <ui-select-match placeholder="Separated by Pressing Enter">
                       {{ $item }}
                   </ui-select-match>
                   <ui-select-choices repeat="i in tagOptions">
