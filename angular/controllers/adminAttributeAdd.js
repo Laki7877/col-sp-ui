@@ -4,11 +4,6 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function
 	$scope.form = {};
 	$scope.formData = {};
 	$scope.alert = new Alert();
-	$scope.blocker = new Blocker(function() {
-		$('#leave-page-warning').modal('show');
-	},function() {
-		$('#leave-page-warning').modal('hide');
-	});
 	$scope.dataTypeOptions = Attribute.dataTypeOptions;
 	$scope.variantOptions = Attribute.variantOptions;
 	$scope.boolOptions = Attribute.boolOptions;
@@ -17,7 +12,7 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function
 	$scope.edit = 0;
 
 	//Block normal href flow
-	$scope.blocker.block();
+	
 
 	$scope.init = function(params) {
 		if(angular.isDefined(params)) {
@@ -43,7 +38,7 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function
 		if($scope.saving) {
 			return;
 		}
-		$scope.blocker.allow();
+		
 		$scope.alert.close();
 		$scope.formDataSerialized = Attribute.serialize($scope.formData);
 		if ($scope.edit) {
@@ -53,7 +48,7 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function
 				$('#success').submit();
 			}, function(err) {
 				$scope.saving = false;
-				$scope.blocker.block();
+				
 				$scope.alert.error(err);
 			});
 		}
@@ -64,7 +59,7 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function
 				$('#success').submit();
 			}, function(err) {
 				$scope.saving = false;
-				$scope.blocker.block();
+				
 				$scope.alert.error(err);
 				console.log(err);
 			});

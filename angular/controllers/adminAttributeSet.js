@@ -124,10 +124,10 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 	$scope.tableParams = {
 		filter: $scope.filterOptions[0].value,
 		searchText: null,
-		orderBy: 'AttributeSetNameEn',
+		orderBy: 'UpdatedDt',
 		direction: 'desc',
 		page: 0,
-		pageSize: 10
+		pageSize: 20
 	};
 	$scope.notReady = true;
 	
