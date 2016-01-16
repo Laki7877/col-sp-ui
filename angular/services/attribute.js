@@ -22,11 +22,11 @@ module.exports = ['common', function(common){
 	];
 	service.variantOptions = [
 		{
-			name: 'Image Only',
+			name: 'Image',
 			value: 'IO'
 		},
 		{
-			name: 'Text Only',
+			name: 'Textbox',
 			value: 'TO'
 		},
 		{
