@@ -141,6 +141,7 @@ module.exports = ['$scope','util', 'config', 'Brand', 'Alert', '$window', functi
 	//Watch any change in table parameter, trigger reload
 	$scope.$watch('tableParams', function(){
 		$scope.reloadData();
+		$scope.checkAll = false;
 	}, true);
 
 	//Select All checkbox

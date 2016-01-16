@@ -192,7 +192,9 @@
                 </ui-select-choices>
               </ui-select>
             </div>
-            <div ng-template="common/input/dropdown"
+            <div
+              ng-show="formData.VariantStatus.value"
+              ng-template="common/input/dropdown"
               ng-template-options="{
                 'label' : 'Variant Display Type'
               }">

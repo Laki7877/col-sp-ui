@@ -190,6 +190,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 	//Watch any change in table parameter, trigger reload
 	$scope.$watch('tableParams', function(){
 		$scope.reloadData();
+		$scope.checkAll = false;
 	}, true);
 
 

@@ -367,6 +367,7 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 	//Watch any change in table parameter, trigger reload
 	$scope.$watch('tableParams', function(){
 		$scope.reloadData();
+		$scope.checkAll = false;
 	}, true);
 
 	//Select All checkbox
@@ -618,6 +619,7 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 	//Watch any change in table parameter, trigger reload
 	$scope.$watch('tableParams', function(){
 		$scope.reloadData();
+		$scope.checkAll = false;
 	}, true);
 
 	//Select All checkbox
@@ -836,6 +838,7 @@ module.exports = ['$scope','util', 'config', 'Brand', 'Alert', '$window', functi
 	//Watch any change in table parameter, trigger reload
 	$scope.$watch('tableParams', function(){
 		$scope.reloadData();
+		$scope.checkAll = false;
 	}, true);
 
 	//Select All checkbox
@@ -1867,6 +1870,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 	//Watch any change in table parameter, trigger reload
 	$scope.$watch('tableParams', function(){
 		$scope.reloadData();
+		$scope.checkAll = false;
 	}, true);
 
 

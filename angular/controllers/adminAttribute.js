@@ -133,6 +133,7 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 	//Watch any change in table parameter, trigger reload
 	$scope.$watch('tableParams', function(){
 		$scope.reloadData();
+		$scope.checkAll = false;
 	}, true);
 
 	//Select All checkbox
