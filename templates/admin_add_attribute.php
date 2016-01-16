@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminAttributeAddCtrl" ng-init="init(<?=$params?>)">
-    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute/" . $title, 'urls' => ['/admin/attributes'], 'class' => '{ disabled: form.$invalid }']) ?>
+    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute/" . $title, 'urls' => ['/admin/attributes'], 'class' => '{ disabled: form.$invalid}']) ?>
     <? $this->insert('components/modal-warning-leave-page', ['id' => 'leave-page-warning', 'exit' => 'cancel(blocker)', 'save' => 'save()']) ?>
     <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()">{{alert.message}}</div>
     <form name="form" class="ah-form sticky-mainform-action margin-top-30" novalidate>

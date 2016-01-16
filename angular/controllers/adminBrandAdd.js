@@ -48,6 +48,12 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 		if($scope.saving) {
 			return;
 		}
+
+		if($scope.uploader.isUploading) {
+			$scope.alert.error('Please wait until the uploading is finished.');
+			return;
+		}
+
 		$scope.form.$setSubmitted();
 		if($scope.form.$invalid) {
 			$scope.alert.error('Please fill out the required fields.');
