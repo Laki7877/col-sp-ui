@@ -15,6 +15,11 @@ module.exports = ['$scope','util', 'config', 'Brand', 'Alert', '$window', functi
 		} 
 	};
 	$scope.bulkOptions = [
+		{
+			name: '- Choose Action -', 
+			value: 'default', 
+			fn: angular.noop
+		}, 
 		{ 	
 			name: 'Delete', 
 			value: 'delete', 

@@ -256,6 +256,11 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 		} 
 	};
 	$scope.bulkOptions = [
+		{
+			name: '- Choose Action -', 
+			value: 'default', 
+			fn: angular.noop
+		}, 
 		{ 	
 			name: 'Delete', 
 			value: 'delete', 
@@ -464,6 +469,11 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 		} 
 	};
 	$scope.bulkOptions = [
+		{
+			name: '- Choose Action -', 
+			value: 'default', 
+			fn: angular.noop
+		}, 
 		{ 	
 			name: 'Delete', 
 			value: 'delete', 
@@ -700,6 +710,11 @@ module.exports = ['$scope','util', 'config', 'Brand', 'Alert', '$window', functi
 		} 
 	};
 	$scope.bulkOptions = [
+		{
+			name: '- Choose Action -', 
+			value: 'default', 
+			fn: angular.noop
+		}, 
 		{ 	
 			name: 'Delete', 
 			value: 'delete', 
@@ -1684,6 +1699,11 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 		} 
 	};
 	$scope.bulkOptions = [
+		{
+			name: '- Choose Action -', 
+			value: 'default', 
+			fn: angular.noop
+		},
 		{ 	
 			name: 'Delete', 
 			value: 'delete', 
@@ -2311,7 +2331,7 @@ return function(arr, other, include) {
         parr.splice(parr.indexOf(removes[i]),1);
     };
 */
-    return parr;
+    return arr;
   }
 }];
 },{}],28:[function(require,module,exports){
