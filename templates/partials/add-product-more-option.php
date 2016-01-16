@@ -9,6 +9,7 @@
 
 
 					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Related Products",
+							"size" => "xxl",
 				       		 "ng_model" => "formData.RelatedProducts",
 						 	 "choices" => "availableRelatedProducts",
 						 	 "refresh" => "refreshRelatedProducts",

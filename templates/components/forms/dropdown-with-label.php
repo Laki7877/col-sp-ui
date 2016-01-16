@@ -11,6 +11,7 @@ if (isset($size)) $inputSize = "width-field-$size";
 			<?php if(isset($ng_options)): ?>			
 			ng-options="<?=$ng_options?>"
 			<?php endif; ?>
+	
 
 			<?php if(isset($ng_model)): ?>
 			ng-model="<?=$ng_model?>"
@@ -35,7 +36,10 @@ if (isset($size)) $inputSize = "width-field-$size";
 					tagging-label="(New Tag)"
 				<?php endif; ?>
 			>
-			    <ui-select-match>
+			    <ui-select-match
+
+			    	placeholder="<?=$placeholder?>"
+			    >
 				<?php if(isset($showBy) && !isset($multiple)): ?>
 					<span ng-bind="$select.selected.<?=$showBy?>"></span>
 				<?php endif; ?>
