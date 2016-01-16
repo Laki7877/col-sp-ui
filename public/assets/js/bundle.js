@@ -123,7 +123,7 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 		if(angular.isDefined(form) && 
 			angular.isDefined(form.$invalid) && 
 			angular.isDefined(form.$dirty)) {
-			return form.$invalid && form.$dirty;
+			return form.$invalid && (form.$dirty || form.$$parentForm.$submitted);
 		}
 		return false;
 	}; 
@@ -419,7 +419,12 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function
 		if($scope.saving) {
 			return;
 		}
-		
+		$scope.form.$setSubmitted();
+		if($scope.form.$invalid) {
+			$scope.alert.error('Please fill out the required fields.');
+			return;
+		}
+
 		$scope.alert.close();
 		$scope.formDataSerialized = Attribute.serialize($scope.formData);
 		if ($scope.edit) {
