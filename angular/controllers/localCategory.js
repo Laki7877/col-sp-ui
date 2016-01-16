@@ -1,12 +1,12 @@
 module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory', 'Shop', function($scope, $rootScope, common, Category, LocalCategory, Shop) {
 	$scope.categories = [];
-	$scope.editingStatusOptions = [{
-		text: 'Hide',
-		value: 'NA'
+	$scope.editingStatusOptions = [	{
+		text: 'Visible',
+		value: 'AT'
 	},
 	{
-		text: 'Show',
-		value: 'AT'
+		text: 'Not Visible',
+		value: 'NA'
 	}];
 	$scope.editingForm = {};
 	$scope.editingCategory = {};
@@ -38,7 +38,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 		});
 	}
 	$rootScope.$on('createLocalCategory', function(evt) {
-		$scope.categories.push(LocalCategory.generate());
+		$scope.categories.unshift(LocalCategory.generate());
 	});
 	$rootScope.$on('saveLocalCategory', function(evt) {
 		//Call endpoint
@@ -46,6 +46,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 		$scope.formData = Category.transformUITreeToNestedSet($scope.categories);
 		$scope.formData = $scope.formData.map(function(item) {
 			delete item['ProductCount'];
+			delete item['parent'];
 			return item;
 		});
 		Shop.upsertLocalCategories($scope.shopId, $scope.formData).then(function() {
@@ -63,7 +64,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 					$scope.editingCategoryOriginal[k] = $scope.editingCategory[k];
 				}
 			} else {
-				$scope.categories.push($scope.editingCategory);
+				$scope.categories.unshift($scope.editingCategory);
 			}
 
 			$scope.$emit('saveLocalCategory');

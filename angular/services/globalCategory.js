@@ -9,7 +9,7 @@ module.exports = ['common', '$q' , function(common, $q) {
 			NameTh: "",
 			UrlKeyEn: "",
 			Commission: 0,
-			Status: "NA",
+			Status: "AT",
 			ProductCount: 0,
 			AttributeSets: [],
 			nodes: []

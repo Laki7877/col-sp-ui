@@ -1,3 +1,3 @@
 <div><a href="#" data-toggle="modal" data-target="#local-category-detail" ng-click="$emit('openEditLocalCategory', node)">View / Edit</a></div>
 <div><a href="#" ng-click="$emit('viewLocalCategory', node)">View Products</a></div>
-<div><a href="#" ng-click="remove()">Delete</a></div>
+<div><a href="#" ng-click="remove(); $emit('saveLocalCategory');">Delete</a></div>

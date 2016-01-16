@@ -49,6 +49,11 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 			return;
 		}
 
+		if($scope.formData.BrandImages.length == 0) {
+			$scope.alert.error('Please make sure to upload a brand logo.');
+			return;
+		}
+
 		if($scope.uploader.isUploading) {
 			$scope.alert.error('Please wait until the uploading is finished.');
 			return;

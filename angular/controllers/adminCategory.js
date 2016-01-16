@@ -1,13 +1,14 @@
 module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory', 'AttributeSet',  function($scope, $rootScope, common, Category, GlobalCategory, AttributeSet){
 	$scope.categories = [];
 	$scope.attributeSetOptions = [];
-	$scope.editingStatusOptions = [{
-		text: 'Hide',
-		value: 'NA'
+	$scope.editingStatusOptions = [
+	{
+		text: 'Visible',
+		value: 'AT'
 	},
 	{
-		text: 'Show',
-		value: 'AT'
+		text: 'Not Visible',
+		value: 'NA'
 	}];
 	$scope.editingForm = {};
 	$scope.editingCategory = {};
@@ -50,9 +51,12 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 		$scope.formData = Category.transformUITreeToNestedSet($scope.categories);
 		$scope.formData = $scope.formData.map(function(item) {
 			delete item['ProductCount'];
-			item['Commission'] = parseInt(item['Commission']);
+			delete item['parent'];
+			item['Commission'] = parseFloat(item['Commission']);
 			return item;
 		});
+
+		console.log($scope.formData);
 			
 		GlobalCategory.upsert($scope.formData).then(function() {
 			$scope.alert.open(true);
@@ -70,7 +74,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 					$scope.editingCategoryOriginal[k] = $scope.editingCategory[k];
 				}
 			} else {
-				$scope.categories.push($scope.editingCategory);
+				$scope.categories.unshift($scope.editingCategory);
 			}
 			$scope.$emit('saveGlobalCategory');
 			//Close modal
