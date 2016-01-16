@@ -19,7 +19,7 @@
 						       	ng-model="attributeOptions[jth]">
 							</select>
 						</div>
-						<div class="width-field-normal">
+						<div class="width-field-xl">
 							<div class="input-with-unit">
 								<ui-select ng-if="_isListInput(attributeOptions[jth].Attribute.DataType)" 
 								multiple ng-model="attributeOptions[jth].options">
