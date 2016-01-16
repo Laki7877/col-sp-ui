@@ -139,10 +139,10 @@
                     <div class="width-field-xxl">
                       <div class="multiple-input">
                         <div class="input-column input-xxl">
-                          <input type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (Thai)"/>
+                          <input name="ltChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (Thai)" ng-class="{'has-error': $root.isInvalid('ltChoiceTh' + $index)}" required/>
                         </div>
                         <div class="input-column input-xxl">
-                          <input type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)"/>
+                          <input name="ltChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': $root.isInvalid('ltChoiceEn' + $index)}" required/>
                         </div>
                         <i ng-if="$index > 0" class="clickable fa fa-trash fa-2x margin-left-10 color-grey margin-top-5" ng-click="formData.LT.AttributeValues.splice($index,1)"></i>
                       </div>
