@@ -97,7 +97,6 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 .factory('storage', helpers.storage)
 .factory('util', helpers.util)
 .factory('base64', helpers.base64)
-.factory('productProxy', helpers.productProxy)
 
 //Services
 .factory('Product', services.product)

@@ -1,9 +1,9 @@
 var angular = require('angular');
 
 module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 
-'GlobalCategory', 'Category', 'VariantPair', 'productProxy',
+'GlobalCategory', 'Category', 'VariantPair',
 	function($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, 
-		GlobalCategory, Category, VariantPair, productProxy){
+		GlobalCategory, Category, VariantPair){
 	'use strict';
 
 	$scope._loading = {
@@ -42,7 +42,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 	$scope.preview = function(){
 		cleanData();
-		var apiRequest = productProxy.transform($scope.formData);
+		var apiRequest = Product.serialize($scope.formData);
 		console.log(JSON.stringify(apiRequest));
 
 	};
@@ -71,7 +71,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		var apiRequest;
 		try{
 			console.log(JSON.stringify(apiRequest));
-			apiRequest = productProxy.transform($scope.formData);
+			apiRequest = Product.serialize($scope.formData);
 		}catch(ex){
 			console.log(ex);
 			alert("Error - Unable to serialize data", ex);
@@ -240,7 +240,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					if(!('VideoLinks' in ivFormData)){
 						ivFormData['VideoLinks'] = [];
 					}
-					var inverseResult = productProxy.inverseTransform(ivFormData, 
+					var inverseResult = Product.deserialize(ivFormData, 
 						FullAttributeSet, 
 						$scope._loading);
 
@@ -432,6 +432,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 			//Events
 			$scope.$on('openGlobalCat', function(evt, item, indx) {
+				console.log('openGloCat', evt, item, indx);
 				$scope.viewCategoryColumns = Category.createColumns(item, $scope.availableGlobalCategories);
 				$scope.viewCategorySelected = item;
 				$scope.viewCategoryIndex = indx;

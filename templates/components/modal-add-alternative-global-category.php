@@ -9,6 +9,7 @@
         <h3 class="modal-title"><?=$header?></h3>
       </div>
       <div class="modal-body">
+
             <div class="category-section column-<?=$numberOfColumn?>">
                 <div class="category-section-border-box">
                     <div class="category-header">
