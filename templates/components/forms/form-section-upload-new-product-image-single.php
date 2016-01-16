@@ -22,6 +22,7 @@
 			"sep" => 1,
 			"action" => 4, 
 			"images" => $images,
-			"uploader" => $uploader]) ?>
+			"uploader" => $uploader,
+			"ignore" => true ]) ?>
 	</div>
 </div>

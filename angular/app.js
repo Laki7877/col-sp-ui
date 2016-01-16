@@ -24,7 +24,7 @@ var directives = bulk.directives;
 var filters = bulk.filters;
 var adapters = bulk.adapters;
 
-var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
+var app = angular.module('colspApp', ['ngSanitize','ui.select', 'ngAnimate', 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
 
 //App config
 .config(['$uibTooltipProvider', 'uiSelectConfig', function($tooltipProvider, uiSelectConfig) {
@@ -35,7 +35,7 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 	$tooltipProvider.options({
 		trigger: 'clickanystart'
 	});
-	uiSelectConfig.taggingTokens = [',', 'ENTER']
+	//uiSelectConfig.taggingTokens = ',';
 }])
 
 //App template cache load

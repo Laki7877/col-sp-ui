@@ -47,7 +47,7 @@
                   'size' : 'large',
                   'tooltip' : 'Search tag name'
                 }">
-                <ui-select ng-model="formData.Tags" multiple tagging tagging-label="">
+                <ui-select ng-model="formData.Tags" tagging-tokens=",|ENTER" multiple tagging tagging-label="">
                   <ui-select-match placeholder="Separated by Pressing Enter">
                       {{ $item }}
                   </ui-select-match>

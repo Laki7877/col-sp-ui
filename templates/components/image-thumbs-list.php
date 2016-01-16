@@ -20,7 +20,7 @@
 			"uploader" => $uploader ]) ?>
 		</div>
 		<div style="text-align:center; padding-top: 10px; color: grey" ng-if="$index == 0">
-			Featured Image
+			<? if(!isset($ignore)):?>Featured Image<? endif; ?>
 		</div>
 	</li>
 </ul>
