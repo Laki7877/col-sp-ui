@@ -1,5 +1,6 @@
 .ui-select-multiple input.ui-select-search:not(.ng-touched) {
-    width: 70% !important;
+    width: inherit;
+    min-width: 300px;
 }
 
 .select2-container {
