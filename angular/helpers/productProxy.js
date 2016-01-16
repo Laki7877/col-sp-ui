@@ -43,9 +43,15 @@ module.exports = ['util', 'LocalCategory', 'Brand', function (util, LocalCategor
     				if(!('VideoLinks' in variant)) variant.VideoLinks = [];
     				if(!('Images' in variant)) variant.Images = [];	
     				if("queue" in variant) delete variant.queue; //circular
-    				variant.Images = variant.Images.map(mapper.Images);
+    				variant.Images = (variant.Images || []).map(mapper.Images);
     				variant.Images360 = []; //for future
-    				variant.VideoLinks = objectMapper.VideoLinks(variant.VideoLinks);
+
+    				try{
+    					variant.VideoLinks = objectMapper.VideoLinks(variant.VideoLinks);
+    				}catch(ex){
+    					variant.VideoLinks = [];
+    				}
+
     				return variant;
     			},
     			Categories: function(lcat){
@@ -152,13 +158,13 @@ module.exports = ['util', 'LocalCategory', 'Brand', function (util, LocalCategor
 	}
 
 	try{
-		clean.MasterVariant.Images360 = fd.MasterImages360.map(mapper.Images);
+		clean.MasterVariant.Images360 = (fd.MasterImages360 | []).map(mapper.Images);
 	}catch(ex){
 		clean.MasterVariant.Images360 = [];
 	}
 
 	try{
-		clean.MasterVariant.Images = fd.MasterImages.map(mapper.Images);
+		clean.MasterVariant.Images = (fd.MasterImages || []).map(mapper.Images);
 	}catch(ex){
 		clean.MasterVariant.Images = [];
 	}
@@ -166,14 +172,14 @@ module.exports = ['util', 'LocalCategory', 'Brand', function (util, LocalCategor
 	try{
 		if(hasVariants){
 			var masterProps = [];
-			clean.Variants = fd.Variants.map(mapper.Variants);
+			clean.Variants = (fd.Variants || []).map(mapper.Variants);
 			//Find DefaultVariant
-			var targetHash = fd.DefaultVariant.hash;
+			var target = fd.DefaultVariant.text;
 			clean.Variants.forEach(function(vari, index){
 				vari.SafetyStock = 0; //Placeholder, no UI yet
 				vari.StockType = 0;  //Placeholder
 				vari.DefaultVariant = false;
-				if(vari.hash == targetHash){
+				if(vari.text == target){
 					clean.Variants[index].DefaultVariant = true;
 				}
 			});
@@ -227,7 +233,7 @@ module.exports = ['util', 'LocalCategory', 'Brand', function (util, LocalCategor
 
 		try{
 			_Loading.message = "Setting Default Variant..";
-			var DefaultVariantIndex = invFd.Variants.map(function(o){
+			var DefaultVariantIndex = (invFd.Variants || []).map(function(o){
 				return o.DefaultVariant || false;
 			}).indexOf(true);
 
@@ -238,7 +244,7 @@ module.exports = ['util', 'LocalCategory', 'Brand', function (util, LocalCategor
 
 		try{
 			_Loading.message = "Setting Variants..";
-			invFd.Variants = invFd.Variants.map(invMapper.Variants);
+			invFd.Variants = (invFd.Variants || []).map(invMapper.Variants);
 		}catch(er){
 			console.warn("Unable to set Variants, will set empty", er);
 			invFd.Variants = [];
@@ -256,8 +262,11 @@ module.exports = ['util', 'LocalCategory', 'Brand', function (util, LocalCategor
 		invFd.MasterAttribute = MasterAttribute;
 
 		_Loading.message = "Setting Local Categories..";
-		invFd.LocalCategories = invFd.LocalCategories || [null, null];
 
+		invFd.LocalCategories = invFd.LocalCategories || [null, null];
+		if(invFd.LocalCategories.length == 0){
+			invFd.LocalCategories = [null, null];
+		}
 		if(invFd.LocalCategories[0] == null){
 			invFd.LocalCategories.unshift(null);
 		}else{
@@ -277,20 +286,26 @@ module.exports = ['util', 'LocalCategory', 'Brand', function (util, LocalCategor
 
 		invFd.Variants.forEach(function(variant, index){
 			try{
-				variant.VideoLinks = variant.VideoLinks.map(invMapper.VideoLinks);
+				variant.VideoLinks = (variant.VideoLinks || []).map(invMapper.VideoLinks);
 			}catch(ex){
 				variant.VideoLinks = [];
 			}
 		});
 
 
+
+		if((invFd.GlobalCategories || []).length == 0){
+			invFd.GlobalCategories = [null, null];
+		}
+
 		try{
-			//TODO: This should fetch entire Object
+			//TODO: This should fetch entire Object (well maybe not)
 			invFd.GlobalCategories.unshift({
 				CategoryId: invFd.GlobalCategory
 			});
 		}catch(ex){
-			invFd.GlobalCategories = [null, null, null];
+			invFd.GlobalCategories = [null, null];
+			throw "This can't happen, GlocalCategory not given by API";
 		}
 
 		delete invFd.GlobalCategory;
@@ -349,7 +364,6 @@ module.exports = ['util', 'LocalCategory', 'Brand', function (util, LocalCategor
 
     		if(HasTwoAttr){
 				SecondArray = invFd.Variants.map(function(variant){
-					console.log(variant, 'var')
 		   			return variant.SecondAttribute.ValueEn.trim();
 				});
 			}

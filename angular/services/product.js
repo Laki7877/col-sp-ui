@@ -1,5 +1,5 @@
 //Products Service
-module.exports = ['$q', '$http', 'common', function($q, $http, common){
+module.exports = ['$http', 'common', function($http, common){
 	'use strict';
 	var service = {};
 
@@ -62,6 +62,10 @@ module.exports = ['$q', '$http', 'common', function($q, $http, common){
 			}
 		});
 	};
+
+	service.serialize = function(){}
+
+	service.deserialize = function(){};
 	
 	return service;
 }];

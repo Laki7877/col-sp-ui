@@ -42,9 +42,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 	$scope.preview = function(){
 		cleanData();
-		console.log('Form Data', $scope.formData);
 		var apiRequest = productProxy.transform($scope.formData);
-		console.log('API JSON', JSON.stringify(apiRequest));
+		console.log(JSON.stringify(apiRequest));
 
 	};
 
@@ -52,7 +51,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		return Product.getAll({
 			searchText: q
 		}).then(function(dataSet){
-			console.log("Refreshing Related Products", dataSet);
 			$scope.availableRelatedProducts = dataSet.data;
 		});
 	};
@@ -69,24 +67,22 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 	$scope.publish = function(Status){
 
 		cleanData();
-		console.log("Publishing with Status = ", $scope.Status);
+		console.log("Publishing with Status = ", Status);
 		var apiRequest;
 		try{
-			console.log('Form Data', $scope.formData);
+			console.log(JSON.stringify(apiRequest));
 			apiRequest = productProxy.transform($scope.formData);
-			console.log('API JSON', JSON.stringify(apiRequest), $scope.Status);
 		}catch(ex){
 			console.log(ex);
-			alert("Unable to serialize data", ex);
+			alert("Error - Unable to serialize data", ex);
 			return;
 		}
 
 		Product.publish(apiRequest, Status).then(function(res){
 				//TODO: remove this , 
 				if(res.ProductId){
-
 					$window.onbeforeunload = function(){};
-					console.log("Save successful");
+					console.log("OK");
 					$window.location.href = "/products";
 				}else{
 					alert("Unable to save", res);
@@ -192,8 +188,10 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 								ValueEn: B
 							});
 
+							//Initialize
 							kpair.ProductNameEn = $scope.formData.MasterVariant.ProductNameEn;
 							kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
+							kpair.Display = $scope.availableVariantDisplayOption[0];
 
 							if(kpair.text in vHashSet){
 								//Replace with value from vHashSet
@@ -247,8 +245,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 						$scope._loading);
 
 					$scope.formData = inverseResult.formData;
-					console.log("After Inverse Transformation", $scope.formData);
-					console.log('inverseResult.attributeOptions', inverseResult.attributeOptions);
+					console.log("After Inverse Transformation", $scope.formData, inverseResult.attributeOptions);
 
 					$scope.attributeOptions = inverseResult.attributeOptions || $scope.attributeOptions;
 
@@ -262,7 +259,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 					AttributeSet.getByCategory(catId).then(function(data){
 						
-						console.log(angular.copy(data), "ATTRSET");
 						//remove complex structure we dont need
 						$scope.availableAttributeSets = data.map(function(aset){
 							
@@ -276,7 +272,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 							return aset;
 						});
-						//MAP ATTR SET
 
 						//Load Attribute Set (edit mode only, in add mode AttributeSet is not set)
 						if(ivFormData.AttributeSet && ivFormData.AttributeSet.AttributeSetId){
@@ -324,6 +319,9 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 						//auxiliary object (non-persist)
 						// $scope.attributeOptions[0] = $scope.formData.Variants[0].FirstAttribute;
+					}, function(){
+						$window.onbeforeunload = function(){};
+						$window.location.href = "/products";
 					});
 				}
 
@@ -348,6 +346,13 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			$scope.availableSearchTags = ["Eneloop", "Extra Battery"];
 			$scope.availableRelatedProducts = [];
 			$scope.availableStockTypes = ['Stock', 'Pre-Order'];
+			$scope.availableVariantDisplayOption = [{
+				text: 'Show as group of variants',
+				value: 'GROUP' 
+			},{
+				text: 'Show as individual product',
+				value: 'INDIVIDUAL'
+			}];
 
 			//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
 			$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
@@ -534,8 +539,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 	$(document).on('shown.bs.tab shown', function(tab){
 		var pageId = tab.target.dataset.id;
 		if(pageId in loadedTabs) return;
-		console.log(tab, loadedTabs);
-		console.log("initing ", pageId);
 	    tabPage[pageId].jquery();
 	    loadedTabs[pageId] = true;
 	});

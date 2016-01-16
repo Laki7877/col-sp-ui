@@ -13,7 +13,14 @@
 							<div class="form-section-content modal-custom">
 								<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Name (Thai)", "ng_model" => $model . ".ProductNameTh"]) ?>
 								<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Name (English)", "ng_model" => $model . ".ProductNameEn"]) ?>
-								<? $this->insert('components/forms/multiple-radio-multiline', ["label" => "Display", "choices" => ["GROUP" => "Show as group of variants", "INDIVIDUAL" => "Show as individual product"], "ng_model" => $model . ".Display" ]) ?>
+								<? $this->insert('components/forms/dropdown-with-label',
+									["label" => "Display",
+									 "showBy" => "text",
+								 	 "choices" => "availableVariantDisplayOption",
+							  		 "ng_model"=> $model . ".Display"
+									])
+								?>
+
 							</div>
 						</div>
 						<? $this->insert('components/forms/form-section-upload-new-product-image', ["uploader" => "uploaderModal", "images" => $model .".Images"]) ?>
