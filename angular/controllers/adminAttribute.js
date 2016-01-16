@@ -55,6 +55,7 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 			$scope.attributeTotal = x.total;
 			$scope.attributeList = x.data;
 			$scope.notReady = false;
+			console.log($scope.attributeList);
 		});
 	};
 	$scope.actions = {

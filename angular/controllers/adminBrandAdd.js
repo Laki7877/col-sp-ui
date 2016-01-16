@@ -1,11 +1,12 @@
 var angular = require('angular');
 
-module.exports = ['$scope', '$window', 'Image', 'Brand', function($scope, $window, ImageService, Brand) {
+module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scope, $window, ImageService, Brand, Alert) {
 	$scope.edit = 0;
 	$scope.uploader = ImageService.getUploader('/BrandImages', {
 		queueLimit: 1
 	});
-
+	$scope.alert = new Alert();
+	$scope.form = {};
 	$scope.formData = {
 		BrandImages: []
 	};
@@ -44,6 +45,16 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', function($scope, $windo
 	}
 	
 	$scope.save = function() {
+		if($scope.saving) {
+			return;
+		}
+		$scope.form.$setSubmitted();
+		if($scope.form.$invalid) {
+			$scope.alert.error('Please fill out the required fields.');
+			return;
+		}
+
+		$scope.alert.close();
 		$scope.saving = true;
 		$scope.formDataSerialized = Brand.serialize($scope.formData);
 		if($scope.edit > 0) {
