@@ -1783,7 +1783,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 	$scope.tableParams = {
 		filter: 'All',
 		searchText: null,
-		orderBy: 'ProductId',
+		orderBy: 'UpdatedDt',
 		direction: 'desc',
 		page: 0,
 		pageSize: 20
