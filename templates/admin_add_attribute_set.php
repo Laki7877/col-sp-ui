@@ -12,7 +12,7 @@
             <div class="form-section-content">
               <div ng-template="common/input/text"
                 ng-template-options="{
-                  'label': 'Attribute Set Name (English)',
+                  'label': 'Attribute Set Name (Eng)',
                   'labelClass': 'required',
                 }">
                 <input
