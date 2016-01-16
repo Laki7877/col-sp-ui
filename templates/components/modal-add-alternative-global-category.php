@@ -17,7 +17,7 @@
                     </div>
                     <div class="category-content no-padding">
                         <ul ng-repeat="column in <?= $template ?> track by $index" ng-class="{'empty-column': column.list.length <= 0 }" class="content-column">
-                            <li ng-repeat="row in (column.list | exclude: formData.GlobalCategories : 'NameEn') track by $index" ng-class="{'category-active' : $index == column.active }" ng-click="$emit('selectGlobalCat', row, $index, $parent.$index)" ng-cloak>{{row.NameEn}}</li>
+                            <li ng-repeat="row in (column.list | exclude: formData.GlobalCategories : 'CategoryId') track by $index" ng-class="{'category-active' : $index == column.active }" ng-click="$emit('selectGlobalCat', row, $index, $parent.$index)" ng-cloak>{{row.NameEn}}</li>
                         </ul>
                     </div>
                 </div>

@@ -35,23 +35,12 @@ return function(arr, other, include) {
     if(include == null || other == null || other.length == 0) {
         return arr;
     }
-
-    var parr = angular.copy(arr);
     var removes = [];
-
-    console.log(other);
 /*
     //Get all removing leaf
-    angular.forEach(other, function(elem) {
-        if(elem != null) {
-            var e = search(elem.CategoryId, parr);
-            console.log(e);
-            return;
-            if(e.CategoryId != include.CategoryId) {
-                removes.push(e);
-            }
-        }
-    });
+    for (var i = 0; i < Things.length; i++) {
+        Things[i]
+    };
 
     var i = 0;
     
@@ -74,6 +63,6 @@ return function(arr, other, include) {
         parr.splice(parr.indexOf(removes[i]),1);
     };
 */
-    return parr;
+    return arr;
   }
 }];

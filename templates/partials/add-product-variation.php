@@ -76,20 +76,25 @@
 							</tr>
 						</thead>
 						<tbody>
-								<tr ng-repeat="pair in formData.Variants track by $index">
+								<tr ng-class="{'opacity-50': !pair.Visibility}" ng-repeat="pair in formData.Variants track by $index">
 									<td class="column-text-ellipsis"> {{ pair.text}}</td>
-									<td><input type="text" class="form-control" 
+									<td><input type="text" ng-disabled='!pair.Visibility' class="form-control" 
 										ng-model="pair.Sku" /></td>
 									<td><input type="text" 
-										ng-model="pair.OriginalPrice"
+										ng-model="pair.OriginalPrice" ng-disabled='!pair.Visibility'
 										class="form-control" /></td>
 									<td><input type="text"
-										ng-model="pair.SalePrice"
+										ng-model="pair.SalePrice" ng-disabled='!pair.Visibility'
 								       		class="form-control" /></td>
-									<td><input type="text" ng-model="pair.Quantity"
+									<td><input type="text" ng-model="pair.Quantity" ng-disabled='!pair.Visibility'
 										class="form-control" /></td>
-									<td><a class="btn btn-white btn-width-xl" data-toggle="modal" data-target="#variant-detail-1" ng-click="$emit('openPairModal', pair, formData.Variants, $index)">More Detail</a></td>
-									<td><a class="btn btn-white disabled">Hide</a></td>
+									<td><a class="btn btn-white btn-width-xl" ng-disabled='!pair.Visibility' 
+									data-toggle="modal" data-target="#variant-detail-1" 
+									ng-click="$emit('openPairModal', pair, formData.Variants, $index)">More Detail</a></td>
+									<td><a class="btn btn-white" ng-click='pair.Visibility = !pair.Visibility'>
+										<span ng-if='pair.Visibility'>Hide</span>
+										<span ng-if='!pair.Visibility'>Show</span>
+									</a></td>
 								</tr>
 						</tbody>
 					</table>

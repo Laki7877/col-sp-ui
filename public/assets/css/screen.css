@@ -14398,3 +14398,8 @@ input.form-control.has-error {
 .disabled-chevron {
   cursor: not-allowed;
 }
+
+/* line 180, ../../../assets/screen.scss */
+.opacity-50 {
+  opacity: 0.5;
+}
