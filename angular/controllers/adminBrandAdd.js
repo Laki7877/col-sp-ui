@@ -14,8 +14,14 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', function($scope, $windo
 		$window.location.href = '/admin/brands';
 	};
 
-	$scope.$on('delete', function(e, item, arr, indx){
-		arr.splice(indx, 1)
+	$scope.$on('delete', function(e, item, arr, indx, uploader){
+		angular.forEach(uploader.queue, function(i) {
+			if(i.indx == indx) {
+				i.remove();
+				i.cancel();
+			}
+		});
+		arr.splice(indx, 1);
 	});
 
 	$scope.init = function(params) {

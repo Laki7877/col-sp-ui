@@ -16,7 +16,8 @@
 		<div><? $this->insert('components/image-thumbs-actions-'. $action, [
 			"image" => "item", 
 			"image_url" => "item.url",
-			"array" => $images ]) ?>
+			"array" => $images,
+			"uploader" => $uploader ]) ?>
 		</div>
 		<div style="text-align:center; padding-top: 10px; color: grey" ng-if="$index == 0">
 			Featured Image

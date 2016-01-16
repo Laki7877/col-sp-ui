@@ -407,7 +407,13 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		    	array[to] = item;
 		    	array[index] = tmp;
 		   	});
-		   	$scope.$on('delete', function(evt, item, array, index) {
+		   	$scope.$on('delete', function(evt, item, array, index, uploader) {
+				angular.forEach(uploader.queue, function(i) {
+					if(i.indx == indx) {
+						i.remove();
+						i.cancel();
+					}
+				});
 		   		array.splice(index, 1);
 		   	});
 		   	$scope.$on('zoom', function(evt, item, array, index) {

@@ -34,18 +34,28 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	 * Assign image uploader events specifically to COL-image uploading feature
 	 */
 	service.assignUploaderEvents = function(uploader, images) {
+		uploader.onWhenAddingFileFailed = function(item, filter, options) {
+			console.info('onAfterAddingFile', item, filter, options);
+		};
 		uploader.onAfterAddingFile = function(item) {
 			var obj = {
 				url: ''
 			};
+			if(images.length == uploader.queueLimit) {
+				//Override last image
+				images.pop();
+			}
 			images.push(obj);
 			item.indx = images.length-1;
+			console.info('onAfterAddingFile', images, uploader.queue);
 		};
 	    uploader.onSuccessItem = function(item, response, status, headers) {
 	    	images[item.indx] = response;
+			console.info('onSuccessItem', images, uploader.queue);
 	    };
 	    uploader.onErrorItem = function(item, response, status, headers) {
 	    	images.splice(item.indx, 1);
+			console.info('onErrorItem', images, uploader.queue);
 	    };
 
 	    return uploader;

@@ -114,7 +114,10 @@ module.exports = ['common', function(common){
 		var processed = angular.merge(service.generate(), data);
 		processed.Tags = [];
 		processed.Status = angular.isDefined(data.Status) ? find(service.visibleOptions, data.Status) : service.visibleOptions[0];
-		console.log(data);
+
+		if(angular.isUndefined(processed.Attributes)) {
+			processed.Attributes = [];
+		}
 		angular.forEach(data.Tags, function(tag) {
 			processed.Tags.push(tag.TagName);
 		});

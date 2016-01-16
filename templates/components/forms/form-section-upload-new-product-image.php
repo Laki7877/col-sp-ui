@@ -21,6 +21,7 @@
 		<? $this->insert('components/image-thumbs-list', [
 			"sep" => 1,
 			"action" => 4, 
-			"images" => $images]) ?>
+			"images" => $images,
+			"uploader" => $uploader]) ?>
 	</div>
 </div>
