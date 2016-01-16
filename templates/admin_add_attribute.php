@@ -87,27 +87,25 @@
                 <div ng-switch-when="ST">
                   <div ng-template="common/input/text"
                     ng-template-options="{
-                      'label': 'Attribute Unit (Thai)',
-                      'labelClass': 'required'
+                      'label': 'Attribute Unit (Thai)'
                     }">
                     <input
                       class="form-control"
                       name="stAttributeUnitTh"
                       ng-model="formData.ST.AttributeUnitTh"
                       ng-class="{ 'has-error' : $root.isInvalid(form.stAttributeUnitTh) }"
-                      required />
+                      />
                   </div>
                   <div ng-template="common/input/text"
                     ng-template-options="{
-                      'label': 'Attribute Unit (English)',
-                      'labelClass': 'required'
+                      'label': 'Attribute Unit (English)'
                     }">
                     <input
                       class="form-control"
                       name="stAttributeUnitEn"
                       ng-model="formData.ST.AttributeUnitEn"
                       ng-class="{ 'has-error' : $root.isInvalid(form.stAttributeUnitEn) }"
-                      required />
+                       />
                   </div>
                   <div ng-template="common/input/dropdown"
                     ng-template-options="{
