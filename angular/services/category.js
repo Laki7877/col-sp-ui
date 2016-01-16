@@ -58,6 +58,9 @@ module.exports = ['config', function(config) {
             while(set.length > 0) {
                 //Get front queue item
                 var item = set.shift();
+                if(angular.isUndefined(item.Depth)) {
+                    item.Depth = 1;
+                }
                 if(angular.isUndefined(item.nodes)) {
                     item.nodes = [];
                 }
@@ -69,6 +72,8 @@ module.exports = ['config', function(config) {
                 } else {
                     if (item.Rgt < pivot.Rgt) {
                         //This item belong to pivot's children
+                        item.parent = pivot;
+                        item.Depth = pivot.Depth + 1;
                         pivot.nodes.push(item);
                     } else {
                         //Run reverse on current pivot if any
@@ -121,7 +126,7 @@ module.exports = ['config', function(config) {
 			if (item.nodes.length <= 0) {
 				selectEvent(item);
 			} else {
-            		        selectEvent(null);
+            	selectEvent(null);
 			}
 		};
     };
@@ -140,11 +145,17 @@ module.exports = ['config', function(config) {
         }
 
         if(angular.isDefined(item) && item != null) {
+            if(angular.isUndefined(item.parent)) {
+                array[0].list = template;
+                array[0].active = template.indexOf(item);
+                console.log(array);
+                return array;
+            }
             var parent = item.parent;
             for (var i = item.Depth - 1; i >= 0; i--) {
                 array[i].list = parent.nodes;
                 array[i].active = array[i].list.indexOf(item);
-                parent = parent.parent;
+                parent = parent.parent || { nodes: template };
             }
         }
         else if (angular.isDefined(template)) {

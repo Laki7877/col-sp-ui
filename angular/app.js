@@ -126,6 +126,7 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 'ngAnimate', 'a
 .filter('html', filters.html)
 .filter('truth', filters.truth)
 .filter('exclude', filters.exclude)
+.filter('excludeCategory', filters.excludeCategory)
 
 //Controllers
 .controller('RootCtrl', controllers.root)

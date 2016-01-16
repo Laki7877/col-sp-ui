@@ -1,4 +1,4 @@
-<?php
+    <?php
     $numberOfColumn = 4;
 ?>
 <div class="modal fade" tabindex="-1" role="dialog" id="<?= $id ?>">

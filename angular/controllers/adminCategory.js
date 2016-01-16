@@ -39,6 +39,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 	$scope.reload = function() {
 		GlobalCategory.getAll().then(function(data) {
 			$scope.categories = Category.transformNestedSetToUITree(data);
+			console.log($scope.categories);
 		}, function(err) {
 			$scope.alert.open(false, common.getError(err));
 		});
