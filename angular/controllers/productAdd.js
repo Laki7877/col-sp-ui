@@ -12,7 +12,10 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 	};
 
 	$window.onbeforeunload = function (e) {
-		$('#modal-warning-leave-page').modal('show');
+
+		//http://stackoverflow.com/questions/276660/how-can-i-override-the-onbeforeunload-dialog-and-replace-it-with-my-own
+		//TLDR; You can't override default popup with your own 
+		// $('#leave-page-warning').modal('show');
 		var message = "Are you sure you want to leave the page?",
 		e = e || window.event;
 		// For IE and Firefox
@@ -150,16 +153,16 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 				};
 
 				var watchVariantChanges = function(){
-					$scope._loading.message = "Cleaning up..";
 
 					$scope.$watch('attributeOptions', function(){
 
-						//var variantHashes = {};
-						//Product Hash Tracking Table
-						//$scope.formData.Variants.forEach(function(elem, index){
-							//Keep track of the index of the hashed item
-						//	variantHashes[elem.hash] = index;
-						//});
+						var vHashSet = {};
+						var prevVariants = angular.copy($scope.formData.Variants);
+						prevVariants.forEach(function(elem, index){
+							vHashSet[elem.text] = prevVariants[index];
+						});
+
+						prevVariants = undefined;
 
 						$scope.formData.Variants = [];
 
@@ -192,14 +195,17 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 							kpair.ProductNameEn = $scope.formData.MasterVariant.ProductNameEn;
 							kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
 
-							//Only push if don't exist
-							//if(!(kpair.hash in variantHashes)){
-								$scope.formData.Variants.push(kpair);
-						//	}
+							if(kpair.text in vHashSet){
+								//Replace with value from vHashSet
+								kpair = vHashSet[kpair.text];
+							}
+
+							//Only push new variant if don't exist
+							$scope.formData.Variants.push(kpair);
 
 							//Mark hash as used
 							//This will not be deleted
-						//	variantHashes[kpair.hash] = -1;
+							//variantHashes[kpair.hash] = -1;
 						}
 
 
@@ -223,16 +229,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 							}
 						}
 						
-						//console.log("vairantHashes", variantHashes);
-						//console.log("variants", $scope.formData.Variants);
-						//Remove deleted variants
-						//for(var rhash in variantHashes){
-						//	if(variantHashes[rhash] == -1) continue;
-						//	$scope.formData.Variants.splice(variantHashes[rhash], 1);
-						//}
-
-
-						//TODO: this doesnt seem to be working
 						$scope.formData.DefaultVariant = $scope.formData.Variants[0];
 					}, true);
 
@@ -295,14 +291,13 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 						if(ivFormData.ProductId){
 							$scope.formData.AttributeSet = $scope.availableAttributeSets[idx];
-							console.log("FullAttributeSet", $scope.formData.AttributeSet);
 							loadFormData(ivFormData, $scope.formData.AttributeSet);
 						}
  
+						$scope._loading.message = "Downloading Category Tree..";
 						//Load Global Cat
 						GlobalCategory.getAll().then(function(data) {
 
-							$scope._loading.message = "Downloading Category Tree..";
 							$scope.availableGlobalCategories = Category.transformNestedSetToUITree(data);
 							$scope.formData.GlobalCategories[0] = Category.findByCatId(catId, $scope.availableGlobalCategories);
 							$scope.globalCategoryBreadcrumb = Category.createCatStringById(catId, $scope.availableGlobalCategories);
@@ -321,7 +316,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					$scope._loading.message = "Downloading Product..";
 					Product.getOne(productId).then(function(ivFormData){
 						var gcat = ivFormData.GlobalCategory;
-					
+						
 						catReady(gcat, ivFormData, function(){
 							$scope.formData.ProductId = Number(productId);
 							angularReady();
@@ -329,7 +324,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 						//auxiliary object (non-persist)
 						// $scope.attributeOptions[0] = $scope.formData.Variants[0].FirstAttribute;
-
 					});
 				}
 

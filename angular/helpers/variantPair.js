@@ -5,7 +5,7 @@ module.exports = ['util', function (util) {
 		//Variant is a cross of First and Second Attribute
 		this.FirstAttribute = a; 
 		this.SecondAttribute = b;
-		this.hash = util.variant.hash(a,b); 
+		this.hash = util.variant.hash(a,b);  //Deprecated
 		this.text = util.variant.toString(a,b);
 	};
 

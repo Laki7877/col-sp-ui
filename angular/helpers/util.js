@@ -27,6 +27,7 @@ module.exports = ['storage', function (storage) {
         })
     };
 
+    
     /**
      * Function to check if any user is currently logged in
      */
