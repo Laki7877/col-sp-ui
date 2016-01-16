@@ -30,6 +30,7 @@
 					<? $this->insert('components/forms/dropdown-with-label',
 						["label" => "Brand Name",
 						"showBy" => "BrandNameEn",
+						"placeholder" => "Search Brand..",
 						"refresh" => "refreshBrands",
 						 "trackBy" => "BrandId",
 					 	 "choices" => "availableBrands",
@@ -71,8 +72,8 @@
 						</label></div>
 						<div class="width-field-normal">
 							<select ng-if="_isListInput(amap.Attribute.DataType)" class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" >
-								<option ng-repeat="vmap in amap.Attribute.AttributeValueMaps">
-									{{ vmap.AttributeValue.AttributeValueEn }}
+								<option ng-repeat="vv in amap.Attribute.AttributeValueMaps">
+									{{ vv.AttributeValue.AttributeValueEn || vv }}
 								</option>
 							</select>
 							<input ng-if="_isFreeTextInput(amap.Attribute.DataType)" type="text" class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" />

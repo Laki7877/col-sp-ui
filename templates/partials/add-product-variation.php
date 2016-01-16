@@ -19,7 +19,7 @@
 						       	ng-model="attributeOptions[jth]">
 							</select>
 						</div>
-						<div class="width-field-normal">
+						<div class="width-field-xl">
 							<div class="input-with-unit">
 								<ui-select ng-if="_isListInput(attributeOptions[jth].Attribute.DataType)" 
 								multiple ng-model="attributeOptions[jth].options">
@@ -30,7 +30,6 @@
 									    {{ i.AttributeValue.AttributeValueEn || i }}
 									</ui-select-choices>
 								</ui-select>
-			
 								<ui-select ng-if="_isFreeTextInput(attributeOptions[jth].Attribute.DataType)" 
 								multiple tagging tagging-label="" ng-model="attributeOptions[jth].options">
 									<ui-select-match>
@@ -52,16 +51,17 @@
 	<div class="width-label"><label class="control-label">Default Variant</label></div>
 	<div class="width-field-normal">
 		<div class="ah-select2-dropdown">
-			<select ng-model="formData.DefaultVariant" class="form-control select2-init-track select2-init-default-variation" 
+			<select ng-model="formData.DefaultVariant" class="form-control" 
 				ng-options="i as i.text for i in formData.Variants">
 			</select>
+			<!-- TODO: use ui-select -->
 		</div>
 	</div></div>
 
 			</div>
 			</div> <!-- end .form-section -->
 			<div class="form-section" ng-if="formData.AttributeSet && formData.Variants.length > 0">
-				<div class="form-section-header">Variant</div>
+				<div class="form-section-header">Variant ({{ formData.Variants.length }})</div>
 				<div class="form-section-content padding-left-30 padding-right-30">
 					<table class="table ah-table variation-table">
 						<thead>

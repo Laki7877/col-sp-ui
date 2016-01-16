@@ -1,9 +1,9 @@
 var angular = require('angular');
 
 module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 
-'GlobalCategory', 'Category', 'VariantPair', 'productProxy',
+'GlobalCategory', 'Category', 'VariantPair',
 	function($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, 
-		GlobalCategory, Category, VariantPair, productProxy){
+		GlobalCategory, Category, VariantPair){
 	'use strict';
 
 	$scope._loading = {
@@ -12,7 +12,10 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 	};
 
 	$window.onbeforeunload = function (e) {
-		$('#modal-warning-leave-page').modal('show');
+
+		//http://stackoverflow.com/questions/276660/how-can-i-override-the-onbeforeunload-dialog-and-replace-it-with-my-own
+		//TLDR; You can't override default popup with your own 
+		// $('#leave-page-warning').modal('show');
 		var message = "Are you sure you want to leave the page?",
 		e = e || window.event;
 		// For IE and Firefox
@@ -39,9 +42,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 	$scope.preview = function(){
 		cleanData();
-		console.log('Form Data', $scope.formData);
-		var apiRequest = productProxy.transform($scope.formData);
-		console.log('API JSON', JSON.stringify(apiRequest));
+		var apiRequest = Product.serialize($scope.formData);
+		console.log(JSON.stringify(apiRequest));
 
 	};
 
@@ -49,7 +51,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		return Product.getAll({
 			searchText: q
 		}).then(function(dataSet){
-			console.log("Refreshing Related Products", dataSet);
 			$scope.availableRelatedProducts = dataSet.data;
 		});
 	};
@@ -66,24 +67,22 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 	$scope.publish = function(Status){
 
 		cleanData();
-		console.log("Publishing with Status = ", $scope.Status);
+		console.log("Publishing with Status = ", Status);
 		var apiRequest;
 		try{
-			console.log('Form Data', $scope.formData);
-			apiRequest = productProxy.transform($scope.formData);
-			console.log('API JSON', JSON.stringify(apiRequest), $scope.Status);
+			console.log(JSON.stringify(apiRequest));
+			apiRequest = Product.serialize($scope.formData);
 		}catch(ex){
 			console.log(ex);
-			alert("Unable to serialize data", ex);
+			alert("Error - Unable to serialize data", ex);
 			return;
 		}
 
 		Product.publish(apiRequest, Status).then(function(res){
 				//TODO: remove this , 
 				if(res.ProductId){
-
 					$window.onbeforeunload = function(){};
-					console.log("Save successful");
+					console.log("OK");
 					$window.location.href = "/products";
 				}else{
 					alert("Unable to save", res);
@@ -150,18 +149,18 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 				};
 
 				var watchVariantChanges = function(){
-					console.log('setting up $watch');
-					$scope._loading.message = "Setting up watch..";
 
 					$scope.$watch('attributeOptions', function(){
 
-						var variantHashes = {};
-						//Product Hash Tracking Table
-						$scope.formData.Variants.forEach(function(elem, index){
-							//Keep track of the index of the hashed item
-							variantHashes[elem.hash] = index;
+						var vHashSet = {};
+						var prevVariants = angular.copy($scope.formData.Variants);
+						prevVariants.forEach(function(elem, index){
+							vHashSet[elem.text] = prevVariants[index];
 						});
 
+						prevVariants = undefined;
+
+						$scope.formData.Variants = [];
 
 						var expand = function(A,B){
 
@@ -189,20 +188,26 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 								ValueEn: B
 							});
 
+							//Initialize
 							kpair.ProductNameEn = $scope.formData.MasterVariant.ProductNameEn;
 							kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
+							kpair.Display = $scope.availableVariantDisplayOption[0];
 
-							//Only push if don't exist
-							if(!(kpair.hash in variantHashes)){
-								$scope.formData.Variants.push(kpair);
+							if(kpair.text in vHashSet){
+								//Replace with value from vHashSet
+								kpair = vHashSet[kpair.text];
 							}
+
+							//Only push new variant if don't exist
+							$scope.formData.Variants.push(kpair);
 
 							//Mark hash as used
 							//This will not be deleted
-							variantHashes[kpair.hash] = -1;
+							//variantHashes[kpair.hash] = -1;
 						}
 
 
+						console.log("Recalculating Factors", $scope.attributeOptions);
 						//Multiply out unmultiplied options
 						if($scope.attributeOptions && Object.keys($scope.attributeOptions).length > 0){
 							for(var aKey in $scope.attributeOptions[0].options){
@@ -210,24 +215,18 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 								if(angular.isDefined($scope.attributeOptions[1].options) && 
 									$scope.attributeOptions[1].options.length == 0){
-									
+									console.log("expanding A");
 									expand(A);
 								}
 
 								for(var bKey in $scope.attributeOptions[1].options){
 									var B = $scope.attributeOptions[1].options[bKey];
+									console.log("Expanding A,B");
 									expand(A, B);
 								}
 							}
 						}
 						
-
-						//Remove deleted variants
-						for(var rhash in variantHashes){
-							if(variantHashes[rhash] == -1) continue;
-							$scope.formData.Variants.splice(variantHashes[rhash], 1);
-						}
-
 						$scope.formData.DefaultVariant = $scope.formData.Variants[0];
 					}, true);
 
@@ -235,19 +234,18 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 				var loadFormData = function(ivFormData, FullAttributeSet){
 
-					$scope._loading.message = "Crunching Data..";
-
+					$scope._loading.message = "Processing..";
 					//Dependency Chain
 					//catId -> AttributeSet -> Inverse
-
 					if(!('VideoLinks' in ivFormData)){
 						ivFormData['VideoLinks'] = [];
 					}
-					console.log("Before Inverse Transformation", ivFormData);
-					var inverseResult = productProxy.inverseTransform(ivFormData, FullAttributeSet);
+					var inverseResult = Product.deserialize(ivFormData, 
+						FullAttributeSet, 
+						$scope._loading);
+
 					$scope.formData = inverseResult.formData;
-					console.log("After Inverse Transformation", $scope.formData);
-					console.log('inverseResult.attributeOptions', inverseResult.attributeOptions);
+					console.log("After Inverse Transformation", $scope.formData, inverseResult.attributeOptions);
 
 					$scope.attributeOptions = inverseResult.attributeOptions || $scope.attributeOptions;
 
@@ -260,9 +258,20 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					$scope._loading.message = "Downloading Attribute Sets..";
 
 					AttributeSet.getByCategory(catId).then(function(data){
-						$scope.availableAttributeSets = data;
-						//TODO: Mock for fun
-						// if(data.length > 0) $scope.formData.AttributeSet = data[0];
+						
+						//remove complex structure we dont need
+						$scope.availableAttributeSets = data.map(function(aset){
+							
+							aset.AttributeSetMaps = aset.AttributeSetMaps.map(function(asetmapi){
+								asetmapi.Attribute.AttributeValueMaps = asetmapi.Attribute.AttributeValueMaps.map(function(value){
+									return value.AttributeValue.AttributeValueEn;
+								});
+
+								return asetmapi;
+							});
+
+							return aset;
+						});
 
 						//Load Attribute Set (edit mode only, in add mode AttributeSet is not set)
 						if(ivFormData.AttributeSet && ivFormData.AttributeSet.AttributeSetId){
@@ -273,9 +282,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 								return o.AttributeSetId
 							}).indexOf(ivFormData.AttributeSet.AttributeSetId);
 
-							console.log("idx", idx);
-						
-							
 						}
 
 						if(ivFormData.ProductId){
@@ -283,10 +289,10 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 							loadFormData(ivFormData, $scope.formData.AttributeSet);
 						}
  
+						$scope._loading.message = "Downloading Category Tree..";
 						//Load Global Cat
 						GlobalCategory.getAll().then(function(data) {
 
-							$scope._loading.message = "Downloading Category Tree..";
 							$scope.availableGlobalCategories = Category.transformNestedSetToUITree(data);
 							$scope.formData.GlobalCategories[0] = Category.findByCatId(catId, $scope.availableGlobalCategories);
 							$scope.globalCategoryBreadcrumb = Category.createCatStringById(catId, $scope.availableGlobalCategories);
@@ -305,28 +311,17 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					$scope._loading.message = "Downloading Product..";
 					Product.getOne(productId).then(function(ivFormData){
 						var gcat = ivFormData.GlobalCategory;
+						
 						catReady(gcat, ivFormData, function(){
-
 							$scope.formData.ProductId = Number(productId);
-							//Load Brand
-							$scope._loading.message = "Downloading Brand..";
-
-							Brand.getOne($scope.formData.Brand.BrandId).then(function(data){
-									$scope.formData.Brand = data;
-									delete $scope.formData.Brand.$id;
-									$scope.formData.Brand.id = $scope.formData.Brand.BrandId;
-									//MUST HAPPEN LAST
-									angularReady();
-							}, function(){
-									console.log("resolve failure", $scope.formData);
-									angularReady();
-							});
-
+							angularReady();
 						});
 
 						//auxiliary object (non-persist)
 						// $scope.attributeOptions[0] = $scope.formData.Variants[0].FirstAttribute;
-
+					}, function(){
+						$window.onbeforeunload = function(){};
+						$window.location.href = "/products";
 					});
 				}
 
@@ -351,6 +346,13 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			$scope.availableSearchTags = ["Eneloop", "Extra Battery"];
 			$scope.availableRelatedProducts = [];
 			$scope.availableStockTypes = ['Stock', 'Pre-Order'];
+			$scope.availableVariantDisplayOption = [{
+				text: 'Show as group of variants',
+				value: 'GROUP' 
+			},{
+				text: 'Show as individual product',
+				value: 'INDIVIDUAL'
+			}];
 
 			//TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
 			$scope._attrEnTh = function(t){ return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
@@ -436,6 +438,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 			//Events
 			$scope.$on('openGlobalCat', function(evt, item, indx) {
+				console.log('openGloCat', evt, item, indx);
 				$scope.viewCategoryColumns = Category.createColumns(item, $scope.availableGlobalCategories);
 				$scope.viewCategorySelected = item;
 				$scope.viewCategoryIndex = indx;
@@ -543,8 +546,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 	$(document).on('shown.bs.tab shown', function(tab){
 		var pageId = tab.target.dataset.id;
 		if(pageId in loadedTabs) return;
-		console.log(tab, loadedTabs);
-		console.log("initing ", pageId);
 	    tabPage[pageId].jquery();
 	    loadedTabs[pageId] = true;
 	});

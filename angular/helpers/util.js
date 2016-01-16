@@ -18,13 +18,16 @@ module.exports = ['storage', function (storage) {
 	    return (a.ValueEn.trim() + (b.ValueEn == '' ? '' : (", " + b.ValueEn.trim())));	
     };
 
-    service.uniqueSet = function(a){
+    service.uniqueSet = function(a, prop){
         var seen = new Set();
         return a.filter(function(x) {
-            return !seen.has(x) && seen.add(x);
+            var y = x;
+            if(prop) y = x[prop];
+            return !seen.has(y) && seen.add(y);
         })
     };
 
+    
     /**
      * Function to check if any user is currently logged in
      */

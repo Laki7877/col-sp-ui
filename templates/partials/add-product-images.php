@@ -1,7 +1,7 @@
-<div id="add-product-images-tab-content">
+<div id="add-product-images-tab-content" ng-show='(formData.Variants || []).length == 0'>
 	<? $this->insert('partials/add-product-inner-tab-breadcrumb') ?>
-	
-	<div class="row">
+
+	<div class="row" >
 		<div class="col-xs-12">
 			<? $this->insert('components/forms/form-section-upload-new-product-image', ['uploader' => 'uploader', 'images' => 'formData.MasterImages']) ?>
 			<? $this->insert('components/forms/form-section-upload-new-product-image-360', ['uploader' => 'uploader360', 'images' => 'formData.MasterImages360']) ?>
@@ -16,4 +16,15 @@
 		</div>
 	</div>
 </div>
+
+<div id="add-product-images-tab-content" ng-if='(formData.Variants || []).length > 0'>
+	<div class="row">
+		<div class="col-xs-12">
+			<h4>Your Product contains Variations</h4>
+			For Items with variants, images detail may be added via the Variation Tab. 
+		</div>
+	</div>
+</div>
+
+
 <? $this->insert('components/modal-product-image', ['id' => 'product-image-zoom']) ?>
