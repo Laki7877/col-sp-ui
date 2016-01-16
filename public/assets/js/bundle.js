@@ -3528,7 +3528,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                     if (!('Images' in variant)) variant.Images = [];
                     if ("queue" in variant) delete variant.queue; //circular
 
-                    variant.Visibility = variant.Visibility || true;
+                    variant.Visibility = variant.Visibility;
                     variant.Images = (variant.Images || []).map(mapper.Images);
                     variant.Images360 = []; //for future
 
@@ -3707,7 +3707,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                     return m.Url;
                 },
                 Variants: function(m) {
-                	m.Visibility = m.Visibility || true;
+                	m.Visibility = m.Visibility;
                     m.hash = util.variant.hash(m.FirstAttribute, m.SecondAttribute);
                     m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
                     return m;
