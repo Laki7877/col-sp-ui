@@ -67,7 +67,7 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Price</h2></div>
 				<div class="form-section-content">
-				<!--	<? $this->insert('components/forms/input-text-with-label',
+			<!--	<? $this->insert('components/forms/input-text-with-label',
 					 ["ng_model" => "formData.MasterVariant.OriginalPrice", 
 					 "required" => true,
 					  "label" => "Original Price", 

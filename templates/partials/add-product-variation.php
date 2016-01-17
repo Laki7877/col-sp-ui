@@ -76,17 +76,24 @@
 							</tr>
 						</thead>
 						<tbody>
-								<tr ng-class="{'opacity-50': !pair.Visibility}" ng-repeat="pair in formData.Variants track by $index">
-									<td class="column-text-ellipsis"> {{ pair.text}}</td>
-									<td><input type="text" ng-disabled='!pair.Visibility' class="form-control" 
+								<tr ng-repeat="pair in formData.Variants track by $index">
+									<td class="column-text-ellipsis" ng-class="{'opacity-50': !pair.Visibility}"> 
+										{{ pair.text}}
+									</td>
+									<td><input ng-class="{'opacity-50': !pair.Visibility}"
+									 type="text" ng-disabled='!pair.Visibility' class="form-control" 
 										ng-model="pair.Sku" /></td>
 									<td><input type="text" 
+										ng-class="{'opacity-50': !pair.Visibility}"
 										ng-model="pair.OriginalPrice" ng-disabled='!pair.Visibility'
 										class="form-control" /></td>
 									<td><input type="text"
+										ng-class="{'opacity-50': !pair.Visibility}"
 										ng-model="pair.SalePrice" ng-disabled='!pair.Visibility'
 								       		class="form-control" /></td>
-									<td><input type="text" ng-model="pair.Quantity" ng-disabled='!pair.Visibility'
+									<td><input type="text" ng-model="pair.Quantity" 
+										ng-class="{'opacity-50': !pair.Visibility}"
+										ng-disabled='!pair.Visibility'
 										class="form-control" /></td>
 									<td><a class="btn btn-white btn-width-xl" ng-disabled='!pair.Visibility' 
 									data-toggle="modal" data-target="#variant-detail-1" 
