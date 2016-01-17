@@ -6,23 +6,48 @@
 				<div class="form-section-header"><h2>Vital Information</h2></div>
 				<div class="form-section-content">
 
-					<? $this->insert('components/forms/input-text-with-label',
-						["label" => "Product Name (Thai)", "ng_model" =>
-						"formData.MasterVariant.ProductNameTh",
-						"label_class" => "required",
-						"required" => true,
-						"size" => "large"]) ?>
-					<? $this->insert('components/forms/input-text-with-label',
-						["label" => "Product Name (English)",
-						"ng_model" => "formData.MasterVariant.ProductNameEn",
-						"label_class" => "required",
-						"required" => true,
-						"size" => "large"]) ?>
-					<? $this->insert('components/forms/input-text-with-label',
-						["label" => "SKU", 
-						"ng_model" => "formData.MasterVariant.Sku",
-						"required" => true,
-						"label_class" => "required", "size" => "large"]) ?>
+					<div ng-template="common/input/text"
+                      ng-template-options="{
+                        'label': 'Product Name (Thai)',
+                        'labelClass': 'required'
+                      }">
+                      <input
+                        class="form-control width-field-large"
+                        name="MasterVariant_ProductNameTh"
+                        ng-model="formData.MasterVariant.ProductNameTh"
+                        ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_ProductNameTh) }"
+                        required />
+                    </div>
+
+
+                    <div ng-template="common/input/text"
+                      ng-template-options="{
+                        'label': 'Product Name (English)',
+                        'labelClass': 'required'
+                      }">
+                      <input
+                        class="form-control width-field-large"
+                        name="MasterVariant_ProductNameEn"
+                        ng-model="formData.MasterVariant.ProductNameEn"
+                        ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_ProductNameEn) }"
+                        required />
+                    </div>
+
+
+					<div ng-template="common/input/text"
+                      ng-template-options="{
+                        'label': 'SKU',
+                        'labelClass': 'required'
+                      }">
+                      <input
+                        class="form-control width-field-large"
+                        name="MasterVariant_Sku"
+                        ng-model="formData.MasterVariant.Sku"
+                        ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Sku) }"
+                        ng-required="onPublishing" />
+                    </div>
+
+
 					<? $this->insert('components/forms/input-text-with-label',
 						["label" => "UPC", "ng_model" => "formData.MasterVariant.Upc",
 						"tooltip" => "The Universal Product Code (UPC) is a barcode symbology (i.e., a specific type of barcode) that is widely used in the USA.", "size" => "large"]) ?>
@@ -42,7 +67,26 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Price</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/input-text-with-label', ["ng_model" => "formData.MasterVariant.OriginalPrice", "required" => true, "label" => "Original Price", "hint" => "Example: 200 or 125.50", "label_class" => "required"]) ?>
+			<!--	<? $this->insert('components/forms/input-text-with-label',
+					 ["ng_model" => "formData.MasterVariant.OriginalPrice", 
+					 "required" => true,
+					  "label" => "Original Price", 
+					  "hint" => "Example: 200 or 125.50", "label_class" => "required"]) ?>-->
+				
+					<div ng-template="common/input/text"
+                      ng-template-options="{
+                        'label': 'Original Price',
+                        'labelClass': 'required'
+                      }">
+                      <input
+                        class="form-control width-field-normal"
+                        name="MasterVariant_OriginalPrice"
+                        ng-model="formData.MasterVariant.OriginalPrice"
+                        ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_OriginalPrice) }"
+                        required />
+                    </div>
+
+
 					<? $this->insert('components/forms/input-text-with-label', ["ng_model" => "formData.MasterVariant.SalePrice", "label" => "Sale Price", "hint" => "Example: 100"]) ?>
 				</div>
 			</div>

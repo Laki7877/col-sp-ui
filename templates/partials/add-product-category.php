@@ -11,7 +11,10 @@
 						<div class="width-label" ng-if="$index != 0 && formData.GlobalCategories[$index - 1] != null"><label class="control-label">{{$index | ordinal}} Alternative:</label></div>
 						<div class="width-field-normal" ng-if="$index == 0"><span class="form-text">{{item.NameEn}}</span></div>
 						<div class="width-field-normal" ng-if="$index != 0 && item != null">
-							<a class="form-text" data-toggle="modal" data-target="#global-category" ng-click="$emit('openGlobalCat', item, $index)">{{item.NameEn}}</a><i ng-click="$emit('deleteGlobalCat', $index)"class="clickable color-dark-grey fa fa-trash margin-left-10"></i>
+							<a class="form-text" data-toggle="modal" data-target="#global-category" ng-click="$emit('openGlobalCat', item, $index)">{{item.NameEn}}</a>
+							<!-- Only deletable if last -->
+							<i ng-if="$index == (formData.GlobalCategories | exclude : null).length - 1"
+							 ng-click="$emit('deleteGlobalCat', $index)"class="clickable color-dark-grey fa fa-trash margin-left-10"></i>
 						</div>
 						<div class="width-field-normal" ng-if="$index != 0 && item == null && formData.GlobalCategories[$index - 1] != null">
 							<a class="like-text form-text" data-toggle="modal" data-target="#global-category" ng-click="$emit('openGlobalCat', item, $index)">
@@ -37,7 +40,10 @@
 						<div class="width-label" ng-if="$index == 0"><label class="control-label">Local Category:</label></div>
 						<div class="width-label" ng-if="$index != 0 && formData.LocalCategories[$index - 1] != null"><label class="control-label">{{$index | ordinal}} Alternative:</label></div>
 						<div class="width-field-normal" ng-if="item != null">
-							<a class="form-text" data-toggle="modal" data-target="#local-category" ng-click="$emit('openLocalCat', item, $index)">{{item.NameEn}}</a><i ng-click="$emit('deleteLocalCat', $index)"class="clickable color-dark-grey fa fa-trash margin-left-10"></i>
+							<a class="form-text" data-toggle="modal" data-target="#local-category" ng-click="$emit('openLocalCat', item, $index)">{{item.NameEn}}</a>
+							<!-- can only delete bottom up -->
+							<i ng-if="$index == (formData.LocalCategories | exclude : null).length - 1"
+							 ng-click="$emit('deleteLocalCat', $index)"class="clickable color-dark-grey fa fa-trash margin-left-10"></i>
 						</div>
 						<div class="width-field-normal" ng-if="item == null && (formData.LocalCategories[$index - 1] != null || $index == 0)">
 							<a class="like-text form-text" data-toggle="modal" data-target="#local-category" ng-click="$emit('openLocalCat', item, $index)">

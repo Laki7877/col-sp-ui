@@ -13,7 +13,7 @@
             <div class="category-section column-<?=$numberOfColumn?>">
                 <div class="category-section-border-box">
                     <div class="category-header">
-                        <span class="required">Global Category</span>
+                        <span>Global Category</span>
                     </div>
                     <div class="category-content no-padding">
                         <ul ng-repeat="column in <?= $template ?> track by $index" ng-class="{'empty-column': column.list.length <= 0 }" class="content-column">
@@ -25,7 +25,9 @@
                     <span>Only shown categories that are allowed for this store.</span>
                     <span class="float-right">
                         <a class="link-btn-plain" data-dismiss="modal">Cancel</a>
-                        <button type="button" class="btn btn-blue btn-width-xl" data-dismiss="modal" ng-click="$emit('saveGlobalCat')" ng-class="{'disabled' : !<?= $ng_model?> }">Select</button>
+                        <button type="button" class="btn btn-blue btn-width-xl" ng-if="<?= $ng_model?>" data-dismiss="modal" ng-click="$emit('saveGlobalCat')" ng-class="{'disabled' : !<?= $ng_model?> }">Select</button>
+                        <button type="button" class="btn btn-blue disabled btn-width-xl" ng-if="!<?= $ng_model?>">Select</button>
+
                     </span>
                 </div>
             </div>

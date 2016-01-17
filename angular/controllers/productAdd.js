@@ -66,32 +66,41 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 	$scope.publish = function(Status){
 
-		cleanData();
-		console.log("Publishing with Status = ", Status);
-		var apiRequest;
-		try{
-			console.log(JSON.stringify(apiRequest));
-			apiRequest = Product.serialize($scope.formData);
-		}catch(ex){
-			console.log(ex);
-			alert("Error - Unable to serialize data", ex);
+		$scope.onPublishing = (Status == "WA");
+		if($scope.addProductForm.$invalid){
 			return;
 		}
 
-		Product.publish(apiRequest, Status).then(function(res){
+		$scope._loading.message = "Saving Changes..";
+		$scope._loading.state = true;
+
+		cleanData();
+		console.log("Publishing with Status = ", Status);
+		try{
+			console.log(JSON.stringify(apiRequest));
+			var apiRequest = Product.serialize($scope.formData);
+			Product.publish(apiRequest, Status).then(function(res){
 				//TODO: remove this , 
 				if(res.ProductId){
 					$window.onbeforeunload = function(){};
 					console.log("OK");
 					$window.location.href = "/products";
 				}else{
-					alert("Unable to save", res);
+					$scope._loading.message = "An error has occurred while saving..";
 				}
 
 			}, function(er){
 				alert("FYI - Unable to save due to error - Send this message to a wizard near you: \n\n" + JSON.stringify(er));
-				console.warn("Unable to save", er);
-		});
+					console.warn("Unable to save", er);
+			});
+
+		}catch(ex){
+			console.log(ex);
+			alert("Error - Unable to serialize data", ex);
+			return;
+		}
+
+		
 
 	};
 
@@ -192,6 +201,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 							kpair.ProductNameEn = $scope.formData.MasterVariant.ProductNameEn;
 							kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
 							kpair.Display = $scope.availableVariantDisplayOption[0];
+							kpair.Visibility = true;
 
 							if(kpair.text in vHashSet){
 								//Replace with value from vHashSet
@@ -409,13 +419,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		    	array[to] = item;
 		    	array[index] = tmp;
 		   	});
-		   	$scope.$on('delete', function(evt, item, array, index, uploader) {
-				angular.forEach(uploader.queue, function(i) {
-					if(i.indx == indx) {
-						i.remove();
-						i.cancel();
-					}
-				});
+		   	$scope.$on('delete', function(evt, item, array, index) {
 		   		array.splice(index, 1);
 		   	});
 		   	$scope.$on('zoom', function(evt, item, array, index) {
