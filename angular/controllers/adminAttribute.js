@@ -116,9 +116,15 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 		return Math.ceil($scope.attributeTotal / $scope.tableParams.pageSize);
 	};
 
+
 	$scope.nextPage = function(m){
+		if($scope.tableParams.page + m >= $scope.totalPage() ||
+			$scope.tableParams.page + m < 0)
+			return;
+
 		$scope.tableParams.page += m;
 	};
+
 
 	$scope.setPageSize = function(n){
 		$scope.tableParams.pageSize = n;

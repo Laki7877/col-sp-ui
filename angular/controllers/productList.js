@@ -164,9 +164,15 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 		$scope.tableParams.page += m;
 	};
 
-	$scope.setPageSize = function(n){
-		$scope.tableParams.pageSize = n;
+
+	$scope.nextPage = function(m){
+		if($scope.tableParams.page + m >= $scope.totalPage() ||
+			$scope.tableParams.page + m < 0)
+			return;
+
+		$scope.tableParams.page += m;
 	};
+
 
 	$scope.setOrderBy = function(nextOrderBy){
 		if($scope.tableParams.orderBy == nextOrderBy){

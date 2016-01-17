@@ -250,7 +250,7 @@
       <div class="container-fluid">
         <div class="float-right">
           <a class="link-btn-plain" ng-click="cancel()">Cancel</a>
-          <button class="btn btn-blue btn-width-xl" ng-click="save()" ng-class="{ disabled: form.$invalid }">Save</button>
+          <button type="button" class="btn btn-blue btn-width-xl" ng-click="save()" ng-class="{ disabled: form.$invalid }">Save</button>
         </div>
       </div>
     </div>

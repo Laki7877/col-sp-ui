@@ -123,6 +123,10 @@ module.exports = ['$scope','util', 'config', 'Brand', 'Alert', '$window', functi
 	};
 
 	$scope.nextPage = function(m){
+		if($scope.tableParams.page + m >= $scope.totalPage() ||
+			$scope.tableParams.page + m < 0)
+			return;
+
 		$scope.tableParams.page += m;
 	};
 
