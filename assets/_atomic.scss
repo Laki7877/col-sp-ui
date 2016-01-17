@@ -126,6 +126,10 @@
   color:  $color-yellow;
 }
 
+.color-black {
+	color:	$color-black;
+}
+
 .vertical-align-middle {
 	vertical-align: middle;
 }
@@ -136,6 +140,10 @@
 
 .text-align-right {
 	@extend .text-right;
+}
+
+.text-underline {
+	text-decoration: underline;	
 }
 
 .hide-component {
