@@ -13,7 +13,7 @@
             <div class="category-section column-<?=$numberOfColumn?>">
                 <div class="category-section-border-box">
                     <div class="category-header">
-                        <span class="required">Global Category</span>
+                        <span>Global Category</span>
                     </div>
                     <div class="category-content no-padding">
                         <ul ng-repeat="column in <?= $template ?> track by $index" ng-class="{'empty-column': column.list.length <= 0 }" class="content-column">
