@@ -1208,9 +1208,13 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 	$scope.publish = function(Status){
 
+		$scope.onPublishing = (Status == "WA");
 		if($scope.addProductForm.$invalid){
-			return alert("Please fill out required fields.");
+			return;
 		}
+
+		$scope._loading.message = "Saving Changes..";
+		$scope._loading.state = true;
 
 		cleanData();
 		console.log("Publishing with Status = ", Status);
@@ -1224,7 +1228,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					console.log("OK");
 					$window.location.href = "/products";
 				}else{
-					alert("Unable to save", res);
+					$scope._loading.message = "An error has occurred while saving..";
 				}
 
 			}, function(er){

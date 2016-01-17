@@ -4,10 +4,6 @@
 		<div class="input-with-unit">
 			<input type="text" class="form-control	<?= $input_class; ?>"
 
-			<? if(isset($required)): ?>
-				required
-			<? endif; ?>
-
 			<? if(isset($ng_model)): ?>
 				ng-model="<?php echo $ng_model; ?>"
 			<? endif; ?>
