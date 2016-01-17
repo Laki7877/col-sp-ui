@@ -54,9 +54,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 
 							<button ng-show="formData.Status != 'WA'" 
 							class="btn btn-white btn-width-xl" 
-							type="submit"ng-click="publish('DF')" 
+							type="submit" ng-click="publish('DF')" 
 							ng-disabled="addProductForm.$invalid">Save as Draft</button>
-							
+
 							<button ng-show="formData.Status != 'WA'" 
 							ng-disabled="addProductForm.$invalid" type="submit" class="btn btn-blue btn-width-xl" ng-click="publish('WA')">Publish</button>
 						</div>
