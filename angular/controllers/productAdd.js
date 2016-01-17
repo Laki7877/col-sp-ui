@@ -197,6 +197,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 							kpair.ProductNameEn = $scope.formData.MasterVariant.ProductNameEn;
 							kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
 							kpair.Display = $scope.availableVariantDisplayOption[0];
+							kpair.Visibility = true;
 
 							if(kpair.text in vHashSet){
 								//Replace with value from vHashSet
