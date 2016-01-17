@@ -279,6 +279,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 },
                 Variants: function(m) {
                 	m.Visibility = m.Visibility;
+                    m.Images = m.Images || [];
+                    m.Images360 = m.Images360 || [];
                     m.hash = util.variant.hash(m.FirstAttribute, m.SecondAttribute);
                     m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
                     return m;
