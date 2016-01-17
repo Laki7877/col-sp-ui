@@ -24,7 +24,9 @@
                 <span>Not found in here? <a href="/categories" target="_blank">Create new local category</a></span>
                     <span class="float-right">
                         <a class="link-btn-plain" data-dismiss="modal">Cancel</a>
-                        <button type="button" class="btn btn-blue btn-width-xl" data-dismiss="modal" ng-click="$emit('saveLocalCat')" ng-class="{'disabled' : !<?= $ng_model?> }">Select</button>
+                        <button type="button" class="btn btn-blue btn-width-xl" ng-if="<?= $ng_model?>" data-dismiss="modal" ng-click="$emit('saveLocalCat')" ng-class="{'disabled' : !<?= $ng_model?> }">Select</button>
+                        <button type="button" class="btn btn-blue btn-width-xl disabled" ng-if="!<?= $ng_model?>" ng-click="$emit('saveLocalCat')">Select</button>
+
                     </span>
                 </div>
             </div>
