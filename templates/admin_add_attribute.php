@@ -15,7 +15,6 @@
                 ng-template-options="{
                   'label': 'Attribute Name (English)',
                   'labelClass': 'required',
-                  'tooltip' : 'The Universal Product Code (UPC) is a barcode symbology (i.e., a specific type of barcode) that is widely used in the USAX.',
                   'inputSize': 'large'
                 }">
                 <input

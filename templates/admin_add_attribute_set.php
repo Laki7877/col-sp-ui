@@ -44,9 +44,8 @@
               <div ng-template="common/input/dropdown"
                 ng-template-options="{
                   'label' : 'Search Tag',
-                  'size' : 'large',
-                  'tooltip' : 'Search tag name'
-                }">
+                  'size' : 'large'
+                 }">
                 <ui-select ng-model="formData.Tags" tagging-tokens=",|ENTER" multiple tagging tagging-label="">
                   <ui-select-match placeholder="Separated by Pressing Enter">
                       {{ $item }}
