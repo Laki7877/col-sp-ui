@@ -147,7 +147,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 		orderBy: 'UpdatedDt',
 		direction: 'desc',
 		page: 0,
-		pageSize: 20
+		pageSize: 10
 	};
 
 	$scope.notReady = true;

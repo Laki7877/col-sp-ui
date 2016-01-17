@@ -30,7 +30,6 @@ module.exports = ['$scope','util', 'config', 'Brand', 'Alert', '$window', functi
 						BrandId: elem.BrandId
 					};
 				});
-				console.log(arr);
 				if(arr.length > 0) {
 					Brand.deleteBulk(arr).then(function() {
 						$scope.alert.success('You have successfully remove entries.');

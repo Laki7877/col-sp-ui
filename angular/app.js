@@ -15,6 +15,7 @@ require('angular-ui-tree');
 require('angular-base64');
 require('ui-select');
 require('angular-sanitize');
+require('angular-scroll');
 
 //Internal dependencies
 var controllers = bulk.controllers;
@@ -24,7 +25,7 @@ var directives = bulk.directives;
 var filters = bulk.filters;
 var adapters = bulk.adapters;
 
-var app = angular.module('colspApp', ['ngSanitize','ui.select', 'ngAnimate', 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
+var app = angular.module('colspApp', ['duScroll','ngSanitize','ui.select', 'ngAnimate', 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
 
 //App config
 .config(['$uibTooltipProvider', 'uiSelectConfig', function($tooltipProvider, uiSelectConfig) {
@@ -42,10 +43,9 @@ var app = angular.module('colspApp', ['ngSanitize','ui.select', 'ngAnimate', 'an
 .run(template)
 
 //App init
-.run(['$rootScope', '$window', '$base64', 'storage', function($rootScope, $window, $base64, storage) {
+.run(['$rootScope', '$base64', 'storage', '$window', function($rootScope, $base64, storage, $window) {
 	//TODO: login page
 	storage.storeSessionToken($base64.encode('duckvader:vader'));
-
 	//Create generic form validator functions
 	$rootScope.isInvalid = function(form) {
 		if(angular.isDefined(form) && 
@@ -55,6 +55,16 @@ var app = angular.module('colspApp', ['ngSanitize','ui.select', 'ngAnimate', 'an
 		}
 		return false;
 	}; 
+	
+	//Prevent image dragdrop on other elements
+	$window.addEventListener("dragover",function(e){
+	  e = e || event;
+	  e.preventDefault();
+	},false);
+	$window.addEventListener("drop",function(e){
+	  e = e || event;
+	  e.preventDefault();
+	},false);
 
 	//Match route with
 	$rootScope.isUrl = function(url) {
