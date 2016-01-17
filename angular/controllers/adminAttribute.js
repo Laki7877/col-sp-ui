@@ -22,6 +22,11 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 		} 
 	};
 	$scope.bulkOptions = [
+		{
+			name: '- Choose Action -', 
+			value: 'default', 
+			fn: angular.noop
+		}, 
 		{ 	
 			name: 'Delete', 
 			value: 'delete', 
@@ -50,6 +55,7 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 			$scope.attributeTotal = x.total;
 			$scope.attributeList = x.data;
 			$scope.notReady = false;
+			console.log($scope.attributeList);
 		});
 	};
 	$scope.actions = {
@@ -128,6 +134,7 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 	//Watch any change in table parameter, trigger reload
 	$scope.$watch('tableParams', function(){
 		$scope.reloadData();
+		$scope.checkAll = false;
 	}, true);
 
 	//Select All checkbox

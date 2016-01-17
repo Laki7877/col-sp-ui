@@ -8,7 +8,7 @@ module.exports = ['common', function(common) {
 			NameEn: "",
 			NameTh: "",
 			UrlKeyEn: "",
-			Status: "NA",
+			Status: "AT",
 			ProductCount: 0,
 			nodes: []
 		}, extend);

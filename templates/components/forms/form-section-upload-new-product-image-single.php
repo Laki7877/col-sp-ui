@@ -20,8 +20,9 @@
 	<div class="form-section-content padding-left-15 padding-right-15" style="margin-bottom:0px;">
 		<? $this->insert('components/image-thumbs-list', [
 			"sep" => 1,
-			"action" => 4, 
+			"action" => 2, 
 			"images" => $images,
-			"uploader" => $uploader]) ?>
+			"uploader" => $uploader,
+			"ignore" => true ]) ?>
 	</div>
 </div>

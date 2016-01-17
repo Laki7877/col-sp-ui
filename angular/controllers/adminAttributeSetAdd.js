@@ -37,6 +37,13 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 		if($scope.saving) {
 			return;
 		}
+		
+		$scope.form.$setSubmitted();
+		if($scope.form.$invalid) {
+			$scope.alert.error('Please fill out the required fields.');
+			return;
+		}
+
 		$scope.alert.close();
 		$scope.formDataSerialized = AttributeSet.serialize($scope.formData);
 		if ($scope.edit) {

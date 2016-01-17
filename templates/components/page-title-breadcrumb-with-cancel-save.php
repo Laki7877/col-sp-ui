@@ -15,7 +15,7 @@ $newText = implode('<span class="ah-breadcrumb-splitter">/</span>', $extracted);
     <h1 class="float-left page-header-title ah-breadcrumb"><?= $newText ?></h1>
     <div class="page-actions float-right">
 		<a class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</a>
-		<button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+		<button class="btn btn-blue btn-width-xl" ng-click="save()" ng-class="<?= $class ?>">Save</button>
 	</div>
 </div>
 

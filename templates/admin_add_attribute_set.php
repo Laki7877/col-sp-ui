@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminAttributeSetAddCtrl" ng-init="init(<?=$params?>)">
-    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute/" . $title, 'urls' => ['/admin/attributesets']]) ?>
+    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute Set/" . $title, 'urls' => ['/admin/attributesets'], 'class' =>'{disabled : form.$invalid}']) ?>
     <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()">{{alert.message}}</div>
     <form class="ah-form sticky-mainform-action margin-top-30" name="form">
       <div class="row">
@@ -12,7 +12,7 @@
             <div class="form-section-content">
               <div ng-template="common/input/text"
                 ng-template-options="{
-                  'label': 'Attribute Name (English)',
+                  'label': 'Attribute Set Name (Eng)',
                   'labelClass': 'required',
                 }">
                 <input
@@ -47,7 +47,7 @@
                   'size' : 'large',
                   'tooltip' : 'Search tag name'
                 }">
-                <ui-select ng-model="formData.Tags" multiple tagging tagging-label="">
+                <ui-select ng-model="formData.Tags" tagging-tokens=",|ENTER" multiple tagging tagging-label="">
                   <ui-select-match placeholder="Separated by Pressing Enter">
                       {{ $item }}
                   </ui-select-match>
@@ -86,7 +86,7 @@
         <div class="container-fluid">
           <div class="float-right">
             <a class="link-btn-plain" ng-click="cancel()">Cancel</a>
-            <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+            <button type="button" class="btn btn-blue btn-width-xl" ng-click="save()" ng-class="{disabled : form.$invalid}">Save</button>
           </div>
         </div>
       </div>

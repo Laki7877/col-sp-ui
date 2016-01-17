@@ -15,6 +15,11 @@ module.exports = ['$scope','util', 'config', 'Brand', 'Alert', '$window', functi
 		} 
 	};
 	$scope.bulkOptions = [
+		{
+			name: '- Choose Action -', 
+			value: 'default', 
+			fn: angular.noop
+		}, 
 		{ 	
 			name: 'Delete', 
 			value: 'delete', 
@@ -136,6 +141,7 @@ module.exports = ['$scope','util', 'config', 'Brand', 'Alert', '$window', functi
 	//Watch any change in table parameter, trigger reload
 	$scope.$watch('tableParams', function(){
 		$scope.reloadData();
+		$scope.checkAll = false;
 	}, true);
 
 	//Select All checkbox

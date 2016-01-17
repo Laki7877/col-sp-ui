@@ -24,9 +24,8 @@ var directives = bulk.directives;
 var filters = bulk.filters;
 var adapters = bulk.adapters;
 
-var app = angular.module('colspApp', ['ui.select', 'ngSanitize', 
-	'ngAnimate', 'angularFileUpload', 'ui.tree', 'ui.select', 
-	'ui.bootstrap', 'base64'])
+
+var app = angular.module('colspApp', ['ngSanitize','ui.select', 'ngAnimate', 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
 
 //App config
 .config(['$uibTooltipProvider', 'uiSelectConfig', function($tooltipProvider, uiSelectConfig) {
@@ -37,7 +36,7 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize',
 	$tooltipProvider.options({
 		trigger: 'clickanystart'
 	});
-	uiSelectConfig.taggingTokens = [',', 'ENTER']
+	//uiSelectConfig.taggingTokens = ',';
 }])
 
 //App template cache load
@@ -53,7 +52,7 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize',
 		if(angular.isDefined(form) && 
 			angular.isDefined(form.$invalid) && 
 			angular.isDefined(form.$dirty)) {
-			return form.$invalid && form.$dirty;
+			return form.$invalid && (form.$dirty || form.$$parentForm.$submitted);
 		}
 		return false;
 	}; 
@@ -128,6 +127,7 @@ var app = angular.module('colspApp', ['ui.select', 'ngSanitize',
 .filter('html', filters.html)
 .filter('truth', filters.truth)
 .filter('exclude', filters.exclude)
+.filter('excludeCategory', filters.excludeCategory)
 
 //Controllers
 .controller('RootCtrl', controllers.root)

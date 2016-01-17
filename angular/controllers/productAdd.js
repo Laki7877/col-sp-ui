@@ -437,7 +437,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 			//Events
 			$scope.$on('openGlobalCat', function(evt, item, indx) {
-				console.log('openGloCat', evt, item, indx);
+				console.log('openGloCat', item, $scope.availableGlobalCategories);
 				$scope.viewCategoryColumns = Category.createColumns(item, $scope.availableGlobalCategories);
 				$scope.viewCategorySelected = item;
 				$scope.viewCategoryIndex = indx;
@@ -457,6 +457,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 			//Events
 			$scope.$on('openLocalCat', function(evt, item, indx) {
+				console.log(item, $scope.availableLocalCategories);
 				$scope.viewCategoryColumns = Category.createColumns(item, $scope.availableLocalCategories);
 				$scope.viewCategorySelected = item;
 				$scope.viewCategoryIndex = indx;
