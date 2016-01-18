@@ -6,7 +6,7 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 	$scope.filterOptions = [
 		{ name: "All", value: 'All'},
 		{ name: "Visible", value: 'Visible'},
-		{ name: "Not Visible", value: 'Not Visible'}
+		{ name: "Not Visible", value: 'NotVisible'}
 	];
 	$scope.alert = new Alert();
 	$scope.bulk = { 
