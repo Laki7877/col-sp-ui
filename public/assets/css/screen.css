@@ -13974,18 +13974,21 @@ html, body {
 .category-section .category-content > .content-column > li {
   padding-left: 15px;
   padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 1.2em;
   cursor: pointer;
 }
-/* line 98, ../../../assets/_global_category.scss */
+/* line 101, ../../../assets/_global_category.scss */
 .category-section .category-content > .content-column > li.category-active {
   background: #4899DD;
   color: #FFFFFF;
 }
-/* line 104, ../../../assets/_global_category.scss */
+/* line 107, ../../../assets/_global_category.scss */
 .category-section .category-content > .content-column.empty-column {
   background: #edf2f9;
 }
-/* line 110, ../../../assets/_global_category.scss */
+/* line 113, ../../../assets/_global_category.scss */
 .category-section .category-footer {
   margin-top: 15px;
 }
