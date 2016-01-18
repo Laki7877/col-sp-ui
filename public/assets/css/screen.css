@@ -13744,7 +13744,7 @@ html, body {
 }
 /* line 112, ../../../assets/_add_product_page.sass */
 .image-thumbs-actions .image-thumbs-img-wrapper > img {
-  width: 100%;
+  width: auto;
   height: 100%;
   position: absolute;
   left: 50%;
