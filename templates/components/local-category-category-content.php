@@ -13,7 +13,7 @@
 						ng-class="{	'fa-chevron-down' : !collapsed,
 									'fa-chevron-right' : collapsed }"
 						ng-click="toggle(this)"></i>
-					<i  class = "fa fa-level-up fa-rotate-90 caret-grey"
+					<i  class = "fa fa-chevron-right caret-grey"
 						ng-if="(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0"></i>
 					<span class="no-children-row"
 						ng-if="$parentNodesScope.depth() == 0"></span>
