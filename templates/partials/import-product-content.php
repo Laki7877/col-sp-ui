@@ -17,8 +17,8 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Upload File</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/password-field', ["label" => "Choose File"]) ?>
-					<? $this->insert('components/forms/button-with-label', ["buttonText" => "Import", "btnClass" => "btn-blue"]) ?>					
+					<? $this->insert('components/forms/upload-field-with-label', ["label" => "Choose File", "input_attrs" => "Browse from your computer"]) ?>
+					<? $this->insert('components/forms/button-with-label', ["buttonText" => "Import", "btnClass" => "btn-blue"]) ?>
 				</div>
 			</div>
 		</div>
