@@ -1289,10 +1289,11 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					//console.log("OK");
 					//$window.location.href = "/products";
 
-					//TODO: add in deserializer
+					
 					$scope._loading.state = false;
 					$scope.alert.success = true;
 					$scope.formData.ProductId = res.ProductId;
+					//TODO: add in deserializer
 					$scope.formData.MasterVariant.Pid = res.MasterVariant.Pid;
 
 				}else{
