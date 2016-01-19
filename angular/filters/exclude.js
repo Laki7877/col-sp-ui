@@ -4,6 +4,7 @@ module.exports = [function() {
   return function(arr, other, trackBy) {
 
      return arr.filter(function(elem){
+        if(other == null || other === undefined) return true;
         if(other instanceof Array){
         	//throw away if elem matches any of the given other list
         	var p = true;

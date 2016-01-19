@@ -16,7 +16,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		//http://stackoverflow.com/questions/276660/how-can-i-override-the-onbeforeunload-dialog-and-replace-it-with-my-own
 		//TLDR; You can't override default popup with your own 
 		// $('#leave-page-warning').modal('show');
-		var message = "Are you sure you want to leave the page?",
+		var message = "Your changes will not be saved.",
 		e = e || window.event;
 		// For IE and Firefox
 		if (e) {

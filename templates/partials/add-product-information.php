@@ -140,7 +140,7 @@
 							"tagging" => true
 						]) ?>
 
-					<div class="form-group">
+					<div class="form-group" ng-if="formData.AttributeSet.AttributeSetTagMaps.length > 0">
 						<div class="width-label"><label class="control-label">Suggested Search Tag</label></div>
 						<div class="width-field-xl">
 							<div class="bootstrap-tagsinput tagsinput-plain">
