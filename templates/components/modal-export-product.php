@@ -4,7 +4,7 @@
 			<div class="modal-body confirmation-modal no-margin">
 				<div class="row">
 					<div class="col-xs-12 margin-bottom-30">
-						<h2 class="font-size-20 text-centerx text-normal margin-bottom-20">Ready to import</h2>
+						<h2 class="font-size-20 text-centerx text-normal margin-bottom-20">Export Products</h2>
 						<? if (!empty($newProductNum)): ?>
 							<div><?= $newProductNum ?> new products to be imported</div>
 						<? endif ?>	
