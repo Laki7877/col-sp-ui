@@ -103,9 +103,14 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					//$window.onbeforeunload = function(){};
 					//console.log("OK");
 					//$window.location.href = "/products";
+
+					
 					$scope._loading.state = false;
 					$scope.alert.success = true;
 					$scope.formData.ProductId = res.ProductId;
+					//TODO: add in deserializer
+					$scope.formData.MasterVariant.Pid = res.MasterVariant.Pid;
+
 				}else{
 					console.warn("Unable to save because API did not send back ProductId. Anticipates ProductId as success condition.")
 					$scope.alert.failure = true;
