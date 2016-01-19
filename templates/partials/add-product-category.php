@@ -13,7 +13,7 @@
 						<div class="width-field-normal" ng-if="$index != 0 && item != null">
 							<a class="form-text" data-toggle="modal" data-target="#global-category" ng-click="$emit('openGlobalCat', item, $index)">{{item.NameEn}}</a>
 							<!-- Only deletable if last -->
-							<i ng-if="$index == (formData.GlobalCategories | exclude : null).length - 1"
+							<i ng-if="!formData.GlobalCategories[$index + 1]"
 							 ng-click="$emit('deleteGlobalCat', $index)"class="clickable color-dark-grey fa fa-trash margin-left-10"></i>
 						</div>
 						<div class="width-field-normal" ng-if="$index != 0 && item == null && formData.GlobalCategories[$index - 1] != null">
@@ -42,7 +42,7 @@
 						<div class="width-field-normal" ng-if="item != null">
 							<a class="form-text" data-toggle="modal" data-target="#local-category" ng-click="$emit('openLocalCat', item, $index)">{{item.NameEn}}</a>
 							<!-- can only delete bottom up -->
-							<i ng-if="$index == (formData.LocalCategories | exclude : null).length - 1"
+							<i ng-if="!formData.LocalCategories[$index + 1]"
 							 ng-click="$emit('deleteLocalCat', $index)"class="clickable color-dark-grey fa fa-trash margin-left-10"></i>
 						</div>
 						<div class="width-field-normal" ng-if="item == null && (formData.LocalCategories[$index - 1] != null || $index == 0)">

@@ -1481,6 +1481,10 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					$scope.formData = inverseResult.formData;
 					console.log("After Inverse Transformation", $scope.formData, inverseResult.attributeOptions);
 
+					if($scope.formData.Variants.length  > 0){
+						$scope.enableProductVariations = "enable";
+					}
+
 					$scope.attributeOptions = inverseResult.attributeOptions || $scope.attributeOptions;
 		    		ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages);
 		    		ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360);
