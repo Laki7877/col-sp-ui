@@ -13,17 +13,17 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 <div ng-controller="ProductAddCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
 
 		<? //$this->insert('components/modal-warning-leave-page', ['id' => 'leave-page-warning']) ?>
-		<div ng-if="alert.success" class="alert alert-success alert-dismissible" role="alert">
+		<div ng-show="alert.success" class="alert alert-success alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			Successful saved. <a href="/products/">View Product List</a>
 		</div>
 
-		<div ng-if="alert.failure"  class="alert alert-danger alert-dismissible" role="alert">
+		<div ng-show="alert.failure"  class="alert alert-danger alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			An unknown error has occurred while trying to save your data.
 		</div>
 
-		<div ng-if="alert.validationFailed" class="alert alert-danger alert-dismissible" role="alert">
+		<div id="alert-validation" ng-show="alert.validationFailed" class="alert alert-danger alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			Unable to save because required fields are missing.
 		</div>

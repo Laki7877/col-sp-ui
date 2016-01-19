@@ -1207,6 +1207,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		message: 'Loading..'
 	};
 
+	$scope.enableProductVariations = "disable";
+
 	$window.onbeforeunload = function (e) {
 
 		if(!$scope.addProductForm.$dirty){
@@ -1264,14 +1266,15 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 	$scope.publish = function(Status){
 
+
 		$scope.onPublishing = (Status == "WA");
 		if($scope.addProductForm.$invalid){
+			//replace with .hash
+			$window.location.href = '/products/add#alert-validation'
 			$scope.alert.validationFailed = true;
 			return;
 		}
-
-		$scope._loading.message = "Saving Changes..";
-		$scope._loading.state = true;
+		
 		$scope.alert.reset();
 
 		cleanData();
@@ -1287,6 +1290,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					//$window.location.href = "/products";
 					$scope._loading.state = false;
 					$scope.alert.success = true;
+					$scope.formData.ProductId = res.ProductId;
 				}else{
 					console.warn("Unable to save because API did not send back ProductId. Anticipates ProductId as success condition.")
 					$scope.alert.failure = true;

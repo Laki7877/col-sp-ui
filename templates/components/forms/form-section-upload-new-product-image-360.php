@@ -1,5 +1,5 @@
 <div class="form-section">
-	<div class="form-section-header"><input type="checkbox" ng-model="checked_master_upload360" name="m360c"/> <label for="m360c">Upload 360 Degree Images</label></div>
+	<div class="form-section-header"><input type="checkbox" ng-model="checked_master_upload360" name="m360c"/> <label style="margin-bottom:0px !important" for="m360c">Upload 360 Degree Images</label></div>
 	<div class="form-section-content padding-left-15 padding-right-15" ng-if="checked_master_upload360">
 		<div class="col-xs-7">
 			<? $this->insert('components/image-dropzone', ["id" => "product-360", "uploader" => $uploader]) ?>

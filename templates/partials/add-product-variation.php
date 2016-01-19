@@ -4,11 +4,12 @@
 		<div class="col-xs-12">
 			<div class="form-section">
 				<div class="form-section-header"><h2>Variation Option</h2></div>
-				<div class="form-section-content padding-left-30" ng-if="!formData.AttributeSet">
-					Please first select an attribute set from Information tab
+				<div class="form-section-content padding-left-30" ng-if="(formData.AttributeSet && !formData.AttributeSet['AttributeSetId']) || enableProductVariations != 'enable'">
+					To enable variation option, please select an <strong>Attribute Set</strong> and enable <strong>Product Variation</strong> in the information tab.
 				</div>
 
-				<div class="form-section-content" ng-if="formData.AttributeSet">
+				<!-- ng-if too long -->
+				<div class="form-section-content" ng-if="!(formData.AttributeSet && !formData.AttributeSet['AttributeSetId']) && enableProductVariations == 'enable'">
 					<div class="form-group" ng-repeat="jth in variationFactorIndices.iterator" ng-show="(attributeOptions[0].options.length > 0) || (jth == 0)">
 						<div class="width-label">
 							<select class="form-control"
@@ -21,7 +22,7 @@
 						       	<option value="" disabled selected>Select an option..</option>
 							</select>
 						</div>
-						<div class="width-field-xl">
+						<div class="width-field-small">
 							<div class="input-with-unit">
 								<ui-select ng-if="_isListInput(attributeOptions[jth].Attribute.DataType)" 
 								multiple ng-model="attributeOptions[jth].options">
