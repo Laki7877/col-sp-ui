@@ -258,7 +258,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					console.log("After Inverse Transformation", $scope.formData, inverseResult.attributeOptions);
 
 					$scope.attributeOptions = inverseResult.attributeOptions || $scope.attributeOptions;
-
 		    		ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages);
 		    		ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360);
 
@@ -268,14 +267,17 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					//Dependecy chain
 					// catId
 
-
 					$scope._loading.message = "Downloading Attribute Sets..";
 
 					AttributeSet.getByCategory(catId).then(function(data){
 						
 						//remove complex structure we dont need
 						$scope.availableAttributeSets = data.map(function(aset){
-							
+
+							aset.AttributeSetTagMaps = aset.AttributeSetTagMaps.map(function(asti){
+								return asti.Tag.TagName;
+							});
+
 							aset.AttributeSetMaps = aset.AttributeSetMaps.map(function(asetmapi){
 								asetmapi.Attribute.AttributeValueMaps = asetmapi.Attribute.AttributeValueMaps.map(function(value){
 									return value.AttributeValue.AttributeValueEn;
@@ -296,12 +298,13 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 								return o.AttributeSetId
 							}).indexOf(ivFormData.AttributeSet.AttributeSetId);
 
+							if(ivFormData.ProductId){
+								$scope.formData.AttributeSet = $scope.availableAttributeSets[idx];
+								loadFormData(ivFormData, $scope.formData.AttributeSet);
+							}
 						}
 
-						if(ivFormData.ProductId){
-							$scope.formData.AttributeSet = $scope.availableAttributeSets[idx];
-							loadFormData(ivFormData, $scope.formData.AttributeSet);
-						}
+						
  
 						$scope._loading.message = "Downloading Category Tree..";
 						//Load Global Cat

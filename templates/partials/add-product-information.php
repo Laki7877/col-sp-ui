@@ -129,17 +129,27 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Keywords</h2></div>
 				<div class="form-section-content">
+
 					<? $this->insert('components/forms/dropdown-with-label',
 							["label" => "Search Tag",
 				       		"ng_model" => "formData.Keywords",
 					     	"tooltip" => "Search Tag will help you product easier to be discovered",
 							"size" => "large",
-							"choices" => "availableSearchTags",
+							"choices" => "formData.AttributeSet.AttributeSetTagMaps",
 							"multiple" => true,
 							"tagging" => true
 						]) ?>
 
-					<? $this->insert('components/forms/tags-with-label', ["label" => "Suggested Search Tag"]) ?>
+					<div class="form-group">
+						<div class="width-label"><label class="control-label">Suggested Search Tag</label></div>
+						<div class="width-field-xl">
+							<div class="bootstrap-tagsinput tagsinput-plain">
+								<a class="tag label label-info" ng-repeat="tag in formData.AttributeSet.AttributeSetTagMaps"
+								 ng-click="(formData.Keywords.indexOf(tag) == -1) && formData.Keywords.push(tag)"> {{ tag }}</a>
+							</div>
+						</div>
+					</div>
+
 				</div>
 			</div>
 			<div class="form-section">
