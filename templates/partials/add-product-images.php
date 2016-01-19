@@ -6,8 +6,8 @@
 			<? $this->insert('components/forms/form-section-upload-new-product-image', ['uploader' => 'uploader', 'images' => 'formData.MasterImages']) ?>
 			<? $this->insert('components/forms/form-section-upload-new-product-image-360', ['uploader' => 'uploader360', 'images' => 'formData.MasterImages360']) ?>
 			<div class="form-section">
-				<div class="form-section-header"><input type="checkbox" /> <span>Embed Video</span></div>
-				<div class="form-section-content">
+				<div class="form-section-header"><input type="checkbox" ng-model="checked_master_video" name="membedv" /> <label for="membedv">Embed Video</label></div>
+				<div class="form-section-content" ng-if='checked_master_video'>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 1", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "Only YouTube link is allowed.", "ng_model" => "formData.VideoLinks[0]"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 2", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "Only YouTube link is allowed.", "ng_model" => "formData.VideoLinks[1]"]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 3", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "Only YouTube link is allowed.", "ng_model" => "formData.VideoLinks[2]"]) ?>

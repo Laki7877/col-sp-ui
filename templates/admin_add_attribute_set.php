@@ -61,18 +61,8 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Visibility</h2></div>
             <div class="form-section-content">
-              <div ng-template="common/input/dropdown"
-                ng-template-options="{
-                  'label' : 'Attribute Set Visibility'
-                }">
-                <ui-select ng-model="formData.Status" search-enabled="false">
-                  <ui-select-match>
-                      <span ng-bind="$select.selected.name"></span>
-                  </ui-select-match>
-                  <ui-select-choices repeat="item in visibleOptions">
-                      <span ng-bind="item.name"></span>
-                  </ui-select-choices>
-                </ui-select>
+              <div ng-template="common/input/multiline-radio" ng-template-options="{ 'label' : 'Attribute Set Visibility' }">
+                <label ng-repeat="choice in visibleOptions"><input type="radio" ng-model="formData.Visibility" ng-value="choice.value"/>{{choice.name}}</label>
               </div>
             </div>
           </div>
