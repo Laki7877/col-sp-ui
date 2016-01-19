@@ -298,13 +298,12 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 								return o.AttributeSetId
 							}).indexOf(ivFormData.AttributeSet.AttributeSetId);
 
-							if(ivFormData.ProductId){
-								$scope.formData.AttributeSet = $scope.availableAttributeSets[idx];
-								loadFormData(ivFormData, $scope.formData.AttributeSet);
-							}
+							$scope.formData.AttributeSet = $scope.availableAttributeSets[idx];
 						}
 
-						
+						if(ivFormData.ProductId){
+								loadFormData(ivFormData, $scope.formData.AttributeSet);
+						}
  
 						$scope._loading.message = "Downloading Category Tree..";
 						//Load Global Cat
