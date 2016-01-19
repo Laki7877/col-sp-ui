@@ -2,10 +2,22 @@
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" aria-label="Close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-				<h3 class="modal-title">Variant Detail</h3>
+					<h3 class="float-left modal-title">Variant: {{ <?=$model?>.text }}</h3>
+
+					<span class="float-right">
+						<a class="link-btn-plain" data-dismiss="modal">Cancel</a>
+						<button type="button" class="btn btn-blue btn-width-xl" ng-click="$emit('savePairModal')" data-dismiss="modal">Save</button>
+					</span>
+
 			</div>
 			<div class="modal-body margin-top-20">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="alert alert-warning " role="alert">
+							Please input product variant detail only if it is different from the main product. The fields left blank will use the same information and image as the main product.
+						</div>
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="form-section">
