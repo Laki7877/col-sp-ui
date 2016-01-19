@@ -24,12 +24,7 @@
 				<div class="form-section-header"><h2>Admin Account Roles</h2></div>
 				<div class="form-section-content">
 					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Admin Role", "label_class" => "required", "options" => ["Super Admin", "User"]]) ?>
-					<div class="form-group">
-						<div class="width-label"></div>
-						<div class="width-field-normal">
-							<a href="/?p=admin_add_role" class="form-text">Create New Admin Role</a>
-						</div>
-					</div>
+					<? $this->insert('components/forms/link-action', ['text' => 'Create New Admin Role', 'link' => '/?p=admin_add_role']) ?>
 				</div>
 			</div>
 		</div>
