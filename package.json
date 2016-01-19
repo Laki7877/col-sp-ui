@@ -20,8 +20,8 @@
   },
   "scripts": {
     "compile": "grunt browserify && compass compile",
-    "predeploy": "if git remote show live; then echo panda; else git remote add live ssh://104.155.199.198/var/www/html/.git; fi",
-    "deploy": "git push live production"
+    "predeploy": "if git remote show live; then echo panda; else git remote add live ssh://104.155.199.198/var/www/colsp.git; fi",
+    "deploy": "git push origin production && git push live production"
   },
   "dependencies": {
     "angular": "~1.4.8",
