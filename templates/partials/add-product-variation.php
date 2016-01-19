@@ -7,8 +7,9 @@
 				<div class="form-section-content padding-left-30" ng-if="!formData.AttributeSet">
 					Please first select an attribute set from Information tab
 				</div>
+
 				<div class="form-section-content" ng-if="formData.AttributeSet">
-					<div class="form-group" ng-repeat="jth in [0,1]" ng-show="(attributeOptions[0].options.length > 0) || (jth == 0)">
+					<div class="form-group" ng-repeat="jth in variationFactorIndices.iterator" ng-show="(attributeOptions[0].options.length > 0) || (jth == 0)">
 						<div class="width-label">
 							<select class="form-control"
 								ng-options="i as i.Attribute.AttributeNameEn
@@ -17,6 +18,7 @@
 								 exclude: attributeOptions[1 - jth].Attribute : 'AttributeId'
 								 track by i.Attribute.AttributeId"
 						       	ng-model="attributeOptions[jth]">
+						       	<option value="" disabled selected>Select an option..</option>
 							</select>
 						</div>
 						<div class="width-field-xl">
@@ -45,18 +47,28 @@
 								</span>
 							</div>
 						</div>
+						<div class="width-field-normal" ng-if="attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1">
+							<a class="like-text form-text" ng-click="variationFactorIndices.pushSecond()">
+								<i class="fa fa-plus-circle color-theme"></i> Add another option
+							</a>
+						</div>
+						<div class="width-field-normal" ng-if="attributeOptions[1].options.length > 0 && variationFactorIndices.length() == 2 && jth == 1">
+							<a class="like-text form-text" ng-click="variationFactorIndices.popSecond()">
+								<i class="fa fa-trash"></i>
+							</a>
+						</div>
 					</div>
 	
-	<div class="form-group">
-	<div class="width-label"><label class="control-label">Default Variant</label></div>
-	<div class="width-field-normal">
+	<div class="form-group" ng-show="formData.Variants.length > 0">
+		<div class="width-label"><label class="control-label">Default Variant</label></div>
+		<div class="width-field-normal">
 		<div class="ah-select2-dropdown">
 			<select ng-model="formData.DefaultVariant" class="form-control" 
 				ng-options="i as i.text for i in formData.Variants">
 			</select>
-			<!-- TODO: use ui-select -->
 		</div>
-	</div></div>
+		</div>
+	</div>
 
 			</div>
 			</div> <!-- end .form-section -->
