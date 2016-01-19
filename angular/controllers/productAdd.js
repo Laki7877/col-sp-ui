@@ -89,7 +89,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			$scope.alert.validationFailed = true;
 			return;
 		}
-
 		
 		$scope.alert.reset();
 
@@ -106,6 +105,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					//$window.location.href = "/products";
 					$scope._loading.state = false;
 					$scope.alert.success = true;
+					$scope.formData.ProductId = res.ProductId;
 				}else{
 					console.warn("Unable to save because API did not send back ProductId. Anticipates ProductId as success condition.")
 					$scope.alert.failure = true;
