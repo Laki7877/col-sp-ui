@@ -1207,6 +1207,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		message: 'Loading..'
 	};
 
+	$scope.enableProductVariations = "disable";
+
 	$window.onbeforeunload = function (e) {
 
 		if(!$scope.addProductForm.$dirty){

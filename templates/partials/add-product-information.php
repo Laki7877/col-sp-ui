@@ -47,10 +47,19 @@
                         ng-required="onPublishing" />
                     </div>
 
+                    <div ng-template="common/input/text"
+                      ng-template-options="{
+                        'label': 'UPC',
+                        'labelClass': 'required'
+                      }">
+                      <input
+                        class="form-control width-field-large"
+                        name="MasterVariant_Upc"
+                        ng-model="formData.MasterVariant.Upc"
+                        ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Upc) }"
+                      />
+                    </div>
 
-					<? $this->insert('components/forms/input-text-with-label',
-						["label" => "UPC", "ng_model" => "formData.MasterVariant.Upc",
-						"tooltip" => "The Universal Product Code (UPC) is a barcode symbology (i.e., a specific type of barcode) that is widely used in the USA.", "size" => "large"]) ?>
 				
 					<? $this->insert('components/forms/dropdown-with-label',
 						["label" => "Brand Name",
@@ -67,12 +76,8 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Price</h2></div>
 				<div class="form-section-content">
-			<!--	<? $this->insert('components/forms/input-text-with-label',
-					 ["ng_model" => "formData.MasterVariant.OriginalPrice", 
-					 "required" => true,
-					  "label" => "Original Price", 
-					  "hint" => "Example: 200 or 125.50", "label_class" => "required"]) ?>-->
 				
+
 					<div ng-template="common/input/text"
                       ng-template-options="{
                         'label': 'Original Price',
@@ -86,8 +91,17 @@
                         required />
                     </div>
 
-
-					<? $this->insert('components/forms/input-text-with-label', ["ng_model" => "formData.MasterVariant.SalePrice", "label" => "Sale Price", "hint" => "Example: 100"]) ?>
+                    <div ng-template="common/input/text"
+                      ng-template-options="{
+                        'label': 'Sale Price'
+                      }">
+                      <input
+                        class="form-control width-field-normal"
+                        name="MasterVariant_SalePrice"
+                        ng-model="formData.MasterVariant.SalePrice"
+                        ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_SalePrice) }"
+                        required />
+                    </div>
 				</div>
 			</div>
 			<div class="form-section">
@@ -102,14 +116,24 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Detail</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/dropdown-with-label',
-						["label" => "Attribute Set",
-						"showBy" => "AttributeSetNameEn",
-						 "trackBy" => "AttributeSetId",
-					 	 "choices" => "availableAttributeSets",
-				  		 "ng_model"=> "formData.AttributeSet"
-						])
-					?>
+					
+					<div class="form-group ">
+						<div class="width-label"><label class="control-label ">Attribute Set</label></div>
+						<div class="width-field-normal">
+								<div class="ah-select2-dropdown">
+								<ui-select ng-model="formData.AttributeSet">
+									<ui-select-match>
+										<span ng-bind="$select.selected.AttributeSetNameEn"></span>
+									</ui-select-match>
+									<ui-select-choices repeat="item in (availableAttributeSets) | filter : $select.search track by item.AttributeSetId">
+										<span ng-bind="item.AttributeSetNameEn"></span>
+									</ui-select-choices>
+								</ui-select>
+
+								</div>
+						</div>
+					</div>
+
 					<div class="form-group" ng-repeat="amap in formData.AttributeSet.AttributeSetMaps">
 						<div class="width-label"><label class="control-label">
 							{{ amap.Attribute.AttributeNameEn }} 
@@ -123,6 +147,21 @@
 							<input ng-if="_isFreeTextInput(amap.Attribute.DataType)" type="text" class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" />
 						</div>
 					</div>
+
+					<div class="form-group">
+						<div class="width-label"><label class="control-label">Product Variations</label></div>
+						<div class="width-field-small">
+							<select class="form-control" ng-disabled="availableAttributeSets.length == 0" ng-model="enableProductVariations">
+								<option value="enable">
+									Enable
+								</option>
+								<option value="disable" selected>
+									Disable
+								</option>
+							</select>
+						</div>
+					</div>
+
 
  					</div>
 			</div>
