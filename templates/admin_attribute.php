@@ -48,24 +48,24 @@
                 <input type="checkbox" aria-label="Checkbox for following text input" ng-model="checkAll"> 
             </th>
             <th ng-click="setOrderBy('AttributeNameEn')">
-              <a class="header-link" href="#"><span>Attribute Name</span></a>
+              <a class="header-link" href="#"><span ng-class="sort('AttributeNameEn', true)">Attribute Name</span></a>
               <i class="fa" ng-class="sort('AttributeNameEn')">
             </th>
             <th ng-click="setOrderBy('DisplayNameEn')">
-              <a class="header-link" href="#"><span>Display Name</span></a>
+              <a class="header-link" href="#"><span ng-class="sort('DisplayNameEn', true)">Display Name</span></a>
               <i class="fa" ng-class="sort('DisplayNameEn')">
             </th>
             <th ng-click="setOrderBy('DataType')">
-              <a class="header-link" href="#"><span>Field Type</span></a>
+              <a class="header-link" href="#"><span ng-class="sort('DataType', true)">Field Type</span></a>
               <i class="fa" ng-class="sort('DataType')">
             </th>
-            <th ng-click="setOrderBy('Variation')">
+            <th>
               <a class="header-link" href="#"><span>Variation</span></a>
-               <i class="fa" ng-class="sort('Variation')">
+               <i class="fa">
             </th>
             <th><a class="header-link" href="#"><span>Mapped Set</span></a></th>
             <th class="modified-column" ng-click="setOrderBy('UpdateDt')">
-              <a class="header-link" href="#"><span>Modified</span></a>
+              <a class="header-link" href="#"><span ng-class="sort('UpdateDt', true)">Modified</span></a>
               <i class="fa" ng-class="sort('UpdateDt')">
             </th>
             <th>

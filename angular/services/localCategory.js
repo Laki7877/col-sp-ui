@@ -9,6 +9,7 @@ module.exports = ['common', function(common) {
 			NameTh: "",
 			UrlKeyEn: "",
 			Status: "AT",
+			Visibility: true,
 			ProductCount: 0,
 			nodes: []
 		}, extend);

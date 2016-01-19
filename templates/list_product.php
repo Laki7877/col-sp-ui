@@ -54,11 +54,11 @@
             </th>
             <th class="display-column"></th>
             <th ng-click="setOrderBy('ProductNameEn')">
-              <a><span>Product Name</span></a>
+              <a class="header-link" ><span ng-class="sort('ProductNameEn', true)">Product Name</span></a>
               <i class="fa" ng-class="sort('ProductNameEn')">
             </th>
             <th class="price-column" ng-click="setOrderBy('SalePrice')">
-              <a><span>Price</span></a>
+              <a class="header-link" ><span ng-class="sort('SalePrice', true)">Price</span></a>
               <i class="fa" ng-class="sort('SalePrice')">
             </th>
             <th><span>Info.</span></th>
@@ -69,7 +69,7 @@
             <th class="live-column" ng-if="showOnOffStatus">Live</th>
             <th class="visible-column">Visible</th>
             <th class="modified-column" ng-click="setOrderBy('UpdatedDt')">
-              <a><span>Modified</span></a>
+              <a class="header-link" ><span ng-class="sort('UpdatedDt', true)">Modified</span></a>
               <i class="fa" ng-class="sort('UpdatedDt')">
             </th>
             <th>

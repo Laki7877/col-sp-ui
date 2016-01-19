@@ -10,6 +10,7 @@ module.exports = ['common', '$q' , function(common, $q) {
 			UrlKeyEn: "",
 			Commission: 0,
 			Status: "AT",
+			Visibility: true,
 			ProductCount: 0,
 			AttributeSets: [],
 			nodes: []

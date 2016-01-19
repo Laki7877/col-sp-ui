@@ -42,15 +42,15 @@
                 <input type="checkbox" aria-label="Checkbox for following text input" ng-model="checkAll"> 
             </th>
             <th ng-click="setOrderBy('BrandId')">
-              <a class="header-link"><span>Brand ID</span></a>
+              <a class="header-link"><span ng-class="sort('BrandId', true)">Brand ID</span></a>
               <i class="fa" ng-class="sort('BrandId')">
             </th>
             <th ng-click="setOrderBy('BrandNameEn')">
-              <a class="header-link"><span>Brand Name</span></a>
+              <a class="header-link"><span ng-class="sort('BrandNameEn', true)">Brand Name</span></a>
               <i class="fa" ng-class="sort('BrandNameEn')">
             </th>
             <th class="modified-column" ng-click="setOrderBy('UpdatedDt')">
-              <a class="header-link"><span>Modified</span></a>
+              <a class="header-link"><span ng-class="sort('UpdatedDt', true)">Modified</span></a>
               <i class="fa" ng-class="sort('UpdatedDt')">
             </th>
             <th>

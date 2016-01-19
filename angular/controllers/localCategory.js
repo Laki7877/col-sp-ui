@@ -2,11 +2,11 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 	$scope.categories = [];
 	$scope.editingStatusOptions = [	{
 		text: 'Visible',
-		value: 'AT'
+		value: true
 	},
 	{
 		text: 'Not Visible',
-		value: 'NA'
+		value: false
 	}];
 	$scope.editingForm = {};
 	$scope.editingCategory = {};
@@ -25,16 +25,20 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 		},
 		message: ''
 	};
+	$scope.loading = false;
 
 	$scope.init = function(shopid) {
 		$scope.shopId = shopid || 1;
 		$scope.reload();
 	};
 	$scope.reload = function() {
+		$scope.loading = true;
 		Shop.getLocalCategories($scope.shopId).then(function(data) {
+			$scope.loading = false;
 			$scope.categories = Category.transformNestedSetToUITree(data);
 		}, function(err) {
 			$scope.alert.open(false, common.getError(err));
+			$scope.loading = false;
 		});
 	}
 	$rootScope.$on('createLocalCategory', function(evt) {

@@ -48,7 +48,12 @@ module.exports = ['storage', function (storage) {
     };
 
     service.tableSortClass = function($scope) {
-        return function(id) {
+        return function(id, flag) {
+
+            if(flag) {
+                return $scope.tableParams.orderBy == id ? 'active-underline' : '';
+            }
+
             var classes = ['fa'];
             if($scope.tableParams.orderBy == id) {
                 if($scope.tableParams.direction == 'desc') {
@@ -57,7 +62,7 @@ module.exports = ['storage', function (storage) {
                     classes.push('fa-caret-up');
                 }
             } else {
-                classes.push('fa-caret-up');
+                classes.push('fa-caret-down');
                 classes.push('color-grey');
             }
             return classes;

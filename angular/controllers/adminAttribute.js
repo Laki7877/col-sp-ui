@@ -52,6 +52,7 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 		$scope.attributeList = [];
 		$scope.notReady = true;
 		Attribute.getAll($scope.tableParams).then(function(x){
+			console.log(x);
 			$scope.attributeTotal = x.total;
 			$scope.attributeList = x.data;
 			$scope.notReady = false;

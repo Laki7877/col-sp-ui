@@ -4,11 +4,11 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 	$scope.editingStatusOptions = [
 	{
 		text: 'Visible',
-		value: 'AT'
+		value: true
 	},
 	{
 		text: 'Not Visible',
-		value: 'NA'
+		value: false
 	}];
 	$scope.editingForm = {};
 	$scope.editingCategory = {};
@@ -27,6 +27,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 		},
 		message: ''
 	};
+	$scope.loading = false;
 
 	$scope.init = function() {
 		$scope.reload();
@@ -38,10 +39,13 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 		});
 	}
 	$scope.reload = function() {
+		$scope.loading = true;
 		GlobalCategory.getAll().then(function(data) {
 			$scope.categories = Category.transformNestedSetToUITree(data);
+			$scope.loading = false;
 			console.log($scope.categories);
 		}, function(err) {
+			$scope.loading = false;
 			$scope.alert.open(false, common.getError(err));
 		});
 	};
@@ -55,8 +59,6 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 			item['Commission'] = parseFloat(item['Commission']);
 			return item;
 		});
-
-		console.log($scope.formData);
 			
 		GlobalCategory.upsert($scope.formData).then(function() {
 			$scope.alert.open(true);
