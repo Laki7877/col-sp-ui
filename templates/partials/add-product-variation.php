@@ -22,7 +22,7 @@
 						       	<option value="" disabled selected>Select an option..</option>
 							</select>
 						</div>
-						<div class="width-field-small">
+						<div class="width-field-large">
 							<div class="input-with-unit">
 								<ui-select ng-if="_isListInput(attributeOptions[jth].Attribute.DataType)" 
 								multiple ng-model="attributeOptions[jth].options">
@@ -55,7 +55,7 @@
 						</div>
 						<div class="width-field-normal" ng-if="attributeOptions[1].options.length > 0 && variationFactorIndices.length() == 2 && jth == 1">
 							<a class="like-text form-text" ng-click="variationFactorIndices.popSecond()">
-								<i class="fa fa-trash"></i>
+								<i class="fa fa-minus-circle color-theme"></i> Remove option
 							</a>
 						</div>
 					</div>

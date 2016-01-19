@@ -42,6 +42,7 @@
                       <input
                         class="form-control width-field-large"
                         name="MasterVariant_Sku"
+                        ng-disabled="enableProductVariations == 'enable'"
                         ng-model="formData.MasterVariant.Sku"
                         ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Sku) }"
                         ng-required="onPublishing" />
@@ -102,6 +103,7 @@
                       <input
                         class="form-control width-field-normal"
                         name="MasterVariant_OriginalPrice"
+                        ng-disabled="enableProductVariations == 'enable'"
                         ng-model="formData.MasterVariant.OriginalPrice"
                         ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_OriginalPrice) }"
                         required />
@@ -112,6 +114,7 @@
                         'label': 'Sale Price'
                       }">
                       <input
+                      	ng-disabled="enableProductVariations == 'enable'"
                         class="form-control width-field-normal"
                         name="MasterVariant_SalePrice"
                         ng-model="formData.MasterVariant.SalePrice"
@@ -133,10 +136,12 @@
 				<div class="form-section-header"><h2>Detail</h2></div>
 				<div class="form-section-content">
 					
+					<!-- select attribute set -->
 					<div class="form-group ">
 						<div class="width-label"><label class="control-label ">Attribute Set</label></div>
 						<div class="width-field-normal">
 								<div class="ah-select2-dropdown" >
+									<!-- dont show if nothing is available to choose from -->
 									<ui-select ng-model="formData.AttributeSet" ng-show="availableAttributeSets.length > 0">
 										<ui-select-match>
 											<span ng-bind="$select.selected.AttributeSetNameEn"></span>
@@ -145,30 +150,54 @@
 											<span ng-bind="item.AttributeSetNameEn"></span>
 										</ui-select-choices>
 									</ui-select>
+									<!-- if nothing is availalbe to pick -->
 									<small ng-if="availableAttributeSets.length == 0">Not available for this Global Category</small>
 								</div>
-								
 						</div>
 					</div>
 
+					<!-- for each attribute in attribute set -->
 					<div class="form-group" ng-repeat="amap in formData.AttributeSet.AttributeSetMaps">
 						<div class="width-label"><label class="control-label">
 							{{ amap.Attribute.AttributeNameEn }} 
 						</label></div>
 						<div class="width-field-normal">
-							<select ng-if="_isListInput(amap.Attribute.DataType)" class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" >
+							<!-- disabled if is variant as variant is disabled -->
+
+							<select class="form-control" disabled 
+							ng-show="_isListInput(amap.Attribute.DataType) && (amap.Attribute.VariantStatus && enableProductVariations == 'enable')">
+								<option selected>Edit in Variation Tab</option>
+							</select>
+
+							<input class="form-control" disabled type="text"
+							ng-show="_isFreeTextInput(amap.Attribute.DataType) && (amap.Attribute.VariantStatus && enableProductVariations == 'enable')"
+							value="Edit in Variation Tab"
+							/>
+
+							<!-- to do group into two cases -->
+
+							<select ng-show="_isListInput(amap.Attribute.DataType) && (!amap.Attribute.VariantStatus || enableProductVariations != 'enable')" 
+							class="form-control" 
+							ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" >
 								<option ng-repeat="vv in amap.Attribute.AttributeValueMaps">
 									{{ vv.AttributeValue.AttributeValueEn || vv }}
 								</option>
 							</select>
-							<input ng-if="_isFreeTextInput(amap.Attribute.DataType)" type="text" class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" />
+
+							<input ng-show="_isFreeTextInput(amap.Attribute.DataType) && (!amap.Attribute.VariantStatus || enableProductVariations != 'enable')"
+							type="text" 
+							class="form-control" 
+							ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" />
+
 						</div>
 					</div>
 
+					<!-- select whether the product variation tab should be enabled -->
 					<div class="form-group">
 						<div class="width-label"><label class="control-label">Product Variations</label></div>
-						<div class="width-field-small">
-							<select class="form-control" ng-disabled="availableAttributeSets.length == 0" ng-model="enableProductVariations">
+						<div class="width-field-normal">
+							<select class="form-control" ng-disabled="!formData.AttributeSet.AttributeSetId" 
+							ng-model="enableProductVariations">
 								<option value="enable">
 									Enable
 								</option>
@@ -178,9 +207,7 @@
 							</select>
 						</div>
 					</div>
-
-
- 					</div>
+ 				</div>
 			</div>
 			<div class="form-section">
 				<div class="form-section-header"><h2>Keywords</h2></div>
