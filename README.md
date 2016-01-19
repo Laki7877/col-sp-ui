@@ -1,7 +1,6 @@
 # Seller Portal (Production)
 
 ## How to publish to production
-Run `npm run predeploy` to add live production git.
 
 Run `npm run deploy` to push changes to remote production branch.
 
