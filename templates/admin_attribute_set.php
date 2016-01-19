@@ -48,19 +48,19 @@
                 <input type="checkbox" aria-label="Checkbox for following text input" ng-model="checkAll"> 
             </th>
             <th ng-click="setOrderBy('AttributeSetNameEn')">
-              <a class="header-link" href="#"><span>Attribute Set Name</span></a>
+              <a class="header-link" href="#"><span ng-class="sort('AttributeSetNameEn', true)">Attribute Set Name</span></a>
               <i ng-class="sort('AttributeSetNameEn')">
             </th>
             <th ng-click="setOrderBy('AttributeCount')">
-              <a class="header-link" href="#"><span>Attribute in Set</span></a>
+              <a class="header-link" href="#"><span ng-class="sort('AttributeCount', true)">Attribute in Set</span></a>
               <i ng-class="sort('AttributeCount')">
             </th>
             <th ng-click="setOrderBy('Status')">
-              <a class="header-link" href="#" ><span>Visible</span></a>
+              <a class="header-link" href="#" ><span ng-class="sort('Status', true)">Visible</span></a>
               <i ng-class="sort('Status')">
             </th>
             <th class="modified-column" ng-click="setOrderBy('UpdatedDt')">
-              <a class="header-link" href="#" ><span>Modified</span></a>
+              <a class="header-link" href="#" ><span ng-class="sort('UpdatedDt', true)">Modified</span></a>
               <i ng-class="sort('UpdatedDt')">
             </th>
             <th>

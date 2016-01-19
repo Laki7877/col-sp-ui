@@ -65,7 +65,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
         };
 
         service.serialize = function(fd) {
-            var hasVariants = (("Variants" in fd) && fd.Variants.length > 0);
+            var hasVariants = (!util.nullOrUndefined(fd.Variants) && fd.Variants.length > 0);
 
             //Cleaned data
             var clean = {};
@@ -95,8 +95,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 Variants: function(_variant) {
                     var variant = angular.copy(_variant);
 
-                    if (!('VideoLinks' in variant)) variant.VideoLinks = [];
-                    if (!('Images' in variant)) variant.Images = [];
+                    if (util.nullOrUndefined(variant['VideoLinks'])) variant.VideoLinks = [];
+                    if (util.nullOrUndefined(variant['VideoLinks'])) variant.Images = [];
                     if ("queue" in variant) delete variant.queue; //circular
 
                     variant.Visibility = variant.Visibility;
@@ -369,9 +369,9 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
 
             //TODO: Just change ngmodel to bind to MasterVariant.MasterImages Directly
-            invFd.MasterImages = invFd.MasterVariant.Images;
+            invFd.MasterImages = invFd.MasterVariant.Images || [];
             delete invFd.MasterVariant.Images;
-            invFd.MasterImages360 = invFd.MasterVariant.Images360;
+            invFd.MasterImages360 = invFd.MasterVariant.Images360 || [];
             delete invFd.MasterVariant.Images360;
 
             try {
@@ -406,7 +406,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             _Loading.message = "Producing Variation Factorization..";
             if (invFd.Variants.length > 0) {
 
-                var HasTwoAttr = ('AttributeId' in invFd.Variants[0].SecondAttribute);
+                var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId']);
                 
                 //Generate attributeOptions
                 var map0_index = FullAttributeSet.AttributeSetMaps.map(function(a) {

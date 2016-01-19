@@ -16,7 +16,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		//http://stackoverflow.com/questions/276660/how-can-i-override-the-onbeforeunload-dialog-and-replace-it-with-my-own
 		//TLDR; You can't override default popup with your own 
 		// $('#leave-page-warning').modal('show');
-		var message = "Are you sure you want to leave the page?",
+		var message = "Your changes will not be saved.",
 		e = e || window.event;
 		// For IE and Firefox
 		if (e) {
@@ -258,6 +258,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					console.log("After Inverse Transformation", $scope.formData, inverseResult.attributeOptions);
 
 					$scope.attributeOptions = inverseResult.attributeOptions || $scope.attributeOptions;
+		    		ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages);
+		    		ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360);
 
 				};
 
@@ -271,7 +273,11 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 						
 						//remove complex structure we dont need
 						$scope.availableAttributeSets = data.map(function(aset){
-							
+
+							aset.AttributeSetTagMaps = aset.AttributeSetTagMaps.map(function(asti){
+								return asti.Tag.TagName;
+							});
+
 							aset.AttributeSetMaps = aset.AttributeSetMaps.map(function(asetmapi){
 								asetmapi.Attribute.AttributeValueMaps = asetmapi.Attribute.AttributeValueMaps.map(function(value){
 									return value.AttributeValue.AttributeValueEn;
@@ -292,12 +298,13 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 								return o.AttributeSetId
 							}).indexOf(ivFormData.AttributeSet.AttributeSetId);
 
+							if(ivFormData.ProductId){
+								$scope.formData.AttributeSet = $scope.availableAttributeSets[idx];
+								loadFormData(ivFormData, $scope.formData.AttributeSet);
+							}
 						}
 
-						if(ivFormData.ProductId){
-							$scope.formData.AttributeSet = $scope.availableAttributeSets[idx];
-							loadFormData(ivFormData, $scope.formData.AttributeSet);
-						}
+						
  
 						$scope._loading.message = "Downloading Category Tree..";
 						//Load Global Cat

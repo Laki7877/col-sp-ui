@@ -7,14 +7,14 @@ module.exports = ['storage', function (storage) {
     service.variant = {};
 
     service.variant.hash = function(a,b){
-        if(!("ValueEn" in a)) return "[API Error]";
-        if(!('ValueEn' in b)) return  (a.AttributeId + "-" + a.ValueEn.trim() + "-" + "null" + "-" );
+        if(!("ValueEn" in a) || a.ValueEn) return "[API Error]";
+        if(!('ValueEn' in b) || b.ValueEn) return  (a.AttributeId + "-" + a.ValueEn.trim() + "-" + "null" + "-" );
 	    return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + b.AttributeId + "-" + b.ValueEn.trim());
     };
 
     service.variant.toString = function(a,b){
-        if(!("ValueEn" in a)) return "[API Error]";
-        if(!('ValueEn' in b)) return a.ValueEn.trim();
+        if(!("ValueEn" in a) || !a.ValueEn) return "[API Error]";
+        if(!('ValueEn' in b) || !b.ValueEn) return a.ValueEn.trim();
 	    return (a.ValueEn.trim() + (b.ValueEn == '' ? '' : (", " + b.ValueEn.trim())));	
     };
 
@@ -27,7 +27,10 @@ module.exports = ['storage', function (storage) {
         })
     };
 
-    
+    service.nullOrUndefined = function(a){
+        return angular.isUndefined(a) || a === null;
+    };
+
     /**
      * Function to check if any user is currently logged in
      */
@@ -45,7 +48,12 @@ module.exports = ['storage', function (storage) {
     };
 
     service.tableSortClass = function($scope) {
-        return function(id) {
+        return function(id, flag) {
+
+            if(flag) {
+                return $scope.tableParams.orderBy == id ? 'active-underline' : '';
+            }
+
             var classes = ['fa'];
             if($scope.tableParams.orderBy == id) {
                 if($scope.tableParams.direction == 'desc') {
@@ -54,7 +62,7 @@ module.exports = ['storage', function (storage) {
                     classes.push('fa-caret-up');
                 }
             } else {
-                classes.push('fa-caret-up');
+                classes.push('fa-caret-down');
                 classes.push('color-grey');
             }
             return classes;

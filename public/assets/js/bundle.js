@@ -1201,7 +1201,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		//http://stackoverflow.com/questions/276660/how-can-i-override-the-onbeforeunload-dialog-and-replace-it-with-my-own
 		//TLDR; You can't override default popup with your own 
 		// $('#leave-page-warning').modal('show');
-		var message = "Are you sure you want to leave the page?",
+		var message = "Your changes will not be saved.",
 		e = e || window.event;
 		// For IE and Firefox
 		if (e) {
@@ -1443,6 +1443,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					console.log("After Inverse Transformation", $scope.formData, inverseResult.attributeOptions);
 
 					$scope.attributeOptions = inverseResult.attributeOptions || $scope.attributeOptions;
+		    		ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages);
+		    		ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360);
 
 				};
 
@@ -1456,7 +1458,11 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 						
 						//remove complex structure we dont need
 						$scope.availableAttributeSets = data.map(function(aset){
-							
+
+							aset.AttributeSetTagMaps = aset.AttributeSetTagMaps.map(function(asti){
+								return asti.Tag.TagName;
+							});
+
 							aset.AttributeSetMaps = aset.AttributeSetMaps.map(function(asetmapi){
 								asetmapi.Attribute.AttributeValueMaps = asetmapi.Attribute.AttributeValueMaps.map(function(value){
 									return value.AttributeValue.AttributeValueEn;
@@ -1477,12 +1483,13 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 								return o.AttributeSetId
 							}).indexOf(ivFormData.AttributeSet.AttributeSetId);
 
+							if(ivFormData.ProductId){
+								$scope.formData.AttributeSet = $scope.availableAttributeSets[idx];
+								loadFormData(ivFormData, $scope.formData.AttributeSet);
+							}
 						}
 
-						if(ivFormData.ProductId){
-							$scope.formData.AttributeSet = $scope.availableAttributeSets[idx];
-							loadFormData(ivFormData, $scope.formData.AttributeSet);
-						}
+						
  
 						$scope._loading.message = "Downloading Category Tree..";
 						//Load Global Cat
@@ -2343,6 +2350,7 @@ module.exports = [function() {
   return function(arr, other, trackBy) {
 
      return arr.filter(function(elem){
+        if(other == null || other === undefined) return true;
         if(other instanceof Array){
         	//throw away if elem matches any of the given other list
         	var p = true;
@@ -2631,14 +2639,14 @@ module.exports = ['storage', function (storage) {
     service.variant = {};
 
     service.variant.hash = function(a,b){
-        if(!("ValueEn" in a)) return "[API Error]";
-        if(!('ValueEn' in b)) return  (a.AttributeId + "-" + a.ValueEn.trim() + "-" + "null" + "-" );
+        if(!("ValueEn" in a) || a.ValueEn) return "[API Error]";
+        if(!('ValueEn' in b) || b.ValueEn) return  (a.AttributeId + "-" + a.ValueEn.trim() + "-" + "null" + "-" );
 	    return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + b.AttributeId + "-" + b.ValueEn.trim());
     };
 
     service.variant.toString = function(a,b){
-        if(!("ValueEn" in a)) return "[API Error]";
-        if(!('ValueEn' in b)) return a.ValueEn.trim();
+        if(!("ValueEn" in a) || !a.ValueEn) return "[API Error]";
+        if(!('ValueEn' in b) || !b.ValueEn) return a.ValueEn.trim();
 	    return (a.ValueEn.trim() + (b.ValueEn == '' ? '' : (", " + b.ValueEn.trim())));	
     };
 
@@ -2651,7 +2659,10 @@ module.exports = ['storage', function (storage) {
         })
     };
 
-    
+    service.nullOrUndefined = function(a){
+        return angular.isUndefined(a) || a === null;
+    };
+
     /**
      * Function to check if any user is currently logged in
      */
@@ -2669,7 +2680,12 @@ module.exports = ['storage', function (storage) {
     };
 
     service.tableSortClass = function($scope) {
-        return function(id) {
+        return function(id, flag) {
+
+            if(flag) {
+                return $scope.tableParams.orderBy == id ? 'active-underline' : '';
+            }
+
             var classes = ['fa'];
             if($scope.tableParams.orderBy == id) {
                 if($scope.tableParams.direction == 'desc') {
@@ -2678,7 +2694,7 @@ module.exports = ['storage', function (storage) {
                     classes.push('fa-caret-up');
                 }
             } else {
-                classes.push('fa-caret-up');
+                classes.push('fa-caret-down');
                 classes.push('color-grey');
             }
             return classes;
@@ -3721,7 +3737,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
         };
 
         service.serialize = function(fd) {
-            var hasVariants = (("Variants" in fd) && fd.Variants.length > 0);
+            var hasVariants = (!util.nullOrUndefined(fd.Variants) && fd.Variants.length > 0);
 
             //Cleaned data
             var clean = {};
@@ -3751,8 +3767,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 Variants: function(_variant) {
                     var variant = angular.copy(_variant);
 
-                    if (!('VideoLinks' in variant)) variant.VideoLinks = [];
-                    if (!('Images' in variant)) variant.Images = [];
+                    if (util.nullOrUndefined(variant['VideoLinks'])) variant.VideoLinks = [];
+                    if (util.nullOrUndefined(variant['VideoLinks'])) variant.Images = [];
                     if ("queue" in variant) delete variant.queue; //circular
 
                     variant.Visibility = variant.Visibility;
@@ -4025,9 +4041,9 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
 
             //TODO: Just change ngmodel to bind to MasterVariant.MasterImages Directly
-            invFd.MasterImages = invFd.MasterVariant.Images;
+            invFd.MasterImages = invFd.MasterVariant.Images || [];
             delete invFd.MasterVariant.Images;
-            invFd.MasterImages360 = invFd.MasterVariant.Images360;
+            invFd.MasterImages360 = invFd.MasterVariant.Images360 || [];
             delete invFd.MasterVariant.Images360;
 
             try {
@@ -4062,7 +4078,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             _Loading.message = "Producing Variation Factorization..";
             if (invFd.Variants.length > 0) {
 
-                var HasTwoAttr = ('AttributeId' in invFd.Variants[0].SecondAttribute);
+                var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId']);
                 
                 //Generate attributeOptions
                 var map0_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
@@ -4140,7 +4156,11 @@ module.exports = ['common', function(common) {
 },{}],47:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
+<<<<<<< HEAD
  * Tue Jan 19 2016 14:25:00 GMT+0700 (Russia TZ 6 Standard Time)
+=======
+ * Tue Jan 19 2016 13:10:19 GMT+0700 (ICT)
+>>>>>>> 223dba6bba2012b1effbeaa2306a504248922938
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
