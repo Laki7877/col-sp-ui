@@ -1,6 +1,9 @@
 <div class="modal fade" tabindex="-1" role="dialog" id="<?= $id ?>">
 	<div class="modal-dialog modal-size-warning">
 		<div class="modal-content">
+			<div class="modal-header no-border">
+    	    	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="padding-left-15" aria-hidden="true">&times;</span></button>
+	        </div>
 			<div class="modal-body confirmation-modal no-margin">
 				<div class="row">
 					<div class="col-xs-12 margin-bottom-30">
