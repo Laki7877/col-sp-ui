@@ -1264,14 +1264,16 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 	$scope.publish = function(Status){
 
+
 		$scope.onPublishing = (Status == "WA");
 		if($scope.addProductForm.$invalid){
+			//replace with .hash
+			$window.location.href = '/products/add#alert-validation'
 			$scope.alert.validationFailed = true;
 			return;
 		}
 
-		$scope._loading.message = "Saving Changes..";
-		$scope._loading.state = true;
+		
 		$scope.alert.reset();
 
 		cleanData();
