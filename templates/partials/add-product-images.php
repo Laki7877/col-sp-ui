@@ -4,7 +4,7 @@
 	
 	<div class="row" >
 		<div class="col-xs-12">
-			<div class="alert alert-warning" ng-if="(formData.Variants || []).length > 0">
+			<div class="alert alert-warning" ng-if="enableProductVariations == 'enable'">
 					<strong>Please note: </strong> Images from this tab will be the default images of all product variants.
 					However, you may choose to add product variant images and override images from this tab.
 			</div>

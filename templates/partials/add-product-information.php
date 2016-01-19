@@ -116,7 +116,7 @@
                         name="MasterVariant_SalePrice"
                         ng-model="formData.MasterVariant.SalePrice"
                         ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_SalePrice) }"
-                        required />
+                         />
                     </div>
 				</div>
 			</div>
@@ -136,17 +136,18 @@
 					<div class="form-group ">
 						<div class="width-label"><label class="control-label ">Attribute Set</label></div>
 						<div class="width-field-normal">
-								<div class="ah-select2-dropdown">
-								<ui-select ng-model="formData.AttributeSet">
-									<ui-select-match>
-										<span ng-bind="$select.selected.AttributeSetNameEn"></span>
-									</ui-select-match>
-									<ui-select-choices repeat="item in (availableAttributeSets) | filter : $select.search track by item.AttributeSetId">
-										<span ng-bind="item.AttributeSetNameEn"></span>
-									</ui-select-choices>
-								</ui-select>
-
+								<div class="ah-select2-dropdown" >
+									<ui-select ng-model="formData.AttributeSet" ng-show="availableAttributeSets.length > 0">
+										<ui-select-match>
+											<span ng-bind="$select.selected.AttributeSetNameEn"></span>
+										</ui-select-match>
+										<ui-select-choices repeat="item in (availableAttributeSets) | filter : $select.search track by item.AttributeSetId">
+											<span ng-bind="item.AttributeSetNameEn"></span>
+										</ui-select-choices>
+									</ui-select>
+									<small ng-if="availableAttributeSets.length == 0">Not available for this Global Category</small>
 								</div>
+								
 						</div>
 					</div>
 
