@@ -12,13 +12,14 @@
         <li class="item active margin-top-20"><a href="">View</a></li>
         <li class="item"><a href="?p=add_product">Add</a></li>
         <li class="item"><a href="?p=import_product">Import</a></li>
-        <li class="item"><a href="" data-toggle="modal" data-target="#export-product">Export</a></li>
+        <li class="item"><a href="" data-toggle="modal" data-target="#export-product-progressing">Export</a></li>
         <li class="item margin-top-30"><a href="">Local Category</a></li>
         <li class="item"><a href="">Product Review</a></li>
         <li class="item"><a href="">Product Images</a></li>
     </ul>
 
     <? $this->insert('components/modal-export-product', ['id' => 'export-product', 'newProductNum' => '1,500']) ?>
+    <? $this->insert('components/modal-export-product-progressing', ['id' => 'export-product-progressing', 'percent' => '60']) ?>
 
 <?php $this->stop() ?>
 
