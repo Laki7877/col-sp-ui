@@ -60,6 +60,22 @@
                       />
                     </div>
 
+                    <div ng-if="formData.MasterVariant.Pid">
+	                    <div ng-template="common/input/text"
+	                      ng-template-options="{
+	                        'label': 'PID',
+	                        'labelClass': 'required'
+	                      }">
+	                      <input
+	                        class="form-control width-field-large"
+	                        name="MasterVariant_Pid"
+	                        disabled
+	                        ng-model="formData.MasterVariant.Pid"
+	                        ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Pid) }"
+	                      />
+	                    </div>
+                    </div>
+
 				
 					<? $this->insert('components/forms/dropdown-with-label',
 						["label" => "Brand Name",
