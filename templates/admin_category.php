@@ -17,7 +17,7 @@
 		        </button>
 		    </span>
 		</div>
-		<div class="local-category-section">
+		<div ng-show="!loading && categories.length > 0" class="local-category-section">
 			<div class="col-xs-12 category-header no-padding">
 				<span class="col-xs-7">
 					Category Name
@@ -28,14 +28,14 @@
 				<span class="col-xs-1">
 					Products
 				</span>
-				<!-- <span class="col-xs-1 text-align-center">
+				<span class="col-xs-1 text-align-center">
 					Visible
-				</span> -->
+				</span>
 					<span class="col-xs-1 text-align-center">
-						Action	
+						Move	
 					</span>
 					<span class="col-xs-1 text-align-center">
-						Move
+						Action
 					</span>
 				</div>
 				<div class="col-xs-12 no-padding margin-bottom-60" ui-tree max-depth="5">
@@ -43,9 +43,18 @@
 						<li ng-repeat="node in categories" ui-tree-node ng-include="'global_category/nodes'"></li>
 					</ol>	
 				</div>
-			</div>
-		
-			<!-- Modal -->
+		</div>
+		<div ng-show="!loading && categories.length == 0" class="local-category-empty-section margin-top-20">
+			<span class="">
+				<span class="zero-category-image">
+				</span>
+			</span>
+			<span class="local-category-empty-text">You do not have global category</span>
+		</div>
+      	<div ng-show="loading">
+          <? $this->insert('components/table-loading', ['text' => 'Loading...']) ?>
+      	</div>
+		<!-- Modal -->
 		<div class="modal fade" tabindex="-1" role="dialog" id="modal-category-detail">
 			<div class="modal-dialog modal-xl">
 				<div class="modal-content">

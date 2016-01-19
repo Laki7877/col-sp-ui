@@ -14,7 +14,7 @@
 		        </button>
 		    </span>
 		</div>
-		<div ng-if="categories.length > 0" class="local-category-section">
+		<div ng-if="!loading && categories.length > 0" class="local-category-section">
 			<div class="col-xs-12 category-header no-padding">
 				<span class="col-xs-8">
 					Category Name
@@ -22,14 +22,14 @@
 				<span class="col-xs-1 text-align-center">
 					Products
 				</span>
-				<!-- <span class="col-xs-1 text-align-center">
-					Visible
-				</span> -->
 				<span class="col-xs-1 text-align-center">
-					Action	
+					Visible
 				</span>
 				<span class="col-xs-1 text-align-center">
-					Move
+					Move	
+				</span>
+				<span class="col-xs-1 text-align-center">
+					Action
 				</span>
 			</div>
 			<div class="col-xs-12 no-padding" ui-tree max-depth="5">
@@ -38,13 +38,16 @@
 				</ol>	
 			</div>
 		</div>
-		<div ng-if="categories.length == 0" class="local-category-empty-section margin-top-20">
+		<div ng-if="!loading && categories.length == 0" class="local-category-empty-section margin-top-20">
 			<span class="">
 				<span class="zero-category-image">
 				</span>
 			</span>
 			<span class="local-category-empty-text">You do not have local category</span>
 		</div>
+      	<div ng-if="loading">
+          <? $this->insert('components/table-loading', ['text' => 'Loading...']) ?>
+      	</div>
 	<? $this->insert('components/modal-local-category', ['id' => 'local-category-detail', 'ng_model' => 'editingCategory']) ?>
 	</div>
 <?php $this->stop() ?>
