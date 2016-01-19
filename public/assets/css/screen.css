@@ -12354,146 +12354,151 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 
 /* line 49, ../../../assets/_atomic.scss */
+.margin-bottom-60 {
+  margin-bottom: 60px;
+}
+
+/* line 53, ../../../assets/_atomic.scss */
 .margin-bottom-20 {
   margin-bottom: 20px;
 }
 
-/* line 53, ../../../assets/_atomic.scss */
+/* line 57, ../../../assets/_atomic.scss */
 .margin-bottom-0 {
   margin-bottom: 0px;
 }
 
-/* line 57, ../../../assets/_atomic.scss */
+/* line 61, ../../../assets/_atomic.scss */
 .padding-left-15 {
   padding-left: 15px;
 }
 
-/* line 61, ../../../assets/_atomic.scss */
+/* line 65, ../../../assets/_atomic.scss */
 .padding-left-30 {
   padding-left: 30px;
 }
 
-/* line 65, ../../../assets/_atomic.scss */
+/* line 69, ../../../assets/_atomic.scss */
 .padding-right-15 {
   padding-right: 15px;
 }
 
-/* line 69, ../../../assets/_atomic.scss */
+/* line 73, ../../../assets/_atomic.scss */
 .padding-right-30 {
   padding-right: 30px;
 }
 
-/* line 73, ../../../assets/_atomic.scss */
+/* line 77, ../../../assets/_atomic.scss */
 .padding-bottom-30 {
   padding-bottom: 30px;
 }
 
-/* line 77, ../../../assets/_atomic.scss */
+/* line 81, ../../../assets/_atomic.scss */
 .padding-bottom-60 {
   padding-bottom: 60px;
 }
 
-/* line 81, ../../../assets/_atomic.scss */
+/* line 85, ../../../assets/_atomic.scss */
 .padding-top-30 {
   padding-top: 30px;
 }
 
-/* line 85, ../../../assets/_atomic.scss */
+/* line 89, ../../../assets/_atomic.scss */
 .no-margin {
   margin: 0;
 }
 
-/* line 89, ../../../assets/_atomic.scss */
+/* line 93, ../../../assets/_atomic.scss */
 .no-padding {
   padding: 0;
 }
 
-/* line 93, ../../../assets/_atomic.scss */
+/* line 97, ../../../assets/_atomic.scss */
 .float-left {
   float: left;
 }
 
-/* line 97, ../../../assets/_atomic.scss */
+/* line 101, ../../../assets/_atomic.scss */
 .float-right {
   float: right;
 }
 
-/* line 101, ../../../assets/_atomic.scss */
+/* line 105, ../../../assets/_atomic.scss */
 .color-theme-light {
   color: #b4ddff;
 }
 
-/* line 105, ../../../assets/_atomic.scss */
+/* line 109, ../../../assets/_atomic.scss */
 .color-theme {
   color: #4899DD;
 }
 
-/* line 109, ../../../assets/_atomic.scss */
+/* line 113, ../../../assets/_atomic.scss */
 .color-grey {
   color: #BCC7D5;
 }
 
-/* line 113, ../../../assets/_atomic.scss */
+/* line 117, ../../../assets/_atomic.scss */
 .color-green {
   color: #33bb5b;
 }
 
-/* line 117, ../../../assets/_atomic.scss */
+/* line 121, ../../../assets/_atomic.scss */
 .color-dark-green {
   color: #68d485;
 }
 
-/* line 121, ../../../assets/_atomic.scss */
+/* line 125, ../../../assets/_atomic.scss */
 .color-red {
   color: #ec0000;
 }
 
-/* line 125, ../../../assets/_atomic.scss */
+/* line 129, ../../../assets/_atomic.scss */
 .color-dark-grey {
   color: #7B7F8F;
 }
 
-/* line 129, ../../../assets/_atomic.scss */
+/* line 133, ../../../assets/_atomic.scss */
 .color-yellow {
   color: #f5a623;
 }
 
-/* line 133, ../../../assets/_atomic.scss */
+/* line 137, ../../../assets/_atomic.scss */
 .vertical-align-middle {
   vertical-align: middle;
 }
 
-/* line 137, ../../../assets/_atomic.scss */
+/* line 141, ../../../assets/_atomic.scss */
 .text-align-center {
   text-align: center;
 }
 
-/* line 145, ../../../assets/_atomic.scss */
+/* line 149, ../../../assets/_atomic.scss */
 .hide-component {
   display: none;
 }
 
-/* line 149, ../../../assets/_atomic.scss */
+/* line 153, ../../../assets/_atomic.scss */
 .font-size-18 {
   font-size: 18px;
 }
 
-/* line 153, ../../../assets/_atomic.scss */
+/* line 157, ../../../assets/_atomic.scss */
 .icon-size-20 {
   font-size: 20px;
 }
 
-/* line 157, ../../../assets/_atomic.scss */
+/* line 161, ../../../assets/_atomic.scss */
 .margin-0 {
   margin: 0;
 }
 
-/* line 161, ../../../assets/_atomic.scss */
+/* line 165, ../../../assets/_atomic.scss */
 .font-weight-bold {
   font-weight: bold;
 }
 
-/* line 165, ../../../assets/_atomic.scss */
+/* line 169, ../../../assets/_atomic.scss */
 .opacity-1 {
   opacity: 1;
 }
@@ -13739,7 +13744,7 @@ html, body {
 }
 /* line 112, ../../../assets/_add_product_page.sass */
 .image-thumbs-actions .image-thumbs-img-wrapper > img {
-  width: 100%;
+  width: auto;
   height: 100%;
   position: absolute;
   left: 50%;
@@ -13974,18 +13979,21 @@ html, body {
 .category-section .category-content > .content-column > li {
   padding-left: 15px;
   padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 1.2em;
   cursor: pointer;
 }
-/* line 98, ../../../assets/_global_category.scss */
+/* line 101, ../../../assets/_global_category.scss */
 .category-section .category-content > .content-column > li.category-active {
   background: #4899DD;
   color: #FFFFFF;
 }
-/* line 104, ../../../assets/_global_category.scss */
+/* line 107, ../../../assets/_global_category.scss */
 .category-section .category-content > .content-column.empty-column {
   background: #edf2f9;
 }
-/* line 110, ../../../assets/_global_category.scss */
+/* line 113, ../../../assets/_global_category.scss */
 .category-section .category-footer {
   margin-top: 15px;
 }
@@ -14024,7 +14032,7 @@ html, body {
 }
 /* line 24, ../../../assets/_local_category.scss */
 .local-category-page .local-category-section .category-content {
-  line-height: 60px;
+  line-height: 40px;
 }
 /* line 28, ../../../assets/_local_category.scss */
 .local-category-page .local-category-section .inline-block {
@@ -14075,23 +14083,23 @@ html, body {
 }
 /* line 73, ../../../assets/_local_category.scss */
 .local-category-page .local-category-section ol.sortable > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
-  padding-left: 30px;
+  padding-left: 60px;
 }
 /* line 76, ../../../assets/_local_category.scss */
 .local-category-page .local-category-section ol.sortable > li > ol > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
-  padding-left: 60px;
+  padding-left: 120px;
 }
 /* line 79, ../../../assets/_local_category.scss */
 .local-category-page .local-category-section ol.sortable > li > ol > li > ol > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
-  padding-left: 90px;
+  padding-left: 180px;
 }
 /* line 82, ../../../assets/_local_category.scss */
 .local-category-page .local-category-section ol.sortable > li > ol > li > ol > li > ol > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
-  padding-left: 120px;
+  padding-left: 240px;
 }
 /* line 85, ../../../assets/_local_category.scss */
 .local-category-page .local-category-section ol.sortable > li > ol > li > ol > li > ol > li > ol > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
-  padding-left: 150px;
+  padding-left: 300px;
 }
 /* line 91, ../../../assets/_local_category.scss */
 .local-category-page .toggle-button {
@@ -14160,7 +14168,7 @@ html, body {
 .angular-ui-tree-drag {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  line-height: 60px;
+  line-height: 40px;
   color: #333333;
   background: #fff;
   position: absolute;
@@ -14242,23 +14250,23 @@ html, body {
 }
 /* line 234, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
-  padding-left: 30px;
+  padding-left: 60px;
 }
 /* line 237, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag > li > ol > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
-  padding-left: 60px;
+  padding-left: 120px;
 }
 /* line 240, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag > li > ol > li > ol > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
-  padding-left: 90px;
+  padding-left: 180px;
 }
 /* line 243, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag > li > ol > li > ol > li > ol > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
-  padding-left: 120px;
+  padding-left: 240px;
 }
 /* line 246, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag > li > ol > li > ol > li > ol > li > ol > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
-  padding-left: 150px;
+  padding-left: 300px;
 }
 
 /* Additional Code */

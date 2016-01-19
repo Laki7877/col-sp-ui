@@ -10,6 +10,13 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 	$scope.formData = {
 		BrandImages: []
 	};
+
+	var customImageQueueHandler = function(images, item, obj) {
+		item.remove();
+		item.cancel();
+		$scope.alert.error('Only one brand image can be added at a time. Please delete the old image before adding a new one.');
+		return false;
+	};
 	
 	$scope.cancel= function() {
 		$window.location.href = '/admin/brands';
@@ -24,19 +31,24 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 		});
 		arr.splice(indx, 1);
 	});
+   	$scope.$on('zoom', function(evt, item, array, index) {
+   		//Should use angular way, but ok whatever
+        $('#product-image-zoom img').attr('src', item.url);
+        $('#product-image-zoom').modal('show');
+   	});
 
 	$scope.init = function(params) {
 		if(angular.isDefined(params) && angular.isDefined(params.id)) {
 			$scope.edit = params.id;
 			Brand.getOne(params.id).then(function(data) {
 				$scope.formData = Brand.deserialize(data);
-				ImageService.assignUploaderEvents($scope.uploader, $scope.formData.BrandImages);
+				ImageService.assignUploaderEvents($scope.uploader, $scope.formData.BrandImages, customImageQueueHandler);
 			}, function(err) {
 				$window.location.href = '/admin/brands';
 			});
 		} else {
 			//Assign uploader images
-			ImageService.assignUploaderEvents($scope.uploader, $scope.formData.BrandImages);
+			ImageService.assignUploaderEvents($scope.uploader, $scope.formData.BrandImages, customImageQueueHandler);
 		}
 	};
 
@@ -50,7 +62,7 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 		}
 
 		if($scope.formData.BrandImages.length == 0) {
-			$scope.alert.error('Please make sure to upload a brand logo.');
+			$scope.alert.error('Please add a brand image.');
 			return;
 		}
 

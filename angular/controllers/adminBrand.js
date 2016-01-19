@@ -30,7 +30,6 @@ module.exports = ['$scope','util', 'config', 'Brand', 'Alert', '$window', functi
 						BrandId: elem.BrandId
 					};
 				});
-				console.log(arr);
 				if(arr.length > 0) {
 					Brand.deleteBulk(arr).then(function() {
 						$scope.alert.success('You have successfully remove entries.');
@@ -123,6 +122,10 @@ module.exports = ['$scope','util', 'config', 'Brand', 'Alert', '$window', functi
 	};
 
 	$scope.nextPage = function(m){
+		if($scope.tableParams.page + m >= $scope.totalPage() ||
+			$scope.tableParams.page + m < 0)
+			return;
+
 		$scope.tableParams.page += m;
 	};
 

@@ -6,7 +6,7 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 	$scope.filterOptions = [
 		{ name: "All", value: 'All'},
 		{ name: "Visible", value: 'Visible'},
-		{ name: "Not Visible", value: 'Not Visible'}
+		{ name: "Not Visible", value: 'NotVisible'}
 	];
 	$scope.alert = new Alert();
 	$scope.bulk = { 
@@ -155,9 +155,15 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 		$scope.tableParams.page += m;
 	};
 
-	$scope.setPageSize = function(n){
-		$scope.tableParams.pageSize = n;
+
+	$scope.nextPage = function(m){
+		if($scope.tableParams.page + m >= $scope.totalPage() ||
+			$scope.tableParams.page + m < 0)
+			return;
+
+		$scope.tableParams.page += m;
 	};
+
 
 	$scope.setOrderBy = function(nextOrderBy){
 		if($scope.tableParams.orderBy == nextOrderBy){

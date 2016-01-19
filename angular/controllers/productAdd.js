@@ -259,11 +259,15 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 					$scope.attributeOptions = inverseResult.attributeOptions || $scope.attributeOptions;
 
+		    		ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages);
+		    		ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360);
+
 				};
 
 				var catReady = function(catId, ivFormData, callback){
 					//Dependecy chain
 					// catId
+
 
 					$scope._loading.message = "Downloading Attribute Sets..";
 

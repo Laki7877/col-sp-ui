@@ -7,8 +7,8 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 		{ name: "All", value: 'All'},
 		{ name: "Approved", value: 'Approved'},
 		{ name: 'Draft', value: 'Draft'},
-		{ name: "Not Approved", value: 'Not Approved'},
-		{ name: "Wait for Approval", value: 'Wait for Approval'},
+		{ name: "Not Approved", value: 'NotApproved'},
+		{ name: "Wait for Approval", value: 'WaitforApproval'},
 	];
 
 	$scope.bulk = { 
@@ -147,7 +147,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 		orderBy: 'UpdatedDt',
 		direction: 'desc',
 		page: 0,
-		pageSize: 20
+		pageSize: 10
 	};
 
 	$scope.notReady = true;
@@ -164,9 +164,15 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 		$scope.tableParams.page += m;
 	};
 
-	$scope.setPageSize = function(n){
-		$scope.tableParams.pageSize = n;
+
+	$scope.nextPage = function(m){
+		if($scope.tableParams.page + m >= $scope.totalPage() ||
+			$scope.tableParams.page + m < 0)
+			return;
+
+		$scope.tableParams.page += m;
 	};
+
 
 	$scope.setOrderBy = function(nextOrderBy){
 		if($scope.tableParams.orderBy == nextOrderBy){

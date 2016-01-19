@@ -1,4 +1,4 @@
-<div class="category-content row no-margin" ui-tree-handle>
+<div class="category-content row no-margin" ui-tree-handle style="cursor: pointer;">
 	<div class="category-content-padding">
 		<span class="col-xs-7 column-lc-name" >
 			<span class="lc-icon-name-warpper" >
@@ -8,7 +8,7 @@
 								'fa-chevron-right' : collapsed }"
 					ng-click="toggle(this)"
 					data-nodrag ></i>
-				<i  class = "fa fa-level-up fa-rotate-90 caret-grey"
+				<i  class = "fa fa-chevron-right caret-grey"
 					ng-if="(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0"
 					data-nodrag></i>
 				<span class="no-children-row"

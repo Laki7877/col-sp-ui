@@ -6,7 +6,8 @@
     <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()">{{alert.message}}</div>
     <div class="row margin-top-30">
       <div class="col-xs-12">
-        
+      <? $this->insert('components/modal-product-image', ['id' => 'product-image-zoom']) ?>
+
         <form class="ah-form sticky-mainform-action" name="form">
             <div class="row">
               <div class="col-xs-12">

@@ -33,7 +33,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	/**
 	 * Assign image uploader events specifically to COL-image uploading feature
 	 */
-	service.assignUploaderEvents = function(uploader, images) {
+	service.assignUploaderEvents = function(uploader, images, queueLimit) {
 		uploader.onWhenAddingFileFailed = function(item, filter, options) {
 			console.info('onAfterAddingFile', item, filter, options);
 		};
@@ -42,7 +42,15 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 				url: ''
 			};
 			if(images.length == uploader.queueLimit) {
-				//Override last image
+				//Callback for queueLimit reached
+				if(queueLimit) {
+					//Block flow with custom handler
+					if(!queueLimit(images, item, obj)) {
+						return;
+					}
+				}
+				
+				//Default handle, pop last images
 				images.pop();
 			}
 			images.push(obj);

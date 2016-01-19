@@ -122,11 +122,12 @@
       <span>
         <!-- prev page button -->
         <a ng-click="nextPage(-1)">
-          <i class="fa fa-chevron-left" ng-class="{'grey-chevron': tableParams.page == 0}"></i>
+          <i class="fa fa-chevron-left" ng-class="{'grey-chevron': tableParams.page == 0, 'blue-chevron' : tableParams.page > 0}"></i>
         </a>
         <span> Page {{ tableParams.page + 1 }} of {{ totalPage() }}</span>
         <!-- next page button -->
-        <a ng-click="nextPage(1)"><i class="fa fa-chevron-right padding-right-15 blue-chevron" ></i></a>
+        <a ng-click="nextPage(1)">
+          <i class="fa fa-chevron-right padding-right-15" ng-class="{'grey-chevron': tableParams.page == totalPage() - 1, 'blue-chevron' : tableParams.page < totalPage() - 1}"></i></a>
         <span class="view-page-separator">View per page</span>
         <!-- Split button -->
         <div class="btn-group">
@@ -138,7 +139,7 @@
             <span class="sr-only">Toggle Dropdown</span>
           </button>
           <ul class="dropdown-menu dropdown-menu-right">
-            <li ng-repeat="size in [10,20,25,50]" ><a ng-click="setPageSize(size)">{{size}}</a></li>
+            <li ng-repeat="size in [10,25,50]" ><a ng-click="setPageSize(size)">{{size}}</a></li>
           </ul>
         </div>
       </span>

@@ -5,10 +5,10 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 	$scope.checkAll = false;
 	$scope.filterOptions = [
 		{ name: "All", value: 'All'},
-		{ name: "Free Text", value: 'Free Text'},
+		{ name: "Free Text", value: 'FreeText'},
 		{ name: "Dropdown", value: 'Dropdown'},
-		{ name: "Has Variation", value: 'Has Variation'},
-		{ name: "No Variation", value: 'No Variation'}
+		{ name: "Has Variation", value: 'HasVariation'},
+		{ name: "No Variation", value: 'NoVariation'}
 	];
 	$scope.alert = new Alert();
 	$scope.bulk = { 
@@ -116,9 +116,15 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 		return Math.ceil($scope.attributeTotal / $scope.tableParams.pageSize);
 	};
 
+
 	$scope.nextPage = function(m){
+		if($scope.tableParams.page + m >= $scope.totalPage() ||
+			$scope.tableParams.page + m < 0)
+			return;
+
 		$scope.tableParams.page += m;
 	};
+
 
 	$scope.setPageSize = function(n){
 		$scope.tableParams.pageSize = n;

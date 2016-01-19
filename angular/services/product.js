@@ -369,9 +369,9 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
 
             //TODO: Just change ngmodel to bind to MasterVariant.MasterImages Directly
-            invFd.MasterImages = invFd.MasterVariant.Images;
+            invFd.MasterImages = invFd.MasterVariant.Images || [];
             delete invFd.MasterVariant.Images;
-            invFd.MasterImages360 = invFd.MasterVariant.Images360;
+            invFd.MasterImages360 = invFd.MasterVariant.Images360 || [];
             delete invFd.MasterVariant.Images360;
 
             try {
