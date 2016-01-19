@@ -6,6 +6,17 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		GlobalCategory, Category, VariantPair){
 	'use strict';
 
+	$scope.alert = {
+		success: false,
+		failure: false,
+		validationFailed: false,
+		reset: function(){
+			$scope.alert.success = false;
+			$scope.alert.failure = false;
+			$scope.alert.validationFailed = false;
+		}
+	};
+
 	$scope._loading = {
 		state : true,
 		message: 'Loading..'
@@ -13,9 +24,11 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 	$window.onbeforeunload = function (e) {
 
-		//http://stackoverflow.com/questions/276660/how-can-i-override-the-onbeforeunload-dialog-and-replace-it-with-my-own
-		//TLDR; You can't override default popup with your own 
-		// $('#leave-page-warning').modal('show');
+		if(!$scope.addProductForm.$dirty){
+			//not dirty
+			return null;
+		}
+
 		var message = "Your changes will not be saved.",
 		e = e || window.event;
 		// For IE and Firefox
@@ -68,11 +81,13 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 		$scope.onPublishing = (Status == "WA");
 		if($scope.addProductForm.$invalid){
+			$scope.alert.validationFailed = true;
 			return;
 		}
 
 		$scope._loading.message = "Saving Changes..";
 		$scope._loading.state = true;
+		$scope.alert.reset();
 
 		cleanData();
 		console.log("Publishing with Status = ", Status);
@@ -82,16 +97,19 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			Product.publish(apiRequest, Status).then(function(res){
 				//TODO: remove this , 
 				if(res.ProductId){
-					$window.onbeforeunload = function(){};
-					console.log("OK");
-					$window.location.href = "/products";
+					//$window.onbeforeunload = function(){};
+					//console.log("OK");
+					//$window.location.href = "/products";
+					$scope._loading.state = false;
+					$scope.alert.success = true;
 				}else{
-					$scope._loading.message = "An error has occurred while saving..";
+					console.warn("Unable to save because API did not send back ProductId. Anticipates ProductId as success condition.")
+					$scope.alert.failure = true;
 				}
 
 			}, function(er){
-				alert("FYI - Unable to save due to error - Send this message to a wizard near you: \n\n" + JSON.stringify(er));
-					console.warn("Unable to save", er);
+				$scope.alert.failure = true;
+				console.warn("Unable to save due to serialization ?", er);
 			});
 
 		}catch(ex){
@@ -103,6 +121,19 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		
 
 	};
+
+	$scope.variationFactorIndices = {};
+	$scope.variationFactorIndices.iterator = [0];
+	$scope.variationFactorIndices.length = function(){
+		return $scope.variationFactorIndices.iterator.length;
+	}
+	$scope.variationFactorIndices.popSecond = function(){
+		$scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop(); 
+		$scope.attributeOptions[1].options = [];
+	}
+	$scope.variationFactorIndices.pushSecond = function(){
+		$scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1);
+	}
 
 	$scope.formData = {
 		Brand: {},
@@ -223,8 +254,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 							for(var aKey in $scope.attributeOptions[0].options){
 								var A = $scope.attributeOptions[0].options[aKey];
 
-								if(angular.isDefined($scope.attributeOptions[1].options) && 
-									$scope.attributeOptions[1].options.length == 0){
+								if(angular.isDefined($scope.attributeOptions[1]['options']) && $scope.attributeOptions[1].options.length == 0){
 									console.log("expanding A");
 									expand(A);
 								}
