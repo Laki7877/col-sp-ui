@@ -18,9 +18,11 @@
 				<div class="form-section-header"><h2>Upload File</h2></div>
 				<div class="form-section-content">
 					<? $this->insert('components/forms/upload-field-with-label', ["label" => "Choose File", "input_attrs" => "Browse from your computer"]) ?>
-					<? $this->insert('components/forms/button-with-label', ["buttonText" => "Import", "btnClass" => "btn-blue"]) ?>
+					<? $this->insert('components/forms/button-with-label', ["buttonText" => "Import", "btnClass" => "btn-blue", "modalData" => 'data-toggle="modal" data-target="#import-product"']) ?>
 				</div>
 			</div>
 		</div>
 	</div>	
 </div>
+
+<? $this->insert('components/modal-import-product', ['id' => 'import-product', 'newProductNum' => '1,500', 'updatedProductNum' => '300']) ?>
