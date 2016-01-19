@@ -47,7 +47,10 @@
 						</div>
 						<div class="width-field-normal" ng-if="item == null && (formData.LocalCategories[$index - 1] != null || $index == 0)">
 							<a class="like-text form-text" data-toggle="modal" data-target="#local-category" ng-click="$emit('openLocalCat', item, $index)">
-								<i class="fa fa-plus-circle color-theme"></i> Add Alternative Category
+								<i class="fa fa-plus-circle color-theme"></i> Add 
+								<span ng-if="$index == 0">Local</span>
+								<span ng-if="$index > 0">Alternative Local</span>
+								 Category
 							</a>
 						</div>
 					</div>
