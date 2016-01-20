@@ -81,6 +81,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 	$scope.publish = function(Status){
 
+		$scope._loading.state = true;
+		$scope._loading.message = "Saving changes";
 
 		$scope.onPublishing = (Status == "WA");
 		if($scope.addProductForm.$invalid){
@@ -103,7 +105,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					//$window.onbeforeunload = function(){};
 					//console.log("OK");
 					//$window.location.href = "/products";
-
 
 					$scope._loading.state = false;
 					$scope.alert.success = true;
