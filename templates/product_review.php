@@ -3,7 +3,7 @@
 <?php $this->start('page-body') ?>
 	<div>
     <? $this->insert('components/page-title-breadcrumb-border', ['text' => 'Product Review']) ?>
-    <? $this->insert('components/search-section', ['optional_class' => 'hide-component']) ?>
+    <? $this->insert('components/search-section', ['actions' =>['Approve', 'Unapprove'], 'optional_class' => 'hide-component']) ?>
     <div class="filter-section">
       <div class="filter-container">
         <span>Filters:</span>
@@ -19,28 +19,32 @@
             <th class="checkbox-column">
                 <input type="checkbox" aria-label="Checkbox for following text input"> 
             </th>
-            <th class="display-column"></th>
+            <th class="">
+              <a class="header-link" href="#"><span class="active-underline">Date</span></a>
+              <i class="fa fa-caret-down">
+            </th>
             <th>
-              <a class="header-link" href="#"><span>Product Name</span></a>
-              <i class="fa fa-caret-down color-grey">
+              <a class="header-link" href="#"><span class="">Rating</span></a>
+              <i class="fa fa-caret-down">
             </th>
-            <th class="price-column">
-              <a class="header-link" href="#"><span>Price</span></a>
-              <i class="fa fa-caret-up color-grey">
+            <th>
+              <a class="header-link" href="#"><span class="">PID</span></a>
+              <i class="fa fa-caret-down">
             </th>
-            <th><a class="header-link" href="#"><span>Info.</span></a></th>
-            <th><a class="header-link" href="#"><span>Image</span></a></th>
-            <th class="status-column">
+            <th>
+              <a class="header-link" href="#"><span>Comment</span></a>
+            </th>
+            <th>
+              <a class="header-link" href="#"><span>Customer</span></a>
+            </th>            
+            <th class="">
               <a class="header-link" href="#"><span>Status</span></a>
               <i class="fa fa-caret-down color-grey">
             </th>
-            <th class="live-column"><a class="header-link" href="#"><span>Live</span></a></th>
-            <th class="visible-column"><a class="header-link" href="#"><span>Visible</span></a></th>
+            <th class="text-center">
+              <a class="header-link" href="#"><span>Approve</span></a>
+            </th>            
             <th class="action-column"><a class="header-link" href="#"><span>Action</span></a></th> 
-            <th class="modified-column">
-              <a class="header-link" href="#"><span class="active-underline">Modified</span></a>
-              <i class="fa fa-caret-up">
-            </th>
           </tr>
         </thead>
         <tbody>
@@ -49,40 +53,25 @@
               <input type="checkbox" aria-label="Checkbox for following text input"> 
             </td>
             <td class="display-column">
-              <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
+              14/12/15
             </td>
+            <td>4.5/5.0</td>
+            <td>1234567</td>
             <td class="column-text-ellipsis"><a href="#">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</a></td>
-            <td class="price-column">9,000,000</td>
-            <td class="info-column">
-              <i class="fa fa-check color-green icon-size-18px"></i>
-            </td>
-            <td class="image-column">
-              <i class="fa fa-check color-green icon-size-18px"></i>
-            </td>
-            <td class="status-column">
-              <span class="color-red">
-                <i class="fa fa-ban"></i>
+            <td>Harry Belafonte</td>
+            <td class="">
+              <span class="color-grey">
                 Not Approved
               </span>
             </td>
-            <td class="live-column">
-              <i class="fa fa-circle color-green"></i>
-            </td>
-            <td class="visible-column">
-              <i class="fa fa-eye-slash color-grey eye-icon"></i>
-            </td>
+            <td class="text-center"><button class="btn btn-white">Approve</button></td>
             <td class="action-column">
               <span class="text-align-center popover-gear">
                 <i class="fa fa-gear color-dark-grey icon-size-20"></i>
                 <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                  <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
-                  <div><a href='#'>View Products</a></div>
-                  <div><a href='#'>Delete</a></div>
+                  <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View Detail</a></div>
                   "></i>  
               </span>
-            </td>
-            <td class="modified-column">
-              14/12/15
             </td>
           </tr>
           <tr>
@@ -90,43 +79,25 @@
               <input type="checkbox" aria-label="Checkbox for following text input"> 
             </td>
             <td class="display-column">
-              <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
+              10/12/15
             </td>
+            <td>4.0/5.0</td>
+            <td>1234567</td>
             <td><a href="#">Jeansian Men's Slim Fit Long</a></td>
-            <td class="price-column">
-              <div>8,999.99-9,999.99</div>
-              <div>(99 variants)</div>
-            </td>
-            <td class="info-column">
-              <i class="fa fa-check color-green icon-size-18px"></i>
-            </td>
-            <td class="image-column">
-              <i class="fa fa-check color-green icon-size-18px"></i> 
-            </td>
+            <td>Erutan Nando</td>
             <td class="status-column">
-              <span class="color-yellow">
-                <i class="fa fa-clock-o"></i>
-                  Wait for Approval
+              <span class="color-grey">
+                Not Approved
               </span>
             </td>
-            <td class="live-column">
-              <i class="fa fa-circle color-red"></i>
-            </td>
-            <td class="visible-column">
-              <i class="fa fa-eye color-dark-grey eye-icon"></i>
-            </td>
+            <td class="text-center"><button class="btn btn-white">Approve</button></td>
             <td class="action-column">
               <span class="text-align-center popover-gear">
                 <i class="fa fa-gear color-dark-grey icon-size-20"></i>
                 <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                  <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
-                  <div><a href='#'>View Products</a></div>
-                  <div><a href='#'>Delete</a></div>
+                  <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View Detail</a></div>
                   "></i>  
               </span>
-            </td>
-            <td class="modified-column">
-              14/12/15
             </td>
           </tr>
           <tr>
@@ -134,40 +105,25 @@
               <input type="checkbox" aria-label="Checkbox for following text input"> 
             </td>
             <td class="display-column">
-              <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
+              09/12/15
             </td>
+            <td>3.5/5.0</td>
+            <td>1234567</td>
             <td><a href="#">Power Bank MD Tech Model B02</a></td>
-            <td class="price-column">9,000,000</td>
-            <td class="info-column">
-              <i class="fa fa-check color-green icon-size-18px"></i>
-            </td>
-            <td class="image-column">
-              <i class="fa fa-check color-green icon-size-18px"></i>
-            </td>
-            <td class="status-column">
+            <td>Harry Belafonte</td>
+            <td class="">
               <span class="color-green">
-                <i class="fa fa-check-circle-o"></i>
                 Approved
               </span>
             </td>
-            <td class="live-column">
-              <i class="fa fa-circle color-green"></i>
-            </td>
-            <td class="visible-column">
-              <i class="fa fa-eye color-dark-grey eye-icon"></i>
-            </td>
+            <td class="text-center"><button class="btn btn-white">Approve</button></td>
             <td class="action-column">
               <span class="text-align-center popover-gear">
                 <i class="fa fa-gear color-dark-grey icon-size-20"></i>
                 <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                  <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
-                  <div><a href='#'>View Products</a></div>
-                  <div><a href='#'>Delete</a></div>
+                  <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View Detail</a></div>
                   "></i>  
               </span>
-            </td>
-            <td class="modified-column">
-              09/12/15
             </td>
           </tr>
           <tr>
@@ -175,40 +131,25 @@
               <input type="checkbox" aria-label="Checkbox for following text input"> 
             </td>
             <td class="display-column">
-              <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
+              09/12/15
             </td>
+            <td>4.5/5.0</td>
+            <td>1234567</td>
             <td><a href="#">Power Bank MD Tech Model B02</a></td>
-            <td class="price-column">1,000</td>
-            <td class="info-column">
-              <i class="fa fa-minus color-grey icon-size-18px"></i>
-            </td>
-            <td class="image-column">
-              <i class="fa fa-check color-green icon-size-18px"></i>
-            </td>
-            <td class="status-column">
+            <td class="column-text-ellipsis">Transylvan Ssaasqsasas</td>
+            <td class="">
               <span class="color-grey">
-                <i class="fa fa-circle-o"></i>
-                Draft
+                Not Approved
               </span>
             </td>
-            <td class="live-column">
-              <i class="fa fa-circle color-red"></i>
-            </td>
-            <td class="visible-column">
-              <i class="fa fa-eye color-dark-grey eye-icon"></i>
-            </td>
+            <td class="text-center"><button class="btn btn-white">Approve</button></td>
             <td class="action-column">
               <span class="text-align-center popover-gear">
                 <i class="fa fa-gear color-dark-grey icon-size-20"></i>
                 <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                  <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
-                  <div><a href='#'>View Products</a></div>
-                  <div><a href='#'>Delete</a></div>
+                  <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View Detail</a></div>
                   "></i>  
               </span>
-            </td>
-            <td class="modified-column">
-              09/12/15
             </td>
           </tr>
         </tbody>
