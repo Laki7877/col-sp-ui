@@ -50,8 +50,7 @@
 
                     <div ng-template="common/input/text"
                       ng-template-options="{
-                        'label': 'UPC',
-                        'labelClass': 'required'
+                        'label': 'UPC'
                       }">
                       <input
                         class="form-control width-field-large"

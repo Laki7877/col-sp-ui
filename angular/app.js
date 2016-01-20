@@ -3,7 +3,7 @@
 var angular = require('angular');
 var bulk = require('bulk-require')(__dirname, 
 	['controllers/*.js', 'services/*.js', 'helpers/*.js', 
-	'directives/*.js', 'filters/*.js', 'adapters/*.js']);
+	'directives/*.js', 'filters/*.js']);
 var config = require('./config');
 var template = require('./template');
 
@@ -23,7 +23,6 @@ var services = bulk.services;
 var helpers = bulk.helpers;
 var directives = bulk.directives;
 var filters = bulk.filters;
-var adapters = bulk.adapters;
 
 var app = angular.module('colspApp', ['duScroll','ngSanitize','ui.select', 'ngAnimate', 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
 
