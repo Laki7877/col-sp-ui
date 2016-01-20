@@ -69,7 +69,7 @@
               <span class="text-align-center popover-gear">
                 <i class="fa fa-gear color-dark-grey icon-size-20"></i>
                 <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                  <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View Detail</a></div>
+                  <div><a href='#' data-toggle='modal' data-target='#product-review-modal'>View Detail</a></div>
                   "></i>  
               </span>
             </td>
@@ -95,7 +95,7 @@
               <span class="text-align-center popover-gear">
                 <i class="fa fa-gear color-dark-grey icon-size-20"></i>
                 <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                  <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View Detail</a></div>
+                  <div><a href='#' data-toggle='modal' data-target='#product-review-modal'>View Detail</a></div>
                   "></i>  
               </span>
             </td>
@@ -121,7 +121,7 @@
               <span class="text-align-center popover-gear">
                 <i class="fa fa-gear color-dark-grey icon-size-20"></i>
                 <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                  <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View Detail</a></div>
+                  <div><a href='#' data-toggle='modal' data-target='#product-review-modal'>View Detail</a></div>
                   "></i>  
               </span>
             </td>
@@ -147,7 +147,7 @@
               <span class="text-align-center popover-gear">
                 <i class="fa fa-gear color-dark-grey icon-size-20"></i>
                 <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                  <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View Detail</a></div>
+                  <div><a href='#' data-toggle='modal' data-target='#product-review-modal'>View Detail</a></div>
                   "></i>  
               </span>
             </td>
@@ -178,5 +178,8 @@
       </span>
     </div>
   </div>
+
+  <? $this->insert('components/modal-product-review', ['id' => 'product-review-modal', 'header' => 'Review Detail', 'updatedProductNum' => '300']) ?>
+
 
 <?php $this->stop() ?>
