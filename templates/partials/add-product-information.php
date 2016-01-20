@@ -19,7 +19,6 @@
                         required />
                     </div>
 
-
                     <div ng-template="common/input/text"
                       ng-template-options="{
                         'label': 'Product Name (English)',
@@ -50,8 +49,7 @@
 
                     <div ng-template="common/input/text"
                       ng-template-options="{
-                        'label': 'UPC',
-                        'labelClass': 'required'
+                        'label': 'UPC'
                       }">
                       <input
                         class="form-control width-field-large"
@@ -77,7 +75,6 @@
 	                    </div>
                     </div>
 
-				
 					<? $this->insert('components/forms/dropdown-with-label',
 						["label" => "Brand Name",
 						"showBy" => "BrandNameEn",
