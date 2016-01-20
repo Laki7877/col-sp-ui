@@ -7,7 +7,8 @@ if (isset($size)) $inputSize = "width-field-$size";
 	<div class="<?= $inputSize ?>">
 		<div class="input-password">
 			<input type="password" class="form-control <?= $input_class; ?>" placeholder="<?=$placeholder?>" <?=$input_attrs?> />
-			<i class="fa fa-eye fa-lg color-theme input-password-eye"></i>
+			<i class="fa fa-eye fa-lg active input-password-eye"></i>
+			<!-- <i class="fa fa-eye fa-lg input-password-eye"></i> -->
 		</div>
 		<? if (!empty($hint)): ?>
 			<span class="help-block"><?= $hint ?></span>

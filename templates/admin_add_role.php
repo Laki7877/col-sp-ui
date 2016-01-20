@@ -5,7 +5,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 
 <?php $this->start('page-body') ?>
 	<div>
-		<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Admin Accounts/Create New Admin Role"]) ?>
+		<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Admin Roles/Create New Admin Role"]) ?>
 
 		<div>
 			<form class="ah-form sticky-mainform-action">

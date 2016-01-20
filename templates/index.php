@@ -3,7 +3,7 @@
 <?php $this->start('page-body') ?>
 	<div>
     <? $this->insert('components/page-title-with-buttons', ['text' => 'Products']) ?>
-    <? $this->insert('components/search-section') ?>
+    <? $this->insert('components/search-section', ['actions' => ['Export Products', 'Delete Products', 'Hide Products', 'Show Products', 'Publish Products']]) ?>
     <div class="filter-section">
       <div class="filter-container">
         <span>Filters:</span>

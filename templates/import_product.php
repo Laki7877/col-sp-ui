@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
 	<div class="local-category-page">
-		<? $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => 'Successfully Import Products.<a class="color-black text-underline">View Product List</a>']) ?>
+		<? $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => 'Successfully Import Products. <a class="color-black text-underline">View Product List</a>']) ?>
 		<? $this->insert('components/alert-text', ['close' => true, 'color' => 'red', 'text' => 'Fail to import products', 'header_class' => 'font-weight-bold',
 		 'text_multilines' => ['- Wrong template file or format'
 		,'- Required fields are missing'
