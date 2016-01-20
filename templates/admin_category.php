@@ -152,7 +152,7 @@
 						                <div class="form-section-header"><h2>Category Visibility</h2></div>
 						                <div class="form-section-content modal-custom">
 						                    <div ng-template="common/input/multiline-radio" ng-template-options="{ 'label' : 'Visibility' }">
-						                    	<label ng-repeat="choice in editingStatusOptions"><input type="radio" ng-model="editingCategory.Status" ng-value="choice.value"/>{{choice.text}}</label>
+						                    	<label ng-repeat="choice in editingStatusOptions"><input type="radio" ng-model="editingCategory.Visibility" ng-value="choice.value"/>{{choice.text}}</label>
 						                	</div>
 						                </div>
 						            </div>

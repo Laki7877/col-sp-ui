@@ -42,7 +42,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		return message;
 	};
 
-
 	var cleanData = function(){
 		if( !$scope.formData.MasterVariant.SalePrice ||
 			$scope.formData.MasterVariant.SalePrice == "" ||

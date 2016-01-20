@@ -38,6 +38,8 @@ module.exports = ['$http', '$q', 'storage', 'config', function ($http, $q, stora
                     return response.message;
                 if(response.error)
                     return response.error;
+                if(response.Message)
+                    return response.Message;
                 return response;
             }
         };

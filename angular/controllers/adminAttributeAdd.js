@@ -12,7 +12,23 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function
 	$scope.edit = 0;
 
 	//Block normal href flow
-	
+	$window.onbeforeunload = function (e) {
+
+		if(!$scope.form.$dirty){
+			//not dirty
+			return null;
+		}
+
+		var message = "Your changes will not be saved.",
+		e = e || window.event;
+		// For IE and Firefox
+		if (e) {
+		  e.returnValue = message;
+		}
+
+		// For Safari
+		return message;
+	};	
 
 	$scope.init = function(params) {
 		if(angular.isDefined(params)) {
