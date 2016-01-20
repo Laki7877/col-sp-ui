@@ -1185,9 +1185,9 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 },{}],12:[function(require,module,exports){
 var angular = require('angular');
 
-module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 
+module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop',
 'GlobalCategory', 'Category', 'VariantPair',
-	function($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, 
+	function($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop,
 		GlobalCategory, Category, VariantPair){
 	'use strict';
 
@@ -1230,15 +1230,15 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 	var cleanData = function(){
 		if( !$scope.formData.MasterVariant.SalePrice ||
-			$scope.formData.MasterVariant.SalePrice == "" ||  
+			$scope.formData.MasterVariant.SalePrice == "" ||
 			$scope.formData.MasterVariant.SalePrice == 0)
 		{
-			
+
 			$scope.formData.MasterVariant.SalePrice = $scope.formData.MasterVariant.OriginalPrice;
 		}
 
 	};
-	
+
 
 	$scope.preview = function(){
 		cleanData();
@@ -1261,7 +1261,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			searchText: q
 		}).then(function(dataSet){
 			$scope.availableBrands = dataSet.data;
-		});			
+		});
 	};
 
 	$scope.publish = function(Status){
@@ -1274,7 +1274,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			$scope.alert.validationFailed = true;
 			return;
 		}
-		
+
 		$scope.alert.reset();
 
 		cleanData();
@@ -1283,13 +1283,13 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			console.log(JSON.stringify(apiRequest));
 			var apiRequest = Product.serialize($scope.formData);
 			Product.publish(apiRequest, Status).then(function(res){
-				//TODO: remove this , 
+				//TODO: remove this ,
 				if(res.ProductId){
 					//$window.onbeforeunload = function(){};
 					//console.log("OK");
 					//$window.location.href = "/products";
 
-					
+
 					$scope._loading.state = false;
 					$scope.alert.success = true;
 					$scope.formData.ProductId = res.ProductId;
@@ -1312,7 +1312,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			return;
 		}
 
-		
+
 
 	};
 
@@ -1322,7 +1322,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		return $scope.variationFactorIndices.iterator.length;
 	}
 	$scope.variationFactorIndices.popSecond = function(){
-		$scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop(); 
+		$scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop();
 		$scope.attributeOptions[1].options = [];
 	}
 	$scope.variationFactorIndices.pushSecond = function(){
@@ -1363,17 +1363,17 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			});
 
 			$("body").tooltip({ selector: '[data-toggle=tooltip]' });
-			
+
 		},
 		angular: function() {
 
 			$scope.init = function(viewBag) {
 
-				//TODO: Refactor 
+				//TODO: Refactor
 
 				var shopId = 1;
 				var angularReady = function(){
-					//Angular dependent 
+					//Angular dependent
 					//TODO : probably not needed anymore
 				    tabPage.global.jquery();
 				    tabPage.information.jquery();
@@ -1460,7 +1460,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 								}
 							}
 						}
-						
+
 						$scope.formData.DefaultVariant = $scope.formData.Variants[0];
 					}, true);
 
@@ -1468,24 +1468,26 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 				var loadFormData = function(ivFormData, FullAttributeSet){
 
-					$scope._loading.message = "Processing..";
-					//Dependency Chain
-					//catId -> AttributeSet -> Inverse
-					if(!('VideoLinks' in ivFormData)){
-						ivFormData['VideoLinks'] = [];
-					}
-					var inverseResult = Product.deserialize(ivFormData, 
-						FullAttributeSet, 
+						$scope._loading.message = "Processing..";
+						//Dependency Chain
+						//catId -> AttributeSet -> Inverse
+						if(!('VideoLinks' in ivFormData)){
+							ivFormData['VideoLinks'] = [];
+						}
+						var inverseResult = Product.deserialize(ivFormData,
+						FullAttributeSet,
 						$scope._loading);
 
-					$scope.formData = inverseResult.formData;
-					console.log("After Inverse Transformation", $scope.formData, inverseResult.attributeOptions);
+						$scope.formData = inverseResult.formData;
+						console.log("After Inverse Transformation", $scope.formData, inverseResult.attributeOptions);
 
-					if($scope.formData.Variants.length  > 0){
-						$scope.enableProductVariations = "enable";
-					}
+						if($scope.formData.Variants.length  > 0){
+							$scope.enableProductVariations = "enable";
+						}
 
-					$scope.attributeOptions = inverseResult.attributeOptions || $scope.attributeOptions;
+						$scope.attributeOptions = inverseResult.attributeOptions || $scope.attributeOptions;
+
+						if($scope.attributeOptions[1].options.length > 0) $scope.variationFactorIndices.pushSecond();
 		    		ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages);
 		    		ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360);
 
@@ -1498,7 +1500,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					$scope._loading.message = "Downloading Attribute Sets..";
 
 					AttributeSet.getByCategory(catId).then(function(data){
-						
+
 						//remove complex structure we dont need
 						$scope.availableAttributeSets = data.map(function(aset){
 
@@ -1532,7 +1534,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 						if(ivFormData.ProductId){
 								loadFormData(ivFormData, $scope.formData.AttributeSet);
 						}
- 
+
 						$scope._loading.message = "Downloading Category Tree..";
 						//Load Global Cat
 						GlobalCategory.getAll().then(function(data) {
@@ -1555,7 +1557,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					$scope._loading.message = "Downloading Product..";
 					Product.getOne(productId).then(function(ivFormData){
 						var gcat = ivFormData.GlobalCategory;
-						
+
 						catReady(gcat, ivFormData, function(){
 							$scope.formData.ProductId = Number(productId);
 							angularReady();
@@ -1587,12 +1589,12 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			$scope.availableGlobalCategories = [];
 			$scope.availableLocalCategories = [];
 			$scope.availableBrands = [];
-			$scope.availableSearchTags = ["Eneloop", "Extra Battery"];
+			$scope.availableSearchTags = [];
 			$scope.availableRelatedProducts = [];
 			$scope.availableStockTypes = ['Stock', 'Pre-Order'];
 			$scope.availableVariantDisplayOption = [{
 				text: 'Show as group of variants',
-				value: 'GROUP' 
+				value: 'GROUP'
 			},{
 				text: 'Show as individual product',
 				value: 'INDIVIDUAL'
@@ -1715,7 +1717,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			});
 		}
 	}
-	
+
 	tabPage.variation = {
 		initSelect2: function(index){
 			var isListInput	= false;
