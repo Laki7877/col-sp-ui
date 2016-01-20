@@ -1136,12 +1136,10 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 	$scope.enableProductVariations = "disable";
 
 	$window.onbeforeunload = function (e) {
-
 		if(!$scope.addProductForm.$dirty){
 			//not dirty
 			return null;
 		}
-
 		var message = "Your changes will not be saved.",
 		e = e || window.event;
 		// For IE and Firefox
@@ -1198,6 +1196,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		$scope.onPublishing = (Status == "WA");
 		if($scope.addProductForm.$invalid){
 			//replace with .hash
+			$scope._loading.state = false;
 			$window.location.href = '/products/add#alert-validation'
 			$scope.alert.validationFailed = true;
 			return;
@@ -1211,17 +1210,14 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			console.log(JSON.stringify(apiRequest));
 			var apiRequest = Product.serialize($scope.formData);
 			Product.publish(apiRequest, Status).then(function(res){
-				//TODO: remove this ,
 				if(res.ProductId){
-					//$window.onbeforeunload = function(){};
-					//console.log("OK");
-					//$window.location.href = "/products";
-
 					$scope._loading.state = false;
 					$scope.alert.success = true;
 					$scope.formData.ProductId = res.ProductId;
 					//TODO: add in deserializer
 					$scope.formData.MasterVariant.Pid = res.MasterVariant.Pid;
+
+					$scope.addProductForm.$setPristine(true)
 
 				}else{
 					console.warn("Unable to save because API did not send back ProductId. Anticipates ProductId as success condition.")
