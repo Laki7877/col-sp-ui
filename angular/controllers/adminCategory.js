@@ -27,6 +27,9 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 		},
 		message: ''
 	};
+	$scope.test = function(i) {
+		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);
+	};
 	$scope.loading = false;
 
 	$scope.init = function() {
@@ -41,7 +44,6 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 	$scope.reload = function() {
 		$scope.loading = true;
 		GlobalCategory.getAll().then(function(data) {
-			console.log(data);
 			$scope.categories = Category.transformNestedSetToUITree(data);
 			$scope.loading = false;
 			console.log($scope.categories);

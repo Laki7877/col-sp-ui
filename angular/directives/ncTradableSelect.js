@@ -7,7 +7,8 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 		scope: {
 			selectable: '=ncSelectOptions',
 			model: '=ncModel',
-			options: '=ncOptions'
+			options: '=ncOptions',
+			test: '=ncTest'
 		},
 		template: function(element, attrs) {
 			if(attrs.ncTemplate) {
@@ -34,6 +35,7 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 			$scope.search = {};
 			$scope.activeRight = -1;
 			$scope.activeLeft = -1;
+			$scope.test = $scope.test || function() { return true; };
 			var findFn = function(element) {
 				if ($scope.options.map.value != null) {
 					if (element[$scope.options.map.value] === this[$scope.options.map.value]) {
@@ -50,15 +52,26 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 				if ($scope.model.length <= 1) {
 					return $scope.model.length - 1;
 				} else {
-					if($scope.activeRight < $scope.model.length - 1) {
-						return $scope.activeRight + 1;
-					} else {
-						return $scope.activeRight - 1;
+					for (var i = $scope.activeRight; i < $scope.model.length; i++) {
+						if(angular.isDefined($scope.model[$scope.activeRight]) && 
+							!$scope.test($scope.model[$scope.activeRight])) {
+							continue;
+						}
+						return i;
 					}
+					for (var i = $scope.activeRight; i >= 0; i--) {
+						if(angular.isDefined($scope.model[$scope.activeRight]) &&
+							!$scope.test($scope.model[$scope.activeRight])) {
+							continue;
+						}
+						return i;
+					}
+
+					return -1;
 				}
 			};
 			var findClosestIndexLeft = function() {
-				if ($scope.selectable.length - $scope.model.length <= 1) {
+				if ($scope.selectable.length - $scope.model.length <= 0) {
 					return -1;
 				}
 				else {
@@ -88,7 +101,9 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 					$scope.activeLeft = next;
 
 				} else {
-					if ($scope.activeRight < 0) {
+					if ($scope.activeRight < 0 || 
+						(angular.isDefined($scope.model[$scope.activeRight]) &&
+						!$scope.test($scope.model[$scope.activeRight]))) {
 						return;
 					}
 					$scope.model.splice($scope.activeRight, 1);
@@ -96,11 +111,23 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 					$scope.activeRight = next;
 				}
 			};
+			$scope.active = function(direction) {
+				if(direction) {
+					if($scope.activeRight >= 0 && angular.isDefined($scope.model[$scope.activeRight]) && $scope.test($scope.model[$scope.activeRight])) 
+						return 'active';
+				} else {
+					if($scope.activeLeft >= 0 && !$scope.contain($scope.selectable[$scope.activeLeft])) 
+						return 'active';
+				}
+			}
 			$scope.select = function($index, direction) {
 				if(direction) {
 					$scope.activeLeft = $index;
 					$scope.activeRight = -1;
 				} else {
+					if(angular.isDefined($scope.model[$index]) &&
+						!$scope.test($scope.model[$index]))
+						return;
 					$scope.activeRight = $index;
 					$scope.activeLeft = -1;
 				}

@@ -86,7 +86,6 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 		$scope.attributeSetList = [];
 		$scope.notReady = true;
 		AttributeSet.getAll($scope.tableParams).then(function(x){
-			console.log(x.data);
 			$scope.attributeSetTotal = x.total;
 			$scope.attributeSetList = x.data;
 			$scope.notReady = false;

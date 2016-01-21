@@ -139,6 +139,10 @@ html, body {
           float: left;
         }
       }
+      li.disabled {
+        background: #ec0000 !important;
+        color: #FFFFFF;
+      }
       li.active{
         background: #4899DD;
         color: #FFFFFF;

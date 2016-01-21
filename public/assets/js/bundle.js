@@ -502,7 +502,6 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 		$scope.attributeSetList = [];
 		$scope.notReady = true;
 		AttributeSet.getAll($scope.tableParams).then(function(x){
-			console.log(x.data);
 			$scope.attributeSetTotal = x.total;
 			$scope.attributeSetList = x.data;
 			$scope.notReady = false;
@@ -1008,6 +1007,9 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 		},
 		message: ''
 	};
+	$scope.test = function(i) {
+		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);
+	};
 	$scope.loading = false;
 
 	$scope.init = function() {
@@ -1022,7 +1024,6 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 	$scope.reload = function() {
 		$scope.loading = true;
 		GlobalCategory.getAll().then(function(data) {
-			console.log(data);
 			$scope.categories = Category.transformNestedSetToUITree(data);
 			$scope.loading = false;
 			console.log($scope.categories);
@@ -1805,6 +1806,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 	//Get global cat from api
 	GlobalCategory.getAll().then(function(data) {
 		$scope.loading = false;
+		data = GlobalCategory.getAllForSeller(data);
 		$scope.columns = Category.createColumns(null, Category.transformNestedSetToUITree(data));
 		$scope.select = Category.createSelectFunc($scope.columns, function(item) {
 			$scope.selected = item;
@@ -2164,7 +2166,8 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 		scope: {
 			selectable: '=ncSelectOptions',
 			model: '=ncModel',
-			options: '=ncOptions'
+			options: '=ncOptions',
+			test: '=ncTest'
 		},
 		template: function(element, attrs) {
 			if(attrs.ncTemplate) {
@@ -2191,6 +2194,7 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 			$scope.search = {};
 			$scope.activeRight = -1;
 			$scope.activeLeft = -1;
+			$scope.test = $scope.test || function() { return true; };
 			var findFn = function(element) {
 				if ($scope.options.map.value != null) {
 					if (element[$scope.options.map.value] === this[$scope.options.map.value]) {
@@ -2207,15 +2211,26 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 				if ($scope.model.length <= 1) {
 					return $scope.model.length - 1;
 				} else {
-					if($scope.activeRight < $scope.model.length - 1) {
-						return $scope.activeRight + 1;
-					} else {
-						return $scope.activeRight - 1;
+					for (var i = $scope.activeRight; i < $scope.model.length; i++) {
+						if(angular.isDefined($scope.model[$scope.activeRight]) && 
+							!$scope.test($scope.model[$scope.activeRight])) {
+							continue;
+						}
+						return i;
 					}
+					for (var i = $scope.activeRight; i >= 0; i--) {
+						if(angular.isDefined($scope.model[$scope.activeRight]) &&
+							!$scope.test($scope.model[$scope.activeRight])) {
+							continue;
+						}
+						return i;
+					}
+
+					return -1;
 				}
 			};
 			var findClosestIndexLeft = function() {
-				if ($scope.selectable.length - $scope.model.length <= 1) {
+				if ($scope.selectable.length - $scope.model.length <= 0) {
 					return -1;
 				}
 				else {
@@ -2245,7 +2260,9 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 					$scope.activeLeft = next;
 
 				} else {
-					if ($scope.activeRight < 0) {
+					if ($scope.activeRight < 0 || 
+						(angular.isDefined($scope.model[$scope.activeRight]) &&
+						!$scope.test($scope.model[$scope.activeRight]))) {
 						return;
 					}
 					$scope.model.splice($scope.activeRight, 1);
@@ -2253,11 +2270,23 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 					$scope.activeRight = next;
 				}
 			};
+			$scope.active = function(direction) {
+				if(direction) {
+					if($scope.activeRight >= 0 && angular.isDefined($scope.model[$scope.activeRight]) && $scope.test($scope.model[$scope.activeRight])) 
+						return 'active';
+				} else {
+					if($scope.activeLeft >= 0 && !$scope.contain($scope.selectable[$scope.activeLeft])) 
+						return 'active';
+				}
+			}
 			$scope.select = function($index, direction) {
 				if(direction) {
 					$scope.activeLeft = $index;
 					$scope.activeRight = -1;
 				} else {
+					if(angular.isDefined($scope.model[$index]) &&
+						!$scope.test($scope.model[$index]))
+						return;
 					$scope.activeRight = $index;
 					$scope.activeLeft = -1;
 				}
@@ -3613,8 +3642,18 @@ module.exports = ['common', '$q' , function(common, $q) {
 			url: '/GlobalCategories',
 			data: data
 		});
-	}
+	};
 
+	service.getAllForSeller = function(data) {
+		//TODO: change this to user-validated visibility for seller...
+		var array = [];
+		angular.forEach(data, function(item) {
+			if (item.Visibility) {
+				array.push(item);
+			}
+		});
+		return array;
+	};
 	return service;
 }];
 },{}],42:[function(require,module,exports){
@@ -4233,7 +4272,7 @@ module.exports = ['common', function(common) {
 },{}],46:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Jan 21 2016 14:55:37 GMT+0700 (Russia TZ 6 Standard Time)
+ * Thu Jan 21 2016 16:09:12 GMT+0700 (Russia TZ 6 Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -4283,12 +4322,12 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/input/tradable-select',
-    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><input ng-model=search[options.map.text] class=\"form-control input-search-icon search-box\" placeholder=\"Search Attribute Set\" aria-describedby=basic-addon2></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable | filter:search:strict track by $index\" ng-class=\"{ 'active' : activeLeft == selectable.indexOf(item) }\" ng-click=\"select(selectable.indexOf(item), true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=\"{'active' : activeLeft >= 0 && !contain(selectable[activeLeft])}\" ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=\"{'active' : activeRight >= 0}\" ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>Attribute Set in This Category</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == model.indexOf(item) }\" ng-click=\"select(model.indexOf(item), false)\">{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div></div>"
+    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><input ng-model=search[options.map.text] class=\"form-control input-search-icon search-box\" placeholder=\"Search Attribute Set\" aria-describedby=basic-addon2></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable | filter:search:strict track by $index\" ng-class=\"{ 'active' : activeLeft == selectable.indexOf(item) }\" ng-click=\"select(selectable.indexOf(item), true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=active(false) ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=active(true) ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>Attribute Set in This Category</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == model.indexOf(item), 'disabled' : item.ProductCount > 0 }\" ng-click=\"select(model.indexOf(item), false)\">{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div></div>"
   );
 
 
   $templateCache.put('common/input/tradable-select2',
-    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><input ng-model=search[options.map.text] class=\"form-control input-search-icon search-box\" placeholder=\"Search Attribute Set\" aria-describedby=basic-addon2></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable | filter:search:strict track by $index\" ng-class=\"{ 'active' : activeLeft == selectable.indexOf(item) }\" ng-click=\"select(selectable.indexOf(item), true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=\"{'active' : activeLeft >= 0 && !contain(selectable[activeLeft])}\" ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=\"{'active' : activeRight >= 0}\" ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>Attribute</span> <span class=column-2>Required?</span> <span class=column-3>Filterable?</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == model.indexOf(item) }\" ng-click=\"select(model.indexOf(item), false)\"><div class=row><div class=column-1>{{ options.map.text == null ? item : item[options.map.text] }}</div><div class=column-2><input type=checkbox ng-model=item.Required aria-label=\"Checkbox for following text input\"></div><div class=column-3><input type=checkbox ng-model=item.Filterable aria-label=\"Checkbox for following text input\"></div></div></li></ul></div></div></div>"
+    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><input ng-model=search[options.map.text] class=\"form-control input-search-icon search-box\" placeholder=\"Search Attribute Set\" aria-describedby=basic-addon2></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable | filter:search:strict track by $index\" ng-class=\"{ 'active' : activeLeft == selectable.indexOf(item) }\" ng-click=\"select(selectable.indexOf(item), true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=active(false) ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=active(true) ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>Attribute</span> <span class=column-2>Required?</span> <span class=column-3>Filterable?</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == model.indexOf(item), 'disabled' : item.ProductCount > 0 }\" ng-click=\"select(model.indexOf(item), false)\"><div class=row><div class=column-1>{{ options.map.text == null ? item : item[options.map.text] }}</div><div class=column-2><input type=checkbox ng-model=item.Required aria-label=\"Checkbox for following text input\"></div><div class=column-3><input type=checkbox ng-model=item.Filterable aria-label=\"Checkbox for following text input\"></div></div></li></ul></div></div></div>"
   );
 
 

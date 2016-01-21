@@ -14367,26 +14367,31 @@ html, body {
   float: left;
 }
 /* line 142, ../../../assets/screen.scss */
+.tradable-list .clickable-list .content-column li.disabled {
+  background: #ec0000 !important;
+  color: #FFFFFF;
+}
+/* line 146, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li.active {
   background: #4899DD;
   color: #FFFFFF;
 }
 
-/* line 151, ../../../assets/screen.scss */
+/* line 155, ../../../assets/screen.scss */
 .table .action-column {
   width: 60px;
   padding-top: 14px;
   padding-bottom: 14px;
 }
 
-/* line 157, ../../../assets/screen.scss */
+/* line 161, ../../../assets/screen.scss */
 input.form-control.has-error {
   border-color: #ec0000;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-/* line 163, ../../../assets/screen.scss */
+/* line 167, ../../../assets/screen.scss */
 .empty-section {
   border: 1px solid;
   border-color: #BCC7D5;
@@ -14394,7 +14399,7 @@ input.form-control.has-error {
   height: 80px;
   line-height: 80px;
 }
-/* line 169, ../../../assets/screen.scss */
+/* line 173, ../../../assets/screen.scss */
 .empty-section .loading-img {
   width: 40px;
   height: 40px;
@@ -14402,12 +14407,12 @@ input.form-control.has-error {
   margin-right: 15px;
 }
 
-/* line 176, ../../../assets/screen.scss */
+/* line 180, ../../../assets/screen.scss */
 .disabled-chevron {
   cursor: not-allowed;
 }
 
-/* line 180, ../../../assets/screen.scss */
+/* line 184, ../../../assets/screen.scss */
 .opacity-50 {
   opacity: 0.5;
 }
