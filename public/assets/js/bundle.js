@@ -425,9 +425,6 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 		{ name: "Visible", value: 'Visible'},
 		{ name: "Not Visible", value: 'NotVisible'}
 	];
-	$scope.test = function(i) {
-		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);
-	};
 	$scope.alert = new Alert();
 	$scope.bulk = { 
 		fn: function() {
@@ -619,6 +616,9 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 	$scope.formDataSerialized = {};
 	$scope.edit = 0;
 	$scope.saving = false;
+	$scope.test = function(i) {
+		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);
+	};
 
 	$window.onbeforeunload = function (e) {
 
