@@ -57,9 +57,9 @@
 					<div ng-template="common/input/text2"
                       ng-template-options="{
                         'label': 'SKU',
-                        'labelClass': 'required',
                         'error' : {
                               'messages': {
+                                'required': 'This is a required field',
                               	'pattern': 'Only letters and numbers allowed'
                               },
                               'show': $root.isInvalid(addProductForm.MasterVariant_Sku),
@@ -132,27 +132,47 @@
 				<div class="form-section-content">
 				
 
-					<div ng-template="common/input/text"
+					<div ng-template="common/input/text2"
                       ng-template-options="{
                         'label': 'Original Price',
-                        'labelClass': 'required'
+                        'labelClass': 'required',
+                        'error' : {
+                              'messages': {
+                              	'required': 'This is a required field',
+                              	'pattern': 'Only numbers and decimals allowed'
+                              },
+                              'show': $root.isInvalid(addProductForm.MasterVariant_OriginalPrice),
+                              'conditions' : addProductForm.MasterVariant_OriginalPrice.$error
+                         }
                       }">
                       <input
                         class="form-control width-field-normal"
                         name="MasterVariant_OriginalPrice"
+                        ng-pattern="/^\d+(\.\d{1,2})?$/"
+                        maxlength="20"
                         ng-disabled="enableProductVariations == 'enable'"
                         ng-model="formData.MasterVariant.OriginalPrice"
                         ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_OriginalPrice) }"
                         ng-required="enableProductVariations == 'disable'" />
                     </div>
 
-                    <div ng-template="common/input/text"
+                    <div ng-template="common/input/text2"
                       ng-template-options="{
-                        'label': 'Sale Price'
+                        'label': 'Sale Price',
+                        'error' : {
+                              'messages': {
+                              	'required': 'This is a required field',
+                              	'pattern': 'Only numbers and decimals allowed'
+                              },
+                              'show': $root.isInvalid(addProductForm.MasterVariant_SalePrice),
+                              'conditions' : addProductForm.MasterVariant_SalePrice.$error
+                         }
                       }">
                       <input
                       	ng-disabled="enableProductVariations == 'enable'"
+                      	ng-pattern="/^\d+(\.\d{1,2})?$/"
                         class="form-control width-field-normal"
+                        maxlength="20"
                         name="MasterVariant_SalePrice"
                         ng-model="formData.MasterVariant.SalePrice"
                         ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_SalePrice) }"
@@ -288,7 +308,10 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Shipping Detail</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/multiple-radio-multiline', ["label" => "Shipping Method", "ng_model" => "formData.ShippingMethod", "choices" => ["Dropship by 3PL", "Central Fulfillment"]]) ?>
+					<? $this->insert('components/forms/multiple-radio-multiline', 
+					["label" => "Shipping Method", "ng_model" => "formData.ShippingMethod", "choices" => ["Dropship by 3PL", "Central Fulfillment"]]) ?>
+					
+
 					<? $this->insert('components/forms/input-text-with-label-unit',
 					["label" => "Preparation Time",
 					"required" => true,
@@ -296,12 +319,89 @@
 					"label_class" => "required",
 					"unit" => "Day",
 					"form_group_class" => "margin-top-30"]) ?>
-					<? $this->insert('components/forms/multiple-input-with-label', ["label" => "Package Dimension", "label_class" => "required",
-					"ng_model_width"=>"formData.MasterVariant.Width",
-					"ng_model_height"=>"formData.MasterVariant.Height",
-					"ng_model_unit" => "formData.MasterVariant.DimensionUnit",
-					"ng_model_length"=>"formData.MasterVariant.Length",
-					"form_group_class" => "margin-top-30"]) ?>
+					
+
+					<div class="form-group">
+						<div class="width-label"><label class="control-label required">Package Dimension</label></div>
+						<div class="width-field-xxl">
+							<div class="multiple-input">
+								<div class="input-column">
+
+									<div ng-template="common/input/text3"
+				                      ng-template-options="{
+				                        'label': 'Length',
+				                        'error' : {
+				                              'messages': {
+				                              	'required': 'This is a required field',
+				                              	'pattern': 'Only numbers and decimals allowed'
+				                              },
+				                              'show': $root.isInvalid(addProductForm.MasterVariant_Length),
+				                              'conditions' : addProductForm.MasterVariant_Length.$error
+				                         }
+				                      }">
+				                      <input
+				                        class="form-control"
+				                        name="MasterVariant_Length"
+				                        ng-pattern="/^\d+(\.\d{1,2})?$/"
+				                        ng-model="formData.MasterVariant.Length"
+				                        ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Length) }"  />
+				                    </div>
+
+								</div>
+								<div class="input-column">
+									<div ng-template="common/input/text3"
+				                      ng-template-options="{
+				                        'label': 'Height',
+				                        'error' : {
+				                              'messages': {
+				                              	'required': 'This is a required field',
+				                              	'pattern': 'Only numbers and decimals allowed'
+				                              },
+				                              'show': $root.isInvalid(addProductForm.MasterVariant_Height),
+				                              'conditions' : addProductForm.MasterVariant_Length.$error
+				                         }
+				                      }">
+				                      <input
+				                        class="form-control"
+				                        name="MasterVariant_Height"
+				                        ng-pattern="/^\d+(\.\d{1,2})?$/"
+				                        ng-model="formData.MasterVariant.Height"
+				                        ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Height) }"  />
+				                    </div>
+								</div>
+								<div class="input-column">
+									<div ng-template="common/input/text3"
+				                      ng-template-options="{
+				                        'label': 'Width',
+				                        'error' : {
+				                              'messages': {
+				                              	'required': 'This is a required field',
+				                              	'pattern': 'Only numbers and decimals allowed'
+				                              },
+				                              'show': $root.isInvalid(addProductForm.MasterVariant_Width),
+				                              'conditions' : addProductForm.MasterVariant_Width.$error
+				                         }
+				                      }">
+				                      <input
+				                        class="form-control"
+				                        name="MasterVariant_Width"
+				                        ng-pattern="/^\d+(\.\d{1,2})?$/"
+				                        ng-model="formData.MasterVariant.Width"
+				                        ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Width) }"  />
+				                    </div>
+								</div>
+								<div class="input-column no-label select input-xl">
+									<select ng-model="formData.MasterVariant.DimensionUnit" class="form-control">
+										<option value="MM"> Millimeter </option>
+										<option value="CM"> Centimeter </option>
+										<option value="M"> Meter </option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
 					<? $this->insert('components/forms/multiple-input', ["label" => "Weight", 
 						"ng_model_unit" => "formData.MasterVariant.WeightUnit", 
 						"ng_model" => "formData.MasterVariant.Weight", 
