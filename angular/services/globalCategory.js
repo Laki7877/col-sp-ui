@@ -38,7 +38,7 @@ module.exports = ['common', '$q' , function(common, $q) {
 		});
 	};
 	service.getAllForSeller = function(treeArray) {
-		console.log(treeArray);
+		return treeArray;
 		angular.forEach(treeArray, function(item) {
 			if (item.Visibility) {
 				treeArray.splice(treeArray.indexOf(item),1);
