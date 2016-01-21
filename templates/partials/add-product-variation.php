@@ -80,7 +80,7 @@
 						<thead>
 							<tr>
 								<th class="column-variant">Variant</th>
-								<th class="column-sku"><span class="required">SKU</span></th>
+								<th class="column-sku">SKU</th>
 								<th class="column-price">Price</th>
 								<th class="column-sale-price">Sale Price</th>
 								<th class="column-inventory">Inventory</th>
@@ -91,11 +91,17 @@
 						<tbody>
 								<tr ng-repeat="pair in formData.Variants track by $index">
 									<td class="column-text-ellipsis" ng-class="{'opacity-50': !pair.Visibility}">
-										{{ pair.text}}
+										{{ pair.text }}
 									</td>
-									<td><input ng-class="{'opacity-50': !pair.Visibility}"
+									<td>
+
+									<input 
 									 type="text" ng-disabled='!pair.Visibility' class="form-control"
-										ng-model="pair.Sku" /></td>
+									 	name="pair_Sku{{ $index }}"
+									 	ng-class="{ 'opacity-50': !pair.Visibility }"
+										ng-model="pair.Sku"/>
+
+									</td>
 									<td><input type="text"
 										ng-class="{'opacity-50': !pair.Visibility}"
 										ng-model="pair.OriginalPrice" ng-disabled='!pair.Visibility'

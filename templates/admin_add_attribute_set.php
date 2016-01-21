@@ -3,8 +3,11 @@
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminAttributeSetAddCtrl" ng-init="init(<?=$params?>)">
     <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute Set/" . $title, 'urls' => ['/admin/attributesets'], 'class' =>'{disabled : form.$invalid}']) ?>
-    <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()">{{alert.message}}</div>
-    <form class="ah-form sticky-mainform-action margin-top-30" name="form">
+    <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()"><span ng-bind-html="alert.message"></span></div>
+    <div ng-show="saving">
+      <img src="/assets/img/loader.gif" width="40"> <small>Saving Attribute Set..</small>
+    </div>
+    <form ng-show="!saving" class="ah-form sticky-mainform-action margin-top-30" name="form" novalidate>
       <div class="row">
         <div class="col-xs-12">
           <div class="form-section">
@@ -34,7 +37,10 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Attribute Mapping</h2></div>
             <div class="form-section-content">
-                <div nc-tradable-select nc-template="common/input/tradable-select2" nc-model="formData.Attributes" nc-select-options="attributeOptions" nc-options="{ 'map' : { 'text': 'AttributeNameEn', 'value' : 'AttributeId' } }"></div> 
+                <div nc-tradable-select nc-test="test" nc-template="common/input/tradable-select2" nc-model="formData.Attributes" nc-select-options="attributeOptions" nc-options="{ 'map' : { 'text': 'AttributeNameEn', 'value' : 'AttributeId' } }"></div> 
+                <div class="row col-xs-12">
+                  <p style="margin-left: 30px; margin-top:15px"><span class="color-red">*</span> If attribute set is mapped to a product, attribute mapping cannot be changed</p>
+                </div>
             </div>
           </div>
 

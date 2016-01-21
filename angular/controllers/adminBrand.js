@@ -34,6 +34,8 @@ module.exports = ['$scope','util', 'config', 'Brand', 'Alert', '$window', functi
 					Brand.deleteBulk(arr).then(function() {
 						$scope.alert.success('You have successfully remove entries.');
 						$scope.reloadData();
+					}, function(result) {
+						$scope.alert.error(result);
 					});
 				}
 			}

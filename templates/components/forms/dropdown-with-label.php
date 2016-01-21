@@ -7,25 +7,6 @@ if (isset($size)) $inputSize = "width-field-$size";
 	<div class="<?= $inputSize ?>">
 		<div class="ah-select2-dropdown">
 			
-			<!--<select 
-			<?php if(isset($ng_options)): ?>			
-			ng-options="<?=$ng_options?>"
-			<?php endif; ?>
-	
-
-			<?php if(isset($ng_model)): ?>
-			ng-model="<?=$ng_model?>"
-			<?php endif; ?>
-
-			<?php if(isset($multiple)): ?>
-			multiple="multiple"
-			<?php endif; ?>
-			 class="form-control select2-init-simple <?= $input_class; ?>" <?= $input_attrs ?> >
-			<?php foreach($options as $opt): ?>
-			<option><?php echo $opt; ?></option>
-			<?php endforeach; ?>
-			</select>-->
-
 			<?php if(isset($choices)): ?>
 			<ui-select ng-model="<?=$ng_model?>"
 				<?php if(isset($multiple)): ?>
@@ -56,7 +37,7 @@ if (isset($size)) $inputSize = "width-field-$size";
 			    </ui-select-match>
 			    <ui-select-choices 
 					<?php if(isset($refresh)): ?>
-			    		refresh="<?=$refresh?>($select.search)" refresh-delay="2"
+			    		refresh="<?=$refresh?>($select.search)" refresh-delay="1"
 					<?php endif; ?>
 					repeat="item in (<?= $choices ?>) | filter : $select.search 
 					<?php if(isset($trackBy)): ?>

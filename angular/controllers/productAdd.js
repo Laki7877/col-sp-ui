@@ -40,7 +40,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		return message;
 	};
 
-
 	var cleanData = function(){
 		if( !$scope.formData.MasterVariant.SalePrice ||
 			$scope.formData.MasterVariant.SalePrice == "" ||
@@ -49,6 +48,29 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 			$scope.formData.MasterVariant.SalePrice = $scope.formData.MasterVariant.OriginalPrice;
 		}
+
+		/*if($scope.formData.ExpireDate){
+			var cpdate = angular.copy($scope.formData.ExpireDate);
+			if(moment.isDate(cpdate)){
+				$scope.formData.ExpireDate = moment(cpdate).format('LL');
+				$scope.formData.ExpireTime = moment(cpdate).format('HH:mm:ss');
+			}else{
+				$scope.formData.ExpireDate = $scope.formData.ExpireDate;
+				$scope.formData.ExpireTime = $scope.formData.ExpireTime;
+			}
+		}
+
+		if($scope.formData.EffectiveDate){
+			var cpdate = angular.copy($scope.formData.EffectiveDate);
+			if(moment.isDate(cpdate)){
+				$scope.formData.EffectiveDate = moment(cpdate).format('LL');
+				$scope.formData.EffectiveTime = moment(cpdate).format('HH:mm:ss');
+			}else{
+				$scope.formData.EffectiveDate = $scope.formData.EffectiveDate;
+				$scope.formData.EffectiveTime = $scope.formData.EffectiveTime;
+			}
+		}*/
+
 
 	};
 
@@ -69,8 +91,10 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 	};
 
 	$scope.refreshBrands = function(q){
+		console.log("Refreshing brand with", q);
+		//if(q == "" || !q) return;
 		Brand.getAll({
-			pageSize: 5,
+			pageSize: 6,
 			searchText: q
 		}).then(function(dataSet){
 			$scope.availableBrands = dataSet.data;
@@ -86,7 +110,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		if($scope.addProductForm.$invalid){
 			//replace with .hash
 			$scope._loading.state = false;
-			$window.location.href = '/products/add#alert-validation'
+			$window.location.href = $window.location.href + '#alert-validation'
 			$scope.alert.validationFailed = true;
 			return;
 		}
@@ -142,8 +166,15 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 	}
 
 	$scope.formData = {
-		Brand: {},
-		MasterVariant: {},
+		Brand: {
+			id: null,
+			BrandNameEn: "Please select brand.."
+		},
+		MasterVariant: {
+			DimensionUnit: "MM",
+			WeightUnit: "G",
+			StockType: "Stock"
+		},
 		RelatedProducts: [],
 		MasterImages: [],
 		MasterImages360: [],
@@ -151,7 +182,9 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		Variants: [],
 		GlobalCategories: [null, null, null],
 		LocalCategories: [null, null, null],
-		SEO: {},
+		SEO: {
+			ProductBoostingWeight: 10000
+		},
 		ControlFlags: [],
 		Keywords: []
 	};
@@ -351,7 +384,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 						//Load Global Cat
 						GlobalCategory.getAll().then(function(data) {
 
-							$scope.availableGlobalCategories = Category.transformNestedSetToUITree(data);
+							$scope.availableGlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
 							$scope.formData.GlobalCategories[0] = Category.findByCatId(catId, $scope.availableGlobalCategories);
 							$scope.globalCategoryBreadcrumb = Category.createCatStringById(catId, $scope.availableGlobalCategories);
 							callback();

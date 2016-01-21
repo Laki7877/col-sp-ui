@@ -5,7 +5,7 @@ module.exports = ['$q', 'common', function($q, common){
 	//TODO: not clean
 	service.getAll = function(params){
 		var _params = {
-			_limit: 5,
+			_limit: params.pageSize || 5,
 			_order: params.orderBy || 'BrandId',
 			_limit: params.pageSize || 10,
 			_offset: params.page * params.pageSize || 0,

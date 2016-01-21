@@ -19,6 +19,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 			if(bulk) {
 				bulk.fn();
 			}
+			$scope.checkAll = false;
 		} 
 	};
 	$scope.bulkOptions = [
@@ -41,6 +42,9 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 					Product.deleteBulk(arr).then(function() {
 						$scope.alert.success('Successfully deleted');
 						$scope.reloadData();
+					}, function(result) {
+						$scope.alert.error(result);
+						$scope.reloadData();
 					});
 				}
 			}
@@ -58,6 +62,10 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 
 				if(arr.length > 0) {
 					Product.visible(arr).then(function() {
+						$scope.alert.success('Successfully changed');
+						$scope.reloadData();
+					}, function() {
+						$scope.alert.error(result);
 						$scope.reloadData();
 					});
 				}
@@ -76,6 +84,10 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 
 				if(arr.length > 0) {
 					Product.visible(arr).then(function() {
+						$scope.alert.success('Successfully changed');
+						$scope.reloadData();
+					}, function() {
+						$scope.alert.error(result);
 						$scope.reloadData();
 					});
 				}
@@ -110,6 +122,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 			Product.visible([row]).then(function() {
 			}, function(err) {
 				$scope.alert.error(err);
+				$scope.reloadData();
 			});
 		}
 	};
@@ -202,7 +215,6 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 
 	//Select All checkbox
 	$scope.$watch('checkAll', function(newVal, oldVal){
-		console.log($scope.productList, "WWWWW");
 		$scope.productList.forEach(function(d){
 			d.checked = $scope.checkAll;
 		});

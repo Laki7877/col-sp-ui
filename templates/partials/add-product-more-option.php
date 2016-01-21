@@ -41,10 +41,39 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>More Details</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Effective Date", "ng_model" => "formData.EffectiveDate", "input_class" => "input-icon-calendar", "tooltip" => "Date when your product will go online"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Effective Time", "ng_model" => "formData.EffectiveTime", "hint" => "Example: 19:15:00"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Expire Date", "ng_model" => "formData.ExpireDate", "input_class" => "input-icon-calendar", "tooltip" => "Date when your product will go offline"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Expire Time", "ng_model" => "formData.ExpireTime", "hint" => "Example: 19:15:00"]) ?>
+
+					<div class="form-group">
+						<div class="width-label"><label class="control-label">Effective On</label></div>
+						<div class="width-field-normal">
+							  <div class="dropdown">
+								  <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
+								   <input type="text" class="input-icon-calendar form-control" data-ng-model="formData.EffectiveDate">
+								  </a>
+								  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+								    <datetimepicker data-ng-model="formData.EffectiveDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'hour' }"/>
+								  </ul>
+							  </div>
+							  <span class="help-block"></span>
+						</div>
+						<div class="width-field-tooltip no-padding-left"><i class="fa fa-2x fa-question-circle color-grey" data-toggle="btooltip" data-placement="right" title="Date when your product will go online"></i></div>
+					</div>
+
+					<div class="form-group">
+						<div class="width-label"><label class="control-label">Expire On</label></div>
+						<div class="width-field-normal">
+							  <div class="dropdown">
+								  <a class="dropdown-toggle" id="dropdown3" role="button" data-toggle="dropdown" data-target="#" href="#">
+								   <input type="text" class="input-icon-calendar form-control" data-ng-model="formData.ExpireDate">
+								  </a>
+								  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+								    <datetimepicker data-ng-model="formData.ExpireDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'hour' }"/>
+								  </ul>
+							  </div>
+							  <span class="help-block"></span>
+						</div>
+						<div class="width-field-tooltip no-padding-left"><i class="fa fa-2x fa-question-circle color-grey" data-toggle="btooltip" data-placement="right" title="Date when your product will go offline"></i></div>
+					</div>
+
 					<? $this->insert('components/forms/multiple-checkbox', ["label" => "Control Flag", "ng_model" => "formData.ControlFlags", "choices" => ["Flag 1", "Flag 2", "Flag 3"]]) ?>
 					<? $this->insert('components/forms/textarea-with-label', ["label" => "Remark", "ng_model" => "formData.Remark"]) ?>
 				</div>

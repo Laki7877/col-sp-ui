@@ -39,6 +39,9 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 					AttributeSet.deleteBulk(arr).then(function() {
 						$scope.alert.success('Successfully deleted');
 						$scope.reloadData();
+					}, function(result) {
+						$scope.alert.error(result);
+						$scope.reloadData();
 					});
 				}
 			}
@@ -50,12 +53,16 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 				var arr = util.getCheckedArray($scope.attributeSetList).map(function(elem) {
 					return {
 						AttributeSetId: elem.AttributeSetId,
-						Status: 'VI'
+						Visibility: true
 					};
 				});
 
 				if(arr.length > 0) {
 					AttributeSet.visible(arr).then(function() {
+						$scope.alert.success('Successfully changed');
+						$scope.reloadData();
+					}, function(result) {
+						$scope.alert.alert(result);
 						$scope.reloadData();
 					});
 				}
@@ -68,12 +75,16 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 				var arr = util.getCheckedArray($scope.attributeSetList).map(function(elem) {
 					return {
 						AttributeSetId: elem.AttributeSetId,
-						Status: 'NV'
+						Visibility: false
 					};
 				});
 
 				if(arr.length > 0) {
 					AttributeSet.visible(arr).then(function() {
+						$scope.alert.success('Successfully changed');
+						$scope.reloadData();
+					}, function(result) {
+						$scope.alert.alert(result);
 						$scope.reloadData();
 					});
 				}
@@ -114,10 +125,11 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 			});
 		},
 		toggle: function(row) {
-			row.Status = (row.Status == 'VI')? 'NV' : 'VI';
+			row.Visibility = !row.Visibility;
 			AttributeSet.visible([row]).then(function() {
 			}, function(err) {
 				$scope.alert.error(err);
+				$scope.reloadData();
 			});
 		}
 	};

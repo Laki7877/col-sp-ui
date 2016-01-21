@@ -33,6 +33,8 @@ module.exports = ['config', function(config) {
 
             //Remove subnodes ptr
             delete cnode['nodes'];  
+            delete cnode['Depth'];  
+            delete cnode['parent'];  
             delete cnode['reverse'];  
             set.push(cnode);
         };
@@ -77,9 +79,12 @@ module.exports = ['config', function(config) {
                         pivot.nodes.push(item);
                     } else {
                         //Run reverse on current pivot if any
-                        if(pivot.nodes.length > 0) {
+                        if(pivot.nodes.length > 0 && angular.isUndefined(pivot.reverse)) {
                             pivot.nodes = reverse(pivot.nodes);
-                            pivot.reverse = true; 
+                            pivot.reverse = true;
+                            angular.forEach(pivot.nodes, function(child) {
+                                pivot.ProductCount += child.ProductCount;
+                            });
                         }
                         
                         //Change pivot
@@ -92,6 +97,9 @@ module.exports = ['config', function(config) {
             if (angular.isUndefined(pivot.reverse) && pivot.nodes.length > 0) {
                 pivot.nodes = reverse(pivot.nodes);
                 pivot.reverse = true;
+                angular.forEach(pivot.nodes, function(child) {
+                    pivot.ProductCount += child.ProductCount;
+                });
             }
 
             return array;

@@ -166,10 +166,21 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 clean.ControlFlags = fd.ControlFlags;
                 clean.Brand = fd.Brand;
                 clean.ShippingMethod = fd.ShippingMethod;
-                clean.EffectiveDate = fd.EffectiveDate;
-                clean.EffectiveTime = fd.EffectiveTime;
-                clean.ExpireDate = fd.ExpireDate;
-                clean.ExpireTime = fd.ExpireTime;
+
+                var cpdate = angular.copy(fd.ExpireDate);
+                clean.ExpireDate = moment(cpdate).format('LL');
+                clean.ExpireTime = moment(cpdate).format('HH:mm:ss');
+
+                cpdate = angular.copy(fd.EffectiveDate);
+
+                clean.EffectiveDate = moment(cpdate).format('LL');
+                clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
+
+                console.log('1-1', clean);
+                //clean.EffectiveDate = moment(fd.EffectiveDate + " " + fd.EffectiveTime);
+                //clean.EffectiveTime = fd.EffectiveTime;
+                //clean.ExpireDate = moment(fd.ExpireDate + " " + fd.ExpireTime);
+                //clean.ExpireTime = fd.ExpireTime;
             } catch (ex) {
                 console.warn("One-To-One Fields", ex);
             }
@@ -178,6 +189,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 //Move first entry of Categories out into Category
                 clean.GlobalCategory = clean.GlobalCategories[0].CategoryId;
                 clean.GlobalCategories.shift();
+
+
             } catch (ex) {
                 console.warn("shift global cat", ex);
             }
@@ -185,6 +198,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             try {
                 clean.LocalCategory = clean.LocalCategories[0].CategoryId;
                 clean.LocalCategories.shift();
+
+
             } catch (ex) {
                 console.warn("shfiting local cat", ex);
                 //Local cat can be null
@@ -258,20 +273,28 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             invFd.AttributeSet = FullAttributeSet;
             invFd.PrepareDay = invFd.PrepareDay || '';
 
-            try {
-                //Load Brand
-                var BrandId = invFd.Brand.BrandId;
+            if(invFd.EffectiveDate != "" && invFd.EffectiveDate != null){
+                 invFd.EffectiveDate = moment(invFd.EffectiveDate + " " + invFd.EffectiveTime);
+                 invFd.EffectiveTime = invFd.EffectiveTime;
+            }
+           
+            if(invFd.ExpireDate != "" && invFd.ExpireDate != null){
+                invFd.ExpireDate = moment(invFd.ExpireDate + " " + invFd.ExpireTime);
+                invFd.ExpireTime = invFd.ExpireTime;
+            }
+
+            var BrandId = invFd.Brand.BrandId;
                 Brand.getOne(BrandId).then(function(data) {
                     invFd.Brand = data;
                     delete invFd.Brand.$id;
                     invFd.Brand.id = BrandId;
                 }, function() {
                     console.log("brand resolve failure");
-                });
-            } catch (ex) {
-                invFd.Brand = undefined;
-            }
-
+                    invFd.Brand = {
+                        BrandId: null,
+                        BrandNameEn: 'Please select brand..'
+                    };
+            });
 
             var invMapper = {
                 VideoLinks: function(m) {
@@ -319,15 +342,30 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
             _Loading.message = "Setting Local Categories..";
 
-            invFd.LocalCategories = invFd.LocalCategories || [null, null];
-            if (invFd.LocalCategories.length == 0) {
-                invFd.LocalCategories = [null, null];
+            
+
+            if(!invFd.LocalCategories){
+                invFd.LocalCategories = [];
             }
-            if (invFd.LocalCategories[0] == null) {
-                invFd.LocalCategories.unshift(null);
-            } else {
+
+            if (invFd.LocalCategories.length == 0) {
+                invFd.LocalCategories = [null, null, null];
+            }else{
+                var kmax = invFd.LocalCategories.length;
+                for(var k = 0; k < 3 - kmax; k++){
+                    console.log("pushing null")
+                    invFd.LocalCategories.push(null);
+                }
+            }
+
+            if (invFd.LocalCategory){
                 LocalCategory.getOne(invFd.LocalCategory).then(function(locat) {
                     invFd.LocalCategories.unshift(locat);
+
+                    if(invFd.LocalCategories.length > 3){
+                        invFd.LocalCategories.pop();
+                    }
+
                 })
             }
 
@@ -350,18 +388,26 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
 
 
-            if ((invFd.GlobalCategories || []).length == 0) {
-                invFd.GlobalCategories = [null, null];
+            if (!invFd.GlobalCategories) {
+                invFd.GlobalCategories = [null, null, null];
             }
 
-            try {
-                //TODO: This should fetch entire Object (well maybe not)
-                invFd.GlobalCategories.unshift({
-                    CategoryId: invFd.GlobalCategory
-                });
-            } catch (ex) {
-                invFd.GlobalCategories = [null, null];
-                throw "This can't happen, GlocalCategory not given by API";
+            if (invFd.GlobalCategories.length == 0) {
+                invFd.GlobalCategories = [null, null, null];
+            }else{
+                var kmax = invFd.GlobalCategories.length;
+                for(var k = 0; k < 3 - kmax; k++){
+                    console.log("pushing null")
+                    invFd.GlobalCategories.push(null);
+                }
+            }
+
+            invFd.GlobalCategories.unshift({
+                CategoryId: invFd.GlobalCategory
+            });
+
+            if(invFd.GlobalCategories.length > 3){
+                invFd.GlobalCategories.pop();
             }
 
             delete invFd.GlobalCategory;

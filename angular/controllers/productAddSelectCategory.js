@@ -4,6 +4,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 	'use strict';
 	$scope.selected = null;
 	$scope.columns = [];
+	$scope.loading = true;
 	$scope.validate = function(e){
 		if(null === $scope.selected){
 			e.preventDefault();
@@ -12,10 +13,10 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 
 	//Get global cat from api
 	GlobalCategory.getAll().then(function(data) {
-		$scope.columns = Category.createColumns(null, Category.transformNestedSetToUITree(data));
+		$scope.loading = false;
+		$scope.columns = Category.createColumns(null, GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data)));
 		$scope.select = Category.createSelectFunc($scope.columns, function(item) {
 			$scope.selected = item;
-			console.log(item);
 		});
 	});
 }];

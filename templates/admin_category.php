@@ -38,7 +38,7 @@
 						Action
 					</span>
 				</div>
-				<div class="col-xs-12 no-padding margin-bottom-60" ui-tree max-depth="5">
+				<div class="col-xs-12 no-padding margin-bottom-60" ui-tree max-depth="4">
 					<ol class="sortable no-padding" ui-tree-nodes ng-model="categories">
 						<li ng-repeat="node in categories" ui-tree-node ng-include="'global_category/nodes'"></li>
 					</ol>	
@@ -76,7 +76,6 @@
 							                      'label': 'Category Name (Thai)',
 							                      'labelClass': 'required',
 							                      'error' : {
-							                        'message': 'Cannot use special characters such as ! # $ % ^ &',
 							                        'show' : $root.isInvalid(editingForm.NameTh)
 							                      }
 							                    }">
@@ -85,8 +84,7 @@
 								                  class="form-control"
 								                  autocomplete="off"
 								                  ng-class="{ 'has-error' : $root.isInvalid(editingForm.NameTh) }"
-								                  ng-model="editingCategory.NameTh"
-								                  ng-pattern="/^[a-zA-Z0-9ก-๙ ]+$/" 
+								                  ng-model="editingCategory.NameTh" 
 								                  required
 								                />
 							                </div>
@@ -95,7 +93,6 @@
 							                      'label': 'Category Name (Eng)',
 							                      'labelClass': 'required',
 							                      'error' : {
-							                        'message': 'Cannot use special characters such as ! # $ % ^ &',
 							                        'show' : $root.isInvalid(editingForm.NameEn)
 							                      }
 							                    }">
@@ -104,8 +101,7 @@
 							                	  class="form-control"
 							                	  autocomplete="off"
 							                	  ng-class="{ 'has-error' : $root.isInvalid(editingForm.NameEn) }"
-							                	  ng-model="editingCategory.NameEn" 
-							                	  ng-pattern="/^[a-zA-Z0-9 ]+$/" 
+							                	  ng-model="editingCategory.NameEn"
 							                	  required
 							                	/>
 							                </div>
@@ -145,14 +141,17 @@
 											<h2>Map Attribute Set</h2>
 										</div>
 										<div class="form-section-content modal-custom">
-											<div nc-tradable-select nc-model="editingCategory.AttributeSets" nc-select-options="attributeSetOptions" nc-options="{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }"></div> 
+											<div nc-tradable-select nc-test="test" nc-model="editingCategory.AttributeSets" nc-select-options="attributeSetOptions" nc-options="{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }"></div> 
+											<div class="row col-xs-12">
+							                  <p style="margin-left: 30px; margin-top:15px"><span class="color-red">*</span> If category is mapped to a product, attribute set mapping cannot be changed</p>
+							                </div>
 										</div>
 									</div>
 						            <div class="form-section">
 						                <div class="form-section-header"><h2>Category Visibility</h2></div>
 						                <div class="form-section-content modal-custom">
 						                    <div ng-template="common/input/multiline-radio" ng-template-options="{ 'label' : 'Visibility' }">
-						                    	<label ng-repeat="choice in editingStatusOptions"><input type="radio" ng-model="editingCategory.Status" ng-value="choice.value"/>{{choice.text}}</label>
+						                    	<label ng-repeat="choice in editingStatusOptions"><input type="radio" ng-model="editingCategory.Visibility" ng-value="choice.value"/>{{choice.text}}</label>
 						                	</div>
 						                </div>
 						            </div>

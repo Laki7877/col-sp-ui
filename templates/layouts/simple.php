@@ -11,6 +11,8 @@
         <link rel="shortcut icon" href="<?= $this->asset('/assets/favicon.ico') ?>">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="stylesheet" href="<?=$this->asset('/assets/css/screen.css')?>" />
+        <link rel="stylesheet" href="<?=$this->asset('/assets/libs/angular-bootstrap-datetimepicker/datetimepicker.css')?>"/>
+
         <script src="<?= $this->asset('/assets/js/jquery.min.js') ?>"></script>
 	<script src="<?= $this->asset('/assets/js/jquery.rest.js') ?>"></script>
 	<script src="<?= $this->asset('/assets/js/bundle.js') ?>"></script>

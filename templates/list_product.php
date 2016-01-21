@@ -3,6 +3,7 @@
 <?php $this->start('page-body') ?>
 <div ng-controller="ProductListCtrl" ng-init="init(<?= $params ?>)">
     <? $this->insert('components/page-title-with-buttons', ['text' => 'Products']) ?>
+    <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{alert.type}}" close="alert.close()">{{alert.message}}</div>
     <div class="row search-section-wrapper">
       <form ng-submit="bulk.fn()" class="search-section section-action">
         <div class="input-group">

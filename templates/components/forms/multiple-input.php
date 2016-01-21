@@ -14,9 +14,8 @@
 					<select class="form-control"
 						<?php if(isset($ng_model_unit)): ?>
 							ng-model="<?=$ng_model_unit ?>"
-						<?php endif; ?>
+						<?php endif; ?>>
 					
-						<option> - Select Unit - </option>
 						<option value="G"> Grams </option>
 						<option value="KG"> Kilograms </option>
 					</select>

@@ -36,7 +36,37 @@ module.exports = ['common', '$q' , function(common, $q) {
 			url: '/GlobalCategories',
 			data: data
 		});
-	}
+	};
+	service.getAllForSeller2 = function(treeArray) {
+		var array = [];
+		angular.forEach(treeArray, function(item) {
+			if(item.Visibility)
+				array.push(item);
+		});
+		return array;
+	};
+	service.getAllForSeller = function(treeArray) {
+		var array = [];
+		angular.forEach(treeArray, function(item) {
+			array.push(item);
+		});
 
+		angular.forEach(treeArray, function(item) {
+			console.log(item);
+			if (item.Visibility == null || !item.Visibility) {
+				array.splice(array.indexOf(item),1);
+			} else {
+				if(item.nodes.length == 0) {
+
+				} else {
+					item.nodes = service.getAllForSeller(item.nodes);
+					if(item.nodes.length == 0) {
+						array.splice(array.indexOf(item),1);
+					}
+				}
+			}
+		});
+		return array;
+	};
 	return service;
 }];

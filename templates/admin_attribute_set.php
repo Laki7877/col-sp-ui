@@ -56,7 +56,7 @@
               <i ng-class="sort('AttributeCount')">
             </th>
             <th ng-click="setOrderBy('Status')">
-              <a class="header-link" href="#" ><span ng-class="sort('Status', true)">Visible</span></a>
+              <a class="header-link" href="#" ><span ng-class="sort('Visibility', true)">Visible</span></a>
               <i ng-class="sort('Status')">
             </th>
             <th class="modified-column" ng-click="setOrderBy('UpdatedDt')">
@@ -78,13 +78,15 @@
             </td>
             <td>{{ row.AttributeCount }}</td>
             <td>
-              <a ng-click="actions.toggle(row)"><i ng-class="{'fa fa-eye-slash color-grey eye-icon' : row.Status != 'VI',
-                            'fa fa-eye color-dark-grey eye-icon' : row.Status == 'VI'}"></i></a>
+              <a ng-click="actions.toggle(row)"><i ng-class="{'fa fa-eye-slash color-grey eye-icon' : !row.Visibility,
+                            'fa fa-eye color-dark-grey eye-icon' : row.Visibility}"></i></a>
             </td>
             <td class="modified-column">{{ row.UpdatedDt | date:'shortDate':'+700' }}</td>
             <td class="action-column">
-              <i class="fa fa-gear color-dark-grey icon-size-20"></i>
-              <i class="fa fa-caret-down color-dark-grey" uib-popover-template="'attribute_set/action'" popover-placement="bottom" popover-append-to-body="true" popover-any></i>
+              <a href="javascript:;" uib-popover-template="'attribute_set/action'" popover-placement="bottom" popover-append-to-body="true" popover-any>
+                <i class="fa fa-gear color-dark-grey icon-size-20"></i>
+                <i class="fa fa-caret-down color-dark-grey"></i>
+              </a>
             </td>
           </tr>
         </tbody>
