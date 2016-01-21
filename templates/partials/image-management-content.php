@@ -21,7 +21,7 @@
 						</div>
 					</div>
 					<div class="drop-zone-container">
-						<? $this->insert('components/image-dropzone', ["id" => "images-management", 'text' =>'Drop images here', 'select_element' => '<span><a href="#" data-trigger="file" data-target="#<?= $id ?>_input">Select Images</a></span>',
+						<? $this->insert('components/image-dropzone-inline-text', ["id" => "images-management1", 'text' =>'Drop images here', 'select_element' => '<a href="#" data-trigger="file" data-target="#<?= $id ?>_input">or select Images</a>',
 							'alternative_class' => 'hide-component'
 						]) ?>
 					</div>
@@ -48,7 +48,7 @@
 						</div>
 					</div>
 					<div class="drop-zone-container wait-for-approve">
-						<? $this->insert('components/image-approval', ["id" => "images-management", 
+						<? $this->insert('components/image-approval', ["id" => "images-management2", 
 							'alternative_class' => 	'hide-component', 'text' => 'Wait for Approval'
 						]) ?>
 					</div>
@@ -75,8 +75,8 @@
 						</div>
 					</div>
 					<div class="drop-zone-container approved">
-						<? $this->insert('components/image-approved', ["id" => "images-management", 'select_element' => '<span><a href="#" data-trigger="file" data-target="#<?= $id ?>_input">Click here to edit</a></span>',
-							'alternative_class' => 'hide-component'
+						<? $this->insert('components/image-approved', ["id" => "images-management3", 'select_element' => '<span><a href="#" data-trigger="file" data-target="#<?= $id ?>_input">Click here to edit</a></span>',
+							'alternative_class' => 'margin-top-200'
 						]) ?>
 					</div>
 				</div>
@@ -102,7 +102,7 @@
 						</div>
 					</div>
 					<div class="drop-zone-container">
-						<? $this->insert('components/image-dropzone', ["id" => "images-management", 'text' =>'Drop images here', 'select_element' => '<span><a href="#" data-trigger="file" data-target="#<?= $id ?>_input">Select Images</a></span>',
+						<? $this->insert('components/image-dropzone-inline-text', ["id" => "images-management4", 'text' =>'Drop images here', 'select_element' => '<a href="#" data-trigger="file" data-target="#<?= $id ?>_input">or select Images</a>',
 							'alternative_class' => 'hide-component'
 						]) ?>
 					</div>
@@ -129,7 +129,7 @@
 						</div>
 					</div>
 					<div class="drop-zone-container wait-for-approve">
-						<? $this->insert('components/image-approval', ["id" => "images-management", 
+						<? $this->insert('components/image-approval', ["id" => "images-management5", 
 							'alternative_class' => 	'hide-component', 'text' => 'Reach Max Photos'
 						]) ?>
 					</div>

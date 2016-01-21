@@ -3,10 +3,10 @@
 	<div class="image-drop-zone" id="<?= $id ?>">
 		<div class="image-drop-zone-text">
 			<p><i class="fa fa-image fa-3x color-theme"></i></p>
-			<p>Drag &amp; drop your product images here</p>
+			<p>Drop images here</p>
+		</div>
+		<div class="image-select-alternative-text margin-top-220">
+			<a href="#" data-trigger="file" data-target="#<?= $id ?>_input">or select images</a>
 		</div>
 	</div>
-</div>
-<div class="image-select-alternative-text">
-	<span>Or</span> <a href="#" data-trigger="file" data-target="#<?= $id ?>_input">Select Images from your computer</a>
 </div>
