@@ -14,56 +14,96 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Attribute Information</h2></div>
             <div class="form-section-content">
-              <div ng-template="common/input/text"
+              <div ng-template="common/input/text2"
                 ng-template-options="{
                   'label': 'Attribute Name (English)',
                   'labelClass': 'required',
-                  'inputSize': 'large'
+                  'inputSize': 'large',
+                  'error' : {
+                        'messages': {
+                          'required': 'This is a required field',
+                          'pattern': 'Only letters and numbers allowed'
+                        },
+                        'show': $root.isInvalid(form.AttributeNameEn),
+                        'conditions' : form.AttributeNameEn.$error
+                   }
                 }">
                 <input
                   class="form-control"
                   name="AttributeNameEn"
                   ng-model="formData.AttributeNameEn"
                   ng-class="{ 'has-error' : $root.isInvalid(form.AttributeNameEn) }"
+                  ng-pattern="/^[A-Za-z0-9_\-\s]+$/"
+                  maxlength="100"
                   required />
               </div>
-              <div ng-template="common/input/text"
+              <div ng-template="common/input/text2"
                 ng-template-options="{
                   'label': 'Attribute Name (Thai)',
                   'labelClass': 'required',
-                  'inputSize': 'large'
+                  'inputSize': 'large',
+                  'error' : {
+                        'messages': {
+                          'required': 'This is a required field',
+                          'pattern': 'Only letters and numbers allowed'
+                        },
+                        'show': $root.isInvalid(form.AttributeNameTh),
+                        'conditions' : form.AttributeNameTh.$error
+                   }
                 }">
                 <input
                   class="form-control"
                   name="AttributeNameTh"
                   ng-model="formData.AttributeNameTh"
                   ng-class="{ 'has-error' : $root.isInvalid(form.AttributeNameTh) }"
+                  ng-pattern="/^[ก-๙A-Za-z0-9_\-\s]+$/"
+                  maxlength="100"
                   required />
               </div>
-              <div ng-template="common/input/text"
+              <div ng-template="common/input/text2"
                 ng-template-options="{
                   'label': 'Display Name (English)',
                   'labelClass': 'required',
-                  'inputSize': 'large'
+                  'inputSize': 'large',
+                  'error' : {
+                        'messages': {
+                          'required': 'This is a required field',
+                          'pattern': 'Only letters and numbers allowed'
+                        },
+                        'show': $root.isInvalid(form.DisplayNameEn),
+                        'conditions' : form.DisplayNameEn.$error
+                   }
                 }">
                 <input
                   class="form-control"
                   name="DisplayNameEn"
                   ng-model="formData.DisplayNameEn"
                   ng-class="{ 'has-error' : $root.isInvalid(form.DisplayNameEn) }"
+                  ng-pattern="/^[A-Za-z0-9_\-\s]+$/"
+                  maxlength="100"
                   required />
               </div>
-              <div ng-template="common/input/text"
+              <div ng-template="common/input/text2"
                 ng-template-options="{
                   'label': 'Display Name (Thai)',
                   'labelClass': 'required',
-                  'inputSize': 'large'
+                  'inputSize': 'large',
+                  'error' : {
+                        'messages': {
+                          'required': 'This is a required field',
+                          'pattern': 'Only letters and numbers allowed'
+                        },
+                        'show': $root.isInvalid(form.DisplayNameTh),
+                        'conditions' : form.DisplayNameTh.$error
+                   }
                 }">
                 <input
                   class="form-control"
                   name="DisplayNameTh"
                   ng-model="formData.DisplayNameTh"
                   ng-class="{ 'has-error' : $root.isInvalid(form.DisplayNameTh) }"
+                  ng-pattern="/^[ก-๙A-Za-z0-9_\-\s]+$/"
+                  maxlength="100"
                   required />
               </div>
             </div>
@@ -96,6 +136,7 @@
                       name="stAttributeUnitTh"
                       ng-model="formData.ST.AttributeUnitTh"
                       ng-class="{ 'has-error' : $root.isInvalid(form.stAttributeUnitTh) }"
+                      maxlength="100"
                       />
                   </div>
                   <div ng-template="common/input/text"
@@ -107,6 +148,7 @@
                       name="stAttributeUnitEn"
                       ng-model="formData.ST.AttributeUnitEn"
                       ng-class="{ 'has-error' : $root.isInvalid(form.stAttributeUnitEn) }"
+                      maxlength="100"
                        />
                   </div>
                   <div ng-template="common/input/dropdown"
@@ -122,14 +164,24 @@
                       </ui-select-choices>
                     </ui-select>
                   </div>
-                  <div ng-template="common/input/text"
+                  <div ng-template="common/input/text2"
                     ng-template-options="{
-                      'label': 'If empty, value equals'
+                      'label': 'If empty, value equals',
+                      'error' : {
+                            'messages': {
+                              'pattern': 'Only letters and numbers allowed'
+                            },
+                            'show': $root.isInvalid(form.ST_DefaultValue),
+                            'conditions' : form.ST_DefaultValue.$error
+                       }
                     }">
                     <input
                       class="form-control"
-                      name="stDefault"
+                      name="ST_DefaultValue"
                       ng-model="formData.ST.DefaultValue"
+                      ng-class="{ 'has-error' : $root.isInvalid(form.ST_DefaultValue) }"
+                      ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/"
+                      maxlength="100"
                       />
                   </div>
                 </div>
@@ -161,14 +213,24 @@
                   </div>
                 </div>
                 <div ng-switch-when="HB">
-                  <div ng-template="common/input/text"
+                  <div ng-template="common/input/text2"
                     ng-template-options="{
-                      'label': 'If empty, value equals'
+                      'label': 'If empty, value equals',
+                      'error' : {
+                            'messages': {
+                              'pattern': 'Only letters and numbers allowed'
+                            },
+                            'show': $root.isInvalid(form.HB_DefaultValue),
+                            'conditions' : form.HB_DefaultValue.$error
+                       }
                     }">
                     <input
                       class="form-control"
-                      name="stDefault"
-                      ng-model="formData.ST.DefaultValue"
+                      name="HB_DefaultValue"
+                      ng-model="formData.HB.DefaultValue"
+                      ng-class="{ 'has-error' : $root.isInvalid(form.HB_DefaultValue) }"
+                      ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/"
+                      maxlength="100"
                       />
                   </div>
                 </div>
