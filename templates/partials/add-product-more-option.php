@@ -50,7 +50,7 @@
 								   <input type="text" class="input-icon-calendar form-control" data-ng-model="formData.EffectiveDate">
 								  </a>
 								  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-								    <datetimepicker data-ng-model="formData.EffectiveDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }"/>
+								    <datetimepicker data-ng-model="formData.EffectiveDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'hour' }"/>
 								  </ul>
 							  </div>
 							  <span class="help-block"></span>
@@ -66,7 +66,7 @@
 								   <input type="text" class="input-icon-calendar form-control" data-ng-model="formData.ExpireDate">
 								  </a>
 								  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-								    <datetimepicker data-ng-model="formData.ExpireDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown3' }"/>
+								    <datetimepicker data-ng-model="formData.ExpireDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'hour' }"/>
 								  </ul>
 							  </div>
 							  <span class="help-block"></span>

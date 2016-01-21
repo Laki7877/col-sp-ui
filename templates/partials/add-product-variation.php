@@ -80,7 +80,7 @@
 						<thead>
 							<tr>
 								<th class="column-variant">Variant</th>
-								<th class="column-sku"><span class="required">SKU</span></th>
+								<th class="column-sku">SKU</th>
 								<th class="column-price">Price</th>
 								<th class="column-sale-price">Sale Price</th>
 								<th class="column-inventory">Inventory</th>
@@ -98,8 +98,8 @@
 									<input 
 									 type="text" ng-disabled='!pair.Visibility' class="form-control"
 									 	name="pair_Sku{{ $index }}"
-									 	ng-class="{ 'opacity-50': !pair.Visibility , 'has-error' : $root.isInvalid(addProductForm['pair_Sku' + $index]) }"
-										ng-model="pair.Sku" required/>
+									 	ng-class="{ 'opacity-50': !pair.Visibility }"
+										ng-model="pair.Sku"/>
 
 									</td>
 									<td><input type="text"

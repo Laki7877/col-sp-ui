@@ -166,9 +166,14 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 clean.ControlFlags = fd.ControlFlags;
                 clean.Brand = fd.Brand;
                 clean.ShippingMethod = fd.ShippingMethod;
-                clean.EffectiveDate = moment(fd.EffectiveDate + " " + fd.EffectiveTime);
+                clean.EffectiveDate = fd.EffectiveDate;
+                clean.EffectiveTime = fd.EffectiveTime;
+                clean.ExpireDate = fd.ExpireDate;
+                clean.ExpireTime = fd.ExpireTime;
+
+                //clean.EffectiveDate = moment(fd.EffectiveDate + " " + fd.EffectiveTime);
                 //clean.EffectiveTime = fd.EffectiveTime;
-                clean.ExpireDate = moment(fd.ExpireDate + " " + fd.ExpireTime);
+                //clean.ExpireDate = moment(fd.ExpireDate + " " + fd.ExpireTime);
                 //clean.ExpireTime = fd.ExpireTime;
             } catch (ex) {
                 console.warn("One-To-One Fields", ex);
@@ -257,6 +262,10 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
             invFd.AttributeSet = FullAttributeSet;
             invFd.PrepareDay = invFd.PrepareDay || '';
+            invFd.EffectiveDate = moment(invFd.EffectiveDate + " " + invFd.EffectiveTime);
+            invFd.EffectiveTime = invFd.EffectiveTime;
+            invFd.ExpireDate = moment(invFd.ExpireDate + " " + invFd.ExpireTime);
+            invFd.ExpireTime = invFd.ExpireTime;
 
             var BrandId = invFd.Brand.BrandId;
                 Brand.getOne(BrandId).then(function(data) {
