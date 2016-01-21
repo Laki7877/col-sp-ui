@@ -99,17 +99,20 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 		$scope.saving = true;
 		$scope.formDataSerialized = Brand.serialize($scope.formData);
 		if($scope.edit > 0) {
-			Brand.update($scope.edit, $scope.formDataSerialized).then(function(res){			
+			Brand.update($scope.edit, $scope.formDataSerialized).then(function(res){
+				$scope.alert.success();
 				$scope.saving = false;
-				$('#success').submit();		
+				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
 				$scope.alert.error(err);
 			});
 		} else {
-			Brand.publish($scope.formDataSerialized).then(function(res){			
+			Brand.publish($scope.formDataSerialized).then(function(res){	
+				$scope.alert.success();
+				$scope.edit = res.BrandId;				
 				$scope.saving = false;
-				$('#success').submit();		
+				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
 				$scope.alert.error(err);

@@ -28,7 +28,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 			Unable to save because required fields are missing.
 		</div>
 
-		<form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
+		<form name="addPorductForm" class="ah-form sticky-mainform-action" novalidate>
 		<? $this->insert('components/page-title-breadcrumb', ['text' => "Products/ " . $title, 'urls' => ['/products']]) ?>
 
 		<div ng-if="_loading.state">

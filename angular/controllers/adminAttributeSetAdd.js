@@ -67,8 +67,9 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 		if ($scope.edit) {
 			$scope.saving = true;
 			AttributeSet.update($scope.edit, $scope.formDataSerialized).then(function(data) {
+				$scope.alert.success();				
 				$scope.saving = false;
-				$('#success').submit();
+				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
 				$scope.alert.error(err);
@@ -77,8 +78,10 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 		else {
 			$scope.saving = true;
 			AttributeSet.create($scope.formDataSerialized).then(function(data) {
+				$scope.alert.success();
+				$scope.edit = data.AttributeSetId;				
 				$scope.saving = false;
-				$('#success').submit();
+				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
 				$scope.alert.error(err);

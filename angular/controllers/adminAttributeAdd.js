@@ -65,22 +65,23 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function
 		if ($scope.edit) {
 			$scope.saving = true;
 			Attribute.update($scope.edit, $scope.formDataSerialized).then(function(data) {
+				$scope.alert.success();
 				$scope.saving = false;
-				$('#success').submit();
+				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
-				
 				$scope.alert.error(err);
 			});
 		}
 		else {
 			$scope.saving = true;
 			Attribute.create($scope.formDataSerialized).then(function(data) {
+				$scope.alert.success();
+				$scope.edit = data.AttributeId;				
 				$scope.saving = false;
-				$('#success').submit();
+				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
-				
 				$scope.alert.error(err);
 				console.log(err);
 			});
