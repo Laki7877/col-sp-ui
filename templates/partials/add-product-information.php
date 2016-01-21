@@ -11,10 +11,12 @@
                         'label': 'Product Name (Thai)',
                         'labelClass': 'required',
                         'error' : {
-                              'message': {
-                              	'required': 'is required field'
+                              'messages': {
+                              	'required': 'This is a required field',
+                              	'pattern': 'Only letters and numbers allowed'
                               },
-                              '$error' : addProductForm.MasterVariant_ProductNameTh.$error
+                              'show': $root.isInvalid(addProductForm.MasterVariant_ProductNameTh),
+                              'conditions' : addProductForm.MasterVariant_ProductNameTh.$error
                          }
                       }">
                       <input
@@ -22,45 +24,75 @@
                         name="MasterVariant_ProductNameTh"
                         ng-model="formData.MasterVariant.ProductNameTh"
                         ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_ProductNameTh) }"
+                        ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/"
+                        maxlength="300"
                         required />
                     </div>
 
-
-                    <div ng-template="common/input/text"
+                    <div ng-template="common/input/text2"
                       ng-template-options="{
                         'label': 'Product Name (English)',
-                        'labelClass': 'required'
+                        'labelClass': 'required',
+                        'error' : {
+                              'messages': {
+                              	'required': 'This is a required field',
+                              	'pattern': 'Only letters and numbers allowed'
+                              },
+                              'show': $root.isInvalid(addProductForm.MasterVariant_ProductNameEn),
+                              'conditions' : addProductForm.MasterVariant_ProductNameEn.$error
+                         }
                       }">
                       <input
                         class="form-control width-field-large"
                         name="MasterVariant_ProductNameEn"
                         ng-model="formData.MasterVariant.ProductNameEn"
+                        maxlength="300"
+                        ng-pattern="/^[0-9a-zA-Z\s]+$/"
                         ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_ProductNameEn) }"
                         required />
                     </div>
 
 
-					<div ng-template="common/input/text"
+
+					<div ng-template="common/input/text2"
                       ng-template-options="{
                         'label': 'SKU',
-                        'labelClass': 'required'
+                        'labelClass': 'required',
+                        'error' : {
+                              'messages': {
+                              	'pattern': 'Only letters and numbers allowed'
+                              },
+                              'show': $root.isInvalid(addProductForm.MasterVariant_Sku),
+                              'conditions' : addProductForm.MasterVariant_Sku.$error
+                         }
                       }">
                       <input
                         class="form-control width-field-large"
                         name="MasterVariant_Sku"
                         ng-disabled="enableProductVariations == 'enable'"
                         ng-model="formData.MasterVariant.Sku"
+                        maxlength="300"
+                        ng-pattern="/^[0-9a-zA-Z\s]+$/"
                         ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Sku) }"
                         ng-required="enableProductVariations == 'disable'"/>
                     </div>
 
-                    <div ng-template="common/input/text"
+                    <div ng-template="common/input/text2"
                       ng-template-options="{
-                        'label': 'UPC'
+                        'label': 'UPC',
+                         'error' : {
+                              'messages': {
+                              	'pattern': 'Only letters and numbers allowed'
+                              },
+                              'show': $root.isInvalid(addProductForm.MasterVariant_Upc),
+                              'conditions' : addProductForm.MasterVariant_Upc.$error
+                         }
                       }">
                       <input
                         class="form-control width-field-large"
+                        ng-pattern="/^[0-9a-zA-Z\s]+$/"
                         name="MasterVariant_Upc"
+                        maxlength="300"
                         ng-model="formData.MasterVariant.Upc"
                         ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Upc) }"
                       />
