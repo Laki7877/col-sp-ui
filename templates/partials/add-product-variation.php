@@ -4,59 +4,72 @@
 		<div class="col-xs-12">
 			<div class="form-section">
 				<div class="form-section-header"><h2>Variation Option</h2></div>
-				<div class="form-section-content padding-left-30" ng-if="!formData.AttributeSet">
-					Please first select an attribute set from Information tab
+				<div class="form-section-content padding-left-30" ng-if="(formData.AttributeSet && !formData.AttributeSet['AttributeSetId']) || enableProductVariations != 'enable'">
+					To enable variation option, please select an <strong>Attribute Set</strong> and enable <strong>Product Variation</strong> in the information tab.
 				</div>
-				<div class="form-section-content" ng-if="formData.AttributeSet">
-					<div class="form-group" ng-repeat="jth in [0,1]" ng-show="(attributeOptions[0].options.length > 0) || (jth == 0)">
+
+				<!-- ng-if too long -->
+				<div class="form-section-content" ng-if="!(formData.AttributeSet && !formData.AttributeSet['AttributeSetId']) && enableProductVariations == 'enable'">
+					<div class="form-group" ng-repeat="jth in variationFactorIndices.iterator" ng-show="(attributeOptions[0].options.length > 0) || (jth == 0)">
 						<div class="width-label">
 							<select class="form-control"
 								ng-options="i as i.Attribute.AttributeNameEn
-								 for i in formData.AttributeSet.AttributeSetMaps | 
-								 truth: 'Attribute.VariantStatus' | 
+								 for i in formData.AttributeSet.AttributeSetMaps |
+								 truth: 'Attribute.VariantStatus' |
 								 exclude: attributeOptions[1 - jth].Attribute : 'AttributeId'
 								 track by i.Attribute.AttributeId"
 						       	ng-model="attributeOptions[jth]">
+						       	<option value="" disabled selected>Select an option..</option>
 							</select>
 						</div>
-						<div class="width-field-xl">
+						<div class="width-field-large">
 							<div class="input-with-unit">
-								<ui-select ng-if="_isListInput(attributeOptions[jth].Attribute.DataType)" 
+								<ui-select ng-if="_isListInput(attributeOptions[jth].Attribute.DataType)"
 								multiple ng-model="attributeOptions[jth].options">
 									<ui-select-match>
-										{{ $item.AttributeValue.AttributeValueEn || $item }}	
+										{{ $item.AttributeValue.AttributeValueEn || $item }}
 									</ui-select-match>
 									<ui-select-choices repeat="i in attributeOptions[jth].Attribute.AttributeValueMaps | filter:$select.search">
 									    {{ i.AttributeValue.AttributeValueEn || i }}
 									</ui-select-choices>
 								</ui-select>
-								<ui-select ng-if="_isFreeTextInput(attributeOptions[jth].Attribute.DataType)" 
+								<ui-select ng-if="_isFreeTextInput(attributeOptions[jth].Attribute.DataType)"
 								multiple tagging tagging-label="" ng-model="attributeOptions[jth].options">
 									<ui-select-match>
-										{{ $item.AttributeValue.AttributeValueEn || $item }}	
+										{{ $item.AttributeValue.AttributeValueEn || $item }}
 									</ui-select-match>
 									<ui-select-choices repeat="i in attributeOptions[jth].Attribute.AttributeValueMaps | filter:$select.search">
 									    {{ i.AttributeValue.AttributeValueEn || i }}
 									</ui-select-choices>
 								</ui-select>
-				
+
 								<span class="input-unit">
 									{{ attributeOptions[jth].Attribute.unit }}
 								</span>
 							</div>
 						</div>
+						<div class="width-field-normal" ng-if="attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1">
+							<a class="like-text form-text" ng-click="variationFactorIndices.pushSecond()">
+								<i class="fa fa-plus-circle color-theme"></i> Add another option
+							</a>
+						</div>
+						<div class="width-field-normal" ng-if="attributeOptions[1].options.length > 0 && variationFactorIndices.length() == 2 && jth == 1">
+							<a class="like-text form-text" ng-click="variationFactorIndices.popSecond()">
+								<i class="fa fa-minus-circle color-theme"></i> Remove option
+							</a>
+						</div>
 					</div>
-	
-	<div class="form-group">
-	<div class="width-label"><label class="control-label">Default Variant</label></div>
-	<div class="width-field-normal">
+
+	<div class="form-group" ng-show="formData.Variants.length > 0">
+		<div class="width-label"><label class="control-label">Default Variant</label></div>
+		<div class="width-field-normal">
 		<div class="ah-select2-dropdown">
-			<select ng-model="formData.DefaultVariant" class="form-control" 
-				ng-options="i as i.text for i in formData.Variants">
+			<select ng-model="formData.DefaultVariant" class="form-control"
+				ng-options="i as i.text for i in formData.Variants track by i.text" required>
 			</select>
-			<!-- TODO: use ui-select -->
 		</div>
-	</div></div>
+		</div>
+	</div>
 
 			</div>
 			</div> <!-- end .form-section -->
@@ -77,13 +90,13 @@
 						</thead>
 						<tbody>
 								<tr ng-repeat="pair in formData.Variants track by $index">
-									<td class="column-text-ellipsis" ng-class="{'opacity-50': !pair.Visibility}"> 
+									<td class="column-text-ellipsis" ng-class="{'opacity-50': !pair.Visibility}">
 										{{ pair.text}}
 									</td>
 									<td><input ng-class="{'opacity-50': !pair.Visibility}"
-									 type="text" ng-disabled='!pair.Visibility' class="form-control" 
+									 type="text" ng-disabled='!pair.Visibility' class="form-control"
 										ng-model="pair.Sku" /></td>
-									<td><input type="text" 
+									<td><input type="text"
 										ng-class="{'opacity-50': !pair.Visibility}"
 										ng-model="pair.OriginalPrice" ng-disabled='!pair.Visibility'
 										class="form-control" /></td>
@@ -91,12 +104,12 @@
 										ng-class="{'opacity-50': !pair.Visibility}"
 										ng-model="pair.SalePrice" ng-disabled='!pair.Visibility'
 								       		class="form-control" /></td>
-									<td><input type="text" ng-model="pair.Quantity" 
+									<td><input type="text" ng-model="pair.Quantity"
 										ng-class="{'opacity-50': !pair.Visibility}"
 										ng-disabled='!pair.Visibility'
 										class="form-control" /></td>
-									<td><a class="btn btn-white btn-width-xl" ng-disabled='!pair.Visibility' 
-									data-toggle="modal" data-target="#variant-detail-1" 
+									<td><a class="btn btn-white btn-width-xl" ng-disabled='!pair.Visibility'
+									data-toggle="modal" data-target="#variant-detail-1"
 									ng-click="$emit('openPairModal', pair, formData.Variants, $index)">More Detail</a></td>
 									<td><a class="btn btn-white" ng-click='pair.Visibility = !pair.Visibility'>
 										<span ng-if='pair.Visibility'>Hide</span>

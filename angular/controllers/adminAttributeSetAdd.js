@@ -11,6 +11,24 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 	$scope.edit = 0;
 	$scope.saving = false;
 
+	$window.onbeforeunload = function (e) {
+
+		if(!$scope.form.$dirty){
+			//not dirty
+			return null;
+		}
+
+		var message = "Your changes will not be saved.",
+		e = e || window.event;
+		// For IE and Firefox
+		if (e) {
+		  e.returnValue = message;
+		}
+
+		// For Safari
+		return message;
+	};
+	
 	$scope.loadAttribute = function() {
 		Attribute.getAll().then(function(data) {
 			$scope.attributeOptions = data;

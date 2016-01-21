@@ -22,6 +22,24 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 		$window.location.href = '/admin/brands';
 	};
 
+	$window.onbeforeunload = function (e) {
+
+		if(!$scope.form.$dirty){
+			//not dirty
+			return null;
+		}
+
+		var message = "Your changes will not be saved.",
+		e = e || window.event;
+		// For IE and Firefox
+		if (e) {
+		  e.returnValue = message;
+		}
+
+		// For Safari
+		return message;
+	};
+
 	$scope.$on('delete', function(e, item, arr, indx, uploader){
 		angular.forEach(uploader.queue, function(i) {
 			if(i.indx == indx) {

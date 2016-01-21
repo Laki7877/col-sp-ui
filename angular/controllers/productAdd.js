@@ -1,21 +1,34 @@
 var angular = require('angular');
 
-module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 
+module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop',
 'GlobalCategory', 'Category', 'VariantPair',
-	function($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, 
+	function($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop,
 		GlobalCategory, Category, VariantPair){
 	'use strict';
+
+	$scope.alert = {
+		success: false,
+		failure: false,
+		validationFailed: false,
+		reset: function(){
+			$scope.alert.success = false;
+			$scope.alert.failure = false;
+			$scope.alert.validationFailed = false;
+		}
+	};
 
 	$scope._loading = {
 		state : true,
 		message: 'Loading..'
 	};
 
-	$window.onbeforeunload = function (e) {
+	$scope.enableProductVariations = "disable";
 
-		//http://stackoverflow.com/questions/276660/how-can-i-override-the-onbeforeunload-dialog-and-replace-it-with-my-own
-		//TLDR; You can't override default popup with your own 
-		// $('#leave-page-warning').modal('show');
+	$window.onbeforeunload = function (e) {
+		if(!$scope.addProductForm.$dirty){
+			//not dirty
+			return null;
+		}
 		var message = "Your changes will not be saved.",
 		e = e || window.event;
 		// For IE and Firefox
@@ -27,18 +40,17 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		return message;
 	};
 
-
 	var cleanData = function(){
 		if( !$scope.formData.MasterVariant.SalePrice ||
-			$scope.formData.MasterVariant.SalePrice == "" ||  
+			$scope.formData.MasterVariant.SalePrice == "" ||
 			$scope.formData.MasterVariant.SalePrice == 0)
 		{
-			
+
 			$scope.formData.MasterVariant.SalePrice = $scope.formData.MasterVariant.OriginalPrice;
 		}
 
 	};
-	
+
 
 	$scope.preview = function(){
 		cleanData();
@@ -61,18 +73,24 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			searchText: q
 		}).then(function(dataSet){
 			$scope.availableBrands = dataSet.data;
-		});			
+		});
 	};
 
 	$scope.publish = function(Status){
 
+		$scope._loading.state = true;
+		$scope._loading.message = "Saving changes";
+
 		$scope.onPublishing = (Status == "WA");
 		if($scope.addProductForm.$invalid){
+			//replace with .hash
+			$scope._loading.state = false;
+			$window.location.href = '/products/add#alert-validation'
+			$scope.alert.validationFailed = true;
 			return;
 		}
 
-		$scope._loading.message = "Saving Changes..";
-		$scope._loading.state = true;
+		$scope.alert.reset();
 
 		cleanData();
 		console.log("Publishing with Status = ", Status);
@@ -80,18 +98,23 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			console.log(JSON.stringify(apiRequest));
 			var apiRequest = Product.serialize($scope.formData);
 			Product.publish(apiRequest, Status).then(function(res){
-				//TODO: remove this , 
 				if(res.ProductId){
-					$window.onbeforeunload = function(){};
-					console.log("OK");
-					$window.location.href = "/products";
+					$scope._loading.state = false;
+					$scope.alert.success = true;
+					$scope.formData.ProductId = res.ProductId;
+					//TODO: add in deserializer
+					$scope.formData.MasterVariant.Pid = res.MasterVariant.Pid;
+
+					$scope.addProductForm.$setPristine(true)
+
 				}else{
-					$scope._loading.message = "An error has occurred while saving..";
+					console.warn("Unable to save because API did not send back ProductId. Anticipates ProductId as success condition.")
+					$scope.alert.failure = true;
 				}
 
 			}, function(er){
-				alert("FYI - Unable to save due to error - Send this message to a wizard near you: \n\n" + JSON.stringify(er));
-					console.warn("Unable to save", er);
+				$scope.alert.failure = true;
+				console.warn("Unable to save due to serialization ?", er);
 			});
 
 		}catch(ex){
@@ -100,9 +123,22 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			return;
 		}
 
-		
+
 
 	};
+
+	$scope.variationFactorIndices = {};
+	$scope.variationFactorIndices.iterator = [0];
+	$scope.variationFactorIndices.length = function(){
+		return $scope.variationFactorIndices.iterator.length;
+	}
+	$scope.variationFactorIndices.popSecond = function(){
+		$scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop();
+		$scope.attributeOptions[1].options = [];
+	}
+	$scope.variationFactorIndices.pushSecond = function(){
+		$scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1);
+	}
 
 	$scope.formData = {
 		Brand: {},
@@ -138,17 +174,17 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			});
 
 			$("body").tooltip({ selector: '[data-toggle=tooltip]' });
-			
+
 		},
 		angular: function() {
 
 			$scope.init = function(viewBag) {
 
-				//TODO: Refactor 
+				//TODO: Refactor
 
 				var shopId = 1;
 				var angularReady = function(){
-					//Angular dependent 
+					//Angular dependent
 					//TODO : probably not needed anymore
 				    tabPage.global.jquery();
 				    tabPage.information.jquery();
@@ -223,8 +259,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 							for(var aKey in $scope.attributeOptions[0].options){
 								var A = $scope.attributeOptions[0].options[aKey];
 
-								if(angular.isDefined($scope.attributeOptions[1].options) && 
-									$scope.attributeOptions[1].options.length == 0){
+								if(angular.isDefined($scope.attributeOptions[1]['options']) && $scope.attributeOptions[1].options.length == 0){
 									console.log("expanding A");
 									expand(A);
 								}
@@ -236,7 +271,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 								}
 							}
 						}
-						
+
 						$scope.formData.DefaultVariant = $scope.formData.Variants[0];
 					}, true);
 
@@ -244,20 +279,26 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 				var loadFormData = function(ivFormData, FullAttributeSet){
 
-					$scope._loading.message = "Processing..";
-					//Dependency Chain
-					//catId -> AttributeSet -> Inverse
-					if(!('VideoLinks' in ivFormData)){
-						ivFormData['VideoLinks'] = [];
-					}
-					var inverseResult = Product.deserialize(ivFormData, 
-						FullAttributeSet, 
+						$scope._loading.message = "Processing..";
+						//Dependency Chain
+						//catId -> AttributeSet -> Inverse
+						if(!('VideoLinks' in ivFormData)){
+							ivFormData['VideoLinks'] = [];
+						}
+						var inverseResult = Product.deserialize(ivFormData,
+						FullAttributeSet,
 						$scope._loading);
 
-					$scope.formData = inverseResult.formData;
-					console.log("After Inverse Transformation", $scope.formData, inverseResult.attributeOptions);
+						$scope.formData = inverseResult.formData;
+						console.log("After Inverse Transformation", $scope.formData, inverseResult.attributeOptions);
 
-					$scope.attributeOptions = inverseResult.attributeOptions || $scope.attributeOptions;
+						if($scope.formData.Variants.length  > 0){
+							$scope.enableProductVariations = "enable";
+						}
+
+						$scope.attributeOptions = inverseResult.attributeOptions || $scope.attributeOptions;
+
+						if($scope.attributeOptions[1].options.length > 0) $scope.variationFactorIndices.pushSecond();
 		    		ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages);
 		    		ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360);
 
@@ -270,7 +311,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					$scope._loading.message = "Downloading Attribute Sets..";
 
 					AttributeSet.getByCategory(catId).then(function(data){
-						
+
 						//remove complex structure we dont need
 						$scope.availableAttributeSets = data.map(function(aset){
 
@@ -304,7 +345,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 						if(ivFormData.ProductId){
 								loadFormData(ivFormData, $scope.formData.AttributeSet);
 						}
- 
+
 						$scope._loading.message = "Downloading Category Tree..";
 						//Load Global Cat
 						GlobalCategory.getAll().then(function(data) {
@@ -327,7 +368,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 					$scope._loading.message = "Downloading Product..";
 					Product.getOne(productId).then(function(ivFormData){
 						var gcat = ivFormData.GlobalCategory;
-						
+
 						catReady(gcat, ivFormData, function(){
 							$scope.formData.ProductId = Number(productId);
 							angularReady();
@@ -359,12 +400,12 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			$scope.availableGlobalCategories = [];
 			$scope.availableLocalCategories = [];
 			$scope.availableBrands = [];
-			$scope.availableSearchTags = ["Eneloop", "Extra Battery"];
+			$scope.availableSearchTags = [];
 			$scope.availableRelatedProducts = [];
 			$scope.availableStockTypes = ['Stock', 'Pre-Order'];
 			$scope.availableVariantDisplayOption = [{
 				text: 'Show as group of variants',
-				value: 'GROUP' 
+				value: 'GROUP'
 			},{
 				text: 'Show as individual product',
 				value: 'INDIVIDUAL'
@@ -487,7 +528,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			});
 		}
 	}
-	
+
 	tabPage.variation = {
 		initSelect2: function(index){
 			var isListInput	= false;
