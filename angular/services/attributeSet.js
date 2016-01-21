@@ -4,11 +4,11 @@ module.exports = ['common', function(common){
 	service.visibleOptions = [
 		{
 			name: 'Visible',
-			value: 'VI'
+			value: true
 		},
 		{
 			name: 'Not Visible',
-			value: 'NV'
+			value: false
 		}
 	];
 	var find = function(array, value) {
@@ -106,14 +106,14 @@ module.exports = ['common', function(common){
 			AttributeSetNameTh: '',
 			AttributeSetDescriptionEn: '',
 			AttributeSetDescriptionTh: '',
-			Status: service.visibleOptions[0].value,
+			Visibility: true,
 			Tags: []
 		};
 	};
 	service.deserialize = function(data) {
 		var processed = angular.merge(service.generate(), data);
 		processed.Tags = [];
-		processed.Status = angular.isDefined(data.Status) ? find(service.visibleOptions, data.Status) : service.visibleOptions[0];
+		//processed.Status = angular.isDefined(data.Visibility) ? find(service.visibleOptions, data.Visibility) : service.visibleOptions[0];
 
 		if(angular.isUndefined(processed.Attributes)) {
 			processed.Attributes = [];
@@ -130,7 +130,7 @@ module.exports = ['common', function(common){
 	service.serialize = function(data) {
 		var processed = angular.copy(data);
 		processed.Tags = [];
-		processed.Status = processed.Status.value;
+		//processed.Visibility = processed.Status.value;
 		angular.forEach(data.Tags, function(tag) {
 			processed.Tags.push({
 				TagName: tag

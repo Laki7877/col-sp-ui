@@ -50,7 +50,7 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 				var arr = util.getCheckedArray($scope.attributeSetList).map(function(elem) {
 					return {
 						AttributeSetId: elem.AttributeSetId,
-						Status: 'VI'
+						Visibility: true
 					};
 				});
 
@@ -68,7 +68,7 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 				var arr = util.getCheckedArray($scope.attributeSetList).map(function(elem) {
 					return {
 						AttributeSetId: elem.AttributeSetId,
-						Status: 'NV'
+						Visibility: false
 					};
 				});
 
@@ -86,6 +86,7 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 		$scope.attributeSetList = [];
 		$scope.notReady = true;
 		AttributeSet.getAll($scope.tableParams).then(function(x){
+			console.log(x.data);
 			$scope.attributeSetTotal = x.total;
 			$scope.attributeSetList = x.data;
 			$scope.notReady = false;
@@ -114,7 +115,7 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 			});
 		},
 		toggle: function(row) {
-			row.Status = (row.Status == 'VI')? 'NV' : 'VI';
+			row.Visibility = !row.Visibility;
 			AttributeSet.visible([row]).then(function() {
 			}, function(err) {
 				$scope.alert.error(err);

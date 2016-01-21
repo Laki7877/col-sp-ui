@@ -65,7 +65,7 @@
             <div class="form-section-header"><h2>Visibility</h2></div>
             <div class="form-section-content">
               <div ng-template="common/input/multiline-radio" ng-template-options="{ 'label' : 'Attribute Set Visibility' }">
-                <label ng-repeat="choice in visibleOptions"><input type="radio" ng-model="formData.Status" ng-value="choice.value"/>{{choice.name}}</label>
+                <label ng-repeat="choice in visibleOptions"><input type="radio" ng-model="formData.Visibility" ng-value="choice.value"/>{{choice.name}}</label>
               </div>
             </div>
           </div>

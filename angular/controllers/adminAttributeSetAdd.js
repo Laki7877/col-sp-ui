@@ -40,6 +40,7 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 			$scope.edit = params.id;
 			AttributeSet.get($scope.edit).then(function(data) {
 				$scope.formData = AttributeSet.deserialize(data);
+				console.log($scope.formData);
 			});
 		} else {
 			//create mode!
