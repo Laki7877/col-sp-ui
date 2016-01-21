@@ -128,6 +128,7 @@ var app = angular.module('colspApp', ['ui.bootstrap.datetimepicker', 'duScroll',
 .directive('ngCkeditor', directives.ngCkeditor)
 .directive('ngSlideToggle', directives.ngSlideToggle)
 .directive('ngTemplate', directives.ngTemplate)
+.directive('uiSelectMaxlength', directives.uiSelectMaxlength)
 .directive('popoverAny', directives.popoverAny)
 
 //Filters
@@ -137,6 +138,7 @@ var app = angular.module('colspApp', ['ui.bootstrap.datetimepicker', 'duScroll',
 .filter('truth', filters.truth)
 .filter('exclude', filters.exclude)
 .filter('excludeCategory', filters.excludeCategory)
+.filter('truncate', filters.truncate)
 
 //Controllers
 .controller('RootCtrl', controllers.root)

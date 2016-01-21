@@ -5,7 +5,7 @@
 		<span class="input-unit" ng-if="options.unit">{{ options.unit }}</span>
 		<span class="help-block" ng-if="options.hint" ng-show="options.hint.show">{{options.hint.message}}</span>
 		<span class="help-block color-red" ng-if="options.error" ng-show="options.error.show" ng-repeat="(key, prop) in options.error.conditions">
-			{{ options.error.messages[key] }}
+			<span ng-bind-html="options.error.messages[key]"></span>
 		</span>
 		
 	</div>

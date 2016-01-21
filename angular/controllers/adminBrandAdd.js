@@ -14,7 +14,7 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 	var customImageQueueHandler = function(images, item, obj) {
 		item.remove();
 		item.cancel();
-		$scope.alert.error('Only one brand image can be added at a time. Please delete the old image before adding a new one.');
+		$scope.alert.error('Your brand cannot have more than 1 image');
 		return false;
 	};
 	
@@ -80,7 +80,7 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 		}
 
 		if($scope.formData.BrandImages.length == 0) {
-			$scope.alert.error('Please add a brand image.');
+			$scope.alert.error('Your brand must have 1 image');
 			return;
 		}
 
