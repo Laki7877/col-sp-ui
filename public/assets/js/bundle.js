@@ -4146,15 +4146,19 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
             _Loading.message = "Setting Local Categories..";
 
-            invFd.LocalCategories = invFd.LocalCategories || [null, null];
-            if (invFd.LocalCategories.length == 0) {
-                invFd.LocalCategories = [null, null];
+            
+
+            if(!invFd.LocalCategories){
+                invFd.LocalCategories = [];
             }
-            if (invFd.LocalCategories[0] == null) {
-                invFd.LocalCategories.unshift(null);
-            } else {
+
+            if (invFd.LocalCategories.length == 0) {
+                invFd.LocalCategories = [null, null, null];
+            }
+
+            if (invFd.LocalCategory){
                 LocalCategory.getOne(invFd.LocalCategory).then(function(locat) {
-                    invFd.LocalCategories.unshift(locat);
+                    invFd.LocalCategories[0] = locat;
                 })
             }
 
