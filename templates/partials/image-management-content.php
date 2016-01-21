@@ -12,11 +12,14 @@
 						<div class="color-grey"><i class="fa fa-circle-o padding-right-5"></i>Draft</div>
 					</div>
 					<div class="picture-container">
-						<div class="padding-left-15 padding-right-15">
+						<div class="padding-left-15">
 							<div class="col-xs-12">
 								<? $this->insert('components/image-thumbs-list', ["action" => 3, "images" => ["/assets/img/placeholder-no-image.png", "https://placehold.it/350x150", "https://placehold.it/350x550", "https://placehold.it/350x550", "https://placehold.it/350x550"]]) ?>
 							</div>
 						</div>
+					</div>
+					<div class="drop-zone-container">
+						<? $this->insert('components/image-dropzone', ["id" => "product-images"]) ?>
 					</div>
 				</div>
 			</div>

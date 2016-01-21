@@ -1,13 +1,17 @@
 .image-management.form-section {
 	.content-text {	
 	    width: auto;
-	    display: inline-block;
+	    display: inline;
 	    float: left;
 	    padding-left: 15px;	
 	}
-	
+
 	.picture-container {
 		display: inline-block;
+	}
+
+	.drop-zone-container {
+		display: inline-table;
 	}
 
 	.image-thumbs-actions {
@@ -17,5 +21,9 @@
 	.image-thumbs-actions .image-thumbs-img-wrapper {
 		width: 120px;
 		height: 120px;
+	}
+
+	.image-drop-wrapper {
+		width: 175px;
 	}
 }
