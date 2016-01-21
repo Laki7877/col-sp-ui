@@ -5,7 +5,7 @@
 			<? foreach ($choices as $i=>$choice): ?>
 				<label class="<?= $checkbox_class; ?>"><input type="checkbox" 
 					<?php if(isset($ng_model)): ?>
-					ng-model="<?= $ng_model ?>.Flag<?= $i ?>"
+					ng-model="<?= $ng_model ?>.Flag<?= $i + 1 ?>"
 					<?php endif; ?>
 				
 					 class="<?= $input_class; ?>"> <?= $choice ?></label>

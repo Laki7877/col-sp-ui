@@ -166,11 +166,17 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 clean.ControlFlags = fd.ControlFlags;
                 clean.Brand = fd.Brand;
                 clean.ShippingMethod = fd.ShippingMethod;
-                clean.EffectiveDate = fd.EffectiveDate;
-                clean.EffectiveTime = fd.EffectiveTime;
-                clean.ExpireDate = fd.ExpireDate;
-                clean.ExpireTime = fd.ExpireTime;
 
+                var cpdate = angular.copy(fd.ExpireDate);
+                clean.ExpireDate = moment(cpdate).format('LL');
+                clean.ExpireTime = moment(cpdate).format('HH:mm:ss');
+
+                cpdate = angular.copy(fd.EffectiveDate);
+
+                clean.EffectiveDate = moment(cpdate).format('LL');
+                clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
+
+                console.log('1-1', clean);
                 //clean.EffectiveDate = moment(fd.EffectiveDate + " " + fd.EffectiveTime);
                 //clean.EffectiveTime = fd.EffectiveTime;
                 //clean.ExpireDate = moment(fd.ExpireDate + " " + fd.ExpireTime);
