@@ -35,6 +35,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 		$scope.loading = true;
 		Shop.getLocalCategories($scope.shopId).then(function(data) {
 			$scope.loading = false;
+			console.log(data);
 			$scope.categories = Category.transformNestedSetToUITree(data);
 		}, function(err) {
 			$scope.alert.open(false, common.getError(err));
