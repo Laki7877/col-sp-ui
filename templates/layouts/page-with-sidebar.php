@@ -18,6 +18,12 @@
         <li class="item"><a href="">Product Images</a></li>
     </ul>
 
+    <ul class="sub-sidebar" style="display: none;" id="sub-sidebar-account">
+        <li class="sub-sidebar-header">Account</li>
+        <li class="item active margin-top-20"><a href="?p=user_account">User Accounts</a></li>
+        <li class="item"><a href="?p=add_product">User Roles</a></li>
+    </ul>
+
     <? $this->insert('components/modal-export-product', ['id' => 'export-product', 'newProductNum' => '1,500']) ?>
     <? $this->insert('components/modal-export-product-progressing', ['id' => 'export-product-progressing', 'percent' => '60']) ?>
     <? $this->insert('components/modal-export-product-complete', ['id' => 'export-product-complete']) ?>
