@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
   <div>
-    <? $this->insert('components/page-title-with-one-button', ['text' => 'User Accounts','button' => 'Create New User', 'button_class' => 'btn-width-xxxl', 'link' => '/?p=admin_add_account']) ?>
+    <? $this->insert('components/page-title-with-one-button', ['text' => 'User Accounts','button' => 'Create New User', 'button_class' => 'btn-width-xxxl', 'link' => '/?p=user_add_account']) ?>
     <? $this->insert('components/search-section', ['actions' => ['Delete'], 'serach_placeholder' => 'Search for Admin Accounts', 'optional_class' => 'hide-component']) ?>
     <div class="table-section">
       <table class="table table-curved table-border-none">
