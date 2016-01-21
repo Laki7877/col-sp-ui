@@ -5,7 +5,17 @@
 	    float: left;
 	    padding-left: 15px;	
 	}
+	
 	.picture-container {
 		display: inline-block;
+	}
+
+	.image-thumbs-actions {
+		width: 121px;
+	}
+
+	.image-thumbs-actions .image-thumbs-img-wrapper {
+		width: 120px;
+		height: 120px;
 	}
 }
