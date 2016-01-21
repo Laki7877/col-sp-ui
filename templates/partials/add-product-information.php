@@ -326,7 +326,7 @@
 						<div class="width-field-xxl">
 							<div class="multiple-input">
 								<div class="input-column">
-								
+
 									<div ng-template="common/input/text3"
 				                      ng-template-options="{
 				                        'label': 'Length',
@@ -349,12 +349,46 @@
 
 								</div>
 								<div class="input-column">
-									<label>Height</label>
-									<input type="text" class="form-control"  ng-model="formData.MasterVariant.Height"/>
+									<div ng-template="common/input/text3"
+				                      ng-template-options="{
+				                        'label': 'Height',
+				                        'error' : {
+				                              'messages': {
+				                              	'required': 'This is a required field',
+				                              	'pattern': 'Only numbers and decimals allowed'
+				                              },
+				                              'show': $root.isInvalid(addProductForm.MasterVariant_Height),
+				                              'conditions' : addProductForm.MasterVariant_Length.$error
+				                         }
+				                      }">
+				                      <input
+				                        class="form-control"
+				                        name="MasterVariant_Height"
+				                        ng-pattern="/^\d+(\.\d{1,2})?$/"
+				                        ng-model="formData.MasterVariant.Height"
+				                        ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Height) }"  />
+				                    </div>
 								</div>
 								<div class="input-column">
-									<label>Width</label>
-									<input type="text" class="form-control" ng-model="formData.MasterVariant.Width" />
+									<div ng-template="common/input/text3"
+				                      ng-template-options="{
+				                        'label': 'Width',
+				                        'error' : {
+				                              'messages': {
+				                              	'required': 'This is a required field',
+				                              	'pattern': 'Only numbers and decimals allowed'
+				                              },
+				                              'show': $root.isInvalid(addProductForm.MasterVariant_Width),
+				                              'conditions' : addProductForm.MasterVariant_Width.$error
+				                         }
+				                      }">
+				                      <input
+				                        class="form-control"
+				                        name="MasterVariant_Width"
+				                        ng-pattern="/^\d+(\.\d{1,2})?$/"
+				                        ng-model="formData.MasterVariant.Width"
+				                        ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Width) }"  />
+				                    </div>
 								</div>
 								<div class="input-column no-label select input-xl">
 									<select ng-model="formData.MasterVariant.DimensionUnit" class="form-control">
