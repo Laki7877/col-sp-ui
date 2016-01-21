@@ -37,7 +37,7 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Attribute Mapping</h2></div>
             <div class="form-section-content">
-                <div nc-tradable-select nc-template="common/input/tradable-select2" nc-model="formData.Attributes" nc-select-options="attributeOptions" nc-options="{ 'map' : { 'text': 'AttributeNameEn', 'value' : 'AttributeId' } }"></div> 
+                <div nc-tradable-select nc-test="test" nc-template="common/input/tradable-select2" nc-model="formData.Attributes" nc-select-options="attributeOptions" nc-options="{ 'map' : { 'text': 'AttributeNameEn', 'value' : 'AttributeId' } }"></div> 
             </div>
           </div>
 

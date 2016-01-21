@@ -16,6 +16,7 @@ require('angular-base64');
 require('ui-select');
 require('angular-sanitize');
 require('angular-scroll');
+require('angular-bootstrap-datetimepicker');
 
 //Internal dependencies
 var controllers = bulk.controllers;
@@ -24,7 +25,7 @@ var helpers = bulk.helpers;
 var directives = bulk.directives;
 var filters = bulk.filters;
 
-var app = angular.module('colspApp', ['duScroll','ngSanitize','ui.select', 'ngAnimate', 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
+var app = angular.module('colspApp', ['ui.bootstrap.datetimepicker', 'duScroll','ngSanitize','ui.select', 'ngAnimate', 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
 
 //App config
 .config(['$uibTooltipProvider', 'uiSelectConfig', function($tooltipProvider, uiSelectConfig) {

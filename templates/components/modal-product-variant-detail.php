@@ -37,8 +37,8 @@
 						</div>
 						<? $this->insert('components/forms/form-section-upload-new-product-image', ["uploader" => "uploaderModal", "images" => $model .".Images"]) ?>
 						<div class="form-section">
-							<div class="form-section-header"><input type="checkbox" /> <span>Embed Video</span></div>
-							<div class="form-section-content">
+							<div class="form-section-header"><input type="checkbox" ng-model="<?= $model ?>._embedVideo"/> <span style='margin-bottom: 25px'>Embed Video</span></div>
+							<div class="form-section-content" ng-if="<?= $model ?>._embedVideo">
 								<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 1", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "This is a tooltip", "ng_model" => $model . ".VideoLinks[0]"]) ?>
 								<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 2", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "This is a tooltip", "ng_model" => $model . ".VideoLinks[1]"]) ?>
 								<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 3", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "This is a tooltip", "ng_model" => $model . ".VideoLinks[2]"]) ?>
