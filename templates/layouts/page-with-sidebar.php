@@ -21,7 +21,7 @@
     <ul class="sub-sidebar" style="display: none;" id="sub-sidebar-account">
         <li class="sub-sidebar-header">Account</li>
         <li class="item active margin-top-20"><a href="?p=user_account">User Accounts</a></li>
-        <li class="item"><a href="?p=add_product">User Roles</a></li>
+        <li class="item"><a href="?p=user_role">User Roles</a></li>
     </ul>
 
     <? $this->insert('components/modal-export-product', ['id' => 'export-product', 'newProductNum' => '1,500']) ?>
