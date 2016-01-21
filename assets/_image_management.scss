@@ -11,7 +11,8 @@
 	}
 
 	.drop-zone-container {
-		display: inline-table;
+		display: inline-block;
+		vertical-align: top;
 	}
 
 	.image-thumbs-actions {
@@ -25,5 +26,13 @@
 
 	.image-drop-wrapper {
 		width: 175px;
+	}
+
+	.image-drop-zone {
+		height: 352px;
+	}
+
+	.image-drop-zone-text {
+		width: 110px;
 	}
 }

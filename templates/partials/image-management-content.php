@@ -15,11 +15,14 @@
 						<div class="padding-left-15">
 							<div class="col-xs-12">
 								<? $this->insert('components/image-thumbs-list', ["action" => 3, "images" => ["/assets/img/placeholder-no-image.png", "https://placehold.it/350x150", "https://placehold.it/350x550", "https://placehold.it/350x550", "https://placehold.it/350x550"]]) ?>
+								<? $this->insert('components/image-thumbs-list', ["action" => 3, "images" => ["/assets/img/placeholder-no-image.png", "https://placehold.it/350x150", "https://placehold.it/350x550", "https://placehold.it/350x550", "https://placehold.it/350x550"]]) ?>
 							</div>
 						</div>
 					</div>
 					<div class="drop-zone-container">
-						<? $this->insert('components/image-dropzone', ["id" => "product-images"]) ?>
+						<? $this->insert('components/image-dropzone', ["id" => "images-management", 'text' =>'Drop images here', 'select_element' => '<span><a href="#" data-trigger="file" data-target="#<?= $id ?>_input">Select Images</a></span>',
+							'alternative_class' => 'hide-component'
+						]) ?>
 					</div>
 				</div>
 			</div>
