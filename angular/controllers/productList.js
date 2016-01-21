@@ -19,6 +19,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 			if(bulk) {
 				bulk.fn();
 			}
+			$scope.checkAll = false;
 		} 
 	};
 	$scope.bulkOptions = [
@@ -202,7 +203,6 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 
 	//Select All checkbox
 	$scope.$watch('checkAll', function(newVal, oldVal){
-		console.log($scope.productList, "WWWWW");
 		$scope.productList.forEach(function(d){
 			d.checked = $scope.checkAll;
 		});
