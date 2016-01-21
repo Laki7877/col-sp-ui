@@ -62,6 +62,10 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 
 				if(arr.length > 0) {
 					Product.visible(arr).then(function() {
+						$scope.alert.success('Successfully changed');
+						$scope.reloadData();
+					}, function() {
+						$scope.alert.error(result);
 						$scope.reloadData();
 					});
 				}
@@ -80,6 +84,10 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 
 				if(arr.length > 0) {
 					Product.visible(arr).then(function() {
+						$scope.alert.success('Successfully changed');
+						$scope.reloadData();
+					}, function() {
+						$scope.alert.error(result);
 						$scope.reloadData();
 					});
 				}
@@ -114,6 +122,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 			Product.visible([row]).then(function() {
 			}, function(err) {
 				$scope.alert.error(err);
+				$scope.reloadData();
 			});
 		}
 	};

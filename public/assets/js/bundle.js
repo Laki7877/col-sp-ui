@@ -212,6 +212,8 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 					Attribute.deleteBulk(arr).then(function() {
 						$scope.alert.success('You have successfully remove entries');
 						$scope.reloadData();
+					}, function(result) {
+						$scope.alert.error(result);
 					});
 				}
 			}
@@ -456,6 +458,9 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 					AttributeSet.deleteBulk(arr).then(function() {
 						$scope.alert.success('Successfully deleted');
 						$scope.reloadData();
+					}, function(result) {
+						$scope.alert.error(result);
+						$scope.reloadData();
 					});
 				}
 			}
@@ -473,6 +478,10 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 
 				if(arr.length > 0) {
 					AttributeSet.visible(arr).then(function() {
+						$scope.alert.success('Successfully changed');
+						$scope.reloadData();
+					}, function(result) {
+						$scope.alert.alert(result);
 						$scope.reloadData();
 					});
 				}
@@ -491,6 +500,10 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 
 				if(arr.length > 0) {
 					AttributeSet.visible(arr).then(function() {
+						$scope.alert.success('Successfully changed');
+						$scope.reloadData();
+					}, function(result) {
+						$scope.alert.alert(result);
 						$scope.reloadData();
 					});
 				}
@@ -535,6 +548,7 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 			AttributeSet.visible([row]).then(function() {
 			}, function(err) {
 				$scope.alert.error(err);
+				$scope.reloadData();
 			});
 		}
 	};
@@ -736,6 +750,8 @@ module.exports = ['$scope','util', 'config', 'Brand', 'Alert', '$window', functi
 					Brand.deleteBulk(arr).then(function() {
 						$scope.alert.success('You have successfully remove entries.');
 						$scope.reloadData();
+					}, function(result) {
+						$scope.alert.error(result);
 					});
 				}
 			}
@@ -1896,6 +1912,10 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 
 				if(arr.length > 0) {
 					Product.visible(arr).then(function() {
+						$scope.alert.success('Successfully changed');
+						$scope.reloadData();
+					}, function() {
+						$scope.alert.error(result);
 						$scope.reloadData();
 					});
 				}
@@ -1914,6 +1934,10 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 
 				if(arr.length > 0) {
 					Product.visible(arr).then(function() {
+						$scope.alert.success('Successfully changed');
+						$scope.reloadData();
+					}, function() {
+						$scope.alert.error(result);
 						$scope.reloadData();
 					});
 				}
@@ -1948,6 +1972,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 			Product.visible([row]).then(function() {
 			}, function(err) {
 				$scope.alert.error(err);
+				$scope.reloadData();
 			});
 		}
 	};

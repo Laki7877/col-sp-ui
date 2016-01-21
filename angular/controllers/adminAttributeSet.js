@@ -39,6 +39,9 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 					AttributeSet.deleteBulk(arr).then(function() {
 						$scope.alert.success('Successfully deleted');
 						$scope.reloadData();
+					}, function(result) {
+						$scope.alert.error(result);
+						$scope.reloadData();
 					});
 				}
 			}
@@ -56,6 +59,10 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 
 				if(arr.length > 0) {
 					AttributeSet.visible(arr).then(function() {
+						$scope.alert.success('Successfully changed');
+						$scope.reloadData();
+					}, function(result) {
+						$scope.alert.alert(result);
 						$scope.reloadData();
 					});
 				}
@@ -74,6 +81,10 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 
 				if(arr.length > 0) {
 					AttributeSet.visible(arr).then(function() {
+						$scope.alert.success('Successfully changed');
+						$scope.reloadData();
+					}, function(result) {
+						$scope.alert.alert(result);
 						$scope.reloadData();
 					});
 				}
@@ -118,6 +129,7 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 			AttributeSet.visible([row]).then(function() {
 			}, function(err) {
 				$scope.alert.error(err);
+				$scope.reloadData();
 			});
 		}
 	};
