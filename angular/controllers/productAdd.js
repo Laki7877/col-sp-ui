@@ -49,6 +49,19 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			$scope.formData.MasterVariant.SalePrice = $scope.formData.MasterVariant.OriginalPrice;
 		}
 
+		if($scope.formData.ExpireDate){
+			var cpdate = angular.copy($scope.formData.ExpireDate);
+			$scope.formData.ExpireDate = moment(cpdate).format('LL');
+			$scope.formData.ExpireTime = moment(cpdate).format('HH:mm');
+		}
+
+		if($scope.formData.EffectiveDate){
+			var cpdate = angular.copy($scope.formData.EffectiveDate);
+			$scope.formData.EffectiveDate = moment(cpdate).format('LL');
+			$scope.formData.EffectiveTime = moment(cpdate).format('HH:mm');
+		}
+
+
 	};
 
 
