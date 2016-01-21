@@ -69,8 +69,10 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 	};
 
 	$scope.refreshBrands = function(q){
+		console.log("Refreshing brand with", q);
+		//if(q == "" || !q) return;
 		Brand.getAll({
-			pageSize: 5,
+			pageSize: 6,
 			searchText: q
 		}).then(function(dataSet){
 			$scope.availableBrands = dataSet.data;
@@ -142,8 +144,15 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 	}
 
 	$scope.formData = {
-		Brand: {},
-		MasterVariant: {},
+		Brand: {
+			id: null,
+			BrandNameEn: "Please select brand.."
+		},
+		MasterVariant: {
+			DimensionUnit: "MM",
+			WeightUnit: "G",
+			StockType: "Stock"
+		},
 		RelatedProducts: [],
 		MasterImages: [],
 		MasterImages360: [],

@@ -1180,8 +1180,10 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 	};
 
 	$scope.refreshBrands = function(q){
+		console.log("Refreshing brand with", q);
+		//if(q == "" || !q) return;
 		Brand.getAll({
-			pageSize: 5,
+			pageSize: 15,
 			searchText: q
 		}).then(function(dataSet){
 			$scope.availableBrands = dataSet.data;
@@ -1253,8 +1255,15 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 	}
 
 	$scope.formData = {
-		Brand: {},
-		MasterVariant: {},
+		Brand: {
+			id: null,
+			BrandNameEn: "Please select brand.."
+		},
+		MasterVariant: {
+			DimensionUnit: "MM",
+			WeightUnit: "G",
+			StockType: "Stock"
+		},
 		RelatedProducts: [],
 		MasterImages: [],
 		MasterImages360: [],
@@ -3182,7 +3191,7 @@ module.exports = ['$q', 'common', function($q, common){
 	//TODO: not clean
 	service.getAll = function(params){
 		var _params = {
-			_limit: 5,
+			_limit: params.pageSize || 5,
 			_order: params.orderBy || 'BrandId',
 			_limit: params.pageSize || 10,
 			_offset: params.page * params.pageSize || 0,
