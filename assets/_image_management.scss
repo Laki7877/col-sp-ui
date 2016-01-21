@@ -23,6 +23,21 @@
 		vertical-align: top;
 	}
 
+	.drop-zone-container.wait-for-approve {
+		.image-drop-zone {		
+			background-image: none;
+			background-color:  $color-grey;
+		}
+	}
+
+	.drop-zone-container.approved {
+		.image-drop-zone {		
+			background-image: none;
+			background-color:  $color-light-blue;
+			border: solid 1px $color-grey;
+		}
+	}
+
 	.image-thumbs-actions {
 		width: 121px;
 	}

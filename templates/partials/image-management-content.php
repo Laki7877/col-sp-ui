@@ -39,7 +39,7 @@
 						<div class="color-yellow"><i class="fa fa-clock-o padding-right-5"></i>Wait for Approval</div>
 					</div>
 					<div class="picture-container">
-						<div class="padding-left-15">
+						<div class="">
 							<div class="col-xs-12">
 								<div class="feature-text color-grey">Feature Image</div>								
 								<? $this->insert('components/image-thumbs-list', ["action" => 3, "images" => ["/assets/img/placeholder-no-image.png", "https://placehold.it/350x150", "https://placehold.it/350x550", "https://placehold.it/350x550", "https://placehold.it/350x550"]]) ?>
@@ -47,9 +47,9 @@
 							</div>
 						</div>
 					</div>
-					<div class="drop-zone-container">
-						<? $this->insert('components/image-dropzone', ["id" => "images-management", 'text' =>'Drop images here', 'select_element' => '<span><a href="#" data-trigger="file" data-target="#<?= $id ?>_input">Select Images</a></span>',
-							'alternative_class' => 'hide-component'
+					<div class="drop-zone-container wait-for-approve">
+						<? $this->insert('components/image-approval', ["id" => "images-management", 
+							'alternative_class' => 	'hide-component'
 						]) ?>
 					</div>
 				</div>
@@ -74,8 +74,8 @@
 							</div>
 						</div>
 					</div>
-					<div class="drop-zone-container">
-						<? $this->insert('components/image-dropzone', ["id" => "images-management", 'text' =>'Drop images here', 'select_element' => '<span><a href="#" data-trigger="file" data-target="#<?= $id ?>_input">Select Images</a></span>',
+					<div class="drop-zone-container approved">
+						<? $this->insert('components/image-approved', ["id" => "images-management", 'select_element' => '<span><a href="#" data-trigger="file" data-target="#<?= $id ?>_input">Click here to edit</a></span>',
 							'alternative_class' => 'hide-component'
 						]) ?>
 					</div>
