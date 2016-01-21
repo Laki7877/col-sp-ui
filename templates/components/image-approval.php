@@ -9,7 +9,7 @@ if (!isset($text)) {
 		<div class="image-drop-zone-text">
 			<p><i class="fa fa-ban fa-3x color-dark-grey"></i></p>
 			<p>Cannot upload</p>
-			<p>Wait for Approval</p>
+			<p><?=$text?></p>
 		</div>
 	</div>
 	<div class="image-select-alternative-text <?=$alternative_class?>">

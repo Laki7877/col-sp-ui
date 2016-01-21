@@ -49,7 +49,7 @@
 					</div>
 					<div class="drop-zone-container wait-for-approve">
 						<? $this->insert('components/image-approval', ["id" => "images-management", 
-							'alternative_class' => 	'hide-component'
+							'alternative_class' => 	'hide-component', 'text' => 'Wait for Approval'
 						]) ?>
 					</div>
 				</div>
@@ -128,9 +128,9 @@
 							</div>
 						</div>
 					</div>
-					<div class="drop-zone-container">
-						<? $this->insert('components/image-dropzone', ["id" => "images-management", 'text' =>'Drop images here', 'select_element' => '<span><a href="#" data-trigger="file" data-target="#<?= $id ?>_input">Select Images</a></span>',
-							'alternative_class' => 'hide-component'
+					<div class="drop-zone-container wait-for-approve">
+						<? $this->insert('components/image-approval', ["id" => "images-management", 
+							'alternative_class' => 	'hide-component', 'text' => 'Reach Max Photos'
 						]) ?>
 					</div>
 				</div>
