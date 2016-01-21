@@ -85,6 +85,14 @@
 		<div class="col-xs-12">
 			<div class="form-section image-management">
 				<div class="form-section-content">
+					<div class="col-xs-12">
+						<? $this->insert('components/alert-text', ['close' => true, 'color' => 'red', 'text' => 'Fail to upload photos', 'header_class' => 'font-weight-bold',
+						 'text_multilines' => ['- Wrong file format. Please upload only JPG or PNG file.'
+						,'- Reach over maximum of 10 images per products'
+						, '- Images are too large. Maximum size:2000 x 2000 px and not over 1 mb per images.'
+						, '- Some wrong go wrong with the server'
+						]]) ?>
+					</div>
 					<div class="content-text">
 						<div>Nike Air Max 2015</div>
 						<div>Limited Edition</div>

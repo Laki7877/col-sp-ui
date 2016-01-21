@@ -2,6 +2,8 @@
 
 <?php $this->start('page-body') ?>
   <div>
+    <? $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => "Successfully save changes. However,your changes won't be online until you published your products." ]) ?>
+
     <? $this->insert('components/page-title-with-buttons', ['text' => 'Image Management'
       , 'buttons' => [
         ['link' => '#', 'class' => 'btn-white btn-width-xl', 'attributes' => '', 'name' => 'View Guideline'],
