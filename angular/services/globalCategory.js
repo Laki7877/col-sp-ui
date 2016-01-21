@@ -36,7 +36,17 @@ module.exports = ['common', '$q' , function(common, $q) {
 			url: '/GlobalCategories',
 			data: data
 		});
-	}
+	};
 
+	service.getAllForSeller = function(data) {
+		//TODO: change this to user-validated visibility for seller...
+		var array = [];
+		angular.forEach(data, function(item) {
+			if (item.Visibility) {
+				array.push(item);
+			}
+		});
+		return array;
+	};
 	return service;
 }];

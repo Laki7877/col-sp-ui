@@ -10,6 +10,9 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 	$scope.formDataSerialized = {};
 	$scope.edit = 0;
 	$scope.saving = false;
+	$scope.test = function(i) {
+		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);
+	};
 
 	$window.onbeforeunload = function (e) {
 

@@ -11,10 +11,10 @@
   </div>
 
   <div class="center-column">
-    <div class="trade-button" ng-class="{'active' : activeLeft >= 0 && !contain(selectable[activeLeft])}" ng-click="transfer(true)"> 
+    <div class="trade-button" ng-class="active(false)" ng-click="transfer(true)"> 
        <i class="fa fa-chevron-right"></i>
     </div>
-    <div class="trade-button" ng-class="{'active' : activeRight >= 0}" ng-click="transfer(false)"> 
+    <div class="trade-button" ng-class="active(true)" ng-click="transfer(false)"> 
       <i class="fa fa-chevron-left"></i>
     </div>
   </div>
@@ -25,7 +25,7 @@
     </div>
     <div class="clickable-list">
       <ul class="content-column">
-        <li ng-repeat="item in model track by $index" ng-class="{ 'active' : activeRight == model.indexOf(item) }" ng-click="select(model.indexOf(item), false)">
+        <li ng-repeat="item in model track by $index" ng-class="{ 'active' : activeRight == model.indexOf(item), 'disabled' : item.ProductCount > 0 }" ng-click="select(model.indexOf(item), false)">
           {{ options.map.text == null ? item : item[options.map.text] }}
         </li>
       </ul>

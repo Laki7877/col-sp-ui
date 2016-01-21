@@ -141,7 +141,10 @@
 											<h2>Map Attribute Set</h2>
 										</div>
 										<div class="form-section-content modal-custom">
-											<div nc-tradable-select nc-model="editingCategory.AttributeSets" nc-select-options="attributeSetOptions" nc-options="{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }"></div> 
+											<div nc-tradable-select nc-test="test" nc-model="editingCategory.AttributeSets" nc-select-options="attributeSetOptions" nc-options="{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }"></div> 
+											<div class="row col-xs-12">
+							                  <p style="margin-left: 30px; margin-top:15px"><span class="color-red">*</span> If category is mapped to a product, attribute set mapping cannot be changed</p>
+							                </div>
 										</div>
 									</div>
 						            <div class="form-section">
