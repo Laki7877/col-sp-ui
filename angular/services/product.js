@@ -183,6 +183,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 //Move first entry of Categories out into Category
                 clean.GlobalCategory = clean.GlobalCategories[0].CategoryId;
                 clean.GlobalCategories.shift();
+
+
             } catch (ex) {
                 console.warn("shift global cat", ex);
             }
@@ -190,6 +192,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             try {
                 clean.LocalCategory = clean.LocalCategories[0].CategoryId;
                 clean.LocalCategories.shift();
+
+
             } catch (ex) {
                 console.warn("shfiting local cat", ex);
                 //Local cat can be null
@@ -344,7 +348,12 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
             if (invFd.LocalCategory){
                 LocalCategory.getOne(invFd.LocalCategory).then(function(locat) {
-                    invFd.LocalCategories[0] = locat;
+                    invFd.LocalCategories.unshift(locat);
+
+                    if(invFd.LocalCategories.length > 3){
+                        invFd.LocalCategories.pop();
+                    }
+            
                 })
             }
 
@@ -381,9 +390,13 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 }
             }
 
-            invFd.GlobalCategories[0] = {
+            invFd.GlobalCategories.unshift({
                 CategoryId: invFd.GlobalCategory
-            };
+            });
+
+            if(invFd.GlobalCategories.length > 3){
+                invFd.GlobalCategories.pop();
+            }
 
             delete invFd.GlobalCategory;
             delete invFd.LocalCategory;
