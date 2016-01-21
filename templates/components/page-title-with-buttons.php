@@ -11,7 +11,7 @@
     <h1 class="float-left page-header-title"><?= $text ?></h1>
     <span class="float-right page-header-action">
       <? foreach ($buttons as $b): ?>
-        <a href="<?= $b['link'] ?>" <?= $b['attributes'] ?> class="btn margin-right-10 <?= $b['class'] ?>">
+        <a href="<?= $b['link'] ?>" <?= $b['attributes'] ?> class="btn margin-left-10 <?= $b['class'] ?>">
           <span class=""><?= $b['name'] ?></span>
         </a>
       <? endforeach ?>
