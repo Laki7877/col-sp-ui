@@ -17,7 +17,7 @@
 					</div>
 					<div class="confirmation-action no-margin">
 						<button class="btn btn-white" data-dismiss="modal">Cancel</button>
-						<button type="button" class="btn btn-blue">Continue</button>
+						<button type="button" class="btn btn-blue" data-toggle="modal" data-target="#export-product-progressing">Continue</button>
 					</div> <!-- end .col-xs-12 -->
 				</div> <!-- end .row -->
 			</div> <!-- end .modal-body -->

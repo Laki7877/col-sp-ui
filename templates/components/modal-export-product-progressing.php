@@ -21,7 +21,8 @@ if (isset($percent)) $progress = $percent;
 					</div>
 					<div class="confirmation-action no-margin">
 						<button class="btn btn-white" data-dismiss="modal">Cancel</button>
-						<button type="button" disabled class="btn btn-grey">Download</button>
+						<button type="button" data-toggle="modal" data-target="#export-product-complete" class="btn btn-blue">Download</button>
+						<!-- <button type="button" disabled class="btn btn-grey">Download</button> -->
 					</div> <!-- end .col-xs-12 -->
 				</div> <!-- end .row -->
 			</div> <!-- end .modal-body -->

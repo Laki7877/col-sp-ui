@@ -2,7 +2,11 @@
 
 <?php $this->start('page-body') ?>
 	<div>
-    <? $this->insert('components/page-title-with-buttons', ['text' => 'Products']) ?>
+    <? $this->insert('components/page-title-with-buttons', ['text' => 'Products', 'buttons' => [
+      ['link' => '#', 'class' => 'btn-white', 'attributes' => 'data-toggle="modal" data-target="#export-product"', 'name' => 'Export'],
+      ['link' => '#', 'class' => 'btn-white', 'attributes' => '', 'name' => 'Import'],
+      ['link' => '/?p=global_category', 'class' => 'btn-blue btn-width-xl', 'attributes' => '', 'name' => 'Add Product'],
+    ]]) ?>
     <? $this->insert('components/search-section', ['actions' => ['Export Products', 'Delete Products', 'Hide Products', 'Show Products', 'Publish Products']]) ?>
     <div class="filter-section">
       <div class="filter-container">
