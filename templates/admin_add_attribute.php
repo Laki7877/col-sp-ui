@@ -5,7 +5,10 @@
     <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute/" . $title, 'urls' => ['/admin/attributes'], 'class' => '{ disabled: form.$invalid}']) ?>
     <? $this->insert('components/modal-warning-leave-page', ['id' => 'leave-page-warning', 'exit' => 'cancel(blocker)', 'save' => 'save()']) ?>
     <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()">{{alert.message}}</div>
-    <form name="form" class="ah-form sticky-mainform-action margin-top-30" novalidate>
+    <div ng-show="saving">
+      <img src="/assets/img/loader.gif" width="40"> <small>Saving Attribute..</small>
+    </div>
+    <form ng-show="!saving" name="form" class="ah-form sticky-mainform-action margin-top-30" novalidate>
       <div class="row">
         <div class="col-xs-12">
           <div class="form-section">

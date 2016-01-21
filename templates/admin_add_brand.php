@@ -7,8 +7,10 @@
     <div class="row margin-top-30">
       <div class="col-xs-12">
       <? $this->insert('components/modal-product-image', ['id' => 'product-image-zoom']) ?>
-
-        <form class="ah-form sticky-mainform-action" name="form">
+        <div ng-show="saving">
+          <img src="/assets/img/loader.gif" width="40"> <small>Saving Brand..</small>
+        </div>
+        <form ng-show="!saving" class="ah-form sticky-mainform-action" name="form">
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-section">

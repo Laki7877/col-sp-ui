@@ -22,6 +22,24 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 		$window.location.href = '/admin/brands';
 	};
 
+	$window.onbeforeunload = function (e) {
+
+		if(!$scope.form.$dirty){
+			//not dirty
+			return null;
+		}
+
+		var message = "Your changes will not be saved.",
+		e = e || window.event;
+		// For IE and Firefox
+		if (e) {
+		  e.returnValue = message;
+		}
+
+		// For Safari
+		return message;
+	};
+
 	$scope.$on('delete', function(e, item, arr, indx, uploader){
 		angular.forEach(uploader.queue, function(i) {
 			if(i.indx == indx) {
@@ -81,17 +99,20 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 		$scope.saving = true;
 		$scope.formDataSerialized = Brand.serialize($scope.formData);
 		if($scope.edit > 0) {
-			Brand.update($scope.edit, $scope.formDataSerialized).then(function(res){			
+			Brand.update($scope.edit, $scope.formDataSerialized).then(function(res){
+				$scope.alert.success();
 				$scope.saving = false;
-				$('#success').submit();		
+				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
 				$scope.alert.error(err);
 			});
 		} else {
-			Brand.publish($scope.formDataSerialized).then(function(res){			
+			Brand.publish($scope.formDataSerialized).then(function(res){	
+				$scope.alert.success();
+				$scope.edit = res.BrandId;				
 				$scope.saving = false;
-				$('#success').submit();		
+				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
 				$scope.alert.error(err);

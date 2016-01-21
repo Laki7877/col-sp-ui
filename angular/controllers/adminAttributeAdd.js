@@ -12,7 +12,23 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function
 	$scope.edit = 0;
 
 	//Block normal href flow
-	
+	$window.onbeforeunload = function (e) {
+
+		if(!$scope.form.$dirty){
+			//not dirty
+			return null;
+		}
+
+		var message = "Your changes will not be saved.",
+		e = e || window.event;
+		// For IE and Firefox
+		if (e) {
+		  e.returnValue = message;
+		}
+
+		// For Safari
+		return message;
+	};	
 
 	$scope.init = function(params) {
 		if(angular.isDefined(params)) {
@@ -49,22 +65,23 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function
 		if ($scope.edit) {
 			$scope.saving = true;
 			Attribute.update($scope.edit, $scope.formDataSerialized).then(function(data) {
+				$scope.alert.success();
 				$scope.saving = false;
-				$('#success').submit();
+				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
-				
 				$scope.alert.error(err);
 			});
 		}
 		else {
 			$scope.saving = true;
 			Attribute.create($scope.formDataSerialized).then(function(data) {
+				$scope.alert.success();
+				$scope.edit = data.AttributeId;				
 				$scope.saving = false;
-				$('#success').submit();
+				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
-				
 				$scope.alert.error(err);
 				console.log(err);
 			});

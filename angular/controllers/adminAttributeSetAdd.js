@@ -11,6 +11,24 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 	$scope.edit = 0;
 	$scope.saving = false;
 
+	$window.onbeforeunload = function (e) {
+
+		if(!$scope.form.$dirty){
+			//not dirty
+			return null;
+		}
+
+		var message = "Your changes will not be saved.",
+		e = e || window.event;
+		// For IE and Firefox
+		if (e) {
+		  e.returnValue = message;
+		}
+
+		// For Safari
+		return message;
+	};
+	
 	$scope.loadAttribute = function() {
 		Attribute.getAll().then(function(data) {
 			$scope.attributeOptions = data;
@@ -49,8 +67,9 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 		if ($scope.edit) {
 			$scope.saving = true;
 			AttributeSet.update($scope.edit, $scope.formDataSerialized).then(function(data) {
+				$scope.alert.success();				
 				$scope.saving = false;
-				$('#success').submit();
+				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
 				$scope.alert.error(err);
@@ -59,8 +78,10 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 		else {
 			$scope.saving = true;
 			AttributeSet.create($scope.formDataSerialized).then(function(data) {
+				$scope.alert.success();
+				$scope.edit = data.AttributeSetId;				
 				$scope.saving = false;
-				$('#success').submit();
+				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
 				$scope.alert.error(err);

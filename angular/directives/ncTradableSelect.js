@@ -99,8 +99,10 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 			$scope.select = function($index, direction) {
 				if(direction) {
 					$scope.activeLeft = $index;
+					$scope.activeRight = -1;
 				} else {
 					$scope.activeRight = $index;
+					$scope.activeLeft = -1;
 				}
 			};
 			$scope.contain = function(item) {

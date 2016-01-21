@@ -14,7 +14,7 @@
 				<span class="no-children-row"
 					ng-if="$parentNodesScope.depth() == 0"
 					data-nodrag></span>
-				<span class="inline-block">{{ node.NameEn }}</span>
+				<a class="inline-block" ng-click="$emit('openEditGlobalCategory', node)" data-toggle="modal" data-target="#modal-category-detail" data-nodrag>{{ node.NameEn }}</a>
 			</span>
 		</span>
 		<span class="col-xs-1">{{ node.CategoryAbbreviation }}</span>

@@ -337,7 +337,23 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function
 	$scope.edit = 0;
 
 	//Block normal href flow
-	
+	$window.onbeforeunload = function (e) {
+
+		if(!$scope.form.$dirty){
+			//not dirty
+			return null;
+		}
+
+		var message = "Your changes will not be saved.",
+		e = e || window.event;
+		// For IE and Firefox
+		if (e) {
+		  e.returnValue = message;
+		}
+
+		// For Safari
+		return message;
+	};	
 
 	$scope.init = function(params) {
 		if(angular.isDefined(params)) {
@@ -374,22 +390,23 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function
 		if ($scope.edit) {
 			$scope.saving = true;
 			Attribute.update($scope.edit, $scope.formDataSerialized).then(function(data) {
+				$scope.alert.success();
 				$scope.saving = false;
-				$('#success').submit();
+				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
-				
 				$scope.alert.error(err);
 			});
 		}
 		else {
 			$scope.saving = true;
 			Attribute.create($scope.formDataSerialized).then(function(data) {
+				$scope.alert.success();
+				$scope.edit = data.AttributeId;				
 				$scope.saving = false;
-				$('#success').submit();
+				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
-				
 				$scope.alert.error(err);
 				console.log(err);
 			});
@@ -599,6 +616,24 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 	$scope.edit = 0;
 	$scope.saving = false;
 
+	$window.onbeforeunload = function (e) {
+
+		if(!$scope.form.$dirty){
+			//not dirty
+			return null;
+		}
+
+		var message = "Your changes will not be saved.",
+		e = e || window.event;
+		// For IE and Firefox
+		if (e) {
+		  e.returnValue = message;
+		}
+
+		// For Safari
+		return message;
+	};
+	
 	$scope.loadAttribute = function() {
 		Attribute.getAll().then(function(data) {
 			$scope.attributeOptions = data;
@@ -637,8 +672,9 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 		if ($scope.edit) {
 			$scope.saving = true;
 			AttributeSet.update($scope.edit, $scope.formDataSerialized).then(function(data) {
+				$scope.alert.success();				
 				$scope.saving = false;
-				$('#success').submit();
+				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
 				$scope.alert.error(err);
@@ -647,8 +683,10 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 		else {
 			$scope.saving = true;
 			AttributeSet.create($scope.formDataSerialized).then(function(data) {
+				$scope.alert.success();
+				$scope.edit = data.AttributeSetId;				
 				$scope.saving = false;
-				$('#success').submit();
+				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
 				$scope.alert.error(err);
@@ -840,6 +878,24 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 		$window.location.href = '/admin/brands';
 	};
 
+	$window.onbeforeunload = function (e) {
+
+		if(!$scope.form.$dirty){
+			//not dirty
+			return null;
+		}
+
+		var message = "Your changes will not be saved.",
+		e = e || window.event;
+		// For IE and Firefox
+		if (e) {
+		  e.returnValue = message;
+		}
+
+		// For Safari
+		return message;
+	};
+
 	$scope.$on('delete', function(e, item, arr, indx, uploader){
 		angular.forEach(uploader.queue, function(i) {
 			if(i.indx == indx) {
@@ -899,17 +955,20 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 		$scope.saving = true;
 		$scope.formDataSerialized = Brand.serialize($scope.formData);
 		if($scope.edit > 0) {
-			Brand.update($scope.edit, $scope.formDataSerialized).then(function(res){			
+			Brand.update($scope.edit, $scope.formDataSerialized).then(function(res){
+				$scope.alert.success();
 				$scope.saving = false;
-				$('#success').submit();		
+				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
 				$scope.alert.error(err);
 			});
 		} else {
-			Brand.publish($scope.formDataSerialized).then(function(res){			
+			Brand.publish($scope.formDataSerialized).then(function(res){	
+				$scope.alert.success();
+				$scope.edit = res.BrandId;				
 				$scope.saving = false;
-				$('#success').submit();		
+				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
 				$scope.alert.error(err);
@@ -961,6 +1020,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 	$scope.reload = function() {
 		$scope.loading = true;
 		GlobalCategory.getAll().then(function(data) {
+			console.log(data);
 			$scope.categories = Category.transformNestedSetToUITree(data);
 			$scope.loading = false;
 			console.log($scope.categories);
@@ -1150,7 +1210,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		// For Safari
 		return message;
 	};
-
 
 	var cleanData = function(){
 		if( !$scope.formData.MasterVariant.SalePrice ||
@@ -2192,8 +2251,10 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 			$scope.select = function($index, direction) {
 				if(direction) {
 					$scope.activeLeft = $index;
+					$scope.activeRight = -1;
 				} else {
 					$scope.activeRight = $index;
+					$scope.activeLeft = -1;
 				}
 			};
 			$scope.contain = function(item) {
@@ -2562,6 +2623,8 @@ module.exports = ['$http', '$q', 'storage', 'config', function ($http, $q, stora
                     return response.message;
                 if(response.error)
                     return response.error;
+                if(response.Message)
+                    return response.Message;
                 return response;
             }
         };
@@ -3306,6 +3369,8 @@ module.exports = ['config', function(config) {
 
             //Remove subnodes ptr
             delete cnode['nodes'];  
+            delete cnode['Depth'];  
+            delete cnode['parent'];  
             delete cnode['reverse'];  
             set.push(cnode);
         };
@@ -3350,9 +3415,12 @@ module.exports = ['config', function(config) {
                         pivot.nodes.push(item);
                     } else {
                         //Run reverse on current pivot if any
-                        if(pivot.nodes.length > 0) {
+                        if(pivot.nodes.length > 0 && angular.isUndefined(pivot.reverse)) {
                             pivot.nodes = reverse(pivot.nodes);
-                            pivot.reverse = true; 
+                            pivot.reverse = true;
+                            angular.forEach(pivot.nodes, function(child) {
+                                pivot.ProductCount += child.ProductCount;
+                            });
                         }
                         
                         //Change pivot
@@ -3365,6 +3433,9 @@ module.exports = ['config', function(config) {
             if (angular.isUndefined(pivot.reverse) && pivot.nodes.length > 0) {
                 pivot.nodes = reverse(pivot.nodes);
                 pivot.reverse = true;
+                angular.forEach(pivot.nodes, function(child) {
+                    pivot.ProductCount += child.ProductCount;
+                });
             }
 
             return array;
@@ -4159,7 +4230,7 @@ module.exports = ['common', function(common) {
 },{}],46:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Jan 21 2016 13:00:46 GMT+0700 (ICT)
+ * Thu Jan 21 2016 13:12:29 GMT+0700 (ICT)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -4220,7 +4291,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('global_category/nodes',
     "<div class=\"category-content row no-margin\" ui-tree-handle style=\"cursor: pointer\"><div class=category-content-padding><span class=\"col-xs-7 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\n" +
-    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this) data-nodrag></i> <i class=\"fa fa-chevron-right caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\" data-nodrag></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\" data-nodrag></span> <span class=inline-block>{{ node.NameEn }}</span></span></span> <span class=col-xs-1>{{ node.CategoryAbbreviation }}</span> <span class=col-xs-1>{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\" ng-click=\"node.Visibility = !node.Visibility\" data-nodrag><i ng-class=\"{\t'fa fa-eye color-dark-grey icon-size-20' : node.Visibility,\n" +
+    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this) data-nodrag></i> <i class=\"fa fa-chevron-right caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\" data-nodrag></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\" data-nodrag></span> <a class=inline-block ng-click=\"$emit('openEditGlobalCategory', node)\" data-toggle=modal data-target=#modal-category-detail data-nodrag>{{ node.NameEn }}</a></span></span> <span class=col-xs-1>{{ node.CategoryAbbreviation }}</span> <span class=col-xs-1>{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\" ng-click=\"node.Visibility = !node.Visibility\" data-nodrag><i ng-class=\"{\t'fa fa-eye color-dark-grey icon-size-20' : node.Visibility,\n" +
     "\t\t\t\t\t\t\t'fa fa-eye-slash color-grey icon-size-20' : !node.Visibility }\"></i></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span> <span class=\"col-xs-1 text-align-center\" data-nodrag><a href=javascript:; uib-popover-template=\"'global_category/nodes_action'\" popover-placement=bottom popover-append-to-body=true popover-any><i class=\"fa fa-gear color-dark-grey icon-size-20\"></i> <i class=\"fa fa-caret-down color-dark-grey\"></i></a></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'global_category/nodes'\"></li></ol>"
   );
 
@@ -4232,7 +4303,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('local_category/nodes',
     "<div class=\"category-content row no-margin\" ui-tree-handle style=\"cursor: pointer\"><div class=category-content-padding><span class=\"col-xs-8 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\n" +
-    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this) data-nodrag></i> <i class=\"fa fa-chevron-right caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\" data-nodrag></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\" data-nodrag></span> <span class=inline-block>{{ node.NameEn }}</span></span></span> <span class=col-xs-1>{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\" ng-click=\"node.Visibility = !node.Visibility\" data-nodrag><i ng-class=\"{\t'fa fa-eye color-dark-grey icon-size-20' : node.Visibility,\n" +
+    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this) data-nodrag></i> <i class=\"fa fa-chevron-right caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\" data-nodrag></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\" data-nodrag></span> <a class=inline-block ng-click=\"$emit('openEditLocalCategory', node)\" data-toggle=modal data-target=#local-category-detail data-nodrag>{{ node.NameEn }}</a></span></span> <span class=col-xs-1>{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\" ng-click=\"node.Visibility = !node.Visibility\" data-nodrag><i ng-class=\"{\t'fa fa-eye color-dark-grey icon-size-20' : node.Visibility,\n" +
     "\t\t\t\t\t\t\t'fa fa-eye-slash color-grey icon-size-20' : !node.Visibility }\"></i></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span> <span class=\"col-xs-1 text-align-center\" data-nodrag><a href=javascript:; uib-popover-template=\"'local_category/nodes_action'\" popover-placement=bottom popover-append-to-body=true popover-any><i class=\"fa fa-gear color-dark-grey icon-size-20\"></i> <i class=\"fa fa-caret-down color-dark-grey\"></i></a></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'local_category/nodes'\"></li></ol>"
   );
 
