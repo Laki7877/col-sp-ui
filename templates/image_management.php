@@ -6,7 +6,7 @@
 
     <? $this->insert('components/page-title-with-buttons', ['text' => 'Image Management'
       , 'buttons' => [
-        ['link' => '#', 'class' => 'btn-white btn-width-xl', 'attributes' => '', 'name' => 'View Guideline'],
+        ['link' => '#', 'class' => 'btn-white btn-width-xl', 'attributes' => 'data-toggle="modal" data-target="#image-guideline"', 'name' => 'View Guideline'],
         ['link' => '#', 'class' => 'btn-blue', 'attributes' => '', 'name' => 'Save']
         ]
         ]) ?>
@@ -64,4 +64,8 @@
     </div>
   </div>
  
+<!-- data-toggle="modal" data-target="#import-product"' -->
+  <? $this->insert('components/modal-guideline', ['id' => 'image-guideline', 'header' => 'Image Style Guideline']) ?>
+
+
 <?php $this->stop() ?>
