@@ -41,6 +41,8 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 					Attribute.deleteBulk(arr).then(function() {
 						$scope.alert.success('You have successfully remove entries');
 						$scope.reloadData();
+					}, function(result) {
+						$scope.alert.error(result);
 					});
 				}
 			}
