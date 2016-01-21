@@ -4117,10 +4117,16 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
             invFd.AttributeSet = FullAttributeSet;
             invFd.PrepareDay = invFd.PrepareDay || '';
-            invFd.EffectiveDate = moment(invFd.EffectiveDate + " " + invFd.EffectiveTime);
-            invFd.EffectiveTime = invFd.EffectiveTime;
-            invFd.ExpireDate = moment(invFd.ExpireDate + " " + invFd.ExpireTime);
-            invFd.ExpireTime = invFd.ExpireTime;
+
+            if(invFd.EffectiveDate != "" && invFd.EffectiveDate != null){
+                 invFd.EffectiveDate = moment(invFd.EffectiveDate + " " + invFd.EffectiveTime);
+                 invFd.EffectiveTime = invFd.EffectiveTime;
+            }
+           
+            if(invFd.ExpireDate != "" && invFd.ExpireDate != null){
+                invFd.ExpireDate = moment(invFd.ExpireDate + " " + invFd.ExpireTime);
+                invFd.ExpireTime = invFd.ExpireTime;
+            }
 
             var BrandId = invFd.Brand.BrandId;
                 Brand.getOne(BrandId).then(function(data) {
@@ -4204,7 +4210,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                     if(invFd.LocalCategories.length > 3){
                         invFd.LocalCategories.pop();
                     }
-            
+
                 })
             }
 
