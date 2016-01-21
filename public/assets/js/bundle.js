@@ -1248,14 +1248,14 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			$scope.formData.MasterVariant.SalePrice = $scope.formData.MasterVariant.OriginalPrice;
 		}
 
-		if($scope.formData.ExpireDate){
+		/*if($scope.formData.ExpireDate){
 			var cpdate = angular.copy($scope.formData.ExpireDate);
 			if(moment.isDate(cpdate)){
 				$scope.formData.ExpireDate = moment(cpdate).format('LL');
-				$scope.formData.ExpireTime = moment(cpdate).format('HH:mm');
+				$scope.formData.ExpireTime = moment(cpdate).format('HH:mm:ss');
 			}else{
-				$scope.formData.ExpireDate = "";
-				$scope.formData.ExpireTime = "";
+				$scope.formData.ExpireDate = $scope.formData.ExpireDate;
+				$scope.formData.ExpireTime = $scope.formData.ExpireTime;
 			}
 		}
 
@@ -1263,12 +1263,12 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			var cpdate = angular.copy($scope.formData.EffectiveDate);
 			if(moment.isDate(cpdate)){
 				$scope.formData.EffectiveDate = moment(cpdate).format('LL');
-				$scope.formData.EffectiveTime = moment(cpdate).format('HH:mm');
+				$scope.formData.EffectiveTime = moment(cpdate).format('HH:mm:ss');
 			}else{
-				$scope.formData.EffectiveDate = "";
-				$scope.formData.EffectiveTime = "";
+				$scope.formData.EffectiveDate = $scope.formData.EffectiveDate;
+				$scope.formData.EffectiveTime = $scope.formData.EffectiveTime;
 			}
-		}
+		}*/
 
 
 	};
@@ -1381,7 +1381,9 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		Variants: [],
 		GlobalCategories: [null, null, null],
 		LocalCategories: [null, null, null],
-		SEO: {},
+		SEO: {
+			ProductBoostingWeight: 10000
+		},
 		ControlFlags: [],
 		Keywords: []
 	};
@@ -4064,11 +4066,17 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 clean.ControlFlags = fd.ControlFlags;
                 clean.Brand = fd.Brand;
                 clean.ShippingMethod = fd.ShippingMethod;
-                clean.EffectiveDate = fd.EffectiveDate;
-                clean.EffectiveTime = fd.EffectiveTime;
-                clean.ExpireDate = fd.ExpireDate;
-                clean.ExpireTime = fd.ExpireTime;
 
+                var cpdate = angular.copy(fd.ExpireDate);
+                clean.ExpireDate = moment(cpdate).format('LL');
+                clean.ExpireTime = moment(cpdate).format('HH:mm:ss');
+
+                cpdate = angular.copy(fd.EffectiveDate);
+
+                clean.EffectiveDate = moment(cpdate).format('LL');
+                clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
+
+                console.log('1-1', clean);
                 //clean.EffectiveDate = moment(fd.EffectiveDate + " " + fd.EffectiveTime);
                 //clean.EffectiveTime = fd.EffectiveTime;
                 //clean.ExpireDate = moment(fd.ExpireDate + " " + fd.ExpireTime);
@@ -4081,6 +4089,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 //Move first entry of Categories out into Category
                 clean.GlobalCategory = clean.GlobalCategories[0].CategoryId;
                 clean.GlobalCategories.shift();
+
+
             } catch (ex) {
                 console.warn("shift global cat", ex);
             }
@@ -4088,6 +4098,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             try {
                 clean.LocalCategory = clean.LocalCategories[0].CategoryId;
                 clean.LocalCategories.shift();
+
+
             } catch (ex) {
                 console.warn("shfiting local cat", ex);
                 //Local cat can be null
@@ -4160,10 +4172,16 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
             invFd.AttributeSet = FullAttributeSet;
             invFd.PrepareDay = invFd.PrepareDay || '';
-            invFd.EffectiveDate = moment(invFd.EffectiveDate + " " + invFd.EffectiveTime);
-            invFd.EffectiveTime = invFd.EffectiveTime;
-            invFd.ExpireDate = moment(invFd.ExpireDate + " " + invFd.ExpireTime);
-            invFd.ExpireTime = invFd.ExpireTime;
+
+            if(invFd.EffectiveDate != "" && invFd.EffectiveDate != null){
+                 invFd.EffectiveDate = moment(invFd.EffectiveDate + " " + invFd.EffectiveTime);
+                 invFd.EffectiveTime = invFd.EffectiveTime;
+            }
+           
+            if(invFd.ExpireDate != "" && invFd.ExpireDate != null){
+                invFd.ExpireDate = moment(invFd.ExpireDate + " " + invFd.ExpireTime);
+                invFd.ExpireTime = invFd.ExpireTime;
+            }
 
             var BrandId = invFd.Brand.BrandId;
                 Brand.getOne(BrandId).then(function(data) {
@@ -4242,7 +4260,12 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
             if (invFd.LocalCategory){
                 LocalCategory.getOne(invFd.LocalCategory).then(function(locat) {
-                    invFd.LocalCategories[0] = locat;
+                    invFd.LocalCategories.unshift(locat);
+
+                    if(invFd.LocalCategories.length > 3){
+                        invFd.LocalCategories.pop();
+                    }
+
                 })
             }
 
@@ -4279,9 +4302,13 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 }
             }
 
-            invFd.GlobalCategories[0] = {
+            invFd.GlobalCategories.unshift({
                 CategoryId: invFd.GlobalCategory
-            };
+            });
+
+            if(invFd.GlobalCategories.length > 3){
+                invFd.GlobalCategories.pop();
+            }
 
             delete invFd.GlobalCategory;
             delete invFd.LocalCategory;
@@ -4403,7 +4430,7 @@ module.exports = ['common', function(common) {
 },{}],48:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Jan 21 2016 20:32:20 GMT+0700 (Russia TZ 6 Standard Time)
+ * Thu Jan 21 2016 20:55:53 GMT+0700 (Russia TZ 6 Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
