@@ -258,20 +258,18 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             invFd.AttributeSet = FullAttributeSet;
             invFd.PrepareDay = invFd.PrepareDay || '';
 
-            try {
-                //Load Brand
-                var BrandId = invFd.Brand.BrandId;
+            var BrandId = invFd.Brand.BrandId;
                 Brand.getOne(BrandId).then(function(data) {
                     invFd.Brand = data;
                     delete invFd.Brand.$id;
                     invFd.Brand.id = BrandId;
                 }, function() {
                     console.log("brand resolve failure");
-                });
-            } catch (ex) {
-                invFd.Brand = undefined;
-            }
-
+                    invFd.Brand = {
+                        BrandId: null,
+                        BrandNameEn: 'Please select brand..'
+                    };
+            });
 
             var invMapper = {
                 VideoLinks: function(m) {
