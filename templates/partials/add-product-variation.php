@@ -91,13 +91,14 @@
 						<tbody>
 								<tr ng-repeat="pair in formData.Variants track by $index">
 									<td class="column-text-ellipsis" ng-class="{'opacity-50': !pair.Visibility}">
-										{{ pair.text}}
+										{{ pair.text }}
 									</td>
 									<td>
 
-									<input ng-class="{'opacity-50': !pair.Visibility}"
+									<input 
 									 type="text" ng-disabled='!pair.Visibility' class="form-control"
-									 	ng-class="{ 'has-error' : $root.isInvalid(pair.Sku) }"
+									 	name="pair_Sku{{ $index }}"
+									 	ng-class="{ 'opacity-50': !pair.Visibility , 'has-error' : $root.isInvalid(addProductForm['pair_Sku' + $index]) }"
 										ng-model="pair.Sku" required/>
 
 									</td>

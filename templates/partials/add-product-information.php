@@ -6,10 +6,16 @@
 				<div class="form-section-header"><h2>Vital Information</h2></div>
 				<div class="form-section-content">
 
-					<div ng-template="common/input/text"
+					<div ng-template="common/input/text2"
                       ng-template-options="{
                         'label': 'Product Name (Thai)',
-                        'labelClass': 'required'
+                        'labelClass': 'required',
+                        'error' : {
+                              'message': {
+                              	'required': 'is required field'
+                              },
+                              '$error' : addProductForm.MasterVariant_ProductNameTh.$error
+                         }
                       }">
                       <input
                         class="form-control width-field-large"
