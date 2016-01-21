@@ -14,8 +14,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 	//Get global cat from api
 	GlobalCategory.getAll().then(function(data) {
 		$scope.loading = false;
-		data = GlobalCategory.getAllForSeller(data);
-		$scope.columns = Category.createColumns(null, Category.transformNestedSetToUITree(data));
+		$scope.columns = Category.createColumns(null, GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data)));
 		$scope.select = Category.createSelectFunc($scope.columns, function(item) {
 			$scope.selected = item;
 		});

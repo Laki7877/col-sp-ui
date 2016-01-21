@@ -37,16 +37,23 @@ module.exports = ['common', '$q' , function(common, $q) {
 			data: data
 		});
 	};
-
-	service.getAllForSeller = function(data) {
-		//TODO: change this to user-validated visibility for seller...
-		var array = [];
-		angular.forEach(data, function(item) {
+	service.getAllForSeller = function(treeArray) {
+		return treeArray;
+		angular.forEach(treeArray, function(item) {
 			if (item.Visibility) {
-				array.push(item);
+				treeArray.splice(treeArray.indexOf(item),1);
+			} else {
+				if(item.nodes.length == 0) {
+
+				} else {
+					item.nodes = service.getAllForSeller(item.nodes);
+					if(item.nodes.length == 0) {
+						treeArray.splice(treeArray.indexOf(item),1);
+					}
+				}
 			}
 		});
-		return array;
+		return treeArray;
 	};
 	return service;
 }];
