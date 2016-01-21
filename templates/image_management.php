@@ -20,125 +20,46 @@
         <a class="filter-seperator">Draft</a>
       </div>
     </div>
-    <div class="table-section">
-      <table class="table table-curved table-border-none">
-        <thead>
-          <tr class="table-head">
-            <th class="checkbox-column">
-                <input type="checkbox" aria-label="Checkbox for following text input"> 
-            </th>
-            <th>
-              <a class="header-link" href="#"><span class="active-underline">ID</span></a>
-              <i class="fa fa-caret-down color-black">
-            </th>
-            <th>
-              <a class="header-link" href="#"><span>Admin Name</span></a>
-              <!-- <i class="fa fa-caret-up color-grey"> -->
-            </th>
-            <th>
-              <a class="header-link" href="#"><span>Email</span></a>
-              <!-- <i class="fa fa-caret-up color-grey"> -->
-            </th>
-            <th>
-              <a class="header-link" href="#"><span>Role</span></a>
-               <!-- <i class="fa fa-caret-up color-grey"> -->
-            </th>
-            <th>
-              Status
-            </th>
-            <th>
-              Action
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input"> 
-            </td>
-            <td>
-              001
-            </td>
-            <td>
-              Harry Belafonte
-            </td>
-            <td>
-              someone@lara.co.th
-            </td>
-            <td>
-              Shop Owner
-            </td>
-            <td>
-              Active
-            </td>
-            <td class="action-column popover-gear">
-              <i class="fa fa-gear color-dark-grey icon-size-20"></i>
-              <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div>View / Edit</div> <div>Delete</div>" data-original-title="" title=""></i>
-            </td>
-          </tr>
-          <tr>
-            <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input"> 
-            </td>
-            <td>
-              002
-            </td>
-            <td>
-              Erutan Nando
-            </td>
-            <td>
-              someone2@lara.co.th
-            </td>
-            <td>
-              Content Team
-            </td>
-            <td>
-              Inactive
-            </td>
-            <td class="action-column popover-gear">
-              <i class="fa fa-gear color-dark-grey icon-size-20"></i>
-              <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div>View / Edit</div> <div>Delete</div>" data-original-title="" title=""></i>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="page-navigation">
-      <span>
-        <i class="fa fa-chevron-left grey-chevron"></i>
-        <span> Page 1 of 1</span>
-        <i class="fa fa-chevron-right padding-right-15 blue-chevron"></i>
-        <span class="view-page-separator">View per page</span>
-        <!-- Split button -->
-        <div class="btn-group dropdown-btn">
-          <button type="button" class="btn btn-default dropdown-text">5</button>
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="caret"></span>
-            <span class="sr-only">Toggle Dropdown</span>
-          </button>
-          <ul class="dropdown-menu dropdown-menu-right">
-            <li><a href="#">5</a></li>
-            <li><a href="#">10</a></li>
-            <li><a href="#">15</a></li>
-          </ul>
+    <div>
+      <form class="ah-form sticky-mainform-action margin-bottom-80">
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
+            <? $this->insert('partials/image-management-content') ?>
+          </div>
+          <div class="page-navigation">
+            <span>
+              <i class="fa fa-chevron-left grey-chevron"></i>
+              <span> Page 1 of 1</span>
+              <i class="fa fa-chevron-right padding-right-15 blue-chevron"></i>
+              <span class="view-page-separator">View per page</span>
+              <!-- Split button -->
+              <div class="btn-group dropdown-btn">
+                <button type="button" class="btn btn-default dropdown-text">5</button>
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="caret"></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <li><a href="#">5</a></li>
+                  <li><a href="#">10</a></li>
+                  <li><a href="#">15</a></li>
+                </ul>
+              </div>
+            </span>
+          </div>  
         </div>
-      </span>
-    </div>
-  </div>
-  <div>
-    <form class="ah-form sticky-mainform-action">
-      <div class="add-product-form-action main-form-action full-width-row">
-        <div class="container-fluid">
-          <div class="float-right">
-            <a href="#" class="link-btn-plain">Cancel</a>
-            <button class="btn btn-white btn-width-xl">Preview</button>
-            <button class="btn btn-white btn-width-xl">Save as Draft</button>
-            <button class="btn btn-blue btn-width-xl">Save</button>
+        <div class="add-product-form-action main-form-action full-width-row">
+          <div class="container-fluid">
+            <div class="float-right">
+              <a href="#" class="link-btn-plain">Cancel</a>
+              <button class="btn btn-white btn-width-xl">Preview</button>
+              <button class="btn btn-white btn-width-xl">Save as Draft</button>
+              <button class="btn btn-blue btn-width-xl">Save</button>
+            </div>
           </div>
         </div>
-      </div>
-    </form>
-  </div>    
-
+      </form>
+    </div>
+  </div>
  
 <?php $this->stop() ?>
