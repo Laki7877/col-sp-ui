@@ -14368,8 +14368,8 @@ html, body {
 }
 /* line 142, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li.disabled {
-  background: #ec0000 !important;
-  color: #FFFFFF;
+  background: #EDF2F9 !important;
+  color: #333333 !important;
 }
 /* line 146, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li.active {

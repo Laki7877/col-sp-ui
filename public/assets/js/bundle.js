@@ -1876,6 +1876,9 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 					Product.deleteBulk(arr).then(function() {
 						$scope.alert.success('Successfully deleted');
 						$scope.reloadData();
+					}, function(result) {
+						$scope.alert.error(result);
+						$scope.reloadData();
 					});
 				}
 			}
