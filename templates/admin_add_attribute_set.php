@@ -3,11 +3,11 @@
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminAttributeSetAddCtrl" ng-init="init(<?=$params?>)">
     <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute Set/" . $title, 'urls' => ['/admin/attributesets'], 'class' =>'{disabled : form.$invalid}']) ?>
-    <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()">{{alert.message}}</div>
+    <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()"><span ng-bind-html="alert.message"></span></div>
     <div ng-show="saving">
       <img src="/assets/img/loader.gif" width="40"> <small>Saving Attribute Set..</small>
     </div>
-    <form ng-show="!saving" class="ah-form sticky-mainform-action margin-top-30" name="form">
+    <form ng-show="!saving" class="ah-form sticky-mainform-action margin-top-30" name="form" novalidate>
       <div class="row">
         <div class="col-xs-12">
           <div class="form-section">
@@ -65,7 +65,7 @@
             <div class="form-section-header"><h2>Visibility</h2></div>
             <div class="form-section-content">
               <div ng-template="common/input/multiline-radio" ng-template-options="{ 'label' : 'Attribute Set Visibility' }">
-                <label ng-repeat="choice in visibleOptions"><input type="radio" ng-model="formData.Visibility" ng-value="choice.value"/>{{choice.name}}</label>
+                <label ng-repeat="choice in visibleOptions"><input type="radio" ng-model="formData.Status" ng-value="choice.value"/>{{choice.name}}</label>
               </div>
             </div>
           </div>

@@ -65,7 +65,7 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function
 		if ($scope.edit) {
 			$scope.saving = true;
 			Attribute.update($scope.edit, $scope.formDataSerialized).then(function(data) {
-				$scope.alert.success();
+				$scope.alert.success('Successful saved. <a href="/admin/attributes">View Attribute List</a>');
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
 			}, function(err) {
@@ -76,7 +76,7 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function
 		else {
 			$scope.saving = true;
 			Attribute.create($scope.formDataSerialized).then(function(data) {
-				$scope.alert.success();
+				$scope.alert.success('Successful saved. <a href="/admin/attributes">View Attribute List</a>');
 				$scope.edit = data.AttributeId;				
 				$scope.saving = false;
 				$scope.form.$setPristine(true);

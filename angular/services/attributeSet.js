@@ -106,7 +106,7 @@ module.exports = ['common', function(common){
 			AttributeSetNameTh: '',
 			AttributeSetDescriptionEn: '',
 			AttributeSetDescriptionTh: '',
-			Status: service.visibleOptions[0],
+			Status: service.visibleOptions[0].value,
 			Tags: []
 		};
 	};
@@ -125,7 +125,6 @@ module.exports = ['common', function(common){
 			attr.Required = attr.Required || false;
 			attr.Filterable = attr.Filterable || false;
 		});
-		console.log('deserialize', data, processed);
 		return processed;
 	};
 	service.serialize = function(data) {
@@ -141,7 +140,6 @@ module.exports = ['common', function(common){
 			attr.Required = attr.Required || false;
 			attr.Filterable = attr.Filterable || false;
 		});
-		console.log('serialize', data, processed);
 		return processed;
 	};
 	return service;

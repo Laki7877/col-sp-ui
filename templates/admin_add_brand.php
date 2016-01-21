@@ -3,14 +3,14 @@
 <?php $this->start('page-body') ?>
 	<div ng-controller='AdminBrandAddCtrl' ng-init="init(<?=$params?>)">
     <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Brand/" . $title, 'link' => "admin/brands", 'class' => '{ disabled: form.$invalid  || uploader.isUploading || formData.BrandImages.length <= 0}']) ?>
-    <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()">{{alert.message}}</div>
+    <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()"><span ng-bind-html="alert.message"></span></div>
     <div class="row margin-top-30">
       <div class="col-xs-12">
       <? $this->insert('components/modal-product-image', ['id' => 'product-image-zoom']) ?>
         <div ng-show="saving">
           <img src="/assets/img/loader.gif" width="40"> <small>Saving Brand..</small>
         </div>
-        <form ng-show="!saving" class="ah-form sticky-mainform-action" name="form">
+        <form ng-show="!saving" class="ah-form sticky-mainform-action" name="form" novalidate>
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-section">

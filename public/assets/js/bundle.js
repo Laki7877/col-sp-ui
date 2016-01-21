@@ -390,7 +390,7 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function
 		if ($scope.edit) {
 			$scope.saving = true;
 			Attribute.update($scope.edit, $scope.formDataSerialized).then(function(data) {
-				$scope.alert.success();
+				$scope.alert.success('Successful saved. <a href="/admin/attributes">View Attribute List</a>');
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
 			}, function(err) {
@@ -401,7 +401,7 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function
 		else {
 			$scope.saving = true;
 			Attribute.create($scope.formDataSerialized).then(function(data) {
-				$scope.alert.success();
+				$scope.alert.success('Successful saved. <a href="/admin/attributes">View Attribute List</a>');
 				$scope.edit = data.AttributeId;				
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
@@ -672,7 +672,7 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 		if ($scope.edit) {
 			$scope.saving = true;
 			AttributeSet.update($scope.edit, $scope.formDataSerialized).then(function(data) {
-				$scope.alert.success();				
+				$scope.alert.success('Successful saved. <a href="/admin/attributesets">View Attribute Set List</a>');
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
 			}, function(err) {
@@ -683,7 +683,7 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 		else {
 			$scope.saving = true;
 			AttributeSet.create($scope.formDataSerialized).then(function(data) {
-				$scope.alert.success();
+				$scope.alert.success('Successful saved. <a href="/admin/attributesets">View Attribute Set List</a>');
 				$scope.edit = data.AttributeSetId;				
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
@@ -956,7 +956,7 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 		$scope.formDataSerialized = Brand.serialize($scope.formData);
 		if($scope.edit > 0) {
 			Brand.update($scope.edit, $scope.formDataSerialized).then(function(res){
-				$scope.alert.success();
+				$scope.alert.success('Successful saved. <a href="/admin/brands">View Brand List</a>');
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
 			}, function(err) {
@@ -964,8 +964,8 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 				$scope.alert.error(err);
 			});
 		} else {
-			Brand.publish($scope.formDataSerialized).then(function(res){	
-				$scope.alert.success();
+			Brand.publish($scope.formDataSerialized).then(function(res){
+				$scope.alert.success('Successful saved. <a href="/admin/brands">View Brand List</a>');
 				$scope.edit = res.BrandId;				
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
@@ -3160,7 +3160,7 @@ module.exports = ['common', function(common){
 			AttributeSetNameTh: '',
 			AttributeSetDescriptionEn: '',
 			AttributeSetDescriptionTh: '',
-			Status: service.visibleOptions[0],
+			Status: service.visibleOptions[0].value,
 			Tags: []
 		};
 	};
@@ -3179,7 +3179,6 @@ module.exports = ['common', function(common){
 			attr.Required = attr.Required || false;
 			attr.Filterable = attr.Filterable || false;
 		});
-		console.log('deserialize', data, processed);
 		return processed;
 	};
 	service.serialize = function(data) {
@@ -3195,7 +3194,6 @@ module.exports = ['common', function(common){
 			attr.Required = attr.Required || false;
 			attr.Filterable = attr.Filterable || false;
 		});
-		console.log('serialize', data, processed);
 		return processed;
 	};
 	return service;
