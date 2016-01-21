@@ -60,6 +60,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 			item['Commission'] = parseFloat(item['Commission']);
 			return item;
 		});
+		$scope.loading = true;
 			
 		GlobalCategory.upsert($scope.formData).then(function() {
 			$scope.alert.open(true);
@@ -72,6 +73,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 	$rootScope.$on('saveEditGlobalCategory', function(evt) {
 		if($scope.editingForm.$valid) {
 			//Edit or add
+			$scope.loading = true;
 			if($scope.editing) {
 				for (var k in $scope.editingCategory) {
 					$scope.editingCategoryOriginal[k] = $scope.editingCategory[k];
