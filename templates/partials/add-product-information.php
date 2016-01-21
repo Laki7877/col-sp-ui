@@ -45,7 +45,7 @@
                         ng-disabled="enableProductVariations == 'enable'"
                         ng-model="formData.MasterVariant.Sku"
                         ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Sku) }"
-                        ng-required="onPublishing" />
+                        ng-required="enableProductVariations == 'disable'"/>
                     </div>
 
                     <div ng-template="common/input/text"
@@ -105,7 +105,7 @@
                         ng-disabled="enableProductVariations == 'enable'"
                         ng-model="formData.MasterVariant.OriginalPrice"
                         ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_OriginalPrice) }"
-                        required />
+                        ng-required="enableProductVariations == 'disable'" />
                     </div>
 
                     <div ng-template="common/input/text"

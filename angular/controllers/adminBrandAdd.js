@@ -100,7 +100,7 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 		$scope.formDataSerialized = Brand.serialize($scope.formData);
 		if($scope.edit > 0) {
 			Brand.update($scope.edit, $scope.formDataSerialized).then(function(res){
-				$scope.alert.success();
+				$scope.alert.success('Successful saved. <a href="/admin/brands">View Brand List</a>');
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
 			}, function(err) {
@@ -108,8 +108,8 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 				$scope.alert.error(err);
 			});
 		} else {
-			Brand.publish($scope.formDataSerialized).then(function(res){	
-				$scope.alert.success();
+			Brand.publish($scope.formDataSerialized).then(function(res){
+				$scope.alert.success('Successful saved. <a href="/admin/brands">View Brand List</a>');
 				$scope.edit = res.BrandId;				
 				$scope.saving = false;
 				$scope.form.$setPristine(true);

@@ -93,9 +93,14 @@
 									<td class="column-text-ellipsis" ng-class="{'opacity-50': !pair.Visibility}">
 										{{ pair.text}}
 									</td>
-									<td><input ng-class="{'opacity-50': !pair.Visibility}"
+									<td>
+
+									<input ng-class="{'opacity-50': !pair.Visibility}"
 									 type="text" ng-disabled='!pair.Visibility' class="form-control"
-										ng-model="pair.Sku" /></td>
+									 	ng-class="{ 'has-error' : $root.isInvalid(pair.Sku) }"
+										ng-model="pair.Sku" required/>
+
+									</td>
 									<td><input type="text"
 										ng-class="{'opacity-50': !pair.Visibility}"
 										ng-model="pair.OriginalPrice" ng-disabled='!pair.Visibility'

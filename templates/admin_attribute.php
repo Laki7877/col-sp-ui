@@ -98,8 +98,10 @@
               {{ row.UpdatedDt | date:'shortDate':'+700' }}
             </td>
             <td class="action-column">
-              <i class="fa fa-gear color-dark-grey icon-size-20"></i>
-              <i class="fa fa-caret-down color-dark-grey" uib-popover-template="'attribute/action'" popover-placement="bottom" popover-append-to-body="true" popover-any></i>
+              <a href="javascript:;"  uib-popover-template="'attribute/action'" popover-placement="bottom" popover-append-to-body="true" popover-any>
+                <i class="fa fa-gear color-dark-grey icon-size-20"></i>
+                <i class="fa fa-caret-down color-dark-grey"></i>
+              </a>
             </td>
           </tr>
         </tbody>

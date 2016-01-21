@@ -76,7 +76,6 @@
 							                      'label': 'Category Name (Thai)',
 							                      'labelClass': 'required',
 							                      'error' : {
-							                        'message': 'Cannot use special characters such as ! # $ % ^ &',
 							                        'show' : $root.isInvalid(editingForm.NameTh)
 							                      }
 							                    }">
@@ -85,8 +84,7 @@
 								                  class="form-control"
 								                  autocomplete="off"
 								                  ng-class="{ 'has-error' : $root.isInvalid(editingForm.NameTh) }"
-								                  ng-model="editingCategory.NameTh"
-								                  ng-pattern="/^[a-zA-Z0-9ก-๙ ]+$/" 
+								                  ng-model="editingCategory.NameTh" 
 								                  required
 								                />
 							                </div>
@@ -95,7 +93,6 @@
 							                      'label': 'Category Name (Eng)',
 							                      'labelClass': 'required',
 							                      'error' : {
-							                        'message': 'Cannot use special characters such as ! # $ % ^ &',
 							                        'show' : $root.isInvalid(editingForm.NameEn)
 							                      }
 							                    }">
@@ -104,8 +101,7 @@
 							                	  class="form-control"
 							                	  autocomplete="off"
 							                	  ng-class="{ 'has-error' : $root.isInvalid(editingForm.NameEn) }"
-							                	  ng-model="editingCategory.NameEn" 
-							                	  ng-pattern="/^[a-zA-Z0-9 ]+$/" 
+							                	  ng-model="editingCategory.NameEn"
 							                	  required
 							                	/>
 							                </div>

@@ -391,7 +391,7 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function
 		if ($scope.edit) {
 			$scope.saving = true;
 			Attribute.update($scope.edit, $scope.formDataSerialized).then(function(data) {
-				$scope.alert.success();
+				$scope.alert.success('Successful saved. <a href="/admin/attributes">View Attribute List</a>');
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
 			}, function(err) {
@@ -402,7 +402,7 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function
 		else {
 			$scope.saving = true;
 			Attribute.create($scope.formDataSerialized).then(function(data) {
-				$scope.alert.success();
+				$scope.alert.success('Successful saved. <a href="/admin/attributes">View Attribute List</a>');
 				$scope.edit = data.AttributeId;				
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
@@ -467,7 +467,7 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 				var arr = util.getCheckedArray($scope.attributeSetList).map(function(elem) {
 					return {
 						AttributeSetId: elem.AttributeSetId,
-						Status: 'VI'
+						Visibility: true
 					};
 				});
 
@@ -485,7 +485,7 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 				var arr = util.getCheckedArray($scope.attributeSetList).map(function(elem) {
 					return {
 						AttributeSetId: elem.AttributeSetId,
-						Status: 'NV'
+						Visibility: false
 					};
 				});
 
@@ -503,6 +503,7 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 		$scope.attributeSetList = [];
 		$scope.notReady = true;
 		AttributeSet.getAll($scope.tableParams).then(function(x){
+			console.log(x.data);
 			$scope.attributeSetTotal = x.total;
 			$scope.attributeSetList = x.data;
 			$scope.notReady = false;
@@ -531,7 +532,7 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 			});
 		},
 		toggle: function(row) {
-			row.Status = (row.Status == 'VI')? 'NV' : 'VI';
+			row.Visibility = !row.Visibility;
 			AttributeSet.visible([row]).then(function() {
 			}, function(err) {
 				$scope.alert.error(err);
@@ -646,6 +647,7 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 			$scope.edit = params.id;
 			AttributeSet.get($scope.edit).then(function(data) {
 				$scope.formData = AttributeSet.deserialize(data);
+				console.log($scope.formData);
 			});
 		} else {
 			//create mode!
@@ -673,7 +675,7 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 		if ($scope.edit) {
 			$scope.saving = true;
 			AttributeSet.update($scope.edit, $scope.formDataSerialized).then(function(data) {
-				$scope.alert.success();				
+				$scope.alert.success('Successful saved. <a href="/admin/attributesets">View Attribute Set List</a>');
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
 			}, function(err) {
@@ -684,7 +686,7 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 		else {
 			$scope.saving = true;
 			AttributeSet.create($scope.formDataSerialized).then(function(data) {
-				$scope.alert.success();
+				$scope.alert.success('Successful saved. <a href="/admin/attributesets">View Attribute Set List</a>');
 				$scope.edit = data.AttributeSetId;				
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
@@ -957,7 +959,7 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 		$scope.formDataSerialized = Brand.serialize($scope.formData);
 		if($scope.edit > 0) {
 			Brand.update($scope.edit, $scope.formDataSerialized).then(function(res){
-				$scope.alert.success();
+				$scope.alert.success('Successful saved. <a href="/admin/brands">View Brand List</a>');
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
 			}, function(err) {
@@ -965,8 +967,8 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 				$scope.alert.error(err);
 			});
 		} else {
-			Brand.publish($scope.formDataSerialized).then(function(res){	
-				$scope.alert.success();
+			Brand.publish($scope.formDataSerialized).then(function(res){
+				$scope.alert.success('Successful saved. <a href="/admin/brands">View Brand List</a>');
 				$scope.edit = res.BrandId;				
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
@@ -1272,7 +1274,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		if($scope.addProductForm.$invalid){
 			//replace with .hash
 			$scope._loading.state = false;
-			$window.location.href = '/products/add#alert-validation'
+			$window.location.href = $window.location.href + '#alert-validation'
 			$scope.alert.validationFailed = true;
 			return;
 		}
@@ -1805,6 +1807,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 	'use strict';
 	$scope.selected = null;
 	$scope.columns = [];
+	$scope.loading = true;
 	$scope.validate = function(e){
 		if(null === $scope.selected){
 			e.preventDefault();
@@ -1813,10 +1816,10 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 
 	//Get global cat from api
 	GlobalCategory.getAll().then(function(data) {
+		$scope.loading = false;
 		$scope.columns = Category.createColumns(null, Category.transformNestedSetToUITree(data));
 		$scope.select = Category.createSelectFunc($scope.columns, function(item) {
 			$scope.selected = item;
-			console.log(item);
 		});
 	});
 }];
@@ -3081,11 +3084,11 @@ module.exports = ['common', function(common){
 	service.visibleOptions = [
 		{
 			name: 'Visible',
-			value: 'VI'
+			value: true
 		},
 		{
 			name: 'Not Visible',
-			value: 'NV'
+			value: false
 		}
 	];
 	var find = function(array, value) {
@@ -3183,14 +3186,14 @@ module.exports = ['common', function(common){
 			AttributeSetNameTh: '',
 			AttributeSetDescriptionEn: '',
 			AttributeSetDescriptionTh: '',
-			Status: service.visibleOptions[0],
+			Visibility: true,
 			Tags: []
 		};
 	};
 	service.deserialize = function(data) {
 		var processed = angular.merge(service.generate(), data);
 		processed.Tags = [];
-		processed.Status = angular.isDefined(data.Status) ? find(service.visibleOptions, data.Status) : service.visibleOptions[0];
+		//processed.Status = angular.isDefined(data.Visibility) ? find(service.visibleOptions, data.Visibility) : service.visibleOptions[0];
 
 		if(angular.isUndefined(processed.Attributes)) {
 			processed.Attributes = [];
@@ -3202,13 +3205,12 @@ module.exports = ['common', function(common){
 			attr.Required = attr.Required || false;
 			attr.Filterable = attr.Filterable || false;
 		});
-		console.log('deserialize', data, processed);
 		return processed;
 	};
 	service.serialize = function(data) {
 		var processed = angular.copy(data);
 		processed.Tags = [];
-		processed.Status = processed.Status.value;
+		//processed.Visibility = processed.Status.value;
 		angular.forEach(data.Tags, function(tag) {
 			processed.Tags.push({
 				TagName: tag
@@ -3218,7 +3220,6 @@ module.exports = ['common', function(common){
 			attr.Required = attr.Required || false;
 			attr.Filterable = attr.Filterable || false;
 		});
-		console.log('serialize', data, processed);
 		return processed;
 	};
 	return service;
@@ -4244,7 +4245,7 @@ module.exports = ['common', function(common) {
 },{}],46:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Jan 21 2016 13:12:29 GMT+0700 (ICT)
+ * Thu Jan 21 2016 14:31:09 GMT+0700 (ICT)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 

@@ -100,7 +100,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		if($scope.addProductForm.$invalid){
 			//replace with .hash
 			$scope._loading.state = false;
-			$window.location.href = '/products/add#alert-validation'
+			$window.location.href = $window.location.href + '#alert-validation'
 			$scope.alert.validationFailed = true;
 			return;
 		}

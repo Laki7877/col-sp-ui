@@ -40,6 +40,7 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 			$scope.edit = params.id;
 			AttributeSet.get($scope.edit).then(function(data) {
 				$scope.formData = AttributeSet.deserialize(data);
+				console.log($scope.formData);
 			});
 		} else {
 			//create mode!
@@ -67,7 +68,7 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 		if ($scope.edit) {
 			$scope.saving = true;
 			AttributeSet.update($scope.edit, $scope.formDataSerialized).then(function(data) {
-				$scope.alert.success();				
+				$scope.alert.success('Successful saved. <a href="/admin/attributesets">View Attribute Set List</a>');
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
 			}, function(err) {
@@ -78,7 +79,7 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 		else {
 			$scope.saving = true;
 			AttributeSet.create($scope.formDataSerialized).then(function(data) {
-				$scope.alert.success();
+				$scope.alert.success('Successful saved. <a href="/admin/attributesets">View Attribute Set List</a>');
 				$scope.edit = data.AttributeSetId;				
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
