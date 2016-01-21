@@ -4179,6 +4179,12 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
             if (invFd.LocalCategories.length == 0) {
                 invFd.LocalCategories = [null, null, null];
+            }else{
+                var kmax = invFd.LocalCategories.length;
+                for(var k = 0; k < 3 - kmax; k++){
+                    console.log("pushing null")
+                    invFd.LocalCategories.push(null);
+                }
             }
 
             if (invFd.LocalCategory){
@@ -4206,19 +4212,24 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
 
 
-            if ((invFd.GlobalCategories || []).length == 0) {
-                invFd.GlobalCategories = [null, null];
+            if (!invFd.GlobalCategories) {
+                invFd.GlobalCategories = [null, null, null];
             }
 
-            try {
-                //TODO: This should fetch entire Object (well maybe not)
-                invFd.GlobalCategories.unshift({
-                    CategoryId: invFd.GlobalCategory
-                });
-            } catch (ex) {
-                invFd.GlobalCategories = [null, null];
-                throw "This can't happen, GlocalCategory not given by API";
+            if (invFd.GlobalCategories.length == 0) {
+                invFd.GlobalCategories = [null, null, null];
+            }else{
+                var kmax = invFd.GlobalCategories.length;
+                for(var k = 0; k < 3 - kmax; k++){
+                    console.log("pushing null")
+                    invFd.GlobalCategories.push(null);
+                }
             }
+
+            invFd.GlobalCategories[0] = {
+                CategoryId: invFd.GlobalCategory
+            };
+
 
             delete invFd.GlobalCategory;
             delete invFd.LocalCategory;
