@@ -1,50 +1,43 @@
-.image-management.form-section {
+.image-management {
+	$feature-text-height: 20px;
+
 	.form-section-content {
-		margin-top: 15px;
+		margin-top: 30px - $feature-text-height;
+		margin-bottom: 30px - 15px; // -15px for image list item's margin bottom
+		padding-left: 15px;
+		padding-right: 15px;
 	}
 	.feature-text {
-		padding-left: 15px;
+		margin-left: 15px;
+		height: $feature-text-height;
 	}
 	.content-text {
-		margin-top: 18px;	
-	    width: auto;
-	    display: inline;
+		margin-top: $feature-text-height;
+	    width: 140px;
 	    float: left;
-	    padding-left: 15px;	
 	}
 
-	.picture-container {
-		display: inline-block;
+	.picture-container, .drop-zone-container {
+		float: left;
 	}
 
 	.drop-zone-container {
-		margin-top: 18px;
-		display: inline-block;
-		vertical-align: top;
-	}
+		margin-top: $feature-text-height;
 
-	.drop-zone-container.wait-for-approve {
-		.image-drop-zone {		
-			background-image: none;
-			background-color:  $color-grey;
+		&.disabled {
+			.image-drop-zone {		
+				background-image: none;
+				background-color:  $color-grey;
+			}
 		}
-	}
 
-	.drop-zone-container.approved {
-		.image-drop-zone {		
-			background-image: none;
-			background-color:  $color-light-blue;
-			border: solid 1px $color-grey;
+		&.no-background {
+			.image-drop-zone {		
+				background-image: none;
+				background-color:  $color-light-blue;
+				border: solid 1px $color-grey;
+			}
 		}
-	}
-
-	.image-thumbs-actions {
-		width: 121px;
-	}
-
-	.image-thumbs-actions .image-thumbs-img-wrapper {
-		width: 120px;
-		height: 120px;
 	}
 
 	.image-drop-wrapper {
@@ -52,10 +45,36 @@
 	}
 
 	.image-drop-zone {
-		height: 352px;
+		height: 285px - 2px; // -2px for 2-side border thick
 	}
 
 	.image-drop-zone-text {
 		width: 120px;
+	}
+
+	.alert-wrapper {
+		margin-top: 5px;
+		max-width: 905px;
+	}
+}
+
+.image-management {
+	.image-thumbs-actions {
+		@include image-thumbs(100px, 135px);
+	}
+
+	.image-management-list {
+		@extend .clearfix;
+		padding: 0;
+		max-width: 575px;
+		margin: 0;
+
+		.list-item {
+			display: block;
+			float: left;
+			list-style: none;
+			margin-left: 15px;
+			margin-bottom: 15px;
+		}
 	}
 }
