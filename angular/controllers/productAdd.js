@@ -1,11 +1,12 @@
 var angular = require('angular');
 
-module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop',
-'GlobalCategory', 'Category', 'VariantPair',
-	function($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop,
-		GlobalCategory, Category, VariantPair){
+module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair',
+	function($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair){
 	'use strict';
 
+    /*
+    * All the alerts on the top of Add Product Page
+    */
 	$scope.alert = {
 		success: false,
 		failure: false,
@@ -17,16 +18,23 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		}
 	};
 
+    /*
+    * Loading Control
+    */
 	$scope._loading = {
 		state : true,
 		message: 'Loading..'
 	};
-
+    
+    //TODO: Initialize non-formData variable
 	$scope.enableProductVariations = "disable";
 
+    /*
+    * Warn when user exit the page
+    */
 	$window.onbeforeunload = function (e) {
 		if(!$scope.addProductForm.$dirty){
-			//not dirty
+			//only warn when form is dirty
 			return null;
 		}
 		var message = "Your changes will not be saved.",
@@ -40,6 +48,11 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		return message;
 	};
 
+    /*
+    *  Run clean data before any publishing
+    *  which will try to reduce imperfection before 
+    *  serialization 
+    */
 	var cleanData = function(){
 		if( !$scope.formData.MasterVariant.SalePrice ||
 			$scope.formData.MasterVariant.SalePrice == "" ||
@@ -48,40 +61,18 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 			$scope.formData.MasterVariant.SalePrice = $scope.formData.MasterVariant.OriginalPrice;
 		}
-
-		/*if($scope.formData.ExpireDate){
-			var cpdate = angular.copy($scope.formData.ExpireDate);
-			if(moment.isDate(cpdate)){
-				$scope.formData.ExpireDate = moment(cpdate).format('LL');
-				$scope.formData.ExpireTime = moment(cpdate).format('HH:mm:ss');
-			}else{
-				$scope.formData.ExpireDate = $scope.formData.ExpireDate;
-				$scope.formData.ExpireTime = $scope.formData.ExpireTime;
-			}
-		}
-
-		if($scope.formData.EffectiveDate){
-			var cpdate = angular.copy($scope.formData.EffectiveDate);
-			if(moment.isDate(cpdate)){
-				$scope.formData.EffectiveDate = moment(cpdate).format('LL');
-				$scope.formData.EffectiveTime = moment(cpdate).format('HH:mm:ss');
-			}else{
-				$scope.formData.EffectiveDate = $scope.formData.EffectiveDate;
-				$scope.formData.EffectiveTime = $scope.formData.EffectiveTime;
-			}
-		}*/
-
-
 	};
 
-
+    /*
+    * Preview Button
+    */
 	$scope.preview = function(){
 		cleanData();
 		var apiRequest = Product.serialize($scope.formData);
 		console.log(JSON.stringify(apiRequest));
 
 	};
-
+    
 	$scope.refreshRelatedProducts = function(q){
 		return Product.getAll({
 			searchText: q
@@ -92,7 +83,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 	$scope.refreshBrands = function(q){
 		console.log("Refreshing brand with", q);
-		//if(q == "" || !q) return;
 		Brand.getAll({
 			pageSize: 6,
 			searchText: q
@@ -107,9 +97,10 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		$scope._loading.message = "Saving changes";
 
 		$scope.onPublishing = (Status == "WA");
+        
 		if($scope.addProductForm.$invalid){
-			//replace with .hash
 			$scope._loading.state = false;
+            //scroll to top and show alert div
 			$window.location.href = $window.location.href + '#alert-validation'
 			$scope.alert.validationFailed = true;
 			return;
@@ -120,14 +111,14 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		cleanData();
 		console.log("Publishing with Status = ", Status);
 		try{
-			console.log(JSON.stringify(apiRequest));
+
 			var apiRequest = Product.serialize($scope.formData);
-			Product.publish(apiRequest, Status).then(function(res){
+			
+            Product.publish(apiRequest, Status).then(function(res){
 				if(res.ProductId){
 					$scope._loading.state = false;
 					$scope.alert.success = true;
 					$scope.formData.ProductId = res.ProductId;
-					//TODO: add in deserializer
 					$scope.formData.MasterVariant.Pid = res.MasterVariant.Pid;
 
 					$scope.addProductForm.$setPristine(true)
@@ -171,10 +162,11 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 			BrandNameEn: "Please select brand.."
 		},
 		MasterVariant: {
-			DimensionUnit: "MM",
+			DimensionUnit: "CM",
 			WeightUnit: "G",
 			StockType: "Stock"
 		},
+		ShippingMethod: "1",
 		RelatedProducts: [],
 		MasterImages: [],
 		MasterImages360: [],
@@ -198,24 +190,13 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 		},
 		jquery: function(){
-
-			//TODO: this wont play well with angular, not sure why
-			//maybe use this: http://dalelotts.github.io/angular-bootstrap-datetimepicker/
-			$('.input-icon-calendar').datetimepicker({
-				format: "LL"
-			}).on('dp.change', function(sd){
-				$scope.$apply();
-			});
-
+            //TODO: refactor to uib
 			$("body").tooltip({ selector: '[data-toggle=tooltip]' });
-
 		},
 		angular: function() {
 
 			$scope.init = function(viewBag) {
-
-				//TODO: Refactor
-
+				//TODO: Refactor, use better callback mechanism
 				var shopId = 1;
 				var angularReady = function(){
 					//Angular dependent
@@ -281,9 +262,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 							//Only push new variant if don't exist
 							$scope.formData.Variants.push(kpair);
 
-							//Mark hash as used
-							//This will not be deleted
-							//variantHashes[kpair.hash] = -1;
 						}
 
 
@@ -314,8 +292,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 				var loadFormData = function(ivFormData, FullAttributeSet){
 
 						$scope._loading.message = "Processing..";
-						//Dependency Chain
-						//catId -> AttributeSet -> Inverse
+
 						if(!('VideoLinks' in ivFormData)){
 							ivFormData['VideoLinks'] = [];
 						}
@@ -408,8 +385,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 							angularReady();
 						});
 
-						//auxiliary object (non-persist)
-						// $scope.attributeOptions[0] = $scope.formData.Variants[0].FirstAttribute;
 					}, function(){
 						$window.onbeforeunload = function(){};
 						$window.location.href = "/products";
@@ -458,7 +433,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		},
 		jquery: function(){
 			//NOTE: as of now this is only called in EDIT mode
-			//TODO: which is wrong
 
 		},
 		angular: function() {}
@@ -585,9 +559,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 				}
 			};
 
-			//TODO: When selected attribute change,
-			//the other box wil not allow to have selected option
-
 		   	/**
 		   	 * This part handles when user click on More Detail and open pair form
 		   	 */
@@ -611,6 +582,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 		   	});
 		}
 	};
+    
 	tabPage.more_option = {
 		jquery: function() {
 
