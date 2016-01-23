@@ -1,6 +1,6 @@
 <div id="add-product-more-option-tab-content">
 	<? $this->insert('partials/add-product-inner-tab-breadcrumb') ?>
-	
+
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="form-section">
@@ -9,14 +9,15 @@
 
 
 					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Related Products",
-							"size" => "xxl",
-				       		 "ng_model" => "formData.RelatedProducts",
-						 	 "choices" => "availableRelatedProducts",
-						 	 "refresh" => "refreshRelatedProducts",
-						 	 "trackBy" => "ProductId",
-						 	 "showBy" => "ProductNameEn",
-						 	 "multiple" => true ]) ?>
-						 	 
+					"size" => "xxl",
+					"ng_model" => "formData.RelatedProducts",
+					"choices" => "availableRelatedProducts",
+					"refresh" => "refreshRelatedProducts",
+					"placeholder" => "Search by Product Name or PID",
+					"trackBy" => "ProductId",
+					"showBy" => "ProductNameEn",
+					"multiple" => true ]) ?>
+
 				</div>
 			</div>
 		</div>
@@ -45,15 +46,15 @@
 					<div class="form-group">
 						<div class="width-label"><label class="control-label">Effective On</label></div>
 						<div class="width-field-normal">
-							  <div class="dropdown">
-								  <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
-								   <input type="text" class="input-icon-calendar form-control" data-ng-model="formData.EffectiveDate">
-								  </a>
-								  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-								    <datetimepicker data-ng-model="formData.EffectiveDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'hour' }"/>
-								  </ul>
-							  </div>
-							  <span class="help-block"></span>
+							<div class="dropdown">
+								<a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
+									<input type="text" class="input-icon-calendar form-control" data-ng-model="formData.EffectiveDate">
+								</a>
+								<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+									<datetimepicker data-ng-model="formData.EffectiveDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'hour' }"/>
+								</ul>
+							</div>
+							<span class="help-block"></span>
 						</div>
 						<div class="width-field-tooltip no-padding-left"><i class="fa fa-2x fa-question-circle color-grey" data-toggle="btooltip" data-placement="right" title="Date when your product will go online"></i></div>
 					</div>
@@ -61,15 +62,15 @@
 					<div class="form-group">
 						<div class="width-label"><label class="control-label">Expire On</label></div>
 						<div class="width-field-normal">
-							  <div class="dropdown">
-								  <a class="dropdown-toggle" id="dropdown3" role="button" data-toggle="dropdown" data-target="#" href="#">
-								   <input type="text" class="input-icon-calendar form-control" data-ng-model="formData.ExpireDate">
-								  </a>
-								  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-								    <datetimepicker data-ng-model="formData.ExpireDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'hour' }"/>
-								  </ul>
-							  </div>
-							  <span class="help-block"></span>
+							<div class="dropdown">
+								<a class="dropdown-toggle" id="dropdown3" role="button" data-toggle="dropdown" data-target="#" href="#">
+									<input type="text" class="input-icon-calendar form-control" data-ng-model="formData.ExpireDate">
+								</a>
+								<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+									<datetimepicker data-ng-model="formData.ExpireDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'hour' }"/>
+								</ul>
+							</div>
+							<span class="help-block"></span>
 						</div>
 						<div class="width-field-tooltip no-padding-left"><i class="fa fa-2x fa-question-circle color-grey" data-toggle="btooltip" data-placement="right" title="Date when your product will go offline"></i></div>
 					</div>
@@ -96,24 +97,24 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>14/10/2015 at 13:14:50</td>
-									<td>10/10/2015 at 13:14:50</td>
-									<td>Andrea Bolan</td>
-									<td>
-										<button class="btn btn-white">View</button>
-										<button class="btn btn-white">Restore</button>
-									</td>
-								</tr>
-								<tr>
-									<td>14/10/2015 at 13:14:50</td>
-									<td>10/10/2015 at 13:14:50</td>
-									<td>John Dara</td>
-									<td>
-										<button class="btn btn-white">View</button>
-										<button class="btn btn-white">Restore</button>
-									</td>
-								</tr>
+							<tr>
+								<td>14/10/2015 at 13:14:50</td>
+								<td>10/10/2015 at 13:14:50</td>
+								<td>Andrea Bolan</td>
+								<td>
+									<button class="btn btn-white">View</button>
+									<button class="btn btn-white">Restore</button>
+								</td>
+							</tr>
+							<tr>
+								<td>14/10/2015 at 13:14:50</td>
+								<td>10/10/2015 at 13:14:50</td>
+								<td>John Dara</td>
+								<td>
+									<button class="btn btn-white">View</button>
+									<button class="btn btn-white">Restore</button>
+								</td>
+							</tr>
 							</tbody>
 						</table>
 					</div>
