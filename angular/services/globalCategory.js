@@ -52,7 +52,6 @@ module.exports = ['common', '$q' , function(common, $q) {
 		});
 
 		angular.forEach(treeArray, function(item) {
-			console.log(item);
 			if (item.Visibility == null || !item.Visibility) {
 				array.splice(array.indexOf(item),1);
 			} else {

@@ -108,12 +108,27 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
         $scope.availableSearchTags = [];
         $scope.availableRelatedProducts = [];
         $scope.availableStockTypes = ['Stock', 'Pre-Order'];
-        $scope.availableVariantDisplayOption = [{ text: 'Show as group of variants', value: 'GROUP' },
-        { text: 'Show as individual product',  value: 'INDIVIDUAL' }];
+        $scope.availableVariantDisplayOption = [{ text: 'Show as group of variants', value: 'GROUP' }, { text: 'Show as individual product',  value: 'INDIVIDUAL' }];
+
+
+
+        //Deprecated, might as well just use server for these
+        $scope.funcValidate = function(form){
+            var result = { valid : true  }
+            //perform functional validations
+            console.log('compra', form.MasterVariant_SalePrice.$viewValue, form.MasterVariant_OriginalPrice.$viewValue)
+            if(Number(form.MasterVariant_SalePrice.$viewValue) >= Number(form.MasterVariant_OriginalPrice.$viewValue) ){
+                 result.valid = false;
+                 form.MasterVariant_SalePrice.$invalid = true;
+                 form.MasterVariant_SalePrice.$error["custom"] = true;
+            }
+
+            return result;
+        };
 
         $scope.formData = {
             Brand: { id: null, BrandNameEn: "Please select brand.." },
-            MasterVariant: { DimensionUnit: "CM", Weight: 0, WeightUnit: "G", StockType: "Stock", Length: 0, Width: 0, Height: 0 },
+            MasterVariant: { DimensionUnit: "CM", WeightUnit: "G", StockType: "Stock" },
             ShippingMethod: "1",
             RelatedProducts: [],
             PrepareDay: 3,
@@ -185,23 +200,16 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
         //TODO: Initialize non-formData variable
         $scope.enableProductVariations = "disable";
+
         /*
          *  Run clean data before any publishing
          *  which will try to reduce imperfection before
          *  serialization
          */
         var cleanData = function () {
-            if (!$scope.formData.MasterVariant.SalePrice ||
-                $scope.formData.MasterVariant.SalePrice == "" ||
-                $scope.formData.MasterVariant.SalePrice == 0) {
 
-                $scope.formData.MasterVariant.SalePrice = $scope.formData.MasterVariant.OriginalPrice;
-            }
         };
 
-        /*
-         * Preview Button
-         */
         $scope.preview = function () {
             cleanData();
             var apiRequest = Product.serialize($scope.formData);
@@ -238,13 +246,18 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             $scope._loading.state = true;
             $scope._loading.message = "Saving changes";
             $scope.onPublishing = (Status == "WA");
+
+           // var valResult = $scope.funcValidate($scope.addProductForm);
+
             if ($scope.addProductForm.$invalid) {
                 $scope._loading.state = false;
                 //scroll to top and show alert div
                 $window.location.href = $window.location.href + '#alert-validation'
                 $scope.alert.validationFailed = true;
+                $scope.alert.validationMessages = valResult.messages;
                 return;
             }
+
             $scope.alert.reset();
             cleanData();
             console.log("Publishing with Status = ", Status);
@@ -258,14 +271,20 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                         $scope.formData.MasterVariant.Pid = res.MasterVariant.Pid;
                         $scope.addProductForm.$setPristine(true)
                     } else {
-                        throw 'Product Id not returned';
+                         $scope._loading.state = false;
+                         $scope.alert.failure = true;
+                         $scope.alert.failure_message = res.Message;
+                         console.log('publish failure', res);
                     }
                 }, function (er) {
                     throw er;
                 });
 
             } catch (ex) {
+                $scope._loading.state = false;
                 $scope.alert.failure = true;
+                $scope.alert.failure_message = 'Client Error';
+                console.log('publish failure', ex);
                 return;
             }
         };

@@ -39,9 +39,82 @@
 						<div class="form-section">
 							<div class="form-section-header"><input type="checkbox" ng-model="<?= $model ?>._embedVideo"/> <span style='margin-bottom: 25px'>Embed Video</span></div>
 							<div class="form-section-content" ng-if="<?= $model ?>._embedVideo">
-								<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 1", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "This is a tooltip", "ng_model" => $model . ".VideoLinks[0]"]) ?>
-								<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 2", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "This is a tooltip", "ng_model" => $model . ".VideoLinks[1]"]) ?>
-								<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 3", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "This is a tooltip", "ng_model" => $model . ".VideoLinks[2]"]) ?>
+									<div ng-template="common/input/text2"
+				                      ng-template-options="{
+				                        'label': 'Video Link 1',
+				                        'hint': {
+				                        	'show': true,
+				                        	'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'
+				                        },
+				                        'tooltip': 'Youtube Links',
+				                        'error' : {
+				                              'messages': {
+				                              	'url': 'Please enter valid URL'
+				                              },
+				                              'show': $root.isInvalid(addProductForm.Modal_VideoLinks0),
+				                              'conditions' : addProductForm.Modal_VideoLinks0.$error
+				                         }
+				                      }">
+				                      <input
+				                        class="form-control width-field-normal"
+				                        name="Modal_VideoLinks0"
+				                        type="url"
+				                        maxlength="500"
+				                        ng-model="<?=$model?>.VideoLinks[0]"
+				                        ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_VideoLinks0) }"  />
+				                    </div>
+
+
+				                    <div ng-template="common/input/text2"
+				                      ng-template-options="{
+				                        'label': 'Video Link 2',
+				                        'hint': {
+				                        	'show': true,
+				                        	'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'
+				                        },
+				                        'tooltip': 'Youtube Links',
+				                        'error' : {
+				                              'messages': {
+				                              	'url': 'Please enter valid URL'
+				                              },
+				                              'show': $root.isInvalid(addProductForm.Modal_VideoLinks1),
+				                              'conditions' : addProductForm.Modal_VideoLinks1.$error
+				                         }
+				                      }">
+				                      <input
+				                        class="form-control width-field-normal"
+				                        name="Modal_VideoLinks1"
+				                        type="url"
+				                        maxlength="500"
+				                        ng-model="<?=$model?>.VideoLinks[1]"
+				                        ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_VideoLinks1) }"  />
+				                    </div>
+
+
+				                    <div ng-template="common/input/text2"
+				                      ng-template-options="{
+				                        'label': 'Video Link 3',
+				                        'hint': {
+				                        	'show': true,
+				                        	'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'
+				                        },
+				                        'tooltip': 'Youtube Links',
+				                        'error' : {
+				                              'messages': {
+				                              	'url': 'Please enter valid URL'
+				                              },
+				                              'show': $root.isInvalid(addProductForm.Modal_VideoLinks2),
+				                              'conditions' : addProductForm.Modal_VideoLinks2.$error
+				                         }
+				                      }">
+				                      <input
+				                        type="url"
+				                        class="form-control width-field-normal"
+				                        name="Modal_VideoLinks2"
+				                        maxlength="500"
+				                        ng-model="<?=$model?>.VideoLinks[2]"
+				                        ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_VideoLinks2) }"  />
+				                    </div>
 							</div>
 						</div>
 						<div class="form-section">
@@ -49,10 +122,33 @@
 							<div class="form-section-content">
 								<? $this->insert('components/forms/ckeditor-with-label', 
 								["label" => "Description (Thai)", "size" => "xxl", "label_class" => "required", "ng_model" => $model.".DescriptionFullTh"]) ?>
-								<? $this->insert('components/forms/textarea-with-label', 
-								["label" => "Short Description (Thai)", "tooltip" => "This is a tooltip text", "size" => "xxl", "ng_model" => $model.".DescriptionShortTh"]) ?>
+																
+								<div ng-template="common/input/textarea2"
+									ng-template-options="{
+									'label': 'Short Description (Thai)',
+									'inputSize': 'xxl',
+									'formGroupClass' : 'margin-top-30',
+									'error' : {
+									'messages': {
+									'pattern': 'Only letters and numbers allowed'
+									},
+									'show': $root.isInvalid(addProductForm.Modal_DescriptionShortTh),
+									'conditions' : addProductForm.Modal_DescriptionShortTh.$error
+									}
+									}">
+									<textarea
+										ng-pattern="/^[0-9A-Za-zก-ฮ\s]+$/"
+										class="form-control"
+										maxlength="500"
+										name="Modal_DescriptionShortTh"
+										ng-model="<?=$model?>.DescriptionShortTh"
+										ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_DescriptionShortTh) }" />
+									</textarea>
+								</div>
+
 								<? $this->insert('components/forms/ckeditor-with-label', 
 								["label" => "Description (English)", "size" => "xxl", "label_class" => "required", "ng_model" => $model.".DescriptionFullEn"]) ?>
+								
 								<? $this->insert('components/forms/textarea-with-label',
 								 ["label" => "Short Description (English)", "tooltip" => "This is a tooltip text", "size" => "xxl", "ng_model" => $model.".DescriptionShortEn"]) ?>
 							</div>
@@ -60,15 +156,98 @@
 						<div class="form-section">
 							<div class="form-section-header"><h2>Package Detail</h2></div>
 							<div class="form-section-content">
-								<? $this->insert('components/forms/multiple-input-with-label', 
-								["label" => "Package Dimension", 
-								"ng_model_length" => $model.".Length", 
-								"ng_model_height" => $model.".Height", 
-								"ng_model_width" => $model.".Width",
-								"ng_model_dimension" => $model.".DimensionUnit"]) ?>
+								
+								<!-- package detail -->
+								<div class="form-group">
+						<div class="width-label"><label class="control-label required">Package Dimension</label></div>
+						<div class="width-field-xxl">
+							<div class="multiple-input">
+								<div class="input-column">
+
+									<div ng-template="common/input/text3"
+										ng-template-options="{
+										'label': 'Length',
+										'error' : {
+										'messages': {
+										'required': 'This is a required field',
+										'pattern': 'Only numbers and decimals allowed'
+										},
+										'show': $root.isInvalid(addProductForm.Modal_Length),
+										'conditions' : addProductForm.Modal_Length.$error
+										}
+										}">
+										<input
+										class="form-control"
+										name="Modal_Length"
+										ng-pattern="/^\d+(\.\d{1,2})?$/"
+										ng-model="<?=$model?>.Length"
+										ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_Length) }"  />
+									</div>
+
+								</div>
+
+								<div class="input-column">
+									<div ng-template="common/input/text3"
+										ng-template-options="{
+										'label': 'Height',
+										'error' : {
+										'messages': {
+										'required': 'This is a required field',
+										'pattern': 'Only numbers and decimals allowed'
+										},
+										'show': $root.isInvalid(addProductForm.Modal_Height),
+										'conditions' : addProductForm.Modal_Length.$error
+										}
+										}">
+										<input
+										class="form-control"
+										name="Modal_Height"
+										ng-pattern="/^\d+(\.\d{1,2})?$/"
+										ng-model="<?=$model?>.Height"
+										ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_Height) }"  />
+									</div>
+								</div>
+
+								<div class="input-column">
+									<div ng-template="common/input/text3"
+										ng-template-options="{
+										'label': 'Width',
+										'error' : {
+										'messages': {
+										'required': 'This is a required field',
+										'pattern': 'Only numbers and decimals allowed'
+										},
+										'show': $root.isInvalid(addProductForm.Modal_Width),
+										'conditions' : addProductForm.Modal_Width.$error
+										}
+										}">
+										<input
+										class="form-control"
+										name="Modal_Width"
+										ng-pattern="/^\d+(\.\d{1,2})?$/"
+										ng-model="<?=$model?>.Width"
+										ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_Width) }"  />
+									</div>
+								</div>
+
+								<div class="input-column no-label select input-xl">
+									<select ng-model="<?=$model?>.DimensionUnit" class="form-control">
+										<option value="MM"> Millimeter </option>
+										<option value="CM"> Centimeter </option>
+										<option value="M"> Meter </option>
+									</select>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+								<!-- end of package detail -->
 								
 								<? $this->insert('components/forms/multiple-input', 
 								["label" => "Weight", "ng_model" => $model.".Weight", "ng_model_dimension" => $model.".WeightUnit"]) ?>
+
+
 							</div>
 						</div>
 					</div> <!-- end .col-xs-12 -->

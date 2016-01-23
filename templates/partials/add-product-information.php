@@ -155,7 +155,7 @@
 						'label': 'Sale Price',
 						'error' : {
 						'messages': {
-						'required': 'This is a required field',
+						'custom': 'Sale price must be lower than the original price',
 						'pattern': 'Only numbers and decimals allowed'
 						},
 						'show': $root.isInvalid(addProductForm.MasterVariant_SalePrice),
@@ -225,7 +225,7 @@
 							ng-model="formData.MasterVariant.DescriptionShortEn"
 							ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_DescriptionShortEn) }" />
 						</textarea>
-					</div>					
+					</div>
 				</div>
 			</div>
 			<div class="form-section">
@@ -262,7 +262,7 @@
 						<div class="width-field-normal">
 							<!-- disabled if is variant as variant is disabled -->
 
-							<select class="form-control" disabled 
+							<select class="form-control" disabled
 								ng-show="_isListInput(amap.Attribute.DataType) && (amap.Attribute.VariantStatus && enableProductVariations == 'enable')">
 								<option selected>Edit in Variation Tab</option>
 							</select>
@@ -274,8 +274,8 @@
 
 							<!-- to do group into two cases -->
 
-							<select ng-show="_isListInput(amap.Attribute.DataType) && (!amap.Attribute.VariantStatus || enableProductVariations != 'enable')" 
-								class="form-control" 
+							<select ng-show="_isListInput(amap.Attribute.DataType) && (!amap.Attribute.VariantStatus || enableProductVariations != 'enable')"
+								class="form-control"
 								ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" >
 								<option ng-repeat="vv in amap.Attribute.AttributeValueMaps">
 								{{ vv.AttributeValue.AttributeValueEn || vv }}
@@ -283,8 +283,8 @@
 							</select>
 
 							<input ng-show="_isFreeTextInput(amap.Attribute.DataType) && (!amap.Attribute.VariantStatus || enableProductVariations != 'enable')"
-							type="text" 
-							class="form-control" 
+							type="text"
+							class="form-control"
 							ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" />
 
 						</div>
@@ -294,7 +294,7 @@
 					<div class="form-group">
 						<div class="width-label"><label class="control-label">Product Variations</label></div>
 						<div class="width-field-normal">
-							<select class="form-control" ng-disabled="!formData.AttributeSet.AttributeSetId" 
+							<select class="form-control" ng-disabled="!formData.AttributeSet.AttributeSetId"
 								ng-model="enableProductVariations">
 								<option value="enable">
 								Enable
@@ -387,9 +387,9 @@
 						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_SafetyStock) }" />
 					</div>
 
-					<? $this->insert('components/forms/dropdown-with-label', 
-					["label" => "Stock Type", 
-					"ng_model" => "formData.MasterVariant.StockType", 
+					<? $this->insert('components/forms/dropdown-with-label',
+					["label" => "Stock Type",
+					"ng_model" => "formData.MasterVariant.StockType",
 					"choices" => "availableStockTypes",
 					"options" => ["Stock", "Pre-Order"]]) ?>
 				</div>
@@ -397,7 +397,7 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Shipping Detail</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/multiple-radio-multiline', 
+					<? $this->insert('components/forms/multiple-radio-multiline',
 					["label" => "Shipping Method", "ng_model" => "formData.ShippingMethod", "choices" => ["Dropship by 3PL", "Central Fulfillment"]]) ?>
 
 					<div ng-template="common/input/text2"
@@ -509,10 +509,10 @@
 					</div>
 
 
-					<? $this->insert('components/forms/multiple-input', ["label" => "Weight", 
-					"ng_model_unit" => "formData.MasterVariant.WeightUnit", 
-					"ng_model" => "formData.MasterVariant.Weight", 
-					"label_class" => "required"]) 
+					<? $this->insert('components/forms/multiple-input', ["label" => "Weight",
+					"ng_model_unit" => "formData.MasterVariant.WeightUnit",
+					"ng_model" => "formData.MasterVariant.Weight",
+					"label_class" => "required"])
 					?>
 
 

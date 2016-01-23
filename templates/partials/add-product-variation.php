@@ -26,16 +26,17 @@
 							<div class="input-with-unit">
 								<ui-select ng-if="_isListInput(attributeOptions[jth].Attribute.DataType)"
 								multiple ng-model="attributeOptions[jth].options">
-								<ui-select-match>
+								<ui-select-match placeholder="Select variation options">
 								{{ $item.AttributeValue.AttributeValueEn || $item }}
 								</ui-select-match>
 								<ui-select-choices repeat="i in attributeOptions[jth].Attribute.AttributeValueMaps | filter:$select.search">
 								{{ i.AttributeValue.AttributeValueEn || i }}
 								</ui-select-choices>
 								</ui-select>
+
 								<ui-select ng-if="_isFreeTextInput(attributeOptions[jth].Attribute.DataType)"
 								multiple tagging tagging-label="" ng-model="attributeOptions[jth].options">
-								<ui-select-match>
+								<ui-select-match placeholder="Variation options separated by a comma (or enter)">
 								{{ $item.AttributeValue.AttributeValueEn || $item }}
 								</ui-select-match>
 								<ui-select-choices repeat="i in attributeOptions[jth].Attribute.AttributeValueMaps | filter:$select.search">

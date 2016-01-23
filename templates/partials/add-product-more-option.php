@@ -27,12 +27,131 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>SEO</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Meta Title", "ng_model" => "formData.SEO.MetaTitle"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Meta Description", "ng_model"=> "formData.SEO.MetaDescription"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Meta Keywords", "ng_model" => "formData.SEO.MetaKeywords"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Product URL Key (Thai)", "ng_model" => "formData.SEO.ProductUrlKeyTh"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Product URL Key (English)", "ng_model"=>"formData.SEO.ProductUrlKeyEn"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Boosting Weight", "ng_model" => "formData.SEO.ProductBoostingWeight"]) ?>
+					
+					<div ng-template="common/input/text2"
+						ng-template-options="{
+						'label': 'Meta Title',
+						'error' : {
+						'messages': {
+						
+						},
+						'show': $root.isInvalid(addProductForm.SEO_MetaTitle),
+						'conditions' : addProductForm.SEO_MetaTitle.$error
+						}
+						}">
+						<input
+						maxlength="60"
+						class="form-control width-field-normal"
+						name="SEO_MetaTitle"
+						ng-model="formData.SEO.MetaTitle"
+						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaTitle) }"
+						/>
+					</div>
+
+					<div ng-template="common/input/text2"
+						ng-template-options="{
+						'label': 'Meta Description',
+						'error' : {
+						'messages': {
+						
+						},
+						'show': $root.isInvalid(addProductForm.SEO_MetaDescription),
+						'conditions' : addProductForm.SEO_MetaDescription.$error
+						}
+						}">
+						<input
+						maxlength="150"
+						class="form-control width-field-normal"
+						name="SEO_MetaDescription"
+						ng-model="formData.SEO.MetaDescription"
+						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaDescription) }"
+						/>
+					</div>
+
+					<div ng-template="common/input/text2"
+						ng-template-options="{
+						'label': 'Meta Keywords',
+						'error' : {
+						'messages': {
+							'pattern': 'Only letters and numbers allowed'
+						},
+						'show': $root.isInvalid(addProductForm.SEO_MetaKeywords),
+						'conditions' : addProductForm.SEO_MetaKeywords.$error
+						}
+						}">
+						<input
+						class="form-control width-field-normal"
+						name="SEO_MetaKeywords"
+						ng-pattern="/^[0-9A-Za-z,\s]+$/"
+						ng-model="formData.SEO.MetaKeywords"
+						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaKeywords) }"
+						/>
+					</div>
+
+					<div ng-template="common/input/text2"
+						ng-template-options="{
+						'label': 'Product URL Key (Thai)',
+						'error' : {
+						'messages': {
+						'pattern': 'Only letters, numbers, -, and _ allowed. Space is not allowed'
+						},
+						'show': $root.isInvalid(addProductForm.SEO_ProductUrlKeyTh),
+						'conditions' : addProductForm.SEO_ProductUrlKeyTh.$error
+						}
+						}">
+						<input
+						class="form-control width-field-normal"
+						ng-pattern="/^[A-Za-z0-9_\-]+$/"
+						maxlength="300"
+						name="SEO_ProductUrlKeyTh"
+						ng-model="formData.SEO.ProductUrlKeyTh"
+						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_ProductUrlKeyTh) }"
+						/>
+					</div>
+
+					<div ng-template="common/input/text2"
+						ng-template-options="{
+						'label': 'Product URL Key (English)',
+						'error' : {
+						'messages': {
+						'pattern': 'Only letters, numbers, -, and _ allowed. Space is not allowed'
+						},
+						'show': $root.isInvalid(addProductForm.SEO_ProductUrlKeyEn),
+						'conditions' : addProductForm.SEO_ProductUrlKeyEn.$error
+						}
+						}">
+						<input
+						maxlength="300"
+						class="form-control width-field-normal"
+						ng-pattern="/^[A-Za-z0-9_\-]+$/"
+						name="SEO_ProductUrlKeyEn"
+						ng-model="formData.SEO.ProductUrlKeyEn"
+						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_ProductUrlKeyEn) }"
+						/>
+					</div>
+
+					<div ng-template="common/input/text2"
+						ng-template-options="{
+						'label': 'Product Boosting Weight',
+						'error' : {
+						'messages': {
+						'max': 'Only numbers from 1 to 10000 is allowed',
+						'min': 'Only numbers from 1 to 10000 is allowed'
+						},
+						'show': $root.isInvalid(addProductForm.SEO_ProductBoostingWeight),
+						'conditions' : addProductForm.SEO_ProductBoostingWeight.$error
+						}
+						}">
+						<input
+						type="number"
+						class="form-control width-field-normal"
+						min="0" max="10000"
+						name="SEO_ProductBoostingWeight"
+						ng-model="formData.SEO.ProductBoostingWeight"
+						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_ProductBoostingWeight) }"
+						/>
+					</div>
+
 				</div>
 			</div>
 		</div>
