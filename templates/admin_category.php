@@ -113,7 +113,7 @@
 							                </div>
 						                    <div ng-template="common/input/text2"
 						                      ng-template-options="{
-						                        'label': 'Brand URL Key (Thai)',
+						                        'label': 'URL (Eng)',
 						                        'error' : {
 						                              'messages': {
 						                                'pattern': 'Only letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'
