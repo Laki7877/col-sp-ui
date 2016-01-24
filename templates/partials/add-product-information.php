@@ -156,7 +156,7 @@
 						'label': 'Sale Price',
 						'error' : {
 						'messages': {
-						'custom': 'Sale price must be lower than the original price',
+						'min': 'Sale price must be lower than the original price',
 						'pattern': 'Only numbers and decimals allowed'
 						},
 						'show': $root.isInvalid(addProductForm.MasterVariant_SalePrice),

@@ -7,16 +7,23 @@
 				<div class="form-section-header"><h2>Relationship</h2></div>
 				<div class="form-section-content">
 
+					<div ng-template="common/input/text2"
+						ng-template-options="{
+						'label': 'Related Products',
+						'inputSize': 'xxl'
+						}">
 
-					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Related Products",
-					"size" => "xxl",
-					"ng_model" => "formData.RelatedProducts",
-					"choices" => "availableRelatedProducts",
-					"refresh" => "refreshRelatedProducts",
-					"placeholder" => "Search by Product Name or PID",
-					"trackBy" => "ProductId",
-					"showBy" => "ProductNameEn",
-					"multiple" => true ]) ?>
+						<ui-select ng-model="formData.RelatedProducts" 
+						multiple limit="10">
+							<ui-select-match placeholder="Separate tags with comma (or enter)">
+								<span>{{ $item.ProductNameEn }} ({{$item.Pid}})</span>
+							</ui-select-match>
+							<ui-select-choices repeat="item in (availableRelatedProducts) track by item.ProductId" 
+							refresh="refreshRelatedProducts($select.search)" refresh-delay="1">
+								{{ item.ProductNameEn }} ({{item.Pid}})
+							</ui-select-choices>
+						</ui-select>
+					</div>
 
 				</div>
 			</div>
@@ -195,9 +202,15 @@
 									<datetimepicker data-ng-model="formData.ExpireDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'hour' }"/>
 								</ul>
 							</div>
-							<span class="help-block"></span>
+							<div class="width-field-large">
+							<span class="help-block color-red" ng-repeat="m in addProductForm.ExpireDate.$error"> 
+								<span>{{ m }}</span>
+							</span>
+							</div>
+
 						</div>
 						<div class="width-field-tooltip no-padding-left"><i class="fa fa-2x fa-question-circle color-grey" data-toggle="btooltip" data-placement="right" title="Date when your product will go offline"></i></div>
+						
 					</div>
 
 					<? $this->insert('components/forms/multiple-checkbox', ["label" => "Control Flag", "ng_model" => "formData.ControlFlags", "choices" => ["Flag 1", "Flag 2", "Flag 3"]]) ?>

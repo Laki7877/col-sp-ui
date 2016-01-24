@@ -58,9 +58,9 @@
               <a class="header-link" ><span ng-class="sort('ProductNameEn', true)">Product Name</span></a>
               <i class="fa" ng-class="sort('ProductNameEn')">
             </th>
-            <th class="price-column" ng-click="setOrderBy('SalePrice')">
-              <a class="header-link" ><span ng-class="sort('SalePrice', true)">Price</span></a>
-              <i class="fa" ng-class="sort('SalePrice')">
+            <th class="price-column" ng-click="setOrderBy('OriginalPrice')">
+              <a class="header-link" ><span ng-class="sort('OriginalPrice', true)">Price</span></a>
+              <i class="fa" ng-class="sort('OriginalPrice')">
             </th>
             <th><span>Info.</span></th>
             <th><span>Image</span></th>
@@ -91,7 +91,7 @@
                   </td>
                   <td class="column-text-ellipsis"><a href="/products/{{ row.ProductId }}">{{ row.ProductNameEn || '(Untitled Product)' }}</a></td>
                   <td class="price-column">
-                    <div>{{ row.SalePrice | currency: ' ' : 2 }}</div>
+                    <div>{{ row.OriginalPrice | currency: ' ' : 2 }}</div>
                     <div ng-if="row.VariantCount > 0">({{row.VariantCount}} variants)</div></td>
                   <td class="info-column">
                     <i ng-if="!row.InfoFlag" class="fa fa-minus color-grey icon-size-18px"></i>

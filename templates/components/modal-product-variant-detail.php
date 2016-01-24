@@ -29,7 +29,6 @@
 									'labelClass': 'required',
 									'error' : {
 									'messages': {
-									'required': 'This is a required field',
 									'pattern': 'Only letters and numbers allowed'
 									},
 									'show': $root.isInvalid(addProductForm.Modal_ProductNameTh),
@@ -43,8 +42,7 @@
 									ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_ProductNameTh) }"
 									ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/"
 									maxlength="300"
-									ng-required="enableProductVariations == 'enable'" 
-									required />
+									/>
 								</div>
 
 								<div ng-template="common/input/text2"
@@ -53,7 +51,6 @@
 									'labelClass': 'required',
 									'error' : {
 									'messages': {
-										'required': 'This is a required field',
 										'pattern': 'Only letters and numbers allowed'
 									},
 									'show': $root.isInvalid(addProductForm.Modal_ProductNameEn),
@@ -66,9 +63,8 @@
 									ng-model="<?=$model?>.ProductNameEn"
 									maxlength="300"
 									ng-pattern="/^[0-9a-zA-Z\s]+$/"
-									ng-required="enableProductVariations == 'enable'" 
 									ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_ProductNameEn) }"
-									required />
+									/>
 								</div>
 
 
