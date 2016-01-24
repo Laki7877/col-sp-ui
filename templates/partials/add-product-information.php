@@ -376,7 +376,7 @@
 						}
 						}">
 						<input
-						class="form-control width-field-normal"
+						class="form-control"
 						name="MasterVariant_Quantity"
 						ng-pattern="/^[0-9]+$/"
 						maxlength="10"
@@ -399,7 +399,6 @@
 						'show': $root.isInvalid(addProductForm.MasterVariant_SafetyStock),
 						'conditions' : addProductForm.MasterVariant_SafetyStock.$error
 						},
-						'inputSize': 'large',
 						'tooltip': 'When your inventory gets lower than saftety stock, you will get a warning'
 						}">
 						<input
