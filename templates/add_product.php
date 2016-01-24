@@ -27,6 +27,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 		<div id="alert-validation" ng-show="alert.validationFailed" class="alert alert-danger alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			Unable to save because you have missing or incorrect field entries.
+			</hr>
+			<small>{{ addProductForm.$error }}</small>
 		</div>
 
 		<form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>

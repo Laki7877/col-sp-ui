@@ -1,4 +1,4 @@
-<div class="modal fade" tabindex="-1" role="dialog" id="<?= $id ?>">
+<div class="modal fade" tabindex="-1" role="dialog" id="<?= $id ?>" data-keyboard="false" data-backdrop="static"> 
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -23,8 +23,55 @@
 						<div class="form-section">
 							<div class="form-section-header"><h2>Vital Information</h2></div>
 							<div class="form-section-content modal-custom">
-								<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Name (Thai)", "ng_model" => $model . ".ProductNameTh"]) ?>
-								<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Name (English)", "ng_model" => $model . ".ProductNameEn"]) ?>
+								<div ng-template="common/input/text2"
+									ng-template-options="{
+									'label': 'Product Name (Thai)',
+									'labelClass': 'required',
+									'error' : {
+									'messages': {
+									'required': 'This is a required field',
+									'pattern': 'Only letters and numbers allowed'
+									},
+									'show': $root.isInvalid(addProductForm.Modal_ProductNameTh),
+									'conditions' : addProductForm.Modal_ProductNameTh.$error
+									}
+									}">
+									<input
+									class="form-control width-field-large"
+									name="Modal_ProductNameTh"
+									ng-model="<?= $model ?>.ProductNameTh"
+									ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_ProductNameTh) }"
+									ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/"
+									maxlength="300"
+									ng-required="enableProductVariations == 'enable'" 
+									required />
+								</div>
+
+								<div ng-template="common/input/text2"
+									ng-template-options="{
+									'label': 'Product Name (English)',
+									'labelClass': 'required',
+									'error' : {
+									'messages': {
+										'required': 'This is a required field',
+										'pattern': 'Only letters and numbers allowed'
+									},
+									'show': $root.isInvalid(addProductForm.Modal_ProductNameEn),
+									'conditions' : addProductForm.Modal_ProductNameEn.$error
+									}
+									}">
+									<input
+									class="form-control width-field-large"
+									name="Modal_ProductNameEn"
+									ng-model="<?=$model?>.ProductNameEn"
+									maxlength="300"
+									ng-pattern="/^[0-9a-zA-Z\s]+$/"
+									ng-required="enableProductVariations == 'enable'" 
+									ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_ProductNameEn) }"
+									required />
+								</div>
+
+
 								<? $this->insert('components/forms/dropdown-with-label',
 									["label" => "Display",
 									 "showBy" => "text",

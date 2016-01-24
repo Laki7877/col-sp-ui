@@ -14,7 +14,7 @@
 				<!-- TODO: change label to span with ng-click -->
 				<div class="form-section-header"><input type="checkbox" ng-model="checked_master_video" name="membedv" /> <label style="margin-bottom:0px !important" for="membedv">Embed Video</label></div>
 				<div class="form-section-content" ng-if='checked_master_video'>
-									<div ng-template="common/input/text2"
+						<div ng-template="common/input/text2"
 				                      ng-template-options="{
 				                        'label': 'Video Link 1',
 				                        'hint': {

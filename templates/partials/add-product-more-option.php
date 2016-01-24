@@ -80,6 +80,7 @@
 						}
 						}">
 						<input
+						placeholder="Keywords separated by comma"
 						class="form-control width-field-normal"
 						name="SEO_MetaKeywords"
 						ng-pattern="/^[0-9A-Za-z,\s]+$/"
@@ -167,7 +168,8 @@
 						<div class="width-field-normal">
 							<div class="dropdown">
 								<a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
-									<input type="text" class="input-icon-calendar form-control" data-ng-model="formData.EffectiveDate">
+									<input type="text" placeholder="Select date and time when product will go online" 
+									class="input-icon-calendar form-control" data-ng-model="formData.EffectiveDate">
 								</a>
 								<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 									<datetimepicker data-ng-model="formData.EffectiveDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'hour' }"/>
@@ -183,7 +185,11 @@
 						<div class="width-field-normal">
 							<div class="dropdown">
 								<a class="dropdown-toggle" id="dropdown3" role="button" data-toggle="dropdown" data-target="#" href="#">
-									<input type="text" class="input-icon-calendar form-control" data-ng-model="formData.ExpireDate">
+									<input type="text" placeholder="Select date and time when product will go offline"  
+									class="input-icon-calendar form-control" 
+									name="ExpireDate"
+									ng-class="{'has-error': $root.isInvalid(addProductForm.ExpireDate) }"
+									data-ng-model="formData.ExpireDate">
 								</a>
 								<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 									<datetimepicker data-ng-model="formData.ExpireDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'hour' }"/>
@@ -195,7 +201,29 @@
 					</div>
 
 					<? $this->insert('components/forms/multiple-checkbox', ["label" => "Control Flag", "ng_model" => "formData.ControlFlags", "choices" => ["Flag 1", "Flag 2", "Flag 3"]]) ?>
-					<? $this->insert('components/forms/textarea-with-label', ["label" => "Remark", "ng_model" => "formData.Remark"]) ?>
+
+					<div ng-template="common/input/textarea2"
+						ng-template-options="{
+						'label': 'Remark',
+						'inputSize': 'normal',
+						'formGroupClass' : 'margin-top-30',
+						'error' : {
+						'messages': {
+
+						},
+						'show': $root.isInvalid(addProductForm.Remark),
+						'conditions' : addProductForm.Remark.$error
+						}
+						}">
+						<textarea
+							class="form-control"
+							maxlength="2000"
+							name="Remark"
+							ng-model="formData.Remark"
+							ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Remark) }" />
+						</textarea>
+					</div>
+
 				</div>
 			</div>
 		</div>

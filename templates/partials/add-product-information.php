@@ -147,7 +147,8 @@
 						ng-disabled="enableProductVariations == 'enable'"
 						ng-model="formData.MasterVariant.OriginalPrice"
 						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_OriginalPrice) }"
-						ng-required="enableProductVariations == 'disable'" />
+						ng-required="enableProductVariations == 'disable'" 
+						/>
 					</div>
 
 					<div ng-template="common/input/text2"
@@ -239,7 +240,7 @@
 							<div class="ah-select2-dropdown" >
 								<!-- dont show if nothing is available to choose from -->
 								<ui-select ng-model="formData.AttributeSet" ng-show="availableAttributeSets.length > 0">
-								<ui-select-match>
+								<ui-select-match placeholder="Select Attribute Set">
 								<span ng-bind="$select.selected.AttributeSetNameEn"></span>
 								</ui-select-match>
 								<ui-select-choices repeat="item in (availableAttributeSets) | filter : $select.search track by item.AttributeSetId">
@@ -268,8 +269,8 @@
 							</select>
 
 							<input class="form-control" disabled type="text"
-							ng-show="_isFreeTextInput(amap.Attribute.DataType) && (amap.Attribute.VariantStatus && enableProductVariations == 'enable')"
-							value="Edit in Variation Tab"
+								ng-show="_isFreeTextInput(amap.Attribute.DataType) && (amap.Attribute.VariantStatus && enableProductVariations == 'enable')"
+								value="Edit in Variation Tab"
 							/>
 
 							<!-- to do group into two cases -->
@@ -277,6 +278,8 @@
 							<select ng-show="_isListInput(amap.Attribute.DataType) && (!amap.Attribute.VariantStatus || enableProductVariations != 'enable')"
 								class="form-control"
 								ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" >
+
+								<option value="" disabled selected>Select an option..</option>
 								<option ng-repeat="vv in amap.Attribute.AttributeValueMaps">
 								{{ vv.AttributeValue.AttributeValueEn || vv }}
 								</option>
@@ -311,15 +314,35 @@
 				<div class="form-section-header"><h2>Keywords</h2></div>
 				<div class="form-section-content">
 
-					<? $this->insert('components/forms/dropdown-with-label',
-					["label" => "Search Tag",
-					"ng_model" => "formData.Keywords",
-					"tooltip" => "Search Tag will help you product easier to be discovered",
-					"size" => "large",
-					"choices" => "formData.AttributeSet.AttributeSetTagMaps",
-					"multiple" => true,
-					"tagging" => true
-					]) ?>
+					<div ng-template="common/input/text2"
+						ng-template-options="{
+						'label': 'Search Tag',
+						'inputSize': 'large',
+						'tooltip': 'Search Tag will help your product easier to be discovered',
+						'error' : {
+						'messages': {
+							'tagcount': 'Maximum 20 tags',
+							'taglength': 'Tag must contain 30 characters or less',
+							'pattern': 'Only letters and numbers'
+						},
+						'show': true,
+						'conditions' :  keywordValidConditions
+						}
+						}">
+
+						<ui-select ng-model="formData.Keywords" 
+						on-select="onKeywordAdded($item, $model)"
+						on-remove="onKeywordRemoved($item, $model)" 
+						multiple 
+						tagging tagging-tokens=",|ENTER" tagging-label="">
+							<ui-select-match placeholder="Separate tags with comma (or enter)">
+								{{$item}}
+							</ui-select-match>
+							<ui-select-choices repeat="item in formData.AttributeSet.AttributeSetTagMaps">	
+								{{item}}
+							</ui-select-choices>
+						</ui-select>
+					</div>
 
 					<div class="form-group" ng-if="formData.AttributeSet.AttributeSetTagMaps.length > 0">
 						<div class="width-label"><label class="control-label">Suggested Search Tag</label></div>
@@ -376,10 +399,11 @@
 						'show': $root.isInvalid(addProductForm.MasterVariant_SafetyStock),
 						'conditions' : addProductForm.MasterVariant_SafetyStock.$error
 						},
+						'inputSize': 'large',
 						'tooltip': 'When your inventory gets lower than saftety stock, you will get a warning'
 						}">
 						<input
-						class="form-control width-field-normal"
+						class="form-control"
 						name="MasterVariant_SafetyStock"
 						ng-pattern="/^[0-9]+$/"
 						maxlength="10"

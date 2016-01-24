@@ -33,9 +33,10 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	/**
 	 * Assign image uploader events specifically to COL-image uploading feature
 	 */
-	service.assignUploaderEvents = function(uploader, images, queueLimit) {
+	service.assignUploaderEvents = function(uploader, images, queueLimit, onFail) {
 		uploader.onWhenAddingFileFailed = function(item, filter, options) {
 			console.info('onAfterAddingFile', item, filter, options);
+			onFail(item, filter);
 		};
 		uploader.onAfterAddingFile = function(item) {
 			var obj = {
