@@ -28,7 +28,7 @@ Route::add('/products/:productid', 'ProductController::edit');
 Route::add('/categories', 'CategoryController::index');
 
 //admin routing
-Route::add('/admin/attributes/add','AdminController::addAttribute');
+Route::add('/admin/attributes/add','AdminController::addAttribute', 'product');
 Route::add('/admin/attributes/:id','AdminController::editAttribute');
 Route::add('/admin/attributes','AdminController::listAttribute');
 Route::add('/admin/attributesets/add','AdminController::addAttributeSet');

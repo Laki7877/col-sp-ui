@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="" ng-app="colspApp">
+<html class="no-js" lang="" ng-app="app">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">

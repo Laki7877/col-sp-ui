@@ -1,0 +1,29 @@
+angular.module('app.share')
+	.service('common', function($http, $q, storage, config) {
+		var service = {};
+
+		service.makeRequest = function(options) {
+	        var deferred = $q.defer();
+	        var accessToken = storage.getSessionToken();
+	        if (!options.headers) {
+	            options.headers = {};
+	        }
+
+	        if (accessToken && !options.headers.Authorization) {
+	            options.headers.Authorization = 'Basic ' + accessToken;
+	        }
+	        if (options.url.indexOf("http") !== 0) {
+	            options.url = config.REST_SERVICE_BASE_URL + options.url;
+	        }
+	        $http(options)
+	            .success(function (data) {
+	                deferred.resolve(data);
+	            })
+	            .error(function (data, status, headers, config) {
+	                console.warn(status, config.method, config.url, data);
+	                deferred.reject(data || {"error": "Unknown error"});
+	            });
+	        return deferred.promise;
+		};
+		return service;
+	})
