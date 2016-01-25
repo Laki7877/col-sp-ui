@@ -297,9 +297,6 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
     };
 
 
-    $scope.validationL2 = function(form){
-	//Nothing here (onclick validation)	   
-    };
 
     $scope.$watch('formData.MasterVariant.SalePrice', function(){
 	 var form = $scope.addProductForm;
@@ -331,8 +328,6 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 	    $scope._loading.message = "Saving changes";
 	    $scope.onPublishing = (Status == "WA");
 
-	    $scope.validationL2($scope.addProductForm);
-
 	    if ($scope.addProductForm.$invalid) {
 		    $scope._loading.state = false;
 		    //scroll to top and show alert div
@@ -356,12 +351,14 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 			    }else{
 				    $scope._loading.state = false;
 				    $scope.alert.failure = true;
-		    		    $scope.alert.failure_message = res.message || res.Message;
+		    	    $scope.alert.failure_message = res.message || res.Message;
+		    	    $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
 			    } 
 		    }, function (er) {
 			    $scope._loading.state = false;
 			    $scope.alert.failure = true;
 			    $scope.alert.failure_message = er.Message || er.message;
+			    $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
 			    console.log('publish failure', er);
 		    });
 
@@ -369,6 +366,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 		    $scope._loading.state = false;
 		    $scope.alert.failure = true;
 		    $scope.alert.failure_message = ex.message;
+		    $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
 		    console.log('publish failure', ex);
 		    return;
 	    }
