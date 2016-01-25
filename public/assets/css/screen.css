@@ -14384,14 +14384,14 @@ html, body {
   padding-bottom: 14px;
 }
 
-/* line 161, ../../../assets/screen.scss */
-input.form-control.has-error {
+/* line 162, ../../../assets/screen.scss */
+.form-control.has-error {
   border-color: #ec0000;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-/* line 167, ../../../assets/screen.scss */
+/* line 168, ../../../assets/screen.scss */
 .empty-section {
   border: 1px solid;
   border-color: #BCC7D5;
@@ -14399,7 +14399,7 @@ input.form-control.has-error {
   height: 80px;
   line-height: 80px;
 }
-/* line 173, ../../../assets/screen.scss */
+/* line 174, ../../../assets/screen.scss */
 .empty-section .loading-img {
   width: 40px;
   height: 40px;
@@ -14407,12 +14407,12 @@ input.form-control.has-error {
   margin-right: 15px;
 }
 
-/* line 180, ../../../assets/screen.scss */
+/* line 181, ../../../assets/screen.scss */
 .disabled-chevron {
   cursor: not-allowed;
 }
 
-/* line 184, ../../../assets/screen.scss */
+/* line 185, ../../../assets/screen.scss */
 .opacity-50 {
   opacity: 0.5;
 }

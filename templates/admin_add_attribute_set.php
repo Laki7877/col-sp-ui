@@ -13,23 +13,34 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Attribute Set Information</h2></div>
             <div class="form-section-content">
-              <div ng-template="common/input/text"
+              <div ng-template="common/input/text2"
                 ng-template-options="{
-                  'label': 'Attribute Set Name (Eng)',
+                  'label': 'Attribute Set Name (English)',
                   'labelClass': 'required',
+                  'inputSize': 'large',
+                  'error' : {
+                        'messages': {
+                          'required': 'This is a required field',
+                          'pattern': 'Only letters and numbers allowed'
+                        },
+                        'show': $root.isInvalid(form.AttributeSetNameEn),
+                        'conditions' : form.AttributeSetNameEn.$error
+                   }
                 }">
                 <input
                   class="form-control"
                   name="AttributeSetNameEn"
                   ng-model="formData.AttributeSetNameEn"
                   ng-class="{ 'has-error' : $root.isInvalid(form.AttributeSetNameEn) }"
+                  ng-pattern="/^[A-Za-z0-9_\-\s]+$/"
+                  maxlength="100"
                   required />
               </div>
               <div ng-template="common/input/textarea"
                   ng-template-options="{
                     'label' : 'Attribute Set Description'
                   }">
-                  <textarea class="form-control" ng-model="formData.AttributeSetDescriptionEn"></textarea>
+                  <textarea class="form-control" ng-model="formData.AttributeSetDescriptionEn" maxlength="500"></textarea>
               </div>
             </div>
           </div>
@@ -52,11 +63,11 @@
                   'label' : 'Search Tag',
                   'size' : 'large'
                  }">
-                <ui-select ng-model="formData.Tags" tagging-tokens=",|ENTER" multiple tagging tagging-label="">
-                  <ui-select-match placeholder="Separated by Pressing Enter">
+                <ui-select ng-model="formData.Tags" tagging-tokens=",|ENTER" limit="100" multiple tagging tagging-label="" ui-select-maxlength="30">
+                  <ui-select-match placeholder="Tags separated with a comma">
                       {{ $item }}
                   </ui-select-match>
-                  <ui-select-choices repeat="i in tagOptions">
+                  <ui-select-choices repeat="i in tagOptions | exclude:formData.Tags">
                       {{ i }}
                   </ui-select-choices>
                 </ui-select>

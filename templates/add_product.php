@@ -20,12 +20,15 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 
 		<div ng-show="alert.failure"  class="alert alert-danger alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			An unknown error has occurred while trying to save your data.
+			Server refused to save because
+			<strong>{{ alert.failure_message }}</strong>
 		</div>
 
 		<div id="alert-validation" ng-show="alert.validationFailed" class="alert alert-danger alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			Unable to save because required fields are missing.
+			Unable to save because you have missing or incorrect field entries.
+			</hr>
+			<small>{{ addProductForm.$error }}</small>
 		</div>
 
 		<form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
@@ -59,15 +62,15 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 						<div class="float-right">
 							<a href="/products" class="link-btn-plain">Cancel</a>
 
-							<button ng-show="formData.Status != 'WA'" 
+							<button ng-show="formData.Status != 'WA'"
 							class="btn btn-white btn-width-xl" ng-click="preview()">Preview</button>
 
-							<button ng-show="formData.Status != 'WA'" 
-							class="btn btn-white btn-width-xl" 
+							<button ng-show="formData.Status != 'WA'"
+							class="btn btn-white btn-width-xl"
 							type="submit" ng-click="publish('DF')">Save as Draft</button>
 
-							<button ng-show="formData.Status != 'WA'" 
-							type="submit" class="btn btn-blue btn-width-xl" 
+							<button ng-show="formData.Status != 'WA'"
+							type="submit" class="btn btn-blue btn-width-xl"
 							ng-click="publish('WA')">Publish</button>
 						</div>
 					</div>

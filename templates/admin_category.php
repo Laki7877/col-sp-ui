@@ -71,69 +71,88 @@
 											<h2>Global Category Information</h2>
 										</div>
 										<div class="form-section-content modal-custom">
-											<div ng-template="common/input/text" 
-							                    ng-template-options="{
-							                      'label': 'Category Name (Thai)',
-							                      'labelClass': 'required',
-							                      'error' : {
-							                        'show' : $root.isInvalid(editingForm.NameTh)
-							                      }
-							                    }">
-								                <input type="text"
-								                  name="NameTh"
-								                  class="form-control"
-								                  autocomplete="off"
-								                  ng-class="{ 'has-error' : $root.isInvalid(editingForm.NameTh) }"
-								                  ng-model="editingCategory.NameTh" 
-								                  required
-								                />
+							                <div ng-template="common/input/text2"
+								                ng-template-options="{
+								                  'label': 'Category Name (Thai)',
+								                  'labelClass': 'required',
+								                  'error' : {
+								                        'messages': {
+								                          'required': 'This is a required field'
+								                        },
+								                        'show': $root.isInvalid(editingForm.NameTh),
+								                        'conditions' : editingForm.NameTh.$error
+								                   }
+								                }">
+												<input
+												 class="form-control"
+												 name="NameTh"
+												 ng-model="editingCategory.NameTh"
+												 ng-class="{ 'has-error' : $root.isInvalid(editingForm.NameTh) }"
+												 maxlength="100"
+												 required />
 							                </div>
-							                <div ng-template="common/input/text" 
-							                    ng-template-options="{
-							                      'label': 'Category Name (Eng)',
-							                      'labelClass': 'required',
-							                      'error' : {
-							                        'show' : $root.isInvalid(editingForm.NameEn)
-							                      }
-							                    }">
-							                	<input type="text" 
-							                	  name="NameEn"
-							                	  class="form-control"
-							                	  autocomplete="off"
-							                	  ng-class="{ 'has-error' : $root.isInvalid(editingForm.NameEn) }"
-							                	  ng-model="editingCategory.NameEn"
-							                	  required
-							                	/>
+							                <div ng-template="common/input/text2"
+								                ng-template-options="{
+								                  'label': 'Category Name (Eng)',
+								                  'labelClass': 'required',
+								                  'error' : {
+								                        'messages': {
+								                          'required': 'This is a required field'
+								                        },
+								                        'show': $root.isInvalid(editingForm.NameEn),
+								                        'conditions' : editingForm.NameEn.$error
+								                   }
+								                }">
+												<input
+												 class="form-control"
+												 name="NameEn"
+												 ng-model="editingCategory.NameEn"
+												 ng-class="{ 'has-error' : $root.isInvalid(editingForm.NameEn) }"
+												 maxlength="100"
+												 required />
 							                </div>
-							                <div ng-template="common/input/text" 
-							                    ng-template-options="{
-							                      'label': 'Url (Eng)'
-							                    }">
-							                	<input type="text" 
-							                	  name="UrlKeyEn"
-							                	  class="form-control"
-							                	  ng-model="editingCategory.UrlKeyEn"
-							                	/>
-							                </div>
-							                <div ng-template="common/input/text" 
-							                    ng-template-options="{
-						                      	  'label': 'Commission (%)',
-						                      	  'labelClass': 'required',
-							                      'error' : {
-							                        'message': 'Must be a number',
-							                        'show' : $root.isInvalid(editingForm.Commission)
-							                      }
-							                    }">
-							                	<input type="text" 
-							                	  name="Commission"
-							                	  class="form-control"
-							                	  autocomplete="off"
-							                	  ng-class="{ 'has-error' : $root.isInvalid(editingForm.Commission) }"
-							                	  ng-model="editingCategory.Commission"
-						                    	  ng-pattern="/^[0-9.]+$/"  
-							                	  required
-							                	/>
-							                </div>
+						                    <div ng-template="common/input/text2"
+						                      ng-template-options="{
+						                        'label': 'URL (Eng)',
+						                        'error' : {
+						                              'messages': {
+						                                'pattern': 'Only letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'
+						                                },
+						                              'show': $root.isInvalid(editingForm.UrlKeyEn),
+						                              'conditions' : editingForm.UrlKeyEn.$error
+						                         }
+						                      }">
+						                      <input
+						                        class="form-control"
+						                        name="UrlKeyEn"
+						                        ng-model="editingCategory.UrlKeyEn"
+						                        ng-pattern="/^[A-Za-z0-9_\-]+$/"
+						                        ng-class="{ 'has-error' : $root.isInvalid(editingForm.UrlKeyEn) }"
+						                        maxlength="300"
+						                        />
+						                    </div>
+						                    <div ng-template="common/input/text2"
+						                      ng-template-options="{
+						                        'label': 'Commission (%)',
+						                      	'labelClass': 'required',
+						                        'error' : {
+						                              'messages': {
+								                          	'required': 'This is a required field',
+						                            		'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
+						                                },
+						                              'show': $root.isInvalid(editingForm.Commission),
+						                              'conditions' : editingForm.Commission.$error
+						                         }
+						                      }">
+						                      <input
+						                        class="form-control"
+						                        name="Commission"
+						                        ng-model="editingCategory.Commission"
+                        						ng-pattern="/^\d+(\.\d{1,})?$/"
+						                        ng-class="{ 'has-error' : $root.isInvalid(editingForm.Commission) }"
+						                        maxlength="20"
+						                        />
+						                    </div>
 										</div>
 									</div>
 									<div class="form-section">

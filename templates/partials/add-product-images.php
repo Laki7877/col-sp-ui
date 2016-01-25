@@ -14,9 +14,83 @@
 				<!-- TODO: change label to span with ng-click -->
 				<div class="form-section-header"><input type="checkbox" ng-model="checked_master_video" name="membedv" /> <label style="margin-bottom:0px !important" for="membedv">Embed Video</label></div>
 				<div class="form-section-content" ng-if='checked_master_video'>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 1", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "Only YouTube link is allowed.", "ng_model" => "formData.VideoLinks[0]"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 2", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "Only YouTube link is allowed.", "ng_model" => "formData.VideoLinks[1]"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Video Link 3", "size" => "large", "hint" => "Example: https://www.youtube.com/watch?v=f78M4nKW1Ms", "tooltip" => "Only YouTube link is allowed.", "ng_model" => "formData.VideoLinks[2]"]) ?>
+						<div ng-template="common/input/text2"
+				                      ng-template-options="{
+				                        'label': 'Video Link 1',
+				                        'hint': {
+				                        	'show': true,
+				                        	'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'
+				                        },
+				                        'tooltip': 'Youtube Links',
+				                        'error' : {
+				                              'messages': {
+				                              	'url': 'Please enter valid URL'
+				                              },
+				                              'show': $root.isInvalid(addProductForm.VideoLinks0),
+				                              'conditions' : addProductForm.VideoLinks0.$error
+				                         }
+				                      }">
+				                      <input
+				                        class="form-control width-field-normal"
+				                        name="VideoLinks0"
+				                        type="url"
+				                        maxlength="500"
+				                        ng-model="formData.VideoLinks[0]"
+				                        ng-class="{ 'has-error' : $root.isInvalid(addProductForm.VideoLinks0) }"  />
+				                    </div>
+
+
+				                    <div ng-template="common/input/text2"
+				                      ng-template-options="{
+				                        'label': 'Video Link 2',
+				                        'hint': {
+				                        	'show': true,
+				                        	'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'
+				                        },
+				                        'tooltip': 'Youtube Links',
+				                        'error' : {
+				                              'messages': {
+				                              	'url': 'Please enter valid URL'
+				                              },
+				                              'show': $root.isInvalid(addProductForm.VideoLinks1),
+				                              'conditions' : addProductForm.VideoLinks1.$error
+				                         }
+				                      }">
+				                      <input
+				                        class="form-control width-field-normal"
+				                        name="VideoLinks1"
+				                        type="url"
+				                        maxlength="500"
+				                        ng-model="formData.VideoLinks[1]"
+				                        ng-class="{ 'has-error' : $root.isInvalid(addProductForm.VideoLinks1) }"  />
+				                    </div>
+
+
+				                    <div ng-template="common/input/text2"
+				                      ng-template-options="{
+				                        'label': 'Video Link 3',
+				                        'hint': {
+				                        	'show': true,
+				                        	'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'
+				                        },
+				                        'tooltip': 'Youtube Links',
+				                        'error' : {
+				                              'messages': {
+				                              	'url': 'Please enter valid URL'
+				                              },
+				                              'show': $root.isInvalid(addProductForm.VideoLinks2),
+				                              'conditions' : addProductForm.VideoLinks2.$error
+				                         }
+				                      }">
+				                      <input
+				                        type="url"
+				                        class="form-control width-field-normal"
+				                        name="VideoLinks2"
+				                        maxlength="500"
+				                        ng-model="formData.VideoLinks[2]"
+				                        ng-class="{ 'has-error' : $root.isInvalid(addProductForm.VideoLinks2) }"  />
+				                    </div>
+
 				</div>
 			</div>
 		</div>

@@ -15,7 +15,6 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 	};
 
 	$window.onbeforeunload = function (e) {
-
 		if(!$scope.form.$dirty){
 			//not dirty
 			return null;
