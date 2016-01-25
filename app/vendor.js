@@ -1,3 +1,4 @@
+global._ = require('lodash');
 global.$ = require('jquery');
 global.jQuery = require('jquery');
 

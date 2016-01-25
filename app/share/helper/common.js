@@ -1,29 +1,31 @@
 angular.module('app.share')
-	.service('common', function($http, $q, storage, config) {
-		var service = {};
-
-		service.makeRequest = function(options) {
+	.service('common', function($http, $q, $log, storage, config) {
+		this.makeRequest = function(options) {
 	        var deferred = $q.defer();
 	        var accessToken = storage.getSessionToken();
 	        if (!options.headers) {
 	            options.headers = {};
 	        }
 
+	        //Attach auth token
 	        if (accessToken && !options.headers.Authorization) {
 	            options.headers.Authorization = 'Basic ' + accessToken;
 	        }
+
+	        //This is a relative api url
 	        if (options.url.indexOf("http") !== 0) {
 	            options.url = config.REST_SERVICE_BASE_URL + options.url;
 	        }
+
 	        $http(options)
 	            .success(function (data) {
+	                $log.debug(data);
 	                deferred.resolve(data);
 	            })
 	            .error(function (data, status, headers, config) {
-	                console.warn(status, config.method, config.url, data);
+	                $log.error(status, config.method, config.url, data);
 	                deferred.reject(data || {"error": "Unknown error"});
 	            });
 	        return deferred.promise;
 		};
-		return service;
 	})

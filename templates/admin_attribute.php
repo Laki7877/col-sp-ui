@@ -1,7 +1,7 @@
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attribute']) ?>
 
 <?php $this->start('page-body') ?>
-	<div ng-controller="AttributeListCtrl" ng-init="init(<?=$params?>)">
+	<div ng-controller="AdminAttributeListCtrl">
     <? $this->insert('components/page-title-with-one-button', ['text' => 'Attribute','button' => 'Add Attribute', 'button_class' => 'btn-width-xl', 'link' => '/admin/attributes/add']) ?>
     <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()">{{alert.message}}</div>
     <div class="row search-section-wrapper">

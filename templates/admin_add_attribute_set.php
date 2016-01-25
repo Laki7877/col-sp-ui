@@ -1,7 +1,7 @@
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attribute Set']) ?>
 
 <?php $this->start('page-body') ?>
-	<div ng-controller="AdminAttributeSetAddCtrl" ng-init="init(<?=$params?>)">
+	<div ng-controller="AdminAttributeSetDetailCtrl" ng-init="init(<?=$params?>)">
     <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute Set/" . $title, 'urls' => ['/admin/attributesets'], 'class' =>'{disabled : form.$invalid}']) ?>
     <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()"><span ng-bind-html="alert.message"></span></div>
     <div ng-show="saving">
