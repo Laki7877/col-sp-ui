@@ -1,6 +1,6 @@
 describe('angularjs homepage todo list', function() {
   it('should add a todo', function() {
-    browser.get('http://ksonep-dev:5000/products/add');
+    browser.get('http://americanod:5000/products/add');
 
     element(by.model('formData.MasterVariant.ProductNameEn')).sendKeys('JACK SHEN YI');
     element(by.model('formData.MasterVariant.ProductNameTh')).sendKeys('แจกเชน');
