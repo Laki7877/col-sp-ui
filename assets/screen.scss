@@ -26,6 +26,7 @@
 @import "select2";
 @import "modal_custom";
 @import "dropdown";
+@import "image_thumbs";
 
 body {
 	overflow-y: scroll;
@@ -57,6 +58,7 @@ html, body {
 @import "add_product_page";
 @import "global_category";
 @import "local_category";
+@import "image_management";
 
 
 /* Additional Code */
@@ -147,14 +149,11 @@ html, body {
   }
 }
 
-.table{
-  .action-column{
-    width: 60px;
-    padding-top: 14px;
-    padding-bottom: 14px;
-  }
+.my_file {
+    display: none !important;
 }
 
+<<<<<<< HEAD
 .empty-section{
     border: 1px solid;
     border-color: #BCC7D5;
@@ -169,3 +168,8 @@ html, body {
     }
 }
 
+=======
+.get_file {
+    cursor: pointer;
+}
+>>>>>>> develop

@@ -6,7 +6,7 @@
 			<p>Drag &amp; drop your product images here</p>
 		</div>
 	</div>
-	<div class="image-select-alternative-text">
-		<span>Or</span> <a href="#" data-trigger="file" data-target="#<?= $id ?>_input">Select Images from your computer</a>
-	</div>
+</div>
+<div class="image-select-alternative-text">
+	<span>Or</span> <a href="#" data-trigger="file" data-target="#<?= $id ?>_input">Select Images from your computer</a>
 </div>

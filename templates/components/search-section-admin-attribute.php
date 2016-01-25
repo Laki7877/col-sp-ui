@@ -1,3 +1,12 @@
+<?php
+if ($searchPlaceHolder) { 
+  $searchPlaceHolder = $searchPlaceHolder;
+}
+else {
+  $searchPlaceHolder = 'Search';
+}
+?>
+
 <div class="row search-section-wrapper">
   <div class="search-section section-action">
     <div class="input-group">
@@ -21,7 +30,7 @@
   </div>
   <div class="search-section section-search">
     <div class="input-group">
-      <input type="text" class="form-control input-search-icon search-box" placeholder="Search" aria-describedby="basic-addon2">
+      <input type="text" class="form-control input-search-icon search-box" placeholder="<?= $searchPlaceHolder ?>" aria-describedby="basic-addon2">
       <span class="input-group-btn">
         <button class="btn btn-white" type="button">Search</button>
       </span>

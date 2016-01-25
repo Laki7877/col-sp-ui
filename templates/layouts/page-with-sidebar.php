@@ -9,14 +9,21 @@
     
     <ul class="sub-sidebar" style="display: none;" id="sub-sidebar-product">
         <li class="sub-sidebar-header">Product</li>
-        <li class="item active margin-top-20"><a href="">View</a></li>
-        <li class="item"><a href="">Add</a></li>
-        <li class="item"><a href="">Import</a></li>
-        <li class="item"><a href="">Export</a></li>
-        <li class="item margin-top-30"><a href="">Local Category</a></li>
-        <li class="item"><a href="">Product Review</a></li>
+        <li class="item active margin-top-20"><a href="/?p=index">View</a></li>
+        <li class="item"><a href="/?p=add_product">Add</a></li>
+        <li class="item"><a href="/?p=import_product">Import</a></li>
+        <li class="item"><a href="/?p=index">Export</a></li>
+        <li class="item margin-top-30"><a href="/?p=local_category">Local Category</a></li>
+        <li class="item"><a href="/?p=product_review">Product Review</a></li>
         <li class="item"><a href="">Product Images</a></li>
     </ul>
+
+    <ul class="sub-sidebar" style="display: none;" id="sub-sidebar-account">
+        <li class="sub-sidebar-header">Account</li>
+        <li class="item active margin-top-20"><a href="?p=user_account">User Accounts</a></li>
+        <li class="item"><a href="?p=user_role">User Roles</a></li>
+    </ul>
+
 <?php $this->stop() ?>
 
 <?php $this->start('page-content') ?>

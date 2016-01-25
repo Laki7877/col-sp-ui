@@ -41,6 +41,12 @@
 	.modified-column {
 		width: 88px;
 	}
+
+  tbody .action-column{
+    width: 60px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
 }
 
 //Table section
@@ -56,12 +62,10 @@
     border-color: $color-grey;
   }
   // End setting border color
-
-  .product-list-table {
-   
-    > tbody >tr:first-child > td {
-      border-top: none;
-    }
+  
+  
+  .table > tbody > tr:first-child > td {
+    border-top: none;
   }
 
   // Override Bootstrap's th width that set to 2px
@@ -296,11 +300,5 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-}
-
-.table-border-none {
-  > tbody > tr:first-child > td {
-    border-top: none;
   }
 }

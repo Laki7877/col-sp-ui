@@ -1,0 +1,80 @@
+.image-management {
+	$feature-text-height: 20px;
+
+	.form-section-content {
+		margin-top: 30px - $feature-text-height;
+		margin-bottom: 30px - 15px; // -15px for image list item's margin bottom
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	.feature-text {
+		margin-left: 15px;
+		height: $feature-text-height;
+	}
+	.content-text {
+		margin-top: $feature-text-height;
+	    width: 140px;
+	    float: left;
+	}
+
+	.picture-container, .drop-zone-container {
+		float: left;
+	}
+
+	.drop-zone-container {
+		margin-top: $feature-text-height;
+
+		&.disabled {
+			.image-drop-zone {		
+				background-image: none;
+				background-color:  $color-grey;
+			}
+		}
+
+		&.no-background {
+			.image-drop-zone {		
+				background-image: none;
+				background-color:  $color-light-blue;
+				border: solid 1px $color-grey;
+			}
+		}
+	}
+
+	.image-drop-wrapper {
+		width: 175px;
+	}
+
+	.image-drop-zone {
+		height: 285px - 2px; // -2px for 2-side border thick
+	}
+
+	.image-drop-zone-text {
+		width: 120px;
+	}
+
+	.alert-wrapper {
+		margin-top: 5px;
+		max-width: 905px;
+	}
+}
+
+.image-management {
+	.image-thumbs-actions {
+		@include image-thumbs(100px, 135px);
+	}
+
+	.image-management-list {
+		@extend .clearfix;
+		padding: 0;
+		max-width: 575px;
+		margin: 0;
+
+		.list-item {
+			display: block;
+			float: left;
+			list-style: none;
+			margin-left: 15px;
+			margin-bottom: 15px;
+		}
+	}
+}
