@@ -7,7 +7,7 @@
     <? $this->insert('components/page-title-with-buttons', ['text' => 'Image Management'
       , 'buttons' => [
         ['link' => '#', 'class' => 'btn-white btn-width-xl', 'attributes' => 'data-toggle="modal" data-target="#image-guideline"', 'name' => 'View Guideline'],
-        ['link' => '#', 'class' => 'btn-blue', 'attributes' => '', 'name' => 'Save']
+        ['link' => '#', 'class' => 'btn-blue  btn-width-xl', 'attributes' => '', 'name' => 'Save']
         ]
         ]) ?>
     <? $this->insert('components/search-section-with-page-index', ['serach_placeholder' => 'Search for Admin Accounts', 'optional_class' => 'hide-component']) ?>
@@ -23,7 +23,7 @@
       </div>
     </div>
     <div>
-      <form class="ah-form sticky-mainform-action margin-bottom-80">
+      <form class="ah-form sticky-mainform-action">
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
             <? $this->insert('partials/image-management-content') ?>
@@ -53,9 +53,7 @@
         <div class="add-product-form-action main-form-action full-width-row">
           <div class="container-fluid">
             <div class="float-right">
-              <a href="#" class="link-btn-plain">Cancel</a>
-              <button class="btn btn-white btn-width-xl">Preview</button>
-              <button class="btn btn-white btn-width-xl">Save as Draft</button>
+              <a class="btn btn-white btn-width-xl" data-toggle="modal" data-target="#image-guideline">View Guideline</a>
               <button class="btn btn-blue btn-width-xl">Save</button>
             </div>
           </div>
