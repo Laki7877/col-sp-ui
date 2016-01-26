@@ -15,18 +15,17 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 		<? //$this->insert('components/modal-warning-leave-page', ['id' => 'leave-page-warning']) ?>
 		<div ng-show="alert.success" class="alert alert-success alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			Successful saved. <a href="/products/">View Product List</a>
+			Your product has been saved sucessfully. <a href="/products/">View Product List</a>
 		</div>
 
 		<div ng-show="alert.failure"  class="alert alert-danger alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			Server refused to save because
-			<strong>{{ alert.failure_message }}</strong>
+			Unable to save because <strong>{{ alert.failure_message }}</strong>
 		</div>
 
 		<div id="alert-validation" ng-show="alert.validationFailed" class="alert alert-danger alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			Unable to save because you have missing or incorrect field entries.
+			Unable to save because required fields are missing or incorrect.
 			</hr>
 			<small>{{ addProductForm.$error }}</small>
 		</div>
