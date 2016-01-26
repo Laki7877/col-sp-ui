@@ -231,26 +231,32 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 
     //CK editor options
     $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
+    
     /*
-     * All the alerts on the top of Add Product Page
+     * Page can be in 3 states
+     * --------------------------------
+     *  success: OK stat
+     *  failure: L2 validation error (client + server)
+     *  invalid: L1 validation error (client)
      */
-    $scope.alert = {
+    $scope.pageState = {
 	    success: false,
 	    failure: false,
 	    invalid: false,
+	    loading: {
+		state: true,
+		message: 'Loading..'
+	    },
+	    load: function(msg){
+		$scope.pageState.loading.message = msg;
+	        $scope.pageState.loading.state = true;	
+	    },
 	    reset: function () {
-		    $scope.alert.success = false;
-		    $scope.alert.failure = false;
-		    $scope.alert.invalid = false;
+		    $scope.pageState.success = false;
+		    $scope.pageState.failure = false;
+		    $scope.pageState.invalid = false;
+		    $scope.pageState.loading.state = false;
 	    }
-    };
-
-    /*
-     * Loading Control
-     */
-    $scope._loading = {
-	    state: true,
-	    message: 'Loading..'
     };
 
     //TODO: Initialize non-formData variable
@@ -340,72 +346,72 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
      *  Publish (both Draft and WA)
      */
     $scope.publish = function (Status) {
-	    $scope._loading.state = true;
-	    $scope._loading.message = "Saving changes";
+
+	    $scope.pageState.reset();
+	    
+	    $scope.pageState.load('Saving Changes');
+
 	    $scope.onPublishing = (Status == "WA");
 
-        $scope.alert.reset();
+	    //On click validation
+	    var validateMat = manualValidate();
+	    if(validateMat.length > 0 && Status == 'WA'){
+		    $scope.pageState.reset();
+		    $scope.pageState.failure = true;
+		    $scope.pageState.failure_message = validateMat[0];
+		    $window.location.hash = 'alert';
+		    $window.location.hash = 'alert-failure';
+		    return;
+	    }
 
-      //On click validation
-      var validateMat = manualValidate();
-      if(validateMat.length > 0 && Status == 'WA'){
-          $scope._loading.state = false;
-          $scope.alert.failure = true;
-          $scope.alert.failure_message = validateMat[0];
-          $window.location.hash = 'alert';
-          $window.location.hash = 'alert-failure';
-          return;
-      }
+	    //Basic validation
+	    if ($scope.addProductForm.$invalid) {
 
-      //Basic validation
-      if ($scope.addProductForm.$invalid) {
-          $scope._loading.state = false;
-          //scroll to top and show alert div
-          $window.location.hash = 'alert';
-          $window.location.hash = 'alert-validation';
-          $scope.alert.invalid = true;
-          return;
-      }
+		    $scope.pageState.reset();
+		    //scroll to top and show alert div
+		    $window.location.hash = 'alert';
+		    $window.location.hash = 'alert-validation';
+		    $scope.pageState.invalid = true;
+		    return;
+	    }
 
-	    $scope.alert.reset();
+	    $scope.pageState.reset();
 	    cleanData();
 	    console.log("Publishing with Status = ", Status);
-      //Error Handling too Messi
+	    //Error Handling too Messi
 	    try {
 		    var apiRequest = Product.serialize($scope.formData);
 		    Product.publish(apiRequest, Status).then(function (res) {
+			    $scope.pageState.reset();
 			    if (res.ProductId) {
-				    $scope._loading.state = false;
-				    $scope.alert.success = true;
+				    $scope.pageState.success = true;
 				    $scope.formData.ProductId = res.ProductId;
 				    $scope.formData.MasterVariant.Pid = res.MasterVariant.Pid;
 				    $scope.addProductForm.$setPristine(true)
 			    }else{
-				      $scope._loading.state = false;
-				      $scope.alert.failure = true;
-		    	    $scope.alert.failure_message = res.message || res.Message;
-		    	    $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-              $window.location.hash = 'alert'
-              $window.location.hash = 'alert-failure'
+				    $scope.pageState.failure = true;
+				    $scope.pageState.failure_message = res.message || res.Message;
+				    $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
+				    $window.location.hash = 'alert'
+				    $window.location.hash = 'alert-failure'
 			    }
 		    }, function (er) {
-			    $scope._loading.state = false;
-			    $scope.alert.failure = true;
-			    $scope.alert.failure_message = er.Message || er.message;
+			    $scope.pageState.reset();
+			    $scope.pageState.failure = true;
+			    $scope.pageState.failure_message = er.Message || er.message;
 			    $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
 
-          $window.location.hash = 'alert' //Need to toggle hash otherwise it wont scroll
-          $window.location.hash = 'alert-failure'
-
-			    console.log('publish failure', er);
+			    $window.location.hash = 'alert' //Need to toggle hash otherwise it wont scroll
+			    $window.location.hash = 'alert-failure'
 		    });
 
 	    } catch (ex) {
-		    $scope._loading.state = false;
-		    $scope.alert.failure = true;
-		    $scope.alert.failure_message = ex.message;
+		    $scope.pageState.reset();
+		    $scope.pageState.failure = true;
+		    $scope.pageState.failure_message = ex.message;
 		    $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-        $window.location.hash = 'alert-failure'
+		    $window.location.hash = 'alert'
+		    $window.location.hash = 'alert-failure'
 		    console.log('publish failure', ex);
 		    return;
 	    }
@@ -438,20 +444,19 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 	    }
 
 	    var angularReady = function () {
-		    $scope._loading.message = "Done";
-		    $scope._loading.state = false;
+		    $scope.pageState.reset();
 	    };
 
 	    var loadFormData = function (ivFormData, FullAttributeSet) {
 
-		    $scope._loading.message = "Processing..";
+		    $scope.pageState.load('Loading product data..');
 
 		    if (!('VideoLinks' in ivFormData)) {
 			    ivFormData['VideoLinks'] = [];
 		    }
 		    var inverseResult = Product.deserialize(ivFormData,
 				    FullAttributeSet,
-				    $scope._loading);
+				    $scope.pageState.loading);
 
 		    $scope.formData = inverseResult.formData;
 		    console.log("After Inverse Transformation", $scope.formData, inverseResult.attributeOptions);
@@ -475,7 +480,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 		    //Dependecy chain
 		    // catId
 
-		    $scope._loading.message = "Downloading Attribute Sets..";
+		    $scope.pageState.load('Downloading Attribute Sets..');
 
 		    AttributeSet.getByCategory(catId).then(function (data) {
 
@@ -500,8 +505,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 			    //Load Attribute Set (edit mode only, in add mode AttributeSet is not set)
 			    if (ivFormData.AttributeSet && ivFormData.AttributeSet.AttributeSetId) {
 
-				    $scope._loading.message = "Indexing..";
-
+				    $scope.pageState.load('Indexing AttributeSet');
 				    var idx = $scope.availableAttributeSets.map(function (o) {
 					    return o.AttributeSetId
 				    }).indexOf(ivFormData.AttributeSet.AttributeSetId);
@@ -513,7 +517,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 				    loadFormData(ivFormData, $scope.formData.AttributeSet);
 			    }
 
-			    $scope._loading.message = "Downloading Category Tree..";
+			    $scope.pageState.load('Downloading Category Tree..');
 			    //Load Global Cat
 			    GlobalCategory.getAll().then(function (data) {
 
@@ -532,7 +536,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 		    //EDIT MODE
 
 		    var productId = viewBag.productId;
-		    $scope._loading.message = "Downloading Product..";
+		    $scope.pageState.load('Loading Basis..');
 		    Product.getOne(productId).then(function (ivFormData) {
 			    var gcat = ivFormData.GlobalCategory;
 
@@ -549,7 +553,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 
 	    if ("catId" in viewBag) {
 		    //ADD MODE
-		    $scope._loading.state = false;
+		    $scope.pageState.reset();
 		    catReady(viewBag.catId, {}, angularReady);
 		    watchVariantChanges();
 	    }
