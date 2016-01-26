@@ -14281,60 +14281,66 @@ html, body {
 
 /* line 4, ../../../assets/_image_management.scss */
 .image-management .form-section-content {
+  display: flex;
   margin-top: 10px;
   margin-bottom: 15px;
   padding-left: 15px;
-  padding-right: 15px;
+  padding-right: 30px;
 }
-/* line 10, ../../../assets/_image_management.scss */
+/* line 11, ../../../assets/_image_management.scss */
 .image-management .feature-text {
-  margin-left: 15px;
+  font-size: 12px;
+  margin-left: 27px;
   height: 20px;
 }
-/* line 14, ../../../assets/_image_management.scss */
+/* line 16, ../../../assets/_image_management.scss */
 .image-management .content-text {
   margin-top: 20px;
   width: 140px;
+  display: block;
   float: left;
 }
-/* line 20, ../../../assets/_image_management.scss */
+/* line 23, ../../../assets/_image_management.scss */
 .image-management .picture-container, .image-management .drop-zone-container {
+  display: block;
   float: left;
-}
-/* line 24, ../../../assets/_image_management.scss */
-.image-management .drop-zone-container {
-  margin-top: 20px;
 }
 /* line 28, ../../../assets/_image_management.scss */
+.image-management .drop-zone-container {
+  margin-top: 20px;
+  margin-left: 10px;
+  flex-grow: 100;
+}
+/* line 34, ../../../assets/_image_management.scss */
 .image-management .drop-zone-container.disabled .image-drop-zone {
   background-image: none;
   background-color: #BCC7D5;
 }
-/* line 35, ../../../assets/_image_management.scss */
+/* line 41, ../../../assets/_image_management.scss */
 .image-management .drop-zone-container.no-background .image-drop-zone {
   background-image: none;
   background-color: #edf2f9;
   border: solid 1px #BCC7D5;
 }
-/* line 43, ../../../assets/_image_management.scss */
+/* line 49, ../../../assets/_image_management.scss */
 .image-management .image-drop-wrapper {
-  width: 175px;
+  width: 100%;
+  margin-right: 20px;
 }
-/* line 47, ../../../assets/_image_management.scss */
+/* line 54, ../../../assets/_image_management.scss */
 .image-management .image-drop-zone {
   height: 283px;
 }
-/* line 51, ../../../assets/_image_management.scss */
+/* line 58, ../../../assets/_image_management.scss */
 .image-management .image-drop-zone-text {
   width: 120px;
 }
-/* line 55, ../../../assets/_image_management.scss */
+/* line 62, ../../../assets/_image_management.scss */
 .image-management .alert-wrapper {
-  margin-top: 5px;
-  max-width: 905px;
+  margin: 15px 30px 15px 15px;
 }
 
-/* line 62, ../../../assets/_image_management.scss */
+/* line 68, ../../../assets/_image_management.scss */
 .image-management .image-thumbs-actions {
   width: 100px;
   border: 1px solid #BCC7D5;
@@ -14394,13 +14400,13 @@ html, body {
 .image-management .image-thumbs-actions .actions-wrapper.actions-4 .action {
   width: 25%;
 }
-/* line 66, ../../../assets/_image_management.scss */
+/* line 72, ../../../assets/_image_management.scss */
 .image-management .image-management-list {
   padding: 0;
   max-width: 575px;
   margin: 0;
 }
-/* line 72, ../../../assets/_image_management.scss */
+/* line 78, ../../../assets/_image_management.scss */
 .image-management .image-management-list .list-item {
   display: block;
   float: left;
