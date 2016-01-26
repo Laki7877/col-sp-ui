@@ -3,14 +3,14 @@ var angular = require('angular');
 module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair',
 function ($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair) {
     'use strict';
-    
-    //TODO: use Poons' Alert Factory 
+
+    //TODO: use Poons' Alert Factory
     var MAX_FILESIZE = 5000000; //5MB
     var QUEUE_LIMIT = 20;
     var QUEUE_LIMIT_360 = 60;
     var MAX_VARIANT = 100;
-	    
-    $window.onbeforeunload = function (e) 
+
+    $window.onbeforeunload = function (e)
     {
         if (!$scope.addProductForm.$dirty) {
                 //only warn when form is dirty
@@ -36,7 +36,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
         //TODO: Poon? Wtf is queue limit handler
     }
 
-  
+
     $scope.keywordValidConditions = {};
     $scope.variationOptionWarning = [[], []];
     $scope.onKeywordAdded = function(item, model){
@@ -47,10 +47,10 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 	if($scope.formData.Keywords.length > 20){
 		$scope.keywordValidConditions['tagcount'] = true;
 	}
-	
+
 	if(item.length > 30){
 		$scope.keywordValidConditions['taglength'] = true;
-	}	
+	}
 
 	if(!item.match(/^[a-zA-Z0-9ก-ฮ\s\-]+$/)){
 		$scope.keywordValidConditions['pattern'] = true;
@@ -62,7 +62,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 	}
     }
 
-    $scope.onKeywordRemoved = function(item, model){	
+    $scope.onKeywordRemoved = function(item, model){
 	console.log($scope.formData.Keywords);
     }
 
@@ -73,11 +73,11 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 	if(!item.match(/^[a-zA-Z0-9\s]+$/)) $scope.variationOptionWarning[jth].push("Only letters and numbers allowed");
 
 	var optlen1 = $scope.attributeOptions[0].options.length;
-        var optlen2 = $scope.attributeOptions[1].options.length; 	
+        var optlen2 = $scope.attributeOptions[1].options.length;
 	if((optlen1 == 0? 1: optlen1) * (optlen2 == 0 ? 1: optlen2) > MAX_VARIANT){
 		 $scope.variationOptionWarning[jth].push("Maximum combination of variants (" + MAX_VARIANT + ") reached.");
 	}
-	
+
 	if($scope.variationOptionWarning[jth].length > 0){
 		$scope.attributeOptions[jth].options.pop();
 	}
@@ -85,7 +85,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
     }
 
 
-    var watchVariantChanges = function () 
+    var watchVariantChanges = function ()
     {
 
         $scope.$watch('attributeOptions', function () {
@@ -100,7 +100,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 
             $scope.formData.Variants = [];
 
-            var expand = function (A, B) 
+            var expand = function (A, B)
             {
 
                 if (A['AttributeValue']) {
@@ -237,11 +237,11 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
     $scope.alert = {
 	    success: false,
 	    failure: false,
-	    validationFailed: false,
+	    invalid: false,
 	    reset: function () {
 		    $scope.alert.success = false;
 		    $scope.alert.failure = false;
-		    $scope.alert.validationFailed = false;
+		    $scope.alert.invalid = false;
 	    }
     };
 
@@ -298,26 +298,43 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 
 
     $scope.$watch('formData.MasterVariant.SalePrice', function(){
-	 var form = $scope.addProductForm;
-	 form.MasterVariant_SalePrice.$setValidity("min", true);
-	 if(!form.MasterVariant_SalePrice) return;
-	 if($scope.formData.MasterVariant.SalePrice == "") return;
-	 
-	 if(Number($scope.formData.MasterVariant.SalePrice) >= Number($scope.formData.MasterVariant.OriginalPrice) ){
-		    form.MasterVariant_SalePrice.$setValidity("min", false);
-		    form.MasterVariant_SalePrice.$error["min"] = "Sale Price must not exceed Original Price";
-         }
-    });
+  	 var form = $scope.addProductForm;
+  	 form.MasterVariant_SalePrice.$setValidity("min", true);
+  	 if(!form.MasterVariant_SalePrice) return;
+  	 if($scope.formData.MasterVariant.SalePrice == "") return;
 
-    $scope.$watch('formData.ExpireDate', function(){
-	    var form = $scope.addProductForm;
-	    form.ExpireDate.$setValidity("min", true);
-	    if($scope.formData.ExpireDate < $scope.formData.EffectiveDate){
-		if(!form.ExpireDate) return;
-		form.ExpireDate.$setValidity("min", false);
-		form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
+  	 if(Number($scope.formData.MasterVariant.SalePrice) >= Number($scope.formData.MasterVariant.OriginalPrice) ){
+  		    form.MasterVariant_SalePrice.$setValidity("min", false);
+  		    form.MasterVariant_SalePrice.$error["min"] = "Sale Price must not exceed Original Price";
+           }
+      });
+
+      $scope.$watch('formData.ExpireDate', function(){
+  	    var form = $scope.addProductForm;
+  	    form.ExpireDate.$setValidity("min", true);
+  	    if($scope.formData.ExpireDate < $scope.formData.EffectiveDate){
+  		if(!form.ExpireDate) return;
+  		form.ExpireDate.$setValidity("min", false);
+  		form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
 	    }
     });
+
+    var manualValidate = function(){
+          var mat = [];
+          if(!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == ""){
+            mat.push("Missing Description (Thai)");
+          }
+
+          if(!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == ""){
+            mat.push("Missing Description (English)");
+          }
+
+          if(!$scope.formData.Brand.BrandId){
+            mat.push("Missing Brand");
+          }
+
+          return mat;
+    };
 
     /*
      *  Publish (both Draft and WA)
@@ -327,17 +344,33 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 	    $scope._loading.message = "Saving changes";
 	    $scope.onPublishing = (Status == "WA");
 
-	    if ($scope.addProductForm.$invalid) {
-		    $scope._loading.state = false;
-		    //scroll to top and show alert div
-		    $window.location.hash = 'alert-validation'
-			    $scope.alert.validationFailed = true;
-		    return;
-	    }
+        $scope.alert.reset();
+
+      //On click validation
+      var validateMat = manualValidate();
+      if(validateMat.length > 0 && Status == 'WA'){
+          $scope._loading.state = false;
+          $scope.alert.failure = true;
+          $scope.alert.failure_message = validateMat[0];
+          $window.location.hash = 'alert';
+          $window.location.hash = 'alert-failure';
+          return;
+      }
+
+      //Basic validation
+      if ($scope.addProductForm.$invalid) {
+          $scope._loading.state = false;
+          //scroll to top and show alert div
+          $window.location.hash = 'alert';
+          $window.location.hash = 'alert-validation';
+          $scope.alert.invalid = true;
+          return;
+      }
 
 	    $scope.alert.reset();
 	    cleanData();
 	    console.log("Publishing with Status = ", Status);
+      //Error Handling too Messi
 	    try {
 		    var apiRequest = Product.serialize($scope.formData);
 		    Product.publish(apiRequest, Status).then(function (res) {
@@ -348,16 +381,22 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 				    $scope.formData.MasterVariant.Pid = res.MasterVariant.Pid;
 				    $scope.addProductForm.$setPristine(true)
 			    }else{
-				    $scope._loading.state = false;
-				    $scope.alert.failure = true;
+				      $scope._loading.state = false;
+				      $scope.alert.failure = true;
 		    	    $scope.alert.failure_message = res.message || res.Message;
 		    	    $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-			    } 
+              $window.location.hash = 'alert'
+              $window.location.hash = 'alert-failure'
+			    }
 		    }, function (er) {
 			    $scope._loading.state = false;
 			    $scope.alert.failure = true;
 			    $scope.alert.failure_message = er.Message || er.message;
 			    $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
+
+          $window.location.hash = 'alert' //Need to toggle hash otherwise it wont scroll
+          $window.location.hash = 'alert-failure'
+
 			    console.log('publish failure', er);
 		    });
 
@@ -366,6 +405,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 		    $scope.alert.failure = true;
 		    $scope.alert.failure_message = ex.message;
 		    $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
+        $window.location.hash = 'alert-failure'
 		    console.log('publish failure', ex);
 		    return;
 	    }
@@ -564,7 +604,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
     };
 
     tabPage.category = {
-	    angular: function () 
+	    angular: function ()
 	    {
 		    //For viewing only
 		    $scope.viewCategoryColumns = [];
@@ -616,7 +656,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 
     tabPage.variation = {
 
-	    angular: function () 
+	    angular: function ()
 	    {
 		    /**
 		     * This part handles when user click on More Detail and open pair form

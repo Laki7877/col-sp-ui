@@ -13,21 +13,23 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 <div ng-controller="ProductAddCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
 
 		<? //$this->insert('components/modal-warning-leave-page', ['id' => 'leave-page-warning']) ?>
-		<div ng-show="alert.success" class="alert alert-success alert-dismissible" role="alert">
+		<div ng-show="alert.success" id="alert-success" class="alert alert-green alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			Your product has been saved sucessfully. <a href="/products/">View Product List</a>
 		</div>
 
-		<div ng-show="alert.failure"  class="alert alert-danger alert-dismissible" role="alert">
+		<div ng-show="alert.failure" id="alert-failure" class="alert alert-red alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			Unable to save because <strong>{{ alert.failure_message }}</strong>
 		</div>
 
-		<div id="alert-validation" ng-show="alert.validationFailed" class="alert alert-danger alert-dismissible" role="alert">
+		<div id="alert-validation" ng-show="alert.invalid" class="alert alert-red alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			Unable to save because required fields are missing or incorrect.
+			<strong>Unable to save because required fields are missing or incorrect.</strong>
 			</hr>
-			<small>{{ addProductForm.$error }}</small>
+			<ul>
+                <li ng-repeat="e in addProductForm.$error.required">{{ e.$name }}</li>
+            </ul>
 		</div>
 
 		<form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
