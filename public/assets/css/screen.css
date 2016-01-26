@@ -13254,7 +13254,7 @@ form h6 {
   line-height: 1;
 }
 /* line 120, ../../../assets/_form.sass */
-.ah-form .btn ~ .btn {
+.ah-form .main-form-action .btn ~ .btn {
   margin-left: 10px;
 }
 /* line 123, ../../../assets/_form.sass */
