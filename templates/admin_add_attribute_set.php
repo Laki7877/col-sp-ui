@@ -114,7 +114,7 @@
             </div>
           </div>
           <div class="col-xs-12">
-            <p class="text-align-right margin-bottom-30"><span class="color-red">*</span> - Required Field</p>
+            <p class="text-align-right"><span class="color-red"><i class="fa fa-asterisk"></i></span> - Required Field</p>
           </div>
         </div>
       </div>
