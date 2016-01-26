@@ -469,6 +469,7 @@
 										class="form-control"
 										name="MasterVariant_Length"
 										ng-pattern="/^\d+(\.\d{1,2})?$/"
+										ng-required="onPublishing"
 										ng-model="formData.MasterVariant.Length"
 										ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Length) }"  />
 									</div>
@@ -492,6 +493,7 @@
 										class="form-control"
 										name="MasterVariant_Height"
 										ng-pattern="/^\d+(\.\d{1,2})?$/"
+										ng-required="onPublishing"
 										ng-model="formData.MasterVariant.Height"
 										ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Height) }"  />
 									</div>
@@ -515,6 +517,7 @@
 										name="MasterVariant_Width"
 										ng-pattern="/^\d+(\.\d{1,2})?$/"
 										ng-model="formData.MasterVariant.Width"
+										ng-required="onPublishing"
 										ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Width) }"  />
 									</div>
 								</div>

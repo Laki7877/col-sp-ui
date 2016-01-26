@@ -187,7 +187,6 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 		    AttributeSetTagMaps : []
 	    },
 	    RelatedProducts: [],
-	    PrepareDay: 3,
 	    MasterImages: [],
 	    MasterImages360: [],
 	    VideoLinks: [],
