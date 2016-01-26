@@ -12,10 +12,6 @@
                 <input type="checkbox" aria-label="Checkbox for following text input"> 
             </th>
             <th>
-              <a class="header-link" href="#"><span class="active-underline">ID</span></a>
-              <i class="fa fa-caret-down color-black">
-            </th>
-            <th>
               <a class="header-link" href="#"><span>Admin Name</span></a>
               <!-- <i class="fa fa-caret-up color-grey"> -->
             </th>
@@ -33,15 +29,16 @@
             <th>
               Action
             </th>
+            <th class="modified-column">
+              <a class="header-link" href="#"><span class="active-underline">Modified</span></a>
+              <i class="fa fa-caret-down">
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td class="checkbox-column">
               <input type="checkbox" aria-label="Checkbox for following text input"> 
-            </td>
-            <td>
-              001
             </td>
             <td>
               Harry Belafonte
@@ -59,13 +56,13 @@
               <i class="fa fa-gear color-dark-grey icon-size-20"></i>
               <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div>View / Edit</div> <div>Delete</div>" data-original-title="" title=""></i>
             </td>
+            <td class="modified-column">
+              14/12/15
+            </td>
           </tr>
           <tr>
             <td class="checkbox-column">
               <input type="checkbox" aria-label="Checkbox for following text input"> 
-            </td>
-            <td>
-              002
             </td>
             <td>
               Erutan Nando
@@ -82,6 +79,9 @@
             <td class="action-column popover-gear">
               <i class="fa fa-gear color-dark-grey icon-size-20"></i>
               <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div>View / Edit</div> <div>Delete</div>" data-original-title="" title=""></i>
+            </td>
+            <td class="modified-column">
+              14/12/15
             </td>
           </tr>
         </tbody>
