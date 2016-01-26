@@ -5,7 +5,7 @@
     <? $this->insert('components/page-title-with-buttons', ['text' => 'Products']) ?>
     <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{alert.type}}" close="alert.close()">{{alert.message}}</div>
     <div class="row search-section-wrapper">
-      <form ng-submit="bulk.fn()" class="search-section section-action">
+      <form ng-if="options.bulkActionable" ng-submit="bulk()" class="search-section section-action">
         <div class="input-group">
           <div class="input-group-btn">
             <div class="dropdown-btn">
@@ -25,7 +25,7 @@
           </div>
         </div>
       </form>
-      <form ng-submit="applySearch()" class="search-section section-search">
+      <form ng-if="options.filterable" ng-submit="search()" class="search-section section-search">
         <div class="input-group">
           <input type="text" class="form-control input-search-icon search-box" ng-model="searchText" placeholder="Search" aria-describedby="basic-addon2">
           <span class="input-group-btn">
@@ -47,7 +47,7 @@
       </div>
     </div>
     <div class="table-section">
-      <table ng-show="productList.length > 0" class="table table-curved">
+      <table ng-show="productList.length > 0" class="table table-curved" ng-transclude>
         <thead>
           <tr class="table-head" >
             <th class="checkbox-column">
