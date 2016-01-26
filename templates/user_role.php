@@ -30,7 +30,7 @@
               <input type="checkbox" aria-label="Checkbox for following text input"> 
             </td>
             <td>
-              Super Admin
+              <a href="#">Super Admin</a>
             </td>
             <td class="action-column popover-gear">
               <i class="fa fa-gear color-dark-grey icon-size-20"></i>
@@ -45,7 +45,7 @@
               <input type="checkbox" aria-label="Checkbox for following text input"> 
             </td>
             <td>
-              Content Admin
+              <a href="#">Content Admin</a>
             </td>
             <td class="action-column popover-gear">
               <i class="fa fa-gear color-dark-grey icon-size-20"></i>
