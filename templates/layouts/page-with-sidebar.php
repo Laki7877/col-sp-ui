@@ -15,7 +15,7 @@
         <li class="item"><a href="/?p=index">Export</a></li>
         <li class="item margin-top-30"><a href="/?p=local_category">Local Category</a></li>
         <li class="item"><a href="/?p=product_review">Product Review</a></li>
-        <li class="item"><a href="">Product Images</a></li>
+        <li class="item"><a href="/?p=image_management">Product Images</a></li>
     </ul>
 
     <ul class="sub-sidebar" style="display: none;" id="sub-sidebar-account">
