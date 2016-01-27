@@ -19,13 +19,13 @@
           <button class="btn btn-blue btn-100">Login</button>
         </fieldset>
         <fieldset class="form-group text-center">
-          <a href="" data-toggle="modal" data-target="#image-guideline">Forget password?</a>
+          <a href="" data-toggle="modal" data-target="#forget-password">Forget password?</a>
         </fieldset>
       </form>
     </div>
   </div>
 
-  <? $this->insert('components/modal-guideline', ['id' => 'image-guideline', 'header' => 'Image Style Guideline']) ?>
+  <? $this->insert('components/modal-forget-password', ['id' => 'forget-password', 'header' => 'Forget password?']) ?>
 
 
 
