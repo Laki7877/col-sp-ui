@@ -2,8 +2,10 @@ describe('angularjs homepage todo list', function() {
   it('should add a todo', function() {
     browser.get('http://americanod:5000/products/select');
 
-    var lvl1 = element(by.css('.content-column.ng-scope')).element(by.tagName('li'));
-    lvl1.click();
+    // var lvl1 = element(by.css('.content-column.ng-scope')).element(by.tagName('li'));
+    var lvl1 = element.all(by.css('.content-column.ng-scope li'));
+    lvl1.get(1).click();
+
     var levels = element.all(by.css('.content-column.ng-scope'));
     levels.get(1).element(by.tagName('li')).click();
     levels = element.all(by.css('.content-column.ng-scope'));
@@ -73,20 +75,19 @@ describe('angularjs homepage todo list', function() {
 
    it('tab3', function(){
         var tab3 = element(by.xpath('//a[@href="#category"]'));
-
         tab3.click();
 
         var pluses =  element.all(by.css('.fa.fa-plus-circle.color-theme'));
         pluses.get(0).click();
 
         var lvl1 = element.all(by.css('#global-category .content-column.ng-scope li'));
-        lvl1.get(1).click();
+        lvl1.get(0).click();
 
-        var levels = element.all(by.css('#global-category .content-column.ng-scope'));
-        levels.get(1).element(by.tagName('li')).click();
+        // var levels = element.all(by.css('#global-category .content-column.ng-scope'));
+        // levels.get(1).element(by.tagName('li')).click();
 
-        levels = element.all(by.css('#global-category .content-column.ng-scope'));
-        levels.get(2).element(by.tagName('li')).click();
+        // levels = element.all(by.css('#global-category .content-column.ng-scope'));
+        // levels.get(2).element(by.tagName('li')).click();
 
         //TODO: check levels by counting column non empty
         // try{
@@ -99,7 +100,7 @@ describe('angularjs homepage todo list', function() {
         var gsubmit = element(by.css('#global-category .btn'));
         gsubmit.click();
 
-        browser.sleep(2500);
+        browser.sleep(1000);
         pluses = element.all(by.css('.fa.fa-plus-circle.color-theme'));
         pluses.get(1).click(); //lOcal cat
 
@@ -109,9 +110,21 @@ describe('angularjs homepage todo list', function() {
         //select local cat
         var lsubmit = element(by.css('#local-category .btn'));
         lsubmit.click();
-
-
-        browser.pause();
+        
+        browser.sleep(1000);
 
     })
+
+    it('tab5', function(){
+        var tab5 = element(by.xpath('//a[@href="#more_option"]'));
+        tab5.click();
+
+        element(by.model('formData.SEO.MetaTitle')).sendKeys('Automated Nazi Stuff');
+        element(by.model('formData.SEO.MetaDescription')).sendKeys('Audi is shit');
+        element(by.model('formData.SEO.MetaKeywords')).sendKeys('DasAuto, Nazi, Germany, Hitler');
+        element(by.model('formData.SEO.MetaTitle')).sendKeys('BMW');
+        browser.pause();
+
+
+    });
 });
