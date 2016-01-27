@@ -66,21 +66,39 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 	console.log($scope.formData.Keywords);
     }
 
+    var StatusLookup = {
+	    'DF' : {
+		    Class: 'fa-circle-o',
+		    Text: 'Draft',
+		    Color: 'color-grey'
+	    },
+	    'WA' : {
+		    Class: 'fa-clock-o',
+		    Text: 'Wait for Approval',
+		    Color: 'color-yellow'
+	    }
+
+    }
+
+    $scope.asStatus = function(ab){
+	    return StatusLookup[ab];
+    };
+
     $scope.onVariationOptionFreeTextAdded = function(item, model, jth){
-	$scope.variationOptionWarning[jth] = [];
-        if(!item) return;
-	if(item.length > 30) $scope.variationOptionWarning[jth].push("Variation option must contain 30 characters or less");
-	if(!item.match(/^[a-zA-Z0-9\s]+$/)) $scope.variationOptionWarning[jth].push("Only letters and numbers allowed");
+	    $scope.variationOptionWarning[jth] = [];
+	    if(!item) return;
+	    if(item.length > 30) $scope.variationOptionWarning[jth].push("Variation option must contain 30 characters or less");
+	    if(!item.match(/^[a-zA-Z0-9\s]+$/)) $scope.variationOptionWarning[jth].push("Only letters and numbers allowed");
 
-	var optlen1 = $scope.attributeOptions[0].options.length;
-        var optlen2 = $scope.attributeOptions[1].options.length;
-	if((optlen1 == 0? 1: optlen1) * (optlen2 == 0 ? 1: optlen2) > MAX_VARIANT){
-		 $scope.variationOptionWarning[jth].push("Maximum combination of variants (" + MAX_VARIANT + ") reached.");
-	}
+	    var optlen1 = $scope.attributeOptions[0].options.length;
+	    var optlen2 = $scope.attributeOptions[1].options.length;
+	    if((optlen1 == 0? 1: optlen1) * (optlen2 == 0 ? 1: optlen2) > MAX_VARIANT){
+		    $scope.variationOptionWarning[jth].push("Maximum combination of variants (" + MAX_VARIANT + ") reached.");
+	    }
 
-	if($scope.variationOptionWarning[jth].length > 0){
-		$scope.attributeOptions[jth].options.pop();
-	}
+	    if($scope.variationOptionWarning[jth].length > 0){
+		    $scope.attributeOptions[jth].options.pop();
+	    }
 
     }
 
@@ -88,83 +106,83 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
     var watchVariantChanges = function ()
     {
 
-        $scope.$watch('attributeOptions', function () {
+	    $scope.$watch('attributeOptions', function () {
 
-            var vHashSet = {};
-            var prevVariants = angular.copy($scope.formData.Variants);
-            prevVariants.forEach(function (elem, index) {
-                vHashSet[elem.text] = prevVariants[index];
-            });
-            //Unset
-            prevVariants = undefined;
+		    var vHashSet = {};
+		    var prevVariants = angular.copy($scope.formData.Variants);
+		    prevVariants.forEach(function (elem, index) {
+			    vHashSet[elem.text] = prevVariants[index];
+		    });
+		    //Unset
+		    prevVariants = undefined;
 
-            $scope.formData.Variants = [];
+		    $scope.formData.Variants = [];
 
-            var expand = function (A, B)
-            {
+		    var expand = function (A, B)
+	    {
 
-                if (A['AttributeValue']) {
-                    A = A.AttributeValue.AttributeValueEn;
-                }
+		    if (A['AttributeValue']) {
+			    A = A.AttributeValue.AttributeValueEn;
+		    }
 
-                var BId = null;
+		    var BId = null;
 
-                if (angular.isDefined(B)) {
-                    BId = $scope.attributeOptions[1].Attribute.AttributeId;
-                    if (B['AttributeValue']) {
-                        B = B.AttributeValue.AttributeValueEn;
-                    }
-                } else {
-                    B = ''
-                    BId = null;
-                }
+		    if (angular.isDefined(B)) {
+			    BId = $scope.attributeOptions[1].Attribute.AttributeId;
+			    if (B['AttributeValue']) {
+				    B = B.AttributeValue.AttributeValueEn;
+			    }
+		    } else {
+			    B = ''
+				    BId = null;
+		    }
 
-                var kpair = new VariantPair({
-                    AttributeId: $scope.attributeOptions[0].Attribute.AttributeId,
-                    ValueEn: A
-                }, {
-                    AttributeId: BId,
-                    ValueEn: B
-                });
+		    var kpair = new VariantPair({
+			    AttributeId: $scope.attributeOptions[0].Attribute.AttributeId,
+			ValueEn: A
+		    }, {
+			    AttributeId: BId,
+			ValueEn: B
+		    });
 
-                    //Initialize
-                    kpair.ProductNameEn = $scope.formData.MasterVariant.ProductNameEn;
-                    kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
-                    kpair.Display = $scope.availableVariantDisplayOption[0];
-                    kpair.Visibility = true;
+		    //Initialize
+		    kpair.ProductNameEn = $scope.formData.MasterVariant.ProductNameEn;
+		    kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
+		    kpair.Display = $scope.availableVariantDisplayOption[0];
+		    kpair.Visibility = true;
 
-                    if (kpair.text in vHashSet) {
-                        //Replace with value from vHashSet
-                        kpair = vHashSet[kpair.text];
-                    }
+		    if (kpair.text in vHashSet) {
+			    //Replace with value from vHashSet
+			    kpair = vHashSet[kpair.text];
+		    }
 
-                    //Only push new variant if don't exist
-                    $scope.formData.Variants.push(kpair);
+		    //Only push new variant if don't exist
+		    $scope.formData.Variants.push(kpair);
 
-                }
+	    }
 
 
-	console.log("Recalculating Factors", $scope.attributeOptions);
-	//Multiply out unmultiplied options
-	if ($scope.attributeOptions && Object.keys($scope.attributeOptions).length > 0) {
-		for (var aKey in $scope.attributeOptions[0].options) {
-			var A = $scope.attributeOptions[0].options[aKey];
+	    console.log("Recalculating Factors", $scope.attributeOptions);
+	    //Multiply out unmultiplied options
+	    if ($scope.attributeOptions && Object.keys($scope.attributeOptions).length > 0) {
+		    for (var aKey in $scope.attributeOptions[0].options) {
+			    var A = $scope.attributeOptions[0].options[aKey];
 
-			if (angular.isDefined($scope.attributeOptions[1]['options']) && $scope.attributeOptions[1].options.length == 0) {
-				console.log("expanding A");
-				expand(A);
-			}
+			    if (angular.isDefined($scope.attributeOptions[1]['options']) && $scope.attributeOptions[1].options.length == 0) {
+				    console.log("expanding A");
+				    expand(A);
+			    }
 
-			for (var bKey in $scope.attributeOptions[1].options) {
-				var B = $scope.attributeOptions[1].options[bKey];
-				console.log("Expanding A,B");
-				expand(A, B);
-			}
-		}
-	}
+			    for (var bKey in $scope.attributeOptions[1].options) {
+				    var B = $scope.attributeOptions[1].options[bKey];
+				    console.log("Expanding A,B");
+				    expand(A, B);
+			    }
+		    }
+	    }
 
-		$scope.formData.DefaultVariant = $scope.formData.Variants[0];
-	}, true); //end of $watch
+	    $scope.formData.DefaultVariant = $scope.formData.Variants[0];
+	    }, true); //end of $watch
 
     } //end of watch func
 
@@ -178,6 +196,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
     $scope.availableStockTypes = ['Stock', 'Pre-Order'];
     $scope.availableVariantDisplayOption = [{ text: 'Show as group of variants', value: 'GROUP' }, { text: 'Show as individual product',  value: 'INDIVIDUAL' }];
 
+    $scope.overview = {}
 
     $scope.formData = {
 	    Brand: { id: null, BrandNameEn: "Please select brand.." },
@@ -231,26 +250,32 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 
     //CK editor options
     $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
+
     /*
-     * All the alerts on the top of Add Product Page
+     * Page can be in 3 states
+     * --------------------------------
+     *  success: OK stat
+     *  failure: L2 validation error (client + server)
+     *  invalid: L1 validation error (client)
      */
-    $scope.alert = {
+    $scope.pageState = {
 	    success: false,
 	    failure: false,
 	    invalid: false,
+	    loading: {
+		    state: true,
+		    message: 'Loading..'
+	    },
+	    load: function(msg){
+		    $scope.pageState.loading.message = msg;
+		    $scope.pageState.loading.state = true;	
+	    },
 	    reset: function () {
-		    $scope.alert.success = false;
-		    $scope.alert.failure = false;
-		    $scope.alert.invalid = false;
+		    $scope.pageState.success = false;
+		    $scope.pageState.failure = false;
+		    $scope.pageState.invalid = false;
+		    $scope.pageState.loading.state = false;
 	    }
-    };
-
-    /*
-     * Loading Control
-     */
-    $scope._loading = {
-	    state: true,
-	    message: 'Loading..'
     };
 
     //TODO: Initialize non-formData variable
@@ -298,115 +323,115 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 
 
     $scope.$watch('formData.MasterVariant.SalePrice', function(){
-  	 var form = $scope.addProductForm;
-  	 form.MasterVariant_SalePrice.$setValidity("min", true);
-  	 if(!form.MasterVariant_SalePrice) return;
-  	 if($scope.formData.MasterVariant.SalePrice == "") return;
+	    var form = $scope.addProductForm;
+	    form.MasterVariant_SalePrice.$setValidity("min", true);
+	    if(!form.MasterVariant_SalePrice) return;
+	    if($scope.formData.MasterVariant.SalePrice == "") return;
 
-  	 if(Number($scope.formData.MasterVariant.SalePrice) >= Number($scope.formData.MasterVariant.OriginalPrice) ){
-  		    form.MasterVariant_SalePrice.$setValidity("min", false);
-  		    form.MasterVariant_SalePrice.$error["min"] = "Sale Price must not exceed Original Price";
-           }
-      });
+	    if(Number($scope.formData.MasterVariant.SalePrice) >= Number($scope.formData.MasterVariant.OriginalPrice) ){
+		    form.MasterVariant_SalePrice.$setValidity("min", false);
+		    form.MasterVariant_SalePrice.$error["min"] = "Sale Price must not exceed Original Price";
+	    }
+    });
 
-      $scope.$watch('formData.ExpireDate', function(){
-  	    var form = $scope.addProductForm;
-  	    form.ExpireDate.$setValidity("min", true);
-  	    if($scope.formData.ExpireDate < $scope.formData.EffectiveDate){
-  		if(!form.ExpireDate) return;
-  		form.ExpireDate.$setValidity("min", false);
-  		form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
+    $scope.$watch('formData.ExpireDate', function(){
+	    var form = $scope.addProductForm;
+	    form.ExpireDate.$setValidity("min", true);
+	    if($scope.formData.ExpireDate < $scope.formData.EffectiveDate){
+		    if(!form.ExpireDate) return;
+		    form.ExpireDate.$setValidity("min", false);
+		    form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
 	    }
     });
 
     var manualValidate = function(){
-          var mat = [];
-          if(!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == ""){
-            mat.push("Missing Description (Thai)");
-          }
+	    var mat = [];
+	    if(!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == ""){
+		    mat.push("Missing Description (Thai)");
+	    }
 
-          if(!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == ""){
-            mat.push("Missing Description (English)");
-          }
+	    if(!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == ""){
+		    mat.push("Missing Description (English)");
+	    }
 
-          if(!$scope.formData.Brand.BrandId){
-            mat.push("Missing Brand");
-          }
+	    if(!$scope.formData.Brand.BrandId){
+		    mat.push("Missing Brand");
+	    }
 
-          return mat;
+	    return mat;
     };
 
     /*
      *  Publish (both Draft and WA)
      */
     $scope.publish = function (Status) {
-	    $scope._loading.state = true;
-	    $scope._loading.message = "Saving changes";
+
+	    $scope.pageState.reset();
+	    $scope.pageState.load('Validating..');
+
 	    $scope.onPublishing = (Status == "WA");
 
-        $scope.alert.reset();
+	    //On click validation
+	    var validateMat = manualValidate();
+	    if(validateMat.length > 0 && Status == 'WA'){
+		    $scope.pageState.reset();
+		    $scope.pageState.failure = true;
+		    $scope.pageState.failure_message = validateMat[0];
+		    $window.location.hash = 'alert';
+		    $window.location.hash = 'alert-failure';
+		    return;
+	    }
 
-      //On click validation
-      var validateMat = manualValidate();
-      if(validateMat.length > 0 && Status == 'WA'){
-          $scope._loading.state = false;
-          $scope.alert.failure = true;
-          $scope.alert.failure_message = validateMat[0];
-          $window.location.hash = 'alert';
-          $window.location.hash = 'alert-failure';
-          return;
-      }
+	    //Basic validation
+	    if ($scope.addProductForm.$invalid) {
 
-      //Basic validation
-      if ($scope.addProductForm.$invalid) {
-          $scope._loading.state = false;
-          //scroll to top and show alert div
-          $window.location.hash = 'alert';
-          $window.location.hash = 'alert-validation';
-          $scope.alert.invalid = true;
-          return;
-      }
+		    $scope.pageState.reset();
+		    //scroll to top and show alert div
+		    $window.location.hash = 'alert';
+		    $window.location.hash = 'alert-validation';
+		    $scope.pageState.invalid = true;
+		    return;
+	    }
 
-	    $scope.alert.reset();
+	    $scope.pageState.load('Publishing..');
 	    cleanData();
 	    console.log("Publishing with Status = ", Status);
-      //Error Handling too Messi
+	    //Error Handling too Messi
 	    try {
 		    var apiRequest = Product.serialize($scope.formData);
 		    Product.publish(apiRequest, Status).then(function (res) {
+			    $scope.pageState.reset();
 			    if (res.ProductId) {
-				    $scope._loading.state = false;
-				    $scope.alert.success = true;
+				    $scope.overview = res;
+				    $scope.pageState.success = true;
 				    $scope.formData.ProductId = res.ProductId;
 				    $scope.formData.MasterVariant.Pid = res.MasterVariant.Pid;
 				    $scope.addProductForm.$setPristine(true)
 			    }else{
-				      $scope._loading.state = false;
-				      $scope.alert.failure = true;
-		    	    $scope.alert.failure_message = res.message || res.Message;
-		    	    $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-              $window.location.hash = 'alert'
-              $window.location.hash = 'alert-failure'
+				    $scope.pageState.failure = true;
+				    $scope.pageState.failure_message = res.message || res.Message;
+				    $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
+				    $window.location.hash = 'alert'
+			    $window.location.hash = 'alert-failure'
 			    }
 		    }, function (er) {
-			    $scope._loading.state = false;
-			    $scope.alert.failure = true;
-			    $scope.alert.failure_message = er.Message || er.message;
+			    $scope.pageState.reset();
+			    $scope.pageState.failure = true;
+			    $scope.pageState.failure_message = er.Message || er.message;
 			    $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
 
-          $window.location.hash = 'alert' //Need to toggle hash otherwise it wont scroll
-          $window.location.hash = 'alert-failure'
-
-			    console.log('publish failure', er);
+			    $window.location.hash = 'alert' //Need to toggle hash otherwise it wont scroll
+				    $window.location.hash = 'alert-failure'
 		    });
 
 	    } catch (ex) {
-		    $scope._loading.state = false;
-		    $scope.alert.failure = true;
-		    $scope.alert.failure_message = ex.message;
+		    $scope.pageState.reset();
+		    $scope.pageState.failure = true;
+		    $scope.pageState.failure_message = ex.message;
 		    $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-        $window.location.hash = 'alert-failure'
-		    console.log('publish failure', ex);
+		    $window.location.hash = 'alert'
+			    $window.location.hash = 'alert-failure'
+			    console.log('publish failure', ex);
 		    return;
 	    }
     };
@@ -438,20 +463,19 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 	    }
 
 	    var angularReady = function () {
-		    $scope._loading.message = "Done";
-		    $scope._loading.state = false;
+		    $scope.pageState.reset();
 	    };
 
 	    var loadFormData = function (ivFormData, FullAttributeSet) {
 
-		    $scope._loading.message = "Processing..";
+		    $scope.pageState.load('Loading product data..');
 
 		    if (!('VideoLinks' in ivFormData)) {
 			    ivFormData['VideoLinks'] = [];
 		    }
 		    var inverseResult = Product.deserialize(ivFormData,
 				    FullAttributeSet,
-				    $scope._loading);
+				    $scope.pageState.loading);
 
 		    $scope.formData = inverseResult.formData;
 		    console.log("After Inverse Transformation", $scope.formData, inverseResult.attributeOptions);
@@ -475,7 +499,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 		    //Dependecy chain
 		    // catId
 
-		    $scope._loading.message = "Downloading Attribute Sets..";
+		    $scope.pageState.load('Downloading Attribute Sets..');
 
 		    AttributeSet.getByCategory(catId).then(function (data) {
 
@@ -500,8 +524,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 			    //Load Attribute Set (edit mode only, in add mode AttributeSet is not set)
 			    if (ivFormData.AttributeSet && ivFormData.AttributeSet.AttributeSetId) {
 
-				    $scope._loading.message = "Indexing..";
-
+				    $scope.pageState.load('Indexing AttributeSet');
 				    var idx = $scope.availableAttributeSets.map(function (o) {
 					    return o.AttributeSetId
 				    }).indexOf(ivFormData.AttributeSet.AttributeSetId);
@@ -513,7 +536,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 				    loadFormData(ivFormData, $scope.formData.AttributeSet);
 			    }
 
-			    $scope._loading.message = "Downloading Category Tree..";
+			    $scope.pageState.load('Downloading Category Tree..');
 			    //Load Global Cat
 			    GlobalCategory.getAll().then(function (data) {
 
@@ -532,10 +555,10 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 		    //EDIT MODE
 
 		    var productId = viewBag.productId;
-		    $scope._loading.message = "Downloading Product..";
+		    $scope.pageState.load('Loading Basis..');
 		    Product.getOne(productId).then(function (ivFormData) {
 			    var gcat = ivFormData.GlobalCategory;
-
+			    $scope.overview =  angular.copy(ivFormData); //snapshot
 			    catReady(gcat, ivFormData, function () {
 				    $scope.formData.ProductId = Number(productId);
 				    angularReady();
@@ -549,7 +572,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 
 	    if ("catId" in viewBag) {
 		    //ADD MODE
-		    $scope._loading.state = false;
+		    $scope.pageState.reset();
 		    catReady(viewBag.catId, {}, angularReady);
 		    watchVariantChanges();
 	    }
