@@ -1936,6 +1936,10 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 		{ name: "Not Approved", value: 'NotApproved'},
 		{ name: "Wait for Approval", value: 'WaitforApproval'},
 	];
+	
+	$scope.setPageSize = function(p){
+		$scope.tableParams.pageSize = p;
+	}
 
 	$scope.bulk = { 
 		fn: function() {
