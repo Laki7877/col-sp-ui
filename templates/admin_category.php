@@ -63,7 +63,8 @@
 						<h3 class="modal-title">Global Category Detail</h3>
 					</div>
 					<div class="modal-body margin-top-20">
-						<form class="ah-form" name="editingForm" ng-submit="$emit('saveEditGlobalCategory')">
+						<div ng-show="alert2.show" uib-alert template-url="common/alert" type="{{ alert2.type }}" close="alert2.close()" ng-bind-html="alert2.message"></div>
+						<form class="ah-form" name="editingForm" ng-submit="$emit('saveEditGlobalCategory')" novalidate>
 							<div class="row">
 								<div class="col-xs-12">
 									<div class="form-section">

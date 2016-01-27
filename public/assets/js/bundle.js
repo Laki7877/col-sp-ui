@@ -395,25 +395,24 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function
 		if ($scope.edit) {
 			$scope.saving = true;
 			Attribute.update($scope.edit, $scope.formDataSerialized).then(function(data) {
-				$scope.alert.success('Successful saved. <a href="/admin/attributes">View Attribute List</a>');
+				$scope.alert.success('Your changes has been saved successfully. View <a href="/admin/attributes">Attribute List</a>');
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
-				$scope.alert.error(err);
+				$scope.alert.error('Unable to save because required fields are missing or incorrect.');
 			});
 		}
 		else {
 			$scope.saving = true;
 			Attribute.create($scope.formDataSerialized).then(function(data) {
-				$scope.alert.success('Successful saved. <a href="/admin/attributes">View Attribute List</a>');
+				$scope.alert.success('Your changes has been saved successfully. View <a href="/admin/attributes">Attribute List</a>');
 				$scope.edit = data.AttributeId;				
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
-				$scope.alert.error(err);
-				console.log(err);
+				$scope.alert.error('Unable to save because required fields are missing or incorrect.');
 			});
 		}
 	};
@@ -692,24 +691,24 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 		if ($scope.edit) {
 			$scope.saving = true;
 			AttributeSet.update($scope.edit, $scope.formDataSerialized).then(function(data) {
-				$scope.alert.success('Successful saved. <a href="/admin/attributesets">View Attribute Set List</a>');
+				$scope.alert.success('Your changes has been saved successfully. View <a href="/admin/attributesets">Attribute Set List</a>');
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
-				$scope.alert.error(err);
+				$scope.alert.error('Unable to save because required fields are missing or incorrect.');
 			});
 		}
 		else {
 			$scope.saving = true;
 			AttributeSet.create($scope.formDataSerialized).then(function(data) {
-				$scope.alert.success('Successful saved. <a href="/admin/attributesets">View Attribute Set List</a>');
+				$scope.alert.success('Your changes has been saved successfully. View <a href="/admin/attributesets">Attribute Set List</a>');
 				$scope.edit = data.AttributeSetId;				
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
-				$scope.alert.error(err);
+				$scope.alert.error('Unable to save because required fields are missing or incorrect.');
 			});
 		}
 	};
@@ -978,28 +977,28 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 		$scope.formDataSerialized = Brand.serialize($scope.formData);
 		if($scope.edit > 0) {
 			Brand.update($scope.edit, $scope.formDataSerialized).then(function(res){
-				$scope.alert.success('Successful saved. <a href="/admin/brands">View Brand List</a>');
+				$scope.alert.success('Your changes has been saved successfully. View <a href="/admin/brands">Brand List</a>');
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
-				$scope.alert.error(err);
+				$scope.alert.error('Unable to save because required fields are missing or incorrect.');
 			});
 		} else {
 			Brand.publish($scope.formDataSerialized).then(function(res){
-				$scope.alert.success('Successful saved. <a href="/admin/brands">View Brand List</a>');
+				$scope.alert.success('Your changes has been saved successfully. View <a href="/admin/brands">Brand List</a>');
 				$scope.edit = res.BrandId;				
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
-				$scope.alert.error(err);
+				$scope.alert.error('Unable to save because required fields are missing or incorrect.');
 			});
 		}
 	};
 }];
 },{"angular":64}],9:[function(require,module,exports){
-module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory', 'AttributeSet',  function($scope, $rootScope, common, Category, GlobalCategory, AttributeSet){
+module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory', 'AttributeSet', 'Alert',  function($scope, $rootScope, common, Category, GlobalCategory, AttributeSet, Alert){
 	$scope.categories = [];
 	$scope.attributeSetOptions = [];
 	$scope.editingStatusOptions = [
@@ -1015,19 +1014,8 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 	$scope.editingCategory = {};
 	$scope.editingCategoryOriginal = {};
 	$scope.popover = false;
-	$scope.alert = {
-		type: 'red',
-		show: false,
-		close: function() {
-			this.show = false;
-		},
-		open: function(success, msg) {
-			this.type = success ? 'green' : 'red';
-			this.message = success ? 'Your change has been saved.' : msg; 
-			this.show = true;
-		},
-		message: ''
-	};
+	$scope.alert = new Alert();
+	$scope.alert2 = new Alert();
 	$scope.test = function(i) {
 		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);
 	};
@@ -1047,7 +1035,6 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 		GlobalCategory.getAll().then(function(data) {
 			$scope.categories = Category.transformNestedSetToUITree(data);
 			$scope.loading = false;
-			console.log($scope.categories);
 		}, function(err) {
 			$scope.loading = false;
 			$scope.alert.open(false, common.getError(err));
@@ -1066,14 +1053,15 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 		$scope.loading = true;
 			
 		GlobalCategory.upsert($scope.formData).then(function() {
-			$scope.alert.open(true);
+			$scope.alert.success('Your changes have been saved.');
 			$scope.reload();
 		}, function(err) {
-			$scope.alert.open(false, common.getError(err));
+			$scope.alert.error(common.getError(err));
 			$scope.reload();
 		});
 	});
 	$rootScope.$on('saveEditGlobalCategory', function(evt) {
+		$scope.alert2.close();
 		if($scope.editingForm.$valid) {
 			//Edit or add
 			$scope.loading = true;
@@ -1087,6 +1075,8 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 			$scope.$emit('saveGlobalCategory');
 			//Close modal
 			$('#modal-category-detail').modal('hide');
+		} else {
+			$scope.alert2.error('Unable to save because required fields are missing or incorrect.');
 		}
 	});
 	$rootScope.$on('openEditGlobalCategory', function(evt, node) {
@@ -1104,7 +1094,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 
 }];
 },{}],10:[function(require,module,exports){
-module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory', 'Shop', function($scope, $rootScope, common, Category, LocalCategory, Shop) {
+module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory', 'Shop', 'Alert', function($scope, $rootScope, common, Category, LocalCategory, Shop, Alert) {
 	$scope.categories = [];
 	$scope.editingStatusOptions = [	{
 		text: 'Visible',
@@ -1118,19 +1108,8 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 	$scope.editingCategory = {};
 	$scope.editingCategoryOriginal = {};
 	$scope.popover = false;
-	$scope.alert = {
-		type: 'red',
-		show: false,
-		close: function() {
-			this.show = false;
-		},
-		open: function(success, msg) {
-			this.type = success ? 'green' : 'red';
-			this.message = success ? 'Your change has been saved.' : msg; 
-			this.show = true;
-		},
-		message: ''
-	};
+	$scope.alert = new Alert();
+	$scope.alert2 = new Alert();
 	$scope.loading = false;
 
 	$scope.init = function(shopid) {
@@ -1141,7 +1120,6 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 		$scope.loading = true;
 		Shop.getLocalCategories($scope.shopId).then(function(data) {
 			$scope.loading = false;
-			console.log(data);
 			$scope.categories = Category.transformNestedSetToUITree(data);
 		}, function(err) {
 			$scope.alert.open(false, common.getError(err));
@@ -1161,10 +1139,10 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 			return item;
 		});
 		Shop.upsertLocalCategories($scope.shopId, $scope.formData).then(function() {
-			$scope.alert.open(true);
+			$scope.alert.success('Your changes have been saved.');
 			$scope.reload();
 		}, function(err) {
-			$scope.alert.open(false, common.getError(err));
+			$scope.alert.error(common.getError(err));
 			$scope.reload();
 		});
 	});
@@ -1181,6 +1159,8 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 			$scope.$emit('saveLocalCategory');
 			//Close modal
 			$('#local-category-detail').modal('hide');
+		} else {
+			$scope.alert2.error('Unable to save because required fields are missing or incorrect.');
 		}
 	});
 	$rootScope.$on('openEditLocalCategory', function(evt, node) {
@@ -4514,7 +4494,7 @@ module.exports = ['common', function(common) {
 },{}],48:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Tue Jan 26 2016 23:01:23 GMT+0700 (ICT)
+ * Wed Jan 27 2016 22:24:22 GMT+0700 (ICT)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
