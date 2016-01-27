@@ -1,4 +1,4 @@
-module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory', 'AttributeSet',  function($scope, $rootScope, common, Category, GlobalCategory, AttributeSet){
+module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory', 'AttributeSet', 'Alert',  function($scope, $rootScope, common, Category, GlobalCategory, AttributeSet, Alert){
 	$scope.categories = [];
 	$scope.attributeSetOptions = [];
 	$scope.editingStatusOptions = [
@@ -14,19 +14,8 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 	$scope.editingCategory = {};
 	$scope.editingCategoryOriginal = {};
 	$scope.popover = false;
-	$scope.alert = {
-		type: 'red',
-		show: false,
-		close: function() {
-			this.show = false;
-		},
-		open: function(success, msg) {
-			this.type = success ? 'green' : 'red';
-			this.message = success ? 'Your change has been saved.' : msg; 
-			this.show = true;
-		},
-		message: ''
-	};
+	$scope.alert = new Alert();
+	$scope.alert2 = new Alert();
 	$scope.test = function(i) {
 		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);
 	};
@@ -46,7 +35,6 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 		GlobalCategory.getAll().then(function(data) {
 			$scope.categories = Category.transformNestedSetToUITree(data);
 			$scope.loading = false;
-			console.log($scope.categories);
 		}, function(err) {
 			$scope.loading = false;
 			$scope.alert.open(false, common.getError(err));
@@ -65,14 +53,15 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 		$scope.loading = true;
 			
 		GlobalCategory.upsert($scope.formData).then(function() {
-			$scope.alert.open(true);
+			$scope.alert.success('Your changes have been saved.');
 			$scope.reload();
 		}, function(err) {
-			$scope.alert.open(false, common.getError(err));
+			$scope.alert.error(common.getError(err));
 			$scope.reload();
 		});
 	});
 	$rootScope.$on('saveEditGlobalCategory', function(evt) {
+		$scope.alert2.close();
 		if($scope.editingForm.$valid) {
 			//Edit or add
 			$scope.loading = true;
@@ -86,6 +75,8 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 			$scope.$emit('saveGlobalCategory');
 			//Close modal
 			$('#modal-category-detail').modal('hide');
+		} else {
+			$scope.alert2.error('Unable to save because required fields are missing or incorrect.');
 		}
 	});
 	$rootScope.$on('openEditGlobalCategory', function(evt, node) {

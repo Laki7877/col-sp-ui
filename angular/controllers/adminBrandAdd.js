@@ -100,22 +100,22 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 		$scope.formDataSerialized = Brand.serialize($scope.formData);
 		if($scope.edit > 0) {
 			Brand.update($scope.edit, $scope.formDataSerialized).then(function(res){
-				$scope.alert.success('Successful saved. <a href="/admin/brands">View Brand List</a>');
+				$scope.alert.success('Your changes has been saved successfully. View <a href="/admin/brands">Brand List</a>');
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
-				$scope.alert.error(err);
+				$scope.alert.error('Unable to save because required fields are missing or incorrect.');
 			});
 		} else {
 			Brand.publish($scope.formDataSerialized).then(function(res){
-				$scope.alert.success('Successful saved. <a href="/admin/brands">View Brand List</a>');
+				$scope.alert.success('Your changes has been saved successfully. View <a href="/admin/brands">Brand List</a>');
 				$scope.edit = res.BrandId;				
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
-				$scope.alert.error(err);
+				$scope.alert.error('Unable to save because required fields are missing or incorrect.');
 			});
 		}
 	};

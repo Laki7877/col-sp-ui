@@ -65,25 +65,24 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function
 		if ($scope.edit) {
 			$scope.saving = true;
 			Attribute.update($scope.edit, $scope.formDataSerialized).then(function(data) {
-				$scope.alert.success('Successful saved. <a href="/admin/attributes">View Attribute List</a>');
+				$scope.alert.success('Your changes has been saved successfully. View <a href="/admin/attributes">Attribute List</a>');
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
-				$scope.alert.error(err);
+				$scope.alert.error('Unable to save because required fields are missing or incorrect.');
 			});
 		}
 		else {
 			$scope.saving = true;
 			Attribute.create($scope.formDataSerialized).then(function(data) {
-				$scope.alert.success('Successful saved. <a href="/admin/attributes">View Attribute List</a>');
+				$scope.alert.success('Your changes has been saved successfully. View <a href="/admin/attributes">Attribute List</a>');
 				$scope.edit = data.AttributeId;				
 				$scope.saving = false;
 				$scope.form.$setPristine(true);
 			}, function(err) {
 				$scope.saving = false;
-				$scope.alert.error(err);
-				console.log(err);
+				$scope.alert.error('Unable to save because required fields are missing or incorrect.');
 			});
 		}
 	};
