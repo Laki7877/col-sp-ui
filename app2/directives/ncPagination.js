@@ -11,6 +11,7 @@ angular.module('app')
 			template: $templateCache.get('common/ncPagination'),
 			link: function(scope, element, attrs) {
 				scope.paginationOptions = _.assign(config.DEFAULT_PAGINATION_SIZES, scope.paginationOptions);
+				scope.params._limit = scope.paginationOptions[0];
 				scope.page = function() {
 					return Math.ceil(scope.params._offset / scope.params._limit) + 1;
 				};

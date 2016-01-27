@@ -17,6 +17,13 @@ angular.module('app')
 			total: 0,
 			data: []
 		};
+		$scope.bulks = [];
+		$scope.actions = [{
+			name: 'View',
+			fn: function(test) {
+				console.log(test);
+			}
+		}];
 		$scope.loading = false;
 		$scope.reload = function() {
 			$scope.loading = true;
