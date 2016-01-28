@@ -10,7 +10,9 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 		{ name: "Not Approved", value: 'NotApproved'},
 		{ name: "Wait for Approval", value: 'WaitforApproval'},
 	];
-	
+
+	$scope.checkBoxCache = {};
+
 	$scope.setPageSize = function(p){
 		$scope.tableParams.pageSize = p;
 	}
@@ -27,21 +29,19 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 		} 
 	};
 	$scope.bulkOptions = [
-		{
-			name: '- Choose Action -', 
-			value: 'default', 
-			fn: angular.noop
-		},
 		{ 	
 			name: 'Delete', 
 			value: 'delete', 
 			fn: function() {
 				$scope.alert.close();
-				var arr = util.getCheckedArray($scope.productList).map(function(elem) {
+
+				var arr = Object.keys($scope.checkBoxCache).map(function(m){
+					if(!$scope.checkBoxCache[m]) return { ProductId: -1 };
 					return {
-						ProductId: elem.ProductId
+						ProductId: Number(m)
 					};
 				});
+
 				if(arr.length > 0) {
 					Product.deleteBulk(arr).then(function() {
 						$scope.alert.success('Successfully deleted');
@@ -57,10 +57,10 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 			name: 'Show',
 			value: 'show',
 			fn: function() {
-				var arr = util.getCheckedArray($scope.productList).map(function(elem) {
+				var arr = Object.keys($scope.checkBoxCache).map(function(m){
+					if(!$scope.checkBoxCache[m]) return { ProductId: -1 };
 					return {
-						ProductId: elem.ProductId,
-						Visibility: true
+						ProductId: Number(m)
 					};
 				});
 
@@ -79,10 +79,10 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 			name: 'Hide',
 			value: 'hide',
 			fn: function() {
-				var arr = util.getCheckedArray($scope.productList).map(function(elem) {
+				var arr = Object.keys($scope.checkBoxCache).map(function(m){
+					if(!$scope.checkBoxCache[m]) return { ProductId: -1 };
 					return {
-						ProductId: elem.ProductId,
-						Visibility: false
+						ProductId: Number(m)
 					};
 				});
 
@@ -177,10 +177,6 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 		return Math.ceil($scope.productTotal / $scope.tableParams.pageSize);
 	};
 
-	$scope.nextPage = function(m){
-		$scope.tableParams.page += m;
-	};
-
 
 	$scope.nextPage = function(m){
 		if($scope.tableParams.page + m >= $scope.totalPage() ||
@@ -220,7 +216,15 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($sc
 	//Select All checkbox
 	$scope.$watch('checkAll', function(newVal, oldVal){
 		$scope.productList.forEach(function(d){
-			d.checked = $scope.checkAll;
+			$scope.checkBoxCache[d.ProductId] = $scope.checkAll; 
 		});
 	}, true);
+
+	$scope.checkBoxCount = function(){
+		var m = [];
+		Object.keys($scope.checkBoxCache).forEach(function(key){
+			if($scope.checkBoxCache[key]) m.push($scope.checkBoxCache[key]);
+		});
+		return m.length;
+	}
 }];
