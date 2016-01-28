@@ -20,6 +20,7 @@ module.exports = function($scope, Attribute, util) {
 				value: 'HB'
 			}
 		];
+        // stop your wrgo
 		$scope.yesNoOptions = [
 			{
 				name: 'No',
