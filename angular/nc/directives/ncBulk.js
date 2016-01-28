@@ -44,7 +44,9 @@ angular.module('nc')
 					}
 				};
 				scope.call = function() {
-					scope.select.fn(_.drop(scope.model));
+					var arr = _.drop(scope.model);
+					if(arr.length > 0)
+						scope.select.fn(arr);
 				};
 			}
 		}

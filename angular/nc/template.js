@@ -14,7 +14,7 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/ncBulk',
-    "<div class=\"search-section section-action\"><div class=input-group><div class=input-group-btn uib-dropdown><button class=\"btn btn-default body-dropdown-button\" uib-dropdown-toggle><span class=\"dropdown-text margin-right-10 search-product-text\">{{ select.name }}</span> <span class=\"caret margin-left-10\"></span></button><ul uib-dropdown-menu role=menu class=search-product-dropdown><li ng-repeat=\"option in options\"><a ng-click=\"select = option\">{{ option.name }}</a></li></ul></div><div class=input-group-btn><button class=\"btn-white btn\" ng-click=call()><span class=button-text-blue>Confirm</span></button></div></div></div>"
+    "<div class=\"search-section section-action\"><div class=input-group><div class=input-group-btn uib-dropdown><button class=\"btn btn-default body-dropdown-button\" uib-dropdown-toggle><span class=\"dropdown-text margin-right-10 search-product-text\">{{ select.name }}</span> <span class=\"caret margin-left-10\"></span></button><ul uib-dropdown-menu role=menu class=search-product-dropdown><li ng-repeat=\"option in options\"><a ng-click=\"select = option\">{{ option.name }}</a></li></ul></div><div class=input-group-btn><button class=\"btn-white btn\" ng-click=call()><span class=button-text-blue>Confirm ({{model.length}})</span></button></div></div></div>"
   );
 
 
