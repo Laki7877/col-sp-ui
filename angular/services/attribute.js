@@ -118,6 +118,13 @@ module.exports = ['common', function(common){
 			url: '/Attributes/' + id
 		});
 	};
+	service.list = function(parameters) {
+		return common.makeRequest({
+			method: 'GET',
+			url: '/Attributes',
+			params: parameters
+		});
+	};
 	service.getAll = function(parameters) {
 		if(parameters) {
 			return common.makeRequest({
