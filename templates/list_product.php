@@ -10,7 +10,9 @@
           <div class="input-group-btn">
             <div class="dropdown-btn">
               <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                  <span id="bulk" class="dropdown-text margin-right-10 search-product-text">- Choose Action -</span>
+                  <span id="bulk" class="dropdown-text margin-right-10 search-product-text">
+			 Choose Action 
+		 </span>
                   <span class="caret margin-left-10"></span>
               </button>
               <ul class="dropdown-menu search-product-dropdown">
@@ -20,7 +22,7 @@
           </div><!-- /btn-group -->
           <div class="input-group-btn">
             <button class="btn-white btn">
-              <span class="button-text-blue">Confirm</span>
+              <span class="button-text-blue">Confirm ({{ checkBoxCount() }})</span>
             </button>
           </div>
         </div>
@@ -81,7 +83,7 @@
         <tbody>
       	  <tr ng-repeat="row in productList" >
                   <td class="checkbox-column">
-                    <input type="checkbox" aria-label="Checkbox for following text input" ng-model="row.checked">
+                    <input type="checkbox" aria-label="Checkbox for following text input" ng-model="checkBoxCache[row.ProductId]">
                   </td>
                   <td class="display-column">
                     <div class="img-holder">
