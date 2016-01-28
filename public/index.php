@@ -22,6 +22,7 @@ Route::add('/admin', 'Redirect::admin');
 Route::add('/products', 'ProductController::index');
 Route::add('/products/add', 'ProductController::add');
 Route::add('/products/select', 'ProductController::select');
+Route::add('/products/images', 'ProductController::images');
 Route::add('/products/:productid', 'ProductController::edit');
 
 //category routing

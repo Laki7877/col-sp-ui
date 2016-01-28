@@ -15,6 +15,10 @@ class ProductController extends Controller
 		]);
 	}
 
+	public static function images($params){
+		return View::render('image_management');
+	}
+
 	public static function edit($params){
 		return View::render('add_product', [
 				'title' => 'Product Detail',
