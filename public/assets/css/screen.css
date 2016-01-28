@@ -12996,60 +12996,107 @@ label.css-label {
 .search-section-wrapper .search-section .btn-white {
   height: 30px;
 }
-/* line 247, ../../../assets/_table.scss */
+/* line 248, ../../../assets/_table.scss */
+.search-section-wrapper .search-section .btn-white-fluid {
+  width: auto;
+  height: 30px;
+  margin-right: 20px;
+  color: #4899DD;
+  background-color: #ffffff;
+  border-color: #ccc;
+}
+/* line 11, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.search-section-wrapper .search-section .btn-white-fluid:focus, .search-section-wrapper .search-section .btn-white-fluid.focus {
+  color: #4899DD;
+  background-color: #e6e6e6;
+  border-color: #8c8c8c;
+}
+/* line 17, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.search-section-wrapper .search-section .btn-white-fluid:hover {
+  color: #4899DD;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+/* line 22, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.search-section-wrapper .search-section .btn-white-fluid:active, .search-section-wrapper .search-section .btn-white-fluid.active, .open > .search-section-wrapper .search-section .btn-white-fluid.dropdown-toggle {
+  color: #4899DD;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+/* line 29, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.search-section-wrapper .search-section .btn-white-fluid:active:hover, .search-section-wrapper .search-section .btn-white-fluid:active:focus, .search-section-wrapper .search-section .btn-white-fluid:active.focus, .search-section-wrapper .search-section .btn-white-fluid.active:hover, .search-section-wrapper .search-section .btn-white-fluid.active:focus, .search-section-wrapper .search-section .btn-white-fluid.active.focus, .open > .search-section-wrapper .search-section .btn-white-fluid.dropdown-toggle:hover, .open > .search-section-wrapper .search-section .btn-white-fluid.dropdown-toggle:focus, .open > .search-section-wrapper .search-section .btn-white-fluid.dropdown-toggle.focus {
+  color: #4899DD;
+  background-color: #d4d4d4;
+  border-color: #8c8c8c;
+}
+/* line 37, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.search-section-wrapper .search-section .btn-white-fluid:active, .search-section-wrapper .search-section .btn-white-fluid.active, .open > .search-section-wrapper .search-section .btn-white-fluid.dropdown-toggle {
+  background-image: none;
+}
+/* line 45, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.search-section-wrapper .search-section .btn-white-fluid.disabled:hover, .search-section-wrapper .search-section .btn-white-fluid.disabled:focus, .search-section-wrapper .search-section .btn-white-fluid.disabled.focus, .search-section-wrapper .search-section .btn-white-fluid[disabled]:hover, .search-section-wrapper .search-section .btn-white-fluid[disabled]:focus, .search-section-wrapper .search-section .btn-white-fluid[disabled].focus, fieldset[disabled] .search-section-wrapper .search-section .btn-white-fluid:hover, fieldset[disabled] .search-section-wrapper .search-section .btn-white-fluid:focus, fieldset[disabled] .search-section-wrapper .search-section .btn-white-fluid.focus {
+  background-color: #ffffff;
+  border-color: #ccc;
+}
+/* line 53, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.search-section-wrapper .search-section .btn-white-fluid .badge {
+  color: #ffffff;
+  background-color: #4899DD;
+}
+/* line 256, ../../../assets/_table.scss */
 .search-section-wrapper .body-dropdown-button {
   height: 30px;
   width: 180px;
 }
-/* line 251, ../../../assets/_table.scss */
+/* line 260, ../../../assets/_table.scss */
 .search-section-wrapper .body-dropdown-button .dropdown-text {
   width: 135px;
   display: inline-block;
 }
-/* line 257, ../../../assets/_table.scss */
+/* line 266, ../../../assets/_table.scss */
 .search-section-wrapper .dropdown-text {
   text-align: left;
 }
-/* line 261, ../../../assets/_table.scss */
+/* line 270, ../../../assets/_table.scss */
 .search-section-wrapper .search-box {
   height: 30px;
 }
-/* line 265, ../../../assets/_table.scss */
+/* line 274, ../../../assets/_table.scss */
 .search-section-wrapper .checkbox-wrapper {
   margin-top: 5px;
 }
 
-/* line 271, ../../../assets/_table.scss */
+/* line 280, ../../../assets/_table.scss */
 .table.ah-table {
   margin-bottom: 0;
 }
-/* line 272, ../../../assets/_table.scss */
+/* line 281, ../../../assets/_table.scss */
 .table.ah-table > thead > tr > th {
   border-bottom: 1px solid #BCC7D5;
 }
-/* line 274, ../../../assets/_table.scss */
+/* line 283, ../../../assets/_table.scss */
 .table.ah-table > thead > tr > th, .table.ah-table > thead > tr > th > * {
   vertical-align: middle;
 }
-/* line 279, ../../../assets/_table.scss */
+/* line 288, ../../../assets/_table.scss */
 .table.ah-table > tbody > tr > td {
   border-top: none;
 }
-/* line 284, ../../../assets/_table.scss */
+/* line 293, ../../../assets/_table.scss */
 .table.ah-table.ah-table-extra-padding > tbody > tr > td {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-/* line 291, ../../../assets/_table.scss */
+/* line 300, ../../../assets/_table.scss */
 .table.ah-table.ah-table-line > tbody > tr:first-child > td {
   border-top: none;
 }
-/* line 295, ../../../assets/_table.scss */
+/* line 304, ../../../assets/_table.scss */
 .table.ah-table.ah-table-line > tbody > tr > td {
   border-top: 1px solid #BCC7D5;
 }
 
-/* line 304, ../../../assets/_table.scss */
+/* line 313, ../../../assets/_table.scss */
 .table .column-text-ellipsis {
   max-width: 0;
   overflow: hidden;
@@ -13057,7 +13104,7 @@ label.css-label {
   white-space: nowrap;
 }
 
-/* line 313, ../../../assets/_table.scss */
+/* line 322, ../../../assets/_table.scss */
 .table-border-none > tbody > tr:first-child > td {
   border-top: none;
 }

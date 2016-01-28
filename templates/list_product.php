@@ -21,7 +21,7 @@
             </div>
           </div><!-- /btn-group -->
           <div class="input-group-btn">
-            <button class="btn-white btn">
+            <button class="btn-white-fluid btn">
               <span class="button-text-blue">Confirm ({{ checkBoxCount() }})</span>
             </button>
           </div>
