@@ -76,7 +76,7 @@ module.exports = {
     "casper_scripts": "../../backstop_data/casper_scripts"
   },
   "engine": "phantomjs",
-  "report": ["CLI", "browser"],
+  "report": ["browser"],
   "cliExitOnFail": false,
   "casperFlags": [],
   "debug": false,
