@@ -13,6 +13,24 @@
         <li class="item"><a href="?p=admin_add_account">Add</a></li>
     </ul>
 
+    <ul class="sub-sidebar" style="display: none;" id="sub-admin-role">
+        <li class="sub-sidebar-header">Admin Roles</li>
+        <li class="item active margin-top-20"><a href="?p=admin_role">View</a></li>
+        <li class="item"><a href="?p=admin_add_role">Add</a></li>
+    </ul>
+
+    <ul class="sub-sidebar" style="display: none;" id="sub-admin-shop-account">
+        <li class="sub-sidebar-header">Shop Accounts</li>
+        <li class="item active margin-top-20"><a href="?p=admin_shop_account">View</a></li>
+        <li class="item"><a href="?p=admin_add_shop_account">Add</a></li>
+    </ul>
+
+    <ul class="sub-sidebar" style="display: none;" id="sub-admin-shop-type">
+        <li class="sub-sidebar-header">Shop Types</li>
+        <li class="item active margin-top-20"><a href="?p=admin_shop_type">View</a></li>
+        <li class="item"><a href="?p=admin_add_shop_type">Add</a></li>
+    </ul>
+
     <ul class="sub-sidebar" style="display: none;" id="sub-attribute">
         <li class="sub-sidebar-header">Attribute</li>
         <li ng-class="$root.activeUrl('/admin/attributes')" class="item margin-top-20"><a href="/admin/attributes">View</a></li>

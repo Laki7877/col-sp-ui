@@ -13,12 +13,16 @@ class AdminController extends Controller
 		return View::render('admin_attribute', ['params' => json_encode_n($params)]);
 	}
 
+	public static function listAccount($params){
+		return View::render('admin_account');
+	}
+
 	public static function listAttributeSet($params)
 	{
 		$params['success'] = $_POST['success'];
 		return View::render('admin_attribute_set', ['params' => json_encode_n($params)]);
 	}
-	
+
 	public static function listBrand($params)
 	{
 		return View::render('admin_brand');

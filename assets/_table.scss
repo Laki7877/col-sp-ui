@@ -41,6 +41,12 @@
 	.modified-column {
 		width: 88px;
 	}
+
+  tbody .action-column{
+    width: 60px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
 }
 
 //Table section
@@ -56,12 +62,10 @@
     border-color: $color-grey;
   }
   // End setting border color
-
-  .product-list-table {
-   
-    > tbody >tr:first-child > td {
-      border-top: none;
-    }
+  
+  
+  .table > tbody > tr:first-child > td {
+    border-top: none;
   }
 
   // Override Bootstrap's th width that set to 2px
@@ -166,7 +170,6 @@
 
 // Page navigation section
 .page-navigation {
-  margin-bottom: 100px;
   float: right;
 
   .grey-chevron {
@@ -216,6 +219,14 @@
   .filter-active {
     color:  $color-black;
   }
+
+  .filter-checkbox{
+    float: right;
+    input{
+      margin-top: 0px;
+      margin-right: 6px;
+    }
+  }
 }
 
 //Page body: Search section
@@ -230,6 +241,10 @@
 
   .section-action {
     width: 280px;
+    .body-dropdown-button{
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
   }
 
   .section-search {
