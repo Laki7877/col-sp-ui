@@ -4,7 +4,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 function ($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair) {
     'use strict';
 
-    //TODO: use Poons' Alert Factory
+    //TODO: use Poons' Alert class
+    
     var MAX_FILESIZE = 5000000; //5MB
     var QUEUE_LIMIT = 20;
     var QUEUE_LIMIT_360 = 60;

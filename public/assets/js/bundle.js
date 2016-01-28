@@ -1254,7 +1254,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 function ($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair) {
     'use strict';
 
-    //TODO: use Poons' Alert Factory
+    //TODO: use Poons' Alert class
+    
     var MAX_FILESIZE = 5000000; //5MB
     var QUEUE_LIMIT = 20;
     var QUEUE_LIMIT_360 = 60;
@@ -1996,235 +1997,306 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 }];
 
 },{"angular":80}],15:[function(require,module,exports){
-module.exports = ['$scope', 'Product', 'util', 'Alert', '$window',  function($scope, Product, util, Alert, $window) {
-	//UI binding variables
-	$scope.showOnOffStatus = true;
-	$scope.checkAll = false;
-	$scope.alert = new Alert();
-	$scope.filterOptions = [
-		{ name: "All", value: 'All'},
-		{ name: "Approved", value: 'Approved'},
-		{ name: 'Draft', value: 'Draft'},
-		{ name: "Not Approved", value: 'NotApproved'},
-		{ name: "Wait for Approval", value: 'WaitforApproval'},
-	];
+module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', function ($scope, Product, util, Alert, $window) {
+    //UI binding variables    
+    
+    $scope.showOnOffStatus = true;
+    $scope.checkAll = false;
+    $scope.alert = new Alert();
+    $scope.filterOptions = [
+        { name: "All", value: 'All' },
+        { name: "Approved", value: 'Approved' },
+        { name: 'Draft', value: 'Draft' },
+        { name: "Not Approved", value: 'NotApproved' },
+        { name: "Wait for Approval", value: 'WaitforApproval' },
+    ];
 
-	$scope.checkBoxCache = {};
+    $scope.startExportProducts = function () {
+        $scope.exporter = {
+            progress: 10,
+        	title: 'Exporting...'
+        };
 
-	$scope.setPageSize = function(p){
-		$scope.tableParams.pageSize = p;
-	}
+        $("#export-product").modal('show');
+    };
+    
+    $scope.confirmExportProducts = function(){
+        $("#export-product").modal('hide');
 
-	$scope.bulk = { 
-		fn: function() {
-			var bulk = $scope.bulkOptions.find(function(item) {
-				return item.name == $('#bulk').html();
-			});
-			if(bulk) {
-				bulk.fn();
-			}
-			$scope.checkAll = false;
-		} 
-	};
-	$scope.bulkOptions = [
-		{ 	
-			name: 'Delete', 
-			value: 'delete', 
-			fn: function() {
-				$scope.alert.close();
+        var arr = [];
+        Object.keys($scope.checkBoxCache).forEach(function (m) {
+            if (!$scope.checkBoxCache[m]) return;
+            arr.push({
+                ProductId: Number(m)
+            });
+        });
 
-				var arr = Object.keys($scope.checkBoxCache).map(function(m){
-					if(!$scope.checkBoxCache[m]) return { ProductId: -1 };
-					return {
-						ProductId: Number(m)
-					};
-				});
-
-				if(arr.length > 0) {
-					Product.deleteBulk(arr).then(function() {
-						$scope.alert.success('Successfully deleted');
-						$scope.reloadData();
-					}, function(result) {
-						$scope.alert.error(result);
-						$scope.reloadData();
-					});
-				}
-			}
-		},
-		{
-			name: 'Show',
-			value: 'show',
-			fn: function() {
-				var arr = Object.keys($scope.checkBoxCache).map(function(m){
-					if(!$scope.checkBoxCache[m]) return { ProductId: -1 };
-					return {
-						ProductId: Number(m)
-					};
-				});
-
-				if(arr.length > 0) {
-					Product.visible(arr).then(function() {
-						$scope.alert.success('Successfully changed');
-						$scope.reloadData();
-					}, function() {
-						$scope.alert.error(result);
-						$scope.reloadData();
-					});
-				}
-			}
-		},
-		{
-			name: 'Hide',
-			value: 'hide',
-			fn: function() {
-				var arr = Object.keys($scope.checkBoxCache).map(function(m){
-					if(!$scope.checkBoxCache[m]) return { ProductId: -1 };
-					return {
-						ProductId: Number(m)
-					};
-				});
-
-				if(arr.length > 0) {
-					Product.visible(arr).then(function() {
-						$scope.alert.success('Successfully changed');
-						$scope.reloadData();
-					}, function() {
-						$scope.alert.error(result);
-						$scope.reloadData();
-					});
-				}
-			}
-		}
-	];
-	$scope.actions = {
-		edit: function(row) {
-			$window.location.href="/products/" + row.ProductId;
-		},
-		delete: function(row) {
-			$scope.alert.close();
-			Product.deleteBulk([{ProductId: row.ProductId}]).then(function() {
-				$scope.alert.success('You have successfully remove an entry.');
-				$scope.reloadData();
-			}, function(err) {
-				$scope.alert.error(err);
-			});
-		},
-		duplicate: function(row) {
-			$scope.alert.close();
-			Product.duplicate(row.ProductId).then(function() {
-				$scope.alert.success();
-				$scope.reloadData();
-			}, function(err) {
-				$scope.alert.error(err);
-			});
-		},
-		toggle: function(row) {
-			$scope.alert.close();
-			row.Visibility = !row.Visibility;
-			Product.visible([row]).then(function() {
-			}, function(err) {
-				$scope.alert.error(err);
-				$scope.reloadData();
-			});
-		}
-	};
-	$scope.sort = util.tableSortClass($scope);
-	var StatusLookup = {
-			'DF' : {
-				Class: 'fa-circle-o',
-				Text: 'Draft',
-				Color: 'color-grey'
-			},
-			'WA' : {
-				Class: 'fa-clock-o',
-				Text: 'Wait for Approval',
-				Color: 'color-yellow'
-			}
-
-	}
-	$scope.init = function(params) {
-		if(angular.isDefined(params)) {
-			if(angular.isDefined(params.success) && params.success != null) {
-				$scope.alert.success();
-			}
-		}
-	};
-	$scope.asStatus = function(ab){
-		return StatusLookup[ab];
-	};
-
-	//Product List
-	$scope.productList = [];
-	//Default parameters
-	$scope.tableParams = {
-		filter: 'All',
-		searchText: null,
-		orderBy: 'UpdatedDt',
-		direction: 'desc',
-		page: 0,
-		pageSize: 10
-	};
-
-	$scope.notReady = true;
-
-	$scope.applySearch = function(){
-		$scope.tableParams.searchText = $scope.searchText;
-	};
-
-	$scope.totalPage = function(x){
-		return Math.ceil($scope.productTotal / $scope.tableParams.pageSize);
-	};
+        if (arr.length == 0) return;
 
 
-	$scope.nextPage = function(m){
-		if($scope.tableParams.page + m >= $scope.totalPage() ||
-			$scope.tableParams.page + m < 0)
-			return;
+        var fileName = 'ProductExport-' + moment(new Date(), 'MM-DD-YYYY-HHmm') + ".csv";
+        var a = document.getElementById("export_download_btn");
 
-		$scope.tableParams.page += m;
-	};
+        $scope.exporter.progress = 15;
+        Product.export(arr).then(function (result) {
+            var file = new Blob([result], {type: 'application/csv'});
+            var fileURL = URL.createObjectURL(file);
 
-
-	$scope.setOrderBy = function(nextOrderBy){
-		if($scope.tableParams.orderBy == nextOrderBy){
-			$scope.tableParams.direction = ($scope.tableParams.direction == 'asc' ? 'desc': 'asc');
-		}
-		$scope.tableParams.orderBy = nextOrderBy;
-	};
-
- 	$scope.productTotal = 0;
-	//Populate Data Source
-	$scope.reloadData = function(){
-		$scope.productList = [];
-		$scope.notReady = true;
-		Product.getAll($scope.tableParams).then(function(x){
-			$scope.productTotal = x.total;
-			$scope.productList = x.data;
-			$scope.notReady = false;
-		});
-	};
-
-	//Watch any change in table parameter, trigger reload
-	$scope.$watch('tableParams', function(){
-		$scope.reloadData();
-		$scope.checkAll = false;
-	}, true);
+            $scope.exporter.href = fileURL;
+            $scope.exporter.download = fileName;
+            $scope.exporter.progress = 100;
+            $scope.exporter.title = 'Export Complete'
+            
+            a.href = fileURL;
+            
+        }, function (r) {
+        	$(".modal").modal('hide');
+        	$scope.exporter.title = 'Error'
+            $scope.alert.error('Unable to Export Product');
+            $scope.reloadData();
+        });
+    }
 
 
-	//Select All checkbox
-	$scope.$watch('checkAll', function(newVal, oldVal){
-		$scope.productList.forEach(function(d){
-			$scope.checkBoxCache[d.ProductId] = $scope.checkAll; 
-		});
-	}, true);
+    $scope.checkBoxCache = {};
 
-	$scope.checkBoxCount = function(){
-		var m = [];
-		Object.keys($scope.checkBoxCache).forEach(function(key){
-			if($scope.checkBoxCache[key]) m.push($scope.checkBoxCache[key]);
-		});
-		return m.length;
-	}
+    $scope.setPageSize = function (p) {
+        $scope.tableParams.pageSize = p;
+    }
+
+    $scope.bulk = {
+        fn: function () {
+            var bulk = $scope.bulkOptions.find(function (item) {
+                return item.name == $('#bulk').html();
+            });
+            if (bulk) {
+                bulk.fn();
+            }
+            $scope.checkAll = false;
+        }
+    };
+
+    $scope.bulkOptions = [
+        {
+            name: 'Delete',
+            value: 'delete',
+            fn: function () {
+                $scope.alert.close();
+
+                var arr = Object.keys($scope.checkBoxCache).map(function (m) {
+                    if (!$scope.checkBoxCache[m]) return { ProductId: -1 };
+                    return {
+                        ProductId: Number(m)
+                    };
+                });
+
+                if (arr.length > 0) {
+                    Product.deleteBulk(arr).then(function () {
+                        $scope.alert.success('Successfully deleted');
+                        $scope.reloadData();
+                    }, function (result) {
+                        $scope.alert.error('Unable to Delete');
+                        $scope.reloadData();
+                    });
+                }
+            }
+        },
+        {
+            name: 'Show',
+            value: 'show',
+            fn: function () {
+                var arr = Object.keys($scope.checkBoxCache).map(function (m) {
+                    if (!$scope.checkBoxCache[m]) return { ProductId: -1 };
+                    return {
+                        ProductId: Number(m)
+                    };
+                });
+
+                if (arr.length > 0) {
+                    Product.visible(arr).then(function () {
+                        $scope.alert.success('Successfully changed');
+                        $scope.reloadData();
+                    }, function () {
+                        $scope.alert.error('Unable to Show');
+                        $scope.reloadData();
+                    });
+                }
+            }
+        },
+        {
+            name: 'Hide',
+            value: 'hide',
+            fn: function () {
+                var arr = Object.keys($scope.checkBoxCache).map(function (m) {
+                    if (!$scope.checkBoxCache[m]) return { ProductId: -1 };
+                    return {
+                        ProductId: Number(m)
+                    };
+                });
+
+                if (arr.length > 0) {
+                    Product.visible(arr).then(function () {
+                        $scope.alert.success('Successfully changed');
+                        $scope.reloadData();
+                    }, function () {
+                        $scope.alert.error('Unable to Hide');
+                        $scope.reloadData();
+                    });
+                }
+            }
+        },
+        {
+            name: 'Publish',
+            value: 'publish',
+            fn: function () {
+                var arr = [];
+                Object.keys($scope.checkBoxCache).forEach(function (m) {
+                    if (!$scope.checkBoxCache[m]) return;
+                    arr.push({
+                        ProductId: Number(m)
+                    });
+                });
+
+                if (arr.length == 0) return;
+
+                Product.bulkPublish(arr).then(function () {
+                    $scope.alert.success("Successfully published " + arr.length + " items");
+                    $scope.reloadData();
+                }, function (r) {
+                    $scope.alert.error('Unable to publish because ' + r.message);
+                });
+            }
+        }
+    ];
+    $scope.actions = {
+        edit: function (row) {
+            $window.location.href = "/products/" + row.ProductId;
+        },
+        delete: function (row) {
+            $scope.alert.close();
+            Product.deleteBulk([{ ProductId: row.ProductId }]).then(function () {
+                $scope.alert.success('You have successfully remove an entry.');
+                $scope.reloadData();
+            }, function (err) {
+                $scope.alert.error(err);
+            });
+        },
+        duplicate: function (row) {
+            $scope.alert.close();
+            Product.duplicate(row.ProductId).then(function () {
+                $scope.alert.success();
+                $scope.reloadData();
+            }, function (err) {
+                $scope.alert.error(err);
+            });
+        },
+        toggle: function (row) {
+            $scope.alert.close();
+            row.Visibility = !row.Visibility;
+            Product.visible([row]).then(function () {
+            }, function (err) {
+                $scope.alert.error(err);
+                $scope.reloadData();
+            });
+        }
+    };
+    $scope.sort = util.tableSortClass($scope);
+    var StatusLookup = {
+        'DF': {
+            Class: 'fa-circle-o',
+            Text: 'Draft',
+            Color: 'color-grey'
+        },
+        'WA': {
+            Class: 'fa-clock-o',
+            Text: 'Wait for Approval',
+            Color: 'color-yellow'
+        }
+
+    }
+    $scope.init = function (params) {
+        if (angular.isDefined(params)) {
+            if (angular.isDefined(params.success) && params.success != null) {
+                $scope.alert.success();
+            }
+        }
+    };
+    $scope.asStatus = function (ab) {
+        return StatusLookup[ab];
+    };
+
+    //Product List
+    $scope.productList = [];
+    //Default parameters
+    $scope.tableParams = {
+        filter: 'All',
+        searchText: null,
+        orderBy: 'UpdatedDt',
+        direction: 'desc',
+        page: 0,
+        pageSize: 10
+    };
+
+    $scope.notReady = true;
+
+    $scope.applySearch = function () {
+        $scope.tableParams.searchText = $scope.searchText;
+    };
+
+    $scope.totalPage = function (x) {
+        return Math.ceil($scope.productTotal / $scope.tableParams.pageSize);
+    };
+
+
+    $scope.nextPage = function (m) {
+        if ($scope.tableParams.page + m >= $scope.totalPage() ||
+            $scope.tableParams.page + m < 0)
+            return;
+
+        $scope.tableParams.page += m;
+    };
+
+
+    $scope.setOrderBy = function (nextOrderBy) {
+        if ($scope.tableParams.orderBy == nextOrderBy) {
+            $scope.tableParams.direction = ($scope.tableParams.direction == 'asc' ? 'desc' : 'asc');
+        }
+        $scope.tableParams.orderBy = nextOrderBy;
+    };
+
+    $scope.productTotal = 0;
+    //Populate Data Source
+    $scope.reloadData = function () {
+        $scope.productList = [];
+        $scope.notReady = true;
+        Product.getAll($scope.tableParams).then(function (x) {
+            $scope.productTotal = x.total;
+            $scope.productList = x.data;
+            $scope.notReady = false;
+        });
+    };
+
+    //Watch any change in table parameter, trigger reload
+    $scope.$watch('tableParams', function () {
+        $scope.reloadData();
+        $scope.checkAll = false;
+    }, true);
+
+
+    //Select All checkbox
+    $scope.$watch('checkAll', function (newVal, oldVal) {
+        $scope.productList.forEach(function (d) {
+            $scope.checkBoxCache[d.ProductId] = $scope.checkAll;
+        });
+    }, true);
+
+    $scope.checkBoxCount = function () {
+        var m = [];
+        Object.keys($scope.checkBoxCache).forEach(function (key) {
+            if ($scope.checkBoxCache[key]) m.push($scope.checkBoxCache[key]);
+        });
+        return m.length;
+    }
 }];
 
 },{}],16:[function(require,module,exports){
@@ -2328,6 +2400,7 @@ module.exports = function($scope, Attribute, util) {
 				value: 'HB'
 			}
 		];
+        // stop your wrgo
 		$scope.yesNoOptions = [
 			{
 				name: 'No',
@@ -4701,6 +4774,16 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
             return common.makeRequest(req);
         };
+        
+        service.export = function(tobj){
+            var path = '/ProductStages/Export';
+            return common.makeRequest({
+                responseType: 'arraybuffer',
+                method: 'POST',
+                url: path,
+                data: tobj
+            });
+        };
 
         service.publish = function(tobj, Status) {
             tobj.Status = Status;
@@ -4716,6 +4799,16 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 data: tobj
             });
         };
+
+
+        service.bulkPublish = function(tobj){
+            return common.makeRequest({
+                method: 'POST',
+                url: '/ProductStages/Publish',
+                data: tobj
+            });
+        };
+
         service.visible = function(obj) {
             return common.makeRequest({
                 method: 'PUT',
@@ -5204,7 +5297,7 @@ module.exports = ['common', function(common) {
 },{}],65:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Jan 28 2016 18:22:55 GMT+0700 (Russia TZ 6 Standard Time)
+ * Thu Jan 28 2016 18:24:31 GMT+0700 (Russia TZ 6 Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 

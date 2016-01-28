@@ -2,6 +2,9 @@
 
 <?php $this->start('page-body') ?>
 <div ng-controller="ProductListCtrl" ng-init="init(<?= $params ?>)">
+    <? $this->insert('components/modal-export-product', ['id' => 'export-product', 'newProductNum' => '1,500']) ?>
+    <? $this->insert('components/modal-export-product-progressing', ['id' => 'export-product-progressing', 'percent' => '60']) ?>
+
     <? $this->insert('components/page-title-with-buttons', ['text' => 'Products']) ?>
     <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{alert.type}}" close="alert.close()">{{alert.message}}</div>
     <div class="row search-section-wrapper">
@@ -11,8 +14,8 @@
             <div class="dropdown-btn">
               <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
                   <span id="bulk" class="dropdown-text margin-right-10 search-product-text">
-			 Choose Action 
-		 </span>
+			            Choose Action 
+		              </span>
                   <span class="caret margin-left-10"></span>
               </button>
               <ul class="dropdown-menu search-product-dropdown">
@@ -168,4 +171,7 @@
       </span>
     </div>
 	</div>
+    
+
+
 <?php $this->stop() ?>

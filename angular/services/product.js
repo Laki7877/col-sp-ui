@@ -28,6 +28,16 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
             return common.makeRequest(req);
         };
+        
+        service.export = function(tobj){
+            var path = '/ProductStages/Export';
+            return common.makeRequest({
+                responseType: 'arraybuffer',
+                method: 'POST',
+                url: path,
+                data: tobj
+            });
+        };
 
         service.publish = function(tobj, Status) {
             tobj.Status = Status;
@@ -43,6 +53,16 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 data: tobj
             });
         };
+
+
+        service.bulkPublish = function(tobj){
+            return common.makeRequest({
+                method: 'POST',
+                url: '/ProductStages/Publish',
+                data: tobj
+            });
+        };
+
         service.visible = function(obj) {
             return common.makeRequest({
                 method: 'PUT',
