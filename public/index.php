@@ -22,6 +22,7 @@ Route::add('/admin', 'Redirect::admin');
 Route::add('/products', 'ProductController::index');
 Route::add('/products/add', 'ProductController::add');
 Route::add('/products/select', 'ProductController::select');
+Route::add('/products/images', 'ProductController::images');
 Route::add('/products/:productid', 'ProductController::edit');
 
 //category routing
@@ -38,7 +39,7 @@ Route::add('/admin/categories', 'AdminController::category');
 Route::add('/admin/brands', 'AdminController::listBrand');
 Route::add('/admin/brands/add', 'AdminController::addBrand');
 Route::add('/admin/brands/:id', 'AdminController::editBrand');
-
+Route::add('/admin/accounts', 'AdminController::listAccount');
 //test route
 Route::add('/test/:name', 'TestController::any');
 

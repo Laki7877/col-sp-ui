@@ -10,7 +10,9 @@
           <div class="input-group-btn">
             <div class="dropdown-btn">
               <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                  <span id="bulk" class="dropdown-text margin-right-10 search-product-text">- Choose Action -</span>
+                  <span id="bulk" class="dropdown-text margin-right-10 search-product-text">
+			 Choose Action 
+		 </span>
                   <span class="caret margin-left-10"></span>
               </button>
               <ul class="dropdown-menu search-product-dropdown">
@@ -19,8 +21,8 @@
             </div>
           </div><!-- /btn-group -->
           <div class="input-group-btn">
-            <button class="btn-white btn">
-              <span class="button-text-blue">Confirm</span>
+            <button class="btn-white-fluid btn">
+              <span class="button-text-blue">Confirm ({{ checkBoxCount() }})</span>
             </button>
           </div>
         </div>
@@ -58,9 +60,9 @@
               <a class="header-link" ><span ng-class="sort('ProductNameEn', true)">Product Name</span></a>
               <i class="fa" ng-class="sort('ProductNameEn')">
             </th>
-            <th class="price-column" ng-click="setOrderBy('SalePrice')">
-              <a class="header-link" ><span ng-class="sort('SalePrice', true)">Price</span></a>
-              <i class="fa" ng-class="sort('SalePrice')">
+            <th class="price-column" ng-click="setOrderBy('OriginalPrice')">
+              <a class="header-link" ><span ng-class="sort('OriginalPrice', true)">Price</span></a>
+              <i class="fa" ng-class="sort('OriginalPrice')">
             </th>
             <th><span>Info.</span></th>
             <th><span>Image</span></th>
@@ -81,7 +83,7 @@
         <tbody>
       	  <tr ng-repeat="row in productList" >
                   <td class="checkbox-column">
-                    <input type="checkbox" aria-label="Checkbox for following text input" ng-model="row.checked">
+                    <input type="checkbox" aria-label="Checkbox for following text input" ng-model="checkBoxCache[row.ProductId]">
                   </td>
                   <td class="display-column">
                     <div class="img-holder">
@@ -91,7 +93,7 @@
                   </td>
                   <td class="column-text-ellipsis"><a href="/products/{{ row.ProductId }}">{{ row.ProductNameEn || '(Untitled Product)' }}</a></td>
                   <td class="price-column">
-                    <div>{{ row.SalePrice | currency: ' ' : 2 }}</div>
+                    <div>{{ row.OriginalPrice | currency: ' ' : 2 }}</div>
                     <div ng-if="row.VariantCount > 0">({{row.VariantCount}} variants)</div></td>
                   <td class="info-column">
                     <i ng-if="!row.InfoFlag" class="fa fa-minus color-grey icon-size-18px"></i>

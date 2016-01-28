@@ -1,0 +1,33 @@
+<div class="page-navigation">
+  <span>
+    <!-- prev page button -->
+    <a ng-click="nextPage(-1)">
+      <i class="fa fa-chevron-left" ng-class="{'grey-chevron': page() == 1, 'blue-chevron' : page() > 1}">
+      </i>
+    </a>
+    <!-- pagination text -->
+    <span> Page {{ page() }} of {{ totalPage() }}</span>
+    <!-- next page button -->
+    <a ng-click="nextPage(1)">
+      <i class="fa fa-chevron-right padding-right-15" ng-class="{'grey-chevron': page() == totalPage(), 'blue-chevron' : page() < totalPage() }">
+      </i>
+    </a>
+    <span class="view-page-separator">View per page</span>
+    <!-- Pagination dropdown -->
+    <div class="btn-group" uib-dropdown>
+      <!-- Page size button -->
+      <button type="button" class="btn btn-default">
+        {{ pageSize() }}
+      </button>
+      <!-- Caret -->
+      <button type="button" class="btn btn-default" uib-dropdown-toggle>
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <!-- Dropdown -->
+      <ul uib-dropdown-menu role="menu" class="dropdown-menu-right">
+        <li ng-repeat="size in paginationOptions" ><a ng-click="setPageSize(size)">{{size}}</a></li>
+      </ul>
+    </div>
+  </span>
+</div>

@@ -1,0 +1,5 @@
+<a class="header-link" ng-click="click()"><span ng-class="{ 'active-underline' : isCurrent() }" ng-transclude></span></a>
+<i class="fa" ng-class="{ 
+'fa fa-caret-down' : isCurrent() && direction, 
+'fa fa-caret-up' : isCurrent() && !direction, 
+'fa fa-caret-down color-grey' : !isCurrent() }">

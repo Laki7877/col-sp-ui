@@ -17,6 +17,13 @@
         <li class="item"><a href="">Product Review</a></li>
         <li class="item"><a href="">Product Images</a></li>
     </ul>
+
+    <ul class="sub-sidebar" style="display: none;" id="sub-sidebar-account">
+        <li class="sub-sidebar-header">Account</li>
+        <li class="item active margin-top-20"><a href="?p=user_account">User Accounts</a></li>
+        <li class="item"><a href="?p=user_role">User Roles</a></li>
+    </ul>
+
 <?php $this->stop() ?>
 
 <?php $this->start('page-content') ?>

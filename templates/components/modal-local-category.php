@@ -12,6 +12,7 @@
               <div class="form-section">
                 <div class="form-section-header"><h2>Local Category Detail</h2></div>
                 <div class="form-section-content modal-custom">
+                    <div ng-show="alert2.show" uib-alert template-url="common/alert" type="{{ alert2.type }}" close="alert2.close()" ng-bind-html="alert2.message"></div>
                     <div ng-template="common/input/text2"
                         ng-template-options="{
                           'label': 'Category Name (Thai)',

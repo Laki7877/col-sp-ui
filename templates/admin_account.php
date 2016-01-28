@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
   <div>
-    <? $this->insert('components/page-title-with-one-button', ['text' => 'Admin Accounts','button' => 'Create New Admin Account', 'button_class' => 'btn-width-xxxl', 'link' => '?p=admin_add_attribute']) ?>
+    <? $this->insert('components/page-title-with-one-button', ['text' => 'Admin Accounts','button' => 'Create New Admin Account', 'button_class' => 'btn-width-xxxl', 'link' => '/?p=admin_add_account']) ?>
     <? $this->insert('components/search-section-admin-attribute') ?>
     <div class="table-section">
       <table class="table table-curved table-border-none">
@@ -11,10 +11,7 @@
             <th class="checkbox-column">
                 <input type="checkbox" aria-label="Checkbox for following text input"> 
             </th>
-            <th>
-              <a class="header-link" href="#"><span class="active-underline">ID</span></a>
-              <i class="fa fa-caret-down color-grey">
-            </th>
+            
             <th>
               <a class="header-link" href="#"><span>Admin Name</span></a>
               <i class="fa fa-caret-up color-grey">
@@ -30,6 +27,10 @@
             <th>
               Action
             </th>
+            <th class="modified-column">
+              <a class="header-link" href="#"><span class="active-underline">Modified</span></a>
+              <i class="fa fa-caret-down">
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -37,11 +38,9 @@
             <td class="checkbox-column">
               <input type="checkbox" aria-label="Checkbox for following text input"> 
             </td>
+           
             <td>
-              001
-            </td>
-            <td>
-              Harry Belafonte
+              <a href="#">Harry Belafonte</a> 
             </td>
             <td>
               admin01@central.co.th
@@ -53,16 +52,17 @@
               <i class="fa fa-gear color-dark-grey icon-size-20"></i>
               <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div>View / Edit</div> <div>Delete</div>" data-original-title="" title=""></i>
             </td>
+            <td class="modified-column">
+              14/12/15
+            </td>
           </tr>
           <tr>
             <td class="checkbox-column">
               <input type="checkbox" aria-label="Checkbox for following text input"> 
             </td>
+            
             <td>
-              002
-            </td>
-            <td>
-              Erutan Nando
+              <a href="#">Erutan Nando</a>
             </td>
             <td>
               admin02@central.co.th
@@ -73,6 +73,9 @@
             <td class="action-column popover-gear">
               <i class="fa fa-gear color-dark-grey icon-size-20"></i>
               <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div>View / Edit</div> <div>Delete</div>" data-original-title="" title=""></i>
+            </td>
+            <td class="modified-column">
+              14/12/15
             </td>
           </tr>
         </tbody>

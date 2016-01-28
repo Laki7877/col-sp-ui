@@ -13,28 +13,32 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 <div ng-controller="ProductAddCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
 
 		<? //$this->insert('components/modal-warning-leave-page', ['id' => 'leave-page-warning']) ?>
-		<div ng-show="alert.success" class="alert alert-success alert-dismissible" role="alert">
+		<div ng-show="pageState.success" id="alert-success" class="alert alert-green alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			Successful saved. <a href="/products/">View Product List</a>
+			Your product has been saved sucessfully. <a href="/products/">View Product List</a>
 		</div>
 
-		<div ng-show="alert.failure"  class="alert alert-danger alert-dismissible" role="alert">
+		<div ng-show="pageState.failure" id="alert-failure" class="alert alert-red alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			An unknown error has occurred while trying to save your data.
+			Unable to save because <strong>{{ pageState.failure_message }}</strong>
 		</div>
 
-		<div id="alert-validation" ng-show="alert.validationFailed" class="alert alert-danger alert-dismissible" role="alert">
+		<div id="alert-validation" ng-show="pageState.invalid" class="alert alert-red alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			Unable to save because required fields are missing.
+			<strong>Unable to save because required fields are missing or incorrect.</strong>
+			</hr>
+			<ul>
+				<li ng-repeat="e in addProductForm.$error.required">{{ e.$name }}</li>
+			</ul>
 		</div>
 
 		<form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
 		<? $this->insert('components/page-title-breadcrumb', ['text' => "Products/ " . $title, 'urls' => ['/products']]) ?>
 
-		<div ng-if="_loading.state">
-			<img src="/assets/img/loader.gif" width="40"> <small>{{ _loading.message }}..</small>
+		<div ng-if="pageState.loading.state">
+			<img src="/assets/img/loader.gif" width="40"> <small>{{ pageState.loading.message }}..</small>
 		</div>
-		<div class="add-product-body" ng-if="!_loading.state">
+		<div class="add-product-body" ng-if="!pageState.loading.state">
 
 			<? $this->insert('components/tab-nav', ["items" => $menus]) ?>
 				<div class="tab-content">
@@ -59,15 +63,15 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 						<div class="float-right">
 							<a href="/products" class="link-btn-plain">Cancel</a>
 
-							<button ng-show="formData.Status != 'WA'" 
+							<button ng-show="formData.Status != 'WA'"
 							class="btn btn-white btn-width-xl" ng-click="preview()">Preview</button>
 
-							<button ng-show="formData.Status != 'WA'" 
-							class="btn btn-white btn-width-xl" 
+							<button ng-show="formData.Status != 'WA'"
+							class="btn btn-white btn-width-xl"
 							type="submit" ng-click="publish('DF')">Save as Draft</button>
 
-							<button ng-show="formData.Status != 'WA'" 
-							type="submit" class="btn btn-blue btn-width-xl" 
+							<button ng-show="formData.Status != 'WA'"
+							type="submit" class="btn btn-blue btn-width-xl"
 							ng-click="publish('WA')">Publish</button>
 						</div>
 					</div>
