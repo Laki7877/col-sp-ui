@@ -73,5 +73,15 @@ module.exports = ['storage', function (storage) {
             return angular.isDefined(elem.checked) && elem.checked;
         });
     };
+
+    service.ncparams = function(param) {
+        return {
+            orderBy: param._order,
+            pageSize: param._limit,
+            direction: param._direction,
+            filter: param._filter,
+            searchText: param.searchText
+        };
+    };
     return service;
 }];

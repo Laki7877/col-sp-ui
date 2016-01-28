@@ -13,10 +13,13 @@ require('angular-animate');
 require('angular-file-upload');
 require('angular-ui-tree');
 require('angular-base64');
-require('ui-select');
 require('angular-sanitize');
 require('angular-scroll');
 require('angular-bootstrap-datetimepicker');
+require('ui-select');
+
+//Nc package
+require('./nc');
 
 //Internal dependencies
 var controllers = bulk.controllers;
@@ -25,7 +28,7 @@ var helpers = bulk.helpers;
 var directives = bulk.directives;
 var filters = bulk.filters;
 
-var app = angular.module('colspApp', ['ui.bootstrap.datetimepicker', 'duScroll','ngSanitize','ui.select', 'ngAnimate', 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
+var app = angular.module('colspApp', ['nc','ui.bootstrap.datetimepicker', 'duScroll','ngSanitize','ui.select', 'ngAnimate', 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
 
 //App config
 .config(['$uibTooltipProvider', 'uiSelectConfig', function($tooltipProvider, uiSelectConfig) {
@@ -154,3 +157,4 @@ var app = angular.module('colspApp', ['ui.bootstrap.datetimepicker', 'duScroll',
 .controller('AdminCategoryCtrl', controllers.adminCategory)
 .controller('AdminBrandCtrl',controllers.adminBrand)
 .controller('AdminBrandAddCtrl', controllers.adminBrandAdd)
+.controller('TestCtrl', controllers.test)
