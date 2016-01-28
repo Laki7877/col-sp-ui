@@ -31,7 +31,7 @@ var filters = bulk.filters;
 var app = angular.module('colspApp', ['nc','ui.bootstrap.datetimepicker', 'duScroll','ngSanitize','ui.select', 'ngAnimate', 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
 
 //App config
-.config(['$uibTooltipProvider', 'uiSelectConfig', function($tooltipProvider, uiSelectConfig) {
+.config(['$uibTooltipProvider', 'uiSelectConfig', '$ncPaginationProvider', function($tooltipProvider, uiSelectConfig, $ncPaginationProvider) {
 	//Default close tooltip when click again
 	$tooltipProvider.setTriggers({
 		'clickanystart' : 'clickanyend'
@@ -39,6 +39,7 @@ var app = angular.module('colspApp', ['nc','ui.bootstrap.datetimepicker', 'duScr
 	$tooltipProvider.options({
 		trigger: 'clickanystart'
 	});
+	$ncPaginationProvider.paginationSizes = [10, 20, 50, 100];
 	//uiSelectConfig.taggingTokens = ',';
 }])
 
@@ -121,6 +122,7 @@ var app = angular.module('colspApp', ['nc','ui.bootstrap.datetimepicker', 'duScr
 .factory('Attribute', services.attribute)
 .factory('AttributeSet', services.attributeSet)
 .factory('Brand', services.brand)
+.factory('AdminAccountService', services.adminAccountService)
 .factory('VariantPair', helpers.variantPair)
 .factory('Alert', services.alert)
 .factory('Blocker', services.blocker)
@@ -157,4 +159,6 @@ var app = angular.module('colspApp', ['nc','ui.bootstrap.datetimepicker', 'duScr
 .controller('AdminCategoryCtrl', controllers.adminCategory)
 .controller('AdminBrandCtrl',controllers.adminBrand)
 .controller('AdminBrandAddCtrl', controllers.adminBrandAdd)
+.controller('AdminAccountCtrl', controllers.adminAccount)
+.controller('AdminAccountCtrl', controllers.adminAccountAdd)
 .controller('TestCtrl', controllers.test)

@@ -39,6 +39,8 @@ Route::add('/admin/brands', 'AdminController::listBrand');
 Route::add('/admin/brands/add', 'AdminController::addBrand');
 Route::add('/admin/brands/:id', 'AdminController::editBrand');
 Route::add('/admin/accounts', 'AdminController::listAccount');
+Route::add('/admin/accounts/add', 'AdminController::addAccount');
+Route::add('/admin/accounts/:id', 'AdminController::editAccount');
 //test route
 Route::add('/test/:name', 'TestController::any');
 

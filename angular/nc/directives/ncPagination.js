@@ -1,11 +1,11 @@
 angular.module('nc')
-	.provider('ncPaginationProvider', function() {
+	.provider('$ncPagination', function() {
 		this.paginationSizes = [10,20,30];
 		this.$get = function() {
 			return this;
 		}
 	})
-	.directive('ncPagination', function($templateCache, ncPaginationProvider) {
+	.directive('ncPagination', function($templateCache, $ncPagination) {
 		return {
 			restrict: 'E',
 			replace: true,
@@ -16,7 +16,7 @@ angular.module('nc')
 			},
 			template: $templateCache.get('common/ncPagination'),
 			link: function(scope, element, attrs) {
-				scope.paginationOptions = _.assign(ncPaginationProvider.paginationSizes, scope.paginationOptions);
+				scope.paginationOptions = _.defaults(scope.paginationOptions, $ncPagination.paginationSizes);
 				scope.params._limit = scope.paginationOptions[0];
 				scope.page = function() {
 					return Math.ceil(scope.params._offset / scope.params._limit) + 1;
