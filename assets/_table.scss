@@ -193,7 +193,7 @@
   .filter-seperator {
     text-decoration: none;
     cursor: pointer;
-    color:  $color-dark-grey;
+    color:  $color-grey;
     border-left: solid 1px $color-grey;
     padding-left: 9px;
     margin-left: 9px;
@@ -209,6 +209,14 @@
   .filter-active {
     color:  $color-black;
   }
+
+  .filter-checkbox{
+    float: right;
+    input{
+      margin-top: 0px;
+      margin-right: 6px;
+    }
+  }
 }
 
 //Page body: Search section
@@ -223,6 +231,10 @@
 
   .section-action {
     width: 280px;
+    .body-dropdown-button{
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
   }
 
   .section-search {
@@ -235,6 +247,13 @@
 
   .search-section .btn-white {
     height: 30px;
+  }
+
+  .advance-search{
+    padding-left: 0px;
+    .btn-white{
+      width: 130px;
+    }
   }
 
   .body-dropdown-button {

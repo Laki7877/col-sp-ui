@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Products']) ?>
 
 <?php $this->start('page-body') ?>
 	<div>
@@ -15,7 +15,13 @@
         <a class="filter-seperator">Approved</a>
         <a class="filter-seperator">Not Approved</a>
         <a class="filter-seperator">Wait for Approval</a>
-        <a class="filter-seperator">Not Approved</a>            
+        <a class="filter-seperator">Not Approved</a>
+
+        <div class="filter-checkbox">
+          <input type="checkbox" aria-label="Checkbox for following text input">
+          Show Online/Offline Status
+        </div>
+
       </div>
     </div>
     <div class="table-section">
