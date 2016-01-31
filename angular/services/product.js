@@ -21,7 +21,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                     _limit: parameters.pageSize || 10,
                     _offset: parameters.page * parameters.pageSize || 0,
                     _direction: parameters.direction || 'asc',
-                    _filter: parameters.filter,
+                    _filter: parameters.filter || 'ALL',
                     searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined
                 }
             };

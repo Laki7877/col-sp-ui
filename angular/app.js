@@ -159,6 +159,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .controller('RootCtrl', controllers.root)
 .controller('ProductListCtrl', controllers.productList)
 .controller('ProductAddCtrl', controllers.productAdd)
+.controller('ProductImageListCtrl', controllers.productImageList)
 .controller('ProductAddSelectCategoryCtrl', controllers.productAddSelectCategory)
 .controller('ProductListLocalCategoryCtrl', controllers.productListLocalCategory)
 .controller('LocalCategoryCtrl', controllers.localCategory)
@@ -176,5 +177,5 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .controller('AdminShopCtrl', controllers.adminShop)
 .controller('AdminShopAddCtrl', controllers.adminShopAdd)
 .controller('AdminShoptypeCtrl', controllers.adminShoptype)
-.controller('AdminShoptypeAddCtrl', controllers.adminShoptypeAdd)
+
 .controller('TestCtrl', controllers.test)
