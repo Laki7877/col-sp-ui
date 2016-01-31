@@ -2,7 +2,6 @@
 
 <?php $this->start('page-body') ?>
   <div ng-controller="TestCtrl">
-    <!--div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()">{{alert.message}}</div-->
     <div class="row search-section-wrapper">
       <nc-bulk nc-bulk-fn="bulks" nc-bulk-track-by="AttributeId"></nc-bulk>
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search'"></nc-search>

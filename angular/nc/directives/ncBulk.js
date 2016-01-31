@@ -13,16 +13,18 @@ angular.module('nc')
 			link: function(scope) {
 				var defaultOption = {
 					name: '- Choose Action -',
-					fn: _.noop
+					fn: function() {
+
+					}
 				};
 				scope.options = _.concat(defaultOption, _.defaults(scope.options, []));
-				scope.model = _.defaults(scope.model, []);
+				scope.model = _.extend([], scope.model);
 				scope.select = scope.options[0];
 				scope.id = _.defaults(scope.id, null);
 				scope.uniq = function(e) {
 					return scope.id == null ? e : e[scope.id];
+					//Add or remove stuff
 				};
-				//Add or remove stuff
 				scope.onChildChange = function(value, obj) {
 					if(value) {
 						scope.model = _.uniq(_.concat(scope.model, obj), scope.uniq);
@@ -44,9 +46,10 @@ angular.module('nc')
 					}
 				};
 				scope.call = function() {
-					var arr = _.drop(scope.model);
-					if(arr.length > 0)
-						scope.select.fn(arr);
+					if(scope.model.length > 0 && scope.select != scope.options[0]) {
+						confirm('Are you sure you want to ' + scope.model)
+						scope.select.fn(scope.model);
+					}
 				};
 			}
 		}

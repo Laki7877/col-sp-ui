@@ -1,5 +1,5 @@
 angular.module('nc')
-	.provider('ncTableProvider', function() {
+	.provider('$ncTable', function() {
 		this.tableOptions = {
 			loadingMessage: 'Loading...',
 			searchEmptyMessage: 'No search result',
@@ -15,7 +15,7 @@ angular.module('nc')
 			return this;
 		};
 	})
-	.directive('ncTable', function($log, $templateCache, ncTableProvider) {
+	.directive('ncTable', function($log, $templateCache, $ncTable) {
 		return {
 			restrict: 'E',
 			replace: true,
@@ -45,8 +45,8 @@ angular.module('nc')
 				};
 
 				//Aggregriate default value
-				scope.options = _.defaults(scope.options, ncTableProvider.tableOptions);
-				scope.params = _.defaults(scope.params, ncTableProvider.tableParams);
+				scope.options = _.defaults(scope.options, $ncTable.tableOptions);
+				scope.params = _.defaults(scope.params, $ncTable.tableParams);
 				scope.model = _.merge(scope.model, defaultTableModel);
 			}
 		};

@@ -4,7 +4,7 @@
 angular.module("nc").run(function($templateCache) {  'use strict';
 
   $templateCache.put('common/ncAction',
-    "<a href=javascript:; uib-popover-template=\"'common/ncActionPopover'\" popover-placement=bottom popover-append-to-body=true popover-any><i class=\"fa fa-gear color-dark-grey icon-size-20\"></i> <i class=\"fa fa-caret-down color-dark-grey\"></i></a>"
+    "<a href=javascript:; uib-popover-template=\"'common/ncActionPopover'\" popover-placement=bottom popover-append-to-body=true popover-trigger=clickanystart nc-popover-any><i class=\"fa fa-gear color-dark-grey icon-size-20\"></i> <i class=\"fa fa-caret-down color-dark-grey\"></i></a>"
   );
 
 
@@ -13,8 +13,18 @@ angular.module("nc").run(function($templateCache) {  'use strict';
   );
 
 
+  $templateCache.put('common/ncAlert',
+    "<div ng-show=alert.show uib-alert template-url=common/ncAlertTemplate type=\"{{ alert.type }}\" close=alert.close() ng-bind-html=alert.message></div>"
+  );
+
+
+  $templateCache.put('common/ncAlertTemplate',
+    "<div id=alert class=alert ng-class=\"['alert-' + (type || 'warning')]\" role=alert><span class=\"close color opacity-1\" ng-class=\"'color-' + (type || 'warning')\" aria-hidden=true ng-show=closeable ng-click=\"close({$event: $event})\">&times;</span><ng-transclude><ng-transclude></ng-transclude></div>"
+  );
+
+
   $templateCache.put('common/ncBulk',
-    "<div class=\"search-section section-action\"><div class=input-group><div class=input-group-btn uib-dropdown><button class=\"btn btn-default body-dropdown-button\" uib-dropdown-toggle><span class=\"dropdown-text margin-right-10 search-product-text\">{{ select.name }}</span> <span class=\"caret margin-left-10\"></span></button><ul uib-dropdown-menu role=menu class=search-product-dropdown><li ng-repeat=\"option in options\"><a ng-click=\"select = option\">{{ option.name }}</a></li></ul></div><div class=input-group-btn><button class=\"btn-white btn\" ng-click=call()><span class=button-text-blue>Confirm ({{model.length}})</span></button></div></div></div>"
+    "<div class=\"search-section section-action\"><div class=input-group><div class=input-group-btn uib-dropdown><button class=\"btn btn-default body-dropdown-button\" uib-dropdown-toggle><span class=\"dropdown-text margin-right-10 search-product-text\">{{ select.name }}</span> <span class=\"caret margin-left-10\"></span></button><ul uib-dropdown-menu role=menu class=search-product-dropdown><li ng-repeat=\"option in options\"><a ng-click=\"select = option\">{{ option.name }}</a></li></ul></div><div class=input-group-btn><button class=\"btn-white-fluid btn\" ng-click=call()><span class=button-text-blue>Confirm ({{ model.length }})</span></button></div></div></div>"
   );
 
 
