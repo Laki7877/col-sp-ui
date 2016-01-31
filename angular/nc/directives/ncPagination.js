@@ -19,6 +19,9 @@ angular.module('nc')
 				scope.paginationOptions = _.defaults(scope.paginationOptions, $ncPagination.paginationSizes);
 				scope.params._limit = scope.paginationOptions[0];
 				scope.page = function() {
+					if(scope.total == 0) {
+						return 0;
+					}
 					return Math.ceil(scope.params._offset / scope.params._limit) + 1;
 				};
 				scope.pageSize = function() {
