@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
 	<div ng-controller='AdminBrandAddCtrl' ng-init="init(<?=$params?>)">
-    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Brand/" . $title, 'link' => "admin/brands", 'class' => '{ disabled: form.$invalid  || uploader.isUploading || formData.BrandImages.length <= 0}']) ?>
+    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Brand/" . $title, 'link' => "admin/brands") ?>
     <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()"><span ng-bind-html="alert.message"></span></div>
     <div class="row margin-top-30">
       <div class="col-xs-12">
@@ -170,7 +170,7 @@
               <div class="container-fluid">
                 <div class="float-right">
                   <a href="#" class="link-btn-plain" ng-click="cancel()">Cancel</a>
-                  <button class="btn btn-blue btn-width-xl" type="button" ng-click="save()" ng-class="{disabled: form.$invalid || uploader.isUploading || formData.BrandImages.length <= 0}">Save</button>
+                  <button class="btn btn-blue btn-width-xl" type="button" ng-click="save()">Save</button>
                 </div>
               </div>
             </div>

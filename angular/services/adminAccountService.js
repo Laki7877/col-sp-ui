@@ -1,26 +1,32 @@
 module.exports = function(common) {
-	var service = {};
+	var service = common.Rest('/Users/Admin');
 
-	service.list = function(params) {
-		return common.makeRequest({
-			method: 'GET',
-			url: '/Users/Admin',
-			params: params
-		})
+	service.generate = function() {
+		return {
+			UserGroup: {
+				GroupNameEn: '-- Choose Admin Role --' //dummy
+			}
+		};
 	};
 
-	service.get = function(id) {
-		return common.makeRequest({
-			method: 'GET',
-			url: '/Users/Admin/' + id
-		})
+	service.serialize = function(data) {
+		var processed = _.merge({}, data);
+		
+		processed.UserGroup = [processed.UserGroup];
+
+		return processed;
 	};
-	
-	service.delete = function(array) {
-		return common.makeRequest({
-			method: 'DELETE',
-			url: '/Users/Admin'
-		})
+
+	service.deserialize = function(data) {
+		var processed = _.merge({
+			EmployeeId: "",
+			Position: "",
+			Division: ""
+		}, data);
+
+		processed.Phone = _.trim(processed.Phone);
+		processed.UserGroup = processed.UserGroup[0];
+		return processed;
 	};
 	return service;
 };

@@ -33,8 +33,8 @@ Route::add('/admin/attributes/add','AdminController::addAttribute');
 Route::add('/admin/attributes/:id','AdminController::editAttribute');
 Route::add('/admin/attributes','AdminController::listAttribute');
 Route::add('/admin/attributesets/add','AdminController::addAttributeSet');
-Route::add('/admin/attributesets','AdminController::listAttributeSet');
 Route::add('/admin/attributesets/:id','AdminController::editAttributeSet');
+Route::add('/admin/attributesets','AdminController::listAttributeSet');
 Route::add('/admin/categories', 'AdminController::category');
 Route::add('/admin/brands', 'AdminController::listBrand');
 Route::add('/admin/brands/add', 'AdminController::addBrand');
@@ -42,7 +42,18 @@ Route::add('/admin/brands/:id', 'AdminController::editBrand');
 Route::add('/admin/accounts', 'AdminController::listAccount');
 Route::add('/admin/accounts/add', 'AdminController::addAccount');
 Route::add('/admin/accounts/:id', 'AdminController::editAccount');
+Route::add('/admin/roles', 'AdminController::listRole');
+Route::add('/admin/roles/add', 'AdminController::addRole');
+Route::add('/admin/roles/:id', 'AdminController::editRole');
+Route::add('/admin/shops', 'AdminController::listShop');
+Route::add('/admin/shops/add', 'AdminController::addShop');
+Route::add('/admin/shops/:id', 'AdminController::editShop');
+Route::add('/admin/shoptypes', 'AdminController::listShoptype');
+Route::add('/admin/shoptypes/add', 'AdminController::addShoptype');
+Route::add('/admin/shoptypes/:id', 'AdminController::editShoptype');
+
 //test route
 Route::add('/test/:name', 'TestController::any');
 
+//process route
 Route::process();

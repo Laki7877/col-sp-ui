@@ -1,24 +1,20 @@
-/**
- * 
- */
-module.exports = function($scope, $window, AdminAccountService, NcAlert, util) {
+module.exports = function($scope, $window, AdminRoleService, NcAlert) {
 	$scope.reload = function() {
 		$scope.loading = true;
-		AdminAccountService.list($scope.params)
+		AdminRoleService.list($scope.params)
 			.then(function(data) {
 				$scope.list = data;
 			})
 			.finally(function() {
 				$scope.loading = false;
 			});
-		console.log($scope.bulkContainer);
 	};
 	$scope.alert = new NcAlert();
 	$scope.tableOptions = {
-		emptyMessage: 'You do not have an Admin Account'
+		emptyMessage: 'You do not have an Admin Role'
 	};
 	$scope.params = {
-		_order: 'UserId',
+		_order: 'GroupId',
 		_limit: 10,
 		_offset: 0,
 		_direction: 'desc'
@@ -31,16 +27,16 @@ module.exports = function($scope, $window, AdminAccountService, NcAlert, util) {
 	$scope.bulks= [
 	{
 		name: 'Delete',
-		fn: util.bulkDelete(AdminAccountService, 'UserId', 'Admin Accounts', $scope.alert, $scope.reload)
+		fn: util.bulkDelete(AdminRoleService, 'GroupId', 'Admin Roles', $scope.alert, $scope.reload)
 	}];
 	$scope.actions = [
 	{
 		name: 'View / Edit',
-		fn: util.actionView('/admin/accounts', 'UserId')
+		fn: util.actionView('/admin/roles', 'GroupId')
 	}, 
 	{
 		name: 'Delete',
-		fn: util.actionDelete(AdminAccountService, 'UserId', 'Admin Accounts', $scope.alert, $scope.reload, function(obj, id) {
+		fn: util.actionDelete(AdminRoleService, 'GroupId', 'Admin Roles', $scope.alert, $scope.reload, function(obj, id) {
 			_.remove($scope.bulkContainer, function(e) {
 				return e[id] === obj[id];
 			});
@@ -49,4 +45,4 @@ module.exports = function($scope, $window, AdminAccountService, NcAlert, util) {
 	$scope.loading = false;
 	$scope.reload();
 	$scope.$watch('params', $scope.reload, true);
-};
+}

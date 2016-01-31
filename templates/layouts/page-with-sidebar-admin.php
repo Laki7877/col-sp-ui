@@ -9,25 +9,25 @@
 
     <ul class="sub-sidebar" style="display: none;" id="sub-admin-account">
         <li class="sub-sidebar-header">Admin Accounts</li>
-        <li ng-class="activeUrl('/admin/accounts')" class="item active margin-top-20"><a href="/admin/accounts">View</a></li>
+        <li ng-class="activeUrl('/admin/accounts')" class="item margin-top-20"><a href="/admin/accounts">View</a></li>
         <li ng-class="activeUrl('/admin/accounts/add')" class="item"><a href="/admin/accounts/add">Add</a></li>
     </ul>
 
     <ul class="sub-sidebar" style="display: none;" id="sub-admin-role">
         <li class="sub-sidebar-header">Admin Roles</li>
-        <li ng-class="activeUrl('/admin/roles')" class="item active margin-top-20"><a href="/admin/roles">View</a></li>
+        <li ng-class="activeUrl('/admin/roles')" class="item margin-top-20"><a href="/admin/roles">View</a></li>
         <li ng-class="activeUrl('/admin/roles/add')" class="item"><a href="/admin/roles/add">Add</a></li>
     </ul>
 
     <ul class="sub-sidebar" style="display: none;" id="sub-admin-shop-account">
         <li class="sub-sidebar-header">Shop Accounts</li>
-        <li ng-class="activeUrl('/admin/shopaccounts')" class="item active margin-top-20"><a href="/admin/shopaccounts">View</a></li>
-        <li ng-class="activeUrl('/admin/shopaccounts/add')" class="item"><a href="/admin/shopaccounts/add">Add</a></li>
+        <li ng-class="activeUrl('/admin/shops')" class="item margin-top-20"><a href="/admin/shops">View</a></li>
+        <li ng-class="activeUrl('/admin/shops/add')" class="item"><a href="/admin/shops/add">Add</a></li>
     </ul>
 
     <ul class="sub-sidebar" style="display: none;" id="sub-admin-shop-type">
         <li class="sub-sidebar-header">Shop Types</li>
-        <li ng-class="activeUrl('/admin/shoptypes')" class="item active margin-top-20"><a href="/admin/shoptypes">View</a></li>
+        <li ng-class="activeUrl('/admin/shoptypes')" class="item margin-top-20"><a href="/admin/shoptypes">View</a></li>
         <li ng-class="activeUrl('/admin/shoptypes/add')" class="item"><a href="/admin/shoptypes/add">Add</a></li>
     </ul>
 

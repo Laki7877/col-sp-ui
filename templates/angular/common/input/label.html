@@ -1,0 +1,7 @@
+<div class="form-group" ng-class="options.formGroupClass || {}">
+	<div class="width-label"><label class="control-label" ng-class="options.labelClass || {}">{{options.label}}</label></div>
+    <div ng-class="{ 'width-field-normal' : options.fieldSize == 'normal',
+    				 'width-field-xxl' : options.fieldSize != 'normal' }">
+      <p class="form-control-static"><ng-transclude></ng-transclude></p>
+    </div>
+</div>

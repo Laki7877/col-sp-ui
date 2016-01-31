@@ -1,6 +1,35 @@
 module.exports = [function () {
     'use strict';
     var service = {};
+
+    /**
+     * Cross-page data sharing cache methods 
+     * using sessions and local storage as the medium.
+     */
+    service.get = function(key) {
+        var obj = sessionStorage.getItem('central.seller.portal.shared.' + key);
+        if(_.isUndefined(obj)) {
+            obj = localStorage.getItem('central.seller.portal.shared.' + key);
+        }
+        return obj;
+    };
+
+    service.put = function(key, obj, flag) {
+        sessionStorage.setItem('central.seller.portal.shared.' + key, obj);
+        if (flag) {
+            localStorage.setItem('central.seller.portal.shared.' + key, obj);
+        }
+    };
+
+    service.remove = function(key) {
+        sessionStorage.removeItem('central.seller.portal.shared.' + key);
+        localStorage.removeItem('central.seller.portal.shared.' + key);
+    };
+
+    service.has = function(key) {
+        return !_.isUndefined(service.get());
+    };
+
     /**
      * Returns the stored sessionToken
      * This method first checks in sessionStorage if sessionToken is not found in sessionStorage

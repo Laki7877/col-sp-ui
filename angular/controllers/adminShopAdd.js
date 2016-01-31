@@ -1,46 +1,42 @@
-module.exports = function($scope, $window, AdminAccountService, AdminRoleService, NcAlert, util) {
+module.exports = function($scope, $window, AdminShopService, AdminShoptypeService, NcAlert, util, config) {
 	$scope.formData = {};
 	$scope.form = {};
-	$scope.roles = [];
+	$scope.shoptypes = [];
+	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 	$scope.alert = new NcAlert();
 	$scope.saving = false; //prevent multiple saving
 	$scope.loading = false;
-
 	$scope.init = function(params) {
 		//Fetch GET Params
 		if(!_.isUndefined(params)) {
 			$scope.id = _.isInteger(_.parseInt(params.id)) ? _.parseInt(params.id) : 0;
 		}
-		//Get all available roles
-		AdminRoleService.listAll()
+
+		//Load all shop types
+		AdminShoptypeService.listAll()	
 			.then(function(data) {
-				$scope.roles = _.map(data, function(e) {
-					//Pick only necessary property
-					return _.pick(e, ['GroupId', 'GroupNameEn']);
-				});
+				$scope.shoptypes = data;
 			});
 
 		//Edit mode
 		if($scope.id > 0) {
 			$scope.loading = true;
-
-			//Get by id
-			AdminAccountService.get($scope.id)
+			AdminShopService.get($scope.id)
 				.then(function(data) {
-					$scope.formData = AdminAccountService.deserialize(data);
-					$scope.loading = false;
+					$scope.formData = AdminShopService.deserialize(data);
+				$scope.loading = false;
 				}, function() {
 					//Jump back
 					$scope.cancel();
 				});
 		} else {
 			//Create mode
-			$scope.formData = AdminAccountService.generate();
+			$scope.formData = AdminShopService.generate();
 		}
 	}
 	$scope.cancel = function() {
 		//Back to listing
-		$window.location.href='/admin/accounts';
+		$window.location.href='/admin/shops';
 	};
 	$scope.save = function() {
 		//Already saving
@@ -52,13 +48,12 @@ module.exports = function($scope, $window, AdminAccountService, AdminRoleService
 		//Form validation
 		if($scope.form.$valid) {
 			$scope.saving = true;
-			var data = AdminAccountService.serialize($scope.formData);
-
+			var data = AdminShopService.serialize($scope.formData);
 			if($scope.id > 0) {
 				//Edit mode
-				AdminAccountService.update($scope.id, data)
+				AdminShopService.update($scope.id, data)
 					.then(function(result) {
-						$scope.alert.success(util.saveAlertSuccess('Admin Account', '/admin/accounts'));
+						$scope.alert.success(util.saveAlertSuccess('Admin Shop', '/admin/shops'));
 					}, function(err) {
 						$scope.alert.error(util.saveAlertError());
 					})
@@ -67,10 +62,10 @@ module.exports = function($scope, $window, AdminAccountService, AdminRoleService
 					});
 			} else {
 				//Save mode
-				AdminAccountService.create(data)
+				AdminShopService.create(data)
 					.then(function(result) {
-						$scope.formData.UserId = result.UserId; 
-						$scope.alert.success(util.saveAlertSuccess('Admin Account', '/admin/accounts'));
+						$scope.formData.ShopId = result.ShopId; 
+						$scope.alert.success(util.saveAlertSuccess('Admin Shop Account', '/admin/shops'));
 					}, function(err) {
 						$scope.alert.error(util.saveAlertError());
 					})
@@ -83,4 +78,4 @@ module.exports = function($scope, $window, AdminAccountService, AdminRoleService
 			$scope.alert.error(util.saveAlertError());
 		}
 	};
-};
+}
