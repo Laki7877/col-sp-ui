@@ -28,7 +28,7 @@ var helpers = bulk.helpers;
 var directives = bulk.directives;
 var filters = bulk.filters;
 
-var app = angular.module('colspApp', ['nc','ui.bootstrap.datetimepicker', 'duScroll','ngSanitize','ui.select', 'ngAnimate', 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
+var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.datetimepicker', 'duScroll','ngSanitize','ui.select', 'ngAnimate', 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
 
 //App config
 .config(['$uibTooltipProvider', 'uiSelectConfig', '$ncPaginationProvider', function($tooltipProvider, uiSelectConfig, $ncPaginationProvider) {
