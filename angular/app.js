@@ -147,6 +147,7 @@ var app = angular.module('colspApp', ['nc','ui.bootstrap.datetimepicker', 'duScr
 .controller('RootCtrl', controllers.root)
 .controller('ProductListCtrl', controllers.productList)
 .controller('ProductAddCtrl', controllers.productAdd)
+.controller('ProductImageListCtrl', controllers.productImageList)
 .controller('ProductAddSelectCategoryCtrl', controllers.productAddSelectCategory)
 .controller('ProductListLocalCategoryCtrl', controllers.productListLocalCategory)
 .controller('LocalCategoryCtrl', controllers.localCategory)
@@ -157,4 +158,4 @@ var app = angular.module('colspApp', ['nc','ui.bootstrap.datetimepicker', 'duScr
 .controller('AdminCategoryCtrl', controllers.adminCategory)
 .controller('AdminBrandCtrl',controllers.adminBrand)
 .controller('AdminBrandAddCtrl', controllers.adminBrandAdd)
-.controller('TestCtrl', controllers.test)
+.controller('TestCtrl', controllers.test);

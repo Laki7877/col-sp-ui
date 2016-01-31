@@ -1,15 +1,22 @@
 <?php $this->layout('layouts/page-with-sidebar', ['title' => 'Account ']) ?>
 
 <?php $this->start('page-body') ?>
-  <div>
-    <? $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => "Successfully save changes. However,your changes won't be online until you published your products." ]) ?>
+  <div ng-controller="ProductImageListCtrl">
+   <!-- <? $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => "Successfully save changes. However,your changes won't be online until you published your products." ]) ?>
+     -->
 
-    <? $this->insert('components/page-title-with-buttons', ['text' => 'Image Management'
-      , 'buttons' => [
-        ['link' => '#', 'class' => 'btn-white btn-width-xl', 'attributes' => 'data-toggle="modal" data-target="#image-guideline"', 'name' => 'View Guideline'],
-        ['link' => '#', 'class' => 'btn-blue  btn-width-xl', 'attributes' => '', 'name' => 'Save']
-        ]
-        ]) ?>
+    <div class="page-header with-border">
+        <h1 class="float-left page-header-title">Image Management</h1>
+        <span class="float-right page-header-action">
+            <a class="btn btn-white btn-width-xl margin-right-10" data-toggle="modal" data-target="#image-guideline">
+              <span class="">View Guideline</span>
+            </a>
+            <a href="#" class="btn btn-blue  btn-width-xl ">
+              <span class="">Save</span>
+            </a>
+        </span>
+    </div>
+
     <? $this->insert('components/search-section-with-page-index', ['serach_placeholder' => 'Search for Admin Accounts', 'optional_class' => 'hide-component']) ?>
     <div class="filter-section">
       <div class="filter-container">
