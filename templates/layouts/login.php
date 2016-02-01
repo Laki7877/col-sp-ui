@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="" ng-app="colspApp">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -9,7 +9,7 @@
         <link rel="shortcut icon" href="<?= $this->asset('/assets/favicon.ico') ?>">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="stylesheet" href="<?=$this->asset('/assets/css/screen.css')?>" />
-        <script src="<?= $this->asset('/assets/js/jquery.min.js') ?>"></script>
+        <script src="<?= $this->asset('/assets/js/bundle.js') ?>"></script>
         <script src="<?= $this->asset('/assets/js/bootstrap.min.js') ?>"></script>
         <script src="<?= $this->asset('/assets/js/bootstrap-fixconflict.js') ?>"></script>
     </head>

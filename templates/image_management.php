@@ -1,7 +1,7 @@
 <?php $this->layout('layouts/page-with-sidebar', ['title' => 'Account ']) ?>
 
 <?php $this->start('page-body') ?>
-  <div ng-controller="ProductImageListCtrl">
+  <div ng-controller="ProductImageManagementCtrl">
    <!-- <? $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => "Successfully save changes. However,your changes won't be online until you published your products." ]) ?>
      -->
 

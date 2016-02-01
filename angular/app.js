@@ -47,9 +47,9 @@ var app = angular.module('colspApp', ['nc','ui.bootstrap.datetimepicker', 'duScr
 .run(template)
 
 //App init
-.run(['$rootScope', '$base64', 'storage', '$window', function($rootScope, $base64, storage, $window) {
-	//TODO: login page
-	storage.storeSessionToken($base64.encode('duckvader:vader'));
+.run(['$rootScope', 'storage', '$window', function($rootScope, storage, $window) {
+	
+	
 	//Create generic form validator functions
 	$rootScope.isInvalid = function(form) {
 		if(angular.isDefined(form) && 
@@ -126,6 +126,7 @@ var app = angular.module('colspApp', ['nc','ui.bootstrap.datetimepicker', 'duScr
 .factory('VariantPair', helpers.variantPair)
 .factory('Alert', services.alert)
 .factory('Blocker', services.blocker)
+.factory('Credential', services.credential)
 
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)
@@ -149,7 +150,7 @@ var app = angular.module('colspApp', ['nc','ui.bootstrap.datetimepicker', 'duScr
 .controller('RootCtrl', controllers.root)
 .controller('ProductListCtrl', controllers.productList)
 .controller('ProductAddCtrl', controllers.productAdd)
-.controller('ProductImageListCtrl', controllers.productImageList)
+.controller('ProductImageManagementCtrl', controllers.productImageManagement)
 .controller('ProductAddSelectCategoryCtrl', controllers.productAddSelectCategory)
 .controller('ProductListLocalCategoryCtrl', controllers.productListLocalCategory)
 .controller('LocalCategoryCtrl', controllers.localCategory)
@@ -162,4 +163,5 @@ var app = angular.module('colspApp', ['nc','ui.bootstrap.datetimepicker', 'duScr
 .controller('AdminBrandAddCtrl', controllers.adminBrandAdd)
 .controller('TestCtrl', controllers.test)
 .controller('AdminAccountCtrl', controllers.adminAccount)
+.controller('LoginCtrl', controllers.login)
 .controller('AdminAccountCtrl', controllers.adminAccountAdd);

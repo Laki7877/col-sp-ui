@@ -18,6 +18,9 @@ Route::add('', 'Redirect::index');
 Route::add('/', 'Redirect::index');
 Route::add('/admin', 'Redirect::admin');
 
+//login routing
+Route::add('/login', 'LoginController::index');
+
 //product routing
 Route::add('/products', 'ProductController::index');
 Route::add('/products/add', 'ProductController::add');
