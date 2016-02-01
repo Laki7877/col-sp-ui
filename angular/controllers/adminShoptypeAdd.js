@@ -49,7 +49,8 @@ module.exports = function($scope, $window, AdminShoptypeService, NcAlert, util) 
 				//Edit mode
 				AdminShoptypeService.update($scope.id, data)
 					.then(function(result) {
-						$scope.alert.success(util.saveAlertSuccess('Admin Shop', '/admin/shops'));
+						$scope.alert.success(util.saveAlertSuccess('Admin Shop', '/admin/shoptypes'));
+						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(util.saveAlertError());
 					})
@@ -61,7 +62,8 @@ module.exports = function($scope, $window, AdminShoptypeService, NcAlert, util) 
 				AdminShoptypeService.create(data)
 					.then(function(result) {
 						$scope.formData.GroupId = result.GroupId; 
-						$scope.alert.success(util.saveAlertSuccess('Admin Shop Account', '/admin/shops'));
+						$scope.alert.success(util.saveAlertSuccess('Admin Shop Account', '/admin/shoptypes'));
+						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(util.saveAlertError());
 					})

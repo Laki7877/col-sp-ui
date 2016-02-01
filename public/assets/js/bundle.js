@@ -3,7 +3,7 @@
 'use strict';
 //App Start here
 var angular = require('angular');
-var bulk = ({"controllers":({"adminAccount":require("./controllers\\adminAccount.js"),"adminAccountAdd":require("./controllers\\adminAccountAdd.js"),"adminAttribute":require("./controllers\\adminAttribute.js"),"adminAttributeAdd":require("./controllers\\adminAttributeAdd.js"),"adminAttributeSet":require("./controllers\\adminAttributeSet.js"),"adminAttributeSetAdd":require("./controllers\\adminAttributeSetAdd.js"),"adminBrand":require("./controllers\\adminBrand.js"),"adminBrandAdd":require("./controllers\\adminBrandAdd.js"),"adminCategory":require("./controllers\\adminCategory.js"),"adminRole":require("./controllers\\adminRole.js"),"adminRoleAdd":require("./controllers\\adminRoleAdd.js"),"adminShop":require("./controllers\\adminShop.js"),"adminShopAdd":require("./controllers\\adminShopAdd.js"),"adminShoptype":require("./controllers\\adminShoptype.js"),"adminShoptypeAdd":require("./controllers\\adminShoptypeAdd.js"),"localCategory":require("./controllers\\localCategory.js"),"productAdd":require("./controllers\\productAdd.js"),"productAddSelectCategory":require("./controllers\\productAddSelectCategory.js"),"productImageList":require("./controllers\\productImageList.js"),"productList":require("./controllers\\productList.js"),"productListLocalCategory":require("./controllers\\productListLocalCategory.js"),"root":require("./controllers\\root.js"),"test":require("./controllers\\test.js")}),"services":({"adminAccountService":require("./services\\adminAccountService.js"),"adminPermissionService":require("./services\\adminPermissionService.js"),"adminRoleService":require("./services\\adminRoleService.js"),"adminShopService":require("./services\\adminShopService.js"),"adminShoptypeService":require("./services\\adminShoptypeService.js"),"alert":require("./services\\alert.js"),"attribute":require("./services\\attribute.js"),"attributeSet":require("./services\\attributeSet.js"),"blocker":require("./services\\blocker.js"),"brand":require("./services\\brand.js"),"category":require("./services\\category.js"),"globalCategory":require("./services\\globalCategory.js"),"image":require("./services\\image.js"),"localCategory":require("./services\\localCategory.js"),"product":require("./services\\product.js"),"shop":require("./services\\shop.js"),"shopPermissionService":require("./services\\shopPermissionService.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncImageUploader":require("./directives\\ncImageUploader.js"),"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngPatternRestrict":require("./directives\\ngPatternRestrict.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"popoverAny":require("./directives\\popoverAny.js"),"uiSelectMaxlength":require("./directives\\uiSelectMaxlength.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"exclude":require("./filters\\exclude.js"),"excludeCategory":require("./filters\\excludeCategory.js"),"html":require("./filters\\html.js"),"leadingzero":require("./filters\\leadingzero.js"),"ordinal":require("./filters\\ordinal.js"),"slice":require("./filters\\slice.js"),"truncate":require("./filters\\truncate.js"),"truth":require("./filters\\truth.js")})});
+var bulk = ({"controllers":({"adminAccount":require("./controllers\\adminAccount.js"),"adminAccountAdd":require("./controllers\\adminAccountAdd.js"),"adminAttribute":require("./controllers\\adminAttribute.js"),"adminAttributeAdd":require("./controllers\\adminAttributeAdd.js"),"adminAttributeSet":require("./controllers\\adminAttributeSet.js"),"adminAttributeSetAdd":require("./controllers\\adminAttributeSetAdd.js"),"adminBrand":require("./controllers\\adminBrand.js"),"adminBrandAdd":require("./controllers\\adminBrandAdd.js"),"adminCategory":require("./controllers\\adminCategory.js"),"adminRole":require("./controllers\\adminRole.js"),"adminRoleAdd":require("./controllers\\adminRoleAdd.js"),"adminShop":require("./controllers\\adminShop.js"),"adminShopAdd":require("./controllers\\adminShopAdd.js"),"adminShoptype":require("./controllers\\adminShoptype.js"),"adminShoptypeAdd":require("./controllers\\adminShoptypeAdd.js"),"localCategory":require("./controllers\\localCategory.js"),"productAdd":require("./controllers\\productAdd.js"),"productAddSelectCategory":require("./controllers\\productAddSelectCategory.js"),"productImageList":require("./controllers\\productImageList.js"),"productList":require("./controllers\\productList.js"),"productListLocalCategory":require("./controllers\\productListLocalCategory.js"),"root":require("./controllers\\root.js"),"test":require("./controllers\\test.js")}),"services":({"adminAccountService":require("./services\\adminAccountService.js"),"adminPermissionService":require("./services\\adminPermissionService.js"),"adminRoleService":require("./services\\adminRoleService.js"),"adminShopService":require("./services\\adminShopService.js"),"adminShoptypeService":require("./services\\adminShoptypeService.js"),"alert":require("./services\\alert.js"),"attribute":require("./services\\attribute.js"),"attributeSet":require("./services\\attributeSet.js"),"blocker":require("./services\\blocker.js"),"brand":require("./services\\brand.js"),"category":require("./services\\category.js"),"globalCategory":require("./services\\globalCategory.js"),"image":require("./services\\image.js"),"localCategory":require("./services\\localCategory.js"),"product":require("./services\\product.js"),"shop":require("./services\\shop.js"),"shopPermissionService":require("./services\\shopPermissionService.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncImageUploader":require("./directives\\ncImageUploader.js"),"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngMatch":require("./directives\\ngMatch.js"),"ngPatternRestrict":require("./directives\\ngPatternRestrict.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"popoverAny":require("./directives\\popoverAny.js"),"uiSelectMaxlength":require("./directives\\uiSelectMaxlength.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"exclude":require("./filters\\exclude.js"),"excludeCategory":require("./filters\\excludeCategory.js"),"html":require("./filters\\html.js"),"leadingzero":require("./filters\\leadingzero.js"),"ordinal":require("./filters\\ordinal.js"),"slice":require("./filters\\slice.js"),"truncate":require("./filters\\truncate.js"),"truth":require("./filters\\truth.js")})});
 var config = require('./config');
 var template = require('./template');
 
@@ -142,6 +142,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .directive('ngSlideToggle', directives.ngSlideToggle)
 .directive('ngTemplate', directives.ngTemplate)
 .directive('uiSelectMaxlength', directives.uiSelectMaxlength)
+.directive('ngMatch', directives.ngMatch)
 .directive('popoverAny', directives.popoverAny)
 
 //Filters
@@ -181,7 +182,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .controller('TestCtrl', controllers.test)
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./config":2,"./controllers\\adminAccount.js":3,"./controllers\\adminAccountAdd.js":4,"./controllers\\adminAttribute.js":5,"./controllers\\adminAttributeAdd.js":6,"./controllers\\adminAttributeSet.js":7,"./controllers\\adminAttributeSetAdd.js":8,"./controllers\\adminBrand.js":9,"./controllers\\adminBrandAdd.js":10,"./controllers\\adminCategory.js":11,"./controllers\\adminRole.js":12,"./controllers\\adminRoleAdd.js":13,"./controllers\\adminShop.js":14,"./controllers\\adminShopAdd.js":15,"./controllers\\adminShoptype.js":16,"./controllers\\adminShoptypeAdd.js":17,"./controllers\\localCategory.js":18,"./controllers\\productAdd.js":19,"./controllers\\productAddSelectCategory.js":20,"./controllers\\productImageList.js":21,"./controllers\\productList.js":22,"./controllers\\productListLocalCategory.js":23,"./controllers\\root.js":24,"./controllers\\test.js":25,"./directives\\ncImageUploader.js":26,"./directives\\ncTradableSelect.js":27,"./directives\\ngCkeditor.js":28,"./directives\\ngDelegate.js":29,"./directives\\ngPatternRestrict.js":30,"./directives\\ngSlideToggle.js":31,"./directives\\ngTemplate.js":32,"./directives\\popoverAny.js":33,"./directives\\uiSelectMaxlength.js":34,"./filters\\capitalize.js":35,"./filters\\exclude.js":36,"./filters\\excludeCategory.js":37,"./filters\\html.js":38,"./filters\\leadingzero.js":39,"./filters\\ordinal.js":40,"./filters\\slice.js":41,"./filters\\truncate.js":42,"./filters\\truth.js":43,"./helpers\\base64.js":44,"./helpers\\common.js":45,"./helpers\\storage.js":46,"./helpers\\util.js":47,"./helpers\\variantPair.js":48,"./nc":61,"./services\\adminAccountService.js":63,"./services\\adminPermissionService.js":64,"./services\\adminRoleService.js":65,"./services\\adminShopService.js":66,"./services\\adminShoptypeService.js":67,"./services\\alert.js":68,"./services\\attribute.js":69,"./services\\attributeSet.js":70,"./services\\blocker.js":71,"./services\\brand.js":72,"./services\\category.js":73,"./services\\globalCategory.js":74,"./services\\image.js":75,"./services\\localCategory.js":76,"./services\\product.js":77,"./services\\shop.js":78,"./services\\shopPermissionService.js":79,"./template":80,"angular":96,"angular-animate":82,"angular-base64":83,"angular-bootstrap-datetimepicker":85,"angular-file-upload":86,"angular-sanitize":88,"angular-scroll":90,"angular-ui-bootstrap":91,"angular-ui-tree":94,"lodash":98,"ui-select":99}],2:[function(require,module,exports){
+},{"./config":2,"./controllers\\adminAccount.js":3,"./controllers\\adminAccountAdd.js":4,"./controllers\\adminAttribute.js":5,"./controllers\\adminAttributeAdd.js":6,"./controllers\\adminAttributeSet.js":7,"./controllers\\adminAttributeSetAdd.js":8,"./controllers\\adminBrand.js":9,"./controllers\\adminBrandAdd.js":10,"./controllers\\adminCategory.js":11,"./controllers\\adminRole.js":12,"./controllers\\adminRoleAdd.js":13,"./controllers\\adminShop.js":14,"./controllers\\adminShopAdd.js":15,"./controllers\\adminShoptype.js":16,"./controllers\\adminShoptypeAdd.js":17,"./controllers\\localCategory.js":18,"./controllers\\productAdd.js":19,"./controllers\\productAddSelectCategory.js":20,"./controllers\\productImageList.js":21,"./controllers\\productList.js":22,"./controllers\\productListLocalCategory.js":23,"./controllers\\root.js":24,"./controllers\\test.js":25,"./directives\\ncImageUploader.js":26,"./directives\\ncTradableSelect.js":27,"./directives\\ngCkeditor.js":28,"./directives\\ngDelegate.js":29,"./directives\\ngMatch.js":30,"./directives\\ngPatternRestrict.js":31,"./directives\\ngSlideToggle.js":32,"./directives\\ngTemplate.js":33,"./directives\\popoverAny.js":34,"./directives\\uiSelectMaxlength.js":35,"./filters\\capitalize.js":36,"./filters\\exclude.js":37,"./filters\\excludeCategory.js":38,"./filters\\html.js":39,"./filters\\leadingzero.js":40,"./filters\\ordinal.js":41,"./filters\\slice.js":42,"./filters\\truncate.js":43,"./filters\\truth.js":44,"./helpers\\base64.js":45,"./helpers\\common.js":46,"./helpers\\storage.js":47,"./helpers\\util.js":48,"./helpers\\variantPair.js":49,"./nc":62,"./services\\adminAccountService.js":64,"./services\\adminPermissionService.js":65,"./services\\adminRoleService.js":66,"./services\\adminShopService.js":67,"./services\\adminShoptypeService.js":68,"./services\\alert.js":69,"./services\\attribute.js":70,"./services\\attributeSet.js":71,"./services\\blocker.js":72,"./services\\brand.js":73,"./services\\category.js":74,"./services\\globalCategory.js":75,"./services\\image.js":76,"./services\\localCategory.js":77,"./services\\product.js":78,"./services\\shop.js":79,"./services\\shopPermissionService.js":80,"./template":81,"angular":97,"angular-animate":83,"angular-base64":84,"angular-bootstrap-datetimepicker":86,"angular-file-upload":87,"angular-sanitize":89,"angular-scroll":91,"angular-ui-bootstrap":92,"angular-ui-tree":95,"lodash":99,"ui-select":100}],2:[function(require,module,exports){
 //remote baseUrl - 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/'
 module.exports = {
 	baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/',
@@ -271,6 +272,8 @@ module.exports = function($scope, $window, AdminAccountService, AdminRoleService
 	$scope.saving = false; //prevent multiple saving
 	$scope.loading = false;
 
+	util.warningOnLeave($scope, 'form');
+
 	$scope.init = function(params) {
 		//Fetch GET Params
 		if(!_.isUndefined(params)) {
@@ -324,6 +327,7 @@ module.exports = function($scope, $window, AdminAccountService, AdminRoleService
 				AdminAccountService.update($scope.id, data)
 					.then(function(result) {
 						$scope.alert.success(util.saveAlertSuccess('Admin Account', '/admin/accounts'));
+						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(util.saveAlertError());
 					})
@@ -336,6 +340,7 @@ module.exports = function($scope, $window, AdminAccountService, AdminRoleService
 					.then(function(result) {
 						$scope.formData.UserId = result.UserId; 
 						$scope.alert.success(util.saveAlertSuccess('Admin Account', '/admin/accounts'));
+						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(util.saveAlertError());
 					})
@@ -506,7 +511,7 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 		});
 	});
 }];
-},{"angular":96}],6:[function(require,module,exports){
+},{"angular":97}],6:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function($scope, $window, Alert, Attribute, Blocker) {
@@ -596,7 +601,7 @@ module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function
 		}
 	};
 }];
-},{"angular":96}],7:[function(require,module,exports){
+},{"angular":97}],7:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function($scope, $window, util, AttributeSet, Alert) {
 	//UI binding variables
@@ -797,7 +802,7 @@ module.exports = ['$scope', '$window', 'util', 'AttributeSet', 'Alert', function
 		});
 	});
 }];
-},{"angular":96}],8:[function(require,module,exports){
+},{"angular":97}],8:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', function($scope, Alert, AttributeSet, Attribute, $window) {
@@ -892,7 +897,7 @@ module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', func
 		}
 	};
 }];
-},{"angular":96}],9:[function(require,module,exports){
+},{"angular":97}],9:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope','util', 'config', 'Brand', 'Alert', '$window', function($scope, util, config, Brand, Alert, $window){
@@ -1053,7 +1058,7 @@ module.exports = ['$scope','util', 'config', 'Brand', 'Alert', '$window', functi
 	});;
 	$scope.reloadData();
 }];
-},{"angular":96}],10:[function(require,module,exports){
+},{"angular":97}],10:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scope, $window, ImageService, Brand, Alert) {
@@ -1176,7 +1181,7 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 		}
 	};
 }];
-},{"angular":96}],11:[function(require,module,exports){
+},{"angular":97}],11:[function(require,module,exports){
 module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory', 'AttributeSet', 'Alert',  function($scope, $rootScope, common, Category, GlobalCategory, AttributeSet, Alert){
 	$scope.categories = [];
 	$scope.attributeSetOptions = [];
@@ -1273,7 +1278,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 
 }];
 },{}],12:[function(require,module,exports){
-module.exports = function($scope, $window, AdminRoleService, NcAlert) {
+module.exports = function($scope, $window, AdminRoleService, NcAlert, util) {
 	$scope.reload = function() {
 		$scope.loading = true;
 		AdminRoleService.list($scope.params)
@@ -1369,6 +1374,7 @@ module.exports = function($scope, $window, AdminRoleService, AdminPermissionServ
 				AdminRoleService.update($scope.id, data)
 					.then(function(result) {
 						$scope.alert.success(util.saveAlertSuccess('Admin Role', '/admin/roles'));
+						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(util.saveAlertError());
 					})
@@ -1381,6 +1387,7 @@ module.exports = function($scope, $window, AdminRoleService, AdminPermissionServ
 					.then(function(result) {
 						$scope.formData.GroupId = result.GroupId; 
 						$scope.alert.success(util.saveAlertSuccess('Admin Role', '/admin/roles'));
+						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(util.saveAlertError());
 					})
@@ -1514,6 +1521,7 @@ module.exports = function($scope, $window, AdminShopService, AdminShoptypeServic
 				AdminShopService.update($scope.id, data)
 					.then(function(result) {
 						$scope.alert.success(util.saveAlertSuccess('Admin Shop', '/admin/shops'));
+						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(util.saveAlertError());
 					})
@@ -1526,6 +1534,7 @@ module.exports = function($scope, $window, AdminShopService, AdminShoptypeServic
 					.then(function(result) {
 						$scope.formData.ShopId = result.ShopId; 
 						$scope.alert.success(util.saveAlertSuccess('Admin Shop Account', '/admin/shops'));
+						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(util.saveAlertError());
 					})
@@ -1640,7 +1649,8 @@ module.exports = function($scope, $window, AdminShoptypeService, NcAlert, util) 
 				//Edit mode
 				AdminShoptypeService.update($scope.id, data)
 					.then(function(result) {
-						$scope.alert.success(util.saveAlertSuccess('Admin Shop', '/admin/shops'));
+						$scope.alert.success(util.saveAlertSuccess('Admin Shop', '/admin/shoptypes'));
+						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(util.saveAlertError());
 					})
@@ -1652,7 +1662,8 @@ module.exports = function($scope, $window, AdminShoptypeService, NcAlert, util) 
 				AdminShoptypeService.create(data)
 					.then(function(result) {
 						$scope.formData.GroupId = result.GroupId; 
-						$scope.alert.success(util.saveAlertSuccess('Admin Shop Account', '/admin/shops'));
+						$scope.alert.success(util.saveAlertSuccess('Admin Shop Account', '/admin/shoptypes'));
+						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(util.saveAlertError());
 					})
@@ -2490,7 +2501,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 
 }];
 
-},{"angular":96}],20:[function(require,module,exports){
+},{"angular":97}],20:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Category, GlobalCategory) {
@@ -2514,7 +2525,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 	});
 }];
 
-},{"angular":96}],21:[function(require,module,exports){
+},{"angular":97}],21:[function(require,module,exports){
 module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', function ($scope, Product, util, Alert, $window) {
     $scope.productList = [];
     Product.getAll({}).then(function(data){
@@ -3163,7 +3174,7 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 		}]
 	};
 }];
-},{"angular":96}],28:[function(require,module,exports){
+},{"angular":97}],28:[function(require,module,exports){
 module.exports = [function () {
     return {
 	priority: 1010,
@@ -3209,7 +3220,28 @@ module.exports = [function() {
 		}
 	};
 }];
-},{"angular":96}],30:[function(require,module,exports){
+},{"angular":97}],30:[function(require,module,exports){
+module.exports = function($interpolate) {
+	return {
+		restrict: 'A',
+		require: 'ngModel',
+		link: function(scope, element, attrs, ctrl) {
+			if(!ctrl) return;
+			var match = undefined;
+
+			attrs.$observe('ngMatch', function(val) {
+				match = val;
+				ctrl.$validate();
+			});
+
+			ctrl.$validators.match = function(modelValue, viewValue) {
+				var value = modelValue || viewValue;
+				return value === match;
+			};
+		}
+	}
+}
+},{}],31:[function(require,module,exports){
 /*jslint browser: true, plusplus: true, indent: 2 */
 
 // This will be removed by uglify, along with the DEBUG code
@@ -3504,7 +3536,7 @@ angular.module('ngPatternRestrict', [])
       }
     };
   }]);
-},{}],31:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 module.exports = [function() {
     return {
         restrict: "A",
@@ -3520,7 +3552,7 @@ module.exports = [function() {
         }
     };
 }];
-},{}],32:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$templateCache', '$compile', function($templateCache, $compile) {
   var originalAttr = {};
@@ -3547,7 +3579,7 @@ module.exports = ['$templateCache', '$compile', function($templateCache, $compil
     }
   };
 }];
-},{"angular":96}],33:[function(require,module,exports){
+},{"angular":97}],34:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$document', '$window', function($document, $window) {
 	$window._globalPopoverAny = null;
@@ -3592,20 +3624,18 @@ module.exports = ['$document', '$window', function($document, $window) {
 		}
 	};
 }];
-},{"angular":96}],34:[function(require,module,exports){
+},{"angular":97}],35:[function(require,module,exports){
 module.exports=[function() {
 	return {
 		restrict: 'A',
 		link: function(scope, elem, attrs) {
 			if(attrs.uiSelectValidation) {
-				console.log(attrs.uiSelectValidation);
 				elem.find('input').attr('maxlength', attrs.uiSelectValidation);
-				console.log(elem.find('input'));
 			}
 		}
 	}
 }];
-},{}],35:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 module.exports = [function() {
   return function(input, scope) {
     if (input!=null)
@@ -3613,7 +3643,7 @@ module.exports = [function() {
     return input.substring(0,1).toUpperCase()+input.substring(1);
   }
 }];
-},{}],36:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = [function() {
@@ -3647,7 +3677,7 @@ module.exports = [function() {
      });
   }
 }];
-},{"angular":96}],37:[function(require,module,exports){
+},{"angular":97}],38:[function(require,module,exports){
 module.exports = [function() {
   
 var search = function(catId, tmp) {
@@ -3716,14 +3746,14 @@ return function(arr, other, include) {
     return arr;
   }
 }];
-},{}],38:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 module.exports = [function(){
    return function(data) {
 	   if (!data) return data;
 	   return data.replace(/\n\r?/g, '<br />');
  };
 }]
-},{}],39:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 module.exports = function() {
 	return function(str, num) {
 		if(_.isUndefined(str)) {
@@ -3743,7 +3773,7 @@ module.exports = function() {
 		return result;
 	}
 };
-},{}],40:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = [function() {
@@ -3759,7 +3789,7 @@ module.exports = [function() {
   	return input;
   }
 }];
-},{"angular":96}],41:[function(require,module,exports){
+},{"angular":97}],42:[function(require,module,exports){
 /*
  * Get slice or subarray of array
  */
@@ -3775,7 +3805,7 @@ module.exports = [function() {
     return _.slice(arr, from, to);
   }
 }];
-},{}],42:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 module.exports = [function () {
         return function (text, length, end) {
             if (isNaN(length))
@@ -3793,7 +3823,7 @@ module.exports = [function () {
 
         };
 }];
-},{}],43:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 var angular = require('angular');
 
 /*
@@ -3821,7 +3851,7 @@ module.exports = [function() {
      return i;
   }
 }];
-},{"angular":96}],44:[function(require,module,exports){
+},{"angular":97}],45:[function(require,module,exports){
 module.exports = [function () {
     'use strict';
     var service = {};
@@ -3840,7 +3870,7 @@ module.exports = [function () {
     };
     return service;
 }];
-},{}],45:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 module.exports = ['$http', '$q', 'storage', 'config', function ($http, $q, storage, config) {
     'use strict';
         var service = {};
@@ -3960,7 +3990,7 @@ module.exports = ['$http', '$q', 'storage', 'config', function ($http, $q, stora
         return service;
 }];
 
-},{}],46:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 module.exports = [function () {
     'use strict';
     var service = {};
@@ -4056,7 +4086,7 @@ module.exports = [function () {
 
     return service;
 }];
-},{}],47:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['storage', 'config', '$window', function (storage, config, $window) {
@@ -4133,6 +4163,26 @@ module.exports = ['storage', 'config', '$window', function (storage, config, $wi
         });
     };
 
+    //block before leaving
+    service.warningOnLeave = function(scope, form) {
+        $window.onbeforeunload = function () {
+            if(!scope[form].$dirty){
+                //not dirty
+                return null;
+            }
+
+            var message = "Your changes will not be saved.",
+            e = e || window.event;
+            // For IE and Firefox
+            if (e) {
+              e.returnValue = message;
+            }
+
+            // For Safari
+            return message;
+        };  
+    }
+
     //Convert ncTable params to our older params version
     service.ncParams = function(param) {
         return {
@@ -4151,7 +4201,6 @@ module.exports = ['storage', 'config', '$window', function (storage, config, $wi
     service.saveAlertSuccess = function(itemName, link) {
         return config.DEFAULT_SUCCESS_MESSAGE + ' View <a href="' + link + '">' + itemName + ' List</a>';
     };
-
 
     //Create bulk-action from template
     service.bulkDelete = function(rest, id, item, alert, reload)  {
@@ -4221,7 +4270,7 @@ module.exports = ['storage', 'config', '$window', function (storage, config, $wi
     return service;
 }];
 
-},{"angular":96}],48:[function(require,module,exports){
+},{"angular":97}],49:[function(require,module,exports){
 module.exports = ['util', function (util) {
 	
 	//Struct for Variant Pair
@@ -4236,7 +4285,7 @@ module.exports = ['util', function (util) {
 	return VariantPair;
 }];
 
-},{}],49:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncAction', ["$templateCache", function($templateCache) {
 		return {
@@ -4280,7 +4329,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],50:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncAlert', function() {
 		this.defaultErrorMessage = 'Error';
@@ -4335,7 +4384,7 @@ angular.module('nc')
 			this.message = '';
 		};
 	}]);
-},{}],51:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncBulk', ["$templateCache", function($templateCache) {
 		return {
@@ -4447,7 +4496,7 @@ angular.module('nc')
 			}
 		}
 	}])
-},{}],52:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEmpty', ["$templateCache", function($templateCache) {
 		return {
@@ -4461,7 +4510,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],53:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncFilter', ["$templateCache", function($templateCache) {
 		return {
@@ -4479,7 +4528,7 @@ angular.module('nc')
 			}
 		}
 	}])
-},{}],54:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncLoading', ["$templateCache", function($templateCache) {
 		return {
@@ -4505,7 +4554,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],55:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncPagination', function() {
 		this.paginationSizes = [10,20,30];
@@ -4561,7 +4610,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-},{}],56:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 angular.module('nc')
 	.provider('ncPermissionProvider', function() {
 		this.permission = function() {
@@ -4582,7 +4631,7 @@ angular.module('nc')
 	.directive('ncShowPermission', function() {
 		
 	});
-},{}],57:[function(require,module,exports){
+},{}],58:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncSearch', ["$templateCache", function($templateCache) {
 		return {
@@ -4601,7 +4650,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],58:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncTable', function() {
 		this.tableOptions = {
@@ -4690,14 +4739,14 @@ angular.module('nc')
 			template: '<a ng-href="{{link}}" ng-transclude></a>',
 		}
 	});
-},{}],59:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 angular.module('nc')
 	.filter('dateTh', ["$filter", function($filter) {
 		return function(input) {
 			return $filter('date')(input, 'shortDate', '+700');
 		}
 	}]);
-},{}],60:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 angular.module('nc')
 	.filter('mapDropdown', function() {
 		//Return property
@@ -4713,7 +4762,7 @@ angular.module('nc')
 			return _.isUndefined(find) ? input : find.name;
 		}
 	});
-},{}],61:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 (function (global){
 var angular = require('angular');
 
@@ -4734,7 +4783,7 @@ angular.module('nc', ['ui.bootstrap', 'ui.select', 'duScroll'])
 (function () {var f = require("./index.js");f["directives"]=({"ncAction":require("./directives\\ncAction.js"),"ncAlert":require("./directives\\ncAlert.js"),"ncBulk":require("./directives\\ncBulk.js"),"ncEmpty":require("./directives\\ncEmpty.js"),"ncFilter":require("./directives\\ncFilter.js"),"ncLoading":require("./directives\\ncLoading.js"),"ncPagination":require("./directives\\ncPagination.js"),"ncPermission":require("./directives\\ncPermission.js"),"ncSearch":require("./directives\\ncSearch.js"),"ncTable":require("./directives\\ncTable.js")});f["filters"]=({"date":require("./filters\\date.js"),"map":require("./filters\\map.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./directives\\ncAction.js":49,"./directives\\ncAlert.js":50,"./directives\\ncBulk.js":51,"./directives\\ncEmpty.js":52,"./directives\\ncFilter.js":53,"./directives\\ncLoading.js":54,"./directives\\ncPagination.js":55,"./directives\\ncPermission.js":56,"./directives\\ncSearch.js":57,"./directives\\ncTable.js":58,"./filters\\date.js":59,"./filters\\map.js":60,"./index.js":61,"./template.js":62,"angular":96,"angular-scroll":90,"angular-ui-bootstrap":91,"jquery":97,"lodash":98,"ui-select":99}],62:[function(require,module,exports){
+},{"./directives\\ncAction.js":50,"./directives\\ncAlert.js":51,"./directives\\ncBulk.js":52,"./directives\\ncEmpty.js":53,"./directives\\ncFilter.js":54,"./directives\\ncLoading.js":55,"./directives\\ncPagination.js":56,"./directives\\ncPermission.js":57,"./directives\\ncSearch.js":58,"./directives\\ncTable.js":59,"./filters\\date.js":60,"./filters\\map.js":61,"./index.js":62,"./template.js":63,"angular":97,"angular-scroll":91,"angular-ui-bootstrap":92,"jquery":98,"lodash":99,"ui-select":100}],63:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -4815,23 +4864,19 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
     "'fa fa-caret-down color-grey' : !isCurrent() }\" ng-click=click()></i>"
   );
  }]);
-},{}],63:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 module.exports = function(common) {
 	var service = common.Rest('/Users/Admin');
 
 	service.generate = function() {
-		return {
-			UserGroup: {
-				GroupNameEn: '-- Choose Admin Role --' //dummy
-			}
-		};
+		return {};
 	};
 
 	service.serialize = function(data) {
 		var processed = _.merge({}, data);
 		
 		processed.UserGroup = [processed.UserGroup];
-
+		processed = _.omit(processed, ['ConfirmPassword']);
 		return processed;
 	};
 
@@ -4848,13 +4893,13 @@ module.exports = function(common) {
 	};
 	return service;
 };
-},{}],64:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 module.exports = function(common) {
 	var service = common.Rest('/Permissions/Admin');
 
 	return service;
 }
-},{}],65:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 module.exports = function(common, AdminPermissionService) {
 	var service = common.Rest('/UserGroups/Admin');
 
@@ -4899,7 +4944,7 @@ module.exports = function(common, AdminPermissionService) {
 	};
 	return service;	
 }
-},{}],66:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 module.exports = function(common, config, util) {
 	var service = common.Rest('/Shops');
 
@@ -4925,7 +4970,7 @@ module.exports = function(common, config, util) {
 	};
 	return service;	
 }
-},{}],67:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 module.exports = function(common, ShopPermissionService) {
 	var service = common.Rest('/Shoptypes');
 
@@ -4970,7 +5015,7 @@ module.exports = function(common, ShopPermissionService) {
 	};
 	return service;	
 }
-},{}],68:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', '$document', '$timeout', function(common, $document, $timeout) {
 	return function() {
@@ -5004,7 +5049,7 @@ module.exports = ['common', '$document', '$timeout', function(common, $document,
 		this.message = '';
 	};
 }];
-},{"angular":96}],69:[function(require,module,exports){
+},{"angular":97}],70:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common){
 	'use strict';
@@ -5246,7 +5291,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{"angular":96}],70:[function(require,module,exports){
+},{"angular":97}],71:[function(require,module,exports){
 module.exports = ['common', function(common){
 	'use strict';
 	var service = {};
@@ -5394,7 +5439,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{}],71:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 module.exports = ['$window', function($window) {
 	return function(fn, close) {
 		var vm = this;
@@ -5430,7 +5475,7 @@ module.exports = ['$window', function($window) {
 		};
 	};
 }];
-},{}],72:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$q', 'common', function($q, common){
 	var service = {};
@@ -5517,7 +5562,7 @@ module.exports = ['$q', 'common', function($q, common){
 	};
 	return service;
 }];
-},{"angular":96}],73:[function(require,module,exports){
+},{"angular":97}],74:[function(require,module,exports){
 /**
  * Util class for category
  * @author poonwu
@@ -5755,7 +5800,7 @@ module.exports = ['config', function(config) {
     return service;
 }];
 
-},{"angular":96}],74:[function(require,module,exports){
+},{"angular":97}],75:[function(require,module,exports){
 module.exports = ['common', '$q' , function(common, $q) {
 	'use strict';
 	var service = {};
@@ -5828,7 +5873,7 @@ module.exports = ['common', '$q' , function(common, $q) {
 	return service;
 }];
 
-},{}],75:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 var angular = require('angular');
 //Image Service
 module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', function($q, $http, common, storage, config, FileUploader){
@@ -5919,7 +5964,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	return service;
 }];
 
-},{"angular":96}],76:[function(require,module,exports){
+},{"angular":97}],77:[function(require,module,exports){
 module.exports = ['common', function(common) {
 	'use strict';
 	var service = {};
@@ -5960,7 +6005,7 @@ module.exports = ['common', function(common) {
 
 	return service;
 }];
-},{}],77:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 //Products Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
     function($http, common, util, LocalCategory, Brand) {
@@ -6490,7 +6535,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
     }
 ];
 
-},{}],78:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 module.exports = ['common', function(common) {
 	'use strict';
 	var service = {};
@@ -6511,16 +6556,16 @@ module.exports = ['common', function(common) {
 
 	return service;
 }];
-},{}],79:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 module.exports = function(common) {
 	var service = common.Rest('/Permissions/Shop');
 
 	return service;
 }
-},{}],80:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Mon Feb 01 2016 01:31:28 GMT+0700 (SE Asia Standard Time)
+ * Mon Feb 01 2016 12:22:36 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -6550,7 +6595,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/input/dropdown',
-    "<div class=form-group><div class=width-label><label class=control-label ng-class=options.labelClass ng-bind-html=options.label></label></div><div ng-class=\"['width-field-' + (options.inputSize || 'normal')]\"><ng-transclude></ng-transclude></div><div ng-if=options.tooltip class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" data-toggle=tooltip data-placement=right title={{options.tooltip}}></i></div></div>"
+    "<div class=form-group><div class=width-label><label class=control-label ng-class=options.labelClass ng-bind-html=options.label></label></div><div ng-class=\"['width-field-' + (options.inputSize || 'normal')]\"><ng-transclude ng-class=\"{ 'has-error-parent' : options.error.show }\"></ng-transclude><span class=\"help-block color-red\" ng-if=options.error ng-show=options.error.show ng-repeat=\"(key, prop) in options.error.conditions\"><span ng-bind-html=options.error.messages[key]></span></span></div><div ng-if=options.tooltip class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" data-toggle=tooltip data-placement=right title={{options.tooltip}}></i></div></div>"
   );
 
 
@@ -6653,7 +6698,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "<div><a ng-click=\"actions.edit(row, true)\">View / Edit</a></div><div><a ng-click=\"\">Duplicate</a></div><div><a ng-click=\"actions.delete(row, true)\">Delete</a></div>"
   );
  }];
-},{}],81:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -10585,11 +10630,11 @@ angular.module('ngAnimate', [])
 
 })(window, window.angular);
 
-},{}],82:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":81}],83:[function(require,module,exports){
+},{"./angular-animate":82}],84:[function(require,module,exports){
 (function() {
     'use strict';
 
@@ -10757,7 +10802,7 @@ module.exports = 'ngAnimate';
 
 })();
 
-},{}],84:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 //! moment.js
 //! version : 2.11.1
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -14364,7 +14409,7 @@ module.exports = 'ngAnimate';
     return _moment;
 
 }));
-},{}],85:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 /*globals define, jQuery, module, require */
 /*jslint vars:true */
 
@@ -14814,7 +14859,7 @@ module.exports = 'ngAnimate';
     }]);
 }));
 
-},{"angular":96,"moment":84}],86:[function(require,module,exports){
+},{"angular":97,"moment":85}],87:[function(require,module,exports){
 /*
  angular-file-upload v2.2.0
  https://github.com/nervgh/angular-file-upload
@@ -14822,7 +14867,7 @@ module.exports = 'ngAnimate';
 
 !function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["angular-file-upload"]=t():e["angular-file-upload"]=t()}(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var i=n[r]={exports:{},id:r,loaded:!1};return e[r].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=r(n(1)),o=r(n(2)),s=r(n(3)),a=r(n(4)),u=r(n(5)),l=r(n(6)),c=r(n(7)),f=r(n(8)),p=r(n(9)),d=r(n(10)),v=r(n(11)),h=r(n(12));angular.module(i.name,[]).value("fileUploaderOptions",o).factory("FileUploader",s).factory("FileLikeObject",a).factory("FileItem",u).factory("FileDirective",l).factory("FileSelect",c).factory("FileDrop",f).factory("FileOver",p).directive("nvFileSelect",d).directive("nvFileDrop",v).directive("nvFileOver",h).run(["FileUploader","FileLikeObject","FileItem","FileDirective","FileSelect","FileDrop","FileOver",function(e,t,n,r,i,o,s){e.FileLikeObject=t,e.FileItem=n,e.FileDirective=r,e.FileSelect=i,e.FileDrop=o,e.FileOver=s}])},function(e,t){e.exports={name:"angularFileUpload"}},function(e,t){"use strict";e.exports={url:"/",alias:"file",headers:{},queue:[],progress:0,autoUpload:!1,removeAfterUpload:!1,method:"POST",filters:[],formData:[],queueLimit:Number.MAX_VALUE,withCredentials:!1}},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.forEach,l=angular.isObject,c=angular.isNumber,f=angular.isDefined,p=angular.isArray,d=angular.element;e.exports=function(e,t,n,r,v,h){var m=r.File,g=r.FormData,_=function(){function r(t){o(this,r);var n=s(e);a(this,n,t,{isUploading:!1,_nextIndex:0,_failFilterIndex:-1,_directives:{select:[],drop:[],over:[]}}),this.filters.unshift({name:"queueLimit",fn:this._queueLimitFilter}),this.filters.unshift({name:"folder",fn:this._folderFilter})}return i(r,{addToQueue:{value:function(e,t,n){var r=this,i=this.isArrayLikeObject(e)?e:[e],o=this._getFilters(n),s=this.queue.length,a=[];u(i,function(e){var n=new v(e);if(r._isValidFile(n,o,t)){var i=new h(r,e,t);a.push(i),r.queue.push(i),r._onAfterAddingFile(i)}else{var s=o[r._failFilterIndex];r._onWhenAddingFileFailed(n,s,t)}}),this.queue.length!==s&&(this._onAfterAddingAll(a),this.progress=this._getTotalProgress()),this._render(),this.autoUpload&&this.uploadAll()}},removeFromQueue:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t];n.isUploading&&n.cancel(),this.queue.splice(t,1),n._destroy(),this.progress=this._getTotalProgress()}},clearQueue:{value:function(){for(;this.queue.length;)this.queue[0].remove();this.progress=0}},uploadItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhrTransport":"_iframeTransport";n._prepareToUploading(),this.isUploading||(this.isUploading=!0,this[r](n))}},cancelItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhr":"_form";n&&n.isUploading&&n[r].abort()}},uploadAll:{value:function(){var e=this.getNotUploadedItems().filter(function(e){return!e.isUploading});e.length&&(u(e,function(e){return e._prepareToUploading()}),e[0].upload())}},cancelAll:{value:function(){var e=this.getNotUploadedItems();u(e,function(e){return e.cancel()})}},isFile:{value:function(e){return this.constructor.isFile(e)}},isFileLikeObject:{value:function(e){return this.constructor.isFileLikeObject(e)}},isArrayLikeObject:{value:function(e){return this.constructor.isArrayLikeObject(e)}},getIndexOfItem:{value:function(e){return c(e)?e:this.queue.indexOf(e)}},getNotUploadedItems:{value:function(){return this.queue.filter(function(e){return!e.isUploaded})}},getReadyItems:{value:function(){return this.queue.filter(function(e){return e.isReady&&!e.isUploading}).sort(function(e,t){return e.index-t.index})}},destroy:{value:function(){var e=this;u(this._directives,function(t){u(e._directives[t],function(e){e.destroy()})})}},onAfterAddingAll:{value:function(e){}},onAfterAddingFile:{value:function(e){}},onWhenAddingFileFailed:{value:function(e,t,n){}},onBeforeUploadItem:{value:function(e){}},onProgressItem:{value:function(e,t){}},onProgressAll:{value:function(e){}},onSuccessItem:{value:function(e,t,n,r){}},onErrorItem:{value:function(e,t,n,r){}},onCancelItem:{value:function(e,t,n,r){}},onCompleteItem:{value:function(e,t,n,r){}},onCompleteAll:{value:function(){}},_getTotalProgress:{value:function(e){if(this.removeAfterUpload)return e||0;var t=this.getNotUploadedItems().length,n=t?this.queue.length-t:this.queue.length,r=100/this.queue.length,i=(e||0)*r/100;return Math.round(n*r+i)}},_getFilters:{value:function(e){if(!e)return this.filters;if(p(e))return e;var t=e.match(/[^\s,]+/g);return this.filters.filter(function(e){return-1!==t.indexOf(e.name)})}},_render:{value:function(){t.$$phase||t.$apply()}},_folderFilter:{value:function(e){return!(!e.size&&!e.type)}},_queueLimitFilter:{value:function(){return this.queue.length<this.queueLimit}},_isValidFile:{value:function(e,t,n){var r=this;return this._failFilterIndex=-1,t.length?t.every(function(t){return r._failFilterIndex++,t.fn.call(r,e,n)}):!0}},_isSuccessCode:{value:function(e){return e>=200&&300>e||304===e}},_transformResponse:{value:function(e,t){var r=this._headersGetter(t);return u(n.defaults.transformResponse,function(t){e=t(e,r)}),e}},_parseHeaders:{value:function(e){var t,n,r,i={};return e?(u(e.split("\n"),function(e){r=e.indexOf(":"),t=e.slice(0,r).trim().toLowerCase(),n=e.slice(r+1).trim(),t&&(i[t]=i[t]?i[t]+", "+n:n)}),i):i}},_headersGetter:{value:function(e){return function(t){return t?e[t.toLowerCase()]||null:e}}},_xhrTransport:{value:function(e){var t=this,n=e._xhr=new XMLHttpRequest,r=new g;if(this._onBeforeUploadItem(e),u(e.formData,function(e){u(e,function(e,t){r.append(t,e)})}),"number"!=typeof e._file.size)throw new TypeError("The file specified is no longer valid");r.append(e.alias,e._file,e.file.name),n.upload.onprogress=function(n){var r=Math.round(n.lengthComputable?100*n.loaded/n.total:0);t._onProgressItem(e,r)},n.onload=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r),o=t._isSuccessCode(n.status)?"Success":"Error",s="_on"+o+"Item";t[s](e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onerror=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onErrorItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onabort=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onCancelItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.open(e.method,e.url,!0),n.withCredentials=e.withCredentials,u(e.headers,function(e,t){n.setRequestHeader(t,e)}),n.send(r),this._render()}},_iframeTransport:{value:function(e){var t=this,n=d('<form style="display: none;" />'),r=d('<iframe name="iframeTransport'+Date.now()+'">'),i=e._input;e._form&&e._form.replaceWith(i),e._form=n,this._onBeforeUploadItem(e),i.prop("name",e.alias),u(e.formData,function(e){u(e,function(e,t){var r=d('<input type="hidden" name="'+t+'" />');r.val(e),n.append(r)})}),n.prop({action:e.url,method:"POST",target:r.prop("name"),enctype:"multipart/form-data",encoding:"multipart/form-data"}),r.bind("load",function(){var n="",i=200;try{n=r[0].contentDocument.body.innerHTML}catch(o){i=500}var s={response:n,status:i,dummy:!0},a={},u=t._transformResponse(s.response,a);t._onSuccessItem(e,u,s.status,a),t._onCompleteItem(e,u,s.status,a)}),n.abort=function(){var o,s={status:0,dummy:!0},a={};r.unbind("load").prop("src","javascript:false;"),n.replaceWith(i),t._onCancelItem(e,o,s.status,a),t._onCompleteItem(e,o,s.status,a)},i.after(n),n.append(i).append(r),n[0].submit(),this._render()}},_onWhenAddingFileFailed:{value:function(e,t,n){this.onWhenAddingFileFailed(e,t,n)}},_onAfterAddingFile:{value:function(e){this.onAfterAddingFile(e)}},_onAfterAddingAll:{value:function(e){this.onAfterAddingAll(e)}},_onBeforeUploadItem:{value:function(e){e._onBeforeUpload(),this.onBeforeUploadItem(e)}},_onProgressItem:{value:function(e,t){var n=this._getTotalProgress(t);this.progress=n,e._onProgress(t),this.onProgressItem(e,t),this.onProgressAll(n),this._render()}},_onSuccessItem:{value:function(e,t,n,r){e._onSuccess(t,n,r),this.onSuccessItem(e,t,n,r)}},_onErrorItem:{value:function(e,t,n,r){e._onError(t,n,r),this.onErrorItem(e,t,n,r)}},_onCancelItem:{value:function(e,t,n,r){e._onCancel(t,n,r),this.onCancelItem(e,t,n,r)}},_onCompleteItem:{value:function(e,t,n,r){e._onComplete(t,n,r),this.onCompleteItem(e,t,n,r);var i=this.getReadyItems()[0];return this.isUploading=!1,f(i)?void i.upload():(this.onCompleteAll(),this.progress=this._getTotalProgress(),void this._render())}}},{isFile:{value:function(e){return m&&e instanceof m}},isFileLikeObject:{value:function(e){return e instanceof v}},isArrayLikeObject:{value:function(e){return l(e)&&"length"in e}},inherit:{value:function(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,e.super_=t}}}),r}();return _.prototype.isHTML5=!(!m||!g),_.isHTML5=_.prototype.isHTML5,_},e.exports.$inject=["fileUploaderOptions","$rootScope","$http","$window","FileLikeObject","FileItem"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.isElement,u=angular.isString;e.exports=function(){var e=function(){function e(t){o(this,e);var n=a(t),r=n?t.value:t,i=u(r)?"FakePath":"Object",s="_createFrom"+i;this[s](r)}return i(e,{_createFromFakePath:{value:function(e){this.lastModifiedDate=null,this.size=null,this.type="like/"+e.slice(e.lastIndexOf(".")+1).toLowerCase(),this.name=e.slice(e.lastIndexOf("/")+e.lastIndexOf("\\")+2)}},_createFromObject:{value:function(e){this.lastModifiedDate=s(e.lastModifiedDate),this.size=e.size,this.type=e.type,this.name=e.name}}}),e}();return e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.element,l=angular.isElement;e.exports=function(e,t){var n=function(){function n(e,r,i){o(this,n);var c=l(r),f=c?u(r):null,p=c?null:r;a(this,{url:e.url,alias:e.alias,headers:s(e.headers),formData:s(e.formData),removeAfterUpload:e.removeAfterUpload,withCredentials:e.withCredentials,method:e.method},i,{uploader:e,file:new t(r),isReady:!1,isUploading:!1,isUploaded:!1,isSuccess:!1,isCancel:!1,isError:!1,progress:0,index:null,_file:p,_input:f}),f&&this._replaceNode(f)}return i(n,{upload:{value:function(){try{this.uploader.uploadItem(this)}catch(e){this.uploader._onCompleteItem(this,"",0,[]),this.uploader._onErrorItem(this,"",0,[])}}},cancel:{value:function(){this.uploader.cancelItem(this)}},remove:{value:function(){this.uploader.removeFromQueue(this)}},onBeforeUpload:{value:function(){}},onProgress:{value:function(e){}},onSuccess:{value:function(e,t,n){}},onError:{value:function(e,t,n){}},onCancel:{value:function(e,t,n){}},onComplete:{value:function(e,t,n){}},_onBeforeUpload:{value:function(){this.isReady=!0,this.isUploading=!0,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!1,this.isError=!1,this.progress=0,this.onBeforeUpload()}},_onProgress:{value:function(e){this.progress=e,this.onProgress(e)}},_onSuccess:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!0,this.isCancel=!1,this.isError=!1,this.progress=100,this.index=null,this.onSuccess(e,t,n)}},_onError:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!1,this.isCancel=!1,this.isError=!0,this.progress=0,this.index=null,this.onError(e,t,n)}},_onCancel:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!0,this.isError=!1,this.progress=0,this.index=null,this.onCancel(e,t,n)}},_onComplete:{value:function(e,t,n){this.onComplete(e,t,n),this.removeAfterUpload&&this.remove()}},_destroy:{value:function(){this._input&&this._input.remove(),this._form&&this._form.remove(),delete this._form,delete this._input}},_prepareToUploading:{value:function(){this.index=this.index||++this.uploader._nextIndex,this.isReady=!0}},_replaceNode:{value:function(t){var n=e(t.clone())(t.scope());n.prop("value",null),t.css("display","none"),t.after(n)}}}),n}();return n},e.exports.$inject=["$compile","FileLikeObject"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.extend);e.exports=function(){var e=function(){function e(t){o(this,e),s(this,t),this.uploader._directives[this.prop].push(this),this._saveLinks(),this.bind()}return i(e,{bind:{value:function(){for(var e in this.events){var t=this.events[e];this.element.bind(e,this[t])}}},unbind:{value:function(){for(var e in this.events)this.element.unbind(e,this.events[e])}},destroy:{value:function(){var e=this.uploader._directives[this.prop].indexOf(this);this.uploader._directives[this.prop].splice(e,1),this.unbind()}},_saveLinks:{value:function(){for(var e in this.events){var t=this.events[e];this[t]=this[t].bind(this)}}}}),e}();return e.prototype.events={},e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",change:"onChange"},prop:"select"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n),this.uploader.isHTML5||this.element.removeAttr("multiple"),this.element.prop("value",null)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},isEmptyAfterSelection:{value:function(){return!!this.element.attr("multiple")}},onChange:{value:function(){var e=this.uploader.isHTML5?this.element[0].files:this.element[0],t=this.getOptions(),n=this.getFilters();this.uploader.isHTML5||this.destroy(),this.uploader.addToQueue(e,t,n),this.isEmptyAfterSelection()&&(this.element.prop("value",null),this.element.replaceWith(this.element=this.element.clone(!0)))}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function c(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:c(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend),l=angular.forEach;e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",drop:"onDrop",dragover:"onDragOver",dragleave:"onDragLeave"},prop:"drop"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},onDrop:{value:function(e){var t=this._getTransfer(e);if(t){var n=this.getOptions(),r=this.getFilters();this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this),this.uploader.addToQueue(t.files,n,r)}}},onDragOver:{value:function(e){var t=this._getTransfer(e);this._haveFiles(t.types)&&(t.dropEffect="copy",this._preventAndStop(e),l(this.uploader._directives.over,this._addOverClass,this))}},onDragLeave:{value:function(e){e.currentTarget!==this.element[0]&&(this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this))}},_getTransfer:{value:function(e){return e.dataTransfer?e.dataTransfer:e.originalEvent.dataTransfer}},_preventAndStop:{value:function(e){e.preventDefault(),e.stopPropagation()}},_haveFiles:{value:function(e){return e?e.indexOf?-1!==e.indexOf("Files"):e.contains?e.contains("Files"):!1:!1}},_addOverClass:{value:function(e){e.addOverClass()}},_removeOverClass:{value:function(e){e.removeOverClass()}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy"},prop:"over",overClass:"nv-file-over"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{addOverClass:{value:function(){this.element.addClass(this.getOverClass())}},removeOverClass:{value:function(){this.element.removeClass(this.getOverClass())}},getOverClass:{value:function(){return this.overClass}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}},e.exports.$inject=["$parse","FileUploader","FileSelect"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');if(s.isHTML5){var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}}},e.exports.$inject=["$parse","FileUploader","FileDrop"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t){return{link:function(n,r,i){var o=n.$eval(i.uploader);if(!(o instanceof e))throw new TypeError('"Uploader" must be an instance of FileUploader');var s=new t({uploader:o,element:r});s.getOverClass=function(){return i.overClass||s.overClass}}}},e.exports.$inject=["FileUploader","FileOver"]}])});
 
-},{}],87:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -15507,11 +15552,11 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 })(window, window.angular);
 
-},{}],88:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 require('./angular-sanitize');
 module.exports = 'ngSanitize';
 
-},{"./angular-sanitize":87}],89:[function(require,module,exports){
+},{"./angular-sanitize":88}],90:[function(require,module,exports){
 /**
   * x is a value between 0 and 1, indicating where in the animation you are.
   */
@@ -16140,17 +16185,17 @@ angular.module('duScroll.scrollspy', ['duScroll.spyAPI'])
   };
 }]);
 
-},{}],90:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 require('angular');
 require('./angular-scroll');
 
 module.exports = 'duScroll';
 
-},{"./angular-scroll":89,"angular":96}],91:[function(require,module,exports){
+},{"./angular-scroll":90,"angular":97}],92:[function(require,module,exports){
 require('./ui-bootstrap-tpls');
 module.exports = 'ui.bootstrap';
 
-},{"./ui-bootstrap-tpls":92}],92:[function(require,module,exports){
+},{"./ui-bootstrap-tpls":93}],93:[function(require,module,exports){
 /*
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
@@ -24654,7 +24699,7 @@ angular.module("template/typeahead/typeahead-popup.html", []).run(["$templateCac
     "");
 }]);
 !angular.$$csp() && angular.element(document).find('head').prepend('<style type="text/css">.ng-animate.item:not(.left):not(.right){-webkit-transition:0s ease-in-out left;transition:0s ease-in-out left}</style>');
-},{}],93:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 /**
  * @license Angular UI Tree v2.13.0
  * (c) 2010-2015. https://github.com/angular-ui-tree/angular-ui-tree
@@ -26160,11 +26205,11 @@ angular.module("template/typeahead/typeahead-popup.html", []).run(["$templateCac
 
 })();
 
-},{}],94:[function(require,module,exports){
+},{}],95:[function(require,module,exports){
 require('./dist/angular-ui-tree');
 module.exports = 'ui.tree';
 
-},{"./dist/angular-ui-tree":93}],95:[function(require,module,exports){
+},{"./dist/angular-ui-tree":94}],96:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -55183,11 +55228,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],96:[function(require,module,exports){
+},{}],97:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":95}],97:[function(require,module,exports){
+},{"./angular":96}],98:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.0
  * http://jquery.com/
@@ -65020,7 +65065,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],98:[function(require,module,exports){
+},{}],99:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -79454,7 +79499,7 @@ return jQuery;
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],99:[function(require,module,exports){
+},{}],100:[function(require,module,exports){
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select

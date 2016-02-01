@@ -46,6 +46,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  ng-model="formData.Email"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.Email) }"
 							                  type="email"
+							                  maxlength="50"
 							                  required />
 							              </div>
 							              <!-- Name -->
@@ -66,6 +67,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  name="NameEn"
 							                  ng-model="formData.NameEn"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.NameEn) }"
+							                  maxlength="100"
 							                  required />
 							              </div>
 							              <!-- Phone Number -->
@@ -75,7 +77,8 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  'labelClass': 'required',
 							                  'error' : {
 							                        'messages': {
-							                          'required': 'This is a required field'
+							                          'required': 'This is a required field',
+							                          'pattern': 'Only numbers allowed in this field'
 							                        },
 							                        'show': $root.isInvalid(form.Phone),
 							                        'conditions' : form.Phone.$error
@@ -86,8 +89,9 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  name="Phone"
 							                  ng-model="formData.Phone"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.Phone) }"
-							                  ng-pattern="/^[0-9\-]*$/"
-							                  ng-pattern-restrict="^[0-9\-]*$"
+							                  ng-pattern="/^[0-9]*$/"
+							                  ng-pattern-restrict="^[0-9]*$"
+							                  maxlength="20"
 							                  required />
 							              </div>
 							              <!-- Employee ID -->
@@ -108,6 +112,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  name="EmployeeId"
 							                  ng-model="formData.EmployeeId"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.EmployeeId) }"
+							                  maxlength="50"
 							                  required />
 							              </div>
 							              <!-- Position -->
@@ -128,6 +133,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  name="Position"
 							                  ng-model="formData.Position"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.Position) }"
+							                  maxlength="100"
 							                  required />
 							              </div>
 							              <!-- Division / BU -->
@@ -148,6 +154,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  name="Division"
 							                  ng-model="formData.Division"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.Division) }"
+							                  maxlength="100"
 							                  required />
 							              </div>
 							              <!-- Password -->
@@ -159,7 +166,9 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  'error' : {
 							                        'messages': {
 							                          'required': 'This is a required field',
-							                          'pattern': 'Must have both number and character'
+							                          'pattern': 'Must have both number and character',
+							                          'minlength': 'Your password must be 8-20 characters long',
+							                          'maxlength': 'Your password must be 8-20 characters long'
 							                        },
 							                        'show': $root.isInvalid(form.Password),
 							                        'conditions' : form.Password.$error
@@ -173,6 +182,8 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.Password) }"
 							                  ng-pattern="/^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$/"
 							                  ng-pattern-restrict="^[0-9a-zA-Z]*$"
+							                  ng-maxlength="20"
+							                  ng-minlength="8"
 							                  required />
 							              </div>
 							              <!-- Confirm Password -->
@@ -183,7 +194,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  'error' : {
 							                        'messages': {
 							                          'required': 'This is a required field',
-							                          'pattern': 'Must have both number and character'
+							                          'match': 'Your password and password confirmation do not match'
 							                        },
 							                        'show': $root.isInvalid(form.ConfirmPassword),
 							                        'conditions' : form.ConfirmPassword.$error
@@ -195,8 +206,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  name="ConfirmPassword"
 							                  ng-model="formData.ConfirmPassword"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.ConfirmPassword) }"
-							                  ng-pattern="/^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$/"
-							                  ng-pattern-restrict="^[0-9a-zA-Z]*$"
+							                  ng-match="{{formData.Password}}"
 							                  required />
 							              </div>
 									</div>
@@ -211,10 +221,17 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							            <div ng-template="common/input/dropdown"
 							              ng-template-options="{
 							                'label' : 'Admin Role',
-							                'labelClass' : 'required'
+							                'labelClass' : 'required',
+							                'error' : {
+							                        'messages': {
+							                          'required': 'This is a required field',
+							                        },
+							                        'show': isInvalid(form.UserGroup),
+							                        'conditions' : form.UserGroup.$error
+								            }
 							              }">
-							              <ui-select ng-model="formData.UserGroup" search-enabled="false">
-							                <ui-select-match>
+							              <ui-select name="UserGroup" ng-model="formData.UserGroup" search-enabled="false" required>
+							                <ui-select-match placeholder="- Select Admin Role -">
 							                    <span ng-bind="$select.selected.GroupNameEn"></span>
 							                </ui-select-match>
 							                <ui-select-choices repeat="item in roles">

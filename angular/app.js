@@ -142,6 +142,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .directive('ngSlideToggle', directives.ngSlideToggle)
 .directive('ngTemplate', directives.ngTemplate)
 .directive('uiSelectMaxlength', directives.uiSelectMaxlength)
+.directive('ngMatch', directives.ngMatch)
 .directive('popoverAny', directives.popoverAny)
 
 //Filters

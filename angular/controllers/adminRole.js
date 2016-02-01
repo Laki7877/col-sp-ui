@@ -1,4 +1,4 @@
-module.exports = function($scope, $window, AdminRoleService, NcAlert) {
+module.exports = function($scope, $window, AdminRoleService, NcAlert, util) {
 	$scope.reload = function() {
 		$scope.loading = true;
 		AdminRoleService.list($scope.params)

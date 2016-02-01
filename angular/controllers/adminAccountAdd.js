@@ -6,6 +6,8 @@ module.exports = function($scope, $window, AdminAccountService, AdminRoleService
 	$scope.saving = false; //prevent multiple saving
 	$scope.loading = false;
 
+	util.warningOnLeave($scope, 'form');
+
 	$scope.init = function(params) {
 		//Fetch GET Params
 		if(!_.isUndefined(params)) {
@@ -59,6 +61,7 @@ module.exports = function($scope, $window, AdminAccountService, AdminRoleService
 				AdminAccountService.update($scope.id, data)
 					.then(function(result) {
 						$scope.alert.success(util.saveAlertSuccess('Admin Account', '/admin/accounts'));
+						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(util.saveAlertError());
 					})
@@ -71,6 +74,7 @@ module.exports = function($scope, $window, AdminAccountService, AdminRoleService
 					.then(function(result) {
 						$scope.formData.UserId = result.UserId; 
 						$scope.alert.success(util.saveAlertSuccess('Admin Account', '/admin/accounts'));
+						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(util.saveAlertError());
 					})

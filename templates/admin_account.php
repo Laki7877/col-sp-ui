@@ -24,7 +24,7 @@
           <tr ng-repeat="row in list.data">
             <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
             <td class="column-text-ellipsis">{{row.UserId | leadingzero:2}}</td>
-            <td>{{row.NameEn }}</td>
+            <td nc-link="/admin/accounts/{{row.UserId}}">{{row.NameEn }}</td>
             <td>{{row.Email }}</td>
             <td>{{row.UserGroup[0]}}</td>
             <td><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>

@@ -54,6 +54,7 @@ module.exports = function($scope, $window, AdminShopService, AdminShoptypeServic
 				AdminShopService.update($scope.id, data)
 					.then(function(result) {
 						$scope.alert.success(util.saveAlertSuccess('Admin Shop', '/admin/shops'));
+						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(util.saveAlertError());
 					})
@@ -66,6 +67,7 @@ module.exports = function($scope, $window, AdminShopService, AdminShoptypeServic
 					.then(function(result) {
 						$scope.formData.ShopId = result.ShopId; 
 						$scope.alert.success(util.saveAlertSuccess('Admin Shop Account', '/admin/shops'));
+						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(util.saveAlertError());
 					})

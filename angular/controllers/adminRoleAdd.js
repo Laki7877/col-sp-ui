@@ -45,6 +45,7 @@ module.exports = function($scope, $window, AdminRoleService, AdminPermissionServ
 				AdminRoleService.update($scope.id, data)
 					.then(function(result) {
 						$scope.alert.success(util.saveAlertSuccess('Admin Role', '/admin/roles'));
+						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(util.saveAlertError());
 					})
@@ -57,6 +58,7 @@ module.exports = function($scope, $window, AdminRoleService, AdminPermissionServ
 					.then(function(result) {
 						$scope.formData.GroupId = result.GroupId; 
 						$scope.alert.success(util.saveAlertSuccess('Admin Role', '/admin/roles'));
+						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(util.saveAlertError());
 					})

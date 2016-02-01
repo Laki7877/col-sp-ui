@@ -2,18 +2,14 @@ module.exports = function(common) {
 	var service = common.Rest('/Users/Admin');
 
 	service.generate = function() {
-		return {
-			UserGroup: {
-				GroupNameEn: '-- Choose Admin Role --' //dummy
-			}
-		};
+		return {};
 	};
 
 	service.serialize = function(data) {
 		var processed = _.merge({}, data);
 		
 		processed.UserGroup = [processed.UserGroup];
-
+		processed = _.omit(processed, ['ConfirmPassword']);
 		return processed;
 	};
 

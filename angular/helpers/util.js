@@ -74,6 +74,26 @@ module.exports = ['storage', 'config', '$window', function (storage, config, $wi
         });
     };
 
+    //block before leaving
+    service.warningOnLeave = function(scope, form) {
+        $window.onbeforeunload = function () {
+            if(!scope[form].$dirty){
+                //not dirty
+                return null;
+            }
+
+            var message = "Your changes will not be saved.",
+            e = e || window.event;
+            // For IE and Firefox
+            if (e) {
+              e.returnValue = message;
+            }
+
+            // For Safari
+            return message;
+        };  
+    }
+
     //Convert ncTable params to our older params version
     service.ncParams = function(param) {
         return {
@@ -92,7 +112,6 @@ module.exports = ['storage', 'config', '$window', function (storage, config, $wi
     service.saveAlertSuccess = function(itemName, link) {
         return config.DEFAULT_SUCCESS_MESSAGE + ' View <a href="' + link + '">' + itemName + ' List</a>';
     };
-
 
     //Create bulk-action from template
     service.bulkDelete = function(rest, id, item, alert, reload)  {
