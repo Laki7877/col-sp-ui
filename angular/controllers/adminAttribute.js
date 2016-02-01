@@ -98,7 +98,7 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 	$scope.tableParams = {
 		filter: $scope.filterOptions[0].value,
 		searchText: null,
-		orderBy: 'UpdateDt',
+		orderBy: 'UpdatedDt',
 		direction: 'desc',
 		page: 0,
 		pageSize: 10

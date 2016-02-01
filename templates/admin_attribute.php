@@ -64,9 +64,9 @@
                <i class="fa">
             </th>
             <th><a class="header-link" href="#"><span>Mapped Set</span></a></th>
-            <th class="modified-column" ng-click="setOrderBy('UpdateDt')">
-              <a class="header-link" href="#"><span ng-class="sort('UpdateDt', true)">Modified</span></a>
-              <i class="fa" ng-class="sort('UpdateDt')">
+            <th class="modified-column" ng-click="setOrderBy('UpdatedDt')">
+              <a class="header-link" href="#"><span ng-class="sort('UpdatedDt', true)">Modified</span></a>
+              <i class="fa" ng-class="sort('UpdatedDt')">
             </th>
             <th>
               Action

@@ -21,7 +21,7 @@ module.exports = function($scope, $window, AdminAccountService, NcAlert, util) {
 		_order: 'UserId',
 		_limit: 10,
 		_offset: 0,
-		_direction: 'desc'
+		_direction: 'asc'
 	};
 	$scope.list = {
 		total: 0,

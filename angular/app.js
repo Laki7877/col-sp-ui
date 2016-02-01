@@ -178,5 +178,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .controller('AdminShopCtrl', controllers.adminShop)
 .controller('AdminShopAddCtrl', controllers.adminShopAdd)
 .controller('AdminShoptypeCtrl', controllers.adminShoptype)
+.controller('AdminShoptypeAddCtrl', controllers.adminShoptypeAdd)
 
 .controller('TestCtrl', controllers.test)

@@ -8,6 +8,27 @@ module.exports = function($scope, $window, AdminShoptypeService, NcAlert, util) 
 		ShopTypePermission: false,
 		AppearanceSetting: false
 	};
+
+	//Recheck selectall checkbox after initial load
+	//TODO: hardcode
+	$scope.recheck = function() {
+		var test = true;
+		var test2 = true;
+		var test3 = $scope.formData.Permission[3].check;
+
+		for (var i = 0; i < 4; i++) {
+			test = test && $scope.formData.Permission[i].check;
+		}
+		for (var i = 4; i < 8; i++) {
+			test2 = test2 && && $scope.formData.Permission[i].check;
+		}
+
+		$scope.selectAll.ShopTypePermission = test;
+		$scope.selectAll.AppearanceSetting = test2;
+	};
+
+	util.warningOnLeave($scope, 'form');
+
 	$scope.init = function(params) {
 		//Fetch GET Params
 		if(!_.isUndefined(params)) {
@@ -44,12 +65,13 @@ module.exports = function($scope, $window, AdminShoptypeService, NcAlert, util) 
 		//Form validation
 		if($scope.form.$valid) {
 			$scope.saving = true;
+			$scope.alert.close();
 			var data = AdminShoptypeService.serialize($scope.formData);
 			if($scope.id > 0) {
 				//Edit mode
 				AdminShoptypeService.update($scope.id, data)
 					.then(function(result) {
-						$scope.alert.success(util.saveAlertSuccess('Admin Shop', '/admin/shoptypes'));
+						$scope.alert.success(util.saveAlertSuccess('Admin Shop Type', '/admin/shoptypes'));
 						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(util.saveAlertError());
@@ -62,7 +84,7 @@ module.exports = function($scope, $window, AdminShoptypeService, NcAlert, util) 
 				AdminShoptypeService.create(data)
 					.then(function(result) {
 						$scope.formData.GroupId = result.GroupId; 
-						$scope.alert.success(util.saveAlertSuccess('Admin Shop Account', '/admin/shoptypes'));
+						$scope.alert.success(util.saveAlertSuccess('Admin Shop Type', '/admin/shoptypes'));
 						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(util.saveAlertError());
@@ -77,20 +99,22 @@ module.exports = function($scope, $window, AdminShoptypeService, NcAlert, util) 
 		}
 	};
 
-	//Watch checkall box
-	$scope.$watch('selectAll.ShopTypePermission', function(val, val2) {
-		if(val !== val2) {
+	$scope.$watch('formData.Permission', function(val, val2) {
+		if($scope.formData.Permission && $scope.formData.Permission.length == 8) {
+			$scope.recheck();
+		}
+	}, true);
+
+	$scope.checkAll = function(val, id) {
+		if(id == 'ShopTypePermission') {
 			for (var i = 0; i < 4; i++) {
 				$scope.formData.Permission[i].check = val;
 			}
 		}
-	})
-
-	$scope.$watch('selectAll.AppearanceSetting', function(val, val2) {
-		if(val !== val2) {
+		if(id == 'AppearanceSetting') {
 			for (var i = 4; i < 8; i++) {
 				$scope.formData.Permission[i].check = val;
 			}
 		}
-	});
+	};
 }

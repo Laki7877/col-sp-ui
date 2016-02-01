@@ -5,8 +5,8 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminShoptypeAddCtrl" ng-init="init(<?=$params?>)">
-		<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Shop Types/". $title, 'urls' => ['/admin/shoptypes']]) ?>
 		<nc-alert nc-model="alert"></nc-alert>
+		<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Shop Types/". $title, 'urls' => ['/admin/shoptypes']]) ?>
 		<div ng-show="loading" nc-loading="Loading Shop Type.."></div>
 		<div ng-show="saving" nc-loading="Saving Shop Type.."></div>
 		<form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
@@ -24,7 +24,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										  	}"
 										  	ng-show="formData.ShopTypeId"
 										  	>
-										  	{{formData.ShopTypeId}}
+										  	{{formData.ShopTypeId | leadingzero:2}}
 										  </div>
 							              <!-- Name -->
 							              <div ng-template="common/input/text2"
@@ -44,6 +44,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  name="ShopTypeNameEn"
 							                  ng-model="formData.ShopTypeNameEn"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.ShopTypeNameEn) }"
+							                  maxlength="100"
 							                  required />
 							              </div>
 									</div>
@@ -59,16 +60,16 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 											ng-template-options="{
 												'label' : 'Shop Type Permission'
 											}">
-											<label><input ng-model="selectAll.ShopTypePermission" type="checkbox">Select All</label>
-											<label ng-repeat="permission in formData.Permission | slice:0:4"><input ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
+											<label><input ng-model="selectAll.ShopTypePermission" ng-change="checkAll(selectAll.ShopTypePermission, 'ShopTypePermission')" type="checkbox">Select All</label>
+											<label ng-repeat="permission in formData.Permission | slice:0:4"><input name="permission{{permission.PermissionId}}" ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
 										</div>
 										<div ng-template="common/input/multiline-checkbox"
 											ng-template-options="{
 												'label' : 'Appearance Setting'
 											}"
 											ng-show="formData.Permission[3].check">
-											<label><input ng-model="selectAll.AppearanceSetting" type="checkbox">Select All</label>
-											<label ng-repeat="permission in formData.Permission | slice:4:8"><input ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
+											<label><input ng-model="selectAll.AppearanceSetting" ng-change="checkAll(selectAll.AppearanceSetting, 'AppearanceSetting')" type="checkbox">Select All</label>
+											<label ng-repeat="permission in formData.Permission | slice:4:8"><input name="permission{{permission.PermissionId}}" ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
 										</div>
 									</div>
 								</div>

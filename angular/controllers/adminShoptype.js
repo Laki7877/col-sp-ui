@@ -17,7 +17,7 @@ module.exports = function($scope, $window, AdminShoptypeService, NcAlert, util) 
 		_order: 'ShopTypeId',
 		_limit: 10,
 		_offset: 0,
-		_direction: 'desc'
+		_direction: 'asc'
 	};
 	$scope.list = {
 		total: 0,

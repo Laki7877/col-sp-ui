@@ -22,7 +22,7 @@ module.exports = function($scope, $window, AdminShopService, AdminShoptypeServic
 		_order: 'ShopId',
 		_limit: 10,
 		_offset: 0,
-		_direction: 'desc'
+		_direction: 'asc'
 	};
 
 	//Table list

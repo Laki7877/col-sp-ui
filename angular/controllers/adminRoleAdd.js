@@ -42,6 +42,7 @@ module.exports = function($scope, $window, AdminRoleService, AdminPermissionServ
 		//Form validation
 		if($scope.form.$valid) {
 			$scope.saving = true;
+			$scope.alert.close();
 			var data = AdminRoleService.serialize($scope.formData);
 			if($scope.id > 0) {
 				//Edit mode

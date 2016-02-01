@@ -17,7 +17,7 @@
             <th nc-sort="DateType">Field Type</th>
             <th>Variation</th>
             <th>Mapped Set</th>
-            <th nc-sort="UpdateDt" class="modified-column">Modified</th>
+            <th nc-sort="UpdatedDt" class="modified-column">Modified</th>
             <th>Action</th>
           </tr>
         </thead>

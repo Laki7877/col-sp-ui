@@ -54,6 +54,7 @@ module.exports = function($scope, $window, AdminAccountService, AdminRoleService
 		//Form validation
 		if($scope.form.$valid) {
 			$scope.saving = true;
+			$scope.alert.close();
 			var data = AdminAccountService.serialize($scope.formData);
 
 			if($scope.id > 0) {

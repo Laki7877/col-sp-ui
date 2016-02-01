@@ -5,7 +5,8 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminShopAddCtrl" ng-init="init(<?=$params?>)">
-		<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Shop Accounts/". $title, 'urls' => ['/admin/shops']]) ?>
+		<nc-alert nc-model="alert"></nc-alert>	
+		<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Shop Accounts/". $title, 'urls' => ['/admin/shops']]) ?>	
 		<div ng-show="loading" nc-loading="Loading Shop Account.."></div>
 		<div ng-show="saving" nc-loading="Saving Shop Account.."></div>
 		<form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
@@ -17,6 +18,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 								<div class="form-section">
 									<div class="form-section-header"><h2>Shop Account Information</h2></div>
 									<div class="form-section-content">
+										<!-- Shop ID -->
 										<div ng-template="common/input/label"
 											ng-template-options="{
 												'label': 'Shop ID'
@@ -25,6 +27,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 											>
 											{{formData.ShopId | leadingzero: 2}}
 										</div>
+										<!-- Shop Name -->
 										<div ng-template="common/input/text2"
 							                ng-template-options="{
 							                  'label': 'Shop Name',
@@ -42,13 +45,23 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  name="ShopNameEn"
 							                  ng-model="formData.ShopNameEn"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.ShopNameEn) }"
+							                  maxlength="100"
 							                  required />
 							            </div>
+							            <!-- Shop Type -->
 							            <div ng-template="common/input/dropdown"
 							              ng-template-options="{
-							                'label' : 'Shop Type'
+							                'label' : 'Shop Type',
+							                'labelClass' : 'required',
+							                'error' : {
+							                        'messages': {
+							                          'required': 'This is a required field',
+							                        },
+							                        'show': isInvalid(form.ShopType),
+							                        'conditions' : form.ShopType.$error
+								            }	
 							              }">
-							              <ui-select ng-model="formData.ShopType" search-enabled="false">
+							              <ui-select name="ShopType" ng-model="formData.ShopType" search-enabled="false" required>
 							                <ui-select-match placeholder="- Select Shop Type -">
 							                    <span ng-bind="$select.selected.ShopTypeNameEn"></span>
 							                </ui-select-match>
@@ -57,14 +70,17 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                </ui-select-choices>
 							              </ui-select>
 							            </div>
+							            <!-- Create new Shop type -->
 							            <div ng-template="common/link"
 							              ng-template-options="{
 							              	'link' : '/admin/shoptypes/add'
 							              }">Create New Shop Type
 							          	</div>
+							          	<!-- Shop Status -->
 							            <div ng-template="common/input/dropdown"
 							              ng-template-options="{
-							                'label' : 'Shop Status'
+							                'label' : 'Shop Status',
+							                'labelClass' : 'required'
 							              }">
 							              <ui-select ng-model="formData.Status" search-enabled="false">
 							                <ui-select-match placeholder="- Select Shop Status -">
@@ -75,6 +91,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                </ui-select-choices>
 							              </ui-select>
 							            </div>
+							            <!-- Commission -->
 					                    <div ng-template="common/input/text2"
 					                      ng-template-options="{
 					                        'label': 'Commission (%)',
@@ -93,9 +110,10 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 					                        class="form-control"
 					                        name="Commission"
 					                        ng-model="formData.Commission"
-                    						ng-pattern="/^\d+(\.\d{1,})?$/"
+                    						ng-pattern="/^\d+(\.\d{1,2})?$/"
 					                        ng-class="{ 'has-error' : $root.isInvalid(form.Commission) }"
 					                        maxlength="20"
+					                        required
 					                        />
 					                    </div>
 									</div>
@@ -123,8 +141,9 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                <input
 							                  class="form-control"
 							                  name="NameEn"
-							                  ng-model="formData.Shopowner.NameEn"
+							                  ng-model="formData.ShopOwner.NameEn"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.NameEn) }"
+							                  maxlength="100"
 							                  required />
 							              </div>
 							              <!-- Position -->
@@ -143,8 +162,9 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                <input
 							                  class="form-control"
 							                  name="Position"
-							                  ng-model="formData.Shopowner.Position"
+							                  ng-model="formData.ShopOwner.Position"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.Position) }"
+							                  maxlength="100"
 							                  required />
 							              </div>
 							              <!-- Email -->
@@ -164,9 +184,10 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                <input
 							                  class="form-control"
 							                  name="Email"
-							                  ng-model="formData.Shopowner.Email"
+							                  ng-model="formData.ShopOwner.Email"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.Email) }"
 							                  type="email"
+							                  maxlength="50"
 							                  required />
 							              </div>
 							              <!-- Phone Number -->
@@ -176,7 +197,8 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  'labelClass': 'required',
 							                  'error' : {
 							                        'messages': {
-							                          'required': 'This is a required field'
+							                          'required': 'This is a required field',
+							                          'pattern': 'Only numbers allowed in this field'
 							                        },
 							                        'show': $root.isInvalid(form.Phone),
 							                        'conditions' : form.Phone.$error
@@ -185,22 +207,24 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                <input
 							                  class="form-control"
 							                  name="Phone"
-							                  ng-model="formData.Shopowner.Phone"
+							                  ng-model="formData.ShopOwner.Phone"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.Phone) }"
-							                  ng-pattern="/^[0-9\-]*$/"
-							                  ng-pattern-restrict="^[0-9\-]*$"
+							                  ng-pattern="/^[0-9]*$/"
+							                  maxlength="20"
 							                  required />
 							              </div>
 							              <!-- Password -->
 							              <div ng-template="common/input/password"
 							                ng-template-options="{
 							                  'label': 'Password',
-							                  'labelClass': 'required',
+							                  'labelClass': { 'required' : !(formData.ShopId > 0) },
 							                  'formGroupClass': 'margin-top-30',
 							                  'error' : {
 							                        'messages': {
 							                          'required': 'This is a required field',
-							                          'pattern': 'Must have both number and character'
+							                          'pattern': 'Must have both number and character',
+							                          'minlength': 'Your password must be 8-20 characters long',
+							                          'maxlength': 'Your password must be 8-20 characters long'
 							                        },
 							                        'show': $root.isInvalid(form.Password),
 							                        'conditions' : form.Password.$error
@@ -210,21 +234,23 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  class="form-control"
 							                  type="{{$parent.inputType}}"
 							                  name="Password"
-							                  ng-model="formData.Shopowner.Password"
+							                  ng-model="formData.ShopOwner.Password"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.Password) }"
 							                  ng-pattern="/^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$/"
 							                  ng-pattern-restrict="^[0-9a-zA-Z]*$"
-							                  required />
+							                  ng-maxlength="20"
+							                  ng-minlength="8"
+							                  ng-required="!(formData.ShopId > 0)" />
 							              </div>
 							              <!-- Confirm Password -->
 							              <div ng-template="common/input/password"
 							                ng-template-options="{
 							                  'label': 'Confirm Password',
-							                  'labelClass': 'required',
+							                  'labelClass': { 'required' : !(formData.ShopId > 0) },
 							                  'error' : {
 							                        'messages': {
 							                          'required': 'This is a required field',
-							                          'pattern': 'Must have both number and character'
+							                          'match': 'Your password and password confirmation do not match'
 							                        },
 							                        'show': $root.isInvalid(form.ConfirmPassword),
 							                        'conditions' : form.ConfirmPassword.$error
@@ -234,11 +260,10 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  class="form-control"
 							                  type="{{$parent.inputType}}"
 							                  name="ConfirmPassword"
-							                  ng-model="formData.Shopowner.ConfirmPassword"
+							                  ng-model="formData.ShopOwner.ConfirmPassword"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.ConfirmPassword) }"
-							                  ng-pattern="/^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$/"
-							                  ng-pattern-restrict="^[0-9a-zA-Z]*$"
-							                  required />
+							                  ng-match="{{formData.ShopOwner.Password}}"
+							                  ng-required="!(formData.ShopId > 0)" />
 							              </div>
 									</div>
 								</div>
@@ -263,14 +288,14 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 												</thead> 
 												<tbody> 
 													<tr> 
-														<td>{{ Shopowner.UserId | leadingzero:2 }}</td> 
-														<td>{{ Shopowner.NameEn }}</td> 
-														<td>{{ Shopowner.Email }}</td>
+														<td>{{ formData.ShopOwner.UserId | leadingzero:2 }}</td> 
+														<td>{{ formData.ShopOwner.NameEn }}</td> 
+														<td>{{ formData.ShopOwner.Email }}</td>
 														<td>Shop Owner</td>
-														<td>{{ Shopowner.Status | mapDropdown:statusDropdown }}</td>
+														<td>{{ formData.ShopOwner.Status | mapDropdown:statusDropdown }}</td>
 														<td class="text-align-center"><a class="btn btn-white btn-width-xl">Login-As</a></td> 
 													</tr>
-													<tr ng-repeat="user in formData.Users"> 
+													<tr ng-repeat="user in formData.Users track by user.UserId"> 
 														<td>{{ user.UserId | leadingzero:2 }}</td> 
 														<td>{{ user.NameEn }}</td> 
 														<td>{{ user.Email }}</td>

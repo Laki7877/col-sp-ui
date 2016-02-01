@@ -2,8 +2,8 @@
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminShopCtrl">
-    <? $this->insert('components/page-title-with-one-button', ['text' => 'Shop Accounts','button' => 'Create New Seller Shop', 'button_class' => 'btn-width-xxxl', 'link' => '/admin/shops/add']) ?>
     <nc-alert nc-model="alert"></nc-alert>
+    <? $this->insert('components/page-title-with-one-button', ['text' => 'Shop Accounts','button' => 'Create New Seller Shop', 'button_class' => 'btn-width-xxxl', 'link' => '/admin/shops/add']) ?>
     <div class="row search-section-wrapper">
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="ShopId"></nc-bulk>
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Admin Accounts'"></nc-search>
@@ -17,7 +17,6 @@
             <th nc-sort="ShopNameEn">Shop Name</th>
             <th nc-sort="ShopTypeNameEn">Shop Type</th>
             <th nc-sort="Status">Status</th>
-            <th nc-sort="UpdateDt">Modified</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -28,7 +27,6 @@
             <td nc-link="/admin/shops/{{row.ShopId}}">{{row.ShopNameEn }}</td>
             <td>{{row.ShopType.ShopTypeNameEn }}</td>
             <td>{{row.Status | mapDropdown:statusDropdown }}</td>
-            <td>{{row.UpdateDt | dateTh}}</td>
             <td><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
           </tr>
         </tbody>

@@ -2,8 +2,8 @@
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminRoleCtrl">
-    <? $this->insert('components/page-title-with-one-button', ['text' => 'Admin Roles','button' => 'Create New Admin Role', 'button_class' => 'btn-width-xxxl', 'link' => '/admin/roles/add']) ?>
     <nc-alert nc-model="alert"></nc-alert>
+    <? $this->insert('components/page-title-with-one-button', ['text' => 'Admin Roles','button' => 'Create New Admin Role', 'button_class' => 'btn-width-xxxl', 'link' => '/admin/roles/add']) ?>
     <div class="row search-section-wrapper">
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="GroupId"></nc-bulk>
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Admin Roles'"></nc-search>

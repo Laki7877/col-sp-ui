@@ -178,6 +178,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .controller('AdminShopCtrl', controllers.adminShop)
 .controller('AdminShopAddCtrl', controllers.adminShopAdd)
 .controller('AdminShoptypeCtrl', controllers.adminShoptype)
+.controller('AdminShoptypeAddCtrl', controllers.adminShoptypeAdd)
 
 .controller('TestCtrl', controllers.test)
 
@@ -234,7 +235,7 @@ module.exports = function($scope, $window, AdminAccountService, NcAlert, util) {
 		_order: 'UserId',
 		_limit: 10,
 		_offset: 0,
-		_direction: 'desc'
+		_direction: 'asc'
 	};
 	$scope.list = {
 		total: 0,
@@ -320,6 +321,7 @@ module.exports = function($scope, $window, AdminAccountService, AdminRoleService
 		//Form validation
 		if($scope.form.$valid) {
 			$scope.saving = true;
+			$scope.alert.close();
 			var data = AdminAccountService.serialize($scope.formData);
 
 			if($scope.id > 0) {
@@ -455,7 +457,7 @@ module.exports = ['$scope', '$window', 'util', 'Attribute', 'Alert', function($s
 	$scope.tableParams = {
 		filter: $scope.filterOptions[0].value,
 		searchText: null,
-		orderBy: 'UpdateDt',
+		orderBy: 'UpdatedDt',
 		direction: 'desc',
 		page: 0,
 		pageSize: 10
@@ -1297,7 +1299,7 @@ module.exports = function($scope, $window, AdminRoleService, NcAlert, util) {
 		_order: 'GroupId',
 		_limit: 10,
 		_offset: 0,
-		_direction: 'desc'
+		_direction: 'asc'
 	};
 	$scope.list = {
 		total: 0,
@@ -1371,6 +1373,7 @@ module.exports = function($scope, $window, AdminRoleService, AdminPermissionServ
 		//Form validation
 		if($scope.form.$valid) {
 			$scope.saving = true;
+			$scope.alert.close();
 			var data = AdminRoleService.serialize($scope.formData);
 			if($scope.id > 0) {
 				//Edit mode
@@ -1429,7 +1432,7 @@ module.exports = function($scope, $window, AdminShopService, AdminShoptypeServic
 		_order: 'ShopId',
 		_limit: 10,
 		_offset: 0,
-		_direction: 'desc'
+		_direction: 'asc'
 	};
 
 	//Table list
@@ -1476,6 +1479,9 @@ module.exports = function($scope, $window, AdminShopService, AdminShoptypeServic
 	$scope.alert = new NcAlert();
 	$scope.saving = false; //prevent multiple saving
 	$scope.loading = false;
+
+	util.warningOnLeave($scope, 'form');
+
 	$scope.init = function(params) {
 		//Fetch GET Params
 		if(!_.isUndefined(params)) {
@@ -1497,7 +1503,7 @@ module.exports = function($scope, $window, AdminShopService, AdminShoptypeServic
 				$scope.loading = false;
 				}, function() {
 					//Jump back
-					$scope.cancel();
+					util.page404();
 				});
 		} else {
 			//Create mode
@@ -1518,6 +1524,7 @@ module.exports = function($scope, $window, AdminShopService, AdminShoptypeServic
 		//Form validation
 		if($scope.form.$valid) {
 			$scope.saving = true;
+			$scope.alert.close();
 			var data = AdminShopService.serialize($scope.formData);
 			if($scope.id > 0) {
 				//Edit mode
@@ -1571,7 +1578,7 @@ module.exports = function($scope, $window, AdminShoptypeService, NcAlert, util) 
 		_order: 'ShopTypeId',
 		_limit: 10,
 		_offset: 0,
-		_direction: 'desc'
+		_direction: 'asc'
 	};
 	$scope.list = {
 		total: 0,
@@ -1611,6 +1618,25 @@ module.exports = function($scope, $window, AdminShoptypeService, NcAlert, util) 
 		ShopTypePermission: false,
 		AppearanceSetting: false
 	};
+
+	//Recheck selectall checkbox after initial load
+	$scope.recheck = function() {
+		var test = true;
+		var test2 = true;
+
+		for (var i = 0; i < 4; i++) {
+			test = test && $scope.formData.Permission[i].check;
+		}
+		for (var i = 4; i < 8; i++) {
+			test2 = test2 && $scope.formData.Permission[i].check;
+		}
+
+		$scope.selectAll.ShopTypePermission = test;
+		$scope.selectAll.AppearanceSetting = test2;
+	};
+
+	util.warningOnLeave($scope, 'form');
+
 	$scope.init = function(params) {
 		//Fetch GET Params
 		if(!_.isUndefined(params)) {
@@ -1647,12 +1673,13 @@ module.exports = function($scope, $window, AdminShoptypeService, NcAlert, util) 
 		//Form validation
 		if($scope.form.$valid) {
 			$scope.saving = true;
+			$scope.alert.close();
 			var data = AdminShoptypeService.serialize($scope.formData);
 			if($scope.id > 0) {
 				//Edit mode
 				AdminShoptypeService.update($scope.id, data)
 					.then(function(result) {
-						$scope.alert.success(util.saveAlertSuccess('Admin Shop', '/admin/shoptypes'));
+						$scope.alert.success(util.saveAlertSuccess('Admin Shop Type', '/admin/shoptypes'));
 						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(util.saveAlertError());
@@ -1665,7 +1692,7 @@ module.exports = function($scope, $window, AdminShoptypeService, NcAlert, util) 
 				AdminShoptypeService.create(data)
 					.then(function(result) {
 						$scope.formData.GroupId = result.GroupId; 
-						$scope.alert.success(util.saveAlertSuccess('Admin Shop Account', '/admin/shoptypes'));
+						$scope.alert.success(util.saveAlertSuccess('Admin Shop Type', '/admin/shoptypes'));
 						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(util.saveAlertError());
@@ -1680,22 +1707,31 @@ module.exports = function($scope, $window, AdminShoptypeService, NcAlert, util) 
 		}
 	};
 
-	//Watch checkall box
-	$scope.$watch('selectAll.ShopTypePermission', function(val, val2) {
-		if(val !== val2) {
+	$scope.$watch('formData.Permission', function(val, val2) {
+		if($scope.formData.Permission && $scope.formData.Permission.length == 8) {
+			console.log($scope.formData);
+			$scope.recheck();
+		}
+	}, true);
+
+	$scope.checkAll = function(val, id) {
+		if(id == 'ShopTypePermission') {
 			for (var i = 0; i < 4; i++) {
 				$scope.formData.Permission[i].check = val;
 			}
 		}
-	})
-
-	$scope.$watch('selectAll.AppearanceSetting', function(val, val2) {
-		if(val !== val2) {
+		if(id == 'AppearanceSetting') {
 			for (var i = 4; i < 8; i++) {
 				$scope.formData.Permission[i].check = val;
 			}
 		}
-	});
+	};
+
+	$scope.check = function(val, id) {
+	//	if(!val && val != $scope.selectAll[id]) {
+	//		$scope.selectAll[id] = false;	
+	//	}
+	};
 }
 },{}],18:[function(require,module,exports){
 module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory', 'Shop', 'Alert', function($scope, $rootScope, common, Category, LocalCategory, Shop, Alert) {
@@ -4812,7 +4848,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncAlertTemplate',
-    "<div id=alert class=alert ng-class=\"['alert-' + (type || 'warning')]\" role=alert><span class=\"close color opacity-1\" ng-class=\"'color-' + (type || 'warning')\" aria-hidden=true ng-show=closeable ng-click=\"close({$event: $event})\">&times;</span><ng-transclude><ng-transclude></ng-transclude></div>"
+    "<div id=alert class=alert ng-class=\"['alert-' + (type || 'warning')]\" class=\"alert alert-dismissable\" role=alert><span class=\"close color opacity-1\" ng-class=\"'color-' + (type || 'warning')\" aria-hidden=true ng-show=closeable ng-click=\"close({$event: $event})\">&times;</span><ng-transclude><ng-transclude></ng-transclude></div>"
   );
 
 
@@ -4963,19 +4999,29 @@ module.exports = function(common, config, util) {
 	service.serialize = function(data) {
 		var processed = _.merge({}, data);
 		processed.Status = processed.Status.value;
-		processed = _.omit(processed, ['Users'])
+
+		//Remove password if no length or undefined
+		processed = _.omit(processed, ['Users']);
+		processed.ShopType = _.pick(processed.ShopType, ['ShopTypeId']);
+		processed.ShopOwner = _.omit(processed.ShopOwner, ['ConfirmPassword']);
+		processed.ShopOwner = _.omitBy(processed.ShopOwner, ['Password'], function(e) {
+			return _.isUndefined(e) || (e.length <= 0);
+		});
 		return processed;
 	};
 
 	service.deserialize = function(data) {
 		var processed = _.merge({}, data);
 		processed.Status = util.getDropdownItem(config.DROPDOWN.DEFAULT_STATUS_DROPDOWN, processed.Status);
+		_.remove(processed.Users, function(e) {
+			return _.isEmpty(e);
+		});
 		return processed;
 	};
 	service.generate = function() {
 		var processed = {
 			Status: config.DROPDOWN.DEFAULT_STATUS_DROPDOWN[0],
-			Shopowner: {},
+			ShopOwner: {},
 			Users: []
 		};
 		return processed;
@@ -6577,7 +6623,7 @@ module.exports = function(common) {
 },{}],81:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Mon Feb 01 2016 12:22:36 GMT+0700 (SE Asia Standard Time)
+ * Mon Feb 01 2016 17:08:04 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
