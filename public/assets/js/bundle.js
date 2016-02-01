@@ -299,7 +299,7 @@ module.exports = function($scope, $window, AdminAccountService, AdminRoleService
 					$scope.loading = false;
 				}, function() {
 					//Jump back
-					$scope.cancel();
+					util.page404();
 				});
 		} else {
 			//Create mode
@@ -1333,6 +1333,9 @@ module.exports = function($scope, $window, AdminRoleService, AdminPermissionServ
 	$scope.alert = new NcAlert();
 	$scope.saving = false; //prevent multiple saving
 	$scope.loading = false;
+
+	util.warningOnLeave($scope, 'form');
+
 	$scope.init = function(params) {
 		//Fetch GET Params
 		if(!_.isUndefined(params)) {
@@ -1347,7 +1350,7 @@ module.exports = function($scope, $window, AdminRoleService, AdminPermissionServ
 					$scope.loading = false;
 				}, function() {
 					//Jump back
-					$scope.cancel();
+					util.page404();
 				});
 		} else {
 			//Create mode
@@ -3236,7 +3239,7 @@ module.exports = function($interpolate) {
 
 			ctrl.$validators.match = function(modelValue, viewValue) {
 				var value = modelValue || viewValue;
-				return value === match;
+				return (!match) || (value === match);
 			};
 		}
 	}
@@ -4163,6 +4166,11 @@ module.exports = ['storage', 'config', '$window', function (storage, config, $wi
         });
     };
 
+    //Goto 404
+    service.page404 = function() {
+        $window.location.href="/error";
+    };
+
     //block before leaving
     service.warningOnLeave = function(scope, form) {
         $window.onbeforeunload = function () {
@@ -4421,7 +4429,6 @@ angular.module('nc')
 				};
 				scope.selectOption = function(option) {
 					scope.select = option;
-					console.log(scope.select, option);
 				}
 				scope.onChildChange = function(value, obj) {
 					if(value) {
@@ -4876,7 +4883,12 @@ module.exports = function(common) {
 		var processed = _.merge({}, data);
 		
 		processed.UserGroup = [processed.UserGroup];
+		
+		//Remove password if no length or undefined
 		processed = _.omit(processed, ['ConfirmPassword']);
+		processed = _.omitBy(processed, ['Password'], function(e) {
+			return _.isUndefined(e) || (e.length <= 0);
+		});
 		return processed;
 	};
 

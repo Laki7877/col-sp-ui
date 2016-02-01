@@ -33,7 +33,7 @@ module.exports = function($scope, $window, AdminAccountService, AdminRoleService
 					$scope.loading = false;
 				}, function() {
 					//Jump back
-					$scope.cancel();
+					util.page404();
 				});
 		} else {
 			//Create mode

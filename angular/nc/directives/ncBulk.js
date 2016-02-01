@@ -34,7 +34,6 @@ angular.module('nc')
 				};
 				scope.selectOption = function(option) {
 					scope.select = option;
-					console.log(scope.select, option);
 				}
 				scope.onChildChange = function(value, obj) {
 					if(value) {

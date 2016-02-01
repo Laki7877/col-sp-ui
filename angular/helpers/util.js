@@ -74,6 +74,11 @@ module.exports = ['storage', 'config', '$window', function (storage, config, $wi
         });
     };
 
+    //Goto 404
+    service.page404 = function() {
+        $window.location.href="/error";
+    };
+
     //block before leaving
     service.warningOnLeave = function(scope, form) {
         $window.onbeforeunload = function () {

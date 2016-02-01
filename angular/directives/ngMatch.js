@@ -13,7 +13,7 @@ module.exports = function($interpolate) {
 
 			ctrl.$validators.match = function(modelValue, viewValue) {
 				var value = modelValue || viewValue;
-				return value === match;
+				return (!match) || (value === match);
 			};
 		}
 	}

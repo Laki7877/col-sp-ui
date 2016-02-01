@@ -44,6 +44,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  name="GroupNameEn"
 							                  ng-model="formData.GroupNameEn"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.GroupNameEn) }"
+							                  maxlength="100"
 							                  required />
 							              </div>
 									</div>

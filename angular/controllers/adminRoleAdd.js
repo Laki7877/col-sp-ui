@@ -4,6 +4,9 @@ module.exports = function($scope, $window, AdminRoleService, AdminPermissionServ
 	$scope.alert = new NcAlert();
 	$scope.saving = false; //prevent multiple saving
 	$scope.loading = false;
+
+	util.warningOnLeave($scope, 'form');
+
 	$scope.init = function(params) {
 		//Fetch GET Params
 		if(!_.isUndefined(params)) {
@@ -18,7 +21,7 @@ module.exports = function($scope, $window, AdminRoleService, AdminPermissionServ
 					$scope.loading = false;
 				}, function() {
 					//Jump back
-					$scope.cancel();
+					util.page404();
 				});
 		} else {
 			//Create mode
