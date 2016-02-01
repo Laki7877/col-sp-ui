@@ -7,7 +7,6 @@ class AdminController extends Controller
 		return View::render('admin_category');
 	}
 
-
 	//Attribute
 	public static function listAttribute($params)
 	{

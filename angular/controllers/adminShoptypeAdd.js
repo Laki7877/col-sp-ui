@@ -14,13 +14,12 @@ module.exports = function($scope, $window, AdminShoptypeService, NcAlert, util) 
 	$scope.recheck = function() {
 		var test = true;
 		var test2 = true;
-		var test3 = $scope.formData.Permission[3].check;
 
 		for (var i = 0; i < 4; i++) {
 			test = test && $scope.formData.Permission[i].check;
 		}
 		for (var i = 4; i < 8; i++) {
-			test2 = test2 && && $scope.formData.Permission[i].check;
+			test2 = test2 && $scope.formData.Permission[i].check;
 		}
 
 		$scope.selectAll.ShopTypePermission = test;
@@ -102,6 +101,10 @@ module.exports = function($scope, $window, AdminShoptypeService, NcAlert, util) 
 	$scope.$watch('formData.Permission', function(val, val2) {
 		if($scope.formData.Permission && $scope.formData.Permission.length == 8) {
 			$scope.recheck();
+
+			if($scope.formData.Permission[3].check == false) {
+				$scope.checkAll(false, 'AppearanceSetting');
+			}
 		}
 	}, true);
 

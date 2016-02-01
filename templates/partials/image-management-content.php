@@ -4,7 +4,8 @@
 			<div class="form-section image-management">
 				<div class="form-section-content">
 					<div class="content-text">
-						<div>{{ product.ProductNameEn }}</div>
+						<div><h4>{{ product.ProductNameEn }}</h4>{{ product.VariantValue }}</div>
+						<hr/>
 						<div class="margin-top-5">PID: {{ product.Pid }}</div>
 						<div class="margin-top-5">Status:</div>
 						<div class="color-grey"><i class="fa fa-circle-o padding-right-5"></i>Draft</div>
