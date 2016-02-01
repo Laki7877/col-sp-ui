@@ -2,12 +2,10 @@
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminAttributeAddCtrl" ng-init="init(<?=$params?>)">
-    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute/" . $title, 'urls' => ['/admin/attributes'], 'class' => '{ disabled: form.$invalid}']) ?>
+    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute/" . $title, 'urls' => ['/admin/attributes']]) ?>
     <? $this->insert('components/modal-warning-leave-page', ['id' => 'leave-page-warning', 'exit' => 'cancel(blocker)', 'save' => 'save()']) ?>
     <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()"><span ng-bind-html="alert.message"></span></div>
-    <div ng-show="saving">
-      <img src="/assets/img/loader.gif" width="40"> <small>Saving Attribute..</small>
-    </div>
+    <div ng-show="saving" nc-loading="Saving Attribute.."></div>
     <form ng-show="!saving" name="form" class="ah-form sticky-mainform-action margin-top-30" novalidate>
       <div class="row">
         <div class="col-xs-12">
@@ -314,7 +312,7 @@
       <div class="container-fluid">
         <div class="float-right">
           <a class="link-btn-plain" ng-click="cancel()">Cancel</a>
-          <button type="button" class="btn btn-blue btn-width-xl" ng-click="save()" ng-class="{ disabled: form.$invalid }">Save</button>
+          <button type="button" class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
         </div>
       </div>
     </div>

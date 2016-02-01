@@ -3,11 +3,12 @@
 var angular = require('angular');
 var bulk = require('bulk-require')(__dirname, 
 	['controllers/*.js', 'services/*.js', 'helpers/*.js', 
-	'directives/*.js', 'filters/*.js']);
+	'directives/*.js', 'filters/*.js', 'libs/*.js']);
 var config = require('./config');
 var template = require('./template');
 
 //External dependencies
+global._ = require('lodash');
 require('angular-ui-bootstrap');
 require('angular-animate');
 require('angular-file-upload');
@@ -28,10 +29,11 @@ var helpers = bulk.helpers;
 var directives = bulk.directives;
 var filters = bulk.filters;
 
-var app = angular.module('colspApp', ['nc','ui.bootstrap.datetimepicker', 'duScroll','ngSanitize','ui.select', 'ngAnimate', 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
+var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.datetimepicker', 'duScroll','ngSanitize','ui.select', 'ngAnimate', 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
 
 //App config
-.config(['$uibTooltipProvider', 'uiSelectConfig', '$ncPaginationProvider', function($tooltipProvider, uiSelectConfig, $ncPaginationProvider) {
+.config(['$uibTooltipProvider', 'uiSelectConfig', '$ncPaginationProvider', '$ncAlertProvider', function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
+
 	//Default close tooltip when click again
 	$tooltipProvider.setTriggers({
 		'clickanystart' : 'clickanyend'
@@ -40,7 +42,8 @@ var app = angular.module('colspApp', ['nc','ui.bootstrap.datetimepicker', 'duScr
 		trigger: 'clickanystart'
 	});
 	$ncPaginationProvider.paginationSizes = [10, 20, 50, 100];
-	//uiSelectConfig.taggingTokens = ',';
+	uiSelectConfig.taggingTokens = '[ENTER|,]';
+
 }])
 
 //App template cache load
@@ -123,6 +126,11 @@ var app = angular.module('colspApp', ['nc','ui.bootstrap.datetimepicker', 'duScr
 .factory('AttributeSet', services.attributeSet)
 .factory('Brand', services.brand)
 .factory('AdminAccountService', services.adminAccountService)
+.factory('AdminRoleService', services.adminRoleService)
+.factory('AdminPermissionService', services.adminPermissionService)
+.factory('AdminShopService', services.adminShopService)
+.factory('AdminShoptypeService', services.adminShoptypeService)
+.factory('ShopPermissionService', services.shopPermissionService)
 .factory('VariantPair', helpers.variantPair)
 .factory('Alert', services.alert)
 .factory('Blocker', services.blocker)
@@ -135,6 +143,7 @@ var app = angular.module('colspApp', ['nc','ui.bootstrap.datetimepicker', 'duScr
 .directive('ngSlideToggle', directives.ngSlideToggle)
 .directive('ngTemplate', directives.ngTemplate)
 .directive('uiSelectMaxlength', directives.uiSelectMaxlength)
+.directive('ngMatch', directives.ngMatch)
 .directive('popoverAny', directives.popoverAny)
 
 //Filters
@@ -145,6 +154,8 @@ var app = angular.module('colspApp', ['nc','ui.bootstrap.datetimepicker', 'duScr
 .filter('exclude', filters.exclude)
 .filter('excludeCategory', filters.excludeCategory)
 .filter('truncate', filters.truncate)
+.filter('slice', filters.slice)
+.filter('leadingzero', filters.leadingzero)
 
 //Controllers
 .controller('RootCtrl', controllers.root)
@@ -161,7 +172,13 @@ var app = angular.module('colspApp', ['nc','ui.bootstrap.datetimepicker', 'duScr
 .controller('AdminCategoryCtrl', controllers.adminCategory)
 .controller('AdminBrandCtrl',controllers.adminBrand)
 .controller('AdminBrandAddCtrl', controllers.adminBrandAdd)
-.controller('TestCtrl', controllers.test)
 .controller('AdminAccountCtrl', controllers.adminAccount)
 .controller('LoginCtrl', controllers.login)
-.controller('AdminAccountCtrl', controllers.adminAccountAdd);
+.controller('AdminAccountCtrl', controllers.adminAccountAdd)
+.controller('AdminAccountAddCtrl', controllers.adminAccountAdd)
+.controller('AdminRoleCtrl', controllers.adminRole)
+.controller('AdminRoleAddCtrl', controllers.adminRoleAdd)
+.controller('AdminShopCtrl', controllers.adminShop)
+.controller('AdminShopAddCtrl', controllers.adminShopAdd)
+.controller('AdminShoptypeCtrl', controllers.adminShoptype)
+.controller('TestCtrl', controllers.test)

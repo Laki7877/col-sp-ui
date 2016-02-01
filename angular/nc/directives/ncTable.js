@@ -75,3 +75,14 @@ angular.module('nc')
 			}
 		}
 	})
+	.directive('ncLink', function() {
+		return {
+			restrict: 'A',
+			require: '^ncTable',
+			transclude: true,
+			scope: {
+				link: '@ncLink'
+			},
+			template: '<a ng-href="{{link}}" ng-transclude></a>',
+		}
+	});

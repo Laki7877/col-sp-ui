@@ -1,4 +1,11 @@
 angular.module('nc')
+	.provider('$ncAlert', function() {
+		this.defaultErrorMessage = 'Error';
+		this.defaultSuccessMessage = 'Success';
+		this.$get = function() {
+			return this;
+		};
+	})
 	.directive('ncAlert', function($templateCache) {
 		return {
 			restrict: 'E',
@@ -8,7 +15,7 @@ angular.module('nc')
 			template: $templateCache.get('common/ncAlert')
 		}
 	})
-	.factory('NcAlert', function($document, $timeout) {
+	.factory('NcAlert', function($document, $timeout, $ncAlert) {
 		return function() {
 			this.type = 'red';
 			this.show = false;
@@ -17,7 +24,13 @@ angular.module('nc')
 			};
 			this.open = function(success, msg) {
 				this.type = success ? 'green' : 'red';
-				this.message = success ? (msg ? msg : 'Your change has been saved.') : msg;
+
+				if(msg) {
+					this.message = msg;
+				} else {
+					this.message = success ? $ncAlert.defaultSuccessMessage : $ncAlert.defaultErrorMessage;
+				}
+
 				this.show = true;
 			};
 			this.error = function(obj) {

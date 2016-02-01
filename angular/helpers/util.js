@@ -1,6 +1,6 @@
 var angular = require('angular');
 
-module.exports = ['storage', function (storage) {
+module.exports = ['storage', 'config', '$window', function (storage, config, $window) {
     'use strict';
     var service = {};
 
@@ -74,7 +74,33 @@ module.exports = ['storage', function (storage) {
         });
     };
 
-    service.ncparams = function(param) {
+    //Goto 404
+    service.page404 = function() {
+        $window.location.href="/error";
+    };
+
+    //block before leaving
+    service.warningOnLeave = function(scope, form) {
+        $window.onbeforeunload = function () {
+            if(!scope[form].$dirty){
+                //not dirty
+                return null;
+            }
+
+            var message = "Your changes will not be saved.",
+            e = e || window.event;
+            // For IE and Firefox
+            if (e) {
+              e.returnValue = message;
+            }
+
+            // For Safari
+            return message;
+        };  
+    }
+
+    //Convert ncTable params to our older params version
+    service.ncParams = function(param) {
         return {
             orderBy: param._order,
             pageSize: param._limit,
@@ -82,6 +108,80 @@ module.exports = ['storage', function (storage) {
             filter: param._filter,
             searchText: param.searchText
         };
+    };
+
+    //Generate Success message for add-<stuff> pages
+    service.saveAlertError = function() {
+        return config.DEFAULT_ERROR_MESSAGE;
+    };
+    service.saveAlertSuccess = function(itemName, link) {
+        return config.DEFAULT_SUCCESS_MESSAGE + ' View <a href="' + link + '">' + itemName + ' List</a>';
+    };
+
+    //Create bulk-action from template
+    service.bulkDelete = function(rest, id, item, alert, reload)  {
+        return function(array, cb) {
+            alert.close();
+
+            //Only pass ShopId
+            var array = _.map(array, function(e) { 
+                return _.pick(e, [id]); 
+            });
+
+            //Blank array?
+            if(array.length <= 0) {
+                alert.error('Unable to delete. Please select ' + item + ' for this action.');
+                return;
+            }
+
+            //Delete bulk
+            rest.delete(array)
+                .then(function() {
+                    alert.success('Delete successful.');
+                    cb();
+                }, function(err) {
+                    alert.error('Unable to delete. Please select ' + item + ' for this action.');
+                })
+                .finally(reload);
+        };
+    } ;
+
+    //Create action from template
+    service.actionView = function(uri, id) {
+        return function(item) {
+            $window.location.href= uri + item[id];
+        };
+    };
+
+    //Create action from template
+    service.actionDelete = function(rest, id, item, alert, reload, cb)  {
+        return function(obj) {
+            alert.close();
+
+            //Only pass id
+            var obj = _.pick(obj, [id]); 
+           
+
+            //Delete bulk
+            rest.delete([obj])
+                .then(function() {
+                    alert.success('Delete successful.');
+                    cb(obj, id);
+                }, function(err) {
+                    alert.error('Unable to delete. Please select ' + item + ' for this action.');
+                })
+                .finally(reload);
+        };
+    } ;
+
+    //Map value to dropdown name&value
+    service.getDropdownItem = function(array, value) {
+        return array.find(function(element) {
+            if (element.value === value) {
+                return true;
+            }
+            return false;
+        });
     };
     return service;
 }];

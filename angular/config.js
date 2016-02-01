@@ -10,5 +10,17 @@ module.exports = {
 	   filebrowserUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
 	   filebrowserImageUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
 	   filebrowserFlashUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
-	}
+	},
+	DROPDOWN: {
+		DEFAULT_STATUS_DROPDOWN: [{
+			name: 'Active',
+			value: 'AT'
+		},
+		{
+			name: 'Inactive',
+			value: 'NA'
+		}]
+	},
+	DEFAULT_SUCCESS_MESSAGE: 'Your changes has been saved successfully.',
+	DEFAULT_ERROR_MESSAGE: 'Unable to save because required fields are missing or incorrect.' 
 };

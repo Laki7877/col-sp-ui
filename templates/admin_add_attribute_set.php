@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminAttributeSetAddCtrl" ng-init="init(<?=$params?>)">
-    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute Set/" . $title, 'urls' => ['/admin/attributesets'], 'class' =>'{disabled : form.$invalid}']) ?>
+    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute Set/" . $title, 'urls' => ['/admin/attributesets']]) ?>
     <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()"><span ng-bind-html="alert.message"></span></div>
     <div ng-show="saving">
       <img src="/assets/img/loader.gif" width="40"> <small>Saving Attribute Set..</small>
@@ -92,7 +92,7 @@
         <div class="container-fluid">
           <div class="float-right">
             <a class="link-btn-plain" ng-click="cancel()">Cancel</a>
-            <button type="button" class="btn btn-blue btn-width-xl" ng-click="save()" ng-class="{disabled : form.$invalid}">Save</button>
+            <button type="button" class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
           </div>
         </div>
       </div>

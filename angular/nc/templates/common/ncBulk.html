@@ -6,7 +6,7 @@
         <span class="caret margin-left-10"></span>
       </button>
       <ul uib-dropdown-menu role="menu" class="search-product-dropdown">
-        <li ng-repeat="option in options" ><a ng-click="select = option">{{ option.name }}</a></li>
+        <li ng-repeat="option in options" ><a ng-click="selectOption(option)">{{ option.name }}</a></li>
       </ul>
     </div><!-- /btn-group -->
     <div class="input-group-btn">

@@ -18,21 +18,31 @@ angular.module('nc')
 					}
 				};
 				scope.options = _.concat(defaultOption, _.defaults(scope.options, []));
-				scope.model = _.extend([], scope.model);
-				scope.select = scope.options[0];
+				scope.model = _.defaults(scope.model, []);
 				scope.id = _.defaults(scope.id, null);
+				scope.select = scope.options[0];
+
 				scope.uniq = function(e) {
-					return scope.id == null ? e : e[scope.id];
-					//Add or remove stuff
+					if(scope.id != null) {
+						if(_.isUndefined(e[scope.id])) {
+							throw 'Object does not contain property of ncBulkTrackBy = "' + scope.id + '"';
+						}
+						return e[scope.id];
+					} else {
+						return e;
+					}
 				};
+				scope.selectOption = function(option) {
+					scope.select = option;
+				}
 				scope.onChildChange = function(value, obj) {
 					if(value) {
 						scope.model = _.uniq(_.concat(scope.model, obj), scope.uniq);
 					} else {
 						if(_.isArray(obj)) {
-							scope.model = _.pullAllBy(scope.model, obj, scope.uniq);
+							_.pullAllBy(scope.model, obj, scope.uniq);
 						} else {
-							scope.model = _.pullAllBy(scope.model, [obj], scope.uniq);
+							_.pullAllBy(scope.model, [obj], scope.uniq);
 						}
 					}
 				};
@@ -46,9 +56,13 @@ angular.module('nc')
 					}
 				};
 				scope.call = function() {
-					if(scope.model.length > 0 && scope.select != scope.options[0]) {
-						confirm('Are you sure you want to ' + scope.model)
-						scope.select.fn(scope.model);
+					if(scope.select != scope.options[0]) {
+						if(confirm('Are you sure you want to ' + scope.select.name + '?')) {
+							scope.select.fn(scope.model, function() {
+								//cb to clear all entries
+								scope.model = [];
+							});
+						}
 					}
 				};
 			}
