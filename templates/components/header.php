@@ -25,7 +25,7 @@
     </span>
 
     <ul class="nav navbar-nav navbar-right">
-      <li class="dropdown header-font-detail margin-right-20">
+      <li class="dropdown header-font-detail">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
           <span>{{ $root.Profile.User.Email }}</span> 
           <i class="fa fa-angle-down"></i>
