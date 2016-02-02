@@ -7,9 +7,17 @@ module.exports = ['$scope', 'storage', '$base64', 'Alert', 'Credential', '$windo
 		Credential.getPermissions().then(function(r){
 			storage.storeCurrentUserProfile(r, false);
 			console.log(r);
-			$scope.alert.open(true, 'Successful');
+			$scope.alert.close();
 			$scope.loading = false;
-			$window.location.href = "/";
+
+			var redir = storage.get('redirect');
+			if(!redir){
+				redir = "/";
+			}else{
+				storage.remove('redirect');
+			}
+
+			$window.location.href = redir;
 		}, function(){
 			storage.clear();
 			$scope.alert.error('Invalid Credential');

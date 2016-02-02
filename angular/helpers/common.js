@@ -22,6 +22,7 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
                         console.warn(status, config.method, config.url, data);
                         if(status == 401){
                             //Catch Forbidden
+                            storage.put('redirect', $window.location.pathname);
                             $window.location.href = "/login";
                         }
                         deferred.reject(data || {"error": "Unknown error"});

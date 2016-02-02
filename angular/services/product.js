@@ -16,14 +16,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             var req = {
                 method: 'GET',
                 url: '/ProductStages/All',
-                params: {
-                    _order: parameters.orderBy || 'Pid',
-                    _limit: parameters.pageSize || 10,
-                    _offset: parameters.page * parameters.pageSize || 0,
-                    _direction: parameters.direction || 'asc',
-                    _filter: parameters.filter || 'ALL',
-                    searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined
-                }
+                params: parameters
             };
 
             return common.makeRequest(req);

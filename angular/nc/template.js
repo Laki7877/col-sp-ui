@@ -54,7 +54,7 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/ncImageGallery',
-    ""
+    "<ul class=image-management-list><li class=list-item ng-repeat=\"image in model track by $index\"><div><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ image.ImageUrlEn.length > 0 && image.ImageUrlEn  || '/assets/img/loader.gif' }}\"></div><div ng-if=\"actions.length > 0\" class=actions-wrapper ng-style=\"width: {{100 / actions.length}}%;\"><a ng-repeat=\"action in options.actions\" class=action ng-click=\"action.fn(image, model, $index)\"><i class=fa ng-class={{action.iconClass}}></i></a></div></div></div></li></ul>"
   );
 
 

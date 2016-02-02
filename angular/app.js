@@ -50,9 +50,15 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .run(template)
 
 //App init
-.run(['$rootScope', 'storage', '$window', function($rootScope, storage, $window) {
+.run(['$rootScope', 'storage', '$window', '$location', function($rootScope, storage, $window, $location) {
 	
-	
+	$rootScope.Profile = storage.getCurrentUserProfile();
+
+	if(!$rootScope.Profile && $window.location.pathname != "/login"){
+		storage.put('redirect', $window.location.pathname);
+		$window.location.href = "/login";
+	}
+
 	//Create generic form validator functions
 	$rootScope.isInvalid = function(form) {
 		if(angular.isDefined(form) && 
@@ -61,7 +67,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 			return form.$invalid && (form.$dirty || form.$$parentForm.$submitted);
 		}
 		return false;
-	}; 
+	};
+
 	
 	//Prevent image dragdrop on other elements
 	$window.addEventListener("dragover",function(e){
@@ -166,6 +173,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .controller('ProductImageManagementCtrl', controllers.productImageManagement)
 .controller('ProductAddSelectCategoryCtrl', controllers.productAddSelectCategory)
 .controller('ProductListLocalCategoryCtrl', controllers.productListLocalCategory)
+.controller('ProductImportCtrl', controllers.productImport)
 .controller('LocalCategoryCtrl', controllers.localCategory)
 .controller('AdminAttributeCtrl', controllers.adminAttribute)
 .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)

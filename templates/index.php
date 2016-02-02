@@ -33,7 +33,7 @@
             </th>
             <th class="display-column"></th>
             <th>
-              <a class="header-link" href="#"><span>Product Name</span></a>
+              <a class="header-link" href="#"><span>Product Nam  e</span></a>
               <i class="fa fa-caret-down color-grey">
             </th>
             <th class="price-column">

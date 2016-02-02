@@ -25,7 +25,7 @@
           </div><!-- /btn-group -->
           <div class="input-group-btn">
             <button class="btn-white-fluid btn">
-              <span class="button-text-blue">Confirm ({{ checkBoxCount() }})</span>
+              <span class="button-text-blue">Confirm <strong ng-show="checkBoxCount() > 0">({{ checkBoxCount() }})</strong></span>
             </button>
           </div>
         </div>

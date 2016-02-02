@@ -12266,7 +12266,7 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 /* line 8, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-red hr {
-  border-top-color: #ffa6a6;
+  border-top-color: #ffa7a7;
 }
 /* line 11, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-red .alert-link {
@@ -12281,7 +12281,7 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 /* line 8, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-yellow hr {
-  border-top-color: #fffad1;
+  border-top-color: #fffad2;
 }
 /* line 11, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-yellow .alert-link {
@@ -12572,28 +12572,43 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 /* line 12, ../../../assets/_header.scss */
 .header .header-font-detail {
   float: right;
-  color: #7b7f8f;
+  color: #7B7F8F;
   line-height: 60px;
 }
-
+/* line 17, ../../../assets/_header.scss */
+.header .header-font-detail:hover {
+  color: #4899DD;
+}
 /* line 20, ../../../assets/_header.scss */
+.header .dropdown-toggle {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #7B7F8F;
+}
+/* line 25, ../../../assets/_header.scss */
+.header .dropdown-toggle:hover, .header .dropdown-toggle:focus, .header .open .dropdown-toggle, .header .open .dropdown-toggle:hover {
+  background-color: #4899DD !important;
+  color: #FFFFFF !important;
+}
+
+/* line 32, ../../../assets/_header.scss */
 .page-header {
   padding-bottom: 14px;
 }
-/* line 24, ../../../assets/_header.scss */
+/* line 36, ../../../assets/_header.scss */
 .page-header.with-border {
   border-bottom: 1px solid #bcc7d5;
 }
-/* line 27, ../../../assets/_header.scss */
+/* line 39, ../../../assets/_header.scss */
 .page-header.no-padding {
   padding-bottom: 0;
 }
-/* line 31, ../../../assets/_header.scss */
+/* line 43, ../../../assets/_header.scss */
 .page-header .page-header-title {
   font-size: 24px;
   font-weight: normal;
 }
-/* line 37, ../../../assets/_header.scss */
+/* line 49, ../../../assets/_header.scss */
 .page-header .page-actions .btn ~ .btn {
   margin-left: 10px;
 }

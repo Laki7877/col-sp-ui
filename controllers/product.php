@@ -28,6 +28,13 @@ class ProductController extends Controller
 			]);
 	}
 
+	public static function import($params){
+		return View::render('import_product', [
+				'title' => 'Import Product'
+		]);
+	}
+
+
 	public static function select($params)
 	{
 		return View::render('global_category');
