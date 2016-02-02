@@ -1,5 +1,5 @@
 <div id="image-management-content-page">
-	<div class="row" ng-repeat="product in productList">
+	<div class="row" ng-repeat="product in response.data">
 		<div class="col-xs-12">
 			<div class="form-section image-management">
 				<div class="form-section-content">
