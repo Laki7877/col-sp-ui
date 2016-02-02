@@ -1,4 +1,4 @@
-module.exports = ['$http', '$q', 'storage', 'config', function ($http, $q, storage, config) {
+module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http, $q, storage, config, $window) {
     'use strict';
         var service = {};
         service.makeRequest = function (options) {
@@ -20,6 +20,10 @@ module.exports = ['$http', '$q', 'storage', 'config', function ($http, $q, stora
                     })
                     .error(function (data, status, headers, config) {
                         console.warn(status, config.method, config.url, data);
+                        if(status == 401){
+                            //Catch Forbidden
+                            $window.location.href = "/login";
+                        }
                         deferred.reject(data || {"error": "Unknown error"});
                     });
                 return deferred.promise;
