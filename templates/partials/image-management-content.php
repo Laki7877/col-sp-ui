@@ -12,9 +12,10 @@
 					</div>
 					<div class="picture-container">
 						<div class="col-xs-12 padding-left-0">
-							<div class="feature-text color-dark-grey">Feature Image</div>
-							<? $this->insert('components/image-thumbs-list', ["list_class" => "image-management-list", "action" => 3, "images" => ["/assets/img/placeholder-no-image.png", "https://placehold.it/350x150", "https://placehold.it/350x550", "https://placehold.it/350x550", "https://placehold.it/350x550",
-																										"/assets/img/placeholder-no-image.png", "https://placehold.it/350x150", "https://placehold.it/350x550", "https://placehold.it/350x550", "https://placehold.it/350x550"]]) ?>
+							<? $this->insert('components/image-thumbs-list', [
+								"action" => 2, 
+								"images" => '[{}]',
+								"uploader" => '']) ?>
 						</div>
 					</div>
 					<div class="drop-zone-container">
