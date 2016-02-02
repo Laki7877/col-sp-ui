@@ -11,11 +11,16 @@
 
 	.header-font-detail {
 		float: right;
+		color: $color-dark-grey;
 		line-height: 60px;
+	}
+	.header-font-detail:hover {
+		color: $color-theme;
 	}
 	.dropdown-toggle{
 		padding-top: 20px;
 		padding-bottom: 20px;
+		color: $color-dark-grey;
 	}
 	.dropdown-toggle:hover, .dropdown-toggle:focus, .open .dropdown-toggle,.open .dropdown-toggle:hover {
     	background-color: $color-theme !important;
