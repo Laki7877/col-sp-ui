@@ -52,7 +52,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 //App init
 .run(['$rootScope', 'storage', '$window', function($rootScope, storage, $window) {
 	
-	
+	$rootScope.Profile = storage.getCurrentUserProfile();
 	//Create generic form validator functions
 	$rootScope.isInvalid = function(form) {
 		if(angular.isDefined(form) && 

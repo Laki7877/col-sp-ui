@@ -8,6 +8,11 @@ angular.module("nc").run(function($templateCache) {  'use strict';
   );
 
 
+  $templateCache.put('common/ncActionModal',
+    "<div class=\"modal-header no-border\"><button type=button class=close aria-label=Close ng-click=no()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">{{title}}</h2><div ng-bind-html=message><div></div><div class=\"confirmation-action no-margin\"><button class=\"btn btn-white\" ng-click=yes()>Yes</button> <button type=button class=\"btn btn-blue\" ng-click=no()>No</button></div></div></div></div></div>"
+  );
+
+
   $templateCache.put('common/ncActionPopover',
     "<div ng-repeat=\"action in options\"><a ng-click=call(action)>{{action.name}}</a></div>"
   );
@@ -40,6 +45,11 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
   $templateCache.put('common/ncFilter',
     "<div class=filter-section><div class=filter-container><span>Filters:</span> <a class=filter-seperator ng-repeat=\"filter in filters\" ng-class=\"{'filter-active': model == filter.value }\" ng-click=select(filter.value)>{{ filter.name }}</a></div></div>"
+  );
+
+
+  $templateCache.put('common/ncImageGallery',
+    "<ul class=image-management-list><li class=list-item ng-repeat=\"image in model track by $index\"><div><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ image.ImageUrlEn.length > 0 && image.ImageUrlEn  || '/assets/img/loader.gif' }}\"></div><div ng-if=\"actions.length > 0\" class=actions-wrapper ng-style=\"width: {{100 / actions.length}}%;\"><a ng-repeat=\"action in options.actions\" class=action ng-click=\"action.fn(image, model, $index)\"><i class=fa ng-class={{action.iconClass}}></i></a></div></div></div></li></ul>"
   );
 
 
