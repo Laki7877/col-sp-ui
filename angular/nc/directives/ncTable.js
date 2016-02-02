@@ -36,6 +36,9 @@ angular.module('nc')
 				this.isOrderBy = function(id) {
 					return $scope.params._order === id;
 				};
+				this.direction = function() {
+					return $scope.params._direction == 'desc' ? true : false;
+				}
 			},
 			link: function(scope, element, attrs, controller) {
 				//Default values
@@ -60,18 +63,15 @@ angular.module('nc')
 				sort: '@ncSort'
 			},
 			template: $templateCache.get('common/ncTableSort'),
-			link: function(scope, element, attrs, parent
-				) {
-				//false = asc
-				scope.direction = false;
+			link: function(scope, element, attrs, parent) {
 				scope.isCurrent = function() {
 					return parent.isOrderBy(scope.sort);
 				};
-
 				scope.click = function() {
 					scope.direction = !scope.direction;
 					parent.sort(scope.sort, scope.direction);
 				};
+				scope.direction = scope.isCurrent() ? parent.direction() : false;
 			}
 		}
 	})

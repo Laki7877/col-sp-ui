@@ -6,7 +6,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminShoptypeAddCtrl" ng-init="init(<?=$params?>)">
 		<nc-alert nc-model="alert"></nc-alert>
-		<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Shop Types/". $title, 'urls' => ['/admin/shoptypes']]) ?>
+		<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Shop Types/{{title}}", 'urls' => ['/admin/shoptypes']]) ?>
 		<div ng-show="loading" nc-loading="Loading Shop Type.."></div>
 		<div ng-show="saving" nc-loading="Saving Shop Type.."></div>
 		<form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
@@ -87,7 +87,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 				<div class="container-fluid">
 					<div class="float-right">
 						<a href="#" class="link-btn-plain" ng-click="cancel()">Cancel</a>
-						<button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+						<button type="button" class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
 					</div>
 				</div>
 			</div>

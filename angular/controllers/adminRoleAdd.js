@@ -60,11 +60,12 @@ module.exports = function($scope, $window, AdminRoleService, AdminPermissionServ
 				//Save mode
 				AdminRoleService.create(data)
 					.then(function(result) {
+						$scope.id = result.GroupId;
 						$scope.formData.GroupId = result.GroupId; 
 						$scope.alert.success(util.saveAlertSuccess('Admin Role', '/admin/roles'));
 						$scope.form.$setPristine(true);
 					}, function(err) {
-						$scope.alert.error(util.saveAlertError());
+						$scope.alert.error(common.getError(err));
 					})
 					.finally(function() {
 						$scope.saving = false;
@@ -75,4 +76,7 @@ module.exports = function($scope, $window, AdminRoleService, AdminPermissionServ
 			$scope.alert.error(util.saveAlertError());
 		}
 	};
+	$scope.$watch('id', function(val) {
+		$scope.title = util.getTitle(val,'Admin Role');
+	});
 }

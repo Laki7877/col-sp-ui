@@ -13,19 +13,19 @@
         <thead>
           <tr class="table-head">
             <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
-            <th nc-sort="ShopTypeId">ID</th>
             <th nc-sort="ShopTypeNameEn">Shop Type</th>
             <th># of Shops</th>
             <th>Action</th>
+            <th nc-sort="UpdatedDt">Modified</th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="row in list.data">
             <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
-            <td>{{row.ShopTypeId | leadingzero:2}}</td>
             <td nc-link="/admin/shoptypes/{{row.ShopTypeId}}">{{row.ShopTypeNameEn}}</td>
             <td>{{row.ShopCount}}</td>
             <td><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
+            <td>{{row.UpdatedDt | dateTh}}</td>
           </tr>
         </tbody>
       </table>

@@ -144,6 +144,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .directive('ngTemplate', directives.ngTemplate)
 .directive('uiSelectMaxlength', directives.uiSelectMaxlength)
 .directive('ngMatch', directives.ngMatch)
+.directive('ngMinnumber', directives.ngMinnumber)
+.directive('ngMaxnumber', directives.ngMaxnumber)
 .directive('popoverAny', directives.popoverAny)
 
 //Filters

@@ -1,4 +1,5 @@
 module.exports = function($scope, $window, AdminAccountService, NcAlert, util) {
+	'ngInject';
 	$scope.reload = function() {
 		$scope.loading = true;
 		AdminAccountService.list($scope.params)
@@ -14,10 +15,10 @@ module.exports = function($scope, $window, AdminAccountService, NcAlert, util) {
 		emptyMessage: 'You do not have an Admin Account'
 	};
 	$scope.params = {
-		_order: 'UserId',
+		_order: 'UpdatedDt',
 		_limit: 10,
 		_offset: 0,
-		_direction: 'asc'
+		_direction: 'desc'
 	};
 	$scope.list = {
 		total: 0,
