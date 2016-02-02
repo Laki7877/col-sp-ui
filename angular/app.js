@@ -173,8 +173,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .controller('AdminBrandCtrl',controllers.adminBrand)
 .controller('AdminBrandAddCtrl', controllers.adminBrandAdd)
 .controller('AdminAccountCtrl', controllers.adminAccount)
-.controller('LoginCtrl', controllers.login)
-.controller('AdminAccountCtrl', controllers.adminAccountAdd)
 .controller('AdminAccountAddCtrl', controllers.adminAccountAdd)
 .controller('AdminRoleCtrl', controllers.adminRole)
 .controller('AdminRoleAddCtrl', controllers.adminRoleAdd)
@@ -182,5 +180,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .controller('AdminShopAddCtrl', controllers.adminShopAdd)
 .controller('AdminShoptypeCtrl', controllers.adminShoptype)
 .controller('AdminShoptypeAddCtrl', controllers.adminShoptypeAdd)
+.controller('LoginCtrl', controllers.login)
 
 .controller('TestCtrl', controllers.test)

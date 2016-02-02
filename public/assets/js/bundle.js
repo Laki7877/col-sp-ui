@@ -173,8 +173,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .controller('AdminBrandCtrl',controllers.adminBrand)
 .controller('AdminBrandAddCtrl', controllers.adminBrandAdd)
 .controller('AdminAccountCtrl', controllers.adminAccount)
-.controller('LoginCtrl', controllers.login)
-.controller('AdminAccountCtrl', controllers.adminAccountAdd)
 .controller('AdminAccountAddCtrl', controllers.adminAccountAdd)
 .controller('AdminRoleCtrl', controllers.adminRole)
 .controller('AdminRoleAddCtrl', controllers.adminRoleAdd)
@@ -182,6 +180,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .controller('AdminShopAddCtrl', controllers.adminShopAdd)
 .controller('AdminShoptypeCtrl', controllers.adminShoptype)
 .controller('AdminShoptypeAddCtrl', controllers.adminShoptypeAdd)
+.controller('LoginCtrl', controllers.login)
 
 .controller('TestCtrl', controllers.test)
 
@@ -225,7 +224,6 @@ module.exports = function($scope, $window, AdminAccountService, NcAlert, util) {
 			.finally(function() {
 				$scope.loading = false;
 			});
-		console.log($scope.bulkContainer);
 	};
 	$scope.alert = new NcAlert();
 	$scope.tableOptions = {
@@ -243,23 +241,16 @@ module.exports = function($scope, $window, AdminAccountService, NcAlert, util) {
 	};
 	$scope.bulkContainer = [];
 	$scope.bulks= [
-	{
-		name: 'Delete',
-		fn: util.bulkDelete(AdminAccountService, 'UserId', 'Admin Accounts', $scope.alert, $scope.reload)
-	}];
+		util.bulkDelete(AdminAccountService, 'UserId', 'Admin Accounts', $scope.alert, $scope.reload)
+	];
 	$scope.actions = [
-	{
-		name: 'View / Edit',
-		fn: util.actionView('/admin/accounts', 'UserId')
-	}, 
-	{
-		name: 'Delete',
-		fn: util.actionDelete(AdminAccountService, 'UserId', 'Admin Accounts', $scope.alert, $scope.reload, function(obj, id) {
+		util.actionView('/admin/accounts', 'UserId'),
+		util.actionDelete(AdminAccountService, 'UserId', 'Admin Accounts', $scope.alert, $scope.reload, function(obj, id) {
 			_.remove($scope.bulkContainer, function(e) {
 				return e[id] === obj[id];
 			});
 		})
-	}];
+	];
 	$scope.loading = false;
 	$scope.reload();
 	$scope.$watch('params', $scope.reload, true);
@@ -1307,23 +1298,16 @@ module.exports = function($scope, $window, AdminRoleService, NcAlert, util) {
 	};
 	$scope.bulkContainer = [];
 	$scope.bulks= [
-	{
-		name: 'Delete',
-		fn: util.bulkDelete(AdminRoleService, 'GroupId', 'Admin Roles', $scope.alert, $scope.reload)
-	}];
+		util.bulkDelete(AdminRoleService, 'GroupId', 'Admin Roles', $scope.alert, $scope.reload)
+	];
 	$scope.actions = [
-	{
-		name: 'View / Edit',
-		fn: util.actionView('/admin/roles', 'GroupId')
-	}, 
-	{
-		name: 'Delete',
-		fn: util.actionDelete(AdminRoleService, 'GroupId', 'Admin Roles', $scope.alert, $scope.reload, function(obj, id) {
+		util.actionView('/admin/roles', 'GroupId'), 
+		util.actionDelete(AdminRoleService, 'GroupId', 'Admin Roles', $scope.alert, $scope.reload, function(obj, id) {
 			_.remove($scope.bulkContainer, function(e) {
 				return e[id] === obj[id];
 			});
 		})
-	}];
+	];
 	$scope.loading = false;
 	$scope.reload();
 	$scope.$watch('params', $scope.reload, true);
@@ -1446,25 +1430,18 @@ module.exports = function($scope, $window, AdminShopService, AdminShoptypeServic
 
 	//Bulk actions
 	$scope.bulks= [
-	{
-		name: 'Delete',
-		fn: util.bulkDelete(AdminShopService, 'ShopId', 'Shop Accounts', $scope.alert, $scope.reload)
-	}];
+		util.bulkDelete(AdminShopService, 'ShopId', 'Shop Accounts', $scope.alert, $scope.reload)
+	];
 
 	//Single action
 	$scope.actions = [
-	{
-		name: 'View / Edit',
-		fn: util.actionView('/admin/shops', 'ShopId')
-	}, 
-	{
-		name: 'Delete',
-		fn: util.actionDelete(AdminShopService, 'ShopId', 'Shop Accounts', $scope.alert, $scope.reload, function(obj, id) {
+		util.actionView('/admin/shops', 'ShopId'), 
+		util.actionDelete(AdminShopService, 'ShopId', 'Shop Accounts', $scope.alert, $scope.reload, function(obj, id) {
 			_.remove($scope.bulkContainer, function(e) {
 				return e[id] === obj[id];
 			});
 		})
-	}];
+	];
 	$scope.reload(); //init
 
 	//Watch for table params change
@@ -1586,23 +1563,16 @@ module.exports = function($scope, $window, AdminShoptypeService, NcAlert, util) 
 	};
 	$scope.bulkContainer = [];
 	$scope.bulks= [
-	{
-		name: 'Delete',
-		fn: util.bulkDelete(AdminShoptypeService, 'ShopTypeId', 'Shop Types', $scope.alert, $scope.reload)
-	}];
+		util.bulkDelete(AdminShoptypeService, 'ShopTypeId', 'Shop Types', $scope.alert, $scope.reload)
+	];
 	$scope.actions = [
-	{
-		name: 'View / Edit',
-		fn: util.actionView('/admin/shoptypes', 'ShopTypeId')
-	}, 
-	{
-		name: 'Delete',
-		fn: util.actionDelete(AdminShoptypeService, 'ShopTypeId', 'Shop Types', $scope.alert, $scope.reload, function(obj, id) {
+		util.actionView('/admin/shoptypes', 'ShopTypeId'), 
+		util.actionDelete(AdminShoptypeService, 'ShopTypeId', 'Shop Types', $scope.alert, $scope.reload, function(obj, id) {
 			_.remove($scope.bulkContainer, function(e) {
 				return e[id] === obj[id];
 			});
 		})
-	}];
+	];
 	$scope.loading = false;
 	$scope.reload();
 	$scope.$watch('params', $scope.reload, true);
@@ -4304,59 +4274,76 @@ module.exports = ['storage', 'config', '$window', function (storage, config, $wi
 
     //Create bulk-action from template
     service.bulkDelete = function(rest, id, item, alert, reload)  {
-        return function(array, cb) {
-            alert.close();
+        return {
+            name: 'Delete',
+            fn: function(array, cb) {
+                alert.close();
 
-            //Only pass ShopId
-            var array = _.map(array, function(e) { 
-                return _.pick(e, [id]); 
-            });
+                //Only pass ShopId
+                var array = _.map(array, function(e) { 
+                    return _.pick(e, [id]); 
+                });
 
-            //Blank array?
-            if(array.length <= 0) {
-                alert.error('Unable to delete. Please select ' + item + ' for this action.');
-                return;
-            }
-
-            //Delete bulk
-            rest.delete(array)
-                .then(function() {
-                    alert.success('Delete successful.');
-                    cb();
-                }, function(err) {
+                //Blank array?
+                if(array.length <= 0) {
                     alert.error('Unable to delete. Please select ' + item + ' for this action.');
-                })
-                .finally(reload);
+                    return;
+                }
+
+                //Delete bulk
+                rest.delete(array)
+                    .then(function() {
+                        alert.success('Delete successful.');
+                        cb();
+                    }, function(err) {
+                        alert.error('Unable to delete. Please select ' + item + ' for this action.');
+                    })
+                    .finally(reload);
+            },
+            confirmation: {
+                title: 'Confirm to delete',
+                message: 'Are you sure you want to delete {{model.length}} items?'
+            }
         };
-    } ;
+    };
 
     //Create action from template
     service.actionView = function(uri, id) {
-        return function(item) {
-            $window.location.href= uri + '/' + item[id];
+        return {
+            name: 'View / Edit',
+            fn: function(item) {
+                $window.location.href= uri + '/' + item[id];
+            }
         };
     };
 
     //Create action from template
     service.actionDelete = function(rest, id, item, alert, reload, cb)  {
-        return function(obj) {
-            alert.close();
+        return {
+            name: 'Delete',
+            fn: function(obj) {
+                alert.close();
 
-            //Only pass id
-            var obj = _.pick(obj, [id]); 
-           
+                //Only pass id
+                var obj = _.pick(obj, [id]); 
+               
 
-            //Delete bulk
-            rest.delete([obj])
-                .then(function() {
-                    alert.success('Delete successful.');
-                    cb(obj, id);
-                }, function(err) {
-                    alert.error('Unable to delete. Please select ' + item + ' for this action.');
-                })
-                .finally(reload);
+                //Delete bulk
+                rest.delete([obj])
+                    .then(function() {
+                        alert.success('Delete successful.');
+                        cb(obj, id);
+                    }, function(err) {
+                        alert.error('Unable to delete. Please select ' + item + ' for this action.');
+                    })
+                    .finally(reload);
+            },
+            confirmation: {
+                title: 'Delete',
+                message: 'Are you sure you want to delete selected item?'
+            }
         };
-    } ;
+    };
 
     //Map value to dropdown name&value
     service.getDropdownItem = function(array, value) {
@@ -4367,6 +4354,7 @@ module.exports = ['storage', 'config', '$window', function (storage, config, $wi
             return false;
         });
     };
+
     return service;
 }];
 
@@ -4387,7 +4375,7 @@ module.exports = ['util', function (util) {
 
 },{}],51:[function(require,module,exports){
 angular.module('nc')
-	.directive('ncAction', ["$templateCache", function($templateCache) {
+	.directive('ncAction', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
 			restrict: 'E',
 			scope: {
@@ -4398,7 +4386,38 @@ angular.module('nc')
 			link: function(scope) {
 				scope.options = _.defaults(scope.options, []);
 				scope.call = function(action) {
-					action.fn(scope.model);
+					if(action.confirmation) {
+						var modal = $uibModal.open({
+							animation: true,
+							size: 'size-warning',
+							templateUrl: 'common/ncActionModal',
+							controller: ["$scope", "$uibModalInstance", "options", function($scope, $uibModalInstance, options) {
+								$scope.title = options.title;
+								$scope.message = options.message;
+								$scope.yes = function() {
+									$uibModalInstance.close();
+								};
+								$scope.no = function() {
+									$uibModalInstance.dismiss();
+								}
+							}],
+							resolve: {
+								options: function() {
+									return {
+										title: action.confirmation.title,
+										message: action.confirmation.message
+									}
+								}
+							}
+						});
+
+						//Modal 
+						modal.result.then(function() {
+							action.fn(scope.model);
+						});
+					} else {
+						action.fn(scope.model);
+					}
 				};
 			}
 		}
@@ -4486,7 +4505,7 @@ angular.module('nc')
 	}]);
 },{}],53:[function(require,module,exports){
 angular.module('nc')
-	.directive('ncBulk', ["$templateCache", function($templateCache) {
+	.directive('ncBulk', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
 			restrict: 'E',
 			template: $templateCache.get('common/ncBulk'),
@@ -4544,7 +4563,39 @@ angular.module('nc')
 				};
 				scope.call = function() {
 					if(scope.select != scope.options[0]) {
-						if(confirm('Are you sure you want to ' + scope.select.name + '?')) {
+						if(scope.select.confirmation && select.model.length == 0) {
+							var modal = $uibModal.open({
+								animation: true,
+								size: 'size-warning',
+								templateUrl: 'common/ncBulkModal',
+								controller: ["$scope", "$uibModalInstance", "options", "$interpolate", function($scope, $uibModalInstance, options, $interpolate) {
+									$scope.title = options.title;
+									$scope.message = $interpolate(options.message)(scope);
+									$scope.yes = function() {
+										$uibModalInstance.close();
+									};
+									$scope.no = function() {
+										$uibModalInstance.dismiss();
+									}
+								}],
+								resolve: {
+									options: function() {
+										return {
+											title: scope.select.confirmation.title,
+											message: scope.select.confirmation.message
+										}
+									}
+								}
+							});
+
+							//Modal 
+							modal.result.then(function() {
+								scope.select.fn(scope.model, function() {
+									//cb to clear all entries
+									scope.model = [];
+								});
+							});
+						} else {
 							scope.select.fn(scope.model, function() {
 								//cb to clear all entries
 								scope.model = [];
@@ -4918,7 +4969,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncActionModal',
-    "<div class=\"modal-header no-border\"><button type=button class=close aria-label=Close ng-click=no()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">{{title}}</h2><div ng-bind-html=message><div></div><div class=\"confirmation-action no-margin\"><button class=\"btn btn-white\" ng-click=yes()>Yes</button> <button type=button class=\"btn btn-blue\" ng-click=no()>No</button></div></div></div></div></div>"
+    "<div class=\"modal-header no-border\"><button type=button class=close aria-label=Close ng-click=no()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">{{title}}</h2><div ng-bind-html=message></div></div><div class=\"confirmation-action no-margin\"><button class=\"btn btn-white\" ng-click=yes()>Yes</button> <button type=button class=\"btn btn-blue\" ng-click=no()>No</button></div></div></div>"
   );
 
 
@@ -4944,6 +4995,11 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
   $templateCache.put('common/ncBulkCheckbox',
     "<input type=checkbox ng-model=\"checkbox\">"
+  );
+
+
+  $templateCache.put('common/ncBulkModal',
+    "<div class=\"modal-header no-border\"><button type=button class=close aria-label=Close ng-click=no()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">{{title}}</h2><div ng-bind-html=message></div></div><div class=\"confirmation-action no-margin\"><button class=\"btn btn-white\" ng-click=yes()>Yes</button> <button type=button class=\"btn btn-blue\" ng-click=no()>No</button></div></div></div>"
   );
 
 
@@ -6753,7 +6809,7 @@ module.exports = function(common) {
 },{}],84:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Tue Feb 02 2016 15:43:05 GMT+0700 (ICT)
+ * Tue Feb 02 2016 16:02:08 GMT+0700 (ICT)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 

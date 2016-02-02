@@ -8,7 +8,6 @@ module.exports = function($scope, $window, AdminAccountService, NcAlert, util) {
 			.finally(function() {
 				$scope.loading = false;
 			});
-		console.log($scope.bulkContainer);
 	};
 	$scope.alert = new NcAlert();
 	$scope.tableOptions = {
@@ -26,23 +25,16 @@ module.exports = function($scope, $window, AdminAccountService, NcAlert, util) {
 	};
 	$scope.bulkContainer = [];
 	$scope.bulks= [
-	{
-		name: 'Delete',
-		fn: util.bulkDelete(AdminAccountService, 'UserId', 'Admin Accounts', $scope.alert, $scope.reload)
-	}];
+		util.bulkDelete(AdminAccountService, 'UserId', 'Admin Accounts', $scope.alert, $scope.reload)
+	];
 	$scope.actions = [
-	{
-		name: 'View / Edit',
-		fn: util.actionView('/admin/accounts', 'UserId')
-	}, 
-	{
-		name: 'Delete',
-		fn: util.actionDelete(AdminAccountService, 'UserId', 'Admin Accounts', $scope.alert, $scope.reload, function(obj, id) {
+		util.actionView('/admin/accounts', 'UserId'),
+		util.actionDelete(AdminAccountService, 'UserId', 'Admin Accounts', $scope.alert, $scope.reload, function(obj, id) {
 			_.remove($scope.bulkContainer, function(e) {
 				return e[id] === obj[id];
 			});
 		})
-	}];
+	];
 	$scope.loading = false;
 	$scope.reload();
 	$scope.$watch('params', $scope.reload, true);
