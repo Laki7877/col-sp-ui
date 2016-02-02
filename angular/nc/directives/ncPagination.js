@@ -33,7 +33,7 @@ angular.module('nc')
 				scope.nextPage = function(offset) {
 					var page = scope.page();
 					var total = scope.totalPage();
-					if(page + offset >= total ||
+					if(page + offset > total ||
 						page + offset < 0)
 						return;
 					scope.params._offset += offset * scope.params._limit;

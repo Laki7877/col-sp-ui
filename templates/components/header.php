@@ -39,7 +39,7 @@
     </ul>
 
      <a class="header-font-detail margin-right-20">
-        <span>View your store</span>
+        <span>View Your Store</span>
     </a>
 
  </div>
