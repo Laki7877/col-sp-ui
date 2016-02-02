@@ -17,44 +17,22 @@
         </span>
     </div>
 
-    <? $this->insert('components/search-section-with-page-index', ['serach_placeholder' => 'Search for Admin Accounts', 'optional_class' => 'hide-component']) ?>
-    <div class="filter-section">
-      <div class="filter-container">
-        <span>Filters:</span>
-        <a class="filter-first-option filter-active">All</a>
-        <a class="filter-seperator">Image Missing</a>
-        <a class="filter-seperator">Approved</a>
-        <a class="filter-seperator">Not Approved</a>
-        <a class="filter-seperator">Wait Approval</a>
-        <a class="filter-seperator">Draft</a>
-      </div>
+    <div class="row search-section-wrapper">
+      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search Product'"></nc-search>
     </div>
+
+
+    <nc-filter nc-model="params._filter" nc-filter-options="filterOptions"></nc-filter>
+
     <div>
-      <form class="ah-form sticky-mainform-action">
+      <div ng-show="loading" nc-loading="Loading Products.."></div>
+      <form class="ah-form sticky-mainform-action" ng-show="!loading">
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
             <? $this->insert('partials/image-management-content') ?>
           </div>
           <div class="page-navigation">
-            <span>
-              <i class="fa fa-chevron-left grey-chevron"></i>
-              <span> Page 1 of 1</span>
-              <i class="fa fa-chevron-right padding-right-15 blue-chevron"></i>
-              <span class="view-page-separator">View per page</span>
-              <!-- Split button -->
-              <div class="btn-group dropdown-btn">
-                <button type="button" class="btn btn-default dropdown-text">5</button>
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="caret"></span>
-                  <span class="sr-only">Toggle Dropdown</span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-right">
-                  <li><a href="#">5</a></li>
-                  <li><a href="#">10</a></li>
-                  <li><a href="#">15</a></li>
-                </ul>
-              </div>
-            </span>
+             <nc-pagination nc-model="params" nc-pagination-total="response.total"></nc-pagination>
           </div>  
         </div>
         <div class="add-product-form-action main-form-action full-width-row">
@@ -67,6 +45,7 @@
         </div>
       </form>
     </div>
+
   </div>
  
 <!-- data-toggle="modal" data-target="#import-product"' -->

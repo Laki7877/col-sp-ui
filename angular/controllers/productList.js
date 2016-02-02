@@ -38,23 +38,35 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', function ($sc
         var fileName = 'ProductExport-' + moment(new Date(), 'MM-DD-YYYY-HHmm') + ".csv";
         var a = document.getElementById("export_download_btn");
 
-        $scope.exporter.progress = 15;
-        Product.export(arr).then(function (result) {
-            var file = new Blob([result], {type: 'application/csv'});
-            var fileURL = URL.createObjectURL(file);
-
-            $scope.exporter.href = fileURL;
-            $scope.exporter.download = fileName;
-            $scope.exporter.progress = 100;
-            $scope.exporter.title = 'Export Complete'
-            
-            a.href = fileURL;
-            
-        }, function (r) {
-        	$(".modal").modal('hide');
-        	$scope.exporter.title = 'Error'
+        var error = function (r) {
+            $(".modal").modal('hide');
+            $scope.exporter.title = 'Error'
             $scope.alert.error('Unable to Export Product');
             $scope.reloadData();
+        };
+
+        $scope.exporter.progress = 15;
+        var blobs = [];
+
+        var chunks = _.chunk(arr, 3);
+
+        chunks.forEach(function(chunk){
+            Product.export(chunk).then(function (result) {
+
+                $scope.exporter.progress += (100/chunks);
+                blobs.push(result);
+
+                var file = new Blob(blobs, {type: 'application/csv'});
+                var fileURL = URL.createObjectURL(file);
+
+                $scope.exporter.href = fileURL;
+                $scope.exporter.download = fileName;
+                $scope.exporter.progress = 100;
+                $scope.exporter.title = 'Export Complete'
+                
+                a.href = fileURL;
+                
+            }, error);
         });
     }
 

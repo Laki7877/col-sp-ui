@@ -29,6 +29,16 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             return common.makeRequest(req);
         }
 
+        service.duplicate = function(ProductId){
+             //this URL structure is weird dont u think
+            var req = {
+                method: 'POST',
+                url: '/ProductStages/' + ProductId
+            };
+
+            return common.makeRequest(req);
+        };
+
         service.getAll = function(parameters) {
             var req = {
                 method: 'GET',
