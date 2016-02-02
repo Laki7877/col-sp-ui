@@ -25,23 +25,16 @@ module.exports = function($scope, $window, AdminShoptypeService, NcAlert, util) 
 	};
 	$scope.bulkContainer = [];
 	$scope.bulks= [
-	{
-		name: 'Delete',
-		fn: util.bulkDelete(AdminShoptypeService, 'ShopTypeId', 'Shop Types', $scope.alert, $scope.reload)
-	}];
+		util.bulkDelete(AdminShoptypeService, 'ShopTypeId', 'Shop Types', $scope.alert, $scope.reload)
+	];
 	$scope.actions = [
-	{
-		name: 'View / Edit',
-		fn: util.actionView('/admin/shoptypes', 'ShopTypeId')
-	}, 
-	{
-		name: 'Delete',
-		fn: util.actionDelete(AdminShoptypeService, 'ShopTypeId', 'Shop Types', $scope.alert, $scope.reload, function(obj, id) {
+		util.actionView('/admin/shoptypes', 'ShopTypeId'), 
+		util.actionDelete(AdminShoptypeService, 'ShopTypeId', 'Shop Types', $scope.alert, $scope.reload, function(obj, id) {
 			_.remove($scope.bulkContainer, function(e) {
 				return e[id] === obj[id];
 			});
 		})
-	}];
+	];
 	$scope.loading = false;
 	$scope.reload();
 	$scope.$watch('params', $scope.reload, true);

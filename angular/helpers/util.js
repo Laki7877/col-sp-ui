@@ -120,59 +120,76 @@ module.exports = ['storage', 'config', '$window', function (storage, config, $wi
 
     //Create bulk-action from template
     service.bulkDelete = function(rest, id, item, alert, reload)  {
-        return function(array, cb) {
-            alert.close();
+        return {
+            name: 'Delete',
+            fn: function(array, cb) {
+                alert.close();
 
-            //Only pass ShopId
-            var array = _.map(array, function(e) { 
-                return _.pick(e, [id]); 
-            });
+                //Only pass ShopId
+                var array = _.map(array, function(e) { 
+                    return _.pick(e, [id]); 
+                });
 
-            //Blank array?
-            if(array.length <= 0) {
-                alert.error('Unable to delete. Please select ' + item + ' for this action.');
-                return;
-            }
-
-            //Delete bulk
-            rest.delete(array)
-                .then(function() {
-                    alert.success('Delete successful.');
-                    cb();
-                }, function(err) {
+                //Blank array?
+                if(array.length <= 0) {
                     alert.error('Unable to delete. Please select ' + item + ' for this action.');
-                })
-                .finally(reload);
+                    return;
+                }
+
+                //Delete bulk
+                rest.delete(array)
+                    .then(function() {
+                        alert.success('Delete successful.');
+                        cb();
+                    }, function(err) {
+                        alert.error('Unable to delete. Please select ' + item + ' for this action.');
+                    })
+                    .finally(reload);
+            },
+            confirmation: {
+                title: 'Confirm to delete',
+                message: 'Are you sure you want to delete {{model.length}} items?'
+            }
         };
-    } ;
+    };
 
     //Create action from template
     service.actionView = function(uri, id) {
-        return function(item) {
-            $window.location.href= uri + '/' + item[id];
+        return {
+            name: 'View / Edit',
+            fn: function(item) {
+                $window.location.href= uri + '/' + item[id];
+            }
         };
     };
 
     //Create action from template
     service.actionDelete = function(rest, id, item, alert, reload, cb)  {
-        return function(obj) {
-            alert.close();
+        return {
+            name: 'Delete',
+            fn: function(obj) {
+                alert.close();
 
-            //Only pass id
-            var obj = _.pick(obj, [id]); 
-           
+                //Only pass id
+                var obj = _.pick(obj, [id]); 
+               
 
-            //Delete bulk
-            rest.delete([obj])
-                .then(function() {
-                    alert.success('Delete successful.');
-                    cb(obj, id);
-                }, function(err) {
-                    alert.error('Unable to delete. Please select ' + item + ' for this action.');
-                })
-                .finally(reload);
+                //Delete bulk
+                rest.delete([obj])
+                    .then(function() {
+                        alert.success('Delete successful.');
+                        cb(obj, id);
+                    }, function(err) {
+                        alert.error('Unable to delete. Please select ' + item + ' for this action.');
+                    })
+                    .finally(reload);
+            },
+            confirmation: {
+                title: 'Delete',
+                message: 'Are you sure you want to delete selected item?'
+            }
         };
-    } ;
+    };
 
     //Map value to dropdown name&value
     service.getDropdownItem = function(array, value) {
@@ -183,5 +200,6 @@ module.exports = ['storage', 'config', '$window', function (storage, config, $wi
             return false;
         });
     };
+
     return service;
 }];

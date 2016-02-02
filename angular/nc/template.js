@@ -8,6 +8,11 @@ angular.module("nc").run(function($templateCache) {  'use strict';
   );
 
 
+  $templateCache.put('common/ncActionModal',
+    "<div class=\"modal-header no-border\"><button type=button class=close aria-label=Close ng-click=no()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">{{title}}</h2><div ng-bind-html=message></div></div><div class=\"confirmation-action no-margin\"><button class=\"btn btn-white\" ng-click=yes()>Yes</button> <button type=button class=\"btn btn-blue\" ng-click=no()>No</button></div></div></div>"
+  );
+
+
   $templateCache.put('common/ncActionPopover',
     "<div ng-repeat=\"action in options\"><a ng-click=call(action)>{{action.name}}</a></div>"
   );
@@ -30,6 +35,11 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
   $templateCache.put('common/ncBulkCheckbox',
     "<input type=checkbox ng-model=\"checkbox\">"
+  );
+
+
+  $templateCache.put('common/ncBulkModal',
+    "<div class=\"modal-header no-border\"><button type=button class=close aria-label=Close ng-click=no()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">{{title}}</h2><div ng-bind-html=message></div></div><div class=\"confirmation-action no-margin\"><button class=\"btn btn-white\" ng-click=yes()>Yes</button> <button type=button class=\"btn btn-blue\" ng-click=no()>No</button></div></div></div>"
   );
 
 

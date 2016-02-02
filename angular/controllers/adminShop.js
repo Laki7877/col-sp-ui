@@ -36,25 +36,18 @@ module.exports = function($scope, $window, AdminShopService, AdminShoptypeServic
 
 	//Bulk actions
 	$scope.bulks= [
-	{
-		name: 'Delete',
-		fn: util.bulkDelete(AdminShopService, 'ShopId', 'Shop Accounts', $scope.alert, $scope.reload)
-	}];
+		util.bulkDelete(AdminShopService, 'ShopId', 'Shop Accounts', $scope.alert, $scope.reload)
+	];
 
 	//Single action
 	$scope.actions = [
-	{
-		name: 'View / Edit',
-		fn: util.actionView('/admin/shops', 'ShopId')
-	}, 
-	{
-		name: 'Delete',
-		fn: util.actionDelete(AdminShopService, 'ShopId', 'Shop Accounts', $scope.alert, $scope.reload, function(obj, id) {
+		util.actionView('/admin/shops', 'ShopId'), 
+		util.actionDelete(AdminShopService, 'ShopId', 'Shop Accounts', $scope.alert, $scope.reload, function(obj, id) {
 			_.remove($scope.bulkContainer, function(e) {
 				return e[id] === obj[id];
 			});
 		})
-	}];
+	];
 	$scope.reload(); //init
 
 	//Watch for table params change

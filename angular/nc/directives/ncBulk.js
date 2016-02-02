@@ -1,5 +1,5 @@
 angular.module('nc')
-	.directive('ncBulk', function($templateCache) {
+	.directive('ncBulk', function($templateCache, $uibModal) {
 		return {
 			restrict: 'E',
 			template: $templateCache.get('common/ncBulk'),
@@ -57,7 +57,39 @@ angular.module('nc')
 				};
 				scope.call = function() {
 					if(scope.select != scope.options[0]) {
-						if(confirm('Are you sure you want to ' + scope.select.name + '?')) {
+						if(scope.select.confirmation && select.model.length == 0) {
+							var modal = $uibModal.open({
+								animation: true,
+								size: 'size-warning',
+								templateUrl: 'common/ncBulkModal',
+								controller: function($scope, $uibModalInstance, options, $interpolate) {
+									$scope.title = options.title;
+									$scope.message = $interpolate(options.message)(scope);
+									$scope.yes = function() {
+										$uibModalInstance.close();
+									};
+									$scope.no = function() {
+										$uibModalInstance.dismiss();
+									}
+								},
+								resolve: {
+									options: function() {
+										return {
+											title: scope.select.confirmation.title,
+											message: scope.select.confirmation.message
+										}
+									}
+								}
+							});
+
+							//Modal 
+							modal.result.then(function() {
+								scope.select.fn(scope.model, function() {
+									//cb to clear all entries
+									scope.model = [];
+								});
+							});
+						} else {
 							scope.select.fn(scope.model, function() {
 								//cb to clear all entries
 								scope.model = [];

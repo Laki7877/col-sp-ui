@@ -9,7 +9,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 		<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Admin Accounts/" . $title, 'urls' => ['/admin/accounts']]) ?>
 		<div ng-show="loading" nc-loading="Loading Admin Account.."></div>
 		<div ng-show="saving" nc-loading="Saving Admin Account.."></div>
-		<form ng-show="!saving" name="form" class="ah-form sticky-mainform-action" novalidate>
+		<form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
 					<div id="add-product-more-option-tab-content">
