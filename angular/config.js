@@ -21,6 +21,6 @@ module.exports = {
 			value: 'NA'
 		}]
 	},
-	DEFAULT_SUCCESS_MESSAGE: 'Your changes has been saved successfully.',
+	DEFAULT_SUCCESS_MESSAGE: 'Your changes have been saved successfully.',
 	DEFAULT_ERROR_MESSAGE: 'Unable to save because required fields are missing or incorrect.' 
 };

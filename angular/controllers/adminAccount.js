@@ -1,6 +1,3 @@
-/**
- * 
- */
 module.exports = function($scope, $window, AdminAccountService, NcAlert, util) {
 	$scope.reload = function() {
 		$scope.loading = true;

@@ -149,7 +149,7 @@ module.exports = ['storage', 'config', '$window', function (storage, config, $wi
     //Create action from template
     service.actionView = function(uri, id) {
         return function(item) {
-            $window.location.href= uri + item[id];
+            $window.location.href= uri + '/' + item[id];
         };
     };
 
