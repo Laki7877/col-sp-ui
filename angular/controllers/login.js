@@ -10,9 +10,11 @@ module.exports = ['$scope', 'storage', '$base64', 'Alert', 'Credential', '$windo
 			$scope.alert.close();
 			$scope.loading = false;
 
-			var redir = "/";
-			if(storage.has('redirect')){
-				redir = storage.get('redirect');
+			var redir = storage.get('redirect');
+			if(!redir){
+				redir = "/";
+			}else{
+				storage.remove('redirect');
 			}
 
 			$window.location.href = redir;
