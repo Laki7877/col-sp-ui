@@ -1,7 +1,7 @@
 var angular = require('angular');
 
-module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair',
-function ($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair) {
+module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope',
+function ($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, $rootScope) {
     'use strict';
 
     //TODO: use Poons' Alert class

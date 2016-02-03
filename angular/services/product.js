@@ -35,7 +35,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
         service.getAll = function(parameters) {
             var req = {
                 method: 'GET',
-                url: '/ProductStages',
+                url: '/ProductStages/',
                 params: {
                     _order: parameters.orderBy || 'ProductId',
                     _limit: parameters.pageSize || 10,

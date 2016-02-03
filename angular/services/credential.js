@@ -11,5 +11,13 @@ module.exports = ['common', function(common) {
 			url: '/Users/Login/'
 		});
 	}
+
+	service.loginAs = function(Uid){
+		return common.makeRequest({
+			type: 'GET',
+			url: '/Users/Login/' + Uid
+		});
+	}
+
 	return service;
 }];
