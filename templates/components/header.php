@@ -44,7 +44,7 @@
           <ul class="dropdown-menu">
             <li><a href="#">View Storefront</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Status: <span class="color-red">Inactve</span></a></li>
+            <li><a href="#">Status: <span class="color-red">Inactive</span></a></li>
             <li><a href='#'><span class="color-theme">Change to Active</span></a></li>
           </ul>
       </li>
