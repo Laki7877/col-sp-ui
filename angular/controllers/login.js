@@ -1,11 +1,11 @@
-module.exports = ['$scope', 'storage', '$base64', 'Alert', 'Credential', '$window', function($scope, storage, $base64, Alert, Credential, $window) {
+module.exports = ['$scope', 'Alert', 'Credential', '$window', 'storage', function($scope, Alert, Credential, $window, storage) {
 	
 	$scope.alert = new Alert();
 	$scope.doLogin = function(){
 		$scope.loading = true;
-		storage.storeSessionToken($base64.encode($scope.user + ":" + $scope.pass));
-		Credential.getPermissions().then(function(r){
-			storage.storeCurrentUserProfile(r, false);
+
+		Credential.login($scope.user, $scope.pass).then(function(r){
+			
 			console.log(r);
 			$scope.alert.close();
 			$scope.loading = false;
