@@ -31,21 +31,20 @@
           <i class="fa fa-angle-down"></i>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="#">View Shop Profile</a></li>
             <li><a href='#' data-toggle='modal' data-target='#change-password-modal'>Change Password</a></li>
             <li><a href="#">Logout</a></li>
           </ul>
         </li>
         <li class="dropdown header-font-detail">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <span>Storefront</span> 
+          <span>My Shop</span> 
           <i class="fa fa-angle-down"></i>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="#">View Storefront</a></li>
-            <li role="separator" class="divider"></li>
             <li><a href="#">Status: <span class="color-red">Inactive</span></a></li>
-            <li><a href='#'><span class="color-theme">Change to Active</span></a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">View Storefront</a></li>
+            <li><a href="#">View Shop Profile</a></li>
           </ul>
       </li>
     </ul>
