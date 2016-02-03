@@ -1,4 +1,5 @@
 module.exports = function($scope, $window, AdminShoptypeService, NcAlert, util) {
+	'ngInject';
 	$scope.reload = function() {
 		$scope.loading = true;
 		AdminShoptypeService.list($scope.params)
@@ -14,10 +15,10 @@ module.exports = function($scope, $window, AdminShoptypeService, NcAlert, util) 
 		emptyMessage: 'You do not have a Shop Account'
 	};
 	$scope.params = {
-		_order: 'ShopTypeId',
+		_order: 'UpdatedDt',
 		_limit: 10,
 		_offset: 0,
-		_direction: 'asc'
+		_direction: 'desc'
 	};
 	$scope.list = {
 		total: 0,

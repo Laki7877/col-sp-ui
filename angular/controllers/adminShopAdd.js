@@ -60,7 +60,7 @@ module.exports = function($scope, $window, AdminShopService, AdminShoptypeServic
 						$scope.alert.success(util.saveAlertSuccess('Admin Shop', '/admin/shops'));
 						$scope.form.$setPristine(true);
 					}, function(err) {
-						$scope.alert.error(util.saveAlertError());
+						$scope.alert.error(common.getError(err));
 					})
 					.finally(function() {
 						$scope.saving = false;
@@ -69,11 +69,12 @@ module.exports = function($scope, $window, AdminShopService, AdminShoptypeServic
 				//Save mode
 				AdminShopService.create(data)
 					.then(function(result) {
+						$scope.id = result.ShopId;
 						$scope.formData.ShopId = result.ShopId; 
 						$scope.alert.success(util.saveAlertSuccess('Admin Shop Account', '/admin/shops'));
 						$scope.form.$setPristine(true);
 					}, function(err) {
-						$scope.alert.error(util.saveAlertError());
+						$scope.alert.error(common.getError(err));
 					})
 					.finally(function() {
 						$scope.saving = false;
@@ -84,4 +85,7 @@ module.exports = function($scope, $window, AdminShopService, AdminShoptypeServic
 			$scope.alert.error(util.saveAlertError());
 		}
 	};
+	$scope.$watch('id', function(val) {
+		$scope.title = util.getTitle(val,'Shop Account');
+	});
 }

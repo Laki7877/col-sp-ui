@@ -57,7 +57,7 @@ angular.module('nc')
 				};
 				scope.call = function() {
 					if(scope.select != scope.options[0]) {
-						if(scope.select.confirmation && select.model.length == 0) {
+						if(scope.select.confirmation && scope.model.length != 0) {
 							var modal = $uibModal.open({
 								animation: true,
 								size: 'size-warning',

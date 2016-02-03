@@ -22,5 +22,9 @@ module.exports = {
 		}]
 	},
 	DEFAULT_SUCCESS_MESSAGE: 'Your changes have been saved successfully.',
-	DEFAULT_ERROR_MESSAGE: 'Unable to save because required fields are missing or incorrect.' 
+	DEFAULT_ERROR_MESSAGE: 'Unable to save because required fields are missing or incorrect.', 
+	TITLE: {
+		CREATE: 'Create New {{content}}',
+		DETAIL: '{{content}} Detail'
+	}
 };

@@ -6,7 +6,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminAccountAddCtrl" ng-init="init(<?=$params?>)">
 		<nc-alert nc-model="alert"></nc-alert>		
-		<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Admin Accounts/" . $title, 'urls' => ['/admin/accounts']]) ?>
+		<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Admin Accounts/{{title}}", 'urls' => ['/admin/accounts']]) ?>
 		<div ng-show="loading" nc-loading="Loading Admin Account.."></div>
 		<div ng-show="saving" nc-loading="Saving Admin Account.."></div>
 		<form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
@@ -34,7 +34,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  'error' : {
 							                        'messages': {
 							                          'required': 'This is a required field',
-							                          'email': 'Only valid email allowed'
+							                          'email': 'Please enter valid email address'
 							                        },
 							                        'show': $root.isInvalid(form.Email),
 							                        'conditions' : form.Email.$error
@@ -77,9 +77,8 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  'labelClass': 'required',
 							                  'error' : {
 							                        'messages': {
-							                          'required': 'This is a required field',
-							                          'pattern': 'Only numbers allowed in this field'
-							                        },
+							                          'required': 'This is a required field'
+							                       },
 							                        'show': $root.isInvalid(form.Phone),
 							                        'conditions' : form.Phone.$error
 							                   }
@@ -89,7 +88,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  name="Phone"
 							                  ng-model="formData.Phone"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.Phone) }"
-							                  ng-pattern="/^[0-9]*$/"
+							                  ng-pattern-restrict="^[0-9]*$"
 							                  maxlength="20"
 							                  required />
 							              </div>
@@ -97,7 +96,6 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							              <div ng-template="common/input/text2"
 							                ng-template-options="{
 							                  'label': 'Employee ID',
-							                  'labelClass': 'required',
 							                  'error' : {
 							                        'messages': {
 							                          'required': 'This is a required field'
@@ -112,13 +110,12 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  ng-model="formData.EmployeeId"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.EmployeeId) }"
 							                  maxlength="50"
-							                  required />
+							                 />
 							              </div>
 							              <!-- Position -->
 							              <div ng-template="common/input/text2"
 							                ng-template-options="{
 							                  'label': 'Position',
-							                  'labelClass': 'required',
 							                  'error' : {
 							                        'messages': {
 							                          'required': 'This is a required field'
@@ -133,13 +130,12 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  ng-model="formData.Position"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.Position) }"
 							                  maxlength="100"
-							                  required />
+							                  />
 							              </div>
 							              <!-- Division / BU -->
 							              <div ng-template="common/input/text2"
 							                ng-template-options="{
 							                  'label': 'Division / BU',
-							                  'labelClass': 'required',
 							                  'error' : {
 							                        'messages': {
 							                          'required': 'This is a required field'
@@ -154,18 +150,18 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  ng-model="formData.Division"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.Division) }"
 							                  maxlength="100"
-							                  required />
+							                />
 							              </div>
 							              <!-- Password -->
 							              <div ng-template="common/input/password"
 							                ng-template-options="{
 							                  'label': 'Password',
-							                  'labelClass': '{ \'required\' : formData.UserId == 0 }',
+							                  'labelClass': { 'required' : !(formData.UserId > 0) },
 							                  'formGroupClass': 'margin-top-30',
 							                  'error' : {
 							                        'messages': {
 							                          'required': 'This is a required field',
-							                          'pattern': 'Must have both number and character',
+							                          'pattern': 'Your password must contain letters and numbers',
 							                          'minlength': 'Your password must be 8-20 characters long',
 							                          'maxlength': 'Your password must be 8-20 characters long'
 							                        },
@@ -189,7 +185,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							              <div ng-template="common/input/password"
 							                ng-template-options="{
 							                  'label': 'Confirm Password',
-							                  'labelClass': '{ \'required\' : formData.UserId == 0 }',
+							                  'labelClass': { 'required' : !(formData.UserId > 0)  },
 							                  'error' : {
 							                        'messages': {
 							                          'required': 'This is a required field',
@@ -259,7 +255,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 				<div class="container-fluid">
 					<div class="float-right">
 						<a href="#" class="link-btn-plain" ng-click="cancel()">Cancel</a>
-						<button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+						<button type="button" class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
 					</div>
 				</div>
 			</div>

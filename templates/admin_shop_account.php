@@ -13,11 +13,12 @@
         <thead>
           <tr class="table-head">
             <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
-            <th nc-sort="ShopId">ID</th>
+            <th nc-sort="ShopId">Shop ID</th>
             <th nc-sort="ShopNameEn">Shop Name</th>
-            <th nc-sort="ShopTypeNameEn">Shop Type</th>
-            <th nc-sort="Status">Status</th>
+            <th nc-sort="ShopType">Shop Type</th>
+            <th>Status</th>
             <th>Action</th>
+            <th nc-sort="UpdatedDt">Modified</th>
           </tr>
         </thead>
         <tbody>
@@ -28,6 +29,7 @@
             <td>{{row.ShopType.ShopTypeNameEn }}</td>
             <td>{{row.Status | mapDropdown:statusDropdown }}</td>
             <td><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
+            <td>{{row.UpdatedDt | dateTh }}</td>
           </tr>
         </tbody>
       </table>

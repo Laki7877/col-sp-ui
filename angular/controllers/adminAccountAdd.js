@@ -1,4 +1,4 @@
-module.exports = function($scope, $window, AdminAccountService, AdminRoleService, NcAlert, util) {
+module.exports = function($scope, $window, AdminAccountService, AdminRoleService, NcAlert, util, common) {
 	$scope.formData = {};
 	$scope.form = {};
 	$scope.roles = [];
@@ -25,7 +25,8 @@ module.exports = function($scope, $window, AdminAccountService, AdminRoleService
 		//Edit mode
 		if($scope.id > 0) {
 			$scope.loading = true;
-
+			$scope.title = config.TITLE.ADMIN_ACCOUNT_EDIT;
+			
 			//Get by id
 			AdminAccountService.get($scope.id)
 				.then(function(data) {
@@ -64,7 +65,7 @@ module.exports = function($scope, $window, AdminAccountService, AdminRoleService
 						$scope.alert.success(util.saveAlertSuccess('Admin Account', '/admin/accounts'));
 						$scope.form.$setPristine(true);
 					}, function(err) {
-						$scope.alert.error(util.saveAlertError());
+						$scope.alert.error(common.getError(err));
 					})
 					.finally(function() {
 						$scope.saving = false;
@@ -73,11 +74,12 @@ module.exports = function($scope, $window, AdminAccountService, AdminRoleService
 				//Save mode
 				AdminAccountService.create(data)
 					.then(function(result) {
+						$scope.id = result.UserId;
 						$scope.formData.UserId = result.UserId; 
 						$scope.alert.success(util.saveAlertSuccess('Admin Account', '/admin/accounts'));
 						$scope.form.$setPristine(true);
 					}, function(err) {
-						$scope.alert.error(util.saveAlertError());
+						$scope.alert.error(common.getError(err));
 					})
 					.finally(function() {
 						$scope.saving = false;
@@ -88,4 +90,8 @@ module.exports = function($scope, $window, AdminAccountService, AdminRoleService
 			$scope.alert.error(util.saveAlertError());
 		}
 	};
+
+	$scope.$watch('id', function(val) {
+		$scope.title = util.getTitle(val,'Admin Account');
+	});
 };

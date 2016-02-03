@@ -1,4 +1,5 @@
 module.exports = function($scope, $window, AdminRoleService, NcAlert, util) {
+	'ngInject';
 	$scope.reload = function() {
 		$scope.loading = true;
 		AdminRoleService.list($scope.params)
@@ -14,10 +15,10 @@ module.exports = function($scope, $window, AdminRoleService, NcAlert, util) {
 		emptyMessage: 'You do not have an Admin Role'
 	};
 	$scope.params = {
-		_order: 'GroupId',
+		_order: 'UpdatedDt',
 		_limit: 10,
 		_offset: 0,
-		_direction: 'asc'
+		_direction: 'desc'
 	};
 	$scope.list = {
 		total: 0,

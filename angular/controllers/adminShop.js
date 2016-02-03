@@ -1,4 +1,5 @@
 module.exports = function($scope, $window, AdminShopService, AdminShoptypeService, NcAlert, util, config) {
+	'ngInject';
 	//Reload table list
 	$scope.reload = function() {
 		$scope.loading = true;
@@ -19,10 +20,10 @@ module.exports = function($scope, $window, AdminShopService, AdminShoptypeServic
 	
 	//Table params
 	$scope.params = {
-		_order: 'ShopId',
+		_order: 'UpdatedDt',
 		_limit: 10,
 		_offset: 0,
-		_direction: 'asc'
+		_direction: 'desc'
 	};
 
 	//Table list

@@ -13,19 +13,19 @@
         <thead>
           <tr class="table-head">
             <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
-            <th nc-sort="GroupId">ID</th>
-            <th>Role Name</th>
+            <th nc-sort="GroupNameEn">Role Name</th>
             <th># of Users</th>
             <th>Action</th>
+            <th nc-sort="UpdatedDt">Modified</th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="row in list.data">
             <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
-            <td class="column-text-ellipsis">{{row.GroupId | leadingzero: 2 }}</td>
             <td nc-link="/admin/roles/{{row.GroupId}}">{{row.GroupNameEn }}</td>
             <td>{{row.UserCount}}</td>
             <td><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
+            <td>{{row.UpdatedDt | dateTh}}</td>
           </tr>
         </tbody>
       </table>

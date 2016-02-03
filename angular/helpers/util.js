@@ -1,6 +1,6 @@
 var angular = require('angular');
 
-module.exports = ['storage', 'config', '$window', function (storage, config, $window) {
+module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$interpolate', function (storage, config, common, $window, $rootScope, $interpolate) {
     'use strict';
     var service = {};
 
@@ -142,7 +142,7 @@ module.exports = ['storage', 'config', '$window', function (storage, config, $wi
                         alert.success('Delete successful.');
                         cb();
                     }, function(err) {
-                        alert.error('Unable to delete. Please select ' + item + ' for this action.');
+                        alert.error(common.getError(err));
                     })
                     .finally(reload);
             },
@@ -180,7 +180,7 @@ module.exports = ['storage', 'config', '$window', function (storage, config, $wi
                         alert.success('Delete successful.');
                         cb(obj, id);
                     }, function(err) {
-                        alert.error('Unable to delete. Please select ' + item + ' for this action.');
+                        alert.error(common.getError(err));
                     })
                     .finally(reload);
             },
@@ -201,5 +201,17 @@ module.exports = ['storage', 'config', '$window', function (storage, config, $wi
         });
     };
 
+    service.getTitle = function(id, item) {
+        var scope = $rootScope.$new(true);
+        var content = '';
+        scope.content = item;
+
+        if(id > 0) {
+            content = $interpolate(config.TITLE.DETAIL)(scope);
+        } else {
+            content = $interpolate(config.TITLE.CREATE)(scope);
+        }
+        return content;
+    }
     return service;
 }];
