@@ -26,7 +26,7 @@
 
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown header-font-detail">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
           <span>{{ $root.Profile.User.Email }}</span> 
           <i class="fa fa-angle-down"></i>
           </a>
@@ -36,11 +36,23 @@
             <li><a href="#">Logout</a></li>
           </ul>
         </li>
+        <li class="dropdown header-font-detail">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <span>Storefront</span> 
+          <i class="fa fa-angle-down"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">View Storefront</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Status: <span class="color-red">Inactve</span></a></li>
+            <li><a href='#'><span class="color-theme">Change to Active</span></a></li>
+          </ul>
+      </li>
     </ul>
 
-     <a class="header-font-detail margin-right-20">
+     <!-- <a class="header-font-detail margin-right-20">
         <span>View Your Store</span>
-    </a>
+    </a> -->
 
  </div>
 </nav>

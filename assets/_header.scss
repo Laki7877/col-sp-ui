@@ -26,6 +26,13 @@
     	background-color: $color-theme !important;
     	color: $color-white !important;
 	}
+	.dropdown-menu{
+		padding: 10px 0px;
+		border-color: $color-light-grey;
+	}
+	.dropdown-menu .divider{
+		background-color: $color-light-grey;
+	}
 }
 
 // Page Header
