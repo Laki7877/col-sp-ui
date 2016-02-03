@@ -156,7 +156,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							              <div ng-template="common/input/password"
 							                ng-template-options="{
 							                  'label': 'Password',
-							                  'labelClass': { 'required' : !(formData.UserId > 0) },
+							                  'labelClass': { 'required' : !(id > 0) },
 							                  'formGroupClass': 'margin-top-30',
 							                  'error' : {
 							                        'messages': {
@@ -179,13 +179,13 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  ng-pattern-restrict="^[0-9a-zA-Z]*$"
 							                  ng-maxlength="20"
 							                  ng-minlength="8"
-							                  ng-required="formData.UserId == 0" />
+							                  ng-required="!(id > 0)" />
 							              </div>
 							              <!-- Confirm Password -->
 							              <div ng-template="common/input/password"
 							                ng-template-options="{
 							                  'label': 'Confirm Password',
-							                  'labelClass': { 'required' : !(formData.UserId > 0)  },
+							                  'labelClass': { 'required' : !(id > 0) },
 							                  'error' : {
 							                        'messages': {
 							                          'required': 'This is a required field',
@@ -202,7 +202,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  ng-model="formData.ConfirmPassword"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.ConfirmPassword) }"
 							                  ng-match="{{formData.Password}}"
-							                  ng-required="formData.UserId == 0" />
+							                  ng-required="!(id > 0)" />
 							              </div>
 									</div>
 								</div>

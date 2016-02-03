@@ -12,13 +12,14 @@ module.exports = {
 	   filebrowserFlashUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
 	},
 	DROPDOWN: {
-		DEFAULT_STATUS_DROPDOWN: [{
-			name: 'Active',
-			value: 'AT'
-		},
+		DEFAULT_STATUS_DROPDOWN: [
 		{
 			name: 'Inactive',
 			value: 'NA'
+		},
+		{
+			name: 'Active',
+			value: 'AT'
 		}]
 	},
 	DEFAULT_SUCCESS_MESSAGE: 'Your changes have been saved successfully.',

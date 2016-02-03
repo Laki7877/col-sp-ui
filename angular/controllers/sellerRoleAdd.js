@@ -5,8 +5,8 @@ module.exports = function($scope, $controller, AdminRoleService) {
 		$scope: $scope,
 		options: {
 			id: 'GroupId',
-			url: '/admin/roles',
-			item: 'Admin Role',
+			url: '/roles',
+			item: 'Role',
 			service: AdminRoleService,
 			init: function(scope) {}
 		}

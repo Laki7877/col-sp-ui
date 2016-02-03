@@ -1,6 +1,6 @@
 module.exports = function(common) {
 	'ngInject';
-	var service = common.Rest('/Users/Admin');
+	var service = common.Rest('/Users/Seller');
 
 	service.generate = function() {
 		return {};

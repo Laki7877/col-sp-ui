@@ -1,4 +1,5 @@
 module.exports = function(common, ShopPermissionService) {
+	'ngInject';
 	var service = common.Rest('/Shoptypes');
 
 	service.serialize = function(data) {

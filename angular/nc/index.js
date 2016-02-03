@@ -1,13 +1,14 @@
 var angular = require('angular');
 
 require('angular-ui-bootstrap');
+require('angular-file-upload');
 require('angular-scroll');
 require('ui-select');
 global.jQuery = require('jquery');
 global.$ = require('jquery');
 global._ = require('lodash');
 
-angular.module('nc', ['ui.bootstrap', 'ui.select', 'duScroll'])
+angular.module('nc', ['ui.bootstrap', 'ui.select', 'duScroll', 'angularFileUpload'])
 
 .config(function($uibTooltipProvider) {
 	$uibTooltipProvider.setTriggers({

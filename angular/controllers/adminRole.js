@@ -1,42 +1,15 @@
-module.exports = function($scope, $window, AdminRoleService, NcAlert, util) {
+module.exports = function($scope, $controller, AdminRoleService, config) {
 	'ngInject';
-	$scope.reload = function() {
-		$scope.loading = true;
-		AdminRoleService.list($scope.params)
-			.then(function(data) {
-				$scope.list = data;
-			})
-			.finally(function() {
-				$scope.loading = false;
-			});
-	};
-	$scope.alert = new NcAlert();
-	$scope.tableOptions = {
-		emptyMessage: 'You do not have an Admin Role'
-	};
-	$scope.params = {
-		_order: 'UpdatedDt',
-		_limit: 10,
-		_offset: 0,
-		_direction: 'desc'
-	};
-	$scope.list = {
-		total: 0,
-		data: []
-	};
-	$scope.bulkContainer = [];
-	$scope.bulks= [
-		util.bulkDelete(AdminRoleService, 'GroupId', 'Admin Roles', $scope.alert, $scope.reload)
-	];
-	$scope.actions = [
-		util.actionView('/admin/roles', 'GroupId'), 
-		util.actionDelete(AdminRoleService, 'GroupId', 'Admin Roles', $scope.alert, $scope.reload, function(obj, id) {
-			_.remove($scope.bulkContainer, function(e) {
-				return e[id] === obj[id];
-			});
-		})
-	];
-	$scope.loading = false;
-	$scope.reload();
-	$scope.$watch('params', $scope.reload, true);
+	//Inherit from parent
+	$controller('AbstractListCtrl', {
+		$scope: $scope,
+		options: {
+			url: '/admin/roles',
+			service: AdminRoleService,
+			item: 'Role',
+			order: 'UpdatedDt',
+			id: 'RoleId'
+		}
+	});
+	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }

@@ -20,8 +20,8 @@
 
     <ul class="sub-sidebar" style="display: none;" id="sub-sidebar-account">
         <li class="sub-sidebar-header">Account</li>
-        <li class="item active margin-top-20"><a href="?p=user_account">User Accounts</a></li>
-        <li class="item"><a href="?p=user_role">User Roles</a></li>
+        <li ng-class="$root.activeUrl('/accounts')" class="item margin-top-20"><a href="/accounts">User Accounts</a></li>
+        <li ng-class="$root.activeUrl('/roles')" class="item"><a href="/roles">User Roles</a></li>
     </ul>
 
 <?php $this->stop() ?>

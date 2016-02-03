@@ -28,20 +28,13 @@ module.exports = function (grunt) {
         logConcurrentOutput: true
       },
       dev: {
-        tasks: ['watch:scripts', 'watch:templates', 'watch:compass']
+        tasks: ['watch:scripts']
       }
     },
     watch: {
       scripts: {
-        files: ['angular/**/*'],
-        tasks: ['browserify']
-      },
-      templates: {
-        files: ['templates/angular/**/*.html'],
-        tasks: ['ngtemplates']
-      },
-      compass: {
-        files: ['assets/**/*']
+        files: ['angular/**/*', 'templates/angular/**/*.html'],
+        tasks: ['default']
       }
     },
     exec: {
@@ -113,7 +106,7 @@ module.exports = function (grunt) {
   // Default task.
   grunt.registerTask('default', ['ngtemplates','browserify']);
   grunt.registerTask('template', ['ngtemplates']);
-  grunt.registerTask('watchall', ['concurrent:dev']);
+  grunt.registerTask('watchall', ['watch']);
   grunt.registerTask('compass', ['exec:compass']);
 
 }; 

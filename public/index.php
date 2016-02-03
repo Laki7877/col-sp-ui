@@ -32,6 +32,14 @@ Route::add('/products/:productid', 'ProductController::edit');
 //category routing
 Route::add('/categories', 'CategoryController::index');
 
+//seller routing
+Route::add('/accounts', 'SellerController::listAccount');
+Route::add('/accounts/add', 'SellerController::addAccount');
+Route::add('/accounts/:id', 'SellerController::editAccount');
+Route::add('/roles', 'SellerController::listRole');
+Route::add('/roles/add', 'SellerController::addRole');
+Route::add('/roles/:id', 'SellerController::editRole');
+
 //admin routing
 Route::add('/admin/attributes/add','AdminController::addAttribute');
 Route::add('/admin/attributes/:id','AdminController::editAttribute');

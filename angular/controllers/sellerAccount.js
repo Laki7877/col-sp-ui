@@ -1,14 +1,14 @@
-module.exports = function($scope, $controller, AdminShopService, config) {
+module.exports = function($scope, $controller, SellerAccountService, config) {
 	'ngInject';
 	//Inherit from parent
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
 		options: {
-			url: '/admin/shops',
-			service: AdminShopService,
-			item: 'Shop Account',
+			url: '/accounts',
+			service: SellerAccountService,
+			item: 'Account',
 			order: 'UpdatedDt',
-			id: 'ShopId'
+			id: 'UserId'
 		}
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;

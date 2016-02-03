@@ -3,10 +3,10 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminShopCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <? $this->insert('components/page-title-with-one-button', ['text' => 'Shop Accounts','button' => 'Create New Seller Shop', 'button_class' => 'btn-width-xxxl', 'link' => '/admin/shops/add']) ?>
+    <? $this->insert('components/page-title-with-one-button', ['text' => 'Shop Accounts','button' => 'Create New Shop Account', 'button_class' => 'btn-width-xxxl', 'link' => '/admin/shops/add']) ?>
     <div class="row search-section-wrapper">
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="ShopId"></nc-bulk>
-      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Admin Accounts'"></nc-search>
+      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Shop Name, ID, and Type'"></nc-search>
     </div>
     <nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="params.searchText.length > 0" >
       <table class="table table-curved">

@@ -95,11 +95,9 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 					                    <div ng-template="common/input/text2"
 					                      ng-template-options="{
 					                        'label': 'Commission (%)',
-					                      	'labelClass': 'required',
 					                      	'inputSize' : 'small',
 					                        'error' : {
 					                              'messages': {
-							                          	'required': 'This is a required field',
 							                          	'pattern': 'Only numbers and decimals (up to 2 digits) allowed',
 					                            		'minnumber': 'Please enter between 0% and 100%',
 					                            		'maxnumber': 'Please enter between 0% and 100%'
@@ -118,7 +116,6 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 					                        maxlength="20"
 					                        ng-maxnumber="100",
 					                        ng-minnumber="0"
-					                        required
 					                        />
 					                    </div>
 									</div>
@@ -221,7 +218,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							              <div ng-template="common/input/password"
 							                ng-template-options="{
 							                  'label': 'Password',
-							                  'labelClass': { 'required' : !(formData.ShopId > 0) },
+							                  'labelClass': { 'required' : !(id > 0) },
 							                  'formGroupClass': 'margin-top-30',
 							                  'error' : {
 							                        'messages': {
@@ -244,13 +241,13 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  ng-pattern-restrict="^[0-9a-zA-Z]*$"
 							                  ng-maxlength="20"
 							                  ng-minlength="8"
-							                  ng-required="!(formData.ShopId > 0)" />
+							                  ng-required="!(id > 0)" />
 							              </div>
 							              <!-- Confirm Password -->
 							              <div ng-template="common/input/password"
 							                ng-template-options="{
 							                  'label': 'Confirm Password',
-							                  'labelClass': { 'required' : !(formData.ShopId > 0) },
+							                  'labelClass': { 'required' : !(id > 0) },
 							                  'error' : {
 							                        'messages': {
 							                          'required': 'This is a required field',
@@ -267,7 +264,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							                  ng-model="formData.ShopOwner.ConfirmPassword"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.ConfirmPassword) }"
 							                  ng-match="{{formData.ShopOwner.Password}}"
-							                  ng-required="!(formData.ShopId > 0)" />
+							                  ng-required="!(id > 0)" />
 							              </div>
 									</div>
 								</div>

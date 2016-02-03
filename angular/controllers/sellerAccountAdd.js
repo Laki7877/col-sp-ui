@@ -1,16 +1,15 @@
-module.exports = function($scope, $controller, AdminAccountService, AdminRoleService) {
-	'ngInject';
+module.exports = function($scope, $controller, SellerAccountService, SellerRoleService) {
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
 		options: {
 			id: 'UserId',
-			url: '/admin/accounts',
-			item: 'Admin Account',
-			service: AdminAccountService,
+			url: '/accounts',
+			item: 'Seller Account',
+			service: SellerAccountService,
 			init: function(scope) {		
 				//Get all available roles
-				AdminRoleService.listAll()
+				SellerRoleService.listAll()
 					.then(function(data) {
 						scope.roles = _.map(data, function(e) {
 							//Pick only necessary property
@@ -20,4 +19,4 @@ module.exports = function($scope, $controller, AdminAccountService, AdminRoleSer
 			}
 		}
 	});
-};
+}
