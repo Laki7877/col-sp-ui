@@ -1,4 +1,4 @@
-module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', function ($scope, Product, util, Alert, $window) {
+module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope', function ($scope, Product, util, Alert, $window, $rootScope) {
     //UI binding variables    
     
     $scope.showOnOffStatus = true;

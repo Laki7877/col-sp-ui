@@ -39,4 +39,9 @@ class ProductController extends Controller
 	{
 		return View::render('global_category');
 	}
+
+	public static function reviews($params)
+	{
+		return View::render('product_review');
+	}
 }
