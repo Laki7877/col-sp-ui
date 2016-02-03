@@ -1,8 +1,8 @@
 <div class="drop-zone-container">
 	<div class="image-drop-wrapper">
-		<input type="file" />
-		<div class="image-drop-zone">
-			<div class="image-drop-zone-text" ng-bind-html="content">
+		<input nv-file-select uploader="uploader" type="file" multiple/>
+		<div nv-file-drop uploader="uploader" class="image-drop-zone">
+			<div class="image-drop-zone-text" nc-bind-template="template">
 			</div>
 		</div>
 	</div>

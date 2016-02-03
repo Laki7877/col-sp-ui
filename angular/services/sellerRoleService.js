@@ -1,6 +1,6 @@
-module.exports = function(common, AdminPermissionService) {
+module.exports = function(common, SellerPermissionService) {
 	'ngInject';
-	var service = common.Rest('/UserGroups/Admin');
+	var service = common.Rest('/UserGroups/Seller');
 
 	service.serialize = function(data) {
 		var processed = _.merge({}, data);
@@ -15,7 +15,7 @@ module.exports = function(common, AdminPermissionService) {
 
 	service.deserialize = function(data) {
 		var processed = _.merge({}, data);
-		AdminPermissionService.listAll()
+		SellerPermissionService.listAll()
 			.then(function(data) {
 				processed.Permission = _.map(data, function(e) {
 					if(_.isUndefined(_.find(processed.Permission, { PermissionId: e.PermissionId }))) {
@@ -32,7 +32,7 @@ module.exports = function(common, AdminPermissionService) {
 		var processed = {
 			Permission: []
 		};
-		AdminPermissionService.listAll()
+		SellerPermissionService.listAll()
 			.then(function(data) {
 				processed.Permission = _.map(data, function(e) {
 					e.check = false;

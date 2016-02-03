@@ -59,12 +59,22 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/ncImageDropzone',
-    "<div class=drop-zone-container><div class=image-drop-wrapper><input type=\"file\"><div class=image-drop-zone><div class=image-drop-zone-text ng-bind-html=content></div></div></div></div>"
+    "<div class=drop-zone-container><div class=image-drop-wrapper><input nv-file-select uploader=uploader type=file multiple><div nv-file-drop uploader=uploader class=image-drop-zone><div class=image-drop-zone-text nc-bind-template=template></div></div></div></div>"
+  );
+
+
+  $templateCache.put('common/ncImageDropzoneInline',
+    "<div class=drop-zone-container><div class=image-drop-wrapper><input type=\"file\"><div class=image-drop-zone><div class=image-drop-zone-text ng-bind-compile=content><? $this->insert('components/image-dropzone-inline-text', [\"id\" => \"images-management1\", 'texts' =>['<i class=\"fa fa-image fa-3x color-theme\"></i>', 'Drop images here', '<a href=\"#\" data-trigger=\"file\" data-target=\"#images-management1\">or select images</a>']]) ?><? $this->insert('components/image-dropzone-inline-text', ['texts' =>['<i class=\"fa fa-ban fa-3x color-dark-grey\"></i>', 'Cannot upload', 'Wait for Approval']]) ?><? $this->insert('components/image-dropzone-inline-text', [\"id\" => \"images-management3\", 'texts' =>['This product is already approved', '<a href=\"#\" data-trigger=\"file\" data-target=\"#images-management3\">Click here to edit</a>']]) ?><? $this->insert('components/image-dropzone-inline-text', [\"id\" => \"images-management4\", 'texts' =>['<i class=\"fa fa-image fa-3x color-theme\"></i>', 'Drop images here', '<a href=\"#\" data-trigger=\"file\" data-target=\"#images-management4\">or select images</a>']]) ?><? $this->insert('components/image-dropzone-inline-text', ['texts' =>['<i class=\"fa fa-ban fa-3x color-dark-grey\"></i>', 'Cannot upload', 'Reach Max Photos']]) ?></div></div></div></div>"
+  );
+
+
+  $templateCache.put('common/ncImageDropzoneTemplate',
+    "<p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload()>or select images</a></p>"
   );
 
 
   $templateCache.put('common/ncImageGallery',
-    "<div class=margin-top-20><ul class=image-management-list ng-transclude></ul></div>"
+    "<div class=margin-top-20 ng-if=model><ul class=image-management-list><li class=list-item ng-repeat=\"image in images\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ getSrc(image) }}\"></div><div ng-if=\"options.actions.length > 0\" class=actions-wrapper><a class=action ng-repeat=\"action in options.actions\" ng-style=\"width: {{100 / options.actions.length }}%;\" ng-click=\"call(action, image, model)\"><i class=fa ng-class={{action.icon}}></i></a></div></div></li></ul></div>"
   );
 
 

@@ -20,16 +20,41 @@
     <div class="row search-section-wrapper">
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search Product'"></nc-search>
     </div>
-
-
     <nc-filter nc-model="params._filter" nc-filter-options="filterOptions"></nc-filter>
 
     <div>
       <div ng-show="loading" nc-loading="Loading Products.."></div>
       <form class="ah-form sticky-mainform-action" ng-show="!loading">
         <div class="tab-content">
-          <div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
-            <? $this->insert('partials/image-management-content') ?>
+          <div role="tabpanel" class="tab-pane margin-top-20 active">
+            <div id="image-management-content-page">
+              <div class="row" ng-repeat="product in response.data">
+                <div class="col-xs-12">
+                  <div class="form-section image-management">
+                    <div class="form-section-content">
+                      <div class="content-text">
+                        <div><h4>{{ product.ProductNameEn }}</h4>{{ product.VariantValue }}</div>
+                        <hr/>
+                        <div class="margin-top-5">PID: {{ product.Pid }}</div>
+                        <div class="margin-top-5">Status:</div>
+                        <div class="color-grey"><i class="fa fa-circle-o padding-right-5"></i>Draft</div>
+                      </div>
+                      <div class="picture-container">
+                        <div class="col-xs-12 padding-left-0">
+                          <nc-image-gallery ng-if="product.IsVariant" nc-model="product.VariantImg">
+                          </nc-image-gallery>
+                          <nc-image-gallery ng-if="!product.IsVariant" nc-model="product.MasterImg">
+                        </nc-image-gallery>
+                        </div>
+                      </div>
+                      <div class="drop-zone-container">
+                        <? $this->insert('components/image-dropzone-inline-text', ["id" => "images-management1", 'texts' =>['<i class="fa fa-image fa-3x color-theme"></i>', 'Drop images here', '<a href="#" data-trigger="file" data-target="#images-management1">or select images</a>']]) ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="page-navigation">
              <nc-pagination nc-model="params" nc-pagination-total="response.total"></nc-pagination>
