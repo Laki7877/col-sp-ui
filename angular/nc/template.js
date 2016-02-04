@@ -74,7 +74,7 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/ncImageGallery',
-    "<div class=margin-top-20><ul class=image-management-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ getSrc(image) }}\"></div><div ng-if=\"options.actions.length > 0\" class=actions-wrapper><a class=action ng-repeat=\"action in options.actions\" ng-style=\"width: {{100 / options.actions.length }}%;\" ng-click=\"call(action, image, model)\"><i class=fa ng-class={{action.icon}}></i></a></div></div></li></ul></div>"
+    "<div class=margin-top-20><ul class=image-management-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ getSrc(image) }}\"></div><div class=actions-wrapper><a class=\"action {{image == null ? 'disabled' : ''}}\" ng-repeat=\"action in options.actions\" style=\"width: {{100 / options.actions.length }}%\" ng-click=\"call(action, image, model)\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div>"
   );
 
 

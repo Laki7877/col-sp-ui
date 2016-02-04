@@ -176,7 +176,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
                     $scope.alert.success("Successfully published " + arr.length + " items");
                     $scope.reloadData();
                 }, function (r) {
-                    $scope.alert.error('Unable to publish because ' + r.message);
+                    $scope.alert.error('Unable to publish. Please check product status');
                 });
             }
         }

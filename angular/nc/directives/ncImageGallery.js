@@ -59,7 +59,6 @@ angular.module('nc')
 				scope.template = scope.template || 'common/ncImageDropzoneTemplate';
 
 				scope.update = function() {
-					console.log(scope.template);
 					var html = $templateCache.get(scope.template);
 					scope.input = element.find('input');
 					element.html(html);

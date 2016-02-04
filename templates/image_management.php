@@ -37,17 +37,17 @@
                         <hr/>
                         <div class="margin-top-5">PID: {{ product.Pid }}</div>
                         <div class="margin-top-5">Status:</div>
-                        <div class="color-grey"><i class="fa fa-circle-o padding-right-5"></i>Draft</div>
+                        <div class="{{product.Status | mapDropdown:productStatus:'color'}}"><i class="fa padding-right-5 {{ product.Status | mapDropdown:productStatus:'icon' }}"></i>{{ product.Status | mapDropdown:productStatus}}</div>
                       </div>
                         <div class="picture-container">
                           <div class="col-xs-12 padding-left-0">
-                            <nc-image-gallery ng-if="product.IsVariant" nc-model="product.VariantImg"></nc-image-gallery>
-                            <nc-image-gallery ng-if="!product.IsVariant" nc-model="product.MasterImg"></nc-image-gallery>
+                            <nc-image-gallery ng-if="product.IsVariant" nc-model="product.VariantImg" nc-image-gallery-options="imageGalleryOptions"></nc-image-gallery>
+                            <nc-image-gallery ng-if="!product.IsVariant" nc-model="product.MasterImg" nc-image-gallery-options="imageGalleryOptions"></nc-image-gallery>
                           </div>
                         </div>
-                        <div class="drop-zone-container">
-                          <nc-image-dropzone ng-if="product.IsVariant" nc-model="product.VariantImg" nc-image-template="{{template}}" nc-image-uploader="uploader"></nc-image-dropzone>
-                          <nc-image-dropzone ng-if="!product.IsVariant" nc-model="product.MasterImg" nc-image-template="{{template}}" nc-image-uploader="uploader"></nc-image-dropzone>
+                        <div class="drop-zone-container {{ getContainer(product) }}">
+                          <nc-image-dropzone ng-if="product.IsVariant" nc-model="product.VariantImg" nc-image-template="{{getTemplate(product)}}" nc-image-uploader="uploader"></nc-image-dropzone>
+                          <nc-image-dropzone ng-if="!product.IsVariant" nc-model="product.MasterImg" nc-image-template="{{getTemplate(product)}}" nc-image-uploader="uploader"></nc-image-dropzone>
                         </div>
                     </div>
                   </div>

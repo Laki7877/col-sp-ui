@@ -229,6 +229,18 @@ module.exports = {
 			value: 'AT'
 		}]
 	},
+	PRODUCT_STATUS: [{
+		name: 'Draft',
+		value: 'DF',
+		color: 'color-grey',
+		icon: 'fa-circle'
+	},
+	{
+		name: 'Wait for Approval',
+		value: 'WA',
+		color: 'color-yellow',
+		icon: 'fa-clock-o'
+	}],
 	DEFAULT_SUCCESS_MESSAGE: 'Your changes have been saved successfully.',
 	DEFAULT_ERROR_MESSAGE: 'Unable to save because required fields are missing or incorrect.', 
 	TITLE: {
@@ -1386,7 +1398,7 @@ module.exports = ["$scope", "$controller", "AdminShopService", "config", functio
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
 },{}],17:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "AdminShopService", "AdminShoptypeService", "config", function($scope, $controller, AdminShopService, AdminShoptypeService, config) {
+module.exports = ["$scope", "$controller", "AdminShopService", "AdminShoptypeService", "config", "Credential", function($scope, $controller, AdminShopService, AdminShoptypeService, config, Credential) {
 	'ngInject';
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -1404,8 +1416,16 @@ module.exports = ["$scope", "$controller", "AdminShopService", "AdminShoptypeSer
 			}
 		}
 	});
+
+	$scope.loginAs = function(uid){
+		Credential.loginAs(uid).then(function(){
+			alert("You have been logged in as" + uid);
+		});
+	};
+
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
+
 },{}],18:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminShoptypeService", function($scope, $controller, AdminShoptypeService) {
 	'ngInject';
@@ -1562,14 +1582,16 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 }];
 },{}],21:[function(require,module,exports){
 module.exports = ['$scope', 'Alert', 'Credential', '$window', 'storage', function($scope, Alert, Credential, $window, storage) {
-	
+	$scope.$watch('username', function(){
+		console.log($scope.username, 'object');
+	});
+	$scope.formData = {};
 	$scope.alert = new Alert();
 	$scope.doLogin = function(){
 		$scope.loading = true;
-
-		Credential.login($scope.user, $scope.pass).then(function(r){
-			
-			console.log(r);
+		var user = $scope.loginForm.user.$viewValue;
+		var pass = $scope.loginForm.pass.$viewValue;
+		Credential.login(user, pass).then(function(r){
 			$scope.alert.close();
 			$scope.loading = false;
 
@@ -1588,6 +1610,7 @@ module.exports = ['$scope', 'Alert', 'Credential', '$window', 'storage', functio
 		});
 	}
 }];
+
 },{}],22:[function(require,module,exports){
 var angular = require('angular');
 
@@ -2347,7 +2370,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader
 }];
 
 },{}],25:[function(require,module,exports){
-module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader', function ($scope, Product, util, Alert, $window, FileUploader) {
+module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader', 'config', function ($scope, Product, util, Alert, $window, FileUploader, config) {
     $scope.response = [];
     $scope.filterOptions = [
 			{ name: "All", value: 'All'},
@@ -2356,7 +2379,6 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader
 			{ name: "Not Approved", value: 'NotApproved'},
 			{ name: "Wait Approval", value: 'WaitApproval'}
 	];
-
 	$scope.params = {
 			_order: 'ProductId',
 			_limit: 10,
@@ -2364,12 +2386,74 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader
 			_direction: 'asc',
 			_filter: 'All'
 	};
+	$scope.imageGalleryOptions = {
+		urlKey: 'ImageUrlEn',
+		actions: [
+		{
+			//Left
+			fn: function(image, array, index) {
+				console.log(image, array, index);
+			},
+			icon: 'fa-arrow-left'
+		},
+		{
+			//Right
+			fn: function(image, array, index) {
+				console.log(image, array, index);
+			},
+			icon: 'fa-arrow-right'
+		},
+		{
+			//Left
+			fn: function(image, array, index) {
+				console.log(image, array, index);
+			},
+			icon: 'fa-trash'
+		}]
+	};
     $scope.uploader = new FileUploader();
-    $scope.template = 'product/dropzone/reachMax';
+    $scope.productStatus = config.PRODUCT_STATUS;
+    $scope.getTemplate = function(product) {
+    	var images = null;
+    	if(product.IsVariant) {
+    		images = product.VariantImg;
+    	} else {
+    		images = product.MasterImg;
+    	}
 
+    	switch(product.Status) {
+    		case 'DF':
+    			if(images.length >= 10) {
+    				return 'product/dropzone/reachMax';
+    			} else {
+    				return 'product/dropzone/normal';
+    			}
+    		break;
+    		case 'WA':
+    			return 'product/dropzone/waitForApproval';
+    		break;
+    	}
+    	return '';
+    };
+
+    $scope.getContainer = function(product) {
+
+    	var images = null;
+    	if(product.IsVariant) {
+    		images = product.VariantImg;
+    	} else {
+    		images = product.MasterImg;
+    	}
+
+    	if(images.length < 10 && product.Status == 'DF') {
+    		return '';
+    	}
+    	return 'disabled';
+    }
 	$scope.reload = function(){
 		$scope.loading = true;
 		Product.getAllVariants($scope.params).then(function(data){
+			console.log(data);
 			$scope.loading = false;
 	        $scope.response = data;
 	    });
@@ -2563,7 +2647,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
                     $scope.alert.success("Successfully published " + arr.length + " items");
                     $scope.reloadData();
                 }, function (r) {
-                    $scope.alert.error('Unable to publish because ' + r.message);
+                    $scope.alert.error('Unable to publish. Please check product status');
                 });
             }
         }
@@ -3821,7 +3905,8 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
                     })
                     .error(function (data, status, headers, config) {
                         console.warn(status, config.method, config.url, data);
-                        if(status == 401){
+			var onLoginPage = ($window.location.pathname == "/login");
+                        if(status == 401 && !onLoginPage){
                             //Catch Forbidden
                             storage.put('redirect', $window.location.pathname);
                             $window.location.href = "/login";
@@ -4649,7 +4734,6 @@ angular.module('nc')
 				scope.template = scope.template || 'common/ncImageDropzoneTemplate';
 
 				scope.update = function() {
-					console.log(scope.template);
 					var html = $templateCache.get(scope.template);
 					scope.input = element.find('input');
 					element.html(html);
@@ -4887,16 +4971,20 @@ angular.module('nc')
 angular.module('nc')
 	.filter('mapDropdown', function() {
 		//Return property
-		return function(input, collections) {
+		return function(input, collections, name) {
 			if(_.isUndefined(collections)) {
 				return input;
+			}
+
+			if(_.isUndefined(name)) {
+				name = 'name';
 			}
 
 			var find = _.find(collections, function(o) {
 				return o.value == input;
 			}) 
 
-			return _.isUndefined(find) ? input : find.name;
+			return _.isUndefined(find) ? input : find[name];
 		}
 	});
 },{}],74:[function(require,module,exports){
@@ -4998,7 +5086,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncImageGallery',
-    "<div class=margin-top-20><ul class=image-management-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ getSrc(image) }}\"></div><div ng-if=\"options.actions.length > 0\" class=actions-wrapper><a class=action ng-repeat=\"action in options.actions\" ng-style=\"width: {{100 / options.actions.length }}%;\" ng-click=\"call(action, image, model)\"><i class=fa ng-class={{action.icon}}></i></a></div></div></li></ul></div>"
+    "<div class=margin-top-20><ul class=image-management-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ getSrc(image) }}\"></div><div class=actions-wrapper><a class=\"action {{image == null ? 'disabled' : ''}}\" ng-repeat=\"action in options.actions\" style=\"width: {{100 / options.actions.length }}%\" ng-click=\"call(action, image, model)\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div>"
   );
 
 
@@ -6020,9 +6108,9 @@ module.exports = ['common', '$base64', 'storage', '$q', function(common, $base64
 		var deferred = $q.defer();
 	 	common.makeRequest({
 			type: 'GET',
-			url: '/Users/Login/' + Uid
+			url: '/Users/Admin/Login/' + Uid
 		}).then(function(r){
-			storage.storeCurrentUserProfile(r, remember || false);
+			storage.storeCurrentUserProfile(r, false);
 			deferred.resolve(r);
 		}, deferred.reject);
 
@@ -6031,6 +6119,7 @@ module.exports = ['common', '$base64', 'storage', '$q', function(common, $base64
 
 	return service;
 }];
+
 },{"angular":112}],88:[function(require,module,exports){
 module.exports = ['common', '$q' , function(common, $q) {
 	'use strict';
@@ -6906,7 +6995,7 @@ module.exports = function(common) {
 },{}],97:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Feb 04 2016 14:52:35 GMT+0700 (Russia TZ 6 Standard Time)
+ * Thu Feb 04 2016 16:26:31 GMT+0700 (Russia TZ 6 Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 

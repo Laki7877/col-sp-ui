@@ -1,12 +1,14 @@
 module.exports = ['$scope', 'Alert', 'Credential', '$window', 'storage', function($scope, Alert, Credential, $window, storage) {
-	
+	$scope.$watch('username', function(){
+		console.log($scope.username, 'object');
+	});
+	$scope.formData = {};
 	$scope.alert = new Alert();
 	$scope.doLogin = function(){
 		$scope.loading = true;
-
-		Credential.login($scope.user, $scope.pass).then(function(r){
-			
-			console.log(r);
+		var user = $scope.loginForm.user.$viewValue;
+		var pass = $scope.loginForm.pass.$viewValue;
+		Credential.login(user, pass).then(function(r){
 			$scope.alert.close();
 			$scope.loading = false;
 
