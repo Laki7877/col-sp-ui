@@ -5,8 +5,8 @@
     <? $this->insert('components/modal-export-product', ['id' => 'export-product', 'newProductNum' => '1,500']) ?>
     <? $this->insert('components/modal-export-product-progressing', ['id' => 'export-product-progressing', 'percent' => '60']) ?>
 
-    <? $this->insert('components/page-title-with-buttons', ['text' => 'Products']) ?>
     <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{alert.type}}" close="alert.close()">{{alert.message}}</div>
+    <? $this->insert('components/page-title-with-buttons', ['text' => 'Products']) ?>
     <div class="row search-section-wrapper">
       <form ng-submit="bulk.fn()" class="search-section section-action">
         <div class="input-group">

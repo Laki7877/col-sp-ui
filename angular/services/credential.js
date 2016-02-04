@@ -24,9 +24,9 @@ module.exports = ['common', '$base64', 'storage', '$q', function(common, $base64
 		var deferred = $q.defer();
 	 	common.makeRequest({
 			type: 'GET',
-			url: '/Users/Login/' + Uid
+			url: '/Users/Admin/Login/' + Uid
 		}).then(function(r){
-			storage.storeCurrentUserProfile(r, remember || false);
+			storage.storeCurrentUserProfile(r, false);
 			deferred.resolve(r);
 		}, deferred.reject);
 
