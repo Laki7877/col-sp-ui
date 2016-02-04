@@ -59,7 +59,7 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/ncImageDropzone',
-    "<div class=drop-zone-container><div class=image-drop-wrapper><input nv-file-select uploader=uploader type=file multiple><div nv-file-drop uploader=uploader class=image-drop-zone><div class=image-drop-zone-text nc-bind-template=template></div></div></div></div>"
+    "<div class=image-drop-wrapper><input nv-file-select uploader=uploader type=file multiple><div nv-file-drop uploader=uploader class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload()>or select images</a></p></div></div></div>"
   );
 
 
@@ -69,12 +69,12 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/ncImageDropzoneTemplate',
-    "<p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload()>or select images</a></p>"
+    "<div class=image-drop-wrapper><input nv-file-select uploader=uploader type=file multiple><div nv-file-drop uploader=uploader class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload()>or select images</a></p></div></div></div>"
   );
 
 
   $templateCache.put('common/ncImageGallery',
-    "<div class=margin-top-20 ng-if=model><ul class=image-management-list><li class=list-item ng-repeat=\"image in images\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ getSrc(image) }}\"></div><div ng-if=\"options.actions.length > 0\" class=actions-wrapper><a class=action ng-repeat=\"action in options.actions\" ng-style=\"width: {{100 / options.actions.length }}%;\" ng-click=\"call(action, image, model)\"><i class=fa ng-class={{action.icon}}></i></a></div></div></li></ul></div>"
+    "<div class=margin-top-20><ul class=image-management-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ getSrc(image) }}\"></div><div class=actions-wrapper><a class=\"action {{image == null ? 'disabled' : ''}}\" ng-repeat=\"action in options.actions\" style=\"width: {{100 / options.actions.length }}%\" ng-click=\"call(action, image, model)\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div>"
   );
 
 

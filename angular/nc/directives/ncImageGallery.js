@@ -18,24 +18,24 @@ angular.module('nc')
 					emptyImg: '/assets/img/placeholder-no-image.png' //when image = null 
 				});
 				scope.getSrc = function(image) {
-					if(_.isNull(image) || _isUndefined(image) || _isUndefined(image[scope.options.urlKey])) {
+					if(_.isNull(image) || _.isUndefined(image) || _.isUndefined(image[scope.options.urlKey])) {
 						//Empty
 						return scope.options.emptyImg;
 					} else if(image[scope.options.urlKey] && image[scope.options.urlKey].length == 0) {
 						//Loading
-						return scope.options.loaderImg;
+					return scope.options.loaderImg;
 					} else {
 						return image[scope.options.urlKey];
 					}
 				};
-				scope.call = function(action, image, model, $index) {
+				scope.call = function(action, image) {
 					if(_.isNull(image)) return;
-					var index = model.indexOf(image);
-					action.fn(image, model, index);
+					var index = scope.model.indexOf(image);
+					action.fn(image, scope.model, index);
 				}
 				scope.load = function() {
 					scope.images = _.clone(scope.model);
-					for (var i = 0; i < size - scope.model.length; i++) {
+					for (var i = 0; i < scope.options.size - scope.model.length; i++) {
 						scope.images.push(null);
 					};
 				};
@@ -44,7 +44,7 @@ angular.module('nc')
 			}
 		};
 	})
-	.directive('ncImageDropzone', function($templateCache) {
+	.directive('ncImageDropzone', function($templateCache, $compile, FileUploader) {
 		return {
 			restrict: 'E',
 			replace: true,
@@ -52,15 +52,25 @@ angular.module('nc')
 				model: '=ncModel',
 				uploader: '=ncImageUploader',
 				options: '=ncImageOptions',
-				template: '=ncImageTemplate'
+				template: '@ncImageTemplate'
 			},
-			template: $templateCache.get('common/ncImageDropzone'),
 			link: function(scope, element) {
-				scope.template = _.defaults(scope.template, 'common/ncImageDropzoneTemplate');
-				var input = element.find('input');
+				scope.uploader = new FileUploader();
+				scope.template = scope.template || 'common/ncImageDropzoneTemplate';
+
+				scope.update = function() {
+					var html = $templateCache.get(scope.template);
+					scope.input = element.find('input');
+					element.html(html);
+					$compile(element.contents())(scope);
+				}
+	
 				scope.upload = function() {
-					input.trigger('click');
+					scope.input.trigger('click');
 				};
+
+				scope.update();
+				scope.$watch('template', scope.update);
 			}
 		};
 	})

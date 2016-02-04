@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, AdminRoleService) {
+module.exports = function($scope, $controller, SellerRoleService) {
 	'ngInject';
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -7,8 +7,10 @@ module.exports = function($scope, $controller, AdminRoleService) {
 			id: 'GroupId',
 			url: '/roles',
 			item: 'Role',
-			service: AdminRoleService,
-			init: function(scope) {}
+			service: SellerRoleService,
+			init: function(scope) {
+				console.log('hi');
+			}
 		}
 	});
 };

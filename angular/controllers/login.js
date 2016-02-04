@@ -7,8 +7,6 @@ module.exports = ['$scope', 'Alert', 'Credential', '$window', 'storage', functio
 		var user = $scope.uform.user; //$scope.loginForm.user.$viewValue;
 		var pass = $scope.uform.pass; //$scope.loginForm.pass.$viewValue;
 		Credential.login(user, pass).then(function(r){
-
-			console.log(r);
 			$scope.alert.close();
 			$scope.loading = false;
 

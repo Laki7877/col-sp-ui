@@ -134,6 +134,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .factory('Brand', services.brand)
 .factory('SellerAccountService', services.sellerAccountService)
 .factory('SellerRoleService', services.sellerRoleService)
+.factory('SellerPermissionService', services.sellerPermissionService)
 .factory('AdminAccountService', services.adminAccountService)
 .factory('AdminRoleService', services.adminRoleService)
 .factory('AdminPermissionService', services.adminPermissionService)
@@ -178,7 +179,9 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .controller('ProductImportCtrl', controllers.productImport)
 .controller('LocalCategoryCtrl', controllers.localCategory)
 .controller('SellerAccountCtrl', controllers.sellerAccount)
+.controller('SellerAccountAddCtrl', controllers.sellerAccountAdd)
 .controller('SellerRoleCtrl', controllers.sellerRole)
+.controller('SellerRoleAddCtrl', controllers.sellerRoleAdd)
 .controller('AdminAttributeCtrl', controllers.adminAttribute)
 .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)
 .controller('AdminAttributeAddCtrl', controllers.adminAttributeAdd)
@@ -226,6 +229,18 @@ module.exports = {
 			value: 'AT'
 		}]
 	},
+	PRODUCT_STATUS: [{
+		name: 'Draft',
+		value: 'DF',
+		color: 'color-grey',
+		icon: 'fa-circle'
+	},
+	{
+		name: 'Wait for Approval',
+		value: 'WA',
+		color: 'color-yellow',
+		icon: 'fa-clock-o'
+	}],
 	DEFAULT_SUCCESS_MESSAGE: 'Your changes have been saved successfully.',
 	DEFAULT_ERROR_MESSAGE: 'Unable to save because required fields are missing or incorrect.', 
 	TITLE: {
@@ -1575,8 +1590,6 @@ module.exports = ['$scope', 'Alert', 'Credential', '$window', 'storage', functio
 		var user = $scope.uform.user; //$scope.loginForm.user.$viewValue;
 		var pass = $scope.uform.pass; //$scope.loginForm.pass.$viewValue;
 		Credential.login(user, pass).then(function(r){
-
-			console.log(r);
 			$scope.alert.close();
 			$scope.loading = false;
 
@@ -2346,15 +2359,16 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 }];
 
 },{"angular":113}],24:[function(require,module,exports){
-module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', function ($scope, Product, util, Alert, $window) {
+module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader', function ($scope, Product, util, Alert, $window, FileUploader) {
     $scope.productList = [];
+    $scope.template = 'product/dropzone/normal';
     Product.getAll({}).then(function(data){
         $scope.productList = data.data;
     });
 }];
 
 },{}],25:[function(require,module,exports){
-module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', function ($scope, Product, util, Alert, $window) {
+module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader', 'config', function ($scope, Product, util, Alert, $window, FileUploader, config) {
     $scope.response = [];
     $scope.filterOptions = [
 			{ name: "All", value: 'All'},
@@ -2363,7 +2377,6 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', function ($sc
 			{ name: "Not Approved", value: 'NotApproved'},
 			{ name: "Wait Approval", value: 'WaitApproval'}
 	];
-
 	$scope.params = {
 			_order: 'ProductId',
 			_limit: 10,
@@ -2371,10 +2384,74 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', function ($sc
 			_direction: 'asc',
 			_filter: 'All'
 	};
+	$scope.imageGalleryOptions = {
+		urlKey: 'ImageUrlEn',
+		actions: [
+		{
+			//Left
+			fn: function(image, array, index) {
+				console.log(image, array, index);
+			},
+			icon: 'fa-arrow-left'
+		},
+		{
+			//Right
+			fn: function(image, array, index) {
+				console.log(image, array, index);
+			},
+			icon: 'fa-arrow-right'
+		},
+		{
+			//Left
+			fn: function(image, array, index) {
+				console.log(image, array, index);
+			},
+			icon: 'fa-trash'
+		}]
+	};
+    $scope.uploader = new FileUploader();
+    $scope.productStatus = config.PRODUCT_STATUS;
+    $scope.getTemplate = function(product) {
+    	var images = null;
+    	if(product.IsVariant) {
+    		images = product.VariantImg;
+    	} else {
+    		images = product.MasterImg;
+    	}
 
+    	switch(product.Status) {
+    		case 'DF':
+    			if(images.length >= 10) {
+    				return 'product/dropzone/reachMax';
+    			} else {
+    				return 'product/dropzone/normal';
+    			}
+    		break;
+    		case 'WA':
+    			return 'product/dropzone/waitForApproval';
+    		break;
+    	}
+    	return '';
+    };
+
+    $scope.getContainer = function(product) {
+
+    	var images = null;
+    	if(product.IsVariant) {
+    		images = product.VariantImg;
+    	} else {
+    		images = product.MasterImg;
+    	}
+
+    	if(images.length < 10 && product.Status == 'DF') {
+    		return '';
+    	}
+    	return 'disabled';
+    }
 	$scope.reload = function(){
 		$scope.loading = true;
 		Product.getAllVariants($scope.params).then(function(data){
+			console.log(data);
 			$scope.loading = false;
 	        $scope.response = data;
 	    });
@@ -2816,6 +2893,7 @@ module.exports = function($scope, $controller, SellerAccountService, SellerRoleS
 							//Pick only necessary property
 							return _.pick(e, ['GroupId', 'GroupNameEn']);
 						});
+						console.log(scope.roles);
 					});
 			}
 		}
@@ -2838,7 +2916,7 @@ module.exports = ["$scope", "$controller", "SellerRoleService", "config", functi
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
 },{}],33:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "AdminRoleService", function($scope, $controller, AdminRoleService) {
+module.exports = ["$scope", "$controller", "SellerRoleService", function($scope, $controller, SellerRoleService) {
 	'ngInject';
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -2847,8 +2925,10 @@ module.exports = ["$scope", "$controller", "AdminRoleService", function($scope, 
 			id: 'GroupId',
 			url: '/roles',
 			item: 'Role',
-			service: AdminRoleService,
-			init: function(scope) {}
+			service: SellerRoleService,
+			init: function(scope) {
+				console.log('hi');
+			}
 		}
 	});
 }];
@@ -4611,24 +4691,24 @@ angular.module('nc')
 					emptyImg: '/assets/img/placeholder-no-image.png' //when image = null 
 				});
 				scope.getSrc = function(image) {
-					if(_.isNull(image) || _isUndefined(image) || _isUndefined(image[scope.options.urlKey])) {
+					if(_.isNull(image) || _.isUndefined(image) || _.isUndefined(image[scope.options.urlKey])) {
 						//Empty
 						return scope.options.emptyImg;
 					} else if(image[scope.options.urlKey] && image[scope.options.urlKey].length == 0) {
 						//Loading
-						return scope.options.loaderImg;
+					return scope.options.loaderImg;
 					} else {
 						return image[scope.options.urlKey];
 					}
 				};
-				scope.call = function(action, image, model, $index) {
+				scope.call = function(action, image) {
 					if(_.isNull(image)) return;
-					var index = model.indexOf(image);
-					action.fn(image, model, index);
+					var index = scope.model.indexOf(image);
+					action.fn(image, scope.model, index);
 				}
 				scope.load = function() {
 					scope.images = _.clone(scope.model);
-					for (var i = 0; i < size - scope.model.length; i++) {
+					for (var i = 0; i < scope.options.size - scope.model.length; i++) {
 						scope.images.push(null);
 					};
 				};
@@ -4637,7 +4717,7 @@ angular.module('nc')
 			}
 		};
 	}])
-	.directive('ncImageDropzone', ["$templateCache", function($templateCache) {
+	.directive('ncImageDropzone', ["$templateCache", "$compile", "FileUploader", function($templateCache, $compile, FileUploader) {
 		return {
 			restrict: 'E',
 			replace: true,
@@ -4645,15 +4725,25 @@ angular.module('nc')
 				model: '=ncModel',
 				uploader: '=ncImageUploader',
 				options: '=ncImageOptions',
-				template: '=ncImageTemplate'
+				template: '@ncImageTemplate'
 			},
-			template: $templateCache.get('common/ncImageDropzone'),
 			link: function(scope, element) {
-				scope.template = _.defaults(scope.template, 'common/ncImageDropzoneTemplate');
-				var input = element.find('input');
+				scope.uploader = new FileUploader();
+				scope.template = scope.template || 'common/ncImageDropzoneTemplate';
+
+				scope.update = function() {
+					var html = $templateCache.get(scope.template);
+					scope.input = element.find('input');
+					element.html(html);
+					$compile(element.contents())(scope);
+				}
+	
 				scope.upload = function() {
-					input.trigger('click');
+					scope.input.trigger('click');
 				};
+
+				scope.update();
+				scope.$watch('template', scope.update);
 			}
 		};
 	}])
@@ -4879,16 +4969,20 @@ angular.module('nc')
 angular.module('nc')
 	.filter('mapDropdown', function() {
 		//Return property
-		return function(input, collections) {
+		return function(input, collections, name) {
 			if(_.isUndefined(collections)) {
 				return input;
+			}
+
+			if(_.isUndefined(name)) {
+				name = 'name';
 			}
 
 			var find = _.find(collections, function(o) {
 				return o.value == input;
 			}) 
 
-			return _.isUndefined(find) ? input : find.name;
+			return _.isUndefined(find) ? input : find[name];
 		}
 	});
 },{}],74:[function(require,module,exports){
@@ -4975,7 +5069,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncImageDropzone',
-    "<div class=drop-zone-container><div class=image-drop-wrapper><input nv-file-select uploader=uploader type=file multiple><div nv-file-drop uploader=uploader class=image-drop-zone><div class=image-drop-zone-text nc-bind-template=template></div></div></div></div>"
+    "<div class=image-drop-wrapper><input nv-file-select uploader=uploader type=file multiple><div nv-file-drop uploader=uploader class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload()>or select images</a></p></div></div></div>"
   );
 
 
@@ -4985,12 +5079,12 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncImageDropzoneTemplate',
-    "<p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload()>or select images</a></p>"
+    "<div class=image-drop-wrapper><input nv-file-select uploader=uploader type=file multiple><div nv-file-drop uploader=uploader class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload()>or select images</a></p></div></div></div>"
   );
 
 
   $templateCache.put('common/ncImageGallery',
-    "<div class=margin-top-20 ng-if=model><ul class=image-management-list><li class=list-item ng-repeat=\"image in images\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ getSrc(image) }}\"></div><div ng-if=\"options.actions.length > 0\" class=actions-wrapper><a class=action ng-repeat=\"action in options.actions\" ng-style=\"width: {{100 / options.actions.length }}%;\" ng-click=\"call(action, image, model)\"><i class=fa ng-class={{action.icon}}></i></a></div></div></li></ul></div>"
+    "<div class=margin-top-20><ul class=image-management-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ getSrc(image) }}\"></div><div class=actions-wrapper><a class=\"action {{image == null ? 'disabled' : ''}}\" ng-repeat=\"action in options.actions\" style=\"width: {{100 / options.actions.length }}%\" ng-click=\"call(action, image, model)\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div>"
   );
 
 
@@ -6815,7 +6909,7 @@ module.exports = ["common", function(common) {
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Seller');
-
+	
 	return service;
 }]
 },{}],94:[function(require,module,exports){
@@ -6838,6 +6932,7 @@ module.exports = ["common", "SellerPermissionService", function(common, SellerPe
 		var processed = _.merge({}, data);
 		SellerPermissionService.listAll()
 			.then(function(data) {
+				console.log(data);
 				processed.Permission = _.map(data, function(e) {
 					if(_.isUndefined(_.find(processed.Permission, { PermissionId: e.PermissionId }))) {
 						e.check = false;
@@ -6855,6 +6950,7 @@ module.exports = ["common", "SellerPermissionService", function(common, SellerPe
 		};
 		SellerPermissionService.listAll()
 			.then(function(data) {
+				console.log(data);
 				processed.Permission = _.map(data, function(e) {
 					e.check = false;
 					return e;
@@ -6894,7 +6990,7 @@ module.exports = function(common) {
 },{}],97:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Feb 04 2016 15:14:56 GMT+0700 (ICT)
+ * Thu Feb 04 2016 18:21:11 GMT+0700 (ICT)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -7024,22 +7120,22 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('product/dropzone/approved',
-    "<p>This product is already approved</p><p><a ng-click=upload()>Click here to edit</a></p>"
+    "<div class=image-drop-wrapper><div class=image-drop-zone><div class=image-drop-zone-text><p>This product is already approved</p><p><a ng-click=edit()>Click here to edit</a></p></div></div></div>"
   );
 
 
   $templateCache.put('product/dropzone/normal',
-    "<p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload()>or select images</a></p>"
+    "<div class=image-drop-wrapper><input nv-file-select uploader=uploader type=file multiple><div nv-file-drop uploader=uploader class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload()>or select images</a></p></div></div></div>"
   );
 
 
   $templateCache.put('product/dropzone/reachMax',
-    "<p><i class=\"fa fa-ban fa-3x color-dark-grey\"></i></p><p>Cannot upload</p><p>Reach Max Photos</p>"
+    "<div class=image-drop-wrapper><input nv-file-select uploader=uploader type=file multiple><div nv-file-drop uploader=uploader class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-ban fa-3x color-dark-grey\"></i></p><p>Cannot upload</p><p>Reach Max Photos</p></div></div></div>"
   );
 
 
   $templateCache.put('product/dropzone/waitForApproval',
-    "<p><i class=\"fa fa-ban fa-3x color-dark-grey\"></i></p><p>Cannot upload</p><p>Wait for Approval</p>"
+    "<div class=image-drop-wrapper><div class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-ban fa-3x color-dark-grey\"></i></p><p>Cannot upload</p><p>Wait for Approval</p></div></div></div>"
   );
  }];
 },{}],98:[function(require,module,exports){

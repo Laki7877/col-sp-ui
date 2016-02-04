@@ -67,7 +67,7 @@
               <a class="header-link" ><span ng-class="sort('OriginalPrice', true)">Price</span></a>
               <i class="fa" ng-class="sort('OriginalPrice')">
             </th>
-            <th><span>Info.</span></th>
+            <th><span>Info</span></th>
             <th><span>Image</span></th>
             <th class="status-column">
               Status
