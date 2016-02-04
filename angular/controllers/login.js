@@ -22,7 +22,7 @@ module.exports = ['$scope', 'Alert', 'Credential', '$window', 'storage', functio
 			$window.location.href = redir;
 		}, function(){
 			storage.clear();
-			$scope.alert.error('Invalid Credential');
+			$scope.alert.error('Incorrect user name or passsword');
 			$scope.loading = false;
 		});
 	}
