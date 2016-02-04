@@ -39,17 +39,16 @@
                         <div class="margin-top-5">Status:</div>
                         <div class="color-grey"><i class="fa fa-circle-o padding-right-5"></i>Draft</div>
                       </div>
-                      <div class="picture-container">
-                        <div class="col-xs-12 padding-left-0">
-                          <nc-image-gallery ng-if="product.IsVariant" nc-model="product.VariantImg">
-                          </nc-image-gallery>
-                          <nc-image-gallery ng-if="!product.IsVariant" nc-model="product.MasterImg">
-                        </nc-image-gallery>
+                        <div class="picture-container">
+                          <div class="col-xs-12 padding-left-0">
+                            <nc-image-gallery ng-if="product.IsVariant" nc-model="product.VariantImg"></nc-image-gallery>
+                            <nc-image-gallery ng-if="!product.IsVariant" nc-model="product.MasterImg"></nc-image-gallery>
+                          </div>
                         </div>
-                      </div>
-                      <div class="drop-zone-container">
-                        <? $this->insert('components/image-dropzone-inline-text', ["id" => "images-management1", 'texts' =>['<i class="fa fa-image fa-3x color-theme"></i>', 'Drop images here', '<a href="#" data-trigger="file" data-target="#images-management1">or select images</a>']]) ?>
-                      </div>
+                        <div class="drop-zone-container">
+                          <nc-image-dropzone ng-if="product.IsVariant" nc-model="product.VariantImg" nc-image-template="{{template}}" nc-image-uploader="uploader"></nc-image-dropzone>
+                          <nc-image-dropzone ng-if="!product.IsVariant" nc-model="product.MasterImg" nc-image-template="{{template}}" nc-image-uploader="uploader"></nc-image-dropzone>
+                        </div>
                     </div>
                   </div>
                 </div>

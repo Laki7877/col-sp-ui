@@ -1,6 +1,6 @@
-<div class="margin-top-20" ng-if="model">
+<div class="margin-top-20">
 	<ul class="image-management-list">
-		<li class="list-item" ng-repeat="image in images">
+		<li class="list-item" ng-repeat="image in images track by $index">
 			<div class="image-thumbs-actions">
 				<div class="image-thumbs-img-wrapper">
 					<img ng-src="{{ getSrc(image) }}" />

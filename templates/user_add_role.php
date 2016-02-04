@@ -4,7 +4,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 ?>
 
 <?php $this->start('page-body') ?>
-	<div ng-controller="AdminRoleAddCtrl" ng-init="init(<?=$params?>)">
+	<div ng-controller="SellerRoleAddCtrl" ng-init="init(<?=$params?>)">
 		<nc-alert nc-model="alert"></nc-alert>
 		<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "User Roles/{{title}}", 'urls' => ['/roles']]) ?>
 		<div ng-show="loading" nc-loading="Loading Role.."></div>

@@ -1,4 +1,4 @@
-module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', function ($scope, Product, util, Alert, $window) {
+module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader', function ($scope, Product, util, Alert, $window, FileUploader) {
     $scope.response = [];
     $scope.filterOptions = [
 			{ name: "All", value: 'All'},
@@ -15,6 +15,8 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', function ($sc
 			_direction: 'asc',
 			_filter: 'All'
 	};
+    $scope.uploader = new FileUploader();
+    $scope.template = 'product/dropzone/reachMax';
 
 	$scope.reload = function(){
 		$scope.loading = true;

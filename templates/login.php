@@ -15,7 +15,7 @@
         </div>
         <div ng-show="!loading">
           <fieldset class="form-group">
-            <label for="formGroupExampleInput">Username:</label>
+            <label for="formGroupExampleInput">Email:</label>
             <input type="text" class="form-control" ng-model="user" id="formGroupExampleInput">
           </fieldset>
           <fieldset class="form-group margin-bottom-30">
