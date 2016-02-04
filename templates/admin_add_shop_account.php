@@ -288,15 +288,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 													</tr> 
 												</thead> 
 												<tbody> 
-													<tr> 
-														<td>{{ formData.ShopOwner.UserId | leadingzero:2 }}</td> 
-														<td>{{ formData.ShopOwner.NameEn }}</td> 
-														<td>{{ formData.ShopOwner.Email }}</td>
-														<td>Shop Owner</td>
-														<td>{{ formData.ShopOwner.Status | mapDropdown:statusDropdown }}</td>
-														<td class="text-align-center"><a class="btn btn-white btn-width-xl" ng-click="loginAs(formData.ShopOwner.UserId)">Login-As</a></td> 
-													</tr>
-													<tr ng-repeat="user in formData.Users track by user.UserId"> 
+												<tr ng-repeat="user in formData.Users track by user.UserId"> 
 														<td>{{ user.UserId | leadingzero:2 }}</td> 
 														<td>{{ user.NameEn }}</td> 
 														<td>{{ user.Email }}</td>

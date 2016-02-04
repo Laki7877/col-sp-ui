@@ -10,7 +10,8 @@
 						<table class="table">
 						<thead>
 							<th>Product Name</th>
-							<th>PID</th>
+							<th ng-if="(formData.Variants || []).length == 0">PID</th>
+							<th ng-if="(formData.Variants || []).length > 0">Group ID</th>
 							<th>Price</th>
 							<th>Info</th>
 							<th>Image</th>
@@ -151,7 +152,7 @@
 				<div ng-if="formData.MasterVariant.Pid">
 					<div ng-template="common/input/text"
 						ng-template-options="{
-						'label': 'PID',
+						'label': (formData.Variants || []).length > 0 ? 'Group ID' : 'PID',
 						'labelClass': 'required'
 						}">
 						<input

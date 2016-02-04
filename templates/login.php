@@ -9,7 +9,7 @@
 
 	<form ng-submit="doLogin()" name="loginForm" novalidate>
 
-		<div class="form-login">
+		<div class="form-login" ng-cloak>
 
 			<div ng-cloak ng-show="alert.show" uib-alert template-url="common/alert" type="{{alert.type}}" close="alert.close()">
 				{{alert.message}}
