@@ -2389,26 +2389,43 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader
 		actions: [
 		{
 			//Left
-			fn: function(image, array, index) {
-				console.log(image, array, index);
+			fn: function(item, array, index) {
+				//console.log(item, array, index);
+			    var to = index - 1;
+			    if (to < 0) return;
+
+			    var tmp = array[to];
+			    array[to] = item;
+			    array[index] = tmp;
 			},
 			icon: 'fa-arrow-left'
 		},
 		{
 			//Right
-			fn: function(image, array, index) {
-				console.log(image, array, index);
+			fn: function(item, array, index) {
+				//console.log(item, array, index);
+			    var to = index + 1;
+			    if (to >= array.length) return;
+
+			    var tmp = array[to];
+			    array[to] = item;
+			    array[index] = tmp;
 			},
 			icon: 'fa-arrow-right'
 		},
 		{
-			//Left
-			fn: function(image, array, index) {
-				console.log(image, array, index);
+			//Trash
+			fn: function(item, array, index) {
+				array.splice(index, 1);
 			},
-			icon: 'fa-trash'
+			icon: 'fa-trash',
+			confirmation: {
+				title: 'Confirm to delete',
+				message: 'Are you sure you want to delete the image?'
+			}
 		}]
 	};
+	$scope.dirty = false;
     $scope.uploader = new FileUploader();
     $scope.productStatus = config.PRODUCT_STATUS;
     $scope.getTemplate = function(product) {
@@ -2433,7 +2450,6 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader
     	}
     	return '';
     };
-
     $scope.getContainer = function(product) {
 
     	var images = null;
@@ -2451,7 +2467,6 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader
 	$scope.reload = function(){
 		$scope.loading = true;
 		Product.getAllVariants($scope.params).then(function(data){
-			console.log(data);
 			$scope.loading = false;
 	        $scope.response = data;
 	    });
@@ -4291,7 +4306,7 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
             },
             confirmation: {
                 title: 'Delete',
-                message: 'Are you sure you want to delete selected item?'
+                message: 'Are you sure you want to delete selected ' + item + '?'
             }
         };
     };
@@ -4672,7 +4687,7 @@ angular.module('nc')
 	}])
 },{}],66:[function(require,module,exports){
 angular.module('nc')
-	.directive('ncImageGallery', ["$templateCache", function($templateCache) {
+	.directive('ncImageGallery', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
 			restrict: 'E',
 			replace: true,
@@ -4704,16 +4719,45 @@ angular.module('nc')
 				scope.call = function(action, image) {
 					if(_.isNull(image)) return;
 					var index = scope.model.indexOf(image);
-					action.fn(image, scope.model, index);
+					
+					if(action.confirmation) {
+						var modal = $uibModal.open({
+							size: 'size-warning',
+							templateUrl: 'common/ncActionModal',
+							controller: ["$scope", "$uibModalInstance", "options", "$interpolate", function($scope, $uibModalInstance, options, $interpolate) {
+								$scope.title = options.title;
+								$scope.message = $interpolate(options.message)(scope);
+								$scope.yes = function() {
+									$uibModalInstance.close();
+								};
+								$scope.no = function() {
+									$uibModalInstance.dismiss();
+								}
+							}],
+							resolve: {
+								options: function() {
+									return {
+										title: action.confirmation.title,
+										message: action.confirmation.message
+									}
+								}
+							}
+						});
+
+						modal.result.then(function() {
+							action.fn(image, scope.model, index);
+						})
+					} else {
+						action.fn(image, scope.model, index);
+					}
 				}
-				scope.load = function() {
+				var load = function() {
 					scope.images = _.clone(scope.model);
 					for (var i = 0; i < scope.options.size - scope.model.length; i++) {
 						scope.images.push(null);
 					};
 				};
-				scope.load();
-				scope.$watch('model', scope.load);
+				scope.$watch('model', load, true);
 			}
 		};
 	}])
@@ -4723,24 +4767,57 @@ angular.module('nc')
 			replace: true,
 			scope: {
 				model: '=ncModel',
-				uploader: '=ncImageUploader',
+				originalUploader: '=ncImageUploader',
 				options: '=ncImageOptions',
 				template: '@ncImageTemplate'
 			},
 			link: function(scope, element) {
-				scope.uploader = new FileUploader();
+				scope.uploader = new FileUploader(scope.originalUploader);
 				scope.template = scope.template || 'common/ncImageDropzoneTemplate';
-
+				scope.options = _.defaults(scope.options, {
+					onQueueLimit: _.noop,
+					onFail: _.noop,
+					onResponse: function(item) { return item; },
+					item: {
+						url: ''
+					}
+				});
 				scope.update = function() {
-					var html = $templateCache.get(scope.template);
 					scope.input = element.find('input');
+					var html = $templateCache.get(scope.template);
 					element.html(html);
 					$compile(element.contents())(scope);
-				}
+				};
 	
 				scope.upload = function() {
 					scope.input.trigger('click');
 				};
+
+				//Upload
+				scope.uploader.onAfterAddingFile = function(item) {
+					if(uploader.queueLimit == scope.model.length) {
+						if(scope.options.onQueueLimit) {
+							scope.options.onQueueLimit(item, scope.model);
+						} else {
+							scope.model.push(_.clone(scope.options.item));
+							item.indx = scope.model.length-1;
+						}
+					}
+				};
+				//Upload
+				scope.uploader.onWhenAddingFileFailed = function(item) {
+					if(scope.options.onFail) {
+						scope.options.onFail(item, scope.model);
+					}
+				};
+
+			    scope.uploader.onSuccessItem = function(item, response, status, headers) {
+			    	scope.model[item.indx] = onResponse(response);
+			
+			    };
+			    scope.uploader.onErrorItem = function(item, response, status, headers) {
+			    	scope.model.splice(item.indx, 1);
+			    };
 
 				scope.update();
 				scope.$watch('template', scope.update);
@@ -6993,7 +7070,7 @@ module.exports = function(common) {
 },{}],97:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Feb 04 2016 16:29:18 GMT+0700 (Russia TZ 6 Standard Time)
+ * Thu Feb 04 2016 18:27:12 GMT+0700 (Russia TZ 6 Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 

@@ -9,7 +9,7 @@ class Redirect {
 		header('Location: /products');
 	}
 	public static function admin($params) {
-		header('Location: /admin/categories');
+		header('Location: /admin/accounts');
 	}
 }
 

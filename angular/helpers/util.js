@@ -186,7 +186,7 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
             },
             confirmation: {
                 title: 'Delete',
-                message: 'Are you sure you want to delete selected item?'
+                message: 'Are you sure you want to delete selected ' + item + '?'
             }
         };
     };

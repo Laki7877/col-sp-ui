@@ -19,26 +19,43 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader
 		actions: [
 		{
 			//Left
-			fn: function(image, array, index) {
-				console.log(image, array, index);
+			fn: function(item, array, index) {
+				//console.log(item, array, index);
+			    var to = index - 1;
+			    if (to < 0) return;
+
+			    var tmp = array[to];
+			    array[to] = item;
+			    array[index] = tmp;
 			},
 			icon: 'fa-arrow-left'
 		},
 		{
 			//Right
-			fn: function(image, array, index) {
-				console.log(image, array, index);
+			fn: function(item, array, index) {
+				//console.log(item, array, index);
+			    var to = index + 1;
+			    if (to >= array.length) return;
+
+			    var tmp = array[to];
+			    array[to] = item;
+			    array[index] = tmp;
 			},
 			icon: 'fa-arrow-right'
 		},
 		{
-			//Left
-			fn: function(image, array, index) {
-				console.log(image, array, index);
+			//Trash
+			fn: function(item, array, index) {
+				array.splice(index, 1);
 			},
-			icon: 'fa-trash'
+			icon: 'fa-trash',
+			confirmation: {
+				title: 'Confirm to delete',
+				message: 'Are you sure you want to delete the image?'
+			}
 		}]
 	};
+	$scope.dirty = false;
     $scope.uploader = new FileUploader();
     $scope.productStatus = config.PRODUCT_STATUS;
     $scope.getTemplate = function(product) {
@@ -63,7 +80,6 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader
     	}
     	return '';
     };
-
     $scope.getContainer = function(product) {
 
     	var images = null;
@@ -81,7 +97,6 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader
 	$scope.reload = function(){
 		$scope.loading = true;
 		Product.getAllVariants($scope.params).then(function(data){
-			console.log(data);
 			$scope.loading = false;
 	        $scope.response = data;
 	    });
