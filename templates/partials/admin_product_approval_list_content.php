@@ -11,7 +11,9 @@
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Global Category Name/ ID" ]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Shop Name/ ID" ]) ?>
 					<? $this->insert('components/forms/input_tags', ["label" => "Search Tag", "choices" => ["Gulp", "Adico","Pascal"] ]) ?>
-
+					<? $this->insert('components/forms/input_from_to', ["label" => "Price", "label_extend" => "To" ]) ?>
+					<? $this->insert('components/forms/input_from_to', ["label" => "Created Date", "input_class" => "input-icon-calendar", "label_extend" => "To" ]) ?>
+					<? $this->insert('components/forms/input_from_to', ["label" => "Modified Date", "input_class" => "input-icon-calendar", "label_extend" => "To" ]) ?>
 					<div class="form-group">
 						<div class="width-label"><label class="control-label"></label></div>
 						<div class="button-size-normal">
