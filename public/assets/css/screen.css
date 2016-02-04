@@ -14753,11 +14753,15 @@ html, body {
   width: 300px;
   border-radius: 2px;
   margin: auto;
-  padding: 40px 30px;
+  padding: 40px 30px 20px 30px;
 }
 /* line 22, ../../../assets/_login.scss */
 .login-page .btn-100 {
   width: 100%;
+}
+/* line 26, ../../../assets/_login.scss */
+.login-page .login-loading {
+  margin-left: 5px;
 }
 
 /* Additional Code */
