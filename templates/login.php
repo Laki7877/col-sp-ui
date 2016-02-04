@@ -19,15 +19,16 @@
 				ng-template-options="{
 				'label': 'Username',
 				'error' : {
-				'messages': {},
+				'messages': {
+					required: 'Please enter your email address'
+				},
 				'show': $root.isInvalid(loginForm.user),
-				'conditions' : loginForm.user.$error
+				'conditions' : loginForm.user.$error 
 				}
 				}">
 				<input
 				class="form-control width-field-large"
-				name="user"
-				ng-model="user"
+				name="user" ng-model="uform.user"
 				ng-class="{ 'has-error' : $root.isInvalid(loginForm.user) }"
 				maxlength="300"
 				required />
@@ -37,7 +38,9 @@
 				ng-template-options="{
 				'label': 'Password',
 				'error' : {
-				'messages': {},
+				'messages': {
+					required: 'Please enter your password'
+				},
 				'show': $root.isInvalid(loginForm.pass),
 				'conditions' : loginForm.pass.$error
 				}
@@ -46,7 +49,7 @@
 				type="password"
 				class="form-control width-field-large"
 				name="pass"
-				ng-model="pass"
+				ng-model="uform.pass"
 				ng-class="{ 'has-error' : $root.isInvalid(loginForm.pass) }"
 				maxlength="300"
 				required />
