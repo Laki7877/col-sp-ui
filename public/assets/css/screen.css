@@ -13836,7 +13836,7 @@ form h6 {
   min-width: 67px;
 }
 
-/* line 57, ../../../assets/_image_thumbs.sass */
+/* line 56, ../../../assets/_image_thumbs.sass */
 .image-thumbs-actions {
   width: 150px;
   border: 1px solid #BCC7D5;
@@ -13878,21 +13878,20 @@ form h6 {
   text-align: center;
   float: left;
   color: #7B7F8F;
-  cursor: pointer;
 }
-/* line 46, ../../../assets/_image_thumbs.sass */
+/* line 45, ../../../assets/_image_thumbs.sass */
 .image-thumbs-actions .actions-wrapper .action .fa {
   font-size: 20px;
 }
-/* line 49, ../../../assets/_image_thumbs.sass */
+/* line 48, ../../../assets/_image_thumbs.sass */
 .image-thumbs-actions .actions-wrapper.actions-2 .action {
   width: 50%;
 }
-/* line 51, ../../../assets/_image_thumbs.sass */
+/* line 50, ../../../assets/_image_thumbs.sass */
 .image-thumbs-actions .actions-wrapper.actions-3 .action {
   width: 33.33%;
 }
-/* line 53, ../../../assets/_image_thumbs.sass */
+/* line 52, ../../../assets/_image_thumbs.sass */
 .image-thumbs-actions .actions-wrapper.actions-4 .action {
   width: 25%;
 }
@@ -14703,31 +14702,35 @@ html, body {
   text-align: center;
   float: left;
   color: #7B7F8F;
-  cursor: pointer;
 }
-/* line 46, ../../../assets/_image_thumbs.sass */
+/* line 45, ../../../assets/_image_thumbs.sass */
 .image-management .image-thumbs-actions .actions-wrapper .action .fa {
   font-size: 20px;
 }
-/* line 49, ../../../assets/_image_thumbs.sass */
+/* line 48, ../../../assets/_image_thumbs.sass */
 .image-management .image-thumbs-actions .actions-wrapper.actions-2 .action {
   width: 50%;
 }
-/* line 51, ../../../assets/_image_thumbs.sass */
+/* line 50, ../../../assets/_image_thumbs.sass */
 .image-management .image-thumbs-actions .actions-wrapper.actions-3 .action {
   width: 33.33%;
 }
-/* line 53, ../../../assets/_image_thumbs.sass */
+/* line 52, ../../../assets/_image_thumbs.sass */
 .image-management .image-thumbs-actions .actions-wrapper.actions-4 .action {
   width: 25%;
 }
-/* line 72, ../../../assets/_image_management.scss */
+/* line 71, ../../../assets/_image_management.scss */
+.image-management .image-thumbs-actions .actions-wrapper .disabled {
+  opacity: 0.4 !important;
+  pointer-events: none;
+}
+/* line 78, ../../../assets/_image_management.scss */
 .image-management .image-management-list {
   padding: 0;
   max-width: 575px;
   margin: 0;
 }
-/* line 78, ../../../assets/_image_management.scss */
+/* line 84, ../../../assets/_image_management.scss */
 .image-management .image-management-list .list-item {
   display: block;
   float: left;

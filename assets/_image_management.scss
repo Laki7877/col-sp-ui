@@ -67,6 +67,12 @@
 .image-management {
 	.image-thumbs-actions {
 		@include image-thumbs(100px, 135px);
+		.actions-wrapper{
+			.disabled{
+				opacity: 0.4 !important;
+				pointer-events: none;
+			}
+		}
 	}
 
 	.image-management-list {
