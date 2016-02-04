@@ -21,7 +21,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
             <? $this->insert('partials/create_coupon_information') ?>
           </div>
           <div role="tabpanel" class="tab-pane margin-top-20" id="conditions">
-            <? $this->insert('partials/add-product-images') ?>
+            <? $this->insert('partials/coupon_condition') ?>
           </div>
         </div>
         <div class="add-product-form-action main-form-action full-width-row">
