@@ -19,37 +19,40 @@
 				ng-template-options="{
 				'label': 'Username',
 				'error' : {
-				'messages': {},
+				'messages': {
+					required: 'Please enter your email address'
+				},
 				'show': $root.isInvalid(loginForm.user),
-				'conditions' : loginForm.user.$error
+				'conditions' : loginForm.user.$error 
 				}
 				}">
 				<input
-  				class="form-control width-field-large"
-  				name="user"
-  				ng-model="form.username"
-  				ng-class="{ 'has-error' : $root.isInvalid(loginForm.user) }"
-  				maxlength="300"
-  				required />
+				class="form-control width-field-large"
+				name="user" ng-model="uform.user"
+				ng-class="{ 'has-error' : $root.isInvalid(loginForm.user) }"
+				maxlength="300"
+				required />
 			</div>
 
 			<div ng-template="common/input/text2"
 				ng-template-options="{
 				'label': 'Password',
 				'error' : {
-  				'messages': {},
-  				'show': $root.isInvalid(loginForm.pass),
-  				'conditions' : loginForm.pass.$error
+				'messages': {
+					required: 'Please enter your password'
+				},
+				'show': $root.isInvalid(loginForm.pass),
+				'conditions' : loginForm.pass.$error
 				}
 				}">
 				<input
-  				type="password"
-  				class="form-control width-field-large"
-  				name="pass"
-  				ng-model="password"
-  				ng-class="{ 'has-error' : $root.isInvalid(loginForm.pass) }"
-  				maxlength="300"
-  				required />
+				type="password"
+				class="form-control width-field-large"
+				name="pass"
+				ng-model="uform.pass"
+				ng-class="{ 'has-error' : $root.isInvalid(loginForm.pass) }"
+				maxlength="300"
+				required />
 			</div>
 
 			<fieldset class="form-group">
