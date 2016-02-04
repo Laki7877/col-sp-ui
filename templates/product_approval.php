@@ -15,14 +15,6 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 						<? $this->insert('partials/admin_product_approval_list_content') ?>
 					</div>
 				</div>
-				<div class="add-product-form-action main-form-action full-width-row">
-					<div class="container-fluid">
-						<div class="float-right">
-							<a href="#" class="link-btn-plain">Cancel</a>
-							<button class="btn btn-blue btn-width-xl">Save</button>
-						</div>
-					</div>
-				</div>
 			</form>
 		</div>
 	</div>

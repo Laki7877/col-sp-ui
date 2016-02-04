@@ -42,6 +42,10 @@
 		width: 88px;
 	}
 
+  .submitted-column {
+    width: 92px;
+  }
+
   tbody .action-column{
     width: 60px;
     padding-top: 14px;
@@ -190,6 +194,10 @@
     border-radius:  4px;
   }
 
+  .filter-container-input {
+    padding: 12px 17px 12px;
+  }
+
   .filter-seperator {
     text-decoration: none;
     cursor: pointer;
@@ -217,6 +225,10 @@
       margin-right: 6px;
     }
   }
+}
+
+.filter-section.filter-input {
+  padding-left: 170px;
 }
 
 //Page body: Search section
