@@ -31,7 +31,20 @@ module.exports = ['common', '$base64', 'storage', '$q', function(common, $base64
 		}, deferred.reject);
 
 		return deferred.promise;
-	}
+	};
+
+	service.logoutAs = function(){
+		var deferred = $q.defer();
+		common.makeRequest({
+			type: 'GET',
+			url: '/Users/Admin/LogoutAs'
+		}).then(function(r){
+			//TODO: need to
+			storage.storeCurrentUserProfile(r, false);
+		}, deferred.reject);
+
+		return deferred.promise;
+	};
 
 	return service;
 }];
