@@ -126,7 +126,8 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
                 var arr = Object.keys($scope.checkBoxCache).map(function (m) {
                     if (!$scope.checkBoxCache[m]) return { ProductId: -1 };
                     return {
-                        ProductId: Number(m)
+                        ProductId: Number(m),
+                        Visibility: true
                     };
                 });
 
@@ -148,7 +149,8 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
                 var arr = Object.keys($scope.checkBoxCache).map(function (m) {
                     if (!$scope.checkBoxCache[m]) return { ProductId: -1 };
                     return {
-                        ProductId: Number(m)
+                        ProductId: Number(m),
+                        Visibility: false
                     };
                 });
 
@@ -321,7 +323,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
         //all pages. 
         var chkCount = 0;
         $scope.productList.forEach(function(p){
-            chkCount += $scope.checkBoxCache[p.ProductId];
+            chkCount += ($scope.checkBoxCache[p.ProductId] ? 1 : 0);
         });
         
         //Change selectAll checkbox state
