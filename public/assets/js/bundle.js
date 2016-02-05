@@ -53,6 +53,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .run(['$rootScope', 'storage', '$window', '$location', function($rootScope, storage, $window, $location) {
 	
 	$rootScope.Profile = storage.getCurrentUserProfile();
+	$rootScope.Imposter = storage.getImposterProfile();
 
 	if(!$rootScope.Profile && $window.location.pathname != "/login"){
 		storage.put('redirect', $window.location.pathname);
@@ -1398,7 +1399,7 @@ module.exports = ["$scope", "$controller", "AdminShopService", "config", functio
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
 },{}],17:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "AdminShopService", "AdminShoptypeService", "config", "Credential", function($scope, $controller, AdminShopService, AdminShoptypeService, config, Credential) {
+module.exports = ["$scope", "$controller", "AdminShopService", "AdminShoptypeService", "config", "Credential", "$rootScope", function($scope, $controller, AdminShopService, AdminShoptypeService, config, Credential, $rootScope) {
 	'ngInject';
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -1419,7 +1420,8 @@ module.exports = ["$scope", "$controller", "AdminShopService", "AdminShoptypeSer
 
 	$scope.loginAs = function(uid){
 		Credential.loginAs(uid).then(function(){
-			alert("You have been logged in as" + uid);
+			//redirect
+			alert("Waiting for redirect");
 		});
 	};
 
@@ -1812,8 +1814,8 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
     $scope.overview = {}
 
     $scope.formData = {
-	    Brand: { id: null, BrandNameEn: "Please select brand.." },
-	    MasterVariant: { DimensionUnit: "CM", WeightUnit: "G", StockType: "Stock" },
+	    Brand: { id: null, BrandNameEn: "Search for Brand Name.." },
+	    MasterVariant: { DimensionUnit: "MM", WeightUnit: "G", StockType: "Stock" },
 	    ShippingMethod: "1",
 	    AttributeSet: {
 		    AttributeSetTagMaps : []
@@ -1925,8 +1927,9 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
     };
 
     $scope.refreshBrands = function (q) {
+        if(q == "" || !q || q == null) return;
 	    Brand.getAll({
-		    pageSize: 6,
+		    pageSize: 10,
 		    searchText: q
 	    }).then(function (dataSet) {
 		    $scope.availableBrands = dataSet.data;
@@ -2525,10 +2528,15 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', function ($sc
 }];
 },{"angular":113}],27:[function(require,module,exports){
 module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope', function ($scope, Product, util, Alert, $window, $rootScope) {
-    //UI binding variables    
+    
+    /*
+    * This controller uses legacy table-binding method (v0.0.0)
+    * Please refer to other controller for more accepted table controller
+    * (Note, we have like 50 different versions, make sure u pick the correct one)
+    */
     
     $scope.showOnOffStatus = true;
-    $scope.checkAll = false;
+    $scope.allChecked = false;
     $scope.alert = new Alert();
     $scope.filterOptions = [
         { name: "All", value: 'All' },
@@ -2611,7 +2619,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
             if (bulk) {
                 bulk.fn();
             }
-            $scope.checkAll = false;
+            $scope.allChecked = false;
         }
     };
 
@@ -2647,7 +2655,8 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
                 var arr = Object.keys($scope.checkBoxCache).map(function (m) {
                     if (!$scope.checkBoxCache[m]) return { ProductId: -1 };
                     return {
-                        ProductId: Number(m)
+                        ProductId: Number(m),
+                        Visibility: true
                     };
                 });
 
@@ -2669,7 +2678,8 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
                 var arr = Object.keys($scope.checkBoxCache).map(function (m) {
                     if (!$scope.checkBoxCache[m]) return { ProductId: -1 };
                     return {
-                        ProductId: Number(m)
+                        ProductId: Number(m),
+                        Visibility: false
                     };
                 });
 
@@ -2818,22 +2828,39 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
     //Watch any change in table parameter, trigger reload
     $scope.$watch('tableParams', function () {
         $scope.reloadData();
-        $scope.checkAll = false;
+        $scope.allChecked = false;
     }, true);
-
-
-    //Select All checkbox
-    $scope.$watch('checkAll', function (newVal, oldVal) {
+    
+    
+    $scope.checkAll = function(){
+        var first = $scope.productList[0];
+        var tval = !($scope.checkBoxCache[first.ProductId] || false);
         $scope.productList.forEach(function (d) {
-            $scope.checkBoxCache[d.ProductId] = $scope.checkAll;
+            $scope.checkBoxCache[d.ProductId] = tval;
         });
-    }, true);
+    }
 
     $scope.checkBoxCount = function () {
         var m = [];
         Object.keys($scope.checkBoxCache).forEach(function (key) {
             if ($scope.checkBoxCache[key]) m.push($scope.checkBoxCache[key]);
         });
+        
+        //Count checked checkbox (on this page only)
+        //TODO: I don't like this solution, I'd rather trade space for time
+        //note: can't just count checkboxcache because checkboxcache is global across
+        //all pages. 
+        var chkCount = 0;
+        $scope.productList.forEach(function(p){
+            chkCount += ($scope.checkBoxCache[p.ProductId] ? 1 : 0);
+        });
+        
+        //Change selectAll checkbox state
+        if(chkCount != $scope.productList.length){
+            $scope.allChecked = false;
+        }else{
+            $scope.allChecked = true;
+        }
         return m.length;
     }
 }];
@@ -4189,19 +4216,30 @@ module.exports = [function () {
         }
     };
 
+    service.storeImposterProfile = function(profile){
+	profile = angular.toJson(profile);
+        sessionStorage.setItem('central.seller.portal.auth.imposter', profile);
+    };
+	
+    service.getImposterProfile = function () {
+        var profile = sessionStorage.getItem('central.seller.portal.auth.imposter');
+        return angular.fromJson(profile);
+    };
+
     /**
      * Utility method to clear the sessionStorage
      */
     service.clear = function () {
         sessionStorage.removeItem('central.seller.portal.auth.token');
         sessionStorage.removeItem('central.seller.portal.auth.profile');
-
+	sessionStorage.removeItem('central.seller.portal.auth.imposter');
         localStorage.removeItem('central.seller.portal.auth.actions');
         localStorage.removeItem('central.seller.portal.auth.profile');
     };
 
     return service;
 }];
+
 },{}],58:[function(require,module,exports){
 var angular = require('angular');
 
@@ -6283,7 +6321,7 @@ module.exports = ['config', function(config) {
 },{"angular":113}],87:[function(require,module,exports){
 var angular = require('angular');
 
-//TODO: maybe merge this with user service? (doesnt exist yet, but probably exists in ppon's local)
+//TODO: maybe merge this with user service? (doesnt exist yet, but probably exists in poon's local)
 module.exports = ['common', '$base64', 'storage', '$q', function(common, $base64, storage, $q) {
     'use strict';
 
@@ -6303,18 +6341,32 @@ module.exports = ['common', '$base64', 'storage', '$q', function(common, $base64
 		return deferred.promise;
 	};
 
-	service.loginAs = function(Uid){
+	service.loginAs = function(User){
 		var deferred = $q.defer();
 	 	common.makeRequest({
 			type: 'GET',
-			url: '/Users/Admin/Login/' + Uid
+			url: '/Users/Admin/Login/' + User.UserId
 		}).then(function(r){
 			storage.storeCurrentUserProfile(r, false);
+			storage.storeImposterProfile(User);
 			deferred.resolve(r);
 		}, deferred.reject);
 
 		return deferred.promise;
-	}
+	};
+
+	service.logoutAs = function(){
+		var deferred = $q.defer();
+		common.makeRequest({
+			type: 'GET',
+			url: '/Users/Admin/LogoutAs'
+		}).then(function(r){
+			//TODO: actually this needs to know whether its overriding local or session storage
+			storage.storeCurrentUserProfile(r, false);
+		}, deferred.reject);
+
+		return deferred.promise;
+	};
 
 	return service;
 }];
@@ -7206,7 +7258,7 @@ module.exports = function(common) {
 },{}],97:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Sat Feb 06 2016 01:57:42 GMT+0700 (SE Asia Standard Time)
+ * Sat Feb 06 2016 03:07:30 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 

@@ -180,7 +180,7 @@
 									}
 									}">
 									<textarea
-										ng-pattern="/^[0-9A-Za-zก-ฮ\s]+$/"
+										ng-pattern="/^[0-9A-Za-zก-๙\s]+$/"
 										class="form-control"
 										maxlength="500"
 										name="Modal_DescriptionShortTh"

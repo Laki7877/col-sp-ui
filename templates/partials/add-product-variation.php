@@ -80,7 +80,7 @@
 
 				</div>
 			</div> <!-- end .form-section -->
-			<div class="form-section" ng-if="formData.AttributeSet && formData.Variants.length > 0">
+			<div class="form-section" ng-if="formData.AttributeSet && formData.Variants.length > 0" ng-show="enableProductVariations == 'enable'">
 				<div class="form-section-header">Variant ({{ formData.Variants.length }})</div>
 				<div class="form-section-content padding-left-30 padding-right-30">
 					<table class="table ah-table variation-table">

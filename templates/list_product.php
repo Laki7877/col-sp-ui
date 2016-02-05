@@ -32,7 +32,8 @@
       </form>
       <form ng-submit="applySearch()" class="search-section section-search">
         <div class="input-group">
-          <input type="text" class="form-control input-search-icon search-box" ng-model="searchText" placeholder="Search" aria-describedby="basic-addon2">
+          <input type="text" class="form-control input-search-icon search-box" 
+          ng-model="searchText" placeholder="Search by SKU, Product Name" aria-describedby="basic-addon2">
           <span class="input-group-btn">
             <button class="btn btn-white">Search</button>
           </span>
@@ -56,7 +57,7 @@
         <thead>
           <tr class="table-head" >
             <th class="checkbox-column">
-                <input type="checkbox" aria-label="Checkbox for following text input" ng-model="checkAll">
+                <input type="checkbox" aria-label="Checkbox for following text input" ng-click="checkAll()" ng-model="allChecked">
             </th>
             <th class="display-column"></th>
             <th ng-click="setOrderBy('ProductNameEn')">

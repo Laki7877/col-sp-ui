@@ -80,13 +80,23 @@ module.exports = [function () {
         }
     };
 
+    service.storeImposterProfile = function(profile){
+	profile = angular.toJson(profile);
+        sessionStorage.setItem('central.seller.portal.auth.imposter', profile);
+    };
+	
+    service.getImposterProfile = function () {
+        var profile = sessionStorage.getItem('central.seller.portal.auth.imposter');
+        return angular.fromJson(profile);
+    };
+
     /**
      * Utility method to clear the sessionStorage
      */
     service.clear = function () {
         sessionStorage.removeItem('central.seller.portal.auth.token');
         sessionStorage.removeItem('central.seller.portal.auth.profile');
-
+	sessionStorage.removeItem('central.seller.portal.auth.imposter');
         localStorage.removeItem('central.seller.portal.auth.actions');
         localStorage.removeItem('central.seller.portal.auth.profile');
     };
