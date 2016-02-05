@@ -201,7 +201,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 
     $scope.formData = {
 	    Brand: { id: null, BrandNameEn: "Search for Brand Name.." },
-	    MasterVariant: { DimensionUnit: "CM", WeightUnit: "G", StockType: "Stock" },
+	    MasterVariant: { DimensionUnit: "MM", WeightUnit: "G", StockType: "Stock" },
 	    ShippingMethod: "1",
 	    AttributeSet: {
 		    AttributeSetTagMaps : []
