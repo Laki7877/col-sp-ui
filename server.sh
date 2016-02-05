@@ -1,3 +1,3 @@
 #!/bin/bash
 
-php -S 0.0.0.0:4000 -t public
+php -S 0.0.0.0:5000 -t public
