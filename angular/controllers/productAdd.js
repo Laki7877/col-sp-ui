@@ -200,7 +200,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
     $scope.overview = {}
 
     $scope.formData = {
-	    Brand: { id: null, BrandNameEn: "Please select brand.." },
+	    Brand: { id: null, BrandNameEn: "Search for Brand Name.." },
 	    MasterVariant: { DimensionUnit: "CM", WeightUnit: "G", StockType: "Stock" },
 	    ShippingMethod: "1",
 	    AttributeSet: {
@@ -313,8 +313,9 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
     };
 
     $scope.refreshBrands = function (q) {
+        if(q == "" || !q || q == null) return;
 	    Brand.getAll({
-		    pageSize: 6,
+		    pageSize: 10,
 		    searchText: q
 	    }).then(function (dataSet) {
 		    $scope.availableBrands = dataSet.data;
