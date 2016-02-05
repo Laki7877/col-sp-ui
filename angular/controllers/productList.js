@@ -1,8 +1,13 @@
 module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope', function ($scope, Product, util, Alert, $window, $rootScope) {
-    //UI binding variables    
+    
+    /*
+    * This controller uses legacy table-binding method (v0.0.0)
+    * Please refer to other controller for more accepted table controller
+    * (Note, we have like 50 different versions, make sure u pick the correct one)
+    */
     
     $scope.showOnOffStatus = true;
-    $scope.checkAll = false;
+    $scope.allChecked = false;
     $scope.alert = new Alert();
     $scope.filterOptions = [
         { name: "All", value: 'All' },
@@ -85,7 +90,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
             if (bulk) {
                 bulk.fn();
             }
-            $scope.checkAll = false;
+            $scope.allChecked = false;
         }
     };
 
@@ -292,22 +297,39 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
     //Watch any change in table parameter, trigger reload
     $scope.$watch('tableParams', function () {
         $scope.reloadData();
-        $scope.checkAll = false;
+        $scope.allChecked = false;
     }, true);
-
-
-    //Select All checkbox
-    $scope.$watch('checkAll', function (newVal, oldVal) {
+    
+    
+    $scope.checkAll = function(){
+        var first = $scope.productList[0];
+        var tval = !($scope.checkBoxCache[first.ProductId] || false);
         $scope.productList.forEach(function (d) {
-            $scope.checkBoxCache[d.ProductId] = $scope.checkAll;
+            $scope.checkBoxCache[d.ProductId] = tval;
         });
-    }, true);
+    }
 
     $scope.checkBoxCount = function () {
         var m = [];
         Object.keys($scope.checkBoxCache).forEach(function (key) {
             if ($scope.checkBoxCache[key]) m.push($scope.checkBoxCache[key]);
         });
+        
+        //Count checked checkbox (on this page only)
+        //TODO: I don't like this solution, I'd rather trade space for time
+        //note: can't just count checkboxcache because checkboxcache is global across
+        //all pages. 
+        var chkCount = 0;
+        $scope.productList.forEach(function(p){
+            chkCount += $scope.checkBoxCache[p.ProductId];
+        });
+        
+        //Change selectAll checkbox state
+        if(chkCount != $scope.productList.length){
+            $scope.allChecked = false;
+        }else{
+            $scope.allChecked = true;
+        }
         return m.length;
     }
 }];

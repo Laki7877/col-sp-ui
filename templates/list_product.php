@@ -57,7 +57,7 @@
         <thead>
           <tr class="table-head" >
             <th class="checkbox-column">
-                <input type="checkbox" aria-label="Checkbox for following text input" ng-model="checkAll">
+                <input type="checkbox" aria-label="Checkbox for following text input" ng-click="checkAll()" ng-model="allChecked">
             </th>
             <th class="display-column"></th>
             <th ng-click="setOrderBy('ProductNameEn')">
