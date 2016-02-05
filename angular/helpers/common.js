@@ -35,11 +35,11 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
          * Get error message from response
          */
         service.getError = function(response) {
-            if(response.message)
+            if(!_.isUndefined(response.message))
                 return response.message;
-            if(response.error)
+            if(!_.isUndefined(response.error))
                 return response.error;
-            if(response.Message)
+            if(!_.isUndefined(response.Message))
                 return response.Message;
             return response;
         };

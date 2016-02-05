@@ -18,12 +18,11 @@ angular.module('nc')
 					emptyImg: '/assets/img/placeholder-no-image.png' //when image = null 
 				});
 				scope.getSrc = function(image) {
-					if(_.isNull(image) || _.isUndefined(image) || _.isUndefined(image[scope.options.urlKey])) {
+					if(image == null) {
 						//Empty
 						return scope.options.emptyImg;
-					} else if(image[scope.options.urlKey] && image[scope.options.urlKey].length == 0) {
-						//Loading
-					return scope.options.loaderImg;
+					} else if(image[scope.options.urlKey] == '') {
+						return scope.options.loaderImg;
 					} else {
 						return image[scope.options.urlKey];
 					}
@@ -87,47 +86,51 @@ angular.module('nc')
 				scope.uploader = new FileUploader(scope.originalUploader);
 				scope.template = scope.template || 'common/ncImageDropzoneTemplate';
 				scope.options = _.defaults(scope.options, {
+					urlKey: 'url',
 					onQueueLimit: _.noop,
 					onFail: _.noop,
 					onResponse: function(item) { return item; },
-					item: {
-						url: ''
-					}
+					onUpload: function(item) { }
 				});
 				scope.update = function() {
-					scope.input = element.find('input');
 					var html = $templateCache.get(scope.template);
 					element.html(html);
 					$compile(element.contents())(scope);
 				};
 	
 				scope.upload = function() {
-					scope.input.trigger('click');
+					element.find('input').trigger('click');
 				};
 
 				//Upload
 				scope.uploader.onAfterAddingFile = function(item) {
-					if(uploader.queueLimit == scope.model.length) {
+					if(scope.uploader.queueLimit == scope.model.length) {
 						if(scope.options.onQueueLimit) {
 							scope.options.onQueueLimit(item, scope.model);
-						} else {
-							scope.model.push(_.clone(scope.options.item));
-							item.indx = scope.model.length-1;
 						}
+						item.cancel();
+						item.remove();
+					} else {
+							var obj = {};
+							obj[scope.options.urlKey] = '';
+							scope.model.push(obj);
+							item.indx = scope.model.length-1;
 					}
 				};
-				//Upload
 				scope.uploader.onWhenAddingFileFailed = function(item) {
+					console.log(item);
 					if(scope.options.onFail) {
 						scope.options.onFail(item, scope.model);
 					}
 				};
 
 			    scope.uploader.onSuccessItem = function(item, response, status, headers) {
-			    	scope.model[item.indx] = onResponse(response);
-			
+					console.log(item);
+					console.log(scope.model);
+					scope.model[item.indx][scope.options.urlKey] = response[scope.options.urlKey];
 			    };
 			    scope.uploader.onErrorItem = function(item, response, status, headers) {
+					console.log(item);
 			    	scope.model.splice(item.indx, 1);
 			    };
 

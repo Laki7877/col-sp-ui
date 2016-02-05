@@ -97,7 +97,26 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
             // For Safari
             return message;
         };  
-    }
+    };
+
+    service.warningOnLeaveFn = function(fn) {
+        $window.onbeforeunload = function () {
+            if(fn()){
+                //not dirty
+                return null;
+            }
+
+            var message = "Your changes will not be saved.",
+            e = e || window.event;
+            // For IE and Firefox
+            if (e) {
+              e.returnValue = message;
+            }
+
+            // For Safari
+            return message;
+        };  
+    };
 
     //Convert ncTable params to our older params version
     service.ncParams = function(param) {

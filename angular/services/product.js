@@ -22,6 +22,19 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             return common.makeRequest(req);
         }
 
+        service.updateAllVariants = function(obj){
+            var req = {
+                method: 'PUT',
+                url: '/ProductStages/All/Image',
+                data: obj,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            };
+
+            return common.makeRequest(req);
+        }
+
         service.duplicate = function(ProductId){
              //this URL structure is weird dont u think
             var req = {

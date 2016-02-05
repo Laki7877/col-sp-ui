@@ -35,7 +35,6 @@ module.exports = function(common, SellerPermissionService) {
 		};
 		SellerPermissionService.listAll()
 			.then(function(data) {
-				console.log(data);
 				processed.Permission = _.map(data, function(e) {
 					e.check = false;
 					return e;

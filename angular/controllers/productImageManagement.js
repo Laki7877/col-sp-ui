@@ -1,5 +1,6 @@
-module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader', 'config', function ($scope, Product, util, Alert, $window, FileUploader, config) {
-    $scope.response = [];
+module.exports = ['$scope', 'Product', 'util', 'NcAlert', '$window', 'FileUploader', 'Image', 'config', 'common', function ($scope, Product, util, NcAlert, $window, FileUploader, ImageService, config, common) {
+    $scope.response = {};
+    $scope.alert = new NcAlert();
     $scope.filterOptions = [
 			{ name: "All", value: 'All'},
 			{ name: "Image Missing", value: 'ImageMissing'},
@@ -14,8 +15,11 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader
 			_direction: 'asc',
 			_filter: 'All'
 	};
+	$scope.imageDropzoneOptions = {
+		urlKey: 'url'
+	};
 	$scope.imageGalleryOptions = {
-		urlKey: 'ImageUrlEn',
+		urlKey: 'url',
 		actions: [
 		{
 			//Left
@@ -56,8 +60,20 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader
 		}]
 	};
 	$scope.dirty = false;
-    $scope.uploader = new FileUploader();
+    $scope.uploader = ImageService.getUploader('/ProductImages');
     $scope.productStatus = config.PRODUCT_STATUS;
+    
+    //Prevent unsaved event
+    $scope.onUnsave = function() {
+    	if($scope.dirty) {
+    		return confirm('Your change will not be saved.');
+    	}
+    	return true;
+    };
+    util.warningOnLeaveFn(function() {
+    	return !$scope.dirty;
+    });
+
     $scope.getTemplate = function(product) {
     	var images = null;
     	if(product.IsVariant) {
@@ -81,7 +97,6 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader
     	return '';
     };
     $scope.getContainer = function(product) {
-
     	var images = null;
     	if(product.IsVariant) {
     		images = product.VariantImg;
@@ -98,9 +113,36 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader
 		$scope.loading = true;
 		Product.getAllVariants($scope.params).then(function(data){
 			$scope.loading = false;
+	        $scope.ignored = true;
 	        $scope.response = data;
+	        $scope.watcher = _.map(data.data, function(e) {
+	        	if(e.IsVariant) {
+	        		return e.VariantImg;
+	        	} else {
+	        		return e.MasterImg;
+	        	}
+	        });
 	    });
 	}
-   
+	$scope.save = function() {
+		//Set dirty to false after you save
+		if($scope.dirty) {
+			Product.updateAllVariants($scope.response.data)
+				.then(function(data) {
+					$scope.dirty = false;
+					$scope.alert.success("Successfully save changes.");
+					$scope.reload();
+				}, function(err) {
+					console.log(err);
+					$scope.alert.error(common.getError(err));
+				});
+		}
+	}
+    $scope.$watch('watcher', function(val, val2) {
+    	if(!_.isUndefined(val2) && !$scope.ignored) {
+    		$scope.dirty = true;
+    	}
+    	$scope.ignored = false;
+    }, true);
     $scope.$watch('params', $scope.reload, true);
 }];

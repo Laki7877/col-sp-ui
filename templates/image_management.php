@@ -2,6 +2,7 @@
 
 <?php $this->start('page-body') ?>
   <div ng-controller="ProductImageManagementCtrl">
+    <nc-alert nc-model="alert"></nc-alert>
    <!-- <? $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => "Successfully save changes. However,your changes won't be online until you published your products." ]) ?>
      -->
 
@@ -11,16 +12,16 @@
             <a class="btn btn-white btn-width-xl margin-right-10" data-toggle="modal" data-target="#image-guideline">
               <span class="">View Guideline</span>
             </a>
-            <a href="#" class="btn btn-blue  btn-width-xl ">
+            <a class="btn btn-blue  btn-width-xl " ng-click="save()">
               <span class="">Save</span>
             </a>
         </span>
     </div>
 
     <div class="row search-section-wrapper">
-      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search Product'"></nc-search>
+      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search Product'" nc-search-event="onUnsave"></nc-search>
     </div>
-    <nc-filter nc-model="params._filter" nc-filter-options="filterOptions"></nc-filter>
+    <nc-filter nc-model="params._filter" nc-filter-options="filterOptions" nc-filter-event="onUnsave"></nc-filter>
 
     <div>
       <div ng-show="loading" nc-loading="Loading Products.."></div>
@@ -46,8 +47,8 @@
                           </div>
                         </div>
                         <div class="drop-zone-container {{ getContainer(product) }}">
-                          <nc-image-dropzone ng-if="product.IsVariant" nc-model="product.VariantImg" nc-image-template="{{getTemplate(product)}}" nc-image-uploader="uploader"></nc-image-dropzone>
-                          <nc-image-dropzone ng-if="!product.IsVariant" nc-model="product.MasterImg" nc-image-template="{{getTemplate(product)}}" nc-image-uploader="uploader"></nc-image-dropzone>
+                          <nc-image-dropzone ng-if="product.IsVariant" nc-model="product.VariantImg" nc-image-template="{{getTemplate(product)}}" nc-image-uploader="uploader" nc-image-dropzone-options="imageDropzoneOptions"></nc-image-dropzone>
+                          <nc-image-dropzone ng-if="!product.IsVariant" nc-model="product.MasterImg" nc-image-template="{{getTemplate(product)}}" nc-image-uploader="uploader" nc-image-dropzone-options="imageDropzoneOptions"></nc-image-dropzone>
                         </div>
                     </div>
                   </div>
@@ -56,14 +57,14 @@
             </div>
           </div>
           <div class="page-navigation">
-             <nc-pagination nc-model="params" nc-pagination-total="response.total"></nc-pagination>
+             <nc-pagination nc-model="params" nc-pagination-total="response.total" nc-pagination-event="onUnsave"></nc-pagination>
           </div>  
         </div>
         <div class="add-product-form-action main-form-action full-width-row">
           <div class="container-fluid">
             <div class="float-right">
               <a class="btn btn-white btn-width-xl" data-toggle="modal" data-target="#image-guideline">View Guideline</a>
-              <button class="btn btn-blue btn-width-xl">Save</button>
+              <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
             </div>
           </div>
         </div>

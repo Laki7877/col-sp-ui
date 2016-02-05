@@ -122,7 +122,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 								</div>
 							</div>
 						</div>
-						<div class="row">
+						<div ng-if="id == 0" class="row">
 							<div class="col-xs-12">
 								<div class="form-section">
 									<div class="form-section-header"><h2>Shop Owner Information</h2></div>
@@ -270,7 +270,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 								</div>
 							</div>
 						</div>
-						<div ng-if="formData.ShopId > 0" class="row">
+						<div ng-if="id > 0" class="row">
 							<div class="col-xs-12">
 								<div class="form-section">
 									<div class="form-section-header"><h2>Shop Users</h2></div>
@@ -284,6 +284,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 														<th>Email</th> 
 														<th>Role</th> 
 														<th>Status</th> 
+														<th>Reset Password</th> 
 														<th class="text-align-center">Action</th> 
 													</tr> 
 												</thead> 
@@ -295,7 +296,11 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 														<td>{{ user.UserGroup[0] }}</td>
 														<td>{{ user.Status | mapDropdown:statusDropdown }}</td>
 														<td class="text-align-center">
-<a class="btn btn-white btn-width-xl" ng-click="loginAs(user.UserId)">Login-As</a></td> 
+															<a class="btn btn-white btn-width-xl" ng-click="ResetPassword()">Login-As</a>
+														</td> 
+														<td class="text-align-center">
+															<a class="btn btn-white btn-width-xl" ng-click="loginAs(user.UserId)">Login-As</a>
+														</td> 
 													</tr>
 												</tbody>
 											</table>
