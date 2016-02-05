@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, AdminShopService, AdminShoptypeService, config, Credential) {
+module.exports = function($scope, $controller, AdminShopService, AdminShoptypeService, config, Credential, $rootScope) {
 	'ngInject';
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -19,7 +19,8 @@ module.exports = function($scope, $controller, AdminShopService, AdminShoptypeSe
 
 	$scope.loginAs = function(uid){
 		Credential.loginAs(uid).then(function(){
-			alert("You have been logged in as" + uid);
+			//redirect
+			alert("Waiting for redirect");
 		});
 	};
 

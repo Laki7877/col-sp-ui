@@ -53,6 +53,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .run(['$rootScope', 'storage', '$window', '$location', function($rootScope, storage, $window, $location) {
 	
 	$rootScope.Profile = storage.getCurrentUserProfile();
+	$rootScope.Imposter = storage.getImposterProfile();
 
 	if(!$rootScope.Profile && $window.location.pathname != "/login"){
 		storage.put('redirect', $window.location.pathname);

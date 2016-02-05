@@ -13,8 +13,9 @@
 	    <li><a href="#">Logout of Natt Phenjati</a></li>
 	  </ul>
 	</li>
+
        <li class="header-font-detail">
-	  <strong>Logged in As Natt Phenjati</strong> 
+	  <strong>Logged in As {{ $root.Imposter.NameEn }}</strong> 
         </li>
 
     </ul>
