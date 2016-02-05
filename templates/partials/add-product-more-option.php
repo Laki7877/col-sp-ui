@@ -184,7 +184,10 @@
 							</div>
 							<span class="help-block"></span>
 						</div>
-						<div class="width-field-tooltip no-padding-left"><i class="fa fa-2x fa-question-circle color-grey" data-toggle="btooltip" data-placement="right" title="Date when your product will go online"></i></div>
+						<div class="width-field-tooltip no-padding-left">
+                            <i class="fa fa-2x fa-question-circle color-grey" tooltip-trigger="mouseenter"
+                            uib-tooltip="Date when your product will go online"></i>
+                        </div>
 					</div>
 
 					<div class="form-group">
@@ -209,8 +212,10 @@
 							</div>
 
 						</div>
-						<div class="width-field-tooltip no-padding-left"><i class="fa fa-2x fa-question-circle color-grey" data-toggle="btooltip" data-placement="right" title="Date when your product will go offline"></i></div>
-						
+					    <div class="width-field-tooltip no-padding-left">
+                            <i class="fa fa-2x fa-question-circle color-grey" tooltip-trigger="mouseenter"
+                            uib-tooltip="Date when your product will go offline"></i>
+                        </div>
 					</div>
 
 					<? $this->insert('components/forms/multiple-checkbox', ["label" => "Control Flag", "ng_model" => "formData.ControlFlags", "choices" => ["Flag 1", "Flag 2", "Flag 3"]]) ?>
