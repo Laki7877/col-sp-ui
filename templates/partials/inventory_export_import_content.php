@@ -5,7 +5,7 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Export Inventory</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/button-with-label', ["label" => "Inventory List", "btnClass" => "btn-blue", "buttonText" => "Export"]) ?>					
+					<? $this->insert('components/forms/button-with-label', ["label" => "Inventory List", "btnClass" => "btn-blue", "buttonText" => "Export", 'modalData' => 'data-toggle="modal" data-target="#export-product"']) ?>					
 				</div>
 			</div>
 		</div>
@@ -23,4 +23,7 @@
 	</div>	
 </div>
 
-<? $this->insert('components/modal-import-product', ['id' => 'import-product', 'newProductNum' => '1,500', 'updatedProductNum' => '300']) ?>
+<? $this->insert('components/modal-import-product', ['id' => 'import-product', 'newProductNum' => '1,500', 'updatedProductNum' => '300', 'typeText' => 'inventory']) ?>
+<? $this->insert('components/modal-export-product', ['id' => 'export-product', 'newProductNum' => '1,500' , 'headerText' => 'Export Inventory List']) ?>
+<? $this->insert('components/modal-export-product-progressing', ['id' => 'export-product-progressing', 'percent' => '60']) ?>
+<? $this->insert('components/modal-export-product-complete', ['id' => 'export-product-complete']) ?>
