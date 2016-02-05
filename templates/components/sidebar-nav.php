@@ -1,15 +1,17 @@
 <?php
     $items = [
-        [ "name" => "Home", "icon" => "fa-home" ],
-        [ "name" => "Orders", "icon" => "fa-inbox" ],
-        [ "name" => "Products", "icon" => "fa-tag", "sub_sidebar" => "#sub-sidebar-product" ],
+        [ "name" => "Home", "icon" => "fa-home"],
+        [ "name" => "Orders", "icon" => "fa-inbox"],
+        [ "name" => "Products", "icon" => "fa-tag", "sub_sidebar" => "#sub-sidebar-product", "url" => "/products" ],
         [ "name" => "Inventory", "icon" => "fa-archive" ],
-        [ "name" => "Promotion", "icon" => "fa-bookmark", "link" => "/?p=coupons" ],
-        [ "name" => "Shop Setting", "icon" => "fa-sliders", "link" => "/?p=shop_setting" ],
+        [ "name" => "Promotion", "icon" => "fa-bookmark" ],
+        [ "name" => "Shop Setting", "icon" => "fa-sliders" ],
         [ "name" => "Report", "icon" => "fa-line-chart" ],
         [ "name" => "Account", "icon" => "fa-gear", "sub_sidebar" => "#sub-sidebar-account" ],
+        [ "name" => "Collection", "icon" => "fa-product-hunt", "sub_sidebar" => "#sub-sidebar-collection" ],
     ];
 ?>
+
 <ul class="sidebar-nav no-padding">
     <?php
         foreach ($items as $item) {

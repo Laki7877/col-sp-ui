@@ -13,7 +13,7 @@ else {
       <div class="input-group-btn">
         <div class="dropdown-btn">
           <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-              <span class="dropdown-text margin-right-10 search-prodcut-text">- Choosen Action -</span>
+              <span class="dropdown-text margin-right-10 search-prodcut-text">- Choose Action -</span>
               <span class="caret margin-left-10"></span>
           </button>
           <ul class="dropdown-menu search-product-dropdown">
@@ -28,12 +28,12 @@ else {
       </div>
     </div>
   </div>
-  <div class="search-section section-search">
+  <form ng-submit="applySearch()" class="search-section section-search">
     <div class="input-group">
-      <input type="text" class="form-control input-search-icon search-box" placeholder="<?= $searchPlaceHolder ?>" aria-describedby="basic-addon2">
+      <input type="text" class="form-control input-search-icon search-box" ng-model="searchText" placeholder="Search" aria-describedby="basic-addon2">
       <span class="input-group-btn">
-        <button class="btn btn-white" type="button">Search</button>
+        <button class="btn btn-white">Search</button>
       </span>
     </div>
-  </div>
+  </form>
 </div>

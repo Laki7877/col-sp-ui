@@ -45,6 +45,14 @@ html, body {
   min-height: 100%;
 }
 
+#wrapper-login {
+  position: relative;
+  display: block;
+  min-width: 1200px;
+  min-height: 100%;
+  background-color: $sidebar-color;
+}
+
 #page-content-wrapper {
   margin-left: $sidebar-width;
   position: relative;
@@ -54,6 +62,10 @@ html, body {
   padding-top: 30px;
   padding-bottom: 30px;
 }
+
+// #page-content-plain {
+//   background-color: $color-blue;
+// }
 
 
 @import "add_product_page";
@@ -133,15 +145,19 @@ html, body {
           float: left;
         }
         .column-2{
-          margin-left: 50px;
+          margin-left: 40px;
           display: inline-block;
           float: left;
         }
         .column-3{
-          margin-left: 80px;
+          margin-left: 90px;
           display: inline-block;
           float: left;
         }
+      }
+      li.disabled {
+        background: #EDF2F9 !important;
+        color: #333333 !important;
       }
       li.active{
         background: #4899DD;
@@ -151,8 +167,25 @@ html, body {
   }
 }
 
-.my_file {
-    display: none !important;
+.table{
+  .action-column{
+    width: 60px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+} 
+
+.has-error-parent {
+  .form-control {
+    border-color: $color-red;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  }
+}
+.form-control.has-error {
+  border-color: $color-red;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
 .empty-section{
@@ -168,7 +201,10 @@ html, body {
       margin-right: 15px;
     }
 }
+.disabled-chevron{
+  cursor: not-allowed;
+}
 
-.get_file {
-    cursor: pointer;
+.opacity-50{
+  opacity: 0.5;
 }

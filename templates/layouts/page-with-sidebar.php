@@ -5,24 +5,34 @@
 		<img class="logo-img" src="<?= $this->asset('/assets/img/seller_logo.png') ?>" />
 	</div>
     
-    <?php $this->insert('components/sidebar-nav', ['itemActive' => 'Home']) ?>
+    <?php $this->insert('components/sidebar-nav') ?>
     
     <ul class="sub-sidebar" style="display: none;" id="sub-sidebar-product">
         <li class="sub-sidebar-header">Product</li>
-        <li class="item active margin-top-20"><a href="/?p=index">View</a></li>
-        <li class="item"><a href="/?p=add_product">Add</a></li>
-        <li class="item"><a href="/?p=import_product">Import</a></li>
-        <li class="item"><a href="/?p=index">Export</a></li>
-        <li class="item margin-top-30"><a href="/?p=local_category">Local Category</a></li>
-        <li class="item"><a href="/?p=product_review">Product Review</a></li>
-        <li class="item"><a href="/?p=image_management">Product Images</a></li>
+        <li ng-class="$root.activeUrl('/products')" class="item margin-top-20"><a href="/products">View</a></li>
+        <li ng-class="$root.activeUrl('/products/add')" class="item"><a href="/products/select">Add</a></li>
+        <li class="item"><a href="">Import</a></li>
+        <li class="item"><a href="">Export</a></li>
+        <li ng-class="$root.activeUrl('/categories')" class="item margin-top-30"><a href="/categories">Local Category</a></li>
+        <li class="item"><a href="">Product Review</a></li>
+        <li class="item"><a href="">Product Images</a></li>
     </ul>
 
     <ul class="sub-sidebar" style="display: none;" id="sub-sidebar-account">
         <li class="sub-sidebar-header">Account</li>
-        <li class="item active margin-top-20"><a href="?p=user_account">User Accounts</a></li>
-        <li class="item"><a href="?p=user_role">User Roles</a></li>
+        <li ng-class="$root.activeUrl('/accounts')" class="item margin-top-20"><a href="/accounts">User Accounts</a></li>
+        <li ng-class="$root.activeUrl('/roles')" class="item"><a href="/roles">User Roles</a></li>
     </ul>
+
+<ul class="sub-sidebar" style="display: none;" id="sub-sidebar-collection">
+  <li class="sub-sidebar-header">Collection</li>
+  <li ng-class="$root.activeUrl('/collections')" class="item margin-top-20">
+    <a href="/collections">View</a>
+  </li>
+  <li ng-class="$root.activeUrl('/roles')" class="item">
+    <a href="/collections/add">Add</a>
+  </li>
+</ul>
 
 <?php $this->stop() ?>
 

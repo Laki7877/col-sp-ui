@@ -1,22 +1,43 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="" ng-app="colspApp">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title><?=$title?></title>
+        <meta http-equiv="expires" content="Sun, 01 Jan 2014 00:00:00 GMT"/>
+        <meta http-equiv="pragma" content="no-cache" />
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="<?= $this->asset('/assets/favicon.ico') ?>">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="stylesheet" href="<?=$this->asset('/assets/css/screen.css')?>" />
+        <link rel="stylesheet" href="<?=$this->asset('/assets/libs/angular-bootstrap-datetimepicker/datetimepicker.css')?>"/>
+
         <script src="<?= $this->asset('/assets/js/jquery.min.js') ?>"></script>
-        <script src="<?= $this->asset('/assets/js/bootstrap.min.js') ?>"></script>
-        <script src="<?= $this->asset('/assets/js/bootstrap-fixconflict.js') ?>"></script>
+	<script src="<?= $this->asset('/assets/js/jquery.rest.js') ?>"></script>
+	<script src="<?= $this->asset('/assets/js/bundle.js') ?>"></script>
+	
+	<script src="<?= $this->asset('/assets/js/bootstrap.min.js') ?>"></script>
+	<script src="<?= $this->asset('/assets/js/bootstrap-fixconflict.js') ?>"></script>
     </head>
-    <body class="ahpt">
+    <body class="ahpt" ng-cloak ng-controller="RootCtrl">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->       
+        <!-- Modal -->
+        <div class="modal fade" tabindex="-1" role="dialog" id="modal-loading">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <h3 class="modal-title margin-bottom-20">Processing...</h3>
+                <div class="progress margin-0">
+                  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                  </div>
+                </div>
+              </div> <!-- end .modal-body -->
+            </div> <!-- end .modal-content -->
+          </div> <!-- end .modal-dialog -->
+        </div> <!-- end .modal -->
 
         <div id="debug">
             <?= $this->section('debug') ?>
@@ -34,11 +55,15 @@
         <script src="/assets/libs/datepicker/js/bootstrap-datetimepicker.min.js"></script>
         <link rel="stylesheet" type="text/css" href="/assets/libs/datepicker/css/bootstrap-datetimepicker.min.css">
 
-        <script src="/assets/libs/select2/js/select2.min.js"></script>
+        <script src="/assets/libs/select2/js/select2.js"></script>
         <link rel="stylesheet" type="text/css" href="/assets/libs/select2/css/select2.min.css">
-        
+	
+        <script src="/assets/libs/angular-select2/select.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/assets/libs/angular-select2/select.min.css">
+
         <script>
-            $('[ckeditor-initialize]').each(function(idx, textarea) {
+/*
+	    $('[ckeditor-initialize]').each(function(idx, textarea) {
                 CKEDITOR.replace( textarea );
             });
             $('.input-icon-calendar').datetimepicker({
@@ -52,7 +77,6 @@
 
             $("body").tooltip({ selector: '[data-toggle=tooltip]' });
 
-            /********** THIS IS ABOUT TO ATTACH EVENT DRAG AND DROP OF IMAGE DROPZONE ************/
             $('.image-drop-zone').on('dragover', function(e) {
                 var $this = $(this);
                 e.preventDefault();
@@ -74,8 +98,8 @@
                 //TODO: UPLOAD FILE WHEN USER DROPPED INTO DROPZONE
                 return false;
             })
-            /******************************* END IMAGE DROPZONE **********************************/
-        </script>
+ */
+	</script>
 
         
     </body>

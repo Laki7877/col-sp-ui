@@ -1,0 +1,12 @@
+<div ng-class="['form-group ' + (options.formGroupClass || '')]">
+	<div class="width-label"><label class="control-label" ng-class="options.labelClass || {}" ng-bind-html="options.label"></label></div>
+	<div ng-class="['width-field-' + (options.inputSize || 'normal')]" class="input-with-unit">
+		<ng-transclude></ng-transclude>
+		<span class="input-unit" ng-if="options.unit">{{ options.unit }}</span>
+		<span class="help-block" ng-if="options.hint" ng-show="options.hint.show">{{options.hint.message}}</span>
+		<span class="help-block color-red" ng-if="options.error" ng-show="options.error.show" ng-repeat="(key, prop) in options.error.conditions">
+			<span ng-bind-html="options.error.messages[key]"></span>
+		</span>
+	</div>
+	<div class="width-field-tooltip padding-left-30"><i class="fa fa-2x fa-question-circle color-grey" uib-tooltip-html="options.tooltip" tooltip-trigger="mouseenter" tooltip-placement="right" ng-if="options.tooltip && options.tooltip.length > 0"></i></div>
+</div>

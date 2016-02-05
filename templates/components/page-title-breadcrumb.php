@@ -1,15 +1,30 @@
 <?php
 $extracted = explode('/', $text);
-$extracted = array_map(function($item, $idx) {
-  return "<a href=\"/?p=index\" class=\"ah-breadcrumb-path ah-breadcrumb-idx-$idx\">".$item.'</a>';
-}, $extracted, array_keys($extracted));
+if(!isset($urls)) {
+  $urls = [];
+}
+while(count($urls) < count($extracted)) {
+	array_push($urls, "");
+}
+$extracted = array_map(function($item, $idx, $url) {
+  return "<a href=\"$url\" class=\"ah-breadcrumb-path ah-breadcrumb-idx-$idx\">".$item.'</a>';
+}, $extracted, array_keys($extracted), $urls);
 $newText = implode('<span class="ah-breadcrumb-splitter">/</span>', $extracted);
 ?>
 <div class="page-header no-padding">
-    <h1 class="float-left page-header-title ah-breadcrumb"><?= $newText ?></h1>
-    <div class="page-actions float-right">
-		<button class="btn btn-white btn-width-xl">Preview</button>
-		<button class="btn btn-white btn-width-xl">Save as Draft</button>
-		<button class="btn btn-blue btn-width-xl">Publish</button>
-	</div>
+    <h1 class="float-left page-header-title ah-breadcrumb">
+    	<a href="\"<?= $newText ?>
+    </h1>
+    <div class="page-actions float-right" ng-if="!_loading.state">
+  	          <button ng-show="formData.Status != 'WA'" 
+              class="btn btn-white btn-width-xl" ng-click="preview()">Preview</button>
+
+              <button ng-show="formData.Status != 'WA'" 
+              class="btn btn-white btn-width-xl" 
+              type="submit"ng-click="publish('DF')">Save as Draft</button>
+              
+              <button ng-show="formData.Status != 'WA'" 
+              type="submit" class="btn btn-blue btn-width-xl" 
+              ng-click="publish('WA')">Publish</button>
+    </div>
 </div>

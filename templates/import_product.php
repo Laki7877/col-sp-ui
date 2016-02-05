@@ -1,7 +1,7 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Product']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => $title]) ?>
 
 <?php $this->start('page-body') ?>
-	<div class="local-category-page">
+	<div class="local-category-page" ng-controller="ProductImportCtrl">
 		<? $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => 'Successfully Import Products. <a class="color-black text-underline">View Product List</a>']) ?>
 		<? $this->insert('components/alert-text', ['close' => true, 'color' => 'red', 'text' => 'Fail to import products', 'header_class' => 'font-weight-bold',
 		 'text_multilines' => ['- Wrong template file or format'

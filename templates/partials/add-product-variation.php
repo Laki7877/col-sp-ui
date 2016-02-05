@@ -1,60 +1,93 @@
 <div id="add-product-variation-tab-content">
 	<? $this->insert('partials/add-product-inner-tab-breadcrumb') ?>
-
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="form-section">
 				<div class="form-section-header"><h2>Variation Option</h2></div>
-				<div class="form-section-content">
-					<div class="form-group">
+				<div class="form-section-content padding-left-30" ng-if="(formData.AttributeSet && !formData.AttributeSet['AttributeSetId']) || enableProductVariations != 'enable'">
+					To enable variation option, please select an <strong>Attribute Set</strong> and enable <strong>Product Variation</strong> in the information tab.
+				</div>
+
+				<!-- ng-if too long -->
+				<div class="form-section-content" ng-if="!(formData.AttributeSet && !formData.AttributeSet['AttributeSetId']) && enableProductVariations == 'enable'">
+					<div class="form-group" ng-repeat="jth in variationFactorIndices.iterator" ng-show="(attributeOptions[0].options.length > 0) || (jth == 0)">
 						<div class="width-label">
-							<div class="ah-select2-dropdown">
-								<select class="form-control select2-init">
-									<option value="">Material</option>
-								</select>
-							</div>
+							<select class="form-control"
+								ng-options="i as i.Attribute.AttributeNameEn
+								for i in formData.AttributeSet.AttributeSetMaps |
+								truth: 'Attribute.VariantStatus' |
+								exclude: attributeOptions[1 - jth].Attribute : 'AttributeId'
+								track by i.Attribute.AttributeId"
+								ng-model="attributeOptions[jth]">
+								<option value="" disabled selected>Select an option..</option>
+							</select>
 						</div>
+						<div class="width-field-large">
+							<!--<div class="input-with-unit">-->
+								
+								<ui-select ng-if="_isListInput(attributeOptions[jth].Attribute.DataType)"
+								multiple ng-model="attributeOptions[jth].options">
+								<ui-select-match placeholder="Select variation options">
+								{{ $item.AttributeValue.AttributeValueEn || $item }}
+								</ui-select-match>
+								<ui-select-choices repeat="i in attributeOptions[jth].Attribute.AttributeValueMaps | filter:$select.search">
+								{{ i.AttributeValue.AttributeValueEn || i }}
+								</ui-select-choices>
+								</ui-select>
+						
+							
+								<ui-select ng-if="_isFreeTextInput(attributeOptions[jth].Attribute.DataType)"
+								multiple tagging tagging-label=""
+							        tagging-tokens=",|ENTER" 	 
+								on-select="onVariationOptionFreeTextAdded($item, $model, jth)" 
+								ng-model="attributeOptions[jth].options">
+								<ui-select-match placeholder="Variation options separated by a comma (or enter)">
+								{{ $item.AttributeValue.AttributeValueEn || $item }}
+								</ui-select-match>
+								<ui-select-choices repeat="i in attributeOptions[jth].Attribute.AttributeValueMaps | filter:$select.search">
+								{{ i.AttributeValue.AttributeValueEn || i }}
+								</ui-select-choices>
+								</ui-select>
+
+					<!--			<span class="input-unit">
+									{{ attributeOptions[jth].Attribute.unit }}
+								</span>
+							</div>-->
+						</div>
+						<a class="like-text form-text" ng-click="variationFactorIndices.pushSecond()" ng-if="attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1">
+							<i class="fa fa-plus-circle color-theme"></i> Add another option
+						</a>
+						<a class="like-text form-text" ng-click="variationFactorIndices.popSecond()" ng-if="attributeOptions[1].options.length > 0 && variationFactorIndices.length() == 2 && jth == 1">
+								<i class="fa fa-trash color-theme"></i>
+						</a>
+						<div class="width-field-large">
+							<span class="help-block color-red" ng-repeat="msg in (variationOptionWarning[jth]) track by $index"> 
+								<span>{{ msg }}</span>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group" ng-show="formData.Variants.length > 0">
+						<div class="width-label"><label class="control-label">Default Variant</label></div>
 						<div class="width-field-normal">
 							<div class="ah-select2-dropdown">
-								<select class="form-control select2-init" multiple="multiple">
-									<option selected value="Wood">Wood</option>
-									<option value="Plastic">Plastic</option>
-									<option value="Steel">Steel</option>
-									<option value="Fiber">Fiber</option>
-								</select>	
+								<select ng-model="formData.DefaultVariant" class="form-control"
+									ng-options="i as i.text for i in formData.Variants track by i.text" required>
+								</select>
 							</div>
 						</div>
 					</div>
-					<div class="form-group">
-						<div class="width-label">
-							<div class="ah-select2-dropdown">
-								<select class="form-control select2-init">
-									<option value="">Capacity</option>
-								</select>
-							</div>
-						</div>
-						<div class="width-field-normal">
-							<div class="input-with-unit">
-								<select class="form-control select2-init" multiple="multiple" data-tags="true">
-									<option selected value="10000">10000</option>
-									<option selected value="20000">20000</option>
-								</select>
-								<span class="input-unit">mAh</span>
-							</div>
-						</div>
-					</div>
-					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Default Variant", "options" => ["Wood, 10000 mAh", "Wood, 20000 mAh"]]) ?>
+
 				</div>
 			</div> <!-- end .form-section -->
-			<div class="form-section">
-				<div class="form-section-header">Variant</div>
+			<div class="form-section" ng-if="formData.AttributeSet && formData.Variants.length > 0">
+				<div class="form-section-header">Variant ({{ formData.Variants.length }})</div>
 				<div class="form-section-content padding-left-30 padding-right-30">
 					<table class="table ah-table variation-table">
 						<thead>
 							<tr>
 								<th class="column-variant">Variant</th>
-								<th class="column-pid">PID</th>
-								<th class="column-sku"><span class="required">SKU</span></th>
+								<th class="column-sku">SKU</th>
 								<th class="column-price">Price</th>
 								<th class="column-sale-price">Sale Price</th>
 								<th class="column-inventory">Inventory</th>
@@ -63,18 +96,44 @@
 							</tr>
 						</thead>
 						<tbody>
-							<? foreach(["Wood, 10000 mAh", "Plastic, 10000 mAh", "Wood, 12000 mAh", "Plastic, 12000 mAh"] as $item): ?>
-								<tr>
-									<td class="column-text-ellipsis"><?= $item?></td>
-									<td>1234567</td>
-									<td><input type="text" class="form-control" /></td>
-									<td><input type="text" class="form-control" /></td>
-									<td><input type="text" class="form-control" /></td>
-									<td><input type="text" class="form-control" /></td>
-									<td><a class="btn btn-white btn-width-xl" data-toggle="modal" data-target="#variant-detail-1">More Detail</a></td>
-									<td><a class="btn btn-white">Hide</a></td>
-								</tr>
-							<? endforeach ?>
+						<tr ng-repeat="pair in formData.Variants track by $index">
+							<td class="column-text-ellipsis" ng-class="{'opacity-50': !pair.Visibility}">
+								{{ pair.text }}
+							</td>
+							<td>
+								<input 
+								type="text" ng-disabled='!pair.Visibility' class="form-control"
+								name="pair_Sku{{ $index }}"
+								maxlength="300"
+								ng-pattern="/^[0-9A-Za-z]+$/"
+								ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }"
+								ng-model="pair.Sku" />
+							</td>
+							<td><input type="text"
+								ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_OriginalPrice{{$index}}) }"
+								name="pair_OriginalPrice{{$index}}"
+								ng-pattern="/^\d+(\.\d{1,2})?$/"
+								ng-model="pair.OriginalPrice" ng-disabled='!pair.Visibility'
+								class="form-control" /></td>
+							<td><input type="text"
+								ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_SalePrice{{$index}}) }"
+								ng-model="pair.SalePrice" name="pair_SalePrice{{ $index }}" ng-disabled='!pair.Visibility'
+								ng-pattern="/^\d+(\.\d{1,2})?$/"
+								class="form-control" /></td>
+							<td><input type="text" ng-model="pair.Quantity"
+								maxlength="5"
+								ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Quantity{{$index}}) }"
+								ng-disabled='!pair.Visibility' ng-pattern="/^[0-9]+$/"
+								name="pair_Quantity{{$index}}"
+								class="form-control" /></td>
+							<td><a class="btn btn-white btn-width-xl" ng-disabled='!pair.Visibility'
+									data-toggle="modal" data-target="#variant-detail-1"
+									ng-click="$emit('openPairModal', pair, formData.Variants, $index)">More Detail</a></td>
+							<td><a class="btn btn-white" ng-click='pair.Visibility = !pair.Visibility'>
+									<span ng-if='pair.Visibility'>Hide</span>
+									<span ng-if='!pair.Visibility'>Show</span>
+							</a></td>
+						</tr>
 						</tbody>
 					</table>
 				</div>
@@ -83,4 +142,4 @@
 	</div> <!-- end .row -->
 </div> <!-- end #add-product-variation-tab-content -->
 
-<? $this->insert('components/modal-product-variant-detail', ["id" => "variant-detail-1", "header" => "Variant Detail"]) ?>
+<? $this->insert('components/modal-product-variant-detail', ["id" => "variant-detail-1", "model" => "pairModal"]) ?>

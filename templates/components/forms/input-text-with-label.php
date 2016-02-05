@@ -5,15 +5,24 @@ if (isset($size)) $inputSize = "width-field-$size";
 <div class="form-group <?=$form_group_class?>">
 	<div class="width-label"><label class="control-label <?=$label_class?>"><?= $label ?></label></div>
 	<div class="<?= $inputSize ?>">
-		<input type="text" class="form-control <?= $input_class; ?>" placeholder="<?=$placeholder?>" <?=$input_attrs?> />
-		<? if (!empty($right_hint)): ?>		
-			<div class="input-password-eye" <?=$font_class;?>> <?=$right_hint?> </div>
-		<? endif ?>
+		<input 
+
+		<? if(isset($required)): ?>
+		required
+		<? endif; ?>
+		<? if(isset($ng_model)): ?>
+		ng-model="<?=$ng_model?>"
+		<? endif; ?>
+		<? if(isset($name)): ?>
+		name="<?=$name?>"
+		<? endif; ?>
+		
+		type="text" class="form-control <?= $input_class; ?>" placeholder="<?=$placeholder?>" <?=$input_attrs?> />
 		<? if (!empty($hint)): ?>
 			<span class="help-block"><?= $hint ?></span>
 		<? endif ?>
 		<? if (!empty($error_message)): ?>
-			<span class="help-block color-red"><?= $error_message ?></span>
+			<span class="help-block color-red" ng-show="<?=$name?>.$invalid"><?= $error_message ?></span>
 		<? endif ?>
 	</div>
 	<? if (!empty($tooltip)): ?>

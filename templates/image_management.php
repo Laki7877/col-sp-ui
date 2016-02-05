@@ -1,53 +1,63 @@
 <?php $this->layout('layouts/page-with-sidebar', ['title' => 'Account ']) ?>
 
 <?php $this->start('page-body') ?>
-  <div>
-    <? $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => "Successfully save changes. However,your changes won't be online until you published your products." ]) ?>
+  <div ng-controller="ProductImageManagementCtrl">
+   <!-- <? $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => "Successfully save changes. However,your changes won't be online until you published your products." ]) ?>
+     -->
 
-    <? $this->insert('components/page-title-with-buttons', ['text' => 'Image Management'
-      , 'buttons' => [
-        ['link' => '#', 'class' => 'btn-white btn-width-xl', 'attributes' => 'data-toggle="modal" data-target="#image-guideline"', 'name' => 'View Guideline'],
-        ['link' => '#', 'class' => 'btn-blue  btn-width-xl', 'attributes' => '', 'name' => 'Save']
-        ]
-        ]) ?>
-    <? $this->insert('components/search-section-with-page-index', ['serach_placeholder' => 'Search for Admin Accounts', 'optional_class' => 'hide-component']) ?>
-    <div class="filter-section">
-      <div class="filter-container">
-        <span>Filters:</span>
-        <a class="filter-first-option filter-active">All</a>
-        <a class="filter-seperator">Image Missing</a>
-        <a class="filter-seperator">Approved</a>
-        <a class="filter-seperator">Not Approved</a>
-        <a class="filter-seperator">Wait Approval</a>
-        <a class="filter-seperator">Draft</a>
-      </div>
+    <div class="page-header with-border">
+        <h1 class="float-left page-header-title">Image Management</h1>
+        <span class="float-right page-header-action">
+            <a class="btn btn-white btn-width-xl margin-right-10" data-toggle="modal" data-target="#image-guideline">
+              <span class="">View Guideline</span>
+            </a>
+            <a href="#" class="btn btn-blue  btn-width-xl ">
+              <span class="">Save</span>
+            </a>
+        </span>
     </div>
+
+    <div class="row search-section-wrapper">
+      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search Product'"></nc-search>
+    </div>
+    <nc-filter nc-model="params._filter" nc-filter-options="filterOptions"></nc-filter>
+
     <div>
-      <form class="ah-form sticky-mainform-action">
+      <div ng-show="loading" nc-loading="Loading Products.."></div>
+      <form class="ah-form sticky-mainform-action" ng-show="!loading">
         <div class="tab-content">
-          <div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
-            <? $this->insert('partials/image-management-content') ?>
+          <div role="tabpanel" class="tab-pane margin-top-20 active">
+            <div id="image-management-content-page">
+              <div class="row" ng-repeat="product in response.data">
+                <div class="col-xs-12">
+                  <div class="form-section image-management">
+                    <div class="form-section-content">
+                      <div class="content-text">
+                        <div><h4>{{ product.ProductNameEn }}</h4>{{ product.VariantValue }}</div>
+                        <hr/>
+                        <div class="margin-top-5">PID: {{ product.Pid }}</div>
+                        <div class="margin-top-5">Status:</div>
+                        <div class="color-grey"><i class="fa fa-circle-o padding-right-5"></i>Draft</div>
+                      </div>
+                      <div class="picture-container">
+                        <div class="col-xs-12 padding-left-0">
+                          <nc-image-gallery ng-if="product.IsVariant" nc-model="product.VariantImg">
+                          </nc-image-gallery>
+                          <nc-image-gallery ng-if="!product.IsVariant" nc-model="product.MasterImg">
+                        </nc-image-gallery>
+                        </div>
+                      </div>
+                      <div class="drop-zone-container">
+                        <? $this->insert('components/image-dropzone-inline-text', ["id" => "images-management1", 'texts' =>['<i class="fa fa-image fa-3x color-theme"></i>', 'Drop images here', '<a href="#" data-trigger="file" data-target="#images-management1">or select images</a>']]) ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="page-navigation">
-            <span>
-              <i class="fa fa-chevron-left grey-chevron"></i>
-              <span> Page 1 of 1</span>
-              <i class="fa fa-chevron-right padding-right-15 blue-chevron"></i>
-              <span class="view-page-separator">View per page</span>
-              <!-- Split button -->
-              <div class="btn-group dropdown-btn">
-                <button type="button" class="btn btn-default dropdown-text">5</button>
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="caret"></span>
-                  <span class="sr-only">Toggle Dropdown</span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-right">
-                  <li><a href="#">5</a></li>
-                  <li><a href="#">10</a></li>
-                  <li><a href="#">15</a></li>
-                </ul>
-              </div>
-            </span>
+             <nc-pagination nc-model="params" nc-pagination-total="response.total"></nc-pagination>
           </div>  
         </div>
         <div class="add-product-form-action main-form-action full-width-row">
@@ -60,6 +70,7 @@
         </div>
       </form>
     </div>
+
   </div>
  
 <!-- data-toggle="modal" data-target="#import-product"' -->

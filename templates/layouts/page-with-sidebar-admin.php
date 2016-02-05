@@ -9,49 +9,49 @@
 
     <ul class="sub-sidebar" style="display: none;" id="sub-admin-account">
         <li class="sub-sidebar-header">Admin Accounts</li>
-        <li class="item active margin-top-20"><a href="?p=admin_account">View</a></li>
-        <li class="item"><a href="?p=admin_add_account">Add</a></li>
+        <li ng-class="activeUrl('/admin/accounts')" class="item margin-top-20"><a href="/admin/accounts">View</a></li>
+        <li ng-class="activeUrl('/admin/accounts/add')" class="item"><a href="/admin/accounts/add">Add</a></li>
     </ul>
 
     <ul class="sub-sidebar" style="display: none;" id="sub-admin-role">
         <li class="sub-sidebar-header">Admin Roles</li>
-        <li class="item active margin-top-20"><a href="?p=admin_role">View</a></li>
-        <li class="item"><a href="?p=admin_add_role">Add</a></li>
+        <li ng-class="activeUrl('/admin/roles')" class="item margin-top-20"><a href="/admin/roles">View</a></li>
+        <li ng-class="activeUrl('/admin/roles/add')" class="item"><a href="/admin/roles/add">Add</a></li>
     </ul>
 
     <ul class="sub-sidebar" style="display: none;" id="sub-admin-shop-account">
         <li class="sub-sidebar-header">Shop Accounts</li>
-        <li class="item active margin-top-20"><a href="?p=admin_shop_account">View</a></li>
-        <li class="item"><a href="?p=admin_add_shop_account">Add</a></li>
+        <li ng-class="activeUrl('/admin/shops')" class="item margin-top-20"><a href="/admin/shops">View</a></li>
+        <li ng-class="activeUrl('/admin/shops/add')" class="item"><a href="/admin/shops/add">Add</a></li>
     </ul>
 
     <ul class="sub-sidebar" style="display: none;" id="sub-admin-shop-type">
         <li class="sub-sidebar-header">Shop Types</li>
-        <li class="item active margin-top-20"><a href="?p=admin_shop_type">View</a></li>
-        <li class="item"><a href="?p=admin_add_shop_type">Add</a></li>
+        <li ng-class="activeUrl('/admin/shoptypes')" class="item margin-top-20"><a href="/admin/shoptypes">View</a></li>
+        <li ng-class="activeUrl('/admin/shoptypes/add')" class="item"><a href="/admin/shoptypes/add">Add</a></li>
     </ul>
 
     <ul class="sub-sidebar" style="display: none;" id="sub-attribute">
         <li class="sub-sidebar-header">Attribute</li>
-        <li class="item active margin-top-20"><a href="?p=admin_attribute">View</a></li>
-        <li class="item"><a href="?p=admin_add_attribute">Add</a></li>
+        <li ng-class="activeUrl('/admin/attributes')" class="item margin-top-20"><a href="/admin/attributes">View</a></li>
+        <li ng-class="activeUrl('/admin/attributes/add')" class="item"><a href="/admin/attributes/add">Add</a></li>
     </ul>
 
     <ul class="sub-sidebar" style="display: none;" id="sub-attribute-set">
         <li class="sub-sidebar-header">Attribute Set</li>
-        <li class="item active margin-top-20"><a href="?p=admin_attribute_set">View</a></li>
-        <li class="item"><a href="?p=admin_add_attribute_set">Add</a></li>
+        <li ng-class="activeUrl('/admin/attributesets')" class="item margin-top-20"><a href="/admin/attributesets">View</a></li>
+        <li ng-class="activeUrl('/admin/attributesets/add')" class="item"><a href="/admin/attributesets/add">Add</a></li>
     </ul>
 
     <ul class="sub-sidebar" style="display: none;" id="sub-brand">
         <li class="sub-sidebar-header">Brand</li>
-        <li class="item active margin-top-20"><a href="?p=admin_brand">View</a></li>
-        <li class="item"><a href="?p=admin_add_brand">Add</a></li>
+        <li ng-class="activeUrl('/admin/brands')" class="item margin-top-20"><a href="/admin/brands">View</a></li>
+        <li ng-class="activeUrl('/admin/brands/add')" class="item"><a href="/admin/brands/add">Add</a></li>
     </ul>
 
     <ul class="sub-sidebar" style="display: none;" id="sub-category">
         <li class="sub-sidebar-header">Global Category</li>
-        <li class="item active margin-top-20"><a href="?p=admin_category">View</a></li>
+        <li ng-class="activeUrl('/admin/categories')" class="item margin-top-20"><a href="/admin/categories">View</a></li>
     </ul>
 <?php $this->stop() ?>
 

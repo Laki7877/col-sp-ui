@@ -1,9 +1,9 @@
 
 # Created by https://www.gitignore.io/api/phpstorm,osx,linux,windows,composer,bower
-
+*.swp
 ### PhpStorm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
-
+node_modules
 *.iml
 
 ## Directory-based project format:
@@ -113,6 +113,7 @@ $RECYCLE.BIN/
 
 ### Composer ###
 composer.phar
+#/vendor/
 
 # Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
 # You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
@@ -127,7 +128,6 @@ bower_components
 
 .sass-cache
 
-public/assets/css
 
 test/node_modules
 test/backstop_data/bitmaps_test

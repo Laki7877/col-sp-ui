@@ -130,7 +130,9 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Keywords</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Search Tag", "tooltip" => "This is a tooltip text", "input_class" => "select2-init", "size" => "large", "input_attrs" => 'data-tags="true" data-placeholder="Separated by a comma" multiple="multiple"', "options" => []]) ?>
+					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Search Tag", "tooltip" => "This is a tooltip text", 
+							"input_class" => "select2-init-simple select2-init-track", 
+							"size" => "large", "input_attrs" => 'data-tags="true" data-placeholder="Separated by a comma" multiple="multiple"', "options" => []]) ?>
 					<? $this->insert('components/forms/tags-with-label', ["label" => "Suggested Search Tag"]) ?>
 				</div>
 			</div>
@@ -146,7 +148,7 @@
 				<div class="form-section-header"><h2>Shipping Detail</h2></div>
 				<div class="form-section-content">
 					<? $this->insert('components/forms/multiple-radio-multiline', ["label" => "Shipping Method", "choices" => ["Dropship by 3PL", "Central Fulfillment"]]) ?>
-					<? $this->insert('components/forms/input-text-with-label-unit', ["label" => "Preparation Time", "label_class" => "required", "unit" => "Day", "form_group_class" => "margin-top-30"]) ?>
+					<? $this->insert('components/forms/input-text-with-label-unit', ["label" => "Preparation Time", "label_class" => "required", "unit" => "Day", "ng_model" => "PrepareDay", "form_group_class" => "margin-top-30"]) ?>
 					<? $this->insert('components/forms/multiple-input-with-label', ["label" => "Package Dimension", "label_class" => "required", "form_group_class" => "margin-top-30"]) ?>
 					<? $this->insert('components/forms/multiple-input', ["label" => "Weight", "label_class" => "required"]) ?>
 				</div>

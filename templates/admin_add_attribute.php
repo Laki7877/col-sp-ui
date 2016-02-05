@@ -1,110 +1,306 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'User Profile']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attribute']) ?>
 
 <?php $this->start('page-body') ?>
-	<div>
-    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute/Add Attribute", 'link' => "admin_attribute"]) ?>
-    <form class="ah-form sticky-mainform-action margin-top-30">
+	<div ng-controller="AdminAttributeAddCtrl" ng-init="init(<?=$params?>)">
+    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute/" . $title, 'urls' => ['/admin/attributes']]) ?>
+    <? $this->insert('components/modal-warning-leave-page', ['id' => 'leave-page-warning', 'exit' => 'cancel(blocker)', 'save' => 'save()']) ?>
+    <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()"><span ng-bind-html="alert.message"></span></div>
+    <div ng-show="saving" nc-loading="Saving Attribute.."></div>
+    <form ng-show="!saving" name="form" class="ah-form sticky-mainform-action margin-top-30" novalidate>
       <div class="row">
         <div class="col-xs-12">
           <div class="form-section">
             <div class="form-section-header"><h2>Attribute Information</h2></div>
             <div class="form-section-content">
-              <? $this->insert('components/forms/input-text-with-label', ["label" => "Attribute Name (English)", "label_class" => "required", "tooltip" => "The Universal Product Code (UPC) is a barcode symbology (i.e., a specific type of barcode) that is widely used in the USAX.", "size" => "large"]) ?>
-              <? $this->insert('components/forms/input-text-with-label', ["label" => "Display Name (English)", "label_class" => "required", "size" => "large"]) ?>
-              <? $this->insert('components/forms/input-text-with-label', ["label" => "Display Name (Thai)", "label_class" => "required", "size" => "large"]) ?>
+              <div ng-template="common/input/text2"
+                ng-template-options="{
+                  'label': 'Attribute Name (English)',
+                  'labelClass': 'required',
+                  'inputSize': 'large',
+                  'error' : {
+                        'messages': {
+                          'required': 'This is a required field',
+                          'pattern': 'Only letters and numbers allowed'
+                        },
+                        'show': $root.isInvalid(form.AttributeNameEn),
+                        'conditions' : form.AttributeNameEn.$error
+                   }
+                }">
+                <input
+                  class="form-control"
+                  name="AttributeNameEn"
+                  ng-model="formData.AttributeNameEn"
+                  ng-class="{ 'has-error' : $root.isInvalid(form.AttributeNameEn) }"
+                  ng-pattern="/^[A-Za-z0-9_\-\s]+$/"
+                  maxlength="100"
+                  required />
+              </div>
+              <div ng-template="common/input/text2"
+                ng-template-options="{
+                  'label': 'Attribute Name (Thai)',
+                  'labelClass': 'required',
+                  'inputSize': 'large',
+                  'error' : {
+                        'messages': {
+                          'required': 'This is a required field',
+                          'pattern': 'Only letters and numbers allowed'
+                        },
+                        'show': $root.isInvalid(form.AttributeNameTh),
+                        'conditions' : form.AttributeNameTh.$error
+                   }
+                }">
+                <input
+                  class="form-control"
+                  name="AttributeNameTh"
+                  ng-model="formData.AttributeNameTh"
+                  ng-class="{ 'has-error' : $root.isInvalid(form.AttributeNameTh) }"
+                  ng-pattern="/^[ก-๙A-Za-z0-9_\-\s]+$/"
+                  maxlength="100"
+                  required />
+              </div>
+              <div ng-template="common/input/text2"
+                ng-template-options="{
+                  'label': 'Display Name (English)',
+                  'labelClass': 'required',
+                  'inputSize': 'large',
+                  'error' : {
+                        'messages': {
+                          'required': 'This is a required field',
+                          'pattern': 'Only letters and numbers allowed'
+                        },
+                        'show': $root.isInvalid(form.DisplayNameEn),
+                        'conditions' : form.DisplayNameEn.$error
+                   }
+                }">
+                <input
+                  class="form-control"
+                  name="DisplayNameEn"
+                  ng-model="formData.DisplayNameEn"
+                  ng-class="{ 'has-error' : $root.isInvalid(form.DisplayNameEn) }"
+                  ng-pattern="/^[A-Za-z0-9_\-\s]+$/"
+                  maxlength="100"
+                  required />
+              </div>
+              <div ng-template="common/input/text2"
+                ng-template-options="{
+                  'label': 'Display Name (Thai)',
+                  'labelClass': 'required',
+                  'inputSize': 'large',
+                  'error' : {
+                        'messages': {
+                          'required': 'This is a required field',
+                          'pattern': 'Only letters and numbers allowed'
+                        },
+                        'show': $root.isInvalid(form.DisplayNameTh),
+                        'conditions' : form.DisplayNameTh.$error
+                   }
+                }">
+                <input
+                  class="form-control"
+                  name="DisplayNameTh"
+                  ng-model="formData.DisplayNameTh"
+                  ng-class="{ 'has-error' : $root.isInvalid(form.DisplayNameTh) }"
+                  ng-pattern="/^[ก-๙A-Za-z0-9_\-\s]+$/"
+                  maxlength="100"
+                  required />
+              </div>
             </div>
           </div>
 
           <div class="form-section">
             <div class="form-section-header"><h2>Attribute Input</h2></div>
             <div class="form-section-content">
-              <? $this->insert('components/forms/dropdown-with-label', ["label" => "Attribute Input Type", "options" => ["Free Text", "Dropdown", "HTML Box"]]) ?>
-              <? $this->insert('components/forms/input-text-with-label', ["label" => "Attribute Unit (Thai)", "label_class" => "required"]) ?>
-              <? $this->insert('components/forms/input-text-with-label', ["label" => "Attribute Unit (English)", "label_class" => "required"]) ?>
-              <? $this->insert('components/forms/dropdown-with-label', ["label" => "Input Validation", "options" => ["No Validation", "Number Only", "Text Only"]]) ?>
-              <? $this->insert('components/forms/input-text-with-label', ["label" => "If empty, value equals"]) ?>
+              <div ng-template="common/input/dropdown"
+                ng-template-options="{
+                  'label' : 'Attribute Input Type'
+                }">
+                <ui-select ng-model="formData.DataType" search-enabled="false">
+                  <ui-select-match placeholder="- Select Input Type -">
+                      <span ng-bind="$select.selected.name"></span>
+                  </ui-select-match>
+                  <ui-select-choices repeat="item in dataTypeOptions">
+                      <span ng-bind="item.name"></span>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
+              <div ng-switch="formData.DataType.value">
+                <div ng-switch-when="ST">
+                  <div ng-template="common/input/text"
+                    ng-template-options="{
+                      'label': 'Attribute Unit (Thai)'
+                    }">
+                    <input
+                      class="form-control"
+                      name="stAttributeUnitTh"
+                      ng-model="formData.ST.AttributeUnitTh"
+                      ng-class="{ 'has-error' : $root.isInvalid(form.stAttributeUnitTh) }"
+                      maxlength="100"
+                      />
+                  </div>
+                  <div ng-template="common/input/text"
+                    ng-template-options="{
+                      'label': 'Attribute Unit (English)'
+                    }">
+                    <input
+                      class="form-control"
+                      name="stAttributeUnitEn"
+                      ng-model="formData.ST.AttributeUnitEn"
+                      ng-class="{ 'has-error' : $root.isInvalid(form.stAttributeUnitEn) }"
+                      maxlength="100"
+                       />
+                  </div>
+                  <div ng-template="common/input/dropdown"
+                    ng-template-options="{
+                      'label' : 'Input Validation'
+                    }">
+                    <ui-select ng-model="formData.ST.DataValidation" search-enabled="false">
+                      <ui-select-match>
+                          <span ng-bind="$select.selected.name"></span>
+                      </ui-select-match>
+                      <ui-select-choices repeat="item in validationOptions">
+                          <span ng-bind="item.name"></span>
+                      </ui-select-choices>
+                    </ui-select>
+                  </div>
+                  <div ng-template="common/input/text2"
+                    ng-template-options="{
+                      'label': 'If empty, value equals',
+                      'error' : {
+                            'messages': {
+                              'pattern': 'Only letters and numbers allowed'
+                            },
+                            'show': $root.isInvalid(form.ST_DefaultValue),
+                            'conditions' : form.ST_DefaultValue.$error
+                       }
+                    }">
+                    <input
+                      class="form-control"
+                      name="ST_DefaultValue"
+                      ng-model="formData.ST.DefaultValue"
+                      ng-class="{ 'has-error' : $root.isInvalid(form.ST_DefaultValue) }"
+                      ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/"
+                      maxlength="100"
+                      />
+                  </div>
+                </div>
+                <div ng-switch-when="LT">
+                  <div ng-repeat="choice in formData.LT.AttributeValues track by $index" class="form-group">
+                    <div class="width-label"><label class="control-label required" ng-if="$index == 0">
+                      Dropdown Choice</label>
+                    </div>
+                    <div class="width-field-xxl">
+                      <div class="multiple-input">
+                        <div class="input-column input-xxl">
+                          <input name="ltChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (Thai)" ng-class="{'has-error': $root.isInvalid('ltChoiceTh' + $index)}" required/>
+                        </div>
+                        <div class="input-column input-xxl">
+                          <input name="ltChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': $root.isInvalid('ltChoiceEn' + $index)}" required/>
+                        </div>
+                        <i ng-if="$index > 0" class="clickable fa fa-trash fa-2x margin-left-10 color-grey margin-top-5" ng-click="formData.LT.AttributeValues.splice($index,1)"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="width-label"></div>
+                    <div class="width-field-normal  margin-bottom-20">
+                      <a class="like-text form-text" ng-click="formData.LT.AttributeValues.push({})">
+                        <i class="fa fa-plus-circle color-theme"></i>
+                        Add more option
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div ng-switch-when="HB">
+                  <div ng-template="common/input/text2"
+                    ng-template-options="{
+                      'label': 'If empty, value equals',
+                      'error' : {
+                            'messages': {
+                              'pattern': 'Only letters and numbers allowed'
+                            },
+                            'show': $root.isInvalid(form.HB_DefaultValue),
+                            'conditions' : form.HB_DefaultValue.$error
+                       }
+                    }">
+                    <input
+                      class="form-control"
+                      name="HB_DefaultValue"
+                      ng-model="formData.HB.DefaultValue"
+                      ng-class="{ 'has-error' : $root.isInvalid(form.HB_DefaultValue) }"
+                      ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/"
+                      maxlength="100"
+                      />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-
-          <div class="form-section">
-            <div class="form-section-header"><h2>Attribute Input</h2></div>
-            <div class="form-section-content">
-              <? $this->insert('components/forms/dropdown-with-label', ["label" => "Attribute Input Type", "options" => ["Dropdown", "HTML Box", "Free Text"]]) ?>
-              
-              <div class="form-group">
-                <div class="width-label"><label class="control-label required">
-                  Dropdown Choice</label>
-                </div>
-                <div class="width-field-xxl">
-                  <div class="multiple-input">
-                    <div class="input-column input-xxl">
-                      <input type="text" class="form-control" placeholder="Option 1 (Thai)"/>
-                    </div>
-                    <div class="input-column input-xxl">
-                      <input type="text" class="form-control" placeholder="Option 2 (English)"/>
-                    </div>
-                    <i class="clickable fa fa-trash fa-2x margin-left-10 color-grey margin-top-5"></i>
-                  </div>
-                </div>
-              </div>
-
-               <div class="form-group">
-                <div class="width-label">
-                  <label class="control-label">
-                  </label>
-                </div>
-                <div class="width-field-xxl">
-                  <div class="multiple-input">
-                    <div class="input-column input-xxl">
-                      <input type="text" class="form-control" placeholder="Option 1 (Thai)"/>
-                    </div>
-                    <div class="input-column input-xxl">
-                      <input type="text" class="form-control" placeholder="Option 2 (English)"/>
-                    </div>
-                    <i class="clickable fa fa-trash fa-2x margin-left-10 color-grey margin-top-5"></i>
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="width-label"></div>
-                <div class="width-field-normal  margin-bottom-20">
-                  <a class="like-text form-text">
-                    <i class="fa fa-plus-circle color-theme"></i>
-                    Add more option
-                  </a>
-                </div>
-              </div>
-            
-            <? $this->insert('components/forms/input-text-with-label', ["label" => "If empty, value equals"]) ?>
-          </div>
-        </div>
-
-        <div class="form-section">
-          <div class="form-section-header"><h2>Attribute Input</h2></div>
-          <div class="form-section-content">
-            <? $this->insert('components/forms/dropdown-with-label', ["label" => "Attribute Input Type", "options" => ["HTML Box", "Free Text", "Dropdown"]]) ?>
-            <? $this->insert('components/forms/input-text-with-label', ["label" => "If empty, value equals"]) ?>
-          </div>
-        </div>
 
         <div class="form-section">
           <div class="form-section-header"><h2>Variation</h2></div>
           <div class="form-section-content">
-            <? $this->insert('components/forms/dropdown-with-label', ["label" => "Set as Variation", "options" => ["No", "Yes"]]) ?>
-            <? $this->insert('components/forms/dropdown-with-label', ["label" => "Variation Display Type", "options" => ["- Select Display Type -", "Dropdown", "Text Box", "Image Box"]]) ?>
+            <div ng-template="common/input/dropdown"
+              ng-template-options="{
+                'label' : 'Set as Variation'
+              }">
+              <ui-select ng-model="formData.VariantStatus" search-enabled="false">
+                <ui-select-match>
+                    <span ng-bind="$select.selected.name"></span>
+                </ui-select-match>
+                <ui-select-choices repeat="item in boolOptions">
+                    <span ng-bind="item.name"></span>
+                </ui-select-choices>
+              </ui-select>
+            </div>
+            <div
+              ng-show="formData.VariantStatus.value"
+              ng-template="common/input/dropdown"
+              ng-template-options="{
+                'label' : 'Variant Display Type'
+              }">
+              <ui-select ng-model="formData.VariantDataType" search-enabled="false">
+                <ui-select-match placeholder="- Select Display Type -">
+                    <span ng-bind="$select.selected.name"></span>
+                </ui-select-match>
+                <ui-select-choices repeat="item in variantOptions">
+                    <span ng-bind="item.name"></span>
+                </ui-select-choices>
+              </ui-select>
+            </div>
           </div>
         </div>
 
         <div class="form-section">
           <div class="form-section-header"><h2>Search Property</h2></div>
           <div class="form-section-content">
-            <? $this->insert('components/forms/dropdown-with-label', ["label" => "Use in Global <br> Advanced Search", "options" => ["No", "Yes"]]) ?>
-            <? $this->insert('components/forms/dropdown-with-label', ["label" => "Use in Local <br> Advanced Search", "options" => ["No", "Yes"]]) ?>
+            <div ng-template="common/input/dropdown"
+              ng-template-options="{
+                'label' : 'Use in Global <br> Advanced Search'
+              }">
+              <ui-select ng-model="formData.ShowGlobalSearchFlag" search-enabled="false">
+                <ui-select-match>
+                    <span ng-bind="$select.selected.name"></span>
+                </ui-select-match>
+                <ui-select-choices repeat="item in boolOptions">
+                    <span ng-bind="item.name"></span>
+                </ui-select-choices>
+              </ui-select>
+            </div>
+            <div ng-template="common/input/dropdown"
+              ng-template-options="{
+                'label' : 'Use in Local <br> Advanced Search'
+              }">
+              <ui-select ng-model="formData.ShowLocalSearchFlag" search-enabled="false">
+                <ui-select-match>
+                    <span ng-bind="$select.selected.name"></span>
+                </ui-select-match>
+                <ui-select-choices repeat="item in boolOptions">
+                    <span ng-bind="item.name"></span>
+                </ui-select-choices>
+              </ui-select>
+           </div>
           </div>
         </div>
-
-
       </div>
     </div>
     <div class="row">
@@ -115,11 +311,14 @@
     <div class="main-form-action full-width-row">
       <div class="container-fluid">
         <div class="float-right">
-          <a href="#" class="link-btn-plain">Cancel</a>
-          <button class="btn btn-blue btn-width-xl">Save</button>
+          <a class="link-btn-plain" ng-click="cancel()">Cancel</a>
+          <button type="button" class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
         </div>
       </div>
     </div>
 	</form>
+  <form id="success" action="/admin/attributes" method="POST">
+    <input type="hidden" name="success" value="true">
+  </form>
 
 <?php $this->stop() ?>

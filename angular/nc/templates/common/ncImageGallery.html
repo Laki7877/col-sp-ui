@@ -1,0 +1,18 @@
+<div class="margin-top-20" ng-if="model">
+	<ul class="image-management-list">
+		<li class="list-item" ng-repeat="image in images">
+			<div class="image-thumbs-actions">
+				<div class="image-thumbs-img-wrapper">
+					<img ng-src="{{ getSrc(image) }}" />
+				</div>
+				<div ng-if="options.actions.length > 0" class="actions-wrapper" >
+					<a class="action"
+					ng-repeat="action in options.actions"  
+					ng-style="width: {{100 / options.actions.length }}%;"
+					ng-click="call(action, image, model)"><i class="fa" ng-class="{{action.icon}}"></i></a>
+					<!-- fa-search-icon fa-trash -->
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>

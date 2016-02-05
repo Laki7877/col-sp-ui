@@ -1,0 +1,10 @@
+<div class="form-group">
+	<div class="width-label"><label class="control-label" ng-class="options.labelClass" ng-bind-html="options.label"></label></div>
+	<div ng-class="['width-field-' + (options.inputSize || 'normal')]">
+		<ng-transclude ng-class="{ 'has-error-parent' : options.error.show }"></ng-transclude>
+		<span class="help-block color-red" ng-if="options.error" ng-show="options.error.show" ng-repeat="(key, prop) in options.error.conditions">
+			<span ng-bind-html="options.error.messages[key]"></span>
+		</span>
+	</div>
+	<div ng-if="options.tooltip" class="width-field-tooltip no-padding-left"><i class="fa fa-2x fa-question-circle color-grey" data-toggle="tooltip" data-placement="right" title="{{options.tooltip}}"></i></div>
+</div>
