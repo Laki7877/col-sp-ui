@@ -1,7 +1,7 @@
 <?php
     $items = [
         [ "name" => "Home", "icon" => "fa-home" ],
-        [ "name" => "Orders", "icon" => "fa-inbox" ],
+        [ "name" => "Orders", "icon" => "fa-inbox", "link" => "/?p=inventory"  ],
         [ "name" => "Products", "icon" => "fa-tag", "sub_sidebar" => "#sub-sidebar-product" ],
         [ "name" => "Inventory", "icon" => "fa-archive" ],
         [ "name" => "Promotion", "icon" => "fa-bookmark", "link" => "/?p=coupons" ],
