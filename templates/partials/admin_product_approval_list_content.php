@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="form-section">
-				<div class="form-section-header"><h2>Advance Search</h2></div>
+				<div class="form-section-header"><h2>Advanced Search</h2></div>
 				<div class="form-section-content">
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Name", ]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "PID" ]) ?>
