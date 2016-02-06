@@ -28,8 +28,8 @@
 		</div>
 	</div>
 
-  <div class="row product-search-section margin-bottom-20">
-    <div class="col-xs-12">
+  <div class="row margin-bottom-20">
+    <div class="col-xs-12 no-padding">
       <div class="row search-section-wrapper no-margin">
         <div class="search-section section-action">
           <div class="input-group">
@@ -40,8 +40,9 @@
                     <span class="caret margin-left-10"></span>
                 </button>
                 <ul class="dropdown-menu search-product-dropdown">
+                  <?$actions = ['Approve','Not Approve']?>
                   <? foreach ($actions as $action): ?>
-                    <li><a href="#"><?= $action ?></a></li>
+                    <li><a><?= $action ?></a></li>
                   <? endforeach ?>
                 </ul>
               </div>
