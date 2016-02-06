@@ -50,7 +50,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .run(template)
 
 //App init
-.run(['$rootScope', 'storage', '$window', '$location', function($rootScope, storage, $window, $location) {
+.run(['$rootScope', 'storage', '$window', '$location', 'Credential', function($rootScope, storage, $window, $location, Credential) {
 	
 	$rootScope.Profile = storage.getCurrentUserProfile();
 	$rootScope.Imposter = storage.getImposterProfile();
@@ -58,7 +58,23 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 		storage.put('redirect', $window.location.pathname);
 		$window.location.href = "/login";
 	}
+    
+    //Create global logout function
+    $rootScope.logout = function(){
+        if($rootScope.Imposter){
+            return Credential.logoutAs().then(function(){
+                //return to normal flow
+                $window.location.href = "/";
+            }, function(){
+                alert("Fetal error while logging out.");
+            });
+        }
+        
+        Credential.logout();
+        $window.location.href = "/login"        
+    };
 
+    
 	//Create generic form validator functions
 	$rootScope.isInvalid = function(form) {
 		if(angular.isDefined(form) && 
@@ -523,7 +539,7 @@ module.exports = ["$scope", "$controller", "AdminAccountService", "config", func
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
 },{}],6:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "AdminAccountService", "AdminRoleService", function($scope, $controller, AdminAccountService, AdminRoleService) {
+module.exports = ["$scope", "$controller", "AdminAccountService", "AdminRoleService", "Credential", function($scope, $controller, AdminAccountService, AdminRoleService, Credential) {
 	'ngInject';
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -545,6 +561,7 @@ module.exports = ["$scope", "$controller", "AdminAccountService", "AdminRoleServ
 			}
 		}
 	});
+   
 }];
 },{}],7:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AttributeService", "config", function($scope, $controller, AttributeService, config) {
@@ -996,7 +1013,7 @@ module.exports = ["$scope", "$controller", "AdminShopService", "config", functio
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
 },{}],17:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "AdminShopService", "AdminShoptypeService", "config", "Credential", "$rootScope", function($scope, $controller, AdminShopService, AdminShoptypeService, config, Credential, $rootScope) {
+module.exports = ["$scope", "$controller", "AdminShopService", "AdminShoptypeService", "config", "Credential", "$rootScope", "$window", function($scope, $controller, AdminShopService, AdminShoptypeService, config, Credential, $rootScope, $window) {
 	'ngInject';
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -1015,11 +1032,12 @@ module.exports = ["$scope", "$controller", "AdminShopService", "AdminShoptypeSer
 		}
 	});
 
-	$scope.loginAs = function(uid){
-		Credential.loginAs(uid).then(function(){
-			//redirect
-			alert("Waiting for redirect");
-		});
+	$scope.loginAs = function(user){
+		Credential.loginAs(user).then(function(){
+			$window.location.href = "/products";
+		}, function(err){
+            
+        });
 	};
 
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
@@ -3904,6 +3922,10 @@ module.exports = [function () {
         var profile = sessionStorage.getItem('central.seller.portal.auth.imposter');
         return angular.fromJson(profile);
     };
+    
+    service.clearImposterProfile = function () {
+         sessionStorage.removeItem('central.seller.portal.auth.imposter');
+    };
 
     /**
      * Utility method to clear the sessionStorage
@@ -3911,7 +3933,7 @@ module.exports = [function () {
     service.clear = function () {
         sessionStorage.removeItem('central.seller.portal.auth.token');
         sessionStorage.removeItem('central.seller.portal.auth.profile');
-	sessionStorage.removeItem('central.seller.portal.auth.imposter');
+	    sessionStorage.removeItem('central.seller.portal.auth.imposter');
         localStorage.removeItem('central.seller.portal.auth.actions');
         localStorage.removeItem('central.seller.portal.auth.profile');
     };
@@ -6360,11 +6382,18 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 			url: '/Users/Admin/LogoutAs'
 		}).then(function(r){
 			//TODO: actually this needs to know whether its overriding local or session storage
+            storage.clearImposterProfile();
 			storage.storeCurrentUserProfile(r, false);
+            deferred.resolve(r);
 		}, deferred.reject);
 
 		return deferred.promise;
 	};
+    
+    service.logout = function(){
+		storage.clear();
+	};
+
 
 	return service;
 }];
@@ -7346,7 +7375,7 @@ module.exports = function(common) {
 },{}],103:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Sun Feb 07 2016 01:24:10 GMT+0700 (SE Asia Standard Time)
+ * Sun Feb 07 2016 01:30:22 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 

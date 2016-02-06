@@ -1,4 +1,5 @@
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Brand']) ?>
+
 <?php $this->start('page-body') ?>  
   <div ng-controller="AdminBrandAddCtrl" ng-init="init(<?=$params?>)">
     <nc-alert nc-model="alert"></nc-alert>

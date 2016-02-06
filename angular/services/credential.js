@@ -39,11 +39,18 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 			url: '/Users/Admin/LogoutAs'
 		}).then(function(r){
 			//TODO: actually this needs to know whether its overriding local or session storage
+            storage.clearImposterProfile();
 			storage.storeCurrentUserProfile(r, false);
+            deferred.resolve(r);
 		}, deferred.reject);
 
 		return deferred.promise;
 	};
+    
+    service.logout = function(){
+		storage.clear();
+	};
+
 
 	return service;
 }];
