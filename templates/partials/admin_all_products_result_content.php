@@ -102,13 +102,13 @@
             <a class="header-link" href="#"><span>Product Name</span></a>
             <i class="fa fa-caret-down color-grey">
           </th>
-          <th class="">
+          <th class="width_150">
             <a class="header-link" href="#"><span>Shop</span></a>
             <i class="fa fa-caret-down color-grey">
           </th>
           <th class="price-column">
             <a class="header-link" href="#"><span>Price</span></a>
-            <i class="fa fa-caret-up color-grey">
+            <i class="fa fa-caret-down color-grey">
           </th>
           <th class="status-column">
             <a class="header-link" href="#"><span>Status</span></a>
@@ -119,7 +119,7 @@
           <th class="action-column"><a class="header-link" href="#"><span>Action</span></a></th> 
           <th class="modified-column">
             <a class="header-link" href="#"><span class="active-underline">Modified</span></a>
-            <i class="fa fa-caret-up">
+            <i class="fa fa-caret-down">
           </th>
         </tr>
       </thead>
@@ -132,8 +132,8 @@
             <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
           </td>
           <td class="column-text-ellipsis"><a href="#">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</a></td>
-          <td class="">
-            <div>Nike Thailand</div>
+          <td class="column-text-ellipsis">
+            <span class="">Nike Thailand</span>
             <div class="color-dark-grey font-size-12">A1234567</div>
           </td>
           <td class="price-column">9,000,000</td>
@@ -170,9 +170,9 @@
           <td class="display-column">
             <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
           </td>
-          <td><a href="#">Jeansian Men's Slim Fit Long</a></td>
-          <td class="">
-            <div>Nike Thailand</div>
+          <td class="column-text-ellipsis"><a href="#">Jeansian Men's Slim Fit Long</a></td>
+          <td class="column-text-ellipsis">
+            <span class="">Nike Thailand</span>
             <div class="color-dark-grey font-size-12">A1234567</div>
           </td>
           <td class="price-column">
@@ -213,8 +213,8 @@
             <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
           </td>
           <td><a href="#">Power Bank MD Tech Model B02</a></td>
-          <td class="">
-            <div>Nike Thailand</div>
+          <td class="column-text-ellipsis">
+            <span class="">Nike Thailand</span>
             <div class="color-dark-grey font-size-12">A1234567</div>
           </td>
           <td class="price-column">9,000,000</td>
@@ -252,8 +252,8 @@
             <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
           </td>
           <td><a href="#">Power Bank MD Tech Model B02</a></td>
-          <td class="">
-            <div>Nike Thailand</div>
+          <td class="column-text-ellipsis">
+            <span class="">Super store Bangna sdsadsadasdas</span>
             <div class="color-dark-grey font-size-12">A1234567</div>
           </td>
           <td class="price-column">1,000</td>
