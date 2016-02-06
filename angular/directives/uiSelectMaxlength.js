@@ -1,4 +1,5 @@
-module.exports=[function() {
+module.exports=function() {
+	'ngInject';
 	return {
 		restrict: 'A',
 		link: function(scope, elem, attrs) {
@@ -7,4 +8,4 @@ module.exports=[function() {
 			}
 		}
 	}
-}];
+};

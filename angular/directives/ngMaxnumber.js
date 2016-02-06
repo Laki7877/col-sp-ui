@@ -1,4 +1,5 @@
 module.exports = function() {
+	'ngInject';
 	return {
 		restrict: 'A',
 		require: 'ngModel',
