@@ -121,31 +121,32 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 								</div>
 							</div>
 						</div>
-						<div ng-if="id == 0" class="row">
-							<div class="col-xs-12">
-								<div class="form-section">
-									<div class="form-section-header"><h2>Shop Owner Information</h2></div>
-									<div class="form-section-content">
-								      <!-- Name -->
-								      <div ng-template="common/input/text2"
-									ng-template-options="{
-									  'label': 'Name',
-									  'labelClass': 'required',
-									  'error' : {
-										'messages': {
-										'required': 'This is a required field'
-										},
-										'show': $root.isInvalid(form.NameEn),
-										'conditions' : form.NameEn.$error
-										}
-										}">
-										<input
-										class="form-control"
-										name="NameEn"
-										ng-model="formData.ShopOwner.NameEn"
-										ng-class="{ 'has-error' : $root.isInvalid(form.NameEn) }"
-										maxlength="100"
-										required />
+					</div>
+					<div ng-if="id == 0" class="row">
+						<div class="col-xs-12">
+							<div class="form-section">
+								<div class="form-section-header"><h2>Shop Owner Information</h2></div>
+								<div class="form-section-content">
+								    <!-- Name -->
+								    <div ng-template="common/input/text2"
+										ng-template-options="{
+										  'label': 'Name',
+										  'labelClass': 'required',
+										  'error' : {
+											'messages': {
+											'required': 'This is a required field'
+											},
+											'show': $root.isInvalid(form.NameEn),
+											'conditions' : form.NameEn.$error
+											}
+											}">
+											<input
+											class="form-control"
+											name="NameEn"
+											ng-model="formData.ShopOwner.NameEn"
+											ng-class="{ 'has-error' : $root.isInvalid(form.NameEn) }"
+											maxlength="100"
+											required />
 									</div>
 									<!-- Position -->
 									<div ng-template="common/input/text2"
@@ -268,41 +269,41 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 								</div>
 							</div>
 						</div>
-						<div ng-if="id > 0" class="row">
-							<div class="col-xs-12">
-								<div class="form-section">
-									<div class="form-section-header"><h2>Shop Users</h2></div>
-									<div class="form-section-content">
-										<div class="form-group">
-											<table class="table table-hover no-margin"> 
-												<thead> 
-													<tr> 
-														<th>ID</th> 
-														<th>Name</th> 
-														<th>Email</th> 
-														<th>Role</th> 
-														<th>Status</th> 
-														<th>Reset Password</th> 
-														<th class="text-align-center">Action</th> 
-													</tr> 
-												</thead> 
-												<tbody> 
-												<tr ng-repeat="user in formData.Users track by user.UserId"> 
-														<td>{{ user.UserId | leadingzero:2 }}</td> 
-														<td>{{ user.NameEn }}</td> 
-														<td>{{ user.Email }}</td>
-														<td>{{ user.UserGroup[0] }}</td>
-														<td>{{ user.Status | mapDropdown:statusDropdown }}</td>
-														<td class="text-align-center">
-															<a class="btn btn-white btn-width-xl" ng-click="ResetPassword()">Login-As</a>
-														</td> 
-														<td class="text-align-center">
-															<a class="btn btn-white btn-width-xl" ng-click="loginAs(user.UserId)">Login-As</a>
-														</td> 
-													</tr>
-												</tbody>
-											</table>
-										</div>
+					</div>
+					<div ng-if="id > 0" class="row">
+						<div class="col-xs-12">
+							<div class="form-section">
+								<div class="form-section-header"><h2>Shop Users</h2></div>
+								<div class="form-section-content">
+									<div class="form-group">
+										<table class="table table-hover no-margin"> 
+											<thead> 
+												<tr> 
+													<th>ID</th> 
+													<th>Name</th> 
+													<th>Email</th> 
+													<th>Role</th> 
+													<th>Status</th> 
+													<th class="text-align-center">Reset Password</th> 
+													<th class="text-align-center">Action</th> 
+												</tr> 
+											</thead> 
+											<tbody> 
+											<tr ng-repeat="user in formData.Users track by user.UserId"> 
+													<td>{{ user.UserId | leadingzero:2 }}</td> 
+													<td>{{ user.NameEn }}</td> 
+													<td>{{ user.Email }}</td>
+													<td>{{ user.UserGroup[0] }}</td>
+													<td>{{ user.Status | mapDropdown:statusDropdown }}</td>
+													<td class="text-align-center">
+														<a class="btn btn-white btn-width-xl" ng-click="ResetPassword()">Reset</a>
+													</td> 
+													<td class="text-align-center">
+														<a class="btn btn-white btn-width-xl" ng-click="loginAs(user.UserId)">Login-As</a>
+													</td> 
+												</tr>
+											</tbody>
+										</table>
 									</div>
 								</div>
 							</div>

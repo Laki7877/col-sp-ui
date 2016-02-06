@@ -54,7 +54,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 	
 	$rootScope.Profile = storage.getCurrentUserProfile();
 	$rootScope.Imposter = storage.getImposterProfile();
-
+	console.log($rootScope.Profile);
 	if(!$rootScope.Profile && $window.location.pathname != "/login"){
 		storage.put('redirect', $window.location.pathname);
 		$window.location.href = "/login";
@@ -122,6 +122,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 //Services
 .factory('Product', services.product)
 .factory('Image', services.image)
+.factory('ImageService', services.imageService)
 .factory('Category', services.category)
 .factory('Shop', services.shop)
 .factory('LocalCategory', services.localCategory)
@@ -131,6 +132,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .factory('AttributeSet', services.attributeSet)
 .factory('AttributeSetService', services.attributeSetService) //newer version
 .factory('Brand', services.brand)
+.factory('BrandService', services.brandService) //newer version
 .factory('SellerAccountService', services.sellerAccountService)
 .factory('SellerRoleService', services.sellerRoleService)
 .factory('SellerPermissionService', services.sellerPermissionService)

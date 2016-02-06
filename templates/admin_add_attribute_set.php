@@ -36,7 +36,8 @@
               </div>
               <div ng-template="common/input/textarea"
                   ng-template-options="{
-                    'label' : 'Attribute Set Description'
+                    'label' : 'Attribute Set Description',
+                    'inputSize': 'large'
                   }">
                   <textarea class="form-control" ng-model="formData.AttributeSetDescriptionEn" maxlength="500"></textarea>
               </div>
