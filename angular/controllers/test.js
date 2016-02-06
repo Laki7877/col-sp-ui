@@ -55,7 +55,7 @@ module.exports = function($scope, Attribute, util) {
 		$scope.loading = false;
 		$scope.reload = function() {
 			$scope.loading = true;
-			Attribute.getAll(util.ncparams($scope.params))
+			Attribute.getAll($scope.params)
 				.then(function(data) {
 					$scope.list = data;
 				})
