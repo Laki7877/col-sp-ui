@@ -95,7 +95,7 @@
                   'label': 'Meta Keywords',
                   'error' : {
                         'messages': {
-                          'pattern': 'Only letters and numbers allowed'
+                          'pattern': 'Only english letters and numbers allowed'
                           },
                         'show': $root.isInvalid(form.MetaKeywords),
                         'conditions' : form.MetaKeywords.$error

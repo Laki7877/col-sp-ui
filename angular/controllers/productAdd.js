@@ -89,7 +89,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 	    $scope.variationOptionWarning[jth] = [];
 	    if(!item) return;
 	    if(item.length > 30) $scope.variationOptionWarning[jth].push("Variation option must contain 30 characters or less");
-	    if(!item.match(/^[a-zA-Z0-9\s]+$/)) $scope.variationOptionWarning[jth].push("Only letters and numbers allowed");
+	    if(!item.match(/^[a-zA-Z0-9\s]+$/)) $scope.variationOptionWarning[jth].push("Only english letters and numbers allowed");
 
 	    var optlen1 = $scope.attributeOptions[0].options.length;
 	    var optlen2 = $scope.attributeOptions[1].options.length;
@@ -213,7 +213,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 	    Variants: [],
 	    GlobalCategories: [null, null, null],
 	    LocalCategories: [null, null, null],
-	    SEO: { ProductBoostingWeight: 10000 },
+	    SEO: { ProductBoostingWeight: 5000 },
 	    ControlFlags: [],
 	    Keywords: []
     };
