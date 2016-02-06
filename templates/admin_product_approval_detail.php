@@ -7,7 +7,7 @@ $menus = [
 	["id" => "more_option", "name" => 'More Options', 'class' => ''],
 ];
 
-$this->layout('layouts/page-with-sidebar', ['title' => 'Products'])
+$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products'])
 ?>
 
 <?php $this->start('page-body') ?>

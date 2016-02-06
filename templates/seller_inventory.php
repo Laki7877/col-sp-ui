@@ -9,7 +9,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Administration System'])
 			'buttons' => [
 	        	['link' => '?p=seller_inventory_export_import', 'class' => 'btn-blue btn-width-xxl', 'name' => 'Export & Import Inventory']
 	        ] ]) ?>
-		<? $this->insert('components/search-section', ['actions' =>['Approve', 'Unapprove'] ]) ?>
+		<? $this->insert('components/search-section', ['actions' =>['Approve', 'Unapprove'], 'button_optional_class' => 'border_blue', 'optional_button_name' => 'Advanced Search' ]) ?>
 
 		<div>
 			<form class="ah-form sticky-mainform-action">
