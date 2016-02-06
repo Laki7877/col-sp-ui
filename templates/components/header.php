@@ -7,7 +7,7 @@
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown header-font-detail">
         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <span>{{ $root.Profile.User.Email }}</span> 
+          <span>{{ $root.Profile.User.NameEn }}</span> 
           <i class="fa fa-angle-down"></i>
           </a>
           <ul class="dropdown-menu">
@@ -32,5 +32,3 @@
 </nav>
 
 <? $this->insert('components/modal-change-password', ['id' => 'change-password-modal', 'header' => 'Change Password']) ?>
-
-
