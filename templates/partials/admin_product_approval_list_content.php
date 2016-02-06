@@ -89,7 +89,7 @@
           <td class="display-column">
             <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
           </td>
-          <td class="column-text-ellipsis"><a href="#">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</a></td>
+          <td class="column-text-ellipsis"><a href="?p=admin_product_approval_detail">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</a></td>
           <td class="">
             <div>Nike Thailand</div>
             <div class="color-dark-grey font-size-12">A1234567</div>
@@ -136,7 +136,7 @@
           <td class="display-column">
             <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
           </td>
-          <td class="column-text-ellipsis"><a href="#">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</a></td>
+          <td class="column-text-ellipsis"><a href="?p=admin_product_approval_detail">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</a></td>
           <td class="">
             <div>Nike Thailand</div>
             <div class="color-dark-grey font-size-12">A1234567</div>
@@ -183,7 +183,7 @@
           <td class="display-column">
             <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
           </td>
-          <td class="column-text-ellipsis"><a href="#">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</a></td>
+          <td class="column-text-ellipsis"><a href="?p=admin_product_approval_detail">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</a></td>
           <td class="">
             <div>Nike Thailand</div>
             <div class="color-dark-grey font-size-12">A1234567</div>
@@ -230,7 +230,7 @@
           <td class="display-column">
             <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
           </td>
-          <td class="column-text-ellipsis"><a href="#">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</a></td>
+          <td class="column-text-ellipsis"><a href="?p=admin_product_approval_detail">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</a></td>
           <td class="">
             <div>Nike Thailand</div>
             <div class="color-dark-grey font-size-12">A1234567</div>

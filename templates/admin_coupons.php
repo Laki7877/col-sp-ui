@@ -1,10 +1,10 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Administration System']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System']) ?>
 
 <?php $this->start('page-body') ?>
   <div>
-    <? $this->insert('components/page-title-with-buttons', ['text' => "Coupons" , 
+    <? $this->insert('components/page-title-with-buttons', ['text' => "Admin Coupons" , 
       'buttons' => [
-          ['link' => '#', 'class' => 'btn-blue btn-width-xl', 'name' => 'Create Coupon']
+          ['link' => '?p=seller_coupons_detail', 'class' => 'btn-blue btn-width-xl', 'name' => 'Create Coupon']
         ]
     ]) ?>
     <div class="row search-section-wrapper">
@@ -58,7 +58,7 @@
             </td>
            
             <td>
-              <a href="#">SHOE10OFF</a> 
+              <a href="?p=admin_coupons_detail">SHOE10OFF</a> 
             </td>
             <td class="column-text-ellipsis">
               10 off on shoe category (only first 10 customer) fsdfdsfsdfsdfsd
@@ -86,7 +86,7 @@
             </td>
            
             <td>
-              <a href="#">SPLC15OFF</a> 
+              <a href="?p=admin_coupons_detail">SPLC15OFF</a> 
             </td>
             <td class="column-text-ellipsis">
               10 off on shoe category (only first 10 customer) fsdfdsfsdfsdfsd

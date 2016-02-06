@@ -18,6 +18,19 @@
         <li class="item"><a href="/?p=image_management">Product Images</a></li>
     </ul>
 
+    <ul class="sub-sidebar" style="display: none;" id="sub-sidebar-inventory">
+        <li class="sub-sidebar-header">Inventory</li>
+        <li class="item active margin-top-20"><a href="/?p=seller_inventory">View</a></li>
+        <!-- <li class="item"><a href="/?p=add_product">Add</a></li> -->
+        <!-- <li class="item"><a href="/?p=import_product">Import</a></li> -->
+        <!-- <li class="item"><a href="/?p=index">Export</a></li> -->
+    </ul>
+
+    <ul class="sub-sidebar" style="display: none;" id="sub-sidebar-promotion">
+        <li class="sub-sidebar-header">Promotion</li>
+        <li class="item active margin-top-20"><a href="/?p=seller_coupons">Coupons</a></li>
+    </ul>
+
     <ul class="sub-sidebar" style="display: none;" id="sub-sidebar-account">
         <li class="sub-sidebar-header">Account</li>
         <li class="item active margin-top-20"><a href="?p=user_account">User Accounts</a></li>
