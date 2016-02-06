@@ -24,8 +24,7 @@
             <th class="checkbox-column">
                 <input type="checkbox" aria-label="Checkbox for following text input"> 
             </th>
-            
-            <th>
+            <th class="width_120">
               <a class="header-link" href="#"><span>Coupon Code</span></a>
               <i class="fa fa-caret-down color-grey">
             </th>
@@ -42,7 +41,7 @@
             <th class="text-center width_date">
               <a class="header-link" href="#"><span>Expire Date</span></a>
             </th>
-            <th class="text-center">
+            <th class="text-center width_120">
               <a class="header-link" href="#"><span>Status</span></a>
               <i class="fa fa-caret-down color-grey">
             </th>
