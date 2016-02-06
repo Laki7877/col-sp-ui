@@ -12,7 +12,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Administration System'])
 	        	['link' => '#', 'class' => 'btn-blue btn-width-xl', 'name' => 'Add Product']
 	        ]
 	        ]) ?>
-		<? $this->insert('components/search-section', ['actions' =>['Approve', 'Unapprove'] ]) ?>
+		<? $this->insert('components/search-section', ['actions' =>['Approve', 'Unapprove'], 'button_optional_class' => 'border_blue', 'optional_button_name' => 'Advanced Search' ]) ?>
 
 		<div>
 			<form class="ah-form sticky-mainform-action">
