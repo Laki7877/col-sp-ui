@@ -116,6 +116,22 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
             obj.deserialize = function(data) {
                 return data;
             };
+            obj.duplicate = function(id) {
+                return service.makeRequest({
+                    method: 'POST',
+                    url: resourceUri + '/' + id
+                });
+            };
+            obj.visible = function(obj) {
+                return service.makeRequest({
+                    method: 'PUT',
+                    url: resourceUri + '/Visibility',
+                    data: obj,
+                    headers: {
+                        'Content-Type': 'application/json;charset=UTF-8'
+                    }
+                });
+            };
 
             return obj;
         };

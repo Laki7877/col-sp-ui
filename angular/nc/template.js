@@ -48,6 +48,13 @@ angular.module("nc").run(function($templateCache) {  'use strict';
   );
 
 
+  $templateCache.put('common/ncEye',
+    "<a ng-click=toggle()><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon' : !model,\r" +
+    "\n" +
+    "                            'fa fa-eye color-dark-grey eye-icon' : model}\"></i></a>"
+  );
+
+
   $templateCache.put('common/ncFilter',
     "<div class=filter-section><div class=filter-container><span>Filters:</span> <a class=filter-seperator ng-repeat=\"filter in filters\" ng-class=\"{'filter-active': model == filter.value }\" ng-click=select(filter.value)>{{ filter.name }}</a></div></div>"
   );

@@ -13,27 +13,99 @@ module.exports = {
 	},
 	DROPDOWN: {
 		DEFAULT_STATUS_DROPDOWN: [
-		{
-			name: 'Inactive',
-			value: 'NA'
-		},
-		{
-			name: 'Active',
-			value: 'AT'
-		}]
+			{
+				name: 'Inactive',
+				value: 'NA'
+			},
+			{
+				name: 'Active',
+				value: 'AT'
+			}
+		],
+		YES_NO_DROPDOWN: [
+			{
+				name: 'No',
+				value: false
+			},
+			{
+				name: 'Yes',
+				value: true
+			}
+		],
+		VISIBLE_DROPDOWN: [
+			{
+				name: 'Visible',
+				value: true
+			},
+			{
+				name: 'Not Visible',
+				value: false
+			}
+		],
+		DATA_TYPE_DROPDOWN: [
+			{
+				name: 'Free Text',
+				value: 'ST'
+			},
+			{
+				name: 'Dropdown',
+				value: 'LT'
+			},
+			{
+				name: 'HTML Box',
+				value: 'HB'
+			}
+		],
+		VARIANT_DROPDOWN: [
+			{
+				name: 'Image',
+				value: 'IO'
+			},
+			{
+				name: 'Textbox',
+				value: 'TO'
+			},
+			{
+				name: 'Dropdown',
+				value: 'DD'
+			}
+		],
+		VALIDATION_DROPDOWN: [
+			{
+				name: 'No Validation',
+				value: 'NO'
+			},
+			{
+				name: 'Number Only',
+				value: 'NU'
+			},
+			{
+				name: 'Text Only',
+				value: 'TX'
+			},
+			{
+				name: 'Email Address',
+				value: 'EM'
+			},
+			{
+				name: 'Phone Number',
+				value: 'PH'
+			}
+		]
 	},
 	PRODUCT_STATUS: [{
-		name: 'Draft',
-		value: 'DF',
-		color: 'color-grey',
-		icon: 'fa-circle'
-	},
-	{
-		name: 'Wait for Approval',
-		value: 'WA',
-		color: 'color-yellow',
-		icon: 'fa-clock-o'
-	}],
+			name: 'Draft',
+			value: 'DF',
+			color: 'color-grey',
+			icon: 'fa-circle'
+		},
+		{
+			name: 'Wait for Approval',
+			value: 'WA',
+			color: 'color-yellow',
+			icon: 'fa-clock-o'
+		}
+	],
 	DEFAULT_SUCCESS_MESSAGE: 'Your changes have been saved successfully.',
 	DEFAULT_ERROR_MESSAGE: 'Unable to save because required fields are missing or incorrect.', 
 	TITLE: {

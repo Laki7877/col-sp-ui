@@ -131,7 +131,9 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .factory('LocalCategory', services.localCategory)
 .factory('GlobalCategory', services.globalCategory)
 .factory('Attribute', services.attribute)
+.factory('AttributeService', services.attributeService) //newer version
 .factory('AttributeSet', services.attributeSet)
+.factory('AttributeSetService', services.attributeSetService) //newer version
 .factory('Brand', services.brand)
 .factory('SellerAccountService', services.sellerAccountService)
 .factory('SellerRoleService', services.sellerRoleService)

@@ -172,6 +172,78 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
         };
     };
 
+    service.bulkShow = function(rest, id, item, alert, reload) {
+        return {
+            name: 'Show',
+            fn: function(array, cb) {
+                alert.close();
+
+                //Only pass ShopId
+                var array = _.map(array, function(e) { 
+                    var i = _.pick(e, [id]); 
+                    i.Visibility = true;
+                    return i;
+                });
+
+                //Blank array?
+                if(array.length <= 0) {
+                    alert.error('Unable to show. Please select ' + item + ' for this action.');
+                    return;
+                }
+
+                //Delete bulk
+                rest.visible(array)
+                    .then(function() {
+                        alert.success('Changed successful.');
+                        cb();
+                    }, function(err) {
+                        alert.error(common.getError(err));
+                    })
+                    .finally(reload);
+            },
+            confirmation: {
+                title: 'Confirm to show',
+                message: 'Are you sure you want to change visibility of {{model.length}} items?'
+            }
+        };  
+    };
+
+    service.bulkHide = function(rest, id, item, alert, reload) {
+        return {
+            name: 'Hide',
+            fn: function(array, cb) {
+                alert.close();
+
+                //Only pass ShopId
+                var array = _.map(array, function(e) { 
+                    var i = _.pick(e, [id]); 
+                    i.Visibility = false;
+                    return i;
+                });
+
+                //Blank array?
+                if(array.length <= 0) {
+                    alert.error('Unable to show. Please select ' + item + ' for this action.');
+                    return;
+                }
+
+                //Delete bulk
+                rest.visible(array)
+                    .then(function() {
+                        alert.success('Changed successful.');
+                        cb();
+                    }, function(err) {
+                        alert.error(common.getError(err));
+                    })
+                    .finally(reload);
+            },
+            confirmation: {
+                title: 'Confirm to hide',
+                message: 'Are you sure you want to change visibility of {{model.length}} items?'
+            }
+        };  
+    };
+
     //Create action from template
     service.actionView = function(uri, id) {
         return {
@@ -207,6 +279,41 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
                 title: 'Delete',
                 message: 'Are you sure you want to delete selected ' + item + '?'
             }
+        };
+    };
+    //Create action from template
+    service.actionDuplicate = function(rest, id, item, alert, reload)  {
+        return {
+            name: 'Duplicate',
+            fn: function(obj) {
+                alert.close();
+
+                //Delete bulk
+                rest.duplicate(obj[id])
+                    .then(function() {
+                        alert.success('Duplicate successful.');
+                    }, function(err) {
+                        alert.error(common.getError(err));
+                    })
+                    .finally(reload);
+            },
+            confirmation: {
+                title: 'Duplicate',
+                message: 'Are you sure you want to duplicate selected ' + item + '?'
+            }
+        };
+    };
+
+    service.eyeToggle = function(rest, id, alert, reload) {
+        return function(item) {
+            item.Visibility = !item.Visibility;
+            rest.visible([_.pick(item, [id, 'Visibility'])])
+                .then(function() {
+                    //success
+                }, function(err) {
+                    alert.error(common.getError(err));
+                })
+                .finally(reload);
         };
     };
 

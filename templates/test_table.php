@@ -28,8 +28,8 @@
               {{row.AttributeNameEn}}
             </td>
             <td>{{row.DisplayNameEn}}</td>
-            <td>{{row.DataType | mapDropdown:dataTypeOptions }}</td>
-            <td>{{row.VariantStatus | mapDropdown:yesNoOptions }}</td>
+            <td>{{row.DataType | mapDropdown:dataTypeDropdown }}</td>
+            <td>{{row.VariantStatus | mapDropdown:yesNoDropdown }}</td>
             <td>{{row.AttributeSetCount}}</td>
             <td>{{row.UpdatedDt | dateTh}}</td>
             <td><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
