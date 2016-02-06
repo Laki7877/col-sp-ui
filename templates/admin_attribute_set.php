@@ -5,8 +5,8 @@
     <nc-alert nc-model="alert"></nc-alert>
     <? $this->insert('components/page-title-with-one-button', ['text' => 'Attribute Set','button' => 'Add Attribute Set', 'button_class' => 'btn-width-xxxl', 'link' => '/admin/attributesets/add']) ?>
     <div class="row search-section-wrapper">
-      <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="UserId"></nc-bulk>
-      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Attribute Name'"></nc-search>
+      <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="AttributeSetId"></nc-bulk>
+      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Attribute Set Name'"></nc-search>
     </div>
     <nc-filter nc-model="params._filter" nc-filter-options="filterOptions"></nc-filter>
     <nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="params.searchText.length > 0" >
