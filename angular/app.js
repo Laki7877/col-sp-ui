@@ -50,16 +50,32 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .run(template)
 
 //App init
-.run(['$rootScope', 'storage', '$window', '$location', function($rootScope, storage, $window, $location) {
+.run(['$rootScope', 'storage', '$window', '$location', 'Credential', function($rootScope, storage, $window, $location, Credential) {
 	
 	$rootScope.Profile = storage.getCurrentUserProfile();
 	$rootScope.Imposter = storage.getImposterProfile();
-	console.log($rootScope.Profile);
+
 	if(!$rootScope.Profile && $window.location.pathname != "/login"){
 		storage.put('redirect', $window.location.pathname);
 		$window.location.href = "/login";
 	}
+    
+    //Create global logout function
+    $rootScope.logout = function(){
+        if($rootScope.Imposter){
+            return Credential.logoutAs().then(function(){
+                //return to normal flow
+                $window.location.href = "/";
+            }, function(){
+                alert("Fetal error while logging out.");
+            });
+        }
+        
+        Credential.logout();
+        $window.location.href = "/login"        
+    };
 
+    
 	//Create generic form validator functions
 	$rootScope.isInvalid = function(form) {
 		if(angular.isDefined(form) && 
