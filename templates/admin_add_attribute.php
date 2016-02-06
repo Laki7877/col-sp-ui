@@ -1,12 +1,12 @@
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attribute']) ?>
 
-<?php $this->start('page-body') ?>
-	<div ng-controller="AdminAttributeAddCtrl" ng-init="init(<?=$params?>)">
-    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute/" . $title, 'urls' => ['/admin/attributes']]) ?>
-    <? $this->insert('components/modal-warning-leave-page', ['id' => 'leave-page-warning', 'exit' => 'cancel(blocker)', 'save' => 'save()']) ?>
-    <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()"><span ng-bind-html="alert.message"></span></div>
+<?php $this->start('page-body') ?>  
+  <div ng-controller="AdminAttributeAddCtrl" ng-init="init(<?=$params?>)">
+    <nc-alert nc-model="alert"></nc-alert>
+    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute/{{title}}", 'urls' => ['/admin/attributes']]) ?>
+    <div ng-show="loading" nc-loading="Loading Attribute.."></div>
     <div ng-show="saving" nc-loading="Saving Attribute.."></div>
-    <form ng-show="!saving" name="form" class="ah-form sticky-mainform-action margin-top-30" novalidate>
+    <form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
       <div class="row">
         <div class="col-xs-12">
           <div class="form-section">
@@ -20,7 +20,7 @@
                   'error' : {
                         'messages': {
                           'required': 'This is a required field',
-                          'pattern': 'Only letters and numbers allowed'
+                          'pattern': 'Only English letters and numbers allowed'
                         },
                         'show': $root.isInvalid(form.AttributeNameEn),
                         'conditions' : form.AttributeNameEn.$error
@@ -77,7 +77,7 @@
                   name="DisplayNameEn"
                   ng-model="formData.DisplayNameEn"
                   ng-class="{ 'has-error' : $root.isInvalid(form.DisplayNameEn) }"
-                  ng-pattern="/^[A-Za-z0-9_\-\s]+$/"
+                  ng-pattern="/^[A-Za-z0-9_\-\(\)\*\s]+$/"
                   maxlength="100"
                   required />
               </div>
@@ -100,7 +100,7 @@
                   name="DisplayNameTh"
                   ng-model="formData.DisplayNameTh"
                   ng-class="{ 'has-error' : $root.isInvalid(form.DisplayNameTh) }"
-                  ng-pattern="/^[ก-๙A-Za-z0-9_\-\s]+$/"
+                  ng-pattern="/^[ก-๙A-Za-z0-9_\-\(\)\*\s]+$/"
                   maxlength="100"
                   required />
               </div>
@@ -191,10 +191,18 @@
                     <div class="width-field-xxl">
                       <div class="multiple-input">
                         <div class="input-column input-xxl">
-                          <input name="ltChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (Thai)" ng-class="{'has-error': $root.isInvalid('ltChoiceTh' + $index)}" required/>
+                          <input name="ltChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (Thai)" ng-class="{'has-error': $root.isInvalid(form['ltChoiceTh' + $index])}" maxlength="100" required/>
+                          <!-- Required -->
+                          <div class="help-block color-red" ng-show="$root.isInvalid(form['ltChoiceEn' + $index]) || $root.isInvalid(form['ltChoiceTh' + $index])">
+                              <span ng-show="form['ltChoiceTh' + $index].$error.required || form['ltChoiceEn' + $index].$error.required">This is a required field</span>
+                          </div>
+                          <!-- Pattern -->
+                          <div class="help-block color-red" ng-show="$root.isInvalid(form['ltChoiceEn' + $index])">
+                              <span ng-show="form['ltChoiceEn' + $index].$error.pattern">Only English allowed</span>
+                          </div>
                         </div>
                         <div class="input-column input-xxl">
-                          <input name="ltChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': $root.isInvalid('ltChoiceEn' + $index)}" required/>
+                          <input name="ltChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': $root.isInvalid(form['ltChoiceEn' + $index])}" maxlength="100" ng-pattern="/^[^ก-๙]+$/" required/>
                         </div>
                         <i ng-if="$index > 0" class="clickable fa fa-trash fa-2x margin-left-10 color-grey margin-top-5" ng-click="formData.LT.AttributeValues.splice($index,1)"></i>
                       </div>
@@ -302,23 +310,20 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <p class="text-align-right"><span class="color-red"><i class="fa fa-asterisk"></i></span> - Required Field</p>
-      </div>
-    </div>
-    <div class="main-form-action full-width-row">
-      <div class="container-fluid">
-        <div class="float-right">
-          <a class="link-btn-plain" ng-click="cancel()">Cancel</a>
-          <button type="button" class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+      <div class="row">
+        <div class="col-xs-12">
+          <p class="text-align-right"><span class="color-red"><i class="fa fa-asterisk"></i></span> - Required Field</p>
         </div>
       </div>
-    </div>
-	</form>
-  <form id="success" action="/admin/attributes" method="POST">
-    <input type="hidden" name="success" value="true">
-  </form>
+      <div class="main-form-action full-width-row">
+        <div class="container-fluid">
+          <div class="float-right">
+            <a class="link-btn-plain" ng-click="cancel()">Cancel</a>
+            <button type="button" class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 
 <?php $this->stop() ?>

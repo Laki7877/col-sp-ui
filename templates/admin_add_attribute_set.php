@@ -1,13 +1,11 @@
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attribute Set']) ?>
-
-<?php $this->start('page-body') ?>
-	<div ng-controller="AdminAttributeSetAddCtrl" ng-init="init(<?=$params?>)">
-    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute Set/" . $title, 'urls' => ['/admin/attributesets']]) ?>
-    <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()"><span ng-bind-html="alert.message"></span></div>
-    <div ng-show="saving">
-      <img src="/assets/img/loader.gif" width="40"> <small>Saving Attribute Set..</small>
-    </div>
-    <form ng-show="!saving" class="ah-form sticky-mainform-action margin-top-30" name="form" novalidate>
+<?php $this->start('page-body') ?>  
+  <div ng-controller="AdminAttributeSetAddCtrl" ng-init="init(<?=$params?>)">
+    <nc-alert nc-model="alert"></nc-alert>
+    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute Set/{{title}}", 'urls' => ['/admin/attributesets']]) ?>
+    <div ng-show="loading" nc-loading="Loading Attribute Set.."></div>
+    <div ng-show="saving" nc-loading="Saving Attribute Set.."></div>
+    <form ng-show="!saving && !loading" class="ah-form sticky-mainform-action margin-top-30" name="form" novalidate>
       <div class="row">
         <div class="col-xs-12">
           <div class="form-section">
@@ -58,19 +56,31 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Suggested Search Tag</h2></div>
             <div class="form-section-content">
-              <div ng-template="common/input/dropdown"
+              <div ng-template="common/input/text2"
                 ng-template-options="{
-                  'label' : 'Search Tag',
-                  'size' : 'large'
-                 }">
-                <ui-select ng-model="formData.Tags" tagging-tokens=",|ENTER" limit="100" multiple tagging tagging-label="" ui-select-maxlength="30">
-                  <ui-select-match placeholder="Tags separated with a comma">
-                      {{ $item }}
-                  </ui-select-match>
-                  <ui-select-choices repeat="i in tagOptions | exclude:formData.Tags">
-                      {{ i }}
-                  </ui-select-choices>
-                </ui-select>
+                  'label': 'Search Tag',
+                  'inputSize': 'large',
+                  'error' : {
+                    'messages': {
+                      'tagcount': 'Cannot exceed 100 tags',
+                      'taglength': 'Tag must contain 30 characters or less',
+                      'pattern': 'Only letters and numbers'
+                    },
+                    'show': true,
+                    'conditions' :  keywordValidConditions
+                  }
+                }">
+                  <ui-select ng-model="formData.Tags" 
+                  on-select="onKeywordAdded($item, $model)"
+                  multiple 
+                  tagging tagging-tokens=",|ENTER" tagging-label="">
+                    <ui-select-match placeholder="Separate tags with comma (or enter)">
+                    {{$item}}
+                    </ui-select-match>
+                    <ui-select-choices repeat="item in tagOptions | exclude:formData.Tags">  
+                    {{item}}
+                    </ui-select-choices>
+                  </ui-select>
               </div>
             </div>
           </div>
@@ -96,9 +106,6 @@
           </div>
         </div>
       </div>
-  	</form>
-  <form id="success" action="/admin/attributesets" method="POST">
-    <input type="hidden" name="success" value="true">
-  </form>
-
+    </form>
+  </div>
 <?php $this->stop() ?>

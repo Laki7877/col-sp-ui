@@ -109,10 +109,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 			'active': $window.location.pathname == url
 		};
 	};
-	$rootScope.test = function(form) {
-		console.log(form);
-		return false;
-	}
 }])
 //Configuration
 .value('config', config)

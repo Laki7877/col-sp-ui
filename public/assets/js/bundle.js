@@ -109,10 +109,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 			'active': $window.location.pathname == url
 		};
 	};
-	$rootScope.test = function(form) {
-		console.log(form);
-		return false;
-	}
 }])
 //Configuration
 .value('config', config)
@@ -402,7 +398,7 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 						$scope.alert.success(util.saveAlertSuccess(options.item, options.url));
 						$scope.form.$setPristine(true);
 					}, function(err) {
-						$scope.alert.error(common.getError(err));
+						$scope.alert.error(common.getErorr(err));
 					})
 					.finally(function() {
 						$scope.saving = false;
@@ -569,92 +565,24 @@ module.exports = ["$scope", "$controller", "AttributeService", "config", functio
 },{}],8:[function(require,module,exports){
 var angular = require('angular');
 
-module.exports = ['$scope', '$window', 'Alert', 'Attribute', 'Blocker', function($scope, $window, Alert, Attribute, Blocker) {
-	$scope.form = {};
-	$scope.formData = {};
-	$scope.alert = new Alert();
-	$scope.dataTypeOptions = Attribute.dataTypeOptions;
-	$scope.variantOptions = Attribute.variantOptions;
-	$scope.boolOptions = Attribute.boolOptions;
-	$scope.validationOptions = Attribute.validationOptions;
-	$scope.formDataSerialized = {};
-	$scope.edit = 0;
+module.exports = ["$scope", "$controller", "AttributeService", "config", function($scope, $controller, AttributeService, config) {
+	'ngInject';
+	$scope.dataTypeOptions = config.DROPDOWN.DATA_TYPE_DROPDOWN;
+	$scope.variantOptions = config.DROPDOWN.VARIANT_DROPDOWN;
+	$scope.boolOptions = config.DROPDOWN.YES_NO_DROPDOWN;
+	$scope.validationOptions = config.DROPDOWN.VALIDATION_DROPDOWN;
 
-	//Block normal href flow
-	$window.onbeforeunload = function (e) {
-
-		if(!$scope.form.$dirty){
-			//not dirty
-			return null;
+	//Inherit from abstract ctrl
+	$controller('AbstractAddCtrl', {
+		$scope: $scope,
+		options: {
+			id: 'AttributeId',
+			url: '/admin/attributes',
+			item: 'Attribute',
+			service: AttributeService,
+			init: function(scope) {	}
 		}
-
-		var message = "Your changes will not be saved.",
-		e = e || window.event;
-		// For IE and Firefox
-		if (e) {
-		  e.returnValue = message;
-		}
-
-		// For Safari
-		return message;
-	};	
-
-	$scope.init = function(params) {
-		if(angular.isDefined(params)) {
-			//edit mode
-			$scope.edit = params.id;
-			Attribute.get($scope.edit).then(function(data) {
-				$scope.formData = Attribute.deserialize(data);
-			});
-		} else {
-			//create mode!
-			$scope.edit = 0;
-			$scope.formData = Attribute.generate();
-		}
-	};
-	$scope.cancel= function(location) {
-		if(angular.isDefined(location)) {
-			$window.location.href = location.href;
-		} else {
-			$window.location.href = '/admin/attributes';
-		}
-	};
-	$scope.save = function() {
-		if($scope.saving) {
-			return;
-		}
-		$scope.form.$setSubmitted();
-		if($scope.form.$invalid) {
-			$scope.alert.error('Please fill out the required fields.');
-			return;
-		}
-
-		$scope.alert.close();
-		$scope.formDataSerialized = Attribute.serialize($scope.formData);
-		if ($scope.edit) {
-			$scope.saving = true;
-			Attribute.update($scope.edit, $scope.formDataSerialized).then(function(data) {
-				$scope.alert.success('Your changes has been saved successfully. View <a href="/admin/attributes">Attribute List</a>');
-				$scope.saving = false;
-				$scope.form.$setPristine(true);
-			}, function(err) {
-				$scope.saving = false;
-				$scope.alert.error('Unable to save because required fields are missing or incorrect.');
-			});
-		}
-		else {
-			$scope.saving = true;
-			Attribute.create($scope.formDataSerialized).then(function(data) {
-				$scope.alert.success('Your changes has been saved successfully. View <a href="/admin/attributes">Attribute List</a>');
-				$scope.edit = data.AttributeId;				
-				$scope.saving = false;
-				$scope.form.$setPristine(true);
-			}, function(err) {
-				$scope.saving = false;
-				$scope.alert.error('Unable to save because required fields are missing or incorrect.');
-			});
-		}
-	};
+	});
 }];
 },{"angular":116}],9:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AttributeSetService", "util", "config", function($scope, $controller, AttributeSetService, util, config) {
@@ -678,101 +606,50 @@ module.exports = ["$scope", "$controller", "AttributeSetService", "util", "confi
 	});
 }]
 },{}],10:[function(require,module,exports){
-var angular = require('angular');
-
-module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', function($scope, Alert, AttributeSet, Attribute, $window) {
-	$scope.form = {};
-	$scope.formData = {};
-	$scope.tagOptions = [];
-	$scope.alert = new Alert();
+module.exports = ["$scope", "$controller", "AttributeSetService", "AttributeService", "config", function($scope, $controller, AttributeSetService, AttributeService, config) {
+	'ngInject';
+	$scope.visibleOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
 	$scope.attributeOptions = [];
-	$scope.visibleOptions = AttributeSet.visibleOptions;
-	$scope.formDataSerialized = {};
-	$scope.edit = 0;
-	$scope.saving = false;
-	$scope.test = function(i) {
-		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);
-	};
+	$scope.tagOptions = [];
+    $scope.onKeywordAdded = function(item, model){
+		$scope.keywordValidConditions = {};
+		if(!item) return $scope.formData.Tags.pop();
 
-	$window.onbeforeunload = function (e) {
-		if(!$scope.form.$dirty){
-			//not dirty
-			return null;
+		if($scope.formData.Tags.length > 20){
+			$scope.keywordValidConditions['tagcount'] = true;
 		}
 
-		var message = "Your changes will not be saved.",
-		e = e || window.event;
-		// For IE and Firefox
-		if (e) {
-		  e.returnValue = message;
+		if(item.length > 30){
+			$scope.keywordValidConditions['taglength'] = true;
 		}
 
-		// For Safari
-		return message;
-	};
-	
-	$scope.loadAttribute = function() {
-		Attribute.getAll().then(function(data) {
-			$scope.attributeOptions = data;
-		});
-	};
-	$scope.init = function(params) {
-		if(angular.isDefined(params)) {
-			//edit mode
-			$scope.edit = params.id;
-			AttributeSet.get($scope.edit).then(function(data) {
-				$scope.formData = AttributeSet.deserialize(data);
-				console.log($scope.formData);
-			});
-		} else {
-			//create mode!
-			$scope.edit = 0;
-			$scope.formData = AttributeSet.generate();
-		}
-		$scope.loadAttribute();
-	};
-	$scope.cancel= function() {
-		$window.location.href = '/admin/attributesets';
-	};
-	$scope.save = function() {
-		if($scope.saving) {
-			return;
-		}
-		
-		$scope.form.$setSubmitted();
-		if($scope.form.$invalid) {
-			$scope.alert.error('Please fill out the required fields.');
-			return;
+		if(!item.match(/^[a-zA-Z0-9ก-ฮ\s\-]+$/)){
+			$scope.keywordValidConditions['pattern'] = true;
 		}
 
-		$scope.alert.close();
-		$scope.formDataSerialized = AttributeSet.serialize($scope.formData);
-		if ($scope.edit) {
-			$scope.saving = true;
-			AttributeSet.update($scope.edit, $scope.formDataSerialized).then(function(data) {
-				$scope.alert.success('Your changes has been saved successfully. View <a href="/admin/attributesets">Attribute Set List</a>');
-				$scope.saving = false;
-				$scope.form.$setPristine(true);
-			}, function(err) {
-				$scope.saving = false;
-				$scope.alert.error('Unable to save because required fields are missing or incorrect.');
-			});
-		}
-		else {
-			$scope.saving = true;
-			AttributeSet.create($scope.formDataSerialized).then(function(data) {
-				$scope.alert.success('Your changes has been saved successfully. View <a href="/admin/attributesets">Attribute Set List</a>');
-				$scope.edit = data.AttributeSetId;				
-				$scope.saving = false;
-				$scope.form.$setPristine(true);
-			}, function(err) {
-				$scope.saving = false;
-				$scope.alert.error('Unable to save because required fields are missing or incorrect.');
-			});
+		if(Object.keys($scope.keywordValidConditions).length > 0){
+			//if there is error, revert
+			$scope.formData.Tags.pop();
 		}
 	};
-}];
-},{"angular":116}],11:[function(require,module,exports){
+	$controller('AbstractAddCtrl', {
+		$scope: $scope,
+		options: {
+			id: 'AttributeSetId',
+			url: '/attributesets',
+			item: 'Attribute Set',
+			service: AttributeSetService,
+			init: function(scope) {		
+				//Get all available roles
+				AttributeService.listAll()
+					.then(function(data) {
+						scope.attributeOptions = data;
+					});
+			}
+		}
+	});
+}]
+},{}],11:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope','util', 'config', 'Brand', 'Alert', '$window', function($scope, util, config, Brand, Alert, $window){
@@ -1458,24 +1335,24 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
     $scope.onKeywordAdded = function(item, model){
 
     	$scope.keywordValidConditions = {};
-	if(!item) return $scope.formData.Keywords.pop();
+		if(!item) return $scope.formData.Keywords.pop();
 
-	if($scope.formData.Keywords.length > 20){
-		$scope.keywordValidConditions['tagcount'] = true;
-	}
+		if($scope.formData.Keywords.length > 20){
+			$scope.keywordValidConditions['tagcount'] = true;
+		}
 
-	if(item.length > 30){
-		$scope.keywordValidConditions['taglength'] = true;
-	}
+		if(item.length > 30){
+			$scope.keywordValidConditions['taglength'] = true;
+		}
 
-	if(!item.match(/^[a-zA-Z0-9ก-ฮ\s\-]+$/)){
-		$scope.keywordValidConditions['pattern'] = true;
-	}
+		if(!item.match(/^[a-zA-Z0-9ก-ฮ\s\-]+$/)){
+			$scope.keywordValidConditions['pattern'] = true;
+		}
 
-	if(Object.keys($scope.keywordValidConditions).length > 0){
-		//if there is error, revert
-		$scope.formData.Keywords.pop();
-	}
+		if(Object.keys($scope.keywordValidConditions).length > 0){
+			//if there is error, revert
+			$scope.formData.Keywords.pop();
+		}
     }
 
     $scope.onKeywordRemoved = function(item, model){
@@ -7366,7 +7243,7 @@ module.exports = function(common) {
 },{}],100:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Sat Feb 06 2016 17:59:48 GMT+0700 (SE Asia Standard Time)
+ * Sat Feb 06 2016 21:52:49 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 

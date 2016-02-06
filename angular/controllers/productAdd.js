@@ -43,24 +43,24 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
     $scope.onKeywordAdded = function(item, model){
 
     	$scope.keywordValidConditions = {};
-	if(!item) return $scope.formData.Keywords.pop();
+		if(!item) return $scope.formData.Keywords.pop();
 
-	if($scope.formData.Keywords.length > 20){
-		$scope.keywordValidConditions['tagcount'] = true;
-	}
+		if($scope.formData.Keywords.length > 20){
+			$scope.keywordValidConditions['tagcount'] = true;
+		}
 
-	if(item.length > 30){
-		$scope.keywordValidConditions['taglength'] = true;
-	}
+		if(item.length > 30){
+			$scope.keywordValidConditions['taglength'] = true;
+		}
 
-	if(!item.match(/^[a-zA-Z0-9ก-ฮ\s\-]+$/)){
-		$scope.keywordValidConditions['pattern'] = true;
-	}
+		if(!item.match(/^[a-zA-Z0-9ก-ฮ\s\-]+$/)){
+			$scope.keywordValidConditions['pattern'] = true;
+		}
 
-	if(Object.keys($scope.keywordValidConditions).length > 0){
-		//if there is error, revert
-		$scope.formData.Keywords.pop();
-	}
+		if(Object.keys($scope.keywordValidConditions).length > 0){
+			//if there is error, revert
+			$scope.formData.Keywords.pop();
+		}
     }
 
     $scope.onKeywordRemoved = function(item, model){

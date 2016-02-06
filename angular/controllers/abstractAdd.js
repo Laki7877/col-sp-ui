@@ -75,7 +75,7 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 						$scope.alert.success(util.saveAlertSuccess(options.item, options.url));
 						$scope.form.$setPristine(true);
 					}, function(err) {
-						$scope.alert.error(common.getError(err));
+						$scope.alert.error(common.getErorr(err));
 					})
 					.finally(function() {
 						$scope.saving = false;
