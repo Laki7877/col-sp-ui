@@ -54,7 +54,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 	
 	$rootScope.Profile = storage.getCurrentUserProfile();
 	$rootScope.Imposter = storage.getImposterProfile();
-
 	if(!$rootScope.Profile && $window.location.pathname != "/login"){
 		storage.put('redirect', $window.location.pathname);
 		$window.location.href = "/login";
@@ -165,6 +164,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)
+.directive('ngPermission', directives.ngPermission)
 .directive('ngDelegate', directives.ngDelegate)
 .directive('ngCkeditor', directives.ngCkeditor)
 .directive('ngSlideToggle', directives.ngSlideToggle)

@@ -1,4 +1,5 @@
-module.exports = function($rootScope, $animate) {
+module.exports = function($rootScope, $parse, $animate) {
+  'ngInject';
   return {
     multiElement: true,
     transclude: 'element',
@@ -8,10 +9,23 @@ module.exports = function($rootScope, $animate) {
     $$tlb: true,
     link: function($scope, $element, $attr, ctrl, $transclude) {
         var block, childScope, previousElements, value;
+        var parse = $parse($attr.ngPermission);
+
         $rootScope.$watch('Profile', function (obj) {
-          if(_.isUndefined(obj)) {
+          //Check permission existence
+          if(!_.isUndefined(obj) && !_.isUndefined(obj.Permission)){
+            value = parse(_.fromPairs(_.map(obj.Permission, function(e) {
+              return [e.Permission, true];
+            })));
+
+            if(_.isUndefined(value)) {
+              value = false;
+            }
+          } else {
             value = false;
           }
+
+          //COPIED FROM NG-IF
           if (value) {
             if (!childScope) {
               $transclude(function(clone, newScope) {
@@ -43,6 +57,8 @@ module.exports = function($rootScope, $animate) {
               block = null;
             }
           }
+        //END OF COPY
+        //DON"T ASK ME WHY
         });
     }
   }
