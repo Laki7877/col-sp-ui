@@ -80,7 +80,7 @@
 						'label': 'Meta Keywords',
 						'error' : {
 						'messages': {
-							'pattern': 'Only letters and numbers allowed'
+							'pattern': 'Only english letters and numbers allowed'
 						},
 						'show': $root.isInvalid(addProductForm.SEO_MetaKeywords),
 						'conditions' : addProductForm.SEO_MetaKeywords.$error
@@ -96,7 +96,7 @@
 						/>
 					</div>
 
-					<div ng-template="common/input/text2"
+					<!--<div ng-template="common/input/text2"
 						ng-template-options="{
 						'label': 'Product URL Key (Thai)',
 						'error' : {
@@ -115,7 +115,7 @@
 						ng-model="formData.SEO.ProductUrlKeyTh"
 						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_ProductUrlKeyTh) }"
 						/>
-					</div>
+					</div>-->
 
 					<div ng-template="common/input/text2"
 						ng-template-options="{

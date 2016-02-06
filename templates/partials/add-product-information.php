@@ -92,7 +92,7 @@
 					'error' : {
 					'messages': {
 					'required': 'This is a required field',
-					'pattern': 'Only letters and numbers allowed'
+					'pattern': 'Only english letters and numbers allowed'
 					},
 					'show': $root.isInvalid(addProductForm.MasterVariant_ProductNameEn),
 					'conditions' : addProductForm.MasterVariant_ProductNameEn.$error
@@ -113,7 +113,7 @@
 					'label': 'SKU',
 					'error' : {
 					'messages': {
-					'pattern': 'Only letters and numbers allowed'
+					'pattern': 'Only english letters and numbers allowed'
 					},
 					'show': $root.isInvalid(addProductForm.MasterVariant_Sku),
 					'conditions' : addProductForm.MasterVariant_Sku.$error
@@ -134,7 +134,7 @@
 					'label': 'UPC',
 					'error' : {
 					'messages': {
-					'pattern': 'Only letters and numbers allowed'
+					'pattern': 'Only english letters and numbers allowed'
 					},
 					'show': $root.isInvalid(addProductForm.MasterVariant_Upc),
 					'conditions' : addProductForm.MasterVariant_Upc.$error
@@ -242,7 +242,7 @@
 					'formGroupClass' : 'margin-top-30',
 					'error' : {
 					'messages': {
-					'pattern': 'Only letters and numbers allowed'
+					'pattern': 'Only thai letters and numbers allowed'
 					},
 					'show': $root.isInvalid(addProductForm.MasterVariant_DescriptionShortTh),
 					'conditions' : addProductForm.MasterVariant_DescriptionShortTh.$error
@@ -267,7 +267,7 @@
 					'formGroupClass' : 'margin-top-30',
 					'error' : {
 					'messages': {
-					'pattern': 'Only letters and numbers allowed'
+					'pattern': 'Only english letters and numbers allowed'
 					},
 					'show': $root.isInvalid(addProductForm.MasterVariant_DescriptionShortEn),
 					'conditions' : addProductForm.MasterVariant_DescriptionShortEn.$error
@@ -541,7 +541,7 @@
 									'pattern': 'Only numbers and decimals allowed'
 									},
 									'show': $root.isInvalid(addProductForm.MasterVariant_Height),
-									'conditions' : addProductForm.MasterVariant_Length.$error
+									'conditions' : addProductForm.MasterVariant_Height.$error
 									}
 									}">
 									<input
@@ -590,11 +590,43 @@
 				</div>
 
 
-				<? $this->insert('components/forms/multiple-input', ["label" => "Weight",
-				"ng_model_unit" => "formData.MasterVariant.WeightUnit",
-				"ng_model" => "formData.MasterVariant.Weight",
-				"label_class" => "required"])
-				?>
+                <div class="form-group">
+                    <div class="width-label"><label class="control-label required">Weight</label></div>
+                    <div class="width-field-xxl">
+                        <div class="multiple-input">
+                            
+                            <div ng-template="common/input/text-column"
+									ng-template-options="{
+                                        'error' : {
+                                            'messages': {
+                                                'required': 'This is a required field',
+                                                'pattern': 'Only numbers and decimals allowed'
+                                            },
+                                        'show': $root.isInvalid(addProductForm.MasterVariant_Weight),
+                                        'conditions' : addProductForm.MasterVariant_Weight.$error
+                                        }
+									}">
+									<input type="text" 
+                                    name="MasterVariant_Weight"
+                                    ng-required="onPublishing"
+                                    ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Weight) }"
+                                    class="form-control" 
+                                    ng-pattern="/^\d+(\.\d{1,2})?$/"
+                                    ng-model="formData.MasterVariant.Weight" />
+						    </div>
+                                
+                            <div class="input-column select input-xl">
+                                <div class="ah-select2-dropdown">
+                                    <select class="form-control" ng-model="formData.MasterVariant.WeightUnit">
+                                        <option value="G"> Grams </option>
+                                        <option value="KG"> Kilograms </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
 
 			</div>

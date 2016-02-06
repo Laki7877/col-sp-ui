@@ -19,7 +19,7 @@
                   'error' : {
                         'messages': {
                           'required': 'This is a required field',
-                          'pattern': 'Only letters and numbers allowed'
+                          'pattern': 'Only english letters and numbers allowed'
                         },
                         'show': $root.isInvalid(form.AttributeSetNameEn),
                         'conditions' : form.AttributeSetNameEn.$error

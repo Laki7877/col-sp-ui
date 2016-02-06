@@ -51,7 +51,7 @@
 									'labelClass': 'required',
 									'error' : {
 									'messages': {
-										'pattern': 'Only letters and numbers allowed'
+										'pattern': 'Only english letters and numbers allowed'
 									},
 									'show': $root.isInvalid(addProductForm.Modal_ProductNameEn),
 									'conditions' : addProductForm.Modal_ProductNameEn.$error
