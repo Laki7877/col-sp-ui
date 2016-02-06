@@ -13,6 +13,6 @@
       <li ng-permission="!EditProduct">Should see (!EditProduct)</li>
       <li ng-permission="EditProduct">Should not see (EditProduct)</li>
       <li ng-permission="Add Product && EditProduct">Should not see (AddProduct && EditProduct)</li>
-    </ol
+    </ol>
   </div>
 <?php $this->stop() ?>
