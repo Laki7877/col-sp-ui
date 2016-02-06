@@ -1,4 +1,4 @@
-<div id="add-product-more-option-tab-content">
+<div id="inventory-tab-content">
 	
 	<div class="row">
 		<div class="col-xs-12">
@@ -83,18 +83,19 @@
           <td class="text-right">
             <span class="">
               <span>2</span>
-              <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" 
-              data-content="
-                <div><span class='col-xs-8 padding-left-0 padding-bottom-5'>In Stock</span><input class='text-right col-xs-4' /></div>
-                <div><span class='col-xs-8 padding-left-0 padding-bottom-5'>Defect</span><span class='text-right col-xs-4'>199</span></div>
-                <div><span class='col-xs-8 padding-left-0 padding-bottom-5'>On Hold</span><span class='text-right col-xs-4'>199</span></div>
-                <div><span class='col-xs-8 padding-left-0 padding-bottom-5 border_modal'>Reserved</span><span class='text-right col-xs-4 border_modal'>199</span></div>
-                <div><span class='col-xs-8 padding-left-0 available_inventory'>Available</span><span class='text-right col-xs-4 available_inventory '>199</span></div>
-                <div class='text-center'>
-                  <button class='btn btn-blue btn-width-100 text-center'>Save</button>
+              <span class='popover-markup'> 
+                <i  class='trigger fa fa-caret-down color-dark-grey'></i> 
+                <div class="content hide">
+                    <span class='col-xs-8 padding-left-0 margin-bottom-15 margin-top-10'>In Stock</span><input class='margin-top-10 text-right col-xs-4' />
+                    <span class='col-xs-8 padding-left-0 margin-bottom-15'>Defect</span><span class='text-right col-xs-4'>5</span>
+                      <div><span class='col-xs-8 padding-left-0 margin-bottom-15'>On Hold</span><span class='text-right col-xs-4'>7</span></div>
+                      <div><span class='col-xs-8 padding-left-0 margin-bottom-15 border_modal'>Reserved</span><span class='text-right col-xs-4 border_modal'>2</span></div>
+                      <div><span class='col-xs-8 padding-left-0 available_inventory'>Available</span><span class='text-right col-xs-4 available_inventory '>3</span></div>
+                      <div class='text-center'>
+                      <button class='btn btn-blue btn-width-100 text-center'>Save</button>
+                    </div>  
                 </div>
-                ">
-              </i>
+              </span>
             </span>
           </td>
           <td class="width_action_wide text-center">
@@ -126,18 +127,19 @@
           <td class="text-right">
             <span class="">
               <span class="color-red">2</span>
-              <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" 
-              data-content="
-                <div><span class='col-xs-8 padding-left-0 padding-bottom-5'>In Stock</span><input class='text-right col-xs-4' /></div>
-                <div><span class='col-xs-8 padding-left-0 padding-bottom-5'>Defect</span><span class='text-right col-xs-4'>199</span></div>
-                <div><span class='col-xs-8 padding-left-0 padding-bottom-5'>On Hold</span><span class='text-right col-xs-4'>199</span></div>
-                <div><span class='col-xs-8 padding-left-0 padding-bottom-5 border_modal'>Reserved</span><span class='text-right col-xs-4 border_modal'>199</span></div>
-                <div><span class='col-xs-8 padding-left-0 available_inventory'>Available</span><span class='text-right col-xs-4 available_inventory '>199</span></div>
-                <div class='text-center'>
-                  <button class='btn btn-blue btn-width-100 text-center'>Save</button>
+              <span class='popover-markup'> 
+                <i  class='trigger fa fa-caret-down color-dark-grey'></i> 
+                <div class="content hide">
+                    <span class='col-xs-8 padding-left-0 margin-bottom-15 margin-top-10'>In Stock</span><input class='margin-top-10 text-right col-xs-4' />
+                    <span class='col-xs-8 padding-left-0 margin-bottom-15'>Defect</span><span class='text-right col-xs-4'>5</span>
+                      <div><span class='col-xs-8 padding-left-0 margin-bottom-15'>On Hold</span><span class='text-right col-xs-4'>7</span></div>
+                      <div><span class='col-xs-8 padding-left-0 margin-bottom-15 border_modal'>Reserved</span><span class='text-right col-xs-4 border_modal'>2</span></div>
+                      <div><span class='col-xs-8 padding-left-0 available_inventory'>Available</span><span class='text-right col-xs-4 available_inventory '>3</span></div>
+                      <div class='text-center'>
+                      <button class='btn btn-blue btn-width-100 text-center'>Save</button>
+                    </div>  
                 </div>
-                ">
-              </i>
+              </span>
             </span>
           </td>
           <td class="width_action_wide text-center">
@@ -182,8 +184,14 @@
 
 
 <script type="text/javascript">
-  $('.testpop').parent().on('clicked', function(e) {
-    e.stopPropagation(); 
-    // alert('sdsa');
+  $('.popover-markup>.trigger').popover({
+    html: true,
+    placement: "bottom",
+    title: function () {
+        return $(this).parent().find('.head').html();
+    },
+    content: function () {
+        return $(this).parent().find('.content').html();
+    }
   });
 </script>
