@@ -61,7 +61,7 @@
             <a class="header-link" href="#"><span>Product Name</span></a>
             <i class="fa fa-caret-down color-grey">
           </th>
-          <th class="">
+          <th class="width_150">
             <a class="header-link" href="#"><span>Shop</span></a>
             <i class="fa fa-caret-down color-grey">
           </th>
@@ -90,8 +90,8 @@
             <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
           </td>
           <td class="column-text-ellipsis"><a href="?p=admin_product_approval_detail">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</a></td>
-          <td class="">
-            <div>Nike Thailand</div>
+          <td class="column-text-ellipsis">
+            <span>Nike Thailand</span>
             <div class="color-dark-grey font-size-12">A1234567</div>
           </td>
           <td class="live-column">
@@ -137,8 +137,8 @@
             <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
           </td>
           <td class="column-text-ellipsis"><a href="?p=admin_product_approval_detail">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</a></td>
-          <td class="">
-            <div>Nike Thailand</div>
+          <td class="column-text-ellipsis">
+            <span>Nike Thailand</span>
             <div class="color-dark-grey font-size-12">A1234567</div>
           </td>
           <td class="live-column">
@@ -184,8 +184,8 @@
             <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
           </td>
           <td class="column-text-ellipsis"><a href="?p=admin_product_approval_detail">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</a></td>
-          <td class="">
-            <div>Nike Thailand</div>
+          <td class="column-text-ellipsis">
+            <span>Nike Thailand</span>
             <div class="color-dark-grey font-size-12">A1234567</div>
           </td>
           <td class="live-column">
@@ -231,8 +231,8 @@
             <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
           </td>
           <td class="column-text-ellipsis"><a href="?p=admin_product_approval_detail">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</a></td>
-          <td class="">
-            <div>Nike Thailand</div>
+          <td class="column-text-ellipsis">
+            <span>Super Store Bangna saddasdasdsadsa</span>
             <div class="color-dark-grey font-size-12">A1234567</div>
           </td>
           <td class="live-column">
