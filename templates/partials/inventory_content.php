@@ -51,15 +51,15 @@
             <a class="header-link" href="#"><span>Product Name</span></a>
             <i class="fa fa-caret-down color-grey">
           </th>
-          <th class="">
+          <th class="width_150">
             <a class="header-link" href="#"><span class="active-underline">Product ID</span></a>
             <i class="fa fa-caret-down color-grey">
           </th>
-          <th class="">
+          <th class="width_150">
             <a class="header-link" href="#"><span>SKU</span></a>
             <i class="fa fa-caret-down color-grey">
           </th>
-          <th class="text-right">
+          <th class="text-right width_150">
             <a class="header-link" href="#"><span>Available</span></a>
             <i class="fa fa-caret-down color-grey">
           </th>
