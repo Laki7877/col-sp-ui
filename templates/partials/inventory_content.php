@@ -52,7 +52,7 @@
             <i class="fa fa-caret-down color-grey">
           </th>
           <th class="">
-            <a class="header-link" href="#"><span>Product ID</span></a>
+            <a class="header-link" href="#"><span class="active-underline">Product ID</span></a>
             <i class="fa fa-caret-down color-grey">
           </th>
           <th class="">
@@ -83,8 +83,9 @@
           <td class="text-right">
             <span class="">
               <span>2</span>
-              <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                <div><span class='col-xs-8 padding-left-0 padding-bottom-5'>In Stock</span><span class='text-right col-xs-4 border_full'>199</span></div>
+              <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" 
+              data-content="
+                <div><span class='col-xs-8 padding-left-0 padding-bottom-5'>In Stock</span><input class='text-right col-xs-4' /></div>
                 <div><span class='col-xs-8 padding-left-0 padding-bottom-5'>Defect</span><span class='text-right col-xs-4'>199</span></div>
                 <div><span class='col-xs-8 padding-left-0 padding-bottom-5'>On Hold</span><span class='text-right col-xs-4'>199</span></div>
                 <div><span class='col-xs-8 padding-left-0 padding-bottom-5 border_modal'>Reserved</span><span class='text-right col-xs-4 border_modal'>199</span></div>
@@ -92,7 +93,8 @@
                 <div class='text-center'>
                   <button class='btn btn-blue btn-width-100 text-center'>Save</button>
                 </div>
-                "></i>
+                ">
+              </i>
             </span>
           </td>
           <td class="width_action_wide text-center">
@@ -113,7 +115,10 @@
           <td class="display-column">
             <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
           </td>
-          <td class="column-text-ellipsis"><a href="#">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</a></td>
+          <td class="column-text-ellipsis">
+            <a href="#">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</a>
+            <div class="color-dark-grey font-size-12">Blue / Small</div>
+          </td>
           <td class="">
             <div>IV002321</div>
           </td>
@@ -121,8 +126,9 @@
           <td class="text-right">
             <span class="">
               <span class="color-red">2</span>
-              <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                <div><span class='col-xs-8 padding-left-0 padding-bottom-5'>In Stock</span><span class='text-right col-xs-4 border_full'>199</span></div>
+              <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" 
+              data-content="
+                <div><span class='col-xs-8 padding-left-0 padding-bottom-5'>In Stock</span><input class='text-right col-xs-4' /></div>
                 <div><span class='col-xs-8 padding-left-0 padding-bottom-5'>Defect</span><span class='text-right col-xs-4'>199</span></div>
                 <div><span class='col-xs-8 padding-left-0 padding-bottom-5'>On Hold</span><span class='text-right col-xs-4'>199</span></div>
                 <div><span class='col-xs-8 padding-left-0 padding-bottom-5 border_modal'>Reserved</span><span class='text-right col-xs-4 border_modal'>199</span></div>
@@ -130,7 +136,8 @@
                 <div class='text-center'>
                   <button class='btn btn-blue btn-width-100 text-center'>Save</button>
                 </div>
-                "></i>
+                ">
+              </i>
             </span>
           </td>
           <td class="width_action_wide text-center">
@@ -147,7 +154,6 @@
       </tbody>
     </table>
   </div>
-
 
   <div class="page-navigation">
     <span>
@@ -173,3 +179,11 @@
   </div>
   
 </div>
+
+
+<script type="text/javascript">
+  $('.testpop').parent().on('clicked', function(e) {
+    e.stopPropagation(); 
+    // alert('sdsa');
+  });
+</script>
