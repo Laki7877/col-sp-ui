@@ -1,7 +1,5 @@
-var angular = require('angular');
-
 //TODO: maybe merge this with user service? (doesnt exist yet, but probably exists in poon's local)
-module.exports = ['common', '$base64', 'storage', '$q', function(common, $base64, storage, $q) {
+module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(common, $base64, storage, $q, $rootScope) {
     'use strict';
 
 	var service = {};

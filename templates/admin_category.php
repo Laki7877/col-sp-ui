@@ -98,7 +98,8 @@
 								                  'labelClass': 'required',
 								                  'error' : {
 								                        'messages': {
-								                          'required': 'This is a required field'
+								                          'required': 'This is a required field',
+								                          'pattern': 'Only English allowed'
 								                        },
 								                        'show': $root.isInvalid(editingForm.NameEn),
 								                        'conditions' : editingForm.NameEn.$error
@@ -109,6 +110,7 @@
 												 name="NameEn"
 												 ng-model="editingCategory.NameEn"
 												 ng-class="{ 'has-error' : $root.isInvalid(editingForm.NameEn) }"
+												 ng-pattern="/^[^ก-๙]+$/"
 												 maxlength="100"
 												 required />
 							                </div>
@@ -117,7 +119,7 @@
 						                        'label': 'URL (Eng)',
 						                        'error' : {
 						                              'messages': {
-						                                'pattern': 'Only letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'
+						                                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'
 						                                },
 						                              'show': $root.isInvalid(editingForm.UrlKeyEn),
 						                              'conditions' : editingForm.UrlKeyEn.$error
