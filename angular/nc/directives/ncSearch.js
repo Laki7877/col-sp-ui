@@ -6,14 +6,14 @@ angular.module('nc')
 			scope: {
 				model: '=ncModel',
 				placeholder: '=ncSearchPlaceholder',
-				callback: '=ncSearchEvent'
+				event: '=ncSearchEvent'
 			},
 			template: $templateCache.get('common/ncSearch'),
 			link: function(scope) {
-				scope.callback = scope.callback || function() { return true };
+				scope.event = scope.event || function() { return true };
 				scope.searchText = '';
 				scope.callback = function() {
-					if(!scope.callback()) return;
+					if(!scope.event()) return;
 					scope.model = scope.searchText;
 				}
 			}
