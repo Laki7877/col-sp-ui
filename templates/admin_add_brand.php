@@ -21,6 +21,7 @@
                   'error' : {
                         'messages': {
                           'required': 'This is a required field',
+                          'pattern': 'Only English allowed'
                           },
                         'show': $root.isInvalid(form.BrandNameEn),
                         'conditions' : form.BrandNameEn.$error
@@ -31,6 +32,7 @@
                   name="BrandNameEn"
                   ng-model="formData.BrandNameEn"
                   ng-class="{ 'has-error' : $root.isInvalid(form.BrandNameEn) }"
+                  ng-pattern="/^[^ก-๙]$/"
                   maxlength="100"
                   required />
               </div>
@@ -95,7 +97,6 @@
                   'label': 'Meta Keywords',
                   'error' : {
                         'messages': {
-                          'pattern': 'Only english letters and numbers allowed'
                           },
                         'show': $root.isInvalid(form.MetaKeywords),
                         'conditions' : form.MetaKeywords.$error
@@ -105,29 +106,9 @@
                   class="form-control"
                   name="MetaKeywords"
                   ng-model="formData.MetaKeywords"
-                  ng-pattern="/^[A-Za-z0-9\s]+$/"
                   ng-class="{ 'has-error' : $root.isInvalid(form.MetaKeywords) }"
                   maxlength="300"
-                  />
-              </div>
-              <div ng-template="common/input/text2"
-                ng-template-options="{
-                  'label': 'Brand URL Key (Thai)',
-                  'error' : {
-                        'messages': {
-                          'pattern': 'Only letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'
-                          },
-                        'show': $root.isInvalid(form.SEO_ProductUrlKeyTh),
-                        'conditions' : form.SEO_ProductUrlKeyTh.$error
-                   }
-                }">
-                <input
-                  class="form-control"
-                  name="SEO_ProductUrlKeyTh"
-                  ng-model="formData.SEO.ProductUrlKeyTh"
-                  ng-pattern="/^[A-Za-z0-9_\-]+$/"
-                  ng-class="{ 'has-error' : $root.isInvalid(form.SEO_ProductUrlKeyTh) }"
-                  maxlength="300"
+                  placeholder="Keywords seperated by comma"
                   />
               </div>
               <div ng-template="common/input/text2"
@@ -135,7 +116,7 @@
                   'label': 'Brand URL Key (English)',
                   'error' : {
                         'messages': {
-                          'pattern': 'Only letters, numbers,  &quot;- &quot;, and  &quot;_&quot; allowed. Space is not allowed'
+                          'pattern': 'Only English letters, numbers,  &quot;- &quot;, and  &quot;_&quot; allowed. Space is not allowed'
                           },
                         'show': $root.isInvalid(form.SEO_ProductUrlKeyEn),
                         'conditions' : form.SEO_ProductUrlKeyEn.$error

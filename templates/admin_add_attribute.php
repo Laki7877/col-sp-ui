@@ -66,7 +66,7 @@
                   'error' : {
                         'messages': {
                           'required': 'This is a required field',
-                          'pattern': 'Only english letters and numbers allowed'
+                          'pattern': 'Only English letters and numbers allowed'
                         },
                         'show': $root.isInvalid(form.DisplayNameEn),
                         'conditions' : form.DisplayNameEn.$error
@@ -77,7 +77,7 @@
                   name="DisplayNameEn"
                   ng-model="formData.DisplayNameEn"
                   ng-class="{ 'has-error' : $root.isInvalid(form.DisplayNameEn) }"
-                  ng-pattern="/^[A-Za-z0-9_\-\(\)\*\s]+$/"
+                  ng-pattern="/^[A-Za-z0-9_\-\(\)\*\s\.]+$/"
                   maxlength="100"
                   required />
               </div>
@@ -100,7 +100,7 @@
                   name="DisplayNameTh"
                   ng-model="formData.DisplayNameTh"
                   ng-class="{ 'has-error' : $root.isInvalid(form.DisplayNameTh) }"
-                  ng-pattern="/^[ก-๙A-Za-z0-9_\-\(\)\*\s]+$/"
+                  ng-pattern="/^[ก-๙A-Za-z0-9_\-\(\)\*\s\.]+$/"
                   maxlength="100"
                   required />
               </div>

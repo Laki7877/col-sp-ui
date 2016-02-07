@@ -71,14 +71,16 @@
                     'conditions' :  keywordValidConditions
                   }
                 }">
-                  <ui-select ng-model="formData.Tags" 
+                  <ui-select 
+                  ng-model="formData.Tags" 
                   on-select="onKeywordAdded($item, $model)"
                   multiple 
-                  tagging tagging-tokens=",|ENTER" tagging-label="">
+                  tagging tagging-tokens=",|ENTER" 
+                  tagging-label="">
                     <ui-select-match placeholder="Separate tags with comma (or enter)">
                     {{$item}}
                     </ui-select-match>
-                    <ui-select-choices repeat="item in tagOptions | exclude:formData.Tags">  
+                    <ui-select-choices repeat="item in tagOptions">  
                     {{item}}
                     </ui-select-choices>
                   </ui-select>

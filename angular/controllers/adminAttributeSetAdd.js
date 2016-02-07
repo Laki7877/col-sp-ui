@@ -7,7 +7,7 @@ module.exports = function($scope, $controller, AttributeSetService, AttributeSer
 		$scope.keywordValidConditions = {};
 		if(!item) return $scope.formData.Tags.pop();
 
-		if($scope.formData.Tags.length > 20){
+		if($scope.formData.Tags.length > 100){
 			$scope.keywordValidConditions['tagcount'] = true;
 		}
 

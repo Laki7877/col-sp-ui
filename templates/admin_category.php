@@ -154,6 +154,7 @@
                         						ng-pattern="/^\d+(\.\d{1,})?$/"
 						                        ng-class="{ 'has-error' : $root.isInvalid(editingForm.Commission) }"
 						                        maxlength="20"
+						                        required
 						                        />
 						                    </div>
 										</div>

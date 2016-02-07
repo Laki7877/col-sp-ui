@@ -11,6 +11,9 @@ module.exports = function($scope, $controller, BrandService, ImageService) {
 		$scope.alert.error('Your brand cannot have more than 1 image');
 		return false;
 	};
+	$scope.onFail = function() {
+		$scope.alert.error('Error uploading your image, please try again');
+	};
 
 	//Events
 	$scope.$on('delete', function(e, item, arr, indx, uploader){
@@ -35,11 +38,7 @@ module.exports = function($scope, $controller, BrandService, ImageService) {
 			item: 'Brand',
 			service: BrandService,
 			onLoad: function(scope, load) {
-				if(load) {
-					ImageService.assignUploaderEvents(scope.uploader, scope.formData.BrandImages, 1, scope.customImageQueueHandler);
-				} else {
-					ImageService.assignUploaderEvents(scope.uploader, scope.formData.BrandImages, 1, scope.customImageQueueHandler);
-				}
+				ImageService.assignUploaderEvents(scope.uploader, scope.formData.BrandImages, scope.customImageQueueHandler, scope.onFail);
 			},
 			onSave: function(scope) {
 				if(scope.formData.BrandImages.length == 0) {
