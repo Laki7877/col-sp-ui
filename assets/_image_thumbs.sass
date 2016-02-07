@@ -1,0 +1,57 @@
+@mixin image-thumbs($width: 150px, $all-height: 185px)
+	// $all-height: 185px
+	// $width: 150px
+	$border-size: 1px
+	$action-height: 35px
+	$max-image-height: $all-height - $action-height
+	$image-width: $width - (2 * $border-size)
+	$image-height: $max-image-height - (2 * $border-size)
+	$action-height: $all-height - $max-image-height
+	$action-button-height: 20px
+	$action-padding: ($action-height - $action-button-height) / 2
+
+	width: $width
+	border: $border-size solid $color-grey
+	background-color: $color-light-blue
+	@include border-radius(3px)
+
+	.image-thumbs-img-wrapper
+		width: $image-width
+		height: $image-height
+		position: relative
+		overflow: hidden
+
+		> img
+			min-width: 100%
+			min-height: 100%
+			position: absolute
+			left: 50%
+			top: 50%
+			@include translate(-50%, -50%)
+
+	.actions-wrapper
+		width: 100%
+		padding-top: $action-padding
+		padding-bottom: $action-padding
+		border-top: $border-size solid $color-grey
+		height: $action-height - $border-size
+		@extend .clearfix
+
+		.action
+			display: block
+			text-align: center
+			float: left
+			color: $color-dark-grey
+			.fa
+				font-size: $action-button-height
+
+		&.actions-2 .action
+			width: 50%
+		&.actions-3 .action
+			width: 33.33%
+		&.actions-4 .action
+			width: 25%
+
+
+.image-thumbs-actions
+	+image-thumbs

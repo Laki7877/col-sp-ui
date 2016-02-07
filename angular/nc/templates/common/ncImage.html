@@ -1,0 +1,12 @@
+<li class="list-item">
+	<div class="image-thumbs-actions">
+		<div class="image-thumbs-img-wrapper">
+			<img ng-src="{{ model.ImageUrlEn.length > 0 && model.ImageUrlEn  || '/assets/img/loader.gif' }}" />
+		</div>
+		<div ng-if="actions.length > 0" class="actions-wrapper" ng-style="width: {{100 / actions.length}}%;">
+			<a ng-repeat="action in options.actions" class="action" 
+			ng-click="action.fn(model, parent, $index)"><i class="fa" ng-class="{{action.icon}}"></i></a>
+			<!-- fa-search-icon fa-trash -->
+		</div>
+	</div>
+</li>
