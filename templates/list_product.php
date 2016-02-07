@@ -33,7 +33,7 @@
       <form ng-submit="applySearch()" class="search-section section-search">
         <div class="input-group">
           <input type="text" class="form-control input-search-icon search-box" 
-          ng-model="searchText" placeholder="Search by SKU, Product Name" aria-describedby="basic-addon2">
+          ng-model="searchText" placeholder="Search for Product Name, PID, SKU" aria-describedby="basic-addon2">
           <span class="input-group-btn">
             <button class="btn btn-white">Search</button>
           </span>
