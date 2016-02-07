@@ -53,7 +53,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 			$scope.keywordValidConditions['taglength'] = true;
 		}
 
-		if(!item.match(/^[a-zA-Z0-9ก-ฮ\s\-]+$/)){
+		if(!item.match(/^[a-zA-Z0-9ก-๙\s\-]+$/)){
 			$scope.keywordValidConditions['pattern'] = true;
 		}
 

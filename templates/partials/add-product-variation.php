@@ -108,6 +108,30 @@
 								ng-pattern="/^[0-9A-Za-z]+$/"
 								ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }"
 								ng-model="pair.Sku" />
+                                
+                                <div ng-template="common/input/text-td"
+                                    ng-template-options="{
+                                    'label': 'Sale Price',
+                                    'error' : {
+                                    'messages': {
+                                    'min': 'Sale price must be lower than the original price',
+                                    'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
+                                    },
+                                    'show': $root.isInvalid(addProductForm.MasterVariant_SalePrice),
+                                    'conditions' : addProductForm.MasterVariant_SalePrice.$error
+                                    }
+                                    }">
+                                    <input
+                                    ng-disabled="enableProductVariations == 'enable'"
+                                    ng-pattern="/^\d+(\.\d{1,2})?$/"
+                                    class="form-control width-field-normal"
+                                    maxlength="20"
+                                    name="MasterVariant_SalePrice"
+                                    ng-model="formData.MasterVariant.SalePrice"
+                                    ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_SalePrice) }"
+                                    />
+                                </div>
+                                
 							</td>
 							<td><input type="text"
 								ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_OriginalPrice{{$index}}) }"
