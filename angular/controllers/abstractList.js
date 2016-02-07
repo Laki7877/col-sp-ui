@@ -1,7 +1,17 @@
 module.exports = function($scope, $window, NcAlert, util, options) {
 	'ngInject';
 	var a = _.includes(['a','e','i','o','u'], _.lowerCase(options.item.charAt(0))) ? 'an' : 'a';
-	$scope.reload = function() {
+	$scope.reload = function(newObj, oldObj) {
+
+		if(!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
+			if(newObj.searchText !== oldObj.searchText) {
+				$scope.params._offset = 0;
+			}
+
+			if(newObj._filter !== oldObj._filter) {
+				$scope.params._offset = 0;
+			}
+		}
 		$scope.loading = true;
 		options.service.list($scope.params)
 			.then(function(data) {

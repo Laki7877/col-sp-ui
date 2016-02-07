@@ -28,7 +28,7 @@ module.exports = function($scope, $controller, AttributeSetService, AttributeSer
 		$scope: $scope,
 		options: {
 			id: 'AttributeSetId',
-			url: '/attributesets',
+			url: '/admin/attributesets',
 			item: 'Attribute Set',
 			service: AttributeSetService,
 			init: function(scope) {		
