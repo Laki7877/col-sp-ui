@@ -534,8 +534,13 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 						BId = null;
 				}
 
-			    //Load Attribute Set (edit mode only, in add mode AttributeSet is not set)
-			    if (ivFormData.AttributeSet && ivFormData.AttributeSet.AttributeSetId) {
+				var kpair = new VariantPair({
+					AttributeId: $scope.attributeOptions[0].Attribute.AttributeId,
+				    ValueEn: A
+				}, {
+					AttributeId: BId,
+				    ValueEn: B
+				});
 
 				    $scope.pageState.load('Indexing AttributeSet');
 				    var idx = $scope.availableAttributeSets.map(function (o) {
@@ -739,6 +744,58 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 					$scope.alert.validationFailed = true;
 				return;
 			}
+
+			$scope.alert.reset();
+			cleanData();
+			console.log("Publishing with Status = ", Status);
+			try {
+				var apiRequest = Product.serialize($scope.formData);
+				Product.publish(apiRequest, Status).then(function (res) {
+					if (res.ProductId) {
+						$scope._loading.state = false;
+						$scope.alert.success = true;
+						$scope.formData.ProductId = res.ProductId;
+						$scope.formData.MasterVariant.Pid = res.MasterVariant.Pid;
+						$scope.addProductForm.$setPristine(true)
+					}else{
+						$scope._loading.state = false;
+						$scope.alert.failure = true;
+						$scope.alert.failure_message = res.message || res.Message;
+						$scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
+					} 
+				}, function (er) {
+					$scope._loading.state = false;
+					$scope.alert.failure = true;
+					$scope.alert.failure_message = er.Message || er.message;
+					$scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
+					console.log('publish failure', er);
+				});
+
+			} catch (ex) {
+				$scope._loading.state = false;
+				$scope.alert.failure = true;
+				$scope.alert.failure_message = ex.message;
+				$scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
+				console.log('publish failure', ex);
+				return;
+			}
+		};
+
+
+		$scope.uploader = ImageService.getUploader('/ProductImages', {
+			queueLimit: QUEUE_LIMIT
+		});
+
+		$scope.uploader.filters.push({
+			'name': 'enforceMaxFileSize',
+			'fn': function(item){
+				return item.size <= MAX_FILESIZE;
+			}
+		});
+
+		$scope.uploader360 = ImageService.getUploader('/ProductImages', {
+			queueLimit: QUEUE_LIMIT_360
+		});
 
 			    $scope.pageState.load('Downloading Category Tree..');
 			    //Load Global Cat
