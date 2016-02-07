@@ -15,12 +15,13 @@
 
 						<ui-select ng-model="formData.RelatedProducts" 
 						multiple limit="10">
-							<ui-select-match placeholder="Separate tags with comma (or enter)">
-								<span>{{ $item.ProductNameEn }} ({{$item.Pid}})</span>
+							<ui-select-match placeholder="Search by Product Name or PID">
+								<span>{{ $item.ProductNameEn }}</span>
 							</ui-select-match>
-							<ui-select-choices repeat="item in (availableRelatedProducts) track by item.ProductId" 
+							<ui-select-choices repeat="item in (availableRelatedProducts | exclude: formData.RelatedProducts : 'ProductId') track by item.ProductId" 
+                            
 							refresh="refreshRelatedProducts($select.search)" refresh-delay="1">
-								{{ item.ProductNameEn }} ({{item.Pid}})
+								{{ item.ProductNameEn }}
 							</ui-select-choices>
 						</ui-select>
 					</div>
