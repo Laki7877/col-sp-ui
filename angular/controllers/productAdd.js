@@ -151,6 +151,8 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 		    kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
 		    kpair.Display = $scope.availableVariantDisplayOption[0];
 		    kpair.Visibility = true;
+            kpair.DimensionUnit = "MM";
+            kpair.WeightUnit = "G";
 
 		    if (kpair.text in vHashSet) {
 			    //Replace with value from vHashSet
