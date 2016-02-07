@@ -260,6 +260,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
     $scope.notReady = true;
 
     $scope.applySearch = function () {
+        $scope.tableParams.page = 0;
         $scope.tableParams.searchText = $scope.searchText;
     };
 

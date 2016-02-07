@@ -91,7 +91,6 @@
 						placeholder="Keywords separated by comma"
 						class="form-control width-field-normal"
 						name="SEO_MetaKeywords"
-						ng-pattern="/^[0-9A-Za-z,\s]+$/"
 						ng-model="formData.SEO.MetaKeywords"
 						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaKeywords) }"
 						/>
