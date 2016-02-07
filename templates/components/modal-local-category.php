@@ -1,6 +1,7 @@
 <div class="modal fade" tabindex="-1" role="dialog" id="<?= $id ?>">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
+        <div class="margin-top-30"><div ng-show="alert2.show" uib-alert template-url="common/alert" type="{{ alert2.type }}" close="alert2.close()"><span ng-bind-html="alert2.message"></span></div></div>
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h3 class="modal-title"><?=$header?></h3>
@@ -12,7 +13,6 @@
               <div class="form-section">
                 <div class="form-section-header"><h2>Local Category Detail</h2></div>
                 <div class="form-section-content modal-custom">
-                    <div ng-show="alert2.show" uib-alert template-url="common/alert" type="{{ alert2.type }}" close="alert2.close()" ng-bind-html="alert2.message"></div>
                     <div ng-template="common/input/text2"
                         ng-template-options="{
                           'label': 'Category Name (Thai)',

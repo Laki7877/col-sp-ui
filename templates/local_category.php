@@ -48,6 +48,6 @@
       	<div ng-if="loading">
           <? $this->insert('components/table-loading', ['text' => 'Loading...']) ?>
       	</div>
-	<? $this->insert('components/modal-local-category', ['id' => 'local-category-detail', 'ng_model' => 'editingCategory']) ?>
+	<? $this->insert('components/modal-local-category', ['id' => 'local-category-detail', 'ng_model' => 'editingCategory', 'header' => 'Local Category Detail']) ?>
 	</div>
 <?php $this->stop() ?>

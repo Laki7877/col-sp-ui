@@ -58,12 +58,12 @@
 		<div class="modal fade" tabindex="-1" role="dialog" id="modal-category-detail">
 			<div class="modal-dialog modal-xl">
 				<div class="modal-content">
+        			<div class="margin-top-30"><div ng-show="alert2.show" uib-alert template-url="common/alert" type="{{ alert2.type }}" close="alert2.close()"><span ng-bind-html="alert2.message"></span></div></div>
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						<h3 class="modal-title">Global Category Detail</h3>
 					</div>
 					<div class="modal-body margin-top-20">
-						<div ng-show="alert2.show" uib-alert template-url="common/alert" type="{{ alert2.type }}" close="alert2.close()" ng-bind-html="alert2.message"></div>
 						<form class="ah-form" name="editingForm" ng-submit="$emit('saveEditGlobalCategory')" novalidate>
 							<div class="row">
 								<div class="col-xs-12">
