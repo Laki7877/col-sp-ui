@@ -1,4 +1,5 @@
 module.exports = function(common, config) {
+	'ngInject';
 	var service = common.Rest('/AttributeSets');
 	var visibleOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
 	var find = function(array, value) {

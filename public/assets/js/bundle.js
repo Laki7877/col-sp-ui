@@ -870,7 +870,7 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 	};
 }];*/
 },{}],13:[function(require,module,exports){
-module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory', 'AttributeSet', 'Alert',  function($scope, $rootScope, common, Category, GlobalCategory, AttributeSet, Alert){
+module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory', 'AttributeSet', 'Alert', 'util',  function($scope, $rootScope, common, Category, GlobalCategory, AttributeSet, Alert, util){
 	$scope.categories = [];
 	$scope.attributeSetOptions = [];
 	$scope.editingStatusOptions = [
@@ -888,6 +888,20 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 	$scope.popover = false;
 	$scope.alert = new Alert();
 	$scope.alert2 = new Alert();
+	$scope.dirty = false;
+
+	$scope.treeOptions = {
+		dropped: function(event) {
+			if(event.pos.dirX != 0 || event.pos.dirY != 0) {
+				$scope.dirty = true;
+			}
+		}
+	};
+
+	util.warningOnLeaveFn(function() {
+		return !$scope.dirty;
+	});
+
 	$scope.test = function(i) {
 		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);
 	};
@@ -926,6 +940,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 			
 		GlobalCategory.upsert($scope.formData).then(function() {
 			$scope.alert.success('Your changes have been saved.');
+			$scope.dirty = false;
 			$scope.reload();
 		}, function(err) {
 			$scope.alert.error(common.getError(err));
@@ -1116,7 +1131,7 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", function($sco
 	}, true);
 }];
 },{}],20:[function(require,module,exports){
-module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory', 'Shop', 'Alert', function($scope, $rootScope, common, Category, LocalCategory, Shop, Alert) {
+module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory', 'Shop', 'Alert', 'util', function($scope, $rootScope, common, Category, LocalCategory, Shop, Alert, util) {
 	$scope.categories = [];
 	$scope.editingStatusOptions = [	{
 		text: 'Visible',
@@ -1133,6 +1148,19 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 	$scope.alert = new Alert();
 	$scope.alert2 = new Alert();
 	$scope.loading = false;
+	$scope.dirty = false;
+
+	$scope.treeOptions = {
+		dropped: function(event) {
+			if(event.pos.dirX != 0 || event.pos.dirY != 0) {
+				$scope.dirty = true;
+			}
+		}
+	};
+
+	util.warningOnLeaveFn(function() {
+		return !$scope.dirty;
+	});
 
 	$scope.init = function(shopid) {
 		$scope.shopId = shopid || 1;
@@ -1162,6 +1190,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 		});
 		Shop.upsertLocalCategories($scope.shopId, $scope.formData).then(function() {
 			$scope.alert.success('Your changes have been saved.');
+			$scope.dirty = false;
 			$scope.reload();
 		}, function(err) {
 			$scope.alert.error(common.getError(err));
@@ -2931,7 +2960,8 @@ module.exports = [function() {
 	};
 }];
 },{"angular":119}],38:[function(require,module,exports){
-module.exports = function($interpolate) {
+module.exports = ["$interpolate", function($interpolate) {
+	'ngInject';
 	return {
 		restrict: 'A',
 		require: 'ngModel',
@@ -2950,9 +2980,10 @@ module.exports = function($interpolate) {
 			};
 		}
 	}
-}
+}]
 },{}],39:[function(require,module,exports){
 module.exports = function() {
+	'ngInject';
 	return {
 		restrict: 'A',
 		require: 'ngModel',
@@ -2974,6 +3005,7 @@ module.exports = function() {
 }
 },{}],40:[function(require,module,exports){
 module.exports = function() {
+	'ngInject';
 	return {
 		restrict: 'A',
 		require: 'ngModel',
@@ -3355,7 +3387,8 @@ module.exports = ["$rootScope", "$parse", "$animate", function($rootScope, $pars
   }
 }];
 },{}],43:[function(require,module,exports){
-module.exports = [function() {
+module.exports = function() {
+    'ngInject';
     return {
         restrict: "A",
         link: function (scope, element, attr) {
@@ -3369,7 +3402,7 @@ module.exports = [function() {
             });
         }
     };
-}];
+};
 },{}],44:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$templateCache', '$compile', function($templateCache, $compile) {
@@ -3443,7 +3476,8 @@ module.exports = ['$document', '$window', function($document, $window) {
 	};
 }];
 },{"angular":119}],46:[function(require,module,exports){
-module.exports=[function() {
+module.exports=function() {
+	'ngInject';
 	return {
 		restrict: 'A',
 		link: function(scope, elem, attrs) {
@@ -3452,7 +3486,7 @@ module.exports=[function() {
 			}
 		}
 	}
-}];
+};
 },{}],47:[function(require,module,exports){
 module.exports = [function() {
   return function(input, scope) {
@@ -3573,6 +3607,7 @@ module.exports = [function(){
 }]
 },{}],51:[function(require,module,exports){
 module.exports = function() {
+	'ngInject';
 	return function(str, num) {
 		if(_.isUndefined(str)) {
 			return str;
@@ -4921,14 +4956,14 @@ angular.module('nc')
 			scope: {
 				model: '=ncModel',
 				placeholder: '=ncSearchPlaceholder',
-				callback: '=ncSearchEvent'
+				event: '=ncSearchEvent'
 			},
 			template: $templateCache.get('common/ncSearch'),
 			link: function(scope) {
-				scope.callback = scope.callback || function() { return true };
+				scope.event = scope.event || function() { return true };
 				scope.searchText = '';
 				scope.callback = function() {
-					if(!scope.callback()) return;
+					if(!scope.event()) return;
 					scope.model = scope.searchText;
 				}
 			}
@@ -5895,7 +5930,8 @@ module.exports = ['common', function(common){
 }];
 
 },{}],87:[function(require,module,exports){
-module.exports = function(common, config) {
+module.exports = ["common", "config", function(common, config) {
+	'ngInject';
 	var service = common.Rest('/AttributeSets');
 	var visibleOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
 	var find = function(array, value) {
@@ -5948,7 +5984,7 @@ module.exports = function(common, config) {
 		return processed;
 	};
 	return service;
-}
+}]
 },{}],88:[function(require,module,exports){
 module.exports = ['$window', function($window) {
 	return function(fn, close) {
@@ -6399,7 +6435,7 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 }];
 
 },{}],93:[function(require,module,exports){
-module.exports = ['common', '$q' , function(common, $q) {
+module.exports = ['common', '$q', 'util', function(common, $q, util) {
 	'use strict';
 	var service = {};
 
@@ -7367,15 +7403,16 @@ module.exports = ['common', function(common) {
 	return service;
 }];
 },{}],102:[function(require,module,exports){
-module.exports = function(common) {
+module.exports = ["common", function(common) {
+	'ngInject';
 	var service = common.Rest('/Permissions/Shop');
 
 	return service;
-}
+}]
 },{}],103:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Sun Feb 07 2016 19:20:43 GMT+0700 (SE Asia Standard Time)
+ * Sun Feb 07 2016 22:29:55 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
