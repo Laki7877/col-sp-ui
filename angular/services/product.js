@@ -357,6 +357,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 	m.Visibility = m.Visibility;
                     m.Images = m.Images || [];
                     m.Images360 = m.Images360 || [];
+                    m.WeightUnit = (m.WeightUnit || "").trim();
+                    m.DimensionUnit = (m.DimensionUnit || "").trim();
                     m.hash = util.variant.hash(m.FirstAttribute, m.SecondAttribute);
                     m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
                     return m;

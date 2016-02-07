@@ -100,56 +100,81 @@
 							<td class="column-text-ellipsis" ng-class="{'opacity-50': !pair.Visibility}">
 								{{ pair.text }}
 							</td>
-							<td>
-								<input 
-								type="text" ng-disabled='!pair.Visibility' class="form-control"
-								name="pair_Sku{{ $index }}"
-								maxlength="300"
-								ng-pattern="/^[0-9A-Za-z]+$/"
-								ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }"
-								ng-model="pair.Sku" />
-                                
-                                <div ng-template="common/input/text-td"
+
+                            <td ng-template="common/input/text-td"
                                     ng-template-options="{
-                                    'label': 'Sale Price',
-                                    'error' : {
-                                    'messages': {
-                                    'min': 'Sale price must be lower than the original price',
-                                    'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
-                                    },
-                                    'show': $root.isInvalid(addProductForm.MasterVariant_SalePrice),
-                                    'conditions' : addProductForm.MasterVariant_SalePrice.$error
-                                    }
+                                        'error' : {
+                                            'messages': {
+                                                'pattern': 'Only english letters and numbers allowed'
+                                            },
+                                            'show': $root.isInvalid(addProductForm['pair_Sku' + $index]),
+                                            'conditions' : addProductForm['pair_Sku' + $index].$error
+                                        }
                                     }">
-                                    <input
-                                    ng-disabled="enableProductVariations == 'enable'"
-                                    ng-pattern="/^\d+(\.\d{1,2})?$/"
-                                    class="form-control width-field-normal"
-                                    maxlength="20"
-                                    name="MasterVariant_SalePrice"
-                                    ng-model="formData.MasterVariant.SalePrice"
-                                    ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_SalePrice) }"
-                                    />
-                                </div>
-                                
-							</td>
-							<td><input type="text"
+                                    <input 
+                                    type="text" ng-disabled='!pair.Visibility' class="form-control"
+                                    name="pair_Sku{{ $index }}"
+                                    maxlength="300"
+                                    ng-pattern="/^[0-9A-Za-z]+$/"
+                                    ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }"
+                                    ng-model="pair.Sku" />
+                           </td>
+
+							<td ng-template="common/input/text-td"
+                                    ng-template-options="{
+                                        'error' : {
+                                            'messages': {
+                                                'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
+                                            },
+                                            'show': $root.isInvalid(addProductForm['pair_OriginalPrice' + $index]),
+                                            'conditions' : addProductForm['pair_OriginalPrice' + $index].$error
+                                        }
+                                    }">
+                                <input type="text"
 								ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_OriginalPrice{{$index}}) }"
 								name="pair_OriginalPrice{{$index}}"
 								ng-pattern="/^\d+(\.\d{1,2})?$/"
 								ng-model="pair.OriginalPrice" ng-disabled='!pair.Visibility'
-								class="form-control" /></td>
-							<td><input type="text"
+								class="form-control" />
+                                
+                            </td>
+                                
+							<td ng-template="common/input/text-td"
+                                    ng-template-options="{
+                                        'error' : {
+                                            'messages': {
+                                                'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
+                                            },
+                                            'show': $root.isInvalid(addProductForm['pair_SalePrice' + $index]),
+                                            'conditions' : addProductForm['pair_SalePrice' + $index].$error
+                                        }
+                                    }">
+                                <input type="text"
 								ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_SalePrice{{$index}}) }"
 								ng-model="pair.SalePrice" name="pair_SalePrice{{ $index }}" ng-disabled='!pair.Visibility'
 								ng-pattern="/^\d+(\.\d{1,2})?$/"
-								class="form-control" /></td>
-							<td><input type="text" ng-model="pair.Quantity"
+								class="form-control" />
+                           </td>
+                                
+                                
+							<td ng-template="common/input/text-td"
+                                    ng-template-options="{
+                                        'error' : {
+                                            'messages': {
+                                                'pattern': 'Only numbers allowed'
+                                            },
+                                            'show': $root.isInvalid(addProductForm['pair_Quantity' + $index]),
+                                            'conditions' : addProductForm['pair_Quantity' + $index].$error
+                                        }
+                                    }">
+                                <input type="text" ng-model="pair.Quantity"
 								maxlength="5"
 								ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Quantity{{$index}}) }"
 								ng-disabled='!pair.Visibility' ng-pattern="/^[0-9]+$/"
 								name="pair_Quantity{{$index}}"
-								class="form-control" /></td>
+								class="form-control" />
+                            </td>
+                            
 							<td><a class="btn btn-white btn-width-xl" ng-disabled='!pair.Visibility'
 									data-toggle="modal" data-target="#variant-detail-1"
 									ng-click="$emit('openPairModal', pair, formData.Variants, $index)">More Detail</a></td>
