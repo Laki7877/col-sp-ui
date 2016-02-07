@@ -58,7 +58,7 @@
 		<div class="modal fade" tabindex="-1" role="dialog" id="modal-category-detail">
 			<div class="modal-dialog modal-xl">
 				<div class="modal-content">
-        			<div class="margin-top-30"><div ng-show="alert2.show" uib-alert template-url="common/alert" type="{{ alert2.type }}" close="alert2.close()"><span ng-bind-html="alert2.message"></span></div></div>
+        			<div  class="margin-top-20 margin-bottom-20" ng-show="alert2.show" uib-alert template-url="common/alert" type="{{ alert2.type }}" close="alert2.close()"><span ng-bind-html="alert2.message"></span></div>
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						<h3 class="modal-title">Global Category Detail</h3>
