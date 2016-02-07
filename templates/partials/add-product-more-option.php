@@ -145,7 +145,8 @@
 						'error' : {
 						'messages': {
 						'max': 'Only numbers from 1 to 10000 is allowed',
-						'min': 'Only numbers from 1 to 10000 is allowed'
+						'min': 'Only numbers from 1 to 10000 is allowed',
+                        'pattern': 'Only numbers from 1 to 10000 is allowed' 
 						},
 						'show': $root.isInvalid(addProductForm.SEO_ProductBoostingWeight),
 						'conditions' : addProductForm.SEO_ProductBoostingWeight.$error
@@ -154,7 +155,8 @@
 						<input
 						type="number"
 						class="form-control width-field-normal"
-						min="0" max="10000"
+						min="0" max="10000" step="1"
+                        ng-pattern="/^[0-9]+$/"
 						name="SEO_ProductBoostingWeight"
 						ng-model="formData.SEO.ProductBoostingWeight"
 						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_ProductBoostingWeight) }"
