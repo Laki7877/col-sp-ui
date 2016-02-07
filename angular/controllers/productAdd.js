@@ -149,7 +149,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 		    //Initialize
 		    kpair.ProductNameEn = $scope.formData.MasterVariant.ProductNameEn;
 		    kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
-		    kpair.Display = $scope.availableVariantDisplayOption[0];
+		    kpair.Display = $scope.availableVariantDisplayOption[0].value;
 		    kpair.Visibility = true;
             kpair.DimensionUnit = "MM";
             kpair.WeightUnit = "G";
@@ -197,7 +197,9 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
     $scope.availableSearchTags = [];
     $scope.availableRelatedProducts = [];
     $scope.availableStockTypes = ['Stock', 'Pre-Order'];
-    $scope.availableVariantDisplayOption = [{ text: 'Show as group of variants', value: 'GROUP' }, { text: 'Show as individual product',  value: 'INDIVIDUAL' }];
+    $scope.availableVariantDisplayOption = [
+        { text: 'Show as group of variants', value: 'GROUP' }, 
+        { text: 'Show as individual product',  value: 'INDIVIDUAL' }];
 
     $scope.overview = {}
 
@@ -328,22 +330,22 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 
     $scope.$watch('formData.MasterVariant.SalePrice', function(){
 	    var form = $scope.addProductForm;
-	    form.MasterVariant_SalePrice.$setValidity("min", true);
+	    if(form.MasterVariant_SalePrice) form.MasterVariant_SalePrice.$setValidity("min", true);
 	    if(!form.MasterVariant_SalePrice) return;
 	    if($scope.formData.MasterVariant.SalePrice == "") return;
 
 	    if(Number($scope.formData.MasterVariant.SalePrice) >= Number($scope.formData.MasterVariant.OriginalPrice) ){
-		    form.MasterVariant_SalePrice.$setValidity("min", false);
+		    if(form.MasterVariant_SalePrice) form.MasterVariant_SalePrice.$setValidity("min", false);
 		    form.MasterVariant_SalePrice.$error["min"] = "Sale Price must not exceed Original Price";
 	    }
     });
 
     $scope.$watch('formData.ExpireDate', function(){
 	    var form = $scope.addProductForm;
-	    form.ExpireDate.$setValidity("min", true);
+	    if(form.ExpireDate) form.ExpireDate.$setValidity("min", true);
 	    if($scope.formData.ExpireDate < $scope.formData.EffectiveDate){
 		    if(!form.ExpireDate) return;
-		    form.ExpireDate.$setValidity("min", false);
+		    if(form.ExpireDate) form.ExpireDate.$setValidity("min", false);
 		    form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
 	    }
     });
@@ -416,7 +418,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 				    $scope.pageState.failure_message = res.message || res.Message;
 				    $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
 				    $window.location.hash = 'alert'
-			    $window.location.hash = 'alert-failure'
+			        $window.location.hash = 'alert-failure'
 			    }
 		    }, function (er) {
 			    $scope.pageState.reset();

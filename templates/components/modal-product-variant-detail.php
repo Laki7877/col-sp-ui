@@ -53,13 +53,23 @@
                                 </div>
 
 
-                                <? $this->insert('components/forms/dropdown-with-label',
-									["label" => "Display",
-									 "showBy" => "text",
-								 	 "choices" => "availableVariantDisplayOption",
-							  		 "ng_model"=> $model . ".Display"
-									])
-								?>
+                                    <div class="form-group">
+                                        <div class="width-label">
+                                            <label class="control-label">
+                                               Display
+                                            </label>
+                                        </div>
+                                        <div class="width-field-normal">
+                                            <div class="ah-select2-dropdown">
+                                                <select class="form-control" ng-model="<?=$model?>.Display">
+                                                    <option value="{{op.value}}" ng-repeat="op in availableVariantDisplayOption">
+                                                        {{ op.text }}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
 
                             </div>
                         </div>
@@ -232,14 +242,14 @@
                                     <!-- end of package detail -->
 
 
-                                        <div class="form-group">
-                                            <div class="width-label">
-                                                <label class="control-label required">Weight</label>
-                                            </div>
-                                            <div class="width-field-xxl">
-                                                <div class="multiple-input">
+                                    <div class="form-group">
+                                        <div class="width-label">
+                                            <label class="control-label required">Weight</label>
+                                        </div>
+                                        <div class="width-field-xxl">
+                                            <div class="multiple-input">
 
-                                                    <div ng-template="common/input/text-column" ng-template-options="{
+                                                <div ng-template="common/input/text-column" ng-template-options="{
                                                         'error' : {
                                                             'messages': {
                                                                 'required': 'This is a required field',
@@ -249,27 +259,24 @@
                                                         'conditions' : addProductForm.Modal_Weight.$error
                                                         }
                                                     }">
-                                                        <input type="text" name="Modal_Weight" maxlength="11" 
-                                                        ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_Weight) }" 
-                                                        class="form-control" ng-pattern="/^\d+(\.\d{1,2})?$/" 
-                                                        ng-model="<?= $model ?>.Weight"  />
-                                                    </div>
-
-                                                    <div class="input-column select input-xl">
-                                                        <div class="ah-select2-dropdown">
-                                                            <select class="form-control" ng-model="<?= $model ?>.WeightUnit">
-                                                                <option value="G"> Grams </option>
-                                                                <option value="KG"> Kilograms </option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <!-- input-xl-->
+                                                    <input type="text" name="Modal_Weight" maxlength="11" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_Weight) }" class="form-control" ng-pattern="/^\d+(\.\d{1,2})?$/" ng-model="<?= $model ?>.Weight" />
                                                 </div>
-                                                <!--multi-->
+
+                                                <div class="input-column select input-xl">
+                                                    <div class="ah-select2-dropdown">
+                                                        <select class="form-control" ng-model="<?= $model ?>.WeightUnit">
+                                                            <option value="G"> Grams </option>
+                                                            <option value="KG"> Kilograms </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!-- input-xl-->
                                             </div>
-                                            <!-- widht-xxl-->
+                                            <!--multi-->
                                         </div>
-                                        <!--formgp-->
+                                        <!-- widht-xxl-->
+                                    </div>
+                                    <!--formgp-->
 
                                 </div>
                             </div>
