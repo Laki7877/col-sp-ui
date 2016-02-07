@@ -134,29 +134,34 @@
 						                        maxlength="300"
 						                        />
 						                    </div>
-						                    <div ng-template="common/input/text2"
-						                      ng-template-options="{
-						                        'label': 'Commission (%)',
-						                      	'labelClass': 'required',
-						                        'error' : {
-						                              'messages': {
-								                          	'required': 'This is a required field',
-						                            		'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
-						                                },
-						                              'show': $root.isInvalid(editingForm.Commission),
-						                              'conditions' : editingForm.Commission.$error
-						                         }
-						                      }">
-						                      <input
-						                        class="form-control"
-						                        name="Commission"
-						                        ng-model="editingCategory.Commission"
-                        						ng-pattern="/^\d+(\.\d{1,})?$/"
-						                        ng-class="{ 'has-error' : $root.isInvalid(editingForm.Commission) }"
-						                        maxlength="20"
-						                        required
-						                        />
-						                    </div>
+											<div ng-template="common/input/text2"
+												ng-template-options="{
+												'label': 'Commission (%)',
+												'labelClass': 'required',
+												'error' : {
+												'messages': {
+								                    'required': 'This is a required field',
+													'pattern': 'Only numbers and decimals (up to 2 digits) allowed',
+													'minnumber': 'Please enter between 0% and 100%',
+													'maxnumber': 'Please enter between 0% and 100%'
+												},
+												'show': $root.isInvalid(editingForm.Commission),
+												'conditions' : editingForm.Commission.$error
+												}
+												}">
+												<input
+												class="form-control"
+												name="Commission"
+												ng-model="editingCategory.Commission"
+												ng-pattern="/^[\w]+(\.\w{0,2})?$/"
+												ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"
+												ng-class="{ 'has-error' : $root.isInvalid(editingForm.Commission) }"
+												maxlength="20"
+												ng-maxnumber="100",
+												ng-minnumber="0"
+												required
+												/>
+											</div>
 										</div>
 									</div>
 									<div class="form-section">

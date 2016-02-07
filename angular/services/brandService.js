@@ -23,6 +23,7 @@ module.exports = function(common) {
 		} else {
 			processed.BrandImage = null;
 		}
+		processed = _.omit(processed, ['BrandImages']);
 		return processed;
 	};
 	return service;
