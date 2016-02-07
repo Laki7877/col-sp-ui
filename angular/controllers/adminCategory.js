@@ -1,4 +1,4 @@
-module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory', 'AttributeSet', 'Alert',  function($scope, $rootScope, common, Category, GlobalCategory, AttributeSet, Alert){
+module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory', 'AttributeSet', 'Alert', 'util',  function($scope, $rootScope, common, Category, GlobalCategory, AttributeSet, Alert, util){
 	$scope.categories = [];
 	$scope.attributeSetOptions = [];
 	$scope.editingStatusOptions = [
