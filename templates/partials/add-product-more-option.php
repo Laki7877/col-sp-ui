@@ -15,7 +15,7 @@
 
 						<ui-select ng-model="formData.RelatedProducts" 
 						multiple limit="10">
-							<ui-select-match placeholder="Separate tags with comma (or enter)">
+							<ui-select-match placeholder="Search by Product Name or PID">
 								<span>{{ $item.ProductNameEn }} ({{$item.Pid}})</span>
 							</ui-select-match>
 							<ui-select-choices repeat="item in (availableRelatedProducts) track by item.ProductId" 

@@ -53,23 +53,23 @@
                                 </div>
 
 
-                                    <div class="form-group">
-                                        <div class="width-label">
-                                            <label class="control-label">
-                                               Display
-                                            </label>
-                                        </div>
-                                        <div class="width-field-normal">
-                                            <div class="ah-select2-dropdown">
-                                                <select class="form-control" ng-model="<?=$model?>.Display">
-                                                    <option value="{{op.value}}" ng-repeat="op in availableVariantDisplayOption">
-                                                        {{ op.text }}
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-
+                                <div class="form-group">
+                                    <div class="width-label">
+                                        <label class="control-label">
+                                            Display
+                                        </label>
                                     </div>
+                                    <div class="width-field-normal">
+                                        <div class="ah-select2-dropdown">
+                                            <select class="form-control" ng-model="<?=$model?>.Display">
+                                                <option value="{{op.value}}" ng-repeat="op in availableVariantDisplayOption">
+                                                    {{ op.text }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
 
                             </div>
                         </div>
@@ -180,16 +180,16 @@
                                                 <div class="input-column">
 
                                                     <div ng-template="common/input/text3" ng-template-options="{
-										'label': 'Length',
-										'error' : {
-										'messages': {
-										'required': 'This is a required field',
-										'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
-										},
-										'show': $root.isInvalid(addProductForm.Modal_Length),
-										'conditions' : addProductForm.Modal_Length.$error
-										}
-										}">
+                                                        'label': 'Length',
+                                                        'error' : {
+                                                        'messages': {
+                                                        'required': 'This is a required field',
+                                                        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
+                                                        },
+                                                        'show': $root.isInvalid(addProductForm.Modal_Length),
+                                                        'conditions' : addProductForm.Modal_Length.$error
+                                                        }
+                                                        }">
                                                         <input class="form-control" name="Modal_Length" maxlength="11" ng-pattern="/^\d+(\.\d{1,2})?$/" ng-model="<?=$model?>.Length" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_Length) }" />
                                                     </div>
 
@@ -197,32 +197,32 @@
 
                                                 <div class="input-column">
                                                     <div ng-template="common/input/text3" ng-template-options="{
-										'label': 'Height',
-										'error' : {
-										'messages': {
-										'required': 'This is a required field',
-										'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
-										},
-										'show': $root.isInvalid(addProductForm.Modal_Height),
-										'conditions' : addProductForm.Modal_Length.$error
-										}
-										}">
+                                                        'label': 'Height',
+                                                        'error' : {
+                                                        'messages': {
+                                                        'required': 'This is a required field',
+                                                        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
+                                                        },
+                                                        'show': $root.isInvalid(addProductForm.Modal_Height),
+                                                        'conditions' : addProductForm.Modal_Length.$error
+                                                        }
+                                                        }">
                                                         <input class="form-control" maxlength="11" name="Modal_Height" ng-pattern="/^\d+(\.\d{1,2})?$/" ng-model="<?=$model?>.Height" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_Height) }" />
                                                     </div>
                                                 </div>
 
                                                 <div class="input-column">
                                                     <div ng-template="common/input/text3" ng-template-options="{
-										'label': 'Width',
-										'error' : {
-										'messages': {
-										'required': 'This is a required field',
-										'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
-										},
-										'show': $root.isInvalid(addProductForm.Modal_Width),
-										'conditions' : addProductForm.Modal_Width.$error
-										}
-										}">
+                                                        'label': 'Width',
+                                                        'error' : {
+                                                        'messages': {
+                                                        'required': 'This is a required field',
+                                                        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
+                                                        },
+                                                        'show': $root.isInvalid(addProductForm.Modal_Width),
+                                                        'conditions' : addProductForm.Modal_Width.$error
+                                                        }
+                                                        }">
                                                         <input class="form-control" maxlength="11" name="Modal_Width" ng-pattern="/^\d+(\.\d{1,2})?$/" ng-model="<?=$model?>.Width" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_Width) }" />
                                                     </div>
                                                 </div>
