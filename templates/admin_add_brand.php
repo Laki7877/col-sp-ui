@@ -32,7 +32,7 @@
                   name="BrandNameEn"
                   ng-model="formData.BrandNameEn"
                   ng-class="{ 'has-error' : $root.isInvalid(form.BrandNameEn) }"
-                  ng-pattern="/^[^ก-๙]$/"
+                  ng-pattern="/^[^ก-๙]+$/"
                   maxlength="100"
                   required />
               </div>

@@ -13,13 +13,13 @@
             <div class="form-section-content">
               <div ng-template="common/input/text2"
                 ng-template-options="{
-                  'label': 'Attribute Set Name (English)',
+                  'label': 'Attribute Set Name',
                   'labelClass': 'required',
                   'inputSize': 'large',
                   'error' : {
                         'messages': {
                           'required': 'This is a required field',
-                          'pattern': 'Only english letters and numbers allowed'
+                          'pattern': 'Only English letters and numbers allowed'
                         },
                         'show': $root.isInvalid(form.AttributeSetNameEn),
                         'conditions' : form.AttributeSetNameEn.$error
