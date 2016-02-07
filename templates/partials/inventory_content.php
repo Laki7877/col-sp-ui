@@ -1,15 +1,16 @@
-<div id="add-product-more-option-tab-content">
+<div id="inventory-tab-content">
 	
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="form-section">
-				<div class="form-section-header"><h2>Advance Search</h2></div>
+				<div class="form-section-header"><h2>Advanced Search</h2></div>
 				<div class="form-section-content">
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Name", ]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "PID" ]) ?>
           <? $this->insert('components/forms/input-text-with-label', ["label" => "SKU" ]) ?>          
 					<? $this->insert('components/forms/dropdown_tags', ["label" => "Brand Name/ ID", "default_choices" => ["Gulp", "Adico"], "choices" => ["Gulp", "Adico","Pascal"] ]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Global Category Name/ ID" ]) ?>
+          <? $this->insert('components/forms/input-text-with-label', ["label" => "Local Category Name/ ID" ]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Shop Name/ ID" ]) ?>
 					<? $this->insert('components/forms/input_tags', ["label" => "Search Tag", "choices" => ["Gulp", "Adico","Pascal"] ]) ?>
 					<? $this->insert('components/forms/input_from_to', ["label" => "Price", "label_extend" => "To" ]) ?>
@@ -50,15 +51,15 @@
             <a class="header-link" href="#"><span>Product Name</span></a>
             <i class="fa fa-caret-down color-grey">
           </th>
-          <th class="">
-            <a class="header-link" href="#"><span>Product ID</span></a>
+          <th class="width_150">
+            <a class="header-link" href="#"><span class="active-underline">Product ID</span></a>
             <i class="fa fa-caret-down color-grey">
           </th>
-          <th class="">
+          <th class="width_150">
             <a class="header-link" href="#"><span>SKU</span></a>
             <i class="fa fa-caret-down color-grey">
           </th>
-          <th class="text-right">
+          <th class="text-right width_150">
             <a class="header-link" href="#"><span>Available</span></a>
             <i class="fa fa-caret-down color-grey">
           </th>
@@ -82,16 +83,19 @@
           <td class="text-right">
             <span class="">
               <span>2</span>
-              <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                <div><span class='col-xs-8 padding-left-0 padding-bottom-5'>In Stock</span><span class='text-right col-xs-4 border_full'>199</span></div>
-                <div><span class='col-xs-8 padding-left-0 padding-bottom-5'>Defect</span><span class='text-right col-xs-4'>199</span></div>
-                <div><span class='col-xs-8 padding-left-0 padding-bottom-5'>On Hold</span><span class='text-right col-xs-4'>199</span></div>
-                <div><span class='col-xs-8 padding-left-0 padding-bottom-5 border_modal'>Reserved</span><span class='text-right col-xs-4 border_modal'>199</span></div>
-                <div><span class='col-xs-8 padding-left-0 available_inventory'>Available</span><span class='text-right col-xs-4 available_inventory '>199</span></div>
-                <div class='text-center'>
-                  <button class='btn btn-blue btn-width-100 text-center'>Save</button>
+              <span class='popover-markup'> 
+                <i  class='trigger fa fa-caret-down color-dark-grey'></i> 
+                <div class="content hide">
+                    <span class='col-xs-8 padding-left-0 margin-bottom-15 margin-top-10'>In Stock</span><input class='margin-top-10 text-right col-xs-4' />
+                    <span class='col-xs-8 padding-left-0 margin-bottom-15'>Defect</span><span class='text-right col-xs-4'>5</span>
+                      <div><span class='col-xs-8 padding-left-0 margin-bottom-15'>On Hold</span><span class='text-right col-xs-4'>7</span></div>
+                      <div><span class='col-xs-8 padding-left-0 margin-bottom-15 border_modal'>Reserved</span><span class='text-right col-xs-4 border_modal'>2</span></div>
+                      <div><span class='col-xs-8 padding-left-0 available_inventory'>Available</span><span class='text-right col-xs-4 available_inventory '>3</span></div>
+                      <div class='text-center'>
+                      <button class='btn btn-blue btn-width-100 text-center'>Save</button>
+                    </div>  
                 </div>
-                "></i>
+              </span>
             </span>
           </td>
           <td class="width_action_wide text-center">
@@ -112,7 +116,10 @@
           <td class="display-column">
             <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
           </td>
-          <td class="column-text-ellipsis"><a href="#">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</a></td>
+          <td class="column-text-ellipsis">
+            <a href="#">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</a>
+            <div class="color-dark-grey font-size-12">Blue / Small</div>
+          </td>
           <td class="">
             <div>IV002321</div>
           </td>
@@ -120,16 +127,19 @@
           <td class="text-right">
             <span class="">
               <span class="color-red">2</span>
-              <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                <div><span class='col-xs-8 padding-left-0 padding-bottom-5'>In Stock</span><span class='text-right col-xs-4 border_full'>199</span></div>
-                <div><span class='col-xs-8 padding-left-0 padding-bottom-5'>Defect</span><span class='text-right col-xs-4'>199</span></div>
-                <div><span class='col-xs-8 padding-left-0 padding-bottom-5'>On Hold</span><span class='text-right col-xs-4'>199</span></div>
-                <div><span class='col-xs-8 padding-left-0 padding-bottom-5 border_modal'>Reserved</span><span class='text-right col-xs-4 border_modal'>199</span></div>
-                <div><span class='col-xs-8 padding-left-0 available_inventory'>Available</span><span class='text-right col-xs-4 available_inventory '>199</span></div>
-                <div class='text-center'>
-                  <button class='btn btn-blue btn-width-100 text-center'>Save</button>
+              <span class='popover-markup'> 
+                <i  class='trigger fa fa-caret-down color-dark-grey'></i> 
+                <div class="content hide">
+                    <span class='col-xs-8 padding-left-0 margin-bottom-15 margin-top-10'>In Stock</span><input class='margin-top-10 text-right col-xs-4' />
+                    <span class='col-xs-8 padding-left-0 margin-bottom-15'>Defect</span><span class='text-right col-xs-4'>5</span>
+                      <div><span class='col-xs-8 padding-left-0 margin-bottom-15'>On Hold</span><span class='text-right col-xs-4'>7</span></div>
+                      <div><span class='col-xs-8 padding-left-0 margin-bottom-15 border_modal'>Reserved</span><span class='text-right col-xs-4 border_modal'>2</span></div>
+                      <div><span class='col-xs-8 padding-left-0 available_inventory'>Available</span><span class='text-right col-xs-4 available_inventory '>3</span></div>
+                      <div class='text-center'>
+                      <button class='btn btn-blue btn-width-100 text-center'>Save</button>
+                    </div>  
                 </div>
-                "></i>
+              </span>
             </span>
           </td>
           <td class="width_action_wide text-center">
@@ -146,7 +156,6 @@
       </tbody>
     </table>
   </div>
-
 
   <div class="page-navigation">
     <span>
@@ -172,3 +181,17 @@
   </div>
   
 </div>
+
+
+<script type="text/javascript">
+  $('.popover-markup>.trigger').popover({
+    html: true,
+    placement: "bottom",
+    title: function () {
+        return $(this).parent().find('.head').html();
+    },
+    content: function () {
+        return $(this).parent().find('.content').html();
+    }
+  });
+</script>

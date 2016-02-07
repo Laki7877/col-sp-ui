@@ -53,6 +53,22 @@
         <li class="sub-sidebar-header">Global Category</li>
         <li class="item active margin-top-20"><a href="?p=admin_category">View</a></li>
     </ul>
+
+    <ul class="sub-sidebar" style="display: none;" id="sub-product-approval">
+        <li class="sub-sidebar-header">Product Approval</li>
+        <li class="item active margin-top-20"><a href="?p=admin_product_approval">View</a></li>
+    </ul>
+
+    <ul class="sub-sidebar" style="display: none;" id="sub-all-product">
+        <li class="sub-sidebar-header">All Product</li>
+        <li class="item active margin-top-20"><a href="?p=admin_all_products">View</a></li>
+    </ul>
+
+    <ul class="sub-sidebar" style="display: none;" id="sub-promotion">
+        <li class="sub-sidebar-header">Promotion</li>
+        <li class="item active margin-top-20"><a href="?p=admin_coupons">Coupons</a></li>
+    </ul>
+
 <?php $this->stop() ?>
 
 <?php $this->start('page-content') ?>

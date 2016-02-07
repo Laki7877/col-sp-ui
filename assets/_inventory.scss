@@ -1,7 +1,7 @@
-// .inventory_modal {
+#inventory-tab-content {
 	.border_modal {
 		border-bottom: solid 1px $color-grey;
-		padding-bottom:	5px;
+		padding-bottom:	10px;
 	}
 
 	.border_full {
@@ -10,7 +10,12 @@
 
 	.available_inventory {
 		font-weight: bold;
-		padding-top: 5px;
-		padding-bottom: 5px;
+		padding-bottom: 20px;
 	}
-// }
+
+	.popover-markup {
+		.popover {
+			max-width: 220px;
+		}
+	}
+}

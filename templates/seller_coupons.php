@@ -4,7 +4,7 @@
   <div>
     <? $this->insert('components/page-title-with-buttons', ['text' => "Coupons" , 
       'buttons' => [
-          ['link' => '#', 'class' => 'btn-blue btn-width-xl', 'name' => 'Create Coupon']
+          ['link' => '?p=seller_coupons_detail', 'class' => 'btn-blue btn-width-xl', 'name' => 'Create Coupon']
         ]
     ]) ?>
     <div class="row search-section-wrapper">
@@ -24,8 +24,7 @@
             <th class="checkbox-column">
                 <input type="checkbox" aria-label="Checkbox for following text input"> 
             </th>
-            
-            <th>
+            <th class="width_120">
               <a class="header-link" href="#"><span>Coupon Code</span></a>
               <i class="fa fa-caret-down color-grey">
             </th>
@@ -42,7 +41,7 @@
             <th class="text-center width_date">
               <a class="header-link" href="#"><span>Expire Date</span></a>
             </th>
-            <th class="text-center">
+            <th class="text-center width_120">
               <a class="header-link" href="#"><span>Status</span></a>
               <i class="fa fa-caret-down color-grey">
             </th>
@@ -58,7 +57,7 @@
             </td>
            
             <td>
-              <a href="#">SHOE10OFF</a> 
+              <a href="?p=seller_coupons_detail">SHOE10OFF</a> 
             </td>
             <td class="column-text-ellipsis">
               10 off on shoe category (only first 10 customer) fsdfdsfsdfsdfsd
@@ -86,7 +85,7 @@
             </td>
            
             <td>
-              <a href="#">SPLC15OFF</a> 
+              <a href="?p=seller_coupons_detail">SPLC15OFF</a> 
             </td>
             <td class="column-text-ellipsis">
               10 off on shoe category (only first 10 customer) fsdfdsfsdfsdfsd

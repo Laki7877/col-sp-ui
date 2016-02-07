@@ -7,7 +7,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Administration System'])
 	<div>
 		<? $this->insert('components/page-title-with-buttons', ['text' => "Shop Profile Setting",
 			'buttons' => [
-	        	['link' => '#', 'class' => 'btn-white btn-width-xl', 'name' => 'Life View'],
+	        	['link' => '#', 'class' => 'btn-white btn-width-xl', 'name' => 'Live View'],
 	        	['link' => '#', 'class' => 'btn-blue btn-width-xl', 'name' => 'Save']
 	        ]
 		]) ?>
@@ -22,7 +22,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Administration System'])
 				<div class="add-product-form-action main-form-action full-width-row">
 					<div class="container-fluid">
 						<div class="float-right">
-							<button class="btn btn-white btn-width-xl">Life View</button>
+							<button class="btn btn-white btn-width-xl">Live View</button>
 							<button class="btn btn-blue btn-width-xl">Save</button>
 						</div>
 					</div>

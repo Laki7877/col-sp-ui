@@ -1,6 +1,6 @@
 <?php
 $menus = [
-  ["id" => "information", "name" => 'Information'],
+  ["id" => "information", "name" => 'Information', "class" => "active"],
   ["id" => "conditions", "name" => 'Conditions'],
 ];
 

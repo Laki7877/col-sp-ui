@@ -12,17 +12,21 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Filter By...</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Filter By", 'options' => ['--Select Filter--', 'All', 'Brand', 'Category']]) ?>
+					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Filter By", 'options' => ['-- Select Filter --', 'All', 'Brand', 'Email', 'Category']]) ?>
+					<? $this->insert('components/forms/input_tags', ["label" => "Include", "choices" => ["Gulp", "Adico","Pascal"] ]) ?>
+
 				</div>
 			</div>
 			<div class="form-section">
 				<div class="form-section-header"><h2>Include</h2></div>
 				<div class="form-section-content">
+					<? $this->insert('components/forms/input_tags', ["label" => "SKU", "choices" => ["Gulp", "Adico","Pascal"] ]) ?>
 				</div>
 			</div>
 			<div class="form-section">
 				<div class="form-section-header"><h2>Exclude</h2></div>
 				<div class="form-section-content">
+					<? $this->insert('components/forms/input_tags', ["label" => "SKU", "choices" => ["Gulp", "Adico","Pascal"] ]) ?>
 				</div>
 			</div>
 		</div>

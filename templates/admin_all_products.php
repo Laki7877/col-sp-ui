@@ -5,12 +5,11 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 
 <?php $this->start('page-body') ?>
 	<div>
-		<? $this->insert('components/page-title-with-buttons', ['text' => "All Products" , 
+		<? $this->insert('components/page-title-with-buttons', ['text' => "All Products", 
 			'buttons' => [
-	        	['link' => '#', 'class' => 'btn-white', 'name' => 'Export']
-	        ]
-	        ]) ?>
-		<? $this->insert('components/search-section', ['actions' =>['Approve', 'Unapprove'] ]) ?>
+	        	['link' => '#', 'class' => 'btn-white btn-width-xl', 'name' => 'Export']
+	        ] ]) ?>
+		<? $this->insert('components/search-section', ['actions' =>['Approve', 'Unapprove'], 'button_optional_class' => 'border_blue', 'optional_button_name' => 'Advanced Search' ]) ?>
 
 		<div>
 			<form class="ah-form sticky-mainform-action">
