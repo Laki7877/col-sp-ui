@@ -51,4 +51,8 @@ $(document).ready(function () {
       e.stopPropagation();
       $(this).closest('.popover-gear').find('.fa-caret-down').trigger( "click" );
     });
+
+	$(".get_file").click(function(e){
+      $(".my_file").trigger( "click" );
+    });
 });

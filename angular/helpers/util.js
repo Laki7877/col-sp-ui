@@ -1,6 +1,6 @@
 var angular = require('angular');
 
-module.exports = ['storage', function (storage) {
+module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$interpolate', function (storage, config, common, $window, $rootScope, $interpolate) {
     'use strict';
     var service = {};
 
@@ -73,5 +73,271 @@ module.exports = ['storage', function (storage) {
             return angular.isDefined(elem.checked) && elem.checked;
         });
     };
+
+    //Goto 404
+    service.page404 = function() {
+        $window.location.href="/error";
+    };
+
+    //block before leaving
+    service.warningOnLeave = function(scope, form) {
+        $window.onbeforeunload = function () {
+            if(!scope[form].$dirty){
+                //not dirty
+                return null;
+            }
+
+            var message = "Your changes will not be saved.",
+            e = e || window.event;
+            // For IE and Firefox
+            if (e) {
+              e.returnValue = message;
+            }
+
+            // For Safari
+            return message;
+        };  
+    };
+
+    service.warningOnLeaveFn = function(fn) {
+        $window.onbeforeunload = function () {
+            if(fn()){
+                //not dirty
+                return null;
+            }
+
+            var message = "Your changes will not be saved.",
+            e = e || window.event;
+            // For IE and Firefox
+            if (e) {
+              e.returnValue = message;
+            }
+
+            // For Safari
+            return message;
+        };  
+    };
+
+    //Convert ncTable params to our older params version
+    service.ncParams = function(param) {
+        return {
+            orderBy: param._order,
+            pageSize: param._limit,
+            direction: param._direction,
+            filter: param._filter,
+            searchText: param.searchText
+        };
+    };
+
+    //Generate Success message for add-<stuff> pages
+    service.saveAlertError = function() {
+        return config.DEFAULT_ERROR_MESSAGE;
+    };
+    service.saveAlertSuccess = function(itemName, link) {
+        return config.DEFAULT_SUCCESS_MESSAGE + ' View <a href="' + link + '">' + itemName + ' List</a>';
+    };
+
+    //Create bulk-action from template
+    service.bulkDelete = function(rest, id, item, alert, reload)  {
+        return {
+            name: 'Delete',
+            fn: function(array, cb) {
+                alert.close();
+
+                //Only pass ShopId
+                var array = _.map(array, function(e) { 
+                    return _.pick(e, [id]); 
+                });
+
+                //Blank array?
+                if(array.length <= 0) {
+                    alert.error('Unable to delete. Please select ' + item + ' for this action.');
+                    return;
+                }
+
+                //Delete bulk
+                rest.delete(array)
+                    .then(function() {
+                        alert.success('Delete successful.');
+                        cb();
+                    }, function(err) {
+                        alert.error(common.getError(err));
+                    })
+                    .finally(reload);
+            },
+            confirmation: {
+                title: 'Confirm to delete',
+                message: 'Are you sure you want to delete {{model.length}} items?'
+            }
+        };
+    };
+
+    service.bulkShow = function(rest, id, item, alert, reload) {
+        return {
+            name: 'Show',
+            fn: function(array, cb) {
+                alert.close();
+
+                //Only pass ShopId
+                var array = _.map(array, function(e) { 
+                    var i = _.pick(e, [id]); 
+                    i.Visibility = true;
+                    return i;
+                });
+
+                //Blank array?
+                if(array.length <= 0) {
+                    alert.error('Unable to show. Please select ' + item + ' for this action.');
+                    return;
+                }
+
+                //Delete bulk
+                rest.visible(array)
+                    .then(function() {
+                        alert.success('Changed successful.');
+                        cb();
+                    }, function(err) {
+                        alert.error(common.getError(err));
+                    })
+                    .finally(reload);
+            },
+            confirmation: {
+                title: 'Confirm to show',
+                message: 'Are you sure you want to change visibility of {{model.length}} items?'
+            }
+        };  
+    };
+
+    service.bulkHide = function(rest, id, item, alert, reload) {
+        return {
+            name: 'Hide',
+            fn: function(array, cb) {
+                alert.close();
+
+                //Only pass ShopId
+                var array = _.map(array, function(e) { 
+                    var i = _.pick(e, [id]); 
+                    i.Visibility = false;
+                    return i;
+                });
+
+                //Blank array?
+                if(array.length <= 0) {
+                    alert.error('Unable to show. Please select ' + item + ' for this action.');
+                    return;
+                }
+
+                //Delete bulk
+                rest.visible(array)
+                    .then(function() {
+                        alert.success('Changed successful.');
+                        cb();
+                    }, function(err) {
+                        alert.error(common.getError(err));
+                    })
+                    .finally(reload);
+            },
+            confirmation: {
+                title: 'Confirm to hide',
+                message: 'Are you sure you want to change visibility of {{model.length}} items?'
+            }
+        };  
+    };
+
+    //Create action from template
+    service.actionView = function(uri, id) {
+        return {
+            name: 'View / Edit',
+            fn: function(item) {
+                $window.location.href= uri + '/' + item[id];
+            }
+        };
+    };
+
+    //Create action from template
+    service.actionDelete = function(rest, id, item, alert, reload, cb)  {
+        return {
+            name: 'Delete',
+            fn: function(obj) {
+                alert.close();
+
+                //Only pass id
+                var obj = _.pick(obj, [id]); 
+               
+
+                //Delete bulk
+                rest.delete([obj])
+                    .then(function() {
+                        alert.success('Delete successful.');
+                        cb(obj, id);
+                    }, function(err) {
+                        alert.error(common.getError(err));
+                    })
+                    .finally(reload);
+            },
+            confirmation: {
+                title: 'Delete',
+                message: 'Are you sure you want to delete selected ' + item + '?'
+            }
+        };
+    };
+    //Create action from template
+    service.actionDuplicate = function(rest, id, item, alert, reload)  {
+        return {
+            name: 'Duplicate',
+            fn: function(obj) {
+                alert.close();
+
+                //Delete bulk
+                rest.duplicate(obj[id])
+                    .then(function() {
+                        alert.success('Duplicate successful.');
+                    }, function(err) {
+                        alert.error(common.getError(err));
+                    })
+                    .finally(reload);
+            },
+            confirmation: {
+                title: 'Duplicate',
+                message: 'Are you sure you want to duplicate selected ' + item + '?'
+            }
+        };
+    };
+
+    service.eyeToggle = function(rest, id, alert, reload) {
+        return function(item) {
+            item.Visibility = !item.Visibility;
+            rest.visible([_.pick(item, [id, 'Visibility'])])
+                .then(function() {
+                    //success
+                }, function(err) {
+                    alert.error(common.getError(err));
+                })
+                .finally(reload);
+        };
+    };
+
+    //Map value to dropdown name&value
+    service.getDropdownItem = function(array, value) {
+        return array.find(function(element) {
+            if (element.value === value) {
+                return true;
+            }
+            return false;
+        });
+    };
+
+    service.getTitle = function(id, item) {
+        var scope = $rootScope.$new(true);
+        var content = '';
+        scope.content = item;
+
+        if(id > 0) {
+            content = $interpolate(config.TITLE.DETAIL)(scope);
+        } else {
+            content = $interpolate(config.TITLE.CREATE)(scope);
+        }
+        return content;
+    }
     return service;
 }];

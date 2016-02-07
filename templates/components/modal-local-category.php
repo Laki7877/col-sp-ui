@@ -1,6 +1,7 @@
 <div class="modal fade" tabindex="-1" role="dialog" id="<?= $id ?>">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
+      <div  class="margin-top-20 margin-bottom-20" ng-show="alert2.show" uib-alert template-url="common/alert" type="{{ alert2.type }}" close="alert2.close()"><span ng-bind-html="alert2.message"></span></div>
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h3 class="modal-title"><?=$header?></h3>
@@ -38,7 +39,8 @@
                           'labelClass': 'required',
                           'error' : {
                                 'messages': {
-                                  'required': 'This is a required field'
+                                  'required': 'This is a required field',
+                                  'pattern': 'Only English allowed'
                                 },
                                 'show': $root.isInvalid(editingForm.NameEn),
                                 'conditions' : editingForm.NameEn.$error
@@ -49,6 +51,7 @@
                            name="NameEn"
                            ng-model="editingCategory.NameEn"
                            ng-class="{ 'has-error' : $root.isInvalid(editingForm.NameEn) }"
+                           ng-pattern="/^[^ก-๙]+$/"
                            maxlength="100"
                            required />
                       </div>
@@ -57,7 +60,7 @@
                           'label': 'URL (Eng)',
                           'error' : {
                                 'messages': {
-                                  'pattern': 'Only letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'
+                                  'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'
                                   },
                                 'show': $root.isInvalid(editingForm.UrlKeyEn),
                                 'conditions' : editingForm.UrlKeyEn.$error

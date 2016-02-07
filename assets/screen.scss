@@ -26,6 +26,7 @@
 @import "select2";
 @import "modal_custom";
 @import "dropdown";
+@import "image_thumbs";
 
 body {
 	overflow-y: scroll;
@@ -44,6 +45,14 @@ html, body {
   min-height: 100%;
 }
 
+#wrapper-login {
+  position: relative;
+  display: block;
+  min-width: 1200px;
+  min-height: 100%;
+  background-color: $sidebar-color;
+}
+
 #page-content-wrapper {
   margin-left: $sidebar-width;
   position: relative;
@@ -51,12 +60,19 @@ html, body {
 
 #page-body-wrapper {
   padding-top: 30px;
+  padding-bottom: 30px;
 }
+
+// #page-content-plain {
+//   background-color: $color-blue;
+// }
 
 
 @import "add_product_page";
 @import "global_category";
 @import "local_category";
+@import "image_management";
+@import "login";
 
 
 /* Additional Code */
@@ -159,6 +175,13 @@ html, body {
   }
 } 
 
+.has-error-parent {
+  .form-control {
+    border-color: $color-red;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  }
+}
 .form-control.has-error {
   border-color: $color-red;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);

@@ -15,6 +15,10 @@ class ProductController extends Controller
 		]);
 	}
 
+	public static function images($params){
+		return View::render('image_management');
+	}
+
 	public static function edit($params){
 		return View::render('add_product', [
 				'title' => 'Product Detail',
@@ -24,8 +28,20 @@ class ProductController extends Controller
 			]);
 	}
 
+	public static function import($params){
+		return View::render('import_product', [
+				'title' => 'Import Product'
+		]);
+	}
+
+
 	public static function select($params)
 	{
 		return View::render('global_category');
+	}
+
+	public static function reviews($params)
+	{
+		return View::render('product_review');
 	}
 }

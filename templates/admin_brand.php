@@ -1,124 +1,35 @@
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Brand']) ?>
 
 <?php $this->start('page-body') ?>
-	<div ng-controller="AdminBrandCtrl" ng-init="init(<?=$params?>)">
-    <? $this->insert('components/page-title-with-one-button', ['text' => 'Brand','button' => 'Add Brand', 'button_class' => 'btn-width-xl', 'link' => '/admin/brands/add']) ?>
-    <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()">{{alert.message}}</div>
+  <div ng-controller="AdminBrandCtrl">
+    <nc-alert nc-model="alert"></nc-alert>
+    <? $this->insert('components/page-title-with-one-button', ['text' => 'Admin Brands','button' => 'Add Brand', 'button_class' => 'btn-width-xxxl', 'link' => '/admin/brands/add']) ?>
     <div class="row search-section-wrapper">
-      <form ng-submit="bulk.fn()" class="search-section section-action">
-        <div class="input-group">
-          <div class="input-group-btn">
-            <div class="dropdown-btn">
-              <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                  <span id="bulk" class="dropdown-text margin-right-10 search-product-text">- Choose Action -</span>
-                  <span class="caret margin-left-10"></span>
-              </button>
-              <ul class="dropdown-menu search-product-dropdown">
-                <li ng-repeat="option in bulkOptions"><a>{{option.name}}</a></li>
-              </ul>
-            </div>
-          </div><!-- /btn-group -->
-          <div class="input-group-btn">
-            <button class="btn-white btn">
-              <span class="button-text-blue">Confirm</span>
-            </button>
-          </div>
-        </div>
-      </form>
-      <form ng-submit="applySearch()" class="search-section section-search">
-        <div class="input-group">
-          <input type="text" class="form-control input-search-icon search-box" ng-model="searchText" placeholder="Search" aria-describedby="basic-addon2">
-          <span class="input-group-btn">
-            <button class="btn btn-white">Search</button>
-          </span>
-        </div>
-      </form>
+      <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="BrandId"></nc-bulk>
+      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Brand Name'"></nc-search>
     </div>
-    <div class="table-section">
-      <table ng-show="brands.length > 0" class="table table-curved">
+    <nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="params.searchText.length > 0" >
+      <table class="table table-curved">
         <thead>
           <tr class="table-head">
-            <th class="checkbox-column">
-                <input type="checkbox" aria-label="Checkbox for following text input" ng-model="checkAll"> 
-            </th>
-            <th ng-click="setOrderBy('BrandId')">
-              <a class="header-link"><span ng-class="sort('BrandId', true)">Brand ID</span></a>
-              <i class="fa" ng-class="sort('BrandId')">
-            </th>
-            <th ng-click="setOrderBy('BrandNameEn')">
-              <a class="header-link"><span ng-class="sort('BrandNameEn', true)">Brand Name</span></a>
-              <i class="fa" ng-class="sort('BrandNameEn')">
-            </th>
-            <th class="modified-column" ng-click="setOrderBy('UpdatedDt')">
-              <a class="header-link"><span ng-class="sort('UpdatedDt', true)">Modified</span></a>
-              <i class="fa" ng-class="sort('UpdatedDt')">
-            </th>
-            <th>
-              Action
-            </th>
-          </tr>
+            <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
+            <th nc-sort="BrandId">Brand ID</th>
+            <th nc-sort="BrandNameEn">Brand Name</th>
+            <th nc-sort="UpdatedDt">Modified</th>
+            <th>Action</th>
+        </tr>
         </thead>
         <tbody>
-           <tr ng-repeat="row in brands">
-            <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input" ng-model="row.checked"> 
-            </td>
-            <td class="column-text-ellipsis">
-              <a ng-click="actions.edit(row)">{{ row.BrandId }}</a>
-            </td>
-            <td>
-              <a ng-click="actions.edit(row)"> {{ row.BrandNameEn }} / {{ row.BrandNameTh }}</a>
-            </td>
-            <td class="modified-column">
-                  {{ row.UpdatedDt | date:'shortDate':'+700' }}
-            </td>
-            <td class="action-column">
-              <i class="fa fa-gear color-dark-grey icon-size-20"></i>
-              <i class="fa fa-caret-down color-dark-grey" uib-popover-template="'brand/action'" popover-placement="bottom" popover-append-to-body="true" popover-any></i>
-            </td>
+          <tr ng-repeat="row in list.data">
+            <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
+            <td nc-link="/admin/brands/{{row.BrandId}}">{{row.BrandId}}</td>
+            <td nc-link="/admin/brands/{{row.BrandId}}">{{ row.BrandNameEn }} / {{ row.BrandNameTh }}</td>
+            <td>{{row.UpdatedDt | dateTh}}</td>
+            <td><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
           </tr>
         </tbody>
       </table>
-      <div ng-show="notReady">
-          <? $this->insert('components/table-loading', ['text' => 'Loading...']) ?>
-      </div>
-      <div ng-show="!notReady && brands.length == 0 && tableParams.searchText.length > 0">
-          <div class="local-category-page margin-bottom-20">
-            <? $this->insert('components/local-category-empty-content', ['text' => 'No Search Result']) ?>      
-          </div>
-      </div>
-      <div ng-show="!notReady && brands.length == 0 && tableParams.searchText.length <= 0">
-          <div class="local-category-page margin-bottom-20">
-            <? $this->insert('components/local-category-empty-content', ['text' => 'You do not have an Attribute']) ?>      
-          </div>
-      </div>
-    </div>
-    <div class="page-navigation">
-      <span>
-        <!-- prev page button -->
-        <a ng-click="nextPage(-1)">
-          <i class="fa fa-chevron-left" ng-class="{'grey-chevron': tableParams.page == 0, 'blue-chevron' : tableParams.page > 0}"></i>
-        </a>
-        <span> Page {{ tableParams.page + 1 }} of {{ totalPage() }}</span>
-        <!-- next page button -->
-        <a ng-click="nextPage(1)">
-          <i class="fa fa-chevron-right padding-right-15" ng-class="{'grey-chevron': tableParams.page == totalPage() - 1, 'blue-chevron' : tableParams.page < totalPage() - 1}"></i></a>
-        <span class="view-page-separator">View per page</span>
-        <!-- Split button -->
-        <div class="btn-group">
-          <button type="button" class="btn btn-default">
-          {{ tableParams.pageSize }}
-          </button>
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="caret"></span>
-            <span class="sr-only">Toggle Dropdown</span>
-          </button>
-          <ul class="dropdown-menu dropdown-menu-right">
-            <li ng-repeat="size in [10,25,50]" ><a ng-click="setPageSize(size)">{{size}}</a></li>
-          </ul>
-        </div>
-      </span>
-    </div>
-	</div>
-
+    </nc-table>
+    <nc-pagination nc-model="params" nc-pagination-total="list.total" ></nc-pagination>
+  </div>
 <?php $this->stop() ?>
