@@ -6,7 +6,7 @@
 		<div class="page-header with-border">
 		    <h1 class="float-left page-header-title">Local Category</h1>
 		    <span class="float-right page-header-action">
-		        <button type="button" class="btn-white btn margin-right-10" data-toggle="modal" data-target="#local-category-detail" ng-click="$emit('openEditLocalCategory')">
+		        <button type="button" class="btn-white btn margin-right-10" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#local-category-detail" ng-click="$emit('openEditLocalCategory')">
 		          <span class="">Create Local Category</span>
 		        </button>
 		        <button type="button" class="btn-blue btn btn-width-xl" ng-click="$emit('saveLocalCategory')">
