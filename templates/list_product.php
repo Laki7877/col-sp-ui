@@ -2,20 +2,15 @@
 
 <?php $this->start('page-body') ?>
 <div ng-controller="ProductListCtrl" ng-init="init(<?= $params ?>)">
-    <? $this->insert('components/modal-export-product', ['id' => 'export-product', 'newProductNum' => '1,500']) ?>
-    <? $this->insert('components/modal-export-product-progressing', ['id' => 'export-product-progressing', 'percent' => '60']) ?>
-
-    <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{alert.type}}" close="alert.close()">{{alert.message}}</div>
     <? $this->insert('components/page-title-with-buttons', ['text' => 'Products']) ?>
+    <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{alert.type}}" close="alert.close()">{{alert.message}}</div>
     <div class="row search-section-wrapper">
       <form ng-submit="bulk.fn()" class="search-section section-action">
         <div class="input-group">
           <div class="input-group-btn">
             <div class="dropdown-btn">
               <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                  <span id="bulk" class="dropdown-text margin-right-10 search-product-text">
-			            Choose Action 
-		              </span>
+                  <span id="bulk" class="dropdown-text margin-right-10 search-product-text">- Choose Action -</span>
                   <span class="caret margin-left-10"></span>
               </button>
               <ul class="dropdown-menu search-product-dropdown">
@@ -24,16 +19,15 @@
             </div>
           </div><!-- /btn-group -->
           <div class="input-group-btn">
-            <button class="btn-white-fluid btn">
-              <span class="button-text-blue">Confirm <strong ng-show="checkBoxCount() > 0">({{ checkBoxCount() }})</strong></span>
+            <button class="btn-white btn">
+              <span class="button-text-blue">Confirm</span>
             </button>
           </div>
         </div>
       </form>
       <form ng-submit="applySearch()" class="search-section section-search">
         <div class="input-group">
-          <input type="text" class="form-control input-search-icon search-box" 
-          ng-model="searchText" placeholder="Search for Product Name, PID, SKU" aria-describedby="basic-addon2">
+          <input type="text" class="form-control input-search-icon search-box" ng-model="searchText" placeholder="Search" aria-describedby="basic-addon2">
           <span class="input-group-btn">
             <button class="btn btn-white">Search</button>
           </span>
@@ -57,7 +51,7 @@
         <thead>
           <tr class="table-head" >
             <th class="checkbox-column">
-                <input type="checkbox" aria-label="Checkbox for following text input" ng-click="checkAll()" ng-model="allChecked">
+                <input type="checkbox" aria-label="Checkbox for following text input" ng-model="checkAll">
             </th>
             <th class="display-column"></th>
             <th ng-click="setOrderBy('ProductNameEn')">
@@ -68,7 +62,7 @@
               <a class="header-link" ><span ng-class="sort('OriginalPrice', true)">Price</span></a>
               <i class="fa" ng-class="sort('OriginalPrice')">
             </th>
-            <th><span>Info</span></th>
+            <th><span>Info.</span></th>
             <th><span>Image</span></th>
             <th class="status-column">
               Status
@@ -87,7 +81,7 @@
         <tbody>
       	  <tr ng-repeat="row in productList" >
                   <td class="checkbox-column">
-                    <input type="checkbox" aria-label="Checkbox for following text input" ng-model="checkBoxCache[row.ProductId]">
+                    <input type="checkbox" aria-label="Checkbox for following text input" ng-model="row.checked">
                   </td>
                   <td class="display-column">
                     <div class="img-holder">
@@ -122,9 +116,9 @@
                   </td>
                   <td class="modified-column">{{ row.UpdatedDt | date:'shortDate':'+700' }}</td>
                   <td class="action-column">
-                    <a class="fa fa-gear color-dark-grey icon-size-20"  uib-popover-template="'product/action'" popover-placement="bottom" popover-append-to-body="true" popover-any>
+                    <i class="fa fa-gear color-dark-grey icon-size-20"  uib-popover-template="'product/action'" popover-placement="bottom" popover-append-to-body="true" popover-any>
                        <i class="fa fa-caret-down color-dark-grey"></i>
-                    </a>
+                    </i>
                    
                   </td>
           </tr>
@@ -172,7 +166,4 @@
       </span>
     </div>
 	</div>
-    
-
-
 <?php $this->stop() ?>

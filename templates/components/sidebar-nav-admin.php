@@ -1,9 +1,6 @@
 <?php
     $items = [
         [ "name" => "Admin Accounts", "icon" => "fa-chevron-right", "sub_sidebar" => "#sub-admin-account" ],
-        [ "name" => "Admin Roles", "icon" => "fa-chevron-right", "sub_sidebar" => "#sub-admin-role" ],
-        [ "name" => "Shop Accounts", "icon" => "fa-chevron-right", "sub_sidebar" => "#sub-admin-shop-account" ],
-        [ "name" => "Shop Types", "icon" => "fa-chevron-right", "sub_sidebar" => "#sub-admin-shop-type" ],
         [ "name" => "Attribute", "icon" => "fa-chevron-right", "sub_sidebar" => "#sub-attribute" ],
         [ "name" => "Attribute Set", "icon" => "fa-chevron-right", "sub_sidebar" => "#sub-attribute-set" ],
         [ "name" => "Brand", "icon" => "fa-chevron-right", "sub_sidebar" => "#sub-brand" ],

@@ -9,21 +9,14 @@
     
     <ul class="sub-sidebar" style="display: none;" id="sub-sidebar-product">
         <li class="sub-sidebar-header">Product</li>
-        <li ng-class="activeUrl('/products')" class="item margin-top-20"><a href="/products">View</a></li>
-        <li ng-class="activeUrl('/products/add')" class="item"><a href="/products/select">Add</a></li>
+        <li ng-class="$root.activeUrl('/products')" class="item margin-top-20"><a href="/products">View</a></li>
+        <li ng-class="$root.activeUrl('/products/add')" class="item"><a href="/products/select">Add</a></li>
         <li class="item"><a href="">Import</a></li>
         <li class="item"><a href="">Export</a></li>
-        <li ng-class="activeUrl('/categories')" class="item margin-top-30"><a href="/categories">Local Category</a></li>
+        <li ng-class="$root.activeUrl('/categories')" class="item margin-top-30"><a href="/categories">Local Category</a></li>
         <li class="item"><a href="">Product Review</a></li>
-        <li ng-class="activeUrl('/products/images')" class="item"><a href="/products/images">Product Images</a></li>
+        <li class="item"><a href="">Product Images</a></li>
     </ul>
-
-    <ul class="sub-sidebar" style="display: none;" id="sub-sidebar-account">
-        <li class="sub-sidebar-header">Account</li>
-        <li ng-class="activeUrl('/accounts')" class="item margin-top-20"><a href="/accounts">User Accounts</a></li>
-        <li ng-class="activeUrl('/roles')" class="item"><a href="/roles">User Roles</a></li>
-    </ul>
-
 <?php $this->stop() ?>
 
 <?php $this->start('page-content') ?>

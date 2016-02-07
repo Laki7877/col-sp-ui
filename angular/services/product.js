@@ -12,64 +12,21 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             return common.makeRequest(req);
         };
 
-        service.getAllVariants = function(parameters){
-            var req = {
-                method: 'GET',
-                url: '/ProductStages/All',
-                params: parameters
-            };
-
-            return common.makeRequest(req);
-        }
-
-        service.updateAllVariants = function(obj){
-            var req = {
-                method: 'PUT',
-                url: '/ProductStages/All/Image',
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            };
-
-            return common.makeRequest(req);
-        }
-
-        service.duplicate = function(ProductId){
-             //this URL structure is weird dont u think
-            var req = {
-                method: 'POST',
-                url: '/ProductStages/' + ProductId
-            };
-
-            return common.makeRequest(req);
-        };
-
         service.getAll = function(parameters) {
             var req = {
                 method: 'GET',
-                url: '/ProductStages/',
+                url: '/ProductStages',
                 params: {
                     _order: parameters.orderBy || 'ProductId',
                     _limit: parameters.pageSize || 10,
                     _offset: parameters.page * parameters.pageSize || 0,
                     _direction: parameters.direction || 'asc',
-                    _filter: parameters.filter || 'ALL',
+                    _filter: parameters.filter,
                     searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined
                 }
             };
 
             return common.makeRequest(req);
-        };
-        
-        service.export = function(tobj){
-            var path = '/ProductStages/Export';
-            return common.makeRequest({
-                responseType: 'arraybuffer',
-                method: 'POST',
-                url: path,
-                data: tobj
-            });
         };
 
         service.publish = function(tobj, Status) {
@@ -86,16 +43,6 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 data: tobj
             });
         };
-
-
-        service.bulkPublish = function(tobj){
-            return common.makeRequest({
-                method: 'POST',
-                url: '/ProductStages/Publish',
-                data: tobj
-            });
-        };
-
         service.visible = function(obj) {
             return common.makeRequest({
                 method: 'PUT',
@@ -357,8 +304,6 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 	m.Visibility = m.Visibility;
                     m.Images = m.Images || [];
                     m.Images360 = m.Images360 || [];
-                    m.WeightUnit = (m.WeightUnit || "").trim();
-                    m.DimensionUnit = (m.DimensionUnit || "").trim();
                     m.hash = util.variant.hash(m.FirstAttribute, m.SecondAttribute);
                     m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
                     return m;

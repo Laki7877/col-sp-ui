@@ -2,12 +2,8 @@
 
 <?php $this->start('page-body') ?>
 	<div>
-    <? $this->insert('components/page-title-with-buttons', ['text' => 'Products', 'buttons' => [
-      ['link' => '#', 'class' => 'btn-white', 'attributes' => 'data-toggle="modal" data-target="#export-product"', 'name' => 'Export'],
-      ['link' => '#', 'class' => 'btn-white', 'attributes' => '', 'name' => 'Import'],
-      ['link' => '/?p=global_category', 'class' => 'btn-blue btn-width-xl', 'attributes' => '', 'name' => 'Add Product'],
-    ]]) ?>
-    <? $this->insert('components/search-section', ['actions' => ['Export Products', 'Delete Products', 'Hide Products', 'Show Products', 'Publish Products']]) ?>
+    <? $this->insert('components/page-title-with-buttons', ['text' => 'Products']) ?>
+    <? $this->insert('components/search-section') ?>
     <div class="filter-section">
       <div class="filter-container">
         <span>Filters:</span>
@@ -15,13 +11,7 @@
         <a class="filter-seperator">Approved</a>
         <a class="filter-seperator">Not Approved</a>
         <a class="filter-seperator">Wait for Approval</a>
-        <a class="filter-seperator">Not Approved</a>
-
-        <div class="filter-checkbox">
-          <input type="checkbox" aria-label="Checkbox for following text input">
-          Show Online/Offline Status
-        </div>
-
+        <a class="filter-seperator">Not Approved</a>            
       </div>
     </div>
     <div class="table-section">
@@ -33,7 +23,7 @@
             </th>
             <th class="display-column"></th>
             <th>
-              <a class="header-link" href="#"><span>Product Nam  e</span></a>
+              <a class="header-link" href="#"><span>Product Name</span></a>
               <i class="fa fa-caret-down color-grey">
             </th>
             <th class="price-column">
@@ -249,9 +239,5 @@
       </span>
     </div>
   </div>
-
-  <? $this->insert('components/modal-export-product', ['id' => 'export-product', 'newProductNum' => '1,500']) ?>
-  <? $this->insert('components/modal-export-product-progressing', ['id' => 'export-product-progressing', 'percent' => '60']) ?>
-  <? $this->insert('components/modal-export-product-complete', ['id' => 'export-product-complete']) ?>
 
 <?php $this->stop() ?>

@@ -1,12 +1,3 @@
-<?php
-if ($searchPlaceHolder) { 
-  $searchPlaceHolder = $searchPlaceHolder;
-}
-else {
-  $searchPlaceHolder = 'Search';
-}
-?>
-
 <div class="row search-section-wrapper">
   <div class="search-section section-action">
     <div class="input-group">

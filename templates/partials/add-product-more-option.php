@@ -15,13 +15,12 @@
 
 						<ui-select ng-model="formData.RelatedProducts" 
 						multiple limit="10">
-							<ui-select-match placeholder="Search by Product Name or PID">
-								<span>{{ $item.ProductNameEn }}</span>
+							<ui-select-match placeholder="Separate tags with comma (or enter)">
+								<span>{{ $item.ProductNameEn }} ({{$item.Pid}})</span>
 							</ui-select-match>
-							<ui-select-choices repeat="item in (availableRelatedProducts | exclude: formData.RelatedProducts : 'ProductId') track by item.ProductId" 
-                            
+							<ui-select-choices repeat="item in (availableRelatedProducts) track by item.ProductId" 
 							refresh="refreshRelatedProducts($select.search)" refresh-delay="1">
-								{{ item.ProductNameEn }}
+								{{ item.ProductNameEn }} ({{item.Pid}})
 							</ui-select-choices>
 						</ui-select>
 					</div>
@@ -81,7 +80,7 @@
 						'label': 'Meta Keywords',
 						'error' : {
 						'messages': {
-							'pattern': 'Only english letters and numbers allowed'
+							'pattern': 'Only letters and numbers allowed'
 						},
 						'show': $root.isInvalid(addProductForm.SEO_MetaKeywords),
 						'conditions' : addProductForm.SEO_MetaKeywords.$error
@@ -91,12 +90,13 @@
 						placeholder="Keywords separated by comma"
 						class="form-control width-field-normal"
 						name="SEO_MetaKeywords"
+						ng-pattern="/^[0-9A-Za-z,\s]+$/"
 						ng-model="formData.SEO.MetaKeywords"
 						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaKeywords) }"
 						/>
 					</div>
 
-					<!--<div ng-template="common/input/text2"
+					<div ng-template="common/input/text2"
 						ng-template-options="{
 						'label': 'Product URL Key (Thai)',
 						'error' : {
@@ -115,7 +115,7 @@
 						ng-model="formData.SEO.ProductUrlKeyTh"
 						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_ProductUrlKeyTh) }"
 						/>
-					</div>-->
+					</div>
 
 					<div ng-template="common/input/text2"
 						ng-template-options="{
@@ -144,8 +144,7 @@
 						'error' : {
 						'messages': {
 						'max': 'Only numbers from 1 to 10000 is allowed',
-						'min': 'Only numbers from 1 to 10000 is allowed',
-                        'pattern': 'Only numbers from 1 to 10000 is allowed' 
+						'min': 'Only numbers from 1 to 10000 is allowed'
 						},
 						'show': $root.isInvalid(addProductForm.SEO_ProductBoostingWeight),
 						'conditions' : addProductForm.SEO_ProductBoostingWeight.$error
@@ -154,8 +153,7 @@
 						<input
 						type="number"
 						class="form-control width-field-normal"
-						min="0" max="10000" step="1"
-                        ng-pattern="/^[0-9]+$/"
+						min="0" max="10000"
 						name="SEO_ProductBoostingWeight"
 						ng-model="formData.SEO.ProductBoostingWeight"
 						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_ProductBoostingWeight) }"
@@ -186,10 +184,7 @@
 							</div>
 							<span class="help-block"></span>
 						</div>
-						<div class="width-field-tooltip no-padding-left">
-                            <i class="fa fa-2x fa-question-circle color-grey" tooltip-trigger="mouseenter"
-                            uib-tooltip="Date when your product will go online"></i>
-                        </div>
+						<div class="width-field-tooltip no-padding-left"><i class="fa fa-2x fa-question-circle color-grey" data-toggle="btooltip" data-placement="right" title="Date when your product will go online"></i></div>
 					</div>
 
 					<div class="form-group">
@@ -214,10 +209,8 @@
 							</div>
 
 						</div>
-					    <div class="width-field-tooltip no-padding-left">
-                            <i class="fa fa-2x fa-question-circle color-grey" tooltip-trigger="mouseenter"
-                            uib-tooltip="Date when your product will go offline"></i>
-                        </div>
+						<div class="width-field-tooltip no-padding-left"><i class="fa fa-2x fa-question-circle color-grey" data-toggle="btooltip" data-placement="right" title="Date when your product will go offline"></i></div>
+						
 					</div>
 
 					<? $this->insert('components/forms/multiple-checkbox', ["label" => "Control Flag", "ng_model" => "formData.ControlFlags", "choices" => ["Flag 1", "Flag 2", "Flag 3"]]) ?>

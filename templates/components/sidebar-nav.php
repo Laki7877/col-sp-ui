@@ -7,7 +7,7 @@
         [ "name" => "Promotion", "icon" => "fa-bookmark" ],
         [ "name" => "Shop Setting", "icon" => "fa-sliders" ],
         [ "name" => "Report", "icon" => "fa-line-chart" ],
-        [ "name" => "Account", "icon" => "fa-gear", "sub_sidebar" => "#sub-sidebar-account" ],
+        [ "name" => "Account", "icon" => "fa-gear" ],
     ];
 ?>
 

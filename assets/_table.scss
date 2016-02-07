@@ -41,12 +41,6 @@
 	.modified-column {
 		width: 88px;
 	}
-
-  tbody .action-column{
-    width: 60px;
-    padding-top: 14px;
-    padding-bottom: 14px;
-  }
 }
 
 //Table section
@@ -62,10 +56,12 @@
     border-color: $color-grey;
   }
   // End setting border color
-  
-  
-  .table > tbody > tr:first-child > td {
-    border-top: none;
+
+  .product-list-table {
+   
+    > tbody >tr:first-child > td {
+      border-top: none;
+    }
   }
 
   // Override Bootstrap's th width that set to 2px
@@ -170,6 +166,7 @@
 
 // Page navigation section
 .page-navigation {
+  margin-bottom: 100px;
   float: right;
 
   .grey-chevron {
@@ -219,14 +216,6 @@
   .filter-active {
     color:  $color-black;
   }
-
-  .filter-checkbox{
-    float: right;
-    input{
-      margin-top: 0px;
-      margin-right: 6px;
-    }
-  }
 }
 
 //Page body: Search section
@@ -241,10 +230,6 @@
 
   .section-action {
     width: 280px;
-    .body-dropdown-button{
-      border-top-right-radius: 0px;
-      border-bottom-right-radius: 0px;
-    }
   }
 
   .section-search {
@@ -259,82 +244,73 @@
     height: 30px;
   }
 
-
-  .search-section .btn-white-fluid {
-	  width: auto;
-    	   height: 30px;
-	   margin-right:20px;
-	  @include button-variant($color-theme, $white, $btn-default-border);
-  }
-
-
   .body-dropdown-button {
-	  height: 30px;
-	  width: 180px;
+    height: 30px;
+    width: 180px;
 
-	  .dropdown-text {
-		  width: 135px;
-		  display: inline-block;
-	  }
+    .dropdown-text {
+      width: 135px;
+      display: inline-block;
+    }
   }
 
   .dropdown-text {
-	  text-align: left;
+    text-align: left;
   }
 
   .search-box {
-	  height: 30px;
+    height: 30px;
   }
 
   .checkbox-wrapper {
-	  margin-top: 5px;
+    margin-top: 5px;
   }
 }
 
 
 .table.ah-table {
-	> thead > tr > th {
-		border-bottom: 1px solid $color-grey;
-		&, > * {
-			vertical-align: middle;
-		}
-	}
+  > thead > tr > th {
+    border-bottom: 1px solid $color-grey;
+    &, > * {
+      vertical-align: middle;
+    }
+  }
 
-	> tbody > tr > td {
-		border-top: none;
-	}
+  > tbody > tr > td {
+    border-top: none;
+  }
 
-	&.ah-table-extra-padding {
-		> tbody > tr > td {
-			padding-top: 20px;
-			padding-bottom: 20px;
-		}
-	}
+  &.ah-table-extra-padding {
+    > tbody > tr > td {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
 
-	&.ah-table-line {
-		> tbody > tr:first-child > td {
-			border-top: none;
-		}
+  &.ah-table-line {
+    > tbody > tr:first-child > td {
+      border-top: none;
+    }
 
-		> tbody > tr > td {
-			border-top: 1px solid $color-grey;
-		}    
-	}
-
-	margin-bottom: 0;
+    > tbody > tr > td {
+      border-top: 1px solid $color-grey;
+    }    
+  }
+  
+  margin-bottom: 0;
 }
 
 .table {
-	.column-text-ellipsis {
-		max-width: 0;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-	}
+  .column-text-ellipsis {
+    max-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 .table-border-none {
-	> tbody > tr:first-child > td {
-		border-top: none;
-	}
+  > tbody > tr:first-child > td {
+    border-top: none;
+  }
 }

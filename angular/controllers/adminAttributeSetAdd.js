@@ -1,43 +1,94 @@
-module.exports = function($scope, $controller, AttributeSetService, AttributeService, config) {
-	'ngInject';
-	$scope.visibleOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
-	$scope.attributeOptions = [];
+var angular = require('angular');
+
+module.exports = ['$scope', 'Alert', 'AttributeSet', 'Attribute','$window', function($scope, Alert, AttributeSet, Attribute, $window) {
+	$scope.form = {};
+	$scope.formData = {};
 	$scope.tagOptions = [];
-    $scope.onKeywordAdded = function(item, model){
-		$scope.keywordValidConditions = {};
-		if(!item) return $scope.formData.Tags.pop();
+	$scope.alert = new Alert();
+	$scope.attributeOptions = [];
+	$scope.visibleOptions = AttributeSet.visibleOptions;
+	$scope.formDataSerialized = {};
+	$scope.edit = 0;
+	$scope.saving = false;
+	$scope.test = function(i) {
+		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);
+	};
 
-		if($scope.formData.Tags.length > 100){
-			$scope.keywordValidConditions['tagcount'] = true;
+	$window.onbeforeunload = function (e) {
+		if(!$scope.form.$dirty){
+			//not dirty
+			return null;
 		}
 
-		if(item.length > 30){
-			$scope.keywordValidConditions['taglength'] = true;
+		var message = "Your changes will not be saved.",
+		e = e || window.event;
+		// For IE and Firefox
+		if (e) {
+		  e.returnValue = message;
 		}
 
-		if(!item.match(/^[a-zA-Z0-9ก-ฮ\s\-]+$/)){
-			$scope.keywordValidConditions['pattern'] = true;
+		// For Safari
+		return message;
+	};
+	
+	$scope.loadAttribute = function() {
+		Attribute.getAll().then(function(data) {
+			$scope.attributeOptions = data;
+		});
+	};
+	$scope.init = function(params) {
+		if(angular.isDefined(params)) {
+			//edit mode
+			$scope.edit = params.id;
+			AttributeSet.get($scope.edit).then(function(data) {
+				$scope.formData = AttributeSet.deserialize(data);
+				console.log($scope.formData);
+			});
+		} else {
+			//create mode!
+			$scope.edit = 0;
+			$scope.formData = AttributeSet.generate();
+		}
+		$scope.loadAttribute();
+	};
+	$scope.cancel= function() {
+		$window.location.href = '/admin/attributesets';
+	};
+	$scope.save = function() {
+		if($scope.saving) {
+			return;
+		}
+		
+		$scope.form.$setSubmitted();
+		if($scope.form.$invalid) {
+			$scope.alert.error('Please fill out the required fields.');
+			return;
 		}
 
-		if(Object.keys($scope.keywordValidConditions).length > 0){
-			//if there is error, revert
-			$scope.formData.Tags.pop();
+		$scope.alert.close();
+		$scope.formDataSerialized = AttributeSet.serialize($scope.formData);
+		if ($scope.edit) {
+			$scope.saving = true;
+			AttributeSet.update($scope.edit, $scope.formDataSerialized).then(function(data) {
+				$scope.alert.success('Successful saved. <a href="/admin/attributesets">View Attribute Set List</a>');
+				$scope.saving = false;
+				$scope.form.$setPristine(true);
+			}, function(err) {
+				$scope.saving = false;
+				$scope.alert.error(err);
+			});
+		}
+		else {
+			$scope.saving = true;
+			AttributeSet.create($scope.formDataSerialized).then(function(data) {
+				$scope.alert.success('Successful saved. <a href="/admin/attributesets">View Attribute Set List</a>');
+				$scope.edit = data.AttributeSetId;				
+				$scope.saving = false;
+				$scope.form.$setPristine(true);
+			}, function(err) {
+				$scope.saving = false;
+				$scope.alert.error(err);
+			});
 		}
 	};
-	$controller('AbstractAddCtrl', {
-		$scope: $scope,
-		options: {
-			id: 'AttributeSetId',
-			url: '/admin/attributesets',
-			item: 'Attribute Set',
-			service: AttributeSetService,
-			init: function(scope) {		
-				//Get all available roles
-				AttributeService.listAll()
-					.then(function(data) {
-						scope.attributeOptions = data;
-					});
-			}
-		}
-	});
-}
+}];

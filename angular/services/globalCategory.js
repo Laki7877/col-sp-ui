@@ -1,4 +1,4 @@
-module.exports = ['common', '$q', 'util', function(common, $q, util) {
+module.exports = ['common', '$q' , function(common, $q) {
 	'use strict';
 	var service = {};
 

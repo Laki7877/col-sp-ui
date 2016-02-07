@@ -3,24 +3,20 @@
 var angular = require('angular');
 var bulk = require('bulk-require')(__dirname, 
 	['controllers/*.js', 'services/*.js', 'helpers/*.js', 
-	'directives/*.js', 'filters/*.js', 'libs/*.js']);
+	'directives/*.js', 'filters/*.js']);
 var config = require('./config');
 var template = require('./template');
 
 //External dependencies
-global._ = require('lodash');
 require('angular-ui-bootstrap');
 require('angular-animate');
 require('angular-file-upload');
 require('angular-ui-tree');
 require('angular-base64');
+require('ui-select');
 require('angular-sanitize');
 require('angular-scroll');
 require('angular-bootstrap-datetimepicker');
-require('ui-select');
-
-//Nc package
-require('./nc');
 
 //Internal dependencies
 var controllers = bulk.controllers;
@@ -29,11 +25,10 @@ var helpers = bulk.helpers;
 var directives = bulk.directives;
 var filters = bulk.filters;
 
-var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.datetimepicker', 'duScroll','ngSanitize','ui.select', 'ngAnimate', 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
+var app = angular.module('colspApp', ['ui.bootstrap.datetimepicker', 'duScroll','ngSanitize','ui.select', 'ngAnimate', 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
 
 //App config
-.config(['$uibTooltipProvider', 'uiSelectConfig', '$ncPaginationProvider', '$ncAlertProvider', function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
-
+.config(['$uibTooltipProvider', 'uiSelectConfig', function($tooltipProvider, uiSelectConfig) {
 	//Default close tooltip when click again
 	$tooltipProvider.setTriggers({
 		'clickanystart' : 'clickanyend'
@@ -41,40 +36,16 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 	$tooltipProvider.options({
 		trigger: 'clickanystart'
 	});
-	$ncPaginationProvider.paginationSizes = [10, 20, 50, 100];
-	uiSelectConfig.taggingTokens = '[ENTER|,]';
-
+	//uiSelectConfig.taggingTokens = ',';
 }])
 
 //App template cache load
 .run(template)
 
 //App init
-.run(['$rootScope', 'storage', '$window', '$location', 'Credential', function($rootScope, storage, $window, $location, Credential) {
-	
-	$rootScope.Profile = storage.getCurrentUserProfile();
-	$rootScope.Imposter = storage.getImposterProfile();
-	if(!$rootScope.Profile && $window.location.pathname != "/login"){
-		storage.put('redirect', $window.location.pathname);
-		$window.location.href = "/login";
-	}
-    
-    //Create global logout function
-    $rootScope.logout = function(){
-        if($rootScope.Imposter){
-            return Credential.logoutAs().then(function(){
-                //return to normal flow
-                $window.location.href = "/";
-            }, function(){
-                alert("Fetal error while logging out.");
-            });
-        }
-        
-        Credential.logout();
-        $window.location.href = "/login"        
-    };
-
-    
+.run(['$rootScope', '$base64', 'storage', '$window', function($rootScope, $base64, storage, $window) {
+	//TODO: login page
+	storage.storeSessionToken($base64.encode('duckvader:vader'));
 	//Create generic form validator functions
 	$rootScope.isInvalid = function(form) {
 		if(angular.isDefined(form) && 
@@ -83,8 +54,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 			return form.$invalid && (form.$dirty || form.$$parentForm.$submitted);
 		}
 		return false;
-	};
-
+	}; 
 	
 	//Prevent image dragdrop on other elements
 	$window.addEventListener("dragover",function(e){
@@ -124,6 +94,10 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 			'active': $window.location.pathname == url
 		};
 	};
+	$rootScope.test = function(form) {
+		console.log(form);
+		return false;
+	}
 }])
 //Configuration
 .value('config', config)
@@ -137,42 +111,24 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 //Services
 .factory('Product', services.product)
 .factory('Image', services.image)
-.factory('ImageService', services.imageService)
 .factory('Category', services.category)
 .factory('Shop', services.shop)
 .factory('LocalCategory', services.localCategory)
 .factory('GlobalCategory', services.globalCategory)
 .factory('Attribute', services.attribute)
-.factory('AttributeService', services.attributeService) //newer version
 .factory('AttributeSet', services.attributeSet)
-.factory('AttributeSetService', services.attributeSetService) //newer version
 .factory('Brand', services.brand)
-.factory('BrandService', services.brandService) //newer version
-.factory('SellerAccountService', services.sellerAccountService)
-.factory('SellerRoleService', services.sellerRoleService)
-.factory('SellerPermissionService', services.sellerPermissionService)
-.factory('AdminAccountService', services.adminAccountService)
-.factory('AdminRoleService', services.adminRoleService)
-.factory('AdminPermissionService', services.adminPermissionService)
-.factory('AdminShopService', services.adminShopService)
-.factory('AdminShoptypeService', services.adminShoptypeService)
-.factory('ShopPermissionService', services.shopPermissionService)
 .factory('VariantPair', helpers.variantPair)
 .factory('Alert', services.alert)
 .factory('Blocker', services.blocker)
-.factory('Credential', services.credential)
 
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)
-.directive('ngPermission', directives.ngPermission)
 .directive('ngDelegate', directives.ngDelegate)
 .directive('ngCkeditor', directives.ngCkeditor)
 .directive('ngSlideToggle', directives.ngSlideToggle)
 .directive('ngTemplate', directives.ngTemplate)
 .directive('uiSelectMaxlength', directives.uiSelectMaxlength)
-.directive('ngMatch', directives.ngMatch)
-.directive('ngMinnumber', directives.ngMinnumber)
-.directive('ngMaxnumber', directives.ngMaxnumber)
 .directive('popoverAny', directives.popoverAny)
 
 //Filters
@@ -183,22 +139,14 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .filter('exclude', filters.exclude)
 .filter('excludeCategory', filters.excludeCategory)
 .filter('truncate', filters.truncate)
-.filter('slice', filters.slice)
-.filter('leadingzero', filters.leadingzero)
 
 //Controllers
 .controller('RootCtrl', controllers.root)
 .controller('ProductListCtrl', controllers.productList)
 .controller('ProductAddCtrl', controllers.productAdd)
-.controller('ProductImageManagementCtrl', controllers.productImageManagement)
 .controller('ProductAddSelectCategoryCtrl', controllers.productAddSelectCategory)
 .controller('ProductListLocalCategoryCtrl', controllers.productListLocalCategory)
-.controller('ProductImportCtrl', controllers.productImport)
 .controller('LocalCategoryCtrl', controllers.localCategory)
-.controller('SellerAccountCtrl', controllers.sellerAccount)
-.controller('SellerAccountAddCtrl', controllers.sellerAccountAdd)
-.controller('SellerRoleCtrl', controllers.sellerRole)
-.controller('SellerRoleAddCtrl', controllers.sellerRoleAdd)
 .controller('AdminAttributeCtrl', controllers.adminAttribute)
 .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)
 .controller('AdminAttributeAddCtrl', controllers.adminAttributeAdd)
@@ -206,16 +154,3 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .controller('AdminCategoryCtrl', controllers.adminCategory)
 .controller('AdminBrandCtrl',controllers.adminBrand)
 .controller('AdminBrandAddCtrl', controllers.adminBrandAdd)
-.controller('AdminAccountCtrl', controllers.adminAccount)
-.controller('AdminAccountAddCtrl', controllers.adminAccountAdd)
-.controller('AdminRoleCtrl', controllers.adminRole)
-.controller('AdminRoleAddCtrl', controllers.adminRoleAdd)
-.controller('AdminShopCtrl', controllers.adminShop)
-.controller('AdminShopAddCtrl', controllers.adminShopAdd)
-.controller('AdminShoptypeCtrl', controllers.adminShoptype)
-.controller('AdminShoptypeAddCtrl', controllers.adminShoptypeAdd)
-.controller('LoginCtrl', controllers.login)
-.controller('AbstractListCtrl', controllers.abstractList)
-.controller('AbstractAddCtrl', controllers.abstractAdd)
-
-.controller('TestCtrl', controllers.test)

@@ -98,7 +98,3 @@ a.like-text {
 .alert .close {
 	@include text-shadow(none);
 }
-
-.table > thead > tr > th {
-	border-bottom-width: 1px;
-}

@@ -1,11 +1,3 @@
-<?php
-if (!isset($actions)) {
-  $actions = ['Action', 'Another action'];
-}
-if (!isset($serach_placeholder)) {
-  $serach_placeholder = "Search for Product SKU, Name, ...";
-}
-?>
 <div class="row search-section-wrapper">
   <div class="search-section section-action">
     <div class="input-group">

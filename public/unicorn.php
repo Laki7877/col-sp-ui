@@ -102,10 +102,7 @@ class Route
 
 		// no match
 		// TODO: change this
-		// self::$_currentRoute = null;
-		// if(substr($uri, 0, 6) == "/admin") {
-		// 	return View::render('404-admin');
-		// }
+		self::$_currentRoute = null;
 		return View::render('404');
 	}
 }

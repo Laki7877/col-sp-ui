@@ -19,23 +19,14 @@ form
 
 .ah-form
 	@extend .form-horizontal
-	@include clearfix
 
 	.control-padding-top
 		padding-top: ($padding-base-vertical + 1) // Default padding plus a border
 
 	.form-group
-		$form-group-margin-bottom: 15px
 		margin-left: 30px
 		margin-right: 30px
-		margin-bottom: $form-group-margin-bottom
-		
-		&.form-group-closer
-			$close-margin-diff: 5px
-			margin-top: -$close-margin-diff
-			margin-bottom: $form-group-margin-bottom + $close-margin-diff
-			//margin-bottom: 25px
-
+		margin-bottom: 15px
 		.width-label
 			@extend .col-xs-3
 			width: 170px
@@ -67,15 +58,6 @@ form
 				vertical-align: middle
 			&.no-padding-left
 				padding-left: 0
-		.button-size-normal
-			@extend .col-xs-7
-			width: 120px
-		.button-size-large
-			@extend .col-xs-7
-			width: 200px
-
-	.form-group-link-action .form-text
-		padding-top: 0
 
 	.form-text
 		@extend .control-label
@@ -118,7 +100,7 @@ form
 			font-size: 16px
 			line-height: 1
 
-	.main-form-action .btn ~ .btn
+	.btn ~ .btn
 		margin-left: 10px
 
 	.input-with-unit

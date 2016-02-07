@@ -118,13 +118,6 @@ module.exports = ['common', function(common){
 			url: '/Attributes/' + id
 		});
 	};
-	service.list = function(parameters) {
-		return common.makeRequest({
-			method: 'GET',
-			url: '/Attributes',
-			params: parameters
-		});
-	};
 	service.getAll = function(parameters) {
 		if(parameters) {
 			return common.makeRequest({
@@ -232,6 +225,8 @@ module.exports = ['common', function(common){
 		angular.forEach(service.dataTypeOptions, function(item) {
 			delete processed[item.value];
 		});
+		
+		console.log(processed);
 		return processed
 	};
 	return service;
