@@ -29,14 +29,14 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
-			<div class="form-section">
-				<div class="form-section-content">
+			<div class="form-section margin-bottom-0">
+				<div class="form-section-content margin-filter">
 					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Product Status", "options" => ["All", "Wait for Approval", "Not Approved", "Approved"]]) ?>
-					<div class="form-group">
+					<div class="form-group margin-bottom-0">
 						<div class="filter-section filter-input">
 					     	<div class="filter-container-input">
 						        <span>Filters:</span>
-						        <a class="filter-first-option filter-active">None</a>
+						        <a class="filter-first-option first-label filter-active">None</a>
 						        <a class="filter-seperator">Information</a>
 						        <a class="filter-seperator">Image</a>
 						        <a class="filter-seperator">Variation</a>
