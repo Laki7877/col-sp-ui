@@ -9,7 +9,7 @@
 		    	<button type="button" class="btn-white btn margin-right-10">
 		          <span class="">Export</span>
 		        </button>
-		        <button type="button" class="btn-white btn margin-right-10" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#modal-category-detail" ng-click="$emit('openEditGlobalCategory')">
+		        <button type="button" class="btn-white btn margin-right-10" data-toggle="modal" data-target="#modal-category-detail" ng-click="$emit('openEditGlobalCategory')">
 		          <span class="">Add New Category</span>
 		        </button>
 		        <button type="button" class="btn-blue btn btn-width-xl" ng-click="$emit('saveGlobalCategory')">
@@ -38,7 +38,7 @@
 						Action
 					</span>
 				</div>
-				<div class="col-xs-12 no-padding margin-bottom-60" ui-tree="treeOptions" max-depth="4">
+				<div class="col-xs-12 no-padding margin-bottom-60" ui-tree max-depth="4">
 					<ol class="sortable no-padding" ui-tree-nodes ng-model="categories">
 						<li ng-repeat="node in categories" ui-tree-node ng-include="'global_category/nodes'"></li>
 					</ol>	
@@ -58,12 +58,12 @@
 		<div class="modal fade" tabindex="-1" role="dialog" id="modal-category-detail">
 			<div class="modal-dialog modal-xl">
 				<div class="modal-content">
-        			<div  class="margin-top-20 margin-bottom-20" ng-show="alert2.show" uib-alert template-url="common/alert" type="{{ alert2.type }}" close="alert2.close()"><span ng-bind-html="alert2.message"></span></div>
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						<h3 class="modal-title">Global Category Detail</h3>
 					</div>
 					<div class="modal-body margin-top-20">
+						<div ng-show="alert2.show" uib-alert template-url="common/alert" type="{{ alert2.type }}" close="alert2.close()" ng-bind-html="alert2.message"></div>
 						<form class="ah-form" name="editingForm" ng-submit="$emit('saveEditGlobalCategory')" novalidate>
 							<div class="row">
 								<div class="col-xs-12">
@@ -98,8 +98,7 @@
 								                  'labelClass': 'required',
 								                  'error' : {
 								                        'messages': {
-								                          'required': 'This is a required field',
-								                          'pattern': 'Only English allowed'
+								                          'required': 'This is a required field'
 								                        },
 								                        'show': $root.isInvalid(editingForm.NameEn),
 								                        'conditions' : editingForm.NameEn.$error
@@ -110,7 +109,6 @@
 												 name="NameEn"
 												 ng-model="editingCategory.NameEn"
 												 ng-class="{ 'has-error' : $root.isInvalid(editingForm.NameEn) }"
-												 ng-pattern="/^[^ก-๙]+$/"
 												 maxlength="100"
 												 required />
 							                </div>
@@ -119,7 +117,7 @@
 						                        'label': 'URL (Eng)',
 						                        'error' : {
 						                              'messages': {
-						                                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'
+						                                'pattern': 'Only letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'
 						                                },
 						                              'show': $root.isInvalid(editingForm.UrlKeyEn),
 						                              'conditions' : editingForm.UrlKeyEn.$error
@@ -134,34 +132,28 @@
 						                        maxlength="300"
 						                        />
 						                    </div>
-											<div ng-template="common/input/text2"
-												ng-template-options="{
-												'label': 'Commission (%)',
-												'labelClass': 'required',
-												'error' : {
-												'messages': {
-								                    'required': 'This is a required field',
-													'pattern': 'Only numbers and decimals (up to 2 digits) allowed',
-													'minnumber': 'Please enter between 0% and 100%',
-													'maxnumber': 'Please enter between 0% and 100%'
-												},
-												'show': $root.isInvalid(editingForm.Commission),
-												'conditions' : editingForm.Commission.$error
-												}
-												}">
-												<input
-												class="form-control"
-												name="Commission"
-												ng-model="editingCategory.Commission"
-												ng-pattern="/^[\w]+(\.\w{0,2})?$/"
-												ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"
-												ng-class="{ 'has-error' : $root.isInvalid(editingForm.Commission) }"
-												maxlength="20"
-												ng-maxnumber="100",
-												ng-minnumber="0"
-												required
-												/>
-											</div>
+						                    <div ng-template="common/input/text2"
+						                      ng-template-options="{
+						                        'label': 'Commission (%)',
+						                      	'labelClass': 'required',
+						                        'error' : {
+						                              'messages': {
+								                          	'required': 'This is a required field',
+						                            		'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
+						                                },
+						                              'show': $root.isInvalid(editingForm.Commission),
+						                              'conditions' : editingForm.Commission.$error
+						                         }
+						                      }">
+						                      <input
+						                        class="form-control"
+						                        name="Commission"
+						                        ng-model="editingCategory.Commission"
+                        						ng-pattern="/^\d+(\.\d{1,})?$/"
+						                        ng-class="{ 'has-error' : $root.isInvalid(editingForm.Commission) }"
+						                        maxlength="20"
+						                        />
+						                    </div>
 										</div>
 									</div>
 									<div class="form-section">

@@ -1,6 +1,6 @@
-﻿<?php
+<?php
 $menus = [
-	["id" => "information", "name" => 'Information', "class" => "require active"]
+	["id" => "collection_static", "name" => 'Collection', "class" => "require active"]
 ];
 
 $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'])
@@ -8,7 +8,6 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 <?php $this->start('page-body') ?>
 <div ng-controller="ProductCollectionAddCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
 
-		<? //$this->insert('components/modal-warning-leave-page', ['id' => 'leave-page-warning']) ?>
 		<div ng-show="pageState.success" id="alert-success" class="alert alert-green alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			Your product has been saved sucessfully. <a href="/products/">View Product List</a>
@@ -28,42 +27,42 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 			</ul>
 		</div>
 
-		<form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
-		<? $this->insert('components/page-title-breadcrumb', ['text' => "Products/ " . $title, 'urls' => ['/products']]) ?>
 
-		<div ng-if="pageState.loading.state">
-			<img src="/assets/img/loader.gif" width="40"> <small>{{ pageState.loading.message }}..</small>
+	<? $this->insert('components/page-title-product-collection-breadcrumb', ['text' => "Collection " , 'urls' => ['/collections']]) ?>
+		
+		<div ng-show="loading">
+			<img src="/assets/img/loader.gif" width="40"> <small>Loading Global Categories..</small>
 		</div>
-		<div class="add-product-body" ng-if="!pageState.loading.state">
+		<form name="addProductCollectionForm" class="ah-form sticky-mainform-action" novalidate class="ah-form margin-top-30" >
+			<input type="hidden" name="category" ng-value="selected.CategoryId" />
 
-			<? $this->insert('components/tab-nav', ["items" => $menus]) ?>
-				<div class="tab-content">
-					<div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
-						<? $this->insert('partials/add-product-information') ?>
+<div>
+<div>
+			
+					<div class="category-content no-padding">					
+						<? $this->insert('partials/add-product-collection-information') ?>
 					</div>
-					
 				</div>
-				<div class="add-product-form-action main-form-action full-width-row">
+				<div class="category-footer no-padding">
+					<div class="add-product-form-action main-form-action full-width-row">
 					<div class="container-fluid">
 						<div class="float-right">
-							<a href="/products" class="link-btn-plain">Cancel</a>
-
-							<button ng-show="formData.Status != 'WA'"
+							<button ng-show="formData.Status != '4'"
 							class="btn btn-white btn-width-xl" ng-click="preview()">Preview</button>
 
-							<button ng-show="formData.Status != 'WA'"
+							<button ng-show="formData.Status != '4'"
 							class="btn btn-white btn-width-xl"
-							type="submit" ng-click="publish('DF')">Save as Draft</button>
+							type="submit" ng-click="publish('1')">Save as Draft</button>
 
-							<button ng-show="formData.Status != 'WA'"
+							<button ng-show="formData.Status != '4'"
 							type="submit" class="btn btn-blue btn-width-xl"
-							ng-click="publish('WA')">Publish</button>
+							ng-click="publish('2')">Publish</button>
 						</div>
 					</div>
 				</div>
-		</div>
-	</div>
-	</form>
+				</div>
+			</div>
+		</form>
 
 	<script src="/assets/libs/ckeditor/ckeditor.js"></script>
 	<script src="/assets/libs/ckeditor/config.js"></script>

@@ -232,6 +232,8 @@ module.exports = ['common', function(common){
 		angular.forEach(service.dataTypeOptions, function(item) {
 			delete processed[item.value];
 		});
+		
+		console.log(processed);
 		return processed
 	};
 	return service;

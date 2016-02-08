@@ -1,12 +1,12 @@
 module.exports = ['$scope', 'Alert', 'Credential', '$window', 'storage', function($scope, Alert, Credential, $window, storage) {
-	$scope.uform = {}
+	
 	$scope.alert = new Alert();
 	$scope.doLogin = function(){
-		if(!$scope.loginForm.$valid) return;
 		$scope.loading = true;
-		var user = $scope.uform.user; //$scope.loginForm.user.$viewValue;
-		var pass = $scope.uform.pass; //$scope.loginForm.pass.$viewValue;
-		Credential.login(user, pass).then(function(r){
+
+		Credential.login($scope.user, $scope.pass).then(function(r){
+			
+			console.log(r);
 			$scope.alert.close();
 			$scope.loading = false;
 
@@ -20,7 +20,7 @@ module.exports = ['$scope', 'Alert', 'Credential', '$window', 'storage', functio
 			$window.location.href = redir;
 		}, function(){
 			storage.clear();
-			$scope.alert.error('Incorrect user name or passsword');
+			$scope.alert.error('Invalid Credential');
 			$scope.loading = false;
 		});
 	}

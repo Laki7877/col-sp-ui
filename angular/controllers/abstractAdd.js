@@ -6,8 +6,6 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 	$scope.saving = false; //prevent multiple saving
 	$scope.loading = false;
 
-	(options.preInit || _.noop)($scope);
-
 	util.warningOnLeave($scope, 'form');
 
 	$scope.init = function(params) {
@@ -30,7 +28,6 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 				.then(function(data) {
 					$scope.formData = options.service.deserialize(data);
 					$scope.loading = false;
-					(options.onLoad || _.noop)($scope, true);
 				}, function() {
 					//Jump back
 					util.page404();
@@ -38,7 +35,6 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 		} else {
 			//Create mode
 			$scope.formData = options.service.generate();
-			(options.onLoad || _.noop)($scope, false);
 		}
 	}
 	$scope.cancel = function() {
@@ -48,8 +44,6 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 	$scope.save = function() {
 		//Already saving
 		if($scope.saving) return;
-
-		if(options.onSave && options.onSave($scope)) return;
 
 		//Activate form submission
 		$scope.form.$setSubmitted();
@@ -94,7 +88,6 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 	};
 
 	$scope.$watch('id', function(val) {
-		console.log($scope.id);
 		$scope.title = util.getTitle(val,options.item);
 	});
 };

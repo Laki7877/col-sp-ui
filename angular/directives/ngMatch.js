@@ -1,5 +1,4 @@
 module.exports = function($interpolate) {
-	'ngInject';
 	return {
 		restrict: 'A',
 		require: 'ngModel',

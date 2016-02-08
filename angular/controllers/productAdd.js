@@ -43,24 +43,24 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
     $scope.onKeywordAdded = function(item, model){
 
     	$scope.keywordValidConditions = {};
-		if(!item) return $scope.formData.Keywords.pop();
+	if(!item) return $scope.formData.Keywords.pop();
 
-		if($scope.formData.Keywords.length > 20){
-			$scope.keywordValidConditions['tagcount'] = true;
-		}
+	if($scope.formData.Keywords.length > 20){
+		$scope.keywordValidConditions['tagcount'] = true;
+	}
 
-		if(item.length > 30){
-			$scope.keywordValidConditions['taglength'] = true;
-		}
+	if(item.length > 30){
+		$scope.keywordValidConditions['taglength'] = true;
+	}
 
-		if(!item.match(/^[a-zA-Z0-9ก-๙\s\-]+$/)){
-			$scope.keywordValidConditions['pattern'] = true;
-		}
+	if(!item.match(/^[a-zA-Z0-9ก-ฮ\s\-]+$/)){
+		$scope.keywordValidConditions['pattern'] = true;
+	}
 
-		if(Object.keys($scope.keywordValidConditions).length > 0){
-			//if there is error, revert
-			$scope.formData.Keywords.pop();
-		}
+	if(Object.keys($scope.keywordValidConditions).length > 0){
+		//if there is error, revert
+		$scope.formData.Keywords.pop();
+	}
     }
 
     $scope.onKeywordRemoved = function(item, model){
@@ -89,7 +89,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 	    $scope.variationOptionWarning[jth] = [];
 	    if(!item) return;
 	    if(item.length > 30) $scope.variationOptionWarning[jth].push("Variation option must contain 30 characters or less");
-	    if(!item.match(/^[a-zA-Z0-9\s]+$/)) $scope.variationOptionWarning[jth].push("Only english letters and numbers allowed");
+	    if(!item.match(/^[a-zA-Z0-9\s]+$/)) $scope.variationOptionWarning[jth].push("Only letters and numbers allowed");
 
 	    var optlen1 = $scope.attributeOptions[0].options.length;
 	    var optlen2 = $scope.attributeOptions[1].options.length;
@@ -149,10 +149,8 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 		    //Initialize
 		    kpair.ProductNameEn = $scope.formData.MasterVariant.ProductNameEn;
 		    kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
-		    kpair.Display = $scope.availableVariantDisplayOption[0].value;
+		    kpair.Display = $scope.availableVariantDisplayOption[0];
 		    kpair.Visibility = true;
-            kpair.DimensionUnit = "MM";
-            kpair.WeightUnit = "G";
 
 		    if (kpair.text in vHashSet) {
 			    //Replace with value from vHashSet
@@ -197,15 +195,13 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
     $scope.availableSearchTags = [];
     $scope.availableRelatedProducts = [];
     $scope.availableStockTypes = ['Stock', 'Pre-Order'];
-    $scope.availableVariantDisplayOption = [
-        { text: 'Show as group of variants', value: 'GROUP' }, 
-        { text: 'Show as individual product',  value: 'INDIVIDUAL' }];
+    $scope.availableVariantDisplayOption = [{ text: 'Show as group of variants', value: 'GROUP' }, { text: 'Show as individual product',  value: 'INDIVIDUAL' }];
 
     $scope.overview = {}
 
     $scope.formData = {
-	    Brand: { id: null, BrandNameEn: "Search for Brand Name.." },
-	    MasterVariant: { DimensionUnit: "MM", WeightUnit: "G", StockType: "Stock" },
+	    Brand: { id: null, BrandNameEn: "Please select brand.." },
+	    MasterVariant: { DimensionUnit: "CM", WeightUnit: "G", StockType: "Stock" },
 	    ShippingMethod: "1",
 	    AttributeSet: {
 		    AttributeSetTagMaps : []
@@ -217,7 +213,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 	    Variants: [],
 	    GlobalCategories: [null, null, null],
 	    LocalCategories: [null, null, null],
-	    SEO: { ProductBoostingWeight: 5000 },
+	    SEO: { ProductBoostingWeight: 10000 },
 	    ControlFlags: [],
 	    Keywords: []
     };
@@ -317,9 +313,8 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
     };
 
     $scope.refreshBrands = function (q) {
-        if(q == "" || !q || q == null) return;
 	    Brand.getAll({
-		    pageSize: 10,
+		    pageSize: 6,
 		    searchText: q
 	    }).then(function (dataSet) {
 		    $scope.availableBrands = dataSet.data;
@@ -330,22 +325,22 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 
     $scope.$watch('formData.MasterVariant.SalePrice', function(){
 	    var form = $scope.addProductForm;
-	    if(form.MasterVariant_SalePrice) form.MasterVariant_SalePrice.$setValidity("min", true);
+	    form.MasterVariant_SalePrice.$setValidity("min", true);
 	    if(!form.MasterVariant_SalePrice) return;
 	    if($scope.formData.MasterVariant.SalePrice == "") return;
 
 	    if(Number($scope.formData.MasterVariant.SalePrice) >= Number($scope.formData.MasterVariant.OriginalPrice) ){
-		    if(form.MasterVariant_SalePrice) form.MasterVariant_SalePrice.$setValidity("min", false);
+		    form.MasterVariant_SalePrice.$setValidity("min", false);
 		    form.MasterVariant_SalePrice.$error["min"] = "Sale Price must not exceed Original Price";
 	    }
     });
 
     $scope.$watch('formData.ExpireDate', function(){
 	    var form = $scope.addProductForm;
-	    if(form.ExpireDate) form.ExpireDate.$setValidity("min", true);
+	    form.ExpireDate.$setValidity("min", true);
 	    if($scope.formData.ExpireDate < $scope.formData.EffectiveDate){
 		    if(!form.ExpireDate) return;
-		    if(form.ExpireDate) form.ExpireDate.$setValidity("min", false);
+		    form.ExpireDate.$setValidity("min", false);
 		    form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
 	    }
     });
@@ -418,7 +413,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 				    $scope.pageState.failure_message = res.message || res.Message;
 				    $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
 				    $window.location.hash = 'alert'
-			        $window.location.hash = 'alert-failure'
+			    $window.location.hash = 'alert-failure'
 			    }
 		    }, function (er) {
 			    $scope.pageState.reset();

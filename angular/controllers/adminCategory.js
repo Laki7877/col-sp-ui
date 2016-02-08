@@ -1,4 +1,4 @@
-module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory', 'AttributeSet', 'Alert', 'util',  function($scope, $rootScope, common, Category, GlobalCategory, AttributeSet, Alert, util){
+module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory', 'AttributeSet', 'Alert',  function($scope, $rootScope, common, Category, GlobalCategory, AttributeSet, Alert){
 	$scope.categories = [];
 	$scope.attributeSetOptions = [];
 	$scope.editingStatusOptions = [
@@ -16,20 +16,6 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 	$scope.popover = false;
 	$scope.alert = new Alert();
 	$scope.alert2 = new Alert();
-	$scope.dirty = false;
-
-	$scope.treeOptions = {
-		dropped: function(event) {
-			if(event.pos.dirX != 0 || event.pos.dirY != 0) {
-				$scope.dirty = true;
-			}
-		}
-	};
-
-	util.warningOnLeaveFn(function() {
-		return !$scope.dirty;
-	});
-
 	$scope.test = function(i) {
 		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);
 	};
@@ -68,7 +54,6 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 			
 		GlobalCategory.upsert($scope.formData).then(function() {
 			$scope.alert.success('Your changes have been saved.');
-			$scope.dirty = false;
 			$scope.reload();
 		}, function(err) {
 			$scope.alert.error(common.getError(err));

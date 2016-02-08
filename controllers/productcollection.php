@@ -45,4 +45,3 @@ class ProductCollectionController extends Controller
 		return View::render('product_review');
 	}
 }
-?>

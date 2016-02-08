@@ -1,5 +1,5 @@
 angular.module('nc')
-	.directive('ncImageGallery', function($templateCache, $uibModal) {
+	.directive('ncImageGallery', function($templateCache) {
 		return {
 			restrict: 'E',
 			replace: true,
@@ -18,124 +18,49 @@ angular.module('nc')
 					emptyImg: '/assets/img/placeholder-no-image.png' //when image = null 
 				});
 				scope.getSrc = function(image) {
-					if(image == null) {
+					if(_.isNull(image) || _isUndefined(image) || _isUndefined(image[scope.options.urlKey])) {
 						//Empty
 						return scope.options.emptyImg;
-					} else if(image[scope.options.urlKey] == '') {
+					} else if(image[scope.options.urlKey] && image[scope.options.urlKey].length == 0) {
+						//Loading
 						return scope.options.loaderImg;
 					} else {
 						return image[scope.options.urlKey];
 					}
 				};
-				scope.call = function(action, image) {
+				scope.call = function(action, image, model, $index) {
 					if(_.isNull(image)) return;
-					var index = scope.model.indexOf(image);
-					
-					if(action.confirmation) {
-						var modal = $uibModal.open({
-							size: 'size-warning',
-							templateUrl: 'common/ncActionModal',
-							controller: function($scope, $uibModalInstance, options, $interpolate) {
-								$scope.title = options.title;
-								$scope.message = $interpolate(options.message)(scope);
-								$scope.yes = function() {
-									$uibModalInstance.close();
-								};
-								$scope.no = function() {
-									$uibModalInstance.dismiss();
-								}
-							},
-							resolve: {
-								options: function() {
-									return {
-										title: action.confirmation.title,
-										message: action.confirmation.message
-									}
-								}
-							}
-						});
-
-						modal.result.then(function() {
-							action.fn(image, scope.model, index);
-						})
-					} else {
-						action.fn(image, scope.model, index);
-					}
+					var index = model.indexOf(image);
+					action.fn(image, model, index);
 				}
-				var load = function() {
+				scope.load = function() {
 					scope.images = _.clone(scope.model);
-					for (var i = 0; i < scope.options.size - scope.model.length; i++) {
+					for (var i = 0; i < size - scope.model.length; i++) {
 						scope.images.push(null);
 					};
 				};
-				scope.$watch('model', load, true);
+				scope.load();
+				scope.$watch('model', scope.load);
 			}
 		};
 	})
-	.directive('ncImageDropzone', function($templateCache, $compile, FileUploader) {
+	.directive('ncImageDropzone', function($templateCache) {
 		return {
 			restrict: 'E',
 			replace: true,
 			scope: {
 				model: '=ncModel',
-				originalUploader: '=ncImageUploader',
+				uploader: '=ncImageUploader',
 				options: '=ncImageOptions',
-				template: '@ncImageTemplate'
+				template: '=ncImageTemplate'
 			},
+			template: $templateCache.get('common/ncImageDropzone'),
 			link: function(scope, element) {
-				scope.uploader = new FileUploader(scope.originalUploader);
-				scope.template = scope.template || 'common/ncImageDropzoneTemplate';
-				scope.options = _.defaults(scope.options, {
-					urlKey: 'url',
-					onQueueLimit: _.noop,
-					onFail: _.noop,
-					onResponse: function(item) { return item; },
-					onUpload: function(item) { }
-				});
-				scope.update = function() {
-					var html = $templateCache.get(scope.template);
-					element.html(html);
-					$compile(element.contents())(scope);
-				};
-	
+				scope.template = _.defaults(scope.template, 'common/ncImageDropzoneTemplate');
+				var input = element.find('input');
 				scope.upload = function() {
-					element.find('input').trigger('click');
+					input.trigger('click');
 				};
-
-				//Upload
-				scope.uploader.onAfterAddingFile = function(item) {
-					if(scope.uploader.queueLimit == scope.model.length) {
-						if(scope.options.onQueueLimit) {
-							scope.options.onQueueLimit(item, scope.model);
-						}
-						item.cancel();
-						item.remove();
-					} else {
-							var obj = {};
-							obj[scope.options.urlKey] = '';
-							scope.model.push(obj);
-							item.indx = scope.model.length-1;
-					}
-				};
-				scope.uploader.onWhenAddingFileFailed = function(item) {
-					console.log(item);
-					if(scope.options.onFail) {
-						scope.options.onFail(item, scope.model);
-					}
-				};
-
-			    scope.uploader.onSuccessItem = function(item, response, status, headers) {
-					console.log(item);
-					console.log(scope.model);
-					scope.model[item.indx][scope.options.urlKey] = response[scope.options.urlKey];
-			    };
-			    scope.uploader.onErrorItem = function(item, response, status, headers) {
-					console.log(item);
-			    	scope.model.splice(item.indx, 1);
-			    };
-
-				scope.update();
-				scope.$watch('template', scope.update);
 			}
 		};
 	})

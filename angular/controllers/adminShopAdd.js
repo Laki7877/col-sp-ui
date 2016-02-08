@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, AdminShopService, AdminShoptypeService, config, Credential, $rootScope, $window) {
+module.exports = function($scope, $controller, AdminShopService, AdminShoptypeService, config) {
 	'ngInject';
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -16,14 +16,5 @@ module.exports = function($scope, $controller, AdminShopService, AdminShoptypeSe
 			}
 		}
 	});
-
-	$scope.loginAs = function(user){
-		Credential.loginAs(user).then(function(){
-			$window.location.href = "/products";
-		}, function(err){
-            
-        });
-	};
-
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 };

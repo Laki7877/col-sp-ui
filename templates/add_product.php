@@ -11,7 +11,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 ?>
 <?php $this->start('page-body') ?>
 <div ng-controller="ProductAddCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
-		
+
 		<? //$this->insert('components/modal-warning-leave-page', ['id' => 'leave-page-warning']) ?>
 		<div ng-show="pageState.success" id="alert-success" class="alert alert-green alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -33,9 +33,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 		</div>
 
 		<form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
-		<fieldset ng-disabled="formData.Status == 'WA'">
 		<? $this->insert('components/page-title-breadcrumb', ['text' => "Products/ " . $title, 'urls' => ['/products']]) ?>
-		
 
 		<div ng-if="pageState.loading.state">
 			<img src="/assets/img/loader.gif" width="40"> <small>{{ pageState.loading.message }}..</small>
@@ -80,7 +78,6 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 				</div>
 		</div>
 	</div>
-	</fieldset>
 	</form>
 
 	<script src="/assets/libs/ckeditor/ckeditor.js"></script>

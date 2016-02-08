@@ -1,6 +1,5 @@
-module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader', function ($scope, Product, util, Alert, $window, FileUploader) {
+module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', function ($scope, Product, util, Alert, $window) {
     $scope.productList = [];
-    $scope.template = 'product/dropzone/normal';
     Product.getAll({}).then(function(data){
         $scope.productList = data.data;
     });

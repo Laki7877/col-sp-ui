@@ -1,7 +1,7 @@
 ﻿var angular = require('angular');
 
-module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope',
-function ($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, $rootScope) {
+module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Collection','Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope',
+function ($scope, $window, util, config, Product, Collection, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, $rootScope) {
     'use strict';
 
     //TODO: use Poons' Alert class
@@ -12,7 +12,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
     var MAX_VARIANT = 100;
 
     $window.onbeforeunload = function (e) {
-        if (!$scope.addProductForm.$dirty) {
+        if (!$scope.addProductCollectionForm.$dirty) {
             //only warn when form is dirty
             return null;
         }
@@ -321,7 +321,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 
 
     $scope.$watch('formData.MasterVariant.SalePrice', function () {
-        var form = $scope.addProductForm;
+        var form = $scope.addProductCollectionForm;
         form.MasterVariant_SalePrice.$setValidity("min", true);
         if (!form.MasterVariant_SalePrice) return;
         if ($scope.formData.MasterVariant.SalePrice == "") return;
@@ -333,7 +333,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
     });
 
     $scope.$watch('formData.ExpireDate', function () {
-        var form = $scope.addProductForm;
+        var form = $scope.addProductCollectionForm;
         form.ExpireDate.$setValidity("min", true);
         if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
             if (!form.ExpireDate) return;
@@ -344,17 +344,17 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 
     var manualValidate = function () {
         var mat = [];
-        if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == "") {
-            mat.push("Missing Description (Thai)");
-        }
+        // if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == "") {
+        //     mat.push("Missing Description (Thai)");
+        // }
 
-        if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == "") {
-            mat.push("Missing Description (English)");
-        }
+        // if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == "") {
+        //     mat.push("Missing Description (English)");
+        // }
 
-        if (!$scope.formData.Brand.BrandId) {
-            mat.push("Missing Brand");
-        }
+        // if (!$scope.formData.Brand.BrandId) {
+        //     mat.push("Missing Brand");
+        // }
 
         return mat;
     };
@@ -367,11 +367,11 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
         $scope.pageState.reset();
         $scope.pageState.load('Validating..');
 
-        $scope.onPublishing = (Status == "WA");
-
+        $scope.onPublishing = (Status == "4");
+        console.log("befor validate");
         //On click validation
         var validateMat = manualValidate();
-        if (validateMat.length > 0 && Status == 'WA') {
+        if (validateMat.length > 0 && Status == '4') {
             $scope.pageState.reset();
             $scope.pageState.failure = true;
             $scope.pageState.failure_message = validateMat[0];
@@ -379,32 +379,37 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
             $window.location.hash = 'alert-failure';
             return;
         }
+// console.log("basic validate");
+//         //Basic validation
+//         if ($scope.addProductCollectionForm.$invalid) {
 
-        //Basic validation
-        if ($scope.addProductForm.$invalid) {
-
-            $scope.pageState.reset();
-            //scroll to top and show alert div
-            $window.location.hash = 'alert';
-            $window.location.hash = 'alert-validation';
-            $scope.pageState.invalid = true;
-            return;
-        }
+//             $scope.pageState.reset();
+//             //scroll to top and show alert div
+//             $window.location.hash = 'alert';
+//             $window.location.hash = 'alert-validation';
+//             $scope.pageState.invalid = true;
+//             return;
+//         }
 
         $scope.pageState.load('Publishing..');
         cleanData();
         console.log("Publishing with Status = ", Status);
         //Error Handling too Messi
         try {
-            var apiRequest = Product.serialize($scope.formData);
-            Product.publish(apiRequest, Status).then(function (res) {
+            // var apiRequest = Product.serialize($scope.formData);            
+            //Product.publish(apiRequest, Status).then(function (res) {
+                //console.log($scope.formData);
+                $scope.formData.Status = Status;
+                $scope.formData.CMSTypeId = 1;
+                var apiRequest = Collection.serialize($scope.formData);  
+                Collection.publish(apiRequest, Status).then(function (res) {
                 $scope.pageState.reset();
-                if (res.ProductId) {
+                if (res.CMSId) {
                     $scope.overview = res;
                     $scope.pageState.success = true;
-                    $scope.formData.ProductId = res.ProductId;
-                    $scope.formData.MasterVariant.Pid = res.MasterVariant.Pid;
-                    $scope.addProductForm.$setPristine(true)
+                    $scope.formData.CMSId = res.ProductId;
+                    //$scope.formData.MasterVariant.Pid = res.MasterVariant.Pid;
+                    $scope.addProductCollectionForm.$setPristine(true)
                 } else {
                     $scope.pageState.failure = true;
                     $scope.pageState.failure_message = res.message || res.Message;
@@ -423,6 +428,7 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
             });
 
         } catch (ex) {
+            console.log("catch exception from publish process");
             $scope.pageState.reset();
             $scope.pageState.failure = true;
             $scope.pageState.failure_message = ex.message;
@@ -501,50 +507,50 @@ function ($scope, $window, util, config, Product, ImageService, AttributeSet, Br
 
             AttributeSet.getByCategory(3).then(function (data) {
 
-                //remove complex structure we dont need
-                $scope.availableAttributeSets = data.map(function (aset) {
+                // //remove complex structure we dont need
+                // $scope.availableAttributeSets = data.map(function (aset) {
 
-                    aset.AttributeSetTagMaps = aset.AttributeSetTagMaps.map(function (asti) {
-                        return asti.Tag.TagName;
-                    });
+                //     aset.AttributeSetTagMaps = aset.AttributeSetTagMaps.map(function (asti) {
+                //         return asti.Tag.TagName;
+                //     });
 
-                    aset.AttributeSetMaps = aset.AttributeSetMaps.map(function (asetmapi) {
-                        asetmapi.Attribute.AttributeValueMaps = asetmapi.Attribute.AttributeValueMaps.map(function (value) {
-                            return value.AttributeValue.AttributeValueEn;
-                        });
+                //     aset.AttributeSetMaps = aset.AttributeSetMaps.map(function (asetmapi) {
+                //         asetmapi.Attribute.AttributeValueMaps = asetmapi.Attribute.AttributeValueMaps.map(function (value) {
+                //             return value.AttributeValue.AttributeValueEn;
+                //         });
 
-                        return asetmapi;
-                    });
+                //         return asetmapi;
+                //     });
 
-                    return aset;
-                });
+                //     return aset;
+                // });
 
-                //Load Attribute Set (edit mode only, in add mode AttributeSet is not set)
-                if (ivFormData.AttributeSet && ivFormData.AttributeSet.AttributeSetId) {
+                // Load Attribute Set (edit mode only, in add mode AttributeSet is not set)
+                // if (ivFormData.AttributeSet && ivFormData.AttributeSet.AttributeSetId) {
 
-                    $scope.pageState.load('Indexing AttributeSet');
-                    var idx = $scope.availableAttributeSets.map(function (o) {
-                        return o.AttributeSetId
-                    }).indexOf(ivFormData.AttributeSet.AttributeSetId);
+                //     $scope.pageState.load('Indexing AttributeSet');
+                //     var idx = $scope.availableAttributeSets.map(function (o) {
+                //         return o.AttributeSetId
+                //     }).indexOf(ivFormData.AttributeSet.AttributeSetId);
 
-                    $scope.formData.AttributeSet = $scope.availableAttributeSets[idx];
-                }
+                //     $scope.formData.AttributeSet = $scope.availableAttributeSets[idx];
+                // }
 
-                if (ivFormData.ProductId) {
-                    loadFormData(ivFormData, $scope.formData.AttributeSet);
-                }
+                // if (ivFormData.ProductId) {
+                //     loadFormData(ivFormData, $scope.formData.AttributeSet);
+                // }
 
-                $scope.pageState.load('Downloading Category Tree..');
-                //Load Global Cat
-                GlobalCategory.getAll().then(function (data) {
+                // $scope.pageState.load('Downloading Category Tree..');
+                // //Load Global Cat
+                // GlobalCategory.getAll().then(function (data) {
 
-                    $scope.availableGlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
-                    $scope.formData.GlobalCategories[0] = Category.findByCatId(catId, $scope.availableGlobalCategories);
-                    $scope.globalCategoryBreadcrumb = Category.createCatStringById(catId, $scope.availableGlobalCategories);
-                    callback();
-                });
-
-
+                //     $scope.availableGlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
+                //     $scope.formData.GlobalCategories[0] = Category.findByCatId(catId, $scope.availableGlobalCategories);
+                //     $scope.globalCategoryBreadcrumb = Category.createCatStringById(catId, $scope.availableGlobalCategories);
+                //     callback();
+                // });
+    //callback();
+                //console.log($rootScope.Profile);
                 watchVariantChanges();
             });
         };

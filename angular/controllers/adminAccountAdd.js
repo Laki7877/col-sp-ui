@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, AdminAccountService, AdminRoleService, Credential) {
+module.exports = function($scope, $controller, AdminAccountService, AdminRoleService) {
 	'ngInject';
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -20,5 +20,4 @@ module.exports = function($scope, $controller, AdminAccountService, AdminRoleSer
 			}
 		}
 	});
-   
 };

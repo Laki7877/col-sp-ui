@@ -1,5 +1,4 @@
 module.exports = function() {
-	'ngInject';
 	return function(str, num) {
 		if(_.isUndefined(str)) {
 			return str;

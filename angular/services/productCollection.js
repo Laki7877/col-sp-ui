@@ -1,4 +1,4 @@
-﻿//Products Collection Service
+//Products Collection Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
     function ($http, common, util, LocalCategory, Brand) {
         'use strict';
@@ -80,12 +80,12 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
         };
 
         service.publish = function (tobj, Status) {
-            tobj.Status = Status;
+            //tobj.Status = Status;
             var mode = 'POST';
-            var path = '/ProductStages';
-            if (tobj.ProductId) {
+            var path = '/CMSStages';
+            if (tobj.CMSId) {
                 mode = 'PUT';
-                path = path + '/' + tobj.ProductId;
+                path = path + '/' + tobj.CMSId;
             }
             return common.makeRequest({
                 method: mode,
@@ -129,107 +129,124 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
             //Cleaned data
             var clean = {};
-            clean.Variants = [];
+            // clean.Variants = [];
 
-            var objectMapper = {
-                VideoLinks: function (vlink) {
-                    var f = [];
-                    Object.keys(vlink).forEach(function (key) {
-                        var value = vlink[key];
-                        var obj = {
-                            'Url': value
-                        };
+            // var objectMapper = {
+            //     VideoLinks: function (vlink) {
+            //         var f = [];
+            //         Object.keys(vlink).forEach(function (key) {
+            //             var value = vlink[key];
+            //             var obj = {
+            //                 'Url': value
+            //             };
 
-                        f.push(obj);
-                    });
-                    return f;
-                }
-            };
+            //             f.push(obj);
+            //         });
+            //         return f;
+            //     }
+            // };
             //Mapper functions
-            var mapper = {
-                Images: function (image, pos) {
-                    if (image.$id) delete image.$id;
-                    image.position = pos;
-                    return image;
-                },
-                Variants: function (_variant) {
-                    var variant = angular.copy(_variant);
+            // var mapper = {
+            //     Images: function (image, pos) {
+            //         if (image.$id) delete image.$id;
+            //         image.position = pos;
+            //         return image;
+            //     },
+            //     Variants: function (_variant) {
+            //         var variant = angular.copy(_variant);
 
-                    if (util.nullOrUndefined(variant['VideoLinks'])) variant.VideoLinks = [];
-                    if (util.nullOrUndefined(variant['VideoLinks'])) variant.Images = [];
-                    if ("queue" in variant) delete variant.queue; //circular
+            //         if (util.nullOrUndefined(variant['VideoLinks'])) variant.VideoLinks = [];
+            //         if (util.nullOrUndefined(variant['VideoLinks'])) variant.Images = [];
+            //         if ("queue" in variant) delete variant.queue; //circular
 
-                    variant.Visibility = variant.Visibility;
-                    variant.Images = (variant.Images || []).map(mapper.Images);
-                    variant.Images360 = []; //for future
+            //         variant.Visibility = variant.Visibility;
+            //         variant.Images = (variant.Images || []).map(mapper.Images);
+            //         variant.Images360 = []; //for future
 
-                    try {
-                        variant.VideoLinks = objectMapper.VideoLinks(variant.VideoLinks);
-                    } catch (ex) {
-                        variant.VideoLinks = [];
-                    }
+            //         try {
+            //             variant.VideoLinks = objectMapper.VideoLinks(variant.VideoLinks);
+            //         } catch (ex) {
+            //             variant.VideoLinks = [];
+            //         }
 
-                    return variant;
-                },
-                Categories: function (lcat) {
-                    if (lcat == null) return null;
-                    return {
-                        CategoryId: lcat.CategoryId
-                    };
-                }
-            }
+            //         return variant;
+            //     },
+            //     Categories: function (lcat) {
+            //         if (lcat == null) return null;
+            //         return {
+            //             CategoryId: lcat.CategoryId
+            //         };
+            //     }
+            // }
+
+            // try {
+            //     clean.GlobalCategories = fd.GlobalCategories.map(mapper.Categories);
+            // } catch (ex) {
+            //     console.warn("Unable to map Global Cat Array, Global Cat array is mandatory", ex);
+            // }
+
+            // try {
+            //     clean.LocalCategories = fd.LocalCategories.map(mapper.Categories);
+            // } catch (ex) {
+            //     console.warn("Unable to map Local Cat array, Initializing", ex);
+            //     clean.LocalCategories = [null, null, null];
+            // }
+
+            // try {
+            //     fd.Keywords = util.uniqueSet(fd.Keywords);
+            //     clean.Keywords = (!fd.Keywords ? "" : fd.Keywords.join(','));
+            // } catch (ex) {
+            //     console.warn("Keyword not set, will not serialize", ex);
+            // }
+
+            // try {
+            //     clean.AttributeSet = {
+            //         AttributeSetId: fd.AttributeSet.AttributeSetId
+            //     };
+            // } catch (ex) {
+            //     console.warn("AttributeSet not set, will not serialize", ex);
+            // }
+
+            // try {
+            //     clean.MasterAttribute = [];
+            //     Object.keys(fd.MasterAttribute).forEach(function (key) {
+            //         clean.MasterAttribute.push({
+            //             AttributeId: key,
+            //             ValueEn: fd.MasterAttribute[key]
+            //         });
+            //     });
+            // } catch (ex) {
+            //     console.warn("Master Attributes", ex);
+            // }
 
             try {
-                clean.GlobalCategories = fd.GlobalCategories.map(mapper.Categories);
-            } catch (ex) {
-                console.warn("Unable to map Global Cat Array, Global Cat array is mandatory", ex);
-            }
+                // clean.Remark = fd.Remark;
+                // clean.PrepareDay = fd.PrepareDay || 0;
+                // clean.SEO = fd.SEO;
+                // clean.ControlFlags = fd.ControlFlags;
+                // clean.Brand = fd.Brand;
+                // clean.ShippingMethod = fd.ShippingMethod;
 
-            try {
-                clean.LocalCategories = fd.LocalCategories.map(mapper.Categories);
-            } catch (ex) {
-                console.warn("Unable to map Local Cat array, Initializing", ex);
-                clean.LocalCategories = [null, null, null];
-            }
+                clean.CMSNameEN = fd.CMSNameEN;
+                clean.CMSNameTH = fd.CMSNameTH;
+                clean.URLKey = fd.URLKey ;
+                clean.CMSTypeId = fd.CMSTypeId ;
+                clean.CMSStatusId = fd.Status;
+                clean.Status = true;
+                clean.UpdateBy =1;
+                clean.By =1;
+                clean.Visibility = 1;
+<<<<<<< HEAD
+clean.IP ='104.155.199.198';
+                clean.ShortDescriptionTH = fd.ShortDescriptionTH ;
+                clean.LongDescriptionTH = fd.LongDescriptionTH;
+                clean.ShortDescriptionEN = fd.ShortDescriptionEN ;
+                clean.LongDescriptionEN = fd.LongDescriptionEN;
 
-            try {
-                fd.Keywords = util.uniqueSet(fd.Keywords);
-                clean.Keywords = (!fd.Keywords ? "" : fd.Keywords.join(','));
-            } catch (ex) {
-                console.warn("Keyword not set, will not serialize", ex);
-            }
 
-            try {
-                clean.AttributeSet = {
-                    AttributeSetId: fd.AttributeSet.AttributeSetId
-                };
-            } catch (ex) {
-                console.warn("AttributeSet not set, will not serialize", ex);
-            }
-
-            try {
-                clean.MasterAttribute = [];
-                Object.keys(fd.MasterAttribute).forEach(function (key) {
-                    clean.MasterAttribute.push({
-                        AttributeId: key,
-                        ValueEn: fd.MasterAttribute[key]
-                    });
-                });
-            } catch (ex) {
-                console.warn("Master Attributes", ex);
-            }
-
-            try {
-                clean.Remark = fd.Remark;
-                clean.PrepareDay = fd.PrepareDay || 0;
-                clean.SEO = fd.SEO;
-                clean.ControlFlags = fd.ControlFlags;
-                clean.Brand = fd.Brand;
-                clean.ShippingMethod = fd.ShippingMethod;
-
-                var cpdate = angular.copy(fd.ExpireDate);
-                clean.ExpireDate = moment(cpdate).format('LL');
-                clean.ExpireTime = moment(cpdate).format('HH:mm:ss');
+                var cpdate = angular.copy(fd.ExpiryDate);
+                clean.ExpiryDate = moment(cpdate).format('LL');
+                clean.ExpiryTime = moment(cpdate).format('HH:mm:ss');
 
                 cpdate = angular.copy(fd.EffectiveDate);
 
@@ -237,88 +254,84 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
 
                 console.log('1-1', clean);
-                //clean.EffectiveDate = moment(fd.EffectiveDate + " " + fd.EffectiveTime);
-                //clean.EffectiveTime = fd.EffectiveTime;
-                //clean.ExpireDate = moment(fd.ExpireDate + " " + fd.ExpireTime);
-                //clean.ExpireTime = fd.ExpireTime;
             } catch (ex) {
                 console.warn("One-To-One Fields", ex);
             }
 
-            try {
-                //Move first entry of Categories out into Category
-                clean.GlobalCategory = clean.GlobalCategories[0].CategoryId;
-                clean.GlobalCategories.shift();
+            // try {
+            //     //Move first entry of Categories out into Category
+            //     clean.GlobalCategory = clean.GlobalCategories[0].CategoryId;
+            //     clean.GlobalCategories.shift();
 
 
-            } catch (ex) {
-                console.warn("shift global cat", ex);
-            }
+            // } catch (ex) {
+            //     console.warn("shift global cat", ex);
+            // }
 
-            try {
-                clean.LocalCategory = clean.LocalCategories[0].CategoryId;
-                clean.LocalCategories.shift();
+            // try {
+            //     clean.LocalCategory = clean.LocalCategories[0].CategoryId;
+            //     clean.LocalCategories.shift();
 
 
-            } catch (ex) {
-                console.warn("shfiting local cat", ex);
-                //Local cat can be null
-                clean.LocalCategories = [null, null];
-                clean.LocalCategory = null;
-            }
+            // } catch (ex) {
+            //     console.warn("shfiting local cat", ex);
+            //     //Local cat can be null
+            //     clean.LocalCategories = [null, null];
+            //     clean.LocalCategory = null;
+            // }
 
-            try {
-                clean.RelatedProducts = [];
-                Object.keys(fd.RelatedProducts || []).forEach(function (key) {
-                    clean.RelatedProducts.push(
-                        fd.RelatedProducts[key]
-                    );
-                });
-            } catch (ex) {
-                console.warn("Organizing Related Products", ex);
-            }
+            // try {
+            //     clean.RelatedProducts = [];
+            //     Object.keys(fd.RelatedProducts || []).forEach(function (key) {
+            //         clean.RelatedProducts.push(
+            //             fd.RelatedProducts[key]
+            //         );
+            //     });
+            // } catch (ex) {
+            //     console.warn("Organizing Related Products", ex);
+            // }
 
             //MasterVariant
-            clean.MasterVariant = fd.MasterVariant;
+            // clean.MasterVariant = fd.MasterVariant;
 
-            if (fd.ProductId) clean.ProductId = fd.ProductId;
+            // if (fd.ProductId) clean.ProductId = fd.ProductId;
 
-            try {
-                clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
-            } catch (ex) {
-                clean.MasterVariant.VideoLinks = [];
-            }
+            // try {
+            //     clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
+            // } catch (ex) {
+            //     clean.MasterVariant.VideoLinks = [];
+            // }
 
-            try {
-                clean.MasterVariant.Images360 = (fd.MasterImages360 | []).map(mapper.Images);
-            } catch (ex) {
-                clean.MasterVariant.Images360 = [];
-            }
+            // try {
+            //     clean.MasterVariant.Images360 = (fd.MasterImages360 | []).map(mapper.Images);
+            // } catch (ex) {
+            //     clean.MasterVariant.Images360 = [];
+            // }
 
-            try {
-                clean.MasterVariant.Images = (fd.MasterImages || []).map(mapper.Images);
-            } catch (ex) {
-                clean.MasterVariant.Images = [];
-            }
+            // try {
+            //     clean.MasterVariant.Images = (fd.MasterImages || []).map(mapper.Images);
+            // } catch (ex) {
+            //     clean.MasterVariant.Images = [];
+            // }
 
-            try {
-                if (hasVariants) {
-                    var masterProps = [];
-                    clean.Variants = (fd.Variants || []).map(mapper.Variants);
-                    //Find DefaultVariant
-                    var target = fd.DefaultVariant.text;
-                    clean.Variants.forEach(function (vari, index) {
-                        vari.SafetyStock = 0; //Placeholder, no UI yet
-                        vari.StockType = 0; //Placeholder
-                        vari.DefaultVariant = false;
-                        if (vari.text == target) {
-                            clean.Variants[index].DefaultVariant = true;
-                        }
-                    });
-                }
-            } catch (ex) {
-                console.warn("Variant Distribute", ex);
-            }
+            // try {
+            //     if (hasVariants) {
+            //         var masterProps = [];
+            //         clean.Variants = (fd.Variants || []).map(mapper.Variants);
+            //         //Find DefaultVariant
+            //         var target = fd.DefaultVariant.text;
+            //         clean.Variants.forEach(function (vari, index) {
+            //             vari.SafetyStock = 0; //Placeholder, no UI yet
+            //             vari.StockType = 0; //Placeholder
+            //             vari.DefaultVariant = false;
+            //             if (vari.text == target) {
+            //                 clean.Variants[index].DefaultVariant = true;
+            //             }
+            //         });
+            //     }
+            // } catch (ex) {
+            //     console.warn("Variant Distribute", ex);
+            // }
 
             //HardCoD
             clean.SellerId = 1;

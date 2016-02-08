@@ -12,14 +12,12 @@ angular.module('nc')
 			scope: {
 				params: '=ncModel',
 				total: '=ncPaginationTotal',
-				paginationOptions: '=ncPaginationSizes',
-				callback: '=ncPaginationEvent'
+				paginationOptions: '=ncPaginationSizes'
 			},
 			template: $templateCache.get('common/ncPagination'),
 			link: function(scope, element, attrs) {
 				scope.paginationOptions = _.defaults(scope.paginationOptions, $ncPagination.paginationSizes);
 				scope.params._limit = scope.paginationOptions[0];
-				scope.callback = scope.callback || function() { return true };
 				scope.page = function() {
 					if(scope.total == 0) {
 						return 0;
@@ -38,24 +36,15 @@ angular.module('nc')
 					if(page + offset > total ||
 						page + offset <= 0)
 						return;
-					if(!scope.callback()) {
-						return;
-					}
 					scope.params._offset += offset * scope.params._limit;
 				};
 				scope.setPage = function(i) {
 					scope.params._offset = (i-1) * scope.params._limit;
 				};
 				scope.setPageSize = function(n) {
-					if(scope.params._limit == n) {
-						return;
-					}
-					if(!scope.callback()) {
-						return;
-					}
 					scope.params._limit = n;
-					
 				};
+
 				scope.$watch('params._limit', function() {
 					if(scope.params._limit > scope.total) {
 						scope.setPage(1);

@@ -1,13 +1,8 @@
 module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope', function ($scope, Product, util, Alert, $window, $rootScope) {
-    
-    /*
-    * This controller uses legacy table-binding method (v0.0.0)
-    * Please refer to other controller for more accepted table controller
-    * (Note, we have like 50 different versions, make sure u pick the correct one)
-    */
+    //UI binding variables    
     
     $scope.showOnOffStatus = true;
-    $scope.allChecked = false;
+    $scope.checkAll = false;
     $scope.alert = new Alert();
     $scope.filterOptions = [
         { name: "All", value: 'All' },
@@ -90,7 +85,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
             if (bulk) {
                 bulk.fn();
             }
-            $scope.allChecked = false;
+            $scope.checkAll = false;
         }
     };
 
@@ -126,8 +121,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
                 var arr = Object.keys($scope.checkBoxCache).map(function (m) {
                     if (!$scope.checkBoxCache[m]) return { ProductId: -1 };
                     return {
-                        ProductId: Number(m),
-                        Visibility: true
+                        ProductId: Number(m)
                     };
                 });
 
@@ -149,8 +143,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
                 var arr = Object.keys($scope.checkBoxCache).map(function (m) {
                     if (!$scope.checkBoxCache[m]) return { ProductId: -1 };
                     return {
-                        ProductId: Number(m),
-                        Visibility: false
+                        ProductId: Number(m)
                     };
                 });
 
@@ -183,7 +176,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
                     $scope.alert.success("Successfully published " + arr.length + " items");
                     $scope.reloadData();
                 }, function (r) {
-                    $scope.alert.error('Unable to publish. Please check product status');
+                    $scope.alert.error('Unable to publish because ' + r.message);
                 });
             }
         }
@@ -260,7 +253,6 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
     $scope.notReady = true;
 
     $scope.applySearch = function () {
-        $scope.tableParams.page = 0;
         $scope.tableParams.searchText = $scope.searchText;
     };
 
@@ -300,39 +292,22 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
     //Watch any change in table parameter, trigger reload
     $scope.$watch('tableParams', function () {
         $scope.reloadData();
-        $scope.allChecked = false;
+        $scope.checkAll = false;
     }, true);
-    
-    
-    $scope.checkAll = function(){
-        var first = $scope.productList[0];
-        var tval = !($scope.checkBoxCache[first.ProductId] || false);
+
+
+    //Select All checkbox
+    $scope.$watch('checkAll', function (newVal, oldVal) {
         $scope.productList.forEach(function (d) {
-            $scope.checkBoxCache[d.ProductId] = tval;
+            $scope.checkBoxCache[d.ProductId] = $scope.checkAll;
         });
-    }
+    }, true);
 
     $scope.checkBoxCount = function () {
         var m = [];
         Object.keys($scope.checkBoxCache).forEach(function (key) {
             if ($scope.checkBoxCache[key]) m.push($scope.checkBoxCache[key]);
         });
-        
-        //Count checked checkbox (on this page only)
-        //TODO: I don't like this solution, I'd rather trade space for time
-        //note: can't just count checkboxcache because checkboxcache is global across
-        //all pages. 
-        var chkCount = 0;
-        $scope.productList.forEach(function(p){
-            chkCount += ($scope.checkBoxCache[p.ProductId] ? 1 : 0);
-        });
-        
-        //Change selectAll checkbox state
-        if(chkCount != $scope.productList.length){
-            $scope.allChecked = false;
-        }else{
-            $scope.allChecked = true;
-        }
         return m.length;
     }
 }];

@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; 
 //App Start here
 var angular = require('angular');
 var bulk = require('bulk-require')(__dirname, 
@@ -50,31 +50,15 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .run(template)
 
 //App init
-.run(['$rootScope', 'storage', '$window', '$location', 'Credential', function($rootScope, storage, $window, $location, Credential) {
+.run(['$rootScope', 'storage', '$window', '$location', function($rootScope, storage, $window, $location) {
 	
 	$rootScope.Profile = storage.getCurrentUserProfile();
-	$rootScope.Imposter = storage.getImposterProfile();
+
 	if(!$rootScope.Profile && $window.location.pathname != "/login"){
 		storage.put('redirect', $window.location.pathname);
 		$window.location.href = "/login";
 	}
-    
-    //Create global logout function
-    $rootScope.logout = function(){
-        if($rootScope.Imposter){
-            return Credential.logoutAs().then(function(){
-                //return to normal flow
-                $window.location.href = "/";
-            }, function(){
-                alert("Fetal error while logging out.");
-            });
-        }
-        
-        Credential.logout();
-        $window.location.href = "/login"        
-    };
 
-    
 	//Create generic form validator functions
 	$rootScope.isInvalid = function(form) {
 		if(angular.isDefined(form) && 
@@ -124,7 +108,12 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 			'active': $window.location.pathname == url
 		};
 	};
+	$rootScope.test = function(form) {
+		console.log(form);
+		return false;
+	}
 }])
+    //test
 //Configuration
 .value('config', config)
 
@@ -137,20 +126,15 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 //Services
 .factory('Product', services.product)
 .factory('Image', services.image)
-.factory('ImageService', services.imageService)
 .factory('Category', services.category)
 .factory('Shop', services.shop)
 .factory('LocalCategory', services.localCategory)
 .factory('GlobalCategory', services.globalCategory)
 .factory('Attribute', services.attribute)
-.factory('AttributeService', services.attributeService) //newer version
 .factory('AttributeSet', services.attributeSet)
-.factory('AttributeSetService', services.attributeSetService) //newer version
 .factory('Brand', services.brand)
-.factory('BrandService', services.brandService) //newer version
 .factory('SellerAccountService', services.sellerAccountService)
 .factory('SellerRoleService', services.sellerRoleService)
-.factory('SellerPermissionService', services.sellerPermissionService)
 .factory('AdminAccountService', services.adminAccountService)
 .factory('AdminRoleService', services.adminRoleService)
 .factory('AdminPermissionService', services.adminPermissionService)
@@ -161,10 +145,10 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .factory('Alert', services.alert)
 .factory('Blocker', services.blocker)
 .factory('Credential', services.credential)
+.factory('Collection', services.productCollection)
 
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)
-.directive('ngPermission', directives.ngPermission)
 .directive('ngDelegate', directives.ngDelegate)
 .directive('ngCkeditor', directives.ngCkeditor)
 .directive('ngSlideToggle', directives.ngSlideToggle)
@@ -196,9 +180,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .controller('ProductImportCtrl', controllers.productImport)
 .controller('LocalCategoryCtrl', controllers.localCategory)
 .controller('SellerAccountCtrl', controllers.sellerAccount)
-.controller('SellerAccountAddCtrl', controllers.sellerAccountAdd)
 .controller('SellerRoleCtrl', controllers.sellerRole)
-.controller('SellerRoleAddCtrl', controllers.sellerRoleAdd)
 .controller('AdminAttributeCtrl', controllers.adminAttribute)
 .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)
 .controller('AdminAttributeAddCtrl', controllers.adminAttributeAdd)
@@ -217,5 +199,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .controller('LoginCtrl', controllers.login)
 .controller('AbstractListCtrl', controllers.abstractList)
 .controller('AbstractAddCtrl', controllers.abstractAdd)
-
+.controller('ProductCollectionListCtrl', controllers.productCollectionList)
+.controller('ProductCollectionAddCtrl', controllers.productCollectionAdd)
+//test
 .controller('TestCtrl', controllers.test)

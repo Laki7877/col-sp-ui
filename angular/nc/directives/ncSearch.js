@@ -5,15 +5,12 @@ angular.module('nc')
 			replace: true,
 			scope: {
 				model: '=ncModel',
-				placeholder: '=ncSearchPlaceholder',
-				event: '=ncSearchEvent'
+				placeholder: '=ncSearchPlaceholder'
 			},
 			template: $templateCache.get('common/ncSearch'),
 			link: function(scope) {
-				scope.event = scope.event || function() { return true };
 				scope.searchText = '';
 				scope.callback = function() {
-					if(!scope.event()) return;
 					scope.model = scope.searchText;
 				}
 			}
