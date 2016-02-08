@@ -186,7 +186,7 @@
 <script type="text/javascript">
   $('.popover-markup>.trigger').popover({
     html: true,
-    placement: "bottom",
+    placement: "right",
     title: function () {
         return $(this).parent().find('.head').html();
     },
