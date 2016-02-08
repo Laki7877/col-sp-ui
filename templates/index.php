@@ -6,7 +6,7 @@
     <div class="page-header with-border">
         <h1 class="float-left page-header-title">Products</h1>
         <span class="float-right page-header-action">
-            <a href="#" data-toggle="modal" data-target="#export-product" class="btn margin-left-10 btn-white">
+            <a href="/?p=seller_export_products" class="btn margin-left-10 btn-white">
               <span class="">Export</span>
             </a>
 
@@ -15,8 +15,8 @@
                 Import <span class="caret"></span>
               </button>
               <ul class="dropdown-menu">
-                <li><a href="/?p=seller_import_product">Add New Products</a></li>
-                <li><a href="#">Update Existing Products</a></li>
+                <li><a href="/?p=seller_import_products">Add New Products</a></li>
+                <li><a href="/?p=seller_update_products">Update Existing Products</a></li>
               </ul>
             </div>
             <a href="/?p=global_category" data-toggle="modal" class="btn margin-left-10 btn-blue btn-width-xl">
