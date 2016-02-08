@@ -20,7 +20,8 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
                     })
                     .error(function (data, status, headers, config) {
                         console.warn(status, config.method, config.url, data);
-                        if(status == 401){
+			var onLoginPage = ($window.location.pathname == "/login");
+                        if(status == 401 && !onLoginPage){
                             //Catch Forbidden
                             storage.put('redirect', $window.location.pathname);
                             $window.location.href = "/login";
@@ -34,11 +35,11 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
          * Get error message from response
          */
         service.getError = function(response) {
-            if(response.message)
+            if(!_.isUndefined(response.message))
                 return response.message;
-            if(response.error)
+            if(!_.isUndefined(response.error))
                 return response.error;
-            if(response.Message)
+            if(!_.isUndefined(response.Message))
                 return response.Message;
             return response;
         };
@@ -114,6 +115,22 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
 
             obj.deserialize = function(data) {
                 return data;
+            };
+            obj.duplicate = function(id) {
+                return service.makeRequest({
+                    method: 'POST',
+                    url: resourceUri + '/' + id
+                });
+            };
+            obj.visible = function(obj) {
+                return service.makeRequest({
+                    method: 'PUT',
+                    url: resourceUri + '/Visibility',
+                    data: obj,
+                    headers: {
+                        'Content-Type': 'application/json;charset=UTF-8'
+                    }
+                });
             };
 
             return obj;

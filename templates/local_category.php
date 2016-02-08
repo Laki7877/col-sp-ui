@@ -6,7 +6,7 @@
 		<div class="page-header with-border">
 		    <h1 class="float-left page-header-title">Local Category</h1>
 		    <span class="float-right page-header-action">
-		        <button type="button" class="btn-white btn margin-right-10" data-toggle="modal" data-target="#local-category-detail" ng-click="$emit('openEditLocalCategory')">
+		        <button type="button" class="btn-white btn margin-right-10" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#local-category-detail" ng-click="$emit('openEditLocalCategory')">
 		          <span class="">Create Local Category</span>
 		        </button>
 		        <button type="button" class="btn-blue btn btn-width-xl" ng-click="$emit('saveLocalCategory')">
@@ -32,7 +32,7 @@
 					Action
 				</span>
 			</div>
-			<div class="col-xs-12 no-padding" ui-tree max-depth="4">
+			<div class="col-xs-12 no-padding" ui-tree="treeOptions" max-depth="4">
 				<ol class="sortable no-padding" ui-tree-nodes ng-model="categories">
 					<li ng-repeat="node in categories" ui-tree-node ng-include="'local_category/nodes'"></li>
 				</ol>	
@@ -48,6 +48,6 @@
       	<div ng-if="loading">
           <? $this->insert('components/table-loading', ['text' => 'Loading...']) ?>
       	</div>
-	<? $this->insert('components/modal-local-category', ['id' => 'local-category-detail', 'ng_model' => 'editingCategory']) ?>
+	<? $this->insert('components/modal-local-category', ['id' => 'local-category-detail', 'ng_model' => 'editingCategory', 'header' => 'Local Category Detail']) ?>
 	</div>
 <?php $this->stop() ?>
