@@ -2,27 +2,33 @@
 	$feature-text-height: 20px;
 
 	.form-section-content {
+		display: flex;
 		margin-top: 30px - $feature-text-height;
 		margin-bottom: 30px - 15px; // -15px for image list item's margin bottom
 		padding-left: 15px;
-		padding-right: 15px;
+		padding-right: 30px;
 	}
 	.feature-text {
-		margin-left: 15px;
+		font-size: 12px;
+		margin-left: 27px;
 		height: $feature-text-height;
 	}
 	.content-text {
 		margin-top: $feature-text-height;
 	    width: 140px;
+	    display: block;
 	    float: left;
 	}
 
 	.picture-container, .drop-zone-container {
+		display: block;
 		float: left;
 	}
 
 	.drop-zone-container {
 		margin-top: $feature-text-height;
+		margin-left: 10px;
+		flex-grow: 100;
 
 		&.disabled {
 			.image-drop-zone {		
@@ -41,7 +47,8 @@
 	}
 
 	.image-drop-wrapper {
-		width: 175px;
+		width: 100%;
+		margin-right: 20px;
 	}
 
 	.image-drop-zone {
@@ -53,8 +60,7 @@
 	}
 
 	.alert-wrapper {
-		margin-top: 5px;
-		max-width: 905px;
+		margin: 15px 30px 15px 15px;
 	}
 }
 
