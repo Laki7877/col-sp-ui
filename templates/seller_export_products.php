@@ -4,14 +4,23 @@
 	<div class="local-category-page">
 
 
-		<? $this->insert('components/page-title-with-buttons', ['text' => 'Products / Export'
-      , 'buttons' => [
-        ['link' => '#', 'class' => 'btn-white btn-width-xl', 'name' => 'Cancel'],
-        ['link' => '#', 'class' => 'btn-blue  btn-width-xl', 'name' => 'Export']
-        ]
-        ]) ?>
+		<div class="page-header with-border">
 
+		    <h1 class="float-left page-header-title ah-breadcrumb">
+		    	<a href="/?p=index" class="ah-breadcrumb-path ah-breadcrumb-idx-0">Products</a>
+		    	<span class="ah-breadcrumb-splitter">/</span>
+		    	<a href="#" class="ah-breadcrumb-path ah-breadcrumb-idx-1">Export</a>
+		    </h1>
 
+		    <span class="float-right page-header-action">
+		        <a href="#" class="btn margin-left-10 btn-white btn-width-xl">
+		          	<span class="">Cancel</span>
+		        </a>
+		        <a href="#" class="btn margin-left-10 btn-blue  btn-width-xl">
+		          	<span class="">Export</span>
+		        </a>
+		    </span>
+		</div>
 
 
 		<div>
