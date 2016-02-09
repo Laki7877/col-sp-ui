@@ -106,8 +106,9 @@
 					'conditions' : addProductForm.MasterVariant_Sku.$error
 					}
 					}">
-                            <input class="form-control width-field-large" name="MasterVariant_Sku" ng-disabled="enableProductVariations == 'enable'" ng-model="formData.MasterVariant.Sku" maxlength="300" ng-pattern="/^[0-9a-zA-Z\s]+$/" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Sku) }"
-                            />
+                            <input class="form-control width-field-large" name="MasterVariant_Sku" ng-show="enableProductVariations != 'enable'" ng-disabled="enableProductVariations == 'enable'" ng-model="formData.MasterVariant.Sku" maxlength="300" ng-pattern="/^[0-9a-zA-Z\s]+$/" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Sku) }"/>
+                            
+                            <input class="form-control width-field-large" value="Edit in Variation Tab" disabled ng-if="enableProductVariations == 'enable'"/>
                         </div>
 
                         <div ng-template="common/input/text2" ng-template-options="{

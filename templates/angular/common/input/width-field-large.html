@@ -1,0 +1,7 @@
+<div class="width-field-large">
+<label ng-class="options.labelClass || {}" ng-if="options.label" ng-bind-html="options.label"></label>
+<ng-transclude></ng-transclude>
+<span class="help-block color-red" ng-if="options.error" ng-show="options.error.show" ng-repeat="(key, prop) in options.error.conditions">
+	{{ options.error.messages[key] }}
+</span>
+</div>

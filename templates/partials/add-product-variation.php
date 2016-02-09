@@ -10,60 +10,66 @@
 
 				<!-- ng-if too long -->
 				<div class="form-section-content" ng-if="!(formData.AttributeSet && !formData.AttributeSet['AttributeSetId']) && enableProductVariations == 'enable'">
-					<div class="form-group" ng-repeat="jth in variationFactorIndices.iterator" ng-show="(attributeOptions[0].options.length > 0) || (jth == 0)">
+					<div class="form-group" ng-repeat="jth in variationFactorIndices.iterator" ng-show="(dataSet.attributeOptions[0].options.length > 0) || (jth == 0)">
 						<div class="width-label">
 							<select class="form-control"
 								ng-options="i as i.Attribute.AttributeNameEn
 								for i in formData.AttributeSet.AttributeSetMaps |
 								truth: 'Attribute.VariantStatus' |
-								exclude: attributeOptions[1 - jth].Attribute : 'AttributeId'
+								exclude: dataSet.attributeOptions[1 - jth].Attribute : 'AttributeId'
 								track by i.Attribute.AttributeId"
-								ng-model="attributeOptions[jth]">
+								ng-model="dataSet.attributeOptions[jth]">
 								<option value="" disabled selected>Select an option..</option>
 							</select>
 						</div>
-						<div class="width-field-large">
-							<!--<div class="input-with-unit">-->
-								
-								<ui-select ng-if="_isListInput(attributeOptions[jth].Attribute.DataType)"
-								multiple ng-model="attributeOptions[jth].options">
-								<ui-select-match placeholder="Select variation options">
+
+                                <div ng-template="common/input/width-field-large" ng-template-options="{
+                                    'error' : {
+                                        'messages': {
+                                            'maxtagcount': 'Cannot exceed 20 tags',
+                                            'maxtaglength': 'Tag must contain 30 characters or less',
+                                            'pattern': 'Only letters and numbers allowed'
+                                        },
+                                        'show': true,
+                                        'conditions' :  addProductForm['attributeOptions' + jth].$error
+                                    }
+                                    }">
+                            
+								<ui-select ng-if="_isListInput(dataSet.attributeOptions[jth].Attribute.DataType)"
+								multiple ng-model="dataSet.attributeOptions[jth].options">
+								<ui-select-match placeholder="Select a variation option">
 								{{ $item.AttributeValue.AttributeValueEn || $item }}
 								</ui-select-match>
-								<ui-select-choices repeat="i in attributeOptions[jth].Attribute.AttributeValueMaps | filter:$select.search">
+								<ui-select-choices repeat="i in dataSet.attributeOptions[jth].Attribute.AttributeValueMaps | filter:$select.search">
 								{{ i.AttributeValue.AttributeValueEn || i }}
 								</ui-select-choices>
 								</ui-select>
 							
-								<ui-select ng-if="_isFreeTextInput(attributeOptions[jth].Attribute.DataType)"
+                                <!-- on-select="onVariationOptionFreeTextAdded($item, $model, jth)" -->
+                                
+								<ui-select ng-if="_isFreeTextInput(dataSet.attributeOptions[jth].Attribute.DataType)"
 								multiple tagging tagging-label=""
-							        tagging-tokens=",|ENTER" 	 
-								on-select="onVariationOptionFreeTextAdded($item, $model, jth)" 
-								ng-model="attributeOptions[jth].options">
-								<ui-select-match placeholder="Variation options separated by a comma (or enter)">
+							    tagging-tokens=",|ENTER" 	 
+                                name="attributeOptions{{jth}}" nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30"
+                                nc-tag-pattern="^[a-zA-Z0-9ก-๙\s\-]+$"
+								ng-model="dataSet.attributeOptions[jth].options">
+								<ui-select-match placeholder="Variation options separated by a comma or enter">
 								{{ $item.AttributeValue.AttributeValueEn || $item }}
 								</ui-select-match>
-								<ui-select-choices repeat="i in attributeOptions[jth].Attribute.AttributeValueMaps | filter:$select.search">
+								<ui-select-choices repeat="i in dataSet.attributeOptions[jth].Attribute.AttributeValueMaps | filter:$select.search">
 								{{ i.AttributeValue.AttributeValueEn || i }}
 								</ui-select-choices>
 								</ui-select>
-
-					<!--			<span class="input-unit">
-									{{ attributeOptions[jth].Attribute.unit }}
-								</span>
-							</div>-->
-						</div>
-						<a class="like-text form-text" ng-click="variationFactorIndices.pushSecond()" ng-if="attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1">
+                               
+                             </div>
+							<!--</div>-->
+					
+						<a class="like-text form-text" ng-click="variationFactorIndices.pushSecond()" ng-if="dataSet.attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1">
 							<i class="fa fa-plus-circle color-theme"></i> Add another option
 						</a>
-						<a class="like-text form-text" ng-click="variationFactorIndices.popSecond()" ng-if="attributeOptions[1].options.length > 0 && variationFactorIndices.length() == 2 && jth == 1">
+						<a class="like-text form-text" ng-click="variationFactorIndices.popSecond()" ng-if="dataSet.attributeOptions[1].options.length > 0 && variationFactorIndices.length() == 2 && jth == 1">
 								<i class="fa fa-trash color-theme"></i>
 						</a>
-						<div class="width-field-large">
-							<span class="help-block color-red" ng-repeat="msg in (variationOptionWarning[jth]) track by $index"> 
-								<span>{{ msg }}</span>
-							</span>
-						</div>
 					</div>
 
 					<div class="form-group" ng-show="formData.Variants.length > 0">
