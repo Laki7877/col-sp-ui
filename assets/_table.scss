@@ -309,10 +309,11 @@
     	   height: 30px;
 	   margin-right:20px;
 	  @include button-variant($color-theme, $white, $btn-default-border);
-  .advance-search{
-    padding-left: 0px;
-    .btn-white{
-      width: 135px;
+    .advance-search{
+      padding-left: 0px;
+      .btn-white{
+        width: 135px;
+      }
     }
   }
 

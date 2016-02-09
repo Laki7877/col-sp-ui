@@ -42,7 +42,6 @@ module.exports = function($scope, $controller, ProductReviewService, config, $ui
 		}
 	});
 	$scope.open = function(item) {
-		
 		$uibModal.open({
 			templateUrl: 'product/productReviewModal',
 			controller: function($scope, Comment) {
