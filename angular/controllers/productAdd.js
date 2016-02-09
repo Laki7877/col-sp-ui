@@ -33,40 +33,14 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             //TODO: Poon? Wtf is queue limit handler
         }
 
-        $scope.keywordValidConditions = {};
-        $scope.variationOptionWarning = [[], []];
-        $scope.onKeywordAdded = function (item, model) {
-            $scope.keywordValidConditions = {};
-            if (!item) return $scope.formData.Keywords.pop();
-
-            if ($scope.formData.Keywords.length > 20) {
-                $scope.keywordValidConditions['tagcount'] = true;
-            }
-
-            if (item.length > 30) {
-                $scope.keywordValidConditions['taglength'] = true;
-            }
-
-            if (!item.match(/^[a-zA-Z0-9ก-๙\s\-]+$/)) {
-                $scope.keywordValidConditions['pattern'] = true;
-            }
-
-            if (Object.keys($scope.keywordValidConditions).length > 0) {
-                //if there is error, revert
-                $scope.formData.Keywords.pop();
-            }
-        }
-
-        $scope.onKeywordRemoved = function (item, model) {
-            console.log($scope.formData.Keywords);
-        }
 
         
-
         $scope.asStatus = function (ab) {
             return StatusLookup[ab];
         };
-
+        
+        //Is there a better way ? No.
+        $scope.variationOptionWarning = [[], []];
         $scope.onVariationOptionFreeTextAdded = function (item, model, jth) {
             $scope.variationOptionWarning[jth] = [];
             if (!item) return;
@@ -87,9 +61,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
 
         var watchVariantChanges = function () {
-            console.log("Starting $watch VCHN");
             $scope.$watch('attributeOptions', function () {
-
                 var vHashSet = {};
                 var prevVariants = angular.copy($scope.formData.Variants);
                 prevVariants.forEach(function (elem, index) {
@@ -265,17 +237,12 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             }
         };
 
-        //TODO: Initialize non-formData variable
+        //TODO: too Weird
         $scope.enableProductVariations = "disable";
 
         $scope.preview = function () {
             return console.log($scope.formData);
         };
-
-        /*
-         *  refresh functions
-         *  for dropdown suggestions
-         */
 
         $scope.refreshRelatedProducts = function (q) {
             return Product.getAll({
@@ -328,7 +295,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             }
 
             if (!$scope.formData.Brand.BrandId) {
-                mat.push("Missing Brand");
+                mat.push("Brand is Missing");
             }
 
             return mat;
