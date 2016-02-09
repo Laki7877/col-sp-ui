@@ -105,6 +105,7 @@ module.exports = function (grunt) {
 
   // Default task.
   grunt.registerTask('default', ['ngtemplates','browserify']);
+  grunt.registerTask('scripts', ['browserify']);
   grunt.registerTask('template', ['ngtemplates']);
   grunt.registerTask('watchall', ['watch']);
   grunt.registerTask('compass', ['exec:compass']);

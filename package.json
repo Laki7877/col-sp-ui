@@ -21,9 +21,8 @@
     "lodash": "^4.0.1"
   },
   "scripts": {
-
-    "grunt": "grunt",
-    "compile": "grunt browserify && compass compile",
+    "build": "grunt scripts",
+    "buildAll": "grunt",
     "serve": "php -S 0.0.0.0:5000 -t public",
     "deploy": "git push origin production && git push live production"
   },

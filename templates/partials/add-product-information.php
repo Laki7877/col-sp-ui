@@ -139,7 +139,7 @@
 				"placeholder" => "Search Brand..",
 				"refresh" => "refreshBrands",
 				"trackBy" => "BrandId",
-				"choices" => "availableBrands",
+				"choices" => "dataSet.Brands",
 				"ng_model"=> "formData.Brand"
 				])
 				?>
@@ -237,19 +237,19 @@
                             </div>
                             <div class="width-field-normal">
                                 <div class="ah-select2-dropdown">
-                                    <!-- dont show if nothing is available to choose from -->
-                                    <ui-select ng-model="formData.AttributeSet" ng-show="availableAttributeSets.length > 0">
+                                    <!-- dont show if nothing is dataSet. to choose from -->
+                                    <ui-select ng-model="formData.AttributeSet" ng-show="dataSet.AttributeSets.length > 0">
                                         <ui-select-match placeholder="Search Attribute Set">
                                             <span ng-bind="$select.selected.AttributeSetNameEn"></span>
                                             <span ng-show="!$select.selected.AttributeSetNameEn">- Select Attribute Set -</span>
                                         </ui-select-match>
-                                        <ui-select-choices repeat="item in (availableAttributeSets) | filter : $select.search track by item.AttributeSetId">
+                                        <ui-select-choices repeat="item in (dataSet.AttributeSets) | filter : $select.search track by item.AttributeSetId">
                                             <span ng-bind="item.AttributeSetNameEn"></span>
                                         </ui-select-choices>
                                     </ui-select>
                                     <!-- if nothing is availalbe to pick -->
-                                    <select class="form-control" ng-if="availableAttributeSets.length == 0" disabled>
-                                        <option disabled>Not available for this Global Category</option>
+                                    <select class="form-control" ng-if="dataSet.AttributeSets.length == 0" disabled>
+                                        <option disabled>Not dataSet. for this Global Category</option>
                                     </select>
                                 </div>
                             </div>
@@ -394,7 +394,7 @@
                         <? $this->insert('components/forms/dropdown-with-label',
 				["label" => "Stock Type",
 				"ng_model" => "formData.MasterVariant.StockType",
-				"choices" => "availableStockTypes",
+				"choices" => "dataSet.StockTypes",
 				"options" => ["Stock", "Pre-Order"]]) ?>
                     </div>
                 </div>

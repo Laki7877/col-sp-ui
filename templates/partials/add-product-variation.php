@@ -34,7 +34,6 @@
 								{{ i.AttributeValue.AttributeValueEn || i }}
 								</ui-select-choices>
 								</ui-select>
-						
 							
 								<ui-select ng-if="_isFreeTextInput(attributeOptions[jth].Attribute.DataType)"
 								multiple tagging tagging-label=""

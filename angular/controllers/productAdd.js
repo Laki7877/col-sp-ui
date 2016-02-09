@@ -10,7 +10,21 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
         var QUEUE_LIMIT = 20;
         var QUEUE_LIMIT_360 = 60;
         var MAX_VARIANT = 100;
-
+        
+        $scope.dataSet = {};
+        
+        $scope.dataSet.AttributeSets = [];
+        $scope.dataSet.GlobalCategories = [];
+        $scope.dataSet.LocalCategories = [];
+        $scope.dataSet.Brands = [];
+        $scope.dataSet.SearchTags = [];
+        $scope.dataSet.RelatedProducts = [];
+        $scope.dataSet.StockTypes = ['Stock', 'Pre-Order'];
+        $scope.dataSet.VariantDisplayOption = [
+            { text: 'Show as group of variants', value: 'GROUP' },
+            { text: 'Show as individual product', value: 'INDIVIDUAL' }
+        ];
+        
         $window.onbeforeunload = function (e) {
             if (!$scope.addProductForm.$dirty) {
                 //only warn when form is dirty
@@ -25,17 +39,13 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
             // For Safari
             return message;
-        }; // end onbefore unload
+        }; // end onbeforeunload
 
         var StatusLookup = config.PRODUCT_STATUS;
         var onImageUploadFail = function (item, filter) {
             alert("File Size must not exceed 5 MB");
         }
-        var onQueueLimit = function () {
-            //TODO: Poon? Wtf is queue limit handler
-        }
-
-
+        var onImageUploadQueueLimit = function () { }
         
         $scope.asStatus = function (ab) {
             return StatusLookup[ab];
@@ -101,7 +111,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                     //Initialize
                     kpair.ProductNameEn = $scope.formData.MasterVariant.ProductNameEn;
                     kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
-                    kpair.Display = $scope.availableVariantDisplayOption[0].value;
+                    kpair.Display = $scope.dataSet.VariantDisplayOption[0].value;
                     kpair.Visibility = true;
                     kpair.DimensionUnit = "MM";
                     kpair.WeightUnit = "G";
@@ -141,18 +151,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
         } //end of watch func
 
-        //Attribute Options to be filled via API
-        $scope.availableAttributeSets = [];
-        $scope.availableGlobalCategories = [];
-        $scope.availableLocalCategories = [];
-        $scope.availableBrands = [];
-        $scope.availableSearchTags = [];
-        $scope.availableRelatedProducts = [];
-        $scope.availableStockTypes = ['Stock', 'Pre-Order'];
-        $scope.availableVariantDisplayOption = [
-            { text: 'Show as group of variants', value: 'GROUP' },
-            { text: 'Show as individual product', value: 'INDIVIDUAL' }
-        ];
+        
 
         $scope.overview = {}
 
@@ -237,7 +236,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             return Product.getAll({
                 searchText: q
             }).then(function (dataSet) {
-                $scope.availableRelatedProducts = dataSet.data;
+                $scope.dataSet.RelatedProducts = dataSet.data;
             });
         };
 
@@ -247,7 +246,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                 pageSize: 10,
                 searchText: q
             }).then(function (dataSet) {
-                $scope.availableBrands = dataSet.data;
+                $scope.dataSet.Brands = dataSet.data;
             });
         };
 
@@ -301,7 +300,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             AttributeSet.getByCategory(globalCatId)
                 .then(function (data) {
                     //remove complex structure we dont need
-                    $scope.availableAttributeSets = data.map(function (aset) {
+                    $scope.dataSet.AttributeSets = data.map(function (aset) {
                         aset.AttributeSetTagMaps = aset.AttributeSetTagMaps.map(function (asti) {
                             return asti.Tag.TagName;
                         });
@@ -316,7 +315,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
                     if (_editMode) {
                         $scope.pageState.load('Indexing AttributeSet');
-                        $scope.formData.AttributeSet = $scope.availableAttributeSets[$scope.availableAttributeSets.map(function (o) {
+                        $scope.formData.AttributeSet = $scope.dataSet.AttributeSets[$scope.dataSet.AttributeSets.map(function (o) {
                             return o.AttributeSetId
                         }).indexOf(ivFormData.AttributeSet.AttributeSetId)];
                         var parse = function (ivFormData, FullAttributeSet) {
@@ -330,8 +329,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                             $scope.attributeOptions = inverseResult.attributeOptions || $scope.attributeOptions;
                             if ($scope.attributeOptions[1].options.length > 0) $scope.variationFactorIndices.pushSecond();
                             //Initialize Uploader
-                            ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onQueueLimit, onImageUploadFail);
-                            ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onQueueLimit, onImageUploadFail);
+                            ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
+                            ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
                         };
                         parse(ivFormData, $scope.formData.AttributeSet);
                     }
@@ -339,9 +338,9 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                     $scope.pageState.load('Downloading Category Tree..');
                     //Load Global Cat
                     GlobalCategory.getAll().then(function (data) {
-                        $scope.availableGlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
-                        $scope.formData.GlobalCategories[0] = Category.findByCatId(globalCatId, $scope.availableGlobalCategories);
-                        $scope.globalCategoryBreadcrumb = Category.createCatStringById(globalCatId, $scope.availableGlobalCategories);
+                        $scope.dataSet.GlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
+                        $scope.formData.GlobalCategories[0] = Category.findByCatId(globalCatId, $scope.dataSet.GlobalCategories);
+                        $scope.globalCategoryBreadcrumb = Category.createCatStringById(globalCatId, $scope.dataSet.GlobalCategories);
 
                         $scope.pageState.load('Preparing content..');
                         deferred.resolve();
@@ -461,7 +460,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
             //Load Local Cat
             Shop.getLocalCategories(shopId).then(function (data) {
-                $scope.availableLocalCategories = Category.transformNestedSetToUITree(data);
+                $scope.dataSet.LocalCategories = Category.transformNestedSetToUITree(data);
             });
 
         }
@@ -471,8 +470,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
         tabPage.images = {
             angular: function () {
                 //Assign uploader images
-                ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onQueueLimit, onImageUploadFail);
-                ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onQueueLimit, onImageUploadFail);
+                ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
+                ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
 
                 /**
                  * IMAGE THUMBNAIL EVENTS
@@ -514,8 +513,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
                 //Events
                 $scope.$on('openGlobalCat', function (evt, item, indx) {
-                    console.log('openGloCat', item, $scope.availableGlobalCategories);
-                    $scope.viewCategoryColumns = Category.createColumns(item, $scope.availableGlobalCategories);
+                    console.log('openGloCat', item, $scope.dataSet.GlobalCategories);
+                    $scope.viewCategoryColumns = Category.createColumns(item, $scope.dataSet.GlobalCategories);
                     $scope.viewCategorySelected = item;
                     $scope.viewCategoryIndex = indx;
                     $scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function (selectedItem) {
@@ -534,8 +533,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
                 //Events
                 $scope.$on('openLocalCat', function (evt, item, indx) {
-                    console.log(item, $scope.availableLocalCategories);
-                    $scope.viewCategoryColumns = Category.createColumns(item, $scope.availableLocalCategories);
+                    console.log(item, $scope.dataSet.LocalCategories);
+                    $scope.viewCategoryColumns = Category.createColumns(item, $scope.dataSet.LocalCategories);
                     $scope.viewCategorySelected = item;
                     $scope.viewCategoryIndex = indx;
                     $scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function (selectedItem) {
@@ -584,7 +583,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                     $scope.pairModal = angular.copy(pair);
                     $scope.pairIndex = index;
                     $scope.uploaderModal.queue = $scope.pairModal.queue;
-                    ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onQueueLimit, onImageUploadFail);
+                    ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail);
                 });
                 $scope.$on('savePairModal', function (evt) {
                     $scope.formData.Variants[$scope.pairIndex] = $scope.pairModal;
