@@ -1290,10 +1290,12 @@ module.exports = ['$scope', 'Alert', 'Credential', '$window', 'storage', functio
 },{}],22:[function(require,module,exports){
 var angular = require('angular');
 
-module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException',
-    function ($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, $rootScope, $q, KnownException) {
+module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert',
+    function ($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, $rootScope, $q, KnownException, NcAlert) {
         'use strict';
 
+        $scope.alert = new NcAlert();
+        
         var MAX_FILESIZE = 5000000; //5MB
         var QUEUE_LIMIT = 20;
         var QUEUE_LIMIT_360 = 60;
@@ -1346,9 +1348,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             if ($scope.variationOptionWarning[jth].length > 0) {
                 $scope.attributeOptions[jth].options.pop();
             }
-
         }
-
 
         var watchVariantChanges = function () {
             $scope.$watch('attributeOptions', function () {
@@ -1500,17 +1500,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
         //CK editor options
         $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
 
-        /*
-         * Page can be in 3 states
-         * --------------------------------
-         *  success: OK stat
-         *  failure: L2 validation error (client + server)
-         *  invalid: L1 validation error (client)
-         */
+
         $scope.pageState = {
-            success: false,
-            failure: false,
-            invalid: false,
             loading: {
                 state: true,
                 message: 'Loading..'
@@ -1520,9 +1511,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                 $scope.pageState.loading.state = true;
             },
             reset: function () {
-                $scope.pageState.success = false;
-                $scope.pageState.failure = false;
-                $scope.pageState.invalid = false;
+                $scope.alert.close();
                 $scope.pageState.loading.state = false;
             }
         };
@@ -1668,21 +1657,13 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             var validateMat = manualValidate();
             if (validateMat.length > 0 && Status == 'WA') {
                 $scope.pageState.reset();
-                $scope.pageState.failure = true;
-                $scope.pageState.failure_message = validateMat[0];
-                $window.location.hash = 'alert';
-                $window.location.hash = 'alert-failure';
+                $scope.alert.error(validateMat);
                 return;
             }
-
-            //Basic validation
-            if ($scope.addProductForm.$invalid) {
-
+            
+            if($scope.addProductForm.$invalid){
                 $scope.pageState.reset();
-                //scroll to top and show alert div
-                $window.location.hash = 'alert';
-                $window.location.hash = 'alert-validation';
-                $scope.pageState.invalid = true;
+                $scope.alert.error("Unable to save because you are missing required fields");
                 return;
             }
 
@@ -1695,34 +1676,26 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                     $scope.pageState.reset();
                     if (res.ProductId) {
                         $scope.overview = res;
-                        $scope.pageState.success = true;
+                        $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
                         $scope.formData.ProductId = res.ProductId;
                         $scope.formData.MasterVariant.Pid = res.MasterVariant.Pid;
                         $scope.addProductForm.$setPristine(true)
                     } else {
-                        $scope.pageState.failure = true;
-                        $scope.pageState.failure_message = res.message || res.Message;
+                        $scope.alert.error('Unable to save because ' + (res.message || res.Message))
                         $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-                        $window.location.hash = 'alert'
-                        $window.location.hash = 'alert-failure'
                     }
                 }, function (er) {
                     $scope.pageState.reset();
-                    $scope.pageState.failure = true;
-                    $scope.pageState.failure_message = er.Message || er.message;
+                    $scope.alert.error('Unable to save because ' + (er.message || er.Message))
                     $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
 
-                    $window.location.hash = 'alert' //Need to toggle hash otherwise it wont scroll
-                    $window.location.hash = 'alert-failure'
                 });
 
             } catch (ex) {
                 $scope.pageState.reset();
-                $scope.pageState.failure = true;
-                $scope.pageState.failure_message = ex.message;
+                $scope.alert.error('Unable to save because ' + (ex.message || ex.Message))
                 $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-                $window.location.hash = 'alert'
-                $window.location.hash = 'alert-failure'
+
                 console.log('publish failure', ex);
                 return;
             }
@@ -7512,7 +7485,7 @@ module.exports = ["common", function(common) {
 },{}],109:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Tue Feb 09 2016 19:28:24 GMT+0700 (SE Asia Standard Time)
+ * Tue Feb 09 2016 19:52:21 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
