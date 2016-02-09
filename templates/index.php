@@ -255,8 +255,6 @@
     </div>
   </div>
 
-  <? $this->insert('components/modal-export-product', ['id' => 'export-product', 'newProductNum' => '1,500']) ?>
-  <? $this->insert('components/modal-export-product-progressing', ['id' => 'export-product-progressing', 'percent' => '60']) ?>
-  <? $this->insert('components/modal-export-product-complete', ['id' => 'export-product-complete']) ?>
+
 
 <?php $this->stop() ?>

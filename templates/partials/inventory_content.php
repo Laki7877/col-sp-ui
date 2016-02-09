@@ -32,6 +32,7 @@
     <div class="filter-container">
       <span>Filters:</span>
       <a class="filter-first-option filter-active">All</a>
+      <a class="filter-seperator">Normal Stock</a>
       <a class="filter-seperator">Low Stock</a>
       <a class="filter-seperator">Out of Stock</a>
     </div>
@@ -61,7 +62,11 @@
             <a class="header-link" href="#"><span>Available</span></a>
             <i class="fa fa-caret-down color-grey">
           </th>
-          <th class="width_action_wide text-center"><a class="header-link" href="#"><span>Action</span></a></th> 
+          <th class="width_150">
+            <a class="header-link margin-left-10" href="#"><span>Status</span></a>
+            <i class="fa fa-caret-down color-grey">
+          </th>
+          <th class="action-column text-center"><a class="header-link" href="#"><span>Action</span></a></th> 
         </tr>
 
       </thead>
@@ -84,7 +89,7 @@
               <span class='popover-markup'> 
                 <i  class='trigger fa fa-caret-down color-dark-grey'></i> 
                 <div class="content hide">
-                    <span class='col-xs-8 padding-left-0 margin-bottom-15 margin-top-10'>In Stock</span><input class='margin-top-10 text-right col-xs-4' />
+                    <span class='col-xs-6 padding-left-0 margin-bottom-15 margin-top-10'>In Stock</span><input class='margin-top-10 text-right col-xs-6' placeholder="17" />
                     <span class='col-xs-8 padding-left-0 margin-bottom-15'>Defect</span><span class='text-right col-xs-4'>5</span>
                       <div><span class='col-xs-8 padding-left-0 margin-bottom-15'>On Hold</span><span class='text-right col-xs-4'>7</span></div>
                       <div><span class='col-xs-8 padding-left-0 margin-bottom-15 border_modal'>Reserved</span><span class='text-right col-xs-4 border_modal'>2</span></div>
@@ -96,13 +101,16 @@
               </span>
             </span>
           </td>
-          <td class="width_action_wide text-center">
-            <span class="text-align-center popover-gear">
+          <td>
+            <span class="margin-left-10">
+              Normal Stock
+            </span> 
+          </td>
+          <td class="text-center">
+            <span class="popover-gear">
               <i class="fa fa-gear color-dark-grey icon-size-20"></i>
               <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
                 <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
-                <div><a href='#'>View Products</a></div>
-                <div><a href='#'>Delete</a></div>
                 "></i>  
             </span>
           </td>
@@ -128,7 +136,7 @@
               <span class='popover-markup'> 
                 <i  class='trigger fa fa-caret-down color-dark-grey'></i> 
                 <div class="content hide">
-                    <span class='col-xs-8 padding-left-0 margin-bottom-15 margin-top-10'>In Stock</span><input class='margin-top-10 text-right col-xs-4' />
+                    <span class='col-xs-6 padding-left-0 margin-bottom-15 margin-top-10'>In Stock</span><input class='margin-top-10 text-right col-xs-6' placeholder="17" />
                     <span class='col-xs-8 padding-left-0 margin-bottom-15'>Defect</span><span class='text-right col-xs-4'>5</span>
                       <div><span class='col-xs-8 padding-left-0 margin-bottom-15'>On Hold</span><span class='text-right col-xs-4'>7</span></div>
                       <div><span class='col-xs-8 padding-left-0 margin-bottom-15 border_modal'>Reserved</span><span class='text-right col-xs-4 border_modal'>2</span></div>
@@ -140,13 +148,16 @@
               </span>
             </span>
           </td>
-          <td class="width_action_wide text-center">
-            <span class="text-align-center popover-gear">
+          <td> 
+            <span class="margin-left-10 color-red">
+              Low Stock
+            </span>
+          </td>
+          <td class="text-center">
+            <span class="popover-gear">
               <i class="fa fa-gear color-dark-grey icon-size-20"></i>
               <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
                 <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
-                <div><a href='#'>View Products</a></div>
-                <div><a href='#'>Delete</a></div>
                 "></i>  
             </span>
           </td>
