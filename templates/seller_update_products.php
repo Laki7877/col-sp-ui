@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Import - Add New Product']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Import - Update Existing Products']) ?>
 
 <?php $this->start('page-body') ?>
 	<div class="local-category-page">
@@ -13,7 +13,7 @@
 		, '- Alien Attack'
 		]]) ?>
 
-		<? $this->insert('components/page-title-breadcrumb-border', ['text' => 'Products/Import - Update Existing Products']) ?>
+		<? $this->insert('components/page-title-breadcrumb-border', ['text' => 'Products/Import - Add New Products']) ?>
 
 		<div>
 			<form class="ah-form sticky-mainform-action">
@@ -27,7 +27,14 @@
 									<div class="form-section">
 										<div class="form-section-header"><h2>Getting Started</h2></div>
 										<div class="form-section-content">
-											<? $this->insert('components/forms/button-with-label', ["label" => "Export Existing Products", "size" => "large", "btnClass" => "btn-white", "buttonText" => "Export Products"]) ?>					
+
+											<div class="form-group ">
+												<div class="width-label"><label class="control-label">If not already export</label></div>
+												<div class="button-size-large">
+													<a class="button-size-large btn btn-white btn-width-xl" href="/?p=seller_export_products">Export All Product</a>
+												</div>
+											</div>
+
 										</div>
 									</div>
 								</div>
@@ -63,16 +70,7 @@
 												</div>
 												<div class="width-field-normal ">
 													<label class="control-label ">
-														Nike
-													</label>
-												</div>
-											</div>
-
-											<div class="form-group ">
-												<div class="width-label"><label class="control-label ">Brand ID</label></div>
-												<div class="width-field-normal ">
-													<label class="control-label ">
-														XE3393 <a href="#" class="margin-left-10">Copy to Clipboard</a>
+														Nike <a href="#" class="margin-left-10">Copy to Clipboard</a>
 													</label>
 												</div>
 											</div>
@@ -98,19 +96,6 @@
 												<div class="width-field-normal ">
 													<label class="control-label ">
 														Dog Size
-													</label>
-												</div>
-											</div>
-
-											<div class="form-group ">
-												<div class="width-label">
-													<label class="control-label ">
-														Attribute ID
-													</label>
-												</div>
-												<div class="width-field-normal ">
-													<label class="control-label ">
-														AE3393 <a href="#" class="margin-left-10">Copy to Clipboard</a>
 													</label>
 												</div>
 											</div>
@@ -150,9 +135,9 @@
 												<div class="width-field-normal ">
 													<label class="control-label-results">
 														<ul>
-															<li>Small / เล็ก</li>
-															<li>Medium / กลาง</li>
-															<li>Large / ใหญ่</li>
+															<li>Small / เล็ก <a href="#" class="margin-left-10">Copy to Clipboard</a></li>
+															<li>Medium / กลาง <a href="#" class="margin-left-10">Copy to Clipboard</a></li>
+															<li>Large / ใหญ่ <a href="#" class="margin-left-10">Copy to Clipboard</a></li>
 														</ul>
 													</label>
 												</div>
@@ -206,7 +191,7 @@
 										</div>
 									</div>
 									<div class="category-footer no-padding text-align-right">
-										<span>Category ID: A2141</span> <a href="#" class="margin-left-10">Copy to Clipboard</a>
+										<span>Global Category ID: A2141</span> <a href="#" class="margin-left-10">Copy to Clipboard</a>
 									</div>
 								</div>
 							</form>
@@ -254,7 +239,7 @@
 										</div>
 									</div>
 									<div class="category-footer no-padding text-align-right">
-										<span>Category ID: A2141</span> <a href="#" class="margin-left-10">Copy to Clipboard</a>
+										<span>Local Category ID: A2141</span> <a href="#" class="margin-left-10">Copy to Clipboard</a>
 									</div>
 								</div>
 							</form>
@@ -269,5 +254,86 @@
 	</div>
 
 <? $this->insert('components/modal-local-category', ['id' => 'local-category-detail', 'header' => 'Local Category Detail']) ?>
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modal-choose-template">
+  <div class="modal-dialog modal-category-section column-4">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title">Choose Template</h3>
+      </div>
+      <div class="modal-body">
+            <div class="category-section column-<?= $numberOfColumn ?>">
+                <div class="category-section-border-box">
+                    <div class="category-header">
+                        <span class="required">Global Category</span>
+                    </div>
+                    <div class="category-content no-padding">
+                        <ul class="content-column">
+                            <li class="category-active">Electronic</li>
+                            <li>Fashion</li>
+                            <li>Home & Living</li>
+                            <li>Mom & Kids</li>
+                            <li>Electronic</li>
+                            <li>Fashion</li>
+                            <li>Home & Living</li>
+                            <li>Mom & Kids</li>
+                            <li>Electronic</li>
+                            <li>Fashion</li>
+                            <li>Home & Living</li>
+                            <li>Mom & Kids</li>
+                            <li>Electronic</li>
+                            <li>Fashion</li>
+                            <li>Home & Living</li>
+                            <li>Mom & Kids</li>
+                            <li>Electronic</li>
+                            <li>Fashion</li>
+                            <li>Home & Living</li>
+                            <li>Mom & Kids</li>
+                        </ul>
+                        <ul class="content-column">
+                            <li>Computer</li>
+                            <li class="category-active">Phone</li>
+                            <li>Speaker</li>
+                        </ul>
+                        <ul class="content-column">
+                            <li>Smart Phone</li>
+                            <li>Office Phone</li>
+                            <li class="category-active">Accessory</li>
+                        </ul>
+                        <ul class="empty-column content-column"></ul>
+                    </div>
+                </div>
+                <div class="category-footer no-padding">
+                    
+
+                 	<span class="float-left">
+                 		<div class="dropdown">
+							<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" disabled>
+								Select Attribute Set
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Attribute Set 1</a></li>
+								<li><a href="#">Attribute Set 2</a></li>
+								<li><a href="#">Attribute Set 3</a></li>
+							</ul>
+						</div>
+                 	</span>
+
+                    <span class="float-right">
+                        <a class="link-btn-plain" data-dismiss="modal">Cancel</a>
+                        <button type="button" class="btn btn-blue btn-width-xl">Download</button>
+                    </span>
+                </div>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<? $this->insert('components/modal-import-product', ['id' => 'import-product', 'newProductNum' => '', 'updatedProductNum' => '1,500 products to be updated']) ?>
+
 
 <?php $this->stop() ?>

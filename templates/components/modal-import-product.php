@@ -10,10 +10,10 @@
 						<? if (empty($typeText)): ?>
 							<h2 class="font-size-20 text-centerx text-normal margin-bottom-20">Ready to import</h2>
 							<? if (!empty($newProductNum)): ?>
-								<div><?= $newProductNum ?> new products to be imported</div>
+								<div><?= $newProductNum ?></div>
 							<? endif ?>	
 							<? if (!empty($updatedProductNum)): ?>
-								<div><?= $updatedProductNum ?> products to be updated</div>
+								<div><?= $updatedProductNum ?></div>
 							<? endif ?>
 						<? else :?>
 							<h2 class="font-size-20 text-centerx text-normal margin-bottom-20">Ready to import</h2>
