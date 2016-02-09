@@ -17,7 +17,7 @@ require('angular-base64');
 require('angular-sanitize');
 require('angular-scroll');
 require('angular-bootstrap-datetimepicker');
-require('ui-select');
+require('ui-select/dist/select.js');
 
 //Nc package
 require('./nc');
@@ -29,10 +29,14 @@ var helpers = bulk.helpers;
 var directives = bulk.directives;
 var filters = bulk.filters;
 
-var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.datetimepicker', 'duScroll','ngSanitize','ui.select', 'ngAnimate', 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
+var app = angular.module('colspApp', 
+['ngPatternRestrict', 'nc','ui.bootstrap.datetimepicker', 
+'duScroll','ngSanitize','ui.select', 'ngAnimate',
+'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
 
 //App config
-.config(['$uibTooltipProvider', 'uiSelectConfig', '$ncPaginationProvider', '$ncAlertProvider', function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
+.config(['$uibTooltipProvider', 'uiSelectConfig', '$ncPaginationProvider', '$ncAlertProvider', 
+function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
 
 	//Default close tooltip when click again
 	$tooltipProvider.setTriggers({
@@ -161,6 +165,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .factory('Alert', services.alert)
 .factory('Blocker', services.blocker)
 .factory('Credential', services.credential)
+.factory('$exceptionHandler', services.exceptionHandler)
+.factory('KnownException', services.knownException)
 
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)
@@ -174,7 +180,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .directive('ngMinnumber', directives.ngMinnumber)
 .directive('ngMaxnumber', directives.ngMaxnumber)
 .directive('popoverAny', directives.popoverAny)
-
 //Filters
 .filter('capitalize', filters.capitalize)
 .filter('ordinal', filters.ordinal)

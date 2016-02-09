@@ -120,7 +120,7 @@
                           <a ng-click="actions.toggle(row)"><i ng-class="{'fa fa-eye-slash color-grey eye-icon' : !row.Visibility,
                             'fa fa-eye color-dark-grey eye-icon' : row.Visibility}"></i></a>
                   </td>
-                  <td class="modified-column">{{ row.UpdatedDt | date:'shortDate':'+700' }}</td>
+                  <td class="modified-column">{{ row.UpdatedDt | dateTh }}</td>
                   <td class="action-column">
                     <a class="fa fa-gear color-dark-grey icon-size-20"  uib-popover-template="'product/action'" popover-placement="bottom" popover-append-to-body="true" popover-any>
                        <i class="fa fa-caret-down color-dark-grey"></i>
