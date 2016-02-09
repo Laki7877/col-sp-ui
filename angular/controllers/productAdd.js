@@ -187,7 +187,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
         //CK editor options
         $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
 
-
         $scope.pageState = {
             loading: {
                 state: true,
@@ -267,7 +266,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             return mat;
         };
 
-
+        //TODO: Move elsewhere to $addProduct and perform dependency injection
         var setupDependencies = function (globalCatId, pageLoader, ivFormData) {
 
             if (!globalCatId) { throw new KnownException("Catalog Id not given in catReady") }
@@ -416,8 +415,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             for (var page in tabPage) {
                 tabPage[page].angular();
             }
+            
             if (_editMode) {
-                //Edit mode
                 var productId = viewBag.productId;
                 $scope.pageState.load('Loading Product..');
 
@@ -436,6 +435,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             } else if ("catId" in viewBag) {
                 setupDependencies(Number(viewBag.catId), $scope.pageState)
                 .then($scope.pageState.reset);
+            }else{
+                throw new KnownException("Invalid mode, viewBag garbage");
             }
 
             //Load Local Cat
