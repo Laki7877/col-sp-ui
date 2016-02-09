@@ -245,9 +245,9 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     };
 
     //Create action from template
-    service.actionView = function(uri, id) {
+    service.actionView = function(uri, id, name) {
         return {
-            name: 'View / Edit',
+            name: name || 'View / Edit',
             fn: function(item) {
                 $window.location.href= uri + '/' + item[id];
             }

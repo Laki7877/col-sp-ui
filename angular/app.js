@@ -136,6 +136,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 
 //Services
 .factory('Product', services.product)
+.factory('ProductReviewService', services.productReviewService)
 .factory('Image', services.image)
 .factory('ImageService', services.imageService)
 .factory('Category', services.category)
@@ -194,6 +195,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc','ui.bootstrap.da
 .controller('ProductAddSelectCategoryCtrl', controllers.productAddSelectCategory)
 .controller('ProductListLocalCategoryCtrl', controllers.productListLocalCategory)
 .controller('ProductImportCtrl', controllers.productImport)
+.controller('ProductReviewCtrl', controllers.productReview)
+
 .controller('LocalCategoryCtrl', controllers.localCategory)
 .controller('SellerAccountCtrl', controllers.sellerAccount)
 .controller('SellerAccountAddCtrl', controllers.sellerAccountAdd)

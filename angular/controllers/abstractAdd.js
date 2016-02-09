@@ -37,6 +37,7 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 				});
 		} else {
 			//Create mode
+			$scope.id = 0;
 			$scope.formData = options.service.generate();
 			(options.onLoad || _.noop)($scope, false);
 		}
