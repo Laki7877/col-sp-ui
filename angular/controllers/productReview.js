@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, ProductReviewService, $uibModal) {
+module.exports = function($scope, $controller, ProductReviewService, config, $uibModal) {
 	'ngInject';
 	//Inherit from parent
 	$controller('AbstractListCtrl', {
@@ -21,13 +21,26 @@ module.exports = function($scope, $controller, ProductReviewService, $uibModal) 
 				{
 					name: 'Approve',
 					fn: function(obj) {
+
+					},
+					confirmation: {
+						title: 'Approve',
+						message: 'Are you sure you want to approve selected Reviews?'
+					}
+				},
+				{
+					name: 'Unapprove',
+					fn: function(obj) {
 						
+					},
+					confirmation: {
+						title: 'Unapprove',
+						message: 'Are you sure you want to unapprove selected Reviews?'
 					}
 				}
 			]
 		}
 	});
-
 	$scope.open = function(item) {
 		
 		$uibModal.open({
@@ -43,4 +56,5 @@ module.exports = function($scope, $controller, ProductReviewService, $uibModal) 
 			}
 		});
 	};
+	$scope.productStatus = config.PRODUCT_STATUS;
 };
