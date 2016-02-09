@@ -7,10 +7,10 @@
 				<div class="form-section-content">
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Name", ]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "PID" ]) ?>
-					<? $this->insert('components/forms/dropdown_tags', ["label" => "Brand Name/ ID", "default_choices" => ["Gulp", "Adico"], "choices" => ["Gulp", "Adico","Pascal"] ]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Global Category Name/ ID" ]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Shop Name/ ID" ]) ?>
-					<? $this->insert('components/forms/input_tags', ["label" => "Search Tag", "choices" => ["Gulp", "Adico","Pascal"] ]) ?>
+					<? $this->insert('components/forms/dropdown_tags', ["label" => "Brand Name", "default_choices" => ["Gulp", "Adico"], "choices" => ["Gulp", "Adico","Pascal"] ]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Global Category Name" ]) ?>
+					<? $this->insert('components/forms/input-text-with-label', ["label" => "Shop Name" ]) ?>
+					<? $this->insert('components/forms/input_tags', ["label" => "Search Tag", "default_choices" => ["Gulp", "Adico"], "choices" => ["Gulp", "Adico","Pascal"] ]) ?>
 					<? $this->insert('components/forms/input_from_to', ["label" => "Price", "label_extend" => "To" ]) ?>
 					<? $this->insert('components/forms/input_from_to', ["label" => "Created Date", "input_class" => "input-icon-calendar", "label_extend" => "To" ]) ?>
 					<? $this->insert('components/forms/input_from_to', ["label" => "Modified Date", "input_class" => "input-icon-calendar", "label_extend" => "To" ]) ?>
@@ -28,57 +28,7 @@
 		</div>
 	</div>
 
-  <div class="row margin-bottom-20">
-    <div class="col-xs-12 no-padding">
-      <div class="row search-section-wrapper no-margin">
-        <div class="search-section section-action">
-          <div class="input-group">
-            <div class="input-group-btn">
-              <div class="dropdown-btn">
-                <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                    <span class="dropdown-text margin-right-10 search-prodcut-text">- Choosen Action -</span>
-                    <span class="caret margin-left-10"></span>
-                </button>
-                <ul class="dropdown-menu search-product-dropdown">
-                  <?$actions = ['Approve','Not Approve']?>
-                  <? foreach ($actions as $action): ?>
-                    <li><a><?= $action ?></a></li>
-                  <? endforeach ?>
-                </ul>
-              </div>
-            </div><!-- /btn-group -->
-            <div class="input-group-btn">
-              <button type="button" class="btn-white btn">
-                <span class="button-text-blue">Confirm</span>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="page-navigation">
-          <span>
-            <i class="fa fa-chevron-left grey-chevron"></i>
-            <span> Page 1 of 1</span>
-            <i class="fa fa-chevron-right padding-right-15 blue-chevron"></i>
-            <span class="view-page-separator">View per page</span>
-            <!-- Split button -->
-            <div class="btn-group dropdown-btn">
-              <button type="button" class="btn btn-default dropdown-text">20</button>
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="caret"></span>
-                <span class="sr-only">Toggle Dropdown</span>
-              </button>
-              <ul class="dropdown-menu dropdown-menu-right">
-                <li><a href="#">21</a></li>
-                <li><a href="#">22</a></li>
-                <li><a href="#">23</a></li>
-                <li><a href="#">24</a></li>
-              </ul>
-            </div>
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
+  
   <div class="filter-section margin-bottom-20">
     <div class="filter-container">
       <span>Filters:</span>
@@ -153,9 +103,7 @@
             <span class="text-align-center popover-gear">
               <i class="fa fa-gear color-dark-grey icon-size-20"></i>
               <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
-                <div><a href='#'>View Products</a></div>
-                <div><a href='#'>Delete</a></div>
+                <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View Detail</a></div>
                 "></i>  
             </span>
           </td>
@@ -195,9 +143,7 @@
             <span class="text-align-center popover-gear">
               <i class="fa fa-gear color-dark-grey icon-size-20"></i>
               <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
-                <div><a href='#'>View Products</a></div>
-                <div><a href='#'>Delete</a></div>
+                <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View Detail</a></div>
                 "></i>  
             </span>
           </td>
@@ -234,9 +180,7 @@
             <span class="text-align-center popover-gear">
               <i class="fa fa-gear color-dark-grey icon-size-20"></i>
               <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
-                <div><a href='#'>View Products</a></div>
-                <div><a href='#'>Delete</a></div>
+                <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View Detail</a></div>
                 "></i>  
             </span>
           </td>
@@ -273,9 +217,7 @@
             <span class="text-align-center popover-gear">
               <i class="fa fa-gear color-dark-grey icon-size-20"></i>
               <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
-                <div><a href='#'>View Products</a></div>
-                <div><a href='#'>Delete</a></div>
+                <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View Detail</a></div>
                 "></i>  
             </span>
           </td>

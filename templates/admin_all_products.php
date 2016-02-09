@@ -9,7 +9,22 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 			'buttons' => [
 	        	['link' => '#', 'class' => 'btn-white btn-width-xl', 'name' => 'Export']
 	        ] ]) ?>
-		<? $this->insert('components/search-section', ['actions' =>['Approve', 'Unapprove'], 'button_optional_class' => 'border_blue', 'optional_button_name' => 'Advanced Search' ]) ?>
+
+	    <div class="row search-section-wrapper">
+		  <div class="search-section section-search">
+		    <div class="input-group">
+		      <input type="text" class="form-control input-search-icon search-box" placeholder="Search for Product SKU, Name, ..." aria-describedby="basic-addon2" disabled>
+		      <span class="input-group-btn">
+		        <button class="btn btn-white" type="button">Search</button>
+		      </span>
+		    </div>
+		  </div>
+		  <div class="search-section advance-search ">
+    		<button class="btn btn-white border_blue" type="button">Advanced Search</button>
+  		   </div>
+		</div>
+
+		
 
 		<div>
 			<form class="ah-form sticky-mainform-action">

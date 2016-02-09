@@ -17,6 +17,12 @@ form
 	h6 
 		font-size: $font-size-h6
 
+.form-control[disabled]::-webkit-input-placeholder
+	color: $color-grey
+
+.form-control[disabled]:placeholder-shown
+	color: $color-grey
+
 .ah-form
 	@extend .form-horizontal
 	@include clearfix
