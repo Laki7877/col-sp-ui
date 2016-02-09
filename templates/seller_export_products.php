@@ -29,11 +29,16 @@
 					<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
 
 						<div id="import-product-content-page">
-	
+							
+							<div class="margin-bottom-20">
+								<span>Number of products selected:</span>
+								<span>23,423</span>
+							</div>
+
 							<div class="row">
 								<div class="col-xs-12">
 									<div class="form-section">
-										<div class="form-section-header"><h2>Select what you want to export</h2></div>
+										<div class="form-section-header"><h2>Filter Export Column</h2></div>
 										<div class="form-section-content">
 
 											<div class="row">
@@ -44,7 +49,7 @@
 												<? $this->insert('components/forms/multiple-checkbox-multiline', ["label" => "Category", "label_class" => "required", "choices" => ["Global Category", "Local Category"]]) ?>
 												<? $this->insert('components/forms/multiple-checkbox-multiline', ["label" => "Price", "label_class" => "required", "choices" => ["Original Price","Sale Price"]]) ?>
 												<? $this->insert('components/forms/multiple-checkbox-multiline', ["label" => "Description", "label_class" => "required", "choices" => ["Description (English)", "Description (Thai)","Short Description (English)","Short Description (Thai)"]]) ?>
-												<? $this->insert('components/forms/multiple-checkbox-multiline', ["label" => "Shipping & Inventory", "label_class" => "required", "choices" => ["Stock Type", "Preparation Time", "Package - Lenght", "Package - Height", "Package - Width", "Package - Weight", "Inventroy Amount", "Safety Stock Amount"]]) ?>
+												<? $this->insert('components/forms/multiple-checkbox-multiline', ["label" => "Shipping & Inventory", "label_class" => "required", "choices" => ["Stock Type", "Preparation Time", "Package - Lenght", "Package - Height", "Package - Width", "Package - Weight", "Inventory Amount", "Safety Stock Amount"]]) ?>
 											</div>
 
 										</div>
@@ -132,7 +137,7 @@
 			        <div class="container-fluid">
 			          <div class="float-right">
 			            <a href="#" class="link-btn-plain">Cancel</a>
-			            <button class="btn btn-blue btn-width-xl">Export</button>
+			            <button class="btn btn-blue btn-width-xl" data-toggle="modal" data-target="#export-product">ExportXX</button>
 			          </div>
 			        </div>
 			     </div>
@@ -141,6 +146,8 @@
 		</div>
 	</div>
 
-<? $this->insert('components/modal-local-category', ['id' => 'local-category-detail', 'header' => 'Local Category Detail']) ?>
+  <? $this->insert('components/modal-export-product', ['id' => 'export-product', 'newProductNum' => '1,500']) ?>
+  <? $this->insert('components/modal-export-product-progressing', ['id' => 'export-product-progressing', 'percent' => '60']) ?>
+  <? $this->insert('components/modal-export-product-complete', ['id' => 'export-product-complete']) ?>
 
 <?php $this->stop() ?>
