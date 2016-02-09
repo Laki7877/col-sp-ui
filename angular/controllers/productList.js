@@ -1,4 +1,4 @@
-module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope', function ($scope, Product, util, Alert, $window, $rootScope) {
+module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope', 'config', function ($scope, Product, util, Alert, $window, $rootScope, config) {
     
     /*
     * This controller uses legacy table-binding method (v0.0.0)
@@ -221,19 +221,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
         }
     };
     $scope.sort = util.tableSortClass($scope);
-    var StatusLookup = {
-        'DF': {
-            Class: 'fa-circle-o',
-            Text: 'Draft',
-            Color: 'color-grey'
-        },
-        'WA': {
-            Class: 'fa-clock-o',
-            Text: 'Wait for Approval',
-            Color: 'color-yellow'
-        }
-
-    }
+    var StatusLookup =  config.PRODUCT_STATUS;
     $scope.init = function (params) {
         if (angular.isDefined(params)) {
             if (angular.isDefined(params.success) && params.success != null) {

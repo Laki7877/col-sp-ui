@@ -76,7 +76,7 @@ class Route
 		foreach (self::$_routes as $route) 
 		{
 			$routePattern = $route['pattern'];
-			$len = preg_match("#^$routePattern$#", $uri, $out);
+			$len = preg_match("#^$routePattern(\?.*)?$#", $uri, $out);
 			
 			if ($len != false) 
 			{
