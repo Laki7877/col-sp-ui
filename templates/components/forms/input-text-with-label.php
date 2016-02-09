@@ -18,6 +18,10 @@ if (isset($size)) $inputSize = "width-field-$size";
 		<? endif; ?>
 		
 		type="text" class="form-control <?= $input_class; ?>" placeholder="<?=$placeholder?>" <?=$input_attrs?> />
+		<input type="text" class="form-control <?= $input_class; ?>" placeholder="<?=$placeholder?>" <?=$input_attrs?> />
+		<? if (!empty($right_hint)): ?>		
+			<div class="input-password-eye" <?=$font_class;?>> <?=$right_hint?> </div>
+		<? endif ?>
 		<? if (!empty($hint)): ?>
 			<span class="help-block"><?= $hint ?></span>
 		<? endif ?>

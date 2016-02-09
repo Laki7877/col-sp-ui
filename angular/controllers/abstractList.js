@@ -2,7 +2,6 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 	'ngInject';
 	var a = _.includes(['a','e','i','o','u'], _.lowerCase(options.item.charAt(0))) ? 'an' : 'a';
 	$scope.reload = function(newObj, oldObj) {
-
 		if(!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
 			if(newObj.searchText !== oldObj.searchText) {
 				$scope.params._offset = 0;
@@ -45,13 +44,19 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 		];
 	} else {
 		$scope.bulks = _.compact(_.map(options.bulks, function(item) {
-			switch(item) {
-				case 'Delete':
-					return util.bulkDelete(options.service, options.id, options.item, $scope.alert, $scope.reload);
-				case 'Show': 
-					return util.bulkShow(options.service, options.id, options.item, $scope.alert, $scope.reload);
-				case 'Hide': 
-					return util.bulkHide(options.service, options.id, options.item, $scope.alert, $scope.reload);
+			if(_.isString(item)) {
+				switch(item) {
+					case 'Delete':
+						return util.bulkDelete(options.service, options.id, options.item, $scope.alert, $scope.reload);
+					case 'Show': 
+						return util.bulkShow(options.service, options.id, options.item, $scope.alert, $scope.reload);
+					case 'Hide': 
+						return util.bulkHide(options.service, options.id, options.item, $scope.alert, $scope.reload);
+				}
+			}
+
+			if(_.isObject(item)) {
+				return item;
 			}
 			return null;
 		}));
@@ -69,17 +74,26 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 		];
 	} else {
 		$scope.actions = _.compact(_.map(options.actions, function(item) {
-			switch(item) {
-				case 'View':
-					return util.actionView(options.url, options.id);
-				case 'Delete':
-					return util.actionDelete(options.service, options.id, options.item, $scope.alert, $scope.reload, function(obj, id) {
-							_.remove($scope.bulkContainer, function(e) {
-								return e[id] === obj[id];
-							})
-						});
-				case 'Duplicate':
-					return util.actionDuplicate(options.service, options.id, options.item, $scope.alert, $scope.reload);
+
+			if(_.isString(item)) {
+				switch(item) {
+					case 'View':
+						return util.actionView(options.url, options.id);
+					case 'View Only':
+						return util.actionView(options.url, options.id, 'View');
+					case 'Delete':
+						return util.actionDelete(options.service, options.id, options.item, $scope.alert, $scope.reload, function(obj, id) {
+								_.remove($scope.bulkContainer, function(e) {
+									return e[id] === obj[id];
+								})
+							});
+					case 'Duplicate':
+						return util.actionDuplicate(options.service, options.id, options.item, $scope.alert, $scope.reload);
+				}
+			}
+
+			if(_.isObject(item)) {
+				return item;
 			}
 			return null;
 		}));

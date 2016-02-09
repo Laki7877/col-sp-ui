@@ -37,6 +37,11 @@
   @include button-variant($white, $color-green, $color-green);
 }
 
+.btn-red {
+  width: $button-width-default;
+  @include button-variant($white, $color-red, $color-red);
+}
+
 .btn.btn-width-xl {
 	width: $button-width-xl;
 }
@@ -47,4 +52,8 @@
 
 .btn.btn-width-xxxl {
   width: $button-width-xxxl;
+}
+
+.btn.btn-width-100 {
+  width: 100%;
 }

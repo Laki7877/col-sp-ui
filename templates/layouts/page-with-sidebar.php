@@ -18,6 +18,19 @@
         <li ng-class="activeUrl('/products/images')" class="item"><a href="/products/images">Product Images</a></li>
     </ul>
 
+    <ul class="sub-sidebar" style="display: none;" id="sub-sidebar-inventory">
+        <li class="sub-sidebar-header">Inventory</li>
+        <li class="item active margin-top-20"><a href="/?p=seller_inventory">View</a></li>
+        <!-- <li class="item"><a href="/?p=add_product">Add</a></li> -->
+        <!-- <li class="item"><a href="/?p=import_product">Import</a></li> -->
+        <!-- <li class="item"><a href="/?p=index">Export</a></li> -->
+    </ul>
+
+    <ul class="sub-sidebar" style="display: none;" id="sub-sidebar-promotion">
+        <li class="sub-sidebar-header">Promotion</li>
+        <li class="item active margin-top-20"><a href="/?p=seller_coupons">Coupons</a></li>
+    </ul>
+
     <ul class="sub-sidebar" style="display: none;" id="sub-sidebar-account">
         <li class="sub-sidebar-header">Account</li>
         <li ng-class="activeUrl('/accounts')" class="item margin-top-20"><a href="/accounts">User Accounts</a></li>

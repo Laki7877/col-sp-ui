@@ -42,6 +42,39 @@
 		width: 88px;
 	}
 
+  .submitted-column {
+    width: 100px;
+  }
+
+  .width_date {
+    width: 160px;
+  }
+
+  .width_number {
+    width: 70px;
+  }
+
+  .width_action_wide {
+    width: 150px;
+  }
+
+
+  .width_100 {
+    width: 100px;
+  }
+
+  .width_120 {
+    width: 120px;
+  }
+
+  .width_150 {
+    width: 150px;
+  }
+
+  .width_200 {
+    width: 200px;
+  }
+
   tbody .action-column{
     width: 60px;
     padding-top: 14px;
@@ -200,6 +233,10 @@
     border-radius:  4px;
   }
 
+  .filter-container-input {
+    padding: 12px 17px 12px;
+  }
+
   .filter-seperator {
     text-decoration: none;
     cursor: pointer;
@@ -216,6 +253,10 @@
     margin-left: 20px;
   }
 
+  .filter-first-option.first-label {
+    margin-left: 14px;
+  }
+
   .filter-active {
     color:  $color-black;
   }
@@ -227,6 +268,10 @@
       margin-right: 6px;
     }
   }
+}
+
+.filter-section.filter-input {
+  padding-left: 110px;
 }
 
 //Page body: Search section
@@ -259,12 +304,16 @@
     height: 30px;
   }
 
-
   .search-section .btn-white-fluid {
 	  width: auto;
     	   height: 30px;
 	   margin-right:20px;
 	  @include button-variant($color-theme, $white, $btn-default-border);
+  .advance-search{
+    padding-left: 0px;
+    .btn-white{
+      width: 135px;
+    }
   }
 
 
@@ -288,6 +337,15 @@
 
   .checkbox-wrapper {
 	  margin-top: 5px;
+  }
+}
+.product-search-section {
+  .search-section-wrapper {
+    margin-top: 0;
+
+    .search-section {
+      padding-left: 0;
+    }
   }
 }
 
