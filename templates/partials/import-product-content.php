@@ -27,4 +27,4 @@
 	</div>	
 </div>
 
-<? $this->insert('components/modal-import-product', ['id' => 'import-product', 'newProductNum' => '1,500', 'updatedProductNum' => '300']) ?>
+<? $this->insert('components/modal-import-product', ['id' => 'import-product', 'newProductNum' => '1,500 new products to be imported', 'updatedProductNum' => '300']) ?>

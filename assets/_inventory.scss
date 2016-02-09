@@ -1,0 +1,21 @@
+#inventory-tab-content {
+	.border_modal {
+		border-bottom: solid 1px $color-grey;
+		padding-bottom:	10px;
+	}
+
+	.border_full {
+		border:	solid 1px $color-grey;
+	}
+
+	.available_inventory {
+		font-weight: bold;
+		padding-bottom: 20px;
+	}
+
+	.popover-markup {
+		.popover {
+			width: 220px;
+		}
+	}
+}

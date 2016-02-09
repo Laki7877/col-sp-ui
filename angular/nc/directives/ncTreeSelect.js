@@ -4,7 +4,7 @@ angular.module('nc')
 			restrict: 'E',
 			scope: {
 				model: '=ncModel',
-				columns: '=ncTreeSelect'
+				columns: '=ncTreeSelect',
 				options: 'ncTreeSelectOptions'
 			}
 		};

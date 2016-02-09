@@ -7,12 +7,22 @@
 			<div class="modal-body confirmation-modal no-margin">
 				<div class="row">
 					<div class="col-xs-12 margin-bottom-30">
-						<h2 class="font-size-20 text-centerx text-normal margin-bottom-20">Ready to import</h2>
-						<? if (!empty($newProductNum)): ?>
-							<div><?= $newProductNum ?> new products to be imported</div>
-						<? endif ?>	
-						<? if (!empty($updatedProductNum)): ?>
-							<div><?= $updatedProductNum ?> products to be updated</div>
+						<? if (empty($typeText)): ?>
+							<h2 class="font-size-20 text-centerx text-normal margin-bottom-20">Ready to import</h2>
+							<? if (!empty($newProductNum)): ?>
+								<div><?= $newProductNum ?></div>
+							<? endif ?>	
+							<? if (!empty($updatedProductNum)): ?>
+								<div><?= $updatedProductNum ?></div>
+							<? endif ?>
+						<? else :?>
+							<h2 class="font-size-20 text-centerx text-normal margin-bottom-20">Ready to import</h2>
+							<? if (!empty($newProductNum)): ?>
+								<div><?= $newProductNum ?> new <?=$typeText?> to be imported</div>
+							<? endif ?>	
+							<? if (!empty($updatedProductNum)): ?>
+								<div><?= $updatedProductNum ?> <?=$typeText?> to be updated</div>
+							<? endif ?>	
 						<? endif ?>					
 					</div>
 					<div class="confirmation-action no-margin">

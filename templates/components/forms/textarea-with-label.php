@@ -12,6 +12,7 @@ if (isset($size)) $inputSize = "width-field-$size";
 
 			<?php endif; ?>
 		></textarea>
+		<textarea rows="<?=$rows?>" class="form-control" placeholder="<?=$placeholder?>"></textarea>
 	</div>
 	<? if (!empty($tooltip)): ?>
 		<div class="width-field-tooltip no-padding-left"><i class="fa fa-2x fa-question-circle color-grey" data-toggle="btooltip" data-placement="right" title="<?= $tooltip ?>"></i></div>
