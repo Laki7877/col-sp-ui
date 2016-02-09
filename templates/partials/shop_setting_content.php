@@ -34,7 +34,7 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Financial Information</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/input-text-with-label-disabled', ["label" => "Bank Account", "value" => '1234-XXXX-XXXX-1234']) ?>
+					<? $this->insert('components/forms/input-text-with-label-disabled', ["label" => "Bank Account Number", "value" => '1234-XXXX-XXXX-1234']) ?>
 					<? $this->insert('components/forms/input-text-with-label-disabled', ["label" => "Bank Account Name", "value" => 'Lara Company Limited', 'hint' => 'Please contact COL if you wish to change your financial detail']) ?>
 				</div>
 			</div>
