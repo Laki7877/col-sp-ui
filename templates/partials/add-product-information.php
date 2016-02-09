@@ -34,9 +34,9 @@
                                             <i ng-if="overview.ImageFlag" class="fa fa-check color-green icon-size-18px"></i>
                                         </td>
                                         <td>
-                                            <span class="{{ asStatus(overview.Status).Color }}">
-									<i class="fa {{ asStatus(overview.Status).Class }}"></i>
-									{{ asStatus(overview.Status).Text }}
+                                            <span class="{{ asStatus(overview.Status).color }}">
+									<i class="fa {{ asStatus(overview.Status).icon }}"></i>
+									{{ asStatus(overview.Status).name }}
 								</span>
 
                                         </td>

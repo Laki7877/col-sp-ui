@@ -108,9 +108,9 @@
                     <i ng-if="row.ImageFlag" class="fa fa-check color-green icon-size-18px"></i>
                   </td>
                   <td class="status-column">
-                    <span class="{{ asStatus(row.Status).Color }}">
-                      <i class="fa {{ asStatus(row.Status).Class }}"></i>
-                      {{ asStatus(row.Status).Text }}
+                    <span class="{{ asStatus(row.Status).color }}">
+                      <i class="fa {{ asStatus(row.Status).icon }}"></i>
+                      {{ asStatus(row.Status).name }}
                     </span>
                   </td>
                   <td class="live-column" ng-if="showOnOffStatus">

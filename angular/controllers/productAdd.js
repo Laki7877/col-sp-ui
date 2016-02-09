@@ -51,7 +51,11 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             return message;
         }; // end onbeforeunload
 
-        var StatusLookup = config.PRODUCT_STATUS;
+        var StatusLookup = {};
+        config.PRODUCT_STATUS.forEach(function(object){
+            StatusLookup[object.value] = object; 
+        });
+        
         var onImageUploadFail = function (item, filter) {
             alert("File Size must not exceed 5 MB");
         }
