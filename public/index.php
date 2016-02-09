@@ -37,6 +37,9 @@ Route::add('/products/:productid', 'ProductController::edit');
 //category routing
 Route::add('/categories', 'CategoryController::index');
 
+//Shop Setting tab
+Route::add('/shops/settings', 'ShopController::settings');
+
 //seller routing
 Route::add('/accounts', 'SellerController::listAccount');
 Route::add('/accounts/add', 'SellerController::addAccount');
