@@ -74,11 +74,24 @@ module.exports = [function () {
      */
     service.storeCurrentUserProfile = function (profile, flag) {
         profile = angular.toJson(profile);
-        console.log(profile);
         sessionStorage.setItem('central.seller.portal.auth.profile', profile);
         if (flag) {
             localStorage.setItem('central.seller.portal.auth.profile', profile);
         }
+    };
+
+    service.storeImposterProfile = function(profile){
+	profile = angular.toJson(profile);
+        sessionStorage.setItem('central.seller.portal.auth.imposter', profile);
+    };
+	
+    service.getImposterProfile = function () {
+        var profile = sessionStorage.getItem('central.seller.portal.auth.imposter');
+        return angular.fromJson(profile);
+    };
+    
+    service.clearImposterProfile = function () {
+         sessionStorage.removeItem('central.seller.portal.auth.imposter');
     };
 
     /**
@@ -87,7 +100,7 @@ module.exports = [function () {
     service.clear = function () {
         sessionStorage.removeItem('central.seller.portal.auth.token');
         sessionStorage.removeItem('central.seller.portal.auth.profile');
-
+	    sessionStorage.removeItem('central.seller.portal.auth.imposter');
         localStorage.removeItem('central.seller.portal.auth.actions');
         localStorage.removeItem('central.seller.portal.auth.profile');
     };

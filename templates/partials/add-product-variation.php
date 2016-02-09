@@ -80,7 +80,7 @@
 
 				</div>
 			</div> <!-- end .form-section -->
-			<div class="form-section" ng-if="formData.AttributeSet && formData.Variants.length > 0">
+			<div class="form-section" ng-if="formData.AttributeSet && formData.Variants.length > 0" ng-show="enableProductVariations == 'enable'">
 				<div class="form-section-header">Variant ({{ formData.Variants.length }})</div>
 				<div class="form-section-content padding-left-30 padding-right-30">
 					<table class="table ah-table variation-table">
@@ -100,32 +100,81 @@
 							<td class="column-text-ellipsis" ng-class="{'opacity-50': !pair.Visibility}">
 								{{ pair.text }}
 							</td>
-							<td>
-								<input 
-								type="text" ng-disabled='!pair.Visibility' class="form-control"
-								name="pair_Sku{{ $index }}"
-								maxlength="300"
-								ng-pattern="/^[0-9A-Za-z]+$/"
-								ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }"
-								ng-model="pair.Sku" />
-							</td>
-							<td><input type="text"
+
+                            <td ng-template="common/input/text-td"
+                                    ng-template-options="{
+                                        'error' : {
+                                            'messages': {
+                                                'pattern': 'Only english letters and numbers allowed'
+                                            },
+                                            'show': $root.isInvalid(addProductForm['pair_Sku' + $index]),
+                                            'conditions' : addProductForm['pair_Sku' + $index].$error
+                                        }
+                                    }">
+                                    <input 
+                                    type="text" ng-disabled='!pair.Visibility' class="form-control"
+                                    name="pair_Sku{{ $index }}"
+                                    maxlength="300"
+                                    ng-pattern="/^[0-9A-Za-z]+$/"
+                                    ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }"
+                                    ng-model="pair.Sku" />
+                           </td>
+
+							<td ng-template="common/input/text-td"
+                                    ng-template-options="{
+                                        'error' : {
+                                            'messages': {
+                                                'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
+                                            },
+                                            'show': $root.isInvalid(addProductForm['pair_OriginalPrice' + $index]),
+                                            'conditions' : addProductForm['pair_OriginalPrice' + $index].$error
+                                        }
+                                    }">
+                                <input type="text"
 								ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_OriginalPrice{{$index}}) }"
 								name="pair_OriginalPrice{{$index}}"
 								ng-pattern="/^\d+(\.\d{1,2})?$/"
 								ng-model="pair.OriginalPrice" ng-disabled='!pair.Visibility'
-								class="form-control" /></td>
-							<td><input type="text"
+								class="form-control" />
+                                
+                            </td>
+                                
+							<td ng-template="common/input/text-td"
+                                    ng-template-options="{
+                                        'error' : {
+                                            'messages': {
+                                                'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
+                                            },
+                                            'show': $root.isInvalid(addProductForm['pair_SalePrice' + $index]),
+                                            'conditions' : addProductForm['pair_SalePrice' + $index].$error
+                                        }
+                                    }">
+                                <input type="text"
 								ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_SalePrice{{$index}}) }"
 								ng-model="pair.SalePrice" name="pair_SalePrice{{ $index }}" ng-disabled='!pair.Visibility'
 								ng-pattern="/^\d+(\.\d{1,2})?$/"
-								class="form-control" /></td>
-							<td><input type="text" ng-model="pair.Quantity"
+								class="form-control" />
+                           </td>
+                                
+                                
+							<td ng-template="common/input/text-td"
+                                    ng-template-options="{
+                                        'error' : {
+                                            'messages': {
+                                                'pattern': 'Only numbers allowed'
+                                            },
+                                            'show': $root.isInvalid(addProductForm['pair_Quantity' + $index]),
+                                            'conditions' : addProductForm['pair_Quantity' + $index].$error
+                                        }
+                                    }">
+                                <input type="text" ng-model="pair.Quantity"
 								maxlength="5"
 								ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Quantity{{$index}}) }"
 								ng-disabled='!pair.Visibility' ng-pattern="/^[0-9]+$/"
 								name="pair_Quantity{{$index}}"
-								class="form-control" /></td>
+								class="form-control" />
+                            </td>
+                            
 							<td><a class="btn btn-white btn-width-xl" ng-disabled='!pair.Visibility'
 									data-toggle="modal" data-target="#variant-detail-1"
 									ng-click="$emit('openPairModal', pair, formData.Variants, $index)">More Detail</a></td>

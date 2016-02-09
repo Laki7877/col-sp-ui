@@ -15,6 +15,7 @@ module.exports = function($scope, $controller, SellerAccountService, SellerRoleS
 							//Pick only necessary property
 							return _.pick(e, ['GroupId', 'GroupNameEn']);
 						});
+						console.log(scope.roles);
 					});
 			}
 		}

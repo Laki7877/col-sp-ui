@@ -1,4 +1,4 @@
-module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory', 'Shop', 'Alert', function($scope, $rootScope, common, Category, LocalCategory, Shop, Alert) {
+module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory', 'Shop', 'Alert', 'util', function($scope, $rootScope, common, Category, LocalCategory, Shop, Alert, util) {
 	$scope.categories = [];
 	$scope.editingStatusOptions = [	{
 		text: 'Visible',
@@ -15,6 +15,19 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 	$scope.alert = new Alert();
 	$scope.alert2 = new Alert();
 	$scope.loading = false;
+	$scope.dirty = false;
+
+	$scope.treeOptions = {
+		dropped: function(event) {
+			if(event.pos.dirX != 0 || event.pos.dirY != 0) {
+				$scope.dirty = true;
+			}
+		}
+	};
+
+	util.warningOnLeaveFn(function() {
+		return !$scope.dirty;
+	});
 
 	$scope.init = function(shopid) {
 		$scope.shopId = shopid || 1;
@@ -44,6 +57,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 		});
 		Shop.upsertLocalCategories($scope.shopId, $scope.formData).then(function() {
 			$scope.alert.success('Your changes have been saved.');
+			$scope.dirty = false;
 			$scope.reload();
 		}, function(err) {
 			$scope.alert.error(common.getError(err));

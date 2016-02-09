@@ -17,7 +17,8 @@
 						</div>
 					</div>
 					<div class="drop-zone-container">
-						<? $this->insert('components/image-dropzone-inline-text', ["id" => "images-management1", 'texts' =>['<i class="fa fa-image fa-3x color-theme"></i>', 'Drop images here', '<a href="#" data-trigger="file" data-target="#images-management1">or select images</a>']]) ?>
+						<nc-image-dropzone ng-if="product.IsVariant" nc-model="product.VariantImg" nc-image-template="'common/product/dropzone/normal'"></nc-image-dropzone>
+						<nc-image-dropzone ng-if="!product.IsVariant" nc-model="product.MasterImg" nc-image-template="'common/product/dropzone/normal'"></nc-image-dropzone>
 					</div>
 				</div>
 			</div>

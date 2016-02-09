@@ -22,6 +22,19 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             return common.makeRequest(req);
         }
 
+        service.updateAllVariants = function(obj){
+            var req = {
+                method: 'PUT',
+                url: '/ProductStages/All/Image',
+                data: obj,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            };
+
+            return common.makeRequest(req);
+        }
+
         service.duplicate = function(ProductId){
              //this URL structure is weird dont u think
             var req = {
@@ -344,6 +357,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 	m.Visibility = m.Visibility;
                     m.Images = m.Images || [];
                     m.Images360 = m.Images360 || [];
+                    m.WeightUnit = (m.WeightUnit || "").trim();
+                    m.DimensionUnit = (m.DimensionUnit || "").trim();
                     m.hash = util.variant.hash(m.FirstAttribute, m.SecondAttribute);
                     m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
                     return m;

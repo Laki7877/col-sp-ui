@@ -9,7 +9,7 @@ class Redirect {
 		header('Location: /products');
 	}
 	public static function admin($params) {
-		header('Location: /admin/categories');
+		header('Location: /admin/accounts');
 	}
 }
 
@@ -67,10 +67,6 @@ Route::add('/admin/shoptypes/:id', 'AdminController::editShoptype');
 
 //test route
 Route::add('/test/:name', 'TestController::any');
-
-//collection routing
-Route::add('/collections', 'ProductCollectionController::index');
-Route::add('/collections/add', 'ProductCollectionController::add');
 
 //process route
 Route::process();

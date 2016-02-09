@@ -5,8 +5,8 @@
     <? $this->insert('components/modal-export-product', ['id' => 'export-product', 'newProductNum' => '1,500']) ?>
     <? $this->insert('components/modal-export-product-progressing', ['id' => 'export-product-progressing', 'percent' => '60']) ?>
 
-    <? $this->insert('components/page-title-with-buttons', ['text' => 'Products']) ?>
     <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{alert.type}}" close="alert.close()">{{alert.message}}</div>
+    <? $this->insert('components/page-title-with-buttons', ['text' => 'Products']) ?>
     <div class="row search-section-wrapper">
       <form ng-submit="bulk.fn()" class="search-section section-action">
         <div class="input-group">
@@ -32,7 +32,8 @@
       </form>
       <form ng-submit="applySearch()" class="search-section section-search">
         <div class="input-group">
-          <input type="text" class="form-control input-search-icon search-box" ng-model="searchText" placeholder="Search" aria-describedby="basic-addon2">
+          <input type="text" class="form-control input-search-icon search-box" 
+          ng-model="searchText" placeholder="Search for Product Name, PID, SKU" aria-describedby="basic-addon2">
           <span class="input-group-btn">
             <button class="btn btn-white">Search</button>
           </span>
@@ -56,7 +57,7 @@
         <thead>
           <tr class="table-head" >
             <th class="checkbox-column">
-                <input type="checkbox" aria-label="Checkbox for following text input" ng-model="checkAll">
+                <input type="checkbox" aria-label="Checkbox for following text input" ng-click="checkAll()" ng-model="allChecked">
             </th>
             <th class="display-column"></th>
             <th ng-click="setOrderBy('ProductNameEn')">
@@ -67,7 +68,7 @@
               <a class="header-link" ><span ng-class="sort('OriginalPrice', true)">Price</span></a>
               <i class="fa" ng-class="sort('OriginalPrice')">
             </th>
-            <th><span>Info.</span></th>
+            <th><span>Info</span></th>
             <th><span>Image</span></th>
             <th class="status-column">
               Status

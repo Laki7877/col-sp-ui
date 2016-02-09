@@ -10,7 +10,8 @@
 						<table class="table">
 						<thead>
 							<th>Product Name</th>
-							<th>PID</th>
+							<th ng-if="(formData.Variants || []).length == 0">PID</th>
+							<th ng-if="(formData.Variants || []).length > 0">Group ID</th>
 							<th>Price</th>
 							<th>Info</th>
 							<th>Image</th>
@@ -91,7 +92,7 @@
 					'error' : {
 					'messages': {
 					'required': 'This is a required field',
-					'pattern': 'Only letters and numbers allowed'
+					'pattern': 'Only english letters and numbers allowed'
 					},
 					'show': $root.isInvalid(addProductForm.MasterVariant_ProductNameEn),
 					'conditions' : addProductForm.MasterVariant_ProductNameEn.$error
@@ -112,7 +113,7 @@
 					'label': 'SKU',
 					'error' : {
 					'messages': {
-					'pattern': 'Only letters and numbers allowed'
+					'pattern': 'Only english letters and numbers allowed'
 					},
 					'show': $root.isInvalid(addProductForm.MasterVariant_Sku),
 					'conditions' : addProductForm.MasterVariant_Sku.$error
@@ -133,7 +134,7 @@
 					'label': 'UPC',
 					'error' : {
 					'messages': {
-					'pattern': 'Only letters and numbers allowed'
+					'pattern': 'Only english letters and numbers allowed'
 					},
 					'show': $root.isInvalid(addProductForm.MasterVariant_Upc),
 					'conditions' : addProductForm.MasterVariant_Upc.$error
@@ -151,7 +152,7 @@
 				<div ng-if="formData.MasterVariant.Pid">
 					<div ng-template="common/input/text"
 						ng-template-options="{
-						'label': 'PID',
+						'label': (formData.Variants || []).length > 0 ? 'Group ID' : 'PID',
 						'labelClass': 'required'
 						}">
 						<input
@@ -187,7 +188,7 @@
 					'error' : {
 					'messages': {
 					'required': 'This is a required field',
-					'pattern': 'Only numbers and decimals allowed'
+					'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
 					},
 					'show': $root.isInvalid(addProductForm.MasterVariant_OriginalPrice),
 					'conditions' : addProductForm.MasterVariant_OriginalPrice.$error
@@ -211,7 +212,7 @@
 					'error' : {
 					'messages': {
 					'min': 'Sale price must be lower than the original price',
-					'pattern': 'Only numbers and decimals allowed'
+					'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
 					},
 					'show': $root.isInvalid(addProductForm.MasterVariant_SalePrice),
 					'conditions' : addProductForm.MasterVariant_SalePrice.$error
@@ -241,14 +242,14 @@
 					'formGroupClass' : 'margin-top-30',
 					'error' : {
 					'messages': {
-					'pattern': 'Only letters and numbers allowed'
+					'pattern': 'Only thai letters and numbers allowed'
 					},
 					'show': $root.isInvalid(addProductForm.MasterVariant_DescriptionShortTh),
 					'conditions' : addProductForm.MasterVariant_DescriptionShortTh.$error
 					}
 					}">
 					<textarea
-						ng-pattern="/^[0-9A-Za-zก-ฮ\s]+$/"
+						ng-pattern="/^[0-9A-Za-zก-๙\s]+$/"
 						class="form-control"
 						maxlength="500"
 						name="MasterVariant_DescriptionShortTh"
@@ -266,7 +267,7 @@
 					'formGroupClass' : 'margin-top-30',
 					'error' : {
 					'messages': {
-					'pattern': 'Only letters and numbers allowed'
+					'pattern': 'Only english letters and numbers allowed'
 					},
 					'show': $root.isInvalid(addProductForm.MasterVariant_DescriptionShortEn),
 					'conditions' : addProductForm.MasterVariant_DescriptionShortEn.$error
@@ -294,8 +295,10 @@
 						<div class="ah-select2-dropdown" >
 							<!-- dont show if nothing is available to choose from -->
 							<ui-select ng-model="formData.AttributeSet" ng-show="availableAttributeSets.length > 0">
-							<ui-select-match placeholder="Select Attribute Set">
+                                
+							<ui-select-match placeholder="Search Attribute Set">
 							<span ng-bind="$select.selected.AttributeSetNameEn"></span>
+                            <span ng-show="!$select.selected.AttributeSetNameEn">- Select Attribute Set -</span>
 							</ui-select-match>
 							<ui-select-choices repeat="item in (availableAttributeSets) | filter : $select.search track by item.AttributeSetId">
 							<span ng-bind="item.AttributeSetNameEn"></span>
@@ -333,7 +336,7 @@
 							class="form-control"
 							ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" >
 
-							<option value="" disabled selected>Select an option..</option>
+							<option value="" disabled selected>- Select option -</option>
 							<option ng-repeat="vv in amap.Attribute.AttributeValueMaps">
 							{{ vv.AttributeValue.AttributeValueEn || vv }}
 							</option>
@@ -375,9 +378,9 @@
 					'tooltip': 'Search Tag will help your product easier to be discovered',
 					'error' : {
 					'messages': {
-					'tagcount': 'Maximum 20 tags',
+					'tagcount': 'Cannot exceed 20 tags',
 					'taglength': 'Tag must contain 30 characters or less',
-					'pattern': 'Only letters and numbers'
+					'pattern': 'Only letters and numbers allowed'
 					},
 					'show': true,
 					'conditions' :  keywordValidConditions
@@ -513,7 +516,7 @@
 									'error' : {
 									'messages': {
 									'required': 'This is a required field',
-									'pattern': 'Only numbers and decimals allowed'
+									'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
 									},
 									'show': $root.isInvalid(addProductForm.MasterVariant_Length),
 									'conditions' : addProductForm.MasterVariant_Length.$error
@@ -523,6 +526,7 @@
 									class="form-control"
 									name="MasterVariant_Length"
 									ng-pattern="/^\d+(\.\d{1,2})?$/"
+                                    maxlength="11"
 									ng-required="onPublishing"
 									ng-model="formData.MasterVariant.Length"
 									ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Length) }"  />
@@ -537,16 +541,17 @@
 									'error' : {
 									'messages': {
 									'required': 'This is a required field',
-									'pattern': 'Only numbers and decimals allowed'
+									'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
 									},
 									'show': $root.isInvalid(addProductForm.MasterVariant_Height),
-									'conditions' : addProductForm.MasterVariant_Length.$error
+									'conditions' : addProductForm.MasterVariant_Height.$error
 									}
 									}">
 									<input
 									class="form-control"
 									name="MasterVariant_Height"
 									ng-pattern="/^\d+(\.\d{1,2})?$/"
+                                    maxlength="11"
 									ng-required="onPublishing"
 									ng-model="formData.MasterVariant.Height"
 									ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Height) }"  />
@@ -560,7 +565,7 @@
 									'error' : {
 									'messages': {
 									'required': 'This is a required field',
-									'pattern': 'Only numbers and decimals allowed'
+									'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
 									},
 									'show': $root.isInvalid(addProductForm.MasterVariant_Width),
 									'conditions' : addProductForm.MasterVariant_Width.$error
@@ -568,6 +573,7 @@
 									}">
 									<input
 									class="form-control"
+                                    maxlength="11"
 									name="MasterVariant_Width"
 									ng-pattern="/^\d+(\.\d{1,2})?$/"
 									ng-model="formData.MasterVariant.Width"
@@ -589,11 +595,48 @@
 				</div>
 
 
-				<? $this->insert('components/forms/multiple-input', ["label" => "Weight",
-				"ng_model_unit" => "formData.MasterVariant.WeightUnit",
-				"ng_model" => "formData.MasterVariant.Weight",
-				"label_class" => "required"])
-				?>
+                <div class="form-group">
+                    <div class="width-label"><label class="control-label required">Weight</label></div>
+                    <div class="width-field-xxl">
+                        <div class="multiple-input">
+                            
+                            <div ng-template="common/input/text-column"
+									ng-template-options="{
+                                        'error' : {
+                                            'messages': {
+                                                'required': 'This is a required field',
+                                                'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
+                                            },
+                                        'show': $root.isInvalid(addProductForm.MasterVariant_Weight),
+                                        'conditions' : addProductForm.MasterVariant_Weight.$error
+                                        }
+									}">
+									<input type="text" 
+                                    name="MasterVariant_Weight"
+                                    maxlength="11"
+                                    ng-required="onPublishing"
+                                    ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Weight) }"
+                                    class="form-control" 
+                                    ng-pattern="/^\d+(\.\d{1,2})?$/"
+                                    ng-model="formData.MasterVariant.Weight" />
+						    </div>
+                                
+                            <div class="input-column select input-xl">
+                                <div class="ah-select2-dropdown">
+                                    <select class="form-control" ng-model="formData.MasterVariant.WeightUnit">
+                                        <option value="G"> Grams </option>
+                                        <option value="KG"> Kilograms </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- input-xl-->
+                        </div>
+                        <!--multi-->
+                    </div>
+                    <!-- widht-xxl-->
+                </div>
+                <!--formgp-->
+
 
 
 			</div>
