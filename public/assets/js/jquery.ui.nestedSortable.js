@@ -11,7 +11,7 @@
  */
 
 (function($) {
-
+	
 	$.widget("ui.nestedSortable", $.extend({}, $.ui.sortable.prototype, {
 
 		options: {

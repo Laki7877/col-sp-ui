@@ -5,14 +5,15 @@ angular.module('nc')
 			require: 'ngModel',
 			link: function(scope, elem, attrs, ngModel) {
 
-                //model -> view
-                ngModel.$formatters.unshift(function(input) {
-                    console.log('pre', input);
-                });
-
-                ngModel.$formatters.push(function(input) {
-                    console.log('post', input);
-                })
+                if(elem.find('ui-select-multiple').length > 0) {
+                    //model -> view
+                    ngModel.$parsers.push(function(input) {
+                        return _.compact(input);
+                    });
+                    ngModel.$formatters.push(function(input) {
+                        return _.compact(input);
+                    });
+                }
 			}
 		};
 	})
