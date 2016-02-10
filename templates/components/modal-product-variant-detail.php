@@ -62,7 +62,7 @@
                                     <div class="width-field-normal">
                                         <div class="ah-select2-dropdown">
                                             <select class="form-control" ng-model="<?=$model?>.Display">
-                                                <option value="{{op.value}}" ng-repeat="op in availableVariantDisplayOption">
+                                                <option value="{{op.value}}" ng-repeat="op in dataSet.VariantDisplayOption">
                                                     {{ op.text }}
                                                 </option>
                                             </select>

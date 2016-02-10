@@ -106,9 +106,9 @@
 					'conditions' : addProductForm.MasterVariant_Sku.$error
 					}
 					}">
-                            <input class="form-control width-field-large" name="MasterVariant_Sku" ng-show="enableProductVariations != 'enable'" ng-disabled="enableProductVariations == 'enable'" ng-model="formData.MasterVariant.Sku" maxlength="300" ng-pattern="/^[0-9a-zA-Z\s]+$/" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Sku) }"/>
+                            <input class="form-control width-field-large" name="MasterVariant_Sku" ng-show="controlFlags.variation != 'enable'" ng-disabled="controlFlags.variation == 'enable'" ng-model="formData.MasterVariant.Sku" maxlength="300" ng-pattern="/^[0-9a-zA-Z\s]+$/" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Sku) }"/>
                             
-                            <input class="form-control width-field-large" value="Edit in Variation Tab" disabled ng-if="enableProductVariations == 'enable'"/>
+                            <input class="form-control width-field-large" value="Edit in Variation Tab" disabled ng-if="controlFlags.variation == 'enable'"/>
                         </div>
 
                         <div ng-template="common/input/text2" ng-template-options="{
@@ -163,8 +163,8 @@
 					'conditions' : addProductForm.MasterVariant_OriginalPrice.$error
 					}
 					}">
-                            <input class="form-control width-field-normal" name="MasterVariant_OriginalPrice" ng-pattern="/^\d+(\.\d{1,2})?$/" maxlength="20" ng-disabled="enableProductVariations == 'enable'" ng-model="formData.MasterVariant.OriginalPrice" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_OriginalPrice) }"
-                            ng-required="enableProductVariations == 'disable'" />
+                            <input class="form-control width-field-normal" name="MasterVariant_OriginalPrice" ng-pattern="/^\d+(\.\d{1,2})?$/" maxlength="20" ng-disabled="controlFlags.variation == 'enable'" ng-model="formData.MasterVariant.OriginalPrice" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_OriginalPrice) }"
+                            ng-required="controlFlags.variation == 'disable'" />
                         </div>
 
                         <div ng-template="common/input/text2" ng-template-options="{
@@ -178,7 +178,7 @@
 					'conditions' : addProductForm.MasterVariant_SalePrice.$error
 					}
 					}">
-                            <input ng-disabled="enableProductVariations == 'enable'" ng-pattern="/^\d+(\.\d{1,2})?$/" class="form-control width-field-normal" maxlength="20" name="MasterVariant_SalePrice" ng-model="formData.MasterVariant.SalePrice" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_SalePrice) }"
+                            <input ng-disabled="controlFlags.variation == 'enable'" ng-pattern="/^\d+(\.\d{1,2})?$/" class="form-control width-field-normal" maxlength="20" name="MasterVariant_SalePrice" ng-model="formData.MasterVariant.SalePrice" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_SalePrice) }"
                             />
                         </div>
                     </div>
@@ -266,15 +266,15 @@
                             <div class="width-field-normal">
                                 <!-- disabled if is variant as variant is disabled -->
 
-                                <select class="form-control" disabled ng-show="_isListInput(amap.Attribute.DataType) && (amap.Attribute.VariantStatus && enableProductVariations == 'enable')">
+                                <select class="form-control" disabled ng-show="_isListInput(amap.Attribute.DataType) && (amap.Attribute.VariantStatus && controlFlags.variation == 'enable')">
                                     <option selected>Edit in Variation Tab</option>
                                 </select>
 
-                                <input class="form-control" disabled type="text" ng-show="_isFreeTextInput(amap.Attribute.DataType) && (amap.Attribute.VariantStatus && enableProductVariations == 'enable')" value="Edit in Variation Tab" />
+                                <input class="form-control" disabled type="text" ng-show="_isFreeTextInput(amap.Attribute.DataType) && (amap.Attribute.VariantStatus && controlFlags.variation == 'enable')" value="Edit in Variation Tab" />
 
                                 <!-- to do group into two cases -->
 
-                                <select ng-show="_isListInput(amap.Attribute.DataType) && (!amap.Attribute.VariantStatus || enableProductVariations != 'enable')" class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]">
+                                <select ng-show="_isListInput(amap.Attribute.DataType) && (!amap.Attribute.VariantStatus || controlFlags.variation != 'enable')" class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]">
 
                                     <option value="" disabled selected>- Select option -</option>
                                     <option ng-repeat="vv in amap.Attribute.AttributeValueMaps">
@@ -282,7 +282,7 @@
                                     </option>
                                 </select>
 
-                                <input ng-show="_isFreeTextInput(amap.Attribute.DataType) && (!amap.Attribute.VariantStatus || enableProductVariations != 'enable')" type="text" class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" />
+                                <input ng-show="_isFreeTextInput(amap.Attribute.DataType) && (!amap.Attribute.VariantStatus || controlFlags.variation != 'enable')" type="text" class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" />
 
                             </div>
                         </div>
@@ -293,7 +293,7 @@
                                 <label class="control-label">Product Variations</label>
                             </div>
                             <div class="width-field-normal">
-                                <select class="form-control" ng-disabled="!formData.AttributeSet.AttributeSetId" ng-model="enableProductVariations">
+                                <select class="form-control" ng-disabled="!formData.AttributeSet.AttributeSetId" ng-model="controlFlags.variation">
                                     <option value="enable">
                                         Enable
                                     </option>
