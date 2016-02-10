@@ -53,7 +53,8 @@
     <div id="wrapper">
         <?= $this->section('content') ?>
     </div>
-    <!--<script src="<?= $this->asset('/assets/js/jquery-ui.js') ?>"></script>-->
+    
+    <script src="<?= $this->asset('/assets/js/jquery-ui.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/jquery.ui.nestedSortable.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/custom-js.js') ?>"></script>
     <script src="/assets/libs/ckeditor/ckeditor.js"></script>

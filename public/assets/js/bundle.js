@@ -1260,9 +1260,9 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 	});
 }];
 },{}],21:[function(require,module,exports){
-module.exports = ['$scope', 'Alert', 'Credential', '$window', 'storage', function($scope, Alert, Credential, $window, storage) {
+module.exports = ['$scope', 'NcAlert', 'Credential', '$window', 'storage', function($scope, NcAlert, Credential, $window, storage) {
 	$scope.uform = {}
-	$scope.alert = new Alert();
+	$scope.alert = new NcAlert();
 	$scope.doLogin = function(){
 		if(!$scope.loginForm.$valid) return;
 		$scope.loading = true;
@@ -1341,21 +1341,13 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             // For Safari
             return message;
         }; // end onbeforeunload
-
-        var StatusLookup = {};
-        config.PRODUCT_STATUS.forEach(function(object){
-            StatusLookup[object.value] = object; 
-        });
         
         var onImageUploadFail = function (item, filter) {
             alert("File Size must not exceed 5 MB");
         }
         var onImageUploadQueueLimit = function () { }
+        $scope.asStatus = Product.getStatus;
         
-        $scope.asStatus = function (ab) {
-            return StatusLookup[ab];
-        };
-
         var watchVariantChanges = function () {
             $scope.$watch('dataSet.attributeOptions', function () {
                 var vHashSet = {};
@@ -6791,12 +6783,12 @@ module.exports = ['common', function(common) {
 }];
 },{}],102:[function(require,module,exports){
 //Products Service
-module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
-    function($http, common, util, LocalCategory, Brand) {
+module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
+    function ($http, common, util, LocalCategory, Brand, config) {
         'use strict';
         var service = {};
 
-        service.getOne = function(productId) {
+        service.getOne = function (productId) {
             var req = {
                 method: 'GET',
                 url: '/ProductStages/' + productId
@@ -6804,7 +6796,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             return common.makeRequest(req);
         };
 
-        service.getAllVariants = function(parameters){
+        service.getAllVariants = function (parameters) {
             var req = {
                 method: 'GET',
                 url: '/ProductStages/All',
@@ -6814,7 +6806,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             return common.makeRequest(req);
         }
 
-        service.updateAllVariants = function(obj){
+        service.updateAllVariants = function (obj) {
             var req = {
                 method: 'PUT',
                 url: '/ProductStages/All/Image',
@@ -6827,8 +6819,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             return common.makeRequest(req);
         }
 
-        service.duplicate = function(ProductId){
-             //this URL structure is weird dont u think
+        service.duplicate = function (ProductId) {
+            //this URL structure is weird dont u think
             var req = {
                 method: 'POST',
                 url: '/ProductStages/' + ProductId
@@ -6837,7 +6829,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             return common.makeRequest(req);
         };
 
-        service.getAll = function(parameters) {
+        service.getAll = function (parameters) {
             var req = {
                 method: 'GET',
                 url: '/ProductStages/',
@@ -6853,8 +6845,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
             return common.makeRequest(req);
         };
-        
-        service.export = function(tobj){
+
+        service.export = function (tobj) {
             var path = '/ProductStages/Export';
             return common.makeRequest({
                 responseType: 'arraybuffer',
@@ -6864,7 +6856,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             });
         };
 
-        service.publish = function(tobj, Status) {
+        service.publish = function (tobj, Status) {
             tobj.Status = Status;
             var mode = 'POST';
             var path = '/ProductStages';
@@ -6880,7 +6872,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
         };
 
 
-        service.bulkPublish = function(tobj){
+        service.bulkPublish = function (tobj) {
             return common.makeRequest({
                 method: 'POST',
                 url: '/ProductStages/Publish',
@@ -6888,7 +6880,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             });
         };
 
-        service.visible = function(obj) {
+        service.visible = function (obj) {
             return common.makeRequest({
                 method: 'PUT',
                 url: '/ProductStages/Visibility',
@@ -6898,7 +6890,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 }
             });
         };
-        service.deleteBulk = function(arr) {
+        service.deleteBulk = function (arr) {
             return common.makeRequest({
                 method: 'DELETE',
                 url: '/ProductStages',
@@ -6909,7 +6901,15 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             });
         };
 
-        service.serialize = function(fd) {
+        var StatusLookup = {};
+        config.PRODUCT_STATUS.forEach(function (object) {
+            StatusLookup[object.value] = object;
+        });
+        service.getStatus = function (abbreviation) {
+            return StatusLookup[abbreviation];
+        }
+
+        service.serialize = function (fd) {
             var hasVariants = (!util.nullOrUndefined(fd.Variants) && fd.Variants.length > 0);
 
             //Cleaned data
@@ -6917,9 +6917,9 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             clean.Variants = [];
 
             var objectMapper = {
-                VideoLinks: function(vlink) {
+                VideoLinks: function (vlink) {
                     var f = [];
-                    Object.keys(vlink).forEach(function(key) {
+                    Object.keys(vlink).forEach(function (key) {
                         var value = vlink[key];
                         var obj = {
                             'Url': value
@@ -6932,12 +6932,12 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             };
             //Mapper functions
             var mapper = {
-                Images: function(image, pos) {
+                Images: function (image, pos) {
                     if (image.$id) delete image.$id;
                     image.position = pos;
                     return image;
                 },
-                Variants: function(_variant) {
+                Variants: function (_variant) {
                     var variant = angular.copy(_variant);
 
                     if (util.nullOrUndefined(variant['VideoLinks'])) variant.VideoLinks = [];
@@ -6956,7 +6956,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
                     return variant;
                 },
-                Categories: function(lcat) {
+                Categories: function (lcat) {
                     if (lcat == null) return null;
                     return {
                         CategoryId: lcat.CategoryId
@@ -6994,7 +6994,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
             try {
                 clean.MasterAttribute = [];
-                Object.keys(fd.MasterAttribute).forEach(function(key) {
+                Object.keys(fd.MasterAttribute).forEach(function (key) {
                     clean.MasterAttribute.push({
                         AttributeId: key,
                         ValueEn: fd.MasterAttribute[key]
@@ -7054,10 +7054,10 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
             try {
                 clean.RelatedProducts = [];
-                Object.keys(fd.RelatedProducts || []).forEach(function(key) {
+                Object.keys(fd.RelatedProducts || []).forEach(function (key) {
                     clean.RelatedProducts.push(
                         fd.RelatedProducts[key]
-                    );
+                        );
                 });
             } catch (ex) {
                 console.warn("Organizing Related Products", ex);
@@ -7092,7 +7092,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                     clean.Variants = (fd.Variants || []).map(mapper.Variants);
                     //Find DefaultVariant
                     var target = fd.DefaultVariant.text;
-                    clean.Variants.forEach(function(vari, index) {
+                    clean.Variants.forEach(function (vari, index) {
                         vari.SafetyStock = 0; //Placeholder, no UI yet
                         vari.StockType = 0; //Placeholder
                         vari.DefaultVariant = false;
@@ -7112,41 +7112,41 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             return clean;
         }
 
-        service.deserialize = function(invFd, FullAttributeSet) {
+        service.deserialize = function (invFd, FullAttributeSet) {
             console.log('FullAttributeSet', FullAttributeSet);
 
             invFd.AttributeSet = FullAttributeSet;
             invFd.PrepareDay = invFd.PrepareDay || '';
 
-            if(invFd.EffectiveDate != "" && invFd.EffectiveDate != null){
-                 invFd.EffectiveDate = moment(invFd.EffectiveDate + " " + invFd.EffectiveTime);
-                 invFd.EffectiveTime = invFd.EffectiveTime;
+            if (invFd.EffectiveDate != "" && invFd.EffectiveDate != null) {
+                invFd.EffectiveDate = moment(invFd.EffectiveDate + " " + invFd.EffectiveTime);
+                invFd.EffectiveTime = invFd.EffectiveTime;
             }
-           
-            if(invFd.ExpireDate != "" && invFd.ExpireDate != null){
+
+            if (invFd.ExpireDate != "" && invFd.ExpireDate != null) {
                 invFd.ExpireDate = moment(invFd.ExpireDate + " " + invFd.ExpireTime);
                 invFd.ExpireTime = invFd.ExpireTime;
             }
 
             var BrandId = invFd.Brand.BrandId;
-                Brand.getOne(BrandId).then(function(data) {
-                    invFd.Brand = data;
-                    delete invFd.Brand.$id;
-                    invFd.Brand.id = BrandId;
-                }, function() {
-                    console.log("brand resolve failure");
-                    invFd.Brand = {
-                        BrandId: null,
-                        BrandNameEn: 'Please select brand..'
-                    };
+            Brand.getOne(BrandId).then(function (data) {
+                invFd.Brand = data;
+                delete invFd.Brand.$id;
+                invFd.Brand.id = BrandId;
+            }, function () {
+                console.log("brand resolve failure");
+                invFd.Brand = {
+                    BrandId: null,
+                    BrandNameEn: 'Please select brand..'
+                };
             });
 
             var invMapper = {
-                VideoLinks: function(m) {
+                VideoLinks: function (m) {
                     return m.Url;
                 },
-                Variants: function(m) {
-                	m.Visibility = m.Visibility;
+                Variants: function (m) {
+                    m.Visibility = m.Visibility;
                     m.Images = m.Images || [];
                     m.Images360 = m.Images360 || [];
                     m.WeightUnit = (m.WeightUnit || "").trim();
@@ -7157,7 +7157,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             };
 
             try {
-                var DefaultVariantIndex = (invFd.Variants || []).map(function(o) {
+                var DefaultVariantIndex = (invFd.Variants || []).map(function (o) {
                     return o.DefaultVariant || false;
                 }).indexOf(true);
 
@@ -7175,34 +7175,34 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
             var MasterAttribute = {};
             try {
-                invFd.MasterAttribute.forEach(function(ma) {
+                invFd.MasterAttribute.forEach(function (ma) {
                     MasterAttribute[ma.AttributeId] = ma.ValueEn;
                 });
             } catch (ex) {
                 console.warn("Unable to set MasterAttribute", ex);
             }
             invFd.MasterAttribute = MasterAttribute;
-            
 
-            if(!invFd.LocalCategories){
+
+            if (!invFd.LocalCategories) {
                 invFd.LocalCategories = [];
             }
 
             if (invFd.LocalCategories.length == 0) {
                 invFd.LocalCategories = [null, null, null];
-            }else{
+            } else {
                 var kmax = invFd.LocalCategories.length;
-                for(var k = 0; k < 3 - kmax; k++){
+                for (var k = 0; k < 3 - kmax; k++) {
                     console.log("pushing null")
                     invFd.LocalCategories.push(null);
                 }
             }
 
-            if (invFd.LocalCategory){
-                LocalCategory.getOne(invFd.LocalCategory).then(function(locat) {
+            if (invFd.LocalCategory) {
+                LocalCategory.getOne(invFd.LocalCategory).then(function (locat) {
                     invFd.LocalCategories.unshift(locat);
 
-                    if(invFd.LocalCategories.length > 3){
+                    if (invFd.LocalCategories.length > 3) {
                         invFd.LocalCategories.pop();
                     }
 
@@ -7217,7 +7217,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             }
 
 
-            invFd.Variants.forEach(function(variant, index) {
+            invFd.Variants.forEach(function (variant, index) {
                 try {
                     variant.VideoLinks = (variant.VideoLinks || []).map(invMapper.VideoLinks);
                 } catch (ex) {
@@ -7233,9 +7233,9 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
             if (invFd.GlobalCategories.length == 0) {
                 invFd.GlobalCategories = [null, null, null];
-            }else{
+            } else {
                 var kmax = invFd.GlobalCategories.length;
-                for(var k = 0; k < 3 - kmax; k++){
+                for (var k = 0; k < 3 - kmax; k++) {
                     console.log("pushing null")
                     invFd.GlobalCategories.push(null);
                 }
@@ -7245,7 +7245,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 CategoryId: invFd.GlobalCategory
             });
 
-            if(invFd.GlobalCategories.length > 3){
+            if (invFd.GlobalCategories.length > 3) {
                 invFd.GlobalCategories.pop();
             }
 
@@ -7294,23 +7294,23 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId']);
                 
                 //Generate attributeOptions
-                var map0_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
+                var map0_index = FullAttributeSet.AttributeSetMaps.map(function (a) {
                     return a.Attribute.AttributeId;
                 }).indexOf(invFd.Variants[0].FirstAttribute.AttributeId);
 
                 var map1_index, SecondArray;
                 if (HasTwoAttr) {
-                    map1_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
+                    map1_index = FullAttributeSet.AttributeSetMaps.map(function (a) {
                         return a.Attribute.AttributeId;
                     }).indexOf(invFd.Variants[0].SecondAttribute.AttributeId);
                 }
 
-                var FirstArray = invFd.Variants.map(function(variant) {
+                var FirstArray = invFd.Variants.map(function (variant) {
                     return variant.FirstAttribute.ValueEn.trim();
                 });
 
                 if (HasTwoAttr) {
-                    SecondArray = invFd.Variants.map(function(variant) {
+                    SecondArray = invFd.Variants.map(function (variant) {
                         return variant.SecondAttribute.ValueEn.trim();
                     });
                 }

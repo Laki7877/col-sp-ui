@@ -50,21 +50,13 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             // For Safari
             return message;
         }; // end onbeforeunload
-
-        var StatusLookup = {};
-        config.PRODUCT_STATUS.forEach(function(object){
-            StatusLookup[object.value] = object; 
-        });
         
         var onImageUploadFail = function (item, filter) {
             alert("File Size must not exceed 5 MB");
         }
         var onImageUploadQueueLimit = function () { }
+        $scope.asStatus = Product.getStatus;
         
-        $scope.asStatus = function (ab) {
-            return StatusLookup[ab];
-        };
-
         var watchVariantChanges = function () {
             $scope.$watch('dataSet.attributeOptions', function () {
                 var vHashSet = {};
