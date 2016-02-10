@@ -34,9 +34,9 @@
                                             <i ng-if="overview.ImageFlag" class="fa fa-check color-green icon-size-18px"></i>
                                         </td>
                                         <td>
-                                            <span class="{{ asStatus(overview.Status).Color }}">
-									<i class="fa {{ asStatus(overview.Status).Class }}"></i>
-									{{ asStatus(overview.Status).Text }}
+                                            <span class="{{ asStatus(overview.Status).color }}">
+									<i class="fa {{ asStatus(overview.Status).icon }}"></i>
+									{{ asStatus(overview.Status).name }}
 								</span>
 
                                         </td>
@@ -106,8 +106,9 @@
 					'conditions' : addProductForm.MasterVariant_Sku.$error
 					}
 					}">
-                            <input class="form-control width-field-large" name="MasterVariant_Sku" ng-disabled="enableProductVariations == 'enable'" ng-model="formData.MasterVariant.Sku" maxlength="300" ng-pattern="/^[0-9a-zA-Z\s]+$/" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Sku) }"
-                            />
+                            <input class="form-control width-field-large" name="MasterVariant_Sku" ng-show="enableProductVariations != 'enable'" ng-disabled="enableProductVariations == 'enable'" ng-model="formData.MasterVariant.Sku" maxlength="300" ng-pattern="/^[0-9a-zA-Z\s]+$/" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Sku) }"/>
+                            
+                            <input class="form-control width-field-large" value="Edit in Variation Tab" disabled ng-if="enableProductVariations == 'enable'"/>
                         </div>
 
                         <div ng-template="common/input/text2" ng-template-options="{

@@ -12,7 +12,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
         var MAX_VARIANT = 100;
         
         $scope.dataSet = {};
-        
         $scope.dataSet.AttributeSets = [];
         $scope.dataSet.GlobalCategories = [];
         $scope.dataSet.LocalCategories = [];
@@ -24,6 +23,17 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             { text: 'Show as group of variants', value: 'GROUP' },
             { text: 'Show as individual product', value: 'INDIVIDUAL' }
         ];
+
+        $scope.dataSet.attributeOptions = {
+            0: {
+                Attribute: false,
+                options: []
+            },
+            1: {
+                Attribute: false,
+                options: []
+            }
+        };
         
         $window.onbeforeunload = function (e) {
             if (!$scope.addProductForm.$dirty) {
@@ -31,7 +41,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                 return null;
             }
             var message = "Your changes will not be saved.",
-                e = e || window.event;
+            e = e || window.event;
             // For IE and Firefox
             if (e) {
                 e.returnValue = message;
@@ -41,7 +51,11 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             return message;
         }; // end onbeforeunload
 
-        var StatusLookup = config.PRODUCT_STATUS;
+        var StatusLookup = {};
+        config.PRODUCT_STATUS.forEach(function(object){
+            StatusLookup[object.value] = object; 
+        });
+        
         var onImageUploadFail = function (item, filter) {
             alert("File Size must not exceed 5 MB");
         }
@@ -50,28 +64,9 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
         $scope.asStatus = function (ab) {
             return StatusLookup[ab];
         };
-        
-        //Is there a better way ? No.
-        $scope.variationOptionWarning = [[], []];
-        $scope.onVariationOptionFreeTextAdded = function (item, model, jth) {
-            $scope.variationOptionWarning[jth] = [];
-            if (!item) return;
-            if (item.length > 30) $scope.variationOptionWarning[jth].push("Variation option must contain 30 characters or less");
-            if (!item.match(/^[a-zA-Z0-9\s]+$/)) $scope.variationOptionWarning[jth].push("Only english letters and numbers allowed");
-
-            var optlen1 = $scope.attributeOptions[0].options.length;
-            var optlen2 = $scope.attributeOptions[1].options.length;
-            if ((optlen1 == 0 ? 1 : optlen1) * (optlen2 == 0 ? 1 : optlen2) > MAX_VARIANT) {
-                $scope.variationOptionWarning[jth].push("Maximum combination of variants (" + MAX_VARIANT + ") reached.");
-            }
-
-            if ($scope.variationOptionWarning[jth].length > 0) {
-                $scope.attributeOptions[jth].options.pop();
-            }
-        }
 
         var watchVariantChanges = function () {
-            $scope.$watch('attributeOptions', function () {
+            $scope.$watch('dataSet.attributeOptions', function () {
                 var vHashSet = {};
                 var prevVariants = angular.copy($scope.formData.Variants);
                 prevVariants.forEach(function (elem, index) {
@@ -91,7 +86,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                     var BId = null;
 
                     if (angular.isDefined(B)) {
-                        BId = $scope.attributeOptions[1].Attribute.AttributeId;
+                        BId = $scope.dataSet.attributeOptions[1].Attribute.AttributeId;
                         if (B['AttributeValue']) {
                             B = B.AttributeValue.AttributeValueEn;
                         }
@@ -101,7 +96,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                     }
 
                     var kpair = new VariantPair({
-                        AttributeId: $scope.attributeOptions[0].Attribute.AttributeId,
+                        AttributeId: $scope.dataSet.attributeOptions[0].Attribute.AttributeId,
                         ValueEn: A
                     }, {
                             AttributeId: BId,
@@ -127,19 +122,19 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                 }
 
 
-                console.log("Recalculating Factors", $scope.attributeOptions);
+                console.log("Recalculating Factors", $scope.dataSet.attributeOptions);
                 //Multiply out unmultiplied options
-                if ($scope.attributeOptions && Object.keys($scope.attributeOptions).length > 0) {
-                    for (var aKey in $scope.attributeOptions[0].options) {
-                        var A = $scope.attributeOptions[0].options[aKey];
+                if ($scope.dataSet.attributeOptions && Object.keys($scope.dataSet.attributeOptions).length > 0) {
+                    for (var aKey in $scope.dataSet.attributeOptions[0].options) {
+                        var A = $scope.dataSet.attributeOptions[0].options[aKey];
 
-                        if (angular.isDefined($scope.attributeOptions[1]['options']) && $scope.attributeOptions[1].options.length == 0) {
+                        if (angular.isDefined($scope.dataSet.attributeOptions[1]['options']) && $scope.dataSet.attributeOptions[1].options.length == 0) {
                             console.log("expanding A");
                             expand(A);
                         }
 
-                        for (var bKey in $scope.attributeOptions[1].options) {
-                            var B = $scope.attributeOptions[1].options[bKey];
+                        for (var bKey in $scope.dataSet.attributeOptions[1].options) {
+                            var B = $scope.dataSet.attributeOptions[1].options[bKey];
                             console.log("Expanding A,B");
                             expand(A, B);
                         }
@@ -150,8 +145,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             }, true); //end of $watch
 
         } //end of watch func
-
-        
 
         $scope.overview = {}
 
@@ -174,7 +167,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             Keywords: []
         };
     
-        //Variation Factor Indices are used as index
+        //Variation Factor (lhs) Indices are used as index
         //for ng-repeat in variation tab
         $scope.variationFactorIndices = {};
         $scope.variationFactorIndices.iterator = [0];
@@ -183,24 +176,13 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
         }
         $scope.variationFactorIndices.popSecond = function () {
             $scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop();
-            $scope.attributeOptions[1].options = [];
+            $scope.dataSet.attributeOptions[1].options = [];
         }
         $scope.variationFactorIndices.pushSecond = function () {
             $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1);
         }
 
-        //Unmultiplied Variants (factor)
-        $scope.attributeOptions = {
-            0: {
-                Attribute: false,
-                options: []
-            },
-            1: {
-                Attribute: false,
-                options: []
-            }
-        };
-
+   
         //TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
         $scope._attrEnTh = function (t) { return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
         $scope._isFreeTextInput = util.isFreeTextDataType;
@@ -208,7 +190,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
         //CK editor options
         $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
-
 
         $scope.pageState = {
             loading: {
@@ -235,8 +216,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
         $scope.refreshRelatedProducts = function (q) {
             return Product.getAll({
                 searchText: q
-            }).then(function (dataSet) {
-                $scope.dataSet.RelatedProducts = dataSet.data;
+            }).then(function (ds) {
+                $scope.dataSet.RelatedProducts = ds.data;
             });
         };
 
@@ -245,8 +226,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             Brand.getAll({
                 pageSize: 10,
                 searchText: q
-            }).then(function (dataSet) {
-                $scope.dataSet.Brands = dataSet.data;
+            }).then(function (ds) {
+                $scope.dataSet.Brands = ds.data;
             });
         };
 
@@ -289,13 +270,13 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             return mat;
         };
 
-
-        var setupDependencies = function (_editMode, globalCatId, ivFormData) {
+        //TODO: Move elsewhere to $addProduct and perform dependency injection
+        var setupDependencies = function (globalCatId, pageLoader, ivFormData) {
 
             if (!globalCatId) { throw new KnownException("Catalog Id not given in catReady") }
 
             var deferred = $q.defer();
-            $scope.pageState.load('Downloading Attribute Sets..');
+            pageLoader.load('Downloading Attribute Sets..');
 
             AttributeSet.getByCategory(globalCatId)
                 .then(function (data) {
@@ -313,21 +294,23 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                         return aset;
                     });
 
-                    if (_editMode) {
-                        $scope.pageState.load('Indexing AttributeSet');
+                    if (ivFormData) {
+                        pageLoader.load('Indexing AttributeSet');
                         $scope.formData.AttributeSet = $scope.dataSet.AttributeSets[$scope.dataSet.AttributeSets.map(function (o) {
                             return o.AttributeSetId
                         }).indexOf(ivFormData.AttributeSet.AttributeSetId)];
                         var parse = function (ivFormData, FullAttributeSet) {
-                            $scope.pageState.load('Loading product data..');
+                            pageLoader.load('Loading product data..');
                             var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
                             $scope.formData = inverseResult.formData;
                             console.log("After Inverse Transformation", $scope.formData);
                             if ($scope.formData.Variants.length > 0) {
                                 $scope.enableProductVariations = "enable";
                             }
-                            $scope.attributeOptions = inverseResult.attributeOptions || $scope.attributeOptions;
-                            if ($scope.attributeOptions[1].options.length > 0) $scope.variationFactorIndices.pushSecond();
+                            $scope.dataSet.attributeOptions = inverseResult.attributeOptions || $scope.dataSet.attributeOptions;
+                            if ($scope.dataSet.attributeOptions[1].options.length > 0){
+                                $scope.variationFactorIndices.pushSecond();
+                            }
                             //Initialize Uploader
                             ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
                             ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
@@ -335,14 +318,14 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                         parse(ivFormData, $scope.formData.AttributeSet);
                     }
 
-                    $scope.pageState.load('Downloading Category Tree..');
+                    pageLoader.load('Downloading Category Tree..');
                     //Load Global Cat
                     GlobalCategory.getAll().then(function (data) {
                         $scope.dataSet.GlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
                         $scope.formData.GlobalCategories[0] = Category.findByCatId(globalCatId, $scope.dataSet.GlobalCategories);
                         $scope.globalCategoryBreadcrumb = Category.createCatStringById(globalCatId, $scope.dataSet.GlobalCategories);
 
-                        $scope.pageState.load('Preparing content..');
+                        pageLoader.load('Preparing content..');
                         deferred.resolve();
                     });
 
@@ -436,15 +419,15 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             for (var page in tabPage) {
                 tabPage[page].angular();
             }
+            
             if (_editMode) {
-                //Edit mode
                 var productId = viewBag.productId;
                 $scope.pageState.load('Loading Product..');
 
                 Product.getOne(productId)
-                    .then(function (inverseFormData) {
+                .then(function (inverseFormData) {
                         $scope.overview = angular.copy(inverseFormData);
-                        setupDependencies(_editMode, Number(inverseFormData.GlobalCategory), inverseFormData)
+                        setupDependencies(Number(inverseFormData.GlobalCategory), $scope.pageState, inverseFormData)
                             .then(function () {
                                 $scope.formData.ProductId = Number(productId);
                                 $scope.pageState.reset();
@@ -454,8 +437,10 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                     });
 
             } else if ("catId" in viewBag) {
-                setupDependencies(_editMode, Number(viewBag.catId))
-                    .then($scope.pageState.reset);
+                setupDependencies(Number(viewBag.catId), $scope.pageState)
+                .then($scope.pageState.reset);
+            }else{
+                throw new KnownException("Invalid mode, viewBag garbage");
             }
 
             //Load Local Cat

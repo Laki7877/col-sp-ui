@@ -221,7 +221,12 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
         }
     };
     $scope.sort = util.tableSortClass($scope);
-    var StatusLookup =  config.PRODUCT_STATUS;
+    $scope.statusLookup = {};
+    
+    config.PRODUCT_STATUS.forEach(function(object){
+       $scope.statusLookup[object.value] = object; 
+    });
+    
     $scope.init = function (params) {
         if (angular.isDefined(params)) {
             if (angular.isDefined(params.success) && params.success != null) {
@@ -230,7 +235,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
         }
     };
     $scope.asStatus = function (ab) {
-        return StatusLookup[ab];
+        return $scope.statusLookup[ab];
     };
 
     //Product List

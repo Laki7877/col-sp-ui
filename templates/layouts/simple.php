@@ -7,7 +7,7 @@
     <title>
         <?=$title?>
     </title>
-    <meta http-equiv="expires" content="Sun, 01 Jan 2014 00:00:00 GMT" />
+    <meta http-equiv="expires" content="Sun, 01 Oct 2016 00:00:00 GMT" />
     <meta http-equiv="pragma" content="no-cache" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -53,7 +53,7 @@
     <div id="wrapper">
         <?= $this->section('content') ?>
     </div>
-    <script src="<?= $this->asset('/assets/js/jquery-ui.js') ?>"></script>
+    <!--<script src="<?= $this->asset('/assets/js/jquery-ui.js') ?>"></script>-->
     <script src="<?= $this->asset('/assets/js/jquery.ui.nestedSortable.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/custom-js.js') ?>"></script>
     <script src="/assets/libs/ckeditor/ckeditor.js"></script>
@@ -63,11 +63,11 @@
     <script src="/assets/libs/datepicker/js/bootstrap-datetimepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/assets/libs/datepicker/css/bootstrap-datetimepicker.min.css">
 
-    <script src="/assets/libs/select2/js/select2.js"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/libs/select2/css/select2.min.css">
+    <!--<script src="/assets/libs/select2/js/select2.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="/assets/libs/select2/css/select2.min.css">-->
 
-    <script src="/assets/libs/angular-select2/select.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/libs/angular-select2/select.min.css">
+    <!--<script src="/assets/libs/angular-select2/select.min.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="/assets/libs/angular-select2/select.css">
 
     <script>
         /*
