@@ -44,16 +44,21 @@ module.exports = function($scope, $controller, ProductReviewService, config, $ui
 	$scope.open = function(item) {
 		$uibModal.open({
 			templateUrl: 'product/productReviewModal',
-			controller: function($scope, Comment) {
+			controller: function($scope, info) {
 				'ngInject';
 				$scope.comment = Comment;
 			},
 			resolve: {
-				comment: function() {
-					return item.Comment;
+				info: function() {
+					return {
+						UpdatedDt: item.UpdatedDt,
+						Customer: item.Customer,
+						Comment: item.Comment
+					};
 				}
 			}
 		});
 	};
-	$scope.productStatus = config.PRODUCT_STATUS;
+	$scope.maxRating = config.PRODUCT_REVIEW_MAX_RATING;
+	$scope.reviewStatus = config.PRODUCT_REVIEW_STATUS;
 };

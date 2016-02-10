@@ -1,20 +1,18 @@
 angular.module('nc')
-	.directive('ncTagTest', function() {
+	.directive('uiSelect', function() {
 		return {
+            priority: -1,
 			require: 'ngModel',
-			link: function(scope, elem, attrs, modelCtrl) {
-				modelCtrl.$parsers.push(function(value) {
-					console.log('parsers', value);
-					return value;
-				});
-				modelCtrl.$formatters.push(function(value) {
-					console.log('formatters', value);
-					return value;
-				});
-				modelCtrl.$validators.test = function(model, view) {
-					console.log('validator', model, view);
-					return false;
-				};
+			link: function(scope, elem, attrs, ngModel) {
+
+                //model -> view
+                ngModel.$formatters.unshift(function(input) {
+                    console.log('pre', input);
+                });
+
+                ngModel.$formatters.push(function(input) {
+                    console.log('post', input);
+                })
 			}
 		};
 	})
@@ -36,7 +34,6 @@ angular.module('nc')
                     var _pass = true;
                     $model.$error = {};
 
-                    console.log(tagPattern, item);
                     if (array.length > maxTagCount) {
                         $model.$error.maxtagcount = true;
                         _pass = false;

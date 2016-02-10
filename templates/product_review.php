@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Product Review']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="ProductReviewCtrl">
@@ -6,7 +6,7 @@
     <? $this->insert('components/page-title-breadcrumb-border', ['text' => 'Product Review']) ?>
     <div class="row search-section-wrapper">
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="ReviewId"></nc-bulk>
-      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Product Name'"></nc-search>
+      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Review'"></nc-search>
     </div>
     <nc-filter nc-model="params._filter" nc-filter-options="filterOptions"></nc-filter>
     <nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="params.searchText.length > 0" >
@@ -27,12 +27,12 @@
         <tbody>
           <tr ng-repeat="row in list.data">
             <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>{{row.UpdatedDt || dateTh}}</td>
+            <td>{{row.Rating}} / {{maxRating}}</td>
+            <td>{{row.PID}}</td>
+            <td>{{}}</td>
+            <td><a ng-click="open(row)">{{row.Customer}}</a></td>
+            <td>{{row.ReviewStatus | mapDropdown:reviewStatus}}</td>
             <td><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
           </tr>
         </tbody>
