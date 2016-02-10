@@ -1593,31 +1593,31 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             console.log("Publishing with Status = ", Status);
             //Error Handling too Messi
 
-                var apiRequest = Product.serialize($scope.formData);
-                Product.publish(apiRequest, Status).then(function (res) {
-                    $scope.pageState.reset();
-                    if (res.ProductId) {
-                        $scope.overview = res;
-                        var catId = Number(res.GlobalCategory);
-                        $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.globalCategoryBreadcrumb, $scope.controlFlags,
+            var apiRequest = Product.serialize($scope.formData);
+            Product.publish(apiRequest, Status).then(function (res) {
+                $scope.pageState.reset();
+                if (res.ProductId) {
+                    $scope.overview = res;
+                    var catId = Number(res.GlobalCategory);
+                    $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.globalCategoryBreadcrumb, $scope.controlFlags,
                         $scope.variationFactorIndices, res).then(function () {
-                                $scope.formData.ProductId = Number(res.ProductId);
-                                $scope.pageState.reset();
-                                $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');                        
-                                ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
-                                ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
+                            $scope.formData.ProductId = Number(res.ProductId);
+                            $scope.pageState.reset();
+                            $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
+                            ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
+                            ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
                         });
-                        $scope.addProductForm.$setPristine(true);
-                    } else {
-                        $scope.alert.error('Unable to save because ' + (res.message || res.Message))
-                        $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-                    }
-                }, function (er) {
-                    $scope.pageState.reset();
-                    $scope.alert.error('Unable to save because ' + (er.message || er.Message))
+                    $scope.addProductForm.$setPristine(true);
+                } else {
+                    $scope.alert.error('Unable to save because ' + (res.message || res.Message))
                     $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
+                }
+            }, function (er) {
+                $scope.pageState.reset();
+                $scope.alert.error('Unable to save because ' + (er.message || er.Message))
+                $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
 
-                });
+            });
 
         };
 
@@ -1671,7 +1671,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             } else if ('catId' in viewBag) {
                 var catId = Number(viewBag.catId);
                 $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.globalCategoryBreadcrumb,
-                    $scope.controlFlags, $scope.variationFactorIndices).then(function(){
+                    $scope.controlFlags, $scope.variationFactorIndices).then(function () {
                         $scope.pageState.reset();
                         watchVariantChanges();
                         ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
@@ -4957,24 +4957,24 @@ angular.module('nc')
 	}]);
 },{}],75:[function(require,module,exports){
 angular.module('nc')
-	.directive('uiSelect', function() {
-		return {
-            priority: -1,
-			require: 'ngModel',
-			link: function(scope, elem, attrs, ngModel) {
+	// .directive('uiSelect', function() {
+	// 	return {
+    //         priority: -1,
+	// 		require: 'ngModel',
+	// 		link: function(scope, elem, attrs, ngModel) {
 
-                if(elem.find('ui-select-multiple').length > 0) {
-                    //model -> view
-                    ngModel.$parsers.push(function(input) {
-                        return _.compact(input);
-                    });
-                    ngModel.$formatters.push(function(input) {
-                        return _.compact(input);
-                    });
-                }
-			}
-		};
-	})
+    //             if(elem.find('ui-select-multiple').length > 0) {
+    //                 //model -> view
+    //                 ngModel.$parsers.push(function(input) {
+    //                     return _.compact(input);
+    //                 });
+    //                 ngModel.$formatters.push(function(input) {
+    //                     return _.compact(input);
+    //                 });
+    //             }
+	// 		}
+	// 	};
+	// })
     .directive('ncTagValidator', function () {
         return {
             restrict: 'A',
@@ -6416,6 +6416,9 @@ var angular = require('angular');
 module.exports = ['$window', '$base64', function($window, $base64) {
     return function(exception, cause) {
         console.log("Exception handler", exception, cause);
+        if(exception.message.length > 500){
+            exception.message = exception.message.substring(0, 500);
+        }
         var encMsg = $base64.encode(JSON.stringify({
             'message': exception.message,
             'cause': cause
@@ -7295,7 +7298,12 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
     function (Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
         var $productAdd = {};
-    
+        
+        /*
+        * Wraps around multiple services,
+        * and solves dependencies needed for AddProduct view variables
+        * to be parsable
+        */
         $productAdd.fill = function (globalCatId, pageLoader, sharedDataSet,
             sharedFormData, globalCategoryBreadcrumb, controlFlags, variationFactorIndices, ivFormData) {
 
