@@ -64,6 +64,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                 prevVariants.forEach(function (elem, index) {
                     vHashSet[elem.text] = prevVariants[index];
                 });
+                
                 //Unset
                 prevVariants = undefined;
 
