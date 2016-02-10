@@ -1,7 +1,12 @@
 module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
     function (Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
         var $productAdd = {};
-    
+        
+        /*
+        * Wraps around multiple services,
+        * and solves dependencies needed for AddProduct view variables
+        * to be parsable
+        */
         $productAdd.fill = function (globalCatId, pageLoader, sharedDataSet,
             sharedFormData, globalCategoryBreadcrumb, controlFlags, variationFactorIndices, ivFormData) {
 
