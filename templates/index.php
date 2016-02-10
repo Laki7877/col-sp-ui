@@ -2,11 +2,29 @@
 
 <?php $this->start('page-body') ?>
 	<div>
-    <? $this->insert('components/page-title-with-buttons', ['text' => 'Products', 'buttons' => [
-      ['link' => '#', 'class' => 'btn-white', 'attributes' => 'data-toggle="modal" data-target="#export-product"', 'name' => 'Export'],
-      ['link' => '#', 'class' => 'btn-white', 'attributes' => '', 'name' => 'Import'],
-      ['link' => '/?p=global_category', 'class' => 'btn-blue btn-width-xl', 'attributes' => '', 'name' => 'Add Product'],
-    ]]) ?>
+
+    <div class="page-header with-border">
+        <h1 class="float-left page-header-title">Products</h1>
+        <span class="float-right page-header-action">
+            <a href="/?p=seller_export_products" class="btn margin-left-10 btn-white btn-width-xl">
+              <span class="">Export All</span>
+            </a>
+
+            <div class="btn-group margin-left-10">
+              <button type="button" class="btn btn-white dropdown-toggle btn-width-xl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Import <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="/?p=seller_import_products">Add New Products</a></li>
+                <li><a href="/?p=seller_update_products">Update Existing Products</a></li>
+              </ul>
+            </div>
+            <a href="/?p=global_category" data-toggle="modal" class="btn margin-left-10 btn-blue btn-width-xl">
+              <span class="">Add Product</span>
+            </a>
+        </span>
+    </div>
+
     <? $this->insert('components/search-section', ['actions' => ['Export Products', 'Delete Products', 'Hide Products', 'Show Products', 'Publish Products']]) ?>
     <div class="filter-section">
       <div class="filter-container">
@@ -250,8 +268,6 @@
     </div>
   </div>
 
-  <? $this->insert('components/modal-export-product', ['id' => 'export-product', 'newProductNum' => '1,500']) ?>
-  <? $this->insert('components/modal-export-product-progressing', ['id' => 'export-product-progressing', 'percent' => '60']) ?>
-  <? $this->insert('components/modal-export-product-complete', ['id' => 'export-product-complete']) ?>
+
 
 <?php $this->stop() ?>

@@ -6,6 +6,7 @@ module.exports = function($scope, Attribute, util) {
 			{ name: "Has Variation", value: 'HasVariation'},
 			{ name: "No Variation", value: 'NoVariation'}
 		];
+		$scope.tags = [];
 		$scope.dataTypeOptions = [
 			{
 				name: 'Free Text',
@@ -15,7 +16,7 @@ module.exports = function($scope, Attribute, util) {
 				name: 'Dropdown',
 				value: 'LT'
 			},
-			{
+		{
 				name: 'HTML Box',
 				value: 'HB'
 			}

@@ -21,8 +21,9 @@
     "lodash": "^4.0.1"
   },
   "scripts": {
-    "compile": "grunt browserify && compass compile",
-    "predeploy": "if git remote show live; then echo ok; else git remote add live ssh://104.155.199.198/var/www/colsp.git; fi",
+    "build": "grunt scripts",
+    "buildAll": "grunt",
+    "serve": "php -S 0.0.0.0:5000 -t public",
     "deploy": "git push origin production && git push live production"
   },
   "dependencies": {

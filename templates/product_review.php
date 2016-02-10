@@ -1,185 +1,43 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Product Review']) ?>
 
 <?php $this->start('page-body') ?>
-	<div>
+  <div ng-controller="ProductReviewCtrl">
+    <nc-alert nc-model="alert"></nc-alert>
     <? $this->insert('components/page-title-breadcrumb-border', ['text' => 'Product Review']) ?>
-    <? $this->insert('components/search-section', ['actions' =>['Approve', 'Unapprove'], 'optional_class' => 'hide-component']) ?>
-    <div class="filter-section">
-      <div class="filter-container">
-        <span>Filters:</span>
-        <a class="filter-first-option filter-active">All</a>
-        <a class="filter-seperator">Approved</a>
-        <a class="filter-seperator">Not Approved</a>
-      </div>
+    <div class="row search-section-wrapper">
+      <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="ReviewId"></nc-bulk>
+      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Review'"></nc-search>
     </div>
-    <div class="table-section">
-      <table class="table table-curved product-list-table">
+    <nc-filter nc-model="params._filter" nc-filter-options="filterOptions"></nc-filter>
+    <nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="params.searchText.length > 0" >
+      <table class="table table-curved">
         <thead>
           <tr class="table-head">
-            <th class="checkbox-column">
-                <input type="checkbox" aria-label="Checkbox for following text input"> 
-            </th>
-            <th class="">
-              <a class="header-link" href="#"><span class="active-underline">Date</span></a>
-              <i class="fa fa-caret-down">
-            </th>
-            <th>
-              <a class="header-link" href="#"><span class="">Rating</span></a>
-              <i class="fa fa-caret-down">
-            </th>
-            <th>
-              <a class="header-link" href="#"><span class="">PID</span></a>
-              <i class="fa fa-caret-down">
-            </th>
-            <th>
-              <a class="header-link" href="#"><span>Comment</span></a>
-            </th>
-            <th>
-              <a class="header-link" href="#"><span>Customer</span></a>
-            </th>            
-            <th class="">
-              <a class="header-link" href="#"><span>Status</span></a>
-              <i class="fa fa-caret-down color-grey">
-            </th>
-            <th class="text-center">
-              <a class="header-link" href="#"><span>Approve</span></a>
-            </th>            
-            <th class="action-column"><a class="header-link" href="#"><span>Action</span></a></th> 
+            <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
+            <th nc-sort="UpdatedDt">Date</th>
+            <th nc-sort="Rating">Rating</th>
+            <th nc-sort="PID">PID</th>
+            <th>Comment</th>
+            <th>Customer</th>
+            <th nc-sort="Status">Status</th>
+            <th>Approve</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input"> 
-            </td>
-            <td class="display-column">
-              14/12/15
-            </td>
-            <td>4.5/5.0</td>
-            <td>1234567</td>
-            <td class="column-text-ellipsis"><a href="#">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</a></td>
-            <td>Harry Belafonte</td>
-            <td class="">
-              <span class="color-grey">
-                Not Approved
-              </span>
-            </td>
-            <td class="text-center"><button class="btn btn-white">Approve</button></td>
-            <td class="action-column">
-              <span class="text-align-center popover-gear">
-                <i class="fa fa-gear color-dark-grey icon-size-20"></i>
-                <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                  <div><a href='#' data-toggle='modal' data-target='#product-review-modal'>View Detail</a></div>
-                  "></i>  
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input"> 
-            </td>
-            <td class="display-column">
-              10/12/15
-            </td>
-            <td>4.0/5.0</td>
-            <td>1234567</td>
-            <td><a href="#">Jeansian Men's Slim Fit Long</a></td>
-            <td>Erutan Nando</td>
-            <td class="status-column">
-              <span class="color-grey">
-                Not Approved
-              </span>
-            </td>
-            <td class="text-center"><button class="btn btn-white">Approve</button></td>
-            <td class="action-column">
-              <span class="text-align-center popover-gear">
-                <i class="fa fa-gear color-dark-grey icon-size-20"></i>
-                <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                  <div><a href='#' data-toggle='modal' data-target='#product-review-modal'>View Detail</a></div>
-                  "></i>  
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input"> 
-            </td>
-            <td class="display-column">
-              09/12/15
-            </td>
-            <td>3.5/5.0</td>
-            <td>1234567</td>
-            <td><a href="#">Power Bank MD Tech Model B02</a></td>
-            <td>Harry Belafonte</td>
-            <td class="">
-              <span class="color-green">
-                Approved
-              </span>
-            </td>
-            <td class="text-center"><button class="btn btn-white">Approve</button></td>
-            <td class="action-column">
-              <span class="text-align-center popover-gear">
-                <i class="fa fa-gear color-dark-grey icon-size-20"></i>
-                <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                  <div><a href='#' data-toggle='modal' data-target='#product-review-modal'>View Detail</a></div>
-                  "></i>  
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input"> 
-            </td>
-            <td class="display-column">
-              09/12/15
-            </td>
-            <td>4.5/5.0</td>
-            <td>1234567</td>
-            <td><a href="#">Power Bank MD Tech Model B02</a></td>
-            <td class="column-text-ellipsis">Transylvan Ssaasqsasas</td>
-            <td class="">
-              <span class="color-grey">
-                Not Approved
-              </span>
-            </td>
-            <td class="text-center"><button class="btn btn-white">Approve</button></td>
-            <td class="action-column">
-              <span class="text-align-center popover-gear">
-                <i class="fa fa-gear color-dark-grey icon-size-20"></i>
-                <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                  <div><a href='#' data-toggle='modal' data-target='#product-review-modal'>View Detail</a></div>
-                  "></i>  
-              </span>
-            </td>
+          <tr ng-repeat="row in list.data">
+            <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
+            <td>{{row.UpdatedDt || dateTh}}</td>
+            <td>{{row.Rating}} / {{maxRating}}</td>
+            <td>{{row.PID}}</td>
+            <td>{{}}</td>
+            <td><a ng-click="open(row)">{{row.Customer}}</a></td>
+            <td>{{row.ReviewStatus | mapDropdown:reviewStatus}}</td>
+            <td><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
           </tr>
         </tbody>
       </table>
-    </div>
-    <div class="page-navigation">
-      <span>
-        <i class="fa fa-chevron-left grey-chevron"></i>
-        <span> Page 1 of 1</span>
-        <i class="fa fa-chevron-right padding-right-15 blue-chevron"></i>
-        <span class="view-page-separator">View per page</span>
-        <!-- Split button -->
-        <div class="btn-group dropdown-btn">
-          <button type="button" class="btn btn-default dropdown-text">20</button>
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="caret"></span>
-            <span class="sr-only">Toggle Dropdown</span>
-          </button>
-          <ul class="dropdown-menu dropdown-menu-right">
-            <li><a href="#">21</a></li>
-            <li><a href="#">22</a></li>
-            <li><a href="#">23</a></li>
-            <li><a href="#">24</a></li>
-          </ul>
-        </div>
-      </span>
-    </div>
+    </nc-table>
+    <nc-pagination nc-model="params" nc-pagination-total="list.total" ></nc-pagination>
   </div>
-
-  <? $this->insert('components/modal-product-review', ['id' => 'product-review-modal', 'header' => 'Review Detail', 'updatedProductNum' => '300']) ?>
-
-
 <?php $this->stop() ?>

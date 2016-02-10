@@ -320,7 +320,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             return clean;
         }
 
-        service.deserialize = function(invFd, FullAttributeSet, _Loading) {
+        service.deserialize = function(invFd, FullAttributeSet) {
             console.log('FullAttributeSet', FullAttributeSet);
 
             invFd.AttributeSet = FullAttributeSet;
@@ -359,14 +359,12 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                     m.Images360 = m.Images360 || [];
                     m.WeightUnit = (m.WeightUnit || "").trim();
                     m.DimensionUnit = (m.DimensionUnit || "").trim();
-                    m.hash = util.variant.hash(m.FirstAttribute, m.SecondAttribute);
                     m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
                     return m;
                 }
             };
 
             try {
-                _Loading.message = "Setting Default Variant..";
                 var DefaultVariantIndex = (invFd.Variants || []).map(function(o) {
                     return o.DefaultVariant || false;
                 }).indexOf(true);
@@ -377,7 +375,6 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             }
 
             try {
-                _Loading.message = "Setting Variants..";
                 invFd.Variants = (invFd.Variants || []).map(invMapper.Variants);
             } catch (er) {
                 console.warn("Unable to set Variants, will set empty", er);
@@ -386,7 +383,6 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
             var MasterAttribute = {};
             try {
-                _Loading.message = "Setting Master Attributes..";
                 invFd.MasterAttribute.forEach(function(ma) {
                     MasterAttribute[ma.AttributeId] = ma.ValueEn;
                 });
@@ -394,9 +390,6 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 console.warn("Unable to set MasterAttribute", ex);
             }
             invFd.MasterAttribute = MasterAttribute;
-
-            _Loading.message = "Setting Local Categories..";
-
             
 
             if(!invFd.LocalCategories){
@@ -424,7 +417,6 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 })
             }
 
-            _Loading.message = "Setting Video Links..";
             //TODO: replace with try-catch
             if (invFd.MasterVariant.VideoLinks) {
                 invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
@@ -504,7 +496,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 formData: invFd
             };
 
-            _Loading.message = "Producing Variation Factorization..";
+
             if (invFd.Variants.length > 0) {
 
                 var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId']);

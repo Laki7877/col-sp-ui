@@ -2411,7 +2411,7 @@ pre code {
 }
 
 /* line 11, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .ah-form .form-group .width-field-tooltip, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .ah-form .form-group .width-label, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .ah-form .form-group .width-field-small, .ah-form .form-group .width-field-normal, .ah-form .form-group .width-field-large, .ah-form .form-group .width-field-xl, .ah-form .form-group .width-field-xxl, .ah-form .form-group .button-size-normal, .ah-form .form-group .button-size-large, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .ah-form .form-group .width-field-tooltip, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .ah-form .form-group .width-label, .ah-form .form-group .width-label-extend, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .ah-form .form-group .width-field-small-input, .ah-form .form-group .width-field-small, .ah-form .form-group .width-field-normal, .ah-form .form-group .width-field-large, .ah-form .form-group .width-field-xl, .ah-form .form-group .width-field-xxl, .ah-form .form-group .button-size-normal, .ah-form .form-group .button-size-large, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -2419,7 +2419,7 @@ pre code {
 }
 
 /* line 27, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-.col-xs-1, .col-xs-2, .ah-form .form-group .width-field-tooltip, .col-xs-3, .ah-form .form-group .width-label, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .ah-form .form-group .width-field-small, .ah-form .form-group .width-field-normal, .ah-form .form-group .width-field-large, .ah-form .form-group .width-field-xl, .ah-form .form-group .width-field-xxl, .ah-form .form-group .button-size-normal, .ah-form .form-group .button-size-large, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+.col-xs-1, .col-xs-2, .ah-form .form-group .width-field-tooltip, .col-xs-3, .ah-form .form-group .width-label, .ah-form .form-group .width-label-extend, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .ah-form .form-group .width-field-small-input, .ah-form .form-group .width-field-small, .ah-form .form-group .width-field-normal, .ah-form .form-group .width-field-large, .ah-form .form-group .width-field-xl, .ah-form .form-group .width-field-xxl, .ah-form .form-group .button-size-normal, .ah-form .form-group .button-size-large, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left;
 }
 
@@ -2434,7 +2434,7 @@ pre code {
 }
 
 /* line 35, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-.col-xs-3, .ah-form .form-group .width-label {
+.col-xs-3, .ah-form .form-group .width-label, .ah-form .form-group .width-label-extend {
   width: 25%;
 }
 
@@ -2454,7 +2454,7 @@ pre code {
 }
 
 /* line 35, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-.col-xs-7, .ah-form .form-group .width-field-small, .ah-form .form-group .width-field-normal, .ah-form .form-group .width-field-large, .ah-form .form-group .width-field-xl, .ah-form .form-group .width-field-xxl, .ah-form .form-group .button-size-normal, .ah-form .form-group .button-size-large {
+.col-xs-7, .ah-form .form-group .width-field-small-input, .ah-form .form-group .width-field-small, .ah-form .form-group .width-field-normal, .ah-form .form-group .width-field-large, .ah-form .form-group .width-field-xl, .ah-form .form-group .width-field-xxl, .ah-form .form-group .button-size-normal, .ah-form .form-group .button-size-large {
   width: 58.33333%;
 }
 
@@ -12369,196 +12369,221 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 
 /* line 57, ../../../assets/_atomic.scss */
-.margin-bottom-30 {
-  margin-bottom: 30px;
-}
-
-/* line 61, ../../../assets/_atomic.scss */
-.margin-bottom-40 {
-  margin-bottom: 40px;
-}
-
-/* line 65, ../../../assets/_atomic.scss */
-.margin-bottom-60 {
-  margin-bottom: 60px;
-}
-
-/* line 69, ../../../assets/_atomic.scss */
 .margin-bottom-20 {
   margin-bottom: 20px;
 }
 
+/* line 61, ../../../assets/_atomic.scss */
+.margin-bottom-15 {
+  margin-bottom: 15px;
+}
+
+/* line 65, ../../../assets/_atomic.scss */
+.margin-bottom-30 {
+  margin-bottom: 30px;
+}
+
+/* line 69, ../../../assets/_atomic.scss */
+.margin-bottom-40 {
+  margin-bottom: 40px;
+}
+
 /* line 73, ../../../assets/_atomic.scss */
+.margin-bottom-60 {
+  margin-bottom: 60px;
+}
+
+/* line 77, ../../../assets/_atomic.scss */
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}
+
+/* line 81, ../../../assets/_atomic.scss */
 .margin-bottom-10 {
   margin-bottom: 10px;
 }
 
-/* line 77, ../../../assets/_atomic.scss */
+/* line 85, ../../../assets/_atomic.scss */
 .margin-bottom-0 {
   margin-bottom: 0px;
 }
 
-/* line 81, ../../../assets/_atomic.scss */
+/* line 89, ../../../assets/_atomic.scss */
 .padding-left-15 {
   padding-left: 15px;
 }
 
-/* line 85, ../../../assets/_atomic.scss */
+/* line 93, ../../../assets/_atomic.scss */
 .padding-left-30 {
   padding-left: 30px;
 }
 
-/* line 89, ../../../assets/_atomic.scss */
+/* line 97, ../../../assets/_atomic.scss */
 .padding-left-0 {
   padding-left: 0;
 }
 
-/* line 93, ../../../assets/_atomic.scss */
+/* line 101, ../../../assets/_atomic.scss */
 .padding-right-5 {
   padding-right: 5px;
 }
 
-/* line 97, ../../../assets/_atomic.scss */
+/* line 105, ../../../assets/_atomic.scss */
 .padding-right-15 {
   padding-right: 15px;
 }
 
-/* line 101, ../../../assets/_atomic.scss */
+/* line 109, ../../../assets/_atomic.scss */
 .padding-right-30 {
   padding-right: 30px;
 }
 
-/* line 105, ../../../assets/_atomic.scss */
+/* line 113, ../../../assets/_atomic.scss */
+.padding-bottom-5 {
+  padding-bottom: 5px;
+}
+
+/* line 117, ../../../assets/_atomic.scss */
+.padding-bottom-10 {
+  padding-bottom: 10px;
+}
+
+/* line 121, ../../../assets/_atomic.scss */
 .padding-bottom-30 {
   padding-bottom: 30px;
 }
 
-/* line 109, ../../../assets/_atomic.scss */
+/* line 125, ../../../assets/_atomic.scss */
 .padding-bottom-60 {
   padding-bottom: 60px;
 }
 
-/* line 113, ../../../assets/_atomic.scss */
+/* line 129, ../../../assets/_atomic.scss */
 .padding-top-30 {
   padding-top: 30px;
 }
 
-/* line 117, ../../../assets/_atomic.scss */
+/* line 133, ../../../assets/_atomic.scss */
 .no-margin {
   margin: 0;
 }
 
-/* line 121, ../../../assets/_atomic.scss */
+/* line 137, ../../../assets/_atomic.scss */
 .no-padding {
   padding: 0;
 }
 
-/* line 125, ../../../assets/_atomic.scss */
+/* line 141, ../../../assets/_atomic.scss */
 .no-border {
   border: none;
 }
 
-/* line 129, ../../../assets/_atomic.scss */
+/* line 145, ../../../assets/_atomic.scss */
 .float-left {
   float: left;
 }
 
-/* line 133, ../../../assets/_atomic.scss */
+/* line 149, ../../../assets/_atomic.scss */
 .float-right {
   float: right;
 }
 
-/* line 137, ../../../assets/_atomic.scss */
+/* line 153, ../../../assets/_atomic.scss */
 .color-theme-light {
   color: #b4ddff;
 }
 
-/* line 141, ../../../assets/_atomic.scss */
+/* line 157, ../../../assets/_atomic.scss */
 .color-theme {
   color: #4899DD;
 }
 
-/* line 145, ../../../assets/_atomic.scss */
+/* line 161, ../../../assets/_atomic.scss */
 .color-grey {
   color: #BCC7D5;
 }
 
-/* line 149, ../../../assets/_atomic.scss */
+/* line 165, ../../../assets/_atomic.scss */
 .color-green {
   color: #33bb5b;
 }
 
-/* line 153, ../../../assets/_atomic.scss */
+/* line 169, ../../../assets/_atomic.scss */
 .color-dark-green {
   color: #68d485;
 }
 
-/* line 157, ../../../assets/_atomic.scss */
+/* line 173, ../../../assets/_atomic.scss */
 .color-red {
   color: #ec0000;
 }
 
-/* line 161, ../../../assets/_atomic.scss */
+/* line 177, ../../../assets/_atomic.scss */
 .color-dark-grey {
   color: #7B7F8F;
 }
 
-/* line 165, ../../../assets/_atomic.scss */
+/* line 181, ../../../assets/_atomic.scss */
 .color-yellow {
   color: #f5a623;
 }
 
-/* line 169, ../../../assets/_atomic.scss */
+/* line 185, ../../../assets/_atomic.scss */
 .color-black {
   color: #32343C;
 }
 
-/* line 173, ../../../assets/_atomic.scss */
+/* line 189, ../../../assets/_atomic.scss */
 .vertical-align-middle {
   vertical-align: middle;
 }
 
-/* line 177, ../../../assets/_atomic.scss */
+/* line 193, ../../../assets/_atomic.scss */
 .text-align-center {
   text-align: center;
 }
 
-/* line 185, ../../../assets/_atomic.scss */
+/* line 201, ../../../assets/_atomic.scss */
 .text-underline {
   text-decoration: underline;
 }
 
-/* line 189, ../../../assets/_atomic.scss */
+/* line 205, ../../../assets/_atomic.scss */
 .hide-component {
   display: none;
 }
 
-/* line 193, ../../../assets/_atomic.scss */
+/* line 209, ../../../assets/_atomic.scss */
+.font-size-12 {
+  font-size: 12px;
+}
+
+/* line 213, ../../../assets/_atomic.scss */
 .font-size-18 {
   font-size: 18px;
 }
 
-/* line 197, ../../../assets/_atomic.scss */
+/* line 217, ../../../assets/_atomic.scss */
 .icon-size-20 {
   font-size: 20px;
 }
 
-/* line 201, ../../../assets/_atomic.scss */
+/* line 221, ../../../assets/_atomic.scss */
 .margin-0 {
   margin: 0;
 }
 
-/* line 205, ../../../assets/_atomic.scss */
+/* line 225, ../../../assets/_atomic.scss */
 .font-weight-bold {
   font-weight: bold;
 }
 
-/* line 209, ../../../assets/_atomic.scss */
+/* line 229, ../../../assets/_atomic.scss */
 .opacity-1 {
   opacity: 1;
 }
 
-/* line 213, ../../../assets/_atomic.scss */
+/* line 233, ../../../assets/_atomic.scss */
 .width-100-percent {
   width: 100%;
 }
@@ -12757,6 +12782,16 @@ ul.sub-sidebar .item > a {
 }
 
 /* line 1, ../../../assets/_form-section.sass */
+.form-section-content-grey {
+  background-color: #EDF2F9;
+}
+
+/* line 3, ../../../assets/_form-section.sass */
+.form-section.margin-bottom-0 {
+  margin-bottom: 0;
+}
+
+/* line 5, ../../../assets/_form-section.sass */
 .form-section {
   border: 1px solid #BCC7D5;
   -moz-border-radius: 3px;
@@ -12764,7 +12799,7 @@ ul.sub-sidebar .item > a {
   border-radius: 3px;
   margin-bottom: 30px;
 }
-/* line 6, ../../../assets/_form-section.sass */
+/* line 10, ../../../assets/_form-section.sass */
 .form-section .form-section-header {
   font-size: 14px;
   font-wieght: normal;
@@ -12772,32 +12807,36 @@ ul.sub-sidebar .item > a {
   border-bottom: 1px solid #BCC7D5;
   background-color: #EDF2F9;
 }
-/* line 7, ../../../assets/_form-section.sass */
+/* line 11, ../../../assets/_form-section.sass */
 .form-section .form-section-header h1, .form-section .form-section-header h2, .form-section .form-section-header h3, .form-section .form-section-header h4, .form-section .form-section-header h5, .form-section .form-section-header h6 {
   margin-top: 0;
   margin-bottom: 0;
 }
-/* line 10, ../../../assets/_form-section.sass */
+/* line 14, ../../../assets/_form-section.sass */
 .form-section .form-section-header * {
   font-size: inherit;
   font-weight: inherit;
 }
-/* line 21, ../../../assets/_form-section.sass */
+/* line 25, ../../../assets/_form-section.sass */
 .form-section .form-section-content {
   margin-top: 30px;
   margin-bottom: 30px;
 }
-/* line 26, ../../../assets/_form-section.sass */
+/* line 30, ../../../assets/_form-section.sass */
 .form-section .form-section-content.no-margin {
   margin-top: 0;
   margin-bottom: 0;
 }
-/* line 30, ../../../assets/_form-section.sass */
+/* line 34, ../../../assets/_form-section.sass */
+.form-section .form-section-content.margin-filter {
+  margin-bottom: 20px;
+}
+/* line 37, ../../../assets/_form-section.sass */
 .form-section .form-section-content .table-wrapper {
   padding-left: 30px;
   padding-right: 30px;
 }
-/* line 34, ../../../assets/_form-section.sass */
+/* line 41, ../../../assets/_form-section.sass */
 .form-section .section-break {
   width: 100%;
   border-bottom: 1px solid #BCC7D5;
@@ -12892,144 +12931,176 @@ label.css-label {
   width: 88px;
 }
 /* line 45, ../../../assets/_table.scss */
+.table .submitted-column {
+  width: 100px;
+}
+/* line 49, ../../../assets/_table.scss */
+.table .width_date {
+  width: 160px;
+}
+/* line 53, ../../../assets/_table.scss */
+.table .width_number {
+  width: 70px;
+}
+/* line 57, ../../../assets/_table.scss */
+.table .width_action_wide {
+  width: 150px;
+}
+/* line 62, ../../../assets/_table.scss */
+.table .width_100 {
+  width: 100px;
+}
+/* line 66, ../../../assets/_table.scss */
+.table .width_120 {
+  width: 120px;
+}
+/* line 70, ../../../assets/_table.scss */
+.table .width_150 {
+  width: 150px;
+}
+/* line 74, ../../../assets/_table.scss */
+.table .width_200 {
+  width: 200px;
+}
+/* line 78, ../../../assets/_table.scss */
 .table tbody .action-column {
   width: 60px;
   padding-top: 14px;
   padding-bottom: 14px;
 }
 
-/* line 53, ../../../assets/_table.scss */
+/* line 86, ../../../assets/_table.scss */
 .table-section {
   margin-top: 30px;
 }
-/* line 57, ../../../assets/_table.scss */
+/* line 90, ../../../assets/_table.scss */
 .table-section table.table.table-curved.product-list-table {
   border-color: #BCC7D5;
 }
-/* line 61, ../../../assets/_table.scss */
+/* line 94, ../../../assets/_table.scss */
 .table-section table > tbody > tr > td, .table-section table > thead > tr > th {
   border-color: #BCC7D5;
 }
-/* line 67, ../../../assets/_table.scss */
+/* line 100, ../../../assets/_table.scss */
 .table-section .table > tbody > tr:first-child > td {
   border-top: none;
 }
-/* line 72, ../../../assets/_table.scss */
+/* line 105, ../../../assets/_table.scss */
 .table-section .table > thead > tr > th {
   border-bottom-width: 1px;
 }
-/* line 76, ../../../assets/_table.scss */
+/* line 109, ../../../assets/_table.scss */
 .table-section .table > tbody > tr:hover {
   background: #EDF2F9;
 }
-/* line 80, ../../../assets/_table.scss */
+/* line 113, ../../../assets/_table.scss */
 .table-section .table {
   border: solid 1px #BCC7D5;
 }
-/* line 84, ../../../assets/_table.scss */
+/* line 117, ../../../assets/_table.scss */
 .table-section .caret-grey {
   color: #BCC7D5;
 }
-/* line 88, ../../../assets/_table.scss */
+/* line 121, ../../../assets/_table.scss */
 .table-section .icon-size-18px {
   font-size: 18px;
 }
-/* line 92, ../../../assets/_table.scss */
+/* line 125, ../../../assets/_table.scss */
 .table-section .red-message {
   color: #ec0000;
 }
-/* line 96, ../../../assets/_table.scss */
+/* line 129, ../../../assets/_table.scss */
 .table-section .green-message {
   color: #33bb5b;
 }
-/* line 100, ../../../assets/_table.scss */
+/* line 133, ../../../assets/_table.scss */
 .table-section .grey-message {
   color: #BCC7D5;
 }
-/* line 104, ../../../assets/_table.scss */
+/* line 137, ../../../assets/_table.scss */
 .table-section .eye-icon {
   font-size: 20px;
 }
-/* line 109, ../../../assets/_table.scss */
+/* line 142, ../../../assets/_table.scss */
 .table-section .display-column .img-holder {
   height: 40px;
   line-height: 40px;
   text-align: center;
 }
-/* line 114, ../../../assets/_table.scss */
+/* line 147, ../../../assets/_table.scss */
 .table-section .display-column img {
   max-height: 40px;
   max-width: 40px;
   border-radius: 3px;
 }
-/* line 122, ../../../assets/_table.scss */
+/* line 155, ../../../assets/_table.scss */
 .table-section a.header-link {
   color: #32343C;
 }
-/* line 124, ../../../assets/_table.scss */
+/* line 157, ../../../assets/_table.scss */
 .table-section a.header-link span.active-underline {
   border-bottom: 2px solid #4891d2;
   padding-bottom: 4px;
 }
-/* line 128, ../../../assets/_table.scss */
+/* line 161, ../../../assets/_table.scss */
 .table-section a.header-link:focus {
   text-decoration: none;
 }
-/* line 133, ../../../assets/_table.scss */
+/* line 166, ../../../assets/_table.scss */
 .table-section .table-curved {
   border-collapse: separate;
   border-radius: 3px;
 }
-/* line 140, ../../../assets/_table.scss */
+/* line 173, ../../../assets/_table.scss */
 .table-section .table > thead > tr > th {
   padding-top: 6px;
   padding-bottom: 4px;
   font-weight: normal;
   border-bottom: 0px;
 }
-/* line 145, ../../../assets/_table.scss */
+/* line 178, ../../../assets/_table.scss */
 .table-section .table > thead > tr > th a {
   color: #32343C;
 }
-/* line 151, ../../../assets/_table.scss */
+/* line 184, ../../../assets/_table.scss */
 .table-section .table > tbody > tr > td {
   vertical-align: middle;
 }
-/* line 155, ../../../assets/_table.scss */
+/* line 188, ../../../assets/_table.scss */
 .table-section td.info-column, .table-section td.image-columnm, .table-section td.live-column, .table-section td.visible-column {
   text-align: center;
 }
-/* line 159, ../../../assets/_table.scss */
+/* line 192, ../../../assets/_table.scss */
 .table-section .table-checkbox {
   margin-top: 0px;
   margin-bottom: 0;
 }
-/* line 164, ../../../assets/_table.scss */
+/* line 197, ../../../assets/_table.scss */
 .table-section .table-head {
   background: #edf2f9;
   color: #32343C;
   border-top-left-radius: 10px;
 }
 
-/* line 172, ../../../assets/_table.scss */
+/* line 205, ../../../assets/_table.scss */
 .page-navigation {
   float: right;
 }
-/* line 175, ../../../assets/_table.scss */
+/* line 208, ../../../assets/_table.scss */
 .page-navigation .grey-chevron {
   color: #BCC7D5;
 }
-/* line 179, ../../../assets/_table.scss */
+/* line 212, ../../../assets/_table.scss */
 .page-navigation .blue-chevron {
   color: #4899DD;
 }
-/* line 183, ../../../assets/_table.scss */
+/* line 216, ../../../assets/_table.scss */
 .page-navigation .view-page-separator {
   border-left: solid 1px #BCC7D5;
   padding-left: 15px;
 }
 
-/* line 193, ../../../assets/_table.scss */
+/* line 226, ../../../assets/_table.scss */
 .filter-section .filter-container {
   position: relative;
   padding: 12px 17px 12px;
@@ -13039,7 +13110,11 @@ label.css-label {
   border-width: 1px;
   border-radius: 4px;
 }
-/* line 203, ../../../assets/_table.scss */
+/* line 236, ../../../assets/_table.scss */
+.filter-section .filter-container-input {
+  padding: 12px 17px 12px;
+}
+/* line 240, ../../../assets/_table.scss */
 .filter-section .filter-seperator {
   text-decoration: none;
   cursor: pointer;
@@ -13048,59 +13123,68 @@ label.css-label {
   padding-left: 9px;
   margin-left: 9px;
 }
-/* line 212, ../../../assets/_table.scss */
+/* line 249, ../../../assets/_table.scss */
 .filter-section .filter-first-option {
   text-decoration: none;
   cursor: pointer;
   color: #7B7F8F;
   margin-left: 20px;
 }
-/* line 219, ../../../assets/_table.scss */
+/* line 256, ../../../assets/_table.scss */
+.filter-section .filter-first-option.first-label {
+  margin-left: 14px;
+}
+/* line 260, ../../../assets/_table.scss */
 .filter-section .filter-active {
   color: #32343C;
 }
-/* line 223, ../../../assets/_table.scss */
+/* line 264, ../../../assets/_table.scss */
 .filter-section .filter-checkbox {
   float: right;
 }
-/* line 225, ../../../assets/_table.scss */
+/* line 266, ../../../assets/_table.scss */
 .filter-section .filter-checkbox input {
   margin-top: 0px;
   margin-right: 6px;
 }
 
-/* line 233, ../../../assets/_table.scss */
+/* line 273, ../../../assets/_table.scss */
+.filter-section.filter-input {
+  padding-left: 110px;
+}
+
+/* line 278, ../../../assets/_table.scss */
 .search-section-wrapper {
   margin-top: 30px;
 }
-/* line 236, ../../../assets/_table.scss */
+/* line 281, ../../../assets/_table.scss */
 .search-section-wrapper .search-section {
   padding-left: 15px;
   padding-right: 15px;
   float: left;
 }
-/* line 242, ../../../assets/_table.scss */
+/* line 287, ../../../assets/_table.scss */
 .search-section-wrapper .section-action {
   width: 280px;
 }
-/* line 244, ../../../assets/_table.scss */
+/* line 289, ../../../assets/_table.scss */
 .search-section-wrapper .section-action .body-dropdown-button {
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
 }
-/* line 250, ../../../assets/_table.scss */
+/* line 295, ../../../assets/_table.scss */
 .search-section-wrapper .section-search {
   width: 410px;
 }
-/* line 254, ../../../assets/_table.scss */
+/* line 299, ../../../assets/_table.scss */
 .search-section-wrapper .search-section.section-filter {
   float: right;
 }
-/* line 258, ../../../assets/_table.scss */
+/* line 303, ../../../assets/_table.scss */
 .search-section-wrapper .search-section .btn-white {
   height: 30px;
 }
-/* line 263, ../../../assets/_table.scss */
+/* line 307, ../../../assets/_table.scss */
 .search-section-wrapper .search-section .btn-white-fluid {
   width: auto;
   height: 30px;
@@ -13147,60 +13231,77 @@ label.css-label {
   color: #ffffff;
   background-color: #4899DD;
 }
-/* line 271, ../../../assets/_table.scss */
+/* line 312, ../../../assets/_table.scss */
+.search-section-wrapper .search-section .btn-white-fluid .advance-search {
+  padding-left: 0px;
+}
+/* line 314, ../../../assets/_table.scss */
+.search-section-wrapper .search-section .btn-white-fluid .advance-search .btn-white {
+  width: 135px;
+}
+/* line 321, ../../../assets/_table.scss */
 .search-section-wrapper .body-dropdown-button {
   height: 30px;
   width: 180px;
 }
-/* line 275, ../../../assets/_table.scss */
+/* line 325, ../../../assets/_table.scss */
 .search-section-wrapper .body-dropdown-button .dropdown-text {
   width: 135px;
   display: inline-block;
 }
-/* line 281, ../../../assets/_table.scss */
+/* line 331, ../../../assets/_table.scss */
 .search-section-wrapper .dropdown-text {
   text-align: left;
 }
-/* line 285, ../../../assets/_table.scss */
+/* line 335, ../../../assets/_table.scss */
 .search-section-wrapper .search-box {
   height: 30px;
 }
-/* line 289, ../../../assets/_table.scss */
+/* line 339, ../../../assets/_table.scss */
 .search-section-wrapper .checkbox-wrapper {
   margin-top: 5px;
 }
 
-/* line 295, ../../../assets/_table.scss */
+/* line 344, ../../../assets/_table.scss */
+.product-search-section .search-section-wrapper {
+  margin-top: 0;
+}
+/* line 347, ../../../assets/_table.scss */
+.product-search-section .search-section-wrapper .search-section {
+  padding-left: 0;
+}
+
+/* line 354, ../../../assets/_table.scss */
 .table.ah-table {
   margin-bottom: 0;
 }
-/* line 296, ../../../assets/_table.scss */
+/* line 355, ../../../assets/_table.scss */
 .table.ah-table > thead > tr > th {
   border-bottom: 1px solid #BCC7D5;
 }
-/* line 298, ../../../assets/_table.scss */
+/* line 357, ../../../assets/_table.scss */
 .table.ah-table > thead > tr > th, .table.ah-table > thead > tr > th > * {
   vertical-align: middle;
 }
-/* line 303, ../../../assets/_table.scss */
+/* line 362, ../../../assets/_table.scss */
 .table.ah-table > tbody > tr > td {
   border-top: none;
 }
-/* line 308, ../../../assets/_table.scss */
+/* line 367, ../../../assets/_table.scss */
 .table.ah-table.ah-table-extra-padding > tbody > tr > td {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-/* line 315, ../../../assets/_table.scss */
+/* line 374, ../../../assets/_table.scss */
 .table.ah-table.ah-table-line > tbody > tr:first-child > td {
   border-top: none;
 }
-/* line 319, ../../../assets/_table.scss */
+/* line 378, ../../../assets/_table.scss */
 .table.ah-table.ah-table-line > tbody > tr > td {
   border-top: 1px solid #BCC7D5;
 }
 
-/* line 328, ../../../assets/_table.scss */
+/* line 387, ../../../assets/_table.scss */
 .table .column-text-ellipsis {
   max-width: 0;
   overflow: hidden;
@@ -13208,7 +13309,7 @@ label.css-label {
   white-space: nowrap;
 }
 
-/* line 337, ../../../assets/_table.scss */
+/* line 396, ../../../assets/_table.scss */
 .table-border-none > tbody > tr:first-child > td {
   border-top: none;
 }
@@ -13244,6 +13345,16 @@ form h6 {
   font-size: 12px;
 }
 
+/* line 20, ../../../assets/_form.sass */
+.form-control[disabled]::-webkit-input-placeholder {
+  color: #BCC7D5;
+}
+
+/* line 23, ../../../assets/_form.sass */
+.form-control[disabled]:placeholder-shown {
+  color: #BCC7D5;
+}
+
 /* line 14, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
 .ah-form:before, .ah-form:after {
   content: " ";
@@ -13253,116 +13364,143 @@ form h6 {
 .ah-form:after {
   clear: both;
 }
-/* line 24, ../../../assets/_form.sass */
+/* line 30, ../../../assets/_form.sass */
 .ah-form .control-padding-top {
   padding-top: 7px;
 }
-/* line 27, ../../../assets/_form.sass */
+/* line 33, ../../../assets/_form.sass */
 .ah-form .form-group {
   margin-left: 30px;
   margin-right: 30px;
   margin-bottom: 15px;
 }
-/* line 33, ../../../assets/_form.sass */
+/* line 39, ../../../assets/_form.sass */
 .ah-form .form-group.form-group-closer {
   margin-top: -5px;
   margin-bottom: 20px;
 }
-/* line 39, ../../../assets/_form.sass */
+/* line 45, ../../../assets/_form.sass */
 .ah-form .form-group .width-label {
   width: 170px;
   padding-left: 0;
   padding-right: 0;
 }
-/* line 44, ../../../assets/_form.sass */
+/* line 50, ../../../assets/_form.sass */
 .ah-form .form-group .width-label > * {
   float: right;
 }
-/* line 46, ../../../assets/_form.sass */
+/* line 52, ../../../assets/_form.sass */
+.ah-form .form-group .width-label-extend {
+  width: 80px;
+  padding-left: 0;
+  padding-right: 0;
+}
+/* line 57, ../../../assets/_form.sass */
+.ah-form .form-group .width-label-extend > * {
+  float: right;
+}
+/* line 59, ../../../assets/_form.sass */
+.ah-form .form-group .width-field-small-input {
+  width: 250px;
+}
+/* line 62, ../../../assets/_form.sass */
 .ah-form .form-group .width-field-small {
   width: 300px;
 }
-/* line 49, ../../../assets/_form.sass */
+/* line 65, ../../../assets/_form.sass */
 .ah-form .form-group .width-field-normal {
   width: 400px;
 }
-/* line 52, ../../../assets/_form.sass */
+/* line 68, ../../../assets/_form.sass */
 .ah-form .form-group .width-field-large {
   width: 500px;
 }
-/* line 55, ../../../assets/_form.sass */
+/* line 71, ../../../assets/_form.sass */
 .ah-form .form-group .width-field-xl {
   width: 600px;
 }
-/* line 58, ../../../assets/_form.sass */
+/* line 74, ../../../assets/_form.sass */
 .ah-form .form-group .width-field-xxl {
   width: 700px;
 }
-/* line 61, ../../../assets/_form.sass */
+/* line 77, ../../../assets/_form.sass */
 .ah-form .form-group .width-field-tooltip {
   width: 24px;
   height: 34px;
   line-height: 34px;
 }
-/* line 66, ../../../assets/_form.sass */
+/* line 82, ../../../assets/_form.sass */
 .ah-form .form-group .width-field-tooltip > * {
   vertical-align: middle;
 }
-/* line 68, ../../../assets/_form.sass */
+/* line 84, ../../../assets/_form.sass */
 .ah-form .form-group .width-field-tooltip.no-padding-left {
   padding-left: 0;
 }
-/* line 70, ../../../assets/_form.sass */
+/* line 86, ../../../assets/_form.sass */
 .ah-form .form-group .button-size-normal {
   width: 120px;
 }
-/* line 73, ../../../assets/_form.sass */
+/* line 89, ../../../assets/_form.sass */
 .ah-form .form-group .button-size-large {
   width: 200px;
 }
-/* line 77, ../../../assets/_form.sass */
+/* line 93, ../../../assets/_form.sass */
 .ah-form .form-group-link-action .form-text {
   padding-top: 0;
 }
-/* line 80, ../../../assets/_form.sass */
+/* line 96, ../../../assets/_form.sass */
+.ah-form .form-group.margin-bottom-0 {
+  margin-bottom: 0;
+}
+/* line 99, ../../../assets/_form.sass */
 .ah-form .form-text {
   display: inline-block;
   max-width: 100%;
 }
-/* line 85, ../../../assets/_form.sass */
+/* line 104, ../../../assets/_form.sass */
+.ah-form .control-label-results {
+  text-align: left;
+}
+/* line 106, ../../../assets/_form.sass */
+.ah-form .control-label-results ul {
+  padding-top: 7px;
+  padding-left: 0px;
+}
+/* line 110, ../../../assets/_form.sass */
 .ah-form .help-block {
   margin-bottom: 0;
   font-size: 11px;
 }
-/* line 89, ../../../assets/_form.sass */
+/* line 114, ../../../assets/_form.sass */
 .ah-form .main-form-action {
   padding-top: 15px;
   padding-bottom: 15px;
   border-top: 1px solid #BCC7D5;
 }
-/* line 95, ../../../assets/_form.sass */
+/* line 120, ../../../assets/_form.sass */
 .ah-form .radio.multiline > label, .ah-form .checkbox.multiline > label {
   padding-top: 7px;
   display: block;
 }
-/* line 98, ../../../assets/_form.sass */
+/* line 123, ../../../assets/_form.sass */
 .ah-form .radio.multiline > label:first-child, .ah-form .checkbox.multiline > label:first-child {
   padding-top: 0;
 }
-/* line 101, ../../../assets/_form.sass */
+/* line 126, ../../../assets/_form.sass */
 .ah-form .radio.multiple-radio > label {
   margin-right: 15px;
 }
-/* line 104, ../../../assets/_form.sass */
+/* line 129, ../../../assets/_form.sass */
 .ah-form .checkbox.multiple-checkbox > label {
   margin-right: 15px;
 }
-/* line 108, ../../../assets/_form.sass */
+/* line 133, ../../../assets/_form.sass */
 .ah-form a.required, .ah-form span.required, .ah-form label.required {
   position: relative;
   display: inline-block;
 }
-/* line 111, ../../../assets/_form.sass */
+/* line 136, ../../../assets/_form.sass */
 .ah-form a.required:after, .ah-form span.required:after, .ah-form label.required:after {
   display: block;
   content: "*";
@@ -13373,19 +13511,19 @@ form h6 {
   font-size: 16px;
   line-height: 1;
 }
-/* line 121, ../../../assets/_form.sass */
+/* line 146, ../../../assets/_form.sass */
 .ah-form .main-form-action .btn ~ .btn {
   margin-left: 10px;
 }
-/* line 124, ../../../assets/_form.sass */
+/* line 149, ../../../assets/_form.sass */
 .ah-form .input-with-unit {
   position: relative;
 }
-/* line 126, ../../../assets/_form.sass */
+/* line 151, ../../../assets/_form.sass */
 .ah-form .input-with-unit input.form-control {
   padding-right: 50px;
 }
-/* line 128, ../../../assets/_form.sass */
+/* line 153, ../../../assets/_form.sass */
 .ah-form .input-with-unit .input-unit {
   position: absolute;
   right: 7px;
@@ -13393,7 +13531,7 @@ form h6 {
   color: #BCC7D5;
   pointer-events: none;
 }
-/* line 136, ../../../assets/_form.sass */
+/* line 161, ../../../assets/_form.sass */
 .ah-form .multiple-input {
   margin-left: -7px;
   margin-right: -8px;
@@ -13407,7 +13545,7 @@ form h6 {
 .ah-form .multiple-input:after {
   clear: both;
 }
-/* line 140, ../../../assets/_form.sass */
+/* line 165, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column {
   position: relative;
   float: left;
@@ -13417,23 +13555,23 @@ form h6 {
   padding-right: 7.5px;
   width: 120px;
 }
-/* line 141, ../../../assets/_form.sass */
+/* line 166, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column > label {
   padding-top: 7px;
 }
-/* line 143, ../../../assets/_form.sass */
+/* line 168, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column.no-label {
   padding-top: 31px;
 }
-/* line 149, ../../../assets/_form.sass */
+/* line 174, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column.input-xl {
   width: 150px;
 }
-/* line 152, ../../../assets/_form.sass */
+/* line 177, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column.input-xxl {
   width: 200px;
 }
-/* line 158, ../../../assets/_form.sass */
+/* line 183, ../../../assets/_form.sass */
 .ah-form select.form-control {
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -13442,15 +13580,15 @@ form h6 {
   background-image: url("/assets/img/dropdown.png");
   background-size: 9px 6px;
 }
-/* line 165, ../../../assets/_form.sass */
+/* line 190, ../../../assets/_form.sass */
 .ah-form .ah-select2-dropdown {
   width: 100%;
 }
-/* line 168, ../../../assets/_form.sass */
+/* line 193, ../../../assets/_form.sass */
 .ah-form.sticky-mainform-action {
   padding-bottom: 64px;
 }
-/* line 170, ../../../assets/_form.sass */
+/* line 195, ../../../assets/_form.sass */
 .ah-form.sticky-mainform-action .main-form-action {
   position: fixed;
   bottom: 0;
@@ -13713,18 +13851,69 @@ form h6 {
 }
 
 /* line 40, ../../../assets/_button.scss */
+.btn-red {
+  width: 80px;
+  color: #ffffff;
+  background-color: #ec0000;
+  border-color: #ec0000;
+}
+/* line 11, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-red:focus, .btn-red.focus {
+  color: #ffffff;
+  background-color: #b90000;
+  border-color: #6d0000;
+}
+/* line 17, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-red:hover {
+  color: #ffffff;
+  background-color: #b90000;
+  border-color: #af0000;
+}
+/* line 22, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-red:active, .btn-red.active, .open > .btn-red.dropdown-toggle {
+  color: #ffffff;
+  background-color: #b90000;
+  border-color: #af0000;
+}
+/* line 29, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-red:active:hover, .btn-red:active:focus, .btn-red:active.focus, .btn-red.active:hover, .btn-red.active:focus, .btn-red.active.focus, .open > .btn-red.dropdown-toggle:hover, .open > .btn-red.dropdown-toggle:focus, .open > .btn-red.dropdown-toggle.focus {
+  color: #ffffff;
+  background-color: #950000;
+  border-color: #6d0000;
+}
+/* line 37, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-red:active, .btn-red.active, .open > .btn-red.dropdown-toggle {
+  background-image: none;
+}
+/* line 45, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-red.disabled:hover, .btn-red.disabled:focus, .btn-red.disabled.focus, .btn-red[disabled]:hover, .btn-red[disabled]:focus, .btn-red[disabled].focus, fieldset[disabled] .btn-red:hover, fieldset[disabled] .btn-red:focus, fieldset[disabled] .btn-red.focus {
+  background-color: #ec0000;
+  border-color: #ec0000;
+}
+/* line 53, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-red .badge {
+  color: #ec0000;
+  background-color: #ffffff;
+}
+
+/* line 45, ../../../assets/_button.scss */
 .btn.btn-width-xl {
   width: 120px;
 }
 
-/* line 44, ../../../assets/_button.scss */
+/* line 49, ../../../assets/_button.scss */
 .btn.btn-width-xxl {
   width: 180px;
 }
 
-/* line 48, ../../../assets/_button.scss */
+/* line 53, ../../../assets/_button.scss */
 .btn.btn-width-xxxl {
   width: 200px;
+}
+
+/* line 57, ../../../assets/_button.scss */
+.btn.btn-width-100 {
+  width: 100%;
 }
 
 /* line 2, ../../../assets/_bootstrap_tagsinput.sass */
@@ -13896,19 +14085,43 @@ form h6 {
   width: 25%;
 }
 
-/* line 31, ../../../assets/screen.scss */
+/* line 2, ../../../assets/_inventory.scss */
+#inventory-tab-content .border_modal {
+  border-bottom: solid 1px #BCC7D5;
+  padding-bottom: 10px;
+}
+/* line 7, ../../../assets/_inventory.scss */
+#inventory-tab-content .border_full {
+  border: solid 1px #BCC7D5;
+}
+/* line 11, ../../../assets/_inventory.scss */
+#inventory-tab-content .available_inventory {
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+/* line 17, ../../../assets/_inventory.scss */
+#inventory-tab-content .popover-markup .popover {
+  width: 220px;
+}
+
+/* line 2, ../../../assets/_search_section.sass */
+.search-section .border_blue {
+  border-color: #4899DD;
+}
+
+/* line 33, ../../../assets/screen.scss */
 body {
   overflow-y: scroll;
   overflow-x: auto;
 }
 
-/* line 36, ../../../assets/screen.scss */
+/* line 38, ../../../assets/screen.scss */
 html, body {
   height: 100%;
   min-height: 100%;
 }
 
-/* line 41, ../../../assets/screen.scss */
+/* line 43, ../../../assets/screen.scss */
 #wrapper {
   position: relative;
   display: block;
@@ -13916,22 +14129,13 @@ html, body {
   min-height: 100%;
 }
 
-/* line 48, ../../../assets/screen.scss */
-#wrapper-login {
-  position: relative;
-  display: block;
-  min-width: 1200px;
-  min-height: 100%;
-  background-color: #252d40;
-}
-
-/* line 56, ../../../assets/screen.scss */
+/* line 50, ../../../assets/screen.scss */
 #page-content-wrapper {
   margin-left: 180px;
   position: relative;
 }
 
-/* line 61, ../../../assets/screen.scss */
+/* line 55, ../../../assets/screen.scss */
 #page-body-wrapper {
   padding-top: 30px;
   padding-bottom: 30px;
@@ -14739,17 +14943,26 @@ html, body {
   margin-bottom: 15px;
 }
 
-/* line 3, ../../../assets/_login.scss */
+/* line 1, ../../../assets/_login.scss */
+#wrapper-login {
+  position: relative;
+  display: block;
+  min-width: 1200px;
+  min-height: 100%;
+  background-color: #252d40;
+}
+
+/* line 11, ../../../assets/_login.scss */
 .login-page .logo-img-wrapper {
   text-align: center;
   margin-top: 50px;
   margin-bottom: 30px;
 }
-/* line 9, ../../../assets/_login.scss */
+/* line 17, ../../../assets/_login.scss */
 .login-page .logo-img {
   height: 75px;
 }
-/* line 13, ../../../assets/_login.scss */
+/* line 21, ../../../assets/_login.scss */
 .login-page .form-login {
   background-color: #FFFFFF;
   border: solid #BCC7D5 1px;
@@ -14758,33 +14971,33 @@ html, body {
   margin: auto;
   padding: 40px 30px 20px 30px;
 }
-/* line 22, ../../../assets/_login.scss */
+/* line 30, ../../../assets/_login.scss */
 .login-page .btn-100 {
   width: 100%;
 }
-/* line 26, ../../../assets/_login.scss */
+/* line 34, ../../../assets/_login.scss */
 .login-page .login-loading {
   margin-left: 5px;
 }
 
 /* Additional Code */
-/* line 80, ../../../assets/screen.scss */
+/* line 70, ../../../assets/screen.scss */
 .tradable-list .left-column {
   margin-left: 30px;
   float: left;
   width: 300px;
 }
-/* line 84, ../../../assets/screen.scss */
+/* line 74, ../../../assets/screen.scss */
 .tradable-list .left-column .search-box {
   height: 33px;
 }
-/* line 88, ../../../assets/screen.scss */
+/* line 78, ../../../assets/screen.scss */
 .tradable-list .center-column {
   float: left;
   padding-top: 145px;
   margin-left: 30px;
 }
-/* line 92, ../../../assets/screen.scss */
+/* line 82, ../../../assets/screen.scss */
 .tradable-list .center-column .trade-button {
   padding: 8px 10px 5px 10px;
   margin-bottom: 15px;
@@ -14793,39 +15006,39 @@ html, body {
   color: #BCC7D5;
   border: 1px solid #BCC7D5;
 }
-/* line 99, ../../../assets/screen.scss */
+/* line 89, ../../../assets/screen.scss */
 .tradable-list .center-column .trade-button.active {
   cursor: pointer;
   color: #4899DD;
 }
-/* line 105, ../../../assets/screen.scss */
+/* line 95, ../../../assets/screen.scss */
 .tradable-list .right-column {
   float: left;
   width: 400px;
   margin-left: 30px;
 }
-/* line 109, ../../../assets/screen.scss */
+/* line 99, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header {
   margin-top: 9px;
   margin-bottom: 5px;
 }
-/* line 112, ../../../assets/screen.scss */
+/* line 102, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header .column-1 {
   margin-left: 15px;
 }
-/* line 115, ../../../assets/screen.scss */
+/* line 105, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header .column-2 {
   margin-left: 120px;
 }
-/* line 118, ../../../assets/screen.scss */
+/* line 108, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header .column-3 {
   margin-left: 30px;
 }
-/* line 123, ../../../assets/screen.scss */
+/* line 113, ../../../assets/screen.scss */
 .tradable-list .clickable-list {
   overflow: hidden;
 }
-/* line 125, ../../../assets/screen.scss */
+/* line 115, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column {
   margin-top: 15px;
   -webkit-padding-start: 0px;
@@ -14835,14 +15048,14 @@ html, body {
   border: 1px solid #BCC7D5;
   border-radius: 3px;
 }
-/* line 133, ../../../assets/screen.scss */
+/* line 123, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li {
   padding-left: 15px;
   padding-right: 15px;
   line-height: 30px;
   cursor: pointer;
 }
-/* line 138, ../../../assets/screen.scss */
+/* line 128, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-1 {
   margin-left: 15px;
   display: inline-block;
@@ -14852,51 +15065,51 @@ html, body {
   text-overflow: ellipsis;
   float: left;
 }
-/* line 147, ../../../assets/screen.scss */
+/* line 137, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-2 {
   margin-left: 40px;
   display: inline-block;
   float: left;
 }
-/* line 152, ../../../assets/screen.scss */
+/* line 142, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-3 {
   margin-left: 90px;
   display: inline-block;
   float: left;
 }
-/* line 158, ../../../assets/screen.scss */
+/* line 148, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li.disabled {
   background: #EDF2F9 !important;
   color: #333333 !important;
 }
-/* line 162, ../../../assets/screen.scss */
+/* line 152, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li.active {
   background: #4899DD;
   color: #FFFFFF;
 }
 
-/* line 171, ../../../assets/screen.scss */
+/* line 161, ../../../assets/screen.scss */
 .table .action-column {
   width: 60px;
   padding-top: 14px;
   padding-bottom: 14px;
 }
 
-/* line 179, ../../../assets/screen.scss */
+/* line 169, ../../../assets/screen.scss */
 .has-error-parent .form-control {
   border-color: #ec0000;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-/* line 185, ../../../assets/screen.scss */
+/* line 175, ../../../assets/screen.scss */
 .form-control.has-error {
   border-color: #ec0000;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-/* line 191, ../../../assets/screen.scss */
+/* line 181, ../../../assets/screen.scss */
 .empty-section {
   border: 1px solid;
   border-color: #BCC7D5;
@@ -14904,7 +15117,7 @@ html, body {
   height: 80px;
   line-height: 80px;
 }
-/* line 197, ../../../assets/screen.scss */
+/* line 187, ../../../assets/screen.scss */
 .empty-section .loading-img {
   width: 40px;
   height: 40px;
@@ -14912,12 +15125,12 @@ html, body {
   margin-right: 15px;
 }
 
-/* line 204, ../../../assets/screen.scss */
+/* line 194, ../../../assets/screen.scss */
 .disabled-chevron {
   cursor: not-allowed;
 }
 
-/* line 208, ../../../assets/screen.scss */
+/* line 198, ../../../assets/screen.scss */
 .opacity-50 {
   opacity: 0.5;
 }

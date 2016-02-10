@@ -106,7 +106,6 @@
               </div>
             </div>
           </div>
-
           <div class="form-section">
             <div class="form-section-header"><h2>Attribute Input</h2></div>
             <div class="form-section-content">
@@ -243,70 +242,69 @@
               </div>
             </div>
           </div>
-
-        <div class="form-section">
-          <div class="form-section-header"><h2>Variation</h2></div>
-          <div class="form-section-content">
-            <div ng-template="common/input/dropdown"
-              ng-template-options="{
-                'label' : 'Set as Variation'
-              }">
-              <ui-select ng-model="formData.VariantStatus" search-enabled="false">
-                <ui-select-match>
-                    <span ng-bind="$select.selected.name"></span>
-                </ui-select-match>
-                <ui-select-choices repeat="item in boolOptions">
-                    <span ng-bind="item.name"></span>
-                </ui-select-choices>
-              </ui-select>
-            </div>
-            <div
-              ng-show="formData.VariantStatus.value"
-              ng-template="common/input/dropdown"
-              ng-template-options="{
-                'label' : 'Variant Display Type'
-              }">
-              <ui-select ng-model="formData.VariantDataType" search-enabled="false">
-                <ui-select-match placeholder="- Select Display Type -">
-                    <span ng-bind="$select.selected.name"></span>
-                </ui-select-match>
-                <ui-select-choices repeat="item in variantOptions">
-                    <span ng-bind="item.name"></span>
-                </ui-select-choices>
-              </ui-select>
+          <div class="form-section">
+            <div class="form-section-header"><h2>Variation</h2></div>
+            <div class="form-section-content">
+              <div ng-template="common/input/dropdown"
+                ng-template-options="{
+                  'label' : 'Set as Variation'
+                }">
+                <ui-select ng-model="formData.VariantStatus" search-enabled="false">
+                  <ui-select-match>
+                      <span ng-bind="$select.selected.name"></span>
+                  </ui-select-match>
+                  <ui-select-choices repeat="item in boolOptions">
+                      <span ng-bind="item.name"></span>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
+              <div
+                ng-show="formData.VariantStatus.value"
+                ng-template="common/input/dropdown"
+                ng-template-options="{
+                  'label' : 'Variant Display Type'
+                }">
+                <ui-select ng-model="formData.VariantDataType" search-enabled="false">
+                  <ui-select-match placeholder="- Select Display Type -">
+                      <span ng-bind="$select.selected.name"></span>
+                  </ui-select-match>
+                  <ui-select-choices repeat="item in variantOptions">
+                      <span ng-bind="item.name"></span>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="form-section">
-          <div class="form-section-header"><h2>Search Property</h2></div>
-          <div class="form-section-content">
-            <div ng-template="common/input/dropdown"
-              ng-template-options="{
-                'label' : 'Use in Global <br> Advanced Search'
-              }">
-              <ui-select ng-model="formData.ShowGlobalSearchFlag" search-enabled="false">
-                <ui-select-match>
-                    <span ng-bind="$select.selected.name"></span>
-                </ui-select-match>
-                <ui-select-choices repeat="item in boolOptions">
-                    <span ng-bind="item.name"></span>
-                </ui-select-choices>
-              </ui-select>
+          <div class="form-section">
+            <div class="form-section-header"><h2>Search Property</h2></div>
+            <div class="form-section-content">
+              <div ng-template="common/input/dropdown"
+                ng-template-options="{
+                  'label' : 'Use in Global <br> Advanced Search'
+                }">
+                <ui-select ng-model="formData.ShowGlobalSearchFlag" search-enabled="false">
+                  <ui-select-match>
+                      <span ng-bind="$select.selected.name"></span>
+                  </ui-select-match>
+                  <ui-select-choices repeat="item in boolOptions">
+                      <span ng-bind="item.name"></span>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
+              <div ng-template="common/input/dropdown"
+                ng-template-options="{
+                  'label' : 'Use in Local <br> Advanced Search'
+                }">
+                <ui-select ng-model="formData.ShowLocalSearchFlag" search-enabled="false">
+                  <ui-select-match>
+                      <span ng-bind="$select.selected.name"></span>
+                  </ui-select-match>
+                  <ui-select-choices repeat="item in boolOptions">
+                      <span ng-bind="item.name"></span>
+                  </ui-select-choices>
+                </ui-select>
+             </div>
             </div>
-            <div ng-template="common/input/dropdown"
-              ng-template-options="{
-                'label' : 'Use in Local <br> Advanced Search'
-              }">
-              <ui-select ng-model="formData.ShowLocalSearchFlag" search-enabled="false">
-                <ui-select-match>
-                    <span ng-bind="$select.selected.name"></span>
-                </ui-select-match>
-                <ui-select-choices repeat="item in boolOptions">
-                    <span ng-bind="item.name"></span>
-                </ui-select-choices>
-              </ui-select>
-           </div>
           </div>
         </div>
       </div>

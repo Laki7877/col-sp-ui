@@ -13,6 +13,14 @@
 
 						<? if (!empty($updatedProductNum)): ?>
 							<div><?= $updatedProductNum ?> products to be updated</div>
+						<? else :?>
+							<h2 class="font-size-20 text-centerx text-normal margin-bottom-20"><?=$headerText?></h2>
+							<? if (!empty($newProductNum)): ?>
+								<div><?= $newProductNum ?> products selected</div>
+							<? endif ?>	
+							<? if (!empty($updatedProductNum)): ?>
+								<div><?= $updatedProductNum ?> <?=$typeText?> to be updated</div>
+							<? endif ?>	
 						<? endif ?>					
 					</div>
 					<div class="confirmation-action no-margin">

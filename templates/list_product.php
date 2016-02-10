@@ -108,9 +108,9 @@
                     <i ng-if="row.ImageFlag" class="fa fa-check color-green icon-size-18px"></i>
                   </td>
                   <td class="status-column">
-                    <span class="{{ asStatus(row.Status).Color }}">
-                      <i class="fa {{ asStatus(row.Status).Class }}"></i>
-                      {{ asStatus(row.Status).Text }}
+                    <span class="{{ asStatus(row.Status).color }}">
+                      <i class="fa {{ asStatus(row.Status).icon }}"></i>
+                      {{ asStatus(row.Status).name }}
                     </span>
                   </td>
                   <td class="live-column" ng-if="showOnOffStatus">
@@ -120,7 +120,7 @@
                           <a ng-click="actions.toggle(row)"><i ng-class="{'fa fa-eye-slash color-grey eye-icon' : !row.Visibility,
                             'fa fa-eye color-dark-grey eye-icon' : row.Visibility}"></i></a>
                   </td>
-                  <td class="modified-column">{{ row.UpdatedDt | date:'shortDate':'+700' }}</td>
+                  <td class="modified-column">{{ row.UpdatedDt | dateTh }}</td>
                   <td class="action-column">
                     <a class="fa fa-gear color-dark-grey icon-size-20"  uib-popover-template="'product/action'" popover-placement="bottom" popover-append-to-body="true" popover-any>
                        <i class="fa fa-caret-down color-dark-grey"></i>

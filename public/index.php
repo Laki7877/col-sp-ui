@@ -11,12 +11,16 @@ class Redirect {
 	public static function admin($params) {
 		header('Location: /admin/accounts');
 	}
+    public static function exception($params) {
+		return View::render('exception');
+	}
 }
 
 //index
 Route::add('', 'Redirect::index');
 Route::add('/', 'Redirect::index');
 Route::add('/admin', 'Redirect::admin');
+Route::add('/exception', 'Redirect::exception');
 
 //login routing
 Route::add('/login', 'LoginController::index');
@@ -32,6 +36,9 @@ Route::add('/products/:productid', 'ProductController::edit');
 
 //category routing
 Route::add('/categories', 'CategoryController::index');
+
+//Shop Setting tab
+Route::add('/shops/settings', 'ShopController::settings');
 
 //seller routing
 Route::add('/accounts', 'SellerController::listAccount');
