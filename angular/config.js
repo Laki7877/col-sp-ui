@@ -93,6 +93,17 @@ module.exports = {
 			}
 		]
 	},
+	PRODUCT_REVIEW_STATUS: [
+		{
+			name: 'Not Approved',
+			value: 'WA'
+		}, 
+		{
+			name: 'Approved',
+			value: 'AP'
+		}
+	],
+	PRODUCT_REVIEW_MAX_RATING: 5.0,
 	PRODUCT_STATUS: [{
 			name: 'Draft',
 			value: 'DF',
