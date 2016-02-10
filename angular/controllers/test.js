@@ -7,6 +7,9 @@ module.exports = function($scope, Attribute, util) {
 			{ name: "No Variation", value: 'NoVariation'}
 		];
 		$scope.tags = [];
+		$scope.eval = function(test) {
+			return {name: test};
+		}
 		$scope.dataTypeOptions = [
 			{
 				name: 'Free Text',
