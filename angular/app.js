@@ -177,7 +177,6 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 .directive('ngCkeditor', directives.ngCkeditor)
 .directive('ngSlideToggle', directives.ngSlideToggle)
 .directive('ngTemplate', directives.ngTemplate)
-.directive('uiSelectMaxlength', directives.uiSelectMaxlength)
 .directive('ngMatch', directives.ngMatch)
 .directive('ngMinnumber', directives.ngMinnumber)
 .directive('ngMaxnumber', directives.ngMaxnumber)

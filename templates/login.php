@@ -11,9 +11,8 @@
 
 		<div class="form-login" ng-cloak>
 
-			<div ng-cloak ng-show="alert.show" uib-alert template-url="common/alert" type="{{alert.type}}" close="alert.close()">
-				{{alert.message}}
-			</div>
+			
+            <nc-alert nc-model="alert"></nc-alert>
 
 			<div ng-template="common/input/text2"
 				ng-template-options="{

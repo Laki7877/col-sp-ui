@@ -1,6 +1,6 @@
-module.exports = ['$scope', 'Alert', 'Credential', '$window', 'storage', function($scope, Alert, Credential, $window, storage) {
+module.exports = ['$scope', 'NcAlert', 'Credential', '$window', 'storage', function($scope, NcAlert, Credential, $window, storage) {
 	$scope.uform = {}
-	$scope.alert = new Alert();
+	$scope.alert = new NcAlert();
 	$scope.doLogin = function(){
 		if(!$scope.loginForm.$valid) return;
 		$scope.loading = true;

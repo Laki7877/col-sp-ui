@@ -1,5 +1,6 @@
 angular.module('nc')
-	.directive('uiSelect', function() {
+//This breaks stuff
+/*	.directive('uiSelect', function() {
 		return {
             priority: -1,
 			require: 'ngModel',
@@ -16,7 +17,7 @@ angular.module('nc')
                 }
 			}
 		};
-	})
+	})*/
     .directive('ncTagValidator', function () {
         return {
             restrict: 'A',
