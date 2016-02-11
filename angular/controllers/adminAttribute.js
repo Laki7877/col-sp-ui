@@ -8,7 +8,7 @@ module.exports = function($scope, $controller, AttributeService, config) {
 			item: 'Attribute',
 			order: 'UpdatedDt',
 			id: 'AttributeId',
-			actions: ['View', 'Duplicate', 'Delete'],
+			actions: ['View', 'Delete'],
 			bulks: ['Delete'],
 			filters: [
 				{ name: "All", value: 'All'},

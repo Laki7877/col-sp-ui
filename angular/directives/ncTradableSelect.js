@@ -8,7 +8,7 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 			selectable: '=ncSelectOptions',
 			model: '=ncModel',
 			options: '=ncOptions',
-			test: '=ncTest'
+			test: '=?ncTest'
 		},
 		template: function(element, attrs) {
 			if(attrs.ncTemplate) {

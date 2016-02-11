@@ -9,6 +9,9 @@ module.exports = function($scope, $rootScope, $uibModal, common, Category, Globa
 	$scope.alert = new NcAlert();
 	$scope.treeOptions = {};
 
+	$scope.lockAttributeset = function(i) {		
+		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);		
+	};
 	$scope.open = function(item) {
 		//Open add-edit modal
 		var modal = $uibModal.open({

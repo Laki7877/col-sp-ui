@@ -1,6 +1,6 @@
 var angular = require('angular');
 
-module.exports = function($scope, $controller, AttributeService, config) {
+module.exports = function($scope, $controller, AttributeService, config, util) {
 	'ngInject';
 	$scope.dataTypeOptions = config.DROPDOWN.DATA_TYPE_DROPDOWN;
 	$scope.variantOptions = config.DROPDOWN.VARIANT_DROPDOWN;
@@ -18,9 +18,9 @@ module.exports = function($scope, $controller, AttributeService, config) {
 			init: function(scope) {	}
 		}
 	});
-
+ 
 	$scope.$watch('formData.DataType', function() {
-		console.log($scope.formData.DataType);
+		if(_.isUndefined($scope.formData.DataType)) return;
 		if($scope.formData.DataType.value == 'HB') {
 			$scope.formData.VariantStatus = $scope.boolOptions[0];
 		}

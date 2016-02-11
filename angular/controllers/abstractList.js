@@ -27,6 +27,8 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 	$scope.tableOptions = {
 		emptyMessage: 'You do not have ' + a + ' ' + options.item
 	};
+
+	//Table variables
 	$scope.params = {
 		_order: options.order,
 		_limit: 10,

@@ -24,6 +24,9 @@ module.exports = function($scope, $controller, AttributeSetService, AttributeSer
 			$scope.formData.Tags.pop();
 		}
 	};
+	$scope.lockAttributeset = function(i) {		
+		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);		
+	};
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
 		options: {
