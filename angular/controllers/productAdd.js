@@ -181,6 +181,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
         $scope._attrEnTh = function (t) { return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
         $scope._isFreeTextInput = util.isFreeTextDataType;
         $scope._isListInput = util.isListDataType;
+        $scope._isHtmlInput = util.isHtmlDataType;
 
         //CK editor options
         $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
@@ -200,7 +201,9 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             }
         };
 
-
+        $scope.breadcrumbs = {
+            globalCategory : null
+        };
         $scope.preview = function () {
             return console.log($scope.formData);
         };
@@ -297,7 +300,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                 if (res.ProductId) {
                     $scope.overview = res;
                     var catId = Number(res.GlobalCategory);
-                    $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.globalCategoryBreadcrumb, $scope.controlFlags,
+                    $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs.globalCategory, $scope.controlFlags,
                         $scope.variationFactorIndices, res).then(function () {
                             $scope.formData.ProductId = Number(res.ProductId);
                             $scope.pageState.reset();
@@ -354,7 +357,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                     .then(function (inverseFormData) {
                         $scope.overview = angular.copy(inverseFormData);
                         var catId = Number(inverseFormData.GlobalCategory);
-                        $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.globalCategoryBreadcrumb, $scope.controlFlags,
+                        $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs, $scope.controlFlags,
                             $scope.variationFactorIndices, inverseFormData).then(function () {
                                 $scope.formData.ProductId = Number(productId);
                                 $scope.pageState.reset();
@@ -368,7 +371,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
             } else if ('catId' in viewBag) {
                 var catId = Number(viewBag.catId);
-                $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.globalCategoryBreadcrumb,
+                $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs,
                     $scope.controlFlags, $scope.variationFactorIndices).then(function () {
                         $scope.pageState.reset();
                         watchVariantChanges();

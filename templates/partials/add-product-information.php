@@ -106,9 +106,10 @@
 					'conditions' : addProductForm.MasterVariant_Sku.$error
 					}
 					}">
-                            <input class="form-control width-field-large" name="MasterVariant_Sku" ng-show="controlFlags.variation != 'enable'" ng-disabled="controlFlags.variation == 'enable'" ng-model="formData.MasterVariant.Sku" maxlength="300" ng-pattern="/^[0-9a-zA-Z\s]+$/" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Sku) }"/>
-                            
-                            <input class="form-control width-field-large" value="Edit in Variation Tab" disabled ng-if="controlFlags.variation == 'enable'"/>
+                            <input class="form-control width-field-large" name="MasterVariant_Sku" ng-show="controlFlags.variation != 'enable'" ng-disabled="controlFlags.variation == 'enable'" ng-model="formData.MasterVariant.Sku" maxlength="300" ng-pattern="/^[0-9a-zA-Z\s]+$/"
+                            ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Sku) }" />
+
+                            <input class="form-control width-field-large" value="Edit in Variation Tab" disabled ng-if="controlFlags.variation == 'enable'" />
                         </div>
 
                         <div ng-template="common/input/text2" ng-template-options="{
@@ -309,7 +310,7 @@
                     <div class="form-section-header">
                         <h2>Keywords</h2></div>
                     <div class="form-section-content">
-                         
+
                         <div ng-template="common/input/text2" ng-template-options="{
                             'label': 'Search Tag',
                             'inputSize': 'large',
@@ -325,9 +326,7 @@
                             }
                             }">
                             <!-- on-select="onKeywordAdded($item, $model)" on-remove="onKeywordRemoved($item, $model)" -->
-                            <ui-select ng-model="formData.Keywords" name="Keywords" nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30"
-                            nc-tag-pattern="^[a-zA-Z0-9ก-๙\s\-]+$"
-                            multiple tagging tagging-tokens=",|ENTER" tagging-label="" nc-tag-field>
+                            <ui-select ng-model="formData.Keywords" name="Keywords" nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30" nc-tag-pattern="^[a-zA-Z0-9ก-๙\s\-]+$" multiple tagging tagging-tokens=",|ENTER" tagging-label="" nc-tag-field>
                                 <ui-select-match placeholder="Separate tags with comma (or enter)">
                                     {{$item}}
                                 </ui-select-match>
@@ -335,7 +334,7 @@
                                     {{item}}
                                 </ui-select-choices>
                             </ui-select>
-                            
+
                         </div>
 
                         <div class="form-group" ng-if="formData.AttributeSet.AttributeSetTagMaps.length > 0">

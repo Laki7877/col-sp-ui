@@ -8,7 +8,7 @@ module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCat
         * to be parsable
         */
         $productAdd.fill = function (globalCatId, pageLoader, sharedDataSet,
-            sharedFormData, globalCategoryBreadcrumb, controlFlags, variationFactorIndices, ivFormData) {
+            sharedFormData, breadcrumbs, controlFlags, variationFactorIndices, ivFormData) {
 
 
             var deferred = $q.defer();
@@ -60,7 +60,8 @@ module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCat
                     GlobalCategory.getAll().then(function (data) {
                         sharedDataSet.GlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
                         sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
-                        globalCategoryBreadcrumb = Category.createCatStringById(globalCatId, sharedDataSet.GlobalCategories);
+                        breadcrumbs.globalCategory = Category.createCatStringById(globalCatId, sharedDataSet.GlobalCategories);
+                        console.log(breadcrumbs, "breadcrumb");
                         pageLoader.load('Preparing content..');
                         deferred.resolve();
                     });
