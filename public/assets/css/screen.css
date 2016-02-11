@@ -15104,37 +15104,38 @@ html, body {
 }
 /* line 148, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li.disabled {
+  cursor: not-allowed !important;
   background: #EDF2F9 !important;
-  color: #333333 !important;
+  color: #BCC7D5 !important;
 }
-/* line 152, ../../../assets/screen.scss */
+/* line 153, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li.active {
   background: #4899DD;
   color: #FFFFFF;
 }
 
-/* line 161, ../../../assets/screen.scss */
+/* line 162, ../../../assets/screen.scss */
 .table .action-column {
   width: 60px;
   padding-top: 14px;
   padding-bottom: 14px;
 }
 
-/* line 169, ../../../assets/screen.scss */
+/* line 170, ../../../assets/screen.scss */
 .has-error-parent .form-control {
   border-color: #ec0000;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-/* line 175, ../../../assets/screen.scss */
+/* line 176, ../../../assets/screen.scss */
 .form-control.has-error {
   border-color: #ec0000;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-/* line 181, ../../../assets/screen.scss */
+/* line 182, ../../../assets/screen.scss */
 .empty-section {
   border: 1px solid;
   border-color: #BCC7D5;
@@ -15142,7 +15143,7 @@ html, body {
   height: 80px;
   line-height: 80px;
 }
-/* line 187, ../../../assets/screen.scss */
+/* line 188, ../../../assets/screen.scss */
 .empty-section .loading-img {
   width: 40px;
   height: 40px;
@@ -15150,22 +15151,22 @@ html, body {
   margin-right: 15px;
 }
 
-/* line 194, ../../../assets/screen.scss */
+/* line 195, ../../../assets/screen.scss */
 .disabled-chevron {
   cursor: not-allowed;
 }
 
-/* line 198, ../../../assets/screen.scss */
+/* line 199, ../../../assets/screen.scss */
 .opacity-50 {
   opacity: 0.5;
 }
 
-/* line 203, ../../../assets/screen.scss */
+/* line 204, ../../../assets/screen.scss */
 .my_file {
   display: none !important;
 }
 
-/* line 208, ../../../assets/screen.scss */
+/* line 209, ../../../assets/screen.scss */
 .get_file {
   cursor: pointer;
 }
