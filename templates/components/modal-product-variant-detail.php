@@ -5,16 +5,18 @@
                 <h3 class="float-left modal-title">Variant: {{ <?=$model?>.text }}</h3>
 
                 <span class="float-right">
-						<a class="link-btn-plain" data-dismiss="modal">Cancel</a>
-						<button type="button" class="btn btn-blue btn-width-xl" ng-click="$emit('savePairModal')" data-dismiss="modal">Save</button>
-					</span>
-
+					<a class="link-btn-plain" data-dismiss="modal">Cancel</a>
+					<button type="button" class="btn btn-blue btn-width-xl" ng-click="$emit('savePairModal')" ng-disabled="addProductVariantForm.$invalid" data-dismiss="modal">Save</button>
+				</span>
             </div>
             <div class="modal-body margin-top-20">
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="alert alert-warning " role="alert">
                             Please input product variant detail only if it is different from the main product. The fields left blank will use the same information and image as the main product.
+                        </div>
+                        <div ng-show="addProductVariantForm.$invalid" class="alert alert-red">
+                            Please make sure all fields have no error.
                         </div>
                     </div>
                 </div>
@@ -31,11 +33,11 @@
 									'messages': {
 									'pattern': 'Only letters and numbers allowed'
 									},
-									'show': $root.isInvalid(addProductForm.Modal_ProductNameTh),
-									'conditions' : addProductForm.Modal_ProductNameTh.$error
+									'show': $root.isInvalid(addProductVariantForm.Modal_ProductNameTh),
+									'conditions' : addProductVariantForm.Modal_ProductNameTh.$error
 									}
 									}">
-                                    <input class="form-control width-field-large" name="Modal_ProductNameTh" ng-model="<?= $model ?>.ProductNameTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_ProductNameTh) }" ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/" maxlength="300" />
+                                    <input class="form-control width-field-large" name="Modal_ProductNameTh" ng-model="<?= $model ?>.ProductNameTh" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_ProductNameTh) }" ng-pattern="/^[^<>]+$/" maxlength="300" />
                                 </div>
 
                                 <div ng-template="common/input/text2" ng-template-options="{
@@ -43,13 +45,13 @@
 									'labelClass': 'required',
 									'error' : {
 									'messages': {
-										'pattern': 'Only english letters and numbers allowed'
+										'pattern': 'Special characters are not allowed'
 									},
-									'show': $root.isInvalid(addProductForm.Modal_ProductNameEn),
-									'conditions' : addProductForm.Modal_ProductNameEn.$error
+									'show': $root.isInvalid(addProductVariantForm.Modal_ProductNameEn),
+									'conditions' : addProductVariantForm.Modal_ProductNameEn.$error
 									}
 									}">
-                                    <input class="form-control width-field-large" name="Modal_ProductNameEn" ng-model="<?=$model?>.ProductNameEn" maxlength="300" ng-pattern="/^[0-9a-zA-Z\s]+$/" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_ProductNameEn) }" />
+                                    <input class="form-control width-field-large" name="Modal_ProductNameEn" ng-model="<?=$model?>.ProductNameEn" maxlength="300" ng-pattern="/^[^<>ก-๙]+$/" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_ProductNameEn) }" />
                                 </div>
 
 
@@ -73,11 +75,19 @@
 
                             </div>
                         </div>
-                        <? $this->insert('components/forms/form-section-upload-new-product-image', ["uploader" => "uploaderModal", "images" => $model .".Images"]) ?>
+                        <? $this->insert('components/forms/form-section-upload-new-product-image', 
+                        ["uploader" => "uploaderModal",
+                        "checkbox" => true,
+                        "model" => $model,
+                        "images" => $model .".Images"]) ?>
+
                             <div class="form-section">
-                                <div class="form-section-header">
-                                    <input type="checkbox" ng-model="<?= $model ?>._embedVideo" /> <span style='margin-bottom: 25px'>Embed Video</span></div>
-                                <div class="form-section-content" ng-if="<?= $model ?>._embedVideo">
+                                <div class="form-section-header checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="<?= $model ?>._override.embedVideo"> Override "Embed Video"
+                                    </label>
+                                </div>
+                                <div class="form-section-content" ng-show="<?= $model ?>._override.embedVideo">
                                     <div ng-template="common/input/text2" ng-template-options="{
 				                        'label': 'Video Link 1',
 				                        'hint': {
@@ -89,11 +99,11 @@
 				                              'messages': {
 				                              	'url': 'Please enter valid URL'
 				                              },
-				                              'show': $root.isInvalid(addProductForm.Modal_VideoLinks0),
-				                              'conditions' : addProductForm.Modal_VideoLinks0.$error
+				                              'show': $root.isInvalid(addProductVariantForm.Modal_VideoLinks0),
+				                              'conditions' : addProductVariantForm.Modal_VideoLinks0.$error
 				                         }
 				                      }">
-                                        <input class="form-control width-field-normal" name="Modal_VideoLinks0" type="url" maxlength="500" ng-model="<?=$model?>.VideoLinks[0]" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_VideoLinks0) }" />
+                                        <input class="form-control width-field-normal" name="Modal_VideoLinks0" type="url" maxlength="500" ng-model="<?=$model?>.VideoLinks[0]" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_VideoLinks0) }" />
                                     </div>
 
 
@@ -108,11 +118,11 @@
 				                              'messages': {
 				                              	'url': 'Please enter valid URL'
 				                              },
-				                              'show': $root.isInvalid(addProductForm.Modal_VideoLinks1),
-				                              'conditions' : addProductForm.Modal_VideoLinks1.$error
+				                              'show': $root.isInvalid(addProductVariantForm.Modal_VideoLinks1),
+				                              'conditions' : addProductVariantForm.Modal_VideoLinks1.$error
 				                         }
 				                      }">
-                                        <input class="form-control width-field-normal" name="Modal_VideoLinks1" type="url" maxlength="500" ng-model="<?=$model?>.VideoLinks[1]" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_VideoLinks1) }" />
+                                        <input class="form-control width-field-normal" name="Modal_VideoLinks1" type="url" maxlength="500" ng-model="<?=$model?>.VideoLinks[1]" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_VideoLinks1) }" />
                                     </div>
 
 
@@ -127,53 +137,72 @@
 				                              'messages': {
 				                              	'url': 'Please enter valid URL'
 				                              },
-				                              'show': $root.isInvalid(addProductForm.Modal_VideoLinks2),
-				                              'conditions' : addProductForm.Modal_VideoLinks2.$error
+				                              'show': $root.isInvalid(addProductVariantForm.Modal_VideoLinks2),
+				                              'conditions' : addProductVariantForm.Modal_VideoLinks2.$error
 				                         }
 				                      }">
-                                        <input type="url" class="form-control width-field-normal" name="Modal_VideoLinks2" maxlength="500" ng-model="<?=$model?>.VideoLinks[2]" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_VideoLinks2) }" />
+                                        <input type="url" class="form-control width-field-normal" name="Modal_VideoLinks2" maxlength="500" ng-model="<?=$model?>.VideoLinks[2]" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_VideoLinks2) }" />
                                     </div>
                                 </div>
                             </div>
                             <div class="form-section">
-                                <div class="form-section-header">
-                                    <h2>Description</h2></div>
-                                <div class="form-section-content">
-                                    <? $this->insert('components/forms/ckeditor-with-label', 
-								["label" => "Description (Thai)", "size" => "xxl", "label_class" => "required", "ng_model" => $model.".DescriptionFullTh"]) ?>
+                                <div class="form-section-header checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="<?= $model ?>._override.description"> Override "Description"
+                                    </label>
+                                </div>
+                                <div class="form-section-content" ng-show="<?= $model ?>._override.description">
+                                    <? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (Thai)", "size" => "xxl", "label_class" => "required", "ng_model" => $model.".DescriptionFullTh"]) ?>
 
                                         <div ng-template="common/input/textarea2" ng-template-options="{
-									'label': 'Short Description (Thai)',
-									'inputSize': 'xxl',
-									'formGroupClass' : 'margin-top-30',
-									'error' : {
-									'messages': {
-									'pattern': 'Only letters and numbers allowed'
-									},
-									'show': $root.isInvalid(addProductForm.Modal_DescriptionShortTh),
-									'conditions' : addProductForm.Modal_DescriptionShortTh.$error
-									}
-									}">
-                                            <textarea ng-pattern="/^[0-9A-Za-zก-๙\s]+$/" class="form-control" maxlength="500" name="Modal_DescriptionShortTh" ng-model="<?=$model?>.DescriptionShortTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_DescriptionShortTh) }" />
+                                            'label': 'Short Description (Thai)',
+                                            'inputSize': 'xxl',
+                                            'formGroupClass' : 'margin-top-30',
+                                            'error' : {
+                                            'messages': {
+                                            'pattern': 'Special characters are not allowed'
+                                            },
+                                            'show': $root.isInvalid(addProductVariantForm.Modal_DescriptionShortTh),
+                                            'conditions' : addProductVariantForm.Modal_DescriptionShortTh.$error
+                                            }
+                                            }">
+                                            <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="Modal_DescriptionShortTh" ng-model="<?=$model?>.DescriptionShortTh" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_DescriptionShortTh) }" />
                                             </textarea>
                                         </div>
 
                                         <? $this->insert('components/forms/ckeditor-with-label', 
-								["label" => "Description (English)", "size" => "xxl", "label_class" => "required", "ng_model" => $model.".DescriptionFullEn"]) ?>
+								            ["label" => "Description (English)", "size" => "xxl", "label_class" => "required", "ng_model" => $model.".DescriptionFullEn"]) ?>
 
-                                            <? $this->insert('components/forms/textarea-with-label',
-								 ["label" => "Short Description (English)", "tooltip" => "This is a tooltip text", "size" => "xxl", "ng_model" => $model.".DescriptionShortEn"]) ?>
+                                            <div ng-template="common/input/textarea2" ng-template-options="{
+                                                'label': 'Short Description (English)',
+                                                'inputSize': 'xxl',
+                                                'formGroupClass' : 'margin-top-30',
+                                                'error' : {
+                                                'messages': {
+                                                    'pattern': 'Special characters are not allowed'
+                                                },
+                                                'show': $root.isInvalid(addProductVariantForm.Modal_DescriptionShortEn),
+                                                'conditions' : addProductVariantForm.Modal_DescriptionShortEn.$error
+                                                }
+                                                }">
+                                                <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="Modal_DescriptionShortEn" ng-model="<?=$model?>.DescriptionShortEn" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_DescriptionShortEn) }" />
+                                                </textarea>
+                                            </div>
+
                                 </div>
                             </div>
                             <div class="form-section">
-                                <div class="form-section-header">
-                                    <h2>Package Detail</h2></div>
-                                <div class="form-section-content">
+                                <div class="form-section-header checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="<?= $model ?>._override.packageDetail"> Override "Package Detail"
+                                    </label>
+                                </div>
+                                <div class="form-section-content" ng-show="<?= $model ?>._override.packageDetail">
 
                                     <!-- package detail -->
                                     <div class="form-group">
                                         <div class="width-label">
-                                            <label class="control-label required">Package Dimension</label>
+                                            <label class="control-label required" style="margin-top: 25px">Package Dimension</label>
                                         </div>
                                         <div class="width-field-xxl">
                                             <div class="multiple-input">
@@ -186,11 +215,11 @@
                                                         'required': 'This is a required field',
                                                         'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
                                                         },
-                                                        'show': $root.isInvalid(addProductForm.Modal_Length),
-                                                        'conditions' : addProductForm.Modal_Length.$error
+                                                        'show': $root.isInvalid(addProductVariantForm.Modal_Length),
+                                                        'conditions' : addProductVariantForm.Modal_Length.$error
                                                         }
                                                         }">
-                                                        <input class="form-control" name="Modal_Length" maxlength="11" ng-pattern="/^\d+(\.\d{1,2})?$/" ng-model="<?=$model?>.Length" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_Length) }" />
+                                                        <input class="form-control" name="Modal_Length" maxlength="11" ng-pattern="/^\d+(\.\d{1,2})?$/" ng-model="<?=$model?>.Length" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Length) }" />
                                                     </div>
 
                                                 </div>
@@ -203,11 +232,11 @@
                                                         'required': 'This is a required field',
                                                         'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
                                                         },
-                                                        'show': $root.isInvalid(addProductForm.Modal_Height),
-                                                        'conditions' : addProductForm.Modal_Length.$error
+                                                        'show': $root.isInvalid(addProductVariantForm.Modal_Height),
+                                                        'conditions' : addProductVariantForm.Modal_Height.$error
                                                         }
                                                         }">
-                                                        <input class="form-control" maxlength="11" name="Modal_Height" ng-pattern="/^\d+(\.\d{1,2})?$/" ng-model="<?=$model?>.Height" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_Height) }" />
+                                                        <input class="form-control" maxlength="11" name="Modal_Height" ng-pattern="/^\d+(\.\d{1,2})?$/" ng-model="<?=$model?>.Height" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Height) }" />
                                                     </div>
                                                 </div>
 
@@ -219,15 +248,15 @@
                                                         'required': 'This is a required field',
                                                         'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
                                                         },
-                                                        'show': $root.isInvalid(addProductForm.Modal_Width),
-                                                        'conditions' : addProductForm.Modal_Width.$error
+                                                        'show': $root.isInvalid(addProductVariantForm.Modal_Width),
+                                                        'conditions' : addProductVariantForm.Modal_Width.$error
                                                         }
                                                         }">
-                                                        <input class="form-control" maxlength="11" name="Modal_Width" ng-pattern="/^\d+(\.\d{1,2})?$/" ng-model="<?=$model?>.Width" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_Width) }" />
+                                                        <input class="form-control" maxlength="11" name="Modal_Width" ng-pattern="/^\d+(\.\d{1,2})?$/" ng-model="<?=$model?>.Width" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Width) }" />
                                                     </div>
                                                 </div>
 
-                                                <div class="input-column no-label select input-xl">
+                                                <div class="input-column no-label select input-xl" style="padding-top: 24px">
                                                     <select ng-model="<?=$model?>.DimensionUnit" class="form-control">
                                                         <option value="MM"> Millimeter </option>
                                                         <option value="CM"> Centimeter </option>
@@ -255,11 +284,11 @@
                                                                 'required': 'This is a required field',
                                                                 'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
                                                             },
-                                                        'show': $root.isInvalid(addProductForm.Modal_Weight),
-                                                        'conditions' : addProductForm.Modal_Weight.$error
+                                                        'show': $root.isInvalid(addProductVariantForm.Modal_Weight),
+                                                        'conditions' : addProductVariantForm.Modal_Weight.$error
                                                         }
                                                     }">
-                                                    <input type="text" name="Modal_Weight" maxlength="11" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_Weight) }" class="form-control" ng-pattern="/^\d+(\.\d{1,2})?$/" ng-model="<?= $model ?>.Weight" />
+                                                    <input type="text" name="Modal_Weight" maxlength="11" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Weight) }" class="form-control" ng-pattern="/^\d+(\.\d{1,2})?$/" ng-model="<?= $model ?>.Weight" />
                                                 </div>
 
                                                 <div class="input-column select input-xl">

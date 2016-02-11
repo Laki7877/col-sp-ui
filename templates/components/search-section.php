@@ -41,16 +41,11 @@ if(!isset($optional_button_name)) {
         </span>
     </div>
   </form>
-  <div class="search-section section-filter checkbox-wrapper">
-    <input  ng-model="showOnOffStatus"type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" />
-    <label for="checkboxG1" class="css-label">
-        Show Online/Offline Status
-    </label>
-  </div>
-</div>
-  <div class="search-section advance-search <?=$optional_class?>">
+ <div class="search-section advance-search <?=$optional_class?>">
     <button class="btn btn-white <?=$button_optional_class?>" type="button"><?=$optional_button_name?></button>
   </div>
+</div>
+  
   <!-- <div class="search-section section-filter checkbox-wrapper <?=$optional_class?>">
     <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" />
     <label for="checkboxG1" class="css-label">Show Online/Offline Status</label>

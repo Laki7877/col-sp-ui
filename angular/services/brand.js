@@ -7,7 +7,6 @@ module.exports = ['$q', 'common', function($q, common){
 		var _params = {
 			_limit: params.pageSize || 5,
 			_order: params.orderBy || 'BrandId',
-			_limit: params.pageSize || 10,
 			_offset: params.page * params.pageSize || 0,
 			_direction: params.direction || 'asc'
 		};
