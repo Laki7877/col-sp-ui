@@ -1,4 +1,5 @@
-module.exports = function($scope, $rootScope, $uibModal, common, Category, GlobalCategory, AttributeSet, NcAlert, util, config){
+
+module.exports = function($scope, $rootScope, $uibModal, common, Category, GlobalCategory, AttributeSetService, NcAlert, util, config){
 	'ngInject';
 	$scope.categories = [];
 	$scope.attributeSetOptions = [];
@@ -68,14 +69,13 @@ module.exports = function($scope, $rootScope, $uibModal, common, Category, Globa
 		$scope.loadAttributeSets();
 	};
 	$scope.loadAttributeSets = function() {
-		AttributeSet.getAll().then(function(data) { 
+		AttributeSetService.getAll().then(function(data) { 
 			$scope.attributeSetOptions = data;
 		});
 	}
 	$scope.reload = function() {
 		$scope.loading = true;
-
-		GlobalCategory.getAll().then(function(data) {
+		GlobalCategory.listAll().then(function(data) {
 			$scope.categories = Category.transformNestedSetToUITree(data);
 			$scope.loading = false;
 		}, function(err) {
