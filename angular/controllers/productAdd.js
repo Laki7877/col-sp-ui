@@ -23,16 +23,18 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             { text: 'Show as group of variants', value: 'GROUP' },
             { text: 'Show as individual product', value: 'INDIVIDUAL' }
         ];
-        $scope.dataSet.attributeOptions = {
-            0: {
-                Attribute: false,
-                options: []
-            },
-            1: {
-                Attribute: false,
-                options: []
-            }
-        };
+        
+        var protoAttributeOptions = {
+                         0: {
+                            Attribute: false,
+                            options: []
+                        },
+                        1: {
+                            Attribute: false,
+                            options: []
+                        }
+                    };
+        $scope.dataSet.attributeOptions = angular.copy(protoAttributeOptions);
         $scope.controlFlags = {
             variation: 'disable'
         };
@@ -330,6 +332,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                 $scope.pageState.reset();
                 if (res.ProductId) {
                     $scope.overview = res;
+                    $scope.dataSet.attributeOptions = angular.copy(protoAttributeOptions); //will trigger watchvariantchange
                     var catId = Number(res.GlobalCategory);
                     $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function () {
                         $scope.formData.ProductId = Number(res.ProductId);
