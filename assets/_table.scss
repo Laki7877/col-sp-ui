@@ -139,11 +139,6 @@
   }
 
   .display-column {
-    .img-holder{
-      height: 40px;
-      line-height: 40px;
-      text-align: center;
-    }
     img {
       max-height: 40px;
       max-width: 40px;
@@ -174,12 +169,7 @@
     padding-top: 6px;
     padding-bottom: 4px;
     font-weight: normal;
-    border-bottom: 0px;
-    a{
-      color: $color-black;
-    }
   }
-
 
   .table > tbody > tr > td {
     vertical-align: middle;
@@ -304,40 +294,33 @@
     height: 30px;
   }
 
-  .search-section .btn-white-fluid {
-	  width: auto;
-    	   height: 30px;
-	   margin-right:20px;
-	  @include button-variant($color-theme, $white, $btn-default-border);
-    .advance-search{
-      padding-left: 0px;
-      .btn-white{
-        width: 135px;
-      }
+  .advance-search{
+    padding-left: 0px;
+    .btn-white{
+      width: 135px;
     }
   }
 
-
   .body-dropdown-button {
-	  height: 30px;
-	  width: 180px;
+    height: 30px;
+    width: 180px;
 
-	  .dropdown-text {
-		  width: 135px;
-		  display: inline-block;
-	  }
+    .dropdown-text {
+      width: 135px;
+      display: inline-block;
+    }
   }
 
   .dropdown-text {
-	  text-align: left;
+    text-align: left;
   }
 
   .search-box {
-	  height: 30px;
+    height: 30px;
   }
 
   .checkbox-wrapper {
-	  margin-top: 5px;
+    margin-top: 5px;
   }
 }
 .product-search-section {
@@ -352,48 +335,42 @@
 
 
 .table.ah-table {
-	> thead > tr > th {
-		border-bottom: 1px solid $color-grey;
-		&, > * {
-			vertical-align: middle;
-		}
-	}
+  > thead > tr > th {
+    border-bottom: 1px solid $color-grey;
+    &, > * {
+      vertical-align: middle;
+    }
+  }
 
-	> tbody > tr > td {
-		border-top: none;
-	}
+  > tbody > tr > td {
+    border-top: none;
+  }
 
-	&.ah-table-extra-padding {
-		> tbody > tr > td {
-			padding-top: 20px;
-			padding-bottom: 20px;
-		}
-	}
+  &.ah-table-extra-padding {
+    > tbody > tr > td {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
 
-	&.ah-table-line {
-		> tbody > tr:first-child > td {
-			border-top: none;
-		}
+  &.ah-table-line {
+    > tbody > tr:first-child > td {
+      border-top: none;
+    }
 
-		> tbody > tr > td {
-			border-top: 1px solid $color-grey;
-		}    
-	}
-
-	margin-bottom: 0;
+    > tbody > tr > td {
+      border-top: 1px solid $color-grey;
+    }    
+  }
+  
+  margin-bottom: 0;
 }
 
 .table {
-	.column-text-ellipsis {
-		max-width: 0;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-	}
-}
-
-.table-border-none {
-	> tbody > tr:first-child > td {
-		border-top: none;
-	}
+  .column-text-ellipsis {
+    max-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }

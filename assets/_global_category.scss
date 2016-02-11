@@ -94,9 +94,6 @@
 			> li {
 				padding-left: $item-column-gutter;
 				padding-right: $item-column-gutter;
-				padding-top: 10px;
-				padding-bottom: 10px;
-				line-height: 1.2em;
 				cursor: pointer;
 				&.category-active {
 					background: $color-blue;
