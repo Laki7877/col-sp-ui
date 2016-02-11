@@ -19,7 +19,7 @@
 								exclude: dataSet.attributeOptions[1 - jth].Attribute : 'AttributeId'
 								track by i.Attribute.AttributeId"
 								ng-model="dataSet.attributeOptions[jth]">
-								<option value="" disabled selected>Select an option..</option>
+								<option value="" disabled selected>Select an option..</option> 
 							</select>
 						</div>
 
@@ -35,7 +35,7 @@
                                     }
                                     }">
                             
-								<ui-select ng-if="_isListInput(dataSet.attributeOptions[jth].Attribute.DataType)"
+								<ui-select ng-if="isListInput(dataSet.attributeOptions[jth].Attribute.DataType)"
 								multiple ng-model="dataSet.attributeOptions[jth].options">
 								<ui-select-match placeholder="Select a variation option">
 								{{ $item.AttributeValue.AttributeValueEn || $item }}
@@ -47,7 +47,7 @@
 							
                                 <!-- on-select="onVariationOptionFreeTextAdded($item, $model, jth)" -->
                                 
-								<ui-select ng-if="_isFreeTextInput(dataSet.attributeOptions[jth].Attribute.DataType)"
+								<ui-select ng-if="isFreeTextInput(dataSet.attributeOptions[jth].Attribute.DataType)"
 								multiple tagging tagging-label=""
 							    tagging-tokens=",|ENTER" 	 
                                 name="attributeOptions{{jth}}" nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30"
@@ -110,7 +110,7 @@
                                     ng-template-options="{
                                         'error' : {
                                             'messages': {
-                                                'pattern': 'Only english letters and numbers allowed'
+                                                'pattern': 'Special characters are not allowed'
                                             },
                                             'show': $root.isInvalid(addProductForm['pair_Sku' + $index]),
                                             'conditions' : addProductForm['pair_Sku' + $index].$error
@@ -120,7 +120,7 @@
                                     type="text" ng-disabled='!pair.Visibility' class="form-control"
                                     name="pair_Sku{{ $index }}"
                                     maxlength="300"
-                                    ng-pattern="/^[0-9A-Za-z]+$/"
+                                    ng-pattern="/^[^<>]+$/"
                                     ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }"
                                     ng-model="pair.Sku" />
                            </td>

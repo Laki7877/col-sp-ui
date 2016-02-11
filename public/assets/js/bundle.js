@@ -1401,14 +1401,18 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                             ValueEn: B
                         });
 
-                    //Initialize
+                    //Copy default value over from main variant
                     kpair.ProductNameEn = $scope.formData.MasterVariant.ProductNameEn;
                     kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
                     kpair.Display = $scope.dataSet.VariantDisplayOption[0].value;
                     kpair.Visibility = true;
                     kpair.DimensionUnit = "MM";
                     kpair.WeightUnit = "G";
-
+                    kpair.Sku = ($scope.formData.MasterVariant.Sku || "SKU") + "-" + (Number(($scope.formData.Variants || []).length) + 1);
+                    kpair.OriginalPrice = $scope.formData.MasterVariant.OriginalPrice;
+                    kpair.SalePrice = $scope.formData.MasterVariant.SalePrice;
+                    kpair.Quantity = $scope.formData.MasterVariant.Quantity;
+                                 
                     if (kpair.text in vHashSet) {
                         //Replace with value from vHashSet
                         kpair = vHashSet[kpair.text];
@@ -1416,7 +1420,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
                     //Only push new variant if don't exist
                     $scope.formData.Variants.push(kpair);
-
                 }
 
 
@@ -1481,10 +1484,10 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
         }
    
         //TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
-        $scope._attrEnTh = function (t) { return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
-        $scope._isFreeTextInput = util.isFreeTextDataType;
-        $scope._isListInput = util.isListDataType;
-        $scope._isHtmlInput = util.isHtmlDataType;
+        //$scope._attrEnTh = function (t) { return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
+        $scope.isFreeTextInput = util.isFreeTextDataType;
+        $scope.isListInput = util.isListDataType;
+        $scope.isHtmlInput = util.isHtmlDataType;
 
         //CK editor options
         $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
@@ -1578,7 +1581,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             $scope.pageState.load('Validating..');
 
             $scope.onPublishing = (Status == "WA");
-
             //On click validation
             var validateMat = manualValidate();
             if (validateMat.length > 0 && Status == 'WA') {
@@ -1589,13 +1591,19 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
             if ($scope.addProductForm.$invalid) {
                 $scope.pageState.reset();
-                $scope.alert.error("Unable to save because you are missing required fields");
+                var requiredMissing = ('required' in $scope.addProductForm.$error);
+                if(Status == 'DF' && requiredMissing){
+                     $scope.alert.error("Unable to save. Please make sure that Product Name (Thai), Product Name (English), and Original Price are filled correctly.");
+                }else if(Status == 'WA' && requiredMissing){
+                     $scope.alert.error("Unable to publish because you are missing required fields");
+                }else{
+                     $scope.alert.error("Unable to save. Please make sure all fields have no error.");
+                }
                 return;
             }
 
             $scope.pageState.load('Publishing..');
             console.log("Publishing with Status = ", Status);
-            //Error Handling too Messi
 
             var apiRequest = Product.serialize($scope.formData);
             Product.publish(apiRequest, Status).then(function (res) {
@@ -1603,8 +1611,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                 if (res.ProductId) {
                     $scope.overview = res;
                     var catId = Number(res.GlobalCategory);
-                    $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs.globalCategory, $scope.controlFlags,
-                        $scope.variationFactorIndices, res).then(function () {
+                    $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function () {
                             $scope.formData.ProductId = Number(res.ProductId);
                             $scope.pageState.reset();
                             $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
@@ -1613,18 +1620,16 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                         });
                     $scope.addProductForm.$setPristine(true);
                 } else {
-                    $scope.alert.error('Unable to save because ' + (res.message || res.Message))
+                    $scope.alert.error('Unable to save because ' + (res.message || res.Message));
                     $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
                 }
             }, function (er) {
                 $scope.pageState.reset();
-                $scope.alert.error('Unable to save because ' + (er.message || er.Message))
+                $scope.alert.error('Unable to save because ' + (er.message || er.Message));
                 $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-
             });
 
         };
-
 
         $scope.uploader = ImageService.getUploader('/ProductImages', {
             queueLimit: QUEUE_LIMIT
@@ -1640,7 +1645,6 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
         $scope.uploader360 = ImageService.getUploader('/ProductImages', {
             queueLimit: QUEUE_LIMIT_360
         });
-
 
         $scope.init = function (viewBag) {
             //TODO: Refactor, use better callback mechanism
@@ -4412,6 +4416,7 @@ angular.module('nc')
 				};
 				scope.options = _.concat(defaultOption, _.defaults(scope.options, []));
 				scope.model = _.defaults(scope.model, []);
+
 				scope.id = _.defaults(scope.id, null);
 				scope.select = scope.options[0];
 
@@ -7509,7 +7514,7 @@ module.exports = ["common", function(common) {
 },{}],109:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Feb 11 2016 00:25:45 GMT+0700 (SE Asia Standard Time)
+ * Thu Feb 11 2016 11:09:43 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
