@@ -1,6 +1,6 @@
 var angular = require('angular');
 
-module.exports = ['$window', '$base64', function($window, $base64) {
+module.exports = ['$window', '$base64', 'config', function($window, $base64, config) {
     return function(exception, cause) {
         console.log("Exception handler", exception, cause);
         if(exception.message.length > 500){
@@ -10,6 +10,7 @@ module.exports = ['$window', '$base64', function($window, $base64) {
             'message': exception.message,
             'cause': cause
         }));
-        $window.location = '/exception?e=' + encMsg;
+        
+        if(config.HANDLE_EXCEPTION) $window.location = '/exception?e=' + encMsg;
     };
 }];

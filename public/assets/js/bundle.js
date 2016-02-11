@@ -236,6 +236,7 @@ module.exports = {
 	baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/',
 	REST_SERVICE_BASE_URL: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
+    HANDLE_EXCEPTION: false,
 	CK_DEFAULT_OPTIONS: {
 	   filebrowserBrowseUrl : '/ckfinder/ckfinder.html',
 	   filebrowserImageBrowseUrl : '/ckfinder/ckfinder.html?type=Images',
@@ -4957,24 +4958,24 @@ angular.module('nc')
 	}]);
 },{}],75:[function(require,module,exports){
 angular.module('nc')
-	// .directive('uiSelect', function() {
-	// 	return {
-    //         priority: -1,
-	// 		require: 'ngModel',
-	// 		link: function(scope, elem, attrs, ngModel) {
+	.directive('uiSelect', function() {
+		return {
+            priority: -1,
+			require: 'ngModel',
+			link: function(scope, elem, attrs, ngModel) {
 
-    //             if(elem.find('ui-select-multiple').length > 0) {
-    //                 //model -> view
-    //                 ngModel.$parsers.push(function(input) {
-    //                     return _.compact(input);
-    //                 });
-    //                 ngModel.$formatters.push(function(input) {
-    //                     return _.compact(input);
-    //                 });
-    //             }
-	// 		}
-	// 	};
-	// })
+                if(elem.find('ui-select-multiple').length > 0) {
+                    //model -> view
+                    ngModel.$parsers.push(function(input) {
+                        return _.compact(input);
+                    });
+                    ngModel.$formatters.push(function(input) {
+                        return _.compact(input);
+                    });
+                }
+			}
+		};
+	})
     .directive('ncTagValidator', function () {
         return {
             restrict: 'A',
@@ -6413,7 +6414,7 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 },{}],95:[function(require,module,exports){
 var angular = require('angular');
 
-module.exports = ['$window', '$base64', function($window, $base64) {
+module.exports = ['$window', '$base64', 'config', function($window, $base64, config) {
     return function(exception, cause) {
         console.log("Exception handler", exception, cause);
         if(exception.message.length > 500){
@@ -6423,7 +6424,8 @@ module.exports = ['$window', '$base64', function($window, $base64) {
             'message': exception.message,
             'cause': cause
         }));
-        $window.location = '/exception?e=' + encMsg;
+        
+        if(config.HANDLE_EXCEPTION) $window.location = '/exception?e=' + encMsg;
     };
 }];
 },{"angular":125}],96:[function(require,module,exports){
