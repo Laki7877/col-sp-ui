@@ -14025,6 +14025,22 @@ form h6 {
   margin-right: -15px;
 }
 
+/* line 24, ../../../assets/_modal_custom.scss */
+.modal .modal-content .modal-header {
+  border-bottom: 0px;
+  padding-bottom: 0px;
+}
+/* line 27, ../../../assets/_modal_custom.scss */
+.modal .modal-content .modal-header h3 {
+  font-size: 20px;
+}
+/* line 31, ../../../assets/_modal_custom.scss */
+.modal .modal-content button.close > span {
+  line-height: 1;
+  font-size: 36px;
+  margin-top: -6px;
+}
+
 /* line 3, ../../../assets/_dropdown.scss */
 .page-navigation .dropdown-menu {
   min-width: 67px;
