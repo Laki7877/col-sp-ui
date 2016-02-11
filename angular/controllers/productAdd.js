@@ -521,6 +521,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
                 $scope.$on('openPairModal', function (evt, pair, array, index) {
                     //Define if not defined
+
                     if (angular.isUndefined(pair.Images)) {
                         pair.Images = [];
                     }
@@ -529,12 +530,26 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                     }
                     //Modal target (for viewing pair)
                     $scope.pairModal = angular.copy(pair);
+                    $scope.pairModal.alert = new NcAlert();
                     $scope.pairIndex = index;
                     $scope.uploaderModal.queue = $scope.pairModal.queue;
                     ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail);
                 });
                 
                 $scope.$on('savePairModal', function (evt) {
+                    console.log("adform", $scope.addProductVariantForm.$invalid);
+                    // var errors = [];
+                    // //Hackily find fields inside modal
+                    // Object.keys($scope.addProductForm.$error).forEach(function(error){
+                    //     if(error.$name.startsWith("Modal")){
+                    //         errors.push(error);
+                    //     }
+                    // });
+                    
+                    // if(errors.length > 0){
+                    //     $scope.pairModal.alert.error("Yeah bitch");
+                    // }
+                    
                     if(!$scope.pairModal._override.uploadProductImages){
                         $scope.pairModal.Images = [];
                     }
