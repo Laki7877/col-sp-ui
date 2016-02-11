@@ -5,8 +5,8 @@ angular.module('nc')
 			template: $templateCache.get('common/ncBulk'),
 			scope: {
 				model: '=ncModel',
-				select: '=ncBulkSelect',
 				options: '=ncBulkFn',
+				select: '=?ncBulkSelect',
 				id: '@ncBulkTrackBy',
 				tag: '@ncTag'
 			},

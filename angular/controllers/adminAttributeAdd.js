@@ -18,4 +18,11 @@ module.exports = function($scope, $controller, AttributeService, config) {
 			init: function(scope) {	}
 		}
 	});
+
+	$scope.$watch('formData.DataType', function() {
+		console.log($scope.formData.DataType);
+		if($scope.formData.DataType.value == 'HB') {
+			$scope.formData.VariantStatus = $scope.boolOptions[0];
+		}
+	}, true);
 };

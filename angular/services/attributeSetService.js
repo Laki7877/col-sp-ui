@@ -23,7 +23,10 @@ module.exports = function(common, config) {
 	service.deserialize = function(data) {
 		var processed = angular.merge(service.generate(), data);
 		processed.Tags = [];
-
+		processed.Categories = _.join(_.map(data.Category, function(e) {
+			return e.NameEn + ' (' + e.CategoryAbbreviation + ')';
+		}), ', ');
+		console.log(data, processed);
 		if(angular.isUndefined(processed.Attributes)) {
 			processed.Attributes = [];
 		}

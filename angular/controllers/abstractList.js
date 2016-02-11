@@ -20,6 +20,9 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 				$scope.loading = false;
 			});
 	};
+	$scope.onload = function() {
+		$scope.loading = true;
+	};
 	$scope.alert = new NcAlert();
 	$scope.tableOptions = {
 		emptyMessage: 'You do not have ' + a + ' ' + options.item
@@ -40,14 +43,14 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 
 	if(_.isUndefined(options.bulks)) {
 		$scope.bulks= [
-			util.bulkDelete(options.service, options.id, options.item, $scope.alert, $scope.reload)
+			util.bulkDelete(options.service, options.id, options.item, $scope.alert, $scope.reload, $scope.onload)
 		];
 	} else {
 		$scope.bulks = _.compact(_.map(options.bulks, function(item) {
 			if(_.isString(item)) {
 				switch(item) {
 					case 'Delete':
-						return util.bulkDelete(options.service, options.id, options.item, $scope.alert, $scope.reload);
+						return util.bulkDelete(options.service, options.id, options.item, $scope.alert, $scope.reload, $scope.onload);
 					case 'Show': 
 						return util.bulkShow(options.service, options.id, options.item, $scope.alert, $scope.reload);
 					case 'Hide': 

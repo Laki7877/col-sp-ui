@@ -116,6 +116,8 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
             obj.deserialize = function(data) {
                 return data;
             };
+
+            //Extras
             obj.duplicate = function(id) {
                 return service.makeRequest({
                     method: 'POST',

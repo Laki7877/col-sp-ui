@@ -83,7 +83,7 @@ module.exports = function(common, config) {
 			case 'ST':
 				processed.AttributeUnitEn = data.ST.AttributeUnitEn;
 				processed.AttributeUnitTh = data.ST.AttributeUnitTh;
-				processed.DataValidation = data.ST.DataValidation.value;
+				processed.DataValidation = data.ST.DataValidation ? data.ST.DataValidation.value : dataTypeOptions[0].value;
 				processed.DefaultValue = data.ST.DefaultValue;
 				delete processed['AttributeValues'];
 			break;

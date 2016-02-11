@@ -6,8 +6,10 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 	$scope.saving = false; //prevent multiple saving
 	$scope.loading = false;
 
+	//Custom pre-init function
 	(options.preInit || _.noop)($scope);
 
+	//Pop up javascript warning message on leave
 	util.warningOnLeave($scope, 'form');
 
 	$scope.init = function(params) {
@@ -15,7 +17,7 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 		if(!_.isUndefined(params)) {
 			$scope.id = _.isInteger(_.parseInt(params.id)) ? _.parseInt(params.id) : 0;
 		}
-		//Get all available roles
+		//Custom init
 		if(options.init) {
 			options.init($scope)
 		}
@@ -77,8 +79,10 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 				//Save mode
 				options.service.create(data)
 					.then(function(result) {
+						//Set both id and formData[id]
 						$scope.id = result[options.id];
 						$scope.formData[options.id] = result[options.id]; 
+						//Default success message
 						$scope.alert.success(util.saveAlertSuccess(options.item, options.url));
 						$scope.form.$setPristine(true);
 					}, function(err) {
@@ -89,13 +93,13 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 					});	
 			}
 		} else {
-			//Invalid save
+			//Form id
 			$scope.alert.error(util.saveAlertError());
 		}
 	};
 
 	$scope.$watch('id', function(val) {
-		console.log($scope.id);
+		//Change title according to state
 		$scope.title = util.getTitle(val,options.item);
 	});
 };

@@ -26,7 +26,7 @@
         <tbody>
           <tr ng-repeat="row in list.data">
             <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
-            <td class="column-text-ellipsis">
+            <td class="column-text-ellipsis" nc-link="/admin/attributes/{{row.AttributeId}}">
               {{row.AttributeNameEn}}
             </td>
             <td>{{row.DisplayNameEn}}</td>

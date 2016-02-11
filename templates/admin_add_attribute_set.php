@@ -41,6 +41,11 @@
                   }">
                   <textarea class="form-control" ng-model="formData.AttributeSetDescriptionEn" maxlength="500"></textarea>
               </div>
+              <div ng-template="common/input/label"
+                  ng-template-options="{
+                    'label' : 'Mapped Categories',
+                    'inputSize': 'large'
+                  }">{{formData.Categories}}</div>
             </div>
           </div>
 
