@@ -16,6 +16,7 @@
             <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
             <th nc-sort="AttributeSetNameEn">Attribute Set Name</th>
             <th nc-sort="AttributeCount">Attribute In Set</th>
+            <th nc-sort="CategoryCount">Mapped Categories</th>
             <th nc-sort="Visibility">Visible</th>
             <th nc-sort="UpdatedDt" class="modified-column">Modified</th>
             <th>Action</th>
@@ -24,10 +25,11 @@
         <tbody>
           <tr ng-repeat="row in list.data">
             <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
-            <td class="column-text-ellipsis">
+            <td class="column-text-ellipsis" nc-link="/admin/attributesets/{{row.AttributeSetId}}">
               {{row.AttributeSetNameEn}}
             </td>
             <td>{{row.AttributeCount }}</td>
+            <td nc-link="/admin/attributesets/{{row.AttributeSetId}}">{{row.CategoryCount }}</td>
             <td><nc-eye nc-model="row.Visibility" nc-eye-on-toggle="toggleVisibility(row)"></nc-eye></td>
             <td>{{row.UpdatedDt | dateTh}}</td>
             <td><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>

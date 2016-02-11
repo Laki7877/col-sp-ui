@@ -27,7 +27,7 @@
     </div>
     <div class="clickable-list">
       <ul class="content-column">
-        <li ng-repeat="item in model track by $index" ng-class="{ 'active' : activeRight == model.indexOf(item), 'disabled' : item.ProductCount > 0 }" ng-click="select(model.indexOf(item), false)">
+        <li ng-repeat="item in model track by $index" ng-class="{ 'active' : activeRight == model.indexOf(item), 'disabled' : !test(item) }" ng-click="select(model.indexOf(item), false)" ng-disabled="!test(item)">
           <div class="row">
             <div class="column-1">{{ options.map.text == null ? item : item[options.map.text] }}</div>
             <div class="column-2"><input type="checkbox" ng-model="item.Required" aria-label="Checkbox for following text input"></div>

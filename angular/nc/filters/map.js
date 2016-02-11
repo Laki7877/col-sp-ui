@@ -1,3 +1,6 @@
+/*
+ Return dropdown[value] if input == dropdown[name]
+ */
 angular.module('nc')
 	.filter('mapDropdown', function() {
 		//Return property

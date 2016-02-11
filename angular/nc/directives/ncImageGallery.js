@@ -15,7 +15,7 @@ angular.module('nc')
 					size: 10, //max size of gallery
 					urlKey: 'url', //image[urlKey] to get src
 					loaderImg: '/assets/img/loader.gif', //when image[urlKey] = ''
-					emptyImg: '/assets/img/placeholder-no-image.png' //when image = null 
+					emptyImg: '/assets/img/placeholder-no-image-blank.png' //when image = null 
 				});
 				scope.getSrc = function(image) {
 					if(image == null) {
