@@ -3938,7 +3938,7 @@ module.exports = [function () {
 },{}],59:[function(require,module,exports){
 var angular = require('angular');
 
-module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$interpolate', function (storage, config, common, $window, $rootScope, $interpolate) {
+module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$interpolate', 'KnownException', function (storage, config, common, $window, $rootScope, $interpolate, KnownException) {
     'use strict';
     var service = {};
 
@@ -3977,25 +3977,35 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
         var sessionToken = storage.getSessionToken();
         return !!(profile && sessionToken);
     };
-    
-    //TODO: use config
+
+    var DataTypeDropDown = {};
+    if (!('DROPDOWN' in config)) throw new KnownException("Config is malformed. Expect 'DROPDOWN'");
+    if (!('DATA_TYPE_DROPDOWN' in config.DROPDOWN)) throw new KnownException("Config is malformed. Expect 'DROPDOWN.DATA_TYPE_DROPDOWN'");
+    config.DROPDOWN.DATA_TYPE_DROPDOWN.forEach(function (dt) {
+        DataTypeDropDown[dt.value] = dt.name;
+    });
+
+
     service.isFreeTextDataType = function (dataType) {
+        if (!('ST' in DataTypeDropDown)) throw new KnownException("FreeText in no longer 'ST' in config");
         return (dataType == "ST");
     };
 
     service.isListDataType = function (dataType) {
+        if (!('LT' in DataTypeDropDown)) throw new KnownException("List in no longer 'LT' in config");
         return (dataType == "LT");
     };
 
     service.isHtmlDataType = function (dataType) {
-        return (dataType == "HB");
+        if (!('HB' in DataTypeDropDown)) throw new KnownException("HTML Box in no longer 'HB' in config");
+        return (dataType == 'HB');
     }
 
     service.tableSortClass = function ($scope) {
         return function (id, flag) {
 
             if (flag) {
-                return $scope.tableParams.orderBy == id ? 'active-underline' : '';
+                return $scope.tableParams.orderBy == id ? ['active-underline'] : [''];
             }
 
             var classes = ['fa'];
