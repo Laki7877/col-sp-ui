@@ -154,7 +154,7 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     };
 
     //Create bulk-action from template
-    service.bulkDelete = function (rest, id, item, alert, reload) {
+    service.bulkDelete = function (rest, id, item, alert, reload, onload) {
         return {
             name: 'Delete',
             fn: function (array, cb) {
@@ -170,6 +170,9 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
                     alert.error('Unable to delete. Please select ' + item + ' for this action.');
                     return;
                 }
+
+                //On launch endpoint
+                (onload || _.noop)();
 
                 //Delete bulk
                 rest.delete(array)

@@ -6,8 +6,8 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h3 class="modal-title"><?=$header?></h3>
       </div>
-      <div class="modal-body">
-        <form class="ah-form margin-top-20" name="editingForm" ng-submit="$emit('saveEditLocalCategory')" novalidate>
+      <div class="modal-body margin-top-20">
+        <form class="ah-form" name="editingForm" ng-submit="$emit('saveEditLocalCategory')" novalidate>
           <div class="row">
             <div class="col-xs-12">
               <div class="form-section">

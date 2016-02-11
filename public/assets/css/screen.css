@@ -14025,6 +14025,22 @@ form h6 {
   margin-right: -15px;
 }
 
+/* line 24, ../../../assets/_modal_custom.scss */
+.modal .modal-content .modal-header {
+  border-bottom: 0px;
+  padding-bottom: 0px;
+}
+/* line 27, ../../../assets/_modal_custom.scss */
+.modal .modal-content .modal-header h3 {
+  font-size: 20px;
+}
+/* line 31, ../../../assets/_modal_custom.scss */
+.modal .modal-content button.close > span {
+  line-height: 1;
+  font-size: 36px;
+  margin-top: -6px;
+}
+
 /* line 3, ../../../assets/_dropdown.scss */
 .page-navigation .dropdown-menu {
   min-width: 67px;
@@ -15088,23 +15104,24 @@ html, body {
 }
 /* line 148, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li.disabled {
+  cursor: not-allowed !important;
   background: #EDF2F9 !important;
-  color: #333333 !important;
+  color: #BCC7D5 !important;
 }
-/* line 152, ../../../assets/screen.scss */
+/* line 153, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li.active {
   background: #4899DD;
   color: #FFFFFF;
 }
 
-/* line 161, ../../../assets/screen.scss */
+/* line 162, ../../../assets/screen.scss */
 .table .action-column {
   width: 60px;
   padding-top: 14px;
   padding-bottom: 14px;
 }
 
-/* line 169, ../../../assets/screen.scss */
+/* line 170, ../../../assets/screen.scss */
 .has-error-parent .form-control {
   border-color: #ec0000;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -15112,6 +15129,7 @@ html, body {
 }
 
 /* line 176, ../../../assets/screen.scss */
+<<<<<<< HEAD
 ng-transclude.has-error .form-control {
   border-color: #ec0000 !important;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -15119,13 +15137,19 @@ ng-transclude.has-error .form-control {
 }
 
 /* line 182, ../../../assets/screen.scss */
+=======
+>>>>>>> 9872c32042386761a9d3acd49ed998e302bbba98
 .form-control.has-error {
   border-color: #ec0000;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
+<<<<<<< HEAD
 /* line 188, ../../../assets/screen.scss */
+=======
+/* line 182, ../../../assets/screen.scss */
+>>>>>>> 9872c32042386761a9d3acd49ed998e302bbba98
 .empty-section {
   border: 1px solid;
   border-color: #BCC7D5;
@@ -15133,7 +15157,11 @@ ng-transclude.has-error .form-control {
   height: 80px;
   line-height: 80px;
 }
+<<<<<<< HEAD
 /* line 194, ../../../assets/screen.scss */
+=======
+/* line 188, ../../../assets/screen.scss */
+>>>>>>> 9872c32042386761a9d3acd49ed998e302bbba98
 .empty-section .loading-img {
   width: 40px;
   height: 40px;
@@ -15141,22 +15169,38 @@ ng-transclude.has-error .form-control {
   margin-right: 15px;
 }
 
+<<<<<<< HEAD
 /* line 201, ../../../assets/screen.scss */
+=======
+/* line 195, ../../../assets/screen.scss */
+>>>>>>> 9872c32042386761a9d3acd49ed998e302bbba98
 .disabled-chevron {
   cursor: not-allowed;
 }
 
+<<<<<<< HEAD
 /* line 205, ../../../assets/screen.scss */
+=======
+/* line 199, ../../../assets/screen.scss */
+>>>>>>> 9872c32042386761a9d3acd49ed998e302bbba98
 .opacity-50 {
   opacity: 0.5;
 }
 
+<<<<<<< HEAD
 /* line 210, ../../../assets/screen.scss */
+=======
+/* line 204, ../../../assets/screen.scss */
+>>>>>>> 9872c32042386761a9d3acd49ed998e302bbba98
 .my_file {
   display: none !important;
 }
 
+<<<<<<< HEAD
 /* line 215, ../../../assets/screen.scss */
+=======
+/* line 209, ../../../assets/screen.scss */
+>>>>>>> 9872c32042386761a9d3acd49ed998e302bbba98
 .get_file {
   cursor: pointer;
 }

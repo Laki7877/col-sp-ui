@@ -146,8 +146,9 @@ html, body {
         }
       }
       li.disabled {
+        cursor: not-allowed !important;
         background: #EDF2F9 !important;
-        color: #333333 !important;
+        color: #BCC7D5 !important;
       }
       li.active{
         background: #4899DD;

@@ -237,7 +237,7 @@ module.exports = {
 	baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/',
 	REST_SERVICE_BASE_URL: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
-    HANDLE_EXCEPTION: true,
+    HANDLE_EXCEPTION: false,
 	CK_DEFAULT_OPTIONS: {
 	   filebrowserBrowseUrl : '/ckfinder/ckfinder.html',
 	   filebrowserImageBrowseUrl : '/ckfinder/ckfinder.html?type=Images',
@@ -339,7 +339,8 @@ module.exports = {
 		}
 	],
 	PRODUCT_REVIEW_MAX_RATING: 5.0,
-	PRODUCT_STATUS: [{
+	PRODUCT_STATUS: [
+		{
 			name: 'Draft',
 			value: 'DF',
 			color: 'color-grey',
@@ -369,8 +370,10 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 	$scope.saving = false; //prevent multiple saving
 	$scope.loading = false;
 
+	//Custom pre-init function
 	(options.preInit || _.noop)($scope);
 
+	//Pop up javascript warning message on leave
 	util.warningOnLeave($scope, 'form');
 
 	$scope.init = function(params) {
@@ -378,7 +381,7 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 		if(!_.isUndefined(params)) {
 			$scope.id = _.isInteger(_.parseInt(params.id)) ? _.parseInt(params.id) : 0;
 		}
-		//Get all available roles
+		//Custom init
 		if(options.init) {
 			options.init($scope)
 		}
@@ -440,8 +443,10 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 				//Save mode
 				options.service.create(data)
 					.then(function(result) {
+						//Set both id and formData[id]
 						$scope.id = result[options.id];
 						$scope.formData[options.id] = result[options.id]; 
+						//Default success message
 						$scope.alert.success(util.saveAlertSuccess(options.item, options.url));
 						$scope.form.$setPristine(true);
 					}, function(err) {
@@ -452,13 +457,13 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 					});	
 			}
 		} else {
-			//Invalid save
+			//Form id
 			$scope.alert.error(util.saveAlertError());
 		}
 	};
 
 	$scope.$watch('id', function(val) {
-		console.log($scope.id);
+		//Change title according to state
 		$scope.title = util.getTitle(val,options.item);
 	});
 }];
@@ -485,10 +490,15 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "options", function($s
 				$scope.loading = false;
 			});
 	};
+	$scope.onload = function() {
+		$scope.loading = true;
+	};
 	$scope.alert = new NcAlert();
 	$scope.tableOptions = {
 		emptyMessage: 'You do not have ' + a + ' ' + options.item
 	};
+
+	//Table variables
 	$scope.params = {
 		_order: options.order,
 		_limit: 10,
@@ -505,14 +515,14 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "options", function($s
 
 	if(_.isUndefined(options.bulks)) {
 		$scope.bulks= [
-			util.bulkDelete(options.service, options.id, options.item, $scope.alert, $scope.reload)
+			util.bulkDelete(options.service, options.id, options.item, $scope.alert, $scope.reload, $scope.onload)
 		];
 	} else {
 		$scope.bulks = _.compact(_.map(options.bulks, function(item) {
 			if(_.isString(item)) {
 				switch(item) {
 					case 'Delete':
-						return util.bulkDelete(options.service, options.id, options.item, $scope.alert, $scope.reload);
+						return util.bulkDelete(options.service, options.id, options.item, $scope.alert, $scope.reload, $scope.onload);
 					case 'Show': 
 						return util.bulkShow(options.service, options.id, options.item, $scope.alert, $scope.reload);
 					case 'Hide': 
@@ -621,12 +631,13 @@ module.exports = ["$scope", "$controller", "AttributeService", "config", functio
 			item: 'Attribute',
 			order: 'UpdatedDt',
 			id: 'AttributeId',
-			actions: ['View', 'Duplicate', 'Delete'],
+			actions: ['View', 'Delete'],
 			bulks: ['Delete'],
 			filters: [
 				{ name: "All", value: 'All'},
 				{ name: "Free Text", value: 'FreeText'},
 				{ name: "Dropdown", value: 'Dropdown'},
+				{ name: "HTML Box", value: 'HTMLBox'},
 				{ name: "Has Variation", value: 'HasVariation'},
 				{ name: "No Variation", value: 'NoVariation'}
 			]
@@ -638,7 +649,7 @@ module.exports = ["$scope", "$controller", "AttributeService", "config", functio
 },{}],8:[function(require,module,exports){
 var angular = require('angular');
 
-module.exports = ["$scope", "$controller", "AttributeService", "config", function($scope, $controller, AttributeService, config) {
+module.exports = ["$scope", "$controller", "AttributeService", "config", "util", function($scope, $controller, AttributeService, config, util) {
 	'ngInject';
 	$scope.dataTypeOptions = config.DROPDOWN.DATA_TYPE_DROPDOWN;
 	$scope.variantOptions = config.DROPDOWN.VARIANT_DROPDOWN;
@@ -656,6 +667,13 @@ module.exports = ["$scope", "$controller", "AttributeService", "config", functio
 			init: function(scope) {	}
 		}
 	});
+ 
+	$scope.$watch('formData.DataType', function() {
+		if(_.isUndefined($scope.formData.DataType)) return;
+		if($scope.formData.DataType.value == 'HB') {
+			$scope.formData.VariantStatus = $scope.boolOptions[0];
+		}
+	}, true);
 }];
 },{"angular":127}],9:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AttributeSetService", "util", "config", function($scope, $controller, AttributeSetService, util, config) {
@@ -704,6 +722,9 @@ module.exports = ["$scope", "$controller", "AttributeSetService", "AttributeServ
 			//if there is error, revert
 			$scope.formData.Tags.pop();
 		}
+	};
+	$scope.lockAttributeset = function(i) {		
+		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);		
 	};
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
@@ -916,55 +937,84 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 	};
 }];*/
 },{}],13:[function(require,module,exports){
-module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory', 'AttributeSet', 'Alert', 'util',  function($scope, $rootScope, common, Category, GlobalCategory, AttributeSet, Alert, util){
+
+module.exports = ["$scope", "$rootScope", "$uibModal", "common", "Category", "GlobalCategory", "AttributeSetService", "NcAlert", "util", "config", function($scope, $rootScope, $uibModal, common, Category, GlobalCategory, AttributeSetService, NcAlert, util, config){
+	'ngInject';
 	$scope.categories = [];
 	$scope.attributeSetOptions = [];
-	$scope.editingStatusOptions = [
-	{
-		text: 'Visible',
-		value: true
-	},
-	{
-		text: 'Not Visible',
-		value: false
-	}];
-	$scope.editingForm = {};
-	$scope.editingCategory = {};
-	$scope.editingCategoryOriginal = {};
+	$scope.statusOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
 	$scope.popover = false;
-	$scope.alert = new Alert();
-	$scope.alert2 = new Alert();
-	$scope.dirty = false;
-
-	$scope.treeOptions = {
-		dropped: function(event) {
-			if(event.pos.dirX != 0 || event.pos.dirY != 0) {
-				$scope.dirty = true;
-			}
-		}
-	};
-
-	util.warningOnLeaveFn(function() {
-		return !$scope.dirty;
-	});
-
-	$scope.test = function(i) {
-		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);
-	};
 	$scope.loading = false;
+	$scope.dirty = false;
+	$scope.alert = new NcAlert();
+	$scope.treeOptions = {};
+
+	$scope.lockAttributeset = function(i) {		
+		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);		
+	};
+	$scope.open = function(item) {
+		//Open add-edit modal
+		var modal = $uibModal.open({
+			animation: true,
+			templateUrl: 'global_category/modal',
+			controller: ["$scope", "$uibModalInstance", "GlobalCategory", "NcAlert", "config", "id", "statusOptions", "attributeSetOptions", function($scope, $uibModalInstance, GlobalCategory, NcAlert, config, id, statusOptions, attributeSetOptions) {
+				'ngInject';
+				$scope.alert = new NcAlert();
+				$scope.statusOptions = statusOptions;
+				$scope.attributeSetOptions = attributeSetOptions;
+				$scope.form = {};
+				$scope.formData = {};
+
+				if(id == 0) {
+					$scope.formData = GlobalCategory.generate();
+				} else {
+					GlobalCategory.get(id)
+						.then(function(data) {
+							$scope.formData = data;
+						}, function(err) {
+							$scope.alert.error(common.getError(err));
+						});
+				}
+
+				$scope.cancel = function() {
+					$uibModalInstance.dismiss();
+				};
+				$scope.save = function() {
+					$scope.alert.close();
+
+					if(id == 0) {
+
+					} else {
+
+					}
+				};
+			}],
+			resolve: {
+				id: function() {
+					return Item.CategoryId || 0;
+				},
+				statusOptions: function() {
+					return $scope.statusOptions;
+				},
+				attributeSetOptions: function() {
+					return $scope.attributeSetOptions;
+				}
+			}
+		});
+	};
 
 	$scope.init = function() {
 		$scope.reload();
 		$scope.loadAttributeSets();
 	};
 	$scope.loadAttributeSets = function() {
-		AttributeSet.getAll().then(function(data) { 
+		AttributeSetService.getAll().then(function(data) { 
 			$scope.attributeSetOptions = data;
 		});
 	}
 	$scope.reload = function() {
 		$scope.loading = true;
-		GlobalCategory.getAll().then(function(data) {
+		GlobalCategory.listAll().then(function(data) {
 			$scope.categories = Category.transformNestedSetToUITree(data);
 			$scope.loading = false;
 		}, function(err) {
@@ -972,58 +1022,6 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'GlobalCategory'
 			$scope.alert.open(false, common.getError(err));
 		});
 	};
-	$rootScope.$on('saveGlobalCategory', function(evt) {
-		//Call endpoint
-		$scope.alert.close();
-		$scope.formData = Category.transformUITreeToNestedSet($scope.categories);
-		$scope.formData = $scope.formData.map(function(item) {
-			delete item['ProductCount'];
-			delete item['parent'];
-			item['Commission'] = parseFloat(item['Commission']);
-			return item;
-		});
-		$scope.loading = true;
-			
-		GlobalCategory.upsert($scope.formData).then(function() {
-			$scope.alert.success('Your changes have been saved.');
-			$scope.dirty = false;
-			$scope.reload();
-		}, function(err) {
-			$scope.alert.error(common.getError(err));
-			$scope.reload();
-		});
-	});
-	$rootScope.$on('saveEditGlobalCategory', function(evt) {
-		$scope.alert2.close();
-		if($scope.editingForm.$valid) {
-			//Edit or add
-			$scope.loading = true;
-			if($scope.editing) {
-				for (var k in $scope.editingCategory) {
-					$scope.editingCategoryOriginal[k] = $scope.editingCategory[k];
-				}
-			} else {
-				$scope.categories.unshift($scope.editingCategory);
-			}
-			$scope.$emit('saveGlobalCategory');
-			//Close modal
-			$('#modal-category-detail').modal('hide');
-		} else {
-			$scope.alert2.error('Unable to save because required fields are missing or incorrect.');
-		}
-	});
-	$rootScope.$on('openEditGlobalCategory', function(evt, node) {
-		//Edit or add
-		if (angular.isDefined(node)) {
-			$scope.editingCategoryOriginal = node;
-			$scope.editingCategory = angular.extend({}, node);
-			$scope.editing = true;
-		} else {
-			$scope.editingCategory = GlobalCategory.generate();
-			$scope.editing = false;
-		}
-		$scope.editingForm.$setPristine();
-	});
 
 }];
 },{}],14:[function(require,module,exports){
@@ -1208,6 +1206,9 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 		return !$scope.dirty;
 	});
 
+	$scope.lockAttributeset = function(i) {		
+		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);		
+	};
 	$scope.init = function(shopid) {
 		$scope.shopId = shopid || 1;
 		$scope.reload();
@@ -2761,7 +2762,7 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 			selectable: '=ncSelectOptions',
 			model: '=ncModel',
 			options: '=ncOptions',
-			test: '=ncTest'
+			test: '=?ncTest'
 		},
 		template: function(element, attrs) {
 			if(attrs.ncTemplate) {
@@ -3713,7 +3714,7 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
                     })
                     .error(function (data, status, headers, config) {
                         console.warn(status, config.method, config.url, data);
-			var onLoginPage = ($window.location.pathname == "/login");
+			             var onLoginPage = ($window.location.pathname == "/login");
                         if(status == 401 && !onLoginPage){
                             //Catch Forbidden
                             storage.put('redirect', $window.location.pathname);
@@ -3809,6 +3810,8 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
             obj.deserialize = function(data) {
                 return data;
             };
+
+            //Extras
             obj.duplicate = function(id) {
                 return service.makeRequest({
                     method: 'POST',
@@ -4100,7 +4103,7 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     };
 
     //Create bulk-action from template
-    service.bulkDelete = function (rest, id, item, alert, reload) {
+    service.bulkDelete = function (rest, id, item, alert, reload, onload) {
         return {
             name: 'Delete',
             fn: function (array, cb) {
@@ -4116,6 +4119,9 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
                     alert.error('Unable to delete. Please select ' + item + ' for this action.');
                     return;
                 }
+
+                //On launch endpoint
+                (onload || _.noop)();
 
                 //Delete bulk
                 rest.delete(array)
@@ -4485,8 +4491,8 @@ angular.module('nc')
 			template: $templateCache.get('common/ncBulk'),
 			scope: {
 				model: '=ncModel',
-				select: '=ncBulkSelect',
 				options: '=ncBulkFn',
+				select: '=?ncBulkSelect',
 				id: '@ncBulkTrackBy',
 				tag: '@ncTag'
 			},
@@ -4857,8 +4863,8 @@ angular.module('nc')
 			scope: {
 				params: '=ncModel',
 				total: '=ncPaginationTotal',
-				paginationOptions: '=ncPaginationSizes',
-				callback: '=ncPaginationEvent'
+				paginationOptions: '=?ncPaginationSizes',
+				callback: '=?ncPaginationEvent'
 			},
 			template: $templateCache.get('common/ncPagination'),
 			link: function(scope, element, attrs) {
@@ -4939,7 +4945,7 @@ angular.module('nc')
 			scope: {
 				model: '=ncModel',
 				placeholder: '=ncSearchPlaceholder',
-				event: '=ncSearchEvent'
+				event: '=?ncSearchEvent'
 			},
 			template: $templateCache.get('common/ncSearch'),
 			link: function(scope) {
@@ -5093,24 +5099,6 @@ angular.module('nc')
 	}]);
 },{}],76:[function(require,module,exports){
 angular.module('nc')
-	.directive('uiSelect', function() {
-		return {
-            priority: -1,
-			require: 'ngModel',
-			link: function(scope, elem, attrs, ngModel) {
-
-                if(elem.find('ui-select-multiple').length > 0) {
-                    //model -> view
-                    ngModel.$parsers.push(function(input) {
-                        return _.compact(input);
-                    });
-                    ngModel.$formatters.push(function(input) {
-                        return _.compact(input);
-                    });
-                }
-			}
-		};
-	})
     .directive('ncTagValidator', function () {
         return {
             restrict: 'A',
@@ -5177,6 +5165,9 @@ angular.module('nc')
 		}
 	}]);
 },{}],78:[function(require,module,exports){
+/*
+ Return dropdown[value] if input == dropdown[name]
+ */
 angular.module('nc')
 	.filter('mapDropdown', function() {
 		//Return property
@@ -5872,7 +5863,7 @@ module.exports = ["common", "config", function(common, config) {
 			case 'ST':
 				processed.AttributeUnitEn = data.ST.AttributeUnitEn;
 				processed.AttributeUnitTh = data.ST.AttributeUnitTh;
-				processed.DataValidation = data.ST.DataValidation.value;
+				processed.DataValidation = data.ST.DataValidation ? data.ST.DataValidation.value : dataTypeOptions[0].value;
 				processed.DefaultValue = data.ST.DefaultValue;
 				delete processed['AttributeValues'];
 			break;
@@ -6066,7 +6057,10 @@ module.exports = ["common", "config", function(common, config) {
 	service.deserialize = function(data) {
 		var processed = angular.merge(service.generate(), data);
 		processed.Tags = [];
-
+		processed.Categories = _.join(_.map(data.Category, function(e) {
+			return e.NameEn + ' (' + e.CategoryAbbreviation + ')';
+		}), ', ');
+		console.log(data, processed);
 		if(angular.isUndefined(processed.Attributes)) {
 			processed.Attributes = [];
 		}
@@ -6300,68 +6294,61 @@ module.exports = ['config', function(config) {
     /**
      * Transform nested set to angular-ui-tree
      */
-    service.transformNestedSetToUITree = function(set) {
-        var tree = [];
-        var compare = function(a, b) {
-            return a.Lft - b.Lft;
-        };
-        var reverse = function(set) {
-            var array = [];
-            var pivot = null;
+    var test = 0; 
+    var reverse = function(set) {
+        var array = [];
+        var pivot = null;
 
-            while(set.length > 0) {
-                //Get front queue item
-                var item = set.shift();
-                if(angular.isUndefined(item.Depth)) {
-                    item.Depth = 1;
-                }
-                if(angular.isUndefined(item.nodes)) {
-                    item.nodes = [];
-                }
+        while(set.length > 0) {
+            //Get front queue item
+            var item = set.shift();
+            if(angular.isUndefined(item.Depth)) {
+                item.Depth = 1;
+            }
+            if(angular.isUndefined(item.nodes)) {
+                item.nodes = [];
+            }
 
-                if (array.length <= 0) {
-                    //First item, set as pivot
+            if (array.length <= 0) {
+                //First item, set as pivot
+                pivot = item;
+                array.push(pivot);
+            } else {
+                if (item.Rgt < pivot.Rgt) {
+                    //This item belong to pivot's children
+                    item.parent = pivot;
+                    item.Depth = pivot.Depth + 1;
+                    pivot.nodes.push(item);
+                } else {
+                    //Run reverse on current pivot if any
+                    if(pivot.nodes.length > 0 && angular.isUndefined(pivot.reverse)) {
+                        pivot.nodes = reverse(pivot.nodes);
+                        pivot.reverse = true;
+                        angular.forEach(pivot.nodes, function(child) {
+                            pivot.ProductCount += child.ProductCount;
+                        });
+                    }
+                    
+                    //Change pivot
                     pivot = item;
                     array.push(pivot);
-                } else {
-                    if (item.Rgt < pivot.Rgt) {
-                        //This item belong to pivot's children
-                        item.parent = pivot;
-                        item.Depth = pivot.Depth + 1;
-                        pivot.nodes.push(item);
-                    } else {
-                        //Run reverse on current pivot if any
-                        if(pivot.nodes.length > 0 && angular.isUndefined(pivot.reverse)) {
-                            pivot.nodes = reverse(pivot.nodes);
-                            pivot.reverse = true;
-                            angular.forEach(pivot.nodes, function(child) {
-                                pivot.ProductCount += child.ProductCount;
-                            });
-                        }
-                        
-                        //Change pivot
-                        pivot = item;
-                        array.push(pivot);
-                    }
                 }
             }
-
-            if (angular.isUndefined(pivot.reverse) && pivot.nodes.length > 0) {
-                pivot.nodes = reverse(pivot.nodes);
-                pivot.reverse = true;
-                angular.forEach(pivot.nodes, function(child) {
-                    pivot.ProductCount += child.ProductCount;
-                });
-            }
-
-            return array;
         }
-        
-        //Sort array by Lft
-        set.sort(compare);
 
+        if (angular.isUndefined(pivot.reverse) && pivot.nodes.length > 0) {
+            pivot.nodes = reverse(pivot.nodes);
+            pivot.reverse = true;
+            angular.forEach(pivot.nodes, function(child) {
+                pivot.ProductCount += child.ProductCount;
+            });
+        }
+
+        return array;
+    }
+    service.transformNestedSetToUITree = function(set) {
         //Reverse of deep copy
-        return reverse(angular.copy(set));
+        return reverse(set);
     }
 
     /**
@@ -6562,10 +6549,10 @@ module.exports = ['$window', '$base64', 'config', function($window, $base64, con
     };
 }];
 },{"angular":127}],97:[function(require,module,exports){
-module.exports = ['common', '$q', 'util', function(common, $q, util) {
-	'use strict';
-	var service = {};
-
+module.exports = ["common", "$q", "util", function(common, $q, util) {
+	'ngInject';
+	var service = common.Rest()
+	
 	//Generate empty template
 	service.generate = function(extend) {
 		return angular.extend({
@@ -6573,22 +6560,9 @@ module.exports = ['common', '$q', 'util', function(common, $q, util) {
 			NameTh: "",
 			UrlKeyEn: "",
 			Commission: 0,
-			Status: "AT",
 			Visibility: true,
-			ProductCount: 0,
-			AttributeSets: [],
-			nodes: []
+			AttributeSets: []
 		}, extend);
-	}
-
-	/**
-	 * Get all global cat
-	 **/
-	service.getAll = function() {
-		return common.makeRequest({
-			method: 'GET',
-			url: '/GlobalCategories'
-		});
 	};
 
 	/**
@@ -6601,6 +6575,7 @@ module.exports = ['common', '$q', 'util', function(common, $q, util) {
 			data: data
 		});
 	};
+
 	service.getAllForSeller2 = function(treeArray) {
 		var array = [];
 		angular.forEach(treeArray, function(item) {
@@ -7633,7 +7608,6 @@ module.exports = ["common", function(common) {
 },{}],110:[function(require,module,exports){
 module.exports = {
     MasterVariant_ProductNameEn: {
-        'label': 'Product Name (English)',
         'labelClass': 'required',
         'error': {
             'messages': {
@@ -7643,7 +7617,6 @@ module.exports = {
         }
     },
     MasterVariant_ProductNameTh: {
-        'label': 'Product Name (Thai)',
         'labelClass': 'required',
         'error': {
             'messages': {
@@ -7653,7 +7626,6 @@ module.exports = {
         }
     },
     MasterVariant_Sku: {
-        'label': 'SKU',
         'error': {
             'messages': {
                 'pattern': 'Special characters are not allowed'
@@ -7661,7 +7633,6 @@ module.exports = {
         }
     },
     MasterVariant_Upc: {
-        'label': 'UPC',
         'error': {
             'messages': {
                 'pattern': 'Only english letters and numbers allowed'
@@ -7669,14 +7640,13 @@ module.exports = {
         }
     },
     MasterVariant_Pid: {
-        'label': " {{ (formData.Variants || []).length > 0 ? 'Group ID' : 'PID' }} ",
         'labelClass': 'required'
     }
 }
 },{}],111:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Fri Feb 12 2016 00:10:41 GMT+0700 (SE Asia Standard Time)
+ * Fri Feb 12 2016 00:57:41 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -7783,7 +7753,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/input/tradable-select2',
-    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><input ng-model=search[options.map.text] class=\"form-control input-search-icon search-box\" placeholder=\"Search Attribute Set\" aria-describedby=basic-addon2></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable | filter:search:strict track by $index\" ng-class=\"{ 'active' : activeLeft == selectable.indexOf(item) }\" ng-click=\"select(selectable.indexOf(item), true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=active(false) ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=active(true) ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>Attribute</span> <span class=column-2>Required?</span> <span class=column-3>Filterable?</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == model.indexOf(item), 'disabled' : item.ProductCount > 0 }\" ng-click=\"select(model.indexOf(item), false)\"><div class=row><div class=column-1>{{ options.map.text == null ? item : item[options.map.text] }}</div><div class=column-2><input type=checkbox ng-model=item.Required aria-label=\"Checkbox for following text input\"></div><div class=column-3><input type=checkbox ng-model=item.Filterable aria-label=\"Checkbox for following text input\"></div></div></li></ul></div></div></div>"
+    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><input ng-model=search[options.map.text] class=\"form-control input-search-icon search-box\" placeholder=\"Search Attribute Set\" aria-describedby=basic-addon2></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable | filter:search:strict track by $index\" ng-class=\"{ 'active' : activeLeft == selectable.indexOf(item) }\" ng-click=\"select(selectable.indexOf(item), true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=active(false) ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=active(true) ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>Attribute</span> <span class=column-2>Required?</span> <span class=column-3>Filterable?</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == model.indexOf(item), 'disabled' : !test(item) }\" ng-click=\"select(model.indexOf(item), false)\" ng-disabled=!test(item)><div class=row><div class=column-1>{{ options.map.text == null ? item : item[options.map.text] }}</div><div class=column-2><input type=checkbox ng-model=item.Required aria-label=\"Checkbox for following text input\"></div><div class=column-3><input type=checkbox ng-model=item.Filterable aria-label=\"Checkbox for following text input\"></div></div></li></ul></div></div></div>"
   );
 
 
@@ -7794,6 +7764,97 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('common/link',
     "<div class=\"form-group form-group-closer form-group-link-action\"><div class=width-label></div><div class=width-field-normal><a class=form-text ng-href={{options.link}} ng-transclude></a></div></div>"
+  );
+
+
+  $templateCache.put('global_category/modal',
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><button type=button class=close ng-click=cancel()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\"><form class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "\t\t\t                  'label': 'Category Name (Thai)',\r" +
+    "\n" +
+    "\t\t\t                  'labelClass': 'required',\r" +
+    "\n" +
+    "\t\t\t                  'error' : {\r" +
+    "\n" +
+    "\t\t\t                        'messages': {\r" +
+    "\n" +
+    "\t\t\t                          'required': 'This is a required field'\r" +
+    "\n" +
+    "\t\t\t                        },\r" +
+    "\n" +
+    "\t\t\t                        'show': isInvalid(form.NameTh),\r" +
+    "\n" +
+    "\t\t\t                        'conditions' : form.NameTh.$error\r" +
+    "\n" +
+    "\t\t\t                   }\r" +
+    "\n" +
+    "\t\t\t                }\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-class=\"{ 'has-error' : isInvalid(form.NameTh) }\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "\t\t\t                  'label': 'Category Name (Eng)',\r" +
+    "\n" +
+    "\t\t\t                  'labelClass': 'required',\r" +
+    "\n" +
+    "\t\t\t                  'error' : {\r" +
+    "\n" +
+    "\t\t\t                        'messages': {\r" +
+    "\n" +
+    "\t\t\t                          'required': 'This is a required field',\r" +
+    "\n" +
+    "\t\t\t                          'pattern': 'Only English allowed'\r" +
+    "\n" +
+    "\t\t\t                        },\r" +
+    "\n" +
+    "\t\t\t                        'show': isInvalid(form.NameEn),\r" +
+    "\n" +
+    "\t\t\t                        'conditions' : form.NameEn.$error\r" +
+    "\n" +
+    "\t\t\t                   }\r" +
+    "\n" +
+    "\t\t\t                }\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-class=\"{ 'has-error' : isInvalid(form.NameEn) }\" ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "\t                        'label': 'URL (Eng)',\r" +
+    "\n" +
+    "\t                        'error' : {\r" +
+    "\n" +
+    "\t                              'messages': {\r" +
+    "\n" +
+    "\t                                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'\r" +
+    "\n" +
+    "\t                                },\r" +
+    "\n" +
+    "\t                              'show': isInvalid(form.UrlKeyEn),\r" +
+    "\n" +
+    "\t                              'conditions' : form.UrlKeyEn.$error\r" +
+    "\n" +
+    "\t                         }\r" +
+    "\n" +
+    "\t                      }\"><input class=form-control name=UrlKeyEn ng-model=formData.UrlKeyEn ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" ng-class=\"{ 'has-error' : isInvalid(form.UrlKeyEn) }\" maxlength=\"300\"></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t'label': 'Commission (%)',\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t'labelClass': 'required',\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t'error' : {\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t'messages': {\r" +
+    "\n" +
+    "\t\t\t                    'required': 'This is a required field',\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t'pattern': 'Only numbers and decimals (up to 2 digits) allowed',\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t'minnumber': 'Please enter between 0% and 100%',\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t'maxnumber': 'Please enter between 0% and 100%'\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t},\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t'show': isInvalid(form.Commission),\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t'conditions' : form.Commission.$error\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t}\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t}\"><input class=form-control name=Commission ng-model=formData.Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-class=\"{ 'has-error' : isInvalid(form.Commission) }\" maxlength=20 ng-maxnumber=100 ng-minnumber=0 required></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions nc-options=\"{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }\"></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\"><span class=color-red>*</span> If category is mapped to a product, attribute set mapping cannot be changed</p></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.text}}</label></div></div></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=cancel()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form></div>"
   );
 
 

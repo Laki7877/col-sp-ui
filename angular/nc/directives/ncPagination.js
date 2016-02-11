@@ -12,8 +12,8 @@ angular.module('nc')
 			scope: {
 				params: '=ncModel',
 				total: '=ncPaginationTotal',
-				paginationOptions: '=ncPaginationSizes',
-				callback: '=ncPaginationEvent'
+				paginationOptions: '=?ncPaginationSizes',
+				callback: '=?ncPaginationEvent'
 			},
 			template: $templateCache.get('common/ncPagination'),
 			link: function(scope, element, attrs) {

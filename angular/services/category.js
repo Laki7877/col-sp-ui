@@ -48,68 +48,61 @@ module.exports = ['config', function(config) {
     /**
      * Transform nested set to angular-ui-tree
      */
-    service.transformNestedSetToUITree = function(set) {
-        var tree = [];
-        var compare = function(a, b) {
-            return a.Lft - b.Lft;
-        };
-        var reverse = function(set) {
-            var array = [];
-            var pivot = null;
+    var test = 0; 
+    var reverse = function(set) {
+        var array = [];
+        var pivot = null;
 
-            while(set.length > 0) {
-                //Get front queue item
-                var item = set.shift();
-                if(angular.isUndefined(item.Depth)) {
-                    item.Depth = 1;
-                }
-                if(angular.isUndefined(item.nodes)) {
-                    item.nodes = [];
-                }
+        while(set.length > 0) {
+            //Get front queue item
+            var item = set.shift();
+            if(angular.isUndefined(item.Depth)) {
+                item.Depth = 1;
+            }
+            if(angular.isUndefined(item.nodes)) {
+                item.nodes = [];
+            }
 
-                if (array.length <= 0) {
-                    //First item, set as pivot
+            if (array.length <= 0) {
+                //First item, set as pivot
+                pivot = item;
+                array.push(pivot);
+            } else {
+                if (item.Rgt < pivot.Rgt) {
+                    //This item belong to pivot's children
+                    item.parent = pivot;
+                    item.Depth = pivot.Depth + 1;
+                    pivot.nodes.push(item);
+                } else {
+                    //Run reverse on current pivot if any
+                    if(pivot.nodes.length > 0 && angular.isUndefined(pivot.reverse)) {
+                        pivot.nodes = reverse(pivot.nodes);
+                        pivot.reverse = true;
+                        angular.forEach(pivot.nodes, function(child) {
+                            pivot.ProductCount += child.ProductCount;
+                        });
+                    }
+                    
+                    //Change pivot
                     pivot = item;
                     array.push(pivot);
-                } else {
-                    if (item.Rgt < pivot.Rgt) {
-                        //This item belong to pivot's children
-                        item.parent = pivot;
-                        item.Depth = pivot.Depth + 1;
-                        pivot.nodes.push(item);
-                    } else {
-                        //Run reverse on current pivot if any
-                        if(pivot.nodes.length > 0 && angular.isUndefined(pivot.reverse)) {
-                            pivot.nodes = reverse(pivot.nodes);
-                            pivot.reverse = true;
-                            angular.forEach(pivot.nodes, function(child) {
-                                pivot.ProductCount += child.ProductCount;
-                            });
-                        }
-                        
-                        //Change pivot
-                        pivot = item;
-                        array.push(pivot);
-                    }
                 }
             }
-
-            if (angular.isUndefined(pivot.reverse) && pivot.nodes.length > 0) {
-                pivot.nodes = reverse(pivot.nodes);
-                pivot.reverse = true;
-                angular.forEach(pivot.nodes, function(child) {
-                    pivot.ProductCount += child.ProductCount;
-                });
-            }
-
-            return array;
         }
-        
-        //Sort array by Lft
-        set.sort(compare);
 
+        if (angular.isUndefined(pivot.reverse) && pivot.nodes.length > 0) {
+            pivot.nodes = reverse(pivot.nodes);
+            pivot.reverse = true;
+            angular.forEach(pivot.nodes, function(child) {
+                pivot.ProductCount += child.ProductCount;
+            });
+        }
+
+        return array;
+    }
+    service.transformNestedSetToUITree = function(set) {
         //Reverse of deep copy
-        return reverse(angular.copy(set));
+        return reverse(set);
     }
 
     /**
