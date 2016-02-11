@@ -34,7 +34,9 @@
 									'conditions' : addProductForm.Modal_ProductNameTh.$error
 									}
 									}">
-                                    <input class="form-control width-field-large" name="Modal_ProductNameTh" ng-model="<?= $model ?>.ProductNameTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_ProductNameTh) }" ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/" maxlength="300" />
+                                    <input class="form-control width-field-large" name="Modal_ProductNameTh"
+                                     ng-model="<?= $model ?>.ProductNameTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_ProductNameTh) }" 
+                                     ng-pattern="/^[^<>]+$/" maxlength="300" />
                                 </div>
 
                                 <div ng-template="common/input/text2" ng-template-options="{
@@ -48,7 +50,9 @@
 									'conditions' : addProductForm.Modal_ProductNameEn.$error
 									}
 									}">
-                                    <input class="form-control width-field-large" name="Modal_ProductNameEn" ng-model="<?=$model?>.ProductNameEn" maxlength="300" ng-pattern="/^[^<>ก-๙]+$/" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_ProductNameEn) }" />
+                                    <input class="form-control width-field-large" name="Modal_ProductNameEn" 
+                                    ng-model="<?=$model?>.ProductNameEn" maxlength="300" ng-pattern="/^[^<>ก-๙]+$/" 
+                                    ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_ProductNameEn) }" />
                                 </div>
 
 
@@ -169,10 +173,26 @@
                                         </div>
 
                                         <? $this->insert('components/forms/ckeditor-with-label', 
-								["label" => "Description (English)", "size" => "xxl", "label_class" => "required", "ng_model" => $model.".DescriptionFullEn"]) ?>
-
-                                            <? $this->insert('components/forms/textarea-with-label',
-								 ["label" => "Short Description (English)", "tooltip" => "This is a tooltip text", "size" => "xxl", "ng_model" => $model.".DescriptionShortEn"]) ?>
+								            ["label" => "Description (English)", "size" => "xxl", "label_class" => "required", "ng_model" => $model.".DescriptionFullEn"]) ?>
+                                            
+                                            <div ng-template="common/input/textarea2" ng-template-options="{
+                                                'label': 'Short Description (English)',
+                                                'inputSize': 'xxl',
+                                                'formGroupClass' : 'margin-top-30',
+                                                'error' : {
+                                                'messages': {
+                                                    'pattern': 'Special characters are not allowed'
+                                                },
+                                                'show': $root.isInvalid(addProductForm.Modal_DescriptionShortEn),
+                                                'conditions' : addProductForm.Modal_DescriptionShortEn.$error
+                                                }
+                                                }">
+                                                <textarea ng-pattern="/^[^<>]+$/" class="form-control" 
+                                                maxlength="500" name="Modal_DescriptionShortEn" ng-model="<?=$model?>.DescriptionShortEn" 
+                                                ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_DescriptionShortTh) }" />
+                                                </textarea>
+                                            </div>
+                                        
                                 </div>
                             </div>
                             <div class="form-section">
@@ -217,7 +237,7 @@
                                                         'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
                                                         },
                                                         'show': $root.isInvalid(addProductForm.Modal_Height),
-                                                        'conditions' : addProductForm.Modal_Length.$error
+                                                        'conditions' : addProductForm.Modal_Height.$error
                                                         }
                                                         }">
                                                         <input class="form-control" maxlength="11" name="Modal_Height" ng-pattern="/^\d+(\.\d{1,2})?$/" ng-model="<?=$model?>.Height" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_Height) }" />
