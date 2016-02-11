@@ -23,7 +23,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             { text: 'Show as group of variants', value: 'GROUP' },
             { text: 'Show as individual product', value: 'INDIVIDUAL' }
         ];
-        
+       
         var protoAttributeOptions = {
                          0: {
                             Attribute: false,
@@ -36,7 +36,11 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                     };
         $scope.dataSet.attributeOptions = angular.copy(protoAttributeOptions);
         $scope.controlFlags = {
-            variation: 'disable'
+            variation: 'disable',
+            enableSections: {
+                embedVideo: false,
+                embed360: false
+            }
         };
 
         $window.onbeforeunload = function (e) {
@@ -238,7 +242,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
         $scope.refreshRelatedProducts = function (q) {
             return Product.getAll({
-                searchText: q
+                searchText: q,
+                pageSize: 4
             }).then(function (ds) {
                 $scope.dataSet.RelatedProducts = ds.data;
             });
