@@ -8,7 +8,6 @@
 						<a class="link-btn-plain" data-dismiss="modal">Cancel</a>
 						<button type="button" class="btn btn-blue btn-width-xl" ng-click="$emit('savePairModal')" data-dismiss="modal">Save</button>
 					</span>
-
             </div>
             <div class="modal-body margin-top-20">
                 <div class="row">
@@ -43,13 +42,13 @@
 									'labelClass': 'required',
 									'error' : {
 									'messages': {
-										'pattern': 'Only english letters and numbers allowed'
+										'pattern': 'Special characters are not allowed'
 									},
 									'show': $root.isInvalid(addProductForm.Modal_ProductNameEn),
 									'conditions' : addProductForm.Modal_ProductNameEn.$error
 									}
 									}">
-                                    <input class="form-control width-field-large" name="Modal_ProductNameEn" ng-model="<?=$model?>.ProductNameEn" maxlength="300" ng-pattern="/^[0-9a-zA-Z\s]+$/" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_ProductNameEn) }" />
+                                    <input class="form-control width-field-large" name="Modal_ProductNameEn" ng-model="<?=$model?>.ProductNameEn" maxlength="300" ng-pattern="/^[^<>ก-๙]+$/" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_ProductNameEn) }" />
                                 </div>
 
 
@@ -73,11 +72,19 @@
 
                             </div>
                         </div>
-                        <? $this->insert('components/forms/form-section-upload-new-product-image', ["uploader" => "uploaderModal", "images" => $model .".Images"]) ?>
-                            <div class="form-section">
-                                <div class="form-section-header">
-                                    <input type="checkbox" ng-model="<?= $model ?>._embedVideo" /> <span style='margin-bottom: 25px'>Embed Video</span></div>
-                                <div class="form-section-content" ng-if="<?= $model ?>._embedVideo">
+                        <? $this->insert('components/forms/form-section-upload-new-product-image', 
+                        ["uploader" => "uploaderModal",
+                        "checkbox" => true,
+                        "model" => $model,
+                        "images" => $model .".Images"]) ?>
+                        
+                        <div class="form-section">
+                                <div class="form-section-header checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-model="<?= $model ?>._override.embedVideo"> Override "Embed Video"
+                                        </label>
+                                </div>
+                                <div class="form-section-content" ng-show="<?= $model ?>._override.embedVideo">
                                     <div ng-template="common/input/text2" ng-template-options="{
 				                        'label': 'Video Link 1',
 				                        'hint': {
@@ -136,25 +143,28 @@
                                 </div>
                             </div>
                             <div class="form-section">
-                                <div class="form-section-header">
-                                    <h2>Description</h2></div>
-                                <div class="form-section-content">
-                                    <? $this->insert('components/forms/ckeditor-with-label', 
-								["label" => "Description (Thai)", "size" => "xxl", "label_class" => "required", "ng_model" => $model.".DescriptionFullTh"]) ?>
+                                <div class="form-section-header checkbox">
+                                    <label>
+                                            <input type="checkbox" ng-model="<?= $model ?>._override.description"> 
+                                            Override "Description"
+                                    </label>  
+                                </div>
+                                <div class="form-section-content" ng-show="<?= $model ?>._override.description">
+                                    <? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (Thai)", "size" => "xxl", "label_class" => "required", "ng_model" => $model.".DescriptionFullTh"]) ?>
 
                                         <div ng-template="common/input/textarea2" ng-template-options="{
-									'label': 'Short Description (Thai)',
-									'inputSize': 'xxl',
-									'formGroupClass' : 'margin-top-30',
-									'error' : {
-									'messages': {
-									'pattern': 'Only letters and numbers allowed'
-									},
-									'show': $root.isInvalid(addProductForm.Modal_DescriptionShortTh),
-									'conditions' : addProductForm.Modal_DescriptionShortTh.$error
-									}
-									}">
-                                            <textarea ng-pattern="/^[0-9A-Za-zก-๙\s]+$/" class="form-control" maxlength="500" name="Modal_DescriptionShortTh" ng-model="<?=$model?>.DescriptionShortTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_DescriptionShortTh) }" />
+                                            'label': 'Short Description (Thai)',
+                                            'inputSize': 'xxl',
+                                            'formGroupClass' : 'margin-top-30',
+                                            'error' : {
+                                            'messages': {
+                                            'pattern': 'Special characters are not allowed'
+                                            },
+                                            'show': $root.isInvalid(addProductForm.Modal_DescriptionShortTh),
+                                            'conditions' : addProductForm.Modal_DescriptionShortTh.$error
+                                            }
+                                            }">
+                                            <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="Modal_DescriptionShortTh" ng-model="<?=$model?>.DescriptionShortTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Modal_DescriptionShortTh) }" />
                                             </textarea>
                                         </div>
 
@@ -166,14 +176,17 @@
                                 </div>
                             </div>
                             <div class="form-section">
-                                <div class="form-section-header">
-                                    <h2>Package Detail</h2></div>
-                                <div class="form-section-content">
+                                <div class="form-section-header checkbox">
+                                      <label>
+                                            <input type="checkbox" ng-model="<?= $model ?>._override.packageDetail"> Override "Package Detail"
+                                    </label>  
+                                </div>
+                                <div class="form-section-content" ng-show="<?= $model ?>._override.packageDetail">
 
                                     <!-- package detail -->
                                     <div class="form-group">
                                         <div class="width-label">
-                                            <label class="control-label required">Package Dimension</label>
+                                            <label class="control-label required" style="margin-top: 25px">Package Dimension</label>
                                         </div>
                                         <div class="width-field-xxl">
                                             <div class="multiple-input">
@@ -227,7 +240,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="input-column no-label select input-xl">
+                                                <div class="input-column no-label select input-xl" style="padding-top: 24px">
                                                     <select ng-model="<?=$model?>.DimensionUnit" class="form-control">
                                                         <option value="MM"> Millimeter </option>
                                                         <option value="CM"> Centimeter </option>

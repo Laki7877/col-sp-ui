@@ -1369,6 +1369,13 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                 prevVariants.forEach(function (elem, index) {
                     vHashSet[elem.text] = prevVariants[index];
                 });
+
+                var protoCheckState = {
+                    uploadProductImages: false,
+                    embedVideo: false,
+                    description: false,
+                    packageDetail: false
+                };
                 
                 //Unset
                 prevVariants = undefined;
@@ -1412,10 +1419,26 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                     kpair.OriginalPrice = $scope.formData.MasterVariant.OriginalPrice;
                     kpair.SalePrice = $scope.formData.MasterVariant.SalePrice;
                     kpair.Quantity = $scope.formData.MasterVariant.Quantity;
-                                 
+                    kpair._override = angular.copy(protoCheckState);
+
                     if (kpair.text in vHashSet) {
                         //Replace with value from vHashSet
+                        
                         kpair = vHashSet[kpair.text];
+
+                        kpair._override = angular.copy(protoCheckState);
+                        kpair._override.uploadProductImages = ((kpair.Images || []).length > 0);
+                        kpair._override.embedVideo = ((kpair.VideoLinks || []).length > 0);
+                        kpair._override.description = (angular.isDefined(kpair.DescriptionFullEn) ||
+                            angular.isDefined(kpair.DescriptionFullTh) ||
+                            angular.isDefined(kpair.DescriptionShortEn) ||
+                            angular.isDefined(kpair.DescriptionShortTh));
+
+                        kpair._override.packageDetail = (angular.isDefined(kpair.Length) ||
+                            angular.isDefined(kpair.Height) ||
+                            angular.isDefined(kpair.Width) ||
+                            angular.isDefined(kpair.Weight));
+                            
                     }
 
                     //Only push new variant if don't exist
@@ -1508,7 +1531,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
         };
 
         $scope.breadcrumbs = {
-            globalCategory : null
+            globalCategory: null
         };
         $scope.preview = function () {
             return console.log($scope.formData);
@@ -1592,12 +1615,12 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             if ($scope.addProductForm.$invalid) {
                 $scope.pageState.reset();
                 var requiredMissing = ('required' in $scope.addProductForm.$error);
-                if(Status == 'DF' && requiredMissing){
-                     $scope.alert.error("Unable to save. Please make sure that Product Name (Thai), Product Name (English), and Original Price are filled correctly.");
-                }else if(Status == 'WA' && requiredMissing){
-                     $scope.alert.error("Unable to publish because you are missing required fields");
-                }else{
-                     $scope.alert.error("Unable to save. Please make sure all fields have no error.");
+                if (Status == 'DF' && requiredMissing) {
+                    $scope.alert.error("Unable to save. Please make sure that Product Name (Thai), Product Name (English), and Original Price are filled correctly.");
+                } else if (Status == 'WA' && requiredMissing) {
+                    $scope.alert.error("Unable to publish because you are missing required fields");
+                } else {
+                    $scope.alert.error("Unable to save. Please make sure all fields have no error.");
                 }
                 return;
             }
@@ -1612,12 +1635,12 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                     $scope.overview = res;
                     var catId = Number(res.GlobalCategory);
                     $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function () {
-                            $scope.formData.ProductId = Number(res.ProductId);
-                            $scope.pageState.reset();
-                            $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
-                            ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
-                            ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
-                        });
+                        $scope.formData.ProductId = Number(res.ProductId);
+                        $scope.pageState.reset();
+                        $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
+                        ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
+                        ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
+                    });
                     $scope.addProductForm.$setPristine(true);
                 } else {
                     $scope.alert.error('Unable to save because ' + (res.message || res.Message));
@@ -1813,7 +1836,31 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                     $scope.uploaderModal.queue = $scope.pairModal.queue;
                     ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail);
                 });
+                
                 $scope.$on('savePairModal', function (evt) {
+                    if(!$scope.pairModal._override.uploadProductImages){
+                        $scope.pairModal.Images = [];
+                    }
+                    
+                    if(!$scope.pairModal._override.embedVideo){
+                        $scope.pairModal.VideoLinks = [];
+                    }
+                    
+                    if(!$scope.pairModal._override.description){
+                        $scope.pairModal.DescriptionFullEn = null;
+                        $scope.pairModal.DescriptionFullTh = null;
+                        $scope.pairModal.ShortDescriptionEn = null;
+                        $scope.pairModal.ShortDescriptionTh = null;
+                    }
+                    
+                    if(!$scope.pairModal._override.packageDetail){
+                        $scope.pairModal.Length = null;
+                        $scope.pairModal.Height = null;
+                        $scope.pairModal.Width = null;
+                        $scope.pairModal.Length = null;
+
+                    }
+                    
                     $scope.formData.Variants[$scope.pairIndex] = $scope.pairModal;
                 });
             }

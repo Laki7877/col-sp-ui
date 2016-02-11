@@ -76,7 +76,7 @@
                             'conditions' : addProductForm.MasterVariant_ProductNameEn.$error
                             }
                             }">
-                            <input class="form-control width-field-large" name="MasterVariant_ProductNameEn" ] ng-model="formData.MasterVariant.ProductNameEn" maxlength="300" ng-pattern="/^([^<>ก-๙])+$/" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_ProductNameEn) }"
+                            <input class="form-control width-field-large" name="MasterVariant_ProductNameEn" ng-model="formData.MasterVariant.ProductNameEn" maxlength="300" ng-pattern="/^([^<>ก-๙])+$/" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_ProductNameEn) }"
                             required />
                         </div>
 
@@ -92,7 +92,9 @@
                             'conditions' : addProductForm.MasterVariant_ProductNameTh.$error
                             }
                             }">
-                            <input class="form-control width-field-large" name="MasterVariant_ProductNameTh" ng-model="formData.MasterVariant.ProductNameTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_ProductNameTh) }" ng-pattern="/^[^<>\s]+$/" maxlength="300"
+                            <input class="form-control width-field-large" name="MasterVariant_ProductNameTh" 
+                            ng-model="formData.MasterVariant.ProductNameTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_ProductNameTh) }" 
+                            ng-pattern="/^[^<>]+$/" maxlength="300"
                             required />
                         </div>
 
