@@ -234,10 +234,10 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 clean.CMSStatusId = fd.Status;
                 clean.Status = true;
                 clean.UpdateBy =1;
-                clean.By =1;
+                clean.CreateBy =1;
                 clean.Visibility = 1;
 
-                clean.IP ='104.155.199.198';
+                clean.CreateIP ='203.146.156.34';
                 clean.ShortDescriptionTH = fd.ShortDescriptionTH ;
                 clean.LongDescriptionTH = fd.LongDescriptionTH;
                 clean.ShortDescriptionEN = fd.ShortDescriptionEN ;
