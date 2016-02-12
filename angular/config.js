@@ -5,6 +5,7 @@ module.exports = {
     baseUrl: 'http://localhost:58127/api/',
 	REST_SERVICE_BASE_URL: 'http://localhost:58127/api/',
 	MAX_GLOBAL_CAT_COLUMN : 4,
+	HANDLE_EXCEPTION :false,
 	CK_DEFAULT_OPTIONS: {
 	   filebrowserBrowseUrl : '/ckfinder/ckfinder.html',
 	   filebrowserImageBrowseUrl : '/ckfinder/ckfinder.html?type=Images',
