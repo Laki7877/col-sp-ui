@@ -1,24 +1,17 @@
 module.exports = function(common, $q, util) {
 	'ngInject';
-	var service = common.Rest('/GlobalCategories');
-	
+	service = common.Rest('/GlobalCategories');
+
 	//Generate empty template
 	service.generate = function(extend) {
 		return angular.extend({
 			NameEn: "",
 			NameTh: "",
-			UrlKeyEn: "",
+			UrlKeyEn: null,
 			Commission: 0,
 			Visibility: true,
 			AttributeSets: []
 		}, extend);
-	};
-
-	service.getAll = function() {
-		return common.makeRequest({
-			method: 'GET',
-			url: '/GlobalCategories'
-		});
 	};
 
 	/**
@@ -31,6 +24,14 @@ module.exports = function(common, $q, util) {
 			data: data
 		});
 	};
+
+	service.shift = function(data) {
+		return common.makeRequest({
+			method: 'PUT',
+			url: '/GlobalCategories/Shift',
+			data: data
+		});
+	}
 
 	service.getAllForSeller2 = function(treeArray) {
 		var array = [];

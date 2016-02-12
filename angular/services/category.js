@@ -48,7 +48,6 @@ module.exports = ['config', function(config) {
     /**
      * Transform nested set to angular-ui-tree
      */
-    var test = 0; 
     var reverse = function(set) {
         var array = [];
         var pivot = null;

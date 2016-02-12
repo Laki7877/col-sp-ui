@@ -23,7 +23,7 @@
                           'required': 'This is a required field',
                           'pattern': 'Only English allowed'
                           },
-                        'show': $root.isInvalid(form.BrandNameEn),
+                        'show': isInvalid(form.BrandNameEn),
                         'conditions' : form.BrandNameEn.$error
                    }
                 }">
@@ -31,7 +31,7 @@
                   class="form-control"
                   name="BrandNameEn"
                   ng-model="formData.BrandNameEn"
-                  ng-class="{ 'has-error' : $root.isInvalid(form.BrandNameEn) }"
+                  ng-class="{ 'has-error' : isInvalid(form.BrandNameEn) }"
                   ng-pattern="/^[^ก-๙]+$/"
                   maxlength="100"
                   required />
@@ -44,7 +44,7 @@
                         'messages': {
                           'required': 'This is a required field',
                           },
-                        'show': $root.isInvalid(form.BrandNameTh),
+                        'show': isInvalid(form.BrandNameTh),
                         'conditions' : form.BrandNameTh.$error
                    }
                 }">
@@ -52,7 +52,7 @@
                   class="form-control"
                   name="BrandNameTh"
                   ng-model="formData.BrandNameTh"
-                  ng-class="{ 'has-error' : $root.isInvalid(form.BrandNameTh) }"
+                  ng-class="{ 'has-error' : isInvalid(form.BrandNameTh) }"
                   maxlength="100"
                   required />
               </div>
@@ -70,43 +70,86 @@
 
               <div ng-template="common/input/text"
                 ng-template-options="{
-                  'label': 'Meta Title'
+                  'label': 'Meta Title (English)'
                 }">
                 <input
                   class="form-control"
-                  name="SEO.MetaTitle"
-                  ng-model="formData.SEO.MetaTitle"
-                  ng-class="{ 'has-error' : $root.isInvalid(form.SEO.MetaTitle) }"
+                  name="SEO.MetaTitleEn"
+                  ng-model="formData.SEO.MetaTitleEn"
+                  ng-class="{ 'has-error' : isInvalid(form.SEO.MetaTitleEn) }"
                   maxlength="60"
                    />
               </div>
               <div ng-template="common/input/text"
                 ng-template-options="{
-                  'label': 'Meta Description'
+                  'label': 'Meta Title (Thai)'
                 }">
                 <input
                   class="form-control"
-                  name="SEO.MetaDescription"
-                  ng-model="formData.SEO.MetaDescription"
-                  ng-class="{ 'has-error' : $root.isInvalid(form.SEO.MetaDescription) }"
+                  name="SEO.MetaTitleTh"
+                  ng-model="formData.SEO.MetaTitleTh"
+                  ng-class="{ 'has-error' : isInvalid(form.SEO.MetaTitleTh) }"
+                  maxlength="60"
+                   />
+              </div>
+              <div ng-template="common/input/text"
+                ng-template-options="{
+                  'label': 'Meta Description (English)'
+                }">
+                <input
+                  class="form-control"
+                  name="SEO.MetaDescriptionEn"
+                  ng-model="formData.SEO.MetaDescriptionEn"
+                  ng-class="{ 'has-error' : isInvalid(form.SEO.MetaDescriptionEn) }"
+                  maxlength="150"
+                   />
+              </div>
+              <div ng-template="common/input/text"
+                ng-template-options="{
+                  'label': 'Meta Description (Thai)'
+                }">
+                <input
+                  class="form-control"
+                  name="SEO.MetaDescriptionTh"
+                  ng-model="formData.SEO.MetaDescriptionTh"
+                  ng-class="{ 'has-error' : isInvalid(form.SEO.MetaDescriptionTh) }"
                   maxlength="150"
                    />
               </div>
               <div ng-template="common/input/text2"
                 ng-template-options="{
-                  'label': 'Meta Keywords',
+                  'label': 'Meta Keywords (English)',
                   'error' : {
                         'messages': {
                           },
-                        'show': $root.isInvalid(form.MetaKeywords),
-                        'conditions' : form.MetaKeywords.$error
+                        'show': isInvalid(form.MetaKeywordEn),
+                        'conditions' : form.MetaKeywordEn.$error
                    }
                 }">
                 <input
                   class="form-control"
-                  name="MetaKeywords"
-                  ng-model="formData.MetaKeywords"
-                  ng-class="{ 'has-error' : $root.isInvalid(form.MetaKeywords) }"
+                  name="MetaKeywordEn"
+                  ng-model="formData.MetaKeywordEn"
+                  ng-class="{ 'has-error' : isInvalid(form.MetaKeywordEn) }"
+                  maxlength="300"
+                  placeholder="Keywords seperated by comma"
+                  />
+              </div>
+              <div ng-template="common/input/text2"
+                ng-template-options="{
+                  'label': 'Meta Keywords (Thai)',
+                  'error' : {
+                        'messages': {
+                          },
+                        'show': isInvalid(form.MetaKeywordTh),
+                        'conditions' : form.MetaKeywordTh.$error
+                   }
+                }">
+                <input
+                  class="form-control"
+                  name="MetaKeywordTh"
+                  ng-model="formData.MetaKeywordTh"
+                  ng-class="{ 'has-error' : isInvalid(form.MetaKeywordTh) }"
                   maxlength="300"
                   placeholder="Keywords seperated by comma"
                   />
@@ -118,7 +161,7 @@
                         'messages': {
                           'pattern': 'Only English letters, numbers,  &quot;- &quot;, and  &quot;_&quot; allowed. Space is not allowed'
                           },
-                        'show': $root.isInvalid(form.SEO_ProductUrlKeyEn),
+                        'show': isInvalid(form.SEO_ProductUrlKeyEn),
                         'conditions' : form.SEO_ProductUrlKeyEn.$error
                    }
                 }">
@@ -127,7 +170,7 @@
                   name="SEO_ProductUrlKeyEn"
                   ng-model="formData.SEO.ProductUrlKeyEn"
                   ng-pattern="/^[A-Za-z0-9_\-]+$/"
-                  ng-class="{ 'has-error' : $root.isInvalid(form.SEO_ProductUrlKeyEn) }"
+                  ng-class="{ 'has-error' : isInvalid(form.SEO_ProductUrlKeyEn) }"
                   maxlength="300"
                   />
               </div>

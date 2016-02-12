@@ -14,7 +14,7 @@
 				<span class="no-children-row"
 					ng-if="$parentNodesScope.depth() == 0"
 					data-nodrag></span>
-				<a class="inline-block" ng-click="$emit('openEditGlobalCategory', node)" data-toggle="modal" data-target="#modal-category-detail" data-backdrop="static" data-keyboard="false" data-nodrag>{{ node.NameEn }}</a>
+				<a class="inline-block" ng-click="open(node)" data-nodrag>{{ node.NameEn }} ({{node.Lft}} - {{node.Rgt}})</a>
 			</span>
 		</span>
 		<span class="col-xs-1">{{ node.CategoryAbbreviation }}</span>

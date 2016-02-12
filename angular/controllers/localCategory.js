@@ -20,7 +20,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 	$scope.treeOptions = {
 		dropped: function(event) {
 			if(event.pos.dirX != 0 || event.pos.dirY != 0) {
-				$scope.dirty = true;
+				//Shift	
 			}
 		}
 	};

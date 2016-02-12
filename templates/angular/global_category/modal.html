@@ -4,7 +4,7 @@
 	<h3 class="modal-title">Global Category Detail</h3>
 </div>
 <div class="modal-body margin-top-20">
-	<form class="ah-form" name="form" novalidate>
+	<form ng-show="!saving" class="ah-form" name="form" novalidate>
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-section">
@@ -120,7 +120,7 @@
 	                <div class="form-section-content modal-custom">
 	                    <div ng-template="common/input/multiline-radio" 
 	                    	ng-template-options="{ 'label' : 'Visibility' }">
-	                    	<label ng-repeat="choice in statusOptions"><input type="radio" ng-model="formData.Visibility" ng-value="choice.value"/>{{choice.text}}</label>
+	                    	<label ng-repeat="choice in statusOptions"><input type="radio" ng-model="formData.Visibility" ng-value="choice.value"/>{{choice.name}}</label>
 	                	</div>
 	                </div>
 	            </div>
@@ -133,4 +133,5 @@
 			</div> <!-- end .col-xs-12 -->
 		</div> <!-- end .row -->
 	</form>
+	<div ng-show="saving" nc-loading="Saving.."></div>
 </div> <!-- end .modal-body -->
