@@ -3,7 +3,7 @@
 var angular = require('angular');
 var bulk = require('bulk-require')(__dirname, 
 	['controllers/*.js', 'services/*.js', 'helpers/*.js', 
-	'directives/*.js', 'filters/*.js', 'libs/*.js']);
+	'directives/*.js', 'filters/*.js', 'libs/*.js', 'template-options/*.js']);
 var config = require('./config');
 var template = require('./template');
 
@@ -131,6 +131,7 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 }])
 //Configuration
 .value('config', config)
+.value('$templateOptionsCache', bulk['template-options'])
 
 //Helpers
 .factory('common', helpers.common)
@@ -177,7 +178,6 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 .directive('ngCkeditor', directives.ngCkeditor)
 .directive('ngSlideToggle', directives.ngSlideToggle)
 .directive('ngTemplate', directives.ngTemplate)
-.directive('uiSelectMaxlength', directives.uiSelectMaxlength)
 .directive('ngMatch', directives.ngMatch)
 .directive('ngMinnumber', directives.ngMinnumber)
 .directive('ngMaxnumber', directives.ngMaxnumber)

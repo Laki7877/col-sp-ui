@@ -1,17 +1,30 @@
 describe('angularjs homepage todo list', function() {
+    
+    
   it('should add a todo', function() {
-    browser.get('http://americanod:5000/products/select');
+   
+    browser.get('http://localhost:5000/products/select');
+   
+    browser.sleep(1000);
 
+    var username = element(by.model('uform.user'));
+    var password = element(by.model('uform.pass'));
+    username.sendKeys("vader@nsa.gov");
+        password.sendKeys("vader");
+
+        
+    var login_submit = element(by.xpath('//button[@type="submit"]'));
+    login_submit.click();
     // var lvl1 = element(by.css('.content-column.ng-scope')).element(by.tagName('li'));
     var lvl1 = element.all(by.css('.content-column.ng-scope li'));
     lvl1.get(1).click();
 
-    var levels = element.all(by.css('.content-column.ng-scope'));
-    levels.get(1).element(by.tagName('li')).click();
-    levels = element.all(by.css('.content-column.ng-scope'));
-    levels.get(2).element(by.tagName('li')).click();
-    levels = element.all(by.css('.content-column.ng-scope'));
-    levels.get(3).element(by.tagName('li')).click();
+    // var levels = element.all(by.css('.content-column.ng-scope'));
+    // levels.get(1).element(by.tagName('li')).click();
+    // levels = element.all(by.css('.content-column.ng-scope'));
+    // levels.get(2).element(by.tagName('li')).click();
+    // levels = element.all(by.css('.content-column.ng-scope'));
+    // levels.get(3).element(by.tagName('li')).click();
 
     var submit = element(by.xpath('//button[@type="submit"]'));
     submit.click();

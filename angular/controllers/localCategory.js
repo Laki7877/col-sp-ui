@@ -29,6 +29,9 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 		return !$scope.dirty;
 	});
 
+	$scope.lockAttributeset = function(i) {		
+		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);		
+	};
 	$scope.init = function(shopid) {
 		$scope.shopId = shopid || 1;
 		$scope.reload();

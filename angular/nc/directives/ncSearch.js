@@ -6,7 +6,7 @@ angular.module('nc')
 			scope: {
 				model: '=ncModel',
 				placeholder: '=ncSearchPlaceholder',
-				event: '=ncSearchEvent'
+				event: '=?ncSearchEvent'
 			},
 			template: $templateCache.get('common/ncSearch'),
 			link: function(scope) {

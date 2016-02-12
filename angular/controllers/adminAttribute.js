@@ -8,12 +8,13 @@ module.exports = function($scope, $controller, AttributeService, config) {
 			item: 'Attribute',
 			order: 'UpdatedDt',
 			id: 'AttributeId',
-			actions: ['View', 'Duplicate', 'Delete'],
+			actions: ['View', 'Delete'],
 			bulks: ['Delete'],
 			filters: [
 				{ name: "All", value: 'All'},
 				{ name: "Free Text", value: 'FreeText'},
 				{ name: "Dropdown", value: 'Dropdown'},
+				{ name: "HTML Box", value: 'HTMLBox'},
 				{ name: "Has Variation", value: 'HasVariation'},
 				{ name: "No Variation", value: 'NoVariation'}
 			]

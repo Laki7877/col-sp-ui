@@ -17,7 +17,6 @@
   "dependencies": {
     "bootstrap-sass-official": "~3.3.6",
     "fontawesome": "~4.5.0",
-    "angular": "~1.4.8",
     "ng-currency": "~0.8.12",
     "nestedSortable": "~1.3.4",
     "jquery-ui": "~1.11.4",

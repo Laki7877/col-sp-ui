@@ -5,8 +5,8 @@ angular.module('nc')
 			template: $templateCache.get('common/ncBulk'),
 			scope: {
 				model: '=ncModel',
-				select: '=ncBulkSelect',
 				options: '=ncBulkFn',
+				select: '=?ncBulkSelect',
 				id: '@ncBulkTrackBy',
 				tag: '@ncTag'
 			},
@@ -19,6 +19,7 @@ angular.module('nc')
 				};
 				scope.options = _.concat(defaultOption, _.defaults(scope.options, []));
 				scope.model = _.defaults(scope.model, []);
+
 				scope.id = _.defaults(scope.id, null);
 				scope.select = scope.options[0];
 

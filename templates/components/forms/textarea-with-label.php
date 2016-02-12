@@ -6,13 +6,12 @@ if (isset($size)) $inputSize = "width-field-$size";
 	<div class="width-label"><label class="control-label"><?= $label ?></label></div>
 	<div class="<?= $inputSize ?>">
 		<textarea class="form-control"
-			
+			rows="<?=$rows?>"
 			<?php if(isset($ng_model)): ?>
 			ng-model="<?=$ng_model?>"
-
+            placeholder="<?=$placeholder?>"
 			<?php endif; ?>
 		></textarea>
-		<textarea rows="<?=$rows?>" class="form-control" placeholder="<?=$placeholder?>"></textarea>
 	</div>
 	<? if (!empty($tooltip)): ?>
 		<div class="width-field-tooltip no-padding-left"><i class="fa fa-2x fa-question-circle color-grey" data-toggle="btooltip" data-placement="right" title="<?= $tooltip ?>"></i></div>
