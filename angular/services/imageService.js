@@ -34,7 +34,6 @@ module.exports = function($q, $http, common, storage, config, FileUploader){
 	 */
 	service.assignUploaderEvents = function(uploader, images, queueLimit, onFail) {
         
-        
 		uploader.onWhenAddingFileFailed = function(item, filter, options) {
 			console.info('onAfterAddingFile', item, filter, options);
 			onFail(item, filter);
@@ -69,12 +68,8 @@ module.exports = function($q, $http, common, storage, config, FileUploader){
 	    };
         
         uploader.onProgressItem = function(item,progress){
-             console.info('onProgressItem', item, progress, uploader.progress);
+             console.info('onProgressItem', item, progress, item.progress);
         };
-        
-        uploader.onProgressAll = function(){
-            console.info("onProgressAll");
-        }
 
 	    return uploader;
 	}

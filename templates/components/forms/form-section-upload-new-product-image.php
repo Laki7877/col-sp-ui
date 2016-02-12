@@ -29,15 +29,16 @@
 		</div>
 	</div>
 	<div class="form-section-content padding-left-15 padding-right-15" style="margin-bottom:0px;"
-    
-    <?php if(isset($checkbox)): ?>
+        <?php if(isset($checkbox)): ?>
 		  ng-show="<?= $model ?>._override.uploadProductImages"
         <?php endif; ?>
     >
+
 		<? $this->insert('components/image-thumbs-list', [
 			"sep" => 1,
 			"action" => 4, 
 			"images" => $images,
 			"uploader" => $uploader]) ?>
+            
 	</div>
 </div>

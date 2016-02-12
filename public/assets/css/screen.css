@@ -14025,16 +14025,16 @@ form h6 {
   margin-right: -15px;
 }
 
-/* line 24, ../../../assets/_modal_custom.scss */
+/* line 25, ../../../assets/_modal_custom.scss */
 .modal .modal-content .modal-header {
   border-bottom: 0px;
   padding-bottom: 0px;
 }
-/* line 27, ../../../assets/_modal_custom.scss */
+/* line 28, ../../../assets/_modal_custom.scss */
 .modal .modal-content .modal-header h3 {
   font-size: 20px;
 }
-/* line 31, ../../../assets/_modal_custom.scss */
+/* line 32, ../../../assets/_modal_custom.scss */
 .modal .modal-content button.close > span {
   line-height: 1;
   font-size: 36px;
@@ -14271,11 +14271,9 @@ html, body {
   height: 185px;
   float: left;
   list-style: none;
-  margin-left: 30px;
-}
-/* line 85, ../../../assets/_add_product_page.sass */
-.image-vertical-list .list-item:first-child, .image-vertical-list .list-section-break:first-child {
-  margin-left: 0;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 40px;
 }
 /* line 88, ../../../assets/_add_product_page.sass */
 .image-vertical-list .list-section-break {
@@ -15128,28 +15126,21 @@ html, body {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-/* line 176, ../../../assets/screen.scss */
-<<<<<<< HEAD
+/* line 177, ../../../assets/screen.scss */
 ng-transclude.has-error .form-control {
   border-color: #ec0000 !important;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-/* line 182, ../../../assets/screen.scss */
-=======
->>>>>>> 9872c32042386761a9d3acd49ed998e302bbba98
+/* line 183, ../../../assets/screen.scss */
 .form-control.has-error {
   border-color: #ec0000;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-<<<<<<< HEAD
-/* line 188, ../../../assets/screen.scss */
-=======
-/* line 182, ../../../assets/screen.scss */
->>>>>>> 9872c32042386761a9d3acd49ed998e302bbba98
+/* line 189, ../../../assets/screen.scss */
 .empty-section {
   border: 1px solid;
   border-color: #BCC7D5;
@@ -15157,11 +15148,7 @@ ng-transclude.has-error .form-control {
   height: 80px;
   line-height: 80px;
 }
-<<<<<<< HEAD
-/* line 194, ../../../assets/screen.scss */
-=======
-/* line 188, ../../../assets/screen.scss */
->>>>>>> 9872c32042386761a9d3acd49ed998e302bbba98
+/* line 195, ../../../assets/screen.scss */
 .empty-section .loading-img {
   width: 40px;
   height: 40px;
@@ -15169,38 +15156,22 @@ ng-transclude.has-error .form-control {
   margin-right: 15px;
 }
 
-<<<<<<< HEAD
-/* line 201, ../../../assets/screen.scss */
-=======
-/* line 195, ../../../assets/screen.scss */
->>>>>>> 9872c32042386761a9d3acd49ed998e302bbba98
+/* line 202, ../../../assets/screen.scss */
 .disabled-chevron {
   cursor: not-allowed;
 }
 
-<<<<<<< HEAD
-/* line 205, ../../../assets/screen.scss */
-=======
-/* line 199, ../../../assets/screen.scss */
->>>>>>> 9872c32042386761a9d3acd49ed998e302bbba98
+/* line 206, ../../../assets/screen.scss */
 .opacity-50 {
   opacity: 0.5;
 }
 
-<<<<<<< HEAD
-/* line 210, ../../../assets/screen.scss */
-=======
-/* line 204, ../../../assets/screen.scss */
->>>>>>> 9872c32042386761a9d3acd49ed998e302bbba98
+/* line 211, ../../../assets/screen.scss */
 .my_file {
   display: none !important;
 }
 
-<<<<<<< HEAD
-/* line 215, ../../../assets/screen.scss */
-=======
-/* line 209, ../../../assets/screen.scss */
->>>>>>> 9872c32042386761a9d3acd49ed998e302bbba98
+/* line 216, ../../../assets/screen.scss */
 .get_file {
   cursor: pointer;
 }
