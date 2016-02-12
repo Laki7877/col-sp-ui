@@ -70,7 +70,7 @@ module.exports = ['$scope', 'Product', 'util', 'NcAlert', '$window', 'FileUpload
     	}
     	return true;
     };
-    util.warningOnLeaveFn(function() {
+    util.warningOnLeave(function() {
     	return !$scope.dirty;
     });
 

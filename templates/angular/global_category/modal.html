@@ -3,8 +3,8 @@
 	<button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
 	<h3 class="modal-title">Global Category Detail</h3>
 </div>
-<div class="modal-body margin-top-20">
-	<form ng-show="!saving" class="ah-form" name="form" novalidate>
+<div class="modal-body margin-top-20" ng-cloak>
+	<form ng-show="!saving && !loading" class="ah-form" name="form" novalidate>
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-section">
@@ -134,4 +134,5 @@
 		</div> <!-- end .row -->
 	</form>
 	<div ng-show="saving" nc-loading="Saving.."></div>
+	<div ng-show="loading" nc-loading="Loading.."></div>
 </div> <!-- end .modal-body -->

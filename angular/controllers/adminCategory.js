@@ -1,63 +1,100 @@
 
-module.exports = function($scope, $rootScope, $uibModal, common, Category, GlobalCategoryService, AttributeSetService, NcAlert, util, config){
+module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Category, GlobalCategoryService, AttributeSetService, NcAlert, util, config){
 	'ngInject';
 	$scope.categories = [];
-	$scope.attributeSetOptions = [];
+	$scope.timerPromise = null;
 	$scope.popover = false;
 	$scope.loading = false;
-	$scope.dirty = false;
+	$scope.saving = false;
 	$scope.alert = new NcAlert();
+	$scope.attributeSetOptions = [];
+
+	util.warningOnLeave(function() {
+		return !$scope.saving;
+	});
+
+	//UiTree onchange event
 	$scope.treeOptions = {
 		dropped: function(event) {
-			//Either index change or parent change
+			//Change is made
 			if(event.dest.index != event.source.index || event.dest.nodesScope != event.source.nodesScope) {
-				var child = event.source.nodeScope.$modelValue.CategoryId;
-				var parent = event.dest.nodesScope.$nodeScope == null ? null : event.dest.nodesScope.$nodeScope.$modelValue.CategoryId; 
-				
-				var parentNodes = event.dest.nodesScope.$modelValue;
-				var sibling = null;
-
-				sibling = _.findIndex(parentNodes, function(e) {
-					return e.CategoryId == child;
-				});
-				if(sibling == 0) {
-					sibling = null;
-				} else if (sibling < 0) {
-					sibling = null;
-					console.error('something is wrong', event);
-					throw 'error';
-				} else {
-					sibling = parentNodes[sibling - 1].CategoryId;
-				}
-
-				var obj = {
-					Parent: parent,
-					Sibling: sibling,
-					Child: child
-				};
-
-				//Shift
-				GlobalCategoryService.shift(obj)
-					.then(function() {
-						console.info('success');
-					}, function(err) {
-						console.error(err);
-					});
-				
+				$scope.sync();
 			}
 		}
 	};
-	$scope.$on('delete', function(e, node) {
-		GlobalCategoryService.delete([_.pick(node, ['CategoryId'])])
-			.finally( function() {
-				$scope.reload();
+
+	//Action gear
+	$scope.actions = [
+	{
+		name: 'View / Edit',
+		fn: function($nodeScope) {
+			$scope.open($nodeScope.$modelValue);
+		}
+	},
+	{
+		name: 'Delete',
+		fn: function($nodeScope) {
+			$nodeScope.remove();
+			$scope.sync(0);
+		},
+		confirmation: {
+			title: 'Delete',
+			message: 'Are you sure you want to delete this category?'
+		}
+	}];
+
+
+	//Toggle visibility
+	$scope.toggleVisibility = function(node) {
+		$scope.alert.close();
+		node.Visibility = !node.Visibility;
+		GlobalCategoryService.visible([_.pick(node, ['Visibility', 'CategoryId'])])
+			.then(function() {
+			},
+			function(err) {
+				//revert
+				$scope.alert.error(common.getError(err));
+				node.Visibility = !node.Visibility;
 			});
-	});
+	};
+
+	//Update global cat by sending the whole tree.
+	//We put some timeout delay to simulate multiple-edit-single-update
+	$scope.sync = function(delay) {
+		var delay = delay || config.CATEGORY_SYNC_DELAY;
+		if($scope.timerPromise != null) {
+			$timeout.cancel($scope.timerPromise);
+		}
+		$scope.saving = true;
+		$scope.timerPromise = $timeout(function() {
+			GlobalCategoryService.upsert(Category.transformUITreeToNestedSet($scope.categories))
+				.then(function() {
+					$scope.alert.close();
+				}, function(err) {
+					$scope.alert.error(common.getError(err));
+					$scope.reload();
+				})
+				.finally(function() {
+					$scope.saving = false;
+				});
+		}, delay);
+	};
+
+	//Load attribute sets for global cat modal selection
+	$scope.loadAttributeSets = function() {
+		AttributeSetService.listAll().then(function(data) { 
+			$scope.attributeSetOptions = data;
+		});
+	};
+
+	//Condition at which tradable select will lock attributeset
 	$scope.lockAttributeset = function(i) {		
 		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);		
 	};
+
+	//Open category modal
 	$scope.open = function(item) {
-		//Open add-edit modal
+		//Open add or edit one category
 		var modal = $uibModal.open({
 			animation: true,
 			backdrop: 'static',
@@ -71,16 +108,19 @@ module.exports = function($scope, $rootScope, $uibModal, common, Category, Globa
 				$scope.attributeSetOptions = attributeSetOptions;
 				$scope.formData = {};
 				$scope.saving = false;
+				$scope.loading = true;
 
-				$scope.form.$setPristine(true);
 				if(id == 0) {
 					$scope.formData = GlobalCategoryService.generate();
+					$scope.loading = false;
 				} else {
 					GlobalCategoryService.get(id)
 						.then(function(data) {
 							$scope.formData = data;
 						}, function(err) {
 							$scope.alert.error(common.getError(err));
+						}).finally(function() {
+							$scope.loading = false;
 						});
 				}
 
@@ -105,7 +145,7 @@ module.exports = function($scope, $rootScope, $uibModal, common, Category, Globa
 								})
 						} else {
 							GlobalCategoryService.update(id, processed)
-								.then(function() {
+								.then(function(data) {
 									$uibModalInstance.close(GlobalCategoryService.deserialize(data));
 								}, function(err){
 									$scope.alert.error(common.getError(err));
@@ -127,32 +167,28 @@ module.exports = function($scope, $rootScope, $uibModal, common, Category, Globa
 			}
 		});
 
-		if(_.isUndefined(item)) {
-			modal.result.then(function(data) {
-				//new data
+		modal.result.then(function(data) {
+			if(_.isUndefined(item)) {
 				data.nodes = [];
+				data.ProductCount = 0;
 				$scope.categories.unshift(data);
-			});
-		} else {
-			modal.result.then(function(data) {
+			} else {
 				//existing data
 				item.NameEn = data.NameEn;
 				item.CategoryId = data.CategoryId;
 				item.CategoryAbbreviation = data.CategoryAbbreviation;
 				item.Visibility = data.Visibility;
-			});
-		}
+			}
+		});
 	};
 
+	//On init
 	$scope.init = function() {
 		$scope.reload();
 		$scope.loadAttributeSets();
 	};
-	$scope.loadAttributeSets = function() {
-		AttributeSetService.listAll().then(function(data) { 
-			$scope.attributeSetOptions = data;
-		});
-	}
+
+	//Load category list
 	$scope.reload = function() {
 		$scope.loading = true;
 		GlobalCategoryService.listAll().then(function(data) {

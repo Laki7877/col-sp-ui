@@ -4,16 +4,16 @@
 	<div ng-controller="AdminCategoryCtrl" ng-init="init()" class="local-category-page">
 		<nc-alert nc-model="alert"></nc-alert>
 		<div class="page-header with-border">
-		    <h1 class="float-left page-header-title">Global Category</h1>
+		    <h1 class="float-left page-header-title">
+		    	<span>Global Category</span>
+				<span ng-show="saving" nc-loading-small="Saving..."></span>
+		    </h1>
 		    <span class="float-right page-header-action">
 		    	<button type="button" class="btn-white btn margin-right-10">
 		          <span class="">Export</span>
 		        </button>
 		        <button type="button" class="btn-white btn margin-right-10" ng-click="open()">
 		          <span class="">Add New Category</span>
-		        </button>
-		        <button type="button" class="btn-blue btn btn-width-xl disabled">
-		          <span class="">Save Changes</span>
 		        </button>
 		    </span>
 		</div>

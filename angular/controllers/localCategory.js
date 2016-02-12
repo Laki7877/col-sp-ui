@@ -25,7 +25,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 		}
 	};
 
-	util.warningOnLeaveFn(function() {
+	util.warningOnLeave(function() {
 		return !$scope.dirty;
 	});
 

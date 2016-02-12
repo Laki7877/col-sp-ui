@@ -352,6 +352,7 @@ module.exports = {
 			icon: 'fa-clock-o'
 		}
 	],
+	CATEGORY_SYNC_DELAY: 2000, //Category wait for x millisecond before actually saving
 	DEFAULT_SUCCESS_MESSAGE: 'Your changes have been saved successfully.',
 	DEFAULT_ERROR_MESSAGE: 'Unable to save because required fields are missing or incorrect.', 
 	TITLE: {
@@ -373,7 +374,9 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 	(options.preInit || _.noop)($scope);
 
 	//Pop up javascript warning message on leave
-	util.warningOnLeave($scope, 'form');
+	util.warningOnLeave(function() {
+		return !$scope.form.$dirty;
+	});
 
 	$scope.init = function(params) {
 		//Fetch GET Params
@@ -937,65 +940,102 @@ module.exports = ['$scope', '$window', 'Image', 'Brand', 'Alert', function($scop
 }];*/
 },{}],13:[function(require,module,exports){
 
-module.exports = ["$scope", "$rootScope", "$uibModal", "common", "Category", "GlobalCategoryService", "AttributeSetService", "NcAlert", "util", "config", function($scope, $rootScope, $uibModal, common, Category, GlobalCategoryService, AttributeSetService, NcAlert, util, config){
+module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Category", "GlobalCategoryService", "AttributeSetService", "NcAlert", "util", "config", function($scope, $rootScope, $uibModal, $timeout, common, Category, GlobalCategoryService, AttributeSetService, NcAlert, util, config){
 	'ngInject';
 	$scope.categories = [];
-	$scope.attributeSetOptions = [];
+	$scope.timerPromise = null;
 	$scope.popover = false;
 	$scope.loading = false;
-	$scope.dirty = false;
+	$scope.saving = false;
 	$scope.alert = new NcAlert();
+	$scope.attributeSetOptions = [];
+
+	util.warningOnLeave(function() {
+		return !$scope.saving;
+	});
+
+	//UiTree onchange event
 	$scope.treeOptions = {
 		dropped: function(event) {
-			//Either index change or parent change
+			//Change is made
 			if(event.dest.index != event.source.index || event.dest.nodesScope != event.source.nodesScope) {
-				var child = event.source.nodeScope.$modelValue.CategoryId;
-				var parent = event.dest.nodesScope.$nodeScope == null ? null : event.dest.nodesScope.$nodeScope.$modelValue.CategoryId; 
-				
-				var parentNodes = event.dest.nodesScope.$modelValue;
-				var sibling = null;
-
-				sibling = _.findIndex(parentNodes, function(e) {
-					return e.CategoryId == child;
-				});
-				if(sibling == 0) {
-					sibling = null;
-				} else if (sibling < 0) {
-					sibling = null;
-					console.error('something is wrong', event);
-					throw 'error';
-				} else {
-					sibling = parentNodes[sibling - 1].CategoryId;
-				}
-
-				var obj = {
-					Parent: parent,
-					Sibling: sibling,
-					Child: child
-				};
-
-				//Shift
-				GlobalCategoryService.shift(obj)
-					.then(function() {
-						console.info('success');
-					}, function(err) {
-						console.error(err);
-					});
-				
+				$scope.sync();
 			}
 		}
 	};
-	$scope.$on('delete', function(e, node) {
-		GlobalCategoryService.delete([_.pick(node, ['CategoryId'])])
-			.finally( function() {
-				$scope.reload();
+
+	//Action gear
+	$scope.actions = [
+	{
+		name: 'View / Edit',
+		fn: function($nodeScope) {
+			$scope.open($nodeScope.$modelValue);
+		}
+	},
+	{
+		name: 'Delete',
+		fn: function($nodeScope) {
+			$nodeScope.remove();
+			$scope.sync(0);
+		},
+		confirmation: {
+			title: 'Delete',
+			message: 'Are you sure you want to delete this category?'
+		}
+	}];
+
+
+	//Toggle visibility
+	$scope.toggleVisibility = function(node) {
+		$scope.alert.close();
+		node.Visibility = !node.Visibility;
+		GlobalCategoryService.visible([_.pick(node, ['Visibility', 'CategoryId'])])
+			.then(function() {
+			},
+			function(err) {
+				//revert
+				$scope.alert.error(common.getError(err));
+				node.Visibility = !node.Visibility;
 			});
-	});
+	};
+
+	//Update global cat by sending the whole tree.
+	//We put some timeout delay to simulate multiple-edit-single-update
+	$scope.sync = function(delay) {
+		var delay = delay || config.CATEGORY_SYNC_DELAY;
+		if($scope.timerPromise != null) {
+			$timeout.cancel($scope.timerPromise);
+		}
+		$scope.saving = true;
+		$scope.timerPromise = $timeout(function() {
+			GlobalCategoryService.upsert(Category.transformUITreeToNestedSet($scope.categories))
+				.then(function() {
+					$scope.alert.close();
+				}, function(err) {
+					$scope.alert.error(common.getError(err));
+					$scope.reload();
+				})
+				.finally(function() {
+					$scope.saving = false;
+				});
+		}, delay);
+	};
+
+	//Load attribute sets for global cat modal selection
+	$scope.loadAttributeSets = function() {
+		AttributeSetService.listAll().then(function(data) { 
+			$scope.attributeSetOptions = data;
+		});
+	};
+
+	//Condition at which tradable select will lock attributeset
 	$scope.lockAttributeset = function(i) {		
 		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);		
 	};
+
+	//Open category modal
 	$scope.open = function(item) {
-		//Open add-edit modal
+		//Open add or edit one category
 		var modal = $uibModal.open({
 			animation: true,
 			backdrop: 'static',
@@ -1009,16 +1049,19 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "common", "Category", "Gl
 				$scope.attributeSetOptions = attributeSetOptions;
 				$scope.formData = {};
 				$scope.saving = false;
+				$scope.loading = true;
 
-				$scope.form.$setPristine(true);
 				if(id == 0) {
 					$scope.formData = GlobalCategoryService.generate();
+					$scope.loading = false;
 				} else {
 					GlobalCategoryService.get(id)
 						.then(function(data) {
 							$scope.formData = data;
 						}, function(err) {
 							$scope.alert.error(common.getError(err));
+						}).finally(function() {
+							$scope.loading = false;
 						});
 				}
 
@@ -1043,7 +1086,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "common", "Category", "Gl
 								})
 						} else {
 							GlobalCategoryService.update(id, processed)
-								.then(function() {
+								.then(function(data) {
 									$uibModalInstance.close(GlobalCategoryService.deserialize(data));
 								}, function(err){
 									$scope.alert.error(common.getError(err));
@@ -1065,32 +1108,28 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "common", "Category", "Gl
 			}
 		});
 
-		if(_.isUndefined(item)) {
-			modal.result.then(function(data) {
-				//new data
+		modal.result.then(function(data) {
+			if(_.isUndefined(item)) {
 				data.nodes = [];
+				data.ProductCount = 0;
 				$scope.categories.unshift(data);
-			});
-		} else {
-			modal.result.then(function(data) {
+			} else {
 				//existing data
 				item.NameEn = data.NameEn;
 				item.CategoryId = data.CategoryId;
 				item.CategoryAbbreviation = data.CategoryAbbreviation;
 				item.Visibility = data.Visibility;
-			});
-		}
+			}
+		});
 	};
 
+	//On init
 	$scope.init = function() {
 		$scope.reload();
 		$scope.loadAttributeSets();
 	};
-	$scope.loadAttributeSets = function() {
-		AttributeSetService.listAll().then(function(data) { 
-			$scope.attributeSetOptions = data;
-		});
-	}
+
+	//Load category list
 	$scope.reload = function() {
 		$scope.loading = true;
 		GlobalCategoryService.listAll().then(function(data) {
@@ -1281,7 +1320,7 @@ module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory',
 		}
 	};
 
-	util.warningOnLeaveFn(function() {
+	util.warningOnLeave(function() {
 		return !$scope.dirty;
 	});
 
@@ -2082,7 +2121,7 @@ module.exports = ['$scope', 'Product', 'util', 'NcAlert', '$window', 'FileUpload
     	}
     	return true;
     };
-    util.warningOnLeaveFn(function() {
+    util.warningOnLeave(function() {
     	return !$scope.dirty;
     });
 
@@ -2831,8 +2870,8 @@ module.exports = function($scope, Attribute, util) {
 		$scope.$watch('params', $scope.reload, true); 	
 };
 },{}],36:[function(require,module,exports){
-var angular = require('angular');
-module.exports = ['$templateCache', '$filter', function($templateCache, $filter) {
+module.exports = ["$templateCache", "$filter", function($templateCache, $filter) {
+	'ngInject';
 	return {
 		restrict: 'EA',
 		replace: true,
@@ -2844,8 +2883,8 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 			test: '=?ncTest'
 		},
 		template: function(element, attrs) {
-			if(attrs.ncTemplate) {
-				return $templateCache.get(attrs.ncTemplate);
+			if(attrs.ncTradableSelect) {
+				return $templateCache.get(attrs.ncTradableSelect);
 			} else {
 				return $templateCache.get('common/input/tradable-select');
 			}
@@ -2864,7 +2903,8 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 				throw 'Please set required field "ncSelectOptions"';
 			}
 		},
-		controller: ['$scope', function($scope) {
+		controller: ["$scope", function($scope) {
+			'ngInject';
 			$scope.search = {};
 			$scope.activeRight = -1;
 			$scope.activeLeft = -1;
@@ -2971,7 +3011,7 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 		}]
 	};
 }];
-},{"angular":128}],37:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 module.exports = [function () {
     return {
 	priority: 1010,
@@ -4122,28 +4162,9 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     service.page404 = function () {
         $window.location.href = "/error";
     };
+    
 
-    //block before leaving
-    service.warningOnLeave = function (scope, form) {
-        $window.onbeforeunload = function () {
-            if (!scope[form].$dirty) {
-                //not dirty
-                return null;
-            }
-
-            var message = "Your changes will not be saved.",
-                e = e || window.event;
-            // For IE and Firefox
-            if (e) {
-                e.returnValue = message;
-            }
-
-            // For Safari
-            return message;
-        };
-    };
-
-    service.warningOnLeaveFn = function (fn) {
+    service.warningOnLeave = function (fn) {
         $window.onbeforeunload = function () {
             if (fn()) {
                 //not dirty
@@ -4731,7 +4752,7 @@ angular.module('nc')
 			},
 			template: $templateCache.get('common/ncEye'),
 			link: function(scope) {
-				scope.toggle = function() {
+				scope._toggle = function() {
 					scope.model =!scope.model;
 					scope.$eval(scope.callback);
 				};
@@ -5340,7 +5361,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncEye',
-    "<a ng-click=toggle()><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon' : !model,\r" +
+    "<a ng-click=_toggle()><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon' : !model,\r" +
     "\n" +
     "                            'fa fa-eye color-dark-grey eye-icon' : model}\"></i></a>"
   );
@@ -6357,10 +6378,7 @@ module.exports = ['config', function(config) {
             cnode.Rgt = inc++;
 
             //Remove subnodes ptr
-            delete cnode['nodes'];  
-            delete cnode['Depth'];  
-            delete cnode['parent'];  
-            delete cnode['reverse'];  
+            cnode = _.pick(cnode, ['CategoryId', 'Lft', 'Rgt']);
             set.push(cnode);
         };
 
@@ -7803,7 +7821,7 @@ module.exports = {
 },{}],112:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Fri Feb 12 2016 12:28:42 GMT+0700 (SE Asia Standard Time)
+ * Sat Feb 13 2016 01:52:41 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -7925,7 +7943,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('global_category/modal',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><button type=button class=close ng-click=cancel()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\"><form ng-show=!saving class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><button type=button class=close ng-click=cancel()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\r" +
     "\n" +
     "\t\t\t                  'label': 'Category Name (Thai)',\r" +
     "\n" +
@@ -8011,16 +8029,14 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "\n" +
     "\t\t\t\t\t\t\t}\r" +
     "\n" +
-    "\t\t\t\t\t\t\t}\"><input class=form-control name=Commission ng-model=formData.Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-class=\"{ 'has-error' : isInvalid(form.Commission) }\" maxlength=20 ng-maxnumber=100 ng-minnumber=0 required></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions nc-options=\"{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }\"></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\"><span class=color-red>*</span> If category is mapped to a product, attribute set mapping cannot be changed</p></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=cancel()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div></div>"
+    "\t\t\t\t\t\t\t}\"><input class=form-control name=Commission ng-model=formData.Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-class=\"{ 'has-error' : isInvalid(form.Commission) }\" maxlength=20 ng-maxnumber=100 ng-minnumber=0 required></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions nc-options=\"{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }\"></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\"><span class=color-red>*</span> If category is mapped to a product, attribute set mapping cannot be changed</p></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=cancel()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
   $templateCache.put('global_category/nodes',
     "<div class=\"category-content row no-margin\" ui-tree-handle style=\"cursor: pointer\"><div class=category-content-padding><span class=\"col-xs-7 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\r" +
     "\n" +
-    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this) data-nodrag></i> <i class=\"fa fa-chevron-right caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\" data-nodrag></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\" data-nodrag></span> <a class=inline-block ng-click=open(node) data-nodrag>{{ node.NameEn }} ({{node.Lft}} - {{node.Rgt}})</a></span></span> <span class=col-xs-1>{{ node.CategoryAbbreviation }}</span> <span class=col-xs-1>{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\" ng-click=\"node.Visibility = !node.Visibility\" data-nodrag><i ng-class=\"{\t'fa fa-eye color-dark-grey icon-size-20' : node.Visibility,\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t'fa fa-eye-slash color-grey icon-size-20' : !node.Visibility }\"></i></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span> <span class=\"col-xs-1 text-align-center\" data-nodrag><a href=javascript:; uib-popover-template=\"'global_category/nodes_action'\" popover-placement=bottom popover-append-to-body=true popover-any><i class=\"fa fa-gear color-dark-grey icon-size-20\"></i> <i class=\"fa fa-caret-down color-dark-grey\"></i></a></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'global_category/nodes'\"></li></ol>"
+    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this) data-nodrag></i> <i class=\"fa fa-chevron-right caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\" data-nodrag></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\" data-nodrag></span> <a class=inline-block ng-click=open(node) data-nodrag>{{ node.NameEn }}</a></span></span> <span class=col-xs-1>{{ node.CategoryAbbreviation }}</span> <span class=col-xs-1>{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'global_category/nodes'\"></li></ol>"
   );
 
 

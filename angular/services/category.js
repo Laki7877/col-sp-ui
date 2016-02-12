@@ -32,10 +32,7 @@ module.exports = ['config', function(config) {
             cnode.Rgt = inc++;
 
             //Remove subnodes ptr
-            delete cnode['nodes'];  
-            delete cnode['Depth'];  
-            delete cnode['parent'];  
-            delete cnode['reverse'];  
+            cnode = _.pick(cnode, ['CategoryId', 'Lft', 'Rgt']);
             set.push(cnode);
         };
 
