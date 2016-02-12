@@ -3,7 +3,7 @@
 var angular = require('angular');
 var bulk = require('bulk-require')(__dirname, 
 	['controllers/*.js', 'services/*.js', 'helpers/*.js', 
-	'directives/*.js', 'filters/*.js', 'libs/*.js']);
+	'directives/*.js', 'filters/*.js', 'libs/*.js', 'template-options/*.js']);
 var config = require('./config');
 var template = require('./template');
 
@@ -131,6 +131,7 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 }])
 //Configuration
 .value('config', config)
+.value('$templateOptionsCache', bulk['template-options'])
 
 //Helpers
 .factory('common', helpers.common)

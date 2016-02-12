@@ -1,4 +1,4 @@
-//Image Service
+//Image Service 
 module.exports = function($q, $http, common, storage, config, FileUploader){
 	'ngInject';
 	var service = {};
@@ -13,6 +13,9 @@ module.exports = function($q, $http, common, storage, config, FileUploader){
 		var options = angular.merge({
 			url: config.REST_SERVICE_BASE_URL + url,
 			autoUpload: true,
+            onProgressItem : function(item,progress){
+                console.log(item, progress);  
+            },
 			headers: {
 				Authorization: 'Basic ' + accessToken
 			},

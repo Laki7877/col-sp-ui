@@ -7,7 +7,7 @@
 		{{form}}
 		<span class="help-block color-red" ng-if="options.error" 
 			ng-show="$root.isInvalid(form)" 
-			ng-repeat="(key, prop) in form.$error">
+			ng-repeat="(key, prop) in (form.$error) track by key">
 			
 			<span ng-bind-html="options.error.messages[key]"></span>
 		</span>
