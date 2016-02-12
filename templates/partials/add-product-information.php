@@ -63,87 +63,76 @@
                         <h2>Vital Information</h2></div>
                     <div class="form-section-content">
 
+                        <div nc-template="common/input/form-group-with-label" 
+                             nc-template-form="addProductForm.MasterVariant_ProductNameEn"
+                             nc-label="Product Name (English)"
+                             nc-template-options-path="addProductForm/MasterVariant_ProductNameEn">
+                             
+                            <input class="form-control width-field-large" name="MasterVariant_ProductNameEn" 
+                            ng-model="formData.MasterVariant.ProductNameEn"
+                            maxlength="300" ng-pattern="/^([^<>ก-๙])+$/" required />
 
-                        <div ng-template="common/input/text2" ng-template-options="{
-					'label': 'Product Name (Thai)',
-					'labelClass': 'required',
-					'error' : {
-					'messages': {
-					'required': 'This is a required field',
-					'pattern': 'Only letters and numbers allowed'
-					},
-					'show': $root.isInvalid(addProductForm.MasterVariant_ProductNameTh),
-					'conditions' : addProductForm.MasterVariant_ProductNameTh.$error
-					}
-					}">
-                            <input class="form-control width-field-large" name="MasterVariant_ProductNameTh" ng-model="formData.MasterVariant.ProductNameTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_ProductNameTh) }" ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/"
-                            maxlength="300" required />
                         </div>
 
-                        <div ng-template="common/input/text2" ng-template-options="{
-					'label': 'Product Name (English)',
-					'labelClass': 'required',
-					'error' : {
-					'messages': {
-					'required': 'This is a required field',
-					'pattern': 'Only english letters and numbers allowed'
-					},
-					'show': $root.isInvalid(addProductForm.MasterVariant_ProductNameEn),
-					'conditions' : addProductForm.MasterVariant_ProductNameEn.$error
-					}
-					}">
-                            <input class="form-control width-field-large" name="MasterVariant_ProductNameEn" ng-model="formData.MasterVariant.ProductNameEn" maxlength="300" ng-pattern="/^[0-9a-zA-Z\s]+$/" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_ProductNameEn) }"
+                        <div nc-template="common/input/form-group-with-label" 
+                            nc-label="Product Name (Thai)"
+                            nc-template-form="addProductForm.MasterVariant_ProductNameTh"
+                            nc-template-options-path="addProductForm/MasterVariant_ProductNameTh">
+                            <input class="form-control width-field-large" name="MasterVariant_ProductNameTh" 
+                            ng-model="formData.MasterVariant.ProductNameTh" 
+                            ng-pattern="/^[^<>]+$/" maxlength="300"
                             required />
                         </div>
+                        
+                        <div nc-template="common/input/form-group-with-label" 
+                            nc-label="SKU"
+                            nc-template-form="addProductForm.MasterVariant_Sku"
+                            nc-template-options-path="addProductForm/MasterVariant_Sku">
+                           
+                            <input class="form-control width-field-large" name="MasterVariant_Sku" 
+                            ng-show="controlFlags.variation != 'enable'" 
+                            ng-disabled="controlFlags.variation == 'enable'" 
+                            ng-model="formData.MasterVariant.Sku" maxlength="300" 
+                            ng-pattern="/^[^<>]+$/" />
 
-                        <div ng-template="common/input/text2" ng-template-options="{
-					'label': 'SKU',
-					'error' : {
-					'messages': {
-					'pattern': 'Only english letters and numbers allowed'
-					},
-					'show': $root.isInvalid(addProductForm.MasterVariant_Sku),
-					'conditions' : addProductForm.MasterVariant_Sku.$error
-					}
-					}">
-                            <input class="form-control width-field-large" name="MasterVariant_Sku" ng-show="enableProductVariations != 'enable'" ng-disabled="enableProductVariations == 'enable'" ng-model="formData.MasterVariant.Sku" maxlength="300" ng-pattern="/^[0-9a-zA-Z\s]+$/" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Sku) }"/>
-                            
-                            <input class="form-control width-field-large" value="Edit in Variation Tab" disabled ng-if="enableProductVariations == 'enable'"/>
+                            <input class="form-control width-field-large" 
+                            value="Edit in Variation Tab" disabled 
+                            ng-if="controlFlags.variation == 'enable'" />
+                       
                         </div>
 
-                        <div ng-template="common/input/text2" ng-template-options="{
-					'label': 'UPC',
-					'error' : {
-					'messages': {
-					'pattern': 'Only english letters and numbers allowed'
-					},
-					'show': $root.isInvalid(addProductForm.MasterVariant_Upc),
-					'conditions' : addProductForm.MasterVariant_Upc.$error
-					}
-					}">
-                            <input class="form-control width-field-large" ng-pattern="/^[0-9a-zA-Z\s]+$/" name="MasterVariant_Upc" maxlength="300" ng-model="formData.MasterVariant.Upc" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Upc) }" />
+
+                        <div nc-template="common/input/form-group-with-label"
+                            nc-label="UPC"
+                            nc-template-form="addProductForm.MasterVariant_Upc"
+                            nc-template-options-path="addProductForm/MasterVariant_Upc">
+                            <input class="form-control width-field-large" 
+                            ng-pattern="/^[0-9a-zA-Z\s]+$/" name="MasterVariant_Upc" 
+                            maxlength="300" ng-model="formData.MasterVariant.Upc" />
                         </div>
 
                         <div ng-if="formData.MasterVariant.Pid">
-                            <div ng-template="common/input/text" ng-template-options="{
-						'label': (formData.Variants || []).length > 0 ? 'Group ID' : 'PID',
-						'labelClass': 'required'
-						}">
-                                <input class="form-control width-field-large" name="MasterVariant_Pid" disabled ng-model="formData.MasterVariant.Pid" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Pid) }" />
+                            <div nc-template="common/input/form-group-with-label"  
+                            nc-template-form="addProductForm.MasterVariant_Pid"
+                            nc-label="{{ (formData.Variants || []).length > 0 ? 'Group ID' : 'PID' }}"
+                            nc-template-options-path="addProductForm/MasterVariant_Pid">
+                                <input class="form-control width-field-large" 
+                                name="MasterVariant_Pid" disabled 
+                                ng-model="formData.MasterVariant.Pid"  />
                             </div>
                         </div>
-
-
+                        
+     
                         <? $this->insert('components/forms/dropdown-with-label',
-				["label" => "Brand Name",
-				"showBy" => "BrandNameEn",
-				"placeholder" => "Search Brand..",
-				"refresh" => "refreshBrands",
-				"trackBy" => "BrandId",
-				"choices" => "dataSet.Brands",
-				"ng_model"=> "formData.Brand"
-				])
-				?>
+                            ["label" => "Brand Name",
+                            "showBy" => "BrandNameEn",
+                            "placeholder" => "Search Brand..",
+                            "refresh" => "refreshBrands",
+                            "trackBy" => "BrandId",
+                            "choices" => "dataSet.Brands",
+                            "ng_model"=> "formData.Brand"
+                            ])
+				        ?>
                     </div>
                 </div>
                 <div class="form-section">
@@ -163,8 +152,11 @@
 					'conditions' : addProductForm.MasterVariant_OriginalPrice.$error
 					}
 					}">
-                            <input class="form-control width-field-normal" name="MasterVariant_OriginalPrice" ng-pattern="/^\d+(\.\d{1,2})?$/" maxlength="20" ng-disabled="enableProductVariations == 'enable'" ng-model="formData.MasterVariant.OriginalPrice" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_OriginalPrice) }"
-                            ng-required="enableProductVariations == 'disable'" />
+                            <input class="form-control width-field-normal" name="MasterVariant_OriginalPrice" 
+                            ng-pattern="/^\d+(\.\d{1,2})?$/" maxlength="20" ng-disabled="controlFlags.variation == 'enable'" 
+                            ng-model="formData.MasterVariant.OriginalPrice" 
+                            ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_OriginalPrice) }"
+                            ng-required="controlFlags.variation == 'disable'" />
                         </div>
 
                         <div ng-template="common/input/text2" ng-template-options="{
@@ -178,7 +170,7 @@
 					'conditions' : addProductForm.MasterVariant_SalePrice.$error
 					}
 					}">
-                            <input ng-disabled="enableProductVariations == 'enable'" ng-pattern="/^\d+(\.\d{1,2})?$/" class="form-control width-field-normal" maxlength="20" name="MasterVariant_SalePrice" ng-model="formData.MasterVariant.SalePrice" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_SalePrice) }"
+                            <input ng-disabled="controlFlags.variation == 'enable'" ng-pattern="/^\d+(\.\d{1,2})?$/" class="form-control width-field-normal" maxlength="20" name="MasterVariant_SalePrice" ng-model="formData.MasterVariant.SalePrice" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_SalePrice) }"
                             />
                         </div>
                     </div>
@@ -190,36 +182,37 @@
                         <? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (Thai)", "ng_model" => "formData.MasterVariant.DescriptionFullTh", "size" => "xxl"]) ?>
 
                             <div ng-template="common/input/textarea2" ng-template-options="{
-					'label': 'Short Description (Thai)',
-					'inputSize': 'xxl',
-					'formGroupClass' : 'margin-top-30',
-					'error' : {
-					'messages': {
-					'pattern': 'Only thai letters and numbers allowed'
-					},
-					'show': $root.isInvalid(addProductForm.MasterVariant_DescriptionShortTh),
-					'conditions' : addProductForm.MasterVariant_DescriptionShortTh.$error
-					}
-					}">
-                                <textarea ng-pattern="/^[0-9A-Za-zก-๙\s]+$/" class="form-control" maxlength="500" name="MasterVariant_DescriptionShortTh" ng-model="formData.MasterVariant.DescriptionShortTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_DescriptionShortTh) }"
+                                'label': 'Short Description (Thai)',
+                                'inputSize': 'xxl',
+                                'formGroupClass' : 'margin-top-30',
+                                'error' : {
+                                'messages': {
+                                'pattern': 'Special characters are not allowed'
+                                },
+                                'show': $root.isInvalid(addProductForm.MasterVariant_DescriptionShortTh),
+                                'conditions' : addProductForm.MasterVariant_DescriptionShortTh.$error
+                                }
+                                }">
+                                <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="MasterVariant_DescriptionShortTh" ng-model="formData.MasterVariant.DescriptionShortTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_DescriptionShortTh) }"
                                 />
                                 </textarea>
                             </div>
 
-                            <? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (English)", "ng_model" => "formData.MasterVariant.DescriptionFullEn", "size" => "xxl", "form_group_class" => "margin-top-40"]) ?>
+                            <? $this->insert('components/forms/ckeditor-with-label', 
+                            ["label" => "Description (English)", "ng_model" => "formData.MasterVariant.DescriptionFullEn", "size" => "xxl", "form_group_class" => "margin-top-40"]) ?>
 
                                 <div ng-template="common/input/textarea2" ng-template-options="{
-					'label': 'Short Description (English)',
-					'inputSize': 'xxl',
-					'formGroupClass' : 'margin-top-30',
-					'error' : {
-					'messages': {
-					'pattern': 'Only english letters and numbers allowed'
-					},
-					'show': $root.isInvalid(addProductForm.MasterVariant_DescriptionShortEn),
-					'conditions' : addProductForm.MasterVariant_DescriptionShortEn.$error
-					}
-					}">
+                                        'label': 'Short Description (English)',
+                                        'inputSize': 'xxl',
+                                        'formGroupClass' : 'margin-top-30',
+                                        'error' : {
+                                        'messages': {
+                                        'pattern': 'Only english letters and numbers allowed'
+                                        },
+                                        'show': $root.isInvalid(addProductForm.MasterVariant_DescriptionShortEn),
+                                        'conditions' : addProductForm.MasterVariant_DescriptionShortEn.$error
+                                        }
+                                        }">
                                     <textarea ng-pattern="/^[0-9A-Za-z\s]+$/" class="form-control" maxlength="500" name="MasterVariant_DescriptionShortEn" ng-model="formData.MasterVariant.DescriptionShortEn" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_DescriptionShortEn) }"
                                     />
                                     </textarea>
@@ -263,26 +256,31 @@
                                     {{ amap.Attribute.AttributeNameEn }}
                                 </label>
                             </div>
-                            <div class="width-field-normal">
+                            <div ng-class="{'width-field-normal': !isHtmlInput(amap.Attribute.DataType), 'width-field-xxl': isHtmlInput(amap.Attribute.DataType)}">
                                 <!-- disabled if is variant as variant is disabled -->
 
-                                <select class="form-control" disabled ng-show="_isListInput(amap.Attribute.DataType) && (amap.Attribute.VariantStatus && enableProductVariations == 'enable')">
+                                <select class="form-control" disabled ng-show="isListInput(amap.Attribute.DataType) && (amap.Attribute.VariantStatus && controlFlags.variation == 'enable')">
                                     <option selected>Edit in Variation Tab</option>
                                 </select>
 
-                                <input class="form-control" disabled type="text" ng-show="_isFreeTextInput(amap.Attribute.DataType) && (amap.Attribute.VariantStatus && enableProductVariations == 'enable')" value="Edit in Variation Tab" />
+                                <!-- TODO: refactor -->
+                                <input class="form-control" disabled type="text" ng-show="(isHtmlInput(amap.Attribute.DataType) || isFreeTextInput(amap.Attribute.DataType))
+                                 && (amap.Attribute.VariantStatus && controlFlags.variation == 'enable')" value="Edit in Variation Tab" />
 
-                                <!-- to do group into two cases -->
-
-                                <select ng-show="_isListInput(amap.Attribute.DataType) && (!amap.Attribute.VariantStatus || enableProductVariations != 'enable')" class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]">
-
+                                <!-- TODO: refactor -->
+                                <select ng-show="isListInput(amap.Attribute.DataType) && (!amap.Attribute.VariantStatus || controlFlags.variation != 'enable')" class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]">
                                     <option value="" disabled selected>- Select option -</option>
                                     <option ng-repeat="vv in amap.Attribute.AttributeValueMaps">
                                         {{ vv.AttributeValue.AttributeValueEn || vv }}
                                     </option>
                                 </select>
+                                
+                                <div ng-if="isHtmlInput(amap.Attribute.DataType)">
+                                    <textarea ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" class="form-control" ng-ckeditor="ckOptions"></textarea>
+                                </div>
+                                
+                                <input ng-show="isFreeTextInput(amap.Attribute.DataType) && (!amap.Attribute.VariantStatus || controlFlags.variation != 'enable')" type="text" class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" />
 
-                                <input ng-show="_isFreeTextInput(amap.Attribute.DataType) && (!amap.Attribute.VariantStatus || enableProductVariations != 'enable')" type="text" class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" />
 
                             </div>
                         </div>
@@ -293,7 +291,7 @@
                                 <label class="control-label">Product Variations</label>
                             </div>
                             <div class="width-field-normal">
-                                <select class="form-control" ng-disabled="!formData.AttributeSet.AttributeSetId" ng-model="enableProductVariations">
+                                <select class="form-control" ng-disabled="!formData.AttributeSet.AttributeSetId" ng-model="controlFlags.variation">
                                     <option value="enable">
                                         Enable
                                     </option>
@@ -309,7 +307,7 @@
                     <div class="form-section-header">
                         <h2>Keywords</h2></div>
                     <div class="form-section-content">
-                         
+
                         <div ng-template="common/input/text2" ng-template-options="{
                             'label': 'Search Tag',
                             'inputSize': 'large',
@@ -325,9 +323,7 @@
                             }
                             }">
                             <!-- on-select="onKeywordAdded($item, $model)" on-remove="onKeywordRemoved($item, $model)" -->
-                            <ui-select ng-model="formData.Keywords" name="Keywords" nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30"
-                            nc-tag-pattern="^[a-zA-Z0-9ก-๙\s\-]+$"
-                            multiple tagging tagging-tokens=",|ENTER" tagging-label="" nc-tag-field>
+                            <ui-select ng-model="formData.Keywords" name="Keywords" nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30" nc-tag-pattern="^[a-zA-Z0-9ก-๙\s\-]+$" multiple tagging tagging-tokens=",|ENTER" tagging-label="" nc-tag-field>
                                 <ui-select-match placeholder="Separate tags with comma (or enter)">
                                     {{$item}}
                                 </ui-select-match>
@@ -335,7 +331,7 @@
                                     {{item}}
                                 </ui-select-choices>
                             </ui-select>
-                            
+
                         </div>
 
                         <div class="form-group" ng-if="formData.AttributeSet.AttributeSetTagMaps.length > 0">
@@ -357,20 +353,20 @@
                     <div class="form-section-content">
 
                         <div ng-template="common/input/text2" ng-template-options="{
-					'label': 'Inventory Amount',
-					'hint': {
-					'message': 'Example: 100',
-					'show': true
-					},
-					'error' : {
-					'messages': {
-					'pattern': 'Only numbers allowed'
-					},
-					'show': $root.isInvalid(addProductForm.MasterVariant_Quantity),
-					'conditions' : addProductForm.MasterVariant_Quantity.$error
-					}
-					}">
-                            <input class="form-control" name="MasterVariant_Quantity" ng-pattern="/^[0-9]+$/" maxlength="10" ng-model="formData.MasterVariant.Quantity" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Quantity) }" />
+                                'label': 'Inventory Amount',
+                                'hint': {
+                                'message': 'Example: 100',
+                                'show': true
+                                },
+                                'error' : {
+                                'messages': {
+                                'pattern': 'Only numbers allowed'
+                                },
+                                'show': $root.isInvalid(addProductForm.MasterVariant_Quantity),
+                                'conditions' : addProductForm.MasterVariant_Quantity.$error
+                                }
+                                }">
+                            <input class="form-control" name="MasterVariant_Quantity" ng-pattern-restrict="^[0-9]*$" maxlength="10" ng-model="formData.MasterVariant.Quantity" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Quantity) }" />
                         </div>
 
 
@@ -389,7 +385,7 @@
 					},
 					'tooltip': 'When your inventory gets lower than saftety stock, you will get a warning'
 					}">
-                            <input class="form-control" name="MasterVariant_SafetyStock" ng-pattern="/^[0-9]+$/" maxlength="10" ng-model="formData.MasterVariant.SafetyStock" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_SafetyStock) }" />
+                            <input class="form-control" name="MasterVariant_SafetyStock" ng-pattern-restrict="^[0-9]*$" maxlength="10" ng-model="formData.MasterVariant.SafetyStock" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_SafetyStock) }" />
                         </div>
 
                         <? $this->insert('components/forms/dropdown-with-label',
@@ -424,7 +420,7 @@
 
                             <div class="form-group">
                                 <div class="width-label">
-                                    <label class="control-label required">Package Dimension</label>
+                                    <label class="control-label required" stytle="margin-top:25px">Package Dimension</label>
                                 </div>
                                 <div class="width-field-xxl">
                                     <div class="multiple-input">
@@ -481,7 +477,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="input-column no-label select input-xl">
+                                        <div class="input-column no-label select input-xl" style="padding-top: 24px">
                                             <select ng-model="formData.MasterVariant.DimensionUnit" class="form-control">
                                                 <option value="MM"> Millimeter </option>
                                                 <option value="CM"> Centimeter </option>

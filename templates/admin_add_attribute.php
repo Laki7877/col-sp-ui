@@ -22,7 +22,7 @@
                           'required': 'This is a required field',
                           'pattern': 'Only English letters and numbers allowed'
                         },
-                        'show': $root.isInvalid(form.AttributeNameEn),
+                        'show': isInvalid(form.AttributeNameEn),
                         'conditions' : form.AttributeNameEn.$error
                    }
                 }">
@@ -30,31 +30,8 @@
                   class="form-control"
                   name="AttributeNameEn"
                   ng-model="formData.AttributeNameEn"
-                  ng-class="{ 'has-error' : $root.isInvalid(form.AttributeNameEn) }"
+                  ng-class="{ 'has-error' : isInvalid(form.AttributeNameEn) }"
                   ng-pattern="/^[A-Za-z0-9_\-\s]+$/"
-                  maxlength="100"
-                  required />
-              </div>
-              <div ng-template="common/input/text2"
-                ng-template-options="{
-                  'label': 'Attribute Name (Thai)',
-                  'labelClass': 'required',
-                  'inputSize': 'large',
-                  'error' : {
-                        'messages': {
-                          'required': 'This is a required field',
-                          'pattern': 'Only letters and numbers allowed'
-                        },
-                        'show': $root.isInvalid(form.AttributeNameTh),
-                        'conditions' : form.AttributeNameTh.$error
-                   }
-                }">
-                <input
-                  class="form-control"
-                  name="AttributeNameTh"
-                  ng-model="formData.AttributeNameTh"
-                  ng-class="{ 'has-error' : $root.isInvalid(form.AttributeNameTh) }"
-                  ng-pattern="/^[ก-๙A-Za-z0-9_\-\s]+$/"
                   maxlength="100"
                   required />
               </div>
@@ -68,7 +45,7 @@
                           'required': 'This is a required field',
                           'pattern': 'Only English letters and numbers allowed'
                         },
-                        'show': $root.isInvalid(form.DisplayNameEn),
+                        'show': isInvalid(form.DisplayNameEn),
                         'conditions' : form.DisplayNameEn.$error
                    }
                 }">
@@ -76,7 +53,7 @@
                   class="form-control"
                   name="DisplayNameEn"
                   ng-model="formData.DisplayNameEn"
-                  ng-class="{ 'has-error' : $root.isInvalid(form.DisplayNameEn) }"
+                  ng-class="{ 'has-error' : isInvalid(form.DisplayNameEn) }"
                   ng-pattern="/^[A-Za-z0-9_\-\(\)\*\s\.]+$/"
                   maxlength="100"
                   required />
@@ -91,7 +68,7 @@
                           'required': 'This is a required field',
                           'pattern': 'Only letters and numbers allowed'
                         },
-                        'show': $root.isInvalid(form.DisplayNameTh),
+                        'show': isInvalid(form.DisplayNameTh),
                         'conditions' : form.DisplayNameTh.$error
                    }
                 }">
@@ -99,7 +76,7 @@
                   class="form-control"
                   name="DisplayNameTh"
                   ng-model="formData.DisplayNameTh"
-                  ng-class="{ 'has-error' : $root.isInvalid(form.DisplayNameTh) }"
+                  ng-class="{ 'has-error' : isInvalid(form.DisplayNameTh) }"
                   ng-pattern="/^[ก-๙A-Za-z0-9_\-\(\)\*\s\.]+$/"
                   maxlength="100"
                   required />
@@ -132,7 +109,7 @@
                       class="form-control"
                       name="stAttributeUnitTh"
                       ng-model="formData.ST.AttributeUnitTh"
-                      ng-class="{ 'has-error' : $root.isInvalid(form.stAttributeUnitTh) }"
+                      ng-class="{ 'has-error' : isInvalid(form.stAttributeUnitTh) }"
                       maxlength="100"
                       />
                   </div>
@@ -144,11 +121,12 @@
                       class="form-control"
                       name="stAttributeUnitEn"
                       ng-model="formData.ST.AttributeUnitEn"
-                      ng-class="{ 'has-error' : $root.isInvalid(form.stAttributeUnitEn) }"
+                      ng-class="{ 'has-error' : isInvalid(form.stAttributeUnitEn) }"
                       maxlength="100"
                        />
                   </div>
-                  <div ng-template="common/input/dropdown"
+                  <!--div 
+                    ng-template="common/input/dropdown"
                     ng-template-options="{
                       'label' : 'Input Validation'
                     }">
@@ -160,7 +138,7 @@
                           <span ng-bind="item.name"></span>
                       </ui-select-choices>
                     </ui-select>
-                  </div>
+                  </div-->
                   <div ng-template="common/input/text2"
                     ng-template-options="{
                       'label': 'If empty, value equals',
@@ -168,7 +146,7 @@
                             'messages': {
                               'pattern': 'Only letters and numbers allowed'
                             },
-                            'show': $root.isInvalid(form.ST_DefaultValue),
+                            'show': isInvalid(form.ST_DefaultValue),
                             'conditions' : form.ST_DefaultValue.$error
                        }
                     }">
@@ -176,7 +154,7 @@
                       class="form-control"
                       name="ST_DefaultValue"
                       ng-model="formData.ST.DefaultValue"
-                      ng-class="{ 'has-error' : $root.isInvalid(form.ST_DefaultValue) }"
+                      ng-class="{ 'has-error' : isInvalid(form.ST_DefaultValue) }"
                       ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/"
                       maxlength="100"
                       />
@@ -190,18 +168,18 @@
                     <div class="width-field-xxl">
                       <div class="multiple-input">
                         <div class="input-column input-xxl">
-                          <input name="ltChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (Thai)" ng-class="{'has-error': $root.isInvalid(form['ltChoiceTh' + $index])}" maxlength="100" required/>
+                          <input name="ltChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (Thai)" ng-class="{'has-error': isInvalid(form['ltChoiceTh' + $index])}" maxlength="100" required/>
                           <!-- Required -->
-                          <div class="help-block color-red" ng-show="$root.isInvalid(form['ltChoiceEn' + $index]) || $root.isInvalid(form['ltChoiceTh' + $index])">
+                          <div class="help-block color-red" ng-show="isInvalid(form['ltChoiceEn' + $index]) || isInvalid(form['ltChoiceTh' + $index])">
                               <span ng-show="form['ltChoiceTh' + $index].$error.required || form['ltChoiceEn' + $index].$error.required">This is a required field</span>
                           </div>
                           <!-- Pattern -->
-                          <div class="help-block color-red" ng-show="$root.isInvalid(form['ltChoiceEn' + $index])">
+                          <div class="help-block color-red" ng-show="isInvalid(form['ltChoiceEn' + $index])">
                               <span ng-show="form['ltChoiceEn' + $index].$error.pattern">Only English allowed</span>
                           </div>
                         </div>
                         <div class="input-column input-xxl">
-                          <input name="ltChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': $root.isInvalid(form['ltChoiceEn' + $index])}" maxlength="100" ng-pattern="/^[^ก-๙]+$/" required/>
+                          <input name="ltChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': isInvalid(form['ltChoiceEn' + $index])}" maxlength="100" ng-pattern="/^[^ก-๙]+$/" required/>
                         </div>
                         <i ng-if="$index > 0" class="clickable fa fa-trash fa-2x margin-left-10 color-grey margin-top-5" ng-click="formData.LT.AttributeValues.splice($index,1)"></i>
                       </div>
@@ -225,7 +203,7 @@
                             'messages': {
                               'pattern': 'Only letters and numbers allowed'
                             },
-                            'show': $root.isInvalid(form.HB_DefaultValue),
+                            'show': isInvalid(form.HB_DefaultValue),
                             'conditions' : form.HB_DefaultValue.$error
                        }
                     }">
@@ -233,7 +211,7 @@
                       class="form-control"
                       name="HB_DefaultValue"
                       ng-model="formData.HB.DefaultValue"
-                      ng-class="{ 'has-error' : $root.isInvalid(form.HB_DefaultValue) }"
+                      ng-class="{ 'has-error' : isInvalid(form.HB_DefaultValue) }"
                       ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/"
                       maxlength="100"
                       />
@@ -245,11 +223,12 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Variation</h2></div>
             <div class="form-section-content">
-              <div ng-template="common/input/dropdown"
+              <div 
+                ng-template="common/input/dropdown"
                 ng-template-options="{
                   'label' : 'Set as Variation'
                 }">
-                <ui-select ng-model="formData.VariantStatus" search-enabled="false">
+                <ui-select ng-model="formData.VariantStatus" search-enabled="false" ng-disabled="formData.DataType.value == 'HB'">
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>
                   </ui-select-match>
@@ -259,7 +238,7 @@
                 </ui-select>
               </div>
               <div
-                ng-show="formData.VariantStatus.value"
+                ng-show="formData.VariantStatus.value && formData.DataType.value != 'HB'"
                 ng-template="common/input/dropdown"
                 ng-template-options="{
                   'label' : 'Variant Display Type'

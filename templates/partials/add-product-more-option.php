@@ -18,8 +18,7 @@
 							<ui-select-match placeholder="Search by Product Name or PID">
 								<span>{{ $item.ProductNameEn }}</span>
 							</ui-select-match>
-							<ui-select-choices repeat="item in (dataSet.RelatedProducts | exclude: formData.RelatedProducts : 'ProductId') track by item.ProductId" 
-                            
+							<ui-select-choices repeat="item in (dataSet.RelatedProducts | exclude: formData.RelatedProducts : 'Pid') track by item.Pid" 
 							refresh="refreshRelatedProducts($select.search)" refresh-delay="1">
 								{{ item.ProductNameEn }}
 							</ui-select-choices>
@@ -38,95 +37,85 @@
 					
 					<div ng-template="common/input/text2"
 						ng-template-options="{
-						'label': 'Meta Title',
-						'error' : {
-						'messages': {
-						
-						},
-						'show': $root.isInvalid(addProductForm.SEO_MetaTitle),
-						'conditions' : addProductForm.SEO_MetaTitle.$error
-						}
+						  'label': 'Meta Title (English)'
 						}">
 						<input
 						maxlength="60"
 						class="form-control width-field-normal"
-						name="SEO_MetaTitle"
-						ng-model="formData.SEO.MetaTitle"
-						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaTitle) }"
+						name="SEO_MetaTitleEn"
+						ng-model="formData.SEO.MetaTitleEn"
+						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaTitleEn) }"
+						/>
+					</div>
+                    
+                    <div ng-template="common/input/text2"
+						ng-template-options="{
+						  'label': 'Meta Title (Thai)'
+						}">
+						<input
+						maxlength="60"
+						class="form-control width-field-normal"
+						name="SEO_MetaTitleTh"
+						ng-model="formData.SEO.MetaTitleTh"
+						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaTitleTh) }"
 						/>
 					</div>
 
 					<div ng-template="common/input/text2"
 						ng-template-options="{
-						'label': 'Meta Description',
-						'error' : {
-						'messages': {
-						
-						},
-						'show': $root.isInvalid(addProductForm.SEO_MetaDescription),
-						'conditions' : addProductForm.SEO_MetaDescription.$error
-						}
+						  'label': 'Meta Description (English)'
 						}">
 						<input
 						maxlength="150"
 						class="form-control width-field-normal"
-						name="SEO_MetaDescription"
-						ng-model="formData.SEO.MetaDescription"
-						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaDescription) }"
+						name="SEO_MetaDescriptionEn"
+						ng-model="formData.SEO.MetaDescriptionEn"
+						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaDescriptionEn) }"
+						/>
+					</div>
+                    
+                    <div ng-template="common/input/text2"
+						ng-template-options="{
+						  'label': 'Meta Description (Thai)'
+						}">
+						<input
+						maxlength="150"
+						class="form-control width-field-normal"
+						name="SEO_MetaDescriptionTh"
+						ng-model="formData.SEO.MetaDescriptionTh"
+						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaDescriptionTh) }"
 						/>
 					</div>
 
 					<div ng-template="common/input/text2"
 						ng-template-options="{
-						'label': 'Meta Keywords',
-						'error' : {
-						'messages': {
-							'pattern': 'Only english letters and numbers allowed'
-						},
-						'show': $root.isInvalid(addProductForm.SEO_MetaKeywords),
-						'conditions' : addProductForm.SEO_MetaKeywords.$error
-						}
+						  'label': 'Meta Keywords (English)',
 						}">
 						<input
 						placeholder="Keywords separated by comma"
 						class="form-control width-field-normal"
-						name="SEO_MetaKeywords"
-						ng-model="formData.SEO.MetaKeywords"
-						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaKeywords) }"
+						name="SEO_MetaKeywordsEn"
+						ng-model="formData.SEO.MetaKeywordsEn"
+						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaKeywordsEn) }"
 						/>
 					</div>
-
-					<!--<div ng-template="common/input/text2"
+                    
+                    <div ng-template="common/input/text2"
 						ng-template-options="{
-						'label': 'Product URL Key (Thai)',
-						'error' : {
-						'messages': {
-						'pattern': 'Only letters, numbers, -, and _ allowed. Space is not allowed'
-						},
-						'show': $root.isInvalid(addProductForm.SEO_ProductUrlKeyTh),
-						'conditions' : addProductForm.SEO_ProductUrlKeyTh.$error
-						}
+						  'label': 'Meta Keywords (Thai)'
 						}">
 						<input
+						placeholder="Keywords separated by comma"
 						class="form-control width-field-normal"
-						ng-pattern="/^[A-Za-z0-9_\-]+$/"
-						maxlength="300"
-						name="SEO_ProductUrlKeyTh"
-						ng-model="formData.SEO.ProductUrlKeyTh"
-						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_ProductUrlKeyTh) }"
+						name="SEO_MetaKeywordsTh"
+						ng-model="formData.SEO.MetaKeywordsTh"
+						ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaKeywordsTh) }"
 						/>
-					</div>-->
-
+					</div>
+                    
 					<div ng-template="common/input/text2"
 						ng-template-options="{
-						'label': 'Product URL Key (English)',
-						'error' : {
-						'messages': {
-						'pattern': 'Only letters, numbers, -, and _ allowed. Space is not allowed'
-						},
-						'show': $root.isInvalid(addProductForm.SEO_ProductUrlKeyEn),
-						'conditions' : addProductForm.SEO_ProductUrlKeyEn.$error
-						}
+						  'label': 'Product URL Key'
 						}">
 						<input
 						maxlength="300"

@@ -1,21 +1,4 @@
 angular.module('nc')
-	.directive('uiSelect', function() {
-		return {
-            priority: -1,
-			require: 'ngModel',
-			link: function(scope, elem, attrs, ngModel) {
-
-                //model -> view
-                ngModel.$formatters.unshift(function(input) {
-                    console.log('pre', input);
-                });
-
-                ngModel.$formatters.push(function(input) {
-                    console.log('post', input);
-                })
-			}
-		};
-	})
     .directive('ncTagValidator', function () {
         return {
             restrict: 'A',

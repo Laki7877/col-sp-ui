@@ -20,7 +20,7 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
                     })
                     .error(function (data, status, headers, config) {
                         console.warn(status, config.method, config.url, data);
-			var onLoginPage = ($window.location.pathname == "/login");
+			             var onLoginPage = ($window.location.pathname == "/login");
                         if(status == 401 && !onLoginPage){
                             //Catch Forbidden
                             storage.put('redirect', $window.location.pathname);
@@ -116,6 +116,8 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
             obj.deserialize = function(data) {
                 return data;
             };
+
+            //Extras
             obj.duplicate = function(id) {
                 return service.makeRequest({
                     method: 'POST',

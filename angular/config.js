@@ -1,11 +1,15 @@
-//remote baseUrl - 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/'
 module.exports = {
 	//baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/',
 	//REST_SERVICE_BASE_URL: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api',
     baseUrl: 'http://localhost:58127/api/',
 	REST_SERVICE_BASE_URL: 'http://localhost:58127/api/',
+	//REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
+<<<<<<< HEAD
 	HANDLE_EXCEPTION :false,
+=======
+    HANDLE_EXCEPTION: false,
+>>>>>>> 5c27fbee1d994ba9245fb28c1ed99f056c770f4d
 	CK_DEFAULT_OPTIONS: {
 	   filebrowserBrowseUrl : '/ckfinder/ckfinder.html',
 	   filebrowserImageBrowseUrl : '/ckfinder/ckfinder.html?type=Images',
@@ -107,7 +111,8 @@ module.exports = {
 		}
 	],
 	PRODUCT_REVIEW_MAX_RATING: 5.0,
-	PRODUCT_STATUS: [{
+	PRODUCT_STATUS: [
+		{
 			name: 'Draft',
 			value: 'DF',
 			color: 'color-grey',

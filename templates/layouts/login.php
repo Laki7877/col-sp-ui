@@ -9,6 +9,7 @@
         <link rel="shortcut icon" href="<?= $this->asset('/assets/favicon.ico') ?>">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="stylesheet" href="<?=$this->asset('/assets/css/screen.css')?>" />
+        <script src="<?= $this->asset('/assets/js/jquery.min.js') ?>"></script>   
         <script src="<?= $this->asset('/assets/js/bundle.js') ?>"></script>
         <script src="<?= $this->asset('/assets/js/bootstrap.min.js') ?>"></script>
         <script src="<?= $this->asset('/assets/js/bootstrap-fixconflict.js') ?>"></script>
@@ -24,9 +25,7 @@
         <div id="wrapper-login">
             <?= $this->section('content') ?>
         </div>
-        <script src="<?= $this->asset('/assets/js/jquery-ui.js') ?>"></script>   
-        <script src="<?= $this->asset('/assets/js/jquery.ui.nestedSortable.js') ?>"></script>   
-        <script src="<?= $this->asset('/assets/js/custom-js.js') ?>"></script>
+
         <script src="/assets/libs/ckeditor/ckeditor.js"></script>
         <script src="/assets/libs/ckeditor/config.js"></script>
         <script src="/assets/libs/moment/moment.min.js"></script>
