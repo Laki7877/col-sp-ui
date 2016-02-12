@@ -1,7 +1,7 @@
 <!-- NC TEMPLATE ONLY -->
 <div ng-class="['form-group ' + (options.formGroupClass || '')]">
 	<div class="width-label"><label class="control-label" ng-class="options.labelClass || {}">{{ label }}</label></div>
-	<div ng-class="['width-field-' + (options.inputSize || 'normal')]" class="input-with-unit">
+	<div ng-class="['width-field-' + (options.inputSize || 'normal')]">
 		<ng-transclude ng-class="{ 'has-error' : isInvalid(templateField()) }"></ng-transclude>
 		<span class="input-unit" ng-if="options.unit">{{ options.unit }}</span>
 		<span class="help-block" ng-if="options.hint" ng-show="options.hint.show">{{options.hint.message}}</span>

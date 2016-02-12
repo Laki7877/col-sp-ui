@@ -107,7 +107,8 @@
                             nc-template-form="addProductForm.MasterVariant_Upc"
                             nc-template-options-path="addProductForm/MasterVariant_Upc">
                             <input class="form-control width-field-large" 
-                            ng-pattern="/^[0-9a-zA-Z\s]+$/" name="MasterVariant_Upc" 
+                            ng-pattern="/^[^<>]+$/" 
+                            name="MasterVariant_Upc" 
                             maxlength="300" ng-model="formData.MasterVariant.Upc" />
                         </div>
 
@@ -140,38 +141,29 @@
                         <h2>Price</h2></div>
                     <div class="form-section-content">
 
-                        <div ng-template="common/input/text2" ng-template-options="{
-					'label': 'Original Price',
-					'labelClass': 'required',
-					'error' : {
-					'messages': {
-					'required': 'This is a required field',
-					'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
-					},
-					'show': $root.isInvalid(addProductForm.MasterVariant_OriginalPrice),
-					'conditions' : addProductForm.MasterVariant_OriginalPrice.$error
-					}
-					}">
+                        <div nc-template="common/input/form-group-with-label" 
+                            nc-label="Original Price"
+                            nc-template-options-path="addProductForm/MasterVariant_OriginalPrice"
+                            nc-template-form="addProductForm.MasterVariant_OriginalPrice">
+                            
                             <input class="form-control width-field-normal" name="MasterVariant_OriginalPrice" 
-                            ng-pattern="/^\d+(\.\d{1,2})?$/" maxlength="20" ng-disabled="controlFlags.variation == 'enable'" 
+                            ng-pattern="/^\d+(\.\d{1,2})?$/" 
+                            maxlength="20" 
+                            ng-disabled="controlFlags.variation == 'enable'" 
                             ng-model="formData.MasterVariant.OriginalPrice" 
-                            ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_OriginalPrice) }"
                             ng-required="controlFlags.variation == 'disable'" />
                         </div>
 
-                        <div ng-template="common/input/text2" ng-template-options="{
-					'label': 'Sale Price',
-					'error' : {
-					'messages': {
-					'min': 'Sale price must be lower than the original price',
-					'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
-					},
-					'show': $root.isInvalid(addProductForm.MasterVariant_SalePrice),
-					'conditions' : addProductForm.MasterVariant_SalePrice.$error
-					}
-					}">
-                            <input ng-disabled="controlFlags.variation == 'enable'" ng-pattern="/^\d+(\.\d{1,2})?$/" class="form-control width-field-normal" maxlength="20" name="MasterVariant_SalePrice" ng-model="formData.MasterVariant.SalePrice" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_SalePrice) }"
-                            />
+                        <div nc-template="common/input/form-group-with-label" 
+                        nc-template-form="addProductForm.MasterVariant_SalePrice"
+                        nc-label="Sale Price"
+                        nc-template-options-path="addProductForm/MasterVariant_SalePrice">
+                            <input ng-disabled="controlFlags.variation == 'enable'" 
+                             ng-pattern="/^\d+(\.\d{1,2})?$/"
+                             class="form-control width-field-normal" 
+                             maxlength="20" 
+                             name="MasterVariant_SalePrice" 
+                             ng-model="formData.MasterVariant.SalePrice"/>
                         </div>
                     </div>
                 </div>
@@ -181,20 +173,13 @@
                     <div class="form-section-content">
                         <? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (Thai)", "ng_model" => "formData.MasterVariant.DescriptionFullTh", "size" => "xxl"]) ?>
 
-                            <div ng-template="common/input/textarea2" ng-template-options="{
-                                'label': 'Short Description (Thai)',
-                                'inputSize': 'xxl',
-                                'formGroupClass' : 'margin-top-30',
-                                'error' : {
-                                'messages': {
-                                'pattern': 'Special characters are not allowed'
-                                },
-                                'show': $root.isInvalid(addProductForm.MasterVariant_DescriptionShortTh),
-                                'conditions' : addProductForm.MasterVariant_DescriptionShortTh.$error
-                                }
-                                }">
-                                <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="MasterVariant_DescriptionShortTh" ng-model="formData.MasterVariant.DescriptionShortTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_DescriptionShortTh) }"
-                                />
+                            <div nc-template="common/input/form-group-with-label" 
+                            nc-label="Short Description (Thai)"
+                            nc-template-options-path="addProductForm/MasterVariant_DescriptionShortTh"
+                            nc-template-form="addProductForm.MasterVariant_DescriptionShortTh">
+                                <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" 
+                                name="MasterVariant_DescriptionShortTh" 
+                                ng-model="formData.MasterVariant.DescriptionShortTh" />
                                 </textarea>
                             </div>
 
