@@ -236,8 +236,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 clean.UpdateBy =1;
                 clean.By =1;
                 clean.Visibility = 1;
-<<<<<<< HEAD
-clean.IP ='104.155.199.198';
+
+                clean.IP ='104.155.199.198';
                 clean.ShortDescriptionTH = fd.ShortDescriptionTH ;
                 clean.LongDescriptionTH = fd.LongDescriptionTH;
                 clean.ShortDescriptionEN = fd.ShortDescriptionEN ;
