@@ -315,6 +315,13 @@
         $scope.checkAll = false;
     }, true);
 
+$scope.checkAll = function(){
+        var first = $scope.productList[0];
+        var tval = !($scope.checkBoxCache[first.ProductId] || false);
+        $scope.productList.forEach(function (d) {
+            $scope.checkBoxCache[d.ProductId] = tval;
+        });
+    }
 
     //Select All checkbox
     $scope.$watch('checkAll', function (newVal, oldVal) {
@@ -328,6 +335,22 @@
         Object.keys($scope.checkBoxCache).forEach(function (key) {
             if ($scope.checkBoxCache[key]) m.push($scope.checkBoxCache[key]);
         });
+        
+        //Count checked checkbox (on this page only)
+        //TODO: I don't like this solution, I'd rather trade space for time
+        //note: can't just count checkboxcache because checkboxcache is global across
+        //all pages. 
+        var chkCount = 0;
+        $scope.productList.forEach(function(p){
+            chkCount += ($scope.checkBoxCache[p.ProductId] ? 1 : 0);
+        });
+        
+        //Change selectAll checkbox state
+        if(chkCount != $scope.productList.length){
+            $scope.allChecked = false;
+        }else{
+            $scope.allChecked = true;
+        }
         return m.length;
     }
 }];

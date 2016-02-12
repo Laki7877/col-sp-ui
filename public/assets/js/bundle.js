@@ -2968,6 +2968,13 @@ module.exports = ['$scope', 'Product', 'Collection', 'util', 'Alert', '$window',
         $scope.checkAll = false;
     }, true);
 
+$scope.checkAll = function(){
+        var first = $scope.productList[0];
+        var tval = !($scope.checkBoxCache[first.ProductId] || false);
+        $scope.productList.forEach(function (d) {
+            $scope.checkBoxCache[d.ProductId] = tval;
+        });
+    }
 
     //Select All checkbox
     $scope.$watch('checkAll', function (newVal, oldVal) {
@@ -2981,6 +2988,22 @@ module.exports = ['$scope', 'Product', 'Collection', 'util', 'Alert', '$window',
         Object.keys($scope.checkBoxCache).forEach(function (key) {
             if ($scope.checkBoxCache[key]) m.push($scope.checkBoxCache[key]);
         });
+        
+        //Count checked checkbox (on this page only)
+        //TODO: I don't like this solution, I'd rather trade space for time
+        //note: can't just count checkboxcache because checkboxcache is global across
+        //all pages. 
+        var chkCount = 0;
+        $scope.productList.forEach(function(p){
+            chkCount += ($scope.checkBoxCache[p.ProductId] ? 1 : 0);
+        });
+        
+        //Change selectAll checkbox state
+        if(chkCount != $scope.productList.length){
+            $scope.allChecked = false;
+        }else{
+            $scope.allChecked = true;
+        }
         return m.length;
     }
 }];
@@ -8604,23 +8627,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
             return common.makeRequest(req);
         };
 
-        //service.getAll = function (parameters) {
-        //    var req = {
-        //        method: 'GET',
-        //        url: '/ProductStages/',
-        //        params: {
-        //            _order: parameters.orderBy || 'ProductId',
-        //            _limit: parameters.pageSize || 10,
-        //            _offset: parameters.page * parameters.pageSize || 0,
-        //            _direction: parameters.direction || 'asc',
-        //            _filter: parameters.filter || 'ALL',
-        //            searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined
-        //        }
-        //    };
-
-        //    return common.makeRequest(req);
-        //};
-
+     
         service.export = function (tobj) {
             var path = '/ProductStages/Export';
             return common.makeRequest({
@@ -8681,104 +8688,10 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
 
             //Cleaned data
             var clean = {};
-            // clean.Variants = [];
-
-            // var objectMapper = {
-            //     VideoLinks: function (vlink) {
-            //         var f = [];
-            //         Object.keys(vlink).forEach(function (key) {
-            //             var value = vlink[key];
-            //             var obj = {
-            //                 'Url': value
-            //             };
-
-            //             f.push(obj);
-            //         });
-            //         return f;
-            //     }
-            // };
-            //Mapper functions
-            // var mapper = {
-            //     Images: function (image, pos) {
-            //         if (image.$id) delete image.$id;
-            //         image.position = pos;
-            //         return image;
-            //     },
-            //     Variants: function (_variant) {
-            //         var variant = angular.copy(_variant);
-
-            //         if (util.nullOrUndefined(variant['VideoLinks'])) variant.VideoLinks = [];
-            //         if (util.nullOrUndefined(variant['VideoLinks'])) variant.Images = [];
-            //         if ("queue" in variant) delete variant.queue; //circular
-
-            //         variant.Visibility = variant.Visibility;
-            //         variant.Images = (variant.Images || []).map(mapper.Images);
-            //         variant.Images360 = []; //for future
-
-            //         try {
-            //             variant.VideoLinks = objectMapper.VideoLinks(variant.VideoLinks);
-            //         } catch (ex) {
-            //             variant.VideoLinks = [];
-            //         }
-
-            //         return variant;
-            //     },
-            //     Categories: function (lcat) {
-            //         if (lcat == null) return null;
-            //         return {
-            //             CategoryId: lcat.CategoryId
-            //         };
-            //     }
-            // }
-
-            // try {
-            //     clean.GlobalCategories = fd.GlobalCategories.map(mapper.Categories);
-            // } catch (ex) {
-            //     console.warn("Unable to map Global Cat Array, Global Cat array is mandatory", ex);
-            // }
-
-            // try {
-            //     clean.LocalCategories = fd.LocalCategories.map(mapper.Categories);
-            // } catch (ex) {
-            //     console.warn("Unable to map Local Cat array, Initializing", ex);
-            //     clean.LocalCategories = [null, null, null];
-            // }
-
-            // try {
-            //     fd.Keywords = util.uniqueSet(fd.Keywords);
-            //     clean.Keywords = (!fd.Keywords ? "" : fd.Keywords.join(','));
-            // } catch (ex) {
-            //     console.warn("Keyword not set, will not serialize", ex);
-            // }
-
-            // try {
-            //     clean.AttributeSet = {
-            //         AttributeSetId: fd.AttributeSet.AttributeSetId
-            //     };
-            // } catch (ex) {
-            //     console.warn("AttributeSet not set, will not serialize", ex);
-            // }
-
-            // try {
-            //     clean.MasterAttribute = [];
-            //     Object.keys(fd.MasterAttribute).forEach(function (key) {
-            //         clean.MasterAttribute.push({
-            //             AttributeId: key,
-            //             ValueEn: fd.MasterAttribute[key]
-            //         });
-            //     });
-            // } catch (ex) {
-            //     console.warn("Master Attributes", ex);
-            // }
+          
 
             try {
-                // clean.Remark = fd.Remark;
-                // clean.PrepareDay = fd.PrepareDay || 0;
-                // clean.SEO = fd.SEO;
-                // clean.ControlFlags = fd.ControlFlags;
-                // clean.Brand = fd.Brand;
-                // clean.ShippingMethod = fd.ShippingMethod;
-
+               
                 clean.CMSNameEN = fd.CMSNameEN;
                 clean.CMSNameTH = fd.CMSNameTH;
                 clean.URLKey = fd.URLKey ;
@@ -8810,80 +8723,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
                 console.warn("One-To-One Fields", ex);
             }
 
-            // try {
-            //     //Move first entry of Categories out into Category
-            //     clean.GlobalCategory = clean.GlobalCategories[0].CategoryId;
-            //     clean.GlobalCategories.shift();
-
-
-            // } catch (ex) {
-            //     console.warn("shift global cat", ex);
-            // }
-
-            // try {
-            //     clean.LocalCategory = clean.LocalCategories[0].CategoryId;
-            //     clean.LocalCategories.shift();
-
-
-            // } catch (ex) {
-            //     console.warn("shfiting local cat", ex);
-            //     //Local cat can be null
-            //     clean.LocalCategories = [null, null];
-            //     clean.LocalCategory = null;
-            // }
-
-            // try {
-            //     clean.RelatedProducts = [];
-            //     Object.keys(fd.RelatedProducts || []).forEach(function (key) {
-            //         clean.RelatedProducts.push(
-            //             fd.RelatedProducts[key]
-            //         );
-            //     });
-            // } catch (ex) {
-            //     console.warn("Organizing Related Products", ex);
-            // }
-
-            //MasterVariant
-            // clean.MasterVariant = fd.MasterVariant;
-
-            // if (fd.ProductId) clean.ProductId = fd.ProductId;
-
-            // try {
-            //     clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
-            // } catch (ex) {
-            //     clean.MasterVariant.VideoLinks = [];
-            // }
-
-            // try {
-            //     clean.MasterVariant.Images360 = (fd.MasterImages360 | []).map(mapper.Images);
-            // } catch (ex) {
-            //     clean.MasterVariant.Images360 = [];
-            // }
-
-            // try {
-            //     clean.MasterVariant.Images = (fd.MasterImages || []).map(mapper.Images);
-            // } catch (ex) {
-            //     clean.MasterVariant.Images = [];
-            // }
-
-            // try {
-            //     if (hasVariants) {
-            //         var masterProps = [];
-            //         clean.Variants = (fd.Variants || []).map(mapper.Variants);
-            //         //Find DefaultVariant
-            //         var target = fd.DefaultVariant.text;
-            //         clean.Variants.forEach(function (vari, index) {
-            //             vari.SafetyStock = 0; //Placeholder, no UI yet
-            //             vari.StockType = 0; //Placeholder
-            //             vari.DefaultVariant = false;
-            //             if (vari.text == target) {
-            //                 clean.Variants[index].DefaultVariant = true;
-            //             }
-            //         });
-            //     }
-            // } catch (ex) {
-            //     console.warn("Variant Distribute", ex);
-            // }
+           
 
             //HardCoD
             clean.SellerId = 1;
@@ -9297,7 +9137,7 @@ module.exports = {
 },{}],114:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Fri Feb 12 2016 16:15:54 GMT+0700 (SE Asia Standard Time)
+ * Fri Feb 12 2016 16:39:05 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
