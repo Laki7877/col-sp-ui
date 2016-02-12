@@ -5,11 +5,7 @@ module.exports = {
 	REST_SERVICE_BASE_URL: 'http://localhost:58127/api/',
 	//REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
-<<<<<<< HEAD
-	HANDLE_EXCEPTION :false,
-=======
     HANDLE_EXCEPTION: false,
->>>>>>> 5c27fbee1d994ba9245fb28c1ed99f056c770f4d
 	CK_DEFAULT_OPTIONS: {
 	   filebrowserBrowseUrl : '/ckfinder/ckfinder.html',
 	   filebrowserImageBrowseUrl : '/ckfinder/ckfinder.html?type=Images',

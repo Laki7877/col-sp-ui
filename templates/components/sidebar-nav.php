@@ -8,6 +8,7 @@
         [ "name" => "Shop Setting", "icon" => "fa-sliders" ],
         [ "name" => "Report", "icon" => "fa-line-chart" ],
         [ "name" => "Account", "icon" => "fa-gear", "sub_sidebar" => "#sub-sidebar-account" ],
+        [ "name" => "Collection", "icon" => "fa-product-hunt", "sub_sidebar" => "#sub-sidebar-product-collection" ]
     ];
 ?>
 
