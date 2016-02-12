@@ -243,7 +243,7 @@
                                     </ui-select>
                                     <!-- if nothing is availalbe to pick -->
                                     <select class="form-control" ng-if="dataSet.AttributeSets.length == 0" disabled>
-                                        <option disabled>Not dataSet. for this Global Category</option>
+                                        <option disabled>This category has no attribute sets</option>
                                     </select>
                                 </div>
                             </div>
