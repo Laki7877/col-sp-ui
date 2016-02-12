@@ -17,6 +17,14 @@ angular.module('nc')
                 },
                 link: function (scope, element, attrs, ctrl, transclude) {
                     
+                    scope.isInvalid = function(form) {
+                        if(angular.isDefined(form) && 
+                            angular.isDefined(form.$invalid) && 
+                            angular.isDefined(form.$dirty)) {
+                            return form.$invalid && (form.$dirty || form.$$parentForm.$submitted);
+                        }
+                        return false;
+                    };
 
                     var pathComp = scope.optionsPath.split('/');
                     var opt = $templateOptionsCache[pathComp[0]][pathComp[1]];

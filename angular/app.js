@@ -80,7 +80,8 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 
     
 	//Create generic form validator functions
-	$rootScope.isInvalid = function(form) {
+	//This is now inside ncTemplate
+    $rootScope.isInvalid = function(form) {
 		if(angular.isDefined(form) && 
 			angular.isDefined(form.$invalid) && 
 			angular.isDefined(form.$dirty)) {
@@ -142,7 +143,6 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 //Services
 .factory('Product', services.product)
 .factory('ProductReviewService', services.productReviewService)
-.factory('Image', services.image)
 .factory('ImageService', services.imageService)
 .factory('Category', services.category)
 .factory('Shop', services.shop)
