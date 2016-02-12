@@ -4,8 +4,17 @@
 ?>
 <div class="image-thumbs-actions">
 	<div class="image-thumbs-img-wrapper">
-		<img ng-show="<?=$image_url?>.length > 0" ng-src="{{ <?=$image_url?>.length > 0 && <?= $image_url ?> || '/assets/img/loader.gif' }}" />
-        <h3 style="text-align: center;margin-top:40%" class="color-grey">{{ <?= $uploader ?>.queue[$index].progress }} %</h3>
+		<img ng-show="<?=$image_url?> && <?=$image_url?>.length > 0" style="background-color:white;" ng-src="{{ <?=$image_url?>.length > 0 && <?= $image_url ?> }}" />
+        <h4 style="text-align: center;margin-top:20%" class="color-grey ng-binding"><img src="/assets/img/loader.gif" height="55">
+            <br/>
+            <span ng-if="<?= $uploader ?>.queue[$index].progress < 100">
+                {{ <?= $uploader ?>.queue[$index].progress }}%
+            </span>
+            <span ng-if="<?= $uploader ?>.queue[$index].progress == 100">
+                Processing..
+            </span>
+        </h4>
+
 	</div>
 	<div class="actions-wrapper actions-4">
 		<a class="action" ng-click="$emit('zoom', <?= $image ?>, <?= $array ?>, $index, <?= $uploader ?>)"><i class="fa fa-search-plus"></i></a>
