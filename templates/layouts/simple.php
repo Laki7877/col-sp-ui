@@ -53,8 +53,8 @@
     <div id="wrapper">
         <?= $this->section('content') ?>
     </div>
-    <!--<script src="<?= $this->asset('/assets/js/jquery-ui.js') ?>"></script>-->
-    <!-- <script src="<?= $this->asset('/assets/js/jquery.ui.nestedSortable.js') ?>"></script> -->
+    <script src="<?= $this->asset('/assets/js/jquery-ui.js') ?>"></script>
+    <script src="<?= $this->asset('/assets/js/jquery.ui.nestedSortable.js') ?>"></script> 
     <script src="<?= $this->asset('/assets/js/custom-js.js') ?>"></script>
     <script src="/assets/libs/ckeditor/ckeditor.js"></script>
     <script src="/assets/libs/ckeditor/config.js"></script>
@@ -68,48 +68,6 @@
 
     <!--<script src="/assets/libs/angular-select2/select.min.js"></script>-->
     <link rel="stylesheet" type="text/css" href="/assets/libs/angular-select2/select.css">
-
-    <script>
-        /*
-        	    $('[ckeditor-initialize]').each(function(idx, textarea) {
-                        CKEDITOR.replace( textarea );
-                    });
-                    $('.input-icon-calendar').datetimepicker({
-                        format: "LL" // this is momentjs format make it show only date, no time will be show. see: http://momentjs.com/docs/#/displaying/format/
-                    });
-
-                    $.fn.select2.defaults.set("tokenSeparators", [",", " "]);
-                    $.fn.select2.defaults.set("minimumResultsForSearch", Infinity);
-                    var select2Init = $(".select2-init")
-                    $(document).on('shown.bs.tab ready', select2Init.select2.bind(select2Init));
-
-                    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
-
-                    $('.image-drop-zone').on('dragover', function(e) {
-                        var $this = $(this);
-                        e.preventDefault();
-                        $this.addClass('hover');
-                    }).on('dragleave drop', function(e) {
-                        var $this = $(this);
-                        e.preventDefault();
-                        $this.removeClass('hover');
-                    });
-                    $('[data-trigger="file"]').on('click', function(e) {
-                        e.preventDefault();
-                        var $this = $(this);
-                        var target = $this.data('target');
-                        $(target).trigger('click');
-                    });
-                    $('#product-images, #product-360').on('drop', function(e) {
-                        e.preventDefault();
-                        console.log(e.type);
-                        //TODO: UPLOAD FILE WHEN USER DROPPED INTO DROPZONE
-                        return false;
-                    })
-         */
-    </script>
-
-
 </body>
 
 </html>

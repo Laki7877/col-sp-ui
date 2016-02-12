@@ -1,6 +1,6 @@
 var angular = require('angular');
 
-module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$productAdd',
+module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageService', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$productAdd',
     function ($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, $rootScope, $q, KnownException, NcAlert, $productAdd) {
         'use strict';
 
@@ -546,18 +546,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                 
                 $scope.$on('savePairModal', function (evt) {
                     console.log("adform", $scope.addProductVariantForm.$invalid);
-                    // var errors = [];
-                    // //Hackily find fields inside modal
-                    // Object.keys($scope.addProductForm.$error).forEach(function(error){
-                    //     if(error.$name.startsWith("Modal")){
-                    //         errors.push(error);
-                    //     }
-                    // });
-                    
-                    // if(errors.length > 0){
-                    //     $scope.pairModal.alert.error("Yeah bitch");
-                    // }
-                    
+
                     if(!$scope.pairModal._override.uploadProductImages){
                         $scope.pairModal.Images = [];
                     }

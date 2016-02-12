@@ -1,4 +1,5 @@
-module.exports = ['$scope', 'Product', 'util', 'NcAlert', '$window', 'FileUploader', 'Image', 'config', 'common', function ($scope, Product, util, NcAlert, $window, FileUploader, ImageService, config, common) {
+module.exports = ['$scope', 'Product', 'util', 'NcAlert', '$window', 'FileUploader', 'ImageService', 'config', 'common', 
+function ($scope, Product, util, NcAlert, $window, FileUploader, ImageService, config, common) {
     $scope.response = {};
     $scope.alert = new NcAlert();
     $scope.filterOptions = [

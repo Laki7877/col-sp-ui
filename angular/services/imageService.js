@@ -13,9 +13,6 @@ module.exports = function($q, $http, common, storage, config, FileUploader){
 		var options = angular.merge({
 			url: config.REST_SERVICE_BASE_URL + url,
 			autoUpload: true,
-            onProgressItem : function(item,progress){
-                console.log(item, progress);  
-            },
 			headers: {
 				Authorization: 'Basic ' + accessToken
 			},
@@ -36,6 +33,8 @@ module.exports = function($q, $http, common, storage, config, FileUploader){
 	 * Assign image uploader events specifically to COL-image uploading feature
 	 */
 	service.assignUploaderEvents = function(uploader, images, queueLimit, onFail) {
+        
+        
 		uploader.onWhenAddingFileFailed = function(item, filter, options) {
 			console.info('onAfterAddingFile', item, filter, options);
 			onFail(item, filter);
@@ -68,6 +67,14 @@ module.exports = function($q, $http, common, storage, config, FileUploader){
 	    	images.splice(item.indx, 1);
 			console.info('onErrorItem', images, uploader.queue);
 	    };
+        
+        uploader.onProgressItem = function(item,progress){
+             console.info('onProgressItem', item, progress, uploader.progress);
+        };
+        
+        uploader.onProgressAll = function(){
+            console.info("onProgressAll");
+        }
 
 	    return uploader;
 	}
