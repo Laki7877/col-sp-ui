@@ -26,27 +26,27 @@
 				<span class="col-xs-1">
 					ID
 				</span>
-				<span class="col-xs-1">
+				<span class="col-xs-1 text-align-center">
 					Products
 				</span>
-				<span class="col-xs-1">
+				<span class="col-xs-1 text-align-center no-padding">
 					Attribute Sets
 				</span>
 				<span class="col-xs-1 text-align-center">
 					Visible
 				</span>
-					<span class="col-xs-1 text-align-center">
-						Move	
-					</span>
-					<span class="col-xs-1 text-align-center">
-						Action
-					</span>
-				</div>
-				<div class="col-xs-12 no-padding margin-bottom-60" ui-tree="treeOptions" max-depth="4">
-					<ol class="sortable no-padding" ui-tree-nodes ng-model="categories">
-						<li ng-repeat="node in categories" ui-tree-node ng-include="'global_category/nodes'" data-collapsed="{{::$index == 0 ? false : true}}"></li>
-					</ol>	
-				</div>
+				<span class="col-xs-1 text-align-center">
+					Move	
+				</span>
+				<span class="col-xs-1 text-align-center">
+					Action
+				</span>
+			</div>
+			<div class="col-xs-12 no-padding margin-bottom-60" ui-tree="treeOptions" max-depth="4">
+				<ol class="sortable no-padding" ui-tree-nodes ng-model="categories">
+					<li ng-repeat="node in categories" ui-tree-node ng-include="'global_category/nodes'" data-collapsed="{{::$index == 0 ? false : true}}"></li>
+				</ol>	
+			</div>
 		</div>
 		<div ng-show="!loading && categories.length == 0" class="local-category-empty-section margin-top-20">
 			<span class="">

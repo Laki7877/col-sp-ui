@@ -96,7 +96,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 	//Open category modal
 	$scope.open = function(item) {
 		//Open add or edit one category
-		var modal = $uibModal.open({
+	var modal = $uibModal.open({
 			animation: true,
 			size: 'lg',
 			keyboard: false,

@@ -8,17 +8,8 @@ module.exports = function(common, $q, util) {
 			NameEn: "",
 			NameTh: "",
 			UrlKeyEn: "",
-			Commission: 0,
 			Visibility: true,
-			AttributeSets: []
 		}, extend);
-	};
-
-	service.getAll = function() {
-		return common.makeRequest({
-			method: 'GET',
-			url: '/LocalCategories'
-		});
 	};
 
 	/**
