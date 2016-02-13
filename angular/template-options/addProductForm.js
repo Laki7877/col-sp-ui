@@ -120,5 +120,13 @@ module.exports = {
                 'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
             }
         }
+    },
+    RelatedProducts: {
+        'inputSize': 'xxl',
+         'error': {
+            'messages': {
+                'maxtagcount': 'Cannot exceed 10 related products'
+            }
+        }
     }
 }
