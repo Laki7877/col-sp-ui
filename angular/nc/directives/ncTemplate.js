@@ -1,6 +1,6 @@
 var angular = require('angular');
 angular.module('nc')
-    .directive('ncTemplate', function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException,  $parse) {
+    .directive('ncTemplate', function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException,  $parse, KnownException) {
             return {
                 restrict: 'A',
                 transclude: true,
@@ -13,6 +13,9 @@ angular.module('nc')
                 },
                 template: function (element, attrs) {
                     var templateHTML = $templateCache.get(attrs.ncTemplate);
+                    if(!templateHTML){
+                        throw new KnownException("Unable to load specified nc-template " + attrs.ncTemplate);
+                    }
                     return templateHTML;
                 },
                 link: function (scope, element, attrs, ctrl, transclude) {

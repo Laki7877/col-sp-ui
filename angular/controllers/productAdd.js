@@ -15,7 +15,11 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
         $scope.dataSet.AttributeSets = [];
         $scope.dataSet.GlobalCategories = [];
         $scope.dataSet.LocalCategories = [];
-        $scope.dataSet.Brands = [];
+        $scope.dataSet.Brands = [{
+            BrandId : null,
+            BrandNameEn : "No match found",
+            disabled: true
+        }];
         $scope.dataSet.SearchTags = [];
         $scope.dataSet.RelatedProducts = [];
         $scope.dataSet.StockTypes = ['Stock', 'Pre-Order'];
@@ -176,7 +180,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
         $scope.overview = {}
 
         $scope.formData = {
-            Brand: { id: null, BrandNameEn: "Search for Brand Name.." },
+            Brand: { id: null },
             MasterVariant: { DimensionUnit: "MM", WeightUnit: "G", StockType: "Stock" },
             ShippingMethod: "1",
             AttributeSet: {
@@ -251,6 +255,12 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
 
         $scope.refreshBrands = function (q) {
             if (q == "" || !q || q == null) return;
+            $scope.dataSet.Brands = [{
+                BrandId : -1,
+                BrandNameEn : "Searching..",
+                disabled: true
+            }];
+        
             Brand.getAll({
                 pageSize: 10,
                 searchText: q

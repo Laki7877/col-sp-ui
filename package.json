@@ -1,7 +1,15 @@
 {
   "name": "col-sp-client",
   "private": true,
-  "author": "Pat Sabpisal <ecegrid@gmail.com>",
+  "contributors": [
+      {
+          "name": "Pat Sabpisal",
+          "email": "ecegrid@gmail.com"
+      },
+      {
+          "name": "Poon Wu"
+      }
+  ],
   "version": "0.0.2",
   "description": "COL SP Client",
   "license": "MIT",
