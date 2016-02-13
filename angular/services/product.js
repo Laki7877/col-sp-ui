@@ -335,12 +335,12 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             invFd.PrepareDay = invFd.PrepareDay || '';
 
             if (invFd.EffectiveDate != "" && invFd.EffectiveDate != null) {
-                invFd.EffectiveDate = moment(invFd.EffectiveDate + " " + invFd.EffectiveTime);
+                invFd.EffectiveDate = moment(invFd.EffectiveDate + " " + invFd.EffectiveTime).toDate();
                 invFd.EffectiveTime = invFd.EffectiveTime;
             }
 
             if (invFd.ExpireDate != "" && invFd.ExpireDate != null) {
-                invFd.ExpireDate = moment(invFd.ExpireDate + " " + invFd.ExpireTime);
+                invFd.ExpireDate = moment(invFd.ExpireDate + " " + invFd.ExpireTime).toDate() ;
                 invFd.ExpireTime = invFd.ExpireTime;
             }
 

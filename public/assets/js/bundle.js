@@ -1434,10 +1434,18 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
         var MAX_VARIANT = 100;
 
         $scope.dataSet = {};
-        $scope.dataSet.AttributeSets = [];
+        $scope.dataSet.AttributeSets = [{
+            AttributeSetId: null,
+            disabled: true,
+            AttributeSetNameEn: "No Attribute Set"
+        }];
         $scope.dataSet.GlobalCategories = [];
         $scope.dataSet.LocalCategories = [];
-        $scope.dataSet.Brands = [];
+        $scope.dataSet.Brands = [{
+            BrandId: null,
+            BrandNameEn: "No match found",
+            disabled: true
+        }];
         $scope.dataSet.SearchTags = [];
         $scope.dataSet.RelatedProducts = [];
         $scope.dataSet.StockTypes = ['Stock', 'Pre-Order'];
@@ -1445,17 +1453,17 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
             { text: 'Show as group of variants', value: 'GROUP' },
             { text: 'Show as individual product', value: 'INDIVIDUAL' }
         ];
-       
+
         var protoAttributeOptions = {
-                         0: {
-                            Attribute: false,
-                            options: []
-                        },
-                        1: {
-                            Attribute: false,
-                            options: []
-                        }
-                    };
+            0: {
+                Attribute: false,
+                options: []
+            },
+            1: {
+                Attribute: false,
+                options: []
+            }
+        };
         $scope.dataSet.attributeOptions = angular.copy(protoAttributeOptions);
         $scope.controlFlags = {
             variation: 'disable',
@@ -1563,7 +1571,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
                             angular.isDefined(kpair.Height) ||
                             angular.isDefined(kpair.Width) ||
                             angular.isDefined(kpair.Weight));
-                            
+
                     }
 
                     //Only push new variant if don't exist
@@ -1598,7 +1606,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
         $scope.overview = {}
 
         $scope.formData = {
-            Brand: { id: null, BrandNameEn: "Search for Brand Name.." },
+            Brand: { id: null },
             MasterVariant: { DimensionUnit: "MM", WeightUnit: "G", StockType: "Stock" },
             ShippingMethod: "1",
             AttributeSet: {
@@ -1673,6 +1681,12 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
 
         $scope.refreshBrands = function (q) {
             if (q == "" || !q || q == null) return;
+            $scope.dataSet.Brands = [{
+                BrandId: -1,
+                BrandNameEn: "Searching..",
+                disabled: true
+            }];
+
             Brand.getAll({
                 pageSize: 10,
                 searchText: q
@@ -1703,18 +1717,33 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
             }
         });
 
-        var manualValidate = function () {
+        var manualValidate = function (Status) {
             var mat = [];
-            if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == "") {
-                mat.push("Missing Description (Thai)");
+
+            if (Status == 'WA') {
+                if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == "") {
+                    mat.push("Missing Description (Thai)");
+                }
+
+                if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == "") {
+                    mat.push("Missing Description (English)");
+                }
+
+                if (!$scope.formData.Brand.BrandId) {
+                    mat.push("Brand is Missing");
+                }
             }
 
-            if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == "") {
-                mat.push("Missing Description (English)");
-            }
+            var cnt = $scope.formData.Variants.reduce(function (total, x) {
+                return x.Visibility ? total + 1 : total
+            }, 0);
 
-            if (!$scope.formData.Brand.BrandId) {
-                mat.push("Brand is Missing");
+            if (cnt == 0 && $scope.formData.Variants.length > 0) {
+                mat.push("At least one variant must be visible.");
+            }
+            
+            if($scope.formData.ExpireDate <= $scope.formData.EffectiveDate){
+                mat.push("Effective date/time must come before expire date/time.");
             }
 
             return mat;
@@ -1731,8 +1760,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
 
             $scope.onPublishing = (Status == "WA");
             //On click validation
-            var validateMat = manualValidate();
-            if (validateMat.length > 0 && Status == 'WA') {
+            var validateMat = manualValidate(Status);
+            if (validateMat.length > 0) {
                 $scope.pageState.reset();
                 $scope.alert.error(validateMat);
                 return;
@@ -1965,33 +1994,33 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
                     $scope.uploaderModal.queue = $scope.pairModal.queue;
                     ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail);
                 });
-                
+
                 $scope.$on('savePairModal', function (evt) {
                     console.log("adform", $scope.addProductVariantForm.$invalid);
 
-                    if(!$scope.pairModal._override.uploadProductImages){
+                    if (!$scope.pairModal._override.uploadProductImages) {
                         $scope.pairModal.Images = [];
                     }
-                    
-                    if(!$scope.pairModal._override.embedVideo){
+
+                    if (!$scope.pairModal._override.embedVideo) {
                         $scope.pairModal.VideoLinks = [];
                     }
-                    
-                    if(!$scope.pairModal._override.description){
+
+                    if (!$scope.pairModal._override.description) {
                         $scope.pairModal.DescriptionFullEn = null;
                         $scope.pairModal.DescriptionFullTh = null;
                         $scope.pairModal.ShortDescriptionEn = null;
                         $scope.pairModal.ShortDescriptionTh = null;
                     }
-                    
-                    if(!$scope.pairModal._override.packageDetail){
+
+                    if (!$scope.pairModal._override.packageDetail) {
                         $scope.pairModal.Length = null;
                         $scope.pairModal.Height = null;
                         $scope.pairModal.Width = null;
                         $scope.pairModal.Length = null;
 
                     }
-                    
+
                     $scope.formData.Variants[$scope.pairIndex] = $scope.pairModal;
                 });
             }
@@ -5159,7 +5188,7 @@ angular.module('nc')
 },{}],75:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
-    .directive('ncTemplate', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException,  $parse) {
+    .directive('ncTemplate', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", "KnownException", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException,  $parse, KnownException) {
             return {
                 restrict: 'A',
                 transclude: true,
@@ -5172,6 +5201,9 @@ angular.module('nc')
                 },
                 template: function (element, attrs) {
                     var templateHTML = $templateCache.get(attrs.ncTemplate);
+                    if(!templateHTML){
+                        throw new KnownException("Unable to load specified nc-template " + attrs.ncTemplate);
+                    }
                     return templateHTML;
                 },
                 link: function (scope, element, attrs, ctrl, transclude) {
@@ -6749,7 +6781,9 @@ module.exports = ['$window', '$base64', 'config', function($window, $base64, con
             'message': exception.message
         }));
         
-        if(config.HANDLE_EXCEPTION) $window.location = '/exception?e=' + encMsg;
+        if(config.HANDLE_EXCEPTION) {
+            $window.location = '/exception?e=' + encMsg;
+        } 
     };
 }];
 },{"angular":130}],98:[function(require,module,exports){
@@ -7507,12 +7541,12 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             invFd.PrepareDay = invFd.PrepareDay || '';
 
             if (invFd.EffectiveDate != "" && invFd.EffectiveDate != null) {
-                invFd.EffectiveDate = moment(invFd.EffectiveDate + " " + invFd.EffectiveTime);
+                invFd.EffectiveDate = moment(invFd.EffectiveDate + " " + invFd.EffectiveTime).toDate();
                 invFd.EffectiveTime = invFd.EffectiveTime;
             }
 
             if (invFd.ExpireDate != "" && invFd.ExpireDate != null) {
-                invFd.ExpireDate = moment(invFd.ExpireDate + " " + invFd.ExpireTime);
+                invFd.ExpireDate = moment(invFd.ExpireDate + " " + invFd.ExpireTime).toDate() ;
                 invFd.ExpireTime = invFd.ExpireTime;
             }
 
@@ -7765,6 +7799,7 @@ module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCat
                         });
                         return aset;
                     });
+                   
 
                     if (ivFormData) {
                         pageLoader.load('Indexing AttributeSet');
@@ -7997,12 +8032,81 @@ module.exports = {
                 'pattern': 'Special characters are not allowed'
             }
         }
+    },
+    MasterVariant_DescriptionShortEn: {
+        'inputSize': 'xxl',
+        'formGroupClass': 'margin-top-30',
+        'error': {
+            'messages': {
+                'pattern': 'Thai and Special characters are not allowed'
+            }
+        }
+    },
+    Keywords: {
+        'inputSize': 'large',
+        'tooltip': 'Search Tag will help your product easier to be discovered',
+        'error': {
+            'messages': {
+                'maxtagcount': 'Cannot exceed 20 tags',
+                'maxtaglength': 'Tag must contain 30 characters or less',
+                'pattern': 'Only letters and numbers allowed'
+            }
+        }
+    },
+    MasterVariant_Quantity: {
+        'hint': {
+            'message': 'Example: 100',
+            'show': true
+        },
+        'error': {
+            'messages': {
+                'pattern': 'Only numbers allowed'
+            }
+        }
+    },
+    MasterVariant_SafetyStock: {
+        'hint': {
+            'message': 'Example: 10',
+            'show': true
+        },
+        'error': {
+            'messages': {
+                'pattern': 'Only numbers allowed'
+            }
+        },
+        'tooltip': 'When your inventory gets lower than saftety stock, you will get a warning'
+    },
+    PrepareDay: {
+        'labelClass': 'required',
+        'error': {
+            'messages': {
+                'required': 'This is a required field',
+                'pattern': 'Only numbers allowed'
+            }
+        },
+        'unit': 'Day'
+    },
+    MasterVariant_Length: {
+        'error': {
+            'messages': {
+                'required': 'This is a required field',
+                'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
+            }
+        }
+    },
+    RelatedProducts: {
+        'inputSize': 'xxl',
+         'error': {
+            'messages': {
+                'maxtagcount': 'Cannot exceed 10 related products'
+            }
+        }
     }
 }
 },{}],114:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Sat Feb 13 2016 21:13:11 GMT+0700 (SE Asia Standard Time)
+ * Sat Feb 13 2016 23:15:28 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -8037,7 +8141,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/input/form-group-with-label',
-    "<div ng-class=\"['form-group ' + (options.formGroupClass || '')]\"><div class=width-label><label class=control-label ng-class=\"options.labelClass || {}\">{{ label }}</label></div><div ng-class=\"['width-field-' + (options.inputSize || 'normal')]\"><ng-transclude ng-class=\"{ 'has-error' : isInvalid(templateField()) }\"></ng-transclude><span class=input-unit ng-if=options.unit>{{ options.unit }}</span> <span class=help-block ng-if=options.hint ng-show=options.hint.show>{{options.hint.message}}</span> <span class=\"help-block color-red\" ng-if=isInvalid(templateField()) ng-repeat=\"(key, prop) in (templateField().$error) track by key\"><span ng-bind-html=options.error.messages[key]></span></span></div><div class=\"width-field-tooltip padding-left-30\"><i class=\"fa fa-2x fa-question-circle color-grey\" uib-tooltip-html=options.tooltip tooltip-trigger=mouseenter tooltip-placement=right ng-if=\"options.tooltip && options.tooltip.length > 0\"></i></div></div>"
+    "<div ng-class=\"['form-group ' + (options.formGroupClass || '')]\"><div class=width-label><label class=control-label ng-class=\"options.labelClass || {}\">{{ label }}</label></div><div ng-class=\"['width-field-' + (options.inputSize || 'normal')]\" class=input-with-unit><ng-transclude ng-class=\"{ 'has-error' : isInvalid(templateField()) }\"></ng-transclude><span class=input-unit ng-if=options.unit>{{ options.unit }}</span> <span class=help-block ng-if=options.hint ng-show=options.hint.show>{{options.hint.message}}</span> <span class=\"help-block color-red\" ng-if=isInvalid(templateField()) ng-repeat=\"(key, prop) in (templateField().$error) track by key\"><span ng-bind-html=options.error.messages[key]></span></span></div><div class=\"width-field-tooltip padding-left-30\"><i class=\"fa fa-2x fa-question-circle color-grey\" uib-tooltip-html=options.tooltip tooltip-trigger=mouseenter tooltip-placement=right ng-if=\"options.tooltip && options.tooltip.length > 0\"></i></div></div>"
   );
 
 

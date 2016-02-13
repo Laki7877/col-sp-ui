@@ -12,10 +12,18 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
         var MAX_VARIANT = 100;
 
         $scope.dataSet = {};
-        $scope.dataSet.AttributeSets = [];
+        $scope.dataSet.AttributeSets = [{
+            AttributeSetId: null,
+            disabled: true,
+            AttributeSetNameEn: "No Attribute Set"
+        }];
         $scope.dataSet.GlobalCategories = [];
         $scope.dataSet.LocalCategories = [];
-        $scope.dataSet.Brands = [];
+        $scope.dataSet.Brands = [{
+            BrandId: null,
+            BrandNameEn: "No match found",
+            disabled: true
+        }];
         $scope.dataSet.SearchTags = [];
         $scope.dataSet.RelatedProducts = [];
         $scope.dataSet.StockTypes = ['Stock', 'Pre-Order'];
@@ -23,17 +31,17 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
             { text: 'Show as group of variants', value: 'GROUP' },
             { text: 'Show as individual product', value: 'INDIVIDUAL' }
         ];
-       
+
         var protoAttributeOptions = {
-                         0: {
-                            Attribute: false,
-                            options: []
-                        },
-                        1: {
-                            Attribute: false,
-                            options: []
-                        }
-                    };
+            0: {
+                Attribute: false,
+                options: []
+            },
+            1: {
+                Attribute: false,
+                options: []
+            }
+        };
         $scope.dataSet.attributeOptions = angular.copy(protoAttributeOptions);
         $scope.controlFlags = {
             variation: 'disable',
@@ -141,7 +149,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
                             angular.isDefined(kpair.Height) ||
                             angular.isDefined(kpair.Width) ||
                             angular.isDefined(kpair.Weight));
-                            
+
                     }
 
                     //Only push new variant if don't exist
@@ -176,7 +184,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
         $scope.overview = {}
 
         $scope.formData = {
-            Brand: { id: null, BrandNameEn: "Search for Brand Name.." },
+            Brand: { id: null },
             MasterVariant: { DimensionUnit: "MM", WeightUnit: "G", StockType: "Stock" },
             ShippingMethod: "1",
             AttributeSet: {
@@ -251,6 +259,12 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
 
         $scope.refreshBrands = function (q) {
             if (q == "" || !q || q == null) return;
+            $scope.dataSet.Brands = [{
+                BrandId: -1,
+                BrandNameEn: "Searching..",
+                disabled: true
+            }];
+
             Brand.getAll({
                 pageSize: 10,
                 searchText: q
@@ -281,18 +295,33 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
             }
         });
 
-        var manualValidate = function () {
+        var manualValidate = function (Status) {
             var mat = [];
-            if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == "") {
-                mat.push("Missing Description (Thai)");
+
+            if (Status == 'WA') {
+                if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == "") {
+                    mat.push("Missing Description (Thai)");
+                }
+
+                if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == "") {
+                    mat.push("Missing Description (English)");
+                }
+
+                if (!$scope.formData.Brand.BrandId) {
+                    mat.push("Brand is Missing");
+                }
             }
 
-            if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == "") {
-                mat.push("Missing Description (English)");
-            }
+            var cnt = $scope.formData.Variants.reduce(function (total, x) {
+                return x.Visibility ? total + 1 : total
+            }, 0);
 
-            if (!$scope.formData.Brand.BrandId) {
-                mat.push("Brand is Missing");
+            if (cnt == 0 && $scope.formData.Variants.length > 0) {
+                mat.push("At least one variant must be visible.");
+            }
+            
+            if($scope.formData.ExpireDate <= $scope.formData.EffectiveDate){
+                mat.push("Effective date/time must come before expire date/time.");
             }
 
             return mat;
@@ -309,8 +338,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
 
             $scope.onPublishing = (Status == "WA");
             //On click validation
-            var validateMat = manualValidate();
-            if (validateMat.length > 0 && Status == 'WA') {
+            var validateMat = manualValidate(Status);
+            if (validateMat.length > 0) {
                 $scope.pageState.reset();
                 $scope.alert.error(validateMat);
                 return;
@@ -543,33 +572,33 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
                     $scope.uploaderModal.queue = $scope.pairModal.queue;
                     ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail);
                 });
-                
+
                 $scope.$on('savePairModal', function (evt) {
                     console.log("adform", $scope.addProductVariantForm.$invalid);
 
-                    if(!$scope.pairModal._override.uploadProductImages){
+                    if (!$scope.pairModal._override.uploadProductImages) {
                         $scope.pairModal.Images = [];
                     }
-                    
-                    if(!$scope.pairModal._override.embedVideo){
+
+                    if (!$scope.pairModal._override.embedVideo) {
                         $scope.pairModal.VideoLinks = [];
                     }
-                    
-                    if(!$scope.pairModal._override.description){
+
+                    if (!$scope.pairModal._override.description) {
                         $scope.pairModal.DescriptionFullEn = null;
                         $scope.pairModal.DescriptionFullTh = null;
                         $scope.pairModal.ShortDescriptionEn = null;
                         $scope.pairModal.ShortDescriptionTh = null;
                     }
-                    
-                    if(!$scope.pairModal._override.packageDetail){
+
+                    if (!$scope.pairModal._override.packageDetail) {
                         $scope.pairModal.Length = null;
                         $scope.pairModal.Height = null;
                         $scope.pairModal.Width = null;
                         $scope.pairModal.Length = null;
 
                     }
-                    
+
                     $scope.formData.Variants[$scope.pairIndex] = $scope.pairModal;
                 });
             }
