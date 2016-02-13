@@ -4,13 +4,14 @@
 	<div ng-controller="LocalCategoryCtrl" ng-init="init()" class="local-category-page">
 		<div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()">{{alert.message}}</div>
 		<div class="page-header with-border">
-		    <h1 class="float-left page-header-title">Local Category</h1>
+		    <h1 class="float-left page-header-title">
+		    	<span>Local Category</span>
+		    	<span ng-show="!saving && pristine" class="margin-left-10"><small>All changes were saved</small></span>
+				<span ng-show="saving && pristine" class="margin-left-10" nc-loading-small="Saving..." style="display: inline-block; margin-bottom: -20px; margin-top: -5px;"></span>
+		    </h1>
 		    <span class="float-right page-header-action">
-		        <button type="button" class="btn-white btn margin-right-10" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#local-category-detail" ng-click="$emit('openEditLocalCategory')">
+		        <button type="button" class="btn-white btn margin-right-10" ng-click="open()">
 		          <span class="">Create Local Category</span>
-		        </button>
-		        <button type="button" class="btn-blue btn btn-width-xl" ng-click="$emit('saveLocalCategory')">
-		          <span class="">Save Changes</span>
 		        </button>
 		    </span>
 		</div>
@@ -34,7 +35,7 @@
 			</div>
 			<div class="col-xs-12 no-padding" ui-tree="treeOptions" max-depth="4">
 				<ol class="sortable no-padding" ui-tree-nodes ng-model="categories">
-					<li ng-repeat="node in categories" ui-tree-node ng-include="'local_category/nodes'"></li>
+					<li ng-repeat="node in categories" ui-tree-node ng-include="'local_category/nodes'" data-collapsed="{{::$index == 0 ? false : true}}"></li>
 				</ol>	
 			</div>
 		</div>
@@ -48,6 +49,5 @@
       	<div ng-if="loading">
           <? $this->insert('components/table-loading', ['text' => 'Loading...']) ?>
       	</div>
-	<? $this->insert('components/modal-local-category', ['id' => 'local-category-detail', 'ng_model' => 'editingCategory', 'header' => 'Local Category Detail']) ?>
 	</div>
 <?php $this->stop() ?>

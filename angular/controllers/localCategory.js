@@ -1,98 +1,203 @@
-module.exports = ['$scope', '$rootScope', 'common', 'Category', 'LocalCategory', 'Shop', 'Alert', 'util', function($scope, $rootScope, common, Category, LocalCategory, Shop, Alert, util) {
+module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Category, LocalCategoryService, AttributeSetService, NcAlert, util, config){
+	'ngInject';
 	$scope.categories = [];
-	$scope.editingStatusOptions = [	{
-		text: 'Visible',
-		value: true
-	},
-	{
-		text: 'Not Visible',
-		value: false
-	}];
-	$scope.editingForm = {};
-	$scope.editingCategory = {};
-	$scope.editingCategoryOriginal = {};
+	$scope.timerPromise = null;
 	$scope.popover = false;
-	$scope.alert = new Alert();
-	$scope.alert2 = new Alert();
 	$scope.loading = false;
+	$scope.saving = false;
 	$scope.dirty = false;
+	$scope.alert = new NcAlert();
 
+	util.warningOnLeave(function() {
+		return !$scope.saving || $scope.dirty;
+	});
+
+	//UiTree onchange event
 	$scope.treeOptions = {
 		dropped: function(event) {
-			if(event.pos.dirX != 0 || event.pos.dirY != 0) {
-				//Shift	
+			//Change is made
+			if(event.dest.index != event.source.index || event.dest.nodesScope != event.source.nodesScope) {
+				$scope.sync();
 			}
 		}
 	};
 
-	util.warningOnLeave(function() {
-		return !$scope.dirty;
-	});
+	//Action gear
+	$scope.actions = [
+	{
+		name: 'View / Edit',
+		fn: function($nodeScope) {
+			$scope.open($nodeScope.$modelValue);
+		}
+	},
+	{
+		name: 'Delete',
+		fn: function($nodeScope) {
+			$nodeScope.remove();
+			$scope.sync();
+		},
+		confirmation: {
+			title: 'Delete',
+			message: 'Are you sure you want to delete this category?'
+		}
+	}];
 
+
+	//Toggle visibility
+	$scope.toggleVisibility = function(node) {
+		$scope.alert.close();
+		node.Visibility = !node.Visibility;
+		LocalCategoryService.visible([_.pick(node, ['Visibility', 'CategoryId'])])
+			.then(function() {
+			},
+			function(err) {
+				//revert
+				$scope.alert.error(common.getError(err));
+				node.Visibility = !node.Visibility;
+			});
+	};
+
+	//Update cat by sending the whole tree.
+	//We put some timeout delay to simulate multiple-edit-single-update
+	$scope.sync = function(delay) {
+		if($scope.saving) {
+			$scope.dirty = true;
+			return;
+		}
+		if($scope.timerPromise != null) {
+			$timeout.cancel($scope.timerPromise);
+			$scope.timerPromise = null;
+		}
+		$scope.timerPromise = $timeout(function() {
+				$scope.pristine = true;
+				$scope.saving = true;
+				LocalCategoryService.upsert(Category.transformUITreeToNestedSet($scope.categories))
+				.then(function() {
+					$scope.alert.close();
+				}, function(err) {
+					$scope.alert.error(common.getError(err));
+					$scope.reload();
+				})
+				.finally(function() {
+					$scope.saving = false;
+					if($scope.dirty) {
+						$scope.dirty = false;
+						$scope.sync();
+					}
+				});
+			}, delay || config.CATEGORY_SYNC_DELAY);
+	};
+
+	//Condition at which tradable select will lock attributeset
 	$scope.lockAttributeset = function(i) {		
 		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);		
 	};
-	$scope.init = function(shopid) {
-		$scope.shopId = shopid || 1;
+
+	//Open category modal
+	$scope.open = function(item) {
+		//Open add or edit one category
+		var modal = $uibModal.open({
+			animation: true,
+			size: 'lg',
+			keyboard: false,
+			templateUrl: 'local_category/modal',
+			controller: function($scope, $uibModalInstance, LocalCategoryService, NcAlert, config, id) {
+				'ngInject';
+				$scope.alert = new NcAlert();
+				$scope.statusOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
+				$scope.formData = {};
+				$scope.saving = false;
+				$scope.loading = true;
+
+				if(id == 0) {
+					$scope.formData = LocalCategoryService.generate();
+					$scope.loading = false;
+				} else {
+					LocalCategoryService.get(id)
+						.then(function(data) {
+							$scope.formData = data;
+						}, function(err) {
+							$scope.alert.error(common.getError(err));
+						}).finally(function() {
+							$scope.loading = false;
+						});
+				}
+
+				$scope.$on('modal.closing', function(e, res, closeType) {
+					if(!closeType) {
+						if ($scope.saving) e.preventDefault();
+						if ($scope.form.$dirty) {
+							if(!confirm('Your changes will not be saved.')) {
+								e.preventDefault();
+							}
+						}
+					} 
+				});
+				$scope.save = function() {
+					$scope.alert.close();
+
+					if($scope.form.$valid) {
+					$scope.saving = true;
+					var processed = LocalCategoryService.serialize($scope.formData);
+						if(id == 0) {
+							LocalCategoryService.create(processed)
+								.then(function(data) {
+									$uibModalInstance.close(LocalCategoryService.deserialize(data));
+								}, function(err) {
+									$scope.alert.error(common.getError(err));
+									$scope.saving = false;
+								})
+						} else {
+							LocalCategoryService.update(id, processed)
+								.then(function(data) {
+									$uibModalInstance.close(LocalCategoryService.deserialize(data));
+								}, function(err){
+									$scope.alert.error(common.getError(err));
+									$scope.saving = false;
+								});
+						}
+					} else {
+						$scope.alert.error(config.DEFAULT_ERROR_MESSAGE);
+					}
+				};
+			},
+			resolve: {
+				id: function() {
+					return _.isUndefined(item) ? 0 : item.CategoryId ;
+				}
+			}
+		});
+
+		modal.result.then(function(data) {
+			if(_.isUndefined(item)) {
+				data.nodes = [];
+				data.ProductCount = 0;
+				$scope.categories.unshift(data);
+			} else {
+				//existing data
+				item.NameEn = data.NameEn;
+				item.CategoryId = data.CategoryId;
+				item.CategoryAbbreviation = data.CategoryAbbreviation;
+				item.Visibility = data.Visibility;
+			}
+		});
+	};
+
+	//On init
+	$scope.init = function() {
 		$scope.reload();
 	};
+
+	//Load category list
 	$scope.reload = function() {
 		$scope.loading = true;
-		Shop.getLocalCategories($scope.shopId).then(function(data) {
-			$scope.loading = false;
+		LocalCategoryService.listAll().then(function(data) {
 			$scope.categories = Category.transformNestedSetToUITree(data);
-		}, function(err) {
-			$scope.alert.open(false, common.getError(err));
 			$scope.loading = false;
-		});
-	}
-	$rootScope.$on('createLocalCategory', function(evt) {
-		$scope.categories.unshift(LocalCategory.generate());
-	});
-	$rootScope.$on('saveLocalCategory', function(evt) {
-		//Call endpoint
-		$scope.alert.close();
-		$scope.formData = Category.transformUITreeToNestedSet($scope.categories);
-		$scope.formData = $scope.formData.map(function(item) {
-			delete item['ProductCount'];
-			delete item['parent'];
-			return item;
-		});
-		Shop.upsertLocalCategories($scope.shopId, $scope.formData).then(function() {
-			$scope.alert.success('Your changes have been saved.');
-			$scope.dirty = false;
-			$scope.reload();
 		}, function(err) {
-			$scope.alert.error(common.getError(err));
-			$scope.reload();
+			$scope.loading = false;
+			$scope.alert.open(false, common.getError(err));
 		});
-	});
-	$rootScope.$on('saveEditLocalCategory', function(evt) {
-		if($scope.editingForm.$valid) {
-			if($scope.editing) {
-				for (var k in $scope.editingCategory) {
-					$scope.editingCategoryOriginal[k] = $scope.editingCategory[k];
-				}
-			} else {
-				$scope.categories.unshift($scope.editingCategory);
-			}
+	};
 
-			$scope.$emit('saveLocalCategory');
-			//Close modal
-			$('#local-category-detail').modal('hide');
-		} else {
-			$scope.alert2.error('Unable to save because required fields are missing or incorrect.');
-		}
-	});
-	$rootScope.$on('openEditLocalCategory', function(evt, node) {
-		if (angular.isDefined(node)) {
-			$scope.editingCategoryOriginal = node;
-			$scope.editingCategory = angular.extend({}, node);
-			$scope.editing = true;
-		} else {
-			$scope.editingCategory = LocalCategory.generate();
-			$scope.editing = false;
-		}
-		$scope.editingForm.$setPristine();
-	});
-}];
+};

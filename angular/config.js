@@ -117,7 +117,7 @@ module.exports = {
 			icon: 'fa-clock-o'
 		}
 	],
-	CATEGORY_SYNC_DELAY: 2000, //Category wait for x millisecond before actually saving
+	CATEGORY_SYNC_DELAY: 1200, //Category wait for x millisecond before actually saving
 	DEFAULT_SUCCESS_MESSAGE: 'Your changes have been saved successfully.',
 	DEFAULT_ERROR_MESSAGE: 'Unable to save because required fields are missing or incorrect.', 
 	TITLE: {

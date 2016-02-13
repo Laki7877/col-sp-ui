@@ -1,6 +1,6 @@
 <div class="category-content row no-margin" ui-tree-handle style="cursor: pointer;">
 	<div class="category-content-padding">
-		<span class="col-xs-7 column-lc-name" >
+		<span class="col-xs-6 column-lc-name" >
 			<span class="lc-icon-name-warpper" >
 				<i 	class ="fa toggle-button"
 					ng-if="node.nodes && node.nodes.length > 0"
@@ -19,7 +19,8 @@
 		</span>
 		<span class="col-xs-1">{{ node.CategoryAbbreviation }}</span>
 		<span class="col-xs-1">{{ node.ProductCount }}</span>
-		<span class="col-xs-1 text-align-center" data-nodrag><nc-eye nc-model="node.Visibility" nc-eye-on-toggle="toggleVisibility(node)"></nc-eye></i>
+		<span class="col-xs-1">{{ node.AttributeSetCount }}</span>
+		<span class="col-xs-1 text-align-center" data-nodrag><nc-eye nc-model="node.Visibility" nc-eye-on-toggle="toggleVisibility(node)"></nc-eye>
 		</span>
 		<span class="col-xs-1 text-align-center">
 			<i class="fa fa-arrows color-dark-grey icon-size-20"></i>
