@@ -12,7 +12,11 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
         var MAX_VARIANT = 100;
 
         $scope.dataSet = {};
-        $scope.dataSet.AttributeSets = [];
+        $scope.dataSet.AttributeSets = [{
+            AttributeSetId: null,
+            disabled: true,
+            AttributeSetNameEn: "No Attribute Set"
+        }];
         $scope.dataSet.GlobalCategories = [];
         $scope.dataSet.LocalCategories = [];
         $scope.dataSet.Brands = [{

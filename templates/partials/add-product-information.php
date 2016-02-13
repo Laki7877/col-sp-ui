@@ -69,7 +69,7 @@
 
                         </div>
 
-                        <div nc-template="common/input/form-group-with-label" nc-label="Product Name (Thai)" nc-template-form="addProductForm.MasterVariant_ProductNameTh" nc-template-options-path="addProductForm/MasterVariant_ProductNameTh">
+                        <div nc-template="common/input/form-group-with-label" nc-label="Product Name (ไทย)" nc-template-form="addProductForm.MasterVariant_ProductNameTh" nc-template-options-path="addProductForm/MasterVariant_ProductNameTh">
                             <input class="form-control width-field-large" name="MasterVariant_ProductNameTh" ng-model="formData.MasterVariant.ProductNameTh" ng-pattern="/^[^<>]+$/" maxlength="300" required />
                         </div>
 
@@ -101,9 +101,10 @@
                                                         <span ng-bind="$select.selected.BrandNameEn"></span>
                                                         <span ng-show="!$select.selected.BrandNameEn">- Select Brand -</span>
                                                     </ui-select-match>
-                                                    <ui-select-choices ui-disable-choice="item.disabled"  refresh-delay="100"
-                                                    refresh="refreshBrands($select.search)" repeat="item in (dataSet.Brands) track by BrandId">
-                                                        <span>{{ item.BrandNameEn }}</span>
+                                                    <ui-select-choices ui-disable-choice="item.disabled"  refresh-delay="500"
+                                                    refresh="refreshBrands($select.search)" 
+                                                    repeat="item in (dataSet.Brands)  | filter : $select.search  track by item.BrandId">
+                                                        <span>{{ item.BrandNameEn }} </span>
                                                         <span ng-if="item.BrandNameTh">/ {{ item.BrandNameTh }}</span>
                                                     </ui-select-choices>
                                      </ui-select>
@@ -144,9 +145,9 @@
                                 </textarea>
                             </div>
 
-                            <? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (Thai)", "ng_model" => "formData.MasterVariant.DescriptionFullTh", "size" => "xxl"]) ?>
+                            <? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (ไทย)", "ng_model" => "formData.MasterVariant.DescriptionFullTh", "size" => "xxl"]) ?>
 
-                                <div nc-template="common/input/form-group-with-label" nc-label="Short Description (Thai)" nc-template-options-path="addProductForm/MasterVariant_DescriptionShortTh" nc-template-form="addProductForm.MasterVariant_DescriptionShortTh">
+                                <div nc-template="common/input/form-group-with-label" nc-label="Short Description (ไทย)" nc-template-options-path="addProductForm/MasterVariant_DescriptionShortTh" nc-template-form="addProductForm.MasterVariant_DescriptionShortTh">
                                     <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="MasterVariant_DescriptionShortTh" ng-model="formData.MasterVariant.DescriptionShortTh" />
                                     </textarea>
                                 </div>
@@ -175,12 +176,20 @@
                                             <span ng-bind="item.AttributeSetNameEn"></span>
                                         </ui-select-choices>
                                     </ui-select>
+                                    
+                                    
                                     <!-- if nothing is availalbe to pick -->
                                     <select class="form-control" ng-if="dataSet.AttributeSets.length == 0" disabled>
                                         <option disabled>This category has no attribute sets</option>
                                     </select>
+
                                 </div>
+                                
+                                
                             </div>
+                            <a class="like-text form-text" ng-if="dataSet.AttributeSets.AttributeSetId"  ng-click="dataSet.formData.AttributeSet = null">
+                                            <i class="fa fa-minus-circle color-theme"></i>
+                                    </a>
                         </div>
 
                         <!-- for each attribute in attribute set -->
@@ -289,7 +298,7 @@
                     <div class="form-section-content">
                         <? $this->insert('components/forms/multiple-radio-multiline', ["label" => "Shipping Method", "ng_model" => "formData.ShippingMethod", "choices" => ["Dropship by 3PL", "Central Fulfillment"]]) ?>
 
-                            <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.PrepareDay" nc-template-options-path="addProductForm/PrepareDay">
+                            <div nc-template="common/input/form-group-with-label" nc-label="Preparation Time" nc-template-form="addProductForm.PrepareDay" nc-template-options-path="addProductForm/PrepareDay">
                                 <input class="form-control width-field-normal" name="PrepareDay" ng-pattern-restrict="^[0-9]*$" ng-required="onPublishing" maxlength="5" ng-model="formData.PrepareDay" />
                             </div>
 

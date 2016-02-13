@@ -26,19 +26,7 @@
                             <div class="form-section-header">
                                 <h2>Vital Information</h2></div>
                             <div class="form-section-content modal-custom">
-                                <div ng-template="common/input/text2" ng-template-options="{
-									'label': 'Product Name (Thai)',
-									'labelClass': 'required',
-									'error' : {
-									'messages': {
-									'pattern': 'Only letters and numbers allowed'
-									},
-									'show': $root.isInvalid(addProductVariantForm.Modal_ProductNameTh),
-									'conditions' : addProductVariantForm.Modal_ProductNameTh.$error
-									}
-									}">
-                                    <input class="form-control width-field-large" name="Modal_ProductNameTh" ng-model="<?= $model ?>.ProductNameTh" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_ProductNameTh) }" ng-pattern="/^[^<>]+$/" maxlength="300" />
-                                </div>
+                                
 
                                 <div ng-template="common/input/text2" ng-template-options="{
 									'label': 'Product Name (English)',
@@ -53,7 +41,20 @@
 									}">
                                     <input class="form-control width-field-large" name="Modal_ProductNameEn" ng-model="<?=$model?>.ProductNameEn" maxlength="300" ng-pattern="/^[^<>ก-๙]+$/" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_ProductNameEn) }" />
                                 </div>
-
+                                
+                                <div ng-template="common/input/text2" ng-template-options="{
+									'label': 'Product Name (ไทย)',
+									'labelClass': 'required',
+									'error' : {
+									'messages': {
+									'pattern': 'Only letters and numbers allowed'
+									},
+									'show': $root.isInvalid(addProductVariantForm.Modal_ProductNameTh),
+									'conditions' : addProductVariantForm.Modal_ProductNameTh.$error
+									}
+									}">
+                                    <input class="form-control width-field-large" name="Modal_ProductNameTh" ng-model="<?= $model ?>.ProductNameTh" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_ProductNameTh) }" ng-pattern="/^[^<>]+$/" maxlength="300" />
+                                </div>
 
                                 <div class="form-group">
                                     <div class="width-label">
@@ -152,23 +153,7 @@
                                     </label>
                                 </div>
                                 <div class="form-section-content" ng-show="<?= $model ?>._override.description">
-                                    <? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (Thai)", "size" => "xxl", "label_class" => "required", "ng_model" => $model.".DescriptionFullTh"]) ?>
-
-                                        <div ng-template="common/input/textarea2" ng-template-options="{
-                                            'label': 'Short Description (Thai)',
-                                            'inputSize': 'xxl',
-                                            'formGroupClass' : 'margin-top-30',
-                                            'error' : {
-                                            'messages': {
-                                            'pattern': 'Special characters are not allowed'
-                                            },
-                                            'show': $root.isInvalid(addProductVariantForm.Modal_DescriptionShortTh),
-                                            'conditions' : addProductVariantForm.Modal_DescriptionShortTh.$error
-                                            }
-                                            }">
-                                            <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="Modal_DescriptionShortTh" ng-model="<?=$model?>.DescriptionShortTh" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_DescriptionShortTh) }" />
-                                            </textarea>
-                                        </div>
+                                       
 
                                         <? $this->insert('components/forms/ckeditor-with-label', 
 								            ["label" => "Description (English)", "size" => "xxl", "label_class" => "required", "ng_model" => $model.".DescriptionFullEn"]) ?>
@@ -188,6 +173,25 @@
                                                 <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="Modal_DescriptionShortEn" ng-model="<?=$model?>.DescriptionShortEn" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_DescriptionShortEn) }" />
                                                 </textarea>
                                             </div>
+                                            
+                                            
+                                             <? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (ไทย)", "size" => "xxl", "label_class" => "required", "ng_model" => $model.".DescriptionFullTh"]) ?>
+
+                                        <div ng-template="common/input/textarea2" ng-template-options="{
+                                            'label': 'Short Description (ไทย)',
+                                            'inputSize': 'xxl',
+                                            'formGroupClass' : 'margin-top-30',
+                                            'error' : {
+                                            'messages': {
+                                            'pattern': 'Special characters are not allowed'
+                                            },
+                                            'show': $root.isInvalid(addProductVariantForm.Modal_DescriptionShortTh),
+                                            'conditions' : addProductVariantForm.Modal_DescriptionShortTh.$error
+                                            }
+                                            }">
+                                            <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="Modal_DescriptionShortTh" ng-model="<?=$model?>.DescriptionShortTh" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_DescriptionShortTh) }" />
+                                            </textarea>
+                                        </div>
 
                                 </div>
                             </div>
