@@ -71,7 +71,7 @@ function ($scope, Product, util, NcAlert, $window, FileUploader, ImageService, c
     	}
     	return true;
     };
-    util.warningOnLeaveFn(function() {
+    util.warningOnLeave(function() {
     	return !$scope.dirty;
     });
 

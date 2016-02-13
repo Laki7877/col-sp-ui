@@ -10,7 +10,9 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 	(options.preInit || _.noop)($scope);
 
 	//Pop up javascript warning message on leave
-	util.warningOnLeave($scope, 'form');
+	util.warningOnLeave(function() {
+		return !$scope.form.$dirty;
+	});
 
 	$scope.init = function(params) {
 		//Fetch GET Params
