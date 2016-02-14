@@ -147,6 +147,7 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 .factory('Category', services.category)
 .factory('Shop', services.shop)
 .factory('LocalCategory', services.localCategory)
+.factory('LocalCategoryService', services.localCategoryService)
 .factory('GlobalCategory', services.globalCategory)
 .factory('GlobalCategoryService', services.globalCategoryService) //newer version
 .factory('Attribute', services.attribute)

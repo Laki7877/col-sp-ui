@@ -6,11 +6,12 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 	$scope.popover = false;
 	$scope.loading = false;
 	$scope.saving = false;
+	$scope.dirty = false;
 	$scope.alert = new NcAlert();
 	$scope.attributeSetOptions = [];
 
 	util.warningOnLeave(function() {
-		return !$scope.saving;
+		return !$scope.saving || $scope.dirty;
 	});
 
 	//UiTree onchange event
@@ -35,7 +36,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 		name: 'Delete',
 		fn: function($nodeScope) {
 			$nodeScope.remove();
-			$scope.sync(0);
+			$scope.sync();
 		},
 		confirmation: {
 			title: 'Delete',
@@ -61,13 +62,18 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 	//Update global cat by sending the whole tree.
 	//We put some timeout delay to simulate multiple-edit-single-update
 	$scope.sync = function(delay) {
-		var delay = delay || config.CATEGORY_SYNC_DELAY;
+		if($scope.saving) {
+			$scope.dirty = true;
+			return;
+		}
 		if($scope.timerPromise != null) {
 			$timeout.cancel($scope.timerPromise);
+			$scope.timerPromise = null;
 		}
-		$scope.saving = true;
 		$scope.timerPromise = $timeout(function() {
-			GlobalCategoryService.upsert(Category.transformUITreeToNestedSet($scope.categories))
+				$scope.pristine = true;
+				$scope.saving = true;
+				GlobalCategoryService.upsert(Category.transformUITreeToNestedSet($scope.categories))
 				.then(function() {
 					$scope.alert.close();
 				}, function(err) {
@@ -76,8 +82,12 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				})
 				.finally(function() {
 					$scope.saving = false;
+					if($scope.dirty) {
+						$scope.dirty = false;
+						$scope.sync();
+					}
 				});
-		}, delay);
+			}, delay || config.CATEGORY_SYNC_DELAY);
 	};
 
 	//Load attribute sets for global cat modal selection
@@ -97,7 +107,6 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 		//Open add or edit one category
 		var modal = $uibModal.open({
 			animation: true,
-			backdrop: 'static',
 			size: 'lg',
 			keyboard: false,
 			templateUrl: 'global_category/modal',
@@ -124,11 +133,16 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 						});
 				}
 
-				$scope.cancel = function() {
-					if(!$scope.saving) {
-						$uibModalInstance.dismiss();
-					}
-				};
+				$scope.$on('modal.closing', function(e, res, closeType) {
+					if(!closeType) {
+						if ($scope.saving) e.preventDefault();
+						if ($scope.form.$dirty) {
+							if(!confirm('Your changes will not be saved.')) {
+								e.preventDefault();
+							}
+						}
+					} 
+				});
 				$scope.save = function() {
 					$scope.alert.close();
 
