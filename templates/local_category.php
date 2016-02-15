@@ -11,7 +11,7 @@
 		    </h1>
 		    <span class="float-right page-header-action">
 		        <button type="button" class="btn-white btn margin-right-10" ng-click="open()">
-		          <span class="">Create Local Category</span>
+		          <span class="">Add New Category</span>
 		        </button>
 		    </span>
 		</div>

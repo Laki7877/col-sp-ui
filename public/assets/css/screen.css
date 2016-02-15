@@ -12639,20 +12639,24 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 .page-header {
   padding-bottom: 14px;
 }
-/* line 43, ../../../assets/_header.scss */
+/* line 42, ../../../assets/_header.scss */
+.page-header h1 {
+  margin: 3px 0px 7px 0px;
+}
+/* line 46, ../../../assets/_header.scss */
 .page-header.with-border {
   border-bottom: 1px solid #bcc7d5;
 }
-/* line 46, ../../../assets/_header.scss */
+/* line 49, ../../../assets/_header.scss */
 .page-header.no-padding {
   padding-bottom: 0;
 }
-/* line 50, ../../../assets/_header.scss */
+/* line 53, ../../../assets/_header.scss */
 .page-header .page-header-title {
   font-size: 24px;
   font-weight: normal;
 }
-/* line 56, ../../../assets/_header.scss */
+/* line 59, ../../../assets/_header.scss */
 .page-header .page-actions .btn ~ .btn {
   margin-left: 10px;
 }
@@ -14588,7 +14592,7 @@ html, body {
 }
 /* line 24, ../../../assets/_local_category.scss */
 .local-category-page .local-category-section .category-content {
-  line-height: 40px;
+  line-height: 30px;
 }
 /* line 28, ../../../assets/_local_category.scss */
 .local-category-page .local-category-section .inline-block {
@@ -14679,22 +14683,26 @@ html, body {
   font-size: 20px;
 }
 /* line 112, ../../../assets/_local_category.scss */
+.local-category-page .fa {
+  font-size: 16px;
+}
+/* line 116, ../../../assets/_local_category.scss */
 .local-category-page .btn-white {
   width: auto;
 }
-/* line 116, ../../../assets/_local_category.scss */
+/* line 120, ../../../assets/_local_category.scss */
 .local-category-page li {
   list-style-type: none;
 }
-/* line 120, ../../../assets/_local_category.scss */
+/* line 124, ../../../assets/_local_category.scss */
 .local-category-page .fa-arrows {
   cursor: pointer;
 }
-/* line 124, ../../../assets/_local_category.scss */
+/* line 128, ../../../assets/_local_category.scss */
 .local-category-page .fa-caret-down {
   cursor: pointer;
 }
-/* line 128, ../../../assets/_local_category.scss */
+/* line 132, ../../../assets/_local_category.scss */
 .local-category-page .local-category-empty-section {
   border: 1px solid;
   border-color: #BCC7D5;
@@ -14702,12 +14710,12 @@ html, body {
   height: 180px;
   line-height: 180px;
 }
-/* line 135, ../../../assets/_local_category.scss */
+/* line 139, ../../../assets/_local_category.scss */
 .local-category-page .local-category-empty-section > .local-category-empty-text {
   font-size: 18px;
   display: inline-block;
 }
-/* line 139, ../../../assets/_local_category.scss */
+/* line 143, ../../../assets/_local_category.scss */
 .local-category-page .local-category-empty-section .zero-category-image {
   width: 130px;
   height: 80px;
@@ -14720,79 +14728,83 @@ html, body {
 }
 
 /* For dragging object */
-/* line 153, ../../../assets/_local_category.scss */
+/* line 157, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  line-height: 40px;
+  line-height: 30px;
   color: #333333;
   background: #fff;
   position: absolute;
   border: solid 1px #BCC7D5;
 }
-/* line 162, ../../../assets/_local_category.scss */
+/* line 166, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .inline-block {
   display: inline-block;
 }
-/* line 165, ../../../assets/_local_category.scss */
+/* line 169, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .fa-arrows {
   cursor: pointer;
 }
-/* line 169, ../../../assets/_local_category.scss */
+/* line 173, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .toggle-button {
   font-size: 18px;
   color: #4891d2;
   padding-right: 8px;
 }
-/* line 175, ../../../assets/_local_category.scss */
+/* line 179, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .no-children-row {
   margin-right: 21px;
 }
-/* line 179, ../../../assets/_local_category.scss */
+/* line 183, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .caret-grey {
   font-size: 18px;
   color: #BCC7D5;
   margin-right: 6px;
 }
-/* line 185, ../../../assets/_local_category.scss */
+/* line 189, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .icon-size-20 {
   font-size: 20px;
 }
-/* line 189, ../../../assets/_local_category.scss */
+/* line 193, ../../../assets/_local_category.scss */
+.angular-ui-tree-drag .fa {
+  font-size: 16px;
+}
+/* line 197, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .btn-white {
   width: auto;
 }
-/* line 193, ../../../assets/_local_category.scss */
+/* line 201, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag li {
   list-style-type: none;
 }
-/* line 197, ../../../assets/_local_category.scss */
+/* line 205, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag ol, .angular-ui-tree-drag li {
   padding-left: 0;
 }
-/* line 201, ../../../assets/_local_category.scss */
+/* line 209, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .category-content {
   border-top: solid 1px #BCC7D5;
 }
-/* line 204, ../../../assets/_local_category.scss */
+/* line 212, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag > li:first-child > .category-content {
   border-top: 0;
 }
-/* line 208, ../../../assets/_local_category.scss */
+/* line 216, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .ui-sortable-helper .category-content {
   border-top: 0;
 }
-/* line 213, ../../../assets/_local_category.scss */
+/* line 221, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .category-content {
   padding-left: 15px;
 }
-/* line 217, ../../../assets/_local_category.scss */
+/* line 225, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .lc-icon-name-warpper {
   padding-left: 24px;
   display: block;
   position: relative;
 }
-/* line 222, ../../../assets/_local_category.scss */
+/* line 230, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .lc-icon-name-warpper > i.fa, .angular-ui-tree-drag .lc-icon-name-warpper .no-children-row {
   position: absolute;
   left: 0;
@@ -14800,27 +14812,27 @@ html, body {
   top: 50%;
   margin-top: -8.5px;
 }
-/* line 231, ../../../assets/_local_category.scss */
+/* line 239, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag > li > .category-content > .category-content-padding > .column-lc-name {
   padding-left: 0px;
 }
-/* line 234, ../../../assets/_local_category.scss */
+/* line 242, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
   padding-left: 60px;
 }
-/* line 237, ../../../assets/_local_category.scss */
+/* line 245, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag > li > ol > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
   padding-left: 120px;
 }
-/* line 240, ../../../assets/_local_category.scss */
+/* line 248, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag > li > ol > li > ol > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
   padding-left: 180px;
 }
-/* line 243, ../../../assets/_local_category.scss */
+/* line 251, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag > li > ol > li > ol > li > ol > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
   padding-left: 240px;
 }
-/* line 246, ../../../assets/_local_category.scss */
+/* line 254, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag > li > ol > li > ol > li > ol > li > ol > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
   padding-left: 300px;
 }

@@ -39,6 +39,9 @@
 .page-header {
 	@extend .clearfix;
 	padding-bottom: 14px;
+		h1{
+			margin: 3px 0px 7px 0px;
+		}
 
 	&.with-border {
 		border-bottom: 1px solid $header-border-grey;  
