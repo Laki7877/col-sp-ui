@@ -26,11 +26,11 @@
 								'fa fa-eye-slash color-grey icon-size-20' : node.Status != 'VI' }"></i>
 			</span>
 			<span class="col-xs-1 text-align-center">
-				<i class="fa fa-gear color-dark-grey icon-size-20"></i>
+				<i class="fa fa-gear color-dark-grey"></i>
 				<i class="fa fa-caret-down color-dark-grey" uib-popover-template="'node_actions.html'" popover-placement="bottom" popover-append-to-body="true" popover-any></i>	
 			</span>
 			<span class="col-xs-1 text-align-center" ui-tree-handle>
-				<i class="fa fa-arrows color-dark-grey icon-size-20"></i>
+				<i class="fa fa-arrows color-dark-grey"></i>
 			</span>
 		</div>
 	</div>
