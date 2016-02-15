@@ -1,25 +1,25 @@
 // Top Header
 .header {
 	background: $header-bg-color;
-	height: 40px;
+	height: 30px;
 
 	.header-font-subject {
 		font-size: 16px;
-		line-height: 40px;
+		line-height: 30px;
 		color: #32343c;
 	}
 
 	.header-font-detail {
 		float: right;
 		color: $color-dark-grey;
-		line-height: 40px;
+		line-height: 30px;
 	}
 	.header-font-detail:hover {
 		color: $color-theme;
 	}
 	.dropdown-toggle{
-		padding-top: 10px;
-		padding-bottom: 10px;
+		padding-top: 6px;
+		padding-bottom: 4px;
 		color: $color-dark-grey;
 	}
 	.dropdown-toggle:hover, .dropdown-toggle:focus, .open .dropdown-toggle,.open .dropdown-toggle:hover {
