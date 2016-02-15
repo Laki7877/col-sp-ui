@@ -75,5 +75,9 @@ Route::add('/admin/shoptypes/:id', 'AdminController::editShoptype');
 //test route
 Route::add('/test/:name', 'TestController::any');
 
+
+// try to do
+Route::add('/ttd-inventory', 'SellerController::inventory');
+
 //process route
 Route::process();

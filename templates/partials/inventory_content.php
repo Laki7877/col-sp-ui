@@ -1,6 +1,6 @@
 <div id="inventory-tab-content">
-	
-	<div class="row">
+
+	<div class="row" ng-show="__showAdvanceSearchUI">
     <div class="col-xs-12">
       <div class="form-section">
         <div class="form-section-header"><h2>Advanced Search</h2></div>
@@ -36,14 +36,14 @@
       <a class="filter-seperator">Low Stock</a>
       <a class="filter-seperator">Out of Stock</a>
     </div>
-  </div>  
+  </div>
 
   <div class="table-section">
     <table class="table table-curved product-list-table">
       <thead>
         <tr class="table-head">
           <th class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input"> 
+              <input type="checkbox" aria-label="Checkbox for following text input">
           </th>
           <th class="display-column"></th>
           <th>
@@ -66,28 +66,28 @@
             <a class="header-link margin-left-10" href="#"><span>Status</span></a>
             <i class="fa fa-caret-down color-grey">
           </th>
-          <th class="action-column text-center"><a class="header-link" href="#"><span>Action</span></a></th> 
+          <th class="action-column text-center"><a class="header-link" href="#"><span>Action</span></a></th>
         </tr>
 
       </thead>
       <tbody>
-        <tr>
+        <tr ng-repeat="item in inventoryData track by $index">
           <td class="checkbox-column">
-            <input type="checkbox" aria-label="Checkbox for following text input"> 
+            <input type="checkbox" aria-label="Checkbox for following text input">
           </td>
           <td class="display-column">
             <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
           </td>
-          <td class="column-text-ellipsis"><a href="#">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</a></td>
+          <td class="column-text-ellipsis"><a href="#">{{item.ProductNameEn}}</a></td>
           <td class="">
-            <div>IV002321</div>
+            <div>{{item.productId}}</div>
           </td>
-          <td class="">SX002321</td>
+          <td class="">{{item.Sku}}</td>
           <td class="text-right">
             <span class="">
               <span>2</span>
-              <span class='popover-markup'> 
-                <i  class='trigger fa fa-caret-down color-dark-grey'></i> 
+              <span class='popover-markup'>
+                <i  class='trigger fa fa-caret-down color-dark-grey'></i>
                 <div class="content hide">
                     <span class='col-xs-6 padding-left-0 margin-bottom-15 margin-top-10'>In Stock</span><input class='margin-top-10 text-right col-xs-6' placeholder="17" />
                     <span class='col-xs-8 padding-left-0 margin-bottom-15'>Defect</span><span class='text-right col-xs-4'>5</span>
@@ -96,7 +96,7 @@
                       <div><span class='col-xs-8 padding-left-0 available_inventory'>Available</span><span class='text-right col-xs-4 available_inventory '>3</span></div>
                       <div class='text-center'>
                       <button class='btn btn-blue btn-width-100 text-center'>Save</button>
-                    </div>  
+                    </div>
                 </div>
               </span>
             </span>
@@ -104,53 +104,6 @@
           <td>
             <span class="margin-left-10">
               Normal Stock
-            </span> 
-          </td>
-          <td class="text-center">
-            <span class="popover-gear">
-              <i class="fa fa-gear color-dark-grey icon-size-20"></i>
-              <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
-                "></i>  
-            </span>
-          </td>
-        </tr>
-        <tr>
-          <td class="checkbox-column">
-            <input type="checkbox" aria-label="Checkbox for following text input"> 
-          </td>
-          <td class="display-column">
-            <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
-          </td>
-          <td class="column-text-ellipsis">
-            <a href="#">Neleus Men's Slim Fit Long Sleave with Wing on the earth ground</a>
-            <div class="color-dark-grey font-size-12">Blue / Small</div>
-          </td>
-          <td class="">
-            <div>IV002321</div>
-          </td>
-          <td class="">SX002321</td>
-          <td class="text-right">
-            <span class="">
-              <span class="color-red">2</span>
-              <span class='popover-markup'> 
-                <i  class='trigger fa fa-caret-down color-dark-grey'></i> 
-                <div class="content hide">
-                    <span class='col-xs-6 padding-left-0 margin-bottom-15 margin-top-10'>In Stock</span><input class='margin-top-10 text-right col-xs-6' placeholder="17" />
-                    <span class='col-xs-8 padding-left-0 margin-bottom-15'>Defect</span><span class='text-right col-xs-4'>5</span>
-                      <div><span class='col-xs-8 padding-left-0 margin-bottom-15'>On Hold</span><span class='text-right col-xs-4'>7</span></div>
-                      <div><span class='col-xs-8 padding-left-0 margin-bottom-15 border_modal'>Reserved</span><span class='text-right col-xs-4 border_modal'>2</span></div>
-                      <div><span class='col-xs-8 padding-left-0 available_inventory'>Available</span><span class='text-right col-xs-4 available_inventory '>3</span></div>
-                      <div class='text-center'>
-                      <button class='btn btn-blue btn-width-100 text-center'>Save</button>
-                    </div>  
-                </div>
-              </span>
-            </span>
-          </td>
-          <td> 
-            <span class="margin-left-10 color-red">
-              Low Stock
             </span>
           </td>
           <td class="text-center">
@@ -158,7 +111,7 @@
               <i class="fa fa-gear color-dark-grey icon-size-20"></i>
               <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
                 <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
-                "></i>  
+                "></i>
             </span>
           </td>
         </tr>
@@ -188,7 +141,7 @@
       </div>
     </span>
   </div>
-  
+
 </div>
 
 

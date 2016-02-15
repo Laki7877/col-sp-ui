@@ -4,7 +4,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Inventory'])
 ?>
 
 <?php $this->start('page-body') ?>
-	<div>
+	<div ng-controller="SellerInventoryCtrl">
 
 		<div class="page-header with-border">
 	        <h1 class="float-left page-header-title">Inventory</h1>

@@ -29,4 +29,10 @@ class SellerController extends Controller
 	{
 		return View::render('user_add_role',  ['params' =>  json_encode_n($params)]);
 	}
+
+
+	public static function inventory($params)
+	{
+		return View::render('seller_inventory');
+	}
 }

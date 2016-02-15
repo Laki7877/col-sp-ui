@@ -1,8 +1,8 @@
 'use strict';
 //App Start here
 var angular = require('angular');
-var bulk = require('bulk-require')(__dirname, 
-	['controllers/*.js', 'services/*.js', 'helpers/*.js', 
+var bulk = require('bulk-require')(__dirname,
+	['controllers/*.js', 'services/*.js', 'helpers/*.js',
 	'directives/*.js', 'filters/*.js', 'libs/*.js', 'template-options/*.js']);
 var config = require('./config');
 var template = require('./template');
@@ -29,13 +29,13 @@ var helpers = bulk.helpers;
 var directives = bulk.directives;
 var filters = bulk.filters;
 
-var app = angular.module('colspApp', 
-['ngPatternRestrict', 'nc','ui.bootstrap.datetimepicker', 
+var app = angular.module('colspApp',
+['ngPatternRestrict', 'nc','ui.bootstrap.datetimepicker',
 'duScroll','ngSanitize', 'ngAnimate',
-'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
+'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64', 'SellerInventory'])
 
 //App config
-.config(['$uibTooltipProvider', 'uiSelectConfig', '$ncPaginationProvider', '$ncAlertProvider', 
+.config(['$uibTooltipProvider', 'uiSelectConfig', '$ncPaginationProvider', '$ncAlertProvider',
 function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
 
 	//Default close tooltip when click again
@@ -55,14 +55,14 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 
 //App init
 .run(['$rootScope', 'storage', '$window', '$location', 'Credential', function($rootScope, storage, $window, $location, Credential) {
-	
+
 	$rootScope.Profile = storage.getCurrentUserProfile();
 	$rootScope.Imposter = storage.getImposterProfile();
 	if(!$rootScope.Profile && $window.location.pathname != "/login"){
 		storage.put('redirect', $window.location.pathname);
 		$window.location.href = "/login";
 	}
-    
+
     //Create global logout function
     $rootScope.logout = function(){
         if($rootScope.Imposter){
@@ -73,24 +73,24 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
                 alert("Fetal error while logging out.");
             });
         }
-        
+
         Credential.logout();
-        $window.location.href = "/login"        
+        $window.location.href = "/login"
     };
 
-    
+
 	//Create generic form validator functions
 	//This is now inside ncTemplate
     $rootScope.isInvalid = function(form) {
-		if(angular.isDefined(form) && 
-			angular.isDefined(form.$invalid) && 
+		if(angular.isDefined(form) &&
+			angular.isDefined(form.$invalid) &&
 			angular.isDefined(form.$dirty)) {
 			return form.$invalid && (form.$dirty || form.$$parentForm.$submitted);
 		}
 		return false;
 	};
 
-	
+
 	//Prevent image dragdrop on other elements
 	$window.addEventListener("dragover",function(e){
 	  e = e || event;
