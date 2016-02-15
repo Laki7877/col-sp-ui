@@ -12639,20 +12639,24 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 .page-header {
   padding-bottom: 14px;
 }
-/* line 43, ../../../assets/_header.scss */
+/* line 42, ../../../assets/_header.scss */
+.page-header h1 {
+  margin: 3px 0px 7px 0px;
+}
+/* line 46, ../../../assets/_header.scss */
 .page-header.with-border {
   border-bottom: 1px solid #bcc7d5;
 }
-/* line 46, ../../../assets/_header.scss */
+/* line 49, ../../../assets/_header.scss */
 .page-header.no-padding {
   padding-bottom: 0;
 }
-/* line 50, ../../../assets/_header.scss */
+/* line 53, ../../../assets/_header.scss */
 .page-header .page-header-title {
   font-size: 24px;
   font-weight: normal;
 }
-/* line 56, ../../../assets/_header.scss */
+/* line 59, ../../../assets/_header.scss */
 .page-header .page-actions .btn ~ .btn {
   margin-left: 10px;
 }
