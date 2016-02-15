@@ -1,6 +1,7 @@
 
 module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Category, GlobalCategoryService, AttributeSetService, NcAlert, util, config){
 	'ngInject';
+	$scope.modalScope = null;
 	$scope.categories = [];
 	$scope.timerPromise = null;
 	$scope.popover = false;
@@ -11,7 +12,8 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 	$scope.attributeSetOptions = [];
 
 	util.warningOnLeave(function() {
-		return !$scope.saving || $scope.dirty;
+		var modalDirty = $scope.modalScope == null ? false : $scope.modalScope.form.$dirty;
+		return (!$scope.saving || !$scope.dirty) && !modalDirty;
 	});
 
 	//UiTree onchange event
@@ -110,8 +112,9 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 			size: 'lg',
 			keyboard: false,
 			templateUrl: 'global_category/modal',
-			controller: function($scope, $uibModalInstance, GlobalCategoryService, NcAlert, config, id, attributeSetOptions) {
+			controller: function($scope, $uibModalInstance, $timeout, GlobalCategoryService, NcAlert, config, id, attributeSetOptions) {
 				'ngInject';
+				$scope.$parent.modalScope = $scope;
 				$scope.alert = new NcAlert();
 				$scope.statusOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
 				$scope.attributeSetOptions = attributeSetOptions;
@@ -140,15 +143,17 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 							if(!confirm('Your changes will not be saved.')) {
 								e.preventDefault();
 							}
+						} else {
+							$scope.$parent.modalScope = null;
 						}
 					} 
 				});
 				$scope.save = function() {
 					$scope.alert.close();
-
-					if($scope.form.$valid) {
 					$scope.saving = true;
-					var processed = GlobalCategoryService.serialize($scope.formData);
+					
+					if($scope.form.$valid) {
+						var processed = GlobalCategoryService.serialize($scope.formData);
 						if(id == 0) {
 							GlobalCategoryService.create(processed)
 								.then(function(data) {
@@ -168,6 +173,9 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 						}
 					} else {
 						$scope.alert.error(config.DEFAULT_ERROR_MESSAGE);
+						$timeout(function() {
+							$scope.saving = false;
+						},0);
 					}
 				};
 			},
@@ -178,7 +186,8 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				attributeSetOptions: function() {
 					return $scope.attributeSetOptions;
 				}
-			}
+			},
+			scope: $scope
 		});
 
 		modal.result.then(function(data) {

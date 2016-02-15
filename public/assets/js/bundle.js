@@ -822,6 +822,7 @@ module.exports = ["$scope", "$controller", "BrandService", "ImageService", funct
 
 module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Category", "GlobalCategoryService", "AttributeSetService", "NcAlert", "util", "config", function($scope, $rootScope, $uibModal, $timeout, common, Category, GlobalCategoryService, AttributeSetService, NcAlert, util, config){
 	'ngInject';
+	$scope.modalScope = null;
 	$scope.categories = [];
 	$scope.timerPromise = null;
 	$scope.popover = false;
@@ -832,7 +833,8 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 	$scope.attributeSetOptions = [];
 
 	util.warningOnLeave(function() {
-		return !$scope.saving || $scope.dirty;
+		var modalDirty = $scope.modalScope == null ? false : $scope.modalScope.form.$dirty;
+		return (!$scope.saving || !$scope.dirty) && !modalDirty;
 	});
 
 	//UiTree onchange event
@@ -931,8 +933,9 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 			size: 'lg',
 			keyboard: false,
 			templateUrl: 'global_category/modal',
-			controller: ["$scope", "$uibModalInstance", "GlobalCategoryService", "NcAlert", "config", "id", "attributeSetOptions", function($scope, $uibModalInstance, GlobalCategoryService, NcAlert, config, id, attributeSetOptions) {
+			controller: ["$scope", "$uibModalInstance", "$timeout", "GlobalCategoryService", "NcAlert", "config", "id", "attributeSetOptions", function($scope, $uibModalInstance, $timeout, GlobalCategoryService, NcAlert, config, id, attributeSetOptions) {
 				'ngInject';
+				$scope.$parent.modalScope = $scope;
 				$scope.alert = new NcAlert();
 				$scope.statusOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
 				$scope.attributeSetOptions = attributeSetOptions;
@@ -961,15 +964,17 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 							if(!confirm('Your changes will not be saved.')) {
 								e.preventDefault();
 							}
+						} else {
+							$scope.$parent.modalScope = null;
 						}
 					} 
 				});
 				$scope.save = function() {
 					$scope.alert.close();
-
-					if($scope.form.$valid) {
 					$scope.saving = true;
-					var processed = GlobalCategoryService.serialize($scope.formData);
+					
+					if($scope.form.$valid) {
+						var processed = GlobalCategoryService.serialize($scope.formData);
 						if(id == 0) {
 							GlobalCategoryService.create(processed)
 								.then(function(data) {
@@ -989,6 +994,9 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 						}
 					} else {
 						$scope.alert.error(config.DEFAULT_ERROR_MESSAGE);
+						$timeout(function() {
+							$scope.saving = false;
+						},0);
 					}
 				};
 			}],
@@ -999,7 +1007,8 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 				attributeSetOptions: function() {
 					return $scope.attributeSetOptions;
 				}
-			}
+			},
+			scope: $scope
 		});
 
 		modal.result.then(function(data) {
@@ -1189,6 +1198,7 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", function($sco
 },{}],20:[function(require,module,exports){
 module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Category", "LocalCategoryService", "AttributeSetService", "NcAlert", "util", "config", function($scope, $rootScope, $uibModal, $timeout, common, Category, LocalCategoryService, AttributeSetService, NcAlert, util, config){
 	'ngInject';
+	$scope.modalScope = null;
 	$scope.categories = [];
 	$scope.timerPromise = null;
 	$scope.popover = false;
@@ -1198,7 +1208,8 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 	$scope.alert = new NcAlert();
 
 	util.warningOnLeave(function() {
-		return !$scope.saving || $scope.dirty;
+		var modalDirty = $scope.modalScope == null ? false : $scope.modalScope.form.$dirty;
+		return (!$scope.saving || !$scope.dirty) && !modalDirty;
 	});
 
 	//UiTree onchange event
@@ -1290,8 +1301,9 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 			size: 'lg',
 			keyboard: false,
 			templateUrl: 'local_category/modal',
-			controller: ["$scope", "$uibModalInstance", "LocalCategoryService", "NcAlert", "config", "id", function($scope, $uibModalInstance, LocalCategoryService, NcAlert, config, id) {
+			controller: ["$scope", "$uibModalInstance", "$timeout", "LocalCategoryService", "NcAlert", "config", "id", function($scope, $uibModalInstance, $timeout, LocalCategoryService, NcAlert, config, id) {
 				'ngInject';
+				$scope.$parent.modalScope = $scope;
 				$scope.alert = new NcAlert();
 				$scope.statusOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
 				$scope.formData = {};
@@ -1319,14 +1331,16 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 							if(!confirm('Your changes will not be saved.')) {
 								e.preventDefault();
 							}
+						} else {
+							$scope.$parent.modalScope = null;
 						}
 					} 
 				});
 				$scope.save = function() {
 					$scope.alert.close();
+					$scope.saving = true;
 
 					if($scope.form.$valid) {
-					$scope.saving = true;
 					var processed = LocalCategoryService.serialize($scope.formData);
 						if(id == 0) {
 							LocalCategoryService.create(processed)
@@ -1347,6 +1361,9 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 						}
 					} else {
 						$scope.alert.error(config.DEFAULT_ERROR_MESSAGE);
+						$timeout(function() {
+							$scope.saving = false;
+						},0);
 					}
 				};
 			}],
@@ -4554,6 +4571,7 @@ angular.module('nc')
 	}])
 	.factory('NcAlert', ["$document", "$timeout", "$ncAlert", function($document, $timeout, $ncAlert) {
 		return function() {
+			var vm = this;
 			this.type = 'red';
 			this.show = false;
 			this.close = function() {
@@ -4574,16 +4592,16 @@ angular.module('nc')
 				this.open(false, obj);
 				
 				$timeout(function() {
-					var section = angular.element('body');
-					$document.scrollTo(section, 0, 1000);
+					var section = vm.element || $document;
+					section.scrollTopAnimated(0, 1000);
 				}, 10);
 			};
 			this.success = function(obj) {
 				this.open(true, obj);
 				
 				$timeout(function() {
-					var section = angular.element('body');
-					$document.scrollTo(section, 0, 1000);
+					var section = vm.element || $document;
+					section.scrollTopAnimated(0, 1000);
 				}, 10);
 			};
 			this.message = '';
@@ -5407,7 +5425,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncAlertTemplate',
-    "<div id=alert class=alert ng-class=\"['alert-' + (type || 'warning')]\" class=\"alert alert-dismissable\" role=alert><span class=\"close color opacity-1\" ng-class=\"'color-' + (type || 'warning')\" aria-hidden=true ng-show=closeable ng-click=\"close({$event: $event})\">&times;</span><ng-transclude><ng-transclude></ng-transclude></div>"
+    "<div class=alert ng-class=\"['alert-' + (type || 'warning')]\" class=\"alert alert-dismissable\" role=alert><span class=\"close color opacity-1\" ng-class=\"'color-' + (type || 'warning')\" aria-hidden=true ng-show=closeable ng-click=\"close({$event: $event})\">&times;</span><ng-transclude><ng-transclude></ng-transclude></div>"
   );
 
 
@@ -8117,7 +8135,7 @@ module.exports = {
 },{}],115:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Sun Feb 14 2016 02:01:31 GMT+0700 (SE Asia Standard Time)
+ * Mon Feb 15 2016 00:25:44 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -8342,7 +8360,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('local_category/modal',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Local Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Local Category Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\r" +
     "\n" +
     "\t\t\t                  'label': 'Category Name (Thai)',\r" +
     "\n" +
@@ -81252,7 +81270,7 @@ return jQuery;
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
- * Version: 0.14.2 - 2016-02-10T10:55:00.463Z
+ * Version: 0.14.2 - 2016-02-13T06:55:42.594Z
  * License: MIT
  */
 
@@ -81760,6 +81778,9 @@ uis.controller('uiSelectCtrl',
     if ( !ctrl.open ) {
       return false;
     }
+    if(!ctrl.items){
+      ctrl.items = [];
+    }
     var itemIndex = ctrl.items.indexOf(itemScope[ctrl.itemProperty]);
     var isActive =  itemIndex == ctrl.activeIndex;
 
@@ -81777,7 +81798,9 @@ uis.controller('uiSelectCtrl',
   ctrl.isDisabled = function(itemScope) {
 
     if (!ctrl.open) return;
-
+    if(!ctrl.items){
+      ctrl.items = [];
+    }
     var itemIndex = ctrl.items.indexOf(itemScope[ctrl.itemProperty]);
     var isDisabled = false;
     var item;
