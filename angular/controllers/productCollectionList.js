@@ -4,7 +4,7 @@
     //UI binding variables    
 
     $scope.showOnOffStatus = true;
-    $scope.checkAll = false;
+    $scope.allChecked = false;
     $scope.alert = new Alert();
     $scope.filterOptions = [
         { name: "All", value: 'All' },
@@ -87,7 +87,7 @@
             if (bulk) {
                 bulk.fn();
             }
-            $scope.checkAll = false;
+            $scope.allChecked = false;
         }
     };
 
@@ -312,10 +312,13 @@
     //Watch any change in table parameter, trigger reload
     $scope.$watch('tableParams', function () {
         $scope.reloadData();
-        $scope.checkAll = false;
+        $scope.allChecked = false;
     }, true);
 
-$scope.checkAll = function(){
+    
+
+         $scope.checkAll = function(){
+            console.log("CheckAll fire");
         var first = $scope.productList[0];
         var tval = !($scope.checkBoxCache[first.ProductId] || false);
         $scope.productList.forEach(function (d) {
@@ -324,11 +327,12 @@ $scope.checkAll = function(){
     }
 
     //Select All checkbox
-    $scope.$watch('checkAll', function (newVal, oldVal) {
-        $scope.productList.forEach(function (d) {
-            $scope.checkBoxCache[d.ProductId] = $scope.checkAll;
-        });
-    }, true);
+    // $scope.$watch('checkAll', function (newVal, oldVal) {
+    //     console.log("CheckAll watch filre");
+    //     $scope.productList.forEach(function (d) {
+    //         $scope.checkBoxCache[d.ProductId] = $scope.checkAll;
+    //     });
+    // }, true);
 
     $scope.checkBoxCount = function () {
         var m = [];

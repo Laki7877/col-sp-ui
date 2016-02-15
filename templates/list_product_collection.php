@@ -54,7 +54,7 @@
           <tr class="table-head" >
 		  
             <th class="checkbox-column">
-                <input type="checkbox" aria-label="Checkbox for following text input" ng-model="checkAll">
+                <input type="checkbox" aria-label="Checkbox for following text input" ng-click="checkAll()" ng-model="checkAll" >
             </th>            
             <th  ng-click="setOrderBy('CMSNameEN')">
               <a class="header-link" ><span ng-class="sort('CMSNameEN', true)">Collection Name</span></a>
