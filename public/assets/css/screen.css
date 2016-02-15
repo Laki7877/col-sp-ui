@@ -12596,19 +12596,19 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 /* line 2, ../../../assets/_header.scss */
 .header {
   background: #edf2f9;
-  height: 60px;
+  height: 50px;
 }
 /* line 6, ../../../assets/_header.scss */
 .header .header-font-subject {
-  font-size: 20px;
-  line-height: 60px;
+  font-size: 16px;
+  line-height: 50px;
   color: #32343c;
 }
 /* line 12, ../../../assets/_header.scss */
 .header .header-font-detail {
   float: right;
   color: #7B7F8F;
-  line-height: 60px;
+  line-height: 50px;
 }
 /* line 17, ../../../assets/_header.scss */
 .header .header-font-detail:hover {
@@ -12616,8 +12616,8 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 /* line 20, ../../../assets/_header.scss */
 .header .dropdown-toggle {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   color: #7B7F8F;
 }
 /* line 25, ../../../assets/_header.scss */
