@@ -1,7 +1,7 @@
 <nav class="header">
     <div class="container-fluid">
-        <span class="header-font-subject">Administration System</span>
-
+<!--         <span class="header-font-subject">Administration System</span>
+ -->
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown header-font-detail">
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -12,6 +12,9 @@
                     <li><a href='#' data-toggle='modal' data-target='#change-password-modal'>Change Password</a></li>
                     <li><a href="#" ng-click="$root.logout()">Logout</a></li>
                 </ul>
+            </li>
+            <li class="dropdown header-font-detail">
+                <a class="dropdown-toggle" href="">Administration System</a>
             </li>
 
             <li class="dropdown header-font-detail" ng-if="$root.Imposter">

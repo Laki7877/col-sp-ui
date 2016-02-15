@@ -1,8 +1,8 @@
 <nav class="header">
  <div class="container-fluid">
-    <span class="header-font-subject">
+    <!-- <span class="header-font-subject">
         {{ $root.Profile.Shop.ShopNameEn }}
-    </span>
+    </span> -->
 
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown header-font-detail">
@@ -17,7 +17,7 @@
         </li>
         <li class="dropdown header-font-detail" ng-if="!$root.Imposter">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <span>My Shop</span> 
+          <span>{{ $root.Profile.Shop.ShopNameEn }}</span> 
           <i class="fa fa-angle-down"></i>
           </a>
           <ul class="dropdown-menu">
