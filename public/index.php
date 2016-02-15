@@ -6,7 +6,7 @@ includeAll(__DIR__ . '/../controllers/*.php');
 //LOL redirect functions
 class Redirect {
 	public static function index($params) {
-		header('Location: /products');
+		header('Location: /login');
 	}
 	public static function admin($params) {
 		header('Location: /admin/accounts');
