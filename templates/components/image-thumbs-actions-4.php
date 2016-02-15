@@ -8,7 +8,6 @@
 		<img ng-show="<?=$image_url?> && <?=$image_url?>.length > 0" style="background-color:white;" ng-src="{{ <?=$image_url?>.length > 0 && <?= $image_url ?> }}" />
         <h4 style="text-align: center;margin-top:20%" class="color-grey ng-binding"><img src="/assets/img/loader.gif" height="55">
             <br/>
-            {{<?=  $uploader ?>.queue[0].progress }}
             <span ng-if="<?= $uploader ?>.queue[$index].progress < 100">
             <!-- note there's a slight bug, when editing product , will fix.. -->
                 {{ <?= $uploader ?>.queue[$index].progress }}%
