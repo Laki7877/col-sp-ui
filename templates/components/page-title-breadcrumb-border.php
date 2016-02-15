@@ -11,6 +11,6 @@ $extracted = array_map(function($item, $idx, $url) {
 }, $extracted, array_keys($extracted), $urls);
 $newText = implode('<span class="ah-breadcrumb-splitter">/</span>', $extracted);
 ?>
-<div class="page-header no-padding with-border">
+<div class="page-header with-border">
     <h1 class="float-left page-header-title ah-breadcrumb"><?= $newText ?></h1>
 </div>
