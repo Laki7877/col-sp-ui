@@ -286,6 +286,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
         });
 
         $scope.$watch('formData.ExpireDate', function () {
+            if(form.EffectiveDate == null){ return }
+            
             var form = $scope.addProductForm;
             if (form.ExpireDate) form.ExpireDate.$setValidity("min", true);
             if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
@@ -320,7 +322,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
                 mat.push("At least one variant must be visible.");
             }
             
-            if($scope.formData.ExpireDate <= $scope.formData.EffectiveDate){
+            if($scope.formData.ExpireDate && $scope.formData.ExpireDate <= $scope.formData.EffectiveDate){
                 mat.push("Effective date/time must come before expire date/time.");
             }
 
