@@ -3,7 +3,7 @@
 var angular = require('angular');
 var bulk = require('bulk-require')(__dirname,
 	['controllers/*.js', 'services/*.js', 'helpers/*.js',
-	'directives/*.js', 'filters/*.js', 'libs/*.js', 'template-options/*.js']);
+	'directives/*.js', 'filters/*.js', 'libs/*.js', 'template-options/*.js', 'modules/*.js']);
 var config = require('./config');
 var template = require('./template');
 
@@ -32,7 +32,8 @@ var filters = bulk.filters;
 var app = angular.module('colspApp',
 ['ngPatternRestrict', 'nc','ui.bootstrap.datetimepicker',
 'duScroll','ngSanitize', 'ngAnimate',
-'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64', 'SellerInventory'])
+'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64',
+'ttd.sellerInventory'])
 
 //App config
 .config(['$uibTooltipProvider', 'uiSelectConfig', '$ncPaginationProvider', '$ncAlertProvider',

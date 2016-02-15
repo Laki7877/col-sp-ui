@@ -27,7 +27,9 @@ if(!isset($optional_button_name)) {
       </div><!-- /btn-group -->
       <div class="input-group-btn">
         <button type="button" class="btn-white btn">
-          <span class="button-text-blue">Confirm</span>
+          <span class="button-text-blue" ng-click="inventoryActionHandler('show')">
+            Confirm <span class="inventory-selected-item-count" ng-show="inventorySelectedItemCount > 0">({{inventorySelectedItemCount}})</span>
+          </span>
         </button>
       </div>
     </div>

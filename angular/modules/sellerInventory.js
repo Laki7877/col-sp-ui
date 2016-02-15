@@ -1,6 +1,6 @@
 /**
  * ============================================================
- * Controller - seller inventory
+ * Module - seller inventory
  * ============================================================
  */
 
@@ -16,38 +16,12 @@ var angular = require('angular');
  * ------------------------------------------------------------
  */
 
-angular.module('SellerInventory', [])
+angular.module('ttd.sellerInventory', [
+    'ttd.ui',
+    'ttd.checkallTableItem'
+  ])
   .factory('sellerInventoryService', sellerInventoryService)
-  .directive('toggleAdvanceSearchUi', toggleAdvanceSearchUI)
-  .controller('SellerInventoryCtrl', SellerInventoryCtrl)
-
-
-/**
- * Directive
- * ------------------------------------------------------------
- */
-
-function toggleAdvanceSearchUI($rootScope, $timeout) {
-
-  return {
-    restrice: 'A',
-    scope: {},
-    link: function(scope, element, attrs) {
-
-      if ($rootScope.__showAdvanceSearchUI == null) {
-        $rootScope.__showAdvanceSearchUI = false;
-      }
-
-      element.bind('click', function() {
-        $rootScope.$apply(function() {
-          $rootScope.__showAdvanceSearchUI = !$rootScope.__showAdvanceSearchUI;
-        });
-      });
-
-    }
-  };
-
-}
+  .controller('SellerInventoryCtrl', SellerInventoryCtrl);
 
 
 /**
@@ -83,9 +57,12 @@ function sellerInventoryService(common) {
  * ------------------------------------------------------------
  */
 
-function SellerInventoryCtrl($scope, sellerInventoryService) {
+function SellerInventoryCtrl($scope, sellerInventoryService, $rootScope, checkallTableItemConstant) {
 
   $scope.inventoryData = [];
+  $scope.inventorySelectedItemCount = 0;
+
+  var inventorySelectedData = [];
 
 
   /**
@@ -96,7 +73,35 @@ function SellerInventoryCtrl($scope, sellerInventoryService) {
   sellerInventoryService.getAll()
     .then(function(resp) {
       $scope.inventoryData = resp;
+      console.log($scope.inventoryData);
     });
+
+
+  /**
+   * Track selected item trigger
+   * ------------------------------------------------------------
+   */
+
+  $rootScope.$on(checkallTableItemConstant.onSelected, function(e, data) {
+    // console.log('--->', data);
+    inventorySelectedData = data;
+    $scope.$apply(function() {
+      $scope.inventorySelectedItemCount = data.length;
+    });
+  });
+
+
+  /**
+   * Action hanlder
+   * ------------------------------------------------------------
+   * @param {String} action name
+   */
+
+  // *** Need to pass action from select action UI
+  $scope.inventoryActionHandler = function(action) {
+    alert('See in console for all item is selected');
+    console.log('Select item (do action: ' + action + ')', inventorySelectedData);
+  };
 
 }
 

@@ -39,7 +39,10 @@
   </div>
 
   <div class="table-section">
-    <table class="table table-curved product-list-table">
+
+    <loading-message condition="(inventoryData.length === 0)"></loading-message>
+
+    <table class="table table-curved product-list-table" cati-rootbox-control ng-show="inventoryData.length > 0">
       <thead>
         <tr class="table-head">
           <th class="checkbox-column">
@@ -73,14 +76,14 @@
       <tbody>
         <tr ng-repeat="item in inventoryData track by $index">
           <td class="checkbox-column">
-            <input type="checkbox" aria-label="Checkbox for following text input">
+            <input type="checkbox" aria-label="Checkbox for following text input" cati-childbox-control="item.ProductId">
           </td>
           <td class="display-column">
             <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
           </td>
           <td class="column-text-ellipsis"><a href="#">{{item.ProductNameEn}}</a></td>
           <td class="">
-            <div>{{item.productId}}</div>
+            <div>{{item.ProductId}}</div>
           </td>
           <td class="">{{item.Sku}}</td>
           <td class="text-right">
