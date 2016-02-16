@@ -66,9 +66,13 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
     //Create global logout function
     $rootScope.logout = function(){
         if($rootScope.Imposter){
-            return Credential.logoutAs().then(function(){
+            return Credential.logoutAs().then(function(R){
                 //return to normal flow
-                $window.location.href = "/";
+                if(R.User.IsAdmin){
+                    $window.location.href = "/admin";
+                }else{
+                    $window.location.href = "/products";
+                }
             }, function(){
                 alert("Fetal error while logging out.");
             });
@@ -233,7 +237,11 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 .controller('TestCtrl', controllers.test)
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+<<<<<<< HEAD
 },{"./config":2,"./controllers/abstractAdd.js":3,"./controllers/abstractList.js":4,"./controllers/adminAccount.js":5,"./controllers/adminAccountAdd.js":6,"./controllers/adminAttribute.js":7,"./controllers/adminAttributeAdd.js":8,"./controllers/adminAttributeSet.js":9,"./controllers/adminAttributeSetAdd.js":10,"./controllers/adminBrand.js":11,"./controllers/adminBrandAdd.js":12,"./controllers/adminCategory.js":13,"./controllers/adminRole.js":14,"./controllers/adminRoleAdd.js":15,"./controllers/adminShop.js":16,"./controllers/adminShopAdd.js":17,"./controllers/adminShoptype.js":18,"./controllers/adminShoptypeAdd.js":19,"./controllers/localCategory.js":20,"./controllers/login.js":21,"./controllers/productAdd.js":22,"./controllers/productAddSelectCategory.js":23,"./controllers/productImageList.js":24,"./controllers/productImageManagement.js":25,"./controllers/productImport.js":26,"./controllers/productList.js":27,"./controllers/productListLocalCategory.js":28,"./controllers/productReview.js":29,"./controllers/root.js":30,"./controllers/sellerAccount.js":31,"./controllers/sellerAccountAdd.js":32,"./controllers/sellerRole.js":33,"./controllers/sellerRoleAdd.js":34,"./controllers/test.js":35,"./directives/ncTradableSelect.js":36,"./directives/ngCkeditor.js":37,"./directives/ngDelegate.js":38,"./directives/ngMatch.js":39,"./directives/ngMaxnumber.js":40,"./directives/ngMinnumber.js":41,"./directives/ngPatternRestrict.js":42,"./directives/ngPermission.js":43,"./directives/ngSlideToggle.js":44,"./directives/ngTemplate.js":45,"./directives/popoverAny.js":46,"./filters/capitalize.js":47,"./filters/exclude.js":48,"./filters/excludeCategory.js":49,"./filters/html.js":50,"./filters/leadingzero.js":51,"./filters/ordinal.js":52,"./filters/slice.js":53,"./filters/truncate.js":54,"./filters/truth.js":55,"./helpers/base64.js":56,"./helpers/common.js":57,"./helpers/storage.js":58,"./helpers/util.js":59,"./helpers/variantPair.js":60,"./nc":81,"./services/adminAccountService.js":83,"./services/adminPermissionService.js":84,"./services/adminRoleService.js":85,"./services/adminShopService.js":86,"./services/adminShoptypeService.js":87,"./services/alert.js":88,"./services/attribute.js":89,"./services/attributeService.js":90,"./services/attributeSet.js":91,"./services/attributeSetService.js":92,"./services/blocker.js":93,"./services/brand.js":94,"./services/brandService.js":95,"./services/category.js":96,"./services/credential.js":97,"./services/exceptionHandler.js":98,"./services/globalCategory.js":99,"./services/globalCategoryService.js":100,"./services/image.js":101,"./services/imageService.js":102,"./services/knownException.js":103,"./services/localCategory.js":104,"./services/localCategoryService.js":105,"./services/product.js":106,"./services/productAdd.js":107,"./services/productReviewService.js":108,"./services/sellerAccountService.js":109,"./services/sellerPermissionService.js":110,"./services/sellerRoleService.js":111,"./services/shop.js":112,"./services/shopPermissionService.js":113,"./template":115,"./template-options/addProductForm.js":114,"angular":131,"angular-animate":117,"angular-base64":118,"angular-bootstrap-datetimepicker":120,"angular-file-upload":121,"angular-sanitize":123,"angular-scroll":125,"angular-ui-bootstrap":126,"angular-ui-tree":129,"lodash":133,"ui-select/dist/select.js":134}],2:[function(require,module,exports){
+=======
+},{"./config":2,"./controllers/abstractAdd.js":3,"./controllers/abstractList.js":4,"./controllers/adminAccount.js":5,"./controllers/adminAccountAdd.js":6,"./controllers/adminAttribute.js":7,"./controllers/adminAttributeAdd.js":8,"./controllers/adminAttributeSet.js":9,"./controllers/adminAttributeSetAdd.js":10,"./controllers/adminBrand.js":11,"./controllers/adminBrandAdd.js":12,"./controllers/adminCategory.js":13,"./controllers/adminRole.js":14,"./controllers/adminRoleAdd.js":15,"./controllers/adminShop.js":16,"./controllers/adminShopAdd.js":17,"./controllers/adminShoptype.js":18,"./controllers/adminShoptypeAdd.js":19,"./controllers/localCategory.js":20,"./controllers/login.js":21,"./controllers/productAdd.js":22,"./controllers/productAddSelectCategory.js":23,"./controllers/productImageList.js":24,"./controllers/productImageManagement.js":25,"./controllers/productImport.js":26,"./controllers/productList.js":27,"./controllers/productListLocalCategory.js":28,"./controllers/productReview.js":29,"./controllers/root.js":30,"./controllers/sellerAccount.js":31,"./controllers/sellerAccountAdd.js":32,"./controllers/sellerRole.js":33,"./controllers/sellerRoleAdd.js":34,"./controllers/test.js":35,"./directives/ncTradableSelect.js":36,"./directives/ngCkeditor.js":37,"./directives/ngDelegate.js":38,"./directives/ngMatch.js":39,"./directives/ngMaxnumber.js":40,"./directives/ngMinnumber.js":41,"./directives/ngPatternRestrict.js":42,"./directives/ngPermission.js":43,"./directives/ngSlideToggle.js":44,"./directives/ngTemplate.js":45,"./directives/popoverAny.js":46,"./filters/capitalize.js":47,"./filters/exclude.js":48,"./filters/excludeCategory.js":49,"./filters/html.js":50,"./filters/leadingzero.js":51,"./filters/ordinal.js":52,"./filters/slice.js":53,"./filters/truncate.js":54,"./filters/truth.js":55,"./helpers/base64.js":56,"./helpers/common.js":57,"./helpers/storage.js":58,"./helpers/util.js":59,"./helpers/variantPair.js":60,"./nc":82,"./services/adminAccountService.js":84,"./services/adminPermissionService.js":85,"./services/adminRoleService.js":86,"./services/adminShopService.js":87,"./services/adminShoptypeService.js":88,"./services/alert.js":89,"./services/attribute.js":90,"./services/attributeService.js":91,"./services/attributeSet.js":92,"./services/attributeSetService.js":93,"./services/blocker.js":94,"./services/brand.js":95,"./services/brandService.js":96,"./services/category.js":97,"./services/credential.js":98,"./services/exceptionHandler.js":99,"./services/globalCategory.js":100,"./services/globalCategoryService.js":101,"./services/image.js":102,"./services/imageService.js":103,"./services/knownException.js":104,"./services/localCategory.js":105,"./services/localCategoryService.js":106,"./services/product.js":107,"./services/productAdd.js":108,"./services/productReviewService.js":109,"./services/sellerAccountService.js":110,"./services/sellerPermissionService.js":111,"./services/sellerRoleService.js":112,"./services/shop.js":113,"./services/shopPermissionService.js":114,"./template":116,"./template-options/addProductForm.js":115,"angular":131,"angular-animate":118,"angular-base64":119,"angular-bootstrap-datetimepicker":120,"angular-file-upload":121,"angular-sanitize":123,"angular-scroll":125,"angular-ui-bootstrap":126,"angular-ui-tree":129,"lodash":133,"ui-select/dist/select.js":135}],2:[function(require,module,exports){
+>>>>>>> 59cdc5b19d4b43be810f925f60f7ee8324668eb1
 module.exports = {
 	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
@@ -1424,12 +1432,13 @@ module.exports = ['$scope', 'NcAlert', 'Credential', '$window', 'storage', funct
 			var redir = storage.get('redirect');
 			if(!redir){
 				redir = "/products/";
-                if(r.IsAdmin){
+                if(r.User.IsAdmin){
                     redir = "/admin/";
                 }
 			}else{
 				storage.remove('redirect');
 			}
+	        
 
 			$window.location.href = redir;
 		}, function(){
@@ -1729,9 +1738,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
         });
 
         $scope.$watch('formData.ExpireDate', function () {
-            if(form.EffectiveDate == null){ return }
-            
             var form = $scope.addProductForm;
+            if(form.EffectiveDate == null){ return }
             if (form.ExpireDate) form.ExpireDate.$setValidity("min", true);
             if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
                 if (!form.ExpireDate) return;
@@ -5028,6 +5036,30 @@ angular.module('nc')
 		};
 	}]);
 },{}],72:[function(require,module,exports){
+var angular = require('angular');
+angular.module('nc')
+    .directive('ncPageTitle', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "$parse", "KnownException", function ($rootScope, $templateCache, $compile, $templateOptionsCache, $parse, KnownException) {
+        return {
+            restrict: 'A',
+            transclude: true,
+            replace: true,
+            priority: 1010,
+            scope: {
+                option: '=options'
+            },
+            template: function (element, attrs) {
+                var templateHTML = $templateCache.get('partials/page-title');
+                if (!templateHTML) {
+                    throw new KnownException("Unable to load specified nc-page-title ");
+                }
+                return templateHTML;
+            },
+            link: function (scope, element, attrs, ctrl, transclude) {
+            	   console.log("nc-page-title"); 
+            }
+        };
+    }]);
+},{"angular":131}],73:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncPagination', function() {
 		this.paginationSizes = [10,20,30];
@@ -5094,7 +5126,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-},{}],73:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 angular.module('nc')
 	.provider('ncPermissionProvider', function() {
 		this.permission = function() {
@@ -5115,7 +5147,7 @@ angular.module('nc')
 	.directive('ncShowPermission', function() {
 		
 	});
-},{}],74:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncSearch', ["$templateCache", function($templateCache) {
 		return {
@@ -5137,7 +5169,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],75:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncTable', function() {
 		this.tableOptions = {
@@ -5226,7 +5258,7 @@ angular.module('nc')
 			template: '<a ng-href="{{link}}" ng-transclude></a>',
 		}
 	});
-},{}],76:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncTemplate', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", "KnownException", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException,  $parse, KnownException) {
@@ -5275,7 +5307,11 @@ angular.module('nc')
                 }
             };
         }]);
+<<<<<<< HEAD
 },{"angular":131}],77:[function(require,module,exports){
+=======
+},{"angular":131}],78:[function(require,module,exports){
+>>>>>>> 59cdc5b19d4b43be810f925f60f7ee8324668eb1
 angular.module('nc')
 	.directive('ncTreeSelect', ["$templateCache", function($templateCache) {
 		return {
@@ -5287,7 +5323,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],78:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 angular.module('nc')
     .directive('ncTagValidator', function () {
         return {
@@ -5347,14 +5383,14 @@ angular.module('nc')
             }
         }
     });
-},{}],79:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 angular.module('nc')
 	.filter('dateTh', ["$filter", function($filter) {
 		return function(input) {
 			return $filter('date')(input, 'dd/MM/yy', '+700');
 		}
 	}]);
-},{}],80:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 /*
  Return dropdown[value] if input == dropdown[name]
  */
@@ -5377,7 +5413,7 @@ angular.module('nc')
 			return _.isUndefined(find) ? input : find[name];
 		}
 	});
-},{}],81:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 (function (global){
 var angular = require('angular');
 
@@ -5396,10 +5432,14 @@ angular.module('nc', ['ui.bootstrap', 'ui.select', 'duScroll', 'angularFileUploa
 		'clickanystart' : 'clickanyend'
 	});
 }]);
-(function () {var f = require("./index.js");f["directives"]=({"ncAction":require("./directives/ncAction.js"),"ncAdvanceSearch":require("./directives/ncAdvanceSearch.js"),"ncAlert":require("./directives/ncAlert.js"),"ncBindCompile":require("./directives/ncBindCompile.js"),"ncBulk":require("./directives/ncBulk.js"),"ncEmpty":require("./directives/ncEmpty.js"),"ncEye":require("./directives/ncEye.js"),"ncFilter":require("./directives/ncFilter.js"),"ncImageGallery":require("./directives/ncImageGallery.js"),"ncImageIntegrity":require("./directives/ncImageIntegrity.js"),"ncLoading":require("./directives/ncLoading.js"),"ncPagination":require("./directives/ncPagination.js"),"ncPermission":require("./directives/ncPermission.js"),"ncSearch":require("./directives/ncSearch.js"),"ncTable":require("./directives/ncTable.js"),"ncTemplate":require("./directives/ncTemplate.js"),"ncTreeSelect":require("./directives/ncTreeSelect.js"),"ncUiSelect":require("./directives/ncUiSelect.js")});f["filters"]=({"date":require("./filters/date.js"),"map":require("./filters/map.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
+(function () {var f = require("./index.js");f["directives"]=({"ncAction":require("./directives/ncAction.js"),"ncAdvanceSearch":require("./directives/ncAdvanceSearch.js"),"ncAlert":require("./directives/ncAlert.js"),"ncBindCompile":require("./directives/ncBindCompile.js"),"ncBulk":require("./directives/ncBulk.js"),"ncEmpty":require("./directives/ncEmpty.js"),"ncEye":require("./directives/ncEye.js"),"ncFilter":require("./directives/ncFilter.js"),"ncImageGallery":require("./directives/ncImageGallery.js"),"ncImageIntegrity":require("./directives/ncImageIntegrity.js"),"ncLoading":require("./directives/ncLoading.js"),"ncPageTitle":require("./directives/ncPageTitle.js"),"ncPagination":require("./directives/ncPagination.js"),"ncPermission":require("./directives/ncPermission.js"),"ncSearch":require("./directives/ncSearch.js"),"ncTable":require("./directives/ncTable.js"),"ncTemplate":require("./directives/ncTemplate.js"),"ncTreeSelect":require("./directives/ncTreeSelect.js"),"ncUiSelect":require("./directives/ncUiSelect.js")});f["filters"]=({"date":require("./filters/date.js"),"map":require("./filters/map.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+<<<<<<< HEAD
 },{"./directives/ncAction.js":61,"./directives/ncAdvanceSearch.js":62,"./directives/ncAlert.js":63,"./directives/ncBindCompile.js":64,"./directives/ncBulk.js":65,"./directives/ncEmpty.js":66,"./directives/ncEye.js":67,"./directives/ncFilter.js":68,"./directives/ncImageGallery.js":69,"./directives/ncImageIntegrity.js":70,"./directives/ncLoading.js":71,"./directives/ncPagination.js":72,"./directives/ncPermission.js":73,"./directives/ncSearch.js":74,"./directives/ncTable.js":75,"./directives/ncTemplate.js":76,"./directives/ncTreeSelect.js":77,"./directives/ncUiSelect.js":78,"./filters/date.js":79,"./filters/map.js":80,"./index.js":81,"./template.js":82,"angular":131,"angular-file-upload":121,"angular-scroll":125,"angular-ui-bootstrap":126,"jquery":132,"lodash":133,"ui-select":135}],82:[function(require,module,exports){
+=======
+},{"./directives/ncAction.js":61,"./directives/ncAdvanceSearch.js":62,"./directives/ncAlert.js":63,"./directives/ncBindCompile.js":64,"./directives/ncBulk.js":65,"./directives/ncEmpty.js":66,"./directives/ncEye.js":67,"./directives/ncFilter.js":68,"./directives/ncImageGallery.js":69,"./directives/ncImageIntegrity.js":70,"./directives/ncLoading.js":71,"./directives/ncPageTitle.js":72,"./directives/ncPagination.js":73,"./directives/ncPermission.js":74,"./directives/ncSearch.js":75,"./directives/ncTable.js":76,"./directives/ncTemplate.js":77,"./directives/ncTreeSelect.js":78,"./directives/ncUiSelect.js":79,"./filters/date.js":80,"./filters/map.js":81,"./index.js":82,"./template.js":83,"angular":131,"angular-file-upload":121,"angular-scroll":125,"angular-ui-bootstrap":126,"jquery":132,"lodash":133,"ui-select":136}],83:[function(require,module,exports){
+>>>>>>> 59cdc5b19d4b43be810f925f60f7ee8324668eb1
 /**
  * Generated by grunt-angular-templates 
  */
@@ -5522,8 +5562,13 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
     "'fa fa-caret-up' : isCurrent() && !direction, \n" +
     "'fa fa-caret-down color-grey' : !isCurrent() }\" ng-click=click()></i>"
   );
+
+
+  $templateCache.put('partials/page-title',
+    "<div class=\"page-header with-border\"><h1 class=\"float-left page-header-title\">{{ option.title }}</h1><span class=\"float-right page-header-action\"><a ng-click=item.click ng-repeat=\"item in option.buttons\" class=\"btn margin-right-10\" ng-class=item.classes><span>{{ item.title }}</span></a></span></div>"
+  );
  }]);
-},{}],83:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Admin');
@@ -5558,14 +5603,14 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-},{}],84:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Admin');
 
 	return service;
 }]
-},{}],85:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 module.exports = ["common", "AdminPermissionService", function(common, AdminPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Admin');
@@ -5611,7 +5656,7 @@ module.exports = ["common", "AdminPermissionService", function(common, AdminPerm
 	};
 	return service;	
 }]
-},{}],86:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 module.exports = ["common", "config", "util", function(common, config, util) {
 	'ngInject';
 	var service = common.Rest('/Shops');
@@ -5648,7 +5693,7 @@ module.exports = ["common", "config", "util", function(common, config, util) {
 	};
 	return service;	
 }]
-},{}],87:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 module.exports = ["common", "ShopPermissionService", function(common, ShopPermissionService) {
 	'ngInject';
 	var service = common.Rest('/Shoptypes');
@@ -5694,7 +5739,7 @@ module.exports = ["common", "ShopPermissionService", function(common, ShopPermis
 	};
 	return service;	
 }]
-},{}],88:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', '$document', '$timeout', function(common, $document, $timeout) {
 	return function() {
@@ -5728,7 +5773,11 @@ module.exports = ['common', '$document', '$timeout', function(common, $document,
 		this.message = '';
 	};
 }];
+<<<<<<< HEAD
 },{"angular":131}],89:[function(require,module,exports){
+=======
+},{"angular":131}],90:[function(require,module,exports){
+>>>>>>> 59cdc5b19d4b43be810f925f60f7ee8324668eb1
 var angular = require('angular');
 module.exports = ['common', function(common){
 	'use strict';
@@ -5968,7 +6017,11 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
+<<<<<<< HEAD
 },{"angular":131}],90:[function(require,module,exports){
+=======
+},{"angular":131}],91:[function(require,module,exports){
+>>>>>>> 59cdc5b19d4b43be810f925f60f7ee8324668eb1
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/Attributes');
@@ -6074,7 +6127,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }];
-},{}],91:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 module.exports = ['common', function(common){
 	'use strict';
 	var service = {};
@@ -6222,7 +6275,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{}],92:[function(require,module,exports){
+},{}],93:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/AttributeSets');
@@ -6281,7 +6334,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }]
-},{}],93:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 module.exports = ['$window', function($window) {
 	return function(fn, close) {
 		var vm = this;
@@ -6317,7 +6370,7 @@ module.exports = ['$window', function($window) {
 		};
 	};
 }];
-},{}],94:[function(require,module,exports){
+},{}],95:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$q', 'common', function($q, common){
 	var service = {};
@@ -6403,7 +6456,11 @@ module.exports = ['$q', 'common', function($q, common){
 	};
 	return service;
 }];
+<<<<<<< HEAD
 },{"angular":131}],95:[function(require,module,exports){
+=======
+},{"angular":131}],96:[function(require,module,exports){
+>>>>>>> 59cdc5b19d4b43be810f925f60f7ee8324668eb1
 module.exports = ["common", function(common) {
 	'ngInject';
 	service = common.Rest('/Brands');
@@ -6434,7 +6491,7 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }]
-},{}],96:[function(require,module,exports){
+},{}],97:[function(require,module,exports){
 /**
  * Util class for category
  * @author poonwu
@@ -6752,7 +6809,11 @@ module.exports = ['config', function(config) {
     return service;
 }];
 
+<<<<<<< HEAD
 },{"angular":131}],97:[function(require,module,exports){
+=======
+},{"angular":131}],98:[function(require,module,exports){
+>>>>>>> 59cdc5b19d4b43be810f925f60f7ee8324668eb1
 //TODO: maybe merge this with user service? (doesnt exist yet, but probably exists in poon's local)
 module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(common, $base64, storage, $q, $rootScope) {
     'use strict';
@@ -6810,7 +6871,7 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 	return service;
 }];
 
-},{}],98:[function(require,module,exports){
+},{}],99:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$window', '$base64', 'config', function($window, $base64, config) {
@@ -6828,7 +6889,11 @@ module.exports = ['$window', '$base64', 'config', function($window, $base64, con
         } 
     };
 }];
+<<<<<<< HEAD
 },{"angular":131}],99:[function(require,module,exports){
+=======
+},{"angular":131}],100:[function(require,module,exports){
+>>>>>>> 59cdc5b19d4b43be810f925f60f7ee8324668eb1
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/GlobalCategories');
@@ -6896,7 +6961,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],100:[function(require,module,exports){
+},{}],101:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	service = common.Rest('/GlobalCategories');
@@ -6965,7 +7030,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],101:[function(require,module,exports){
+},{}],102:[function(require,module,exports){
 var angular = require('angular');
 //Image Service
 module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', function($q, $http, common, storage, config, FileUploader){
@@ -7064,7 +7129,11 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	return service;
 }];
 
+<<<<<<< HEAD
 },{"angular":131}],102:[function(require,module,exports){
+=======
+},{"angular":131}],103:[function(require,module,exports){
+>>>>>>> 59cdc5b19d4b43be810f925f60f7ee8324668eb1
 //Image Service 
 module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", function($q, $http, common, storage, config, FileUploader){
 	'ngInject';
@@ -7159,7 +7228,7 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
 	return service;
 }];
 
-},{}],103:[function(require,module,exports){
+},{}],104:[function(require,module,exports){
 module.exports = [function() {
 	'use strict';
 
@@ -7167,7 +7236,7 @@ module.exports = [function() {
         this.message = "Known Exception - " + msg;   
     };
 }];
-},{}],104:[function(require,module,exports){
+},{}],105:[function(require,module,exports){
 module.exports = ['common', function(common) {
 	'use strict';
 	var service = {};
@@ -7206,7 +7275,7 @@ module.exports = ['common', function(common) {
 
 	return service;
 }];
-},{}],105:[function(require,module,exports){
+},{}],106:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/LocalCategories');
@@ -7234,7 +7303,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],106:[function(require,module,exports){
+},{}],107:[function(require,module,exports){
 //Products Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
     function ($http, common, util, LocalCategory, Brand, config) {
@@ -7806,7 +7875,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
     }
 ];
 
-},{}],107:[function(require,module,exports){
+},{}],108:[function(require,module,exports){
 module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
     function (Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
         var $productAdd = {};
@@ -7884,14 +7953,14 @@ module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCat
 
         return $productAdd;
     }];
-},{}],108:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 module.exports = ["common", "util", function(common, util) {
 	'ngInject';
 	var service = common.Rest('/ProductReviews');
 	
 	return service;
 }];
-},{}],109:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Seller');
@@ -7926,14 +7995,14 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-},{}],110:[function(require,module,exports){
+},{}],111:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Seller');
 	
 	return service;
 }]
-},{}],111:[function(require,module,exports){
+},{}],112:[function(require,module,exports){
 module.exports = ["common", "SellerPermissionService", function(common, SellerPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Seller');
@@ -7980,7 +8049,7 @@ module.exports = ["common", "SellerPermissionService", function(common, SellerPe
 	};
 	return service;	
 }]
-},{}],112:[function(require,module,exports){
+},{}],113:[function(require,module,exports){
 module.exports = ['common', function(common) {
 	'use strict';
 	var service = {};
@@ -8001,14 +8070,14 @@ module.exports = ['common', function(common) {
 
 	return service;
 }];
-},{}],113:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Shop');
 
 	return service;
 }]
-},{}],114:[function(require,module,exports){
+},{}],115:[function(require,module,exports){
 module.exports = {
     MasterVariant_ProductNameEn: {
         'labelClass': 'required',
@@ -8141,10 +8210,14 @@ module.exports = {
         }
     }
 }
-},{}],115:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
+<<<<<<< HEAD
  * Tue Feb 16 2016 13:47:07 GMT+0700 (ICT)
+=======
+ * Tue Feb 16 2016 13:20:58 GMT+0700 (ICT)
+>>>>>>> 59cdc5b19d4b43be810f925f60f7ee8324668eb1
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -8398,7 +8471,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "<div class=modal-header><button type=button class=close aria-label=Close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>{{}}</h3></div><div class=modal-body><form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Review Detail</h2></div><div class=\"form-section-content modal-custom\"><? $this->insert('components/forms/text-with-label', [\"label\" => \"Date & Time\", \"field_content\" => \"14/10/2015 at 10:20\", \"size\" => \"normal\"]) ?><? $this->insert('components/forms/text-with-label', [\"label\" => \"Customer\", \"field_content\" => \"Harry Belafonte\", \"size\" => \"normal\"]) ?><? $this->insert('components/forms/text-with-label', [\"label\" => \"Comment\", \"field_content\" => \"Harry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry Belafonte\", \"size\" => \"normal\"]) ?></div></div><div class=form-section><div class=form-section-header><h2>Review Product</h2></div><div class=\"form-section-content modal-custom\"><? $this->insert('components/forms/text-with-label', [\"label\" => \"PID\", \"field_content\" => \"1234567\", \"size\" => \"normal\"]) ?><? $this->insert('components/forms/text-with-label', [\"label\" => \"Product Name (Thai)\", \"field_content\" => \"รองเท้าแตะสีรุ้ง\", \"size\" => \"normal\"]) ?><? $this->insert('components/forms/text-with-label', [\"label\" => \"Product Name (English)\", \"field_content\" => \"Rainbow Sandal\", \"size\" => \"normal\"]) ?><? $this->insert('components/forms/text-with-label', [\"label\" => \"Brand\", \"field_content\" => \"Nike\", \"size\" => \"normal\"]) ?></div></div></div></div></form></div>"
   );
  }];
-},{}],116:[function(require,module,exports){
+},{}],117:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -12330,11 +12403,11 @@ angular.module('ngAnimate', [])
 
 })(window, window.angular);
 
-},{}],117:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":116}],118:[function(require,module,exports){
+},{"./angular-animate":117}],119:[function(require,module,exports){
 (function() {
     'use strict';
 
@@ -12502,12 +12575,24 @@ module.exports = 'ngAnimate';
 
 })();
 
+<<<<<<< HEAD
 },{}],119:[function(require,module,exports){
 //! moment.js
 //! version : 2.11.2
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
 //! license : MIT
 //! momentjs.com
+=======
+},{}],120:[function(require,module,exports){
+/*globals define, jQuery, module, require */
+/*jslint vars:true */
+
+/**
+ * @license angular-bootstrap-datetimepicker  version: 0.4.0
+ * Copyright 2015 Knight Rider Consulting, Inc. http://www.knightrider.com
+ * License: MIT
+ */
+>>>>>>> 59cdc5b19d4b43be810f925f60f7ee8324668eb1
 
 ;(function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
@@ -12997,12 +13082,34 @@ module.exports = 'ngAnimate';
         if (!m.isValid()) {
             return m.localeData().invalidDate();
         }
+<<<<<<< HEAD
+=======
+      };
+    }]);
+}));
+
+},{"angular":131,"moment":134}],121:[function(require,module,exports){
+/*
+ angular-file-upload v2.2.0
+ https://github.com/nervgh/angular-file-upload
+*/
+>>>>>>> 59cdc5b19d4b43be810f925f60f7ee8324668eb1
 
         format = expandFormat(format, m.localeData());
         formatFunctions[format] = formatFunctions[format] || makeFormatFunction(format);
 
+<<<<<<< HEAD
         return formatFunctions[format](m);
     }
+=======
+},{}],122:[function(require,module,exports){
+/**
+ * @license AngularJS v1.5.0
+ * (c) 2010-2016 Google, Inc. http://angularjs.org
+ * License: MIT
+ */
+(function(window, angular, undefined) {'use strict';
+>>>>>>> 59cdc5b19d4b43be810f925f60f7ee8324668eb1
 
     function expandFormat(format, locale) {
         var i = 5;
@@ -13375,6 +13482,7 @@ module.exports = 'ngAnimate';
     var extendedIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})-(?:\d\d-\d\d|W\d\d-\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?::\d\d(?::\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?/;
     var basicIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})(?:\d\d\d\d|W\d\d\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?:\d\d(?:\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?/;
 
+<<<<<<< HEAD
     var tzRegex = /Z|[+-]\d\d(?::?\d\d)?/;
 
     var isoDates = [
@@ -13391,6 +13499,18 @@ module.exports = 'ngAnimate';
         ['GGGG[W]WW', /\d{4}W\d{2}/, false],
         ['YYYYDDD', /\d{7}/]
     ];
+=======
+},{}],123:[function(require,module,exports){
+require('./angular-sanitize');
+module.exports = 'ngSanitize';
+
+},{"./angular-sanitize":122}],124:[function(require,module,exports){
+/**
+  * x is a value between 0 and 1, indicating where in the animation you are.
+  */
+var duScrollDefaultEasing = function (x) {
+  'use strict';
+>>>>>>> 59cdc5b19d4b43be810f925f60f7ee8324668eb1
 
     // iso time formats and regexes
     var isoTimes = [
@@ -14060,18 +14180,35 @@ module.exports = 'ngAnimate';
         return res;
     }
 
+<<<<<<< HEAD
     // TODO: Use [].sort instead?
     function min () {
         var args = [].slice.call(arguments, 0);
+=======
+},{}],125:[function(require,module,exports){
+require('angular');
+require('./angular-scroll');
+>>>>>>> 59cdc5b19d4b43be810f925f60f7ee8324668eb1
 
         return pickBy('isBefore', args);
     }
 
+<<<<<<< HEAD
     function max () {
         var args = [].slice.call(arguments, 0);
 
         return pickBy('isAfter', args);
     }
+=======
+},{"./angular-scroll":124,"angular":131}],126:[function(require,module,exports){
+require('./ui-bootstrap-tpls');
+module.exports = 'ui.bootstrap';
+
+},{"./ui-bootstrap-tpls":127}],127:[function(require,module,exports){
+/*
+ * angular-ui-bootstrap
+ * http://angular-ui.github.io/bootstrap/
+>>>>>>> 59cdc5b19d4b43be810f925f60f7ee8324668eb1
 
     var now = function () {
         return Date.now ? Date.now() : +(new Date());
@@ -21657,9 +21794,52 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap'])
         }
       });
 
+<<<<<<< HEAD
       function removeModalWindow(modalInstance, elementToReceiveFocus) {
         var body = $document.find('body').eq(0);
         var modalWindow = openedWindows.get(modalInstance).value;
+=======
+angular.module("template/typeahead/typeahead-popup.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("template/typeahead/typeahead-popup.html",
+    "<ul class=\"dropdown-menu\" ng-show=\"isOpen() && !moveInProgress\" ng-style=\"{top: position().top+'px', left: position().left+'px'}\" style=\"display: block;\" role=\"listbox\" aria-hidden=\"{{!isOpen()}}\">\n" +
+    "    <li ng-repeat=\"match in matches track by $index\" ng-class=\"{active: isActive($index) }\" ng-mouseenter=\"selectActive($index)\" ng-click=\"selectMatch($index)\" role=\"option\" id=\"{{::match.id}}\">\n" +
+    "        <div uib-typeahead-match index=\"$index\" match=\"match\" query=\"query\" template-url=\"templateUrl\"></div>\n" +
+    "    </li>\n" +
+    "</ul>\n" +
+    "");
+}]);
+!angular.$$csp() && angular.element(document).find('head').prepend('<style type="text/css">.ng-animate.item:not(.left):not(.right){-webkit-transition:0s ease-in-out left;transition:0s ease-in-out left}</style>');
+},{}],128:[function(require,module,exports){
+/**
+ * @license Angular UI Tree v2.14.0
+ * (c) 2010-2015. https://github.com/angular-ui-tree/angular-ui-tree
+ * License: MIT
+ */
+(function () {
+  'use strict';
+
+  angular.module('ui.tree', [])
+    .constant('treeConfig', {
+      treeClass: 'angular-ui-tree',
+      emptyTreeClass: 'angular-ui-tree-empty',
+      hiddenClass: 'angular-ui-tree-hidden',
+      nodesClass: 'angular-ui-tree-nodes',
+      nodeClass: 'angular-ui-tree-node',
+      handleClass: 'angular-ui-tree-handle',
+      placeholderClass: 'angular-ui-tree-placeholder',
+      dragClass: 'angular-ui-tree-drag',
+      dragThreshold: 3,
+      levelThreshold: 30,
+      defaultCollapsed: false
+    });
+
+})();
+
+(function () {
+  'use strict';
+
+  angular.module('ui.tree')
+>>>>>>> 59cdc5b19d4b43be810f925f60f7ee8324668eb1
 
         //clean up the stack
         openedWindows.remove(modalInstance);
@@ -23139,6 +23319,7 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
               }
             });
 
+<<<<<<< HEAD
             if (isOpenParse) {
               scope.$watch(isOpenParse, function(val) {
                 /*jshint -W018 */
@@ -23151,6 +23332,19 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
 
             function prepObservers() {
               observers.length = 0;
+=======
+},{}],129:[function(require,module,exports){
+require('./dist/angular-ui-tree');
+module.exports = 'ui.tree';
+
+},{"./dist/angular-ui-tree":128}],130:[function(require,module,exports){
+/**
+ * @license AngularJS v1.4.9
+ * (c) 2010-2015 Google, Inc. http://angularjs.org
+ * License: MIT
+ */
+(function(window, document, undefined) {'use strict';
+>>>>>>> 59cdc5b19d4b43be810f925f60f7ee8324668eb1
 
               if (contentParse) {
                 observers.push(
@@ -49648,6 +49842,7 @@ function baseInputType(scope, element, attr, ctrl, $sniffer, $browser) {
       value = trim(value);
     }
 
+<<<<<<< HEAD
     // If a control is suffering from bad input (due to native validators), browsers discard its
     // value, so it may be necessary to revalidate (by calling $setViewValue again) even if the
     // control's value is the same empty value twice in a row.
@@ -49662,6 +49857,27 @@ function baseInputType(scope, element, attr, ctrl, $sniffer, $browser) {
     element.on('input', listener);
   } else {
     var timeout;
+=======
+!window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
+},{}],131:[function(require,module,exports){
+require('./angular');
+module.exports = angular;
+
+},{"./angular":130}],132:[function(require,module,exports){
+/*!
+ * jQuery JavaScript Library v2.2.0
+ * http://jquery.com/
+ *
+ * Includes Sizzle.js
+ * http://sizzlejs.com/
+ *
+ * Copyright jQuery Foundation and other contributors
+ * Released under the MIT license
+ * http://jquery.org/license
+ *
+ * Date: 2016-01-08T20:02Z
+ */
+>>>>>>> 59cdc5b19d4b43be810f925f60f7ee8324668eb1
 
     var deferListener = function(ev, input, origValue) {
       if (!timeout) {
@@ -64180,6 +64396,21 @@ jQuery.each( jQuery.expr.match.bool.source.match( /\w+/g ), function( i, name ) 
 	};
 } );
 
+<<<<<<< HEAD
+=======
+},{}],133:[function(require,module,exports){
+(function (global){
+/**
+ * @license
+ * lodash 4.3.0 (Custom Build) <https://lodash.com/>
+ * Build: `lodash -d -o ./foo/lodash.js`
+ * Copyright 2012-2016 The Dojo Foundation <http://dojofoundation.org/>
+ * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+ * Copyright 2009-2016 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ * Available under MIT license <https://lodash.com/license>
+ */
+;(function() {
+>>>>>>> 59cdc5b19d4b43be810f925f60f7ee8324668eb1
 
 
 
@@ -72796,6 +73027,40 @@ return jQuery;
         ? baseIntersection(mapped, undefined, comparator)
         : [];
     });
+<<<<<<< HEAD
+=======
+  }
+  // Check for `exports` after `define` in case a build optimizer adds an `exports` object.
+  else if (freeExports && freeModule) {
+    // Export for Node.js.
+    if (moduleExports) {
+      (freeModule.exports = _)._ = _;
+    }
+    // Export for CommonJS support.
+    freeExports._ = _;
+  }
+  else {
+    // Export to the global object.
+    root._ = _;
+  }
+}.call(this));
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],134:[function(require,module,exports){
+//! moment.js
+//! version : 2.11.2
+//! authors : Tim Wood, Iskren Chernev, Moment.js contributors
+//! license : MIT
+//! momentjs.com
+
+;(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+    typeof define === 'function' && define.amd ? define(factory) :
+    global.moment = factory()
+}(this, function () { 'use strict';
+
+    var hookCallback;
+>>>>>>> 59cdc5b19d4b43be810f925f60f7ee8324668eb1
 
     /**
      * Converts all elements in `array` into a string separated by `separator`.
@@ -81499,8 +81764,48 @@ return jQuery;
   }
 }.call(this));
 
+<<<<<<< HEAD
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],134:[function(require,module,exports){
+=======
+    // Side effect imports
+
+
+    utils_hooks__hooks.version = '2.11.2';
+
+    setHookCallback(local__createLocal);
+
+    utils_hooks__hooks.fn                    = momentPrototype;
+    utils_hooks__hooks.min                   = min;
+    utils_hooks__hooks.max                   = max;
+    utils_hooks__hooks.now                   = now;
+    utils_hooks__hooks.utc                   = create_utc__createUTC;
+    utils_hooks__hooks.unix                  = moment__createUnix;
+    utils_hooks__hooks.months                = lists__listMonths;
+    utils_hooks__hooks.isDate                = isDate;
+    utils_hooks__hooks.locale                = locale_locales__getSetGlobalLocale;
+    utils_hooks__hooks.invalid               = valid__createInvalid;
+    utils_hooks__hooks.duration              = create__createDuration;
+    utils_hooks__hooks.isMoment              = isMoment;
+    utils_hooks__hooks.weekdays              = lists__listWeekdays;
+    utils_hooks__hooks.parseZone             = moment__createInZone;
+    utils_hooks__hooks.localeData            = locale_locales__getLocale;
+    utils_hooks__hooks.isDuration            = isDuration;
+    utils_hooks__hooks.monthsShort           = lists__listMonthsShort;
+    utils_hooks__hooks.weekdaysMin           = lists__listWeekdaysMin;
+    utils_hooks__hooks.defineLocale          = defineLocale;
+    utils_hooks__hooks.weekdaysShort         = lists__listWeekdaysShort;
+    utils_hooks__hooks.normalizeUnits        = normalizeUnits;
+    utils_hooks__hooks.relativeTimeThreshold = duration_humanize__getSetRelativeTimeThreshold;
+    utils_hooks__hooks.prototype             = momentPrototype;
+
+    var _moment = utils_hooks__hooks;
+
+    return _moment;
+
+}));
+},{}],135:[function(require,module,exports){
+>>>>>>> 59cdc5b19d4b43be810f925f60f7ee8324668eb1
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
@@ -83498,8 +83803,8 @@ $templateCache.put("select2/select.tpl.html","<div class=\"ui-select-container s
 $templateCache.put("selectize/choices.tpl.html","<div ng-show=\"$select.open\" class=\"ui-select-choices ui-select-dropdown selectize-dropdown single\"><div class=\"ui-select-choices-content selectize-dropdown-content\"><div class=\"ui-select-choices-group optgroup\" role=\"listbox\"><div ng-show=\"$select.isGrouped\" class=\"ui-select-choices-group-label optgroup-header\" ng-bind=\"$group.name\"></div><div role=\"option\" class=\"ui-select-choices-row\" ng-class=\"{active: $select.isActive(this), disabled: $select.isDisabled(this)}\"><div class=\"option ui-select-choices-row-inner\" data-selectable=\"\"></div></div></div></div></div>");
 $templateCache.put("selectize/match.tpl.html","<div ng-hide=\"($select.open || $select.isEmpty())\" class=\"ui-select-match\" ng-transclude=\"\"></div>");
 $templateCache.put("selectize/select.tpl.html","<div class=\"ui-select-container selectize-control single\" ng-class=\"{\'open\': $select.open}\"><div class=\"selectize-input\" ng-class=\"{\'focus\': $select.open, \'disabled\': $select.disabled, \'selectize-focus\' : $select.focus}\" ng-click=\"$select.open && !$select.searchEnabled ? $select.toggle($event) : $select.activate()\"><div class=\"ui-select-match\"></div><input type=\"text\" autocomplete=\"false\" tabindex=\"-1\" class=\"ui-select-search ui-select-toggle\" ng-click=\"$select.toggle($event)\" placeholder=\"{{$select.placeholder}}\" ng-model=\"$select.search\" ng-hide=\"!$select.searchEnabled || ($select.selected && !$select.open)\" ng-disabled=\"$select.disabled\" aria-label=\"{{ $select.baseTitle }}\"></div><div class=\"ui-select-choices\"></div></div>");}]);
-},{}],135:[function(require,module,exports){
+},{}],136:[function(require,module,exports){
 require('./dist/select.js');
 module.exports = 'ui.select';
 
-},{"./dist/select.js":134}]},{},[1]);
+},{"./dist/select.js":135}]},{},[1]);

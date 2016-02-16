@@ -14,12 +14,13 @@ module.exports = ['$scope', 'NcAlert', 'Credential', '$window', 'storage', funct
 			var redir = storage.get('redirect');
 			if(!redir){
 				redir = "/products/";
-                if(r.IsAdmin){
+                if(r.User.IsAdmin){
                     redir = "/admin/";
                 }
 			}else{
 				storage.remove('redirect');
 			}
+	        
 
 			$window.location.href = redir;
 		}, function(){
