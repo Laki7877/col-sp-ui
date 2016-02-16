@@ -12708,28 +12708,40 @@ ul.sidebar-nav {
   color: #ffffff;
 }
 /* line 40, ../../../assets/_sidebar.scss */
-.sidebar-nav li.active {
+.sidebar-nav li.forced-active {
   background: #1e2534;
 }
 /* line 42, ../../../assets/_sidebar.scss */
-.sidebar-nav li.active a {
+.sidebar-nav li.forced-active a {
   color: #ffffff;
 }
 /* line 45, ../../../assets/_sidebar.scss */
+.sidebar-nav li.forced-active i {
+  color: #ffffff;
+}
+/* line 49, ../../../assets/_sidebar.scss */
+.sidebar-nav li.active {
+  background: #1e2534;
+}
+/* line 51, ../../../assets/_sidebar.scss */
+.sidebar-nav li.active a {
+  color: #ffffff;
+}
+/* line 54, ../../../assets/_sidebar.scss */
 .sidebar-nav li.active i {
   color: #ffffff;
 }
 
-/* line 51, ../../../assets/_sidebar.scss */
+/* line 60, ../../../assets/_sidebar.scss */
 #sidebar-wrapper .logo-img-wrapper {
   padding: 20px;
 }
-/* line 54, ../../../assets/_sidebar.scss */
+/* line 63, ../../../assets/_sidebar.scss */
 #sidebar-wrapper .logo-img-wrapper .logo-img {
   width: 100%;
 }
 
-/* line 59, ../../../assets/_sidebar.scss */
+/* line 68, ../../../assets/_sidebar.scss */
 ul.sub-sidebar {
   width: 240px;
   position: absolute;
@@ -12745,26 +12757,26 @@ ul.sub-sidebar {
   -webkit-box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.3);
   box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.3);
 }
-/* line 74, ../../../assets/_sidebar.scss */
+/* line 83, ../../../assets/_sidebar.scss */
 ul.sub-sidebar .sub-sidebar-header {
   font-size: 24px;
 }
-/* line 78, ../../../assets/_sidebar.scss */
+/* line 87, ../../../assets/_sidebar.scss */
 ul.sub-sidebar .item {
   color: #7B7F8F;
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* line 83, ../../../assets/_sidebar.scss */
+/* line 92, ../../../assets/_sidebar.scss */
 ul.sub-sidebar .item.active {
   color: #32343C;
   font-weight: bold;
 }
-/* line 88, ../../../assets/_sidebar.scss */
+/* line 97, ../../../assets/_sidebar.scss */
 ul.sub-sidebar .item:hover {
   color: #4899DD;
 }
-/* line 92, ../../../assets/_sidebar.scss */
+/* line 101, ../../../assets/_sidebar.scss */
 ul.sub-sidebar .item > a {
   color: inherit;
   font-weight: inherit;

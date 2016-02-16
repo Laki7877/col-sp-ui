@@ -2,7 +2,7 @@
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
     function ($http, common, util, LocalCategory, Brand, config) {
         'use strict';
-        var service = {};
+        var service = common.Rest('/ProductStages');
 
         service.getOne = function (productId) {
             var req = {
