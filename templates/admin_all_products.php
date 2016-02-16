@@ -5,10 +5,10 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 
 <?php $this->start('page-body') ?>
 	<div>
-		<? $this->insert('components/page-title-with-buttons', ['text' => "All Products", 
-			'buttons' => [
-	        	['link' => '#', 'class' => 'btn-white btn-width-xl', 'name' => 'Export']
-	        ] ]) ?>
+            
+       <nc-page-title options="{
+        title: 'All Products'
+       }"></nc-page-title>
 
 	    <div class="row search-section-wrapper">
 		  <div class="search-section section-search">
