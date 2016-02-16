@@ -6,7 +6,7 @@
         <h3 class="modal-title modal_title_abosolute"><?=$header?></h3>
         <div class="title_relative">
           <div class="float-right">
-            <a href="#" class="link-btn-plain">Cancel</a>
+            <a href="#" class="link-btn-plain" data-dismiss="modal">Cancel</a>
             <button class="btn btn-blue btn-width-xl">Save</button>
           </div>
         </div>
