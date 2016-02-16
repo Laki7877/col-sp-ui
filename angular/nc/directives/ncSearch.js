@@ -10,10 +10,10 @@ angular.module('nc')
 			},
 			template: $templateCache.get('common/ncSearch'),
 			link: function(scope) {
-				scope.event = scope.event || function() { return true };
+				scope.event = scope.event || function() { return false };
 				scope.searchText = '';
 				scope.callback = function() {
-					if(!scope.event()) return;
+					if(scope.event(scope.searchText)) return;
 					scope.model = scope.searchText;
 				}
 			}

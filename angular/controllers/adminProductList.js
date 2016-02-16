@@ -4,7 +4,7 @@ module.exports = function($scope, $controller, Product, config) {
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
 		options: {
-			url: '/ProductStages',
+			url: '/admin/products',
 			service: Product,
 			item: 'Product',
 			order: 'UpdatedDt',
@@ -25,8 +25,14 @@ module.exports = function($scope, $controller, Product, config) {
 			]
 		}
 	});
-	$scope.yesNoDropdown = config.DROPDOWN.YES_NO_DROPDOWN;
-	$scope.dataTypeDropdown = config.DROPDOWN.DATA_TYPE_DROPDOWN;
+	$scope.searchAdvance = false;
+	$scope.onSearch = function() {
+		_.unset($scope.params, ['AdvanceSearch']);
+	};
+	$scope.onAdvanceSearch = function(apply) {
+		if(apply)
+			_.unset($scope.params, ['searchText']);
+	};
     $scope.toggleEye = function(row){
         Product.visible([{
             ProductId: row.ProductId,

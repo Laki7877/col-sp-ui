@@ -33,7 +33,6 @@ angular.module('nc')
                     var pathComp 
                     var opt = {};
                     if(scope.optionsPath){
-                        scope.optionsPath = {};    
                         pathComp = scope.optionsPath.split('/');
                         opt = $templateOptionsCache[pathComp[0]][pathComp[1]];
                     }
