@@ -61,7 +61,7 @@
 
     <ul class="sub-sidebar" style="display: none;" id="sub-all-product">
         <li class="sub-sidebar-header">All Product</li>
-        <li class="item active margin-top-20"><a href="?p=admin_all_products">View</a></li>
+        <li class="item active margin-top-20"><a href="/admin/products">View</a></li>
     </ul>
 
     <ul class="sub-sidebar" style="display: none;" id="sub-promotion">

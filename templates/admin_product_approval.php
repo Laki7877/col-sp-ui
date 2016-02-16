@@ -1,12 +1,23 @@
-<?php
-
-$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System'])
-?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System']) ?>
 
 <?php $this->start('page-body') ?>
+
+<div ng-controller="AdminProductApprovalListCtrl">
+   <nc-page-title options="{
+        title: 'Product Approval List',
+        buttons: []
+       }"></nc-page-title>
 	<div>
-		<? $this->insert('components/page-title-breadcrumb-border', ['text' => "Product Approval List" ]) ?>
-		<? $this->insert('components/search-section', ['actions' =>['Approve', 'Unapprove', 'Force Approve'], 'button_optional_class' => 'border_blue', 'optional_button_name' => 'Advanced Search' ]) ?>
+
+    <nc-alert nc-model="alert"></nc-alert>
+
+    <div class="row search-section-wrapper">
+          <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="ProductId"></nc-bulk>
+		  <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Product SKU, Name, ...'"></nc-search>
+		  <div class="search-section advance-search">
+    		<button class="btn btn-white-fluid border_blue" type="button">Advanced Search</button>
+  		   </div>
+		</div>
 
 		<div>
 			<form class="ah-form sticky-mainform-action">
@@ -18,5 +29,5 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 			</form>
 		</div>
 	</div>
-
+</div>
 <?php $this->stop() ?>
