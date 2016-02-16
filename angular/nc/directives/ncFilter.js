@@ -6,7 +6,7 @@ angular.module('nc')
 			scope: {
 				model: '=ncModel',
 				filters: '=ncFilterOptions',
-				callback: '=ncFilterEvent'
+				callback: '=?ncFilterEvent'
 			},
 			template: $templateCache.get('common/ncFilter'),
 			link: function(scope) {

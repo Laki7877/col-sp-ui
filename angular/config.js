@@ -95,11 +95,23 @@ module.exports = {
 	PRODUCT_REVIEW_STATUS: [
 		{
 			name: 'Not Approved',
-			value: 'WA'
+			value: 'WA',
+			color: 'color-grey'
 		}, 
 		{
 			name: 'Approved',
+			value: 'AP',
+			color: 'color-green'
+		}
+	],
+	PRODUCT_REVIEW_BUTTON: [
+		{
+			name: 'Unapprove',
 			value: 'AP'
+		},
+		{
+			name: 'Approve',
+			value: 'WA'
 		}
 	],
 	PRODUCT_REVIEW_MAX_RATING: 5.0,

@@ -1,9 +1,11 @@
 angular.module('nc')
 	.directive('ncAdvanceSearch', function($templateCache) {
 		return {
-			restrict: 'AE',
+			restrict: 'E',
 			scope: {
-
+				model: '=ncModel',
+				open: '=ncAdvanceSearchToggle',
+				options: '=ncAdvanceSearchOptions'
 			},
 			template: function(elem, attrs) {
 				if(attrs.ncAdvanceSearch) {
@@ -11,6 +13,20 @@ angular.module('nc')
 				} else {
 					return $templateCache.get('common/ncAdvanceSearch');
 				}
+			},
+			link: function(scope, elem, attrs) {
+				scope.formData = {};
+				scope.form = {};
+				scope.options = _.defaults(scope.options, {
+					Tags: [],
+					Brands: []
+				});
+				scope.search = function() {
+					scope.model.AdvanceSearch = _.extend({}, scope.formData);
+				};
+				scope.clear = function() {
+					_.unset(scope.model, 'AdvanceSearch');
+				};
 			}
 		};
 	});

@@ -3,7 +3,7 @@
 'use strict';
 //App Start here
 var angular = require('angular');
-var bulk = ({"controllers":({"abstractAdd":require("./controllers/abstractAdd.js"),"abstractList":require("./controllers/abstractList.js"),"adminAccount":require("./controllers/adminAccount.js"),"adminAccountAdd":require("./controllers/adminAccountAdd.js"),"adminAttribute":require("./controllers/adminAttribute.js"),"adminAttributeAdd":require("./controllers/adminAttributeAdd.js"),"adminAttributeSet":require("./controllers/adminAttributeSet.js"),"adminAttributeSetAdd":require("./controllers/adminAttributeSetAdd.js"),"adminBrand":require("./controllers/adminBrand.js"),"adminBrandAdd":require("./controllers/adminBrandAdd.js"),"adminCategory":require("./controllers/adminCategory.js"),"adminRole":require("./controllers/adminRole.js"),"adminRoleAdd":require("./controllers/adminRoleAdd.js"),"adminShop":require("./controllers/adminShop.js"),"adminShopAdd":require("./controllers/adminShopAdd.js"),"adminShoptype":require("./controllers/adminShoptype.js"),"adminShoptypeAdd":require("./controllers/adminShoptypeAdd.js"),"localCategory":require("./controllers/localCategory.js"),"login":require("./controllers/login.js"),"productAdd":require("./controllers/productAdd.js"),"productAddSelectCategory":require("./controllers/productAddSelectCategory.js"),"productImageList":require("./controllers/productImageList.js"),"productImageManagement":require("./controllers/productImageManagement.js"),"productImport":require("./controllers/productImport.js"),"productList":require("./controllers/productList.js"),"productListLocalCategory":require("./controllers/productListLocalCategory.js"),"productReview":require("./controllers/productReview.js"),"root":require("./controllers/root.js"),"sellerAccount":require("./controllers/sellerAccount.js"),"sellerAccountAdd":require("./controllers/sellerAccountAdd.js"),"sellerRole":require("./controllers/sellerRole.js"),"sellerRoleAdd":require("./controllers/sellerRoleAdd.js"),"test":require("./controllers/test.js")}),"services":({"adminAccountService":require("./services/adminAccountService.js"),"adminPermissionService":require("./services/adminPermissionService.js"),"adminRoleService":require("./services/adminRoleService.js"),"adminShopService":require("./services/adminShopService.js"),"adminShoptypeService":require("./services/adminShoptypeService.js"),"alert":require("./services/alert.js"),"attribute":require("./services/attribute.js"),"attributeService":require("./services/attributeService.js"),"attributeSet":require("./services/attributeSet.js"),"attributeSetService":require("./services/attributeSetService.js"),"blocker":require("./services/blocker.js"),"brand":require("./services/brand.js"),"brandService":require("./services/brandService.js"),"category":require("./services/category.js"),"credential":require("./services/credential.js"),"exceptionHandler":require("./services/exceptionHandler.js"),"globalCategory":require("./services/globalCategory.js"),"globalCategoryService":require("./services/globalCategoryService.js"),"image":require("./services/image.js"),"imageService":require("./services/imageService.js"),"knownException":require("./services/knownException.js"),"localCategory":require("./services/localCategory.js"),"localCategoryService":require("./services/localCategoryService.js"),"product":require("./services/product.js"),"productAdd":require("./services/productAdd.js"),"productReviewService":require("./services/productReviewService.js"),"sellerAccountService":require("./services/sellerAccountService.js"),"sellerPermissionService":require("./services/sellerPermissionService.js"),"sellerRoleService":require("./services/sellerRoleService.js"),"shop":require("./services/shop.js"),"shopPermissionService":require("./services/shopPermissionService.js")}),"helpers":({"base64":require("./helpers/base64.js"),"common":require("./helpers/common.js"),"storage":require("./helpers/storage.js"),"util":require("./helpers/util.js"),"variantPair":require("./helpers/variantPair.js")}),"directives":({"ncTradableSelect":require("./directives/ncTradableSelect.js"),"ngCkeditor":require("./directives/ngCkeditor.js"),"ngDelegate":require("./directives/ngDelegate.js"),"ngMatch":require("./directives/ngMatch.js"),"ngMaxnumber":require("./directives/ngMaxnumber.js"),"ngMinnumber":require("./directives/ngMinnumber.js"),"ngPatternRestrict":require("./directives/ngPatternRestrict.js"),"ngPermission":require("./directives/ngPermission.js"),"ngSlideToggle":require("./directives/ngSlideToggle.js"),"ngTemplate":require("./directives/ngTemplate.js"),"popoverAny":require("./directives/popoverAny.js")}),"filters":({"capitalize":require("./filters/capitalize.js"),"exclude":require("./filters/exclude.js"),"excludeCategory":require("./filters/excludeCategory.js"),"html":require("./filters/html.js"),"leadingzero":require("./filters/leadingzero.js"),"ordinal":require("./filters/ordinal.js"),"slice":require("./filters/slice.js"),"truncate":require("./filters/truncate.js"),"truth":require("./filters/truth.js")}),"template-options":({"addProductForm":require("./template-options/addProductForm.js")})});
+var bulk = ({"controllers":({"abstractAdd":require("./controllers\\abstractAdd.js"),"abstractList":require("./controllers\\abstractList.js"),"adminAccount":require("./controllers\\adminAccount.js"),"adminAccountAdd":require("./controllers\\adminAccountAdd.js"),"adminAttribute":require("./controllers\\adminAttribute.js"),"adminAttributeAdd":require("./controllers\\adminAttributeAdd.js"),"adminAttributeSet":require("./controllers\\adminAttributeSet.js"),"adminAttributeSetAdd":require("./controllers\\adminAttributeSetAdd.js"),"adminBrand":require("./controllers\\adminBrand.js"),"adminBrandAdd":require("./controllers\\adminBrandAdd.js"),"adminCategory":require("./controllers\\adminCategory.js"),"adminRole":require("./controllers\\adminRole.js"),"adminRoleAdd":require("./controllers\\adminRoleAdd.js"),"adminShop":require("./controllers\\adminShop.js"),"adminShopAdd":require("./controllers\\adminShopAdd.js"),"adminShoptype":require("./controllers\\adminShoptype.js"),"adminShoptypeAdd":require("./controllers\\adminShoptypeAdd.js"),"localCategory":require("./controllers\\localCategory.js"),"login":require("./controllers\\login.js"),"productAdd":require("./controllers\\productAdd.js"),"productAddSelectCategory":require("./controllers\\productAddSelectCategory.js"),"productImageList":require("./controllers\\productImageList.js"),"productImageManagement":require("./controllers\\productImageManagement.js"),"productImport":require("./controllers\\productImport.js"),"productList":require("./controllers\\productList.js"),"productListLocalCategory":require("./controllers\\productListLocalCategory.js"),"productReview":require("./controllers\\productReview.js"),"root":require("./controllers\\root.js"),"sellerAccount":require("./controllers\\sellerAccount.js"),"sellerAccountAdd":require("./controllers\\sellerAccountAdd.js"),"sellerRole":require("./controllers\\sellerRole.js"),"sellerRoleAdd":require("./controllers\\sellerRoleAdd.js"),"test":require("./controllers\\test.js")}),"services":({"adminAccountService":require("./services\\adminAccountService.js"),"adminPermissionService":require("./services\\adminPermissionService.js"),"adminRoleService":require("./services\\adminRoleService.js"),"adminShopService":require("./services\\adminShopService.js"),"adminShoptypeService":require("./services\\adminShoptypeService.js"),"alert":require("./services\\alert.js"),"attribute":require("./services\\attribute.js"),"attributeService":require("./services\\attributeService.js"),"attributeSet":require("./services\\attributeSet.js"),"attributeSetService":require("./services\\attributeSetService.js"),"blocker":require("./services\\blocker.js"),"brand":require("./services\\brand.js"),"brandService":require("./services\\brandService.js"),"category":require("./services\\category.js"),"credential":require("./services\\credential.js"),"exceptionHandler":require("./services\\exceptionHandler.js"),"globalCategory":require("./services\\globalCategory.js"),"globalCategoryService":require("./services\\globalCategoryService.js"),"image":require("./services\\image.js"),"imageService":require("./services\\imageService.js"),"knownException":require("./services\\knownException.js"),"localCategory":require("./services\\localCategory.js"),"localCategoryService":require("./services\\localCategoryService.js"),"product":require("./services\\product.js"),"productAdd":require("./services\\productAdd.js"),"productReviewService":require("./services\\productReviewService.js"),"sellerAccountService":require("./services\\sellerAccountService.js"),"sellerPermissionService":require("./services\\sellerPermissionService.js"),"sellerRoleService":require("./services\\sellerRoleService.js"),"shop":require("./services\\shop.js"),"shopPermissionService":require("./services\\shopPermissionService.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngMatch":require("./directives\\ngMatch.js"),"ngMaxnumber":require("./directives\\ngMaxnumber.js"),"ngMinnumber":require("./directives\\ngMinnumber.js"),"ngPatternRestrict":require("./directives\\ngPatternRestrict.js"),"ngPermission":require("./directives\\ngPermission.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"popoverAny":require("./directives\\popoverAny.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"exclude":require("./filters\\exclude.js"),"excludeCategory":require("./filters\\excludeCategory.js"),"html":require("./filters\\html.js"),"leadingzero":require("./filters\\leadingzero.js"),"ordinal":require("./filters\\ordinal.js"),"slice":require("./filters\\slice.js"),"truncate":require("./filters\\truncate.js"),"truth":require("./filters\\truth.js")}),"template-options":({"addProductForm":require("./template-options\\addProductForm.js"),"searchForm":require("./template-options\\searchForm.js")})});
 var config = require('./config');
 var template = require('./template');
 
@@ -237,7 +237,7 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 .controller('TestCtrl', controllers.test)
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./config":2,"./controllers/abstractAdd.js":3,"./controllers/abstractList.js":4,"./controllers/adminAccount.js":5,"./controllers/adminAccountAdd.js":6,"./controllers/adminAttribute.js":7,"./controllers/adminAttributeAdd.js":8,"./controllers/adminAttributeSet.js":9,"./controllers/adminAttributeSetAdd.js":10,"./controllers/adminBrand.js":11,"./controllers/adminBrandAdd.js":12,"./controllers/adminCategory.js":13,"./controllers/adminRole.js":14,"./controllers/adminRoleAdd.js":15,"./controllers/adminShop.js":16,"./controllers/adminShopAdd.js":17,"./controllers/adminShoptype.js":18,"./controllers/adminShoptypeAdd.js":19,"./controllers/localCategory.js":20,"./controllers/login.js":21,"./controllers/productAdd.js":22,"./controllers/productAddSelectCategory.js":23,"./controllers/productImageList.js":24,"./controllers/productImageManagement.js":25,"./controllers/productImport.js":26,"./controllers/productList.js":27,"./controllers/productListLocalCategory.js":28,"./controllers/productReview.js":29,"./controllers/root.js":30,"./controllers/sellerAccount.js":31,"./controllers/sellerAccountAdd.js":32,"./controllers/sellerRole.js":33,"./controllers/sellerRoleAdd.js":34,"./controllers/test.js":35,"./directives/ncTradableSelect.js":36,"./directives/ngCkeditor.js":37,"./directives/ngDelegate.js":38,"./directives/ngMatch.js":39,"./directives/ngMaxnumber.js":40,"./directives/ngMinnumber.js":41,"./directives/ngPatternRestrict.js":42,"./directives/ngPermission.js":43,"./directives/ngSlideToggle.js":44,"./directives/ngTemplate.js":45,"./directives/popoverAny.js":46,"./filters/capitalize.js":47,"./filters/exclude.js":48,"./filters/excludeCategory.js":49,"./filters/html.js":50,"./filters/leadingzero.js":51,"./filters/ordinal.js":52,"./filters/slice.js":53,"./filters/truncate.js":54,"./filters/truth.js":55,"./helpers/base64.js":56,"./helpers/common.js":57,"./helpers/storage.js":58,"./helpers/util.js":59,"./helpers/variantPair.js":60,"./nc":82,"./services/adminAccountService.js":84,"./services/adminPermissionService.js":85,"./services/adminRoleService.js":86,"./services/adminShopService.js":87,"./services/adminShoptypeService.js":88,"./services/alert.js":89,"./services/attribute.js":90,"./services/attributeService.js":91,"./services/attributeSet.js":92,"./services/attributeSetService.js":93,"./services/blocker.js":94,"./services/brand.js":95,"./services/brandService.js":96,"./services/category.js":97,"./services/credential.js":98,"./services/exceptionHandler.js":99,"./services/globalCategory.js":100,"./services/globalCategoryService.js":101,"./services/image.js":102,"./services/imageService.js":103,"./services/knownException.js":104,"./services/localCategory.js":105,"./services/localCategoryService.js":106,"./services/product.js":107,"./services/productAdd.js":108,"./services/productReviewService.js":109,"./services/sellerAccountService.js":110,"./services/sellerPermissionService.js":111,"./services/sellerRoleService.js":112,"./services/shop.js":113,"./services/shopPermissionService.js":114,"./template":116,"./template-options/addProductForm.js":115,"angular":131,"angular-animate":118,"angular-base64":119,"angular-bootstrap-datetimepicker":120,"angular-file-upload":121,"angular-sanitize":123,"angular-scroll":125,"angular-ui-bootstrap":126,"angular-ui-tree":129,"lodash":133,"ui-select/dist/select.js":135}],2:[function(require,module,exports){
+},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractList.js":4,"./controllers\\adminAccount.js":5,"./controllers\\adminAccountAdd.js":6,"./controllers\\adminAttribute.js":7,"./controllers\\adminAttributeAdd.js":8,"./controllers\\adminAttributeSet.js":9,"./controllers\\adminAttributeSetAdd.js":10,"./controllers\\adminBrand.js":11,"./controllers\\adminBrandAdd.js":12,"./controllers\\adminCategory.js":13,"./controllers\\adminRole.js":14,"./controllers\\adminRoleAdd.js":15,"./controllers\\adminShop.js":16,"./controllers\\adminShopAdd.js":17,"./controllers\\adminShoptype.js":18,"./controllers\\adminShoptypeAdd.js":19,"./controllers\\localCategory.js":20,"./controllers\\login.js":21,"./controllers\\productAdd.js":22,"./controllers\\productAddSelectCategory.js":23,"./controllers\\productImageList.js":24,"./controllers\\productImageManagement.js":25,"./controllers\\productImport.js":26,"./controllers\\productList.js":27,"./controllers\\productListLocalCategory.js":28,"./controllers\\productReview.js":29,"./controllers\\root.js":30,"./controllers\\sellerAccount.js":31,"./controllers\\sellerAccountAdd.js":32,"./controllers\\sellerRole.js":33,"./controllers\\sellerRoleAdd.js":34,"./controllers\\test.js":35,"./directives\\ncTradableSelect.js":36,"./directives\\ngCkeditor.js":37,"./directives\\ngDelegate.js":38,"./directives\\ngMatch.js":39,"./directives\\ngMaxnumber.js":40,"./directives\\ngMinnumber.js":41,"./directives\\ngPatternRestrict.js":42,"./directives\\ngPermission.js":43,"./directives\\ngSlideToggle.js":44,"./directives\\ngTemplate.js":45,"./directives\\popoverAny.js":46,"./filters\\capitalize.js":47,"./filters\\exclude.js":48,"./filters\\excludeCategory.js":49,"./filters\\html.js":50,"./filters\\leadingzero.js":51,"./filters\\ordinal.js":52,"./filters\\slice.js":53,"./filters\\truncate.js":54,"./filters\\truth.js":55,"./helpers\\base64.js":56,"./helpers\\common.js":57,"./helpers\\storage.js":58,"./helpers\\util.js":59,"./helpers\\variantPair.js":60,"./nc":82,"./services\\adminAccountService.js":84,"./services\\adminPermissionService.js":85,"./services\\adminRoleService.js":86,"./services\\adminShopService.js":87,"./services\\adminShoptypeService.js":88,"./services\\alert.js":89,"./services\\attribute.js":90,"./services\\attributeService.js":91,"./services\\attributeSet.js":92,"./services\\attributeSetService.js":93,"./services\\blocker.js":94,"./services\\brand.js":95,"./services\\brandService.js":96,"./services\\category.js":97,"./services\\credential.js":98,"./services\\exceptionHandler.js":99,"./services\\globalCategory.js":100,"./services\\globalCategoryService.js":101,"./services\\image.js":102,"./services\\imageService.js":103,"./services\\knownException.js":104,"./services\\localCategory.js":105,"./services\\localCategoryService.js":106,"./services\\product.js":107,"./services\\productAdd.js":108,"./services\\productReviewService.js":109,"./services\\sellerAccountService.js":110,"./services\\sellerPermissionService.js":111,"./services\\sellerRoleService.js":112,"./services\\shop.js":113,"./services\\shopPermissionService.js":114,"./template":117,"./template-options\\addProductForm.js":115,"./template-options\\searchForm.js":116,"angular":132,"angular-animate":119,"angular-base64":120,"angular-bootstrap-datetimepicker":121,"angular-file-upload":122,"angular-sanitize":124,"angular-scroll":126,"angular-ui-bootstrap":127,"angular-ui-tree":130,"lodash":134,"ui-select/dist/select.js":136}],2:[function(require,module,exports){
 module.exports = {
 	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
@@ -335,11 +335,23 @@ module.exports = {
 	PRODUCT_REVIEW_STATUS: [
 		{
 			name: 'Not Approved',
-			value: 'WA'
+			value: 'WA',
+			color: 'color-grey'
 		}, 
 		{
 			name: 'Approved',
+			value: 'AP',
+			color: 'color-green'
+		}
+	],
+	PRODUCT_REVIEW_BUTTON: [
+		{
+			name: 'Unapprove',
 			value: 'AP'
+		},
+		{
+			name: 'Approve',
+			value: 'WA'
 		}
 	],
 	PRODUCT_REVIEW_MAX_RATING: 5.0,
@@ -478,12 +490,36 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 module.exports = ["$scope", "$window", "NcAlert", "util", "options", function($scope, $window, NcAlert, util, options) {
 	'ngInject';
 	var a = _.includes(['a','e','i','o','u'], _.lowerCase(options.item.charAt(0))) ? 'an' : 'a';
+	$scope.alert = new NcAlert();
+	$scope.tableOptions = {
+		emptyMessage: 'You do not have ' + a + ' ' + options.item
+	};
+
+	$scope.loading = false;
+
+	//Table variables
+	$scope.params = {
+		_order: options.order,
+		_limit: 10,
+		_offset: 0,
+		_direction: options.direction || 'desc'	
+	};
+	$scope.list = {
+		total: 0,
+		data: []
+	};
+
 	$scope.reload = function(newObj, oldObj) {
 		if(!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
+			(options.reload || _.noop)(newObj, oldObj);
 			if(newObj.searchText !== oldObj.searchText) {
 				$scope.params._offset = 0;
+				_.unset($scope.params, ['AdvanceSearch']);
 			}
-
+			if(newObj.AdvanceSearch !== oldObj.AdvanceSearch) {
+				$scope.params._offset = 0;
+				_.unset($scope.params, ['searchText']);
+			}
 			if(newObj._filter !== oldObj._filter) {
 				$scope.params._offset = 0;
 			}
@@ -500,23 +536,10 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "options", function($s
 	$scope.onload = function() {
 		$scope.loading = true;
 	};
-	$scope.alert = new NcAlert();
-	$scope.tableOptions = {
-		emptyMessage: 'You do not have ' + a + ' ' + options.item
-	};
-
-	//Table variables
-	$scope.params = {
-		_order: options.order,
-		_limit: 10,
-		_offset: 0,
-		_direction: options.direction || 'desc'
-	};
-	$scope.list = {
-		total: 0,
-		data: []
-	};
-	$scope.filterOptions = options.filters;
+	if(options.filters) {
+		$scope.filterOptions = options.filters;
+		$scope.params._filter = options.filters[0].value;
+	}
 	$scope.bulkContainer = [];
 	$scope.toggleVisibility = util.eyeToggle(options.service, options.id, $scope.alert);
 
@@ -582,7 +605,6 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "options", function($s
 
 	}
 
-	$scope.loading = false;
 	$scope.reload();
 	$scope.$watch('params', $scope.reload, true);
 }];
@@ -682,7 +704,7 @@ module.exports = ["$scope", "$controller", "AttributeService", "config", "util",
 		}
 	}, true);
 }];
-},{"angular":131}],9:[function(require,module,exports){
+},{"angular":132}],9:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AttributeSetService", "util", "config", function($scope, $controller, AttributeSetService, util, config) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -826,8 +848,9 @@ module.exports = ["$scope", "$controller", "BrandService", "ImageService", funct
 
 module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Category", "GlobalCategoryService", "AttributeSetService", "NcAlert", "util", "config", function($scope, $rootScope, $uibModal, $timeout, common, Category, GlobalCategoryService, AttributeSetService, NcAlert, util, config){
 	'ngInject';
-	$scope.modalScope = null;
+	
 	$scope.categories = [];
+	$scope.modalScope = null;
 	$scope.timerPromise = null;
 	$scope.popover = false;
 	$scope.loading = false;
@@ -2058,7 +2081,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
 
     }];
 
-},{"angular":131}],23:[function(require,module,exports){
+},{"angular":132}],23:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Category, GlobalCategory) {
@@ -2082,7 +2105,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 	});
 }];
 
-},{"angular":131}],24:[function(require,module,exports){
+},{"angular":132}],24:[function(require,module,exports){
 //Not Used
 module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader', function ($scope, Product, util, Alert, $window, FileUploader) {
     $scope.productList = [];
@@ -2249,7 +2272,7 @@ var angular = require('angular');
 module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', function ($scope, Product, util, Alert, $window) {
     
 }];
-},{"angular":131}],27:[function(require,module,exports){
+},{"angular":132}],27:[function(require,module,exports){
 module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope', 'config', function ($scope, Product, util, Alert, $window, $rootScope, config) {
     
     /*
@@ -2657,7 +2680,7 @@ module.exports = ['$scope', 'LocalCategory', function($scope, LocalCategory) {
 	});
 }];
 },{}],29:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$uibModal", function($scope, $controller, ProductReviewService, config, $uibModal) {
+module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$uibModal", "common", function($scope, $controller, ProductReviewService, config, $uibModal, common) {
 	'ngInject';
 	//Inherit from parent
 	$controller('AbstractListCtrl', {
@@ -2667,20 +2690,38 @@ module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$u
 			service: ProductReviewService,
 			item: 'Product Review',
 			order: 'UpdatedDt',
-			id: 'ReviewId',
+			id: 'ProductReviewId',
 			filters: [
 				{ name: "All", value: 'All'},
 				{ name: "Approved", value: 'Approved'},
-				{ name: "Unapproved", value: 'Unapproved'}
+				{ name: "Not approved", value: 'NotApproved'}
 			],
 			actions: [
-				'View Only'
+				{
+					name: 'View Detail',
+					fn: function(row) {
+						$scope.open(row);
+					}
+				}
 			],
 			bulks: [
 				{
 					name: 'Approve',
-					fn: function(obj) {
-
+					fn: function(arr, cb) {
+						arr = _.compact(_.map(arr, function(e) {
+							var item = _.pick(e, ['Status', 'ProductReviewId']);
+							if(item.Status == 'WA') item.Status = 'AP';
+							else item = null;
+							return item;
+						}));
+						if(arr.length <= 0) return;
+						ProductReviewService.approve(arr)
+							.then(function() {
+								cb();
+							}, function(err) {
+								$scope.alert.error(common.getError(err));
+							})
+							.finally($scope.reload);
 					},
 					confirmation: {
 						title: 'Approve',
@@ -2689,8 +2730,22 @@ module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$u
 				},
 				{
 					name: 'Unapprove',
-					fn: function(obj) {
-						
+					fn: function(arr, cb) {
+						arr = _.compact(_.map(arr, function(e) {
+							var item = _.pick(e, ['Status', 'ProductReviewId']);
+							if(item.Status == 'AP') item.Status = 'WA';
+							else item = null;
+							return item;
+						}));
+						if(arr.length <= 0) return;
+						ProductReviewService.approve(arr)
+							.then(function() {
+								cb();
+							}, function(err) {
+								$scope.reload();
+								$scope.alert.error(common.getError(err));
+							})
+							.finally($scope.reload);
 					},
 					confirmation: {
 						title: 'Unapprove',
@@ -2702,24 +2757,41 @@ module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$u
 	});
 	$scope.open = function(item) {
 		$uibModal.open({
+			size: 'lg',
 			templateUrl: 'product/productReviewModal',
 			controller: ["$scope", "info", function($scope, info) {
 				'ngInject';
-				$scope.comment = Comment;
+				$scope = _.extend($scope, info);
 			}],
 			resolve: {
 				info: function() {
 					return {
 						UpdatedDt: item.UpdatedDt,
 						Customer: item.Customer,
-						Comment: item.Comment
+						Comment: item.Comment,
+						Pid: item.Pid,
+						ProductNameEn: item.ProductNameEn,
+						ProductNameTh: item.ProductNameTh,
+						BrandNameEn: item.BrandNameEn
 					};
 				}
 			}
 		});
 	};
+	$scope.approve = function(item) {
+		$scope.alert.close();
+		item.Status = (item.Status == 'WA') ? 'AP' : 'WA';
+		ProductReviewService.approve([_.pick(item, ['Status', 'ProductReviewId'])])
+			.then(function() {
+
+			}, function(err) {
+				item.Status = (item.Status == 'WA') ? 'AP' : 'WA';
+				$scope.alert.error(common.getError(err));
+			});
+	};
 	$scope.maxRating = config.PRODUCT_REVIEW_MAX_RATING;
 	$scope.reviewStatus = config.PRODUCT_REVIEW_STATUS;
+	$scope.reviewButton = config.PRODUCT_REVIEW_BUTTON;
 }];
 },{}],30:[function(require,module,exports){
 module.exports = ['$rootScope', function($rootScope) {
@@ -3102,7 +3174,7 @@ module.exports = [function() {
 		}
 	};
 }];
-},{"angular":131}],39:[function(require,module,exports){
+},{"angular":132}],39:[function(require,module,exports){
 module.exports = ["$interpolate", function($interpolate) {
 	'ngInject';
 	return {
@@ -3574,7 +3646,7 @@ module.exports = ['$templateCache', '$compile', '$templateOptionsCache', 'KnownE
         }
     };
 }];
-},{"angular":131}],46:[function(require,module,exports){
+},{"angular":132}],46:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$document', '$window', function($document, $window) {
 	$window._globalPopoverAny = null;
@@ -3619,7 +3691,7 @@ module.exports = ['$document', '$window', function($document, $window) {
 		}
 	};
 }];
-},{"angular":131}],47:[function(require,module,exports){
+},{"angular":132}],47:[function(require,module,exports){
 module.exports = [function() {
   return function(input, scope) {
     if (input!=null)
@@ -3661,7 +3733,7 @@ module.exports = [function() {
      });
   }
 }];
-},{"angular":131}],49:[function(require,module,exports){
+},{"angular":132}],49:[function(require,module,exports){
 module.exports = [function() {
   
 var search = function(catId, tmp) {
@@ -3774,7 +3846,7 @@ module.exports = [function() {
   	return input;
   }
 }];
-},{"angular":131}],53:[function(require,module,exports){
+},{"angular":132}],53:[function(require,module,exports){
 /*
  * Get slice or subarray of array
  */
@@ -3836,7 +3908,7 @@ module.exports = [function() {
      return i;
   }
 }];
-},{"angular":131}],56:[function(require,module,exports){
+},{"angular":132}],56:[function(require,module,exports){
 module.exports = [function () {
     'use strict';
     var service = {};
@@ -4017,6 +4089,8 @@ module.exports = [function () {
     };
 
     service.put = function(key, obj, flag) {
+        //Always use local storage
+        flag = true;
         sessionStorage.setItem('central.seller.portal.shared.' + key, obj);
         if (flag) {
             localStorage.setItem('central.seller.portal.shared.' + key, obj);
@@ -4455,7 +4529,7 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     return service;
 }];
 
-},{"angular":131}],60:[function(require,module,exports){
+},{"angular":132}],60:[function(require,module,exports){
 module.exports = ['util', function (util) {
 	
 	//Struct for Variant Pair
@@ -4548,9 +4622,11 @@ angular.module('nc')
 angular.module('nc')
 	.directive('ncAdvanceSearch', ["$templateCache", function($templateCache) {
 		return {
-			restrict: 'AE',
+			restrict: 'E',
 			scope: {
-
+				model: '=ncModel',
+				open: '=ncAdvanceSearchToggle',
+				options: '=ncAdvanceSearchOptions'
 			},
 			template: function(elem, attrs) {
 				if(attrs.ncAdvanceSearch) {
@@ -4558,6 +4634,20 @@ angular.module('nc')
 				} else {
 					return $templateCache.get('common/ncAdvanceSearch');
 				}
+			},
+			link: function(scope, elem, attrs) {
+				scope.formData = {};
+				scope.form = {};
+				scope.options = _.defaults(scope.options, {
+					Tags: [],
+					Brands: []
+				});
+				scope.search = function() {
+					scope.model.AdvanceSearch = _.extend({}, scope.formData);
+				};
+				scope.clear = function() {
+					_.unset(scope.model, 'AdvanceSearch');
+				};
 			}
 		};
 	}]);
@@ -4831,7 +4921,7 @@ angular.module('nc')
 			scope: {
 				model: '=ncModel',
 				filters: '=ncFilterOptions',
-				callback: '=ncFilterEvent'
+				callback: '=?ncFilterEvent'
 			},
 			template: $templateCache.get('common/ncFilter'),
 			link: function(scope) {
@@ -5055,7 +5145,7 @@ angular.module('nc')
             }
         };
     }]);
-},{"angular":131}],73:[function(require,module,exports){
+},{"angular":132}],73:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncPagination', function() {
 		this.paginationSizes = [10,20,30];
@@ -5303,7 +5393,7 @@ angular.module('nc')
                 }
             };
         }]);
-},{"angular":131}],78:[function(require,module,exports){
+},{"angular":132}],78:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncTreeSelect', ["$templateCache", function($templateCache) {
 		return {
@@ -5381,6 +5471,11 @@ angular.module('nc')
 		return function(input) {
 			return $filter('date')(input, 'dd/MM/yy', '+700');
 		}
+	}])
+	.filter('timeTh', ["$filter", function($filter) {
+		return function(input) {
+			return $filter('date')(input, 'H:m', '+700');
+		}
 	}]);
 },{}],81:[function(require,module,exports){
 /*
@@ -5424,10 +5519,10 @@ angular.module('nc', ['ui.bootstrap', 'ui.select', 'duScroll', 'angularFileUploa
 		'clickanystart' : 'clickanyend'
 	});
 }]);
-(function () {var f = require("./index.js");f["directives"]=({"ncAction":require("./directives/ncAction.js"),"ncAdvanceSearch":require("./directives/ncAdvanceSearch.js"),"ncAlert":require("./directives/ncAlert.js"),"ncBindCompile":require("./directives/ncBindCompile.js"),"ncBulk":require("./directives/ncBulk.js"),"ncEmpty":require("./directives/ncEmpty.js"),"ncEye":require("./directives/ncEye.js"),"ncFilter":require("./directives/ncFilter.js"),"ncImageGallery":require("./directives/ncImageGallery.js"),"ncImageIntegrity":require("./directives/ncImageIntegrity.js"),"ncLoading":require("./directives/ncLoading.js"),"ncPageTitle":require("./directives/ncPageTitle.js"),"ncPagination":require("./directives/ncPagination.js"),"ncPermission":require("./directives/ncPermission.js"),"ncSearch":require("./directives/ncSearch.js"),"ncTable":require("./directives/ncTable.js"),"ncTemplate":require("./directives/ncTemplate.js"),"ncTreeSelect":require("./directives/ncTreeSelect.js"),"ncUiSelect":require("./directives/ncUiSelect.js")});f["filters"]=({"date":require("./filters/date.js"),"map":require("./filters/map.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
+(function () {var f = require("./index.js");f["directives"]=({"ncAction":require("./directives\\ncAction.js"),"ncAdvanceSearch":require("./directives\\ncAdvanceSearch.js"),"ncAlert":require("./directives\\ncAlert.js"),"ncBindCompile":require("./directives\\ncBindCompile.js"),"ncBulk":require("./directives\\ncBulk.js"),"ncEmpty":require("./directives\\ncEmpty.js"),"ncEye":require("./directives\\ncEye.js"),"ncFilter":require("./directives\\ncFilter.js"),"ncImageGallery":require("./directives\\ncImageGallery.js"),"ncImageIntegrity":require("./directives\\ncImageIntegrity.js"),"ncLoading":require("./directives\\ncLoading.js"),"ncPageTitle":require("./directives\\ncPageTitle.js"),"ncPagination":require("./directives\\ncPagination.js"),"ncPermission":require("./directives\\ncPermission.js"),"ncSearch":require("./directives\\ncSearch.js"),"ncTable":require("./directives\\ncTable.js"),"ncTemplate":require("./directives\\ncTemplate.js"),"ncTreeSelect":require("./directives\\ncTreeSelect.js"),"ncUiSelect":require("./directives\\ncUiSelect.js")});f["filters"]=({"date":require("./filters\\date.js"),"map":require("./filters\\map.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./directives/ncAction.js":61,"./directives/ncAdvanceSearch.js":62,"./directives/ncAlert.js":63,"./directives/ncBindCompile.js":64,"./directives/ncBulk.js":65,"./directives/ncEmpty.js":66,"./directives/ncEye.js":67,"./directives/ncFilter.js":68,"./directives/ncImageGallery.js":69,"./directives/ncImageIntegrity.js":70,"./directives/ncLoading.js":71,"./directives/ncPageTitle.js":72,"./directives/ncPagination.js":73,"./directives/ncPermission.js":74,"./directives/ncSearch.js":75,"./directives/ncTable.js":76,"./directives/ncTemplate.js":77,"./directives/ncTreeSelect.js":78,"./directives/ncUiSelect.js":79,"./filters/date.js":80,"./filters/map.js":81,"./index.js":82,"./template.js":83,"angular":131,"angular-file-upload":121,"angular-scroll":125,"angular-ui-bootstrap":126,"jquery":132,"lodash":133,"ui-select":136}],83:[function(require,module,exports){
+},{"./directives\\ncAction.js":61,"./directives\\ncAdvanceSearch.js":62,"./directives\\ncAlert.js":63,"./directives\\ncBindCompile.js":64,"./directives\\ncBulk.js":65,"./directives\\ncEmpty.js":66,"./directives\\ncEye.js":67,"./directives\\ncFilter.js":68,"./directives\\ncImageGallery.js":69,"./directives\\ncImageIntegrity.js":70,"./directives\\ncLoading.js":71,"./directives\\ncPageTitle.js":72,"./directives\\ncPagination.js":73,"./directives\\ncPermission.js":74,"./directives\\ncSearch.js":75,"./directives\\ncTable.js":76,"./directives\\ncTemplate.js":77,"./directives\\ncTreeSelect.js":78,"./directives\\ncUiSelect.js":79,"./filters\\date.js":80,"./filters\\map.js":81,"./index.js":82,"./template.js":83,"angular":132,"angular-file-upload":122,"angular-scroll":126,"angular-ui-bootstrap":127,"jquery":133,"lodash":134,"ui-select":137}],83:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -5449,7 +5544,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncAdvanceSearch',
-    "<div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Advance Search</h2></div><div class=form-section-content><? $this->insert('components/forms/input-text-with-label', [\"label\" => \"Product Name\", ]) ?><? $this->insert('components/forms/input-text-with-label', [\"label\" => \"PID\" ]) ?><? $this->insert('components/forms/input-text-with-label', [\"label\" => \"SKU\" ]) ?><? $this->insert('components/forms/dropdown_tags', [\"label\" => \"Brand Name/ ID\", \"default_choices\" => [\"Gulp\", \"Adico\"], \"choices\" => [\"Gulp\", \"Adico\",\"Pascal\"] ]) ?><? $this->insert('components/forms/input-text-with-label', [\"label\" => \"Global Category Name/ ID\" ]) ?><? $this->insert('components/forms/input-text-with-label', [\"label\" => \"Local Category Name/ ID\" ]) ?><? $this->insert('components/forms/input_tags', [\"label\" => \"Search Tag\", \"choices\" => [\"Gulp\", \"Adico\",\"Pascal\"] ]) ?><? $this->insert('components/forms/input_from_to', [\"label\" => \"Price\", \"label_extend\" => \"To\" ]) ?><? $this->insert('components/forms/input_from_to', [\"label\" => \"Created Date\", \"input_class\" => \"input-icon-calendar\", \"label_extend\" => \"To\" ]) ?><? $this->insert('components/forms/input_from_to', [\"label\" => \"Modified Date\", \"input_class\" => \"input-icon-calendar\", \"label_extend\" => \"To\" ]) ?><div class=form-group><div class=width-label><label class=control-label></label></div><div class=button-size-normal><a class=\"button-size-normal btn btn-blue btn-width-xl\">Search</a></div><div class=button-size-normal><a class=\"button-size-normal margin-left-10 btn btn-white btn-width-xl\">Clear</a></div></div></div></div></div></div>"
+    "<div class=row ng-show=open><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Advance Search</h2></div><div class=form-section-content><form name=form><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductName nc-label=\"Product Name\" nc-template-options-path=searchForm/ProductName><input class=\"form-control width-field-large\" name=ProductName ng-model=formData.ProductName required></div><div nc-template=common/input/form-group-with-label nc-template-form=form nc-label=PID nc-template-options-path=searchForm/PID><input class=\"form-control width-field-large\" name=PID ng-model=formData.PID required></div><div nc-template=common/input/form-group-with-label nc-template-form=form nc-label=SKU nc-template-options-path=searchForm/SKU><input class=\"form-control width-field-large\" name=SKU ng-model=formData.SKU required></div><div nc-template=common/input/form-group-with-label nc-template-form=form nc-label=\"Brand Name / ID\" nc-template-options-path=searchForm/Brands><ui-select ng-model=formData.Brands name=Brands nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 multiple tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match placeholder=\"Separate tags with comma (or enter)\">{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Brands\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form nc-label=\"Global Category Name/ ID\" nc-template-options-path=searchForm/GlobalCategory><input class=\"form-control width-field-large\" name=GlobalCategory ng-model=formData.GlobalCategory required></div><div nc-template=common/input/form-group-with-label nc-template-form=form nc-label=\"Local Category Name/ ID\" nc-template-options-path=searchForm/LocalCategory><input class=\"form-control width-field-large\" name=LocalCategory ng-model=formData.LocalCategory required></div><div nc-template=common/input/form-group-with-label nc-template-form=form nc-label=\"Search Tag\" nc-template-options-path=searchForm/Tags><ui-select ng-model=formData.Brand name=Brand nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 multiple tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match placeholder=\"Separate tags with comma (or enter)\">{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Tags\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form nc-label=Price nc-template-options-path=searchForm/Price><div class=width-field-small-input><input name=UpdatedDt.From ng-model=\"formData.UpdatedDt.From\"></div><div class=width-label-extend>To</div><div class=width-field-small-input><input name=UpdatedDt.To ng-model=\"formData.UpdatedDt.To\"></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form nc-label=\"\" nc-template-options-path=\"searchForm/\"><div class=width-field-small-input><input name=CreatedDt.From ng-model=\"formData.CreatedDt.From\"></div><div class=width-label-extend>To</div><div class=width-field-small-input><input name=CreatedDt.To ng-model=\"formData.CreatedDt.To\"></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form nc-label=\"\" nc-template-options-path=\"searchForm/\"><div class=width-field-small-input><input name=UpdatedDt.From ng-model=\"formData.UpdatedDt.From\"></div><div class=width-label-extend>To</div><div class=width-field-small-input><input name=UpdatedDt.To ng-model=\"formData.UpdatedDt.To\"></div></div><div class=form-group><div class=width-label><label class=control-label></label></div><div class=button-size-normal><a class=\"button-size-normal btn btn-blue btn-width-xl\" ng-click=search()>Search</a></div><div class=button-size-normal><a class=\"button-size-normal margin-left-10 btn btn-white btn-width-xl\" ng-click=clear()>Clear</a></div></div></form></div></div></div></div>"
   );
 
 
@@ -5484,7 +5579,8 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncEye',
-    "<a ng-click=_toggle()><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon' : !model,\n" +
+    "<a ng-click=_toggle()><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon' : !model,\r" +
+    "\n" +
     "                            'fa fa-eye color-dark-grey eye-icon' : model}\"></i></a>"
   );
 
@@ -5545,9 +5641,12 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncTableSort',
-    "<a class=header-link ng-click=click()><span ng-class=\"{ 'active-underline' : isCurrent() }\" ng-transclude></span></a> <i class=fa ng-class=\"{ \n" +
-    "'fa fa-caret-down' : isCurrent() && direction, \n" +
-    "'fa fa-caret-up' : isCurrent() && !direction, \n" +
+    "<a class=header-link ng-click=click()><span ng-class=\"{ 'active-underline' : isCurrent() }\" ng-transclude></span></a> <i class=fa ng-class=\"{ \r" +
+    "\n" +
+    "'fa fa-caret-down' : isCurrent() && direction, \r" +
+    "\n" +
+    "'fa fa-caret-up' : isCurrent() && !direction, \r" +
+    "\n" +
     "'fa fa-caret-down color-grey' : !isCurrent() }\" ng-click=click()></i>"
   );
 
@@ -5761,7 +5860,7 @@ module.exports = ['common', '$document', '$timeout', function(common, $document,
 		this.message = '';
 	};
 }];
-},{"angular":131}],90:[function(require,module,exports){
+},{"angular":132}],90:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common){
 	'use strict';
@@ -6001,7 +6100,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{"angular":131}],91:[function(require,module,exports){
+},{"angular":132}],91:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/Attributes');
@@ -6436,7 +6535,7 @@ module.exports = ['$q', 'common', function($q, common){
 	};
 	return service;
 }];
-},{"angular":131}],96:[function(require,module,exports){
+},{"angular":132}],96:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	service = common.Rest('/Brands');
@@ -6785,7 +6884,7 @@ module.exports = ['config', function(config) {
     return service;
 }];
 
-},{"angular":131}],98:[function(require,module,exports){
+},{"angular":132}],98:[function(require,module,exports){
 //TODO: maybe merge this with user service? (doesnt exist yet, but probably exists in poon's local)
 module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(common, $base64, storage, $q, $rootScope) {
     'use strict';
@@ -6860,7 +6959,7 @@ module.exports = ['$window', '$base64', 'config', function($window, $base64, con
         } 
     };
 }];
-},{"angular":131}],100:[function(require,module,exports){
+},{"angular":132}],100:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/GlobalCategories');
@@ -7096,7 +7195,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	return service;
 }];
 
-},{"angular":131}],103:[function(require,module,exports){
+},{"angular":132}],103:[function(require,module,exports){
 //Image Service 
 module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", function($q, $http, common, storage, config, FileUploader){
 	'ngInject';
@@ -7921,6 +8020,13 @@ module.exports = ["common", "util", function(common, util) {
 	'ngInject';
 	var service = common.Rest('/ProductReviews');
 	
+	service.approve = function(obj) {
+		return common.makeRequest({
+			method: 'PUT',
+			url: '/ProductReviews/Approve',
+			data: obj
+		});
+	};	
 	return service;
 }];
 },{}],110:[function(require,module,exports){
@@ -8174,13 +8280,22 @@ module.exports = {
     }
 }
 },{}],116:[function(require,module,exports){
+module.exports = {
+	ProductName: {},
+	PID: {},
+	SKU: {},
+	Brands: {},
+	GlobalCategory: {},
+	LocalCategory: {},
+	Tags: {},
+	Price: {},
+	CreatedDate: {},
+	ModifiedDate: {}
+}
+},{}],117:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
-<<<<<<< HEAD
- * Tue Feb 16 2016 13:25:47 GMT+0700 (ICT)
-=======
- * Tue Feb 16 2016 13:52:58 GMT+0700 (ICT)
->>>>>>> ae232d5a76648052272e181af1509e5fcd0f511f
+ * Tue Feb 16 2016 17:24:20 GMT+0700 (Russia TZ 6 Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -8220,7 +8335,8 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/input/label',
-    "<div class=form-group ng-class=\"options.formGroupClass || {}\"><div class=width-label><label class=control-label ng-class=\"options.labelClass || {}\">{{options.label}}</label></div><div ng-class=\"{ 'width-field-normal' : options.fieldSize == 'normal',\n" +
+    "<div class=form-group ng-class=\"options.formGroupClass || {}\"><div class=width-label><label class=control-label ng-class=\"options.labelClass || {}\">{{options.label}}</label></div><div ng-class=\"{ 'width-field-normal' : options.fieldSize == 'normal',\r" +
+    "\n" +
     "    \t\t\t\t 'width-field-xxl' : options.fieldSize != 'normal' }\"><p class=form-control-static><ng-transclude></ng-transclude></p></div></div>"
   );
 
@@ -8301,55 +8417,99 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('global_category/modal',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\n" +
-    "\t\t\t                  'label': 'Category Name (Thai)',\n" +
-    "\t\t\t                  'labelClass': 'required',\n" +
-    "\t\t\t                  'error' : {\n" +
-    "\t\t\t                        'messages': {\n" +
-    "\t\t\t                          'required': 'This is a required field'\n" +
-    "\t\t\t                        },\n" +
-    "\t\t\t                        'show': isInvalid(form.NameTh),\n" +
-    "\t\t\t                        'conditions' : form.NameTh.$error\n" +
-    "\t\t\t                   }\n" +
-    "\t\t\t                }\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-class=\"{ 'has-error' : isInvalid(form.NameTh) }\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\n" +
-    "\t\t\t                  'label': 'Category Name (Eng)',\n" +
-    "\t\t\t                  'labelClass': 'required',\n" +
-    "\t\t\t                  'error' : {\n" +
-    "\t\t\t                        'messages': {\n" +
-    "\t\t\t                          'required': 'This is a required field',\n" +
-    "\t\t\t                          'pattern': 'Only English allowed'\n" +
-    "\t\t\t                        },\n" +
-    "\t\t\t                        'show': isInvalid(form.NameEn),\n" +
-    "\t\t\t                        'conditions' : form.NameEn.$error\n" +
-    "\t\t\t                   }\n" +
-    "\t\t\t                }\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-class=\"{ 'has-error' : isInvalid(form.NameEn) }\" ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\n" +
-    "\t                        'label': 'URL (Eng)',\n" +
-    "\t                        'error' : {\n" +
-    "\t                              'messages': {\n" +
-    "\t                                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'\n" +
-    "\t                                },\n" +
-    "\t                              'show': isInvalid(form.UrlKeyEn),\n" +
-    "\t                              'conditions' : form.UrlKeyEn.$error\n" +
-    "\t                         }\n" +
-    "\t                      }\"><input class=form-control name=UrlKeyEn ng-model=formData.UrlKeyEn ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" ng-class=\"{ 'has-error' : isInvalid(form.UrlKeyEn) }\" maxlength=\"300\"></div><div ng-template=common/input/text2 ng-template-options=\"{\n" +
-    "\t\t\t\t\t\t\t'label': 'Commission (%)',\n" +
-    "\t\t\t\t\t\t\t'labelClass': 'required',\n" +
-    "\t\t\t\t\t\t\t'error' : {\n" +
-    "\t\t\t\t\t\t\t'messages': {\n" +
-    "\t\t\t                    'required': 'This is a required field',\n" +
-    "\t\t\t\t\t\t\t\t'pattern': 'Only numbers and decimals (up to 2 digits) allowed',\n" +
-    "\t\t\t\t\t\t\t\t'minnumber': 'Please enter between 0% and 100%',\n" +
-    "\t\t\t\t\t\t\t\t'maxnumber': 'Please enter between 0% and 100%'\n" +
-    "\t\t\t\t\t\t\t},\n" +
-    "\t\t\t\t\t\t\t'show': isInvalid(form.Commission),\n" +
-    "\t\t\t\t\t\t\t'conditions' : form.Commission.$error\n" +
-    "\t\t\t\t\t\t\t}\n" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "\t\t\t                  'label': 'Category Name (Thai)',\r" +
+    "\n" +
+    "\t\t\t                  'labelClass': 'required',\r" +
+    "\n" +
+    "\t\t\t                  'error' : {\r" +
+    "\n" +
+    "\t\t\t                        'messages': {\r" +
+    "\n" +
+    "\t\t\t                          'required': 'This is a required field'\r" +
+    "\n" +
+    "\t\t\t                        },\r" +
+    "\n" +
+    "\t\t\t                        'show': isInvalid(form.NameTh),\r" +
+    "\n" +
+    "\t\t\t                        'conditions' : form.NameTh.$error\r" +
+    "\n" +
+    "\t\t\t                   }\r" +
+    "\n" +
+    "\t\t\t                }\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-class=\"{ 'has-error' : isInvalid(form.NameTh) }\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "\t\t\t                  'label': 'Category Name (Eng)',\r" +
+    "\n" +
+    "\t\t\t                  'labelClass': 'required',\r" +
+    "\n" +
+    "\t\t\t                  'error' : {\r" +
+    "\n" +
+    "\t\t\t                        'messages': {\r" +
+    "\n" +
+    "\t\t\t                          'required': 'This is a required field',\r" +
+    "\n" +
+    "\t\t\t                          'pattern': 'Only English allowed'\r" +
+    "\n" +
+    "\t\t\t                        },\r" +
+    "\n" +
+    "\t\t\t                        'show': isInvalid(form.NameEn),\r" +
+    "\n" +
+    "\t\t\t                        'conditions' : form.NameEn.$error\r" +
+    "\n" +
+    "\t\t\t                   }\r" +
+    "\n" +
+    "\t\t\t                }\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-class=\"{ 'has-error' : isInvalid(form.NameEn) }\" ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "\t                        'label': 'URL (Eng)',\r" +
+    "\n" +
+    "\t                        'error' : {\r" +
+    "\n" +
+    "\t                              'messages': {\r" +
+    "\n" +
+    "\t                                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'\r" +
+    "\n" +
+    "\t                                },\r" +
+    "\n" +
+    "\t                              'show': isInvalid(form.UrlKeyEn),\r" +
+    "\n" +
+    "\t                              'conditions' : form.UrlKeyEn.$error\r" +
+    "\n" +
+    "\t                         }\r" +
+    "\n" +
+    "\t                      }\"><input class=form-control name=UrlKeyEn ng-model=formData.UrlKeyEn ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" ng-class=\"{ 'has-error' : isInvalid(form.UrlKeyEn) }\" maxlength=\"300\"></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t'label': 'Commission (%)',\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t'labelClass': 'required',\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t'error' : {\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t'messages': {\r" +
+    "\n" +
+    "\t\t\t                    'required': 'This is a required field',\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t'pattern': 'Only numbers and decimals (up to 2 digits) allowed',\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t'minnumber': 'Please enter between 0% and 100%',\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t'maxnumber': 'Please enter between 0% and 100%'\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t},\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t'show': isInvalid(form.Commission),\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t'conditions' : form.Commission.$error\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t}\r" +
+    "\n" +
     "\t\t\t\t\t\t\t}\"><input class=form-control name=Commission ng-model=formData.Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-class=\"{ 'has-error' : isInvalid(form.Commission) }\" maxlength=20 ng-maxnumber=100 ng-minnumber=0 required></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions nc-options=\"{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }\"></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\"><span class=color-red>*</span> If category is mapped to a product, attribute set mapping cannot be changed</p></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
   $templateCache.put('global_category/nodes',
-    "<div class=\"category-content row no-margin\" ui-tree-handle style=\"cursor: pointer\"><div class=category-content-padding><span class=\"col-xs-5 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\n" +
+    "<div class=\"category-content row no-margin\" ui-tree-handle style=\"cursor: pointer\"><div class=category-content-padding><span class=\"col-xs-5 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\r" +
+    "\n" +
     "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this) data-nodrag></i> <i class=\"fa fa-chevron-right caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\" data-nodrag></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\" data-nodrag></span> <a class=inline-block ng-click=open(node) data-nodrag>{{ node.NameEn }}</a></span></span> <span class=col-xs-1>{{ node.CategoryAbbreviation }}</span> <span class=\"col-xs-1 text-align-center\">{{ node.ProductCount }}</span> <span class=\"col-xs-2 text-align-center\">{{ node.AttributeSetCount }}</span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'global_category/nodes'\"></li></ol>"
   );
 
@@ -8360,42 +8520,73 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('local_category/modal',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Local Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Local Category Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\n" +
-    "\t\t\t                  'label': 'Category Name (Thai)',\n" +
-    "\t\t\t                  'labelClass': 'required',\n" +
-    "\t\t\t                  'error' : {\n" +
-    "\t\t\t                        'messages': {\n" +
-    "\t\t\t                          'required': 'This is a required field'\n" +
-    "\t\t\t                        },\n" +
-    "\t\t\t                        'show': isInvalid(form.NameTh),\n" +
-    "\t\t\t                        'conditions' : form.NameTh.$error\n" +
-    "\t\t\t                   }\n" +
-    "\t\t\t                }\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-class=\"{ 'has-error' : isInvalid(form.NameTh) }\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\n" +
-    "\t\t\t                  'label': 'Category Name (Eng)',\n" +
-    "\t\t\t                  'labelClass': 'required',\n" +
-    "\t\t\t                  'error' : {\n" +
-    "\t\t\t                        'messages': {\n" +
-    "\t\t\t                          'required': 'This is a required field',\n" +
-    "\t\t\t                          'pattern': 'Only English allowed'\n" +
-    "\t\t\t                        },\n" +
-    "\t\t\t                        'show': isInvalid(form.NameEn),\n" +
-    "\t\t\t                        'conditions' : form.NameEn.$error\n" +
-    "\t\t\t                   }\n" +
-    "\t\t\t                }\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-class=\"{ 'has-error' : isInvalid(form.NameEn) }\" ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\n" +
-    "\t                        'label': 'URL (Eng)',\n" +
-    "\t                        'error' : {\n" +
-    "\t                              'messages': {\n" +
-    "\t                                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'\n" +
-    "\t                                },\n" +
-    "\t                              'show': isInvalid(form.UrlKeyEn),\n" +
-    "\t                              'conditions' : form.UrlKeyEn.$error\n" +
-    "\t                         }\n" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Local Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Local Category Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "\t\t\t                  'label': 'Category Name (Thai)',\r" +
+    "\n" +
+    "\t\t\t                  'labelClass': 'required',\r" +
+    "\n" +
+    "\t\t\t                  'error' : {\r" +
+    "\n" +
+    "\t\t\t                        'messages': {\r" +
+    "\n" +
+    "\t\t\t                          'required': 'This is a required field'\r" +
+    "\n" +
+    "\t\t\t                        },\r" +
+    "\n" +
+    "\t\t\t                        'show': isInvalid(form.NameTh),\r" +
+    "\n" +
+    "\t\t\t                        'conditions' : form.NameTh.$error\r" +
+    "\n" +
+    "\t\t\t                   }\r" +
+    "\n" +
+    "\t\t\t                }\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-class=\"{ 'has-error' : isInvalid(form.NameTh) }\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "\t\t\t                  'label': 'Category Name (Eng)',\r" +
+    "\n" +
+    "\t\t\t                  'labelClass': 'required',\r" +
+    "\n" +
+    "\t\t\t                  'error' : {\r" +
+    "\n" +
+    "\t\t\t                        'messages': {\r" +
+    "\n" +
+    "\t\t\t                          'required': 'This is a required field',\r" +
+    "\n" +
+    "\t\t\t                          'pattern': 'Only English allowed'\r" +
+    "\n" +
+    "\t\t\t                        },\r" +
+    "\n" +
+    "\t\t\t                        'show': isInvalid(form.NameEn),\r" +
+    "\n" +
+    "\t\t\t                        'conditions' : form.NameEn.$error\r" +
+    "\n" +
+    "\t\t\t                   }\r" +
+    "\n" +
+    "\t\t\t                }\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-class=\"{ 'has-error' : isInvalid(form.NameEn) }\" ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "\t                        'label': 'URL (Eng)',\r" +
+    "\n" +
+    "\t                        'error' : {\r" +
+    "\n" +
+    "\t                              'messages': {\r" +
+    "\n" +
+    "\t                                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'\r" +
+    "\n" +
+    "\t                                },\r" +
+    "\n" +
+    "\t                              'show': isInvalid(form.UrlKeyEn),\r" +
+    "\n" +
+    "\t                              'conditions' : form.UrlKeyEn.$error\r" +
+    "\n" +
+    "\t                         }\r" +
+    "\n" +
     "\t                      }\"><input class=form-control name=UrlKeyEn ng-model=formData.UrlKeyEn ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" ng-class=\"{ 'has-error' : isInvalid(form.UrlKeyEn) }\" maxlength=\"300\"></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
   $templateCache.put('local_category/nodes',
-    "<div class=\"category-content row no-margin\" ui-tree-handle style=\"cursor: pointer\"><div class=category-content-padding><span class=\"col-xs-8 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\n" +
+    "<div class=\"category-content row no-margin\" ui-tree-handle style=\"cursor: pointer\"><div class=category-content-padding><span class=\"col-xs-8 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\r" +
+    "\n" +
     "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this) data-nodrag></i> <i class=\"fa fa-chevron-right caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\" data-nodrag></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\" data-nodrag></span> <a class=inline-block ng-click=open(node) data-nodrag>{{ node.NameEn }}</a></span></span> <span class=\"col-xs-1 text-align-center\">{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'global_category/nodes'\"></li></ol>"
   );
 
@@ -8431,10 +8622,10 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('product/productReviewModal',
-    "<div class=modal-header><button type=button class=close aria-label=Close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>{{}}</h3></div><div class=modal-body><form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Review Detail</h2></div><div class=\"form-section-content modal-custom\"><? $this->insert('components/forms/text-with-label', [\"label\" => \"Date & Time\", \"field_content\" => \"14/10/2015 at 10:20\", \"size\" => \"normal\"]) ?><? $this->insert('components/forms/text-with-label', [\"label\" => \"Customer\", \"field_content\" => \"Harry Belafonte\", \"size\" => \"normal\"]) ?><? $this->insert('components/forms/text-with-label', [\"label\" => \"Comment\", \"field_content\" => \"Harry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry Belafonte\", \"size\" => \"normal\"]) ?></div></div><div class=form-section><div class=form-section-header><h2>Review Product</h2></div><div class=\"form-section-content modal-custom\"><? $this->insert('components/forms/text-with-label', [\"label\" => \"PID\", \"field_content\" => \"1234567\", \"size\" => \"normal\"]) ?><? $this->insert('components/forms/text-with-label', [\"label\" => \"Product Name (Thai)\", \"field_content\" => \"รองเท้าแตะสีรุ้ง\", \"size\" => \"normal\"]) ?><? $this->insert('components/forms/text-with-label', [\"label\" => \"Product Name (English)\", \"field_content\" => \"Rainbow Sandal\", \"size\" => \"normal\"]) ?><? $this->insert('components/forms/text-with-label', [\"label\" => \"Brand\", \"field_content\" => \"Nike\", \"size\" => \"normal\"]) ?></div></div></div></div></form></div>"
+    "<div class=modal-header><button type=button class=close aria-label=Close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Review Detail</h3></div><div class=modal-body><form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Review Detail</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-label=\"Date & Time\"><p class=form-control-static>{{UpdatedDt | dateTh}} at {{UpdatedDt | timeTh}}</p></div><div nc-template=common/input/form-group-with-label nc-label=Customer><p class=form-control-static>{{Customer}}</p></div><div nc-template=common/input/form-group-with-label nc-label=Comment><p class=form-control-static>{{Comment}}</p></div></div></div><div class=form-section><div class=form-section-header><h2>Review Product</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-label=PID><p class=form-control-static>{{Pid}}</p></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (Thai)\"><p class=form-control-static>{{ProductNameTh}}</p></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (English)\"><p class=form-control-static>{{ProductNameEn}}</p></div><div nc-template=common/input/form-group-with-label nc-label=Brand><p class=form-control-static>{{BrandNameEn}}</p></div></div></div></div></div></form></div>"
   );
  }];
-},{}],117:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -12557,11 +12748,11 @@ angular.module('ngAnimate', [])
 
 })(window, window.angular);
 
-},{}],118:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":117}],119:[function(require,module,exports){
+},{"./angular-animate":118}],120:[function(require,module,exports){
 (function() {
     'use strict';
 
@@ -12729,7 +12920,7 @@ module.exports = 'ngAnimate';
 
 })();
 
-},{}],120:[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 /*globals define, jQuery, module, require */
 /*jslint vars:true */
 
@@ -13179,7 +13370,7 @@ module.exports = 'ngAnimate';
     }]);
 }));
 
-},{"angular":131,"moment":134}],121:[function(require,module,exports){
+},{"angular":132,"moment":135}],122:[function(require,module,exports){
 /*
  angular-file-upload v2.2.0
  https://github.com/nervgh/angular-file-upload
@@ -13187,7 +13378,7 @@ module.exports = 'ngAnimate';
 
 !function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["angular-file-upload"]=t():e["angular-file-upload"]=t()}(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var i=n[r]={exports:{},id:r,loaded:!1};return e[r].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=r(n(1)),o=r(n(2)),s=r(n(3)),a=r(n(4)),u=r(n(5)),l=r(n(6)),c=r(n(7)),f=r(n(8)),p=r(n(9)),d=r(n(10)),v=r(n(11)),h=r(n(12));angular.module(i.name,[]).value("fileUploaderOptions",o).factory("FileUploader",s).factory("FileLikeObject",a).factory("FileItem",u).factory("FileDirective",l).factory("FileSelect",c).factory("FileDrop",f).factory("FileOver",p).directive("nvFileSelect",d).directive("nvFileDrop",v).directive("nvFileOver",h).run(["FileUploader","FileLikeObject","FileItem","FileDirective","FileSelect","FileDrop","FileOver",function(e,t,n,r,i,o,s){e.FileLikeObject=t,e.FileItem=n,e.FileDirective=r,e.FileSelect=i,e.FileDrop=o,e.FileOver=s}])},function(e,t){e.exports={name:"angularFileUpload"}},function(e,t){"use strict";e.exports={url:"/",alias:"file",headers:{},queue:[],progress:0,autoUpload:!1,removeAfterUpload:!1,method:"POST",filters:[],formData:[],queueLimit:Number.MAX_VALUE,withCredentials:!1}},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.forEach,l=angular.isObject,c=angular.isNumber,f=angular.isDefined,p=angular.isArray,d=angular.element;e.exports=function(e,t,n,r,v,h){var m=r.File,g=r.FormData,_=function(){function r(t){o(this,r);var n=s(e);a(this,n,t,{isUploading:!1,_nextIndex:0,_failFilterIndex:-1,_directives:{select:[],drop:[],over:[]}}),this.filters.unshift({name:"queueLimit",fn:this._queueLimitFilter}),this.filters.unshift({name:"folder",fn:this._folderFilter})}return i(r,{addToQueue:{value:function(e,t,n){var r=this,i=this.isArrayLikeObject(e)?e:[e],o=this._getFilters(n),s=this.queue.length,a=[];u(i,function(e){var n=new v(e);if(r._isValidFile(n,o,t)){var i=new h(r,e,t);a.push(i),r.queue.push(i),r._onAfterAddingFile(i)}else{var s=o[r._failFilterIndex];r._onWhenAddingFileFailed(n,s,t)}}),this.queue.length!==s&&(this._onAfterAddingAll(a),this.progress=this._getTotalProgress()),this._render(),this.autoUpload&&this.uploadAll()}},removeFromQueue:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t];n.isUploading&&n.cancel(),this.queue.splice(t,1),n._destroy(),this.progress=this._getTotalProgress()}},clearQueue:{value:function(){for(;this.queue.length;)this.queue[0].remove();this.progress=0}},uploadItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhrTransport":"_iframeTransport";n._prepareToUploading(),this.isUploading||(this.isUploading=!0,this[r](n))}},cancelItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhr":"_form";n&&n.isUploading&&n[r].abort()}},uploadAll:{value:function(){var e=this.getNotUploadedItems().filter(function(e){return!e.isUploading});e.length&&(u(e,function(e){return e._prepareToUploading()}),e[0].upload())}},cancelAll:{value:function(){var e=this.getNotUploadedItems();u(e,function(e){return e.cancel()})}},isFile:{value:function(e){return this.constructor.isFile(e)}},isFileLikeObject:{value:function(e){return this.constructor.isFileLikeObject(e)}},isArrayLikeObject:{value:function(e){return this.constructor.isArrayLikeObject(e)}},getIndexOfItem:{value:function(e){return c(e)?e:this.queue.indexOf(e)}},getNotUploadedItems:{value:function(){return this.queue.filter(function(e){return!e.isUploaded})}},getReadyItems:{value:function(){return this.queue.filter(function(e){return e.isReady&&!e.isUploading}).sort(function(e,t){return e.index-t.index})}},destroy:{value:function(){var e=this;u(this._directives,function(t){u(e._directives[t],function(e){e.destroy()})})}},onAfterAddingAll:{value:function(e){}},onAfterAddingFile:{value:function(e){}},onWhenAddingFileFailed:{value:function(e,t,n){}},onBeforeUploadItem:{value:function(e){}},onProgressItem:{value:function(e,t){}},onProgressAll:{value:function(e){}},onSuccessItem:{value:function(e,t,n,r){}},onErrorItem:{value:function(e,t,n,r){}},onCancelItem:{value:function(e,t,n,r){}},onCompleteItem:{value:function(e,t,n,r){}},onCompleteAll:{value:function(){}},_getTotalProgress:{value:function(e){if(this.removeAfterUpload)return e||0;var t=this.getNotUploadedItems().length,n=t?this.queue.length-t:this.queue.length,r=100/this.queue.length,i=(e||0)*r/100;return Math.round(n*r+i)}},_getFilters:{value:function(e){if(!e)return this.filters;if(p(e))return e;var t=e.match(/[^\s,]+/g);return this.filters.filter(function(e){return-1!==t.indexOf(e.name)})}},_render:{value:function(){t.$$phase||t.$apply()}},_folderFilter:{value:function(e){return!(!e.size&&!e.type)}},_queueLimitFilter:{value:function(){return this.queue.length<this.queueLimit}},_isValidFile:{value:function(e,t,n){var r=this;return this._failFilterIndex=-1,t.length?t.every(function(t){return r._failFilterIndex++,t.fn.call(r,e,n)}):!0}},_isSuccessCode:{value:function(e){return e>=200&&300>e||304===e}},_transformResponse:{value:function(e,t){var r=this._headersGetter(t);return u(n.defaults.transformResponse,function(t){e=t(e,r)}),e}},_parseHeaders:{value:function(e){var t,n,r,i={};return e?(u(e.split("\n"),function(e){r=e.indexOf(":"),t=e.slice(0,r).trim().toLowerCase(),n=e.slice(r+1).trim(),t&&(i[t]=i[t]?i[t]+", "+n:n)}),i):i}},_headersGetter:{value:function(e){return function(t){return t?e[t.toLowerCase()]||null:e}}},_xhrTransport:{value:function(e){var t=this,n=e._xhr=new XMLHttpRequest,r=new g;if(this._onBeforeUploadItem(e),u(e.formData,function(e){u(e,function(e,t){r.append(t,e)})}),"number"!=typeof e._file.size)throw new TypeError("The file specified is no longer valid");r.append(e.alias,e._file,e.file.name),n.upload.onprogress=function(n){var r=Math.round(n.lengthComputable?100*n.loaded/n.total:0);t._onProgressItem(e,r)},n.onload=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r),o=t._isSuccessCode(n.status)?"Success":"Error",s="_on"+o+"Item";t[s](e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onerror=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onErrorItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onabort=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onCancelItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.open(e.method,e.url,!0),n.withCredentials=e.withCredentials,u(e.headers,function(e,t){n.setRequestHeader(t,e)}),n.send(r),this._render()}},_iframeTransport:{value:function(e){var t=this,n=d('<form style="display: none;" />'),r=d('<iframe name="iframeTransport'+Date.now()+'">'),i=e._input;e._form&&e._form.replaceWith(i),e._form=n,this._onBeforeUploadItem(e),i.prop("name",e.alias),u(e.formData,function(e){u(e,function(e,t){var r=d('<input type="hidden" name="'+t+'" />');r.val(e),n.append(r)})}),n.prop({action:e.url,method:"POST",target:r.prop("name"),enctype:"multipart/form-data",encoding:"multipart/form-data"}),r.bind("load",function(){var n="",i=200;try{n=r[0].contentDocument.body.innerHTML}catch(o){i=500}var s={response:n,status:i,dummy:!0},a={},u=t._transformResponse(s.response,a);t._onSuccessItem(e,u,s.status,a),t._onCompleteItem(e,u,s.status,a)}),n.abort=function(){var o,s={status:0,dummy:!0},a={};r.unbind("load").prop("src","javascript:false;"),n.replaceWith(i),t._onCancelItem(e,o,s.status,a),t._onCompleteItem(e,o,s.status,a)},i.after(n),n.append(i).append(r),n[0].submit(),this._render()}},_onWhenAddingFileFailed:{value:function(e,t,n){this.onWhenAddingFileFailed(e,t,n)}},_onAfterAddingFile:{value:function(e){this.onAfterAddingFile(e)}},_onAfterAddingAll:{value:function(e){this.onAfterAddingAll(e)}},_onBeforeUploadItem:{value:function(e){e._onBeforeUpload(),this.onBeforeUploadItem(e)}},_onProgressItem:{value:function(e,t){var n=this._getTotalProgress(t);this.progress=n,e._onProgress(t),this.onProgressItem(e,t),this.onProgressAll(n),this._render()}},_onSuccessItem:{value:function(e,t,n,r){e._onSuccess(t,n,r),this.onSuccessItem(e,t,n,r)}},_onErrorItem:{value:function(e,t,n,r){e._onError(t,n,r),this.onErrorItem(e,t,n,r)}},_onCancelItem:{value:function(e,t,n,r){e._onCancel(t,n,r),this.onCancelItem(e,t,n,r)}},_onCompleteItem:{value:function(e,t,n,r){e._onComplete(t,n,r),this.onCompleteItem(e,t,n,r);var i=this.getReadyItems()[0];return this.isUploading=!1,f(i)?void i.upload():(this.onCompleteAll(),this.progress=this._getTotalProgress(),void this._render())}}},{isFile:{value:function(e){return m&&e instanceof m}},isFileLikeObject:{value:function(e){return e instanceof v}},isArrayLikeObject:{value:function(e){return l(e)&&"length"in e}},inherit:{value:function(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,e.super_=t}}}),r}();return _.prototype.isHTML5=!(!m||!g),_.isHTML5=_.prototype.isHTML5,_},e.exports.$inject=["fileUploaderOptions","$rootScope","$http","$window","FileLikeObject","FileItem"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.isElement,u=angular.isString;e.exports=function(){var e=function(){function e(t){o(this,e);var n=a(t),r=n?t.value:t,i=u(r)?"FakePath":"Object",s="_createFrom"+i;this[s](r)}return i(e,{_createFromFakePath:{value:function(e){this.lastModifiedDate=null,this.size=null,this.type="like/"+e.slice(e.lastIndexOf(".")+1).toLowerCase(),this.name=e.slice(e.lastIndexOf("/")+e.lastIndexOf("\\")+2)}},_createFromObject:{value:function(e){this.lastModifiedDate=s(e.lastModifiedDate),this.size=e.size,this.type=e.type,this.name=e.name}}}),e}();return e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.element,l=angular.isElement;e.exports=function(e,t){var n=function(){function n(e,r,i){o(this,n);var c=l(r),f=c?u(r):null,p=c?null:r;a(this,{url:e.url,alias:e.alias,headers:s(e.headers),formData:s(e.formData),removeAfterUpload:e.removeAfterUpload,withCredentials:e.withCredentials,method:e.method},i,{uploader:e,file:new t(r),isReady:!1,isUploading:!1,isUploaded:!1,isSuccess:!1,isCancel:!1,isError:!1,progress:0,index:null,_file:p,_input:f}),f&&this._replaceNode(f)}return i(n,{upload:{value:function(){try{this.uploader.uploadItem(this)}catch(e){this.uploader._onCompleteItem(this,"",0,[]),this.uploader._onErrorItem(this,"",0,[])}}},cancel:{value:function(){this.uploader.cancelItem(this)}},remove:{value:function(){this.uploader.removeFromQueue(this)}},onBeforeUpload:{value:function(){}},onProgress:{value:function(e){}},onSuccess:{value:function(e,t,n){}},onError:{value:function(e,t,n){}},onCancel:{value:function(e,t,n){}},onComplete:{value:function(e,t,n){}},_onBeforeUpload:{value:function(){this.isReady=!0,this.isUploading=!0,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!1,this.isError=!1,this.progress=0,this.onBeforeUpload()}},_onProgress:{value:function(e){this.progress=e,this.onProgress(e)}},_onSuccess:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!0,this.isCancel=!1,this.isError=!1,this.progress=100,this.index=null,this.onSuccess(e,t,n)}},_onError:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!1,this.isCancel=!1,this.isError=!0,this.progress=0,this.index=null,this.onError(e,t,n)}},_onCancel:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!0,this.isError=!1,this.progress=0,this.index=null,this.onCancel(e,t,n)}},_onComplete:{value:function(e,t,n){this.onComplete(e,t,n),this.removeAfterUpload&&this.remove()}},_destroy:{value:function(){this._input&&this._input.remove(),this._form&&this._form.remove(),delete this._form,delete this._input}},_prepareToUploading:{value:function(){this.index=this.index||++this.uploader._nextIndex,this.isReady=!0}},_replaceNode:{value:function(t){var n=e(t.clone())(t.scope());n.prop("value",null),t.css("display","none"),t.after(n)}}}),n}();return n},e.exports.$inject=["$compile","FileLikeObject"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.extend);e.exports=function(){var e=function(){function e(t){o(this,e),s(this,t),this.uploader._directives[this.prop].push(this),this._saveLinks(),this.bind()}return i(e,{bind:{value:function(){for(var e in this.events){var t=this.events[e];this.element.bind(e,this[t])}}},unbind:{value:function(){for(var e in this.events)this.element.unbind(e,this.events[e])}},destroy:{value:function(){var e=this.uploader._directives[this.prop].indexOf(this);this.uploader._directives[this.prop].splice(e,1),this.unbind()}},_saveLinks:{value:function(){for(var e in this.events){var t=this.events[e];this[t]=this[t].bind(this)}}}}),e}();return e.prototype.events={},e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",change:"onChange"},prop:"select"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n),this.uploader.isHTML5||this.element.removeAttr("multiple"),this.element.prop("value",null)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},isEmptyAfterSelection:{value:function(){return!!this.element.attr("multiple")}},onChange:{value:function(){var e=this.uploader.isHTML5?this.element[0].files:this.element[0],t=this.getOptions(),n=this.getFilters();this.uploader.isHTML5||this.destroy(),this.uploader.addToQueue(e,t,n),this.isEmptyAfterSelection()&&(this.element.prop("value",null),this.element.replaceWith(this.element=this.element.clone(!0)))}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function c(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:c(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend),l=angular.forEach;e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",drop:"onDrop",dragover:"onDragOver",dragleave:"onDragLeave"},prop:"drop"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},onDrop:{value:function(e){var t=this._getTransfer(e);if(t){var n=this.getOptions(),r=this.getFilters();this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this),this.uploader.addToQueue(t.files,n,r)}}},onDragOver:{value:function(e){var t=this._getTransfer(e);this._haveFiles(t.types)&&(t.dropEffect="copy",this._preventAndStop(e),l(this.uploader._directives.over,this._addOverClass,this))}},onDragLeave:{value:function(e){e.currentTarget!==this.element[0]&&(this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this))}},_getTransfer:{value:function(e){return e.dataTransfer?e.dataTransfer:e.originalEvent.dataTransfer}},_preventAndStop:{value:function(e){e.preventDefault(),e.stopPropagation()}},_haveFiles:{value:function(e){return e?e.indexOf?-1!==e.indexOf("Files"):e.contains?e.contains("Files"):!1:!1}},_addOverClass:{value:function(e){e.addOverClass()}},_removeOverClass:{value:function(e){e.removeOverClass()}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy"},prop:"over",overClass:"nv-file-over"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{addOverClass:{value:function(){this.element.addClass(this.getOverClass())}},removeOverClass:{value:function(){this.element.removeClass(this.getOverClass())}},getOverClass:{value:function(){return this.overClass}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}},e.exports.$inject=["$parse","FileUploader","FileSelect"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');if(s.isHTML5){var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}}},e.exports.$inject=["$parse","FileUploader","FileDrop"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t){return{link:function(n,r,i){var o=n.$eval(i.uploader);if(!(o instanceof e))throw new TypeError('"Uploader" must be an instance of FileUploader');var s=new t({uploader:o,element:r});s.getOverClass=function(){return i.overClass||s.overClass}}}},e.exports.$inject=["FileUploader","FileOver"]}])});
 
-},{}],122:[function(require,module,exports){
+},{}],123:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -13906,11 +14097,11 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 })(window, window.angular);
 
-},{}],123:[function(require,module,exports){
+},{}],124:[function(require,module,exports){
 require('./angular-sanitize');
 module.exports = 'ngSanitize';
 
-},{"./angular-sanitize":122}],124:[function(require,module,exports){
+},{"./angular-sanitize":123}],125:[function(require,module,exports){
 /**
   * x is a value between 0 and 1, indicating where in the animation you are.
   */
@@ -14539,17 +14730,17 @@ angular.module('duScroll.scrollspy', ['duScroll.spyAPI'])
   };
 }]);
 
-},{}],125:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 require('angular');
 require('./angular-scroll');
 
 module.exports = 'duScroll';
 
-},{"./angular-scroll":124,"angular":131}],126:[function(require,module,exports){
+},{"./angular-scroll":125,"angular":132}],127:[function(require,module,exports){
 require('./ui-bootstrap-tpls');
 module.exports = 'ui.bootstrap';
 
-},{"./ui-bootstrap-tpls":127}],127:[function(require,module,exports){
+},{"./ui-bootstrap-tpls":128}],128:[function(require,module,exports){
 /*
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
@@ -23053,7 +23244,7 @@ angular.module("template/typeahead/typeahead-popup.html", []).run(["$templateCac
     "");
 }]);
 !angular.$$csp() && angular.element(document).find('head').prepend('<style type="text/css">.ng-animate.item:not(.left):not(.right){-webkit-transition:0s ease-in-out left;transition:0s ease-in-out left}</style>');
-},{}],128:[function(require,module,exports){
+},{}],129:[function(require,module,exports){
 /**
  * @license Angular UI Tree v2.14.0
  * (c) 2010-2015. https://github.com/angular-ui-tree/angular-ui-tree
@@ -24553,11 +24744,11 @@ angular.module("template/typeahead/typeahead-popup.html", []).run(["$templateCac
 
 })();
 
-},{}],129:[function(require,module,exports){
+},{}],130:[function(require,module,exports){
 require('./dist/angular-ui-tree');
 module.exports = 'ui.tree';
 
-},{"./dist/angular-ui-tree":128}],130:[function(require,module,exports){
+},{"./dist/angular-ui-tree":129}],131:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.9
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -54215,11 +54406,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],131:[function(require,module,exports){
+},{}],132:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":130}],132:[function(require,module,exports){
+},{"./angular":131}],133:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.0
  * http://jquery.com/
@@ -64052,11 +64243,11 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],133:[function(require,module,exports){
+},{}],134:[function(require,module,exports){
 (function (global){
 /**
  * @license
- * lodash 4.3.0 (Custom Build) <https://lodash.com/>
+ * lodash 4.4.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash -d -o ./foo/lodash.js`
  * Copyright 2012-2016 The Dojo Foundation <http://dojofoundation.org/>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
@@ -64069,7 +64260,7 @@ return jQuery;
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.3.0';
+  var VERSION = '4.4.0';
 
   /** Used to compose bitmasks for wrapper metadata. */
   var BIND_FLAG = 1,
@@ -64391,10 +64582,19 @@ return jQuery;
       freeParseInt = parseInt;
 
   /** Detect free variable `exports`. */
-  var freeExports = (objectTypes[typeof exports] && exports && !exports.nodeType) ? exports : null;
+  var freeExports = (objectTypes[typeof exports] && exports && !exports.nodeType)
+    ? exports
+    : undefined;
 
   /** Detect free variable `module`. */
-  var freeModule = (objectTypes[typeof module] && module && !module.nodeType) ? module : null;
+  var freeModule = (objectTypes[typeof module] && module && !module.nodeType)
+    ? module
+    : undefined;
+
+  /** Detect the popular CommonJS extension `module.exports`. */
+  var moduleExports = (freeModule && freeModule.exports === freeExports)
+    ? freeExports
+    : undefined;
 
   /** Detect free variable `global` from Node.js. */
   var freeGlobal = checkGlobal(freeExports && freeModule && typeof global == 'object' && global);
@@ -64405,9 +64605,6 @@ return jQuery;
   /** Detect free variable `window`. */
   var freeWindow = checkGlobal(objectTypes[typeof window] && window);
 
-  /** Detect the popular CommonJS extension `module.exports`. */
-  var moduleExports = (freeModule && freeModule.exports === freeExports) ? freeExports : null;
-
   /** Detect `this` as the global object. */
   var thisGlobal = checkGlobal(objectTypes[typeof this] && this);
 
@@ -64417,7 +64614,9 @@ return jQuery;
    * The `this` value is used if it's the global object to avoid Greasemonkey's
    * restricted `window` object, otherwise the `window` object is used.
    */
-  var root = freeGlobal || ((freeWindow !== (thisGlobal && thisGlobal.window)) && freeWindow) || freeSelf || thisGlobal || Function('return this')();
+  var root = freeGlobal ||
+    ((freeWindow !== (thisGlobal && thisGlobal.window)) && freeWindow) ||
+      freeSelf || thisGlobal || Function('return this')();
 
   /*--------------------------------------------------------------------------*/
 
@@ -65372,6 +65571,7 @@ return jQuery;
         getPrototypeOf = Object.getPrototypeOf,
         getOwnPropertySymbols = Object.getOwnPropertySymbols,
         iteratorSymbol = typeof (iteratorSymbol = Symbol && Symbol.iterator) == 'symbol' ? iteratorSymbol : undefined,
+        objectCreate = Object.create,
         propertyIsEnumerable = objectProto.propertyIsEnumerable,
         setTimeout = context.setTimeout,
         splice = arrayProto.splice;
@@ -65451,28 +65651,28 @@ return jQuery;
      * `tail`, `take`, `takeRight`, `takeRightWhile`, `takeWhile`, and `toArray`
      *
      * The chainable wrapper methods are:
-     * `after`, `ary`, `assign`, `assignIn`, `assignInWith`, `assignWith`,
-     * `at`, `before`, `bind`, `bindAll`, `bindKey`, `chain`, `chunk`, `commit`,
-     * `compact`, `concat`, `conforms`, `constant`, `countBy`, `create`, `curry`,
-     * `debounce`, `defaults`, `defaultsDeep`, `defer`, `delay`, `difference`,
+     * `after`, `ary`, `assign`, `assignIn`, `assignInWith`, `assignWith`, `at`,
+     * `before`, `bind`, `bindAll`, `bindKey`, `castArray`, `chain`, `chunk`,
+     * `commit`, `compact`, `concat`, `conforms`, `constant`, `countBy`, `create`,
+     * `curry`, `debounce`, `defaults`, `defaultsDeep`, `defer`, `delay`, `difference`,
      * `differenceBy`, `differenceWith`, `drop`, `dropRight`, `dropRightWhile`,
-     * `dropWhile`, `fill`, `filter`, `flatten`, `flattenDeep`, `flip`, `flow`,
-     * `flowRight`, `fromPairs`, `functions`, `functionsIn`, `groupBy`, `initial`,
-     * `intersection`, `intersectionBy`, `intersectionWith`, `invert`, `invertBy`,
-     * `invokeMap`, `iteratee`, `keyBy`, `keys`, `keysIn`, `map`, `mapKeys`,
-     * `mapValues`, `matches`, `matchesProperty`, `memoize`, `merge`, `mergeWith`,
-     * `method`, `methodOf`, `mixin`, `negate`, `nthArg`, `omit`, `omitBy`, `once`,
-     * `orderBy`, `over`, `overArgs`, `overEvery`, `overSome`, `partial`,
-     * `partialRight`, `partition`, `pick`, `pickBy`, `plant`, `property`,
-     * `propertyOf`, `pull`, `pullAll`, `pullAllBy`, `pullAt`, `push`, `range`,
-     * `rangeRight`, `rearg`, `reject`, `remove`, `rest`, `reverse`, `sampleSize`,
-     * `set`, `setWith`, `shuffle`, `slice`, `sort`, `sortBy`, `splice`, `spread`,
-     * `tail`, `take`, `takeRight`, `takeRightWhile`, `takeWhile`, `tap`, `throttle`,
-     * `thru`, `toArray`, `toPairs`, `toPairsIn`, `toPath`, `toPlainObject`,
-     * `transform`, `unary`, `union`, `unionBy`, `unionWith`, `uniq`, `uniqBy`,
-     * `uniqWith`, `unset`, `unshift`, `unzip`, `unzipWith`, `values`, `valuesIn`,
-     * `without`, `wrap`, `xor`, `xorBy`, `xorWith`, `zip`, `zipObject`,
-     * `zipObjectDeep`, and `zipWith`
+     * `dropWhile`, `fill`, `filter`, `flatten`, `flattenDeep`, `flattenDepth`,
+     * `flip`, `flow`, `flowRight`, `fromPairs`, `functions`, `functionsIn`,
+     * `groupBy`, `initial`, `intersection`, `intersectionBy`, `intersectionWith`,
+     * `invert`, `invertBy`, `invokeMap`, `iteratee`, `keyBy`, `keys`, `keysIn`,
+     * `map`, `mapKeys`, `mapValues`, `matches`, `matchesProperty`, `memoize`,
+     * `merge`, `mergeWith`, `method`, `methodOf`, `mixin`, `negate`, `nthArg`,
+     * `omit`, `omitBy`, `once`, `orderBy`, `over`, `overArgs`, `overEvery`,
+     * `overSome`, `partial`, `partialRight`, `partition`, `pick`, `pickBy`, `plant`,
+     * `property`, `propertyOf`, `pull`, `pullAll`, `pullAllBy`, `pullAt`, `push`,
+     * `range`, `rangeRight`, `rearg`, `reject`, `remove`, `rest`, `reverse`,
+     * `sampleSize`, `set`, `setWith`, `shuffle`, `slice`, `sort`, `sortBy`,
+     * `splice`, `spread`, `tail`, `take`, `takeRight`, `takeRightWhile`,
+     * `takeWhile`, `tap`, `throttle`, `thru`, `toArray`, `toPairs`, `toPairsIn`,
+     * `toPath`, `toPlainObject`, `transform`, `unary`, `union`, `unionBy`,
+     * `unionWith`, `uniq`, `uniqBy`, `uniqWith`, `unset`, `unshift`, `unzip`,
+     * `unzipWith`, `values`, `valuesIn`, `without`, `wrap`, `xor`, `xorBy`,
+     * `xorWith`, `zip`, `zipObject`, `zipObjectDeep`, and `zipWith`
      *
      * The wrapper methods that are **not** chainable by default are:
      * `add`, `attempt`, `camelCase`, `capitalize`, `ceil`, `clamp`, `clone`,
@@ -65566,7 +65766,7 @@ return jQuery;
      *
      * @static
      * @memberOf _
-     * @type Object
+     * @type {Object}
      */
     lodash.templateSettings = {
 
@@ -65574,7 +65774,7 @@ return jQuery;
        * Used to detect `data` property values to be HTML-escaped.
        *
        * @memberOf _.templateSettings
-       * @type RegExp
+       * @type {RegExp}
        */
       'escape': reEscape,
 
@@ -65582,7 +65782,7 @@ return jQuery;
        * Used to detect code to be evaluated.
        *
        * @memberOf _.templateSettings
-       * @type RegExp
+       * @type {RegExp}
        */
       'evaluate': reEvaluate,
 
@@ -65590,7 +65790,7 @@ return jQuery;
        * Used to detect `data` property values to inject.
        *
        * @memberOf _.templateSettings
-       * @type RegExp
+       * @type {RegExp}
        */
       'interpolate': reInterpolate,
 
@@ -65598,7 +65798,7 @@ return jQuery;
        * Used to reference the data object in the template text.
        *
        * @memberOf _.templateSettings
-       * @type string
+       * @type {string}
        */
       'variable': '',
 
@@ -65606,7 +65806,7 @@ return jQuery;
        * Used to import variables into the compiled template.
        *
        * @memberOf _.templateSettings
-       * @type Object
+       * @type {Object}
        */
       'imports': {
 
@@ -65614,7 +65814,7 @@ return jQuery;
          * A reference to the `lodash` function.
          *
          * @memberOf _.templateSettings.imports
-         * @type Function
+         * @type {Function}
          */
         '_': lodash
       }
@@ -65626,6 +65826,7 @@ return jQuery;
      * Creates a lazy wrapper object which wraps `value` to enable lazy evaluation.
      *
      * @private
+     * @constructor
      * @param {*} value The value to wrap.
      */
     function LazyWrapper(value) {
@@ -65701,7 +65902,8 @@ return jQuery;
           resIndex = 0,
           takeCount = nativeMin(length, this.__takeCount__);
 
-      if (!isArr || arrLength < LARGE_ARRAY_SIZE || (arrLength == length && takeCount == length)) {
+      if (!isArr || arrLength < LARGE_ARRAY_SIZE ||
+          (arrLength == length && takeCount == length)) {
         return baseWrapperValue(array, this.__actions__);
       }
       var result = [];
@@ -65740,6 +65942,7 @@ return jQuery;
      * Creates an hash object.
      *
      * @private
+     * @constructor
      * @returns {Object} Returns the new hash object.
      */
     function Hash() {}
@@ -65802,6 +66005,7 @@ return jQuery;
      * Creates a map cache object to store key-value pairs.
      *
      * @private
+     * @constructor
      * @param {Array} [values] The values to cache.
      */
     function MapCache(values) {
@@ -65823,7 +66027,11 @@ return jQuery;
      * @memberOf MapCache
      */
     function mapClear() {
-      this.__data__ = { 'hash': new Hash, 'map': Map ? new Map : [], 'string': new Hash };
+      this.__data__ = {
+        'hash': new Hash,
+        'map': Map ? new Map : [],
+        'string': new Hash
+      };
     }
 
     /**
@@ -65906,6 +66114,7 @@ return jQuery;
      * Creates a set cache object to store unique values.
      *
      * @private
+     * @constructor
      * @param {Array} [values] The values to cache.
      */
     function SetCache(values) {
@@ -65964,6 +66173,7 @@ return jQuery;
      * Creates a stack cache object to store key-value pairs.
      *
      * @private
+     * @constructor
      * @param {Array} [values] The values to cache.
      */
     function Stack(values) {
@@ -66256,6 +66466,39 @@ return jQuery;
     }
 
     /**
+     * Casts `value` to an empty array if it's not an array like object.
+     *
+     * @private
+     * @param {*} value The value to inspect.
+     * @returns {Array} Returns the array-like object.
+     */
+    function baseCastArrayLikeObject(value) {
+      return isArrayLikeObject(value) ? value : [];
+    }
+
+    /**
+     * Casts `value` to `identity` if it's not a function.
+     *
+     * @private
+     * @param {*} value The value to inspect.
+     * @returns {Array} Returns the array-like object.
+     */
+    function baseCastFunction(value) {
+      return typeof value == 'function' ? value : identity;
+    }
+
+    /**
+     * Casts `value` to a path array if it's not one.
+     *
+     * @private
+     * @param {*} value The value to inspect.
+     * @returns {Array} Returns the cast property path array.
+     */
+    function baseCastPath(value) {
+      return isArray(value) ? value : stringToPath(value);
+    }
+
+    /**
      * The base implementation of `_.clamp` which doesn't coerce arguments to numbers.
      *
      * @private
@@ -66379,17 +66622,9 @@ return jQuery;
      * @param {Object} prototype The object to inherit from.
      * @returns {Object} Returns the new object.
      */
-    var baseCreate = (function() {
-      function object() {}
-      return function(prototype) {
-        if (isObject(prototype)) {
-          object.prototype = prototype;
-          var result = new object;
-          object.prototype = undefined;
-        }
-        return result || {};
-      };
-    }());
+    function baseCreate(proto) {
+      return isObject(proto) ? objectCreate(proto) : {};
+    }
 
     /**
      * The base implementation of `_.delay` and `_.defer` which accepts an array
@@ -66551,12 +66786,12 @@ return jQuery;
      *
      * @private
      * @param {Array} array The array to flatten.
-     * @param {boolean} [isDeep] Specify a deep flatten.
+     * @param {number} depth The maximum recursion depth.
      * @param {boolean} [isStrict] Restrict flattening to arrays-like objects.
      * @param {Array} [result=[]] The initial result value.
      * @returns {Array} Returns the new flattened array.
      */
-    function baseFlatten(array, isDeep, isStrict, result) {
+    function baseFlatten(array, depth, isStrict, result) {
       result || (result = []);
 
       var index = -1,
@@ -66564,11 +66799,11 @@ return jQuery;
 
       while (++index < length) {
         var value = array[index];
-        if (isArrayLikeObject(value) &&
+        if (depth > 0 && isArrayLikeObject(value) &&
             (isStrict || isArray(value) || isArguments(value))) {
-          if (isDeep) {
+          if (depth > 1) {
             // Recursively flatten arrays (susceptible to call stack limits).
-            baseFlatten(value, isDeep, isStrict, result);
+            baseFlatten(value, depth - 1, isStrict, result);
           } else {
             arrayPush(result, value);
           }
@@ -66665,7 +66900,7 @@ return jQuery;
      * @returns {*} Returns the resolved value.
      */
     function baseGet(object, path) {
-      path = isKey(path, object) ? [path + ''] : baseToPath(path);
+      path = isKey(path, object) ? [path + ''] : baseCastPath(path);
 
       var index = 0,
           length = path.length;
@@ -66754,11 +66989,17 @@ return jQuery;
         var value = array[index],
             computed = iteratee ? iteratee(value) : value;
 
-        if (!(seen ? cacheHas(seen, computed) : includes(result, computed, comparator))) {
+        if (!(seen
+              ? cacheHas(seen, computed)
+              : includes(result, computed, comparator)
+            )) {
           var othIndex = othLength;
           while (--othIndex) {
             var cache = caches[othIndex];
-            if (!(cache ? cacheHas(cache, computed) : includes(arrays[othIndex], computed, comparator))) {
+            if (!(cache
+                  ? cacheHas(cache, computed)
+                  : includes(arrays[othIndex], computed, comparator))
+                ) {
               continue outer;
             }
           }
@@ -66801,7 +67042,7 @@ return jQuery;
      */
     function baseInvoke(object, path, args) {
       if (!isKey(path, object)) {
-        path = baseToPath(path);
+        path = baseCastPath(path);
         object = parent(object, path);
         path = last(path);
       }
@@ -66974,7 +67215,6 @@ return jQuery;
      * property of prototypes or treat sparse arrays as dense.
      *
      * @private
-     * @type Function
      * @param {Object} object The object to query.
      * @returns {Array} Returns the array of property names.
      */
@@ -67082,7 +67322,10 @@ return jQuery;
       if (object === source) {
         return;
       }
-      var props = (isArray(source) || isTypedArray(source)) ? undefined : keysIn(source);
+      var props = (isArray(source) || isTypedArray(source))
+        ? undefined
+        : keysIn(source);
+
       arrayEach(props || source, function(srcValue, key) {
         if (props) {
           key = srcValue;
@@ -67093,7 +67336,10 @@ return jQuery;
           baseMergeDeep(object, source, key, srcIndex, baseMerge, customizer, stack);
         }
         else {
-          var newValue = customizer ? customizer(object[key], srcValue, (key + ''), object, source, stack) : undefined;
+          var newValue = customizer
+            ? customizer(object[key], srcValue, (key + ''), object, source, stack)
+            : undefined;
+
           if (newValue === undefined) {
             newValue = srcValue;
           }
@@ -67125,21 +67371,24 @@ return jQuery;
         assignMergeValue(object, key, stacked);
         return;
       }
-      var newValue = customizer ? customizer(objValue, srcValue, (key + ''), object, source, stack) : undefined,
-          isCommon = newValue === undefined;
+      var newValue = customizer
+        ? customizer(objValue, srcValue, (key + ''), object, source, stack)
+        : undefined;
+
+      var isCommon = newValue === undefined;
 
       if (isCommon) {
         newValue = srcValue;
         if (isArray(srcValue) || isTypedArray(srcValue)) {
           if (isArray(objValue)) {
-            newValue = srcIndex ? copyArray(objValue) : objValue;
+            newValue = objValue;
           }
           else if (isArrayLikeObject(objValue)) {
             newValue = copyArray(objValue);
           }
           else {
             isCommon = false;
-            newValue = baseClone(srcValue);
+            newValue = baseClone(srcValue, true);
           }
         }
         else if (isPlainObject(srcValue) || isArguments(srcValue)) {
@@ -67148,10 +67397,10 @@ return jQuery;
           }
           else if (!isObject(objValue) || (srcIndex && isFunction(objValue))) {
             isCommon = false;
-            newValue = baseClone(srcValue);
+            newValue = baseClone(srcValue, true);
           }
           else {
-            newValue = srcIndex ? baseClone(objValue) : objValue;
+            newValue = objValue;
           }
         }
         else {
@@ -67325,7 +67574,7 @@ return jQuery;
             splice.call(array, index, 1);
           }
           else if (!isKey(index, array)) {
-            var path = baseToPath(index),
+            var path = baseCastPath(index),
                 object = parent(array, path);
 
             if (object != null) {
@@ -67387,7 +67636,7 @@ return jQuery;
      * @returns {Object} Returns `object`.
      */
     function baseSet(object, path, value, customizer) {
-      path = isKey(path, object) ? [path + ''] : baseToPath(path);
+      path = isKey(path, object) ? [path + ''] : baseCastPath(path);
 
       var index = -1,
           length = path.length,
@@ -67402,7 +67651,9 @@ return jQuery;
             var objValue = nested[key];
             newValue = customizer ? customizer(objValue, key, nested) : undefined;
             if (newValue === undefined) {
-              newValue = objValue == null ? (isIndex(path[index + 1]) ? [] : {}) : objValue;
+              newValue = objValue == null
+                ? (isIndex(path[index + 1]) ? [] : {})
+                : objValue;
             }
           }
           assignValue(nested, key, newValue);
@@ -67594,18 +67845,6 @@ return jQuery;
     }
 
     /**
-     * The base implementation of `_.toPath` which only converts `value` to a
-     * path if it's not one.
-     *
-     * @private
-     * @param {*} value The value to process.
-     * @returns {Array} Returns the property path array.
-     */
-    function baseToPath(value) {
-      return isArray(value) ? value : stringToPath(value);
-    }
-
-    /**
      * The base implementation of `_.uniqBy` without support for iteratee shorthands.
      *
      * @private
@@ -67674,7 +67913,7 @@ return jQuery;
      * @returns {boolean} Returns `true` if the property is deleted, else `false`.
      */
     function baseUnset(object, path) {
-      path = isKey(path, object) ? [path + ''] : baseToPath(path);
+      path = isKey(path, object) ? [path + ''] : baseCastPath(path);
       object = parent(object, path);
       var key = last(path);
       return (object != null && has(object, key)) ? delete object[key] : true;
@@ -67863,10 +68102,11 @@ return jQuery;
      * @returns {Object} Returns the cloned typed array.
      */
     function cloneTypedArray(typedArray, isDeep) {
-      var buffer = typedArray.buffer,
+      var arrayBuffer = typedArray.buffer,
+          buffer = isDeep ? cloneArrayBuffer(arrayBuffer) : arrayBuffer,
           Ctor = typedArray.constructor;
 
-      return new Ctor(isDeep ? cloneArrayBuffer(buffer) : buffer, typedArray.byteOffset, typedArray.length);
+      return new Ctor(buffer, typedArray.byteOffset, typedArray.length);
     }
 
     /**
@@ -67981,8 +68221,11 @@ return jQuery;
           length = props.length;
 
       while (++index < length) {
-        var key = props[index],
-            newValue = customizer ? customizer(object[key], source[key], key, object, source) : source[key];
+        var key = props[index];
+
+        var newValue = customizer
+          ? customizer(object[key], source[key], key, object, source)
+          : source[key];
 
         assignValue(object, key, newValue);
       }
@@ -68032,7 +68275,10 @@ return jQuery;
             customizer = length > 1 ? sources[length - 1] : undefined,
             guard = length > 2 ? sources[2] : undefined;
 
-        customizer = typeof customizer == 'function' ? (length--, customizer) : undefined;
+        customizer = typeof customizer == 'function'
+          ? (length--, customizer)
+          : undefined;
+
         if (guard && isIterateeCall(sources[0], sources[1], guard)) {
           customizer = length < 3 ? undefined : customizer;
           length = 1;
@@ -68133,8 +68379,11 @@ return jQuery;
       return function(string) {
         string = toString(string);
 
-        var strSymbols = reHasComplexSymbol.test(string) ? stringToArray(string) : undefined,
-            chr = strSymbols ? strSymbols[0] : string.charAt(0),
+        var strSymbols = reHasComplexSymbol.test(string)
+          ? stringToArray(string)
+          : undefined;
+
+        var chr = strSymbols ? strSymbols[0] : string.charAt(0),
             trailing = strSymbols ? strSymbols.slice(1).join('') : string.slice(1);
 
         return chr[methodName]() + trailing;
@@ -68230,7 +68479,7 @@ return jQuery;
      */
     function createFlow(fromRight) {
       return rest(function(funcs) {
-        funcs = baseFlatten(funcs);
+        funcs = baseFlatten(funcs, 1);
 
         var length = funcs.length,
             index = length,
@@ -68255,7 +68504,10 @@ return jQuery;
           var funcName = getFuncName(func),
               data = funcName == 'wrapper' ? getData(func) : undefined;
 
-          if (data && isLaziable(data[0]) && data[1] == (ARY_FLAG | CURRY_FLAG | PARTIAL_FLAG | REARG_FLAG) && !data[4].length && data[9] == 1) {
+          if (data && isLaziable(data[0]) &&
+                data[1] == (ARY_FLAG | CURRY_FLAG | PARTIAL_FLAG | REARG_FLAG) &&
+                !data[4].length && data[9] == 1
+              ) {
             wrapper = wrapper[getFuncName(data[0])].apply(wrapper, data[3]);
           } else {
             wrapper = (func.length == 1 && isLaziable(func)) ? wrapper[funcName]() : wrapper.thru(func);
@@ -68265,7 +68517,8 @@ return jQuery;
           var args = arguments,
               value = args[0];
 
-          if (wrapper && args.length == 1 && isArray(value) && value.length >= LARGE_ARRAY_SIZE) {
+          if (wrapper && args.length == 1 &&
+              isArray(value) && value.length >= LARGE_ARRAY_SIZE) {
             return wrapper.plant(value).value();
           }
           var index = 0,
@@ -68325,7 +68578,10 @@ return jQuery;
 
           length -= argsHolders.length;
           if (length < arity) {
-            return createRecurryWrapper(func, bitmask, createHybridWrapper, placeholder, thisArg, args, argsHolders, argPos, ary, arity - length);
+            return createRecurryWrapper(
+              func, bitmask, createHybridWrapper, placeholder, thisArg, args,
+              argsHolders, argPos, ary, arity - length
+            );
           }
         }
         var thisBinding = isBind ? thisArg : this,
@@ -68370,7 +68626,7 @@ return jQuery;
      */
     function createOver(arrayFunc) {
       return rest(function(iteratees) {
-        iteratees = arrayMap(baseFlatten(iteratees), getIteratee());
+        iteratees = arrayMap(baseFlatten(iteratees, 1), getIteratee());
         return rest(function(args) {
           var thisArg = this;
           return arrayFunc(iteratees, function(iteratee) {
@@ -68497,9 +68753,12 @@ return jQuery;
       if (!(bitmask & CURRY_BOUND_FLAG)) {
         bitmask &= ~(BIND_FLAG | BIND_KEY_FLAG);
       }
-      var newData = [func, bitmask, thisArg, newPartials, newsHolders, newPartialsRight, newHoldersRight, newArgPos, ary, arity],
-          result = wrapFunc.apply(undefined, newData);
+      var newData = [
+        func, bitmask, thisArg, newPartials, newsHolders, newPartialsRight,
+        newHoldersRight, newArgPos, ary, arity
+      ];
 
+      var result = wrapFunc.apply(undefined, newData);
       if (isLaziable(func)) {
         setData(result, newData);
       }
@@ -68588,8 +68847,12 @@ return jQuery;
 
         partials = holders = undefined;
       }
-      var data = isBindKey ? undefined : getData(func),
-          newData = [func, bitmask, thisArg, partials, holders, partialsRight, holdersRight, argPos, ary, arity];
+      var data = isBindKey ? undefined : getData(func);
+
+      var newData = [
+        func, bitmask, thisArg, partials, holders, partialsRight, holdersRight,
+        argPos, ary, arity
+      ];
 
       if (data) {
         mergeData(newData, data);
@@ -68997,7 +69260,7 @@ return jQuery;
       }
       var result = hasFunc(object, path);
       if (!result && !isKey(path)) {
-        path = baseToPath(path);
+        path = baseCastPath(path);
         object = parent(object, path);
         if (object != null) {
           path = last(path);
@@ -69156,7 +69419,7 @@ return jQuery;
     function isKeyable(value) {
       var type = typeof value;
       return type == 'number' || type == 'boolean' ||
-        (type == 'string' && value !== '__proto__') || value == null;
+        (type == 'string' && value != '__proto__') || value == null;
     }
 
     /**
@@ -69379,28 +69642,6 @@ return jQuery;
     }
 
     /**
-     * Converts `value` to an array-like object if it's not one.
-     *
-     * @private
-     * @param {*} value The value to process.
-     * @returns {Array} Returns the array-like object.
-     */
-    function toArrayLikeObject(value) {
-      return isArrayLikeObject(value) ? value : [];
-    }
-
-    /**
-     * Converts `value` to a function if it's not one.
-     *
-     * @private
-     * @param {*} value The value to process.
-     * @returns {Function} Returns the function.
-     */
-    function toFunction(value) {
-      return typeof value == 'function' ? value : identity;
-    }
-
-    /**
      * Creates a clone of `wrapper`.
      *
      * @private
@@ -69510,7 +69751,7 @@ return jQuery;
       if (!isArray(array)) {
         array = array == null ? [] : [Object(array)];
       }
-      values = baseFlatten(values);
+      values = baseFlatten(values, 1);
       return arrayConcat(array, values);
     });
 
@@ -69532,7 +69773,7 @@ return jQuery;
      */
     var difference = rest(function(array, values) {
       return isArrayLikeObject(array)
-        ? baseDifference(array, baseFlatten(values, false, true))
+        ? baseDifference(array, baseFlatten(values, 1, true))
         : [];
     });
 
@@ -69563,7 +69804,7 @@ return jQuery;
         iteratee = undefined;
       }
       return isArrayLikeObject(array)
-        ? baseDifference(array, baseFlatten(values, false, true), getIteratee(iteratee))
+        ? baseDifference(array, baseFlatten(values, 1, true), getIteratee(iteratee))
         : [];
     });
 
@@ -69592,7 +69833,7 @@ return jQuery;
         comparator = undefined;
       }
       return isArrayLikeObject(array)
-        ? baseDifference(array, baseFlatten(values, false, true), undefined, comparator)
+        ? baseDifference(array, baseFlatten(values, 1, true), undefined, comparator)
         : [];
     });
 
@@ -69862,7 +70103,7 @@ return jQuery;
     }
 
     /**
-     * Flattens `array` a single level.
+     * Flattens `array` a single level deep.
      *
      * @static
      * @memberOf _
@@ -69871,30 +70112,58 @@ return jQuery;
      * @returns {Array} Returns the new flattened array.
      * @example
      *
-     * _.flatten([1, [2, 3, [4]]]);
-     * // => [1, 2, 3, [4]]
+     * _.flatten([1, [2, [3, [4]], 5]]);
+     * // => [1, 2, [3, [4]], 5]
      */
     function flatten(array) {
       var length = array ? array.length : 0;
-      return length ? baseFlatten(array) : [];
+      return length ? baseFlatten(array, 1) : [];
     }
 
     /**
-     * This method is like `_.flatten` except that it recursively flattens `array`.
+     * Recursively flattens `array`.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to recursively flatten.
+     * @param {Array} array The array to flatten.
      * @returns {Array} Returns the new flattened array.
      * @example
      *
-     * _.flattenDeep([1, [2, 3, [4]]]);
-     * // => [1, 2, 3, 4]
+     * _.flattenDeep([1, [2, [3, [4]], 5]]);
+     * // => [1, 2, 3, 4, 5]
      */
     function flattenDeep(array) {
       var length = array ? array.length : 0;
-      return length ? baseFlatten(array, true) : [];
+      return length ? baseFlatten(array, INFINITY) : [];
+    }
+
+    /**
+     * Recursively flatten `array` up to `depth` times.
+     *
+     * @static
+     * @memberOf _
+     * @category Array
+     * @param {Array} array The array to flatten.
+     * @param {number} [depth=1] The maximum recursion depth.
+     * @returns {Array} Returns the new flattened array.
+     * @example
+     *
+     * var array = [1, [2, [3, [4]], 5]];
+     *
+     * _.flattenDepth(array, 1);
+     * // => [1, 2, [3, [4]], 5]
+     *
+     * _.flattenDepth(array, 2);
+     * // => [1, 2, 3, [4], 5]
+     */
+    function flattenDepth(array, depth) {
+      var length = array ? array.length : 0;
+      if (!length) {
+        return [];
+      }
+      depth = depth === undefined ? 1 : toInteger(depth);
+      return baseFlatten(array, depth);
     }
 
     /**
@@ -70011,7 +70280,7 @@ return jQuery;
      * // => [2]
      */
     var intersection = rest(function(arrays) {
-      var mapped = arrayMap(arrays, toArrayLikeObject);
+      var mapped = arrayMap(arrays, baseCastArrayLikeObject);
       return (mapped.length && mapped[0] === arrays[0])
         ? baseIntersection(mapped)
         : [];
@@ -70039,7 +70308,7 @@ return jQuery;
      */
     var intersectionBy = rest(function(arrays) {
       var iteratee = last(arrays),
-          mapped = arrayMap(arrays, toArrayLikeObject);
+          mapped = arrayMap(arrays, baseCastArrayLikeObject);
 
       if (iteratee === last(mapped)) {
         iteratee = undefined;
@@ -70072,7 +70341,7 @@ return jQuery;
      */
     var intersectionWith = rest(function(arrays) {
       var comparator = last(arrays),
-          mapped = arrayMap(arrays, toArrayLikeObject);
+          mapped = arrayMap(arrays, baseCastArrayLikeObject);
 
       if (comparator === last(mapped)) {
         comparator = undefined;
@@ -70262,7 +70531,7 @@ return jQuery;
      * // => [10, 20]
      */
     var pullAt = rest(function(array, indexes) {
-      indexes = arrayMap(baseFlatten(indexes), String);
+      indexes = arrayMap(baseFlatten(indexes, 1), String);
 
       var result = baseAt(array, indexes);
       basePullAt(array, indexes.sort(compareAscending));
@@ -70734,7 +71003,7 @@ return jQuery;
      * // => [2, 1, 4]
      */
     var union = rest(function(arrays) {
-      return baseUniq(baseFlatten(arrays, false, true));
+      return baseUniq(baseFlatten(arrays, 1, true));
     });
 
     /**
@@ -70762,7 +71031,7 @@ return jQuery;
       if (isArrayLikeObject(iteratee)) {
         iteratee = undefined;
       }
-      return baseUniq(baseFlatten(arrays, false, true), getIteratee(iteratee));
+      return baseUniq(baseFlatten(arrays, 1, true), getIteratee(iteratee));
     });
 
     /**
@@ -70789,7 +71058,7 @@ return jQuery;
       if (isArrayLikeObject(comparator)) {
         comparator = undefined;
       }
-      return baseUniq(baseFlatten(arrays, false, true), undefined, comparator);
+      return baseUniq(baseFlatten(arrays, 1, true), undefined, comparator);
     });
 
     /**
@@ -71213,17 +71482,22 @@ return jQuery;
      * // => ['a', 'c']
      */
     var wrapperAt = rest(function(paths) {
-      paths = baseFlatten(paths);
+      paths = baseFlatten(paths, 1);
       var length = paths.length,
           start = length ? paths[0] : 0,
           value = this.__wrapped__,
           interceptor = function(object) { return baseAt(object, paths); };
 
-      if (length > 1 || this.__actions__.length || !(value instanceof LazyWrapper) || !isIndex(start)) {
+      if (length > 1 || this.__actions__.length ||
+          !(value instanceof LazyWrapper) || !isIndex(start)) {
         return this.thru(interceptor);
       }
       value = value.slice(start, +start + (length ? 1 : 0));
-      value.__actions__.push({ 'func': thru, 'args': [interceptor], 'thisArg': undefined });
+      value.__actions__.push({
+        'func': thru,
+        'args': [interceptor],
+        'thisArg': undefined
+      });
       return new LodashWrapper(value, this.__chain__).thru(function(array) {
         if (length && !array.length) {
           array.push(undefined);
@@ -71434,7 +71708,11 @@ return jQuery;
           wrapped = new LazyWrapper(this);
         }
         wrapped = wrapped.reverse();
-        wrapped.__actions__.push({ 'func': thru, 'args': [reverse], 'thisArg': undefined });
+        wrapped.__actions__.push({
+          'func': thru,
+          'args': [reverse],
+          'thisArg': undefined
+        });
         return new LodashWrapper(wrapped, this.__chain__);
       }
       return this.thru(reverse);
@@ -71653,7 +71931,7 @@ return jQuery;
      * // => [1, 1, 2, 2]
      */
     function flatMap(collection, iteratee) {
-      return baseFlatten(map(collection, iteratee));
+      return baseFlatten(map(collection, iteratee), 1);
     }
 
     /**
@@ -71687,7 +71965,7 @@ return jQuery;
     function forEach(collection, iteratee) {
       return (typeof iteratee == 'function' && isArray(collection))
         ? arrayEach(collection, iteratee)
-        : baseEach(collection, toFunction(iteratee));
+        : baseEach(collection, baseCastFunction(iteratee));
     }
 
     /**
@@ -71711,7 +71989,7 @@ return jQuery;
     function forEachRight(collection, iteratee) {
       return (typeof iteratee == 'function' && isArray(collection))
         ? arrayEachRight(collection, iteratee)
-        : baseEachRight(collection, toFunction(iteratee));
+        : baseEachRight(collection, baseCastFunction(iteratee));
     }
 
     /**
@@ -72275,7 +72553,7 @@ return jQuery;
       } else if (length > 2 && isIterateeCall(iteratees[0], iteratees[1], iteratees[2])) {
         iteratees.length = 1;
       }
-      return baseOrderBy(collection, baseFlatten(iteratees), []);
+      return baseOrderBy(collection, baseFlatten(iteratees, 1), []);
     });
 
     /*------------------------------------------------------------------------*/
@@ -72286,7 +72564,7 @@ return jQuery;
      *
      * @static
      * @memberOf _
-     * @type Function
+     * @type {Function}
      * @category Date
      * @returns {number} Returns the timestamp.
      * @example
@@ -72712,8 +72990,10 @@ return jQuery;
           if (!lastCalled && !maxTimeoutId && !leading) {
             lastCalled = stamp;
           }
-          var remaining = maxWait - (stamp - lastCalled),
-              isCalled = remaining <= 0 || remaining > maxWait;
+          var remaining = maxWait - (stamp - lastCalled);
+
+          var isCalled = (remaining <= 0 || remaining > maxWait) &&
+            (leading || maxTimeoutId);
 
           if (isCalled) {
             if (maxTimeoutId) {
@@ -72953,7 +73233,7 @@ return jQuery;
      * // => [100, 10]
      */
     var overArgs = rest(function(func, transforms) {
-      transforms = arrayMap(baseFlatten(transforms), getIteratee());
+      transforms = arrayMap(baseFlatten(transforms, 1), getIteratee());
 
       var funcsLength = transforms.length;
       return rest(function(args) {
@@ -73067,7 +73347,7 @@ return jQuery;
      * // => ['a', 'b', 'c']
      */
     var rearg = rest(function(func, indexes) {
-      return createWrapper(func, REARG_FLAG, undefined, undefined, undefined, baseFlatten(indexes));
+      return createWrapper(func, REARG_FLAG, undefined, undefined, undefined, baseFlatten(indexes, 1));
     });
 
     /**
@@ -73219,7 +73499,11 @@ return jQuery;
         leading = 'leading' in options ? !!options.leading : leading;
         trailing = 'trailing' in options ? !!options.trailing : trailing;
       }
-      return debounce(func, wait, { 'leading': leading, 'maxWait': wait, 'trailing': trailing });
+      return debounce(func, wait, {
+        'leading': leading,
+        'maxWait': wait,
+        'trailing': trailing
+      });
     }
 
     /**
@@ -73250,7 +73534,7 @@ return jQuery;
      * @memberOf _
      * @category Function
      * @param {*} value The value to wrap.
-     * @param {Function} wrapper The wrapper function.
+     * @param {Function} [wrapper=identity] The wrapper function.
      * @returns {Function} Returns the new function.
      * @example
      *
@@ -73267,6 +73551,46 @@ return jQuery;
     }
 
     /*------------------------------------------------------------------------*/
+
+    /**
+     * Casts `value` as an array if it's not one.
+     *
+     * @static
+     * @memberOf _
+     * @category Lang
+     * @param {*} value The value to inspect.
+     * @returns {Array} Returns the cast array.
+     * @example
+     *
+     * _.castArray(1);
+     * // => [1]
+     *
+     * _.castArray({ 'a': 1 });
+     * // => [{ 'a': 1 }]
+     *
+     * _.castArray('abc');
+     * // => ['abc']
+     *
+     * _.castArray(null);
+     * // => [null]
+     *
+     * _.castArray(undefined);
+     * // => [undefined]
+     *
+     * _.castArray();
+     * // => []
+     *
+     * var array = [1, 2, 3];
+     * console.log(_.castArray(array) === array);
+     * // => true
+     */
+    function castArray() {
+      if (!arguments.length) {
+        return [];
+      }
+      var value = arguments[0];
+      return isArray(value) ? value : [value];
+    }
 
     /**
      * Creates a shallow clone of `value`.
@@ -73488,7 +73812,7 @@ return jQuery;
      *
      * @static
      * @memberOf _
-     * @type Function
+     * @type {Function}
      * @category Lang
      * @param {*} value The value to check.
      * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
@@ -73513,7 +73837,6 @@ return jQuery;
      *
      * @static
      * @memberOf _
-     * @type Function
      * @category Lang
      * @param {*} value The value to check.
      * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
@@ -73536,7 +73859,6 @@ return jQuery;
      *
      * @static
      * @memberOf _
-     * @type Function
      * @category Lang
      * @param {*} value The value to check.
      * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
@@ -73565,7 +73887,6 @@ return jQuery;
      *
      * @static
      * @memberOf _
-     * @type Function
      * @category Lang
      * @param {*} value The value to check.
      * @returns {boolean} Returns `true` if `value` is an array-like object, else `false`.
@@ -73697,7 +74018,8 @@ return jQuery;
      */
     function isEmpty(value) {
       if (isArrayLike(value) &&
-          (isArray(value) || isString(value) || isFunction(value.splice) || isArguments(value))) {
+          (isArray(value) || isString(value) ||
+            isFunction(value.splice) || isArguments(value))) {
         return !value.length;
       }
       for (var key in value) {
@@ -73740,10 +74062,10 @@ return jQuery;
     }
 
     /**
-     * This method is like `_.isEqual` except that it accepts `customizer` which is
-     * invoked to compare values. If `customizer` returns `undefined` comparisons are
-     * handled by the method instead. The `customizer` is invoked with up to six arguments:
-     * (objValue, othValue [, index|key, object, other, stack]).
+     * This method is like `_.isEqual` except that it accepts `customizer` which
+     * is invoked to compare values. If `customizer` returns `undefined` comparisons
+     * are handled by the method instead. The `customizer` is invoked with up to
+     * six arguments: (objValue, othValue [, index|key, object, other, stack]).
      *
      * @static
      * @memberOf _
@@ -73794,8 +74116,12 @@ return jQuery;
      * // => false
      */
     function isError(value) {
-      return isObjectLike(value) &&
-        typeof value.message == 'string' && objectToString.call(value) == errorTag;
+      if (!isObjectLike(value)) {
+        return false;
+      }
+      var Ctor = value.constructor;
+      return (objectToString.call(value) == errorTag) ||
+        (typeof Ctor == 'function' && objectToString.call(Ctor.prototype) == errorTag);
     }
 
     /**
@@ -73903,7 +74229,8 @@ return jQuery;
      * // => false
      */
     function isLength(value) {
-      return typeof value == 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+      return typeof value == 'number' &&
+        value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
     }
 
     /**
@@ -73982,8 +74309,9 @@ return jQuery;
     }
 
     /**
-     * Performs a deep comparison between `object` and `source` to determine if
-     * `object` contains equivalent property values.
+     * Performs a partial deep comparison between `object` and `source` to
+     * determine if `object` contains equivalent property values. This method is
+     * equivalent to a `_.matches` function when `source` is partially applied.
      *
      * **Note:** This method supports comparing the same values as `_.isEqual`.
      *
@@ -74202,7 +74530,8 @@ return jQuery;
      * // => true
      */
     function isPlainObject(value) {
-      if (!isObjectLike(value) || objectToString.call(value) != objectTag || isHostObject(value)) {
+      if (!isObjectLike(value) ||
+          objectToString.call(value) != objectTag || isHostObject(value)) {
         return false;
       }
       var proto = objectProto;
@@ -74345,7 +74674,8 @@ return jQuery;
      * // => false
      */
     function isTypedArray(value) {
-      return isObjectLike(value) && isLength(value.length) && !!typedArrayTags[objectToString.call(value)];
+      return isObjectLike(value) &&
+        isLength(value.length) && !!typedArrayTags[objectToString.call(value)];
     }
 
     /**
@@ -74837,7 +75167,7 @@ return jQuery;
      * // => ['a', 'c']
      */
     var at = rest(function(object, paths) {
-      return baseAt(object, baseFlatten(paths));
+      return baseAt(object, baseFlatten(paths, 1));
     });
 
     /**
@@ -75025,7 +75355,9 @@ return jQuery;
      * // => logs 'a', 'b', then 'c' (iteration order is not guaranteed)
      */
     function forIn(object, iteratee) {
-      return object == null ? object : baseFor(object, toFunction(iteratee), keysIn);
+      return object == null
+        ? object
+        : baseFor(object, baseCastFunction(iteratee), keysIn);
     }
 
     /**
@@ -75053,7 +75385,9 @@ return jQuery;
      * // => logs 'c', 'b', then 'a' assuming `_.forIn` logs 'a', 'b', then 'c'
      */
     function forInRight(object, iteratee) {
-      return object == null ? object : baseForRight(object, toFunction(iteratee), keysIn);
+      return object == null
+        ? object
+        : baseForRight(object, baseCastFunction(iteratee), keysIn);
     }
 
     /**
@@ -75083,7 +75417,7 @@ return jQuery;
      * // => logs 'a' then 'b' (iteration order is not guaranteed)
      */
     function forOwn(object, iteratee) {
-      return object && baseForOwn(object, toFunction(iteratee));
+      return object && baseForOwn(object, baseCastFunction(iteratee));
     }
 
     /**
@@ -75111,7 +75445,7 @@ return jQuery;
      * // => logs 'b' then 'a' assuming `_.forOwn` logs 'a' then 'b'
      */
     function forOwnRight(object, iteratee) {
-      return object && baseForOwnRight(object, toFunction(iteratee));
+      return object && baseForOwnRight(object, baseCastFunction(iteratee));
     }
 
     /**
@@ -75478,12 +75812,12 @@ return jQuery;
     }
 
     /**
-     * Recursively merges own and inherited enumerable properties of source
-     * objects into the destination object, skipping source properties that resolve
-     * to `undefined`. Array and plain object properties are merged recursively.
-     * Other objects and value types are overridden by assignment. Source objects
-     * are applied from left to right. Subsequent sources overwrite property
-     * assignments of previous sources.
+     * Recursively merges own and inherited enumerable properties of source objects
+     * into the destination object. Source properties that resolve to `undefined`
+     * are skipped if a destination value exists. Array and plain object properties
+     * are merged recursively. Other objects and value types are overridden by
+     * assignment. Source objects are applied from left to right. Subsequent
+     * sources overwrite property assignments of previous sources.
      *
      * **Note:** This method mutates `object`.
      *
@@ -75560,7 +75894,7 @@ return jQuery;
      * @category Object
      * @param {Object} object The source object.
      * @param {...(string|string[])} [props] The property names to omit, specified
-     *  individually or in arrays..
+     *  individually or in arrays.
      * @returns {Object} Returns the new object.
      * @example
      *
@@ -75573,7 +75907,7 @@ return jQuery;
       if (object == null) {
         return {};
       }
-      props = arrayMap(baseFlatten(props), String);
+      props = arrayMap(baseFlatten(props, 1), String);
       return basePick(object, baseDifference(keysIn(object), props));
     });
 
@@ -75620,7 +75954,7 @@ return jQuery;
      * // => { 'a': 1, 'c': 3 }
      */
     var pick = rest(function(object, props) {
-      return object == null ? {} : basePick(object, baseFlatten(props));
+      return object == null ? {} : basePick(object, baseFlatten(props, 1));
     });
 
     /**
@@ -75674,7 +76008,7 @@ return jQuery;
      */
     function result(object, path, defaultValue) {
       if (!isKey(path, object)) {
-        path = baseToPath(path);
+        path = baseCastPath(path);
         var result = get(object, path);
         object = parent(object, path);
       } else {
@@ -75744,7 +76078,8 @@ return jQuery;
     }
 
     /**
-     * Creates an array of own enumerable key-value pairs for `object`.
+     * Creates an array of own enumerable key-value pairs for `object` which
+     * can be consumed by `_.fromPairs`.
      *
      * @static
      * @memberOf _
@@ -75768,7 +76103,8 @@ return jQuery;
     }
 
     /**
-     * Creates an array of own and inherited enumerable key-value pairs for `object`.
+     * Creates an array of own and inherited enumerable key-value pairs for
+     * `object` which can be consumed by `_.fromPairs`.
      *
      * @static
      * @memberOf _
@@ -75923,7 +76259,7 @@ return jQuery;
      * // => [1, 2, 3] (iteration order is not guaranteed)
      */
     function valuesIn(object) {
-      return object == null ? baseValues(object, keysIn(object)) : [];
+      return object == null ? [] : baseValues(object, keysIn(object));
     }
 
     /*------------------------------------------------------------------------*/
@@ -76421,7 +76757,7 @@ return jQuery;
      * @memberOf _
      * @category String
      * @param {string} string The string to convert.
-     * @param {number} [radix] The radix to interpret `value` by.
+     * @param {number} [radix=10] The radix to interpret `value` by.
      * @param- {Object} [guard] Enables use as an iteratee for functions like `_.map`.
      * @returns {number} Returns the converted integer.
      * @example
@@ -76793,7 +77129,8 @@ return jQuery;
         'return __p\n}';
 
       var result = attempt(function() {
-        return Function(importsKeys, sourceURL + 'return ' + source).apply(undefined, importsValues);
+        return Function(importsKeys, sourceURL + 'return ' + source)
+          .apply(undefined, importsValues);
       });
 
       // Provide the compiled function's source by its `toString` method or
@@ -76887,7 +77224,9 @@ return jQuery;
       var strSymbols = stringToArray(string),
           chrSymbols = stringToArray(chars);
 
-      return strSymbols.slice(charsStartIndex(strSymbols, chrSymbols), charsEndIndex(strSymbols, chrSymbols) + 1).join('');
+      return strSymbols
+        .slice(charsStartIndex(strSymbols, chrSymbols), charsEndIndex(strSymbols, chrSymbols) + 1)
+        .join('');
     }
 
     /**
@@ -76921,7 +77260,9 @@ return jQuery;
         return string;
       }
       var strSymbols = stringToArray(string);
-      return strSymbols.slice(0, charsEndIndex(strSymbols, stringToArray(chars)) + 1).join('');
+      return strSymbols
+        .slice(0, charsEndIndex(strSymbols, stringToArray(chars)) + 1)
+        .join('');
     }
 
     /**
@@ -76955,7 +77296,9 @@ return jQuery;
         return string;
       }
       var strSymbols = stringToArray(string);
-      return strSymbols.slice(charsStartIndex(strSymbols, stringToArray(chars))).join('');
+      return strSymbols
+        .slice(charsStartIndex(strSymbols, stringToArray(chars)))
+        .join('');
     }
 
     /**
@@ -76967,7 +77310,7 @@ return jQuery;
      * @memberOf _
      * @category String
      * @param {string} [string=''] The string to truncate.
-     * @param {Object} [options] The options object.
+     * @param {Object} [options=({})] The options object.
      * @param {number} [options.length=30] The maximum string length.
      * @param {string} [options.omission='...'] The string to indicate text is omitted.
      * @param {RegExp|string} [options.separator] The separator pattern to truncate to.
@@ -77152,7 +77495,7 @@ return jQuery;
       try {
         return apply(func, undefined, args);
       } catch (e) {
-        return isObject(e) ? e : new Error(e);
+        return isError(e) ? e : new Error(e);
       }
     });
 
@@ -77183,7 +77526,7 @@ return jQuery;
      * // => logs 'clicked docs' when clicked
      */
     var bindAll = rest(function(object, methodNames) {
-      arrayEach(baseFlatten(methodNames), function(key) {
+      arrayEach(baseFlatten(methodNames, 1), function(key) {
         object[key] = bind(object[key], object);
       });
       return object;
@@ -77351,7 +77694,8 @@ return jQuery;
      * Creates a function that invokes `func` with the arguments of the created
      * function. If `func` is a property name the created callback returns the
      * property value for a given element. If `func` is an object the created
-     * callback returns `true` for elements that contain the equivalent object properties, otherwise it returns `false`.
+     * callback returns `true` for elements that contain the equivalent object
+     * properties, otherwise it returns `false`.
      *
      * @static
      * @memberOf _
@@ -77381,9 +77725,10 @@ return jQuery;
     }
 
     /**
-     * Creates a function that performs a deep partial comparison between a given
+     * Creates a function that performs a partial deep comparison between a given
      * object and `source`, returning `true` if the given object has equivalent
-     * property values, else `false`.
+     * property values, else `false`. The created function is equivalent to
+     * `_.isMatch` with a `source` partially applied.
      *
      * **Note:** This method supports comparing the same values as `_.isEqual`.
      *
@@ -77407,7 +77752,7 @@ return jQuery;
     }
 
     /**
-     * Creates a function that performs a deep partial comparison between the
+     * Creates a function that performs a partial deep comparison between the
      * value at `path` of a given object to `srcValue`, returning `true` if the
      * object value is equivalent, else `false`.
      *
@@ -77841,7 +78186,7 @@ return jQuery;
       var index = MAX_ARRAY_LENGTH,
           length = nativeMin(n, MAX_ARRAY_LENGTH);
 
-      iteratee = toFunction(iteratee);
+      iteratee = baseCastFunction(iteratee);
       n -= MAX_ARRAY_LENGTH;
 
       var result = baseTimes(length, iteratee);
@@ -77886,7 +78231,7 @@ return jQuery;
      * @static
      * @memberOf _
      * @category Util
-     * @param {string} [prefix] The value to prefix the ID with.
+     * @param {string} [prefix=''] The value to prefix the ID with.
      * @returns {string} Returns the unique ID.
      * @example
      *
@@ -78237,6 +78582,7 @@ return jQuery;
     lodash.bind = bind;
     lodash.bindAll = bindAll;
     lodash.bindKey = bindKey;
+    lodash.castArray = castArray;
     lodash.chain = chain;
     lodash.chunk = chunk;
     lodash.compact = compact;
@@ -78265,6 +78611,7 @@ return jQuery;
     lodash.flatMap = flatMap;
     lodash.flatten = flatten;
     lodash.flattenDeep = flattenDeep;
+    lodash.flattenDepth = flattenDepth;
     lodash.flip = flip;
     lodash.flow = flow;
     lodash.flowRight = flowRight;
@@ -78539,7 +78886,7 @@ return jQuery;
      *
      * @static
      * @memberOf _
-     * @type string
+     * @type {string}
      */
     lodash.VERSION = VERSION;
 
@@ -78561,7 +78908,10 @@ return jQuery;
         if (filtered) {
           result.__takeCount__ = nativeMin(n, result.__takeCount__);
         } else {
-          result.__views__.push({ 'size': nativeMin(n, MAX_ARRAY_LENGTH), 'type': methodName + (result.__dir__ < 0 ? 'Right' : '') });
+          result.__views__.push({
+            'size': nativeMin(n, MAX_ARRAY_LENGTH),
+            'type': methodName + (result.__dir__ < 0 ? 'Right' : '')
+          });
         }
         return result;
       };
@@ -78578,7 +78928,10 @@ return jQuery;
 
       LazyWrapper.prototype[methodName] = function(iteratee) {
         var result = this.clone();
-        result.__iteratees__.push({ 'iteratee': getIteratee(iteratee, 3), 'type': type });
+        result.__iteratees__.push({
+          'iteratee': getIteratee(iteratee, 3),
+          'type': type
+        });
         result.__filtered__ = result.__filtered__ || isFilter;
         return result;
       };
@@ -78730,7 +79083,10 @@ return jQuery;
       }
     });
 
-    realNames[createHybridWrapper(undefined, BIND_KEY_FLAG).name] = [{ 'name': 'wrapper', 'func': undefined }];
+    realNames[createHybridWrapper(undefined, BIND_KEY_FLAG).name] = [{
+      'name': 'wrapper',
+      'func': undefined
+    }];
 
     // Add functions to the lazy wrapper.
     LazyWrapper.prototype.clone = lazyClone;
@@ -78787,7 +79143,7 @@ return jQuery;
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],134:[function(require,module,exports){
+},{}],135:[function(require,module,exports){
 //! moment.js
 //! version : 2.11.2
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -82394,7 +82750,7 @@ return jQuery;
     return _moment;
 
 }));
-},{}],135:[function(require,module,exports){
+},{}],136:[function(require,module,exports){
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
@@ -84392,8 +84748,8 @@ $templateCache.put("select2/select.tpl.html","<div class=\"ui-select-container s
 $templateCache.put("selectize/choices.tpl.html","<div ng-show=\"$select.open\" class=\"ui-select-choices ui-select-dropdown selectize-dropdown single\"><div class=\"ui-select-choices-content selectize-dropdown-content\"><div class=\"ui-select-choices-group optgroup\" role=\"listbox\"><div ng-show=\"$select.isGrouped\" class=\"ui-select-choices-group-label optgroup-header\" ng-bind=\"$group.name\"></div><div role=\"option\" class=\"ui-select-choices-row\" ng-class=\"{active: $select.isActive(this), disabled: $select.isDisabled(this)}\"><div class=\"option ui-select-choices-row-inner\" data-selectable=\"\"></div></div></div></div></div>");
 $templateCache.put("selectize/match.tpl.html","<div ng-hide=\"($select.open || $select.isEmpty())\" class=\"ui-select-match\" ng-transclude=\"\"></div>");
 $templateCache.put("selectize/select.tpl.html","<div class=\"ui-select-container selectize-control single\" ng-class=\"{\'open\': $select.open}\"><div class=\"selectize-input\" ng-class=\"{\'focus\': $select.open, \'disabled\': $select.disabled, \'selectize-focus\' : $select.focus}\" ng-click=\"$select.open && !$select.searchEnabled ? $select.toggle($event) : $select.activate()\"><div class=\"ui-select-match\"></div><input type=\"text\" autocomplete=\"false\" tabindex=\"-1\" class=\"ui-select-search ui-select-toggle\" ng-click=\"$select.toggle($event)\" placeholder=\"{{$select.placeholder}}\" ng-model=\"$select.search\" ng-hide=\"!$select.searchEnabled || ($select.selected && !$select.open)\" ng-disabled=\"$select.disabled\" aria-label=\"{{ $select.baseTitle }}\"></div><div class=\"ui-select-choices\"></div></div>");}]);
-},{}],136:[function(require,module,exports){
+},{}],137:[function(require,module,exports){
 require('./dist/select.js');
 module.exports = 'ui.select';
 
-},{"./dist/select.js":135}]},{},[1]);
+},{"./dist/select.js":136}]},{},[1]);

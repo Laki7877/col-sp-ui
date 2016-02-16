@@ -1,27 +1,81 @@
-<div class="row">
+<div class="row" ng-show="open">
 	<div class="col-xs-12">
 		<div class="form-section">
 			<div class="form-section-header"><h2>Advance Search</h2></div>
 			<div class="form-section-content">
-				<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Name", ]) ?>
-				<? $this->insert('components/forms/input-text-with-label', ["label" => "PID" ]) ?>
-      			<? $this->insert('components/forms/input-text-with-label', ["label" => "SKU" ]) ?>
-				<? $this->insert('components/forms/dropdown_tags', ["label" => "Brand Name/ ID", "default_choices" => ["Gulp", "Adico"], "choices" => ["Gulp", "Adico","Pascal"] ]) ?>
-				<? $this->insert('components/forms/input-text-with-label', ["label" => "Global Category Name/ ID" ]) ?>
-				<? $this->insert('components/forms/input-text-with-label', ["label" => "Local Category Name/ ID" ]) ?>
-				<? $this->insert('components/forms/input_tags', ["label" => "Search Tag", "choices" => ["Gulp", "Adico","Pascal"] ]) ?>
-				<? $this->insert('components/forms/input_from_to', ["label" => "Price", "label_extend" => "To" ]) ?>
-				<? $this->insert('components/forms/input_from_to', ["label" => "Created Date", "input_class" => "input-icon-calendar", "label_extend" => "To" ]) ?>
-				<? $this->insert('components/forms/input_from_to', ["label" => "Modified Date", "input_class" => "input-icon-calendar", "label_extend" => "To" ]) ?>
-				<div class="form-group">
-					<div class="width-label"><label class="control-label"></label></div>
-					<div class="button-size-normal">
-						<a class="button-size-normal btn btn-blue btn-width-xl">Search</a>
+			<form name="form">
+					<div nc-template="common/input/form-group-with-label" nc-template-form="form.ProductName" nc-label="Product Name" nc-template-options-path="searchForm/ProductName">
+	                    <input class="form-control width-field-large" name="ProductName" ng-model="formData.ProductName" required />
 					</div>
-					<div class="button-size-normal">
-						<a class="button-size-normal margin-left-10 btn btn-white btn-width-xl">Clear</a>
+					<div nc-template="common/input/form-group-with-label" nc-template-form="form" nc-label="PID" nc-template-options-path="searchForm/PID">
+	                    <input class="form-control width-field-large" name="PID" ng-model="formData.PID" required />
 					</div>
-				</div>
+					<div nc-template="common/input/form-group-with-label" nc-template-form="form" nc-label="SKU" nc-template-options-path="searchForm/SKU">
+	                    <input class="form-control width-field-large" name="SKU" ng-model="formData.SKU" required />
+					</div>
+					<div nc-template="common/input/form-group-with-label" nc-template-form="form" nc-label="Brand Name / ID" nc-template-options-path="searchForm/Brands">
+						    <ui-select ng-model="formData.Brands" name="Brands" nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30" multiple tagging-tokens=",|ENTER" tagging-label="" nc-tag-field>
+                                <ui-select-match placeholder="Separate tags with comma (or enter)">
+                                    {{$item}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="item in options.Brands">
+                                    {{item}}
+                                </ui-select-choices>
+                            </ui-select>
+					</div>
+					<div nc-template="common/input/form-group-with-label" nc-template-form="form" nc-label="Global Category Name/ ID" nc-template-options-path="searchForm/GlobalCategory">
+	                    <input class="form-control width-field-large" name="GlobalCategory" ng-model="formData.GlobalCategory" required />
+					</div>
+					<div nc-template="common/input/form-group-with-label" nc-template-form="form" nc-label="Local Category Name/ ID" nc-template-options-path="searchForm/LocalCategory">
+	                    <input class="form-control width-field-large" name="LocalCategory" ng-model="formData.LocalCategory" required />
+					</div>
+					<div nc-template="common/input/form-group-with-label" nc-template-form="form" nc-label="Search Tag" nc-template-options-path="searchForm/Tags">
+						    <ui-select ng-model="formData.Brand" name="Brand" nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30" multiple tagging-tokens=",|ENTER" tagging-label="" nc-tag-field>
+                                <ui-select-match placeholder="Separate tags with comma (or enter)">
+                                    {{$item}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="item in options.Tags">
+                                    {{item}}
+                                </ui-select-choices>
+                            </ui-select>
+					</div>
+					<div nc-template="common/input/form-group-with-label-multiple" nc-template-form="form" nc-label="Price" nc-template-options-path="searchForm/Price">
+						<div class="width-field-small-input">
+							<input type="text" name="UpdatedDt.From" ng-model="formData.UpdatedDt.From" />
+						</div>
+						<div class="width-label-extend">To</div>
+						<div class="width-field-small-input">
+							<input type="text" name="UpdatedDt.To" ng-model="formData.UpdatedDt.To" />
+						</div>
+					</div>
+					<div nc-template="common/input/form-group-with-label-multiple" nc-template-form="form" nc-label="" nc-template-options-path="searchForm/">
+						<div class="width-field-small-input">
+							<input type="text" name="CreatedDt.From" ng-model="formData.CreatedDt.From" />
+						</div>
+						<div class="width-label-extend">To</div>
+						<div class="width-field-small-input">
+							<input type="text" name="CreatedDt.To" ng-model="formData.CreatedDt.To" />
+						</div>
+					</div>
+					<div nc-template="common/input/form-group-with-label-multiple" nc-template-form="form" nc-label="" nc-template-options-path="searchForm/">
+						<div class="width-field-small-input">
+							<input type="text" name="UpdatedDt.From" ng-model="formData.UpdatedDt.From" />
+						</div>
+						<div class="width-label-extend">To</div>
+						<div class="width-field-small-input">
+							<input type="text" name="UpdatedDt.To" ng-model="formData.UpdatedDt.To" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="width-label"><label class="control-label"></label></div>
+						<div class="button-size-normal">
+							<a class="button-size-normal btn btn-blue btn-width-xl" ng-click="search()">Search</a>
+						</div>
+						<div class="button-size-normal">
+							<a class="button-size-normal margin-left-10 btn btn-white btn-width-xl" ng-click="clear()">Clear</a>
+						</div>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
