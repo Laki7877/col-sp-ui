@@ -2,5 +2,11 @@ module.exports = {
 	ProductName: {},
 	PID: {},
 	SKU: {},
-	Brand: {},
+	Brands: {},
+	GlobalCategory: {},
+	LocalCategory: {},
+	Tags: {},
+	Price: {},
+	CreatedDate: {},
+	ModifiedDate: {}
 }

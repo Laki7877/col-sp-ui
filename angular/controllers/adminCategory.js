@@ -1,8 +1,9 @@
 
 module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Category, GlobalCategoryService, AttributeSetService, NcAlert, util, config){
 	'ngInject';
-	$scope.modalScope = null;
+	
 	$scope.categories = [];
+	$scope.modalScope = null;
 	$scope.timerPromise = null;
 	$scope.popover = false;
 	$scope.loading = false;

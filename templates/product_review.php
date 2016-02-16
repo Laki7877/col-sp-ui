@@ -5,7 +5,7 @@
     <nc-alert nc-model="alert"></nc-alert>
     <? $this->insert('components/page-title-breadcrumb-border', ['text' => 'Product Review']) ?>
     <div class="row search-section-wrapper">
-      <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="ReviewId"></nc-bulk>
+      <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="ProductReviewId"></nc-bulk>
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Review'"></nc-search>
     </div>
     <nc-filter nc-model="params._filter" nc-filter-options="filterOptions"></nc-filter>
@@ -27,12 +27,13 @@
         <tbody>
           <tr ng-repeat="row in list.data">
             <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
-            <td>{{row.UpdatedDt || dateTh}}</td>
+            <td>{{row.UpdatedDt | dateTh}}</td>
             <td>{{row.Rating}} / {{maxRating}}</td>
-            <td>{{row.PID}}</td>
-            <td>{{}}</td>
-            <td><a ng-click="open(row)">{{row.Customer}}</a></td>
-            <td>{{row.ReviewStatus | mapDropdown:reviewStatus}}</td>
+            <td>{{row.Pid}}</td>
+            <td class="column-text-ellipsis"><a ng-click="open(row)">{{row.Comment}}</a></td>
+            <td>{{row.Customer}}</td>
+            <td class="{{row.Status | mapDropdown:reviewStatus:'color'}}">{{row.Status | mapDropdown:reviewStatus}}</td>
+            <td><button class="btn btn-white-fluid" ng-click="approve(row)">{{row.Status | mapDropdown:reviewButton}}</button></td>
             <td><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
           </tr>
         </tbody>
