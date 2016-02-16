@@ -54,8 +54,8 @@
 				required />
 			</div>
 
-			<fieldset class="form-group">
-				<button type="submit" class="btn btn-blue btn-100">Login<span class="login-loading" ng-cloak ng-show="loading"><i class="fa fa-spinner fa-spin" ></i></span></button>
+			<fieldset class="form-group margin-top-30">
+				<button type="submit" class="btn btn-blue btn-100"><span class="login-loading" ng-cloak ng-show="loading"><i class="fa fa-spinner fa-spin" ></i></span> Login</button>
 			</fieldset>
 			<fieldset class="form-group text-center">
 				<a href="" data-toggle="modal" data-target="#forget-password">Forget password?</a>
