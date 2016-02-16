@@ -127,6 +127,18 @@ module.exports = {
 			value: 'WA',
 			color: 'color-yellow',
 			icon: 'fa-clock-o'
+		},
+		{
+			name: 'Approved',
+			value: 'AP',
+			color: 'color-green',
+			icon: 'fa-check-circle-o'
+		},
+		{
+			name: 'Not Approved',
+			value: 'NA',
+			color: 'color-red',
+			icon: 'fa-ban'
 		}
 	],
 	CATEGORY_SYNC_DELAY: 1200, //Category wait for x millisecond before actually saving

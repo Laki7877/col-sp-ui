@@ -25,11 +25,9 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 			(options.reload || _.noop)(newObj, oldObj);
 			if(newObj.searchText !== oldObj.searchText) {
 				$scope.params._offset = 0;
-				_.unset($scope.params, ['AdvanceSearch']);
 			}
 			if(newObj.AdvanceSearch !== oldObj.AdvanceSearch) {
 				$scope.params._offset = 0;
-				_.unset($scope.params, ['searchText']);
 			}
 			if(newObj._filter !== oldObj._filter) {
 				$scope.params._offset = 0;

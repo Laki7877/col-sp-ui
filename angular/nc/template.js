@@ -23,6 +23,11 @@ angular.module("nc").run(function($templateCache) {  'use strict';
   );
 
 
+  $templateCache.put('common/ncAdvanceSearchButton',
+    "<div class=\"search-section advance-search\"><button class=\"btn btn-white-fluid border_blue\" type=button ng-click=toggle()>Advanced Search</button></div>"
+  );
+
+
   $templateCache.put('common/ncAlert',
     "<div ng-show=alert.show uib-alert template-url=common/ncAlertTemplate type=\"{{ alert.type }}\" close=alert.close()><span ng-bind-html=alert.message></span></div>"
   );

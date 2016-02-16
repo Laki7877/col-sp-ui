@@ -215,6 +215,7 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 .controller('SellerAccountAddCtrl', controllers.sellerAccountAdd)
 .controller('SellerRoleCtrl', controllers.sellerRole)
 .controller('SellerRoleAddCtrl', controllers.sellerRoleAdd)
+
 .controller('AdminAttributeCtrl', controllers.adminAttribute)
 .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)
 .controller('AdminAttributeAddCtrl', controllers.adminAttributeAdd)
@@ -230,6 +231,8 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 .controller('AdminShopAddCtrl', controllers.adminShopAdd)
 .controller('AdminShoptypeCtrl', controllers.adminShoptype)
 .controller('AdminShoptypeAddCtrl', controllers.adminShoptypeAdd)
+.controller('AdminProductCtrl', controllers.adminProduct)
+
 .controller('LoginCtrl', controllers.login)
 .controller('AbstractListCtrl', controllers.abstractList)
 .controller('AbstractAddCtrl', controllers.abstractAdd)

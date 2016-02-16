@@ -1,11 +1,13 @@
 angular.module('nc')
-	.directive('ncAdvanceSearch', function($templateCache) {
+	.directive('ncAdvanceSearchForm', function($templateCache) {
 		return {
 			restrict: 'E',
+			replace: true,
 			scope: {
 				model: '=ncModel',
 				open: '=ncAdvanceSearchToggle',
-				options: '=ncAdvanceSearchOptions'
+				options: '=ncAdvanceSearchOptions',
+				callback: '=?ncAdvanceSearchEvent'
 			},
 			template: function(elem, attrs) {
 				if(attrs.ncAdvanceSearch) {
@@ -17,15 +19,39 @@ angular.module('nc')
 			link: function(scope, elem, attrs) {
 				scope.formData = {};
 				scope.form = {};
+				scope.callback = scope.callback || function() { return false };
 				scope.options = _.defaults(scope.options, {
 					Tags: [],
 					Brands: []
 				});
 				scope.search = function() {
-					scope.model.AdvanceSearch = _.extend({}, scope.formData);
+					if(scope.callback(scope.formData, true)) return;
+					scope.model = _.extend({}, scope.formData);
 				};
 				scope.clear = function() {
-					_.unset(scope.model, 'AdvanceSearch');
+					if(scope.callback(scope.formData, false)) return;
+					scope.model = {};
+				};
+			}
+		};
+	})
+	.directive('ncAdvanceSearchButton', function($templateCache) {
+		return {
+			restrict: 'E',
+			replace: true,
+			scope: {
+				model: '=ncModel'
+			},
+			template: function(elem, attrs) {
+				if(attrs.ncAdvanceSearch) {
+					return $templateCache.get(attrs.ncAdvanceSearch);
+				} else {
+					return $templateCache.get('common/ncAdvanceSearchButton');
+				}
+			},
+			link: function(scope, elem, attrs) {
+				scope.toggle = function() {
+					scope.model = !scope.model;
 				};
 			}
 		};

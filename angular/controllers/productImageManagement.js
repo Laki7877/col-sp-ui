@@ -69,7 +69,7 @@ function ($scope, Product, util, NcAlert, $window, FileUploader, ImageService, c
     	if($scope.dirty) {
     		return confirm('Your change will not be saved.');
     	}
-    	return true;
+    	return false;
     };
     util.warningOnLeave(function() {
     	return !$scope.dirty;
