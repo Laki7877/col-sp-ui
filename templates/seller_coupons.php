@@ -2,11 +2,15 @@
 
 <?php $this->start('page-body') ?>
   <div>
-    <? $this->insert('components/page-title-with-buttons', ['text' => "Coupons" , 
-      'buttons' => [
-          ['link' => '?p=seller_coupons_detail', 'class' => 'btn-blue btn-width-xl', 'name' => 'Create Coupon']
-        ]
-    ]) ?>
+   <nc-page-title options="{
+        title: 'Seller Coupons',
+        buttons: [{
+            'click': 'createCoupon()',
+            'title' : 'Create Coupon',
+            'classes' : ['btn-blue', 'btn-width-xl']
+        }]
+       }"></nc-page-title>
+       
     <div class="row search-section-wrapper">
       <div class="search-section section-search">
         <div class="input-group">

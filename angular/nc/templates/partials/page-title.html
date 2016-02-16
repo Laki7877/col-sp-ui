@@ -1,7 +1,10 @@
 <div class="page-header with-border">
     <h1 class="float-left page-header-title">{{ option.title }}</h1>
     <span class="float-right page-header-action">
-        <a ng-click="item.click" ng-repeat="item in option.buttons" class="btn margin-right-10" ng-class="item.classes">
+        <a ng-href="{{item.href}}" ng-if="item.href" ng-repeat="item in option.buttons" class="btn margin-right-10" ng-class="item.classes">
+          <span class="">{{ item.title }}</span>
+        </a>
+        <a ng-click="{{ item.click }}" ng-if="item.click" ng-repeat="item in option.buttons" class="btn margin-right-10" ng-class="item.classes">
           <span class="">{{ item.title }}</span>
         </a>
     </span>

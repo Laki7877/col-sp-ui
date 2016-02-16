@@ -73,6 +73,11 @@ Route::add('/admin/shoptypes', 'AdminController::listShoptype');
 Route::add('/admin/shoptypes/add', 'AdminController::addShoptype');
 Route::add('/admin/shoptypes/:id', 'AdminController::editShoptype');
 Route::add('/admin/products', 'AdminController::allProducts');
+Route::add('/admin/approve', 'AdminController::approve');
+Route::add('/admin/coupons/seller', 'AdminController::seller_coupons');
+Route::add('/admin/coupons/seller/create', 'AdminController::seller_coupons_create');
+Route::add('/admin/coupons/admin', 'AdminController::admin_coupons');
+Route::add('/admin/coupons/admin/create', 'AdminController::admin_coupons_create');
 //test route
 Route::add('/test/:name', 'TestController::any');
 

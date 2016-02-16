@@ -235,5 +235,6 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 .controller('LoginCtrl', controllers.login)
 .controller('AbstractListCtrl', controllers.abstractList)
 .controller('AbstractAddCtrl', controllers.abstractAdd)
+.controller('AdminCouponsCtrl', controllers.adminCoupons)
 
 .controller('TestCtrl', controllers.test)
