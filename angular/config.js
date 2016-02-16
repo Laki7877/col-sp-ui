@@ -136,7 +136,7 @@ module.exports = {
 		},
 		{
 			name: 'Not Approved',
-			value: 'NA',
+			value: 'RJ',
 			color: 'color-red',
 			icon: 'fa-ban'
 		}

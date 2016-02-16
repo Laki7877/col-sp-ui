@@ -1,12 +1,12 @@
 angular.module('nc')
-	.directive('ncAdvanceSearchForm', function($templateCache) {
+	.directive('ncAdvanceSearch', function($templateCache) {
 		return {
 			restrict: 'E',
 			replace: true,
 			scope: {
 				model: '=ncModel',
 				open: '=ncAdvanceSearchToggle',
-				options: '=ncAdvanceSearchOptions',
+				options: '=?ncAdvanceSearchOptions',
 				callback: '=?ncAdvanceSearchEvent'
 			},
 			template: function(elem, attrs) {

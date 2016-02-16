@@ -20,6 +20,8 @@ module.exports = function($scope, $controller, Product, config) {
 		}
 	});
 
+	$scope.advanceSearch = true;
+
 	$scope.onSearch = function() {
 		_.unset($scope.params, ['AdvanceSearch']);
 	};

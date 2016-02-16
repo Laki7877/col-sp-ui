@@ -123,7 +123,7 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 
 	$rootScope.activeParentUrl = function(url,sub) {
 		return {
-			'active': $rootScope.isUrl(url)
+			'forced-active': $rootScope.isUrl(url)
 		};
 	};
 
@@ -231,7 +231,9 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 .controller('AdminShopAddCtrl', controllers.adminShopAdd)
 .controller('AdminShoptypeCtrl', controllers.adminShoptype)
 .controller('AdminShoptypeAddCtrl', controllers.adminShoptypeAdd)
-.controller('AdminProductCtrl', controllers.adminProduct)
+
+.controller('AdminProductApprovalListCtrl', controllers.adminProductApprovalList)
+.controller('AdminProductListCtrl', controllers.adminProductList)
 
 .controller('LoginCtrl', controllers.login)
 .controller('AbstractListCtrl', controllers.abstractList)

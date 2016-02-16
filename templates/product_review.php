@@ -14,14 +14,14 @@
         <thead>
           <tr class="table-head">
             <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
-            <th nc-sort="UpdatedDt">Date</th>
-            <th nc-sort="Rating">Rating</th>
-            <th nc-sort="PID">PID</th>
+            <th class="width_100" nc-sort="UpdatedDt">Date</th>
+            <th class="width_100" nc-sort="Rating">Rating</th>
+            <th class="width_100" nc-sort="PID">PID</th>
+            <th class="width_150">Customer</th>
             <th>Comment</th>
-            <th>Customer</th>
-            <th nc-sort="Status">Status</th>
-            <th>Approve</th>
-            <th>Action</th>
+            <th nc-sort="Status width_120">Status</th>
+            <th class="width_150">Approve</th>
+            <th class="action-column">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -30,10 +30,10 @@
             <td>{{row.UpdatedDt | dateTh}}</td>
             <td>{{row.Rating}} / {{maxRating}}</td>
             <td>{{row.Pid}}</td>
+            <td class="width_150 column-text-ellipsis">{{row.Customer}}</td>
             <td class="column-text-ellipsis"><a ng-click="open(row)">{{row.Comment}}</a></td>
-            <td>{{row.Customer}}</td>
-            <td class="{{row.Status | mapDropdown:reviewStatus:'color'}}">{{row.Status | mapDropdown:reviewStatus}}</td>
-            <td><button class="btn btn-white-fluid" ng-click="approve(row)">{{row.Status | mapDropdown:reviewButton}}</button></td>
+            <td class="{{row.Status | mapDropdown:reviewStatus:'color'}} width_120">{{row.Status | mapDropdown:reviewStatus}}</td>
+            <td><button class="btn btn-white btn-width-xl" ng-click="approve(row)">{{row.Status | mapDropdown:reviewButton}}</button></td>
             <td><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
           </tr>
         </tbody>
