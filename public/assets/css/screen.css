@@ -13917,6 +13917,14 @@ form h6 {
   margin-left: -15px;
   margin-right: -15px;
 }
+/* line 20, ../../../assets/_modal_custom.scss */
+.modal-custom .modal_title_abosolute {
+  position: absolute;
+}
+/* line 23, ../../../assets/_modal_custom.scss */
+.modal-custom .title_relative {
+  position: relative;
+}
 
 /* line 3, ../../../assets/_dropdown.scss */
 .page-navigation .dropdown-menu {

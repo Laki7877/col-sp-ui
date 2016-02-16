@@ -2,7 +2,12 @@
 
 <?php $this->start('page-body') ?>
   <div>
-    <? $this->insert('components/page-title-with-one-button', ['text' => 'Newsletters','button' => 'Add Newsletter', 'button_class' => 'btn-width-xxl', 'link' => '/?p=admin_add_account']) ?>
+    <? $this->insert('components/page-title-with-buttons', ['text' => 'Newsletters',
+        'buttons' => [
+            ['link' => '#', 'class' => 'btn-blue btn-width-xxl', 'name' => 'Add Newsletter', 'attributes' => 'data-toggle="modal" data-target="#image-guideline"']
+          ]
+      ]) 
+    ?>
     <div class="table-section">
       <table class="table table-curved table-border-none">
         <thead>
@@ -78,6 +83,6 @@
     </div> <!-- end .modal-dialog -->
   </div> <!-- end .modal -->
 
-
+  <? $this->insert('components/modal_admin_newsletter_detail', ['id' => 'image-guideline', 'header' => 'Add Newsletter']) ?>
  
 <?php $this->stop() ?>

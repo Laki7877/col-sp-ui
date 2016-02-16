@@ -10,7 +10,9 @@
         [ "name" => "Category", "icon" => "fa-chevron-right", "sub_sidebar" => "#sub-category" ],
         [ "name" => "Product Approval", "icon" => "fa-chevron-right", "sub_sidebar" => "#sub-product-approval" ],
         [ "name" => "All Product", "icon" => "fa-chevron-right", "sub_sidebar" => "#sub-all-product" ],
-        [ "name" => "Promotion", "icon" => "fa-chevron-right", "sub_sidebar" => "#sub-promotion" ]    
+        [ "name" => "Promotion", "icon" => "fa-chevron-right", "sub_sidebar" => "#sub-promotion" ],
+        [ "name" => "Newsletters", "icon" => "fa-chevron-right", "sub_sidebar" => "#sub-newsletters" ]    
+    
     ];
 ?>
 <ul class="sidebar-nav no-padding">
