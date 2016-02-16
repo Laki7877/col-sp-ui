@@ -2,8 +2,8 @@ var angular = require('angular');
 angular.module('nc')
     .directive('ncPageTitle', function ($rootScope, $templateCache, $compile, $templateOptionsCache, $parse, KnownException) {
         return {
-            restrict: 'A',
-            transclude: true,
+            restrict: 'EA',
+            transclude: false,
             replace: true,
             priority: 1010,
             scope: {

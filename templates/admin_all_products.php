@@ -7,7 +7,12 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 	<div>
             
        <nc-page-title options="{
-        title: 'All Products'
+        title: 'All Products',
+        buttons: [{
+            'action': 'export()',
+            'title' : 'Export',
+            'classes' : ['btn-white']
+        }]
        }"></nc-page-title>
 
 	    <div class="row search-section-wrapper">
@@ -20,7 +25,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 		    </div>
 		  </div>
 		  <div class="search-section advance-search">
-    		<button class="btn btn-white border_blue" type="button">Advanced Search</button>
+    		<button class="btn btn-white-fluid border_blue" type="button">Advanced Search</button>
   		   </div>
 		</div>
 
