@@ -7,7 +7,43 @@
     
     <?php $this->insert('components/sidebar-nav-admin', ['itemActive' => 'Home']) ?>
 
-    <ul class="sub-sidebar" style="display: none;" id="sub-admin-account">
+    <ul class="sub-sidebar" style="display: none;" id="sub-admin-products">
+        <li class="sub-sidebar-header">Products</li>
+        <li ng-class="activeUrl('/admin/products')" class="item margin-top-20"><a href="/admin/products">View All Products</a></li>
+        <li ng-class="activeUrl('/admin/approve')" class="item"><a href="/admin/approve">Approve Products</a></li>
+        <li ng-class="activeUrl('/admin/master')" class="item"><a href="/admin/master">Master Products</a></li>
+        <li ng-class="activeUrl('/admin/brands')" class="item"><a href="/admin/brands">Brands</a></li>
+        <li ng-class="activeUrl('/admin/attributes')" class="item"><a href="/admin/brands">Attributes</a></li>
+        <li ng-class="activeUrl('/admin/attributesets')" class="item"><a href="/admin/brands">Attribute Sets</a></li>
+        <li ng-class="activeUrl('/admin/categories')" class="item"><a href="/admin/brands">Global Categories</a></li>
+    </ul>
+
+    <ul class="sub-sidebar" style="display: none;" id="sub-admin-accounts">
+        <li class="sub-sidebar-header">Accounts</li>
+        <li ng-class="activeUrl('/admin/shops')" class="item margin-top-20"><a href="/admin/shops">Shop Accounts</a></li>
+        <li ng-class="activeUrl('/admin/shoptypes')" class="item"><a href="/admin/shoptypes">Shop Types</a></li>
+        <li ng-class="activeUrl('/admin/accounts')" class="item"><a href="/admin/accounts">Admin Accounts</a></li>
+        <li ng-class="activeUrl('/admin/roles')" class="item"><a href="/admin/roles">Admin Roles</a></li>
+    </ul>
+
+    <ul class="sub-sidebar" style="display: none;" id="sub-admin-promotion">
+        <li class="sub-sidebar-header">Promotion</li>
+        <li ng-class="activeUrl('/admin/coupons/global')" class="item margin-top-20"><a href="/admin/coupons/global">Global Coupons</a></li>
+        <li ng-class="activeUrl('/admin/coupons/seller')" class="item"><a href="/admin/coupons/seller">Seller Coupons</a></li>
+    </ul>
+
+    <ul class="sub-sidebar" style="display: none;" id="sub-admin-reports">
+        <li class="sub-sidebar-header">Reports</li>
+        <li ng-class="activeUrl('/admin/reports')" class="item margin-top-20"><a href="/admin/reports">View</a></li>
+    </ul>
+
+    <ul class="sub-sidebar" style="display: none;" id="sub-admin-others">
+        <li class="sub-sidebar-header">Others</li>
+        <li ng-class="activeUrl('/admin/newsletters')" class="item margin-top-20"><a href="/admin/newsletters">Newsletters</a></li>
+    </ul>
+
+
+    <!-- <ul class="sub-sidebar" style="display: none;" id="sub-admin-account">
         <li class="sub-sidebar-header">Admin Accounts</li>
         <li ng-class="activeUrl('/admin/accounts')" class="item margin-top-20"><a href="/admin/accounts">View</a></li>
         <li ng-class="activeUrl('/admin/accounts/add')" class="item"><a href="/admin/accounts/add">Add</a></li>
@@ -67,7 +103,7 @@
     <ul class="sub-sidebar" style="display: none;" id="sub-promotion">
         <li class="sub-sidebar-header">Promotion</li>
         <li class="item active margin-top-20"><a href="?p=admin_coupons">Coupons</a></li>
-    </ul>
+    </ul> -->
 
 <?php $this->stop() ?>
 
