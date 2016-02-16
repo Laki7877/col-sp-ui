@@ -4,6 +4,13 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 
 	var service = {};
 
+    service.getRedirPath = function(profile){
+        if(profile.User.IsAdmin === true){
+            return '/admin'
+        }
+        return '/products'
+    }
+
 	service.login = function(user, pass, remember){
 		var deferred = $q.defer();
 		storage.storeSessionToken($base64.encode(user + ":" + pass), true);
