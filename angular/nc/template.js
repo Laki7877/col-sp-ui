@@ -124,4 +124,9 @@ angular.module("nc").run(function($templateCache) {  'use strict';
     "\n" +
     "'fa fa-caret-down color-grey' : !isCurrent() }\" ng-click=click()></i>"
   );
+
+
+  $templateCache.put('partials/page-title',
+    "<div class=\"page-header with-border\"><h1 class=\"float-left page-header-title\">{{ option.title }}</h1><span class=\"float-right page-header-action\"><a ng-click=item.click ng-repeat=\"item in option.buttons\" class=\"btn margin-right-10\" ng-class=item.classes><span>{{ item.title }}</span></a></span></div>"
+  );
  });

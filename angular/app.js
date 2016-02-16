@@ -66,9 +66,13 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
     //Create global logout function
     $rootScope.logout = function(){
         if($rootScope.Imposter){
-            return Credential.logoutAs().then(function(){
+            return Credential.logoutAs().then(function(R){
                 //return to normal flow
-                $window.location.href = "/";
+                if(R.User.IsAdmin){
+                    $window.location.href = "/admin";
+                }else{
+                    $window.location.href = "/products";
+                }
             }, function(){
                 alert("Fetal error while logging out.");
             });

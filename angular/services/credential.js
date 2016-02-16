@@ -6,12 +6,12 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 
 	service.login = function(user, pass, remember){
 		var deferred = $q.defer();
-		storage.storeSessionToken($base64.encode(user + ":" + pass));
+		storage.storeSessionToken($base64.encode(user + ":" + pass), true);
 		common.makeRequest({
 			type: 'GET',
 			url: '/Users/Login/'
 		}).then(function(r){
-			storage.storeCurrentUserProfile(r, remember || false);
+			storage.storeCurrentUserProfile(r, true);
 			deferred.resolve(r);
 		}, deferred.reject);
 
@@ -24,7 +24,7 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 			type: 'GET',
 			url: '/Users/Admin/Login/' + User.UserId
 		}).then(function(r){
-			storage.storeCurrentUserProfile(r, false);
+			storage.storeCurrentUserProfile(r, true);
 			storage.storeImposterProfile(User);
 			deferred.resolve(r);
 		}, deferred.reject);
@@ -38,9 +38,8 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 			type: 'GET',
 			url: '/Users/Admin/LogoutAs'
 		}).then(function(r){
-			//TODO: actually this needs to know whether its overriding local or session storage
             storage.clearImposterProfile();
-			storage.storeCurrentUserProfile(r, false);
+			storage.storeCurrentUserProfile(r, true);
             deferred.resolve(r);
 		}, deferred.reject);
 

@@ -286,9 +286,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
         });
 
         $scope.$watch('formData.ExpireDate', function () {
-            if(form.EffectiveDate == null){ return }
-            
             var form = $scope.addProductForm;
+            if(form.EffectiveDate == null){ return }
             if (form.ExpireDate) form.ExpireDate.$setValidity("min", true);
             if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
                 if (!form.ExpireDate) return;
@@ -409,7 +408,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
             //TODO: Refactor, use better callback mechanism
             if (!angular.isObject(viewBag)) throw new KnownException("View bag is corrupted");
 
-            var shopId = 1;  //TODO: Get from user 
+            var shopId = $rootScope.Profile.Shop.ShopId;  //TODO: Get from user 
             var _editMode = ("productId" in viewBag)
             for (var page in tabPage) {
                 tabPage[page].angular();
