@@ -202,26 +202,37 @@
                             <div ng-class="{'width-field-normal': !isHtmlInput(amap.Attribute.DataType), 'width-field-xxl': isHtmlInput(amap.Attribute.DataType)}">
                                 <!-- disabled if is variant as variant is disabled -->
 
-                                <select class="form-control" disabled ng-if="isListInput(amap.Attribute.DataType)" ng-show="dataSet.attributeOptions[0].Attribute.AttributeId == amap.Attribute.AttributeId">
+                                <select class="form-control" disabled ng-if="isListInput(amap.Attribute.DataType)" 
+                                ng-show="(dataSet.attributeOptions[0].Attribute.AttributeId == amap.Attribute.AttributeId) || (dataSet.attributeOptions[1].Attribute.AttributeId == amap.Attribute.AttributeId)">
                                     <option selected>Edit in Variation Tab</option>
                                 </select>
 
+                                <input class="form-control" disabled type="text" ng-if="(isHtmlInput(amap.Attribute.DataType) || isFreeTextInput(amap.Attribute.DataType))" 
+                                ng-show="(dataSet.attributeOptions[0].Attribute.AttributeId == amap.Attribute.AttributeId) || (dataSet.attributeOptions[1].Attribute.AttributeId == amap.Attribute.AttributeId)" 
+                                value="Edit in Variation Tab" />
+                                
+                                <!-- 3 field types -->
+                                <!--- TODO: will clean later -->
 
-                                <input class="form-control" disabled type="text" ng-if="(isHtmlInput(amap.Attribute.DataType) || isFreeTextInput(amap.Attribute.DataType))" ng-show="dataSet.attributeOptions[0].Attribute.AttributeId == amap.Attribute.AttributeId" value="Edit in Variation Tab"
-                                />
-
-                                <select ng-if="isListInput(amap.Attribute.DataType)" ng-show="dataSet.attributeOptions[0].Attribute.AttributeId != amap.Attribute.AttributeId" class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]">
+                                <select ng-if="isListInput(amap.Attribute.DataType)" 
+                                ng-show="(dataSet.attributeOptions[0].Attribute.AttributeId != amap.Attribute.AttributeId) && (dataSet.attributeOptions[1].Attribute.AttributeId != amap.Attribute.AttributeId)" 
+                                class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]">
                                     <option value="" disabled selected>- Select option -</option>
                                     <option ng-repeat="vv in amap.Attribute.AttributeValueMaps">
                                         {{ vv.AttributeValue.AttributeValueEn || vv }}
                                     </option>
                                 </select>
 
-                                <div ng-if="isHtmlInput(amap.Attribute.DataType)">
+                                <div ng-if="isHtmlInput(amap.Attribute.DataType)" 
+                                ng-show="(dataSet.attributeOptions[0].Attribute.AttributeId != amap.Attribute.AttributeId) && (dataSet.attributeOptions[1].Attribute.AttributeId != amap.Attribute.AttributeId)">
                                     <textarea ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" class="form-control" ng-ckeditor="ckOptions"></textarea>
                                 </div>
 
-                                <input ng-show="isFreeTextInput(amap.Attribute.DataType) && (!amap.Attribute.VariantStatus || controlFlags.variation != 'enable')" type="text" class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" />
+                                <input 
+                                ng-if="isFreeTextInput(amap.Attribute.DataType)" 
+                                ng-show="(dataSet.attributeOptions[0].Attribute.AttributeId != amap.Attribute.AttributeId) && (dataSet.attributeOptions[1].Attribute.AttributeId != amap.Attribute.AttributeId)"
+                                type="text" class="form-control" 
+                                ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" />
 
 
                             </div>

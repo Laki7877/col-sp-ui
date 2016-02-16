@@ -1729,9 +1729,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
         });
 
         $scope.$watch('formData.ExpireDate', function () {
-            if(form.EffectiveDate == null){ return }
-            
             var form = $scope.addProductForm;
+            if(form.EffectiveDate == null){ return }
             if (form.ExpireDate) form.ExpireDate.$setValidity("min", true);
             if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
                 if (!form.ExpireDate) return;
