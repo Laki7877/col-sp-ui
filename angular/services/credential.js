@@ -4,6 +4,17 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 
 	var service = {};
 
+    service.changePassword = function(UserId, oldPass, newPass){
+        var deferred = $q.defer();
+        common.makeRequest({
+			type: 'GET',
+			url: '/Users/ChangePassword/'
+		}).then(function(r){
+			storage.storeCurrentUserProfile(r, true);
+			deferred.resolve(r);
+		}, deferred.reject);
+    };
+
     service.getRedirPath = function(profile){
         if(profile.User.IsAdmin === true){
             return '/admin'

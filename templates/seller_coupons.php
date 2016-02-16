@@ -1,4 +1,5 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Administration System']) ?> <?php $this->start('page-body') ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System']) ?>
+<?php $this->start('page-body') ?>
 <div>
     <nc-page-title nc-title="Seller Coupons">
         <a ng-href="/admin/coupons/seller/create" class="btn margin-right-10 ng-scope btn-blue btn-width-xl">
