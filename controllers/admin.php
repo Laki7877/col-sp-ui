@@ -21,6 +21,11 @@ class AdminController extends Controller
 	{
 		return View::render('admin_coupons_detail');
 	}
+    
+    public static function seller_coupons_create($params)
+	{
+		return View::render('seller_coupons_detail');
+	}
 
     public static function seller_coupons($params)
 	{

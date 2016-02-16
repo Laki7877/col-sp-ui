@@ -1,5 +1,3 @@
 module.exports = function($scope, $controller, config) {
-	$scope.dostuff = function(){
-        alert("Cordova");
-    }
+	console.log("admin kp loaded");
 };

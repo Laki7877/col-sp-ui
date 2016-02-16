@@ -4,14 +4,11 @@
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminProductListCtrl">
-       <nc-page-title options="{
-        title: 'All Products',
-        buttons: [{
-            'action': 'export()',
-            'title' : 'Export',
-            'classes' : ['btn-white']
-        }]
-       }"></nc-page-title>
+       <nc-page-title nc-title="All Products">
+            <a ng-href="/admin/coupons/admin/create" class="btn margin-right-10 ng-scope btn-white btn-width-xl">
+          	  <span class="">Export</span>
+          </a>
+       </nc-page-title>
 	    <div class="row search-section-wrapper">
   			<nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="ProductId"></nc-bulk>
       		<nc-search nc-model="params.searchText" nc-search-event="onSearch" nc-search-placeholder="'Search for Product Name'"></nc-search>

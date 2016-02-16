@@ -2,15 +2,11 @@
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminCouponsCtrl">
-      <nc-page-title options="{
-        title: 'Admin Coupons',
-        buttons: [{
-            'href': '/admin/coupons/admin/create',
-            'click': 'dostuff()',
-            'title' : 'Create Coupon',
-            'classes' : ['btn-blue', 'btn-width-xl']
-        }]
-       }"></nc-page-title>
+      <nc-page-title nc-title="Admin Coupons">
+      	  <a ng-href="/admin/coupons/admin/create" class="btn margin-right-10 ng-scope btn-blue btn-width-xl">
+          	  <span class="">Create Coupon</span>
+          </a>
+      </nc-page-title>
        
     <div class="row search-section-wrapper">
       <div class="search-section section-search">

@@ -3,11 +3,12 @@
 <?php $this->start('page-body') ?>
 
 <div ng-controller="AdminProductApprovalListCtrl">
-   <nc-page-title options="{
-        title: 'Product Approval List',
-        buttons: []
-       }"></nc-page-title>
-	<div>
+   <nc-page-title nc-title="Product Approval List">
+        <a ng-href="/admin/coupons/admin/create" class="btn margin-right-10 ng-scope btn-blue btn-width-xl">
+          	  <span class="">Create Coupon</span>
+        </a>
+   </nc-page-title>
+<div>
 
     <nc-alert nc-model="alert"></nc-alert>
 
