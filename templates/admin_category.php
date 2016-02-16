@@ -20,7 +20,7 @@
 		</div>
 		<div ng-show="!loading && categories.length > 0" class="local-category-section">
 			<div class="col-xs-12 category-header no-padding">
-				<span class="col-xs-6">
+				<span class="col-xs-5">
 					Category Name
 				</span>
 				<span class="col-xs-1">
@@ -29,7 +29,7 @@
 				<span class="col-xs-1 text-align-center">
 					Products
 				</span>
-				<span class="col-xs-1 text-align-center no-padding">
+				<span class="col-xs-2 text-align-center no-padding">
 					Attribute Sets
 				</span>
 				<span class="col-xs-1 text-align-center">
