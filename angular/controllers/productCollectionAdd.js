@@ -351,9 +351,9 @@ function ($scope, $window, util, config, Product, Collection, ImageService, Attr
     };
 
 
-    // $scope.uploader = ImageService.getUploader('/ProductImages', {
-    //     queueLimit: QUEUE_LIMIT
-    // });
+    $scope.uploader = ImageService.getUploader('/ProductImages', {
+        queueLimit: QUEUE_LIMIT
+    });
 
     $scope.uploader.filters.push({
         'name': 'enforceMaxFileSize',
@@ -362,9 +362,9 @@ function ($scope, $window, util, config, Product, Collection, ImageService, Attr
         }
     });
 
-    // $scope.uploader360 = ImageService.getUploader('/ProductImages', {
-    //     queueLimit: QUEUE_LIMIT_360
-    // });
+    $scope.uploader360 = ImageService.getUploader('/ProductImages', {
+        queueLimit: QUEUE_LIMIT_360
+    });
 
 
     $scope.init = function (viewBag) {
@@ -428,8 +428,8 @@ function ($scope, $window, util, config, Product, Collection, ImageService, Attr
 
 
             //Assign uploader images
-            // ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onQueueLimit, onImageUploadFail);
-            // ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onQueueLimit, onImageUploadFail);
+            ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onQueueLimit, onImageUploadFail);
+            ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onQueueLimit, onImageUploadFail);
 
             /**
 		     * IMAGE THUMBNAIL EVENTS
@@ -518,9 +518,9 @@ function ($scope, $window, util, config, Product, Collection, ImageService, Attr
 		     * This part handles when user click on More Detail and open pair form
 		     */
 
-            // $scope.uploaderModal = ImageService.getUploader('/ProductImages', {
-            //     queueLimit: QUEUE_LIMIT
-            // });
+            $scope.uploaderModal = ImageService.getUploader('/ProductImages', {
+                queueLimit: QUEUE_LIMIT
+            });
 
             $scope.uploaderModal.filters.push({
                 'name': 'enforceMaxFileSize',
@@ -541,7 +541,7 @@ function ($scope, $window, util, config, Product, Collection, ImageService, Attr
                 $scope.pairModal = angular.copy(pair);
                 $scope.pairIndex = index;
                 $scope.uploaderModal.queue = $scope.pairModal.queue;
-                //ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onQueueLimit, onImageUploadFail);
+                ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onQueueLimit, onImageUploadFail);
             });
             $scope.$on('savePairModal', function (evt) {
                 $scope.formData.Variants[$scope.pairIndex] = $scope.pairModal;

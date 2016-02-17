@@ -178,6 +178,7 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 .factory('$productAdd', services.productAdd)
 .factory('Collection', services.productCollection)
 .factory('$CollectionAdd', services.productCollectionAdd)
+.factory('Image', services.image)
 
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)
