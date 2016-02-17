@@ -2,8 +2,39 @@
 # Central Online Seller Portal 
 Seller portal web application for Central Online.
 
-## Compiling and running
+## Pre-prerequisites
+    - Ruby (and gem)
+    - NodeJS (and npm)
+    - Git
 
+## Installing prerequisites (Windows)
+*Caution:* Make sure `git`, `ruby`, `gem` are included in `$PATH`
+   
+    gem install compass
+    npm install -g bower
+    npm install -g grunt-cli
+    npm install
+    bower install
+    
+## Installing prerequisites (OS X / Linux)
+
+    sudo gem install compass
+    sudo npm install -g bower
+    sudo npm install -g grunt-cli
+    npm install
+    bower install
+    
+## Installing prerequisites (OS X El Capitan)
+
+    sudo gem install -n /usr/local/bin compass
+    sudo npm install -g bower
+    sudo npm install -g grunt-cli
+    sudo npm install
+    sudo bower install
+    
+## Compiling and running
+    
+    compass compile
     npm buildAll
     npm serve
 
