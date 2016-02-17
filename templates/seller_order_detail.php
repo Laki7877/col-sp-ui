@@ -42,6 +42,44 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Order Detail'])
       </div>
     </div>
 
+    <div class="margin-top-30 field_seller">
+      <div class="col-xs-12 margin-bottom-30 no-padding">
+        <div class="col-xs-4 no-padding">
+          <div class="font-size-20">
+            <span>Customer Name: John Bravo</span>
+          </div>
+          <div class="margin-top-5">Shipping Address</div>
+          <div class="color-dark-grey margin-top-5">
+            <div>Mr. John Bravo</div>
+            <div>268/23 A450 Riverline</div>
+            <div>Riverview Street, Bangkok, 10234</div>
+          </div>
+        </div>
+        <div class="col-xs-4 no-padding">
+          <div class="font-size-20">
+            <span>&nbsp;</span>
+          </div>
+          <div class="margin-top-5">Billing Address</div>
+          <div class="color-dark-grey margin-top-5">
+            <div>Mr. John Bravo</div>
+            <div>268/23 A450 Riverline</div>
+            <div>Riverview Street, Bangkok, 10234</div>
+          </div>
+        </div>
+        <div class="col-xs-4 no-padding">
+          <div class="font-size-20">
+            <span>&nbsp;</span>
+          </div>
+          <div class="margin-top-5">Invoice Address</div>
+          <div class="color-dark-grey margin-top-5">
+            <div>Mr. John Bravo</div>
+            <div>268/23 A450 Riverline</div>
+            <div>Riverview Street, Bangkok, 10234</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="add-product-body">
       <form class="ah-form sticky-mainform-action">
         <div class="tab-content">
@@ -55,8 +93,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Order Detail'])
         <div class="add-product-form-action main-form-action full-width-row">
           <div class="container-fluid">
             <div class="float-right">
-              <button class="btn btn-white btn-width-xl">Cancel</button>
-              <button class="btn btn-blue btn-width-xl">Save</button>
+              <button class="btn btn-white btn-width-xl">Print Invoice</button>
+              <button class="btn btn-white btn-width-xxl">Print Shipping Label</button>
+              <button class="btn btn-blue btn-width-xl">Ready to Ship</button>
             </div>
           </div>
         </div>
