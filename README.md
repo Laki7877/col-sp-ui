@@ -6,7 +6,7 @@ Very angular.
 
 * Plugin should be declared in angular module format. One file per one plugin module (not necessarily one directive)
 
-```
+``` javascript
 angular.module('nc')
   .directive('ncTestPlugin', function() {
     return {
@@ -29,7 +29,7 @@ angular.module('nc')
 
 * Plugin's isolate scope argument should precede by directive name except for `ncModel`.
 
-```
+``` javascript
 angular.module('nc')
   .directive('ncTestPlugin', function() {
     return {
@@ -43,7 +43,7 @@ angular.module('nc')
 
 * Plugin's provider should be its own name precede by `$` character.
 
-```
+``` javascript
 angular.module('nc')
   .provider('$ncTestPlugin', function() {
     this.testOptions = {};
