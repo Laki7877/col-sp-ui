@@ -4,9 +4,10 @@ includeAll(__DIR__ . '/../controllers/*.php');
 
 
 //LOL redirect functions
+//LOL?
 class Redirect {
 	public static function index($params) {
-		header('Location: /products');
+		header('Location: /login');
 	}
 	public static function admin($params) {
 		header('Location: /admin/accounts');
@@ -71,6 +72,7 @@ Route::add('/admin/shops/:id', 'AdminController::editShop');
 Route::add('/admin/shoptypes', 'AdminController::listShoptype');
 Route::add('/admin/shoptypes/add', 'AdminController::addShoptype');
 Route::add('/admin/shoptypes/:id', 'AdminController::editShoptype');
+Route::add('/admin/products', 'AdminController::allProducts');
 
 
 Route::add('/collections', 'ProductCollectionController::index');

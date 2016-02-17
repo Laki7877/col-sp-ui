@@ -174,7 +174,6 @@
     padding-top: 6px;
     padding-bottom: 4px;
     font-weight: normal;
-    border-bottom: 0px;
     a{
       color: $color-black;
     }
@@ -206,16 +205,18 @@
   float: right;
 
   .grey-chevron {
-    color:  $color-grey
+    color:  $color-grey;
+    cursor: not-allowed;
   }
 
   .blue-chevron {
-    color:  $color-theme
+    color:  $color-theme;
   }
 
   .view-page-separator {
     border-left: solid 1px $color-grey;
     padding-left: 15px;
+    padding-right: 5px;
   }
 }
 
@@ -285,7 +286,7 @@
   }
 
   .section-action {
-    width: 280px;
+    width: 285px;
     .body-dropdown-button{
       border-top-right-radius: 0px;
       border-bottom-right-radius: 0px;

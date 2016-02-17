@@ -10,6 +10,8 @@ module.exports = ['$window', '$base64', 'config', function($window, $base64, con
             'message': exception.message
         }));
         
-        if(config.HANDLE_EXCEPTION) $window.location = '/exception?e=' + encMsg;
+        if(config.HANDLE_EXCEPTION) {
+            $window.location = '/exception?e=' + encMsg;
+        } 
     };
 }];

@@ -8,7 +8,7 @@ angular.module('nc')
 			},
 			template: $templateCache.get('common/ncEye'),
 			link: function(scope) {
-				scope.toggle = function() {
+				scope._toggle = function() {
 					scope.model =!scope.model;
 					scope.$eval(scope.callback);
 				};

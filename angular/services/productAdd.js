@@ -28,6 +28,7 @@ module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCat
                         });
                         return aset;
                     });
+                   
 
                     if (ivFormData) {
                         pageLoader.load('Indexing AttributeSet');

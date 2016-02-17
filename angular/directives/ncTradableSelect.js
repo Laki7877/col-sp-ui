@@ -1,5 +1,5 @@
-var angular = require('angular');
-module.exports = ['$templateCache', '$filter', function($templateCache, $filter) {
+module.exports = function($templateCache, $filter) {
+	'ngInject';
 	return {
 		restrict: 'EA',
 		replace: true,
@@ -11,8 +11,8 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 			test: '=?ncTest'
 		},
 		template: function(element, attrs) {
-			if(attrs.ncTemplate) {
-				return $templateCache.get(attrs.ncTemplate);
+			if(attrs.ncTradableSelect) {
+				return $templateCache.get(attrs.ncTradableSelect);
 			} else {
 				return $templateCache.get('common/input/tradable-select');
 			}
@@ -31,7 +31,8 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 				throw 'Please set required field "ncSelectOptions"';
 			}
 		},
-		controller: ['$scope', function($scope) {
+		controller: function($scope) {
+			'ngInject';
 			$scope.search = {};
 			$scope.activeRight = -1;
 			$scope.activeLeft = -1;
@@ -135,6 +136,6 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 			$scope.contain = function(item) {
 				return $scope.model.findIndex(findFn, item) != -1;
 			};
-		}]
+		}
 	};
-}];
+};

@@ -1,6 +1,6 @@
 <div id="add-product-more-option-tab-content">
 	
-	<div class="row">
+	<!--<div class="row">
 		<div class="col-xs-12">
 			<div class="form-section">
 				<div class="form-section-header"><h2>Advanced Search</h2></div>
@@ -26,7 +26,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>-->
 
   
   <div class="filter-section margin-bottom-20">

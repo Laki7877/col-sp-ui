@@ -1,7 +1,15 @@
 {
   "name": "col-sp-client",
   "private": true,
-  "author": "Pat Sabpisal <ecegrid@gmail.com>",
+  "contributors": [
+    {
+      "name": "Pat Sabpisal",
+      "email": "ecegrid@gmail.com"
+    },
+    {
+      "name": "Poon Wu"
+    }
+  ],
   "version": "0.0.2",
   "description": "COL SP Client",
   "license": "MIT",
@@ -15,6 +23,7 @@
     "grunt-browserify": "^4.0.1",
     "grunt-concurrent": "^2.1.0",
     "grunt-contrib-connect": "^0.11.2",
+    "grunt-contrib-uglify": "^0.11.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-exec": "^0.4.6",
     "load-grunt-tasks": "^3.4.0",

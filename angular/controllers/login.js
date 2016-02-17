@@ -4,15 +4,19 @@ module.exports = ['$scope', 'NcAlert', 'Credential', '$window', 'storage', funct
 	$scope.doLogin = function(){
 		if(!$scope.loginForm.$valid) return;
 		$scope.loading = true;
-		var user = $scope.uform.user; //$scope.loginForm.user.$viewValue;
-		var pass = $scope.uform.pass; //$scope.loginForm.pass.$viewValue;
+		var user = $scope.uform.user;
+		var pass = $scope.uform.pass;
 		Credential.login(user, pass).then(function(r){
 			$scope.alert.close();
 			$scope.loading = false;
+            console.log(r);
 
 			var redir = storage.get('redirect');
 			if(!redir){
-				redir = "/";
+				redir = "/products/";
+                if(r.IsAdmin){
+                    redir = "/admin/";
+                }
 			}else{
 				storage.remove('redirect');
 			}

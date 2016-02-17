@@ -227,15 +227,22 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                 clean.ControlFlags = fd.ControlFlags;
                 clean.Brand = fd.Brand;
                 clean.ShippingMethod = fd.ShippingMethod;
+	            clean.EffectiveDate = null;
+                clean.ExpireDate = null;
+                clean.ExpireTime = null;
+                clean.ExpireDate = null;
+                 
+                if(fd.ExpireDate && fd.EffectiveDate){
+                    var cpdate = angular.copy(fd.ExpireDate);
+                    clean.ExpireDate = moment(cpdate).format('LL');
+                    clean.ExpireTime = moment(cpdate).format('HH:mm:ss');
 
-                var cpdate = angular.copy(fd.ExpireDate);
-                clean.ExpireDate = moment(cpdate).format('LL');
-                clean.ExpireTime = moment(cpdate).format('HH:mm:ss');
+                    cpdate = angular.copy(fd.EffectiveDate);
 
-                cpdate = angular.copy(fd.EffectiveDate);
-
-                clean.EffectiveDate = moment(cpdate).format('LL');
-                clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
+                    clean.EffectiveDate = moment(cpdate).format('LL');
+                    clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
+                }
+                
 
                 console.log('1-1', clean);
                 //clean.EffectiveDate = moment(fd.EffectiveDate + " " + fd.EffectiveTime);
@@ -335,12 +342,12 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             invFd.PrepareDay = invFd.PrepareDay || '';
 
             if (invFd.EffectiveDate != "" && invFd.EffectiveDate != null) {
-                invFd.EffectiveDate = moment(invFd.EffectiveDate + " " + invFd.EffectiveTime);
+                invFd.EffectiveDate = moment(invFd.EffectiveDate + " " + invFd.EffectiveTime).toDate();
                 invFd.EffectiveTime = invFd.EffectiveTime;
             }
 
             if (invFd.ExpireDate != "" && invFd.ExpireDate != null) {
-                invFd.ExpireDate = moment(invFd.ExpireDate + " " + invFd.ExpireTime);
+                invFd.ExpireDate = moment(invFd.ExpireDate + " " + invFd.ExpireTime).toDate() ;
                 invFd.ExpireTime = invFd.ExpireTime;
             }
 

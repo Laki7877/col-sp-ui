@@ -18,13 +18,18 @@ angular.module("nc").run(function($templateCache) {  'use strict';
   );
 
 
+  $templateCache.put('common/ncAdvanceSearch',
+    "<div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Advance Search</h2></div><div class=form-section-content><? $this->insert('components/forms/input-text-with-label', [\"label\" => \"Product Name\", ]) ?><? $this->insert('components/forms/input-text-with-label', [\"label\" => \"PID\" ]) ?><? $this->insert('components/forms/input-text-with-label', [\"label\" => \"SKU\" ]) ?><? $this->insert('components/forms/dropdown_tags', [\"label\" => \"Brand Name/ ID\", \"default_choices\" => [\"Gulp\", \"Adico\"], \"choices\" => [\"Gulp\", \"Adico\",\"Pascal\"] ]) ?><? $this->insert('components/forms/input-text-with-label', [\"label\" => \"Global Category Name/ ID\" ]) ?><? $this->insert('components/forms/input-text-with-label', [\"label\" => \"Local Category Name/ ID\" ]) ?><? $this->insert('components/forms/input_tags', [\"label\" => \"Search Tag\", \"choices\" => [\"Gulp\", \"Adico\",\"Pascal\"] ]) ?><? $this->insert('components/forms/input_from_to', [\"label\" => \"Price\", \"label_extend\" => \"To\" ]) ?><? $this->insert('components/forms/input_from_to', [\"label\" => \"Created Date\", \"input_class\" => \"input-icon-calendar\", \"label_extend\" => \"To\" ]) ?><? $this->insert('components/forms/input_from_to', [\"label\" => \"Modified Date\", \"input_class\" => \"input-icon-calendar\", \"label_extend\" => \"To\" ]) ?><div class=form-group><div class=width-label><label class=control-label></label></div><div class=button-size-normal><a class=\"button-size-normal btn btn-blue btn-width-xl\">Search</a></div><div class=button-size-normal><a class=\"button-size-normal margin-left-10 btn btn-white btn-width-xl\">Clear</a></div></div></div></div></div></div>"
+  );
+
+
   $templateCache.put('common/ncAlert',
     "<div ng-show=alert.show uib-alert template-url=common/ncAlertTemplate type=\"{{ alert.type }}\" close=alert.close()><span ng-bind-html=alert.message></span></div>"
   );
 
 
   $templateCache.put('common/ncAlertTemplate',
-    "<div id=alert class=alert ng-class=\"['alert-' + (type || 'warning')]\" class=\"alert alert-dismissable\" role=alert><span class=\"close color opacity-1\" ng-class=\"'color-' + (type || 'warning')\" aria-hidden=true ng-show=closeable ng-click=\"close({$event: $event})\">&times;</span><ng-transclude><ng-transclude></ng-transclude></div>"
+    "<div class=alert ng-class=\"['alert-' + (type || 'warning')]\" class=\"alert alert-dismissable\" role=alert><span class=\"close color opacity-1\" ng-class=\"'color-' + (type || 'warning')\" aria-hidden=true ng-show=closeable ng-click=\"close({$event: $event})\">&times;</span><ng-transclude><ng-transclude></ng-transclude></div>"
   );
 
 
@@ -49,8 +54,7 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/ncEye',
-    "<a ng-click=toggle()><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon' : !model,\r" +
-    "\n" +
+    "<a ng-click=_toggle()><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon' : !model,\n" +
     "                            'fa fa-eye color-dark-grey eye-icon' : model}\"></i></a>"
   );
 
@@ -111,12 +115,9 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/ncTableSort',
-    "<a class=header-link ng-click=click()><span ng-class=\"{ 'active-underline' : isCurrent() }\" ng-transclude></span></a> <i class=fa ng-class=\"{ \r" +
-    "\n" +
-    "'fa fa-caret-down' : isCurrent() && direction, \r" +
-    "\n" +
-    "'fa fa-caret-up' : isCurrent() && !direction, \r" +
-    "\n" +
+    "<a class=header-link ng-click=click()><span ng-class=\"{ 'active-underline' : isCurrent() }\" ng-transclude></span></a> <i class=fa ng-class=\"{ \n" +
+    "'fa fa-caret-down' : isCurrent() && direction, \n" +
+    "'fa fa-caret-up' : isCurrent() && !direction, \n" +
     "'fa fa-caret-down color-grey' : !isCurrent() }\" ng-click=click()></i>"
   );
  });

@@ -9,9 +9,9 @@
         <form class="ah-form margin-top-20">
           <div class="row">
             <div class="col-xs-12">
-              <div>Please check your email for your intitial password or contact</div> 
-              Central administration team at 02-123-4567 to request a
-              new one.</div>
+              <div>
+                  Please check your email for your intitial password or contact Central administration team at 02-123-4567 to request a new one.
+              </div>
             </div>
           </div>
         </form>

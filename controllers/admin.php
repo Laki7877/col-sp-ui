@@ -7,6 +7,9 @@ class AdminController extends Controller
 		return View::render('admin_category');
 	}
 
+    public static function allProducts($params){
+        return View::render('admin_all_products', []);
+    }
 	//Attribute
 	public static function listAttribute($params)
 	{

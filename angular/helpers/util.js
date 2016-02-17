@@ -94,28 +94,9 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     service.page404 = function () {
         $window.location.href = "/error";
     };
+    
 
-    //block before leaving
-    service.warningOnLeave = function (scope, form) {
-        $window.onbeforeunload = function () {
-            if (!scope[form].$dirty) {
-                //not dirty
-                return null;
-            }
-
-            var message = "Your changes will not be saved.",
-                e = e || window.event;
-            // For IE and Firefox
-            if (e) {
-                e.returnValue = message;
-            }
-
-            // For Safari
-            return message;
-        };
-    };
-
-    service.warningOnLeaveFn = function (fn) {
+    service.warningOnLeave = function (fn) {
         $window.onbeforeunload = function () {
             if (fn()) {
                 //not dirty
