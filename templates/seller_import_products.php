@@ -2,6 +2,7 @@
 
 <?php $this->start('page-body') ?>
 	<div class="local-category-page">
+		<!--
 		<? $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => 'Successfully Import Products. <a class="color-black text-underline">View Product List</a>']) ?>
 		<? $this->insert('components/alert-text', ['close' => true, 'color' => 'red', 'text' => 'Fail to import products', 'header_class' => 'font-weight-bold',
 		 'text_multilines' => ['- Wrong template file or format'
@@ -12,6 +13,7 @@
 		, '- Wrong data type'
 		, '- Alien Attack'
 		]]) ?>
+		-->
 
 		<? $this->insert('components/page-title-breadcrumb-border', ['text' => 'Products/Import - Add New Products']) ?>
 
@@ -39,6 +41,391 @@
 									</div>
 								</div>
 							</div>
+
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="form-section">
+										<div class="form-section-header"><h2>Template Guideline [Empty]</h2></div>
+										<div class="form-section-content">
+											<? $this->insert('components/forms/input-text-with-label', ["label" => "Column Header", 'input_class' => 'input-icon-right-search', 'placeholder' => 'Search column header for more detail']) ?>
+											
+											<!-- <div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Template Guideline
+													</label>
+												</div>
+												<div class="width-field-normal ">
+													<label class="control-label ">
+														Nike <a href="#" class="margin-left-10">Copy to Clipboard</a>
+													</label>
+												</div>
+											</div> -->
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="form-section">
+										<div class="form-section-header"><h2>Template Guideline [Normal Result]</h2></div>
+										<div class="form-section-content">
+											<? $this->insert('components/forms/input-text-with-label', ["label" => "Column Header", 'input_class' => 'input-icon-right-search', 'placeholder' => 'Search column header for more detail']) ?>
+											
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Name
+													</label>
+												</div>
+												<div class="width-field-normal text-result">
+													UPC
+												</div>
+											</div>
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Description
+													</label>
+												</div>
+												<div class="width-field-large text-result">
+													The Universal Product Code (UPC) is a barcode symbology (i.e., a specific type of barcode) that is widely used in the USA.
+												</div>
+											</div>
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Accepted Value
+													</label>
+												</div>
+												<div class="width-field-large text-result">
+													12-digit number
+												</div>
+											</div>
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Example
+													</label>
+												</div>
+												<div class="width-field-large text-result">
+													<ul>
+														<li>
+															Acceptable: 123456789012
+														</li>
+														<li>
+															Unacceptable: LFWEPOJ0
+														</li>
+													</ul>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="form-section">
+										<div class="form-section-header"><h2>Template Guideline [Brand]</h2></div>
+										<div class="form-section-content">
+											<? $this->insert('components/forms/input-text-with-label', ["label" => "Column Header", 'input_class' => 'input-icon-right-search', 'placeholder' => 'Search column header for more detail']) ?>
+											
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Name
+													</label>
+												</div>
+												<div class="width-field-normal text-result">
+													Brand
+												</div>
+											</div>
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Description
+													</label>
+												</div>
+												<div class="width-field-large text-result">
+													Brand or manufaturer of your product.
+												</div>
+											</div>
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Accepted Value
+													</label>
+												</div>
+												<div class="width-field-normal">
+													<input type="text" class="form-control input-icon-right-search" placeholder="Search for brand name">
+												</div>
+											</div>
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+													</label>
+												</div>
+												<div class="width-field-normal scrollable-field">
+													<ul class="scrollable-content">
+														<li>
+															Brand A
+														</li>
+														<li>
+															Brand B
+														</li>
+													</ul>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="form-section">
+										<div class="form-section-header"><h2>Template Guideline [Attribute]</h2></div>
+										<div class="form-section-content">
+											<? $this->insert('components/forms/input-text-with-label', ["label" => "Column Header", 'input_class' => 'input-icon-right-search', 'placeholder' => 'Search column header for more detail']) ?>
+											
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Name
+													</label>
+												</div>
+												<div class="width-field-normal text-result">
+													Gadget Capacity
+												</div>
+											</div>
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Description
+													</label>
+												</div>
+												<div class="width-field-large text-result">
+													Description of that attribute
+												</div>
+											</div>
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Enable Variation
+													</label>
+												</div>
+												<div class="width-field-large text-result">
+													Description of that attribute
+												</div>
+											</div>
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Attribute Type
+													</label>
+												</div>
+												<div class="width-field-large text-result">
+													Freetext / Dropdown / HTML Box
+												</div>
+											</div>
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Attribute Unit
+													</label>
+												</div>
+												<div class="width-field-large text-result">
+													Volt / โว้อออออ
+												</div>
+											</div>
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Accepted Value
+													</label>
+												</div>
+												<div class="width-field-normal scrollable-field">
+													<ul class="scrollable-content">
+														<li>
+															Attribute Value A <a href="#" class="margin-left-10">Copy to Clipboard</a>
+														</li>
+														<li>
+															Attribute Value A <a href="#" class="margin-left-10">Copy to Clipboard</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="form-section">
+										<div class="form-section-header"><h2>Template Guideline [Global Category]</h2></div>
+										<div class="form-section-content">
+											<? $this->insert('components/forms/input-text-with-label', ["label" => "Column Header", 'input_class' => 'input-icon-right-search', 'placeholder' => 'Search column header for more detail']) ?>
+											
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Name
+													</label>
+												</div>
+												<div class="width-field-normal text-result">
+													Global Category
+												</div>
+											</div>
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Description
+													</label>
+												</div>
+												<div class="width-field-large text-result">
+													Description babababa
+												</div>
+											</div>
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Global Category
+													</label>
+												</div>
+												<div class="width-field-large text-result">
+													<a href="#"><i class="fa fa-plus-circle"></i> Select Category</a>
+												</div>
+											</div>
+
+											<!-- After select category -->
+
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Global Category
+													</label>
+												</div>
+												<div class="width-field-large text-result">
+													<a href="#">Phone</a>
+												</div>
+											</div>
+
+
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Category ID
+													</label>
+												</div>
+												<div class="width-field-large text-result">
+													F45W <a href="#" class="margin-left-10">Copy to Clipboard</a>
+												</div>
+											</div>
+
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Suggested Attribute Set
+													</label>
+												</div>
+												<div class="width-field-normal scrollable-field">
+													<ul class="scrollable-content">
+														<li>
+															Attribute Set A
+														</li>
+														<li>
+															Attribute Set B
+														</li>
+													</ul>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="form-section">
+										<div class="form-section-header"><h2>Template Guideline [Local Category]</h2></div>
+										<div class="form-section-content">
+											<? $this->insert('components/forms/input-text-with-label', ["label" => "Column Header", 'input_class' => 'input-icon-right-search', 'placeholder' => 'Search column header for more detail']) ?>
+											
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Name
+													</label>
+												</div>
+												<div class="width-field-normal text-result">
+													Local Category
+												</div>
+											</div>
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Description
+													</label>
+												</div>
+												<div class="width-field-large text-result">
+													Description babababa
+												</div>
+											</div>
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Local Category
+													</label>
+												</div>
+												<div class="width-field-large text-result">
+													<a href="#"><i class="fa fa-plus-circle"></i> Select Category</a>
+												</div>
+											</div>
+
+											<!-- After select category -->
+
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Local Category
+													</label>
+												</div>
+												<div class="width-field-large text-result">
+													<a href="#">Phone</a>
+												</div>
+											</div>
+
+
+											<div class="form-group ">
+												<div class="width-label">
+													<label class="control-label ">
+														Category ID
+													</label>
+												</div>
+												<div class="width-field-large text-result">
+													F4XW <a href="#" class="margin-left-10">Copy to Clipboard</a>
+												</div>
+											</div>
+
+									
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
 							<div class="row">
 								<div class="col-xs-12">
 									<div class="form-section">
@@ -50,200 +437,6 @@
 									</div>
 								</div>
 							</div>
-
-							<div class="page-header no-padding with-border margin-top-20 margin-bottom-20">
-							    <h1 class="float-left page-header-title ah-breadcrumb">Template Guideline</h1>
-							</div>
-
-							<div class="row">
-								<div class="col-xs-12">
-									<div class="form-section">
-										<div class="form-section-header"><h2>Brand Guideline</h2></div>
-										<div class="form-section-content">
-											<? $this->insert('components/forms/input-text-with-label', ["label" => "Search Brand", 'input_class' => 'input-icon-right-search', 'placeholder' => 'Search for Brand Name']) ?>
-											
-											<div class="form-group ">
-												<div class="width-label">
-													<label class="control-label ">
-														Brand Name
-													</label>
-												</div>
-												<div class="width-field-normal ">
-													<label class="control-label ">
-														Nike <a href="#" class="margin-left-10">Copy to Clipboard</a>
-													</label>
-												</div>
-											</div>
-
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="row">
-								<div class="col-xs-12">
-									<div class="form-section">
-										<div class="form-section-header"><h2>Attribute Guideline</h2></div>
-										<div class="form-section-content">
-											<? $this->insert('components/forms/input-text-with-label', ["label" => "Search Attribute", 'input_class' => 'input-icon-right-search', 'placeholder' => 'Search for Attribute Name']) ?>
-											
-											<div class="form-group ">
-												<div class="width-label">
-													<label class="control-label ">
-														Attribute Name
-													</label>
-												</div>
-												<div class="width-field-normal ">
-													<label class="control-label ">
-														Dog Size
-													</label>
-												</div>
-											</div>
-
-											<div class="form-group ">
-												<div class="width-label">
-													<label class="control-label ">
-														Enable Variation
-													</label>
-												</div>
-												<div class="width-field-normal ">
-													<label class="control-label ">
-														Yes
-													</label>
-												</div>
-											</div>
-
-											<div class="form-group ">
-												<div class="width-label">
-													<label class="control-label ">
-														Attribute Type
-													</label>
-												</div>
-												<div class="width-field-normal ">
-													<label class="control-label ">
-														Dropdown
-													</label>
-												</div>
-											</div>
-
-											<div class="form-group ">
-												<div class="width-label">
-													<label class="control-label ">
-														Attribute Options
-													</label>
-												</div>
-												<div class="width-field-normal ">
-													<label class="control-label-results">
-														<ul>
-															<li>Small / เล็ก <a href="#" class="margin-left-10">Copy to Clipboard</a></li>
-															<li>Medium / กลาง <a href="#" class="margin-left-10">Copy to Clipboard</a></li>
-															<li>Large / ใหญ่ <a href="#" class="margin-left-10">Copy to Clipboard</a></li>
-														</ul>
-													</label>
-												</div>
-											</div>
-
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<form class="ah-form margin-top-30">
-								<div class="category-section column-4">
-									<div class="category-section-border-box">
-										<div class="category-header">
-											<span>Global Category Guideline</span>
-										</div>
-										<div class="category-content no-padding">
-											<ul class="content-column">
-												<li class="category-active">Electronic</li>
-												<li>Fashion</li>
-												<li>Home & Living</li>
-												<li>Mom & Kids</li>
-												<li>Electronic</li>
-												<li>Fashion</li>
-												<li>Home & Living</li>
-												<li>Mom & Kids</li>
-												<li>Electronic</li>
-												<li>Fashion</li>
-												<li>Home & Living</li>
-												<li>Mom & Kids</li>
-												<li>Electronic</li>
-												<li>Fashion</li>
-												<li>Home & Living</li>
-												<li>Mom & Kids</li>
-												<li>Electronic</li>
-												<li>Fashion</li>
-												<li>Home & Living</li>
-												<li>Mom & Kids</li>
-											</ul>
-											<ul class="content-column">
-												<li>Computer</li>
-												<li class="category-active">Phone</li>
-												<li>Speaker</li>
-											</ul>
-											<ul class="content-column">
-												<li>Smart Phone</li>
-												<li>Office Phone</li>
-												<li class="category-active">Accessory</li>
-											</ul>
-											<ul class="empty-column content-column"></ul>
-										</div>
-									</div>
-									<div class="category-footer no-padding text-align-right">
-										<span>Global Category ID: A2141</span> <a href="#" class="margin-left-10">Copy to Clipboard</a>
-									</div>
-								</div>
-							</form>
-
-							<form class="ah-form margin-top-30">
-								<div class="category-section column-4">
-									<div class="category-section-border-box">
-										<div class="category-header">
-											<span>Local Category Guideline</span>
-										</div>
-										<div class="category-content no-padding">
-											<ul class="content-column">
-												<li class="category-active">Electronic</li>
-												<li>Fashion</li>
-												<li>Home & Living</li>
-												<li>Mom & Kids</li>
-												<li>Electronic</li>
-												<li>Fashion</li>
-												<li>Home & Living</li>
-												<li>Mom & Kids</li>
-												<li>Electronic</li>
-												<li>Fashion</li>
-												<li>Home & Living</li>
-												<li>Mom & Kids</li>
-												<li>Electronic</li>
-												<li>Fashion</li>
-												<li>Home & Living</li>
-												<li>Mom & Kids</li>
-												<li>Electronic</li>
-												<li>Fashion</li>
-												<li>Home & Living</li>
-												<li>Mom & Kids</li>
-											</ul>
-											<ul class="content-column">
-												<li>Computer</li>
-												<li class="category-active">Phone</li>
-												<li>Speaker</li>
-											</ul>
-											<ul class="content-column">
-												<li>Smart Phone</li>
-												<li>Office Phone</li>
-												<li class="category-active">Accessory</li>
-											</ul>
-											<ul class="empty-column content-column"></ul>
-										</div>
-									</div>
-									<div class="category-footer no-padding text-align-right">
-										<span>Local Category ID: A2141</span> <a href="#" class="margin-left-10">Copy to Clipboard</a>
-									</div>
-								</div>
-							</form>
-
 
 						</div>
 
