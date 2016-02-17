@@ -6,9 +6,10 @@ Seller portal web application for Central Online.
     - Ruby (and gem)
     - NodeJS (and npm)
     - Git
+    - PHP
 
 ## Installing prerequisites (Windows)
-*Caution:* Make sure `git`, `ruby`, `gem` are included in `$PATH`
+*Caution:* Make sure `git`, `ruby`, `gem`, `php` are included in `$PATH`
    
     gem install compass
     npm install -g bower
