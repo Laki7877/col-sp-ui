@@ -215,6 +215,7 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 .controller('SellerAccountAddCtrl', controllers.sellerAccountAdd)
 .controller('SellerRoleCtrl', controllers.sellerRole)
 .controller('SellerRoleAddCtrl', controllers.sellerRoleAdd)
+.controller('SellerShopSettingCtrl', controllers.sellerShopSetting)
 
 .controller('AdminAttributeCtrl', controllers.adminAttribute)
 .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)

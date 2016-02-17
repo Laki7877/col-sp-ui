@@ -71,23 +71,23 @@
 											      </div>
 											      <div class="clickable-list">
 											        <ul class="content-column">
-											          <li>Attribute Set A</li>
-											          <li class="active">Attribute Set B</li>
-											          <li>Attribute Set C</li>
-											          <li>Attribute Set D</li>
-											          <li>Attribute Set E</li>
-											          <li>Attribute Set F</li>
-											          <li>Attribute Set G</li>
-											          <li>Attribute Set H</li>
-											          <li>Attribute Set J</li>
-											          <li>Attribute Set K</li>
-											          <li>Attribute Set G</li>
-											          <li>Attribute Set H</li>
-											          <li>Attribute Set J</li>
+											          <li>Attribute Set A (1,500)</li>
+											          <li class="active">Attribute Set B (1,200)</li>
+											          <li>Attribute Set C (500)</li>
+											          <li>Attribute Set D (2,400)</li>
+											          <li>Attribute Set E (500)</li>
+											          <li>Attribute Set F (500)</li>
+											          <li>Attribute Set G (500)</li>
+											          <li>Attribute Set H (50)</li>
+											          <li>Attribute Set J (7)</li>
+											          <li>Attribute Set K (4,500)</li>
+											          <li>Attribute Set G (5,800)</li>
+											          <li>Attribute Set H (5,000)</li>
+											          <li>Attribute Set J (500)</li>
 											        </ul>
 											      </div>
 											      <div class="checkbox">
-											      	<label><input type="checkbox">Select All Attribute Sets</label>
+											      	<label><input type="checkbox">Select All Attribute Sets (1,588,222)</label>
 											      </div>
 											    </div>
 
@@ -102,16 +102,16 @@
 
 											    <div class="right-column" style="width: 300px;">
 											      <div class="list-header">
-											        <span>Selected Attribute Set</span>
+											        <span>Selected Attribute Set (10,545)</span>
 											      </div>
 											      <div class="clickable-list">
 											        <ul class="content-column">
-											          <li>Attribute Set A</li>
-											          <li class="active">Attribute Set B</li>
-											          <li>Attribute Set C</li>
-											          <li>Attribute Set D</li>
-											          <li>Attribute Set E</li>
-											          <li>Attribute Set F</li>
+											          <li>Attribute Set A (1,500)</li>
+											          <li class="active">Attribute Set B (1,200)</li>
+											          <li>Attribute Set C (1,200)</li>
+											          <li>Attribute Set D (1,200)</li>
+											          <li>Attribute Set E (1,200)</li>
+											          <li>Attribute Set F (1,200)</li>
 											         
 											        </ul>
 											      </div>
@@ -137,7 +137,7 @@
 			        <div class="container-fluid">
 			          <div class="float-right">
 			            <a href="#" class="link-btn-plain">Cancel</a>
-			            <button class="btn btn-blue btn-width-xl" data-toggle="modal" data-target="#export-product">ExportXX</button>
+			            <button class="btn btn-blue btn-width-xl" data-toggle="modal" data-target="#export-product">Export</button>
 			          </div>
 			        </div>
 			     </div>

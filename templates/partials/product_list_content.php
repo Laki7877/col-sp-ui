@@ -7,7 +7,7 @@
 				<div class="form-section-content">
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Product Name", ]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "PID" ]) ?>
-          <? $this->insert('components/forms/input-text-with-label', ["label" => "SKU" ]) ?>
+                    <? $this->insert('components/forms/input-text-with-label', ["label" => "SKU" ]) ?>
 					<? $this->insert('components/forms/dropdown_tags', ["label" => "Brand Name/ ID", "default_choices" => ["Gulp", "Adico"], "choices" => ["Gulp", "Adico","Pascal"] ]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Global Category Name/ ID" ]) ?>
 					<? $this->insert('components/forms/input-text-with-label', ["label" => "Local Category Name/ ID" ]) ?>
