@@ -73,7 +73,7 @@ Route::add('/admin/shoptypes', 'AdminController::listShoptype');
 Route::add('/admin/shoptypes/add', 'AdminController::addShoptype');
 Route::add('/admin/shoptypes/:id', 'AdminController::editShoptype');
 Route::add('/admin/products', 'AdminController::allProducts');
-<<<<<<< HEAD
+
 
 
 Route::add('/collections', 'ProductCollectionController::index');
@@ -81,13 +81,13 @@ Route::add('/collections/add', 'ProductCollectionController::add');
 Route::add('/collections/import', 'ProductCollectionController::import');
 Route::add('/collections/:id', 'ProductCollectionController::edit');
 
-=======
+
 Route::add('/admin/approve', 'AdminController::approve');
 Route::add('/admin/coupons/seller', 'AdminController::seller_coupons');
 Route::add('/admin/coupons/seller/create', 'AdminController::seller_coupons_create');
 Route::add('/admin/coupons/admin', 'AdminController::admin_coupons');
 Route::add('/admin/coupons/admin/create', 'AdminController::admin_coupons_create');
->>>>>>> 436acae478f3dce0e2ec297d3997f6eeb89957dc
+
 //test route
 Route::add('/test/:name', 'TestController::any');
 
