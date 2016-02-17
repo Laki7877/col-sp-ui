@@ -1,6 +1,6 @@
 module.exports = {
 	ProductName: {},
-	PID: {},
+	Pid: {},
 	SKU: {},
 	Brands: {},
 	GlobalCategory: {},
