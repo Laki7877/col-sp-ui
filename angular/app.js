@@ -240,11 +240,8 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 .controller('LoginCtrl', controllers.login)
 .controller('AbstractListCtrl', controllers.abstractList)
 .controller('AbstractAddCtrl', controllers.abstractAdd)
-<<<<<<< HEAD
 .controller('ProductCollectionListCtrl', controllers.productCollectionList)
 .controller('ProductCollectionAddCtrl', controllers.productCollectionAdd)
-=======
 .controller('AdminCouponsCtrl', controllers.adminCoupons)
->>>>>>> 436acae478f3dce0e2ec297d3997f6eeb89957dc
 
 .controller('TestCtrl', controllers.test)
