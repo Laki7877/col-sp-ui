@@ -1,4 +1,4 @@
-module.exports = function($scope, Attribute, util) {
+module.exports = function($scope, Attribute, util, GlobalCategoryService, Category) {
 		$scope.filterOptions = [
 			{ name: "All", value: 'All'},
 			{ name: "Free Text", value: 'FreeText'},
@@ -69,4 +69,12 @@ module.exports = function($scope, Attribute, util) {
 		};
 		$scope.reload();
 		$scope.$watch('params', $scope.reload, true); 	
+
+		$scope.treeSelectTree = [];
+		$scope.treeSelectModel = null;
+
+		GlobalCategoryService.list()
+			.then(function(data) {
+				$scope.treeSelectTree = Category.transformNestedSetToUITree(data);
+			});
 };
