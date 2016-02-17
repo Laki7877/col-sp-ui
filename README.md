@@ -2,6 +2,11 @@
 # Central Online Seller Portal 
 Seller portal web application for Central Online.
 
+## Compiling and running
+
+    npm buildAll
+    npm serve
+
 ## ncPlugin Design Document
 
 * Plugin should be declared in angular module format. One file per one plugin module (not necessarily one directive)
