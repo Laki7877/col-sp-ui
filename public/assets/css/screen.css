@@ -12549,26 +12549,26 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 
 /* line 205, ../../../assets/_atomic.scss */
-.icon-size-20 {
+.font-size-20 {
   font-size: 20px;
 }
 
-/* line 209, ../../../assets/_atomic.scss */
+/* line 213, ../../../assets/_atomic.scss */
 .margin-0 {
   margin: 0;
 }
 
-/* line 213, ../../../assets/_atomic.scss */
+/* line 217, ../../../assets/_atomic.scss */
 .font-weight-bold {
   font-weight: bold;
 }
 
-/* line 217, ../../../assets/_atomic.scss */
+/* line 221, ../../../assets/_atomic.scss */
 .opacity-1 {
   opacity: 1;
 }
 
-/* line 221, ../../../assets/_atomic.scss */
+/* line 225, ../../../assets/_atomic.scss */
 .width-100-percent {
   width: 100%;
 }
@@ -13495,6 +13495,11 @@ form h6 {
   background: #fff;
 }
 
+/* line 203, ../../../assets/_form.sass */
+.form-inline .width-field-small-input {
+  width: 230px;
+}
+
 /* line 1, ../../../assets/_input.sass */
 .input-search-icon, .input-icon-search, .input-icon-calendar {
   background-size: 15px 15px;
@@ -14016,19 +14021,25 @@ form h6 {
   border-color: #4899DD;
 }
 
-/* line 33, ../../../assets/screen.scss */
+/* line 3, ../../../assets/_seller_page.sass */
+.field_seller .with_border {
+  padding-bottom: 14px;
+  border-bottom: 1px solid #bcc7d5;
+}
+
+/* line 34, ../../../assets/screen.scss */
 body {
   overflow-y: scroll;
   overflow-x: auto;
 }
 
-/* line 38, ../../../assets/screen.scss */
+/* line 39, ../../../assets/screen.scss */
 html, body {
   height: 100%;
   min-height: 100%;
 }
 
-/* line 43, ../../../assets/screen.scss */
+/* line 44, ../../../assets/screen.scss */
 #wrapper {
   position: relative;
   display: block;
@@ -14036,13 +14047,13 @@ html, body {
   min-height: 100%;
 }
 
-/* line 50, ../../../assets/screen.scss */
+/* line 51, ../../../assets/screen.scss */
 #page-content-wrapper {
   margin-left: 180px;
   position: relative;
 }
 
-/* line 55, ../../../assets/screen.scss */
+/* line 56, ../../../assets/screen.scss */
 #page-body-wrapper {
   padding-top: 30px;
   padding-bottom: 30px;
@@ -14692,23 +14703,23 @@ html, body {
 }
 
 /* Additional Code */
-/* line 70, ../../../assets/screen.scss */
+/* line 71, ../../../assets/screen.scss */
 .tradable-list .left-column {
   margin-left: 30px;
   float: left;
   width: 300px;
 }
-/* line 74, ../../../assets/screen.scss */
+/* line 75, ../../../assets/screen.scss */
 .tradable-list .left-column .search-box {
   height: 33px;
 }
-/* line 78, ../../../assets/screen.scss */
+/* line 79, ../../../assets/screen.scss */
 .tradable-list .center-column {
   float: left;
   padding-top: 145px;
   margin-left: 30px;
 }
-/* line 82, ../../../assets/screen.scss */
+/* line 83, ../../../assets/screen.scss */
 .tradable-list .center-column .trade-button {
   padding: 8px 10px 5px 10px;
   margin-bottom: 15px;
@@ -14717,39 +14728,39 @@ html, body {
   color: #BCC7D5;
   border: 1px solid #BCC7D5;
 }
-/* line 89, ../../../assets/screen.scss */
+/* line 90, ../../../assets/screen.scss */
 .tradable-list .center-column .trade-button.active {
   cursor: pointer;
   color: #4899DD;
 }
-/* line 95, ../../../assets/screen.scss */
+/* line 96, ../../../assets/screen.scss */
 .tradable-list .right-column {
   float: left;
   width: 400px;
   margin-left: 30px;
 }
-/* line 99, ../../../assets/screen.scss */
+/* line 100, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header {
   margin-top: 9px;
   margin-bottom: 5px;
 }
-/* line 102, ../../../assets/screen.scss */
+/* line 103, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header .column-1 {
   margin-left: 15px;
 }
-/* line 105, ../../../assets/screen.scss */
+/* line 106, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header .column-2 {
   margin-left: 120px;
 }
-/* line 108, ../../../assets/screen.scss */
+/* line 109, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header .column-3 {
   margin-left: 30px;
 }
-/* line 113, ../../../assets/screen.scss */
+/* line 114, ../../../assets/screen.scss */
 .tradable-list .clickable-list {
   overflow: hidden;
 }
-/* line 115, ../../../assets/screen.scss */
+/* line 116, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column {
   margin-top: 15px;
   -webkit-padding-start: 0px;
@@ -14759,14 +14770,14 @@ html, body {
   border: 1px solid #BCC7D5;
   border-radius: 3px;
 }
-/* line 123, ../../../assets/screen.scss */
+/* line 124, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li {
   padding-left: 15px;
   padding-right: 15px;
   line-height: 30px;
   cursor: pointer;
 }
-/* line 128, ../../../assets/screen.scss */
+/* line 129, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-1 {
   margin-left: 15px;
   display: inline-block;
@@ -14776,30 +14787,30 @@ html, body {
   text-overflow: ellipsis;
   float: left;
 }
-/* line 137, ../../../assets/screen.scss */
+/* line 138, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-2 {
   margin-left: 50px;
   display: inline-block;
   float: left;
 }
-/* line 142, ../../../assets/screen.scss */
+/* line 143, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-3 {
   margin-left: 80px;
   display: inline-block;
   float: left;
 }
-/* line 148, ../../../assets/screen.scss */
+/* line 149, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li.active {
   background: #4899DD;
   color: #FFFFFF;
 }
 
-/* line 156, ../../../assets/screen.scss */
+/* line 157, ../../../assets/screen.scss */
 .my_file {
   display: none !important;
 }
 
-/* line 160, ../../../assets/screen.scss */
+/* line 161, ../../../assets/screen.scss */
 .empty-section {
   border: 1px solid;
   border-color: #BCC7D5;
@@ -14807,7 +14818,7 @@ html, body {
   height: 80px;
   line-height: 80px;
 }
-/* line 166, ../../../assets/screen.scss */
+/* line 167, ../../../assets/screen.scss */
 .empty-section .loading-img {
   width: 40px;
   height: 40px;
@@ -14815,7 +14826,7 @@ html, body {
   margin-right: 15px;
 }
 
-/* line 174, ../../../assets/screen.scss */
+/* line 175, ../../../assets/screen.scss */
 .get_file {
   cursor: pointer;
 }
