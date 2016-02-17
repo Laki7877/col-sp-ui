@@ -3,6 +3,8 @@
 ($scope, Product,Collection, util, Alert, $window, $rootScope) {
     //UI binding variables    
 
+    $scope.checkBoxCache = {};
+    $scope.hidCMSTypeId = {};    
     $scope.showOnOffStatus = true;
     $scope.allChecked = false;
     $scope.alert = new Alert();
@@ -14,30 +16,30 @@
         { name: "Wait for Approval", value: 'WaitforApproval' },
     ];
 
-    $scope.startExportProducts = function () {
+    $scope.startExportProductCollection = function () {
         $scope.exporter = {
             progress: 10,
             title: 'Exporting...'
         };
 
-        $("#export-product").modal('show');
+        $("#export-product-collection").modal('show');
     };
 
-    $scope.confirmExportProducts = function () {
-        $("#export-product").modal('hide');
+    $scope.confirmExportProductCollection = function () {
+        $("#export-product-collection").modal('hide');
 
         var arr = [];
         Object.keys($scope.checkBoxCache).forEach(function (m) {
             if (!$scope.checkBoxCache[m]) return;
             arr.push({
-                ProductId: Number(m)
+                CMSId: Number(m)
             });
         });
 
         if (arr.length == 0) return;
 
 
-        var fileName = 'ProductExport-' + moment(new Date(), 'MM-DD-YYYY-HHmm') + ".csv";
+        var fileName = 'ProductCollectionExport-' + moment(new Date(), 'MM-DD-YYYY-HHmm') + ".csv";
         var a = document.getElementById("export_download_btn");
 
         var error = function (r) {
@@ -52,8 +54,9 @@
 
         var chunks = _.chunk(arr, 3);
 
+
         chunks.forEach(function (chunk) {
-            Product.export(chunk).then(function (result) {
+            Collection.export(chunk).then(function (result) {
 
                 $scope.exporter.progress += (100 / chunks);
                 blobs.push(result);
@@ -72,8 +75,6 @@
         });
     }
 
-
-    $scope.checkBoxCache = {};
 
     $scope.setPageSize = function (p) {
         $scope.tableParams.pageSize = p;
@@ -97,16 +98,28 @@
             value: 'delete',
             fn: function () {
                 $scope.alert.close();
+             
 
-                var arr = Object.keys($scope.checkBoxCache).map(function (m) {
-                    if (!$scope.checkBoxCache[m]) return { ProductId: -1 };
-                    return {
-                        ProductId: Number(m)
-                    };
+
+             var selList = Object.keys($scope.checkBoxCache).map(function (id) {
+                    var rObj = {};
+
+                    if (!$scope.checkBoxCache[id]) { 
+                            rObj = { CMSId: -1 , CMSStatusFlowId: 5 , CMSTypeId : -1 };  
+                    }else{
+                            rObj = {
+                            CMSId: Number(id),
+                            CMSStatusFlowId: 5 ,
+                            CMSTypeId: $scope.hidCMSTypeId[id]
+                        };
+                    }                   
+                    return rObj ;
                 });
-
-                if (arr.length > 0) {
-                    Product.deleteBulk(arr).then(function () {
+    
+                if (selList.length > 0) {
+                       
+                        var apiRequest = Collection.arrSerialize(selList);                         
+                        Collection.deleteBulk(apiRequest).then(function () {
                         $scope.alert.success('Successfully deleted');
                         $scope.reloadData();
                     }, function (result) {
@@ -120,15 +133,25 @@
             name: 'Show',
             value: 'show',
             fn: function () {
-                var arr = Object.keys($scope.checkBoxCache).map(function (m) {
-                    if (!$scope.checkBoxCache[m]) return { ProductId: -1 };
-                    return {
-                        ProductId: Number(m)
-                    };
+
+        var selList = Object.keys($scope.checkBoxCache).map(function (id) {
+                    var rObj = {};
+                    if (!$scope.checkBoxCache[id]) { 
+                            rObj = { CMSId: -1 , Visibility: true ,CMSTypeId :-1 };  
+                    }else{
+                            rObj = {
+                            CMSId: Number(id) ,
+                            Visibility : true ,
+                            CMSTypeId: $scope.hidCMSTypeId[id]
+                        };
+                    }                   
+                    return rObj ;
                 });
 
-                if (arr.length > 0) {
-                    Product.visible(arr).then(function () {
+
+                if (selList.length > 0) {
+                     var apiRequest = Collection.arrSerialize(selList);
+                        Collection.visible(apiRequest).then(function () {
                         $scope.alert.success('Successfully changed');
                         $scope.reloadData();
                     }, function () {
@@ -142,15 +165,24 @@
             name: 'Hide',
             value: 'hide',
             fn: function () {
-                var arr = Object.keys($scope.checkBoxCache).map(function (m) {
-                    if (!$scope.checkBoxCache[m]) return { ProductId: -1 };
-                    return {
-                        ProductId: Number(m)
-                    };
+               
+                 var selList = Object.keys($scope.checkBoxCache).map(function (id) {
+                    var rObj = {};
+                    if (!$scope.checkBoxCache[id]) { 
+                            rObj = { CMSId: -1 , Visibility: false ,CMSTypeId :-1 };  
+                    }else{
+                            rObj = {
+                            CMSId: Number(id) ,
+                            Visibility : false ,
+                            CMSTypeId: $scope.hidCMSTypeId[id]
+                        };
+                    }                   
+                    return rObj ;
                 });
 
-                if (arr.length > 0) {
-                    Product.visible(arr).then(function () {
+                if (selList.length > 0) {
+                      var apiRequest = Collection.arrSerialize(selList);
+                        Collection.visible(apiRequest).then(function () {
                         $scope.alert.success('Successfully changed');
                         $scope.reloadData();
                     }, function () {
@@ -164,32 +196,44 @@
             name: 'Publish',
             value: 'publish',
             fn: function () {
-                var arr = [];
-                Object.keys($scope.checkBoxCache).forEach(function (m) {
-                    if (!$scope.checkBoxCache[m]) return;
-                    arr.push({
-                        ProductId: Number(m)
-                    });
+              
+                 var selList = Object.keys($scope.checkBoxCache).map(function (id) {
+                    var rObj = {};
+                    if (!$scope.checkBoxCache[id]) { 
+                            rObj = { CMSId: -1 ,CMSStatusFlowId: 2 , CMSTypeId :-1 };  
+                    }else{
+                            rObj = {
+                            CMSId: Number(id) ,
+                            CMSStatusFlowId: 2 ,
+                            CMSTypeId: $scope.hidCMSTypeId[id]
+                        };
+                    }                   
+                    return rObj ;
                 });
 
-                if (arr.length == 0) return;
+                if (selList.length == 0) return;
 
-                Product.bulkPublish(arr).then(function () {
-                    $scope.alert.success("Successfully published " + arr.length + " items");
-                    $scope.reloadData();
+                    var apiRequest = Collection.arrSerialize(selList);
+                Collection.bulkPublish(apiRequest).then(function () {
+                    // $scope.alert.success("Successfully published " + arr.length + " items");
+                    // $scope.reloadData();
+                     $scope.alert.success('Successfully published');
+                     $scope.reloadData();
                 }, function (r) {
-                    $scope.alert.error('Unable to publish because ' + r.message);
+                    //$scope.alert.error('Unable to publish because ' + r.message);
+                    $scope.alert.success('Unable to publish');
+                     $scope.reloadData();
                 });
             }
         }
     ];
     $scope.actions = {
         edit: function (row) {
-            $window.location.href = "/products/" + row.ProductId;
+            $window.location.href = "/collections/" + row.CMSId;
         },
         delete: function (row) {
             $scope.alert.close();
-            Product.deleteBulk([{ ProductId: row.ProductId }]).then(function () {
+            Collection.deleteBulk([{ CMSId: row.CMSId ,CMSTypeId : row.CMSTypeId,CMSStatusFlowId:5 }]).then(function () {
                 $scope.alert.success('You have successfully remove an entry.');
                 $scope.reloadData();
             }, function (err) {
@@ -198,7 +242,7 @@
         },
         duplicate: function (row) {
             $scope.alert.close();
-            Product.duplicate(row.ProductId).then(function () {
+            Collection.duplicate(row.CMSId).then(function () {
                 $scope.alert.success();
                 $scope.reloadData();
             }, function (err) {
@@ -208,7 +252,9 @@
         toggle: function (row) {
             $scope.alert.close();
             row.Visibility = !row.Visibility;
-            Product.visible([row]).then(function () {
+            console.log("[row]");
+            console.log([row]);
+            Collection.visible([row]).then(function () {
             }, function (err) {
                 $scope.alert.error(err);
                 $scope.reloadData();
@@ -317,36 +363,31 @@
 
     
 
-         $scope.checkAll = function(){
-            console.log("CheckAll fire");
+   
+    $scope.checkAll = function(){
         var first = $scope.productList[0];
-        var tval = !($scope.checkBoxCache[first.ProductId] || false);
+        var tval = !($scope.checkBoxCache[first.CMSId] || false);
         $scope.productList.forEach(function (d) {
-            $scope.checkBoxCache[d.ProductId] = tval;
+            $scope.checkBoxCache[d.CMSId] = tval;
         });
     }
 
-    //Select All checkbox
-    // $scope.$watch('checkAll', function (newVal, oldVal) {
-    //     console.log("CheckAll watch filre");
-    //     $scope.productList.forEach(function (d) {
-    //         $scope.checkBoxCache[d.ProductId] = $scope.checkAll;
-    //     });
-    // }, true);
+
+    
 
     $scope.checkBoxCount = function () {
         var m = [];
         Object.keys($scope.checkBoxCache).forEach(function (key) {
             if ($scope.checkBoxCache[key]) m.push($scope.checkBoxCache[key]);
         });
-        
+      
         //Count checked checkbox (on this page only)
         //TODO: I don't like this solution, I'd rather trade space for time
         //note: can't just count checkboxcache because checkboxcache is global across
         //all pages. 
         var chkCount = 0;
         $scope.productList.forEach(function(p){
-            chkCount += ($scope.checkBoxCache[p.ProductId] ? 1 : 0);
+            chkCount += ($scope.checkBoxCache[p.CMSId] ? 1 : 0);
         });
         
         //Change selectAll checkbox state

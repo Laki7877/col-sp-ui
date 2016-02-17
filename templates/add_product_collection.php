@@ -10,7 +10,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 
 		<div ng-show="pageState.success" id="alert-success" class="alert alert-green alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			Your product has been saved sucessfully. <a href="/products/">View Product List</a>
+			Your product has been saved sucessfully. <a href="/colections/">View Collection List</a>
 		</div>
 
 		<div ng-show="pageState.failure" id="alert-failure" class="alert alert-red alert-dismissible" role="alert">

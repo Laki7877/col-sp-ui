@@ -20,17 +20,17 @@ class ProductCollectionController extends Controller
 	}
 
 	public static function edit($params){
-		return View::render('add_product', [
-				'title' => 'Product Detail',
+		return View::render('add_product_collection', [
+				'title' => 'Collections Detail',
 				'viewBag' => array(
-					'productId'=> $params['productid']
+					'CMSId'=> $params['id']
 				)
 			]);
 	}
 
 	public static function import($params){
-		return View::render('import_product', [
-				'title' => 'Import Product'
+		return View::render('import_product_collection', [
+				'title' => 'Import Collections'
 		]);
 	}
 

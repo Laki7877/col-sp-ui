@@ -37,6 +37,11 @@
         <li ng-class="activeUrl('/roles')" class="item"><a href="/roles">User Roles</a></li>
     </ul>
 
+    <ul class="sub-sidebar" style="display: none;" id="sub-sidebar-product-collection">
+        <li class="sub-sidebar-header">Collection</li>
+        <li ng-class="activeUrl('/collections')"  class="item margin-top-20"><a href="/collections">View</a></li>
+        <li ng-class="activeUrl('/collections/add')"  class="item"><a href="/collections/add">add</a></li>
+    </ul>
 <?php $this->stop() ?>
 
 <?php $this->start('page-content') ?>

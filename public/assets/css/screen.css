@@ -2411,7 +2411,7 @@ pre code {
 }
 
 /* line 11, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .ah-form .form-group .width-field-tooltip, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .ah-form .form-group .width-label, .ah-form .form-group .width-label-extend, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .ah-form .form-group .width-field-small-input, .ah-form .form-group .width-field-small, .ah-form .form-group .width-field-normal, .ah-form .form-group .width-field-large, .ah-form .form-group .width-field-xl, .ah-form .form-group .width-field-xxl, .ah-form .form-group .button-size-normal, .ah-form .form-group .button-size-large, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .ah-form .form-group .width-field-tooltip, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .ah-form .form-group .width-label, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .ah-form .form-group .width-field-small, .ah-form .form-group .width-field-normal, .ah-form .form-group .width-field-large, .ah-form .form-group .width-field-xl, .ah-form .form-group .width-field-xxl, .ah-form .form-group .button-size-normal, .ah-form .form-group .button-size-large, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -2419,7 +2419,7 @@ pre code {
 }
 
 /* line 27, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-.col-xs-1, .col-xs-2, .ah-form .form-group .width-field-tooltip, .col-xs-3, .ah-form .form-group .width-label, .ah-form .form-group .width-label-extend, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .ah-form .form-group .width-field-small-input, .ah-form .form-group .width-field-small, .ah-form .form-group .width-field-normal, .ah-form .form-group .width-field-large, .ah-form .form-group .width-field-xl, .ah-form .form-group .width-field-xxl, .ah-form .form-group .button-size-normal, .ah-form .form-group .button-size-large, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+.col-xs-1, .col-xs-2, .ah-form .form-group .width-field-tooltip, .col-xs-3, .ah-form .form-group .width-label, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .ah-form .form-group .width-field-small, .ah-form .form-group .width-field-normal, .ah-form .form-group .width-field-large, .ah-form .form-group .width-field-xl, .ah-form .form-group .width-field-xxl, .ah-form .form-group .button-size-normal, .ah-form .form-group .button-size-large, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left;
 }
 
@@ -2434,7 +2434,7 @@ pre code {
 }
 
 /* line 35, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-.col-xs-3, .ah-form .form-group .width-label, .ah-form .form-group .width-label-extend {
+.col-xs-3, .ah-form .form-group .width-label {
   width: 25%;
 }
 
@@ -2454,7 +2454,7 @@ pre code {
 }
 
 /* line 35, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-.col-xs-7, .ah-form .form-group .width-field-small-input, .ah-form .form-group .width-field-small, .ah-form .form-group .width-field-normal, .ah-form .form-group .width-field-large, .ah-form .form-group .width-field-xl, .ah-form .form-group .width-field-xxl, .ah-form .form-group .button-size-normal, .ah-form .form-group .button-size-large {
+.col-xs-7, .ah-form .form-group .width-field-small, .ah-form .form-group .width-field-normal, .ah-form .form-group .width-field-large, .ah-form .form-group .width-field-xl, .ah-form .form-group .width-field-xxl, .ah-form .form-group .button-size-normal, .ah-form .form-group .button-size-large {
   width: 58.33333%;
 }
 
@@ -12559,36 +12559,31 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 
 /* line 213, ../../../assets/_atomic.scss */
-.font-size-12 {
-  font-size: 12px;
-}
-
-/* line 217, ../../../assets/_atomic.scss */
 .font-size-18 {
   font-size: 18px;
 }
 
-/* line 221, ../../../assets/_atomic.scss */
+/* line 217, ../../../assets/_atomic.scss */
 .icon-size-20 {
   font-size: 20px;
 }
 
-/* line 225, ../../../assets/_atomic.scss */
+/* line 221, ../../../assets/_atomic.scss */
 .margin-0 {
   margin: 0;
 }
 
-/* line 229, ../../../assets/_atomic.scss */
+/* line 225, ../../../assets/_atomic.scss */
 .font-weight-bold {
   font-weight: bold;
 }
 
-/* line 233, ../../../assets/_atomic.scss */
+/* line 229, ../../../assets/_atomic.scss */
 .opacity-1 {
   opacity: 1;
 }
 
-/* line 237, ../../../assets/_atomic.scss */
+/* line 233, ../../../assets/_atomic.scss */
 .width-100-percent {
   width: 100%;
 }
@@ -13395,117 +13390,103 @@ form h6 {
   float: right;
 }
 /* line 52, ../../../assets/_form.sass */
-.ah-form .form-group .width-label-extend {
-  width: 80px;
-  padding-left: 0;
-  padding-right: 0;
-}
-/* line 57, ../../../assets/_form.sass */
-.ah-form .form-group .width-label-extend > * {
-  float: right;
-}
-/* line 59, ../../../assets/_form.sass */
-.ah-form .form-group .width-field-small-input {
-  width: 250px;
-}
-/* line 62, ../../../assets/_form.sass */
 .ah-form .form-group .width-field-small {
   width: 300px;
 }
-/* line 65, ../../../assets/_form.sass */
+/* line 55, ../../../assets/_form.sass */
 .ah-form .form-group .width-field-normal {
   width: 400px;
 }
-/* line 68, ../../../assets/_form.sass */
+/* line 58, ../../../assets/_form.sass */
 .ah-form .form-group .width-field-large {
   width: 500px;
 }
-/* line 71, ../../../assets/_form.sass */
+/* line 61, ../../../assets/_form.sass */
 .ah-form .form-group .width-field-xl {
   width: 600px;
 }
-/* line 74, ../../../assets/_form.sass */
+/* line 64, ../../../assets/_form.sass */
 .ah-form .form-group .width-field-xxl {
   width: 700px;
 }
-/* line 77, ../../../assets/_form.sass */
+/* line 67, ../../../assets/_form.sass */
 .ah-form .form-group .width-field-tooltip {
   width: 24px;
   height: 34px;
   line-height: 34px;
 }
-/* line 82, ../../../assets/_form.sass */
+/* line 72, ../../../assets/_form.sass */
 .ah-form .form-group .width-field-tooltip > * {
   vertical-align: middle;
 }
-/* line 84, ../../../assets/_form.sass */
+/* line 74, ../../../assets/_form.sass */
 .ah-form .form-group .width-field-tooltip.no-padding-left {
   padding-left: 0;
 }
-/* line 86, ../../../assets/_form.sass */
+/* line 76, ../../../assets/_form.sass */
 .ah-form .form-group .button-size-normal {
   width: 120px;
 }
-/* line 89, ../../../assets/_form.sass */
+/* line 79, ../../../assets/_form.sass */
 .ah-form .form-group .button-size-large {
   width: 200px;
 }
-/* line 93, ../../../assets/_form.sass */
+/* line 83, ../../../assets/_form.sass */
 .ah-form .form-group-link-action .form-text {
   padding-top: 0;
 }
-/* line 96, ../../../assets/_form.sass */
+/* line 86, ../../../assets/_form.sass */
 .ah-form .form-group.margin-bottom-0 {
   margin-bottom: 0;
 }
-/* line 99, ../../../assets/_form.sass */
+/* line 89, ../../../assets/_form.sass */
 .ah-form .form-text {
   display: inline-block;
   max-width: 100%;
 }
-/* line 104, ../../../assets/_form.sass */
+/* line 94, ../../../assets/_form.sass */
 .ah-form .control-label-results {
   text-align: left;
 }
-/* line 106, ../../../assets/_form.sass */
+/* line 96, ../../../assets/_form.sass */
 .ah-form .control-label-results ul {
   padding-top: 7px;
   padding-left: 0px;
 }
-/* line 110, ../../../assets/_form.sass */
+/* line 100, ../../../assets/_form.sass */
 .ah-form .help-block {
   margin-bottom: 0;
   font-size: 11px;
 }
-/* line 114, ../../../assets/_form.sass */
+/* line 104, ../../../assets/_form.sass */
 .ah-form .main-form-action {
   padding-top: 15px;
   padding-bottom: 15px;
   border-top: 1px solid #BCC7D5;
 }
-/* line 120, ../../../assets/_form.sass */
+/* line 110, ../../../assets/_form.sass */
 .ah-form .radio.multiline > label, .ah-form .checkbox.multiline > label {
   padding-top: 7px;
   display: block;
 }
-/* line 123, ../../../assets/_form.sass */
+/* line 113, ../../../assets/_form.sass */
 .ah-form .radio.multiline > label:first-child, .ah-form .checkbox.multiline > label:first-child {
   padding-top: 0;
 }
-/* line 126, ../../../assets/_form.sass */
+/* line 116, ../../../assets/_form.sass */
 .ah-form .radio.multiple-radio > label {
   margin-right: 15px;
 }
-/* line 129, ../../../assets/_form.sass */
+/* line 119, ../../../assets/_form.sass */
 .ah-form .checkbox.multiple-checkbox > label {
   margin-right: 15px;
 }
-/* line 133, ../../../assets/_form.sass */
+/* line 123, ../../../assets/_form.sass */
 .ah-form a.required, .ah-form span.required, .ah-form label.required {
   position: relative;
   display: inline-block;
 }
-/* line 136, ../../../assets/_form.sass */
+/* line 126, ../../../assets/_form.sass */
 .ah-form a.required:after, .ah-form span.required:after, .ah-form label.required:after {
   display: block;
   content: "*";
@@ -13516,19 +13497,19 @@ form h6 {
   font-size: 16px;
   line-height: 1;
 }
-/* line 146, ../../../assets/_form.sass */
+/* line 136, ../../../assets/_form.sass */
 .ah-form .main-form-action .btn ~ .btn {
   margin-left: 10px;
 }
-/* line 149, ../../../assets/_form.sass */
+/* line 139, ../../../assets/_form.sass */
 .ah-form .input-with-unit {
   position: relative;
 }
-/* line 151, ../../../assets/_form.sass */
+/* line 141, ../../../assets/_form.sass */
 .ah-form .input-with-unit input.form-control {
   padding-right: 50px;
 }
-/* line 153, ../../../assets/_form.sass */
+/* line 143, ../../../assets/_form.sass */
 .ah-form .input-with-unit .input-unit {
   position: absolute;
   right: 7px;
@@ -13536,7 +13517,7 @@ form h6 {
   color: #BCC7D5;
   pointer-events: none;
 }
-/* line 161, ../../../assets/_form.sass */
+/* line 151, ../../../assets/_form.sass */
 .ah-form .multiple-input {
   margin-left: -7px;
   margin-right: -8px;
@@ -13550,7 +13531,7 @@ form h6 {
 .ah-form .multiple-input:after {
   clear: both;
 }
-/* line 165, ../../../assets/_form.sass */
+/* line 155, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column {
   position: relative;
   float: left;
@@ -13560,23 +13541,23 @@ form h6 {
   padding-right: 7.5px;
   width: 120px;
 }
-/* line 166, ../../../assets/_form.sass */
+/* line 156, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column > label {
   padding-top: 7px;
 }
-/* line 168, ../../../assets/_form.sass */
+/* line 158, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column.no-label {
   padding-top: 31px;
 }
-/* line 174, ../../../assets/_form.sass */
+/* line 164, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column.input-xl {
   width: 150px;
 }
-/* line 177, ../../../assets/_form.sass */
+/* line 167, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column.input-xxl {
   width: 200px;
 }
-/* line 183, ../../../assets/_form.sass */
+/* line 173, ../../../assets/_form.sass */
 .ah-form select.form-control {
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -13585,15 +13566,15 @@ form h6 {
   background-image: url("/assets/img/dropdown.png");
   background-size: 9px 6px;
 }
-/* line 190, ../../../assets/_form.sass */
+/* line 180, ../../../assets/_form.sass */
 .ah-form .ah-select2-dropdown {
   width: 100%;
 }
-/* line 193, ../../../assets/_form.sass */
+/* line 183, ../../../assets/_form.sass */
 .ah-form.sticky-mainform-action {
   padding-bottom: 64px;
 }
-/* line 195, ../../../assets/_form.sass */
+/* line 185, ../../../assets/_form.sass */
 .ah-form.sticky-mainform-action .main-form-action {
   position: fixed;
   bottom: 0;
@@ -14025,16 +14006,16 @@ form h6 {
   margin-right: -15px;
 }
 
-/* line 24, ../../../assets/_modal_custom.scss */
+/* line 25, ../../../assets/_modal_custom.scss */
 .modal .modal-content .modal-header {
   border-bottom: 0px;
   padding-bottom: 0px;
 }
-/* line 27, ../../../assets/_modal_custom.scss */
+/* line 28, ../../../assets/_modal_custom.scss */
 .modal .modal-content .modal-header h3 {
   font-size: 20px;
 }
-/* line 31, ../../../assets/_modal_custom.scss */
+/* line 32, ../../../assets/_modal_custom.scss */
 .modal .modal-content button.close > span {
   line-height: 1;
   font-size: 36px;
@@ -14152,12 +14133,21 @@ html, body {
 }
 
 /* line 50, ../../../assets/screen.scss */
+#wrapper-login {
+  position: relative;
+  display: block;
+  min-width: 1200px;
+  min-height: 100%;
+  background-color: #252d40;
+}
+
+/* line 58, ../../../assets/screen.scss */
 #page-content-wrapper {
   margin-left: 180px;
   position: relative;
 }
 
-/* line 55, ../../../assets/screen.scss */
+/* line 63, ../../../assets/screen.scss */
 #page-body-wrapper {
   padding-top: 30px;
   padding-bottom: 30px;
@@ -14968,26 +14958,17 @@ html, body {
   margin-bottom: 15px;
 }
 
-/* line 1, ../../../assets/_login.scss */
-#wrapper-login {
-  position: relative;
-  display: block;
-  min-width: 1200px;
-  min-height: 100%;
-  background-color: #252d40;
-}
-
-/* line 11, ../../../assets/_login.scss */
+/* line 3, ../../../assets/_login.scss */
 .login-page .logo-img-wrapper {
   text-align: center;
   margin-top: 50px;
   margin-bottom: 30px;
 }
-/* line 17, ../../../assets/_login.scss */
+/* line 9, ../../../assets/_login.scss */
 .login-page .logo-img {
   height: 75px;
 }
-/* line 21, ../../../assets/_login.scss */
+/* line 13, ../../../assets/_login.scss */
 .login-page .form-login {
   background-color: #FFFFFF;
   border: solid #BCC7D5 1px;
@@ -14996,33 +14977,33 @@ html, body {
   margin: auto;
   padding: 40px 30px 20px 30px;
 }
-/* line 30, ../../../assets/_login.scss */
+/* line 22, ../../../assets/_login.scss */
 .login-page .btn-100 {
   width: 100%;
 }
-/* line 34, ../../../assets/_login.scss */
+/* line 26, ../../../assets/_login.scss */
 .login-page .login-loading {
   margin-left: 5px;
 }
 
 /* Additional Code */
-/* line 70, ../../../assets/screen.scss */
+/* line 82, ../../../assets/screen.scss */
 .tradable-list .left-column {
   margin-left: 30px;
   float: left;
   width: 300px;
 }
-/* line 74, ../../../assets/screen.scss */
+/* line 86, ../../../assets/screen.scss */
 .tradable-list .left-column .search-box {
   height: 33px;
 }
-/* line 78, ../../../assets/screen.scss */
+/* line 90, ../../../assets/screen.scss */
 .tradable-list .center-column {
   float: left;
   padding-top: 145px;
   margin-left: 30px;
 }
-/* line 82, ../../../assets/screen.scss */
+/* line 94, ../../../assets/screen.scss */
 .tradable-list .center-column .trade-button {
   padding: 8px 10px 5px 10px;
   margin-bottom: 15px;
@@ -15031,39 +15012,39 @@ html, body {
   color: #BCC7D5;
   border: 1px solid #BCC7D5;
 }
-/* line 89, ../../../assets/screen.scss */
+/* line 101, ../../../assets/screen.scss */
 .tradable-list .center-column .trade-button.active {
   cursor: pointer;
   color: #4899DD;
 }
-/* line 95, ../../../assets/screen.scss */
+/* line 107, ../../../assets/screen.scss */
 .tradable-list .right-column {
   float: left;
   width: 400px;
   margin-left: 30px;
 }
-/* line 99, ../../../assets/screen.scss */
+/* line 111, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header {
   margin-top: 9px;
   margin-bottom: 5px;
 }
-/* line 102, ../../../assets/screen.scss */
+/* line 114, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header .column-1 {
   margin-left: 15px;
 }
-/* line 105, ../../../assets/screen.scss */
+/* line 117, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header .column-2 {
   margin-left: 120px;
 }
-/* line 108, ../../../assets/screen.scss */
+/* line 120, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header .column-3 {
   margin-left: 30px;
 }
-/* line 113, ../../../assets/screen.scss */
+/* line 125, ../../../assets/screen.scss */
 .tradable-list .clickable-list {
   overflow: hidden;
 }
-/* line 115, ../../../assets/screen.scss */
+/* line 127, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column {
   margin-top: 15px;
   -webkit-padding-start: 0px;
@@ -15073,14 +15054,14 @@ html, body {
   border: 1px solid #BCC7D5;
   border-radius: 3px;
 }
-/* line 123, ../../../assets/screen.scss */
+/* line 135, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li {
   padding-left: 15px;
   padding-right: 15px;
   line-height: 30px;
   cursor: pointer;
 }
-/* line 128, ../../../assets/screen.scss */
+/* line 140, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-1 {
   margin-left: 15px;
   display: inline-block;
@@ -15090,66 +15071,59 @@ html, body {
   text-overflow: ellipsis;
   float: left;
 }
-/* line 137, ../../../assets/screen.scss */
+/* line 149, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-2 {
   margin-left: 40px;
   display: inline-block;
   float: left;
 }
-/* line 142, ../../../assets/screen.scss */
+/* line 154, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-3 {
   margin-left: 90px;
   display: inline-block;
   float: left;
 }
-/* line 148, ../../../assets/screen.scss */
+/* line 160, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li.disabled {
   cursor: not-allowed !important;
   background: #EDF2F9 !important;
   color: #BCC7D5 !important;
 }
-/* line 153, ../../../assets/screen.scss */
+/* line 165, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li.active {
   background: #4899DD;
   color: #FFFFFF;
 }
 
-/* line 162, ../../../assets/screen.scss */
+/* line 174, ../../../assets/screen.scss */
 .table .action-column {
   width: 60px;
   padding-top: 14px;
   padding-bottom: 14px;
 }
 
-/* line 170, ../../../assets/screen.scss */
+/* line 182, ../../../assets/screen.scss */
 .has-error-parent .form-control {
   border-color: #ec0000;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-/* line 176, ../../../assets/screen.scss */
-<<<<<<< HEAD
+/* line 189, ../../../assets/screen.scss */
 ng-transclude.has-error .form-control {
   border-color: #ec0000 !important;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-/* line 182, ../../../assets/screen.scss */
-=======
->>>>>>> 9872c32042386761a9d3acd49ed998e302bbba98
+/* line 195, ../../../assets/screen.scss */
 .form-control.has-error {
   border-color: #ec0000;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-<<<<<<< HEAD
-/* line 188, ../../../assets/screen.scss */
-=======
-/* line 182, ../../../assets/screen.scss */
->>>>>>> 9872c32042386761a9d3acd49ed998e302bbba98
+/* line 201, ../../../assets/screen.scss */
 .empty-section {
   border: 1px solid;
   border-color: #BCC7D5;
@@ -15157,11 +15131,7 @@ ng-transclude.has-error .form-control {
   height: 80px;
   line-height: 80px;
 }
-<<<<<<< HEAD
-/* line 194, ../../../assets/screen.scss */
-=======
-/* line 188, ../../../assets/screen.scss */
->>>>>>> 9872c32042386761a9d3acd49ed998e302bbba98
+/* line 207, ../../../assets/screen.scss */
 .empty-section .loading-img {
   width: 40px;
   height: 40px;
@@ -15169,38 +15139,27 @@ ng-transclude.has-error .form-control {
   margin-right: 15px;
 }
 
-<<<<<<< HEAD
-/* line 201, ../../../assets/screen.scss */
-=======
-/* line 195, ../../../assets/screen.scss */
->>>>>>> 9872c32042386761a9d3acd49ed998e302bbba98
+/* line 214, ../../../assets/screen.scss */
 .disabled-chevron {
   cursor: not-allowed;
 }
 
-<<<<<<< HEAD
-/* line 205, ../../../assets/screen.scss */
-=======
-/* line 199, ../../../assets/screen.scss */
->>>>>>> 9872c32042386761a9d3acd49ed998e302bbba98
+/* line 218, ../../../assets/screen.scss */
 .opacity-50 {
   opacity: 0.5;
 }
 
-<<<<<<< HEAD
-/* line 210, ../../../assets/screen.scss */
-=======
-/* line 204, ../../../assets/screen.scss */
->>>>>>> 9872c32042386761a9d3acd49ed998e302bbba98
+/* line 223, ../../../assets/screen.scss */
 .my_file {
   display: none !important;
 }
 
-<<<<<<< HEAD
-/* line 215, ../../../assets/screen.scss */
-=======
-/* line 209, ../../../assets/screen.scss */
->>>>>>> 9872c32042386761a9d3acd49ed998e302bbba98
+/* line 228, ../../../assets/screen.scss */
 .get_file {
   cursor: pointer;
+}
+
+/* line 232, ../../../assets/screen.scss */
+.eff-exp-column {
+  width: 120px;
 }

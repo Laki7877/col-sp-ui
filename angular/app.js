@@ -171,6 +171,7 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 .factory('KnownException', services.knownException)
 .factory('$productAdd', services.productAdd)
 .factory('Collection', services.productCollection)
+.factory('$CollectionAdd', services.productCollectionAdd)
 
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)

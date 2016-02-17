@@ -54,7 +54,7 @@
           <tr class="table-head" >
 		  
             <th class="checkbox-column">
-                <input type="checkbox" aria-label="Checkbox for following text input" ng-click="checkAll()" ng-model="checkAll" >
+                <input type="checkbox" aria-label="Checkbox for following text input" ng-click="checkAll()" ng-model="allChecked" >
             </th>            
             <th  ng-click="setOrderBy('CMSNameEN')">
               <a class="header-link" ><span ng-class="sort('CMSNameEN', true)">Collection Name</span></a>
@@ -68,11 +68,11 @@
               <a class="header-link" ><span ng-class="sort('ShortDescriptionEN', true)">ShortDescription</span></a>
               <i class="fa" ng-class="sort('ShortDescriptionEN')">
             </th>
-			 <th class="eff-exp-column" ng-click="setOrderBy('EffectiveDate')">
+			 <th class="eff-exp-column" ng-click="setOrderBy('EffectiveDate')"  >
               <a class="header-link" ><span ng-class="sort('EffectiveDate', true)">EffectiveDate</span></a>
               <i class="fa" ng-class="sort('EffectiveDate')">
             </th>
-			 <th class="eff-exp-column" ng-click="setOrderBy('ExpiryDate')">
+			 <th class="eff-exp-column" ng-click="setOrderBy('ExpiryDate')"  >
               <a class="header-link" ><span ng-class="sort('ExpiryDate', true)">ExpiryDate</span></a>
               <i class="fa" ng-class="sort('ExpiryDate')">
             </th>
@@ -90,9 +90,11 @@
           </tr>
         </thead>
         <tbody>
+         
       	  <tr ng-repeat="row in productList" >		  
-                  <td class="checkbox-column">
-                    <input type="checkbox" aria-label="Checkbox for following text input" ng-model="checkBoxCache[row.CMSId]">
+                  <td class="checkbox-column">                   
+                    <input type="checkbox" aria-label="Checkbox for following text input" ng-model="checkBoxCache[row.CMSId]" />                    
+                    <input type="hidden" ng-init="hidCMSTypeId[row.CMSId] = row.CMSTypeId" ng-model="hidCMSTypeId[row.CMSId]" />
                   </td>                  
 				  <td class="column-text-ellipsis"><a href="/collections/{{ row.CMSId }}">{{ row.CMSNameEN || '(Untitled Collection)' }}</a></td>
                  
@@ -102,9 +104,9 @@
 				 <td class="modified-column">{{ row.ExpiryDate | date:'shortDate':'+700' }}</td>
 
                   <td class="status-column">
-                    <span class="{{ asStatus(row.CMSStatusId).Color }}">
-                      <i class="fa {{ asStatus(row.CMSStatusId).Class }}"></i>
-                       {{ asStatus(row.CMSStatusId).Text }}
+                    <span class="{{ asStatus(row.CMSStatus).Color }}">
+                      <i class="fa {{ asStatus(row.CMSStatus).Class }}"></i>
+                       {{ asStatus(row.CMSStatusFlowId).Text }}
                     </span>
                   </td>
                   <td class="visible-column">

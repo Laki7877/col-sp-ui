@@ -6,7 +6,7 @@ we should just make it modular by creating initializer -->
         <a ng-click="startExportProductCollection()" class="btn-white btn margin-right-10">
           <span class="">Export</span>
         </a>
-        <a href="/collection/import" class="btn-white btn margin-right-10">
+        <a href="/collections/import" class="btn-white btn margin-right-10">
           <span class="">Import</span>
         </a>
         <a href="/collections/add" class="btn-blue btn btn-width-xl">

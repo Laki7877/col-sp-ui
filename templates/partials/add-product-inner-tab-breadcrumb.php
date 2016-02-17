@@ -1,5 +1,5 @@
 <div class="margin-bottom-20">
-	<span>Global Category:</span>
+	<span>Global Category:fd</span>
 	<span>{{ breadcrumbs.globalCategory }}</span>
 </div>
 <div class="alert alert-red" ng-if="formData.Status == 'WA'">

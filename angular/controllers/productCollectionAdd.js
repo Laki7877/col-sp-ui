@@ -1,7 +1,7 @@
-﻿var angular = require('angular');
+var angular = require('angular');
 
-module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Collection','Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope',
-function ($scope, $window, util, config, Product, Collection, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, $rootScope) {
+module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Collection','Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$CollectionAdd',
+function ($scope, $window, util, config, Product, Collection, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, $rootScope , $q, KnownException, NcAlert, $CollectionAdd) {
     'use strict';
 
     //TODO: use Poons' Alert class
@@ -103,86 +103,6 @@ function ($scope, $window, util, config, Product, Collection, ImageService, Attr
     }
 
 
-    var watchVariantChanges = function () {
-
-        $scope.$watch('attributeOptions', function () {
-
-            var vHashSet = {};
-            var prevVariants = angular.copy($scope.formData.Variants);
-            prevVariants.forEach(function (elem, index) {
-                vHashSet[elem.text] = prevVariants[index];
-            });
-            //Unset
-            prevVariants = undefined;
-
-            $scope.formData.Variants = [];
-
-            var expand = function (A, B) {
-
-                if (A['AttributeValue']) {
-                    A = A.AttributeValue.AttributeValueEn;
-                }
-
-                var BId = null;
-
-                if (angular.isDefined(B)) {
-                    BId = $scope.attributeOptions[1].Attribute.AttributeId;
-                    if (B['AttributeValue']) {
-                        B = B.AttributeValue.AttributeValueEn;
-                    }
-                } else {
-                    B = ''
-                    BId = null;
-                }
-
-                var kpair = new VariantPair({
-                    AttributeId: $scope.attributeOptions[0].Attribute.AttributeId,
-                    ValueEn: A
-                }, {
-                    AttributeId: BId,
-                    ValueEn: B
-                });
-
-                //Initialize
-                kpair.ProductNameEn = $scope.formData.MasterVariant.ProductNameEn;
-                kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
-                kpair.Display = $scope.availableVariantDisplayOption[0];
-                kpair.Visibility = true;
-
-                if (kpair.text in vHashSet) {
-                    //Replace with value from vHashSet
-                    kpair = vHashSet[kpair.text];
-                }
-
-                //Only push new variant if don't exist
-                $scope.formData.Variants.push(kpair);
-
-            }
-
-
-            console.log("Recalculating Factors", $scope.attributeOptions);
-            //Multiply out unmultiplied options
-            if ($scope.attributeOptions && Object.keys($scope.attributeOptions).length > 0) {
-                for (var aKey in $scope.attributeOptions[0].options) {
-                    var A = $scope.attributeOptions[0].options[aKey];
-
-                    if (angular.isDefined($scope.attributeOptions[1]['options']) && $scope.attributeOptions[1].options.length == 0) {
-                        console.log("expanding A");
-                        expand(A);
-                    }
-
-                    for (var bKey in $scope.attributeOptions[1].options) {
-                        var B = $scope.attributeOptions[1].options[bKey];
-                        console.log("Expanding A,B");
-                        expand(A, B);
-                    }
-                }
-            }
-
-            $scope.formData.DefaultVariant = $scope.formData.Variants[0];
-        }, true); //end of $watch
-
-    } //end of watch func
 
     //Attribute Options to be filled via API
     $scope.availableAttributeSets = [];
@@ -319,19 +239,6 @@ function ($scope, $window, util, config, Product, Collection, ImageService, Attr
     };
 
 
-
-    $scope.$watch('formData.MasterVariant.SalePrice', function () {
-        var form = $scope.addProductCollectionForm;
-        form.MasterVariant_SalePrice.$setValidity("min", true);
-        if (!form.MasterVariant_SalePrice) return;
-        if ($scope.formData.MasterVariant.SalePrice == "") return;
-
-        if (Number($scope.formData.MasterVariant.SalePrice) >= Number($scope.formData.MasterVariant.OriginalPrice)) {
-            form.MasterVariant_SalePrice.$setValidity("min", false);
-            form.MasterVariant_SalePrice.$error["min"] = "Sale Price must not exceed Original Price";
-        }
-    });
-
     $scope.$watch('formData.ExpireDate', function () {
         var form = $scope.addProductCollectionForm;
         form.ExpireDate.$setValidity("min", true);
@@ -379,17 +286,7 @@ function ($scope, $window, util, config, Product, Collection, ImageService, Attr
             $window.location.hash = 'alert-failure';
             return;
         }
-// console.log("basic validate");
-//         //Basic validation
-//         if ($scope.addProductCollectionForm.$invalid) {
 
-//             $scope.pageState.reset();
-//             //scroll to top and show alert div
-//             $window.location.hash = 'alert';
-//             $window.location.hash = 'alert-validation';
-//             $scope.pageState.invalid = true;
-//             return;
-//         }
 
         $scope.pageState.load('Publishing..');
         cleanData();
@@ -399,16 +296,29 @@ function ($scope, $window, util, config, Product, Collection, ImageService, Attr
             // var apiRequest = Product.serialize($scope.formData);            
             //Product.publish(apiRequest, Status).then(function (res) {
                 //console.log($scope.formData);
-                $scope.formData.Status = Status;
+                $scope.formData.CMSStatusId = Status
+                $scope.formData.Status = true;
                 $scope.formData.CMSTypeId = 1;
-                var apiRequest = Collection.serialize($scope.formData);  
-                Collection.publish(apiRequest, Status).then(function (res) {
+                $scope.formData.UpdateBy =1;
+                $scope.formData.CreateBy =1;
+                $scope.formData.Visibility = 1;
+                $scope.formData.CreateIP ='203.146.156.34';
+               
+                var apiRequest =  Collection.serialize($scope.formData);  
+                var tmpObjArr =[];
+                var apiParameter ;
+                if($scope.formData.CMSId != null && typeof $scope.formData.CMSId != "undefined"){
+                    tmpObjArr.push(apiRequest);
+                    apiParameter = tmpObjArr;
+                }else{ apiParameter = apiRequest;}
+
+
+                Collection.publish(apiParameter, Status).then(function (res) {
                 $scope.pageState.reset();
                 if (res.CMSId) {
                     $scope.overview = res;
                     $scope.pageState.success = true;
                     $scope.formData.CMSId = res.ProductId;
-                    //$scope.formData.MasterVariant.Pid = res.MasterVariant.Pid;
                     $scope.addProductCollectionForm.$setPristine(true)
                 } else {
                     $scope.pageState.failure = true;
@@ -459,135 +369,57 @@ function ($scope, $window, util, config, Product, Collection, ImageService, Attr
 
     $scope.init = function (viewBag) {
         //TODO: Refactor, use better callback mechanism
+        if (!angular.isObject(viewBag)) throw new KnownException("View bag is corrupted");
 
         var shopId = 1;
+        var _editMode = ("CMSId" in viewBag)
+        for (var page in tabPage) {
+            tabPage[page].angular();
+        }
+
 
         for (var page in tabPage) {
             tabPage[page].angular();
         }
 
-        var angularReady = function () {
-            $scope.pageState.reset();
-        };
+        if (_editMode) {
+                        var CMSId = viewBag.CMSId;
+                        $scope.pageState.load('Loading Collection..');
 
-        var loadFormData = function (ivFormData, FullAttributeSet) {
+                        Collection.getOne(CMSId)
+                            .then(function (inverseFormData) {
+                                $scope.overview = angular.copy(inverseFormData);
+                              
+                                $CollectionAdd.fill( $scope.pageState, $scope.dataSet, $scope.formData,  $scope.controlFlags,
+                                    $scope.variationFactorIndices, inverseFormData).then(function () {
+                                        $scope.formData.CMSId = Number(CMSId);
+                                        $scope.pageState.reset();
+                                        console.log("$scope.formData");
+                                        console.log($scope.formData);
+                                    });
+                            }, function (error) {
+                                 console.log("function (error)");
+                                throw new KnownException("Unable to fetch collection with id " + CMSId);
+                            });
 
-            $scope.pageState.load('Loading product data..');
-
-            if (!('VideoLinks' in ivFormData)) {
-                ivFormData['VideoLinks'] = [];
-            }
-            var inverseResult = Product.deserialize(ivFormData,
-				    FullAttributeSet,
-				    $scope.pageState.loading);
-
-            $scope.formData = inverseResult.formData;
-            console.log("After Inverse Transformation", $scope.formData, inverseResult.attributeOptions);
-
-            if ($scope.formData.Variants.length > 0) {
-                $scope.enableProductVariations = "enable";
-            }
-
-            $scope.attributeOptions = inverseResult.attributeOptions || $scope.attributeOptions;
-
-            if ($scope.attributeOptions[1].options.length > 0) $scope.variationFactorIndices.pushSecond();
-
-
-            //Initialize Uploader
-            ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onQueueLimit, onImageUploadFail);
-            ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onQueueLimit, onImageUploadFail);
-
-        };
-
-        var catReady = function (catId, ivFormData, callback) {
-            //Dependecy chain
-            // catId
-
-            $scope.pageState.load('Downloading Attribute Sets..');
-
-            AttributeSet.getByCategory(3).then(function (data) {
-
-                // //remove complex structure we dont need
-                // $scope.availableAttributeSets = data.map(function (aset) {
-
-                //     aset.AttributeSetTagMaps = aset.AttributeSetTagMaps.map(function (asti) {
-                //         return asti.Tag.TagName;
-                //     });
-
-                //     aset.AttributeSetMaps = aset.AttributeSetMaps.map(function (asetmapi) {
-                //         asetmapi.Attribute.AttributeValueMaps = asetmapi.Attribute.AttributeValueMaps.map(function (value) {
-                //             return value.AttributeValue.AttributeValueEn;
-                //         });
-
-                //         return asetmapi;
-                //     });
-
-                //     return aset;
-                // });
-
-                // Load Attribute Set (edit mode only, in add mode AttributeSet is not set)
-                // if (ivFormData.AttributeSet && ivFormData.AttributeSet.AttributeSetId) {
-
-                //     $scope.pageState.load('Indexing AttributeSet');
-                //     var idx = $scope.availableAttributeSets.map(function (o) {
-                //         return o.AttributeSetId
-                //     }).indexOf(ivFormData.AttributeSet.AttributeSetId);
-
-                //     $scope.formData.AttributeSet = $scope.availableAttributeSets[idx];
-                // }
-
-                // if (ivFormData.ProductId) {
-                //     loadFormData(ivFormData, $scope.formData.AttributeSet);
-                // }
-
-                // $scope.pageState.load('Downloading Category Tree..');
-                // //Load Global Cat
-                // GlobalCategory.getAll().then(function (data) {
-
-                //     $scope.availableGlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
-                //     $scope.formData.GlobalCategories[0] = Category.findByCatId(catId, $scope.availableGlobalCategories);
-                //     $scope.globalCategoryBreadcrumb = Category.createCatStringById(catId, $scope.availableGlobalCategories);
-                //     callback();
-                // });
-    //callback();
-                //console.log($rootScope.Profile);
-                watchVariantChanges();
-            });
-        };
-
-        if ("productId" in viewBag) {
-            //EDIT MODE
-
-            var productId = viewBag.productId;
-            $scope.pageState.load('Loading Basis..');
-            Product.getOne(productId).then(function (ivFormData) {
-                var gcat = ivFormData.GlobalCategory;
-                $scope.overview = angular.copy(ivFormData); //snapshot
-                catReady(gcat, ivFormData, function () {
-                    $scope.formData.ProductId = Number(productId);
-                    angularReady();
-                });
-
-            }, function () {
-                $window.onbeforeunload = function () { };
-                $window.location.href = "/products";
-            });
-        }
-
-        if ("catId" in viewBag) {
-            //ADD MODE
-            $scope.pageState.reset();
-            catReady(viewBag.catId, {}, angularReady);
-            watchVariantChanges();
+                    } else if ('catId' in viewBag) {
+                        var catId = Number(viewBag.catId);
+                        $CollectionAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs,
+                            $scope.controlFlags, $scope.variationFactorIndices).then(function () {
+                                $scope.pageState.reset();
+                             
+                            });
+                    } else {
+                        throw new KnownException("Invalid mode, viewBag garbage");
         }
 
         //Load Local Cat
-        Shop.getLocalCategories(shopId).then(function (data) {
-            $scope.availableLocalCategories = Category.transformNestedSetToUITree(data);
-        });
+        // Shop.getLocalCategories(shopId).then(function (data) {
+        //     $scope.availableLocalCategories = Category.transformNestedSetToUITree(data);
+        // });
 
 
-    }
+    }//end init
 
     var tabPage = {};
 

@@ -2,8 +2,8 @@
 
 <?php $this->start('page-body') ?>
 	<div class="local-category-page" ng-controller="ProductCollectionImportCtrl">
-		<? $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => 'Successfully Import Products. <a class="color-black text-underline">View Product List</a>']) ?>
-		<? $this->insert('components/alert-text', ['close' => true, 'color' => 'red', 'text' => 'Fail to import products', 'header_class' => 'font-weight-bold',
+		<? $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => 'Successfully Import Collections. <a class="color-black text-underline">View Collections List</a>']) ?>
+		<? $this->insert('components/alert-text', ['close' => true, 'color' => 'red', 'text' => 'Fail to import Collections', 'header_class' => 'font-weight-bold',
 		 'text_multilines' => ['- Wrong template file or format'
 		,'- Required fields are missing'
 		, '- Products with wrong PID'
@@ -13,13 +13,13 @@
 		, '- Alien Attack'
 		]]) ?>
 
-		<? $this->insert('components/page-title-breadcrumb-border', ['text' => 'Products/Import Products']) ?>
+		<? $this->insert('components/page-title-breadcrumb-border', ['text' => 'Collections/Import Collections']) ?>
 
 		<div>
 			<form class="ah-form sticky-mainform-action">
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
-						<? $this->insert('partials/import-product-collection-content') ?>
+						<? $this->insert('partials/import-product-content') ?>
 					</div>
 				</div>
 			</form>

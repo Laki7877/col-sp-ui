@@ -75,6 +75,8 @@ Route::add('/admin/shoptypes/:id', 'AdminController::editShoptype');
 
 Route::add('/collections', 'ProductCollectionController::index');
 Route::add('/collections/add', 'ProductCollectionController::add');
+Route::add('/collections/import', 'ProductCollectionController::import');
+Route::add('/collections/:id', 'ProductCollectionController::edit');
 
 //test route
 Route::add('/test/:name', 'TestController::any');
