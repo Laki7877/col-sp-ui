@@ -1,6 +1,6 @@
 module.exports = function(common, $q, util) {
 	'ngInject';
-	var service = common.Rest()
+	var service = common.Rest('/GlobalCategories');
 	
 	//Generate empty template
 	service.generate = function(extend) {
@@ -12,6 +12,13 @@ module.exports = function(common, $q, util) {
 			Visibility: true,
 			AttributeSets: []
 		}, extend);
+	};
+
+	service.getAll = function() {
+		return common.makeRequest({
+			method: 'GET',
+			url: '/GlobalCategories'
+		});
 	};
 
 	/**

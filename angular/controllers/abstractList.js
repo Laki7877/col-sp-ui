@@ -1,12 +1,34 @@
 module.exports = function($scope, $window, NcAlert, util, options) {
 	'ngInject';
 	var a = _.includes(['a','e','i','o','u'], _.lowerCase(options.item.charAt(0))) ? 'an' : 'a';
+	$scope.alert = new NcAlert();
+	$scope.tableOptions = {
+		emptyMessage: 'You do not have ' + a + ' ' + options.item
+	};
+
+	$scope.loading = false;
+
+	//Table variables
+	$scope.params = {
+		_order: options.order,
+		_limit: 10,
+		_offset: 0,
+		_direction: options.direction || 'desc'	
+	};
+	$scope.list = {
+		total: 0,
+		data: []
+	};
+
 	$scope.reload = function(newObj, oldObj) {
 		if(!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
+			(options.reload || _.noop)(newObj, oldObj);
 			if(newObj.searchText !== oldObj.searchText) {
 				$scope.params._offset = 0;
 			}
-
+			if(newObj.AdvanceSearch !== oldObj.AdvanceSearch) {
+				$scope.params._offset = 0;
+			}
 			if(newObj._filter !== oldObj._filter) {
 				$scope.params._offset = 0;
 			}
@@ -23,23 +45,10 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 	$scope.onload = function() {
 		$scope.loading = true;
 	};
-	$scope.alert = new NcAlert();
-	$scope.tableOptions = {
-		emptyMessage: 'You do not have ' + a + ' ' + options.item
-	};
-
-	//Table variables
-	$scope.params = {
-		_order: options.order,
-		_limit: 10,
-		_offset: 0,
-		_direction: options.direction || 'desc'
-	};
-	$scope.list = {
-		total: 0,
-		data: []
-	};
-	$scope.filterOptions = options.filters;
+	if(options.filters) {
+		$scope.filterOptions = options.filters;
+		$scope.params._filter = options.filters[0].value;
+	}
 	$scope.bulkContainer = [];
 	$scope.toggleVisibility = util.eyeToggle(options.service, options.id, $scope.alert);
 
@@ -105,7 +114,6 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 
 	}
 
-	$scope.loading = false;
 	$scope.reload();
 	$scope.$watch('params', $scope.reload, true);
 };

@@ -6,13 +6,13 @@ angular.module('nc')
 			scope: {
 				model: '=ncModel',
 				filters: '=ncFilterOptions',
-				callback: '=ncFilterEvent'
+				callback: '=?ncFilterEvent'
 			},
 			template: $templateCache.get('common/ncFilter'),
 			link: function(scope) {
-				scope.callback = scope.callback || function() { return true };
+				scope.callback = scope.callback || function() { return false };
 				scope.select = function(value) {
-					if(!scope.callback()) return;
+					if(scope.callback()) return;
 					scope.model = value;
 				}
 			}

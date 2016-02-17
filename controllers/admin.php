@@ -6,7 +6,35 @@ class AdminController extends Controller
 	{
 		return View::render('admin_category');
 	}
+    
+    public static function approve($params)
+	{
+		return View::render('admin_product_approval');
+	}
 
+    public static function admin_coupons($params)
+	{
+		return View::render('admin_coupons');
+	}
+    
+    public static function admin_coupons_create($params)
+	{
+		return View::render('admin_coupons_detail');
+	}
+    
+    public static function seller_coupons_create($params)
+	{
+		return View::render('seller_coupons_detail');
+	}
+
+    public static function seller_coupons($params)
+	{
+		return View::render('seller_coupons');
+	}
+
+    public static function allProducts($params){
+        return View::render('admin_all_products', []);
+    }
 	//Attribute
 	public static function listAttribute($params)
 	{

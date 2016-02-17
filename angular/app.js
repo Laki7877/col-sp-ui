@@ -66,9 +66,13 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
     //Create global logout function
     $rootScope.logout = function(){
         if($rootScope.Imposter){
-            return Credential.logoutAs().then(function(){
+            return Credential.logoutAs().then(function(R){
                 //return to normal flow
-                $window.location.href = "/";
+                if(R.User.IsAdmin){
+                    $window.location.href = "/admin";
+                }else{
+                    $window.location.href = "/products";
+                }
             }, function(){
                 alert("Fetal error while logging out.");
             });
@@ -80,7 +84,8 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 
     
 	//Create generic form validator functions
-	$rootScope.isInvalid = function(form) {
+	//This is now inside ncTemplate
+    $rootScope.isInvalid = function(form) {
 		if(angular.isDefined(form) && 
 			angular.isDefined(form.$invalid) && 
 			angular.isDefined(form.$dirty)) {
@@ -118,7 +123,7 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 
 	$rootScope.activeParentUrl = function(url,sub) {
 		return {
-			'active': $rootScope.isUrl(url)
+			'forced-active': $rootScope.isUrl(url)
 		};
 	};
 
@@ -142,12 +147,13 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 //Services
 .factory('Product', services.product)
 .factory('ProductReviewService', services.productReviewService)
-.factory('Image', services.image)
 .factory('ImageService', services.imageService)
 .factory('Category', services.category)
 .factory('Shop', services.shop)
 .factory('LocalCategory', services.localCategory)
+.factory('LocalCategoryService', services.localCategoryService)
 .factory('GlobalCategory', services.globalCategory)
+.factory('GlobalCategoryService', services.globalCategoryService) //newer version
 .factory('Attribute', services.attribute)
 .factory('AttributeService', services.attributeService) //newer version
 .factory('AttributeSet', services.attributeSet)
@@ -211,6 +217,7 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 .controller('SellerAccountAddCtrl', controllers.sellerAccountAdd)
 .controller('SellerRoleCtrl', controllers.sellerRole)
 .controller('SellerRoleAddCtrl', controllers.sellerRoleAdd)
+
 .controller('AdminAttributeCtrl', controllers.adminAttribute)
 .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)
 .controller('AdminAttributeAddCtrl', controllers.adminAttributeAdd)
@@ -226,10 +233,18 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 .controller('AdminShopAddCtrl', controllers.adminShopAdd)
 .controller('AdminShoptypeCtrl', controllers.adminShoptype)
 .controller('AdminShoptypeAddCtrl', controllers.adminShoptypeAdd)
+
+.controller('AdminProductApprovalListCtrl', controllers.adminProductApprovalList)
+.controller('AdminProductListCtrl', controllers.adminProductList)
+
 .controller('LoginCtrl', controllers.login)
 .controller('AbstractListCtrl', controllers.abstractList)
 .controller('AbstractAddCtrl', controllers.abstractAdd)
+<<<<<<< HEAD
 .controller('ProductCollectionListCtrl', controllers.productCollectionList)
 .controller('ProductCollectionAddCtrl', controllers.productCollectionAdd)
+=======
+.controller('AdminCouponsCtrl', controllers.adminCoupons)
+>>>>>>> 436acae478f3dce0e2ec297d3997f6eeb89957dc
 
 .controller('TestCtrl', controllers.test)

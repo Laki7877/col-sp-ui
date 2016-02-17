@@ -19,7 +19,7 @@ angular.module('nc')
 			link: function(scope, element, attrs) {
 				scope.paginationOptions = _.defaults(scope.paginationOptions, $ncPagination.paginationSizes);
 				scope.params._limit = scope.paginationOptions[0];
-				scope.callback = scope.callback || function() { return true };
+				scope.callback = scope.callback || function() { return false };
 				scope.page = function() {
 					if(scope.total == 0) {
 						return 0;
@@ -38,7 +38,7 @@ angular.module('nc')
 					if(page + offset > total ||
 						page + offset <= 0)
 						return;
-					if(!scope.callback()) {
+					if(scope.callback(scope.params._offset + (offset) * scope.params._limit, 'offset')) {
 						return;
 					}
 					scope.params._offset += offset * scope.params._limit;
@@ -50,7 +50,7 @@ angular.module('nc')
 					if(scope.params._limit == n) {
 						return;
 					}
-					if(!scope.callback()) {
+					if(scope.callback(n, 'size')) {
 						return;
 					}
 					scope.params._limit = n;

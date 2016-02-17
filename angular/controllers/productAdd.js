@@ -1,6 +1,6 @@
 var angular = require('angular');
 
-module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$productAdd',
+module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageService', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$productAdd',
     function ($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, $rootScope, $q, KnownException, NcAlert, $productAdd) {
         'use strict';
 
@@ -12,10 +12,18 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
         var MAX_VARIANT = 100;
 
         $scope.dataSet = {};
-        $scope.dataSet.AttributeSets = [];
+        $scope.dataSet.AttributeSets = [{
+            AttributeSetId: null,
+            disabled: true,
+            AttributeSetNameEn: "No Attribute Set"
+        }];
         $scope.dataSet.GlobalCategories = [];
         $scope.dataSet.LocalCategories = [];
-        $scope.dataSet.Brands = [];
+        $scope.dataSet.Brands = [{
+            BrandId: null,
+            BrandNameEn: "No match found",
+            disabled: true
+        }];
         $scope.dataSet.SearchTags = [];
         $scope.dataSet.RelatedProducts = [];
         $scope.dataSet.StockTypes = ['Stock', 'Pre-Order'];
@@ -23,17 +31,17 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             { text: 'Show as group of variants', value: 'GROUP' },
             { text: 'Show as individual product', value: 'INDIVIDUAL' }
         ];
-       
+
         var protoAttributeOptions = {
-                         0: {
-                            Attribute: false,
-                            options: []
-                        },
-                        1: {
-                            Attribute: false,
-                            options: []
-                        }
-                    };
+            0: {
+                Attribute: false,
+                options: []
+            },
+            1: {
+                Attribute: false,
+                options: []
+            }
+        };
         $scope.dataSet.attributeOptions = angular.copy(protoAttributeOptions);
         $scope.controlFlags = {
             variation: 'disable',
@@ -141,7 +149,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                             angular.isDefined(kpair.Height) ||
                             angular.isDefined(kpair.Width) ||
                             angular.isDefined(kpair.Weight));
-                            
+
                     }
 
                     //Only push new variant if don't exist
@@ -176,7 +184,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
         $scope.overview = {}
 
         $scope.formData = {
-            Brand: { id: null, BrandNameEn: "Search for Brand Name.." },
+            Brand: { id: null },
             MasterVariant: { DimensionUnit: "MM", WeightUnit: "G", StockType: "Stock" },
             ShippingMethod: "1",
             AttributeSet: {
@@ -251,6 +259,12 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
         $scope.refreshBrands = function (q) {
             if (q == "" || !q || q == null) return;
+            $scope.dataSet.Brands = [{
+                BrandId: -1,
+                BrandNameEn: "Searching..",
+                disabled: true
+            }];
+
             Brand.getAll({
                 pageSize: 10,
                 searchText: q
@@ -273,6 +287,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
         $scope.$watch('formData.ExpireDate', function () {
             var form = $scope.addProductForm;
+            if(form.EffectiveDate == null){ return }
             if (form.ExpireDate) form.ExpireDate.$setValidity("min", true);
             if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
                 if (!form.ExpireDate) return;
@@ -281,18 +296,33 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             }
         });
 
-        var manualValidate = function () {
+        var manualValidate = function (Status) {
             var mat = [];
-            if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == "") {
-                mat.push("Missing Description (Thai)");
+
+            if (Status == 'WA') {
+                if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == "") {
+                    mat.push("Missing Description (Thai)");
+                }
+
+                if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == "") {
+                    mat.push("Missing Description (English)");
+                }
+
+                if (!$scope.formData.Brand.BrandId) {
+                    mat.push("Brand is Missing");
+                }
             }
 
-            if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == "") {
-                mat.push("Missing Description (English)");
-            }
+            var cnt = $scope.formData.Variants.reduce(function (total, x) {
+                return x.Visibility ? total + 1 : total
+            }, 0);
 
-            if (!$scope.formData.Brand.BrandId) {
-                mat.push("Brand is Missing");
+            if (cnt == 0 && $scope.formData.Variants.length > 0) {
+                mat.push("At least one variant must be visible.");
+            }
+            
+            if($scope.formData.ExpireDate && $scope.formData.ExpireDate <= $scope.formData.EffectiveDate){
+                mat.push("Effective date/time must come before expire date/time.");
             }
 
             return mat;
@@ -309,8 +339,8 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
 
             $scope.onPublishing = (Status == "WA");
             //On click validation
-            var validateMat = manualValidate();
-            if (validateMat.length > 0 && Status == 'WA') {
+            var validateMat = manualValidate(Status);
+            if (validateMat.length > 0) {
                 $scope.pageState.reset();
                 $scope.alert.error(validateMat);
                 return;
@@ -378,7 +408,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
             //TODO: Refactor, use better callback mechanism
             if (!angular.isObject(viewBag)) throw new KnownException("View bag is corrupted");
 
-            var shopId = 1;  //TODO: Get from user 
+            var shopId = $rootScope.Profile.Shop.ShopId;  //TODO: Get from user 
             var _editMode = ("productId" in viewBag)
             for (var page in tabPage) {
                 tabPage[page].angular();
@@ -543,44 +573,33 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Image', 'At
                     $scope.uploaderModal.queue = $scope.pairModal.queue;
                     ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail);
                 });
-                
+
                 $scope.$on('savePairModal', function (evt) {
                     console.log("adform", $scope.addProductVariantForm.$invalid);
-                    // var errors = [];
-                    // //Hackily find fields inside modal
-                    // Object.keys($scope.addProductForm.$error).forEach(function(error){
-                    //     if(error.$name.startsWith("Modal")){
-                    //         errors.push(error);
-                    //     }
-                    // });
-                    
-                    // if(errors.length > 0){
-                    //     $scope.pairModal.alert.error("Yeah bitch");
-                    // }
-                    
-                    if(!$scope.pairModal._override.uploadProductImages){
+
+                    if (!$scope.pairModal._override.uploadProductImages) {
                         $scope.pairModal.Images = [];
                     }
-                    
-                    if(!$scope.pairModal._override.embedVideo){
+
+                    if (!$scope.pairModal._override.embedVideo) {
                         $scope.pairModal.VideoLinks = [];
                     }
-                    
-                    if(!$scope.pairModal._override.description){
+
+                    if (!$scope.pairModal._override.description) {
                         $scope.pairModal.DescriptionFullEn = null;
                         $scope.pairModal.DescriptionFullTh = null;
                         $scope.pairModal.ShortDescriptionEn = null;
                         $scope.pairModal.ShortDescriptionTh = null;
                     }
-                    
-                    if(!$scope.pairModal._override.packageDetail){
+
+                    if (!$scope.pairModal._override.packageDetail) {
                         $scope.pairModal.Length = null;
                         $scope.pairModal.Height = null;
                         $scope.pairModal.Width = null;
                         $scope.pairModal.Length = null;
 
                     }
-                    
+
                     $scope.formData.Variants[$scope.pairIndex] = $scope.pairModal;
                 });
             }

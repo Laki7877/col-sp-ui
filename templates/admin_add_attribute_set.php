@@ -41,7 +41,8 @@
                   }">
                   <textarea class="form-control" ng-model="formData.AttributeSetDescriptionEn" maxlength="500"></textarea>
               </div>
-              <div ng-template="common/input/label"
+              <div ng-if="id != 0" 
+                  ng-template="common/input/label"
                   ng-template-options="{
                     'label' : 'Mapped Categories',
                     'inputSize': 'large'
@@ -52,7 +53,7 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Attribute Mapping</h2></div>
             <div class="form-section-content">
-                <div nc-tradable-select nc-test="lockAttributeset" nc-template="common/input/tradable-select2" nc-model="formData.Attributes" nc-select-options="attributeOptions" nc-options="{ 'map' : { 'text': 'AttributeNameEn', 'value' : 'AttributeId' } }"></div> 
+                <div nc-tradable-select="common/input/tradable-select2" nc-test="lockAttributeset" nc-model="formData.Attributes" nc-select-options="attributeOptions" nc-options="{ 'map' : { 'text': 'AttributeNameEn', 'value' : 'AttributeId' } }"></div> 
                 <div class="row col-xs-12">
                   <p style="margin-left: 30px; margin-top:15px"><span class="color-red">*</span> If attribute set is mapped to a product, attribute mapping cannot be changed</p>
                 </div>

@@ -18,13 +18,23 @@ angular.module("nc").run(function($templateCache) {  'use strict';
   );
 
 
+  $templateCache.put('common/ncAdvanceSearch',
+    "<div class=\"row margin-top-30\" ng-show=open><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Advance Search</h2></div><div class=form-section-content><form name=form class=ah-form><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductName nc-label=\"Product Name\" nc-template-options-path=searchForm/ProductName><input class=\"form-control width-field-normal\" name=ProductName ng-model=formData.ProductName required></div><div nc-template=common/input/form-group-with-label nc-template-form=form nc-label=PID nc-template-options-path=searchForm/PID><input class=\"form-control width-field-normal\" name=PID ng-model=formData.PID required></div><div nc-template=common/input/form-group-with-label nc-template-form=form nc-label=SKU nc-template-options-path=searchForm/SKU><input class=\"form-control width-field-normal\" name=SKU ng-model=formData.SKU required></div><div nc-template=common/input/form-group-with-label nc-template-form=form nc-label=\"Brand Name / ID\" nc-template-options-path=searchForm/Brands><ui-select ng-model=formData.Brands name=Brands nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 multiple tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match placeholder=\"Separate tags with comma (or enter)\">{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Brands\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form nc-label=\"Global Category Name/ ID\" nc-template-options-path=searchForm/GlobalCategory><input class=\"form-control width-field-normal\" name=GlobalCategory ng-model=formData.GlobalCategory required></div><div nc-template=common/input/form-group-with-label nc-template-form=form nc-label=\"Local Category Name/ ID\" nc-template-options-path=searchForm/LocalCategory><input class=\"form-control width-field-normal\" name=LocalCategory ng-model=formData.LocalCategory required></div><div nc-template=common/input/form-group-with-label nc-template-form=form nc-label=\"Search Tag\" nc-template-options-path=searchForm/Tags><ui-select ng-model=formData.Brand name=Brand nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 multiple tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match placeholder=\"Separate brands with comma (or enter)\">{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Tags\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form nc-label=Price nc-template-options-path=searchForm/Price><div class=width-field-small-input><input name=Price.From ng-model=formData.Price.From class=\"form-control\"></div><div class=width-label-extend>To</div><div class=width-field-small-input><input name=Price.To ng-model=formData.Price.To class=\"form-control\"></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form nc-label=\"Created Date\" nc-template-options-path=searchForm/CreatedDate><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.CreatedDt.From | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.CreatedDt.From data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'hour' }\"></ul></div></div><div class=width-label-extend>To</div><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.CreatedDt.To | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.CreatedDt.To data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'hour' }\"></ul></div></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form nc-label=\"Modified Date\" nc-template-options-path=searchForm/ModifiedDate><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.UpdatedDt.From | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.UpdatedDt.From data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'hour' }\"></ul></div></div><div class=width-label-extend>To</div><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown4 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.UpdatedDt.To | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.UpdatedDt.To data-datetimepicker-config=\"{ dropdownSelector: '#dropdown4', minView: 'hour' }\"></ul></div></div></div><div class=form-group><div class=width-label><label class=control-label></label></div><div class=button-size-normal><a class=\"button-size-normal btn btn-blue btn-width-xl\" ng-click=search()>Search</a></div><div class=button-size-normal><a class=\"button-size-normal margin-left-10 btn btn-white btn-width-xl\" ng-click=clear()>Clear</a></div></div></form></div></div></div></div>"
+  );
+
+
+  $templateCache.put('common/ncAdvanceSearchButton',
+    "<div class=\"search-section advance-search\"><button class=\"btn btn-white-fluid border_blue\" type=button ng-click=toggle()>Advanced Search</button></div>"
+  );
+
+
   $templateCache.put('common/ncAlert',
     "<div ng-show=alert.show uib-alert template-url=common/ncAlertTemplate type=\"{{ alert.type }}\" close=alert.close()><span ng-bind-html=alert.message></span></div>"
   );
 
 
   $templateCache.put('common/ncAlertTemplate',
-    "<div id=alert class=alert ng-class=\"['alert-' + (type || 'warning')]\" class=\"alert alert-dismissable\" role=alert><span class=\"close color opacity-1\" ng-class=\"'color-' + (type || 'warning')\" aria-hidden=true ng-show=closeable ng-click=\"close({$event: $event})\">&times;</span><ng-transclude><ng-transclude></ng-transclude></div>"
+    "<div class=alert ng-class=\"['alert-' + (type || 'warning')]\" class=\"alert alert-dismissable\" role=alert><span class=\"close color opacity-1\" ng-class=\"'color-' + (type || 'warning')\" aria-hidden=true ng-show=closeable ng-click=\"close({$event: $event})\">&times;</span><ng-transclude><ng-transclude></ng-transclude></div>"
   );
 
 
@@ -49,8 +59,7 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/ncEye',
-    "<a ng-click=toggle()><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon' : !model,\r" +
-    "\n" +
+    "<a ng-click=_toggle()><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon' : !model,\n" +
     "                            'fa fa-eye color-dark-grey eye-icon' : model}\"></i></a>"
   );
 
@@ -111,12 +120,14 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/ncTableSort',
-    "<a class=header-link ng-click=click()><span ng-class=\"{ 'active-underline' : isCurrent() }\" ng-transclude></span></a> <i class=fa ng-class=\"{ \r" +
-    "\n" +
-    "'fa fa-caret-down' : isCurrent() && direction, \r" +
-    "\n" +
-    "'fa fa-caret-up' : isCurrent() && !direction, \r" +
-    "\n" +
+    "<a class=header-link ng-click=click()><span ng-class=\"{ 'active-underline' : isCurrent() }\" ng-transclude></span></a> <i class=fa ng-class=\"{ \n" +
+    "'fa fa-caret-down' : isCurrent() && direction, \n" +
+    "'fa fa-caret-up' : isCurrent() && !direction, \n" +
     "'fa fa-caret-down color-grey' : !isCurrent() }\" ng-click=click()></i>"
+  );
+
+
+  $templateCache.put('partials/page-title',
+    "<div class=\"page-header with-border\"><h1 class=\"float-left page-header-title\">{{ title }}</h1><span class=\"float-right page-header-action\"><ng-transclude></ng-transclude></span></div>"
   );
  });

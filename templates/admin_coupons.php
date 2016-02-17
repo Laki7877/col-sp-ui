@@ -1,12 +1,13 @@
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System']) ?>
 
 <?php $this->start('page-body') ?>
-  <div>
-    <? $this->insert('components/page-title-with-buttons', ['text' => "Admin Coupons" , 
-      'buttons' => [
-          ['link' => '?p=seller_coupons_detail', 'class' => 'btn-blue btn-width-xl', 'name' => 'Create Coupon']
-        ]
-    ]) ?>
+  <div ng-controller="AdminCouponsCtrl">
+      <nc-page-title nc-title="Admin Coupons">
+      	  <a ng-href="/admin/coupons/admin/create" class="btn margin-right-10 ng-scope btn-blue btn-width-xl">
+          	  <span class="">Create Coupon</span>
+          </a>
+      </nc-page-title>
+       
     <div class="row search-section-wrapper">
       <div class="search-section section-search">
         <div class="input-group">

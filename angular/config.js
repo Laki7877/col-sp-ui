@@ -99,11 +99,23 @@ module.exports = {
 	PRODUCT_REVIEW_STATUS: [
 		{
 			name: 'Not Approved',
-			value: 'WA'
+			value: 'WA',
+			color: 'color-grey'
 		}, 
 		{
 			name: 'Approved',
+			value: 'AP',
+			color: 'color-green'
+		}
+	],
+	PRODUCT_REVIEW_BUTTON: [
+		{
+			name: 'Unapprove',
 			value: 'AP'
+		},
+		{
+			name: 'Approve',
+			value: 'WA'
 		}
 	],
 	PRODUCT_REVIEW_MAX_RATING: 5.0,
@@ -119,8 +131,21 @@ module.exports = {
 			value: 'WA',
 			color: 'color-yellow',
 			icon: 'fa-clock-o'
+		},
+		{
+			name: 'Approved',
+			value: 'AP',
+			color: 'color-green',
+			icon: 'fa-check-circle-o'
+		},
+		{
+			name: 'Not Approved',
+			value: 'RJ',
+			color: 'color-red',
+			icon: 'fa-ban'
 		}
 	],
+	CATEGORY_SYNC_DELAY: 1200, //Category wait for x millisecond before actually saving
 	DEFAULT_SUCCESS_MESSAGE: 'Your changes have been saved successfully.',
 	DEFAULT_ERROR_MESSAGE: 'Unable to save because required fields are missing or incorrect.', 
 	TITLE: {

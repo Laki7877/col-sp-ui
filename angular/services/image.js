@@ -67,6 +67,14 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 			console.info('onErrorItem', images, uploader.queue);
 	    };
 
+        uploader.onProgressItem = function(item,progress){
+             console.info('onProgressItem', item, progress, uploader.progress);
+        };
+        
+        uploader.onProgressAll = function(){
+            console.info("onProgressAll");
+        }
+        
 	    return uploader;
 	}
 
