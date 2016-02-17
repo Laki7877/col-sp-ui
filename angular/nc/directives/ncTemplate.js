@@ -20,6 +20,7 @@ angular.module('nc')
                 },
                 link: function (scope, element, attrs, ctrl, transclude) {
                     
+
                     scope.isInvalid = function(form) {
                         if(angular.isDefined(form) && 
                             angular.isDefined(form.$invalid) && 
@@ -29,12 +30,17 @@ angular.module('nc')
                         return false;
                     };
 
-                    var pathComp = scope.optionsPath.split('/');
-                    var opt = $templateOptionsCache[pathComp[0]][pathComp[1]];
-                    // console.log("Loading ", opt, scope.templateField());   
+                    var pathComp 
+                    var opt = {};
+                    if(scope.optionsPath){
+                        pathComp = scope.optionsPath.split('/');
+                        opt = $templateOptionsCache[pathComp[0]][pathComp[1]];
+                    }
+               
                     
                     if (!opt) {
-                        throw new KnownException('cannot find ' + scope.optionsPath);
+                        throw new KnownException('Warning: nc-template cannot find ' + scope.optionsPath);
+                        opt = {};
                     }
             
                     if(!('error' in opt)){

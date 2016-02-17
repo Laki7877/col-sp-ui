@@ -408,7 +408,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
             //TODO: Refactor, use better callback mechanism
             if (!angular.isObject(viewBag)) throw new KnownException("View bag is corrupted");
 
-            var shopId = 1;  //TODO: Get from user 
+            var shopId = $rootScope.Profile.Shop.ShopId;  //TODO: Get from user 
             var _editMode = ("productId" in viewBag)
             for (var page in tabPage) {
                 tabPage[page].angular();

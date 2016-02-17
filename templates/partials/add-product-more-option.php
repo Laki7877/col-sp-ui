@@ -108,7 +108,8 @@
                                     <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
                                         <input readonly style="background-color:white" type="text"
                                         ng-class="{'has-error': formData.ExpireDate <= formData.EffectiveDate }"
-                                         placeholder="Select date and time when product will go online" class="input-icon-calendar form-control" value="{{ formData.EffectiveDate | date: 'dd/MM/yy HH:mm' }}" />
+                                         placeholder="Select date and time when product will go online" 
+                                         class="input-icon-calendar form-control" value="{{ formData.EffectiveDate | date: 'dd/MM/yy HH:mm' }}" />
                                     </a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                                         <datetimepicker data-ng-model="formData.EffectiveDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'hour' }" />

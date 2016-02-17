@@ -247,6 +247,10 @@
     margin-left: 9px;
   }
 
+  .filter-seperator:hover {
+    color:  $color-theme;
+  }
+
   .filter-first-option {
     text-decoration: none;
     cursor: pointer;
