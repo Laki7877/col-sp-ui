@@ -22,9 +22,14 @@
 
 .onboarding_content
 	margin-top: -36px
+	margin-left: 190px
+	margin-right: 190px
+
+	> .home_task_space
+		margin-bottom: 30px
+
 	.home_task
 		border:	1px solid $color-grey
-		margin: 0px 190px
 		background-color:	$color-white
 
 		.image-thumbs-img-wrapper
@@ -36,3 +41,16 @@
 		.home_task_button
 			float: right
 			padding: 17px 10px
+
+	.complete_line
+		border-top: solid 1px $color-grey
+		position: relative
+		min-height: 1px
+		> .complte_line_text
+			position: absolute
+			left: 50%
+			top: 50%
+			padding-left: 15px
+			padding-right: 15px
+			transform: translate(-50%, -50%)
+			background-color: white
