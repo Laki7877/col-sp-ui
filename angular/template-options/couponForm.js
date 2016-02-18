@@ -38,5 +38,11 @@ module.exports = {
           show: true,
           message: 'Example: 200 or 125.50'
       }
+    },
+    FilterByValue: {
+      inputSize: 'xxl'
+    },
+    IncludeProducts: {
+      inputSize: 'xxl'
     }
 }

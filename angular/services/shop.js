@@ -1,6 +1,6 @@
 module.exports = ['common', function (common) {
     'use strict';
-    var service = {};
+    var service = common.Rest('/Shops');
 
     service.getLocalCategories = function (id) {
         return common.makeRequest({

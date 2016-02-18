@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, CouponService, config, Brand) {
+module.exports = function($scope, $controller, CouponService, config, Brand, Shop, Product) {
   $scope.formData = {
     ExpireDate:  null,
     StartDate: null,
@@ -20,7 +20,7 @@ module.exports = function($scope, $controller, CouponService, config, Brand) {
       }],
       FilterBy: [
         {
-          Type: null, Value: null
+          Type: null, Value: []
         }
       ],
       Include: [
@@ -32,22 +32,6 @@ module.exports = function($scope, $controller, CouponService, config, Brand) {
     }
   };
 
-  $scope.refreshBrands = function (q) {
-      if (q == "" || !q || q == null) return;
-      $scope.dataSet.Brands = [{
-          BrandId: -1,
-          BrandNameEn: "Searching..",
-          disabled: true
-      }];
-
-      Brand.getAll({
-          pageSize: 10,
-          searchText: q
-      }).then(function (ds) {
-          $scope.dataSet.Brands = ds.data;
-      });
-  };
-
   $scope.dataSet = {
     criteria: [{ value: 'None', text: 'No filter' }, { value: 'PriceGT', text: 'The total price is more than..' }],
     filters: [{ value: 'None', text: 'No filter' },
@@ -55,8 +39,49 @@ module.exports = function($scope, $controller, CouponService, config, Brand) {
     { text: 'Global Category', value: 'GlobalCategory' },
     { text: 'Shop', value: 'Shop' },
     { text: 'Email', value: 'Email' }],
-    Brands : []
+    Brands : [],
+    Products: [],
+    Shops: []
   }
+
+  $scope.refreshProducts = function(q){
+    Product.list({
+        limit: 10,
+        order: 'ProductId',
+        offset: 0,
+        direction: 'asc',
+        searchText: (q || '')
+    }).then(function (ds) {
+        $scope.dataSet.Products = ds.data;
+    });
+  };
+
+  $scope.refreshShops = function(q){
+    Shop.list({
+        limit: 10,
+        order: 'ShopId',
+        offset: 0,
+        direction: 'asc',
+        searchText: (q || '')
+    }).then(function (ds) {
+        $scope.dataSet.Shops = ds.data;
+    });
+  };
+
+  $scope.refreshBrands = function (q) {
+      Brand.getAll({
+          pageSize: 10,
+          searchText: (q || '')
+      }).then(function (ds) {
+          $scope.dataSet.Brands = ds.data;
+      });
+  };
+
+  $scope.refreshShops();
+  $scope.refreshBrands();
+  $scope.refreshProducts();
+
+
 
   $controller('AbstractAddCtrl', {
     $scope: $scope,

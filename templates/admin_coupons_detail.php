@@ -9,7 +9,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminCouponAddCtrl">
-    <form class="ah-form sticky-mainform-action" name="form">
+    <form class="ah-form sticky-mainform-action" name="form" novalidate>
 
     <div>
       <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Coupons/Create Coupon", 'border_class' => 'no-padding']) ?>
