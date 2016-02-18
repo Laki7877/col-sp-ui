@@ -10,6 +10,9 @@ module.exports = function($scope, Attribute, util, GlobalCategoryService, Catego
 		$scope.eval = function(test) {
 			return {name: test};
 		}
+		$scope.$watchCollection('some', function() {
+			console.log($scope.some);
+		});
 		$scope.dataTypeOptions = [
 			{
 				name: 'Free Text',
@@ -71,7 +74,7 @@ module.exports = function($scope, Attribute, util, GlobalCategoryService, Catego
 		$scope.$watch('params', $scope.reload, true); 	
 
 		$scope.treeSelectTree = [];
-		$scope.treeSelectModel = null;
+		$scope.treeSelectModel = [];
 
 		GlobalCategoryService.list()
 			.then(function(data) {

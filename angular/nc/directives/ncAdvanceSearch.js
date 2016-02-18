@@ -36,11 +36,6 @@ angular.module('nc')
 					if(scope.callback(scope.formData, false)) return;
 					scope.model = {};
 				};
-				scope.openTreeSelector = function() {
-					var modal = $uibModal.open({
-						
-					});
-				};
 			}
 		};
 	})

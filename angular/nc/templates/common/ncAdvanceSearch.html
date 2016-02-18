@@ -24,27 +24,10 @@
 	                            </ui-select>
 						</div>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form" nc-label="Global Category Name/ ID" nc-template-options-path="searchForm/GlobalCategory">
-						    <ui-select ng-model="formData.GlobalCategory" name="GlobalCategory" multiple>
-                                <ui-select-match ui-lock-choice="true">{{$item.NameEn}}</ui-select-match>
-                                <ui-select-choices repeat="item in []" ui-disable-choice></ui-select-choices>
-                            </ui-select>
+							<nc-breadcrumb-select name="GlobalCategory" nc-model="formData.GlobalCategory" nc-breadcrumb-select-tree="options.GlobalCategory"></nc-breadcrumb-select>
 						</div>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form" nc-label="Local Category Name/ ID" nc-template-options-path="searchForm/LocalCategory">
-							<div class="ui-select-container ui-select-multiple ui-select-bootstrap dropdown form-control">
-								<div style="height: 1.8em;">
-									<div class="ui-select-match">
-										<div ng-repeat="tag in formData.LocalCategory">
-											<span class="ui-select-match-item btn btn-default btn-xs select-locked">
-												<span class="close ui-select-match-close" ng-click="formData.LocalCategory.splice(formData.LocalCategory.indexOf(tag))">&nbsp;×</span>
-												<span>{{tag.NameEn}}</span>
-											</span>
-										</div>
-									</div>
-									<span class="float-right" style="margin-top: 3px;">
-										<a class="fa fa-plus-circle color-theme" ng-click="openTreeSelector()"></a>
-									</span>
-								</div>
-							</div>
+							<nc-breadcrumb-select name="LocalCategory" nc-model="formData.LocalCategory" nc-breadcrumb-select-tree="options.LocalCategory"></nc-breadcrumb-select>
 						</div>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form" nc-label="Search Tag" nc-template-options-path="searchForm/Tags">
 							    <ui-select ng-model="formData.Brand" name="Brand" nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30" multiple tagging-tokens=",|ENTER" tagging-label="" nc-tag-field>

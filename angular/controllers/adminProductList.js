@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, Product, config) {
+module.exports = function($scope, $controller, Product, GlobalCategoryService, LocalCategoryService, config) {
 	'ngInject';
     $scope.asStatus = Product.getStatus;
 	$controller('AbstractListCtrl', {
@@ -26,19 +26,33 @@ module.exports = function($scope, $controller, Product, config) {
 		}
 	});
 	$scope.searchAdvance = false;
+	$scope.advanceSearchOptions = {};
 	$scope.onSearch = function() {
 		_.unset($scope.params, ['AdvanceSearch']);
 	};
 	$scope.onAdvanceSearch = function(apply) {
-		if(apply)
+		if(apply) {
 			_.unset($scope.params, ['searchText']);
+		} else {
+			$scope.params.AdvanceSearch = {};
+		}
 	};
     $scope.toggleEye = function(row){
         Product.visible([{
             ProductId: row.ProductId,
             Visibility: row.Visibility
-        }], function(d){
-           console.log(d); 
+        }], function(){
+        	//success
         });
     }
+
+    //Load Category list
+    GlobalCategoryService.list()
+    	.then(function(data) {
+    		$scope.advanceSearchOptions.GlobalCategory = data;
+    	});
+    LocalCategoryService.list()
+    	.then(function(data) {
+    		$scope.advanceSearchOptions.LocalCategory = data;
+    	});
 }

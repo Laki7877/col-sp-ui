@@ -77,6 +77,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				.then(function() {
 					$scope.alert.close();
 				}, function(err) {
+					$scope.pristine = true;
 					$scope.alert.error(common.getError(err));
 					$scope.reload();
 				})
