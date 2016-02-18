@@ -12314,261 +12314,276 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 
 /* line 13, ../../../assets/_atomic.scss */
+.margin-left-5 {
+  margin-left: 5px;
+}
+
+/* line 17, ../../../assets/_atomic.scss */
 .margin-left-10 {
   margin-left: 10px;
 }
 
-/* line 17, ../../../assets/_atomic.scss */
+/* line 21, ../../../assets/_atomic.scss */
 .margin-left-30 {
   margin-left: 30px;
 }
 
-/* line 21, ../../../assets/_atomic.scss */
+/* line 25, ../../../assets/_atomic.scss */
 .margin-left-60 {
   margin-left: 60px;
 }
 
-/* line 25, ../../../assets/_atomic.scss */
+/* line 29, ../../../assets/_atomic.scss */
 .margin-top-5 {
   margin-top: 5px;
 }
 
-/* line 29, ../../../assets/_atomic.scss */
+/* line 33, ../../../assets/_atomic.scss */
 .margin-top-7 {
   margin-top: 7px;
 }
 
-/* line 33, ../../../assets/_atomic.scss */
+/* line 37, ../../../assets/_atomic.scss */
 .margin-top-10 {
   margin-top: 10px;
 }
 
-/* line 37, ../../../assets/_atomic.scss */
+/* line 41, ../../../assets/_atomic.scss */
 .margin-top-20 {
   margin-top: 20px;
 }
 
-/* line 41, ../../../assets/_atomic.scss */
+/* line 45, ../../../assets/_atomic.scss */
 .margin-top-30 {
   margin-top: 30px;
 }
 
-/* line 45, ../../../assets/_atomic.scss */
+/* line 49, ../../../assets/_atomic.scss */
 .margin-top-40 {
   margin-top: 40px;
 }
 
-/* line 49, ../../../assets/_atomic.scss */
+/* line 53, ../../../assets/_atomic.scss */
 .margin-top-200 {
   margin-top: 200px;
 }
 
-/* line 53, ../../../assets/_atomic.scss */
+/* line 57, ../../../assets/_atomic.scss */
 .margin-top-220 {
   margin-top: 220px;
 }
 
-/* line 57, ../../../assets/_atomic.scss */
+/* line 61, ../../../assets/_atomic.scss */
 .margin-bottom-20 {
   margin-bottom: 20px;
 }
 
-/* line 61, ../../../assets/_atomic.scss */
+/* line 65, ../../../assets/_atomic.scss */
 .margin-bottom-15 {
   margin-bottom: 15px;
 }
 
-/* line 65, ../../../assets/_atomic.scss */
+/* line 69, ../../../assets/_atomic.scss */
 .margin-bottom-30 {
   margin-bottom: 30px;
 }
 
-/* line 69, ../../../assets/_atomic.scss */
+/* line 73, ../../../assets/_atomic.scss */
 .margin-bottom-40 {
   margin-bottom: 40px;
 }
 
-/* line 73, ../../../assets/_atomic.scss */
+/* line 77, ../../../assets/_atomic.scss */
 .margin-bottom-80 {
   margin-bottom: 80px;
 }
 
-/* line 77, ../../../assets/_atomic.scss */
+/* line 81, ../../../assets/_atomic.scss */
 .padding-left-15 {
   padding-left: 15px;
 }
 
-/* line 81, ../../../assets/_atomic.scss */
+/* line 85, ../../../assets/_atomic.scss */
 .padding-left-30 {
   padding-left: 30px;
 }
 
-/* line 85, ../../../assets/_atomic.scss */
+/* line 89, ../../../assets/_atomic.scss */
 .padding-left-0 {
   padding-left: 0;
 }
 
-/* line 89, ../../../assets/_atomic.scss */
+/* line 93, ../../../assets/_atomic.scss */
 .padding-right-5 {
   padding-right: 5px;
 }
 
-/* line 93, ../../../assets/_atomic.scss */
+/* line 97, ../../../assets/_atomic.scss */
 .padding-right-15 {
   padding-right: 15px;
 }
 
-/* line 97, ../../../assets/_atomic.scss */
+/* line 101, ../../../assets/_atomic.scss */
 .padding-right-30 {
   padding-right: 30px;
 }
 
-/* line 101, ../../../assets/_atomic.scss */
+/* line 105, ../../../assets/_atomic.scss */
 .padding-bottom-5 {
   padding-bottom: 5px;
 }
 
-/* line 105, ../../../assets/_atomic.scss */
+/* line 109, ../../../assets/_atomic.scss */
 .padding-bottom-10 {
   padding-bottom: 10px;
 }
 
-/* line 109, ../../../assets/_atomic.scss */
+/* line 113, ../../../assets/_atomic.scss */
 .padding-bottom-30 {
   padding-bottom: 30px;
 }
 
-/* line 113, ../../../assets/_atomic.scss */
+/* line 117, ../../../assets/_atomic.scss */
 .padding-bottom-60 {
   padding-bottom: 60px;
 }
 
-/* line 117, ../../../assets/_atomic.scss */
+/* line 121, ../../../assets/_atomic.scss */
 .padding-top-30 {
   padding-top: 30px;
 }
 
-/* line 121, ../../../assets/_atomic.scss */
+/* line 125, ../../../assets/_atomic.scss */
 .no-margin {
   margin: 0;
 }
 
-/* line 125, ../../../assets/_atomic.scss */
+/* line 129, ../../../assets/_atomic.scss */
 .no-padding {
   padding: 0;
 }
 
-/* line 129, ../../../assets/_atomic.scss */
+/* line 133, ../../../assets/_atomic.scss */
 .no-border {
   border: none;
 }
 
-/* line 133, ../../../assets/_atomic.scss */
+/* line 137, ../../../assets/_atomic.scss */
 .float-left {
   float: left;
 }
 
-/* line 137, ../../../assets/_atomic.scss */
+/* line 141, ../../../assets/_atomic.scss */
 .float-right {
   float: right;
 }
 
-/* line 141, ../../../assets/_atomic.scss */
+/* line 145, ../../../assets/_atomic.scss */
 .color-theme-light {
   color: #b4ddff;
 }
 
-/* line 145, ../../../assets/_atomic.scss */
+/* line 149, ../../../assets/_atomic.scss */
 .color-theme {
   color: #4899DD;
 }
 
-/* line 149, ../../../assets/_atomic.scss */
+/* line 153, ../../../assets/_atomic.scss */
 .color-grey {
   color: #BCC7D5;
 }
 
-/* line 153, ../../../assets/_atomic.scss */
+/* line 157, ../../../assets/_atomic.scss */
 .color-green {
   color: #33bb5b;
 }
 
-/* line 157, ../../../assets/_atomic.scss */
+/* line 161, ../../../assets/_atomic.scss */
 .color-dark-green {
   color: #68d485;
 }
 
-/* line 161, ../../../assets/_atomic.scss */
+/* line 165, ../../../assets/_atomic.scss */
 .color-red {
   color: #ec0000;
 }
 
-/* line 165, ../../../assets/_atomic.scss */
+/* line 169, ../../../assets/_atomic.scss */
 .color-dark-grey {
   color: #7B7F8F;
 }
 
-/* line 169, ../../../assets/_atomic.scss */
+/* line 173, ../../../assets/_atomic.scss */
 .color-yellow {
   color: #f5a623;
 }
 
-/* line 173, ../../../assets/_atomic.scss */
+/* line 177, ../../../assets/_atomic.scss */
 .color-black {
   color: #32343C;
 }
 
-/* line 177, ../../../assets/_atomic.scss */
+/* line 181, ../../../assets/_atomic.scss */
 .vertical-align-middle {
   vertical-align: middle;
 }
 
-/* line 181, ../../../assets/_atomic.scss */
+/* line 185, ../../../assets/_atomic.scss */
 .text-align-center {
   text-align: center;
 }
 
-/* line 189, ../../../assets/_atomic.scss */
+/* line 193, ../../../assets/_atomic.scss */
 .text-underline {
   text-decoration: underline;
 }
 
-/* line 193, ../../../assets/_atomic.scss */
+/* line 197, ../../../assets/_atomic.scss */
 .hide-component {
   display: none;
 }
 
-/* line 197, ../../../assets/_atomic.scss */
+/* line 201, ../../../assets/_atomic.scss */
 .font-size-12 {
   font-size: 12px;
 }
 
-/* line 201, ../../../assets/_atomic.scss */
+/* line 205, ../../../assets/_atomic.scss */
 .font-size-18 {
   font-size: 18px;
 }
 
-/* line 205, ../../../assets/_atomic.scss */
-.font-size-20 {
+/* line 209, ../../../assets/_atomic.scss */
+.font-size-20, .icon-size-20 {
   font-size: 20px;
 }
 
 /* line 213, ../../../assets/_atomic.scss */
+.font-size-27 {
+  font-size: 27px;
+}
+
+/* line 217, ../../../assets/_atomic.scss */
+.font-size-38 {
+  font-size: 38px;
+}
+
+/* line 225, ../../../assets/_atomic.scss */
 .margin-0 {
   margin: 0;
 }
 
-/* line 217, ../../../assets/_atomic.scss */
+/* line 229, ../../../assets/_atomic.scss */
 .font-weight-bold {
   font-weight: bold;
 }
 
-/* line 221, ../../../assets/_atomic.scss */
+/* line 233, ../../../assets/_atomic.scss */
 .opacity-1 {
   opacity: 1;
 }
 
-/* line 225, ../../../assets/_atomic.scss */
+/* line 237, ../../../assets/_atomic.scss */
 .width-100-percent {
   width: 100%;
 }
@@ -14041,6 +14056,168 @@ form h6 {
 .field_seller .with_border {
   padding-bottom: 14px;
   border-bottom: 1px solid #bcc7d5;
+}
+
+/* line 7, ../../../assets/_seller_page.sass */
+.onboarding_wrapper {
+  background-image: url("/assets/img/bg-onboarding.png");
+  background-size: 100%;
+  margin-top: -30px;
+  margin-bottom: -30px;
+  margin-left: -40px;
+  margin-right: -40px;
+  height: 258px;
+}
+/* line 16, ../../../assets/_seller_page.sass */
+.onboarding_wrapper .welcome_text_big {
+  padding-top: 92px;
+  font-size: 36px;
+}
+/* line 20, ../../../assets/_seller_page.sass */
+.onboarding_wrapper .welcome_text_small {
+  font-size: 24px;
+}
+
+/* line 23, ../../../assets/_seller_page.sass */
+.onboarding_content {
+  margin-top: -36px;
+  margin-left: 190px;
+  margin-right: 190px;
+}
+/* line 28, ../../../assets/_seller_page.sass */
+.onboarding_content > .home_task_space {
+  margin-bottom: 30px;
+}
+/* line 31, ../../../assets/_seller_page.sass */
+.onboarding_content .home_task {
+  border: 1px solid #BCC7D5;
+  background-color: #FFFFFF;
+}
+/* line 35, ../../../assets/_seller_page.sass */
+.onboarding_content .home_task .image-thumbs-img-wrapper {
+  display: inline-flex;
+  padding-left: 22px;
+}
+/* line 38, ../../../assets/_seller_page.sass */
+.onboarding_content .home_task .home_task_text {
+  padding: 11px 22px;
+  display: inline-block;
+}
+/* line 41, ../../../assets/_seller_page.sass */
+.onboarding_content .home_task .home_task_button {
+  float: right;
+  padding: 17px 10px;
+}
+/* line 45, ../../../assets/_seller_page.sass */
+.onboarding_content .complete_line {
+  border-top: solid 1px #BCC7D5;
+  position: relative;
+  min-height: 1px;
+}
+/* line 49, ../../../assets/_seller_page.sass */
+.onboarding_content .complete_line > .complte_line_text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  padding-left: 15px;
+  padding-right: 15px;
+  transform: translate(-50%, -50%);
+  background-color: white;
+}
+
+/* line 61, ../../../assets/_seller_page.sass */
+#dashboard_page .with_border {
+  border: 1px solid #bcc7d5;
+}
+/* line 64, ../../../assets/_seller_page.sass */
+#dashboard_page .column-text-ellipsis {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* line 70, ../../../assets/_seller_page.sass */
+#dashboard_page .space_column {
+  padding: 20px;
+  margin-bottom: 30px;
+  line-height: 27px;
+}
+/* line 75, ../../../assets/_seller_page.sass */
+#dashboard_page .logo-img {
+  max-width: 40px;
+  max-heigh: 40px;
+}
+/* line 80, ../../../assets/_seller_page.sass */
+#dashboard_page .header-link a {
+  color: #32343C;
+}
+/* line 82, ../../../assets/_seller_page.sass */
+#dashboard_page .header-link {
+  border-bottom: 2px solid #4891d2;
+  padding-bottom: 4px;
+}
+/* line 86, ../../../assets/_seller_page.sass */
+#dashboard_page .header-link:focus {
+  text-decoration: none;
+}
+/* line 89, ../../../assets/_seller_page.sass */
+#dashboard_page .header_name_space {
+  padding-left: 10px;
+}
+/* line 93, ../../../assets/_seller_page.sass */
+#dashboard_page .group_span_right span {
+  margin-left: 15px;
+}
+/* line 96, ../../../assets/_seller_page.sass */
+#dashboard_page .group_container {
+  padding-bottom: 20px;
+  padding-top: 20px;
+  border-bottom: solid 1px #BCC7D5;
+}
+/* line 101, ../../../assets/_seller_page.sass */
+#dashboard_page .group_container .price-column {
+  padding-left: 50px;
+}
+/* line 104, ../../../assets/_seller_page.sass */
+#dashboard_page .no_border {
+  border: none;
+}
+/* line 107, ../../../assets/_seller_page.sass */
+#dashboard_page .small_field {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+/* line 111, ../../../assets/_seller_page.sass */
+#dashboard_page .small_field .row:first-child {
+  padding-top: 10px;
+}
+/* line 114, ../../../assets/_seller_page.sass */
+#dashboard_page .top_selling_field {
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border: none;
+}
+/* line 119, ../../../assets/_seller_page.sass */
+#dashboard_page .top_selling_field div:first-child {
+  padding-right: 0;
+}
+/* line 121, ../../../assets/_seller_page.sass */
+#dashboard_page .top_selling_field div:last-child {
+  padding-left: 0;
+  line-height: 40px;
+}
+/* line 125, ../../../assets/_seller_page.sass */
+#dashboard_page .top_selling_header {
+  margin-bottom: 15px;
+}
+/* line 128, ../../../assets/_seller_page.sass */
+#dashboard_page .group_container:first-child {
+  padding-top: 0;
+}
+/* line 131, ../../../assets/_seller_page.sass */
+#dashboard_page .group_container:last-child {
+  border: none;
+  padding-bottom: 0;
 }
 
 /* line 34, ../../../assets/screen.scss */
