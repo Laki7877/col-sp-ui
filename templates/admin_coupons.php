@@ -1,7 +1,7 @@
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System']) ?>
 
 <?php $this->start('page-body') ?>
-  <div ng-controller="AdminCouponsCtrl">
+  <div ng-controller="AdminCouponCtrl">
       <nc-page-title nc-title="Admin Coupons">
       	  <a ng-href="/admin/coupons/admin/create" class="btn margin-right-10 ng-scope btn-blue btn-width-xl">
           	  <span class="">Create Coupon</span>

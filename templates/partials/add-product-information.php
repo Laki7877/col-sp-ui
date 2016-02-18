@@ -61,9 +61,7 @@
                     <div class="form-section-content">
 
                         <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.MasterVariant_ProductNameEn" nc-label="Product Name (English)" nc-template-options-path="addProductForm/MasterVariant_ProductNameEn">
-
                             <input class="form-control width-field-large" name="MasterVariant_ProductNameEn" ng-model="formData.MasterVariant.ProductNameEn" maxlength="300" ng-pattern="/^([^<>ก-๙])+$/" required />
-
                         </div>
 
                         <div nc-template="common/input/form-group-with-label" nc-label="Product Name (ไทย)" nc-template-form="addProductForm.MasterVariant_ProductNameTh" nc-template-options-path="addProductForm/MasterVariant_ProductNameTh">

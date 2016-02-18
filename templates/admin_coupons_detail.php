@@ -8,7 +8,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 ?>
 
 <?php $this->start('page-body') ?>
-  <div>
+  <div ng-controller="AdminCouponAddCtrl">
     <form class="ah-form sticky-mainform-action" name="form">
 
     <div>

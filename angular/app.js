@@ -233,6 +233,8 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 .controller('AdminShopAddCtrl', controllers.adminShopAdd)
 .controller('AdminShoptypeCtrl', controllers.adminShoptype)
 .controller('AdminShoptypeAddCtrl', controllers.adminShoptypeAdd)
+.controller('AdminCouponCtrl', controllers.adminCoupon)
+.controller('AdminCouponAddCtrl', controllers.adminCouponAdd)
 
 .controller('AdminProductApprovalListCtrl', controllers.adminProductApprovalList)
 .controller('AdminProductListCtrl', controllers.adminProductList)
@@ -240,6 +242,5 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 .controller('LoginCtrl', controllers.login)
 .controller('AbstractListCtrl', controllers.abstractList)
 .controller('AbstractAddCtrl', controllers.abstractAdd)
-.controller('AdminCouponsCtrl', controllers.adminCoupons)
 
 .controller('TestCtrl', controllers.test)
