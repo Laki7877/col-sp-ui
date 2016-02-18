@@ -1,6 +1,6 @@
 <?php
     $items = [
-        [ "name" => "Home", "icon" => "fa-home" ],
+        [ "name" => "Home", "icon" => "fa-home", "sub_sidebar" => "#sub-sidebar-home" ],
         [ "name" => "Orders", "icon" => "fa-inbox", "sub_sidebar" => "#sub-sidebar-orders" ],
         [ "name" => "Products", "icon" => "fa-tag", "sub_sidebar" => "#sub-sidebar-product" ],
         [ "name" => "Inventory", "icon" => "fa-archive", "sub_sidebar" => "#sub-sidebar-inventory" ],

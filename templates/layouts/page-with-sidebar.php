@@ -7,6 +7,12 @@
     
     <?php $this->insert('components/sidebar-nav', ['itemActive' => 'Home']) ?>
     
+    <ul class="sub-sidebar" style="display: none;" id="sub-sidebar-home">
+        <li class="sub-sidebar-header">Home</li>
+        <li class="item active margin-top-20"><a href="?p=seller_onboarding">On Boarding</a></li>
+<!--         <li class="item"><a href="?p=seller_return">Return</a></li>
+ -->    </ul>
+
     <ul class="sub-sidebar" style="display: none;" id="sub-sidebar-orders">
         <li class="sub-sidebar-header">Orders</li>
         <li class="item active margin-top-20"><a href="?p=seller_orders">View</a></li>
