@@ -13,7 +13,7 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 		_order: options.order,
 		_limit: 10,
 		_offset: 0,
-		_direction: options.direction || 'desc'	
+		_direction: options.direction || 'desc'
 	};
 	$scope.list = {
 		total: 0,
@@ -45,7 +45,7 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 	$scope.onload = function() {
 		$scope.loading = true;
 	};
-	if(options.filters) {
+	if(!_.isEmpty(options.filters)) {
 		$scope.filterOptions = options.filters;
 		$scope.params._filter = options.filters[0].value;
 	}
@@ -62,9 +62,9 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 				switch(item) {
 					case 'Delete':
 						return util.bulkDelete(options.service, options.id, options.item, $scope.alert, $scope.reload, $scope.onload);
-					case 'Show': 
+					case 'Show':
 						return util.bulkShow(options.service, options.id, options.item, $scope.alert, $scope.reload);
-					case 'Hide': 
+					case 'Hide':
 						return util.bulkHide(options.service, options.id, options.item, $scope.alert, $scope.reload);
 				}
 			}

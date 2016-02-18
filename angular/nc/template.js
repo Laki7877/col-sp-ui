@@ -131,6 +131,11 @@ angular.module("nc").run(function($templateCache) {  'use strict';
   );
 
 
+  $templateCache.put('components/single-upload',
+    "<div class=image-drop-wrapper style=width:320px><input nv-file-select uploader=viewBag.uploader type=file ng-delegatee=viewBag.uploader onclick=\"this.value = null\"><div nv-file-drop uploader=viewBag.uploader class=image-drop-zone style=\"width:320px; height:120px; overflow: hidden\"><div class=image-drop-zone-text><p><img ng-src=\"{{ viewBag.images[0].url }}\" style=\"width:100%; height: auto\"></p><span ng-if=\"!viewBag.images || viewBag.images.length == 0\">Drag &amp; drop your shop logo here</span><h3 ng-if=\"viewBag.uploader.progress > 0 && viewBag.uploader.progress < 100\" class=color-grey>{{ uploader.progress }} %</h3><h3 ng-if=\"viewBag.uploader.progress == 100 && !viewBag.images[0].url\" class=color-grey><img style=\"width:100%; height: auto\" src=\"/assets/img/loader.gif\"></h3></div></div><div ng-show=viewBag.uploader.isHTML5 class=image-select-alternative-text><span>Or</span> <a href=javascript:; ng-delegate=viewBag.uploader><span ng-if=\"viewBag.images.length === 0\">Select image from your computer</span> <span ng-if=\"viewBag.images.length > 0\">Upload new image</span></a></div></div>"
+  );
+
+
   $templateCache.put('partials/page-title',
     "<div class=\"page-header with-border\"><h1 class=\"float-left page-header-title\">{{ title }}</h1><span class=\"float-right page-header-action\"><ng-transclude></ng-transclude></span></div>"
   );

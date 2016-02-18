@@ -1,4 +1,4 @@
-//Image Service 
+//Image Service
 module.exports = function($q, $http, common, storage, config, FileUploader){
 	'ngInject';
 	var service = {};
@@ -33,7 +33,7 @@ module.exports = function($q, $http, common, storage, config, FileUploader){
 	 * Assign image uploader events specifically to COL-image uploading feature
 	 */
 	service.assignUploaderEvents = function(uploader, images, queueLimit, onFail) {
-        
+
 		uploader.onWhenAddingFileFailed = function(item, filter, options) {
 			console.info('onAfterAddingFile', item, filter, options);
 			onFail(item, filter);
@@ -50,7 +50,7 @@ module.exports = function($q, $http, common, storage, config, FileUploader){
 						return;
 					}
 				}
-				
+
 				//Default handle, pop last images
 				images.pop();
 			}
@@ -66,7 +66,7 @@ module.exports = function($q, $http, common, storage, config, FileUploader){
 	    	images.splice(item.indx, 1);
 			console.info('onErrorItem', images, uploader.queue);
 	    };
-        
+
         uploader.onProgressItem = function(item,progress){
              console.info('onProgressItem', item, progress, item.progress);
         };
@@ -79,13 +79,13 @@ module.exports = function($q, $http, common, storage, config, FileUploader){
 	 */
 	service.getAll = function() {
 		common.makeRequest({
-			
+
 		});
 	};
 
 	service.shift = function(from, to) {
 		common.makeRequest({
-			
+
 		});
 	};
 

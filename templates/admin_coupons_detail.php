@@ -9,13 +9,15 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 
 <?php $this->start('page-body') ?>
   <div>
+    <form class="ah-form sticky-mainform-action" name="form">
+
     <div>
       <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Coupons/Create Coupon", 'border_class' => 'no-padding']) ?>
     </div>
 
     <div class="add-product-body">
       <? $this->insert('components/tab-nav', ["items" => $menus]) ?>
-      <form class="ah-form sticky-mainform-action">
+
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
             <? $this->insert('partials/create_coupon_information') ?>
@@ -32,8 +34,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
             </div>
           </div>
         </div>
-      </form>
+
     </div>
+    </form>
   </div>
 
 <?php $this->stop() ?>

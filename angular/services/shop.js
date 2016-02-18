@@ -16,18 +16,18 @@ module.exports = ['common', function (common) {
             data: data
         });
     };
-    
+
     //get shop profile
-    service.get = function (ShopId) {
+    service.getProfile = function () {
         return common.makeRequest({
-            url: '/Shops/' + ShopId,
+            url: '/Shop/Profile',
             method: 'GET'
         });
     };
 
-    service.save = function (ShopProfile) {
+    service.saveProfile = function (ShopProfile) {
         return common.makeRequest({
-            url: '/Shops',
+            url: '/Shop/Profile',
             method: 'PUT',
             data: ShopProfile
         });

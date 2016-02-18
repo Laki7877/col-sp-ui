@@ -34,7 +34,7 @@
         </tbody>
       </table>
     </nc-table>
-    <nc-pagination nc-model="params" nc-pagination-total="list.total" ></nc-pagination>    
+    <nc-pagination nc-model="params" nc-pagination-total="list.total" ></nc-pagination>
   </div>
- 
+
 <?php $this->stop() ?>
