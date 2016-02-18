@@ -14,7 +14,7 @@
       		<nc-search nc-model="params.searchText" nc-search-event="onSearch" nc-search-placeholder="'Search for Product Name'"></nc-search>
 		  	<nc-advance-search-button nc-model="searchAdvance"></nc-advance-search-button>
 		</div>
-		<nc-advance-search nc-model="params" nc-advance-search-toggle="searchAdvance" nc-advance-search-event="onAdvanceSearch"></nc-advance-search>
+		<nc-advance-search nc-model="params" nc-advance-search-toggle="searchAdvance" nc-advance-search-event="onAdvanceSearch" nc-advance-search-options="advanceSearchOptions"></nc-advance-search>
 		<nc-filter nc-model="params._filter" nc-filter-options="filterOptions"></nc-filter><!-- advance search will appear here -->
 		<nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="params.searchText.length > 0">
 		    <table class="table table-curved">

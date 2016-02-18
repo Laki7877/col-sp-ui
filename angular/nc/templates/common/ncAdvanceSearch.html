@@ -7,8 +7,8 @@
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form.ProductName" nc-label="Product Name" nc-template-options-path="searchForm/ProductName">
 		                    <input class="form-control width-field-normal" name="ProductName" ng-model="formData.ProductName" required />
 						</div>
-						<div nc-template="common/input/form-group-with-label" nc-template-form="form" nc-label="PID" nc-template-options-path="searchForm/PID">
-		                    <input class="form-control width-field-normal" name="PID" ng-model="formData.PID" required />
+						<div nc-template="common/input/form-group-with-label" nc-template-form="form" nc-label="PID" nc-template-options-path="searchForm/Pid">
+		                    <input class="form-control width-field-normal" name="Pid" ng-model="formData.Pid" required />
 						</div>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form" nc-label="SKU" nc-template-options-path="searchForm/SKU">
 		                    <input class="form-control width-field-normal" name="SKU" ng-model="formData.SKU" required />
@@ -24,10 +24,10 @@
 	                            </ui-select>
 						</div>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form" nc-label="Global Category Name/ ID" nc-template-options-path="searchForm/GlobalCategory">
-		                    <input class="form-control width-field-normal" name="GlobalCategory" ng-model="formData.GlobalCategory" required />
+							<nc-breadcrumb-select name="GlobalCategory" nc-model="formData.GlobalCategory" nc-breadcrumb-select-tree="options.GlobalCategory"></nc-breadcrumb-select>
 						</div>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form" nc-label="Local Category Name/ ID" nc-template-options-path="searchForm/LocalCategory">
-		                    <input class="form-control width-field-normal" name="LocalCategory" ng-model="formData.LocalCategory" required />
+							<nc-breadcrumb-select name="LocalCategory" nc-model="formData.LocalCategory" nc-breadcrumb-select-tree="options.LocalCategory"></nc-breadcrumb-select>
 						</div>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form" nc-label="Search Tag" nc-template-options-path="searchForm/Tags">
 							    <ui-select ng-model="formData.Brand" name="Brand" nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30" multiple tagging-tokens=",|ENTER" tagging-label="" nc-tag-field>
@@ -43,7 +43,7 @@
 							<div class="width-field-small-input">
 								<input type="text" name="Price.From" ng-model="formData.Price.From" class="form-control"/>
 							</div>
-							<div class="width-label-extend">To</div>
+							<div class="width-label-extend text-center">To</div>
 							<div class="width-field-small-input">
 								<input type="text" name="Price.To" ng-model="formData.Price.To" class="form-control" />
 							</div>

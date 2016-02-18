@@ -236,7 +236,6 @@ module.exports = ['config', function(config) {
             if(angular.isUndefined(item.parent)) {
                 array[0].list = template;
                 array[0].active = template.indexOf(item);
-                console.log(array);
                 return array;
             }
             var parent = item.parent;

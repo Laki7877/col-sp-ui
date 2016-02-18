@@ -1,5 +1,5 @@
 <div id="inventory-tab-content">
-	
+
 	<div class="row">
     <div class="col-xs-12">
       <div class="form-section">
@@ -36,15 +36,12 @@
       <a class="filter-seperator">Low Stock</a>
       <a class="filter-seperator">Out of Stock</a>
     </div>
-  </div>  
+  </div>
 
   <div class="table-section">
     <table class="table table-curved product-list-table">
       <thead>
         <tr class="table-head">
-          <th class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input"> 
-          </th>
           <th class="display-column"></th>
           <th>
             <a class="header-link" href="#"><span>Product Name</span></a>
@@ -66,15 +63,12 @@
             <a class="header-link margin-left-10" href="#"><span>Status</span></a>
             <i class="fa fa-caret-down color-grey">
           </th>
-          <th class="action-column text-center"><a class="header-link" href="#"><span>Action</span></a></th> 
+          <th class="action-column text-center"><a class="header-link" href="#"><span>Action</span></a></th>
         </tr>
 
       </thead>
       <tbody>
         <tr>
-          <td class="checkbox-column">
-            <input type="checkbox" aria-label="Checkbox for following text input"> 
-          </td>
           <td class="display-column">
             <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
           </td>
@@ -86,8 +80,8 @@
           <td class="text-right">
             <span class="">
               <span>2</span>
-              <span class='popover-markup'> 
-                <i  class='trigger fa fa-caret-down color-dark-grey'></i> 
+              <span class='popover-markup'>
+                <i  class='trigger fa fa-caret-down color-dark-grey'></i>
                 <div class="content hide">
                     <span class='col-xs-6 padding-left-0 margin-bottom-15 margin-top-10'>In Stock</span><input class='margin-top-10 text-right col-xs-6' placeholder="17" />
                     <span class='col-xs-8 padding-left-0 margin-bottom-15'>Defect</span><span class='text-right col-xs-4'>5</span>
@@ -96,7 +90,7 @@
                       <div><span class='col-xs-8 padding-left-0 available_inventory'>Available</span><span class='text-right col-xs-4 available_inventory '>3</span></div>
                       <div class='text-center'>
                       <button class='btn btn-blue btn-width-100 text-center'>Save</button>
-                    </div>  
+                    </div>
                 </div>
               </span>
             </span>
@@ -104,21 +98,18 @@
           <td>
             <span class="margin-left-10">
               Normal Stock
-            </span> 
+            </span>
           </td>
           <td class="text-center">
             <span class="popover-gear">
               <i class="fa fa-gear color-dark-grey icon-size-20"></i>
               <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
                 <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
-                "></i>  
+                "></i>
             </span>
           </td>
         </tr>
         <tr>
-          <td class="checkbox-column">
-            <input type="checkbox" aria-label="Checkbox for following text input"> 
-          </td>
           <td class="display-column">
             <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
           </td>
@@ -133,8 +124,8 @@
           <td class="text-right">
             <span class="">
               <span class="color-red">2</span>
-              <span class='popover-markup'> 
-                <i  class='trigger fa fa-caret-down color-dark-grey'></i> 
+              <span class='popover-markup'>
+                <i  class='trigger fa fa-caret-down color-dark-grey'></i>
                 <div class="content hide">
                     <span class='col-xs-6 padding-left-0 margin-bottom-15 margin-top-10'>In Stock</span><input class='margin-top-10 text-right col-xs-6' placeholder="17" />
                     <span class='col-xs-8 padding-left-0 margin-bottom-15'>Defect</span><span class='text-right col-xs-4'>5</span>
@@ -143,12 +134,12 @@
                       <div><span class='col-xs-8 padding-left-0 available_inventory'>Available</span><span class='text-right col-xs-4 available_inventory '>3</span></div>
                       <div class='text-center'>
                       <button class='btn btn-blue btn-width-100 text-center'>Save</button>
-                    </div>  
+                    </div>
                 </div>
               </span>
             </span>
           </td>
-          <td> 
+          <td>
             <span class="margin-left-10 color-red">
               Low Stock
             </span>
@@ -158,7 +149,7 @@
               <i class="fa fa-gear color-dark-grey icon-size-20"></i>
               <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
                 <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
-                "></i>  
+                "></i>
             </span>
           </td>
         </tr>
@@ -188,7 +179,7 @@
       </div>
     </span>
   </div>
-  
+
 </div>
 
 
