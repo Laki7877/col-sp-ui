@@ -25,7 +25,22 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Inventory'])
 	        </span>
 	    </div>
 
-		<? $this->insert('components/search-section', ['actions' =>['Export'], 'button_optional_class' => 'border_blue', 'optional_button_name' => 'Advanced Search' ]) ?>
+		<div class="row search-section-wrapper">
+		  <form ng-submit="applySearch()" class="search-section section-search">
+		    <div class="input-group">
+		        <input type="text" ng-model="searchText"
+		          class="form-control input-search-icon search-box" ng-model="searchText" placeholder="Search for Product SKU, Name, ..." aria-describedby="basic-addon2">
+		        <span class="input-group-btn">
+		          <button class="btn btn-white">Search</button>
+		        </span>
+		    </div>
+		  </form>
+		 <div class="search-section advance-search">
+		    <button class="btn btn-white" type="button">Advanced Search</button>
+		  </div>
+		</div>
+
+
 
 		<div>
 			<form class="ah-form sticky-mainform-action">
