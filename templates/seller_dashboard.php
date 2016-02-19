@@ -9,7 +9,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
       <div class="space_column with_border">
         <div class="group_container no_border">
           <span class="image-thumbs-img-wrapper">
-            <img class="" src="<?= $this->asset('/assets/img/icon-onboard-password.png') ?>" />
+            <img class="" src="<?= $this->asset('/assets/img/icon-dashboard-revenue.png') ?>" />
           </span>
           <span class="font-size-18 header_name_space">Revenue</span>
           <span class="float-right group_span_right">
@@ -19,13 +19,18 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <span><a href="#" class="color-grey">This Year</a></span>
           </span>
         </div>
-        <img width="100%" class="" src="<?= $this->asset('/assets/img/graph_mock.png') ?>" />
+<div style="width:100%;">
+      <div>
+        <canvas id="canvas" height="460" width="950"></canvas>
+      </div>
+    </div>
+
       </div>
 
       <div class="space_column with_border">
         <div class="group_container">
           <span class="image-thumbs-img-wrapper">
-            <img class="" src="<?= $this->asset('/assets/img/icon-onboard-product.png') ?>" />
+            <img class="" src="<?= $this->asset('/assets/img/icon-dashboard-order.png') ?>" />
           </span>
           <span class="font-size-18 header_name_space">Orders</span>
           <span class="float-right group_span_right">
@@ -66,7 +71,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
       <div class="space_column with_border">
         <div class="group_container">
           <span class="image-thumbs-img-wrapper">
-            <img class="" src="<?= $this->asset('/assets/img/icon-onboard-decorate.png') ?>" />
+            <img class="" src="<?= $this->asset('/assets/img/icon-dashboard-low-stock.png') ?>" />
           </span>
           <span class="font-size-18 header_name_space">Low Stock Alert</span>
           <span class="float-right group_span_right">
@@ -102,7 +107,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
       <div class="space_column with_border">
         <div class="group_container">
           <span class="image-thumbs-img-wrapper">
-            <img class="" src="<?= $this->asset('/assets/img/icon-onboard-launch.png') ?>" />
+            <img class="" src="<?= $this->asset('/assets/img/icon-dashboard-newsletters.png') ?>" />
           </span>
           <span class="font-size-18 header_name_space">Newsletters</span>
           <span class="float-right group_span_right">
@@ -150,7 +155,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
       <div class="space_column with_border">
         <div class="group_container">
           <span class="image-thumbs-img-wrapper">
-            <img class="" src="<?= $this->asset('/assets/img/icon-onboard-launch.png') ?>" />
+            <img class="" src="<?= $this->asset('/assets/img/icon-dashboard-revenue-summary.png') ?>" />
           </span>
           <span class="font-size-18 header_name_space">Revenue Summary</span>
         </div>
@@ -183,7 +188,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
       <div class="space_column with_border">
         <div class="group_container">
           <span class="image-thumbs-img-wrapper">
-            <img class="" src="<?= $this->asset('/assets/img/icon-onboard-launch.png') ?>" />
+            <img class="" src="<?= $this->asset('/assets/img/icon-dashboard-health.png') ?>" />
           </span>
           <span class="font-size-18 header_name_space">Account Health </span>
         </div>
@@ -216,7 +221,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
       <div class="space_column with_border">
         <div class="group_container top_selling_header">
           <span class="image-thumbs-img-wrapper">
-            <img class="" src="<?= $this->asset('/assets/img/icon-onboard-launch.png') ?>" />
+            <img class="" src="<?= $this->asset('/assets/img/icon-dashboard-top-selling.png') ?>" />
           </span>
           <span class="font-size-18 header_name_space">Top Selling Items </span>
         </div>
@@ -242,5 +247,37 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
 
     </div>    
   </div>
+
+  <script>
+    var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+    var lineChartData = {
+      labels : ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
+      datasets : [
+        {
+          label: "My Second dataset",
+          fillColor : "rgba(72,153,221,0.2)",
+          strokeColor : "rgba(72,153,221,1)",
+          pointColor : "rgba(72,153,221,1)",
+          pointStrokeColor : "#fff",
+          pointHighlightFill : "#fff",
+          pointHighlightStroke : "rgba(151,187,205,1)",
+          // data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+          data : [10,40,65,12,8,30,98]
+        }
+      ]
+
+    }
+
+  window.onload = function(){
+    var ctx = document.getElementById("canvas").getContext("2d");
+    window.myLine = new Chart(ctx).Line(lineChartData, {
+      bezierCurve : false,
+      scaleShowVerticalLines: false,
+      responsive: true
+    });
+  }
+
+
+  </script>
 
 <?php $this->stop() ?>
