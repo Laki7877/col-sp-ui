@@ -28,8 +28,8 @@
 				<div class="form-section-content">
 					<div nc-template="common/input/form-group-with-label" nc-label="Criteria">
 												 <div class="ah-select2-dropdown">
-														 <select ng-init="formData.Conditions.FilterBy[0].Type = 'None'"
-														 ng-model="formData.Conditions.FilterBy[0].Type" class="form-control" required>
+														 <select ng-init="formData.Conditions.FilterBy.Type = 'None'"
+														 ng-model="formData.Conditions.FilterBy.Type" class="form-control" required>
 															 	<option ng-repeat="opt in dataSet.filters" value="{{ opt.value }}">
 																	{{ opt.text }}
 																</option>
@@ -37,10 +37,9 @@
 												 </div>
 					</div>
 					<div nc-template="common/input/form-group-with-label" nc-template-options-path="couponForm/FilterByValue"
-					 nc-label="Include" ng-show="formData.Conditions.FilterBy[0].Type != 'None'">
-						<ui-select multiple	ng-model="formData.Conditions.FilterBy[0].Value"
-						ng-init="formData.Conditions.FilterBy[0].Value = []"
-						ng-if="formData.Conditions.FilterBy[0].Type == 'Brand'">
+					 nc-label="Include" ng-show="formData.Conditions.FilterBy.Type != 'None'">
+						<ui-select multiple	ng-model="formData.Conditions.FilterBy.Brands"
+						ng-if="formData.Conditions.FilterBy.Type == 'Brand'">
 								<ui-select-match placeholder="Search by Brand...">
 										<span ng-bind="$item.BrandNameEn"></span>
 								</ui-select-match>
@@ -50,8 +49,8 @@
 										<span ng-if="item.BrandNameTh">/ {{ item.BrandNameTh }}</span>
 								</ui-select-choices>
 						</ui-select>
-						<ui-select multiple tagging tagging-label="(new)" ng-init="formData.Conditions.FilterBy[0].Value = []"
-						ng-model="formData.Conditions.FilterBy[0].Value" ng-if="formData.Conditions.FilterBy[0].Type == 'Email'">
+						<ui-select multiple tagging tagging-label="(new)"
+						ng-model="formData.Conditions.FilterBy.Emails" ng-if="formData.Conditions.FilterBy.Type == 'Email'">
 								<ui-select-match placeholder="Type emails">
 										{{ $item }}
 								</ui-select-match>
@@ -59,9 +58,8 @@
 										{{color}}
 								</ui-select-choices>
 						</ui-select>
-						<ui-select multiple	ng-model="formData.Conditions.FilterBy[0].Value"
-						ng-init="formData.Conditions.FilterBy[0].Value = []"
-						ng-if="formData.Conditions.FilterBy[0].Type == 'Shop'">
+						<ui-select multiple	ng-model="formData.Conditions.FilterBy.Shops"
+						ng-if="formData.Conditions.FilterBy.Type == 'Shop'">
 								<ui-select-match placeholder="Search by Shop name or Shop Id...">
 										<span ng-bind="$item.ShopNameEn"></span>
 								</ui-select-match>

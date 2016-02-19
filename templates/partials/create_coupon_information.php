@@ -26,8 +26,9 @@
 
          <div nc-template="common/input/form-group-with-label" nc-label="Status">
                         <div class="ah-select2-dropdown">
-                            <select ng-model="p" class="form-control" ng-init="p = { value: 'AT'}"
-                            ng-options="i as i.text for i in [{ text: 'Active', value: 'AT'},{ text: 'Inactive', value: 'IA'}] track by i.value" required>
+                            <select ng-model="formData.Status" class="form-control" required>
+																<option value="AT">Active</option>
+																<option value="NA">Inactive</option>
                             </select>
                         </div>
          </div>
@@ -40,16 +41,19 @@
 
 			        <div nc-template="common/input/form-group-with-label" nc-label="Action">
                         <div class="ah-select2-dropdown">
-                            <select ng-model="p" class="form-control" ng-init="p = {value: 'PERCENT'}" ng-options="i as i.text for i in [{ text: 'Discount by percent', value: 'PERCENT'},{ text: 'Discount by amount', value: 'AMOUNT'}] track by i.value" required>
+                            <select ng-model="formData.Action" class="form-control"
+														ng-init="formData.Action = {Type: 'PERCENT'}"
+														ng-options="i as i.display for i in [{ display: 'Discount by percent', Type: 'PERCENT'},{ display: 'Discount by amount', Type: 'AMOUNT'}]
+														track by i.Type" required>
                             </select>
                         </div>
               </div>
 							<div nc-template="common/input/form-group-with-label" nc-label="Discount Amount" nc-template-options-path="couponForm/DiscountAmount">
-									<input type="text" class="form-control" ng-model="formData.DiscountAmount"/>
+									<input type="text" class="form-control" ng-model="formData.Action.DiscountAmount"/>
 		          </div>
 
 							<div nc-template="common/input/form-group-with-label" nc-label="Maximum Amount" nc-template-options-path="couponForm/MaximumAmount">
-									<input type="text" class="form-control" ng-model="formData.MaximumAmount"/>
+									<input type="text" class="form-control" ng-model="formData.Action.MaximumAmount"/>
 		          </div>
 
 				</div>

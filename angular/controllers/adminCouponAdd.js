@@ -18,17 +18,16 @@ module.exports = function($scope, $controller, CouponService, config, Brand, Sho
       Order: [{
           Type: null, Value: null
       }],
-      FilterBy: [
-        {
-          Type: null, Value: []
-        }
-      ],
-      Include: [
-
-      ],
-      Exclude: [
-
-      ]
+      FilterBy: {
+        Type: null,
+        Brands: [],
+        Emails: [],
+        LocalCategories: [],
+        GlobalCategories: [],
+        Shops: []
+      },
+      Include: [],
+      Exclude: []
     }
   };
 
