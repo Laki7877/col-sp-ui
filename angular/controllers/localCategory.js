@@ -201,6 +201,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 	$scope.reload = function() {
 		$scope.loading = true;
 		LocalCategoryService.listAll().then(function(data) {
+			console.log(data);
 			$scope.categories = Category.transformNestedSetToUITree(data);
 			$scope.loading = false;
 		}, function(err) {

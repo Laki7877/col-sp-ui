@@ -26,7 +26,8 @@ angular.module('nc')
 					Tags: [],
 					Brands: ['test'],
 					LocalCategory: [],
-					GlobalCategory: []
+					GlobalCategory: [],
+					Admin: true
 				});
 				scope.search = function() {
 					if(scope.callback(scope.formData, true)) return;

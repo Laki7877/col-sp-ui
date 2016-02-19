@@ -21,6 +21,7 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 	};
 
 	$scope.reload = function(newObj, oldObj) {
+		$scope.loading = true;
 		if(!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
 			(options.reload || _.noop)(newObj, oldObj);
 			if(newObj.searchText !== oldObj.searchText) {
@@ -33,7 +34,6 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 				$scope.params._offset = 0;
 			}
 		}
-		$scope.loading = true;
 		options.service.list($scope.params)
 			.then(function(data) {
 				$scope.list = data;
@@ -114,6 +114,7 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 
 	}
 
-	$scope.reload();
-	$scope.$watch('params', $scope.reload, true);
+	$scope.$watch('params', function() {
+		$scope.reload();
+	}, true);
 };

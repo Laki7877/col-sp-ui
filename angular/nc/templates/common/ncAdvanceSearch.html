@@ -26,7 +26,7 @@
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form" nc-label="Global Category Name/ ID" nc-template-options-path="searchForm/GlobalCategory">
 							<nc-breadcrumb-select name="GlobalCategory" nc-model="formData.GlobalCategory" nc-breadcrumb-select-tree="options.GlobalCategory"></nc-breadcrumb-select>
 						</div>
-						<div nc-template="common/input/form-group-with-label" nc-template-form="form" nc-label="Local Category Name/ ID" nc-template-options-path="searchForm/LocalCategory">
+						<div nc-template="common/input/form-group-with-label" nc-template-form="form" nc-label="Local Category Name/ ID" nc-template-options-path="searchForm/LocalCategory" ng-if="!options.Admin">
 							<nc-breadcrumb-select name="LocalCategory" nc-model="formData.LocalCategory" nc-breadcrumb-select-tree="options.LocalCategory"></nc-breadcrumb-select>
 						</div>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form" nc-label="Search Tag" nc-template-options-path="searchForm/Tags">
