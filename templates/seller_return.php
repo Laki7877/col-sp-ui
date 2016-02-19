@@ -74,7 +74,7 @@
             <td class="modified-column">
               14/12/15
             </td>
-            <td class="modified-column"><a href="seller_return_detail">IV002321</a></td>
+            <td class="modified-column"><a href="?p=seller_return_detail">IV002321</a></td>
             <td class="modified-column">XN002321</td>
             <td class="column-text-ellipsis ">John Bravo</td>
             <td class="width_100">฿400.00</td>
@@ -106,7 +106,7 @@
             <td class="modified-column">
               14/12/15
             </td>
-            <td class="modified-column"><a href="seller_return_detail">IV002321</a></td>
+            <td class="modified-column"><a href="?p=seller_return_detail">IV002321</a></td>
             <td class="modified-column">XN002321</td>
             <td class="column-text-ellipsis ">John Bravo</td>
             <td class="width_100">฿400.00</td>
