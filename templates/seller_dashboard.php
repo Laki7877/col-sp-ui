@@ -9,7 +9,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
       <div class="space_column with_border">
         <div class="group_container no_border">
           <span class="image-thumbs-img-wrapper">
-            <img class="" src="<?= $this->asset('/assets/img/icon-onboard-password.png') ?>" />
+            <img class="" src="<?= $this->asset('/assets/img/icon-dashboard-revenue.png') ?>" />
           </span>
           <span class="font-size-18 header_name_space">Revenue</span>
           <span class="float-right group_span_right">
@@ -25,7 +25,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
       <div class="space_column with_border">
         <div class="group_container">
           <span class="image-thumbs-img-wrapper">
-            <img class="" src="<?= $this->asset('/assets/img/icon-onboard-product.png') ?>" />
+            <img class="" src="<?= $this->asset('/assets/img/icon-dashboard-order.png') ?>" />
           </span>
           <span class="font-size-18 header_name_space">Orders</span>
           <span class="float-right group_span_right">
@@ -66,7 +66,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
       <div class="space_column with_border">
         <div class="group_container">
           <span class="image-thumbs-img-wrapper">
-            <img class="" src="<?= $this->asset('/assets/img/icon-onboard-decorate.png') ?>" />
+            <img class="" src="<?= $this->asset('/assets/img/icon-dashboard-low-stock.png') ?>" />
           </span>
           <span class="font-size-18 header_name_space">Low Stock Alert</span>
           <span class="float-right group_span_right">
@@ -102,7 +102,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
       <div class="space_column with_border">
         <div class="group_container">
           <span class="image-thumbs-img-wrapper">
-            <img class="" src="<?= $this->asset('/assets/img/icon-onboard-launch.png') ?>" />
+            <img class="" src="<?= $this->asset('/assets/img/icon-dashboard-newsletters.png') ?>" />
           </span>
           <span class="font-size-18 header_name_space">Newsletters</span>
           <span class="float-right group_span_right">
@@ -183,7 +183,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
       <div class="space_column with_border">
         <div class="group_container">
           <span class="image-thumbs-img-wrapper">
-            <img class="" src="<?= $this->asset('/assets/img/icon-onboard-launch.png') ?>" />
+            <img class="" src="<?= $this->asset('/assets/img/icon-dashboard-health.png') ?>" />
           </span>
           <span class="font-size-18 header_name_space">Account Health </span>
         </div>
@@ -216,7 +216,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
       <div class="space_column with_border">
         <div class="group_container top_selling_header">
           <span class="image-thumbs-img-wrapper">
-            <img class="" src="<?= $this->asset('/assets/img/icon-onboard-launch.png') ?>" />
+            <img class="" src="<?= $this->asset('/assets/img/icon-dashboard-top-selling.png') ?>" />
           </span>
           <span class="font-size-18 header_name_space">Top Selling Items </span>
         </div>
