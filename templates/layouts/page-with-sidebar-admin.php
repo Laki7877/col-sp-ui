@@ -69,6 +69,12 @@
         <li class="item active margin-top-20"><a href="?p=admin_coupons">Coupons</a></li>
     </ul>
 
+    <ul class="sub-sidebar" style="display: none;" id="sub-newsletters">
+        <li class="sub-sidebar-header">Newsletters</li>
+        <li class="item active margin-top-20"><a href="?p=admin_newsletters">View</a></li>
+    </ul>
+
+
 <?php $this->stop() ?>
 
 <?php $this->start('page-content') ?>

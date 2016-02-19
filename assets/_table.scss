@@ -134,6 +134,10 @@
     color:  $color-grey;
   }
 
+  .background_light_yellow {
+    background-color:   $color-light-yellow;
+  }
+
   .eye-icon {
     font-size: 20px;
   }
@@ -188,6 +192,21 @@
     background: $color-light-blue;
     color: $color-black;
     border-top-left-radius: 10px;
+  }
+
+  &.table_order {
+
+    th:first-child {
+      padding-left: 20px;
+    }
+
+    td:first-child {
+      padding-left: 15px;
+    }
+
+    td {
+      line-height: 40px;
+    }
   }
 }
 

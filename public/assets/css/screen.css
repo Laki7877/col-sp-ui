@@ -12314,261 +12314,276 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 
 /* line 13, ../../../assets/_atomic.scss */
+.margin-left-5 {
+  margin-left: 5px;
+}
+
+/* line 17, ../../../assets/_atomic.scss */
 .margin-left-10 {
   margin-left: 10px;
 }
 
-/* line 17, ../../../assets/_atomic.scss */
+/* line 21, ../../../assets/_atomic.scss */
 .margin-left-30 {
   margin-left: 30px;
 }
 
-/* line 21, ../../../assets/_atomic.scss */
+/* line 25, ../../../assets/_atomic.scss */
 .margin-left-60 {
   margin-left: 60px;
 }
 
-/* line 25, ../../../assets/_atomic.scss */
+/* line 29, ../../../assets/_atomic.scss */
 .margin-top-5 {
   margin-top: 5px;
 }
 
-/* line 29, ../../../assets/_atomic.scss */
+/* line 33, ../../../assets/_atomic.scss */
 .margin-top-7 {
   margin-top: 7px;
 }
 
-/* line 33, ../../../assets/_atomic.scss */
+/* line 37, ../../../assets/_atomic.scss */
 .margin-top-10 {
   margin-top: 10px;
 }
 
-/* line 37, ../../../assets/_atomic.scss */
+/* line 41, ../../../assets/_atomic.scss */
 .margin-top-20 {
   margin-top: 20px;
 }
 
-/* line 41, ../../../assets/_atomic.scss */
+/* line 45, ../../../assets/_atomic.scss */
 .margin-top-30 {
   margin-top: 30px;
 }
 
-/* line 45, ../../../assets/_atomic.scss */
+/* line 49, ../../../assets/_atomic.scss */
 .margin-top-40 {
   margin-top: 40px;
 }
 
-/* line 49, ../../../assets/_atomic.scss */
+/* line 53, ../../../assets/_atomic.scss */
 .margin-top-200 {
   margin-top: 200px;
 }
 
-/* line 53, ../../../assets/_atomic.scss */
+/* line 57, ../../../assets/_atomic.scss */
 .margin-top-220 {
   margin-top: 220px;
 }
 
-/* line 57, ../../../assets/_atomic.scss */
+/* line 61, ../../../assets/_atomic.scss */
 .margin-bottom-20 {
   margin-bottom: 20px;
 }
 
-/* line 61, ../../../assets/_atomic.scss */
+/* line 65, ../../../assets/_atomic.scss */
 .margin-bottom-15 {
   margin-bottom: 15px;
 }
 
-/* line 65, ../../../assets/_atomic.scss */
+/* line 69, ../../../assets/_atomic.scss */
 .margin-bottom-30 {
   margin-bottom: 30px;
 }
 
-/* line 69, ../../../assets/_atomic.scss */
+/* line 73, ../../../assets/_atomic.scss */
 .margin-bottom-40 {
   margin-bottom: 40px;
 }
 
-/* line 73, ../../../assets/_atomic.scss */
+/* line 77, ../../../assets/_atomic.scss */
 .margin-bottom-80 {
   margin-bottom: 80px;
 }
 
-/* line 77, ../../../assets/_atomic.scss */
+/* line 81, ../../../assets/_atomic.scss */
 .padding-left-15 {
   padding-left: 15px;
 }
 
-/* line 81, ../../../assets/_atomic.scss */
+/* line 85, ../../../assets/_atomic.scss */
 .padding-left-30 {
   padding-left: 30px;
 }
 
-/* line 85, ../../../assets/_atomic.scss */
+/* line 89, ../../../assets/_atomic.scss */
 .padding-left-0 {
   padding-left: 0;
 }
 
-/* line 89, ../../../assets/_atomic.scss */
+/* line 93, ../../../assets/_atomic.scss */
 .padding-right-5 {
   padding-right: 5px;
 }
 
-/* line 93, ../../../assets/_atomic.scss */
+/* line 97, ../../../assets/_atomic.scss */
 .padding-right-15 {
   padding-right: 15px;
 }
 
-/* line 97, ../../../assets/_atomic.scss */
+/* line 101, ../../../assets/_atomic.scss */
 .padding-right-30 {
   padding-right: 30px;
 }
 
-/* line 101, ../../../assets/_atomic.scss */
+/* line 105, ../../../assets/_atomic.scss */
 .padding-bottom-5 {
   padding-bottom: 5px;
 }
 
-/* line 105, ../../../assets/_atomic.scss */
+/* line 109, ../../../assets/_atomic.scss */
 .padding-bottom-10 {
   padding-bottom: 10px;
 }
 
-/* line 109, ../../../assets/_atomic.scss */
+/* line 113, ../../../assets/_atomic.scss */
 .padding-bottom-30 {
   padding-bottom: 30px;
 }
 
-/* line 113, ../../../assets/_atomic.scss */
+/* line 117, ../../../assets/_atomic.scss */
 .padding-bottom-60 {
   padding-bottom: 60px;
 }
 
-/* line 117, ../../../assets/_atomic.scss */
+/* line 121, ../../../assets/_atomic.scss */
 .padding-top-30 {
   padding-top: 30px;
 }
 
-/* line 121, ../../../assets/_atomic.scss */
+/* line 125, ../../../assets/_atomic.scss */
 .no-margin {
   margin: 0;
 }
 
-/* line 125, ../../../assets/_atomic.scss */
+/* line 129, ../../../assets/_atomic.scss */
 .no-padding {
   padding: 0;
 }
 
-/* line 129, ../../../assets/_atomic.scss */
+/* line 133, ../../../assets/_atomic.scss */
 .no-border {
   border: none;
 }
 
-/* line 133, ../../../assets/_atomic.scss */
+/* line 137, ../../../assets/_atomic.scss */
 .float-left {
   float: left;
 }
 
-/* line 137, ../../../assets/_atomic.scss */
+/* line 141, ../../../assets/_atomic.scss */
 .float-right {
   float: right;
 }
 
-/* line 141, ../../../assets/_atomic.scss */
+/* line 145, ../../../assets/_atomic.scss */
 .color-theme-light {
   color: #b4ddff;
 }
 
-/* line 145, ../../../assets/_atomic.scss */
+/* line 149, ../../../assets/_atomic.scss */
 .color-theme {
   color: #4899DD;
 }
 
-/* line 149, ../../../assets/_atomic.scss */
+/* line 153, ../../../assets/_atomic.scss */
 .color-grey {
   color: #BCC7D5;
 }
 
-/* line 153, ../../../assets/_atomic.scss */
+/* line 157, ../../../assets/_atomic.scss */
 .color-green {
   color: #33bb5b;
 }
 
-/* line 157, ../../../assets/_atomic.scss */
+/* line 161, ../../../assets/_atomic.scss */
 .color-dark-green {
   color: #68d485;
 }
 
-/* line 161, ../../../assets/_atomic.scss */
+/* line 165, ../../../assets/_atomic.scss */
 .color-red {
   color: #ec0000;
 }
 
-/* line 165, ../../../assets/_atomic.scss */
+/* line 169, ../../../assets/_atomic.scss */
 .color-dark-grey {
   color: #7B7F8F;
 }
 
-/* line 169, ../../../assets/_atomic.scss */
+/* line 173, ../../../assets/_atomic.scss */
 .color-yellow {
   color: #f5a623;
 }
 
-/* line 173, ../../../assets/_atomic.scss */
+/* line 177, ../../../assets/_atomic.scss */
 .color-black {
   color: #32343C;
 }
 
-/* line 177, ../../../assets/_atomic.scss */
+/* line 181, ../../../assets/_atomic.scss */
 .vertical-align-middle {
   vertical-align: middle;
 }
 
-/* line 181, ../../../assets/_atomic.scss */
+/* line 185, ../../../assets/_atomic.scss */
 .text-align-center {
   text-align: center;
 }
 
-/* line 189, ../../../assets/_atomic.scss */
+/* line 193, ../../../assets/_atomic.scss */
 .text-underline {
   text-decoration: underline;
 }
 
-/* line 193, ../../../assets/_atomic.scss */
+/* line 197, ../../../assets/_atomic.scss */
 .hide-component {
   display: none;
 }
 
-/* line 197, ../../../assets/_atomic.scss */
+/* line 201, ../../../assets/_atomic.scss */
 .font-size-12 {
   font-size: 12px;
 }
 
-/* line 201, ../../../assets/_atomic.scss */
+/* line 205, ../../../assets/_atomic.scss */
 .font-size-18 {
   font-size: 18px;
 }
 
-/* line 205, ../../../assets/_atomic.scss */
-.icon-size-20 {
+/* line 209, ../../../assets/_atomic.scss */
+.font-size-20, .icon-size-20 {
   font-size: 20px;
 }
 
-/* line 209, ../../../assets/_atomic.scss */
+/* line 213, ../../../assets/_atomic.scss */
+.font-size-27 {
+  font-size: 27px;
+}
+
+/* line 217, ../../../assets/_atomic.scss */
+.font-size-38 {
+  font-size: 38px;
+}
+
+/* line 225, ../../../assets/_atomic.scss */
 .margin-0 {
   margin: 0;
 }
 
-/* line 213, ../../../assets/_atomic.scss */
+/* line 229, ../../../assets/_atomic.scss */
 .font-weight-bold {
   font-weight: bold;
 }
 
-/* line 217, ../../../assets/_atomic.scss */
+/* line 233, ../../../assets/_atomic.scss */
 .opacity-1 {
   opacity: 1;
 }
 
-/* line 221, ../../../assets/_atomic.scss */
+/* line 237, ../../../assets/_atomic.scss */
 .width-100-percent {
   width: 100%;
 }
@@ -12979,78 +12994,94 @@ label.css-label {
   color: #BCC7D5;
 }
 /* line 137, ../../../assets/_table.scss */
+.table-section .background_light_yellow {
+  background-color: #fffdeb;
+}
+/* line 141, ../../../assets/_table.scss */
 .table-section .eye-icon {
   font-size: 20px;
 }
-/* line 142, ../../../assets/_table.scss */
+/* line 146, ../../../assets/_table.scss */
 .table-section .display-column img {
   max-height: 40px;
   max-width: 40px;
   border-radius: 3px;
 }
-/* line 150, ../../../assets/_table.scss */
+/* line 154, ../../../assets/_table.scss */
 .table-section a.header-link {
   color: #32343C;
 }
-/* line 152, ../../../assets/_table.scss */
+/* line 156, ../../../assets/_table.scss */
 .table-section a.header-link span.active-underline {
   border-bottom: 2px solid #4891d2;
   padding-bottom: 4px;
 }
-/* line 156, ../../../assets/_table.scss */
+/* line 160, ../../../assets/_table.scss */
 .table-section a.header-link:focus {
   text-decoration: none;
 }
-/* line 161, ../../../assets/_table.scss */
+/* line 165, ../../../assets/_table.scss */
 .table-section .table-curved {
   border-collapse: separate;
   border-radius: 3px;
 }
-/* line 168, ../../../assets/_table.scss */
+/* line 172, ../../../assets/_table.scss */
 .table-section .table > thead > tr > th {
   padding-top: 6px;
   padding-bottom: 4px;
   font-weight: normal;
 }
-/* line 174, ../../../assets/_table.scss */
+/* line 178, ../../../assets/_table.scss */
 .table-section .table > tbody > tr > td {
   vertical-align: middle;
 }
-/* line 178, ../../../assets/_table.scss */
+/* line 182, ../../../assets/_table.scss */
 .table-section td.info-column, .table-section td.image-columnm, .table-section td.live-column, .table-section td.visible-column {
   text-align: center;
 }
-/* line 182, ../../../assets/_table.scss */
+/* line 186, ../../../assets/_table.scss */
 .table-section .table-checkbox {
   margin-top: 0px;
   margin-bottom: 0;
 }
-/* line 187, ../../../assets/_table.scss */
+/* line 191, ../../../assets/_table.scss */
 .table-section .table-head {
   background: #edf2f9;
   color: #32343C;
   border-top-left-radius: 10px;
 }
+/* line 199, ../../../assets/_table.scss */
+.table-section.table_order th:first-child {
+  padding-left: 20px;
+}
+/* line 203, ../../../assets/_table.scss */
+.table-section.table_order td:first-child {
+  padding-left: 15px;
+}
+/* line 207, ../../../assets/_table.scss */
+.table-section.table_order td {
+  line-height: 40px;
+}
 
-/* line 195, ../../../assets/_table.scss */
+/* line 214, ../../../assets/_table.scss */
 .page-navigation {
   float: right;
 }
-/* line 198, ../../../assets/_table.scss */
+/* line 217, ../../../assets/_table.scss */
 .page-navigation .grey-chevron {
   color: #BCC7D5;
 }
-/* line 202, ../../../assets/_table.scss */
+/* line 221, ../../../assets/_table.scss */
 .page-navigation .blue-chevron {
   color: #4899DD;
 }
-/* line 206, ../../../assets/_table.scss */
+/* line 225, ../../../assets/_table.scss */
 .page-navigation .view-page-separator {
   border-left: solid 1px #BCC7D5;
   padding-left: 15px;
 }
 
-/* line 216, ../../../assets/_table.scss */
+/* line 235, ../../../assets/_table.scss */
 .filter-section .filter-container {
   position: relative;
   padding: 12px 17px 12px;
@@ -13060,11 +13091,11 @@ label.css-label {
   border-width: 1px;
   border-radius: 4px;
 }
-/* line 226, ../../../assets/_table.scss */
+/* line 245, ../../../assets/_table.scss */
 .filter-section .filter-container-input {
   padding: 12px 17px 12px;
 }
-/* line 230, ../../../assets/_table.scss */
+/* line 249, ../../../assets/_table.scss */
 .filter-section .filter-seperator {
   text-decoration: none;
   cursor: pointer;
@@ -13073,138 +13104,138 @@ label.css-label {
   padding-left: 9px;
   margin-left: 9px;
 }
-/* line 239, ../../../assets/_table.scss */
+/* line 258, ../../../assets/_table.scss */
 .filter-section .filter-first-option {
   text-decoration: none;
   cursor: pointer;
   color: #7B7F8F;
   margin-left: 20px;
 }
-/* line 246, ../../../assets/_table.scss */
+/* line 265, ../../../assets/_table.scss */
 .filter-section .filter-first-option.first-label {
   margin-left: 14px;
 }
-/* line 250, ../../../assets/_table.scss */
+/* line 269, ../../../assets/_table.scss */
 .filter-section .filter-active {
   color: #32343C;
 }
-/* line 254, ../../../assets/_table.scss */
+/* line 273, ../../../assets/_table.scss */
 .filter-section .filter-checkbox {
   float: right;
 }
-/* line 256, ../../../assets/_table.scss */
+/* line 275, ../../../assets/_table.scss */
 .filter-section .filter-checkbox input {
   margin-top: 0px;
   margin-right: 6px;
 }
 
-/* line 263, ../../../assets/_table.scss */
+/* line 282, ../../../assets/_table.scss */
 .filter-section.filter-input {
   padding-left: 110px;
 }
 
-/* line 268, ../../../assets/_table.scss */
+/* line 287, ../../../assets/_table.scss */
 .search-section-wrapper {
   margin-top: 30px;
 }
-/* line 271, ../../../assets/_table.scss */
+/* line 290, ../../../assets/_table.scss */
 .search-section-wrapper .search-section {
   padding-left: 15px;
   padding-right: 15px;
   float: left;
 }
-/* line 277, ../../../assets/_table.scss */
+/* line 296, ../../../assets/_table.scss */
 .search-section-wrapper .section-action {
   width: 280px;
 }
-/* line 279, ../../../assets/_table.scss */
+/* line 298, ../../../assets/_table.scss */
 .search-section-wrapper .section-action .body-dropdown-button {
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
 }
-/* line 285, ../../../assets/_table.scss */
+/* line 304, ../../../assets/_table.scss */
 .search-section-wrapper .section-search {
   width: 410px;
 }
-/* line 289, ../../../assets/_table.scss */
+/* line 308, ../../../assets/_table.scss */
 .search-section-wrapper .search-section.section-filter {
   float: right;
 }
-/* line 293, ../../../assets/_table.scss */
+/* line 312, ../../../assets/_table.scss */
 .search-section-wrapper .search-section .btn-white {
   height: 30px;
 }
-/* line 297, ../../../assets/_table.scss */
+/* line 316, ../../../assets/_table.scss */
 .search-section-wrapper .advance-search {
   padding-left: 0px;
 }
-/* line 299, ../../../assets/_table.scss */
+/* line 318, ../../../assets/_table.scss */
 .search-section-wrapper .advance-search .btn-white {
   width: 135px;
 }
-/* line 304, ../../../assets/_table.scss */
+/* line 323, ../../../assets/_table.scss */
 .search-section-wrapper .body-dropdown-button {
   height: 30px;
   width: 180px;
 }
-/* line 308, ../../../assets/_table.scss */
+/* line 327, ../../../assets/_table.scss */
 .search-section-wrapper .body-dropdown-button .dropdown-text {
   width: 135px;
   display: inline-block;
 }
-/* line 314, ../../../assets/_table.scss */
+/* line 333, ../../../assets/_table.scss */
 .search-section-wrapper .dropdown-text {
   text-align: left;
 }
-/* line 318, ../../../assets/_table.scss */
+/* line 337, ../../../assets/_table.scss */
 .search-section-wrapper .search-box {
   height: 30px;
 }
-/* line 322, ../../../assets/_table.scss */
+/* line 341, ../../../assets/_table.scss */
 .search-section-wrapper .checkbox-wrapper {
   margin-top: 5px;
 }
 
-/* line 327, ../../../assets/_table.scss */
+/* line 346, ../../../assets/_table.scss */
 .product-search-section .search-section-wrapper {
   margin-top: 0;
 }
-/* line 330, ../../../assets/_table.scss */
+/* line 349, ../../../assets/_table.scss */
 .product-search-section .search-section-wrapper .search-section {
   padding-left: 0;
 }
 
-/* line 337, ../../../assets/_table.scss */
+/* line 356, ../../../assets/_table.scss */
 .table.ah-table {
   margin-bottom: 0;
 }
-/* line 338, ../../../assets/_table.scss */
+/* line 357, ../../../assets/_table.scss */
 .table.ah-table > thead > tr > th {
   border-bottom: 1px solid #BCC7D5;
 }
-/* line 340, ../../../assets/_table.scss */
+/* line 359, ../../../assets/_table.scss */
 .table.ah-table > thead > tr > th, .table.ah-table > thead > tr > th > * {
   vertical-align: middle;
 }
-/* line 345, ../../../assets/_table.scss */
+/* line 364, ../../../assets/_table.scss */
 .table.ah-table > tbody > tr > td {
   border-top: none;
 }
-/* line 350, ../../../assets/_table.scss */
+/* line 369, ../../../assets/_table.scss */
 .table.ah-table.ah-table-extra-padding > tbody > tr > td {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-/* line 357, ../../../assets/_table.scss */
+/* line 376, ../../../assets/_table.scss */
 .table.ah-table.ah-table-line > tbody > tr:first-child > td {
   border-top: none;
 }
-/* line 361, ../../../assets/_table.scss */
+/* line 380, ../../../assets/_table.scss */
 .table.ah-table.ah-table-line > tbody > tr > td {
   border-top: 1px solid #BCC7D5;
 }
 
-/* line 370, ../../../assets/_table.scss */
+/* line 389, ../../../assets/_table.scss */
 .table .column-text-ellipsis {
   max-width: 0;
   overflow: hidden;
@@ -13493,6 +13524,11 @@ form h6 {
   width: 100%;
   padding-right: 180px;
   background: #fff;
+}
+
+/* line 203, ../../../assets/_form.sass */
+.form-inline .width-field-small-input {
+  width: 230px;
 }
 
 /* line 1, ../../../assets/_input.sass */
@@ -13917,6 +13953,14 @@ form h6 {
   margin-left: -15px;
   margin-right: -15px;
 }
+/* line 20, ../../../assets/_modal_custom.scss */
+.modal-custom .modal_title_abosolute {
+  position: absolute;
+}
+/* line 23, ../../../assets/_modal_custom.scss */
+.modal-custom .title_relative {
+  position: relative;
+}
 
 /* line 3, ../../../assets/_dropdown.scss */
 .page-navigation .dropdown-menu {
@@ -14008,19 +14052,187 @@ form h6 {
   border-color: #4899DD;
 }
 
-/* line 33, ../../../assets/screen.scss */
+/* line 3, ../../../assets/_seller_page.sass */
+.field_seller .with_border {
+  padding-bottom: 14px;
+  border-bottom: 1px solid #bcc7d5;
+}
+
+/* line 7, ../../../assets/_seller_page.sass */
+.onboarding_wrapper {
+  background-image: url("/assets/img/bg-onboarding.png");
+  background-size: 100%;
+  margin-top: -30px;
+  margin-bottom: -30px;
+  margin-left: -40px;
+  margin-right: -40px;
+  height: 258px;
+}
+/* line 16, ../../../assets/_seller_page.sass */
+.onboarding_wrapper .welcome_text_big {
+  padding-top: 92px;
+  font-size: 36px;
+}
+/* line 20, ../../../assets/_seller_page.sass */
+.onboarding_wrapper .welcome_text_small {
+  font-size: 24px;
+}
+
+/* line 23, ../../../assets/_seller_page.sass */
+.onboarding_content {
+  margin-top: -36px;
+  margin-left: 190px;
+  margin-right: 190px;
+}
+/* line 28, ../../../assets/_seller_page.sass */
+.onboarding_content > .home_task_space {
+  margin-bottom: 30px;
+}
+/* line 31, ../../../assets/_seller_page.sass */
+.onboarding_content .home_task {
+  border: 1px solid #BCC7D5;
+  background-color: #FFFFFF;
+}
+/* line 35, ../../../assets/_seller_page.sass */
+.onboarding_content .home_task .image-thumbs-img-wrapper {
+  display: inline-flex;
+  padding-left: 22px;
+}
+/* line 38, ../../../assets/_seller_page.sass */
+.onboarding_content .home_task .home_task_text {
+  padding: 11px 22px;
+  display: inline-block;
+}
+/* line 41, ../../../assets/_seller_page.sass */
+.onboarding_content .home_task .home_task_button {
+  float: right;
+  padding: 17px 10px;
+}
+/* line 45, ../../../assets/_seller_page.sass */
+.onboarding_content .complete_line {
+  border-top: solid 1px #BCC7D5;
+  position: relative;
+  min-height: 1px;
+}
+/* line 49, ../../../assets/_seller_page.sass */
+.onboarding_content .complete_line > .complte_line_text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  padding-left: 15px;
+  padding-right: 15px;
+  transform: translate(-50%, -50%);
+  background-color: white;
+}
+
+/* line 61, ../../../assets/_seller_page.sass */
+#dashboard_page .with_border {
+  border: 1px solid #bcc7d5;
+}
+/* line 64, ../../../assets/_seller_page.sass */
+#dashboard_page .column-text-ellipsis {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* line 70, ../../../assets/_seller_page.sass */
+#dashboard_page .space_column {
+  padding: 20px;
+  margin-bottom: 30px;
+  line-height: 27px;
+}
+/* line 75, ../../../assets/_seller_page.sass */
+#dashboard_page .logo-img {
+  max-width: 40px;
+  max-heigh: 40px;
+}
+/* line 80, ../../../assets/_seller_page.sass */
+#dashboard_page .header-link a {
+  color: #32343C;
+}
+/* line 82, ../../../assets/_seller_page.sass */
+#dashboard_page .header-link {
+  border-bottom: 2px solid #4891d2;
+  padding-bottom: 4px;
+}
+/* line 86, ../../../assets/_seller_page.sass */
+#dashboard_page .header-link:focus {
+  text-decoration: none;
+}
+/* line 89, ../../../assets/_seller_page.sass */
+#dashboard_page .header_name_space {
+  padding-left: 10px;
+}
+/* line 93, ../../../assets/_seller_page.sass */
+#dashboard_page .group_span_right span {
+  margin-left: 15px;
+}
+/* line 96, ../../../assets/_seller_page.sass */
+#dashboard_page .group_container {
+  padding-bottom: 20px;
+  padding-top: 20px;
+  border-bottom: solid 1px #BCC7D5;
+}
+/* line 101, ../../../assets/_seller_page.sass */
+#dashboard_page .group_container .price-column {
+  padding-left: 50px;
+}
+/* line 104, ../../../assets/_seller_page.sass */
+#dashboard_page .no_border {
+  border: none;
+}
+/* line 107, ../../../assets/_seller_page.sass */
+#dashboard_page .small_field {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+/* line 111, ../../../assets/_seller_page.sass */
+#dashboard_page .small_field .row:first-child {
+  padding-top: 10px;
+}
+/* line 114, ../../../assets/_seller_page.sass */
+#dashboard_page .top_selling_field {
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border: none;
+}
+/* line 119, ../../../assets/_seller_page.sass */
+#dashboard_page .top_selling_field div:first-child {
+  padding-right: 0;
+}
+/* line 121, ../../../assets/_seller_page.sass */
+#dashboard_page .top_selling_field div:last-child {
+  padding-left: 0;
+  line-height: 40px;
+}
+/* line 125, ../../../assets/_seller_page.sass */
+#dashboard_page .top_selling_header {
+  margin-bottom: 15px;
+}
+/* line 128, ../../../assets/_seller_page.sass */
+#dashboard_page .group_container:first-child {
+  padding-top: 0;
+}
+/* line 131, ../../../assets/_seller_page.sass */
+#dashboard_page .group_container:last-child {
+  border: none;
+  padding-bottom: 0;
+}
+
+/* line 34, ../../../assets/screen.scss */
 body {
   overflow-y: scroll;
   overflow-x: auto;
 }
 
-/* line 38, ../../../assets/screen.scss */
+/* line 39, ../../../assets/screen.scss */
 html, body {
   height: 100%;
   min-height: 100%;
 }
 
-/* line 43, ../../../assets/screen.scss */
+/* line 44, ../../../assets/screen.scss */
 #wrapper {
   position: relative;
   display: block;
@@ -14028,13 +14240,13 @@ html, body {
   min-height: 100%;
 }
 
-/* line 50, ../../../assets/screen.scss */
+/* line 51, ../../../assets/screen.scss */
 #page-content-wrapper {
   margin-left: 180px;
   position: relative;
 }
 
-/* line 55, ../../../assets/screen.scss */
+/* line 56, ../../../assets/screen.scss */
 #page-body-wrapper {
   padding-top: 30px;
   padding-bottom: 30px;
@@ -14684,23 +14896,23 @@ html, body {
 }
 
 /* Additional Code */
-/* line 70, ../../../assets/screen.scss */
+/* line 71, ../../../assets/screen.scss */
 .tradable-list .left-column {
   margin-left: 30px;
   float: left;
   width: 300px;
 }
-/* line 74, ../../../assets/screen.scss */
+/* line 75, ../../../assets/screen.scss */
 .tradable-list .left-column .search-box {
   height: 33px;
 }
-/* line 78, ../../../assets/screen.scss */
+/* line 79, ../../../assets/screen.scss */
 .tradable-list .center-column {
   float: left;
   padding-top: 145px;
   margin-left: 30px;
 }
-/* line 82, ../../../assets/screen.scss */
+/* line 83, ../../../assets/screen.scss */
 .tradable-list .center-column .trade-button {
   padding: 8px 10px 5px 10px;
   margin-bottom: 15px;
@@ -14709,39 +14921,39 @@ html, body {
   color: #BCC7D5;
   border: 1px solid #BCC7D5;
 }
-/* line 89, ../../../assets/screen.scss */
+/* line 90, ../../../assets/screen.scss */
 .tradable-list .center-column .trade-button.active {
   cursor: pointer;
   color: #4899DD;
 }
-/* line 95, ../../../assets/screen.scss */
+/* line 96, ../../../assets/screen.scss */
 .tradable-list .right-column {
   float: left;
   width: 400px;
   margin-left: 30px;
 }
-/* line 99, ../../../assets/screen.scss */
+/* line 100, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header {
   margin-top: 9px;
   margin-bottom: 5px;
 }
-/* line 102, ../../../assets/screen.scss */
+/* line 103, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header .column-1 {
   margin-left: 15px;
 }
-/* line 105, ../../../assets/screen.scss */
+/* line 106, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header .column-2 {
   margin-left: 120px;
 }
-/* line 108, ../../../assets/screen.scss */
+/* line 109, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header .column-3 {
   margin-left: 30px;
 }
-/* line 113, ../../../assets/screen.scss */
+/* line 114, ../../../assets/screen.scss */
 .tradable-list .clickable-list {
   overflow: hidden;
 }
-/* line 115, ../../../assets/screen.scss */
+/* line 116, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column {
   margin-top: 15px;
   -webkit-padding-start: 0px;
@@ -14751,14 +14963,14 @@ html, body {
   border: 1px solid #BCC7D5;
   border-radius: 3px;
 }
-/* line 123, ../../../assets/screen.scss */
+/* line 124, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li {
   padding-left: 15px;
   padding-right: 15px;
   line-height: 30px;
   cursor: pointer;
 }
-/* line 128, ../../../assets/screen.scss */
+/* line 129, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-1 {
   margin-left: 15px;
   display: inline-block;
@@ -14768,30 +14980,30 @@ html, body {
   text-overflow: ellipsis;
   float: left;
 }
-/* line 137, ../../../assets/screen.scss */
+/* line 138, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-2 {
   margin-left: 50px;
   display: inline-block;
   float: left;
 }
-/* line 142, ../../../assets/screen.scss */
+/* line 143, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-3 {
   margin-left: 80px;
   display: inline-block;
   float: left;
 }
-/* line 148, ../../../assets/screen.scss */
+/* line 149, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li.active {
   background: #4899DD;
   color: #FFFFFF;
 }
 
-/* line 156, ../../../assets/screen.scss */
+/* line 157, ../../../assets/screen.scss */
 .my_file {
   display: none !important;
 }
 
-/* line 160, ../../../assets/screen.scss */
+/* line 161, ../../../assets/screen.scss */
 .empty-section {
   border: 1px solid;
   border-color: #BCC7D5;
@@ -14799,7 +15011,7 @@ html, body {
   height: 80px;
   line-height: 80px;
 }
-/* line 166, ../../../assets/screen.scss */
+/* line 167, ../../../assets/screen.scss */
 .empty-section .loading-img {
   width: 40px;
   height: 40px;
@@ -14807,7 +15019,7 @@ html, body {
   margin-right: 15px;
 }
 
-/* line 174, ../../../assets/screen.scss */
+/* line 175, ../../../assets/screen.scss */
 .get_file {
   cursor: pointer;
 }

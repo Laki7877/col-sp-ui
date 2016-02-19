@@ -1,0 +1,133 @@
+.field_seller
+
+	.with_border 
+		padding-bottom: 14px
+		border-bottom: 1px solid $header-border-grey
+
+.onboarding_wrapper
+	background-image: url('/assets/img/bg-onboarding.png')
+	background-size:	100%
+	margin-top:	-30px
+	margin-bottom: -30px
+	margin-left: -40px
+	margin-right: -40px
+	height:	258px
+
+	.welcome_text_big
+		padding-top: 92px
+		font-size: 36px
+
+	.welcome_text_small
+		font-size: 24px
+
+.onboarding_content
+	margin-top: -36px
+	margin-left: 190px
+	margin-right: 190px
+
+	> .home_task_space
+		margin-bottom: 30px
+
+	.home_task
+		border:	1px solid $color-grey
+		background-color:	$color-white
+
+		.image-thumbs-img-wrapper
+			display: inline-flex
+			padding-left: 22px
+		.home_task_text
+			padding: 11px 22px
+			display: inline-block
+		.home_task_button
+			float: right
+			padding: 17px 10px
+
+	.complete_line
+		border-top: solid 1px $color-grey
+		position: relative
+		min-height: 1px
+		> .complte_line_text
+			position: absolute
+			left: 50%
+			top: 50%
+			padding-left: 15px
+			padding-right: 15px
+			transform: translate(-50%, -50%)
+			background-color: white
+
+
+#dashboard_page
+
+	.with_border
+		border: 1px solid $header-border-grey
+
+	.column-text-ellipsis
+		max-width: 100%
+		overflow: hidden
+		text-overflow: ellipsis
+		white-space: nowrap
+
+	.space_column
+		padding: 20px
+		margin-bottom: 30px
+		line-height: 27px
+
+	.logo-img
+		max-width: 40px
+		max-heigh: 40px
+
+	.header-link
+		a
+			color: $color-black
+	.header-link
+		> .active-underline
+		border-bottom: 2px solid $color-soft-blue
+		padding-bottom: 4px
+		&:focus
+			text-decoration: none
+
+	.header_name_space
+		padding-left: 10px
+
+	.group_span_right
+		span
+			margin-left: 15px
+
+	.group_container
+		padding-bottom: 20px
+		padding-top: 20px
+		border-bottom: solid 1px $color-grey
+
+		.price-column
+			padding-left: 50px
+
+	& .no_border
+		border: none
+
+	& .small_field
+		padding-bottom: 10px
+		padding-top: 10px
+
+		& .row:first-child
+			padding-top: 10px
+
+	& .top_selling_field
+		padding-bottom: 5px
+		padding-top: 5px
+		border: none
+
+		& div:first-child
+			padding-right: 0
+		& div:last-child
+			padding-left: 0
+			line-height: 40px
+
+	.top_selling_header
+		margin-bottom: 15px
+
+	.group_container:first-child
+		padding-top: 0
+
+	.group_container:last-child
+		border: none
+		padding-bottom: 0

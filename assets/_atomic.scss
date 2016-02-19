@@ -10,6 +10,10 @@
 	margin-right: 15px;
 }
 
+.margin-left-5 {
+	margin-left: 5px;
+}
+
 .margin-left-10 {
 	margin-left: 10px;
 }
@@ -202,8 +206,20 @@
 	font-size: 18px
 }
 
-.icon-size-20{
+.font-size-20 {
 	font-size: 20px;
+}
+
+.font-size-27 {
+	font-size: 27px;
+}
+
+.font-size-38 {
+	font-size: 38px;
+}
+
+.icon-size-20{
+	@extend .font-size-20;
 }
 
 .margin-0 {
