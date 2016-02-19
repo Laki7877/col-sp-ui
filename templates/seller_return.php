@@ -8,7 +8,7 @@
       ]) 
     ?>
 
-    <? $this->insert('components/search-section', ['serach_placeholder' => 'Search for Return ID, Order ID' , 'actions' => ['Export Products', 'Delete Products', 'Hide Products', 'Show Products', 'Publish Products'], 'optional_class' => 'hide-component']) ?>
+    <? $this->insert('components/search-section', ['serach_placeholder' => 'Search for Return ID, Order ID' , 'actions' => ['Approve'], 'optional_class' => 'hide-component']) ?>
     <div class="filter-section">
       <div class="filter-container">
         <span>Filters:</span>
@@ -91,9 +91,7 @@
               <span class="text-align-center popover-gear">
                <i class="fa fa-gear color-dark-grey icon-size-20"></i>
                <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
-                <div><a href='#'>View Products</a></div>
-                <div><a href='#'>Delete</a></div>
+                <div><a href='#' data-toggle='modal' data-target='#'>View Detail</a></div>
                 ">
                </i>  
               </span>
@@ -123,9 +121,7 @@
               <span class="text-align-center popover-gear">
                <i class="fa fa-gear color-dark-grey icon-size-20"></i>
                <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
-                <div><a href='#'>View Products</a></div>
-                <div><a href='#'>Delete</a></div>
+                <div><a href='#' data-toggle='modal' data-target='#'>View Detail</a></div>
                 ">
                </i>  
               </span>
