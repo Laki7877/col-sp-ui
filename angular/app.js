@@ -35,19 +35,10 @@ var app = angular.module('colspApp',
 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
 
 //App config
-.config(['$uibTooltipProvider', 'uiSelectConfig', '$ncPaginationProvider', '$ncAlertProvider',
-function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
-
-	//Default close tooltip when click again
-	$tooltipProvider.setTriggers({
-		'clickanystart' : 'clickanyend'
-	});
-	$tooltipProvider.options({
-		trigger: 'clickanystart'
-	});
+.config(['uiSelectConfig', '$ncPaginationProvider', '$ncAlertProvider',
+function(uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
 	$ncPaginationProvider.paginationSizes = [10, 20, 50, 100];
 	uiSelectConfig.taggingTokens = '[ENTER|,]';
-
 }])
 
 //App template cache load
