@@ -32,8 +32,8 @@ module.exports = function($scope, $controller, CouponService, config, Brand, Sho
   };
 
   $scope.dataSet = {
-    criteria: [{ value: 'None', text: 'No filter' }, { value: 'PriceGT', text: 'The total price is more than..' }],
-    filters: [{ value: 'None', text: 'No filter' },
+    criteria: [{ value: 'No filter', text: 'No filter' }, { value: 'Total price is more than', text: 'Total price is more than..' }],
+    filters: [{ value: 'No filter', text: 'No filter' },
     { text: 'Brand',  value: 'Brand' },
     { text: 'Global Category', value: 'GlobalCategory' },
     { text: 'Shop', value: 'Shop' },

@@ -15,8 +15,8 @@
 												 </div>
 					</div>
 
-					<div ng-show="formData.Conditions.Order[0].Type == 'PriceGT'"
-			 		 ng-init="formData.Conditions.Order[0].Type = 'None'"
+					<div ng-show="formData.Conditions.Order[0].Type == 'Total price is more than'"
+			 		 ng-init="formData.Conditions.Order[0].Type = 'No Filter'"
 		 			 nc-template="common/input/form-group-with-label" nc-label="Price" nc-template-options-path="couponForm/ConditionValue">
 							<input type="text" ng-model="formData.Conditions.Order[0].Value" class="form-control"/>
 					</div>
@@ -28,7 +28,7 @@
 				<div class="form-section-content">
 					<div nc-template="common/input/form-group-with-label" nc-label="Criteria">
 												 <div class="ah-select2-dropdown">
-														 <select ng-init="formData.Conditions.FilterBy.Type = 'None'"
+														 <select ng-init="formData.Conditions.FilterBy.Type = 'No Filter'"
 														 ng-model="formData.Conditions.FilterBy.Type" class="form-control" required>
 															 	<option ng-repeat="opt in dataSet.filters" value="{{ opt.value }}">
 																	{{ opt.text }}
@@ -37,7 +37,7 @@
 												 </div>
 					</div>
 					<div nc-template="common/input/form-group-with-label" nc-template-options-path="couponForm/FilterByValue"
-					 nc-label="Include" ng-show="formData.Conditions.FilterBy.Type != 'None'">
+					 nc-label="Include" ng-show="formData.Conditions.FilterBy.Type != 'No Filter'">
 						<ui-select multiple	ng-model="formData.Conditions.FilterBy.Brands"
 						ng-if="formData.Conditions.FilterBy.Type == 'Brand'">
 								<ui-select-match placeholder="Search by Brand...">
