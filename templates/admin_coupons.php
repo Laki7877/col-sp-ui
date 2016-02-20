@@ -28,7 +28,7 @@
   		        <tbody>
   		            <tr ng-repeat="row in list.data">
   		                <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
-  		                <td class="column-text-ellipsis" nc-link="/admin/coupons/admin/{{row.CouponCode}}">
+  		                <td class="column-text-ellipsis" nc-link="/admin/coupons/admin/{{row.CouponId}}">
   		                    {{row.CouponCode}}
   		                </td>
   		                <td>{{row.CouponName}}</td>

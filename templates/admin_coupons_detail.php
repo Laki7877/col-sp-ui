@@ -8,7 +8,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 ?>
 
 <?php $this->start('page-body') ?>
-  <div ng-controller="AdminCouponAddCtrl">
+  <div ng-controller="AdminCouponAddCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
     <form class="ah-form sticky-mainform-action" name="form" novalidate>
 
     <div>
