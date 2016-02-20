@@ -179,7 +179,7 @@ function(uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
 .directive('ngMatch', directives.ngMatch)
 .directive('ngMinnumber', directives.ngMinnumber)
 .directive('ngMaxnumber', directives.ngMaxnumber)
-.directive('popoverAny', directives.popoverAny)
+
 //Filters
 .filter('capitalize', filters.capitalize)
 .filter('ordinal', filters.ordinal)
