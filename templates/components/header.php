@@ -1,6 +1,6 @@
 <nav class="header">
  <div class="container-fluid">
-  <ul class="nav navbar-nav navbar-left">
+  <ul class="nav navbar-nav navbar-left" ng-if="$root.Profile.User.IsAdmin">
     <li class="dropdown header-font-detail"><strong>Administration System</strong></li>
   </ul>
     <ul class="nav navbar-nav navbar-right">
