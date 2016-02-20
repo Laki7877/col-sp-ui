@@ -41,7 +41,7 @@
                   }">
                   <textarea class="form-control" ng-model="formData.AttributeSetDescriptionEn" maxlength="500"></textarea>
               </div>
-              <div ng-if="id != 0" 
+              <div ng-if="id > 0" 
                   ng-template="common/input/label"
                   ng-template-options="{
                     'label' : 'Mapped Categories',
