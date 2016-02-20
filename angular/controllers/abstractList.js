@@ -1,4 +1,4 @@
-module.exports = function($scope, $window, NcAlert, util, options) {
+module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 	'ngInject';
 	var a = _.includes(['a','e','i','o','u'], _.lowerCase(options.item.charAt(0))) ? 'an' : 'a';
 	$scope.alert = new NcAlert();
@@ -20,14 +20,11 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 		data: []
 	};
 
-	$scope.reload = function(newObj, oldObj) {
+	$scope.reload = options.reload || function(newObj, oldObj) {
 		$scope.loading = true;
+		(options.onReload || _.noop)(newObj, oldObj);
 		if(!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
-			(options.reload || _.noop)(newObj, oldObj);
 			if(newObj.searchText !== oldObj.searchText) {
-				$scope.params._offset = 0;
-			}
-			if(newObj.AdvanceSearch !== oldObj.AdvanceSearch) {
 				$scope.params._offset = 0;
 			}
 			if(newObj._filter !== oldObj._filter) {
@@ -42,7 +39,7 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 				$scope.loading = false;
 			});
 	};
-	$scope.onload = function() {
+	$scope.onLoad = function() {
 		$scope.loading = true;
 	};
 	if(!_.isEmpty(options.filters)) {
@@ -114,7 +111,12 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 
 	}
 
-	$scope.$watch('params', function() {
-		$scope.reload();
+	$scope.$watch('params', function(a,b) {
+		$scope.reload(a,b);
 	}, true);
+
+	$timeout(function() {
+		$scope.reload();
+		(options.onInit || _.noop)($scope);
+	}, 0);
 };

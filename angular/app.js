@@ -232,6 +232,7 @@ function(uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
 
 .controller('LoginCtrl', controllers.login)
 .controller('AbstractListCtrl', controllers.abstractList)
+.controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
 .controller('AbstractAddCtrl', controllers.abstractAdd)
 
 .controller('TestCtrl', controllers.test)

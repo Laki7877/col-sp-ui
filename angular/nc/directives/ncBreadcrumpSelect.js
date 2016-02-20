@@ -66,10 +66,8 @@ angular.module('nc')
 						});
 					}
 				});
-				scope.$watch('tree', function(newObj, oldObj) {
-					if(newObj != oldObj) {
-						scope.searchable = constructBreadcrumbFromTree(scope.tree, []);
-					}
+				scope.$watchCollection('tree', function(newObj, oldObj) {
+					scope.searchable = constructBreadcrumbFromTree(scope.tree, []);
 				});
 			}
 		};
