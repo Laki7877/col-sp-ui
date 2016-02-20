@@ -152,6 +152,7 @@ function(uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
 .factory('AttributeSetService', services.attributeSetService) //newer version
 .factory('Brand', services.brand)
 .factory('BrandService', services.brandService) //newer version
+.factory('InventoryService', services.inventoryService) //newer version
 .factory('SellerAccountService', services.sellerAccountService)
 .factory('SellerRoleService', services.sellerRoleService)
 .factory('SellerPermissionService', services.sellerPermissionService)
@@ -208,6 +209,7 @@ function(uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
 .controller('SellerRoleCtrl', controllers.sellerRole)
 .controller('SellerRoleAddCtrl', controllers.sellerRoleAdd)
 .controller('SellerShopSettingCtrl', controllers.sellerShopSetting)
+.controller('SellerInventoryListCtrl', controllers.sellerInventoryList)
 
 .controller('AdminAttributeCtrl', controllers.adminAttribute)
 .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)

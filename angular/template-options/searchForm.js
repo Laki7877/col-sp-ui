@@ -1,10 +1,10 @@
 module.exports = {
 	ProductName: {},
 	Pid: {},
-	SKU: {},
+	Sku: {},
 	Brands: {},
-	GlobalCategory: {},
-	LocalCategory: {},
+	GlobalCategories: {},
+	LocalCategories: {},
 	Tags: {},
 	Price: {},
 	CreatedDate: {},

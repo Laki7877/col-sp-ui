@@ -92,6 +92,20 @@ module.exports = {
 			}
 		]
 	},
+	INVENTORY_STATUS: [
+		{
+			name: 'Normal Stock',
+			color: ''
+		},
+		{
+			name: 'Low Stock',
+			color: 'color-red'
+		},
+		{
+			name: 'Out of Stock',
+			color: 'color-red'
+		}
+	],
 	PRODUCT_REVIEW_STATUS: [
 		{
 			name: 'Not Approved',
