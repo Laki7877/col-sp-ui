@@ -33,7 +33,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Inventory'])
 		                <th nc-sort="ProductNameEn">Product Name</th>
 		                <th nc-sort="Pid">Product ID</th>
 		                <th nc-sort="Sku">SKU</th>
-		                <th nc-sort="Available" class="text-right">Available</th>
+		                <th nc-sort="AvailableStock" class="text-right">Available</th>
 		                <th nc-sort="Status">Status</th>
 		                <th>Action</th>
 		            </tr>
