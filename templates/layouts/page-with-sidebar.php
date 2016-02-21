@@ -20,7 +20,7 @@
 
     <ul class="sub-sidebar" style="display: none;" id="sub-sidebar-inventory">
         <li class="sub-sidebar-header">Inventory</li>
-        <li class="item active margin-top-20"><a href="/?p=seller_inventory">View</a></li>
+        <li ng-class="activeUrl('/inventory')" class="item margin-top-20"><a href="/inventory">View</a></li>
         <!-- <li class="item"><a href="/?p=add_product">Add</a></li> -->
         <!-- <li class="item"><a href="/?p=import_product">Import</a></li> -->
         <!-- <li class="item"><a href="/?p=index">Export</a></li> -->
