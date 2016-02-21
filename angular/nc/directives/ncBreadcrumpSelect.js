@@ -53,8 +53,10 @@ angular.module('nc')
 					});
 				});
 				scope.$watchCollection('originalModel', function(newObj, oldObj) {
-					if(newObj == oldObj) return;
-					if(_.isArray(newObj)) {
+					if(_.isUndefined(newObj)) {
+						scope.originalModel = [];
+					}
+					if(_.isArray(scope.originalModel)) {
 						scope.model.ptr = [];
 						_.forEach(scope.originalModel, function(e) {
 							var search = { item: {} };

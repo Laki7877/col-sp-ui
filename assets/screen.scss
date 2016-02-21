@@ -216,3 +216,8 @@ ng-transclude.has-error .form-control{
 .get_file {
     cursor: pointer;
 }
+
+/* ui-select input fix */
+.ui-select-multiple input.ui-select-search:not(.ng-touched) {
+    width: 100% !important;
+}

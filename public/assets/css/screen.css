@@ -15223,3 +15223,9 @@ ng-transclude.has-error .form-control {
 .get_file {
   cursor: pointer;
 }
+
+/* ui-select input fix */
+/* line 221, ../../../assets/screen.scss */
+.ui-select-multiple input.ui-select-search:not(.ng-touched) {
+  width: 100% !important;
+}
