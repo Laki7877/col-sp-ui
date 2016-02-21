@@ -77,15 +77,9 @@ Route::add('/admin/products', 'AdminController::allProducts');
 Route::add('/admin/approve', 'AdminController::approve');
 Route::add('/admin/coupons/seller', 'AdminController::seller_coupons');
 Route::add('/admin/coupons/seller/create', 'AdminController::seller_coupons_create');
-<<<<<<< HEAD
-Route::add('/admin/coupons/admin', 'AdminController::admin_coupons');
-Route::add('/admin/coupons/admin/create', 'AdminController::admin_coupons_create');
-
-=======
 Route::add('/admin/coupons/admin', 'AdminController::admin_coupons_list');
 Route::add('/admin/coupons/admin/:id', 'AdminController::admin_coupons_edit');
 Route::add('/admin/coupons/admin/create', 'AdminController::create_admin_coupons_create');
->>>>>>> c1b173d6d05cf16c3eca65e2d057f83c3696b8e3
 //test route
 Route::add('/test/:name', 'TestController::any');
 
