@@ -15,7 +15,7 @@
         <li class="item"><a href="">Export</a></li>
         <li ng-class="activeUrl('/categories')" class="item margin-top-30"><a href="/categories">Local Category</a></li>
         <li ng-class="activeUrl('/products/reviews')" class="item"><a href="/products/reviews">Product Reviews</a></li>
-        <li ng-class="activeUrl('/products/images')" class="item"><a href="/products/images">Product Images</a></li>
+        <li ng-class="activeUrl('/products/images')" class="item"><a href="/products/images">Image Management</a></li>
     </ul>
 
     <ul class="sub-sidebar" style="display: none;" id="sub-sidebar-inventory">
