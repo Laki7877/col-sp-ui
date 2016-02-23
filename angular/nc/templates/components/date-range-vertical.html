@@ -7,13 +7,13 @@
       <div class="dropdown">
           <a class="dropdown-toggle" id="date_range_vertical_dropdown1" role="button" data-toggle="dropdown" data-target="#" href="#">
               <input readonly style="background-color:white" type="text"
-               ng-class="{'has-error': EndDate <= StartDate }"
+               ng-class="{'has-error': endDate <= startDate }"
                placeholder="{{ startPlaceholder || 'Select start date' }}"
                class="form-control width-field-large"
-               value="{{ StartDate | date: 'dd/MM/yy HH:mm' }}" />
+               value="{{ startDate | date: 'dd/MM/yy HH:mm' }}" />
           </a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-              <datetimepicker data-ng-model="StartDate" data-datetimepicker-config="{ dropdownSelector: '#date_range_vertical_dropdown1', minView: 'minute' }" />
+              <datetimepicker data-ng-model="startDate" data-datetimepicker-config="{ dropdownSelector: '#date_range_vertical_dropdown1', minView: 'minute' }" />
 
           </ul>
       </div>
@@ -27,17 +27,17 @@
       <div class="dropdown">
           <a class="dropdown-toggle" id="date_range_vertical_dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
               <input readonly style="background-color:white" type="text"
-               ng-class="{'has-error': EndDate <= StartDate }"
+               ng-class="{'has-error': endDate <= startDate }"
                placeholder="{{ endPlaceholder || 'Select end date' }}"
                class="form-control width-field-large"
-               value="{{ EndDate | date: 'dd/MM/yy HH:mm' }}" />
+               value="{{ endDate | date: 'dd/MM/yy HH:mm' }}" />
           </a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel2">
-              <datetimepicker data-ng-model="EndDate" data-datetimepicker-config="{ dropdownSelector: '#date_range_vertical_dropdown2', minView: 'minute' }" />
+              <datetimepicker data-ng-model="endDate" data-datetimepicker-config="{ dropdownSelector: '#date_range_vertical_dropdown2', minView: 'minute' }" />
           </ul>
       </div>
       <div class="width-field-large">
-          <span class="help-block color-red" ng-if="EndDate <= StartDate">
+          <span class="help-block color-red" ng-if="endDate <= startDate">
               <span>{{ errorText || "Start date/time must come before end date/time" }}</span>
           </span>
       </div>
