@@ -47,6 +47,21 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										ng-class="{ 'has-error' : $root.isInvalid(form.ShopNameEn) }"
 										maxlength="100"
 										required />
+									</div>									
+									<!-- Shop Status -->
+									<div ng-template="common/input/dropdown"
+										ng-template-options="{
+										'label' : 'Shop Group',
+										'labelClass' : 'required'
+										}">
+										<ui-select ng-model="formData.ShopGroup" search-enabled="false" required>
+										<ui-select-match placeholder="- Select Shop Group -">
+										<span ng-bind="$select.selected.name"></span>
+										</ui-select-match>
+										<ui-select-choices repeat="item in shopGroupDropdown">
+										<span ng-bind="item.name"></span>
+										</ui-select-choices>
+										</ui-select>
 									</div>
 									<!-- Shop Type -->
 									<div ng-template="common/input/dropdown"
@@ -82,7 +97,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										'label' : 'Shop Status',
 										'labelClass' : 'required'
 										}">
-										<ui-select ng-model="formData.Status" search-enabled="false">
+										<ui-select ng-model="formData.Status" search-enabled="false" required>
 										<ui-select-match placeholder="- Select Shop Status -">
 										<span ng-bind="$select.selected.name"></span>
 										</ui-select-match>

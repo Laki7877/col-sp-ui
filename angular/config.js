@@ -92,6 +92,20 @@ module.exports = {
 			}
 		]
 	},
+	SHOP_GROUP: [
+		{
+			name: 'BU',
+			value: 'BU'
+		},
+		{
+			name: 'INDY',
+			value: 'IN'
+		},
+		{
+			name: 'Seller',
+			value: 'SE'
+		}
+	],
 	INVENTORY_STATUS: [
 		{
 			name: 'Normal Stock',
