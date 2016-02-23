@@ -90,7 +90,7 @@
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>
                   </ui-select-match>
-                  <ui-select-choices repeat="item in yesNoDropdown">
+                  <ui-select-choices repeat="item in boolOptions">
                       <span ng-bind="item.name"></span>
                   </ui-select-choices>
                 </ui-select>
@@ -242,7 +242,7 @@
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>
                   </ui-select-match>
-                  <ui-select-choices repeat="item in yesNoDropdown">
+                  <ui-select-choices repeat="item in boolOptions">
                       <span ng-bind="item.name"></span>
                   </ui-select-choices>
                 </ui-select>
@@ -275,7 +275,7 @@
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>
                   </ui-select-match>
-                  <ui-select-choices repeat="item in yesNoDropdown">
+                  <ui-select-choices repeat="item in boolOptions">
                       <span ng-bind="item.name"></span>
                   </ui-select-choices>
                 </ui-select>
@@ -288,7 +288,7 @@
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>
                   </ui-select-match>
-                  <ui-select-choices repeat="item in yesNoDropdown">
+                  <ui-select-choices repeat="item in boolOptions">
                       <span ng-bind="item.name"></span>
                   </ui-select-choices>
                 </ui-select>
@@ -302,7 +302,7 @@
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>
                   </ui-select-match>
-                  <ui-select-choices repeat="item in yesNoDropdown">
+                  <ui-select-choices repeat="item in boolOptions">
                       <span ng-bind="item.name"></span>
                   </ui-select-choices>
                 </ui-select>

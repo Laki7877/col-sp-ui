@@ -25,7 +25,7 @@
     </div>
     <div class="clickable-list">
       <ul class="content-column">
-        <li ng-repeat="item in model track by $index" ng-class="{ 'active' : activeRight == model.indexOf(item), 'disabled' : item.ProductCount > 0 }" ng-click="select(model.indexOf(item), false)">
+        <li ng-repeat="item in model track by $index" ng-class="{ 'active' : activeRight == model.indexOf(item), 'disabled' : test(item) }" ng-click="select(model.indexOf(item), false)">
           {{ options.map.text == null ? item : item[options.map.text] }}
         </li>
       </ul>
