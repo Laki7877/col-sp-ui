@@ -72,7 +72,7 @@ function ($scope, Product, util, NcAlert, $window, FileUploader, ImageService, c
     	return false;
     };
     util.warningOnLeave(function() {
-    	return !$scope.dirty;
+    	return $scope.dirty;
     });
 
     $scope.getTemplate = function(product) {
