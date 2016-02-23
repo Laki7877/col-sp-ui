@@ -53,7 +53,7 @@
 				<span class="zero-category-image">
 				</span>
 			</span>
-			<span class="local-category-empty-text">You do not have global category</span>
+			<span class="local-category-empty-text">You do not have any categories</span>
 		</div>
       	<div ng-show="loading">
           <? $this->insert('components/table-loading', ['text' => 'Loading...']) ?>

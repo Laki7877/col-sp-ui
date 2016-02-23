@@ -14,7 +14,7 @@
             <div class="form-section-content">
               <div ng-template="common/input/text2"
                 ng-template-options="{
-                  'label': 'Attribute Name (English)',
+                  'label': 'Attribute Name',
                   'labelClass': 'required',
                   'inputSize': 'large',
                   'error' : {
@@ -81,6 +81,20 @@
                   maxlength="100"
                   required />
               </div>
+              <div 
+                ng-template="common/input/dropdown"
+                ng-template-options="{
+                  'label' : 'Is Required'
+                }">
+                <ui-select ng-model="formData.IsRequired" search-enabled="false" ng-disabled="formData.DataType.value == 'HB'">
+                  <ui-select-match>
+                      <span ng-bind="$select.selected.name"></span>
+                  </ui-select-match>
+                  <ui-select-choices repeat="item in yesNoDropdown">
+                      <span ng-bind="item.name"></span>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
             </div>
           </div>
           <div class="form-section">
@@ -101,30 +115,6 @@
               </div>
               <div ng-switch="formData.DataType.value">
                 <div ng-switch-when="ST">
-                  <div ng-template="common/input/text"
-                    ng-template-options="{
-                      'label': 'Attribute Unit (Thai)'
-                    }">
-                    <input
-                      class="form-control"
-                      name="stAttributeUnitTh"
-                      ng-model="formData.ST.AttributeUnitTh"
-                      ng-class="{ 'has-error' : isInvalid(form.stAttributeUnitTh) }"
-                      maxlength="100"
-                      />
-                  </div>
-                  <div ng-template="common/input/text"
-                    ng-template-options="{
-                      'label': 'Attribute Unit (English)'
-                    }">
-                    <input
-                      class="form-control"
-                      name="stAttributeUnitEn"
-                      ng-model="formData.ST.AttributeUnitEn"
-                      ng-class="{ 'has-error' : isInvalid(form.stAttributeUnitEn) }"
-                      maxlength="100"
-                       />
-                  </div>
                   <!--div 
                     ng-template="common/input/dropdown"
                     ng-template-options="{
@@ -194,6 +184,26 @@
                       </a>
                     </div>
                   </div>
+                  <div ng-template="common/input/text2"
+                    ng-template-options="{
+                      'label': 'If empty, value equals',
+                      'error' : {
+                            'messages': {
+                              'pattern': 'Only letters and numbers allowed'
+                            },
+                            'show': isInvalid(form.LT_DefaultValue),
+                            'conditions' : form.LT_DefaultValue.$error
+                       }
+                    }">
+                    <input
+                      class="form-control"
+                      name="LT_DefaultValue"
+                      ng-model="formData.LT.DefaultValue"
+                      ng-class="{ 'has-error' : isInvalid(form.LT_DefaultValue) }"
+                      ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/"
+                      maxlength="100"
+                      />
+                  </div>
                 </div>
                 <div ng-switch-when="HB">
                   <div ng-template="common/input/text2"
@@ -232,7 +242,7 @@
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>
                   </ui-select-match>
-                  <ui-select-choices repeat="item in boolOptions">
+                  <ui-select-choices repeat="item in yesNoDropdown">
                       <span ng-bind="item.name"></span>
                   </ui-select-choices>
                 </ui-select>
@@ -265,7 +275,7 @@
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>
                   </ui-select-match>
-                  <ui-select-choices repeat="item in boolOptions">
+                  <ui-select-choices repeat="item in yesNoDropdown">
                       <span ng-bind="item.name"></span>
                   </ui-select-choices>
                 </ui-select>
@@ -278,11 +288,25 @@
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>
                   </ui-select-match>
-                  <ui-select-choices repeat="item in boolOptions">
+                  <ui-select-choices repeat="item in yesNoDropdown">
                       <span ng-bind="item.name"></span>
                   </ui-select-choices>
                 </ui-select>
              </div>
+              <div 
+                ng-template="common/input/dropdown"
+                ng-template-options="{
+                  'label' : 'Filterable'
+                }">
+                <ui-select ng-model="formData.Filterable" search-enabled="false" ng-disabled="formData.DataType.value == 'HB'">
+                  <ui-select-match>
+                      <span ng-bind="$select.selected.name"></span>
+                  </ui-select-match>
+                  <ui-select-choices repeat="item in yesNoDropdown">
+                      <span ng-bind="item.name"></span>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
             </div>
           </div>
         </div>
