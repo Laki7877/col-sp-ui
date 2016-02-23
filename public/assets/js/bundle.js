@@ -438,13 +438,20 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 		if($scope.id > 0) {
 			$scope.loading = true;
 			$scope.title = util.getTitle($scope.id,options.item);
-			
+
 			//Get by id
 			options.service.get($scope.id)
 				.then(function(data) {
 					$scope.formData = options.service.deserialize(data);
 					$scope.loading = false;
 					(options.onLoad || _.noop)($scope, true);
+
+					if(options.dateFields){
+						options.dateFields.forEach(function(df){
+								$scope.formData[df] = new Date($scope.formData[df]);
+						});
+					}
+
 				}, function() {
 					//Jump back
 					util.page404();
@@ -474,6 +481,13 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 			$scope.saving = true;
 			$scope.alert.close();
 			var data = options.service.serialize($scope.formData);
+			var restoreDf = {};
+			if(options.dateFields){
+				options.dateFields.forEach(function(df){
+						restoreDf[df] = angular.copy($scope.formData[df]);
+						$scope.formData[df] = moment($scope.formData[df]).format('LLL');
+				});
+			}
 
 			if($scope.id > 0) {
 				//Edit mode
@@ -486,6 +500,11 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 					})
 					.finally(function() {
 						$scope.saving = false;
+						if(options.dateFields){
+							options.dateFields.forEach(function(df){
+									$scope.formData[df] = restoreDf[df];
+							});
+						}
 					});
 			} else {
 				//Save mode
@@ -493,7 +512,7 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 					.then(function(result) {
 						//Set both id and formData[id]
 						$scope.id = result[options.id];
-						$scope.formData[options.id] = result[options.id]; 
+						$scope.formData[options.id] = result[options.id];
 						//Default success message
 						$scope.alert.success(util.saveAlertSuccess(options.item, options.url));
 						$scope.form.$setPristine(true);
@@ -502,7 +521,12 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 					})
 					.finally(function() {
 						$scope.saving = false;
-					});	
+						if(options.dateFields){
+							options.dateFields.forEach(function(df){
+									$scope.formData[df] = restoreDf[df];
+							});
+						}
+					});
 			}
 		} else {
 			//Form id
@@ -515,6 +539,7 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 		$scope.title = util.getTitle(val,options.item);
 	});
 }];
+
 },{}],4:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryService", "GlobalCategoryService", "BrandService", "Category", function($scope, $controller, options, Product, LocalCategoryService, GlobalCategoryService, BrandService, Category) {
 	'ngInject';
@@ -1274,6 +1299,9 @@ module.exports = function($scope, $controller, CouponService, config, Brand, Sho
       Exclude: []
     }
   };
+  $scope.preview = function(){
+    console.log($scope.formData);
+  }
 
   $scope.dataSet = {
     criteria: [{ value: 'No filter', text: 'No filter' }, { value: 'Total price is more than', text: 'Total price is more than..' }],
@@ -1324,8 +1352,6 @@ module.exports = function($scope, $controller, CouponService, config, Brand, Sho
   $scope.refreshBrands();
   $scope.refreshProducts();
 
-
-
   $controller('AbstractAddCtrl', {
     $scope: $scope,
     options: {
@@ -1333,11 +1359,10 @@ module.exports = function($scope, $controller, CouponService, config, Brand, Sho
       url: '/admin/coupons/admin',
       item: 'Coupon',
       service: CouponService,
-      onLoad: function(scope, load) {
-
-      },
-      onSave: function(scope) {
-
+      dateFields: ['StartDate', 'ExpireDate'],
+      onSave: function(scope){
+        //hacky speed fix
+        scope.formData.Conditions.Order = [scope.formData.Conditions.Order["0"]];
       }
     }
   });
@@ -5474,6 +5499,7 @@ angular.module('nc')
                         opt.error = {};
                     };
 
+
                     scope.options = opt;
                     scope.config1 = { dropdownSelector: '#date_range_vertical_dropdown1', minView: (scope.startMinView || 'hour') }
                     scope.config2 = { dropdownSelector: '#date_range_vertical_dropdown2', minView: (scope.endMinView || 'hour') }
@@ -6508,7 +6534,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('components/date-range-vertical',
-    "<div><div ng-class=\"['form-group ' + (options.formGroupClass || '')]\"><div class=width-label><label class=\"control-label ng-binding\" ng-class=\"options.labelClass || {}\">{{ startLabel }}</label></div><div ng-class=\"['width-field-' + (options.inputSize || 'normal')]\" class=input-with-unit><div class=dropdown><a class=dropdown-toggle id=date_range_vertical_dropdown1 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': EndDate <= StartDate }\" placeholder=\"{{ startPlaceholder || 'Select start date' }}\" class=\"form-control width-field-large\" value=\"{{ StartDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=StartDate data-datetimepicker-config=\"{ dropdownSelector: '#date_range_vertical_dropdown1', minView: 'minute' }\"></ul></div></div></div><div ng-class=\"['form-group ' + (options.formGroupClass || '')]\"><div class=width-label><label class=\"control-label ng-binding\" ng-class=\"options.labelClass || {}\">{{ endLabel }}</label></div><div ng-class=\"['width-field-' + (options.inputSize || 'normal')]\" class=input-with-unit><div class=dropdown><a class=dropdown-toggle id=date_range_vertical_dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': EndDate <= StartDate }\" placeholder=\"{{ endPlaceholder || 'Select end date' }}\" class=\"form-control width-field-large\" value=\"{{ EndDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel2><datetimepicker data-ng-model=EndDate data-datetimepicker-config=\"{ dropdownSelector: '#date_range_vertical_dropdown2', minView: 'minute' }\"></ul></div><div class=width-field-large><span class=\"help-block color-red\" ng-if=\"EndDate <= StartDate\"><span>{{ errorText || \"Start date/time must come before end date/time\" }}</span></span></div></div></div></div>"
+    "<div><div ng-class=\"['form-group ' + (options.formGroupClass || '')]\"><div class=width-label><label class=\"control-label ng-binding\" ng-class=\"options.labelClass || {}\">{{ startLabel }}</label></div><div ng-class=\"['width-field-' + (options.inputSize || 'normal')]\" class=input-with-unit><div class=dropdown><a class=dropdown-toggle id=date_range_vertical_dropdown1 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': endDate <= startDate }\" placeholder=\"{{ startPlaceholder || 'Select start date' }}\" class=\"form-control width-field-large\" value=\"{{ startDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=startDate data-datetimepicker-config=\"{ dropdownSelector: '#date_range_vertical_dropdown1', minView: 'minute' }\"></ul></div></div></div><div ng-class=\"['form-group ' + (options.formGroupClass || '')]\"><div class=width-label><label class=\"control-label ng-binding\" ng-class=\"options.labelClass || {}\">{{ endLabel }}</label></div><div ng-class=\"['width-field-' + (options.inputSize || 'normal')]\" class=input-with-unit><div class=dropdown><a class=dropdown-toggle id=date_range_vertical_dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': endDate <= startDate }\" placeholder=\"{{ endPlaceholder || 'Select end date' }}\" class=\"form-control width-field-large\" value=\"{{ endDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel2><datetimepicker data-ng-model=endDate data-datetimepicker-config=\"{ dropdownSelector: '#date_range_vertical_dropdown2', minView: 'minute' }\"></ul></div><div class=width-field-large><span class=\"help-block color-red\" ng-if=\"endDate <= startDate\"><span>{{ errorText || \"Start date/time must come before end date/time\" }}</span></span></div></div></div></div>"
   );
 
 
@@ -9319,7 +9345,7 @@ module.exports = {
 },{}],133:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Tue Feb 23 2016 15:29:08 GMT+0700 (Russia TZ 6 Standard Time)
+ * Tue Feb 23 2016 15:34:09 GMT+0700 (Russia TZ 6 Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
