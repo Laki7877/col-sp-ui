@@ -11,7 +11,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
   <div ng-controller="AdminCouponAddCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
     <nc-alert nc-model="alert"></nc-alert>
     <div ng-show="loading" nc-loading="Loading Coupon.."></div>
-    <form class="ah-form sticky-mainform-action" name="form" ng-show="!loading" novalidate>
+    <div ng-show="saving" nc-loading="Saving Coupon.."></div>
+    <form class="ah-form sticky-mainform-action" name="form" ng-show="!loading && !saving" novalidate>
 
     <div>
       <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Coupons/Create Coupon", 'border_class' => 'no-padding']) ?>

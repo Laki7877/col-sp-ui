@@ -65,7 +65,7 @@
 							<input type="text" class="form-control" ng-model="formData.UsagePerCustomer"/>
 					</div>
 					<div nc-template="common/input/form-group-with-label" nc-label="Maximum Users" nc-template-options-path="couponForm/MaximumUsers">
-							<input type="text" class="form-control" ng-model="formData.MaximumUsers"/>
+							<input type="text" class="form-control" ng-model="formData.MaximumUser"/>
 					</div>
 				</div>
 			</div>
