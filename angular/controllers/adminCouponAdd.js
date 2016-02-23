@@ -13,7 +13,7 @@ module.exports = function($scope, $controller, CouponService, config, Brand, Sho
       MaximumAmount: 0
     },
     UsagePerCustomer: 0,
-    MaximumUsers: 0,
+    MaximumUser: 0,
     Conditions: {
       Order: [{
         Type: null,
