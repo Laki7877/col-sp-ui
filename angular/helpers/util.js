@@ -98,7 +98,7 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
 
     service.warningOnLeave = function (fn) {
         $window.onbeforeunload = function () {
-            if (fn()) {
+            if (!fn()) {
                 //not dirty
                 return null;
             }

@@ -44,7 +44,7 @@
 				<span class="zero-category-image">
 				</span>
 			</span>
-			<span class="local-category-empty-text">You do not have local category</span>
+			<span class="local-category-empty-text">You have no category</span>
 		</div>
       	<div ng-if="loading">
           <? $this->insert('components/table-loading', ['text' => 'Loading...']) ?>

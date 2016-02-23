@@ -30,6 +30,9 @@ module.exports = function($scope, $controller, CouponService, config, Brand, Sho
       Exclude: []
     }
   };
+  $scope.preview = function(){
+    console.log($scope.formData);
+  }
 
   $scope.dataSet = {
     criteria: [{ value: 'No filter', text: 'No filter' }, { value: 'Total price is more than', text: 'Total price is more than..' }],
@@ -80,8 +83,6 @@ module.exports = function($scope, $controller, CouponService, config, Brand, Sho
   $scope.refreshBrands();
   $scope.refreshProducts();
 
-
-
   $controller('AbstractAddCtrl', {
     $scope: $scope,
     options: {
@@ -89,11 +90,10 @@ module.exports = function($scope, $controller, CouponService, config, Brand, Sho
       url: '/admin/coupons/admin',
       item: 'Coupon',
       service: CouponService,
-      onLoad: function(scope, load) {
-
-      },
-      onSave: function(scope) {
-
+      dateFields: ['StartDate', 'ExpireDate'],
+      onSave: function(scope){
+        //hacky speed fix
+        scope.formData.Conditions.Order = [scope.formData.Conditions.Order["0"]];
       }
     }
   });
