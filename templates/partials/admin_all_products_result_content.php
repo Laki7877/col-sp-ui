@@ -9,7 +9,7 @@
 
 <!-- advance search will appear here -->
 <nc-filter nc-model="params._filter" nc-filter-options="filterOptions"></nc-filter>
-<nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="params.searchText.length > 0">
+<nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="isSearching()">
     <table class="table table-curved">
         <thead>
             <tr class="table-head">

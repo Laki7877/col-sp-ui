@@ -26,9 +26,11 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 		if(!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
 			if(newObj.searchText !== oldObj.searchText) {
 				$scope.params._offset = 0;
+				$scope.bulkContainer.length = 0;
 			}
 			if(newObj._filter !== oldObj._filter) {
 				$scope.params._offset = 0;
+				$scope.bulkContainer.length = 0;
 			}
 		}
 		options.service.list($scope.params)
@@ -110,6 +112,10 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 		}));
 
 	}
+
+	$scope.isSearching = function() {
+		return !_.isEmpty($scope.params.searchText) || ( _.isUndefined($scope.params._filter) ? false :  $scope.params._filter == options.filters[0].value);
+	};
 
 	$scope.$watch('params', function(a,b) {
 		$scope.reload(a,b);

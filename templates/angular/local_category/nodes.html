@@ -18,7 +18,7 @@
 			</span>
 		</span>
 		<span class="col-xs-1 text-align-center">{{ node.ProductCount }}</span>
-		<span class="col-xs-1 text-align-center" data-nodrag><nc-eye nc-model="node.Visibility" nc-eye-on-toggle="toggleVisibility(node)"></nc-eye></i>
+		<span class="col-xs-1 text-align-center" data-nodrag><nc-eye nc-model="node.Visibility" nc-eye-on-toggle="toggleVisibility(node)"></nc-eye>
 		</span>
 		<span class="col-xs-1 text-align-center">
 			<i class="fa fa-arrows color-dark-grey icon-size-20"></i>
@@ -29,5 +29,5 @@
 	</div>
 </div>
 <ol ui-tree-nodes ng-model="node.nodes" ng-slide-toggle="!collapsed">
-	<li ng-repeat="node in node.nodes" ui-tree-node ng-include="'global_category/nodes'"></li>
+	<li ng-repeat="node in node.nodes" ui-tree-node ng-include="'local_category/nodes'	></li>
 </ol>

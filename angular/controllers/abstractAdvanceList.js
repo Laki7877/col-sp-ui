@@ -4,9 +4,11 @@ module.exports = function($scope, $controller, options, Product, LocalCategorySe
 		if(!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
 			if(newObj.searchText !== oldObj.searchText) {
 				$scope.params._offset = 0;
+				$scope.bulkContainer.length = 0;
 			}
 			if(newObj._filter !== oldObj._filter) {
 				$scope.params._offset = 0;
+				$scope.bulkContainer.length = 0;
 			}
 		}
 
@@ -39,8 +41,9 @@ module.exports = function($scope, $controller, options, Product, LocalCategorySe
 	$scope.advanceSearchOptions = {};
 	$scope.advanceSearch = false;  //toggling advance search form state
 	$scope.advanceSearchMode = false; //search type
+	var isSearchingList = $scope.isSearching;
 	$scope.isSearching = function() {
-		return $scope.advanceSearchMode ? ( !_.isEmpty(_.omitBy($scope.advanceSearchParams || {}, _.isEmpty) ) ) : ( !_.isEmpty($scope.params.searchText ) );
+		return $scope.advanceSearchMode ? ( isSearchingList() ) : ( !_.isEmpty($scope.params.searchText ) );
 	};
 	$scope.serializeAdvanceSearch = function(formData) {
 		var processed = _.extend({}, formData);
@@ -94,5 +97,12 @@ module.exports = function($scope, $controller, options, Product, LocalCategorySe
 		});
 
 	//Watch for advanceSearchParams
-	$scope.$watch('advanceSearchParams', $scope.reload);
+	$scope.$watch('advanceSearchParams', function(newObj, oldObj) {
+		//Reset offset if advance param changes
+		if(!_.isEqual(newObj, oldObj)) {
+			$scope.params._offset = 0;
+			$scope.bulkContainer.length = 0;
+		}
+		$scope.reload();
+	});
 }

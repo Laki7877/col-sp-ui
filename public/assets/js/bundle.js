@@ -421,7 +421,7 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 
 	//Pop up javascript warning message on leave
 	util.warningOnLeave(function() {
-		return !$scope.form.$dirty;
+		return $scope.form.$dirty;
 	});
 
 	$scope.init = function(params) {
@@ -547,9 +547,11 @@ module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryS
 		if(!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
 			if(newObj.searchText !== oldObj.searchText) {
 				$scope.params._offset = 0;
+				$scope.bulkContainer.length = 0;
 			}
 			if(newObj._filter !== oldObj._filter) {
 				$scope.params._offset = 0;
+				$scope.bulkContainer.length = 0;
 			}
 		}
 
@@ -582,8 +584,9 @@ module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryS
 	$scope.advanceSearchOptions = {};
 	$scope.advanceSearch = false;  //toggling advance search form state
 	$scope.advanceSearchMode = false; //search type
+	var isSearchingList = $scope.isSearching;
 	$scope.isSearching = function() {
-		return $scope.advanceSearchMode ? ( !_.isEmpty(_.omitBy($scope.advanceSearchParams || {}, _.isEmpty) ) ) : ( !_.isEmpty($scope.params.searchText ) );
+		return $scope.advanceSearchMode ? ( isSearchingList() ) : ( !_.isEmpty($scope.params.searchText ) );
 	};
 	$scope.serializeAdvanceSearch = function(formData) {
 		var processed = _.extend({}, formData);
@@ -637,7 +640,14 @@ module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryS
 		});
 
 	//Watch for advanceSearchParams
-	$scope.$watch('advanceSearchParams', $scope.reload);
+	$scope.$watch('advanceSearchParams', function(newObj, oldObj) {
+		//Reset offset if advance param changes
+		if(!_.isEqual(newObj, oldObj)) {
+			$scope.params._offset = 0;
+			$scope.bulkContainer.length = 0;
+		}
+		$scope.reload();
+	});
 }]
 },{}],5:[function(require,module,exports){
 module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options", function($scope, $window, $timeout, NcAlert, util, options) {
@@ -668,9 +678,11 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 		if(!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
 			if(newObj.searchText !== oldObj.searchText) {
 				$scope.params._offset = 0;
+				$scope.bulkContainer.length = 0;
 			}
 			if(newObj._filter !== oldObj._filter) {
 				$scope.params._offset = 0;
+				$scope.bulkContainer.length = 0;
 			}
 		}
 		options.service.list($scope.params)
@@ -752,6 +764,10 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 		}));
 
 	}
+
+	$scope.isSearching = function() {
+		return !_.isEmpty($scope.params.searchText) || ( _.isUndefined($scope.params._filter) ? false :  $scope.params._filter == options.filters[0].value);
+	};
 
 	$scope.$watch('params', function(a,b) {
 		$scope.reload(a,b);
@@ -870,7 +886,7 @@ module.exports = ["$scope", "$controller", "AttributeSetService", "util", "confi
 			item: 'Attribute Set',
 			order: 'UpdatedDt',
 			id: 'AttributeSetId',
-			actions: ['View', 'Duplicate', 'Delete'],
+			actions: ['View', 'Delete'],
 			bulks: ['Delete', 'Show', 'Hide'],
 			filters: [
 				{ name: "All", value: 'All'},
@@ -1016,7 +1032,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 
 	util.warningOnLeave(function() {
 		var modalDirty = $scope.modalScope == null ? false : $scope.modalScope.form.$dirty;
-		return (!$scope.saving || !$scope.dirty) && !modalDirty;
+		return $scope.saving || $scope.dirty || modalDirty;
 	});
 
 	//UiTree onchange event
@@ -1075,9 +1091,9 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 			$timeout.cancel($scope.timerPromise);
 			$scope.timerPromise = null;
 		}
+		$scope.saving = true;
+		$scope.pristine = true;
 		$scope.timerPromise = $timeout(function() {
-				$scope.pristine = true;
-				$scope.saving = true;
 				GlobalCategoryService.upsert(Category.transformUITreeToNestedSet($scope.categories))
 				.then(function() {
 					$scope.alert.close();
@@ -1579,7 +1595,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 
 	util.warningOnLeave(function() {
 		var modalDirty = $scope.modalScope == null ? false : $scope.modalScope.form.$dirty;
-		return (!$scope.saving || !$scope.dirty) && !modalDirty;
+		return $scope.saving || $scope.dirty || modalDirty;
 	});
 
 	//UiTree onchange event
@@ -2535,7 +2551,7 @@ function ($scope, Product, util, NcAlert, $window, FileUploader, ImageService, c
     	return false;
     };
     util.warningOnLeave(function() {
-    	return !$scope.dirty;
+    	return $scope.dirty;
     });
 
     $scope.getTemplate = function(product) {
@@ -4766,7 +4782,7 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
 
     service.warningOnLeave = function (fn) {
         $window.onbeforeunload = function () {
-            if (fn()) {
+            if (!fn()) {
                 //not dirty
                 return null;
             }
@@ -6998,6 +7014,8 @@ module.exports = ["common", "config", function(common, config) {
 			AttributeNameTh: '',
 			DisplayNameEn: '',
 			DisplayNameTh: '',
+			IsRequired: boolOptions[0],
+			Filterable: boolOptions[0],
 			DataValidation: validationOptions[0],
 			DataType: dataTypeOptions[0],
 			VariantStatus: boolOptions[0],
@@ -7008,8 +7026,6 @@ module.exports = ["common", "config", function(common, config) {
 				AttributeValues: [{}]
 			},
 			ST: {
-				AttributeUnitEn: '',
-				AttributeUnitTh: '',
 				DataValidation: validationOptions[0],
 				DefaultValue: ''
 			},
@@ -7026,19 +7042,19 @@ module.exports = ["common", "config", function(common, config) {
 		processed.DataValidation = find(validationOptions, data.DataValidation);
 		processed.ShowLocalSearchFlag = find(boolOptions, data.ShowLocalSearchFlag);
 		processed.ShowGlobalSearchFlag = find(boolOptions, data.ShowGlobalSearchFlag);
+		processed.IsRequired = find(boolOptions, data.IsRequired) || boolOptions[0];
+		processed.Filterable = find(boolOptions, data.Filterable) || boolOptions[0];
 
 		switch(data.DataType) {
 			case 'ST':
 				processed['ST'] = {
-					AttributeUnitEn: processed.AttributeUnitEn,
-					AttributeUnitTh: processed.AttributeUnitTh,
-					DataValidation: processed.DataValidation,
 					DefaultValue: processed.DefaultValue
 				};
 			break;
 			case 'LT':
 				processed['LT'] = {
-					AttributeValues: processed.AttributeValues
+					AttributeValues: processed.AttributeValues,
+					DefaultValue: processed.DefaultValue
 				};
 			break;
 			case 'HB':
@@ -7057,17 +7073,17 @@ module.exports = ["common", "config", function(common, config) {
 		processed.DataType = processed.DataType ? processed.DataType.value : undefined;
 		processed.ShowLocalSearchFlag = processed.ShowLocalSearchFlag ? processed.ShowLocalSearchFlag.value : undefined;
 		processed.ShowGlobalSearchFlag = processed.ShowGlobalSearchFlag ? processed.ShowGlobalSearchFlag.value : undefined;
+		processed.IsRequired = processed.IsRequired ? processed.IsRequired.value : undefined;
+		processed.Filterable = processed.Filterable ? processed.Filterable.value : undefined;
 
 		switch(processed.DataType) {
 			case 'ST':
-				processed.AttributeUnitEn = data.ST.AttributeUnitEn;
-				processed.AttributeUnitTh = data.ST.AttributeUnitTh;
-				processed.DataValidation = data.ST.DataValidation ? data.ST.DataValidation.value : dataTypeOptions[0].value;
 				processed.DefaultValue = data.ST.DefaultValue;
 				delete processed['AttributeValues'];
 			break;
 			case 'LT':
 				processed.AttributeValues = data.LT.AttributeValues;
+				processed.DefaultValue = data.ST.DefaultValue;
 			break;
 			case 'HB':
 				processed.DefaultValue = data.HB.DefaultValue;
@@ -9327,7 +9343,7 @@ module.exports = {
 },{}],133:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Tue Feb 23 2016 15:21:36 GMT+0700 (SE Asia Standard Time)
+ * Tue Feb 23 2016 15:25:22 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -9629,7 +9645,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
   $templateCache.put('local_category/nodes',
     "<div class=\"category-content row no-margin\" ui-tree-handle style=\"cursor: pointer\"><div class=category-content-padding><span class=\"col-xs-8 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\r" +
     "\n" +
-    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this) data-nodrag></i> <i class=\"fa fa-chevron-right caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\" data-nodrag></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\" data-nodrag></span> <a class=inline-block ng-click=open(node) data-nodrag>{{ node.NameEn }}</a></span></span> <span class=\"col-xs-1 text-align-center\">{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'global_category/nodes'\"></li></ol>"
+    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this) data-nodrag></i> <i class=\"fa fa-chevron-right caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\" data-nodrag></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\" data-nodrag></span> <a class=inline-block ng-click=open(node) data-nodrag>{{ node.NameEn }}</a></span></span> <span class=\"col-xs-1 text-align-center\">{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"&quot;'local_category/nodes'\"></li></ol>"
   );
 
 
