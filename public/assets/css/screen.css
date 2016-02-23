@@ -12266,7 +12266,7 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 /* line 8, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-red hr {
-  border-top-color: #ffa6a6;
+  border-top-color: #ffa7a7;
 }
 /* line 11, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-red .alert-link {
@@ -12281,7 +12281,7 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 /* line 8, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-yellow hr {
-  border-top-color: #fffad1;
+  border-top-color: #fffad2;
 }
 /* line 11, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-yellow .alert-link {
@@ -14697,48 +14697,53 @@ html, body {
 .local-category-page .local-category-section ol.sortable > li > ol > li > ol > li > ol > li > ol > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
   padding-left: 300px;
 }
-/* line 91, ../../../assets/_local_category.scss */
+/* line 90, ../../../assets/_local_category.scss */
+.local-category-page .angular-ui-tree-placeholder {
+  border: 1px solid;
+  border-color: #BCC7D5;
+}
+/* line 94, ../../../assets/_local_category.scss */
 .local-category-page .toggle-button {
   font-size: 18px;
   color: #4891d2;
   padding-right: 8px;
   cursor: pointer;
 }
-/* line 98, ../../../assets/_local_category.scss */
+/* line 101, ../../../assets/_local_category.scss */
 .local-category-page .no-children-row {
   margin-right: 21px;
 }
-/* line 102, ../../../assets/_local_category.scss */
+/* line 105, ../../../assets/_local_category.scss */
 .local-category-page .caret-grey {
   font-size: 18px;
   color: #BCC7D5;
   margin-right: 6px;
 }
-/* line 108, ../../../assets/_local_category.scss */
+/* line 111, ../../../assets/_local_category.scss */
 .local-category-page .icon-size-20 {
   font-size: 20px;
 }
-/* line 112, ../../../assets/_local_category.scss */
+/* line 115, ../../../assets/_local_category.scss */
 .local-category-page .fa {
   font-size: 16px;
 }
-/* line 116, ../../../assets/_local_category.scss */
+/* line 119, ../../../assets/_local_category.scss */
 .local-category-page .btn-white {
   width: auto;
 }
-/* line 120, ../../../assets/_local_category.scss */
+/* line 123, ../../../assets/_local_category.scss */
 .local-category-page li {
   list-style-type: none;
 }
-/* line 124, ../../../assets/_local_category.scss */
+/* line 127, ../../../assets/_local_category.scss */
 .local-category-page .fa-arrows {
   cursor: pointer;
 }
-/* line 128, ../../../assets/_local_category.scss */
+/* line 131, ../../../assets/_local_category.scss */
 .local-category-page .fa-caret-down {
   cursor: pointer;
 }
-/* line 132, ../../../assets/_local_category.scss */
+/* line 135, ../../../assets/_local_category.scss */
 .local-category-page .local-category-empty-section {
   border: 1px solid;
   border-color: #BCC7D5;
@@ -14746,12 +14751,12 @@ html, body {
   height: 180px;
   line-height: 180px;
 }
-/* line 139, ../../../assets/_local_category.scss */
+/* line 142, ../../../assets/_local_category.scss */
 .local-category-page .local-category-empty-section > .local-category-empty-text {
   font-size: 18px;
   display: inline-block;
 }
-/* line 143, ../../../assets/_local_category.scss */
+/* line 146, ../../../assets/_local_category.scss */
 .local-category-page .local-category-empty-section .zero-category-image {
   width: 130px;
   height: 80px;
@@ -14764,7 +14769,7 @@ html, body {
 }
 
 /* For dragging object */
-/* line 157, ../../../assets/_local_category.scss */
+/* line 160, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -14774,73 +14779,73 @@ html, body {
   position: absolute;
   border: solid 1px #BCC7D5;
 }
-/* line 166, ../../../assets/_local_category.scss */
+/* line 169, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .inline-block {
   display: inline-block;
 }
-/* line 169, ../../../assets/_local_category.scss */
+/* line 172, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .fa-arrows {
   cursor: pointer;
 }
-/* line 173, ../../../assets/_local_category.scss */
+/* line 176, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .toggle-button {
   font-size: 18px;
   color: #4891d2;
   padding-right: 8px;
 }
-/* line 179, ../../../assets/_local_category.scss */
+/* line 182, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .no-children-row {
   margin-right: 21px;
 }
-/* line 183, ../../../assets/_local_category.scss */
+/* line 186, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .caret-grey {
   font-size: 18px;
   color: #BCC7D5;
   margin-right: 6px;
 }
-/* line 189, ../../../assets/_local_category.scss */
+/* line 192, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .icon-size-20 {
   font-size: 20px;
 }
-/* line 193, ../../../assets/_local_category.scss */
+/* line 196, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .fa {
   font-size: 16px;
 }
-/* line 197, ../../../assets/_local_category.scss */
+/* line 200, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .btn-white {
   width: auto;
 }
-/* line 201, ../../../assets/_local_category.scss */
+/* line 204, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag li {
   list-style-type: none;
 }
-/* line 205, ../../../assets/_local_category.scss */
+/* line 208, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag ol, .angular-ui-tree-drag li {
   padding-left: 0;
 }
-/* line 209, ../../../assets/_local_category.scss */
+/* line 212, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .category-content {
   border-top: solid 1px #BCC7D5;
 }
-/* line 212, ../../../assets/_local_category.scss */
+/* line 215, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag > li:first-child > .category-content {
   border-top: 0;
 }
-/* line 216, ../../../assets/_local_category.scss */
+/* line 219, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .ui-sortable-helper .category-content {
   border-top: 0;
 }
-/* line 221, ../../../assets/_local_category.scss */
+/* line 224, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .category-content {
   padding-left: 15px;
 }
-/* line 225, ../../../assets/_local_category.scss */
+/* line 228, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .lc-icon-name-warpper {
   padding-left: 24px;
   display: block;
   position: relative;
 }
-/* line 230, ../../../assets/_local_category.scss */
+/* line 233, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag .lc-icon-name-warpper > i.fa, .angular-ui-tree-drag .lc-icon-name-warpper .no-children-row {
   position: absolute;
   left: 0;
@@ -14848,27 +14853,27 @@ html, body {
   top: 50%;
   margin-top: -8.5px;
 }
-/* line 239, ../../../assets/_local_category.scss */
+/* line 242, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag > li > .category-content > .category-content-padding > .column-lc-name {
   padding-left: 0px;
 }
-/* line 242, ../../../assets/_local_category.scss */
+/* line 245, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
   padding-left: 60px;
 }
-/* line 245, ../../../assets/_local_category.scss */
+/* line 248, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag > li > ol > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
   padding-left: 120px;
 }
-/* line 248, ../../../assets/_local_category.scss */
+/* line 251, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag > li > ol > li > ol > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
   padding-left: 180px;
 }
-/* line 251, ../../../assets/_local_category.scss */
+/* line 254, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag > li > ol > li > ol > li > ol > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
   padding-left: 240px;
 }
-/* line 254, ../../../assets/_local_category.scss */
+/* line 257, ../../../assets/_local_category.scss */
 .angular-ui-tree-drag > li > ol > li > ol > li > ol > li > ol > li > ol > li > .category-content > .category-content-padding > .column-lc-name {
   padding-left: 300px;
 }
