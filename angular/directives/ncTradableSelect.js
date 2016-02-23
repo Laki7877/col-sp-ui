@@ -55,14 +55,14 @@ module.exports = function($templateCache, $filter) {
 				} else {
 					for (var i = $scope.activeRight; i < $scope.model.length; i++) {
 						if(angular.isDefined($scope.model[$scope.activeRight]) && 
-							!$scope.test($scope.model[$scope.activeRight])) {
+							$scope.test($scope.model[$scope.activeRight])) {
 							continue;
 						}
 						return i;
 					}
 					for (var i = $scope.activeRight; i >= 0; i--) {
 						if(angular.isDefined($scope.model[$scope.activeRight]) &&
-							!$scope.test($scope.model[$scope.activeRight])) {
+							$scope.test($scope.model[$scope.activeRight])) {
 							continue;
 						}
 						return i;
@@ -104,7 +104,7 @@ module.exports = function($templateCache, $filter) {
 				} else {
 					if ($scope.activeRight < 0 || 
 						(angular.isDefined($scope.model[$scope.activeRight]) &&
-						!$scope.test($scope.model[$scope.activeRight]))) {
+						$scope.test($scope.model[$scope.activeRight]))) {
 						return;
 					}
 					$scope.model.splice($scope.activeRight, 1);
@@ -114,7 +114,7 @@ module.exports = function($templateCache, $filter) {
 			};
 			$scope.active = function(direction) {
 				if(direction) {
-					if($scope.activeRight >= 0 && angular.isDefined($scope.model[$scope.activeRight]) && $scope.test($scope.model[$scope.activeRight])) 
+					if($scope.activeRight >= 0 && angular.isDefined($scope.model[$scope.activeRight]) && !$scope.test($scope.model[$scope.activeRight])) 
 						return 'active';
 				} else {
 					if($scope.activeLeft >= 0 && !$scope.contain($scope.selectable[$scope.activeLeft])) 
@@ -127,7 +127,7 @@ module.exports = function($templateCache, $filter) {
 					$scope.activeRight = -1;
 				} else {
 					if(angular.isDefined($scope.model[$index]) &&
-						!$scope.test($scope.model[$index]))
+						$scope.test($scope.model[$index]))
 						return;
 					$scope.activeRight = $index;
 					$scope.activeLeft = -1;

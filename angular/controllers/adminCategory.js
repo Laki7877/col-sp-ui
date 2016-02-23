@@ -103,7 +103,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 
 	//Condition at which tradable select will lock attributeset
 	$scope.lockAttributeset = function(i) {		
-		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);		
+		return false;		
 	};
 
 	//Open category modal
