@@ -16,7 +16,7 @@
             <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
             <th nc-sort="AttributeNameEn">Attribute Name</th>
             <th nc-sort="DisplayNameEn">Display Name</th>
-            <th nc-sort="DateType">Field Type</th>
+            <th>Field Type</th>
             <th>Variation</th>
             <th>Mapped Set</th>
             <th nc-sort="UpdatedDt" class="modified-column">Modified</th>
