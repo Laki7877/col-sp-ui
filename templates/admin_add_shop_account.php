@@ -5,8 +5,8 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 
 <?php $this->start('page-body') ?>
 <div ng-controller="AdminShopAddCtrl" ng-init="init(<?=$params?>)">
-	<nc-alert nc-model="alert"></nc-alert>	
-	<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Shop Accounts/{{title}}", 'urls' => ['/admin/shops']]) ?>	
+	<nc-alert nc-model="alert"></nc-alert>
+	<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Shop Accounts/{{title}}", 'urls' => ['/admin/shops']]) ?>
 	<div ng-show="loading" nc-loading="Loading Shop Account.."></div>
 	<div ng-show="saving" nc-loading="Saving Shop Account.."></div>
 	<form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
@@ -59,7 +59,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										},
 										'show': isInvalid(form.ShopType),
 										'conditions' : form.ShopType.$error
-										}	
+										}
 										}">
 										<ui-select name="ShopType" ng-model="formData.ShopType" search-enabled="false" required>
 										<ui-select-match placeholder="- Select Shop Type -">
@@ -74,7 +74,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 									<div ng-template="common/link"
 										ng-template-options="{
 										'link' : '/admin/shoptypes/add'
-										}">Create New Shop Type
+									}">Add Shop Type
 									</div>
 									<!-- Shop Status -->
 									<div ng-template="common/input/dropdown"
@@ -276,31 +276,31 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 								<div class="form-section-header"><h2>Shop Users</h2></div>
 								<div class="form-section-content">
 									<div class="form-group">
-										<table class="table table-hover no-margin"> 
-											<thead> 
-												<tr> 
-													<th>ID</th> 
-													<th>Name</th> 
-													<th>Email</th> 
-													<th>Role</th> 
-													<th>Status</th> 
-													<th class="text-align-center">Reset Password</th> 
-													<th class="text-align-center">Action</th> 
-												</tr> 
-											</thead> 
-											<tbody> 
-											<tr ng-repeat="user in formData.Users track by user.UserId"> 
-													<td>{{ user.UserId | leadingzero:2 }}</td> 
-													<td>{{ user.NameEn }}</td> 
+										<table class="table table-hover no-margin">
+											<thead>
+												<tr>
+													<th>ID</th>
+													<th>Name</th>
+													<th>Email</th>
+													<th>Role</th>
+													<th>Status</th>
+													<th class="text-align-center">Reset Password</th>
+													<th class="text-align-center">Action</th>
+												</tr>
+											</thead>
+											<tbody>
+											<tr ng-repeat="user in formData.Users track by user.UserId">
+													<td>{{ user.UserId | leadingzero:2 }}</td>
+													<td>{{ user.NameEn }}</td>
 													<td>{{ user.Email }}</td>
 													<td>{{ user.UserGroup[0] }}</td>
 													<td>{{ user.Status | mapDropdown:statusDropdown }}</td>
 													<td class="text-align-center">
 														<a class="btn btn-white btn-width-xl" ng-click="ResetPassword()">Reset</a>
-													</td> 
+													</td>
 													<td class="text-align-center">
 														<a class="btn btn-white btn-width-xl" ng-click="loginAs(user)">Login-As</a>
-													</td> 
+													</td>
 												</tr>
 											</tbody>
 										</table>

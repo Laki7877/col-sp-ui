@@ -98,7 +98,7 @@ class AdminController extends Controller
     }
     public static function addAccount($params)
     {
-        return View::render('admin_add_account', ['title' => 'Create New Admin Account']);
+        return View::render('admin_add_account', ['title' => 'Add Admin Account']);
     }
     public static function editAccount($params)
     {
@@ -112,7 +112,7 @@ class AdminController extends Controller
     }
     public static function addRole($params)
     {
-        return View::render('admin_add_role', ['title' => 'Create New Admin Role']);
+        return View::render('admin_add_role', ['title' => 'Add Admin Role']);
     }
     public static function editRole($params)
     {
@@ -126,7 +126,7 @@ class AdminController extends Controller
     }
     public static function addShop($params)
     {
-        return View::render('admin_add_shop_account', ['title' => 'Create New Shop Account']);
+        return View::render('admin_add_shop_account', ['title' => 'Add Shop Account']);
     }
     public static function editShop($params)
     {
@@ -140,7 +140,7 @@ class AdminController extends Controller
     }
     public static function addShoptype($params)
     {
-        return View::render('admin_add_shop_type', ['title' => 'Create New Shop Types']);
+        return View::render('admin_add_shop_type', ['title' => 'Add Shop Types']);
     }
     public static function editShoptype($params)
     {
