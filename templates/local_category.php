@@ -10,8 +10,8 @@
 				<span ng-show="saving && pristine" class="margin-left-10" nc-loading-small="Saving..." style="display: inline-block; margin-bottom: -20px; margin-top: -5px;"></span>
 		    </h1>
 		    <span class="float-right page-header-action">
-		        <button type="button" class="btn-blue btn btn-width-xl" ng-click="open()">
-		          <span class="">Add Category</span>
+		        <button type="button" class="btn-blue btn btn-width-xxl" ng-click="open()">
+		          Add Category
 		        </button>
 		    </span>
 		</div>

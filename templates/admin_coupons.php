@@ -3,8 +3,8 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminCouponCtrl">
       <nc-page-title nc-title="Admin Coupons">
-      	  <a ng-href="/admin/coupons/admin/create" class="btn margin-right-10 ng-scope btn-blue btn-width-xl">
-          	  <span class="">Create Coupon</span>
+      	  <a ng-href="/admin/coupons/admin/create" class="btn ng-scope btn-blue btn-width-xxl">
+          	  Create Coupon
           </a>
       </nc-page-title>
 
