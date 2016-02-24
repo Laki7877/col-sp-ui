@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminCouponCtrl">
-      <nc-page-title nc-title="Admin Coupons">
+      <nc-page-title nc-title="Global Coupons">
       	  <a ng-href="/admin/coupons/admin/create" class="btn ng-scope btn-blue btn-width-xxl">
           	  Create Coupon
           </a>
@@ -28,16 +28,16 @@
   		        <tbody>
   		            <tr ng-repeat="row in list.data">
   		                <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
-  		                <td class="column-text-ellipsis" nc-link="/admin/coupons/admin/{{row.CouponId}}">
+  		                <td class="column-text-ellipsis width_200" nc-link="/admin/coupons/admin/{{row.CouponId}}">
   		                    {{row.CouponCode}}
   		                </td>
   		                <td>{{row.CouponName}}</td>
-  		                <td>{{row.Remaining | number: 2 }}</td>
-  		                <td>
+  		                <td class="width_120">{{row.Remaining | number: 2 }}</td>
+  		                <td class="width_150">
   		                   {{ row.StartDate | date: 'dd/MM/yy HH:mm' }}
   		                </td>
-  		                <td>{{ row.ExpireDate | date: 'dd/MM/yy HH:mm' }}</td>
-  		                <td>
+  		                <td class="width_150">{{ row.ExpireDate | date: 'dd/MM/yy HH:mm' }}</td>
+  		                <td class="width_100">
   		                    {{ row.Status }}
   		                </td>
   		            </tr>
