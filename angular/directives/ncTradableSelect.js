@@ -36,7 +36,7 @@ module.exports = function($templateCache, $filter) {
 			$scope.search = {};
 			$scope.activeRight = -1;
 			$scope.activeLeft = -1;
-			$scope.test = $scope.test || function() { return true; };
+			$scope.test = $scope.test || function() { return false; };
 			var findFn = function(element) {
 				if ($scope.options.map.value != null) {
 					if (element[$scope.options.map.value] === this[$scope.options.map.value]) {
