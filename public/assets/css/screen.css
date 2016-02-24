@@ -13407,7 +13407,8 @@ form h6 {
 }
 /* line 45, ../../../assets/_form.sass */
 .ah-form .form-group .width-label {
-  width: 170px;
+  /*width: 170px;*/
+  width: 200px;
   padding-left: 0;
   padding-right: 0;
 }

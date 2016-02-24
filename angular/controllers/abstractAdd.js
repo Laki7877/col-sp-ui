@@ -5,7 +5,7 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 	$scope.alert = new NcAlert();
 	$scope.saving = false; //prevent multiple saving
 	$scope.loading = false;
-
+    debugger;
 	//Custom pre-init function
 	(options.preInit || _.noop)($scope);
 

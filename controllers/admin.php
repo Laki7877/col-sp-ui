@@ -21,7 +21,10 @@ class AdminController extends Controller
 	{
 		return View::render('admin_coupons_detail');
 	}
-    
+     public static function admin_ontopcreditcard_create($params)
+	{
+		return View::render('admin_ontopcreditcard_create');
+	}
     public static function seller_coupons_create($params)
 	{
 		return View::render('seller_coupons_detail');
@@ -35,6 +38,11 @@ class AdminController extends Controller
     public static function allProducts($params){
         return View::render('admin_all_products', []);
     }
+
+ public static function allontopcreditcard($params){
+        return View::render('admin_all_ontopcreditcard', []);
+    }
+
 	//Attribute
 	public static function listAttribute($params)
 	{
