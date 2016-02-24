@@ -27,7 +27,7 @@
                            <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopDescriptionEn"></textarea>
                     </div>
 
-                    <div nc-template="common/input/form-group-with-label" nc-label="Shop Description (Thai)"
+                    <div nc-template="common/input/form-group-with-label" nc-label="Shop Description (ไทย)"
                     nc-template-options-path="shopSettingForm/ShopDescriptionTh">
                            <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopDescriptionTh"></textarea>
                     </div>
@@ -37,7 +37,7 @@
                            <input class="form-control" type="text" ng-model="formData.FloatMessageEn"/>
                     </div>
 
-                    <div nc-template="common/input/form-group-with-label" nc-label="Float Message (Thai)"
+                    <div nc-template="common/input/form-group-with-label" nc-label="Float Message (ไทย)"
                     nc-template-options-path="shopSettingForm/FloatMessageTh">
                            <input class="form-control" type="text" ng-model="formData.FloatMessageTh"/>
                     </div>

@@ -38,7 +38,7 @@
               </div>
               <div ng-template="common/input/text2"
                 ng-template-options="{
-                  'label': 'Brand Name (Thai)',
+                  'label': 'Brand Name (ไทย)',
                   'labelClass': 'required',
                   'error' : {
                         'messages': {
@@ -82,7 +82,7 @@
               </div>
               <div ng-template="common/input/text"
                 ng-template-options="{
-                  'label': 'Meta Title (Thai)'
+                  'label': 'Meta Title (ไทย)'
                 }">
                 <input
                   class="form-control"
@@ -106,7 +106,7 @@
               </div>
               <div ng-template="common/input/text"
                 ng-template-options="{
-                  'label': 'Meta Description (Thai)'
+                  'label': 'Meta Description (ไทย)'
                 }">
                 <input
                   class="form-control"
@@ -137,7 +137,7 @@
               </div>
               <div ng-template="common/input/text2"
                 ng-template-options="{
-                  'label': 'Meta Keywords (Thai)',
+                  'label': 'Meta Keywords (ไทย)',
                   'error' : {
                         'messages': {
                           },

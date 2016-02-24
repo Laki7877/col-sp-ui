@@ -21,7 +21,7 @@
                 <div class="form-section-header"><h2>Review Product</h2></div>
                 <div class="form-section-content modal-custom">
                   <? $this->insert('components/forms/text-with-label', ["label" => "PID", "field_content" => "1234567", "size" => "normal"]) ?>
-                  <? $this->insert('components/forms/text-with-label', ["label" => "Product Name (Thai)", "field_content" => "รองเท้าแตะสีรุ้ง", "size" => "normal"]) ?>
+                  <? $this->insert('components/forms/text-with-label', ["label" => "Product Name (ไทย)", "field_content" => "รองเท้าแตะสีรุ้ง", "size" => "normal"]) ?>
                   <? $this->insert('components/forms/text-with-label', ["label" => "Product Name (English)", "field_content" => "Rainbow Sandal", "size" => "normal"]) ?>
                   <? $this->insert('components/forms/text-with-label', ["label" => "Brand", "field_content" => "Nike", "size" => "normal"]) ?>
                 </div>
@@ -31,7 +31,7 @@
         </form>
       </div>
       <!-- <div class="modal-footer">
-            
+
       </div> -->
     </div>
   </div>

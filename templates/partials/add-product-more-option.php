@@ -37,7 +37,7 @@
                         </div>
 
                         <div ng-template="common/input/text2" ng-template-options="{
-						  'label': 'Meta Title (Thai)'
+						  'label': 'Meta Title (ไทย)'
 						}">
                             <input maxlength="60" class="form-control width-field-normal" name="SEO_MetaTitleTh" ng-model="formData.SEO.MetaTitleTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaTitleTh) }" />
                         </div>
@@ -49,7 +49,7 @@
                         </div>
 
                         <div ng-template="common/input/text2" ng-template-options="{
-						  'label': 'Meta Description (Thai)'
+						  'label': 'Meta Description (ไทย)'
 						}">
                             <input maxlength="150" class="form-control width-field-normal" name="SEO_MetaDescriptionTh" ng-model="formData.SEO.MetaDescriptionTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaDescriptionTh) }" />
                         </div>
@@ -61,7 +61,7 @@
                         </div>
 
                         <div ng-template="common/input/text2" ng-template-options="{
-						  'label': 'Meta Keywords (Thai)'
+						  'label': 'Meta Keywords (ไทย)'
 						}">
                             <input placeholder="Keywords separated by comma" class="form-control width-field-normal" name="SEO_MetaKeywordsTh" ng-model="formData.SEO.MetaKeywordsTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaKeywordsTh) }" />
                         </div>
