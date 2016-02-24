@@ -336,6 +336,20 @@ module.exports = {
 			}
 		]
 	},
+	SHOP_GROUP: [
+		{
+			name: 'BU',
+			value: 'BU'
+		},
+		{
+			name: 'INDY',
+			value: 'IN'
+		},
+		{
+			name: 'Seller',
+			value: 'SE'
+		}
+	],
 	INVENTORY_STATUS: [
 		{
 			name: 'Normal Stock',
@@ -355,7 +369,7 @@ module.exports = {
 			name: 'Not Approved',
 			value: 'WA',
 			color: 'color-grey'
-		}, 
+		},
 		{
 			name: 'Approved',
 			value: 'AP',
@@ -401,9 +415,9 @@ module.exports = {
 	],
 	CATEGORY_SYNC_DELAY: 1200, //Category wait for x millisecond before actually saving
 	DEFAULT_SUCCESS_MESSAGE: 'Your changes have been saved successfully.',
-	DEFAULT_ERROR_MESSAGE: 'Unable to save because required fields are missing or incorrect.', 
+	DEFAULT_ERROR_MESSAGE: 'Unable to save because required fields are missing or incorrect.',
 	TITLE: {
-		CREATE: 'Create New {{content}}',
+		CREATE: 'Add {{content}}',
 		DETAIL: '{{content}} Detail'
 	}
 };
@@ -888,7 +902,7 @@ module.exports = ["$scope", "$controller", "AttributeSetService", "util", "confi
 			order: 'UpdatedDt',
 			id: 'AttributeSetId',
 			actions: ['View', 'Delete'],
-			bulks: ['Delete', 'Show', 'Hide'],
+			bulks: ['Delete'],
 			filters: [
 				{ name: "All", value: 'All'},
 				{ name: "Visible", value: 'Visible'},
@@ -946,7 +960,7 @@ module.exports = ["$scope", "$controller", "AttributeSetService", "AttributeServ
 }]
 },{}],12:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "BrandService", "config", function($scope, $controller, BrandService, config) {
-	'ngInject';	
+	'ngInject';
 	//Inherit from parent
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
@@ -959,6 +973,7 @@ module.exports = ["$scope", "$controller", "BrandService", "config", function($s
 		}
 	});
 }]
+
 },{}],13:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "BrandService", "ImageService", function($scope, $controller, BrandService, ImageService) {
 	'ngInject';
@@ -1016,6 +1031,7 @@ module.exports = ["$scope", "$controller", "BrandService", "ImageService", funct
 		}
 	});
 }];
+
 },{}],14:[function(require,module,exports){
 
 module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Category", "GlobalCategoryService", "AttributeSetService", "NcAlert", "util", "config", function($scope, $rootScope, $uibModal, $timeout, common, Category, GlobalCategoryService, AttributeSetService, NcAlert, util, config){
@@ -1529,7 +1545,7 @@ module.exports = ["$scope", "$controller", "AdminShopService", "AdminShoptypeSer
             
         });
 	};
-
+	$scope.shopGroupDropdown = config.SHOP_GROUP;
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
 
@@ -2496,6 +2512,10 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
     $scope.productIds = viewBag || [];
   }
 
+  $scope.lockAS = function(){
+    return false
+  }
+
   $scope.dataSet = {};
   AttributeSet.getAll().then(function(data){
     $scope.dataSet.attributeSets = data;
@@ -3221,9 +3241,9 @@ module.exports = function($scope, $controller, SellerAccountService, SellerRoleS
 		options: {
 			id: 'UserId',
 			url: '/accounts',
-			item: 'Seller Account',
+			item: 'User',
 			service: SellerAccountService,
-			init: function(scope) {		
+			init: function(scope) {
 				//Get all available roles
 				SellerRoleService.listAll()
 					.then(function(data) {
@@ -3237,6 +3257,7 @@ module.exports = function($scope, $controller, SellerAccountService, SellerRoleS
 		}
 	});
 }
+
 },{}],39:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "$window", "InventoryService", "config", "common", function($scope, $controller, $window, InventoryService, config, common) {
 	'ngInject';
@@ -3525,6 +3546,7 @@ module.exports = function($scope, Attribute, util, GlobalCategoryService, Catego
 
 		GlobalCategoryService.list()
 			.then(function(data) {
+				$scope.data = data;
 				$scope.treeSelectTree = Category.transformNestedSetToUITree(data);
 			});
 };
@@ -4816,7 +4838,7 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     service.page404 = function () {
         $window.location.href = "/error";
     };
-    
+
 
     service.warningOnLeave = function (fn) {
         $window.onbeforeunload = function () {
@@ -4984,8 +5006,8 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
                 alert.close();
 
                 //Only pass id
-                var obj = _.pick(obj, [id]); 
-               
+                var obj = _.pick(obj, [id]);
+
 
                 //Delete bulk
                 rest.delete([obj])
@@ -6681,6 +6703,7 @@ module.exports = ["common", "config", "util", function(common, config, util) {
 	service.serialize = function(data) {
 		var processed = _.merge({}, data);
 		processed.Status = processed.Status.value;
+		processed.ShopGroup = processed.ShopGroup.value;
 
 		//Remove password if no length or undefined
 		processed = _.omit(processed, ['Users']);
@@ -6695,6 +6718,7 @@ module.exports = ["common", "config", "util", function(common, config, util) {
 	service.deserialize = function(data) {
 		var processed = _.merge({}, data);
 		processed.Status = util.getDropdownItem(config.DROPDOWN.DEFAULT_STATUS_DROPDOWN, processed.Status);
+		processed.ShopGroup = util.getDropdownItem(config.SHOP_GROUP, processed.ShopGroup);
 		_.remove(processed.Users, function(e) {
 			return _.isEmpty(e);
 		});
@@ -9407,7 +9431,7 @@ module.exports = {
 },{}],135:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Wed Feb 24 2016 15:47:25 GMT+0700 (SE Asia Standard Time)
+ * Wed Feb 24 2016 17:07:40 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -9541,27 +9565,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
   $templateCache.put('global_category/modal',
     "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\r" +
     "\n" +
-    "\t\t\t                  'label': 'Category Name (Thai)',\r" +
-    "\n" +
-    "\t\t\t                  'labelClass': 'required',\r" +
-    "\n" +
-    "\t\t\t                  'error' : {\r" +
-    "\n" +
-    "\t\t\t                        'messages': {\r" +
-    "\n" +
-    "\t\t\t                          'required': 'This is a required field'\r" +
-    "\n" +
-    "\t\t\t                        },\r" +
-    "\n" +
-    "\t\t\t                        'show': isInvalid(form.NameTh),\r" +
-    "\n" +
-    "\t\t\t                        'conditions' : form.NameTh.$error\r" +
-    "\n" +
-    "\t\t\t                   }\r" +
-    "\n" +
-    "\t\t\t                }\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-class=\"{ 'has-error' : isInvalid(form.NameTh) }\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t                  'label': 'Category Name (Eng)',\r" +
+    "\t\t\t                  'label': 'Category Name (English)',\r" +
     "\n" +
     "\t\t\t                  'labelClass': 'required',\r" +
     "\n" +
@@ -9583,7 +9587,27 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "\n" +
     "\t\t\t                }\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-class=\"{ 'has-error' : isInvalid(form.NameEn) }\" ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
     "\n" +
-    "\t                        'label': 'URL (Eng)',\r" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'label': 'Category Name (ไทย)',\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'labelClass': 'required',\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'error' : {\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'messages': {\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'required': 'This is a required field'\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t},\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'show': isInvalid(form.NameTh),\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'conditions' : form.NameTh.$error\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t }\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t}\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-class=\"{ 'has-error' : isInvalid(form.NameTh) }\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "\t                        'label': 'URL (English)',\r" +
     "\n" +
     "\t                        'error' : {\r" +
     "\n" +
@@ -9649,49 +9673,49 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
   $templateCache.put('local_category/modal',
     "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Local Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Local Category Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\r" +
     "\n" +
-    "\t\t\t                  'label': 'Category Name (Thai)',\r" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'label': 'Category Name (English)',\r" +
     "\n" +
-    "\t\t\t                  'labelClass': 'required',\r" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'labelClass': 'required',\r" +
     "\n" +
-    "\t\t\t                  'error' : {\r" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'error' : {\r" +
     "\n" +
-    "\t\t\t                        'messages': {\r" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'messages': {\r" +
     "\n" +
-    "\t\t\t                          'required': 'This is a required field'\r" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'required': 'This is a required field',\r" +
     "\n" +
-    "\t\t\t                        },\r" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'pattern': 'Only English allowed'\r" +
     "\n" +
-    "\t\t\t                        'show': isInvalid(form.NameTh),\r" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t},\r" +
     "\n" +
-    "\t\t\t                        'conditions' : form.NameTh.$error\r" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'show': isInvalid(form.NameEn),\r" +
     "\n" +
-    "\t\t\t                   }\r" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'conditions' : form.NameEn.$error\r" +
     "\n" +
-    "\t\t\t                }\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-class=\"{ 'has-error' : isInvalid(form.NameTh) }\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t }\r" +
     "\n" +
-    "\t\t\t                  'label': 'Category Name (Eng)',\r" +
+    "\t\t\t\t\t\t\t\t\t\t\t}\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-class=\"{ 'has-error' : isInvalid(form.NameEn) }\" ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
     "\n" +
-    "\t\t\t                  'labelClass': 'required',\r" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'label': 'Category Name (ไทย)',\r" +
     "\n" +
-    "\t\t\t                  'error' : {\r" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'labelClass': 'required',\r" +
     "\n" +
-    "\t\t\t                        'messages': {\r" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'error' : {\r" +
     "\n" +
-    "\t\t\t                          'required': 'This is a required field',\r" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'messages': {\r" +
     "\n" +
-    "\t\t\t                          'pattern': 'Only English allowed'\r" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'required': 'This is a required field'\r" +
     "\n" +
-    "\t\t\t                        },\r" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t},\r" +
     "\n" +
-    "\t\t\t                        'show': isInvalid(form.NameEn),\r" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'show': isInvalid(form.NameTh),\r" +
     "\n" +
-    "\t\t\t                        'conditions' : form.NameEn.$error\r" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'conditions' : form.NameTh.$error\r" +
     "\n" +
-    "\t\t\t                   }\r" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t }\r" +
     "\n" +
-    "\t\t\t                }\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-class=\"{ 'has-error' : isInvalid(form.NameEn) }\" ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\t\t\t\t\t\t\t\t\t\t\t}\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-class=\"{ 'has-error' : isInvalid(form.NameTh) }\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
     "\n" +
-    "\t                        'label': 'URL (Eng)',\r" +
+    "\t                        'label': 'URL (English)',\r" +
     "\n" +
     "\t                        'error' : {\r" +
     "\n" +
@@ -9714,7 +9738,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
   $templateCache.put('local_category/nodes',
     "<div class=\"category-content row no-margin\" ui-tree-handle style=\"cursor: pointer\"><div class=category-content-padding><span class=\"col-xs-8 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\r" +
     "\n" +
-    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this) data-nodrag></i> <i class=\"fa fa-chevron-right caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\" data-nodrag></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\" data-nodrag></span> <a class=inline-block ng-click=open(node) data-nodrag>{{ node.NameEn }}</a></span></span> <span class=\"col-xs-1 text-align-center\">{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"&quot;'local_category/nodes'\"></li></ol>"
+    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this) data-nodrag></i> <i class=\"fa fa-chevron-right caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\" data-nodrag></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\" data-nodrag></span> <a class=inline-block ng-click=open(node) data-nodrag>{{ node.NameEn }}</a></span></span> <span class=\"col-xs-1 text-align-center\">{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'local_category/nodes'\"></li></ol>"
   );
 
 
@@ -9749,7 +9773,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('product/productReviewModal',
-    "<div class=modal-header><button type=button class=close aria-label=Close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Review Detail</h3></div><div class=modal-body><form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Review Detail</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-label=\"Date & Time\"><p class=form-control-static>{{UpdatedDt | dateTh}} at {{UpdatedDt | timeTh}}</p></div><div nc-template=common/input/form-group-with-label nc-label=Customer><p class=form-control-static>{{Customer}}</p></div><div nc-template=common/input/form-group-with-label nc-label=Comment><p class=form-control-static>{{Comment}}</p></div></div></div><div class=form-section><div class=form-section-header><h2>Review Product</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-label=PID><p class=form-control-static>{{Pid}}</p></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (Thai)\"><p class=form-control-static>{{ProductNameTh}}</p></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (English)\"><p class=form-control-static>{{ProductNameEn}}</p></div><div nc-template=common/input/form-group-with-label nc-label=Brand><p class=form-control-static>{{BrandNameEn}}</p></div></div></div></div></div></form></div>"
+    "<div class=modal-header><button type=button class=close aria-label=Close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Review Detail</h3></div><div class=modal-body><form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Review Detail</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-label=\"Date & Time\"><p class=form-control-static>{{UpdatedDt | dateTh}} at {{UpdatedDt | timeTh}}</p></div><div nc-template=common/input/form-group-with-label nc-label=Customer><p class=form-control-static>{{Customer}}</p></div><div nc-template=common/input/form-group-with-label nc-label=Comment><p class=form-control-static>{{Comment}}</p></div></div></div><div class=form-section><div class=form-section-header><h2>Review Product</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-label=PID><p class=form-control-static>{{Pid}}</p></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\"><p class=form-control-static>{{ProductNameTh}}</p></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (English)\"><p class=form-control-static>{{ProductNameEn}}</p></div><div nc-template=common/input/form-group-with-label nc-label=Brand><p class=form-control-static>{{BrandNameEn}}</p></div></div></div></div></div></form></div>"
   );
  }];
 },{}],136:[function(require,module,exports){

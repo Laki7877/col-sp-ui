@@ -15,51 +15,54 @@
 						<h2>Local Category Information</h2>
 					</div>
 					<div class="form-section-content modal-custom">
-		                <div ng-template="common/input/text2"
-			                ng-template-options="{
-			                  'label': 'Category Name (Thai)',
-			                  'labelClass': 'required',
-			                  'error' : {
-			                        'messages': {
-			                          'required': 'This is a required field'
-			                        },
-			                        'show': isInvalid(form.NameTh),
-			                        'conditions' : form.NameTh.$error
-			                   }
-			                }">
-							<input
-							 class="form-control"
-							 name="NameTh"
-							 ng-model="formData.NameTh"
-							 ng-class="{ 'has-error' : isInvalid(form.NameTh) }"
-							 maxlength="100"
-							 required />
-		                </div>
-		                <div ng-template="common/input/text2"
-			                ng-template-options="{
-			                  'label': 'Category Name (Eng)',
-			                  'labelClass': 'required',
-			                  'error' : {
-			                        'messages': {
-			                          'required': 'This is a required field',
-			                          'pattern': 'Only English allowed'
-			                        },
-			                        'show': isInvalid(form.NameEn),
-			                        'conditions' : form.NameEn.$error
-			                   }
-			                }">
-							<input
-							 class="form-control"
-							 name="NameEn"
-							 ng-model="formData.NameEn"
-							 ng-class="{ 'has-error' : isInvalid(form.NameEn) }"
-							 ng-pattern="/^[^ก-๙]+$/"
-							 maxlength="100"
-							 required />
-		                </div>
+
+										<div ng-template="common/input/text2"
+											ng-template-options="{
+												'label': 'Category Name (English)',
+												'labelClass': 'required',
+												'error' : {
+															'messages': {
+																'required': 'This is a required field',
+																'pattern': 'Only English allowed'
+															},
+															'show': isInvalid(form.NameEn),
+															'conditions' : form.NameEn.$error
+												 }
+											}">
+												<input
+												 class="form-control"
+												 name="NameEn"
+												 ng-model="formData.NameEn"
+												 ng-class="{ 'has-error' : isInvalid(form.NameEn) }"
+												 ng-pattern="/^[^ก-๙]+$/"
+												 maxlength="100"
+												 required />
+										</div>
+
+										<div ng-template="common/input/text2"
+											ng-template-options="{
+												'label': 'Category Name (ไทย)',
+												'labelClass': 'required',
+												'error' : {
+															'messages': {
+																'required': 'This is a required field'
+															},
+															'show': isInvalid(form.NameTh),
+															'conditions' : form.NameTh.$error
+												 }
+											}">
+												<input
+												 class="form-control"
+												 name="NameTh"
+												 ng-model="formData.NameTh"
+												 ng-class="{ 'has-error' : isInvalid(form.NameTh) }"
+												 maxlength="100"
+												 required />
+											</div>
+
 	                    <div ng-template="common/input/text2"
 	                      ng-template-options="{
-	                        'label': 'URL (Eng)',
+	                        'label': 'URL (English)',
 	                        'error' : {
 	                              'messages': {
 	                                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'
@@ -82,7 +85,7 @@
 	            <div class="form-section">
 	                <div class="form-section-header"><h2>Category Visibility</h2></div>
 	                <div class="form-section-content modal-custom">
-	                    <div ng-template="common/input/multiline-radio" 
+	                    <div ng-template="common/input/multiline-radio"
 	                    	ng-template-options="{ 'label' : 'Visibility' }">
 	                    	<label ng-repeat="choice in statusOptions"><input type="radio" ng-model="formData.Visibility" ng-value="choice.value"/>{{choice.name}}</label>
 	                	</div>

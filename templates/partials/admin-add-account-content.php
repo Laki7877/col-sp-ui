@@ -1,5 +1,5 @@
 <div id="add-product-more-option-tab-content">
-	
+
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="form-section">
@@ -24,7 +24,7 @@
 				<div class="form-section-header"><h2>Admin Account Roles</h2></div>
 				<div class="form-section-content">
 					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Admin Role", "label_class" => "required", "options" => ["Super Admin", "User"]]) ?>
-					<? $this->insert('components/forms/link-action', ['text' => 'Create New Admin Role', 'link' => '/?p=admin_add_role']) ?>
+					<? $this->insert('components/forms/link-action', ['text' => 'Add Admin Role', 'link' => '/?p=admin_add_role']) ?>
 				</div>
 			</div>
 		</div>

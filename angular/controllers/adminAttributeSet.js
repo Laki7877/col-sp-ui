@@ -9,7 +9,7 @@ module.exports = function($scope, $controller, AttributeSetService, util, config
 			order: 'UpdatedDt',
 			id: 'AttributeSetId',
 			actions: ['View', 'Delete'],
-			bulks: ['Delete', 'Show', 'Hide'],
+			bulks: ['Delete'],
 			filters: [
 				{ name: "All", value: 'All'},
 				{ name: "Visible", value: 'Visible'},

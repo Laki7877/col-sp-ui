@@ -1,9 +1,9 @@
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attribute']) ?>
 
-<?php $this->start('page-body') ?>  
+<?php $this->start('page-body') ?>
   <div ng-controller="AdminAttributeAddCtrl" ng-init="init(<?=$params?>)">
     <nc-alert nc-model="alert"></nc-alert>
-    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute/{{title}}", 'urls' => ['/admin/attributes']]) ?>
+    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attributes/{{title}}", 'urls' => ['/admin/attributes']]) ?>
     <div ng-show="loading" nc-loading="Loading Attribute.."></div>
     <div ng-show="saving" nc-loading="Saving Attribute.."></div>
     <form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action margin-top-30" novalidate>
@@ -60,7 +60,7 @@
               </div>
               <div ng-template="common/input/text2"
                 ng-template-options="{
-                  'label': 'Display Name (Thai)',
+                  'label': 'Display Name (ไทย)',
                   'labelClass': 'required',
                   'inputSize': 'large',
                   'error' : {
@@ -81,7 +81,7 @@
                   maxlength="100"
                   required />
               </div>
-              <div 
+              <div
                 ng-template="common/input/dropdown"
                 ng-template-options="{
                   'label' : 'Is Required'
@@ -115,7 +115,7 @@
               </div>
               <div ng-switch="formData.DataType.value">
                 <div ng-switch-when="ST">
-                  <!--div 
+                  <!--div
                     ng-template="common/input/dropdown"
                     ng-template-options="{
                       'label' : 'Input Validation'
@@ -158,7 +158,10 @@
                     <div class="width-field-xxl">
                       <div class="multiple-input">
                         <div class="input-column input-xxl">
-                          <input name="ltChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (Thai)" ng-class="{'has-error': isInvalid(form['ltChoiceTh' + $index])}" maxlength="100" required/>
+                          <input name="ltChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': isInvalid(form['ltChoiceEn' + $index])}" maxlength="100" ng-pattern="/^[^ก-๙]+$/" required/>
+                        </div>
+                        <div class="input-column input-xxl">
+                          <input name="ltChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['ltChoiceTh' + $index])}" maxlength="100" required/>
                           <!-- Required -->
                           <div class="help-block color-red" ng-show="isInvalid(form['ltChoiceEn' + $index]) || isInvalid(form['ltChoiceTh' + $index])">
                               <span ng-show="form['ltChoiceTh' + $index].$error.required || form['ltChoiceEn' + $index].$error.required">This is a required field</span>
@@ -167,9 +170,6 @@
                           <div class="help-block color-red" ng-show="isInvalid(form['ltChoiceEn' + $index])">
                               <span ng-show="form['ltChoiceEn' + $index].$error.pattern">Only English allowed</span>
                           </div>
-                        </div>
-                        <div class="input-column input-xxl">
-                          <input name="ltChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': isInvalid(form['ltChoiceEn' + $index])}" maxlength="100" ng-pattern="/^[^ก-๙]+$/" required/>
                         </div>
                         <i ng-if="$index > 0" class="clickable fa fa-trash fa-2x margin-left-10 color-grey margin-top-5" ng-click="formData.LT.AttributeValues.splice($index,1)"></i>
                       </div>
@@ -233,7 +233,7 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Variation</h2></div>
             <div class="form-section-content">
-              <div 
+              <div
                 ng-template="common/input/dropdown"
                 ng-template-options="{
                   'label' : 'Set as Variation'
@@ -293,7 +293,7 @@
                   </ui-select-choices>
                 </ui-select>
              </div>
-              <div 
+              <div
                 ng-template="common/input/dropdown"
                 ng-template-options="{
                   'label' : 'Filterable'
