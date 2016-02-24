@@ -17,16 +17,15 @@ angular.module('nc')
 				}
 			},
 			link: function(scope, elem, attrs) {
-				scope.formData = {
-					LocalCategory: []
-				};
+				scope.formData = {};
 				scope.form = {};
 				scope.callback = scope.callback || function() { return false };
 				scope.options = _.defaults(scope.options, {
 					Tags: [],
-					Brands: ['test'],
-					LocalCategory: [],
-					GlobalCategory: []
+					Brands: [],
+					LocalCategories: [],
+					GlobalCategories: [],
+					Admin: true
 				});
 				scope.search = function() {
 					if(scope.callback(scope.formData, true)) return;
@@ -34,7 +33,7 @@ angular.module('nc')
 				};
 				scope.clear = function() {
 					if(scope.callback(scope.formData, false)) return;
-					scope.model = {};
+					scope.formData = {};
 				};
 			}
 		};

@@ -135,6 +135,14 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
                 });
             };
 
+            obj.advanceList = function(obj) {
+                return service.makeRequest({
+                    method: 'POST',
+                    url: resourceUri + '/Search',
+                    data: obj
+                });
+            };
+
             return obj;
         };
         

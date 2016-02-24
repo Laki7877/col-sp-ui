@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Brand']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Brands']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminBrandCtrl">
@@ -8,7 +8,7 @@
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="BrandId"></nc-bulk>
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Brand Name'"></nc-search>
     </div>
-    <nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="params.searchText.length > 0" >
+    <nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="isSearching()" >
       <table class="table table-curved">
         <thead>
           <tr class="table-head">

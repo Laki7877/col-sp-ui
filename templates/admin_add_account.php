@@ -5,7 +5,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminAccountAddCtrl" ng-init="init(<?=$params?>)">
-		<nc-alert nc-model="alert"></nc-alert>		
+		<nc-alert nc-model="alert"></nc-alert>
 		<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Admin Accounts/{{title}}", 'urls' => ['/admin/accounts']]) ?>
 		<div ng-show="loading" nc-loading="Loading Admin Account.."></div>
 		<div ng-show="saving" nc-loading="Saving Admin Account.."></div>
@@ -237,7 +237,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							            <div ng-template="common/link"
 							              ng-template-options="{
 							              	'link' : '/admin/roles/add'
-							              }">Create New Admin Role
+							              }">Add Admin Role
 							          </div>
 									</div>
 								</div>

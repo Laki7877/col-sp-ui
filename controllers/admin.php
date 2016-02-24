@@ -12,19 +12,23 @@ class AdminController extends Controller
 		return View::render('admin_product_approval');
 	}
 
-    public static function admin_coupons($params)
+    public static function admin_coupons_list($params)
 	{
 		return View::render('admin_coupons');
 	}
     
+		public static function admin_coupons_edit($params)
+		{
+		  	return View::render('admin_coupons_detail',  [
+            'viewBag' => array('id' => $params["id"])
+        ]);
+		}
+
     public static function admin_coupons_create($params)
 	{
 		return View::render('admin_coupons_detail');
 	}
-     public static function admin_ontopcreditcard_create($params)
-	{
-		return View::render('admin_ontopcreditcard_create');
-	}
+    
     public static function seller_coupons_create($params)
 	{
 		return View::render('seller_coupons_detail');
@@ -35,18 +39,15 @@ class AdminController extends Controller
 		return View::render('seller_coupons');
 	}
 
-    public static function allProducts($params){
+    public static function allProducts($params)
+    {
         return View::render('admin_all_products', []);
     }
-
- public static function allontopcreditcard($params){
-        return View::render('admin_all_ontopcreditcard', []);
-    }
-
 	//Attribute
 	public static function listAttribute($params)
 	{
 		$params['success'] = $_POST['success'];
+
 		return View::render('admin_attribute', ['params' => json_encode_n($params)]);
 	}
 
@@ -57,13 +58,14 @@ class AdminController extends Controller
 
 	public static function editAttribute($params)
 	{
-		return View::render('admin_add_attribute', ['params' =>  json_encode_n($params), 'title' => 'Attribute Detail']);
+        return View::render('admin_add_attribute', ['params' => json_encode_n($params), 'title' => 'Attribute Detail']);
 	}
 
 	//Attribute set
 	public static function listAttributeSet($params)
 	{
 		$params['success'] = $_POST['success'];
+
 		return View::render('admin_attribute_set', ['params' => json_encode_n($params)]);
 	}
 	public static function addAttributeSet($params)
@@ -72,7 +74,7 @@ class AdminController extends Controller
 	}
 	public static function editAttributeSet($params)
 	{
-		return View::render('admin_add_attribute_set', ['params' =>  json_encode_n($params), 'title' => 'Attribute Set Detail']);
+        return View::render('admin_add_attribute_set', ['params' => json_encode_n($params), 'title' => 'Attribute Set Detail']);
 	}
 
 	//Brand
@@ -82,11 +84,11 @@ class AdminController extends Controller
 	}
 	public static function addBrand($params)
 	{
-		return View::render('admin_add_brand' , ['title' => 'Add Brand']);
+        return View::render('admin_add_brand', ['title' => 'Add Brand']);
 	}
 	public static function editBrand($params)
 	{
-		return View::render('admin_add_brand',  ['params' =>  json_encode_n($params), 'title' => 'Brand Detail']);
+        return View::render('admin_add_brand',  ['params' => json_encode_n($params), 'title' => 'Brand Detail']);
 	}
 
 	//Account
@@ -96,11 +98,11 @@ class AdminController extends Controller
 	}
 	public static function addAccount($params)
 	{
-		return View::render('admin_add_account' , ['title' => 'Create New Admin Account']);
+        return View::render('admin_add_account', ['title' => 'Add Admin Account']);
 	}
 	public static function editAccount($params)
 	{
-		return View::render('admin_add_account',  ['params' =>  json_encode_n($params), 'title' => 'Admin Account Detail']);
+        return View::render('admin_add_account',  ['params' => json_encode_n($params), 'title' => 'Admin Account Detail']);
 	}
 
 	//Role
@@ -110,11 +112,11 @@ class AdminController extends Controller
 	}
 	public static function addRole($params)
 	{
-		return View::render('admin_add_role' , ['title' => 'Create New Admin Role']);
+        return View::render('admin_add_role', ['title' => 'Add Admin Role']);
 	}
 	public static function editRole($params)
 	{
-		return View::render('admin_add_role',  ['params' =>  json_encode_n($params), 'title' => 'Admin Role Detail']);
+        return View::render('admin_add_role',  ['params' => json_encode_n($params), 'title' => 'Admin Role Detail']);
 	}
 
 	//Shop
@@ -124,11 +126,11 @@ class AdminController extends Controller
 	}
 	public static function addShop($params)
 	{
-		return View::render('admin_add_shop_account' , ['title' => 'Create New Shop Account']);
+        return View::render('admin_add_shop_account', ['title' => 'Add Shop Account']);
 	}
 	public static function editShop($params)
 	{
-		return View::render('admin_add_shop_account',  ['params' =>  json_encode_n($params), 'title' => 'Shop Account Detail']);
+        return View::render('admin_add_shop_account',  ['params' => json_encode_n($params), 'title' => 'Shop Account Detail']);
 	}
 
 	//Shop types
@@ -138,10 +140,10 @@ class AdminController extends Controller
 	}
 	public static function addShoptype($params)
 	{
-		return View::render('admin_add_shop_type' , ['title' => 'Create New Shop Types']);
+        return View::render('admin_add_shop_type', ['title' => 'Add Shop Types']);
 	}
 	public static function editShoptype($params)
 	{
-		return View::render('admin_add_shop_type',  ['params' =>  json_encode_n($params), 'title' => 'Shop Type Detail']);
+        return View::render('admin_add_shop_type',  ['params' => json_encode_n($params), 'title' => 'Shop Type Detail']);
 	}
 }

@@ -7,9 +7,6 @@ var bulk = require('bulk-require')(__dirname,
 var config = require('./config');
 var template = require('./template');
 
-
-
-
 //External dependencies
 global._ = require('lodash');
 require('angular-ui-bootstrap');
@@ -33,50 +30,50 @@ var directives = bulk.directives;
 var filters = bulk.filters;
 
 var app = angular.module('colspApp',
-['ngPatternRestrict', 'nc', 'ui.bootstrap.datetimepicker',
-'duScroll', 'ngSanitize', 'ngAnimate',
+['ngPatternRestrict', 'nc','ui.bootstrap.datetimepicker',
+'duScroll','ngSanitize', 'ngAnimate',
 'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'])
 
 //App config
 .config(['$uibTooltipProvider', 'uiSelectConfig', '$ncPaginationProvider', '$ncAlertProvider',
-function ($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
+function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
 
-    //Default close tooltip when click again
-    $tooltipProvider.setTriggers({
-        'clickanystart': 'clickanyend'
-    });
-    $tooltipProvider.options({
-        trigger: 'clickanystart'
-    });
-    $ncPaginationProvider.paginationSizes = [10, 20, 50, 100];
-    uiSelectConfig.taggingTokens = '[ENTER|,]';
+	//Default close tooltip when click again
+	$tooltipProvider.setTriggers({
+		'clickanystart' : 'clickanyend'
+	});
+	$tooltipProvider.options({
+		trigger: 'clickanystart'
+	});
+	$ncPaginationProvider.paginationSizes = [10, 20, 50, 100];
+	uiSelectConfig.taggingTokens = '[ENTER|,]';
 
-} ])
+}])
 
 //App template cache load
 .run(template)
 
 //App init
-.run(['$rootScope', 'storage', '$window', '$location', 'Credential', function ($rootScope, storage, $window, $location, Credential) {
+.run(['$rootScope', 'storage', '$window', '$location', 'Credential', function($rootScope, storage, $window, $location, Credential) {
 
-    $rootScope.Profile = storage.getCurrentUserProfile();
-    $rootScope.Imposter = storage.getImposterProfile();
-    if (!$rootScope.Profile && $window.location.pathname != "/login") {
-        storage.put('redirect', $window.location.pathname);
-        $window.location.href = "/login";
-    }
+	$rootScope.Profile = storage.getCurrentUserProfile();
+	$rootScope.Imposter = storage.getImposterProfile();
+	if(!$rootScope.Profile && $window.location.pathname != "/login"){
+		storage.put('redirect', $window.location.pathname);
+		$window.location.href = "/login";
+	}
 
     //Create global logout function
-    $rootScope.logout = function () {
-        if ($rootScope.Imposter) {
-            return Credential.logoutAs().then(function (R) {
+    $rootScope.logout = function(){
+        if($rootScope.Imposter){
+            return Credential.logoutAs().then(function(R){
                 //return to normal flow
-                if (R.User.IsAdmin) {
+                if(R.User.IsAdmin){
                     $window.location.href = "/admin";
-                } else {
+                }else{
                     $window.location.href = "/products";
                 }
-            }, function () {
+            }, function(){
                 alert("Fetal error while logging out.");
             });
         }
@@ -86,57 +83,57 @@ function ($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvi
     };
 
 
-    //Create generic form validator functions
-    //This is now inside ncTemplate
-    $rootScope.isInvalid = function (form) {
-        if (angular.isDefined(form) &&
+	//Create generic form validator functions
+	//This is now inside ncTemplate
+    $rootScope.isInvalid = function(form) {
+		if(angular.isDefined(form) &&
 			angular.isDefined(form.$invalid) &&
 			angular.isDefined(form.$dirty)) {
-            return form.$invalid && (form.$dirty || form.$$parentForm.$submitted);
-        }
-        return false;
-    };
+			return form.$invalid && (form.$dirty || form.$$parentForm.$submitted);
+		}
+		return false;
+	};
 
 
-    //Prevent image dragdrop on other elements
-    $window.addEventListener("dragover", function (e) {
-        e = e || event;
-        e.preventDefault();
-    }, false);
-    $window.addEventListener("drop", function (e) {
-        e = e || event;
-        e.preventDefault();
-    }, false);
+	//Prevent image dragdrop on other elements
+	$window.addEventListener("dragover",function(e){
+	  e = e || event;
+	  e.preventDefault();
+	},false);
+	$window.addEventListener("drop",function(e){
+	  e = e || event;
+	  e.preventDefault();
+	},false);
 
-    //Match route with
-    $rootScope.isUrl = function (url) {
-        if (url.length > 0) {
-            var path = $window.location.pathname;
-            if (path == url) {
-                return true;
-            } else if (path.startsWith(url) && path.charAt(url.length) != '/') {
-                return false;
-            } else {
-                return path.startsWith(url);
-            }
-        } else {
-            return false;
-        }
-    };
+	//Match route with
+	$rootScope.isUrl = function(url) {
+		if(url.length > 0) {
+			var path = $window.location.pathname;
+			if(path == url) {
+				return true;
+			} else if (path.startsWith(url) && path.charAt(url.length) != '/') {
+				return false;
+			} else  {
+				return path.startsWith(url);
+			}
+		} else {
+			return false;
+		}
+	};
 
-    $rootScope.activeParentUrl = function (url, sub) {
-        return {
-            'forced-active': $rootScope.isUrl(url)
-        };
-    };
+	$rootScope.activeParentUrl = function(url,sub) {
+		return {
+			'forced-active': $rootScope.isUrl(url)
+		};
+	};
 
-    //For active class url
-    $rootScope.activeUrl = function (url) {
-        return {
-            'active': $window.location.pathname == url
-        };
-    };
-} ])
+	//For active class url
+	$rootScope.activeUrl = function(url) {
+		return {
+			'active': $window.location.pathname == url
+		};
+	};
+}])
 //Configuration
 .value('config', config)
 .value('$templateOptionsCache', bulk['template-options'])
@@ -164,6 +161,7 @@ function ($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvi
 .factory('AttributeSetService', services.attributeSetService) //newer version
 .factory('Brand', services.brand)
 .factory('BrandService', services.brandService) //newer version
+.factory('InventoryService', services.inventoryService) //newer version
 .factory('SellerAccountService', services.sellerAccountService)
 .factory('SellerRoleService', services.sellerRoleService)
 .factory('SellerPermissionService', services.sellerPermissionService)
@@ -191,7 +189,7 @@ function ($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvi
 .directive('ngMatch', directives.ngMatch)
 .directive('ngMinnumber', directives.ngMinnumber)
 .directive('ngMaxnumber', directives.ngMaxnumber)
-.directive('popoverAny', directives.popoverAny)
+
 //Filters
 .filter('capitalize', filters.capitalize)
 .filter('ordinal', filters.ordinal)
@@ -220,13 +218,14 @@ function ($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvi
 .controller('SellerRoleCtrl', controllers.sellerRole)
 .controller('SellerRoleAddCtrl', controllers.sellerRoleAdd)
 .controller('SellerShopSettingCtrl', controllers.sellerShopSetting)
+.controller('SellerInventoryListCtrl', controllers.sellerInventoryList)
 
 .controller('AdminAttributeCtrl', controllers.adminAttribute)
 .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)
 .controller('AdminAttributeAddCtrl', controllers.adminAttributeAdd)
 .controller('AdminAttributeSetAddCtrl', controllers.adminAttributeSetAdd)
 .controller('AdminCategoryCtrl', controllers.adminCategory)
-.controller('AdminBrandCtrl', controllers.adminBrand)
+.controller('AdminBrandCtrl',controllers.adminBrand)
 .controller('AdminBrandAddCtrl', controllers.adminBrandAdd)
 .controller('AdminAccountCtrl', controllers.adminAccount)
 .controller('AdminAccountAddCtrl', controllers.adminAccountAdd)
@@ -245,6 +244,7 @@ function ($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvi
 
 .controller('LoginCtrl', controllers.login)
 .controller('AbstractListCtrl', controllers.abstractList)
+.controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
 .controller('AbstractAddCtrl', controllers.abstractAdd)
 
 .controller('TestCtrl', controllers.test)

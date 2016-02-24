@@ -33,6 +33,8 @@ module.exports = {
       }
     },
     MaximumAmount: { },
+    MaximumUsers: {},
+    UsagePerCustomer: {},
     ConditionValue: {
       hint: {
           show: true,

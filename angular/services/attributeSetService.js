@@ -26,7 +26,9 @@ module.exports = function(common, config) {
 		processed.Categories = _.join(_.map(data.Category, function(e) {
 			return e.NameEn + ' (' + e.CategoryAbbreviation + ')';
 		}), ', ');
-		console.log(data, processed);
+		if(processed.Categories.length == 0) {
+			processed.Categories = 'None'; 
+		}
 		if(angular.isUndefined(processed.Attributes)) {
 			processed.Attributes = [];
 		}
@@ -37,7 +39,7 @@ module.exports = function(common, config) {
 			attr.Required = attr.Required || false;
 			attr.Filterable = attr.Filterable || false;
 		});
-		return processed;
+		return _.omit(processed, ['Category']);
 	};
 	service.serialize = function(data) {
 		var processed = angular.copy(data);
