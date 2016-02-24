@@ -22,7 +22,7 @@
 	}
 
 	.status-column {
-		width: 150px;	
+		width: 150px;
 	}
 
 	.live-column {
@@ -58,7 +58,6 @@
     width: 150px;
   }
 
-
   .width_100 {
     width: 100px;
   }
@@ -74,6 +73,10 @@
   .width_200 {
     width: 200px;
   }
+
+	.width_300 {
+		width: 300px;
+	}
 
   tbody .action-column{
     width: 60px;
@@ -95,8 +98,8 @@
     border-color: $color-grey;
   }
   // End setting border color
-  
-  
+
+
   .table > tbody > tr:first-child > td {
     border-top: none;
   }
@@ -281,7 +284,8 @@
 
 //Page body: Search section
 .search-section-wrapper {
-  margin-top: 30px;
+  // margin-top: 30px;
+	margin-top: 15px;
 
   .search-section {
     padding-left: 15px;
@@ -382,7 +386,7 @@
 
 		> tbody > tr > td {
 			border-top: 1px solid $color-grey;
-		}    
+		}
 	}
 
 	margin-bottom: 0;

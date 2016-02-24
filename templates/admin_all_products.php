@@ -5,7 +5,7 @@
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminProductListCtrl">
        <nc-page-title nc-title="All Products">
-            <a ng-href="/admin/coupons/admin/create" class="btn margin-right-10 ng-scope btn-white btn-width-xl">
+            <a ng-href="/admin/coupons/admin/create" class="btn ng-scope btn-white btn-width-xl">
           	  <span class="">Export</span>
           </a>
        </nc-page-title>

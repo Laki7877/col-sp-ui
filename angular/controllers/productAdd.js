@@ -1,7 +1,7 @@
 var angular = require('angular');
 
-module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageService', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$productAdd',
-    function ($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, $rootScope, $q, KnownException, NcAlert, $productAdd) {
+module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageService', 'AttributeSet', 'Brand', 'Shop', 'LocalCategoryService', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$productAdd',
+    function ($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, VariantPair, $rootScope, $q, KnownException, NcAlert, $productAdd) {
         'use strict';
 
         $scope.alert = new NcAlert();
@@ -66,7 +66,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
             // For Safari
             return message;
         }; // end onbeforeunload
-        
+
         var onImageUploadFail = function (item, filter) {
             alert("File Size must not exceed 5 MB");
         }
@@ -87,7 +87,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
                     description: false,
                     packageDetail: false
                 };
-                
+
                 //Unset
                 prevVariants = undefined;
 
@@ -134,7 +134,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
 
                     if (kpair.text in vHashSet) {
                         //Replace with value from vHashSet
-                        
+
                         kpair = vHashSet[kpair.text];
 
                         kpair._override = angular.copy(protoCheckState);
@@ -201,7 +201,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
             ControlFlags: [],
             Keywords: []
         };
-    
+
         //Variation Factor (lhs) Indices are used as index
         //for ng-repeat in variation tab
         $scope.variationFactorIndices = {};
@@ -216,7 +216,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
         $scope.variationFactorIndices.pushSecond = function () {
             $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1);
         }
-   
+
         //TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
         //$scope._attrEnTh = function (t) { return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
         $scope.isFreeTextInput = util.isFreeTextDataType;
@@ -320,7 +320,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
             if (cnt == 0 && $scope.formData.Variants.length > 0) {
                 mat.push("At least one variant must be visible.");
             }
-            
+
             if($scope.formData.ExpireDate && $scope.formData.ExpireDate <= $scope.formData.EffectiveDate){
                 mat.push("Effective date/time must come before expire date/time.");
             }
@@ -408,7 +408,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
             //TODO: Refactor, use better callback mechanism
             if (!angular.isObject(viewBag)) throw new KnownException("View bag is corrupted");
 
-            var shopId = $rootScope.Profile.Shop.ShopId;  //TODO: Get from user 
+            var shopId = $rootScope.Profile.Shop.ShopId;  //TODO: Get from user
             var _editMode = ("productId" in viewBag)
             for (var page in tabPage) {
                 tabPage[page].angular();
@@ -448,10 +448,9 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
             }
 
             //Load Local Cat
-            Shop.getLocalCategories(shopId).then(function (data) {
+            LocalCategoryService.getOne(shopId).then(function (data) {
                 $scope.dataSet.LocalCategories = Category.transformNestedSetToUITree(data);
             });
-
         }
 
         var tabPage = {};

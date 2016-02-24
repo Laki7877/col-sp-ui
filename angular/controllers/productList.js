@@ -1,11 +1,11 @@
 module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope', 'config', function ($scope, Product, util, Alert, $window, $rootScope, config) {
-    
+
     /*
     * This controller uses legacy table-binding method (v0.0.0)
     * Please refer to other controller for more accepted table controller
     * (Note, we have like 50 different versions, make sure u pick the correct one)
     */
-    
+
     $scope.showOnOffStatus = true;
     $scope.allChecked = false;
     $scope.alert = new Alert();
@@ -20,12 +20,12 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
     $scope.startExportProducts = function () {
         $scope.exporter = {
             progress: 10,
-        	title: 'Exporting...'
+        	  title: 'Exporting...'
         };
 
         $("#export-product").modal('show');
     };
-    
+
     $scope.confirmExportProducts = function(){
         $("#export-product").modal('hide');
 
@@ -68,9 +68,9 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
                 $scope.exporter.download = fileName;
                 $scope.exporter.progress = 100;
                 $scope.exporter.title = 'Export Complete'
-                
+
                 a.href = fileURL;
-                
+
             }, error);
         });
     }
@@ -222,11 +222,11 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
     };
     $scope.sort = util.tableSortClass($scope);
     $scope.statusLookup = {};
-    
+
     config.PRODUCT_STATUS.forEach(function(object){
-       $scope.statusLookup[object.value] = object; 
+       $scope.statusLookup[object.value] = object;
     });
-    
+
     $scope.init = function (params) {
         if (angular.isDefined(params)) {
             if (angular.isDefined(params.success) && params.success != null) {
@@ -295,8 +295,8 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
         $scope.reloadData();
         $scope.allChecked = false;
     }, true);
-    
-    
+
+
     $scope.checkAll = function(){
         var first = $scope.productList[0];
         var tval = !($scope.checkBoxCache[first.ProductId] || false);
@@ -310,16 +310,16 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
         Object.keys($scope.checkBoxCache).forEach(function (key) {
             if ($scope.checkBoxCache[key]) m.push($scope.checkBoxCache[key]);
         });
-        
+
         //Count checked checkbox (on this page only)
         //TODO: I don't like this solution, I'd rather trade space for time
         //note: can't just count checkboxcache because checkboxcache is global across
-        //all pages. 
+        //all pages.
         var chkCount = 0;
         $scope.productList.forEach(function(p){
             chkCount += ($scope.checkBoxCache[p.ProductId] ? 1 : 0);
         });
-        
+
         //Change selectAll checkbox state
         if(chkCount != $scope.productList.length){
             $scope.allChecked = false;

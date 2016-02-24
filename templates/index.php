@@ -47,7 +47,7 @@
         <thead>
           <tr class="table-head">
             <th class="checkbox-column">
-                <input type="checkbox" aria-label="Checkbox for following text input"> 
+                <input type="checkbox" aria-label="Checkbox for following text input">
             </th>
             <th class="display-column"></th>
             <th>
@@ -65,7 +65,7 @@
               <i class="fa fa-caret-down color-grey">
             </th>
             <th class="visible-column"><a class="header-link" href="#"><span>Visible</span></a></th>
-            <th class="action-column"><a class="header-link" href="#"><span>Action</span></a></th> 
+            <th class="action-column"><a class="header-link" href="#"><span>Action</span></a></th>
             <th class="modified-column">
               <a class="header-link" href="#"><span class="active-underline">Modified</span></a>
               <i class="fa fa-caret-up">
@@ -75,7 +75,7 @@
         <tbody>
           <tr>
             <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input"> 
+              <input type="checkbox" aria-label="Checkbox for following text input">
             </td>
             <td class="display-column">
               <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
@@ -104,7 +104,7 @@
                   <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
                   <div><a href='#'>View Products</a></div>
                   <div><a href='#'>Delete</a></div>
-                  "></i>  
+                  "></i>
               </span>
             </td>
             <td class="modified-column">
@@ -113,7 +113,7 @@
           </tr>
           <tr>
             <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input"> 
+              <input type="checkbox" aria-label="Checkbox for following text input">
             </td>
             <td class="display-column">
               <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
@@ -127,7 +127,7 @@
               <i class="fa fa-check color-green icon-size-18px"></i>
             </td>
             <td class="image-column">
-              <i class="fa fa-check color-green icon-size-18px"></i> 
+              <i class="fa fa-check color-green icon-size-18px"></i>
             </td>
             <td class="status-column">
               <span class="color-yellow">
@@ -145,7 +145,7 @@
                   <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
                   <div><a href='#'>View Products</a></div>
                   <div><a href='#'>Delete</a></div>
-                  "></i>  
+                  "></i>
               </span>
             </td>
             <td class="modified-column">
@@ -154,7 +154,7 @@
           </tr>
           <tr>
             <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input"> 
+              <input type="checkbox" aria-label="Checkbox for following text input">
             </td>
             <td class="display-column">
               <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
@@ -183,7 +183,7 @@
                   <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
                   <div><a href='#'>View Products</a></div>
                   <div><a href='#'>Delete</a></div>
-                  "></i>  
+                  "></i>
               </span>
             </td>
             <td class="modified-column">
@@ -192,7 +192,7 @@
           </tr>
           <tr>
             <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input"> 
+              <input type="checkbox" aria-label="Checkbox for following text input">
             </td>
             <td class="display-column">
               <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
@@ -221,7 +221,7 @@
                   <div><a href='#' data-toggle='modal' data-target='#local-category-detail'>View / Edit</a></div>
                   <div><a href='#'>View Products</a></div>
                   <div><a href='#'>Delete</a></div>
-                  "></i>  
+                  "></i>
               </span>
             </td>
             <td class="modified-column">
