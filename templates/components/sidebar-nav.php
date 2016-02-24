@@ -9,6 +9,7 @@
         [ "name" => "Report", "icon" => "fa-line-chart" ],
         [ "name" => "Account", "icon" => "fa-gear", "sub_sidebar" => "#sub-sidebar-account" ],
         [ "name" => "Collection", "icon" => "fa-product-hunt", "sub_sidebar" => "#sub-sidebar-product-collection", "url" => "/collections" ]
+        [ "name" => "Buy 1 Get 1", "icon" => "fa-gift", "sub_sidebar" => "#sub-sidebar-buy1-get1", "url" => "/buy1get1" ]
     ];
 ?>
 

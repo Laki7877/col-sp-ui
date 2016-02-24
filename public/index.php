@@ -81,6 +81,8 @@ Route::add('/collections/add', 'ProductCollectionController::add');
 Route::add('/collections/import', 'ProductCollectionController::import');
 Route::add('/collections/:id', 'ProductCollectionController::edit');
 
+Route::add('/buy1get1', 'Buy1Get1Controller::index');
+
 
 Route::add('/admin/approve', 'AdminController::approve');
 Route::add('/admin/coupons/seller', 'AdminController::seller_coupons');
