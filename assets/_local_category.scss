@@ -10,10 +10,10 @@
  			border-color: $color-grey;
  			border-top-left-radius: 3px;
  			border-top-right-radius: 3px;
- 			
- 			.required:after { 
+
+ 			.required:after {
  				color: $color-red;
- 				content:" *"; 
+ 				content:" *";
  			}
  		}
 
@@ -116,10 +116,6 @@
     font-size: 16px;
   }
 
-  .btn-white {
-    width: auto;
-  }
-
   li {
     list-style-type: none;
   }
@@ -152,7 +148,7 @@
       margin-left: 50px;
       vertical-align: middle;
       display: inline-block;
-    } 
+    }
   }
 }
 
@@ -195,10 +191,6 @@
 
   .fa{
     font-size: 16px;
-  }
-
-  .btn-white {
-    width: auto;
   }
 
   li {

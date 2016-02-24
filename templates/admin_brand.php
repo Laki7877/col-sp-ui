@@ -3,7 +3,7 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminBrandCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <? $this->insert('components/page-title-with-one-button', ['text' => 'Admin Brands','button' => 'Add Brand', 'button_class' => 'btn-width-xxxl', 'link' => '/admin/brands/add']) ?>
+    <? $this->insert('components/page-title-with-one-button', ['text' => 'Brands','button' => 'Add Brand', 'button_class' => 'btn-width-xxl', 'link' => '/admin/brands/add']) ?>
     <div class="row search-section-wrapper">
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="BrandId"></nc-bulk>
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Brand Name'"></nc-search>
@@ -22,10 +22,10 @@
         <tbody>
           <tr ng-repeat="row in list.data">
             <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
-            <td nc-link="/admin/brands/{{row.BrandId}}">{{row.BrandId}}</td>
+            <td class="width_100" nc-link="/admin/brands/{{row.BrandId}}">{{row.BrandId}}</td>
             <td nc-link="/admin/brands/{{row.BrandId}}">{{ row.BrandNameEn }} / {{ row.BrandNameTh }}</td>
-            <td>{{row.UpdatedDt | dateTh}}</td>
-            <td><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
+            <td class="width_100">{{row.UpdatedDt | dateTh}}</td>
+            <td class="width_100"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
           </tr>
         </tbody>
       </table>

@@ -10,8 +10,8 @@
 				<span ng-show="saving && pristine" class="margin-left-10" nc-loading-small="Saving..." style="display: inline-block; margin-bottom: -20px; margin-top: -5px;"></span>
 		    </h1>
 		    <span class="float-right page-header-action">
-		        <button type="button" class="btn-white btn margin-right-10" ng-click="open()">
-		          <span class="">Add New Category</span>
+		        <button type="button" class="btn-blue btn btn-width-xxl" ng-click="open()">
+		          Add Category
 		        </button>
 		    </span>
 		</div>
@@ -27,7 +27,7 @@
 					Visible
 				</span>
 				<span class="col-xs-1 text-align-center">
-					Move	
+					Move
 				</span>
 				<span class="col-xs-1 text-align-center">
 					Action
@@ -36,7 +36,7 @@
 			<div class="col-xs-12 no-padding" ui-tree="treeOptions" max-depth="4">
 				<ol class="sortable no-padding" ui-tree-nodes ng-model="categories">
 					<li ng-repeat="node in categories" ui-tree-node ng-include="'local_category/nodes'" data-collapsed="{{::$index == 0 ? false : true}}"></li>
-				</ol>	
+				</ol>
 			</div>
 		</div>
 		<div ng-if="!loading && categories.length == 0" class="local-category-empty-section margin-top-20">

@@ -11,7 +11,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 		<div ng-show="saving" nc-loading="Saving Shop Type.."></div>
 		<form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
 			<div class="tab-content">
-				<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
+				<div class="tab-pane margin-top-30 active" id="more_option">
 					<div id="add-product-more-option-tab-content">
 						<div class="row">
 							<div class="col-xs-12">
@@ -74,7 +74,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 									</div>
 								</div>
 							</div>
-						</div>	
+						</div>
 						<div class="row">
 							<div class="col-xs-12">
 								<p class="text-align-right"><span class="color-red"><i class="fa fa-asterisk"></i></span> - Required Field</p>
