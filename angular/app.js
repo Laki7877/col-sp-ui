@@ -201,6 +201,7 @@ function(uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
 .controller('ProductListLocalCategoryCtrl', controllers.productListLocalCategory)
 .controller('ProductImportCtrl', controllers.productImport)
 .controller('ProductReviewCtrl', controllers.productReview)
+.controller('ProductExportCtrl', controllers.productExport)
 
 .controller('LocalCategoryCtrl', controllers.localCategory)
 .controller('SellerShopSettingCtrl', controllers.sellerShopSetting)

@@ -7,6 +7,13 @@ class ProductController extends Controller
         return View::render('list_product');
     }
 
+    public static function export($params)
+    {
+      return View::render('seller_export_products', [
+          'viewBag' => $_POST['selected_products'],
+      ]);
+    }
+
     public static function add($params)
     {
         return View::render('add_product', [

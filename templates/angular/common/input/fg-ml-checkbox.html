@@ -1,0 +1,8 @@
+<!-- NC template: form-group-multiline-checkbox -->
+<div ng-class="['form-group ' + (options.formGroupClass || '')]">
+  <div class="width-label"><label class="control-label" ng-class="options.labelClass || {}">{{ label }}</label></div>
+  <div ng-class="['width-field-' + (options.inputSize || 'normal')]" class="input-with-unit">
+        <ng-transclude class="checkbox multiple-checkbox multiline" ng-class="{ 'has-error' : isInvalid(templateField()) }">
+        </ng-transclude>
+	</div>
+</div>
