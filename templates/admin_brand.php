@@ -22,10 +22,10 @@
         <tbody>
           <tr ng-repeat="row in list.data">
             <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
-            <td nc-link="/admin/brands/{{row.BrandId}}">{{row.BrandId}}</td>
+            <td class="width_100" nc-link="/admin/brands/{{row.BrandId}}">{{row.BrandId}}</td>
             <td nc-link="/admin/brands/{{row.BrandId}}">{{ row.BrandNameEn }} / {{ row.BrandNameTh }}</td>
-            <td>{{row.UpdatedDt | dateTh}}</td>
-            <td><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
+            <td class="width_100">{{row.UpdatedDt | dateTh}}</td>
+            <td class="width_100"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
           </tr>
         </tbody>
       </table>

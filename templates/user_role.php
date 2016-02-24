@@ -23,9 +23,9 @@
           <tr ng-repeat="row in list.data">
             <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
             <td nc-link="/roles/{{row.GroupId}}">{{row.GroupNameEn}}</td>
-            <td>{{row.UserCount}}</td>
-            <td><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
-            <td>{{row.UpdatedDt | dateTh}}</td>
+            <td class="width_200">{{row.UserCount}}</td>
+            <td class="width_100"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
+            <td class="width_100">{{row.UpdatedDt | dateTh}}</td>
           </tr>
         </tbody>
       </table>

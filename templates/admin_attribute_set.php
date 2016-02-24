@@ -27,10 +27,10 @@
             <td class="column-text-ellipsis" nc-link="/admin/attributesets/{{row.AttributeSetId}}">
               {{row.AttributeSetNameEn}}
             </td>
-            <td>{{row.AttributeCount }}</td>
-            <td nc-link="/admin/attributesets/{{row.AttributeSetId}}">{{row.CategoryCount }}</td>
-            <td>{{row.UpdatedDt | dateTh}}</td>
-            <td><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
+            <td class="width_200">{{row.AttributeCount }}</td>
+            <td class="width_200" nc-link="/admin/attributesets/{{row.AttributeSetId}}">{{row.CategoryCount }}</td>
+            <td class="width_100">{{row.UpdatedDt | dateTh}}</td>
+            <td class="width_100"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
           </tr>
         </tbody>
       </table>
