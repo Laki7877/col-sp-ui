@@ -150,9 +150,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Administration System'])
 	 }
 		.category-column-header{
 			margin-top: 30px;
-			padding: 5px 25px 5px 10px;
-			background: #EDF2F9;
-			border: 1px solid #BCC7D5;
+			padding: 5px 10px 5px 10px;
+			background: #ffffff;
+			border: 1px solid #EDF2F9;
 			border-radius: 2px;
 		}
 	 .category-column{
