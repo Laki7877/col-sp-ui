@@ -237,7 +237,6 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 .controller('AdminShoptypeAddCtrl', controllers.adminShoptypeAdd)
 .controller('AdminCouponCtrl', controllers.adminCoupon)
 .controller('AdminCouponAddCtrl', controllers.adminCouponAdd)
-.controller('AdminOnTopCreditAddCtrl', controllers.adminOnTopCreditAdd)
 
 .controller('AdminProductApprovalListCtrl', controllers.adminProductApprovalList)
 .controller('AdminProductListCtrl', controllers.adminProductList)

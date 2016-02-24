@@ -82,10 +82,6 @@ Route::add('/admin/coupons/admin/:id', 'AdminController::admin_coupons_edit');
 Route::add('/admin/coupons/admin/create', 'AdminController::create_admin_coupons_create');
 Route::add('/admin/coupons/admin', 'AdminController::admin_coupons');
 Route::add('/admin/coupons/admin/create', 'AdminController::admin_coupons_create');
-//On top credit card
-Route::add('/admin/ontopcreditcard','AdminController::allontopcreditcard');
-Route::add('/admin/ontopcreditcard/create','AdminController::admin_ontopcreditcard_create');
-
 //test route
 Route::add('/test/:name', 'TestController::any');
 

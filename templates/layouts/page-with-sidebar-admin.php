@@ -30,7 +30,6 @@
         <li class="sub-sidebar-header">Promotion</li>
         <li ng-class="activeUrl('/admin/coupons/admin')" class="item margin-top-20"><a href="/admin/coupons/admin">Global Coupons</a></li>
         <li ng-class="activeUrl('/admin/coupons/seller')" class="item"><a href="/admin/coupons/seller">Seller Coupons</a></li>
-         <li ng-class="activeUrl('/admin/coupons/seller')" class="item"><a href="/admin/ontopcreditcard">On Top Credit Card</a></li>
     </ul>
 
     <ul class="sub-sidebar" style="display: none;" id="sub-admin-reports">

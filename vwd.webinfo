@@ -1,8 +1,5 @@
-﻿<?xml version="1.0"?>
-<!-- 
-  Visual Studio global web project settings.
--->
-<VisualWebDeveloper>
+<?xml version="1.0" encoding="UTF-8"?><!-- 
+	Visual Studio global web project settings.
+--><VisualWebDeveloper>
 
-  <iisExpressSettings windowsAuthentication="disabled" anonymousAuthentication="enabled" useClassicPipelineMode="true"/>
-</VisualWebDeveloper>
+	<iisExpressSettings windowsAuthentication="disabled" anonymousAuthentication="enabled" useClassicPipelineMode="true"/></VisualWebDeveloper>
