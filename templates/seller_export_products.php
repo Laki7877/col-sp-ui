@@ -44,7 +44,7 @@
 												nc-template-options-path="productExport/MultiCheckbox"
 												nc-label="">
 													<label>
-														<input type="checkbox"> Select All
+														<input type="checkbox"/> Select All
 													</label>
 												</div>
 
@@ -52,13 +52,13 @@
 												nc-template-options-path="productExport/MultiCheckbox"
 												nc-label="System Information">
 													<label>
-														<input type="checkbox" ng-model="fields.ProductStatus"> Product Status
+														<input type="checkbox" name="fieldfilter" ng-model="fields.ProductStatus"> Product Status
 													</label>
 													<label>
-														<input type="checkbox" ng-model="fields.PID"> PID
+														<input type="checkbox" name="fieldfilter" ng-model="fields.PID"> PID
 													</label>
 													<label>
-														<input type="checkbox" ng-model="fields.groupID"> Group ID
+														<input type="checkbox" name="fieldfilter" ng-model="fields.groupID"> Group ID
 													</label>
 												</div>
 
@@ -66,16 +66,16 @@
 												nc-template-options-path="productExport/MultiCheckbox"
 												nc-label="Vital Information">
 													<label>
-														<input type="checkbox" ng-model="fields.SKU"> SKU
+														<input type="checkbox" name="fieldfilter" ng-model="fields.SKU"> SKU
 													</label>
 													<label>
-														<input type="checkbox" ng-model="fields.ProductNameEn"> Product Name (English)
+														<input type="checkbox" name="fieldfilter" ng-model="fields.ProductNameEn"> Product Name (English)
 													</label>
 													<label>
-														<input type="checkbox" ng-model="fields.ProductNameTh"> Product Name (Thai)
+														<input type="checkbox" name="fieldfilter" ng-model="fields.ProductNameTh"> Product Name (Thai)
 													</label>
 													<label>
-														<input type="checkbox" ng-model="fields.BrandName"> Brand Name
+														<input type="checkbox" name="fieldfilter" ng-model="fields.BrandName"> Brand Name
 													</label>
 												</div>
 
@@ -83,10 +83,10 @@
 												nc-template-options-path="productExport/MultiCheckbox"
 												nc-label="Category">
 													<label>
-														<input type="checkbox" ng-model="fields.GlobalCategory"> Global Category
+														<input type="checkbox" name="fieldfilter" ng-model="fields.GlobalCategory"> Global Category
 													</label>
 													<label>
-														<input type="checkbox" ng-model="fields.LocalCategory"> Local Category
+														<input type="checkbox" name="fieldfilter" ng-model="fields.LocalCategory"> Local Category
 													</label>
 												</div>
 
@@ -94,10 +94,10 @@
 												nc-template-options-path="productExport/MultiCheckbox"
 												nc-label="Price">
 													<label>
-														<input type="checkbox" ng-model="fields.OriginalPrice"> Original Price
+														<input type="checkbox" name="fieldfilter" ng-model="fields.OriginalPrice"> Original Price
 													</label>
 													<label>
-														<input type="checkbox" ng-model="fields.SalePrice"> Sale Price
+														<input type="checkbox" name="fieldfilter" ng-model="fields.SalePrice"> Sale Price
 													</label>
 												</div>
 
@@ -105,16 +105,16 @@
 												nc-template-options-path="productExport/MultiCheckbox"
 												nc-label="Description">
 													<label>
-														<input type="checkbox" ng-model="fields.DescriptionEn"> Description (English)
+														<input type="checkbox" name="fieldfilter" ng-model="fields.DescriptionEn"> Description (English)
 													</label>
 													<label>
-														<input type="checkbox" ng-model="fields.DescriptionTh"> Description (Thai)
+														<input type="checkbox" name="fieldfilter" ng-model="fields.DescriptionTh"> Description (Thai)
 													</label>
 													<label>
-														<input type="checkbox" ng-model="fields.ShortDescriptionEn"> Short Description (English)
+														<input type="checkbox" name="fieldfilter" ng-model="fields.ShortDescriptionEn"> Short Description (English)
 													</label>
 													<label>
-														<input type="checkbox" ng-model="fields.ShortDescriptionTh"> Short Description (Thai)
+														<input type="checkbox" name="fieldfilter" ng-model="fields.ShortDescriptionTh"> Short Description (Thai)
 													</label>
 												</div>
 
@@ -122,22 +122,22 @@
 												nc-template-options-path="productExport/MultiCheckbox"
 												nc-label="Shipping &amp; Inventory">
 													<label>
-														<input type="checkbox" ng-model="fields.DescriptionEn"> Preparation Time
+														<input type="checkbox" name="fieldfilter" ng-model="fields.DescriptionEn"> Preparation Time
 													</label>
 													<label>
-														<input type="checkbox" ng-model="fields.PackageLength"> Package - Length
+														<input type="checkbox" name="fieldfilter" ng-model="fields.PackageLength"> Package - Length
 													</label>
 													<label>
-														<input type="checkbox" ng-model="fields.PackageHeight"> Package - Height
+														<input type="checkbox" name="fieldfilter" ng-model="fields.PackageHeight"> Package - Height
 													</label>
 													<label>
-														<input type="checkbox" ng-model="fields.PackageWidth"> Package - Width
+														<input type="checkbox" name="fieldfilter" ng-model="fields.PackageWidth"> Package - Width
 													</label>
 													<label>
-														<input type="checkbox" ng-model="fields.InventoryAmount"> Inventory Amount
+														<input type="checkbox" name="fieldfilter" ng-model="fields.InventoryAmount"> Inventory Amount
 													</label>
 													<label>
-														<input type="checkbox" ng-model="fields.SafetyStockAmount"> Safety Stock Amount
+														<input type="checkbox" name="fieldfilter" ng-model="fields.SafetyStockAmount"> Safety Stock Amount
 													</label>
 												</div>
 
@@ -193,8 +193,8 @@
 		</div>
 	</div>
 
-  <? $this->insert('components/modal-export-product', ['id' => 'export-product', 'newProductNum' => '1,500']) ?>
-  <? $this->insert('components/modal-export-product-progressing', ['id' => 'export-product-progressing', 'percent' => '60']) ?>
-  <? $this->insert('components/modal-export-product-complete', ['id' => 'export-product-complete']) ?>
+  <?php $this->insert('components/modal-export-product', ['id' => 'export-product', 'newProductNum' => '1,500']) ?>
+  <?php $this->insert('components/modal-export-product-progressing', ['id' => 'export-product-progressing', 'percent' => '60']) ?>
+  <?php $this->insert('components/modal-export-product-complete', ['id' => 'export-product-complete']) ?>
 
 <?php $this->stop() ?>
