@@ -5,9 +5,9 @@ module.exports = function($scope, $controller, SellerAccountService, SellerRoleS
 		options: {
 			id: 'UserId',
 			url: '/accounts',
-			item: 'Seller Account',
+			item: 'User',
 			service: SellerAccountService,
-			init: function(scope) {		
+			init: function(scope) {
 				//Get all available roles
 				SellerRoleService.listAll()
 					.then(function(data) {

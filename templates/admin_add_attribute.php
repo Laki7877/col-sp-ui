@@ -1,9 +1,9 @@
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attribute']) ?>
 
-<?php $this->start('page-body') ?>  
+<?php $this->start('page-body') ?>
   <div ng-controller="AdminAttributeAddCtrl" ng-init="init(<?=$params?>)">
     <nc-alert nc-model="alert"></nc-alert>
-    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute/{{title}}", 'urls' => ['/admin/attributes']]) ?>
+    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attributes/{{title}}", 'urls' => ['/admin/attributes']]) ?>
     <div ng-show="loading" nc-loading="Loading Attribute.."></div>
     <div ng-show="saving" nc-loading="Saving Attribute.."></div>
     <form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action margin-top-30" novalidate>
@@ -81,7 +81,7 @@
                   maxlength="100"
                   required />
               </div>
-              <div 
+              <div
                 ng-template="common/input/dropdown"
                 ng-template-options="{
                   'label' : 'Is Required'
@@ -115,7 +115,7 @@
               </div>
               <div ng-switch="formData.DataType.value">
                 <div ng-switch-when="ST">
-                  <!--div 
+                  <!--div
                     ng-template="common/input/dropdown"
                     ng-template-options="{
                       'label' : 'Input Validation'
@@ -233,7 +233,7 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Variation</h2></div>
             <div class="form-section-content">
-              <div 
+              <div
                 ng-template="common/input/dropdown"
                 ng-template-options="{
                   'label' : 'Set as Variation'
@@ -293,7 +293,7 @@
                   </ui-select-choices>
                 </ui-select>
              </div>
-              <div 
+              <div
                 ng-template="common/input/dropdown"
                 ng-template-options="{
                   'label' : 'Filterable'
