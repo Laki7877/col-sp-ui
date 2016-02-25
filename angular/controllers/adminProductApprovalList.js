@@ -1,7 +1,7 @@
 module.exports = function($scope, $controller, Product, config, util) {
 	'ngInject';
     $scope.asStatus = Product.getStatus;
-	$controller('AbstractListCtrl', {
+	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
 		options: {
 			url: '/ProductStages',
@@ -22,18 +22,13 @@ module.exports = function($scope, $controller, Product, config, util) {
 			filters: [
 				{ name: "All", value: 'All'},
 				{ name: "Approved", value: 'Approved'},
+				{ name: "Draft", value: 'Draft'},
 				{ name: "Not Approved", value: 'NotApproved'},
-				{ name: "Wait for Approval", value: 'WaitForApproval'},
-				{ name: "Not Approved", value: 'NotApproved'}
+				{ name: "Wait for Approval", value: 'WaitForApproval'}
 			]
 		}
 	});
 
-    $scope.toggleEye = function(row){
-        Product.visible([{
-            ProductId: row.ProductId,
-            Visibility: row.Visibility
-        }], function(d){
-        });
-    }
+	$scope.params._filter = $scope.filterOptions[4];
+
 }

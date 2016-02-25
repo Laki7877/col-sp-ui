@@ -193,6 +193,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
   .filter('truncate', filters.truncate)
   .filter('slice', filters.slice)
   .filter('leadingzero', filters.leadingzero)
+  .filter('variantValue', filters.variantValue)
 
 //Controllers
 .controller('RootCtrl', controllers.root)

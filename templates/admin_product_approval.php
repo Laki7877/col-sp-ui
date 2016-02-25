@@ -10,11 +10,8 @@
     <div class="row search-section-wrapper">
           <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="ProductId"></nc-bulk>
 		  <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Product SKU, Name, ...'"></nc-search>
-		  <div class="search-section advance-search">
-    		<button class="btn btn-white-fluid border_blue" type="button">Advanced Search</button>
-  		   </div>
+		  <nc-advance-search-button nc-model="advanceSearch"></nc-advance-search-button>
 		</div>
-
 		<div>
 			<form class="ah-form sticky-mainform-action">
 				<div class="tab-content">

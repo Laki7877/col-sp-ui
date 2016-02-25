@@ -11,7 +11,7 @@ module.exports = function($scope, $controller, $window, InventoryService, config
 			actions: [{
 				name: 'View / Edit',
 				fn: function(item) {
-                	$window.location.href =  '/products/' + item[id];
+                	$window.location.href =  '/products/' + item.ProductId;
 				}
 			}],
 			filters: [
@@ -56,7 +56,6 @@ module.exports = function($scope, $controller, $window, InventoryService, config
 	};
 	$scope.updateStock = function(item) {
 		$scope.alert.close();
-		console.log(item.Pid);
 		InventoryService.update(item.Pid, _.pick(item, ['Quantity']))
 			.then(function(data) {
 				$scope.lastEdit = item.Pid;

@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-section-content">
                       <div class="content-text">
-                        <div><h4>{{ product.ProductNameEn }}</h4>{{ product.VariantValue }}</div>
+                        <div><h4>{{ product.ProductNameEn }}</h4>{{ product.VariantAttribute | variantValue }}</div>
                         <hr/>
                         <div class="margin-top-5">PID: {{ product.Pid }}</div>
                         <div class="margin-top-5">Status:</div>

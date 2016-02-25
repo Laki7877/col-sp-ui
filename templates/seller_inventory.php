@@ -6,7 +6,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Inventory'])
 <?php $this->start('page-body') ?>
 	<div ng-controller="SellerInventoryListCtrl">
        <nc-page-title nc-title="Inventory">
-            <a ng-href="/admin/" class="btn ng-scope btn-white btn-width-xxl">
+            <a ng-href="/products/export" class="btn ng-scope btn-white btn-width-xxl">
 	            <span class="">Export All Products</span>
           	</a>
             <div class="btn-group margin-left-10">
@@ -14,8 +14,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Inventory'])
                 Import Products <span class="caret"></span>
               </button>
               <ul class="dropdown-menu">
-                <li><a href="/?p=seller_import_products">Add New Products</a></li>
-                <li><a href="/?p=seller_update_products">Update Existing Products</a></li>
+                <li><a href="/products/import">Add New Products</a></li>
+                <li><a href="/products/import/update">Update Existing Products</a></li>
               </ul>
             </div>
        </nc-page-title>
@@ -47,7 +47,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Inventory'])
 		                    </div>
 		                </td>
 		                <td class="column-text-ellipsis">
-		                    {{row.ProductNameEn}}
+		                    <a href="/products/{{row.ProductId}}">{{row.ProductNameEn}}</a>
+           					<div class="color-dark-grey font-size-12" ng-if="row.IsVariant">{{ row.VariantAttribute | variantValue }}</div>
 		                </td>
 		                <td>{{row.Pid}}</td>
 		                <td>{{row.Sku}}</td>
