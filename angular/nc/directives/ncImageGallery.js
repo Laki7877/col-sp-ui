@@ -85,6 +85,8 @@ angular.module('nc')
 				model: '=ncModel',
 				originalUploader: '=ncImageUploader',
 				options: '=?ncImageDropzoneOptions',
+				onError: '&?ncImageDropzoneOnError',
+				onSuccess: '&?ncImageDropzoneOnSuccess',
 				template: '@ncImageTemplate'
 			},
 			link: function(scope, element) {
@@ -94,10 +96,11 @@ angular.module('nc')
 					urlKey: 'url',
 					onQueueLimit: _.noop,
 					onFail: _.noop,
-					onError: _.noop,
 					onResponse: function(item) { return item; },
 					onUpload: function(item) {}
 				});
+				scope.onError = scope.onError || _.noop;
+				scope.onSuccess = scope.onSuccess || _.noop;
 				scope.update = function() {
 					var html = $templateCache.get(scope.template);
 					element.html(html);
@@ -133,8 +136,8 @@ angular.module('nc')
 					scope.model[item.indx][scope.options.urlKey] = response[scope.options.urlKey];			    	
 			    };
 			    scope.uploader.onErrorItem = function(item, response, status, headers) {
-			    	scope.onError(item, response);
 			    	scope.model.splice(item.indx, 1);
+			    	scope.onError({$response : response});
 			    };
 
 				scope.update();

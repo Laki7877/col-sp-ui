@@ -3,6 +3,7 @@ angular.module('nc')
 		return {
 			restrict: 'E',
 			replace: true,
+			transclude: true,
 			scope: {
 				model: '=ncModel',
 				filters: '=ncFilterOptions',

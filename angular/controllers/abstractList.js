@@ -49,7 +49,7 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 		$scope.params._filter = options.filters[0].value;
 	}
 	$scope.bulkContainer = [];
-	$scope.toggleVisibility = util.eyeToggle(options.service, options.id, $scope.alert);
+	$scope.toggleEye = util.eyeToggle(options.service, options.id, $scope.alert);
 
 	if(_.isUndefined(options.bulks)) {
 		$scope.bulks= [

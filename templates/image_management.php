@@ -32,6 +32,7 @@
               <div class="row" ng-repeat="product in list.data">
                 <div class="col-xs-12">
                   <div class="form-section image-management">
+                    <nc-alert nc-model="product.alert"></nc-alert>
                     <div class="form-section-content">
                       <div class="content-text">
                         <div><h4>{{ product.ProductNameEn }}</h4>{{ product.VariantValue }}</div>
@@ -47,8 +48,8 @@
                           </div>
                         </div>
                         <div class="drop-zone-container {{ getContainer(product) }}">
-                          <nc-image-dropzone ng-if="product.IsVariant" nc-model="product.VariantImg" nc-image-template="{{getTemplate(product)}}" nc-image-uploader="uploader" nc-image-dropzone-options="imageDropzoneOptions"></nc-image-dropzone>
-                          <nc-image-dropzone ng-if="!product.IsVariant" nc-model="product.MasterImg" nc-image-template="{{getTemplate(product)}}" nc-image-uploader="uploader" nc-image-dropzone-options="imageDropzoneOptions"></nc-image-dropzone>
+                          <nc-image-dropzone ng-if="product.IsVariant" nc-model="product.VariantImg" nc-image-template="{{getTemplate(product)}}" nc-image-uploader="uploader" nc-image-dropzone-options="imageDropzoneOptions" nc-image-dropzone-on-error="onError(product, $response)"></nc-image-dropzone>
+                          <nc-image-dropzone ng-if="!product.IsVariant" nc-model="product.MasterImg" nc-image-template="{{getTemplate(product)}}" nc-image-uploader="uploader" nc-image-dropzone-options="imageDropzoneOptions" nc-image-dropzone-on-error="onError(product, $response)"></nc-image-dropzone>
                         </div>
                     </div>
                   </div>

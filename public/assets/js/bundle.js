@@ -718,7 +718,7 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 		$scope.params._filter = options.filters[0].value;
 	}
 	$scope.bulkContainer = [];
-	$scope.toggleVisibility = util.eyeToggle(options.service, options.id, $scope.alert);
+	$scope.toggleEye = util.eyeToggle(options.service, options.id, $scope.alert);
 
 	if(_.isUndefined(options.bulks)) {
 		$scope.bulks= [
@@ -2687,6 +2687,9 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
 					$scope.loading = false;
 			        $scope.ignored = true;
 			        $scope.list = data;
+			        _.forEach($scope.list.data, function(e) {
+			        	_.extend(e, {alert: new NcAlert() })
+			        });
 			        $scope.watcher = _.map(data.data, function(e) {
 			        	if(e.IsVariant) {
 			        		return e.VariantImg;
@@ -2751,10 +2754,12 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
     $scope.uploader = ImageService.getUploader('/ProductImages');
     $scope.productStatus = config.PRODUCT_STATUS;
 
+    $scope.onError = function(item, response) {
+    	item.alert.error('<span style="font-weight:bold;">Fail to upload photos</span><br/>' + common.getError(response));
+	};
     $scope.isDisabled = function(product) {
     	return product.Status == 'WA' || product.Status == 'AP';
     };
-
     //Prevent unsaved event
     $scope.onUnsave = function() {
     	if($scope.dirty) {
@@ -2771,13 +2776,6 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
     	}
 
     	switch(product.Status) {
-    		case 'DF':
-    			if(images.length >= 10) {
-    				return 'product/dropzone/reachMax';
-    			} else {
-    				return 'product/dropzone/normal';
-    			}
-    		break;
     		case 'WA':
     			return 'product/dropzone/waitForApproval';
     		break;
@@ -2785,7 +2783,11 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
     			return 'product/dropzone/approved';
     		break;
     	}
-    	return 'product/dropzone/normal';
+		if(images.length >= 10) {
+			return 'product/dropzone/reachMax';
+		} else {
+			return 'product/dropzone/normal';
+		}
     };
     $scope.getContainer = function(product) {
     	var images = null;
@@ -2863,25 +2865,41 @@ module.exports = ['$scope', 'Product', 'GlobalCategoryService', 'Category', 'Att
 }];
 
 },{"angular":151}],33:[function(require,module,exports){
-module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope', 'config', function ($scope, Product, util, Alert, $window, $rootScope, config) {
-
-    /*
-    * This controller uses legacy table-binding method (v0.0.0)
-    * Please refer to other controller for more accepted table controller
-    * (Note, we have like 50 different versions, make sure u pick the correct one)
-    */
-
-    $scope.showOnOffStatus = true;
-    $scope.allChecked = false;
-    $scope.alert = new Alert();
-    $scope.filterOptions = [
-        { name: "All", value: 'All' },
-        { name: "Approved", value: 'Approved' },
-        { name: 'Draft', value: 'Draft' },
-        { name: "Not Approved", value: 'NotApproved' },
-        { name: "Wait for Approval", value: 'WaitforApproval' },
-    ];
-
+module.exports = ["$scope", "$controller", "Product", "util", "Alert", "$window", "$rootScope", "config", function ($scope, $controller, Product, util, Alert, $window, $rootScope, config) {
+    'ngInject';
+    $controller('AbstractAdvanceListCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/products',
+            service: Product,
+            item: 'Product',
+            order: 'UpdatedDt',
+            id: 'ProductId',
+            actions: [
+                'View',
+                'Delete',
+                'Duplicate'
+            ],
+            bulks: [
+                'Delete',
+                'Hide',
+                'Show'
+            ],
+            filters: [
+                { name: "All", value: 'All' },
+                { name: "Approved", value: 'Approved' },
+                { name: 'Draft', value: 'Draft' },
+                { name: "Not Approved", value: 'NotApproved' },
+                { name: "Wait for Approval", value: 'WaitforApproval' }
+            ]
+        }
+    });
+    $scope.showOnOffStatus = {};
+    $scope.showOnOffStatus.value = true;
+    $scope.statusLookup = {};
+    config.PRODUCT_STATUS.forEach(function(object){
+       $scope.statusLookup[object.value] = object;
+    });
     $scope.startExportProducts = function () {
         $scope.exporter = {
             progress: 10,
@@ -2890,7 +2908,6 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
 
         $("#export-product").modal('show');
     };
-
     $scope.confirmExportProducts = function(){
         $("#export-product").modal('hide');
 
@@ -2938,261 +2955,10 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
 
             }, error);
         });
-    }
-
-
-    $scope.checkBoxCache = {};
-
-    $scope.setPageSize = function (p) {
-        $scope.tableParams.pageSize = p;
-    }
-
-    $scope.bulk = {
-        fn: function () {
-            var bulk = $scope.bulkOptions.find(function (item) {
-                return item.name == $('#bulk').html();
-            });
-            if (bulk) {
-                bulk.fn();
-            }
-            $scope.allChecked = false;
-        }
-    };
-
-    $scope.bulkOptions = [
-        {
-            name: 'Delete',
-            value: 'delete',
-            fn: function () {
-                $scope.alert.close();
-
-                var arr = Object.keys($scope.checkBoxCache).map(function (m) {
-                    if (!$scope.checkBoxCache[m]) return { ProductId: -1 };
-                    return {
-                        ProductId: Number(m)
-                    };
-                });
-
-                if (arr.length > 0) {
-                    Product.deleteBulk(arr).then(function () {
-                        $scope.alert.success('Successfully deleted');
-                        $scope.reloadData();
-                    }, function (result) {
-                        $scope.alert.error('Unable to Delete');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Show',
-            value: 'show',
-            fn: function () {
-                var arr = Object.keys($scope.checkBoxCache).map(function (m) {
-                    if (!$scope.checkBoxCache[m]) return { ProductId: -1 };
-                    return {
-                        ProductId: Number(m),
-                        Visibility: true
-                    };
-                });
-
-                if (arr.length > 0) {
-                    Product.visible(arr).then(function () {
-                        $scope.alert.success('Successfully changed');
-                        $scope.reloadData();
-                    }, function () {
-                        $scope.alert.error('Unable to Show');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Hide',
-            value: 'hide',
-            fn: function () {
-                var arr = Object.keys($scope.checkBoxCache).map(function (m) {
-                    if (!$scope.checkBoxCache[m]) return { ProductId: -1 };
-                    return {
-                        ProductId: Number(m),
-                        Visibility: false
-                    };
-                });
-
-                if (arr.length > 0) {
-                    Product.visible(arr).then(function () {
-                        $scope.alert.success('Successfully changed');
-                        $scope.reloadData();
-                    }, function () {
-                        $scope.alert.error('Unable to Hide');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Publish',
-            value: 'publish',
-            fn: function () {
-                var arr = [];
-                Object.keys($scope.checkBoxCache).forEach(function (m) {
-                    if (!$scope.checkBoxCache[m]) return;
-                    arr.push({
-                        ProductId: Number(m)
-                    });
-                });
-
-                if (arr.length == 0) return;
-
-                Product.bulkPublish(arr).then(function () {
-                    $scope.alert.success("Successfully published " + arr.length + " items");
-                    $scope.reloadData();
-                }, function (r) {
-                    $scope.alert.error('Unable to publish. Please check product status');
-                });
-            }
-        }
-    ];
-    $scope.actions = {
-        edit: function (row) {
-            $window.location.href = "/products/" + row.ProductId;
-        },
-        delete: function (row) {
-            $scope.alert.close();
-            Product.deleteBulk([{ ProductId: row.ProductId }]).then(function () {
-                $scope.alert.success('You have successfully remove an entry.');
-                $scope.reloadData();
-            }, function (err) {
-                $scope.alert.error(err);
-            });
-        },
-        duplicate: function (row) {
-            $scope.alert.close();
-            Product.duplicate(row.ProductId).then(function () {
-                $scope.alert.success();
-                $scope.reloadData();
-            }, function (err) {
-                $scope.alert.error(err);
-            });
-        },
-        toggle: function (row) {
-            $scope.alert.close();
-            row.Visibility = !row.Visibility;
-            Product.visible([row]).then(function () {
-            }, function (err) {
-                $scope.alert.error(err);
-                $scope.reloadData();
-            });
-        }
-    };
-    $scope.sort = util.tableSortClass($scope);
-    $scope.statusLookup = {};
-
-    config.PRODUCT_STATUS.forEach(function(object){
-       $scope.statusLookup[object.value] = object;
-    });
-
-    $scope.init = function (params) {
-        if (angular.isDefined(params)) {
-            if (angular.isDefined(params.success) && params.success != null) {
-                $scope.alert.success();
-            }
-        }
     };
     $scope.asStatus = function (ab) {
         return $scope.statusLookup[ab];
     };
-
-    //Product List
-    $scope.productList = [];
-    //Default parameters
-    $scope.tableParams = {
-        filter: 'All',
-        searchText: null,
-        orderBy: 'UpdatedDt',
-        direction: 'desc',
-        page: 0,
-        pageSize: 10
-    };
-
-    $scope.notReady = true;
-
-    $scope.applySearch = function () {
-        $scope.tableParams.page = 0;
-        $scope.tableParams.searchText = $scope.searchText;
-    };
-
-    $scope.totalPage = function (x) {
-        return Math.ceil($scope.productTotal / $scope.tableParams.pageSize);
-    };
-
-
-    $scope.nextPage = function (m) {
-        if ($scope.tableParams.page + m >= $scope.totalPage() ||
-            $scope.tableParams.page + m < 0)
-            return;
-
-        $scope.tableParams.page += m;
-    };
-
-
-    $scope.setOrderBy = function (nextOrderBy) {
-        if ($scope.tableParams.orderBy == nextOrderBy) {
-            $scope.tableParams.direction = ($scope.tableParams.direction == 'asc' ? 'desc' : 'asc');
-        }
-        $scope.tableParams.orderBy = nextOrderBy;
-    };
-
-    $scope.productTotal = 0;
-    //Populate Data Source
-    $scope.reloadData = function () {
-        $scope.productList = [];
-        $scope.notReady = true;
-        Product.getAll($scope.tableParams).then(function (x) {
-            $scope.productTotal = x.total;
-            $scope.productList = x.data;
-            $scope.notReady = false;
-        });
-    };
-
-    //Watch any change in table parameter, trigger reload
-    $scope.$watch('tableParams', function () {
-        $scope.reloadData();
-        $scope.allChecked = false;
-    }, true);
-
-
-    $scope.checkAll = function(){
-        var first = $scope.productList[0];
-        var tval = !($scope.checkBoxCache[first.ProductId] || false);
-        $scope.productList.forEach(function (d) {
-            $scope.checkBoxCache[d.ProductId] = tval;
-        });
-    }
-
-    $scope.checkBoxCount = function () {
-        var m = [];
-        Object.keys($scope.checkBoxCache).forEach(function (key) {
-            if ($scope.checkBoxCache[key]) m.push($scope.checkBoxCache[key]);
-        });
-
-        //Count checked checkbox (on this page only)
-        //TODO: I don't like this solution, I'd rather trade space for time
-        //note: can't just count checkboxcache because checkboxcache is global across
-        //all pages.
-        var chkCount = 0;
-        $scope.productList.forEach(function(p){
-            chkCount += ($scope.checkBoxCache[p.ProductId] ? 1 : 0);
-        });
-
-        //Change selectAll checkbox state
-        if(chkCount != $scope.productList.length){
-            $scope.allChecked = false;
-        }else{
-            $scope.allChecked = true;
-        }
-        return m.length;
-    }
 }];
 
 },{}],34:[function(require,module,exports){
@@ -5848,6 +5614,7 @@ angular.module('nc')
 		return {
 			restrict: 'E',
 			replace: true,
+			transclude: true,
 			scope: {
 				model: '=ncModel',
 				filters: '=ncFilterOptions',
@@ -5951,6 +5718,8 @@ angular.module('nc')
 				model: '=ncModel',
 				originalUploader: '=ncImageUploader',
 				options: '=?ncImageDropzoneOptions',
+				onError: '&?ncImageDropzoneOnError',
+				onSuccess: '&?ncImageDropzoneOnSuccess',
 				template: '@ncImageTemplate'
 			},
 			link: function(scope, element) {
@@ -5960,10 +5729,11 @@ angular.module('nc')
 					urlKey: 'url',
 					onQueueLimit: _.noop,
 					onFail: _.noop,
-					onError: _.noop,
 					onResponse: function(item) { return item; },
 					onUpload: function(item) {}
 				});
+				scope.onError = scope.onError || _.noop;
+				scope.onSuccess = scope.onSuccess || _.noop;
 				scope.update = function() {
 					var html = $templateCache.get(scope.template);
 					element.html(html);
@@ -5999,8 +5769,8 @@ angular.module('nc')
 					scope.model[item.indx][scope.options.urlKey] = response[scope.options.urlKey];			    	
 			    };
 			    scope.uploader.onErrorItem = function(item, response, status, headers) {
-			    	scope.onError(item, response);
 			    	scope.model.splice(item.indx, 1);
+			    	scope.onError({$response : response});
 			    };
 
 				scope.update();
@@ -6771,7 +6541,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncFilter',
-    "<div class=filter-section><div class=filter-container><span>Filters:</span> <a class=filter-seperator ng-repeat=\"filter in filters\" ng-class=\"{'filter-active': model == filter.value }\" ng-click=select(filter.value)>{{ filter.name }}</a></div></div>"
+    "<div class=filter-section><div class=filter-container><span>Filters:</span> <a class=filter-seperator ng-repeat=\"filter in filters\" ng-class=\"{'filter-active': model == filter.value }\" ng-click=select(filter.value)>{{ filter.name }}</a> <span ng-transclude></span></div></div>"
   );
 
 
@@ -8445,7 +8215,7 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
 	            name: 'imageFilter',
 	            fn: function(item /*{File|FileLikeObject}*/, options) {
 	                var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
-	                return '|jpg|png|jpeg'.indexOf(type) !== -1;
+	                return '|jpg|png|jpeg|'.indexOf(type) !== -1;
 	            }}]
 		}, opt);
 		var uploader = new FileUploader(options);
@@ -8476,10 +8246,6 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
 				}
 				//Default handle, pop last images
 				images.pop();
-			}
-			onValidation = onValidation || function() {return true};
-			if(!onValidation(item)) {
-				return;
 			}
 			images.push(obj);
 			item.indx = images.length-1;
@@ -9724,7 +9490,7 @@ module.exports = {
 },{}],136:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Feb 25 2016 17:54:18 GMT+0700 (Russia TZ 6 Standard Time)
+ * Thu Feb 25 2016 19:16:09 GMT+0700 (Russia TZ 6 Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
