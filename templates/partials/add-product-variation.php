@@ -38,7 +38,7 @@
 							</select>
 						</div>
 
-                                <div ng-template="common/input/width-field-large" ng-template-options="{
+                  <div ng-template="common/input/width-field-large" ng-template-options="{
                                     'error' : {
                                         'messages': {
                                             'maxtagcount': 'Cannot exceed 20 tags',
@@ -50,29 +50,29 @@
                                     }
                                     }">
 
-								<ui-select ng-if="isListInput(dataSet.attributeOptions[jth].Attribute.DataType)"
-								multiple ng-model="dataSet.attributeOptions[jth].options">
-								<ui-select-match placeholder="Select a variation option">
-									{{ $item.AttributeValueEn }}
-								</ui-select-match>
-								<ui-select-choices repeat="i in dataSet.attributeOptions[jth].Attribute.AttributeValueMaps | filter:$select.search">
-									{{ i.AttributeValueEn }}
-								</ui-select-choices>
-								</ui-select>
+																<ui-select ng-if="isListInput(dataSet.attributeOptions[jth].Attribute.DataType)"
+																multiple ng-model="dataSet.attributeOptions[jth].options">
+																<ui-select-match placeholder="Select a variation option">
+																	{{ $item.AttributeValue.AttributeValueEn }}
+																</ui-select-match>
+																<ui-select-choices repeat="i in dataSet.attributeOptions[jth].Attribute.AttributeValueMaps | filter:$select.search">
+																	{{ i.AttributeValue.AttributeValueEn }}
+																</ui-select-choices>
+																</ui-select>
 
-								<ui-select ng-if="isFreeTextInput(dataSet.attributeOptions[jth].Attribute.DataType)"
-								multiple tagging tagging-label="" tagging-tokens=",|ENTER" name="attributeOptions{{jth}}"
-								nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30" nc-tag-pattern="^[a-zA-Z0-9ก-๙\s\-]+$"
-								ng-model="dataSet.attributeOptions[jth].options">
-								<ui-select-match placeholder="Variation options separated by a comma or enter">
-								{{ $item.AttributeValue.AttributeValueEn || $item }}
-								</ui-select-match>
-								<ui-select-choices repeat="i in dataSet.attributeOptions[jth].Attribute.AttributeValueMaps | filter:$select.search">
-								{{ i.AttributeValue.AttributeValueEn || i }}
-								</ui-select-choices>
-								</ui-select>
+																<ui-select ng-if="isFreeTextInput(dataSet.attributeOptions[jth].Attribute.DataType)"
+																multiple tagging tagging-label="" tagging-tokens=",|ENTER" name="attributeOptions{{jth}}"
+																nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30" nc-tag-pattern="^[a-zA-Z0-9ก-๙\s\-]+$"
+																ng-model="dataSet.attributeOptions[jth].options">
+																<ui-select-match placeholder="Variation options separated by a comma or enter">
+																{{ $item }}
+																</ui-select-match>
+																<ui-select-choices repeat="i in dataSet.attributeOptions[jth].Attribute.AttributeValueMaps | filter:$select.search">
+																{{ i }}
+																</ui-select-choices>
+																</ui-select>
 
-                             </div>
+             </div>
 							<!--</div>-->
 
 						<a class="like-text form-text" ng-click="variationFactorIndices.pushSecond()" ng-if="dataSet.attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1">

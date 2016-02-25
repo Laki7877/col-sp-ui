@@ -1882,613 +1882,637 @@ module.exports = ['$scope', 'NcAlert', 'Credential', '$window', 'storage', funct
 var angular = require('angular');
 
 module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageService', 'AttributeSet', 'Brand', 'Shop', 'LocalCategoryService', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$productAdd',
-    function ($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, VariantPair, $rootScope, $q, KnownException, NcAlert, $productAdd) {
-        'use strict';
-
-        $scope.alert = new NcAlert();
-
-        var MAX_FILESIZE = 5000000; //5MB
-        var QUEUE_LIMIT = 20;
-        var QUEUE_LIMIT_360 = 60;
-        var MAX_VARIANT = 100;
-
-        $scope.dataSet = {};
-        $scope.dataSet.AttributeSets = [{
-            AttributeSetId: null,
-            disabled: true,
-            AttributeSetNameEn: "No Attribute Set"
-        }];
-        $scope.dataSet.GlobalCategories = [];
-        $scope.dataSet.LocalCategories = [];
-        $scope.dataSet.Brands = [{
-            BrandId: null,
-            BrandNameEn: "No match found",
-            disabled: true
-        }];
-        $scope.dataSet.SearchTags = [];
-        $scope.dataSet.RelatedProducts = [];
-        $scope.dataSet.StockTypes = ['Stock', 'Pre-Order'];
-        $scope.dataSet.VariantDisplayOption = [
-            { text: 'Show as group of variants', value: 'GROUP' },
-            { text: 'Show as individual product', value: 'INDIVIDUAL' }
-        ];
-
-        var protoAttributeOptions = {
-            0: {
-                Attribute: false,
-                options: []
-            },
-            1: {
-                Attribute: false,
-                options: []
-            }
-        };
-        $scope.dataSet.attributeOptions = angular.copy(protoAttributeOptions);
-        $scope.controlFlags = {
-            variation: 'disable',
-            enableSections: {
-                embedVideo: false,
-                embed360: false
-            }
-        };
-
-        $window.onbeforeunload = function (e) {
-            if (!$scope.addProductForm.$dirty) {
-                //only warn when form is dirty
-                return null;
-            }
-            var message = "Your changes will not be saved.",
-                e = e || window.event;
-            // For IE and Firefox
-            if (e) {
-                e.returnValue = message;
-            }
-
-            // For Safari
-            return message;
-        }; // end onbeforeunload
-
-        var onImageUploadFail = function (item, filter) {
-            alert("File Size must not exceed 5 MB");
-        }
-        var onImageUploadQueueLimit = function () { }
-        $scope.asStatus = Product.getStatus;
-
-        var watchVariantChanges = function () {
-            $scope.$watch('dataSet.attributeOptions', function () {
-                var vHashSet = {};
-                var prevVariants = angular.copy($scope.formData.Variants);
-                prevVariants.forEach(function (elem, index) {
-                    vHashSet[elem.text] = prevVariants[index];
-                });
-
-                var protoCheckState = {
-                    uploadProductImages: false,
-                    embedVideo: false,
-                    description: false,
-                    packageDetail: false
-                };
-
-                //Unset
-                prevVariants = undefined;
-
-                $scope.formData.Variants = [];
-
-                var expand = function (A, B) {
-
-                    if (A['AttributeValue']) {
-                        A = A.AttributeValue.AttributeValueEn;
-                    }
-
-                    var BId = null;
-
-                    if (angular.isDefined(B)) {
-                        BId = $scope.dataSet.attributeOptions[1].Attribute.AttributeId;
-                        if (B['AttributeValue']) {
-                            B = B.AttributeValue.AttributeValueEn;
-                        }
-                    } else {
-                        B = ''
-                        BId = null;
-                    }
-
-                    var kpair = new VariantPair({
-                        AttributeId: $scope.dataSet.attributeOptions[0].Attribute.AttributeId,
-                        ValueEn: A
-                    }, {
-                            AttributeId: BId,
-                            ValueEn: B
-                        });
-
-                    //Copy default value over from main variant
-                    kpair.ProductNameEn = $scope.formData.MasterVariant.ProductNameEn;
-                    kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
-                    kpair.Display = $scope.dataSet.VariantDisplayOption[0].value;
-                    kpair.Visibility = true;
-                    kpair.DimensionUnit = "MM";
-                    kpair.WeightUnit = "G";
-                    kpair.Sku = ($scope.formData.MasterVariant.Sku || "SKU") + "-" + (Number(($scope.formData.Variants || []).length) + 1);
-                    kpair.OriginalPrice = $scope.formData.MasterVariant.OriginalPrice;
-                    kpair.SalePrice = $scope.formData.MasterVariant.SalePrice;
-                    kpair.Quantity = $scope.formData.MasterVariant.Quantity;
-                    kpair._override = angular.copy(protoCheckState);
-
-                    if (kpair.text in vHashSet) {
-                        //Replace with value from vHashSet
-
-                        kpair = vHashSet[kpair.text];
-
-                        kpair._override = angular.copy(protoCheckState);
-                        kpair._override.uploadProductImages = ((kpair.Images || []).length > 0);
-                        kpair._override.embedVideo = ((kpair.VideoLinks || []).length > 0);
-                        kpair._override.description = (angular.isDefined(kpair.DescriptionFullEn) ||
-                            angular.isDefined(kpair.DescriptionFullTh) ||
-                            angular.isDefined(kpair.DescriptionShortEn) ||
-                            angular.isDefined(kpair.DescriptionShortTh));
-
-                        kpair._override.packageDetail = (angular.isDefined(kpair.Length) ||
-                            angular.isDefined(kpair.Height) ||
-                            angular.isDefined(kpair.Width) ||
-                            angular.isDefined(kpair.Weight));
-
-                    }
-
-                    //Only push new variant if don't exist
-                    $scope.formData.Variants.push(kpair);
-                }
-
-
-                console.log("Recalculating Factors", $scope.dataSet.attributeOptions);
-                //Multiply out unmultiplied options
-                if ($scope.dataSet.attributeOptions && Object.keys($scope.dataSet.attributeOptions).length > 0) {
-                    for (var aKey in $scope.dataSet.attributeOptions[0].options) {
-                        var A = $scope.dataSet.attributeOptions[0].options[aKey];
-
-                        if (angular.isDefined($scope.dataSet.attributeOptions[1]['options']) && $scope.dataSet.attributeOptions[1].options.length == 0) {
-                            console.log("expanding A");
-                            expand(A);
-                        }
-
-                        for (var bKey in $scope.dataSet.attributeOptions[1].options) {
-                            var B = $scope.dataSet.attributeOptions[1].options[bKey];
-                            console.log("Expanding A,B");
-                            expand(A, B);
-                        }
-                    }
-                }
-
-                $scope.formData.DefaultVariant = $scope.formData.Variants[0];
-            }, true); //end of $watch
-
-        } //end of watch func
-
-        $scope.overview = {}
-
-        $scope.formData = {
-            Brand: { id: null },
-            MasterVariant: { DimensionUnit: "MM", WeightUnit: "G", StockType: "Stock" },
-            ShippingMethod: "1",
-            AttributeSet: {
-                AttributeSetTagMaps: []
-            },
-            RelatedProducts: [],
-            MasterImages: [],
-            MasterImages360: [],
-            VideoLinks: [],
-            Variants: [],
-            GlobalCategories: [null, null, null],
-            LocalCategories: [null, null, null],
-            SEO: { ProductBoostingWeight: 5000 },
-            ControlFlags: [],
-            Keywords: []
-        };
-
-        //Variation Factor (lhs) Indices are used as index
-        //for ng-repeat in variation tab
-        $scope.variationFactorIndices = {};
-        $scope.variationFactorIndices.iterator = [0];
-        $scope.variationFactorIndices.length = function () {
-            return $scope.variationFactorIndices.iterator.length;
-        }
-        $scope.variationFactorIndices.popSecond = function () {
-            $scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop();
-            $scope.dataSet.attributeOptions[1].options = [];
-        }
-        $scope.variationFactorIndices.pushSecond = function () {
-            $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1);
-        }
-
-        //TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
-        //$scope._attrEnTh = function (t) { return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
-        $scope.isFreeTextInput = util.isFreeTextDataType;
-        $scope.isListInput = util.isListDataType;
-        $scope.isHtmlInput = util.isHtmlDataType;
-
-        //CK editor options
-        $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
-
-        $scope.pageState = {
-            loading: {
-                state: true,
-                message: 'Loading..'
-            },
-            load: function (msg) {
-                $scope.pageState.loading.message = msg;
-                $scope.pageState.loading.state = true;
-            },
-            reset: function () {
-                $scope.alert.close();
-                $scope.pageState.loading.state = false;
-            }
-        };
-
-        $scope.breadcrumbs = {
-            globalCategory: null
-        };
-        $scope.preview = function () {
-            return console.log($scope.formData);
-        };
-
-        $scope.refreshRelatedProducts = function (q) {
-            return Product.getAll({
-                searchText: q,
-                pageSize: 4
-            }).then(function (ds) {
-                $scope.dataSet.RelatedProducts = ds.data;
-            });
-        };
-
-        $scope.refreshBrands = function (q) {
-            if (q == "" || !q || q == null) return;
-            $scope.dataSet.Brands = [{
-                BrandId: -1,
-                BrandNameEn: "Searching..",
-                disabled: true
-            }];
-
-            Brand.getAll({
-                pageSize: 10,
-                searchText: q
-            }).then(function (ds) {
-                $scope.dataSet.Brands = ds.data;
-            });
-        };
-
-        $scope.$watch('formData.MasterVariant.SalePrice', function () {
-            var form = $scope.addProductForm;
-            if (form.MasterVariant_SalePrice) form.MasterVariant_SalePrice.$setValidity("min", true);
-            if (!form.MasterVariant_SalePrice) return;
-            if ($scope.formData.MasterVariant.SalePrice == "") return;
-
-            if (Number($scope.formData.MasterVariant.SalePrice) >= Number($scope.formData.MasterVariant.OriginalPrice)) {
-                if (form.MasterVariant_SalePrice) form.MasterVariant_SalePrice.$setValidity("min", false);
-                form.MasterVariant_SalePrice.$error["min"] = "Sale Price must not exceed Original Price";
-            }
-        });
-
-        $scope.$watch('formData.ExpireDate', function () {
-            var form = $scope.addProductForm;
-            if(form.EffectiveDate == null){ return }
-            if (form.ExpireDate) form.ExpireDate.$setValidity("min", true);
-            if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
-                if (!form.ExpireDate) return;
-                if (form.ExpireDate) form.ExpireDate.$setValidity("min", false);
-                form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
-            }
-        });
-
-        var manualValidate = function (Status) {
-            var mat = [];
-
-            if (Status == 'WA') {
-                if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == "") {
-                    mat.push("Missing Description (Thai)");
-                }
-
-                if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == "") {
-                    mat.push("Missing Description (English)");
-                }
-
-                if (!$scope.formData.Brand.BrandId) {
-                    mat.push("Brand is Missing");
-                }
-            }
-
-            var cnt = $scope.formData.Variants.reduce(function (total, x) {
-                return x.Visibility ? total + 1 : total
-            }, 0);
-
-            if (cnt == 0 && $scope.formData.Variants.length > 0) {
-                mat.push("At least one variant must be visible.");
-            }
-
-            if($scope.formData.ExpireDate && $scope.formData.ExpireDate <= $scope.formData.EffectiveDate){
-                mat.push("Effective date/time must come before expire date/time.");
-            }
-
-            return mat;
-        };
-
-
-        /*
-         *  Publish (both Draft and WA)
-         */
-        $scope.publish = function (Status) {
-
-            $scope.pageState.reset();
-            $scope.pageState.load('Validating..');
-
-            $scope.onPublishing = (Status == "WA");
-            //On click validation
-            var validateMat = manualValidate(Status);
-            if (validateMat.length > 0) {
-                $scope.pageState.reset();
-                $scope.alert.error(validateMat);
-                return;
-            }
-
-            if ($scope.addProductForm.$invalid) {
-                $scope.pageState.reset();
-                var requiredMissing = ('required' in $scope.addProductForm.$error);
-                if (Status == 'DF' && requiredMissing) {
-                    $scope.alert.error("Unable to save. Please make sure that Product Name (Thai), Product Name (English), and Original Price are filled correctly.");
-                } else if (Status == 'WA' && requiredMissing) {
-                    $scope.alert.error("Unable to publish because you are missing required fields");
-                } else {
-                    $scope.alert.error("Unable to save. Please make sure all fields have no error.");
-                }
-                return;
-            }
-
-            $scope.pageState.load('Publishing..');
-            console.log("Publishing with Status = ", Status);
-
-            var apiRequest = Product.serialize($scope.formData);
-            Product.publish(apiRequest, Status).then(function (res) {
-                $scope.pageState.reset();
-                if (res.ProductId) {
-                    $scope.overview = res;
-                    $scope.dataSet.attributeOptions = angular.copy(protoAttributeOptions); //will trigger watchvariantchange
-                    var catId = Number(res.GlobalCategory);
-                    $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function () {
-                        $scope.formData.ProductId = Number(res.ProductId);
-                        $scope.pageState.reset();
-                        $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
-                        ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
-                        ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
-                    });
-                    $scope.addProductForm.$setPristine(true);
-                } else {
-                    $scope.alert.error('Unable to save because ' + (res.message || res.Message));
-                    $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-                }
-            }, function (er) {
-                $scope.pageState.reset();
-                $scope.alert.error('Unable to save because ' + (er.message || er.Message));
-                $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-            });
-
-        };
-
-        $scope.uploader = ImageService.getUploader('/ProductImages', {
-            queueLimit: QUEUE_LIMIT
-        });
-
-        $scope.uploader.filters.push({
-            'name': 'enforceMaxFileSize',
-            'fn': function (item) {
-                return item.size <= MAX_FILESIZE;
-            }
-        });
-
-        $scope.uploader360 = ImageService.getUploader('/ProductImages', {
-            queueLimit: QUEUE_LIMIT_360
-        });
-
-        $scope.init = function (viewBag) {
-            //TODO: Refactor, use better callback mechanism
-            if (!angular.isObject(viewBag)) throw new KnownException("View bag is corrupted");
-
-            var shopId = $rootScope.Profile.Shop.ShopId;  //TODO: Get from user
-            var _editMode = ("productId" in viewBag)
-            for (var page in tabPage) {
-                tabPage[page].angular();
-            }
-
-            if (_editMode) {
-                var productId = viewBag.productId;
-                $scope.pageState.load('Loading Product..');
-
-                Product.getOne(productId)
-                    .then(function (inverseFormData) {
-                        $scope.overview = angular.copy(inverseFormData);
-                        var catId = Number(inverseFormData.GlobalCategory);
-                        $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs, $scope.controlFlags,
-                            $scope.variationFactorIndices, inverseFormData).then(function () {
-                                $scope.formData.ProductId = Number(productId);
-                                $scope.pageState.reset();
-                                watchVariantChanges();
-                                ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
-                                ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
-                            });
-                    }, function (error) {
-                        throw new KnownException("Unable to fetch product with id " + productId);
-                    });
-
-            } else if ('catId' in viewBag) {
-                var catId = Number(viewBag.catId);
-                $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs,
-                    $scope.controlFlags, $scope.variationFactorIndices).then(function () {
-                        $scope.pageState.reset();
-                        watchVariantChanges();
-                        ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
-                        ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
-                    });
-            } else {
-                throw new KnownException("Invalid mode, viewBag garbage");
-            }
-
-            //Load Local Cat
-            LocalCategoryService.getOne(shopId).then(function (data) {
-                $scope.dataSet.LocalCategories = Category.transformNestedSetToUITree(data);
-            });
-        }
-
-        var tabPage = {};
-
-        tabPage.images = {
-            angular: function () {
-
-                /**
-                 * IMAGE THUMBNAIL EVENTS
-                 */
-                $scope.$on('left', function (evt, item, array, index) {
-                    var to = index - 1;
-                    if (to < 0) to = array.length - 1;
-
-                    var tmp = array[to];
-                    array[to] = item;
-                    array[index] = tmp;
-                });
-                $scope.$on('right', function (evt, item, array, index) {
-                    var to = index + 1;
-                    if (to >= array.length) to = 0;
-
-                    var tmp = array[to];
-                    array[to] = item;
-                    array[index] = tmp;
-                });
-                $scope.$on('delete', function (evt, item, array, index) {
-                    array.splice(index, 1);
-                });
-                $scope.$on('zoom', function (evt, item, array, index) {
-                    //Should use angular way, but ok whatever
-                    $('#product-image-zoom img').attr('src', item.url);
-                    $('#product-image-zoom').modal('show');
-                });
-            }
-        };
-
-        tabPage.category = {
-            angular: function () {
-                //For viewing only
-                $scope.viewCategoryColumns = [];
-                $scope.viewCategorySelected = null;
-                $scope.viewCategoryIndex = 0;
-                $scope.selectCategory = angular.noop;
-
-                //Events
-                $scope.$on('openGlobalCat', function (evt, item, indx) {
-                    console.log('openGloCat', item, $scope.dataSet.GlobalCategories);
-                    $scope.viewCategoryColumns = Category.createColumns(item, $scope.dataSet.GlobalCategories);
-                    $scope.viewCategorySelected = item;
-                    $scope.viewCategoryIndex = indx;
-                    $scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function (selectedItem) {
-                        $scope.viewCategorySelected = selectedItem;
-                    });
-                });
-                $scope.$on('deleteGlobalCat', function (evt, indx) {
-                    $scope.formData.GlobalCategories[indx] = null;
-                });
-                $scope.$on('selectGlobalCat', function (evt, row, indx, parentIndx) {
-                    $scope.selectCategory(row, indx, parentIndx);
-                });
-                $scope.$on('saveGlobalCat', function (evt) {
-                    $scope.formData.GlobalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected;
-                });
-
-                //Events
-                $scope.$on('openLocalCat', function (evt, item, indx) {
-                    console.log(item, $scope.dataSet.LocalCategories);
-                    $scope.viewCategoryColumns = Category.createColumns(item, $scope.dataSet.LocalCategories);
-                    $scope.viewCategorySelected = item;
-                    $scope.viewCategoryIndex = indx;
-                    $scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function (selectedItem) {
-                        $scope.viewCategorySelected = selectedItem;
-                    });
-                });
-                $scope.$on('deleteLocalCat', function (evt, indx) {
-                    $scope.formData.LocalCategories[indx] = null;
-                });
-                $scope.$on('selectLocalCat', function (evt, row, indx, parentIndx) {
-                    $scope.selectCategory(row, indx, parentIndx);
-                });
-                $scope.$on('saveLocalCat', function (evt) {
-                    $scope.formData.LocalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected;
-                });
-            }
-        }
-
-        tabPage.variation = {
-
-            angular: function () {
-                /**
-                 * This part handles when user click on More Detail and open pair form
-                 */
-
-                $scope.uploaderModal = ImageService.getUploader('/ProductImages', {
-                    queueLimit: QUEUE_LIMIT
-                });
-
-                $scope.uploaderModal.filters.push({
-                    'name': 'enforceMaxFileSize',
-                    'fn': function (item) {
-                        return item.size <= MAX_FILESIZE;
-                    }
-                });
-
-                $scope.$on('openPairModal', function (evt, pair, array, index) {
-                    //Define if not defined
-
-                    if (angular.isUndefined(pair.Images)) {
-                        pair.Images = [];
-                    }
-                    if (angular.isUndefined(pair.queue)) {
-                        pair.queue = [];
-                    }
-                    //Modal target (for viewing pair)
-                    $scope.pairModal = angular.copy(pair);
-                    $scope.pairModal.alert = new NcAlert();
-                    $scope.pairIndex = index;
-                    $scope.uploaderModal.queue = $scope.pairModal.queue;
-                    ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail);
-                });
-
-                $scope.$on('savePairModal', function (evt) {
-                    console.log("adform", $scope.addProductVariantForm.$invalid);
-
-                    if (!$scope.pairModal._override.uploadProductImages) {
-                        $scope.pairModal.Images = [];
-                    }
-
-                    if (!$scope.pairModal._override.embedVideo) {
-                        $scope.pairModal.VideoLinks = [];
-                    }
-
-                    if (!$scope.pairModal._override.description) {
-                        $scope.pairModal.DescriptionFullEn = null;
-                        $scope.pairModal.DescriptionFullTh = null;
-                        $scope.pairModal.ShortDescriptionEn = null;
-                        $scope.pairModal.ShortDescriptionTh = null;
-                    }
-
-                    if (!$scope.pairModal._override.packageDetail) {
-                        $scope.pairModal.Length = null;
-                        $scope.pairModal.Height = null;
-                        $scope.pairModal.Width = null;
-                        $scope.pairModal.Length = null;
-
-                    }
-
-                    $scope.formData.Variants[$scope.pairIndex] = $scope.pairModal;
-                });
-            }
-        };
-
-
-
-
+  function($scope, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, VariantPair, $rootScope, $q, KnownException, NcAlert, $productAdd) {
+    'use strict';
+
+    $scope.alert = new NcAlert();
+
+    var MAX_FILESIZE = 5000000; //5MB
+    var QUEUE_LIMIT = 20;
+    var QUEUE_LIMIT_360 = 60;
+    var MAX_VARIANT = 100;
+
+    $scope.dataSet = {};
+    $scope.dataSet.AttributeSets = [{
+      AttributeSetId: null,
+      disabled: true,
+      AttributeSetNameEn: "No Attribute Set"
     }];
+    $scope.dataSet.GlobalCategories = [];
+    $scope.dataSet.LocalCategories = [];
+    $scope.dataSet.Brands = [{
+      BrandId: null,
+      BrandNameEn: "No match found",
+      disabled: true
+    }];
+    $scope.dataSet.SearchTags = [];
+    $scope.dataSet.RelatedProducts = [];
+    $scope.dataSet.StockTypes = ['Stock', 'Pre-Order'];
+    $scope.dataSet.VariantDisplayOption = [{
+      text: 'Show as group of variants',
+      value: 'GROUP'
+    }, {
+      text: 'Show as individual product',
+      value: 'INDIVIDUAL'
+    }];
+
+    var protoAttributeOptions = {
+      0: {
+        Attribute: false,
+        options: []
+      },
+      1: {
+        Attribute: false,
+        options: []
+      }
+    };
+    $scope.dataSet.attributeOptions = angular.copy(protoAttributeOptions);
+    $scope.controlFlags = {
+      variation: 'disable',
+      enableSections: {
+        embedVideo: false,
+        embed360: false
+      }
+    };
+
+    $window.onbeforeunload = function(e) {
+      if (!$scope.addProductForm.$dirty) {
+        //only warn when form is dirty
+        return null;
+      }
+      var message = "Your changes will not be saved.",
+        e = e || window.event;
+      // For IE and Firefox
+      if (e) {
+        e.returnValue = message;
+      }
+
+      // For Safari
+      return message;
+    }; // end onbeforeunload
+
+    var onImageUploadFail = function(item, filter) {
+      alert("Unable to upload image because validation error.");
+    }
+    var onImageUploadQueueLimit = function() {}
+    $scope.asStatus = Product.getStatus;
+
+    var watchVariantChanges = function() {
+        $scope.$watch('dataSet.attributeOptions', function() {
+          var vHashSet = {};
+          var prevVariants = angular.copy($scope.formData.Variants);
+          prevVariants.forEach(function(elem, index) {
+            vHashSet[elem.text] = prevVariants[index];
+          });
+
+          var protoCheckState = {
+            uploadProductImages: false,
+            embedVideo: false,
+            description: false,
+            packageDetail: false
+          };
+
+          //Unset
+          prevVariants = undefined;
+
+          $scope.formData.Variants = [];
+
+          var expand = function(A, B) {
+            var AVId = A.AttributeValue.AttributeValueId;
+            if (A['AttributeValue']) {
+              A = A.AttributeValue.AttributeValueEn;
+            }
+
+            var BId = null;
+            var BVId = null;
+
+            if (angular.isDefined(B)) {
+              BId = $scope.dataSet.attributeOptions[1].Attribute.AttributeId;
+              if (B['AttributeValue']) {
+                B = B.AttributeValue.AttributeValueEn;
+              }
+              if(_.has(B, 'AttributeValue.AttributeValueId')){
+                BVId = B.AttributeValue.AttributeValueId;
+              }
+            } else {
+              B = ''
+              BId = null;
+            }
+
+            var kpair = new VariantPair({
+              AttributeId: $scope.dataSet.attributeOptions[0].Attribute.AttributeId,
+              AttributeValues: (!AVId ? [] : [{
+                AttributeValueId: AVId
+              }]),
+              ValueEn: A
+            }, {
+              AttributeId: BId,
+              AttributeValues: (!BVId ? [] : [{
+                AttributeValueId: BVId
+              }]),
+              ValueEn: B
+            });
+
+            //Copy default value over from main variant
+            kpair.ProductNameEn = $scope.formData.MasterVariant.ProductNameEn;
+            kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
+            kpair.Display = $scope.dataSet.VariantDisplayOption[0].value;
+            kpair.Visibility = true;
+            kpair.DimensionUnit = "MM";
+            kpair.WeightUnit = "G";
+            kpair.Sku = ($scope.formData.MasterVariant.Sku || "SKU") + "-" + (Number(($scope.formData.Variants || []).length) + 1);
+            kpair.OriginalPrice = $scope.formData.MasterVariant.OriginalPrice;
+            kpair.SalePrice = $scope.formData.MasterVariant.SalePrice;
+            kpair.Quantity = $scope.formData.MasterVariant.Quantity;
+            kpair._override = angular.copy(protoCheckState);
+
+            if (kpair.text in vHashSet) {
+              //Replace with value from vHashSet
+
+              kpair = vHashSet[kpair.text];
+
+              kpair._override = angular.copy(protoCheckState);
+              kpair._override.uploadProductImages = ((kpair.Images || []).length > 0);
+              kpair._override.embedVideo = ((kpair.VideoLinks || []).length > 0);
+              kpair._override.description = (angular.isDefined(kpair.DescriptionFullEn) ||
+                angular.isDefined(kpair.DescriptionFullTh) ||
+                angular.isDefined(kpair.DescriptionShortEn) ||
+                angular.isDefined(kpair.DescriptionShortTh));
+
+              kpair._override.packageDetail = (angular.isDefined(kpair.Length) ||
+                angular.isDefined(kpair.Height) ||
+                angular.isDefined(kpair.Width) ||
+                angular.isDefined(kpair.Weight));
+
+            }
+
+            //Only push new variant if don't exist
+            $scope.formData.Variants.push(kpair);
+          }
+
+
+          console.log("Recalculating Factors", $scope.dataSet.attributeOptions);
+          //Multiply out unmultiplied options
+          if ($scope.dataSet.attributeOptions && Object.keys($scope.dataSet.attributeOptions).length > 0) {
+            for (var aKey in $scope.dataSet.attributeOptions[0].options) {
+              var A = $scope.dataSet.attributeOptions[0].options[aKey];
+
+              if (angular.isDefined($scope.dataSet.attributeOptions[1]['options']) && $scope.dataSet.attributeOptions[1].options.length == 0) {
+                console.log("expanding A");
+                expand(A);
+              }
+
+              for (var bKey in $scope.dataSet.attributeOptions[1].options) {
+                var B = $scope.dataSet.attributeOptions[1].options[bKey];
+                console.log("Expanding A,B");
+                expand(A, B);
+              }
+            }
+          }
+
+          $scope.formData.DefaultVariant = $scope.formData.Variants[0];
+        }, true); //end of $watch
+
+      } //end of watch func
+
+    $scope.overview = {}
+
+    $scope.formData = {
+      Brand: {
+        id: null
+      },
+      MasterVariant: {
+        DimensionUnit: "MM",
+        WeightUnit: "G",
+        StockType: "Stock"
+      },
+      ShippingMethod: "1",
+      AttributeSet: {
+        AttributeSetTagMaps: []
+      },
+      RelatedProducts: [],
+      MasterImages: [],
+      MasterImages360: [],
+      VideoLinks: [],
+      Variants: [],
+      GlobalCategories: [null, null, null],
+      LocalCategories: [null, null, null],
+      SEO: {
+        ProductBoostingWeight: 5000
+      },
+      ControlFlags: [],
+      Keywords: []
+    };
+
+    //Variation Factor (lhs) Indices are used as index
+    //for ng-repeat in variation tab
+    $scope.variationFactorIndices = {};
+    $scope.variationFactorIndices.iterator = [0];
+    $scope.variationFactorIndices.length = function() {
+      return $scope.variationFactorIndices.iterator.length;
+    }
+    $scope.variationFactorIndices.popSecond = function() {
+      $scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop();
+      $scope.dataSet.attributeOptions[1].options = [];
+    }
+    $scope.variationFactorIndices.pushSecond = function() {
+      $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1);
+    }
+
+    //TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
+    //$scope._attrEnTh = function (t) { return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
+    $scope.isFreeTextInput = util.isFreeTextDataType;
+    $scope.isListInput = util.isListDataType;
+    $scope.isHtmlInput = util.isHtmlDataType;
+
+    //CK editor options
+    $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
+
+    $scope.pageState = {
+      loading: {
+        state: true,
+        message: 'Loading..'
+      },
+      load: function(msg) {
+        $scope.pageState.loading.message = msg;
+        $scope.pageState.loading.state = true;
+      },
+      reset: function() {
+        $scope.alert.close();
+        $scope.pageState.loading.state = false;
+      }
+    };
+
+    $scope.breadcrumbs = {
+      globalCategory: null
+    };
+    $scope.preview = function() {
+      return console.log($scope.formData);
+    };
+
+    $scope.refreshRelatedProducts = function(q) {
+      return Product.getAll({
+        searchText: q,
+        pageSize: 4
+      }).then(function(ds) {
+        $scope.dataSet.RelatedProducts = ds.data;
+      });
+    };
+
+    $scope.refreshBrands = function(q) {
+      if (q == "" || !q || q == null) return;
+      $scope.dataSet.Brands = [{
+        BrandId: -1,
+        BrandNameEn: "Searching..",
+        disabled: true
+      }];
+
+      Brand.getAll({
+        pageSize: 10,
+        searchText: q
+      }).then(function(ds) {
+        $scope.dataSet.Brands = ds.data;
+      });
+    };
+
+    $scope.$watch('formData.MasterVariant.SalePrice', function() {
+      var form = $scope.addProductForm;
+      if (form.MasterVariant_SalePrice) form.MasterVariant_SalePrice.$setValidity("min", true);
+      if (!form.MasterVariant_SalePrice) return;
+      if ($scope.formData.MasterVariant.SalePrice == "") return;
+
+      if (Number($scope.formData.MasterVariant.SalePrice) >= Number($scope.formData.MasterVariant.OriginalPrice)) {
+        if (form.MasterVariant_SalePrice) form.MasterVariant_SalePrice.$setValidity("min", false);
+        form.MasterVariant_SalePrice.$error["min"] = "Sale Price must not exceed Original Price";
+      }
+    });
+
+    $scope.$watch('formData.ExpireDate', function() {
+      var form = $scope.addProductForm;
+      if (form.EffectiveDate == null) {
+        return
+      }
+      if (form.ExpireDate) form.ExpireDate.$setValidity("min", true);
+      if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
+        if (!form.ExpireDate) return;
+        if (form.ExpireDate) form.ExpireDate.$setValidity("min", false);
+        form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
+      }
+    });
+
+    var manualValidate = function(Status) {
+      var mat = [];
+
+      if (Status == 'WA') {
+        if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == "") {
+          mat.push("Missing Description (Thai)");
+        }
+
+        if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == "") {
+          mat.push("Missing Description (English)");
+        }
+
+        if (!$scope.formData.Brand.BrandId) {
+          mat.push("Brand is Missing");
+        }
+      }
+
+      var cnt = $scope.formData.Variants.reduce(function(total, x) {
+        return x.Visibility ? total + 1 : total
+      }, 0);
+
+      if (cnt == 0 && $scope.formData.Variants.length > 0) {
+        mat.push("At least one variant must be visible.");
+      }
+
+      if ($scope.formData.ExpireDate && $scope.formData.ExpireDate <= $scope.formData.EffectiveDate) {
+        mat.push("Effective date/time must come before expire date/time.");
+      }
+
+      return mat;
+    };
+
+
+    /*
+     *  Publish (both Draft and WA)
+     */
+    $scope.publish = function(Status) {
+
+      $scope.pageState.reset();
+      $scope.pageState.load('Validating..');
+
+      $scope.onPublishing = (Status == "WA");
+      //On click validation
+      var validateMat = manualValidate(Status);
+      if (validateMat.length > 0) {
+        $scope.pageState.reset();
+        $scope.alert.error(validateMat);
+        return;
+      }
+
+      if ($scope.addProductForm.$invalid) {
+        $scope.pageState.reset();
+        var requiredMissing = ('required' in $scope.addProductForm.$error);
+        if (Status == 'DF' && requiredMissing) {
+          $scope.alert.error("Unable to save. Please make sure that Product Name (Thai), Product Name (English), and Original Price are filled correctly.");
+        } else if (Status == 'WA' && requiredMissing) {
+          $scope.alert.error("Unable to publish because you are missing required fields");
+        } else {
+          $scope.alert.error("Unable to save. Please make sure all fields have no error.");
+        }
+        return;
+      }
+
+      $scope.pageState.load('Publishing..');
+      console.log("Publishing with Status = ", Status);
+
+      var apiRequest = Product.serialize($scope.formData);
+      Product.publish(apiRequest, Status).then(function(res) {
+        $scope.pageState.reset();
+        if (res.ProductId) {
+          $scope.overview = res;
+          $scope.dataSet.attributeOptions = angular.copy(protoAttributeOptions); //will trigger watchvariantchange
+          var catId = Number(res.GlobalCategory);
+          $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function() {
+            $scope.formData.ProductId = Number(res.ProductId);
+            $scope.pageState.reset();
+            $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
+            ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
+            ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
+          });
+          $scope.addProductForm.$setPristine(true);
+        } else {
+          $scope.alert.error('Unable to save because ' + (res.message || res.Message));
+          $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
+        }
+      }, function(er) {
+        $scope.pageState.reset();
+        $scope.alert.error('Unable to save because ' + (er.message || er.Message));
+        $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
+      });
+
+    };
+
+    $scope.uploader = ImageService.getUploader('/ProductImages', {
+      queueLimit: QUEUE_LIMIT
+    });
+
+    $scope.uploader.filters.push({
+      'name': 'enforceMaxFileSize',
+      'fn': function(item) {
+        return item.size <= MAX_FILESIZE;
+      }
+    });
+
+    $scope.uploader360 = ImageService.getUploader('/ProductImages', {
+      queueLimit: QUEUE_LIMIT_360
+    });
+
+    $scope.init = function(viewBag) {
+      //TODO: Refactor, use better callback mechanism
+      if (!angular.isObject(viewBag)) throw new KnownException("View bag is corrupted");
+
+      var shopId = $rootScope.Profile.Shop.ShopId; //TODO: Get from user
+      var _editMode = ("productId" in viewBag)
+      for (var page in tabPage) {
+        tabPage[page].angular();
+      }
+
+      if (_editMode) {
+        var productId = viewBag.productId;
+        $scope.pageState.load('Loading Product..');
+
+        Product.getOne(productId)
+          .then(function(inverseFormData) {
+            $scope.overview = angular.copy(inverseFormData);
+            var catId = Number(inverseFormData.GlobalCategory);
+            $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs, $scope.controlFlags,
+              $scope.variationFactorIndices, inverseFormData).then(function() {
+              $scope.formData.ProductId = Number(productId);
+              $scope.pageState.reset();
+              watchVariantChanges();
+              ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
+              ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
+            });
+          }, function(error) {
+            throw new KnownException("Unable to fetch product with id " + productId);
+          });
+
+      } else if ('catId' in viewBag) {
+        var catId = Number(viewBag.catId);
+        $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs,
+          $scope.controlFlags, $scope.variationFactorIndices).then(function() {
+          $scope.pageState.reset();
+          watchVariantChanges();
+          ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
+          ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
+        });
+      } else {
+        throw new KnownException("Invalid mode, viewBag garbage");
+      }
+
+      //Load Local Cat
+      LocalCategoryService.list().then(function(data) {
+        $scope.dataSet.LocalCategories = Category.transformNestedSetToUITree(data);
+      });
+    }
+
+    var tabPage = {};
+
+    tabPage.images = {
+      angular: function() {
+
+        /**
+         * IMAGE THUMBNAIL EVENTS
+         */
+        $scope.$on('left', function(evt, item, array, index) {
+          var to = index - 1;
+          if (to < 0) to = array.length - 1;
+
+          var tmp = array[to];
+          array[to] = item;
+          array[index] = tmp;
+        });
+        $scope.$on('right', function(evt, item, array, index) {
+          var to = index + 1;
+          if (to >= array.length) to = 0;
+
+          var tmp = array[to];
+          array[to] = item;
+          array[index] = tmp;
+        });
+        $scope.$on('delete', function(evt, item, array, index) {
+          array.splice(index, 1);
+        });
+        $scope.$on('zoom', function(evt, item, array, index) {
+          //Should use angular way, but ok whatever
+          $('#product-image-zoom img').attr('src', item.url);
+          $('#product-image-zoom').modal('show');
+        });
+      }
+    };
+
+    tabPage.category = {
+      angular: function() {
+        //For viewing only
+        $scope.viewCategoryColumns = [];
+        $scope.viewCategorySelected = null;
+        $scope.viewCategoryIndex = 0;
+        $scope.selectCategory = angular.noop;
+
+        //Events
+        $scope.$on('openGlobalCat', function(evt, item, indx) {
+          console.log('openGloCat', item, $scope.dataSet.GlobalCategories);
+          $scope.viewCategoryColumns = Category.createColumns(item, $scope.dataSet.GlobalCategories);
+          $scope.viewCategorySelected = item;
+          $scope.viewCategoryIndex = indx;
+          $scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function(selectedItem) {
+            $scope.viewCategorySelected = selectedItem;
+          });
+        });
+        $scope.$on('deleteGlobalCat', function(evt, indx) {
+          $scope.formData.GlobalCategories[indx] = null;
+        });
+        $scope.$on('selectGlobalCat', function(evt, row, indx, parentIndx) {
+          $scope.selectCategory(row, indx, parentIndx);
+        });
+        $scope.$on('saveGlobalCat', function(evt) {
+          $scope.formData.GlobalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected;
+        });
+
+        //Events
+        $scope.$on('openLocalCat', function(evt, item, indx) {
+          console.log(item, $scope.dataSet.LocalCategories);
+          $scope.viewCategoryColumns = Category.createColumns(item, $scope.dataSet.LocalCategories);
+          $scope.viewCategorySelected = item;
+          $scope.viewCategoryIndex = indx;
+          $scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function(selectedItem) {
+            $scope.viewCategorySelected = selectedItem;
+          });
+        });
+        $scope.$on('deleteLocalCat', function(evt, indx) {
+          $scope.formData.LocalCategories[indx] = null;
+        });
+        $scope.$on('selectLocalCat', function(evt, row, indx, parentIndx) {
+          $scope.selectCategory(row, indx, parentIndx);
+        });
+        $scope.$on('saveLocalCat', function(evt) {
+          $scope.formData.LocalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected;
+        });
+      }
+    }
+
+    tabPage.variation = {
+
+      angular: function() {
+        /**
+         * This part handles when user click on More Detail and open pair form
+         */
+
+        $scope.uploaderModal = ImageService.getUploader('/ProductImages', {
+          queueLimit: QUEUE_LIMIT
+        });
+
+        $scope.uploaderModal.filters.push({
+          'name': 'enforceMaxFileSize',
+          'fn': function(item) {
+            return item.size <= MAX_FILESIZE;
+          }
+        });
+
+        $scope.$on('openPairModal', function(evt, pair, array, index) {
+          //Define if not defined
+
+          if (angular.isUndefined(pair.Images)) {
+            pair.Images = [];
+          }
+          if (angular.isUndefined(pair.queue)) {
+            pair.queue = [];
+          }
+          //Modal target (for viewing pair)
+          $scope.pairModal = angular.copy(pair);
+          $scope.pairModal.alert = new NcAlert();
+          $scope.pairIndex = index;
+          $scope.uploaderModal.queue = $scope.pairModal.queue;
+          ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail);
+        });
+
+        $scope.$on('savePairModal', function(evt) {
+          console.log("adform", $scope.addProductVariantForm.$invalid);
+
+          if (!$scope.pairModal._override.uploadProductImages) {
+            $scope.pairModal.Images = [];
+          }
+
+          if (!$scope.pairModal._override.embedVideo) {
+            $scope.pairModal.VideoLinks = [];
+          }
+
+          if (!$scope.pairModal._override.description) {
+            $scope.pairModal.DescriptionFullEn = null;
+            $scope.pairModal.DescriptionFullTh = null;
+            $scope.pairModal.ShortDescriptionEn = null;
+            $scope.pairModal.ShortDescriptionTh = null;
+          }
+
+          if (!$scope.pairModal._override.packageDetail) {
+            $scope.pairModal.Length = null;
+            $scope.pairModal.Height = null;
+            $scope.pairModal.Width = null;
+            $scope.pairModal.Length = null;
+
+          }
+
+          $scope.formData.Variants[$scope.pairIndex] = $scope.pairModal;
+        });
+      }
+    };
+
+
+
+
+  }
+];
 
 },{"angular":152}],28:[function(require,module,exports){
 var angular = require('angular');
@@ -2745,7 +2769,7 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
     $scope.productStatus = config.PRODUCT_STATUS;
 
     $scope.onError = function(item, response) {
-    	item.alert.error('<span style="font-weight:bold;">Fail to upload photos</span><br/>' + common.getError(response));
+    	item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + common.getError(response));
 	};
     $scope.isDisabled = function(product) {
     	return product.Status == 'WA' || product.Status == 'AP';
@@ -2791,7 +2815,7 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
     		return '';
     	}
     	return 'disabled';
-    };	
+    };
     $scope.save = function() {
 		//Set dirty to false after you save
 		if($scope.dirty) {
@@ -2813,6 +2837,7 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
     	$scope.ignored = false;
     }, true);
 }];
+
 },{}],32:[function(require,module,exports){
 var angular = require('angular');
 
@@ -4737,9 +4762,15 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     // };
 
     service.variant.toString = function (a, b) {
-        if (!("ValueEn" in a) || !a.ValueEn) return "[API Error]";
-        if (!('ValueEn' in b) || !b.ValueEn) return a.ValueEn.trim();
-        return (a.ValueEn.trim() + (b.ValueEn == '' ? '' : (", " + b.ValueEn.trim())));
+        // if (!("ValueEn" in a) || !a.ValueEn) return "[API Error]";
+        // if (!('ValueEn' in b) || !b.ValueEn) return a.ValueEn.trim();
+
+        var left = null;
+        var right = null;
+        left = (a.ValueEn || a.AttributeValueEn);
+        right = (b.ValueEn || b.AttributeValueEn);
+        console.log(a,b, 'toString variant');
+        return left + (right ? ", " + right : "");
     };
 
     service.uniqueSet = function (a, prop) {
@@ -6576,7 +6607,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncImageGallery',
-    "<div><p style=\"width:margin-bottom: 5px; margin-left:15px\">Feature Image</p><ul class=image-management-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ getSrc(image) }}\"></div><div class=actions-wrapper><a class=\"action {{ isDisabled(image) ? 'disabled' : ''}}\" ng-repeat=\"action in options.actions\" style=\"width: {{100 / options.actions.length }}%\" ng-click=\"call(action, image, model)\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div>"
+    "<div><p class=featured-image-wrapper>Featured Image</p><ul class=image-management-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ getSrc(image) }}\"></div><div class=actions-wrapper><a class=\"action {{ isDisabled(image) ? 'disabled' : ''}}\" ng-repeat=\"action in options.actions\" style=\"width: {{100 / options.actions.length }}%\" ng-click=\"call(action, image, model)\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div>"
   );
 
 
@@ -8379,626 +8410,635 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 },{}],124:[function(require,module,exports){
 //Products Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config', 'KnownException',
-    function ($http, common, util, LocalCategory, Brand, config, KnownException) {
-        'use strict';
-        var service = common.Rest('/ProductStages');
+  function($http, common, util, LocalCategory, Brand, config, KnownException) {
+    'use strict';
+    var service = common.Rest('/ProductStages');
 
-        service.downloadTemplate = function(globalCat, aset){
-          var req = {
-              method: 'POST',
-              url: '/ProductStages/Template',
-              data: {
-                GlobalCategories: [globalCat],
-                AttributeSets: [aset]
-              }
-          };
-          return common.makeRequest(req);
+    service.downloadTemplate = function(globalCat, aset) {
+      var req = {
+        method: 'POST',
+        url: '/ProductStages/Template',
+        data: {
+          GlobalCategories: [globalCat],
+          AttributeSets: [aset]
         }
-
-        service.export = function(ps){
-          var req = {
-              method: 'POST',
-              url: '/ProductStages/Export',
-              data: ps
-          };
-          return common.makeRequest(req);
-        };
-
-        service.approve = function(obj) {
-            return common.makeRequest({
-                method: 'PUT',
-                url: '/ProductStages/Approve',
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            });
-        };
-        service.reject = function(obj) {
-            return common.makeRequest({
-                method: 'PUT',
-                url: '/ProductStages/Reject',
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            });
-        };
-
-        service.getOne = function (productId) {
-            var req = {
-                method: 'GET',
-                url: '/ProductStages/' + productId
-            };
-            return common.makeRequest(req);
-        };
-
-        service.getAllVariants = function (parameters) {
-            var req = {
-                method: 'GET',
-                url: '/ProductStages/All',
-                params: parameters
-            };
-
-            return common.makeRequest(req);
-        }
-
-        service.updateAllVariants = function (obj) {
-            var req = {
-                method: 'PUT',
-                url: '/ProductStages/All/Image',
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            };
-
-            return common.makeRequest(req);
-        }
-
-        service.duplicate = function (ProductId) {
-            //this URL structure is weird dont u think
-            var req = {
-                method: 'POST',
-                url: '/ProductStages/' + ProductId
-            };
-
-            return common.makeRequest(req);
-        };
-
-        service.getAll = function (parameters) {
-            var req = {
-                method: 'GET',
-                url: '/ProductStages/',
-                params: {
-                    _order: parameters.orderBy || 'ProductId',
-                    _limit: parameters.pageSize || 10,
-                    _offset: parameters.page * parameters.pageSize || 0,
-                    _direction: parameters.direction || 'asc',
-                    _filter: parameters.filter || 'ALL',
-                    searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined
-                }
-            };
-
-            return common.makeRequest(req);
-        };
-
-        service.export = function (tobj) {
-            var path = '/ProductStages/Export';
-            return common.makeRequest({
-                responseType: 'arraybuffer',
-                method: 'POST',
-                url: path,
-                data: tobj
-            });
-        };
-
-        service.publish = function (tobj, Status) {
-            tobj.Status = Status;
-            var mode = 'POST';
-            var path = '/ProductStages';
-            if (tobj.ProductId) {
-                mode = 'PUT';
-                path = path + '/' + tobj.ProductId;
-            }
-            return common.makeRequest({
-                method: mode,
-                url: path,
-                data: tobj
-            });
-        };
-
-
-        service.bulkPublish = function (tobj) {
-            return common.makeRequest({
-                method: 'POST',
-                url: '/ProductStages/Publish',
-                data: tobj
-            });
-        };
-
-        service.visible = function (obj) {
-            return common.makeRequest({
-                method: 'PUT',
-                url: '/ProductStages/Visibility',
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            });
-        };
-        service.deleteBulk = function (arr) {
-            return common.makeRequest({
-                method: 'DELETE',
-                url: '/ProductStages',
-                data: arr,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            });
-        };
-
-        var StatusLookup = {};
-        config.PRODUCT_STATUS.forEach(function (object) {
-            StatusLookup[object.value] = object;
-        });
-        service.getStatus = function (abbreviation) {
-            return StatusLookup[abbreviation];
-        }
-
-        service.serialize = function (fd) {
-            var hasVariants = (!util.nullOrUndefined(fd.Variants) && fd.Variants.length > 0);
-
-            //Cleaned data
-            var clean = {};
-            clean.Variants = [];
-
-            var objectMapper = {
-                VideoLinks: function (vlink) {
-                    var f = [];
-                    Object.keys(vlink).forEach(function (key) {
-                        var value = vlink[key];
-                        var obj = {
-                            'Url': value
-                        };
-
-                        f.push(obj);
-                    });
-                    return f;
-                }
-            };
-            //Mapper functions
-            var mapper = {
-                Images: function (image, pos) {
-                    if (image.$id) delete image.$id;
-                    image.position = pos;
-                    return image;
-                },
-                Variants: function (_variant) {
-                    var variant = angular.copy(_variant);
-
-                    if (util.nullOrUndefined(variant['VideoLinks'])) variant.VideoLinks = [];
-                    if (util.nullOrUndefined(variant['VideoLinks'])) variant.Images = [];
-                    if ("queue" in variant) delete variant.queue; //circular
-
-                    variant.Visibility = variant.Visibility;
-                    variant.Images = (variant.Images || []).map(mapper.Images);
-                    variant.Images360 = []; //for future
-
-                    try {
-                        variant.VideoLinks = objectMapper.VideoLinks(variant.VideoLinks);
-                    } catch (ex) {
-                        variant.VideoLinks = [];
-                    }
-
-                    return variant;
-                },
-                Categories: function (lcat) {
-                    if (lcat == null) return null;
-                    return {
-                        CategoryId: lcat.CategoryId
-                    };
-                }
-            }
-
-            try {
-                clean.GlobalCategories = fd.GlobalCategories.map(mapper.Categories);
-            } catch (ex) {
-                console.warn("Unable to map Global Cat Array, Global Cat array is mandatory", ex);
-            }
-
-            try {
-                clean.LocalCategories = fd.LocalCategories.map(mapper.Categories);
-            } catch (ex) {
-                console.warn("Unable to map Local Cat array, Initializing", ex);
-                clean.LocalCategories = [null, null, null];
-            }
-
-            try {
-                fd.Keywords = util.uniqueSet(fd.Keywords);
-                clean.Keywords = (!fd.Keywords ? "" : fd.Keywords.join(','));
-            } catch (ex) {
-                console.warn("Keyword not set, will not serialize", ex);
-            }
-
-            try {
-                clean.AttributeSet = {
-                    AttributeSetId: fd.AttributeSet.AttributeSetId
-                };
-            } catch (ex) {
-                console.warn("AttributeSet not set, will not serialize", ex);
-            }
-
-            try {
-                clean.MasterAttribute = [];
-                Object.keys(fd.MasterAttribute).forEach(function (key) {
-                    if(fd.MasterAttribute[key].AttributeValueId){
-                      var g  = {
-                          AttributeValues: [],
-                          ValueEn: fd.MasterAttribute[key].AttributeValueEn
-                      };
-
-                      g.AttributeValues.push(fd.MasterAttribute[key]);
-                      clean.MasterAttribute.push(g);
-                    }else{
-                      clean.MasterAttribute.push({
-                          AttributeValues: [],
-                          ValueEn: fd.MasterAttribute[key]
-                      });
-                    }
-
-                });
-            } catch (ex) {
-                console.warn("Master Attributes", ex);
-            }
-
-            try {
-                clean.Remark = fd.Remark;
-                clean.PrepareDay = fd.PrepareDay || 0;
-                clean.SEO = fd.SEO;
-                clean.ControlFlags = fd.ControlFlags;
-                clean.Brand = fd.Brand;
-                clean.ShippingMethod = fd.ShippingMethod;
-	              clean.EffectiveDate = null;
-                clean.ExpireDate = null;
-                clean.ExpireTime = null;
-                clean.ExpireDate = null;
-
-                if(fd.ExpireDate && fd.EffectiveDate){
-                    var cpdate = angular.copy(fd.ExpireDate);
-                    clean.ExpireDate = moment(cpdate).format('LL');
-                    clean.ExpireTime = moment(cpdate).format('HH:mm:ss');
-
-                    cpdate = angular.copy(fd.EffectiveDate);
-
-                    clean.EffectiveDate = moment(cpdate).format('LL');
-                    clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
-                }
-
-
-                console.log('1-1', clean);
-                //clean.EffectiveDate = moment(fd.EffectiveDate + " " + fd.EffectiveTime);
-                //clean.EffectiveTime = fd.EffectiveTime;
-                //clean.ExpireDate = moment(fd.ExpireDate + " " + fd.ExpireTime);
-                //clean.ExpireTime = fd.ExpireTime;
-            } catch (ex) {
-                console.warn("One-To-One Fields", ex);
-            }
-
-            try {
-                //Move first entry of Categories out into Category
-                clean.GlobalCategory = clean.GlobalCategories[0].CategoryId;
-                clean.GlobalCategories.shift();
-
-
-            } catch (ex) {
-                console.warn("shift global cat", ex);
-            }
-
-            try {
-                clean.LocalCategory = clean.LocalCategories[0].CategoryId;
-                clean.LocalCategories.shift();
-
-
-            } catch (ex) {
-                console.warn("shfiting local cat", ex);
-                //Local cat can be null
-                clean.LocalCategories = [null, null];
-                clean.LocalCategory = null;
-            }
-
-            try {
-                clean.RelatedProducts = [];
-                Object.keys(fd.RelatedProducts || []).forEach(function (key) {
-                    clean.RelatedProducts.push(
-                        fd.RelatedProducts[key]
-                        );
-                });
-            } catch (ex) {
-                console.warn("Organizing Related Products", ex);
-            }
-
-            //MasterVariant
-            clean.MasterVariant = fd.MasterVariant;
-
-            if (fd.ProductId) clean.ProductId = fd.ProductId;
-
-            try {
-                clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
-            } catch (ex) {
-                clean.MasterVariant.VideoLinks = [];
-            }
-
-            try {
-                clean.MasterVariant.Images360 = (fd.MasterImages360 | []).map(mapper.Images);
-            } catch (ex) {
-                clean.MasterVariant.Images360 = [];
-            }
-
-            try {
-                clean.MasterVariant.Images = (fd.MasterImages || []).map(mapper.Images);
-            } catch (ex) {
-                clean.MasterVariant.Images = [];
-            }
-
-            try {
-                if (hasVariants) {
-                    var masterProps = [];
-                    clean.Variants = (fd.Variants || []).map(mapper.Variants);
-                    //Find DefaultVariant
-                    var target = fd.DefaultVariant.text;
-                    clean.Variants.forEach(function (vari, index) {
-                        vari.SafetyStock = 0; //Placeholder, no UI yet
-                        vari.StockType = 0; //Placeholder
-                        vari.DefaultVariant = false;
-                        if (vari.text == target) {
-                            clean.Variants[index].DefaultVariant = true;
-                        }
-                    });
-                }
-            } catch (ex) {
-                console.warn("Variant Distribute", ex);
-            }
-
-            //HardCoD
-            clean.SellerId = 1;
-            clean.ShopId = 1;
-
-            return clean;
-        }
-
-        service.deserialize = function (invFd, FullAttributeSet) {
-            console.log('FullAttributeSet', FullAttributeSet);
-
-            invFd.AttributeSet = FullAttributeSet;
-            invFd.PrepareDay = invFd.PrepareDay || '';
-
-            if (invFd.EffectiveDate != "" && invFd.EffectiveDate != null) {
-                invFd.EffectiveDate = moment(invFd.EffectiveDate + " " + invFd.EffectiveTime).toDate();
-                invFd.EffectiveTime = invFd.EffectiveTime;
-            }
-
-            if (invFd.ExpireDate != "" && invFd.ExpireDate != null) {
-                invFd.ExpireDate = moment(invFd.ExpireDate + " " + invFd.ExpireTime).toDate() ;
-                invFd.ExpireTime = invFd.ExpireTime;
-            }
-
-            var BrandId = invFd.Brand.BrandId;
-            Brand.getOne(BrandId).then(function (data) {
-                invFd.Brand = data;
-                delete invFd.Brand.$id;
-                invFd.Brand.id = BrandId;
-            }, function () {
-                console.log("brand resolve failure");
-                invFd.Brand = {
-                    BrandId: null,
-                    BrandNameEn: 'Please select brand..'
-                };
-            });
-
-            var invMapper = {
-                VideoLinks: function (m) {
-                    return m.Url;
-                },
-                Variants: function (m) {
-                    m.Visibility = m.Visibility;
-                    m.Images = m.Images || [];
-                    m.Images360 = m.Images360 || [];
-                    m.WeightUnit = (m.WeightUnit || "").trim();
-                    m.DimensionUnit = (m.DimensionUnit || "").trim();
-                    m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
-                    return m;
-                }
-            };
-
-            try {
-                var DefaultVariantIndex = (invFd.Variants || []).map(function (o) {
-                    return o.DefaultVariant || false;
-                }).indexOf(true);
-
-                invFd.DefaultVariant = invFd.Variants[DefaultVariantIndex];
-            } catch (er) {
-                console.warn("Unable to set DefaultVariant, will not set", er);
-            }
-
-            try {
-                invFd.Variants = (invFd.Variants || []).map(invMapper.Variants);
-            } catch (er) {
-                console.warn("Unable to set Variants, will set empty", er);
-                invFd.Variants = [];
-            }
-
-            var MasterAttribute = {};
-            try {
-                invFd.MasterAttribute.forEach(function (ma) {
-                    MasterAttribute[ma.AttributeId] = ma.ValueEn;
-                });
-            } catch (ex) {
-                console.warn("Unable to set MasterAttribute", ex);
-            }
-            invFd.MasterAttribute = MasterAttribute;
-
-
-            if (!invFd.LocalCategories) {
-                invFd.LocalCategories = [];
-            }
-
-            if (invFd.LocalCategories.length == 0) {
-                invFd.LocalCategories = [null, null, null];
-            } else {
-                var kmax = invFd.LocalCategories.length;
-                for (var k = 0; k < 3 - kmax; k++) {
-                    console.log("pushing null")
-                    invFd.LocalCategories.push(null);
-                }
-            }
-
-            if (invFd.LocalCategory) {
-                LocalCategory.getOne(invFd.LocalCategory).then(function (locat) {
-                    invFd.LocalCategories.unshift(locat);
-
-                    if (invFd.LocalCategories.length > 3) {
-                        invFd.LocalCategories.pop();
-                    }
-
-                })
-            }
-
-            //TODO: replace with try-catch
-            if (invFd.MasterVariant.VideoLinks) {
-                invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
-            } else {
-                invFd.MasterVariant.VideoLinks = [];
-            }
-
-
-            invFd.Variants.forEach(function (variant, index) {
-                try {
-                    variant.VideoLinks = (variant.VideoLinks || []).map(invMapper.VideoLinks);
-                } catch (ex) {
-                    variant.VideoLinks = [];
-                }
-            });
-
-
-
-            if (!invFd.GlobalCategories) {
-                invFd.GlobalCategories = [null, null, null];
-            }
-
-            if (invFd.GlobalCategories.length == 0) {
-                invFd.GlobalCategories = [null, null, null];
-            } else {
-                var kmax = invFd.GlobalCategories.length;
-                for (var k = 0; k < 3 - kmax; k++) {
-                    console.log("pushing null")
-                    invFd.GlobalCategories.push(null);
-                }
-            }
-
-            invFd.GlobalCategories.unshift({
-                CategoryId: invFd.GlobalCategory
-            });
-
-            if (invFd.GlobalCategories.length > 3) {
-                invFd.GlobalCategories.pop();
-            }
-
-            delete invFd.GlobalCategory;
-            delete invFd.LocalCategory;
-
-
-            //TODO: Just change ngmodel to bind to MasterVariant.MasterImages Directly
-            invFd.MasterImages = invFd.MasterVariant.Images || [];
-            delete invFd.MasterVariant.Images;
-            invFd.MasterImages360 = invFd.MasterVariant.Images360 || [];
-            delete invFd.MasterVariant.Images360;
-
-            try {
-                invFd.MasterVariant.WeightUnit = invFd.MasterVariant.WeightUnit.trim();
-            } catch (ex) {
-                invFd.MasterVariant.WeightUnit = undefined;
-            }
-
-            try {
-                invFd.MasterVariant.DimensionUnit = invFd.MasterVariant.DimensionUnit.trim();
-            } catch (ex) {
-                invFd.MasterVariant.DimensionUnit = undefined;
-            }
-
-            try {
-                var _split = invFd.Keywords.trim().split(",");
-                if (_split[0] == "") {
-                    invFd.Keywords = [];
-                } else {
-                    invFd.Keywords = util.uniqueSet(_split);
-                }
-            } catch (ex) {
-                invFd.Keywords = [];
-            }
-
-            if (invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; //TODO: Hardcode
-
-            var transformed = {
-                formData: invFd
-            };
-
-
-            if (invFd.Variants.length > 0) {
-
-                var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId']);
-
-                //Generate attributeOptions
-                var map0_index = FullAttributeSet.AttributeSetMaps.map(function (a) {
-                    return a.Attribute.AttributeId;
-                }).indexOf(invFd.Variants[0].FirstAttribute.AttributeId);
-
-                var map1_index, SecondArray;
-                if (HasTwoAttr) {
-                    map1_index = FullAttributeSet.AttributeSetMaps.map(function (a) {
-                        return a.Attribute.AttributeId;
-                    }).indexOf(invFd.Variants[0].SecondAttribute.AttributeId);
-                }
-
-                var FirstArray = invFd.Variants.map(function (variant) {
-                    return variant.FirstAttribute.ValueEn.trim();
-                });
-
-                if (HasTwoAttr) {
-                    SecondArray = invFd.Variants.map(function (variant) {
-                        return variant.SecondAttribute.ValueEn.trim();
-                    });
-                }
-
-                //Get updated map from invFd.AttributeSet
-                //and load factorization array
-                transformed.attributeOptions = [{
-                    Attribute: FullAttributeSet.AttributeSetMaps[map0_index].Attribute,
-                    options: util.uniqueSet(FirstArray)
-                }];
-
-                if (HasTwoAttr) {
-                    transformed.attributeOptions.push({
-                        Attribute: FullAttributeSet.AttributeSetMaps[map1_index].Attribute,
-                        options: util.uniqueSet(SecondArray)
-                    });
-                } else {
-                    transformed.attributeOptions.push({
-                        Attribute: null,
-                        options: []
-                    });
-                }
-
-
-            }
-
-            console.log('transformation array', transformed);
-
-            return transformed;
-        };
-
-        return service;
+      };
+      return common.makeRequest(req);
     }
+
+    service.export = function(ps) {
+      var req = {
+        method: 'POST',
+        url: '/ProductStages/Export',
+        data: ps
+      };
+      return common.makeRequest(req);
+    };
+
+    service.approve = function(obj) {
+      return common.makeRequest({
+        method: 'PUT',
+        url: '/ProductStages/Approve',
+        data: obj,
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8'
+        }
+      });
+    };
+    service.reject = function(obj) {
+      return common.makeRequest({
+        method: 'PUT',
+        url: '/ProductStages/Reject',
+        data: obj,
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8'
+        }
+      });
+    };
+
+    service.getOne = function(productId) {
+      var req = {
+        method: 'GET',
+        url: '/ProductStages/' + productId
+      };
+      return common.makeRequest(req);
+    };
+
+    service.getAllVariants = function(parameters) {
+      var req = {
+        method: 'GET',
+        url: '/ProductStages/All',
+        params: parameters
+      };
+
+      return common.makeRequest(req);
+    }
+
+    service.updateAllVariants = function(obj) {
+      var req = {
+        method: 'PUT',
+        url: '/ProductStages/All/Image',
+        data: obj,
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8'
+        }
+      };
+
+      return common.makeRequest(req);
+    }
+
+    service.duplicate = function(ProductId) {
+      //this URL structure is weird dont u think
+      var req = {
+        method: 'POST',
+        url: '/ProductStages/' + ProductId
+      };
+
+      return common.makeRequest(req);
+    };
+
+    service.getAll = function(parameters) {
+      var req = {
+        method: 'GET',
+        url: '/ProductStages/',
+        params: {
+          _order: parameters.orderBy || 'ProductId',
+          _limit: parameters.pageSize || 10,
+          _offset: parameters.page * parameters.pageSize || 0,
+          _direction: parameters.direction || 'asc',
+          _filter: parameters.filter || 'ALL',
+          searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined
+        }
+      };
+
+      return common.makeRequest(req);
+    };
+
+    service.export = function(tobj) {
+      var path = '/ProductStages/Export';
+      return common.makeRequest({
+        responseType: 'arraybuffer',
+        method: 'POST',
+        url: path,
+        data: tobj
+      });
+    };
+
+    service.publish = function(tobj, Status) {
+      tobj.Status = Status;
+      var mode = 'POST';
+      var path = '/ProductStages';
+      if (tobj.ProductId) {
+        mode = 'PUT';
+        path = path + '/' + tobj.ProductId;
+      }
+      return common.makeRequest({
+        method: mode,
+        url: path,
+        data: tobj
+      });
+    };
+
+
+    service.bulkPublish = function(tobj) {
+      return common.makeRequest({
+        method: 'POST',
+        url: '/ProductStages/Publish',
+        data: tobj
+      });
+    };
+
+    service.visible = function(obj) {
+      return common.makeRequest({
+        method: 'PUT',
+        url: '/ProductStages/Visibility',
+        data: obj,
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8'
+        }
+      });
+    };
+    service.deleteBulk = function(arr) {
+      return common.makeRequest({
+        method: 'DELETE',
+        url: '/ProductStages',
+        data: arr,
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8'
+        }
+      });
+    };
+
+    var StatusLookup = {};
+    config.PRODUCT_STATUS.forEach(function(object) {
+      StatusLookup[object.value] = object;
+    });
+    service.getStatus = function(abbreviation) {
+      return StatusLookup[abbreviation];
+    }
+
+    service.serialize = function(fd) {
+      var hasVariants = (!util.nullOrUndefined(fd.Variants) && fd.Variants.length > 0);
+
+      //Cleaned data
+      var clean = {};
+      clean.Variants = [];
+
+      var objectMapper = {
+        VideoLinks: function(vlink) {
+          var f = [];
+          Object.keys(vlink).forEach(function(key) {
+            var value = vlink[key];
+            var obj = {
+              'Url': value
+            };
+
+            f.push(obj);
+          });
+          return f;
+        }
+      };
+      //Mapper functions
+      var mapper = {
+        Images: function(image, pos) {
+          if (image.$id) delete image.$id;
+          image.position = pos;
+          return image;
+        },
+        Variants: function(_variant) {
+          var variant = angular.copy(_variant);
+
+          if (util.nullOrUndefined(variant['VideoLinks'])) variant.VideoLinks = [];
+          if (util.nullOrUndefined(variant['VideoLinks'])) variant.Images = [];
+          if ("queue" in variant) delete variant.queue; //circular
+
+          variant.Visibility = variant.Visibility;
+          variant.Images = (variant.Images || []).map(mapper.Images);
+          variant.Images360 = []; //for future
+
+          try {
+            variant.VideoLinks = objectMapper.VideoLinks(variant.VideoLinks);
+          } catch (ex) {
+            variant.VideoLinks = [];
+          }
+
+          return variant;
+        },
+        Categories: function(lcat) {
+          if (lcat == null) return null;
+          return {
+            CategoryId: lcat.CategoryId
+          };
+        }
+      }
+
+      try {
+        clean.GlobalCategories = fd.GlobalCategories.map(mapper.Categories);
+      } catch (ex) {
+        console.warn("Unable to map Global Cat Array, Global Cat array is mandatory", ex);
+      }
+
+      try {
+        clean.LocalCategories = fd.LocalCategories.map(mapper.Categories);
+      } catch (ex) {
+        console.warn("Unable to map Local Cat array, Initializing", ex);
+        clean.LocalCategories = [null, null, null];
+      }
+
+      try {
+        fd.Keywords = util.uniqueSet(fd.Keywords);
+        clean.Keywords = (!fd.Keywords ? "" : fd.Keywords.join(','));
+      } catch (ex) {
+        console.warn("Keyword not set, will not serialize", ex);
+      }
+
+      try {
+        clean.AttributeSet = {
+          AttributeSetId: fd.AttributeSet.AttributeSetId
+        };
+      } catch (ex) {
+        console.warn("AttributeSet not set, will not serialize", ex);
+      }
+
+      try {
+        clean.MasterAttribute = [];
+        Object.keys(fd.MasterAttribute).forEach(function(key) {
+          if (fd.MasterAttribute[key].AttributeValueId) {
+            var g = {
+              AttributeValues: [],
+              AttributeId: fd.MasterAttribute[key].AttributeId,
+              ValueEn: fd.MasterAttribute[key].AttributeValueEn
+            };
+
+            g.AttributeValues.push(fd.MasterAttribute[key]);
+            clean.MasterAttribute.push(g);
+          } else {
+            clean.MasterAttribute.push({
+              AttributeValues: [],
+              AttributeId: Number(key),
+              ValueEn: fd.MasterAttribute[key]
+            });
+          }
+
+        });
+      } catch (ex) {
+        console.warn("Master Attributes", ex);
+      }
+
+      try {
+        clean.Remark = fd.Remark;
+        clean.PrepareDay = fd.PrepareDay || 0;
+        clean.SEO = fd.SEO;
+        clean.ControlFlags = fd.ControlFlags;
+        clean.Brand = fd.Brand;
+        clean.ShippingMethod = fd.ShippingMethod;
+        clean.EffectiveDate = null;
+        clean.ExpireDate = null;
+        clean.ExpireTime = null;
+        clean.ExpireDate = null;
+
+        if (fd.ExpireDate && fd.EffectiveDate) {
+          var cpdate = angular.copy(fd.ExpireDate);
+          clean.ExpireDate = moment(cpdate).format('LL');
+          clean.ExpireTime = moment(cpdate).format('HH:mm:ss');
+
+          cpdate = angular.copy(fd.EffectiveDate);
+
+          clean.EffectiveDate = moment(cpdate).format('LL');
+          clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
+        }
+
+
+        console.log('1-1', clean);
+        //clean.EffectiveDate = moment(fd.EffectiveDate + " " + fd.EffectiveTime);
+        //clean.EffectiveTime = fd.EffectiveTime;
+        //clean.ExpireDate = moment(fd.ExpireDate + " " + fd.ExpireTime);
+        //clean.ExpireTime = fd.ExpireTime;
+      } catch (ex) {
+        console.warn("One-To-One Fields", ex);
+      }
+
+      try {
+        //Move first entry of Categories out into Category
+        clean.GlobalCategory = clean.GlobalCategories[0].CategoryId;
+        clean.GlobalCategories.shift();
+
+
+      } catch (ex) {
+        console.warn("shift global cat", ex);
+      }
+
+      try {
+        clean.LocalCategory = clean.LocalCategories[0].CategoryId;
+        clean.LocalCategories.shift();
+
+
+      } catch (ex) {
+        console.warn("shfiting local cat", ex);
+        //Local cat can be null
+        clean.LocalCategories = [null, null];
+        clean.LocalCategory = null;
+      }
+
+      try {
+        clean.RelatedProducts = [];
+        Object.keys(fd.RelatedProducts || []).forEach(function(key) {
+          clean.RelatedProducts.push(
+            fd.RelatedProducts[key]
+          );
+        });
+      } catch (ex) {
+        console.warn("Organizing Related Products", ex);
+      }
+
+      //MasterVariant
+      clean.MasterVariant = fd.MasterVariant;
+
+      if (fd.ProductId) clean.ProductId = fd.ProductId;
+
+      try {
+        clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
+      } catch (ex) {
+        clean.MasterVariant.VideoLinks = [];
+      }
+
+      try {
+        clean.MasterVariant.Images360 = (fd.MasterImages360 | []).map(mapper.Images);
+      } catch (ex) {
+        clean.MasterVariant.Images360 = [];
+      }
+
+      try {
+        clean.MasterVariant.Images = (fd.MasterImages || []).map(mapper.Images);
+      } catch (ex) {
+        clean.MasterVariant.Images = [];
+      }
+
+      try {
+        if (hasVariants) {
+          var masterProps = [];
+          clean.Variants = (fd.Variants || []).map(mapper.Variants);
+          //Find DefaultVariant
+          var target = fd.DefaultVariant.text;
+          clean.Variants.forEach(function(vari, index) {
+            vari.SafetyStock = 0; //Placeholder, no UI yet
+            vari.StockType = 0; //Placeholder
+            vari.DefaultVariant = false;
+            if (vari.text == target) {
+              clean.Variants[index].DefaultVariant = true;
+            }
+          });
+        }
+      } catch (ex) {
+        console.warn("Variant Distribute", ex);
+      }
+
+      //HardCoD
+      clean.SellerId = 1;
+      clean.ShopId = 1;
+
+      return clean;
+    }
+
+    service.deserialize = function(invFd, FullAttributeSet) {
+      console.log('FullAttributeSet', FullAttributeSet);
+
+      invFd.AttributeSet = FullAttributeSet;
+      invFd.PrepareDay = invFd.PrepareDay || '';
+
+      if (invFd.EffectiveDate != "" && invFd.EffectiveDate != null) {
+        invFd.EffectiveDate = moment(invFd.EffectiveDate + " " + invFd.EffectiveTime).toDate();
+        invFd.EffectiveTime = invFd.EffectiveTime;
+      }
+
+      if (invFd.ExpireDate != "" && invFd.ExpireDate != null) {
+        invFd.ExpireDate = moment(invFd.ExpireDate + " " + invFd.ExpireTime).toDate();
+        invFd.ExpireTime = invFd.ExpireTime;
+      }
+
+      var BrandId = invFd.Brand.BrandId;
+      Brand.getOne(BrandId).then(function(data) {
+        invFd.Brand = data;
+        delete invFd.Brand.$id;
+        invFd.Brand.id = BrandId;
+      }, function() {
+        console.log("brand resolve failure");
+        invFd.Brand = {
+          BrandId: null,
+          BrandNameEn: 'Please select brand..'
+        };
+      });
+
+      var invMapper = {
+        VideoLinks: function(m) {
+          return m.Url;
+        },
+        Variants: function(m) {
+          m.Visibility = m.Visibility;
+          m.Images = m.Images || [];
+          m.Images360 = m.Images360 || [];
+          m.WeightUnit = (m.WeightUnit || "").trim();
+          m.DimensionUnit = (m.DimensionUnit || "").trim();
+          m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
+          return m;
+        }
+      };
+
+      try {
+        var DefaultVariantIndex = (invFd.Variants || []).map(function(o) {
+          return o.DefaultVariant || false;
+        }).indexOf(true);
+
+        invFd.DefaultVariant = invFd.Variants[DefaultVariantIndex];
+      } catch (er) {
+        console.warn("Unable to set DefaultVariant, will not set", er);
+      }
+
+      try {
+        invFd.Variants = (invFd.Variants || []).map(invMapper.Variants);
+      } catch (er) {
+        console.warn("Unable to set Variants, will set empty", er);
+        invFd.Variants = [];
+      }
+
+      var MasterAttribute = {};
+      try {
+        invFd.MasterAttribute.forEach(function(ma) {
+          MasterAttribute[ma.AttributeId] = ma.ValueEn;
+        });
+      } catch (ex) {
+        console.warn("Unable to set MasterAttribute", ex);
+      }
+      invFd.MasterAttribute = MasterAttribute;
+
+
+      if (!invFd.LocalCategories) {
+        invFd.LocalCategories = [];
+      }
+
+      if (invFd.LocalCategories.length == 0) {
+        invFd.LocalCategories = [null, null, null];
+      } else {
+        var kmax = invFd.LocalCategories.length;
+        for (var k = 0; k < 3 - kmax; k++) {
+          console.log("pushing null")
+          invFd.LocalCategories.push(null);
+        }
+      }
+
+      if (invFd.LocalCategory) {
+        LocalCategory.getOne(invFd.LocalCategory).then(function(locat) {
+          invFd.LocalCategories.unshift(locat);
+
+          if (invFd.LocalCategories.length > 3) {
+            invFd.LocalCategories.pop();
+          }
+
+        })
+      }
+
+      //TODO: replace with try-catch
+      if (invFd.MasterVariant.VideoLinks) {
+        invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
+      } else {
+        invFd.MasterVariant.VideoLinks = [];
+      }
+
+
+      invFd.Variants.forEach(function(variant, index) {
+        try {
+          variant.VideoLinks = (variant.VideoLinks || []).map(invMapper.VideoLinks);
+        } catch (ex) {
+          variant.VideoLinks = [];
+        }
+      });
+
+
+
+      if (!invFd.GlobalCategories) {
+        invFd.GlobalCategories = [null, null, null];
+      }
+
+      if (invFd.GlobalCategories.length == 0) {
+        invFd.GlobalCategories = [null, null, null];
+      } else {
+        var kmax = invFd.GlobalCategories.length;
+        for (var k = 0; k < 3 - kmax; k++) {
+          console.log("pushing null")
+          invFd.GlobalCategories.push(null);
+        }
+      }
+
+      invFd.GlobalCategories.unshift({
+        CategoryId: invFd.GlobalCategory
+      });
+
+      if (invFd.GlobalCategories.length > 3) {
+        invFd.GlobalCategories.pop();
+      }
+
+      delete invFd.GlobalCategory;
+      delete invFd.LocalCategory;
+
+
+      //TODO: Just change ngmodel to bind to MasterVariant.MasterImages Directly
+      invFd.MasterImages = invFd.MasterVariant.Images || [];
+      delete invFd.MasterVariant.Images;
+      invFd.MasterImages360 = invFd.MasterVariant.Images360 || [];
+      delete invFd.MasterVariant.Images360;
+
+      try {
+        invFd.MasterVariant.WeightUnit = invFd.MasterVariant.WeightUnit.trim();
+      } catch (ex) {
+        invFd.MasterVariant.WeightUnit = undefined;
+      }
+
+      try {
+        invFd.MasterVariant.DimensionUnit = invFd.MasterVariant.DimensionUnit.trim();
+      } catch (ex) {
+        invFd.MasterVariant.DimensionUnit = undefined;
+      }
+
+      try {
+        var _split = invFd.Keywords.trim().split(",");
+        if (_split[0] == "") {
+          invFd.Keywords = [];
+        } else {
+          invFd.Keywords = util.uniqueSet(_split);
+        }
+      } catch (ex) {
+        invFd.Keywords = [];
+      }
+
+      if (invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; //TODO: Hardcode
+
+      var transformed = {
+        formData: invFd
+      };
+
+
+      if (invFd.Variants.length > 0) {
+
+        var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId']);
+
+        //Generate attributeOptions
+        var map0_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
+          return a.Attribute.AttributeId;
+        }).indexOf(invFd.Variants[0].FirstAttribute.AttributeId);
+
+        var map1_index, SecondArray;
+        if (HasTwoAttr) {
+          map1_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
+            return a.Attribute.AttributeId;
+          }).indexOf(invFd.Variants[0].SecondAttribute.AttributeId);
+        }
+
+        var FirstArray = invFd.Variants.map(function(variant) {
+          if (variant.FirstAttribute.AttributeValues.length > 0) {
+            return variant.FirstAttribute.AttributeValues[0].AttributeValueEn.trim();
+          }
+
+          return variant.FirstAttribute.ValueEn.trim();
+        });
+
+        if (HasTwoAttr) {
+          SecondArray = invFd.Variants.map(function(variant) {
+            if (variant.SecondAttribute.AttributeValues.length > 0) {
+              return variant.SecondAttribute.AttributeValues[0].AttributeValueEn.trim();
+            }
+            return variant.SecondAttribute.ValueEn.trim();
+          });
+        }
+
+        //Get updated map from invFd.AttributeSet
+        //and load factorization array
+        transformed.attributeOptions = [{
+          Attribute: FullAttributeSet.AttributeSetMaps[map0_index].Attribute,
+          options: util.uniqueSet(FirstArray)
+        }];
+
+        if (HasTwoAttr) {
+          transformed.attributeOptions.push({
+            Attribute: FullAttributeSet.AttributeSetMaps[map1_index].Attribute,
+            options: util.uniqueSet(SecondArray)
+          });
+        } else {
+          transformed.attributeOptions.push({
+            Attribute: null,
+            options: []
+          });
+        }
+
+
+      }
+
+      console.log('transformation array', transformed);
+
+      return transformed;
+    };
+
+    return service;
+  }
 ];
 
 },{}],125:[function(require,module,exports){
@@ -9024,15 +9064,6 @@ module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCat
                         aset.AttributeSetTagMaps = aset.AttributeSetTagMaps.map(function (asti) {
                             return asti.Tag.TagName;
                         });
-                        aset.AttributeSetMaps = aset.AttributeSetMaps.map(function (asetmapi) {
-                            asetmapi.Attribute.AttributeValueMaps = asetmapi.Attribute.AttributeValueMaps.map(function (value) {
-                                return {
-                                  AttributeValueEn: value.AttributeValue.AttributeValueEn,
-                                  AttributeValueId: value.AttributeValue.AttributeValueId
-                                };
-                            });
-                            return asetmapi;
-                        });
                         return aset;
                     });
 
@@ -9042,9 +9073,11 @@ module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCat
                         sharedFormData.AttributeSet = sharedDataSet.AttributeSets[sharedDataSet.AttributeSets.map(function (o) {
                             return o.AttributeSetId
                         }).indexOf(ivFormData.AttributeSet.AttributeSetId)];
+
                         var parse = function (ivFormData, FullAttributeSet) {
                             pageLoader.load('Loading product data..');
                             var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
+                            
                             //copy it out
                             Object.keys(inverseResult.formData).forEach(function (key) {
                                 sharedFormData[key] = inverseResult.formData[key];
@@ -9058,7 +9091,6 @@ module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCat
                             if (sharedDataSet.attributeOptions[1].options.length > 0) {
                                 variationFactorIndices.pushSecond();
                             }
-
                         };
                         parse(ivFormData, sharedFormData.AttributeSet);
                     }
@@ -9516,7 +9548,7 @@ module.exports = {
 },{}],137:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Feb 25 2016 20:44:10 GMT+0700 (Russia TZ 6 Standard Time)
+ * Thu Feb 25 2016 20:49:10 GMT+0700 (Russia TZ 6 Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 

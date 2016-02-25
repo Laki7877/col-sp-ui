@@ -13,9 +13,15 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     // };
 
     service.variant.toString = function (a, b) {
-        if (!("ValueEn" in a) || !a.ValueEn) return "[API Error]";
-        if (!('ValueEn' in b) || !b.ValueEn) return a.ValueEn.trim();
-        return (a.ValueEn.trim() + (b.ValueEn == '' ? '' : (", " + b.ValueEn.trim())));
+        // if (!("ValueEn" in a) || !a.ValueEn) return "[API Error]";
+        // if (!('ValueEn' in b) || !b.ValueEn) return a.ValueEn.trim();
+
+        var left = null;
+        var right = null;
+        left = (a.ValueEn || a.AttributeValueEn);
+        right = (b.ValueEn || b.AttributeValueEn);
+        console.log(a,b, 'toString variant');
+        return left + (right ? ", " + right : "");
     };
 
     service.uniqueSet = function (a, prop) {

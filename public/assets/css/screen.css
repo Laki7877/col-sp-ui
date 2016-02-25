@@ -14939,8 +14939,14 @@ html, body {
 .image-management .alert-wrapper {
   margin: 15px 30px 15px 15px;
 }
+/* line 66, ../../../assets/_image_management.scss */
+.image-management .featured-image-wrapper {
+  font-size: 12px;
+  margin-bottom: 5px;
+  margin-left: 23px;
+}
 
-/* line 68, ../../../assets/_image_management.scss */
+/* line 75, ../../../assets/_image_management.scss */
 .image-management .image-thumbs-actions {
   width: 100px;
   border: 1px solid #BCC7D5;
@@ -15000,18 +15006,18 @@ html, body {
 .image-management .image-thumbs-actions .actions-wrapper.actions-4 .action {
   width: 25%;
 }
-/* line 71, ../../../assets/_image_management.scss */
+/* line 78, ../../../assets/_image_management.scss */
 .image-management .image-thumbs-actions .actions-wrapper .disabled {
   opacity: 0.4 !important;
   pointer-events: none;
 }
-/* line 78, ../../../assets/_image_management.scss */
+/* line 85, ../../../assets/_image_management.scss */
 .image-management .image-management-list {
   padding: 0;
   max-width: 575px;
   margin: 0;
 }
-/* line 84, ../../../assets/_image_management.scss */
+/* line 91, ../../../assets/_image_management.scss */
 .image-management .image-management-list .list-item {
   display: block;
   float: left;
