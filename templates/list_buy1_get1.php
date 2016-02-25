@@ -93,9 +93,9 @@
       	  <tr ng-repeat="row in buy1get1List" >		  
                   <td class="checkbox-column">                   
                     <input type="checkbox" aria-label="Checkbox for following text input" ng-model="checkBoxCache[row.PromotionBuy1Get1ItemId]" />                    
-                    <input type="hidden" ng-init="hidCMSTypeId[row.CMSId] = row.CMSTypeId" ng-model="hidCMSTypeId[row.PromotionBuy1Get1ItemId]" />
+                    
                   </td>                  
-				  <td class="column-text-ellipsis"><a href="/collections/{{ row.CMSId }}">{{ row.NameEN || '(Untitled Collection)' }}</a></td>
+				  <td class="column-text-ellipsis"><a href="/buy1get1/{{ row.PromotionBuy1Get1ItemId }}">{{ row.NameEN || '(Untitled Collection)' }}</a></td>
                  
 				 <td class="column-text-ellipsis">{{ row.URLKey || '(Untitled Collection)' }}</td>
 				 <td class="column-text-ellipsis">{{ row.ShortDescriptionEN || '(Untitled ShortDescriptionEN)' }}</td>

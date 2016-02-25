@@ -1472,8 +1472,8 @@ $scope.BuyItemSelected = function () {
         var jsonObjBuy = jQuery.parseJSON(chb_product_buy_val);
     
         $scope.formData.BuyItemSelStatus = true;
-        $scope.formData.BuyItemId = jsonObjBuy.ProductId;
-        $scope.formData.BuyItemName = jsonObjBuy.ProductNameEn;     
+        $scope.formData.PIDBuy = jsonObjBuy.ProductId;
+        $scope.formData.PNameBuy = jsonObjBuy.ProductNameEn;     
     }
 //end buy 1 get item
 
@@ -1494,8 +1494,8 @@ $scope.GetItemSelected = function () {
         var jsonObjGet = jQuery.parseJSON(chb_product_get_val);
     
         $scope.formData.GetItemSelStatus = true;
-        $scope.formData.GetItemId = jsonObjGet.ProductId;
-        $scope.formData.GetItemName = jsonObjGet.ProductNameEn;
+        $scope.formData.PIDGet = jsonObjGet.ProductId;
+        $scope.formData.PNameGet = jsonObjGet.ProductNameEn;
         // var arr = [];
         // Object.keys($scope.checkBoxCache).forEach(function (m) {
         //     if (!$scope.checkBoxCache[m]) return;
@@ -1644,8 +1644,8 @@ $scope.GetItemSelected = function () {
     //Modal State
     $scope.formData.BuyItemSelStatus = true;
     $scope.formData.GetItemSelStatus = true;
-    $scope.formData.BuyItemName = "";
-    $scope.formData.GetItemName = "";
+    // $scope.formData.PNameBuy = "";
+    // $scope.formData.PNameGet = "";
     //TODO: Initialize non-formData variable
     $scope.enableProductVariations = "disable";
 
@@ -1685,10 +1685,10 @@ $scope.GetItemSelected = function () {
         if (!$scope.formData.NameEN || $scope.formData.NameEN == "") {
             mat.push("Missing English Name");
         }       
-        if (!$scope.formData.BuyItemId || $scope.formData.BuyItemId == "") {
+        if (!$scope.formData.PIDBuy || $scope.formData.PIDBuy == "") {
             mat.push("Please Select Buy Item");
         }
-        if (!$scope.formData.GetItemId || $scope.formData.GetItemId == "") {
+        if (!$scope.formData.PIDGet || $scope.formData.PIDGet == "") {
             mat.push("Please Select Get Item");
         }        
         return mat;
@@ -1780,31 +1780,23 @@ $scope.GetItemSelected = function () {
         if (!angular.isObject(viewBag)) throw new KnownException("View bag is corrupted");
 
         var shopId = 1;
-        var _editMode = ("Id" in viewBag)
-        for (var page in tabPage) {
-            tabPage[page].angular();
-        }
-
-
-        for (var page in tabPage) {
-            tabPage[page].angular();
-        }
+        var _editMode = ("PromotionBuy1Get1ItemId" in viewBag)
+      
 
         if (_editMode) {
-                        var PromotionBuy1Get1ItemId = viewBag.Id;
+                        var PromotionBuy1Get1ItemId = viewBag.PromotionBuy1Get1ItemId;
                         $scope.pageState.load('Loading Buy 1 Get 1 ..');
 
                         Buy1Get1.getOne(PromotionBuy1Get1ItemId)
                             .then(function (inverseFormData) {
                                 $scope.overview = angular.copy(inverseFormData);
                               
-                                // $Buy1Get1Add.fill( $scope.pageState, $scope.dataSet, $scope.formData,  $scope.controlFlags,
-                                //     $scope.variationFactorIndices, inverseFormData).then(function () {
-                                //         $scope.formData.PromotionBuy1Get1ItemId = Number(PromotionBuy1Get1ItemId);
-                                //         $scope.pageState.reset();
-                                //         console.log("$scope.formData");
-                                //         console.log($scope.formData);
-                                //     });
+                                $Buy1Get1Add.fill( $scope.pageState, $scope.dataSet, $scope.formData,  $scope.controlFlags,
+                                    $scope.variationFactorIndices, inverseFormData).then(function () {
+                                        $scope.formData.PromotionBuy1Get1ItemId = Number(PromotionBuy1Get1ItemId);                                      
+                                        $scope.pageState.reset();
+                                      
+                                    });
                             }, function (error) {
                                  console.log("function (error)");
                                 throw new KnownException("Unable to fetch buLy 1 get 1 with id " + PromotionBuy1Get1ItemId);
@@ -8625,7 +8617,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
         service.publish = function (tobj, Status) {
            var path = '/ProBuy1Get1/Create';
-            if(typeof tobj.length != "undefined"){path = "/CMSUpdateStages/UpdateList";}
+            if(typeof tobj.length != "undefined"){path = "/ProBuy1Get1/UpdateList";}
                        
             return common.makeRequest({
                 method: 'POST',
@@ -8686,8 +8678,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                 clean.NameEN                    = fd.NameEN;
                 clean.NameTH                    = fd.NameTH;
                 clean.URLKey                    = fd.URLKey;
-                clean.PIDBuy                    = fd.BuyItemId;
-                clean.PIDGet                    = fd.GetItemId;
+                clean.PIDBuy                    = fd.PIDBuy;
+                clean.PIDGet                    = fd.PIDGet;
                 clean.ShortDescriptionTH        = fd.ShortDescriptionTH;
                 clean.LongDescriptionTH         = fd.LongDescriptionTH;
                 clean.ShortDescriptionEN        = fd.ShortDescriptionEN;
@@ -8738,8 +8730,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                 clean.NameEN                    = fd[index].NameEN;
                 clean.NameTH                    = fd[index].NameTH;
                 clean.URLKey                    = fd[index].URLKey;
-                clean.PIDBuy                    = fd[index].BuyItemId;
-                clean.PIDGet                    = fd[index].GetItemId;
+                clean.PIDBuy                    = fd[index].PIDBuy;
+                clean.PIDGet                    = fd[index].PIDGet;
                 clean.ShortDescriptionTH        = fd[index].ShortDescriptionTH;
                 clean.LongDescriptionTH         = fd[index].LongDescriptionTH;
                 clean.ShortDescriptionEN        = fd[index].ShortDescriptionEN;
@@ -8778,229 +8770,13 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         }
 
         service.deserialize = function (invFd, FullAttributeSet) {
-            console.log('FullAttributeSet', FullAttributeSet);
-
-            invFd.AttributeSet = FullAttributeSet;
-            invFd.PrepareDay = invFd.PrepareDay || '';
-
-            if (invFd.EffectiveDate != "" && invFd.EffectiveDate != null) {
-                invFd.EffectiveDate = moment(invFd.EffectiveDate + " " + invFd.EffectiveTime).toDate();
-                invFd.EffectiveTime = invFd.EffectiveTime;
-            }
-
-            if (invFd.ExpireDate != "" && invFd.ExpireDate != null) {
-                invFd.ExpireDate = moment(invFd.ExpireDate + " " + invFd.ExpireTime).toDate() ;
-                invFd.ExpireTime = invFd.ExpireTime;
-            }
-
-            var BrandId = invFd.Brand.BrandId;
-            Brand.getOne(BrandId).then(function (data) {
-                invFd.Brand = data;
-                delete invFd.Brand.$id;
-                invFd.Brand.id = BrandId;
-            }, function () {
-                console.log("brand resolve failure");
-                invFd.Brand = {
-                    BrandId: null,
-                    BrandNameEn: 'Please select brand..'
-                };
-            });
-
-            var invMapper = {
-                VideoLinks: function (m) {
-                    return m.Url;
-                },
-                Variants: function (m) {
-                    m.Visibility = m.Visibility;
-                    m.Images = m.Images || [];
-                    m.Images360 = m.Images360 || [];
-                    m.WeightUnit = (m.WeightUnit || "").trim();
-                    m.DimensionUnit = (m.DimensionUnit || "").trim();
-                    m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
-                    return m;
-                }
-            };
-
-            try {
-                var DefaultVariantIndex = (invFd.Variants || []).map(function (o) {
-                    return o.DefaultVariant || false;
-                }).indexOf(true);
-
-                invFd.DefaultVariant = invFd.Variants[DefaultVariantIndex];
-            } catch (er) {
-                console.warn("Unable to set DefaultVariant, will not set", er);
-            }
-
-            try {
-                invFd.Variants = (invFd.Variants || []).map(invMapper.Variants);
-            } catch (er) {
-                console.warn("Unable to set Variants, will set empty", er);
-                invFd.Variants = [];
-            }
-
-            var MasterAttribute = {};
-            try {
-                invFd.MasterAttribute.forEach(function (ma) {
-                    MasterAttribute[ma.AttributeId] = ma.ValueEn;
-                });
-            } catch (ex) {
-                console.warn("Unable to set MasterAttribute", ex);
-            }
-            invFd.MasterAttribute = MasterAttribute;
-
-
-            if (!invFd.LocalCategories) {
-                invFd.LocalCategories = [];
-            }
-
-            if (invFd.LocalCategories.length == 0) {
-                invFd.LocalCategories = [null, null, null];
-            } else {
-                var kmax = invFd.LocalCategories.length;
-                for (var k = 0; k < 3 - kmax; k++) {
-                    console.log("pushing null")
-                    invFd.LocalCategories.push(null);
-                }
-            }
-
-            if (invFd.LocalCategory) {
-                LocalCategory.getOne(invFd.LocalCategory).then(function (locat) {
-                    invFd.LocalCategories.unshift(locat);
-
-                    if (invFd.LocalCategories.length > 3) {
-                        invFd.LocalCategories.pop();
-                    }
-
-                })
-            }
-
-            //TODO: replace with try-catch
-            if (invFd.MasterVariant.VideoLinks) {
-                invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
-            } else {
-                invFd.MasterVariant.VideoLinks = [];
-            }
-
-
-            invFd.Variants.forEach(function (variant, index) {
-                try {
-                    variant.VideoLinks = (variant.VideoLinks || []).map(invMapper.VideoLinks);
-                } catch (ex) {
-                    variant.VideoLinks = [];
-                }
-            });
-
-
-
-            if (!invFd.GlobalCategories) {
-                invFd.GlobalCategories = [null, null, null];
-            }
-
-            if (invFd.GlobalCategories.length == 0) {
-                invFd.GlobalCategories = [null, null, null];
-            } else {
-                var kmax = invFd.GlobalCategories.length;
-                for (var k = 0; k < 3 - kmax; k++) {
-                    console.log("pushing null")
-                    invFd.GlobalCategories.push(null);
-                }
-            }
-
-            invFd.GlobalCategories.unshift({
-                CategoryId: invFd.GlobalCategory
-            });
-
-            if (invFd.GlobalCategories.length > 3) {
-                invFd.GlobalCategories.pop();
-            }
-
-            delete invFd.GlobalCategory;
-            delete invFd.LocalCategory;
-
-
-            //TODO: Just change ngmodel to bind to MasterVariant.MasterImages Directly
-            invFd.MasterImages = invFd.MasterVariant.Images || [];
-            delete invFd.MasterVariant.Images;
-            invFd.MasterImages360 = invFd.MasterVariant.Images360 || [];
-            delete invFd.MasterVariant.Images360;
-
-            try {
-                invFd.MasterVariant.WeightUnit = invFd.MasterVariant.WeightUnit.trim();
-            } catch (ex) {
-                invFd.MasterVariant.WeightUnit = undefined;
-            }
-
-            try {
-                invFd.MasterVariant.DimensionUnit = invFd.MasterVariant.DimensionUnit.trim();
-            } catch (ex) {
-                invFd.MasterVariant.DimensionUnit = undefined;
-            }
-
-            try {
-                var _split = invFd.Keywords.trim().split(",");
-                if (_split[0] == "") {
-                    invFd.Keywords = [];
-                } else {
-                    invFd.Keywords = util.uniqueSet(_split);
-                }
-            } catch (ex) {
-                invFd.Keywords = [];
-            }
-
-            if (invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; //TODO: Hardcode
+       
 
             var transformed = {
                 formData: invFd
             };
 
 
-            if (invFd.Variants.length > 0) {
-
-                var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId']);
-                
-                //Generate attributeOptions
-                var map0_index = FullAttributeSet.AttributeSetMaps.map(function (a) {
-                    return a.Attribute.AttributeId;
-                }).indexOf(invFd.Variants[0].FirstAttribute.AttributeId);
-
-                var map1_index, SecondArray;
-                if (HasTwoAttr) {
-                    map1_index = FullAttributeSet.AttributeSetMaps.map(function (a) {
-                        return a.Attribute.AttributeId;
-                    }).indexOf(invFd.Variants[0].SecondAttribute.AttributeId);
-                }
-
-                var FirstArray = invFd.Variants.map(function (variant) {
-                    return variant.FirstAttribute.ValueEn.trim();
-                });
-
-                if (HasTwoAttr) {
-                    SecondArray = invFd.Variants.map(function (variant) {
-                        return variant.SecondAttribute.ValueEn.trim();
-                    });
-                }
-
-                //Get updated map from invFd.AttributeSet
-                //and load factorization array
-                transformed.attributeOptions = [{
-                    Attribute: FullAttributeSet.AttributeSetMaps[map0_index].Attribute,
-                    options: util.uniqueSet(FirstArray)
-                }];
-
-                if (HasTwoAttr) {
-                    transformed.attributeOptions.push({
-                        Attribute: FullAttributeSet.AttributeSetMaps[map1_index].Attribute,
-                        options: util.uniqueSet(SecondArray)
-                    });
-                } else {
-                    transformed.attributeOptions.push({
-                        Attribute: null,
-                        options: []
-                    });
-                }
-
-
-            }
 
             console.log('transformation array', transformed);
 
@@ -9012,82 +8788,37 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 ];
 
 },{}],108:[function(require,module,exports){
-module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
-    function (Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
-        var $productAdd = {};
+module.exports = ['Product', 'Collection', 'Buy1Get1','Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
+    function (Product,  Collection, Buy1Get1 , Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
+        var $buy1get1Add = {};
         
         /*
         * Wraps around multiple services,
-        * and solves dependencies needed for AddProduct view variables
+        * and solves dependencies needed for AddProduct Collection view variables
         * to be parsable
         */
-        $productAdd.fill = function (globalCatId, pageLoader, sharedDataSet,
-            sharedFormData, breadcrumbs, controlFlags, variationFactorIndices, ivFormData) {
+        $buy1get1Add.fill = function ( pageLoader, sharedDataSet,
+            sharedFormData, controlFlags, variationFactorIndices, ivFormData) {
 
 
             var deferred = $q.defer();
-            pageLoader.load('Downloading Attribute Sets..');
 
-            AttributeSet.getByCategory(globalCatId)
-                .then(function (data) {
-                    sharedDataSet.AttributeSets = data.map(function (aset) {
-                        aset.AttributeSetTagMaps = aset.AttributeSetTagMaps.map(function (asti) {
-                            return asti.Tag.TagName;
-                        });
-                        aset.AttributeSetMaps = aset.AttributeSetMaps.map(function (asetmapi) {
-                            asetmapi.Attribute.AttributeValueMaps = asetmapi.Attribute.AttributeValueMaps.map(function (value) {
-                                return value.AttributeValue.AttributeValueEn;
-                            });
-                            return asetmapi;
-                        });
-                        return aset;
-                    });
-                   
-
-                    if (ivFormData) {
-                        pageLoader.load('Indexing AttributeSet');
-                        sharedFormData.AttributeSet = sharedDataSet.AttributeSets[sharedDataSet.AttributeSets.map(function (o) {
-                            return o.AttributeSetId
-                        }).indexOf(ivFormData.AttributeSet.AttributeSetId)];
-                        var parse = function (ivFormData, FullAttributeSet) {
+              var parse = function (ivFormData) {
                             pageLoader.load('Loading product data..');
-                            var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
+                            // var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
+                            var inverseResult = Buy1Get1.deserialize(ivFormData);
+
                             //copy it out
                             Object.keys(inverseResult.formData).forEach(function (key) {
                                 sharedFormData[key] = inverseResult.formData[key];
                             })
-
-                            console.log("After Inverse Transformation", sharedFormData);
-                            if (sharedFormData.Variants.length > 0) {
-                                controlFlags.variation = "enable";
-                            }
-                            sharedDataSet.attributeOptions = inverseResult.attributeOptions || sharedDataSet.attributeOptions;
-                            if (sharedDataSet.attributeOptions[1].options.length > 0) {
-                                variationFactorIndices.pushSecond();
-                            }
-
                         };
-                        parse(ivFormData, sharedFormData.AttributeSet);
-                    }
-
-                    pageLoader.load('Downloading Category Tree..');
-                    //Load Global Cat
-                    GlobalCategory.getAll().then(function (data) {
-                        sharedDataSet.GlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
-                        sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
-                        breadcrumbs.globalCategory = Category.createCatStringById(globalCatId, sharedDataSet.GlobalCategories);
-                        console.log(breadcrumbs, "breadcrumb");
-                        pageLoader.load('Preparing content..');
-                        deferred.resolve();
-                    });
-
-
-                });
+                        parse(ivFormData);
 
             return deferred.promise;
         };
 
-        return $productAdd;
+        return $buy1get1Add;
     }];
 },{}],109:[function(require,module,exports){
 /**
@@ -10480,8 +10211,84 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 ];
 
 },{}],120:[function(require,module,exports){
-arguments[4][108][0].apply(exports,arguments)
-},{"dup":108}],121:[function(require,module,exports){
+module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
+    function (Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
+        var $productAdd = {};
+        
+        /*
+        * Wraps around multiple services,
+        * and solves dependencies needed for AddProduct view variables
+        * to be parsable
+        */
+        $productAdd.fill = function (globalCatId, pageLoader, sharedDataSet,
+            sharedFormData, breadcrumbs, controlFlags, variationFactorIndices, ivFormData) {
+
+
+            var deferred = $q.defer();
+            pageLoader.load('Downloading Attribute Sets..');
+
+            AttributeSet.getByCategory(globalCatId)
+                .then(function (data) {
+                    sharedDataSet.AttributeSets = data.map(function (aset) {
+                        aset.AttributeSetTagMaps = aset.AttributeSetTagMaps.map(function (asti) {
+                            return asti.Tag.TagName;
+                        });
+                        aset.AttributeSetMaps = aset.AttributeSetMaps.map(function (asetmapi) {
+                            asetmapi.Attribute.AttributeValueMaps = asetmapi.Attribute.AttributeValueMaps.map(function (value) {
+                                return value.AttributeValue.AttributeValueEn;
+                            });
+                            return asetmapi;
+                        });
+                        return aset;
+                    });
+                   
+
+                    if (ivFormData) {
+                        pageLoader.load('Indexing AttributeSet');
+                        sharedFormData.AttributeSet = sharedDataSet.AttributeSets[sharedDataSet.AttributeSets.map(function (o) {
+                            return o.AttributeSetId
+                        }).indexOf(ivFormData.AttributeSet.AttributeSetId)];
+                        var parse = function (ivFormData, FullAttributeSet) {
+                            pageLoader.load('Loading product data..');
+                            var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
+                            //copy it out
+                            Object.keys(inverseResult.formData).forEach(function (key) {
+                                sharedFormData[key] = inverseResult.formData[key];
+                            })
+
+                            console.log("After Inverse Transformation", sharedFormData);
+                            if (sharedFormData.Variants.length > 0) {
+                                controlFlags.variation = "enable";
+                            }
+                            sharedDataSet.attributeOptions = inverseResult.attributeOptions || sharedDataSet.attributeOptions;
+                            if (sharedDataSet.attributeOptions[1].options.length > 0) {
+                                variationFactorIndices.pushSecond();
+                            }
+
+                        };
+                        parse(ivFormData, sharedFormData.AttributeSet);
+                    }
+
+                    pageLoader.load('Downloading Category Tree..');
+                    //Load Global Cat
+                    GlobalCategory.getAll().then(function (data) {
+                        sharedDataSet.GlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
+                        sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
+                        breadcrumbs.globalCategory = Category.createCatStringById(globalCatId, sharedDataSet.GlobalCategories);
+                        console.log(breadcrumbs, "breadcrumb");
+                        pageLoader.load('Preparing content..');
+                        deferred.resolve();
+                    });
+
+
+                });
+
+            return deferred.promise;
+        };
+
+        return $productAdd;
+    }];
+},{}],121:[function(require,module,exports){
 //Products Collection Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
     function ($http, common, util, LocalCategory, Brand) {
@@ -11030,7 +10837,7 @@ module.exports = {
 },{}],131:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Feb 25 2016 16:27:06 GMT+0700 (SE Asia Standard Time)
+ * Thu Feb 25 2016 18:09:03 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 

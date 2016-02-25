@@ -20,10 +20,10 @@ class Buy1Get1Controller extends Controller
 	}
 
 	public static function edit($params){
-		return View::render('add_product_collection', [
+		return View::render('add_buy1get1', [
 				'title' => 'Collections Detail',
 				'viewBag' => array(
-					'CMSId'=> $params['id']
+					'PromotionBuy1Get1ItemId'=> $params['id']
 				)
 			]);
 	}
