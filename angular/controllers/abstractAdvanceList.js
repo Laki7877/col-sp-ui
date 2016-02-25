@@ -74,6 +74,7 @@ module.exports = function($scope, $controller, options, Product, LocalCategorySe
 	$scope.onAdvanceSearch = function(item, flag) {
 		if(flag) {
 			$scope.advanceSearchMode = true;
+			$scope.advanceSearch = false;
 		}
 		return false;
 	};

@@ -17,7 +17,8 @@ module.exports = function(common, config) {
 			AttributeSetDescriptionEn: '',
 			AttributeSetDescriptionTh: '',
 			Visibility: true,
-			Tags: []
+			Tags: [],
+			Categories: 'None',
 		};
 	};
 	service.deserialize = function(data) {

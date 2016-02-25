@@ -82,7 +82,6 @@ angular.module('nc')
 									}
 								}
 							});
-
 							//Modal 
 							modal.result.then(function() {
 								scope.select.fn(scope.model, function() {

@@ -30,6 +30,7 @@ module.exports = function ($scope, $controller, Product, util, Alert, $window, $
     $scope.showOnOffStatus = {};
     $scope.showOnOffStatus.value = true;
     $scope.statusLookup = {};
+    $scope.advanceSearchOptions.Admin = false;
     config.PRODUCT_STATUS.forEach(function(object){
        $scope.statusLookup[object.value] = object;
     });
@@ -38,7 +39,6 @@ module.exports = function ($scope, $controller, Product, util, Alert, $window, $
             progress: 10,
         	  title: 'Exporting...'
         };
-
         $("#export-product").modal('show');
     };
     $scope.confirmExportProducts = function(){
