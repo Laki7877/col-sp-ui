@@ -58,7 +58,7 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
               $scope.exporter.title = 'Export Complete'
 
               a.href = fileURL;
-
+              a.click();
           }, error);
       });
   }

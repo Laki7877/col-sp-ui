@@ -23,11 +23,12 @@
 									</select>
 								</span>
 								<span class="float-right">
-									<a type="button" class="btn btn-link btn-width-xl" >Cancel</a>
 									<button ng-click="downloadTemplate()"
-									 ng-disabled="!ctrl.attributeSet.AttributeSetId"
-									 ng-class="{'disabled' : !ctrl.attributeSet.AttributeSetId }"
-									class="btn btn-blue btn-width-xl">Download</button>
+									 ng-disabled="!ctrl.attributeSet.AttributeSetId || DownloadBtnText.disabled"
+									 ng-class="{'disabled' : !ctrl.attributeSet.AttributeSetId || DownloadBtnText.disabled }"
+									 class="btn btn-blue btn-width-xl">
+										{{ DownloadBtnText.text || 'Download' }}</button>
+									<a id="download_template_btn" href="#" download="template.csv"></a>
 								</span>
 							</div>
 						</div>
