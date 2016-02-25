@@ -2530,7 +2530,7 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
   $scope.confirmExportProducts = function(){
       $("#export-product").modal('hide');
 
-      var fileName = 'ProductExport-' + moment(new Date(), 'MM-DD-YYYY-HHmm') + ".csv";
+      var fileName = "ProductExport.csv";
       var a = document.getElementById("export_download_btn");
 
       var error = function (r) {
@@ -2543,34 +2543,27 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
       $scope.exporter.progress = 15;
       var blobs = [];
 
-      var chunks = _.chunk($scope.productIds, 100000);
 
-      chunks.forEach(function(chunk){
-          var product_chunk =  chunk.map(function(p){
-            return { ProductId: p }
-          });
-
-          var body = angular.copy($scope.fields);
-          body.ProductList = product_chunk;
-          body.AttributeSets = $scope.ctrl.tradedAS;
-
-          Product.export(body).then(function (result) {
-
-              $scope.exporter.progress += (100/chunks);
-              blobs.push(result);
-
-              var file = new Blob(blobs, {type: 'application/csv'});
-              var fileURL = URL.createObjectURL(file);
-
-              $scope.exporter.href = fileURL;
-              $scope.exporter.download = fileName;
-              $scope.exporter.progress = 100;
-              $scope.exporter.title = 'Export Complete'
-
-              a.href = fileURL;
-              a.click();
-          }, error);
+      var product_chunk =  $scope.productIds.map(function(p){
+        return { ProductId: p }
       });
+
+      var body = angular.copy($scope.fields);
+      body.ProductList = product_chunk;
+      body.AttributeSets = $scope.ctrl.tradedAS;
+
+      Product.export(body).then(function (result) {
+
+          blobs.push(result);
+          var file = new Blob(blobs, {type: 'application/csv'});
+          var fileURL = URL.createObjectURL(file);
+          $scope.exporter.href = fileURL;
+          $scope.exporter.download = fileName;
+          $scope.exporter.progress = 100;
+          $scope.exporter.title = 'Export Complete'
+          a.href = fileURL;
+          a.click();
+      }, error);
   }
 
   $scope.lockAS = function(){
@@ -4904,11 +4897,11 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
 
     service.variant = {};
 
-    service.variant.hash = function (a, b) {
-        if (!("ValueEn" in a) || a.ValueEn) return "[API Error]";
-        if (!('ValueEn' in b) || b.ValueEn) return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + "null" + "-");
-        return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + b.AttributeId + "-" + b.ValueEn.trim());
-    };
+    // service.variant.hash = function (a, b) {
+    //     if (!("ValueEn" in a) || a.ValueEn) return "[API Error]";
+    //     if (!('ValueEn' in b) || b.ValueEn) return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + "null" + "-");
+    //     return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + b.AttributeId + "-" + b.ValueEn.trim());
+    // };
 
     service.variant.toString = function (a, b) {
         if (!("ValueEn" in a) || !a.ValueEn) return "[API Error]";
@@ -8743,10 +8736,21 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             try {
                 clean.MasterAttribute = [];
                 Object.keys(fd.MasterAttribute).forEach(function (key) {
-                    clean.MasterAttribute.push({
-                        AttributeId: key,
-                        ValueEn: fd.MasterAttribute[key]
-                    });
+                    if(fd.MasterAttribute[key].AttributeValueId){
+                      var g  = {
+                          AttributeValues: [],
+                          ValueEn: fd.MasterAttribute[key].AttributeValueEn
+                      };
+
+                      g.AttributeValues.push(fd.MasterAttribute[key]);
+                      clean.MasterAttribute.push(g);
+                    }else{
+                      clean.MasterAttribute.push({
+                          AttributeValues: [],
+                          ValueEn: fd.MasterAttribute[key]
+                      });
+                    }
+
                 });
             } catch (ex) {
                 console.warn("Master Attributes", ex);
@@ -8759,7 +8763,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                 clean.ControlFlags = fd.ControlFlags;
                 clean.Brand = fd.Brand;
                 clean.ShippingMethod = fd.ShippingMethod;
-	            clean.EffectiveDate = null;
+	              clean.EffectiveDate = null;
                 clean.ExpireDate = null;
                 clean.ExpireTime = null;
                 clean.ExpireDate = null;
@@ -9105,7 +9109,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
     function (Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
         var $productAdd = {};
-        
+
         /*
         * Wraps around multiple services,
         * and solves dependencies needed for AddProduct view variables
@@ -9126,13 +9130,16 @@ module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCat
                         });
                         aset.AttributeSetMaps = aset.AttributeSetMaps.map(function (asetmapi) {
                             asetmapi.Attribute.AttributeValueMaps = asetmapi.Attribute.AttributeValueMaps.map(function (value) {
-                                return value.AttributeValue.AttributeValueEn;
+                                return {
+                                  AttributeValueEn: value.AttributeValue.AttributeValueEn,
+                                  AttributeValueId: value.AttributeValue.AttributeValueId
+                                };
                             });
                             return asetmapi;
                         });
                         return aset;
                     });
-                   
+
 
                     if (ivFormData) {
                         pageLoader.load('Indexing AttributeSet');
@@ -9179,6 +9186,7 @@ module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCat
 
         return $productAdd;
     }];
+
 },{}],124:[function(require,module,exports){
 module.exports = ["common", "util", function(common, util) {
 	'ngInject';

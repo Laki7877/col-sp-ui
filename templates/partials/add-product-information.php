@@ -211,11 +211,8 @@
 
                                 <select ng-if="isListInput(amap.Attribute.DataType)"
                                 ng-show="(dataSet.attributeOptions[0].Attribute.AttributeId != amap.Attribute.AttributeId) && (dataSet.attributeOptions[1].Attribute.AttributeId != amap.Attribute.AttributeId)"
-                                class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]">
+                                class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" ng-options="item as item.AttributeValueEn for item in amap.Attribute.AttributeValueMaps track by item.AttributeValueId">
                                     <option value="" disabled selected>- Select option -</option>
-                                    <option ng-repeat="vv in amap.Attribute.AttributeValueMaps">
-                                        {{ vv.AttributeValue.AttributeValueEn || vv }}
-                                    </option>
                                 </select>
 
                                 <div ng-if="isHtmlInput(amap.Attribute.DataType)"
@@ -233,22 +230,7 @@
                             </div>
                         </div>
 
-                        <!-- select whether the product variation tab should be enabled -->
-                        <div class="form-group">
-                            <div class="width-label">
-                                <label class="control-label">Product Variations</label>
-                            </div>
-                            <div class="width-field-normal">
-                                <select class="form-control" ng-disabled="!formData.AttributeSet.AttributeSetId" ng-model="controlFlags.variation">
-                                    <option value="enable">
-                                        Enable
-                                    </option>
-                                    <option value="disable" selected>
-                                        Disable
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="form-section">

@@ -20,7 +20,7 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
   $scope.confirmExportProducts = function(){
       $("#export-product").modal('hide');
 
-      var fileName = 'ProductExport-' + moment(new Date(), 'MM-DD-YYYY-HHmm') + ".csv";
+      var fileName = "ProductExport.csv";
       var a = document.getElementById("export_download_btn");
 
       var error = function (r) {
@@ -33,34 +33,27 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
       $scope.exporter.progress = 15;
       var blobs = [];
 
-      var chunks = _.chunk($scope.productIds, 100000);
 
-      chunks.forEach(function(chunk){
-          var product_chunk =  chunk.map(function(p){
-            return { ProductId: p }
-          });
-
-          var body = angular.copy($scope.fields);
-          body.ProductList = product_chunk;
-          body.AttributeSets = $scope.ctrl.tradedAS;
-
-          Product.export(body).then(function (result) {
-
-              $scope.exporter.progress += (100/chunks);
-              blobs.push(result);
-
-              var file = new Blob(blobs, {type: 'application/csv'});
-              var fileURL = URL.createObjectURL(file);
-
-              $scope.exporter.href = fileURL;
-              $scope.exporter.download = fileName;
-              $scope.exporter.progress = 100;
-              $scope.exporter.title = 'Export Complete'
-
-              a.href = fileURL;
-              a.click();
-          }, error);
+      var product_chunk =  $scope.productIds.map(function(p){
+        return { ProductId: p }
       });
+
+      var body = angular.copy($scope.fields);
+      body.ProductList = product_chunk;
+      body.AttributeSets = $scope.ctrl.tradedAS;
+
+      Product.export(body).then(function (result) {
+
+          blobs.push(result);
+          var file = new Blob(blobs, {type: 'application/csv'});
+          var fileURL = URL.createObjectURL(file);
+          $scope.exporter.href = fileURL;
+          $scope.exporter.download = fileName;
+          $scope.exporter.progress = 100;
+          $scope.exporter.title = 'Export Complete'
+          a.href = fileURL;
+          a.click();
+      }, error);
   }
 
   $scope.lockAS = function(){

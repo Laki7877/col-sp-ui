@@ -191,8 +191,8 @@
 			          <div class="float-right">
 			            <a href="#" class="link-btn-plain">Cancel</a>
 			            <button class="btn btn-blue btn-width-xl"
-									ng-click="export()"
-									data-toggle="modal" data-target="#export-product">Export</button>
+									ng-click="startExportProducts()"
+									>Export</button>
 			          </div>
 			        </div>
 			     </div>

@@ -1,7 +1,7 @@
 module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
     function (Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
         var $productAdd = {};
-        
+
         /*
         * Wraps around multiple services,
         * and solves dependencies needed for AddProduct view variables
@@ -22,13 +22,16 @@ module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCat
                         });
                         aset.AttributeSetMaps = aset.AttributeSetMaps.map(function (asetmapi) {
                             asetmapi.Attribute.AttributeValueMaps = asetmapi.Attribute.AttributeValueMaps.map(function (value) {
-                                return value.AttributeValue.AttributeValueEn;
+                                return {
+                                  AttributeValueEn: value.AttributeValue.AttributeValueEn,
+                                  AttributeValueId: value.AttributeValue.AttributeValueId
+                                };
                             });
                             return asetmapi;
                         });
                         return aset;
                     });
-                   
+
 
                     if (ivFormData) {
                         pageLoader.load('Indexing AttributeSet');

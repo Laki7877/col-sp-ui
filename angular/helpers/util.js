@@ -6,11 +6,11 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
 
     service.variant = {};
 
-    service.variant.hash = function (a, b) {
-        if (!("ValueEn" in a) || a.ValueEn) return "[API Error]";
-        if (!('ValueEn' in b) || b.ValueEn) return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + "null" + "-");
-        return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + b.AttributeId + "-" + b.ValueEn.trim());
-    };
+    // service.variant.hash = function (a, b) {
+    //     if (!("ValueEn" in a) || a.ValueEn) return "[API Error]";
+    //     if (!('ValueEn' in b) || b.ValueEn) return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + "null" + "-");
+    //     return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + b.AttributeId + "-" + b.ValueEn.trim());
+    // };
 
     service.variant.toString = function (a, b) {
         if (!("ValueEn" in a) || !a.ValueEn) return "[API Error]";
