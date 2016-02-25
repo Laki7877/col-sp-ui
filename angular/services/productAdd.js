@@ -20,15 +20,6 @@ module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCat
                         aset.AttributeSetTagMaps = aset.AttributeSetTagMaps.map(function (asti) {
                             return asti.Tag.TagName;
                         });
-                        aset.AttributeSetMaps = aset.AttributeSetMaps.map(function (asetmapi) {
-                            asetmapi.Attribute.AttributeValueMaps = asetmapi.Attribute.AttributeValueMaps.map(function (value) {
-                                return {
-                                  AttributeValueEn: value.AttributeValue.AttributeValueEn,
-                                  AttributeValueId: value.AttributeValue.AttributeValueId
-                                };
-                            });
-                            return asetmapi;
-                        });
                         return aset;
                     });
 
@@ -38,9 +29,11 @@ module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCat
                         sharedFormData.AttributeSet = sharedDataSet.AttributeSets[sharedDataSet.AttributeSets.map(function (o) {
                             return o.AttributeSetId
                         }).indexOf(ivFormData.AttributeSet.AttributeSetId)];
+
                         var parse = function (ivFormData, FullAttributeSet) {
                             pageLoader.load('Loading product data..');
                             var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
+                            
                             //copy it out
                             Object.keys(inverseResult.formData).forEach(function (key) {
                                 sharedFormData[key] = inverseResult.formData[key];
@@ -54,7 +47,6 @@ module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCat
                             if (sharedDataSet.attributeOptions[1].options.length > 0) {
                                 variationFactorIndices.pushSecond();
                             }
-
                         };
                         parse(ivFormData, sharedFormData.AttributeSet);
                     }
