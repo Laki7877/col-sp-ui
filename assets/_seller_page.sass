@@ -6,19 +6,24 @@
 
 .onboarding_wrapper
 	background-image: url('/assets/img/bg-onboarding.png')
-	background-size:	100%
-	margin-top:	-30px
+	background-size: 1025px 478px
+	background-color: #f8e6e6
+	background-repeat: no-repeat
+	background-position: center 48%
+	background-origin: content-box
+	margin-top: -30px
 	margin-bottom: -30px
 	margin-left: -40px
 	margin-right: -40px
-	height:	258px
+	height:	200px
+	padding-top: 200px
 
 	.welcome_text_big
-		padding-top: 92px
-		font-size: 36px
+		margin-top: -164px
+		font-size: 32px
 
 	.welcome_text_small
-		font-size: 24px
+		font-size: 21px
 
 .onboarding_content
 	margin-top: -36px
@@ -30,6 +35,7 @@
 
 	.home_task
 		border:	1px solid $color-grey
+		@include border-radius(3px)
 		background-color:	$color-white
 
 		.image-thumbs-img-wrapper
@@ -41,6 +47,12 @@
 		.home_task_button
 			float: right
 			padding: 17px 10px
+
+			.btn-width-xxl
+				width: 150px
+
+	& .background_blue
+		background-color: $color-light-blue
 
 	.complete_line
 		border-top: solid 1px $color-grey

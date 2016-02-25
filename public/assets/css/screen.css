@@ -14061,60 +14061,76 @@ form h6 {
 /* line 7, ../../../assets/_seller_page.sass */
 .onboarding_wrapper {
   background-image: url("/assets/img/bg-onboarding.png");
-  background-size: 100%;
+  background-size: 1025px 478px;
+  background-color: #f8e6e6;
+  background-repeat: no-repeat;
+  background-position: center 48%;
+  background-origin: content-box;
   margin-top: -30px;
   margin-bottom: -30px;
   margin-left: -40px;
   margin-right: -40px;
-  height: 258px;
+  height: 200px;
+  padding-top: 200px;
 }
-/* line 16, ../../../assets/_seller_page.sass */
+/* line 21, ../../../assets/_seller_page.sass */
 .onboarding_wrapper .welcome_text_big {
-  padding-top: 92px;
-  font-size: 36px;
+  margin-top: -164px;
+  font-size: 32px;
 }
-/* line 20, ../../../assets/_seller_page.sass */
+/* line 25, ../../../assets/_seller_page.sass */
 .onboarding_wrapper .welcome_text_small {
-  font-size: 24px;
+  font-size: 21px;
 }
 
-/* line 23, ../../../assets/_seller_page.sass */
+/* line 28, ../../../assets/_seller_page.sass */
 .onboarding_content {
   margin-top: -36px;
   margin-left: 190px;
   margin-right: 190px;
 }
-/* line 28, ../../../assets/_seller_page.sass */
+/* line 33, ../../../assets/_seller_page.sass */
 .onboarding_content > .home_task_space {
   margin-bottom: 30px;
 }
-/* line 31, ../../../assets/_seller_page.sass */
+/* line 36, ../../../assets/_seller_page.sass */
 .onboarding_content .home_task {
   border: 1px solid #BCC7D5;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
   background-color: #FFFFFF;
 }
-/* line 35, ../../../assets/_seller_page.sass */
+/* line 41, ../../../assets/_seller_page.sass */
 .onboarding_content .home_task .image-thumbs-img-wrapper {
   display: inline-flex;
   padding-left: 22px;
 }
-/* line 38, ../../../assets/_seller_page.sass */
+/* line 44, ../../../assets/_seller_page.sass */
 .onboarding_content .home_task .home_task_text {
   padding: 11px 22px;
   display: inline-block;
 }
-/* line 41, ../../../assets/_seller_page.sass */
+/* line 47, ../../../assets/_seller_page.sass */
 .onboarding_content .home_task .home_task_button {
   float: right;
   padding: 17px 10px;
 }
-/* line 45, ../../../assets/_seller_page.sass */
+/* line 51, ../../../assets/_seller_page.sass */
+.onboarding_content .home_task .home_task_button .btn-width-xxl {
+  width: 150px;
+}
+/* line 54, ../../../assets/_seller_page.sass */
+.onboarding_content .background_blue {
+  background-color: #edf2f9;
+}
+/* line 57, ../../../assets/_seller_page.sass */
 .onboarding_content .complete_line {
   border-top: solid 1px #BCC7D5;
   position: relative;
   min-height: 1px;
 }
-/* line 49, ../../../assets/_seller_page.sass */
+/* line 61, ../../../assets/_seller_page.sass */
 .onboarding_content .complete_line > .complte_line_text {
   position: absolute;
   left: 50%;
@@ -14125,96 +14141,96 @@ form h6 {
   background-color: white;
 }
 
-/* line 61, ../../../assets/_seller_page.sass */
+/* line 73, ../../../assets/_seller_page.sass */
 #dashboard_page .with_border {
   border: 1px solid #bcc7d5;
 }
-/* line 64, ../../../assets/_seller_page.sass */
+/* line 76, ../../../assets/_seller_page.sass */
 #dashboard_page .column-text-ellipsis {
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 70, ../../../assets/_seller_page.sass */
+/* line 82, ../../../assets/_seller_page.sass */
 #dashboard_page .space_column {
   padding: 20px;
   margin-bottom: 30px;
   line-height: 27px;
 }
-/* line 75, ../../../assets/_seller_page.sass */
+/* line 87, ../../../assets/_seller_page.sass */
 #dashboard_page .logo-img {
   max-width: 40px;
   max-heigh: 40px;
 }
-/* line 80, ../../../assets/_seller_page.sass */
+/* line 92, ../../../assets/_seller_page.sass */
 #dashboard_page .header-link a {
   color: #32343C;
 }
-/* line 82, ../../../assets/_seller_page.sass */
+/* line 94, ../../../assets/_seller_page.sass */
 #dashboard_page .header-link {
   border-bottom: 2px solid #4891d2;
   padding-bottom: 4px;
 }
-/* line 86, ../../../assets/_seller_page.sass */
+/* line 98, ../../../assets/_seller_page.sass */
 #dashboard_page .header-link:focus {
   text-decoration: none;
 }
-/* line 89, ../../../assets/_seller_page.sass */
+/* line 101, ../../../assets/_seller_page.sass */
 #dashboard_page .header_name_space {
   padding-left: 10px;
 }
-/* line 93, ../../../assets/_seller_page.sass */
+/* line 105, ../../../assets/_seller_page.sass */
 #dashboard_page .group_span_right span {
   margin-left: 15px;
 }
-/* line 96, ../../../assets/_seller_page.sass */
+/* line 108, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container {
   padding-bottom: 20px;
   padding-top: 20px;
   border-bottom: solid 1px #BCC7D5;
 }
-/* line 101, ../../../assets/_seller_page.sass */
+/* line 113, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container .price-column {
   padding-left: 50px;
 }
-/* line 104, ../../../assets/_seller_page.sass */
+/* line 116, ../../../assets/_seller_page.sass */
 #dashboard_page .no_border {
   border: none;
 }
-/* line 107, ../../../assets/_seller_page.sass */
+/* line 119, ../../../assets/_seller_page.sass */
 #dashboard_page .small_field {
   padding-bottom: 10px;
   padding-top: 10px;
 }
-/* line 111, ../../../assets/_seller_page.sass */
+/* line 123, ../../../assets/_seller_page.sass */
 #dashboard_page .small_field .row:first-child {
   padding-top: 10px;
 }
-/* line 114, ../../../assets/_seller_page.sass */
+/* line 126, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field {
   padding-bottom: 5px;
   padding-top: 5px;
   border: none;
 }
-/* line 119, ../../../assets/_seller_page.sass */
+/* line 131, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field div:first-child {
   padding-right: 0;
 }
-/* line 121, ../../../assets/_seller_page.sass */
+/* line 133, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field div:last-child {
   padding-left: 0;
   line-height: 40px;
 }
-/* line 125, ../../../assets/_seller_page.sass */
+/* line 137, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_header {
   margin-bottom: 15px;
 }
-/* line 128, ../../../assets/_seller_page.sass */
+/* line 140, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container:first-child {
   padding-top: 0;
 }
-/* line 131, ../../../assets/_seller_page.sass */
+/* line 143, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container:last-child {
   border: none;
   padding-bottom: 0;
