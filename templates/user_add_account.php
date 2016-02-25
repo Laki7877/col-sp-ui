@@ -4,7 +4,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 ?>
 <?php $this->start('page-body') ?>
 	<div ng-controller="SellerAccountAddCtrl" ng-init="init(<?=$params?>)">
-		<nc-alert nc-model="alert"></nc-alert>		
+		<nc-alert nc-model="alert"></nc-alert>
 		<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "User Accounts/{{title}}", 'urls' => ['/accounts']]) ?>
 		<div ng-show="loading" nc-loading="Loading User Account.."></div>
 		<div ng-show="saving" nc-loading="Saving User Account.."></div>
@@ -176,7 +176,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 							            <div ng-template="common/link"
 							              ng-template-options="{
 							              	'link' : '/roles/add'
-							              }">Create New User Role
+							              }">Add New User Role
 							          </div>
 									</div>
 								</div>
