@@ -13831,21 +13831,26 @@ form h6 {
 }
 
 /* line 45, ../../../assets/_button.scss */
+.btn_disabled:disabled {
+  color: #BCC7D5;
+}
+
+/* line 49, ../../../assets/_button.scss */
 .btn.btn-width-xl {
   width: 120px;
 }
 
-/* line 49, ../../../assets/_button.scss */
+/* line 53, ../../../assets/_button.scss */
 .btn.btn-width-xxl {
   width: 180px;
 }
 
-/* line 53, ../../../assets/_button.scss */
+/* line 57, ../../../assets/_button.scss */
 .btn.btn-width-xxxl {
   width: 200px;
 }
 
-/* line 57, ../../../assets/_button.scss */
+/* line 61, ../../../assets/_button.scss */
 .btn.btn-width-100 {
   width: 100%;
 }

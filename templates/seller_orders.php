@@ -74,12 +74,12 @@
             <td class="width_100">Kerry</td>
             <td class="width_200">
               <span class="color-grey">
-                <i class="fa fa-check-circle-o"></i>
-                Payment Waiting
+                <i class="fa fa-clock-o"></i>
+                Payment Pending
               </span>
             </td>
             <td class="width_200">
-                <button disabled class="btn btn-white btn-width-xl margin-right-15">Acknowledge</button>
+                <button disabled class="btn btn-white btn-width-xl btn_disabled margin-right-15">Acknowledge</button>
                 <span class="text-align-center popover-gear">
                 <i class="fa fa-gear color-dark-grey icon-size-20"></i>
                 <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
@@ -160,7 +160,7 @@
               </span>
             </td>
             <td class="width_200">
-                <button disabled class="btn btn-white btn-width-xl margin-right-15">Ready to Ship</button>
+                <button disabled class="btn btn-white btn-width-xl btn_disabled margin-right-15">Ready to Ship</button>
                 <span class="text-align-center popover-gear">
                 <i class="fa fa-gear color-dark-grey icon-size-20"></i>
                 <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
@@ -183,11 +183,11 @@
             <td class="width_200">
               <span class="color-green">
                 <i class="fa fa-clock-o"></i>
-                Shipped
+                Shipping
               </span>
             </td>
             <td class="width_200">
-                <button disabled class="btn btn-white btn-width-xl margin-right-15">Ready to Ship</button>
+                <button disabled class="btn btn-white btn-width-xl btn_disabled margin-right-15">Ready to Ship</button>
                 <span class="text-align-center popover-gear">
                 <i class="fa fa-gear color-dark-grey icon-size-20"></i>
                 <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
@@ -214,7 +214,7 @@
               </span>
             </td>
             <td class="width_200">
-                <button disabled class="btn btn-white btn-width-xl margin-right-15">Ready to Ship</button>
+                <button disabled class="btn btn-white btn-width-xl btn_disabled margin-right-15">Ready to Ship</button>
                 <span class="text-align-center popover-gear">
                 <i class="fa fa-gear color-dark-grey icon-size-20"></i>
                 <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
@@ -241,7 +241,7 @@
               </span>
             </td>
             <td class="width_200">
-                <button disabled class="btn btn-white btn-width-xl margin-right-15">Acknowledge</button>
+                <button disabled class="btn btn-white btn-width-xl btn_disabled margin-right-15">Acknowledge</button>
                 <span class="text-align-center popover-gear">
                 <i class="fa fa-gear color-dark-grey icon-size-20"></i>
                 <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
