@@ -43,7 +43,7 @@
                                             <i class="fa fa-circle color-grey"></i>
                                         </td>
                                         <td>
-                                            <i ng-class="{'fa fa-eye-slash color-grey eye-icon' : !overview.Visibility, 'fa fa-eye color-dark-grey eye-icon' : overview.Visibility}"></i>
+                                            <i ng-class="{'fa fa-eye-slash color-grey eye-icon font-size-16' : !overview.Visibility, 'fa fa-eye color-dark-grey eye-icon font-size-16' : overview.Visibility}"></i>
                                         </td>
                                     </tr>
                                     <tbody>

@@ -15,8 +15,8 @@ module.exports = function($scope, $controller, AttributeService, config) {
 				{ name: "Free Text", value: 'FreeText'},
 				{ name: "Dropdown", value: 'Dropdown'},
 				{ name: "HTML Box", value: 'HTMLBox'},
-				{ name: "Has Variation", value: 'HasVariation'},
-				{ name: "No Variation", value: 'NoVariation'}
+				{ name: "Allow Variation", value: 'HasVariation'},
+				{ name: "Do Not Allow Variation", value: 'NoVariation'}
 			]
 		}
 	});

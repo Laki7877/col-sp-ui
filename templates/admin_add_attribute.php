@@ -171,7 +171,7 @@
                               <span ng-show="form['ltChoiceEn' + $index].$error.pattern">Only English allowed</span>
                           </div>
                         </div>
-                        <i ng-if="$index > 0" class="clickable fa fa-trash fa-2x margin-left-10 color-grey margin-top-5" ng-click="formData.LT.AttributeValues.splice($index,1)"></i>
+                        <i ng-if="$index > 0" class="clickable fa fa-trash margin-left-10 color-dark-grey icon-size-20" ng-click="formData.LT.AttributeValues.splice($index,1)" style="margin-top:6px;"></i>
                       </div>
                     </div>
                   </div>

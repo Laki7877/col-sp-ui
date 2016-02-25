@@ -30,7 +30,7 @@
               {{row.AttributeNameEn}}
             </td>
             <td>{{row.DisplayNameEn}}</td>
-            <td class="width_100">{{row.DataType | mapDropdown:dataTypeDropdown }}</td>
+            <td>{{row.DataType | mapDropdown:dataTypeDropdown }}</td>
             <td class="width_100">{{row.VariantStatus | mapDropdown:yesNoDropdown }}</td>
             <td class="width_100">{{row.AttributeSetCount}}</td>
             <td class="width_100">{{row.UpdatedDt | dateTh}}</td>

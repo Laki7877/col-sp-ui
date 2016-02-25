@@ -860,14 +860,15 @@ module.exports = ["$scope", "$controller", "AttributeService", "config", functio
 				{ name: "Free Text", value: 'FreeText'},
 				{ name: "Dropdown", value: 'Dropdown'},
 				{ name: "HTML Box", value: 'HTMLBox'},
-				{ name: "Has Variation", value: 'HasVariation'},
-				{ name: "No Variation", value: 'NoVariation'}
+				{ name: "Allow Variation", value: 'HasVariation'},
+				{ name: "Do Not Allow Variation", value: 'NoVariation'}
 			]
 		}
 	});
 	$scope.yesNoDropdown = config.DROPDOWN.YES_NO_DROPDOWN;
 	$scope.dataTypeDropdown = config.DROPDOWN.DATA_TYPE_DROPDOWN;
 }]
+
 },{}],9:[function(require,module,exports){
 var angular = require('angular');
 
@@ -2519,8 +2520,67 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 },{"angular":151}],29:[function(require,module,exports){
 module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product, AttributeSet) {
   $scope.productIds = [];
+  $scope.SELECT_ALL = false;
   $scope.init = function(viewBag){
     $scope.productIds = viewBag || [];
+    if($scope.productIds.length == 0){
+      $scope.SELECT_ALL = true;
+    }
+  }
+
+  $scope.startExportProducts = function () {
+      $scope.exporter = {
+          progress: 10,
+          title: 'Exporting...'
+      };
+
+      $("#export-product").modal('show');
+  };
+
+  $scope.confirmExportProducts = function(){
+      $("#export-product").modal('hide');
+
+      var fileName = 'ProductExport-' + moment(new Date(), 'MM-DD-YYYY-HHmm') + ".csv";
+      var a = document.getElementById("export_download_btn");
+
+      var error = function (r) {
+          $(".modal").modal('hide');
+          $scope.exporter.title = 'Error'
+          $scope.alert.error('Unable to Export Product');
+          $scope.reloadData();
+      };
+
+      $scope.exporter.progress = 15;
+      var blobs = [];
+
+      var chunks = _.chunk($scope.productIds, 100000);
+
+      chunks.forEach(function(chunk){
+          var product_chunk =  chunk.map(function(p){
+            return { ProductId: p }
+          });
+
+          var body = angular.copy($scope.fields);
+          body.ProductList = product_chunk;
+          body.AttributeSets = $scope.ctrl.tradedAS;
+
+          Product.export(body).then(function (result) {
+
+              $scope.exporter.progress += (100/chunks);
+              blobs.push(result);
+
+              var file = new Blob(blobs, {type: 'application/csv'});
+              var fileURL = URL.createObjectURL(file);
+
+              $scope.exporter.href = fileURL;
+              $scope.exporter.download = fileName;
+              $scope.exporter.progress = 100;
+              $scope.exporter.title = 'Export Complete'
+
+              a.href = fileURL;
+
+          }, error);
+      });
   }
 
   $scope.lockAS = function(){
@@ -2529,10 +2589,55 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
 
   $scope.dataSet = {};
   AttributeSet.getAll().then(function(data){
-    $scope.dataSet.attributeSets = data;
+    $scope.dataSet.attributeSets = data.map(function(m){
+        m.Display = m.AttributeSetNameEn + " (" + m.ProductCount + ")";
+        return m;
+    });
     console.log(data);
   });
-  $scope.fields = {};
+  $scope.ctrl = {
+    selectAll: false,
+    tradedAS: []
+  };
+  $scope.toggleSelectAll = function(){
+    Object.keys($scope.fields).forEach(function(key){
+        $scope.fields[key] = $scope.ctrl.selectAll;
+    });
+  };
+
+
+  $scope.$watch('fields', function(){
+    var m = Object.keys($scope.fields).map(function(k){
+      return $scope.fields[k];
+    }).reduce(function(prev,cur){
+      return prev && cur;
+    }, true);
+    $scope.ctrl.selectAll = m;
+  }, true);
+
+  $scope.fields = {
+    ProductStatus: false,
+    PID: false,
+    GroupID: false,
+    SKU: false,
+    ProductNameEn: false,
+    ProductNameTh: false,
+    BrandName: false,
+    GlobalCategory: false,
+    LocalCategory: false,
+    OriginalPrice: false,
+    SalePrice: false,
+    DescriptionEn: false,
+    DescriptionTh: false,
+    ShortDescriptionEn: false,
+    ShortDescriptionTh: false,
+    PreparationTime: false,
+    PackageLength: false,
+    PackageHeight: false,
+    PackageWidth: false,
+    InventoryAmount: false,
+    SafetyStockAmount: false
+  };
 }];
 
 },{}],30:[function(require,module,exports){
@@ -2719,9 +2824,44 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
 },{}],32:[function(require,module,exports){
 var angular = require('angular');
 
-module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', function ($scope, Product, util, Alert, $window) {
-    
+module.exports = ['$scope', 'Product', 'GlobalCategoryService', 'Category', 'AttributeSet',
+ function($scope, Product, GlobalCategoryService, Category, AttributeSet) {
+  $scope.treeSelectTree = [];
+  $scope.treeSelectModel = null;
+  $scope.attributeSetLoading = [];
+  GlobalCategoryService.list().then(function(data) {
+      $scope.treeSelectTree = Category.transformNestedSetToUITree(data);
+  });
+
+  var fetchAttributeSet = function(cid){
+    AttributeSet.getByCategory(cid)
+        .then(function(alist){
+          $scope.attributeSetLoading.pop();
+          if(cid != $scope.ctrl.globalCat.CategoryId) return;
+          $scope.dataSet.attributeSets = alist;
+    });
+  }
+  $scope.$watch('ctrl.globalCat.CategoryId', function(){
+    if(!$scope.ctrl.globalCat) return;
+    if(!$scope.ctrl.globalCat.CategoryId) return;
+    console.log($scope.ctrl.globalCat);
+    $scope.attributeSetLoading.push(true);
+    fetchAttributeSet(Number($scope.ctrl.globalCat.CategoryId));
+  });
+
+  $scope.ctrl = {};
+  $scope.dataSet = {};
+  $scope.dataSet.attributeSets = null;
+  $scope.ctrl.globalCat = null;
+
+  $scope.downloadTemplate = function(){
+    Product.downloadTemplate($scope.ctrl.globalCat, $scope.ctrl.attributeSet).then(function(data){
+      console.log(data)
+    });
+  };
+
 }];
+
 },{"angular":151}],33:[function(require,module,exports){
 module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope', 'config', function ($scope, Product, util, Alert, $window, $rootScope, config) {
 
@@ -6206,7 +6346,7 @@ angular.module('nc')
 
 			/**
 			 * Get or set array of child object
-			 * 
+			 *
 			 * @param  {Array} list Set children to this if passed
 			 * @return {Array}      Array of child
 			 */
@@ -6216,7 +6356,7 @@ angular.module('nc')
 
 			/**
 			 * Get or set active index for this column
-			 * 
+			 *
 			 * @param  {Number} active Set active index to this if passed
 			 * @return {Number}        Active index, -1 if none
 			 */
@@ -6226,7 +6366,7 @@ angular.module('nc')
 		};
 
 		/**
-		 * Collection of Column object 
+		 * Collection of Column object
 		 * @param {Array} tree Root nested tree
 		 * @param {Number} size Number of columns
 		 * @param {Object} options Extra params
@@ -6245,7 +6385,7 @@ angular.module('nc')
 
 			/**
 			 * Get columns as array of Column
-			 * 
+			 *
 			 * @return {Array} Array of Column object
 			 */
 			this.list = function() {
@@ -6254,7 +6394,7 @@ angular.module('nc')
 
 			/**
 			 * Clear all columns to default empty
-			 * 
+			 *
 			 * @param  {Boolean} activeOnly If only active flag is clear
 			 */
 			this.clear = function(activeOnly) {
@@ -6264,7 +6404,7 @@ angular.module('nc')
 						this.columns[i].list([]);
 					}
 					this.columns[i].active(-1);
-				};	
+				};
 			};
 
 			/**
@@ -6281,6 +6421,7 @@ angular.module('nc')
 			 * @return {[type]}      [description]
 			 */
 			this.select = function(item) {
+
 				// Not an item or null
 				if(_.isNil(item)) {
 					// Select nothing
@@ -6311,7 +6452,7 @@ angular.module('nc')
 
 				// Make sure this item is descendent of the tree
 				var index = _.indexOf(this.__tree, ctx);
-				
+
 				if(index >= 0) {
 					// Push root
 					collection.push({
@@ -6348,7 +6489,7 @@ angular.module('nc')
 			this.columns[0].list(tree);
 			this.__tree = tree;
 			this.__size = size;
-			
+
 		};
 
 		return {
@@ -6404,6 +6545,7 @@ angular.module('nc')
 			}]
 		};
 	}]);
+
 },{}],90:[function(require,module,exports){
 angular.module('nc')
     .directive('ncTagValidator', function () {
@@ -6562,7 +6704,7 @@ require('./template.js');
 angular.module("nc").run(["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('common/ncAction',
-    "<a href=javascript:; uib-popover-template=\"'common/ncActionPopover'\" popover-placement=bottom popover-append-to-body=true popover-trigger=outsideClick><i class=\"fa fa-gear color-dark-grey icon-size-20\"></i> <i class=\"fa fa-caret-down color-dark-grey\"></i></a>"
+    "<a class=action-gear href=javascript:; uib-popover-template=\"'common/ncActionPopover'\" popover-placement=bottom popover-append-to-body=true popover-trigger=outsideClick><i class=\"fa fa-gear color-dark-grey icon-size-20\"></i> <i class=\"fa fa-caret-down color-dark-grey\"></i></a>"
   );
 
 
@@ -8038,18 +8180,19 @@ var angular = require('angular');
 module.exports = ['$window', '$base64', 'config', function($window, $base64, config) {
     return function(exception, cause) {
         console.log("Exception handler", exception, cause);
-        if(exception.message.length > 200){
+        if(exception.message && exception.message.length > 200){
             exception.message = exception.message.substring(0, 200);
         }
         var encMsg = $base64.encode(JSON.stringify({
             'message': exception.message
         }));
-        
+
         if(config.HANDLE_EXCEPTION) {
             $window.location = '/exception?e=' + encMsg;
-        } 
+        }
     };
 }];
+
 },{"angular":151}],115:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
@@ -8463,17 +8606,23 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         'use strict';
         var service = common.Rest('/ProductStages');
 
-        service.export = function(products, attributeSets, fields){
+        service.downloadTemplate = function(globalCat, aset){
+          var req = {
+              method: 'POST',
+              url: '/ProductStages/Template',
+              data: {
+                GlobalCategories: [globalCat],
+                AttributeSets: [aset]
+              }
+          };
+          return common.makeRequest(req);
+        }
 
-          if(_.isEmpty(products)) throw new KnownException("product service export method is called incorrectly");
-          if(_.isEmpty(attributeSets)) throw new KnownException("product service export method is called incorrectly");
-
-          fields.AttributeSets = attributeSets;
-          fields.ProductList = products;
+        service.export = function(ps){
           var req = {
               method: 'POST',
               url: '/ProductStages/Export',
-              data: fields
+              data: ps
           };
           return common.makeRequest(req);
         };
@@ -9575,7 +9724,7 @@ module.exports = {
 },{}],136:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Feb 25 2016 17:51:48 GMT+0700 (Russia TZ 6 Standard Time)
+ * Thu Feb 25 2016 17:54:18 GMT+0700 (Russia TZ 6 Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 

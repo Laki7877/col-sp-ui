@@ -6,12 +6,12 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Inventory'])
 <?php $this->start('page-body') ?>
 	<div ng-controller="SellerInventoryListCtrl">
        <nc-page-title nc-title="Inventory">
-            <a ng-href="/products/export" class="btn margin-right-10 ng-scope btn-white btn-width-xl">
-	            <span class="">Export All</span>
+            <a ng-href="/admin/" class="btn ng-scope btn-white btn-width-xxl">
+	            <span class="">Export All Products</span>
           	</a>
             <div class="btn-group margin-left-10">
-              <button type="button" class="btn btn-white dropdown-toggle btn-width-xl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Import <span class="caret"></span>
+              <button type="button" class="btn btn-white dropdown-toggle btn-width-xxl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Import Products <span class="caret"></span>
               </button>
               <ul class="dropdown-menu">
                 <li><a href="/?p=seller_import_products">Add New Products</a></li>
