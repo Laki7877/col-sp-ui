@@ -7,9 +7,18 @@ we should just make it modular by creating initializer -->
           <input type="hidden" name="selected_products[]" ng-repeat="(prId,tf) in checkBoxCache"
           value="{{ prId }}" ng-if="tf === true"/>
 
-          <button type="submit" class="btn-white btn margin-right-10 btn-width-xl">
-            Export
+          <button class="btn-white btn margin-right-10 btn-width-xl">
+            Export Temp
           </button>
+          <div class="btn-group margin-right-10">
+            <button type="button" class="btn btn-white dropdown-toggle btn-width-xl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Export <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#">Export All Products</a></li>
+              <li><a href="#">Export Selected Products</a></li>
+            </ul>
+          </div>
           <div class="btn-group margin-right-10">
             <button type="button" class="btn btn-white dropdown-toggle btn-width-xl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Import <span class="caret"></span>
