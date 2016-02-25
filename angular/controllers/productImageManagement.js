@@ -151,18 +151,16 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     };
     $scope.save = function() {
 		//Set dirty to false after you save
-		if($scope.dirty) {
-			Product.updateAllVariants($scope.list.data)
-				.then(function(data) {
-					$scope.dirty = false;
-					$scope.alert.success("Successfully save changes.");
-					$scope.reload();
-				}, function(err) {
-					$scope.alert.error(common.getError(err));
-				});
-			$scope.dirty = false;
-		}
-	}
+		Product.updateAllVariants($scope.list.data)
+			.then(function(data) {
+				$scope.dirty = false;
+				$scope.alert.success("Successfully save changes.");
+				$scope.reload();
+			}, function(err) {
+				$scope.alert.error(common.getError(err));
+			});
+		$scope.dirty = false;
+	};
     $scope.$watch('watcher', function(val, val2) {
     	if(!_.isUndefined(val2) && !$scope.ignored) {
     		$scope.dirty = true;

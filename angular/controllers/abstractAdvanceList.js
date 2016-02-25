@@ -24,7 +24,7 @@ module.exports = function($scope, $controller, options, Product, LocalCategorySe
 					$scope.loading = false;
 				});
 		} else {
-			options.service.advanceList(_.extend({}, $scope.params, $scope.serializeAdvanceSearch($scope.advanceSearchParams)))
+			options.service.advanceList(_.extend({searchText: ''}, $scope.params, $scope.serializeAdvanceSearch($scope.advanceSearchParams)))
 				.then(function(data) {
 					$scope.list = data;
 				})
@@ -75,6 +75,7 @@ module.exports = function($scope, $controller, options, Product, LocalCategorySe
 		if(flag) {
 			$scope.advanceSearchMode = true;
 			$scope.advanceSearch = false;
+			$scope.params.searchText = '';
 		}
 		return false;
 	};

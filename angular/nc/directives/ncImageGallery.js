@@ -123,6 +123,7 @@ angular.module('nc')
 						var obj = {};
 						obj[scope.options.urlKey] = '';
 						scope.model.push(obj);
+						item.obj = obj;
 						item.indx = scope.model.length-1;
 					}
 				};
@@ -136,7 +137,7 @@ angular.module('nc')
 					scope.model[item.indx][scope.options.urlKey] = response[scope.options.urlKey];			    	
 			    };
 			    scope.uploader.onErrorItem = function(item, response, status, headers) {
-			    	scope.model.splice(item.indx, 1);
+			    	scope.model.splice(scope.model.indexOf(item.obj), 1);
 			    	scope.onError({$response : response});
 			    };
 
