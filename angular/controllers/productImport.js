@@ -1,34 +1,35 @@
-var angular = require('angular');
-
-module.exports = ['$scope', 'Product', 'GlobalCategoryService', 'Category', 'AttributeSet',
- function($scope, Product, GlobalCategoryService, Category, AttributeSet) {
+module.exports = function($scope, Product, GlobalCategoryService, Category, AttributeSet) {
+  'ngInject';
   $scope.treeSelectTree = [];
   $scope.treeSelectModel = null;
-  $scope.attributeSetLoading = [];
+  $scope.attributeSetLoading = false;
   $scope.DownloadBtnText = {text: "Download", disabled: false};
   GlobalCategoryService.list().then(function(data) {
       $scope.treeSelectTree = Category.transformNestedSetToUITree(data);
   });
 
   var fetchAttributeSet = function(cid){
+    $scope.attributeSetLoading = true;
     AttributeSet.getByCategory(cid)
         .then(function(alist){
-          $scope.attributeSetLoading.pop();
           if(cid != $scope.ctrl.globalCat.CategoryId) return;
           $scope.dataSet.attributeSets = alist;
+    }).finally(function() {
+      $scope.attributeSetLoading = false;
     });
   }
   $scope.$watch('ctrl.globalCat.CategoryId', function(){
     if(!$scope.ctrl.globalCat) return;
     if(!$scope.ctrl.globalCat.CategoryId) return;
-    console.log($scope.ctrl.globalCat);
-    $scope.attributeSetLoading.push(true);
     fetchAttributeSet(Number($scope.ctrl.globalCat.CategoryId));
   });
 
+  $scope.columns = [];
   $scope.ctrl = {};
   $scope.dataSet = {};
-  $scope.dataSet.attributeSets = null;
+  $scope.dataSet.attributeSets = [];
+
+  $scope.ctrl.searchColumn = '';
   $scope.ctrl.globalCat = null;
 
   $scope.downloadTemplate = function(){
@@ -48,5 +49,4 @@ module.exports = ['$scope', 'Product', 'GlobalCategoryService', 'Category', 'Att
       a.click();
     });
   };
-
-}];
+};
