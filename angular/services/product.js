@@ -253,10 +253,21 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             try {
                 clean.MasterAttribute = [];
                 Object.keys(fd.MasterAttribute).forEach(function (key) {
-                    clean.MasterAttribute.push({
-                        AttributeId: key,
-                        ValueEn: fd.MasterAttribute[key]
-                    });
+                    if(fd.MasterAttribute[key].AttributeValueId){
+                      var g  = {
+                          AttributeValues: [],
+                          ValueEn: fd.MasterAttribute[key].AttributeValueEn
+                      };
+
+                      g.AttributeValues.push(fd.MasterAttribute[key]);
+                      clean.MasterAttribute.push(g);
+                    }else{
+                      clean.MasterAttribute.push({
+                          AttributeValues: [],
+                          ValueEn: fd.MasterAttribute[key]
+                      });
+                    }
+
                 });
             } catch (ex) {
                 console.warn("Master Attributes", ex);
@@ -269,7 +280,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                 clean.ControlFlags = fd.ControlFlags;
                 clean.Brand = fd.Brand;
                 clean.ShippingMethod = fd.ShippingMethod;
-	            clean.EffectiveDate = null;
+	              clean.EffectiveDate = null;
                 clean.ExpireDate = null;
                 clean.ExpireTime = null;
                 clean.ExpireDate = null;

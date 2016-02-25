@@ -5,6 +5,7 @@ module.exports = ['$scope', 'Product', 'GlobalCategoryService', 'Category', 'Att
   $scope.treeSelectTree = [];
   $scope.treeSelectModel = null;
   $scope.attributeSetLoading = [];
+  $scope.DownloadBtnText = {text: "Download", disabled: false};
   GlobalCategoryService.list().then(function(data) {
       $scope.treeSelectTree = Category.transformNestedSetToUITree(data);
   });
@@ -31,8 +32,20 @@ module.exports = ['$scope', 'Product', 'GlobalCategoryService', 'Category', 'Att
   $scope.ctrl.globalCat = null;
 
   $scope.downloadTemplate = function(){
+    $scope.DownloadBtnText = {
+      text: "Generating..",
+      disabled: true
+    };
     Product.downloadTemplate($scope.ctrl.globalCat, $scope.ctrl.attributeSet).then(function(data){
-      console.log(data)
+      $scope.DownloadBtnText = {
+        text: "Download",
+        disabled: false
+      };
+      var file = new Blob([data], {type: 'application/csv'});
+      var fileURL = URL.createObjectURL(file);
+      var a = document.getElementById("download_template_btn");
+      a.href = fileURL;
+      a.click();
     });
   };
 

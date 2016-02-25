@@ -4,8 +4,23 @@
 		<div class="col-xs-12">
 			<div class="form-section">
 				<div class="form-section-header"><h2>Variation Option</h2></div>
-				<div class="form-section-content padding-left-30" ng-if="(formData.AttributeSet && !formData.AttributeSet['AttributeSetId']) || controlFlags.variation != 'enable'">
-					To enable variation option, please select an <strong>Attribute Set</strong> and enable <strong>Product Variation</strong> in the information tab.
+				<div class="form-section-content padding-left-30">
+					<!-- select whether the product variation tab should be enabled -->
+					<div class="form-group">
+							<div class="width-label">
+									<label class="control-label">Add Variation</label>
+							</div>
+							<div class="width-field-normal">
+									<select class="form-control" ng-disabled="!formData.AttributeSet.AttributeSetId" ng-model="controlFlags.variation">
+											<option value="enable">
+													Enable
+											</option>
+											<option value="disable" selected>
+													Disable
+											</option>
+									</select>
+							</div>
+					</div>
 				</div>
 
 				<!-- ng-if too long -->
@@ -19,7 +34,7 @@
 								exclude: dataSet.attributeOptions[1 - jth].Attribute : 'AttributeId'
 								track by i.Attribute.AttributeId"
 								ng-model="dataSet.attributeOptions[jth]">
-								<option value="" disabled selected>Select an option..</option> 
+								<option value="" disabled selected>Select an option..</option>
 							</select>
 						</div>
 
@@ -34,24 +49,20 @@
                                         'conditions' :  addProductForm['attributeOptions' + jth].$error
                                     }
                                     }">
-                            
+
 								<ui-select ng-if="isListInput(dataSet.attributeOptions[jth].Attribute.DataType)"
 								multiple ng-model="dataSet.attributeOptions[jth].options">
 								<ui-select-match placeholder="Select a variation option">
-								{{ $item.AttributeValue.AttributeValueEn || $item }}
+									{{ $item.AttributeValueEn }}
 								</ui-select-match>
 								<ui-select-choices repeat="i in dataSet.attributeOptions[jth].Attribute.AttributeValueMaps | filter:$select.search">
-								{{ i.AttributeValue.AttributeValueEn || i }}
+									{{ i.AttributeValueEn }}
 								</ui-select-choices>
 								</ui-select>
-							
-                                <!-- on-select="onVariationOptionFreeTextAdded($item, $model, jth)" -->
-                                
+
 								<ui-select ng-if="isFreeTextInput(dataSet.attributeOptions[jth].Attribute.DataType)"
-								multiple tagging tagging-label=""
-							    tagging-tokens=",|ENTER" 	 
-                                name="attributeOptions{{jth}}" nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30"
-                                nc-tag-pattern="^[a-zA-Z0-9ก-๙\s\-]+$"
+								multiple tagging tagging-label="" tagging-tokens=",|ENTER" name="attributeOptions{{jth}}"
+								nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30" nc-tag-pattern="^[a-zA-Z0-9ก-๙\s\-]+$"
 								ng-model="dataSet.attributeOptions[jth].options">
 								<ui-select-match placeholder="Variation options separated by a comma or enter">
 								{{ $item.AttributeValue.AttributeValueEn || $item }}
@@ -60,10 +71,10 @@
 								{{ i.AttributeValue.AttributeValueEn || i }}
 								</ui-select-choices>
 								</ui-select>
-                               
+
                              </div>
 							<!--</div>-->
-					
+
 						<a class="like-text form-text" ng-click="variationFactorIndices.pushSecond()" ng-if="dataSet.attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1">
 							<i class="fa fa-plus-circle color-theme"></i> Add another option
 						</a>
@@ -116,7 +127,7 @@
                                             'conditions' : addProductForm['pair_Sku' + $index].$error
                                         }
                                     }">
-                                    <input 
+                                    <input
                                     type="text" ng-disabled='!pair.Visibility' class="form-control"
                                     name="pair_Sku{{ $index }}"
                                     maxlength="300"
@@ -141,9 +152,9 @@
 								ng-pattern="/^\d+(\.\d{1,2})?$/"
 								ng-model="pair.OriginalPrice" ng-disabled='!pair.Visibility'
 								class="form-control" />
-                                
+
                             </td>
-                                
+
 							<td ng-template="common/input/text-td"
                                     ng-template-options="{
                                         'error' : {
@@ -160,8 +171,8 @@
 								ng-pattern="/^\d+(\.\d{1,2})?$/"
 								class="form-control" />
                            </td>
-                                
-                                
+
+
 							<td ng-template="common/input/text-td"
                                     ng-template-options="{
                                         'error' : {
@@ -179,7 +190,7 @@
 								name="pair_Quantity{{$index}}"
 								class="form-control" />
                             </td>
-                            
+
 							<td><a class="btn btn-white btn-width-xl" ng-disabled='!pair.Visibility'
 									data-toggle="modal" data-target="#variant-detail-1"
 									ng-click="$emit('openPairModal', pair, formData.Variants, $index)">More Detail</a></td>
@@ -195,5 +206,3 @@
 		</div> <!-- end .col-xs-12 -->
 	</div> <!-- end .row -->
 </div> <!-- end #add-product-variation-tab-content -->
-
-
