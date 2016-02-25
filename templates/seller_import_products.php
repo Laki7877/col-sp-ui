@@ -16,7 +16,8 @@
 							nc-tree-select-tree="treeSelectTree" nc-tree-select-title="Choose Global Category"></nc-tree-select>
 							<div class="category-footer no-padding">
 								<span class="float-left">
-									<select class="form-control"
+									<div nc-loading-small="Loading Attribute Sets.." ng-if="attributeSetLoading.length > 0"></div>
+									<select class="form-control" ng-if="attributeSetLoading.length == 0"
 									ng-options="item as item.AttributeSetNameEn for item in dataSet.attributeSets track by item.AttributeSetId"
 									ng-model="ctrl.attributeSet">
 									</select>

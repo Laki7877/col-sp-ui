@@ -244,7 +244,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractAdvanceList.js":4,"./controllers\\abstractList.js":5,"./controllers\\adminAccount.js":6,"./controllers\\adminAccountAdd.js":7,"./controllers\\adminAttribute.js":8,"./controllers\\adminAttributeAdd.js":9,"./controllers\\adminAttributeSet.js":10,"./controllers\\adminAttributeSetAdd.js":11,"./controllers\\adminBrand.js":12,"./controllers\\adminBrandAdd.js":13,"./controllers\\adminCategory.js":14,"./controllers\\adminCoupon.js":15,"./controllers\\adminCouponAdd.js":16,"./controllers\\adminProductApprovalList.js":17,"./controllers\\adminProductList.js":18,"./controllers\\adminRole.js":19,"./controllers\\adminRoleAdd.js":20,"./controllers\\adminShop.js":21,"./controllers\\adminShopAdd.js":22,"./controllers\\adminShoptype.js":23,"./controllers\\adminShoptypeAdd.js":24,"./controllers\\localCategory.js":25,"./controllers\\login.js":26,"./controllers\\productAdd.js":27,"./controllers\\productAddSelectCategory.js":28,"./controllers\\productExport.js":29,"./controllers\\productImageList.js":30,"./controllers\\productImageManagement.js":31,"./controllers\\productImport.js":32,"./controllers\\productList.js":33,"./controllers\\productListLocalCategory.js":34,"./controllers\\productReview.js":35,"./controllers\\root.js":36,"./controllers\\sellerAccount.js":37,"./controllers\\sellerAccountAdd.js":38,"./controllers\\sellerInventoryList.js":39,"./controllers\\sellerRole.js":40,"./controllers\\sellerRoleAdd.js":41,"./controllers\\sellerShopSetting.js":42,"./controllers\\test.js":43,"./directives\\ncTradableSelect.js":44,"./directives\\ngCkeditor.js":45,"./directives\\ngDelegate.js":46,"./directives\\ngMatch.js":47,"./directives\\ngMaxnumber.js":48,"./directives\\ngMinnumber.js":49,"./directives\\ngPatternRestrict.js":50,"./directives\\ngPermission.js":51,"./directives\\ngSlideToggle.js":52,"./directives\\ngTemplate.js":53,"./directives\\popoverAny.js":54,"./filters\\capitalize.js":55,"./filters\\exclude.js":56,"./filters\\excludeCategory.js":57,"./filters\\html.js":58,"./filters\\leadingzero.js":59,"./filters\\ordinal.js":60,"./filters\\slice.js":61,"./filters\\truncate.js":62,"./filters\\truth.js":63,"./helpers\\base64.js":64,"./helpers\\common.js":65,"./helpers\\storage.js":66,"./helpers\\util.js":67,"./helpers\\variantPair.js":68,"./nc":95,"./services\\adminAccountService.js":97,"./services\\adminPermissionService.js":98,"./services\\adminRoleService.js":99,"./services\\adminShopService.js":100,"./services\\adminShoptypeService.js":101,"./services\\alert.js":102,"./services\\attribute.js":103,"./services\\attributeService.js":104,"./services\\attributeSet.js":105,"./services\\attributeSetService.js":106,"./services\\blocker.js":107,"./services\\brand.js":108,"./services\\brandService.js":109,"./services\\category.js":110,"./services\\coupon.js":111,"./services\\credential.js":112,"./services\\exceptionHandler.js":113,"./services\\globalCategory.js":114,"./services\\globalCategoryService.js":115,"./services\\image.js":116,"./services\\imageService.js":117,"./services\\inventoryService.js":118,"./services\\knownException.js":119,"./services\\localCategory.js":120,"./services\\localCategoryService.js":121,"./services\\product.js":122,"./services\\productAdd.js":123,"./services\\productReviewService.js":124,"./services\\sellerAccountService.js":125,"./services\\sellerPermissionService.js":126,"./services\\sellerRoleService.js":127,"./services\\shop.js":128,"./services\\shopPermissionService.js":129,"./template":135,"./template-options\\addProductForm.js":130,"./template-options\\couponForm.js":131,"./template-options\\productExport.js":132,"./template-options\\searchForm.js":133,"./template-options\\shopSettingForm.js":134,"angular":150,"angular-animate":137,"angular-base64":138,"angular-bootstrap-datetimepicker":139,"angular-file-upload":140,"angular-sanitize":142,"angular-scroll":144,"angular-ui-bootstrap":146,"angular-ui-tree":148,"lodash":152,"ui-select/dist/select.js":154}],2:[function(require,module,exports){
 module.exports = {
-	REST_SERVICE_BASE_URL: 'http://localhost:58127/api',
+	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
     HANDLE_EXCEPTION: false,
 	CK_DEFAULT_OPTIONS: {
@@ -2797,18 +2797,25 @@ module.exports = ['$scope', 'Product', 'GlobalCategoryService', 'Category', 'Att
  function($scope, Product, GlobalCategoryService, Category, AttributeSet) {
   $scope.treeSelectTree = [];
   $scope.treeSelectModel = null;
+  $scope.attributeSetLoading = [];
   GlobalCategoryService.list().then(function(data) {
       $scope.treeSelectTree = Category.transformNestedSetToUITree(data);
   });
+
+  var fetchAttributeSet = function(cid){
+    AttributeSet.getByCategory(cid)
+        .then(function(alist){
+          $scope.attributeSetLoading.pop();
+          if(cid != $scope.ctrl.globalCat.CategoryId) return;
+          $scope.dataSet.attributeSets = alist;
+    });
+  }
   $scope.$watch('ctrl.globalCat.CategoryId', function(){
     if(!$scope.ctrl.globalCat) return;
     if(!$scope.ctrl.globalCat.CategoryId) return;
-
     console.log($scope.ctrl.globalCat);
-    AttributeSet.getByCategory($scope.ctrl.globalCat.CategoryId)
-        .then(function(alist){
-          $scope.dataSet.attributeSets = alist;
-        })
+    $scope.attributeSetLoading.push(true);
+    fetchAttributeSet(Number($scope.ctrl.globalCat.CategoryId));
   });
 
   $scope.ctrl = {};
@@ -2817,7 +2824,9 @@ module.exports = ['$scope', 'Product', 'GlobalCategoryService', 'Category', 'Att
   $scope.ctrl.globalCat = null;
 
   $scope.downloadTemplate = function(){
-    console.log($scope.ctrl.globalCat);
+    Product.downloadTemplate($scope.ctrl.globalCat, $scope.ctrl.attributeSet).then(function(data){
+      console.log(data)
+    });
   };
 
 }];
@@ -9572,7 +9581,7 @@ module.exports = {
 },{}],135:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Feb 25 2016 15:25:33 GMT+0700 (SE Asia Standard Time)
+ * Thu Feb 25 2016 15:33:53 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 

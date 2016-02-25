@@ -1,5 +1,5 @@
 module.exports = {
-	REST_SERVICE_BASE_URL: 'http://localhost:58127/api',
+	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
     HANDLE_EXCEPTION: false,
 	CK_DEFAULT_OPTIONS: {
