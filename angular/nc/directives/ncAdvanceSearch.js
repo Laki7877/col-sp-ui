@@ -1,5 +1,5 @@
 angular.module('nc')
-	.directive('ncAdvanceSearch', function($templateCache, $uibModal) {
+	.directive('ncAdvanceSearch', function($templateCache, $timeout, $uibModal) {
 		return {
 			restrict: 'E',
 			replace: true,

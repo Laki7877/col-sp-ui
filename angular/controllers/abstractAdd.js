@@ -83,7 +83,7 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 				//Edit mode
 				options.service.update($scope.id, data)
 					.then(function(result) {
-						$scope.alert.success(util.saveAlertSuccess(options.item, options.url));
+						$scope.alert.success(util.saveAlertSuccess(options.successItem || options.item, options.url));
 						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(common.getError(err));
@@ -104,7 +104,7 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 						$scope.id = result[options.id];
 						$scope.formData[options.id] = result[options.id];
 						//Default success message
-						$scope.alert.success(util.saveAlertSuccess(options.item, options.url));
+						$scope.alert.success(util.saveAlertSuccess(options.successItem || options.item, options.url));
 						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(common.getError(err));

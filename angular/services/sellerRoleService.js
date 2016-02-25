@@ -17,7 +17,6 @@ module.exports = function(common, SellerPermissionService) {
 		var processed = _.merge({}, data);
 		SellerPermissionService.listAll()
 			.then(function(data) {
-				console.log(data);
 				processed.Permission = _.map(data, function(e) {
 					if(_.isUndefined(_.find(processed.Permission, { PermissionId: e.PermissionId }))) {
 						e.check = false;

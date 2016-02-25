@@ -23,7 +23,28 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
               data: ps
           };
           return common.makeRequest(req);
-        }
+        };
+
+        service.approve = function(obj) {
+            return common.makeRequest({
+                method: 'PUT',
+                url: '/ProductStages/Approve',
+                data: obj,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            });
+        };
+        service.reject = function(obj) {
+            return common.makeRequest({
+                method: 'PUT',
+                url: '/ProductStages/Reject',
+                data: obj,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            });
+        };
 
         service.getOne = function (productId) {
             var req = {

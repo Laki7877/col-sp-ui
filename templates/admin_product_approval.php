@@ -3,12 +3,10 @@
 <?php $this->start('page-body') ?>
 
 <div ng-controller="AdminProductApprovalListCtrl">
+   <nc-alert nc-model="alert"></nc-alert>
    <nc-page-title nc-title="Product Approval List">
    </nc-page-title>
 <div>
-
-    <nc-alert nc-model="alert"></nc-alert>
-
     <div class="row search-section-wrapper">
           <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="ProductId"></nc-bulk>
 		  <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Product SKU, Name, ...'"></nc-search>

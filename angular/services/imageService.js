@@ -21,7 +21,7 @@ module.exports = function($q, $http, common, storage, config, FileUploader){
 	            name: 'imageFilter',
 	            fn: function(item /*{File|FileLikeObject}*/, options) {
 	                var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
-	                return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+	                return '|jpg|png|jpeg'.indexOf(type) !== -1;
 	            }}]
 		}, opt);
 		var uploader = new FileUploader(options);
@@ -32,7 +32,7 @@ module.exports = function($q, $http, common, storage, config, FileUploader){
 	/**
 	 * Assign image uploader events specifically to COL-image uploading feature
 	 */
-	service.assignUploaderEvents = function(uploader, images, queueLimit, onFail) {
+	service.assignUploaderEvents = function(uploader, images, queueLimit, onFail, onValidation) {
 
 		uploader.onWhenAddingFileFailed = function(item, filter, options) {
 			console.info('onAfterAddingFile', item, filter, options);
@@ -50,9 +50,12 @@ module.exports = function($q, $http, common, storage, config, FileUploader){
 						return;
 					}
 				}
-
 				//Default handle, pop last images
 				images.pop();
+			}
+			onValidation = onValidation || function() {return true};
+			if(!onValidation(item)) {
+				return;
 			}
 			images.push(obj);
 			item.indx = images.length-1;

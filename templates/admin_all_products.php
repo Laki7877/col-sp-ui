@@ -7,7 +7,7 @@
        <nc-page-title nc-title="All Products">
             <a ng-href="/admin/coupons/admin/create" class="btn ng-scope btn-white btn-width-xl">
           	  <span class="">Export</span>
-          </a>
+          	</a>
        </nc-page-title>
 	    <div class="row search-section-wrapper">
   			<nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="ProductId"></nc-bulk>

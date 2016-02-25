@@ -8,7 +8,7 @@ angular.module('nc')
                 priority: 1010,
                 scope: {
                     optionsPath: '@ncTemplateOptionsPath',
-                    templateField: '&?ncTemplateForm',
+                    templateField: '&ncTemplateForm',
                     viewBag: '=?ncViewBag',
                     label: '@ncLabel'
                 },
