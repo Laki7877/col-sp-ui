@@ -454,7 +454,12 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
       var MasterAttribute = {};
       try {
         invFd.MasterAttribute.forEach(function(ma) {
-          MasterAttribute[ma.AttributeId] = ma.ValueEn;
+          var k = { "AttributeValue" :  ma.AttributeValues[0] }
+          if(ma.AttributeValues.length > 0 && ma.AttributeValues[0].AttributeValueId){
+             k.AttributeId = ma.AttributeId;
+             k.AttributeValueId = ma.AttributeValues[0].AttributeValueId;
+          }
+          MasterAttribute[ma.AttributeId] = ma.ValueEn || k;
         });
       } catch (ex) {
         console.warn("Unable to set MasterAttribute", ex);
@@ -568,7 +573,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 
       if (invFd.Variants.length > 0) {
-
+        //Figure out the Attributes that make up each Variant
         var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId']);
 
         //Generate attributeOptions
@@ -583,9 +588,14 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
           }).indexOf(invFd.Variants[0].SecondAttribute.AttributeId);
         }
 
+        //Find array of values to populate factors array that can be used to reproduce
+        //the expanded variants
         var FirstArray = invFd.Variants.map(function(variant) {
           if (variant.FirstAttribute.AttributeValues.length > 0) {
-            return variant.FirstAttribute.AttributeValues[0].AttributeValueEn.trim();
+            return {
+              'AttributeValue': variant.FirstAttribute.AttributeValues[0],
+              'AttributeId': variant.FirstAttribute.AttributeId
+            }
           }
 
           return variant.FirstAttribute.ValueEn.trim();
@@ -594,7 +604,10 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         if (HasTwoAttr) {
           SecondArray = invFd.Variants.map(function(variant) {
             if (variant.SecondAttribute.AttributeValues.length > 0) {
-              return variant.SecondAttribute.AttributeValues[0].AttributeValueEn.trim();
+              return {
+                'AttributeValue': variant.SecondAttribute.AttributeValues[0],
+                'AttributeId': variant.SecondAttribute.AttributeId
+              }
             }
             return variant.SecondAttribute.ValueEn.trim();
           });
