@@ -221,3 +221,7 @@ ng-transclude.has-error .form-control{
 .ui-select-multiple input.ui-select-search:not(.ng-touched) {
     width: 100% !important;
 }
+
+.ui-select-dropdown-hide .ui-select-dropdown {
+    display: none !important;
+}

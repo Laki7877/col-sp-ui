@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, Product, config) {
+module.exports = function($scope, $controller, Product, config, util) {
 	'ngInject';
     $scope.asStatus = Product.getStatus;
 	$controller('AbstractListCtrl', {
@@ -12,10 +12,13 @@ module.exports = function($scope, $controller, Product, config) {
 			actions: [{
                 name: 'View Detail',
                 fn: function(item){
-                    console.log(item, 'view detail')
+
                 }
             }],
-			bulks: [],
+			bulks: [
+				util.bulkTemplate('Approve', Product.approve, 'ProductId', 'Product'),
+				util.bulkTemplate('Reject', Product.reject, 'ProductId', 'Product')
+			],
 			filters: [
 				{ name: "All", value: 'All'},
 				{ name: "Approved", value: 'Approved'},
@@ -31,7 +34,6 @@ module.exports = function($scope, $controller, Product, config) {
             ProductId: row.ProductId,
             Visibility: row.Visibility
         }], function(d){
-           console.log(d); 
         });
     }
 }

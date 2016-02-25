@@ -14488,7 +14488,7 @@ html, body {
   width: 1244px;
 }
 
-/* line 33, ../../../assets/_global_category.scss */
+/* line 37, ../../../assets/_global_category.scss */
 .category-section {
   line-height: 30px;
   width: 946px;
@@ -14513,24 +14513,26 @@ html, body {
 .category-section.column-5 {
   width: 1182px;
 }
-/* line 62, ../../../assets/_global_category.scss */
-.category-section .category-section-border-box {
+
+/* line 63, ../../../assets/_global_category.scss */
+.category-section-border-box {
   border: solid 1px #BCC7D5;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
 /* line 14, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
-.category-section .category-section-border-box:before, .category-section .category-section-border-box:after {
+.category-section-border-box:before, .category-section-border-box:after {
   content: " ";
   display: table;
 }
 /* line 19, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
-.category-section .category-section-border-box:after {
+.category-section-border-box:after {
   clear: both;
 }
-/* line 68, ../../../assets/_global_category.scss */
-.category-section .category-header {
+
+/* line 69, ../../../assets/_global_category.scss */
+.category-header {
   position: relative;
   float: left;
   width: 100%;
@@ -14540,14 +14542,16 @@ html, body {
   background: #EDF2F9;
   border-bottom: 1px solid #BCC7D5;
 }
-/* line 75, ../../../assets/_global_category.scss */
-.category-section .category-content {
+
+/* line 76, ../../../assets/_global_category.scss */
+.category-content {
   height: 285px;
   width: 100%;
   overflow: hidden;
+  background: #edf2f9;
 }
-/* line 80, ../../../assets/_global_category.scss */
-.category-section .category-content > .content-column {
+/* line 82, ../../../assets/_global_category.scss */
+.category-content > .content-column {
   position: relative;
   float: left;
   width: 25%;
@@ -14558,16 +14562,16 @@ html, body {
   margin: 0;
   height: 285px;
   max-height: 285px;
-  width: 236px;
+  /*width: $item-column-size; */
   overflow-y: auto;
   border-left: 1px solid #BCC7D5;
 }
-/* line 90, ../../../assets/_global_category.scss */
-.category-section .category-content > .content-column:first-child {
+/* line 92, ../../../assets/_global_category.scss */
+.category-content > .content-column:first-child {
   border-left: none;
 }
-/* line 94, ../../../assets/_global_category.scss */
-.category-section .category-content > .content-column > li {
+/* line 96, ../../../assets/_global_category.scss */
+.category-content > .content-column > li {
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 10px;
@@ -14575,26 +14579,31 @@ html, body {
   line-height: 1.2em;
   cursor: pointer;
 }
-/* line 101, ../../../assets/_global_category.scss */
-.category-section .category-content > .content-column > li.category-active {
+/* line 103, ../../../assets/_global_category.scss */
+.category-content > .content-column > li.category-active {
   background: #4899DD;
   color: #FFFFFF;
 }
-/* line 107, ../../../assets/_global_category.scss */
-.category-section .category-content > .content-column.empty-column {
+/* line 109, ../../../assets/_global_category.scss */
+.category-content > .content-column.empty-column {
   background: #edf2f9;
 }
 /* line 113, ../../../assets/_global_category.scss */
-.category-section .category-footer {
+.category-content > .content-column:not(.empty-column) {
+  background: #FFFFFF;
+}
+
+/* line 119, ../../../assets/_global_category.scss */
+.category-footer {
   margin-top: 15px;
 }
 /* line 14, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
-.category-section .category-footer:before, .category-section .category-footer:after {
+.category-footer:before, .category-footer:after {
   content: " ";
   display: table;
 }
 /* line 19, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
-.category-section .category-footer:after {
+.category-footer:after {
   clear: both;
 }
 
@@ -15220,4 +15229,9 @@ ng-transclude.has-error .form-control {
 /* line 221, ../../../assets/screen.scss */
 .ui-select-multiple input.ui-select-search:not(.ng-touched) {
   width: 100% !important;
+}
+
+/* line 225, ../../../assets/screen.scss */
+.ui-select-dropdown-hide .ui-select-dropdown {
+  display: none !important;
 }

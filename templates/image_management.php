@@ -19,7 +19,7 @@
     </div>
 
     <div class="row search-section-wrapper">
-      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search Product'" nc-search-event="onUnsave"></nc-search>
+      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Product Name and PID'" nc-search-event="onUnsave"></nc-search>
     </div>
     <nc-filter nc-model="params._filter" nc-filter-options="filterOptions" nc-filter-event="onUnsave"></nc-filter>
 
@@ -29,7 +29,7 @@
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane margin-top-20 active">
             <div id="image-management-content-page">
-              <div class="row" ng-repeat="product in response.data">
+              <div class="row" ng-repeat="product in list.data">
                 <div class="col-xs-12">
                   <div class="form-section image-management">
                     <div class="form-section-content">
@@ -42,8 +42,8 @@
                       </div>
                         <div class="picture-container">
                           <div class="col-xs-12 padding-left-0">
-                            <nc-image-gallery ng-if="product.IsVariant" nc-model="product.VariantImg" nc-image-gallery-options="imageGalleryOptions"></nc-image-gallery>
-                            <nc-image-gallery ng-if="!product.IsVariant" nc-model="product.MasterImg" nc-image-gallery-options="imageGalleryOptions"></nc-image-gallery>
+                            <nc-image-gallery ng-if="product.IsVariant" nc-model="product.VariantImg" nc-image-gallery-options="imageGalleryOptions" nc-image-gallery-disabled="isDisabled(product)"></nc-image-gallery>
+                            <nc-image-gallery ng-if="!product.IsVariant" nc-model="product.MasterImg" nc-image-gallery-options="imageGalleryOptions" nc-image-gallery-disabled="isDisabled(product)"></nc-image-gallery>
                           </div>
                         </div>
                         <div class="drop-zone-container {{ getContainer(product) }}">
@@ -57,7 +57,7 @@
             </div>
           </div>
           <div class="page-navigation">
-             <nc-pagination nc-model="params" nc-pagination-total="response.total" nc-pagination-event="onUnsave"></nc-pagination>
+             <nc-pagination nc-model="params" nc-pagination-total="list.total" nc-pagination-event="onUnsave" nc-pagination-sizes="paginationSize"></nc-pagination>
           </div>  
         </div>
         <div class="add-product-form-action main-form-action full-width-row">

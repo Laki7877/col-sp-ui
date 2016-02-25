@@ -181,6 +181,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
   .directive('ngMatch', directives.ngMatch)
   .directive('ngMinnumber', directives.ngMinnumber)
   .directive('ngMaxnumber', directives.ngMaxnumber)
+  .directive('ngDateBefore', directives.ngDateBefore)
 
 //Filters
 .filter('capitalize', filters.capitalize)

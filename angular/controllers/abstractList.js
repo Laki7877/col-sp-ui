@@ -57,6 +57,11 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 		];
 	} else {
 		$scope.bulks = _.compact(_.map(options.bulks, function(item) {
+			
+			if(_.isFunction(item)) {
+				console.log(item($scope));
+				return item($scope);
+			}
 			if(_.isString(item)) {
 				switch(item) {
 					case 'Delete':
@@ -68,7 +73,7 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 				}
 			}
 
-			if(_.isObject(item)) {
+			if(_.isObjectLike(item)) {
 				return item;
 			}
 			return null;

@@ -134,6 +134,45 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
         return config.DEFAULT_SUCCESS_MESSAGE + ' View <a href="' + link + '">' + itemName + ' List</a>';
     };
 
+    service.bulkTemplate = function (actionName, restFn, id, item) {
+        return function (scope) {
+             return {
+                name: actionName,
+                fn: function (array, cb) {
+                    scope.alert.close();
+
+                    //Only pass ShopId
+                    var array = _.map(array, function (e) {
+                        return _.pick(e, [id]);
+                    });
+
+                    //Blank array?
+                    if (array.length <= 0) {
+                        scope.alert.error('Unable to ' + actionName.toLowerCase() + '. Please select ' + item + ' for this action.');
+                        return;
+                    }
+
+                    //On launch endpoint
+                    scope.onLoad();
+
+                    //generic bulk
+                    restFn(array)
+                        .then(function () {
+                            scope.alert.success(actionName + ' successful.');
+                            cb();
+                        }, function (err) {
+                            scope.alert.error(common.getError(err));
+                        })
+                        .finally(scope.reload);
+                },
+                confirmation: {
+                    title: 'Confirm to ' + actionName.toLowerCase(),
+                    message: 'Are you sure you want to '+ actionName.toLowerCase() + ' {{model.length}} items?'
+                }
+            };
+        };
+    };
+
     //Create bulk-action from template
     service.bulkDelete = function (rest, id, item, alert, reload, onload) {
         return {

@@ -1,69 +1,107 @@
-module.exports = ['$scope', 'Product', 'util', 'NcAlert', '$window', 'FileUploader', 'ImageService', 'config', 'common', 
-function ($scope, Product, util, NcAlert, $window, FileUploader, ImageService, config, common) {
-    $scope.response = {};
-    $scope.alert = new NcAlert();
-    $scope.filterOptions = [
-			{ name: "All", value: 'All'},
-			{ name: "Image Missing", value: 'ImageMissing'},
-			{ name: "Approved", value: 'Approved'},
-			{ name: "Not Approved", value: 'NotApproved'},
-			{ name: "Wait Approval", value: 'WaitApproval'}
-	];
-	$scope.params = {
-			_order: 'ProductId',
-			_limit: 10,
-			_offset: 0,
-			_direction: 'asc',
-			_filter: 'All'
-	};
+module.exports = function ($scope, $controller, Product, util, NcAlert, $window, FileUploader, ImageService, config, common) {
+    'ngInject';
+	$controller('AbstractListCtrl', {
+		$scope: $scope,
+		options: {
+			url: '/products/images',
+			service: Product,
+			item: 'Product',
+			order: 'ProductId',
+			id: 'ProductId',
+			actions: [],
+			bulks: [],
+			filters: [
+					{ name: "All", value: 'All'},
+					{ name: "Image Missing", value: 'ImageMissing'},
+					{ name: "Approved", value: 'Approved'},
+					{ name: "Not Approved", value: 'NotApproved'},
+					{ name: "Draft", value: 'Draft'},
+					{ name: "Wait For Approval", value: 'WaitForApproval'}
+			],
+			reload: function(newObj, oldObj){
+				$scope.loading = true;
+				if(!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
+					if(newObj.searchText !== oldObj.searchText) {
+						$scope.params._offset = 0;
+						$scope.bulkContainer.length = 0;
+					}
+					if(newObj._filter !== oldObj._filter) {
+						$scope.params._offset = 0;
+						$scope.bulkContainer.length = 0;
+					}
+				}
+				Product.getAllVariants($scope.params).then(function(data){
+					$scope.loading = false;
+			        $scope.ignored = true;
+			        $scope.list = data;
+			        $scope.watcher = _.map(data.data, function(e) {
+			        	if(e.IsVariant) {
+			        		return e.VariantImg;
+			        	} else {
+			        		return e.MasterImg;
+			        	}
+			        });
+			    });
+			}
+		}
+	});
+    util.warningOnLeave(function() {
+    	return $scope.dirty;
+    });
+	$scope.paginationSize = [5,10,15];
 	$scope.imageDropzoneOptions = {
 		urlKey: 'url'
 	};
 	$scope.imageGalleryOptions = {
 		urlKey: 'url',
 		actions: [
-		{
-			//Left
-			fn: function(item, array, index) {
-				//console.log(item, array, index);
-			    var to = index - 1;
-			    if (to < 0) return;
+			{
+				//Left
+				fn: function(item, array, index) {
+					//console.log(item, array, index);
+				    var to = index - 1;
+				    if (to < 0) return;
 
-			    var tmp = array[to];
-			    array[to] = item;
-			    array[index] = tmp;
+				    var tmp = array[to];
+				    array[to] = item;
+				    array[index] = tmp;
+				},
+				icon: 'fa-arrow-left'
 			},
-			icon: 'fa-arrow-left'
-		},
-		{
-			//Right
-			fn: function(item, array, index) {
-				//console.log(item, array, index);
-			    var to = index + 1;
-			    if (to >= array.length) return;
+			{
+				//Right
+				fn: function(item, array, index) {
+					//console.log(item, array, index);
+				    var to = index + 1;
+				    if (to >= array.length) return;
 
-			    var tmp = array[to];
-			    array[to] = item;
-			    array[index] = tmp;
+				    var tmp = array[to];
+				    array[to] = item;
+				    array[index] = tmp;
+				},
+				icon: 'fa-arrow-right'
 			},
-			icon: 'fa-arrow-right'
-		},
-		{
-			//Trash
-			fn: function(item, array, index) {
-				array.splice(index, 1);
-			},
-			icon: 'fa-trash',
-			confirmation: {
-				title: 'Confirm to delete',
-				message: 'Are you sure you want to delete the image?'
+			{
+				//Trash
+				fn: function(item, array, index) {
+					array.splice(index, 1);
+				},
+				icon: 'fa-trash',
+				confirmation: {
+					title: 'Confirm to delete',
+					message: 'Are you sure you want to delete the image?'
+				}
 			}
-		}]
+		]
 	};
 	$scope.dirty = false;
     $scope.uploader = ImageService.getUploader('/ProductImages');
     $scope.productStatus = config.PRODUCT_STATUS;
-    
+
+    $scope.isDisabled = function(product) {
+    	return product.Status == 'WA' || product.Status == 'AP';
+    };
+
     //Prevent unsaved event
     $scope.onUnsave = function() {
     	if($scope.dirty) {
@@ -71,10 +109,6 @@ function ($scope, Product, util, NcAlert, $window, FileUploader, ImageService, c
     	}
     	return false;
     };
-    util.warningOnLeave(function() {
-    	return $scope.dirty;
-    });
-
     $scope.getTemplate = function(product) {
     	var images = null;
     	if(product.IsVariant) {
@@ -94,8 +128,11 @@ function ($scope, Product, util, NcAlert, $window, FileUploader, ImageService, c
     		case 'WA':
     			return 'product/dropzone/waitForApproval';
     		break;
+    		case 'AP':
+    			return 'product/dropzone/approved';
+    		break;
     	}
-    	return '';
+    	return 'product/dropzone/normal';
     };
     $scope.getContainer = function(product) {
     	var images = null;
@@ -109,34 +146,19 @@ function ($scope, Product, util, NcAlert, $window, FileUploader, ImageService, c
     		return '';
     	}
     	return 'disabled';
-    }
-	$scope.reload = function(){
-		$scope.loading = true;
-		Product.getAllVariants($scope.params).then(function(data){
-			$scope.loading = false;
-	        $scope.ignored = true;
-	        $scope.response = data;
-	        $scope.watcher = _.map(data.data, function(e) {
-	        	if(e.IsVariant) {
-	        		return e.VariantImg;
-	        	} else {
-	        		return e.MasterImg;
-	        	}
-	        });
-	    });
-	}
-	$scope.save = function() {
+    };	
+    $scope.save = function() {
 		//Set dirty to false after you save
 		if($scope.dirty) {
-			Product.updateAllVariants($scope.response.data)
+			Product.updateAllVariants($scope.list.data)
 				.then(function(data) {
 					$scope.dirty = false;
 					$scope.alert.success("Successfully save changes.");
 					$scope.reload();
 				}, function(err) {
-					console.log(err);
 					$scope.alert.error(common.getError(err));
 				});
+			$scope.dirty = false;
 		}
 	}
     $scope.$watch('watcher', function(val, val2) {
@@ -145,5 +167,4 @@ function ($scope, Product, util, NcAlert, $window, FileUploader, ImageService, c
     	}
     	$scope.ignored = false;
     }, true);
-    $scope.$watch('params', $scope.reload, true);
-}];
+};

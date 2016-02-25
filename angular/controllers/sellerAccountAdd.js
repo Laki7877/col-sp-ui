@@ -5,7 +5,7 @@ module.exports = function($scope, $controller, SellerAccountService, SellerRoleS
 		options: {
 			id: 'UserId',
 			url: '/accounts',
-			item: 'User',
+			item: 'User Account',
 			service: SellerAccountService,
 			init: function(scope) {
 				//Get all available roles
@@ -15,7 +15,6 @@ module.exports = function($scope, $controller, SellerAccountService, SellerRoleS
 							//Pick only necessary property
 							return _.pick(e, ['GroupId', 'GroupNameEn']);
 						});
-						console.log(scope.roles);
 					});
 			}
 		}

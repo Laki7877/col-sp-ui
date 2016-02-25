@@ -14,7 +14,7 @@ module.exports = function() {
 
 			ctrl.$validators.maxnumber = function(modelValue, viewValue) {
 				var value = modelValue || viewValue;
-				return (!value) || (!maxnumber) || (parseInt(value) <= parseInt(maxnumber)) || false;
+				return (!value) || (!maxnumber) || (_.toNumber(value) <= _.toNumber(maxnumber)) || false;
 			};
 		}
 	}

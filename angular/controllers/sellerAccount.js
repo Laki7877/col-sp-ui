@@ -6,7 +6,7 @@ module.exports = function($scope, $controller, SellerAccountService, config) {
 		options: {
 			url: '/accounts',
 			service: SellerAccountService,
-			item: 'Account',
+			item: 'User Account',
 			order: 'UpdatedDt',
 			id: 'UserId'
 		}
