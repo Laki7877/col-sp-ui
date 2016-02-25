@@ -7,12 +7,18 @@ we should just make it modular by creating initializer -->
           <input type="hidden" name="selected_products[]" ng-repeat="(prId,tf) in checkBoxCache"
           value="{{ prId }}" ng-if="tf === true"/>
 
-          <button type="submit" class="btn-white btn margin-right-10">
+          <button type="submit" class="btn-white btn margin-right-10 btn-width-xl">
             Export
           </button>
-        <a href="/products/import" class="btn-white btn margin-right-10">
-          <span class="">Import</span>
-        </a>
+          <div class="btn-group margin-right-10">
+            <button type="button" class="btn btn-white dropdown-toggle btn-width-xl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Import <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="/?p=seller_import_products">Add New Products</a></li>
+              <li><a href="/?p=seller_update_products">Update Existing Products</a></li>
+            </ul>
+          </div>
         <a href="/products/select" class="btn-blue btn btn-width-xl">
           <span class="">Add Product</span>
         </a>
