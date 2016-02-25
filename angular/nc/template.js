@@ -71,7 +71,7 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/ncFilter',
-    "<div class=filter-section><div class=filter-container><span>Filters:</span> <a class=filter-seperator ng-repeat=\"filter in filters\" ng-class=\"{'filter-active': model == filter.value }\" ng-click=select(filter.value)>{{ filter.name }}</a></div></div>"
+    "<div class=filter-section><div class=filter-container><span>Filters:</span> <a class=filter-seperator ng-repeat=\"filter in filters\" ng-class=\"{'filter-active': model == filter.value }\" ng-click=select(filter.value)>{{ filter.name }}</a> <span ng-transclude></span></div></div>"
   );
 
 
@@ -96,7 +96,7 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/ncImageGallery',
-    "<div><p style=\"width:margin-bottom: 5px; margin-left:15px\">Feature Image</p><ul class=image-management-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ getSrc(image) }}\"></div><div class=actions-wrapper><a class=\"action {{ isDisabled(image) ? 'disabled' : ''}}\" ng-repeat=\"action in options.actions\" style=\"width: {{100 / options.actions.length }}%\" ng-click=\"call(action, image, model)\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div>"
+    "<div><p class=featured-image-wrapper>Featured Image</p><ul class=image-management-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ getSrc(image) }}\"></div><div class=actions-wrapper><a class=\"action {{ isDisabled(image) ? 'disabled' : ''}}\" ng-repeat=\"action in options.actions\" style=\"width: {{100 / options.actions.length }}%\" ng-click=\"call(action, image, model)\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div>"
   );
 
 

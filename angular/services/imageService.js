@@ -21,7 +21,7 @@ module.exports = function($q, $http, common, storage, config, FileUploader){
 	            name: 'imageFilter',
 	            fn: function(item /*{File|FileLikeObject}*/, options) {
 	                var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
-	                return '|jpg|png|jpeg'.indexOf(type) !== -1;
+	                return '|jpg|png|jpeg|'.indexOf(type) !== -1;
 	            }}]
 		}, opt);
 		var uploader = new FileUploader(options);
@@ -52,10 +52,6 @@ module.exports = function($q, $http, common, storage, config, FileUploader){
 				}
 				//Default handle, pop last images
 				images.pop();
-			}
-			onValidation = onValidation || function() {return true};
-			if(!onValidation(item)) {
-				return;
 			}
 			images.push(obj);
 			item.indx = images.length-1;

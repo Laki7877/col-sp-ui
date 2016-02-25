@@ -34,6 +34,9 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
 					$scope.loading = false;
 			        $scope.ignored = true;
 			        $scope.list = data;
+			        _.forEach($scope.list.data, function(e) {
+			        	_.extend(e, {alert: new NcAlert() })
+			        });
 			        $scope.watcher = _.map(data.data, function(e) {
 			        	if(e.IsVariant) {
 			        		return e.VariantImg;
@@ -98,10 +101,12 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     $scope.uploader = ImageService.getUploader('/ProductImages');
     $scope.productStatus = config.PRODUCT_STATUS;
 
+    $scope.onError = function(item, response) {
+    	item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + common.getError(response));
+	};
     $scope.isDisabled = function(product) {
     	return product.Status == 'WA' || product.Status == 'AP';
     };
-
     //Prevent unsaved event
     $scope.onUnsave = function() {
     	if($scope.dirty) {
@@ -118,13 +123,6 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     	}
 
     	switch(product.Status) {
-    		case 'DF':
-    			if(images.length >= 10) {
-    				return 'product/dropzone/reachMax';
-    			} else {
-    				return 'product/dropzone/normal';
-    			}
-    		break;
     		case 'WA':
     			return 'product/dropzone/waitForApproval';
     		break;
@@ -132,7 +130,11 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     			return 'product/dropzone/approved';
     		break;
     	}
-    	return 'product/dropzone/normal';
+		if(images.length >= 10) {
+			return 'product/dropzone/reachMax';
+		} else {
+			return 'product/dropzone/normal';
+		}
     };
     $scope.getContainer = function(product) {
     	var images = null;
@@ -146,7 +148,7 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     		return '';
     	}
     	return 'disabled';
-    };	
+    };
     $scope.save = function() {
 		//Set dirty to false after you save
 		if($scope.dirty) {
