@@ -2568,7 +2568,7 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
               $scope.exporter.title = 'Export Complete'
 
               a.href = fileURL;
-
+              a.click();
           }, error);
       });
   }
@@ -2825,8 +2825,13 @@ module.exports = ['$scope', 'Product', 'GlobalCategoryService', 'Category', 'Att
   $scope.ctrl.globalCat = null;
 
   $scope.downloadTemplate = function(){
+    $scope.templateReady = false;
     Product.downloadTemplate($scope.ctrl.globalCat, $scope.ctrl.attributeSet).then(function(data){
-      console.log(data)
+      var file = new Blob([data], {type: 'application/csv'});
+      var fileURL = URL.createObjectURL(file);
+      var a = document.getElementById("download_template_btn");
+      a.href = fileURL;
+      $("#download_template_btn").click();
     });
   };
 
