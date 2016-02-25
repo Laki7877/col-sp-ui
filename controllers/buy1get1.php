@@ -9,8 +9,8 @@ class Buy1Get1Controller extends Controller
 
 	public static function add($params)
 	{
-		return View::render('add_product_collection', [
-			'title' => 'Add Product',
+		return View::render('add_buy1get1', [
+			'title' => 'Add Buy 1 Get 1',
 			'viewBag' => array('catId' => $_POST['category'])
 		]);
 	}
@@ -29,8 +29,8 @@ class Buy1Get1Controller extends Controller
 	}
 
 	public static function import($params){
-		return View::render('import_product_collection', [
-				'title' => 'Import Collections'
+		return View::render('import_buy1get1', [
+				'title' => 'Import Buy 1 Get 1 '
 		]);
 	}
 

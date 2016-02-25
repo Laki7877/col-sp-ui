@@ -3,7 +3,7 @@ $menus = [
 	["id" => "collection_static", "name" => 'Collection', "class" => "require active"]
 ];
 
-$this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'])
+$this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Collection'])
 ?>
 <?php $this->start('page-body') ?>
 <div ng-controller="ProductCollectionAddCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>

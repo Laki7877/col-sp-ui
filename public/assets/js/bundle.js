@@ -3,7 +3,7 @@
 'use strict';
 //App Start here
 var angular = require('angular');
-var bulk = ({"controllers":({"abstractAdd":require("./controllers\\abstractAdd.js"),"abstractList":require("./controllers\\abstractList.js"),"adminAccount":require("./controllers\\adminAccount.js"),"adminAccountAdd":require("./controllers\\adminAccountAdd.js"),"adminAttribute":require("./controllers\\adminAttribute.js"),"adminAttributeAdd":require("./controllers\\adminAttributeAdd.js"),"adminAttributeSet":require("./controllers\\adminAttributeSet.js"),"adminAttributeSetAdd":require("./controllers\\adminAttributeSetAdd.js"),"adminBrand":require("./controllers\\adminBrand.js"),"adminBrandAdd":require("./controllers\\adminBrandAdd.js"),"adminCategory":require("./controllers\\adminCategory.js"),"adminCoupons":require("./controllers\\adminCoupons.js"),"adminProduct":require("./controllers\\adminProduct.js"),"adminProductApprovalList":require("./controllers\\adminProductApprovalList.js"),"adminProductList":require("./controllers\\adminProductList.js"),"adminRole":require("./controllers\\adminRole.js"),"adminRoleAdd":require("./controllers\\adminRoleAdd.js"),"adminShop":require("./controllers\\adminShop.js"),"adminShopAdd":require("./controllers\\adminShopAdd.js"),"adminShoptype":require("./controllers\\adminShoptype.js"),"adminShoptypeAdd":require("./controllers\\adminShoptypeAdd.js"),"buy1get1List":require("./controllers\\buy1get1List.js"),"localCategory":require("./controllers\\localCategory.js"),"login":require("./controllers\\login.js"),"productAdd":require("./controllers\\productAdd.js"),"productAddSelectCategory":require("./controllers\\productAddSelectCategory.js"),"productCollectionAdd":require("./controllers\\productCollectionAdd.js"),"productCollectionImport":require("./controllers\\productCollectionImport.js"),"productCollectionList":require("./controllers\\productCollectionList.js"),"productImageList":require("./controllers\\productImageList.js"),"productImageManagement":require("./controllers\\productImageManagement.js"),"productImport":require("./controllers\\productImport.js"),"productList":require("./controllers\\productList.js"),"productListLocalCategory":require("./controllers\\productListLocalCategory.js"),"productReview":require("./controllers\\productReview.js"),"root":require("./controllers\\root.js"),"sellerAccount":require("./controllers\\sellerAccount.js"),"sellerAccountAdd":require("./controllers\\sellerAccountAdd.js"),"sellerRole":require("./controllers\\sellerRole.js"),"sellerRoleAdd":require("./controllers\\sellerRoleAdd.js"),"test":require("./controllers\\test.js")}),"services":({"adminAccountService":require("./services\\adminAccountService.js"),"adminPermissionService":require("./services\\adminPermissionService.js"),"adminRoleService":require("./services\\adminRoleService.js"),"adminShopService":require("./services\\adminShopService.js"),"adminShoptypeService":require("./services\\adminShoptypeService.js"),"alert":require("./services\\alert.js"),"attribute":require("./services\\attribute.js"),"attributeService":require("./services\\attributeService.js"),"attributeSet":require("./services\\attributeSet.js"),"attributeSetService":require("./services\\attributeSetService.js"),"blocker":require("./services\\blocker.js"),"brand":require("./services\\brand.js"),"brandService":require("./services\\brandService.js"),"category":require("./services\\category.js"),"credential":require("./services\\credential.js"),"exceptionHandler":require("./services\\exceptionHandler.js"),"globalCategory":require("./services\\globalCategory.js"),"globalCategoryService":require("./services\\globalCategoryService.js"),"image":require("./services\\image.js"),"imageService":require("./services\\imageService.js"),"knownException":require("./services\\knownException.js"),"localCategory":require("./services\\localCategory.js"),"localCategoryService":require("./services\\localCategoryService.js"),"product":require("./services\\product.js"),"productAdd":require("./services\\productAdd.js"),"productCollection":require("./services\\productCollection.js"),"productCollectionAdd":require("./services\\productCollectionAdd.js"),"productReviewService":require("./services\\productReviewService.js"),"sellerAccountService":require("./services\\sellerAccountService.js"),"sellerPermissionService":require("./services\\sellerPermissionService.js"),"sellerRoleService":require("./services\\sellerRoleService.js"),"shop":require("./services\\shop.js"),"shopPermissionService":require("./services\\shopPermissionService.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngMatch":require("./directives\\ngMatch.js"),"ngMaxnumber":require("./directives\\ngMaxnumber.js"),"ngMinnumber":require("./directives\\ngMinnumber.js"),"ngPatternRestrict":require("./directives\\ngPatternRestrict.js"),"ngPermission":require("./directives\\ngPermission.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"popoverAny":require("./directives\\popoverAny.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"exclude":require("./filters\\exclude.js"),"excludeCategory":require("./filters\\excludeCategory.js"),"html":require("./filters\\html.js"),"leadingzero":require("./filters\\leadingzero.js"),"ordinal":require("./filters\\ordinal.js"),"slice":require("./filters\\slice.js"),"truncate":require("./filters\\truncate.js"),"truth":require("./filters\\truth.js")}),"template-options":({"addProductForm":require("./template-options\\addProductForm.js"),"searchForm":require("./template-options\\searchForm.js")})});
+var bulk = ({"controllers":({"abstractAdd":require("./controllers\\abstractAdd.js"),"abstractList":require("./controllers\\abstractList.js"),"adminAccount":require("./controllers\\adminAccount.js"),"adminAccountAdd":require("./controllers\\adminAccountAdd.js"),"adminAttribute":require("./controllers\\adminAttribute.js"),"adminAttributeAdd":require("./controllers\\adminAttributeAdd.js"),"adminAttributeSet":require("./controllers\\adminAttributeSet.js"),"adminAttributeSetAdd":require("./controllers\\adminAttributeSetAdd.js"),"adminBrand":require("./controllers\\adminBrand.js"),"adminBrandAdd":require("./controllers\\adminBrandAdd.js"),"adminCategory":require("./controllers\\adminCategory.js"),"adminCoupons":require("./controllers\\adminCoupons.js"),"adminProduct":require("./controllers\\adminProduct.js"),"adminProductApprovalList":require("./controllers\\adminProductApprovalList.js"),"adminProductList":require("./controllers\\adminProductList.js"),"adminRole":require("./controllers\\adminRole.js"),"adminRoleAdd":require("./controllers\\adminRoleAdd.js"),"adminShop":require("./controllers\\adminShop.js"),"adminShopAdd":require("./controllers\\adminShopAdd.js"),"adminShoptype":require("./controllers\\adminShoptype.js"),"adminShoptypeAdd":require("./controllers\\adminShoptypeAdd.js"),"buy1get1Add":require("./controllers\\buy1get1Add.js"),"buy1get1Import":require("./controllers\\buy1get1Import.js"),"buy1get1List":require("./controllers\\buy1get1List.js"),"localCategory":require("./controllers\\localCategory.js"),"login":require("./controllers\\login.js"),"productAdd":require("./controllers\\productAdd.js"),"productAddSelectCategory":require("./controllers\\productAddSelectCategory.js"),"productCollectionAdd":require("./controllers\\productCollectionAdd.js"),"productCollectionImport":require("./controllers\\productCollectionImport.js"),"productCollectionList":require("./controllers\\productCollectionList.js"),"productImageList":require("./controllers\\productImageList.js"),"productImageManagement":require("./controllers\\productImageManagement.js"),"productImport":require("./controllers\\productImport.js"),"productList":require("./controllers\\productList.js"),"productListLocalCategory":require("./controllers\\productListLocalCategory.js"),"productReview":require("./controllers\\productReview.js"),"root":require("./controllers\\root.js"),"sellerAccount":require("./controllers\\sellerAccount.js"),"sellerAccountAdd":require("./controllers\\sellerAccountAdd.js"),"sellerRole":require("./controllers\\sellerRole.js"),"sellerRoleAdd":require("./controllers\\sellerRoleAdd.js"),"test":require("./controllers\\test.js")}),"services":({"adminAccountService":require("./services\\adminAccountService.js"),"adminPermissionService":require("./services\\adminPermissionService.js"),"adminRoleService":require("./services\\adminRoleService.js"),"adminShopService":require("./services\\adminShopService.js"),"adminShoptypeService":require("./services\\adminShoptypeService.js"),"alert":require("./services\\alert.js"),"attribute":require("./services\\attribute.js"),"attributeService":require("./services\\attributeService.js"),"attributeSet":require("./services\\attributeSet.js"),"attributeSetService":require("./services\\attributeSetService.js"),"blocker":require("./services\\blocker.js"),"brand":require("./services\\brand.js"),"brandService":require("./services\\brandService.js"),"buy1get1":require("./services\\buy1get1.js"),"buy1get1Add":require("./services\\buy1get1Add.js"),"category":require("./services\\category.js"),"credential":require("./services\\credential.js"),"exceptionHandler":require("./services\\exceptionHandler.js"),"globalCategory":require("./services\\globalCategory.js"),"globalCategoryService":require("./services\\globalCategoryService.js"),"image":require("./services\\image.js"),"imageService":require("./services\\imageService.js"),"knownException":require("./services\\knownException.js"),"localCategory":require("./services\\localCategory.js"),"localCategoryService":require("./services\\localCategoryService.js"),"product":require("./services\\product.js"),"productAdd":require("./services\\productAdd.js"),"productCollection":require("./services\\productCollection.js"),"productCollectionAdd":require("./services\\productCollectionAdd.js"),"productReviewService":require("./services\\productReviewService.js"),"sellerAccountService":require("./services\\sellerAccountService.js"),"sellerPermissionService":require("./services\\sellerPermissionService.js"),"sellerRoleService":require("./services\\sellerRoleService.js"),"shop":require("./services\\shop.js"),"shopPermissionService":require("./services\\shopPermissionService.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngMatch":require("./directives\\ngMatch.js"),"ngMaxnumber":require("./directives\\ngMaxnumber.js"),"ngMinnumber":require("./directives\\ngMinnumber.js"),"ngPatternRestrict":require("./directives\\ngPatternRestrict.js"),"ngPermission":require("./directives\\ngPermission.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"popoverAny":require("./directives\\popoverAny.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"exclude":require("./filters\\exclude.js"),"excludeCategory":require("./filters\\excludeCategory.js"),"html":require("./filters\\html.js"),"leadingzero":require("./filters\\leadingzero.js"),"ordinal":require("./filters\\ordinal.js"),"slice":require("./filters\\slice.js"),"truncate":require("./filters\\truncate.js"),"truth":require("./filters\\truth.js")}),"template-options":({"addProductForm":require("./template-options\\addProductForm.js"),"searchForm":require("./template-options\\searchForm.js")})});
 var config = require('./config');
 var template = require('./template');
 
@@ -179,6 +179,8 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 .factory('Collection', services.productCollection)
 .factory('$CollectionAdd', services.productCollectionAdd)
 .factory('Image', services.image)
+.factory('Buy1Get1', services.buy1get1)
+.factory('$Buy1Get1Add', services.buy1get1Add)
 
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)
@@ -243,12 +245,16 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 .controller('AbstractAddCtrl', controllers.abstractAdd)
 .controller('ProductCollectionListCtrl', controllers.productCollectionList)
 .controller('ProductCollectionAddCtrl', controllers.productCollectionAdd)
+.controller('ProductCollectionImportCtrl', controllers.productCollectionImport)
 .controller('AdminCouponsCtrl', controllers.adminCoupons)
+.controller('Buy1Get1ListCtrl', controllers.buy1get1List)
+.controller('Buy1Get1AddCtrl', controllers.buy1get1Add)
+.controller('Buy1Get1ImportCtrl', controllers.buy1get1Import)
 
 .controller('TestCtrl', controllers.test)
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractList.js":4,"./controllers\\adminAccount.js":5,"./controllers\\adminAccountAdd.js":6,"./controllers\\adminAttribute.js":7,"./controllers\\adminAttributeAdd.js":8,"./controllers\\adminAttributeSet.js":9,"./controllers\\adminAttributeSetAdd.js":10,"./controllers\\adminBrand.js":11,"./controllers\\adminBrandAdd.js":12,"./controllers\\adminCategory.js":13,"./controllers\\adminCoupons.js":14,"./controllers\\adminProduct.js":15,"./controllers\\adminProductApprovalList.js":16,"./controllers\\adminProductList.js":17,"./controllers\\adminRole.js":18,"./controllers\\adminRoleAdd.js":19,"./controllers\\adminShop.js":20,"./controllers\\adminShopAdd.js":21,"./controllers\\adminShoptype.js":22,"./controllers\\adminShoptypeAdd.js":23,"./controllers\\buy1get1List.js":24,"./controllers\\localCategory.js":25,"./controllers\\login.js":26,"./controllers\\productAdd.js":27,"./controllers\\productAddSelectCategory.js":28,"./controllers\\productCollectionAdd.js":29,"./controllers\\productCollectionImport.js":30,"./controllers\\productCollectionList.js":31,"./controllers\\productImageList.js":32,"./controllers\\productImageManagement.js":33,"./controllers\\productImport.js":34,"./controllers\\productList.js":35,"./controllers\\productListLocalCategory.js":36,"./controllers\\productReview.js":37,"./controllers\\root.js":38,"./controllers\\sellerAccount.js":39,"./controllers\\sellerAccountAdd.js":40,"./controllers\\sellerRole.js":41,"./controllers\\sellerRoleAdd.js":42,"./controllers\\test.js":43,"./directives\\ncTradableSelect.js":44,"./directives\\ngCkeditor.js":45,"./directives\\ngDelegate.js":46,"./directives\\ngMatch.js":47,"./directives\\ngMaxnumber.js":48,"./directives\\ngMinnumber.js":49,"./directives\\ngPatternRestrict.js":50,"./directives\\ngPermission.js":51,"./directives\\ngSlideToggle.js":52,"./directives\\ngTemplate.js":53,"./directives\\popoverAny.js":54,"./filters\\capitalize.js":55,"./filters\\exclude.js":56,"./filters\\excludeCategory.js":57,"./filters\\html.js":58,"./filters\\leadingzero.js":59,"./filters\\ordinal.js":60,"./filters\\slice.js":61,"./filters\\truncate.js":62,"./filters\\truth.js":63,"./helpers\\base64.js":64,"./helpers\\common.js":65,"./helpers\\storage.js":66,"./helpers\\util.js":67,"./helpers\\variantPair.js":68,"./nc":90,"./services\\adminAccountService.js":92,"./services\\adminPermissionService.js":93,"./services\\adminRoleService.js":94,"./services\\adminShopService.js":95,"./services\\adminShoptypeService.js":96,"./services\\alert.js":97,"./services\\attribute.js":98,"./services\\attributeService.js":99,"./services\\attributeSet.js":100,"./services\\attributeSetService.js":101,"./services\\blocker.js":102,"./services\\brand.js":103,"./services\\brandService.js":104,"./services\\category.js":105,"./services\\credential.js":106,"./services\\exceptionHandler.js":107,"./services\\globalCategory.js":108,"./services\\globalCategoryService.js":109,"./services\\image.js":110,"./services\\imageService.js":111,"./services\\knownException.js":112,"./services\\localCategory.js":113,"./services\\localCategoryService.js":114,"./services\\product.js":115,"./services\\productAdd.js":116,"./services\\productCollection.js":117,"./services\\productCollectionAdd.js":118,"./services\\productReviewService.js":119,"./services\\sellerAccountService.js":120,"./services\\sellerPermissionService.js":121,"./services\\sellerRoleService.js":122,"./services\\shop.js":123,"./services\\shopPermissionService.js":124,"./template":127,"./template-options\\addProductForm.js":125,"./template-options\\searchForm.js":126,"angular":143,"angular-animate":129,"angular-base64":130,"angular-bootstrap-datetimepicker":132,"angular-file-upload":133,"angular-sanitize":135,"angular-scroll":137,"angular-ui-bootstrap":138,"angular-ui-tree":141,"lodash":145,"ui-select/dist/select.js":146}],2:[function(require,module,exports){
+},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractList.js":4,"./controllers\\adminAccount.js":5,"./controllers\\adminAccountAdd.js":6,"./controllers\\adminAttribute.js":7,"./controllers\\adminAttributeAdd.js":8,"./controllers\\adminAttributeSet.js":9,"./controllers\\adminAttributeSetAdd.js":10,"./controllers\\adminBrand.js":11,"./controllers\\adminBrandAdd.js":12,"./controllers\\adminCategory.js":13,"./controllers\\adminCoupons.js":14,"./controllers\\adminProduct.js":15,"./controllers\\adminProductApprovalList.js":16,"./controllers\\adminProductList.js":17,"./controllers\\adminRole.js":18,"./controllers\\adminRoleAdd.js":19,"./controllers\\adminShop.js":20,"./controllers\\adminShopAdd.js":21,"./controllers\\adminShoptype.js":22,"./controllers\\adminShoptypeAdd.js":23,"./controllers\\buy1get1Add.js":24,"./controllers\\buy1get1Import.js":25,"./controllers\\buy1get1List.js":26,"./controllers\\localCategory.js":27,"./controllers\\login.js":28,"./controllers\\productAdd.js":29,"./controllers\\productAddSelectCategory.js":30,"./controllers\\productCollectionAdd.js":31,"./controllers\\productCollectionImport.js":32,"./controllers\\productCollectionList.js":33,"./controllers\\productImageList.js":34,"./controllers\\productImageManagement.js":35,"./controllers\\productImport.js":36,"./controllers\\productList.js":37,"./controllers\\productListLocalCategory.js":38,"./controllers\\productReview.js":39,"./controllers\\root.js":40,"./controllers\\sellerAccount.js":41,"./controllers\\sellerAccountAdd.js":42,"./controllers\\sellerRole.js":43,"./controllers\\sellerRoleAdd.js":44,"./controllers\\test.js":45,"./directives\\ncTradableSelect.js":46,"./directives\\ngCkeditor.js":47,"./directives\\ngDelegate.js":48,"./directives\\ngMatch.js":49,"./directives\\ngMaxnumber.js":50,"./directives\\ngMinnumber.js":51,"./directives\\ngPatternRestrict.js":52,"./directives\\ngPermission.js":53,"./directives\\ngSlideToggle.js":54,"./directives\\ngTemplate.js":55,"./directives\\popoverAny.js":56,"./filters\\capitalize.js":57,"./filters\\exclude.js":58,"./filters\\excludeCategory.js":59,"./filters\\html.js":60,"./filters\\leadingzero.js":61,"./filters\\ordinal.js":62,"./filters\\slice.js":63,"./filters\\truncate.js":64,"./filters\\truth.js":65,"./helpers\\base64.js":66,"./helpers\\common.js":67,"./helpers\\storage.js":68,"./helpers\\util.js":69,"./helpers\\variantPair.js":70,"./nc":92,"./services\\adminAccountService.js":94,"./services\\adminPermissionService.js":95,"./services\\adminRoleService.js":96,"./services\\adminShopService.js":97,"./services\\adminShoptypeService.js":98,"./services\\alert.js":99,"./services\\attribute.js":100,"./services\\attributeService.js":101,"./services\\attributeSet.js":102,"./services\\attributeSetService.js":103,"./services\\blocker.js":104,"./services\\brand.js":105,"./services\\brandService.js":106,"./services\\buy1get1.js":107,"./services\\buy1get1Add.js":108,"./services\\category.js":109,"./services\\credential.js":110,"./services\\exceptionHandler.js":111,"./services\\globalCategory.js":112,"./services\\globalCategoryService.js":113,"./services\\image.js":114,"./services\\imageService.js":115,"./services\\knownException.js":116,"./services\\localCategory.js":117,"./services\\localCategoryService.js":118,"./services\\product.js":119,"./services\\productAdd.js":120,"./services\\productCollection.js":121,"./services\\productCollectionAdd.js":122,"./services\\productReviewService.js":123,"./services\\sellerAccountService.js":124,"./services\\sellerPermissionService.js":125,"./services\\sellerRoleService.js":126,"./services\\shop.js":127,"./services\\shopPermissionService.js":128,"./template":131,"./template-options\\addProductForm.js":129,"./template-options\\searchForm.js":130,"angular":147,"angular-animate":133,"angular-base64":134,"angular-bootstrap-datetimepicker":136,"angular-file-upload":137,"angular-sanitize":139,"angular-scroll":141,"angular-ui-bootstrap":142,"angular-ui-tree":145,"lodash":149,"ui-select/dist/select.js":150}],2:[function(require,module,exports){
 module.exports = {
 	//baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/',
 	//REST_SERVICE_BASE_URL: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api',
@@ -729,7 +735,7 @@ module.exports = ["$scope", "$controller", "AttributeService", "config", "util",
 		}
 	}, true);
 }];
-},{"angular":143}],9:[function(require,module,exports){
+},{"angular":147}],9:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AttributeSetService", "util", "config", function($scope, $controller, AttributeSetService, util, config) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -1368,9 +1374,471 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", function($sco
 	}, true);
 }];
 },{}],24:[function(require,module,exports){
-module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert', '$window', '$rootScope', function
+var angular = require('angular');
 
-($scope, Product,Collection, util, Alert, $window, $rootScope) {
+module.exports = ['$scope', '$window', 'util', 'config','Product', 'Buy1Get1','Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$Buy1Get1Add',
+function ($scope, $window, util, config,Product,  Buy1Get1, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, $rootScope , $q, KnownException, NcAlert, $Buy1Get1Add) {
+    'use strict';
+
+    //TODO: use Poons' Alert class
+
+    $window.onbeforeunload = function (e) {
+        if (!$scope.addBuy1Get1Form.$dirty) {
+            //only warn when form is dirty
+            return null;
+        }
+        var message = "Your changes will not be saved.",
+        e = e || window.event;
+        // For IE and Firefox
+        if (e) {
+            e.returnValue = message;
+        }
+
+        // For Safari
+        return message;
+    }; // end onbefore unload
+
+
+
+
+$scope.productList = [];
+$scope.productTotal = 0 ;
+$scope.defaultProductModalParam ={
+        filter: 'All',
+        searchText: null,
+        orderBy: 'UpdateDate',
+        direction: 'desc',
+        page: 0,
+        pageSize: 5
+    };
+
+$scope.statusLookup = {};
+ config.PRODUCT_STATUS.forEach(function(object){
+       $scope.statusLookup[object.value] = object; 
+    });
+ $scope.totalPage = function (x) {
+        return Math.ceil($scope.productTotal / $scope.defaultProductModalParam.pageSize);
+    };
+ $scope.asStatus = function (ab) {
+        return $scope.statusLookup[ab];
+    };   
+$scope.nextPage = function (m) {
+    if ($scope.defaultProductModalParam.page + m >= $scope.totalPage() ||
+        $scope.defaultProductModalParam.page + m < 0)
+        return;
+
+    $scope.defaultProductModalParam.page += m;
+};
+$scope.setOrderBy = function (nextOrderBy) {
+    if ($scope.defaultProductModalParam.orderBy == nextOrderBy) {
+        $scope.defaultProductModalParam.direction = ($scope.defaultProductModalParam.direction == 'asc' ? 'desc' : 'asc');
+    }
+    $scope.defaultProductModalParam.orderBy = nextOrderBy;
+}; 
+$scope.setPageSize = function (p) {
+    $scope.defaultProductModalParam.pageSize = p;
+}
+$scope.applySearch = function () {
+    $scope.defaultProductModalParam.searchText = $scope.searchText;
+};
+$scope.reloadData = function () {        
+       $scope.notReady = true;
+            Product.getAll($scope.defaultProductModalParam).then(function (x) {
+            $scope.productTotal = x.total;
+            $scope.productList = x.data;
+            $scope.notReady = false;
+        });
+    };
+
+$scope.$watch('defaultProductModalParam', function () {
+        $scope.reloadData();
+        $scope.allChecked = false;
+    }, true);
+
+//start buy 1 item select modal
+$scope.BuyItemSelected = function () {
+        $scope.exporter = {
+            progress: 10,
+            title: 'Select Buy 1 Item...'
+        };
+            $scope.reloadData();
+
+        $("#modal-buy1item-selected").modal('show');
+    };
+    
+    $scope.confirmBuy1ItemSelected = function(){
+        $("#modal-buy1item-selected").modal('hide');
+        var chb_product_buy_val=$("input[name='chb_product_buy']:checked").val();
+        var jsonObjBuy = jQuery.parseJSON(chb_product_buy_val);
+    
+        $scope.formData.BuyItemSelStatus = true;
+        $scope.formData.BuyItemId = jsonObjBuy.ProductId;
+        $scope.formData.BuyItemName = jsonObjBuy.ProductNameEn;     
+    }
+//end buy 1 get item
+
+//start get 1 item select modal
+$scope.GetItemSelected = function () {
+        $scope.exporter = {
+            progress: 10,
+            title: 'Select Get 1 Item...'
+        };
+            $scope.reloadData();
+
+        $("#modal-get1item-selected").modal('show');
+    };
+    
+    $scope.confirmGet1ItemSelected = function(){
+        $("#modal-get1item-selected").modal('hide');
+        var chb_product_get_val=$("input[name='chb_product_get']:checked").val();
+        var jsonObjGet = jQuery.parseJSON(chb_product_get_val);
+    
+        $scope.formData.GetItemSelStatus = true;
+        $scope.formData.GetItemId = jsonObjGet.ProductId;
+        $scope.formData.GetItemName = jsonObjGet.ProductNameEn;
+        // var arr = [];
+        // Object.keys($scope.checkBoxCache).forEach(function (m) {
+        //     if (!$scope.checkBoxCache[m]) return;
+        //     arr.push({
+        //         ProductId: Number(m)
+        //     });
+        // });
+    }
+
+//end get 1 get item
+    $scope.keywordValidConditions = {};
+    $scope.variationOptionWarning = [[], []];
+    $scope.onKeywordAdded = function (item, model) {
+
+        $scope.keywordValidConditions = {};
+        if (!item) return $scope.formData.Keywords.pop();
+
+        if ($scope.formData.Keywords.length > 20) {
+            $scope.keywordValidConditions['tagcount'] = true;
+        }
+
+        if (item.length > 30) {
+            $scope.keywordValidConditions['taglength'] = true;
+        }
+
+        if (!item.match(/^[a-zA-Z0-9ก-ฮ\s\-]+$/)) {
+            $scope.keywordValidConditions['pattern'] = true;
+        }
+
+        if (Object.keys($scope.keywordValidConditions).length > 0) {
+            //if there is error, revert
+            $scope.formData.Keywords.pop();
+        }
+    }
+  
+    $scope.onVariationOptionFreeTextAdded = function (item, model, jth) {
+        $scope.variationOptionWarning[jth] = [];
+        if (!item) return;
+        if (item.length > 30) $scope.variationOptionWarning[jth].push("Variation option must contain 30 characters or less");
+        if (!item.match(/^[a-zA-Z0-9\s]+$/)) $scope.variationOptionWarning[jth].push("Only letters and numbers allowed");
+
+        var optlen1 = $scope.attributeOptions[0].options.length;
+        var optlen2 = $scope.attributeOptions[1].options.length;
+        if ((optlen1 == 0 ? 1 : optlen1) * (optlen2 == 0 ? 1 : optlen2) > MAX_VARIANT) {
+            $scope.variationOptionWarning[jth].push("Maximum combination of variants (" + MAX_VARIANT + ") reached.");
+        }
+
+        if ($scope.variationOptionWarning[jth].length > 0) {
+            $scope.attributeOptions[jth].options.pop();
+        }
+    }
+
+    //Attribute Options to be filled via API
+    $scope.availableAttributeSets = [];
+    $scope.availableGlobalCategories = [];
+    $scope.availableLocalCategories = [];
+    $scope.availableBrands = [];
+    $scope.availableSearchTags = [];
+    $scope.availableRelatedProducts = [];
+    $scope.availableStockTypes = ['Stock', 'Pre-Order'];
+    $scope.availableVariantDisplayOption = [{ text: 'Show as group of variants', value: 'GROUP' }, { text: 'Show as individual product', value: 'INDIVIDUAL' }];
+
+    $scope.overview = {}
+
+    $scope.formData = {
+        PIDBuy :"",
+        PIDGet : "",
+        Brand: { id: null, BrandNameEn: "Please select brand.." },
+        MasterVariant: { DimensionUnit: "CM", WeightUnit: "G", StockType: "Stock" },
+        ShippingMethod: "1",
+        AttributeSet: {
+            AttributeSetTagMaps: []
+        },
+        RelatedProducts: [],
+        MasterImages: [],
+        MasterImages360: [],
+        VideoLinks: [],
+        Variants: [],
+        GlobalCategories: [null, null, null],
+        LocalCategories: [null, null, null],
+        SEO: { ProductBoostingWeight: 10000 },
+        ControlFlags: [],
+        Keywords: []
+    };
+    //Variation Factor Indices are used as index
+    //for ng-repeat in variation tab
+    $scope.variationFactorIndices = {};
+    $scope.variationFactorIndices.iterator = [0];
+    $scope.variationFactorIndices.length = function () {
+        return $scope.variationFactorIndices.iterator.length;
+    }
+    $scope.variationFactorIndices.popSecond = function () {
+        $scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop();
+        $scope.attributeOptions[1].options = [];
+    }
+    $scope.variationFactorIndices.pushSecond = function () {
+        $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1);
+    }
+
+    //Unmultiplied Variants (factor)
+    $scope.attributeOptions = {
+        0: {
+            Attribute: false,
+            options: []
+        },
+        1: {
+            Attribute: false,
+            options: []
+        }
+    };
+
+    //TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
+    $scope._attrEnTh = function (t) { return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
+    $scope._isFreeTextInput = util.isFreeTextDataType;
+    $scope._isListInput = util.isListDataType;
+
+    //CK editor options
+    $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
+
+    /*
+     * Page can be in 3 states
+     * --------------------------------
+     *  success: OK stat
+     *  failure: L2 validation error (client + server)
+     *  invalid: L1 validation error (client)
+     */
+    $scope.pageState = {
+        success: false,
+        failure: false,
+        invalid: false,
+        loading: {
+            state: true,
+            message: 'Loading..'
+        },
+        load: function (msg) {
+            $scope.pageState.loading.message = msg;
+            $scope.pageState.loading.state = true;
+        },
+        reset: function () {
+            $scope.pageState.success = false;
+            $scope.pageState.failure = false;
+            $scope.pageState.invalid = false;
+            $scope.pageState.loading.state = false;
+        }
+    };
+    //Modal State
+    $scope.formData.BuyItemSelStatus = true;
+    $scope.formData.GetItemSelStatus = true;
+    $scope.formData.BuyItemName = "";
+    $scope.formData.GetItemName = "";
+    //TODO: Initialize non-formData variable
+    $scope.enableProductVariations = "disable";
+
+    /*
+     *  Run clean data before any publishing
+     *  which will try to reduce imperfection before
+     *  serialization
+     */
+    var cleanData = function () {
+
+    };
+
+    $scope.preview = function () {
+        return console.log($scope.formData);
+        cleanData();
+        var apiRequest = Buy1Get1.serialize($scope.formData);
+        console.log(JSON.stringify(apiRequest));
+    };
+
+    $scope.$watch('formData.ExpireDate', function () {
+        var form = $scope.addBuy1Get1Form;
+            if (!form.ExpireDate) return;
+            form.ExpireDate.$setValidity("min", true);
+                
+        if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
+            if (!form.ExpireDate) return;
+            form.ExpireDate.$setValidity("min", false);
+            form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
+        }
+    });
+
+    var manualValidate = function () {
+        var mat = [];
+         if (!$scope.formData.NameTH || $scope.formData.NameTH == "") {
+            mat.push("Missing Thai Name");
+        }
+        if (!$scope.formData.NameEN || $scope.formData.NameEN == "") {
+            mat.push("Missing English Name");
+        }       
+        if (!$scope.formData.BuyItemId || $scope.formData.BuyItemId == "") {
+            mat.push("Please Select Buy Item");
+        }
+        if (!$scope.formData.GetItemId || $scope.formData.GetItemId == "") {
+            mat.push("Please Select Get Item");
+        }        
+        return mat;
+    };
+
+    /*
+     *  Publish (both Draft and WA)
+     */
+    $scope.publish = function (Status) {
+
+        $scope.pageState.reset();
+        $scope.pageState.load('Validating..');
+
+        $scope.onPublishing = (Status == "4");
+        console.log("befor validate");
+        //On click validation
+        var validateMat = manualValidate();
+        if (validateMat.length > 0 ) {
+            $scope.pageState.reset();
+            $scope.pageState.failure = true;
+            $scope.pageState.failure_message = validateMat[0];
+            $window.location.hash = 'alert';
+            $window.location.hash = 'alert-failure';
+            return;
+        }
+
+
+        $scope.pageState.load('Publishing..');
+        cleanData();
+        console.log("Publishing with Status = ", Status);
+        //Error Handling too Messi
+        try {            
+                $scope.formData.CMSStatusFlowId = Status
+                $scope.formData.Status = true;
+                $scope.formData.UpdateBy =1;
+                $scope.formData.CreateBy =1;
+                $scope.formData.Visibility = 1;
+                $scope.formData.CreateIP ='203.146.156.34';
+
+
+                var apiRequest =  Buy1Get1.serialize($scope.formData);  
+                var tmpObjArr =[];
+                var apiParameter ;
+                if($scope.formData.PromotionBuy1Get1ItemId != null && typeof $scope.formData.PromotionBuy1Get1ItemId != "undefined"){
+                    tmpObjArr.push(apiRequest);
+                    apiParameter = tmpObjArr;
+                }else{ apiParameter = apiRequest;}
+
+
+                Buy1Get1.publish(apiParameter, Status).then(function (res) {
+                $scope.pageState.reset();
+                if (res.PromotionBuy1Get1ItemId) {
+                    $scope.overview = res;
+                    $scope.pageState.success = true;
+                    $scope.formData.PromotionBuy1Get1ItemId = res.PromotionBuy1Get1ItemId;
+                    $scope.addBuy1Get1Form.$setPristine(true)
+                } else {
+                    $scope.pageState.failure = true;
+                    $scope.pageState.failure_message = res.message || res.Message;
+                    $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
+                    $window.location.hash = 'alert'
+                    $window.location.hash = 'alert-failure'
+                }
+            }, function (er) {
+                $scope.pageState.reset();
+                $scope.pageState.failure = true;
+                $scope.pageState.failure_message = er.Message || er.message;
+                $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
+
+                $window.location.hash = 'alert' //Need to toggle hash otherwise it wont scroll
+                $window.location.hash = 'alert-failure'
+            });
+
+        } catch (ex) {
+            console.log("catch exception from publish process");
+            $scope.pageState.reset();
+            $scope.pageState.failure = true;
+            $scope.pageState.failure_message = ex.message;
+            $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
+            $window.location.hash = 'alert'
+            $window.location.hash = 'alert-failure'
+            console.log('publish failure', ex);
+            return;
+        }
+    };
+
+    $scope.init = function (viewBag) {
+        //TODO: Refactor, use better callback mechanism
+        if (!angular.isObject(viewBag)) throw new KnownException("View bag is corrupted");
+
+        var shopId = 1;
+        var _editMode = ("Id" in viewBag)
+        for (var page in tabPage) {
+            tabPage[page].angular();
+        }
+
+
+        for (var page in tabPage) {
+            tabPage[page].angular();
+        }
+
+        if (_editMode) {
+                        var PromotionBuy1Get1ItemId = viewBag.Id;
+                        $scope.pageState.load('Loading Buy 1 Get 1 ..');
+
+                        Buy1Get1.getOne(PromotionBuy1Get1ItemId)
+                            .then(function (inverseFormData) {
+                                $scope.overview = angular.copy(inverseFormData);
+                              
+                                // $Buy1Get1Add.fill( $scope.pageState, $scope.dataSet, $scope.formData,  $scope.controlFlags,
+                                //     $scope.variationFactorIndices, inverseFormData).then(function () {
+                                //         $scope.formData.PromotionBuy1Get1ItemId = Number(PromotionBuy1Get1ItemId);
+                                //         $scope.pageState.reset();
+                                //         console.log("$scope.formData");
+                                //         console.log($scope.formData);
+                                //     });
+                            }, function (error) {
+                                 console.log("function (error)");
+                                throw new KnownException("Unable to fetch buLy 1 get 1 with id " + PromotionBuy1Get1ItemId);
+                            });
+
+                    } else if ('catId' in viewBag) {
+                        // var catId = Number(viewBag.catId);
+                        // $Buy1Get1Add.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs,
+                        //     $scope.controlFlags, $scope.variationFactorIndices).then(function () {
+                        //         $scope.pageState.reset();
+                             
+                        //     });
+                    } else {
+                        throw new KnownException("Invalid mode, viewBag garbage");
+        }
+
+
+    }//end init
+
+    var tabPage = {};
+
+   
+}];
+
+},{"angular":147}],25:[function(require,module,exports){
+var angular = require('angular');
+
+module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', function ($scope, Product, util, Alert, $window) {
+    
+}];
+},{"angular":147}],26:[function(require,module,exports){
+module.exports = ['$scope',  'Buy1Get1', 'util', 'Alert', '$window', '$rootScope', function
+
+($scope, Buy1Get1, util, Alert, $window, $rootScope) {
     //UI binding variables    
 
     $scope.checkBoxCache = {};
@@ -1386,36 +1854,36 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
         { name: "Wait for Approval", value: 'WaitforApproval' },
     ];
 
-    $scope.startExportProductCollection = function () {
+    $scope.startExportBuy1Get1 = function () {
         $scope.exporter = {
             progress: 10,
             title: 'Exporting...'
         };
 
-        $("#export-product-collection").modal('show');
+        $("#export-buy1get1").modal('show');
     };
 
-    $scope.confirmExportProductCollection = function () {
-        $("#export-product-collection").modal('hide');
+    $scope.confirmExportBuy1Get1 = function () {
+        $("#export-buy1get1").modal('hide');
 
         var arr = [];
         Object.keys($scope.checkBoxCache).forEach(function (m) {
             if (!$scope.checkBoxCache[m]) return;
             arr.push({
-                CMSId: Number(m)
+                PromotionBuy1Get1ItemId: Number(m)
             });
         });
 
         if (arr.length == 0) return;
 
 
-        var fileName = 'ProductCollectionExport-' + moment(new Date(), 'MM-DD-YYYY-HHmm') + ".csv";
+        var fileName = 'Buy1Get1Export-' + moment(new Date(), 'MM-DD-YYYY-HHmm') + ".csv";
         var a = document.getElementById("export_download_btn");
 
         var error = function (r) {
             $(".modal").modal('hide');
             $scope.exporter.title = 'Error'
-            $scope.alert.error('Unable to Export Product');
+            $scope.alert.error('Unable to Export Buy 1 Get 1');
             $scope.reloadData();
         };
 
@@ -1426,7 +1894,7 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
 
 
         chunks.forEach(function (chunk) {
-            Collection.export(chunk).then(function (result) {
+            Buy1Get1.export(chunk).then(function (result) {
 
                 $scope.exporter.progress += (100 / chunks);
                 blobs.push(result);
@@ -1440,7 +1908,6 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
                 $scope.exporter.title = 'Export Complete'
 
                 a.href = fileURL;
-
             }, error);
         });
     }
@@ -1475,12 +1942,11 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
                     var rObj = {};
 
                     if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSId: -1 , CMSStatusFlowId: 5 , CMSTypeId : -1 };  
+                            rObj = { PromotionBuy1Get1ItemId: -1 , CMSStatusFlowId: 5  };  
                     }else{
                             rObj = {
-                            CMSId: Number(id),
-                            CMSStatusFlowId: 5 ,
-                            CMSTypeId: $scope.hidCMSTypeId[id]
+                            PromotionBuy1Get1ItemId: Number(id),
+                            CMSStatusFlowId: 5 
                         };
                     }                   
                     return rObj ;
@@ -1488,8 +1954,8 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
     
                 if (selList.length > 0) {
                        
-                        var apiRequest = Collection.arrSerialize(selList);                         
-                        Collection.deleteBulk(apiRequest).then(function () {
+                        var apiRequest = Buy1Get1.arrSerialize(selList);                         
+                        Buy1Get1.deleteBulk(apiRequest).then(function () {
                         $scope.alert.success('Successfully deleted');
                         $scope.reloadData();
                     }, function (result) {
@@ -1507,12 +1973,11 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
         var selList = Object.keys($scope.checkBoxCache).map(function (id) {
                     var rObj = {};
                     if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSId: -1 , Visibility: true ,CMSTypeId :-1 };  
+                            rObj = { PromotionBuy1Get1ItemId: -1 , Visibility: true  };  
                     }else{
                             rObj = {
-                            CMSId: Number(id) ,
-                            Visibility : true ,
-                            CMSTypeId: $scope.hidCMSTypeId[id]
+                            PromotionBuy1Get1ItemId: Number(id) ,
+                            Visibility : true 
                         };
                     }                   
                     return rObj ;
@@ -1520,8 +1985,8 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
 
 
                 if (selList.length > 0) {
-                     var apiRequest = Collection.arrSerialize(selList);
-                        Collection.visible(apiRequest).then(function () {
+                     var apiRequest = Buy1Get1.arrSerialize(selList);
+                        Buy1Get1.visible(apiRequest).then(function () {
                         $scope.alert.success('Successfully changed');
                         $scope.reloadData();
                     }, function () {
@@ -1539,20 +2004,19 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
                  var selList = Object.keys($scope.checkBoxCache).map(function (id) {
                     var rObj = {};
                     if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSId: -1 , Visibility: false ,CMSTypeId :-1 };  
+                            rObj = { PromotionBuy1Get1ItemId: -1 , Visibility: false  };  
                     }else{
                             rObj = {
-                            CMSId: Number(id) ,
-                            Visibility : false ,
-                            CMSTypeId: $scope.hidCMSTypeId[id]
+                            PromotionBuy1Get1ItemId: Number(id) ,
+                            Visibility : false 
                         };
                     }                   
                     return rObj ;
                 });
 
                 if (selList.length > 0) {
-                      var apiRequest = Collection.arrSerialize(selList);
-                        Collection.visible(apiRequest).then(function () {
+                      var apiRequest = Buy1Get1.arrSerialize(selList);
+                        Buy1Get1.visible(apiRequest).then(function () {
                         $scope.alert.success('Successfully changed');
                         $scope.reloadData();
                     }, function () {
@@ -1570,12 +2034,11 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
                  var selList = Object.keys($scope.checkBoxCache).map(function (id) {
                     var rObj = {};
                     if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSId: -1 ,CMSStatusFlowId: 2 , CMSTypeId :-1 };  
+                            rObj = { PromotionBuy1Get1ItemId: -1 ,CMSStatusFlowId: 2  };  
                     }else{
                             rObj = {
-                            CMSId: Number(id) ,
-                            CMSStatusFlowId: 2 ,
-                            CMSTypeId: $scope.hidCMSTypeId[id]
+                            PromotionBuy1Get1ItemId: Number(id) ,
+                            CMSStatusFlowId: 2 
                         };
                     }                   
                     return rObj ;
@@ -1583,14 +2046,11 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
 
                 if (selList.length == 0) return;
 
-                    var apiRequest = Collection.arrSerialize(selList);
-                Collection.bulkPublish(apiRequest).then(function () {
-                    // $scope.alert.success("Successfully published " + arr.length + " items");
-                    // $scope.reloadData();
+                    var apiRequest = Buy1Get1.arrSerialize(selList);
+                Buy1Get1.bulkPublish(apiRequest).then(function () {
                      $scope.alert.success('Successfully published');
                      $scope.reloadData();
                 }, function (r) {
-                    //$scope.alert.error('Unable to publish because ' + r.message);
                     $scope.alert.success('Unable to publish');
                      $scope.reloadData();
                 });
@@ -1599,11 +2059,11 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
     ];
     $scope.actions = {
         edit: function (row) {
-            $window.location.href = "/collections/" + row.CMSId;
+            $window.location.href = "/buy1get1/" + row.PromotionBuy1Get1ItemId;
         },
         delete: function (row) {
             $scope.alert.close();
-            Collection.deleteBulk([{ CMSId: row.CMSId ,CMSTypeId : row.CMSTypeId,CMSStatusFlowId:5 }]).then(function () {
+            Buy1Get1.deleteBulk([{ PromotionBuy1Get1ItemId: row.PromotionBuy1Get1ItemId ,CMSStatusFlowId:5 }]).then(function () {
                 $scope.alert.success('You have successfully remove an entry.');
                 $scope.reloadData();
             }, function (err) {
@@ -1612,7 +2072,7 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
         },
         duplicate: function (row) {
             $scope.alert.close();
-            Collection.duplicate(row.CMSId).then(function () {
+            Buy1Get1.duplicate(row.PromotionBuy1Get1ItemId).then(function () {
                 $scope.alert.success();
                 $scope.reloadData();
             }, function (err) {
@@ -1624,7 +2084,7 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
             row.Visibility = !row.Visibility;
             console.log("[row]");
             console.log([row]);
-            Collection.visible([row]).then(function () {
+            Buy1Get1.visible([row]).then(function () {
             }, function (err) {
                 $scope.alert.error(err);
                 $scope.reloadData();
@@ -1671,8 +2131,8 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
         return StatusLookup[ab];
     };
 
-    //Product List
-    $scope.productList = [];
+    //Buy1Get1 List
+    $scope.buy1get1List = [];
     //Default parameters
     $scope.tableParams = {
         filter: 'All',
@@ -1691,7 +2151,7 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
     };
 
     $scope.totalPage = function (x) {
-        return Math.ceil($scope.productTotal / $scope.tableParams.pageSize);
+        return Math.ceil($scope.buy1get1Total / $scope.tableParams.pageSize);
     };
 
 
@@ -1713,14 +2173,15 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
         $scope.tableParams.orderBy = nextOrderBy;
     };
 
-    $scope.productTotal = 0;
+    $scope.buy1get1Total = 0;
     //Populate Data Source
     $scope.reloadData = function () {
-        $scope.productList = [];
+        console.log("reload data fire");
+        $scope.buy1get1List = [];
         $scope.notReady = true;
-        Collection.getAll($scope.tableParams).then(function (x) {
-            $scope.productTotal = x.total;
-            $scope.productList = x.data;
+        Buy1Get1.getAll($scope.tableParams).then(function (x) {
+            $scope.buy1get1Total = x.total;
+            $scope.buy1get1List = x.data;
             $scope.notReady = false;
         });
     };
@@ -1735,10 +2196,10 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
 
    
     $scope.checkAll = function(){
-        var first = $scope.productList[0];
-        var tval = !($scope.checkBoxCache[first.CMSId] || false);
-        $scope.productList.forEach(function (d) {
-            $scope.checkBoxCache[d.CMSId] = tval;
+        var first = $scope.buy1get1List[0];
+        var tval = !($scope.checkBoxCache[first.PromotionBuy1Get1ItemId] || false);
+        $scope.buy1get1List.forEach(function (d) {
+            $scope.checkBoxCache[d.PromotionBuy1Get1ItemId] = tval;
         });
     }
 
@@ -1756,12 +2217,12 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
         //note: can't just count checkboxcache because checkboxcache is global across
         //all pages. 
         var chkCount = 0;
-        $scope.productList.forEach(function(p){
-            chkCount += ($scope.checkBoxCache[p.CMSId] ? 1 : 0);
+        $scope.buy1get1List.forEach(function(p){
+            chkCount += ($scope.checkBoxCache[p.PromotionBuy1Get1ItemId] ? 1 : 0);
         });
         
         //Change selectAll checkbox state
-        if(chkCount != $scope.productList.length){
+        if(chkCount != $scope.buy1get1List.length){
             $scope.allChecked = false;
         }else{
             $scope.allChecked = true;
@@ -1770,7 +2231,7 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
     }
 }];
 
-},{}],25:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Category", "LocalCategoryService", "AttributeSetService", "NcAlert", "util", "config", function($scope, $rootScope, $uibModal, $timeout, common, Category, LocalCategoryService, AttributeSetService, NcAlert, util, config){
 	'ngInject';
 	$scope.modalScope = null;
@@ -1982,7 +2443,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 	};
 
 }];
-},{}],26:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 module.exports = ['$scope', 'NcAlert', 'Credential', '$window', 'storage', function ($scope, NcAlert, Credential, $window, storage) {
   $scope.uform = {}
   $scope.alert = new NcAlert()
@@ -2017,7 +2478,7 @@ module.exports = ['$scope', 'NcAlert', 'Credential', '$window', 'storage', funct
 }]
 
 
-},{}],27:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageService', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$productAdd',
@@ -2630,7 +3091,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
 
     }];
 
-},{"angular":143}],28:[function(require,module,exports){
+},{"angular":147}],30:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Category, GlobalCategory) {
@@ -2654,7 +3115,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 	});
 }];
 
-},{"angular":143}],29:[function(require,module,exports){
+},{"angular":147}],31:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Collection','Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$CollectionAdd',
@@ -3211,13 +3672,9 @@ function ($scope, $window, util, config, Product, Collection, ImageService, Attr
 
 }];
 
-},{"angular":143}],30:[function(require,module,exports){
-var angular = require('angular');
-
-module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', function ($scope, Product, util, Alert, $window) {
-    
-}];
-},{"angular":143}],31:[function(require,module,exports){
+},{"angular":147}],32:[function(require,module,exports){
+arguments[4][25][0].apply(exports,arguments)
+},{"angular":147,"dup":25}],33:[function(require,module,exports){
 module.exports = ['$scope', 'Product', 'Collection', 'util', 'Alert', '$window', '$rootScope', function
 
 ($scope, Product,Collection, util, Alert, $window, $rootScope) {
@@ -3544,7 +4001,6 @@ module.exports = ['$scope', 'Product', 'Collection', 'util', 'Alert', '$window',
         return Math.ceil($scope.productTotal / $scope.tableParams.pageSize);
     };
 
-
     $scope.nextPage = function (m) {
         if ($scope.tableParams.page + m >= $scope.totalPage() ||
             $scope.tableParams.page + m < 0)
@@ -3620,7 +4076,7 @@ module.exports = ['$scope', 'Product', 'Collection', 'util', 'Alert', '$window',
     }
 }];
 
-},{}],32:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 //Not Used
 module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader', function ($scope, Product, util, Alert, $window, FileUploader) {
     $scope.productList = [];
@@ -3630,7 +4086,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader
     });
 }];
 
-},{}],33:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 module.exports = ['$scope', 'Product', 'util', 'NcAlert', '$window', 'FileUploader', 'ImageService', 'config', 'common', 
 function ($scope, Product, util, NcAlert, $window, FileUploader, ImageService, config, common) {
     $scope.response = {};
@@ -3782,9 +4238,9 @@ function ($scope, Product, util, NcAlert, $window, FileUploader, ImageService, c
 }];
 
 
-},{}],34:[function(require,module,exports){
-arguments[4][30][0].apply(exports,arguments)
-},{"angular":143,"dup":30}],35:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
+arguments[4][25][0].apply(exports,arguments)
+},{"angular":147,"dup":25}],37:[function(require,module,exports){
 module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope', 'config', function ($scope, Product, util, Alert, $window, $rootScope, config) {
     
     /*
@@ -4117,7 +4573,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
     }
 }];
 
-},{}],36:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 module.exports = ['$scope', 'LocalCategory', function($scope, LocalCategory) {
 	//UI binding variables
 	$scope.showOnOffStatus = true;
@@ -4191,7 +4647,7 @@ module.exports = ['$scope', 'LocalCategory', function($scope, LocalCategory) {
 		});
 	});
 }];
-},{}],37:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$uibModal", "common", function($scope, $controller, ProductReviewService, config, $uibModal, common) {
 	'ngInject';
 	//Inherit from parent
@@ -4305,11 +4761,11 @@ module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$u
 	$scope.reviewStatus = config.PRODUCT_REVIEW_STATUS;
 	$scope.reviewButton = config.PRODUCT_REVIEW_BUTTON;
 }];
-},{}],38:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 module.exports = ['$rootScope', function($rootScope) {
 	//Root ctrl
 }];
-},{}],39:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerAccountService", "config", function($scope, $controller, SellerAccountService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -4325,7 +4781,7 @@ module.exports = ["$scope", "$controller", "SellerAccountService", "config", fun
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
-},{}],40:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 module.exports = function($scope, $controller, SellerAccountService, SellerRoleService) {
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -4349,7 +4805,7 @@ module.exports = function($scope, $controller, SellerAccountService, SellerRoleS
 		}
 	});
 }
-},{}],41:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerRoleService", "config", function($scope, $controller, SellerRoleService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -4365,7 +4821,7 @@ module.exports = ["$scope", "$controller", "SellerRoleService", "config", functi
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
-},{}],42:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerRoleService", function($scope, $controller, SellerRoleService) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -4425,7 +4881,7 @@ module.exports = ["$scope", "$controller", "SellerRoleService", function($scope,
 		}
 	}, true);
 }];
-},{}],43:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 module.exports = function($scope, Attribute, util) {
 		$scope.filterOptions = [
 			{ name: "All", value: 'All'},
@@ -4498,7 +4954,7 @@ module.exports = function($scope, Attribute, util) {
 		$scope.reload();
 		$scope.$watch('params', $scope.reload, true); 	
 };
-},{}],44:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 module.exports = ["$templateCache", "$filter", function($templateCache, $filter) {
 	'ngInject';
 	return {
@@ -4640,7 +5096,7 @@ module.exports = ["$templateCache", "$filter", function($templateCache, $filter)
 		}]
 	};
 }];
-},{}],45:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 module.exports = [function () {
     return {
 	priority: 1010,
@@ -4664,7 +5120,7 @@ module.exports = [function () {
     };
 }];
 
-},{}],46:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 var angular = require('angular');
 module.exports = [function() {
 	'use strict';
@@ -4686,7 +5142,7 @@ module.exports = [function() {
 		}
 	};
 }];
-},{"angular":143}],47:[function(require,module,exports){
+},{"angular":147}],49:[function(require,module,exports){
 module.exports = ["$interpolate", function($interpolate) {
 	'ngInject';
 	return {
@@ -4708,7 +5164,7 @@ module.exports = ["$interpolate", function($interpolate) {
 		}
 	}
 }]
-},{}],48:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return {
@@ -4730,7 +5186,7 @@ module.exports = function() {
 		}
 	}
 }
-},{}],49:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return {
@@ -4752,7 +5208,7 @@ module.exports = function() {
 		}
 	}
 }
-},{}],50:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 /*jslint browser: true, plusplus: true, indent: 2 */
 
 // This will be removed by uglify, along with the DEBUG code
@@ -5047,7 +5503,7 @@ angular.module('ngPatternRestrict', [])
       }
     };
   }]);
-},{}],51:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 module.exports = ["$rootScope", "$parse", "$animate", function($rootScope, $parse, $animate) {
   'ngInject';
   return {
@@ -5113,7 +5569,7 @@ module.exports = ["$rootScope", "$parse", "$animate", function($rootScope, $pars
     }
   }
 }];
-},{}],52:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 module.exports = function() {
     'ngInject';
     return {
@@ -5130,7 +5586,7 @@ module.exports = function() {
         }
     };
 };
-},{}],53:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$templateCache', '$compile', '$templateOptionsCache', 'KnownException', function ($templateCache, $compile, $templateOptionsCache, KnownException) {
     var originalAttr = {};
@@ -5158,7 +5614,7 @@ module.exports = ['$templateCache', '$compile', '$templateOptionsCache', 'KnownE
         }
     };
 }];
-},{"angular":143}],54:[function(require,module,exports){
+},{"angular":147}],56:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$document', '$window', function($document, $window) {
 	$window._globalPopoverAny = null;
@@ -5203,7 +5659,7 @@ module.exports = ['$document', '$window', function($document, $window) {
 		}
 	};
 }];
-},{"angular":143}],55:[function(require,module,exports){
+},{"angular":147}],57:[function(require,module,exports){
 module.exports = [function() {
   return function(input, scope) {
     if (input!=null)
@@ -5211,7 +5667,7 @@ module.exports = [function() {
     return input.substring(0,1).toUpperCase()+input.substring(1);
   }
 }];
-},{}],56:[function(require,module,exports){
+},{}],58:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = [function() {
@@ -5245,7 +5701,7 @@ module.exports = [function() {
      });
   }
 }];
-},{"angular":143}],57:[function(require,module,exports){
+},{"angular":147}],59:[function(require,module,exports){
 module.exports = [function() {
   
 var search = function(catId, tmp) {
@@ -5314,14 +5770,14 @@ return function(arr, other, include) {
     return arr;
   }
 }];
-},{}],58:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 module.exports = [function(){
    return function(data) {
 	   if (!data) return data;
 	   return data.replace(/\n\r?/g, '<br />');
  };
 }]
-},{}],59:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return function(str, num) {
@@ -5342,7 +5798,7 @@ module.exports = function() {
 		return result;
 	}
 };
-},{}],60:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = [function() {
@@ -5358,7 +5814,7 @@ module.exports = [function() {
   	return input;
   }
 }];
-},{"angular":143}],61:[function(require,module,exports){
+},{"angular":147}],63:[function(require,module,exports){
 /*
  * Get slice or subarray of array
  */
@@ -5374,7 +5830,7 @@ module.exports = [function() {
     return _.slice(arr, from, to);
   }
 }];
-},{}],62:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 module.exports = [function () {
         return function (text, length, end) {
             if (isNaN(length))
@@ -5392,7 +5848,7 @@ module.exports = [function () {
 
         };
 }];
-},{}],63:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 var angular = require('angular');
 
 /*
@@ -5420,7 +5876,7 @@ module.exports = [function() {
      return i;
   }
 }];
-},{"angular":143}],64:[function(require,module,exports){
+},{"angular":147}],66:[function(require,module,exports){
 module.exports = [function () {
     'use strict';
     var service = {};
@@ -5439,7 +5895,7 @@ module.exports = [function () {
     };
     return service;
 }];
-},{}],65:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http, $q, storage, config, $window) {
     'use strict';
         var service = {};
@@ -5583,7 +6039,7 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
         return service;
 }];
 
-},{}],66:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 module.exports = [function () {
     'use strict';
     var service = {};
@@ -5696,7 +6152,7 @@ module.exports = [function () {
     return service;
 }];
 
-},{}],67:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$interpolate', 'KnownException', function (storage, config, common, $window, $rootScope, $interpolate, KnownException) {
@@ -6041,7 +6497,7 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     return service;
 }];
 
-},{"angular":143}],68:[function(require,module,exports){
+},{"angular":147}],70:[function(require,module,exports){
 module.exports = ['util', function (util) {
 	
 	//Struct for Variant Pair
@@ -6055,7 +6511,7 @@ module.exports = ['util', function (util) {
 	return VariantPair;
 }];
 
-},{}],69:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncAction', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
@@ -6130,7 +6586,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],70:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncAdvanceSearch', ["$templateCache", function($templateCache) {
 		return {
@@ -6189,7 +6645,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],71:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncAlert', function() {
 		this.defaultErrorMessage = 'Error';
@@ -6245,7 +6701,7 @@ angular.module('nc')
 			this.message = '';
 		};
 	}]);
-},{}],72:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncBindCompile', ["$compile", "$templateCache", function($compile, $templateCache) {
        return {
@@ -6274,7 +6730,7 @@ angular.module('nc')
             }
         };
     }]);
-},{}],73:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncBulk', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
@@ -6418,7 +6874,7 @@ angular.module('nc')
 			}
 		}
 	}])
-},{}],74:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEmpty', ["$templateCache", function($templateCache) {
 		return {
@@ -6432,7 +6888,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],75:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEye', ["$templateCache", function($templateCache) {
 		return {
@@ -6450,7 +6906,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-},{}],76:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncFilter', ["$templateCache", function($templateCache) {
 		return {
@@ -6471,7 +6927,7 @@ angular.module('nc')
 			}
 		}
 	}])
-},{}],77:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncImageGallery', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
@@ -6613,7 +7069,7 @@ angular.module('nc')
 			}
 		};
 	}])
-},{}],78:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 angular.module('nc')
 .directive('ncImageIntegrity', function() {
     //Only show if image loaded by <img> integrity is OK (100% finished loading)
@@ -6633,7 +7089,7 @@ angular.module('nc')
             }
         };
     })
-},{}],79:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncLoading', ["$templateCache", function($templateCache) {
 		return {
@@ -6659,7 +7115,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],80:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncPageTitle', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "$parse", "KnownException", function ($rootScope, $templateCache, $compile, $templateOptionsCache, $parse, KnownException) {
@@ -6683,7 +7139,7 @@ angular.module('nc')
             }
         };
     }]);
-},{"angular":143}],81:[function(require,module,exports){
+},{"angular":147}],83:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncPagination', function() {
 		this.paginationSizes = [10,20,30];
@@ -6750,7 +7206,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-},{}],82:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 angular.module('nc')
 	.provider('ncPermissionProvider', function() {
 		this.permission = function() {
@@ -6771,7 +7227,7 @@ angular.module('nc')
 	.directive('ncShowPermission', function() {
 		
 	});
-},{}],83:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncSearch', ["$templateCache", function($templateCache) {
 		return {
@@ -6793,7 +7249,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],84:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncTable', function() {
 		this.tableOptions = {
@@ -6882,7 +7338,7 @@ angular.module('nc')
 			template: '<a ng-href="{{link}}" ng-transclude></a>',
 		}
 	});
-},{}],85:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncTemplate', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", "KnownException", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException,  $parse, KnownException) {
@@ -6937,7 +7393,7 @@ angular.module('nc')
                 }
             };
         }]);
-},{"angular":143}],86:[function(require,module,exports){
+},{"angular":147}],88:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncTreeSelect', ["$templateCache", function($templateCache) {
 		return {
@@ -6949,7 +7405,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],87:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 angular.module('nc')
     .directive('ncTagValidator', function () {
         return {
@@ -7009,7 +7465,7 @@ angular.module('nc')
             }
         }
     });
-},{}],88:[function(require,module,exports){
+},{}],90:[function(require,module,exports){
 angular.module('nc')
 	.filter('dateTh', ["$filter", function($filter) {
 		return function(input) {
@@ -7021,7 +7477,7 @@ angular.module('nc')
 			return $filter('date')(input, 'H:m', '+700');
 		}
 	}]);
-},{}],89:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 /*
  Return dropdown[value] if input == dropdown[name]
  */
@@ -7044,7 +7500,7 @@ angular.module('nc')
 			return _.isUndefined(find) ? input : find[name];
 		}
 	});
-},{}],90:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 (function (global){
 var angular = require('angular');
 
@@ -7066,7 +7522,7 @@ angular.module('nc', ['ui.bootstrap', 'ui.select', 'duScroll', 'angularFileUploa
 (function () {var f = require("./index.js");f["directives"]=({"ncAction":require("./directives\\ncAction.js"),"ncAdvanceSearch":require("./directives\\ncAdvanceSearch.js"),"ncAlert":require("./directives\\ncAlert.js"),"ncBindCompile":require("./directives\\ncBindCompile.js"),"ncBulk":require("./directives\\ncBulk.js"),"ncEmpty":require("./directives\\ncEmpty.js"),"ncEye":require("./directives\\ncEye.js"),"ncFilter":require("./directives\\ncFilter.js"),"ncImageGallery":require("./directives\\ncImageGallery.js"),"ncImageIntegrity":require("./directives\\ncImageIntegrity.js"),"ncLoading":require("./directives\\ncLoading.js"),"ncPageTitle":require("./directives\\ncPageTitle.js"),"ncPagination":require("./directives\\ncPagination.js"),"ncPermission":require("./directives\\ncPermission.js"),"ncSearch":require("./directives\\ncSearch.js"),"ncTable":require("./directives\\ncTable.js"),"ncTemplate":require("./directives\\ncTemplate.js"),"ncTreeSelect":require("./directives\\ncTreeSelect.js"),"ncUiSelect":require("./directives\\ncUiSelect.js")});f["filters"]=({"date":require("./filters\\date.js"),"map":require("./filters\\map.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./directives\\ncAction.js":69,"./directives\\ncAdvanceSearch.js":70,"./directives\\ncAlert.js":71,"./directives\\ncBindCompile.js":72,"./directives\\ncBulk.js":73,"./directives\\ncEmpty.js":74,"./directives\\ncEye.js":75,"./directives\\ncFilter.js":76,"./directives\\ncImageGallery.js":77,"./directives\\ncImageIntegrity.js":78,"./directives\\ncLoading.js":79,"./directives\\ncPageTitle.js":80,"./directives\\ncPagination.js":81,"./directives\\ncPermission.js":82,"./directives\\ncSearch.js":83,"./directives\\ncTable.js":84,"./directives\\ncTemplate.js":85,"./directives\\ncTreeSelect.js":86,"./directives\\ncUiSelect.js":87,"./filters\\date.js":88,"./filters\\map.js":89,"./index.js":90,"./template.js":91,"angular":143,"angular-file-upload":133,"angular-scroll":137,"angular-ui-bootstrap":138,"jquery":144,"lodash":145,"ui-select":146}],91:[function(require,module,exports){
+},{"./directives\\ncAction.js":71,"./directives\\ncAdvanceSearch.js":72,"./directives\\ncAlert.js":73,"./directives\\ncBindCompile.js":74,"./directives\\ncBulk.js":75,"./directives\\ncEmpty.js":76,"./directives\\ncEye.js":77,"./directives\\ncFilter.js":78,"./directives\\ncImageGallery.js":79,"./directives\\ncImageIntegrity.js":80,"./directives\\ncLoading.js":81,"./directives\\ncPageTitle.js":82,"./directives\\ncPagination.js":83,"./directives\\ncPermission.js":84,"./directives\\ncSearch.js":85,"./directives\\ncTable.js":86,"./directives\\ncTemplate.js":87,"./directives\\ncTreeSelect.js":88,"./directives\\ncUiSelect.js":89,"./filters\\date.js":90,"./filters\\map.js":91,"./index.js":92,"./template.js":93,"angular":147,"angular-file-upload":137,"angular-scroll":141,"angular-ui-bootstrap":142,"jquery":148,"lodash":149,"ui-select":150}],93:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -7204,7 +7660,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
     "<div class=\"page-header with-border\"><h1 class=\"float-left page-header-title\">{{ title }}</h1><span class=\"float-right page-header-action\"><ng-transclude></ng-transclude></span></div>"
   );
  }]);
-},{}],92:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Admin');
@@ -7239,14 +7695,14 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-},{}],93:[function(require,module,exports){
+},{}],95:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Admin');
 
 	return service;
 }]
-},{}],94:[function(require,module,exports){
+},{}],96:[function(require,module,exports){
 module.exports = ["common", "AdminPermissionService", function(common, AdminPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Admin');
@@ -7292,7 +7748,7 @@ module.exports = ["common", "AdminPermissionService", function(common, AdminPerm
 	};
 	return service;	
 }]
-},{}],95:[function(require,module,exports){
+},{}],97:[function(require,module,exports){
 module.exports = ["common", "config", "util", function(common, config, util) {
 	'ngInject';
 	var service = common.Rest('/Shops');
@@ -7329,7 +7785,7 @@ module.exports = ["common", "config", "util", function(common, config, util) {
 	};
 	return service;	
 }]
-},{}],96:[function(require,module,exports){
+},{}],98:[function(require,module,exports){
 module.exports = ["common", "ShopPermissionService", function(common, ShopPermissionService) {
 	'ngInject';
 	var service = common.Rest('/Shoptypes');
@@ -7375,7 +7831,7 @@ module.exports = ["common", "ShopPermissionService", function(common, ShopPermis
 	};
 	return service;	
 }]
-},{}],97:[function(require,module,exports){
+},{}],99:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', '$document', '$timeout', function(common, $document, $timeout) {
 	return function() {
@@ -7409,7 +7865,7 @@ module.exports = ['common', '$document', '$timeout', function(common, $document,
 		this.message = '';
 	};
 }];
-},{"angular":143}],98:[function(require,module,exports){
+},{"angular":147}],100:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common){
 	'use strict';
@@ -7649,7 +8105,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{"angular":143}],99:[function(require,module,exports){
+},{"angular":147}],101:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/Attributes');
@@ -7755,7 +8211,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }];
-},{}],100:[function(require,module,exports){
+},{}],102:[function(require,module,exports){
 module.exports = ['common', function(common){
 	'use strict';
 	var service = {};
@@ -7903,7 +8359,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{}],101:[function(require,module,exports){
+},{}],103:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/AttributeSets');
@@ -7962,7 +8418,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }]
-},{}],102:[function(require,module,exports){
+},{}],104:[function(require,module,exports){
 module.exports = ['$window', function($window) {
 	return function(fn, close) {
 		var vm = this;
@@ -7998,7 +8454,7 @@ module.exports = ['$window', function($window) {
 		};
 	};
 }];
-},{}],103:[function(require,module,exports){
+},{}],105:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$q', 'common', function($q, common){
 	var service = {};
@@ -8084,7 +8540,7 @@ module.exports = ['$q', 'common', function($q, common){
 	};
 	return service;
 }];
-},{"angular":143}],104:[function(require,module,exports){
+},{"angular":147}],106:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	service = common.Rest('/Brands');
@@ -8115,7 +8571,525 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }]
-},{}],105:[function(require,module,exports){
+},{}],107:[function(require,module,exports){
+//Buy 1 Get 1 Service
+module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
+    function ($http, common, util, LocalCategory, Brand, config) {
+        'use strict';
+        var service = common.Rest('/ProductStages');
+
+        service.getOne = function (PromotionBuy1Get1ItemId) {
+            var req = {
+                method: 'GET',
+                url: '/ProBuy1Get1/' + PromotionBuy1Get1ItemId
+            };
+            return common.makeRequest(req);
+        };
+     
+        service.duplicate = function (PromotionBuy1Get1ItemId) {
+            //this URL structure is weird dont u think
+            var req = {
+                method: 'POST',
+                url: '/ProBuy1Get1/duplicate/' + PromotionBuy1Get1ItemId
+            };
+
+            return common.makeRequest(req);
+        };
+
+        service.getAll = function (parameters) {
+            var req = {
+                method: 'GET',
+                url: '/ProBuy1Get1/List',
+                params: {
+                    _order: parameters.orderBy || 'UpdateDate',
+                    _limit: parameters.pageSize || 10,
+                    _offset: parameters.page * parameters.pageSize || 0,
+                    _direction: parameters.direction || 'asc',
+                    _filter: parameters.filter || 'ALL',
+                    searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined
+                }
+            };
+
+            return common.makeRequest(req);
+        };
+
+        service.export = function (tobj) {
+            var path = '/ProBuy1Get1/Export';
+            return common.makeRequest({
+                responseType: 'arraybuffer',
+                method: 'POST',
+                url: path,
+                data: tobj
+            });
+        };
+
+        service.publish = function (tobj, Status) {
+           var path = '/ProBuy1Get1/Create';
+            if(typeof tobj.length != "undefined"){path = "/CMSUpdateStages/UpdateList";}
+                       
+            return common.makeRequest({
+                method: 'POST',
+                url: path,
+                data: tobj
+            });
+        };
+
+
+        service.bulkPublish = function (tobj) {
+            return common.makeRequest({
+                method: 'POST',
+                url: '/ProBuy1Get1/UpdateList',
+                data: tobj
+            });
+        };
+
+        service.visible = function (obj) {
+            return common.makeRequest({
+                method: 'POST',
+                url: '/ProBuy1Get1/UpdateList',
+                data: obj,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            });
+        };
+        service.deleteBulk = function (arr) {
+            return common.makeRequest({
+                method: 'POST',
+                url: '/ProBuy1Get1/UpdateList',
+                data: arr,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            });
+        };
+
+        var StatusLookup = {};
+        config.PRODUCT_STATUS.forEach(function (object) {
+            StatusLookup[object.value] = object;
+        });
+        service.getStatus = function (abbreviation) {
+            return StatusLookup[abbreviation];
+        }
+
+        service.serialize = function (fd) {
+            var hasVariants = (!util.nullOrUndefined(fd.Variants) && fd.Variants.length > 0);
+
+            //Cleaned data
+            var clean = {};
+            clean.Variants = [];
+
+
+            try {
+                
+                clean.PromotionBuy1Get1ItemId   = fd.PromotionBuy1Get1ItemId;
+                clean.NameEN                    = fd.NameEN;
+                clean.NameTH                    = fd.NameTH;
+                clean.URLKey                    = fd.URLKey;
+                clean.PIDBuy                    = fd.BuyItemId;
+                clean.PIDGet                    = fd.GetItemId;
+                clean.ShortDescriptionTH        = fd.ShortDescriptionTH;
+                clean.LongDescriptionTH         = fd.LongDescriptionTH;
+                clean.ShortDescriptionEN        = fd.ShortDescriptionEN;
+                clean.LongDescriptionEN         = fd.LongDescriptionEN;
+               
+                clean.ProductBoxBadge           = null;
+                clean.Sequence                  = null;
+                clean.Status                    = fd.Status;
+                clean.CreateBy                  = fd.CreateBy;
+                clean.Createdate                = null              
+                clean.UpdateBy                  = fd.UpdateBy;
+                clean.UpdateDate                = null
+                clean.CreateIP                  = fd.CreateIP;
+                clean.UpdateIP                  = fd.UpdateIP;
+                clean.CMSStatusFlowId           = fd.CMSStatusFlowId;
+                clean.Visibility           = fd.Visibility;
+
+
+                if(fd.ExpiryDate && fd.EffectiveDate){
+                    var cpdate = angular.copy(fd.ExpiryDate);
+                    clean.ExpiryDate = moment(cpdate).format('LL');
+                    clean.ExpiryTime = moment(cpdate).format('HH:mm:ss');
+
+                    cpdate = angular.copy(fd.EffectiveDate);
+                    clean.EffectiveDate = moment(cpdate).format('LL');
+                    clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
+                }
+                
+                console.log('buy 1 get 1 create', clean);
+            } catch (ex) {
+                console.warn("buy 1 get 1 create exception", ex);
+            }
+           
+
+            return clean;
+        }
+
+         service.arrSerialize = function (fd) {
+            var retObjArr =[]
+
+            for(var index = 0 ; index <= fd.length ; index ++){
+                var clean = {};
+                try {
+
+//console.log("loop value : " + index + ", cmsid : "+ fd[index].CMSId +", status : "+ fd[index].Status + ", EffectiveDate : " + fd[index].EffectiveDate );
+
+                clean.PromotionBuy1Get1ItemId  = fd[index].PromotionBuy1Get1ItemId;
+                clean.NameEN                    = fd[index].NameEN;
+                clean.NameTH                    = fd[index].NameTH;
+                clean.URLKey                    = fd[index].URLKey;
+                clean.PIDBuy                    = fd[index].BuyItemId;
+                clean.PIDGet                    = fd[index].GetItemId;
+                clean.ShortDescriptionTH        = fd[index].ShortDescriptionTH;
+                clean.LongDescriptionTH         = fd[index].LongDescriptionTH;
+                clean.ShortDescriptionEN        = fd[index].ShortDescriptionEN;
+                clean.LongDescriptionEN         = fd[index].LongDescriptionEN;
+               
+                clean.ProductBoxBadge           = fd[index].ProductBoxBadge;
+                clean.Sequence                  = fd[index].Sequence;
+                clean.Status                    = fd[index].Status;
+                clean.CreateBy                  = fd[index].CreateBy;
+                clean.Createdate                = fd[index].Createdate ;              
+                clean.UpdateBy                  = fd[index].UpdateBy;
+                clean.UpdateDate                = fd[index].UpdateDate ;
+                clean.CreateIP                  = fd[index].CreateIP;
+                clean.UpdateIP                  = fd[index].UpdateIP;
+                clean.CMSStatusFlowId           = fd[index].CMSStatusFlowId;
+                clean.Visibility           = fd[index].Visibility;
+
+
+                if(fd[index].ExpiryDate && fd[index].EffectiveDate){
+                    var cpdate = angular.copy(fd[index].ExpiryDate);
+                    clean.ExpiryDate = moment(cpdate).format('LL');
+                    clean.ExpiryTime = moment(cpdate).format('HH:mm:ss');
+
+                    cpdate = angular.copy(fd[index].EffectiveDate);
+                    clean.EffectiveDate = moment(cpdate).format('LL');
+                    clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
+                }
+                               
+               retObjArr.push(clean);
+            } catch (ex) {
+                console.warn("Arr serialize error", ex);
+            }
+            }
+            
+            return retObjArr;
+        }
+
+        service.deserialize = function (invFd, FullAttributeSet) {
+            console.log('FullAttributeSet', FullAttributeSet);
+
+            invFd.AttributeSet = FullAttributeSet;
+            invFd.PrepareDay = invFd.PrepareDay || '';
+
+            if (invFd.EffectiveDate != "" && invFd.EffectiveDate != null) {
+                invFd.EffectiveDate = moment(invFd.EffectiveDate + " " + invFd.EffectiveTime).toDate();
+                invFd.EffectiveTime = invFd.EffectiveTime;
+            }
+
+            if (invFd.ExpireDate != "" && invFd.ExpireDate != null) {
+                invFd.ExpireDate = moment(invFd.ExpireDate + " " + invFd.ExpireTime).toDate() ;
+                invFd.ExpireTime = invFd.ExpireTime;
+            }
+
+            var BrandId = invFd.Brand.BrandId;
+            Brand.getOne(BrandId).then(function (data) {
+                invFd.Brand = data;
+                delete invFd.Brand.$id;
+                invFd.Brand.id = BrandId;
+            }, function () {
+                console.log("brand resolve failure");
+                invFd.Brand = {
+                    BrandId: null,
+                    BrandNameEn: 'Please select brand..'
+                };
+            });
+
+            var invMapper = {
+                VideoLinks: function (m) {
+                    return m.Url;
+                },
+                Variants: function (m) {
+                    m.Visibility = m.Visibility;
+                    m.Images = m.Images || [];
+                    m.Images360 = m.Images360 || [];
+                    m.WeightUnit = (m.WeightUnit || "").trim();
+                    m.DimensionUnit = (m.DimensionUnit || "").trim();
+                    m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
+                    return m;
+                }
+            };
+
+            try {
+                var DefaultVariantIndex = (invFd.Variants || []).map(function (o) {
+                    return o.DefaultVariant || false;
+                }).indexOf(true);
+
+                invFd.DefaultVariant = invFd.Variants[DefaultVariantIndex];
+            } catch (er) {
+                console.warn("Unable to set DefaultVariant, will not set", er);
+            }
+
+            try {
+                invFd.Variants = (invFd.Variants || []).map(invMapper.Variants);
+            } catch (er) {
+                console.warn("Unable to set Variants, will set empty", er);
+                invFd.Variants = [];
+            }
+
+            var MasterAttribute = {};
+            try {
+                invFd.MasterAttribute.forEach(function (ma) {
+                    MasterAttribute[ma.AttributeId] = ma.ValueEn;
+                });
+            } catch (ex) {
+                console.warn("Unable to set MasterAttribute", ex);
+            }
+            invFd.MasterAttribute = MasterAttribute;
+
+
+            if (!invFd.LocalCategories) {
+                invFd.LocalCategories = [];
+            }
+
+            if (invFd.LocalCategories.length == 0) {
+                invFd.LocalCategories = [null, null, null];
+            } else {
+                var kmax = invFd.LocalCategories.length;
+                for (var k = 0; k < 3 - kmax; k++) {
+                    console.log("pushing null")
+                    invFd.LocalCategories.push(null);
+                }
+            }
+
+            if (invFd.LocalCategory) {
+                LocalCategory.getOne(invFd.LocalCategory).then(function (locat) {
+                    invFd.LocalCategories.unshift(locat);
+
+                    if (invFd.LocalCategories.length > 3) {
+                        invFd.LocalCategories.pop();
+                    }
+
+                })
+            }
+
+            //TODO: replace with try-catch
+            if (invFd.MasterVariant.VideoLinks) {
+                invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
+            } else {
+                invFd.MasterVariant.VideoLinks = [];
+            }
+
+
+            invFd.Variants.forEach(function (variant, index) {
+                try {
+                    variant.VideoLinks = (variant.VideoLinks || []).map(invMapper.VideoLinks);
+                } catch (ex) {
+                    variant.VideoLinks = [];
+                }
+            });
+
+
+
+            if (!invFd.GlobalCategories) {
+                invFd.GlobalCategories = [null, null, null];
+            }
+
+            if (invFd.GlobalCategories.length == 0) {
+                invFd.GlobalCategories = [null, null, null];
+            } else {
+                var kmax = invFd.GlobalCategories.length;
+                for (var k = 0; k < 3 - kmax; k++) {
+                    console.log("pushing null")
+                    invFd.GlobalCategories.push(null);
+                }
+            }
+
+            invFd.GlobalCategories.unshift({
+                CategoryId: invFd.GlobalCategory
+            });
+
+            if (invFd.GlobalCategories.length > 3) {
+                invFd.GlobalCategories.pop();
+            }
+
+            delete invFd.GlobalCategory;
+            delete invFd.LocalCategory;
+
+
+            //TODO: Just change ngmodel to bind to MasterVariant.MasterImages Directly
+            invFd.MasterImages = invFd.MasterVariant.Images || [];
+            delete invFd.MasterVariant.Images;
+            invFd.MasterImages360 = invFd.MasterVariant.Images360 || [];
+            delete invFd.MasterVariant.Images360;
+
+            try {
+                invFd.MasterVariant.WeightUnit = invFd.MasterVariant.WeightUnit.trim();
+            } catch (ex) {
+                invFd.MasterVariant.WeightUnit = undefined;
+            }
+
+            try {
+                invFd.MasterVariant.DimensionUnit = invFd.MasterVariant.DimensionUnit.trim();
+            } catch (ex) {
+                invFd.MasterVariant.DimensionUnit = undefined;
+            }
+
+            try {
+                var _split = invFd.Keywords.trim().split(",");
+                if (_split[0] == "") {
+                    invFd.Keywords = [];
+                } else {
+                    invFd.Keywords = util.uniqueSet(_split);
+                }
+            } catch (ex) {
+                invFd.Keywords = [];
+            }
+
+            if (invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; //TODO: Hardcode
+
+            var transformed = {
+                formData: invFd
+            };
+
+
+            if (invFd.Variants.length > 0) {
+
+                var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId']);
+                
+                //Generate attributeOptions
+                var map0_index = FullAttributeSet.AttributeSetMaps.map(function (a) {
+                    return a.Attribute.AttributeId;
+                }).indexOf(invFd.Variants[0].FirstAttribute.AttributeId);
+
+                var map1_index, SecondArray;
+                if (HasTwoAttr) {
+                    map1_index = FullAttributeSet.AttributeSetMaps.map(function (a) {
+                        return a.Attribute.AttributeId;
+                    }).indexOf(invFd.Variants[0].SecondAttribute.AttributeId);
+                }
+
+                var FirstArray = invFd.Variants.map(function (variant) {
+                    return variant.FirstAttribute.ValueEn.trim();
+                });
+
+                if (HasTwoAttr) {
+                    SecondArray = invFd.Variants.map(function (variant) {
+                        return variant.SecondAttribute.ValueEn.trim();
+                    });
+                }
+
+                //Get updated map from invFd.AttributeSet
+                //and load factorization array
+                transformed.attributeOptions = [{
+                    Attribute: FullAttributeSet.AttributeSetMaps[map0_index].Attribute,
+                    options: util.uniqueSet(FirstArray)
+                }];
+
+                if (HasTwoAttr) {
+                    transformed.attributeOptions.push({
+                        Attribute: FullAttributeSet.AttributeSetMaps[map1_index].Attribute,
+                        options: util.uniqueSet(SecondArray)
+                    });
+                } else {
+                    transformed.attributeOptions.push({
+                        Attribute: null,
+                        options: []
+                    });
+                }
+
+
+            }
+
+            console.log('transformation array', transformed);
+
+            return transformed;
+        };
+
+        return service;
+    }
+];
+
+},{}],108:[function(require,module,exports){
+module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
+    function (Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
+        var $productAdd = {};
+        
+        /*
+        * Wraps around multiple services,
+        * and solves dependencies needed for AddProduct view variables
+        * to be parsable
+        */
+        $productAdd.fill = function (globalCatId, pageLoader, sharedDataSet,
+            sharedFormData, breadcrumbs, controlFlags, variationFactorIndices, ivFormData) {
+
+
+            var deferred = $q.defer();
+            pageLoader.load('Downloading Attribute Sets..');
+
+            AttributeSet.getByCategory(globalCatId)
+                .then(function (data) {
+                    sharedDataSet.AttributeSets = data.map(function (aset) {
+                        aset.AttributeSetTagMaps = aset.AttributeSetTagMaps.map(function (asti) {
+                            return asti.Tag.TagName;
+                        });
+                        aset.AttributeSetMaps = aset.AttributeSetMaps.map(function (asetmapi) {
+                            asetmapi.Attribute.AttributeValueMaps = asetmapi.Attribute.AttributeValueMaps.map(function (value) {
+                                return value.AttributeValue.AttributeValueEn;
+                            });
+                            return asetmapi;
+                        });
+                        return aset;
+                    });
+                   
+
+                    if (ivFormData) {
+                        pageLoader.load('Indexing AttributeSet');
+                        sharedFormData.AttributeSet = sharedDataSet.AttributeSets[sharedDataSet.AttributeSets.map(function (o) {
+                            return o.AttributeSetId
+                        }).indexOf(ivFormData.AttributeSet.AttributeSetId)];
+                        var parse = function (ivFormData, FullAttributeSet) {
+                            pageLoader.load('Loading product data..');
+                            var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
+                            //copy it out
+                            Object.keys(inverseResult.formData).forEach(function (key) {
+                                sharedFormData[key] = inverseResult.formData[key];
+                            })
+
+                            console.log("After Inverse Transformation", sharedFormData);
+                            if (sharedFormData.Variants.length > 0) {
+                                controlFlags.variation = "enable";
+                            }
+                            sharedDataSet.attributeOptions = inverseResult.attributeOptions || sharedDataSet.attributeOptions;
+                            if (sharedDataSet.attributeOptions[1].options.length > 0) {
+                                variationFactorIndices.pushSecond();
+                            }
+
+                        };
+                        parse(ivFormData, sharedFormData.AttributeSet);
+                    }
+
+                    pageLoader.load('Downloading Category Tree..');
+                    //Load Global Cat
+                    GlobalCategory.getAll().then(function (data) {
+                        sharedDataSet.GlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
+                        sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
+                        breadcrumbs.globalCategory = Category.createCatStringById(globalCatId, sharedDataSet.GlobalCategories);
+                        console.log(breadcrumbs, "breadcrumb");
+                        pageLoader.load('Preparing content..');
+                        deferred.resolve();
+                    });
+
+
+                });
+
+            return deferred.promise;
+        };
+
+        return $productAdd;
+    }];
+},{}],109:[function(require,module,exports){
 /**
  * Util class for category
  * @author poonwu
@@ -8433,7 +9407,7 @@ module.exports = ['config', function(config) {
     return service;
 }];
 
-},{"angular":143}],106:[function(require,module,exports){
+},{"angular":147}],110:[function(require,module,exports){
 //TODO: maybe merge this with user service? (doesnt exist yet, but probably exists in poon's local)
 module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(common, $base64, storage, $q, $rootScope) {
     'use strict';
@@ -8509,7 +9483,7 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 }];
 
 
-},{}],107:[function(require,module,exports){
+},{}],111:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$window', '$base64', 'config', function($window, $base64, config) {
@@ -8527,7 +9501,7 @@ module.exports = ['$window', '$base64', 'config', function($window, $base64, con
         } 
     };
 }];
-},{"angular":143}],108:[function(require,module,exports){
+},{"angular":147}],112:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/GlobalCategories');
@@ -8595,7 +9569,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],109:[function(require,module,exports){
+},{}],113:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	service = common.Rest('/GlobalCategories');
@@ -8664,7 +9638,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],110:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 var angular = require('angular');
 //Image Service
 module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', function($q, $http, common, storage, config, FileUploader){
@@ -8763,7 +9737,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	return service;
 }];
 
-},{"angular":143}],111:[function(require,module,exports){
+},{"angular":147}],115:[function(require,module,exports){
 //Image Service 
 module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", function($q, $http, common, storage, config, FileUploader){
 	'ngInject';
@@ -8858,7 +9832,7 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
 	return service;
 }];
 
-},{}],112:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 module.exports = [function() {
 	'use strict';
 
@@ -8866,7 +9840,7 @@ module.exports = [function() {
         this.message = "Known Exception - " + msg;   
     };
 }];
-},{}],113:[function(require,module,exports){
+},{}],117:[function(require,module,exports){
 module.exports = ['common', function(common) {
 	'use strict';
 	var service = {};
@@ -8905,7 +9879,7 @@ module.exports = ['common', function(common) {
 
 	return service;
 }];
-},{}],114:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/LocalCategories');
@@ -8933,7 +9907,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],115:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 //Products Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
     function ($http, common, util, LocalCategory, Brand, config) {
@@ -9505,85 +10479,9 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
     }
 ];
 
-},{}],116:[function(require,module,exports){
-module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
-    function (Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
-        var $productAdd = {};
-        
-        /*
-        * Wraps around multiple services,
-        * and solves dependencies needed for AddProduct view variables
-        * to be parsable
-        */
-        $productAdd.fill = function (globalCatId, pageLoader, sharedDataSet,
-            sharedFormData, breadcrumbs, controlFlags, variationFactorIndices, ivFormData) {
-
-
-            var deferred = $q.defer();
-            pageLoader.load('Downloading Attribute Sets..');
-
-            AttributeSet.getByCategory(globalCatId)
-                .then(function (data) {
-                    sharedDataSet.AttributeSets = data.map(function (aset) {
-                        aset.AttributeSetTagMaps = aset.AttributeSetTagMaps.map(function (asti) {
-                            return asti.Tag.TagName;
-                        });
-                        aset.AttributeSetMaps = aset.AttributeSetMaps.map(function (asetmapi) {
-                            asetmapi.Attribute.AttributeValueMaps = asetmapi.Attribute.AttributeValueMaps.map(function (value) {
-                                return value.AttributeValue.AttributeValueEn;
-                            });
-                            return asetmapi;
-                        });
-                        return aset;
-                    });
-                   
-
-                    if (ivFormData) {
-                        pageLoader.load('Indexing AttributeSet');
-                        sharedFormData.AttributeSet = sharedDataSet.AttributeSets[sharedDataSet.AttributeSets.map(function (o) {
-                            return o.AttributeSetId
-                        }).indexOf(ivFormData.AttributeSet.AttributeSetId)];
-                        var parse = function (ivFormData, FullAttributeSet) {
-                            pageLoader.load('Loading product data..');
-                            var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
-                            //copy it out
-                            Object.keys(inverseResult.formData).forEach(function (key) {
-                                sharedFormData[key] = inverseResult.formData[key];
-                            })
-
-                            console.log("After Inverse Transformation", sharedFormData);
-                            if (sharedFormData.Variants.length > 0) {
-                                controlFlags.variation = "enable";
-                            }
-                            sharedDataSet.attributeOptions = inverseResult.attributeOptions || sharedDataSet.attributeOptions;
-                            if (sharedDataSet.attributeOptions[1].options.length > 0) {
-                                variationFactorIndices.pushSecond();
-                            }
-
-                        };
-                        parse(ivFormData, sharedFormData.AttributeSet);
-                    }
-
-                    pageLoader.load('Downloading Category Tree..');
-                    //Load Global Cat
-                    GlobalCategory.getAll().then(function (data) {
-                        sharedDataSet.GlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
-                        sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
-                        breadcrumbs.globalCategory = Category.createCatStringById(globalCatId, sharedDataSet.GlobalCategories);
-                        console.log(breadcrumbs, "breadcrumb");
-                        pageLoader.load('Preparing content..');
-                        deferred.resolve();
-                    });
-
-
-                });
-
-            return deferred.promise;
-        };
-
-        return $productAdd;
-    }];
-},{}],117:[function(require,module,exports){
+},{}],120:[function(require,module,exports){
+arguments[4][108][0].apply(exports,arguments)
+},{"dup":108}],121:[function(require,module,exports){
 //Products Collection Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
     function ($http, common, util, LocalCategory, Brand) {
@@ -9819,7 +10717,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
     }
 ];
 
-},{}],118:[function(require,module,exports){
+},{}],122:[function(require,module,exports){
 module.exports = ['Product', 'Collection', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
     function (Product,  Collection, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
         var $productCollectionAdd = {};
@@ -9852,7 +10750,7 @@ module.exports = ['Product', 'Collection', 'Brand', 'AttributeSet', 'ImageServic
 
         return $productCollectionAdd;
     }];
-},{}],119:[function(require,module,exports){
+},{}],123:[function(require,module,exports){
 module.exports = ["common", "util", function(common, util) {
 	'ngInject';
 	var service = common.Rest('/ProductReviews');
@@ -9866,7 +10764,7 @@ module.exports = ["common", "util", function(common, util) {
 	};	
 	return service;
 }];
-},{}],120:[function(require,module,exports){
+},{}],124:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Seller');
@@ -9901,14 +10799,14 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-},{}],121:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Seller');
 	
 	return service;
 }]
-},{}],122:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 module.exports = ["common", "SellerPermissionService", function(common, SellerPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Seller');
@@ -9955,7 +10853,7 @@ module.exports = ["common", "SellerPermissionService", function(common, SellerPe
 	};
 	return service;	
 }]
-},{}],123:[function(require,module,exports){
+},{}],127:[function(require,module,exports){
 module.exports = ['common', function(common) {
 	'use strict';
 	var service = {};
@@ -9976,14 +10874,14 @@ module.exports = ['common', function(common) {
 
 	return service;
 }];
-},{}],124:[function(require,module,exports){
+},{}],128:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Shop');
 
 	return service;
 }]
-},{}],125:[function(require,module,exports){
+},{}],129:[function(require,module,exports){
 module.exports = {
     MasterVariant_ProductNameEn: {
         'labelClass': 'required',
@@ -10116,7 +11014,7 @@ module.exports = {
         }
     }
 }
-},{}],126:[function(require,module,exports){
+},{}],130:[function(require,module,exports){
 module.exports = {
 	ProductName: {},
 	PID: {},
@@ -10129,10 +11027,10 @@ module.exports = {
 	CreatedDate: {},
 	ModifiedDate: {}
 }
-},{}],127:[function(require,module,exports){
+},{}],131:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Wed Feb 24 2016 09:49:18 GMT+0700 (SE Asia Standard Time)
+ * Thu Feb 25 2016 16:27:06 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -10260,6 +11158,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('common/link',
     "<div class=\"form-group form-group-closer form-group-link-action\"><div class=width-label></div><div class=width-field-normal><a class=form-text ng-href={{options.link}} ng-transclude></a></div></div>"
+  );
+
+
+  $templateCache.put('general/action',
+    "<div><a ng-click=\"actions.edit(row, true)\">View / Edit</a></div><div><a ng-click=actions.duplicate(row)>Duplicate</a></div><div><a ng-click=\"actions.delete(row, true)\">Delete</a></div>"
   );
 
 
@@ -10472,7 +11375,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "<div class=modal-header><button type=button class=close aria-label=Close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Review Detail</h3></div><div class=modal-body><form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Review Detail</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-label=\"Date & Time\"><p class=form-control-static>{{UpdatedDt | dateTh}} at {{UpdatedDt | timeTh}}</p></div><div nc-template=common/input/form-group-with-label nc-label=Customer><p class=form-control-static>{{Customer}}</p></div><div nc-template=common/input/form-group-with-label nc-label=Comment><p class=form-control-static>{{Comment}}</p></div></div></div><div class=form-section><div class=form-section-header><h2>Review Product</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-label=PID><p class=form-control-static>{{Pid}}</p></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (Thai)\"><p class=form-control-static>{{ProductNameTh}}</p></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (English)\"><p class=form-control-static>{{ProductNameEn}}</p></div><div nc-template=common/input/form-group-with-label nc-label=Brand><p class=form-control-static>{{BrandNameEn}}</p></div></div></div></div></div></form></div>"
   );
  }];
-},{}],128:[function(require,module,exports){
+},{}],132:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -14595,11 +15498,11 @@ angular.module('ngAnimate', [])
 
 })(window, window.angular);
 
-},{}],129:[function(require,module,exports){
+},{}],133:[function(require,module,exports){
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":128}],130:[function(require,module,exports){
+},{"./angular-animate":132}],134:[function(require,module,exports){
 (function() {
     'use strict';
 
@@ -14767,7 +15670,7 @@ module.exports = 'ngAnimate';
 
 })();
 
-},{}],131:[function(require,module,exports){
+},{}],135:[function(require,module,exports){
 //! moment.js
 //! version : 2.11.2
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -18374,7 +19277,7 @@ module.exports = 'ngAnimate';
     return _moment;
 
 }));
-},{}],132:[function(require,module,exports){
+},{}],136:[function(require,module,exports){
 /*globals define, jQuery, module, require */
 /*jslint vars:true */
 
@@ -18824,7 +19727,7 @@ module.exports = 'ngAnimate';
     }]);
 }));
 
-},{"angular":143,"moment":131}],133:[function(require,module,exports){
+},{"angular":147,"moment":135}],137:[function(require,module,exports){
 /*
  angular-file-upload v2.2.0
  https://github.com/nervgh/angular-file-upload
@@ -18832,7 +19735,7 @@ module.exports = 'ngAnimate';
 
 !function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["angular-file-upload"]=t():e["angular-file-upload"]=t()}(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var i=n[r]={exports:{},id:r,loaded:!1};return e[r].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=r(n(1)),o=r(n(2)),s=r(n(3)),a=r(n(4)),u=r(n(5)),l=r(n(6)),c=r(n(7)),f=r(n(8)),p=r(n(9)),d=r(n(10)),v=r(n(11)),h=r(n(12));angular.module(i.name,[]).value("fileUploaderOptions",o).factory("FileUploader",s).factory("FileLikeObject",a).factory("FileItem",u).factory("FileDirective",l).factory("FileSelect",c).factory("FileDrop",f).factory("FileOver",p).directive("nvFileSelect",d).directive("nvFileDrop",v).directive("nvFileOver",h).run(["FileUploader","FileLikeObject","FileItem","FileDirective","FileSelect","FileDrop","FileOver",function(e,t,n,r,i,o,s){e.FileLikeObject=t,e.FileItem=n,e.FileDirective=r,e.FileSelect=i,e.FileDrop=o,e.FileOver=s}])},function(e,t){e.exports={name:"angularFileUpload"}},function(e,t){"use strict";e.exports={url:"/",alias:"file",headers:{},queue:[],progress:0,autoUpload:!1,removeAfterUpload:!1,method:"POST",filters:[],formData:[],queueLimit:Number.MAX_VALUE,withCredentials:!1}},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.forEach,l=angular.isObject,c=angular.isNumber,f=angular.isDefined,p=angular.isArray,d=angular.element;e.exports=function(e,t,n,r,v,h){var m=r.File,g=r.FormData,_=function(){function r(t){o(this,r);var n=s(e);a(this,n,t,{isUploading:!1,_nextIndex:0,_failFilterIndex:-1,_directives:{select:[],drop:[],over:[]}}),this.filters.unshift({name:"queueLimit",fn:this._queueLimitFilter}),this.filters.unshift({name:"folder",fn:this._folderFilter})}return i(r,{addToQueue:{value:function(e,t,n){var r=this,i=this.isArrayLikeObject(e)?e:[e],o=this._getFilters(n),s=this.queue.length,a=[];u(i,function(e){var n=new v(e);if(r._isValidFile(n,o,t)){var i=new h(r,e,t);a.push(i),r.queue.push(i),r._onAfterAddingFile(i)}else{var s=o[r._failFilterIndex];r._onWhenAddingFileFailed(n,s,t)}}),this.queue.length!==s&&(this._onAfterAddingAll(a),this.progress=this._getTotalProgress()),this._render(),this.autoUpload&&this.uploadAll()}},removeFromQueue:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t];n.isUploading&&n.cancel(),this.queue.splice(t,1),n._destroy(),this.progress=this._getTotalProgress()}},clearQueue:{value:function(){for(;this.queue.length;)this.queue[0].remove();this.progress=0}},uploadItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhrTransport":"_iframeTransport";n._prepareToUploading(),this.isUploading||(this.isUploading=!0,this[r](n))}},cancelItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhr":"_form";n&&n.isUploading&&n[r].abort()}},uploadAll:{value:function(){var e=this.getNotUploadedItems().filter(function(e){return!e.isUploading});e.length&&(u(e,function(e){return e._prepareToUploading()}),e[0].upload())}},cancelAll:{value:function(){var e=this.getNotUploadedItems();u(e,function(e){return e.cancel()})}},isFile:{value:function(e){return this.constructor.isFile(e)}},isFileLikeObject:{value:function(e){return this.constructor.isFileLikeObject(e)}},isArrayLikeObject:{value:function(e){return this.constructor.isArrayLikeObject(e)}},getIndexOfItem:{value:function(e){return c(e)?e:this.queue.indexOf(e)}},getNotUploadedItems:{value:function(){return this.queue.filter(function(e){return!e.isUploaded})}},getReadyItems:{value:function(){return this.queue.filter(function(e){return e.isReady&&!e.isUploading}).sort(function(e,t){return e.index-t.index})}},destroy:{value:function(){var e=this;u(this._directives,function(t){u(e._directives[t],function(e){e.destroy()})})}},onAfterAddingAll:{value:function(e){}},onAfterAddingFile:{value:function(e){}},onWhenAddingFileFailed:{value:function(e,t,n){}},onBeforeUploadItem:{value:function(e){}},onProgressItem:{value:function(e,t){}},onProgressAll:{value:function(e){}},onSuccessItem:{value:function(e,t,n,r){}},onErrorItem:{value:function(e,t,n,r){}},onCancelItem:{value:function(e,t,n,r){}},onCompleteItem:{value:function(e,t,n,r){}},onCompleteAll:{value:function(){}},_getTotalProgress:{value:function(e){if(this.removeAfterUpload)return e||0;var t=this.getNotUploadedItems().length,n=t?this.queue.length-t:this.queue.length,r=100/this.queue.length,i=(e||0)*r/100;return Math.round(n*r+i)}},_getFilters:{value:function(e){if(!e)return this.filters;if(p(e))return e;var t=e.match(/[^\s,]+/g);return this.filters.filter(function(e){return-1!==t.indexOf(e.name)})}},_render:{value:function(){t.$$phase||t.$apply()}},_folderFilter:{value:function(e){return!(!e.size&&!e.type)}},_queueLimitFilter:{value:function(){return this.queue.length<this.queueLimit}},_isValidFile:{value:function(e,t,n){var r=this;return this._failFilterIndex=-1,t.length?t.every(function(t){return r._failFilterIndex++,t.fn.call(r,e,n)}):!0}},_isSuccessCode:{value:function(e){return e>=200&&300>e||304===e}},_transformResponse:{value:function(e,t){var r=this._headersGetter(t);return u(n.defaults.transformResponse,function(t){e=t(e,r)}),e}},_parseHeaders:{value:function(e){var t,n,r,i={};return e?(u(e.split("\n"),function(e){r=e.indexOf(":"),t=e.slice(0,r).trim().toLowerCase(),n=e.slice(r+1).trim(),t&&(i[t]=i[t]?i[t]+", "+n:n)}),i):i}},_headersGetter:{value:function(e){return function(t){return t?e[t.toLowerCase()]||null:e}}},_xhrTransport:{value:function(e){var t=this,n=e._xhr=new XMLHttpRequest,r=new g;if(this._onBeforeUploadItem(e),u(e.formData,function(e){u(e,function(e,t){r.append(t,e)})}),"number"!=typeof e._file.size)throw new TypeError("The file specified is no longer valid");r.append(e.alias,e._file,e.file.name),n.upload.onprogress=function(n){var r=Math.round(n.lengthComputable?100*n.loaded/n.total:0);t._onProgressItem(e,r)},n.onload=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r),o=t._isSuccessCode(n.status)?"Success":"Error",s="_on"+o+"Item";t[s](e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onerror=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onErrorItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onabort=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onCancelItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.open(e.method,e.url,!0),n.withCredentials=e.withCredentials,u(e.headers,function(e,t){n.setRequestHeader(t,e)}),n.send(r),this._render()}},_iframeTransport:{value:function(e){var t=this,n=d('<form style="display: none;" />'),r=d('<iframe name="iframeTransport'+Date.now()+'">'),i=e._input;e._form&&e._form.replaceWith(i),e._form=n,this._onBeforeUploadItem(e),i.prop("name",e.alias),u(e.formData,function(e){u(e,function(e,t){var r=d('<input type="hidden" name="'+t+'" />');r.val(e),n.append(r)})}),n.prop({action:e.url,method:"POST",target:r.prop("name"),enctype:"multipart/form-data",encoding:"multipart/form-data"}),r.bind("load",function(){var n="",i=200;try{n=r[0].contentDocument.body.innerHTML}catch(o){i=500}var s={response:n,status:i,dummy:!0},a={},u=t._transformResponse(s.response,a);t._onSuccessItem(e,u,s.status,a),t._onCompleteItem(e,u,s.status,a)}),n.abort=function(){var o,s={status:0,dummy:!0},a={};r.unbind("load").prop("src","javascript:false;"),n.replaceWith(i),t._onCancelItem(e,o,s.status,a),t._onCompleteItem(e,o,s.status,a)},i.after(n),n.append(i).append(r),n[0].submit(),this._render()}},_onWhenAddingFileFailed:{value:function(e,t,n){this.onWhenAddingFileFailed(e,t,n)}},_onAfterAddingFile:{value:function(e){this.onAfterAddingFile(e)}},_onAfterAddingAll:{value:function(e){this.onAfterAddingAll(e)}},_onBeforeUploadItem:{value:function(e){e._onBeforeUpload(),this.onBeforeUploadItem(e)}},_onProgressItem:{value:function(e,t){var n=this._getTotalProgress(t);this.progress=n,e._onProgress(t),this.onProgressItem(e,t),this.onProgressAll(n),this._render()}},_onSuccessItem:{value:function(e,t,n,r){e._onSuccess(t,n,r),this.onSuccessItem(e,t,n,r)}},_onErrorItem:{value:function(e,t,n,r){e._onError(t,n,r),this.onErrorItem(e,t,n,r)}},_onCancelItem:{value:function(e,t,n,r){e._onCancel(t,n,r),this.onCancelItem(e,t,n,r)}},_onCompleteItem:{value:function(e,t,n,r){e._onComplete(t,n,r),this.onCompleteItem(e,t,n,r);var i=this.getReadyItems()[0];return this.isUploading=!1,f(i)?void i.upload():(this.onCompleteAll(),this.progress=this._getTotalProgress(),void this._render())}}},{isFile:{value:function(e){return m&&e instanceof m}},isFileLikeObject:{value:function(e){return e instanceof v}},isArrayLikeObject:{value:function(e){return l(e)&&"length"in e}},inherit:{value:function(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,e.super_=t}}}),r}();return _.prototype.isHTML5=!(!m||!g),_.isHTML5=_.prototype.isHTML5,_},e.exports.$inject=["fileUploaderOptions","$rootScope","$http","$window","FileLikeObject","FileItem"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.isElement,u=angular.isString;e.exports=function(){var e=function(){function e(t){o(this,e);var n=a(t),r=n?t.value:t,i=u(r)?"FakePath":"Object",s="_createFrom"+i;this[s](r)}return i(e,{_createFromFakePath:{value:function(e){this.lastModifiedDate=null,this.size=null,this.type="like/"+e.slice(e.lastIndexOf(".")+1).toLowerCase(),this.name=e.slice(e.lastIndexOf("/")+e.lastIndexOf("\\")+2)}},_createFromObject:{value:function(e){this.lastModifiedDate=s(e.lastModifiedDate),this.size=e.size,this.type=e.type,this.name=e.name}}}),e}();return e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.element,l=angular.isElement;e.exports=function(e,t){var n=function(){function n(e,r,i){o(this,n);var c=l(r),f=c?u(r):null,p=c?null:r;a(this,{url:e.url,alias:e.alias,headers:s(e.headers),formData:s(e.formData),removeAfterUpload:e.removeAfterUpload,withCredentials:e.withCredentials,method:e.method},i,{uploader:e,file:new t(r),isReady:!1,isUploading:!1,isUploaded:!1,isSuccess:!1,isCancel:!1,isError:!1,progress:0,index:null,_file:p,_input:f}),f&&this._replaceNode(f)}return i(n,{upload:{value:function(){try{this.uploader.uploadItem(this)}catch(e){this.uploader._onCompleteItem(this,"",0,[]),this.uploader._onErrorItem(this,"",0,[])}}},cancel:{value:function(){this.uploader.cancelItem(this)}},remove:{value:function(){this.uploader.removeFromQueue(this)}},onBeforeUpload:{value:function(){}},onProgress:{value:function(e){}},onSuccess:{value:function(e,t,n){}},onError:{value:function(e,t,n){}},onCancel:{value:function(e,t,n){}},onComplete:{value:function(e,t,n){}},_onBeforeUpload:{value:function(){this.isReady=!0,this.isUploading=!0,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!1,this.isError=!1,this.progress=0,this.onBeforeUpload()}},_onProgress:{value:function(e){this.progress=e,this.onProgress(e)}},_onSuccess:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!0,this.isCancel=!1,this.isError=!1,this.progress=100,this.index=null,this.onSuccess(e,t,n)}},_onError:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!1,this.isCancel=!1,this.isError=!0,this.progress=0,this.index=null,this.onError(e,t,n)}},_onCancel:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!0,this.isError=!1,this.progress=0,this.index=null,this.onCancel(e,t,n)}},_onComplete:{value:function(e,t,n){this.onComplete(e,t,n),this.removeAfterUpload&&this.remove()}},_destroy:{value:function(){this._input&&this._input.remove(),this._form&&this._form.remove(),delete this._form,delete this._input}},_prepareToUploading:{value:function(){this.index=this.index||++this.uploader._nextIndex,this.isReady=!0}},_replaceNode:{value:function(t){var n=e(t.clone())(t.scope());n.prop("value",null),t.css("display","none"),t.after(n)}}}),n}();return n},e.exports.$inject=["$compile","FileLikeObject"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.extend);e.exports=function(){var e=function(){function e(t){o(this,e),s(this,t),this.uploader._directives[this.prop].push(this),this._saveLinks(),this.bind()}return i(e,{bind:{value:function(){for(var e in this.events){var t=this.events[e];this.element.bind(e,this[t])}}},unbind:{value:function(){for(var e in this.events)this.element.unbind(e,this.events[e])}},destroy:{value:function(){var e=this.uploader._directives[this.prop].indexOf(this);this.uploader._directives[this.prop].splice(e,1),this.unbind()}},_saveLinks:{value:function(){for(var e in this.events){var t=this.events[e];this[t]=this[t].bind(this)}}}}),e}();return e.prototype.events={},e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",change:"onChange"},prop:"select"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n),this.uploader.isHTML5||this.element.removeAttr("multiple"),this.element.prop("value",null)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},isEmptyAfterSelection:{value:function(){return!!this.element.attr("multiple")}},onChange:{value:function(){var e=this.uploader.isHTML5?this.element[0].files:this.element[0],t=this.getOptions(),n=this.getFilters();this.uploader.isHTML5||this.destroy(),this.uploader.addToQueue(e,t,n),this.isEmptyAfterSelection()&&(this.element.prop("value",null),this.element.replaceWith(this.element=this.element.clone(!0)))}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function c(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:c(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend),l=angular.forEach;e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",drop:"onDrop",dragover:"onDragOver",dragleave:"onDragLeave"},prop:"drop"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},onDrop:{value:function(e){var t=this._getTransfer(e);if(t){var n=this.getOptions(),r=this.getFilters();this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this),this.uploader.addToQueue(t.files,n,r)}}},onDragOver:{value:function(e){var t=this._getTransfer(e);this._haveFiles(t.types)&&(t.dropEffect="copy",this._preventAndStop(e),l(this.uploader._directives.over,this._addOverClass,this))}},onDragLeave:{value:function(e){e.currentTarget!==this.element[0]&&(this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this))}},_getTransfer:{value:function(e){return e.dataTransfer?e.dataTransfer:e.originalEvent.dataTransfer}},_preventAndStop:{value:function(e){e.preventDefault(),e.stopPropagation()}},_haveFiles:{value:function(e){return e?e.indexOf?-1!==e.indexOf("Files"):e.contains?e.contains("Files"):!1:!1}},_addOverClass:{value:function(e){e.addOverClass()}},_removeOverClass:{value:function(e){e.removeOverClass()}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy"},prop:"over",overClass:"nv-file-over"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{addOverClass:{value:function(){this.element.addClass(this.getOverClass())}},removeOverClass:{value:function(){this.element.removeClass(this.getOverClass())}},getOverClass:{value:function(){return this.overClass}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}},e.exports.$inject=["$parse","FileUploader","FileSelect"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');if(s.isHTML5){var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}}},e.exports.$inject=["$parse","FileUploader","FileDrop"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t){return{link:function(n,r,i){var o=n.$eval(i.uploader);if(!(o instanceof e))throw new TypeError('"Uploader" must be an instance of FileUploader');var s=new t({uploader:o,element:r});s.getOverClass=function(){return i.overClass||s.overClass}}}},e.exports.$inject=["FileUploader","FileOver"]}])});
 
-},{}],134:[function(require,module,exports){
+},{}],138:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -19551,11 +20454,11 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 })(window, window.angular);
 
-},{}],135:[function(require,module,exports){
+},{}],139:[function(require,module,exports){
 require('./angular-sanitize');
 module.exports = 'ngSanitize';
 
-},{"./angular-sanitize":134}],136:[function(require,module,exports){
+},{"./angular-sanitize":138}],140:[function(require,module,exports){
 /**
   * x is a value between 0 and 1, indicating where in the animation you are.
   */
@@ -20184,17 +21087,17 @@ angular.module('duScroll.scrollspy', ['duScroll.spyAPI'])
   };
 }]);
 
-},{}],137:[function(require,module,exports){
+},{}],141:[function(require,module,exports){
 require('angular');
 require('./angular-scroll');
 
 module.exports = 'duScroll';
 
-},{"./angular-scroll":136,"angular":143}],138:[function(require,module,exports){
+},{"./angular-scroll":140,"angular":147}],142:[function(require,module,exports){
 require('./ui-bootstrap-tpls');
 module.exports = 'ui.bootstrap';
 
-},{"./ui-bootstrap-tpls":139}],139:[function(require,module,exports){
+},{"./ui-bootstrap-tpls":143}],143:[function(require,module,exports){
 /*
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
@@ -28698,7 +29601,7 @@ angular.module("template/typeahead/typeahead-popup.html", []).run(["$templateCac
     "");
 }]);
 !angular.$$csp() && angular.element(document).find('head').prepend('<style type="text/css">.ng-animate.item:not(.left):not(.right){-webkit-transition:0s ease-in-out left;transition:0s ease-in-out left}</style>');
-},{}],140:[function(require,module,exports){
+},{}],144:[function(require,module,exports){
 /**
  * @license Angular UI Tree v2.14.0
  * (c) 2010-2015. https://github.com/angular-ui-tree/angular-ui-tree
@@ -30198,11 +31101,11 @@ angular.module("template/typeahead/typeahead-popup.html", []).run(["$templateCac
 
 })();
 
-},{}],141:[function(require,module,exports){
+},{}],145:[function(require,module,exports){
 require('./dist/angular-ui-tree');
 module.exports = 'ui.tree';
 
-},{"./dist/angular-ui-tree":140}],142:[function(require,module,exports){
+},{"./dist/angular-ui-tree":144}],146:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.9
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -59860,11 +60763,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],143:[function(require,module,exports){
+},{}],147:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":142}],144:[function(require,module,exports){
+},{"./angular":146}],148:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.0
  * http://jquery.com/
@@ -69697,7 +70600,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],145:[function(require,module,exports){
+},{}],149:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -84432,7 +85335,7 @@ return jQuery;
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],146:[function(require,module,exports){
+},{}],150:[function(require,module,exports){
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select

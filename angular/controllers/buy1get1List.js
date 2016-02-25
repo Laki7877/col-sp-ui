@@ -1,6 +1,6 @@
-module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert', '$window', '$rootScope', function
+module.exports = ['$scope',  'Buy1Get1', 'util', 'Alert', '$window', '$rootScope', function
 
-($scope, Product,Collection, util, Alert, $window, $rootScope) {
+($scope, Buy1Get1, util, Alert, $window, $rootScope) {
     //UI binding variables    
 
     $scope.checkBoxCache = {};
@@ -16,36 +16,36 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
         { name: "Wait for Approval", value: 'WaitforApproval' },
     ];
 
-    $scope.startExportProductCollection = function () {
+    $scope.startExportBuy1Get1 = function () {
         $scope.exporter = {
             progress: 10,
             title: 'Exporting...'
         };
 
-        $("#export-product-collection").modal('show');
+        $("#export-buy1get1").modal('show');
     };
 
-    $scope.confirmExportProductCollection = function () {
-        $("#export-product-collection").modal('hide');
+    $scope.confirmExportBuy1Get1 = function () {
+        $("#export-buy1get1").modal('hide');
 
         var arr = [];
         Object.keys($scope.checkBoxCache).forEach(function (m) {
             if (!$scope.checkBoxCache[m]) return;
             arr.push({
-                CMSId: Number(m)
+                PromotionBuy1Get1ItemId: Number(m)
             });
         });
 
         if (arr.length == 0) return;
 
 
-        var fileName = 'ProductCollectionExport-' + moment(new Date(), 'MM-DD-YYYY-HHmm') + ".csv";
+        var fileName = 'Buy1Get1Export-' + moment(new Date(), 'MM-DD-YYYY-HHmm') + ".csv";
         var a = document.getElementById("export_download_btn");
 
         var error = function (r) {
             $(".modal").modal('hide');
             $scope.exporter.title = 'Error'
-            $scope.alert.error('Unable to Export Product');
+            $scope.alert.error('Unable to Export Buy 1 Get 1');
             $scope.reloadData();
         };
 
@@ -56,7 +56,7 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
 
 
         chunks.forEach(function (chunk) {
-            Collection.export(chunk).then(function (result) {
+            Buy1Get1.export(chunk).then(function (result) {
 
                 $scope.exporter.progress += (100 / chunks);
                 blobs.push(result);
@@ -70,7 +70,6 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
                 $scope.exporter.title = 'Export Complete'
 
                 a.href = fileURL;
-
             }, error);
         });
     }
@@ -105,12 +104,11 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
                     var rObj = {};
 
                     if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSId: -1 , CMSStatusFlowId: 5 , CMSTypeId : -1 };  
+                            rObj = { PromotionBuy1Get1ItemId: -1 , CMSStatusFlowId: 5  };  
                     }else{
                             rObj = {
-                            CMSId: Number(id),
-                            CMSStatusFlowId: 5 ,
-                            CMSTypeId: $scope.hidCMSTypeId[id]
+                            PromotionBuy1Get1ItemId: Number(id),
+                            CMSStatusFlowId: 5 
                         };
                     }                   
                     return rObj ;
@@ -118,8 +116,8 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
     
                 if (selList.length > 0) {
                        
-                        var apiRequest = Collection.arrSerialize(selList);                         
-                        Collection.deleteBulk(apiRequest).then(function () {
+                        var apiRequest = Buy1Get1.arrSerialize(selList);                         
+                        Buy1Get1.deleteBulk(apiRequest).then(function () {
                         $scope.alert.success('Successfully deleted');
                         $scope.reloadData();
                     }, function (result) {
@@ -137,12 +135,11 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
         var selList = Object.keys($scope.checkBoxCache).map(function (id) {
                     var rObj = {};
                     if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSId: -1 , Visibility: true ,CMSTypeId :-1 };  
+                            rObj = { PromotionBuy1Get1ItemId: -1 , Visibility: true  };  
                     }else{
                             rObj = {
-                            CMSId: Number(id) ,
-                            Visibility : true ,
-                            CMSTypeId: $scope.hidCMSTypeId[id]
+                            PromotionBuy1Get1ItemId: Number(id) ,
+                            Visibility : true 
                         };
                     }                   
                     return rObj ;
@@ -150,8 +147,8 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
 
 
                 if (selList.length > 0) {
-                     var apiRequest = Collection.arrSerialize(selList);
-                        Collection.visible(apiRequest).then(function () {
+                     var apiRequest = Buy1Get1.arrSerialize(selList);
+                        Buy1Get1.visible(apiRequest).then(function () {
                         $scope.alert.success('Successfully changed');
                         $scope.reloadData();
                     }, function () {
@@ -169,20 +166,19 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
                  var selList = Object.keys($scope.checkBoxCache).map(function (id) {
                     var rObj = {};
                     if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSId: -1 , Visibility: false ,CMSTypeId :-1 };  
+                            rObj = { PromotionBuy1Get1ItemId: -1 , Visibility: false  };  
                     }else{
                             rObj = {
-                            CMSId: Number(id) ,
-                            Visibility : false ,
-                            CMSTypeId: $scope.hidCMSTypeId[id]
+                            PromotionBuy1Get1ItemId: Number(id) ,
+                            Visibility : false 
                         };
                     }                   
                     return rObj ;
                 });
 
                 if (selList.length > 0) {
-                      var apiRequest = Collection.arrSerialize(selList);
-                        Collection.visible(apiRequest).then(function () {
+                      var apiRequest = Buy1Get1.arrSerialize(selList);
+                        Buy1Get1.visible(apiRequest).then(function () {
                         $scope.alert.success('Successfully changed');
                         $scope.reloadData();
                     }, function () {
@@ -200,12 +196,11 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
                  var selList = Object.keys($scope.checkBoxCache).map(function (id) {
                     var rObj = {};
                     if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSId: -1 ,CMSStatusFlowId: 2 , CMSTypeId :-1 };  
+                            rObj = { PromotionBuy1Get1ItemId: -1 ,CMSStatusFlowId: 2  };  
                     }else{
                             rObj = {
-                            CMSId: Number(id) ,
-                            CMSStatusFlowId: 2 ,
-                            CMSTypeId: $scope.hidCMSTypeId[id]
+                            PromotionBuy1Get1ItemId: Number(id) ,
+                            CMSStatusFlowId: 2 
                         };
                     }                   
                     return rObj ;
@@ -213,14 +208,11 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
 
                 if (selList.length == 0) return;
 
-                    var apiRequest = Collection.arrSerialize(selList);
-                Collection.bulkPublish(apiRequest).then(function () {
-                    // $scope.alert.success("Successfully published " + arr.length + " items");
-                    // $scope.reloadData();
+                    var apiRequest = Buy1Get1.arrSerialize(selList);
+                Buy1Get1.bulkPublish(apiRequest).then(function () {
                      $scope.alert.success('Successfully published');
                      $scope.reloadData();
                 }, function (r) {
-                    //$scope.alert.error('Unable to publish because ' + r.message);
                     $scope.alert.success('Unable to publish');
                      $scope.reloadData();
                 });
@@ -229,11 +221,11 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
     ];
     $scope.actions = {
         edit: function (row) {
-            $window.location.href = "/collections/" + row.CMSId;
+            $window.location.href = "/buy1get1/" + row.PromotionBuy1Get1ItemId;
         },
         delete: function (row) {
             $scope.alert.close();
-            Collection.deleteBulk([{ CMSId: row.CMSId ,CMSTypeId : row.CMSTypeId,CMSStatusFlowId:5 }]).then(function () {
+            Buy1Get1.deleteBulk([{ PromotionBuy1Get1ItemId: row.PromotionBuy1Get1ItemId ,CMSStatusFlowId:5 }]).then(function () {
                 $scope.alert.success('You have successfully remove an entry.');
                 $scope.reloadData();
             }, function (err) {
@@ -242,7 +234,7 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
         },
         duplicate: function (row) {
             $scope.alert.close();
-            Collection.duplicate(row.CMSId).then(function () {
+            Buy1Get1.duplicate(row.PromotionBuy1Get1ItemId).then(function () {
                 $scope.alert.success();
                 $scope.reloadData();
             }, function (err) {
@@ -254,7 +246,7 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
             row.Visibility = !row.Visibility;
             console.log("[row]");
             console.log([row]);
-            Collection.visible([row]).then(function () {
+            Buy1Get1.visible([row]).then(function () {
             }, function (err) {
                 $scope.alert.error(err);
                 $scope.reloadData();
@@ -301,8 +293,8 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
         return StatusLookup[ab];
     };
 
-    //Product List
-    $scope.productList = [];
+    //Buy1Get1 List
+    $scope.buy1get1List = [];
     //Default parameters
     $scope.tableParams = {
         filter: 'All',
@@ -321,7 +313,7 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
     };
 
     $scope.totalPage = function (x) {
-        return Math.ceil($scope.productTotal / $scope.tableParams.pageSize);
+        return Math.ceil($scope.buy1get1Total / $scope.tableParams.pageSize);
     };
 
 
@@ -343,14 +335,15 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
         $scope.tableParams.orderBy = nextOrderBy;
     };
 
-    $scope.productTotal = 0;
+    $scope.buy1get1Total = 0;
     //Populate Data Source
     $scope.reloadData = function () {
-        $scope.productList = [];
+        console.log("reload data fire");
+        $scope.buy1get1List = [];
         $scope.notReady = true;
-        Collection.getAll($scope.tableParams).then(function (x) {
-            $scope.productTotal = x.total;
-            $scope.productList = x.data;
+        Buy1Get1.getAll($scope.tableParams).then(function (x) {
+            $scope.buy1get1Total = x.total;
+            $scope.buy1get1List = x.data;
             $scope.notReady = false;
         });
     };
@@ -365,10 +358,10 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
 
    
     $scope.checkAll = function(){
-        var first = $scope.productList[0];
-        var tval = !($scope.checkBoxCache[first.CMSId] || false);
-        $scope.productList.forEach(function (d) {
-            $scope.checkBoxCache[d.CMSId] = tval;
+        var first = $scope.buy1get1List[0];
+        var tval = !($scope.checkBoxCache[first.PromotionBuy1Get1ItemId] || false);
+        $scope.buy1get1List.forEach(function (d) {
+            $scope.checkBoxCache[d.PromotionBuy1Get1ItemId] = tval;
         });
     }
 
@@ -386,12 +379,12 @@ module.exports = ['$scope', 'Product', 'Collection', 'Buy1Get1', 'util', 'Alert'
         //note: can't just count checkboxcache because checkboxcache is global across
         //all pages. 
         var chkCount = 0;
-        $scope.productList.forEach(function(p){
-            chkCount += ($scope.checkBoxCache[p.CMSId] ? 1 : 0);
+        $scope.buy1get1List.forEach(function(p){
+            chkCount += ($scope.checkBoxCache[p.PromotionBuy1Get1ItemId] ? 1 : 0);
         });
         
         //Change selectAll checkbox state
-        if(chkCount != $scope.productList.length){
+        if(chkCount != $scope.buy1get1List.length){
             $scope.allChecked = false;
         }else{
             $scope.allChecked = true;

@@ -44,4 +44,34 @@ class ProductCollectionController extends Controller
 	{
 		return View::render('product_review');
 	}
+
+	//not implement yet
+	public static function addlist($params)
+	{
+		return View::render('add_product_collection', [
+			'title' => 'Add Product',
+			'viewBag' => array('catId' => $_POST['category'])
+		]);
+	}
+
+	public static function cat($params) 
+	{
+		return View::render('list_product_collection');
+	}
+
+	public static function catadd($params) 
+	{
+		return View::render('list_product_collection');
+	}
+
+	public static function group($params) 
+	{
+		return View::render('list_product_collection');
+	}
+
+	public static function groupadd($params) 
+	{
+		return View::render('list_product_collection');
+	}
+	//end not implement yet
 }

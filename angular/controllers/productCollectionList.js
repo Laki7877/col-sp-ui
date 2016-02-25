@@ -324,7 +324,6 @@
         return Math.ceil($scope.productTotal / $scope.tableParams.pageSize);
     };
 
-
     $scope.nextPage = function (m) {
         if ($scope.tableParams.page + m >= $scope.totalPage() ||
             $scope.tableParams.page + m < 0)

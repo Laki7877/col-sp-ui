@@ -1,12 +1,11 @@
 <?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Buy 1 Get 1']) ?>
 
 <?php $this->start('page-body') ?>
-<!--<div ng-controller="ProductListCtrl" ng-init="init(<?= $params ?>)">-->
 <div ng-controller="Buy1Get1ListCtrl" ng-init="init(<?= $params ?>)">
-    <? $this->insert('components/modal-export-product-collection', ['id' => 'export-product-collection', 'newProductNum' => '1,500']) ?>
-    <? $this->insert('components/modal-export-product-collection-progressing', ['id' => 'export-product-collection-progressing', 'percent' => '60']) ?>
+    <? $this->insert('components/modal-export-buy1get1', ['id' => 'export-buy1get1', 'newBuy1get1Num' => '1,500']) ?>
+    <? $this->insert('components/modal-export-buy1get1-progressing', ['id' => 'export-buy1get1-progressing', 'percent' => '60']) ?>
 
-    <? $this->insert('components/page-title-product-collection-with-buttons', ['text' => 'Product Collection']) ?>
+    <? $this->insert('components/page-title-buy1get1-with-buttons', ['text' => 'Buy 1 Get 1']) ?>
     <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{alert.type}}" close="alert.close()">{{alert.message}}</div>
     <div class="row search-section-wrapper">
       <form ng-submit="bulk.fn()" class="search-section section-action">
@@ -49,7 +48,7 @@
     </div>
     <div class="table-section">
 
-      <table ng-show="productList.length > 0" class="table table-curved">
+      <table ng-show="buy1get1List.length > 0" class="table table-curved">
         <thead>
           <tr class="table-head" >
 		  
@@ -57,7 +56,7 @@
                 <input type="checkbox" aria-label="Checkbox for following text input" ng-click="checkAll()" ng-model="allChecked" >
             </th>            
             <th  ng-click="setOrderBy('CMSNameEN')">
-              <a class="header-link" ><span ng-class="sort('CMSNameEN', true)">Collection Name</span></a>
+              <a class="header-link" ><span ng-class="sort('NameEN', true)">Name</span></a>
               <i class="fa" ng-class="sort('CMSNameEN')">
             </th>
             <th  ng-click="setOrderBy('URLKey')">
@@ -91,12 +90,12 @@
         </thead>
         <tbody>
          
-      	  <tr ng-repeat="row in productList" >		  
+      	  <tr ng-repeat="row in buy1get1List" >		  
                   <td class="checkbox-column">                   
-                    <input type="checkbox" aria-label="Checkbox for following text input" ng-model="checkBoxCache[row.CMSId]" />                    
-                    <input type="hidden" ng-init="hidCMSTypeId[row.CMSId] = row.CMSTypeId" ng-model="hidCMSTypeId[row.CMSId]" />
+                    <input type="checkbox" aria-label="Checkbox for following text input" ng-model="checkBoxCache[row.PromotionBuy1Get1ItemId]" />                    
+                    <input type="hidden" ng-init="hidCMSTypeId[row.CMSId] = row.CMSTypeId" ng-model="hidCMSTypeId[row.PromotionBuy1Get1ItemId]" />
                   </td>                  
-				  <td class="column-text-ellipsis"><a href="/collections/{{ row.CMSId }}">{{ row.CMSNameEN || '(Untitled Collection)' }}</a></td>
+				  <td class="column-text-ellipsis"><a href="/collections/{{ row.CMSId }}">{{ row.NameEN || '(Untitled Collection)' }}</a></td>
                  
 				 <td class="column-text-ellipsis">{{ row.URLKey || '(Untitled Collection)' }}</td>
 				 <td class="column-text-ellipsis">{{ row.ShortDescriptionEN || '(Untitled ShortDescriptionEN)' }}</td>
@@ -104,9 +103,10 @@
 				 <td class="modified-column">{{ row.ExpiryDate | date:'shortDate':'+700' }}</td>
 
                   <td class="status-column">
-                    <span class="{{ asStatus(row.CMSStatus).Color }}">
-                      <i class="fa {{ asStatus(row.CMSStatus).Class }}"></i>
+                    <span class="{{ asStatus(row.CMSStatusFlowId).Color }}">
+                      <i class="fa {{ asStatus(row.CMSStatusFlowId).Class }}"></i>
                        {{ asStatus(row.CMSStatusFlowId).Text }}
+                       {{row.CMSStatusFlowId}}
                     </span>
                   </td>
                   <td class="visible-column">
@@ -115,7 +115,8 @@
                   </td>
                   <td class="modified-column">{{ row.UpdateDate | date:'shortDate':'+700' }}</td>
                   <td class="action-column">
-                    <a class="fa fa-gear color-dark-grey icon-size-20"  uib-popover-template="'product/action'" popover-placement="bottom" popover-append-to-body="true" popover-any>
+                  <!-- can use general action -->
+                    <a class="fa fa-gear color-dark-grey icon-size-20"  uib-popover-template="'general/action'" popover-placement="bottom" popover-append-to-body="true" popover-any>
                        <i class="fa fa-caret-down color-dark-grey"></i>
                     </a>
                   </td>
@@ -126,14 +127,14 @@
       <div ng-show="notReady">
           <? $this->insert('components/table-loading', ['text' => 'Loading...']) ?>
       </div>
-      <div ng-show="!notReady && productList.length == 0 && tableParams.searchText.length > 0">
+      <div ng-show="!notReady && buy1get1List.length == 0 && tableParams.searchText.length > 0">
           <div class="local-category-page margin-bottom-20">
             <? $this->insert('components/local-category-empty-content', ['text' => 'No Search Result']) ?>      
           </div>
       </div>
-      <div ng-show="!notReady && productList.length == 0 && tableParams.searchText.length <= 0">
+      <div ng-show="!notReady && buy1get1List.length == 0 && tableParams.searchText.length <= 0">
           <div class="local-category-page margin-bottom-20">
-            <? $this->insert('components/local-category-empty-content', ['text' => 'You do not have a Product']) ?>      
+            <? $this->insert('components/local-category-empty-content', ['text' => 'You do not have a Buy 1 Get 1']) ?>      
           </div>
       </div>
     </div>

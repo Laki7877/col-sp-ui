@@ -179,6 +179,8 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 .factory('Collection', services.productCollection)
 .factory('$CollectionAdd', services.productCollectionAdd)
 .factory('Image', services.image)
+.factory('Buy1Get1', services.buy1get1)
+.factory('$Buy1Get1Add', services.buy1get1Add)
 
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)
@@ -243,6 +245,10 @@ function($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvid
 .controller('AbstractAddCtrl', controllers.abstractAdd)
 .controller('ProductCollectionListCtrl', controllers.productCollectionList)
 .controller('ProductCollectionAddCtrl', controllers.productCollectionAdd)
+.controller('ProductCollectionImportCtrl', controllers.productCollectionImport)
 .controller('AdminCouponsCtrl', controllers.adminCoupons)
+.controller('Buy1Get1ListCtrl', controllers.buy1get1List)
+.controller('Buy1Get1AddCtrl', controllers.buy1get1Add)
+.controller('Buy1Get1ImportCtrl', controllers.buy1get1Import)
 
 .controller('TestCtrl', controllers.test)
