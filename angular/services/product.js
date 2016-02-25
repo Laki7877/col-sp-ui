@@ -4,17 +4,23 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         'use strict';
         var service = common.Rest('/ProductStages');
 
-        service.export = function(products, attributeSets, fields){
+        service.downloadTemplate = function(globalCat, aset){
+          var req = {
+              method: 'POST',
+              url: '/ProductStages/Template',
+              data: {
+                GlobalCategories: [globalCat],
+                AttributeSets: [aset]
+              }
+          };
+          return common.makeRequest(req);
+        }
 
-          if(_.isEmpty(products)) throw new KnownException("product service export method is called incorrectly");
-          if(_.isEmpty(attributeSets)) throw new KnownException("product service export method is called incorrectly");
-
-          fields.AttributeSets = attributeSets;
-          fields.ProductList = products;
+        service.export = function(ps){
           var req = {
               method: 'POST',
               url: '/ProductStages/Export',
-              data: fields
+              data: ps
           };
           return common.makeRequest(req);
         }

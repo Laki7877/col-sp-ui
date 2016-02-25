@@ -1,7 +1,12 @@
 <?php $this->layout('layouts/page-with-sidebar', ['title' => 'Export Products']) ?>
 
 <?php $this->start('page-body') ?>
-	<div class="seller-export-page" ng-controller="ProductExportCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
+	<div class="seller-export-page" ng-init="init(<?= json_encode_n($viewBag) ?>)" ng-controller="ProductExportCtrl">
+
+		<?php $this->insert('components/modal-export-product', ['id' => 'export-product', 'newProductNum' => '1,500']) ?>
+		<?php $this->insert('components/modal-export-product-progressing', ['id' => 'export-product-progressing', 'percent' => '60']) ?>
+		<?php $this->insert('components/modal-export-product-complete', ['id' => 'export-product-complete']) ?>
+
 		<div class="page-header with-border">
 
 		    <h1 class="float-left page-header-title ah-breadcrumb">
@@ -14,23 +19,24 @@
 		        <a href="#" class="btn margin-left-10 btn-white btn-width-xl">
 		          	<span class="">Cancel</span>
 		        </a>
-		        <a href="#" class="btn margin-left-10 btn-blue  btn-width-xl">
+		        <a href="#" class="btn margin-left-10 btn-blue  btn-width-xl" ng-click="startExportProducts()">
 		          	<span class="">Export</span>
 		        </a>
 		    </span>
 		</div>
 
-
-		<div>
 			<form class="ah-form sticky-mainform-action">
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
 
 						<div id="import-product-content-page">
 
-							<div class="margin-bottom-20">
+							<div class="margin-bottom-20" ng-if="!SELECT_ALL">
 								<span>Number of products selected:</span>
 								<span>{{ productIds.length }}</span>
+							</div>
+							<div class="margin-bottom-20" ng-if="SELECT_ALL">
+								<span>Number of products selected: </span> <i>ALL PRODUCTS</i>
 							</div>
 
 							<div class="row">
@@ -44,7 +50,7 @@
 												nc-template-options-path="productExport/MultiCheckbox"
 												nc-label="">
 													<label>
-														<input type="checkbox"/> Select All
+														<input type="checkbox" ng-click="toggleSelectAll()" ng-model="ctrl.selectAll"/> Select All
 													</label>
 												</div>
 
@@ -58,7 +64,7 @@
 														<input type="checkbox" name="fieldfilter" ng-model="fields.PID"> PID
 													</label>
 													<label>
-														<input type="checkbox" name="fieldfilter" ng-model="fields.groupID"> Group ID
+														<input type="checkbox" name="fieldfilter" ng-model="fields.GroupID"> Group ID
 													</label>
 												</div>
 
@@ -122,7 +128,7 @@
 												nc-template-options-path="productExport/MultiCheckbox"
 												nc-label="Shipping &amp; Inventory">
 													<label>
-														<input type="checkbox" name="fieldfilter" ng-model="fields.DescriptionEn"> Preparation Time
+														<input type="checkbox" name="fieldfilter" ng-model="fields.PreparationTime"> Preparation Time
 													</label>
 													<label>
 														<input type="checkbox" name="fieldfilter" ng-model="fields.PackageLength"> Package - Length
@@ -156,15 +162,15 @@
 										<div class="form-group" style="margin:0px; padding:0px">
 												<nc-tradable-select
 												nc-test="lockAS"
-												nc-model="formData.Attributes"
+												nc-model="ctrl.tradedAS"
 												nc-select-options="dataSet.attributeSets"
-												nc-options="{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }">
+												nc-options="{ 'map' : { 'text': 'Display', 'value' : 'AttributeSetId' } }">
 										 	 </nc-tradable-select>
 
 										 </div>
 										 	<div class="form-group">
 												<div class="checkbox">
-	 										 		<label><input type="checkbox">Select All Attribute Sets (1,588,222)</label>
+	 										 		<label><input type="checkbox">Select All Attribute Sets (0)</label>
 	 										 </div>
 										 </div>
 										</div>
@@ -184,17 +190,17 @@
 			        <div class="container-fluid">
 			          <div class="float-right">
 			            <a href="#" class="link-btn-plain">Cancel</a>
-			            <button class="btn btn-blue btn-width-xl" data-toggle="modal" data-target="#export-product">Export</button>
+			            <button class="btn btn-blue btn-width-xl"
+									ng-click="export()"
+									data-toggle="modal" data-target="#export-product">Export</button>
 			          </div>
 			        </div>
 			     </div>
 
 			</form>
-		</div>
-	</div>
 
-  <?php $this->insert('components/modal-export-product', ['id' => 'export-product', 'newProductNum' => '1,500']) ?>
-  <?php $this->insert('components/modal-export-product-progressing', ['id' => 'export-product-progressing', 'percent' => '60']) ?>
-  <?php $this->insert('components/modal-export-product-complete', ['id' => 'export-product-complete']) ?>
+
+
+	</div>
 
 <?php $this->stop() ?>

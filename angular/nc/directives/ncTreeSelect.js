@@ -9,7 +9,7 @@ angular.module('nc')
 
 			/**
 			 * Get or set array of child object
-			 * 
+			 *
 			 * @param  {Array} list Set children to this if passed
 			 * @return {Array}      Array of child
 			 */
@@ -19,7 +19,7 @@ angular.module('nc')
 
 			/**
 			 * Get or set active index for this column
-			 * 
+			 *
 			 * @param  {Number} active Set active index to this if passed
 			 * @return {Number}        Active index, -1 if none
 			 */
@@ -29,7 +29,7 @@ angular.module('nc')
 		};
 
 		/**
-		 * Collection of Column object 
+		 * Collection of Column object
 		 * @param {Array} tree Root nested tree
 		 * @param {Number} size Number of columns
 		 * @param {Object} options Extra params
@@ -48,7 +48,7 @@ angular.module('nc')
 
 			/**
 			 * Get columns as array of Column
-			 * 
+			 *
 			 * @return {Array} Array of Column object
 			 */
 			this.list = function() {
@@ -57,7 +57,7 @@ angular.module('nc')
 
 			/**
 			 * Clear all columns to default empty
-			 * 
+			 *
 			 * @param  {Boolean} activeOnly If only active flag is clear
 			 */
 			this.clear = function(activeOnly) {
@@ -67,7 +67,7 @@ angular.module('nc')
 						this.columns[i].list([]);
 					}
 					this.columns[i].active(-1);
-				};	
+				};
 			};
 
 			/**
@@ -84,6 +84,7 @@ angular.module('nc')
 			 * @return {[type]}      [description]
 			 */
 			this.select = function(item) {
+
 				// Not an item or null
 				if(_.isNil(item)) {
 					// Select nothing
@@ -114,7 +115,7 @@ angular.module('nc')
 
 				// Make sure this item is descendent of the tree
 				var index = _.indexOf(this.__tree, ctx);
-				
+
 				if(index >= 0) {
 					// Push root
 					collection.push({
@@ -151,7 +152,7 @@ angular.module('nc')
 			this.columns[0].list(tree);
 			this.__tree = tree;
 			this.__size = size;
-			
+
 		};
 
 		return {
