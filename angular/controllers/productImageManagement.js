@@ -102,7 +102,7 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     $scope.productStatus = config.PRODUCT_STATUS;
 
     $scope.onError = function(item, response) {
-    	item.alert.error('<span style="font-weight:bold;">Fail to upload photos</span><br/>' + common.getError(response));
+    	item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + common.getError(response));
 	};
     $scope.isDisabled = function(product) {
     	return product.Status == 'WA' || product.Status == 'AP';
@@ -148,7 +148,7 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     		return '';
     	}
     	return 'disabled';
-    };	
+    };
     $scope.save = function() {
 		//Set dirty to false after you save
 		if($scope.dirty) {

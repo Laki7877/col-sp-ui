@@ -32,7 +32,9 @@
               <div class="row" ng-repeat="product in list.data">
                 <div class="col-xs-12">
                   <div class="form-section image-management">
-                    <nc-alert nc-model="product.alert"></nc-alert>
+                    <div class="alert-wrapper">
+                      <nc-alert nc-model="product.alert"></nc-alert>
+                    </div>
                     <div class="form-section-content">
                       <div class="content-text">
                         <div><h4>{{ product.ProductNameEn }}</h4>{{ product.VariantValue }}</div>
@@ -59,7 +61,7 @@
           </div>
           <div class="page-navigation">
              <nc-pagination nc-model="params" nc-pagination-total="list.total" nc-pagination-event="onUnsave" nc-pagination-sizes="paginationSize"></nc-pagination>
-          </div>  
+          </div>
         </div>
         <div class="add-product-form-action main-form-action full-width-row">
           <div class="container-fluid">
@@ -73,7 +75,7 @@
     </div>
 
   </div>
- 
+
 <!-- data-toggle="modal" data-target="#import-product"' -->
   <? $this->insert('components/modal-guideline', ['id' => 'image-guideline', 'header' => 'Image Style Guideline']) ?>
 

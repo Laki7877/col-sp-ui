@@ -31,14 +31,14 @@
 		flex-grow: 100;
 
 		&.disabled {
-			.image-drop-zone {		
+			.image-drop-zone {
 				background-image: none;
 				background-color:  $color-grey;
 			}
 		}
 
 		&.no-background {
-			.image-drop-zone {		
+			.image-drop-zone {
 				background-image: none;
 				background-color:  $color-light-blue;
 				border: solid 1px $color-grey;
@@ -62,6 +62,13 @@
 	.alert-wrapper {
 		margin: 15px 30px 15px 15px;
 	}
+
+	.featured-image-wrapper {
+		font-size: 12px;
+		margin-bottom: 5px;
+		margin-left:23px
+	}
+
 }
 
 .image-management {
