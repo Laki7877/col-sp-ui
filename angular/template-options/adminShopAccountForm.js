@@ -1,8 +1,10 @@
 module.exports = {
 	BankAccountNumber: {
-        inputSize: 'large'
+        inputSize: 'large',
+        labelClass: 'required'
 	},
 	BankAccountName: {
-        inputSize: 'large'
+        inputSize: 'large',
+        labelClass: 'required'
 	}
 }
