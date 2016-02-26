@@ -46,108 +46,207 @@
 										<div class="form-section-content">
 
 											<div class="row">
-												<div nc-template="common/input/form-group-with-label"
-												nc-template-options-path="productExport/MultiCheckbox"
-												nc-label="">
-													<label>
-														<input type="checkbox" ng-click="toggleSelectAll()" ng-model="ctrl.selectAll"/> Select All
-													</label>
+												<div class="col-sm-12 export-select-all">
+													<input type="checkbox" ng-click="toggleSelectAll()" ng-model="ctrl.selectAll"/> Select All Columns
+												</div>
+												<div class="col-sm-3">
+													<ul class="export-list">
+														<li class="group-label">
+															System Information
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.ProductStatus"> Product Status
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.GroupID"> Group ID
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> Default Variant
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.PID"> PID
+														</li>
+
+														<li class="group-label">
+															Vital Information
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.ProductNameEn"> Product Name (English)
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.ProductNameTh"> Product Name (Thai)
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.SKU"> SKU
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> UPC
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.BrandName"> Brand Name
+														</li>
+
+														<li class="group-label">
+															Price
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.OriginalPrice"> Original Price
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.SalePrice"> Sale Price
+														</li>
+
+														<li class="group-label">
+															Description
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.DescriptionEn"> Description (English)
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.DescriptionTh"> Description (Thai)
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.ShortDescriptionEn"> Short Description (English)
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.ShortDescriptionTh"> Short Description (Thai)
+														</li>
+
+													</ul>
+												</div>
+												<div class="col-sm-3">
+													<ul class="export-list">
+
+														<li class="group-label">
+															Detail & Variation
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> Attribute Set
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> Variation Option
+														</li>
+
+														<li class="group-label">
+															Keywords
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> Keywords
+														</li>
+
+														<li class="group-label">
+															Inventory
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.InventoryAmount"> Inventory Amount
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.SafetyStockAmount"> Safety Stock Amount
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> Stock Type
+														</li>
+
+														<li class="group-label">
+															Shipping Detail
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> Shipping Method
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.PreparationTime"> Preparation Time
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.PackageHeight"> Package - Height (mm)
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.PackageLength"> Package - Length (mm)
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.PackageWidth"> Package - Width (mm)
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> Package - Weight (g)
+														</li>
+
+														<li class="group-label">
+															Cateogry
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.GlobalCategory"> Global Category
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.LocalCategory"> Local Category
+														</li>
+
+													</ul>
 												</div>
 
-												<div nc-template="common/input/form-group-with-label"
-												nc-template-options-path="productExport/MultiCheckbox"
-												nc-label="System Information">
-													<label>
-														<input type="checkbox" name="fieldfilter" ng-model="fields.ProductStatus"> Product Status
-													</label>
-													<label>
-														<input type="checkbox" name="fieldfilter" ng-model="fields.PID"> PID
-													</label>
-													<label>
-														<input type="checkbox" name="fieldfilter" ng-model="fields.GroupID"> Group ID
-													</label>
+												<div class="col-sm-3">
+													<ul class="export-list">
+
+														<li class="group-label">
+															Relationship
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> Related Products
+														</li>
+
+														<li class="group-label">
+															SEO
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> Meta Title (English)
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> Meta Title (Thai)
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> Meta Description (English)
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> Meta Description (Thai)
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> Meta Keywords (English)
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> Meta Keywords (Thai)
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> Product URL Key (English)
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> Product Boosting Weight
+														</li>
+
+														<li class="group-label">
+															More Detail
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> Effective Date
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> Effective Time
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> Expire Date
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> Expire Time
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> Control Flag
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> Remark
+														</li>
+													</ul>
 												</div>
 
-												<div nc-template="common/input/form-group-with-label"
-												nc-template-options-path="productExport/MultiCheckbox"
-												nc-label="Vital Information">
-													<label>
-														<input type="checkbox" name="fieldfilter" ng-model="fields.SKU"> SKU
-													</label>
-													<label>
-														<input type="checkbox" name="fieldfilter" ng-model="fields.ProductNameEn"> Product Name (English)
-													</label>
-													<label>
-														<input type="checkbox" name="fieldfilter" ng-model="fields.ProductNameTh"> Product Name (Thai)
-													</label>
-													<label>
-														<input type="checkbox" name="fieldfilter" ng-model="fields.BrandName"> Brand Name
-													</label>
-												</div>
-
-												<div nc-template="common/input/form-group-with-label"
-												nc-template-options-path="productExport/MultiCheckbox"
-												nc-label="Category">
-													<label>
-														<input type="checkbox" name="fieldfilter" ng-model="fields.GlobalCategory"> Global Category
-													</label>
-													<label>
-														<input type="checkbox" name="fieldfilter" ng-model="fields.LocalCategory"> Local Category
-													</label>
-												</div>
-
-												<div nc-template="common/input/form-group-with-label"
-												nc-template-options-path="productExport/MultiCheckbox"
-												nc-label="Price">
-													<label>
-														<input type="checkbox" name="fieldfilter" ng-model="fields.OriginalPrice"> Original Price
-													</label>
-													<label>
-														<input type="checkbox" name="fieldfilter" ng-model="fields.SalePrice"> Sale Price
-													</label>
-												</div>
-
-												<div nc-template="common/input/form-group-with-label"
-												nc-template-options-path="productExport/MultiCheckbox"
-												nc-label="Description">
-													<label>
-														<input type="checkbox" name="fieldfilter" ng-model="fields.DescriptionEn"> Description (English)
-													</label>
-													<label>
-														<input type="checkbox" name="fieldfilter" ng-model="fields.DescriptionTh"> Description (Thai)
-													</label>
-													<label>
-														<input type="checkbox" name="fieldfilter" ng-model="fields.ShortDescriptionEn"> Short Description (English)
-													</label>
-													<label>
-														<input type="checkbox" name="fieldfilter" ng-model="fields.ShortDescriptionTh"> Short Description (Thai)
-													</label>
-												</div>
-
-												<div nc-template="common/input/form-group-with-label"
-												nc-template-options-path="productExport/MultiCheckbox"
-												nc-label="Shipping &amp; Inventory">
-													<label>
-														<input type="checkbox" name="fieldfilter" ng-model="fields.PreparationTime"> Preparation Time
-													</label>
-													<label>
-														<input type="checkbox" name="fieldfilter" ng-model="fields.PackageLength"> Package - Length
-													</label>
-													<label>
-														<input type="checkbox" name="fieldfilter" ng-model="fields.PackageHeight"> Package - Height
-													</label>
-													<label>
-														<input type="checkbox" name="fieldfilter" ng-model="fields.PackageWidth"> Package - Width
-													</label>
-													<label>
-														<input type="checkbox" name="fieldfilter" ng-model="fields.InventoryAmount"> Inventory Amount
-													</label>
-													<label>
-														<input type="checkbox" name="fieldfilter" ng-model="fields.SafetyStockAmount"> Safety Stock Amount
-													</label>
-												</div>
 
 											</div>
+
 
 										</div>
 									</div>
