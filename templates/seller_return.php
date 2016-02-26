@@ -8,7 +8,7 @@
       ]) 
     ?>
 
-    <? $this->insert('components/search-section', ['serach_placeholder' => 'Search for Return ID, Order ID' , 'actions' => ['Approve'], 'optional_class' => 'hide-component']) ?>
+    <? $this->insert('components/search-section', ['serach_placeholder' => 'Search for Return ID, Order ID' , 'actions' => ['Accept'], 'optional_class' => 'hide-component']) ?>
     <div class="filter-section">
       <div class="filter-container">
         <span>Filters:</span>
@@ -56,7 +56,7 @@
             </th>
             <th class="width_100 text-align-center">
               <a class="header-link" href="#">
-                <span>Approve</span>
+                <span>Accept</span>
               </a>
             </th>
             <th class="action-column">
@@ -85,7 +85,7 @@
               </span>
             </td>
             <td class="width_100 text-align-center">
-                <button class="btn btn-white btn-width-xl">Approve</button>
+                <button class="btn btn-white btn-width-xl">Accept</button>
             </td>
             <td class="action-column">
               <span class="text-align-center popover-gear">
@@ -111,11 +111,11 @@
             <td class="width_100">Kerry</td>
             <td class="width_100">
               <span class="color-green">
-                Approve
+                Accepted
               </span>
             </td>
             <td class="width_100 text-align-center">
-                <button disabled class="btn btn-white btn-width-xl">Approve</button>
+                <button disabled class="btn btn_disabled btn-white btn-width-xl">Accept</button>
             </td>
             <td class="action-column">
               <span class="text-align-center popover-gear">
