@@ -11,7 +11,7 @@
         <li class="sub-sidebar-header">Product</li>
         <li ng-class="activeUrl('/products')" class="item margin-top-20"><a href="/products">View</a></li>
         <li ng-class="activeUrl('/products/add')" class="item"><a href="/products/select">Add</a></li>
-        <li class="item"><a href="">Import</a></li>
+        <li ng-class="activeUrl('/products/add')" class="item"><a href="/products/import">Import</a></li>
         <li class="item"><a href="">Export</a></li>
         <li ng-class="activeUrl('/categories')" class="item margin-top-30"><a href="/categories">Local Category</a></li>
         <li ng-class="activeUrl('/products/reviews')" class="item"><a href="/products/reviews">Product Reviews</a></li>
