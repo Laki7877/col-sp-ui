@@ -61,7 +61,7 @@
           <? $this->insert('components/forms/form-section-upload-new-product-image-single',
               ["uploader" => "uploader",
               "no_guideline" => true,
-              "header" => "Upload New Brand Image (512 x 512)",
+              "header" => "<label class='required'>Upload New Brand Image (512 x 512)</label>",
               "images" => "formData.BrandImages"])
           ?>
           <div class="form-section">
