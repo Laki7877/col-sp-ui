@@ -65,7 +65,7 @@
               "images" => "formData.BrandImages"])
           ?>
           <div class="form-section">
-            <div class="form-section-header"><h2>SEO</h2></div>
+            <div class="form-section-header"><h2>SE0</h2></div>
             <div class="form-section-content">
 
               <div ng-template="common/input/text"

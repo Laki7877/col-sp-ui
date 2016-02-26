@@ -47,7 +47,7 @@
 
 											<div class="row">
 												<div class="col-sm-12 export-select-all">
-													<input type="checkbox" ng-click="toggleSelectAll()" ng-model="ctrl.selectAll"/> Select All Column
+													<input type="checkbox" ng-click="toggleSelectAll()" ng-model="ctrl.selectAll"/> Select All Columns
 												</div>
 												<div class="col-sm-3">
 													<ul class="export-list">
