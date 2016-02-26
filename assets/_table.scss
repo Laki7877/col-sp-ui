@@ -22,7 +22,7 @@
 	}
 
 	.status-column {
-		width: 150px;	
+		width: 150px;
 	}
 
 	.live-column {
@@ -95,8 +95,8 @@
     border-color: $color-grey;
   }
   // End setting border color
-  
-  
+
+
   .table > tbody > tr:first-child > td {
     border-top: none;
   }
@@ -286,7 +286,7 @@
 //Page body: Search section
 .search-section-wrapper {
   margin-top: 30px;
-
+	
   .search-section {
     padding-left: 15px;
     padding-right: 15px;
@@ -379,9 +379,9 @@
 
     > tbody > tr > td {
       border-top: 1px solid $color-grey;
-    }    
+    }
   }
-  
+
   margin-bottom: 0;
 }
 

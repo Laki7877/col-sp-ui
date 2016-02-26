@@ -16,7 +16,7 @@ if(!isset($optional_button_name)) {
     <div class="input-group">
       <div class="input-group-btn">
         <div class="dropdown-btn">
-          <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+          <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="dropdown-text margin-right-10 search-prodcut-text">- Choosen Action -</span>
               <span class="caret margin-left-10"></span>
           </button>
