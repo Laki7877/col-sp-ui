@@ -152,27 +152,29 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 								<div class="form-section">
 									<div class="form-section-header"><h2>User Roles</h2></div>
 									<div class="form-section-content">
-							            <div ng-template="common/input/dropdown"
-							              ng-template-options="{
-							                'label' : 'User Role',
-							                'labelClass' : 'required',
-							                'error' : {
-							                        'messages': {
-							                          'required': 'This is a required field',
-							                        },
-							                        'show': isInvalid(form.UserGroup),
-							                        'conditions' : form.UserGroup.$error
-								            }
-							              }">
-							              <ui-select name="UserGroup" ng-model="formData.UserGroup" search-enabled="false" required>
-							                <ui-select-match placeholder="- Select User Role -">
-							                    <span ng-bind="$select.selected.GroupNameEn"></span>
-							                </ui-select-match>
-							                <ui-select-choices repeat="item in roles">
-							                    <span ng-bind="item.GroupNameEn"></span>
-							                </ui-select-choices>
-							              </ui-select>
-							            </div>
+										<div ng-if="roles.length > 0">
+								            <div ng-template="common/input/dropdown"
+								              ng-template-options="{
+								                'label' : 'User Role',
+								                'labelClass' : 'required',
+								                'error' : {
+								                        'messages': {
+								                          'required': 'This is a required field',
+								                        },
+								                        'show': isInvalid(form.UserGroup),
+								                        'conditions' : form.UserGroup.$error
+									            }
+								              }">
+								              <ui-select name="UserGroup" ng-model="formData.UserGroup" search-enabled="false" required>
+								                <ui-select-match placeholder="- Select User Role -">
+								                    <span ng-bind="$select.selected.GroupNameEn"></span>
+								                </ui-select-match>
+								                <ui-select-choices repeat="item in roles">
+								                    <span ng-bind="item.GroupNameEn"></span>
+								                </ui-select-choices>
+								              </ui-select>
+								            </div>
+							        	</div>
 							            <div ng-template="common/link"
 							              ng-template-options="{
 							              	'link' : '/roles/add'

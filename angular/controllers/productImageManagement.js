@@ -112,7 +112,7 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
 		}
 	};
     $scope.isDisabled = function(product) {
-    	return product.Status == $scope.productStatus[2].value || product.Status == $scope.productStatus[3].value;
+    	return product.Status == $scope.productStatus[1].value || product.Status == $scope.productStatus[2].value;
     };
     //Prevent unsaved event
     $scope.onUnsave = function() {

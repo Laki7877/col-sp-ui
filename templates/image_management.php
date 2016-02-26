@@ -5,7 +5,6 @@
     <nc-alert nc-model="alert"></nc-alert>
    <!-- <? $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => "Successfully save changes. However,your changes won't be online until you published your products." ]) ?>
      -->
-
     <div class="page-header with-border">
         <h1 class="float-left page-header-title">Image Management</h1>
         <span class="float-right page-header-action">
@@ -22,7 +21,6 @@
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Product Name and PID'" nc-search-event="onUnsave"></nc-search>
     </div>
     <nc-filter nc-model="params._filter" nc-filter-options="filterOptions" nc-filter-event="onUnsave"></nc-filter>
-
     <div>
       <div nc-empty="You have no product" ng-show="!isSearching() && !loading && list.data.length <= 0"></div>
       <div nc-empty="No Search Result" ng-show="isSearching() && !loading && list.data.length <= 0"></div>

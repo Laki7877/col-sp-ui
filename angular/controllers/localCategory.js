@@ -17,7 +17,6 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 	//UiTree onchange event
 	$scope.treeOptions = {
 		dropped: function(event) {
-			//Change is made
 			if(event.dest.index != event.source.index || event.dest.nodesScope != event.source.nodesScope) {
 				$scope.sync();
 			}

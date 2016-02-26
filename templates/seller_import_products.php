@@ -81,7 +81,7 @@
 									<div class="form-section-header"><h2>Template Guideline [Empty]</h2></div>
 									<div class="form-section-content">
 										<div nc-template="common/input/form-group-with-label" nc-template-form="form.Search" nc-label="Column Header" nc-template-options-path="productImport/SearchColumn">
-											<input type="text" ng-model="ctrl.searchColumn" uib-typeahead="item for item in columns | filter:$viewValue | limitTo: 8" class="form-control input-icon-right-search" placeholder="search column header for more detail" />
+											<input type="text" ng-model="ctrl.searchColumn" uib-typeahead="item.HeaderName for item in getGuideline($viewValue) | limitTo: 5" class="form-control input-icon-right-search" placeholder="search column header for more detail" />
 										</div>
 										<div ng-switch="searchColumn">
 											<div class="form-group" ng-switch-when="">

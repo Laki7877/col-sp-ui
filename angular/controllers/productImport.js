@@ -32,6 +32,14 @@ module.exports = function($scope, Product, GlobalCategoryService, Category, Attr
   $scope.ctrl.searchColumn = '';
   $scope.ctrl.globalCat = null;
 
+  $scope.getGuideline = function(val) {
+    return Product.guideline({searchText: val})
+      .then(function(response) {
+        console.log(response);
+        return response;
+      });
+  };
+
   $scope.downloadTemplate = function(){
     $scope.DownloadBtnText = {
       text: "Generating..",

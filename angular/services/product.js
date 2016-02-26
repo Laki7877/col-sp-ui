@@ -25,6 +25,14 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
       return common.makeRequest(req);
     };
 
+    service.guideline = function(params) {
+      var req = {
+        method: 'GET',
+        url: '/ProductStages/Guidance',
+        params: params
+      };
+      return common.makeRequest(req);
+    };
     service.approve = function(obj) {
       return common.makeRequest({
         method: 'PUT',
