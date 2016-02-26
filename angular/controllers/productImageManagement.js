@@ -105,7 +105,7 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     	item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + common.getError(response));
 	};
     $scope.isDisabled = function(product) {
-    	return product.Status == 'WA' || product.Status == 'AP';
+    	return product.Status == $scope.productStatus[1].value || product.Status == $scope.productStatus[2].value;
     };
     //Prevent unsaved event
     $scope.onUnsave = function() {
@@ -122,14 +122,15 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     		images = product.MasterImg;
     	}
 
-    	switch(product.Status) {
-    		case 'WA':
-    			return 'product/dropzone/waitForApproval';
-    		break;
-    		case 'AP':
-    			return 'product/dropzone/approved';
-    		break;
+    	if($scope.productStatus[1].value == product.Status) {
+    		//Wait for approval
+    		return 'product/dropzone/waitForApproval';
     	}
+
+    	if($scope.productStatus[2].value == product.Status) {
+    		return 'product/dropzone/approved';
+    	}
+
 		if(images.length >= 10) {
 			return 'product/dropzone/reachMax';
 		} else {
@@ -144,7 +145,7 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     		images = product.MasterImg;
     	}
 
-    	if(images.length < 10 && product.Status == 'DF') {
+    	if(images.length < 10 && product.Status == $scope.productStatus[0].value) {
     		return '';
     	}
     	return 'disabled';
