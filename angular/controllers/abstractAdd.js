@@ -102,7 +102,7 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 					.then(function(result) {
 						//Set both id and formData[id]
 						$scope.id = result[options.id];
-						$scope.formData[options.id] = result[options.id];
+						$scope.formData = service.serialize(result);
 						//Default success message
 						$scope.alert.success(util.saveAlertSuccess(options.successItem || options.item, options.url));
 						$scope.form.$setPristine(true);
