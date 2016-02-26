@@ -227,5 +227,6 @@ ng-transclude.has-error .form-control{
 }
 
 .dropdown-menu {
-  width: 93%;
+  // width: 93%;
+	/* Which section is using this code? It mess up other part. */
 }
