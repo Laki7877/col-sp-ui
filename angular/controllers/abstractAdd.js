@@ -83,6 +83,7 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 				//Edit mode
 				options.service.update($scope.id, data)
 					.then(function(result) {
+						$scope.formData = options.service.deserialize(result);
 						$scope.alert.success(util.saveAlertSuccess(options.successItem || options.item, options.url));
 						$scope.form.$setPristine(true);
 					}, function(err) {
@@ -102,8 +103,7 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 					.then(function(result) {
 						//Set both id and formData[id]
 						$scope.id = result[options.id];
-						$scope.formData = service.serialize(result);
-						//Default success message
+						$scope.formData = options.service.deserialize(result);
 						$scope.alert.success(util.saveAlertSuccess(options.successItem || options.item, options.url));
 						$scope.form.$setPristine(true);
 					}, function(err) {
@@ -113,7 +113,7 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 						$scope.saving = false;
 						if(options.dateFields){
 							options.dateFields.forEach(function(df){
-									$scope.formData[df] = restoreDf[df];
+								$scope.formData[df] = restoreDf[df];
 							});
 						}
 					});
