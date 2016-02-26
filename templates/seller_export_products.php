@@ -16,7 +16,7 @@
 		    </h1>
 
 		    <span class="float-right page-header-action">
-		        <a href="#" class="btn margin-left-10 btn-white btn-width-xl">
+		        <a href="/products" class="btn margin-left-10 btn-white btn-width-xl">
 		          	<span class="">Cancel</span>
 		        </a>
 		        <a href="#" class="btn margin-left-10 btn-blue  btn-width-xl" ng-click="startExportProducts()">
@@ -33,7 +33,7 @@
 
 							<div class="margin-bottom-20" ng-if="!SELECT_ALL">
 								<span>Number of products selected:</span>
-								<span>{{ productIds.length }}</span>
+								<span>{{ ProductList.length }}</span>
 							</div>
 							<div class="margin-bottom-20" ng-if="SELECT_ALL">
 								<span>Number of products selected: </span> <i>ALL PRODUCTS</i>
@@ -159,7 +159,7 @@
 									<div class="form-section">
 										<div class="form-section-header"><h2>Select Attribute Set</h2></div>
 										<div class="form-section-content">
-										<div class="form-group" style="margin:0px; padding:0px">
+										<div class="form-group" style="margin:0px; padding:0px" ng-show="!selectAllAttributeSets">
 												<nc-tradable-select
 												nc-test="lockAS"
 												nc-model="ctrl.tradedAS"
@@ -170,7 +170,7 @@
 										 </div>
 										 	<div class="form-group">
 												<div class="checkbox">
-	 										 		<label><input type="checkbox">Select All Attribute Sets (0)</label>
+	 										 		<label><input type="checkbox" ng-model="selectAllAttributeSets">Select All Attribute Sets ({{ sumProductAttributeSet }})</label>
 	 										 </div>
 										 </div>
 										</div>
@@ -189,7 +189,7 @@
 				 <div class="main-form-action full-width-row">
 			        <div class="container-fluid">
 			          <div class="float-right">
-			            <a href="#" class="link-btn-plain">Cancel</a>
+			            <a href="/products" class="link-btn-plain">Cancel</a>
 			            <button class="btn btn-blue btn-width-xl"
 									ng-click="startExportProducts()"
 									>Export</button>

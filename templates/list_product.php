@@ -3,18 +3,16 @@
 <?php $this->start('page-body') ?>
 <div ng-controller="ProductListCtrl">
    <nc-page-title nc-title="Products">
-      <form action="/products/export" method="post">
+      <form id="exportForm" name="exportForm" action="/products/export" method="post">
           <input type="hidden" name="selected_products[]" ng-repeat="item in bulkContainer" value="{{ item.ProductId }}"/>
-          <button class="btn-white btn margin-right-10 btn-width-xl">
-            Export Temp
-          </button>
+          
           <div class="btn-group margin-right-10">
             <button type="button" class="btn btn-white dropdown-toggle btn-width-xl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Export <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-              <li><a href="#">Export All Products</a></li>
-              <li><a href="#">Export Selected Products</a></li>
+              <li><a href="/products/export">Export All Products</a></li>
+              <li><a ng-click="exportSelected()">Export Selected Products</a></li>
             </ul>
           </div>
           <div class="btn-group margin-right-10">
