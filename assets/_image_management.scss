@@ -4,9 +4,9 @@
 	.form-section-content {
 		display: flex;
 		margin-top: 30px - $feature-text-height;
-		margin-bottom: 30px - 15px; // -15px for image list item's margin bottom
+		margin-bottom: 0px;
 		padding-left: 15px;
-		padding-right: 30px;
+		padding-right: 15px;
 	}
 	.feature-text {
 		font-size: 12px;
@@ -14,7 +14,6 @@
 		height: $feature-text-height;
 	}
 	.content-text {
-		margin-top: $feature-text-height;
 	    width: 140px;
 	    display: block;
 	    float: left;
@@ -26,7 +25,6 @@
 	}
 
 	.drop-zone-container {
-		margin-top: $feature-text-height;
 		margin-left: 10px;
 		flex-grow: 100;
 
@@ -60,10 +58,11 @@
 	}
 
 	.alert-wrapper {
-		margin: 15px 30px 15px 15px;
+		margin: 15px 15px 15px 15px;
 	}
 
 	.featured-image-wrapper {
+		display: none;
 		font-size: 11px;
 		margin-bottom: 5px;
 		margin-left:17px
