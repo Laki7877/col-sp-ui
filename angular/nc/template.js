@@ -24,7 +24,7 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/ncAdvanceSearchButton',
-    "<div class=\"search-section advance-search\"><button class=\"btn btn-white-fluid btn-toggle {{model ? 'active' : ''}}\" type=button ng-click=toggle()>Advanced Search</button></div>"
+    "<div class=search-section-item><button class=\"btn btn-default btn-toggle {{model ? 'active' : ''}}\" type=button ng-click=toggle()>Advanced Search</button></div>"
   );
 
 
@@ -44,7 +44,7 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/ncBulk',
-    "<div class=\"search-section section-action\"><div class=input-group><div class=input-group-btn uib-dropdown><button class=\"btn btn-default body-dropdown-button\" uib-dropdown-toggle><span class=\"dropdown-text margin-right-10 search-product-text\">{{ select.name }}</span> <span class=\"caret margin-left-10\"></span></button><ul uib-dropdown-menu role=menu class=search-product-dropdown><li ng-repeat=\"option in options\"><a ng-click=selectOption(option)>{{ option.name }}</a></li></ul></div><div class=input-group-btn><button class=\"btn-white-fluid btn\" ng-click=call()><span class=button-text-blue>Confirm <span ng-show=\"model.length > 0\">({{ model.length }})</span></span></button></div></div></div>"
+    "<div class=\"btn-group search-section-item\" role=group><div class=btn-group role=group><button type=button class=\"btn btn-default dropdown-toggle bulk-action-dropdown\" data-toggle=dropdown aria-haspopup=true aria-expanded=false uib-dropdown-toggle><span>{{ select.name }}</span> <span class=caret></span></button><ul uib-dropdown-menu role=menu class=dropdown-menu><li ng-repeat=\"option in options\"><a ng-click=selectOption(option)>{{ option.name }}</a></li></ul></div><button type=button class=\"btn btn-default btn-action\" ng-click=call()>Confirm <span ng-show=\"model.length > 0\">({{ model.length }})</span></button></div>"
   );
 
 
@@ -115,7 +115,7 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/ncSearch',
-    "<form ng-submit=callback() class=\"search-section section-search\"><div class=input-group><input class=\"form-control input-search-icon search-box\" ng-model=searchText placeholder={{placeholder}}> <span class=input-group-btn><button class=\"btn btn-white\">Search</button></span></div></form>"
+    "<div class=\"input-group search-section-item\"><form ng-submit=callback()><div class=\"input-group search-box\"><input class=\"form-control input-search-icon\" ng-model=searchText placeholder={{placeholder}}> <span class=input-group-btn><button class=\"btn btn-default btn-action\">Search</button></span></div></form></div>"
   );
 
 

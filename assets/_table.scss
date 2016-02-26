@@ -288,48 +288,36 @@
 
 //Page body: Search section
 .search-section-wrapper {
-  // margin-top: 30px;
-	margin-top: 15px;
+	margin: 15px 0px -10px -10px;
 
-  .search-section {
-		display: inline-block;
-    padding-left: 15px;
-    padding-right: 15px;
-    float: left;
-  }
-
-  .section-action {
-		width: 285px;
-    .body-dropdown-button{
-      border-top-right-radius: 0px;
-      border-bottom-right-radius: 0px;
-    }
-  }
-
-  .section-search {
-		width: 410px;
-  }
-
-  .search-section.section-filter {
-    float: right;
-  }
-
-  .search-section .btn-white {
-    height: 30px;
-  }
-
-  .search-section .btn-white-fluid {
-		width: auto;
-		height: 30px;
-		margin-right:20px;
-	  @include button-variant($color-theme, $white, $color-grey);
-    .advance-search{
-      padding-left: 0px;
-      .btn-white{
-        width: 135px;
-      }
-    }
-  }
+	.search-section-item{
+		float:left;
+		display: table;
+		border-spacing: 10px;
+		button{
+			height: 30px;
+			color: $color-theme;
+		}
+		.btn-action{
+			min-width: 80px;
+		}
+		.form-control{
+			height: 30px;
+		}
+		.bulk-action-dropdown{
+			color: $color-black;
+			width: 180px;
+			text-align: left;
+			.caret{
+				float: right;
+				margin-top: 8px;
+			}
+		}
+		.search-box{
+			width:380px;
+			border-spacing: 0px;
+		}
+	}
 
   .body-dropdown-button {
 	  height: 30px;
