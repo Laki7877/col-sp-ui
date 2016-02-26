@@ -321,7 +321,7 @@
 	  width: auto;
     	   height: 30px;
 	   margin-right:20px;
-	  @include button-variant($color-theme, $white, $btn-default-border);
+	  @include button-variant($color-theme, $white, $color-grey);
     .advance-search{
       padding-left: 0px;
       .btn-white{
@@ -329,7 +329,6 @@
       }
     }
   }
-
 
   .body-dropdown-button {
 	  height: 30px;
