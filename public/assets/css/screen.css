@@ -12266,7 +12266,7 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 /* line 8, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-red hr {
-  border-top-color: #ffa7a7;
+  border-top-color: #ffa6a6;
 }
 /* line 11, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-red .alert-link {
@@ -12281,7 +12281,7 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 /* line 8, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-yellow hr {
-  border-top-color: #fffad2;
+  border-top-color: #fffad1;
 }
 /* line 11, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-yellow .alert-link {
@@ -15245,4 +15245,9 @@ ng-transclude.has-error .form-control {
 /* line 225, ../../../assets/screen.scss */
 .ui-select-dropdown-hide .ui-select-dropdown {
   display: none !important;
+}
+
+/* line 228, ../../../assets/screen.scss */
+.dropdown-menu {
+  width: 93%;
 }

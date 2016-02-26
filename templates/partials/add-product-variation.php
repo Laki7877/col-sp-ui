@@ -55,7 +55,7 @@
 																<ui-select-match placeholder="Select a variation option">
 																	{{ $item.AttributeValue.AttributeValueEn }}
 																</ui-select-match>
-																<ui-select-choices repeat="i in dataSet.attributeOptions[jth].Attribute.AttributeValueMaps | filter:$select.search">
+																<ui-select-choices repeat="i in (dataSet.attributeOptions[jth].Attribute.AttributeValueMaps) | filter:$select.search">
 																	{{ i.AttributeValue.AttributeValueEn }}
 																</ui-select-choices>
 																</ui-select>

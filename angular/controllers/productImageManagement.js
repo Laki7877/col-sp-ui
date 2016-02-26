@@ -102,10 +102,17 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     $scope.productStatus = config.PRODUCT_STATUS;
 
     $scope.onError = function(item, response) {
-    	item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + common.getError(response));
+    	if(response.name == 'sizeFilter') {
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + config.ERROR_MESSAGE.WRONG_IMAGE_SIZE);
+    	}
+    	else if(response.name == 'imageFilter') {
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + config.ERROR_MESSAGE.WRONG_IMAGE_FORMAT);
+    	} else {
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + common.getError(response));
+		}
 	};
     $scope.isDisabled = function(product) {
-    	return product.Status == $scope.productStatus[1].value || product.Status == $scope.productStatus[2].value;
+    	return product.Status == $scope.productStatus[2].value || product.Status == $scope.productStatus[3].value;
     };
     //Prevent unsaved event
     $scope.onUnsave = function() {
