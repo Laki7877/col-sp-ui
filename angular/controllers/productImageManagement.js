@@ -101,6 +101,11 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     $scope.uploader = ImageService.getUploader('/ProductImages');
     $scope.productStatus = config.PRODUCT_STATUS;
 
+    $scope.onEvent = function(product, eventName) {
+    	if(eventName == 'edit') {
+    		product.Status = $scope.productStatus[0].value;
+    	}
+    }
     $scope.onError = function(item, response) {
     	if(response.name == 'sizeFilter') {
     		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + config.ERROR_MESSAGE.WRONG_IMAGE_SIZE);

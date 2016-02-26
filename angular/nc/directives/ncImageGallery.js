@@ -85,6 +85,7 @@ angular.module('nc')
 				model: '=ncModel',
 				originalUploader: '=ncImageUploader',
 				options: '=?ncImageDropzoneOptions',
+				onEvent: '&?ncImageDropzoneOnEvent',
 				onError: '&?ncImageDropzoneOnError',
 				onSuccess: '&?ncImageDropzoneOnSuccess',
 				template: '@ncImageTemplate'
@@ -95,6 +96,7 @@ angular.module('nc')
 				scope.options = _.defaults(scope.options, {
 					urlKey: 'url',
 					onQueueLimit: _.noop,
+					onEvent: _.noop,
 					onResponse: function(item) { return item; },
 					onUpload: function(item) {}
 				});
@@ -108,6 +110,10 @@ angular.module('nc')
 	
 				scope.upload = function() {
 					element.find('input').trigger('click');
+				};
+
+				scope.triggerEvent = function(eventName) {
+					scope.onEvent({$eventName: eventName});
 				};
 
 				//Upload
