@@ -12,7 +12,24 @@ if(!isset($optional_button_name)) {
 
 ?>
 <div class="row search-section-wrapper">
-  <div class="search-section section-action">
+  <div class="input-group">
+
+    <div class="input-group-btn">
+      <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="dropdown-text margin-right-10">- Choose Action -</span>
+          <span class="caret margin-left-10"></span>
+      </button>
+      <ul class="dropdown-menu">
+          <li><a ng-click="bulk.delete()">Delete </a></li>
+          <li><a ng-click="bulk.hide()">Hide </a></li>
+          <li><a ng-click="bulk.show()">Show </a></li>
+      </ul>
+    </div>
+
+  </div>
+
+
+  <!-- <div class="search-section section-action">
     <div class="input-group">
       <div class="input-group-btn">
         <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -24,7 +41,7 @@ if(!isset($optional_button_name)) {
             <li><a ng-click="bulk.hide()">Hide </a></li>
             <li><a ng-click="bulk.show()">Show </a></li>
         </ul>
-      </div><!-- /btn-group -->
+      </div>
       <div class="input-group-btn">
         <button type="button" class="btn-white btn">
           <span class="button-text-blue">Confirm</span>
@@ -41,11 +58,11 @@ if(!isset($optional_button_name)) {
         </span>
     </div>
   </form>
- <div class="search-section advance-search <?=$optional_class?>">
+  <div class="search-section advance-search <?=$optional_class?>">
     <button class="btn btn-white <?=$button_optional_class?>" type="button"><?=$optional_button_name?></button>
   </div>
-</div>
-  
+</div> -->
+
   <!-- <div class="search-section section-filter checkbox-wrapper <?=$optional_class?>">
     <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" />
     <label for="checkboxG1" class="css-label">Show Online/Offline Status</label>

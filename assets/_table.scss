@@ -292,13 +292,14 @@
 	margin-top: 15px;
 
   .search-section {
+		display: inline-block;
     padding-left: 15px;
     padding-right: 15px;
     float: left;
   }
 
   .section-action {
-    width: 285px;
+		width: 285px;
     .body-dropdown-button{
       border-top-right-radius: 0px;
       border-bottom-right-radius: 0px;
@@ -306,7 +307,7 @@
   }
 
   .section-search {
-    width: 410px;
+		width: 410px;
   }
 
   .search-section.section-filter {
@@ -318,10 +319,10 @@
   }
 
   .search-section .btn-white-fluid {
-	  width: auto;
-    	   height: 30px;
-	   margin-right:20px;
-	  @include button-variant($color-theme, $white, $btn-default-border);
+		width: auto;
+		height: 30px;
+		margin-right:20px;
+	  @include button-variant($color-theme, $white, $color-grey);
     .advance-search{
       padding-left: 0px;
       .btn-white{
@@ -329,7 +330,6 @@
       }
     }
   }
-
 
   .body-dropdown-button {
 	  height: 30px;
