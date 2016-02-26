@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Account ']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Product - Image Management']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="ProductImageManagementCtrl">
@@ -24,8 +24,10 @@
     <nc-filter nc-model="params._filter" nc-filter-options="filterOptions" nc-filter-event="onUnsave"></nc-filter>
 
     <div>
+      <div nc-empty="You have no product" ng-show="!isSearching() && !loading && list.data.length <= 0"></div>
+      <div nc-empty="No Search Result" ng-show="isSearching() && !loading && list.data.length <= 0"></div>
       <div ng-show="loading" nc-loading="Loading Products.."></div>
-      <form class="ah-form sticky-mainform-action" ng-show="!loading">
+      <form ng-show="!loading" class="ah-form sticky-mainform-action">
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane margin-top-20 active">
             <div id="image-management-content-page">

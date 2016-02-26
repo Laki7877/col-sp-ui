@@ -22,7 +22,12 @@ module.exports = function($q, $http, common, storage, config, FileUploader){
 	            fn: function(item /*{File|FileLikeObject}*/, options) {
 	                var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
 	                return '|jpg|png|jpeg|'.indexOf(type) !== -1;
-	            }}]
+	            }},
+	            {
+	            name: 'sizeFilter',
+	            fn: function(item /*{File|FileLikeObject}*/, options) {
+	                return item.size <= config.MAX_IMAGE_UPLOAD_SIZE;
+	            }},]
 		}, opt);
 		var uploader = new FileUploader(options);
 

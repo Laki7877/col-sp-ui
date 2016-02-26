@@ -119,7 +119,7 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 	}
 
 	$scope.isSearching = function() {
-		return !_.isEmpty($scope.params.searchText) || ( _.isUndefined($scope.params._filter) ? false :  $scope.params._filter == options.filters[0].value);
+		return !_.isEmpty($scope.params.searchText) || ( _.isUndefined($scope.params._filter) ? false :  $scope.params._filter != options.filters[0].value);
 	};
 
 	$scope.$watch('params', function(a,b) {
