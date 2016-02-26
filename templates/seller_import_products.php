@@ -192,7 +192,10 @@
 														nc-template-options-path="productImport/AttributeValues"
 														nc-label="Attribute Values">
 														<ul class="scrollable-content">
-															<li ng-repeat="attr in ctrl.columnSearch.AttributeValue track by $index">{{attr}}</li>
+															<li ng-repeat="attr in ctrl.columnSearch.AttributeValue track by $index">
+																<span>{{attr.AttributeValueEn}}</span>
+																<a class="margin-left-10" clipboard text="ctrl.AttributeValueEn">Copy to Clipboard</a>
+															</li>
 														</ul>
 													</div>
 												</div>
