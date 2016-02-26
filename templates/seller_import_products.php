@@ -80,7 +80,6 @@
 								<div class="form-section">
 									<div class="form-section-header"><h2>Template Guideline</h2></div>
 									<div class="form-section-content">
-										<pre>{{ctrl.columnSearch}}</pre>
 										<div nc-template="common/input/form-group-with-label" 
 											nc-template-form="form.columnSearch" 
 											nc-label="Column Header" 
@@ -115,7 +114,7 @@
 													nc-template-options-path="productImport/BrandValue"
 													nc-label="">
 													<ul class="scrollable-content">
-														<li ng-repeat="brand in getBrands(ctrl.BrandSearch) track by $index">{{brand}}</li>
+														<li ng-repeat="brand in ctrl.Brands | filter: ctrl.BrandSearch track by $index">{{brand}}</li>
 													</ul>
 												</div>
 											</div>
@@ -138,7 +137,7 @@
 													nc-template="common/input/form-group-with-label"
 													nc-template-options-path="productImport/CategoryID"
 													nc-label="Category ID">
-													<span>{{ctrl.GlobalCategory.CategoryAbbreviation}}</span>
+													<span>{{ctrl.GlobalCategory.CategoryId}}</span>
 													<a class="margin-left-10" clipboard text="ctrl.GlobalCategory.CategoryAbbreviation">Copy to Clipboard</a>
 												</div>
 												<div ng-show="ctrl.GlobalCategory"
@@ -158,35 +157,62 @@
 													nc-template-options-path="productImport/Description"
 													nc-label="Description">{{ctrl.columnSearch.Description}}</div>
 												<div nc-template="common/input/form-group-with-label"
-													nc-template-options-path="productImport/BrandSearch"
-													nc-label="Accepted Value">
-													<input type="text" 
-														class="form-control input-icon-right-search" 
-														ng-model="ctrl.BrandSearch"
-														placeholder="Search for Brand Name"
-														/>
+													nc-template-options-path="productImport/Category"
+													nc-label="Local Category">
+													<a ng-click="openCategoryModal(false)">
+														<span ng-if="!ctrl.LocalCategory"><i class="fa fa-plus-circle"></i> Select Category</span>
+														<span ng-if="ctrl.LocalCategory">{{ctrl.LocalCategory.NameEn}}</span>
+													</a>
 												</div>
-												<div nc-template="common/input/form-group-with-label"
-													nc-template-options-path="productImport/BrandValue"
-													nc-label="">
-													<ul class="scrollable-content">
-														<li ng-repeat="brand in ctrl.columnSearch.Brands track by $index">{{brand}}</li>
-													</ul>
+												<div ng-show="ctrl.LocalCategory" 
+													nc-template="common/input/form-group-with-label"
+													nc-template-options-path="productImport/CategoryID"
+													nc-label="Category ID">
+													<span>{{ctrl.LocalCategory.CategoryId}}</span>
+													<a class="margin-left-10" clipboard text="ctrl.LocalCategory.CategoryAbbreviation">Copy to Clipboard</a>
 												</div>
 											</div>
 											<div ng-switch-default>
-												<div nc-template="common/input/form-group-with-label"
-													nc-template-options-path="productImport/Name"
-													nc-label="Name">{{ctrl.columnSearch.HeaderName}}</div>
-												<div nc-template="common/input/form-group-with-label"
-													nc-template-options-path="productImport/Description"
-													nc-label="Description">{{ctrl.columnSearch.Description}}</div>
-												<div nc-template="common/input/form-group-with-label"
-													nc-template-options-path="productImport/AcceptedValue"
-													nc-label="Accepted Value">{{ctrl.columnSearch.AcceptedValue}}</div>
-												<div nc-template="common/input/form-group-with-label"
-													nc-template-options-path="productImport/Example"
-													nc-label="Example"><span ng-bind-html="ctrl.columnSearch.Example | importGuidelineExample"></span></div>
+												<div ng-if="ctrl.columnSearch.IsAttribute">
+													<div nc-template="common/input/form-group-with-label"
+														nc-template-options-path="productImport/Name"
+														nc-label="Name">{{ctrl.columnSearch.HeaderName}}</div>
+													<div nc-template="common/input/form-group-with-label"
+														nc-template-options-path="productImport/Description"
+														nc-label="Description">{{ctrl.columnSearch.Description}}</div>
+													<div nc-template="common/input/form-group-with-label"
+														nc-template-options-path="productImport/EnableVariation"
+														nc-label="Enable Variation">{{ctrl.columnSearch.IsVariation | mapDropdown: yesNoOptions}}</div>
+													<div nc-template="common/input/form-group-with-label"
+														nc-template-options-path="productImport/AttributeType"
+														nc-label="Attribute Type">
+														{{ctrl.columnSearch.AttributeType | mapDropdown: dataTypeOptions}}
+													</div>
+													<div nc-template="common/input/form-group-with-label"
+														nc-template-options-path="productImport/AttributeValues"
+														nc-label="Attribute Values">
+														<ul class="scrollable-content">
+															<li ng-repeat="attr in ctrl.columnSearch.AttributeValue track by $index">
+																<span>{{attr.AttributeValueEn}}</span>
+																<a class="margin-left-10" clipboard text="ctrl.AttributeValueEn">Copy to Clipboard</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div ng-if="!ctrl.columnSearch.IsAttribute">
+													<div nc-template="common/input/form-group-with-label"
+														nc-template-options-path="productImport/Name"
+														nc-label="Name">{{ctrl.columnSearch.HeaderName}}</div>
+													<div nc-template="common/input/form-group-with-label"
+														nc-template-options-path="productImport/Description"
+														nc-label="Description">{{ctrl.columnSearch.Description}}</div>
+													<div nc-template="common/input/form-group-with-label"
+														nc-template-options-path="productImport/AcceptedValue"
+														nc-label="Accepted Value">{{ctrl.columnSearch.AcceptedValue}}</div>
+													<div nc-template="common/input/form-group-with-label"
+														nc-template-options-path="productImport/Example"
+														nc-label="Example"><span ng-bind-html="ctrl.columnSearch.Example | importGuidelineExample"></span></div>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -213,245 +239,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-xs-12">
-								<div class="form-section">
-									<div class="form-section-header"><h2>Template Guideline [Attribute]</h2></div>
-									<div class="form-section-content">
-										<?php $this->insert('components/forms/input-text-with-label', ['label' => 'Column Header', 'input_class' => 'input-icon-right-search', 'placeholder' => 'Search column header for more detail']) ?>
-
-										<div class="form-group ">
-											<div class="width-label">
-												<label class="control-label ">
-													Name
-												</label>
-											</div>
-											<div class="width-field-normal text-result">
-												Gadget Capacity
-											</div>
-										</div>
-										<div class="form-group ">
-											<div class="width-label">
-												<label class="control-label ">
-													Description
-												</label>
-											</div>
-											<div class="width-field-large text-result">
-												Description of that attribute
-											</div>
-										</div>
-										<div class="form-group ">
-											<div class="width-label">
-												<label class="control-label ">
-													Enable Variation
-												</label>
-											</div>
-											<div class="width-field-large text-result">
-												Description of that attribute
-											</div>
-										</div>
-										<div class="form-group ">
-											<div class="width-label">
-												<label class="control-label ">
-													Attribute Type
-												</label>
-											</div>
-											<div class="width-field-large text-result">
-												Freetext / Dropdown / HTML Box
-											</div>
-										</div>
-										<div class="form-group ">
-											<div class="width-label">
-												<label class="control-label ">
-													Attribute Unit
-												</label>
-											</div>
-											<div class="width-field-large text-result">
-												Volt / โว้อออออ
-											</div>
-										</div>
-										<div class="form-group ">
-											<div class="width-label">
-												<label class="control-label ">
-													Accepted Value
-												</label>
-											</div>
-											<div class="width-field-normal scrollable-field">
-												<ul class="scrollable-content">
-													<li>
-														Attribute Value A <a href="#" class="margin-left-10">Copy to Clipboard</a>
-													</li>
-													<li>
-														Attribute Value A <a href="#" class="margin-left-10">Copy to Clipboard</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-
-									</div>
-								</div>
-							</div>
-						</div>
-
-
-						<div class="row">
-							<div class="col-xs-12">
-								<div class="form-section">
-									<div class="form-section-header"><h2>Template Guideline [Global Category]</h2></div>
-									<div class="form-section-content">
-										<?php $this->insert('components/forms/input-text-with-label', ['label' => 'Column Header', 'input_class' => 'input-icon-right-search', 'placeholder' => 'Search column header for more detail']) ?>
-
-										<div class="form-group ">
-											<div class="width-label">
-												<label class="control-label ">
-													Name
-												</label>
-											</div>
-											<div class="width-field-normal text-result">
-												Global Category
-											</div>
-										</div>
-										<div class="form-group ">
-											<div class="width-label">
-												<label class="control-label ">
-													Description
-												</label>
-											</div>
-											<div class="width-field-large text-result">
-												Description babababa
-											</div>
-										</div>
-										<div class="form-group ">
-											<div class="width-label">
-												<label class="control-label ">
-													Global Category
-												</label>
-											</div>
-											<div class="width-field-large text-result">
-												<a href="#"><i class="fa fa-plus-circle"></i> Select Category</a>
-											</div>
-										</div>
-
-										<!-- After select category -->
-
-										<div class="form-group ">
-											<div class="width-label">
-												<label class="control-label ">
-													Global Category
-												</label>
-											</div>
-											<div class="width-field-large text-result">
-												<a href="#">Phone</a>
-											</div>
-										</div>
-
-
-										<div class="form-group ">
-											<div class="width-label">
-												<label class="control-label ">
-													Category ID
-												</label>
-											</div>
-											<div class="width-field-large text-result">
-												F45W <a href="#" class="margin-left-10">Copy to Clipboard</a>
-											</div>
-										</div>
-
-										<div class="form-group ">
-											<div class="width-label">
-												<label class="control-label ">
-													Suggested Attribute Set
-												</label>
-											</div>
-											<div class="width-field-normal scrollable-field">
-												<ul class="scrollable-content">
-													<li>
-														Attribute Set A
-													</li>
-													<li>
-														Attribute Set B
-													</li>
-												</ul>
-											</div>
-										</div>
-
-									</div>
-								</div>
-							</div>
-						</div>
-
-
-						<div class="row">
-							<div class="col-xs-12">
-								<div class="form-section">
-									<div class="form-section-header"><h2>Template Guideline [Local Category]</h2></div>
-									<div class="form-section-content">
-										<?php $this->insert('components/forms/input-text-with-label', ['label' => 'Column Header', 'input_class' => 'input-icon-right-search', 'placeholder' => 'Search column header for more detail']) ?>
-
-										<div class="form-group ">
-											<div class="width-label">
-												<label class="control-label ">
-													Name
-												</label>
-											</div>
-											<div class="width-field-normal text-result">
-												Local Category
-											</div>
-										</div>
-										<div class="form-group ">
-											<div class="width-label">
-												<label class="control-label ">
-													Description
-												</label>
-											</div>
-											<div class="width-field-large text-result">
-												Description babababa
-											</div>
-										</div>
-										<div class="form-group ">
-											<div class="width-label">
-												<label class="control-label ">
-													Local Category
-												</label>
-											</div>
-											<div class="width-field-large text-result">
-												<a href="#"><i class="fa fa-plus-circle"></i> Select Category</a>
-											</div>
-										</div>
-
-										<!-- After select category -->
-
-										<div class="form-group ">
-											<div class="width-label">
-												<label class="control-label ">
-													Local Category
-												</label>
-											</div>
-											<div class="width-field-large text-result">
-												<a href="#">Phone</a>
-											</div>
-										</div>
-
-
-										<div class="form-group ">
-											<div class="width-label">
-												<label class="control-label ">
-													Category ID
-												</label>
-											</div>
-											<div class="width-field-large text-result">
-												F4XW <a href="#" class="margin-left-10">Copy to Clipboard</a>
-											</div>
-										</div>
-
-
-
-									</div>
-								</div>
-							</div>
-						</div>
+						
 					</div>
-
 				</div>
 			</div>
 		</form>

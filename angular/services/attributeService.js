@@ -88,7 +88,7 @@ module.exports = function(common, config) {
 			break;
 			case 'LT':
 				processed.AttributeValues = data.LT.AttributeValues;
-				processed.DefaultValue = data.ST.DefaultValue;
+				processed.DefaultValue = data.LT.DefaultValue;
 			break;
 			case 'HB':
 				processed.DefaultValue = data.HB.DefaultValue;

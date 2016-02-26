@@ -226,6 +226,7 @@ ng-transclude.has-error .form-control{
     display: none !important;
 }
 
+<<<<<<< HEAD
 .export-list{
 	margin-left: 30px;
 	margin-bottom: 15px;
@@ -245,5 +246,9 @@ ng-transclude.has-error .form-control{
 
 .dropdown-menu {
   // width: 93%;
+=======
+[uib-typeahead-popup].dropdown-menu {
+  width: 93%;
+>>>>>>> 650615abc2dfa5893b774541767e0c792df13d97
 	/* Which section is using this code? It mess up other part. */
 }
