@@ -140,6 +140,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
 .factory('Product', services.product)
   .factory('ProductReviewService', services.productReviewService)
   .factory('ImageService', services.imageService)
+  .factory('FileService', services.fileService)
   .factory('CouponService', services.coupon)
   .factory('Category', services.category)
   .factory('Shop', services.shop)

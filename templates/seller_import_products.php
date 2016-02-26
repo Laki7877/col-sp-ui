@@ -39,9 +39,9 @@
 					</div>
 				</div>
 
-		    </div>
-		  </div>
-		</div>
+			    </div>
+			  </div>
+			</div>
 		</div>
 
 		<!--
@@ -51,6 +51,7 @@
         ], ]) ?>
 		-->
 
+		<nc-alert nc-model="alert"></nc-alert>
 		<?php $this->insert('components/page-title-breadcrumb-border', ['text' => 'Products/Import - Add New Products']) ?>
 
 		<form class="ah-form sticky-mainform-action">
@@ -78,10 +79,13 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<div class="form-section">
-									<div class="form-section-header"><h2>Template Guideline [Empty]</h2></div>
+									<div class="form-section-header"><h2>Template Guideline</h2></div>
 									<div class="form-section-content">
-										<div nc-template="common/input/form-group-with-label" nc-template-form="form.Search" nc-label="Column Header" nc-template-options-path="productImport/SearchColumn">
-											<input type="text" ng-model="ctrl.searchColumn" uib-typeahead="item.HeaderName for item in getGuideline($viewValue) | limitTo: 5" class="form-control input-icon-right-search" placeholder="search column header for more detail" />
+										<div nc-template="common/input/form-group-with-label" 
+											nc-template-form="form.SearchColumn" 
+											nc-label="Column Header" 
+											nc-template-options-path="productImport/SearchColumn">
+											<input type="text" ng-model="ctrl.searchColumn" uib-typeahead="item as item.HeaderName for item in getGuideline($viewValue)" class="form-control input-icon-right-search" placeholder="search column header for more detail" typeahead-wait-ms="TYPEAHEAD_DELAY"/>
 										</div>
 										<div ng-switch="searchColumn">
 											<div class="form-group" ng-switch-when="">
@@ -102,6 +106,26 @@
 											<div>
 										</div>
 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="form-section">
+									<div class="form-section-header"><h2>Upload File</h2></div>
+									<div class="form-section-content">
+										<div nc-template="common/input/form-group-with-label" 
+											nc-template-form="form.Upload" 
+											nc-label="Choose File" 
+											nc-template-options-path="productImport/Upload">
+											<div type="text" class="width-100-percent form-control get_file" ng-delegate="f"><span ng-if="uploader.queue.length == 0" class="color-grey">Browse to upload</span><span ng-if="uploader.queue.length > 0">{{ uploader.queue[uploader.queue.length-1].file.name }}</span></div>
+											<i class="fa fa-folder-open fa-lg color-dark-grey fa-input-icon"></i>										
+											<input nv-file-select uploader="uploader" accept=".csv" type="file" class="my_file"/>
+										</div>
+										<div nc-template="common/input/form-group-with-label" nc-label="">
+											<button ng-click="importCSV()" class="button-size-normal btn btn-blue btn-width-xl" ng-disabled="uploader.queue.length == 0" type="button">Import</button>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -463,21 +487,6 @@
 								</div>
 							</div>
 						</div>
-
-
-
-						<div class="row">
-							<div class="col-xs-12">
-								<div class="form-section">
-									<div class="form-section-header"><h2>Upload File</h2></div>
-									<div class="form-section-content">
-										<?php $this->insert('components/forms/upload-field-with-label', ['label' => 'Choose File', 'input_attrs' => 'Browse from your computer']) ?>
-										<?php $this->insert('components/forms/button-with-label', ['buttonText' => 'Import', 'btnClass' => 'btn-blue', 'modalData' => 'data-toggle="modal" data-target="#import-product"']) ?>
-									</div>
-								</div>
-							</div>
-						</div>
-
 					</div>
 
 				</div>

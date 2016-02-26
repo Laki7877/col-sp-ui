@@ -1,5 +1,8 @@
 module.exports = {
 	SearchColumn: {
 
+	},
+	Upload: {
+		
 	}
 }
