@@ -169,7 +169,7 @@
 													nc-template-options-path="productImport/CategoryID"
 													nc-label="Category ID">
 													<span>{{ctrl.LocalCategory.CategoryId}}</span>
-													<a class="margin-left-10" clipboard text="ctrl.LocalCategory.CategoryAbbreviation">Copy to Clipboard</a>
+													<a class="margin-left-10" clipboard text="ctrl.LocalCategory.CategoryId">Copy to Clipboard</a>
 												</div>
 											</div>
 											<div ng-switch-default>
