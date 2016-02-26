@@ -95,12 +95,13 @@
 	.header-link
 		a
 			color: $color-black
-	.header-link
+
+	/*.header-link
 		> .active-underline
 		border-bottom: 2px solid $color-soft-blue
 		padding-bottom: 4px
 		&:focus
-			text-decoration: none
+			text-decoration: none */
 
 	.header_name_space
 		padding-left: 10px
@@ -157,18 +158,73 @@
 			position: absolute
 			top: 0
 
-	.top_selling_header
-		margin-bottom: 15px
-
 	.group_container:first-child
 		padding-top: 0
 
 	.group_container:last-child
 		border: none
+		padding-top: 0
 		padding-bottom: 0
+
+		&.small_field
+			padding-top: 10px
+
+	.top_selling_header
+		margin-bottom: 15px
 
 	.width_100
 		width:	100px
 
 	.width_150
 		width:	150px
+
+	.table
+		margin-bottom: 0
+
+	.table_dashboard
+		td
+			padding: 15px 0 15px 0
+			border-top: 0
+			border-bottom: 1px solid $color-grey
+
+			&.column-text-ellipsis
+				max-width: 0
+
+		tr:last-child
+			td
+				border-bottom: 0
+
+	.table_recent_order
+		td:first-child
+			width: 140px
+
+		td:nth-child(2)
+			padding-left: 29px
+			padding-right: 30px
+
+		td:nth-child(3)
+			width: 	90px
+
+		td:last-child
+			padding-left: 30px
+			width: 56px
+
+	.table_lsa
+		td:first-child
+			width: 90px
+
+		td:nth-child(2)
+			padding-left: 29px
+			padding-right: 30px
+
+		td:nth-child(3)
+			width: 100px
+
+		td:last-child
+			padding-left: 30px
+			width: 80px
+
+	.table_newsletter
+		td:last-child
+			padding-left: 30px
+			width: 80px 	

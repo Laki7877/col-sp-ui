@@ -32,39 +32,52 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
           <span class="image-thumbs-img-wrapper">
             <img class="" src="<?= $this->asset('/assets/img/icon-dashboard-order.png') ?>" />
           </span>
-          <span class="font-size-18 header_name_space">Orders</span>
+          <span class="font-size-18 header_name_space">Recent Orders</span>
           <span class="float-right group_span_right">
-            <span class="header-link" href="#"><a class="active-underline">Today (2)</a></span>
-            <span><a href="#" class="color-grey">Pending (4)</a></span>
-            <span><a href="#" class="color-grey">Complete (230)</a></span>
+            <span class="hide-component header-link" href="#"><a class="active-underline">Today (2)</a></span>
+            <span class="hide-component"><a href="#" class="color-grey">Pending (4)</a></span>
+            <span class="hide-component"><a href="#" class="color-grey">Complete (230)</a></span>
             <span><a href="#">View All</a></span>
           </span>
         </div>
-        <div class="group_container">
-          <div class="row">
-            <div class="col-xs-3">
-              <span class="color-grey">
-                <i class="fa fa-check-circle-o"></i>
-                Payment Confirmed
-              </span>
-            </div>
-            <div class="col-xs-4 no-padding column-text-ellipsis">Order #123 - Natt Phenjati</div>
-            <div class="col-xs-2 ">฿226</div>
-            <div class="col-xs-3 text-align-right">13/12/2015 at 10:25</div>
-          </div>
-        </div>
-        <div class="group_container">
-          <div class="row">
-            <div class="col-xs-3">
-              <span class="color-green">
-                <i class="fa fa-check-circle-o"></i>
-                Delivered
-              </span>
-            </div>
-            <div class="col-xs-4 no-padding column-text-ellipsis">Order #153 - Jatuporn Dummaaaaaaaqd</div>
-            <div class="col-xs-2 ">฿1,326</div>
-            <div class="col-xs-3 text-align-right">13/12/2015 at 10:25</div>
-          </div>
+        <div class="group_container no-padding">
+          <table class="table table_dashboard table_recent_order">
+            <tbody>
+              <tr>
+                <td>
+                  <span class="color-grey">
+                    <i class="fa fa-check-circle-o"></i>
+                    Payment Confirmed
+                  </span>
+                </td>
+                <td class="column-text-ellipsis">
+                  Order #123 - Natt Phenjati
+                </td>
+                <td>
+                  ฿226
+                </td>
+                <td>
+                  13/12/2015
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="color-green">
+                    <i class="fa fa-check-circle-o"></i>
+                    Delivered
+                  </span>
+                </td>
+                <td class="column-text-ellipsis">
+                  Order #153 - Jatuporn Dummaaaaaaaqd
+                <td>
+                  ฿1,326
+                </td>
+                <td>
+                  13/12/2015
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
@@ -79,28 +92,37 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
           </span>
         </div>
         <div class="group_container">
-          <div class="row">
-            <div class="col-xs-2">
-              <span class="">
-                SKU:12353
-              </span>
-            </div>
-            <div class="col-xs-5 no-padding column-text-ellipsis">Nanyang Original Footwear T-model x10 Limited Edition for Thailand sale only</div>
-            <div class="col-xs-3 ">Stock Level: 5</div>
-            <div class="col-xs-2 text-align-right"><button class="btn btn-white btn-width-default">View</button></div>
-          </div>
-        </div>
-        <div class="group_container">
-          <div class="row">
-            <div class="col-xs-2">
-              <span class="">
-                SKU:53233
-              </span>
-            </div>
-            <div class="col-xs-5 no-padding column-text-ellipsis">Jordan Nike Super Shoe</div>
-            <div class="col-xs-3 ">Stock Level: 5</div>
-            <div class="col-xs-2 text-align-right"><button class="btn btn-white btn-width-default">View</button></div>
-          </div>
+          <table class="table table_dashboard table_lsa">
+            <tbody>
+              <tr>
+                <td>                 
+                  SKU:12353
+                </td>
+                <td class="column-text-ellipsis">
+                  Nanyang Original Footwear T-model x10 Limited Edition for Thailand sale only
+                </td>
+                <td>
+                  Inventory: 5
+                </td>
+                <td>
+                  <button class="btn btn-white btn-width-default">View</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  SKU:53233
+                </td>
+                <td class="column-text-ellipsis">
+                  Jordan Nike Super Shoe
+                <td>
+                  Inventory: 5
+                </td>
+                <td>
+                  <button class="btn btn-white btn-width-default">View</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
@@ -115,37 +137,37 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
           </span>
         </div>
         <div class="group_container">
-          <div class="row">
-            <div class="col-xs-10">
-              <span class="">
-                <div>10/12/15 at 10:00</div>
-                <div class="column-text-ellipsis ">Some thing happens in this world and no body knows about it becuase everyone is playing DotA 2. Damn that game need to be shut down.</div>
-              </span>
-            </div>
-            <div class="col-xs-2 text-align-right margin-top-10 "><button class="btn btn-white btn-width-default">Read</button></div>
-          </div>
-        </div>
-        <div class="group_container">
-          <div class="row">
-            <div class="col-xs-10">
-              <span class="">
-                <div>10/12/15 at 10:00</div>
-                <div class="column-text-ellipsis ">Some thing happens in this world and no body knows about it becuase everyone is playing DotA 2. Damn that game need to be shut down.</div>
-              </span>
-            </div>
-            <div class="col-xs-2 text-align-right margin-top-10 "><button class="btn btn-white btn-width-default">Read</button></div>
-          </div>
-        </div>
-        <div class="group_container">
-          <div class="row">
-            <div class="col-xs-10">
-              <span class="">
-                <div>10/12/15 at 10:00</div>
-                <div class="column-text-ellipsis ">Some thing happens in this world and no body knows about it becuase everyone is playing DotA 2. Damn that game need to be shut down.</div>
-              </span>
-            </div>
-            <div class="col-xs-2 text-align-right margin-top-10 "><button class="btn btn-white btn-width-default">Read</button></div>
-          </div>
+          <table class="table table_dashboard table_newsletter">
+            <tbody>
+              <tr>
+                <td class="column-text-ellipsis">                 
+                  <div>10/12/15 at 10:00</div>
+                  Some thing happens in this world and no body knows about it becuase everyone is playing DotA 2. Damn that game need to be shut down.
+                </td>
+                <td>
+                  <button class="btn btn-white btn-width-default">Read</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="column-text-ellipsis">                 
+                  <div>10/12/15 at 10:00</div>
+                  Some thing happens in this world and no body knows about it becuase everyone is playing DotA 2. Damn that game need to be shut down.
+                </td>
+                <td>
+                  <button class="btn btn-white btn-width-default">Read</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="column-text-ellipsis">                 
+                  <div>10/12/15 at 10:00</div>
+                  Some thing happens in this world and no body knows about it becuase everyone is playing DotA 2. Damn that game need to be shut down.
+                </td>
+                <td>
+                  <button class="btn btn-white btn-width-default">Read</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
