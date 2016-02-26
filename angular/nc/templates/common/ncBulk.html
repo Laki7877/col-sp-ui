@@ -8,7 +8,7 @@
       <ul uib-dropdown-menu role="menu" class="search-product-dropdown">
         <li ng-repeat="option in options" ><a ng-click="selectOption(option)">{{ option.name }}</a></li>
       </ul>
-    </div><!-- /btn-group -->
+    </div>
     <div class="input-group-btn">
       <button class="btn-white-fluid btn" ng-click="call()">
         <span class="button-text-blue">Confirm <span ng-show="model.length > 0">({{ model.length }})</span></span>

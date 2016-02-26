@@ -13190,32 +13190,33 @@ label.css-label {
 }
 /* line 294, ../../../assets/_table.scss */
 .search-section-wrapper .search-section {
+  display: inline-block;
   padding-left: 15px;
   padding-right: 15px;
   float: left;
 }
-/* line 300, ../../../assets/_table.scss */
+/* line 301, ../../../assets/_table.scss */
 .search-section-wrapper .section-action {
   width: 285px;
 }
-/* line 302, ../../../assets/_table.scss */
+/* line 303, ../../../assets/_table.scss */
 .search-section-wrapper .section-action .body-dropdown-button {
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
 }
-/* line 308, ../../../assets/_table.scss */
+/* line 309, ../../../assets/_table.scss */
 .search-section-wrapper .section-search {
   width: 410px;
 }
-/* line 312, ../../../assets/_table.scss */
+/* line 313, ../../../assets/_table.scss */
 .search-section-wrapper .search-section.section-filter {
   float: right;
 }
-/* line 316, ../../../assets/_table.scss */
+/* line 317, ../../../assets/_table.scss */
 .search-section-wrapper .search-section .btn-white {
   height: 30px;
 }
-/* line 320, ../../../assets/_table.scss */
+/* line 321, ../../../assets/_table.scss */
 .search-section-wrapper .search-section .btn-white-fluid {
   width: auto;
   height: 30px;
@@ -13262,77 +13263,77 @@ label.css-label {
   color: #ffffff;
   background-color: #4899DD;
 }
-/* line 325, ../../../assets/_table.scss */
+/* line 326, ../../../assets/_table.scss */
 .search-section-wrapper .search-section .btn-white-fluid .advance-search {
   padding-left: 0px;
 }
-/* line 327, ../../../assets/_table.scss */
+/* line 328, ../../../assets/_table.scss */
 .search-section-wrapper .search-section .btn-white-fluid .advance-search .btn-white {
   width: 135px;
 }
-/* line 333, ../../../assets/_table.scss */
+/* line 334, ../../../assets/_table.scss */
 .search-section-wrapper .body-dropdown-button {
   height: 30px;
   width: 180px;
 }
-/* line 337, ../../../assets/_table.scss */
+/* line 338, ../../../assets/_table.scss */
 .search-section-wrapper .body-dropdown-button .dropdown-text {
   width: 135px;
   display: inline-block;
 }
-/* line 343, ../../../assets/_table.scss */
+/* line 344, ../../../assets/_table.scss */
 .search-section-wrapper .dropdown-text {
   text-align: left;
 }
-/* line 347, ../../../assets/_table.scss */
+/* line 348, ../../../assets/_table.scss */
 .search-section-wrapper .search-box {
   height: 30px;
 }
-/* line 351, ../../../assets/_table.scss */
+/* line 352, ../../../assets/_table.scss */
 .search-section-wrapper .checkbox-wrapper {
   margin-top: 5px;
 }
 
-/* line 356, ../../../assets/_table.scss */
+/* line 357, ../../../assets/_table.scss */
 .product-search-section .search-section-wrapper {
   margin-top: 0;
 }
-/* line 359, ../../../assets/_table.scss */
+/* line 360, ../../../assets/_table.scss */
 .product-search-section .search-section-wrapper .search-section {
   padding-left: 0;
 }
 
-/* line 366, ../../../assets/_table.scss */
+/* line 367, ../../../assets/_table.scss */
 .table.ah-table {
   margin-bottom: 0;
 }
-/* line 367, ../../../assets/_table.scss */
+/* line 368, ../../../assets/_table.scss */
 .table.ah-table > thead > tr > th {
   border-bottom: 1px solid #BCC7D5;
 }
-/* line 369, ../../../assets/_table.scss */
+/* line 370, ../../../assets/_table.scss */
 .table.ah-table > thead > tr > th, .table.ah-table > thead > tr > th > * {
   vertical-align: middle;
 }
-/* line 374, ../../../assets/_table.scss */
+/* line 375, ../../../assets/_table.scss */
 .table.ah-table > tbody > tr > td {
   border-top: none;
 }
-/* line 379, ../../../assets/_table.scss */
+/* line 380, ../../../assets/_table.scss */
 .table.ah-table.ah-table-extra-padding > tbody > tr > td {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-/* line 386, ../../../assets/_table.scss */
+/* line 387, ../../../assets/_table.scss */
 .table.ah-table.ah-table-line > tbody > tr:first-child > td {
   border-top: none;
 }
-/* line 390, ../../../assets/_table.scss */
+/* line 391, ../../../assets/_table.scss */
 .table.ah-table.ah-table-line > tbody > tr > td {
   border-top: 1px solid #BCC7D5;
 }
 
-/* line 399, ../../../assets/_table.scss */
+/* line 400, ../../../assets/_table.scss */
 .table .column-text-ellipsis {
   max-width: 0;
   overflow: hidden;
@@ -13340,7 +13341,7 @@ label.css-label {
   white-space: nowrap;
 }
 
-/* line 408, ../../../assets/_table.scss */
+/* line 409, ../../../assets/_table.scss */
 .table-border-none > tbody > tr:first-child > td {
   border-top: none;
 }
