@@ -1,4 +1,4 @@
-module.exports = function($scope, NcAlert, $uibModal, Category, GlobalCategoryService, LocalCategoryService, FileService, Product, GlobalCategoryService, Category, AttributeSet, storage, config) {
+module.exports = function($scope, NcAlert, $uibModal, BrandService, GlobalCategoryService, LocalCategoryService, FileService, Product, GlobalCategoryService, Category, AttributeSet, storage, config) {
   'ngInject';
   //Select Global Category
   $scope.ctrl = {};
@@ -11,6 +11,9 @@ module.exports = function($scope, NcAlert, $uibModal, Category, GlobalCategorySe
   $scope.DownloadBtnText = {text: "Download", disabled: false};
   $scope.alert = new NcAlert();
   $scope.isUpdate = !_.isNil(storage.get('importUpdate'));
+  $scope.yesNoOptions = config.DROPDOWN.YES_NO_DROPDOWN;
+  $scope.dataTypeOptions = config.DROPDOWN.DATA_TYPE_DROPDOWN;
+
   storage.remove('importUpdate');
 
   GlobalCategoryService.list().then(function(data) {
@@ -60,7 +63,7 @@ module.exports = function($scope, NcAlert, $uibModal, Category, GlobalCategorySe
       });
   };
 
-  //Search for brand 
+  //Search for brand
 
   $scope.importCSV = function() {
     var last = $scope.uploader.queue[$scope.uploader.queue.length-1];
@@ -146,6 +149,7 @@ module.exports = function($scope, NcAlert, $uibModal, Category, GlobalCategorySe
         $scope.ctrl.GlobalCategory = data;
         GlobalCategoryService.get(data.CategoryId)
           .then(function(cat) {
+            console.log(cat);
             $scope.ctrl.AttributeSets = cat.AttributeSets;
           });
       } else {
@@ -164,4 +168,11 @@ module.exports = function($scope, NcAlert, $uibModal, Category, GlobalCategorySe
     .then(function(data) {
       $scope.ctrl.LocalCategoryTree = Category.transformNestedSetToUITree(data);
     });
+
+  BrandService.list()
+      .then(function(data) {
+        $scope.ctrl.Brands = _.map(data, function(e) {
+          return e.BrandNameEn;
+        });
+      });
 };

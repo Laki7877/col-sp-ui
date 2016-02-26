@@ -34,6 +34,16 @@ module.exports = {
 		inputClass: 'scrollable-field'
 	},
 	SuggestedAttributeSet: {
+		inputClass: 'scrollable-field'
+	},
+	AttributeValues: {
+		inputClass: 'scrollable-field'
+	},
+	EnableVariation: {
+		inputSize: 'large',
+		inputClass: 'text-result'
+	},
+	AttributeType: {
 		inputSize: 'large',
 		inputClass: 'text-result'
 	}

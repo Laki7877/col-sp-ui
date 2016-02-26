@@ -15233,6 +15233,7 @@ ng-transclude.has-error .form-control {
 }
 
 /* line 229, ../../../assets/screen.scss */
-.dropdown-menu {
+[uib-typeahead-popup].dropdown-menu {
+  width: 93%;
   /* Which section is using this code? It mess up other part. */
 }

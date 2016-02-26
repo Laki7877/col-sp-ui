@@ -226,7 +226,7 @@ ng-transclude.has-error .form-control{
     display: none !important;
 }
 
-.dropdown-menu {
-  // width: 93%;
+[uib-typeahead-popup].dropdown-menu {
+  width: 93%;
 	/* Which section is using this code? It mess up other part. */
 }
