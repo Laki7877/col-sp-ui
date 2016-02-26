@@ -50,8 +50,22 @@
                           </div>
                         </div>
                         <div class="drop-zone-container {{ getContainer(product) }}">
-                          <nc-image-dropzone ng-if="product.IsVariant" nc-model="product.VariantImg" nc-image-template="{{getTemplate(product)}}" nc-image-uploader="uploader" nc-image-dropzone-options="imageDropzoneOptions" nc-image-dropzone-on-error="onError(product, $response)"></nc-image-dropzone>
-                          <nc-image-dropzone ng-if="!product.IsVariant" nc-model="product.MasterImg" nc-image-template="{{getTemplate(product)}}" nc-image-uploader="uploader" nc-image-dropzone-options="imageDropzoneOptions" nc-image-dropzone-on-error="onError(product, $response)"></nc-image-dropzone>
+                          <nc-image-dropzone 
+                            ng-if="product.IsVariant" 
+                            nc-model="product.VariantImg" 
+                            nc-image-template="{{getTemplate(product)}}" 
+                            nc-image-uploader="uploader" 
+                            nc-image-dropzone-options="imageDropzoneOptions" 
+                            nc-image-dropzone-on-error="onError(product, $response)" 
+                            nc-image-dropzone-on-event="onEvent(product, $eventName)"></nc-image-dropzone>
+                          <nc-image-dropzone 
+                            ng-if="!product.IsVariant" 
+                            nc-model="product.MasterImg" 
+                            nc-image-template="{{getTemplate(product)}}" 
+                            nc-image-uploader="uploader" 
+                            nc-image-dropzone-options="imageDropzoneOptions" 
+                            nc-image-dropzone-on-error="onError(product, $response)" 
+                            nc-image-dropzone-on-event="onEvent(product, $eventName)"></nc-image-dropzone>
                         </div>
                     </div>
                   </div>
