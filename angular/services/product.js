@@ -16,6 +16,15 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
       return common.makeRequest(req);
     }
 
+    service.getAllAttributeSetsForProducts = function(productList){
+      var req = {
+        method: 'POST',
+        url: '/ProductStages/AttributeSet',
+        data: productList
+      };
+      return common.makeRequest(req);
+    }
+
     service.export = function(ps) {
       var req = {
         method: 'POST',

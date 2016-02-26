@@ -12,7 +12,7 @@
         <li ng-class="activeUrl('/products')" class="item margin-top-20"><a href="/products">View</a></li>
         <li ng-class="activeUrl('/products/add')" class="item"><a href="/products/select">Add</a></li>
         <li ng-class="activeUrl('/products/add')" class="item"><a href="/products/import">Import</a></li>
-        <li class="item"><a href="">Export</a></li>
+        <li ng-class="activeUrl('/products/export')" class="item"><a href="/products/export">Export</a></li>
         <li ng-class="activeUrl('/categories')" class="item margin-top-30"><a href="/categories">Local Category</a></li>
         <li ng-class="activeUrl('/products/reviews')" class="item"><a href="/products/reviews">Product Reviews</a></li>
         <li ng-class="activeUrl('/products/images')" class="item"><a href="/products/images">Image Management</a></li>

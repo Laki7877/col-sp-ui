@@ -27,6 +27,9 @@ module.exports = function ($scope, $controller, Product, util, Alert, $window, $
             ]
         }
     });
+    $scope.exportSelected = function(){
+      document.getElementById('exportForm').submit();
+    };
     $scope.showOnOffStatus = {};
     $scope.showOnOffStatus.value = true;
     $scope.statusLookup = {};

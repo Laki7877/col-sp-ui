@@ -13186,154 +13186,106 @@ label.css-label {
 
 /* line 290, ../../../assets/_table.scss */
 .search-section-wrapper {
-  margin-top: 15px;
+  margin: 15px 0px -10px -10px;
 }
-/* line 294, ../../../assets/_table.scss */
-.search-section-wrapper .search-section {
-  display: inline-block;
-  padding-left: 15px;
-  padding-right: 15px;
+/* line 293, ../../../assets/_table.scss */
+.search-section-wrapper .search-section-item {
   float: left;
+  display: table;
+  border-spacing: 10px;
+}
+/* line 297, ../../../assets/_table.scss */
+.search-section-wrapper .search-section-item button {
+  height: 30px;
+  color: #4899DD;
 }
 /* line 301, ../../../assets/_table.scss */
-.search-section-wrapper .section-action {
-  width: 285px;
+.search-section-wrapper .search-section-item .btn-action {
+  min-width: 80px;
 }
-/* line 303, ../../../assets/_table.scss */
-.search-section-wrapper .section-action .body-dropdown-button {
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
+/* line 304, ../../../assets/_table.scss */
+.search-section-wrapper .search-section-item .form-control {
+  height: 30px;
 }
-/* line 309, ../../../assets/_table.scss */
-.search-section-wrapper .section-search {
-  width: 410px;
+/* line 307, ../../../assets/_table.scss */
+.search-section-wrapper .search-section-item .bulk-action-dropdown {
+  color: #32343C;
+  width: 180px;
+  text-align: left;
 }
-/* line 313, ../../../assets/_table.scss */
-.search-section-wrapper .search-section.section-filter {
+/* line 311, ../../../assets/_table.scss */
+.search-section-wrapper .search-section-item .bulk-action-dropdown .caret {
   float: right;
+  margin-top: 8px;
 }
-/* line 317, ../../../assets/_table.scss */
-.search-section-wrapper .search-section .btn-white {
-  height: 30px;
+/* line 316, ../../../assets/_table.scss */
+.search-section-wrapper .search-section-item .search-box {
+  width: 380px;
+  border-spacing: 0px;
 }
-/* line 321, ../../../assets/_table.scss */
-.search-section-wrapper .search-section .btn-white-fluid {
-  width: auto;
-  height: 30px;
-  margin-right: 20px;
-  color: #4899DD;
-  background-color: #ffffff;
-  border-color: #BCC7D5;
-}
-/* line 11, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
-.search-section-wrapper .search-section .btn-white-fluid:focus, .search-section-wrapper .search-section .btn-white-fluid.focus {
-  color: #4899DD;
-  background-color: #e6e6e6;
-  border-color: #6e85a4;
-}
-/* line 17, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
-.search-section-wrapper .search-section .btn-white-fluid:hover {
-  color: #4899DD;
-  background-color: #e6e6e6;
-  border-color: #96a8bd;
-}
-/* line 22, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
-.search-section-wrapper .search-section .btn-white-fluid:active, .search-section-wrapper .search-section .btn-white-fluid.active, .open > .search-section-wrapper .search-section .btn-white-fluid.dropdown-toggle {
-  color: #4899DD;
-  background-color: #e6e6e6;
-  border-color: #96a8bd;
-}
-/* line 29, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
-.search-section-wrapper .search-section .btn-white-fluid:active:hover, .search-section-wrapper .search-section .btn-white-fluid:active:focus, .search-section-wrapper .search-section .btn-white-fluid:active.focus, .search-section-wrapper .search-section .btn-white-fluid.active:hover, .search-section-wrapper .search-section .btn-white-fluid.active:focus, .search-section-wrapper .search-section .btn-white-fluid.active.focus, .open > .search-section-wrapper .search-section .btn-white-fluid.dropdown-toggle:hover, .open > .search-section-wrapper .search-section .btn-white-fluid.dropdown-toggle:focus, .open > .search-section-wrapper .search-section .btn-white-fluid.dropdown-toggle.focus {
-  color: #4899DD;
-  background-color: #d4d4d4;
-  border-color: #6e85a4;
-}
-/* line 37, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
-.search-section-wrapper .search-section .btn-white-fluid:active, .search-section-wrapper .search-section .btn-white-fluid.active, .open > .search-section-wrapper .search-section .btn-white-fluid.dropdown-toggle {
-  background-image: none;
-}
-/* line 45, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
-.search-section-wrapper .search-section .btn-white-fluid.disabled:hover, .search-section-wrapper .search-section .btn-white-fluid.disabled:focus, .search-section-wrapper .search-section .btn-white-fluid.disabled.focus, .search-section-wrapper .search-section .btn-white-fluid[disabled]:hover, .search-section-wrapper .search-section .btn-white-fluid[disabled]:focus, .search-section-wrapper .search-section .btn-white-fluid[disabled].focus, fieldset[disabled] .search-section-wrapper .search-section .btn-white-fluid:hover, fieldset[disabled] .search-section-wrapper .search-section .btn-white-fluid:focus, fieldset[disabled] .search-section-wrapper .search-section .btn-white-fluid.focus {
-  background-color: #ffffff;
-  border-color: #BCC7D5;
-}
-/* line 53, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
-.search-section-wrapper .search-section .btn-white-fluid .badge {
-  color: #ffffff;
-  background-color: #4899DD;
-}
-/* line 326, ../../../assets/_table.scss */
-.search-section-wrapper .search-section .btn-white-fluid .advance-search {
-  padding-left: 0px;
-}
-/* line 328, ../../../assets/_table.scss */
-.search-section-wrapper .search-section .btn-white-fluid .advance-search .btn-white {
-  width: 135px;
-}
-/* line 334, ../../../assets/_table.scss */
+/* line 322, ../../../assets/_table.scss */
 .search-section-wrapper .body-dropdown-button {
   height: 30px;
   width: 180px;
 }
-/* line 338, ../../../assets/_table.scss */
+/* line 326, ../../../assets/_table.scss */
 .search-section-wrapper .body-dropdown-button .dropdown-text {
   width: 135px;
   display: inline-block;
 }
-/* line 344, ../../../assets/_table.scss */
+/* line 332, ../../../assets/_table.scss */
 .search-section-wrapper .dropdown-text {
   text-align: left;
 }
-/* line 348, ../../../assets/_table.scss */
+/* line 336, ../../../assets/_table.scss */
 .search-section-wrapper .search-box {
   height: 30px;
 }
-/* line 352, ../../../assets/_table.scss */
+/* line 340, ../../../assets/_table.scss */
 .search-section-wrapper .checkbox-wrapper {
   margin-top: 5px;
 }
 
-/* line 357, ../../../assets/_table.scss */
+/* line 345, ../../../assets/_table.scss */
 .product-search-section .search-section-wrapper {
   margin-top: 0;
 }
-/* line 360, ../../../assets/_table.scss */
+/* line 348, ../../../assets/_table.scss */
 .product-search-section .search-section-wrapper .search-section {
   padding-left: 0;
 }
 
-/* line 367, ../../../assets/_table.scss */
+/* line 355, ../../../assets/_table.scss */
 .table.ah-table {
   margin-bottom: 0;
 }
-/* line 368, ../../../assets/_table.scss */
+/* line 356, ../../../assets/_table.scss */
 .table.ah-table > thead > tr > th {
   border-bottom: 1px solid #BCC7D5;
 }
-/* line 370, ../../../assets/_table.scss */
+/* line 358, ../../../assets/_table.scss */
 .table.ah-table > thead > tr > th, .table.ah-table > thead > tr > th > * {
   vertical-align: middle;
 }
-/* line 375, ../../../assets/_table.scss */
+/* line 363, ../../../assets/_table.scss */
 .table.ah-table > tbody > tr > td {
   border-top: none;
 }
-/* line 380, ../../../assets/_table.scss */
+/* line 368, ../../../assets/_table.scss */
 .table.ah-table.ah-table-extra-padding > tbody > tr > td {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-/* line 387, ../../../assets/_table.scss */
+/* line 375, ../../../assets/_table.scss */
 .table.ah-table.ah-table-line > tbody > tr:first-child > td {
   border-top: none;
 }
-/* line 391, ../../../assets/_table.scss */
+/* line 379, ../../../assets/_table.scss */
 .table.ah-table.ah-table-line > tbody > tr > td {
   border-top: 1px solid #BCC7D5;
 }
 
-/* line 400, ../../../assets/_table.scss */
+/* line 388, ../../../assets/_table.scss */
 .table .column-text-ellipsis {
   max-width: 0;
   overflow: hidden;
@@ -13341,7 +13293,7 @@ label.css-label {
   white-space: nowrap;
 }
 
-/* line 409, ../../../assets/_table.scss */
+/* line 397, ../../../assets/_table.scss */
 .table-border-none > tbody > tr:first-child > td {
   border-top: none;
 }
@@ -15130,7 +15082,7 @@ html, body {
 /* line 95, ../../../assets/screen.scss */
 .tradable-list .right-column {
   float: left;
-  width: 400px;
+  width: 300px;
   margin-left: 30px;
 }
 /* line 99, ../../../assets/screen.scss */
@@ -15282,5 +15234,5 @@ ng-transclude.has-error .form-control {
 
 /* line 229, ../../../assets/screen.scss */
 .dropdown-menu {
-  width: 93%;
+  /* Which section is using this code? It mess up other part. */
 }

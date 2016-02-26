@@ -7,7 +7,7 @@
     <div ng-show="loading" nc-loading="Loading Brand.."></div>
     <div ng-show="saving" nc-loading="Saving Brand.."></div>
     <form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
-      <div class="row">
+      <div class="row margin-top-30">
         <div class="col-xs-12">
           <div class="form-section">
             <div class="form-section-header">
@@ -61,7 +61,7 @@
           <? $this->insert('components/forms/form-section-upload-new-product-image-single',
               ["uploader" => "uploader",
               "no_guideline" => true,
-              "header" => "Upload New Brand Image (512 x 512)",
+              "header" => "<label class='required'>Upload New Brand Image (512 x 512)</label>",
               "images" => "formData.BrandImages"])
           ?>
           <div class="form-section">

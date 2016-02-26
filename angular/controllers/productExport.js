@@ -1,10 +1,37 @@
 module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product, AttributeSet) {
-  $scope.productIds = [];
+  $scope.ProductList = [];
   $scope.SELECT_ALL = false;
+  $scope.sumProductAttributeSet = 0;
+  $scope.selectAllAttributeSets = false;
+
   $scope.init = function(viewBag){
-    $scope.productIds = viewBag || [];
-    if($scope.productIds.length == 0){
+    var productIds = viewBag || [];
+    if(productIds.length == 0){
       $scope.SELECT_ALL = true;
+    }
+
+    $scope.ProductList = productIds.map(function(p){
+      return { ProductId: p }
+    });
+
+    if($scope.SELECT_ALL){
+      AttributeSet.getAll().then(function(data){
+        $scope.dataSet.attributeSets = data.map(function(m){
+            m.Display = m.AttributeSetNameEn + " (" + m.ProductCount + ")";
+            $scope.sumProductAttributeSet += Number(m.ProductCount);
+            return m;
+        });
+        console.log(data);
+      });
+    }else{
+      Product.getAllAttributeSetsForProducts($scope.ProductList).then(function(data){
+        $scope.dataSet.attributeSets = data.map(function(m){
+            m.Display = m.AttributeSetNameEn + " (" + m.ProductCount.length + ")";
+            $scope.sumProductAttributeSet += Number(m.ProductCount.length);
+            return m;
+        });
+        console.log(data);
+      });
     }
   }
 
@@ -18,6 +45,7 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
   };
 
   $scope.confirmExportProducts = function(){
+
       $("#export-product").modal('hide');
 
       var fileName = "ProductExport.csv";
@@ -33,14 +61,13 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
       $scope.exporter.progress = 15;
       var blobs = [];
 
-
-      var product_chunk =  $scope.productIds.map(function(p){
-        return { ProductId: p }
-      });
-
       var body = angular.copy($scope.fields);
-      body.ProductList = product_chunk;
+      body.ProductList = $scope.ProductList;
       body.AttributeSets = $scope.ctrl.tradedAS;
+
+      if($scope.selectAllAttributeSets){
+        body.AttributeSets = [];
+      }
 
       Product.export(body).then(function (result) {
 
@@ -61,13 +88,8 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
   }
 
   $scope.dataSet = {};
-  AttributeSet.getAll().then(function(data){
-    $scope.dataSet.attributeSets = data.map(function(m){
-        m.Display = m.AttributeSetNameEn + " (" + m.ProductCount + ")";
-        return m;
-    });
-    console.log(data);
-  });
+
+
   $scope.ctrl = {
     selectAll: false,
     tradedAS: []
@@ -90,7 +112,7 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
 
   $scope.fields = {
     ProductStatus: false,
-    PID: false,
+    PID: true,
     GroupID: false,
     SKU: false,
     ProductNameEn: false,

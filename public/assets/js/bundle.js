@@ -2552,12 +2552,39 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 
 },{"angular":156}],29:[function(require,module,exports){
 module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product, AttributeSet) {
-  $scope.productIds = [];
+  $scope.ProductList = [];
   $scope.SELECT_ALL = false;
+  $scope.sumProductAttributeSet = 0;
+  $scope.selectAllAttributeSets = false;
+
   $scope.init = function(viewBag){
-    $scope.productIds = viewBag || [];
-    if($scope.productIds.length == 0){
+    var productIds = viewBag || [];
+    if(productIds.length == 0){
       $scope.SELECT_ALL = true;
+    }
+
+    $scope.ProductList = productIds.map(function(p){
+      return { ProductId: p }
+    });
+
+    if($scope.SELECT_ALL){
+      AttributeSet.getAll().then(function(data){
+        $scope.dataSet.attributeSets = data.map(function(m){
+            m.Display = m.AttributeSetNameEn + " (" + m.ProductCount + ")";
+            $scope.sumProductAttributeSet += Number(m.ProductCount);
+            return m;
+        });
+        console.log(data);
+      });
+    }else{
+      Product.getAllAttributeSetsForProducts($scope.ProductList).then(function(data){
+        $scope.dataSet.attributeSets = data.map(function(m){
+            m.Display = m.AttributeSetNameEn + " (" + m.ProductCount.length + ")";
+            $scope.sumProductAttributeSet += Number(m.ProductCount.length);
+            return m;
+        });
+        console.log(data);
+      });
     }
   }
 
@@ -2571,6 +2598,7 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
   };
 
   $scope.confirmExportProducts = function(){
+
       $("#export-product").modal('hide');
 
       var fileName = "ProductExport.csv";
@@ -2586,14 +2614,13 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
       $scope.exporter.progress = 15;
       var blobs = [];
 
-
-      var product_chunk =  $scope.productIds.map(function(p){
-        return { ProductId: p }
-      });
-
       var body = angular.copy($scope.fields);
-      body.ProductList = product_chunk;
+      body.ProductList = $scope.ProductList;
       body.AttributeSets = $scope.ctrl.tradedAS;
+
+      if($scope.selectAllAttributeSets){
+        body.AttributeSets = [];
+      }
 
       Product.export(body).then(function (result) {
 
@@ -2614,13 +2641,8 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
   }
 
   $scope.dataSet = {};
-  AttributeSet.getAll().then(function(data){
-    $scope.dataSet.attributeSets = data.map(function(m){
-        m.Display = m.AttributeSetNameEn + " (" + m.ProductCount + ")";
-        return m;
-    });
-    console.log(data);
-  });
+
+
   $scope.ctrl = {
     selectAll: false,
     tradedAS: []
@@ -2643,7 +2665,7 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
 
   $scope.fields = {
     ProductStatus: false,
-    PID: false,
+    PID: true,
     GroupID: false,
     SKU: false,
     ProductNameEn: false,
@@ -3060,6 +3082,9 @@ module.exports = ["$scope", "$controller", "Product", "util", "Alert", "$window"
             ]
         }
     });
+    $scope.exportSelected = function(){
+      document.getElementById('exportForm').submit();
+    };
     $scope.showOnOffStatus = {};
     $scope.showOnOffStatus.value = true;
     $scope.statusLookup = {};
@@ -6692,7 +6717,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncAdvanceSearchButton',
-    "<div class=\"search-section advance-search\"><button class=\"btn btn-white-fluid btn-toggle {{model ? 'active' : ''}}\" type=button ng-click=toggle()>Advanced Search</button></div>"
+    "<div class=search-section-item><button class=\"btn btn-default btn-toggle {{model ? 'active' : ''}}\" type=button ng-click=toggle()>Advanced Search</button></div>"
   );
 
 
@@ -6712,7 +6737,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncBulk',
-    "<div class=\"search-section section-action\"><div class=input-group><div class=input-group-btn uib-dropdown><button class=\"btn btn-default body-dropdown-button\" uib-dropdown-toggle><span class=\"dropdown-text margin-right-10 search-product-text\">{{ select.name }}</span> <span class=\"caret margin-left-10\"></span></button><ul uib-dropdown-menu role=menu class=search-product-dropdown><li ng-repeat=\"option in options\"><a ng-click=selectOption(option)>{{ option.name }}</a></li></ul></div><div class=input-group-btn><button class=\"btn-white-fluid btn\" ng-click=call()><span class=button-text-blue>Confirm <span ng-show=\"model.length > 0\">({{ model.length }})</span></span></button></div></div></div>"
+    "<div class=\"btn-group search-section-item\" role=group><div class=btn-group role=group><button type=button class=\"btn btn-default dropdown-toggle bulk-action-dropdown\" data-toggle=dropdown aria-haspopup=true aria-expanded=false uib-dropdown-toggle><span>{{ select.name }}</span> <span class=caret></span></button><ul uib-dropdown-menu role=menu class=dropdown-menu><li ng-repeat=\"option in options\"><a ng-click=selectOption(option)>{{ option.name }}</a></li></ul></div><button type=button class=\"btn btn-default btn-action\" ng-click=call()>Confirm <span ng-show=\"model.length > 0\">({{ model.length }})</span></button></div>"
   );
 
 
@@ -6784,7 +6809,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncSearch',
-    "<form ng-submit=callback() class=\"search-section section-search\"><div class=input-group><input class=\"form-control input-search-icon search-box\" ng-model=searchText placeholder={{placeholder}}> <span class=input-group-btn><button class=\"btn btn-white\">Search</button></span></div></form>"
+    "<div class=\"input-group search-section-item\"><form ng-submit=callback()><div class=\"input-group search-box\"><input class=\"form-control input-search-icon\" ng-model=searchText placeholder={{placeholder}}> <span class=input-group-btn><button class=\"btn btn-default btn-action\">Search</button></span></div></form></div>"
   );
 
 
@@ -8608,6 +8633,15 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
       return common.makeRequest(req);
     }
 
+    service.getAllAttributeSetsForProducts = function(productList){
+      var req = {
+        method: 'POST',
+        url: '/ProductStages/AttributeSet',
+        data: productList
+      };
+      return common.makeRequest(req);
+    }
+
     service.export = function(ps) {
       var req = {
         method: 'POST',
@@ -9793,7 +9827,7 @@ module.exports = {
 },{}],140:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Fri Feb 26 2016 18:08:42 GMT+0700 (Russia TZ 6 Standard Time)
+ * Fri Feb 26 2016 18:09:22 GMT+0700 (Russia TZ 6 Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -10011,7 +10045,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "\n" +
     "\t\t\t\t\t\t\t}\r" +
     "\n" +
-    "\t\t\t\t\t\t\t}\"><input class=form-control name=Commission ng-model=formData.Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-class=\"{ 'has-error' : isInvalid(form.Commission) }\" maxlength=20 ng-maxnumber=100 ng-minnumber=0 required></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions nc-options=\"{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }\"></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\"><span class=color-red>*</span> If category is mapped to a product, attribute set mapping cannot be changed</p></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
+    "\t\t\t\t\t\t\t}\"><input class=form-control name=Commission ng-model=formData.Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-class=\"{ 'has-error' : isInvalid(form.Commission) }\" maxlength=20 ng-maxnumber=100 ng-minnumber=0 required></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions nc-options=\"{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }\"></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\"><span class=color-red>*</span> Changing attribute set mapping may affect products under this category</p></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
