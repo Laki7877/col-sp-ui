@@ -1,4 +1,4 @@
-module.exports = function ($scope, $controller, Product, util, Alert, $window, $rootScope, config) {
+module.exports = function ($scope, $controller, Product, util, Alert, $window, $rootScope, config, storage) {
     'ngInject';
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
@@ -27,9 +27,6 @@ module.exports = function ($scope, $controller, Product, util, Alert, $window, $
             ]
         }
     });
-    $scope.exportSelected = function(){
-      document.getElementById('exportForm').submit();
-    };
     $scope.showOnOffStatus = {};
     $scope.showOnOffStatus.value = true;
     $scope.statusLookup = {};
@@ -95,4 +92,13 @@ module.exports = function ($scope, $controller, Product, util, Alert, $window, $
     $scope.asStatus = function (ab) {
         return $scope.statusLookup[ab];
     };
+    $scope.exportSelected = function(){
+      document.getElementById('exportForm').submit();
+    };
+
+    var fromImport = storage.get('import.success');
+    if(!_.isNil(fromImport)) {
+        storage.remove('import.success');
+        $scope.alert.success(fromImport);
+    }
 };

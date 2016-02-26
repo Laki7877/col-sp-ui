@@ -1,4 +1,4 @@
-module.exports = function($scope, NcAlert, $uibModal, BrandService, GlobalCategoryService, LocalCategoryService, FileService, Product, GlobalCategoryService, Category, AttributeSet, storage, config) {
+module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, GlobalCategoryService, LocalCategoryService, FileService, Product, GlobalCategoryService, Category, AttributeSet, storage, config) {
   'ngInject';
   //Select Global Category
   $scope.ctrl = {};
@@ -10,11 +10,11 @@ module.exports = function($scope, NcAlert, $uibModal, BrandService, GlobalCatego
   $scope.ctrl.globalCat = null;
   $scope.DownloadBtnText = {text: "Download", disabled: false};
   $scope.alert = new NcAlert();
-  $scope.isUpdate = !_.isNil(storage.get('importUpdate'));
+  $scope.isUpdate = !_.isNil(storage.get('import.update'));
   $scope.yesNoOptions = config.DROPDOWN.YES_NO_DROPDOWN;
   $scope.dataTypeOptions = config.DROPDOWN.DATA_TYPE_DROPDOWN;
 
-  storage.remove('importUpdate');
+  storage.remove('import.update');
 
   GlobalCategoryService.list().then(function(data) {
       $scope.treeSelectTree = Category.transformNestedSetToUITree(data);
@@ -22,8 +22,9 @@ module.exports = function($scope, NcAlert, $uibModal, BrandService, GlobalCatego
 
   //Get file uploader
   $scope.uploader = FileService.getUploader('/ProductStages/Import');
-  $scope.uploader.onSuccessItem = function() {
-    $scope.alert.success('Successfully saved.');
+  $scope.uploader.onSuccessItem = function(item, response) {
+    storage.put('import.success', response);
+    $window.location.href='/products';
   };
 
   $scope.uploader.onErrorItem = function(item, response, status, headers) {

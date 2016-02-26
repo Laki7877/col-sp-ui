@@ -35,7 +35,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 		name: 'Delete',
 		fn: function($nodeScope) {
 			$nodeScope.remove();
-			$scope.sync();
+			$scope.sync()
 		},
 		confirmation: {
 			title: 'Delete',

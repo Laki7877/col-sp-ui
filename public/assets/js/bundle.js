@@ -1252,6 +1252,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 			if(_.isUndefined(item)) {
 				data.nodes = [];
 				data.ProductCount = 0;
+				data.AttributeSetCount = 0;
 				$scope.categories.unshift(data);
 			} else {
 				//existing data
@@ -1678,7 +1679,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 		name: 'Delete',
 		fn: function($nodeScope) {
 			$nodeScope.remove();
-			$scope.sync();
+			$scope.sync()
 		},
 		confirmation: {
 			title: 'Delete',
@@ -2882,7 +2883,7 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
 }];
 
 },{}],32:[function(require,module,exports){
-module.exports = ["$scope", "NcAlert", "$uibModal", "BrandService", "GlobalCategoryService", "LocalCategoryService", "FileService", "Product", "GlobalCategoryService", "Category", "AttributeSet", "storage", "config", function($scope, NcAlert, $uibModal, BrandService, GlobalCategoryService, LocalCategoryService, FileService, Product, GlobalCategoryService, Category, AttributeSet, storage, config) {
+module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "GlobalCategoryService", "LocalCategoryService", "FileService", "Product", "GlobalCategoryService", "Category", "AttributeSet", "storage", "config", function($scope, $window, NcAlert, $uibModal, BrandService, GlobalCategoryService, LocalCategoryService, FileService, Product, GlobalCategoryService, Category, AttributeSet, storage, config) {
   'ngInject';
   //Select Global Category
   $scope.ctrl = {};
@@ -2894,11 +2895,11 @@ module.exports = ["$scope", "NcAlert", "$uibModal", "BrandService", "GlobalCateg
   $scope.ctrl.globalCat = null;
   $scope.DownloadBtnText = {text: "Download", disabled: false};
   $scope.alert = new NcAlert();
-  $scope.isUpdate = !_.isNil(storage.get('importUpdate'));
+  $scope.isUpdate = !_.isNil(storage.get('import.update'));
   $scope.yesNoOptions = config.DROPDOWN.YES_NO_DROPDOWN;
   $scope.dataTypeOptions = config.DROPDOWN.DATA_TYPE_DROPDOWN;
 
-  storage.remove('importUpdate');
+  storage.remove('import.update');
 
   GlobalCategoryService.list().then(function(data) {
       $scope.treeSelectTree = Category.transformNestedSetToUITree(data);
@@ -2906,8 +2907,9 @@ module.exports = ["$scope", "NcAlert", "$uibModal", "BrandService", "GlobalCateg
 
   //Get file uploader
   $scope.uploader = FileService.getUploader('/ProductStages/Import');
-  $scope.uploader.onSuccessItem = function() {
-    $scope.alert.success('Successfully saved.');
+  $scope.uploader.onSuccessItem = function(item, response) {
+    storage.put('import.success', response);
+    $window.location.href='/products';
   };
 
   $scope.uploader.onErrorItem = function(item, response, status, headers) {
@@ -3062,7 +3064,7 @@ module.exports = ["$scope", "NcAlert", "$uibModal", "BrandService", "GlobalCateg
 }];
 
 },{}],33:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "Product", "util", "Alert", "$window", "$rootScope", "config", function ($scope, $controller, Product, util, Alert, $window, $rootScope, config) {
+module.exports = ["$scope", "$controller", "Product", "util", "Alert", "$window", "$rootScope", "config", "storage", function ($scope, $controller, Product, util, Alert, $window, $rootScope, config, storage) {
     'ngInject';
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
@@ -3091,9 +3093,6 @@ module.exports = ["$scope", "$controller", "Product", "util", "Alert", "$window"
             ]
         }
     });
-    $scope.exportSelected = function(){
-      document.getElementById('exportForm').submit();
-    };
     $scope.showOnOffStatus = {};
     $scope.showOnOffStatus.value = true;
     $scope.statusLookup = {};
@@ -3159,6 +3158,15 @@ module.exports = ["$scope", "$controller", "Product", "util", "Alert", "$window"
     $scope.asStatus = function (ab) {
         return $scope.statusLookup[ab];
     };
+    $scope.exportSelected = function(){
+      document.getElementById('exportForm').submit();
+    };
+
+    var fromImport = storage.get('import.success');
+    if(!_.isNil(fromImport)) {
+        storage.remove('import.success');
+        $scope.alert.success(fromImport);
+    }
 }];
 
 },{}],34:[function(require,module,exports){
@@ -7241,7 +7249,9 @@ module.exports = ['common', function(common){
 			},
 			ShowGlobalSearchFlag: service.boolOptions[0],
 			ShowLocalSearchFlag: service.boolOptions[0],
-			VariantDataType: service.variantOptions[0]
+			VariantDataType: service.variantOptions[0],
+			IsRequired: service.boolOptions[0],
+			Filterable: service.boolOptions[0]
 		};
 	};
 	service.deserialize = function(data) {
@@ -7252,6 +7262,8 @@ module.exports = ['common', function(common){
 		processed.DataValidation = find(service.validationOptions, data.DataValidation);
 		processed.ShowLocalSearchFlag = find(service.boolOptions, data.ShowLocalSearchFlag);
 		processed.ShowGlobalSearchFlag = find(service.boolOptions, data.ShowGlobalSearchFlag);
+		processed.Filterable = find(service.boolOptions, data.Filterable);
+		processed.IsRequired = find(service.boolOptions, data.IsRequired);
 
 		switch(data.DataType) {
 			case 'ST':
@@ -7283,6 +7295,8 @@ module.exports = ['common', function(common){
 		processed.DataType = processed.DataType ? processed.DataType.value : undefined;
 		processed.ShowLocalSearchFlag = processed.ShowLocalSearchFlag ? processed.ShowLocalSearchFlag.value : undefined;
 		processed.ShowGlobalSearchFlag = processed.ShowGlobalSearchFlag ? processed.ShowGlobalSearchFlag.value : undefined;
+		processed.IsRequired = processed.IsRequired ? processed.IsRequired.value : undefined;
+		processed.Filterable = processed.Filterable ? processed.Filterable.value : undefined;
 
 		switch(processed.DataType) {
 			case 'ST':
@@ -9846,7 +9860,7 @@ module.exports = {
 },{}],140:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Fri Feb 26 2016 19:25:00 GMT+0700 (Russia TZ 6 Standard Time)
+ * Fri Feb 26 2016 20:26:57 GMT+0700 (Russia TZ 6 Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 

@@ -196,6 +196,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 			if(_.isUndefined(item)) {
 				data.nodes = [];
 				data.ProductCount = 0;
+				data.AttributeSetCount = 0;
 				$scope.categories.unshift(data);
 			} else {
 				//existing data
