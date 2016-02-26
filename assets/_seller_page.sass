@@ -70,6 +70,10 @@
 
 #dashboard_page
 
+	.dashboard_graph
+		canvas
+			max-height: 250px
+
 	.with_border
 		border: 1px solid $header-border-grey
 
@@ -106,12 +110,20 @@
 			margin-left: 15px
 
 	.group_container
-		padding-bottom: 20px
-		padding-top: 20px
+		padding-bottom: 10px
+		padding-top: 10px
 		border-bottom: solid 1px $color-grey
 
 		.price-column
 			padding-left: 50px
+
+		.row_container 
+			> div:first-child
+				display: inline-block
+
+			> div:nth-child(2)
+				float: right
+
 
 	& .no_border
 		border: none
@@ -127,12 +139,23 @@
 		padding-bottom: 5px
 		padding-top: 5px
 		border: none
+		position: relative
 
 		& div:first-child
 			padding-right: 0
 		& div:last-child
-			padding-left: 0
 			line-height: 40px
+
+		.row_container
+			> div:nth-child(2)
+				float: none
+				display: inline
+				padding-left: 10px
+
+		.column-text-ellipsis
+			padding-left: 50px
+			position: absolute
+			top: 0
 
 	.top_selling_header
 		margin-bottom: 15px
@@ -143,3 +166,9 @@
 	.group_container:last-child
 		border: none
 		padding-bottom: 0
+
+	.width_100
+		width:	100px
+
+	.width_150
+		width:	150px

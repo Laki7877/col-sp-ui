@@ -12544,46 +12544,56 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 
 /* line 201, ../../../assets/_atomic.scss */
+.display_inline_block {
+  display: inline-block;
+}
+
+/* line 205, ../../../assets/_atomic.scss */
 .font-size-12 {
   font-size: 12px;
 }
 
-/* line 205, ../../../assets/_atomic.scss */
+/* line 209, ../../../assets/_atomic.scss */
+.font-size-16 {
+  font-size: 16px;
+}
+
+/* line 213, ../../../assets/_atomic.scss */
 .font-size-18 {
   font-size: 18px;
 }
 
-/* line 209, ../../../assets/_atomic.scss */
+/* line 217, ../../../assets/_atomic.scss */
 .font-size-20, .icon-size-20 {
   font-size: 20px;
 }
 
-/* line 213, ../../../assets/_atomic.scss */
+/* line 221, ../../../assets/_atomic.scss */
 .font-size-27 {
   font-size: 27px;
 }
 
-/* line 217, ../../../assets/_atomic.scss */
+/* line 225, ../../../assets/_atomic.scss */
 .font-size-38 {
   font-size: 38px;
 }
 
-/* line 225, ../../../assets/_atomic.scss */
+/* line 233, ../../../assets/_atomic.scss */
 .margin-0 {
   margin: 0;
 }
 
-/* line 229, ../../../assets/_atomic.scss */
+/* line 237, ../../../assets/_atomic.scss */
 .font-weight-bold {
   font-weight: bold;
 }
 
-/* line 233, ../../../assets/_atomic.scss */
+/* line 241, ../../../assets/_atomic.scss */
 .opacity-1 {
   opacity: 1;
 }
 
-/* line 237, ../../../assets/_atomic.scss */
+/* line 245, ../../../assets/_atomic.scss */
 .width-100-percent {
   width: 100%;
 }
@@ -14146,99 +14156,131 @@ form h6 {
   background-color: white;
 }
 
-/* line 73, ../../../assets/_seller_page.sass */
+/* line 74, ../../../assets/_seller_page.sass */
+#dashboard_page .dashboard_graph canvas {
+  max-height: 250px;
+}
+/* line 77, ../../../assets/_seller_page.sass */
 #dashboard_page .with_border {
   border: 1px solid #bcc7d5;
 }
-/* line 76, ../../../assets/_seller_page.sass */
+/* line 80, ../../../assets/_seller_page.sass */
 #dashboard_page .column-text-ellipsis {
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 82, ../../../assets/_seller_page.sass */
+/* line 86, ../../../assets/_seller_page.sass */
 #dashboard_page .space_column {
   padding: 20px;
   margin-bottom: 30px;
   line-height: 27px;
 }
-/* line 87, ../../../assets/_seller_page.sass */
+/* line 91, ../../../assets/_seller_page.sass */
 #dashboard_page .logo-img {
   max-width: 40px;
   max-heigh: 40px;
 }
-/* line 92, ../../../assets/_seller_page.sass */
+/* line 96, ../../../assets/_seller_page.sass */
 #dashboard_page .header-link a {
   color: #32343C;
 }
-/* line 94, ../../../assets/_seller_page.sass */
+/* line 98, ../../../assets/_seller_page.sass */
 #dashboard_page .header-link {
   border-bottom: 2px solid #4891d2;
   padding-bottom: 4px;
 }
-/* line 98, ../../../assets/_seller_page.sass */
+/* line 102, ../../../assets/_seller_page.sass */
 #dashboard_page .header-link:focus {
   text-decoration: none;
 }
-/* line 101, ../../../assets/_seller_page.sass */
+/* line 105, ../../../assets/_seller_page.sass */
 #dashboard_page .header_name_space {
   padding-left: 10px;
 }
-/* line 105, ../../../assets/_seller_page.sass */
+/* line 109, ../../../assets/_seller_page.sass */
 #dashboard_page .group_span_right span {
   margin-left: 15px;
 }
-/* line 108, ../../../assets/_seller_page.sass */
+/* line 112, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container {
-  padding-bottom: 20px;
-  padding-top: 20px;
+  padding-bottom: 10px;
+  padding-top: 10px;
   border-bottom: solid 1px #BCC7D5;
 }
-/* line 113, ../../../assets/_seller_page.sass */
+/* line 117, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container .price-column {
   padding-left: 50px;
 }
-/* line 116, ../../../assets/_seller_page.sass */
+/* line 121, ../../../assets/_seller_page.sass */
+#dashboard_page .group_container .row_container > div:first-child {
+  display: inline-block;
+}
+/* line 124, ../../../assets/_seller_page.sass */
+#dashboard_page .group_container .row_container > div:nth-child(2) {
+  float: right;
+}
+/* line 128, ../../../assets/_seller_page.sass */
 #dashboard_page .no_border {
   border: none;
 }
-/* line 119, ../../../assets/_seller_page.sass */
+/* line 131, ../../../assets/_seller_page.sass */
 #dashboard_page .small_field {
   padding-bottom: 10px;
   padding-top: 10px;
 }
-/* line 123, ../../../assets/_seller_page.sass */
+/* line 135, ../../../assets/_seller_page.sass */
 #dashboard_page .small_field .row:first-child {
   padding-top: 10px;
 }
-/* line 126, ../../../assets/_seller_page.sass */
+/* line 138, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field {
   padding-bottom: 5px;
   padding-top: 5px;
   border: none;
+  position: relative;
 }
-/* line 131, ../../../assets/_seller_page.sass */
+/* line 144, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field div:first-child {
   padding-right: 0;
 }
-/* line 133, ../../../assets/_seller_page.sass */
+/* line 146, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field div:last-child {
-  padding-left: 0;
   line-height: 40px;
 }
-/* line 137, ../../../assets/_seller_page.sass */
+/* line 150, ../../../assets/_seller_page.sass */
+#dashboard_page .top_selling_field .row_container > div:nth-child(2) {
+  float: none;
+  display: inline;
+  padding-left: 10px;
+}
+/* line 155, ../../../assets/_seller_page.sass */
+#dashboard_page .top_selling_field .column-text-ellipsis {
+  padding-left: 50px;
+  position: absolute;
+  top: 0;
+}
+/* line 160, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_header {
   margin-bottom: 15px;
 }
-/* line 140, ../../../assets/_seller_page.sass */
+/* line 163, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container:first-child {
   padding-top: 0;
 }
-/* line 143, ../../../assets/_seller_page.sass */
+/* line 166, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container:last-child {
   border: none;
   padding-bottom: 0;
+}
+/* line 170, ../../../assets/_seller_page.sass */
+#dashboard_page .width_100 {
+  width: 100px;
+}
+/* line 173, ../../../assets/_seller_page.sass */
+#dashboard_page .width_150 {
+  width: 150px;
 }
 
 /* line 34, ../../../assets/screen.scss */
