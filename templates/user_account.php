@@ -15,8 +15,7 @@
             <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
             <th nc-sort="NameEn">User Name</th>
             <th nc-sort="Email">Email</th>
-            <th nc-sort="UserGroup">Role</th>
-            <th>Status</th>
+            <th>Role</th>
             <th>Action</th>
             <th nc-sort="UpdatedDt">Modified</th>
         </tr>
@@ -26,9 +25,8 @@
             <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
             <td nc-link="/accounts/{{row.UserId}}">{{row.NameEn}}</td>
             <td class="width_200">{{row.Email}}</td>
-            <td class="width_120">{{row.UserGroup[0]}}</td>
-            <td class="width_120">{{row.Status | mapDropdown:statusDropdown}}</td>
-            <td class="width_100"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
+            <td class="width_200">{{row.UserGroup[0]}}</td>
+            <td class="width_120"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
             <td class="width_100">{{row.UpdatedDt | dateTh}}</td>
           </tr>
         </tbody>
