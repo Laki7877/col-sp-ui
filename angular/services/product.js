@@ -10,7 +10,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         url: '/ProductStages/Template',
         data: {
           GlobalCategories: [globalCat],
-          AttributeSets: [aset]
+          AttributeSets: _.isNil(aset) ? [] : [aset]
         }
       };
       return common.makeRequest(req);

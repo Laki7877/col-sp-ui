@@ -30,8 +30,8 @@
 						</span>
 						<span class="float-right">
 							<button ng-click="downloadTemplate()"
-							 ng-disabled="!ctrl.attributeSet.AttributeSetId || DownloadBtnText.disabled"
-							 ng-class="{'disabled' : !ctrl.attributeSet.AttributeSetId || DownloadBtnText.disabled }"
+							 ng-disabled="ctrl.globalCat == null || DownloadBtnText.disabled"
+							 ng-class="{'disabled' : ctrl.globalCat == null || DownloadBtnText.disabled }"
 							 class="btn btn-blue btn-width-xl">
 								{{ DownloadBtnText.text || 'Download' }}</button>
 							<a id="download_template_btn" href="#" download="template.csv"></a>
@@ -211,7 +211,10 @@
 														nc-label="Accepted Value">{{ctrl.columnSearch.AcceptedValue}}</div>
 													<div nc-template="common/input/form-group-with-label"
 														nc-template-options-path="productImport/Example"
-														nc-label="Example"><span ng-bind-html="ctrl.columnSearch.Example | importGuidelineExample"></span></div>
+														nc-label="Example"><span ng-bind-html="ctrl.columnSearch.Example"></span></div>
+													<div nc-template="common/input/form-group-with-label"
+														nc-template-options-path="productImport/Note"
+														nc-label="Note">{{ctrl.columnSearch.Note}}</div>
 												</div>
 											</div>
 										</div>

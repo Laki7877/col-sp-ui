@@ -46,5 +46,9 @@ module.exports = {
 	AttributeType: {
 		inputSize: 'large',
 		inputClass: 'text-result'
+	},
+	Note: {
+		inputSize: 'large',
+		inputClass: 'text-result'
 	}
 }
