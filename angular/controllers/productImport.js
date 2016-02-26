@@ -1,4 +1,4 @@
-module.exports = function($scope, NcAlert, FileService, Product, GlobalCategoryService, Category, AttributeSet, config) {
+module.exports = function($scope, NcAlert, $uibModal, Category, GlobalCategoryService, LocalCategoryService, FileService, Product, GlobalCategoryService, Category, AttributeSet, storage, config) {
   'ngInject';
   //Select Global Category
   $scope.ctrl = {};
@@ -9,10 +9,13 @@ module.exports = function($scope, NcAlert, FileService, Product, GlobalCategoryS
   $scope.attributeSetLoading = false;
   $scope.ctrl.globalCat = null;
   $scope.DownloadBtnText = {text: "Download", disabled: false};
+  $scope.alert = new NcAlert();
+  $scope.isUpdate = !_.isNil(storage.get('importUpdate'));
+  storage.remove('importUpdate');
+
   GlobalCategoryService.list().then(function(data) {
       $scope.treeSelectTree = Category.transformNestedSetToUITree(data);
   });
-  $scope.alert = new NcAlert();
 
   //Get file uploader
   $scope.uploader = FileService.getUploader('/ProductStages/Import');
@@ -46,7 +49,7 @@ module.exports = function($scope, NcAlert, FileService, Product, GlobalCategoryS
   });
 
   //Search column head
-  $scope.ctrl.searchColumn = '';
+  $scope.ctrl.AttributeSet = [];
   $scope.TYPEAHEAD_DELAY = config.TYPEAHEAD_DELAY;
 
   //Get column head by search
@@ -57,12 +60,21 @@ module.exports = function($scope, NcAlert, FileService, Product, GlobalCategoryS
       });
   };
 
+  //Search for brand 
+
   $scope.importCSV = function() {
     var last = $scope.uploader.queue[$scope.uploader.queue.length-1];
     last.upload();
     _.forEach($scope.uploader.queue, function(i) {
       i.removeFromQueue();
     });
+  };
+
+  $scope.onSearchSelect = function() {
+    //Clear stuff
+    $scope.ctrl.BrandSearch = '';
+    $scope.ctrl.GlobalCategory = null;
+    $scope.ctrl.LocalCategory = null;
   };
 
   //Download a template
@@ -83,4 +95,73 @@ module.exports = function($scope, NcAlert, FileService, Product, GlobalCategoryS
       a.click();
     });
   };
+
+
+  //Open cat selector modal
+  $scope.openCategoryModal = function(global) {
+    var tree = [];
+    var model = [];
+    var title = '';
+
+    if(global) {
+      tree = $scope.ctrl.GlobalCategoryTree;
+      model = $scope.ctrl.GlobalCategory;
+      title = 'Global Category';
+    } else {
+      tree = $scope.ctrl.LocalCategoryTree;
+      model = $scope.ctrl.LocalCategory;
+      title = 'Local Category';
+    }
+
+    //Open modal
+    var modalInstance = $uibModal.open({
+      size: 'category-section modal-lg column-4',
+      keyboard: false,
+      templateUrl: 'product/modalCategorySelector',
+      controller: function($scope, $uibModalInstance, tree, model, title) {
+        'ngInject';
+        $scope.model = model;
+        $scope.tree = tree;
+        $scope.title = title;
+
+        $scope.select = function() {
+          $uibModalInstance.close($scope.model);
+        };
+      },
+      resolve: {
+        model: function() {
+          return model;
+        },
+        tree: function() {
+          return tree;
+        },
+        title: function() {
+          return title;
+        }
+      }
+    });
+
+    modalInstance.result.then(function(data) {
+      if(global) {
+        $scope.ctrl.GlobalCategory = data;
+        GlobalCategoryService.get(data.CategoryId)
+          .then(function(cat) {
+            $scope.ctrl.AttributeSets = cat.AttributeSets;
+          });
+      } else {
+        $scope.ctrl.LocalCategory = data;
+      }
+    });
+  };
+
+  //Load Categories
+  GlobalCategoryService.list()
+    .then(function(data) {
+      $scope.ctrl.GlobalCategoryTree = Category.transformNestedSetToUITree(data);
+    });
+
+  LocalCategoryService.list()
+    .then(function(data) {
+      $scope.ctrl.LocalCategoryTree = Category.transformNestedSetToUITree(data);
+    });
 };

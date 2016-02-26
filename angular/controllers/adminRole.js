@@ -8,7 +8,7 @@ module.exports = function($scope, $controller, AdminRoleService, config) {
 			service: AdminRoleService,
 			item: 'Role',
 			order: 'UpdatedDt',
-			id: 'RoleId'
+			id: 'GroupId'
 		}
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;

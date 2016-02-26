@@ -188,6 +188,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				item.CategoryAbbreviation = data.CategoryAbbreviation;
 				item.Visibility = data.Visibility;
 			}
+			$scope.alert.success(config.DEFAULT_SUCCESS_MESSAGE);
 		});
 	};
 
