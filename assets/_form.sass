@@ -20,11 +20,20 @@ form
 .form-control
 	border-color: $color-grey
 
+.form-control::-webkit-input-placeholder
+	color: $color-grey
+
+.form-control:placeholder-shown
+	color: $color-grey
+
 .form-control[disabled]::-webkit-input-placeholder
 	color: $color-grey
 
 .form-control[disabled]:placeholder-shown
 	color: $color-grey
+
+
+
 
 .ah-form
 	@extend .form-horizontal
