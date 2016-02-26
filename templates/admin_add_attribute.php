@@ -84,9 +84,9 @@
               <div
                 ng-template="common/input/dropdown"
                 ng-template-options="{
-                  'label' : 'Is Required'
+                  'label' : 'Required'
                 }">
-                <ui-select ng-model="formData.IsRequired" search-enabled="false" ng-disabled="formData.DataType.value == 'HB'">
+                <ui-select ng-model="formData.Required" search-enabled="false" ng-disabled="formData.DataType.value == 'HB'">
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>
                   </ui-select-match>

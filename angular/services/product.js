@@ -151,7 +151,10 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
       return common.makeRequest({
         method: 'POST',
         url: '/ProductStages/Publish',
-        data: tobj
+        data: tobj,
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8'
+        }
       });
     };
 

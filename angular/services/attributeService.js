@@ -19,7 +19,7 @@ module.exports = function(common, config) {
 			AttributeNameTh: '',
 			DisplayNameEn: '',
 			DisplayNameTh: '',
-			IsRequired: boolOptions[0],
+			Required: boolOptions[0],
 			Filterable: boolOptions[0],
 			DataValidation: validationOptions[0],
 			DataType: dataTypeOptions[0],
@@ -47,7 +47,7 @@ module.exports = function(common, config) {
 		processed.DataValidation = find(validationOptions, data.DataValidation);
 		processed.ShowLocalSearchFlag = find(boolOptions, data.ShowLocalSearchFlag);
 		processed.ShowGlobalSearchFlag = find(boolOptions, data.ShowGlobalSearchFlag);
-		processed.IsRequired = find(boolOptions, data.IsRequired) || boolOptions[0];
+		processed.Required = find(boolOptions, data.Required) || boolOptions[0];
 		processed.Filterable = find(boolOptions, data.Filterable) || boolOptions[0];
 
 		switch(data.DataType) {
@@ -78,7 +78,7 @@ module.exports = function(common, config) {
 		processed.DataType = processed.DataType ? processed.DataType.value : undefined;
 		processed.ShowLocalSearchFlag = processed.ShowLocalSearchFlag ? processed.ShowLocalSearchFlag.value : undefined;
 		processed.ShowGlobalSearchFlag = processed.ShowGlobalSearchFlag ? processed.ShowGlobalSearchFlag.value : undefined;
-		processed.IsRequired = processed.IsRequired ? processed.IsRequired.value : undefined;
+		processed.Required = processed.Required ? processed.Required.value : undefined;
 		processed.Filterable = processed.Filterable ? processed.Filterable.value : undefined;
 
 		switch(processed.DataType) {
