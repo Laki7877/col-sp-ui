@@ -180,7 +180,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 							              	'label': roles.length > 0 ? '' : 'User Role',
 							              	'labelClass': roles.length > 0 ? '' : 'required',
 							              	'link' : '/roles/add'
-							              }"><div ng-class="{ 'margin-top-5': roles.length == 0 }">Add New User Role</div>
+							              }"><div ng-class="{ 'margin-top-7': roles.length == 0 }">Add New User Role</div>
 							          </div>
 									</div>
 								</div>

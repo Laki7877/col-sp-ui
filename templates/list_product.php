@@ -49,7 +49,7 @@
                   <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
                   <th class="display-column"></th>
                   <th nc-sort="ProductNameEn">Product Name</th>
-                  <th class="price-column" nc-sort="SalePrice">Price</th>
+                  <th class="price-column" nc-sort="SalePrice">Sale Price</th>
                   <th><span>Info</span></th>
                   <th><span>Image</span></th>
                   <th class="status-column" nc-sort="Status">Status</th>
