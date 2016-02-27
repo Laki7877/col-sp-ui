@@ -4,6 +4,7 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
 	$rootScope._ = _;
 	$rootScope.Profile = storage.getCurrentUserProfile();
   $rootScope.Imposter = storage.getImposterProfile();
+  console.log($rootScope.Profile);
   if (!$rootScope.Profile && $window.location.pathname != "/login") {
     storage.put('redirect', $window.location.pathname);
     $window.location.href = "/login";

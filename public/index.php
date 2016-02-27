@@ -7,7 +7,7 @@ includeAll(__DIR__ . '/../controllers/*.php');
 //LOL?
 class Redirect {
 	public static function index($params) {
-		header('Location: /login');
+        return View::render('main');
 	}
 	public static function admin($params) {
 		header('Location: /admin/accounts');
