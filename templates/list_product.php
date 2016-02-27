@@ -69,7 +69,7 @@
                   </td>
                   <td class="column-text-ellipsis"><a href="/products/{{ row.ProductId }}">{{ row.ProductNameEn || '(Untitled Product)' }}</a></td>
                   <td class="price-column">
-                    <div>{{ row.OriginalPrice | currency: ' ' : 2 }}</div>
+                    <div>{{ row.SalePrice | currency: ' ' : 2 }}</div>
                     <div ng-if="row.VariantCount > 0">({{row.VariantCount}} variants)</div></td>
                   <td class="info-column">
                     <i ng-if="!row.InfoFlag" class="fa fa-minus color-grey icon-size-18px"></i>
