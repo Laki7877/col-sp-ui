@@ -53,13 +53,22 @@ module.exports = function($rootScope, $window, storage, Credential, route) {
 
   //new version of route magics
   $rootScope.menu = [];
+  var escape = function(s) {
+    return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+  };
   $rootScope.initMenu = function(id) {
     $rootScope.menu = route[id];
   };
   $rootScope.activeSubmenuItem = function(item) {
     var path = $window.location.pathname;
+    var url = item.url;
     if(path.startsWith(item.url) && item.url.length > 1) {
-      return 'active';
+      var check = path.replace(item.url, '');
+      if(check.length == 0 || check.charAt(0) === '/' || check.charAt(0) === '?') {
+        return 'active';
+      } else {
+        return '';
+      }
     }
 
     return '';
