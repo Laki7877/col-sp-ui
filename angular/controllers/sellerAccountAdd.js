@@ -9,6 +9,7 @@ module.exports = function($scope, $controller, SellerAccountService, SellerRoleS
 			service: SellerAccountService,
 			init: function(scope) {
 				//Get all available roles
+				scope.roles = [];
 				SellerRoleService.listAll()
 					.then(function(data) {
 						scope.roles = _.map(data, function(e) {

@@ -5,7 +5,7 @@ module.exports = function($scope, $controller, $window, InventoryService, config
 		options: {
 			url: '/inventory',
 			service: InventoryService,
-			item: 'Inventory Unit',
+			item: 'Product',
 			order: 'Pid',
 			id: 'Pid',
 			actions: [{
