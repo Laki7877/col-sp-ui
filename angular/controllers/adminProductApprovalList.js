@@ -15,7 +15,8 @@ module.exports = function($scope, $controller, Product, config, util) {
             }],
 			bulks: [
 				util.bulkTemplate('Approve', Product.approve, 'ProductId', 'Product', {
-					btnConfirm: 'Approve'
+					btnConfirm: 'Approve',
+					btnClass: 'btn-green'
 				}),
 				util.bulkTemplate('Reject', Product.reject, 'ProductId', 'Product', {
 					btnConfirm: 'Reject',
