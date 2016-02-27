@@ -12,7 +12,7 @@ module.exports = {
 	   filebrowserFlashUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
 	},
 	TYPEAHEAD_IMPORT_GUIDELINE_LIMIT: 8,
-	TYPEAHEAD_DELAY: 200,
+	TYPEAHEAD_DELAY: 150,
 	DROPDOWN: {
 		DEFAULT_STATUS_DROPDOWN: [
 			{

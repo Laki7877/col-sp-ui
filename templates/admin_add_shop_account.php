@@ -137,6 +137,27 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							</div>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="form-section">
+								<div class="form-section-header"><h2>Financial Information</h2></div>
+								<div class="form-section-content">
+				                    <div nc-template="common/input/form-group-with-label"
+				                    	nc-template-form="form.BankAccountNumber"
+				                    	nc-label="Bank Account Number"
+				                    	nc-template-options-path="adminShopAccountForm/BankAccountNumber">
+				                           <input class="form-control" name="BankAccountNumber" type="text" ng-model="formData.BankAccountNumber" required/>
+				                    </div>
+				                    <div nc-template="common/input/form-group-with-label"
+				                    	nc-template-form="form.BankAccountName" 
+				                    	nc-label="Bank Account Name"
+				                    	nc-template-options-path="adminShopAccountForm/BankAccountName">
+				                           <input class="form-control" name="BankAccountName" type="text" ng-model="formData.BankAccountName" required/>
+				                    </div>
+								</div>
+							</div>
+						</div>
+					</div>
 					<div ng-if="id == 0" class="row">
 						<div class="col-xs-12">
 							<div class="form-section">
@@ -322,11 +343,6 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-12">
-							<p class="text-align-right"><span class="color-red"><i class="fa fa-asterisk"></i></span> - Required Field</p>
 						</div>
 					</div>
 				</div>

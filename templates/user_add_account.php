@@ -152,7 +152,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 								<div class="form-section">
 									<div class="form-section-header"><h2>User Roles</h2></div>
 									<div class="form-section-content">
-										<div ng-if="roles.length > 0">
+										<div>
 								            <div ng-template="common/input/dropdown"
 								              ng-template-options="{
 								                'label' : 'User Role',

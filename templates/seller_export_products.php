@@ -47,13 +47,26 @@
 										<div class="form-section-content">
 
 											<div class="row">
-												<div nc-template="common/input/form-group-with-label"
-												nc-template-options-path="productExport/MultiCheckbox"
-												nc-label="">
-													<label>
-														<input type="checkbox" ng-click="toggleSelectAll()" ng-model="ctrl.selectAll"/> Select All
-													</label>
+												<div class="col-sm-12 export-select-all">
+													<input type="checkbox" ng-click="toggleSelectAll()" ng-model="ctrl.selectAll"/> Select All Columns
 												</div>
+												<div class="col-sm-3">
+													<ul class="export-list">
+														<li class="group-label">
+															System Information
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.ProductStatus"> Product Status
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.GroupID"> Group ID
+														</li>
+														<li><!-- NEW -->
+															<input type="checkbox" name="fieldfilter" ng-model=""> Default Variant
+														</li>
+														<li>
+															<input type="checkbox" name="fieldfilter" ng-model="fields.PID"> PID
+														</li>
 
 												<div ng-repeat="(group, items) in availableFields">
 													<div nc-template="common/input/form-group-with-label"
@@ -69,7 +82,9 @@
 
 
 
+
 											</div>
+
 
 										</div>
 									</div>

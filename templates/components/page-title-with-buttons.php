@@ -24,8 +24,8 @@ we should just make it modular by creating initializer -->
               Import <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-              <li><a href="/?p=seller_import_products">Add New Products</a></li>
-              <li><a href="/?p=seller_update_products">Update Existing Products</a></li>
+              <li><a href="/products/import">Add New Products</a></li>
+              <li><a href="/products/update">Update Existing Products</a></li>
             </ul>
           </div>
         <a href="/products/select" class="btn-blue btn btn-width-xl">

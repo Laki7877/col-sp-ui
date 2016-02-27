@@ -196,6 +196,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 			if(_.isUndefined(item)) {
 				data.nodes = [];
 				data.ProductCount = 0;
+				data.AttributeSetCount = 0;
 				$scope.categories.unshift(data);
 			} else {
 				//existing data
@@ -203,7 +204,8 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				item.CategoryId = data.CategoryId;
 				item.CategoryAbbreviation = data.CategoryAbbreviation;
 				item.Visibility = data.Visibility;
-			}
+		}
+		$scope.alert.success(config.DEFAULT_SUCCESS_MESSAGE);
 		});
 	};
 

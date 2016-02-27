@@ -35,7 +35,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 		name: 'Delete',
 		fn: function($nodeScope) {
 			$nodeScope.remove();
-			$scope.sync();
+			$scope.sync()
 		},
 		confirmation: {
 			title: 'Delete',
@@ -188,6 +188,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				item.CategoryAbbreviation = data.CategoryAbbreviation;
 				item.Visibility = data.Visibility;
 			}
+			$scope.alert.success(config.DEFAULT_SUCCESS_MESSAGE);
 		});
 	};
 

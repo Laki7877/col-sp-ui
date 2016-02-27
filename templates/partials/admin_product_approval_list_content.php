@@ -35,7 +35,7 @@
                 <div class="form-section-content margin-filter">
                     <div nc-template="common/input/form-group-with-label" nc-label="Product Status" nc-template-form="addProductForm.Keywords">
                         <div class="ah-select2-dropdown">
-                            <select ng-model="params._filter" class="form-control" ng-options="i.value as i.name for i in filterOptions track by i.value" required>
+                            <select ng-model="params._filter" class="form-control" ng-options="i.value as i.name for i in filterOptions" required>
                             </select>
                         </div>
                     </div>
@@ -69,12 +69,12 @@
                         <th></th>
                         <th nc-sort="ProductNameEn">Product Name </th>
                         <th nc-sort="Shop">Shop</th>
-                        <th nc-sort="OriginalPrice">Info.</th>
-                        <th nc-sort="Status">Img.</th>
-                        <th nc-sort="Status">Cat.</th>
-                        <th nc-sort="Status">Var.</th>
-                        <th nc-sort="Status">More.</th>
-                        <th>Status</th>
+                        <th nc-sort="InformationTabStatus">Info.</th>
+                        <th nc-sort="ImageTabStatus">Img.</th>
+                        <th nc-sort="CategoryTabStatus">Cat.</th>
+                        <th nc-sort="VariationTabStatus">Var.</th>
+                        <th nc-sort="MoreOptionTabStatus">More.</th>
+                        <th nc-sort="Status">Status</th>
                         <th>Action</th>
                         <th nc-sort="UpdatedDt" >Submitted</th>
                     </tr>
@@ -96,7 +96,7 @@
                         <td>{{row.Shop.ShopNameEn}}</td>
                         <td> <span class="{{ asStatus(row.InformationTabStatus).color }}"><i class="fa fa-circle"></i></span></td>
                         <td>
-                            <span class="{{ asStatus(row.CategoryTabStatus).color }}"><i class="fa fa-circle"></i></span>
+                            <span class="{{ asStatus(row.ImageTabStatus).color }}"><i class="fa fa-circle"></i></span>
                         </td>
                         <td> <span class="{{ asStatus(row.CategoryTabStatus).color }}"><i class="fa fa-circle"></i></span> </td>
                         <td>

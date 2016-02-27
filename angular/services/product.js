@@ -18,7 +18,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         url: '/ProductStages/Template',
         data: {
           GlobalCategories: [globalCat],
-          AttributeSets: [aset]
+          AttributeSets: _.isNil(aset) ? [] : [aset]
         }
       };
       return common.makeRequest(req);
@@ -159,7 +159,10 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
       return common.makeRequest({
         method: 'POST',
         url: '/ProductStages/Publish',
-        data: tobj
+        data: tobj,
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8'
+        }
       });
     };
 
@@ -189,6 +192,12 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
       StatusLookup[object.value] = object;
     });
     service.getStatus = function(abbreviation) {
+      if(_.isNil(abbreviation)){
+        return {
+          name: 'No Status',
+          color: 'color-grey'
+        };
+      }
       return StatusLookup[abbreviation];
     }
 

@@ -88,6 +88,7 @@ angular.module('nc')
 				onEvent: '&?ncImageDropzoneOnEvent',
 				onError: '&?ncImageDropzoneOnError',
 				onSuccess: '&?ncImageDropzoneOnSuccess',
+				isUploading: '=?isUploading',
 				template: '@ncImageTemplate'
 			},
 			link: function(scope, element) {
@@ -145,6 +146,9 @@ angular.module('nc')
 
 				scope.update();
 				scope.$watch('template', scope.update);
+				scope.$watch('uploader.isUploading', function(val) {
+					scope.isUploading = val;
+				});
 			}
 		};
 	})

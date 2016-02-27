@@ -162,15 +162,34 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     	}
     	return 'disabled';
     };
+    $scope.validate = function() {
+    	//Make sure everything is uploaded before saving
+    	var result = false;
+    	_.forEach($scope.list.data, function(item) {
+    		result = result || item.isUploading;
+    	});
+
+    	if(result) {
+    		$scope.alert.error('Please wait for every images to be uploaded before saving');
+    	}
+
+    	return !result;
+    }
     $scope.save = function() {
-		//Set dirty to false after you save
+    	$scope.alert.close();
+    	if(!$scope.validate()) {
+    		return;
+    	}
+    	$scope.saving = true;
 		Product.updateAllVariants($scope.list.data)
 			.then(function(data) {
 				$scope.dirty = false;
 				$scope.alert.success("Successfully save changes.");
-				$scope.reload();
 			}, function(err) {
 				$scope.alert.error(common.getError(err));
+			}).finally(function() {
+				$scope.saving = false;
+				$scope.reload();
 			});
 		$scope.dirty = false;
 	};
