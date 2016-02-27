@@ -622,8 +622,8 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 	var a = _.includes(['a','e','i','o','u'], _.lowerCase(options.item.charAt(0))) ? 'an' : 'a';
 	$scope.alert = new NcAlert();
 	$scope.tableOptions = {
-		emptyMessage: 'You do not have any ' + options.item,
-		searchEmptyMessage: 'No ' + options.item + ' match your search criteria'
+		emptyMessage: 'You do not have any ' + _.lowerCase(options.item),
+		searchEmptyMessage: 'No ' + _.lowerCase(options.item) + ' match your search criteria'
 	};
 
 	$scope.loading = false;
@@ -677,7 +677,7 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 		];
 	} else {
 		$scope.bulks = _.compact(_.map(options.bulks, function(item) {
-			
+
 			if(_.isFunction(item)) {
 				return item($scope);
 			}
@@ -2921,7 +2921,7 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
 }];
 
 },{}],32:[function(require,module,exports){
-module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "GlobalCategoryService", "LocalCategoryService", "FileService", "Product", "GlobalCategoryService", "Category", "AttributeSet", "storage", "config", function($scope, $window, NcAlert, $uibModal, BrandService, GlobalCategoryService, LocalCategoryService, FileService, Product, GlobalCategoryService, Category, AttributeSet, storage, config) {
+module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "GlobalCategoryService", "LocalCategoryService", "FileService", "Product", "GlobalCategoryService", "Category", "AttributeSet", "storage", "config", "$timeout", function($scope, $window, NcAlert, $uibModal, BrandService, GlobalCategoryService, LocalCategoryService, FileService, Product, GlobalCategoryService, Category, AttributeSet, storage, config, $timeout) {
   'ngInject';
   //Select Global Category
   $scope.ctrl = {};
@@ -2945,21 +2945,25 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
       keyboard: false,
       backdrop: 'static',
       templateUrl: 'product/modalImportProgress',
-      controller: ["$scope", "$uibModalInstance", "$timeout", "file", function($scope, $uibModalInstance, $timeout, file) {
+      controller: ["$scope", "$uibModalInstance", "$timeout", "file", "uploader", function($scope, $uibModalInstance, $timeout, file, uploader) {
         $scope.file = file;
         $scope.file.upload();
+        $scope.server = 0;
         $scope.$watch('file.isUploaded', function(val) {
+          $scope.server = 1;
           if(val) {
-              //Uploaded
             $timeout(function() {
               $uibModalInstance.close();
-            }, 1000);
+            }, 500);
           }
         });
       }],
       resolve: {
         file: function() {
           return $scope.importingFile;
+        },
+        uploader: function() {
+          return $scope.uploader;
         }
       }
     });
@@ -2990,7 +2994,12 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
     $scope.uploader.onSuccessItem = function(item, response) {
       $scope.importingFile = null;
       storage.put('import.success', response);
-      $window.location.href='/products';
+      $timeout(function() {
+        $window.location.href='/products';
+      },0);
+    };
+
+    $scope.uploader.onProgressAll = function(progress) {
     };
 
     //Return list of error
@@ -3262,7 +3271,7 @@ module.exports = ["$scope", "$controller", "Product", "util", "Alert", "$window"
     };
 
     var fromImport = storage.get('import.success');
-    if(!_.isNil(fromImport)) {
+    if(!_.isEmpty(fromImport)) {
         storage.remove('import.success');
         $scope.alert.success(fromImport);
     }
@@ -3597,6 +3606,7 @@ module.exports = function($scope, $controller, SellerAccountService, SellerRoleS
 			service: SellerAccountService,
 			init: function(scope) {
 				//Get all available roles
+				scope.roles = [];
 				SellerRoleService.listAll()
 					.then(function(data) {
 						scope.roles = _.map(data, function(e) {
@@ -3617,7 +3627,7 @@ module.exports = ["$scope", "$controller", "$window", "InventoryService", "confi
 		options: {
 			url: '/inventory',
 			service: InventoryService,
-			item: 'Inventory Unit',
+			item: 'Product',
 			order: 'Pid',
 			id: 'Pid',
 			actions: [{
@@ -4184,7 +4194,7 @@ module.exports = function() {
 
 			ctrl.$validators.maxnumber = function(modelValue, viewValue) {
 				var value = modelValue || viewValue;
-				if(!value.match(/^[0-9]+(\.[0-9]{0,})?$/)) {
+				if(_.isNil(value) || !value.match(/^[0-9]+(\.[0-9]{0,})?$/)) {
 					return true;
 				}
 				return (!value) || (!maxnumber) || (_.toNumber(value) <= _.toNumber(maxnumber)) || false;
@@ -4209,7 +4219,7 @@ module.exports = function() {
 
 			ctrl.$validators.minnumber = function(modelValue, viewValue) {
 				var value = modelValue || viewValue;
-				if(!value.match(/^[0-9]+(\.[0-9]{0,})?$/)) {
+				if(_.isNil(value) || !value.match(/^[0-9]+(\.[0-9]{0,})?$/)) {
 					return true;
 				}
 				return (!value) || (!minnumber) || (_.toNumber(value) >= _.toNumber(minnumber)) || false;
@@ -10299,7 +10309,7 @@ module.exports = {
 },{}],142:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Sun Feb 28 2016 00:02:06 GMT+0700 (SE Asia Standard Time)
+ * Sun Feb 28 2016 00:30:20 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -10426,7 +10436,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/link',
-    "<div class=\"form-group form-group-closer form-group-link-action\"><div class=width-label></div><div class=width-field-normal><a class=form-text ng-href={{options.link}} ng-transclude></a></div></div>"
+    "<div class=\"form-group form-group-closer form-group-link-action\"><div class=width-label><label class=control-label ng-class=options.labelClass ng-bind-html=options.label></label></div><div class=width-field-normal><a class=form-text ng-href={{options.link}} ng-transclude></a></div></div>"
   );
 
 
@@ -10598,7 +10608,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "\n" +
     "\t\t\t\t\t\t\t}\r" +
     "\n" +
-    "\t\t\t\t\t\t\t}\"><input class=form-control name=Commission ng-model=formData.Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-class=\"{ 'has-error' : isInvalid(form.Commission) }\" maxlength=20 ng-maxnumber=100 ng-minnumber=0 required></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions nc-options=\"{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }\"></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\"><span class=color-red>*</span> Changing attribute set mapping may affect products under this category</p></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=col-xs-12><p class=text-align-right><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</p></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
+    "\t\t\t\t\t\t\t}\"><input class=form-control name=Commission ng-model=formData.Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-class=\"{ 'has-error' : isInvalid(form.Commission) }\" maxlength=20 ng-maxnumber=100 ng-minnumber=0 required></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions nc-options=\"{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }\"></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\"><span class=color-red>*</span> Changing attribute set mapping may affect products under this category</p></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=col-xs-12 style=\"margin-top:-15px; margin-bottom:0px\"><p class=text-align-left><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</p></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
@@ -10680,7 +10690,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "\n" +
     "\t                         }\r" +
     "\n" +
-    "\t                      }\"><input class=form-control name=UrlKeyEn ng-model=formData.UrlKeyEn ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" ng-class=\"{ 'has-error' : isInvalid(form.UrlKeyEn) }\" maxlength=\"300\"></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=col-xs-12><p class=text-align-right><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</p></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
+    "\t                      }\"><input class=form-control name=UrlKeyEn ng-model=formData.UrlKeyEn ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" ng-class=\"{ 'has-error' : isInvalid(form.UrlKeyEn) }\" maxlength=\"300\"></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=col-xs-12 style=\"margin-top:-15px; margin-bottom:0px\"><p class=text-align-left><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</p></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
@@ -10732,7 +10742,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('product/modalImportProgress',
-    "<div class=\"modal-header no-border\"><button type=button class=close ng-click=$dismiss()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">Importing</h2><div class=progress><div class=progress-bar role=progressbar aria-valuenow=0 aria-valuemin=0 aria-valuemax=100 style=\"width: {{ file.isUploaded ? '100' : file.progress }}%\"><span class=sr-only>{{file.progress}}% Complete</span></div></div></div></div></div>"
+    "<div class=\"modal-header no-border\"><button type=button class=close ng-click=$dismiss()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">Importing</h2><div class=progress><div class=progress-bar role=progressbar aria-valuenow=0 aria-valuemin=0 aria-valuemax=100 style=\"width: {{ file.isUploaded ? '100' : file.progress }}%\"><span class=sr-only>{{file.progress}}% Complete</span></div></div><div ng-show=\"!file.isUploaded && file.progress == 100\" nc-loading-small=\"Waiting for server...\"></div></div></div></div>"
   );
 
 

@@ -118,7 +118,7 @@ module.exports = function ($scope, $controller, Product, util, Alert, $window, $
     };
 
     var fromImport = storage.get('import.success');
-    if(!_.isNil(fromImport)) {
+    if(!_.isEmpty(fromImport)) {
         storage.remove('import.success');
         $scope.alert.success(fromImport);
     }
