@@ -332,7 +332,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 													<td>{{ user.UserGroup[0] }}</td>
 													<td>{{ user.Status | mapDropdown:statusDropdown }}</td>
 													<td class="text-align-center">
-														<a class="btn btn-white btn-width-xl" ng-click="ResetPassword()">Reset</a>
+														<a class="btn btn-white btn-width-xl" ng-click="resetPassword(user)">Reset</a>
 													</td>
 													<td class="text-align-center">
 														<a class="btn btn-white btn-width-xl" ng-click="loginAs(user)">Login-As</a>

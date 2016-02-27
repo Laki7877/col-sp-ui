@@ -104,6 +104,7 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
         $scope.form = {};
         $scope.formData = {};
         $scope.saving = false;
+        $scope.oldPassword = true;
 
         $scope.save = function() {
           if($scope.form.$valid) {
