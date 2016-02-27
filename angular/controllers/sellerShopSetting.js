@@ -1,4 +1,6 @@
-module.exports = function($scope, Shop, ImageService) {
+module.exports = function($scope, Shop, ImageService, NcAlert) {
+  $scope.alert = new NcAlert();
+
   $scope.formData = {
     ShopId: null,
     ShopLogo: {},
@@ -14,8 +16,8 @@ module.exports = function($scope, Shop, ImageService) {
     YouTube: null,
     Instagram: null,
     Pinterest: null,
-    GiftWrap: null,
-    TaxInvoice: null,
+    GiftWrap: 'NotAvailable',
+    TaxInvoice: 'NotAvailable',
     StockAlert: null,
     Logo: {}
   };
@@ -46,8 +48,10 @@ module.exports = function($scope, Shop, ImageService) {
 
   $scope.save = function() {
     $scope.formData.Logo = $scope.uploadViewBag.images[0];
+    $scope.alert.close();
     Shop.saveProfile($scope.formData).then(function(data) {
       console.log(data);
+      $scope.alert.success('Saved Profile Successfully');
     });
   };
 };

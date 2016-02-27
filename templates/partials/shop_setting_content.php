@@ -106,13 +106,15 @@
 				<div class="form-section-header"><h2>More Options</h2></div>
 				<div class="form-section-content">
 					<div nc-template="common/input/form-group-with-label" nc-label="Gift Wrap" nc-template-options-path="shopSettingForm/GiftWrap">
-                            <select class="form-control" ng-init="formData.GiftWrap = 'NA'" ng-model="formData.GiftWrap">
-                                <option value='NA'>Not Available</option>
+                            <select class="form-control" ng-model="formData.GiftWrap">
+                                <option value='NotAvailable'>Not Available</option>
+																<option value='Available'>Available</option>
                             </select>
                     </div>
                     <div nc-template="common/input/form-group-with-label" nc-label="Tax Invoice" nc-template-options-path="shopSettingForm/TaxInvoice">
-                            <select class="form-control" ng-init="formData.TaxInvoice = 'NA'" ng-model="formData.TaxInvoice">
-                                <option value='NA'>Not Available</option>
+                            <select class="form-control" ng-model="formData.TaxInvoice">
+															<option value='NotAvailable'>Not Available</option>
+															<option value='Available'>Available</option>
                             </select>
                     </div>
                      <div nc-template="common/input/form-group-with-label" nc-label="Stock Alert" nc-template-options-path="shopSettingForm/StockAlert">

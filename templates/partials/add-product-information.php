@@ -190,7 +190,7 @@
                         <!-- for each attribute in attribute set -->
                         <div class="form-group" ng-repeat="amap in formData.AttributeSet.AttributeSetMaps">
                             <div class="width-label">
-                                <label class="control-label">
+                                <label class="control-label" ng-class="{'required': amap.Attribute.Required}">
                                     {{ amap.Attribute.AttributeNameEn }}
                                 </label>
                             </div>
