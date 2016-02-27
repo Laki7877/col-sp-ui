@@ -1,6 +1,6 @@
 $(document).ready(function () {
 	$('[data-toggle="btooltip"]').btooltip();
-
+/*
 	$('[data-toggle="popover"]').popover({trigger: 'manual'});
 	$(document).on('click', function(e) {
 		var $target = $(e.target);
@@ -13,7 +13,7 @@ $(document).ready(function () {
 		else {
 			$('[data-toggle="popover"]').popover('hide');
 		}
-	});
+	});*/
 
 	// Logic for add text to dropdown at Product page top filter
 	$(".dropdown-btn .dropdown-menu a").click(function() {
@@ -45,12 +45,12 @@ $(document).ready(function () {
 		var id = $this.attr('id');
 		var parent = $('[data-toggle="sub-sidebar"][data-target="#'+ id +'"');
 		parent.removeClass('active');
-	});*/
+	});*//*
 	$(".popover-gear .fa-gear").click(function(e){
       e.preventDefault();
       e.stopPropagation();
       $(this).closest('.popover-gear').find('.fa-caret-down').trigger( "click" );
-    });
+    });*/
 
 	$(".get_file").click(function(e){
       $(".my_file").trigger( "click" );

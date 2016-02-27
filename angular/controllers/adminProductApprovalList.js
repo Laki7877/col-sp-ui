@@ -11,13 +11,16 @@ module.exports = function($scope, $controller, Product, config, util) {
 			id: 'ProductId',
 			actions: [{
                 name: 'View Detail',
-                fn: function(item){
-
-                }
+                fn: function(item) { }
             }],
 			bulks: [
-				util.bulkTemplate('Approve', Product.approve, 'ProductId', 'Product'),
-				util.bulkTemplate('Reject', Product.reject, 'ProductId', 'Product')
+				util.bulkTemplate('Approve', Product.approve, 'ProductId', 'Product', {
+					btnConfirm: 'Approve'
+				}),
+				util.bulkTemplate('Reject', Product.reject, 'ProductId', 'Product', {
+					btnConfirm: 'Reject',
+					btnClass: 'btn-red'
+				})
 			],
 			filters: [
 				{ name: "All", value: 'All'},
@@ -30,8 +33,4 @@ module.exports = function($scope, $controller, Product, config, util) {
 	});
 
 	$scope.params._filter = $scope.filterOptions[4].value;
-
-	$scope.$watch('params._filter', function(val) {
-		console.log(val);
-	});
 };

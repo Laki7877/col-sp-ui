@@ -138,10 +138,13 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
         return config.DEFAULT_SUCCESS_MESSAGE + ' View <a href="' + link + '">' + itemName + ' List</a>';
     };
 
-    service.bulkTemplate = function (actionName, restFn, id, item) {
+    service.bulkTemplate = function (actionName, restFn, id, item, confirmOpts) {
         return function (scope) {
              return {
                 name: actionName,
+                fail: function() {
+                    scope.alert.error('Unable to ' + actionName.toLowerCase() + '. Please select ' + item + ' for this action.');
+                },
                 fn: function (array, cb) {
                     scope.alert.close();
 
@@ -149,12 +152,6 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
                     var array = _.map(array, function (e) {
                         return _.pick(e, [id]);
                     });
-
-                    //Blank array?
-                    if (array.length <= 0) {
-                        scope.alert.error('Unable to ' + actionName.toLowerCase() + '. Please select ' + item + ' for this action.');
-                        return;
-                    }
 
                     //On launch endpoint
                     scope.onLoad();
@@ -169,10 +166,10 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
                         })
                         .finally(scope.reload);
                 },
-                confirmation: {
+                confirmation: _.extend({
                     title: 'Confirm to ' + actionName.toLowerCase(),
                     message: 'Are you sure you want to '+ actionName.toLowerCase() + ' {{model.length}} items?'
-                }
+                }, confirmOpts || {})
             };
         };
     };
@@ -181,6 +178,9 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     service.bulkDelete = function (rest, id, item, alert, reload, onload) {
         return {
             name: 'Delete',
+            fail: function() {
+                alert.error('Unable to delete. Please select ' + item + ' for this action.');
+            },
             fn: function (array, cb) {
                 alert.close();
 
@@ -188,12 +188,6 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
                 var array = _.map(array, function (e) {
                     return _.pick(e, [id]);
                 });
-
-                //Blank array?
-                if (array.length <= 0) {
-                    alert.error('Unable to delete. Please select ' + item + ' for this action.');
-                    return;
-                }
 
                 //On launch endpoint
                 (onload || _.noop)();
@@ -211,8 +205,8 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
             confirmation: {
                 title: 'Confirm to delete',
                 message: 'Are you sure you want to delete {{model.length}} items?',
-                btnNo: 'Cancel',
-                
+                btnConfirm: 'Delete',
+                btnClass: 'btn-red'
             }
         };
     };
@@ -220,6 +214,9 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     service.bulkShow = function (rest, id, item, alert, reload) {
         return {
             name: 'Show',
+            fail: function() {
+                alert.error('Unable to change visibility. Please select ' + item + ' for this action.');
+            },
             fn: function (array, cb) {
                 alert.close();
 
@@ -229,12 +226,6 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
                     i.Visibility = true;
                     return i;
                 });
-
-                //Blank array?
-                if (array.length <= 0) {
-                    alert.error('Unable to show. Please select ' + item + ' for this action.');
-                    return;
-                }
 
                 //Delete bulk
                 rest.visible(array)
@@ -248,7 +239,8 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
             },
             confirmation: {
                 title: 'Confirm to show',
-                message: 'Are you sure you want to change visibility of {{model.length}} items?'
+                message: 'Are you sure you want to change visibility of {{model.length}} items?',
+                btnConfirm: 'Show'
             }
         };
     };
@@ -256,6 +248,9 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     service.bulkHide = function (rest, id, item, alert, reload) {
         return {
             name: 'Hide',
+            fail: function() {
+                alert.error('Unable to hide. Please select ' + item + ' for this action.');
+            },
             fn: function (array, cb) {
                 alert.close();
 
@@ -265,12 +260,6 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
                     i.Visibility = false;
                     return i;
                 });
-
-                //Blank array?
-                if (array.length <= 0) {
-                    alert.error('Unable to show. Please select ' + item + ' for this action.');
-                    return;
-                }
 
                 //Delete bulk
                 rest.visible(array)
@@ -284,7 +273,9 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
             },
             confirmation: {
                 title: 'Confirm to hide',
-                message: 'Are you sure you want to change visibility of {{model.length}} items?'
+                message: 'Are you sure you want to hide {{model.length}} items?',
+                btnConfirm: 'Hide',
+                btnClass: 'btn-red'
             }
         };
     };

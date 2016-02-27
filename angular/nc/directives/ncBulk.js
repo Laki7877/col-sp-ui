@@ -58,8 +58,8 @@ angular.module('nc')
 				};
 				scope.call = function() {
 					if(scope.select != scope.options[0]) {
-						if(scope.select.onfail && scope.model.length == 0) {
-							scope.select.onfail(scope.model);
+						if(scope.select.fail && scope.model.length == 0) {
+							scope.select.fail(scope.model);
 							return;
 						}
 						if(scope.select.confirmation) {
@@ -70,8 +70,8 @@ angular.module('nc')
 								controller: function($scope, $uibModalInstance, options, $interpolate) {
 									$scope.title = options.title;
 									$scope.message = $interpolate(options.message)(scope);
-									$scope.btnNo = options.btnNo || 'No';
-									$scope.btnYes = options.btnYes || 'Yes';
+									$scope.btnNo = options.btnNo || 'Cancel';
+									$scope.btnYes = options.btnYes || 'Confirm';
 									$scope.btnClass = options.btnClass || 'btn-blue';
 									$scope.yes = function() {
 										$uibModalInstance.close();
@@ -85,8 +85,8 @@ angular.module('nc')
 										return {
 											title: scope.select.confirmation.title,
 											message: scope.select.confirmation.message,
-											btnNo: scope.select.confirmation.btnNo,
-											btnYes: scope.select.confirmation.btnYes,
+											btnNo: scope.select.confirmation.btnCancel,
+											btnYes: scope.select.confirmation.btnConfirm,
 											btnClass: scope.select.confirmation.btnClass
 										}
 									}

@@ -32,8 +32,9 @@ module.exports = function ($scope, $controller, Product, util, Alert, $window, $
                         });
                     },
                     confirmation: {
-                        title: 'Publish',
-                        message: 'Are you sure you want to publish {{model.length}} products?'
+                        title: 'Confirm to publish',
+                        message: 'Are you sure you want to publish {{model.length}} products?',
+                        btnConfirm: 'Publish'
                     }
                 }
             ],

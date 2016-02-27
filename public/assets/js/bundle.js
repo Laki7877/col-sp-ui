@@ -667,7 +667,6 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 		$scope.bulks = _.compact(_.map(options.bulks, function(item) {
 			
 			if(_.isFunction(item)) {
-				console.log(item($scope));
 				return item($scope);
 			}
 			if(_.isString(item)) {
@@ -1372,13 +1371,16 @@ module.exports = ["$scope", "$controller", "Product", "config", "util", function
 			id: 'ProductId',
 			actions: [{
                 name: 'View Detail',
-                fn: function(item){
-
-                }
+                fn: function(item) { }
             }],
 			bulks: [
-				util.bulkTemplate('Approve', Product.approve, 'ProductId', 'Product'),
-				util.bulkTemplate('Reject', Product.reject, 'ProductId', 'Product')
+				util.bulkTemplate('Approve', Product.approve, 'ProductId', 'Product', {
+					btnConfirm: 'Approve'
+				}),
+				util.bulkTemplate('Reject', Product.reject, 'ProductId', 'Product', {
+					btnConfirm: 'Reject',
+					btnClass: 'btn-red'
+				})
 			],
 			filters: [
 				{ name: "All", value: 'All'},
@@ -1391,10 +1393,6 @@ module.exports = ["$scope", "$controller", "Product", "config", "util", function
 	});
 
 	$scope.params._filter = $scope.filterOptions[4].value;
-
-	$scope.$watch('params._filter', function(val) {
-		console.log(val);
-	});
 }];
 },{}],18:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "config", function($scope, $controller, Product, config) {
@@ -3093,8 +3091,9 @@ module.exports = ["$scope", "$controller", "Product", "util", "Alert", "$window"
                         });
                     },
                     confirmation: {
-                        title: 'Publish',
-                        message: 'Are you sure you want to publish {{model.length}} products?'
+                        title: 'Confirm to publish',
+                        message: 'Are you sure you want to publish {{model.length}} products?',
+                        btnConfirm: 'Publish'
                     }
                 }
             ],
@@ -3283,53 +3282,13 @@ module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$u
 				}
 			],
 			bulks: [
-				{
-					name: 'Approve',
-					fn: function(arr, cb) {
-						arr = _.compact(_.map(arr, function(e) {
-							var item = _.pick(e, ['Status', 'ProductReviewId']);
-							if(item.Status == 'WA') item.Status = 'AP';
-							else item = null;
-							return item;
-						}));
-						if(arr.length <= 0) return;
-						ProductReviewService.approve(arr)
-							.then(function() {
-								cb();
-							}, function(err) {
-								$scope.alert.error(common.getError(err));
-							})
-							.finally($scope.reload);
-					},
-					confirmation: {
-						title: 'Approve',
-						message: 'Are you sure you want to approve selected Reviews?'
-					}
-				},
-				{
-					name: 'Unapprove',
-					fn: function(arr, cb) {
-						arr = _.compact(_.map(arr, function(e) {
-							var item = _.pick(e, ['Status', 'ProductReviewId']);
-							if(item.Status == 'AP') item.Status = 'WA';
-							else item = null;
-							return item;
-						}));
-						if(arr.length <= 0) return;
-						ProductReviewService.approve(arr)
-							.then(function() {
-								cb();
-							}, function(err) {
-								$scope.reload();
-								$scope.alert.error(common.getError(err));
-							})
-							.finally($scope.reload);
-					},
-					confirmation: {
-						title: 'Unapprove',
-						message: 'Are you sure you want to unapprove selected Reviews?'
-					}
-				}
+				util.bulkTemplate('Approve', ProductReviewService.approve, 'ProductReviewId', 'Review', {
+					btnConfirm: 'Approve'
+				}),,
+				util.bulkTemplate('Unapprove', ProductReviewService.unapprove, 'ProductReviewId', 'Review', {
+					btnConfirm: 'Unapprove',
+					btnClass: 'btn-red'
+				})
 			]
 		}
 	});
@@ -3359,8 +3318,8 @@ module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$u
 	$scope.approve = function(item) {
 		$scope.alert.close();
 		item.Status = (item.Status == 'WA') ? 'AP' : 'WA';
-		ProductReviewService.approve([_.pick(item, ['Status', 'ProductReviewId'])])
-			.then(function() {
+		ProductReviewService.updateApprove([_.pick(item, ['Status', 'ProductReviewId'])])
+			.then(function(data) {
 
 			}, function(err) {
 				item.Status = (item.Status == 'WA') ? 'AP' : 'WA';
@@ -5199,10 +5158,13 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
         return config.DEFAULT_SUCCESS_MESSAGE + ' View <a href="' + link + '">' + itemName + ' List</a>';
     };
 
-    service.bulkTemplate = function (actionName, restFn, id, item) {
+    service.bulkTemplate = function (actionName, restFn, id, item, confirmOpts) {
         return function (scope) {
              return {
                 name: actionName,
+                fail: function() {
+                    scope.alert.error('Unable to ' + actionName.toLowerCase() + '. Please select ' + item + ' for this action.');
+                },
                 fn: function (array, cb) {
                     scope.alert.close();
 
@@ -5210,12 +5172,6 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
                     var array = _.map(array, function (e) {
                         return _.pick(e, [id]);
                     });
-
-                    //Blank array?
-                    if (array.length <= 0) {
-                        scope.alert.error('Unable to ' + actionName.toLowerCase() + '. Please select ' + item + ' for this action.');
-                        return;
-                    }
 
                     //On launch endpoint
                     scope.onLoad();
@@ -5230,10 +5186,10 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
                         })
                         .finally(scope.reload);
                 },
-                confirmation: {
+                confirmation: _.extend({
                     title: 'Confirm to ' + actionName.toLowerCase(),
                     message: 'Are you sure you want to '+ actionName.toLowerCase() + ' {{model.length}} items?'
-                }
+                }, confirmOpts || {})
             };
         };
     };
@@ -5242,6 +5198,9 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     service.bulkDelete = function (rest, id, item, alert, reload, onload) {
         return {
             name: 'Delete',
+            fail: function() {
+                alert.error('Unable to delete. Please select ' + item + ' for this action.');
+            },
             fn: function (array, cb) {
                 alert.close();
 
@@ -5249,12 +5208,6 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
                 var array = _.map(array, function (e) {
                     return _.pick(e, [id]);
                 });
-
-                //Blank array?
-                if (array.length <= 0) {
-                    alert.error('Unable to delete. Please select ' + item + ' for this action.');
-                    return;
-                }
 
                 //On launch endpoint
                 (onload || _.noop)();
@@ -5272,8 +5225,8 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
             confirmation: {
                 title: 'Confirm to delete',
                 message: 'Are you sure you want to delete {{model.length}} items?',
-                btnNo: 'Cancel',
-                
+                btnConfirm: 'Delete',
+                btnClass: 'btn-red'
             }
         };
     };
@@ -5281,6 +5234,9 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     service.bulkShow = function (rest, id, item, alert, reload) {
         return {
             name: 'Show',
+            fail: function() {
+                alert.error('Unable to change visibility. Please select ' + item + ' for this action.');
+            },
             fn: function (array, cb) {
                 alert.close();
 
@@ -5290,12 +5246,6 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
                     i.Visibility = true;
                     return i;
                 });
-
-                //Blank array?
-                if (array.length <= 0) {
-                    alert.error('Unable to show. Please select ' + item + ' for this action.');
-                    return;
-                }
 
                 //Delete bulk
                 rest.visible(array)
@@ -5309,7 +5259,8 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
             },
             confirmation: {
                 title: 'Confirm to show',
-                message: 'Are you sure you want to change visibility of {{model.length}} items?'
+                message: 'Are you sure you want to change visibility of {{model.length}} items?',
+                btnConfirm: 'Show'
             }
         };
     };
@@ -5317,6 +5268,9 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     service.bulkHide = function (rest, id, item, alert, reload) {
         return {
             name: 'Hide',
+            fail: function() {
+                alert.error('Unable to hide. Please select ' + item + ' for this action.');
+            },
             fn: function (array, cb) {
                 alert.close();
 
@@ -5326,12 +5280,6 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
                     i.Visibility = false;
                     return i;
                 });
-
-                //Blank array?
-                if (array.length <= 0) {
-                    alert.error('Unable to show. Please select ' + item + ' for this action.');
-                    return;
-                }
 
                 //Delete bulk
                 rest.visible(array)
@@ -5345,7 +5293,9 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
             },
             confirmation: {
                 title: 'Confirm to hide',
-                message: 'Are you sure you want to change visibility of {{model.length}} items?'
+                message: 'Are you sure you want to hide {{model.length}} items?',
+                btnConfirm: 'Hide',
+                btnClass: 'btn-red'
             }
         };
     };
@@ -5796,8 +5746,8 @@ angular.module('nc')
 				};
 				scope.call = function() {
 					if(scope.select != scope.options[0]) {
-						if(scope.select.onfail && scope.model.length == 0) {
-							scope.select.onfail(scope.model);
+						if(scope.select.fail && scope.model.length == 0) {
+							scope.select.fail(scope.model);
 							return;
 						}
 						if(scope.select.confirmation) {
@@ -5808,8 +5758,8 @@ angular.module('nc')
 								controller: ["$scope", "$uibModalInstance", "options", "$interpolate", function($scope, $uibModalInstance, options, $interpolate) {
 									$scope.title = options.title;
 									$scope.message = $interpolate(options.message)(scope);
-									$scope.btnNo = options.btnNo || 'No';
-									$scope.btnYes = options.btnYes || 'Yes';
+									$scope.btnNo = options.btnNo || 'Cancel';
+									$scope.btnYes = options.btnYes || 'Confirm';
 									$scope.btnClass = options.btnClass || 'btn-blue';
 									$scope.yes = function() {
 										$uibModalInstance.close();
@@ -5823,8 +5773,8 @@ angular.module('nc')
 										return {
 											title: scope.select.confirmation.title,
 											message: scope.select.confirmation.message,
-											btnNo: scope.select.confirmation.btnNo,
-											btnYes: scope.select.confirmation.btnYes,
+											btnNo: scope.select.confirmation.btnCancel,
+											btnYes: scope.select.confirmation.btnConfirm,
 											btnClass: scope.select.confirmation.btnClass
 										}
 									}
@@ -6894,7 +6844,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncBulkModal',
-    "<div class=\"modal-header no-border\"><button type=button class=close aria-label=Close ng-click=no()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">{{title}}</h2><div ng-bind-html=message></div></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn {{btnClass}}\" ng-click=no()>{{btnNo}}</button> <button class=\"btn btn-white\" ng-click=yes()>{{btnYes}}</button></div></div></div>"
+    "<div class=\"modal-header no-border\"><button type=button class=close aria-label=Close ng-click=no()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">{{title}}</h2><div ng-bind-html=message></div></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn btn-white\" ng-click=no()>{{btnNo}}</button> <button type=button class=\"btn {{btnClass}}\" ng-click=yes()>{{btnYes}}</button></div></div></div>"
   );
 
 
@@ -9648,8 +9598,30 @@ module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCat
 module.exports = ["common", "util", function(common, util) {
 	'ngInject';
 	var service = common.Rest('/ProductReviews');
-	
+	service.updateApprove = function(obj) {
+		return common.makeRequest({
+			method: 'PUT',
+			url: '/ProductReviews/Approve',
+			data: obj
+		});
+	}
 	service.approve = function(obj) {
+		obj = _.map(obj, function(e) {
+			e.Status = 'AP';
+			return e;
+		});
+		console.log(obj);
+		return common.makeRequest({
+			method: 'PUT',
+			url: '/ProductReviews/Approve',
+			data: obj
+		});
+	};	
+	service.unapprove = function(obj) {
+		obj = _.map(obj, function(e) {
+			e.Status = 'WA';
+			return e;
+		});
 		return common.makeRequest({
 			method: 'PUT',
 			url: '/ProductReviews/Approve',
@@ -10144,7 +10116,7 @@ module.exports = {
 },{}],142:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Sat Feb 27 2016 17:43:10 GMT+0700 (SE Asia Standard Time)
+ * Sat Feb 27 2016 18:08:30 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
