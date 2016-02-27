@@ -125,5 +125,10 @@
 			</div>
 		</div>
 	</div>
+  <div class="row">
+    <div class="col-xs-12">
+      <p class="text-align-right"><span class="color-red"><i class="fa fa-asterisk"></i></span> - Required Field</p>
+    </div>
+  </div>
 
 </div>

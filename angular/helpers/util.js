@@ -313,7 +313,9 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
             },
             confirmation: {
                 title: 'Delete',
-                message: 'Are you sure you want to delete selected ' + item + '?'
+                message: 'Are you sure you want to delete selected ' + item + '?',
+                btnConfirm: 'Delete',
+                btnClass: 'btn-red'
             }
         };
     };
@@ -335,7 +337,8 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
             },
             confirmation: {
                 title: 'Duplicate',
-                message: 'Are you sure you want to duplicate selected ' + item + '?'
+                message: 'Are you sure you want to duplicate selected ' + item + '?',
+                btnConfirm: 'Duplicate'
             }
         };
     };
