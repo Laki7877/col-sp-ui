@@ -184,6 +184,12 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
       StatusLookup[object.value] = object;
     });
     service.getStatus = function(abbreviation) {
+      if(_.isNil(abbreviation)){
+        return {
+          name: 'No Status',
+          color: 'color-grey'
+        };
+      }
       return StatusLookup[abbreviation];
     }
 

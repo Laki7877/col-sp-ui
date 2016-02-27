@@ -33,5 +33,5 @@ module.exports = function($scope, $controller, Product, config, util) {
 
 	$scope.$watch('params._filter', function(val) {
 		console.log(val);
-	})
+	});
 };
