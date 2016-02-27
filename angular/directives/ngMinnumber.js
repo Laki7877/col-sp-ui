@@ -14,7 +14,7 @@ module.exports = function() {
 
 			ctrl.$validators.minnumber = function(modelValue, viewValue) {
 				var value = modelValue || viewValue;
-				if(!value.match(/^[0-9]+(\.[0-9]{0,})?$/)) {
+				if(_.isNil(value) || !value.match(/^[0-9]+(\.[0-9]{0,})?$/)) {
 					return true;
 				}
 				return (!value) || (!minnumber) || (_.toNumber(value) >= _.toNumber(minnumber)) || false;

@@ -1,4 +1,4 @@
-module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, GlobalCategoryService, LocalCategoryService, FileService, Product, GlobalCategoryService, Category, AttributeSet, storage, config) {
+module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, GlobalCategoryService, LocalCategoryService, FileService, Product, GlobalCategoryService, Category, AttributeSet, storage, config, $timeout) {
   'ngInject';
   //Select Global Category
   $scope.ctrl = {};
@@ -22,21 +22,25 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
       keyboard: false,
       backdrop: 'static',
       templateUrl: 'product/modalImportProgress',
-      controller: function($scope, $uibModalInstance, $timeout, file) {
+      controller: function($scope, $uibModalInstance, $timeout, file, uploader) {
         $scope.file = file;
         $scope.file.upload();
+        $scope.server = 0;
         $scope.$watch('file.isUploaded', function(val) {
+          $scope.server = 1;
           if(val) {
-              //Uploaded
             $timeout(function() {
               $uibModalInstance.close();
-            }, 1000);
+            }, 500);
           }
         });
       },
       resolve: {
         file: function() {
           return $scope.importingFile;
+        },
+        uploader: function() {
+          return $scope.uploader;
         }
       }
     });
@@ -67,7 +71,12 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
     $scope.uploader.onSuccessItem = function(item, response) {
       $scope.importingFile = null;
       storage.put('import.success', response);
-      $window.location.href='/products';
+      $timeout(function() {
+        $window.location.href='/products';
+      },0);
+    };
+
+    $scope.uploader.onProgressAll = function(progress) {
     };
 
     //Return list of error

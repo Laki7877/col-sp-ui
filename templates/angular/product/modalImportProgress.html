@@ -10,6 +10,7 @@
 			    <span class="sr-only">{{file.progress}}% Complete</span>
 			  </div>
 			</div>
+			<div ng-show="!file.isUploaded && file.progress == 100" nc-loading-small="Waiting for server..."></div>
 		</div>
 	</div> <!-- end .row -->
 </div> <!-- end .modal-body -->
