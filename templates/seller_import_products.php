@@ -1,8 +1,7 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Import - Add New Product']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Product - Import']) ?>
 
 <?php $this->start('page-body') ?>
-	<div class="local-category-page" ng-controller="ProductImportCtrl">
-
+	<div class="local-category-page" ng-controller="ProductImportCtrl" ng-init="init(<?=$update?>)">
 		<!-- MODAL -->
 		<div class="modal fade" tabindex="-1" role="dialog" id="modal-choose-template">
 		  <div class="modal-dialog modal-category-section column-4">
@@ -42,16 +41,8 @@
 			  </div>
 			</div>
 		</div>
-
-		<!--
-		<?php $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => 'Successfully Import Products. <a class="color-black text-underline">View Product List</a>']) ?>
-		<?php $this->insert('components/alert-text', ['close' => true, 'color' => 'red', 'text' => 'Fail to import products', 'header_class' => 'font-weight-bold',
-         'text_multilines' => ['- Wrong template file or format', '- Required fields are missing', '- Products with wrong PID', '- Cannot update product that are "Wait for Apporval"', '- Products with wrong brand or category ID', '- Wrong data type', '- Alien Attack',
-        ], ]) ?>
-		-->
-
 		<nc-alert nc-model="alert"></nc-alert>
-		<?php $this->insert('components/page-title-breadcrumb-border', ['text' => 'Products/Import - Add New Products']) ?>
+		<?php $this->insert('components/page-title-breadcrumb-border', ['text' => 'Products/{{title}}']) ?>
 
 		<form class="ah-form sticky-mainform-action">
 			<div class="tab-content">

@@ -9,14 +9,8 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
   $scope.importingFile = null;
   $scope.DownloadBtnText = {text: "Download", disabled: false};
   $scope.alert = new NcAlert();
-  $scope.isUpdate = !_.isNil(storage.get('import.update'));
   $scope.yesNoOptions = config.DROPDOWN.YES_NO_DROPDOWN;
   $scope.dataTypeOptions = config.DROPDOWN.DATA_TYPE_DROPDOWN;
-
-
-  //Import update flag
-  storage.remove('import.update');
-
 
   //Import function
   $scope.import = function() {
@@ -56,25 +50,39 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
   };
 
   //Get file uploader
-  $scope.uploader = FileService.getUploader('/ProductStages/Import');
-  $scope.uploader.onSuccessItem = function(item, response) {
-    $scope.importingFile = null;
-    storage.put('import.success', response);
-    $window.location.href='/products';
-  };
+  $scope.init = function(update) {
+    //Import new
+    $scope.method = 'POST';
+    $scope.title = 'Import - Add New Products'
 
-  //Return list of error
-  $scope.uploader.onErrorItem = function(item, response, status, headers) {
-    $scope.importingFile = null;
-    response = _.map(response, function(e) {
-      return '<li>-&nbsp;&nbsp;&nbsp;' + e + '</li>';
+    //Update only
+    if(!_.isNil(update) && update) {
+      $scope.method = 'PUT';
+      $scope.title = 'Import - Update Products';
+    }
+
+    $scope.uploader = FileService.getUploader('/ProductStages/Import', {
+      method: $scope.method
     });
-    $scope.alert.error('<span class="font-weight-bold">Fail to upload CSV</span>' + '<ul>' + response.join('') + '</ul>');
-  };
+    $scope.uploader.onSuccessItem = function(item, response) {
+      $scope.importingFile = null;
+      storage.put('import.success', response);
+      $window.location.href='/products';
+    };
 
-  $scope.uploader.onAfterAddingFile = function(item) {
-    $scope.uploader.queue.unshift();
-  };
+    //Return list of error
+    $scope.uploader.onErrorItem = function(item, response, status, headers) {
+      $scope.importingFile = null;
+      response = _.map(response, function(e) {
+        return '<li>-&nbsp;&nbsp;&nbsp;' + e + '</li>';
+      });
+      $scope.alert.error('<span class="font-weight-bold">Fail to upload CSV</span>' + '<ul>' + response.join('') + '</ul>');
+    };
+
+    $scope.uploader.onAfterAddingFile = function(item) {
+      $scope.uploader.queue.unshift();
+    };
+  }
 
   //Fetch Attribute set
   var fetchAttributeSet = function(cid){
