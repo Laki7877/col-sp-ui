@@ -7,7 +7,7 @@
 				<div class="form-section-content">
 					<div nc-template="common/input/form-group-with-label" nc-label="Shop ID"
                     nc-template-options-path="shopSettingForm/ShopId">
-                           <input class="form-control" type="text" ng-model="formData.ShopId" readonly value="DE39222"/>
+                           <input class="form-control" type="text" ng-model="formData.ShopId" readonly value="DE39222" disabled/>
                     </div>
 
 										<div class="form-group">

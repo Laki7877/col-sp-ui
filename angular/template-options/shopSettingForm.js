@@ -1,9 +1,9 @@
 module.exports = {
     GiftWrap: {
-        tooltip: "Ich bin tooltip"
+        tooltip: "Please select 'Available' if you can provide gift wrapping service to your customer"
     },
     TaxInvoice: {
-        tooltip: "Ich bin tax"
+        tooltip: "Please select 'Available' if you can issue Tax Invoice to your customer"
     },
     ShopId: {},
     ShopNameEn: {
@@ -45,13 +45,13 @@ module.exports = {
         inputSize: 'large'
     },
     Pinterest: {
-        inputSize: 'large'  
+        inputSize: 'large'
     },
     Instagram: {
         inputSize: 'large'
     },
     StockAlert: {
         inputSize: 'small',
-        tooltip: "Ich bin stock alert"
+        tooltip: "Input number of stock before customer will get alerted when they visit your product page"
     }
 }
