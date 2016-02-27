@@ -68,11 +68,10 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   $rootScope.initMenu = function(id) {
     $rootScope.menu = route[id];
   };
-  $rootScope.activeSubmenuItem = function(item) {
+  var isActive = function(url) {
     var path = $window.location.pathname;
-    var url = item.url;
-    if(path.startsWith(item.url) && item.url.length > 1) {
-      var check = path.replace(item.url, '');
+    if(path.startsWith(url) && url.length > 1) {
+      var check = path.replace(url, '');
       if(check.length == 0 || check.charAt(0) === '/' || check.charAt(0) === '?') {
         if(check.charAt(0) === '/') {
           var id = check.replace('/', '');
@@ -85,6 +84,18 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
     }
 
     return '';
+  };
+  $rootScope.activeSubmenuItem = function(item) {
+    if(item.urls.length == 0) {
+      return isActive(item.url);
+    } else {
+      for (var i = 0; i < item.urls.length; i++) {
+        if(isActive(item.urls[i]).length > 0) {
+          return 'active';
+        }
+      }
+      return '';
+    }
   };
   $rootScope.activeMenuItem = function(item) {
     //Check if hover

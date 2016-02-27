@@ -24,13 +24,20 @@ function generateRouteArray(obj) {
 
 		if(!_.isEmpty(object)) {
 			_.forOwn(object, function(url, subheader) {
+
+				var urls = [];
+				if(_.isArray(url)) {
+					urls = url;
+					url = url[0];
+				}
 				var token2 = subheader.split('|');
 				var submenuItem = {
 					header: token2[0],
+					css: '',
 					url: url,
-					css: ''
+					urls: urls
 				};
-
+				
 				if(token2.length > 1) {
 					submenuItem.css += token2[1];
 				}
@@ -57,7 +64,7 @@ var seller = {
 	},
 	'Product|fa-tag': {
 	  	'View': '/products',
-	  	'Add': '/products/add',	
+	  	'Add': ['/products/select', '/products/add'],	
 	  	'Import': '/products/import',
 	  	'Export': '/products/export',
 	  	'Local Category|margin-top-30': '/categories',
