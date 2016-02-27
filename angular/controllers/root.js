@@ -20,6 +20,15 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   }, false);
 
 
+  //Get Shop activity
+  $rootScope.shopStatus = {};
+  _.forEach(config.SHOP_STATUS, function(item) {
+    $rootScope.shopStatus[item.name] = item;
+  });
+  $rootScope.asShopStatus = function(status) {
+    return _.isNil(status) ? config.SHOP_STATUS[0] : $rootScope.shopStatus[status];
+  };
+
   //Create global logout function
   $rootScope.logout = function() {
     if ($rootScope.Imposter) {
