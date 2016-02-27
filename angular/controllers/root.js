@@ -65,6 +65,10 @@ module.exports = function($rootScope, $window, storage, Credential, route) {
     if(path.startsWith(item.url) && item.url.length > 1) {
       var check = path.replace(item.url, '');
       if(check.length == 0 || check.charAt(0) === '/' || check.charAt(0) === '?') {
+        if(check.charAt(0) === '/') {
+          var id = check.replace('/', '');
+          return _.isNaN(_.parseInt(id)) ? '' : 'active';  
+        }
         return 'active';
       } else {
         return '';
