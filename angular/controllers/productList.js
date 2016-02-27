@@ -34,7 +34,8 @@ module.exports = function ($scope, $controller, Product, util, Alert, $window, $
                     confirmation: {
                         title: 'Confirm to publish',
                         message: 'Are you sure you want to publish {{model.length}} products?',
-                        btnConfirm: 'Publish'
+                        btnConfirm: 'Publish',
+                        btnClass: 'btn-green'
                     }
                 }
             ],
