@@ -250,3 +250,10 @@ ng-transclude.has-error .form-control{
 .popover {
   display: block;
 }
+
+.action-gear {
+  &:hover, &:focus, &:active, &:visited {
+    text-decoration: none;
+    outline: 0;
+  }
+}

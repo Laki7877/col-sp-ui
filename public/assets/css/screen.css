@@ -15263,3 +15263,9 @@ ng-transclude.has-error .form-control {
 .popover {
   display: block;
 }
+
+/* line 255, ../../../assets/screen.scss */
+.action-gear:hover, .action-gear:focus, .action-gear:active, .action-gear:visited {
+  text-decoration: none;
+  outline: 0;
+}

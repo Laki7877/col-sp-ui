@@ -1,6 +1,6 @@
 $(document).ready(function () {
 	$('[data-toggle="btooltip"]').btooltip();
-/*
+
 	$('[data-toggle="popover"]').popover({trigger: 'manual'});
 	$(document).on('click', function(e) {
 		var $target = $(e.target);
@@ -13,7 +13,7 @@ $(document).ready(function () {
 		else {
 			$('[data-toggle="popover"]').popover('hide');
 		}
-	});*/
+	});
 
 	// Logic for add text to dropdown at Product page top filter
 	$(".dropdown-btn .dropdown-menu a").click(function() {
