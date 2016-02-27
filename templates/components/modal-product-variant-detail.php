@@ -26,7 +26,7 @@
                             <div class="form-section-header">
                                 <h2>Vital Information</h2></div>
                             <div class="form-section-content modal-custom">
-                                
+
 
                                 <div ng-template="common/input/text2" ng-template-options="{
 									'label': 'Product Name (English)',
@@ -41,7 +41,7 @@
 									}">
                                     <input class="form-control width-field-large" name="Modal_ProductNameEn" ng-model="<?=$model?>.ProductNameEn" maxlength="300" ng-pattern="/^[^<>ก-๙]+$/" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_ProductNameEn) }" />
                                 </div>
-                                
+
                                 <div ng-template="common/input/text2" ng-template-options="{
 									'label': 'Product Name (ไทย)',
 									'labelClass': 'required',
@@ -76,19 +76,16 @@
 
                             </div>
                         </div>
-                        <? $this->insert('components/forms/form-section-upload-new-product-image', 
+                        <? $this->insert('components/forms/form-section-upload-new-product-image',
                         ["uploader" => "uploaderModal",
-                        "checkbox" => true,
                         "model" => $model,
                         "images" => $model .".Images"]) ?>
 
                             <div class="form-section">
-                                <div class="form-section-header checkbox">
-                                    <label>
-                                        <input type="checkbox" ng-model="<?= $model ?>._override.embedVideo"> Override "Embed Video"
-                                    </label>
+                                <div class="form-section-header">
+                                    Embed Video
                                 </div>
-                                <div class="form-section-content" ng-show="<?= $model ?>._override.embedVideo">
+                                <div class="form-section-content">
                                     <div ng-template="common/input/text2" ng-template-options="{
 				                        'label': 'Video Link 1',
 				                        'hint': {
@@ -147,15 +144,12 @@
                                 </div>
                             </div>
                             <div class="form-section">
-                                <div class="form-section-header checkbox">
-                                    <label>
-                                        <input type="checkbox" ng-model="<?= $model ?>._override.description"> Override "Description"
-                                    </label>
+                                <div class="form-section-header">
+                                    Description
                                 </div>
-                                <div class="form-section-content" ng-show="<?= $model ?>._override.description">
-                                       
+                                <div class="form-section-content">
 
-                                        <? $this->insert('components/forms/ckeditor-with-label', 
+                                        <? $this->insert('components/forms/ckeditor-with-label',
 								            ["label" => "Description (English)", "size" => "xxl", "label_class" => "required", "ng_model" => $model.".DescriptionFullEn"]) ?>
 
                                             <div ng-template="common/input/textarea2" ng-template-options="{
@@ -173,8 +167,8 @@
                                                 <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="Modal_DescriptionShortEn" ng-model="<?=$model?>.DescriptionShortEn" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_DescriptionShortEn) }" />
                                                 </textarea>
                                             </div>
-                                            
-                                            
+
+
                                              <? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (ไทย)", "size" => "xxl", "label_class" => "required", "ng_model" => $model.".DescriptionFullTh"]) ?>
 
                                         <div ng-template="common/input/textarea2" ng-template-options="{
@@ -196,12 +190,10 @@
                                 </div>
                             </div>
                             <div class="form-section">
-                                <div class="form-section-header checkbox">
-                                    <label>
-                                        <input type="checkbox" ng-model="<?= $model ?>._override.packageDetail"> Override "Package Detail"
-                                    </label>
+                                <div class="form-section-header">
+                                  Package Detail
                                 </div>
-                                <div class="form-section-content" ng-show="<?= $model ?>._override.packageDetail">
+                                <div class="form-section-content">
 
                                     <!-- package detail -->
                                     <div class="form-group">

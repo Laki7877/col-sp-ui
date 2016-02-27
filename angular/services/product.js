@@ -4,6 +4,14 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
     'use strict';
     var service = common.Rest('/ProductStages');
 
+    service.getExportableFields = function(){
+      var req = {
+        method: 'GET',
+        url: '/ProductStages/Guidance/Export'
+      };
+      return common.makeRequest(req);
+    }
+
     service.downloadTemplate = function(globalCat, aset) {
       var req = {
         method: 'POST',

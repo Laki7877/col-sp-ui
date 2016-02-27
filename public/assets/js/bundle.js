@@ -1993,8 +1993,9 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
           $scope.formData.Variants = [];
 
           var expand = function(A, B) {
-            var AVId = A.AttributeValue.AttributeValueId;
-            if (A['AttributeValue']) {
+            var AVId = null;
+            if (_.has(A, 'AttributeValue')) {
+              AVId = A.AttributeValue.AttributeValueId;
               A = A.AttributeValue.AttributeValueEn;
             }
 
@@ -2129,6 +2130,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
     $scope.variationFactorIndices.popSecond = function() {
       $scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop();
       $scope.dataSet.attributeOptions[1].options = [];
+      $scope.dataSet.attributeOptions[1].Attribute = null;
     }
     $scope.variationFactorIndices.pushSecond = function() {
       $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1);
@@ -2558,7 +2560,22 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
   $scope.ProductList = [];
   $scope.SELECT_ALL = false;
   $scope.sumProductAttributeSet = 0;
+  $scope.loading = [];
+  $scope.availableFields = {};
   $scope.selectAllAttributeSets = false;
+  Product.getExportableFields().then(function(data){
+      data.forEach(function(record){
+        var groupName = record.GroupName;
+        var headerName = record.HeaderName;
+        if(!_.has($scope.availableFields, groupName)){
+          $scope.availableFields[groupName] = [];
+        }
+
+        $scope.availableFields[groupName].push(record);
+        $scope.fields[record.MapName] = (record.MapName == 'PID');
+          $scope.loading.push(true);
+      });
+  });
 
   $scope.init = function(viewBag){
     var productIds = viewBag || [];
@@ -2575,6 +2592,7 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
         $scope.dataSet.attributeSets = data.map(function(m){
             m.Display = m.AttributeSetNameEn + " (" + m.ProductCount + ")";
             $scope.sumProductAttributeSet += Number(m.ProductCount);
+              $scope.loading.push(true);
             return m;
         });
         console.log(data);
@@ -2584,6 +2602,7 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
         $scope.dataSet.attributeSets = data.map(function(m){
             m.Display = m.AttributeSetNameEn + " (" + m.ProductCount.length + ")";
             $scope.sumProductAttributeSet += Number(m.ProductCount.length);
+            $scope.loading.push(true);
             return m;
         });
         console.log(data);
@@ -2617,9 +2636,16 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
       $scope.exporter.progress = 15;
       var blobs = [];
 
-      var body = angular.copy($scope.fields);
+      var body = {};
+      body.Options  = [];
       body.ProductList = $scope.ProductList;
       body.AttributeSets = $scope.ctrl.tradedAS;
+
+      Object.keys($scope.fields).forEach(function(fieldKey){
+        if($scope.fields[fieldKey] == true){
+          body.Options.push(fieldKey);
+        }
+      });
 
       if($scope.selectAllAttributeSets){
         body.AttributeSets = [];
@@ -2654,6 +2680,7 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
     Object.keys($scope.fields).forEach(function(key){
         $scope.fields[key] = $scope.ctrl.selectAll;
     });
+    $scope.fields.PID = true;
   };
 
 
@@ -2667,27 +2694,7 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
   }, true);
 
   $scope.fields = {
-    ProductStatus: false,
-    PID: true,
-    GroupID: false,
-    SKU: false,
-    ProductNameEn: false,
-    ProductNameTh: false,
-    BrandName: false,
-    GlobalCategory: false,
-    LocalCategory: false,
-    OriginalPrice: false,
-    SalePrice: false,
-    DescriptionEn: false,
-    DescriptionTh: false,
-    ShortDescriptionEn: false,
-    ShortDescriptionTh: false,
-    PreparationTime: false,
-    PackageLength: false,
-    PackageHeight: false,
-    PackageWidth: false,
-    InventoryAmount: false,
-    SafetyStockAmount: false
+    PID: true
   };
 }];
 
@@ -3647,7 +3654,9 @@ module.exports = ["$scope", "$controller", "SellerRoleService", function($scope,
 	}, true);
 }];
 },{}],42:[function(require,module,exports){
-module.exports = function($scope, Shop, ImageService) {
+module.exports = function($scope, Shop, ImageService, NcAlert) {
+  $scope.alert = new NcAlert();
+
   $scope.formData = {
     ShopId: null,
     ShopLogo: {},
@@ -3663,8 +3672,8 @@ module.exports = function($scope, Shop, ImageService) {
     YouTube: null,
     Instagram: null,
     Pinterest: null,
-    GiftWrap: null,
-    TaxInvoice: null,
+    GiftWrap: 'NotAvailable',
+    TaxInvoice: 'NotAvailable',
     StockAlert: null,
     Logo: {}
   };
@@ -3695,8 +3704,10 @@ module.exports = function($scope, Shop, ImageService) {
 
   $scope.save = function() {
     $scope.formData.Logo = $scope.uploadViewBag.images[0];
+    $scope.alert.close();
     Shop.saveProfile($scope.formData).then(function(data) {
       console.log(data);
+      $scope.alert.success('Saved Profile Successfully');
     });
   };
 };
@@ -8753,6 +8764,14 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
     'use strict';
     var service = common.Rest('/ProductStages');
 
+    service.getExportableFields = function(){
+      var req = {
+        method: 'GET',
+        url: '/ProductStages/Guidance/Export'
+      };
+      return common.makeRequest(req);
+    }
+
     service.downloadTemplate = function(globalCat, aset) {
       var req = {
         method: 'POST',
@@ -9993,7 +10012,7 @@ module.exports = {
 },{}],141:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Sat Feb 27 2016 15:11:30 GMT+0700 (SE Asia Standard Time)
+ * Sat Feb 27 2016 15:27:53 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 

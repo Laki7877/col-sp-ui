@@ -3,6 +3,7 @@
 <?php $this->start('page-body') ?>
 	<div ng-controller="SellerShopSettingCtrl" ng-init='init()'>
 			  <div ng-show="loading" nc-loading="Loading Shop Settings.."></div>
+				<nc-alert nc-model="alert"></nc-alert>
         <form class="ah-form sticky-mainform-action" name="form" ng-submit="save()" ng-show="!loading">
             <nc-page-title nc-title="Shop Profile Setting">
                 <button class="btn btn-white btn-width-xl">Live View</button>

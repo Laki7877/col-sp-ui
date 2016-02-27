@@ -97,8 +97,9 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
           $scope.formData.Variants = [];
 
           var expand = function(A, B) {
-            var AVId = A.AttributeValue.AttributeValueId;
-            if (A['AttributeValue']) {
+            var AVId = null;
+            if (_.has(A, 'AttributeValue')) {
+              AVId = A.AttributeValue.AttributeValueId;
               A = A.AttributeValue.AttributeValueEn;
             }
 
@@ -233,6 +234,7 @@ module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'ImageServic
     $scope.variationFactorIndices.popSecond = function() {
       $scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop();
       $scope.dataSet.attributeOptions[1].options = [];
+      $scope.dataSet.attributeOptions[1].Attribute = null;
     }
     $scope.variationFactorIndices.pushSecond = function() {
       $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1);
