@@ -1,4 +1,4 @@
-module.exports = function ($scope, $controller, Product, util, Alert, $window, $rootScope, config) {
+module.exports = function ($scope, $controller, Product, util, Alert, $window, $rootScope, config, storage) {
     'ngInject';
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
@@ -16,7 +16,26 @@ module.exports = function ($scope, $controller, Product, util, Alert, $window, $
             bulks: [
                 'Delete',
                 'Hide',
-                'Show'
+                'Show',
+                {
+                    name: 'Publish',
+                    fn: function(arr) {
+                        $scope.alert.close();
+                        Product.bulkPublish(_.map(arr, function(e) {
+                            return _.pick(e, ['ProductId']);
+                        })).then(function() {
+                            $scope.alert.success('Successfully published ' + arr.length + ' products')
+                        }, function(resp) {
+                            $scope.alert.error(common.getError(resp));
+                        }).finally(function() {
+                            $scope.reload();
+                        });
+                    },
+                    confirmation: {
+                        title: 'Publish',
+                        message: 'Are you sure you want to publish {{model.length}} products?'
+                    }
+                }
             ],
             filters: [
                 { name: "All", value: 'All' },
@@ -92,4 +111,13 @@ module.exports = function ($scope, $controller, Product, util, Alert, $window, $
     $scope.asStatus = function (ab) {
         return $scope.statusLookup[ab];
     };
+    $scope.exportSelected = function(){
+      document.getElementById('exportForm').submit();
+    };
+
+    var fromImport = storage.get('import.success');
+    if(!_.isNil(fromImport)) {
+        storage.remove('import.success');
+        $scope.alert.success(fromImport);
+    }
 };

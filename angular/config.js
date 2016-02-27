@@ -2,6 +2,7 @@ module.exports = {
 	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
     HANDLE_EXCEPTION: false,
+    MAX_IMAGE_UPLOAD_SIZE: 5242880,
 	CK_DEFAULT_OPTIONS: {
 	   filebrowserBrowseUrl : '/ckfinder/ckfinder.html',
 	   filebrowserImageBrowseUrl : '/ckfinder/ckfinder.html?type=Images',
@@ -10,6 +11,8 @@ module.exports = {
 	   filebrowserImageUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
 	   filebrowserFlashUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
 	},
+	TYPEAHEAD_IMPORT_GUIDELINE_LIMIT: 8,
+	TYPEAHEAD_DELAY: 150,
 	DROPDOWN: {
 		DEFAULT_STATUS_DROPDOWN: [
 			{
@@ -175,5 +178,9 @@ module.exports = {
 	TITLE: {
 		CREATE: 'Add {{content}}',
 		DETAIL: '{{content}} Detail'
+	},
+	ERROR_MESSAGE: {
+		WRONG_IMAGE_SIZE: 'Maximum file size reached. Please upload only under 5 MB per image',
+		WRONG_IMAGE_FORMAT: 'Wrong file format. Please upload only JPG or PNG file'
 	}
 };

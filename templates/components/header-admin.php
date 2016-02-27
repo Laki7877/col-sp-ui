@@ -14,7 +14,7 @@
                 </ul>
             </li>
             <li class="dropdown header-font-detail">
-                <a class="dropdown-toggle" href="">Administration System</a>
+                <a class="dropdown-toggle" href=""><strong>Administration System</strong></a>
             </li>
 
             <li class="dropdown header-font-detail" ng-if="$root.Imposter">

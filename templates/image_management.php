@@ -1,20 +1,21 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Account ']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Product - Image Management']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="ProductImageManagementCtrl">
     <nc-alert nc-model="alert"></nc-alert>
    <!-- <? $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => "Successfully save changes. However,your changes won't be online until you published your products." ]) ?>
      -->
-
     <div class="page-header with-border">
         <h1 class="float-left page-header-title">Image Management</h1>
         <span class="float-right page-header-action">
             <a class="btn btn-white btn-width-xl margin-right-10" data-toggle="modal" data-target="#image-guideline">
               <span class="">View Guideline</span>
             </a>
-            <a class="btn btn-blue  btn-width-xl " ng-click="save()">
-              <span class="">Save</span>
-            </a>
+            <button ng-click="save()" class="btn btn-blue btn-width-xl">
+              <span class="login-loading" ng-cloak ng-show="saving">
+                <i class="fa fa-spinner fa-spin" ></i>
+              </span>Save
+            </button>
         </span>
     </div>
 
@@ -22,10 +23,11 @@
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Product Name and PID'" nc-search-event="onUnsave"></nc-search>
     </div>
     <nc-filter nc-model="params._filter" nc-filter-options="filterOptions" nc-filter-event="onUnsave"></nc-filter>
-
     <div>
+      <div nc-empty="You have no product" ng-show="!isSearching() && !loading && list.data.length <= 0"></div>
+      <div nc-empty="No Search Result" ng-show="isSearching() && !loading && list.data.length <= 0"></div>
       <div ng-show="loading" nc-loading="Loading Products.."></div>
-      <form class="ah-form sticky-mainform-action" ng-show="!loading">
+      <form ng-show="!loading" class="ah-form sticky-mainform-action">
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane margin-top-20 active">
             <div id="image-management-content-page">
@@ -50,8 +52,26 @@
                           </div>
                         </div>
                         <div class="drop-zone-container {{ getContainer(product) }}">
-                          <nc-image-dropzone ng-if="product.IsVariant" nc-model="product.VariantImg" nc-image-template="{{getTemplate(product)}}" nc-image-uploader="uploader" nc-image-dropzone-options="imageDropzoneOptions" nc-image-dropzone-on-error="onError(product, $response)"></nc-image-dropzone>
-                          <nc-image-dropzone ng-if="!product.IsVariant" nc-model="product.MasterImg" nc-image-template="{{getTemplate(product)}}" nc-image-uploader="uploader" nc-image-dropzone-options="imageDropzoneOptions" nc-image-dropzone-on-error="onError(product, $response)"></nc-image-dropzone>
+                          <nc-image-dropzone 
+                            ng-if="product.IsVariant" 
+                            nc-model="product.VariantImg" 
+                            nc-image-template="{{getTemplate(product)}}" 
+                            nc-image-uploader="uploader" 
+                            nc-image-dropzone-options="imageDropzoneOptions" 
+                            nc-image-dropzone-on-error="onError(product, $response)" 
+                            nc-image-dropzone-on-event="onEvent(product, $eventName)"
+                            is-uploading="product.isUploading"
+                            ></nc-image-dropzone>
+                          <nc-image-dropzone 
+                            ng-if="!product.IsVariant" 
+                            nc-model="product.MasterImg" 
+                            nc-image-template="{{getTemplate(product)}}" 
+                            nc-image-uploader="uploader" 
+                            nc-image-dropzone-options="imageDropzoneOptions" 
+                            nc-image-dropzone-on-error="onError(product, $response)" 
+                            nc-image-dropzone-on-event="onEvent(product, $eventName)"
+                            is-uploading="product.isUploading"
+                            ></nc-image-dropzone>
                         </div>
                     </div>
                   </div>
@@ -67,7 +87,11 @@
           <div class="container-fluid">
             <div class="float-right">
               <a class="btn btn-white btn-width-xl" data-toggle="modal" data-target="#image-guideline">View Guideline</a>
-              <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+              <button ng-click="save()" class="btn btn-blue btn-width-xl">
+                <span class="login-loading" ng-cloak ng-show="saving">
+                  <i class="fa fa-spinner fa-spin" ></i>
+                </span>Save
+              </button>
             </div>
           </div>
         </div>

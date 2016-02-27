@@ -8,7 +8,7 @@ module.exports = function($scope, $controller, SellerRoleService, config) {
 			service: SellerRoleService,
 			item: 'User Role',
 			order: 'UpdatedDt',
-			id: 'RoleId'
+			id: 'GroupId'
 		}
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;

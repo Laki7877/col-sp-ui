@@ -4,18 +4,27 @@ form
 		font-size: inherit
 
 form
-	h1 
+	h1
 		font-size: $font-size-h1
-	h2 
+	h2
 		font-size: $font-size-h2
-	h3 
+	h3
 		font-size: $font-size-h3
-	h4 
+	h4
 		font-size: $font-size-h4
-	h5 
+	h5
 		font-size: $font-size-h5
-	h6 
+	h6
 		font-size: $font-size-h6
+
+.form-control
+	border-color: $color-grey
+
+.form-control::-webkit-input-placeholder
+	color: $color-grey
+
+.form-control:placeholder-shown
+	color: $color-grey
 
 .form-control[disabled]::-webkit-input-placeholder
 	color: $color-grey
@@ -35,7 +44,7 @@ form
 		margin-left: 30px
 		margin-right: 30px
 		margin-bottom: $form-group-margin-bottom
-		
+
 		&.form-group-closer
 			$close-margin-diff: 5px
 			margin-top: -$close-margin-diff
@@ -55,7 +64,7 @@ form
 			padding-left: 0
 			padding-right: 0
 			> *
-				float: right		
+				float: right
 		.width-field-small-input
 			@extend .col-xs-7
 			width: 250px
@@ -94,7 +103,7 @@ form
 		padding-top: 0
 
 	.form-group.margin-bottom-0
-		margin-bottom:	0	
+		margin-bottom:	0
 
 	.form-text
 		@extend .control-label
@@ -105,13 +114,13 @@ form
 		text-align: left
 		padding-top: 7px
 		ul
-			padding-left: 0px		
+			padding-left: 0px
 
 	.scrollable-field
 		overflow: hidden
 		.scrollable-content
 			-webkit-padding-start: 0px
-			height: 240px
+			height: 230px
 			overflow-y: auto
 			list-style: none
 			border: 1px solid #BCC7D5
@@ -181,7 +190,7 @@ form
 				padding-top: $padding-base-vertical + 1
 			&.no-label
 				padding-top: $padding-base-vertical + 1 + 19 + 5 //base + 1 + label height + label margin bottom
-			
+
 			@include make-xs-column(12, $gutter: $gutter-size)
 			width: 120px
 

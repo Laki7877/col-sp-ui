@@ -7,7 +7,6 @@ module.exports = function($scope, $controller, AdminShopService, AdminShoptypeSe
 			id: 'ShopId',
 			url: '/admin/shops',
 			item: 'Shop Account',
-			successItem: 'Admin Shop Account',
 			service: AdminShopService,
 			init: function(scope) {
 				AdminShoptypeService.listAll()	

@@ -9,6 +9,7 @@ var template = require('./template');
 
 //External dependencies
 global._ = require('lodash');
+require('angular-clipboard');
 require('angular-ui-bootstrap');
 require('angular-animate');
 require('angular-file-upload');
@@ -31,7 +32,7 @@ var filters = bulk.filters;
 
 var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.datetimepicker',
   'duScroll', 'ngSanitize', 'ngAnimate',
-  'angularFileUpload', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'
+  'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'
 ])
 
 //App config
@@ -140,6 +141,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
 .factory('Product', services.product)
   .factory('ProductReviewService', services.productReviewService)
   .factory('ImageService', services.imageService)
+  .factory('FileService', services.fileService)
   .factory('CouponService', services.coupon)
   .factory('Category', services.category)
   .factory('Shop', services.shop)
@@ -194,6 +196,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
   .filter('slice', filters.slice)
   .filter('leadingzero', filters.leadingzero)
   .filter('variantValue', filters.variantValue)
+  .filter('importGuidelineExample', filters.importGuidelineExample)
 
 //Controllers
 .controller('RootCtrl', controllers.root)

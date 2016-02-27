@@ -17,9 +17,13 @@
   }
 }
 
+.btn-default{
+  border-color: $color-grey;
+}
+
 .btn-white {
   width: $button-width-default;
-  @include button-variant($color-theme, $white, $btn-default-border);
+  @include button-variant($color-theme, $white, $color-grey);
 }
 
 .btn-blue {

@@ -4,9 +4,9 @@
 	.form-section-content {
 		display: flex;
 		margin-top: 30px - $feature-text-height;
-		margin-bottom: 30px - 15px; // -15px for image list item's margin bottom
+		margin-bottom: 0px;
 		padding-left: 15px;
-		padding-right: 30px;
+		padding-right: 15px;
 	}
 	.feature-text {
 		font-size: 12px;
@@ -14,7 +14,6 @@
 		height: $feature-text-height;
 	}
 	.content-text {
-		margin-top: $feature-text-height;
 	    width: 140px;
 	    display: block;
 	    float: left;
@@ -26,7 +25,6 @@
 	}
 
 	.drop-zone-container {
-		margin-top: $feature-text-height;
 		margin-left: 10px;
 		flex-grow: 100;
 
@@ -52,7 +50,7 @@
 	}
 
 	.image-drop-zone {
-		height: 285px - 2px; // -2px for 2-side border thick
+		height: 230px - 2px; // -2px for 2-side border thick
 	}
 
 	.image-drop-zone-text {
@@ -60,24 +58,31 @@
 	}
 
 	.alert-wrapper {
-		margin: 15px 30px 15px 15px;
+		margin: 15px 15px 15px 15px;
 	}
 
 	.featured-image-wrapper {
-		font-size: 12px;
+		display: none;
+		font-size: 11px;
 		margin-bottom: 5px;
-		margin-left:23px
+		margin-left:17px
 	}
 
 }
 
 .image-management {
+	margin-bottom: 20px;
 	.image-thumbs-actions {
-		@include image-thumbs(100px, 135px);
+		@include image-thumbs(80px, 113px);
 		.actions-wrapper{
+			padding: 4px 0px;
+			height: 28px;
 			.disabled{
 				opacity: 0.4 !important;
 				pointer-events: none;
+			}
+			.action .fa{
+				font-size: 14px;
 			}
 		}
 	}
@@ -85,7 +90,7 @@
 	.image-management-list {
 		@extend .clearfix;
 		padding: 0;
-		max-width: 575px;
+		max-width: 475px;
 		margin: 0;
 
 		.list-item {

@@ -100,8 +100,6 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     service.page404 = function () {
         $window.location.href = "/error";
     };
-
-
     service.warningOnLeave = function (fn) {
         $window.onbeforeunload = function () {
             if (!fn()) {

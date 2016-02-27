@@ -78,6 +78,7 @@ module.exports = function($scope, Attribute, util, GlobalCategoryService, Catego
 
 		GlobalCategoryService.list()
 			.then(function(data) {
+				console.log(data);
 				$scope.data = data;
 				$scope.treeSelectTree = Category.transformNestedSetToUITree(data);
 			});

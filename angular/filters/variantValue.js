@@ -3,6 +3,6 @@ module.exports = function() {
 	return function(value) {
 		return _.join(_.map(value, function(e) {
 			return e.Value; 
-		}), '/');
+		}), ' / ');
 	};
 };

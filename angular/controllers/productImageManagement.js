@@ -101,11 +101,23 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     $scope.uploader = ImageService.getUploader('/ProductImages');
     $scope.productStatus = config.PRODUCT_STATUS;
 
+    $scope.onEvent = function(product, eventName) {
+    	if(eventName == 'edit') {
+    		product.Status = $scope.productStatus[0].value;
+    	}
+    }
     $scope.onError = function(item, response) {
-    	item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + common.getError(response));
+    	if(response.name == 'sizeFilter') {
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + config.ERROR_MESSAGE.WRONG_IMAGE_SIZE);
+    	}
+    	else if(response.name == 'imageFilter') {
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + config.ERROR_MESSAGE.WRONG_IMAGE_FORMAT);
+    	} else {
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + common.getError(response));
+		}
 	};
     $scope.isDisabled = function(product) {
-    	return product.Status == 'WA' || product.Status == 'AP';
+    	return product.Status == $scope.productStatus[1].value || product.Status == $scope.productStatus[2].value;
     };
     //Prevent unsaved event
     $scope.onUnsave = function() {
@@ -122,14 +134,15 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     		images = product.MasterImg;
     	}
 
-    	switch(product.Status) {
-    		case 'WA':
-    			return 'product/dropzone/waitForApproval';
-    		break;
-    		case 'AP':
-    			return 'product/dropzone/approved';
-    		break;
+    	if($scope.productStatus[1].value == product.Status) {
+    		//Wait for approval
+    		return 'product/dropzone/waitForApproval';
     	}
+
+    	if($scope.productStatus[2].value == product.Status) {
+    		return 'product/dropzone/approved';
+    	}
+
 		if(images.length >= 10) {
 			return 'product/dropzone/reachMax';
 		} else {
@@ -144,20 +157,39 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     		images = product.MasterImg;
     	}
 
-    	if(images.length < 10 && product.Status == 'DF') {
+    	if(images.length < 10 && product.Status == $scope.productStatus[0].value) {
     		return '';
     	}
     	return 'disabled';
     };
+    $scope.validate = function() {
+    	//Make sure everything is uploaded before saving
+    	var result = false;
+    	_.forEach($scope.list.data, function(item) {
+    		result = result || item.isUploading;
+    	});
+
+    	if(result) {
+    		$scope.alert.error('Please wait for every images to be uploaded before saving');
+    	}
+
+    	return !result;
+    }
     $scope.save = function() {
-		//Set dirty to false after you save
+    	$scope.alert.close();
+    	if(!$scope.validate()) {
+    		return;
+    	}
+    	$scope.saving = true;
 		Product.updateAllVariants($scope.list.data)
 			.then(function(data) {
 				$scope.dirty = false;
 				$scope.alert.success("Successfully save changes.");
-				$scope.reload();
 			}, function(err) {
 				$scope.alert.error(common.getError(err));
+			}).finally(function() {
+				$scope.saving = false;
+				$scope.reload();
 			});
 		$scope.dirty = false;
 	};

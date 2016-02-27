@@ -85,8 +85,10 @@ angular.module('nc')
 				model: '=ncModel',
 				originalUploader: '=ncImageUploader',
 				options: '=?ncImageDropzoneOptions',
+				onEvent: '&?ncImageDropzoneOnEvent',
 				onError: '&?ncImageDropzoneOnError',
 				onSuccess: '&?ncImageDropzoneOnSuccess',
+				isUploading: '=?isUploading',
 				template: '@ncImageTemplate'
 			},
 			link: function(scope, element) {
@@ -95,7 +97,7 @@ angular.module('nc')
 				scope.options = _.defaults(scope.options, {
 					urlKey: 'url',
 					onQueueLimit: _.noop,
-					onFail: _.noop,
+					onEvent: _.noop,
 					onResponse: function(item) { return item; },
 					onUpload: function(item) {}
 				});
@@ -109,6 +111,10 @@ angular.module('nc')
 	
 				scope.upload = function() {
 					element.find('input').trigger('click');
+				};
+
+				scope.triggerEvent = function(eventName) {
+					scope.onEvent({$eventName: eventName});
 				};
 
 				//Upload
@@ -127,12 +133,9 @@ angular.module('nc')
 						item.indx = scope.model.length-1;
 					}
 				};
-				scope.uploader.onWhenAddingFileFailed = function(item) {
-					if(scope.options.onFail) {
-						scope.options.onFail(item, scope.model);
-					}
+				scope.uploader.onWhenAddingFileFailed = function(item, filter) {
+			    	scope.onError({$response : filter});
 				};
-
 			    scope.uploader.onSuccessItem = function(item, response, status, headers) {
 					scope.model[item.indx][scope.options.urlKey] = response[scope.options.urlKey];			    	
 			    };
@@ -143,6 +146,9 @@ angular.module('nc')
 
 				scope.update();
 				scope.$watch('template', scope.update);
+				scope.$watch('uploader.isUploading', function(val) {
+					scope.isUploading = val;
+				});
 			}
 		};
 	})
