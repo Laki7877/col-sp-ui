@@ -90,7 +90,7 @@
 
                         <div class="form-group">
                             <div class="width-label">
-                                <label class="control-label">Brand Name</label>
+                                <label class="control-label required">Brand Name</label>
                             </div>
                             <div class="width-field-normal">
                                 <div class="ah-select2-dropdown">
@@ -133,14 +133,14 @@
                     <div class="form-section-content">
 
                         <? $this->insert('components/forms/ckeditor-with-label',
-                            ["label" => "Description (English)", "ng_model" => "formData.MasterVariant.DescriptionFullEn", "size" => "xxl", "form_group_class" => "margin-top-40"]) ?>
+                            ["label" => "Description (English)", "ng_model" => "formData.MasterVariant.DescriptionFullEn", "size" => "xxl", "label_class" => "required"]) ?>
 
                             <div nc-template="common/input/form-group-with-label" nc-label="Short Description (English)" nc-template-options-path="addProductForm/MasterVariant_DescriptionShortEn" nc-template-form="addProductForm.MasterVariant_DescriptionShortEn">
                                 <textarea ng-pattern="/^[^<>ก-๙]+$/" class="form-control" maxlength="500" name="MasterVariant_DescriptionShortEn" ng-model="formData.MasterVariant.DescriptionShortEn" />
                                 </textarea>
                             </div>
 
-                            <? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (ไทย)", "ng_model" => "formData.MasterVariant.DescriptionFullTh", "size" => "xxl"]) ?>
+                            <? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (ไทย)", "ng_model" => "formData.MasterVariant.DescriptionFullTh", "size" => "xxl", "form_group_class" => "margin-top-40","label_class" => "required"]) ?>
 
                                 <div nc-template="common/input/form-group-with-label" nc-label="Short Description (ไทย)" nc-template-options-path="addProductForm/MasterVariant_DescriptionShortTh" nc-template-form="addProductForm.MasterVariant_DescriptionShortTh">
                                     <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="MasterVariant_DescriptionShortTh" ng-model="formData.MasterVariant.DescriptionShortTh" />

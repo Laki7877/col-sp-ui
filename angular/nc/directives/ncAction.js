@@ -35,7 +35,7 @@ angular.module('nc')
 							}
 						});
 
-						//Modal 
+						//Modal
 						modal.result.then(function() {
 							action.fn(scope.model);
 						});
