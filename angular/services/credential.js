@@ -4,15 +4,12 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 
 	var service = {};
 
-    service.changePassword = function(UserId, oldPass, newPass){
-        var deferred = $q.defer();
-        common.makeRequest({
-			type: 'GET',
-			url: '/Users/ChangePassword/'
-		}).then(function(r){
-			storage.storeCurrentUserProfile(r, true);
-			deferred.resolve(r);
-		}, deferred.reject);
+    service.changePassword = function(object){
+    	return common.makeRequest({
+    		url: '/Users/ChangePassword',
+    		method: 'PUT',
+    		data: object
+    	});
     };
 
     service.getRedirPath = function(profile){
@@ -67,7 +64,6 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
     service.logout = function(){
 		storage.clear();
 	};
-
 
 	return service;
 }];

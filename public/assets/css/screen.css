@@ -14042,17 +14042,26 @@ form h6 {
   margin-left: -15px;
   margin-right: -15px;
 }
+/* line 20, ../../../assets/_modal_custom.scss */
+.modal-custom .modal-change-password {
+  width: 505px;
+}
+/* line 22, ../../../assets/_modal_custom.scss */
+.modal-custom .modal-change-password .ah-form .form-group {
+  margin-left: -15px;
+  margin-right: -15px;
+}
 
-/* line 25, ../../../assets/_modal_custom.scss */
+/* line 32, ../../../assets/_modal_custom.scss */
 .modal .modal-content .modal-header {
   border-bottom: 0px;
   padding-bottom: 0px;
 }
-/* line 28, ../../../assets/_modal_custom.scss */
+/* line 35, ../../../assets/_modal_custom.scss */
 .modal .modal-content .modal-header h3 {
   font-size: 20px;
 }
-/* line 32, ../../../assets/_modal_custom.scss */
+/* line 39, ../../../assets/_modal_custom.scss */
 .modal .modal-content button.close > span {
   line-height: 1;
   font-size: 36px;
@@ -15043,8 +15052,9 @@ html, body {
 .login-page .btn-100 {
   width: 100%;
 }
+
 /* line 34, ../../../assets/_login.scss */
-.login-page .login-loading {
+.login-loading {
   margin-right: 5px;
 }
 
@@ -15268,4 +15278,50 @@ ng-transclude.has-error .form-control {
 .action-gear:hover, .action-gear:focus, .action-gear:active, .action-gear:visited {
   text-decoration: none;
   outline: 0;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  12.5% {
+    transform: translateX(-6px) rotateY(-5deg);
+  }
+  37.5% {
+    transform: translateX(5px) rotateY(4deg);
+  }
+  62.5% {
+    transform: translateX(-3px) rotateY(-2deg);
+  }
+  87.5% {
+    transform: translateX(2px) rotateY(1deg);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: translateX(0);
+  }
+  12.5% {
+    -webkit-transform: translateX(-6px) rotateY(-5deg);
+  }
+  37.5% {
+    -webkit-transform: translateX(5px) rotateY(4deg);
+  }
+  62.5% {
+    -webkit-transform: translateX(-3px) rotateY(-2deg);
+  }
+  87.5% {
+    -webkit-transform: translateX(2px) rotateY(1deg);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+  }
+}
+/* line 279, ../../../assets/screen.scss */
+.shake {
+  -webkit-animation: shake 400ms ease-in-out;
+  animation: shake 400ms ease-in-out;
 }

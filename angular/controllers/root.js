@@ -1,4 +1,4 @@
-module.exports = function($rootScope, $window, storage, Credential, route) {
+module.exports = function($rootScope, $uibModal, $window, storage, Credential, route, config) {
 	'ngInject';
 	//Root controller of the application
 	$rootScope._ = _;
@@ -90,5 +90,40 @@ module.exports = function($rootScope, $window, storage, Credential, route) {
       }
     }
     return '';
+  };
+
+  //Handle change password
+  $rootScope.changePassword = function() {
+    var modal = $uibModal.open({
+      size: 'change-password',
+      windowClass: 'modal-custom',
+      templateUrl: 'common/modalChangePassword',
+      controller: function($scope, $uibModalInstance, NcAlert, Credential, common) {
+        'ngInject';
+        $scope.alert = new NcAlert();
+        $scope.form = {};
+        $scope.formData = {};
+        $scope.saving = false;
+
+        $scope.save = function() {
+          if($scope.form.$valid) {
+            $scope.saving = true;
+            $scope.alert.close();
+            Credential.changePassword(_.pick($scope.formData, ['Password', 'NewPassword']))
+              .then(function() {
+                $uibModalInstance.close();
+              }, function(err) {
+                $scope.alert.error(common.getError(err));
+                $scope.formData.error = true;
+                $scope.form.$setPristine();
+              }).finally(function() {
+                $scope.saving = false;
+              })
+          } else {
+            $scope.alert.error(config.DEFAULT_ERROR_MESSAGE);
+          }
+        };
+      }
+    });
   };
 };

@@ -10,7 +10,7 @@
           <i class="fa fa-angle-down"></i>
           </a>
           <ul class="dropdown-menu">
-            <li><a href='#' data-toggle='modal' data-target='#change-password-modal'>Change Password</a></li>
+            <li><a ng-click="changePassword()">Change Password</a></li>
             <li><a href="#" ng-click="$root.logout()">Logout</a></li>
           </ul>
         </li>
