@@ -21,11 +21,37 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
   //Import function
   $scope.import = function() {
     if($scope.uploader.length == 0) return;
-
+    $scope.alert.close();
     $scope.importingFile = $scope.uploader.queue[$scope.uploader.queue.length-1];
-    $scope.importingFile.upload();
-    _.forEach($scope.uploader.queue, function(i) {
-      i.removeFromQueue();
+    var modal = $uibModal.open({
+      size: 'size-warning',
+      keyboard: false,
+      backdrop: 'static',
+      templateUrl: 'product/modalImportProgress',
+      controller: function($scope, $uibModalInstance, $timeout, file) {
+        $scope.file = file;
+        $scope.file.upload();
+        $scope.$watch('file.isUploaded', function(val) {
+          if(val) {
+              //Uploaded
+            $timeout(function() {
+              $uibModalInstance.close();
+            }, 1000);
+          }
+        });
+      },
+      resolve: {
+        file: function() {
+          return $scope.importingFile;
+        }
+      }
+    });
+    modal.result.then(function() {
+      //Successfully upload
+    }, function() {
+      //Cancel upload
+      $scope.importingFile.cancel();
+      $scope.importingFile = null;
     });
   };
 
@@ -44,6 +70,10 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
       return '<li>-&nbsp;&nbsp;&nbsp;' + e + '</li>';
     });
     $scope.alert.error('<span class="font-weight-bold">Fail to upload CSV</span>' + '<ul>' + response.join('') + '</ul>');
+  };
+
+  $scope.uploader.onAfterAddingFile = function(item) {
+    $scope.uploader.queue.unshift();
   };
 
   //Fetch Attribute set
@@ -90,7 +120,7 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
       text: "Generating..",
       disabled: true
     };
-    Product.downloadTemplate($scope.ctrl.globalCat, $scope.ctrl.attributeSet).then(function(data){
+    Product.downloadTemplate(_.pick($scope.ctrl.globalCat, ['CategoryId']), $scope.ctrl.attributeSet).then(function(data){
       $scope.DownloadBtnText = {
         text: "Download",
         disabled: false

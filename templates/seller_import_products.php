@@ -13,7 +13,7 @@
 		      </div>
 		      <div class="modal-body" style="padding-top: 15px">
 				<div class="category-section column-4">
-          			<nc-tree-select nc-model="ctrl.globalCat" nc-tree-select-tree="GlobalCategoryTree" nc-tree-select-title="Choose Global Category"></nc-tree-select>
+          			<nc-tree-select nc-model="ctrl.globalCat" nc-tree-select-tree="ctrl.GlobalCategoryTree" nc-tree-select-title="Choose Global Category"></nc-tree-select>
 					<div class="category-footer no-padding">
 						<span class="float-left">
 							<div nc-loading-small="Loading Attribute Sets.." ng-show="attributeSetLoading"></div>
