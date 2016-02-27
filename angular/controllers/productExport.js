@@ -90,7 +90,7 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
       });
 
       if($scope.selectAllAttributeSets){
-        body.AttributeSets = [];
+        body.AttributeSets = $scope.dataSet.attributeSets;
       }
 
       Product.export(body).then(function (result) {
