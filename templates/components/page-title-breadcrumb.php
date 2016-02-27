@@ -16,15 +16,15 @@ $newText = implode('<span class="ah-breadcrumb-splitter">/</span>', $extracted);
     	<a href="\"<?= $newText ?>
     </h1>
     <div class="page-actions float-right" ng-if="!_loading.state">
-  	          <button ng-show="formData.Status != 'WA'" 
+  	          <button ng-show="formData.Status != 'WA'"
               class="btn btn-white btn-width-xl" ng-click="preview()">Preview</button>
 
-              <button ng-show="formData.Status != 'WA'" 
-              class="btn btn-white btn-width-xl" 
+              <button ng-show="formData.Status != 'WA'"
+              class="btn btn-white btn-width-xl"
               type="submit"ng-click="publish('DF')">Save as Draft</button>
-              
-              <button ng-show="formData.Status != 'WA'" 
-              type="submit" class="btn btn-blue btn-width-xl" 
-              ng-click="publish('WA')">Publish</button>
+
+              <button ng-show="formData.Status != 'WA'"
+              type="submit" class="btn btn-blue btn-width-xl"
+              ng-click="prePublishWA()">Publish</button>
     </div>
 </div>

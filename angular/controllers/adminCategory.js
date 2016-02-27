@@ -1,7 +1,7 @@
 
 module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Category, GlobalCategoryService, AttributeSetService, NcAlert, util, config){
 	'ngInject';
-	
+
 	$scope.categories = [];
 	$scope.modalScope = null;
 	$scope.timerPromise = null;
@@ -96,14 +96,14 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 
 	//Load attribute sets for global cat modal selection
 	$scope.loadAttributeSets = function() {
-		AttributeSetService.listAll().then(function(data) { 
+		AttributeSetService.listAll().then(function(data) {
 			$scope.attributeSetOptions = data;
 		});
 	};
 
 	//Condition at which tradable select will lock attributeset
-	$scope.lockAttributeset = function(i) {		
-		return false;		
+	$scope.lockAttributeset = function(i) {
+		return false;
 	};
 
 	//Open category modal
@@ -148,12 +148,12 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 						} else {
 							$scope.$parent.modalScope = null;
 						}
-					} 
+					}
 				});
 				$scope.save = function() {
 					$scope.alert.close();
 					$scope.saving = true;
-					
+
 					if($scope.form.$valid) {
 						var processed = GlobalCategoryService.serialize($scope.formData);
 						if(id == 0) {

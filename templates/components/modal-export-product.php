@@ -8,7 +8,8 @@
 				<div class="row">
 					<div class="col-xs-12 margin-bottom-30">
 						<h2 class="font-size-20 text-centerx text-normal margin-bottom-20">Export Products</h2>
-						 <div>{{ productIds.length }} products will be exported</div>
+						 <div ng-if="ProductList.length > 0">{{ ProductList.length }} products will be exported</div>
+						  <div ng-if="ProductList.length == 0">All products will be exported</div>
 					</div>
 					<div class="confirmation-action no-margin">
 						<button class="btn btn-white" data-dismiss="modal">Cancel</button>
