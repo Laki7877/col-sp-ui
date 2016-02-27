@@ -90,7 +90,7 @@
 														Template Guideline
 													</label>
 												</div>
-												<div class="width-field-normal ">
+												<div class="width-field-normal">
 													<label class="control-label ">
 														Nike <a href="#" class="margin-left-10">Copy to Clipboard</a>
 													</label>
