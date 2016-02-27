@@ -29,6 +29,9 @@
       <div ng-show="loading" nc-loading="Loading Products.."></div>
       <form ng-show="!loading" class="ah-form sticky-mainform-action">
         <div class="tab-content">
+          <div class="page-navigation margin-bottom-15">
+             <nc-pagination nc-model="params" nc-pagination-total="list.total" nc-pagination-event="onUnsave" nc-pagination-sizes="paginationSize"></nc-pagination>
+          </div>
           <div role="tabpanel" class="tab-pane margin-top-20 active">
             <div id="image-management-content-page">
               <div class="row" ng-repeat="product in list.data">
