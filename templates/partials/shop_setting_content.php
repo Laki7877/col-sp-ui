@@ -94,8 +94,6 @@
                     nc-template-options-path="shopSettingForm/Pinterest">
                            <input class="form-control" type="text" ng-model="formData.Pinterest"/>
                     </div>
-
-
 				</div>
 			</div>
 		</div>
@@ -130,5 +128,4 @@
       <p class="text-align-right"><span class="color-red"><i class="fa fa-asterisk"></i></span> - Required Field</p>
     </div>
   </div>
-
 </div>
