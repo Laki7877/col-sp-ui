@@ -29,4 +29,4 @@ module.exports = ['$scope', 'NcAlert', 'Credential', '$window', 'storage', funct
       $scope.loading = false
     })
   }
-}]
+}];
