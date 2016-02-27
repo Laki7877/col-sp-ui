@@ -21,6 +21,7 @@
 
     <div class="row search-section-wrapper">
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Product Name and PID'" nc-search-event="onUnsave"></nc-search>
+      <nc-pagination class="margin-top-10 float-right" nc-model="params" nc-pagination-total="list.total" nc-pagination-event="onUnsave" nc-pagination-sizes="paginationSize"></nc-pagination>
     </div>
     <nc-filter nc-model="params._filter" nc-filter-options="filterOptions" nc-filter-event="onUnsave"></nc-filter>
     <div>
@@ -29,9 +30,6 @@
       <div ng-show="loading" nc-loading="Loading Products.."></div>
       <form ng-show="!loading" class="ah-form sticky-mainform-action">
         <div class="tab-content">
-          <div class="page-navigation margin-bottom-15">
-             <nc-pagination nc-model="params" nc-pagination-total="list.total" nc-pagination-event="onUnsave" nc-pagination-sizes="paginationSize"></nc-pagination>
-          </div>
           <div role="tabpanel" class="tab-pane margin-top-20 active">
             <div id="image-management-content-page">
               <div class="row" ng-repeat="product in list.data">

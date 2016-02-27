@@ -2,37 +2,50 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
   'ngInject';
   //Select Global Category
   $scope.ctrl = {};
+  $scope.ctrl.globalCat = null;
   $scope.dataSet = {};
   $scope.dataSet.attributeSets = [];
-  $scope.treeSelectTree = [];
-  $scope.treeSelectModel = null;
   $scope.attributeSetLoading = false;
-  $scope.ctrl.globalCat = null;
+  $scope.importingFile = null;
   $scope.DownloadBtnText = {text: "Download", disabled: false};
   $scope.alert = new NcAlert();
   $scope.isUpdate = !_.isNil(storage.get('import.update'));
   $scope.yesNoOptions = config.DROPDOWN.YES_NO_DROPDOWN;
   $scope.dataTypeOptions = config.DROPDOWN.DATA_TYPE_DROPDOWN;
 
+
+  //Import update flag
   storage.remove('import.update');
 
-  GlobalCategoryService.list().then(function(data) {
-      $scope.treeSelectTree = Category.transformNestedSetToUITree(data);
-  });
+
+  //Import function
+  $scope.import = function() {
+    if($scope.uploader.length == 0) return;
+
+    $scope.importingFile = $scope.uploader.queue[$scope.uploader.queue.length-1];
+    $scope.importingFile.upload();
+    _.forEach($scope.uploader.queue, function(i) {
+      i.removeFromQueue();
+    });
+  };
 
   //Get file uploader
   $scope.uploader = FileService.getUploader('/ProductStages/Import');
   $scope.uploader.onSuccessItem = function(item, response) {
+    $scope.importingFile = null;
     storage.put('import.success', response);
     $window.location.href='/products';
   };
 
+  //Return list of error
   $scope.uploader.onErrorItem = function(item, response, status, headers) {
+    $scope.importingFile = null;
     response = _.map(response, function(e) {
       return '<li>-&nbsp;&nbsp;&nbsp;' + e + '</li>';
     });
     $scope.alert.error('<span class="font-weight-bold">Fail to upload CSV</span>' + '<ul>' + response.join('') + '</ul>');
   };
+
   //Fetch Attribute set
   var fetchAttributeSet = function(cid){
     $scope.attributeSetLoading = true;
@@ -62,16 +75,6 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
       .then(function(response) {
         return response;
       });
-  };
-
-  //Search for brand
-
-  $scope.importCSV = function() {
-    var last = $scope.uploader.queue[$scope.uploader.queue.length-1];
-    last.upload();
-    _.forEach($scope.uploader.queue, function(i) {
-      i.removeFromQueue();
-    });
   };
 
   $scope.onSearchSelect = function() {
@@ -150,7 +153,6 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
         $scope.ctrl.GlobalCategory = data;
         GlobalCategoryService.get(data.CategoryId)
           .then(function(cat) {
-            console.log(cat);
             $scope.ctrl.AttributeSets = cat.AttributeSets;
           });
       } else {

@@ -13,7 +13,7 @@
 		      </div>
 		      <div class="modal-body" style="padding-top: 15px">
 				<div class="category-section column-4">
-          			<nc-tree-select nc-model="ctrl.globalCat" nc-tree-select-tree="treeSelectTree" nc-tree-select-title="Choose Global Category"></nc-tree-select>
+          			<nc-tree-select nc-model="ctrl.globalCat" nc-tree-select-tree="GlobalCategoryTree" nc-tree-select-title="Choose Global Category"></nc-tree-select>
 					<div class="category-footer no-padding">
 						<span class="float-left">
 							<div nc-loading-small="Loading Attribute Sets.." ng-show="attributeSetLoading"></div>
@@ -110,19 +110,12 @@
 														placeholder="Search for Brand Name"
 														/>
 												</div>
-<<<<<<< HEAD
-												<div class="width-field-normal">
-													<label class="control-label ">
-														Nike <a href="#" class="margin-left-10">Copy to Clipboard</a>
-													</label>
-=======
 												<div nc-template="common/input/form-group-with-label"
 													nc-template-options-path="productImport/BrandValue"
 													nc-label="">
 													<ul class="scrollable-content">
 														<li ng-repeat="brand in ctrl.Brands | filter: ctrl.BrandSearch track by $index">{{brand}}</li>
 													</ul>
->>>>>>> 3a4168c4fd9fa547ef33eb161157049ba74148c5
 												</div>
 											</div>
 											<div ng-switch-when="Global Category ID">
@@ -243,7 +236,7 @@
 											<input nv-file-select uploader="uploader" accept=".csv" type="file" class="my_file"/>
 										</div>
 										<div nc-template="common/input/form-group-with-label" nc-label="">
-											<button ng-click="importCSV()" class="button-size-normal btn btn-blue btn-width-xl" ng-disabled="uploader.queue.length == 0" type="button">Import</button>
+											<button ng-click="import()" class="button-size-normal btn btn-blue btn-width-xl" ng-disabled="uploader.queue.length == 0" type="button">Import</button>
 										</div>
 									</div>
 								</div>
