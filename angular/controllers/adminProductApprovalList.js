@@ -29,6 +29,9 @@ module.exports = function($scope, $controller, Product, config, util) {
 		}
 	});
 
-	$scope.params._filter = $scope.filterOptions[4];
+	$scope.params._filter = $scope.filterOptions[4].value;
 
-}
+	$scope.$watch('params._filter', function(val) {
+		console.log(val);
+	})
+};

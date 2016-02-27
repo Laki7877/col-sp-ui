@@ -3,7 +3,8 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 	var a = _.includes(['a','e','i','o','u'], _.lowerCase(options.item.charAt(0))) ? 'an' : 'a';
 	$scope.alert = new NcAlert();
 	$scope.tableOptions = {
-		emptyMessage: 'You do not have ' + a + ' ' + options.item
+		emptyMessage: 'You do not have any ' + options.item,
+		searchEmptyMessage: 'No ' + options.item + ' match your search criteria'
 	};
 
 	$scope.loading = false;

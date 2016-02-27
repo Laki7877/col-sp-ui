@@ -35,7 +35,7 @@
                 <div class="form-section-content margin-filter">
                     <div nc-template="common/input/form-group-with-label" nc-label="Product Status" nc-template-form="addProductForm.Keywords">
                         <div class="ah-select2-dropdown">
-                            <select ng-model="params._filter" class="form-control" ng-options="i.value as i.name for i in filterOptions track by i.value" required>
+                            <select ng-model="params._filter" class="form-control" ng-options="i.value as i.name for i in filterOptions" required>
                             </select>
                         </div>
                     </div>
