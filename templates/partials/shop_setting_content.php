@@ -44,7 +44,7 @@
 
                     <div nc-template="common/input/form-group-with-label" nc-label="Shop Address"
                     nc-template-options-path="shopSettingForm/ShopAddress">
-                           <input class="form-control" type="text" ng-model="formData.ShopAddress"/>
+                           <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopAddress"/></textarea>
                     </div>
 
 				</div>
