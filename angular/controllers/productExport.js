@@ -78,9 +78,16 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
       $scope.exporter.progress = 15;
       var blobs = [];
 
-      var body = angular.copy($scope.fields);
+      var body = {};
+      body.Options  = [];
       body.ProductList = $scope.ProductList;
       body.AttributeSets = $scope.ctrl.tradedAS;
+
+      Object.keys($scope.fields).forEach(function(fieldKey){
+        if($scope.fields[fieldKey] == true){
+          body.Options.push(fieldKey);
+        }
+      });
 
       if($scope.selectAllAttributeSets){
         body.AttributeSets = [];
