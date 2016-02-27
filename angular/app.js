@@ -125,6 +125,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
 
 //Controllers
 .controller('RootCtrl', controllers.root)
+.controller('IndexCtrl', controllers.index)
   .controller('ProductListCtrl', controllers.productList)
   .controller('ProductAddCtrl', controllers.productAdd)
   .controller('ProductImageManagementCtrl', controllers.productImageManagement)
