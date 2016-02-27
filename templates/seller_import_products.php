@@ -14,19 +14,7 @@
 				<div class="category-section column-4">
           			<nc-tree-select nc-model="ctrl.globalCat" nc-tree-select-tree="ctrl.GlobalCategoryTree" nc-tree-select-title="Choose Global Category"></nc-tree-select>
 					<div class="category-footer no-padding">
-						<span class="float-left">
-							<div nc-loading-small="Loading Attribute Sets.." ng-show="attributeSetLoading"></div>
-							<div ng-show="!attributeSetLoading">
-								<div ng-show="dataSet.attributeSets.length > 0">
-									<select class="form-control" 
-									ng-options="item as item.AttributeSetNameEn for item in dataSet.attributeSets track by item.AttributeSetId"
-									ng-model="ctrl.attributeSet">
-										<option value="" disabled selected style="display: none;">- Choose an Attribute Set -</option>
-									</select>
-								</div>
-								<div ng-show="dataSet.attributeSets.length == 0">There are no Attribute Sets under this category</div>
-							</div>
-						</span>
+
 						<span class="float-right">
 							<button ng-click="downloadTemplate()"
 							 ng-disabled="ctrl.globalCat == null || DownloadBtnText.disabled"
@@ -35,6 +23,21 @@
 								{{ DownloadBtnText.text || 'Download' }}</button>
 							<a id="download_template_btn" href="#" download="template.csv"></a>
 						</span>
+
+						<span class="float-right margin-right-20">
+							<div nc-loading-small="Loading Attribute Sets.." ng-show="attributeSetLoading"></div>
+							<div ng-show="!attributeSetLoading">
+								<div ng-show="dataSet.attributeSets.length > 0">
+									<select class="form-control"
+									ng-options="item as item.AttributeSetNameEn for item in dataSet.attributeSets track by item.AttributeSetId"
+									ng-model="ctrl.attributeSet">
+										<option value="" disabled selected style="display: none;">- Choose an Attribute Set -</option>
+									</select>
+								</div>
+								<div ng-show="dataSet.attributeSets.length == 0">Please choose the deepest level of category</div>
+							</div>
+						</span>
+
 					</div>
 				</div>
 			    </div>
@@ -71,16 +74,16 @@
 								<div class="form-section">
 									<div class="form-section-header"><h2>Template Guideline</h2></div>
 									<div class="form-section-content">
-										<div nc-template="common/input/form-group-with-label" 
-											nc-template-form="form.columnSearch" 
-											nc-label="Column Header" 
+										<div nc-template="common/input/form-group-with-label"
+											nc-template-form="form.columnSearch"
+											nc-label="Column Header"
 											nc-template-options-path="productImport/ColumnSearch">
-											<input type="text" 
-												ng-model="ctrl.columnSearch" 
-												uib-typeahead="item as item.HeaderName for item in getGuideline($viewValue)" 
-												class="form-control input-icon-right-search" 
-												placeholder="Search column header for more detail" 
-												typeahead-wait-ms="TYPEAHEAD_DELAY" 
+											<input type="text"
+												ng-model="ctrl.columnSearch"
+												uib-typeahead="item as item.HeaderName for item in getGuideline($viewValue)"
+												class="form-control input-icon-right-search"
+												placeholder="Search column header for more detail"
+												typeahead-wait-ms="TYPEAHEAD_DELAY"
 												typeahead-on-select="onSearchSelect()"
 												/>
 										</div>
@@ -95,8 +98,8 @@
 												<div nc-template="common/input/form-group-with-label"
 													nc-template-options-path="productImport/BrandSearch"
 													nc-label="Accepted Value">
-													<input type="text" 
-														class="form-control input-icon-right-search" 
+													<input type="text"
+														class="form-control input-icon-right-search"
 														ng-model="ctrl.BrandSearch"
 														placeholder="Search for Brand Name"
 														/>
@@ -124,7 +127,7 @@
 														<span ng-if="ctrl.GlobalCategory">{{ctrl.GlobalCategory.NameEn}}</span>
 													</a>
 												</div>
-												<div ng-show="ctrl.GlobalCategory" 
+												<div ng-show="ctrl.GlobalCategory"
 													nc-template="common/input/form-group-with-label"
 													nc-template-options-path="productImport/CategoryID"
 													nc-label="Category ID">
@@ -155,7 +158,7 @@
 														<span ng-if="ctrl.LocalCategory">{{ctrl.LocalCategory.NameEn}}</span>
 													</a>
 												</div>
-												<div ng-show="ctrl.LocalCategory" 
+												<div ng-show="ctrl.LocalCategory"
 													nc-template="common/input/form-group-with-label"
 													nc-template-options-path="productImport/CategoryID"
 													nc-label="Category ID">
@@ -218,12 +221,12 @@
 								<div class="form-section">
 									<div class="form-section-header"><h2>Upload File</h2></div>
 									<div class="form-section-content">
-										<div nc-template="common/input/form-group-with-label" 
-											nc-template-form="form.Upload" 
-											nc-label="Choose File" 
+										<div nc-template="common/input/form-group-with-label"
+											nc-template-form="form.Upload"
+											nc-label="Choose File"
 											nc-template-options-path="productImport/Upload">
 											<div type="text" class="width-100-percent form-control get_file" ng-delegate="f"><span ng-if="uploader.queue.length == 0" class="color-grey">Browse to upload</span><span ng-if="uploader.queue.length > 0">{{ uploader.queue[uploader.queue.length-1].file.name }}</span></div>
-											<i class="fa fa-folder-open fa-lg color-dark-grey fa-input-icon"></i>										
+											<i class="fa fa-folder-open fa-lg color-dark-grey fa-input-icon"></i>
 											<input nv-file-select uploader="uploader" accept=".csv" type="file" class="my_file"/>
 										</div>
 										<div nc-template="common/input/form-group-with-label" nc-label="">
@@ -233,12 +236,12 @@
 								</div>
 							</div>
 						</div>
-						
+
 					</div>
 				</div>
 			</div>
 		</form>
-	
+
 	</div>
 
 <?php $this->insert('components/modal-local-category', ['id' => 'local-category-detail', 'header' => 'Local Category Detail']) ?>
