@@ -7,7 +7,6 @@
                     <strong>Please note: </strong> Images from this tab will be the default images of all product variants. However, you may choose to add product variant images and override images from this tab.
                 </div>
                 <?php $this->insert('components/forms/form-section-upload-new-product-image', ['uploader' => 'uploader', 'images' => 'formData.MasterImages']) ?>
-                    <?php $this->insert('components/forms/form-section-upload-new-product-image-360', ['uploader' => 'uploader360', 'images' => 'formData.MasterImages360']) ?>
                         <div class="form-section">
                             <!-- TODO: change label to span with ng-click -->
                             <div class="form-section-header checkbox">

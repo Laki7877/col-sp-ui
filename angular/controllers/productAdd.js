@@ -143,6 +143,9 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
           kpair.OriginalPrice = $scope.formData.MasterVariant.OriginalPrice;
           kpair.SalePrice = $scope.formData.MasterVariant.SalePrice;
           kpair.Quantity = $scope.formData.MasterVariant.Quantity;
+          kpair.Length = $scope.formData.MasterVariant.Length;
+          kpair.Width = $scope.formData.MasterVariant.Width;
+          kpair.Height = $scope.formData.MasterVariant.Height;
           kpair._override = angular.copy(protoCheckState);
 
           if (kpair.text in vHashSet) {
@@ -308,6 +311,7 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
   });
 
   $scope.$watch('formData.ExpireDate', function() {
+    //TODO: refactor use nctemplate
     var form = $scope.addProductForm;
     if (form.EffectiveDate == null) {
       return
@@ -325,16 +329,18 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
 
     if (Status == 'WA') {
       if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == "") {
-        mat.push("Missing Description (Thai)");
+        mat.push("Required Field Missing: Description (Thai)");
       }
 
       if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == "") {
-        mat.push("Missing Description (English)");
+        mat.push("Required Field Missing: Description (English)");
       }
 
       if (!$scope.formData.Brand.BrandId) {
-        mat.push("Brand is Missing");
+        mat.push("Required Field Missing: Brand is Missing");
       }
+
+
     }
 
     var cnt = $scope.formData.Variants.reduce(function(total, x) {
@@ -347,6 +353,10 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
 
     if ($scope.formData.ExpireDate && $scope.formData.ExpireDate <= $scope.formData.EffectiveDate) {
       mat.push("Effective date/time must come before expire date/time.");
+    }
+
+    if ($scope.formData.MasterImages.length == 0) {
+      mat.push("At least one image is required");
     }
 
     return mat;
@@ -457,7 +467,7 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
   });
 
   $scope.init = function(viewBag) {
-    //TODO: Refactor, use better callback mechanism
+
     if (!angular.isObject(viewBag)) throw new KnownException("View bag is corrupted");
 
     var shopId = $rootScope.Profile.Shop.ShopId; //TODO: Get from user
@@ -487,6 +497,8 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
         });
 
     } else if ('catId' in viewBag) {
+      if(viewBag.catId == null) window.location.href = "/products/select";
+
       var catId = Number(viewBag.catId);
       $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs,
         $scope.controlFlags, $scope.variationFactorIndices).then(function() {
@@ -496,6 +508,7 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
         ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
       });
     } else {
+
       throw new KnownException("Invalid mode, viewBag garbage");
     }
 
@@ -627,29 +640,29 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
 
       $scope.$on('savePairModal', function(evt) {
         console.log("adform", $scope.addProductVariantForm.$invalid);
-
-        if (!$scope.pairModal._override.uploadProductImages) {
-          $scope.pairModal.Images = [];
-        }
-
-        if (!$scope.pairModal._override.embedVideo) {
-          $scope.pairModal.VideoLinks = [];
-        }
-
-        if (!$scope.pairModal._override.description) {
-          $scope.pairModal.DescriptionFullEn = null;
-          $scope.pairModal.DescriptionFullTh = null;
-          $scope.pairModal.ShortDescriptionEn = null;
-          $scope.pairModal.ShortDescriptionTh = null;
-        }
-
-        if (!$scope.pairModal._override.packageDetail) {
-          $scope.pairModal.Length = null;
-          $scope.pairModal.Height = null;
-          $scope.pairModal.Width = null;
-          $scope.pairModal.Length = null;
-
-        }
+        //
+        // if (!$scope.pairModal._override.uploadProductImages) {
+        //   $scope.pairModal.Images = [];
+        // }
+        //
+        // if (!$scope.pairModal._override.embedVideo) {
+        //   $scope.pairModal.VideoLinks = [];
+        // }
+        //
+        // if (!$scope.pairModal._override.description) {
+        //   $scope.pairModal.DescriptionFullEn = null;
+        //   $scope.pairModal.DescriptionFullTh = null;
+        //   $scope.pairModal.ShortDescriptionEn = null;
+        //   $scope.pairModal.ShortDescriptionTh = null;
+        // }
+        //
+        // if (!$scope.pairModal._override.packageDetail) {
+        //   $scope.pairModal.Length = null;
+        //   $scope.pairModal.Height = null;
+        //   $scope.pairModal.Width = null;
+        //   $scope.pairModal.Length = null;
+        //
+        // }
 
         $scope.formData.Variants[$scope.pairIndex] = $scope.pairModal;
       });

@@ -70,16 +70,14 @@
 
                         <div nc-template="common/input/form-group-with-label" nc-label="SKU" nc-template-form="addProductForm.MasterVariant_Sku" nc-template-options-path="addProductForm/MasterVariant_Sku">
 
-                            <input class="form-control width-field-large" name="MasterVariant_Sku" ng-show="controlFlags.variation != 'enable'" ng-disabled="controlFlags.variation == 'enable'" ng-model="formData.MasterVariant.Sku" maxlength="300" ng-pattern="/^[^<>]+$/" />
+                            <input class="form-control width-field-large" name="MasterVariant_Sku" ng-disabled="controlFlags.variation == 'enable'" ng-model="formData.MasterVariant.Sku" maxlength="300" ng-pattern="/^[^<>]+$/" />
 
-                            <input class="form-control width-field-large" value="Edit in Variation Tab" disabled ng-if="controlFlags.variation == 'enable'" />
 
                         </div>
 
 
                         <div nc-template="common/input/form-group-with-label" nc-label="UPC" nc-template-form="addProductForm.MasterVariant_Upc" nc-template-options-path="addProductForm/MasterVariant_Upc">
-                            <input class="form-control width-field-large" ng-pattern="/^[^<>]+$/" name="MasterVariant_Upc" ng-if="controlFlags.variation != 'enable'" maxlength="300" ng-model="formData.MasterVariant.Upc" />
-                            <input class="form-control width-field-large" disabled type="text" ng-if="controlFlags.variation == 'enable'" value="Edit in Variation Tab" />
+                            <input class="form-control width-field-large" ng-pattern="/^[^<>]+$/" name="MasterVariant_Upc" maxlength="300" ng-model="formData.MasterVariant.Upc" />
                         </div>
 
                         <div ng-if="formData.MasterVariant.Pid">
@@ -117,13 +115,11 @@
                     <div class="form-section-content">
 
                         <div nc-template="common/input/form-group-with-label" nc-label="Original Price" nc-template-options-path="addProductForm/MasterVariant_OriginalPrice" nc-template-form="addProductForm.MasterVariant_OriginalPrice">
-                            <input class="form-control width-field-normal" name="MasterVariant_OriginalPrice" ng-pattern="/^\d+(\.\d{1,2})?$/" maxlength="20" ng-model="formData.MasterVariant.OriginalPrice" ng-if="controlFlags.variation != 'enable'" ng-required="controlFlags.variation != 'enable'"/>
-                            <input class="form-control width-field-normal" disabled type="text" ng-if="controlFlags.variation == 'enable'" value="Edit in Variation Tab" />
+                            <input class="form-control width-field-normal" name="MasterVariant_OriginalPrice" ng-pattern="/^\d+(\.\d{1,2})?$/" maxlength="20" ng-model="formData.MasterVariant.OriginalPrice" ng-required="controlFlags.variation != 'enable'"/>
                         </div>
 
                         <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.MasterVariant_SalePrice" nc-label="Sale Price" nc-template-options-path="addProductForm/MasterVariant_SalePrice">
-                            <input ng-if="controlFlags.variation != 'enable'" ng-pattern="/^\d+(\.\d{1,2})?$/" class="form-control width-field-normal" maxlength="20" name="MasterVariant_SalePrice" ng-model="formData.MasterVariant.SalePrice" />
-                            <input ng-if="controlFlags.variation == 'enable'" class="form-control width-field-normal" disabled type="text" ng-if="controlFlags.variation == 'enable'" value="Edit in Variation Tab" />
+                            <input ng-pattern="/^\d+(\.\d{1,2})?$/" class="form-control width-field-normal" maxlength="20" name="MasterVariant_SalePrice" ng-model="formData.MasterVariant.SalePrice" />
                         </div>
                     </div>
                 </div>
@@ -196,22 +192,29 @@
                             </div>
                             <div ng-class="{'width-field-normal': !isHtmlInput(amap.Attribute.DataType), 'width-field-xxl': isHtmlInput(amap.Attribute.DataType)}">
 
-                                <select ng-if="isListInput(amap.Attribute.DataType)"
+                                <select ng-if="isListInput(amap.Attribute.DataType)" ng-required="amap.Attribute.Required"
                                 class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]"
+                                ng-class="{'has-error' : $root.isInvalid(addProductForm.AmapInput{{ $index }}) }"
+                                name="AmapInput{{$index}}"
                                 ng-options="item as item.AttributeValue.AttributeValueEn for item in amap.Attribute.AttributeValueMaps track by item.AttributeValueId">
-                                    <option value="" disabled selected>- Select option -</option>
+                                    <option disabled value="" selected>- Select option -</option>
                                 </select>
 
                                 <div ng-if="isHtmlInput(amap.Attribute.DataType)">
-                                    <textarea ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]"
+                                    <textarea ng-required="amap.Attribute.Required"
+                                    ng-class="{'has-error' : $root.isInvalid(addProductForm.AmapInput{{ $index }}) }"
+                                    ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]"
+                                    name="AmapInput{{$index}}"
                                     class="form-control" ng-ckeditor="ckOptions"></textarea>
                                 </div>
 
                                 <input
                                 ng-if="isFreeTextInput(amap.Attribute.DataType)"
+                                ng-class="{'has-error' : $root.isInvalid(addProductForm.AmapInput{{ $index }}) }"
+                                ng-required="amap.Attribute.Required"
                                 type="text" class="form-control"
+                                name="AmapInput{{$index}}"
                                 ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" />
-
 
                             </div>
                         </div>

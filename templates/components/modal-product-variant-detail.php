@@ -56,6 +56,12 @@
                                     <input class="form-control width-field-large" name="Modal_ProductNameTh" ng-model="<?= $model ?>.ProductNameTh" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_ProductNameTh) }" ng-pattern="/^[^<>]+$/" maxlength="300" />
                                 </div>
 
+                                <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.Modal_Upc"
+                                nc-label="UPC" nc-template-options-path="addProductForm/MasterVariant_Upc">
+                                    <input class="form-control width-field-large" name="Modal_Upc" ng-model="<?= $model ?>.Upc" maxlength="100" />
+                                </div>
+
+
                                 <div class="form-group">
                                     <div class="width-label">
                                         <label class="control-label">

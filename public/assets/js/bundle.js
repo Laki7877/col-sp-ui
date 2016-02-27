@@ -2021,6 +2021,9 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
           kpair.OriginalPrice = $scope.formData.MasterVariant.OriginalPrice;
           kpair.SalePrice = $scope.formData.MasterVariant.SalePrice;
           kpair.Quantity = $scope.formData.MasterVariant.Quantity;
+          kpair.Length = $scope.formData.MasterVariant.Length;
+          kpair.Width = $scope.formData.MasterVariant.Width;
+          kpair.Height = $scope.formData.MasterVariant.Height;
           kpair._override = angular.copy(protoCheckState);
 
           if (kpair.text in vHashSet) {
@@ -2186,12 +2189,13 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
   });
 
   $scope.$watch('formData.ExpireDate', function() {
+
     var form = $scope.addProductForm;
     if (form.EffectiveDate == null) {
       return
     }
     if (form.ExpireDate) form.ExpireDate.$setValidity("min", true);
-    if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
+    if (($scope.formData.ExpireDate && $scope.formData.EffectiveDate) && ($scope.formData.ExpireDate < $scope.formData.EffectiveDate)) {
       if (!form.ExpireDate) return;
       if (form.ExpireDate) form.ExpireDate.$setValidity("min", false);
       form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
@@ -2203,16 +2207,18 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
 
     if (Status == 'WA') {
       if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == "") {
-        mat.push("Missing Description (Thai)");
+        mat.push("Required Field Missing: Description (Thai)");
       }
 
       if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == "") {
-        mat.push("Missing Description (English)");
+        mat.push("Required Field Missing: Description (English)");
       }
 
       if (!$scope.formData.Brand.BrandId) {
-        mat.push("Brand is Missing");
+        mat.push("Required Field Missing: Brand is Missing");
       }
+
+
     }
 
     var cnt = $scope.formData.Variants.reduce(function(total, x) {
@@ -2225,6 +2231,10 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
 
     if ($scope.formData.ExpireDate && $scope.formData.ExpireDate <= $scope.formData.EffectiveDate) {
       mat.push("Effective date/time must come before expire date/time.");
+    }
+
+    if ($scope.formData.MasterImages.length == 0) {
+      mat.push("At least one image is required");
     }
 
     return mat;
@@ -2335,7 +2345,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
   });
 
   $scope.init = function(viewBag) {
-    //TODO: Refactor, use better callback mechanism
+
     if (!angular.isObject(viewBag)) throw new KnownException("View bag is corrupted");
 
     var shopId = $rootScope.Profile.Shop.ShopId; //TODO: Get from user
@@ -2365,6 +2375,8 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
         });
 
     } else if ('catId' in viewBag) {
+      if(viewBag.catId == null) window.location.href = "/products/select";
+
       var catId = Number(viewBag.catId);
       $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs,
         $scope.controlFlags, $scope.variationFactorIndices).then(function() {
@@ -2374,6 +2386,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
         ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
       });
     } else {
+
       throw new KnownException("Invalid mode, viewBag garbage");
     }
 
@@ -2505,29 +2518,29 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
 
       $scope.$on('savePairModal', function(evt) {
         console.log("adform", $scope.addProductVariantForm.$invalid);
-
-        if (!$scope.pairModal._override.uploadProductImages) {
-          $scope.pairModal.Images = [];
-        }
-
-        if (!$scope.pairModal._override.embedVideo) {
-          $scope.pairModal.VideoLinks = [];
-        }
-
-        if (!$scope.pairModal._override.description) {
-          $scope.pairModal.DescriptionFullEn = null;
-          $scope.pairModal.DescriptionFullTh = null;
-          $scope.pairModal.ShortDescriptionEn = null;
-          $scope.pairModal.ShortDescriptionTh = null;
-        }
-
-        if (!$scope.pairModal._override.packageDetail) {
-          $scope.pairModal.Length = null;
-          $scope.pairModal.Height = null;
-          $scope.pairModal.Width = null;
-          $scope.pairModal.Length = null;
-
-        }
+        //
+        // if (!$scope.pairModal._override.uploadProductImages) {
+        //   $scope.pairModal.Images = [];
+        // }
+        //
+        // if (!$scope.pairModal._override.embedVideo) {
+        //   $scope.pairModal.VideoLinks = [];
+        // }
+        //
+        // if (!$scope.pairModal._override.description) {
+        //   $scope.pairModal.DescriptionFullEn = null;
+        //   $scope.pairModal.DescriptionFullTh = null;
+        //   $scope.pairModal.ShortDescriptionEn = null;
+        //   $scope.pairModal.ShortDescriptionTh = null;
+        // }
+        //
+        // if (!$scope.pairModal._override.packageDetail) {
+        //   $scope.pairModal.Length = null;
+        //   $scope.pairModal.Height = null;
+        //   $scope.pairModal.Width = null;
+        //   $scope.pairModal.Length = null;
+        //
+        // }
 
         $scope.formData.Variants[$scope.pairIndex] = $scope.pairModal;
       });
@@ -9988,7 +10001,7 @@ module.exports = {
         'labelClass': 'required'
     },
     MasterVariant_OriginalPrice: {
-        'labelClass': 'required',
+
         'error': {
             'messages': {
                 'required': 'This is a required field',
@@ -9997,6 +10010,7 @@ module.exports = {
         }
     },
     MasterVariant_SalePrice: {
+      'labelClass': 'required',
         'error': {
             'messages': {
                 'min': 'Sale price must be lower than the original price',
@@ -10083,6 +10097,7 @@ module.exports = {
         }
     }
 }
+
 },{}],136:[function(require,module,exports){
 module.exports = {
 	BankAccountNumber: {

@@ -107,7 +107,7 @@
                                 <div class="dropdown">
                                     <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
                                         <input readonly style="background-color:white" type="text"
-                                         ng-class="{'has-error': formData.ExpireDate <= formData.EffectiveDate }"
+                                         ng-class="{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }"
                                          placeholder="Select date and time when product will go online"
                                          class="input-icon-calendar form-control" value="{{ formData.EffectiveDate | date: 'dd/MM/yy HH:mm' }}" />
                                     </a>
@@ -132,7 +132,7 @@
                                         <input readonly style="background-color:white" type="text"
                                         placeholder="Select date and time when product will go offline"
                                         class="input-icon-calendar form-control" name="ExpireDate"
-                                        ng-class="{'has-error': formData.ExpireDate <= formData.EffectiveDate }"
+                                        ng-class="{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }"
                                         value="{{ formData.ExpireDate | date: 'dd/MM/yy HH:mm' }}">
                                     </a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -141,8 +141,8 @@
                                     </ul>
                                 </div>
                                 <div class="width-field-large">
-                                    <span class="help-block color-red" ng-if="formData.ExpireDate <= formData.EffectiveDate">
-								        <span>Effective date/time must come before expire date/time</span>
+                                    <span class="help-block color-red" ng-if="formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate">
+								                              <span>Effective date/time must come before expire date/time</span>
                                     </span>
                                 </div>
 
