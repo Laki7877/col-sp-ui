@@ -17,7 +17,7 @@
 
 						<span class="float-right">
 							<button ng-click="downloadTemplate()"
-							 ng-disabled="ctrl.globalCat == null || DownloadBtnText.disabled"
+							 ng-disabled="ctrl.globalCat == null || ctrl.globalCat.Rgt - ctrl.globalCat.Lft != 1 || DownloadBtnText.disabled"
 							 ng-class="{'disabled' : ctrl.globalCat == null || DownloadBtnText.disabled }"
 							 class="btn btn-blue btn-width-xl">
 								{{ DownloadBtnText.text || 'Download' }}</button>

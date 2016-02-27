@@ -11,7 +11,7 @@ module.exports = function(common, util) {
 	service.approve = function(obj) {
 		obj = _.map(obj, function(e) {
 			e.Status = 'AP';
-			return e;
+			return _.pick(e, ['Status', 'ProductReviewId']);
 		});
 		console.log(obj);
 		return common.makeRequest({
@@ -23,7 +23,7 @@ module.exports = function(common, util) {
 	service.unapprove = function(obj) {
 		obj = _.map(obj, function(e) {
 			e.Status = 'WA';
-			return e;
+			return _.pick(e, ['Status', 'ProductReviewId']);
 		});
 		return common.makeRequest({
 			method: 'PUT',

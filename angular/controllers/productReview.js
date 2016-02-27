@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, ProductReviewService, config, $uibModal, common) {
+module.exports = function($scope, $controller, ProductReviewService, config, $uibModal, util, common) {
 	'ngInject';
 	//Inherit from parent
 	$controller('AbstractListCtrl', {
