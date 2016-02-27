@@ -95,6 +95,18 @@ module.exports = {
 			}
 		]
 	},
+	SHOP_STATUS: [
+		{
+			name: 'NA',
+			value: 'Inactive',
+			color: 'color-red'
+		},
+		{
+			name: 'AT',
+			value: 'Active',
+			color: 'color-green'
+		}
+	],
 	SHOP_GROUP: [
 		{
 			name: 'BU',

@@ -22,7 +22,6 @@
 				                        	'show': true,
 				                        	'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'
 				                        },
-				                        'tooltip': 'Youtube Links',
 				                        'error' : {
 				                              'messages': {
 				                              	'url': 'Please enter valid URL'
@@ -41,7 +40,6 @@
 				                        	'show': true,
 				                        	'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'
 				                        },
-				                        'tooltip': 'Youtube Links',
 				                        'error' : {
 				                              'messages': {
 				                              	'url': 'Please enter valid URL'
@@ -60,7 +58,6 @@
 				                        	'show': true,
 				                        	'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'
 				                        },
-				                        'tooltip': 'Youtube Links',
 				                        'error' : {
 				                              'messages': {
 				                              	'url': 'Please enter valid URL'

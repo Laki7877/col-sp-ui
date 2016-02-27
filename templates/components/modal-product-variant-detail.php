@@ -92,7 +92,6 @@
 				                        	'show': true,
 				                        	'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'
 				                        },
-				                        'tooltip': 'Youtube Links',
 				                        'error' : {
 				                              'messages': {
 				                              	'url': 'Please enter valid URL'
@@ -111,7 +110,6 @@
 				                        	'show': true,
 				                        	'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'
 				                        },
-				                        'tooltip': 'Youtube Links',
 				                        'error' : {
 				                              'messages': {
 				                              	'url': 'Please enter valid URL'
@@ -130,7 +128,6 @@
 				                        	'show': true,
 				                        	'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'
 				                        },
-				                        'tooltip': 'Youtube Links',
 				                        'error' : {
 				                              'messages': {
 				                              	'url': 'Please enter valid URL'
@@ -169,7 +166,7 @@
                                             </div>
 
 
-                                             <? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (ไทย)", "size" => "xxl", "label_class" => "required", "ng_model" => $model.".DescriptionFullTh"]) ?>
+                                             <? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (ไทย)", "size" => "xxl", "label_class" => "required","form_group_class" => "margin-top-40", "ng_model" => $model.".DescriptionFullTh"]) ?>
 
                                         <div ng-template="common/input/textarea2" ng-template-options="{
                                             'label': 'Short Description (ไทย)',

@@ -7,7 +7,7 @@
 				<div class="form-section-content">
 					<div nc-template="common/input/form-group-with-label" nc-label="Shop ID"
                     nc-template-options-path="shopSettingForm/ShopId">
-                           <input class="form-control" type="text" ng-model="formData.ShopId" readonly value="DE39222"/>
+                           <input class="form-control" type="text" ng-model="formData.ShopId" readonly value="DE39222" disabled/>
                     </div>
 
 										<div class="form-group">
@@ -19,7 +19,7 @@
 
                     <div nc-template="common/input/form-group-with-label" nc-label="Shop Name"
                     nc-template-options-path="shopSettingForm/ShopNameEn">
-                           <input class="form-control" type="text" ng-model="formData.ShopNameEn"/>
+                           <input class="form-control" type="text" ng-model="formData.ShopNameEn" ng-pattern="/^[^<>]+$/" required/>
                     </div>
 
                     <div nc-template="common/input/form-group-with-label" nc-label="Shop Description (English)"
@@ -44,7 +44,7 @@
 
                     <div nc-template="common/input/form-group-with-label" nc-label="Shop Address"
                     nc-template-options-path="shopSettingForm/ShopAddress">
-                           <input class="form-control" type="text" ng-model="formData.ShopAddress"/>
+                           <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopAddress"/></textarea>
                     </div>
 
 				</div>
@@ -94,8 +94,6 @@
                     nc-template-options-path="shopSettingForm/Pinterest">
                            <input class="form-control" type="text" ng-model="formData.Pinterest"/>
                     </div>
-
-
 				</div>
 			</div>
 		</div>
@@ -118,12 +116,16 @@
                             </select>
                     </div>
                      <div nc-template="common/input/form-group-with-label" nc-label="Stock Alert" nc-template-options-path="shopSettingForm/StockAlert">
-                            <input class="form-control" type="text" ng-model="formData.StockAlert"/>
+                            <input class="form-control" type="text" ng-model="formData.StockAlert" ng-pattern-restrict="^[0-9]*$"/>
                     </div>
 
 				</div>
 			</div>
 		</div>
 	</div>
-
+  <div class="row">
+    <div class="col-xs-12">
+      <p class="text-align-right"><span class="color-red"><i class="fa fa-asterisk"></i></span> - Required Field</p>
+    </div>
+  </div>
 </div>

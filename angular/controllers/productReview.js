@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, ProductReviewService, config, $uibModal, common) {
+module.exports = function($scope, $controller, ProductReviewService, config, $uibModal, util, common) {
 	'ngInject';
 	//Inherit from parent
 	$controller('AbstractListCtrl', {
@@ -23,53 +23,14 @@ module.exports = function($scope, $controller, ProductReviewService, config, $ui
 				}
 			],
 			bulks: [
-				{
-					name: 'Approve',
-					fn: function(arr, cb) {
-						arr = _.compact(_.map(arr, function(e) {
-							var item = _.pick(e, ['Status', 'ProductReviewId']);
-							if(item.Status == 'WA') item.Status = 'AP';
-							else item = null;
-							return item;
-						}));
-						if(arr.length <= 0) return;
-						ProductReviewService.approve(arr)
-							.then(function() {
-								cb();
-							}, function(err) {
-								$scope.alert.error(common.getError(err));
-							})
-							.finally($scope.reload);
-					},
-					confirmation: {
-						title: 'Approve',
-						message: 'Are you sure you want to approve selected Reviews?'
-					}
-				},
-				{
-					name: 'Unapprove',
-					fn: function(arr, cb) {
-						arr = _.compact(_.map(arr, function(e) {
-							var item = _.pick(e, ['Status', 'ProductReviewId']);
-							if(item.Status == 'AP') item.Status = 'WA';
-							else item = null;
-							return item;
-						}));
-						if(arr.length <= 0) return;
-						ProductReviewService.approve(arr)
-							.then(function() {
-								cb();
-							}, function(err) {
-								$scope.reload();
-								$scope.alert.error(common.getError(err));
-							})
-							.finally($scope.reload);
-					},
-					confirmation: {
-						title: 'Unapprove',
-						message: 'Are you sure you want to unapprove selected Reviews?'
-					}
-				}
+				util.bulkTemplate('Approve', ProductReviewService.approve, 'ProductReviewId', 'Review', {
+					btnConfirm: 'Approve',
+					btnClass: 'btn-green'
+				}),,
+				util.bulkTemplate('Unapprove', ProductReviewService.unapprove, 'ProductReviewId', 'Review', {
+					btnConfirm: 'Unapprove',
+					btnClass: 'btn-red'
+				})
 			]
 		}
 	});
@@ -99,8 +60,8 @@ module.exports = function($scope, $controller, ProductReviewService, config, $ui
 	$scope.approve = function(item) {
 		$scope.alert.close();
 		item.Status = (item.Status == 'WA') ? 'AP' : 'WA';
-		ProductReviewService.approve([_.pick(item, ['Status', 'ProductReviewId'])])
-			.then(function() {
+		ProductReviewService.updateApprove([_.pick(item, ['Status', 'ProductReviewId'])])
+			.then(function(data) {
 
 			}, function(err) {
 				item.Status = (item.Status == 'WA') ? 'AP' : 'WA';

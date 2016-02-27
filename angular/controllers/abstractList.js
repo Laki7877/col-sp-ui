@@ -60,7 +60,6 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 		$scope.bulks = _.compact(_.map(options.bulks, function(item) {
 			
 			if(_.isFunction(item)) {
-				console.log(item($scope));
 				return item($scope);
 			}
 			if(_.isString(item)) {

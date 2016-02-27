@@ -43,6 +43,13 @@ class ProductController extends Controller
                 'title' => 'Import Product',
         ]);
     }
+    public static function importUpdate($params)
+    {
+        return View::render('seller_import_products', [
+                'title' => 'Import Product',
+                'update' => true
+        ]);
+    }
 
     public static function select($params)
     {
