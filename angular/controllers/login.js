@@ -9,8 +9,9 @@
   if (profile && profile.User.IsAdmin) {
     $window.location.href = Credential.getRedirPath(profile)
   }
-  if(redir) {
+  if(redir && redir != '/') {
     $scope.alert.open(false, 'Your session has timed out', '');
+    storage.remove('redirect');
   }
 
   $scope.doLogin = function () {
@@ -29,8 +30,6 @@
       $scope.loading = false;
       if (!redir) {
         redir = Credential.getRedirPath(r);
-      } else {
-        storage.remove('redirect');
       }
       $window.location.href = redir;
     }, function (err) {
