@@ -54,6 +54,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 		node.Visibility = !node.Visibility;
 		GlobalCategoryService.visible([_.pick(node, ['Visibility', 'CategoryId'])])
 			.then(function() {
+				Category.traverseSet(node.nodes, node.Visibility);
 			},
 			function(err) {
 				//revert
@@ -204,6 +205,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				item.CategoryId = data.CategoryId;
 				item.CategoryAbbreviation = data.CategoryAbbreviation;
 				item.Visibility = data.Visibility;
+				Category.traverseSet(item.nodes, item.Visibility);
 		}
 		$scope.alert.success(config.DEFAULT_SUCCESS_MESSAGE);
 		});
