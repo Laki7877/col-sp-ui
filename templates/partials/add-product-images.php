@@ -3,9 +3,9 @@
 
         <div class="row">
             <div class="col-xs-12">
-                <div class="alert alert-warning" ng-if="controlFlags.variation == 'enable'">
+                <!-- <div class="alert alert-warning" ng-if="controlFlags.variation == 'enable'">
                     <strong>Please note: </strong> Images from this tab will be the default images of all product variants. However, you may choose to add product variant images and override images from this tab.
-                </div>
+                </div> -->
                 <nc-alert nc-model="image_alert"></nc-alert>
                 <?php $this->insert('components/forms/form-section-upload-new-product-image', ['uploader' => 'uploader', 'images' => 'formData.MasterImages']) ?>
                         <div class="form-section">
