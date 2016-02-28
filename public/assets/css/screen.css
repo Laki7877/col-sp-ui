@@ -13948,6 +13948,10 @@ form h6 {
 /* line 70, ../../../assets/_button.scss */
 .btn.disabled, .btn[disabled], fieldset[disabled] .btn {
   pointer-events: none;
+}
+
+/* line 74, ../../../assets/_button.scss */
+.btn-white.disabled, .btn-white[disabled], fieldset[disabled] .btn-white {
   color: #BCC7D5;
 }
 
@@ -15254,39 +15258,45 @@ ng-transclude.has-error .form-control {
   display: none !important;
 }
 
+/* Temporary Fix for mysterious ui 2 line bug */
 /* line 229, ../../../assets/screen.scss */
+.ui-select-multiple.ui-select-bootstrap input.ui-select-search {
+  width: auto !important;
+}
+
+/* line 233, ../../../assets/screen.scss */
 .export-list {
   margin-left: 30px;
   margin-bottom: 15px;
   list-style-type: none;
   -webkit-padding-start: 0px;
 }
-/* line 234, ../../../assets/screen.scss */
+/* line 238, ../../../assets/screen.scss */
 .export-list li {
   margin-bottom: 5px;
 }
-/* line 237, ../../../assets/screen.scss */
+/* line 241, ../../../assets/screen.scss */
 .export-list .group-label {
   font-weight: bold;
   margin: 20px 0px 5px 0px;
 }
 
-/* line 242, ../../../assets/screen.scss */
+/* line 246, ../../../assets/screen.scss */
 .export-select-all {
   margin-left: 30px;
 }
 
-/* line 246, ../../../assets/screen.scss */
+/* line 250, ../../../assets/screen.scss */
 [uib-typeahead-popup].dropdown-menu {
   width: 93%;
 }
 
-/* line 250, ../../../assets/screen.scss */
+/* line 254, ../../../assets/screen.scss */
 .popover {
   display: block;
 }
 
-/* line 255, ../../../assets/screen.scss */
+/* line 259, ../../../assets/screen.scss */
 .action-gear:hover, .action-gear:focus, .action-gear:active, .action-gear:visited {
   text-decoration: none;
   outline: 0;
@@ -15332,8 +15342,18 @@ ng-transclude.has-error .form-control {
     -webkit-transform: translateX(0);
   }
 }
-/* line 279, ../../../assets/screen.scss */
+/* line 283, ../../../assets/screen.scss */
 .shake {
   -webkit-animation: shake 400ms ease-in-out;
   animation: shake 400ms ease-in-out;
+}
+
+/* line 284, ../../../assets/screen.scss */
+.session-timeout {
+  background-color: #f9edbe;
+  border-color: #f0c36d;
+  color: #333;
+  width: 300px;
+  text-align: center;
+  display: inline-block;
 }

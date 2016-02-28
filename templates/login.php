@@ -6,16 +6,16 @@
 	<div class="logo-img-wrapper">
 		<img class="logo-img" src="<?= $this->asset('/assets/img/seller_logo.png') ?>" />
 	</div>
-
 	<form ng-submit="doLogin()" name="loginForm" novalidate>
 		<div class="form-login" ng-cloak>
+			<nc-alert nc-model="alert"></nc-alert>
 			<div ng-template="common/input/text2"
 				ng-template-options="{
 					'label': 'Email'
 				}">
 				<input
 				class="form-control width-field-large"
-				name="user" 
+				name="user"
 				ng-model="uform.user"
 				ng-class="{ 'has-error' : (events.user === false && loginForm.user.$invalid) || (error && loginForm.$pristine) }"
 				maxlength="300"
@@ -39,10 +39,10 @@
 				ng-blur="events.pass=false"
 				required />
 			</div>
-			<div class="form-group margin-bottom-5" ng-if="error && loginForm.$pristine">
+			<div class="form-group" ng-if="error && loginForm.$pristine">
 				<div class="width-label"></div>
 				<div class="width-field-normal">
-					<span class="help-block color-red text-center">Invalid Email or Password</span>
+					<span class="help-block color-red text-center margin-bottom-0">Invalid Email or Password</span>
 				</div>
 			</div>
 			<fieldset class="form-group margin-top-30">
