@@ -9,7 +9,7 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
   var QUEUE_LIMIT = 20;
   var QUEUE_LIMIT_360 = 60;
   var MAX_VARIANT = 100;
-
+  $scope.image_alert = new NcAlert();
   $scope.dataSet = {};
   $scope.dataSet.AttributeSets = [{
     AttributeSetId: null,
@@ -70,8 +70,13 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
   }; // end onbeforeunload
 
   var onImageUploadFail = function(item, filter) {
-    alert("Unable to upload image because validation error.");
+    $scope.image_alert.error(item.Message || 'Your image does not meet guideline.');
   }
+
+  var onImageUploadSuccess = function() {
+    $scope.image_alert.close();
+  }
+
   var onImageUploadQueueLimit = function() {}
   $scope.asStatus = Product.getStatus;
 
@@ -482,8 +487,8 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
           $scope.formData.ProductId = Number(res.ProductId);
           $scope.pageState.reset();
           $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
-          ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
-          ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
+          ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
+          ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
         });
         $scope.addProductForm.$setPristine(true);
       } else {
@@ -536,8 +541,8 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
             $scope.formData.ProductId = Number(productId);
             $scope.pageState.reset();
             watchVariantChanges();
-            ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
-            ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
+            ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
+            ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
           });
         }, function(error) {
           throw new KnownException("Unable to fetch product with id " + productId);
@@ -551,8 +556,8 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
         $scope.controlFlags, $scope.variationFactorIndices).then(function() {
         $scope.pageState.reset();
         watchVariantChanges();
-        ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
-        ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
+        ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
+        ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
       });
     } else {
 
@@ -682,7 +687,7 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
         $scope.pairModal.alert = new NcAlert();
         $scope.pairIndex = index;
         $scope.uploaderModal.queue = $scope.pairModal.queue;
-        ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail);
+        ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
       });
 
       $scope.$on('savePairModal', function(evt) {

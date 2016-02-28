@@ -38,7 +38,7 @@ module.exports = function($q, $http, common, storage, config, FileUploader) {
   /**
    * Assign image uploader events specifically to COL-image uploading feature
    */
-  service.assignUploaderEvents = function(uploader, images, queueLimit, onFail, onValidation) {
+  service.assignUploaderEvents = function(uploader, images, queueLimit, onFail, onValidation, onSuccess) {
 
     uploader.onWhenAddingFileFailed = function(item, filter, options) {
       console.info('onAfterAddingFile', item, filter, options);
@@ -66,6 +66,7 @@ module.exports = function($q, $http, common, storage, config, FileUploader) {
     uploader.onSuccessItem = function(item, response, status, headers) {
       images[item.indx] = response;
       console.info('onSuccessItem', images, uploader.queue);
+			// onSuccess();
     };
     uploader.onErrorItem = function(item, response, status, headers) {
       images.splice(item.indx, 1);

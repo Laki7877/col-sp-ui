@@ -17,9 +17,9 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 	//UiTree onchange event
 	$scope.treeOptions = {
 		dropped: function(event) {
-			if(event.dest.index != event.source.index || event.dest.nodesScope != event.source.nodesScope) {
+			/*if(event.dest.index != event.source.index || event.dest.nodesScope != event.source.nodesScope) {
 				$scope.sync();
-			}
+			}*/
 		}
 	};
 
@@ -50,6 +50,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 		node.Visibility = !node.Visibility;
 		LocalCategoryService.visible([_.pick(node, ['Visibility', 'CategoryId'])])
 			.then(function() {
+				Category.traverseSet(node.nodes, node.Visibility);
 			},
 			function(err) {
 				//revert
@@ -187,6 +188,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				item.CategoryId = data.CategoryId;
 				item.CategoryAbbreviation = data.CategoryAbbreviation;
 				item.Visibility = data.Visibility;
+				Category.traverseSet(item.nodes, item.Visibility);
 			}
 			$scope.alert.success(config.DEFAULT_SUCCESS_MESSAGE);
 		});
@@ -201,7 +203,6 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 	$scope.reload = function() {
 		$scope.loading = true;
 		LocalCategoryService.listAll().then(function(data) {
-			console.log(data);
 			$scope.categories = Category.transformNestedSetToUITree(data);
 			$scope.loading = false;
 		}, function(err) {

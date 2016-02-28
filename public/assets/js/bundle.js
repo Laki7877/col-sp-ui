@@ -1048,6 +1048,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 		node.Visibility = !node.Visibility;
 		GlobalCategoryService.visible([_.pick(node, ['Visibility', 'CategoryId'])])
 			.then(function() {
+				Category.traverseSet(node.nodes, node.Visibility);
 			},
 			function(err) {
 				//revert
@@ -1198,6 +1199,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 				item.CategoryId = data.CategoryId;
 				item.CategoryAbbreviation = data.CategoryAbbreviation;
 				item.Visibility = data.Visibility;
+				Category.traverseSet(item.nodes, item.Visibility);
 		}
 		$scope.alert.success(config.DEFAULT_SUCCESS_MESSAGE);
 		});
@@ -1658,9 +1660,9 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 	//UiTree onchange event
 	$scope.treeOptions = {
 		dropped: function(event) {
-			if(event.dest.index != event.source.index || event.dest.nodesScope != event.source.nodesScope) {
+			/*if(event.dest.index != event.source.index || event.dest.nodesScope != event.source.nodesScope) {
 				$scope.sync();
-			}
+			}*/
 		}
 	};
 
@@ -1691,6 +1693,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 		node.Visibility = !node.Visibility;
 		LocalCategoryService.visible([_.pick(node, ['Visibility', 'CategoryId'])])
 			.then(function() {
+				Category.traverseSet(node.nodes, node.Visibility);
 			},
 			function(err) {
 				//revert
@@ -1828,6 +1831,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 				item.CategoryId = data.CategoryId;
 				item.CategoryAbbreviation = data.CategoryAbbreviation;
 				item.Visibility = data.Visibility;
+				Category.traverseSet(item.nodes, item.Visibility);
 			}
 			$scope.alert.success(config.DEFAULT_SUCCESS_MESSAGE);
 		});
@@ -1842,7 +1846,6 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 	$scope.reload = function() {
 		$scope.loading = true;
 		LocalCategoryService.listAll().then(function(data) {
-			console.log(data);
 			$scope.categories = Category.transformNestedSetToUITree(data);
 			$scope.loading = false;
 		}, function(err) {
@@ -1898,7 +1901,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
   var QUEUE_LIMIT = 20;
   var QUEUE_LIMIT_360 = 60;
   var MAX_VARIANT = 100;
-
+  $scope.image_alert = new NcAlert();
   $scope.dataSet = {};
   $scope.dataSet.AttributeSets = [{
     AttributeSetId: null,
@@ -1959,8 +1962,13 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
   }; // end onbeforeunload
 
   var onImageUploadFail = function(item, filter) {
-    alert("Unable to upload image because validation error.");
+    $scope.image_alert.error(item.Message || 'Your image does not meet guideline.');
   }
+
+  var onImageUploadSuccess = function() {
+    $scope.image_alert.close();
+  }
+
   var onImageUploadQueueLimit = function() {}
   $scope.asStatus = Product.getStatus;
 
@@ -2371,8 +2379,8 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
           $scope.formData.ProductId = Number(res.ProductId);
           $scope.pageState.reset();
           $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
-          ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
-          ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
+          ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
+          ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
         });
         $scope.addProductForm.$setPristine(true);
       } else {
@@ -2425,8 +2433,8 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
             $scope.formData.ProductId = Number(productId);
             $scope.pageState.reset();
             watchVariantChanges();
-            ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
-            ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
+            ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
+            ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
           });
         }, function(error) {
           throw new KnownException("Unable to fetch product with id " + productId);
@@ -2440,8 +2448,8 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
         $scope.controlFlags, $scope.variationFactorIndices).then(function() {
         $scope.pageState.reset();
         watchVariantChanges();
-        ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
-        ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
+        ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
+        ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
       });
     } else {
 
@@ -2571,7 +2579,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
         $scope.pairModal.alert = new NcAlert();
         $scope.pairIndex = index;
         $scope.uploaderModal.queue = $scope.pairModal.queue;
-        ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail);
+        ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
       });
 
       $scope.$on('savePairModal', function(evt) {
@@ -8282,6 +8290,16 @@ var angular = require('angular');
 module.exports = ['config', function(config) {
     'use strict';
 	var service = {};
+
+    service.traverseSet = function(tree, key, value) {
+        if(tree.length == 0) return;
+        _.forEach(tree, function(node) {
+            node[key] = value;
+            service.traverseSet(node.nodes, key, value);
+        });
+        return tree;
+    };
+
     /**
      * REVERSE VERSION: Transform angular-ui-tree data to nested set
      * see https://en.wikipedia.org/wiki/Nested_set_model
@@ -8319,7 +8337,7 @@ module.exports = ['config', function(config) {
     /**
      * REVERSE VERSION: Transform nested set to angular-ui-tree
      */
-    service.transformNestedSetToUITree = function(set) {
+    service.transformNestedSetToUITree = function(set, flag) {
         var reverse2 = function(set) {
             var array = [];
             var pivot = null;
@@ -8975,7 +8993,7 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
   /**
    * Assign image uploader events specifically to COL-image uploading feature
    */
-  service.assignUploaderEvents = function(uploader, images, queueLimit, onFail, onValidation) {
+  service.assignUploaderEvents = function(uploader, images, queueLimit, onFail, onValidation, onSuccess) {
 
     uploader.onWhenAddingFileFailed = function(item, filter, options) {
       console.info('onAfterAddingFile', item, filter, options);
@@ -9003,6 +9021,7 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
     uploader.onSuccessItem = function(item, response, status, headers) {
       images[item.indx] = response;
       console.info('onSuccessItem', images, uploader.queue);
+			// onSuccess();
     };
     uploader.onErrorItem = function(item, response, status, headers) {
       images.splice(item.indx, 1);
@@ -10421,7 +10440,7 @@ module.exports = {
 },{}],143:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Sun Feb 28 2016 14:44:56 GMT+0700 (Russia TZ 6 Standard Time)
+ * Sun Feb 28 2016 15:59:18 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 

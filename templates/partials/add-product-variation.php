@@ -11,13 +11,17 @@
 									<label class="control-label">Add Variation</label>
 							</div>
 							<div class="width-field-normal">
-									<select class="form-control" ng-disabled="!formData.AttributeSet.AttributeSetId" ng-model="controlFlags.variation">
+									<select class="form-control" ng-show="formData.AttributeSet.AttributeSetId" ng-disabled="!formData.AttributeSet.AttributeSetId" ng-model="controlFlags.variation">
 											<option value="enable">
 													Enable
 											</option>
 											<option value="disable" selected>
 													Disable
 											</option>
+									</select>
+
+									<select class="form-control disabled" disabled ng-show="!formData.AttributeSet.AttributeSetId">
+											<option selected disabled>Please select attribute set first</option>
 									</select>
 							</div>
 					</div>
@@ -105,8 +109,8 @@
 								<th class="column-variant">Variant</th>
 								<th ng-if="formData.Variants.length > 0 && formData.Variants[0].Pid">PID</th>
 								<th class="column-sku">SKU</th>
-								<th class="column-price">Price</th>
-								<th class="column-sale-price">Sale Price</th>
+								<th class="column-price">Original Price</th>
+								<th class="column-sale-price"><label class="required">Sale Price</label></th>
 								<th class="column-inventory">Inventory</th>
 								<th class="column-detail text-center">Detail</th>
 								<th class="column-visibility">Visibility</th>
