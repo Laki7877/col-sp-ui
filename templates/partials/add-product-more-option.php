@@ -30,45 +30,31 @@
                         <h2>SEO</h2></div>
                     <div class="form-section-content">
 
-                        <div ng-template="common/input/text2" ng-template-options="{
-						  'label': 'Meta Title (English)'
-						}">
+                        <div ng-template="common/input/text2" ng-template-options="{ 'label': 'Meta Title (English)' }">
                             <input maxlength="60" class="form-control width-field-normal" name="SEO_MetaTitleEn" ng-model="formData.SEO.MetaTitleEn" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaTitleEn) }" />
                         </div>
 
-                        <div ng-template="common/input/text2" ng-template-options="{
-						  'label': 'Meta Title (ไทย)'
-						}">
+                        <div ng-template="common/input/text2" ng-template-options="{ 'label': 'Meta Title (ไทย)' }">
                             <input maxlength="60" class="form-control width-field-normal" name="SEO_MetaTitleTh" ng-model="formData.SEO.MetaTitleTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaTitleTh) }" />
                         </div>
 
-                        <div ng-template="common/input/text2" ng-template-options="{
-						  'label': 'Meta Description (English)'
-						}">
+                        <div ng-template="common/input/text2" ng-template-options="{   'label': 'Meta Description (English)' }">
                             <input maxlength="150" class="form-control width-field-normal" name="SEO_MetaDescriptionEn" ng-model="formData.SEO.MetaDescriptionEn" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaDescriptionEn) }" />
                         </div>
 
-                        <div ng-template="common/input/text2" ng-template-options="{
-						  'label': 'Meta Description (ไทย)'
-						}">
+                        <div ng-template="common/input/text2" ng-template-options="{ 'label': 'Meta Description (ไทย)' }">
                             <input maxlength="150" class="form-control width-field-normal" name="SEO_MetaDescriptionTh" ng-model="formData.SEO.MetaDescriptionTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaDescriptionTh) }" />
                         </div>
 
-                        <div ng-template="common/input/text2" ng-template-options="{
-						  'label': 'Meta Keywords (English)',
-						}">
-                            <input placeholder="Keywords separated by comma" class="form-control width-field-normal" name="SEO_MetaKeywordsEn" ng-model="formData.SEO.MetaKeywordsEn" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaKeywordsEn) }" />
+                        <div ng-template="common/input/text2" ng-template-options="{  'label': 'Meta Keywords (English)'	}">
+                            <input placeholder="Keywords separated by comma" class="form-control width-field-normal" name="SEO_MetaKeywordsEn" ng-model="formData.SEO.MetaKeywordEn" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaKeywordsEn) }" />
                         </div>
 
-                        <div ng-template="common/input/text2" ng-template-options="{
-						  'label': 'Meta Keywords (ไทย)'
-						}">
-                            <input placeholder="Keywords separated by comma" class="form-control width-field-normal" name="SEO_MetaKeywordsTh" ng-model="formData.SEO.MetaKeywordsTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaKeywordsTh) }" />
+                        <div ng-template="common/input/text2" ng-template-options="{   'label': 'Meta Keywords (ไทย)' }">
+                            <input placeholder="Keywords separated by comma" class="form-control width-field-normal" name="SEO_MetaKeywordsTh" ng-model="formData.SEO.MetaKeywordTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaKeywordsTh) }" />
                         </div>
 
-                        <div ng-template="common/input/text2" ng-template-options="{
-						  'label': 'Product URL Key'
-						}">
+                        <div ng-template="common/input/text2" ng-template-options="{ 'label': 'Product URL Key' }">
                             <input maxlength="300" class="form-control width-field-normal" ng-pattern="/^[A-Za-z0-9_\-]+$/" name="SEO_ProductUrlKeyEn" ng-model="formData.SEO.ProductUrlKeyEn" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_ProductUrlKeyEn) }" />
                         </div>
 

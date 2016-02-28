@@ -18,8 +18,8 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
 
         var left = null;
         var right = null;
-        left = (a.ValueEn || a.AttributeValueEn || a.AttributeValues[0].AttributeValueEn);
-        right = (b.ValueEn || b.AttributeValueEn || a.AttributeValues[0].AttributeValueEn);
+        left = (a.ValueEn || a.AttributeValueEn || a.AttributeValues.length && a.AttributeValues[0].AttributeValueEn || '');
+        right = (b.ValueEn || b.AttributeValueEn || b.AttributeValues.length > 0 && b.AttributeValues[0].AttributeValueEn || '');
         console.log(a,b, 'toString variant');
         return left + (right ? ", " + right : "");
     };
