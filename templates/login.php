@@ -15,7 +15,7 @@
 				}">
 				<input
 				class="form-control width-field-large"
-				name="user" 
+				name="user"
 				ng-model="uform.user"
 				ng-class="{ 'has-error' : (events.user === false && loginForm.user.$invalid) || (error && loginForm.$pristine) }"
 				maxlength="300"
@@ -39,10 +39,10 @@
 				ng-blur="events.pass=false"
 				required />
 			</div>
-			<div class="form-group margin-bottom-5" ng-if="error && loginForm.$pristine">
+			<div class="form-group" ng-if="error && loginForm.$pristine">
 				<div class="width-label"></div>
 				<div class="width-field-normal">
-					<span class="help-block color-red text-center">Invalid Email or Password</span>
+					<span class="help-block color-red text-center margin-bottom-0">Invalid Email or Password</span>
 				</div>
 			</div>
 			<fieldset class="form-group margin-top-30">
