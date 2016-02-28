@@ -113,7 +113,7 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
           var BId = null;
           var BVId = null;
 
-          if (angular.isDefined(B)) {
+          if (angular.isDefined(B0)) {
             BId = $scope.dataSet.attributeOptions[1].Attribute.AttributeId;
             if (B0['AttributeValue']) {
               B = B0.AttributeValue.AttributeValueEn;
