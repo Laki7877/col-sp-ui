@@ -80,7 +80,7 @@
 							<i class="fa fa-plus-circle color-theme"></i> Add another option
 						</a>
 						<a class="like-text form-text" ng-click="variationFactorIndices.popSecond()" ng-if="dataSet.attributeOptions[1].options.length > 0 && variationFactorIndices.length() == 2 && jth == 1">
-								<i class="fa fa-trash color-theme"></i>
+								<i class="fa fa-trash color-theme icon-size-20"></i>
 						</a>
 					</div>
 
