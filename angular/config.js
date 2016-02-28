@@ -97,13 +97,13 @@ module.exports = {
 	},
 	SHOP_STATUS: [
 		{
-			name: 'NA',
-			value: 'Inactive',
+			name: 'Inactive',
+			value: 'NA',
 			color: 'color-red'
 		},
 		{
-			name: 'AT',
-			value: 'Active',
+			name: 'Active',
+			value: 'AT',
 			color: 'color-green'
 		}
 	],

@@ -13169,59 +13169,60 @@ label.css-label {
 .filter-section .filter-active {
   color: #32343C;
 }
-/* line 276, ../../../assets/_table.scss */
-.filter-section .filter-checkbox {
-  float: right;
-}
-/* line 278, ../../../assets/_table.scss */
-.filter-section .filter-checkbox input {
-  margin-top: 0px;
-  margin-right: 6px;
-}
 
-/* line 285, ../../../assets/_table.scss */
+/* line 277, ../../../assets/_table.scss */
 .filter-section.filter-input {
   padding-left: 110px;
 }
 
-/* line 290, ../../../assets/_table.scss */
+/* line 282, ../../../assets/_table.scss */
 .search-section-wrapper {
   margin: 15px 0px -10px -10px;
 }
-/* line 293, ../../../assets/_table.scss */
+/* line 285, ../../../assets/_table.scss */
 .search-section-wrapper .search-section-item {
   float: left;
   display: table;
   border-spacing: 10px;
 }
-/* line 297, ../../../assets/_table.scss */
+/* line 289, ../../../assets/_table.scss */
 .search-section-wrapper .search-section-item button {
   height: 30px;
   color: #4899DD;
 }
-/* line 301, ../../../assets/_table.scss */
+/* line 293, ../../../assets/_table.scss */
 .search-section-wrapper .search-section-item .btn-action {
   min-width: 80px;
 }
-/* line 304, ../../../assets/_table.scss */
+/* line 296, ../../../assets/_table.scss */
 .search-section-wrapper .search-section-item .form-control {
   height: 30px;
 }
-/* line 307, ../../../assets/_table.scss */
+/* line 299, ../../../assets/_table.scss */
 .search-section-wrapper .search-section-item .bulk-action-dropdown {
   color: #32343C;
   width: 180px;
   text-align: left;
 }
-/* line 311, ../../../assets/_table.scss */
+/* line 303, ../../../assets/_table.scss */
 .search-section-wrapper .search-section-item .bulk-action-dropdown .caret {
   float: right;
   margin-top: 8px;
 }
-/* line 316, ../../../assets/_table.scss */
+/* line 308, ../../../assets/_table.scss */
 .search-section-wrapper .search-section-item .search-box {
   width: 380px;
   border-spacing: 0px;
+}
+/* line 312, ../../../assets/_table.scss */
+.search-section-wrapper .search-section-item .filter-checkbox {
+  line-height: 30px;
+  margin-right: -10px;
+}
+/* line 315, ../../../assets/_table.scss */
+.search-section-wrapper .search-section-item .filter-checkbox input {
+  margin-top: 0px;
+  margin-right: 6px;
 }
 /* line 322, ../../../assets/_table.scss */
 .search-section-wrapper .body-dropdown-button {
@@ -13677,20 +13678,24 @@ form h6 {
   display: inline-block;
 }
 /* line 11, ../../../assets/_button.scss */
+.link-btn-plain.width-lg {
+  width: 100px;
+}
+/* line 15, ../../../assets/_button.scss */
 .link-btn-plain.width-xl {
   width: 120px;
 }
-/* line 15, ../../../assets/_button.scss */
+/* line 19, ../../../assets/_button.scss */
 .link-btn-plain.width-xxl {
   width: 180px;
 }
 
-/* line 20, ../../../assets/_button.scss */
+/* line 24, ../../../assets/_button.scss */
 .btn-default {
   border-color: #BCC7D5;
 }
 
-/* line 24, ../../../assets/_button.scss */
+/* line 28, ../../../assets/_button.scss */
 .btn-white {
   width: 80px;
   color: #4899DD;
@@ -13736,7 +13741,7 @@ form h6 {
   background-color: #4899DD;
 }
 
-/* line 29, ../../../assets/_button.scss */
+/* line 33, ../../../assets/_button.scss */
 .btn-blue {
   width: 80px;
   color: #ffffff;
@@ -13782,7 +13787,7 @@ form h6 {
   background-color: #ffffff;
 }
 
-/* line 34, ../../../assets/_button.scss */
+/* line 38, ../../../assets/_button.scss */
 .btn-grey {
   width: 80px;
   color: #ffffff;
@@ -13828,7 +13833,7 @@ form h6 {
   background-color: #ffffff;
 }
 
-/* line 39, ../../../assets/_button.scss */
+/* line 43, ../../../assets/_button.scss */
 .btn-green {
   width: 80px;
   color: #ffffff;
@@ -13874,7 +13879,7 @@ form h6 {
   background-color: #ffffff;
 }
 
-/* line 44, ../../../assets/_button.scss */
+/* line 48, ../../../assets/_button.scss */
 .btn-red {
   width: 80px;
   color: #ffffff;
@@ -13920,22 +13925,22 @@ form h6 {
   background-color: #ffffff;
 }
 
-/* line 49, ../../../assets/_button.scss */
+/* line 53, ../../../assets/_button.scss */
 .btn.btn-width-xl {
   width: 120px;
 }
 
-/* line 53, ../../../assets/_button.scss */
+/* line 57, ../../../assets/_button.scss */
 .btn.btn-width-xxl {
   width: 180px;
 }
 
-/* line 57, ../../../assets/_button.scss */
+/* line 61, ../../../assets/_button.scss */
 .btn.btn-width-xxxl {
   width: 200px;
 }
 
-/* line 61, ../../../assets/_button.scss */
+/* line 65, ../../../assets/_button.scss */
 .btn.btn-width-100 {
   width: 100%;
 }
