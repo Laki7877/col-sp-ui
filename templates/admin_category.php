@@ -44,7 +44,7 @@
 			</div>
 			<div class="col-xs-12 no-padding margin-bottom-60" ui-tree="treeOptions" max-depth="4">
 				<ol class="sortable no-padding" ui-tree-nodes ng-model="categories">
-					<li ng-repeat="node in categories" ui-tree-node ng-include="'global_category/nodes'"></li>
+					<li ng-repeat="node in categories" ui-tree-node ng-include="'global_category/nodes'" data-collapsed="node.collapsed"></li>
 				</ol>
 			</div>
 		</div>
