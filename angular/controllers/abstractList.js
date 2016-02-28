@@ -34,6 +34,7 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 				$scope.bulkContainer.length = 0;
 			}
 		}
+
 		options.service.list($scope.params)
 			.then(function(data) {
 				$scope.list = data;
@@ -123,6 +124,9 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 	};
 
 	$scope.$watch('params', function(a,b) {
+		if(_.isEqual(a,b)) {
+			return;
+		}
 		$scope.reload(a,b);
 	}, true);
 
