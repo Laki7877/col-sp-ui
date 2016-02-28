@@ -289,7 +289,8 @@
                                                         'conditions' : addProductVariantForm.Modal_Weight.$error
                                                         }
                                                     }">
-                                                    <input type="text" name="Modal_Weight" maxlength="11" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Weight) }" class="form-control" ng-pattern="/^\d+(\.\d{1,2})?$/" ng-model="<?= $model ?>.Weight" />
+                                                    <input type="text" name="Modal_Weight" maxlength="11" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Weight) }"
+                                                    class="form-control" ng-pattern="/^\d+(\.\d{1,2})?$/" ng-model="<?= $model ?>.Weight" />
                                                 </div>
 
                                                 <div class="input-column select input-xl">

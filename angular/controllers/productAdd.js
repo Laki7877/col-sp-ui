@@ -147,7 +147,7 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
           kpair.Width = $scope.formData.MasterVariant.Width;
           kpair.Height = $scope.formData.MasterVariant.Height;
           kpair.Upc = $scope.formData.MasterVariant.Upc;
-          kpair.Weight = $scope.formData.Weight;
+          kpair.Weight = $scope.formData.MasterVariant.Weight;
           kpair.DescriptionFullEn = $scope.formData.MasterVariant.DescriptionFullEn;
           kpair.DescriptionFullTh = $scope.formData.MasterVariant.DescriptionFullTh;
           kpair.DescriptionShortEn = $scope.formData.MasterVariant.DescriptionShortEn;
@@ -155,7 +155,7 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
           kpair.Images = angular.copy($scope.formData.MasterImages);
           kpair.VideoLinks = angular.copy($scope.formData.VideoLinks);
           kpair.PrepareDay = $scope.formData.PrepareDay;
-          kpair.SEO = angular.copy($scope.formData.SEO || {})
+          kpair.SEO = angular.copy($scope.formData.SEO || {});
 
           kpair._override = angular.copy(protoCheckState);
 
@@ -315,7 +315,7 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
     });
   };
 
-  $scope.$watch('formData.MasterVariant.SalePrice', function() {
+  $scope.$watch('formData.MasterVariant.OriginalPrice+formData.MasterVariant.SalePrice', function() {
     var form = $scope.addProductForm;
     if (form.MasterVariant_SalePrice) form.MasterVariant_SalePrice.$setValidity("min", true);
     if (!form.MasterVariant_SalePrice) return;
@@ -346,24 +346,24 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
 
     if (Status == 'WA') {
       if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == "") {
-        mat.push("Required Field Missing: Description (Thai)");
+        mat.push("Description (Thai)");
       }
 
       if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == "") {
-        mat.push("Required Field Missing: Description (English)");
+        mat.push("Description (English)");
       }
 
       if (!$scope.formData.Brand.BrandId) {
-        mat.push("Required Field Missing: Brand is Missing");
+        mat.push("Brand");
       }
 
       if ($scope.formData.MasterImages.length == 0) {
-        mat.push("At least one image is required");
+        mat.push("At least one image");
       }
 
       $scope.formData.Variants.forEach(function(variant){
         if(variant.Images.length == 0){
-          mat.push("At least one image is required for variation " + variant.text);
+          mat.push("At least one image for variation " + "'" + variant.text + "'");
         }
       });
 
@@ -437,7 +437,7 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
     var validateMat = manualValidate(Status);
     if (validateMat.length > 0) {
       $scope.pageState.reset();
-      $scope.alert.error(validateMat);
+      $scope.alert.error(validateMat.join(", "));
       return;
     }
 
@@ -445,7 +445,21 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
       $scope.pageState.reset();
       var requiredMissing = ('required' in $scope.addProductForm.$error);
       if (Status == 'DF' && requiredMissing) {
-        $scope.alert.error("Unable to save. Please make sure that Product Name (Thai), Product Name (English), and Original Price are filled correctly.");
+        var mfd = [];
+        if($scope.addProductForm.MasterVariant_ProductNameEn.$invalid){
+          mfd.push('Product Name (English)');
+        }
+        //Product Name (Thai), Product Name (English), and Sale Price,
+        if($scope.addProductForm.MasterVariant_ProductNameTh.$invalid){
+          mfd.push('Product Name (Thai)');
+        }
+
+        if($scope.addProductForm.MasterVariant_SalePrice.$invalid){
+          mfd.push('Sale Price');
+        }
+        mfd.push('Master Attributes');
+
+        $scope.alert.error("Unable to save. Please make sure that " + mfd.join(" and ") + " are filled correctly.");
       } else if (Status == 'WA' && requiredMissing) {
         $scope.alert.error("Unable to publish because you are missing required fields");
       } else {
