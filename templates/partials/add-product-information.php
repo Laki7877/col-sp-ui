@@ -162,7 +162,7 @@
                                     <select ng-if="controlFlags.variation == 'enable'" class="form-control" disabled>
                                       <option disabled>{{ formData.AttributeSet.AttributeSetNameEn }}</option>
                                     </select>
-                                    
+
                                     <!-- dont show if nothing is dataSet. to choose from -->
                                     <ui-select ng-if="controlFlags.variation != 'enable'" ng-model="formData.AttributeSet" ng-show="dataSet.AttributeSets.length > 0">
                                         <ui-select-match placeholder="Search Attribute Set">
@@ -198,7 +198,7 @@
                             </div>
                             <div ng-class="{'width-field-normal': !isHtmlInput(amap.Attribute.DataType), 'width-field-xxl': isHtmlInput(amap.Attribute.DataType)}">
 
-                                <select ng-if="isListInput(amap.Attribute.DataType)" ng-required="amap.Attribute.Required"
+                                <select ng-if="isListInput(amap.Attribute.DataType)" ng-required="amap.Attribute.Required && onPublishing"
                                 class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]"
                                 ng-class="{'has-error' : $root.isInvalid(addProductForm.AmapInput{{ $index }}) }"
                                 name="AmapInput{{$index}}"
@@ -207,7 +207,7 @@
                                 </select>
 
                                 <div ng-if="isHtmlInput(amap.Attribute.DataType)">
-                                    <textarea ng-required="amap.Attribute.Required"
+                                    <textarea ng-required="amap.Attribute.Required && onPublishing"
                                     ng-class="{'has-error' : $root.isInvalid(addProductForm.AmapInput{{ $index }}) }"
                                     ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]"
                                     name="AmapInput{{$index}}"
@@ -217,7 +217,7 @@
                                 <input
                                 ng-if="isFreeTextInput(amap.Attribute.DataType)"
                                 ng-class="{'has-error' : $root.isInvalid(addProductForm.AmapInput{{ $index }}) }"
-                                ng-required="amap.Attribute.Required"
+                                ng-required="amap.Attribute.Required && onPublishing"
                                 type="text" class="form-control"
                                 name="AmapInput{{$index}}"
                                 ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" />
