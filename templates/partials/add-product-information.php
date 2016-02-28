@@ -162,6 +162,7 @@
                                     <select ng-if="controlFlags.variation == 'enable'" class="form-control" disabled>
                                       <option disabled>{{ formData.AttributeSet.AttributeSetNameEn }}</option>
                                     </select>
+                                    
                                     <!-- dont show if nothing is dataSet. to choose from -->
                                     <ui-select ng-if="controlFlags.variation != 'enable'" ng-model="formData.AttributeSet" ng-show="dataSet.AttributeSets.length > 0">
                                         <ui-select-match placeholder="Search Attribute Set">
@@ -175,7 +176,7 @@
 
 
                                     <!-- if nothing is availalbe to pick -->
-                                    <select class="form-control" ng-if="dataSet.AttributeSets.length == 0 && controlFlags.variation == 'enable'" disabled>
+                                    <select class="form-control" ng-if="dataSet.AttributeSets.length == 0" disabled>
                                         <option disabled>This category has no attribute sets</option>
                                     </select>
 
