@@ -12,9 +12,6 @@
             <div class="modal-body margin-top-20">
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="alert alert-warning " role="alert">
-                            Please input product variant detail only if it is different from the main product. The fields left blank will use the same information and image as the main product.
-                        </div>
                         <div ng-show="addProductVariantForm.$invalid" class="alert alert-red">
                             Please make sure all fields have no error.
                         </div>
@@ -186,7 +183,8 @@
                                             'conditions' : addProductVariantForm.Modal_DescriptionShortTh.$error
                                             }
                                             }">
-                                            <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="Modal_DescriptionShortTh" ng-model="<?=$model?>.DescriptionShortTh" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_DescriptionShortTh) }" />
+                                            <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500"
+                                              name="Modal_DescriptionShortTh" ng-model="<?=$model?>.DescriptionShortTh" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_DescriptionShortTh) }" />
                                             </textarea>
                                         </div>
 
@@ -197,6 +195,10 @@
                                   Package Detail
                                 </div>
                                 <div class="form-section-content">
+                                    <div nc-template="common/input/form-group-with-label" nc-label="Preparation Time" nc-template-form="Modal_PrepareDay" nc-template-options-path="addProductForm/PrepareDay">
+                                        <input class="form-control width-field-normal" name="Modal_PrepareDay" ng-pattern-restrict="^[0-9]*$"
+                                        maxlength="5" ng-model="<?=$model?>.PrepareDay" />
+                                    </div>
 
                                     <!-- package detail -->
                                     <div class="form-group">
@@ -305,6 +307,80 @@
                                         <!-- widht-xxl-->
                                     </div>
                                     <!--formgp-->
+
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <div class="form-section-header">
+                                    <h2>SEO</h2></div>
+                                <div class="form-section-content">
+
+                                    <div ng-template="common/input/text2" ng-template-options="{ 'label': 'Meta Title (English)' }">
+                                        <input maxlength="60" class="form-control width-field-normal"
+                                        name="Modal_SEO_MetaTitleEn"
+                                        ng-model="<?= $model ?>.SEO.MetaTitleEn"
+                                        ng-class="{ 'has-error' : $root.isInvalid(Modal_SEO_MetaTitleEn) }" />
+                                    </div>
+
+                                    <div ng-template="common/input/text2" ng-template-options="{ 'label': 'Meta Title (ไทย)' }">
+                                        <input maxlength="60" class="form-control width-field-normal"
+                                        name="Modal_SEO_MetaTitleTh" ng-model="<?= $model ?>.SEO.MetaTitleTh"
+                                        ng-class="{ 'has-error' : $root.isInvalid(Modal_SEO_MetaTitleTh) }" />
+                                    </div>
+
+                                    <div ng-template="common/input/text2" ng-template-options="{   'label': 'Meta Description (English)' }">
+                                        <input maxlength="150" class="form-control width-field-normal"
+                                        name="Modal_SEO_MetaDescriptionEn" ng-model="<?= $model ?>.SEO.MetaDescriptionEn"
+                                        ng-class="{ 'has-error' : $root.isInvalid(Modal_SEO_MetaDescriptionEn) }" />
+                                    </div>
+
+                                    <div ng-template="common/input/text2" ng-template-options="{ 'label': 'Meta Description (ไทย)' }">
+                                        <input maxlength="150" class="form-control width-field-normal"
+                                        name="Modal_SEO_MetaDescriptionTh"
+                                        ng-model="<?= $model ?>.SEO.MetaDescriptionTh"
+                                        ng-class="{ 'has-error' : $root.isInvalid(Modal_SEO_MetaDescriptionTh) }" />
+                                    </div>
+
+                                    <div ng-template="common/input/text2" ng-template-options="{  'label': 'Meta Keywords (English)'	}">
+                                        <input placeholder="Keywords separated by comma"
+                                        class="form-control width-field-normal"
+                                        name="Modal_SEO_MetaKeywordsEn" ng-model="<?= $model ?>.SEO.MetaKeywordEn"
+                                        ng-class="{ 'has-error' : $root.isInvalid(Modal_SEO_MetaKeywordsEn) }" />
+                                    </div>
+
+                                    <div ng-template="common/input/text2" ng-template-options="{   'label': 'Meta Keywords (ไทย)' }">
+                                        <input placeholder="Keywords separated by comma"
+                                        class="form-control width-field-normal" name="Modal_SEO_MetaKeywordTh"
+                                        ng-model="<?= $model ?>.SEO.MetaKeywordsTh"
+                                        ng-class="{ 'has-error' : $root.isInvalid(Modal_SEO_MetaKeywordsTh) }" />
+                                    </div>
+
+                                    <div ng-template="common/input/text2" ng-template-options="{ 'label': 'Product URL Key' }">
+                                        <input maxlength="300" class="form-control width-field-normal"
+                                        ng-pattern="/^[A-Za-z0-9_\-]+$/" name="Modal_SEO_ProductUrlKeyEn"
+                                        ng-model="<?= $model ?>.SEO.ProductUrlKeyEn"
+                                        ng-class="{ 'has-error' : $root.isInvalid(Modal_SEO_ProductUrlKeyEn) }" />
+                                    </div>
+
+                                    <div ng-template="common/input/text2" ng-template-options="{
+            						'label': 'Product Boosting Weight',
+            						'error' : {
+            						'messages': {
+            						'max': 'Only numbers from 1 to 10000 is allowed',
+            						'min': 'Only numbers from 1 to 10000 is allowed',
+                                    'pattern': 'Only numbers from 1 to 10000 is allowed'
+            						},
+            						'show': $root.isInvalid(addProductForm.SEO_ProductBoostingWeight),
+            						'conditions' : addProductForm.SEO_ProductBoostingWeight.$error
+            						}
+            						}">
+                                        <input type="number" class="form-control width-field-normal"
+                                        min="0" max="10000" step="1" ng-pattern="/^[0-9]+$/"
+                                        name="Modal_SEO_ProductBoostingWeight" ng-model="<?= $model ?>.SEO.ProductBoostingWeight"
+                                        ng-class="{ 'has-error' : $root.isInvalid(Modal_SEO_ProductBoostingWeight) }"
+                                        />
+                                    </div>
 
                                 </div>
                             </div>

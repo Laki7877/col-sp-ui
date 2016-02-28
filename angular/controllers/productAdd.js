@@ -146,6 +146,12 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
           kpair.Length = $scope.formData.MasterVariant.Length;
           kpair.Width = $scope.formData.MasterVariant.Width;
           kpair.Height = $scope.formData.MasterVariant.Height;
+          kpair.Upc = $scope.formData.MasterVariant.Upc;
+          kpair.Images = angular.copy($scope.formData.MasterImages);
+          kpair.VideoLinks = angular.copy($scope.formData.VideoLinks);
+          kpair.PrepareDay = $scope.formData.PrepareDay;
+          kpair.SEO = angular.copy($scope.formData.SEO || {})
+
           kpair._override = angular.copy(protoCheckState);
 
           if (kpair.text in vHashSet) {
@@ -346,6 +352,15 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
         mat.push("Required Field Missing: Brand is Missing");
       }
 
+      if ($scope.formData.MasterImages.length == 0) {
+        mat.push("At least one image is required");
+      }
+
+      $scope.formData.Variants.forEach(function(variant){
+        if(variant.Images.length == 0){
+          mat.push("At least one image is required for variation " + variant.text);
+        }
+      });
 
     }
 
@@ -361,9 +376,6 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
       mat.push("Effective date/time must come before expire date/time.");
     }
 
-    if ($scope.formData.MasterImages.length == 0) {
-      mat.push("At least one image is required");
-    }
 
     return mat;
   };
