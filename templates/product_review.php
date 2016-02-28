@@ -19,7 +19,7 @@
             <th class="width_100" nc-sort="PID">PID</th>
             <th class="width_150" nc-sort="Customer">Customer</th>
             <th>Comment</th>
-            <th nc-sort="Status width_120">Status</th>
+            <th class="width_120" nc-sort="Status">Status</th>
             <th class="width_150">Approve</th>
             <th class="action-column">Action</th>
           </tr>
