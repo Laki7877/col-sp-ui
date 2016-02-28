@@ -42,7 +42,9 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 		},
 		confirmation: {
 			title: 'Delete',
-			message: 'Are you sure you want to delete this category?'
+			message: 'Are you sure you want to delete this category?',
+			btnClass: 'btn-red',
+			btnConfirm: 'Delete'
 		}
 	}];
 
