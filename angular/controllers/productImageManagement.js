@@ -92,7 +92,10 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
 				icon: 'fa-trash',
 				confirmation: {
 					title: 'Confirm to delete',
-					message: 'Are you sure you want to delete the image?'
+					message: 'Are you sure you want to delete the image?',
+					btnConfirm: 'Delete',
+					btnCancel: 'Cancel',
+					btnClass: 'btn-red'
 				}
 			}
 		]
