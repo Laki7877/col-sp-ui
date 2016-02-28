@@ -93,7 +93,7 @@
                             <div class="width-field-normal">
                                 <div class="ah-select2-dropdown">
                                     <ui-select ng-model="formData.Brand">
-                                        <ui-select-match placeholder="Search Brand...">
+                                        <ui-select-match placeholder="Brand">
                                             <span ng-bind="$select.selected.BrandNameEn"></span>
                                             <span ng-show="!$select.selected.BrandNameEn">- Select Brand -</span>
                                         </ui-select-match>
