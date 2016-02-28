@@ -19,7 +19,6 @@
 			</div>
 		</div>
 	</div>
-
 	<div class="row" ng-show="controlFlags.variation == 'enable'">
 		<div class="col-xs-12">
 			<div class="form-section">

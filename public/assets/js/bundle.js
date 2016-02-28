@@ -2017,11 +2017,11 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
 
         $scope.formData.Variants = [];
         var trackVariant = new Set();
-        var expand = function(A, B) {
+        var expand = function(A0, B0) {
           var AVId = null;
-          if (_.has(A, 'AttributeValue')) {
-            AVId = A.AttributeValue.AttributeValueId;
-            A = A.AttributeValue.AttributeValueEn;
+          if (_.has(A0, 'AttributeValue')) {
+            AVId = A0.AttributeValue.AttributeValueId;
+            A = A0.AttributeValue.AttributeValueEn;
           }
 
           var BId = null;
@@ -2029,11 +2029,11 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
 
           if (angular.isDefined(B)) {
             BId = $scope.dataSet.attributeOptions[1].Attribute.AttributeId;
-            if (B['AttributeValue']) {
-              B = B.AttributeValue.AttributeValueEn;
+            if (B0['AttributeValue']) {
+              B = B0.AttributeValue.AttributeValueEn;
             }
-            if (_.has(B, 'AttributeValue.AttributeValueId')) {
-              BVId = B.AttributeValue.AttributeValueId;
+            if (_.has(B0, 'AttributeValue.AttributeValueId')) {
+              BVId = B0.AttributeValue.AttributeValueId;
             }
           } else {
             B = ''
@@ -2119,13 +2119,13 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
             var A = $scope.dataSet.attributeOptions[0].options[aKey];
 
             if (angular.isDefined($scope.dataSet.attributeOptions[1]['options']) && $scope.dataSet.attributeOptions[1].options.length == 0) {
-              console.log("expanding A");
+              console.log("expanding A" , A);
               expand(A);
             }
 
             for (var bKey in $scope.dataSet.attributeOptions[1].options) {
               var B = $scope.dataSet.attributeOptions[1].options[bKey];
-              console.log("Expanding A,B");
+              console.log("Expanding A,B", A,B);
               expand(A, B);
             }
           }
