@@ -1983,7 +1983,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
         prevVariants = undefined;
 
         $scope.formData.Variants = [];
-
+        var trackVariant = new Set();
         var expand = function(A, B) {
           var AVId = null;
           if (_.has(A, 'AttributeValue')) {
@@ -2057,8 +2057,14 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
 
           }
 
-          //Only push new variant if don't exist
-          $scope.formData.Variants.push(kpair);
+          var hashNew = (util.variant.toString(kpair.FirstAttribute, kpair.SecondAttribute));
+          if(!trackVariant.has(hashNew)){
+            //Only push new variant if don't exist
+
+            $scope.formData.Variants.push(kpair);
+            trackVariant.add(hashNew);
+          }
+
         }
 
 
@@ -2287,6 +2293,16 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
 
     $scope.pageState.reset();
     $scope.pageState.load('Validating..');
+
+
+    if($scope.controlFlags.variation == 'enable' && $scope.formData.Variants.length == 0){
+      $scope.controlFlags.variation == 'disable';
+    }
+
+    if($scope.controlFlags.variation == 'disable'){
+      $scope.formData.Variants = [];
+    }
+
 
     $scope.onPublishing = (Status == "WA");
     //On click validation
@@ -5236,8 +5252,8 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
 
         var left = null;
         var right = null;
-        left = (a.ValueEn || a.AttributeValueEn);
-        right = (b.ValueEn || b.AttributeValueEn);
+        left = (a.ValueEn || a.AttributeValueEn || a.AttributeValues[0].AttributeValueEn);
+        right = (b.ValueEn || b.AttributeValueEn || a.AttributeValues[0].AttributeValueEn);
         console.log(a,b, 'toString variant');
         return left + (right ? ", " + right : "");
     };
