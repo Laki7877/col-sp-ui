@@ -2,6 +2,8 @@
     'ngInject';
   $scope.uform = {};
   $scope.loginForm = {};
+  $scope.events = {};
+
   var profile = storage.getCurrentUserProfile();
   if (profile && profile.User.IsAdmin) {
     $window.location.href = Credential.getRedirPath(profile)
@@ -24,8 +26,7 @@
       }
 
       $window.location.href = redir;
-    }, function (err, status, headers, config) {
-      console.info(err, status, headers, config);
+    }, function (err) {
       storage.clear();
       $scope.error = true;
       $scope.loading = false;
