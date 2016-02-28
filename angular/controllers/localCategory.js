@@ -17,9 +17,9 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 	//UiTree onchange event
 	$scope.treeOptions = {
 		dropped: function(event) {
-			/*if(event.dest.index != event.source.index || event.dest.nodesScope != event.source.nodesScope) {
+			if(event.dest.index != event.source.index || event.dest.nodesScope != event.source.nodesScope) {
 				$scope.sync();
-			}*/
+			}
 		}
 	};
 
@@ -50,7 +50,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 		node.Visibility = !node.Visibility;
 		LocalCategoryService.visible([_.pick(node, ['Visibility', 'CategoryId'])])
 			.then(function() {
-				Category.traverseSet(node.nodes, node.Visibility);
+				Category.traverseSet(node.nodes, 'Visibility', node.Visibility);
 			},
 			function(err) {
 				//revert
@@ -188,7 +188,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				item.CategoryId = data.CategoryId;
 				item.CategoryAbbreviation = data.CategoryAbbreviation;
 				item.Visibility = data.Visibility;
-				Category.traverseSet(item.nodes, item.Visibility);
+				Category.traverseSet(item.nodes, 'Visibility', item.Visibility);
 			}
 			$scope.alert.success(config.DEFAULT_SUCCESS_MESSAGE);
 		});
@@ -196,15 +196,18 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 
 	//On init
 	$scope.init = function() {
-		$scope.reload();
+		$scope.reload(true);
 	};
 
 	//Load category list
-	$scope.reload = function() {
+	$scope.reload = function(init) {
 		$scope.loading = true;
 		LocalCategoryService.listAll().then(function(data) {
 			$scope.categories = Category.transformNestedSetToUITree(data);
 			$scope.loading = false;
+			if(init && $scope.categories.length > 0) {
+				$scope.categories[0].collapsed = false;
+			}
 		}, function(err) {
 			$scope.loading = false;
 			$scope.alert.open(false, common.getError(err));

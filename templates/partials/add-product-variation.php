@@ -1,31 +1,29 @@
 <div id="add-product-variation-tab-content">
 	<? $this->insert('partials/add-product-inner-tab-breadcrumb') ?>
-	<div class="row">
+
+
+	<div class="row" ng-if="controlFlags.variation != 'enable'">
 		<div class="col-xs-12">
 			<div class="form-section">
 				<div class="form-section-header"><h2>Variation Option</h2></div>
-				<div class="form-section-content padding-left-30">
-					<!-- select whether the product variation tab should be enabled -->
-					<div class="form-group">
-							<div class="width-label">
-									<label class="control-label">Add Variation</label>
-							</div>
-							<div class="width-field-normal">
-									<select class="form-control" ng-show="formData.AttributeSet.AttributeSetId" ng-disabled="!formData.AttributeSet.AttributeSetId" ng-model="controlFlags.variation">
-											<option value="enable">
-													Enable
-											</option>
-											<option value="disable" selected>
-													Disable
-											</option>
-									</select>
-
-									<select class="form-control disabled" disabled ng-show="!formData.AttributeSet.AttributeSetId">
-											<option selected disabled>Please select attribute set first</option>
-									</select>
-							</div>
+				<div class="form-section-content">
+					<div class="form-group ">
+				      <p class="form-control-static">
+								Variation will allow you to create a group of products with different attributes such as size and color. Once you enable variation,
+								 information from other tabs will be copied into variants that you will create, and variation cannot be disabled.
+								 <strong>Please select attribute set before enabling variation.</strong>
+							</p>
+					    <button class="btn btn-width-xxl btn-blue margin-top-20" ng-disabled="!formData.AttributeSet.AttributeSetId" ng-click="enableVariation()">Enable Variation</button>
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" ng-show="controlFlags.variation == 'enable'">
+		<div class="col-xs-12">
+			<div class="form-section">
+				<div class="form-section-header"><h2>Variation Option</h2></div>
 
 				<!-- ng-if too long -->
 				<div class="form-section-content" ng-if="!(formData.AttributeSet && !formData.AttributeSet['AttributeSetId']) && controlFlags.variation == 'enable'">

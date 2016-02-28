@@ -23,6 +23,9 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
     BrandNameEn: "No match found",
     disabled: true
   }];
+  $scope.enableVariation = function(){
+    $scope.controlFlags.variation = 'enable';
+  };
   $scope.dataSet.SearchTags = [];
   $scope.dataSet.RelatedProducts = [];
   $scope.dataSet.StockTypes = ['Stock', 'Pre-Order'];
