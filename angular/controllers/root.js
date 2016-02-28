@@ -24,8 +24,9 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   //Get Shop activity
   $rootScope.shopStatus = {};
   _.forEach(config.SHOP_STATUS, function(item) {
-    $rootScope.shopStatus[item.name] = item;
+    $rootScope.shopStatus[item.value] = item;
   });
+  console.log($rootScope);
   $rootScope.asShopStatus = function(status) {
     return _.isNil(status) ? config.SHOP_STATUS[0] : $rootScope.shopStatus[status];
   };
