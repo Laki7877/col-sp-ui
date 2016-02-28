@@ -65,3 +65,9 @@
 .btn.btn-width-100 {
   width: 100%;
 }
+
+
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn{
+  pointer-events: none;
+  color: $color-grey;
+}

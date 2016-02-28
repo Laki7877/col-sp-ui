@@ -41,6 +41,7 @@ module.exports = function($rootScope, $scope, Shop, ImageService, NcAlert, confi
   $scope.init = function() {
 
     Shop.getProfile().then(function(data) {
+      console.log(data);
       $scope.formData = Shop.deserialize(data);
       $scope.loading = false;
       if (data.Logo.url) $scope.uploadViewBag.images.push(data.Logo);
@@ -51,6 +52,11 @@ module.exports = function($rootScope, $scope, Shop, ImageService, NcAlert, confi
     $scope.formData.Logo = $scope.uploadViewBag.images[0];
     $scope.alert.close();
     Shop.saveProfile(Shop.serialize($scope.formData)).then(function(data) {
+      $scope.formData = Shop.deserialize(data); 
+      if (data.Logo.url) {
+        $scope.uploadViewBag.images.pop();
+        $scope.uploadViewBag.images.push(data.Logo);
+      }
       $scope.alert.success('Saved Profile Successfully');
       $rootScope.Profile.Shop.Status = data.Status;
       storage.storeCurrentUserProfile($rootScope.Profile, true);

@@ -13945,6 +13945,12 @@ form h6 {
   width: 100%;
 }
 
+/* line 70, ../../../assets/_button.scss */
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+  pointer-events: none;
+  color: #BCC7D5;
+}
+
 /* line 2, ../../../assets/_bootstrap_tagsinput.sass */
 .ahpt .bootstrap-tagsinput {
   padding-top: 7px;
