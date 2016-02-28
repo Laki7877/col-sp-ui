@@ -1,7 +1,7 @@
 <?php
 $menus = [
 	["id" => "information", "name" => 'Information', "class" => "require active"],
-	["id" => "images", "name" => 'Images', "ng_class" => "{require : ((formData.Variants || []).length == 0) }"],
+	["id" => "images", "name" => 'Images', "class" => "require"], // "ng_class" => "{require : ((formData.Variants || []).length == 0) }"
 	["id" => "category", "name" => 'Category', 'class' => ''],
 	["id" => "variation", "name" => 'Variation', 'class' => ''],
 	["id" => "more_option", "name" => 'More Options', 'class' => ''],

@@ -13,7 +13,7 @@ $newText = implode('<span class="ah-breadcrumb-splitter">/</span>', $extracted);
 ?>
 <div class="page-header no-padding">
     <h1 class="float-left page-header-title ah-breadcrumb">
-    	<a href="\"<?= $newText ?>
+    	<?= $newText ?>
     </h1>
     <div class="page-actions float-right" ng-if="!_loading.state">
   	          <button ng-show="formData.Status != 'WA'"

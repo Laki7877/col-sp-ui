@@ -11,7 +11,7 @@
 		<div class="page-header with-border" ng-show="loading.length >= 2">
 
 		    <h1 class="float-left page-header-title ah-breadcrumb">
-		    	<a href="/?p=index" class="ah-breadcrumb-path ah-breadcrumb-idx-0">Products</a>
+		    	<a href="/products" class="ah-breadcrumb-path ah-breadcrumb-idx-0">Products</a>
 		    	<span class="ah-breadcrumb-splitter">/</span>
 		    	<a href="#" class="ah-breadcrumb-path ah-breadcrumb-idx-1">Export</a>
 		    </h1>

@@ -53,7 +53,7 @@
 
 																<ui-select ng-if="isListInput(dataSet.attributeOptions[jth].Attribute.DataType)"
 																multiple ng-model="dataSet.attributeOptions[jth].options">
-																<ui-select-match placeholder="Select a variation option">
+																<ui-select-match placeholder="Select variant">
 																	{{ $item.AttributeValue.AttributeValueEn }}
 																</ui-select-match>
 																<ui-select-choices repeat="i in (dataSet.attributeOptions[jth].Attribute.AttributeValueMaps) | filter:$select.search">
@@ -65,7 +65,7 @@
 																multiple tagging tagging-label="" tagging-tokens=",|ENTER" name="attributeOptions{{jth}}"
 																nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30" nc-tag-pattern="^[a-zA-Z0-9ก-๙\s\-]+$"
 																ng-model="dataSet.attributeOptions[jth].options">
-																<ui-select-match placeholder="Variation options separated by a comma or enter">
+																<ui-select-match placeholder="Input variant">
 																{{ $item }}
 																</ui-select-match>
 																<ui-select-choices repeat="i in dataSet.attributeOptions[jth].Attribute.AttributeValueMaps | filter:$select.search">
@@ -80,7 +80,7 @@
 							<i class="fa fa-plus-circle color-theme"></i> Add another option
 						</a>
 						<a class="like-text form-text" ng-click="variationFactorIndices.popSecond()" ng-if="dataSet.attributeOptions[1].options.length > 0 && variationFactorIndices.length() == 2 && jth == 1">
-								<i class="fa fa-trash color-theme"></i>
+								<i class="fa fa-trash color-theme icon-size-20"></i>
 						</a>
 					</div>
 

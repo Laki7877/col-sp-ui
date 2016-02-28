@@ -163,7 +163,7 @@ module.exports = {
 			name: 'Draft',
 			value: 'DF',
 			color: 'color-grey',
-			icon: 'fa-circle'
+			icon: 'fa-circle-o'
 		},
 		{
 			name: 'Wait for Approval',
