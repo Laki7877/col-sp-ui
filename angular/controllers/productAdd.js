@@ -376,7 +376,7 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
           $uibModalInstance.close('yes');
         }
       },
-      size: 'md',
+      size: 'size-warning',
       resolve: {
 
       }
