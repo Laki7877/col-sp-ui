@@ -1,5 +1,23 @@
 <div id="add-product-variation-tab-content">
 	<? $this->insert('partials/add-product-inner-tab-breadcrumb') ?>
+
+
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="form-section">
+				<div class="form-section-header"><h2>Variation Option</h2></div>
+				<div class="form-section-content">
+					<div class="form-group ">
+				      <p class="form-control-static">
+								Variation will allow you to create a group of products with different attributes such as size and color. Once you enable variation, information from other tabs will be copied into variants that you will create, and variation cannot be disabled. Please select attribute set before enabling variation.
+							</p>
+					    <button class="btn btn-width-xxl btn-blue margin-top-20">Enable Variation</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="form-section">
