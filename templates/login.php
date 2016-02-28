@@ -6,9 +6,9 @@
 	<div class="logo-img-wrapper">
 		<img class="logo-img" src="<?= $this->asset('/assets/img/seller_logo.png') ?>" />
 	</div>
-
 	<form ng-submit="doLogin()" name="loginForm" novalidate>
 		<div class="form-login" ng-cloak>
+			<nc-alert nc-model="alert"></nc-alert>
 			<div ng-template="common/input/text2"
 				ng-template-options="{
 					'label': 'Email'

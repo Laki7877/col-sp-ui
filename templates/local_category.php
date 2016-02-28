@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="LocalCategoryCtrl" ng-init="init()" class="local-category-page">
-		<div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()">{{alert.message}}</div>
+		<nc-alert nc-model="alert"></nc-alert>
 		<div class="page-header with-border">
 		    <h1 class="float-left page-header-title">
 		    	<span>Local Category</span>
