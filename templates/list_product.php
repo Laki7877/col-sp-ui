@@ -8,7 +8,7 @@
           <input type="hidden" name="selected_products[]" ng-repeat="item in bulkContainer" value="{{ item.ProductId }}"/>
 
           <div class="btn-group margin-right-10">
-            <button type="button" class="btn btn-white dropdown-toggle btn-width-xl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button type="button" class="btn btn-white dropdown-toggle btn-width-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Export <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
@@ -17,7 +17,7 @@
             </ul>
           </div>
           <div class="btn-group margin-right-10">
-            <button type="button" class="btn btn-white dropdown-toggle btn-width-xl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button type="button" class="btn btn-white dropdown-toggle btn-width-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Import <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">

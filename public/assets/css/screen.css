@@ -13677,20 +13677,24 @@ form h6 {
   display: inline-block;
 }
 /* line 11, ../../../assets/_button.scss */
+.link-btn-plain.width-lg {
+  width: 100px;
+}
+/* line 15, ../../../assets/_button.scss */
 .link-btn-plain.width-xl {
   width: 120px;
 }
-/* line 15, ../../../assets/_button.scss */
+/* line 19, ../../../assets/_button.scss */
 .link-btn-plain.width-xxl {
   width: 180px;
 }
 
-/* line 20, ../../../assets/_button.scss */
+/* line 24, ../../../assets/_button.scss */
 .btn-default {
   border-color: #BCC7D5;
 }
 
-/* line 24, ../../../assets/_button.scss */
+/* line 28, ../../../assets/_button.scss */
 .btn-white {
   width: 80px;
   color: #4899DD;
@@ -13736,7 +13740,7 @@ form h6 {
   background-color: #4899DD;
 }
 
-/* line 29, ../../../assets/_button.scss */
+/* line 33, ../../../assets/_button.scss */
 .btn-blue {
   width: 80px;
   color: #ffffff;
@@ -13782,7 +13786,7 @@ form h6 {
   background-color: #ffffff;
 }
 
-/* line 34, ../../../assets/_button.scss */
+/* line 38, ../../../assets/_button.scss */
 .btn-grey {
   width: 80px;
   color: #ffffff;
@@ -13828,7 +13832,7 @@ form h6 {
   background-color: #ffffff;
 }
 
-/* line 39, ../../../assets/_button.scss */
+/* line 43, ../../../assets/_button.scss */
 .btn-green {
   width: 80px;
   color: #ffffff;
@@ -13874,7 +13878,7 @@ form h6 {
   background-color: #ffffff;
 }
 
-/* line 44, ../../../assets/_button.scss */
+/* line 48, ../../../assets/_button.scss */
 .btn-red {
   width: 80px;
   color: #ffffff;
@@ -13920,22 +13924,22 @@ form h6 {
   background-color: #ffffff;
 }
 
-/* line 49, ../../../assets/_button.scss */
+/* line 53, ../../../assets/_button.scss */
 .btn.btn-width-xl {
   width: 120px;
 }
 
-/* line 53, ../../../assets/_button.scss */
+/* line 57, ../../../assets/_button.scss */
 .btn.btn-width-xxl {
   width: 180px;
 }
 
-/* line 57, ../../../assets/_button.scss */
+/* line 61, ../../../assets/_button.scss */
 .btn.btn-width-xxxl {
   width: 200px;
 }
 
-/* line 61, ../../../assets/_button.scss */
+/* line 65, ../../../assets/_button.scss */
 .btn.btn-width-100 {
   width: 100%;
 }
