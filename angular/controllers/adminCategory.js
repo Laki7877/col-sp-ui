@@ -224,7 +224,13 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 			$scope.categories = Category.transformNestedSetToUITree(data);
 			$scope.loading = false;
 			if(init && $scope.categories.length > 0) {
-				$scope.categories[0].collapsed = false;
+				for (var i = 0; i < $scope.categories.length; i++) {
+					if(i==0) {
+						$scope.categories[i].collapsed = false;				
+					} else {
+						$scope.categories[i].collapsed = true;
+					}
+				};
 			}
 		}, function(err) {
 			$scope.loading = false;
