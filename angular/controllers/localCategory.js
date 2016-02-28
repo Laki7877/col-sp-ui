@@ -70,9 +70,9 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 			$timeout.cancel($scope.timerPromise);
 			$scope.timerPromise = null;
 		}
+			$scope.pristine = true;
+			$scope.saving = true;
 		$scope.timerPromise = $timeout(function() {
-				$scope.pristine = true;
-				$scope.saving = true;
 				LocalCategoryService.upsert(Category.transformUITreeToNestedSet($scope.categories))
 				.then(function() {
 					$scope.alert.close();
@@ -198,22 +198,12 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 	$scope.init = function() {
 		$scope.reload(true);
 	};
-
 	//Load category list
-	$scope.reload = function(init) {
+	$scope.reload = function() {
 		$scope.loading = true;
 		LocalCategoryService.listAll().then(function(data) {
 			$scope.categories = Category.transformNestedSetToUITree(data);
 			$scope.loading = false;
-			if(init && $scope.categories.length > 0) {
-				for (var i = 0; i < $scope.categories.length; i++) {
-					if(i==0) {
-						$scope.categories[i].collapsed = false;				
-					} else {
-						$scope.categories[i].collapsed = true;
-					}
-				};
-			}
 		}, function(err) {
 			$scope.loading = false;
 			$scope.alert.open(false, common.getError(err));
