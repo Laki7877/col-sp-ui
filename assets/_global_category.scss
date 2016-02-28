@@ -33,7 +33,7 @@
 .category-section {
 	// margin-top: 20px;
 	$item-column-size: $category-selection-column-size;
-	$item-column-height: 285px;
+	$item-column-height: 308px;
 	$item-column-gutter: 15px;
 	line-height: 30px;
 	width: ($item-column-size * 4) + 2px;
@@ -62,7 +62,7 @@
 			margin: 0;
 			height: $item-column-height;
 			max-height:	$item-column-height;
-			width: $item-column-size; 
+			width: $item-column-size;
 			overflow-y: auto;
 
 			border-left: 1px solid  $color-grey;

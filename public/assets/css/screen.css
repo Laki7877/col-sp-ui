@@ -13945,6 +13945,12 @@ form h6 {
   width: 100%;
 }
 
+/* line 70, ../../../assets/_button.scss */
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+  pointer-events: none;
+  color: #BCC7D5;
+}
+
 /* line 2, ../../../assets/_bootstrap_tagsinput.sass */
 .ahpt .bootstrap-tagsinput {
   padding-top: 7px;
@@ -14519,7 +14525,7 @@ html, body {
 }
 /* line 53, ../../../assets/_global_category.scss */
 .category-section .category-content {
-  height: 285px;
+  height: 308px;
   width: 100%;
   overflow: hidden;
   background: #edf2f9;
@@ -14534,8 +14540,8 @@ html, body {
   padding-right: 0;
   padding: 0px 0 0 0;
   margin: 0;
-  height: 285px;
-  max-height: 285px;
+  height: 308px;
+  max-height: 308px;
   width: 236px;
   overflow-y: auto;
   border-left: 1px solid #BCC7D5;

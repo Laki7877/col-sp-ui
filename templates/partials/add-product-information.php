@@ -70,7 +70,7 @@
 
                         <div nc-template="common/input/form-group-with-label" nc-label="SKU" nc-template-form="addProductForm.MasterVariant_Sku" nc-template-options-path="addProductForm/MasterVariant_Sku">
 
-                            <input class="form-control width-field-large" name="MasterVariant_Sku" ng-disabled="controlFlags.variation == 'enable'" ng-model="formData.MasterVariant.Sku" maxlength="300" ng-pattern="/^[^<>]+$/" />
+                            <input class="form-control width-field-large" name="MasterVariant_Sku" ng-model="formData.MasterVariant.Sku" maxlength="300" ng-pattern="/^[^<>]+$/" />
 
 
                         </div>
@@ -155,8 +155,12 @@
                             </div>
                             <div class="width-field-normal">
                                 <div class="ah-select2-dropdown">
+
+                                    <select ng-if="controlFlags.variation == 'enable'" class="form-control" disabled>
+                                      <option disabled>{{ formData.AttributeSet.AttributeSetNameEn }}</option>
+                                    </select>
                                     <!-- dont show if nothing is dataSet. to choose from -->
-                                    <ui-select ng-model="formData.AttributeSet" ng-show="dataSet.AttributeSets.length > 0">
+                                    <ui-select ng-if="controlFlags.variation != 'enable'" ng-model="formData.AttributeSet" ng-show="dataSet.AttributeSets.length > 0">
                                         <ui-select-match placeholder="Search Attribute Set">
                                             <span ng-bind="$select.selected.AttributeSetNameEn"></span>
                                             <span ng-show="!$select.selected.AttributeSetNameEn">- Select Attribute Set -</span>
@@ -168,7 +172,7 @@
 
 
                                     <!-- if nothing is availalbe to pick -->
-                                    <select class="form-control" ng-if="dataSet.AttributeSets.length == 0" disabled>
+                                    <select class="form-control" ng-if="dataSet.AttributeSets.length == 0 && controlFlags.variation == 'enable'" disabled>
                                         <option disabled>This category has no attribute sets</option>
                                     </select>
 
