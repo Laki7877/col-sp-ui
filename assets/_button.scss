@@ -69,5 +69,8 @@
 
 .btn.disabled, .btn[disabled], fieldset[disabled] .btn{
   pointer-events: none;
+}
+
+.btn-white.disabled, .btn-white[disabled], fieldset[disabled] .btn-white{
   color: $color-grey;
 }
