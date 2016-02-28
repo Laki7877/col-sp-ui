@@ -31,5 +31,5 @@
 	</div>
 </div>
 <ol ui-tree-nodes ng-model="node.nodes" ng-slide-toggle="!collapsed">
-	<li ng-repeat="node in node.nodes" ui-tree-node ng-include="'global_category/nodes'"></li>
+	<li ng-repeat="node in node.nodes track by $index" ui-tree-node ng-include="'global_category/nodes'"></li>
 </ol>

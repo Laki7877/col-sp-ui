@@ -20,7 +20,6 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 	//UiTree onchange event
 	$scope.treeOptions = {
 		dropped: function(event) {
-			//Change is made
 			if(event.dest.index != event.source.index || event.dest.nodesScope != event.source.nodesScope) {
 				$scope.sync();
 			}
@@ -213,25 +212,16 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 
 	//On init
 	$scope.init = function() {
-		$scope.reload(true);
+		$scope.reload();
 		$scope.loadAttributeSets();
 	};
 
 	//Load category list
-	$scope.reload = function(init) {
+	$scope.reload = function() {
 		$scope.loading = true;
 		GlobalCategoryService.listAll().then(function(data) {
 			$scope.categories = Category.transformNestedSetToUITree(data);
 			$scope.loading = false;
-			if(init && $scope.categories.length > 0) {
-				for (var i = 0; i < $scope.categories.length; i++) {
-					if(i==0) {
-						$scope.categories[i].collapsed = false;				
-					} else {
-						$scope.categories[i].collapsed = true;
-					}
-				};
-			}
 		}, function(err) {
 			$scope.loading = false;
 			$scope.alert.open(false, common.getError(err));
