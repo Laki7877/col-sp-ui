@@ -244,13 +244,15 @@
                             </ui-select>
                         </div>
 
-                        <div class="form-group" ng-if="formData.AttributeSet.AttributeSetTagMaps.length > 0">
+                        <div class="form-group" ng-if="(formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Keywords).length > 0">
                             <div class="width-label">
                                 <label class="control-label">Suggested Search Tag</label>
                             </div>
                             <div class="width-field-xl">
                                 <div class="bootstrap-tagsinput tagsinput-plain">
-                                    <a class="tag label label-info" ng-repeat="tag in formData.AttributeSet.AttributeSetTagMaps" ng-click="(formData.Keywords.indexOf(tag) == -1) && formData.Keywords.push(tag)"> {{ tag }}</a>
+                                    <a class="tag label label-info"
+                                    ng-repeat="tag in formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Keywords"
+                                    ng-click="(formData.Keywords.indexOf(tag) == -1) && formData.Keywords.push(tag)"> {{ tag }}</a>
                                 </div>
                             </div>
                         </div>
