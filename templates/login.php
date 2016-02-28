@@ -8,27 +8,23 @@
 	</div>
 
 	<form ng-submit="doLogin()" name="loginForm" novalidate>
-
 		<div class="form-login" ng-cloak>
-
-			
-            <nc-alert nc-model="alert"></nc-alert>
-
 			<div ng-template="common/input/text2"
 				ng-template-options="{
-				'label': 'Username',
+				'label': 'Email',
 				'error' : {
 				'messages': {
 					required: 'Please enter your email address'
 				},
-				'show': $root.isInvalid(loginForm.user),
+				'show': isInvalid(loginForm.user),
 				'conditions' : loginForm.user.$error 
 				}
 				}">
 				<input
 				class="form-control width-field-large"
-				name="user" ng-model="uform.user"
-				ng-class="{ 'has-error' : $root.isInvalid(loginForm.user) }"
+				name="user" 
+				ng-model="uform.user"
+				ng-class="{ 'has-error' : isInvalid(loginForm.user) || (error && loginForm.$pristine) }"
 				maxlength="300"
 				required />
 			</div>
@@ -40,7 +36,7 @@
 				'messages': {
 					required: 'Please enter your password'
 				},
-				'show': $root.isInvalid(loginForm.pass),
+				'show': isInvalid(loginForm.pass),
 				'conditions' : loginForm.pass.$error
 				}
 				}">
@@ -49,11 +45,16 @@
 				class="form-control width-field-large"
 				name="pass"
 				ng-model="uform.pass"
-				ng-class="{ 'has-error' : $root.isInvalid(loginForm.pass) }"
+				ng-class="{ 'has-error' : isInvalid(loginForm.pass) || (error && loginForm.$pristine)  }"
 				maxlength="300"
 				required />
 			</div>
-
+			<div class="form-group margin-bottom-5" ng-if="error && loginForm.$pristine">
+				<div class="width-label"></div>
+				<div class="width-field-normal">
+					<span class="help-block color-red text-center">Invalid Email or Password</span>
+				</div>
+			</div>
 			<fieldset class="form-group margin-top-30">
 				<button type="submit" class="btn btn-blue btn-100"><span class="login-loading" ng-cloak ng-show="loading"><i class="fa fa-spinner fa-spin" ></i></span> Login</button>
 			</fieldset>
