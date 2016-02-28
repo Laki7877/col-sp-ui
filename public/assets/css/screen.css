@@ -15337,3 +15337,13 @@ ng-transclude.has-error .form-control {
   -webkit-animation: shake 400ms ease-in-out;
   animation: shake 400ms ease-in-out;
 }
+
+/* line 284, ../../../assets/screen.scss */
+.session-timeout {
+  background-color: #f9edbe;
+  border-color: #f0c36d;
+  color: #333;
+  width: 300px;
+  text-align: center;
+  display: inline-block;
+}
