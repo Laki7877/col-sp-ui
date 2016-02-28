@@ -11,42 +11,32 @@
 		<div class="form-login" ng-cloak>
 			<div ng-template="common/input/text2"
 				ng-template-options="{
-				'label': 'Email',
-				'error' : {
-				'messages': {
-					required: 'Please enter your email address'
-				},
-				'show': isInvalid(loginForm.user),
-				'conditions' : loginForm.user.$error 
-				}
+					'label': 'Email'
 				}">
 				<input
 				class="form-control width-field-large"
 				name="user" 
 				ng-model="uform.user"
-				ng-class="{ 'has-error' : isInvalid(loginForm.user) || (error && loginForm.$pristine) }"
+				ng-class="{ 'has-error' : (events.user === false && loginForm.user.$invalid) || (error && loginForm.$pristine) }"
 				maxlength="300"
+				ng-focus="events.user=true"
+				ng-blur="events.user=false"
 				required />
 			</div>
 
 			<div ng-template="common/input/text2"
 				ng-template-options="{
-				'label': 'Password',
-				'error' : {
-				'messages': {
-					required: 'Please enter your password'
-				},
-				'show': isInvalid(loginForm.pass),
-				'conditions' : loginForm.pass.$error
-				}
+					'label': 'Password'
 				}">
 				<input
 				type="password"
 				class="form-control width-field-large"
 				name="pass"
 				ng-model="uform.pass"
-				ng-class="{ 'has-error' : isInvalid(loginForm.pass) || (error && loginForm.$pristine)  }"
+				ng-class="{ 'has-error' : (events.pass === false && loginForm.pass.$invalid) || (error && loginForm.$pristine)  }"
 				maxlength="300"
+				ng-focus="events.pass=true"
+				ng-blur="events.pass=false"
 				required />
 			</div>
 			<div class="form-group margin-bottom-5" ng-if="error && loginForm.$pristine">
