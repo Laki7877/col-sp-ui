@@ -34,13 +34,15 @@
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="ProductId"></nc-bulk>
       <nc-search nc-model="params.searchText" nc-search-event="onSearch" nc-search-placeholder="'Search for Product Name, SKU, ...'"></nc-search>
       <nc-advance-search-button nc-model="advanceSearch"></nc-advance-search-button>
+      <!-- <div class="search-section-item pull-right">
+        <div class="filter-checkbox">
+          <input ng-model="showOnOffStatus.value"type="checkbox" />
+          Show Online/Offline Status
+        </div>
+      </div> -->
   </div>
   <nc-advance-search nc-model="advanceSearchParams" nc-advance-search-toggle="advanceSearch" nc-advance-search-event="onAdvanceSearch" nc-advance-search-options="advanceSearchOptions"></nc-advance-search>
   <nc-filter nc-model="params._filter" nc-filter-options="filterOptions">
-    <div class="filter-checkbox">
-      <input ng-model="showOnOffStatus.value"type="checkbox" />
-      Show Online/Offline Status
-    </div>
   </nc-filter>
   <nc-table id="inventory-tab-content" nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="isSearching()">
       <table class="table table-curved">

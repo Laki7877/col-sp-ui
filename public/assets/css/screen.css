@@ -13169,59 +13169,60 @@ label.css-label {
 .filter-section .filter-active {
   color: #32343C;
 }
-/* line 276, ../../../assets/_table.scss */
-.filter-section .filter-checkbox {
-  float: right;
-}
-/* line 278, ../../../assets/_table.scss */
-.filter-section .filter-checkbox input {
-  margin-top: 0px;
-  margin-right: 6px;
-}
 
-/* line 285, ../../../assets/_table.scss */
+/* line 277, ../../../assets/_table.scss */
 .filter-section.filter-input {
   padding-left: 110px;
 }
 
-/* line 290, ../../../assets/_table.scss */
+/* line 282, ../../../assets/_table.scss */
 .search-section-wrapper {
   margin: 15px 0px -10px -10px;
 }
-/* line 293, ../../../assets/_table.scss */
+/* line 285, ../../../assets/_table.scss */
 .search-section-wrapper .search-section-item {
   float: left;
   display: table;
   border-spacing: 10px;
 }
-/* line 297, ../../../assets/_table.scss */
+/* line 289, ../../../assets/_table.scss */
 .search-section-wrapper .search-section-item button {
   height: 30px;
   color: #4899DD;
 }
-/* line 301, ../../../assets/_table.scss */
+/* line 293, ../../../assets/_table.scss */
 .search-section-wrapper .search-section-item .btn-action {
   min-width: 80px;
 }
-/* line 304, ../../../assets/_table.scss */
+/* line 296, ../../../assets/_table.scss */
 .search-section-wrapper .search-section-item .form-control {
   height: 30px;
 }
-/* line 307, ../../../assets/_table.scss */
+/* line 299, ../../../assets/_table.scss */
 .search-section-wrapper .search-section-item .bulk-action-dropdown {
   color: #32343C;
   width: 180px;
   text-align: left;
 }
-/* line 311, ../../../assets/_table.scss */
+/* line 303, ../../../assets/_table.scss */
 .search-section-wrapper .search-section-item .bulk-action-dropdown .caret {
   float: right;
   margin-top: 8px;
 }
-/* line 316, ../../../assets/_table.scss */
+/* line 308, ../../../assets/_table.scss */
 .search-section-wrapper .search-section-item .search-box {
   width: 380px;
   border-spacing: 0px;
+}
+/* line 312, ../../../assets/_table.scss */
+.search-section-wrapper .search-section-item .filter-checkbox {
+  line-height: 30px;
+  margin-right: -10px;
+}
+/* line 315, ../../../assets/_table.scss */
+.search-section-wrapper .search-section-item .filter-checkbox input {
+  margin-top: 0px;
+  margin-right: 6px;
 }
 /* line 322, ../../../assets/_table.scss */
 .search-section-wrapper .body-dropdown-button {

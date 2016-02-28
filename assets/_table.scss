@@ -272,14 +272,6 @@
   .filter-active {
     color:  $color-black;
   }
-
-  .filter-checkbox{
-    float: right;
-    input{
-      margin-top: 0px;
-      margin-right: 6px;
-    }
-  }
 }
 
 .filter-section.filter-input {
@@ -317,6 +309,14 @@
 			width:380px;
 			border-spacing: 0px;
 		}
+		.filter-checkbox{
+			line-height: 30px;
+			margin-right: -10px;
+	    input{
+	      margin-top: 0px;
+	      margin-right: 6px;
+	    }
+	  }
 	}
 
   .body-dropdown-button {
