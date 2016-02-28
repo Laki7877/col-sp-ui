@@ -103,6 +103,7 @@
 						<thead>
 							<tr>
 								<th class="column-variant">Variant</th>
+								<th ng-if="formData.Variants.length > 0 && formData.Variants[0].Pid">PID</th>
 								<th class="column-sku">SKU</th>
 								<th class="column-price">Price</th>
 								<th class="column-sale-price">Sale Price</th>
@@ -116,7 +117,7 @@
 							<td class="column-text-ellipsis" ng-class="{'opacity-50': !pair.Visibility}">
 								{{ pair.text }}
 							</td>
-
+							<td ng-if="formData.Variants.length > 0 && formData.Variants[0].Pid">{{pair.Pid }}</td>
                             <td ng-template="common/input/text-td"
                                     ng-template-options="{
                                         'error' : {
