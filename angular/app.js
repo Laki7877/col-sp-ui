@@ -47,11 +47,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
 //App template cache load
 .run(template)
 
-.run(function(treeConfig) {
-  'ngInject'; 
-  treeConfig.defaultCollapsed = true; 
-})
-
 //App init
 /* Moved to root.js */
 

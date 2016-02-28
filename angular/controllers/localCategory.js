@@ -12,7 +12,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 	util.warningOnLeave(function() {
 		var modalDirty = $scope.modalScope == null ? false : $scope.modalScope.form.$dirty;
 		return $scope.saving || $scope.dirty || modalDirty;
-	});
+	});	
 
 	//UiTree onchange event
 	$scope.treeOptions = {

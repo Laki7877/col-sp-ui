@@ -113,8 +113,11 @@
                     <div class="form-section-header">
                         <h2>Price</h2></div>
                     <div class="form-section-content">
-                        <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.MasterVariant_SalePrice" nc-label="Sale Price" nc-template-options-path="addProductForm/MasterVariant_SalePrice">
-                            <input ng-pattern="/^\d+(\.\d{1,2})?$/" class="form-control width-field-normal" maxlength="20" name="MasterVariant_SalePrice" ng-model="formData.MasterVariant.SalePrice" required/>
+                        <div nc-template="common/input/form-group-with-label"
+                        nc-template-form="addProductForm.MasterVariant_SalePrice"
+                        nc-label="Sale Price" nc-template-options-path="addProductForm/MasterVariant_SalePrice">
+                            <input ng-pattern="/^\d+(\.\d{1,2})?$/" class="form-control width-field-normal"
+                            maxlength="20" name="MasterVariant_SalePrice" ng-model="formData.MasterVariant.SalePrice" required/>
                         </div>
                         <div nc-template="common/input/form-group-with-label" nc-label="Original Price" nc-template-options-path="addProductForm/MasterVariant_OriginalPrice" nc-template-form="addProductForm.MasterVariant_OriginalPrice">
                             <input class="form-control width-field-normal" name="MasterVariant_OriginalPrice" ng-pattern="/^\d+(\.\d{1,2})?$/" maxlength="20" ng-model="formData.MasterVariant.OriginalPrice"/>
@@ -180,7 +183,7 @@
 
 
                             </div>
-                            <a class="like-text form-text" ng-if="formData.AttributeSet.AttributeSetId" ng-click="formData.AttributeSet = {}">
+                            <a class="like-text form-text" ng-if="formData.AttributeSet.AttributeSetId && controlFlags.variation != 'enable'" ng-click="formData.AttributeSet = {}">
                                 <i class="fa fa-minus-circle color-theme"></i>
                             </a>
                         </div>

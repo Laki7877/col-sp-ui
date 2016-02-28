@@ -47,11 +47,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
 //App template cache load
 .run(template)
 
-.run(["treeConfig", function(treeConfig) {
-  'ngInject'; 
-  treeConfig.defaultCollapsed = true; 
-}])
-
 //App init
 /* Moved to root.js */
 
@@ -1663,7 +1658,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 	util.warningOnLeave(function() {
 		var modalDirty = $scope.modalScope == null ? false : $scope.modalScope.form.$dirty;
 		return $scope.saving || $scope.dirty || modalDirty;
-	});
+	});	
 
 	//UiTree onchange event
 	$scope.treeOptions = {
@@ -1908,7 +1903,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
   var QUEUE_LIMIT = 20;
   var QUEUE_LIMIT_360 = 60;
   var MAX_VARIANT = 100;
-
+  $scope.image_alert = new NcAlert();
   $scope.dataSet = {};
   $scope.dataSet.AttributeSets = [{
     AttributeSetId: null,
@@ -1922,6 +1917,9 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
     BrandNameEn: "No match found",
     disabled: true
   }];
+  $scope.enableVariation = function(){
+    $scope.controlFlags.variation = 'enable';
+  };
   $scope.dataSet.SearchTags = [];
   $scope.dataSet.RelatedProducts = [];
   $scope.dataSet.StockTypes = ['Stock', 'Pre-Order'];
@@ -1969,8 +1967,13 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
   }; // end onbeforeunload
 
   var onImageUploadFail = function(item, filter) {
-    alert("Unable to upload image because validation error.");
+    $scope.image_alert.error(item.Message || 'Your image does not meet guideline.');
   }
+
+  var onImageUploadSuccess = function() {
+    $scope.image_alert.close();
+  }
+
   var onImageUploadQueueLimit = function() {}
   $scope.asStatus = Product.getStatus;
 
@@ -2046,7 +2049,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
           kpair.Width = $scope.formData.MasterVariant.Width;
           kpair.Height = $scope.formData.MasterVariant.Height;
           kpair.Upc = $scope.formData.MasterVariant.Upc;
-          kpair.Weight = $scope.formData.Weight;
+          kpair.Weight = $scope.formData.MasterVariant.Weight;
           kpair.DescriptionFullEn = $scope.formData.MasterVariant.DescriptionFullEn;
           kpair.DescriptionFullTh = $scope.formData.MasterVariant.DescriptionFullTh;
           kpair.DescriptionShortEn = $scope.formData.MasterVariant.DescriptionShortEn;
@@ -2054,7 +2057,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
           kpair.Images = angular.copy($scope.formData.MasterImages);
           kpair.VideoLinks = angular.copy($scope.formData.VideoLinks);
           kpair.PrepareDay = $scope.formData.PrepareDay;
-          kpair.SEO = angular.copy($scope.formData.SEO || {})
+          kpair.SEO = angular.copy($scope.formData.SEO || {});
 
           kpair._override = angular.copy(protoCheckState);
 
@@ -2214,7 +2217,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
     });
   };
 
-  $scope.$watch('formData.MasterVariant.SalePrice', function() {
+  $scope.$watch('formData.MasterVariant.OriginalPrice+formData.MasterVariant.SalePrice', function() {
     var form = $scope.addProductForm;
     if (form.MasterVariant_SalePrice) form.MasterVariant_SalePrice.$setValidity("min", true);
     if (!form.MasterVariant_SalePrice) return;
@@ -2245,24 +2248,24 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
 
     if (Status == 'WA') {
       if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == "") {
-        mat.push("Required Field Missing: Description (Thai)");
+        mat.push("Description (Thai)");
       }
 
       if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == "") {
-        mat.push("Required Field Missing: Description (English)");
+        mat.push("Description (English)");
       }
 
       if (!$scope.formData.Brand.BrandId) {
-        mat.push("Required Field Missing: Brand is Missing");
+        mat.push("Brand");
       }
 
       if ($scope.formData.MasterImages.length == 0) {
-        mat.push("At least one image is required");
+        mat.push("At least one image");
       }
 
       $scope.formData.Variants.forEach(function(variant){
         if(variant.Images.length == 0){
-          mat.push("At least one image is required for variation " + variant.text);
+          mat.push("At least one image for variation " + "'" + variant.text + "'");
         }
       });
 
@@ -2336,7 +2339,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
     var validateMat = manualValidate(Status);
     if (validateMat.length > 0) {
       $scope.pageState.reset();
-      $scope.alert.error(validateMat);
+      $scope.alert.error(validateMat.join(", "));
       return;
     }
 
@@ -2344,7 +2347,21 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
       $scope.pageState.reset();
       var requiredMissing = ('required' in $scope.addProductForm.$error);
       if (Status == 'DF' && requiredMissing) {
-        $scope.alert.error("Unable to save. Please make sure that Product Name (Thai), Product Name (English), and Original Price are filled correctly.");
+        var mfd = [];
+        if($scope.addProductForm.MasterVariant_ProductNameEn.$invalid){
+          mfd.push('Product Name (English)');
+        }
+        //Product Name (Thai), Product Name (English), and Sale Price,
+        if($scope.addProductForm.MasterVariant_ProductNameTh.$invalid){
+          mfd.push('Product Name (Thai)');
+        }
+
+        if($scope.addProductForm.MasterVariant_SalePrice.$invalid){
+          mfd.push('Sale Price');
+        }
+        mfd.push('Master Attributes');
+
+        $scope.alert.error("Unable to save. Please make sure that " + mfd.join(" and ") + " are filled correctly.");
       } else if (Status == 'WA' && requiredMissing) {
         $scope.alert.error("Unable to publish because you are missing required fields");
       } else {
@@ -2367,8 +2384,8 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
           $scope.formData.ProductId = Number(res.ProductId);
           $scope.pageState.reset();
           $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
-          ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
-          ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
+          ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
+          ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
         });
         $scope.addProductForm.$setPristine(true);
       } else {
@@ -2421,8 +2438,8 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
             $scope.formData.ProductId = Number(productId);
             $scope.pageState.reset();
             watchVariantChanges();
-            ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
-            ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
+            ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
+            ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
           });
         }, function(error) {
           throw new KnownException("Unable to fetch product with id " + productId);
@@ -2436,8 +2453,8 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
         $scope.controlFlags, $scope.variationFactorIndices).then(function() {
         $scope.pageState.reset();
         watchVariantChanges();
-        ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
-        ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
+        ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
+        ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
       });
     } else {
 
@@ -2567,7 +2584,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
         $scope.pairModal.alert = new NcAlert();
         $scope.pairIndex = index;
         $scope.uploaderModal.queue = $scope.pairModal.queue;
-        ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail);
+        ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
       });
 
       $scope.$on('savePairModal', function(evt) {
@@ -8942,101 +8959,104 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 
 },{"angular":159}],123:[function(require,module,exports){
 //Image Service
-module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", function($q, $http, common, storage, config, FileUploader){
-	'ngInject';
-	var service = {};
+module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", function($q, $http, common, storage, config, FileUploader) {
+  'ngInject';
+  var service = {};
 
-	/**
-	 * Get image uploader
-	 */
-	service.getUploader = function(url, opt) {
-		opt = opt || {};
+  /**
+   * Get image uploader
+   */
+  service.getUploader = function(url, opt) {
+    opt = opt || {};
 
-		var accessToken = storage.getSessionToken();
-		var options = angular.merge({
-			url: config.REST_SERVICE_BASE_URL + url,
-			autoUpload: true,
-			headers: {
-				Authorization: 'Basic ' + accessToken
-			},
-			queueLimit: 10,
-			filters: [{
-	            name: 'imageFilter',
-	            fn: function(item /*{File|FileLikeObject}*/, options) {
-	                var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
-	                return '|jpg|png|jpeg|'.indexOf(type) !== -1;
-	            }},
-	            {
-	            name: 'sizeFilter',
-	            fn: function(item /*{File|FileLikeObject}*/, options) {
-	                return item.size <= config.MAX_IMAGE_UPLOAD_SIZE;
-	            }},]
-		}, opt);
-		var uploader = new FileUploader(options);
+    var accessToken = storage.getSessionToken();
+    var options = angular.merge({
+      url: config.REST_SERVICE_BASE_URL + url,
+      autoUpload: true,
+      headers: {
+        Authorization: 'Basic ' + accessToken
+      },
+      queueLimit: 10,
+      filters: [{
+        name: 'imageFilter',
+        fn: function(item /*{File|FileLikeObject}*/ , options) {
+          var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+          return '|jpg|png|jpeg|'.indexOf(type) !== -1;
+        }
+      }, {
+        name: 'sizeFilter',
+        fn: function(item /*{File|FileLikeObject}*/ , options) {
+          return item.size <= config.MAX_IMAGE_UPLOAD_SIZE;
+        }
+      }, ]
+    }, opt);
+    var uploader = new FileUploader(options);
 
-        return uploader;
-	};
+    return uploader;
+  };
 
-	/**
-	 * Assign image uploader events specifically to COL-image uploading feature
-	 */
-	service.assignUploaderEvents = function(uploader, images, queueLimit, onFail, onValidation) {
+  /**
+   * Assign image uploader events specifically to COL-image uploading feature
+   */
+  service.assignUploaderEvents = function(uploader, images, queueLimit, onFail, onValidation, onSuccess) {
 
-		uploader.onWhenAddingFileFailed = function(item, filter, options) {
-			console.info('onAfterAddingFile', item, filter, options);
-			onFail(item, filter);
-		};
-		uploader.onAfterAddingFile = function(item) {
-			var obj = {
-				url: ''
-			};
-			if(images.length == uploader.queueLimit) {
-				//Callback for queueLimit reached
-				if(queueLimit) {
-					//Block flow with custom handler
-					if(!queueLimit(images, item, obj)) {
-						return;
-					}
-				}
-				//Default handle, pop last images
-				images.pop();
-			}
-			images.push(obj);
-			item.indx = images.length-1;
-			console.info('onAfterAddingFile', images, uploader.queue);
-		};
-	    uploader.onSuccessItem = function(item, response, status, headers) {
-	    	images[item.indx] = response;
-			console.info('onSuccessItem', images, uploader.queue);
-	    };
-	    uploader.onErrorItem = function(item, response, status, headers) {
-	    	images.splice(item.indx, 1);
-			console.info('onErrorItem', images, uploader.queue);
-	    };
+    uploader.onWhenAddingFileFailed = function(item, filter, options) {
+      console.info('onAfterAddingFile', item, filter, options);
+      onFail(item, filter);
+    };
+    uploader.onAfterAddingFile = function(item) {
+      var obj = {
+        url: ''
+      };
+      if (images.length == uploader.queueLimit) {
+        //Callback for queueLimit reached
+        if (queueLimit) {
+          //Block flow with custom handler
+          if (!queueLimit(images, item, obj)) {
+            return;
+          }
+        }
+        //Default handle, pop last images
+        images.pop();
+      }
+      images.push(obj);
+      item.indx = images.length - 1;
+      console.info('onAfterAddingFile', images, uploader.queue);
+    };
+    uploader.onSuccessItem = function(item, response, status, headers) {
+      images[item.indx] = response;
+      console.info('onSuccessItem', images, uploader.queue);
+			// onSuccess();
+    };
+    uploader.onErrorItem = function(item, response, status, headers) {
+      images.splice(item.indx, 1);
+      console.info('onErrorItem', images, uploader.queue, response);
+			onFail(response);
+    };
 
-        uploader.onProgressItem = function(item,progress){
-             console.info('onProgressItem', item, progress, item.progress);
-        };
+    uploader.onProgressItem = function(item, progress) {
+      console.info('onProgressItem', item, progress, item.progress);
+    };
 
-	    return uploader;
-	}
+    return uploader;
+  }
 
-	/**
-	 * Get all images
-	 */
-	service.getAll = function() {
-		common.makeRequest({
+  /**
+   * Get all images
+   */
+  service.getAll = function() {
+    common.makeRequest({
 
-		});
-	};
+    });
+  };
 
-	service.shift = function(from, to) {
-		common.makeRequest({
+  service.shift = function(from, to) {
+    common.makeRequest({
 
-		});
-	};
+    });
+  };
 
-	return service;
+  return service;
 }];
 
 },{}],124:[function(require,module,exports){
@@ -10425,7 +10445,7 @@ module.exports = {
 },{}],143:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Sun Feb 28 2016 16:32:47 GMT+0700 (Russia TZ 6 Standard Time)
+ * Sun Feb 28 2016 16:47:46 GMT+0700 (Russia TZ 6 Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 

@@ -2,44 +2,28 @@
 	<? $this->insert('partials/add-product-inner-tab-breadcrumb') ?>
 
 
-	<div class="row">
+	<div class="row" ng-if="controlFlags.variation != 'enable'">
 		<div class="col-xs-12">
 			<div class="form-section">
 				<div class="form-section-header"><h2>Variation Option</h2></div>
 				<div class="form-section-content">
 					<div class="form-group ">
 				      <p class="form-control-static">
-								Variation will allow you to create a group of products with different attributes such as size and color. Once you enable variation, information from other tabs will be copied into variants that you will create, and variation cannot be disabled. Please select attribute set before enabling variation.
+								Variation will allow you to create a group of products with different attributes such as size and color. Once you enable variation,
+								 information from other tabs will be copied into variants that you will create, and variation cannot be disabled.
+								 <strong>Please select attribute set before enabling variation.</strong>
 							</p>
-					    <button class="btn btn-width-xxl btn-blue margin-top-20">Enable Variation</button>
+					    <button class="btn btn-width-xxl btn-blue margin-top-20" ng-disabled="!formData.AttributeSet.AttributeSetId" ng-click="enableVariation()">Enable Variation</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row" ng-show="controlFlags.variation == 'enable'">
 		<div class="col-xs-12">
 			<div class="form-section">
 				<div class="form-section-header"><h2>Variation Option</h2></div>
-				<div class="form-section-content padding-left-30">
-					<!-- select whether the product variation tab should be enabled -->
-					<div class="form-group">
-							<div class="width-label">
-									<label class="control-label">Add Variation</label>
-							</div>
-							<div class="width-field-normal">
-									<select class="form-control" ng-disabled="!formData.AttributeSet.AttributeSetId" ng-model="controlFlags.variation">
-											<option value="enable">
-													Enable
-											</option>
-											<option value="disable" selected>
-													Disable
-											</option>
-									</select>
-							</div>
-					</div>
-				</div>
 
 				<!-- ng-if too long -->
 				<div class="form-section-content" ng-if="!(formData.AttributeSet && !formData.AttributeSet['AttributeSetId']) && controlFlags.variation == 'enable'">
@@ -123,8 +107,8 @@
 								<th class="column-variant">Variant</th>
 								<th ng-if="formData.Variants.length > 0 && formData.Variants[0].Pid">PID</th>
 								<th class="column-sku">SKU</th>
-								<th class="column-price">Price</th>
-								<th class="column-sale-price">Sale Price</th>
+								<th class="column-price">Original Price</th>
+								<th class="column-sale-price"><label class="required">Sale Price</label></th>
 								<th class="column-inventory">Inventory</th>
 								<th class="column-detail text-center">Detail</th>
 								<th class="column-visibility">Visibility</th>

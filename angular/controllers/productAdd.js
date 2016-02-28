@@ -9,7 +9,7 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
   var QUEUE_LIMIT = 20;
   var QUEUE_LIMIT_360 = 60;
   var MAX_VARIANT = 100;
-
+  $scope.image_alert = new NcAlert();
   $scope.dataSet = {};
   $scope.dataSet.AttributeSets = [{
     AttributeSetId: null,
@@ -23,6 +23,9 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
     BrandNameEn: "No match found",
     disabled: true
   }];
+  $scope.enableVariation = function(){
+    $scope.controlFlags.variation = 'enable';
+  };
   $scope.dataSet.SearchTags = [];
   $scope.dataSet.RelatedProducts = [];
   $scope.dataSet.StockTypes = ['Stock', 'Pre-Order'];
@@ -70,8 +73,13 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
   }; // end onbeforeunload
 
   var onImageUploadFail = function(item, filter) {
-    alert("Unable to upload image because validation error.");
+    $scope.image_alert.error(item.Message || 'Your image does not meet guideline.');
   }
+
+  var onImageUploadSuccess = function() {
+    $scope.image_alert.close();
+  }
+
   var onImageUploadQueueLimit = function() {}
   $scope.asStatus = Product.getStatus;
 
@@ -147,7 +155,7 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
           kpair.Width = $scope.formData.MasterVariant.Width;
           kpair.Height = $scope.formData.MasterVariant.Height;
           kpair.Upc = $scope.formData.MasterVariant.Upc;
-          kpair.Weight = $scope.formData.Weight;
+          kpair.Weight = $scope.formData.MasterVariant.Weight;
           kpair.DescriptionFullEn = $scope.formData.MasterVariant.DescriptionFullEn;
           kpair.DescriptionFullTh = $scope.formData.MasterVariant.DescriptionFullTh;
           kpair.DescriptionShortEn = $scope.formData.MasterVariant.DescriptionShortEn;
@@ -155,7 +163,7 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
           kpair.Images = angular.copy($scope.formData.MasterImages);
           kpair.VideoLinks = angular.copy($scope.formData.VideoLinks);
           kpair.PrepareDay = $scope.formData.PrepareDay;
-          kpair.SEO = angular.copy($scope.formData.SEO || {})
+          kpair.SEO = angular.copy($scope.formData.SEO || {});
 
           kpair._override = angular.copy(protoCheckState);
 
@@ -315,7 +323,7 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
     });
   };
 
-  $scope.$watch('formData.MasterVariant.SalePrice', function() {
+  $scope.$watch('formData.MasterVariant.OriginalPrice+formData.MasterVariant.SalePrice', function() {
     var form = $scope.addProductForm;
     if (form.MasterVariant_SalePrice) form.MasterVariant_SalePrice.$setValidity("min", true);
     if (!form.MasterVariant_SalePrice) return;
@@ -346,24 +354,24 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
 
     if (Status == 'WA') {
       if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == "") {
-        mat.push("Required Field Missing: Description (Thai)");
+        mat.push("Description (Thai)");
       }
 
       if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == "") {
-        mat.push("Required Field Missing: Description (English)");
+        mat.push("Description (English)");
       }
 
       if (!$scope.formData.Brand.BrandId) {
-        mat.push("Required Field Missing: Brand is Missing");
+        mat.push("Brand");
       }
 
       if ($scope.formData.MasterImages.length == 0) {
-        mat.push("At least one image is required");
+        mat.push("At least one image");
       }
 
       $scope.formData.Variants.forEach(function(variant){
         if(variant.Images.length == 0){
-          mat.push("At least one image is required for variation " + variant.text);
+          mat.push("At least one image for variation " + "'" + variant.text + "'");
         }
       });
 
@@ -437,7 +445,7 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
     var validateMat = manualValidate(Status);
     if (validateMat.length > 0) {
       $scope.pageState.reset();
-      $scope.alert.error(validateMat);
+      $scope.alert.error(validateMat.join(", "));
       return;
     }
 
@@ -445,7 +453,21 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
       $scope.pageState.reset();
       var requiredMissing = ('required' in $scope.addProductForm.$error);
       if (Status == 'DF' && requiredMissing) {
-        $scope.alert.error("Unable to save. Please make sure that Product Name (Thai), Product Name (English), and Original Price are filled correctly.");
+        var mfd = [];
+        if($scope.addProductForm.MasterVariant_ProductNameEn.$invalid){
+          mfd.push('Product Name (English)');
+        }
+        //Product Name (Thai), Product Name (English), and Sale Price,
+        if($scope.addProductForm.MasterVariant_ProductNameTh.$invalid){
+          mfd.push('Product Name (Thai)');
+        }
+
+        if($scope.addProductForm.MasterVariant_SalePrice.$invalid){
+          mfd.push('Sale Price');
+        }
+        mfd.push('Master Attributes');
+
+        $scope.alert.error("Unable to save. Please make sure that " + mfd.join(" and ") + " are filled correctly.");
       } else if (Status == 'WA' && requiredMissing) {
         $scope.alert.error("Unable to publish because you are missing required fields");
       } else {
@@ -468,8 +490,8 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
           $scope.formData.ProductId = Number(res.ProductId);
           $scope.pageState.reset();
           $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
-          ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
-          ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
+          ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
+          ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
         });
         $scope.addProductForm.$setPristine(true);
       } else {
@@ -522,8 +544,8 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
             $scope.formData.ProductId = Number(productId);
             $scope.pageState.reset();
             watchVariantChanges();
-            ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
-            ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
+            ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
+            ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
           });
         }, function(error) {
           throw new KnownException("Unable to fetch product with id " + productId);
@@ -537,8 +559,8 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
         $scope.controlFlags, $scope.variationFactorIndices).then(function() {
         $scope.pageState.reset();
         watchVariantChanges();
-        ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail);
-        ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail);
+        ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
+        ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
       });
     } else {
 
@@ -668,7 +690,7 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
         $scope.pairModal.alert = new NcAlert();
         $scope.pairIndex = index;
         $scope.uploaderModal.queue = $scope.pairModal.queue;
-        ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail);
+        ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
       });
 
       $scope.$on('savePairModal', function(evt) {
