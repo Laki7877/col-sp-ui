@@ -6,7 +6,7 @@
     <? $this->insert('components/page-title-breadcrumb-border', ['text' => 'Product Review']) ?>
     <div class="row search-section-wrapper">
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="ProductReviewId"></nc-bulk>
-      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Review'"></nc-search>
+      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for PID or Customer'"></nc-search>
     </div>
     <nc-filter nc-model="params._filter" nc-filter-options="filterOptions"></nc-filter>
     <nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="isSearching()" >
@@ -17,7 +17,7 @@
             <th class="width_100" nc-sort="UpdatedDt">Date</th>
             <th class="width_100" nc-sort="Rating">Rating</th>
             <th class="width_100" nc-sort="PID">PID</th>
-            <th class="width_150">Customer</th>
+            <th class="width_150" nc-sort="Customer">Customer</th>
             <th>Comment</th>
             <th nc-sort="Status width_120">Status</th>
             <th class="width_150">Approve</th>
