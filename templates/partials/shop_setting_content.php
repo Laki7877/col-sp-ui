@@ -9,6 +9,21 @@
                     nc-template-options-path="shopSettingForm/ShopId">
                            <input class="form-control" type="text" ng-model="formData.ShopId" readonly value="DE39222" disabled/>
                     </div>
+                    <!-- Shop Status -->
+                    <div ng-template="common/input/dropdown"
+                      ng-template-options="{
+                      'label' : 'Shop Status',
+                      'labelClass' : 'required'
+                      }">
+                      <ui-select ng-model="formData.Status" search-enabled="false" required>
+                      <ui-select-match placeholder="- Select Shop Status -">
+                      <span ng-bind="$select.selected.name"></span>
+                      </ui-select-match>
+                      <ui-select-choices repeat="item in statusDropdown">
+                      <span ng-bind="item.name"></span>
+                      </ui-select-choices>
+                      </ui-select>
+                    </div>
 
 										<div class="form-group">
 											<div class="width-label"><label class="control-label">Shop Logo</label></div>

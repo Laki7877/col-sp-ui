@@ -1,4 +1,4 @@
-module.exports = function($scope, Shop, ImageService, NcAlert) {
+module.exports = function($rootScope, $scope, Shop, ImageService, NcAlert, config, storage) {
   $scope.alert = new NcAlert();
 
   $scope.formData = {
@@ -27,6 +27,7 @@ module.exports = function($scope, Shop, ImageService, NcAlert) {
     uploader: null,
     images: []
   };
+  $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 
   $scope.uploadViewBag.uploader = ImageService.getUploader('/ShopImages', {
     queueLimit: 1
@@ -40,7 +41,7 @@ module.exports = function($scope, Shop, ImageService, NcAlert) {
   $scope.init = function() {
 
     Shop.getProfile().then(function(data) {
-      $scope.formData = data;
+      $scope.formData = Shop.deserialize(data);
       $scope.loading = false;
       if (data.Logo.url) $scope.uploadViewBag.images.push(data.Logo);
     });
@@ -49,9 +50,12 @@ module.exports = function($scope, Shop, ImageService, NcAlert) {
   $scope.save = function() {
     $scope.formData.Logo = $scope.uploadViewBag.images[0];
     $scope.alert.close();
-    Shop.saveProfile($scope.formData).then(function(data) {
-      console.log(data);
+    Shop.saveProfile(Shop.serialize($scope.formData)).then(function(data) {
       $scope.alert.success('Saved Profile Successfully');
+      $rootScope.Profile.Shop.Status = data.Status;
+      storage.storeCurrentUserProfile($rootScope.Profile, true);
+    }, function(err) {
+      $scope.alert.error(common.getError(err));
     });
   };
 };

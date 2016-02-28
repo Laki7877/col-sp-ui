@@ -3,7 +3,7 @@
 	<div class="width-label"><label class="control-label" ng-class="options.labelClass || {}">{{ label }}</label></div>
 	<div ng-class="['width-field-' + (options.inputSize || 'normal')]" class="{{options.inputClass}}">
 		<ng-transclude class="{{ options.transcludeClasses }}" ng-class="{ 'has-error' : isInvalid(templateField()) }"></ng-transclude>
-		<span class="input-unit" ng-if="options.unit">{{ options.unit }}</span>
+		<span class="input-with-unit" ng-if="options.unit"><span class="input-unit">{{ options.unit }}</span></span>
 		<span class="help-block" ng-if="options.hint" ng-show="options.hint.show">{{options.hint.message}}</span>
 		<span class="help-block color-red" ng-if="isInvalid(templateField())"
         ng-repeat="(key, prop) in (templateField().$error) track by key">
