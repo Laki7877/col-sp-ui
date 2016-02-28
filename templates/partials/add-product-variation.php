@@ -107,8 +107,10 @@
 								<th class="column-variant">Variant</th>
 								<th ng-if="formData.Variants.length > 0 && formData.Variants[0].Pid">PID</th>
 								<th class="column-sku">SKU</th>
-								<th class="column-price">Original Price</th>
+
 								<th class="column-sale-price"><label class="required">Sale Price</label></th>
+								<th class="column-price">Original Price</th>
+
 								<th class="column-inventory">Inventory</th>
 								<th class="column-detail text-center">Detail</th>
 								<th class="column-visibility">Visibility</th>
@@ -145,25 +147,6 @@
                                             'messages': {
                                                 'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
                                             },
-                                            'show': $root.isInvalid(addProductForm['pair_OriginalPrice' + $index]),
-                                            'conditions' : addProductForm['pair_OriginalPrice' + $index].$error
-                                        }
-                                    }">
-                                <input type="text"
-								ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_OriginalPrice{{$index}}) }"
-								name="pair_OriginalPrice{{$index}}"
-								ng-pattern="/^\d+(\.\d{1,2})?$/"
-								ng-model="pair.OriginalPrice" ng-disabled='!pair.Visibility'
-								class="form-control" />
-
-                            </td>
-
-							<td ng-template="common/input/text-td"
-                                    ng-template-options="{
-                                        'error' : {
-                                            'messages': {
-                                                'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
-                                            },
                                             'show': $root.isInvalid(addProductForm['pair_SalePrice' + $index]),
                                             'conditions' : addProductForm['pair_SalePrice' + $index].$error
                                         }
@@ -174,6 +157,25 @@
 								ng-pattern="/^\d+(\.\d{1,2})?$/"
 								class="form-control" />
                            </td>
+
+													 <td ng-template="common/input/text-td"
+						                                     ng-template-options="{
+						                                         'error' : {
+						                                             'messages': {
+						                                                 'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
+						                                             },
+						                                             'show': $root.isInvalid(addProductForm['pair_OriginalPrice' + $index]),
+						                                             'conditions' : addProductForm['pair_OriginalPrice' + $index].$error
+						                                         }
+						                                     }">
+						                                 <input type="text"
+						 								ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_OriginalPrice{{$index}}) }"
+						 								name="pair_OriginalPrice{{$index}}"
+						 								ng-pattern="/^\d+(\.\d{1,2})?$/"
+						 								ng-model="pair.OriginalPrice" ng-disabled='!pair.Visibility'
+						 								class="form-control" />
+
+						                             </td>
 
 
 							<td ng-template="common/input/text-td"
