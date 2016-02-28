@@ -225,6 +225,10 @@ ng-transclude.has-error .form-control{
 .ui-select-dropdown-hide .ui-select-dropdown {
     display: none !important;
 }
+/* Temporary Fix for mysterious ui 2 line bug */
+.ui-select-multiple.ui-select-bootstrap input.ui-select-search{
+	width: auto !important;
+}
 
 .export-list{
 	margin-left: 30px;

@@ -353,7 +353,7 @@
                                     <div ng-template="common/input/text2" ng-template-options="{   'label': 'Meta Keywords (ไทย)' }">
                                         <input placeholder="Keywords separated by comma"
                                         class="form-control width-field-normal" name="Modal_SEO_MetaKeywordTh"
-                                        ng-model="<?= $model ?>.SEO.MetaKeywordsTh"
+                                        ng-model="<?= $model ?>.SEO.MetaKeywordTh"
                                         ng-class="{ 'has-error' : $root.isInvalid(Modal_SEO_MetaKeywordsTh) }" />
                                     </div>
 
