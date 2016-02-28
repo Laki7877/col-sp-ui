@@ -4,7 +4,6 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
 	$rootScope._ = _;
 	$rootScope.Profile = storage.getCurrentUserProfile();
   $rootScope.Imposter = storage.getImposterProfile();
-  console.log($rootScope.Profile);
   if (!$rootScope.Profile && $window.location.pathname != "/login") {
     storage.put('redirect', $window.location.pathname);
     $window.location.href = "/login";
@@ -26,7 +25,6 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   _.forEach(config.SHOP_STATUS, function(item) {
     $rootScope.shopStatus[item.value] = item;
   });
-  console.log($rootScope);
   $rootScope.asShopStatus = function(status) {
     return _.isNil(status) ? config.SHOP_STATUS[0] : $rootScope.shopStatus[status];
   };
@@ -133,7 +131,8 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
             $scope.saving = true;
             $scope.alert.close();
             Credential.changePassword(_.pick($scope.formData, ['Password', 'NewPassword']))
-              .then(function() {
+              .then(function(basic) {
+                storage.storeSessionToken(basic,true);
                 $scope.alert.success('Successfully changed password');
                 $scope.formData = {};
                 $scope.formData.error = false;

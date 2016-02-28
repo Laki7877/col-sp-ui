@@ -1983,7 +1983,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
         prevVariants = undefined;
 
         $scope.formData.Variants = [];
-
+        var trackVariant = new Set();
         var expand = function(A, B) {
           var AVId = null;
           if (_.has(A, 'AttributeValue')) {
@@ -2057,8 +2057,14 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
 
           }
 
-          //Only push new variant if don't exist
-          $scope.formData.Variants.push(kpair);
+          var hashNew = (util.variant.toString(kpair.FirstAttribute, kpair.SecondAttribute));
+          if(!trackVariant.has(hashNew)){
+            //Only push new variant if don't exist
+
+            $scope.formData.Variants.push(kpair);
+            trackVariant.add(hashNew);
+          }
+
         }
 
 
@@ -2287,6 +2293,16 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
 
     $scope.pageState.reset();
     $scope.pageState.load('Validating..');
+
+
+    if($scope.controlFlags.variation == 'enable' && $scope.formData.Variants.length == 0){
+      $scope.controlFlags.variation == 'disable';
+    }
+
+    if($scope.controlFlags.variation == 'disable'){
+      $scope.formData.Variants = [];
+    }
+
 
     $scope.onPublishing = (Status == "WA");
     //On click validation
@@ -3461,7 +3477,6 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
 	$rootScope._ = _;
 	$rootScope.Profile = storage.getCurrentUserProfile();
   $rootScope.Imposter = storage.getImposterProfile();
-  console.log($rootScope.Profile);
   if (!$rootScope.Profile && $window.location.pathname != "/login") {
     storage.put('redirect', $window.location.pathname);
     $window.location.href = "/login";
@@ -3483,7 +3498,6 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
   _.forEach(config.SHOP_STATUS, function(item) {
     $rootScope.shopStatus[item.value] = item;
   });
-  console.log($rootScope);
   $rootScope.asShopStatus = function(status) {
     return _.isNil(status) ? config.SHOP_STATUS[0] : $rootScope.shopStatus[status];
   };
@@ -3590,7 +3604,8 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
             $scope.saving = true;
             $scope.alert.close();
             Credential.changePassword(_.pick($scope.formData, ['Password', 'NewPassword']))
-              .then(function() {
+              .then(function(basic) {
+                storage.storeSessionToken(basic,true);
                 $scope.alert.success('Successfully changed password');
                 $scope.formData = {};
                 $scope.formData.error = false;
@@ -3822,7 +3837,7 @@ module.exports = ["$scope", "$controller", "SellerRoleService", function($scope,
 	}, true);
 }];
 },{}],43:[function(require,module,exports){
-module.exports = function($scope, Shop, ImageService, NcAlert) {
+module.exports = function($rootScope, $scope, Shop, ImageService, NcAlert, config, storage) {
   $scope.alert = new NcAlert();
 
   $scope.formData = {
@@ -3851,6 +3866,7 @@ module.exports = function($scope, Shop, ImageService, NcAlert) {
     uploader: null,
     images: []
   };
+  $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 
   $scope.uploadViewBag.uploader = ImageService.getUploader('/ShopImages', {
     queueLimit: 1
@@ -3864,7 +3880,7 @@ module.exports = function($scope, Shop, ImageService, NcAlert) {
   $scope.init = function() {
 
     Shop.getProfile().then(function(data) {
-      $scope.formData = data;
+      $scope.formData = Shop.deserialize(data);
       $scope.loading = false;
       if (data.Logo.url) $scope.uploadViewBag.images.push(data.Logo);
     });
@@ -3873,9 +3889,12 @@ module.exports = function($scope, Shop, ImageService, NcAlert) {
   $scope.save = function() {
     $scope.formData.Logo = $scope.uploadViewBag.images[0];
     $scope.alert.close();
-    Shop.saveProfile($scope.formData).then(function(data) {
-      console.log(data);
+    Shop.saveProfile(Shop.serialize($scope.formData)).then(function(data) {
       $scope.alert.success('Saved Profile Successfully');
+      $rootScope.Profile.Shop.Status = data.Status;
+      storage.storeCurrentUserProfile($rootScope.Profile, true);
+    }, function(err) {
+      $scope.alert.error(common.getError(err));
     });
   };
 };
@@ -5243,8 +5262,8 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
 
         var left = null;
         var right = null;
-        left = (a.ValueEn || a.AttributeValueEn);
-        right = (b.ValueEn || b.AttributeValueEn);
+        left = (a.ValueEn || a.AttributeValueEn || a.AttributeValues[0].AttributeValueEn);
+        right = (b.ValueEn || b.AttributeValueEn || a.AttributeValues[0].AttributeValueEn);
         console.log(a,b, 'toString variant');
         return left + (right ? ", " + right : "");
     };
@@ -9937,8 +9956,10 @@ module.exports = ["common", "SellerPermissionService", function(common, SellerPe
 	return service;	
 }]
 },{}],134:[function(require,module,exports){
-module.exports = ['common', function (common) {
+module.exports = ["common", "config", "util", function (common, config, util) {
+    'ngInject';
     'use strict';
+
     var service = common.Rest('/Shops');
 
     service.getLocalCategories = function (id) {
@@ -9970,6 +9991,24 @@ module.exports = ['common', function (common) {
             method: 'PUT',
             data: ShopProfile
         });
+    };
+
+    service.serialize = function(data) {
+        var processed = _.merge({}, data);
+        processed.Status = processed.Status.value;
+        return processed;
+    };
+
+    service.deserialize = function(data) {
+        var processed = _.merge({}, data);
+        processed.Status = util.getDropdownItem(config.DROPDOWN.DEFAULT_STATUS_DROPDOWN, processed.Status);
+        return processed;
+    };
+
+    service.generate = function(data) {
+        return {
+            Status: config.DROPDOWN.DEFAULT_STATUS_DROPDOWN[0]
+        };
     };
 
     return service;
@@ -10343,7 +10382,7 @@ module.exports = {
 },{}],143:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Sun Feb 28 2016 13:42:00 GMT+0700 (Russia TZ 6 Standard Time)
+ * Sun Feb 28 2016 14:24:42 GMT+0700 (Russia TZ 6 Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 

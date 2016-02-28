@@ -94,7 +94,7 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
         prevVariants = undefined;
 
         $scope.formData.Variants = [];
-
+        var trackVariant = new Set();
         var expand = function(A, B) {
           var AVId = null;
           if (_.has(A, 'AttributeValue')) {
@@ -168,8 +168,14 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
 
           }
 
-          //Only push new variant if don't exist
-          $scope.formData.Variants.push(kpair);
+          var hashNew = (util.variant.toString(kpair.FirstAttribute, kpair.SecondAttribute));
+          if(!trackVariant.has(hashNew)){
+            //Only push new variant if don't exist
+
+            $scope.formData.Variants.push(kpair);
+            trackVariant.add(hashNew);
+          }
+
         }
 
 
@@ -398,6 +404,16 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
 
     $scope.pageState.reset();
     $scope.pageState.load('Validating..');
+
+
+    if($scope.controlFlags.variation == 'enable' && $scope.formData.Variants.length == 0){
+      $scope.controlFlags.variation == 'disable';
+    }
+
+    if($scope.controlFlags.variation == 'disable'){
+      $scope.formData.Variants = [];
+    }
+
 
     $scope.onPublishing = (Status == "WA");
     //On click validation
