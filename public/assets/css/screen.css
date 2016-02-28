@@ -13948,6 +13948,10 @@ form h6 {
 /* line 70, ../../../assets/_button.scss */
 .btn.disabled, .btn[disabled], fieldset[disabled] .btn {
   pointer-events: none;
+}
+
+/* line 74, ../../../assets/_button.scss */
+.btn-white.disabled, .btn-white[disabled], fieldset[disabled] .btn-white {
   color: #BCC7D5;
 }
 
