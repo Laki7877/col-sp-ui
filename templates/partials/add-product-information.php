@@ -93,9 +93,9 @@
                             <div class="width-field-normal">
                                 <div class="ah-select2-dropdown">
                                     <ui-select ng-model="formData.Brand">
-                                        <ui-select-match placeholder="Brand">
+                                        <ui-select-match>
                                             <span ng-bind="$select.selected.BrandNameEn"></span>
-                                            <span ng-show="!$select.selected.BrandNameEn">- Select Brand -</span>
+                                            <span ng-show="!$select.selected.BrandNameEn"><i class="fa fa-search"></i> Search Brand</span>
                                         </ui-select-match>
                                         <ui-select-choices ui-disable-choice="item.disabled" refresh-delay="500" refresh="refreshBrands($select.search)" repeat="item in (dataSet.Brands)  | filter : $select.search  track by item.BrandId">
                                             <span>{{ item.BrandNameEn }} </span>
