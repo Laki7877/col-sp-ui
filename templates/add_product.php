@@ -3,8 +3,8 @@ $menus = [
 	["id" => "information", "name" => 'Information', "class" => "require active"],
 	["id" => "images", "name" => 'Images', "class" => "require"], // "ng_class" => "{require : ((formData.Variants || []).length == 0) }"
 	["id" => "category", "name" => 'Category', 'class' => ''],
-	["id" => "variation", "name" => 'Variation', 'class' => ''],
 	["id" => "more_option", "name" => 'More Options', 'class' => ''],
+	["id" => "variation", "name" => 'Variation', 'class' => ''],
 ];
 
 $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'])
@@ -34,11 +34,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
                         <div role="tabpanel" class="tab-pane margin-top-20" id="category">
                             <? $this->insert('partials/add-product-category') ?>
                         </div>
+												<div role="tabpanel" class="tab-pane margin-top-20" id="more_option">
+														<? $this->insert('partials/add-product-more-option') ?>
+												</div>
                         <div role="tabpanel" class="tab-pane margin-top-20" id="variation">
                             <? $this->insert('partials/add-product-variation') ?>
-                        </div>
-                        <div role="tabpanel" class="tab-pane margin-top-20" id="more_option">
-                            <? $this->insert('partials/add-product-more-option') ?>
                         </div>
                     </div>
                     <!-- tablc-ntent-->
