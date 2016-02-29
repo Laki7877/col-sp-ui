@@ -37,24 +37,105 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
 ])
 
 //App config
-.config(['uiSelectConfig', '$ncPaginationProvider', '$ncAlertProvider',
-  function(uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
+
+.config(['$uibTooltipProvider', 'uiSelectConfig', '$ncPaginationProvider', '$ncAlertProvider', 
+    function ($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
+
+	//Default close tooltip when click again
+	$tooltipProvider.setTriggers({
+    'clickanystart': 'clickanyend'
+	});
+	$tooltipProvider.options({
+		trigger: 'clickanystart'
+	});
     $ncPaginationProvider.paginationSizes = [10, 20, 50, 100];
     uiSelectConfig.taggingTokens = '[ENTER|,]';
-  }
-])
+
+    } ])
+
 
 //App template cache load
 .run(template)
 
 //App init
-/* Moved to root.js */
+.run(['$rootScope', 'storage', '$window', '$location', 'Credential', function($rootScope, storage, $window, $location, Credential) {
 
 
-//Configuration
-.value('config', config)
+    //Create global logout function
+    $rootScope.logout = function() {
+      if ($rootScope.Imposter) {
+        return Credential.logoutAs().then(function(R) {
+          //return to normal flow
+          if (R.User.IsAdmin) {
+            $window.location.href = "/admin";
+          } else {
+            $window.location.href = "/products";
+          }
+        }, function() {
+          alert("Fetal error while logging out.");
+        });
+      }
+
+      Credential.logout();
+      $window.location.href = "/login"
+    };
+
+
+    //Create generic form validator functions
+    //This is now inside ncTemplate
+    $rootScope.isInvalid = function(form) {
+      if (angular.isDefined(form) &&
+        angular.isDefined(form.$invalid) &&
+        angular.isDefined(form.$dirty)) {
+        return form.$invalid && (form.$dirty || form.$$parentForm.$submitted);
+      }
+      return false;
+    };
+
+
+    //Prevent image dragdrop on other elements
+    $window.addEventListener("dragover", function(e) {
+      e = e || event;
+      e.preventDefault();
+    }, false);
+    $window.addEventListener("drop", function(e) {
+      e = e || event;
+      e.preventDefault();
+    }, false);
+
+    //Match route with
+    $rootScope.isUrl = function(url) {
+      if (url.length > 0) {
+        var path = $window.location.pathname;
+        if (path == url) {
+          return true;
+        } else if (path.startsWith(url) && path.charAt(url.length) != '/') {
+          return false;
+        } else {
+          return path.startsWith(url);
+        }
+      } else {
+        return false;
+      }
+    };
+
+    $rootScope.activeParentUrl = function(url, sub) {
+      return {
+        'forced-active': $rootScope.isUrl(url)
+      };
+    };
+
+    //For active class url
+    $rootScope.activeUrl = function(url) {
+      return {
+        'active': $window.location.pathname == url
+      };
+    };
+  }])
+  //Configuration
+  .value('config', config)
 .value('route', route)
-.value('$templateOptionsCache', bulk['template-options'])
+  .value('$templateOptionsCache', bulk['template-options'])
 
 //Helpers
 .factory('common', helpers.common)
@@ -97,6 +178,14 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
   .factory('$exceptionHandler', services.exceptionHandler)
   .factory('KnownException', services.knownException)
   .factory('$productAdd', services.productAdd)
+.factory('Collection', services.productCollection)
+.factory('$CollectionAdd', services.productCollectionAdd)
+.factory('$CollectionAddListItem', services.productCollectionAddListItem)
+.factory('Image', services.image)
+.factory('Buy1Get1', services.buy1get1)
+.factory('$Buy1Get1Add', services.buy1get1Add)
+.factory('OnTopCreditService', services.OnTopCreditService)
+.factory('OnTopCredit', services.OnTopCredit)
 
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)
@@ -169,5 +258,17 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
   .controller('AbstractListCtrl', controllers.abstractList)
   .controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
   .controller('AbstractAddCtrl', controllers.abstractAdd)
+.controller('ProductCollectionListCtrl', controllers.productCollectionList)
+.controller('ProductCollectionAddCtrl', controllers.productCollectionAdd)
+.controller('ProductCollectionAddListItemCtrl', controllers.productCollectionAddListItem)
+.controller('ProductCollectionImportCtrl', controllers.productCollectionImport)
+.controller('ProductGroupCollectionListCtrl', controllers.productGroupCollectionList)
+.controller('AdminCouponsCtrl', controllers.adminCoupons)
+.controller('Buy1Get1ListCtrl', controllers.buy1get1List)
+.controller('Buy1Get1AddCtrl', controllers.buy1get1Add)
+.controller('Buy1Get1ImportCtrl', controllers.buy1get1Import)
+
+.controller('AdminOnTopCreditCtrl', controllers.adminOnTopCreditAdd)
+.controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
 
 .controller('TestCtrl', controllers.test)

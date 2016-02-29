@@ -64,6 +64,7 @@
               <a class="header-link" href="#"><span>Status</span></a>
               <i class="fa fa-caret-down color-grey">
             </th>
+            <th class="live-column"><a class="header-link" href="#"><span>Live</span></a></th>
             <th class="visible-column"><a class="header-link" href="#"><span>Visible</span></a></th>
             <th class="action-column"><a class="header-link" href="#"><span>Action</span></a></th>
             <th class="modified-column">
@@ -93,6 +94,9 @@
                 <i class="fa fa-ban"></i>
                 Not Approved
               </span>
+            </td>
+            <td class="live-column">
+              <i class="fa fa-circle color-green"></i>
             </td>
             <td class="visible-column">
               <i class="fa fa-eye-slash color-grey eye-icon"></i>
@@ -135,6 +139,9 @@
                   Wait for Approval
               </span>
             </td>
+            <td class="live-column">
+              <i class="fa fa-circle color-red"></i>
+            </td>
             <td class="visible-column">
               <i class="fa fa-eye color-dark-grey eye-icon"></i>
             </td>
@@ -173,6 +180,9 @@
                 Approved
               </span>
             </td>
+            <td class="live-column">
+              <i class="fa fa-circle color-green"></i>
+            </td>
             <td class="visible-column">
               <i class="fa fa-eye color-dark-grey eye-icon"></i>
             </td>
@@ -210,6 +220,9 @@
                 <i class="fa fa-circle-o"></i>
                 Draft
               </span>
+            </td>
+            <td class="live-column">
+              <i class="fa fa-circle color-red"></i>
             </td>
             <td class="visible-column">
               <i class="fa fa-eye color-dark-grey eye-icon"></i>

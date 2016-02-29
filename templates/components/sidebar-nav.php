@@ -7,7 +7,9 @@
         [ "name" => "Promotion", "icon" => "fa-bookmark", "sub_sidebar" => "#sub-sidebar-promotion" ],
         [ "name" => "Shop Setting", "icon" => "fa-sliders", "sub_sidebar" => "#sub-sidebar-shopsetting", "link" =>"/shops/settings" ],
         [ "name" => "Report", "icon" => "fa-line-chart" ],
-        [ "name" => "Account", "icon" => "fa-user", "sub_sidebar" => "#sub-sidebar-account", "link" =>"/accounts" ],
+        [ "name" => "Account", "icon" => "fa-gear", "sub_sidebar" => "#sub-sidebar-account" ],
+        [ "name" => "Collection", "icon" => "fa-product-hunt", "sub_sidebar" => "#sub-sidebar-product-collection", "url" => "/collections" ],
+        [ "name" => "Buy 1 Get 1", "icon" => "fa-gift", "sub_sidebar" => "#sub-sidebar-buy1get1", "url" => "/buy1get1" ]
     ];
 ?>
 

@@ -218,7 +218,7 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
     .then(function(data) {
       $scope.ctrl.LocalCategoryTree = Category.transformNestedSetToUITree(data);
     });
-
+    
   BrandService.list()
       .then(function(data) {
         $scope.ctrl.Brands = _.map(data, function(e) {

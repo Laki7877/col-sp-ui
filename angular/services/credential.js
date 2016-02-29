@@ -67,3 +67,4 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 
 	return service;
 }];
+
