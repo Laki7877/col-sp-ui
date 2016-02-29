@@ -19,9 +19,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <span><a href="#" class="color-grey">This Year</a></span>
           </span>
         </div>
-        <div style="width:100%;" class="dashboard_graph">
+        <div class="dashboard_graph">
           <div>
-            <canvas id="canvas" height="460" width="950"></canvas>
+            <canvas id="canvas"></canvas>
           </div>
         </div>
 
@@ -95,7 +95,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
           <table class="table table_dashboard table_lsa">
             <tbody>
               <tr>
-                <td>                 
+                <td>
                   SKU:12353
                 </td>
                 <td class="column-text-ellipsis">
@@ -140,7 +140,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
           <table class="table table_dashboard table_newsletter">
             <tbody>
               <tr>
-                <td class="column-text-ellipsis">                 
+                <td class="column-text-ellipsis">
                   <div>10/12/15 at 10:00</div>
                   Some thing happens in this world and no body knows about it becuase everyone is playing DotA 2. Damn that game need to be shut down.
                 </td>
@@ -149,7 +149,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
                 </td>
               </tr>
               <tr>
-                <td class="column-text-ellipsis">                 
+                <td class="column-text-ellipsis">
                   <div>10/12/15 at 10:00</div>
                   Some thing happens in this world and no body knows about it becuase everyone is playing DotA 2. Damn that game need to be shut down.
                 </td>
@@ -158,7 +158,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
                 </td>
               </tr>
               <tr>
-                <td class="column-text-ellipsis">                 
+                <td class="column-text-ellipsis">
                   <div>10/12/15 at 10:00</div>
                   Some thing happens in this world and no body knows about it becuase everyone is playing DotA 2. Damn that game need to be shut down.
                 </td>
@@ -193,7 +193,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             </div>
             <div>฿10,535.00</div>
           </div>
-          <div class="row_container">  
+          <div class="row_container">
             <div class="width_100">
               This Month
             </div>
@@ -204,12 +204,12 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
               This Year
             </div>
             <div>฿1,210,535.00</div>
-          </div>  
+          </div>
           <!-- </div> -->
         </div>
       </div>
 
-      <div class="space_column with_border">
+      <div class="space_column with_border account_health">
         <div class="group_container">
           <span class="image-thumbs-img-wrapper">
             <img class="" src="<?= $this->asset('/assets/img/icon-dashboard-health.png') ?>" />
@@ -270,7 +270,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
 
       </div>
 
-    </div>    
+    </div>
   </div>
 
   <script>
@@ -293,11 +293,13 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
 
     }
 
+
   window.onload = function(){
     var ctx = document.getElementById("canvas").getContext("2d");
     window.myLine = new Chart(ctx).Line(lineChartData, {
       bezierCurve : false,
       scaleShowVerticalLines: false,
+      maintainAspectRatio: false,
       responsive: true
     });
   }

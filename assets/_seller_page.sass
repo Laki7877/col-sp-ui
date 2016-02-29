@@ -1,6 +1,6 @@
 .field_seller
 
-	.with_border 
+	.with_border
 		padding-bottom: 14px
 		border-bottom: 1px solid $header-border-grey
 
@@ -72,7 +72,7 @@
 
 	.dashboard_graph
 		canvas
-			max-height: 250px
+			height: 280px
 
 	.with_border
 		border: 1px solid $header-border-grey
@@ -84,9 +84,10 @@
 		white-space: nowrap
 
 	.space_column
-		padding: 20px
+		padding: 15px 15px 15px 15px
 		margin-bottom: 30px
 		line-height: 27px
+		border-radius: 3px
 
 	.logo-img
 		max-width: 40px
@@ -96,19 +97,21 @@
 		a
 			color: $color-black
 
-	/*.header-link
+	.header-link
 		> .active-underline
 		border-bottom: 2px solid $color-soft-blue
 		padding-bottom: 4px
 		&:focus
-			text-decoration: none */
+			text-decoration: none
 
 	.header_name_space
 		padding-left: 10px
+		line-height: 30px
 
 	.group_span_right
 		span
 			margin-left: 15px
+			line-height: 30px
 
 	.group_container
 		padding-bottom: 10px
@@ -118,7 +121,7 @@
 		.price-column
 			padding-left: 50px
 
-		.row_container 
+		.row_container
 			> div:first-child
 				display: inline-block
 
@@ -193,10 +196,11 @@
 		tr:last-child
 			td
 				border-bottom: 0
+				padding-bottom: 0
 
 	.table_recent_order
 		td:first-child
-			width: 140px
+			width: 160px
 
 		td:nth-child(2)
 			padding-left: 29px
@@ -227,4 +231,8 @@
 	.table_newsletter
 		td:last-child
 			padding-left: 30px
-			width: 80px 	
+			width: 80px
+
+	.account_health
+		.group_container:last-child
+			padding: 10px 0px 0px 0px
