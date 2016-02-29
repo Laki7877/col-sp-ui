@@ -6,19 +6,24 @@
 
 .onboarding_wrapper
 	background-image: url('/assets/img/bg-onboarding.png')
-	background-size:	100%
-	margin-top:	-30px
+	background-size: 1025px 478px
+	background-color: #f8e6e6
+	background-repeat: no-repeat
+	background-position: center 48%
+	background-origin: content-box
+	margin-top: -30px
 	margin-bottom: -30px
 	margin-left: -40px
 	margin-right: -40px
-	height:	258px
+	height:	200px
+	padding-top: 200px
 
 	.welcome_text_big
-		padding-top: 92px
-		font-size: 36px
+		margin-top: -164px
+		font-size: 32px
 
 	.welcome_text_small
-		font-size: 24px
+		font-size: 21px
 
 .onboarding_content
 	margin-top: -36px
@@ -30,6 +35,7 @@
 
 	.home_task
 		border:	1px solid $color-grey
+		@include border-radius(3px)
 		background-color:	$color-white
 
 		.image-thumbs-img-wrapper
@@ -41,6 +47,12 @@
 		.home_task_button
 			float: right
 			padding: 17px 10px
+
+			.btn-width-xxl
+				width: 150px
+
+	& .background_blue
+		background-color: $color-light-blue
 
 	.complete_line
 		border-top: solid 1px $color-grey
@@ -57,6 +69,10 @@
 
 
 #dashboard_page
+
+	.dashboard_graph
+		canvas
+			max-height: 250px
 
 	.with_border
 		border: 1px solid $header-border-grey
@@ -79,12 +95,13 @@
 	.header-link
 		a
 			color: $color-black
-	.header-link
+
+	/*.header-link
 		> .active-underline
 		border-bottom: 2px solid $color-soft-blue
 		padding-bottom: 4px
 		&:focus
-			text-decoration: none
+			text-decoration: none */
 
 	.header_name_space
 		padding-left: 10px
@@ -94,12 +111,20 @@
 			margin-left: 15px
 
 	.group_container
-		padding-bottom: 20px
-		padding-top: 20px
+		padding-bottom: 10px
+		padding-top: 10px
 		border-bottom: solid 1px $color-grey
 
 		.price-column
 			padding-left: 50px
+
+		.row_container 
+			> div:first-child
+				display: inline-block
+
+			> div:nth-child(2)
+				float: right
+
 
 	& .no_border
 		border: none
@@ -115,19 +140,91 @@
 		padding-bottom: 5px
 		padding-top: 5px
 		border: none
+		position: relative
 
 		& div:first-child
 			padding-right: 0
 		& div:last-child
-			padding-left: 0
 			line-height: 40px
 
-	.top_selling_header
-		margin-bottom: 15px
+		.row_container
+			> div:nth-child(2)
+				float: none
+				display: inline
+				padding-left: 10px
+
+		.column-text-ellipsis
+			padding-left: 50px
+			position: absolute
+			top: 0
 
 	.group_container:first-child
 		padding-top: 0
 
 	.group_container:last-child
 		border: none
+		padding-top: 0
 		padding-bottom: 0
+
+		&.small_field
+			padding-top: 10px
+
+	.top_selling_header
+		margin-bottom: 15px
+
+	.width_100
+		width:	100px
+
+	.width_150
+		width:	150px
+
+	.table
+		margin-bottom: 0
+
+	.table_dashboard
+		td
+			padding: 15px 0 15px 0
+			border-top: 0
+			border-bottom: 1px solid $color-grey
+
+			&.column-text-ellipsis
+				max-width: 0
+
+		tr:last-child
+			td
+				border-bottom: 0
+
+	.table_recent_order
+		td:first-child
+			width: 140px
+
+		td:nth-child(2)
+			padding-left: 29px
+			padding-right: 30px
+
+		td:nth-child(3)
+			width: 	90px
+
+		td:last-child
+			padding-left: 30px
+			width: 56px
+
+	.table_lsa
+		td:first-child
+			width: 90px
+
+		td:nth-child(2)
+			padding-left: 29px
+			padding-right: 30px
+
+		td:nth-child(3)
+			width: 100px
+
+		td:last-child
+			padding-left: 30px
+			width: 80px
+
+	.table_newsletter
+		td:last-child
+			padding-left: 30px
+			width: 80px 	

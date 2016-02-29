@@ -42,8 +42,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
       <? $this->insert('components/forms/seller_task', 
         ["field_header" => "Set up your shop account", 
          "field_text" => "We have set up your account.",
-         "button_text" => "View Account",
-         "image_name" => "icon-onboard-setting"]) ?>
+         "button_text" => "View Profile",
+         "image_name" => "icon-onboard-setting",
+         "home_task_container_class" => "background_blue"]) ?>
                    
     </div>
 
