@@ -13,7 +13,7 @@
                                 <ui-select-match placeholder="Search by Product Name or PID">
                                     <span>{{ $item.ProductNameEn }}</span>
                                 </ui-select-match>
-                                <ui-select-choices repeat="item in (dataSet.RelatedProducts | exclude: formData.RelatedProducts : 'Pid') track by item.Pid" refresh="refreshRelatedProducts($select.search)" refresh-delay="1">
+                                <ui-select-choices repeat="item in (dataSet.RelatedProducts | exclude: formData.RelatedProducts : 'ProductId' | exclude: [formData] : 'ProductId' ) track by item.Pid" refresh="refreshRelatedProducts($select.search)" refresh-delay="1">
                                     {{ item.ProductNameEn }}
                                 </ui-select-choices>
                             </ui-select>
