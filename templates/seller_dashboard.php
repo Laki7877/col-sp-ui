@@ -56,8 +56,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
                 <td>
                   ฿226
                 </td>
-                <td>
+                <td class="width_100">
                   13/12/2015
+                </td>
+                <td>
+                  <button class="btn btn-white btn-width-default">View</button>
                 </td>
               </tr>
               <tr>
@@ -68,12 +71,15 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
                   </span>
                 </td>
                 <td class="column-text-ellipsis">
-                  Order #153 - Jatuporn Dummaaaaaaaqd
+                  Order #153 - Jatuporn Dumaaaaaaad
                 <td>
                   ฿1,326
                 </td>
-                <td>
+                <td class="width_100">
                   13/12/2015
+                </td>
+                <td>
+                  <button class="btn btn-white btn-width-default">View</button>
                 </td>
               </tr>
             </tbody>
