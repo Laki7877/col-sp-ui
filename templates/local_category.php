@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="LocalCategoryCtrl" ng-init="init()" class="local-category-page">
-		<div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()">{{alert.message}}</div>
+		<nc-alert nc-model="alert"></nc-alert>
 		<div class="page-header with-border">
 		    <h1 class="float-left page-header-title">
 		    	<span>Local Category</span>
@@ -10,8 +10,8 @@
 				<span ng-show="saving && pristine" class="margin-left-10" nc-loading-small="Saving..." style="display: inline-block; margin-bottom: -20px; margin-top: -5px;"></span>
 		    </h1>
 		    <span class="float-right page-header-action">
-		        <button type="button" class="btn-white btn margin-right-10" ng-click="open()">
-		          <span class="">Add New Category</span>
+		        <button type="button" class="btn-blue btn btn-width-xxl" ng-click="open()">
+		          Add Category
 		        </button>
 		    </span>
 		</div>
@@ -27,7 +27,7 @@
 					Visible
 				</span>
 				<span class="col-xs-1 text-align-center">
-					Move	
+					Move
 				</span>
 				<span class="col-xs-1 text-align-center">
 					Action
@@ -35,8 +35,8 @@
 			</div>
 			<div class="col-xs-12 no-padding" ui-tree="treeOptions" max-depth="4">
 				<ol class="sortable no-padding" ui-tree-nodes ng-model="categories">
-					<li ng-repeat="node in categories" ui-tree-node ng-include="'local_category/nodes'" data-collapsed="{{::$index == 0 ? false : true}}"></li>
-				</ol>	
+					<li ng-repeat="node in categories" ui-tree-node ng-include="'local_category/nodes'"></li>
+				</ol>
 			</div>
 		</div>
 		<div ng-if="!loading && categories.length == 0" class="local-category-empty-section margin-top-20">
@@ -44,7 +44,7 @@
 				<span class="zero-category-image">
 				</span>
 			</span>
-			<span class="local-category-empty-text">You do not have local category</span>
+			<span class="local-category-empty-text">You have no category</span>
 		</div>
       	<div ng-if="loading">
           <? $this->insert('components/table-loading', ['text' => 'Loading...']) ?>

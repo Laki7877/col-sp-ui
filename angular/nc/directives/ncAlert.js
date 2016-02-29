@@ -23,8 +23,9 @@ angular.module('nc')
 			this.close = function() {
 				this.show = false;
 			};
-			this.open = function(success, msg) {
-				this.type = success ? 'green' : 'red';
+			this.open = function(success, msg, color) {
+				color = _.isNil(color) ? 'red' : color;
+				this.type = (success) ? 'green' : color;
 
 				if(msg) {
 					this.message = msg;

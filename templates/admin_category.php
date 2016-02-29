@@ -10,11 +10,11 @@
 				<span ng-show="saving && pristine" class="margin-left-10" nc-loading-small="Saving..." style="display: inline-block; margin-bottom: -20px; margin-top: -5px;"></span>
 		    </h1>
 		    <span class="float-right page-header-action">
-		    	<button type="button" class="btn-white btn margin-right-10">
+		    	<button type="button" class="btn-white btn btn-width-xl margin-right-10">
 		          <span class="">Export</span>
 		        </button>
-		        <button type="button" class="btn-white btn margin-right-10" ng-click="open()">
-		          <span class="">Add New Category</span>
+		        <button type="button" class="btn-blue btn btn-width-xxl" ng-click="open()">
+		          Add Category
 		        </button>
 		    </span>
 		</div>
@@ -36,7 +36,7 @@
 					Visible
 				</span>
 				<span class="col-xs-1 text-align-center">
-					Move	
+					Move
 				</span>
 				<span class="col-xs-1 text-align-center">
 					Action
@@ -44,8 +44,8 @@
 			</div>
 			<div class="col-xs-12 no-padding margin-bottom-60" ui-tree="treeOptions" max-depth="4">
 				<ol class="sortable no-padding" ui-tree-nodes ng-model="categories">
-					<li ng-repeat="node in categories" ui-tree-node ng-include="'global_category/nodes'" data-collapsed="{{::$index == 0 ? false : true}}"></li>
-				</ol>	
+					<li ng-repeat="node in categories" ui-tree-node ng-include="'global_category/nodes'"></li>
+				</ol>
 			</div>
 		</div>
 		<div ng-show="!loading && categories.length == 0" class="local-category-empty-section margin-top-20">
@@ -53,7 +53,7 @@
 				<span class="zero-category-image">
 				</span>
 			</span>
-			<span class="local-category-empty-text">You do not have global category</span>
+			<span class="local-category-empty-text">You do not have any categories</span>
 		</div>
       	<div ng-show="loading">
           <? $this->insert('components/table-loading', ['text' => 'Loading...']) ?>

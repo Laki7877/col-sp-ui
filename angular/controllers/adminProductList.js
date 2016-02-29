@@ -1,7 +1,6 @@
 module.exports = function($scope, $controller, Product, config) {
 	'ngInject';
-    $scope.asStatus = Product.getStatus;
-	$controller('AbstractListCtrl', {
+	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
 		options: {
 			url: '/admin/products',
@@ -9,36 +8,16 @@ module.exports = function($scope, $controller, Product, config) {
 			item: 'Product',
 			order: 'UpdatedDt',
 			id: 'ProductId',
-			actions: [{
-                name: 'View Detail',
-                fn: function(item){
-                    console.log(item, 'view detail')
-                }
-            }],
-			bulks: [],
+			actions: ['View', 'Delete'],
+			bulks: ['Delete', 'Show', 'Hide'],
 			filters: [
 				{ name: "All", value: 'All'},
 				{ name: "Approved", value: 'Approved'},
 				{ name: "Not Approved", value: 'NotApproved'},
-				{ name: "Wait for Approval", value: 'WaitForApproval'},
-				{ name: "Not Approved", value: 'NotApproved'}
+				{ name: "Wait For Approved", value: 'WaitForApproved'},
+				{ name: "Draft", value: 'Draft'}
 			]
 		}
 	});
-	$scope.searchAdvance = false;
-	$scope.onSearch = function() {
-		_.unset($scope.params, ['AdvanceSearch']);
-	};
-	$scope.onAdvanceSearch = function(apply) {
-		if(apply)
-			_.unset($scope.params, ['searchText']);
-	};
-    $scope.toggleEye = function(row){
-        Product.visible([{
-            ProductId: row.ProductId,
-            Visibility: row.Visibility
-        }], function(d){
-           console.log(d); 
-        });
-    }
-}
+	$scope.statusDropdown = config.PRODUCT_STATUS;
+};

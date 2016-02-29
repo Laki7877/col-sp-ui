@@ -12,9 +12,6 @@
             <div class="modal-body margin-top-20">
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="alert alert-warning " role="alert">
-                            Please input product variant detail only if it is different from the main product. The fields left blank will use the same information and image as the main product.
-                        </div>
                         <div ng-show="addProductVariantForm.$invalid" class="alert alert-red">
                             Please make sure all fields have no error.
                         </div>
@@ -26,7 +23,7 @@
                             <div class="form-section-header">
                                 <h2>Vital Information</h2></div>
                             <div class="form-section-content modal-custom">
-                                
+
 
                                 <div ng-template="common/input/text2" ng-template-options="{
 									'label': 'Product Name (English)',
@@ -41,7 +38,7 @@
 									}">
                                     <input class="form-control width-field-large" name="Modal_ProductNameEn" ng-model="<?=$model?>.ProductNameEn" maxlength="300" ng-pattern="/^[^<>ก-๙]+$/" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_ProductNameEn) }" />
                                 </div>
-                                
+
                                 <div ng-template="common/input/text2" ng-template-options="{
 									'label': 'Product Name (ไทย)',
 									'labelClass': 'required',
@@ -55,6 +52,12 @@
 									}">
                                     <input class="form-control width-field-large" name="Modal_ProductNameTh" ng-model="<?= $model ?>.ProductNameTh" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_ProductNameTh) }" ng-pattern="/^[^<>]+$/" maxlength="300" />
                                 </div>
+
+                                <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.Modal_Upc"
+                                nc-label="UPC" nc-template-options-path="addProductForm/MasterVariant_Upc">
+                                    <input class="form-control width-field-large" name="Modal_Upc" ng-model="<?= $model ?>.Upc" maxlength="100" />
+                                </div>
+
 
                                 <div class="form-group">
                                     <div class="width-label">
@@ -76,26 +79,22 @@
 
                             </div>
                         </div>
-                        <? $this->insert('components/forms/form-section-upload-new-product-image', 
+                        <? $this->insert('components/forms/form-section-upload-new-product-image',
                         ["uploader" => "uploaderModal",
-                        "checkbox" => true,
                         "model" => $model,
                         "images" => $model .".Images"]) ?>
 
                             <div class="form-section">
-                                <div class="form-section-header checkbox">
-                                    <label>
-                                        <input type="checkbox" ng-model="<?= $model ?>._override.embedVideo"> Override "Embed Video"
-                                    </label>
+                                <div class="form-section-header">
+                                    Embed Video
                                 </div>
-                                <div class="form-section-content" ng-show="<?= $model ?>._override.embedVideo">
+                                <div class="form-section-content">
                                     <div ng-template="common/input/text2" ng-template-options="{
 				                        'label': 'Video Link 1',
 				                        'hint': {
 				                        	'show': true,
 				                        	'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'
 				                        },
-				                        'tooltip': 'Youtube Links',
 				                        'error' : {
 				                              'messages': {
 				                              	'url': 'Please enter valid URL'
@@ -114,7 +113,6 @@
 				                        	'show': true,
 				                        	'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'
 				                        },
-				                        'tooltip': 'Youtube Links',
 				                        'error' : {
 				                              'messages': {
 				                              	'url': 'Please enter valid URL'
@@ -133,7 +131,6 @@
 				                        	'show': true,
 				                        	'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'
 				                        },
-				                        'tooltip': 'Youtube Links',
 				                        'error' : {
 				                              'messages': {
 				                              	'url': 'Please enter valid URL'
@@ -147,15 +144,12 @@
                                 </div>
                             </div>
                             <div class="form-section">
-                                <div class="form-section-header checkbox">
-                                    <label>
-                                        <input type="checkbox" ng-model="<?= $model ?>._override.description"> Override "Description"
-                                    </label>
+                                <div class="form-section-header">
+                                    Description
                                 </div>
-                                <div class="form-section-content" ng-show="<?= $model ?>._override.description">
-                                       
+                                <div class="form-section-content">
 
-                                        <? $this->insert('components/forms/ckeditor-with-label', 
+                                        <? $this->insert('components/forms/ckeditor-with-label',
 								            ["label" => "Description (English)", "size" => "xxl", "label_class" => "required", "ng_model" => $model.".DescriptionFullEn"]) ?>
 
                                             <div ng-template="common/input/textarea2" ng-template-options="{
@@ -173,9 +167,9 @@
                                                 <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="Modal_DescriptionShortEn" ng-model="<?=$model?>.DescriptionShortEn" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_DescriptionShortEn) }" />
                                                 </textarea>
                                             </div>
-                                            
-                                            
-                                             <? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (ไทย)", "size" => "xxl", "label_class" => "required", "ng_model" => $model.".DescriptionFullTh"]) ?>
+
+
+                                             <? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (ไทย)", "size" => "xxl", "label_class" => "required","form_group_class" => "margin-top-40", "ng_model" => $model.".DescriptionFullTh"]) ?>
 
                                         <div ng-template="common/input/textarea2" ng-template-options="{
                                             'label': 'Short Description (ไทย)',
@@ -189,19 +183,22 @@
                                             'conditions' : addProductVariantForm.Modal_DescriptionShortTh.$error
                                             }
                                             }">
-                                            <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="Modal_DescriptionShortTh" ng-model="<?=$model?>.DescriptionShortTh" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_DescriptionShortTh) }" />
+                                            <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500"
+                                              name="Modal_DescriptionShortTh" ng-model="<?=$model?>.DescriptionShortTh" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_DescriptionShortTh) }" />
                                             </textarea>
                                         </div>
 
                                 </div>
                             </div>
                             <div class="form-section">
-                                <div class="form-section-header checkbox">
-                                    <label>
-                                        <input type="checkbox" ng-model="<?= $model ?>._override.packageDetail"> Override "Package Detail"
-                                    </label>
+                                <div class="form-section-header">
+                                  Package Detail
                                 </div>
-                                <div class="form-section-content" ng-show="<?= $model ?>._override.packageDetail">
+                                <div class="form-section-content">
+                                    <div nc-template="common/input/form-group-with-label" nc-label="Preparation Time" nc-template-form="Modal_PrepareDay" nc-template-options-path="addProductForm/PrepareDay">
+                                        <input class="form-control width-field-normal" name="Modal_PrepareDay" ng-pattern-restrict="^[0-9]*$"
+                                        maxlength="5" ng-model="<?=$model?>.PrepareDay" />
+                                    </div>
 
                                     <!-- package detail -->
                                     <div class="form-group">
@@ -292,7 +289,8 @@
                                                         'conditions' : addProductVariantForm.Modal_Weight.$error
                                                         }
                                                     }">
-                                                    <input type="text" name="Modal_Weight" maxlength="11" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Weight) }" class="form-control" ng-pattern="/^\d+(\.\d{1,2})?$/" ng-model="<?= $model ?>.Weight" />
+                                                    <input type="text" name="Modal_Weight" maxlength="11" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Weight) }"
+                                                    class="form-control" ng-pattern="/^\d+(\.\d{1,2})?$/" ng-model="<?= $model ?>.Weight" />
                                                 </div>
 
                                                 <div class="input-column select input-xl">
@@ -310,6 +308,80 @@
                                         <!-- widht-xxl-->
                                     </div>
                                     <!--formgp-->
+
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <div class="form-section-header">
+                                    <h2>SEO</h2></div>
+                                <div class="form-section-content">
+
+                                    <div ng-template="common/input/text2" ng-template-options="{ 'label': 'Meta Title (English)' }">
+                                        <input maxlength="60" class="form-control width-field-normal"
+                                        name="Modal_SEO_MetaTitleEn"
+                                        ng-model="<?= $model ?>.SEO.MetaTitleEn"
+                                        ng-class="{ 'has-error' : $root.isInvalid(Modal_SEO_MetaTitleEn) }" />
+                                    </div>
+
+                                    <div ng-template="common/input/text2" ng-template-options="{ 'label': 'Meta Title (ไทย)' }">
+                                        <input maxlength="60" class="form-control width-field-normal"
+                                        name="Modal_SEO_MetaTitleTh" ng-model="<?= $model ?>.SEO.MetaTitleTh"
+                                        ng-class="{ 'has-error' : $root.isInvalid(Modal_SEO_MetaTitleTh) }" />
+                                    </div>
+
+                                    <div ng-template="common/input/text2" ng-template-options="{   'label': 'Meta Description (English)' }">
+                                        <input maxlength="150" class="form-control width-field-normal"
+                                        name="Modal_SEO_MetaDescriptionEn" ng-model="<?= $model ?>.SEO.MetaDescriptionEn"
+                                        ng-class="{ 'has-error' : $root.isInvalid(Modal_SEO_MetaDescriptionEn) }" />
+                                    </div>
+
+                                    <div ng-template="common/input/text2" ng-template-options="{ 'label': 'Meta Description (ไทย)' }">
+                                        <input maxlength="150" class="form-control width-field-normal"
+                                        name="Modal_SEO_MetaDescriptionTh"
+                                        ng-model="<?= $model ?>.SEO.MetaDescriptionTh"
+                                        ng-class="{ 'has-error' : $root.isInvalid(Modal_SEO_MetaDescriptionTh) }" />
+                                    </div>
+
+                                    <div ng-template="common/input/text2" ng-template-options="{  'label': 'Meta Keywords (English)'	}">
+                                        <input placeholder="Keywords separated by comma"
+                                        class="form-control width-field-normal"
+                                        name="Modal_SEO_MetaKeywordsEn" ng-model="<?= $model ?>.SEO.MetaKeywordEn"
+                                        ng-class="{ 'has-error' : $root.isInvalid(Modal_SEO_MetaKeywordsEn) }" />
+                                    </div>
+
+                                    <div ng-template="common/input/text2" ng-template-options="{   'label': 'Meta Keywords (ไทย)' }">
+                                        <input placeholder="Keywords separated by comma"
+                                        class="form-control width-field-normal" name="Modal_SEO_MetaKeywordTh"
+                                        ng-model="<?= $model ?>.SEO.MetaKeywordTh"
+                                        ng-class="{ 'has-error' : $root.isInvalid(Modal_SEO_MetaKeywordsTh) }" />
+                                    </div>
+
+                                    <div ng-template="common/input/text2" ng-template-options="{ 'label': 'Product URL Key' }">
+                                        <input maxlength="300" class="form-control width-field-normal"
+                                        ng-pattern="/^[A-Za-z0-9_\-]+$/" name="Modal_SEO_ProductUrlKeyEn"
+                                        ng-model="<?= $model ?>.SEO.ProductUrlKeyEn"
+                                        ng-class="{ 'has-error' : $root.isInvalid(Modal_SEO_ProductUrlKeyEn) }" />
+                                    </div>
+
+                                    <div ng-template="common/input/text2" ng-template-options="{
+            						'label': 'Product Boosting Weight',
+            						'error' : {
+            						'messages': {
+            						'max': 'Only numbers from 1 to 10000 is allowed',
+            						'min': 'Only numbers from 1 to 10000 is allowed',
+                                    'pattern': 'Only numbers from 1 to 10000 is allowed'
+            						},
+            						'show': $root.isInvalid(addProductForm.SEO_ProductBoostingWeight),
+            						'conditions' : addProductForm.SEO_ProductBoostingWeight.$error
+            						}
+            						}">
+                                        <input type="number" class="form-control width-field-normal"
+                                        min="0" max="10000" step="1" ng-pattern="/^[0-9]+$/"
+                                        name="Modal_SEO_ProductBoostingWeight" ng-model="<?= $model ?>.SEO.ProductBoostingWeight"
+                                        ng-class="{ 'has-error' : $root.isInvalid(Modal_SEO_ProductBoostingWeight) }"
+                                        />
+                                    </div>
 
                                 </div>
                             </div>

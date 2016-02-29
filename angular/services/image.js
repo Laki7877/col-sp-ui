@@ -1,5 +1,6 @@
 var angular = require('angular');
 //Image Service
+//Note: this file is not used anywhere (legacy!!! dOnt edit )
 module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', function($q, $http, common, storage, config, FileUploader){
 	'use strict';
 	var service = {};
@@ -35,13 +36,10 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	 */
 	service.assignUploaderEvents = function(uploader, images, queueLimit, onFail) {
 		uploader.onWhenAddingFileFailed = function(item, filter, options) {
-			console.info('onAfterAddingFile', item, filter, options);
 			onFail(item, filter);
 		};
 		uploader.onAfterAddingFile = function(item) {
-			var obj = {
-				url: ''
-			};
+			var obj = { url: '' };
 			if(images.length == uploader.queueLimit) {
 				//Callback for queueLimit reached
 				if(queueLimit) {
@@ -50,31 +48,25 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 						return;
 					}
 				}
-				
 				//Default handle, pop last images
 				images.pop();
 			}
 			images.push(obj);
 			item.indx = images.length-1;
-			console.info('onAfterAddingFile', images, uploader.queue);
 		};
 	    uploader.onSuccessItem = function(item, response, status, headers) {
 	    	images[item.indx] = response;
-			console.info('onSuccessItem', images, uploader.queue);
 	    };
 	    uploader.onErrorItem = function(item, response, status, headers) {
 	    	images.splice(item.indx, 1);
-			console.info('onErrorItem', images, uploader.queue);
 	    };
 
         uploader.onProgressItem = function(item,progress){
-             console.info('onProgressItem', item, progress, uploader.progress);
         };
-        
+
         uploader.onProgressAll = function(){
-            console.info("onProgressAll");
-        }
-        
+        };
+
 	    return uploader;
 	}
 
@@ -83,13 +75,13 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	 */
 	service.getAll = function() {
 		common.makeRequest({
-			
+
 		});
 	};
 
 	service.shift = function(from, to) {
 		common.makeRequest({
-			
+
 		});
 	};
 

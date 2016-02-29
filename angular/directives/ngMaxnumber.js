@@ -14,7 +14,10 @@ module.exports = function() {
 
 			ctrl.$validators.maxnumber = function(modelValue, viewValue) {
 				var value = modelValue || viewValue;
-				return (!value) || (!maxnumber) || (parseInt(value) <= parseInt(maxnumber)) || false;
+				if(_.isNil(value) || !value.match(/^[0-9]+(\.[0-9]{0,})?$/)) {
+					return true;
+				}
+				return (!value) || (!maxnumber) || (_.toNumber(value) <= _.toNumber(maxnumber)) || false;
 			};
 		}
 	}

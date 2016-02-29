@@ -1,9 +1,10 @@
-module.exports = function($scope, $window, NcAlert, util, options) {
+module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 	'ngInject';
 	var a = _.includes(['a','e','i','o','u'], _.lowerCase(options.item.charAt(0))) ? 'an' : 'a';
 	$scope.alert = new NcAlert();
 	$scope.tableOptions = {
-		emptyMessage: 'You do not have ' + a + ' ' + options.item
+		emptyMessage: 'You do not have any ' + _.lowerCase(options.item),
+		searchEmptyMessage: 'No ' + _.lowerCase(options.item) + ' match your search criteria'
 	};
 
 	$scope.loading = false;
@@ -13,27 +14,27 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 		_order: options.order,
 		_limit: 10,
 		_offset: 0,
-		_direction: options.direction || 'desc'	
+		_direction: options.direction || 'desc'
 	};
 	$scope.list = {
 		total: 0,
 		data: []
 	};
 
-	$scope.reload = function(newObj, oldObj) {
+	$scope.reload = options.reload || function(newObj, oldObj) {
+		$scope.loading = true;
+		(options.onReload || _.noop)(newObj, oldObj);
 		if(!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
-			(options.reload || _.noop)(newObj, oldObj);
 			if(newObj.searchText !== oldObj.searchText) {
 				$scope.params._offset = 0;
-			}
-			if(newObj.AdvanceSearch !== oldObj.AdvanceSearch) {
-				$scope.params._offset = 0;
+				$scope.bulkContainer.length = 0;
 			}
 			if(newObj._filter !== oldObj._filter) {
 				$scope.params._offset = 0;
+				$scope.bulkContainer.length = 0;
 			}
 		}
-		$scope.loading = true;
+
 		options.service.list($scope.params)
 			.then(function(data) {
 				$scope.list = data;
@@ -42,15 +43,15 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 				$scope.loading = false;
 			});
 	};
-	$scope.onload = function() {
+	$scope.onLoad = function() {
 		$scope.loading = true;
 	};
-	if(options.filters) {
+	if(!_.isEmpty(options.filters)) {
 		$scope.filterOptions = options.filters;
 		$scope.params._filter = options.filters[0].value;
 	}
 	$scope.bulkContainer = [];
-	$scope.toggleVisibility = util.eyeToggle(options.service, options.id, $scope.alert);
+	$scope.toggleEye = util.eyeToggle(options.service, options.id, $scope.alert);
 
 	if(_.isUndefined(options.bulks)) {
 		$scope.bulks= [
@@ -58,18 +59,22 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 		];
 	} else {
 		$scope.bulks = _.compact(_.map(options.bulks, function(item) {
+
+			if(_.isFunction(item)) {
+				return item($scope);
+			}
 			if(_.isString(item)) {
 				switch(item) {
 					case 'Delete':
 						return util.bulkDelete(options.service, options.id, options.item, $scope.alert, $scope.reload, $scope.onload);
-					case 'Show': 
+					case 'Show':
 						return util.bulkShow(options.service, options.id, options.item, $scope.alert, $scope.reload);
-					case 'Hide': 
+					case 'Hide':
 						return util.bulkHide(options.service, options.id, options.item, $scope.alert, $scope.reload);
 				}
 			}
 
-			if(_.isObject(item)) {
+			if(_.isObjectLike(item)) {
 				return item;
 			}
 			return null;
@@ -114,6 +119,19 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 
 	}
 
-	$scope.reload();
-	$scope.$watch('params', $scope.reload, true);
+	$scope.isSearching = function() {
+		return !_.isEmpty($scope.params.searchText) || ( _.isUndefined($scope.params._filter) ? false :  $scope.params._filter != options.filters[0].value);
+	};
+
+	$scope.$watch('params', function(a,b) {
+		if(_.isEqual(a,b)) {
+			return;
+		}
+		$scope.reload(a,b);
+	}, true);
+
+	$timeout(function() {
+		$scope.reload();
+		(options.onInit || _.noop)($scope);
+	}, 0);
 };

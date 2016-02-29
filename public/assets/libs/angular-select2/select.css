@@ -3,7 +3,7 @@
  * http://github.com/angular-ui/ui-select
  * Version: 0.13.2 - 2015-10-09T15:34:24.045Z
  * License: MIT
- */ 
+ */
 
 
 /* Style when highlighting a search. */
@@ -189,7 +189,12 @@ body > .ui-select-bootstrap.open {
   border: none;
   outline: none;
   height: 1.666666em;
+  margin-left: 5px;
   margin-bottom: 3px;
+}
+
+.ui-select-container:focus, .ui-select-container:active{
+  border-color: #007FBB; /*xyz*/
 }
 
 .ui-select-multiple.ui-select-bootstrap .ui-select-match .close {

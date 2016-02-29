@@ -5,8 +5,8 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 
 <?php $this->start('page-body') ?>
 <div ng-controller="AdminShopAddCtrl" ng-init="init(<?=$params?>)">
-	<nc-alert nc-model="alert"></nc-alert>	
-	<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Shop Accounts/{{title}}", 'urls' => ['/admin/shops']]) ?>	
+	<nc-alert nc-model="alert"></nc-alert>
+	<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Shop Accounts/{{title}}", 'urls' => ['/admin/shops']]) ?>
 	<div ng-show="loading" nc-loading="Loading Shop Account.."></div>
 	<div ng-show="saving" nc-loading="Saving Shop Account.."></div>
 	<form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
@@ -47,6 +47,21 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										ng-class="{ 'has-error' : $root.isInvalid(form.ShopNameEn) }"
 										maxlength="100"
 										required />
+									</div>									
+									<!-- Shop Status -->
+									<div ng-template="common/input/dropdown"
+										ng-template-options="{
+										'label' : 'Shop Group',
+										'labelClass' : 'required'
+										}">
+										<ui-select ng-model="formData.ShopGroup" search-enabled="false" required>
+										<ui-select-match placeholder="- Select Shop Group -">
+										<span ng-bind="$select.selected.name"></span>
+										</ui-select-match>
+										<ui-select-choices repeat="item in shopGroupDropdown">
+										<span ng-bind="item.name"></span>
+										</ui-select-choices>
+										</ui-select>
 									</div>
 									<!-- Shop Type -->
 									<div ng-template="common/input/dropdown"
@@ -59,7 +74,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										},
 										'show': isInvalid(form.ShopType),
 										'conditions' : form.ShopType.$error
-										}	
+										}
 										}">
 										<ui-select name="ShopType" ng-model="formData.ShopType" search-enabled="false" required>
 										<ui-select-match placeholder="- Select Shop Type -">
@@ -74,7 +89,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 									<div ng-template="common/link"
 										ng-template-options="{
 										'link' : '/admin/shoptypes/add'
-										}">Create New Shop Type
+									}">Add Shop Type
 									</div>
 									<!-- Shop Status -->
 									<div ng-template="common/input/dropdown"
@@ -82,7 +97,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										'label' : 'Shop Status',
 										'labelClass' : 'required'
 										}">
-										<ui-select ng-model="formData.Status" search-enabled="false">
+										<ui-select ng-model="formData.Status" search-enabled="false" required>
 										<ui-select-match placeholder="- Select Shop Status -">
 										<span ng-bind="$select.selected.name"></span>
 										</ui-select-match>
@@ -118,6 +133,27 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										ng-minnumber="0"
 										/>
 									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="form-section">
+								<div class="form-section-header"><h2>Financial Information</h2></div>
+								<div class="form-section-content">
+				                    <div nc-template="common/input/form-group-with-label"
+				                    	nc-template-form="form.BankAccountNumber"
+				                    	nc-label="Bank Account Number"
+				                    	nc-template-options-path="adminShopAccountForm/BankAccountNumber">
+				                           <input class="form-control" name="BankAccountNumber" type="text" ng-model="formData.BankAccountNumber" required/>
+				                    </div>
+				                    <div nc-template="common/input/form-group-with-label"
+				                    	nc-template-form="form.BankAccountName" 
+				                    	nc-label="Bank Account Name"
+				                    	nc-template-options-path="adminShopAccountForm/BankAccountName">
+				                           <input class="form-control" name="BankAccountName" type="text" ng-model="formData.BankAccountName" required/>
+				                    </div>
 								</div>
 							</div>
 						</div>
@@ -276,42 +312,37 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 								<div class="form-section-header"><h2>Shop Users</h2></div>
 								<div class="form-section-content">
 									<div class="form-group">
-										<table class="table table-hover no-margin"> 
-											<thead> 
-												<tr> 
-													<th>ID</th> 
-													<th>Name</th> 
-													<th>Email</th> 
-													<th>Role</th> 
-													<th>Status</th> 
-													<th class="text-align-center">Reset Password</th> 
-													<th class="text-align-center">Action</th> 
-												</tr> 
-											</thead> 
-											<tbody> 
-											<tr ng-repeat="user in formData.Users track by user.UserId"> 
-													<td>{{ user.UserId | leadingzero:2 }}</td> 
-													<td>{{ user.NameEn }}</td> 
+										<table class="table table-hover no-margin">
+											<thead>
+												<tr>
+													<th>ID</th>
+													<th>Name</th>
+													<th>Email</th>
+													<th>Role</th>
+													<th>Status</th>
+													<th class="text-align-center">Reset Password</th>
+													<th class="text-align-center">Action</th>
+												</tr>
+											</thead>
+											<tbody>
+											<tr ng-repeat="user in formData.Users track by user.UserId">
+													<td>{{ user.UserId | leadingzero:2 }}</td>
+													<td>{{ user.NameEn }}</td>
 													<td>{{ user.Email }}</td>
 													<td>{{ user.UserGroup[0] }}</td>
 													<td>{{ user.Status | mapDropdown:statusDropdown }}</td>
 													<td class="text-align-center">
-														<a class="btn btn-white btn-width-xl" ng-click="ResetPassword()">Reset</a>
-													</td> 
+														<a class="btn btn-white btn-width-xl" ng-click="resetPassword(user)">Reset</a>
+													</td>
 													<td class="text-align-center">
 														<a class="btn btn-white btn-width-xl" ng-click="loginAs(user)">Login-As</a>
-													</td> 
+													</td>
 												</tr>
 											</tbody>
 										</table>
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-12">
-							<p class="text-align-right"><span class="color-red"><i class="fa fa-asterisk"></i></span> - Required Field</p>
 						</div>
 					</div>
 				</div>

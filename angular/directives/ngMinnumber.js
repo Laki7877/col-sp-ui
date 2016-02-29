@@ -14,7 +14,10 @@ module.exports = function() {
 
 			ctrl.$validators.minnumber = function(modelValue, viewValue) {
 				var value = modelValue || viewValue;
-				return (!value) || (!minnumber) || (parseInt(value) >= parseInt(minnumber)) || false;
+				if(_.isNil(value) || !value.match(/^[0-9]+(\.[0-9]{0,})?$/)) {
+					return true;
+				}
+				return (!value) || (!minnumber) || (_.toNumber(value) >= _.toNumber(minnumber)) || false;
 			};
 		}
 	}

@@ -58,7 +58,11 @@ angular.module('nc')
 				};
 				scope.call = function() {
 					if(scope.select != scope.options[0]) {
-						if(scope.select.confirmation && scope.model.length != 0) {
+						if(scope.select.fail && scope.model.length == 0) {
+							scope.select.fail(scope.model);
+							return;
+						}
+						if(scope.select.confirmation) {
 							var modal = $uibModal.open({
 								animation: true,
 								size: 'size-warning',
@@ -66,6 +70,9 @@ angular.module('nc')
 								controller: function($scope, $uibModalInstance, options, $interpolate) {
 									$scope.title = options.title;
 									$scope.message = $interpolate(options.message)(scope);
+									$scope.btnNo = options.btnNo || 'Cancel';
+									$scope.btnYes = options.btnYes || 'Confirm';
+									$scope.btnClass = options.btnClass || 'btn-blue';
 									$scope.yes = function() {
 										$uibModalInstance.close();
 									};
@@ -77,12 +84,14 @@ angular.module('nc')
 									options: function() {
 										return {
 											title: scope.select.confirmation.title,
-											message: scope.select.confirmation.message
+											message: scope.select.confirmation.message,
+											btnNo: scope.select.confirmation.btnCancel,
+											btnYes: scope.select.confirmation.btnConfirm,
+											btnClass: scope.select.confirmation.btnClass
 										}
 									}
 								}
 							});
-
 							//Modal 
 							modal.result.then(function() {
 								scope.select.fn(scope.model, function() {

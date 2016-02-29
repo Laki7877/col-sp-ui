@@ -5,17 +5,11 @@
 		<img class="logo-img" src="<?= $this->asset('/assets/img/seller_logo.png') ?>" />
 	</div>
     
-    <?php $this->insert('components/sidebar-nav-admin', ['itemActive' => 'Home']) ?>
-
-    <ul class="sub-sidebar" style="display: none;" id="sub-admin-products">
-        <li class="sub-sidebar-header">Products</li>
-        <li ng-class="activeUrl('/admin/products')" class="item margin-top-20"><a href="/admin/products">View All Products</a></li>
-        <li ng-class="activeUrl('/admin/approve')" class="item"><a href="/admin/approve">Approve Products</a></li>
-        <li ng-class="activeUrl('/admin/master')" class="item"><a href="/admin/master">Master Products</a></li>
-        <li ng-class="activeUrl('/admin/brands')" class="item"><a href="/admin/brands">Brands</a></li>
-        <li ng-class="activeUrl('/admin/attributes')" class="item"><a href="/admin/brands">Attributes</a></li>
-        <li ng-class="activeUrl('/admin/attributesets')" class="item"><a href="/admin/brands">Attribute Sets</a></li>
-        <li ng-class="activeUrl('/admin/categories')" class="item"><a href="/admin/brands">Global Categories</a></li>
+    <ul ng-init="initMenu('admin')" class="sidebar-nav no-padding">
+        <li ng-repeat="menuItem in menu track by $index" class="sidebar-brand {{activeMenuItem(menuItem)}}" ng-mouseenter="menuItem.hover=true" ng-mouseleave="menuItem.hover=false">
+            <i class="fa fa-fw sidebar-font-awesome {{menuItem.icon}}"></i>
+            <a ng-href="{{menuItem.url}}">{{menuItem.header}}</a>
+        </li>
     </ul>
 
     <ul class="sub-sidebar" style="display: none;" id="sub-admin-accounts">
@@ -28,7 +22,7 @@
 
     <ul class="sub-sidebar" style="display: none;" id="sub-admin-promotion">
         <li class="sub-sidebar-header">Promotion</li>
-        <li ng-class="activeUrl('/admin/coupons/global')" class="item margin-top-20"><a href="/admin/coupons/global">Global Coupons</a></li>
+        <li ng-class="activeUrl('/admin/coupons/admin')" class="item margin-top-20"><a href="/admin/coupons/admin">Global Coupons</a></li>
         <li ng-class="activeUrl('/admin/coupons/seller')" class="item"><a href="/admin/coupons/seller">Seller Coupons</a></li>
     </ul>
 
@@ -78,32 +72,6 @@
         <li ng-class="activeUrl('/admin/attributesets')" class="item margin-top-20"><a href="/admin/attributesets">View</a></li>
         <li ng-class="activeUrl('/admin/attributesets/add')" class="item"><a href="/admin/attributesets/add">Add</a></li>
     </ul>
-
-    <ul class="sub-sidebar" style="display: none;" id="sub-brand">
-        <li class="sub-sidebar-header">Brand</li>
-        <li ng-class="activeUrl('/admin/brands')" class="item margin-top-20"><a href="/admin/brands">View</a></li>
-        <li ng-class="activeUrl('/admin/brands/add')" class="item"><a href="/admin/brands/add">Add</a></li>
-    </ul>
-
-    <ul class="sub-sidebar" style="display: none;" id="sub-category">
-        <li class="sub-sidebar-header">Global Category</li>
-        <li ng-class="activeUrl('/admin/categories')" class="item margin-top-20"><a href="/admin/categories">View</a></li>
-    </ul>
-
-    <ul class="sub-sidebar" style="display: none;" id="sub-product-approval">
-        <li class="sub-sidebar-header">Product Approval</li>
-        <li class="item active margin-top-20"><a href="?p=admin_product_approval">View</a></li>
-    </ul>
-
-    <ul class="sub-sidebar" style="display: none;" id="sub-all-product">
-        <li class="sub-sidebar-header">All Product</li>
-        <li class="item active margin-top-20"><a href="/admin/products">View</a></li>
-    </ul>
-
-    <ul class="sub-sidebar" style="display: none;" id="sub-promotion">
-        <li class="sub-sidebar-header">Promotion</li>
-        <li class="item active margin-top-20"><a href="?p=admin_coupons">Coupons</a></li>
-    </ul> -->
 
 <?php $this->stop() ?>
 

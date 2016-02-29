@@ -27,20 +27,20 @@
       </div>
     </div>
   </div>-->
+    <nc-advance-search nc-model="advanceSearchParams" nc-advance-search-toggle="advanceSearch" nc-advance-search-event="onAdvanceSearch" nc-advance-search-options="advanceSearchOptions"></nc-advance-search>
+
     <div class="row">
         <div class="col-xs-12">
             <div class="form-section margin-bottom-0">
                 <div class="form-section-content margin-filter">
-
-
                     <div nc-template="common/input/form-group-with-label" nc-label="Product Status" nc-template-form="addProductForm.Keywords">
                         <div class="ah-select2-dropdown">
-                            <select ng-model="p" class="form-control" ng-init="p = {text:'All', value: 'All'}" ng-options="i as i.text for i in [{ text: 'All', value: 'All'}] track by i.value" required>
+                            <select ng-model="params._filter" class="form-control" ng-options="i.value as i.name for i in filterOptions" required>
                             </select>
                         </div>
                     </div>
 
-                    <div class="form-group margin-bottom-0">
+                    <!--div class="form-group margin-bottom-0">
                         <div class="filter-section filter-input">
                             <div class="filter-container-input">
                                 <span>Filters:</span>
@@ -51,7 +51,7 @@
                                 <a class="filter-seperator">More</a>
                                 <a class="filter-seperator">Ready for Action</a>
                             </div>
-                        </div>
+                        </div-->
                         <!--<nc-filter nc-model="params._filter" nc-filter-options="filterOptions"></nc-filter>-->
                     </div>
                 </div>
@@ -59,7 +59,7 @@
         </div>
     </div>
     <div class="table-section">
-        <nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="params.searchText.length > 0">
+        <nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="isSearching()">
             <table class="table table-curved">
                 <thead>
                     <tr class="table-head">
@@ -69,12 +69,12 @@
                         <th></th>
                         <th nc-sort="ProductNameEn">Product Name </th>
                         <th nc-sort="Shop">Shop</th>
-                        <th nc-sort="OriginalPrice">Info.</th>
-                        <th nc-sort="Status">Img.</th>
-                        <th nc-sort="Status">Cat.</th>
-                        <th nc-sort="Status">Var.</th>
-                        <th nc-sort="Status">More.</th>
-                        <th>Status</th>
+                        <th nc-sort="InformationTabStatus">Info.</th>
+                        <th nc-sort="ImageTabStatus">Img.</th>
+                        <th nc-sort="CategoryTabStatus">Cat.</th>
+                        <th nc-sort="VariationTabStatus">Var.</th>
+                        <th nc-sort="MoreOptionTabStatus">More.</th>
+                        <th nc-sort="Status">Status</th>
                         <th>Action</th>
                         <th nc-sort="UpdatedDt" >Submitted</th>
                     </tr>
@@ -96,7 +96,7 @@
                         <td>{{row.Shop.ShopNameEn}}</td>
                         <td> <span class="{{ asStatus(row.InformationTabStatus).color }}"><i class="fa fa-circle"></i></span></td>
                         <td>
-                            <span class="{{ asStatus(row.CategoryTabStatus).color }}"><i class="fa fa-circle"></i></span>
+                            <span class="{{ asStatus(row.ImageTabStatus).color }}"><i class="fa fa-circle"></i></span>
                         </td>
                         <td> <span class="{{ asStatus(row.CategoryTabStatus).color }}"><i class="fa fa-circle"></i></span> </td>
                         <td>
@@ -114,5 +114,4 @@
         </nc-table>
         <nc-pagination nc-model="params" nc-pagination-total="list.total"></nc-pagination>
     </div>
-
 </div>

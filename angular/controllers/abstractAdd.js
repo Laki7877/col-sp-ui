@@ -11,7 +11,7 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 
 	//Pop up javascript warning message on leave
 	util.warningOnLeave(function() {
-		return !$scope.form.$dirty;
+		return $scope.form.$dirty;
 	});
 
 	$scope.init = function(params) {
@@ -28,13 +28,20 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 		if($scope.id > 0) {
 			$scope.loading = true;
 			$scope.title = util.getTitle($scope.id,options.item);
-			
+
 			//Get by id
 			options.service.get($scope.id)
 				.then(function(data) {
 					$scope.formData = options.service.deserialize(data);
 					$scope.loading = false;
 					(options.onLoad || _.noop)($scope, true);
+
+					if(options.dateFields){
+						options.dateFields.forEach(function(df){
+								$scope.formData[df] = new Date($scope.formData[df]);
+						});
+					}
+
 				}, function() {
 					//Jump back
 					util.page404();
@@ -64,18 +71,31 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 			$scope.saving = true;
 			$scope.alert.close();
 			var data = options.service.serialize($scope.formData);
+			var restoreDf = {};
+			if(options.dateFields){
+				options.dateFields.forEach(function(df){
+						restoreDf[df] = angular.copy($scope.formData[df]);
+						$scope.formData[df] = moment($scope.formData[df]).format('LLL');
+				});
+			}
 
 			if($scope.id > 0) {
 				//Edit mode
 				options.service.update($scope.id, data)
 					.then(function(result) {
-						$scope.alert.success(util.saveAlertSuccess(options.item, options.url));
+						$scope.formData = options.service.deserialize(result);
+						$scope.alert.success(util.saveAlertSuccess(options.successItem || options.item, options.url));
 						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(common.getError(err));
 					})
 					.finally(function() {
 						$scope.saving = false;
+						if(options.dateFields){
+							options.dateFields.forEach(function(df){
+									$scope.formData[df] = restoreDf[df];
+							});
+						}
 					});
 			} else {
 				//Save mode
@@ -83,16 +103,20 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 					.then(function(result) {
 						//Set both id and formData[id]
 						$scope.id = result[options.id];
-						$scope.formData[options.id] = result[options.id]; 
-						//Default success message
-						$scope.alert.success(util.saveAlertSuccess(options.item, options.url));
+						$scope.formData = options.service.deserialize(result);
+						$scope.alert.success(util.saveAlertSuccess(options.successItem || options.item, options.url));
 						$scope.form.$setPristine(true);
 					}, function(err) {
 						$scope.alert.error(common.getError(err));
 					})
 					.finally(function() {
 						$scope.saving = false;
-					});	
+						if(options.dateFields){
+							options.dateFields.forEach(function(df){
+								$scope.formData[df] = restoreDf[df];
+							});
+						}
+					});
 			}
 		} else {
 			//Form id

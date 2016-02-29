@@ -4,7 +4,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 ?>
 <?php $this->start('page-body') ?>
 	<div ng-controller="SellerAccountAddCtrl" ng-init="init(<?=$params?>)">
-		<nc-alert nc-model="alert"></nc-alert>		
+		<nc-alert nc-model="alert"></nc-alert>
 		<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "User Accounts/{{title}}", 'urls' => ['/accounts']]) ?>
 		<div ng-show="loading" nc-loading="Loading User Account.."></div>
 		<div ng-show="saving" nc-loading="Saving User Account.."></div>
@@ -152,31 +152,35 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 								<div class="form-section">
 									<div class="form-section-header"><h2>User Roles</h2></div>
 									<div class="form-section-content">
-							            <div ng-template="common/input/dropdown"
-							              ng-template-options="{
-							                'label' : 'User Role',
-							                'labelClass' : 'required',
-							                'error' : {
-							                        'messages': {
-							                          'required': 'This is a required field',
-							                        },
-							                        'show': isInvalid(form.UserGroup),
-							                        'conditions' : form.UserGroup.$error
-								            }
-							              }">
-							              <ui-select name="UserGroup" ng-model="formData.UserGroup" search-enabled="false" required>
-							                <ui-select-match placeholder="- Select User Role -">
-							                    <span ng-bind="$select.selected.GroupNameEn"></span>
-							                </ui-select-match>
-							                <ui-select-choices repeat="item in roles">
-							                    <span ng-bind="item.GroupNameEn"></span>
-							                </ui-select-choices>
-							              </ui-select>
-							            </div>
+										<div ng-if="roles.length > 0">
+								            <div ng-template="common/input/dropdown"
+								              ng-template-options="{
+								                'label' : 'User Role',
+								                'labelClass' : 'required',
+								                'error' : {
+								                        'messages': {
+								                          'required': 'This is a required field',
+								                        },
+								                        'show': isInvalid(form.UserGroup),
+								                        'conditions' : form.UserGroup.$error
+									            }
+								              }">
+								              <ui-select name="UserGroup" ng-model="formData.UserGroup" search-enabled="false" required>
+								                <ui-select-match placeholder="- Select User Role -">
+								                    <span ng-bind="$select.selected.GroupNameEn"></span>
+								                </ui-select-match>
+								                <ui-select-choices repeat="item in roles">
+								                    <span ng-bind="item.GroupNameEn"></span>
+								                </ui-select-choices>
+								              </ui-select>
+								            </div>
+							        	</div>
 							            <div ng-template="common/link"
 							              ng-template-options="{
+							              	'label': roles.length > 0 ? '' : 'User Role',
+							              	'labelClass': roles.length > 0 ? '' : 'required',
 							              	'link' : '/roles/add'
-							              }">Create New User Role
+							              }"><div ng-class="{ 'margin-top-7': roles.length == 0 }">Add New User Role</div>
 							          </div>
 									</div>
 								</div>

@@ -1,9 +1,9 @@
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attribute']) ?>
 
-<?php $this->start('page-body') ?>  
+<?php $this->start('page-body') ?>
   <div ng-controller="AdminAttributeAddCtrl" ng-init="init(<?=$params?>)">
     <nc-alert nc-model="alert"></nc-alert>
-    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute/{{title}}", 'urls' => ['/admin/attributes']]) ?>
+    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attributes/{{title}}", 'urls' => ['/admin/attributes']]) ?>
     <div ng-show="loading" nc-loading="Loading Attribute.."></div>
     <div ng-show="saving" nc-loading="Saving Attribute.."></div>
     <form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action margin-top-30" novalidate>
@@ -14,7 +14,7 @@
             <div class="form-section-content">
               <div ng-template="common/input/text2"
                 ng-template-options="{
-                  'label': 'Attribute Name (English)',
+                  'label': 'Attribute Name',
                   'labelClass': 'required',
                   'inputSize': 'large',
                   'error' : {
@@ -60,7 +60,7 @@
               </div>
               <div ng-template="common/input/text2"
                 ng-template-options="{
-                  'label': 'Display Name (Thai)',
+                  'label': 'Display Name (ไทย)',
                   'labelClass': 'required',
                   'inputSize': 'large',
                   'error' : {
@@ -80,6 +80,20 @@
                   ng-pattern="/^[ก-๙A-Za-z0-9_\-\(\)\*\s\.]+$/"
                   maxlength="100"
                   required />
+              </div>
+              <div
+                ng-template="common/input/dropdown"
+                ng-template-options="{
+                  'label' : 'Required'
+                }">
+                <ui-select ng-model="formData.Required" search-enabled="false" ng-disabled="formData.DataType.value == 'HB'">
+                  <ui-select-match>
+                      <span ng-bind="$select.selected.name"></span>
+                  </ui-select-match>
+                  <ui-select-choices repeat="item in boolOptions">
+                      <span ng-bind="item.name"></span>
+                  </ui-select-choices>
+                </ui-select>
               </div>
             </div>
           </div>
@@ -101,31 +115,7 @@
               </div>
               <div ng-switch="formData.DataType.value">
                 <div ng-switch-when="ST">
-                  <div ng-template="common/input/text"
-                    ng-template-options="{
-                      'label': 'Attribute Unit (Thai)'
-                    }">
-                    <input
-                      class="form-control"
-                      name="stAttributeUnitTh"
-                      ng-model="formData.ST.AttributeUnitTh"
-                      ng-class="{ 'has-error' : isInvalid(form.stAttributeUnitTh) }"
-                      maxlength="100"
-                      />
-                  </div>
-                  <div ng-template="common/input/text"
-                    ng-template-options="{
-                      'label': 'Attribute Unit (English)'
-                    }">
-                    <input
-                      class="form-control"
-                      name="stAttributeUnitEn"
-                      ng-model="formData.ST.AttributeUnitEn"
-                      ng-class="{ 'has-error' : isInvalid(form.stAttributeUnitEn) }"
-                      maxlength="100"
-                       />
-                  </div>
-                  <!--div 
+                  <!--div
                     ng-template="common/input/dropdown"
                     ng-template-options="{
                       'label' : 'Input Validation'
@@ -168,7 +158,7 @@
                     <div class="width-field-xxl">
                       <div class="multiple-input">
                         <div class="input-column input-xxl">
-                          <input name="ltChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (Thai)" ng-class="{'has-error': isInvalid(form['ltChoiceTh' + $index])}" maxlength="100" required/>
+                          <input name="ltChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': isInvalid(form['ltChoiceEn' + $index])}" maxlength="100" ng-pattern="/^[^ก-๙]+$/" required/>
                           <!-- Required -->
                           <div class="help-block color-red" ng-show="isInvalid(form['ltChoiceEn' + $index]) || isInvalid(form['ltChoiceTh' + $index])">
                               <span ng-show="form['ltChoiceTh' + $index].$error.required || form['ltChoiceEn' + $index].$error.required">This is a required field</span>
@@ -179,9 +169,9 @@
                           </div>
                         </div>
                         <div class="input-column input-xxl">
-                          <input name="ltChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': isInvalid(form['ltChoiceEn' + $index])}" maxlength="100" ng-pattern="/^[^ก-๙]+$/" required/>
+                          <input name="ltChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['ltChoiceTh' + $index])}" maxlength="100" required/>
                         </div>
-                        <i ng-if="$index > 0" class="clickable fa fa-trash fa-2x margin-left-10 color-grey margin-top-5" ng-click="formData.LT.AttributeValues.splice($index,1)"></i>
+                        <i ng-if="$index > 0" class="clickable fa fa-trash margin-left-10 color-dark-grey icon-size-20" ng-click="formData.LT.AttributeValues.splice($index,1)" style="margin-top:6px;"></i>
                       </div>
                     </div>
                   </div>
@@ -193,6 +183,26 @@
                         Add more option
                       </a>
                     </div>
+                  </div>
+                  <div ng-template="common/input/text2"
+                    ng-template-options="{
+                      'label': 'If empty, value equals',
+                      'error' : {
+                            'messages': {
+                              'pattern': 'Only letters and numbers allowed'
+                            },
+                            'show': isInvalid(form.LT_DefaultValue),
+                            'conditions' : form.LT_DefaultValue.$error
+                       }
+                    }">
+                    <input
+                      class="form-control"
+                      name="LT_DefaultValue"
+                      ng-model="formData.LT.DefaultValue"
+                      ng-class="{ 'has-error' : isInvalid(form.LT_DefaultValue) }"
+                      ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/"
+                      maxlength="100"
+                      />
                   </div>
                 </div>
                 <div ng-switch-when="HB">
@@ -223,7 +233,7 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Variation</h2></div>
             <div class="form-section-content">
-              <div 
+              <div
                 ng-template="common/input/dropdown"
                 ng-template-options="{
                   'label' : 'Set as Variation'
@@ -283,6 +293,20 @@
                   </ui-select-choices>
                 </ui-select>
              </div>
+              <div
+                ng-template="common/input/dropdown"
+                ng-template-options="{
+                  'label' : 'Filterable'
+                }">
+                <ui-select ng-model="formData.Filterable" search-enabled="false" ng-disabled="formData.DataType.value == 'HB'">
+                  <ui-select-match>
+                      <span ng-bind="$select.selected.name"></span>
+                  </ui-select-match>
+                  <ui-select-choices repeat="item in boolOptions">
+                      <span ng-bind="item.name"></span>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
             </div>
           </div>
         </div>

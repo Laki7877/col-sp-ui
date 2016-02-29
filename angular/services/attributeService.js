@@ -19,6 +19,8 @@ module.exports = function(common, config) {
 			AttributeNameTh: '',
 			DisplayNameEn: '',
 			DisplayNameTh: '',
+			Required: boolOptions[0],
+			Filterable: boolOptions[0],
 			DataValidation: validationOptions[0],
 			DataType: dataTypeOptions[0],
 			VariantStatus: boolOptions[0],
@@ -29,8 +31,6 @@ module.exports = function(common, config) {
 				AttributeValues: [{}]
 			},
 			ST: {
-				AttributeUnitEn: '',
-				AttributeUnitTh: '',
 				DataValidation: validationOptions[0],
 				DefaultValue: ''
 			},
@@ -47,19 +47,19 @@ module.exports = function(common, config) {
 		processed.DataValidation = find(validationOptions, data.DataValidation);
 		processed.ShowLocalSearchFlag = find(boolOptions, data.ShowLocalSearchFlag);
 		processed.ShowGlobalSearchFlag = find(boolOptions, data.ShowGlobalSearchFlag);
+		processed.Required = find(boolOptions, data.Required) || boolOptions[0];
+		processed.Filterable = find(boolOptions, data.Filterable) || boolOptions[0];
 
 		switch(data.DataType) {
 			case 'ST':
 				processed['ST'] = {
-					AttributeUnitEn: processed.AttributeUnitEn,
-					AttributeUnitTh: processed.AttributeUnitTh,
-					DataValidation: processed.DataValidation,
 					DefaultValue: processed.DefaultValue
 				};
 			break;
 			case 'LT':
 				processed['LT'] = {
-					AttributeValues: processed.AttributeValues
+					AttributeValues: processed.AttributeValues,
+					DefaultValue: processed.DefaultValue
 				};
 			break;
 			case 'HB':
@@ -78,17 +78,17 @@ module.exports = function(common, config) {
 		processed.DataType = processed.DataType ? processed.DataType.value : undefined;
 		processed.ShowLocalSearchFlag = processed.ShowLocalSearchFlag ? processed.ShowLocalSearchFlag.value : undefined;
 		processed.ShowGlobalSearchFlag = processed.ShowGlobalSearchFlag ? processed.ShowGlobalSearchFlag.value : undefined;
+		processed.Required = processed.Required ? processed.Required.value : undefined;
+		processed.Filterable = processed.Filterable ? processed.Filterable.value : undefined;
 
 		switch(processed.DataType) {
 			case 'ST':
-				processed.AttributeUnitEn = data.ST.AttributeUnitEn;
-				processed.AttributeUnitTh = data.ST.AttributeUnitTh;
-				processed.DataValidation = data.ST.DataValidation ? data.ST.DataValidation.value : dataTypeOptions[0].value;
 				processed.DefaultValue = data.ST.DefaultValue;
 				delete processed['AttributeValues'];
 			break;
 			case 'LT':
 				processed.AttributeValues = data.LT.AttributeValues;
+				processed.DefaultValue = data.LT.DefaultValue;
 			break;
 			case 'HB':
 				processed.DefaultValue = data.HB.DefaultValue;

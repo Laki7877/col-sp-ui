@@ -1,31 +1,67 @@
-module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope', 'config', function ($scope, Product, util, Alert, $window, $rootScope, config) {
-    
-    /*
-    * This controller uses legacy table-binding method (v0.0.0)
-    * Please refer to other controller for more accepted table controller
-    * (Note, we have like 50 different versions, make sure u pick the correct one)
-    */
-    
-    $scope.showOnOffStatus = true;
-    $scope.allChecked = false;
-    $scope.alert = new Alert();
-    $scope.filterOptions = [
-        { name: "All", value: 'All' },
-        { name: "Approved", value: 'Approved' },
-        { name: 'Draft', value: 'Draft' },
-        { name: "Not Approved", value: 'NotApproved' },
-        { name: "Wait for Approval", value: 'WaitforApproval' },
-    ];
-
+module.exports = function ($scope, $controller, Product, util, Alert, $window, $rootScope, config, storage) {
+    'ngInject';
+    $controller('AbstractAdvanceListCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/products',
+            service: Product,
+            item: 'Product',
+            order: 'UpdatedDt',
+            id: 'ProductId',
+            actions: [
+                'View',
+                'Delete',
+                'Duplicate'
+            ],
+            bulks: [
+                'Delete',
+                'Hide',
+                'Show',
+                {
+                    name: 'Publish',
+                    fn: function(arr) {
+                        $scope.alert.close();
+                        Product.bulkPublish(_.map(arr, function(e) {
+                            return _.pick(e, ['ProductId']);
+                        })).then(function() {
+                            $scope.alert.success('Successfully published ' + arr.length + ' products')
+                        }, function(resp) {
+                            $scope.alert.error(common.getError(resp));
+                        }).finally(function() {
+                            $scope.reload();
+                        });
+                    },
+                    confirmation: {
+                        title: 'Confirm to publish',
+                        message: 'Are you sure you want to publish {{model.length}} products?',
+                        btnConfirm: 'Publish',
+                        btnClass: 'btn-green'
+                    }
+                }
+            ],
+            filters: [
+                { name: "All", value: 'All' },
+                { name: "Approved", value: 'Approved' },
+                { name: 'Draft', value: 'Draft' },
+                { name: "Not Approved", value: 'NotApproved' },
+                { name: "Wait for Approval", value: 'WaitforApproval' }
+            ]
+        }
+    });
+    $scope.showOnOffStatus = {};
+    $scope.showOnOffStatus.value = true;
+    $scope.statusLookup = {};
+    $scope.advanceSearchOptions.Admin = false;
+    config.PRODUCT_STATUS.forEach(function(object){
+       $scope.statusLookup[object.value] = object;
+    });
     $scope.startExportProducts = function () {
         $scope.exporter = {
             progress: 10,
-        	title: 'Exporting...'
+        	  title: 'Exporting...'
         };
-
         $("#export-product").modal('show');
     };
-    
     $scope.confirmExportProducts = function(){
         $("#export-product").modal('hide');
 
@@ -68,264 +104,22 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
                 $scope.exporter.download = fileName;
                 $scope.exporter.progress = 100;
                 $scope.exporter.title = 'Export Complete'
-                
+
                 a.href = fileURL;
-                
+
             }, error);
         });
-    }
-
-
-    $scope.checkBoxCache = {};
-
-    $scope.setPageSize = function (p) {
-        $scope.tableParams.pageSize = p;
-    }
-
-    $scope.bulk = {
-        fn: function () {
-            var bulk = $scope.bulkOptions.find(function (item) {
-                return item.name == $('#bulk').html();
-            });
-            if (bulk) {
-                bulk.fn();
-            }
-            $scope.allChecked = false;
-        }
-    };
-
-    $scope.bulkOptions = [
-        {
-            name: 'Delete',
-            value: 'delete',
-            fn: function () {
-                $scope.alert.close();
-
-                var arr = Object.keys($scope.checkBoxCache).map(function (m) {
-                    if (!$scope.checkBoxCache[m]) return { ProductId: -1 };
-                    return {
-                        ProductId: Number(m)
-                    };
-                });
-
-                if (arr.length > 0) {
-                    Product.deleteBulk(arr).then(function () {
-                        $scope.alert.success('Successfully deleted');
-                        $scope.reloadData();
-                    }, function (result) {
-                        $scope.alert.error('Unable to Delete');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Show',
-            value: 'show',
-            fn: function () {
-                var arr = Object.keys($scope.checkBoxCache).map(function (m) {
-                    if (!$scope.checkBoxCache[m]) return { ProductId: -1 };
-                    return {
-                        ProductId: Number(m),
-                        Visibility: true
-                    };
-                });
-
-                if (arr.length > 0) {
-                    Product.visible(arr).then(function () {
-                        $scope.alert.success('Successfully changed');
-                        $scope.reloadData();
-                    }, function () {
-                        $scope.alert.error('Unable to Show');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Hide',
-            value: 'hide',
-            fn: function () {
-                var arr = Object.keys($scope.checkBoxCache).map(function (m) {
-                    if (!$scope.checkBoxCache[m]) return { ProductId: -1 };
-                    return {
-                        ProductId: Number(m),
-                        Visibility: false
-                    };
-                });
-
-                if (arr.length > 0) {
-                    Product.visible(arr).then(function () {
-                        $scope.alert.success('Successfully changed');
-                        $scope.reloadData();
-                    }, function () {
-                        $scope.alert.error('Unable to Hide');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Publish',
-            value: 'publish',
-            fn: function () {
-                var arr = [];
-                Object.keys($scope.checkBoxCache).forEach(function (m) {
-                    if (!$scope.checkBoxCache[m]) return;
-                    arr.push({
-                        ProductId: Number(m)
-                    });
-                });
-
-                if (arr.length == 0) return;
-
-                Product.bulkPublish(arr).then(function () {
-                    $scope.alert.success("Successfully published " + arr.length + " items");
-                    $scope.reloadData();
-                }, function (r) {
-                    $scope.alert.error('Unable to publish. Please check product status');
-                });
-            }
-        }
-    ];
-    $scope.actions = {
-        edit: function (row) {
-            $window.location.href = "/products/" + row.ProductId;
-        },
-        delete: function (row) {
-            $scope.alert.close();
-            Product.deleteBulk([{ ProductId: row.ProductId }]).then(function () {
-                $scope.alert.success('You have successfully remove an entry.');
-                $scope.reloadData();
-            }, function (err) {
-                $scope.alert.error(err);
-            });
-        },
-        duplicate: function (row) {
-            $scope.alert.close();
-            Product.duplicate(row.ProductId).then(function () {
-                $scope.alert.success();
-                $scope.reloadData();
-            }, function (err) {
-                $scope.alert.error(err);
-            });
-        },
-        toggle: function (row) {
-            $scope.alert.close();
-            row.Visibility = !row.Visibility;
-            Product.visible([row]).then(function () {
-            }, function (err) {
-                $scope.alert.error(err);
-                $scope.reloadData();
-            });
-        }
-    };
-    $scope.sort = util.tableSortClass($scope);
-    $scope.statusLookup = {};
-    
-    config.PRODUCT_STATUS.forEach(function(object){
-       $scope.statusLookup[object.value] = object; 
-    });
-    
-    $scope.init = function (params) {
-        if (angular.isDefined(params)) {
-            if (angular.isDefined(params.success) && params.success != null) {
-                $scope.alert.success();
-            }
-        }
     };
     $scope.asStatus = function (ab) {
         return $scope.statusLookup[ab];
     };
-
-    //Product List
-    $scope.productList = [];
-    //Default parameters
-    $scope.tableParams = {
-        filter: 'All',
-        searchText: null,
-        orderBy: 'UpdatedDt',
-        direction: 'desc',
-        page: 0,
-        pageSize: 10
+    $scope.exportSelected = function(){
+      document.getElementById('exportForm').submit();
     };
 
-    $scope.notReady = true;
-
-    $scope.applySearch = function () {
-        $scope.tableParams.page = 0;
-        $scope.tableParams.searchText = $scope.searchText;
-    };
-
-    $scope.totalPage = function (x) {
-        return Math.ceil($scope.productTotal / $scope.tableParams.pageSize);
-    };
-
-
-    $scope.nextPage = function (m) {
-        if ($scope.tableParams.page + m >= $scope.totalPage() ||
-            $scope.tableParams.page + m < 0)
-            return;
-
-        $scope.tableParams.page += m;
-    };
-
-
-    $scope.setOrderBy = function (nextOrderBy) {
-        if ($scope.tableParams.orderBy == nextOrderBy) {
-            $scope.tableParams.direction = ($scope.tableParams.direction == 'asc' ? 'desc' : 'asc');
-        }
-        $scope.tableParams.orderBy = nextOrderBy;
-    };
-
-    $scope.productTotal = 0;
-    //Populate Data Source
-    $scope.reloadData = function () {
-        $scope.productList = [];
-        $scope.notReady = true;
-        Product.getAll($scope.tableParams).then(function (x) {
-            $scope.productTotal = x.total;
-            $scope.productList = x.data;
-            $scope.notReady = false;
-        });
-    };
-
-    //Watch any change in table parameter, trigger reload
-    $scope.$watch('tableParams', function () {
-        $scope.reloadData();
-        $scope.allChecked = false;
-    }, true);
-    
-    
-    $scope.checkAll = function(){
-        var first = $scope.productList[0];
-        var tval = !($scope.checkBoxCache[first.ProductId] || false);
-        $scope.productList.forEach(function (d) {
-            $scope.checkBoxCache[d.ProductId] = tval;
-        });
+    var fromImport = storage.get('import.success');
+    if(!_.isEmpty(fromImport)) {
+        storage.remove('import.success');
+        $scope.alert.success(fromImport);
     }
-
-    $scope.checkBoxCount = function () {
-        var m = [];
-        Object.keys($scope.checkBoxCache).forEach(function (key) {
-            if ($scope.checkBoxCache[key]) m.push($scope.checkBoxCache[key]);
-        });
-        
-        //Count checked checkbox (on this page only)
-        //TODO: I don't like this solution, I'd rather trade space for time
-        //note: can't just count checkboxcache because checkboxcache is global across
-        //all pages. 
-        var chkCount = 0;
-        $scope.productList.forEach(function(p){
-            chkCount += ($scope.checkBoxCache[p.ProductId] ? 1 : 0);
-        });
-        
-        //Change selectAll checkbox state
-        if(chkCount != $scope.productList.length){
-            $scope.allChecked = false;
-        }else{
-            $scope.allChecked = true;
-        }
-        return m.length;
-    }
-}];
+};

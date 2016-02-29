@@ -3,7 +3,7 @@
 <div>
     <nc-page-title nc-title="Seller Coupons">
         <a ng-href="/admin/coupons/seller/create" class="btn margin-right-10 ng-scope btn-blue btn-width-xl">
-            <span class="">Create Coupon</span>
+            Create Coupon
         </a>
     </nc-page-title>
 
@@ -26,11 +26,11 @@
                     </th>
                     <th class="width_120">
                         <a class="header-link" href="#"><span>Coupon Code</span></a>
-                        <i class="fa fa-caret-down color-grey">
+                        <i class="fa fa-caret-down color-grey"></i>
             </th>
             <th>
               <a class="header-link" href="#"><span>Coupon Name</span></a>
-              <i class="fa fa-caret-down color-grey">
+              <i class="fa fa-caret-down color-grey"></i>
             </th>
             <th class="text-center width_number">
               <a class="header-link" href="#"><span>Remaining</span></a>
@@ -53,11 +53,11 @@
         <tbody>
           <tr>
             <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input"> 
+              <input type="checkbox" aria-label="Checkbox for following text input">
             </td>
-           
+
             <td>
-              <a href="?p=seller_coupons_detail">SHOE10OFF</a> 
+              <a href="?p=seller_coupons_detail">SHOE10OFF</a>
             </td>
             <td class="column-text-ellipsis">
               10 off on shoe category (only first 10 customer) fsdfdsfsdfsdfsd

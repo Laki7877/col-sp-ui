@@ -3,12 +3,10 @@
 $this->layout('layouts/page-with-sidebar', ['title' => 'Administration System'])
 ?>
 <?php $this->start('page-body') ?>
+{{treeSelectModel}}
 <div ng-controller="TestCtrl">
-	<form name="stuff">
-	<div nc-template="common/input/form-group-with-label" nc-template-form="stuff" nc-label="SKU" nc-template-options-path="searchForm/SKU">
-        <input class="form-control width-field-large" name="SKU" ng-model="formData.SKU" required />
-	</div>
-</form>
+	<nc-tree-select nc-model="treeModel" nc-tree-select-tree="treeSelectTree"></nc-tree-select>
+	<nc-breadcrumb-select nc-model="treeSelectModel" nc-breadcrumb-select-tree="treeSelectTree"></nc-breadcrumb-select>
 </div>
 
 <?php $this->stop() ?>

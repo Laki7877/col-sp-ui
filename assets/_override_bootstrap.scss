@@ -1,3 +1,7 @@
+body{
+	color: $color-black;
+}
+
 .container-fluid {
 	padding-left: $container-spacing-size;
 	padding-right: $container-spacing-size;
@@ -60,7 +64,7 @@ a.like-text {
 			top: 20px;
 			width: $close-button-size;
 			height: $close-button-size;
-			
+
 			> span {
 				line-height: 1;
 				display: block;

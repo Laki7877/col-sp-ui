@@ -7,6 +7,16 @@ var angular = require('angular');
 module.exports = ['config', function(config) {
     'use strict';
 	var service = {};
+
+    service.traverseSet = function(tree, key, value) {
+        if(tree.length == 0) return;
+        _.forEach(tree, function(node) {
+            node[key] = value;
+            service.traverseSet(node.nodes, key, value);
+        });
+        return tree;
+    };
+
     /**
      * REVERSE VERSION: Transform angular-ui-tree data to nested set
      * see https://en.wikipedia.org/wiki/Nested_set_model
@@ -44,7 +54,7 @@ module.exports = ['config', function(config) {
     /**
      * REVERSE VERSION: Transform nested set to angular-ui-tree
      */
-    service.transformNestedSetToUITree = function(set) {
+    service.transformNestedSetToUITree = function(set, flag) {
         var reverse2 = function(set) {
             var array = [];
             var pivot = null;
@@ -86,7 +96,7 @@ module.exports = ['config', function(config) {
                 }
             }
 
-            if (angular.isUndefined(pivot.reverse) && pivot.nodes.length > 0) {
+            if (!_.isNil(pivot) && _.isUndefined(pivot.reverse) && pivot.nodes.length > 0) {
                 pivot.nodes = reverse2(pivot.nodes);
                 pivot.reverse = true;
                 angular.forEach(pivot.nodes, function(child) {
@@ -236,7 +246,6 @@ module.exports = ['config', function(config) {
             if(angular.isUndefined(item.parent)) {
                 array[0].list = template;
                 array[0].active = template.indexOf(item);
-                console.log(array);
                 return array;
             }
             var parent = item.parent;

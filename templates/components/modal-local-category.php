@@ -15,7 +15,7 @@
                 <div class="form-section-content modal-custom">
                     <div ng-template="common/input/text2"
                         ng-template-options="{
-                          'label': 'Category Name (Thai)',
+                          'label': 'Category Name (ไทย)',
                           'labelClass': 'required',
                           'error' : {
                                 'messages': {
@@ -96,7 +96,7 @@
         </form>
       </div>
       <!-- <div class="modal-footer">
-            
+
       </div> -->
     </div>
   </div>

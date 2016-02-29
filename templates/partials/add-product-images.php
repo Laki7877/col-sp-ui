@@ -1,14 +1,13 @@
 <div id="add-product-images-tab-content">
-    <? $this->insert('partials/add-product-inner-tab-breadcrumb') ?>
-
+    <?php $this->insert('partials/add-product-inner-tab-breadcrumb') ?>
 
         <div class="row">
             <div class="col-xs-12">
-                <div class="alert alert-warning" ng-if="controlFlags.variation == 'enable'">
+                <!-- <div class="alert alert-warning" ng-if="controlFlags.variation == 'enable'">
                     <strong>Please note: </strong> Images from this tab will be the default images of all product variants. However, you may choose to add product variant images and override images from this tab.
-                </div>
-                <? $this->insert('components/forms/form-section-upload-new-product-image', ['uploader' => 'uploader', 'images' => 'formData.MasterImages']) ?>
-                    <? $this->insert('components/forms/form-section-upload-new-product-image-360', ['uploader' => 'uploader360', 'images' => 'formData.MasterImages360']) ?>
+                </div> -->
+                <nc-alert nc-model="image_alert"></nc-alert>
+                <?php $this->insert('components/forms/form-section-upload-new-product-image', ['uploader' => 'uploader', 'images' => 'formData.MasterImages']) ?>
                         <div class="form-section">
                             <!-- TODO: change label to span with ng-click -->
                             <div class="form-section-header checkbox">
@@ -23,7 +22,6 @@
 				                        	'show': true,
 				                        	'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'
 				                        },
-				                        'tooltip': 'Youtube Links',
 				                        'error' : {
 				                              'messages': {
 				                              	'url': 'Please enter valid URL'
@@ -42,7 +40,6 @@
 				                        	'show': true,
 				                        	'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'
 				                        },
-				                        'tooltip': 'Youtube Links',
 				                        'error' : {
 				                              'messages': {
 				                              	'url': 'Please enter valid URL'
@@ -61,7 +58,6 @@
 				                        	'show': true,
 				                        	'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'
 				                        },
-				                        'tooltip': 'Youtube Links',
 				                        'error' : {
 				                              'messages': {
 				                              	'url': 'Please enter valid URL'
@@ -81,4 +77,4 @@
 
 
 
-<? $this->insert('components/modal-product-image', ['id' => 'product-image-zoom']) ?>
+<?php $this->insert('components/modal-product-image', ['id' => 'product-image-zoom']) ?>

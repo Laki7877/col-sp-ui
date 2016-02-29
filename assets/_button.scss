@@ -8,6 +8,10 @@
   width: $button-width-default;
   display: inline-block;
 
+  &.width-lg {
+  	width: $button-width-lg;
+  }
+
   &.width-xl {
   	width: $button-width-xl;
   }
@@ -17,9 +21,14 @@
   }
 }
 
+.btn-default{
+  color: $color-black;
+  border-color: $color-grey;
+}
+
 .btn-white {
   width: $button-width-default;
-  @include button-variant($color-theme, $white, $btn-default-border);
+  @include button-variant($color-theme, $white, $color-grey);
 }
 
 .btn-blue {
@@ -56,4 +65,13 @@
 
 .btn.btn-width-100 {
   width: 100%;
+}
+
+
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn{
+  pointer-events: none;
+}
+
+.btn-white.disabled, .btn-white[disabled], fieldset[disabled] .btn-white{
+  color: $color-grey;
 }
