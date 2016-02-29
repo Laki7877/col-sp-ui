@@ -10,7 +10,7 @@ class ProductCollectionController extends Controller
 	public static function add($params)
 	{
 		return View::render('add_product_collection', [
-			'title' => 'Add Product',
+			'title' => 'Add Collection',
 			'viewBag' => array('catId' => $_POST['category'])
 		]);
 	}
@@ -48,8 +48,8 @@ class ProductCollectionController extends Controller
 	//not implement yet
 	public static function addlist($params)
 	{
-		return View::render('add_product_collection', [
-			'title' => 'Add Product',
+		return View::render('add_product_collection_list_item', [
+			'title' => 'Add Collection List Item',
 			'viewBag' => array('catId' => $_POST['category'])
 		]);
 	}
@@ -66,7 +66,7 @@ class ProductCollectionController extends Controller
 
 	public static function group($params) 
 	{
-		return View::render('list_product_collection');
+		return View::render('list_product_group_collection');
 	}
 
 	public static function groupadd($params) 

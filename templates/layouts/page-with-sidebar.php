@@ -46,7 +46,7 @@
         <li ng-class="activeUrl('/collections/cat')" class="item margin-top-30"><a href="/collections/cat">Category View</a></li>
         <li ng-class="activeUrl('/collections/catadd')" class="item"><a href="/collections/catadd">Category Add</a></li>
 
-        <li ng-class="activeUrl('/collections/group')" class="item margin-top-30"><a href="/categories">Category Group View</a></li>
+        <li ng-class="activeUrl('/collections/group')" class="item margin-top-30"><a href="/collections/group">Category Group View</a></li>
         <li ng-class="activeUrl('/collections/groupadd')" class="item"><a href="/collections/groupadd">Category Group Add</a></li>
 
     </ul>

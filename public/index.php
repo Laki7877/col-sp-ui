@@ -79,11 +79,12 @@ Route::add('/collections', 'ProductCollectionController::index');
 Route::add('/collections/add', 'ProductCollectionController::add');
 Route::add('/collections/addlist', 'ProductCollectionController::addlist');
 Route::add('/collections/import', 'ProductCollectionController::import');
+Route::add('/collections/group', 'ProductCollectionController::group');
+Route::add('/collections/groupadd', 'ProductCollectionController::groupadd');
 Route::add('/collections/:id', 'ProductCollectionController::edit');
 Route::add('/collections/cat', 'ProductCollectionController::cat');
 Route::add('/collections/catadd', 'ProductCollectionController::catadd');
-Route::add('/collections/group', 'ProductCollectionController::group');
-Route::add('/collections/groupadd', 'ProductCollectionController::groupadd');
+
 
 
 Route::add('/buy1get1', 'Buy1Get1Controller::index');
