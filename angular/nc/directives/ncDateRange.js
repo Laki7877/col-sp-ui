@@ -7,9 +7,10 @@ angular.module('nc')
                 priority: 1010,
                 scope: {
                     optionsPath: '@ncTemplateOptionsPath',
-                    startLabel: '@ncStartLabel',
+                    startLabel: '@?ncStartLabel',
                     startDate: '=ncModelStart',
-                    endLabel: '@ncEndLabel',
+                    endLabel: '@?ncEndLabel',
+                    label: '@?ncLabel',
                     endDate: '=ncModelEnd',
                     startMinView: '@ncStartMinView',
                     endMinView: '@ncEndMinView',

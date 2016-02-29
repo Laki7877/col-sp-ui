@@ -22,10 +22,10 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
       <? $this->insert('components/tab-nav', ["items" => $menus]) ?>
 
         <div class="tab-content">
-          <div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
+          <div role="tabpanel" class="tab-pane margin-top-30 active" id="information">
             <? $this->insert('partials/create_coupon_information') ?>
           </div>
-          <div role="tabpanel" class="tab-pane margin-top-20" id="conditions">
+          <div role="tabpanel" class="tab-pane margin-top-30" id="conditions">
             <? $this->insert('partials/coupon_condition') ?>
           </div>
         </div>

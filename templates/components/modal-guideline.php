@@ -9,18 +9,20 @@
         <form class="ah-form margin-top-20">
           <div class="row">
             <div class="col-xs-12">
-              <div>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements:</div>
-              <ul class="margin-top-10">
-                <li>Product must fill at least 85% of the images. Images must show only the product that is for sale, with few or no props and with no logos, watermarks, or inset images. Images may only contain text that is a part of the product.</li>
-                <li>Main images must have a pure white backgroud, must be a photo (not a drawing), and must not contain excluded accesories.</li>
-              </ul>
+              <div>Choose images that clearly  represent your product. Images must meet the following requirements:</div>
+        			<ul class="margin-top-10">
+                <li>Image width or height must be between at least <strong>1500px</strong> but not larger than <strong>2000px</strong></li>
+                <li>Image portion must be in square format.</li>
+                <li>File size must not be larger than 5MB and.</li>
+                <li>File format must be JPG or PNG.</li>
+        			</ul>
 
             </div>
           </div>
         </form>
       </div>
       <!-- <div class="modal-footer">
-            
+
       </div> -->
     </div>
   </div>

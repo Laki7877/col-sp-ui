@@ -7,7 +7,7 @@
     <div ng-show="loading" nc-loading="Loading Brand.."></div>
     <div ng-show="saving" nc-loading="Saving Brand.."></div>
     <form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
-      <div class="row">
+      <div class="row margin-top-30">
         <div class="col-xs-12">
           <div class="form-section">
             <div class="form-section-header">
@@ -61,7 +61,7 @@
           <? $this->insert('components/forms/form-section-upload-new-product-image-single',
               ["uploader" => "uploader",
               "no_guideline" => true,
-              "header" => "Upload New Brand Image (512 x 512)",
+              "header" => "<label class='required'>Upload New Brand Image (512 x 512)</label>",
               "images" => "formData.BrandImages"])
           ?>
           <div class="form-section">
@@ -122,15 +122,15 @@
                   'error' : {
                         'messages': {
                           },
-                        'show': isInvalid(form.MetaKeywordEn),
-                        'conditions' : form.MetaKeywordEn.$error
+                        'show': isInvalid(form.SEO_MetaKeywordEn),
+                        'conditions' : form.SEO_MetaKeywordEn.$error
                    }
                 }">
                 <input
                   class="form-control"
-                  name="MetaKeywordEn"
-                  ng-model="formData.MetaKeywordEn"
-                  ng-class="{ 'has-error' : isInvalid(form.MetaKeywordEn) }"
+                  name="SEO_MetaKeywordEn"
+                  ng-model="formData.SEO.MetaKeywordEn"
+                  ng-class="{ 'has-error' : isInvalid(form.SEO_MetaKeywordEn) }"
                   maxlength="300"
                   placeholder="Keywords seperated by comma"
                   />
@@ -141,15 +141,15 @@
                   'error' : {
                         'messages': {
                           },
-                        'show': isInvalid(form.MetaKeywordTh),
-                        'conditions' : form.MetaKeywordTh.$error
+                        'show': isInvalid(form.SEO_MetaKeywordTh),
+                        'conditions' : form.SEO_MetaKeywordTh.$error
                    }
                 }">
                 <input
                   class="form-control"
-                  name="MetaKeywordTh"
-                  ng-model="formData.MetaKeywordTh"
-                  ng-class="{ 'has-error' : isInvalid(form.MetaKeywordTh) }"
+                  name="SEO_MetaKeywordTh"
+                  ng-model="formData.SEO.MetaKeywordTh"
+                  ng-class="{ 'has-error' : isInvalid(form.SEO_MetaKeywordTh) }"
                   maxlength="300"
                   placeholder="Keywords seperated by comma"
                   />

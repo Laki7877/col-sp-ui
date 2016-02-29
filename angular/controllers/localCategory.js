@@ -12,12 +12,11 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 	util.warningOnLeave(function() {
 		var modalDirty = $scope.modalScope == null ? false : $scope.modalScope.form.$dirty;
 		return $scope.saving || $scope.dirty || modalDirty;
-	});
+	});	
 
 	//UiTree onchange event
 	$scope.treeOptions = {
 		dropped: function(event) {
-			//Change is made
 			if(event.dest.index != event.source.index || event.dest.nodesScope != event.source.nodesScope) {
 				$scope.sync();
 			}
@@ -36,11 +35,13 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 		name: 'Delete',
 		fn: function($nodeScope) {
 			$nodeScope.remove();
-			$scope.sync();
+			$scope.sync()
 		},
 		confirmation: {
 			title: 'Delete',
-			message: 'Are you sure you want to delete this category?'
+			message: 'Are you sure you want to delete this category?',
+			btnClass: 'btn-red',
+			btnConfirm: 'Delete'
 		}
 	}];
 
@@ -51,6 +52,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 		node.Visibility = !node.Visibility;
 		LocalCategoryService.visible([_.pick(node, ['Visibility', 'CategoryId'])])
 			.then(function() {
+				Category.traverseSet(node.nodes, 'Visibility', node.Visibility);
 			},
 			function(err) {
 				//revert
@@ -70,9 +72,9 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 			$timeout.cancel($scope.timerPromise);
 			$scope.timerPromise = null;
 		}
+			$scope.pristine = true;
+			$scope.saving = true;
 		$scope.timerPromise = $timeout(function() {
-				$scope.pristine = true;
-				$scope.saving = true;
 				LocalCategoryService.upsert(Category.transformUITreeToNestedSet($scope.categories))
 				.then(function() {
 					$scope.alert.close();
@@ -188,20 +190,20 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				item.CategoryId = data.CategoryId;
 				item.CategoryAbbreviation = data.CategoryAbbreviation;
 				item.Visibility = data.Visibility;
+				Category.traverseSet(item.nodes, 'Visibility', item.Visibility);
 			}
+			$scope.alert.success(config.DEFAULT_SUCCESS_MESSAGE);
 		});
 	};
 
 	//On init
 	$scope.init = function() {
-		$scope.reload();
+		$scope.reload(true);
 	};
-
 	//Load category list
 	$scope.reload = function() {
 		$scope.loading = true;
 		LocalCategoryService.listAll().then(function(data) {
-			console.log(data);
 			$scope.categories = Category.transformNestedSetToUITree(data);
 			$scope.loading = false;
 		}, function(err) {

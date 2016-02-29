@@ -1,7 +1,7 @@
 <?php
 $menus = [
 	["id" => "information", "name" => 'Information', "class" => "require active"],
-	["id" => "images", "name" => 'Images', "ng_class" => "{require : ((formData.Variants || []).length == 0) }"],
+	["id" => "images", "name" => 'Images', "class" => "require"], // "ng_class" => "{require : ((formData.Variants || []).length == 0) }"
 	["id" => "category", "name" => 'Category', 'class' => ''],
 	["id" => "variation", "name" => 'Variation', 'class' => ''],
 	["id" => "more_option", "name" => 'More Options', 'class' => ''],
@@ -11,13 +11,12 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 ?>
 <?php $this->start('page-body') ?>
 <div ng-controller="ProductAddCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
-		
+
         <nc-alert nc-model="alert"></nc-alert>
-        
+
 		<form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
             <fieldset ng-disabled="formData.Status == 'WA'">
             <? $this->insert('components/page-title-breadcrumb', ['text' => "Products/ " . $title, 'urls' => ['/products']]) ?>
-            
 
             <div ng-if="pageState.loading.state">
                 <img src="/assets/img/loader.gif" width="40"> <small>{{ pageState.loading.message }}..</small>
@@ -57,7 +56,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 
                                 <button ng-show="formData.Status != 'WA'"
                                 type="submit" class="btn btn-blue btn-width-xl"
-                                ng-click="publish('WA')">Publish</button>
+                                ng-click="prePublishWA()">Publish</button>
                             </div>
                         </div>
                     </div>
@@ -72,7 +71,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
         </fieldset>
     </form>
 </div>
-    
+
 
 	<script src="/assets/libs/ckeditor/ckeditor.js"></script>
 	<script src="/assets/libs/ckeditor/config.js"></script>

@@ -169,7 +169,9 @@ module.exports = ['common', function(common){
 			},
 			ShowGlobalSearchFlag: service.boolOptions[0],
 			ShowLocalSearchFlag: service.boolOptions[0],
-			VariantDataType: service.variantOptions[0]
+			VariantDataType: service.variantOptions[0],
+			IsRequired: service.boolOptions[0],
+			Filterable: service.boolOptions[0]
 		};
 	};
 	service.deserialize = function(data) {
@@ -180,6 +182,8 @@ module.exports = ['common', function(common){
 		processed.DataValidation = find(service.validationOptions, data.DataValidation);
 		processed.ShowLocalSearchFlag = find(service.boolOptions, data.ShowLocalSearchFlag);
 		processed.ShowGlobalSearchFlag = find(service.boolOptions, data.ShowGlobalSearchFlag);
+		processed.Filterable = find(service.boolOptions, data.Filterable);
+		processed.IsRequired = find(service.boolOptions, data.IsRequired);
 
 		switch(data.DataType) {
 			case 'ST':
@@ -211,6 +215,8 @@ module.exports = ['common', function(common){
 		processed.DataType = processed.DataType ? processed.DataType.value : undefined;
 		processed.ShowLocalSearchFlag = processed.ShowLocalSearchFlag ? processed.ShowLocalSearchFlag.value : undefined;
 		processed.ShowGlobalSearchFlag = processed.ShowGlobalSearchFlag ? processed.ShowGlobalSearchFlag.value : undefined;
+		processed.IsRequired = processed.IsRequired ? processed.IsRequired.value : undefined;
+		processed.Filterable = processed.Filterable ? processed.Filterable.value : undefined;
 
 		switch(processed.DataType) {
 			case 'ST':

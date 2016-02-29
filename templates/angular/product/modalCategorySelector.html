@@ -1,0 +1,14 @@
+<div class="modal-header">
+<button type="button" class="close" ng-click="$dismiss()"><span aria-hidden="true">&times;</span></button>
+<h3 class="modal-title">{{title}}</h3>
+</div>
+<div class="modal-body" style="padding-top: 15px">
+<div class="category-section column-4">
+		<nc-tree-select nc-model="model" nc-tree-select-tree="tree" nc-tree-select-title="Choose Global Category"></nc-tree-select>
+	<div class="category-footer no-padding">
+		<span class="float-right">
+			<button ng-click="select()"class="btn btn-blue btn-width-xl" ng-disabled="model == null">Select</button>
+		</span>
+	</div>
+</div>
+</div>

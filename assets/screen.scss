@@ -47,14 +47,6 @@ html, body {
   min-height: 100%;
 }
 
-#wrapper-login {
-  position: relative;
-  display: block;
-  min-width: 1200px;
-  min-height: 100%;
-  background-color: $sidebar-color;
-}
-
 #page-content-wrapper {
   margin-left: $sidebar-width;
   position: relative;
@@ -64,10 +56,6 @@ html, body {
   padding-top: 30px;
   padding-bottom: 30px;
 }
-
-// #page-content-plain {
-//   background-color: $color-blue;
-// }
 
 
 @import "add_product_page";
@@ -106,7 +94,7 @@ html, body {
   }
   .right-column{
     float: left;
-    width: 400px;
+    width: 300px;
     margin-left:30px;
     .list-header{
       margin-top: 9px;
@@ -128,7 +116,7 @@ html, body {
       margin-top: 15px;
       -webkit-padding-start: 0px;
       height: 290px;
-      overflow-y: auto; 
+      overflow-y: auto;
       list-style: none;
       border: 1px solid #BCC7D5;
       border-radius: 3px;
@@ -176,7 +164,7 @@ html, body {
     padding-top: 14px;
     padding-bottom: 14px;
   }
-} 
+}
 
 .has-error-parent {
   .form-control {
@@ -191,7 +179,7 @@ ng-transclude.has-error .form-control{
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
-    
+
 .form-control.has-error {
   border-color: $color-red;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -229,13 +217,71 @@ ng-transclude.has-error .form-control{
     cursor: pointer;
 }
 
-.eff-exp-column{
-  width:120px;
-}
-
-
-
 /* ui-select input fix */
 .ui-select-multiple input.ui-select-search:not(.ng-touched) {
     width: 100% !important;
+}
+
+.ui-select-dropdown-hide .ui-select-dropdown {
+    display: none !important;
+}
+/* Temporary Fix for mysterious ui-search 2 line bug */
+.ui-select-multiple.ui-select-bootstrap input.ui-select-search{
+	width: auto !important;
+	height: 26px !important;
+}
+
+.export-list{
+	margin-left: 30px;
+	margin-bottom: 15px;
+	list-style-type:none;
+	-webkit-padding-start: 0px;
+	li{
+		margin-bottom: 5px;
+	}
+	.group-label{
+		font-weight: bold;
+		margin: 20px 0px 5px 0px;
+	}
+}
+.export-select-all{
+	margin-left: 30px;
+}
+
+[uib-typeahead-popup].dropdown-menu {
+  width: 93%;
+}
+
+.popover {
+  display: block;
+}
+
+.action-gear {
+  &:hover, &:focus, &:active, &:visited {
+    text-decoration: none;
+    outline: 0;
+  }
+}
+
+@keyframes shake {
+  0% {transform: translateX(0);}
+  12.5% {transform: translateX(-6px) rotateY(-5deg)}
+  37.5% {transform: translateX(5px) rotateY(4deg)}
+  62.5% {transform: translateX(-3px) rotateY(-2deg)}
+  87.5% {transform: translateX(2px) rotateY(1deg)}
+  100% {transform: translateX(0)}
+}
+
+@-webkit-keyframes shake {
+  0% {-webkit-transform: translateX(0);}
+  12.5% {-webkit-transform: translateX(-6px) rotateY(-5deg)}
+  37.5% {-webkit-transform: translateX(5px) rotateY(4deg)}
+  62.5% {-webkit-transform: translateX(-3px) rotateY(-2deg)}
+  87.5% {-webkit-transform: translateX(2px) rotateY(1deg)}
+  100% {-webkit-transform: translateX(0)}
+}
+
+.shake {
+  -webkit-animation: shake 400ms ease-in-out;
+  animation: shake 400ms ease-in-out;
 }

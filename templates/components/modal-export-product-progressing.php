@@ -22,7 +22,7 @@ if (isset($percent)) $progress = $percent;
 					<div class="confirmation-action no-margin">
 						<button class="btn btn-white" data-dismiss="modal">Cancel</button>
 
-						<a id="export_download_btn" download="{{ exporter.download }}" class="btn btn-blue"
+						<a id="export_download_btn" download="ProductExport.csv" class="btn btn-blue"
                          ng-disabled="exporter.progress < 100">Download</a>
 						<!-- <button type="button" disabled class="btn btn-grey">Download</button> -->
 					</div> <!-- end .col-xs-12 -->

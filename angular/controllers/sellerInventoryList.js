@@ -5,13 +5,13 @@ module.exports = function($scope, $controller, $window, InventoryService, config
 		options: {
 			url: '/inventory',
 			service: InventoryService,
-			item: 'Inventory Unit',
+			item: 'Product',
 			order: 'Pid',
 			id: 'Pid',
 			actions: [{
 				name: 'View / Edit',
 				fn: function(item) {
-                	$window.location.href =  '/products/' + item[id];
+                	$window.location.href =  '/products/' + item.ProductId;
 				}
 			}],
 			filters: [
@@ -38,8 +38,8 @@ module.exports = function($scope, $controller, $window, InventoryService, config
 		//Out of stock
 		if(measure <= 0) return $scope.statusDropdown[2];
 
-		measure = measure - $scope.SaftyStockSeller;
-
+		measure = measure - item.SaftyStockSeller;
+		
 		//Low stock
 		if(measure <= 0) return $scope.statusDropdown[1];
 
@@ -56,7 +56,6 @@ module.exports = function($scope, $controller, $window, InventoryService, config
 	};
 	$scope.updateStock = function(item) {
 		$scope.alert.close();
-		console.log(item.Pid);
 		InventoryService.update(item.Pid, _.pick(item, ['Quantity']))
 			.then(function(data) {
 				$scope.lastEdit = item.Pid;

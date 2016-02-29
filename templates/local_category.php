@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="LocalCategoryCtrl" ng-init="init()" class="local-category-page">
-		<div ng-show="alert.show" uib-alert template-url="common/alert" type="{{ alert.type }}" close="alert.close()">{{alert.message}}</div>
+		<nc-alert nc-model="alert"></nc-alert>
 		<div class="page-header with-border">
 		    <h1 class="float-left page-header-title">
 		    	<span>Local Category</span>
@@ -35,7 +35,7 @@
 			</div>
 			<div class="col-xs-12 no-padding" ui-tree="treeOptions" max-depth="4">
 				<ol class="sortable no-padding" ui-tree-nodes ng-model="categories">
-					<li ng-repeat="node in categories" ui-tree-node ng-include="'local_category/nodes'" data-collapsed="{{::$index == 0 ? false : true}}"></li>
+					<li ng-repeat="node in categories" ui-tree-node ng-include="'local_category/nodes'"></li>
 				</ol>
 			</div>
 		</div>

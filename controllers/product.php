@@ -39,8 +39,15 @@ class ProductController extends Controller
 
     public static function import($params)
     {
-        return View::render('import_product', [
+        return View::render('seller_import_products', [
                 'title' => 'Import Product',
+        ]);
+    }
+    public static function importUpdate($params)
+    {
+        return View::render('seller_import_products', [
+                'title' => 'Import Product',
+                'update' => true
         ]);
     }
 

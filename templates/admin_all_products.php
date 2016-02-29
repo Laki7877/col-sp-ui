@@ -5,9 +5,9 @@
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminProductListCtrl">
        <nc-page-title nc-title="All Products">
-            <a ng-href="/admin/coupons/admin/create" class="btn ng-scope btn-white btn-width-xl">
+            <a ng-href="/admin/exports" class="btn ng-scope btn-white btn-width-xl">
           	  <span class="">Export</span>
-          </a>
+          	</a>
        </nc-page-title>
 	    <div class="row search-section-wrapper">
   			<nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="ProductId"></nc-bulk>
@@ -15,7 +15,7 @@
 		  	<nc-advance-search-button nc-model="advanceSearch"></nc-advance-search-button>
 		</div>
 		<nc-advance-search nc-model="advanceSearchParams" nc-advance-search-toggle="advanceSearch" nc-advance-search-event="onAdvanceSearch" nc-advance-search-options="advanceSearchOptions"></nc-advance-search>
-		<nc-filter nc-model="params._filter" nc-filter-options="filterOptions"></nc-filter><!-- advance search will appear here -->
+		<nc-filter nc-model="params._filter" nc-filter-options="filterOptions"></nc-filter>
 		<nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="isSearching()">
 		    <table class="table table-curved">
 		        <thead>

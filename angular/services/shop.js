@@ -1,5 +1,7 @@
-module.exports = ['common', function (common) {
+module.exports = function (common, config, util) {
+    'ngInject';
     'use strict';
+
     var service = common.Rest('/Shops');
 
     service.getLocalCategories = function (id) {
@@ -33,5 +35,23 @@ module.exports = ['common', function (common) {
         });
     };
 
+    service.serialize = function(data) {
+        var processed = _.merge({}, data);
+        processed.Status = processed.Status.value;
+        return processed;
+    };
+
+    service.deserialize = function(data) {
+        var processed = _.merge({}, data);
+        processed.Status = util.getDropdownItem(config.DROPDOWN.DEFAULT_STATUS_DROPDOWN, processed.Status);
+        return processed;
+    };
+
+    service.generate = function(data) {
+        return {
+            Status: config.DROPDOWN.DEFAULT_STATUS_DROPDOWN[0]
+        };
+    };
+
     return service;
-}];
+};

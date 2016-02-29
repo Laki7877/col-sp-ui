@@ -3,7 +3,8 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 	var a = _.includes(['a','e','i','o','u'], _.lowerCase(options.item.charAt(0))) ? 'an' : 'a';
 	$scope.alert = new NcAlert();
 	$scope.tableOptions = {
-		emptyMessage: 'You do not have ' + a + ' ' + options.item
+		emptyMessage: 'You do not have any ' + _.lowerCase(options.item),
+		searchEmptyMessage: 'No ' + _.lowerCase(options.item) + ' match your search criteria'
 	};
 
 	$scope.loading = false;
@@ -33,6 +34,7 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 				$scope.bulkContainer.length = 0;
 			}
 		}
+
 		options.service.list($scope.params)
 			.then(function(data) {
 				$scope.list = data;
@@ -49,7 +51,7 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 		$scope.params._filter = options.filters[0].value;
 	}
 	$scope.bulkContainer = [];
-	$scope.toggleVisibility = util.eyeToggle(options.service, options.id, $scope.alert);
+	$scope.toggleEye = util.eyeToggle(options.service, options.id, $scope.alert);
 
 	if(_.isUndefined(options.bulks)) {
 		$scope.bulks= [
@@ -57,6 +59,10 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 		];
 	} else {
 		$scope.bulks = _.compact(_.map(options.bulks, function(item) {
+
+			if(_.isFunction(item)) {
+				return item($scope);
+			}
 			if(_.isString(item)) {
 				switch(item) {
 					case 'Delete':
@@ -68,7 +74,7 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 				}
 			}
 
-			if(_.isObject(item)) {
+			if(_.isObjectLike(item)) {
 				return item;
 			}
 			return null;
@@ -114,10 +120,13 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 	}
 
 	$scope.isSearching = function() {
-		return !_.isEmpty($scope.params.searchText) || ( _.isUndefined($scope.params._filter) ? false :  $scope.params._filter == options.filters[0].value);
+		return !_.isEmpty($scope.params.searchText) || ( _.isUndefined($scope.params._filter) ? false :  $scope.params._filter != options.filters[0].value);
 	};
 
 	$scope.$watch('params', function(a,b) {
+		if(_.isEqual(a,b)) {
+			return;
+		}
 		$scope.reload(a,b);
 	}, true);
 

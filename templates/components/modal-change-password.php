@@ -20,7 +20,7 @@
               <div class="container-fluid no-padding margin-top-20">
                   <div class="float-right">
                     <a href="#" class="link-btn-plain" data-dismiss="modal">Cancel</a>
-                    <button class="btn btn-blue btn-width-xl">Save</button>
+                    <button class="btn btn-blue btn-width-xl"><span class="login-loading" ng-cloak ng-show="saving"><i class="fa fa-spinner fa-spin" ></i></span>Save</button>
                   </div>
               </div>
             </div>

@@ -7,7 +7,22 @@
 				<div class="form-section-content">
 					<div nc-template="common/input/form-group-with-label" nc-label="Shop ID"
                     nc-template-options-path="shopSettingForm/ShopId">
-                           <input class="form-control" type="text" ng-model="formData.ShopId" readonly value="DE39222"/>
+                           <input class="form-control" type="text" ng-model="formData.ShopId" readonly value="DE39222" disabled/>
+                    </div>
+                    <!-- Shop Status -->
+                    <div ng-template="common/input/dropdown"
+                      ng-template-options="{
+                      'label' : 'Shop Status',
+                      'labelClass' : 'required'
+                      }">
+                      <ui-select ng-model="formData.Status" search-enabled="false" required>
+                      <ui-select-match placeholder="- Select Shop Status -">
+                      <span ng-bind="$select.selected.name"></span>
+                      </ui-select-match>
+                      <ui-select-choices repeat="item in statusDropdown">
+                      <span ng-bind="item.name"></span>
+                      </ui-select-choices>
+                      </ui-select>
                     </div>
 
 										<div class="form-group">
@@ -19,7 +34,7 @@
 
                     <div nc-template="common/input/form-group-with-label" nc-label="Shop Name"
                     nc-template-options-path="shopSettingForm/ShopNameEn">
-                           <input class="form-control" type="text" ng-model="formData.ShopNameEn"/>
+                           <input class="form-control" type="text" ng-model="formData.ShopNameEn" ng-pattern="/^[^<>]+$/" required/>
                     </div>
 
                     <div nc-template="common/input/form-group-with-label" nc-label="Shop Description (English)"
@@ -44,7 +59,7 @@
 
                     <div nc-template="common/input/form-group-with-label" nc-label="Shop Address"
                     nc-template-options-path="shopSettingForm/ShopAddress">
-                           <input class="form-control" type="text" ng-model="formData.ShopAddress"/>
+                           <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopAddress"/></textarea>
                     </div>
 
 				</div>
@@ -94,8 +109,6 @@
                     nc-template-options-path="shopSettingForm/Pinterest">
                            <input class="form-control" type="text" ng-model="formData.Pinterest"/>
                     </div>
-
-
 				</div>
 			</div>
 		</div>
@@ -106,22 +119,28 @@
 				<div class="form-section-header"><h2>More Options</h2></div>
 				<div class="form-section-content">
 					<div nc-template="common/input/form-group-with-label" nc-label="Gift Wrap" nc-template-options-path="shopSettingForm/GiftWrap">
-                            <select class="form-control" ng-init="formData.GiftWrap = 'NA'" ng-model="formData.GiftWrap">
-                                <option value='NA'>Not Available</option>
+                            <select class="form-control" ng-model="formData.GiftWrap">
+                                <option value='NotAvailable'>Not Available</option>
+																<option value='Available'>Available</option>
                             </select>
                     </div>
                     <div nc-template="common/input/form-group-with-label" nc-label="Tax Invoice" nc-template-options-path="shopSettingForm/TaxInvoice">
-                            <select class="form-control" ng-init="formData.TaxInvoice = 'NA'" ng-model="formData.TaxInvoice">
-                                <option value='NA'>Not Available</option>
+                            <select class="form-control" ng-model="formData.TaxInvoice">
+															<option value='NotAvailable'>Not Available</option>
+															<option value='Available'>Available</option>
                             </select>
                     </div>
                      <div nc-template="common/input/form-group-with-label" nc-label="Stock Alert" nc-template-options-path="shopSettingForm/StockAlert">
-                            <input class="form-control" type="text" ng-model="formData.StockAlert"/>
+                            <input class="form-control" type="text" ng-model="formData.StockAlert" ng-pattern-restrict="^[0-9]*$"/>
                     </div>
 
 				</div>
 			</div>
 		</div>
 	</div>
-
+  <div class="row">
+    <div class="col-xs-12">
+      <p class="text-align-right"><span class="color-red"><i class="fa fa-asterisk"></i></span> - Required Field</p>
+    </div>
+  </div>
 </div>

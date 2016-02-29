@@ -47,11 +47,11 @@
 }
 
 .margin-top-200 {
-    margin-top: 200px;	
+    margin-top: 200px;
 }
 
 .margin-top-220 {
-    margin-top: 220px;	
+    margin-top: 220px;
 }
 
 .margin-bottom-20 {
@@ -178,7 +178,7 @@
   color: $color-red;
 }
 
-.color-dark-grey {  
+.color-dark-grey {
   color:  $color-dark-grey;
 }
 
@@ -203,11 +203,19 @@
 }
 
 .text-underline {
-	text-decoration: underline;	
+	text-decoration: underline;
 }
 
 .hide-component {
 	display:	none;
+}
+
+.font-size-12 {
+	font-size:	12px;
+}
+
+.font-size-16 {
+	font-size:	16px;
 }
 
 .font-size-18 {

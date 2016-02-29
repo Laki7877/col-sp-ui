@@ -35,7 +35,7 @@ module.exports = {
         'labelClass': 'required'
     },
     MasterVariant_OriginalPrice: {
-        'labelClass': 'required',
+
         'error': {
             'messages': {
                 'required': 'This is a required field',
@@ -44,6 +44,7 @@ module.exports = {
         }
     },
     MasterVariant_SalePrice: {
+      'labelClass': 'required',
         'error': {
             'messages': {
                 'min': 'Sale price must be lower than the original price',

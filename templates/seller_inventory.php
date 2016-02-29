@@ -6,16 +6,16 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Inventory'])
 <?php $this->start('page-body') ?>
 	<div ng-controller="SellerInventoryListCtrl">
        <nc-page-title nc-title="Inventory">
-            <a ng-href="/admin/" class="btn margin-right-10 ng-scope btn-white btn-width-xl">
-	            <span class="">Export All</span>
+            <a ng-href="/products/export" class="btn ng-scope btn-white btn-width-xxl">
+	            <span class="">Export All Products</span>
           	</a>
             <div class="btn-group margin-left-10">
-              <button type="button" class="btn btn-white dropdown-toggle btn-width-xl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Import <span class="caret"></span>
+              <button type="button" class="btn btn-white dropdown-toggle btn-width-xxl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Import Products <span class="caret"></span>
               </button>
               <ul class="dropdown-menu">
-                <li><a href="/?p=seller_import_products">Add New Products</a></li>
-                <li><a href="/?p=seller_update_products">Update Existing Products</a></li>
+                <li><a href="/products/import">Add New Products</a></li>
+                <li><a href="/products/import/update">Update Existing Products</a></li>
               </ul>
             </div>
        </nc-page-title>
@@ -47,7 +47,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Inventory'])
 		                    </div>
 		                </td>
 		                <td class="column-text-ellipsis">
-		                    {{row.ProductNameEn}}
+		                    <a href="/products/{{row.ProductId}}">{{row.ProductNameEn}}</a>
+           					<div class="color-dark-grey font-size-12" ng-if="row.IsVariant">{{ row.VariantAttribute | variantValue }}</div>
 		                </td>
 		                <td>{{row.Pid}}</td>
 		                <td>{{row.Sku}}</td>

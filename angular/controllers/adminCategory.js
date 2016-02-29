@@ -1,7 +1,7 @@
 
 module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Category, GlobalCategoryService, AttributeSetService, NcAlert, util, config){
 	'ngInject';
-	
+
 	$scope.categories = [];
 	$scope.modalScope = null;
 	$scope.timerPromise = null;
@@ -20,7 +20,6 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 	//UiTree onchange event
 	$scope.treeOptions = {
 		dropped: function(event) {
-			//Change is made
 			if(event.dest.index != event.source.index || event.dest.nodesScope != event.source.nodesScope) {
 				$scope.sync();
 			}
@@ -43,7 +42,9 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 		},
 		confirmation: {
 			title: 'Delete',
-			message: 'Are you sure you want to delete this category?'
+			message: 'Are you sure you want to delete this category?',
+			btnClass: 'btn-red',
+			btnConfirm: 'Delete'
 		}
 	}];
 
@@ -54,6 +55,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 		node.Visibility = !node.Visibility;
 		GlobalCategoryService.visible([_.pick(node, ['Visibility', 'CategoryId'])])
 			.then(function() {
+				Category.traverseSet(node.nodes, 'Visibility', node.Visibility);
 			},
 			function(err) {
 				//revert
@@ -96,14 +98,14 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 
 	//Load attribute sets for global cat modal selection
 	$scope.loadAttributeSets = function() {
-		AttributeSetService.listAll().then(function(data) { 
+		AttributeSetService.listAll().then(function(data) {
 			$scope.attributeSetOptions = data;
 		});
 	};
 
 	//Condition at which tradable select will lock attributeset
-	$scope.lockAttributeset = function(i) {		
-		return false;		
+	$scope.lockAttributeset = function(i) {
+		return false;
 	};
 
 	//Open category modal
@@ -148,12 +150,12 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 						} else {
 							$scope.$parent.modalScope = null;
 						}
-					} 
+					}
 				});
 				$scope.save = function() {
 					$scope.alert.close();
 					$scope.saving = true;
-					
+
 					if($scope.form.$valid) {
 						var processed = GlobalCategoryService.serialize($scope.formData);
 						if(id == 0) {
@@ -196,6 +198,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 			if(_.isUndefined(item)) {
 				data.nodes = [];
 				data.ProductCount = 0;
+				data.AttributeSetCount = 0;
 				$scope.categories.unshift(data);
 			} else {
 				//existing data
@@ -203,7 +206,9 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				item.CategoryId = data.CategoryId;
 				item.CategoryAbbreviation = data.CategoryAbbreviation;
 				item.Visibility = data.Visibility;
-			}
+				Category.traverseSet(item.nodes, 'Visibility', item.Visibility);
+		}
+		$scope.alert.success(config.DEFAULT_SUCCESS_MESSAGE);
 		});
 	};
 

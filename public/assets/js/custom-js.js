@@ -21,7 +21,7 @@ $(document).ready(function () {
 		var $parent = $this.closest('.dropdown-btn');
 		$('.dropdown-text', $parent).text($this.html());     
 	});
-
+	/*
 
 	$('[data-toggle="sub-sidebar"]').hover(function(e) { //mouse enter
 		var $this = $(this);
@@ -45,12 +45,12 @@ $(document).ready(function () {
 		var id = $this.attr('id');
 		var parent = $('[data-toggle="sub-sidebar"][data-target="#'+ id +'"');
 		parent.removeClass('active');
-	});
+	});*//*
 	$(".popover-gear .fa-gear").click(function(e){
       e.preventDefault();
       e.stopPropagation();
       $(this).closest('.popover-gear').find('.fa-caret-down').trigger( "click" );
-    });
+    });*/
 
 	$(".get_file").click(function(e){
       $(".my_file").trigger( "click" );
