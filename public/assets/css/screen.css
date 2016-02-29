@@ -12156,63 +12156,68 @@ button.close {
 }
 
 /* line 1, ../../../assets/_override_bootstrap.scss */
+body {
+  color: #32343C;
+}
+
+/* line 5, ../../../assets/_override_bootstrap.scss */
 .container-fluid {
   padding-left: 40px;
   padding-right: 40px;
 }
 
-/* line 6, ../../../assets/_override_bootstrap.scss */
+/* line 10, ../../../assets/_override_bootstrap.scss */
 .full-width-row {
   margin-left: -40px;
   margin-right: -40px;
 }
 
-/* line 11, ../../../assets/_override_bootstrap.scss */
+/* line 15, ../../../assets/_override_bootstrap.scss */
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 10px;
 }
 
-/* line 16, ../../../assets/_override_bootstrap.scss */
+/* line 20, ../../../assets/_override_bootstrap.scss */
 a, .clickable, [onclick] {
   cursor: pointer;
 }
 
-/* line 21, ../../../assets/_override_bootstrap.scss */
+/* line 25, ../../../assets/_override_bootstrap.scss */
 a:hover {
   text-decoration: none;
 }
 
-/* line 27, ../../../assets/_override_bootstrap.scss */
+/* line 31, ../../../assets/_override_bootstrap.scss */
 a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
   color: initial;
 }
 
-/* line 32, ../../../assets/_override_bootstrap.scss */
+/* line 36, ../../../assets/_override_bootstrap.scss */
 .table > tbody > tr > td {
   vertical-align: middle;
 }
 
-/* line 38, ../../../assets/_override_bootstrap.scss */
+/* line 42, ../../../assets/_override_bootstrap.scss */
 .modal .modal-content {
   padding: 30px;
 }
-/* line 41, ../../../assets/_override_bootstrap.scss */
+/* line 45, ../../../assets/_override_bootstrap.scss */
 .modal .modal-content .modal-header {
   padding: 0 0 15px;
   position: relative;
 }
-/* line 46, ../../../assets/_override_bootstrap.scss */
+/* line 50, ../../../assets/_override_bootstrap.scss */
 .modal .modal-content .modal-header button.close {
   top: 50%;
   right: 0;
   margin-top: -17.5px;
 }
-/* line 53, ../../../assets/_override_bootstrap.scss */
+/* line 57, ../../../assets/_override_bootstrap.scss */
 .modal .modal-content .modal-body {
   padding: 0;
 }
-/* line 57, ../../../assets/_override_bootstrap.scss */
+/* line 61, ../../../assets/_override_bootstrap.scss */
 .modal .modal-content button.close {
   position: absolute;
   right: 20px;
@@ -12220,7 +12225,7 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
   width: 20px;
   height: 20px;
 }
-/* line 64, ../../../assets/_override_bootstrap.scss */
+/* line 68, ../../../assets/_override_bootstrap.scss */
 .modal .modal-content button.close > span {
   line-height: 1;
   display: block;
@@ -12228,22 +12233,22 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
   font-weight: 100;
   margin-top: -14.08451px;
 }
-/* line 74, ../../../assets/_override_bootstrap.scss */
+/* line 78, ../../../assets/_override_bootstrap.scss */
 .modal .modal-xl {
   width: 1100px;
 }
-/* line 78, ../../../assets/_override_bootstrap.scss */
+/* line 82, ../../../assets/_override_bootstrap.scss */
 .modal .modal-header.modal-header-no-border {
   border-bottom: none;
 }
 
-/* line 83, ../../../assets/_override_bootstrap.scss */
+/* line 87, ../../../assets/_override_bootstrap.scss */
 .tooltip {
   width: 180px;
   max-width: 300px;
 }
 
-/* line 89, ../../../assets/_override_bootstrap.scss */
+/* line 93, ../../../assets/_override_bootstrap.scss */
 .alert-green {
   background-color: #BEEEBB;
   border-color: #BEEEBB;
@@ -12258,7 +12263,7 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
   color: #1b1c20;
 }
 
-/* line 92, ../../../assets/_override_bootstrap.scss */
+/* line 96, ../../../assets/_override_bootstrap.scss */
 .alert-red {
   background-color: #ffc0c0;
   border-color: #ffc0c0;
@@ -12273,7 +12278,7 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
   color: #1b1c20;
 }
 
-/* line 95, ../../../assets/_override_bootstrap.scss */
+/* line 99, ../../../assets/_override_bootstrap.scss */
 .alert-yellow {
   background-color: #fffdeb;
   border-color: #fffdeb;
@@ -12288,12 +12293,12 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
   color: #1b1c20;
 }
 
-/* line 98, ../../../assets/_override_bootstrap.scss */
+/* line 102, ../../../assets/_override_bootstrap.scss */
 .alert .close {
   text-shadow: none;
 }
 
-/* line 102, ../../../assets/_override_bootstrap.scss */
+/* line 106, ../../../assets/_override_bootstrap.scss */
 .table > thead > tr > th {
   border-bottom-width: 1px;
 }
@@ -13693,10 +13698,11 @@ form h6 {
 
 /* line 24, ../../../assets/_button.scss */
 .btn-default {
+  color: #32343C;
   border-color: #BCC7D5;
 }
 
-/* line 28, ../../../assets/_button.scss */
+/* line 29, ../../../assets/_button.scss */
 .btn-white {
   width: 80px;
   color: #4899DD;
@@ -13742,7 +13748,7 @@ form h6 {
   background-color: #4899DD;
 }
 
-/* line 33, ../../../assets/_button.scss */
+/* line 34, ../../../assets/_button.scss */
 .btn-blue {
   width: 80px;
   color: #ffffff;
@@ -13788,7 +13794,7 @@ form h6 {
   background-color: #ffffff;
 }
 
-/* line 38, ../../../assets/_button.scss */
+/* line 39, ../../../assets/_button.scss */
 .btn-grey {
   width: 80px;
   color: #ffffff;
@@ -13834,7 +13840,7 @@ form h6 {
   background-color: #ffffff;
 }
 
-/* line 43, ../../../assets/_button.scss */
+/* line 44, ../../../assets/_button.scss */
 .btn-green {
   width: 80px;
   color: #ffffff;
@@ -13880,7 +13886,7 @@ form h6 {
   background-color: #ffffff;
 }
 
-/* line 48, ../../../assets/_button.scss */
+/* line 49, ../../../assets/_button.scss */
 .btn-red {
   width: 80px;
   color: #ffffff;
@@ -13926,32 +13932,32 @@ form h6 {
   background-color: #ffffff;
 }
 
-/* line 53, ../../../assets/_button.scss */
+/* line 54, ../../../assets/_button.scss */
 .btn.btn-width-xl {
   width: 120px;
 }
 
-/* line 57, ../../../assets/_button.scss */
+/* line 58, ../../../assets/_button.scss */
 .btn.btn-width-xxl {
   width: 180px;
 }
 
-/* line 61, ../../../assets/_button.scss */
+/* line 62, ../../../assets/_button.scss */
 .btn.btn-width-xxxl {
   width: 200px;
 }
 
-/* line 65, ../../../assets/_button.scss */
+/* line 66, ../../../assets/_button.scss */
 .btn.btn-width-100 {
   width: 100%;
 }
 
-/* line 70, ../../../assets/_button.scss */
+/* line 71, ../../../assets/_button.scss */
 .btn.disabled, .btn[disabled], fieldset[disabled] .btn {
   pointer-events: none;
 }
 
-/* line 74, ../../../assets/_button.scss */
+/* line 75, ../../../assets/_button.scss */
 .btn-white.disabled, .btn-white[disabled], fieldset[disabled] .btn-white {
   color: #BCC7D5;
 }
