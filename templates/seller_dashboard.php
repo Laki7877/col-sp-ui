@@ -191,7 +191,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         </div>
         <div class="group_container small_field">
           <div class="display_inline_block width_100">Today</div>
-          <div class="float-right font-size-20">฿1,123.00</div>
+          <div class="float-right font-size-20">1,123.00</div>
         </div>
         <div class="group_container small_field">
           <!-- <div class="row"> -->
@@ -199,19 +199,19 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <div class="width_100">
               This Week
             </div>
-            <div>฿10,535.00</div>
+            <div>10,535.00</div>
           </div>
           <div class="row_container">
             <div class="width_100">
               This Month
             </div>
-            <div>฿200,934.00</div>
+            <div>200,934.00</div>
           </div>
           <div class="row_container">
             <div class="width_100">
               This Year
             </div>
-            <div>฿1,210,535.00</div>
+            <div>1,210,535.00</div>
           </div>
           <!-- </div> -->
         </div>
@@ -260,19 +260,19 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
 
         <div class="group_container top_selling_field">
             <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
-            <div class="column-text-ellipsis">Chanel, the cheetah</`div></div>
+            <div class="column-text-ellipsis"><a href="#">Chanel, the cheetah</a></div>
         </div>
         <div class="group_container top_selling_field">
             <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
-            <div class="column-text-ellipsis">French Connection, Sunday - high quality product</div>
+            <div class="column-text-ellipsis"><a href="#">French Connection, Sunday - high quality product</a></div>
         </div>
         <div class="group_container top_selling_field">
             <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
-            <div class="column-text-ellipsis">French Connection, Sunday - high quality product</div>
+            <div class="column-text-ellipsis"><a href="#">French Connection, Sunday - high quality product</a></div>
         </div>
         <div class="group_container top_selling_field">
             <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
-            <div class="column-text-ellipsis">French Connection, Sunday - high quality product</div>
+            <div class="column-text-ellipsis"><a href="#">French Connection, Sunday - high quality product</a></div>
         </div>
 
 
