@@ -20,7 +20,7 @@ module.exports = function($scope, $uibModal, $window, util, config, Product, Ima
   $scope.dataSet.LocalCategories = [];
   $scope.dataSet.Brands = [{
     BrandId: null,
-    BrandNameEn: "No match found",
+    BrandNameEn: "Input brand by name or ID...",
     disabled: true
   }];
   $scope.enableVariation = function(){

@@ -93,9 +93,9 @@
                             <div class="width-field-normal">
                                 <div class="ah-select2-dropdown">
                                     <ui-select ng-model="formData.Brand">
-                                        <ui-select-match placeholder="Search Brand...">
+                                        <ui-select-match>
                                             <span ng-bind="$select.selected.BrandNameEn"></span>
-                                            <span ng-show="!$select.selected.BrandNameEn">- Select Brand -</span>
+                                            <span ng-show="!$select.selected.BrandNameEn"><i class="fa fa-search"></i> Search Brand</span>
                                         </ui-select-match>
                                         <ui-select-choices ui-disable-choice="item.disabled" refresh-delay="500" refresh="refreshBrands($select.search)" repeat="item in (dataSet.Brands)  | filter : $select.search  track by item.BrandId">
                                             <span>{{ item.BrandNameEn }} </span>
@@ -162,6 +162,7 @@
                                     <select ng-if="controlFlags.variation == 'enable'" class="form-control" disabled>
                                       <option disabled>{{ formData.AttributeSet.AttributeSetNameEn }}</option>
                                     </select>
+
                                     <!-- dont show if nothing is dataSet. to choose from -->
                                     <ui-select ng-if="controlFlags.variation != 'enable'" ng-model="formData.AttributeSet" ng-show="dataSet.AttributeSets.length > 0">
                                         <ui-select-match placeholder="Search Attribute Set">
@@ -175,7 +176,7 @@
 
 
                                     <!-- if nothing is availalbe to pick -->
-                                    <select class="form-control" ng-if="dataSet.AttributeSets.length == 0 && controlFlags.variation == 'enable'" disabled>
+                                    <select class="form-control" ng-if="dataSet.AttributeSets.length == 0" disabled>
                                         <option disabled>This category has no attribute sets</option>
                                     </select>
 
@@ -197,7 +198,7 @@
                             </div>
                             <div ng-class="{'width-field-normal': !isHtmlInput(amap.Attribute.DataType), 'width-field-xxl': isHtmlInput(amap.Attribute.DataType)}">
 
-                                <select ng-if="isListInput(amap.Attribute.DataType)" ng-required="amap.Attribute.Required"
+                                <select ng-if="isListInput(amap.Attribute.DataType)" ng-required="amap.Attribute.Required && onPublishing"
                                 class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]"
                                 ng-class="{'has-error' : $root.isInvalid(addProductForm.AmapInput{{ $index }}) }"
                                 name="AmapInput{{$index}}"
@@ -206,7 +207,7 @@
                                 </select>
 
                                 <div ng-if="isHtmlInput(amap.Attribute.DataType)">
-                                    <textarea ng-required="amap.Attribute.Required"
+                                    <textarea ng-required="amap.Attribute.Required && onPublishing"
                                     ng-class="{'has-error' : $root.isInvalid(addProductForm.AmapInput{{ $index }}) }"
                                     ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]"
                                     name="AmapInput{{$index}}"
@@ -216,7 +217,7 @@
                                 <input
                                 ng-if="isFreeTextInput(amap.Attribute.DataType)"
                                 ng-class="{'has-error' : $root.isInvalid(addProductForm.AmapInput{{ $index }}) }"
-                                ng-required="amap.Attribute.Required"
+                                ng-required="amap.Attribute.Required && onPublishing"
                                 type="text" class="form-control"
                                 name="AmapInput{{$index}}"
                                 ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" />
@@ -243,13 +244,15 @@
                             </ui-select>
                         </div>
 
-                        <div class="form-group" ng-if="formData.AttributeSet.AttributeSetTagMaps.length > 0">
+                        <div class="form-group" ng-if="(formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Keywords).length > 0">
                             <div class="width-label">
                                 <label class="control-label">Suggested Search Tag</label>
                             </div>
                             <div class="width-field-xl">
                                 <div class="bootstrap-tagsinput tagsinput-plain">
-                                    <a class="tag label label-info" ng-repeat="tag in formData.AttributeSet.AttributeSetTagMaps" ng-click="(formData.Keywords.indexOf(tag) == -1) && formData.Keywords.push(tag)"> {{ tag }}</a>
+                                    <a class="tag label label-info"
+                                    ng-repeat="tag in formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Keywords"
+                                    ng-click="(formData.Keywords.indexOf(tag) == -1) && formData.Keywords.push(tag)"> {{ tag }}</a>
                                 </div>
                             </div>
                         </div>
