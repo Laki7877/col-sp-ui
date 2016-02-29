@@ -25,12 +25,19 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     };
 
     service.uniqueSet = function (a, prop) {
-        var seen = new Set();
-        return a.filter(function (x) {
-            var y = x;
-            if (prop) y = x[prop];
-            return !seen.has(y) && seen.add(y);
-        })
+        // var seen = new Set();
+        // return a.filter(function (x) {
+        //     var y = x;
+        //     if (prop) y = x[prop];
+        //     return !seen.has(y) && seen.add(y);
+        // })
+        return _.uniqWith(a, function(x,y){
+            if(x == y) return true;
+            if(prop && _.get(x, prop) && _.get(y, prop)){
+                return _.get(x, prop) == _.get(y, prop);
+            }
+            return false;
+        });
     };
 
     service.nullOrUndefined = function (a) {

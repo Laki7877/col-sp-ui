@@ -54,7 +54,7 @@
                                     <ui-select-match placeholder="Select variant">
                                         {{ $item.AttributeValue.AttributeValueEn }}
                                     </ui-select-match>
-                                    <ui-select-choices repeat="i in (dataSet.attributeOptions[jth].Attribute.AttributeValueMaps | exclude: dataSet.attributeOptions[jth].options : 'AttributeValue.AttributeValueId' ) | filter:$select.search track by i.AttributeValue.AttributeValueId">
+                                    <ui-select-choices repeat="i in (dataSet.attributeOptions[jth].Attribute.AttributeValueMaps | exclude: dataSet.attributeOptions[jth].options : 'AttributeValue.AttributeValueId' ) | filter:$select.search">
                                         {{ i.AttributeValue.AttributeValueEn }}
                                     </ui-select-choices>
                                 </ui-select>
@@ -64,7 +64,7 @@
                                     <ui-select-match placeholder="Input variant">
                                         {{ $item }}
                                     </ui-select-match>
-                                    <ui-select-choices repeat="i in (dataSet.attributeOptions[jth].Attribute.AttributeValueMaps) | filter:$select.search track by i.AttributeValue.AttributeValueId">
+                                    <ui-select-choices repeat="i in (dataSet.attributeOptions[jth].Attribute.AttributeValueMaps) | filter:$select.search">
                                         {{ i }}
                                     </ui-select-choices>
                                 </ui-select>
