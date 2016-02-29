@@ -231,6 +231,10 @@ ng-transclude.has-error .form-control{
 	height: 26px !important;
 }
 
+.ui-select-container .form-control:placeholder-shown {
+	color: $color-black
+}
+
 .export-list{
 	margin-left: 30px;
 	margin-bottom: 15px;

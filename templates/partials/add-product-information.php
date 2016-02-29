@@ -95,7 +95,7 @@
                                     <ui-select ng-model="formData.Brand">
                                         <ui-select-match>
                                             <span ng-bind="$select.selected.BrandNameEn"></span>
-                                            <span ng-show="!$select.selected.BrandNameEn"><i class="fa fa-search"></i> Search Brand</span>
+                                            <span ng-show="!$select.selected.BrandNameEn"><span class="color-grey"><i class="fa fa-search"></i> Search Brand</span></span>
                                         </ui-select-match>
                                         <ui-select-choices ui-disable-choice="item.disabled" refresh-delay="500" refresh="refreshBrands($select.search)" repeat="item in (dataSet.Brands)  | filter : $select.search  track by item.BrandId">
                                             <span>{{ item.BrandNameEn }} </span>
