@@ -69,10 +69,15 @@
 
 
 #dashboard_page
+	.dashboard_column:first-child
+		padding-left: 0px
+
+	.dashboard_column:nth-child(2)
+		padding-right: 0px
 
 	.dashboard_graph
 		canvas
-			height: 280px
+			height: 280px !important
 
 	.with_border
 		border: 1px solid $header-border-grey
@@ -85,7 +90,7 @@
 
 	.space_column
 		padding: 15px 15px 15px 15px
-		margin-bottom: 30px
+		margin-bottom: 20px
 		line-height: 27px
 		border-radius: 3px
 
@@ -200,14 +205,13 @@
 
 	.table_recent_order
 		td:first-child
-			width: 160px
+			width: 100px
 
 		td:nth-child(2)
-			padding-left: 29px
-			padding-right: 30px
+			width: 120px
 
 		td:nth-child(3)
-			width: 	90px
+			width: 	120px
 
 		td:last-child
 			padding-left: 30px
@@ -215,20 +219,21 @@
 
 	.table_lsa
 		td:first-child
-			width: 90px
+			width: 100px
 
 		td:nth-child(2)
-			padding-left: 29px
-			padding-right: 30px
+			width: 120px
 
-		td:nth-child(3)
-			width: 100px
 
 		td:last-child
 			padding-left: 30px
 			width: 80px
 
 	.table_newsletter
+		.newsletter_date
+			font-size: 12px
+			margin-top: 5px
+			color: $color-dark-grey
 		td:last-child
 			padding-left: 30px
 			width: 80px

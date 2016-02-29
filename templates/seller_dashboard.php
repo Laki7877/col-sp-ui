@@ -5,7 +5,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
 <?php $this->start('page-body') ?>
 
   <div id="dashboard_page">
-    <div class="col-xs-8">
+    <div class="dashboard_column col-xs-8">
       <div class="space_column with_border">
         <div class="group_container no_border">
           <span class="image-thumbs-img-wrapper">
@@ -21,7 +21,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         </div>
         <div class="dashboard_graph">
           <div>
-            <canvas id="canvas"></canvas>
+            <canvas id="canvas" height="280"></canvas>
           </div>
         </div>
 
@@ -45,38 +45,40 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <tbody>
               <tr>
                 <td>
+                  13/12/2015
+                </td>
+                <td>
+                  ID: 1231412
+                </td>
+                <td>
+                  226.00
+                </td>
+                <td>
                   <span class="color-grey">
                     <i class="fa fa-check-circle-o"></i>
                     Payment Confirmed
                   </span>
                 </td>
-                <td class="column-text-ellipsis">
-                  Order #123 - Natt Phenjati
-                </td>
-                <td>
-                  ฿226
-                </td>
-                <td class="width_100">
-                  13/12/2015
-                </td>
+
                 <td>
                   <button class="btn btn-white btn-width-default">View</button>
                 </td>
               </tr>
               <tr>
                 <td>
+                  10/12/2015
+                </td>
+                <td>
+                  ID: 1231412
+                </td>
+                <td>
+                  112,226.00
+                </td>
+                <td>
                   <span class="color-green">
                     <i class="fa fa-check-circle-o"></i>
                     Delivered
                   </span>
-                </td>
-                <td class="column-text-ellipsis">
-                  Order #153 - Jatuporn Dumaaaaaaad
-                <td>
-                  ฿1,326
-                </td>
-                <td class="width_100">
-                  13/12/2015
                 </td>
                 <td>
                   <button class="btn btn-white btn-width-default">View</button>
@@ -102,13 +104,13 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <tbody>
               <tr>
                 <td>
-                  SKU:12353
+                  Inventory: 5
+                </td>
+                <td>
+                  PID:1234567
                 </td>
                 <td class="column-text-ellipsis">
                   Nanyang Original Footwear T-model x10 Limited Edition for Thailand sale only
-                </td>
-                <td>
-                  Inventory: 5
                 </td>
                 <td>
                   <button class="btn btn-white btn-width-default">View</button>
@@ -116,13 +118,13 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
               </tr>
               <tr>
                 <td>
-                  SKU:53233
+                  Inventory: 10
+                </td>
+                <td>
+                  PID:5323312
                 </td>
                 <td class="column-text-ellipsis">
                   Jordan Nike Super Shoe
-                <td>
-                  Inventory: 5
-                </td>
                 <td>
                   <button class="btn btn-white btn-width-default">View</button>
                 </td>
@@ -147,8 +149,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <tbody>
               <tr>
                 <td class="column-text-ellipsis">
-                  <div>10/12/15 at 10:00</div>
                   Some thing happens in this world and no body knows about it becuase everyone is playing DotA 2. Damn that game need to be shut down.
+                  <div class="newsletter_date">Publish on 19/12/15 at 10:00</div>
                 </td>
                 <td>
                   <button class="btn btn-white btn-width-default">Read</button>
@@ -156,8 +158,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
               </tr>
               <tr>
                 <td class="column-text-ellipsis">
-                  <div>10/12/15 at 10:00</div>
                   Some thing happens in this world and no body knows about it becuase everyone is playing DotA 2. Damn that game need to be shut down.
+                  <div class="newsletter_date">Publish on 15/12/15 at 10:00</div>
                 </td>
                 <td>
                   <button class="btn btn-white btn-width-default">Read</button>
@@ -165,8 +167,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
               </tr>
               <tr>
                 <td class="column-text-ellipsis">
-                  <div>10/12/15 at 10:00</div>
                   Some thing happens in this world and no body knows about it becuase everyone is playing DotA 2. Damn that game need to be shut down.
+                  <div class="newsletter_date">Publish on 10/12/15 at 10:00</div>
                 </td>
                 <td>
                   <button class="btn btn-white btn-width-default">Read</button>
@@ -178,7 +180,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
       </div>
 
     </div>
-    <div class="col-xs-4">
+    <div class="dashboard_column col-xs-4">
 
       <div class="space_column with_border">
         <div class="group_container">

@@ -5,7 +5,7 @@
     <? $this->insert('components/page-title-with-buttons', ['text' => 'Orders',
         'buttons' => [
           ]
-      ]) 
+      ])
     ?>
 
     <? $this->insert('components/search-section', ['serach_placeholder' => 'Search for Order ID, Customer Name' , 'actions' => ['Acknowledge', 'Ready to ship'], 'optional_class' => 'hide-component']) ?>
@@ -27,7 +27,7 @@
         <thead>
           <tr class="table-head">
             <th class="checkbox-column">
-                <input type="checkbox" aria-label="Checkbox for following text input"> 
+                <input type="checkbox" aria-label="Checkbox for following text input">
             </th>
             <th class="modified-column">
               <a class="header-link" href="#"><span class="active-underline">Date</span></a>
@@ -63,7 +63,7 @@
         <tbody>
           <tr>
             <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input"> 
+              <input type="checkbox" aria-label="Checkbox for following text input">
             </td>
             <td class="modified-column">
               14/12/15
@@ -83,14 +83,14 @@
                 <span class="text-align-center popover-gear">
                 <i class="fa fa-gear color-dark-grey icon-size-20"></i>
                 <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                  <div><a href='#' data-toggle='modal' data-target='#'>View Detail</a></div>                  
-                  "></i>  
+                  <div><a href='#' data-toggle='modal' data-target='#'>View Detail</a></div>
+                  "></i>
               </span>
             </td>
           </tr>
           <tr>
             <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input"> 
+              <input type="checkbox" aria-label="Checkbox for following text input">
             </td>
             <td class="modified-column">
               14/12/15
@@ -110,14 +110,14 @@
                 <span class="text-align-center popover-gear">
                 <i class="fa fa-gear color-dark-grey icon-size-20"></i>
                 <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                  <div><a href='#' data-toggle='modal' data-target='#'>View Detail</a></div>                  
-                  "></i>  
+                  <div><a href='#' data-toggle='modal' data-target='#'>View Detail</a></div>
+                  "></i>
               </span>
             </td>
           </tr>
           <tr>
             <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input"> 
+              <input type="checkbox" aria-label="Checkbox for following text input">
             </td>
             <td class="modified-column">
               14/12/15
@@ -137,14 +137,14 @@
                 <span class="text-align-center popover-gear">
                 <i class="fa fa-gear color-dark-grey icon-size-20"></i>
                 <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                  <div><a href='#' data-toggle='modal' data-target='#'>View Detail</a></div>                  
-                  "></i>  
+                  <div><a href='#' data-toggle='modal' data-target='#'>View Detail</a></div>
+                  "></i>
               </span>
             </td>
           </tr>
           <tr>
             <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input"> 
+              <input type="checkbox" aria-label="Checkbox for following text input">
             </td>
             <td class="modified-column">
               14/12/15
@@ -156,7 +156,7 @@
             <td class="width_200">
               <span class="color-green">
                 <i class="fa fa-check-circle-o"></i>
-                Ready for shipping
+                Ready to ship
               </span>
             </td>
             <td class="width_200">
@@ -164,14 +164,14 @@
                 <span class="text-align-center popover-gear">
                 <i class="fa fa-gear color-dark-grey icon-size-20"></i>
                 <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                  <div><a href='#' data-toggle='modal' data-target='#'>View Detail</a></div>                  
-                  "></i>  
+                  <div><a href='#' data-toggle='modal' data-target='#'>View Detail</a></div>
+                  "></i>
               </span>
             </td>
           </tr>
           <tr>
             <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input"> 
+              <input type="checkbox" aria-label="Checkbox for following text input">
             </td>
             <td class="modified-column">
               14/12/15
@@ -191,14 +191,14 @@
                 <span class="text-align-center popover-gear">
                 <i class="fa fa-gear color-dark-grey icon-size-20"></i>
                 <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                  <div><a href='#' data-toggle='modal' data-target='#'>View Detail</a></div>                  
-                  "></i>  
+                  <div><a href='#' data-toggle='modal' data-target='#'>View Detail</a></div>
+                  "></i>
               </span>
             </td>
           </tr>
           <tr>
             <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input"> 
+              <input type="checkbox" aria-label="Checkbox for following text input">
             </td>
             <td class="modified-column">
               14/12/15
@@ -218,14 +218,14 @@
                 <span class="text-align-center popover-gear">
                 <i class="fa fa-gear color-dark-grey icon-size-20"></i>
                 <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                  <div><a href='#' data-toggle='modal' data-target='#'>View Detail</a></div>                  
-                  "></i>  
+                  <div><a href='#' data-toggle='modal' data-target='#'>View Detail</a></div>
+                  "></i>
               </span>
             </td>
           </tr>
           <tr>
             <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input"> 
+              <input type="checkbox" aria-label="Checkbox for following text input">
             </td>
             <td class="modified-column">
               14/12/15
@@ -245,8 +245,8 @@
                 <span class="text-align-center popover-gear">
                 <i class="fa fa-gear color-dark-grey icon-size-20"></i>
                 <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                  <div><a href='#' data-toggle='modal' data-target='#'>View Detail</a></div>                  
-                  "></i>  
+                  <div><a href='#' data-toggle='modal' data-target='#'>View Detail</a></div>
+                  "></i>
               </span>
             </td>
           </tr>
