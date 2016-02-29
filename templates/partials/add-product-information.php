@@ -235,7 +235,7 @@
 
                         <div nc-template="common/input/form-group-with-label" nc-label="Keywords" nc-template-form="addProductForm.Keywords" nc-template-options-path="addProductForm/Keywords">
                             <ui-select ng-model="formData.Keywords" name="Keywords" nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30" nc-tag-pattern="^[a-zA-Z0-9ก-๙\s\-]+$" multiple tagging tagging-tokens=",|ENTER" tagging-label="" nc-tag-field>
-                                <ui-select-match placeholder="Separate tags with comma (or enter)">
+                                <ui-select-match placeholder="Input keywords">
                                     {{$item}}
                                 </ui-select-match>
                                 <ui-select-choices repeat="item in formData.AttributeSet.AttributeSetTagMaps">

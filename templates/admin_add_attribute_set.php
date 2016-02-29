@@ -83,7 +83,7 @@
                   multiple
                   tagging tagging-tokens=",|ENTER"
                   tagging-label="">
-                    <ui-select-match placeholder="Separate tags with comma (or enter)">
+                    <ui-select-match placeholder="Input tags">
                     {{$item}}
                     </ui-select-match>
                     <ui-select-choices repeat="item in tagOptions">
