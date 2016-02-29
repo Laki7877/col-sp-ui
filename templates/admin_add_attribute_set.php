@@ -55,7 +55,7 @@
             <div class="form-section-content">
                 <nc-tradable-select nc-test="lockAttributeset" nc-model="formData.Attributes" nc-select-options="attributeOptions" nc-options="{ 'map' : { 'text': 'AttributeNameEn', 'value' : 'AttributeId' } }"></nc-tradable-select>
                 <div class="row col-xs-12">
-                  <p style="margin-left: 30px; margin-top:15px"><span class="color-red">*</span> Changing attribute mapping may affect products under this attribute set</p>
+                  <p style="margin-left: 30px; margin-top:15px">* Changing attribute mapping may affect products under this attribute set</p>
                 </div>
             </div>
           </div>
@@ -83,7 +83,7 @@
                   multiple
                   tagging tagging-tokens=",|ENTER"
                   tagging-label="">
-                    <ui-select-match placeholder="Separate tags with comma (or enter)">
+                    <ui-select-match placeholder="Input tags">
                     {{$item}}
                     </ui-select-match>
                     <ui-select-choices repeat="item in tagOptions">
