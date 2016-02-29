@@ -10,7 +10,7 @@
 
                         <div nc-template="common/input/form-group-with-label" nc-label="Related Products" nc-template-form="addProductForm.RelatedProducts" nc-template-options-path="addProductForm/RelatedProducts">
                             <ui-select ng-model="formData.RelatedProducts" name="RelatedProducts" nc-tag-validator nc-max-tag-count="10" multiple>
-                                <ui-select-match placeholder="Search by Product Name or PID">
+                                <ui-select-match placeholder="Input Product Name">
                                     <span>{{ $item.ProductNameEn }}</span>
                                 </ui-select-match>
                                 <ui-select-choices repeat="item in (dataSet.RelatedProducts | exclude: formData.RelatedProducts : 'ProductId' | exclude: [formData] : 'ProductId' ) track by item.Pid" refresh="refreshRelatedProducts($select.search)" refresh-delay="1">
@@ -160,7 +160,7 @@
                 </div>
             </div>
         </div>
-    
+
         <!-- <div class="row">
             <div class="col-xs-12">
                 <div class="form-section">
