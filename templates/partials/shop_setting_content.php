@@ -1,30 +1,52 @@
-<div id="add-product-more-option-tab-content">
-	
+<div id="shop-setting-content">
+
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="form-section">
 				<div class="form-section-header"><h2>Shop Information</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/text-with-label', ["label" => "Shop ID", "field_content" => "DE3923"]) ?>
-					<div class="form-group ">
-						<div class="width-label"><label class="control-label"> Shop Logo file</label></div>
-					    <div class="width-field-normal">
-					    	<input type="file" name="pic" accept="image/*">
-					    </div>
-					</div>
-					<div class="form-group ">
-						<div class="width-label"><label class="control-label"> Shop Logo Preview</label></div>
-					    <div class="width-field-normal">
-					    	<img src="https://placehold.it/160x60">
-					    </div>
-					</div>
+					<div nc-template="common/input/form-group-with-label" nc-label="Shop ID"
+                    nc-template-options-path="shopSettingForm/ShopId">
+                           <input class="form-control" type="text" ng-model="formData.ShopId" readonly value="DE39222"/>
+                    </div>
 
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Shop Name", "label_class" => "required", "size" => "large"]) ?>
-					<? $this->insert('components/forms/textarea-with-label', ["label" => "<div>Shop Description</div><div>(English)</div>", "rows" => "4", "size" => "large" ]) ?>
-					<? $this->insert('components/forms/textarea-with-label', ["label" => "<div>Shop Description</div><div>(Thai)</div>", "rows" => "4", "size" => "large"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Float Message (English)", "size" => "large"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Float Message (Thai)", "size" => "large"]) ?>
-					<? $this->insert('components/forms/textarea-with-label', ["label" => "Shop Address", "rows" => "4", "size" => "large"]) ?>
+										<div class="form-group">
+											<div class="width-label"><label class="control-label">Shop Logo</label></div>
+										    <div class="width-field-normal">
+													<div nc-template="components/single-upload" nc-view-bag="uploadViewBag"></div>
+										    </div>
+										</div>
+
+                    <div nc-template="common/input/form-group-with-label" nc-label="Shop Name"
+                    nc-template-options-path="shopSettingForm/ShopNameEn">
+                           <input class="form-control" type="text" ng-model="formData.ShopNameEn"/>
+                    </div>
+
+                    <div nc-template="common/input/form-group-with-label" nc-label="Shop Description (English)"
+                    nc-template-options-path="shopSettingForm/ShopDescriptionEn">
+                           <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopDescriptionEn"></textarea>
+                    </div>
+
+                    <div nc-template="common/input/form-group-with-label" nc-label="Shop Description (ไทย)"
+                    nc-template-options-path="shopSettingForm/ShopDescriptionTh">
+                           <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopDescriptionTh"></textarea>
+                    </div>
+
+                    <div nc-template="common/input/form-group-with-label" nc-label="Float Message (English)"
+                    nc-template-options-path="shopSettingForm/FloatMessageEn">
+                           <input class="form-control" type="text" ng-model="formData.FloatMessageEn"/>
+                    </div>
+
+                    <div nc-template="common/input/form-group-with-label" nc-label="Float Message (ไทย)"
+                    nc-template-options-path="shopSettingForm/FloatMessageTh">
+                           <input class="form-control" type="text" ng-model="formData.FloatMessageTh"/>
+                    </div>
+
+                    <div nc-template="common/input/form-group-with-label" nc-label="Shop Address"
+                    nc-template-options-path="shopSettingForm/ShopAddress">
+                           <input class="form-control" type="text" ng-model="formData.ShopAddress"/>
+                    </div>
+
 				</div>
 			</div>
 		</div>
@@ -34,8 +56,14 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Financial Information</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/input-text-with-label-disabled', ["label" => "Bank Account Number", "value" => '1234-XXXX-XXXX-1234']) ?>
-					<? $this->insert('components/forms/input-text-with-label-disabled', ["label" => "Bank Account Name", "value" => 'Lara Company Limited', 'hint' => 'Please contact COL if you wish to change your financial detail']) ?>
+                    <div nc-template="common/input/form-group-with-label" nc-label="Bank Account Number"
+                    nc-template-options-path="shopSettingForm/BankAccountNumber">
+                           <input class="form-control" type="text" ng-model="formData.BankAccountNumber" disabled/>
+                    </div>
+                    <div nc-template="common/input/form-group-with-label" nc-label="Bank Account Name"
+                    nc-template-options-path="shopSettingForm/BankAccountName">
+                           <input class="form-control" type="text" ng-model="formData.BankAccountName" disabled/>
+                    </div>
 				</div>
 			</div>
 		</div>
@@ -45,11 +73,29 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>Social Media Link</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Facebook", "size" => 'large']) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "YouTube", "size" => 'large']) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Twitter", "size" => 'large']) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Instragram", "size" => 'large']) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Pinterest", "size" => 'large']) ?>
+
+                    <div nc-template="common/input/form-group-with-label" nc-label="Facebook"
+                    nc-template-options-path="shopSettingForm/Facebook">
+                           <input class="form-control" type="text" ng-model="formData.Facebook"/>
+                    </div>
+                    <div nc-template="common/input/form-group-with-label" nc-label="YouTube"
+                    nc-template-options-path="shopSettingForm/YouTube">
+                           <input class="form-control" type="text" ng-model="formData.YouTube"/>
+                    </div>
+                    <div nc-template="common/input/form-group-with-label" nc-label="Twitter"
+                    nc-template-options-path="shopSettingForm/Twitter">
+                           <input class="form-control" type="text" ng-model="formData.Twitter"/>
+                    </div>
+                    <div nc-template="common/input/form-group-with-label" nc-label="Instagram"
+                    nc-template-options-path="shopSettingForm/Instagram">
+                           <input class="form-control" type="text" ng-model="formData.Instagram"/>
+                    </div>
+                    <div nc-template="common/input/form-group-with-label" nc-label="Pinterest"
+                    nc-template-options-path="shopSettingForm/Pinterest">
+                           <input class="form-control" type="text" ng-model="formData.Pinterest"/>
+                    </div>
+
+
 				</div>
 			</div>
 		</div>
@@ -59,9 +105,20 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>More Options</h2></div>
 				<div class="form-section-content">
-					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Gift Wrap", "options" => ['Not Available'], "tooltip" => "this is tooltip"]) ?>
-					<? $this->insert('components/forms/dropdown-with-label', ["label" => "Tax Invoice", "options" => ['Not Available'], "tooltip" => "this is tooltip"]) ?>
-					<? $this->insert('components/forms/input-text-with-label', ["label" => "Stock Alert", "tooltip" => "this is tooltip", "size" => "small"]) ?>
+					<div nc-template="common/input/form-group-with-label" nc-label="Gift Wrap" nc-template-options-path="shopSettingForm/GiftWrap">
+                            <select class="form-control" ng-init="formData.GiftWrap = 'NA'" ng-model="formData.GiftWrap">
+                                <option value='NA'>Not Available</option>
+                            </select>
+                    </div>
+                    <div nc-template="common/input/form-group-with-label" nc-label="Tax Invoice" nc-template-options-path="shopSettingForm/TaxInvoice">
+                            <select class="form-control" ng-init="formData.TaxInvoice = 'NA'" ng-model="formData.TaxInvoice">
+                                <option value='NA'>Not Available</option>
+                            </select>
+                    </div>
+                     <div nc-template="common/input/form-group-with-label" nc-label="Stock Alert" nc-template-options-path="shopSettingForm/StockAlert">
+                            <input class="form-control" type="text" ng-model="formData.StockAlert"/>
+                    </div>
+
 				</div>
 			</div>
 		</div>

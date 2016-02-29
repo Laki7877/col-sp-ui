@@ -13,9 +13,9 @@
         <li ng-class="activeUrl('/admin/approve')" class="item"><a href="/admin/approve">Approve Products</a></li>
         <li ng-class="activeUrl('/admin/master')" class="item"><a href="/admin/master">Master Products</a></li>
         <li ng-class="activeUrl('/admin/brands')" class="item"><a href="/admin/brands">Brands</a></li>
-        <li ng-class="activeUrl('/admin/attributes')" class="item"><a href="/admin/brands">Attributes</a></li>
-        <li ng-class="activeUrl('/admin/attributesets')" class="item"><a href="/admin/brands">Attribute Sets</a></li>
-        <li ng-class="activeUrl('/admin/categories')" class="item"><a href="/admin/brands">Global Categories</a></li>
+        <li ng-class="activeUrl('/admin/attributes')" class="item"><a href="/admin/attributes">Attributes</a></li>
+        <li ng-class="activeUrl('/admin/attributesets')" class="item"><a href="/admin/attributesets">Attribute Sets</a></li>
+        <li ng-class="activeUrl('/admin/categories')" class="item"><a href="/admin/categories">Global Categories</a></li>
     </ul>
 
     <ul class="sub-sidebar" style="display: none;" id="sub-admin-accounts">
@@ -28,8 +28,9 @@
 
     <ul class="sub-sidebar" style="display: none;" id="sub-admin-promotion">
         <li class="sub-sidebar-header">Promotion</li>
-        <li ng-class="activeUrl('/admin/coupons/global')" class="item margin-top-20"><a href="/admin/coupons/global">Global Coupons</a></li>
+        <li ng-class="activeUrl('/admin/coupons/admin')" class="item margin-top-20"><a href="/admin/coupons/admin">Global Coupons</a></li>
         <li ng-class="activeUrl('/admin/coupons/seller')" class="item"><a href="/admin/coupons/seller">Seller Coupons</a></li>
+        <li ng-class="activeUrl('/admin/ontopcredit')" class="item"><a href="/admin/ontopcredit">On Top Credit</a></li>
     </ul>
 
     <ul class="sub-sidebar" style="display: none;" id="sub-admin-reports">

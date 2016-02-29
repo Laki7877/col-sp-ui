@@ -1,5 +1,5 @@
 angular.module('nc')
-	.directive('ncAdvanceSearch', function($templateCache) {
+	.directive('ncAdvanceSearch', function($templateCache, $uibModal) {
 		return {
 			restrict: 'E',
 			replace: true,
@@ -22,7 +22,10 @@ angular.module('nc')
 				scope.callback = scope.callback || function() { return false };
 				scope.options = _.defaults(scope.options, {
 					Tags: [],
-					Brands: []
+					Brands: [],
+					LocalCategories: [],
+					GlobalCategories: [],
+					Admin: true
 				});
 				scope.search = function() {
 					if(scope.callback(scope.formData, true)) return;
@@ -30,7 +33,7 @@ angular.module('nc')
 				};
 				scope.clear = function() {
 					if(scope.callback(scope.formData, false)) return;
-					scope.model = {};
+					scope.formData = {};
 				};
 			}
 		};

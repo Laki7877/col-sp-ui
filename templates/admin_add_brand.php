@@ -1,9 +1,9 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Brand']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Brands']) ?>
 
-<?php $this->start('page-body') ?>  
+<?php $this->start('page-body') ?>
   <div ng-controller="AdminBrandAddCtrl" ng-init="init(<?=$params?>)">
     <nc-alert nc-model="alert"></nc-alert>
-    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Brand/{{title}}", 'urls' => ['/admin/brands']]) ?>
+    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Brands/{{title}}", 'urls' => ['/admin/brands']]) ?>
     <div ng-show="loading" nc-loading="Loading Brand.."></div>
     <div ng-show="saving" nc-loading="Saving Brand.."></div>
     <form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
@@ -38,7 +38,7 @@
               </div>
               <div ng-template="common/input/text2"
                 ng-template-options="{
-                  'label': 'Brand Name (Thai)',
+                  'label': 'Brand Name (ไทย)',
                   'labelClass': 'required',
                   'error' : {
                         'messages': {
@@ -59,10 +59,10 @@
             </div>
           </div>
           <? $this->insert('components/forms/form-section-upload-new-product-image-single',
-              ["uploader" => "uploader", 
+              ["uploader" => "uploader",
               "no_guideline" => true,
               "header" => "Upload New Brand Image (512 x 512)",
-              "images" => "formData.BrandImages"]) 
+              "images" => "formData.BrandImages"])
           ?>
           <div class="form-section">
             <div class="form-section-header"><h2>SEO</h2></div>
@@ -82,7 +82,7 @@
               </div>
               <div ng-template="common/input/text"
                 ng-template-options="{
-                  'label': 'Meta Title (Thai)'
+                  'label': 'Meta Title (ไทย)'
                 }">
                 <input
                   class="form-control"
@@ -106,7 +106,7 @@
               </div>
               <div ng-template="common/input/text"
                 ng-template-options="{
-                  'label': 'Meta Description (Thai)'
+                  'label': 'Meta Description (ไทย)'
                 }">
                 <input
                   class="form-control"
@@ -137,7 +137,7 @@
               </div>
               <div ng-template="common/input/text2"
                 ng-template-options="{
-                  'label': 'Meta Keywords (Thai)',
+                  'label': 'Meta Keywords (ไทย)',
                   'error' : {
                         'messages': {
                           },

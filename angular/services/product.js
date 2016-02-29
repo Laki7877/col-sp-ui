@@ -1,8 +1,23 @@
 //Products Service
-module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
-    function ($http, common, util, LocalCategory, Brand, config) {
+module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config', 'KnownException',
+    function ($http, common, util, LocalCategory, Brand, config, KnownException) {
         'use strict';
         var service = common.Rest('/ProductStages');
+
+        service.export = function(products, attributeSets, fields){
+
+          if(_.isEmpty(products)) throw new KnownException("product service export method is called incorrectly");
+          if(_.isEmpty(attributeSets)) throw new KnownException("product service export method is called incorrectly");
+
+          fields.AttributeSets = attributeSets;
+          fields.ProductList = products;
+          var req = {
+              method: 'POST',
+              url: '/ProductStages/Export',
+              data: fields
+          };
+          return common.makeRequest(req);
+        }
 
         service.getOne = function (productId) {
             var req = {
@@ -231,7 +246,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                 clean.ExpireDate = null;
                 clean.ExpireTime = null;
                 clean.ExpireDate = null;
-                 
+
                 if(fd.ExpireDate && fd.EffectiveDate){
                     var cpdate = angular.copy(fd.ExpireDate);
                     clean.ExpireDate = moment(cpdate).format('LL');
@@ -242,7 +257,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                     clean.EffectiveDate = moment(cpdate).format('LL');
                     clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
                 }
-                
+
 
                 console.log('1-1', clean);
                 //clean.EffectiveDate = moment(fd.EffectiveDate + " " + fd.EffectiveTime);
@@ -515,7 +530,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             if (invFd.Variants.length > 0) {
 
                 var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId']);
-                
+
                 //Generate attributeOptions
                 var map0_index = FullAttributeSet.AttributeSetMaps.map(function (a) {
                     return a.Attribute.AttributeId;

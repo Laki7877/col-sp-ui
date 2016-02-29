@@ -14,7 +14,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 
 	util.warningOnLeave(function() {
 		var modalDirty = $scope.modalScope == null ? false : $scope.modalScope.form.$dirty;
-		return (!$scope.saving || !$scope.dirty) && !modalDirty;
+		return $scope.saving || $scope.dirty || modalDirty;
 	});
 
 	//UiTree onchange event
@@ -73,13 +73,14 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 			$timeout.cancel($scope.timerPromise);
 			$scope.timerPromise = null;
 		}
+		$scope.saving = true;
+		$scope.pristine = true;
 		$scope.timerPromise = $timeout(function() {
-				$scope.pristine = true;
-				$scope.saving = true;
 				GlobalCategoryService.upsert(Category.transformUITreeToNestedSet($scope.categories))
 				.then(function() {
 					$scope.alert.close();
 				}, function(err) {
+					$scope.pristine = false;
 					$scope.alert.error(common.getError(err));
 					$scope.reload();
 				})
@@ -102,7 +103,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 
 	//Condition at which tradable select will lock attributeset
 	$scope.lockAttributeset = function(i) {		
-		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);		
+		return false;		
 	};
 
 	//Open category modal

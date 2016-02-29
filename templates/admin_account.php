@@ -3,12 +3,12 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminAccountCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <? $this->insert('components/page-title-with-one-button', ['text' => 'Admin Accounts','button' => 'Create New Admin Account', 'button_class' => 'btn-width-xxxl', 'link' => '/admin/accounts/add']) ?>
+    <? $this->insert('components/page-title-with-one-button', ['text' => 'Admin Accounts','button' => 'Add Admin Account', 'button_class' => 'btn-width-xxl', 'link' => '/admin/accounts/add']) ?>
     <div class="row search-section-wrapper">
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="UserId"></nc-bulk>
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Admin Name and Email'"></nc-search>
     </div>
-    <nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="params.searchText.length > 0" >
+    <nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="isSearching()" >
       <table class="table table-curved">
         <thead>
           <tr class="table-head">
@@ -24,10 +24,10 @@
           <tr ng-repeat="row in list.data">
             <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
             <td nc-link="/admin/accounts/{{row.UserId}}">{{row.NameEn}}</td>
-            <td>{{row.Email}}</td>
-            <td>{{row.UserGroup[0]}}</td>
-            <td><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
-            <td>{{row.UpdatedDt | dateTh}}</td>
+            <td class="width_200">{{row.Email}}</td>
+            <td class="width_200">{{row.UserGroup[0]}}</td>
+            <td class="width_100"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
+            <td class="width_100">{{row.UpdatedDt | dateTh}}</td>
           </tr>
         </tbody>
       </table>

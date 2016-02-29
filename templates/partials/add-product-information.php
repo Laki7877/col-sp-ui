@@ -35,18 +35,15 @@
                                         </td>
                                         <td>
                                             <span class="{{ asStatus(overview.Status).color }}">
-									<i class="fa {{ asStatus(overview.Status).icon }}"></i>
-									{{ asStatus(overview.Status).name }}
-								</span>
-
+                            									<i class="fa {{ asStatus(overview.Status).icon }}"></i>
+                            									{{ asStatus(overview.Status).name }}
+                            								</span>
                                         </td>
                                         <td>
                                             <i class="fa fa-circle color-grey"></i>
                                         </td>
                                         <td>
-                                            <i ng-class="{'fa fa-eye-slash color-grey eye-icon' : !overview.Visibility,
-									'fa fa-eye color-dark-grey eye-icon' : overview.Visibility}"></i>
-
+                                            <i ng-class="{'fa fa-eye-slash color-grey eye-icon' : !overview.Visibility, 'fa fa-eye color-dark-grey eye-icon' : overview.Visibility}"></i>
                                         </td>
                                     </tr>
                                     <tbody>
@@ -64,9 +61,7 @@
                     <div class="form-section-content">
 
                         <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.MasterVariant_ProductNameEn" nc-label="Product Name (English)" nc-template-options-path="addProductForm/MasterVariant_ProductNameEn">
-
                             <input class="form-control width-field-large" name="MasterVariant_ProductNameEn" ng-model="formData.MasterVariant.ProductNameEn" maxlength="300" ng-pattern="/^([^<>ก-๙])+$/" required />
-
                         </div>
 
                         <div nc-template="common/input/form-group-with-label" nc-label="Product Name (ไทย)" nc-template-form="addProductForm.MasterVariant_ProductNameTh" nc-template-options-path="addProductForm/MasterVariant_ProductNameTh">
@@ -137,7 +132,7 @@
                         <h2>Description</h2></div>
                     <div class="form-section-content">
 
-                        <? $this->insert('components/forms/ckeditor-with-label', 
+                        <? $this->insert('components/forms/ckeditor-with-label',
                             ["label" => "Description (English)", "ng_model" => "formData.MasterVariant.DescriptionFullEn", "size" => "xxl", "form_group_class" => "margin-top-40"]) ?>
 
                             <div nc-template="common/input/form-group-with-label" nc-label="Short Description (English)" nc-template-options-path="addProductForm/MasterVariant_DescriptionShortEn" nc-template-form="addProductForm.MasterVariant_DescriptionShortEn">
@@ -202,20 +197,20 @@
                             <div ng-class="{'width-field-normal': !isHtmlInput(amap.Attribute.DataType), 'width-field-xxl': isHtmlInput(amap.Attribute.DataType)}">
                                 <!-- disabled if is variant as variant is disabled -->
 
-                                <select class="form-control" disabled ng-if="isListInput(amap.Attribute.DataType)" 
+                                <select class="form-control" disabled ng-if="isListInput(amap.Attribute.DataType)"
                                 ng-show="(dataSet.attributeOptions[0].Attribute.AttributeId == amap.Attribute.AttributeId) || (dataSet.attributeOptions[1].Attribute.AttributeId == amap.Attribute.AttributeId)">
                                     <option selected>Edit in Variation Tab</option>
                                 </select>
 
-                                <input class="form-control" disabled type="text" ng-if="(isHtmlInput(amap.Attribute.DataType) || isFreeTextInput(amap.Attribute.DataType))" 
-                                ng-show="(dataSet.attributeOptions[0].Attribute.AttributeId == amap.Attribute.AttributeId) || (dataSet.attributeOptions[1].Attribute.AttributeId == amap.Attribute.AttributeId)" 
+                                <input class="form-control" disabled type="text" ng-if="(isHtmlInput(amap.Attribute.DataType) || isFreeTextInput(amap.Attribute.DataType))"
+                                ng-show="(dataSet.attributeOptions[0].Attribute.AttributeId == amap.Attribute.AttributeId) || (dataSet.attributeOptions[1].Attribute.AttributeId == amap.Attribute.AttributeId)"
                                 value="Edit in Variation Tab" />
-                                
+
                                 <!-- 3 field types -->
                                 <!--- TODO: will clean later -->
 
-                                <select ng-if="isListInput(amap.Attribute.DataType)" 
-                                ng-show="(dataSet.attributeOptions[0].Attribute.AttributeId != amap.Attribute.AttributeId) && (dataSet.attributeOptions[1].Attribute.AttributeId != amap.Attribute.AttributeId)" 
+                                <select ng-if="isListInput(amap.Attribute.DataType)"
+                                ng-show="(dataSet.attributeOptions[0].Attribute.AttributeId != amap.Attribute.AttributeId) && (dataSet.attributeOptions[1].Attribute.AttributeId != amap.Attribute.AttributeId)"
                                 class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]">
                                     <option value="" disabled selected>- Select option -</option>
                                     <option ng-repeat="vv in amap.Attribute.AttributeValueMaps">
@@ -223,15 +218,15 @@
                                     </option>
                                 </select>
 
-                                <div ng-if="isHtmlInput(amap.Attribute.DataType)" 
+                                <div ng-if="isHtmlInput(amap.Attribute.DataType)"
                                 ng-show="(dataSet.attributeOptions[0].Attribute.AttributeId != amap.Attribute.AttributeId) && (dataSet.attributeOptions[1].Attribute.AttributeId != amap.Attribute.AttributeId)">
                                     <textarea ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" class="form-control" ng-ckeditor="ckOptions"></textarea>
                                 </div>
 
-                                <input 
-                                ng-if="isFreeTextInput(amap.Attribute.DataType)" 
+                                <input
+                                ng-if="isFreeTextInput(amap.Attribute.DataType)"
                                 ng-show="(dataSet.attributeOptions[0].Attribute.AttributeId != amap.Attribute.AttributeId) && (dataSet.attributeOptions[1].Attribute.AttributeId != amap.Attribute.AttributeId)"
-                                type="text" class="form-control" 
+                                type="text" class="form-control"
                                 ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" />
 
 
@@ -260,7 +255,7 @@
                     <div class="form-section-header">
                         <h2>Keywords</h2></div>
                     <div class="form-section-content">
- 
+
                         <div nc-template="common/input/form-group-with-label" nc-label="Keywords" nc-template-form="addProductForm.Keywords" nc-template-options-path="addProductForm/Keywords">
                             <ui-select ng-model="formData.Keywords" name="Keywords" nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30" nc-tag-pattern="^[a-zA-Z0-9ก-๙\s\-]+$" multiple tagging tagging-tokens=",|ENTER" tagging-label="" nc-tag-field>
                                 <ui-select-match placeholder="Separate tags with comma (or enter)">

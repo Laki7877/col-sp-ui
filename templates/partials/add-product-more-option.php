@@ -37,7 +37,7 @@
                         </div>
 
                         <div ng-template="common/input/text2" ng-template-options="{
-						  'label': 'Meta Title (Thai)'
+						  'label': 'Meta Title (ไทย)'
 						}">
                             <input maxlength="60" class="form-control width-field-normal" name="SEO_MetaTitleTh" ng-model="formData.SEO.MetaTitleTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaTitleTh) }" />
                         </div>
@@ -49,7 +49,7 @@
                         </div>
 
                         <div ng-template="common/input/text2" ng-template-options="{
-						  'label': 'Meta Description (Thai)'
+						  'label': 'Meta Description (ไทย)'
 						}">
                             <input maxlength="150" class="form-control width-field-normal" name="SEO_MetaDescriptionTh" ng-model="formData.SEO.MetaDescriptionTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaDescriptionTh) }" />
                         </div>
@@ -61,7 +61,7 @@
                         </div>
 
                         <div ng-template="common/input/text2" ng-template-options="{
-						  'label': 'Meta Keywords (Thai)'
+						  'label': 'Meta Keywords (ไทย)'
 						}">
                             <input placeholder="Keywords separated by comma" class="form-control width-field-normal" name="SEO_MetaKeywordsTh" ng-model="formData.SEO.MetaKeywordsTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaKeywordsTh) }" />
                         </div>
@@ -78,7 +78,7 @@
 						'messages': {
 						'max': 'Only numbers from 1 to 10000 is allowed',
 						'min': 'Only numbers from 1 to 10000 is allowed',
-                        'pattern': 'Only numbers from 1 to 10000 is allowed' 
+                        'pattern': 'Only numbers from 1 to 10000 is allowed'
 						},
 						'show': $root.isInvalid(addProductForm.SEO_ProductBoostingWeight),
 						'conditions' : addProductForm.SEO_ProductBoostingWeight.$error
@@ -107,8 +107,8 @@
                                 <div class="dropdown">
                                     <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
                                         <input readonly style="background-color:white" type="text"
-                                        ng-class="{'has-error': formData.ExpireDate <= formData.EffectiveDate }"
-                                         placeholder="Select date and time when product will go online" 
+                                         ng-class="{'has-error': formData.ExpireDate <= formData.EffectiveDate }"
+                                         placeholder="Select date and time when product will go online"
                                          class="input-icon-calendar form-control" value="{{ formData.EffectiveDate | date: 'dd/MM/yy HH:mm' }}" />
                                     </a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -129,19 +129,19 @@
                             <div class="width-field-normal">
                                 <div class="dropdown">
                                     <a class="dropdown-toggle" id="dropdown3" role="button" data-toggle="dropdown" data-target="#" href="#">
-                                        <input readonly style="background-color:white" type="text" 
-                                        placeholder="Select date and time when product will go offline" 
-                                        class="input-icon-calendar form-control" name="ExpireDate" 
+                                        <input readonly style="background-color:white" type="text"
+                                        placeholder="Select date and time when product will go offline"
+                                        class="input-icon-calendar form-control" name="ExpireDate"
                                         ng-class="{'has-error': formData.ExpireDate <= formData.EffectiveDate }"
                                         value="{{ formData.ExpireDate | date: 'dd/MM/yy HH:mm' }}">
                                     </a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                        <datetimepicker data-ng-model="formData.ExpireDate" 
+                                        <datetimepicker data-ng-model="formData.ExpireDate"
                                         data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'hour' }" />
                                     </ul>
                                 </div>
                                 <div class="width-field-large">
-                                    <span class="help-block color-red" ng-if="formData.ExpireDate <= formData.EffectiveDate"> 
+                                    <span class="help-block color-red" ng-if="formData.ExpireDate <= formData.EffectiveDate">
 								        <span>Effective date/time must come before expire date/time</span>
                                     </span>
                                 </div>

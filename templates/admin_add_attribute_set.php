@@ -1,8 +1,8 @@
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attribute Set']) ?>
-<?php $this->start('page-body') ?>  
+<?php $this->start('page-body') ?>
   <div ng-controller="AdminAttributeSetAddCtrl" ng-init="init(<?=$params?>)">
     <nc-alert nc-model="alert"></nc-alert>
-    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute Set/{{title}}", 'urls' => ['/admin/attributesets']]) ?>
+    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute Sets/{{title}}", 'urls' => ['/admin/attributesets']]) ?>
     <div ng-show="loading" nc-loading="Loading Attribute Set.."></div>
     <div ng-show="saving" nc-loading="Saving Attribute Set.."></div>
     <form ng-show="!saving && !loading" class="ah-form sticky-mainform-action margin-top-30" name="form" novalidate>
@@ -41,10 +41,10 @@
                   }">
                   <textarea class="form-control" ng-model="formData.AttributeSetDescriptionEn" maxlength="500"></textarea>
               </div>
-              <div ng-if="id != 0" 
+              <div ng-show="id > 0"
                   ng-template="common/input/label"
                   ng-template-options="{
-                    'label' : 'Mapped Categories',
+                    'label' : 'Mapped Categories (ID)',
                     'inputSize': 'large'
                   }">{{formData.Categories}}</div>
             </div>
@@ -53,7 +53,7 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Attribute Mapping</h2></div>
             <div class="form-section-content">
-                <div nc-tradable-select="common/input/tradable-select2" nc-test="lockAttributeset" nc-model="formData.Attributes" nc-select-options="attributeOptions" nc-options="{ 'map' : { 'text': 'AttributeNameEn', 'value' : 'AttributeId' } }"></div> 
+                <nc-tradable-select nc-test="lockAttributeset" nc-model="formData.Attributes" nc-select-options="attributeOptions" nc-options="{ 'map' : { 'text': 'AttributeNameEn', 'value' : 'AttributeId' } }"></nc-tradable-select>
                 <div class="row col-xs-12">
                   <p style="margin-left: 30px; margin-top:15px"><span class="color-red">*</span> If attribute set is mapped to a product, attribute mapping cannot be changed</p>
                 </div>
@@ -77,16 +77,16 @@
                     'conditions' :  keywordValidConditions
                   }
                 }">
-                  <ui-select 
-                  ng-model="formData.Tags" 
+                  <ui-select
+                  ng-model="formData.Tags"
                   on-select="onKeywordAdded($item, $model)"
-                  multiple 
-                  tagging tagging-tokens=",|ENTER" 
+                  multiple
+                  tagging tagging-tokens=",|ENTER"
                   tagging-label="">
                     <ui-select-match placeholder="Separate tags with comma (or enter)">
                     {{$item}}
                     </ui-select-match>
-                    <ui-select-choices repeat="item in tagOptions">  
+                    <ui-select-choices repeat="item in tagOptions">
                     {{item}}
                     </ui-select-choices>
                   </ui-select>
@@ -94,14 +94,14 @@
             </div>
           </div>
 
-          <div class="form-section">
+          <!--div class="form-section">
             <div class="form-section-header"><h2>Visibility</h2></div>
             <div class="form-section-content">
               <div ng-template="common/input/multiline-radio" ng-template-options="{ 'label' : 'Attribute Set Visibility' }">
                 <label ng-repeat="choice in visibleOptions"><input type="radio" ng-model="formData.Visibility" ng-value="choice.value"/>{{choice.name}}</label>
               </div>
             </div>
-          </div>
+          </div-->
           <div class="col-xs-12">
             <p class="text-align-right"><span class="color-red"><i class="fa fa-asterisk"></i></span> - Required Field</p>
           </div>

@@ -1,4 +1,4 @@
-module.exports = function($scope, $window, NcAlert, util, options) {
+module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 	'ngInject';
 	var a = _.includes(['a','e','i','o','u'], _.lowerCase(options.item.charAt(0))) ? 'an' : 'a';
 	$scope.alert = new NcAlert();
@@ -13,27 +13,26 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 		_order: options.order,
 		_limit: 10,
 		_offset: 0,
-		_direction: options.direction || 'desc'	
+		_direction: options.direction || 'desc'
 	};
 	$scope.list = {
 		total: 0,
 		data: []
 	};
 
-	$scope.reload = function(newObj, oldObj) {
+	$scope.reload = options.reload || function(newObj, oldObj) {
+		$scope.loading = true;
+		(options.onReload || _.noop)(newObj, oldObj);
 		if(!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
-			(options.reload || _.noop)(newObj, oldObj);
 			if(newObj.searchText !== oldObj.searchText) {
 				$scope.params._offset = 0;
-			}
-			if(newObj.AdvanceSearch !== oldObj.AdvanceSearch) {
-				$scope.params._offset = 0;
+				$scope.bulkContainer.length = 0;
 			}
 			if(newObj._filter !== oldObj._filter) {
 				$scope.params._offset = 0;
+				$scope.bulkContainer.length = 0;
 			}
 		}
-		$scope.loading = true;
 		options.service.list($scope.params)
 			.then(function(data) {
 				$scope.list = data;
@@ -42,10 +41,10 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 				$scope.loading = false;
 			});
 	};
-	$scope.onload = function() {
+	$scope.onLoad = function() {
 		$scope.loading = true;
 	};
-	if(options.filters) {
+	if(!_.isEmpty(options.filters)) {
 		$scope.filterOptions = options.filters;
 		$scope.params._filter = options.filters[0].value;
 	}
@@ -62,9 +61,9 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 				switch(item) {
 					case 'Delete':
 						return util.bulkDelete(options.service, options.id, options.item, $scope.alert, $scope.reload, $scope.onload);
-					case 'Show': 
+					case 'Show':
 						return util.bulkShow(options.service, options.id, options.item, $scope.alert, $scope.reload);
-					case 'Hide': 
+					case 'Hide':
 						return util.bulkHide(options.service, options.id, options.item, $scope.alert, $scope.reload);
 				}
 			}
@@ -114,6 +113,16 @@ module.exports = function($scope, $window, NcAlert, util, options) {
 
 	}
 
-	$scope.reload();
-	$scope.$watch('params', $scope.reload, true);
+	$scope.isSearching = function() {
+		return !_.isEmpty($scope.params.searchText) || ( _.isUndefined($scope.params._filter) ? false :  $scope.params._filter == options.filters[0].value);
+	};
+
+	$scope.$watch('params', function(a,b) {
+		$scope.reload(a,b);
+	}, true);
+
+	$timeout(function() {
+		$scope.reload();
+		(options.onInit || _.noop)($scope);
+	}, 0);
 };

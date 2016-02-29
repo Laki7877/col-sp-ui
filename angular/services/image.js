@@ -1,5 +1,6 @@
 var angular = require('angular');
 //Image Service
+//Note: this file is not used anywhere (legacy!!! dOnt edit )
 module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', function($q, $http, common, storage, config, FileUploader){
 	'use strict';
 	var service = {};
@@ -50,7 +51,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 						return;
 					}
 				}
-				
+
 				//Default handle, pop last images
 				images.pop();
 			}
@@ -70,11 +71,11 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
         uploader.onProgressItem = function(item,progress){
              console.info('onProgressItem', item, progress, uploader.progress);
         };
-        
+
         uploader.onProgressAll = function(){
             console.info("onProgressAll");
         }
-        
+
 	    return uploader;
 	}
 
@@ -83,13 +84,13 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	 */
 	service.getAll = function() {
 		common.makeRequest({
-			
+
 		});
 	};
 
 	service.shift = function(from, to) {
 		common.makeRequest({
-			
+
 		});
 	};
 

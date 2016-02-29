@@ -1,9 +1,7 @@
 <?php $this->layout('layouts/page-with-sidebar', ['title' => 'Export Products']) ?>
 
 <?php $this->start('page-body') ?>
-	<div class="local-category-page">
-
-
+	<div class="seller-export-page" ng-controller="ProductExportCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
 		<div class="page-header with-border">
 
 		    <h1 class="float-left page-header-title ah-breadcrumb">
@@ -29,10 +27,10 @@
 					<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
 
 						<div id="import-product-content-page">
-							
+
 							<div class="margin-bottom-20">
 								<span>Number of products selected:</span>
-								<span>23,423</span>
+								<span>{{ productIds.length }}</span>
 							</div>
 
 							<div class="row">
@@ -42,14 +40,107 @@
 										<div class="form-section-content">
 
 											<div class="row">
+												<div nc-template="common/input/form-group-with-label"
+												nc-template-options-path="productExport/MultiCheckbox"
+												nc-label="">
+													<label>
+														<input type="checkbox"/> Select All
+													</label>
+												</div>
 
-												<? $this->insert('components/forms/multiple-checkbox-multiline', ["label" => "", "label_class" => "required", "choices" => ["Select All"]]) ?>
-												<? $this->insert('components/forms/multiple-checkbox-multiline', ["label" => "System Information", "label_class" => "required", "choices" => ["Product Status", "PID", "Group ID"]]) ?>
-												<? $this->insert('components/forms/multiple-checkbox-multiline', ["label" => "Vital Information", "label_class" => "required", "choices" => ["SKU", "Product Name (English)", "Product Name (Thai)","Brand Name"]]) ?>
-												<? $this->insert('components/forms/multiple-checkbox-multiline', ["label" => "Category", "label_class" => "required", "choices" => ["Global Category", "Local Category"]]) ?>
-												<? $this->insert('components/forms/multiple-checkbox-multiline', ["label" => "Price", "label_class" => "required", "choices" => ["Original Price","Sale Price"]]) ?>
-												<? $this->insert('components/forms/multiple-checkbox-multiline', ["label" => "Description", "label_class" => "required", "choices" => ["Description (English)", "Description (Thai)","Short Description (English)","Short Description (Thai)"]]) ?>
-												<? $this->insert('components/forms/multiple-checkbox-multiline', ["label" => "Shipping & Inventory", "label_class" => "required", "choices" => ["Stock Type", "Preparation Time", "Package - Lenght", "Package - Height", "Package - Width", "Package - Weight", "Inventory Amount", "Safety Stock Amount"]]) ?>
+												<div nc-template="common/input/form-group-with-label"
+												nc-template-options-path="productExport/MultiCheckbox"
+												nc-label="System Information">
+													<label>
+														<input type="checkbox" name="fieldfilter" ng-model="fields.ProductStatus"> Product Status
+													</label>
+													<label>
+														<input type="checkbox" name="fieldfilter" ng-model="fields.PID"> PID
+													</label>
+													<label>
+														<input type="checkbox" name="fieldfilter" ng-model="fields.groupID"> Group ID
+													</label>
+												</div>
+
+												<div nc-template="common/input/form-group-with-label"
+												nc-template-options-path="productExport/MultiCheckbox"
+												nc-label="Vital Information">
+													<label>
+														<input type="checkbox" name="fieldfilter" ng-model="fields.SKU"> SKU
+													</label>
+													<label>
+														<input type="checkbox" name="fieldfilter" ng-model="fields.ProductNameEn"> Product Name (English)
+													</label>
+													<label>
+														<input type="checkbox" name="fieldfilter" ng-model="fields.ProductNameTh"> Product Name (Thai)
+													</label>
+													<label>
+														<input type="checkbox" name="fieldfilter" ng-model="fields.BrandName"> Brand Name
+													</label>
+												</div>
+
+												<div nc-template="common/input/form-group-with-label"
+												nc-template-options-path="productExport/MultiCheckbox"
+												nc-label="Category">
+													<label>
+														<input type="checkbox" name="fieldfilter" ng-model="fields.GlobalCategory"> Global Category
+													</label>
+													<label>
+														<input type="checkbox" name="fieldfilter" ng-model="fields.LocalCategory"> Local Category
+													</label>
+												</div>
+
+												<div nc-template="common/input/form-group-with-label"
+												nc-template-options-path="productExport/MultiCheckbox"
+												nc-label="Price">
+													<label>
+														<input type="checkbox" name="fieldfilter" ng-model="fields.OriginalPrice"> Original Price
+													</label>
+													<label>
+														<input type="checkbox" name="fieldfilter" ng-model="fields.SalePrice"> Sale Price
+													</label>
+												</div>
+
+												<div nc-template="common/input/form-group-with-label"
+												nc-template-options-path="productExport/MultiCheckbox"
+												nc-label="Description">
+													<label>
+														<input type="checkbox" name="fieldfilter" ng-model="fields.DescriptionEn"> Description (English)
+													</label>
+													<label>
+														<input type="checkbox" name="fieldfilter" ng-model="fields.DescriptionTh"> Description (Thai)
+													</label>
+													<label>
+														<input type="checkbox" name="fieldfilter" ng-model="fields.ShortDescriptionEn"> Short Description (English)
+													</label>
+													<label>
+														<input type="checkbox" name="fieldfilter" ng-model="fields.ShortDescriptionTh"> Short Description (Thai)
+													</label>
+												</div>
+
+												<div nc-template="common/input/form-group-with-label"
+												nc-template-options-path="productExport/MultiCheckbox"
+												nc-label="Shipping &amp; Inventory">
+													<label>
+														<input type="checkbox" name="fieldfilter" ng-model="fields.DescriptionEn"> Preparation Time
+													</label>
+													<label>
+														<input type="checkbox" name="fieldfilter" ng-model="fields.PackageLength"> Package - Length
+													</label>
+													<label>
+														<input type="checkbox" name="fieldfilter" ng-model="fields.PackageHeight"> Package - Height
+													</label>
+													<label>
+														<input type="checkbox" name="fieldfilter" ng-model="fields.PackageWidth"> Package - Width
+													</label>
+													<label>
+														<input type="checkbox" name="fieldfilter" ng-model="fields.InventoryAmount"> Inventory Amount
+													</label>
+													<label>
+														<input type="checkbox" name="fieldfilter" ng-model="fields.SafetyStockAmount"> Safety Stock Amount
+													</label>
+												</div>
+
 											</div>
 
 										</div>
@@ -62,71 +153,27 @@
 									<div class="form-section">
 										<div class="form-section-header"><h2>Select Attribute Set</h2></div>
 										<div class="form-section-content">
-											
-											<div class="tradable-list">
-                
-											    <div class="left-column">
-											      <div class="search-section section-search">
-											          <input type="text" class="form-control input-search-icon search-box" placeholder="Search Attribute Set" aria-describedby="basic-addon2">
-											      </div>
-											      <div class="clickable-list">
-											        <ul class="content-column">
-											          <li>Attribute Set A</li>
-											          <li class="active">Attribute Set B</li>
-											          <li>Attribute Set C</li>
-											          <li>Attribute Set D</li>
-											          <li>Attribute Set E</li>
-											          <li>Attribute Set F</li>
-											          <li>Attribute Set G</li>
-											          <li>Attribute Set H</li>
-											          <li>Attribute Set J</li>
-											          <li>Attribute Set K</li>
-											          <li>Attribute Set G</li>
-											          <li>Attribute Set H</li>
-											          <li>Attribute Set J</li>
-											        </ul>
-											      </div>
-											      <div class="checkbox">
-											      	<label><input type="checkbox">Select All Attribute Sets</label>
-											      </div>
-											    </div>
+										<div class="form-group" style="margin:0px; padding:0px">
+												<nc-tradable-select
+												nc-test="lockAS"
+												nc-model="formData.Attributes"
+												nc-select-options="dataSet.attributeSets"
+												nc-options="{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }">
+										 	 </nc-tradable-select>
 
-											    <div class="center-column">
-											      <div class="trade-button active"> 
-											         <i class="fa fa-chevron-right"></i>
-											      </div>
-											      <div class="trade-button"> 
-											        <i class="fa fa-chevron-left"></i>
-											      </div>
-											    </div>
-
-											    <div class="right-column" style="width: 300px;">
-											      <div class="list-header">
-											        <span>Selected Attribute Set</span>
-											      </div>
-											      <div class="clickable-list">
-											        <ul class="content-column">
-											          <li>Attribute Set A</li>
-											          <li class="active">Attribute Set B</li>
-											          <li>Attribute Set C</li>
-											          <li>Attribute Set D</li>
-											          <li>Attribute Set E</li>
-											          <li>Attribute Set F</li>
-											         
-											        </ul>
-											      </div>
-											    </div>
-
-											  </div>  
-
-
+										 </div>
+										 	<div class="form-group">
+												<div class="checkbox">
+	 										 		<label><input type="checkbox">Select All Attribute Sets (1,588,222)</label>
+	 										 </div>
+										 </div>
 										</div>
 									</div>
 								</div>
 							</div>
 
 
-				
+
 
 						</div>
 
@@ -137,7 +184,7 @@
 			        <div class="container-fluid">
 			          <div class="float-right">
 			            <a href="#" class="link-btn-plain">Cancel</a>
-			            <button class="btn btn-blue btn-width-xl" data-toggle="modal" data-target="#export-product">ExportXX</button>
+			            <button class="btn btn-blue btn-width-xl" data-toggle="modal" data-target="#export-product">Export</button>
 			          </div>
 			        </div>
 			     </div>
@@ -146,8 +193,8 @@
 		</div>
 	</div>
 
-  <? $this->insert('components/modal-export-product', ['id' => 'export-product', 'newProductNum' => '1,500']) ?>
-  <? $this->insert('components/modal-export-product-progressing', ['id' => 'export-product-progressing', 'percent' => '60']) ?>
-  <? $this->insert('components/modal-export-product-complete', ['id' => 'export-product-complete']) ?>
+  <?php $this->insert('components/modal-export-product', ['id' => 'export-product', 'newProductNum' => '1,500']) ?>
+  <?php $this->insert('components/modal-export-product-progressing', ['id' => 'export-product-progressing', 'percent' => '60']) ?>
+  <?php $this->insert('components/modal-export-product-complete', ['id' => 'export-product-complete']) ?>
 
 <?php $this->stop() ?>

@@ -94,11 +94,11 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     service.page404 = function () {
         $window.location.href = "/error";
     };
-    
+
 
     service.warningOnLeave = function (fn) {
         $window.onbeforeunload = function () {
-            if (fn()) {
+            if (!fn()) {
                 //not dirty
                 return null;
             }
@@ -262,8 +262,8 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
                 alert.close();
 
                 //Only pass id
-                var obj = _.pick(obj, [id]); 
-               
+                var obj = _.pick(obj, [id]);
+
 
                 //Delete bulk
                 rest.delete([obj])

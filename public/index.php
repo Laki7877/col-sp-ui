@@ -33,6 +33,7 @@ Route::add('/products/select', 'ProductController::select');
 Route::add('/products/images', 'ProductController::images');
 Route::add('/products/import', 'ProductController::import');
 Route::add('/products/reviews', 'ProductController::reviews');
+Route::add('/products/export', 'ProductController::export');
 Route::add('/products/:productid', 'ProductController::edit');
 
 //category routing
@@ -48,6 +49,7 @@ Route::add('/accounts/:id', 'SellerController::editAccount');
 Route::add('/roles', 'SellerController::listRole');
 Route::add('/roles/add', 'SellerController::addRole');
 Route::add('/roles/:id', 'SellerController::editRole');
+Route::add('/inventory', 'SellerController::listInventory');
 
 //admin routing
 Route::add('/admin/attributes/add','AdminController::addAttribute');
@@ -94,9 +96,14 @@ Route::add('/buy1get1/:id', 'Buy1Get1Controller::edit');
 Route::add('/admin/approve', 'AdminController::approve');
 Route::add('/admin/coupons/seller', 'AdminController::seller_coupons');
 Route::add('/admin/coupons/seller/create', 'AdminController::seller_coupons_create');
+Route::add('/admin/coupons/admin', 'AdminController::admin_coupons_list');
+Route::add('/admin/coupons/admin/:id', 'AdminController::admin_coupons_edit');
+Route::add('/admin/coupons/admin/create', 'AdminController::create_admin_coupons_create');
 Route::add('/admin/coupons/admin', 'AdminController::admin_coupons');
 Route::add('/admin/coupons/admin/create', 'AdminController::admin_coupons_create');
-
+Route::add('/admin/ontopcredit', 'AdminController::listOntopcredit');
+Route::add('/admin/ontopcredit/create', 'AdminController::addOntopcredit');
+Route::add('/admin/ontopcredit/:id', 'AdminController::editOntopcredit');
 //test route
 Route::add('/test/:name', 'TestController::any');
 

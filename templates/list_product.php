@@ -12,9 +12,9 @@
         <div class="input-group">
           <div class="input-group-btn">
             <div class="dropdown-btn">
-              <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+              <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span id="bulk" class="dropdown-text margin-right-10 search-product-text">
-			            Choose Action 
+			            Choose Action
 		              </span>
                   <span class="caret margin-left-10"></span>
               </button>
@@ -32,24 +32,22 @@
       </form>
       <form ng-submit="applySearch()" class="search-section section-search">
         <div class="input-group">
-          <input type="text" class="form-control input-search-icon search-box" 
+          <input type="text" class="form-control input-search-icon search-box"
           ng-model="searchText" placeholder="Search for Product Name, PID, SKU" aria-describedby="basic-addon2">
           <span class="input-group-btn">
             <button class="btn btn-white">Search</button>
           </span>
         </div>
       </form>
-       <div class="search-section section-filter checkbox-wrapper">
-          <input ng-model="showOnOffStatus"type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" />
-          <label for="checkboxG1" class="css-label">
-              Show Online/Offline Status
-          </label>
-        </div>
     </div>
     <div class="filter-section">
       <div class="filter-container">
         <span>Filters:</span>
         <a class="filter-seperator" ng-repeat="filter in filterOptions" ng-class="{'filter-active': tableParams.filter == filter.value }" ng-click="tableParams.filter = filter.value">{{ filter.name }}</a>
+        <div class="filter-checkbox">
+           <input ng-model="showOnOffStatus"type="checkbox" name="checkboxG1" id="checkboxG1"/>
+           Show Online/Offline Status
+         </div>
       </div>
     </div>
     <div class="table-section">
@@ -125,7 +123,7 @@
                     <a class="fa fa-gear color-dark-grey icon-size-20"  uib-popover-template="'product/action'" popover-placement="bottom" popover-append-to-body="true" popover-any>
                        <i class="fa fa-caret-down color-dark-grey"></i>
                     </a>
-                   
+
                   </td>
           </tr>
         </tbody>
@@ -135,12 +133,12 @@
       </div>
       <div ng-show="!notReady && productList.length == 0 && tableParams.searchText.length > 0">
           <div class="local-category-page margin-bottom-20">
-            <? $this->insert('components/local-category-empty-content', ['text' => 'No Search Result']) ?>      
+            <? $this->insert('components/local-category-empty-content', ['text' => 'No Search Result']) ?>
           </div>
       </div>
       <div ng-show="!notReady && productList.length == 0 && tableParams.searchText.length <= 0">
           <div class="local-category-page margin-bottom-20">
-            <? $this->insert('components/local-category-empty-content', ['text' => 'You do not have a Product']) ?>      
+            <? $this->insert('components/local-category-empty-content', ['text' => 'You do not have a Product']) ?>
           </div>
       </div>
     </div>
@@ -172,7 +170,7 @@
       </span>
     </div>
 	</div>
-    
+
 
 
 <?php $this->stop() ?>

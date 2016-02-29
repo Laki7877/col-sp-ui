@@ -1,5 +1,5 @@
 <div id="add-product-more-option-tab-content">
-	
+
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="form-section">
@@ -21,7 +21,7 @@
 				<div class="form-section-header"><h2>User Role</h2></div>
 				<div class="form-section-content">
 					<? $this->insert('components/forms/dropdown-with-label', ["label" => "User Role", "label_class" => "required", "options" => ["Shop Owner", "Image Team"]]) ?>
-					<? $this->insert('components/forms/link-action', ['text' => 'Create New User Role', 'link' => '/?p=user_add_role']) ?>
+					<? $this->insert('components/forms/link-action', ['text' => 'Add User Role', 'link' => '/?p=user_add_role']) ?>
 				</div>
 			</div>
 		</div>

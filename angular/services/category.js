@@ -86,7 +86,7 @@ module.exports = ['config', function(config) {
                 }
             }
 
-            if (angular.isUndefined(pivot.reverse) && pivot.nodes.length > 0) {
+            if (!_.isNil(pivot) && _.isUndefined(pivot.reverse) && pivot.nodes.length > 0) {
                 pivot.nodes = reverse2(pivot.nodes);
                 pivot.reverse = true;
                 angular.forEach(pivot.nodes, function(child) {
@@ -236,7 +236,6 @@ module.exports = ['config', function(config) {
             if(angular.isUndefined(item.parent)) {
                 array[0].list = template;
                 array[0].active = template.indexOf(item);
-                console.log(array);
                 return array;
             }
             var parent = item.parent;

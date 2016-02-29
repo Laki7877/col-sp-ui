@@ -24,6 +24,6 @@ module.exports = function($scope, $controller, AdminShopService, AdminShoptypeSe
             
         });
 	};
-
+	$scope.shopGroupDropdown = config.SHOP_GROUP;
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 };
