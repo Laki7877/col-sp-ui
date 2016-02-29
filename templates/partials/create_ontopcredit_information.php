@@ -5,28 +5,34 @@
             <div class="form-section">
                 <div class="form-section-header"><h2>Credit Card Information</h2></div>
                 <div class="form-section-content">
-                    <div nc-template="common/input/form-group-with-label" nc-label="Name TH" nc-template-form="form.NameTH" nc-template-options-path="PromotionForm/NameTH">
+                    <div nc-template="common/input/form-group-with-label" nc-label="Name TH" nc-template-form="formData.NameTH" nc-template-options-path="PromotionForm/NameTH">
                         <input class="form-control width-field-large" name="NameTH" ng-model="formData.NameTH" ng-pattern="/^[^<>]+$/" maxlength="300" required />
                     </div>
 
-                    <div nc-template="common/input/form-group-with-label" nc-label="Name EN" nc-template-form="form.NameEN" nc-template-options-path="PromotionForm/NameEN">
+                    <div nc-template="common/input/form-group-with-label" nc-label="Name EN" nc-template-form="formData.NameEN" nc-template-options-path="PromotionForm/NameEN">
                         <input class="form-control width-field-large" name="NameEN" ng-model="formData.NameEN" ng-pattern="/^[^<>]+$/" maxlength="300" required />
                     </div>
-                    <div nc-template="common/input/form-group-with-label" nc-label="Bank Name TH" nc-template-form="form.BankNameTH" nc-template-options-path="PromotionForm/BankNameTH">
+                    <div nc-template="common/input/form-group-with-label" nc-label="Bank Name TH" nc-template-form="formData.BankNameTH" nc-template-options-path="PromotionForm/BankNameTH">
                         <input class="form-control width-field-large" name="BankNameTH" ng-model="formData.BankNameTH" ng-pattern="/^[^<>]+$/" maxlength="300" required />
                     </div>
 
-                    <div nc-template="common/input/form-group-with-label" nc-label="Bank Name EN" nc-template-form="form.BankNameEN" nc-template-options-path="PromotionForm/BankNameEN">
+                    <div nc-template="common/input/form-group-with-label" nc-label="Bank Name EN" nc-template-form="formData.BankNameEN" nc-template-options-path="PromotionForm/BankNameEN">
                         <input class="form-control width-field-large" name="BankNameEN" ng-model="formData.BankNameEN" ng-pattern="/^[^<>]+$/" maxlength="300" required />
                     </div>
 
-                    <div nc-template="common/input/form-group-with-label" nc-label="Promotion Code" nc-template-form="form.PromotionCode" nc-template-options-path="PromotionForm/PromotionCode">
-                        <input class="form-control width-field-large" name="PromotionCode" ng-model="formData.PromotionCode" ng-pattern="/^[^<>]+$/" maxlength="300"  />
+                    <div nc-template="common/input/form-group-with-label" nc-label="Payment Id" nc-template-form="formData.PaymentId" nc-template-options-path="PromotionForm/PaymentId">
+                        <input class="form-control width-field-large" name="PaymentId" ng-model="formData.PaymentId" ng-pattern="/^[^<>]+$/" maxlength="300" />
+                    </div>
+
+                    <div nc-template="common/input/form-group-with-label" nc-label="Promotion Code" nc-template-form="formData.PromotionCode" nc-template-options-path="PromotionForm/PromotionCode">
+                        <input class="form-control width-field-large" name="PromotionCode" ng-model="formData.PromotionCode" ng-pattern="/^[^<>]+$/" maxlength="300" />
                     </div>
 
                     <div nc-template="common/input/form-group-with-label" nc-label="Status">
                         <div class="ah-select2-dropdown">
-                            <select ng-model="p" class="form-control" ng-init="p = { value: '1'}" ng-options="i as i.text for i in [{ text: 'Active', value: '1'},{ text: 'Inactive', value: '0'}] track by i.value" required>
+                            <select ng-model="formData.Status" class="form-control" required>
+                                <option value="AT"> Active</option>
+                                <option value="IA"> Inactive</option>
                             </select>
                         </div>
                     </div>
@@ -37,9 +43,11 @@
                 <div class="form-section-header"><h2>Action</h2></div>
                 <div class="form-section-content">
 
-                    <div nc-template="common/input/form-group-with-label" nc-label="Action">
+                    <div nc-template="common/input/form-group-with-label" nc-label="Discount Type">
                         <div class="ah-select2-dropdown">
-                            <select ng-model="p" class="form-control" ng-init="p = {value: 'PERCENT'}" ng-options="i as i.text for i in [{ text: 'Discount by percent', value: 'PERCENT'},{ text: 'Discount by amount', value: 'AMOUNT'}] track by i.value" required>
+                            <select ng-model="formData.DiscountType" class="form-control" required="">
+                                <option value="PER"> Discount by percentage</option>
+                                <option value="FIX"> Discount by fix rate</option>
                             </select>
                         </div>
                     </div>
@@ -59,12 +67,12 @@
                 </div>
                 <div class="form-section-content">
 
-                    <div nc-template="common/input/form-group-with-label" nc-label="Short Description (ไทย)" nc-template-options-path="PromotionForm/DescriptionShortTH" nc-template-form="DescriptionShortTH">
-                        <textarea ng-pattern="/^[^<>]+$/"  class="form-control" maxlength="300" style="max-width: 100%" name="DescriptionShortTH" ng-model="DescriptionShortTH" />
+                    <div nc-template="common/input/form-group-with-label" nc-label="Short Description (ไทย)" nc-template-options-path="PromotionForm/ShortDescriptionTH" nc-template-form="ShortDescriptionTH">
+                        <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="300" style="max-width: 100%" name="ShortDescriptionTH" ng-model="formData.ShortDescriptionTH" />
                                 </textarea>
                     </div>
-                    <div nc-template="common/input/form-group-with-label" nc-label="Short Description (English)" nc-template-options-path="PromotionForm/DescriptionShortEN" nc-template-form="DescriptionShortEN">
-                        <textarea ng-pattern="/^[^<>ก-๙]+$/"  class="form-control" maxlength="300" style="max-width: 100%" name="DescriptionShortEN" ng-model="formData.DescriptionShortEN" />
+                    <div nc-template="common/input/form-group-with-label" nc-label="Short Description (English)" nc-template-options-path="PromotionForm/ShortDescriptionEN" nc-template-form="ShortDescriptionEN">
+                        <textarea ng-pattern="/^[^<>ก-๙]+$/" class="form-control" maxlength="300" style="max-width: 100%" name="ShortDescriptionEN" ng-model="formData.ShortDescriptionEN" />
                                     </textarea>
                     </div>
                 </div>
@@ -113,14 +121,14 @@
                         <div class="width-field-normal">
                             <div class="dropdown">
                                 <a class="dropdown-toggle" id="dropdown3" role="button" data-toggle="dropdown" data-target="#" href="#">
-                                    <input readonly style="background-color:white" type="text" placeholder="Select date and time when credit card will go offline" class="input-icon-calendar form-control" name="ExpireDate" ng-class="{'has-error': formData.ExpireDate <= formData.EffectiveDate }" value="{{ formData.ExpireDate | date: 'dd/MM/yy HH:mm' }}">
+                                    <input readonly style="background-color:white" type="text" placeholder="Select date and time when credit card will go offline" class="input-icon-calendar form-control" name="ExpiryDate" ng-class="{'has-error': formData.ExpiryDate <= formData.EffectiveDate }" value="{{ formData.ExpiryDate | date: 'dd/MM/yy HH:mm' }}">
                                 </a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                    <datetimepicker data-ng-model="formData.ExpireDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'hour' }" />
+                                    <datetimepicker data-ng-model="formData.ExpiryDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'hour' }" />
                                 </ul>
                             </div>
                             <div class="width-field-large">
-                                <span class="help-block color-red" ng-if="formData.ExpireDate <= formData.EffectiveDate">
+                                <span class="help-block color-red" ng-if="formData.ExpiryDate <= formData.EffectiveDate">
                                     <span>Effective date/time must come before expire date/time</span>
                                 </span>
                             </div>

@@ -1,26 +1,30 @@
-module.exports = function ($scope, $controller, OnTopCreditService, config, Brand, Shop, Product) {
+module.exports = function ($scope, $controller, OnTopCredit, config) {
     $scope.formData = {
-        EffectiveDate: null,
-        ExpireDate: null,
+        OnTopCreditCardId: null,
         NameTH: null,
         NameEN: null,
+        EffectiveDate: null,
+        ExpiryDate: null,
         BankNameTH: null,
         BankNameEN: null,
         PromotionCode: null,
-        Status: null,
-        Action: {
-            Type: null,
-            MinimumOrderAmount: 0,
-            MaximumAmount: 0
-        },
+        PaymentId: null,
+        Status:null ,
+        DiscountType: null,
+        DiscountValue: 0,
+        MinimumOrderAmount: 0,
+        MaximumDiscountAmount: 0,
+        FreeShipping: null,
         ShortDescriptionTH: null,
         ShortDescriptionEN: null,
         IconURLTH: null,
         IconURLEN: null,
-        Conditions: {
-            Card: [{ Id: null, Type: null, Value: null}]
-        }
+        Sequence: null,
+        Visibility: null,
+        CreateIP: null,
+        CardItemList: []
     };
+  
     /*
     '*CARD TYPES            *PREFIX           *WIDTH
     'American Express       34, 37            15
@@ -50,61 +54,77 @@ module.exports = function ($scope, $controller, OnTopCreditService, config, Bran
     { text: 'Brand', value: 'Brand' },
     { text: 'Global Category', value: 'GlobalCategory' },
     { text: 'Shop', value: 'Shop' },
-    { text: 'Email', value: 'Email'}],
-        Brands: [],
-        Products: [],
-        Shops: [],
-        datascard: []
+    { text: 'Email', value: 'Email'}]
     }
 
     // Item List Arrays
-    $scope.items = [];
-    $scope.checked = [];
-
+    $scope.items = [{
+        CreditCardTypeCode: null,
+        CreditCardTypeText: null,
+        CreditNumberFormat: null,
+        Digit: null,
+        Visibility: 1,
+        Status: true
+    }];
     // Add a Item to the list
     $scope.addItem = function () {
-        switch ($scope.formData.Conditions.Card[0].Id) {
+        switch ($scope.items.CreditCardTypeCode) {
             case "15A":
-                $scope.formData.Conditions.Card[0].Type = 'American Express - (15 digit)';
+                $scope.items.CreditCardTypeText = 'American Express - (15 digit)';
+                $scope.items.Digit = 15;
                 break;
             case "14D":
-                $scope.formData.Conditions.Card[0].Type = 'Diners Club - (14 digit)';
+                $scope.items.CreditCardTypeText = 'Diners Club - (14 digit)';
+                $scope.items.Digit = 14;
                 break;
             case "14C":
-                $scope.formData.Conditions.Card[0].Type = 'Carte Blanche - (14 digit)';
+                $scope.items.CreditCardTypeText = 'Carte Blanche - (14 digit)';
+                $scope.items.Digit = 14;
                 break;
             case "16D":
-                $scope.formData.Conditions.Card[0].Type = 'Discover - (16 digit)';
+                $scope.items.CreditCardTypeText = 'Discover - (16 digit)';
+                $scope.items.Digit = 16;
                 break;
             case "15E":
-                $scope.formData.Conditions.Card[0].Type = 'EnRoute - (15 digit)';
+                $scope.items.CreditCardTypeText = 'EnRoute - (15 digit)';
+                $scope.items.Digit = 15;
                 break;
             case "16J":
-                $scope.formData.Conditions.Card[0].Type = 'JCB - (16 digit)';
+                $scope.items.CreditCardTypeText = 'JCB - (16 digit)';
+                $scope.items.Digit = 16;
                 break;
             case "15J":
-                $scope.formData.Conditions.Card[0].Type = 'JCB - (15 digit)';
+                $scope.items.CreditCardTypeText = 'JCB - (15 digit)';
+                $scope.items.Digit = 15;
                 break;
             case "16M":
-                $scope.formData.Conditions.Card[0].Type = 'Master Card - (16 digit)';
+                $scope.items.CreditCardTypeText = 'Master Card - (16 digit)';
+                $scope.items.Digit = 16;
                 break;
             case "13V":
-                $scope.formData.Conditions.Card[0].Type = 'Visa - (13 digit)';
+                $scope.items.CreditCardTypeText = 'Visa - (13 digit)';
+                $scope.items.Digit = 13;
                 break;
             case "16V":
-                $scope.formData.Conditions.Card[0].Type = 'Visa - (16 digit)';
+                $scope.items.CreditCardTypeText = 'Visa - (16 digit)';
+                $scope.items.Digit = 16;
                 break;
         }
         $scope.items.push({
-            Id: $scope.formData.Conditions.Card[0].Id,
-            Type: $scope.formData.Conditions.Card[0].Type,
-            Value: $scope.formData.Conditions.Card[0].Value
+            CreditCardTypeCode: $scope.items.CreditCardTypeCode,
+            CreditCardTypeText: $scope.items.CreditCardTypeText,
+            CreditNumberFormat: $scope.items.CreditNumberFormat,
+            Digit: $scope.items.Digit,
+            Visibility: 1,
+            Status: true
         });
-
+        $scope.formData.CardItemList = $scope.items;
         // Clear input fields after push
-        $scope.formData.Conditions.Card[0].Id = "0";
-        $scope.formData.Conditions.Card[0].Type = "";
-        $scope.formData.Conditions.Card[0].Value = "";
+        $scope.items.CreditCardTypeCode = "0";
+        $scope.items.CreditCardTypeText = "";
+        $scope.items.CreditNumberFormat = "";
+
+        
     };
 
     //Remove
@@ -118,15 +138,16 @@ module.exports = function ($scope, $controller, OnTopCreditService, config, Bran
         return $scope.items.length;
     };
 
-   
+
 
     $controller('AbstractAddCtrl', {
         $scope: $scope,
         options: {
             id: 'OnTopCreditCardId',
-            url: '/admin/OnTopCreditCardId',
+            url: '/admin/ontopcredit',
             item: 'OnTopCreditCard',
-            service: OnTopCreditService,
+            service: OnTopCredit,
+            init: function(scope) {	},
             onLoad: function (scope, load) {
 
             },

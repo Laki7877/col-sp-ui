@@ -146,4 +146,19 @@ class AdminController extends Controller
 	{
         return View::render('admin_add_shop_type',  ['params' => json_encode_n($params), 'title' => 'Shop Type Detail']);
 	}
+
+
+    //On top credit
+	public static function listOntopcredit($params)
+	{
+		return View::render('admin_ontopcredit');
+	}
+	public static function addOntopcredit($params)
+	{
+        return View::render('admin_add_ontopcredit', ['title' => 'Add Admin On top credit card']);
+	}
+	public static function editOntopcredit($params)
+	{
+        return View::render('admin_add_ontopcredit',  ['params' => json_encode_n($params), 'title' => 'Admin On Top Credit Card Detail']);
+	}
 }
