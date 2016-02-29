@@ -95,7 +95,7 @@
                                     <ui-select ng-model="formData.Brand">
                                         <ui-select-match>
                                             <span ng-bind="$select.selected.BrandNameEn"></span>
-                                            <span ng-show="!$select.selected.BrandNameEn"><i class="fa fa-search"></i> Search Brand</span>
+                                            <span ng-show="!$select.selected.BrandNameEn"><span class="color-grey"><i class="fa fa-search"></i> Search Brand</span></span>
                                         </ui-select-match>
                                         <ui-select-choices ui-disable-choice="item.disabled" refresh-delay="500" refresh="refreshBrands($select.search)" repeat="item in (dataSet.Brands)  | filter : $select.search  track by item.BrandId">
                                             <span>{{ item.BrandNameEn }} </span>
@@ -235,7 +235,7 @@
 
                         <div nc-template="common/input/form-group-with-label" nc-label="Keywords" nc-template-form="addProductForm.Keywords" nc-template-options-path="addProductForm/Keywords">
                             <ui-select ng-model="formData.Keywords" name="Keywords" nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30" nc-tag-pattern="^[a-zA-Z0-9ก-๙\s\-]+$" multiple tagging tagging-tokens=",|ENTER" tagging-label="" nc-tag-field>
-                                <ui-select-match placeholder="Separate tags with comma (or enter)">
+                                <ui-select-match placeholder="Input keywords">
                                     {{$item}}
                                 </ui-select-match>
                                 <ui-select-choices repeat="item in formData.AttributeSet.AttributeSetTagMaps">

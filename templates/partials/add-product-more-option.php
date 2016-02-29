@@ -160,7 +160,8 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+    
+        <!-- <div class="row">
             <div class="col-xs-12">
                 <div class="form-section">
                     <div class="form-section-header">
@@ -201,5 +202,5 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 </div>
