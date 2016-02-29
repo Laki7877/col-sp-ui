@@ -5,32 +5,44 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
 <?php $this->start('page-body') ?>
   <div class="onboarding_wrapper">
     <div class="text-align-center welcome_text_big">Welcome to Central Seller Portal</div>
-    <div class="text-align-center welcome_text_small">Complete these task to launch your store</div>
+    <div class="text-align-center welcome_text_small">Complete these tasks to launch your store</div>
   </div>
 
-  <div> 
+  <div>
     <div class="onboarding_content">
-      <? $this->insert('components/forms/seller_task', 
-        ["field_header" => "Change password", 
+      <? $this->insert('components/forms/seller_task',
+        ["field_header" => "Change password",
          "field_text" => "In order for you to remember password easier",
          "button_text" => "Change Password",
          "image_name" => "icon-onboard-password"]) ?>
 
-      <? $this->insert('components/forms/seller_task', 
-        ["field_header" => "Add product", 
+       <? $this->insert('components/forms/seller_task',
+         ["field_header" => "Set your shop profile",
+          "field_text" => "Validate your shop name, logo, and etc.",
+          "button_text" => "Check Profile",
+          "image_name" => "icon-onboard-setting"]) ?>
+
+      <? $this->insert('components/forms/seller_task',
+        ["field_header" => "Add your own category",
+         "field_text" => "Build categories that match your products",
+         "button_text" => "Add Category",
+         "image_name" => "icon-onboard-category"]) ?>
+
+      <? $this->insert('components/forms/seller_task',
+        ["field_header" => "Add product",
          "field_text" => "Add at least one item to your store",
          "button_text" => "Add Product",
          "image_name" => "icon-onboard-product"]) ?>
 
-      <? $this->insert('components/forms/seller_task', 
-        ["field_header" => "Decorate your store", 
-         "field_text" => "Add banner and select theme",
+      <? $this->insert('components/forms/seller_task',
+        ["field_header" => "Decorate your store",
+         "field_text" => "Make your store unique by adding banner",
          "button_text" => "Set Appearance",
          "image_name" => "icon-onboard-decorate"]) ?>
 
-      <? $this->insert('components/forms/seller_task', 
-        ["field_header" => "Review & launch your store", 
-         "field_text" => "Time to go live!",
+      <? $this->insert('components/forms/seller_task',
+        ["field_header" => "Review & launch your store",
+         "field_text" => "Complete the tasks above to launch your store",
          "button_text" => "Launch",
          "image_name" => "icon-onboard-launch",
          "disble_status" => "disabled"]) ?>
@@ -39,13 +51,13 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
         <span class="complte_line_text">Completed</span>
       </div>
 
-      <? $this->insert('components/forms/seller_task', 
-        ["field_header" => "Set up your shop account", 
-         "field_text" => "We have set up your account.",
-         "button_text" => "View Profile",
+      <? $this->insert('components/forms/seller_task',
+        ["field_header" => "Set your shop profile",
+         "field_text" => "Validate your shop name, logo, and etc.",
+         "button_text" => "Check Profile",
          "image_name" => "icon-onboard-setting",
          "home_task_container_class" => "background_blue"]) ?>
-                   
+
     </div>
 
   </div>
