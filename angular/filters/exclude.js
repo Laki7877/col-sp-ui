@@ -11,7 +11,8 @@ module.exports = [function() {
         	for(var j = 0; j < other.length; j++){
                 var k = (elem == ((other[j] || null ) || null));
         		if(angular.isDefined(trackBy)){
-                    k = (elem[trackBy] == ((other[j] || {trackBy: null} )[trackBy] || null));
+                    var deepOther = _.get(other[j], trackBy, null);
+                    k = (_.get(elem, trackBy, null) == deepOther);
                 }
         		//matched atleast one, stop and throw away
         		if(k){

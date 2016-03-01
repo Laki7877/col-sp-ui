@@ -3,11 +3,7 @@
 'use strict';
 //App Start here
 var angular = require('angular');
-<<<<<<< HEAD
-var bulk = ({"controllers":({"abstractAdd":require("./controllers\\abstractAdd.js"),"abstractList":require("./controllers\\abstractList.js"),"adminAccount":require("./controllers\\adminAccount.js"),"adminAccountAdd":require("./controllers\\adminAccountAdd.js"),"adminAttribute":require("./controllers\\adminAttribute.js"),"adminAttributeAdd":require("./controllers\\adminAttributeAdd.js"),"adminAttributeSet":require("./controllers\\adminAttributeSet.js"),"adminAttributeSetAdd":require("./controllers\\adminAttributeSetAdd.js"),"adminBrand":require("./controllers\\adminBrand.js"),"adminBrandAdd":require("./controllers\\adminBrandAdd.js"),"adminCategory":require("./controllers\\adminCategory.js"),"adminCoupons":require("./controllers\\adminCoupons.js"),"adminProduct":require("./controllers\\adminProduct.js"),"adminProductApprovalList":require("./controllers\\adminProductApprovalList.js"),"adminProductList":require("./controllers\\adminProductList.js"),"adminRole":require("./controllers\\adminRole.js"),"adminRoleAdd":require("./controllers\\adminRoleAdd.js"),"adminShop":require("./controllers\\adminShop.js"),"adminShopAdd":require("./controllers\\adminShopAdd.js"),"adminShoptype":require("./controllers\\adminShoptype.js"),"adminShoptypeAdd":require("./controllers\\adminShoptypeAdd.js"),"buy1get1Add":require("./controllers\\buy1get1Add.js"),"buy1get1Import":require("./controllers\\buy1get1Import.js"),"buy1get1List":require("./controllers\\buy1get1List.js"),"localCategory":require("./controllers\\localCategory.js"),"login":require("./controllers\\login.js"),"productAdd":require("./controllers\\productAdd.js"),"productAddSelectCategory":require("./controllers\\productAddSelectCategory.js"),"productCollectionAdd":require("./controllers\\productCollectionAdd.js"),"productCollectionAddListItem":require("./controllers\\productCollectionAddListItem.js"),"productCollectionImport":require("./controllers\\productCollectionImport.js"),"productCollectionList":require("./controllers\\productCollectionList.js"),"productGroupCollectionList":require("./controllers\\productGroupCollectionList.js"),"productImageList":require("./controllers\\productImageList.js"),"productImageManagement":require("./controllers\\productImageManagement.js"),"productImport":require("./controllers\\productImport.js"),"productList":require("./controllers\\productList.js"),"productListLocalCategory":require("./controllers\\productListLocalCategory.js"),"productReview":require("./controllers\\productReview.js"),"root":require("./controllers\\root.js"),"sellerAccount":require("./controllers\\sellerAccount.js"),"sellerAccountAdd":require("./controllers\\sellerAccountAdd.js"),"sellerRole":require("./controllers\\sellerRole.js"),"sellerRoleAdd":require("./controllers\\sellerRoleAdd.js"),"test":require("./controllers\\test.js")}),"services":({"adminAccountService":require("./services\\adminAccountService.js"),"adminPermissionService":require("./services\\adminPermissionService.js"),"adminRoleService":require("./services\\adminRoleService.js"),"adminShopService":require("./services\\adminShopService.js"),"adminShoptypeService":require("./services\\adminShoptypeService.js"),"alert":require("./services\\alert.js"),"attribute":require("./services\\attribute.js"),"attributeService":require("./services\\attributeService.js"),"attributeSet":require("./services\\attributeSet.js"),"attributeSetService":require("./services\\attributeSetService.js"),"blocker":require("./services\\blocker.js"),"brand":require("./services\\brand.js"),"brandService":require("./services\\brandService.js"),"buy1get1":require("./services\\buy1get1.js"),"buy1get1Add":require("./services\\buy1get1Add.js"),"category":require("./services\\category.js"),"credential":require("./services\\credential.js"),"exceptionHandler":require("./services\\exceptionHandler.js"),"globalCategory":require("./services\\globalCategory.js"),"globalCategoryService":require("./services\\globalCategoryService.js"),"image":require("./services\\image.js"),"imageService":require("./services\\imageService.js"),"knownException":require("./services\\knownException.js"),"localCategory":require("./services\\localCategory.js"),"localCategoryService":require("./services\\localCategoryService.js"),"product":require("./services\\product.js"),"productAdd":require("./services\\productAdd.js"),"productCollection":require("./services\\productCollection.js"),"productCollectionAdd":require("./services\\productCollectionAdd.js"),"productCollectionAddListItem":require("./services\\productCollectionAddListItem.js"),"productReviewService":require("./services\\productReviewService.js"),"sellerAccountService":require("./services\\sellerAccountService.js"),"sellerPermissionService":require("./services\\sellerPermissionService.js"),"sellerRoleService":require("./services\\sellerRoleService.js"),"shop":require("./services\\shop.js"),"shopPermissionService":require("./services\\shopPermissionService.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngMatch":require("./directives\\ngMatch.js"),"ngMaxnumber":require("./directives\\ngMaxnumber.js"),"ngMinnumber":require("./directives\\ngMinnumber.js"),"ngPatternRestrict":require("./directives\\ngPatternRestrict.js"),"ngPermission":require("./directives\\ngPermission.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"popoverAny":require("./directives\\popoverAny.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"exclude":require("./filters\\exclude.js"),"excludeCategory":require("./filters\\excludeCategory.js"),"html":require("./filters\\html.js"),"leadingzero":require("./filters\\leadingzero.js"),"ordinal":require("./filters\\ordinal.js"),"slice":require("./filters\\slice.js"),"truncate":require("./filters\\truncate.js"),"truth":require("./filters\\truth.js")}),"template-options":({"addProductForm":require("./template-options\\addProductForm.js"),"searchForm":require("./template-options\\searchForm.js")})});
-=======
-var bulk = ({"controllers":(function () {var f = require("./controllers\\index.js");f["abstractAdd"]=require("./controllers\\abstractAdd.js");f["abstractAdvanceList"]=require("./controllers\\abstractAdvanceList.js");f["abstractList"]=require("./controllers\\abstractList.js");f["adminAccount"]=require("./controllers\\adminAccount.js");f["adminAccountAdd"]=require("./controllers\\adminAccountAdd.js");f["adminAttribute"]=require("./controllers\\adminAttribute.js");f["adminAttributeAdd"]=require("./controllers\\adminAttributeAdd.js");f["adminAttributeSet"]=require("./controllers\\adminAttributeSet.js");f["adminAttributeSetAdd"]=require("./controllers\\adminAttributeSetAdd.js");f["adminBrand"]=require("./controllers\\adminBrand.js");f["adminBrandAdd"]=require("./controllers\\adminBrandAdd.js");f["adminCategory"]=require("./controllers\\adminCategory.js");f["adminCoupon"]=require("./controllers\\adminCoupon.js");f["adminCouponAdd"]=require("./controllers\\adminCouponAdd.js");f["adminOnTopCreditAdd"]=require("./controllers\\adminOnTopCreditAdd.js");f["adminOnTopCreditList"]=require("./controllers\\adminOnTopCreditList.js");f["adminProductApprovalList"]=require("./controllers\\adminProductApprovalList.js");f["adminProductList"]=require("./controllers\\adminProductList.js");f["adminRole"]=require("./controllers\\adminRole.js");f["adminRoleAdd"]=require("./controllers\\adminRoleAdd.js");f["adminShop"]=require("./controllers\\adminShop.js");f["adminShopAdd"]=require("./controllers\\adminShopAdd.js");f["adminShoptype"]=require("./controllers\\adminShoptype.js");f["adminShoptypeAdd"]=require("./controllers\\adminShoptypeAdd.js");f["buy1get1List"]=require("./controllers\\buy1get1List.js");f["index"]=require("./controllers\\index.js");f["localCategory"]=require("./controllers\\localCategory.js");f["login"]=require("./controllers\\login.js");f["productAdd"]=require("./controllers\\productAdd.js");f["productAddSelectCategory"]=require("./controllers\\productAddSelectCategory.js");f["productCollectionAdd"]=require("./controllers\\productCollectionAdd.js");f["productCollectionImport"]=require("./controllers\\productCollectionImport.js");f["productCollectionList"]=require("./controllers\\productCollectionList.js");f["productExport"]=require("./controllers\\productExport.js");f["productImageList"]=require("./controllers\\productImageList.js");f["productImageManagement"]=require("./controllers\\productImageManagement.js");f["productImport"]=require("./controllers\\productImport.js");f["productList"]=require("./controllers\\productList.js");f["productListLocalCategory"]=require("./controllers\\productListLocalCategory.js");f["productReview"]=require("./controllers\\productReview.js");f["root"]=require("./controllers\\root.js");f["sellerAccount"]=require("./controllers\\sellerAccount.js");f["sellerAccountAdd"]=require("./controllers\\sellerAccountAdd.js");f["sellerInventoryList"]=require("./controllers\\sellerInventoryList.js");f["sellerRole"]=require("./controllers\\sellerRole.js");f["sellerRoleAdd"]=require("./controllers\\sellerRoleAdd.js");f["sellerShopSetting"]=require("./controllers\\sellerShopSetting.js");f["test"]=require("./controllers\\test.js");return f;})(),"services":({"OnTopCredit":require("./services\\OnTopCredit.js"),"OnTopCreditService":require("./services\\OnTopCreditService.js"),"adminAccountService":require("./services\\adminAccountService.js"),"adminPermissionService":require("./services\\adminPermissionService.js"),"adminRoleService":require("./services\\adminRoleService.js"),"adminShopService":require("./services\\adminShopService.js"),"adminShoptypeService":require("./services\\adminShoptypeService.js"),"alert":require("./services\\alert.js"),"attribute":require("./services\\attribute.js"),"attributeService":require("./services\\attributeService.js"),"attributeSet":require("./services\\attributeSet.js"),"attributeSetService":require("./services\\attributeSetService.js"),"blocker":require("./services\\blocker.js"),"brand":require("./services\\brand.js"),"brandService":require("./services\\brandService.js"),"category":require("./services\\category.js"),"coupon":require("./services\\coupon.js"),"credential":require("./services\\credential.js"),"exceptionHandler":require("./services\\exceptionHandler.js"),"fileService":require("./services\\fileService.js"),"globalCategory":require("./services\\globalCategory.js"),"globalCategoryService":require("./services\\globalCategoryService.js"),"image":require("./services\\image.js"),"imageService":require("./services\\imageService.js"),"inventoryService":require("./services\\inventoryService.js"),"knownException":require("./services\\knownException.js"),"localCategory":require("./services\\localCategory.js"),"localCategoryService":require("./services\\localCategoryService.js"),"product":require("./services\\product.js"),"productAdd":require("./services\\productAdd.js"),"productCollection":require("./services\\productCollection.js"),"productCollectionAdd":require("./services\\productCollectionAdd.js"),"productReviewService":require("./services\\productReviewService.js"),"sellerAccountService":require("./services\\sellerAccountService.js"),"sellerPermissionService":require("./services\\sellerPermissionService.js"),"sellerRoleService":require("./services\\sellerRoleService.js"),"shop":require("./services\\shop.js"),"shopPermissionService":require("./services\\shopPermissionService.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDateBefore":require("./directives\\ngDateBefore.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngMatch":require("./directives\\ngMatch.js"),"ngMaxnumber":require("./directives\\ngMaxnumber.js"),"ngMinnumber":require("./directives\\ngMinnumber.js"),"ngPatternRestrict":require("./directives\\ngPatternRestrict.js"),"ngPermission":require("./directives\\ngPermission.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"popoverAny":require("./directives\\popoverAny.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"exclude":require("./filters\\exclude.js"),"excludeCategory":require("./filters\\excludeCategory.js"),"html":require("./filters\\html.js"),"importGuidelineExample":require("./filters\\importGuidelineExample.js"),"leadingzero":require("./filters\\leadingzero.js"),"ordinal":require("./filters\\ordinal.js"),"slice":require("./filters\\slice.js"),"truncate":require("./filters\\truncate.js"),"truth":require("./filters\\truth.js"),"variantValue":require("./filters\\variantValue.js")}),"template-options":({"PromotionForm":require("./template-options\\PromotionForm.js"),"addProductForm":require("./template-options\\addProductForm.js"),"adminShopAccountForm":require("./template-options\\adminShopAccountForm.js"),"couponForm":require("./template-options\\couponForm.js"),"productExport":require("./template-options\\productExport.js"),"productImport":require("./template-options\\productImport.js"),"searchForm":require("./template-options\\searchForm.js"),"shopSettingForm":require("./template-options\\shopSettingForm.js")})});
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+var bulk = ({"controllers":(function () {var f = require("./controllers/index.js");f["abstractAdd"]=require("./controllers/abstractAdd.js");f["abstractAdvanceList"]=require("./controllers/abstractAdvanceList.js");f["abstractList"]=require("./controllers/abstractList.js");f["adminAccount"]=require("./controllers/adminAccount.js");f["adminAccountAdd"]=require("./controllers/adminAccountAdd.js");f["adminAttribute"]=require("./controllers/adminAttribute.js");f["adminAttributeAdd"]=require("./controllers/adminAttributeAdd.js");f["adminAttributeSet"]=require("./controllers/adminAttributeSet.js");f["adminAttributeSetAdd"]=require("./controllers/adminAttributeSetAdd.js");f["adminBrand"]=require("./controllers/adminBrand.js");f["adminBrandAdd"]=require("./controllers/adminBrandAdd.js");f["adminCategory"]=require("./controllers/adminCategory.js");f["adminCoupon"]=require("./controllers/adminCoupon.js");f["adminCouponAdd"]=require("./controllers/adminCouponAdd.js");f["adminProductApprovalList"]=require("./controllers/adminProductApprovalList.js");f["adminProductList"]=require("./controllers/adminProductList.js");f["adminRole"]=require("./controllers/adminRole.js");f["adminRoleAdd"]=require("./controllers/adminRoleAdd.js");f["adminShop"]=require("./controllers/adminShop.js");f["adminShopAdd"]=require("./controllers/adminShopAdd.js");f["adminShoptype"]=require("./controllers/adminShoptype.js");f["adminShoptypeAdd"]=require("./controllers/adminShoptypeAdd.js");f["index"]=require("./controllers/index.js");f["localCategory"]=require("./controllers/localCategory.js");f["login"]=require("./controllers/login.js");f["productAdd"]=require("./controllers/productAdd.js");f["productAddSelectCategory"]=require("./controllers/productAddSelectCategory.js");f["productExport"]=require("./controllers/productExport.js");f["productImageList"]=require("./controllers/productImageList.js");f["productImageManagement"]=require("./controllers/productImageManagement.js");f["productImport"]=require("./controllers/productImport.js");f["productList"]=require("./controllers/productList.js");f["productListLocalCategory"]=require("./controllers/productListLocalCategory.js");f["productReview"]=require("./controllers/productReview.js");f["root"]=require("./controllers/root.js");f["sellerAccount"]=require("./controllers/sellerAccount.js");f["sellerAccountAdd"]=require("./controllers/sellerAccountAdd.js");f["sellerInventoryList"]=require("./controllers/sellerInventoryList.js");f["sellerRole"]=require("./controllers/sellerRole.js");f["sellerRoleAdd"]=require("./controllers/sellerRoleAdd.js");f["sellerShopSetting"]=require("./controllers/sellerShopSetting.js");f["test"]=require("./controllers/test.js");return f;})(),"services":({"adminAccountService":require("./services/adminAccountService.js"),"adminPermissionService":require("./services/adminPermissionService.js"),"adminRoleService":require("./services/adminRoleService.js"),"adminShopService":require("./services/adminShopService.js"),"adminShoptypeService":require("./services/adminShoptypeService.js"),"alert":require("./services/alert.js"),"attribute":require("./services/attribute.js"),"attributeService":require("./services/attributeService.js"),"attributeSet":require("./services/attributeSet.js"),"attributeSetService":require("./services/attributeSetService.js"),"blocker":require("./services/blocker.js"),"brand":require("./services/brand.js"),"brandService":require("./services/brandService.js"),"category":require("./services/category.js"),"coupon":require("./services/coupon.js"),"credential":require("./services/credential.js"),"exceptionHandler":require("./services/exceptionHandler.js"),"fileService":require("./services/fileService.js"),"globalCategory":require("./services/globalCategory.js"),"globalCategoryService":require("./services/globalCategoryService.js"),"image":require("./services/image.js"),"imageService":require("./services/imageService.js"),"inventoryService":require("./services/inventoryService.js"),"knownException":require("./services/knownException.js"),"localCategory":require("./services/localCategory.js"),"localCategoryService":require("./services/localCategoryService.js"),"product":require("./services/product.js"),"productAdd":require("./services/productAdd.js"),"productReviewService":require("./services/productReviewService.js"),"sellerAccountService":require("./services/sellerAccountService.js"),"sellerPermissionService":require("./services/sellerPermissionService.js"),"sellerRoleService":require("./services/sellerRoleService.js"),"shop":require("./services/shop.js"),"shopPermissionService":require("./services/shopPermissionService.js")}),"helpers":({"base64":require("./helpers/base64.js"),"common":require("./helpers/common.js"),"storage":require("./helpers/storage.js"),"util":require("./helpers/util.js"),"variantPair":require("./helpers/variantPair.js")}),"directives":({"ncTradableSelect":require("./directives/ncTradableSelect.js"),"ngCkeditor":require("./directives/ngCkeditor.js"),"ngDateBefore":require("./directives/ngDateBefore.js"),"ngDelegate":require("./directives/ngDelegate.js"),"ngMatch":require("./directives/ngMatch.js"),"ngMaxnumber":require("./directives/ngMaxnumber.js"),"ngMinnumber":require("./directives/ngMinnumber.js"),"ngPatternRestrict":require("./directives/ngPatternRestrict.js"),"ngPermission":require("./directives/ngPermission.js"),"ngSlideToggle":require("./directives/ngSlideToggle.js"),"ngTemplate":require("./directives/ngTemplate.js"),"popoverAny":require("./directives/popoverAny.js")}),"filters":({"capitalize":require("./filters/capitalize.js"),"exclude":require("./filters/exclude.js"),"excludeCategory":require("./filters/excludeCategory.js"),"html":require("./filters/html.js"),"importGuidelineExample":require("./filters/importGuidelineExample.js"),"leadingzero":require("./filters/leadingzero.js"),"ordinal":require("./filters/ordinal.js"),"slice":require("./filters/slice.js"),"truncate":require("./filters/truncate.js"),"truth":require("./filters/truth.js"),"variantValue":require("./filters/variantValue.js")}),"template-options":({"addProductForm":require("./template-options/addProductForm.js"),"adminShopAccountForm":require("./template-options/adminShopAccountForm.js"),"couponForm":require("./template-options/couponForm.js"),"productExport":require("./template-options/productExport.js"),"productImport":require("./template-options/productImport.js"),"searchForm":require("./template-options/searchForm.js"),"shopSettingForm":require("./template-options/shopSettingForm.js")})});
 var config = require('./config');
 var route = require('./route');
 var template = require('./template');
@@ -41,105 +37,24 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
 ])
 
 //App config
-
-.config(['$uibTooltipProvider', 'uiSelectConfig', '$ncPaginationProvider', '$ncAlertProvider', 
-    function ($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
-
-	//Default close tooltip when click again
-	$tooltipProvider.setTriggers({
-    'clickanystart': 'clickanyend'
-	});
-	$tooltipProvider.options({
-		trigger: 'clickanystart'
-	});
+.config(['uiSelectConfig', '$ncPaginationProvider', '$ncAlertProvider',
+  function(uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
     $ncPaginationProvider.paginationSizes = [10, 20, 50, 100];
     uiSelectConfig.taggingTokens = '[ENTER|,]';
-
-    } ])
-
+  }
+])
 
 //App template cache load
 .run(template)
 
 //App init
-.run(['$rootScope', 'storage', '$window', '$location', 'Credential', function($rootScope, storage, $window, $location, Credential) {
+/* Moved to root.js */
 
 
-    //Create global logout function
-    $rootScope.logout = function() {
-      if ($rootScope.Imposter) {
-        return Credential.logoutAs().then(function(R) {
-          //return to normal flow
-          if (R.User.IsAdmin) {
-            $window.location.href = "/admin";
-          } else {
-            $window.location.href = "/products";
-          }
-        }, function() {
-          alert("Fetal error while logging out.");
-        });
-      }
-
-      Credential.logout();
-      $window.location.href = "/login"
-    };
-
-
-    //Create generic form validator functions
-    //This is now inside ncTemplate
-    $rootScope.isInvalid = function(form) {
-      if (angular.isDefined(form) &&
-        angular.isDefined(form.$invalid) &&
-        angular.isDefined(form.$dirty)) {
-        return form.$invalid && (form.$dirty || form.$$parentForm.$submitted);
-      }
-      return false;
-    };
-
-
-    //Prevent image dragdrop on other elements
-    $window.addEventListener("dragover", function(e) {
-      e = e || event;
-      e.preventDefault();
-    }, false);
-    $window.addEventListener("drop", function(e) {
-      e = e || event;
-      e.preventDefault();
-    }, false);
-
-    //Match route with
-    $rootScope.isUrl = function(url) {
-      if (url.length > 0) {
-        var path = $window.location.pathname;
-        if (path == url) {
-          return true;
-        } else if (path.startsWith(url) && path.charAt(url.length) != '/') {
-          return false;
-        } else {
-          return path.startsWith(url);
-        }
-      } else {
-        return false;
-      }
-    };
-
-    $rootScope.activeParentUrl = function(url, sub) {
-      return {
-        'forced-active': $rootScope.isUrl(url)
-      };
-    };
-
-    //For active class url
-    $rootScope.activeUrl = function(url) {
-      return {
-        'active': $window.location.pathname == url
-      };
-    };
-  }])
-  //Configuration
-  .value('config', config)
+//Configuration
+.value('config', config)
 .value('route', route)
-  .value('$templateOptionsCache', bulk['template-options'])
+.value('$templateOptionsCache', bulk['template-options'])
 
 //Helpers
 .factory('common', helpers.common)
@@ -182,14 +97,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
   .factory('$exceptionHandler', services.exceptionHandler)
   .factory('KnownException', services.knownException)
   .factory('$productAdd', services.productAdd)
-.factory('Collection', services.productCollection)
-.factory('$CollectionAdd', services.productCollectionAdd)
-.factory('$CollectionAddListItem', services.productCollectionAddListItem)
-.factory('Image', services.image)
-.factory('Buy1Get1', services.buy1get1)
-.factory('$Buy1Get1Add', services.buy1get1Add)
-.factory('OnTopCreditService', services.OnTopCreditService)
-.factory('OnTopCredit', services.OnTopCredit)
 
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)
@@ -262,33 +169,13 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
   .controller('AbstractListCtrl', controllers.abstractList)
   .controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
   .controller('AbstractAddCtrl', controllers.abstractAdd)
-.controller('ProductCollectionListCtrl', controllers.productCollectionList)
-.controller('ProductCollectionAddCtrl', controllers.productCollectionAdd)
-.controller('ProductCollectionAddListItemCtrl', controllers.productCollectionAddListItem)
-.controller('ProductCollectionImportCtrl', controllers.productCollectionImport)
-.controller('ProductGroupCollectionListCtrl', controllers.productGroupCollectionList)
-.controller('AdminCouponsCtrl', controllers.adminCoupons)
-.controller('Buy1Get1ListCtrl', controllers.buy1get1List)
-.controller('Buy1Get1AddCtrl', controllers.buy1get1Add)
-.controller('Buy1Get1ImportCtrl', controllers.buy1get1Import)
-
-.controller('AdminOnTopCreditCtrl', controllers.adminOnTopCreditAdd)
-.controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
 
 .controller('TestCtrl', controllers.test)
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-<<<<<<< HEAD
-},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractList.js":4,"./controllers\\adminAccount.js":5,"./controllers\\adminAccountAdd.js":6,"./controllers\\adminAttribute.js":7,"./controllers\\adminAttributeAdd.js":8,"./controllers\\adminAttributeSet.js":9,"./controllers\\adminAttributeSetAdd.js":10,"./controllers\\adminBrand.js":11,"./controllers\\adminBrandAdd.js":12,"./controllers\\adminCategory.js":13,"./controllers\\adminCoupons.js":14,"./controllers\\adminProduct.js":15,"./controllers\\adminProductApprovalList.js":16,"./controllers\\adminProductList.js":17,"./controllers\\adminRole.js":18,"./controllers\\adminRoleAdd.js":19,"./controllers\\adminShop.js":20,"./controllers\\adminShopAdd.js":21,"./controllers\\adminShoptype.js":22,"./controllers\\adminShoptypeAdd.js":23,"./controllers\\buy1get1Add.js":24,"./controllers\\buy1get1Import.js":25,"./controllers\\buy1get1List.js":26,"./controllers\\localCategory.js":27,"./controllers\\login.js":28,"./controllers\\productAdd.js":29,"./controllers\\productAddSelectCategory.js":30,"./controllers\\productCollectionAdd.js":31,"./controllers\\productCollectionAddListItem.js":32,"./controllers\\productCollectionImport.js":33,"./controllers\\productCollectionList.js":34,"./controllers\\productGroupCollectionList.js":35,"./controllers\\productImageList.js":36,"./controllers\\productImageManagement.js":37,"./controllers\\productImport.js":38,"./controllers\\productList.js":39,"./controllers\\productListLocalCategory.js":40,"./controllers\\productReview.js":41,"./controllers\\root.js":42,"./controllers\\sellerAccount.js":43,"./controllers\\sellerAccountAdd.js":44,"./controllers\\sellerRole.js":45,"./controllers\\sellerRoleAdd.js":46,"./controllers\\test.js":47,"./directives\\ncTradableSelect.js":48,"./directives\\ngCkeditor.js":49,"./directives\\ngDelegate.js":50,"./directives\\ngMatch.js":51,"./directives\\ngMaxnumber.js":52,"./directives\\ngMinnumber.js":53,"./directives\\ngPatternRestrict.js":54,"./directives\\ngPermission.js":55,"./directives\\ngSlideToggle.js":56,"./directives\\ngTemplate.js":57,"./directives\\popoverAny.js":58,"./filters\\capitalize.js":59,"./filters\\exclude.js":60,"./filters\\excludeCategory.js":61,"./filters\\html.js":62,"./filters\\leadingzero.js":63,"./filters\\ordinal.js":64,"./filters\\slice.js":65,"./filters\\truncate.js":66,"./filters\\truth.js":67,"./helpers\\base64.js":68,"./helpers\\common.js":69,"./helpers\\storage.js":70,"./helpers\\util.js":71,"./helpers\\variantPair.js":72,"./nc":94,"./services\\adminAccountService.js":96,"./services\\adminPermissionService.js":97,"./services\\adminRoleService.js":98,"./services\\adminShopService.js":99,"./services\\adminShoptypeService.js":100,"./services\\alert.js":101,"./services\\attribute.js":102,"./services\\attributeService.js":103,"./services\\attributeSet.js":104,"./services\\attributeSetService.js":105,"./services\\blocker.js":106,"./services\\brand.js":107,"./services\\brandService.js":108,"./services\\buy1get1.js":109,"./services\\buy1get1Add.js":110,"./services\\category.js":111,"./services\\credential.js":112,"./services\\exceptionHandler.js":113,"./services\\globalCategory.js":114,"./services\\globalCategoryService.js":115,"./services\\image.js":116,"./services\\imageService.js":117,"./services\\knownException.js":118,"./services\\localCategory.js":119,"./services\\localCategoryService.js":120,"./services\\product.js":121,"./services\\productAdd.js":122,"./services\\productCollection.js":123,"./services\\productCollectionAdd.js":124,"./services\\productCollectionAddListItem.js":125,"./services\\productReviewService.js":126,"./services\\sellerAccountService.js":127,"./services\\sellerPermissionService.js":128,"./services\\sellerRoleService.js":129,"./services\\shop.js":130,"./services\\shopPermissionService.js":131,"./template":134,"./template-options\\addProductForm.js":132,"./template-options\\searchForm.js":133,"angular":150,"angular-animate":136,"angular-base64":137,"angular-bootstrap-datetimepicker":139,"angular-file-upload":140,"angular-sanitize":142,"angular-scroll":144,"angular-ui-bootstrap":145,"angular-ui-tree":148,"lodash":152,"ui-select/dist/select.js":153}],2:[function(require,module,exports){
-=======
-},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractAdvanceList.js":4,"./controllers\\abstractList.js":5,"./controllers\\adminAccount.js":6,"./controllers\\adminAccountAdd.js":7,"./controllers\\adminAttribute.js":8,"./controllers\\adminAttributeAdd.js":9,"./controllers\\adminAttributeSet.js":10,"./controllers\\adminAttributeSetAdd.js":11,"./controllers\\adminBrand.js":12,"./controllers\\adminBrandAdd.js":13,"./controllers\\adminCategory.js":14,"./controllers\\adminCoupon.js":15,"./controllers\\adminCouponAdd.js":16,"./controllers\\adminOnTopCreditAdd.js":17,"./controllers\\adminOnTopCreditList.js":18,"./controllers\\adminProductApprovalList.js":19,"./controllers\\adminProductList.js":20,"./controllers\\adminRole.js":21,"./controllers\\adminRoleAdd.js":22,"./controllers\\adminShop.js":23,"./controllers\\adminShopAdd.js":24,"./controllers\\adminShoptype.js":25,"./controllers\\adminShoptypeAdd.js":26,"./controllers\\buy1get1List.js":27,"./controllers\\index.js":28,"./controllers\\localCategory.js":29,"./controllers\\login.js":30,"./controllers\\productAdd.js":31,"./controllers\\productAddSelectCategory.js":32,"./controllers\\productCollectionAdd.js":33,"./controllers\\productCollectionImport.js":34,"./controllers\\productCollectionList.js":35,"./controllers\\productExport.js":36,"./controllers\\productImageList.js":37,"./controllers\\productImageManagement.js":38,"./controllers\\productImport.js":39,"./controllers\\productList.js":40,"./controllers\\productListLocalCategory.js":41,"./controllers\\productReview.js":42,"./controllers\\root.js":43,"./controllers\\sellerAccount.js":44,"./controllers\\sellerAccountAdd.js":45,"./controllers\\sellerInventoryList.js":46,"./controllers\\sellerRole.js":47,"./controllers\\sellerRoleAdd.js":48,"./controllers\\sellerShopSetting.js":49,"./controllers\\test.js":50,"./directives\\ncTradableSelect.js":51,"./directives\\ngCkeditor.js":52,"./directives\\ngDateBefore.js":53,"./directives\\ngDelegate.js":54,"./directives\\ngMatch.js":55,"./directives\\ngMaxnumber.js":56,"./directives\\ngMinnumber.js":57,"./directives\\ngPatternRestrict.js":58,"./directives\\ngPermission.js":59,"./directives\\ngSlideToggle.js":60,"./directives\\ngTemplate.js":61,"./directives\\popoverAny.js":62,"./filters\\capitalize.js":63,"./filters\\exclude.js":64,"./filters\\excludeCategory.js":65,"./filters\\html.js":66,"./filters\\importGuidelineExample.js":67,"./filters\\leadingzero.js":68,"./filters\\ordinal.js":69,"./filters\\slice.js":70,"./filters\\truncate.js":71,"./filters\\truth.js":72,"./filters\\variantValue.js":73,"./helpers\\base64.js":74,"./helpers\\common.js":75,"./helpers\\storage.js":76,"./helpers\\util.js":77,"./helpers\\variantPair.js":78,"./nc":105,"./route":107,"./services\\OnTopCredit.js":108,"./services\\OnTopCreditService.js":109,"./services\\adminAccountService.js":110,"./services\\adminPermissionService.js":111,"./services\\adminRoleService.js":112,"./services\\adminShopService.js":113,"./services\\adminShoptypeService.js":114,"./services\\alert.js":115,"./services\\attribute.js":116,"./services\\attributeService.js":117,"./services\\attributeSet.js":118,"./services\\attributeSetService.js":119,"./services\\blocker.js":120,"./services\\brand.js":121,"./services\\brandService.js":122,"./services\\category.js":123,"./services\\coupon.js":124,"./services\\credential.js":125,"./services\\exceptionHandler.js":126,"./services\\fileService.js":127,"./services\\globalCategory.js":128,"./services\\globalCategoryService.js":129,"./services\\image.js":130,"./services\\imageService.js":131,"./services\\inventoryService.js":132,"./services\\knownException.js":133,"./services\\localCategory.js":134,"./services\\localCategoryService.js":135,"./services\\product.js":136,"./services\\productAdd.js":137,"./services\\productCollection.js":138,"./services\\productCollectionAdd.js":139,"./services\\productReviewService.js":140,"./services\\sellerAccountService.js":141,"./services\\sellerPermissionService.js":142,"./services\\sellerRoleService.js":143,"./services\\shop.js":144,"./services\\shopPermissionService.js":145,"./template":154,"./template-options\\PromotionForm.js":146,"./template-options\\addProductForm.js":147,"./template-options\\adminShopAccountForm.js":148,"./template-options\\couponForm.js":149,"./template-options\\productExport.js":150,"./template-options\\productImport.js":151,"./template-options\\searchForm.js":152,"./template-options\\shopSettingForm.js":153,"angular":170,"angular-animate":156,"angular-base64":157,"angular-bootstrap-datetimepicker":158,"angular-clipboard":159,"angular-file-upload":160,"angular-sanitize":162,"angular-scroll":164,"angular-ui-bootstrap":166,"angular-ui-tree":168,"lodash":172,"ui-select/dist/select.js":174}],2:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{"./config":2,"./controllers/abstractAdd.js":3,"./controllers/abstractAdvanceList.js":4,"./controllers/abstractList.js":5,"./controllers/adminAccount.js":6,"./controllers/adminAccountAdd.js":7,"./controllers/adminAttribute.js":8,"./controllers/adminAttributeAdd.js":9,"./controllers/adminAttributeSet.js":10,"./controllers/adminAttributeSetAdd.js":11,"./controllers/adminBrand.js":12,"./controllers/adminBrandAdd.js":13,"./controllers/adminCategory.js":14,"./controllers/adminCoupon.js":15,"./controllers/adminCouponAdd.js":16,"./controllers/adminProductApprovalList.js":17,"./controllers/adminProductList.js":18,"./controllers/adminRole.js":19,"./controllers/adminRoleAdd.js":20,"./controllers/adminShop.js":21,"./controllers/adminShopAdd.js":22,"./controllers/adminShoptype.js":23,"./controllers/adminShoptypeAdd.js":24,"./controllers/index.js":25,"./controllers/localCategory.js":26,"./controllers/login.js":27,"./controllers/productAdd.js":28,"./controllers/productAddSelectCategory.js":29,"./controllers/productExport.js":30,"./controllers/productImageList.js":31,"./controllers/productImageManagement.js":32,"./controllers/productImport.js":33,"./controllers/productList.js":34,"./controllers/productListLocalCategory.js":35,"./controllers/productReview.js":36,"./controllers/root.js":37,"./controllers/sellerAccount.js":38,"./controllers/sellerAccountAdd.js":39,"./controllers/sellerInventoryList.js":40,"./controllers/sellerRole.js":41,"./controllers/sellerRoleAdd.js":42,"./controllers/sellerShopSetting.js":43,"./controllers/test.js":44,"./directives/ncTradableSelect.js":45,"./directives/ngCkeditor.js":46,"./directives/ngDateBefore.js":47,"./directives/ngDelegate.js":48,"./directives/ngMatch.js":49,"./directives/ngMaxnumber.js":50,"./directives/ngMinnumber.js":51,"./directives/ngPatternRestrict.js":52,"./directives/ngPermission.js":53,"./directives/ngSlideToggle.js":54,"./directives/ngTemplate.js":55,"./directives/popoverAny.js":56,"./filters/capitalize.js":57,"./filters/exclude.js":58,"./filters/excludeCategory.js":59,"./filters/html.js":60,"./filters/importGuidelineExample.js":61,"./filters/leadingzero.js":62,"./filters/ordinal.js":63,"./filters/slice.js":64,"./filters/truncate.js":65,"./filters/truth.js":66,"./filters/variantValue.js":67,"./helpers/base64.js":68,"./helpers/common.js":69,"./helpers/storage.js":70,"./helpers/util.js":71,"./helpers/variantPair.js":72,"./nc":99,"./route":101,"./services/adminAccountService.js":102,"./services/adminPermissionService.js":103,"./services/adminRoleService.js":104,"./services/adminShopService.js":105,"./services/adminShoptypeService.js":106,"./services/alert.js":107,"./services/attribute.js":108,"./services/attributeService.js":109,"./services/attributeSet.js":110,"./services/attributeSetService.js":111,"./services/blocker.js":112,"./services/brand.js":113,"./services/brandService.js":114,"./services/category.js":115,"./services/coupon.js":116,"./services/credential.js":117,"./services/exceptionHandler.js":118,"./services/fileService.js":119,"./services/globalCategory.js":120,"./services/globalCategoryService.js":121,"./services/image.js":122,"./services/imageService.js":123,"./services/inventoryService.js":124,"./services/knownException.js":125,"./services/localCategory.js":126,"./services/localCategoryService.js":127,"./services/product.js":128,"./services/productAdd.js":129,"./services/productReviewService.js":130,"./services/sellerAccountService.js":131,"./services/sellerPermissionService.js":132,"./services/sellerRoleService.js":133,"./services/shop.js":134,"./services/shopPermissionService.js":135,"./template":143,"./template-options/addProductForm.js":136,"./template-options/adminShopAccountForm.js":137,"./template-options/couponForm.js":138,"./template-options/productExport.js":139,"./template-options/productImport.js":140,"./template-options/searchForm.js":141,"./template-options/shopSettingForm.js":142,"angular":159,"angular-animate":145,"angular-base64":146,"angular-bootstrap-datetimepicker":147,"angular-clipboard":148,"angular-file-upload":149,"angular-sanitize":151,"angular-scroll":153,"angular-ui-bootstrap":155,"angular-ui-tree":157,"lodash":161,"ui-select/dist/select.js":163}],2:[function(require,module,exports){
 module.exports = {
-	//baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/',
-	//REST_SERVICE_BASE_URL: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api',
-    baseUrl: 'http://localhost:58127/api/',
-	REST_SERVICE_BASE_URL: 'http://localhost:58127/api/',
-	//REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
+	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
     HANDLE_EXCEPTION: false,
     MAX_IMAGE_UPLOAD_SIZE: 5242880,
@@ -429,7 +316,7 @@ module.exports = {
 			name: 'Not Approved',
 			value: 'WA',
 			color: 'color-grey'
-		}, 
+		},
 		{
 			name: 'Approved',
 			value: 'AP',
@@ -475,7 +362,7 @@ module.exports = {
 	],
 	CATEGORY_SYNC_DELAY: 1200, //Category wait for x millisecond before actually saving
 	DEFAULT_SUCCESS_MESSAGE: 'Your changes have been saved successfully.',
-	DEFAULT_ERROR_MESSAGE: 'Unable to save because required fields are missing or incorrect.', 
+	DEFAULT_ERROR_MESSAGE: 'Unable to save because required fields are missing or incorrect.',
 	TITLE: {
 		CREATE: 'Add {{content}}',
 		DETAIL: '{{content}} Detail'
@@ -966,11 +853,7 @@ module.exports = ["$scope", "$controller", "AttributeService", "config", "util",
 		}
 	}, true);
 }];
-<<<<<<< HEAD
-},{"angular":150}],9:[function(require,module,exports){
-=======
-},{"angular":170}],10:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{"angular":159}],10:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AttributeSetService", "util", "config", function($scope, $controller, AttributeSetService, util, config) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -1040,7 +923,7 @@ module.exports = ["$scope", "$controller", "AttributeSetService", "AttributeServ
 }]
 },{}],12:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "BrandService", "config", function($scope, $controller, BrandService, config) {
-	'ngInject';	
+	'ngInject';
 	//Inherit from parent
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
@@ -1053,6 +936,7 @@ module.exports = ["$scope", "$controller", "BrandService", "config", function($s
 		}
 	});
 }]
+
 },{}],13:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "BrandService", "ImageService", function($scope, $controller, BrandService, ImageService) {
 	'ngInject';
@@ -1110,6 +994,7 @@ module.exports = ["$scope", "$controller", "BrandService", "ImageService", funct
 		}
 	});
 }];
+
 },{}],14:[function(require,module,exports){
 
 module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Category", "GlobalCategoryService", "AttributeSetService", "NcAlert", "util", "config", function($scope, $rootScope, $uibModal, $timeout, common, Category, GlobalCategoryService, AttributeSetService, NcAlert, util, config){
@@ -1494,191 +1379,6 @@ module.exports = function($scope, $controller, CouponService, config, Brand, Sho
 };
 
 },{}],17:[function(require,module,exports){
-module.exports = function ($scope, $controller, OnTopCredit, config) {
-    $scope.formData = {
-        OnTopCreditCardId: null,
-        NameTH: null,
-        NameEN: null,
-        EffectiveDate: null,
-        ExpiryDate: null,
-        BankNameTH: null,
-        BankNameEN: null,
-        PromotionCode: null,
-        PaymentId: null,
-        Status:null ,
-        DiscountType: null,
-        DiscountValue: 0,
-        MinimumOrderAmount: 0,
-        MaximumDiscountAmount: 0,
-        FreeShipping: null,
-        ShortDescriptionTH: null,
-        ShortDescriptionEN: null,
-        IconURLTH: null,
-        IconURLEN: null,
-        Sequence: null,
-        Visibility: null,
-        CreateIP: null,
-        CardItemList: []
-    };
-  
-    /*
-    '*CARD TYPES            *PREFIX           *WIDTH
-    'American Express       34, 37            15
-    'Diners Club            300 to 305, 36    14
-    'Carte Blanche          38                14
-    'Discover               6011              16
-    'EnRoute                2014, 2149        15
-    'JCB                    3                 16
-    'JCB                    2131, 1800        15
-    'Master Card            51 to 55          16
-    'Visa                   4                 13, 16
-    */
-    $scope.dataSet = {
-        criteria: [{ value: '0', text: 'Not Set' },
-    { value: '15A', text: 'American Express - (15 digit)' },
-    { value: '14D', text: 'Diners Club - (14 digit)' },
-    { value: '14C', text: 'Carte Blanche - (14 digit)' },
-    { value: '16D', text: 'Discover - (16 digit)' },
-    { value: '15E', text: 'EnRoute - (15 digit)' },
-    { value: '16J', text: 'JCB - (16 digit)' },
-    { value: '15J', text: 'JCB - (15 digit)' },
-    { value: '16M', text: 'Master Card - (16 digit)' },
-    { value: '13V', text: 'Visa - (13 digit)' },
-    { value: '16V', text: 'Visa - (16 digit)' },
-        ],
-        filters: [{ value: 'None', text: 'No filter' },
-    { text: 'Brand', value: 'Brand' },
-    { text: 'Global Category', value: 'GlobalCategory' },
-    { text: 'Shop', value: 'Shop' },
-    { text: 'Email', value: 'Email'}]
-    }
-
-    // Item List Arrays
-    $scope.items = [{
-        CreditCardTypeCode: null,
-        CreditCardTypeText: null,
-        CreditNumberFormat: null,
-        Digit: null,
-        Visibility: 1,
-        Status: true
-    }];
-    // Add a Item to the list
-    $scope.addItem = function () {
-        switch ($scope.items.CreditCardTypeCode) {
-            case "15A":
-                $scope.items.CreditCardTypeText = 'American Express - (15 digit)';
-                $scope.items.Digit = 15;
-                break;
-            case "14D":
-                $scope.items.CreditCardTypeText = 'Diners Club - (14 digit)';
-                $scope.items.Digit = 14;
-                break;
-            case "14C":
-                $scope.items.CreditCardTypeText = 'Carte Blanche - (14 digit)';
-                $scope.items.Digit = 14;
-                break;
-            case "16D":
-                $scope.items.CreditCardTypeText = 'Discover - (16 digit)';
-                $scope.items.Digit = 16;
-                break;
-            case "15E":
-                $scope.items.CreditCardTypeText = 'EnRoute - (15 digit)';
-                $scope.items.Digit = 15;
-                break;
-            case "16J":
-                $scope.items.CreditCardTypeText = 'JCB - (16 digit)';
-                $scope.items.Digit = 16;
-                break;
-            case "15J":
-                $scope.items.CreditCardTypeText = 'JCB - (15 digit)';
-                $scope.items.Digit = 15;
-                break;
-            case "16M":
-                $scope.items.CreditCardTypeText = 'Master Card - (16 digit)';
-                $scope.items.Digit = 16;
-                break;
-            case "13V":
-                $scope.items.CreditCardTypeText = 'Visa - (13 digit)';
-                $scope.items.Digit = 13;
-                break;
-            case "16V":
-                $scope.items.CreditCardTypeText = 'Visa - (16 digit)';
-                $scope.items.Digit = 16;
-                break;
-        }
-        $scope.items.push({
-            CreditCardTypeCode: $scope.items.CreditCardTypeCode,
-            CreditCardTypeText: $scope.items.CreditCardTypeText,
-            CreditNumberFormat: $scope.items.CreditNumberFormat,
-            Digit: $scope.items.Digit,
-            Visibility: 1,
-            Status: true
-        });
-        $scope.formData.CardItemList = $scope.items;
-        // Clear input fields after push
-        $scope.items.CreditCardTypeCode = "0";
-        $scope.items.CreditCardTypeText = "";
-        $scope.items.CreditNumberFormat = "";
-
-        
-    };
-
-    //Remove
-    $scope.removeItems = function (item, index) {
-        debugger;
-        $scope.items.splice(index, 1);
-    }
-
-    // Get Total Items
-    $scope.getTotalItems = function () {
-        return $scope.items.length;
-    };
-
-
-
-    $controller('AbstractAddCtrl', {
-        $scope: $scope,
-        options: {
-            id: 'OnTopCreditCardId',
-            url: '/admin/ontopcredit',
-            item: 'OnTopCreditCard',
-            service: OnTopCredit,
-            init: function(scope) {	},
-            onLoad: function (scope, load) {
-
-            },
-            onSave: function (scope) {
-
-            }
-        }
-    });
-};
-
-},{}],18:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "OnTopCredit", "config", function($scope, $controller, OnTopCredit, config) {
-	'ngInject';
-	$controller('AbstractAdvanceListCtrl', {
-		$scope: $scope,
-		options: {
-			url: '/admin/ontopcredit',
-			service: OnTopCredit,
-			item: 'OnTopCredit',
-			order: 'UpdateDate',
-			id: 'OnTopCreditCardId',
-			actions: ['View', 'Delete'],
-			bulks: ['Delete', 'Show', 'Hide'],
-			filters: [
-				{ name: "All", value: 'All'},
-				{ name: "Approved", value: 'Approved'},
-				{ name: "Not Approved", value: 'NotApproved'},
-				{ name: "Wait For Approved", value: 'WaitForApproved'},
-				{ name: "Draft", value: 'Draft'}
-			]
-		}
-	});
-	$scope.statusDropdown = config.PRODUCT_STATUS;
-}];
-},{}],19:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "config", "util", function($scope, $controller, Product, config, util) {
 	'ngInject';
     $scope.asStatus = Product.getStatus;
@@ -1717,7 +1417,7 @@ module.exports = ["$scope", "$controller", "Product", "config", "util", function
 	$scope.params._filter = $scope.filterOptions[4].value;
 }];
 
-},{}],20:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "config", function($scope, $controller, Product, config) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
@@ -1741,7 +1441,7 @@ module.exports = ["$scope", "$controller", "Product", "config", function($scope,
 	});
 	$scope.statusDropdown = config.PRODUCT_STATUS;
 }];
-},{}],21:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminRoleService", "config", function($scope, $controller, AdminRoleService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -1757,7 +1457,7 @@ module.exports = ["$scope", "$controller", "AdminRoleService", "config", functio
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }]
-},{}],22:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminRoleService", function($scope, $controller, AdminRoleService) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -1772,7 +1472,7 @@ module.exports = ["$scope", "$controller", "AdminRoleService", function($scope, 
 		}
 	});
 }];
-},{}],23:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminShopService", "config", function($scope, $controller, AdminShopService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -1788,7 +1488,7 @@ module.exports = ["$scope", "$controller", "AdminShopService", "config", functio
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
-},{}],24:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "AdminShoptypeService", "config", "common", "Credential", "$rootScope", "$window", function($scope, $controller, $uibModal, AdminShopService, AdminShoptypeService, config, common, Credential, $rootScope, $window) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -1863,7 +1563,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
 
-},{}],25:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminShoptypeService", function($scope, $controller, AdminShoptypeService) {
 	'ngInject';
 	//Inherit from parent
@@ -1878,7 +1578,7 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", function($sco
 		}
 	});
 }];
-},{}],26:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminShoptypeService", function($scope, $controller, AdminShoptypeService) {
 	'ngInject';
 	//Inherit from parent
@@ -1935,861 +1635,7 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", function($sco
 		}
 	}, true);
 }];
-<<<<<<< HEAD
-},{}],24:[function(require,module,exports){
-var angular = require('angular');
-
-module.exports = ['$scope', '$window', 'util', 'config','Product', 'Buy1Get1','Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$Buy1Get1Add',
-function ($scope, $window, util, config,Product,  Buy1Get1, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, $rootScope , $q, KnownException, NcAlert, $Buy1Get1Add) {
-    'use strict';
-
-    //TODO: use Poons' Alert class
-
-    $window.onbeforeunload = function (e) {
-        if (!$scope.addBuy1Get1Form.$dirty) {
-            //only warn when form is dirty
-            return null;
-        }
-        var message = "Your changes will not be saved.",
-        e = e || window.event;
-        // For IE and Firefox
-        if (e) {
-            e.returnValue = message;
-        }
-
-        // For Safari
-        return message;
-    }; // end onbefore unload
-
-
-
-
-$scope.productList = [];
-$scope.productTotal = 0 ;
-$scope.defaultProductModalParam ={
-        filter: 'All',
-        searchText: null,
-        orderBy: 'UpdateDate',
-        direction: 'desc',
-        page: 0,
-        pageSize: 5
-    };
-
-$scope.statusLookup = {};
- config.PRODUCT_STATUS.forEach(function(object){
-       $scope.statusLookup[object.value] = object; 
-    });
- $scope.totalPage = function (x) {
-        return Math.ceil($scope.productTotal / $scope.defaultProductModalParam.pageSize);
-    };
- $scope.asStatus = function (ab) {
-        return $scope.statusLookup[ab];
-    };   
-$scope.nextPage = function (m) {
-    if ($scope.defaultProductModalParam.page + m >= $scope.totalPage() ||
-        $scope.defaultProductModalParam.page + m < 0)
-        return;
-
-    $scope.defaultProductModalParam.page += m;
-};
-$scope.setOrderBy = function (nextOrderBy) {
-    if ($scope.defaultProductModalParam.orderBy == nextOrderBy) {
-        $scope.defaultProductModalParam.direction = ($scope.defaultProductModalParam.direction == 'asc' ? 'desc' : 'asc');
-    }
-    $scope.defaultProductModalParam.orderBy = nextOrderBy;
-}; 
-$scope.setPageSize = function (p) {
-    $scope.defaultProductModalParam.pageSize = p;
-}
-$scope.applySearch = function () {
-    $scope.defaultProductModalParam.searchText = $scope.searchText;
-};
-$scope.reloadData = function () {        
-       $scope.notReady = true;
-            Product.getAll($scope.defaultProductModalParam).then(function (x) {
-            $scope.productTotal = x.total;
-            $scope.productList = x.data;
-            $scope.notReady = false;
-        });
-    };
-
-$scope.$watch('defaultProductModalParam', function () {
-        $scope.reloadData();
-        $scope.allChecked = false;
-    }, true);
-
-//start buy 1 item select modal
-$scope.BuyItemSelected = function () {
-        $scope.exporter = {
-            progress: 10,
-            title: 'Select Buy 1 Item...'
-        };
-            $scope.reloadData();
-
-        $("#modal-buy1item-selected").modal('show');
-    };
-    
-    $scope.confirmBuy1ItemSelected = function(){
-        $("#modal-buy1item-selected").modal('hide');
-        var chb_product_buy_val=$("input[name='chb_product_buy']:checked").val();
-        var jsonObjBuy = jQuery.parseJSON(chb_product_buy_val);
-    
-        $scope.formData.BuyItemSelStatus = true;
-        $scope.formData.PIDBuy = jsonObjBuy.ProductId;
-        $scope.formData.PNameBuy = jsonObjBuy.ProductNameEn;     
-    }
-//end buy 1 get item
-
-//start get 1 item select modal
-$scope.GetItemSelected = function () {
-        $scope.exporter = {
-            progress: 10,
-            title: 'Select Get 1 Item...'
-        };
-            $scope.reloadData();
-
-        $("#modal-get1item-selected").modal('show');
-    };
-    
-    $scope.confirmGet1ItemSelected = function(){
-        $("#modal-get1item-selected").modal('hide');
-        var chb_product_get_val=$("input[name='chb_product_get']:checked").val();
-        var jsonObjGet = jQuery.parseJSON(chb_product_get_val);
-    
-        $scope.formData.GetItemSelStatus = true;
-        $scope.formData.PIDGet = jsonObjGet.ProductId;
-        $scope.formData.PNameGet = jsonObjGet.ProductNameEn;
-        // var arr = [];
-        // Object.keys($scope.checkBoxCache).forEach(function (m) {
-        //     if (!$scope.checkBoxCache[m]) return;
-        //     arr.push({
-        //         ProductId: Number(m)
-        //     });
-        // });
-    }
-
-//end get 1 get item
-    $scope.keywordValidConditions = {};
-    $scope.variationOptionWarning = [[], []];
-    $scope.onKeywordAdded = function (item, model) {
-
-        $scope.keywordValidConditions = {};
-        if (!item) return $scope.formData.Keywords.pop();
-
-        if ($scope.formData.Keywords.length > 20) {
-            $scope.keywordValidConditions['tagcount'] = true;
-        }
-
-        if (item.length > 30) {
-            $scope.keywordValidConditions['taglength'] = true;
-        }
-
-        if (!item.match(/^[a-zA-Z0-9ก-ฮ\s\-]+$/)) {
-            $scope.keywordValidConditions['pattern'] = true;
-        }
-
-        if (Object.keys($scope.keywordValidConditions).length > 0) {
-            //if there is error, revert
-            $scope.formData.Keywords.pop();
-        }
-    }
-  
-    $scope.onVariationOptionFreeTextAdded = function (item, model, jth) {
-        $scope.variationOptionWarning[jth] = [];
-        if (!item) return;
-        if (item.length > 30) $scope.variationOptionWarning[jth].push("Variation option must contain 30 characters or less");
-        if (!item.match(/^[a-zA-Z0-9\s]+$/)) $scope.variationOptionWarning[jth].push("Only letters and numbers allowed");
-
-        var optlen1 = $scope.attributeOptions[0].options.length;
-        var optlen2 = $scope.attributeOptions[1].options.length;
-        if ((optlen1 == 0 ? 1 : optlen1) * (optlen2 == 0 ? 1 : optlen2) > MAX_VARIANT) {
-            $scope.variationOptionWarning[jth].push("Maximum combination of variants (" + MAX_VARIANT + ") reached.");
-        }
-
-        if ($scope.variationOptionWarning[jth].length > 0) {
-            $scope.attributeOptions[jth].options.pop();
-        }
-    }
-
-    //Attribute Options to be filled via API
-    $scope.availableAttributeSets = [];
-    $scope.availableGlobalCategories = [];
-    $scope.availableLocalCategories = [];
-    $scope.availableBrands = [];
-    $scope.availableSearchTags = [];
-    $scope.availableRelatedProducts = [];
-    $scope.availableStockTypes = ['Stock', 'Pre-Order'];
-    $scope.availableVariantDisplayOption = [{ text: 'Show as group of variants', value: 'GROUP' }, { text: 'Show as individual product', value: 'INDIVIDUAL' }];
-
-    $scope.overview = {}
-
-    $scope.formData = {
-        PIDBuy :"",
-        PIDGet : "",
-        Brand: { id: null, BrandNameEn: "Please select brand.." },
-        MasterVariant: { DimensionUnit: "CM", WeightUnit: "G", StockType: "Stock" },
-        ShippingMethod: "1",
-        AttributeSet: {
-            AttributeSetTagMaps: []
-        },
-        RelatedProducts: [],
-        MasterImages: [],
-        MasterImages360: [],
-        VideoLinks: [],
-        Variants: [],
-        GlobalCategories: [null, null, null],
-        LocalCategories: [null, null, null],
-        SEO: { ProductBoostingWeight: 10000 },
-        ControlFlags: [],
-        Keywords: []
-    };
-    //Variation Factor Indices are used as index
-    //for ng-repeat in variation tab
-    $scope.variationFactorIndices = {};
-    $scope.variationFactorIndices.iterator = [0];
-    $scope.variationFactorIndices.length = function () {
-        return $scope.variationFactorIndices.iterator.length;
-    }
-    $scope.variationFactorIndices.popSecond = function () {
-        $scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop();
-        $scope.attributeOptions[1].options = [];
-    }
-    $scope.variationFactorIndices.pushSecond = function () {
-        $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1);
-    }
-
-    //Unmultiplied Variants (factor)
-    $scope.attributeOptions = {
-        0: {
-            Attribute: false,
-            options: []
-        },
-        1: {
-            Attribute: false,
-            options: []
-        }
-    };
-
-    //TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
-    $scope._attrEnTh = function (t) { return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
-    $scope._isFreeTextInput = util.isFreeTextDataType;
-    $scope._isListInput = util.isListDataType;
-
-    //CK editor options
-    $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
-
-    /*
-     * Page can be in 3 states
-     * --------------------------------
-     *  success: OK stat
-     *  failure: L2 validation error (client + server)
-     *  invalid: L1 validation error (client)
-     */
-    $scope.pageState = {
-        success: false,
-        failure: false,
-        invalid: false,
-        loading: {
-            state: true,
-            message: 'Loading..'
-        },
-        load: function (msg) {
-            $scope.pageState.loading.message = msg;
-            $scope.pageState.loading.state = true;
-        },
-        reset: function () {
-            $scope.pageState.success = false;
-            $scope.pageState.failure = false;
-            $scope.pageState.invalid = false;
-            $scope.pageState.loading.state = false;
-        }
-    };
-    //Modal State
-    $scope.formData.BuyItemSelStatus = true;
-    $scope.formData.GetItemSelStatus = true;
-    // $scope.formData.PNameBuy = "";
-    // $scope.formData.PNameGet = "";
-    //TODO: Initialize non-formData variable
-    $scope.enableProductVariations = "disable";
-
-    /*
-     *  Run clean data before any publishing
-     *  which will try to reduce imperfection before
-     *  serialization
-     */
-    var cleanData = function () {
-
-    };
-
-    $scope.preview = function () {
-        return console.log($scope.formData);
-        cleanData();
-        var apiRequest = Buy1Get1.serialize($scope.formData);
-        console.log(JSON.stringify(apiRequest));
-    };
-
-    $scope.$watch('formData.ExpireDate', function () {
-        var form = $scope.addBuy1Get1Form;
-            if (!form.ExpireDate) return;
-            form.ExpireDate.$setValidity("min", true);
-                
-        if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
-            if (!form.ExpireDate) return;
-            form.ExpireDate.$setValidity("min", false);
-            form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
-        }
-    });
-
-    var manualValidate = function () {
-        var mat = [];
-         if (!$scope.formData.NameTH || $scope.formData.NameTH == "") {
-            mat.push("Missing Thai Name");
-        }
-        if (!$scope.formData.NameEN || $scope.formData.NameEN == "") {
-            mat.push("Missing English Name");
-        }       
-        if (!$scope.formData.PIDBuy || $scope.formData.PIDBuy == "") {
-            mat.push("Please Select Buy Item");
-        }
-        if (!$scope.formData.PIDGet || $scope.formData.PIDGet == "") {
-            mat.push("Please Select Get Item");
-        }        
-        return mat;
-    };
-
-    /*
-     *  Publish (both Draft and WA)
-     */
-    $scope.publish = function (Status) {
-
-        $scope.pageState.reset();
-        $scope.pageState.load('Validating..');
-
-        $scope.onPublishing = (Status == "4");
-        console.log("befor validate");
-        //On click validation
-        var validateMat = manualValidate();
-        if (validateMat.length > 0 ) {
-            $scope.pageState.reset();
-            $scope.pageState.failure = true;
-            $scope.pageState.failure_message = validateMat[0];
-            $window.location.hash = 'alert';
-            $window.location.hash = 'alert-failure';
-            return;
-        }
-
-
-        $scope.pageState.load('Publishing..');
-        cleanData();
-        console.log("Publishing with Status = ", Status);
-        //Error Handling too Messi
-        try {            
-                $scope.formData.CMSStatusFlowId = Status
-                $scope.formData.Status = true;
-                $scope.formData.UpdateBy =1;
-                $scope.formData.CreateBy =1;
-                $scope.formData.Visibility = 1;
-                $scope.formData.CreateIP ='203.146.156.34';
-
-
-                var apiRequest =  Buy1Get1.serialize($scope.formData);  
-                var tmpObjArr =[];
-                var apiParameter ;
-                if($scope.formData.PromotionBuy1Get1ItemId != null && typeof $scope.formData.PromotionBuy1Get1ItemId != "undefined"){
-                    tmpObjArr.push(apiRequest);
-                    apiParameter = tmpObjArr;
-                }else{ apiParameter = apiRequest;}
-
-
-                Buy1Get1.publish(apiParameter, Status).then(function (res) {
-                $scope.pageState.reset();
-                if (res.PromotionBuy1Get1ItemId) {
-                    $scope.overview = res;
-                    $scope.pageState.success = true;
-                    $scope.formData.PromotionBuy1Get1ItemId = res.PromotionBuy1Get1ItemId;
-                    $scope.addBuy1Get1Form.$setPristine(true)
-                } else {
-                    $scope.pageState.failure = true;
-                    $scope.pageState.failure_message = res.message || res.Message;
-                    $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-                    $window.location.hash = 'alert'
-                    $window.location.hash = 'alert-failure'
-                }
-            }, function (er) {
-                $scope.pageState.reset();
-                $scope.pageState.failure = true;
-                $scope.pageState.failure_message = er.Message || er.message;
-                $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-
-                $window.location.hash = 'alert' //Need to toggle hash otherwise it wont scroll
-                $window.location.hash = 'alert-failure'
-            });
-
-        } catch (ex) {
-            console.log("catch exception from publish process");
-            $scope.pageState.reset();
-            $scope.pageState.failure = true;
-            $scope.pageState.failure_message = ex.message;
-            $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-            $window.location.hash = 'alert'
-            $window.location.hash = 'alert-failure'
-            console.log('publish failure', ex);
-            return;
-        }
-    };
-
-    $scope.init = function (viewBag) {
-        //TODO: Refactor, use better callback mechanism
-        if (!angular.isObject(viewBag)) throw new KnownException("View bag is corrupted");
-
-        var shopId = 1;
-        var _editMode = ("PromotionBuy1Get1ItemId" in viewBag)
-      
-
-        if (_editMode) {
-                        var PromotionBuy1Get1ItemId = viewBag.PromotionBuy1Get1ItemId;
-                        $scope.pageState.load('Loading Buy 1 Get 1 ..');
-
-                        Buy1Get1.getOne(PromotionBuy1Get1ItemId)
-                            .then(function (inverseFormData) {
-                                $scope.overview = angular.copy(inverseFormData);
-                              
-                                $Buy1Get1Add.fill( $scope.pageState, $scope.dataSet, $scope.formData,  $scope.controlFlags,
-                                    $scope.variationFactorIndices, inverseFormData).then(function () {
-                                        $scope.formData.PromotionBuy1Get1ItemId = Number(PromotionBuy1Get1ItemId);                                      
-                                        $scope.pageState.reset();
-                                      
-                                    });
-                            }, function (error) {
-                                 console.log("function (error)");
-                                throw new KnownException("Unable to fetch buLy 1 get 1 with id " + PromotionBuy1Get1ItemId);
-                            });
-
-                    } else if ('catId' in viewBag) {
-                        // var catId = Number(viewBag.catId);
-                        // $Buy1Get1Add.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs,
-                        //     $scope.controlFlags, $scope.variationFactorIndices).then(function () {
-                        //         $scope.pageState.reset();
-                             
-                        //     });
-                    } else {
-                        throw new KnownException("Invalid mode, viewBag garbage");
-        }
-
-
-    }//end init
-
-    var tabPage = {};
-
-   
-}];
-
-},{"angular":150}],25:[function(require,module,exports){
-var angular = require('angular');
-
-module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', function ($scope, Product, util, Alert, $window) {
-    
-}];
-},{"angular":150}],26:[function(require,module,exports){
-=======
-},{}],27:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
-module.exports = ['$scope',  'Buy1Get1', 'util', 'Alert', '$window', '$rootScope', function
-
-($scope, Buy1Get1, util, Alert, $window, $rootScope) {
-    //UI binding variables    
-
-    $scope.checkBoxCache = {};
-    $scope.hidCMSTypeId = {};    
-    $scope.showOnOffStatus = true;
-    $scope.allChecked = false;
-    $scope.alert = new Alert();
-    $scope.filterOptions = [
-        { name: "All", value: 'All' },
-        { name: "Approved", value: 'Approved' },
-        { name: 'Draft', value: 'Draft' },
-        { name: "Not Approved", value: 'NotApproved' },
-        { name: "Wait for Approval", value: 'WaitforApproval' },
-    ];
-
-    $scope.startExportBuy1Get1 = function () {
-        $scope.exporter = {
-            progress: 10,
-            title: 'Exporting...'
-        };
-
-        $("#export-buy1get1").modal('show');
-    };
-
-    $scope.confirmExportBuy1Get1 = function () {
-        $("#export-buy1get1").modal('hide');
-
-        var arr = [];
-        Object.keys($scope.checkBoxCache).forEach(function (m) {
-            if (!$scope.checkBoxCache[m]) return;
-            arr.push({
-                PromotionBuy1Get1ItemId: Number(m)
-            });
-        });
-
-        if (arr.length == 0) return;
-
-
-        var fileName = 'Buy1Get1Export-' + moment(new Date(), 'MM-DD-YYYY-HHmm') + ".csv";
-        var a = document.getElementById("export_download_btn");
-
-        var error = function (r) {
-            $(".modal").modal('hide');
-            $scope.exporter.title = 'Error'
-            $scope.alert.error('Unable to Export Buy 1 Get 1');
-            $scope.reloadData();
-        };
-
-        $scope.exporter.progress = 15;
-        var blobs = [];
-
-        var chunks = _.chunk(arr, 3);
-
-
-        chunks.forEach(function (chunk) {
-            Buy1Get1.export(chunk).then(function (result) {
-
-                $scope.exporter.progress += (100 / chunks);
-                blobs.push(result);
-
-                var file = new Blob(blobs, { type: 'application/csv' });
-                var fileURL = URL.createObjectURL(file);
-
-                $scope.exporter.href = fileURL;
-                $scope.exporter.download = fileName;
-                $scope.exporter.progress = 100;
-                $scope.exporter.title = 'Export Complete'
-
-                a.href = fileURL;
-            }, error);
-        });
-    }
-
-
-    $scope.setPageSize = function (p) {
-        $scope.tableParams.pageSize = p;
-    }
-
-    $scope.bulk = {
-        fn: function () {
-            var bulk = $scope.bulkOptions.find(function (item) {
-                return item.name == $('#bulk').html();
-            });
-            if (bulk) {
-                bulk.fn();
-            }
-            $scope.allChecked = false;
-        }
-    };
-
-    $scope.bulkOptions = [
-        {
-            name: 'Delete',
-            value: 'delete',
-            fn: function () {
-                $scope.alert.close();
-             
-
-
-             var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { PromotionBuy1Get1ItemId: -1 , CMSStatusFlowId: 5  };  
-                    }else{
-                            rObj = {
-                            PromotionBuy1Get1ItemId: Number(id),
-                            CMSStatusFlowId: 5 
-                        };
-                    }                   
-                    return rObj ;
-                });
-    
-                if (selList.length > 0) {
-                       
-                        var apiRequest = Buy1Get1.arrSerialize(selList);                         
-                        Buy1Get1.deleteBulk(apiRequest).then(function () {
-                        $scope.alert.success('Successfully deleted');
-                        $scope.reloadData();
-                    }, function (result) {
-                        $scope.alert.error('Unable to Delete');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Show',
-            value: 'show',
-            fn: function () {
-
-        var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { PromotionBuy1Get1ItemId: -1 , Visibility: true  };  
-                    }else{
-                            rObj = {
-                            PromotionBuy1Get1ItemId: Number(id) ,
-                            Visibility : true 
-                        };
-                    }                   
-                    return rObj ;
-                });
-
-
-                if (selList.length > 0) {
-                     var apiRequest = Buy1Get1.arrSerialize(selList);
-                        Buy1Get1.visible(apiRequest).then(function () {
-                        $scope.alert.success('Successfully changed');
-                        $scope.reloadData();
-                    }, function () {
-                        $scope.alert.error('Unable to Show');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Hide',
-            value: 'hide',
-            fn: function () {
-               
-                 var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { PromotionBuy1Get1ItemId: -1 , Visibility: false  };  
-                    }else{
-                            rObj = {
-                            PromotionBuy1Get1ItemId: Number(id) ,
-                            Visibility : false 
-                        };
-                    }                   
-                    return rObj ;
-                });
-
-                if (selList.length > 0) {
-                      var apiRequest = Buy1Get1.arrSerialize(selList);
-                        Buy1Get1.visible(apiRequest).then(function () {
-                        $scope.alert.success('Successfully changed');
-                        $scope.reloadData();
-                    }, function () {
-                        $scope.alert.error('Unable to Hide');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Publish',
-            value: 'publish',
-            fn: function () {
-              
-                 var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { PromotionBuy1Get1ItemId: -1 ,CMSStatusFlowId: 2  };  
-                    }else{
-                            rObj = {
-                            PromotionBuy1Get1ItemId: Number(id) ,
-                            CMSStatusFlowId: 2 
-                        };
-                    }                   
-                    return rObj ;
-                });
-
-                if (selList.length == 0) return;
-
-                    var apiRequest = Buy1Get1.arrSerialize(selList);
-                Buy1Get1.bulkPublish(apiRequest).then(function () {
-                     $scope.alert.success('Successfully published');
-                     $scope.reloadData();
-                }, function (r) {
-                    $scope.alert.success('Unable to publish');
-                     $scope.reloadData();
-                });
-            }
-        }
-    ];
-    $scope.actions = {
-        edit: function (row) {
-            $window.location.href = "/buy1get1/" + row.PromotionBuy1Get1ItemId;
-        },
-        delete: function (row) {
-            $scope.alert.close();
-            Buy1Get1.deleteBulk([{ PromotionBuy1Get1ItemId: row.PromotionBuy1Get1ItemId ,CMSStatusFlowId:5 }]).then(function () {
-                $scope.alert.success('You have successfully remove an entry.');
-                $scope.reloadData();
-            }, function (err) {
-                $scope.alert.error(err);
-            });
-        },
-        duplicate: function (row) {
-            $scope.alert.close();
-            Buy1Get1.duplicate(row.PromotionBuy1Get1ItemId).then(function () {
-                $scope.alert.success();
-                $scope.reloadData();
-            }, function (err) {
-                $scope.alert.error(err);
-            });
-        },
-        toggle: function (row) {
-            $scope.alert.close();
-            row.Visibility = !row.Visibility;
-            console.log("[row]");
-            console.log([row]);
-            Buy1Get1.visible([row]).then(function () {
-            }, function (err) {
-                $scope.alert.error(err);
-                $scope.reloadData();
-            });
-        }
-    };
-    $scope.sort = util.tableSortClass($scope);
-    var StatusLookup = {
-
-        '1': {
-            Class: 'fa-circle-o',
-            Text: 'Draft',
-            Color: 'color-grey'
-        },
-        '2': {
-            Class: 'fa-check-square-o',
-            Text: 'Approve',
-            Color: 'color-green'
-        },
-        '3': {
-            Class: 'fa-circle-o',
-            Text: 'Not approve',
-            Color: 'color-orange'
-        },
-        '4': {
-            Class: 'fa-clock-o',
-            Text: 'Wait for approval',
-            Color: 'color-yellow'
-        },
-       '5': {
-            Class: 'fa-clock-o',
-            Text: 'Junk',
-            Color: 'color-red'
-        }
-    }
-    $scope.init = function (params) {
-        if (angular.isDefined(params)) {
-            if (angular.isDefined(params.success) && params.success != null) {
-                $scope.alert.success();
-            }
-        }
-    };
-    $scope.asStatus = function (ab) {
-        return StatusLookup[ab];
-    };
-
-    //Buy1Get1 List
-    $scope.buy1get1List = [];
-    //Default parameters
-    $scope.tableParams = {
-        filter: 'All',
-        searchText: null,
-        orderBy: 'UpdateDate',
-        direction: 'desc',
-        page: 0,
-        pageSize: 10,
-        shopID :0
-    };
-
-    $scope.notReady = true;
-
-    $scope.applySearch = function () {
-        $scope.tableParams.searchText = $scope.searchText;
-    };
-
-    $scope.totalPage = function (x) {
-        return Math.ceil($scope.buy1get1Total / $scope.tableParams.pageSize);
-    };
-
-
-    $scope.nextPage = function (m) {
-        if ($scope.tableParams.page + m >= $scope.totalPage() ||
-            $scope.tableParams.page + m < 0)
-            return;
-
-        $scope.tableParams.page += m;
-    };
-
-
-    $scope.setOrderBy = function (nextOrderBy) {
-        if ($scope.tableParams.orderBy == nextOrderBy) {
-            $scope.tableParams.direction = ($scope.tableParams.direction == 'asc' ? 'desc' :
-
-'asc');
-        }
-        $scope.tableParams.orderBy = nextOrderBy;
-    };
-
-    $scope.buy1get1Total = 0;
-    //Populate Data Source
-    $scope.reloadData = function () {
-        console.log("reload data fire");
-        $scope.buy1get1List = [];
-        $scope.notReady = true;
-        Buy1Get1.getAll($scope.tableParams).then(function (x) {
-            $scope.buy1get1Total = x.total;
-            $scope.buy1get1List = x.data;
-            $scope.notReady = false;
-        });
-    };
-
-    //Watch any change in table parameter, trigger reload
-    $scope.$watch('tableParams', function () {
-        $scope.reloadData();
-        $scope.allChecked = false;
-    }, true);
-
-    
-
-   
-    $scope.checkAll = function(){
-        var first = $scope.buy1get1List[0];
-        var tval = !($scope.checkBoxCache[first.PromotionBuy1Get1ItemId] || false);
-        $scope.buy1get1List.forEach(function (d) {
-            $scope.checkBoxCache[d.PromotionBuy1Get1ItemId] = tval;
-        });
-    }
-
-
-    
-
-    $scope.checkBoxCount = function () {
-        var m = [];
-        Object.keys($scope.checkBoxCache).forEach(function (key) {
-            if ($scope.checkBoxCache[key]) m.push($scope.checkBoxCache[key]);
-        });
-      
-        //Count checked checkbox (on this page only)
-        //TODO: I don't like this solution, I'd rather trade space for time
-        //note: can't just count checkboxcache because checkboxcache is global across
-        //all pages. 
-        var chkCount = 0;
-        $scope.buy1get1List.forEach(function(p){
-            chkCount += ($scope.checkBoxCache[p.PromotionBuy1Get1ItemId] ? 1 : 0);
-        });
-        
-        //Change selectAll checkbox state
-        if(chkCount != $scope.buy1get1List.length){
-            $scope.allChecked = false;
-        }else{
-            $scope.allChecked = true;
-        }
-        return m.length;
-    }
-}];
-
-},{}],28:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 module.exports = ["storage", "Credential", "$window", function(storage, Credential, $window) {
 	'ngInject';
   var profile = storage.getCurrentUserProfile()
@@ -2799,7 +1645,7 @@ module.exports = ["storage", "Credential", "$window", function(storage, Credenti
   	$window.location.href = '/login';
   }
 }]
-},{}],29:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Category", "LocalCategoryService", "AttributeSetService", "NcAlert", "util", "config", function($scope, $rootScope, $uibModal, $timeout, common, Category, LocalCategoryService, AttributeSetService, NcAlert, util, config){
 	'ngInject';
 	$scope.modalScope = null;
@@ -3015,51 +1861,51 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 	};
 
 }];
-},{}],30:[function(require,module,exports){
-module.exports = ["$scope", "Credential", "$window", "NcAlert", "$uibModal", "storage", "config", function ($scope, Credential, $window, NcAlert, $uibModal, storage, config) {
+},{}],27:[function(require,module,exports){
+  module.exports = ["$scope", "Credential", "$window", "NcAlert", "$uibModal", "storage", "config", function ($scope, Credential, $window, NcAlert, $uibModal, storage, config) {
     'ngInject';
-    $scope.uform = {};
-    $scope.loginForm = {};
-    $scope.events = {};
-    $scope.alert = new NcAlert();
-    var redir = storage.get('redirect');
-    var profile = storage.getCurrentUserProfile();
-    if (profile && profile.User.IsAdmin) {
-        $window.location.href = Credential.getRedirPath(profile)
-    }
-    if (redir && redir != '/') {
-        $scope.alert.open(false, 'Your session has timed out', '');
-        storage.remove('redirect');
-    }
+  $scope.uform = {};
+  $scope.loginForm = {};
+  $scope.events = {};
+  $scope.alert = new NcAlert();
+  var redir = storage.get('redirect');
+  var profile = storage.getCurrentUserProfile();
+  if (profile && profile.User.IsAdmin) {
+    $window.location.href = Credential.getRedirPath(profile)
+  }
+  if(redir && redir != '/') {
+    $scope.alert.open(false, 'Your session has timed out', '');
+    storage.remove('redirect');
+  }
 
-    $scope.doLogin = function () {
-        if ($scope.loginForm.$invalid) {
-            if (_.isEmpty($scope.events)) {
-                $scope.events.user = false;
-                $scope.events.pass = false;
-            }
-            return;
-        }
-        $scope.loading = true;
-        $scope.error = false;
-        var user = $scope.uform.user;
-        var pass = $scope.uform.pass;
-        Credential.login(user, pass).then(function (r) {
-            $scope.loading = false;
-            if (!redir) {
-                redir = Credential.getRedirPath(r);
-            }
-            $window.location.href = redir;
-        }, function (err) {
-            storage.clear();
-            $scope.error = true;
-            $scope.loading = false;
-            $scope.loginForm.$setPristine();
-        });
+  $scope.doLogin = function () {
+    if ($scope.loginForm.$invalid) {
+      if(_.isEmpty($scope.events)) {
+        $scope.events.user = false;
+        $scope.events.pass = false;
+      }
+      return;
     }
+    $scope.loading = true;
+    $scope.error = false;
+    var user = $scope.uform.user;
+    var pass = $scope.uform.pass;
+    Credential.login(user, pass).then(function (r) {
+      $scope.loading = false;
+      if (!redir) {
+        redir = Credential.getRedirPath(r);
+      }
+      $window.location.href = redir;
+    }, function (err) {
+      storage.clear();
+      $scope.error = true;
+      $scope.loading = false;
+      $scope.loginForm.$setPristine();
+    });
+  }
 }];
 
-},{}],31:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product", "ImageService", "AttributeSet", "Brand", "Shop", "LocalCategoryService", "GlobalCategory", "Category", "VariantPair", "$rootScope", "$q", "KnownException", "NcAlert", "$productAdd", function($scope, $uibModal, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, VariantPair, $rootScope, $q, KnownException, NcAlert, $productAdd) {
@@ -3731,9 +2577,6 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
         queueLimit: QUEUE_LIMIT
       });
 
-<<<<<<< HEAD
-},{"angular":150}],30:[function(require,module,exports){
-=======
       $scope.uploaderModal.filters.push({
         'name': 'enforceMaxFileSize',
         'fn': function(item) {
@@ -3794,8 +2637,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
 
 }];
 
-},{"angular":170}],32:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{"angular":159}],29:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Category, GlobalCategory) {
@@ -3819,1823 +2661,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 	});
 }];
 
-<<<<<<< HEAD
-},{"angular":150}],31:[function(require,module,exports){
-=======
-},{"angular":170}],33:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
-var angular = require('angular');
-
-module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Collection','Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$CollectionAdd',
-function ($scope, $window, util, config, Product, Collection, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, $rootScope , $q, KnownException, NcAlert, $CollectionAdd) {
-    'use strict';
-
-    //TODO: use Poons' Alert class
-
-    var MAX_FILESIZE = 5000000; //5MB
-    var QUEUE_LIMIT = 20;
-    var QUEUE_LIMIT_360 = 60;
-    var MAX_VARIANT = 100;
-
-    $window.onbeforeunload = function (e) {
-        if (!$scope.addProductCollectionForm.$dirty) {
-            //only warn when form is dirty
-            return null;
-        }
-        var message = "Your changes will not be saved.",
-        e = e || window.event;
-        // For IE and Firefox
-        if (e) {
-            e.returnValue = message;
-        }
-
-        // For Safari
-        return message;
-    }; // end onbefore unload
-
-
-    var onImageUploadFail = function (item, filter) {
-        alert("File Size must not exceed 5 MB");
-    }
-
-    var onQueueLimit = function () {
-        //TODO: Poon? Wtf is queue limit handler
-    }
-
-
-    $scope.keywordValidConditions = {};
-    $scope.variationOptionWarning = [[], []];
-    $scope.onKeywordAdded = function (item, model) {
-
-        $scope.keywordValidConditions = {};
-        if (!item) return $scope.formData.Keywords.pop();
-
-        if ($scope.formData.Keywords.length > 20) {
-            $scope.keywordValidConditions['tagcount'] = true;
-        }
-
-        if (item.length > 30) {
-            $scope.keywordValidConditions['taglength'] = true;
-        }
-
-        if (!item.match(/^[a-zA-Z0-9ก-ฮ\s\-]+$/)) {
-            $scope.keywordValidConditions['pattern'] = true;
-        }
-
-        if (Object.keys($scope.keywordValidConditions).length > 0) {
-            //if there is error, revert
-            $scope.formData.Keywords.pop();
-        }
-    }
-
-    $scope.onKeywordRemoved = function (item, model) {
-        console.log($scope.formData.Keywords);
-    }
-
-    var StatusLookup = {
-        'DF': {
-            Class: 'fa-circle-o',
-            Text: 'Draft',
-            Color: 'color-grey'
-        },
-        'WA': {
-            Class: 'fa-clock-o',
-            Text: 'Wait for Approval',
-            Color: 'color-yellow'
-        }
-
-    }
-
-    $scope.asStatus = function (ab) {
-        return StatusLookup[ab];
-    };
-
-    $scope.onVariationOptionFreeTextAdded = function (item, model, jth) {
-        $scope.variationOptionWarning[jth] = [];
-        if (!item) return;
-        if (item.length > 30) $scope.variationOptionWarning[jth].push("Variation option must contain 30 characters or less");
-        if (!item.match(/^[a-zA-Z0-9\s]+$/)) $scope.variationOptionWarning[jth].push("Only letters and numbers allowed");
-
-        var optlen1 = $scope.attributeOptions[0].options.length;
-        var optlen2 = $scope.attributeOptions[1].options.length;
-        if ((optlen1 == 0 ? 1 : optlen1) * (optlen2 == 0 ? 1 : optlen2) > MAX_VARIANT) {
-            $scope.variationOptionWarning[jth].push("Maximum combination of variants (" + MAX_VARIANT + ") reached.");
-        }
-
-        if ($scope.variationOptionWarning[jth].length > 0) {
-            $scope.attributeOptions[jth].options.pop();
-        }
-
-    }
-
-
-
-    //Attribute Options to be filled via API
-    $scope.availableAttributeSets = [];
-    $scope.availableGlobalCategories = [];
-    $scope.availableLocalCategories = [];
-    $scope.availableBrands = [];
-    $scope.availableSearchTags = [];
-    $scope.availableRelatedProducts = [];
-    $scope.availableStockTypes = ['Stock', 'Pre-Order'];
-    $scope.availableVariantDisplayOption = [{ text: 'Show as group of variants', value: 'GROUP' }, { text: 'Show as individual product', value: 'INDIVIDUAL' }];
-
-    $scope.overview = {}
-
-    $scope.formData = {
-        Brand: { id: null, BrandNameEn: "Please select brand.." },
-        MasterVariant: { DimensionUnit: "CM", WeightUnit: "G", StockType: "Stock" },
-        ShippingMethod: "1",
-        AttributeSet: {
-            AttributeSetTagMaps: []
-        },
-        RelatedProducts: [],
-        MasterImages: [],
-        MasterImages360: [],
-        VideoLinks: [],
-        Variants: [],
-        GlobalCategories: [null, null, null],
-        LocalCategories: [null, null, null],
-        SEO: { ProductBoostingWeight: 10000 },
-        ControlFlags: [],
-        Keywords: []
-    };
-    //Variation Factor Indices are used as index
-    //for ng-repeat in variation tab
-    $scope.variationFactorIndices = {};
-    $scope.variationFactorIndices.iterator = [0];
-    $scope.variationFactorIndices.length = function () {
-        return $scope.variationFactorIndices.iterator.length;
-    }
-    $scope.variationFactorIndices.popSecond = function () {
-        $scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop();
-        $scope.attributeOptions[1].options = [];
-    }
-    $scope.variationFactorIndices.pushSecond = function () {
-        $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1);
-    }
-
-    //Unmultiplied Variants (factor)
-    $scope.attributeOptions = {
-        0: {
-            Attribute: false,
-            options: []
-        },
-        1: {
-            Attribute: false,
-            options: []
-        }
-    };
-
-    //TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
-    $scope._attrEnTh = function (t) { return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
-    $scope._isFreeTextInput = util.isFreeTextDataType;
-    $scope._isListInput = util.isListDataType;
-
-    //CK editor options
-    $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
-
-    /*
-     * Page can be in 3 states
-     * --------------------------------
-     *  success: OK stat
-     *  failure: L2 validation error (client + server)
-     *  invalid: L1 validation error (client)
-     */
-    $scope.pageState = {
-        success: false,
-        failure: false,
-        invalid: false,
-        loading: {
-            state: true,
-            message: 'Loading..'
-        },
-        load: function (msg) {
-            $scope.pageState.loading.message = msg;
-            $scope.pageState.loading.state = true;
-        },
-        reset: function () {
-            $scope.pageState.success = false;
-            $scope.pageState.failure = false;
-            $scope.pageState.invalid = false;
-            $scope.pageState.loading.state = false;
-        }
-    };
-
-    //TODO: Initialize non-formData variable
-    $scope.enableProductVariations = "disable";
-
-    /*
-     *  Run clean data before any publishing
-     *  which will try to reduce imperfection before
-     *  serialization
-     */
-    var cleanData = function () {
-
-    };
-
-    $scope.preview = function () {
-        return console.log($scope.formData);
-        cleanData();
-        var apiRequest = Product.serialize($scope.formData);
-        console.log(JSON.stringify(apiRequest));
-    };
-
-
-    /*
-     *  refresh functions
-     *  for dropdown suggestions
-     */
-
-    $scope.refreshRelatedProducts = function (q) {
-        return Product.getAll({
-            searchText: q
-        }).then(function (dataSet) {
-            $scope.availableRelatedProducts = dataSet.data;
-        });
-    };
-
-    $scope.refreshBrands = function (q) {
-        Brand.getAll({
-            pageSize: 6,
-            searchText: q
-        }).then(function (dataSet) {
-            $scope.availableBrands = dataSet.data;
-        });
-    };
-
-
-    $scope.$watch('formData.ExpireDate', function () {
-        var form = $scope.addProductCollectionForm;
-        form.ExpireDate.$setValidity("min", true);
-        if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
-            if (!form.ExpireDate) return;
-            form.ExpireDate.$setValidity("min", false);
-            form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
-        }
-    });
-
-    var manualValidate = function () {
-        var mat = [];
-        // if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == "") {
-        //     mat.push("Missing Description (Thai)");
-        // }
-
-        // if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == "") {
-        //     mat.push("Missing Description (English)");
-        // }
-
-        // if (!$scope.formData.Brand.BrandId) {
-        //     mat.push("Missing Brand");
-        // }
-
-        return mat;
-    };
-
-    /*
-     *  Publish (both Draft and WA)
-     */
-    $scope.publish = function (Status) {
-
-        $scope.pageState.reset();
-        $scope.pageState.load('Validating..');
-
-        $scope.onPublishing = (Status == "4");
-        console.log("befor validate");
-        //On click validation
-        var validateMat = manualValidate();
-        if (validateMat.length > 0 && Status == '4') {
-            $scope.pageState.reset();
-            $scope.pageState.failure = true;
-            $scope.pageState.failure_message = validateMat[0];
-            $window.location.hash = 'alert';
-            $window.location.hash = 'alert-failure';
-            return;
-        }
-
-
-        $scope.pageState.load('Publishing..');
-        cleanData();
-        console.log("Publishing with Status = ", Status);
-        //Error Handling too Messi
-        try {
-            // var apiRequest = Product.serialize($scope.formData);            
-            //Product.publish(apiRequest, Status).then(function (res) {
-                //console.log($scope.formData);
-                $scope.formData.CMSStatusId = Status
-                $scope.formData.Status = true;
-                $scope.formData.CMSTypeId = 1;
-                $scope.formData.UpdateBy =1;
-                $scope.formData.CreateBy =1;
-                $scope.formData.Visibility = 1;
-                $scope.formData.CreateIP ='203.146.156.34';
-               
-                var apiRequest =  Collection.serialize($scope.formData);  
-                var tmpObjArr =[];
-                var apiParameter ;
-                if($scope.formData.CMSId != null && typeof $scope.formData.CMSId != "undefined"){
-                    tmpObjArr.push(apiRequest);
-                    apiParameter = tmpObjArr;
-                }else{ apiParameter = apiRequest;}
-
-
-                Collection.publish(apiParameter, Status).then(function (res) {
-                $scope.pageState.reset();
-                if (res.CMSId) {
-                    $scope.overview = res;
-                    $scope.pageState.success = true;
-                    $scope.formData.CMSId = res.ProductId;
-                    $scope.addProductCollectionForm.$setPristine(true)
-                } else {
-                    $scope.pageState.failure = true;
-                    $scope.pageState.failure_message = res.message || res.Message;
-                    $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-                    $window.location.hash = 'alert'
-                    $window.location.hash = 'alert-failure'
-                }
-            }, function (er) {
-                $scope.pageState.reset();
-                $scope.pageState.failure = true;
-                $scope.pageState.failure_message = er.Message || er.message;
-                $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-
-                $window.location.hash = 'alert' //Need to toggle hash otherwise it wont scroll
-                $window.location.hash = 'alert-failure'
-            });
-
-        } catch (ex) {
-            console.log("catch exception from publish process");
-            $scope.pageState.reset();
-            $scope.pageState.failure = true;
-            $scope.pageState.failure_message = ex.message;
-            $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-            $window.location.hash = 'alert'
-            $window.location.hash = 'alert-failure'
-            console.log('publish failure', ex);
-            return;
-        }
-    };
-
-
-    $scope.uploader = ImageService.getUploader('/ProductImages', {
-        queueLimit: QUEUE_LIMIT
-    });
-
-    $scope.uploader.filters.push({
-        'name': 'enforceMaxFileSize',
-        'fn': function (item) {
-            return item.size <= MAX_FILESIZE;
-        }
-    });
-
-    $scope.uploader360 = ImageService.getUploader('/ProductImages', {
-        queueLimit: QUEUE_LIMIT_360
-    });
-
-
-    $scope.init = function (viewBag) {
-        //TODO: Refactor, use better callback mechanism
-        if (!angular.isObject(viewBag)) throw new KnownException("View bag is corrupted");
-
-        var shopId = 1;
-        var _editMode = ("CMSId" in viewBag)
-        for (var page in tabPage) {
-            tabPage[page].angular();
-        }
-
-
-        for (var page in tabPage) {
-            tabPage[page].angular();
-        }
-
-        if (_editMode) {
-                        var CMSId = viewBag.CMSId;
-                        $scope.pageState.load('Loading Collection..');
-
-                        Collection.getOne(CMSId)
-                            .then(function (inverseFormData) {
-                                $scope.overview = angular.copy(inverseFormData);
-                              
-                                $CollectionAdd.fill( $scope.pageState, $scope.dataSet, $scope.formData,  $scope.controlFlags,
-                                    $scope.variationFactorIndices, inverseFormData).then(function () {
-                                        $scope.formData.CMSId = Number(CMSId);
-                                        $scope.pageState.reset();
-                                        console.log("$scope.formData");
-                                        console.log($scope.formData);
-                                    });
-                            }, function (error) {
-                                 console.log("function (error)");
-                                throw new KnownException("Unable to fetch collection with id " + CMSId);
-                            });
-
-                    } else if ('catId' in viewBag) {
-                        var catId = Number(viewBag.catId);
-                        $CollectionAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs,
-                            $scope.controlFlags, $scope.variationFactorIndices).then(function () {
-                                $scope.pageState.reset();
-                             
-                            });
-                    } else {
-                        throw new KnownException("Invalid mode, viewBag garbage");
-        }
-
-        //Load Local Cat
-        // Shop.getLocalCategories(shopId).then(function (data) {
-        //     $scope.availableLocalCategories = Category.transformNestedSetToUITree(data);
-        // });
-
-
-    }//end init
-
-    var tabPage = {};
-
-    tabPage.images = {
-        angular: function () {
-
-
-            //Assign uploader images
-            ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onQueueLimit, onImageUploadFail);
-            ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onQueueLimit, onImageUploadFail);
-
-            /**
-		     * IMAGE THUMBNAIL EVENTS
-		     */
-            $scope.$on('left', function (evt, item, array, index) {
-                var to = index - 1;
-                if (to < 0) to = array.length - 1;
-
-                var tmp = array[to];
-                array[to] = item;
-                array[index] = tmp;
-            });
-            $scope.$on('right', function (evt, item, array, index) {
-                var to = index + 1;
-                if (to >= array.length) to = 0;
-
-                var tmp = array[to];
-                array[to] = item;
-                array[index] = tmp;
-            });
-            $scope.$on('delete', function (evt, item, array, index) {
-                array.splice(index, 1);
-            });
-            $scope.$on('zoom', function (evt, item, array, index) {
-                //Should use angular way, but ok whatever
-                $('#product-image-zoom img').attr('src', item.url);
-                $('#product-image-zoom').modal('show');
-            });
-        }
-    };
-
-    tabPage.category = {
-        angular: function () {
-            //For viewing only
-            $scope.viewCategoryColumns = [];
-            $scope.viewCategorySelected = null;
-            $scope.viewCategoryIndex = 0;
-            $scope.selectCategory = angular.noop;
-
-            //Events
-            $scope.$on('openGlobalCat', function (evt, item, indx) {
-                console.log('openGloCat', item, $scope.availableGlobalCategories);
-                $scope.viewCategoryColumns = Category.createColumns(item, $scope.availableGlobalCategories);
-                $scope.viewCategorySelected = item;
-                $scope.viewCategoryIndex = indx;
-                $scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function (selectedItem) {
-                    $scope.viewCategorySelected = selectedItem;
-                });
-            });
-            $scope.$on('deleteGlobalCat', function (evt, indx) {
-                $scope.formData.GlobalCategories[indx] = null;
-            });
-            $scope.$on('selectGlobalCat', function (evt, row, indx, parentIndx) {
-                $scope.selectCategory(row, indx, parentIndx);
-            });
-            $scope.$on('saveGlobalCat', function (evt) {
-                $scope.formData.GlobalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected;
-            });
-
-            //Events
-            $scope.$on('openLocalCat', function (evt, item, indx) {
-                console.log(item, $scope.availableLocalCategories);
-                $scope.viewCategoryColumns = Category.createColumns(item, $scope.availableLocalCategories);
-                $scope.viewCategorySelected = item;
-                $scope.viewCategoryIndex = indx;
-                $scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function (selectedItem) {
-                    $scope.viewCategorySelected = selectedItem;
-                });
-            });
-            $scope.$on('deleteLocalCat', function (evt, indx) {
-                $scope.formData.LocalCategories[indx] = null;
-            });
-            $scope.$on('selectLocalCat', function (evt, row, indx, parentIndx) {
-                $scope.selectCategory(row, indx, parentIndx);
-            });
-            $scope.$on('saveLocalCat', function (evt) {
-                $scope.formData.LocalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected;
-            });
-        }
-    }
-
-    tabPage.variation = {
-
-        angular: function () {
-            /**
-		     * This part handles when user click on More Detail and open pair form
-		     */
-
-            $scope.uploaderModal = ImageService.getUploader('/ProductImages', {
-                queueLimit: QUEUE_LIMIT
-            });
-
-            $scope.uploaderModal.filters.push({
-                'name': 'enforceMaxFileSize',
-                'fn': function (item) {
-                    return item.size <= MAX_FILESIZE;
-                }
-            });
-
-            $scope.$on('openPairModal', function (evt, pair, array, index) {
-                //Define if not defined
-                if (angular.isUndefined(pair.Images)) {
-                    pair.Images = [];
-                }
-                if (angular.isUndefined(pair.queue)) {
-                    pair.queue = [];
-                }
-                //Modal target (for viewing pair)
-                $scope.pairModal = angular.copy(pair);
-                $scope.pairIndex = index;
-                $scope.uploaderModal.queue = $scope.pairModal.queue;
-                ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onQueueLimit, onImageUploadFail);
-            });
-            $scope.$on('savePairModal', function (evt) {
-                $scope.formData.Variants[$scope.pairIndex] = $scope.pairModal;
-            });
-        }
-    };
-
-
-
-
-}];
-
-<<<<<<< HEAD
-},{"angular":150}],32:[function(require,module,exports){
-var angular = require('angular');
-
-module.exports = ['$scope', '$filter' ,'$window', 'util', 'config', 'Product', 'Collection','Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$CollectionAddListItem',
-function ($scope, $filter,$window, util, config, Product, Collection, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, $rootScope , $q, KnownException, NcAlert, $CollectionAddListItem) {
-    'use strict';
-
-
-    $window.onbeforeunload = function (e) {
-        if (!$scope.addProductCollectionForm.$dirty) {
-            //only warn when form is dirty
-            return null;
-        }
-        var message = "Your changes will not be saved.",
-        e = e || window.event;
-        // For IE and Firefox
-        if (e) {
-            e.returnValue = message;
-        }
-
-        // For Safari
-        return message;
-    }; // end onbefore unload
-//productAddListItem
-    $scope.productAddListItem = [];
-//for modal add item list
-$scope.checkBoxCache = {};
-$scope.productList = [];
-$scope.productTotal = 0 ;
-$scope.defaultProductModalParam ={
-        filter: 'All',
-        searchText: null,
-        orderBy: 'UpdateDate',
-        direction: 'desc',
-        page: 0,
-        pageSize: 5
-    };
-
-$scope.statusLookup = {};
- config.PRODUCT_STATUS.forEach(function(object){
-       $scope.statusLookup[object.value] = object; 
-    });
- $scope.totalPage = function (x) {
-        return Math.ceil($scope.productTotal / $scope.defaultProductModalParam.pageSize);
-    };
- $scope.asStatus = function (ab) {
-        return $scope.statusLookup[ab];
-    };   
-$scope.nextPage = function (m) {
-    if ($scope.defaultProductModalParam.page + m >= $scope.totalPage() ||
-        $scope.defaultProductModalParam.page + m < 0)
-        return;
-
-    $scope.defaultProductModalParam.page += m;
-};
-$scope.setOrderBy = function (nextOrderBy) {
-    if ($scope.defaultProductModalParam.orderBy == nextOrderBy) {
-        $scope.defaultProductModalParam.direction = ($scope.defaultProductModalParam.direction == 'asc' ? 'desc' : 'asc');
-    }
-    $scope.defaultProductModalParam.orderBy = nextOrderBy;
-}; 
-$scope.setPageSize = function (p) {
-    $scope.defaultProductModalParam.pageSize = p;
-}
-$scope.applySearch = function () {
-    $scope.defaultProductModalParam.searchText = $scope.searchText;
-};
-$scope.reloadData = function () {        
-       $scope.notReady = true;
-            Product.getAll($scope.defaultProductModalParam).then(function (x) {
-            $scope.productTotal = x.total;
-            $scope.productList = x.data;
-            $scope.notReady = false;
-        });
-    };
-
-$scope.$watch('defaultProductModalParam', function () {
-        $scope.reloadData();
-        $scope.allChecked = false;
-    }, true);
-
- $scope.checkAll = function(){
-    // console.log("chk all");
-    // console.log($scope.productList);
-    // console.log($scope.productList[0]);
-        var first = $scope.productList[0];
-        var tval = !($scope.checkBoxCache[first.ProductId] || false);
-        $scope.productList.forEach(function (d) {
-            $scope.checkBoxCache[d.ProductId] = tval;
-        });
-    }
-
-    $scope.checkBoxCount = function () {
-        var m = [];
-        Object.keys($scope.checkBoxCache).forEach(function (key) {
-            if ($scope.checkBoxCache[key]) m.push($scope.checkBoxCache[key]);
-        });
-        
-        var chkCount = 0;
-        $scope.productList.forEach(function(p){
-            chkCount += ($scope.checkBoxCache[p.ProductId] ? 1 : 0);
-        });
-        
-        if(chkCount != $scope.productList.length){
-            $scope.allChecked = false;
-        }else{
-            $scope.allChecked = true;
-        }
-        return m.length;
-    }
-
-// end modal item list
-
-//begin open and confirm modal action
-//AddToList
-$scope.AddToList = function () {
-        $scope.exporter = {
-            progress: 10,
-            title: 'Select Get 1 Item...'
-        };
-            $scope.reloadData();
-
-        $("#add-product-cli").modal('show');
-    };
-    
-    $scope.AddToListConfirm = function(){
-        $("#add-product-cli").modal('hide');
-      
-        var arr = [];
-        Object.keys($scope.checkBoxCache).forEach(function (m,index) {
-            if (!$scope.checkBoxCache[m]) return;
-            arr.push({
-                ProductId: Number(m)
-            });
-            var tmpObj =$filter('filter')($scope.productList, {ProductId: Number(m) })[0];
-            $scope.productAddListItem[index] = tmpObj;
-        });
-        if (arr.length == 0) return;
-      
-      // var  a = $filter('filter')($scope.productList, {ProductId: arr[0].ProductId })[0];      
-      //   console.log("a");
-      //   console.log(a);
-    }
-//end open and confirm modal action
-
- $scope.actions = {       
-        remove: function (index,row) {
-            console.log($scope.checkBoxCache);
-            var uid= row.ProductId;
-            delete $scope.checkBoxCache[uid] ;
-             console.log($scope.checkBoxCache);
-            $scope.productAddListItem.splice(index, 1);
-        }
-    };
-
-    $scope.keywordValidConditions = {};
-    $scope.variationOptionWarning = [[], []];
-    $scope.onKeywordAdded = function (item, model) {
-
-        $scope.keywordValidConditions = {};
-        if (!item) return $scope.formData.Keywords.pop();
-
-        if ($scope.formData.Keywords.length > 20) {
-            $scope.keywordValidConditions['tagcount'] = true;
-        }
-
-        if (item.length > 30) {
-            $scope.keywordValidConditions['taglength'] = true;
-        }
-
-        if (!item.match(/^[a-zA-Z0-9ก-ฮ\s\-]+$/)) {
-            $scope.keywordValidConditions['pattern'] = true;
-        }
-
-        if (Object.keys($scope.keywordValidConditions).length > 0) {
-            //if there is error, revert
-            $scope.formData.Keywords.pop();
-        }
-    }
-
-    $scope.onKeywordRemoved = function (item, model) {
-        console.log($scope.formData.Keywords);
-    }
-
-   
-   
-    $scope.overview = {}
-
-    $scope.formData = {
-        Brand: { id: null, BrandNameEn: "Please select brand.." },
-        MasterVariant: { DimensionUnit: "CM", WeightUnit: "G", StockType: "Stock" },
-        ShippingMethod: "1",
-        AttributeSet: {
-            AttributeSetTagMaps: []
-        },
-        RelatedProducts: [],
-        MasterImages: [],
-        MasterImages360: [],
-        VideoLinks: [],
-        Variants: [],
-        GlobalCategories: [null, null, null],
-        LocalCategories: [null, null, null],
-        SEO: { ProductBoostingWeight: 10000 },
-        ControlFlags: [],
-        Keywords: []
-    };
-  
-    //TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
-    $scope._attrEnTh = function (t) { return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
-    $scope._isFreeTextInput = util.isFreeTextDataType;
-    $scope._isListInput = util.isListDataType;
-
-    //CK editor options
-    $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
-
-    /*
-     * Page can be in 3 states
-     * --------------------------------
-     *  success: OK stat
-     *  failure: L2 validation error (client + server)
-     *  invalid: L1 validation error (client)
-     */
-    $scope.pageState = {
-        success: false,
-        failure: false,
-        invalid: false,
-        loading: {
-            state: true,
-            message: 'Loading..'
-        },
-        load: function (msg) {
-            $scope.pageState.loading.message = msg;
-            $scope.pageState.loading.state = true;
-        },
-        reset: function () {
-            $scope.pageState.success = false;
-            $scope.pageState.failure = false;
-            $scope.pageState.invalid = false;
-            $scope.pageState.loading.state = false;
-        }
-    };
-
-  
-    /*
-     *  Run clean data before any publishing
-     *  which will try to reduce imperfection before
-     *  serialization
-     */
-    var cleanData = function () {
-
-    };
-
-    $scope.preview = function () {
-        return console.log($scope.formData);
-        cleanData();
-        var apiRequest = Product.serialize($scope.formData);
-        console.log(JSON.stringify(apiRequest));
-    };
-
-
-    /*
-     *  refresh functions
-     *  for dropdown suggestions
-     */
-
-    $scope.refreshRelatedProducts = function (q) {
-        return Product.getAll({
-            searchText: q
-        }).then(function (dataSet) {
-            $scope.availableRelatedProducts = dataSet.data;
-        });
-    };
-
-   
-
-    $scope.$watch('formData.ExpireDate', function () {
-        var form = $scope.addProductCollectionForm;
-        if (form.ExpireDate)
-        form.ExpireDate.$setValidity("min", true);
-        if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
-            if (!form.ExpireDate) return;
-            form.ExpireDate.$setValidity("min", false);
-            form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
-        }
-    });
-
-    var manualValidate = function () {
-        var mat = [];
-        // if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == "") {
-        //     mat.push("Missing Description (Thai)");
-        // }
-
-        // if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == "") {
-        //     mat.push("Missing Description (English)");
-        // }
-
-        // if (!$scope.formData.Brand.BrandId) {
-        //     mat.push("Missing Brand");
-        // }
-
-        return mat;
-    };
-
-    /*
-     *  Publish (both Draft and WA)
-     */
-    $scope.publish = function (Status) {
-
-        $scope.pageState.reset();
-        $scope.pageState.load('Validating..');
-
-        $scope.onPublishing = (Status == "4");
-        //On click validation
-        var validateMat = manualValidate();
-        if (validateMat.length > 0 && Status == '4') {
-            $scope.pageState.reset();
-            $scope.pageState.failure = true;
-            $scope.pageState.failure_message = validateMat[0];
-            $window.location.hash = 'alert';
-            $window.location.hash = 'alert-failure';
-            return;
-        }
-
-
-        $scope.pageState.load('Publishing..');
-        cleanData();
-        console.log("Publishing with Status = ", Status);
-        //Error Handling too Messi
-        try {
-            // var apiRequest = Product.serialize($scope.formData);            
-            //Product.publish(apiRequest, Status).then(function (res) {
-                //console.log($scope.formData);
-                $scope.formData.CMSStatusId = Status
-                $scope.formData.Status = true;
-                $scope.formData.CMSTypeId = 1;
-                $scope.formData.UpdateBy =1;
-                $scope.formData.CreateBy =1;
-                $scope.formData.Visibility = 1;
-                $scope.formData.CreateIP ='203.146.156.34';
-               
-                var apiRequest =  Collection.serialize($scope.formData);  
-                var tmpObjArr =[];
-                var apiParameter ;
-                if($scope.formData.CMSId != null && typeof $scope.formData.CMSId != "undefined"){
-                    tmpObjArr.push(apiRequest);
-                    apiParameter = tmpObjArr;
-                }else{ apiParameter = apiRequest;}
-
-
-                Collection.publish(apiParameter, Status).then(function (res) {
-                $scope.pageState.reset();
-                if (res.CMSId) {
-                    $scope.overview = res;
-                    $scope.pageState.success = true;
-                    $scope.formData.CMSId = res.ProductId;
-                    $scope.addProductCollectionForm.$setPristine(true)
-                } else {
-                    $scope.pageState.failure = true;
-                    $scope.pageState.failure_message = res.message || res.Message;
-                    $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-                    $window.location.hash = 'alert'
-                    $window.location.hash = 'alert-failure'
-                }
-            }, function (er) {
-                $scope.pageState.reset();
-                $scope.pageState.failure = true;
-                $scope.pageState.failure_message = er.Message || er.message;
-                $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-
-                $window.location.hash = 'alert' //Need to toggle hash otherwise it wont scroll
-                $window.location.hash = 'alert-failure'
-            });
-
-        } catch (ex) {
-            console.log("catch exception from publish process");
-            $scope.pageState.reset();
-            $scope.pageState.failure = true;
-            $scope.pageState.failure_message = ex.message;
-            $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-            $window.location.hash = 'alert'
-            $window.location.hash = 'alert-failure'
-            console.log('publish failure', ex);
-            return;
-        }
-    };
-
-
-    $scope.init = function (viewBag) {
-        //TODO: Refactor, use better callback mechanism
-        if (!angular.isObject(viewBag)) throw new KnownException("View bag is corrupted");
-
-        var shopId = 1;
-        var _editMode = ("CMSId" in viewBag)
-        for (var page in tabPage) {
-            tabPage[page].angular();
-        }
-
-
-        for (var page in tabPage) {
-            tabPage[page].angular();
-        }
-
-        if (_editMode) {
-                        var CMSId = viewBag.CMSId;
-                        $scope.pageState.load('Loading Collection..');
-
-                        Collection.getOne(CMSId)
-                            .then(function (inverseFormData) {
-                                $scope.overview = angular.copy(inverseFormData);
-                              
-                                $CollectionAddListItem.fill( $scope.pageState, $scope.dataSet, $scope.formData,  $scope.controlFlags,
-                                     inverseFormData).then(function () {
-                                        $scope.formData.CMSId = Number(CMSId);
-                                        $scope.pageState.reset();
-                                        console.log("$scope.formData");
-                                        console.log($scope.formData);
-                                    });
-                            }, function (error) {
-                                 console.log("function (error)");
-                                throw new KnownException("Unable to fetch collection with id " + CMSId);
-                            });
-
-                    } 
-                    // else if ('catId' in viewBag) {
-                    //     var catId = Number(viewBag.catId);
-                    //     $CollectionAddListItem.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs,
-                    //         $scope.controlFlags).then(function () {
-                    //             $scope.pageState.reset();
-                             
-                    //         });
-                    // }  else {
-                    //     throw new KnownException("Invalid mode, viewBag garbage"); }
-
-
-    }//end init
-
-    var tabPage = {};
-
-}];
-
-},{"angular":150}],33:[function(require,module,exports){
-arguments[4][25][0].apply(exports,arguments)
-},{"angular":150,"dup":25}],34:[function(require,module,exports){
-=======
-},{"angular":170}],34:[function(require,module,exports){
-var angular = require('angular');
-
-module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', function ($scope, Product, util, Alert, $window) {
-    
-}];
-},{"angular":170}],35:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
-module.exports = ['$scope', 'Product', 'Collection', 'util', 'Alert', '$window', '$rootScope', function
-
-($scope, Product,Collection, util, Alert, $window, $rootScope) {
-    //UI binding variables    
-
-    $scope.checkBoxCache = {};
-    $scope.hidCMSTypeId = {};    
-    $scope.showOnOffStatus = true;
-    $scope.allChecked = false;
-    $scope.alert = new Alert();
-    $scope.filterOptions = [
-        { name: "All", value: 'All' },
-        { name: "Approved", value: 'Approved' },
-        { name: 'Draft', value: 'Draft' },
-        { name: "Not Approved", value: 'NotApproved' },
-        { name: "Wait for Approval", value: 'WaitforApproval' },
-    ];
-
-    $scope.startExportProductCollection = function () {
-        $scope.exporter = {
-            progress: 10,
-            title: 'Exporting...'
-        };
-
-        $("#export-product-collection").modal('show');
-    };
-
-    $scope.confirmExportProductCollection = function () {
-        $("#export-product-collection").modal('hide');
-
-        var arr = [];
-        Object.keys($scope.checkBoxCache).forEach(function (m) {
-            if (!$scope.checkBoxCache[m]) return;
-            arr.push({
-                CMSId: Number(m)
-            });
-        });
-
-        if (arr.length == 0) return;
-
-
-        var fileName = 'ProductCollectionExport-' + moment(new Date(), 'MM-DD-YYYY-HHmm') + ".csv";
-        var a = document.getElementById("export_download_btn");
-
-        var error = function (r) {
-            $(".modal").modal('hide');
-            $scope.exporter.title = 'Error'
-            $scope.alert.error('Unable to Export Product');
-            $scope.reloadData();
-        };
-
-        $scope.exporter.progress = 15;
-        var blobs = [];
-
-        var chunks = _.chunk(arr, 3);
-
-
-        chunks.forEach(function (chunk) {
-            Collection.export(chunk).then(function (result) {
-
-                $scope.exporter.progress += (100 / chunks);
-                blobs.push(result);
-
-                var file = new Blob(blobs, { type: 'application/csv' });
-                var fileURL = URL.createObjectURL(file);
-
-                $scope.exporter.href = fileURL;
-                $scope.exporter.download = fileName;
-                $scope.exporter.progress = 100;
-                $scope.exporter.title = 'Export Complete'
-
-                a.href = fileURL;
-
-            }, error);
-        });
-    }
-
-
-    $scope.setPageSize = function (p) {
-        $scope.tableParams.pageSize = p;
-    }
-
-    $scope.bulk = {
-        fn: function () {
-            var bulk = $scope.bulkOptions.find(function (item) {
-                return item.name == $('#bulk').html();
-            });
-            if (bulk) {
-                bulk.fn();
-            }
-            $scope.allChecked = false;
-        }
-    };
-
-    $scope.bulkOptions = [
-        {
-            name: 'Delete',
-            value: 'delete',
-            fn: function () {
-                $scope.alert.close();
-             
-
-
-             var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSId: -1 , CMSStatusFlowId: 5 , CMSTypeId : -1 };  
-                    }else{
-                            rObj = {
-                            CMSId: Number(id),
-                            CMSStatusFlowId: 5 ,
-                            CMSTypeId: $scope.hidCMSTypeId[id]
-                        };
-                    }                   
-                    return rObj ;
-                });
-    
-                if (selList.length > 0) {
-                       
-                        var apiRequest = Collection.arrSerialize(selList);                         
-                        Collection.deleteBulk(apiRequest).then(function () {
-                        $scope.alert.success('Successfully deleted');
-                        $scope.reloadData();
-                    }, function (result) {
-                        $scope.alert.error('Unable to Delete');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Show',
-            value: 'show',
-            fn: function () {
-
-        var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSId: -1 , Visibility: true ,CMSTypeId :-1 };  
-                    }else{
-                            rObj = {
-                            CMSId: Number(id) ,
-                            Visibility : true ,
-                            CMSTypeId: $scope.hidCMSTypeId[id]
-                        };
-                    }                   
-                    return rObj ;
-                });
-
-
-                if (selList.length > 0) {
-                     var apiRequest = Collection.arrSerialize(selList);
-                        Collection.visible(apiRequest).then(function () {
-                        $scope.alert.success('Successfully changed');
-                        $scope.reloadData();
-                    }, function () {
-                        $scope.alert.error('Unable to Show');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Hide',
-            value: 'hide',
-            fn: function () {
-               
-                 var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSId: -1 , Visibility: false ,CMSTypeId :-1 };  
-                    }else{
-                            rObj = {
-                            CMSId: Number(id) ,
-                            Visibility : false ,
-                            CMSTypeId: $scope.hidCMSTypeId[id]
-                        };
-                    }                   
-                    return rObj ;
-                });
-
-                if (selList.length > 0) {
-                      var apiRequest = Collection.arrSerialize(selList);
-                        Collection.visible(apiRequest).then(function () {
-                        $scope.alert.success('Successfully changed');
-                        $scope.reloadData();
-                    }, function () {
-                        $scope.alert.error('Unable to Hide');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Publish',
-            value: 'publish',
-            fn: function () {
-              
-                 var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSId: -1 ,CMSStatusFlowId: 2 , CMSTypeId :-1 };  
-                    }else{
-                            rObj = {
-                            CMSId: Number(id) ,
-                            CMSStatusFlowId: 2 ,
-                            CMSTypeId: $scope.hidCMSTypeId[id]
-                        };
-                    }                   
-                    return rObj ;
-                });
-
-                if (selList.length == 0) return;
-
-                    var apiRequest = Collection.arrSerialize(selList);
-                Collection.bulkPublish(apiRequest).then(function () {
-                    // $scope.alert.success("Successfully published " + arr.length + " items");
-                    // $scope.reloadData();
-                     $scope.alert.success('Successfully published');
-                     $scope.reloadData();
-                }, function (r) {
-                    //$scope.alert.error('Unable to publish because ' + r.message);
-                    $scope.alert.success('Unable to publish');
-                     $scope.reloadData();
-                });
-            }
-        }
-    ];
-    $scope.actions = {
-        edit: function (row) {
-            $window.location.href = "/collections/" + row.CMSId;
-        },
-        delete: function (row) {
-            $scope.alert.close();
-            Collection.deleteBulk([{ CMSId: row.CMSId ,CMSTypeId : row.CMSTypeId,CMSStatusFlowId:5 }]).then(function () {
-                $scope.alert.success('You have successfully remove an entry.');
-                $scope.reloadData();
-            }, function (err) {
-                $scope.alert.error(err);
-            });
-        },
-        duplicate: function (row) {
-            $scope.alert.close();
-            Collection.duplicate(row.CMSId).then(function () {
-                $scope.alert.success();
-                $scope.reloadData();
-            }, function (err) {
-                $scope.alert.error(err);
-            });
-        },
-        toggle: function (row) {
-            $scope.alert.close();
-            row.Visibility = !row.Visibility;
-            console.log("[row]");
-            console.log([row]);
-            Collection.visible([row]).then(function () {
-            }, function (err) {
-                $scope.alert.error(err);
-                $scope.reloadData();
-            });
-        }
-    };
-    $scope.sort = util.tableSortClass($scope);
-    var StatusLookup = {
-
-        '1': {
-            Class: 'fa-circle-o',
-            Text: 'Draft',
-            Color: 'color-grey'
-        },
-        '2': {
-            Class: 'fa-check-square-o',
-            Text: 'Approve',
-            Color: 'color-green'
-        },
-        '3': {
-            Class: 'fa-circle-o',
-            Text: 'Not approve',
-            Color: 'color-orange'
-        },
-        '4': {
-            Class: 'fa-clock-o',
-            Text: 'Wait for approval',
-            Color: 'color-yellow'
-        },
-       '5': {
-            Class: 'fa-clock-o',
-            Text: 'Junk',
-            Color: 'color-red'
-        }
-    }
-    $scope.init = function (params) {
-        if (angular.isDefined(params)) {
-            if (angular.isDefined(params.success) && params.success != null) {
-                $scope.alert.success();
-            }
-        }
-    };
-    $scope.asStatus = function (ab) {
-        return StatusLookup[ab];
-    };
-
-    //Product List
-    $scope.productList = [];
-    //Default parameters
-    $scope.tableParams = {
-        filter: 'All',
-        searchText: null,
-        orderBy: 'UpdateDate',
-        direction: 'desc',
-        page: 0,
-        pageSize: 10,
-        shopID :0
-    };
-
-    $scope.notReady = true;
-
-    $scope.applySearch = function () {
-        $scope.tableParams.searchText = $scope.searchText;
-    };
-
-    $scope.totalPage = function (x) {
-        return Math.ceil($scope.productTotal / $scope.tableParams.pageSize);
-    };
-
-    $scope.nextPage = function (m) {
-        if ($scope.tableParams.page + m >= $scope.totalPage() ||
-            $scope.tableParams.page + m < 0)
-            return;
-
-        $scope.tableParams.page += m;
-    };
-
-
-    $scope.setOrderBy = function (nextOrderBy) {
-        if ($scope.tableParams.orderBy == nextOrderBy) {
-            $scope.tableParams.direction = ($scope.tableParams.direction == 'asc' ? 'desc' :
-
-'asc');
-        }
-        $scope.tableParams.orderBy = nextOrderBy;
-    };
-
-    $scope.productTotal = 0;
-    //Populate Data Source
-    $scope.reloadData = function () {
-        $scope.productList = [];
-        $scope.notReady = true;
-        Collection.getAll($scope.tableParams).then(function (x) {
-            $scope.productTotal = x.total;
-            $scope.productList = x.data;
-            $scope.notReady = false;
-        });
-    };
-
-    //Watch any change in table parameter, trigger reload
-    $scope.$watch('tableParams', function () {
-        $scope.reloadData();
-        $scope.allChecked = false;
-    }, true);
-
-    
-
-   
-    $scope.checkAll = function(){
-        var first = $scope.productList[0];
-        var tval = !($scope.checkBoxCache[first.CMSId] || false);
-        $scope.productList.forEach(function (d) {
-            $scope.checkBoxCache[d.CMSId] = tval;
-        });
-    }
-
-
-    
-
-    $scope.checkBoxCount = function () {
-        var m = [];
-        Object.keys($scope.checkBoxCache).forEach(function (key) {
-            if ($scope.checkBoxCache[key]) m.push($scope.checkBoxCache[key]);
-        });
-      
-        //Count checked checkbox (on this page only)
-        //TODO: I don't like this solution, I'd rather trade space for time
-        //note: can't just count checkboxcache because checkboxcache is global across
-        //all pages. 
-        var chkCount = 0;
-        $scope.productList.forEach(function(p){
-            chkCount += ($scope.checkBoxCache[p.CMSId] ? 1 : 0);
-        });
-        
-        //Change selectAll checkbox state
-        if(chkCount != $scope.productList.length){
-            $scope.allChecked = false;
-        }else{
-            $scope.allChecked = true;
-        }
-        return m.length;
-    }
-}];
-
-<<<<<<< HEAD
-},{}],35:[function(require,module,exports){
-module.exports = ['$scope', 'Product', 'Collection', 'util', 'Alert', '$window', '$rootScope', function
-
-($scope, Product,Collection, util, Alert, $window, $rootScope) {
-    //UI binding variables    
-
-    $scope.checkBoxCache = {};
-    $scope.hidCMSTypeId = {};    
-    $scope.showOnOffStatus = true;
-    $scope.allChecked = false;
-    $scope.alert = new Alert();
-    $scope.filterOptions = [
-        { name: "All", value: 'All' },
-        { name: "Approved", value: 'Approved' },
-        { name: 'Draft', value: 'Draft' },
-        { name: "Not Approved", value: 'NotApproved' },
-        { name: "Wait for Approval", value: 'WaitforApproval' },
-    ];
-
-    $scope.startExportProductGroupCollection = function () {
-        $scope.exporter = {
-            progress: 10,
-            title: 'Exporting...'
-        };
-
-        $("#export-product-group-collection").modal('show');
-    };
-
-    $scope.confirmExportProductGroupCollection = function () {
-        $("#export-product-group-collection").modal('hide');
-
-        var arr = [];
-        Object.keys($scope.checkBoxCache).forEach(function (m) {
-            if (!$scope.checkBoxCache[m]) return;
-            arr.push({
-                CMSCollectionGroupId: Number(m)
-            });
-        });
-
-        if (arr.length == 0) return;
-
-
-        var fileName = 'ProductGroupCollectionExport-' + moment(new Date(), 'MM-DD-YYYY-HHmm') + ".csv";
-        var a = document.getElementById("export_download_btn");
-
-        var error = function (r) {
-            $(".modal").modal('hide');
-            $scope.exporter.title = 'Error'
-            $scope.alert.error('Unable to Export Product');
-            $scope.reloadData();
-        };
-
-        $scope.exporter.progress = 15;
-        var blobs = [];
-
-        var chunks = _.chunk(arr, 3);
-
-
-        chunks.forEach(function (chunk) {
-            Collection.exportGroup(chunk).then(function (result) {
-
-                $scope.exporter.progress += (100 / chunks);
-                blobs.push(result);
-
-                var file = new Blob(blobs, { type: 'application/csv' });
-                var fileURL = URL.createObjectURL(file);
-
-                $scope.exporter.href = fileURL;
-                $scope.exporter.download = fileName;
-                $scope.exporter.progress = 100;
-                $scope.exporter.title = 'Export Complete'
-
-                a.href = fileURL;
-
-            }, error);
-        });
-    }
-
-
-    $scope.setPageSize = function (p) {
-        $scope.tableParams.pageSize = p;
-    }
-
-    $scope.bulk = {
-        fn: function () {
-            var bulk = $scope.bulkOptions.find(function (item) {
-                return item.name == $('#bulk').html();
-            });
-            if (bulk) {
-                bulk.fn();
-            }
-            $scope.allChecked = false;
-        }
-    };
-
-    $scope.bulkOptions = [
-        {
-            name: 'Delete',
-            value: 'delete',
-            fn: function () {
-                $scope.alert.close();
-             
-
-
-             var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSCollectionGroupId: -1 , CMSStatusFlowId: 5 };  
-                    }else{
-                            rObj = {
-                            CMSCollectionGroupId: Number(id),
-                            CMSStatusFlowId: 5 
-                        };
-                    }                   
-                    return rObj ;
-                });
-    
-                if (selList.length > 0) {
-                       
-                        var apiRequest = Collection.arrSerialize(selList);                         
-                        Collection.deleteBulkGroup(apiRequest).then(function () {
-                        $scope.alert.success('Successfully deleted');
-                        $scope.reloadData();
-                    }, function (result) {
-                        $scope.alert.error('Unable to Delete');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Show',
-            value: 'show',
-            fn: function () {
-
-        var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSCollectionGroupId: -1 , Visibility: true ,CMSTypeId :-1 };  
-                    }else{
-                            rObj = {
-                            CMSCollectionGroupId: Number(id) ,
-                            Visibility : true ,
-                            CMSTypeId: $scope.hidCMSTypeId[id]
-                        };
-                    }                   
-                    return rObj ;
-                });
-
-
-                if (selList.length > 0) {
-                     var apiRequest = Collection.arrSerialize(selList);
-                        Collection.visibleGroup(apiRequest).then(function () {
-                        $scope.alert.success('Successfully changed');
-                        $scope.reloadData();
-                    }, function () {
-                        $scope.alert.error('Unable to Show');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Hide',
-            value: 'hide',
-            fn: function () {
-               
-                 var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSCollectionGroupId: -1 , Visibility: false };  
-                    }else{
-                            rObj = {
-                            CMSCollectionGroupId: Number(id) ,
-                            Visibility : false 
-                        };
-                    }                   
-                    return rObj ;
-                });
-
-                if (selList.length > 0) {
-                      var apiRequest = Collection.arrSerialize(selList);
-                        Collection.visibleGroup(apiRequest).then(function () {
-                        $scope.alert.success('Successfully changed');
-                        $scope.reloadData();
-                    }, function () {
-                        $scope.alert.error('Unable to Hide');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Publish',
-            value: 'publish',
-            fn: function () {
-              
-                 var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSCollectionGroupId: -1 ,CMSStatusFlowId: 2 , CMSTypeId :-1 };  
-                    }else{
-                            rObj = {
-                            CMSCollectionGroupId: Number(id) ,
-                            CMSStatusFlowId: 2
-                        };
-                    }                   
-                    return rObj ;
-                });
-
-                if (selList.length == 0) return;
-
-                    var apiRequest = Collection.arrSerialize(selList);
-                Collection.bulkPublishGroup(apiRequest).then(function () {
-                    
-                     $scope.alert.success('Successfully published');
-                     $scope.reloadData();
-                }, function (r) {
-                    $scope.alert.success('Unable to publish');
-                     $scope.reloadData();
-                });
-            }
-        }
-    ];
-    $scope.actions = {
-        edit: function (row) {
-            $window.location.href = "/collections/" + row.CMSId;
-        },
-        delete: function (row) {
-            $scope.alert.close();
-            Collection.deleteBulkGroup([{ CMSId: row.CMSCollectionGroupId ,CMSStatusFlowId:5 }]).then(function () {
-                $scope.alert.success('You have successfully remove an entry.');
-                $scope.reloadData();
-            }, function (err) {
-                $scope.alert.error(err);
-            });
-        },
-        duplicate: function (row) {
-            $scope.alert.close();
-            Collection.duplicateGroup(row.CMSId).then(function () {
-                $scope.alert.success();
-                $scope.reloadData();
-            }, function (err) {
-                $scope.alert.error(err);
-            });
-        },
-        toggle: function (row) {
-            $scope.alert.close();
-            row.Visibility = !row.Visibility;
-            console.log("[row]");
-            console.log([row]);
-            Collection.visibleGroup([row]).then(function () {
-            }, function (err) {
-                $scope.alert.error(err);
-                $scope.reloadData();
-            });
-        }
-    };
-    $scope.sort = util.tableSortClass($scope);
-    var StatusLookup = {
-
-        '1': {
-            Class: 'fa-circle-o',
-            Text: 'Draft',
-            Color: 'color-grey'
-        },
-        '2': {
-            Class: 'fa-check-square-o',
-            Text: 'Approve',
-            Color: 'color-green'
-        },
-        '3': {
-            Class: 'fa-circle-o',
-            Text: 'Not approve',
-            Color: 'color-orange'
-        },
-        '4': {
-            Class: 'fa-clock-o',
-            Text: 'Wait for approval',
-            Color: 'color-yellow'
-        },
-       '5': {
-            Class: 'fa-clock-o',
-            Text: 'Junk',
-            Color: 'color-red'
-        }
-    }
-    $scope.init = function (params) {
-        console.log(" group collection list init");
-        if (angular.isDefined(params)) {
-            if (angular.isDefined(params.success) && params.success != null) {
-                $scope.alert.success();
-            }
-        }
-    };
-    $scope.asStatus = function (ab) {
-        return StatusLookup[ab];
-    };
-
-    //Product List
-    $scope.productGroupList = [];
-    //Default parameters
-    $scope.tableParams = {
-        filter: 'All',
-        searchText: null,
-        orderBy: 'UpdateDate',
-        direction: 'desc',
-        page: 0,
-        pageSize: 10,
-        shopID :0
-    };
-
-    $scope.notReady = true;
-
-    $scope.applySearch = function () {
-        $scope.tableParams.searchText = $scope.searchText;
-    };
-
-    $scope.totalPage = function (x) {
-        return Math.ceil($scope.productGroupTotal / $scope.tableParams.pageSize);
-    };
-
-    $scope.nextPage = function (m) {
-        if ($scope.tableParams.page + m >= $scope.totalPage() ||
-            $scope.tableParams.page + m < 0)
-            return;
-
-        $scope.tableParams.page += m;
-    };
-
-
-    $scope.setOrderBy = function (nextOrderBy) {
-        if ($scope.tableParams.orderBy == nextOrderBy) {
-            $scope.tableParams.direction = ($scope.tableParams.direction == 'asc' ? 'desc' :
-
-'asc');
-        }
-        $scope.tableParams.orderBy = nextOrderBy;
-    };
-
-    $scope.productGroupTotal = 0;
-    //Populate Data Source
-    $scope.reloadData = function () {
-        $scope.productGroupList = [];
-        $scope.notReady = true;
-        Collection.getAllGroup($scope.tableParams).then(function (x) {
-            $scope.productGroupTotal = x.total;
-            $scope.productGroupList = x.data;
-            $scope.notReady = false;
-        });
-    };
-
-    //Watch any change in table parameter, trigger reload
-    $scope.$watch('tableParams', function () {
-        $scope.reloadData();
-        $scope.allChecked = false;
-    }, true);
-
-    
-
-   
-    $scope.checkAll = function(){
-        var first = $scope.productGroupList[0];
-        var tval = !($scope.checkBoxCache[first.CMSCollectionGroupId] || false);
-        $scope.productGroupList.forEach(function (d) {
-            $scope.checkBoxCache[d.CMSCollectionGroupId] = tval;
-        });
-    }
-
-
-    
-
-    $scope.checkBoxCount = function () {
-        var m = [];
-        Object.keys($scope.checkBoxCache).forEach(function (key) {
-            if ($scope.checkBoxCache[key]) m.push($scope.checkBoxCache[key]);
-        });
-      
-        //Count checked checkbox (on this page only)
-        //TODO: I don't like this solution, I'd rather trade space for time
-        //note: can't just count checkboxcache because checkboxcache is global across
-        //all pages. 
-        var chkCount = 0;
-        $scope.productGroupList.forEach(function(p){
-            chkCount += ($scope.checkBoxCache[p.CMSId] ? 1 : 0);
-        });
-        
-        //Change selectAll checkbox state
-        if(chkCount != $scope.productGroupList.length){
-            $scope.allChecked = false;
-        }else{
-            $scope.allChecked = true;
-        }
-        return m.length;
-    }
-}];
-
-},{}],36:[function(require,module,exports){
-=======
-},{}],36:[function(require,module,exports){
+},{"angular":159}],30:[function(require,module,exports){
 module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product, AttributeSet) {
   $scope.ProductList = [];
   $scope.SELECT_ALL = false;
@@ -5778,8 +2804,7 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
   };
 }];
 
-},{}],37:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],31:[function(require,module,exports){
 //Not Used
 module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader', function ($scope, Product, util, Alert, $window, FileUploader) {
     $scope.productList = [];
@@ -5789,265 +2814,214 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader
     });
 }];
 
-<<<<<<< HEAD
-},{}],37:[function(require,module,exports){
-module.exports = ['$scope', 'Product', 'util', 'NcAlert', '$window', 'FileUploader', 'ImageService', 'config', 'common', 
-function ($scope, Product, util, NcAlert, $window, FileUploader, ImageService, config, common) {
-    $scope.response = {};
-    $scope.alert = new NcAlert();
-    $scope.filterOptions = [
-			{ name: "All", value: 'All'},
-			{ name: "Image Missing", value: 'ImageMissing'},
-			{ name: "Approved", value: 'Approved'},
-			{ name: "Not Approved", value: 'NotApproved'},
-			{ name: "Wait Approval", value: 'WaitApproval'}
-	];
-	$scope.params = {
-			_order: 'ProductId',
-			_limit: 10,
-			_offset: 0,
-			_direction: 'asc',
-			_filter: 'All'
-	};
+},{}],32:[function(require,module,exports){
+module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$window", "FileUploader", "ImageService", "config", "common", function ($scope, $controller, Product, util, NcAlert, $window, FileUploader, ImageService, config, common) {
+    'ngInject';
+	$controller('AbstractListCtrl', {
+		$scope: $scope,
+		options: {
+			url: '/products/images',
+			service: Product,
+			item: 'Product',
+			order: 'ProductId',
+			id: 'ProductId',
+			actions: [],
+			bulks: [],
+			filters: [
+					{ name: "All", value: 'All'},
+					{ name: "Image Missing", value: 'ImageMissing'},
+					{ name: "Approved", value: 'Approved'},
+					{ name: "Not Approved", value: 'NotApproved'},
+					{ name: "Draft", value: 'Draft'},
+					{ name: "Wait For Approval", value: 'WaitForApproval'}
+			],
+			reload: function(newObj, oldObj){
+				$scope.loading = true;
+				if(!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
+					if(newObj.searchText !== oldObj.searchText) {
+						$scope.params._offset = 0;
+						$scope.bulkContainer.length = 0;
+					}
+					if(newObj._filter !== oldObj._filter) {
+						$scope.params._offset = 0;
+						$scope.bulkContainer.length = 0;
+					}
+				}
+				Product.getAllVariants($scope.params).then(function(data){
+					$scope.loading = false;
+			        $scope.ignored = true;
+			        $scope.list = data;
+			        _.forEach($scope.list.data, function(e) {
+			        	_.extend(e, {alert: new NcAlert() })
+			        });
+			        $scope.watcher = _.map(data.data, function(e) {
+			        	if(e.IsVariant) {
+			        		return e.VariantImg;
+			        	} else {
+			        		return e.MasterImg;
+			        	}
+			        });
+			    });
+			}
+		}
+	});
+    util.warningOnLeave(function() {
+    	return $scope.dirty;
+    });
+	$scope.paginationSize = [5,10,15];
 	$scope.imageDropzoneOptions = {
 		urlKey: 'url'
 	};
 	$scope.imageGalleryOptions = {
 		urlKey: 'url',
 		actions: [
-		{
-			//Left
-			fn: function(item, array, index) {
-				//console.log(item, array, index);
-			    var to = index - 1;
-			    if (to < 0) return;
-
-			    var tmp = array[to];
-			    array[to] = item;
-			    array[index] = tmp;
-			},
-			icon: 'fa-arrow-left'
-		},
-		{
-			//Right
-			fn: function(item, array, index) {
-				//console.log(item, array, index);
-			    var to = index + 1;
-			    if (to >= array.length) return;
-
-			    var tmp = array[to];
-			    array[to] = item;
-			    array[index] = tmp;
-=======
-},{}],38:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$window", "FileUploader", "ImageService", "config", "common", function ($scope, $controller, Product, util, NcAlert, $window, FileUploader, ImageService, config, common) {
-    'ngInject';
-    $controller('AbstractListCtrl', {
-        $scope: $scope,
-        options: {
-            url: '/products/images',
-            service: Product,
-            item: 'Product',
-            order: 'ProductId',
-            id: 'ProductId',
-            actions: [],
-            bulks: [],
-            filters: [
-					{ name: "All", value: 'All' },
-					{ name: "Image Missing", value: 'ImageMissing' },
-					{ name: "Approved", value: 'Approved' },
-					{ name: "Not Approved", value: 'NotApproved' },
-					{ name: "Draft", value: 'Draft' },
-					{ name: "Wait For Approval", value: 'WaitForApproval' }
-            ],
-            reload: function (newObj, oldObj) {
-                $scope.loading = true;
-                if (!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
-                    if (newObj.searchText !== oldObj.searchText) {
-                        $scope.params._offset = 0;
-                        $scope.bulkContainer.length = 0;
-                    }
-                    if (newObj._filter !== oldObj._filter) {
-                        $scope.params._offset = 0;
-                        $scope.bulkContainer.length = 0;
-                    }
-                }
-                Product.getAllVariants($scope.params).then(function (data) {
-                    $scope.loading = false;
-                    $scope.ignored = true;
-                    $scope.list = data;
-                    _.forEach($scope.list.data, function (e) {
-                        _.extend(e, { alert: new NcAlert() })
-                    });
-                    $scope.watcher = _.map(data.data, function (e) {
-                        if (e.IsVariant) {
-                            return e.VariantImg;
-                        } else {
-                            return e.MasterImg;
-                        }
-                    });
-                });
-            }
-        }
-    });
-    util.warningOnLeave(function () {
-        return $scope.dirty;
-    });
-    $scope.paginationSize = [5, 10, 15];
-    $scope.imageDropzoneOptions = {
-        urlKey: 'url'
-    };
-    $scope.imageGalleryOptions = {
-        urlKey: 'url',
-        actions: [
 			{
-			    //Left
-			    fn: function (item, array, index) {
-			        //console.log(item, array, index);
-			        var to = index - 1;
-			        if (to < 0) return;
+				//Left
+				fn: function(item, array, index) {
+					//console.log(item, array, index);
+				    var to = index - 1;
+				    if (to < 0) return;
 
-			        var tmp = array[to];
-			        array[to] = item;
-			        array[index] = tmp;
-			    },
-			    icon: 'fa-arrow-left'
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+				    var tmp = array[to];
+				    array[to] = item;
+				    array[index] = tmp;
+				},
+				icon: 'fa-arrow-left'
 			},
 			{
-			    //Right
-			    fn: function (item, array, index) {
-			        //console.log(item, array, index);
-			        var to = index + 1;
-			        if (to >= array.length) return;
+				//Right
+				fn: function(item, array, index) {
+					//console.log(item, array, index);
+				    var to = index + 1;
+				    if (to >= array.length) return;
 
-			        var tmp = array[to];
-			        array[to] = item;
-			        array[index] = tmp;
-			    },
-			    icon: 'fa-arrow-right'
+				    var tmp = array[to];
+				    array[to] = item;
+				    array[index] = tmp;
+				},
+				icon: 'fa-arrow-right'
 			},
 			{
-			    //Trash
-			    fn: function (item, array, index) {
-			        array.splice(index, 1);
-			    },
-			    icon: 'fa-trash',
-			    confirmation: {
-			        title: 'Confirm to delete',
-			        message: 'Are you sure you want to delete the image?',
-			        btnConfirm: 'Delete',
-			        btnCancel: 'Cancel',
-			        btnClass: 'btn-red'
-			    }
+				//Trash
+				fn: function(item, array, index) {
+					array.splice(index, 1);
+				},
+				icon: 'fa-trash',
+				confirmation: {
+					title: 'Confirm to delete',
+					message: 'Are you sure you want to delete the image?',
+					btnConfirm: 'Delete',
+					btnCancel: 'Cancel',
+					btnClass: 'btn-red'
+				}
 			}
-        ]
-    };
-    $scope.dirty = false;
+		]
+	};
+	$scope.dirty = false;
     $scope.uploader = ImageService.getUploader('/ProductImages');
     $scope.productStatus = config.PRODUCT_STATUS;
 
-    $scope.onEvent = function (product, eventName) {
-        if (eventName == 'edit') {
-            product.Status = $scope.productStatus[0].value;
-        }
+    $scope.onEvent = function(product, eventName) {
+    	if(eventName == 'edit') {
+    		product.Status = $scope.productStatus[0].value;
+    	}
     }
-    $scope.onError = function (item, response) {
-        if (response.name == 'sizeFilter') {
-            item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + config.ERROR_MESSAGE.WRONG_IMAGE_SIZE);
-        }
-        else if (response.name == 'imageFilter') {
-            item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + config.ERROR_MESSAGE.WRONG_IMAGE_FORMAT);
-        } else {
-            item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + common.getError(response));
-        }
-    };
-    $scope.isDisabled = function (product) {
-        return product.Status == $scope.productStatus[1].value || product.Status == $scope.productStatus[2].value;
+    $scope.onError = function(item, response) {
+    	if(response.name == 'sizeFilter') {
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + config.ERROR_MESSAGE.WRONG_IMAGE_SIZE);
+    	}
+    	else if(response.name == 'imageFilter') {
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + config.ERROR_MESSAGE.WRONG_IMAGE_FORMAT);
+    	} else {
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + common.getError(response));
+		}
+	};
+    $scope.isDisabled = function(product) {
+    	return product.Status == $scope.productStatus[1].value || product.Status == $scope.productStatus[2].value;
     };
     //Prevent unsaved event
-    $scope.onUnsave = function () {
-        if ($scope.dirty) {
-            return confirm('Your change will not be saved.');
-        }
-        return false;
+    $scope.onUnsave = function() {
+    	if($scope.dirty) {
+    		return confirm('Your change will not be saved.');
+    	}
+    	return false;
     };
-    $scope.getTemplate = function (product) {
-        var images = null;
-        if (product.IsVariant) {
-            images = product.VariantImg;
-        } else {
-            images = product.MasterImg;
-        }
+    $scope.getTemplate = function(product) {
+    	var images = null;
+    	if(product.IsVariant) {
+    		images = product.VariantImg;
+    	} else {
+    		images = product.MasterImg;
+    	}
 
-        if ($scope.productStatus[1].value == product.Status) {
-            //Wait for approval
-            return 'product/dropzone/waitForApproval';
-        }
+    	if($scope.productStatus[1].value == product.Status) {
+    		//Wait for approval
+    		return 'product/dropzone/waitForApproval';
+    	}
 
-        if ($scope.productStatus[2].value == product.Status) {
-            return 'product/dropzone/approved';
-        }
+    	if($scope.productStatus[2].value == product.Status) {
+    		return 'product/dropzone/approved';
+    	}
 
-        if (images.length >= 10) {
-            return 'product/dropzone/reachMax';
-        } else {
-            return 'product/dropzone/normal';
-        }
+		if(images.length >= 10) {
+			return 'product/dropzone/reachMax';
+		} else {
+			return 'product/dropzone/normal';
+		}
     };
-    $scope.getContainer = function (product) {
-        var images = null;
-        if (product.IsVariant) {
-            images = product.VariantImg;
-        } else {
-            images = product.MasterImg;
-        }
+    $scope.getContainer = function(product) {
+    	var images = null;
+    	if(product.IsVariant) {
+    		images = product.VariantImg;
+    	} else {
+    		images = product.MasterImg;
+    	}
 
-        if (images.length < 10 && product.Status == $scope.productStatus[0].value) {
-            return '';
-        }
-        return 'disabled';
+    	if(images.length < 10 && product.Status == $scope.productStatus[0].value) {
+    		return '';
+    	}
+    	return 'disabled';
     };
-    $scope.validate = function () {
-        //Make sure everything is uploaded before saving
-        var result = false;
-        _.forEach($scope.list.data, function (item) {
-            result = result || item.isUploading;
-        });
+    $scope.validate = function() {
+    	//Make sure everything is uploaded before saving
+    	var result = false;
+    	_.forEach($scope.list.data, function(item) {
+    		result = result || item.isUploading;
+    	});
 
-        if (result) {
-            $scope.alert.error('Please wait for every images to be uploaded before saving');
-        }
+    	if(result) {
+    		$scope.alert.error('Please wait for every images to be uploaded before saving');
+    	}
 
-        return !result;
+    	return !result;
     }
-    $scope.save = function () {
-        $scope.alert.close();
-        if (!$scope.validate()) {
-            return;
-        }
-        $scope.saving = true;
-        Product.updateAllVariants($scope.list.data)
-			.then(function (data) {
-			    $scope.dirty = false;
-			    $scope.alert.success("Successfully save changes.");
-			}, function (err) {
-			    $scope.alert.error(common.getError(err));
-			}).finally(function () {
-			    $scope.saving = false;
-			    $scope.reload();
+    $scope.save = function() {
+    	$scope.alert.close();
+    	if(!$scope.validate()) {
+    		return;
+    	}
+    	$scope.saving = true;
+		Product.updateAllVariants($scope.list.data)
+			.then(function(data) {
+				$scope.dirty = false;
+				$scope.alert.success("Successfully save changes.");
+			}, function(err) {
+				$scope.alert.error(common.getError(err));
+			}).finally(function() {
+				$scope.saving = false;
+				$scope.reload();
 			});
-        $scope.dirty = false;
-    };
-    $scope.$watch('watcher', function (val, val2) {
-        if (!_.isUndefined(val2) && !$scope.ignored) {
-            $scope.dirty = true;
-        }
-        $scope.ignored = false;
+		$scope.dirty = false;
+	};
+    $scope.$watch('watcher', function(val, val2) {
+    	if(!_.isUndefined(val2) && !$scope.ignored) {
+    		$scope.dirty = true;
+    	}
+    	$scope.ignored = false;
     }, true);
 }];
 
-},{}],39:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "GlobalCategoryService", "LocalCategoryService", "FileService", "Product", "GlobalCategoryService", "Category", "AttributeSet", "storage", "config", "$timeout", function($scope, $window, NcAlert, $uibModal, BrandService, GlobalCategoryService, LocalCategoryService, FileService, Product, GlobalCategoryService, Category, AttributeSet, storage, config, $timeout) {
   'ngInject';
   //Select Global Category
@@ -6103,18 +3077,6 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
     });
   };
 
-<<<<<<< HEAD
-},{}],38:[function(require,module,exports){
-arguments[4][25][0].apply(exports,arguments)
-},{"angular":150,"dup":25}],39:[function(require,module,exports){
-module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope', 'config', function ($scope, Product, util, Alert, $window, $rootScope, config) {
-    
-    /*
-    * This controller uses legacy table-binding method (v0.0.0)
-    * Please refer to other controller for more accepted table controller
-    * (Note, we have like 50 different versions, make sure u pick the correct one)
-    */
-=======
   //Get file uploader
   $scope.init = function(update) {
     //Import new
@@ -6280,8 +3242,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
     .then(function(data) {
       $scope.ctrl.LocalCategoryTree = Category.transformNestedSetToUITree(data);
     });
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
-    
+
   BrandService.list()
       .then(function(data) {
         $scope.ctrl.Brands = _.map(data, function(e) {
@@ -6290,7 +3251,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', '$rootScope',
       });
 }];
 
-},{}],40:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "util", "Alert", "$window", "$rootScope", "config", "storage", function ($scope, $controller, Product, util, Alert, $window, $rootScope, config, storage) {
     'ngInject';
     $controller('AbstractAdvanceListCtrl', {
@@ -6417,11 +3378,7 @@ module.exports = ["$scope", "$controller", "Product", "util", "Alert", "$window"
     }
 }];
 
-<<<<<<< HEAD
-},{}],40:[function(require,module,exports){
-=======
-},{}],41:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],35:[function(require,module,exports){
 module.exports = ['$scope', 'LocalCategory', function($scope, LocalCategory) {
 	//UI binding variables
 	$scope.showOnOffStatus = true;
@@ -6495,13 +3452,8 @@ module.exports = ['$scope', 'LocalCategory', function($scope, LocalCategory) {
 		});
 	});
 }];
-<<<<<<< HEAD
-},{}],41:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$uibModal", "common", function($scope, $controller, ProductReviewService, config, $uibModal, common) {
-=======
-},{}],42:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$uibModal", "util", "common", function($scope, $controller, ProductReviewService, config, $uibModal, util, common) {
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
 	'ngInject';
 	//Inherit from parent
 	$controller('AbstractListCtrl', {
@@ -6575,15 +3527,8 @@ module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$u
 	$scope.reviewStatus = config.PRODUCT_REVIEW_STATUS;
 	$scope.reviewButton = config.PRODUCT_REVIEW_BUTTON;
 }];
-<<<<<<< HEAD
-},{}],42:[function(require,module,exports){
-module.exports = ['$rootScope', function($rootScope) {
-	//Root ctrl
-}];
-},{}],43:[function(require,module,exports){
-=======
 
-},{}],43:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential", "route", "config", function($rootScope, $uibModal, $window, storage, Credential, route, config) {
 	'ngInject';
 	//Root controller of the application
@@ -6738,8 +3683,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
     });
   };
 }];
-},{}],44:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],38:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerAccountService", "config", function($scope, $controller, SellerAccountService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -6755,11 +3699,7 @@ module.exports = ["$scope", "$controller", "SellerAccountService", "config", fun
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
-<<<<<<< HEAD
-},{}],44:[function(require,module,exports){
-=======
-},{}],45:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],39:[function(require,module,exports){
 module.exports = function($scope, $controller, SellerAccountService, SellerRoleService) {
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -6783,11 +3723,8 @@ module.exports = function($scope, $controller, SellerAccountService, SellerRoleS
 		}
 	});
 }
-<<<<<<< HEAD
-},{}],45:[function(require,module,exports){
-=======
 
-},{}],46:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "$window", "InventoryService", "config", "common", function($scope, $controller, $window, InventoryService, config, common) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
@@ -6862,8 +3799,7 @@ module.exports = ["$scope", "$controller", "$window", "InventoryService", "confi
 	$scope.advanceSearchOptions.Admin = false;
 	$scope.statusDropdown = config.INVENTORY_STATUS;
 }];
-},{}],47:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],41:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerRoleService", "config", function($scope, $controller, SellerRoleService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -6879,11 +3815,7 @@ module.exports = ["$scope", "$controller", "SellerRoleService", "config", functi
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
-<<<<<<< HEAD
-},{}],46:[function(require,module,exports){
-=======
-},{}],48:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],42:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerRoleService", function($scope, $controller, SellerRoleService) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -6962,11 +3894,7 @@ module.exports = ["$scope", "$controller", "SellerRoleService", function($scope,
 		}
 	}, true);
 }];
-<<<<<<< HEAD
-},{}],47:[function(require,module,exports){
-module.exports = function($scope, Attribute, util) {
-=======
-},{}],49:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 module.exports = function($rootScope, $scope, Shop, ImageService, NcAlert, config, storage) {
   $scope.alert = new NcAlert();
 
@@ -7035,9 +3963,8 @@ module.exports = function($rootScope, $scope, Shop, ImageService, NcAlert, confi
   };
 };
 
-},{}],50:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 module.exports = function($scope, Attribute, util, GlobalCategoryService, Category) {
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
 		$scope.filterOptions = [
 			{ name: "All", value: 'All'},
 			{ name: "Free Text", value: 'FreeText'},
@@ -7122,11 +4049,7 @@ module.exports = function($scope, Attribute, util, GlobalCategoryService, Catego
 				$scope.treeSelectTree = Category.transformNestedSetToUITree(data);
 			});
 };
-<<<<<<< HEAD
-},{}],48:[function(require,module,exports){
-=======
-},{}],51:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],45:[function(require,module,exports){
 module.exports = ["$templateCache", "$filter", function($templateCache, $filter) {
 	'ngInject';
 	return {
@@ -7268,11 +4191,7 @@ module.exports = ["$templateCache", "$filter", function($templateCache, $filter)
 		}]
 	};
 }];
-<<<<<<< HEAD
-},{}],49:[function(require,module,exports){
-=======
-},{}],52:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],46:[function(require,module,exports){
 module.exports = [function () {
     return {
 	priority: 1010,
@@ -7296,10 +4215,7 @@ module.exports = [function () {
     };
 }];
 
-<<<<<<< HEAD
-},{}],50:[function(require,module,exports){
-=======
-},{}],53:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return {
@@ -7332,8 +4248,7 @@ module.exports = function() {
 		}
 	}
 }
-},{}],54:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],48:[function(require,module,exports){
 var angular = require('angular');
 module.exports = [function() {
 	'use strict';
@@ -7355,11 +4270,7 @@ module.exports = [function() {
 		}
 	};
 }];
-<<<<<<< HEAD
-},{"angular":150}],51:[function(require,module,exports){
-=======
-},{"angular":170}],55:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{"angular":159}],49:[function(require,module,exports){
 module.exports = ["$interpolate", function($interpolate) {
 	'ngInject';
 	return {
@@ -7381,11 +4292,7 @@ module.exports = ["$interpolate", function($interpolate) {
 		}
 	}
 }]
-<<<<<<< HEAD
-},{}],52:[function(require,module,exports){
-=======
-},{}],56:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],50:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return {
@@ -7410,11 +4317,7 @@ module.exports = function() {
 		}
 	}
 }
-<<<<<<< HEAD
-},{}],53:[function(require,module,exports){
-=======
-},{}],57:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],51:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return {
@@ -7439,11 +4342,7 @@ module.exports = function() {
 		}
 	}
 }
-<<<<<<< HEAD
-},{}],54:[function(require,module,exports){
-=======
-},{}],58:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],52:[function(require,module,exports){
 /*jslint browser: true, plusplus: true, indent: 2 */
 
 // This will be removed by uglify, along with the DEBUG code
@@ -7738,11 +4637,7 @@ angular.module('ngPatternRestrict', [])
       }
     };
   }]);
-<<<<<<< HEAD
-},{}],55:[function(require,module,exports){
-=======
-},{}],59:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],53:[function(require,module,exports){
 module.exports = ["$rootScope", "$parse", "$animate", function($rootScope, $parse, $animate) {
   'ngInject';
   return {
@@ -7808,11 +4703,7 @@ module.exports = ["$rootScope", "$parse", "$animate", function($rootScope, $pars
     }
   }
 }];
-<<<<<<< HEAD
-},{}],56:[function(require,module,exports){
-=======
-},{}],60:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],54:[function(require,module,exports){
 module.exports = function() {
     'ngInject';
     return {
@@ -7829,11 +4720,7 @@ module.exports = function() {
         }
     };
 };
-<<<<<<< HEAD
-},{}],57:[function(require,module,exports){
-=======
-},{}],61:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],55:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$templateCache', '$compile', '$templateOptionsCache', 'KnownException', function ($templateCache, $compile, $templateOptionsCache, KnownException) {
     var originalAttr = {};
@@ -7861,11 +4748,7 @@ module.exports = ['$templateCache', '$compile', '$templateOptionsCache', 'KnownE
         }
     };
 }];
-<<<<<<< HEAD
-},{"angular":150}],58:[function(require,module,exports){
-=======
-},{"angular":170}],62:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{"angular":159}],56:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$document', '$window', function($document, $window) {
 	$window._globalPopoverAny = null;
@@ -7895,11 +4778,7 @@ module.exports = ['$document', '$window', function($document, $window) {
 		}
 	};
 }];
-<<<<<<< HEAD
-},{"angular":150}],59:[function(require,module,exports){
-=======
-},{"angular":170}],63:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{"angular":159}],57:[function(require,module,exports){
 module.exports = [function() {
   return function(input, scope) {
     if (input!=null)
@@ -7907,11 +4786,7 @@ module.exports = [function() {
     return input.substring(0,1).toUpperCase()+input.substring(1);
   }
 }];
-<<<<<<< HEAD
-},{}],60:[function(require,module,exports){
-=======
-},{}],64:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],58:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = [function() {
@@ -7925,7 +4800,8 @@ module.exports = [function() {
         	for(var j = 0; j < other.length; j++){
                 var k = (elem == ((other[j] || null ) || null));
         		if(angular.isDefined(trackBy)){
-                    k = (elem[trackBy] == ((other[j] || {trackBy: null} )[trackBy] || null));
+                    var deepOther = _.get(other[j], trackBy, null);
+                    k = (_.get(elem, trackBy, null) == deepOther);
                 }
         		//matched atleast one, stop and throw away
         		if(k){
@@ -7945,11 +4821,7 @@ module.exports = [function() {
      });
   }
 }];
-<<<<<<< HEAD
-},{"angular":150}],61:[function(require,module,exports){
-=======
-},{"angular":170}],65:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{"angular":159}],59:[function(require,module,exports){
 module.exports = [function() {
   
 var search = function(catId, tmp) {
@@ -8018,21 +4890,14 @@ return function(arr, other, include) {
     return arr;
   }
 }];
-<<<<<<< HEAD
-},{}],62:[function(require,module,exports){
-=======
-},{}],66:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],60:[function(require,module,exports){
 module.exports = [function(){
    return function(data) {
 	   if (!data) return data;
 	   return data.replace(/\n\r?/g, '<br />');
  };
 }]
-<<<<<<< HEAD
-},{}],63:[function(require,module,exports){
-=======
-},{}],67:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 module.exports = function() {
 	return function(input) {
 		var result = '<ul>';
@@ -8049,8 +4914,7 @@ module.exports = function() {
 		return result;
 	}
 };
-},{}],68:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],62:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return function(str, num) {
@@ -8071,11 +4935,7 @@ module.exports = function() {
 		return result;
 	}
 };
-<<<<<<< HEAD
-},{}],64:[function(require,module,exports){
-=======
-},{}],69:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],63:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = [function() {
@@ -8091,11 +4951,7 @@ module.exports = [function() {
   	return input;
   }
 }];
-<<<<<<< HEAD
-},{"angular":150}],65:[function(require,module,exports){
-=======
-},{"angular":170}],70:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{"angular":159}],64:[function(require,module,exports){
 /*
  * Get slice or subarray of array
  */
@@ -8111,11 +4967,7 @@ module.exports = [function() {
     return _.slice(arr, from, to);
   }
 }];
-<<<<<<< HEAD
-},{}],66:[function(require,module,exports){
-=======
-},{}],71:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],65:[function(require,module,exports){
 module.exports = [function () {
         return function (text, length, end) {
             if (isNaN(length))
@@ -8133,11 +4985,7 @@ module.exports = [function () {
 
         };
 }];
-<<<<<<< HEAD
-},{}],67:[function(require,module,exports){
-=======
-},{}],72:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],66:[function(require,module,exports){
 var angular = require('angular');
 
 /*
@@ -8165,10 +5013,7 @@ module.exports = [function() {
      return i;
   }
 }];
-<<<<<<< HEAD
-},{"angular":150}],68:[function(require,module,exports){
-=======
-},{"angular":170}],73:[function(require,module,exports){
+},{"angular":159}],67:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return function(value) {
@@ -8177,8 +5022,7 @@ module.exports = function() {
 		}), ' / ');
 	};
 };
-},{}],74:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],68:[function(require,module,exports){
 module.exports = [function () {
     'use strict';
     var service = {};
@@ -8197,11 +5041,7 @@ module.exports = [function () {
     };
     return service;
 }];
-<<<<<<< HEAD
 },{}],69:[function(require,module,exports){
-=======
-},{}],75:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
 module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http, $q, storage, config, $window) {
     'use strict';
         var service = {};
@@ -8353,11 +5193,7 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
         return service;
 }];
 
-<<<<<<< HEAD
 },{}],70:[function(require,module,exports){
-=======
-},{}],76:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
 module.exports = [function () {
     'use strict';
     var service = {};
@@ -8470,11 +5306,7 @@ module.exports = [function () {
     return service;
 }];
 
-<<<<<<< HEAD
 },{}],71:[function(require,module,exports){
-=======
-},{}],77:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
 var angular = require('angular');
 
 module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$interpolate', 'KnownException', function (storage, config, common, $window, $rootScope, $interpolate, KnownException) {
@@ -8502,12 +5334,19 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     };
 
     service.uniqueSet = function (a, prop) {
-        var seen = new Set();
-        return a.filter(function (x) {
-            var y = x;
-            if (prop) y = x[prop];
-            return !seen.has(y) && seen.add(y);
-        })
+        // var seen = new Set();
+        // return a.filter(function (x) {
+        //     var y = x;
+        //     if (prop) y = x[prop];
+        //     return !seen.has(y) && seen.add(y);
+        // })
+        return _.uniqWith(a, function(x,y){
+            if(x == y) return true;
+            if(prop && _.get(x, prop) && _.get(y, prop)){
+                return _.get(x, prop) == _.get(y, prop);
+            }
+            return false;
+        });
     };
 
     service.nullOrUndefined = function (a) {
@@ -8858,11 +5697,7 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     return service;
 }];
 
-<<<<<<< HEAD
-},{"angular":150}],72:[function(require,module,exports){
-=======
-},{"angular":170}],78:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{"angular":159}],72:[function(require,module,exports){
 module.exports = ['util', function (util) {
 	
 	//Struct for Variant Pair
@@ -8876,11 +5711,7 @@ module.exports = ['util', function (util) {
 	return VariantPair;
 }];
 
-<<<<<<< HEAD
 },{}],73:[function(require,module,exports){
-=======
-},{}],79:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
 angular.module('nc')
 	.directive('ncAction', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
@@ -8935,12 +5766,8 @@ angular.module('nc')
 			}
 		}
 	}]);
-<<<<<<< HEAD
-},{}],74:[function(require,module,exports){
-=======
 
-},{}],80:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],74:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncAdvanceSearch', ["$templateCache", "$timeout", "$uibModal", function($templateCache, $timeout, $uibModal) {
 		return {
@@ -9002,11 +5829,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-<<<<<<< HEAD
 },{}],75:[function(require,module,exports){
-=======
-},{}],81:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
 angular.module('nc')
 	.provider('$ncAlert', function() {
 		this.defaultErrorMessage = 'Error';
@@ -9063,11 +5886,7 @@ angular.module('nc')
 			this.message = '';
 		};
 	}]);
-<<<<<<< HEAD
 },{}],76:[function(require,module,exports){
-=======
-},{}],82:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
 angular.module('nc')
 	.directive('ncBindCompile', ["$compile", "$templateCache", function($compile, $templateCache) {
        return {
@@ -9096,10 +5915,7 @@ angular.module('nc')
             }
         };
     }]);
-<<<<<<< HEAD
 },{}],77:[function(require,module,exports){
-=======
-},{}],83:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncBreadcrumbSelect', ["$templateCache", "$filter", "$timeout", function($templateCache, $filter, $timeout) {
 		var _globalOptions = {};
@@ -9176,8 +5992,7 @@ angular.module('nc')
 			}
 		};
 	}])
-},{}],84:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],78:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncBulk', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
@@ -9330,10 +6145,7 @@ angular.module('nc')
 			}
 		}
 	}])
-<<<<<<< HEAD
-},{}],78:[function(require,module,exports){
-=======
-},{}],85:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncDateRange', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse) {
@@ -9384,8 +6196,7 @@ angular.module('nc')
             };
         }]);
 
-},{"angular":170}],86:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{"angular":159}],80:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEmpty', ["$templateCache", function($templateCache) {
 		return {
@@ -9399,11 +6210,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-<<<<<<< HEAD
-},{}],79:[function(require,module,exports){
-=======
-},{}],87:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],81:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEye', ["$templateCache", function($templateCache) {
 		return {
@@ -9421,11 +6228,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-<<<<<<< HEAD
-},{}],80:[function(require,module,exports){
-=======
-},{}],88:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],82:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncFilter', ["$templateCache", function($templateCache) {
 		return {
@@ -9447,11 +6250,7 @@ angular.module('nc')
 			}
 		}
 	}])
-<<<<<<< HEAD
-},{}],81:[function(require,module,exports){
-=======
-},{}],89:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],83:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncImageGallery', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
@@ -9606,11 +6405,7 @@ angular.module('nc')
 			}
 		};
 	}])
-<<<<<<< HEAD
-},{}],82:[function(require,module,exports){
-=======
-},{}],90:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],84:[function(require,module,exports){
 angular.module('nc')
 .directive('ncImageIntegrity', function() {
     //Only show if image loaded by <img> integrity is OK (100% finished loading)
@@ -9630,11 +6425,7 @@ angular.module('nc')
             }
         };
     })
-<<<<<<< HEAD
-},{}],83:[function(require,module,exports){
-=======
-},{}],91:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],85:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncLoading', ["$templateCache", function($templateCache) {
 		return {
@@ -9660,11 +6451,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-<<<<<<< HEAD
-},{}],84:[function(require,module,exports){
-=======
-},{}],92:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],86:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncPageTitle', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "$parse", "KnownException", function ($rootScope, $templateCache, $compile, $templateOptionsCache, $parse, KnownException) {
@@ -9688,11 +6475,7 @@ angular.module('nc')
             }
         };
     }]);
-<<<<<<< HEAD
-},{"angular":150}],85:[function(require,module,exports){
-=======
-},{"angular":170}],93:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{"angular":159}],87:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncPagination', function() {
 		this.paginationSizes = [10,20,30];
@@ -9759,11 +6542,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-<<<<<<< HEAD
-},{}],86:[function(require,module,exports){
-=======
-},{}],94:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],88:[function(require,module,exports){
 angular.module('nc')
 	.provider('ncPermissionProvider', function() {
 		this.permission = function() {
@@ -9784,11 +6563,7 @@ angular.module('nc')
 	.directive('ncShowPermission', function() {
 		
 	});
-<<<<<<< HEAD
-},{}],87:[function(require,module,exports){
-=======
-},{}],95:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],89:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncSearch', ["$templateCache", function($templateCache) {
 		return {
@@ -9810,11 +6585,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-<<<<<<< HEAD
-},{}],88:[function(require,module,exports){
-=======
-},{}],96:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],90:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncTable', function() {
 		this.tableOptions = {
@@ -9903,11 +6674,7 @@ angular.module('nc')
 			template: '<a ng-href="{{link}}" ng-transclude></a>',
 		}
 	});
-<<<<<<< HEAD
-},{}],89:[function(require,module,exports){
-=======
-},{}],97:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],91:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncTemplate', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", "KnownException", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException,  $parse, KnownException) {
@@ -9963,12 +6730,8 @@ angular.module('nc')
                 }
             };
         }]);
-<<<<<<< HEAD
-},{"angular":150}],90:[function(require,module,exports){
-=======
 
-},{"angular":170}],98:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{"angular":159}],92:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncTreeSelect', ["$interpolate", "$templateCache", function($interpolate, $templateCache) {
 		/**
@@ -10179,12 +6942,8 @@ angular.module('nc')
 			}]
 		};
 	}]);
-<<<<<<< HEAD
-},{}],91:[function(require,module,exports){
-=======
 
-},{}],99:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],93:[function(require,module,exports){
 angular.module('nc')
     .directive('ncTagValidator', function () {
         return {
@@ -10244,18 +7003,14 @@ angular.module('nc')
             }
         }
     });
-<<<<<<< HEAD
-},{}],92:[function(require,module,exports){
-=======
-},{}],100:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 angular.module('nc')
 	.filter('compact', function() {
 		return function(input) {
 			return _.compact(input);
 		};
 	});
-},{}],101:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],95:[function(require,module,exports){
 angular.module('nc')
 	.filter('dateTh', ["$filter", function($filter) {
 		return function(input) {
@@ -10267,10 +7022,7 @@ angular.module('nc')
 			return $filter('date')(input, 'H:m', '+700');
 		}
 	}]);
-<<<<<<< HEAD
-},{}],93:[function(require,module,exports){
-=======
-},{}],102:[function(require,module,exports){
+},{}],96:[function(require,module,exports){
 angular.module('nc')
     .filter('escapeHtml', function () {
         var entityMap = {
@@ -10288,8 +7040,7 @@ angular.module('nc')
             });
         }
     });
-},{}],103:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],97:[function(require,module,exports){
 /*
  Return dropdown[value] if input == dropdown[name]
  */
@@ -10312,18 +7063,14 @@ angular.module('nc')
 			return _.isUndefined(find) ? input : find[name];
 		}
 	});
-<<<<<<< HEAD
-},{}],94:[function(require,module,exports){
-=======
-},{}],104:[function(require,module,exports){
+},{}],98:[function(require,module,exports){
 angular.module('nc')
 	.filter('replace', function() {
 		return function(input, from, to) {
 			return input.replace(from, to);
 		};
 	});
-},{}],105:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],99:[function(require,module,exports){
 (function (global){
 var angular = require('angular');
 
@@ -10343,15 +7090,11 @@ angular.module('nc', ['ngSanitize', 'ui.bootstrap', 'ui.select', 'duScroll', 'an
 		'clickanystart' : 'clickanyend'
 	});
 }]);
-(function () {var f = require("./index.js");f["directives"]=({"ncAction":require("./directives\\ncAction.js"),"ncAdvanceSearch":require("./directives\\ncAdvanceSearch.js"),"ncAlert":require("./directives\\ncAlert.js"),"ncBindCompile":require("./directives\\ncBindCompile.js"),"ncBreadcrumpSelect":require("./directives\\ncBreadcrumpSelect.js"),"ncBulk":require("./directives\\ncBulk.js"),"ncDateRange":require("./directives\\ncDateRange.js"),"ncEmpty":require("./directives\\ncEmpty.js"),"ncEye":require("./directives\\ncEye.js"),"ncFilter":require("./directives\\ncFilter.js"),"ncImageGallery":require("./directives\\ncImageGallery.js"),"ncImageIntegrity":require("./directives\\ncImageIntegrity.js"),"ncLoading":require("./directives\\ncLoading.js"),"ncPageTitle":require("./directives\\ncPageTitle.js"),"ncPagination":require("./directives\\ncPagination.js"),"ncPermission":require("./directives\\ncPermission.js"),"ncSearch":require("./directives\\ncSearch.js"),"ncTable":require("./directives\\ncTable.js"),"ncTemplate":require("./directives\\ncTemplate.js"),"ncTreeSelect":require("./directives\\ncTreeSelect.js"),"ncUiSelect":require("./directives\\ncUiSelect.js")});f["filters"]=({"compact":require("./filters\\compact.js"),"date":require("./filters\\date.js"),"escapeHtml":require("./filters\\escapeHtml.js"),"map":require("./filters\\map.js"),"replace":require("./filters\\replace.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
+(function () {var f = require("./index.js");f["directives"]=({"ncAction":require("./directives/ncAction.js"),"ncAdvanceSearch":require("./directives/ncAdvanceSearch.js"),"ncAlert":require("./directives/ncAlert.js"),"ncBindCompile":require("./directives/ncBindCompile.js"),"ncBreadcrumpSelect":require("./directives/ncBreadcrumpSelect.js"),"ncBulk":require("./directives/ncBulk.js"),"ncDateRange":require("./directives/ncDateRange.js"),"ncEmpty":require("./directives/ncEmpty.js"),"ncEye":require("./directives/ncEye.js"),"ncFilter":require("./directives/ncFilter.js"),"ncImageGallery":require("./directives/ncImageGallery.js"),"ncImageIntegrity":require("./directives/ncImageIntegrity.js"),"ncLoading":require("./directives/ncLoading.js"),"ncPageTitle":require("./directives/ncPageTitle.js"),"ncPagination":require("./directives/ncPagination.js"),"ncPermission":require("./directives/ncPermission.js"),"ncSearch":require("./directives/ncSearch.js"),"ncTable":require("./directives/ncTable.js"),"ncTemplate":require("./directives/ncTemplate.js"),"ncTreeSelect":require("./directives/ncTreeSelect.js"),"ncUiSelect":require("./directives/ncUiSelect.js")});f["filters"]=({"compact":require("./filters/compact.js"),"date":require("./filters/date.js"),"escapeHtml":require("./filters/escapeHtml.js"),"map":require("./filters/map.js"),"replace":require("./filters/replace.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-<<<<<<< HEAD
-},{"./directives\\ncAction.js":73,"./directives\\ncAdvanceSearch.js":74,"./directives\\ncAlert.js":75,"./directives\\ncBindCompile.js":76,"./directives\\ncBulk.js":77,"./directives\\ncEmpty.js":78,"./directives\\ncEye.js":79,"./directives\\ncFilter.js":80,"./directives\\ncImageGallery.js":81,"./directives\\ncImageIntegrity.js":82,"./directives\\ncLoading.js":83,"./directives\\ncPageTitle.js":84,"./directives\\ncPagination.js":85,"./directives\\ncPermission.js":86,"./directives\\ncSearch.js":87,"./directives\\ncTable.js":88,"./directives\\ncTemplate.js":89,"./directives\\ncTreeSelect.js":90,"./directives\\ncUiSelect.js":91,"./filters\\date.js":92,"./filters\\map.js":93,"./index.js":94,"./template.js":95,"angular":150,"angular-file-upload":140,"angular-scroll":144,"angular-ui-bootstrap":145,"jquery":151,"lodash":152,"ui-select":153}],95:[function(require,module,exports){
-=======
-},{"./directives\\ncAction.js":79,"./directives\\ncAdvanceSearch.js":80,"./directives\\ncAlert.js":81,"./directives\\ncBindCompile.js":82,"./directives\\ncBreadcrumpSelect.js":83,"./directives\\ncBulk.js":84,"./directives\\ncDateRange.js":85,"./directives\\ncEmpty.js":86,"./directives\\ncEye.js":87,"./directives\\ncFilter.js":88,"./directives\\ncImageGallery.js":89,"./directives\\ncImageIntegrity.js":90,"./directives\\ncLoading.js":91,"./directives\\ncPageTitle.js":92,"./directives\\ncPagination.js":93,"./directives\\ncPermission.js":94,"./directives\\ncSearch.js":95,"./directives\\ncTable.js":96,"./directives\\ncTemplate.js":97,"./directives\\ncTreeSelect.js":98,"./directives\\ncUiSelect.js":99,"./filters\\compact.js":100,"./filters\\date.js":101,"./filters\\escapeHtml.js":102,"./filters\\map.js":103,"./filters\\replace.js":104,"./index.js":105,"./template.js":106,"angular":170,"angular-file-upload":160,"angular-sanitize":162,"angular-scroll":164,"angular-ui-bootstrap":166,"jquery":171,"lodash":172,"ui-select":175}],106:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{"./directives/ncAction.js":73,"./directives/ncAdvanceSearch.js":74,"./directives/ncAlert.js":75,"./directives/ncBindCompile.js":76,"./directives/ncBreadcrumpSelect.js":77,"./directives/ncBulk.js":78,"./directives/ncDateRange.js":79,"./directives/ncEmpty.js":80,"./directives/ncEye.js":81,"./directives/ncFilter.js":82,"./directives/ncImageGallery.js":83,"./directives/ncImageIntegrity.js":84,"./directives/ncLoading.js":85,"./directives/ncPageTitle.js":86,"./directives/ncPagination.js":87,"./directives/ncPermission.js":88,"./directives/ncSearch.js":89,"./directives/ncTable.js":90,"./directives/ncTemplate.js":91,"./directives/ncTreeSelect.js":92,"./directives/ncUiSelect.js":93,"./filters/compact.js":94,"./filters/date.js":95,"./filters/escapeHtml.js":96,"./filters/map.js":97,"./filters/replace.js":98,"./index.js":99,"./template.js":100,"angular":159,"angular-file-upload":149,"angular-sanitize":151,"angular-scroll":153,"angular-ui-bootstrap":155,"jquery":160,"lodash":161,"ui-select":164}],100:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -10418,8 +7161,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncEye',
-    "<a ng-click=_toggle()><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon' : !model,\r" +
-    "\n" +
+    "<a ng-click=_toggle()><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon' : !model,\n" +
     "                            'fa fa-eye color-dark-grey eye-icon' : model}\"></i></a>"
   );
 
@@ -10480,12 +7222,9 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncTableSort',
-    "<a class=header-link ng-click=click()><span ng-class=\"{ 'active-underline' : isCurrent() }\" ng-transclude></span></a> <i class=fa ng-class=\"{ \r" +
-    "\n" +
-    "'fa fa-caret-down' : isCurrent() && direction, \r" +
-    "\n" +
-    "'fa fa-caret-up' : isCurrent() && !direction, \r" +
-    "\n" +
+    "<a class=header-link ng-click=click()><span ng-class=\"{ 'active-underline' : isCurrent() }\" ng-transclude></span></a> <i class=fa ng-class=\"{ \n" +
+    "'fa fa-caret-down' : isCurrent() && direction, \n" +
+    "'fa fa-caret-up' : isCurrent() && !direction, \n" +
     "'fa fa-caret-down color-grey' : !isCurrent() }\" ng-click=click()></i>"
   );
 
@@ -10514,10 +7253,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
     "<div class=\"page-header with-border\"><h1 class=\"float-left page-header-title\">{{ title }}</h1><span class=\"float-right page-header-action\"><ng-transclude></ng-transclude></span></div>"
   );
  }]);
-<<<<<<< HEAD
-},{}],96:[function(require,module,exports){
-=======
-},{}],107:[function(require,module,exports){
+},{}],101:[function(require,module,exports){
 /**
  * Collection of Route ID (Object key) with route string
  *
@@ -10646,107 +7382,7 @@ module.exports = {
   seller: generateRouteArray(seller),
   admin: generateRouteArray(admin)
 }
-},{"lodash":172}],108:[function(require,module,exports){
-//Products Service
-module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
-    function ($http, common, util, config, KnownException) {
-        'use strict';
-        var service = common.Rest('/Promotion/Ontopcredit');
-
-        service.getOne = function (OnTopCreditCardId) {
-            var req = {
-                method: 'GET',
-                url: '/Promotion/Ontopcredit/' + OnTopCreditCardId
-            };
-            return common.makeRequest(req);
-        };
-        service.create = function (obj) {
-            return common.makeRequest({
-                method: 'POST',
-                url: '/Promotion/OnTopCreate',
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            });
-        };
-        service.update = function (OnTopCreditCardId, obj) {
-            return common.makeRequest({
-                method: 'PUT',
-                url: '/Promotion/OntopUpdate/' + OnTopCreditCardId,
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            });
-        };
-        service.duplicate = function (OnTopCreditCardId) {
-            //this URL structure is weird dont u think
-            var req = {
-                method: 'POST',
-                url: '/Promotion/' + OnTopCreditCardId
-            };
-
-            return common.makeRequest(req);
-        };
-
-        service.getAll = function (parameters) {
-            var req = {
-                method: 'GET',
-                url: '/Promotion/Ontopcredit/',
-                params: {
-                    _order: parameters.orderBy || 'OnTopCreditCardId',
-                    _limit: parameters.pageSize || 10,
-                    _offset: parameters.page * parameters.pageSize || 0,
-                    _direction: parameters.direction || 'asc',
-                    _filter: parameters.filter || 'ALL',
-                    searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined
-                }
-            };
-
-            return common.makeRequest(req);
-        };
-
-
-        service.visible = function (obj) {
-            return common.makeRequest({
-                method: 'PUT',
-                url: '/Promotion/Ontopcredit/Visibility',
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            });
-        };
-        service.deleteBulk = function (arr) {
-            return common.makeRequest({
-                method: 'DELETE',
-                url: '/Promotion/Ontopcredit',
-                data: arr,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            });
-        };
-
-
-        service.getStatus = function (abbreviation) {
-            return StatusLookup[abbreviation];
-        }
-
-
-        return service;
-    }
-];
-
-},{}],109:[function(require,module,exports){
-module.exports = ["common", function(common) {
-	'ngInject';
-	var service = common.Rest('/Promotion/Ontopcreate');
-	return service;
-}];
-},{}],110:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{"lodash":161}],102:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Admin');
@@ -10781,22 +7417,14 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-<<<<<<< HEAD
-},{}],97:[function(require,module,exports){
-=======
-},{}],111:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],103:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Admin');
 
 	return service;
 }]
-<<<<<<< HEAD
-},{}],98:[function(require,module,exports){
-=======
-},{}],112:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],104:[function(require,module,exports){
 module.exports = ["common", "AdminPermissionService", function(common, AdminPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Admin');
@@ -10842,11 +7470,7 @@ module.exports = ["common", "AdminPermissionService", function(common, AdminPerm
 	};
 	return service;	
 }]
-<<<<<<< HEAD
-},{}],99:[function(require,module,exports){
-=======
-},{}],113:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],105:[function(require,module,exports){
 module.exports = ["common", "config", "util", function(common, config, util) {
 	'ngInject';
 	var service = common.Rest('/Shops');
@@ -10885,11 +7509,7 @@ module.exports = ["common", "config", "util", function(common, config, util) {
 	};
 	return service;	
 }]
-<<<<<<< HEAD
-},{}],100:[function(require,module,exports){
-=======
-},{}],114:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],106:[function(require,module,exports){
 module.exports = ["common", "ShopPermissionService", function(common, ShopPermissionService) {
 	'ngInject';
 	var service = common.Rest('/Shoptypes');
@@ -10935,11 +7555,7 @@ module.exports = ["common", "ShopPermissionService", function(common, ShopPermis
 	};
 	return service;	
 }]
-<<<<<<< HEAD
-},{}],101:[function(require,module,exports){
-=======
-},{}],115:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],107:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', '$document', '$timeout', function(common, $document, $timeout) {
 	return function() {
@@ -10973,11 +7589,7 @@ module.exports = ['common', '$document', '$timeout', function(common, $document,
 		this.message = '';
 	};
 }];
-<<<<<<< HEAD
-},{"angular":150}],102:[function(require,module,exports){
-=======
-},{"angular":170}],116:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{"angular":159}],108:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common){
 	'use strict';
@@ -11223,11 +7835,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-<<<<<<< HEAD
-},{"angular":150}],103:[function(require,module,exports){
-=======
-},{"angular":170}],117:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{"angular":159}],109:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/Attributes');
@@ -11333,11 +7941,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }];
-<<<<<<< HEAD
-},{}],104:[function(require,module,exports){
-=======
-},{}],118:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],110:[function(require,module,exports){
 module.exports = ['common', function(common){
 	'use strict';
 	var service = {};
@@ -11485,11 +8089,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-<<<<<<< HEAD
-},{}],105:[function(require,module,exports){
-=======
-},{}],119:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],111:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/AttributeSets');
@@ -11551,11 +8151,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }]
-<<<<<<< HEAD
-},{}],106:[function(require,module,exports){
-=======
-},{}],120:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],112:[function(require,module,exports){
 module.exports = ['$window', function($window) {
 	return function(fn, close) {
 		var vm = this;
@@ -11591,11 +8187,7 @@ module.exports = ['$window', function($window) {
 		};
 	};
 }];
-<<<<<<< HEAD
-},{}],107:[function(require,module,exports){
-=======
-},{}],121:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],113:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$q', 'common', function($q, common){
 	var service = {};
@@ -11681,11 +8273,7 @@ module.exports = ['$q', 'common', function($q, common){
 	};
 	return service;
 }];
-<<<<<<< HEAD
-},{"angular":150}],108:[function(require,module,exports){
-=======
-},{"angular":170}],122:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{"angular":159}],114:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	service = common.Rest('/Brands');
@@ -11716,268 +8304,7 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }]
-<<<<<<< HEAD
-},{}],109:[function(require,module,exports){
-//Buy 1 Get 1 Service
-module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
-    function ($http, common, util, LocalCategory, Brand, config) {
-        'use strict';
-        var service = common.Rest('/ProductStages');
-
-        service.getOne = function (PromotionBuy1Get1ItemId) {
-            var req = {
-                method: 'GET',
-                url: '/ProBuy1Get1/' + PromotionBuy1Get1ItemId
-            };
-            return common.makeRequest(req);
-        };
-     
-        service.duplicate = function (PromotionBuy1Get1ItemId) {
-            //this URL structure is weird dont u think
-            var req = {
-                method: 'POST',
-                url: '/ProBuy1Get1/duplicate/' + PromotionBuy1Get1ItemId
-            };
-
-            return common.makeRequest(req);
-        };
-
-        service.getAll = function (parameters) {
-            var req = {
-                method: 'GET',
-                url: '/ProBuy1Get1/List',
-                params: {
-                    _order: parameters.orderBy || 'UpdateDate',
-                    _limit: parameters.pageSize || 10,
-                    _offset: parameters.page * parameters.pageSize || 0,
-                    _direction: parameters.direction || 'asc',
-                    _filter: parameters.filter || 'ALL',
-                    searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined
-                }
-            };
-
-            return common.makeRequest(req);
-        };
-
-        service.export = function (tobj) {
-            var path = '/ProBuy1Get1/Export';
-            return common.makeRequest({
-                responseType: 'arraybuffer',
-                method: 'POST',
-                url: path,
-                data: tobj
-            });
-        };
-
-        service.publish = function (tobj, Status) {
-           var path = '/ProBuy1Get1/Create';
-            if(typeof tobj.length != "undefined"){path = "/ProBuy1Get1/UpdateList";}
-                       
-            return common.makeRequest({
-                method: 'POST',
-                url: path,
-                data: tobj
-            });
-        };
-
-
-        service.bulkPublish = function (tobj) {
-            return common.makeRequest({
-                method: 'POST',
-                url: '/ProBuy1Get1/UpdateList',
-                data: tobj
-            });
-        };
-
-        service.visible = function (obj) {
-            return common.makeRequest({
-                method: 'POST',
-                url: '/ProBuy1Get1/UpdateList',
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            });
-        };
-        service.deleteBulk = function (arr) {
-            return common.makeRequest({
-                method: 'POST',
-                url: '/ProBuy1Get1/UpdateList',
-                data: arr,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            });
-        };
-
-        var StatusLookup = {};
-        config.PRODUCT_STATUS.forEach(function (object) {
-            StatusLookup[object.value] = object;
-        });
-        service.getStatus = function (abbreviation) {
-            return StatusLookup[abbreviation];
-        }
-
-        service.serialize = function (fd) {
-            var hasVariants = (!util.nullOrUndefined(fd.Variants) && fd.Variants.length > 0);
-
-            //Cleaned data
-            var clean = {};
-            clean.Variants = [];
-
-
-            try {
-                
-                clean.PromotionBuy1Get1ItemId   = fd.PromotionBuy1Get1ItemId;
-                clean.NameEN                    = fd.NameEN;
-                clean.NameTH                    = fd.NameTH;
-                clean.URLKey                    = fd.URLKey;
-                clean.PIDBuy                    = fd.PIDBuy;
-                clean.PIDGet                    = fd.PIDGet;
-                clean.ShortDescriptionTH        = fd.ShortDescriptionTH;
-                clean.LongDescriptionTH         = fd.LongDescriptionTH;
-                clean.ShortDescriptionEN        = fd.ShortDescriptionEN;
-                clean.LongDescriptionEN         = fd.LongDescriptionEN;
-               
-                clean.ProductBoxBadge           = null;
-                clean.Sequence                  = null;
-                clean.Status                    = fd.Status;
-                clean.CreateBy                  = fd.CreateBy;
-                clean.Createdate                = null              
-                clean.UpdateBy                  = fd.UpdateBy;
-                clean.UpdateDate                = null
-                clean.CreateIP                  = fd.CreateIP;
-                clean.UpdateIP                  = fd.UpdateIP;
-                clean.CMSStatusFlowId           = fd.CMSStatusFlowId;
-                clean.Visibility           = fd.Visibility;
-
-
-                if(fd.ExpiryDate && fd.EffectiveDate){
-                    var cpdate = angular.copy(fd.ExpiryDate);
-                    clean.ExpiryDate = moment(cpdate).format('LL');
-                    clean.ExpiryTime = moment(cpdate).format('HH:mm:ss');
-
-                    cpdate = angular.copy(fd.EffectiveDate);
-                    clean.EffectiveDate = moment(cpdate).format('LL');
-                    clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
-                }
-                
-                console.log('buy 1 get 1 create', clean);
-            } catch (ex) {
-                console.warn("buy 1 get 1 create exception", ex);
-            }
-           
-
-            return clean;
-        }
-
-         service.arrSerialize = function (fd) {
-            var retObjArr =[]
-
-            for(var index = 0 ; index <= fd.length ; index ++){
-                var clean = {};
-                try {
-
-//console.log("loop value : " + index + ", cmsid : "+ fd[index].CMSId +", status : "+ fd[index].Status + ", EffectiveDate : " + fd[index].EffectiveDate );
-
-                clean.PromotionBuy1Get1ItemId  = fd[index].PromotionBuy1Get1ItemId;
-                clean.NameEN                    = fd[index].NameEN;
-                clean.NameTH                    = fd[index].NameTH;
-                clean.URLKey                    = fd[index].URLKey;
-                clean.PIDBuy                    = fd[index].PIDBuy;
-                clean.PIDGet                    = fd[index].PIDGet;
-                clean.ShortDescriptionTH        = fd[index].ShortDescriptionTH;
-                clean.LongDescriptionTH         = fd[index].LongDescriptionTH;
-                clean.ShortDescriptionEN        = fd[index].ShortDescriptionEN;
-                clean.LongDescriptionEN         = fd[index].LongDescriptionEN;
-               
-                clean.ProductBoxBadge           = fd[index].ProductBoxBadge;
-                clean.Sequence                  = fd[index].Sequence;
-                clean.Status                    = fd[index].Status;
-                clean.CreateBy                  = fd[index].CreateBy;
-                clean.Createdate                = fd[index].Createdate ;              
-                clean.UpdateBy                  = fd[index].UpdateBy;
-                clean.UpdateDate                = fd[index].UpdateDate ;
-                clean.CreateIP                  = fd[index].CreateIP;
-                clean.UpdateIP                  = fd[index].UpdateIP;
-                clean.CMSStatusFlowId           = fd[index].CMSStatusFlowId;
-                clean.Visibility           = fd[index].Visibility;
-
-
-                if(fd[index].ExpiryDate && fd[index].EffectiveDate){
-                    var cpdate = angular.copy(fd[index].ExpiryDate);
-                    clean.ExpiryDate = moment(cpdate).format('LL');
-                    clean.ExpiryTime = moment(cpdate).format('HH:mm:ss');
-
-                    cpdate = angular.copy(fd[index].EffectiveDate);
-                    clean.EffectiveDate = moment(cpdate).format('LL');
-                    clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
-                }
-                               
-               retObjArr.push(clean);
-            } catch (ex) {
-                console.warn("Arr serialize error", ex);
-            }
-            }
-            
-            return retObjArr;
-        }
-
-        service.deserialize = function (invFd, FullAttributeSet) {
-       
-
-            var transformed = {
-                formData: invFd
-            };
-
-
-
-            console.log('transformation array', transformed);
-
-            return transformed;
-        };
-
-        return service;
-    }
-];
-
-},{}],110:[function(require,module,exports){
-module.exports = ['Product', 'Collection', 'Buy1Get1','Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
-    function (Product,  Collection, Buy1Get1 , Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
-        var $buy1get1Add = {};
-        
-        /*
-        * Wraps around multiple services,
-        * and solves dependencies needed for AddProduct Collection view variables
-        * to be parsable
-        */
-        $buy1get1Add.fill = function ( pageLoader, sharedDataSet,
-            sharedFormData, controlFlags, variationFactorIndices, ivFormData) {
-
-
-            var deferred = $q.defer();
-
-              var parse = function (ivFormData) {
-                            pageLoader.load('Loading product data..');
-                            // var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
-                            var inverseResult = Buy1Get1.deserialize(ivFormData);
-
-                            //copy it out
-                            Object.keys(inverseResult.formData).forEach(function (key) {
-                                sharedFormData[key] = inverseResult.formData[key];
-                            })
-                        };
-                        parse(ivFormData);
-
-            return deferred.promise;
-        };
-
-        return $buy1get1Add;
-    }];
-},{}],111:[function(require,module,exports){
-=======
-},{}],123:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],115:[function(require,module,exports){
 /**
  * Util class for category
  * @author poonwu
@@ -12304,18 +8631,14 @@ module.exports = ['config', function(config) {
     return service;
 }];
 
-<<<<<<< HEAD
-},{"angular":150}],112:[function(require,module,exports){
-=======
-},{"angular":170}],124:[function(require,module,exports){
+},{"angular":159}],116:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common) {
 	var service = common.Rest('/Coupons');
 	return service;
 }];
 
-},{"angular":170}],125:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{"angular":159}],117:[function(require,module,exports){
 //TODO: maybe merge this with user service? (doesnt exist yet, but probably exists in poon's local)
 module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(common, $base64, storage, $q, $rootScope) {
     'use strict';
@@ -12386,12 +8709,7 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 	return service;
 }];
 
-
-<<<<<<< HEAD
-},{}],113:[function(require,module,exports){
-=======
-},{}],126:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],118:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$window', '$base64', 'config', function($window, $base64, config) {
@@ -12409,11 +8727,8 @@ module.exports = ['$window', '$base64', 'config', function($window, $base64, con
         }
     };
 }];
-<<<<<<< HEAD
-},{"angular":150}],114:[function(require,module,exports){
-=======
 
-},{"angular":170}],127:[function(require,module,exports){
+},{"angular":159}],119:[function(require,module,exports){
 module.exports = ["config", "storage", "FileUploader", function(config, storage, FileUploader) {
 	'ngInject';
 	var service = {};
@@ -12433,8 +8748,7 @@ module.exports = ["config", "storage", "FileUploader", function(config, storage,
 	};
 	return service;
 }];
-},{}],128:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],120:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/GlobalCategories');
@@ -12502,11 +8816,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-<<<<<<< HEAD
-},{}],115:[function(require,module,exports){
-=======
-},{}],129:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],121:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	service = common.Rest('/GlobalCategories');
@@ -12575,11 +8885,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-<<<<<<< HEAD
-},{}],116:[function(require,module,exports){
-=======
-},{}],130:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],122:[function(require,module,exports){
 var angular = require('angular');
 //Image Service
 //Note: this file is not used anywhere (legacy!!! dOnt edit )
@@ -12670,19 +8976,11 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	return service;
 }];
 
-<<<<<<< HEAD
-},{"angular":150}],117:[function(require,module,exports){
-//Image Service 
-module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", function($q, $http, common, storage, config, FileUploader){
-	'ngInject';
-	var service = {};
-=======
-},{"angular":170}],131:[function(require,module,exports){
+},{"angular":159}],123:[function(require,module,exports){
 //Image Service
 module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", function($q, $http, common, storage, config, FileUploader) {
   'ngInject';
   var service = {};
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
 
   /**
    * Get image uploader
@@ -12780,16 +9078,12 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
   return service;
 }];
 
-<<<<<<< HEAD
-},{}],118:[function(require,module,exports){
-=======
-},{}],132:[function(require,module,exports){
+},{}],124:[function(require,module,exports){
 module.exports = function(common) {
 	var service = common.Rest('/Inventories');
 	return service;
 };
-},{}],133:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],125:[function(require,module,exports){
 module.exports = [function() {
 	'use strict';
 
@@ -12797,11 +9091,7 @@ module.exports = [function() {
         this.message = "Known Exception - " + msg;   
     };
 }];
-<<<<<<< HEAD
-},{}],119:[function(require,module,exports){
-=======
-},{}],134:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],126:[function(require,module,exports){
 module.exports = ['common', function(common) {
 	'use strict';
 	var service = {};
@@ -12840,11 +9130,7 @@ module.exports = ['common', function(common) {
 
 	return service;
 }];
-<<<<<<< HEAD
-},{}],120:[function(require,module,exports){
-=======
-},{}],135:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],127:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/LocalCategories');
@@ -12872,26 +9158,22 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-<<<<<<< HEAD
-},{}],121:[function(require,module,exports){
-=======
-},{}],136:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
-//Products Service
+},{}],128:[function(require,module,exports){
+// Products Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config', 'KnownException',
-  function($http, common, util, LocalCategory, Brand, config, KnownException) {
-    'use strict';
-    var service = common.Rest('/ProductStages');
+  function ($http, common, util, LocalCategory, Brand, config, KnownException) {
+    'use strict'
+    var service = common.Rest('/ProductStages')
 
-    service.getExportableFields = function(){
+    service.getExportableFields = function () {
       var req = {
         method: 'GET',
         url: '/ProductStages/Guidance/Export'
-      };
-      return common.makeRequest(req);
+      }
+      return common.makeRequest(req)
     }
 
-    service.downloadTemplate = function(globalCat, aset) {
+    service.downloadTemplate = function (globalCat, aset) {
       var req = {
         method: 'POST',
         url: '/ProductStages/Template',
@@ -12899,37 +9181,37 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
           GlobalCategories: [globalCat],
           AttributeSets: _.isNil(aset) ? [] : [aset]
         }
-      };
-      return common.makeRequest(req);
+      }
+      return common.makeRequest(req)
     }
 
-    service.getAllAttributeSetsForProducts = function(productList){
+    service.getAllAttributeSetsForProducts = function (productList) {
       var req = {
         method: 'POST',
         url: '/ProductStages/AttributeSet',
         data: productList
-      };
-      return common.makeRequest(req);
+      }
+      return common.makeRequest(req)
     }
 
-    service.export = function(ps) {
+    service.export = function (ps) {
       var req = {
         method: 'POST',
         url: '/ProductStages/Export',
         data: ps
-      };
-      return common.makeRequest(req);
-    };
+      }
+      return common.makeRequest(req)
+    }
 
-    service.guideline = function(params) {
+    service.guideline = function (params) {
       var req = {
         method: 'GET',
         url: '/ProductStages/Guidance',
         params: params
-      };
-      return common.makeRequest(req);
-    };
-    service.approve = function(obj) {
+      }
+      return common.makeRequest(req)
+    }
+    service.approve = function (obj) {
       return common.makeRequest({
         method: 'PUT',
         url: '/ProductStages/Approve',
@@ -12937,9 +9219,9 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         headers: {
           'Content-Type': 'application/json;charset=UTF-8'
         }
-      });
-    };
-    service.reject = function(obj) {
+      })
+    }
+    service.reject = function (obj) {
       return common.makeRequest({
         method: 'PUT',
         url: '/ProductStages/Reject',
@@ -12947,28 +9229,28 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         headers: {
           'Content-Type': 'application/json;charset=UTF-8'
         }
-      });
-    };
+      })
+    }
 
-    service.getOne = function(productId) {
+    service.getOne = function (productId) {
       var req = {
         method: 'GET',
         url: '/ProductStages/' + productId
-      };
-      return common.makeRequest(req);
-    };
+      }
+      return common.makeRequest(req)
+    }
 
-    service.getAllVariants = function(parameters) {
+    service.getAllVariants = function (parameters) {
       var req = {
         method: 'GET',
         url: '/ProductStages/All',
         params: parameters
-      };
+      }
 
-      return common.makeRequest(req);
+      return common.makeRequest(req)
     }
 
-    service.updateAllVariants = function(obj) {
+    service.updateAllVariants = function (obj) {
       var req = {
         method: 'PUT',
         url: '/ProductStages/All/Image',
@@ -12976,22 +9258,22 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         headers: {
           'Content-Type': 'application/json;charset=UTF-8'
         }
-      };
+      }
 
-      return common.makeRequest(req);
+      return common.makeRequest(req)
     }
 
-    service.duplicate = function(ProductId) {
-      //this URL structure is weird dont u think
+    service.duplicate = function (ProductId) {
+      // this URL structure is weird dont u think
       var req = {
         method: 'POST',
         url: '/ProductStages/' + ProductId
-      };
+      }
 
-      return common.makeRequest(req);
-    };
+      return common.makeRequest(req)
+    }
 
-    service.getAll = function(parameters) {
+    service.getAll = function (parameters) {
       var req = {
         method: 'GET',
         url: '/ProductStages/',
@@ -13003,38 +9285,37 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
           _filter: parameters.filter || 'ALL',
           searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined
         }
-      };
+      }
 
-      return common.makeRequest(req);
-    };
+      return common.makeRequest(req)
+    }
 
-    service.export = function(tobj) {
-      var path = '/ProductStages/Export';
+    service.export = function (tobj) {
+      var path = '/ProductStages/Export'
       return common.makeRequest({
         responseType: 'arraybuffer',
         method: 'POST',
         url: path,
         data: tobj
-      });
-    };
+      })
+    }
 
-    service.publish = function(tobj, Status) {
-      tobj.Status = Status;
-      var mode = 'POST';
-      var path = '/ProductStages';
+    service.publish = function (tobj, Status) {
+      tobj.Status = Status
+      var mode = 'POST'
+      var path = '/ProductStages'
       if (tobj.ProductId) {
-        mode = 'PUT';
-        path = path + '/' + tobj.ProductId;
+        mode = 'PUT'
+        path = path + '/' + tobj.ProductId
       }
       return common.makeRequest({
         method: mode,
         url: path,
         data: tobj
-      });
-    };
+      })
+    }
 
-
-    service.bulkPublish = function(tobj) {
+    service.bulkPublish = function (tobj) {
       return common.makeRequest({
         method: 'POST',
         url: '/ProductStages/Publish',
@@ -13042,10 +9323,10 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         headers: {
           'Content-Type': 'application/json;charset=UTF-8'
         }
-      });
-    };
+      })
+    }
 
-    service.visible = function(obj) {
+    service.visible = function (obj) {
       return common.makeRequest({
         method: 'PUT',
         url: '/ProductStages/Visibility',
@@ -13053,9 +9334,9 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         headers: {
           'Content-Type': 'application/json;charset=UTF-8'
         }
-      });
-    };
-    service.deleteBulk = function(arr) {
+      })
+    }
+    service.deleteBulk = function (arr) {
       return common.makeRequest({
         method: 'DELETE',
         url: '/ProductStages',
@@ -13063,447 +9344,438 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         headers: {
           'Content-Type': 'application/json;charset=UTF-8'
         }
-      });
-    };
+      })
+    }
 
-    var StatusLookup = {};
-    config.PRODUCT_STATUS.forEach(function(object) {
-      StatusLookup[object.value] = object;
-    });
-    service.getStatus = function(abbreviation) {
-      if(_.isNil(abbreviation)){
+    var StatusLookup = {}
+    config.PRODUCT_STATUS.forEach(function (object) {
+      StatusLookup[object.value] = object
+    })
+    service.getStatus = function (abbreviation) {
+      if (_.isNil(abbreviation)) {
         return {
           name: 'No Status',
           color: 'color-grey'
-        };
+        }
       }
-      return StatusLookup[abbreviation];
+      return StatusLookup[abbreviation]
     }
 
-    service.serialize = function(fd) {
-      var hasVariants = (!util.nullOrUndefined(fd.Variants) && fd.Variants.length > 0);
+    service.serialize = function (fd) {
+      var hasVariants = (!util.nullOrUndefined(fd.Variants) && fd.Variants.length > 0)
 
-      //Cleaned data
-      var clean = {};
-      clean.Variants = [];
+      // Cleaned data
+      var clean = {}
+      clean.Variants = []
 
       var objectMapper = {
-        VideoLinks: function(vlink) {
-          var f = [];
-          Object.keys(vlink).forEach(function(key) {
-            var value = vlink[key];
+        VideoLinks: function (vlink) {
+          var f = []
+          Object.keys(vlink).forEach(function (key) {
+            var value = vlink[key]
             var obj = {
               'Url': value
-            };
+            }
 
-            f.push(obj);
-          });
-          return f;
+            f.push(obj)
+          })
+          return f
         }
-      };
-      //Mapper functions
+      }
+      // Mapper functions
       var mapper = {
-        Images: function(image, pos) {
-          if (image.$id) delete image.$id;
-          image.position = pos;
-          return image;
+        Images: function (image, pos) {
+          if (image.$id) delete image.$id
+          image.position = pos
+          return image
         },
-        Variants: function(_variant) {
-          var variant = angular.copy(_variant);
+        Variants: function (_variant) {
+          var variant = angular.copy(_variant)
 
-          if (util.nullOrUndefined(variant['VideoLinks'])) variant.VideoLinks = [];
-          if (util.nullOrUndefined(variant['VideoLinks'])) variant.Images = [];
-          if ("queue" in variant) delete variant.queue; //circular
+          if (util.nullOrUndefined(variant['VideoLinks'])) variant.VideoLinks = []
+          if (util.nullOrUndefined(variant['VideoLinks'])) variant.Images = []
+          if ('queue' in variant) delete variant.queue // circular
 
-          variant.Visibility = variant.Visibility;
-          variant.Images = (variant.Images || []).map(mapper.Images);
-          variant.Images360 = []; //for future
+          variant.Visibility = variant.Visibility
+          variant.Images = (variant.Images || []).map(mapper.Images)
+          variant.Images360 = [] // for future
 
           try {
-            variant.VideoLinks = objectMapper.VideoLinks(variant.VideoLinks);
+            variant.VideoLinks = objectMapper.VideoLinks(variant.VideoLinks)
           } catch (ex) {
-            variant.VideoLinks = [];
+            variant.VideoLinks = []
           }
 
-          return variant;
+          return variant
         },
-        Categories: function(lcat) {
-          if (lcat == null) return null;
+        Categories: function (lcat) {
+          if (lcat == null) return null
           return {
             CategoryId: lcat.CategoryId
-          };
+          }
         }
       }
 
       try {
-        clean.GlobalCategories = fd.GlobalCategories.map(mapper.Categories);
+        clean.GlobalCategories = fd.GlobalCategories.map(mapper.Categories)
       } catch (ex) {
-        console.warn("Unable to map Global Cat Array, Global Cat array is mandatory", ex);
+        console.warn('Unable to map Global Cat Array, Global Cat array is mandatory', ex)
       }
 
       try {
-        clean.LocalCategories = fd.LocalCategories.map(mapper.Categories);
+        clean.LocalCategories = fd.LocalCategories.map(mapper.Categories)
       } catch (ex) {
-        console.warn("Unable to map Local Cat array, Initializing", ex);
-        clean.LocalCategories = [null, null, null];
+        console.warn('Unable to map Local Cat array, Initializing', ex)
+        clean.LocalCategories = [null, null, null]
       }
 
       try {
-        fd.Keywords = util.uniqueSet(fd.Keywords);
-        clean.Keywords = (!fd.Keywords ? "" : fd.Keywords.join(','));
+        fd.Keywords = util.uniqueSet(fd.Keywords)
+        clean.Keywords = (!fd.Keywords ? '' : fd.Keywords.join(','))
       } catch (ex) {
-        console.warn("Keyword not set, will not serialize", ex);
+        console.warn('Keyword not set, will not serialize', ex)
       }
 
       try {
         clean.AttributeSet = {
           AttributeSetId: fd.AttributeSet.AttributeSetId
-        };
+        }
       } catch (ex) {
-        console.warn("AttributeSet not set, will not serialize", ex);
+        console.warn('AttributeSet not set, will not serialize', ex)
       }
 
       try {
-        clean.MasterAttribute = [];
-        Object.keys(fd.MasterAttribute).forEach(function(key) {
+        clean.MasterAttribute = []
+        Object.keys(fd.MasterAttribute).forEach(function (key) {
           if (fd.MasterAttribute[key].AttributeValueId) {
             var g = {
               AttributeValues: [],
               AttributeId: fd.MasterAttribute[key].AttributeId,
               ValueEn: fd.MasterAttribute[key].AttributeValueEn
-            };
+            }
 
-            g.AttributeValues.push(fd.MasterAttribute[key]);
-            clean.MasterAttribute.push(g);
+            g.AttributeValues.push(fd.MasterAttribute[key])
+            clean.MasterAttribute.push(g)
           } else {
             clean.MasterAttribute.push({
               AttributeValues: [],
               AttributeId: Number(key),
               ValueEn: fd.MasterAttribute[key]
-            });
+            })
           }
 
-        });
+        })
       } catch (ex) {
-        console.warn("Master Attributes", ex);
+        console.warn('Master Attributes', ex)
       }
 
       try {
-        clean.Remark = fd.Remark;
-        clean.PrepareDay = fd.PrepareDay || 0;
-        clean.SEO = fd.SEO;
-        clean.ControlFlags = fd.ControlFlags;
-        clean.Brand = fd.Brand;
-        clean.ShippingMethod = fd.ShippingMethod;
-        clean.EffectiveDate = null;
-        clean.ExpireDate = null;
-        clean.ExpireTime = null;
-        clean.ExpireDate = null;
+        clean.Remark = fd.Remark
+        clean.PrepareDay = fd.PrepareDay || 0
+        clean.SEO = fd.SEO
+        clean.ControlFlags = fd.ControlFlags
+        clean.Brand = fd.Brand
+        clean.ShippingMethod = fd.ShippingMethod
+        clean.EffectiveDate = null
+        clean.ExpireDate = null
+        clean.ExpireTime = null
+        clean.ExpireDate = null
 
         if (fd.ExpireDate && fd.EffectiveDate) {
-          var cpdate = angular.copy(fd.ExpireDate);
-          clean.ExpireDate = moment(cpdate).format('LL');
-          clean.ExpireTime = moment(cpdate).format('HH:mm:ss');
+          var cpdate = angular.copy(fd.ExpireDate)
+          clean.ExpireDate = moment(cpdate).format('LL')
+          clean.ExpireTime = moment(cpdate).format('HH:mm:ss')
 
-          cpdate = angular.copy(fd.EffectiveDate);
+          cpdate = angular.copy(fd.EffectiveDate)
 
-          clean.EffectiveDate = moment(cpdate).format('LL');
-          clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
+          clean.EffectiveDate = moment(cpdate).format('LL')
+          clean.EffectiveTime = moment(cpdate).format('HH:mm:ss')
         }
 
-
-        console.log('1-1', clean);
-        //clean.EffectiveDate = moment(fd.EffectiveDate + " " + fd.EffectiveTime);
-        //clean.EffectiveTime = fd.EffectiveTime;
-        //clean.ExpireDate = moment(fd.ExpireDate + " " + fd.ExpireTime);
-        //clean.ExpireTime = fd.ExpireTime;
+        console.log('1-1', clean)
+      // clean.EffectiveDate = moment(fd.EffectiveDate + " " + fd.EffectiveTime)
+      // clean.EffectiveTime = fd.EffectiveTime
+      // clean.ExpireDate = moment(fd.ExpireDate + " " + fd.ExpireTime)
+      // clean.ExpireTime = fd.ExpireTime
       } catch (ex) {
-        console.warn("One-To-One Fields", ex);
+        console.warn('One-To-One Fields', ex)
       }
 
       try {
-        //Move first entry of Categories out into Category
-        clean.GlobalCategory = clean.GlobalCategories[0].CategoryId;
-        clean.GlobalCategories.shift();
-
+        // Move first entry of Categories out into Category
+        clean.GlobalCategory = clean.GlobalCategories[0].CategoryId
+        clean.GlobalCategories.shift()
 
       } catch (ex) {
-        console.warn("shift global cat", ex);
+        console.warn('shift global cat', ex)
       }
 
       try {
-        clean.LocalCategory = clean.LocalCategories[0].CategoryId;
-        clean.LocalCategories.shift();
-
+        clean.LocalCategory = clean.LocalCategories[0].CategoryId
+        clean.LocalCategories.shift()
 
       } catch (ex) {
-        console.warn("shfiting local cat", ex);
-        //Local cat can be null
-        clean.LocalCategories = [null, null];
-        clean.LocalCategory = null;
+        console.warn('shfiting local cat', ex)
+        // Local cat can be null
+        clean.LocalCategories = [null, null]
+        clean.LocalCategory = null
       }
 
       try {
-        clean.RelatedProducts = [];
-        Object.keys(fd.RelatedProducts || []).forEach(function(key) {
+        clean.RelatedProducts = []
+        Object.keys(fd.RelatedProducts || []).forEach(function (key) {
           clean.RelatedProducts.push(
             fd.RelatedProducts[key]
-          );
-        });
+          )
+        })
       } catch (ex) {
-        console.warn("Organizing Related Products", ex);
+        console.warn('Organizing Related Products', ex)
       }
 
-      //MasterVariant
-      clean.MasterVariant = fd.MasterVariant;
+      // MasterVariant
+      clean.MasterVariant = fd.MasterVariant
 
-      if (fd.ProductId) clean.ProductId = fd.ProductId;
-
-      try {
-        clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks);
-      } catch (ex) {
-        clean.MasterVariant.VideoLinks = [];
-      }
+      if (fd.ProductId) clean.ProductId = fd.ProductId
 
       try {
-        clean.MasterVariant.Images360 = (fd.MasterImages360 | []).map(mapper.Images);
+        clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks)
       } catch (ex) {
-        clean.MasterVariant.Images360 = [];
+        clean.MasterVariant.VideoLinks = []
       }
 
       try {
-        clean.MasterVariant.Images = (fd.MasterImages || []).map(mapper.Images);
+        clean.MasterVariant.Images360 = (fd.MasterImages360 | []).map(mapper.Images)
       } catch (ex) {
-        clean.MasterVariant.Images = [];
+        clean.MasterVariant.Images360 = []
+      }
+
+      try {
+        clean.MasterVariant.Images = (fd.MasterImages || []).map(mapper.Images)
+      } catch (ex) {
+        clean.MasterVariant.Images = []
       }
 
       try {
         if (hasVariants) {
-          var masterProps = [];
-          clean.Variants = (fd.Variants || []).map(mapper.Variants);
-          //Find DefaultVariant
-          var target = fd.DefaultVariant.text;
-          clean.Variants.forEach(function(vari, index) {
-            vari.SafetyStock = 0; //Placeholder, no UI yet
-            vari.StockType = 0; //Placeholder
-            vari.DefaultVariant = false;
+          var masterProps = []
+          clean.Variants = (fd.Variants || []).map(mapper.Variants)
+          // Find DefaultVariant
+          var target = fd.DefaultVariant.text
+          clean.Variants.forEach(function (vari, index) {
+            vari.SafetyStock = 0; // Placeholder, no UI yet
+            vari.StockType = 0 // Placeholder
+            vari.DefaultVariant = false
             if (vari.text == target) {
-              clean.Variants[index].DefaultVariant = true;
+              clean.Variants[index].DefaultVariant = true
             }
-          });
+          })
         }
       } catch (ex) {
-        console.warn("Variant Distribute", ex);
+        console.warn('Variant Distribute', ex)
       }
 
-      //HardCoD
-      clean.SellerId = 1;
-      clean.ShopId = 1;
+      // HardCoD
+      clean.SellerId = 1
+      clean.ShopId = 1
 
-      return clean;
+      return clean
     }
 
-    service.deserialize = function(invFd, FullAttributeSet) {
-      console.log('FullAttributeSet', FullAttributeSet);
+    service.deserialize = function (invFd, FullAttributeSet) {
+      console.log('FullAttributeSet', FullAttributeSet)
 
-      invFd.AttributeSet = FullAttributeSet;
-      invFd.PrepareDay = invFd.PrepareDay || '';
+      invFd.AttributeSet = FullAttributeSet
+      invFd.PrepareDay = invFd.PrepareDay || ''
 
-      if (invFd.EffectiveDate != "" && invFd.EffectiveDate != null) {
-        invFd.EffectiveDate = moment(invFd.EffectiveDate + " " + invFd.EffectiveTime).toDate();
-        invFd.EffectiveTime = invFd.EffectiveTime;
+      if (invFd.EffectiveDate != '' && invFd.EffectiveDate != null) {
+        invFd.EffectiveDate = moment(invFd.EffectiveDate + ' ' + invFd.EffectiveTime).toDate()
+        invFd.EffectiveTime = invFd.EffectiveTime
       }
 
-      if (invFd.ExpireDate != "" && invFd.ExpireDate != null) {
-        invFd.ExpireDate = moment(invFd.ExpireDate + " " + invFd.ExpireTime).toDate();
-        invFd.ExpireTime = invFd.ExpireTime;
+      if (invFd.ExpireDate != '' && invFd.ExpireDate != null) {
+        invFd.ExpireDate = moment(invFd.ExpireDate + ' ' + invFd.ExpireTime).toDate()
+        invFd.ExpireTime = invFd.ExpireTime
       }
 
-      var BrandId = invFd.Brand.BrandId;
-      Brand.getOne(BrandId).then(function(data) {
-        invFd.Brand = data;
-        delete invFd.Brand.$id;
-        invFd.Brand.id = BrandId;
-      }, function() {
-        console.log("brand resolve failure");
+      var BrandId = invFd.Brand.BrandId
+      Brand.getOne(BrandId).then(function (data) {
+        invFd.Brand = data
+        delete invFd.Brand.$id
+        invFd.Brand.id = BrandId
+      }, function () {
+        console.log('brand resolve failure')
         invFd.Brand = {
           BrandId: null,
           BrandNameEn: 'Please select brand..'
-        };
-      });
+        }
+      })
 
       var invMapper = {
-        VideoLinks: function(m) {
-          return m.Url;
+        VideoLinks: function (m) {
+          return m.Url
         },
-        Variants: function(m) {
-          m.Visibility = m.Visibility;
-          m.Images = m.Images || [];
-          m.Images360 = m.Images360 || [];
-          m.WeightUnit = (m.WeightUnit || "").trim();
-          m.DimensionUnit = (m.DimensionUnit || "").trim();
-          m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
-          return m;
+        Variants: function (m) {
+          m.Visibility = m.Visibility
+          m.Images = m.Images || []
+          m.Images360 = m.Images360 || []
+          m.WeightUnit = (m.WeightUnit || '').trim()
+          m.DimensionUnit = (m.DimensionUnit || '').trim()
+          m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute)
+          return m
         }
-      };
-
-      try {
-        var DefaultVariantIndex = (invFd.Variants || []).map(function(o) {
-          return o.DefaultVariant || false;
-        }).indexOf(true);
-
-        invFd.DefaultVariant = invFd.Variants[DefaultVariantIndex];
-      } catch (er) {
-        console.warn("Unable to set DefaultVariant, will not set", er);
       }
 
       try {
-        invFd.Variants = (invFd.Variants || []).map(invMapper.Variants);
+        var DefaultVariantIndex = (invFd.Variants || []).map(function (o) {
+          return o.DefaultVariant || false
+        }).indexOf(true)
+
+        invFd.DefaultVariant = invFd.Variants[DefaultVariantIndex]
       } catch (er) {
-        console.warn("Unable to set Variants, will set empty", er);
-        invFd.Variants = [];
+        console.warn('Unable to set DefaultVariant, will not set', er)
       }
 
-      var MasterAttribute = {};
       try {
-        invFd.MasterAttribute.forEach(function(ma) {
-          var k = { "AttributeValue" :  ma.AttributeValues[0] }
-          if(ma.AttributeValues.length > 0 && ma.AttributeValues[0].AttributeValueId){
-             k.AttributeId = ma.AttributeId;
-             k.AttributeValueId = ma.AttributeValues[0].AttributeValueId;
+        invFd.Variants = (invFd.Variants || []).map(invMapper.Variants)
+      } catch (er) {
+        console.warn('Unable to set Variants, will set empty', er)
+        invFd.Variants = []
+      }
+
+      var MasterAttribute = {}
+      try {
+        invFd.MasterAttribute.forEach(function (ma) {
+          var k = { 'AttributeValue': ma.AttributeValues[0]}
+          if (ma.AttributeValues.length > 0 && ma.AttributeValues[0].AttributeValueId) {
+            k.AttributeId = ma.AttributeId
+            k.AttributeValueId = ma.AttributeValues[0].AttributeValueId
           }
-          MasterAttribute[ma.AttributeId] = ma.ValueEn || k;
-        });
+          MasterAttribute[ma.AttributeId] = ma.ValueEn || k
+        })
       } catch (ex) {
-        console.warn("Unable to set MasterAttribute", ex);
+        console.warn('Unable to set MasterAttribute', ex)
       }
-      invFd.MasterAttribute = MasterAttribute;
-
+      invFd.MasterAttribute = MasterAttribute
 
       if (!invFd.LocalCategories) {
-        invFd.LocalCategories = [];
+        invFd.LocalCategories = []
       }
 
       if (invFd.LocalCategories.length == 0) {
-        invFd.LocalCategories = [null, null, null];
+        invFd.LocalCategories = [null, null, null]
       } else {
-        var kmax = invFd.LocalCategories.length;
+        var kmax = invFd.LocalCategories.length
         for (var k = 0; k < 3 - kmax; k++) {
-          console.log("pushing null")
-          invFd.LocalCategories.push(null);
+          console.log('pushing null')
+          invFd.LocalCategories.push(null)
         }
       }
 
       if (invFd.LocalCategory) {
-        LocalCategory.getOne(invFd.LocalCategory).then(function(locat) {
-          invFd.LocalCategories.unshift(locat);
+        LocalCategory.getOne(invFd.LocalCategory).then(function (locat) {
+          invFd.LocalCategories.unshift(locat)
 
           if (invFd.LocalCategories.length > 3) {
-            invFd.LocalCategories.pop();
+            invFd.LocalCategories.pop()
           }
 
         })
       }
 
-      //TODO: replace with try-catch
+      // TODO: replace with try-catch
       if (invFd.MasterVariant.VideoLinks) {
-        invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
+        invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks)
       } else {
-        invFd.MasterVariant.VideoLinks = [];
+        invFd.MasterVariant.VideoLinks = []
       }
 
-
-      invFd.Variants.forEach(function(variant, index) {
+      invFd.Variants.forEach(function (variant, index) {
         try {
-          variant.VideoLinks = (variant.VideoLinks || []).map(invMapper.VideoLinks);
+          variant.VideoLinks = (variant.VideoLinks || []).map(invMapper.VideoLinks)
         } catch (ex) {
-          variant.VideoLinks = [];
+          variant.VideoLinks = []
         }
-      });
-
-
+      })
 
       if (!invFd.GlobalCategories) {
-        invFd.GlobalCategories = [null, null, null];
+        invFd.GlobalCategories = [null, null, null]
       }
 
       if (invFd.GlobalCategories.length == 0) {
-        invFd.GlobalCategories = [null, null, null];
+        invFd.GlobalCategories = [null, null, null]
       } else {
-        var kmax = invFd.GlobalCategories.length;
+        var kmax = invFd.GlobalCategories.length
         for (var k = 0; k < 3 - kmax; k++) {
-          console.log("pushing null")
-          invFd.GlobalCategories.push(null);
+          console.log('pushing null')
+          invFd.GlobalCategories.push(null)
         }
       }
 
       invFd.GlobalCategories.unshift({
         CategoryId: invFd.GlobalCategory
-      });
+      })
 
       if (invFd.GlobalCategories.length > 3) {
-        invFd.GlobalCategories.pop();
+        invFd.GlobalCategories.pop()
       }
 
-      delete invFd.GlobalCategory;
-      delete invFd.LocalCategory;
+      delete invFd.GlobalCategory
+      delete invFd.LocalCategory
 
-
-      //TODO: Just change ngmodel to bind to MasterVariant.MasterImages Directly
-      invFd.MasterImages = invFd.MasterVariant.Images || [];
-      delete invFd.MasterVariant.Images;
-      invFd.MasterImages360 = invFd.MasterVariant.Images360 || [];
-      delete invFd.MasterVariant.Images360;
+      // TODO: Just change ngmodel to bind to MasterVariant.MasterImages Directly
+      invFd.MasterImages = invFd.MasterVariant.Images || []
+      delete invFd.MasterVariant.Images
+      invFd.MasterImages360 = invFd.MasterVariant.Images360 || []
+      delete invFd.MasterVariant.Images360
 
       try {
-        invFd.MasterVariant.WeightUnit = invFd.MasterVariant.WeightUnit.trim();
+        invFd.MasterVariant.WeightUnit = invFd.MasterVariant.WeightUnit.trim()
       } catch (ex) {
-        invFd.MasterVariant.WeightUnit = undefined;
+        invFd.MasterVariant.WeightUnit = undefined
       }
 
       try {
-        invFd.MasterVariant.DimensionUnit = invFd.MasterVariant.DimensionUnit.trim();
+        invFd.MasterVariant.DimensionUnit = invFd.MasterVariant.DimensionUnit.trim()
       } catch (ex) {
-        invFd.MasterVariant.DimensionUnit = undefined;
+        invFd.MasterVariant.DimensionUnit = undefined
       }
 
       try {
-        var _split = invFd.Keywords.trim().split(",");
-        if (_split[0] == "") {
-          invFd.Keywords = [];
+        var _split = invFd.Keywords.trim().split(',')
+        if (_split[0] == '') {
+          invFd.Keywords = []
         } else {
-          invFd.Keywords = util.uniqueSet(_split);
+          invFd.Keywords = util.uniqueSet(_split)
         }
       } catch (ex) {
-        invFd.Keywords = [];
+        invFd.Keywords = []
       }
 
-      if (invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; //TODO: Hardcode
+      if (invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; // TODO: Hardcode
 
       var transformed = {
         formData: invFd
-      };
-
+      }
 
       if (invFd.Variants.length > 0) {
-        //Figure out the Attributes that make up each Variant
-        var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId']);
+        // Figure out the Attributes that make up each Variant
+        var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId'])
 
-        //Generate attributeOptions
-        var map0_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
-          return a.Attribute.AttributeId;
-        }).indexOf(invFd.Variants[0].FirstAttribute.AttributeId);
+        // Generate attributeOptions
+        var map0_index = FullAttributeSet.AttributeSetMaps.map(function (a) {
+          return a.Attribute.AttributeId
+        }).indexOf(invFd.Variants[0].FirstAttribute.AttributeId)
 
-        var map1_index, SecondArray;
+        var map1_index, SecondArray
         if (HasTwoAttr) {
-          map1_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
-            return a.Attribute.AttributeId;
-          }).indexOf(invFd.Variants[0].SecondAttribute.AttributeId);
+          map1_index = FullAttributeSet.AttributeSetMaps.map(function (a) {
+            return a.Attribute.AttributeId
+          }).indexOf(invFd.Variants[0].SecondAttribute.AttributeId)
         }
 
-        //Find array of values to populate factors array that can be used to reproduce
-        //the expanded variants
-        var FirstArray = invFd.Variants.map(function(variant) {
+        // Find array of values to populate factors array that can be used to reproduce
+        // the expanded variants
+        var FirstArray = invFd.Variants.map(function (variant) {
           if (variant.FirstAttribute.AttributeValues.length > 0) {
             return {
               'AttributeValue': variant.FirstAttribute.AttributeValues[0],
@@ -13511,71 +9783,59 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             }
           }
 
-          return variant.FirstAttribute.ValueEn.trim();
-        });
+          return variant.FirstAttribute.ValueEn.trim()
+        })
 
         if (HasTwoAttr) {
-          SecondArray = invFd.Variants.map(function(variant) {
+          SecondArray = invFd.Variants.map(function (variant) {
             if (variant.SecondAttribute.AttributeValues.length > 0) {
               return {
                 'AttributeValue': variant.SecondAttribute.AttributeValues[0],
                 'AttributeId': variant.SecondAttribute.AttributeId
               }
             }
-            return variant.SecondAttribute.ValueEn.trim();
-          });
+            return variant.SecondAttribute.ValueEn.trim()
+          })
         }
 
-        //Get updated map from invFd.AttributeSet
-        //and load factorization array
+        // Get updated map from invFd.AttributeSet
+        // and load factorization array
+        var uniqueFirst = util.uniqueSet(FirstArray, 'AttributeValue.AttributeValueId')
+        console.log('ufirst', uniqueFirst)
         transformed.attributeOptions = [{
           Attribute: FullAttributeSet.AttributeSetMaps[map0_index].Attribute,
-          options: util.uniqueSet(FirstArray)
-        }];
+          options: uniqueFirst
+        }]
 
         if (HasTwoAttr) {
+          var uniqueSecond = util.uniqueSet(SecondArray, 'AttributeValue.AttributeValueId')
+          console.log(uniqueSecond)
           transformed.attributeOptions.push({
             Attribute: FullAttributeSet.AttributeSetMaps[map1_index].Attribute,
-            options: util.uniqueSet(SecondArray)
-          });
+            options: uniqueSecond
+          })
         } else {
           transformed.attributeOptions.push({
             Attribute: null,
             options: []
-          });
+          })
         }
-
 
       }
 
-      console.log('transformation array', transformed);
+      console.log('transformation array', transformed)
 
-      return transformed;
-    };
+      return transformed
+    }
 
-    return service;
+    return service
   }
-];
+]
 
-<<<<<<< HEAD
-},{}],122:[function(require,module,exports){
-module.exports = ['Product', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
-    function (Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
-        var $productAdd = {};
-        
-        /*
-        * Wraps around multiple services,
-        * and solves dependencies needed for AddProduct view variables
-        * to be parsable
-        */
-        $productAdd.fill = function (globalCatId, pageLoader, sharedDataSet,
-            sharedFormData, breadcrumbs, controlFlags, variationFactorIndices, ivFormData) {
-=======
-},{}],137:[function(require,module,exports){
+},{}],129:[function(require,module,exports){
 module.exports = ["Product", "Brand", "AttributeSet", "ImageService", "GlobalCategory", "$q", "Category", function(Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
   'ngInject';
   var $productAdd = {};
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
 
   /*
    * Wraps around multiple services,
@@ -13637,11 +9897,6 @@ module.exports = ["Product", "Brand", "AttributeSet", "ImageService", "GlobalCat
           deferred.resolve();
         });
 
-<<<<<<< HEAD
-        return $productAdd;
-    }];
-},{}],123:[function(require,module,exports){
-=======
 
       });
 
@@ -13651,511 +9906,7 @@ module.exports = ["Product", "Brand", "AttributeSet", "ImageService", "GlobalCat
   return $productAdd;
 }];
 
-},{}],138:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
-//Products Collection Service
-module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
-    function ($http, common, util, LocalCategory, Brand) {
-        'use strict';
-        var service = {};
-
-        service.getOne = function (CMSId) {
-            var req = {
-                method: 'GET',
-                url: '/CMSStages/' + CMSId
-            };
-            return common.makeRequest(req);
-        };
-
-        service.getAllVariants = function (parameters) {
-            var req = {
-                method: 'GET',
-                url: '/ProductStages/All',
-                params: parameters
-            };
-
-            return common.makeRequest(req);
-        }
-
-        service.duplicate = function (CMSId) {
-            //this URL structure is weird dont u think
-            var req = {
-                method: 'POST',
-                url: '/CMSStages/' + CMSId
-            };
-
-            return common.makeRequest(req);
-        };
-
-        service.getAll = function (parameters) {
-            var req = {
-                method: 'GET',
-                url: '/CMSShopList',
-                params: {
-                    _order: parameters.orderBy || 'UpdateDate',
-                    _limit: parameters.pageSize || 10,
-                    _offset: parameters.page * parameters.pageSize || 0,
-                    _direction: parameters.direction || 'desc',
-                    _filter: parameters.filter || 'ALL',
-                    searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined ,
-                    ShopId: parameters.shopId|| 0
-                }
-            };
-
-            console.log(req);
-
-            return common.makeRequest(req);
-        };
-
-     //Start CMSStage
-        service.export = function (tobj) {
-            var path = '/CMSStages/Export';
-            return common.makeRequest({
-                responseType: 'arraybuffer',
-                method: 'POST',
-                url: path,
-                data: tobj
-            });
-        };
-
-        service.publish = function (tobj, Status) {  
-             var path = '/CMSStages';
-            if(typeof tobj.length != "undefined"){path = "/CMSUpdateStages";}                       
-            return common.makeRequest({
-                method: 'POST',
-                url: path,
-                data: tobj
-            });
-        };
-
-        service.bulkPublish = function (tobj) {
-            return common.makeRequest({
-                method: 'POST',
-                url: '/CMSUpdateStages',
-                data: tobj
-            });
-        };
-
-        service.visible = function (obj) {
-            return common.makeRequest({
-                method: 'POST',
-                url: '/CMSUpdateStages',
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            });
-        };
-      
-         service.deleteBulk = function (tobj) {
-            return common.makeRequest({
-                method: 'POST',
-                url: '/CMSUpdateStages',
-                data: tobj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            });
-        };
-
-         service.arrSerialize = function (fd) {
-            var retObjArr =[]
-
-            for(var index = 0 ; index <= fd.length ; index ++){
-                var clean = {};
-                try {
-
-//console.log("loop value : " + index + ", cmsid : "+ fd[index].CMSId +", status : "+ fd[index].Status + ", EffectiveDate : " + fd[index].EffectiveDate );
-
-                clean.CMSId = fd[index].CMSId;
-                clean.CMSNameEN = fd[index].CMSNameEN;
-                clean.CMSNameTH = fd[index].CMSNameTH;
-                clean.URLKey = fd[index].URLKey ;
-                clean.CMSTypeId = fd[index].CMSTypeId ;
-                clean.CMSStatusId = fd[index].CMSStatusId;
-                clean.Status = fd[index].Status ;
-                clean.UpdateBy =fd[index].UpdateBy;
-                clean.CreateBy =fd[index].CreateBy;
-                clean.Visibility = fd[index].Visibility;
-
-                clean.CreateIP =fd[index].CreateIP;
-                clean.ShortDescriptionTH = fd[index].ShortDescriptionTH ;
-                clean.LongDescriptionTH = fd[index].LongDescriptionTH;
-                clean.ShortDescriptionEN = fd[index].ShortDescriptionEN ;
-                clean.LongDescriptionEN = fd[index].LongDescriptionEN;
-
-                clean.Sequence = fd[index].Sequence;
-                clean.CMSCollectionGroupId =fd[index].CMSCollectionGroupId;
-                clean.CMSStatusFlowId =fd[index].CMSStatusFlowId;
-
-
-                if( !(typeof fd[index].ExpiryDate === 'undefined' || fd[index].ExpiryDate === null) ){
-                     var cpdate = angular.copy(fd[index].ExpiryDate);
-                                clean.ExpiryDate = moment(cpdate).format('LL');
-                                clean.ExpiryTime = moment(cpdate).format('HH:mm:ss');
-                }
-               
-                if( !(typeof fd[index].EffectiveDate === 'undefined' || fd[index].EffectiveDate === null) ){
-                 cpdate = angular.copy(fd[index].EffectiveDate);
-                                clean.EffectiveDate = moment(cpdate).format('LL');
-                                clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
-                }
-                               
-               retObjArr.push(clean);
-            } catch (ex) {
-                console.warn("Arr serialize error", ex);
-            }
-            }
-            
-            return retObjArr;
-        }
-
-        service.serialize = function (fd) {
-            var hasVariants = (!util.nullOrUndefined(fd.Variants) && fd.Variants.length > 0);
-
-            //Cleaned data
-            var clean = {};
-          
-
-            try {
-
-                clean.CMSId = fd.CMSId;
-                clean.CMSNameEN = fd.CMSNameEN;
-                clean.CMSNameTH = fd.CMSNameTH;
-                clean.URLKey = fd.URLKey ;
-                clean.CMSTypeId = fd.CMSTypeId ;
-                clean.CMSStatusId = fd.CMSStatusId;
-                clean.Status = fd.Status ;
-                clean.UpdateBy =fd.UpdateBy;
-                clean.CreateBy =fd.CreateBy;
-                clean.Visibility = fd.Visibility;
-
-                clean.CreateIP =fd.CreateIP;
-                clean.ShortDescriptionTH = fd.ShortDescriptionTH ;
-                clean.LongDescriptionTH = fd.LongDescriptionTH;
-                clean.ShortDescriptionEN = fd.ShortDescriptionEN ;
-                clean.LongDescriptionEN = fd.LongDescriptionEN;
-
-
-                var cpdate = angular.copy(fd.ExpiryDate);
-                clean.ExpiryDate = moment(cpdate).format('LL');
-                clean.ExpiryTime = moment(cpdate).format('HH:mm:ss');
-
-                cpdate = angular.copy(fd.EffectiveDate);
-
-                clean.EffectiveDate = moment(cpdate).format('LL');
-                clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
-
-                console.log('1-1', clean);
-            } catch (ex) {
-                console.warn("One-To-One Fields", ex);
-            }
-
-           
-
-            //HardCoD
-            clean.SellerId = 1;
-            clean.ShopId = 1;
-
-            return clean;
-        }
-
-        service.deserialize = function (invFd,  _Loading) {
-          
-            if (invFd.EffectiveDate != "" && invFd.EffectiveDate != null) {
-                invFd.EffectiveDate = moment(invFd.EffectiveDate + " " + invFd.EffectiveTime);
-                invFd.EffectiveTime = invFd.EffectiveTime;
-            }
-
-            if (invFd.ExpireDate != "" && invFd.ExpireDate != null) {
-                invFd.ExpireDate = moment(invFd.ExpireDate + " " + invFd.ExpireTime);
-                invFd.ExpireTime = invFd.ExpireTime;
-            }
-                  
-            var transformed = {
-                formData: invFd
-            };
-        
-            console.log('transformation array', transformed);
-
-            return transformed;
-        };
-    //End CMSStage
-
-
-//Start CMSGroup
-
-        service.getAllGroup = function (parameters) {
-            var req = {
-                method: 'GET',
-                url: '/CMSGroupList',
-                params: {
-                    _order: parameters.orderBy || 'UpdateDate',
-                    _limit: parameters.pageSize || 10,
-                    _offset: parameters.page * parameters.pageSize || 0,
-                    _direction: parameters.direction || 'desc',
-                    _filter: parameters.filter || 'ALL',
-                    searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined ,
-                    ShopId: parameters.shopId|| 0
-                }
-            };
-
-            console.log(req);
-
-            return common.makeRequest(req);
-        };
-
-        service.exportGroup = function (tobj) {
-            var path = '/CMSStages/ExportGroup';
-            return common.makeRequest({
-                responseType: 'arraybuffer',
-                method: 'POST',
-                url: path,
-                data: tobj
-            });
-        };
-
-          service.publishGroup = function (tobj, Status) {  
-             var path = '/CMSStages/Group';
-            if(typeof tobj.length != "undefined"){path = "/CMSUpdateStages";}                       
-            return common.makeRequest({
-                method: 'POST',
-                url: path,
-                data: tobj
-            });
-        };
-
-        service.bulkPublishGroup = function (tobj) {
-            return common.makeRequest({
-                method: 'POST',
-                url: '/CMSUpdateStages/Group',
-                data: tobj
-            });
-        };
-
-        service.visibleGroup = function (obj) {
-            return common.makeRequest({
-                method: 'POST',
-                url: '/CMSUpdateStages/Group',
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            });
-        };
-      
-         service.deleteBulkGroup = function (tobj) {
-            return common.makeRequest({
-                method: 'POST',
-                url: '/CMSUpdateStages/Group',
-                data: tobj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            });
-        };
-
-         service.arrSerializeGroup = function (fd) {
-            var retObjArr =[]
-
-            for(var index = 0 ; index <= fd.length ; index ++){
-                var clean = {};
-                try {
-
-                clean.CMSId = fd[index].CMSId;
-                clean.CMSNameEN = fd[index].CMSNameEN;
-                clean.CMSNameTH = fd[index].CMSNameTH;
-                clean.URLKey = fd[index].URLKey ;
-                clean.CMSTypeId = fd[index].CMSTypeId ;
-                clean.CMSStatusId = fd[index].CMSStatusId;
-                clean.Status = fd[index].Status ;
-                clean.UpdateBy =fd[index].UpdateBy;
-                clean.CreateBy =fd[index].CreateBy;
-                clean.Visibility = fd[index].Visibility;
-
-                clean.CreateIP =fd[index].CreateIP;
-                clean.ShortDescriptionTH = fd[index].ShortDescriptionTH ;
-                clean.LongDescriptionTH = fd[index].LongDescriptionTH;
-                clean.ShortDescriptionEN = fd[index].ShortDescriptionEN ;
-                clean.LongDescriptionEN = fd[index].LongDescriptionEN;
-
-                clean.Sequence = fd[index].Sequence;
-                clean.CMSCollectionGroupId =fd[index].CMSCollectionGroupId;
-                clean.CMSStatusFlowId =fd[index].CMSStatusFlowId;
-
-
-                if( !(typeof fd[index].ExpiryDate === 'undefined' || fd[index].ExpiryDate === null) ){
-                     var cpdate = angular.copy(fd[index].ExpiryDate);
-                                clean.ExpiryDate = moment(cpdate).format('LL');
-                                clean.ExpiryTime = moment(cpdate).format('HH:mm:ss');
-                }
-               
-                if( !(typeof fd[index].EffectiveDate === 'undefined' || fd[index].EffectiveDate === null) ){
-                 cpdate = angular.copy(fd[index].EffectiveDate);
-                                clean.EffectiveDate = moment(cpdate).format('LL');
-                                clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
-                }
-                               
-               retObjArr.push(clean);
-            } catch (ex) {
-                console.warn("Arr serialize error", ex);
-            }
-            }
-            
-            return retObjArr;
-        }
-
-        service.serializeGroup = function (fd) {
-            var hasVariants = (!util.nullOrUndefined(fd.Variants) && fd.Variants.length > 0);
-
-            //Cleaned data
-            var clean = {};
-          
-
-            try {
-
-                clean.CMSId = fd.CMSId;
-                clean.CMSNameEN = fd.CMSNameEN;
-                clean.CMSNameTH = fd.CMSNameTH;
-                clean.URLKey = fd.URLKey ;
-                clean.CMSTypeId = fd.CMSTypeId ;
-                clean.CMSStatusId = fd.CMSStatusId;
-                clean.Status = fd.Status ;
-                clean.UpdateBy =fd.UpdateBy;
-                clean.CreateBy =fd.CreateBy;
-                clean.Visibility = fd.Visibility;
-
-                clean.CreateIP =fd.CreateIP;
-                clean.ShortDescriptionTH = fd.ShortDescriptionTH ;
-                clean.LongDescriptionTH = fd.LongDescriptionTH;
-                clean.ShortDescriptionEN = fd.ShortDescriptionEN ;
-                clean.LongDescriptionEN = fd.LongDescriptionEN;
-
-
-                var cpdate = angular.copy(fd.ExpiryDate);
-                clean.ExpiryDate = moment(cpdate).format('LL');
-                clean.ExpiryTime = moment(cpdate).format('HH:mm:ss');
-
-                cpdate = angular.copy(fd.EffectiveDate);
-
-                clean.EffectiveDate = moment(cpdate).format('LL');
-                clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
-
-                console.log('1-1', clean);
-            } catch (ex) {
-                console.warn("One-To-One Fields", ex);
-            }
-
-           
-
-            //HardCoD
-            clean.SellerId = 1;
-            clean.ShopId = 1;
-
-            return clean;
-        }
-
-        service.deserializeGroup = function (invFd,  _Loading) {
-          
-            if (invFd.EffectiveDate != "" && invFd.EffectiveDate != null) {
-                invFd.EffectiveDate = moment(invFd.EffectiveDate + " " + invFd.EffectiveTime);
-                invFd.EffectiveTime = invFd.EffectiveTime;
-            }
-
-            if (invFd.ExpireDate != "" && invFd.ExpireDate != null) {
-                invFd.ExpireDate = moment(invFd.ExpireDate + " " + invFd.ExpireTime);
-                invFd.ExpireTime = invFd.ExpireTime;
-            }
-                  
-            var transformed = {
-                formData: invFd
-            };
-        
-            console.log('transformation array', transformed);
-
-            return transformed;
-        };
-//END CMSGroup
-
-        return service;
-    }
-];
-
-<<<<<<< HEAD
-},{}],124:[function(require,module,exports){
-=======
-},{}],139:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
-module.exports = ['Product', 'Collection', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
-    function (Product,  Collection, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
-        var $productCollectionAdd = {};
-        
-        /*
-        * Wraps around multiple services,
-        * and solves dependencies needed for AddProduct Collection view variables
-        * to be parsable
-        */
-        $productCollectionAdd.fill = function ( pageLoader, sharedDataSet,
-            sharedFormData, controlFlags, variationFactorIndices, ivFormData) {
-
-
-            var deferred = $q.defer();
-
-              var parse = function (ivFormData) {
-                            pageLoader.load('Loading product data..');
-                            // var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
-                            var inverseResult = Collection.deserialize(ivFormData);
-
-                            //copy it out
-                            Object.keys(inverseResult.formData).forEach(function (key) {
-                                sharedFormData[key] = inverseResult.formData[key];
-                            })
-                        };
-                        parse(ivFormData);
-
-            return deferred.promise;
-        };
-
-        return $productCollectionAdd;
-    }];
-<<<<<<< HEAD
-},{}],125:[function(require,module,exports){
-module.exports = ['Product', 'Collection', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
-    function (Product,  Collection, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
-        var $productCollectionAddListItem = {};
-        
-        /*
-        * Wraps around multiple services,
-        * and solves dependencies needed for AddProduct Collection view variables
-        * to be parsable
-        */
-        $productCollectionAddListItem.fill = function ( pageLoader, sharedDataSet,
-            sharedFormData, controlFlags,  ivFormData) {
-
-
-            var deferred = $q.defer();
-
-              var parse = function (ivFormData) {
-                            pageLoader.load('Loading product data..');
-                            // var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
-                            var inverseResult = Collection.deserialize(ivFormData);
-
-                            //copy it out
-                            Object.keys(inverseResult.formData).forEach(function (key) {
-                                sharedFormData[key] = inverseResult.formData[key];
-                            })
-                        };
-                        parse(ivFormData);
-
-            return deferred.promise;
-        };
-
-        return $productCollectionAddListItem;
-    }];
-},{}],126:[function(require,module,exports){
-=======
-},{}],140:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],130:[function(require,module,exports){
 module.exports = ["common", "util", function(common, util) {
 	'ngInject';
 	var service = common.Rest('/ProductReviews');
@@ -14191,11 +9942,7 @@ module.exports = ["common", "util", function(common, util) {
 	};	
 	return service;
 }];
-<<<<<<< HEAD
-},{}],127:[function(require,module,exports){
-=======
-},{}],141:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],131:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Seller');
@@ -14230,22 +9977,14 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-<<<<<<< HEAD
-},{}],128:[function(require,module,exports){
-=======
-},{}],142:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],132:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Seller');
 	
 	return service;
 }]
-<<<<<<< HEAD
-},{}],129:[function(require,module,exports){
-=======
-},{}],143:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],133:[function(require,module,exports){
 module.exports = ["common", "SellerPermissionService", function(common, SellerPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Seller');
@@ -14291,17 +10030,10 @@ module.exports = ["common", "SellerPermissionService", function(common, SellerPe
 	};
 	return service;	
 }]
-<<<<<<< HEAD
-},{}],130:[function(require,module,exports){
-module.exports = ['common', function(common) {
-	'use strict';
-	var service = {};
-=======
-},{}],144:[function(require,module,exports){
+},{}],134:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
     'use strict';
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
 
     var service = common.Rest('/Shops');
 
@@ -14356,162 +10088,15 @@ module.exports = ["common", "config", "util", function (common, config, util) {
 
     return service;
 }];
-<<<<<<< HEAD
-},{}],131:[function(require,module,exports){
-=======
 
-},{}],145:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],135:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Shop');
 
 	return service;
 }]
-<<<<<<< HEAD
-},{}],132:[function(require,module,exports){
-=======
-},{}],146:[function(require,module,exports){
-module.exports = {
-    NameTH: {
-        labelClass: "required",
-        inputSize: "large",
-        error:{
-          messages: {
-              pattern: 'Special characters are not allowed',
-              required: 'This is a required field'
-          }
-        }
-    },
-     NameEN: {
-        labelClass: "required",
-        inputSize: "large",
-        error:{
-          messages: {
-              pattern: 'Special characters are not allowed',
-              required: 'This is a required field'
-          }
-        }
-    },
-    BankNameTH: {
-        labelClass: "required",
-        inputSize: "large",
-        error:{
-          messages: {
-              pattern: 'Special characters are not allowed',
-              required: 'This is a required field'
-          }
-        }
-    },
-    BankNameEN: {
-        labelClass: "required",
-        inputSize: "large",
-        error:{
-          messages: {
-              pattern: 'Special characters are not allowed',
-              required: 'This is a required field'
-          }
-        }
-    },
-    PromotionCode: {
-        //labelClass: "required",
-        //inputSize: "large",
-        //error:{
-            //messages: {
-                //  pattern: 'Special characters are not allowed',
-                // required: 'This is a required field'
-        //}
-        //}
-    },
-    DateRange: {},
-    MinimumOrderAmount: {
-      labelClass: "required",
-      hint: {
-          show: true,
-          message: 'Example: 50 or 75'
-      },
-      error:{
-        messages: {
-            required: 'This is a required field'
-        }
-      }
-    },
-    MaximumDiscountAmount: {
-      labelClass: "required",
-      hint: {
-          show: true,
-          message: 'Example: 50 or 75'
-      },
-      error:{
-        messages: {
-            required: 'This is a required field'
-        }
-      }
-    },
-    Format15AValue: {
-      hint: {
-          show: true,
-          message: 'PREFIX: 34 or 37'
-      }
-    },
-     Format14DValue: {
-      hint: {
-          show: true,
-          message: 'PREFIX: 300 to 305, 36'
-      }
-    },
-    Format14CValue:{
-        hint:{
-            show:true,
-            message:'PREFIX: 38'
-        }
-    },
-    Format16DValue:{
-        hint:{
-            show:true,
-            message:'PREFIX: 6011'
-        }
-    },
-     Format15EValue:{
-        hint:{
-            show:true,
-            message:'PREFIX: 2014, 2149'
-        }
-    },
-    Format16JValue:{
-        hint:{
-            show:true,
-            message:'PREFIX: 3'
-        }
-    },
-    Format15JValue:{
-        hint:{
-            show:true,
-            message:'PREFIX: 2131, 1800'
-        }
-    },
-    Format16MValue:{
-        hint:{
-            show:true,
-            message:'PREFIX: 51 to 55'
-        }
-    },
-    Format13VValue:{
-        hint:{
-            show:true,
-            message:'PREFIX: 4'
-        }
-    },
-    Format16VValue:{
-        hint:{
-            show:true,
-            message:'PREFIX: 4'
-        }
-    }
-}
-
-},{}],147:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],136:[function(require,module,exports){
 module.exports = {
     MasterVariant_ProductNameEn: {
         'labelClass': 'required',
@@ -14645,11 +10230,8 @@ module.exports = {
         }
     }
 }
-<<<<<<< HEAD
-},{}],133:[function(require,module,exports){
-=======
 
-},{}],148:[function(require,module,exports){
+},{}],137:[function(require,module,exports){
 module.exports = {
 	BankAccountNumber: {
         inputSize: 'large',
@@ -14660,7 +10242,7 @@ module.exports = {
         labelClass: 'required'
 	}
 }
-},{}],149:[function(require,module,exports){
+},{}],138:[function(require,module,exports){
 module.exports = {
   CouponName: {
     labelClass: "required",
@@ -14712,14 +10294,14 @@ module.exports = {
   }
 }
 
-},{}],150:[function(require,module,exports){
+},{}],139:[function(require,module,exports){
 module.exports = {
   MultiCheckbox: {
     transcludeClasses:  "checkbox multiple-checkbox multiline"
   }
 }
 
-},{}],151:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
 module.exports = {
 	ColumnSearch: {
 
@@ -14775,8 +10357,7 @@ module.exports = {
 	}
 }
 
-},{}],152:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],141:[function(require,module,exports){
 module.exports = {
   ProductName: {},
   Pid: {},
@@ -14808,7 +10389,7 @@ module.exports = {
   }
 }
 
-},{}],153:[function(require,module,exports){
+},{}],142:[function(require,module,exports){
 module.exports = {
     GiftWrap: {
         tooltip: "Please select 'Available' if you can provide gift wrapping service to your customer"
@@ -14872,18 +10453,11 @@ module.exports = {
         tooltip: "Input number of stock before customer will get alerted when they visit your product page"
     }
 }
-<<<<<<< HEAD
-},{}],134:[function(require,module,exports){
-/**
- * Generated by grunt-angular-templates 
- * Mon Feb 29 2016 17:04:20 GMT+0700 (SE Asia Standard Time)
-=======
 
-},{}],154:[function(require,module,exports){
+},{}],143:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Mon Feb 29 2016 16:37:41 GMT+0700 (SE Asia Standard Time)
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+ * Mon Feb 29 2016 13:38:34 GMT+0700 (ICT)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -14899,11 +10473,6 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('brand/action',
     "<div><a ng-click=\"actions.edit(row, true)\">View / Edit</a></div><div><a ng-click=\"actions.delete(row, true)\">Delete</a></div>"
-  );
-
-
-  $templateCache.put('collection/action',
-    "<div><a ng-click=\"actions.edit(row, true)\">View / Edit</a></div><div><a ng-click=actions.duplicate(row)>Duplicate</a></div><div><a ng-click=\"actions.delete(row, true)\">Delete</a></div>"
   );
 
 
@@ -14938,8 +10507,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/input/label',
-    "<div class=form-group ng-class=\"options.formGroupClass || {}\"><div class=width-label><label class=control-label ng-class=\"options.labelClass || {}\">{{options.label}}</label></div><div ng-class=\"{ 'width-field-normal' : options.fieldSize == 'normal',\r" +
-    "\n" +
+    "<div class=form-group ng-class=\"options.formGroupClass || {}\"><div class=width-label><label class=control-label ng-class=\"options.labelClass || {}\">{{options.label}}</label></div><div ng-class=\"{ 'width-field-normal' : options.fieldSize == 'normal',\n" +
     "    \t\t\t\t 'width-field-xxl' : options.fieldSize != 'normal' }\"><p class=form-control-static><ng-transclude></ng-transclude></p></div></div>"
   );
 
@@ -15019,191 +10587,99 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
   );
 
 
-<<<<<<< HEAD
-  $templateCache.put('general/remove_row_add_list_item',
-    "<div><a ng-click=\"actions.remove($index,row, true)\">Remove</a></div>"
-  );
-
-
-  $templateCache.put('global_category/modal',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-=======
   $templateCache.put('common/modalChangePassword',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><button type=button class=close ng-click=$dismiss() aria-label=Close><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Change Password</h3></div><div class=modal-body><form class=\"ah-form margin-top-20\" name=form novalidate><div class=row><div class=col-xs-12><div class=form-section-content><div ng-if=oldPassword><div ng-template=common/input/password ng-template-options=\"{\r" +
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
-    "\n" +
-    "              'label': 'Old Password',\r" +
-    "\n" +
-    "              'labelClass': 'required',\r" +
-    "\n" +
-    "              'inputSize': 'small',\r" +
-    "\n" +
-    "              'error' : {\r" +
-    "\n" +
-    "                'messages': {\r" +
-    "\n" +
-    "                'required': 'This is a required field'\r" +
-    "\n" +
-    "              },\r" +
-    "\n" +
-    "              'show': isInvalid(form.Password),\r" +
-    "\n" +
-    "              'conditions' : form.Password.$error\r" +
-    "\n" +
-    "              }\r" +
-    "\n" +
-    "              }\"><input class=form-control type={{$parent.inputType}} name=Password ng-model=formData.Password ng-class=\"{ 'has-error' : isInvalid(form.Password) || (form.$pristine && formData.error) }\" required></div></div><div ng-template=common/input/password ng-template-options=\"{\r" +
-    "\n" +
-    "              'label': 'New Password',\r" +
-    "\n" +
-    "              'labelClass': 'required',\r" +
-    "\n" +
-    "              'inputSize': 'small',\r" +
-    "\n" +
-    "              'formGroupClass': oldPassword ? 'margin-top-30': '',\r" +
-    "\n" +
-    "              'error' : {\r" +
-    "\n" +
-    "              'messages': {\r" +
-    "\n" +
-    "              'required': 'This is a required field',\r" +
-    "\n" +
-    "              'pattern': 'Your password must contain letters and numbers',\r" +
-    "\n" +
-    "              'minlength': 'Your password must be 8-20 characters long',\r" +
-    "\n" +
-    "              'maxlength': 'Your password must be 8-20 characters long'\r" +
-    "\n" +
-    "              },\r" +
-    "\n" +
-    "              'show': isInvalid(form.NewPassword),\r" +
-    "\n" +
-    "              'conditions' : form.NewPassword.$error\r" +
-    "\n" +
-    "              }\r" +
-    "\n" +
-    "              }\"><input class=form-control type={{$parent.inputType}} name=NewPassword ng-model=formData.NewPassword ng-class=\"{ 'has-error' : isInvalid(form.NewPassword) || (form.$pristine && formData.error) }\" ng-pattern=\"/^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$/\" ng-pattern-restrict=^[0-9a-zA-Z]*$ ng-maxlength=20 ng-minlength=8 required></div><div ng-template=common/input/password ng-template-options=\"{\r" +
-    "\n" +
-    "              'label': 'Confirm Password',\r" +
-    "\n" +
-    "              'labelClass': 'required',\r" +
-    "\n" +
-    "              'inputSize': 'small',\r" +
-    "\n" +
-    "              'error' : {\r" +
-    "\n" +
-    "              'messages': {\r" +
-    "\n" +
-    "                'required': 'This is a required field',\r" +
-    "\n" +
-    "                'match': 'Your password and password confirmation do not match'\r" +
-    "\n" +
-    "              },\r" +
-    "\n" +
-    "              'show': isInvalid(form.ConfirmPassword),\r" +
-    "\n" +
-    "              'conditions' : form.ConfirmPassword.$error\r" +
-    "\n" +
-    "              }\r" +
-    "\n" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><button type=button class=close ng-click=$dismiss() aria-label=Close><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Change Password</h3></div><div class=modal-body><form class=\"ah-form margin-top-20\" name=form novalidate><div class=row><div class=col-xs-12><div class=form-section-content><div ng-if=oldPassword><div ng-template=common/input/password ng-template-options=\"{\n" +
+    "              'label': 'Old Password',\n" +
+    "              'labelClass': 'required',\n" +
+    "              'inputSize': 'small',\n" +
+    "              'error' : {\n" +
+    "                'messages': {\n" +
+    "                'required': 'This is a required field'\n" +
+    "              },\n" +
+    "              'show': isInvalid(form.Password),\n" +
+    "              'conditions' : form.Password.$error\n" +
+    "              }\n" +
+    "              }\"><input class=form-control type={{$parent.inputType}} name=Password ng-model=formData.Password ng-class=\"{ 'has-error' : isInvalid(form.Password) || (form.$pristine && formData.error) }\" required></div></div><div ng-template=common/input/password ng-template-options=\"{\n" +
+    "              'label': 'New Password',\n" +
+    "              'labelClass': 'required',\n" +
+    "              'inputSize': 'small',\n" +
+    "              'formGroupClass': oldPassword ? 'margin-top-30': '',\n" +
+    "              'error' : {\n" +
+    "              'messages': {\n" +
+    "              'required': 'This is a required field',\n" +
+    "              'pattern': 'Your password must contain letters and numbers',\n" +
+    "              'minlength': 'Your password must be 8-20 characters long',\n" +
+    "              'maxlength': 'Your password must be 8-20 characters long'\n" +
+    "              },\n" +
+    "              'show': isInvalid(form.NewPassword),\n" +
+    "              'conditions' : form.NewPassword.$error\n" +
+    "              }\n" +
+    "              }\"><input class=form-control type={{$parent.inputType}} name=NewPassword ng-model=formData.NewPassword ng-class=\"{ 'has-error' : isInvalid(form.NewPassword) || (form.$pristine && formData.error) }\" ng-pattern=\"/^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$/\" ng-pattern-restrict=^[0-9a-zA-Z]*$ ng-maxlength=20 ng-minlength=8 required></div><div ng-template=common/input/password ng-template-options=\"{\n" +
+    "              'label': 'Confirm Password',\n" +
+    "              'labelClass': 'required',\n" +
+    "              'inputSize': 'small',\n" +
+    "              'error' : {\n" +
+    "              'messages': {\n" +
+    "                'required': 'This is a required field',\n" +
+    "                'match': 'Your password and password confirmation do not match'\n" +
+    "              },\n" +
+    "              'show': isInvalid(form.ConfirmPassword),\n" +
+    "              'conditions' : form.ConfirmPassword.$error\n" +
+    "              }\n" +
     "              }\"><input class=form-control type={{$parent.inputType}} name=ConfirmPassword ng-model=formData.ConfirmPassword ng-class=\"{ 'has-error' : isInvalid(form.ConfirmPassword) || (form.$pristine && formData.error) }\" ng-match={{formData.NewPassword}} required></div></div><div class=\"container-fluid no-padding margin-top-20\"><div class=float-right><a href=# class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()><span class=login-loading ng-cloak ng-show=saving><i class=\"fa fa-spinner fa-spin\"></i></span>Save</button></div></div></div></div></form></div>"
   );
 
 
   $templateCache.put('global_category/modal',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t                  'label': 'Category Name (English)',\r" +
-    "\n" +
-    "\t\t\t                  'labelClass': 'required',\r" +
-    "\n" +
-    "\t\t\t                  'error' : {\r" +
-    "\n" +
-    "\t\t\t                        'messages': {\r" +
-    "\n" +
-    "\t\t\t                          'required': 'This is a required field',\r" +
-    "\n" +
-    "\t\t\t                          'pattern': 'Only English allowed'\r" +
-    "\n" +
-    "\t\t\t                        },\r" +
-    "\n" +
-    "\t\t\t                        'show': isInvalid(form.NameEn),\r" +
-    "\n" +
-    "\t\t\t                        'conditions' : form.NameEn.$error\r" +
-    "\n" +
-    "\t\t\t                   }\r" +
-    "\n" +
-    "\t\t\t                }\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-class=\"{ 'has-error' : isInvalid(form.NameEn) }\" ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'label': 'Category Name (ไทย)',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'labelClass': 'required',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'error' : {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'messages': {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'required': 'This is a required field'\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t},\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'show': isInvalid(form.NameTh),\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'conditions' : form.NameTh.$error\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t }\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t}\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-class=\"{ 'has-error' : isInvalid(form.NameTh) }\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t                        'label': 'URL (English)',\r" +
-    "\n" +
-    "\t                        'error' : {\r" +
-    "\n" +
-    "\t                              'messages': {\r" +
-    "\n" +
-    "\t                                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'\r" +
-    "\n" +
-    "\t                                },\r" +
-    "\n" +
-    "\t                              'show': isInvalid(form.UrlKeyEn),\r" +
-    "\n" +
-    "\t                              'conditions' : form.UrlKeyEn.$error\r" +
-    "\n" +
-    "\t                         }\r" +
-    "\n" +
-    "\t                      }\"><input class=form-control name=UrlKeyEn ng-model=formData.UrlKeyEn ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" ng-class=\"{ 'has-error' : isInvalid(form.UrlKeyEn) }\" maxlength=\"300\"></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t'label': 'Commission (%)',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t'labelClass': 'required',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t'error' : {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t'messages': {\r" +
-    "\n" +
-    "\t\t\t                    'required': 'This is a required field',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t'pattern': 'Only numbers and decimals (up to 2 digits) allowed',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t'minnumber': 'Please enter between 0% and 100%',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t'maxnumber': 'Please enter between 0% and 100%'\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t},\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t'show': isInvalid(form.Commission),\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t'conditions' : form.Commission.$error\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t}\r" +
-    "\n" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t\t\t                  'label': 'Category Name (English)',\n" +
+    "\t\t\t                  'labelClass': 'required',\n" +
+    "\t\t\t                  'error' : {\n" +
+    "\t\t\t                        'messages': {\n" +
+    "\t\t\t                          'required': 'This is a required field',\n" +
+    "\t\t\t                          'pattern': 'Only English allowed'\n" +
+    "\t\t\t                        },\n" +
+    "\t\t\t                        'show': isInvalid(form.NameEn),\n" +
+    "\t\t\t                        'conditions' : form.NameEn.$error\n" +
+    "\t\t\t                   }\n" +
+    "\t\t\t                }\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-class=\"{ 'has-error' : isInvalid(form.NameEn) }\" ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'label': 'Category Name (ไทย)',\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'labelClass': 'required',\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'error' : {\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'messages': {\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'required': 'This is a required field'\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t},\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'show': isInvalid(form.NameTh),\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'conditions' : form.NameTh.$error\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t }\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t}\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-class=\"{ 'has-error' : isInvalid(form.NameTh) }\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t                        'label': 'URL (English)',\n" +
+    "\t                        'error' : {\n" +
+    "\t                              'messages': {\n" +
+    "\t                                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'\n" +
+    "\t                                },\n" +
+    "\t                              'show': isInvalid(form.UrlKeyEn),\n" +
+    "\t                              'conditions' : form.UrlKeyEn.$error\n" +
+    "\t                         }\n" +
+    "\t                      }\"><input class=form-control name=UrlKeyEn ng-model=formData.UrlKeyEn ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" ng-class=\"{ 'has-error' : isInvalid(form.UrlKeyEn) }\" maxlength=\"300\"></div><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t\t\t\t\t\t\t'label': 'Commission (%)',\n" +
+    "\t\t\t\t\t\t\t'labelClass': 'required',\n" +
+    "\t\t\t\t\t\t\t'error' : {\n" +
+    "\t\t\t\t\t\t\t'messages': {\n" +
+    "\t\t\t                    'required': 'This is a required field',\n" +
+    "\t\t\t\t\t\t\t\t'pattern': 'Only numbers and decimals (up to 2 digits) allowed',\n" +
+    "\t\t\t\t\t\t\t\t'minnumber': 'Please enter between 0% and 100%',\n" +
+    "\t\t\t\t\t\t\t\t'maxnumber': 'Please enter between 0% and 100%'\n" +
+    "\t\t\t\t\t\t\t},\n" +
+    "\t\t\t\t\t\t\t'show': isInvalid(form.Commission),\n" +
+    "\t\t\t\t\t\t\t'conditions' : form.Commission.$error\n" +
+    "\t\t\t\t\t\t\t}\n" +
     "\t\t\t\t\t\t\t}\"><input class=form-control name=Commission ng-model=formData.Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-class=\"{ 'has-error' : isInvalid(form.Commission) }\" maxlength=20 ng-maxnumber=100 ng-minnumber=0 required></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions nc-options=\"{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }\"></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\">* Changing attribute set mapping may affect products under this category</p></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=col-xs-12 style=\"margin-top:-15px; margin-bottom:0px\"><p class=text-align-left><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</p></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
   $templateCache.put('global_category/nodes',
-    "<div class=\"category-content row no-margin\" ui-tree-handle style=\"cursor: pointer\"><div class=category-content-padding><span class=\"col-xs-5 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\r" +
-    "\n" +
+    "<div class=\"category-content row no-margin\" ui-tree-handle style=\"cursor: pointer\"><div class=category-content-padding><span class=\"col-xs-5 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\n" +
     "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this) data-nodrag></i> <i class=\"fa fa-chevron-right caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\" data-nodrag></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\" data-nodrag></span> <a class=inline-block ng-click=open(node) data-nodrag>{{ node.NameEn }}</a></span></span> <span class=col-xs-1>{{ node.CategoryAbbreviation }}</span> <span class=\"col-xs-1 text-align-center\">{{ node.ProductCount }}</span> <span class=\"col-xs-2 text-align-center\">{{ node.AttributeSetCount }}</span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'global_category/nodes'\"></li></ol>"
   );
 
@@ -15219,73 +10695,42 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('local_category/modal',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Local Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Local Category Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'label': 'Category Name (English)',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'labelClass': 'required',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'error' : {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'messages': {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'required': 'This is a required field',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'pattern': 'Only English allowed'\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t},\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'show': isInvalid(form.NameEn),\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'conditions' : form.NameEn.$error\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t }\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t}\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-class=\"{ 'has-error' : isInvalid(form.NameEn) }\" ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'label': 'Category Name (ไทย)',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'labelClass': 'required',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'error' : {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'messages': {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'required': 'This is a required field'\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t},\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'show': isInvalid(form.NameTh),\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'conditions' : form.NameTh.$error\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t }\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t}\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-class=\"{ 'has-error' : isInvalid(form.NameTh) }\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t                        'label': 'URL (English)',\r" +
-    "\n" +
-    "\t                        'error' : {\r" +
-    "\n" +
-    "\t                              'messages': {\r" +
-    "\n" +
-    "\t                                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'\r" +
-    "\n" +
-    "\t                                },\r" +
-    "\n" +
-    "\t                              'show': isInvalid(form.UrlKeyEn),\r" +
-    "\n" +
-    "\t                              'conditions' : form.UrlKeyEn.$error\r" +
-    "\n" +
-    "\t                         }\r" +
-    "\n" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Local Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Local Category Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'label': 'Category Name (English)',\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'labelClass': 'required',\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'error' : {\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'messages': {\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'required': 'This is a required field',\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'pattern': 'Only English allowed'\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t},\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'show': isInvalid(form.NameEn),\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'conditions' : form.NameEn.$error\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t }\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t}\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-class=\"{ 'has-error' : isInvalid(form.NameEn) }\" ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'label': 'Category Name (ไทย)',\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'labelClass': 'required',\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'error' : {\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'messages': {\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'required': 'This is a required field'\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t},\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'show': isInvalid(form.NameTh),\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'conditions' : form.NameTh.$error\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t }\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t}\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-class=\"{ 'has-error' : isInvalid(form.NameTh) }\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t                        'label': 'URL (English)',\n" +
+    "\t                        'error' : {\n" +
+    "\t                              'messages': {\n" +
+    "\t                                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'\n" +
+    "\t                                },\n" +
+    "\t                              'show': isInvalid(form.UrlKeyEn),\n" +
+    "\t                              'conditions' : form.UrlKeyEn.$error\n" +
+    "\t                         }\n" +
     "\t                      }\"><input class=form-control name=UrlKeyEn ng-model=formData.UrlKeyEn ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" ng-class=\"{ 'has-error' : isInvalid(form.UrlKeyEn) }\" maxlength=\"300\"></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=col-xs-12 style=\"margin-top:-15px; margin-bottom:0px\"><p class=text-align-left><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</p></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
   $templateCache.put('local_category/nodes',
-    "<div class=\"category-content row no-margin\" ui-tree-handle style=\"cursor: pointer\"><div class=category-content-padding><span class=\"col-xs-8 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\r" +
-    "\n" +
+    "<div class=\"category-content row no-margin\" ui-tree-handle style=\"cursor: pointer\"><div class=category-content-padding><span class=\"col-xs-8 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\n" +
     "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this) data-nodrag></i> <i class=\"fa fa-chevron-right caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\" data-nodrag></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\" data-nodrag></span> <a class=inline-block ng-click=open(node) data-nodrag>{{ node.NameEn }}</a></span></span> <span class=\"col-xs-1 text-align-center\">{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'local_category/nodes'\"></li></ol>"
   );
 
@@ -15344,11 +10789,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "<a><span ng-bind-html=\"match.label.HeaderName | uibTypeaheadHighlight:query\"></span></a>"
   );
  }];
-<<<<<<< HEAD
-},{}],135:[function(require,module,exports){
-=======
-},{}],155:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],144:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -19471,19 +14912,11 @@ angular.module('ngAnimate', [])
 
 })(window, window.angular);
 
-<<<<<<< HEAD
-},{}],136:[function(require,module,exports){
+},{}],145:[function(require,module,exports){
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":135}],137:[function(require,module,exports){
-=======
-},{}],156:[function(require,module,exports){
-require('./angular-animate');
-module.exports = 'ngAnimate';
-
-},{"./angular-animate":155}],157:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{"./angular-animate":144}],146:[function(require,module,exports){
 (function() {
     'use strict';
 
@@ -19651,30 +15084,9 @@ module.exports = 'ngAnimate';
 
 })();
 
-<<<<<<< HEAD
-},{}],138:[function(require,module,exports){
-//! moment.js
-//! version : 2.11.2
-//! authors : Tim Wood, Iskren Chernev, Moment.js contributors
-//! license : MIT
-//! momentjs.com
-
-;(function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-    typeof define === 'function' && define.amd ? define(factory) :
-    global.moment = factory()
-}(this, function () { 'use strict';
-
-    var hookCallback;
-
-    function utils_hooks__hooks () {
-        return hookCallback.apply(null, arguments);
-    }
-=======
-},{}],158:[function(require,module,exports){
+},{}],147:[function(require,module,exports){
 /*globals define, jQuery, module, require */
 /*jslint vars:true */
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
 
 /**
  * @license angular-bootstrap-datetimepicker  version: 0.4.0
@@ -20122,7 +15534,7 @@ module.exports = 'ngAnimate';
     }]);
 }));
 
-},{"angular":170,"moment":173}],159:[function(require,module,exports){
+},{"angular":159,"moment":162}],148:[function(require,module,exports){
 (function (root, factory) {
     /* istanbul ignore next */
     if (typeof define === 'function' && define.amd) {
@@ -20200,7 +15612,7 @@ return angular.module('angular-clipboard', [])
     }]);
 
 }));
-},{"angular":170}],160:[function(require,module,exports){
+},{"angular":159}],149:[function(require,module,exports){
 /*
  angular-file-upload v2.2.0
  https://github.com/nervgh/angular-file-upload
@@ -20208,7 +15620,7 @@ return angular.module('angular-clipboard', [])
 
 !function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["angular-file-upload"]=t():e["angular-file-upload"]=t()}(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var i=n[r]={exports:{},id:r,loaded:!1};return e[r].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=r(n(1)),o=r(n(2)),s=r(n(3)),a=r(n(4)),u=r(n(5)),l=r(n(6)),c=r(n(7)),f=r(n(8)),p=r(n(9)),d=r(n(10)),v=r(n(11)),h=r(n(12));angular.module(i.name,[]).value("fileUploaderOptions",o).factory("FileUploader",s).factory("FileLikeObject",a).factory("FileItem",u).factory("FileDirective",l).factory("FileSelect",c).factory("FileDrop",f).factory("FileOver",p).directive("nvFileSelect",d).directive("nvFileDrop",v).directive("nvFileOver",h).run(["FileUploader","FileLikeObject","FileItem","FileDirective","FileSelect","FileDrop","FileOver",function(e,t,n,r,i,o,s){e.FileLikeObject=t,e.FileItem=n,e.FileDirective=r,e.FileSelect=i,e.FileDrop=o,e.FileOver=s}])},function(e,t){e.exports={name:"angularFileUpload"}},function(e,t){"use strict";e.exports={url:"/",alias:"file",headers:{},queue:[],progress:0,autoUpload:!1,removeAfterUpload:!1,method:"POST",filters:[],formData:[],queueLimit:Number.MAX_VALUE,withCredentials:!1}},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.forEach,l=angular.isObject,c=angular.isNumber,f=angular.isDefined,p=angular.isArray,d=angular.element;e.exports=function(e,t,n,r,v,h){var m=r.File,g=r.FormData,_=function(){function r(t){o(this,r);var n=s(e);a(this,n,t,{isUploading:!1,_nextIndex:0,_failFilterIndex:-1,_directives:{select:[],drop:[],over:[]}}),this.filters.unshift({name:"queueLimit",fn:this._queueLimitFilter}),this.filters.unshift({name:"folder",fn:this._folderFilter})}return i(r,{addToQueue:{value:function(e,t,n){var r=this,i=this.isArrayLikeObject(e)?e:[e],o=this._getFilters(n),s=this.queue.length,a=[];u(i,function(e){var n=new v(e);if(r._isValidFile(n,o,t)){var i=new h(r,e,t);a.push(i),r.queue.push(i),r._onAfterAddingFile(i)}else{var s=o[r._failFilterIndex];r._onWhenAddingFileFailed(n,s,t)}}),this.queue.length!==s&&(this._onAfterAddingAll(a),this.progress=this._getTotalProgress()),this._render(),this.autoUpload&&this.uploadAll()}},removeFromQueue:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t];n.isUploading&&n.cancel(),this.queue.splice(t,1),n._destroy(),this.progress=this._getTotalProgress()}},clearQueue:{value:function(){for(;this.queue.length;)this.queue[0].remove();this.progress=0}},uploadItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhrTransport":"_iframeTransport";n._prepareToUploading(),this.isUploading||(this.isUploading=!0,this[r](n))}},cancelItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhr":"_form";n&&n.isUploading&&n[r].abort()}},uploadAll:{value:function(){var e=this.getNotUploadedItems().filter(function(e){return!e.isUploading});e.length&&(u(e,function(e){return e._prepareToUploading()}),e[0].upload())}},cancelAll:{value:function(){var e=this.getNotUploadedItems();u(e,function(e){return e.cancel()})}},isFile:{value:function(e){return this.constructor.isFile(e)}},isFileLikeObject:{value:function(e){return this.constructor.isFileLikeObject(e)}},isArrayLikeObject:{value:function(e){return this.constructor.isArrayLikeObject(e)}},getIndexOfItem:{value:function(e){return c(e)?e:this.queue.indexOf(e)}},getNotUploadedItems:{value:function(){return this.queue.filter(function(e){return!e.isUploaded})}},getReadyItems:{value:function(){return this.queue.filter(function(e){return e.isReady&&!e.isUploading}).sort(function(e,t){return e.index-t.index})}},destroy:{value:function(){var e=this;u(this._directives,function(t){u(e._directives[t],function(e){e.destroy()})})}},onAfterAddingAll:{value:function(e){}},onAfterAddingFile:{value:function(e){}},onWhenAddingFileFailed:{value:function(e,t,n){}},onBeforeUploadItem:{value:function(e){}},onProgressItem:{value:function(e,t){}},onProgressAll:{value:function(e){}},onSuccessItem:{value:function(e,t,n,r){}},onErrorItem:{value:function(e,t,n,r){}},onCancelItem:{value:function(e,t,n,r){}},onCompleteItem:{value:function(e,t,n,r){}},onCompleteAll:{value:function(){}},_getTotalProgress:{value:function(e){if(this.removeAfterUpload)return e||0;var t=this.getNotUploadedItems().length,n=t?this.queue.length-t:this.queue.length,r=100/this.queue.length,i=(e||0)*r/100;return Math.round(n*r+i)}},_getFilters:{value:function(e){if(!e)return this.filters;if(p(e))return e;var t=e.match(/[^\s,]+/g);return this.filters.filter(function(e){return-1!==t.indexOf(e.name)})}},_render:{value:function(){t.$$phase||t.$apply()}},_folderFilter:{value:function(e){return!(!e.size&&!e.type)}},_queueLimitFilter:{value:function(){return this.queue.length<this.queueLimit}},_isValidFile:{value:function(e,t,n){var r=this;return this._failFilterIndex=-1,t.length?t.every(function(t){return r._failFilterIndex++,t.fn.call(r,e,n)}):!0}},_isSuccessCode:{value:function(e){return e>=200&&300>e||304===e}},_transformResponse:{value:function(e,t){var r=this._headersGetter(t);return u(n.defaults.transformResponse,function(t){e=t(e,r)}),e}},_parseHeaders:{value:function(e){var t,n,r,i={};return e?(u(e.split("\n"),function(e){r=e.indexOf(":"),t=e.slice(0,r).trim().toLowerCase(),n=e.slice(r+1).trim(),t&&(i[t]=i[t]?i[t]+", "+n:n)}),i):i}},_headersGetter:{value:function(e){return function(t){return t?e[t.toLowerCase()]||null:e}}},_xhrTransport:{value:function(e){var t=this,n=e._xhr=new XMLHttpRequest,r=new g;if(this._onBeforeUploadItem(e),u(e.formData,function(e){u(e,function(e,t){r.append(t,e)})}),"number"!=typeof e._file.size)throw new TypeError("The file specified is no longer valid");r.append(e.alias,e._file,e.file.name),n.upload.onprogress=function(n){var r=Math.round(n.lengthComputable?100*n.loaded/n.total:0);t._onProgressItem(e,r)},n.onload=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r),o=t._isSuccessCode(n.status)?"Success":"Error",s="_on"+o+"Item";t[s](e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onerror=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onErrorItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onabort=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onCancelItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.open(e.method,e.url,!0),n.withCredentials=e.withCredentials,u(e.headers,function(e,t){n.setRequestHeader(t,e)}),n.send(r),this._render()}},_iframeTransport:{value:function(e){var t=this,n=d('<form style="display: none;" />'),r=d('<iframe name="iframeTransport'+Date.now()+'">'),i=e._input;e._form&&e._form.replaceWith(i),e._form=n,this._onBeforeUploadItem(e),i.prop("name",e.alias),u(e.formData,function(e){u(e,function(e,t){var r=d('<input type="hidden" name="'+t+'" />');r.val(e),n.append(r)})}),n.prop({action:e.url,method:"POST",target:r.prop("name"),enctype:"multipart/form-data",encoding:"multipart/form-data"}),r.bind("load",function(){var n="",i=200;try{n=r[0].contentDocument.body.innerHTML}catch(o){i=500}var s={response:n,status:i,dummy:!0},a={},u=t._transformResponse(s.response,a);t._onSuccessItem(e,u,s.status,a),t._onCompleteItem(e,u,s.status,a)}),n.abort=function(){var o,s={status:0,dummy:!0},a={};r.unbind("load").prop("src","javascript:false;"),n.replaceWith(i),t._onCancelItem(e,o,s.status,a),t._onCompleteItem(e,o,s.status,a)},i.after(n),n.append(i).append(r),n[0].submit(),this._render()}},_onWhenAddingFileFailed:{value:function(e,t,n){this.onWhenAddingFileFailed(e,t,n)}},_onAfterAddingFile:{value:function(e){this.onAfterAddingFile(e)}},_onAfterAddingAll:{value:function(e){this.onAfterAddingAll(e)}},_onBeforeUploadItem:{value:function(e){e._onBeforeUpload(),this.onBeforeUploadItem(e)}},_onProgressItem:{value:function(e,t){var n=this._getTotalProgress(t);this.progress=n,e._onProgress(t),this.onProgressItem(e,t),this.onProgressAll(n),this._render()}},_onSuccessItem:{value:function(e,t,n,r){e._onSuccess(t,n,r),this.onSuccessItem(e,t,n,r)}},_onErrorItem:{value:function(e,t,n,r){e._onError(t,n,r),this.onErrorItem(e,t,n,r)}},_onCancelItem:{value:function(e,t,n,r){e._onCancel(t,n,r),this.onCancelItem(e,t,n,r)}},_onCompleteItem:{value:function(e,t,n,r){e._onComplete(t,n,r),this.onCompleteItem(e,t,n,r);var i=this.getReadyItems()[0];return this.isUploading=!1,f(i)?void i.upload():(this.onCompleteAll(),this.progress=this._getTotalProgress(),void this._render())}}},{isFile:{value:function(e){return m&&e instanceof m}},isFileLikeObject:{value:function(e){return e instanceof v}},isArrayLikeObject:{value:function(e){return l(e)&&"length"in e}},inherit:{value:function(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,e.super_=t}}}),r}();return _.prototype.isHTML5=!(!m||!g),_.isHTML5=_.prototype.isHTML5,_},e.exports.$inject=["fileUploaderOptions","$rootScope","$http","$window","FileLikeObject","FileItem"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.isElement,u=angular.isString;e.exports=function(){var e=function(){function e(t){o(this,e);var n=a(t),r=n?t.value:t,i=u(r)?"FakePath":"Object",s="_createFrom"+i;this[s](r)}return i(e,{_createFromFakePath:{value:function(e){this.lastModifiedDate=null,this.size=null,this.type="like/"+e.slice(e.lastIndexOf(".")+1).toLowerCase(),this.name=e.slice(e.lastIndexOf("/")+e.lastIndexOf("\\")+2)}},_createFromObject:{value:function(e){this.lastModifiedDate=s(e.lastModifiedDate),this.size=e.size,this.type=e.type,this.name=e.name}}}),e}();return e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.element,l=angular.isElement;e.exports=function(e,t){var n=function(){function n(e,r,i){o(this,n);var c=l(r),f=c?u(r):null,p=c?null:r;a(this,{url:e.url,alias:e.alias,headers:s(e.headers),formData:s(e.formData),removeAfterUpload:e.removeAfterUpload,withCredentials:e.withCredentials,method:e.method},i,{uploader:e,file:new t(r),isReady:!1,isUploading:!1,isUploaded:!1,isSuccess:!1,isCancel:!1,isError:!1,progress:0,index:null,_file:p,_input:f}),f&&this._replaceNode(f)}return i(n,{upload:{value:function(){try{this.uploader.uploadItem(this)}catch(e){this.uploader._onCompleteItem(this,"",0,[]),this.uploader._onErrorItem(this,"",0,[])}}},cancel:{value:function(){this.uploader.cancelItem(this)}},remove:{value:function(){this.uploader.removeFromQueue(this)}},onBeforeUpload:{value:function(){}},onProgress:{value:function(e){}},onSuccess:{value:function(e,t,n){}},onError:{value:function(e,t,n){}},onCancel:{value:function(e,t,n){}},onComplete:{value:function(e,t,n){}},_onBeforeUpload:{value:function(){this.isReady=!0,this.isUploading=!0,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!1,this.isError=!1,this.progress=0,this.onBeforeUpload()}},_onProgress:{value:function(e){this.progress=e,this.onProgress(e)}},_onSuccess:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!0,this.isCancel=!1,this.isError=!1,this.progress=100,this.index=null,this.onSuccess(e,t,n)}},_onError:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!1,this.isCancel=!1,this.isError=!0,this.progress=0,this.index=null,this.onError(e,t,n)}},_onCancel:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!0,this.isError=!1,this.progress=0,this.index=null,this.onCancel(e,t,n)}},_onComplete:{value:function(e,t,n){this.onComplete(e,t,n),this.removeAfterUpload&&this.remove()}},_destroy:{value:function(){this._input&&this._input.remove(),this._form&&this._form.remove(),delete this._form,delete this._input}},_prepareToUploading:{value:function(){this.index=this.index||++this.uploader._nextIndex,this.isReady=!0}},_replaceNode:{value:function(t){var n=e(t.clone())(t.scope());n.prop("value",null),t.css("display","none"),t.after(n)}}}),n}();return n},e.exports.$inject=["$compile","FileLikeObject"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.extend);e.exports=function(){var e=function(){function e(t){o(this,e),s(this,t),this.uploader._directives[this.prop].push(this),this._saveLinks(),this.bind()}return i(e,{bind:{value:function(){for(var e in this.events){var t=this.events[e];this.element.bind(e,this[t])}}},unbind:{value:function(){for(var e in this.events)this.element.unbind(e,this.events[e])}},destroy:{value:function(){var e=this.uploader._directives[this.prop].indexOf(this);this.uploader._directives[this.prop].splice(e,1),this.unbind()}},_saveLinks:{value:function(){for(var e in this.events){var t=this.events[e];this[t]=this[t].bind(this)}}}}),e}();return e.prototype.events={},e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",change:"onChange"},prop:"select"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n),this.uploader.isHTML5||this.element.removeAttr("multiple"),this.element.prop("value",null)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},isEmptyAfterSelection:{value:function(){return!!this.element.attr("multiple")}},onChange:{value:function(){var e=this.uploader.isHTML5?this.element[0].files:this.element[0],t=this.getOptions(),n=this.getFilters();this.uploader.isHTML5||this.destroy(),this.uploader.addToQueue(e,t,n),this.isEmptyAfterSelection()&&(this.element.prop("value",null),this.element.replaceWith(this.element=this.element.clone(!0)))}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function c(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:c(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend),l=angular.forEach;e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",drop:"onDrop",dragover:"onDragOver",dragleave:"onDragLeave"},prop:"drop"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},onDrop:{value:function(e){var t=this._getTransfer(e);if(t){var n=this.getOptions(),r=this.getFilters();this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this),this.uploader.addToQueue(t.files,n,r)}}},onDragOver:{value:function(e){var t=this._getTransfer(e);this._haveFiles(t.types)&&(t.dropEffect="copy",this._preventAndStop(e),l(this.uploader._directives.over,this._addOverClass,this))}},onDragLeave:{value:function(e){e.currentTarget!==this.element[0]&&(this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this))}},_getTransfer:{value:function(e){return e.dataTransfer?e.dataTransfer:e.originalEvent.dataTransfer}},_preventAndStop:{value:function(e){e.preventDefault(),e.stopPropagation()}},_haveFiles:{value:function(e){return e?e.indexOf?-1!==e.indexOf("Files"):e.contains?e.contains("Files"):!1:!1}},_addOverClass:{value:function(e){e.addOverClass()}},_removeOverClass:{value:function(e){e.removeOverClass()}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy"},prop:"over",overClass:"nv-file-over"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{addOverClass:{value:function(){this.element.addClass(this.getOverClass())}},removeOverClass:{value:function(){this.element.removeClass(this.getOverClass())}},getOverClass:{value:function(){return this.overClass}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}},e.exports.$inject=["$parse","FileUploader","FileSelect"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');if(s.isHTML5){var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}}},e.exports.$inject=["$parse","FileUploader","FileDrop"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t){return{link:function(n,r,i){var o=n.$eval(i.uploader);if(!(o instanceof e))throw new TypeError('"Uploader" must be an instance of FileUploader');var s=new t({uploader:o,element:r});s.getOverClass=function(){return i.overClass||s.overClass}}}},e.exports.$inject=["FileUploader","FileOver"]}])});
 
-},{}],161:[function(require,module,exports){
+},{}],150:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -20927,11 +16339,11 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 })(window, window.angular);
 
-},{}],162:[function(require,module,exports){
+},{}],151:[function(require,module,exports){
 require('./angular-sanitize');
 module.exports = 'ngSanitize';
 
-},{"./angular-sanitize":161}],163:[function(require,module,exports){
+},{"./angular-sanitize":150}],152:[function(require,module,exports){
 /**
   * x is a value between 0 and 1, indicating where in the animation you are.
   */
@@ -21560,13 +16972,13 @@ angular.module('duScroll.scrollspy', ['duScroll.spyAPI'])
   };
 }]);
 
-},{}],164:[function(require,module,exports){
+},{}],153:[function(require,module,exports){
 require('angular');
 require('./angular-scroll');
 
 module.exports = 'duScroll';
 
-},{"./angular-scroll":163,"angular":170}],165:[function(require,module,exports){
+},{"./angular-scroll":152,"angular":159}],154:[function(require,module,exports){
 /*
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
@@ -24448,15 +19860,8 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
     }
   };
 
-<<<<<<< HEAD
-}));
-},{}],139:[function(require,module,exports){
-/*globals define, jQuery, module, require */
-/*jslint vars:true */
-=======
   $scope.select = function(date, evt) {
     evt.stopPropagation();
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
 
     if (date === 'today') {
       var today = new Date();
@@ -24924,13 +20329,6 @@ angular.module('ui.bootstrap.dropdown', ['ui.bootstrap.position'])
       });
     }
 
-<<<<<<< HEAD
-},{"angular":150,"moment":138}],140:[function(require,module,exports){
-/*
- angular-file-upload v2.2.0
- https://github.com/nervgh/angular-file-upload
-*/
-=======
     if (isOpen) {
       if (self.dropdownMenuTemplateUrl) {
         $templateRequest(self.dropdownMenuTemplateUrl).then(function(tplContent) {
@@ -24942,7 +20340,6 @@ angular.module('ui.bootstrap.dropdown', ['ui.bootstrap.position'])
           });
         });
       }
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
 
       scope.focusToggleElement();
       uibDropdownService.open(scope);
@@ -24956,19 +20353,9 @@ angular.module('ui.bootstrap.dropdown', ['ui.bootstrap.position'])
         self.dropdownMenu = newEl;
       }
 
-<<<<<<< HEAD
-},{}],141:[function(require,module,exports){
-/**
- * @license AngularJS v1.5.0
- * (c) 2010-2016 Google, Inc. http://angularjs.org
- * License: MIT
- */
-(function(window, angular, undefined) {'use strict';
-=======
       uibDropdownService.close(scope);
       self.selectedOption = null;
     }
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
 
     if (angular.isFunction(setIsOpen)) {
       setIsOpen($scope, isOpen);
@@ -25591,24 +20978,11 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap'])
             }
           });
 
-<<<<<<< HEAD
-},{}],142:[function(require,module,exports){
-require('./angular-sanitize');
-module.exports = 'ngSanitize';
-
-},{"./angular-sanitize":141}],143:[function(require,module,exports){
-/**
-  * x is a value between 0 and 1, indicating where in the animation you are.
-  */
-var duScrollDefaultEasing = function (x) {
-  'use strict';
-=======
         openedWindows.top().value.modalDomEl = angularDomEl;
         openedWindows.top().value.modalOpener = modalOpener;
 
         $modalStack.clearFocusListCache();
       };
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
 
       function broadcastClosing(modalWindow, resultOrReason, closing) {
         return !modalWindow.value.modalScope.$broadcast('modal.closing', resultOrReason, closing).defaultPrevented;
@@ -26488,11 +21862,6 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
               }
             }
 
-<<<<<<< HEAD
-},{}],144:[function(require,module,exports){
-require('angular');
-require('./angular-scroll');
-=======
             /**
              * Set the initial scope values. Once
              * the tooltip is created, the observers
@@ -26505,23 +21874,12 @@ require('./angular-scroll');
               } else {
                 ttScope.content = attrs[ttType];
               }
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
 
               ttScope.popupClass = attrs[prefix + 'Class'];
               ttScope.placement = angular.isDefined(attrs[prefix + 'Placement']) ? attrs[prefix + 'Placement'] : options.placement;
               var placement = $position.parsePlacement(ttScope.placement);
               lastPlacement = placement[1] ? placement[0] + '-' + placement[1] : placement[0];
 
-<<<<<<< HEAD
-},{"./angular-scroll":143,"angular":150}],145:[function(require,module,exports){
-require('./ui-bootstrap-tpls');
-module.exports = 'ui.bootstrap';
-
-},{"./ui-bootstrap-tpls":146}],146:[function(require,module,exports){
-/*
- * angular-ui-bootstrap
- * http://angular-ui.github.io/bootstrap/
-=======
               var delay = parseInt(attrs[prefix + 'PopupDelay'], 10);
               var closeDelay = parseInt(attrs[prefix + 'PopupCloseDelay'], 10);
               ttScope.popupDelay = !isNaN(delay) ? delay : options.popupDelay;
@@ -26533,7 +21891,6 @@ module.exports = 'ui.bootstrap';
                 isOpenParse.assign(scope, isOpen);
               }
             }
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
 
             ttScope.contentExp = function() {
               return ttScope.content;
@@ -28984,12 +24341,12 @@ angular.module('ui.bootstrap.datepicker').run(function() {!angular.$$csp().noInl
 angular.module('ui.bootstrap.tooltip').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow,[uib-popover-popup].popover.top-left > .arrow,[uib-popover-popup].popover.top-right > .arrow,[uib-popover-popup].popover.bottom-left > .arrow,[uib-popover-popup].popover.bottom-right > .arrow,[uib-popover-popup].popover.left-top > .arrow,[uib-popover-popup].popover.left-bottom > .arrow,[uib-popover-popup].popover.right-top > .arrow,[uib-popover-popup].popover.right-bottom > .arrow{top:auto;bottom:auto;left:auto;right:auto;margin:0;}[uib-popover-popup].popover,[uib-popover-template-popup].popover{display:block !important;}</style>'); });
 angular.module('ui.bootstrap.timepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-time input{width:50px;}</style>'); });
 angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); });
-},{}],166:[function(require,module,exports){
+},{}],155:[function(require,module,exports){
 require('./dist/ui-bootstrap-tpls');
 
 module.exports = 'ui.bootstrap';
 
-},{"./dist/ui-bootstrap-tpls":165}],167:[function(require,module,exports){
+},{"./dist/ui-bootstrap-tpls":154}],156:[function(require,module,exports){
 /**
  * @license Angular UI Tree v2.14.0
  * (c) 2010-2015. https://github.com/angular-ui-tree/angular-ui-tree
@@ -30489,11 +25846,11 @@ module.exports = 'ui.bootstrap';
 
 })();
 
-},{}],168:[function(require,module,exports){
+},{}],157:[function(require,module,exports){
 require('./dist/angular-ui-tree');
 module.exports = 'ui.tree';
 
-},{"./dist/angular-ui-tree":167}],169:[function(require,module,exports){
+},{"./dist/angular-ui-tree":156}],158:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.9
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -35308,26 +30665,6 @@ function $AnchorScrollProvider() {
       else if (hash === 'top') scrollTo(null);
     }
 
-<<<<<<< HEAD
-angular.module("template/typeahead/typeahead-popup.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("template/typeahead/typeahead-popup.html",
-    "<ul class=\"dropdown-menu\" ng-show=\"isOpen() && !moveInProgress\" ng-style=\"{top: position().top+'px', left: position().left+'px'}\" style=\"display: block;\" role=\"listbox\" aria-hidden=\"{{!isOpen()}}\">\n" +
-    "    <li ng-repeat=\"match in matches track by $index\" ng-class=\"{active: isActive($index) }\" ng-mouseenter=\"selectActive($index)\" ng-click=\"selectMatch($index)\" role=\"option\" id=\"{{::match.id}}\">\n" +
-    "        <div uib-typeahead-match index=\"$index\" match=\"match\" query=\"query\" template-url=\"templateUrl\"></div>\n" +
-    "    </li>\n" +
-    "</ul>\n" +
-    "");
-}]);
-!angular.$$csp() && angular.element(document).find('head').prepend('<style type="text/css">.ng-animate.item:not(.left):not(.right){-webkit-transition:0s ease-in-out left;transition:0s ease-in-out left}</style>');
-},{}],147:[function(require,module,exports){
-/**
- * @license Angular UI Tree v2.14.0
- * (c) 2010-2015. https://github.com/angular-ui-tree/angular-ui-tree
- * License: MIT
- */
-(function () {
-  'use strict';
-=======
     // does not scroll when user clicks on anchor link that is currently on
     // (no url change, no $location.hash() change), browser native does scroll
     if (autoScrollingEnabled) {
@@ -35335,7 +30672,6 @@ angular.module("template/typeahead/typeahead-popup.html", []).run(["$templateCac
         function autoScrollWatchAction(newVal, oldVal) {
           // skip the initial scroll if $location.hash is empty
           if (newVal === oldVal && newVal === '') return;
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
 
           jqLiteDocumentLoaded(function() {
             $rootScope.$evalAsync(scroll);
@@ -36905,389 +32241,9 @@ function $CacheFactoryProvider() {
     };
 
 
-<<<<<<< HEAD
-            if (treeNodeCtrl) {
-              treeNodeCtrl.scope.$childNodesScope = scope;
-              scope.$nodeScope = treeNodeCtrl.scope;
-            } else {
-              // find the root nodes if there is no parent node and have a parent ui-tree
-              treeCtrl.scope.$nodesScope = scope;
-            }
-            scope.$treeScope = treeCtrl.scope;
-
-            if (ngModel) {
-              ngModel.$render = function () {
-                scope.$modelValue = ngModel.$modelValue;
-              };
-            }
-
-            scope.$watch(function () {
-              return attrs.maxDepth;
-            }, function (val) {
-              if ((typeof val) == 'number') {
-                scope.maxDepth = val;
-              }
-            });
-
-            scope.$watch(function () {
-              return attrs.nodropEnabled;
-            }, function (newVal) {
-              if ((typeof newVal) != 'undefined') {
-                scope.nodropEnabled = true;
-              }
-            }, true);
-
-            attrs.$observe('horizontal', function (val) {
-              scope.horizontal = ((typeof val) != 'undefined');
-            });
-
-          }
-        };
-      }
-    ]);
-})();
-
-(function () {
-  'use strict';
-
-  angular.module('ui.tree')
-
-  /**
-   * @ngdoc service
-   * @name ui.tree.service:UiTreeHelper
-   * @requires ng.$document
-   * @requires ng.$window
-   *
-   * @description
-   * angular-ui-tree.
-   */
-    .factory('UiTreeHelper', ['$document', '$window',
-      function ($document, $window) {
-        return {
-
-          /**
-           * A hashtable used to storage data of nodes
-           * @type {Object}
-           */
-          nodesData: {},
-
-          setNodeAttribute: function (scope, attrName, val) {
-            if (!scope.$modelValue) {
-              return null;
-            }
-            var data = this.nodesData[scope.$modelValue.$$hashKey];
-            if (!data) {
-              data = {};
-              this.nodesData[scope.$modelValue.$$hashKey] = data;
-            }
-            data[attrName] = val;
-          },
-
-          getNodeAttribute: function (scope, attrName) {
-            if (!scope.$modelValue) {
-              return null;
-            }
-            var data = this.nodesData[scope.$modelValue.$$hashKey];
-            if (data) {
-              return data[attrName];
-            }
-            return null;
-          },
-
-          /**
-           * @ngdoc method
-           * @methodOf ui.tree.service:$nodrag
-           * @param  {Object} targetElm angular element
-           * @return {Bool} check if the node can be dragged.
-           */
-          nodrag: function (targetElm) {
-            if (typeof targetElm.attr('data-nodrag') != 'undefined') {
-              return targetElm.attr('data-nodrag') !== 'false';
-            }
-            return false;
-          },
-
-          /**
-           * get the event object for touches
-           * @param  {[type]} e [description]
-           * @return {[type]}   [description]
-           */
-          eventObj: function (e) {
-            var obj = e;
-            if (e.targetTouches !== undefined) {
-              obj = e.targetTouches.item(0);
-            } else if (e.originalEvent !== undefined && e.originalEvent.targetTouches !== undefined) {
-              obj = e.originalEvent.targetTouches.item(0);
-            }
-            return obj;
-          },
-
-          dragInfo: function (node) {
-            return {
-              source: node,
-              sourceInfo: {
-                cloneModel: node.$treeScope.cloneEnabled === true ? angular.copy(node.$modelValue) : undefined,
-                nodeScope: node,
-                index: node.index(),
-                nodesScope: node.$parentNodesScope
-              },
-              index: node.index(),
-              siblings: node.siblings().slice(0),
-              parent: node.$parentNodesScope,
-
-              // Move the node to a new position
-              moveTo: function (parent, siblings, index) {
-                this.parent = parent;
-                this.siblings = siblings.slice(0);
-
-                // If source node is in the target nodes
-                var i = this.siblings.indexOf(this.source);
-                if (i > -1) {
-                  this.siblings.splice(i, 1);
-                  if (this.source.index() < index) {
-                    index--;
-                  }
-                }
-
-                this.siblings.splice(index, 0, this.source);
-                this.index = index;
-              },
-
-              parentNode: function () {
-                return this.parent.$nodeScope;
-              },
-
-              prev: function () {
-                if (this.index > 0) {
-                  return this.siblings[this.index - 1];
-                }
-
-                return null;
-              },
-
-              next: function () {
-                if (this.index < this.siblings.length - 1) {
-                  return this.siblings[this.index + 1];
-                }
-
-                return null;
-              },
-
-              isClone: function () {
-                return this.source.$treeScope.cloneEnabled === true;
-              },
-
-              clonedNode: function (node) {
-                return angular.copy(node);
-              },
-
-              isDirty: function () {
-                return this.source.$parentNodesScope != this.parent ||
-                  this.source.index() != this.index;
-              },
-
-              isForeign: function () {
-                return this.source.$treeScope !== this.parent.$treeScope;
-              },
-
-              eventArgs: function (elements, pos) {
-                return {
-                  source: this.sourceInfo,
-                  dest: {
-                    index: this.index,
-                    nodesScope: this.parent
-                  },
-                  elements: elements,
-                  pos: pos
-                };
-              },
-
-              apply: function () {
-
-                var nodeData = this.source.$modelValue;
-
-                // nodrop enabled on tree or parent
-                if (this.parent.nodropEnabled || this.parent.$treeScope.nodropEnabled) {
-                  return;
-                }
-
-                // node was dropped in the same place - do nothing
-                if (!this.isDirty()) {
-                  return;
-                }
-
-                // cloneEnabled and cross-tree so copy and do not remove from source
-                if (this.isClone() && this.isForeign()) {
-                  this.parent.insertNode(this.index, this.sourceInfo.cloneModel);
-                } else { // Any other case, remove and reinsert
-                  this.source.remove();
-                  this.parent.insertNode(this.index, nodeData);
-                }
-              }
-            };
-          },
-
-          /**
-           * @ngdoc method
-           * @name ui.tree#height
-           * @methodOf ui.tree.service:UiTreeHelper
-           *
-           * @description
-           * Get the height of an element.
-           *
-           * @param {Object} element Angular element.
-           * @returns {String} Height
-           */
-          height: function (element) {
-            return element.prop('scrollHeight');
-          },
-
-          /**
-           * @ngdoc method
-           * @name ui.tree#width
-           * @methodOf ui.tree.service:UiTreeHelper
-           *
-           * @description
-           * Get the width of an element.
-           *
-           * @param {Object} element Angular element.
-           * @returns {String} Width
-           */
-          width: function (element) {
-            return element.prop('scrollWidth');
-          },
-
-          /**
-           * @ngdoc method
-           * @name ui.tree#offset
-           * @methodOf ui.nestedSortable.service:UiTreeHelper
-           *
-           * @description
-           * Get the offset values of an element.
-           *
-           * @param {Object} element Angular element.
-           * @returns {Object} Object with properties width, height, top and left
-           */
-          offset: function (element) {
-            var boundingClientRect = element[0].getBoundingClientRect();
-
-            return {
-              width: element.prop('offsetWidth'),
-              height: element.prop('offsetHeight'),
-              top: boundingClientRect.top + ($window.pageYOffset || $document[0].body.scrollTop || $document[0].documentElement.scrollTop),
-              left: boundingClientRect.left + ($window.pageXOffset || $document[0].body.scrollLeft || $document[0].documentElement.scrollLeft)
-            };
-          },
-
-          /**
-           * @ngdoc method
-           * @name ui.tree#positionStarted
-           * @methodOf ui.tree.service:UiTreeHelper
-           *
-           * @description
-           * Get the start position of the target element according to the provided event properties.
-           *
-           * @param {Object} e Event
-           * @param {Object} target Target element
-           * @returns {Object} Object with properties offsetX, offsetY, startX, startY, nowX and dirX.
-           */
-          positionStarted: function (e, target) {
-            var pos = {},
-              pageX = e.pageX,
-              pageY = e.pageY;
-
-            if (e.originalEvent && e.originalEvent.touches && (e.originalEvent.touches.length > 0)) {
-              pageX = e.originalEvent.touches[0].pageX;
-              pageY = e.originalEvent.touches[0].pageY;
-            }
-            pos.offsetX = pageX - this.offset(target).left;
-            pos.offsetY = pageY - this.offset(target).top;
-            pos.startX = pos.lastX = pageX;
-            pos.startY = pos.lastY = pageY;
-            pos.nowX = pos.nowY = pos.distX = pos.distY = pos.dirAx = 0;
-            pos.dirX = pos.dirY = pos.lastDirX = pos.lastDirY = pos.distAxX = pos.distAxY = 0;
-            return pos;
-          },
-
-          positionMoved: function (e, pos, firstMoving) {
-            var pageX = e.pageX,
-              pageY = e.pageY,
-              newAx;
-            if (e.originalEvent && e.originalEvent.touches && (e.originalEvent.touches.length > 0)) {
-              pageX = e.originalEvent.touches[0].pageX;
-              pageY = e.originalEvent.touches[0].pageY;
-            }
-            // mouse position last events
-            pos.lastX = pos.nowX;
-            pos.lastY = pos.nowY;
-
-            // mouse position this events
-            pos.nowX = pageX;
-            pos.nowY = pageY;
-
-            // distance mouse moved between events
-            pos.distX = pos.nowX - pos.lastX;
-            pos.distY = pos.nowY - pos.lastY;
-
-            // direction mouse was moving
-            pos.lastDirX = pos.dirX;
-            pos.lastDirY = pos.dirY;
-
-            // direction mouse is now moving (on both axis)
-            pos.dirX = pos.distX === 0 ? 0 : pos.distX > 0 ? 1 : -1;
-            pos.dirY = pos.distY === 0 ? 0 : pos.distY > 0 ? 1 : -1;
-
-            // axis mouse is now moving on
-            newAx = Math.abs(pos.distX) > Math.abs(pos.distY) ? 1 : 0;
-
-            // do nothing on first move
-            if (firstMoving) {
-              pos.dirAx = newAx;
-              pos.moving = true;
-              return;
-            }
-
-            // calc distance moved on this axis (and direction)
-            if (pos.dirAx !== newAx) {
-              pos.distAxX = 0;
-              pos.distAxY = 0;
-            } else {
-              pos.distAxX += Math.abs(pos.distX);
-              if (pos.dirX !== 0 && pos.dirX !== pos.lastDirX) {
-                pos.distAxX = 0;
-              }
-
-              pos.distAxY += Math.abs(pos.distY);
-              if (pos.dirY !== 0 && pos.dirY !== pos.lastDirY) {
-                pos.distAxY = 0;
-              }
-            }
-
-            pos.dirAx = newAx;
-          }
-        };
-      }
-
-    ]);
-
-})();
-
-},{}],148:[function(require,module,exports){
-require('./dist/angular-ui-tree');
-module.exports = 'ui.tree';
-
-},{"./dist/angular-ui-tree":147}],149:[function(require,module,exports){
-/**
- * @license AngularJS v1.4.9
- * (c) 2010-2015 Google, Inc. http://angularjs.org
- * License: MIT
- */
-(function(window, document, undefined) {'use strict';
-=======
     return cacheFactory;
   };
 }
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
 
 /**
  * @ngdoc service
@@ -60552,11 +55508,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],170:[function(require,module,exports){
+},{}],159:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":169}],171:[function(require,module,exports){
+},{"./angular":158}],160:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.0
  * http://jquery.com/
@@ -62706,27 +57662,6 @@ function addCombinator( matcher, combinator, base ) {
 			}
 		} :
 
-<<<<<<< HEAD
-!window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],150:[function(require,module,exports){
-require('./angular');
-module.exports = angular;
-
-},{"./angular":149}],151:[function(require,module,exports){
-/*!
- * jQuery JavaScript Library v2.2.0
- * http://jquery.com/
- *
- * Includes Sizzle.js
- * http://sizzlejs.com/
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license
- * http://jquery.org/license
- *
- * Date: 2016-01-08T20:02Z
- */
-=======
 		// Check against all ancestor/preceding elements
 		function( elem, context, xml ) {
 			var oldCache, uniqueCache, outerCache,
@@ -62745,7 +57680,6 @@ module.exports = angular;
 				while ( (elem = elem[ dir ]) ) {
 					if ( elem.nodeType === 1 || checkNonElements ) {
 						outerCache = elem[ expando ] || (elem[ expando ] = {});
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
 
 						// Support: IE <9 only
 						// Defend against cloned attroperties (jQuery gh-1709)
@@ -70411,11 +65345,11 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],172:[function(require,module,exports){
+},{}],161:[function(require,module,exports){
 (function (global){
 /**
  * @license
- * lodash 4.5.0 (Custom Build) <https://lodash.com/>
+ * lodash 4.3.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash -d -o ./foo/lodash.js`
  * Copyright 2012-2016 The Dojo Foundation <http://dojofoundation.org/>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
@@ -70428,7 +65362,7 @@ return jQuery;
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.5.0';
+  var VERSION = '4.3.0';
 
   /** Used to compose bitmasks for wrapper metadata. */
   var BIND_FLAG = 1,
@@ -70750,19 +65684,10 @@ return jQuery;
       freeParseInt = parseInt;
 
   /** Detect free variable `exports`. */
-  var freeExports = (objectTypes[typeof exports] && exports && !exports.nodeType)
-    ? exports
-    : undefined;
+  var freeExports = (objectTypes[typeof exports] && exports && !exports.nodeType) ? exports : null;
 
   /** Detect free variable `module`. */
-  var freeModule = (objectTypes[typeof module] && module && !module.nodeType)
-    ? module
-    : undefined;
-
-  /** Detect the popular CommonJS extension `module.exports`. */
-  var moduleExports = (freeModule && freeModule.exports === freeExports)
-    ? freeExports
-    : undefined;
+  var freeModule = (objectTypes[typeof module] && module && !module.nodeType) ? module : null;
 
   /** Detect free variable `global` from Node.js. */
   var freeGlobal = checkGlobal(freeExports && freeModule && typeof global == 'object' && global);
@@ -70773,6 +65698,9 @@ return jQuery;
   /** Detect free variable `window`. */
   var freeWindow = checkGlobal(objectTypes[typeof window] && window);
 
+  /** Detect the popular CommonJS extension `module.exports`. */
+  var moduleExports = (freeModule && freeModule.exports === freeExports) ? freeExports : null;
+
   /** Detect `this` as the global object. */
   var thisGlobal = checkGlobal(objectTypes[typeof this] && this);
 
@@ -70782,9 +65710,7 @@ return jQuery;
    * The `this` value is used if it's the global object to avoid Greasemonkey's
    * restricted `window` object, otherwise the `window` object is used.
    */
-  var root = freeGlobal ||
-    ((freeWindow !== (thisGlobal && thisGlobal.window)) && freeWindow) ||
-      freeSelf || thisGlobal || Function('return this')();
+  var root = freeGlobal || ((freeWindow !== (thisGlobal && thisGlobal.window)) && freeWindow) || freeSelf || thisGlobal || Function('return this')();
 
   /*--------------------------------------------------------------------------*/
 
@@ -71739,7 +66665,6 @@ return jQuery;
         getPrototypeOf = Object.getPrototypeOf,
         getOwnPropertySymbols = Object.getOwnPropertySymbols,
         iteratorSymbol = typeof (iteratorSymbol = Symbol && Symbol.iterator) == 'symbol' ? iteratorSymbol : undefined,
-        objectCreate = Object.create,
         propertyIsEnumerable = objectProto.propertyIsEnumerable,
         setTimeout = context.setTimeout,
         splice = arrayProto.splice;
@@ -71819,52 +66744,51 @@ return jQuery;
      * `tail`, `take`, `takeRight`, `takeRightWhile`, `takeWhile`, and `toArray`
      *
      * The chainable wrapper methods are:
-     * `after`, `ary`, `assign`, `assignIn`, `assignInWith`, `assignWith`, `at`,
-     * `before`, `bind`, `bindAll`, `bindKey`, `castArray`, `chain`, `chunk`,
-     * `commit`, `compact`, `concat`, `conforms`, `constant`, `countBy`, `create`,
-     * `curry`, `debounce`, `defaults`, `defaultsDeep`, `defer`, `delay`, `difference`,
+     * `after`, `ary`, `assign`, `assignIn`, `assignInWith`, `assignWith`,
+     * `at`, `before`, `bind`, `bindAll`, `bindKey`, `chain`, `chunk`, `commit`,
+     * `compact`, `concat`, `conforms`, `constant`, `countBy`, `create`, `curry`,
+     * `debounce`, `defaults`, `defaultsDeep`, `defer`, `delay`, `difference`,
      * `differenceBy`, `differenceWith`, `drop`, `dropRight`, `dropRightWhile`,
-     * `dropWhile`, `fill`, `filter`, `flatten`, `flattenDeep`, `flattenDepth`,
-     * `flip`, `flow`, `flowRight`, `fromPairs`, `functions`, `functionsIn`,
-     * `groupBy`, `initial`, `intersection`, `intersectionBy`, `intersectionWith`,
-     * `invert`, `invertBy`, `invokeMap`, `iteratee`, `keyBy`, `keys`, `keysIn`,
-     * `map`, `mapKeys`, `mapValues`, `matches`, `matchesProperty`, `memoize`,
-     * `merge`, `mergeWith`, `method`, `methodOf`, `mixin`, `negate`, `nthArg`,
-     * `omit`, `omitBy`, `once`, `orderBy`, `over`, `overArgs`, `overEvery`,
-     * `overSome`, `partial`, `partialRight`, `partition`, `pick`, `pickBy`, `plant`,
-     * `property`, `propertyOf`, `pull`, `pullAll`, `pullAllBy`, `pullAt`, `push`,
-     * `range`, `rangeRight`, `rearg`, `reject`, `remove`, `rest`, `reverse`,
-     * `sampleSize`, `set`, `setWith`, `shuffle`, `slice`, `sort`, `sortBy`,
-     * `splice`, `spread`, `tail`, `take`, `takeRight`, `takeRightWhile`,
-     * `takeWhile`, `tap`, `throttle`, `thru`, `toArray`, `toPairs`, `toPairsIn`,
-     * `toPath`, `toPlainObject`, `transform`, `unary`, `union`, `unionBy`,
-     * `unionWith`, `uniq`, `uniqBy`, `uniqWith`, `unset`, `unshift`, `unzip`,
-     * `unzipWith`, `values`, `valuesIn`, `without`, `wrap`, `xor`, `xorBy`,
-     * `xorWith`, `zip`, `zipObject`, `zipObjectDeep`, and `zipWith`
+     * `dropWhile`, `fill`, `filter`, `flatten`, `flattenDeep`, `flip`, `flow`,
+     * `flowRight`, `fromPairs`, `functions`, `functionsIn`, `groupBy`, `initial`,
+     * `intersection`, `intersectionBy`, `intersectionWith`, `invert`, `invertBy`,
+     * `invokeMap`, `iteratee`, `keyBy`, `keys`, `keysIn`, `map`, `mapKeys`,
+     * `mapValues`, `matches`, `matchesProperty`, `memoize`, `merge`, `mergeWith`,
+     * `method`, `methodOf`, `mixin`, `negate`, `nthArg`, `omit`, `omitBy`, `once`,
+     * `orderBy`, `over`, `overArgs`, `overEvery`, `overSome`, `partial`,
+     * `partialRight`, `partition`, `pick`, `pickBy`, `plant`, `property`,
+     * `propertyOf`, `pull`, `pullAll`, `pullAllBy`, `pullAt`, `push`, `range`,
+     * `rangeRight`, `rearg`, `reject`, `remove`, `rest`, `reverse`, `sampleSize`,
+     * `set`, `setWith`, `shuffle`, `slice`, `sort`, `sortBy`, `splice`, `spread`,
+     * `tail`, `take`, `takeRight`, `takeRightWhile`, `takeWhile`, `tap`, `throttle`,
+     * `thru`, `toArray`, `toPairs`, `toPairsIn`, `toPath`, `toPlainObject`,
+     * `transform`, `unary`, `union`, `unionBy`, `unionWith`, `uniq`, `uniqBy`,
+     * `uniqWith`, `unset`, `unshift`, `unzip`, `unzipWith`, `values`, `valuesIn`,
+     * `without`, `wrap`, `xor`, `xorBy`, `xorWith`, `zip`, `zipObject`,
+     * `zipObjectDeep`, and `zipWith`
      *
      * The wrapper methods that are **not** chainable by default are:
      * `add`, `attempt`, `camelCase`, `capitalize`, `ceil`, `clamp`, `clone`,
      * `cloneDeep`, `cloneDeepWith`, `cloneWith`, `deburr`, `endsWith`, `eq`,
-     * `escape`, `escapeRegExp`, `every`, `find`, `findIndex`, `findKey`, `findLast`,
-     * `findLastIndex`, `findLastKey`, `floor`, `forEach`, `forEachRight`, `forIn`,
-     * `forInRight`, `forOwn`, `forOwnRight`, `get`, `gt`, `gte`, `has`, `hasIn`,
-     * `head`, `identity`, `includes`, `indexOf`, `inRange`, `invoke`, `isArguments`,
-     * `isArray`, `isArrayBuffer`, `isArrayLike`, `isArrayLikeObject`, `isBoolean`,
-     * `isBuffer`, `isDate`, `isElement`, `isEmpty`, `isEqual`, `isEqualWith`,
-     * `isError`, `isFinite`, `isFunction`, `isInteger`, `isLength`, `isMap`,
-     * `isMatch`, `isMatchWith`, `isNaN`, `isNative`, `isNil`, `isNull`, `isNumber`,
-     * `isObject`, `isObjectLike`, `isPlainObject`, `isRegExp`, `isSafeInteger`,
-     * `isSet`, `isString`, `isUndefined`, `isTypedArray`, `isWeakMap`, `isWeakSet`,
-     * `join`, `kebabCase`, `last`, `lastIndexOf`, `lowerCase`, `lowerFirst`,
-     * `lt`, `lte`, `max`, `maxBy`, `mean`, `min`, `minBy`, `noConflict`, `noop`,
-     * `now`, `pad`, `padEnd`, `padStart`, `parseInt`, `pop`, `random`, `reduce`,
-     * `reduceRight`, `repeat`, `result`, `round`, `runInContext`, `sample`,
-     * `shift`, `size`, `snakeCase`, `some`, `sortedIndex`, `sortedIndexBy`,
-     * `sortedLastIndex`, `sortedLastIndexBy`, `startCase`, `startsWith`, `subtract`,
-     * `sum`, `sumBy`, `template`, `times`, `toLower`, `toInteger`, `toLength`,
-     * `toNumber`, `toSafeInteger`, `toString`, `toUpper`, `trim`, `trimEnd`,
-     * `trimStart`, `truncate`, `unescape`, `uniqueId`, `upperCase`, `upperFirst`,
-     * `value`, and `words`
+     * `escape`, `escapeRegExp`, `every`, `find`, `findIndex`, `findKey`,
+     * `findLast`, `findLastIndex`, `findLastKey`, `floor`, `forEach`, `forEachRight`,
+     * `forIn`, `forInRight`, `forOwn`, `forOwnRight`, `get`, `gt`, `gte`, `has`,
+     * `hasIn`, `head`, `identity`, `includes`, `indexOf`, `inRange`, `invoke`,
+     * `isArguments`, `isArray`, `isArrayLike`, `isArrayLikeObject`, `isBoolean`,
+     * `isDate`, `isElement`, `isEmpty`, `isEqual`, `isEqualWith`, `isError`,
+     * `isFinite`, `isFunction`, `isInteger`, `isLength`, `isMatch`, `isMatchWith`,
+     * `isNaN`, `isNative`, `isNil`, `isNull`, `isNumber`, `isObject`, `isObjectLike`,
+     * `isPlainObject`, `isRegExp`, `isSafeInteger`, `isString`, `isUndefined`,
+     * `isTypedArray`, `join`, `kebabCase`, `last`, `lastIndexOf`, `lowerCase`,
+     * `lowerFirst`, `lt`, `lte`, `max`, `maxBy`, `mean`, `min`, `minBy`,
+     * `noConflict`, `noop`, `now`, `pad`, `padEnd`, `padStart`, `parseInt`,
+     * `pop`, `random`, `reduce`, `reduceRight`, `repeat`, `result`, `round`,
+     * `runInContext`, `sample`, `shift`, `size`, `snakeCase`, `some`, `sortedIndex`,
+     * `sortedIndexBy`, `sortedLastIndex`, `sortedLastIndexBy`, `startCase`,
+     * `startsWith`, `subtract`, `sum`, `sumBy`, `template`, `times`, `toLower`,
+     * `toInteger`, `toLength`, `toNumber`, `toSafeInteger`, `toString`, `toUpper`,
+     * `trim`, `trimEnd`, `trimStart`, `truncate`, `unescape`, `uniqueId`,
+     * `upperCase`, `upperFirst`, `value`, and `words`
      *
      * @name _
      * @constructor
@@ -71935,7 +66859,7 @@ return jQuery;
      *
      * @static
      * @memberOf _
-     * @type {Object}
+     * @type Object
      */
     lodash.templateSettings = {
 
@@ -71943,7 +66867,7 @@ return jQuery;
        * Used to detect `data` property values to be HTML-escaped.
        *
        * @memberOf _.templateSettings
-       * @type {RegExp}
+       * @type RegExp
        */
       'escape': reEscape,
 
@@ -71951,7 +66875,7 @@ return jQuery;
        * Used to detect code to be evaluated.
        *
        * @memberOf _.templateSettings
-       * @type {RegExp}
+       * @type RegExp
        */
       'evaluate': reEvaluate,
 
@@ -71959,7 +66883,7 @@ return jQuery;
        * Used to detect `data` property values to inject.
        *
        * @memberOf _.templateSettings
-       * @type {RegExp}
+       * @type RegExp
        */
       'interpolate': reInterpolate,
 
@@ -71967,7 +66891,7 @@ return jQuery;
        * Used to reference the data object in the template text.
        *
        * @memberOf _.templateSettings
-       * @type {string}
+       * @type string
        */
       'variable': '',
 
@@ -71975,7 +66899,7 @@ return jQuery;
        * Used to import variables into the compiled template.
        *
        * @memberOf _.templateSettings
-       * @type {Object}
+       * @type Object
        */
       'imports': {
 
@@ -71983,7 +66907,7 @@ return jQuery;
          * A reference to the `lodash` function.
          *
          * @memberOf _.templateSettings.imports
-         * @type {Function}
+         * @type Function
          */
         '_': lodash
       }
@@ -71995,7 +66919,6 @@ return jQuery;
      * Creates a lazy wrapper object which wraps `value` to enable lazy evaluation.
      *
      * @private
-     * @constructor
      * @param {*} value The value to wrap.
      */
     function LazyWrapper(value) {
@@ -72071,8 +66994,7 @@ return jQuery;
           resIndex = 0,
           takeCount = nativeMin(length, this.__takeCount__);
 
-      if (!isArr || arrLength < LARGE_ARRAY_SIZE ||
-          (arrLength == length && takeCount == length)) {
+      if (!isArr || arrLength < LARGE_ARRAY_SIZE || (arrLength == length && takeCount == length)) {
         return baseWrapperValue(array, this.__actions__);
       }
       var result = [];
@@ -72111,7 +67033,6 @@ return jQuery;
      * Creates an hash object.
      *
      * @private
-     * @constructor
      * @returns {Object} Returns the new hash object.
      */
     function Hash() {}
@@ -72174,7 +67095,6 @@ return jQuery;
      * Creates a map cache object to store key-value pairs.
      *
      * @private
-     * @constructor
      * @param {Array} [values] The values to cache.
      */
     function MapCache(values) {
@@ -72196,11 +67116,7 @@ return jQuery;
      * @memberOf MapCache
      */
     function mapClear() {
-      this.__data__ = {
-        'hash': new Hash,
-        'map': Map ? new Map : [],
-        'string': new Hash
-      };
+      this.__data__ = { 'hash': new Hash, 'map': Map ? new Map : [], 'string': new Hash };
     }
 
     /**
@@ -72283,7 +67199,6 @@ return jQuery;
      * Creates a set cache object to store unique values.
      *
      * @private
-     * @constructor
      * @param {Array} [values] The values to cache.
      */
     function SetCache(values) {
@@ -72342,7 +67257,6 @@ return jQuery;
      * Creates a stack cache object to store key-value pairs.
      *
      * @private
-     * @constructor
      * @param {Array} [values] The values to cache.
      */
     function Stack(values) {
@@ -72635,39 +67549,6 @@ return jQuery;
     }
 
     /**
-     * Casts `value` to an empty array if it's not an array like object.
-     *
-     * @private
-     * @param {*} value The value to inspect.
-     * @returns {Array} Returns the array-like object.
-     */
-    function baseCastArrayLikeObject(value) {
-      return isArrayLikeObject(value) ? value : [];
-    }
-
-    /**
-     * Casts `value` to `identity` if it's not a function.
-     *
-     * @private
-     * @param {*} value The value to inspect.
-     * @returns {Array} Returns the array-like object.
-     */
-    function baseCastFunction(value) {
-      return typeof value == 'function' ? value : identity;
-    }
-
-    /**
-     * Casts `value` to a path array if it's not one.
-     *
-     * @private
-     * @param {*} value The value to inspect.
-     * @returns {Array} Returns the cast property path array.
-     */
-    function baseCastPath(value) {
-      return isArray(value) ? value : stringToPath(value);
-    }
-
-    /**
      * The base implementation of `_.clamp` which doesn't coerce arguments to numbers.
      *
      * @private
@@ -72734,10 +67615,9 @@ return jQuery;
             return copySymbols(value, baseAssign(result, value));
           }
         } else {
-          if (!cloneableTags[tag]) {
-            return object ? value : {};
-          }
-          result = initCloneByTag(value, tag, isDeep);
+          return cloneableTags[tag]
+            ? initCloneByTag(value, tag, isDeep)
+            : (object ? value : {});
         }
       }
       // Check for circular references and return its corresponding clone.
@@ -72792,9 +67672,17 @@ return jQuery;
      * @param {Object} prototype The object to inherit from.
      * @returns {Object} Returns the new object.
      */
-    function baseCreate(proto) {
-      return isObject(proto) ? objectCreate(proto) : {};
-    }
+    var baseCreate = (function() {
+      function object() {}
+      return function(prototype) {
+        if (isObject(prototype)) {
+          object.prototype = prototype;
+          var result = new object;
+          object.prototype = undefined;
+        }
+        return result || {};
+      };
+    }());
 
     /**
      * The base implementation of `_.delay` and `_.defer` which accepts an array
@@ -72956,12 +67844,12 @@ return jQuery;
      *
      * @private
      * @param {Array} array The array to flatten.
-     * @param {number} depth The maximum recursion depth.
+     * @param {boolean} [isDeep] Specify a deep flatten.
      * @param {boolean} [isStrict] Restrict flattening to arrays-like objects.
      * @param {Array} [result=[]] The initial result value.
      * @returns {Array} Returns the new flattened array.
      */
-    function baseFlatten(array, depth, isStrict, result) {
+    function baseFlatten(array, isDeep, isStrict, result) {
       result || (result = []);
 
       var index = -1,
@@ -72969,11 +67857,11 @@ return jQuery;
 
       while (++index < length) {
         var value = array[index];
-        if (depth > 0 && isArrayLikeObject(value) &&
+        if (isArrayLikeObject(value) &&
             (isStrict || isArray(value) || isArguments(value))) {
-          if (depth > 1) {
+          if (isDeep) {
             // Recursively flatten arrays (susceptible to call stack limits).
-            baseFlatten(value, depth - 1, isStrict, result);
+            baseFlatten(value, isDeep, isStrict, result);
           } else {
             arrayPush(result, value);
           }
@@ -73070,7 +67958,7 @@ return jQuery;
      * @returns {*} Returns the resolved value.
      */
     function baseGet(object, path) {
-      path = isKey(path, object) ? [path + ''] : baseCastPath(path);
+      path = isKey(path, object) ? [path + ''] : baseToPath(path);
 
       var index = 0,
           length = path.length;
@@ -73159,17 +68047,11 @@ return jQuery;
         var value = array[index],
             computed = iteratee ? iteratee(value) : value;
 
-        if (!(seen
-              ? cacheHas(seen, computed)
-              : includes(result, computed, comparator)
-            )) {
+        if (!(seen ? cacheHas(seen, computed) : includes(result, computed, comparator))) {
           var othIndex = othLength;
           while (--othIndex) {
             var cache = caches[othIndex];
-            if (!(cache
-                  ? cacheHas(cache, computed)
-                  : includes(arrays[othIndex], computed, comparator))
-                ) {
+            if (!(cache ? cacheHas(cache, computed) : includes(arrays[othIndex], computed, comparator))) {
               continue outer;
             }
           }
@@ -73212,7 +68094,7 @@ return jQuery;
      */
     function baseInvoke(object, path, args) {
       if (!isKey(path, object)) {
-        path = baseCastPath(path);
+        path = baseToPath(path);
         object = parent(object, path);
         path = last(path);
       }
@@ -73385,6 +68267,7 @@ return jQuery;
      * property of prototypes or treat sparse arrays as dense.
      *
      * @private
+     * @type Function
      * @param {Object} object The object to query.
      * @returns {Array} Returns the array of property names.
      */
@@ -73492,10 +68375,7 @@ return jQuery;
       if (object === source) {
         return;
       }
-      var props = (isArray(source) || isTypedArray(source))
-        ? undefined
-        : keysIn(source);
-
+      var props = (isArray(source) || isTypedArray(source)) ? undefined : keysIn(source);
       arrayEach(props || source, function(srcValue, key) {
         if (props) {
           key = srcValue;
@@ -73506,10 +68386,7 @@ return jQuery;
           baseMergeDeep(object, source, key, srcIndex, baseMerge, customizer, stack);
         }
         else {
-          var newValue = customizer
-            ? customizer(object[key], srcValue, (key + ''), object, source, stack)
-            : undefined;
-
+          var newValue = customizer ? customizer(object[key], srcValue, (key + ''), object, source, stack) : undefined;
           if (newValue === undefined) {
             newValue = srcValue;
           }
@@ -73541,24 +68418,21 @@ return jQuery;
         assignMergeValue(object, key, stacked);
         return;
       }
-      var newValue = customizer
-        ? customizer(objValue, srcValue, (key + ''), object, source, stack)
-        : undefined;
-
-      var isCommon = newValue === undefined;
+      var newValue = customizer ? customizer(objValue, srcValue, (key + ''), object, source, stack) : undefined,
+          isCommon = newValue === undefined;
 
       if (isCommon) {
         newValue = srcValue;
         if (isArray(srcValue) || isTypedArray(srcValue)) {
           if (isArray(objValue)) {
-            newValue = objValue;
+            newValue = srcIndex ? copyArray(objValue) : objValue;
           }
           else if (isArrayLikeObject(objValue)) {
             newValue = copyArray(objValue);
           }
           else {
             isCommon = false;
-            newValue = baseClone(srcValue, true);
+            newValue = baseClone(srcValue);
           }
         }
         else if (isPlainObject(srcValue) || isArguments(srcValue)) {
@@ -73567,10 +68441,10 @@ return jQuery;
           }
           else if (!isObject(objValue) || (srcIndex && isFunction(objValue))) {
             isCommon = false;
-            newValue = baseClone(srcValue, true);
+            newValue = baseClone(srcValue);
           }
           else {
-            newValue = objValue;
+            newValue = srcIndex ? baseClone(objValue) : objValue;
           }
         }
         else {
@@ -73744,7 +68618,7 @@ return jQuery;
             splice.call(array, index, 1);
           }
           else if (!isKey(index, array)) {
-            var path = baseCastPath(index),
+            var path = baseToPath(index),
                 object = parent(array, path);
 
             if (object != null) {
@@ -73806,7 +68680,7 @@ return jQuery;
      * @returns {Object} Returns `object`.
      */
     function baseSet(object, path, value, customizer) {
-      path = isKey(path, object) ? [path + ''] : baseCastPath(path);
+      path = isKey(path, object) ? [path + ''] : baseToPath(path);
 
       var index = -1,
           length = path.length,
@@ -73821,9 +68695,7 @@ return jQuery;
             var objValue = nested[key];
             newValue = customizer ? customizer(objValue, key, nested) : undefined;
             if (newValue === undefined) {
-              newValue = objValue == null
-                ? (isIndex(path[index + 1]) ? [] : {})
-                : objValue;
+              newValue = objValue == null ? (isIndex(path[index + 1]) ? [] : {}) : objValue;
             }
           }
           assignValue(nested, key, newValue);
@@ -74015,6 +68887,18 @@ return jQuery;
     }
 
     /**
+     * The base implementation of `_.toPath` which only converts `value` to a
+     * path if it's not one.
+     *
+     * @private
+     * @param {*} value The value to process.
+     * @returns {Array} Returns the property path array.
+     */
+    function baseToPath(value) {
+      return isArray(value) ? value : stringToPath(value);
+    }
+
+    /**
      * The base implementation of `_.uniqBy` without support for iteratee shorthands.
      *
      * @private
@@ -74083,7 +68967,7 @@ return jQuery;
      * @returns {boolean} Returns `true` if the property is deleted, else `false`.
      */
     function baseUnset(object, path) {
-      path = isKey(path, object) ? [path + ''] : baseCastPath(path);
+      path = isKey(path, object) ? [path + ''] : baseToPath(path);
       object = parent(object, path);
       var key = last(path);
       return (object != null && has(object, key)) ? delete object[key] : true;
@@ -74272,11 +69156,10 @@ return jQuery;
      * @returns {Object} Returns the cloned typed array.
      */
     function cloneTypedArray(typedArray, isDeep) {
-      var arrayBuffer = typedArray.buffer,
-          buffer = isDeep ? cloneArrayBuffer(arrayBuffer) : arrayBuffer,
+      var buffer = typedArray.buffer,
           Ctor = typedArray.constructor;
 
-      return new Ctor(buffer, typedArray.byteOffset, typedArray.length);
+      return new Ctor(isDeep ? cloneArrayBuffer(buffer) : buffer, typedArray.byteOffset, typedArray.length);
     }
 
     /**
@@ -74391,11 +69274,8 @@ return jQuery;
           length = props.length;
 
       while (++index < length) {
-        var key = props[index];
-
-        var newValue = customizer
-          ? customizer(object[key], source[key], key, object, source)
-          : source[key];
+        var key = props[index],
+            newValue = customizer ? customizer(object[key], source[key], key, object, source) : source[key];
 
         assignValue(object, key, newValue);
       }
@@ -74445,10 +69325,7 @@ return jQuery;
             customizer = length > 1 ? sources[length - 1] : undefined,
             guard = length > 2 ? sources[2] : undefined;
 
-        customizer = typeof customizer == 'function'
-          ? (length--, customizer)
-          : undefined;
-
+        customizer = typeof customizer == 'function' ? (length--, customizer) : undefined;
         if (guard && isIterateeCall(sources[0], sources[1], guard)) {
           customizer = length < 3 ? undefined : customizer;
           length = 1;
@@ -74549,11 +69426,8 @@ return jQuery;
       return function(string) {
         string = toString(string);
 
-        var strSymbols = reHasComplexSymbol.test(string)
-          ? stringToArray(string)
-          : undefined;
-
-        var chr = strSymbols ? strSymbols[0] : string.charAt(0),
+        var strSymbols = reHasComplexSymbol.test(string) ? stringToArray(string) : undefined,
+            chr = strSymbols ? strSymbols[0] : string.charAt(0),
             trailing = strSymbols ? strSymbols.slice(1).join('') : string.slice(1);
 
         return chr[methodName]() + trailing;
@@ -74649,7 +69523,7 @@ return jQuery;
      */
     function createFlow(fromRight) {
       return rest(function(funcs) {
-        funcs = baseFlatten(funcs, 1);
+        funcs = baseFlatten(funcs);
 
         var length = funcs.length,
             index = length,
@@ -74674,10 +69548,7 @@ return jQuery;
           var funcName = getFuncName(func),
               data = funcName == 'wrapper' ? getData(func) : undefined;
 
-          if (data && isLaziable(data[0]) &&
-                data[1] == (ARY_FLAG | CURRY_FLAG | PARTIAL_FLAG | REARG_FLAG) &&
-                !data[4].length && data[9] == 1
-              ) {
+          if (data && isLaziable(data[0]) && data[1] == (ARY_FLAG | CURRY_FLAG | PARTIAL_FLAG | REARG_FLAG) && !data[4].length && data[9] == 1) {
             wrapper = wrapper[getFuncName(data[0])].apply(wrapper, data[3]);
           } else {
             wrapper = (func.length == 1 && isLaziable(func)) ? wrapper[funcName]() : wrapper.thru(func);
@@ -74687,8 +69558,7 @@ return jQuery;
           var args = arguments,
               value = args[0];
 
-          if (wrapper && args.length == 1 &&
-              isArray(value) && value.length >= LARGE_ARRAY_SIZE) {
+          if (wrapper && args.length == 1 && isArray(value) && value.length >= LARGE_ARRAY_SIZE) {
             return wrapper.plant(value).value();
           }
           var index = 0,
@@ -74748,10 +69618,7 @@ return jQuery;
 
           length -= argsHolders.length;
           if (length < arity) {
-            return createRecurryWrapper(
-              func, bitmask, createHybridWrapper, placeholder, thisArg, args,
-              argsHolders, argPos, ary, arity - length
-            );
+            return createRecurryWrapper(func, bitmask, createHybridWrapper, placeholder, thisArg, args, argsHolders, argPos, ary, arity - length);
           }
         }
         var thisBinding = isBind ? thisArg : this,
@@ -74796,7 +69663,7 @@ return jQuery;
      */
     function createOver(arrayFunc) {
       return rest(function(iteratees) {
-        iteratees = arrayMap(baseFlatten(iteratees, 1), getIteratee());
+        iteratees = arrayMap(baseFlatten(iteratees), getIteratee());
         return rest(function(args) {
           var thisArg = this;
           return arrayFunc(iteratees, function(iteratee) {
@@ -74923,12 +69790,9 @@ return jQuery;
       if (!(bitmask & CURRY_BOUND_FLAG)) {
         bitmask &= ~(BIND_FLAG | BIND_KEY_FLAG);
       }
-      var newData = [
-        func, bitmask, thisArg, newPartials, newsHolders, newPartialsRight,
-        newHoldersRight, newArgPos, ary, arity
-      ];
+      var newData = [func, bitmask, thisArg, newPartials, newsHolders, newPartialsRight, newHoldersRight, newArgPos, ary, arity],
+          result = wrapFunc.apply(undefined, newData);
 
-      var result = wrapFunc.apply(undefined, newData);
       if (isLaziable(func)) {
         setData(result, newData);
       }
@@ -74972,20 +69836,6 @@ return jQuery;
       return new Set(values);
     };
 
-<<<<<<< HEAD
-},{}],152:[function(require,module,exports){
-(function (global){
-/**
- * @license
- * lodash 4.3.0 (Custom Build) <https://lodash.com/>
- * Build: `lodash -d -o ./foo/lodash.js`
- * Copyright 2012-2016 The Dojo Foundation <http://dojofoundation.org/>
- * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
- * Copyright 2009-2016 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
- * Available under MIT license <https://lodash.com/license>
- */
-;(function() {
-=======
     /**
      * Creates a function that either curries or invokes `func` with optional
      * `this` binding and partially applied arguments.
@@ -75024,7 +69874,6 @@ return jQuery;
       ary = ary === undefined ? ary : nativeMax(toInteger(ary), 0);
       arity = arity === undefined ? arity : toInteger(arity);
       length -= holders ? holders.length : 0;
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
 
       if (bitmask & PARTIAL_RIGHT_FLAG) {
         var partialsRight = partials,
@@ -75032,12 +69881,8 @@ return jQuery;
 
         partials = holders = undefined;
       }
-      var data = isBindKey ? undefined : getData(func);
-
-      var newData = [
-        func, bitmask, thisArg, partials, holders, partialsRight, holdersRight,
-        argPos, ary, arity
-      ];
+      var data = isBindKey ? undefined : getData(func),
+          newData = [func, bitmask, thisArg, partials, holders, partialsRight, holdersRight, argPos, ary, arity];
 
       if (data) {
         mergeData(newData, data);
@@ -75445,7 +70290,7 @@ return jQuery;
       }
       var result = hasFunc(object, path);
       if (!result && !isKey(path)) {
-        path = baseCastPath(path);
+        path = baseToPath(path);
         object = parent(object, path);
         if (object != null) {
           path = last(path);
@@ -75604,7 +70449,7 @@ return jQuery;
     function isKeyable(value) {
       var type = typeof value;
       return type == 'number' || type == 'boolean' ||
-        (type == 'string' && value != '__proto__') || value == null;
+        (type == 'string' && value !== '__proto__') || value == null;
     }
 
     /**
@@ -75827,6 +70672,28 @@ return jQuery;
     }
 
     /**
+     * Converts `value` to an array-like object if it's not one.
+     *
+     * @private
+     * @param {*} value The value to process.
+     * @returns {Array} Returns the array-like object.
+     */
+    function toArrayLikeObject(value) {
+      return isArrayLikeObject(value) ? value : [];
+    }
+
+    /**
+     * Converts `value` to a function if it's not one.
+     *
+     * @private
+     * @param {*} value The value to process.
+     * @returns {Function} Returns the function.
+     */
+    function toFunction(value) {
+      return typeof value == 'function' ? value : identity;
+    }
+
+    /**
      * Creates a clone of `wrapper`.
      *
      * @private
@@ -75936,7 +70803,7 @@ return jQuery;
       if (!isArray(array)) {
         array = array == null ? [] : [Object(array)];
       }
-      values = baseFlatten(values, 1);
+      values = baseFlatten(values);
       return arrayConcat(array, values);
     });
 
@@ -75958,7 +70825,7 @@ return jQuery;
      */
     var difference = rest(function(array, values) {
       return isArrayLikeObject(array)
-        ? baseDifference(array, baseFlatten(values, 1, true))
+        ? baseDifference(array, baseFlatten(values, false, true))
         : [];
     });
 
@@ -75989,7 +70856,7 @@ return jQuery;
         iteratee = undefined;
       }
       return isArrayLikeObject(array)
-        ? baseDifference(array, baseFlatten(values, 1, true), getIteratee(iteratee))
+        ? baseDifference(array, baseFlatten(values, false, true), getIteratee(iteratee))
         : [];
     });
 
@@ -76018,7 +70885,7 @@ return jQuery;
         comparator = undefined;
       }
       return isArrayLikeObject(array)
-        ? baseDifference(array, baseFlatten(values, 1, true), undefined, comparator)
+        ? baseDifference(array, baseFlatten(values, false, true), undefined, comparator)
         : [];
     });
 
@@ -76288,7 +71155,7 @@ return jQuery;
     }
 
     /**
-     * Flattens `array` a single level deep.
+     * Flattens `array` a single level.
      *
      * @static
      * @memberOf _
@@ -76297,58 +71164,30 @@ return jQuery;
      * @returns {Array} Returns the new flattened array.
      * @example
      *
-     * _.flatten([1, [2, [3, [4]], 5]]);
-     * // => [1, 2, [3, [4]], 5]
+     * _.flatten([1, [2, 3, [4]]]);
+     * // => [1, 2, 3, [4]]
      */
     function flatten(array) {
       var length = array ? array.length : 0;
-      return length ? baseFlatten(array, 1) : [];
+      return length ? baseFlatten(array) : [];
     }
 
     /**
-     * Recursively flattens `array`.
+     * This method is like `_.flatten` except that it recursively flattens `array`.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to flatten.
+     * @param {Array} array The array to recursively flatten.
      * @returns {Array} Returns the new flattened array.
      * @example
      *
-     * _.flattenDeep([1, [2, [3, [4]], 5]]);
-     * // => [1, 2, 3, 4, 5]
+     * _.flattenDeep([1, [2, 3, [4]]]);
+     * // => [1, 2, 3, 4]
      */
     function flattenDeep(array) {
       var length = array ? array.length : 0;
-      return length ? baseFlatten(array, INFINITY) : [];
-    }
-
-    /**
-     * Recursively flatten `array` up to `depth` times.
-     *
-     * @static
-     * @memberOf _
-     * @category Array
-     * @param {Array} array The array to flatten.
-     * @param {number} [depth=1] The maximum recursion depth.
-     * @returns {Array} Returns the new flattened array.
-     * @example
-     *
-     * var array = [1, [2, [3, [4]], 5]];
-     *
-     * _.flattenDepth(array, 1);
-     * // => [1, 2, [3, [4]], 5]
-     *
-     * _.flattenDepth(array, 2);
-     * // => [1, 2, 3, [4], 5]
-     */
-    function flattenDepth(array, depth) {
-      var length = array ? array.length : 0;
-      if (!length) {
-        return [];
-      }
-      depth = depth === undefined ? 1 : toInteger(depth);
-      return baseFlatten(array, depth);
+      return length ? baseFlatten(array, true) : [];
     }
 
     /**
@@ -76465,7 +71304,7 @@ return jQuery;
      * // => [2]
      */
     var intersection = rest(function(arrays) {
-      var mapped = arrayMap(arrays, baseCastArrayLikeObject);
+      var mapped = arrayMap(arrays, toArrayLikeObject);
       return (mapped.length && mapped[0] === arrays[0])
         ? baseIntersection(mapped)
         : [];
@@ -76493,7 +71332,7 @@ return jQuery;
      */
     var intersectionBy = rest(function(arrays) {
       var iteratee = last(arrays),
-          mapped = arrayMap(arrays, baseCastArrayLikeObject);
+          mapped = arrayMap(arrays, toArrayLikeObject);
 
       if (iteratee === last(mapped)) {
         iteratee = undefined;
@@ -76526,7 +71365,7 @@ return jQuery;
      */
     var intersectionWith = rest(function(arrays) {
       var comparator = last(arrays),
-          mapped = arrayMap(arrays, baseCastArrayLikeObject);
+          mapped = arrayMap(arrays, toArrayLikeObject);
 
       if (comparator === last(mapped)) {
         comparator = undefined;
@@ -76716,7 +71555,7 @@ return jQuery;
      * // => [10, 20]
      */
     var pullAt = rest(function(array, indexes) {
-      indexes = arrayMap(baseFlatten(indexes, 1), String);
+      indexes = arrayMap(baseFlatten(indexes), String);
 
       var result = baseAt(array, indexes);
       basePullAt(array, indexes.sort(compareAscending));
@@ -77188,7 +72027,7 @@ return jQuery;
      * // => [2, 1, 4]
      */
     var union = rest(function(arrays) {
-      return baseUniq(baseFlatten(arrays, 1, true));
+      return baseUniq(baseFlatten(arrays, false, true));
     });
 
     /**
@@ -77216,7 +72055,7 @@ return jQuery;
       if (isArrayLikeObject(iteratee)) {
         iteratee = undefined;
       }
-      return baseUniq(baseFlatten(arrays, 1, true), getIteratee(iteratee));
+      return baseUniq(baseFlatten(arrays, false, true), getIteratee(iteratee));
     });
 
     /**
@@ -77243,7 +72082,7 @@ return jQuery;
       if (isArrayLikeObject(comparator)) {
         comparator = undefined;
       }
-      return baseUniq(baseFlatten(arrays, 1, true), undefined, comparator);
+      return baseUniq(baseFlatten(arrays, false, true), undefined, comparator);
     });
 
     /**
@@ -77667,22 +72506,17 @@ return jQuery;
      * // => ['a', 'c']
      */
     var wrapperAt = rest(function(paths) {
-      paths = baseFlatten(paths, 1);
+      paths = baseFlatten(paths);
       var length = paths.length,
           start = length ? paths[0] : 0,
           value = this.__wrapped__,
           interceptor = function(object) { return baseAt(object, paths); };
 
-      if (length > 1 || this.__actions__.length ||
-          !(value instanceof LazyWrapper) || !isIndex(start)) {
+      if (length > 1 || this.__actions__.length || !(value instanceof LazyWrapper) || !isIndex(start)) {
         return this.thru(interceptor);
       }
       value = value.slice(start, +start + (length ? 1 : 0));
-      value.__actions__.push({
-        'func': thru,
-        'args': [interceptor],
-        'thisArg': undefined
-      });
+      value.__actions__.push({ 'func': thru, 'args': [interceptor], 'thisArg': undefined });
       return new LodashWrapper(value, this.__chain__).thru(function(array) {
         if (length && !array.length) {
           array.push(undefined);
@@ -77893,11 +72727,7 @@ return jQuery;
           wrapped = new LazyWrapper(this);
         }
         wrapped = wrapped.reverse();
-        wrapped.__actions__.push({
-          'func': thru,
-          'args': [reverse],
-          'thisArg': undefined
-        });
+        wrapped.__actions__.push({ 'func': thru, 'args': [reverse], 'thisArg': undefined });
         return new LodashWrapper(wrapped, this.__chain__);
       }
       return this.thru(reverse);
@@ -78116,7 +72946,7 @@ return jQuery;
      * // => [1, 1, 2, 2]
      */
     function flatMap(collection, iteratee) {
-      return baseFlatten(map(collection, iteratee), 1);
+      return baseFlatten(map(collection, iteratee));
     }
 
     /**
@@ -78150,7 +72980,7 @@ return jQuery;
     function forEach(collection, iteratee) {
       return (typeof iteratee == 'function' && isArray(collection))
         ? arrayEach(collection, iteratee)
-        : baseEach(collection, baseCastFunction(iteratee));
+        : baseEach(collection, toFunction(iteratee));
     }
 
     /**
@@ -78174,7 +73004,7 @@ return jQuery;
     function forEachRight(collection, iteratee) {
       return (typeof iteratee == 'function' && isArray(collection))
         ? arrayEachRight(collection, iteratee)
-        : baseEachRight(collection, baseCastFunction(iteratee));
+        : baseEachRight(collection, toFunction(iteratee));
     }
 
     /**
@@ -78738,7 +73568,7 @@ return jQuery;
       } else if (length > 2 && isIterateeCall(iteratees[0], iteratees[1], iteratees[2])) {
         iteratees.length = 1;
       }
-      return baseOrderBy(collection, baseFlatten(iteratees, 1), []);
+      return baseOrderBy(collection, baseFlatten(iteratees), []);
     });
 
     /*------------------------------------------------------------------------*/
@@ -78749,7 +73579,7 @@ return jQuery;
      *
      * @static
      * @memberOf _
-     * @type {Function}
+     * @type Function
      * @category Date
      * @returns {number} Returns the timestamp.
      * @example
@@ -79175,10 +74005,8 @@ return jQuery;
           if (!lastCalled && !maxTimeoutId && !leading) {
             lastCalled = stamp;
           }
-          var remaining = maxWait - (stamp - lastCalled);
-
-          var isCalled = (remaining <= 0 || remaining > maxWait) &&
-            (leading || maxTimeoutId);
+          var remaining = maxWait - (stamp - lastCalled),
+              isCalled = remaining <= 0 || remaining > maxWait;
 
           if (isCalled) {
             if (maxTimeoutId) {
@@ -79418,7 +74246,7 @@ return jQuery;
      * // => [100, 10]
      */
     var overArgs = rest(function(func, transforms) {
-      transforms = arrayMap(baseFlatten(transforms, 1), getIteratee());
+      transforms = arrayMap(baseFlatten(transforms), getIteratee());
 
       var funcsLength = transforms.length;
       return rest(function(args) {
@@ -79532,7 +74360,7 @@ return jQuery;
      * // => ['a', 'b', 'c']
      */
     var rearg = rest(function(func, indexes) {
-      return createWrapper(func, REARG_FLAG, undefined, undefined, undefined, baseFlatten(indexes, 1));
+      return createWrapper(func, REARG_FLAG, undefined, undefined, undefined, baseFlatten(indexes));
     });
 
     /**
@@ -79684,11 +74512,7 @@ return jQuery;
         leading = 'leading' in options ? !!options.leading : leading;
         trailing = 'trailing' in options ? !!options.trailing : trailing;
       }
-      return debounce(func, wait, {
-        'leading': leading,
-        'maxWait': wait,
-        'trailing': trailing
-      });
+      return debounce(func, wait, { 'leading': leading, 'maxWait': wait, 'trailing': trailing });
     }
 
     /**
@@ -79719,7 +74543,7 @@ return jQuery;
      * @memberOf _
      * @category Function
      * @param {*} value The value to wrap.
-     * @param {Function} [wrapper=identity] The wrapper function.
+     * @param {Function} wrapper The wrapper function.
      * @returns {Function} Returns the new function.
      * @example
      *
@@ -79736,46 +74560,6 @@ return jQuery;
     }
 
     /*------------------------------------------------------------------------*/
-
-    /**
-     * Casts `value` as an array if it's not one.
-     *
-     * @static
-     * @memberOf _
-     * @category Lang
-     * @param {*} value The value to inspect.
-     * @returns {Array} Returns the cast array.
-     * @example
-     *
-     * _.castArray(1);
-     * // => [1]
-     *
-     * _.castArray({ 'a': 1 });
-     * // => [{ 'a': 1 }]
-     *
-     * _.castArray('abc');
-     * // => ['abc']
-     *
-     * _.castArray(null);
-     * // => [null]
-     *
-     * _.castArray(undefined);
-     * // => [undefined]
-     *
-     * _.castArray();
-     * // => []
-     *
-     * var array = [1, 2, 3];
-     * console.log(_.castArray(array) === array);
-     * // => true
-     */
-    function castArray() {
-      if (!arguments.length) {
-        return [];
-      }
-      var value = arguments[0];
-      return isArray(value) ? value : [value];
-    }
 
     /**
      * Creates a shallow clone of `value`.
@@ -79997,7 +74781,7 @@ return jQuery;
      *
      * @static
      * @memberOf _
-     * @type {Function}
+     * @type Function
      * @category Lang
      * @param {*} value The value to check.
      * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
@@ -80022,6 +74806,7 @@ return jQuery;
      *
      * @static
      * @memberOf _
+     * @type Function
      * @category Lang
      * @param {*} value The value to check.
      * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
@@ -80044,6 +74829,7 @@ return jQuery;
      *
      * @static
      * @memberOf _
+     * @type Function
      * @category Lang
      * @param {*} value The value to check.
      * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
@@ -80072,6 +74858,7 @@ return jQuery;
      *
      * @static
      * @memberOf _
+     * @type Function
      * @category Lang
      * @param {*} value The value to check.
      * @returns {boolean} Returns `true` if `value` is an array-like object, else `false`.
@@ -80203,8 +74990,7 @@ return jQuery;
      */
     function isEmpty(value) {
       if (isArrayLike(value) &&
-          (isArray(value) || isString(value) ||
-            isFunction(value.splice) || isArguments(value))) {
+          (isArray(value) || isString(value) || isFunction(value.splice) || isArguments(value))) {
         return !value.length;
       }
       for (var key in value) {
@@ -80247,10 +75033,10 @@ return jQuery;
     }
 
     /**
-     * This method is like `_.isEqual` except that it accepts `customizer` which
-     * is invoked to compare values. If `customizer` returns `undefined` comparisons
-     * are handled by the method instead. The `customizer` is invoked with up to
-     * six arguments: (objValue, othValue [, index|key, object, other, stack]).
+     * This method is like `_.isEqual` except that it accepts `customizer` which is
+     * invoked to compare values. If `customizer` returns `undefined` comparisons are
+     * handled by the method instead. The `customizer` is invoked with up to six arguments:
+     * (objValue, othValue [, index|key, object, other, stack]).
      *
      * @static
      * @memberOf _
@@ -80301,12 +75087,8 @@ return jQuery;
      * // => false
      */
     function isError(value) {
-      if (!isObjectLike(value)) {
-        return false;
-      }
-      var Ctor = value.constructor;
-      return (objectToString.call(value) == errorTag) ||
-        (typeof Ctor == 'function' && objectToString.call(Ctor.prototype) == errorTag);
+      return isObjectLike(value) &&
+        typeof value.message == 'string' && objectToString.call(value) == errorTag;
     }
 
     /**
@@ -80414,8 +75196,7 @@ return jQuery;
      * // => false
      */
     function isLength(value) {
-      return typeof value == 'number' &&
-        value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+      return typeof value == 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
     }
 
     /**
@@ -80494,9 +75275,8 @@ return jQuery;
     }
 
     /**
-     * Performs a partial deep comparison between `object` and `source` to
-     * determine if `object` contains equivalent property values. This method is
-     * equivalent to a `_.matches` function when `source` is partially applied.
+     * Performs a deep comparison between `object` and `source` to determine if
+     * `object` contains equivalent property values.
      *
      * **Note:** This method supports comparing the same values as `_.isEqual`.
      *
@@ -80715,8 +75495,7 @@ return jQuery;
      * // => true
      */
     function isPlainObject(value) {
-      if (!isObjectLike(value) ||
-          objectToString.call(value) != objectTag || isHostObject(value)) {
+      if (!isObjectLike(value) || objectToString.call(value) != objectTag || isHostObject(value)) {
         return false;
       }
       var proto = objectProto;
@@ -80859,8 +75638,7 @@ return jQuery;
      * // => false
      */
     function isTypedArray(value) {
-      return isObjectLike(value) &&
-        isLength(value.length) && !!typedArrayTags[objectToString.call(value)];
+      return isObjectLike(value) && isLength(value.length) && !!typedArrayTags[objectToString.call(value)];
     }
 
     /**
@@ -81352,7 +76130,7 @@ return jQuery;
      * // => ['a', 'c']
      */
     var at = rest(function(object, paths) {
-      return baseAt(object, baseFlatten(paths, 1));
+      return baseAt(object, baseFlatten(paths));
     });
 
     /**
@@ -81540,9 +76318,7 @@ return jQuery;
      * // => logs 'a', 'b', then 'c' (iteration order is not guaranteed)
      */
     function forIn(object, iteratee) {
-      return object == null
-        ? object
-        : baseFor(object, baseCastFunction(iteratee), keysIn);
+      return object == null ? object : baseFor(object, toFunction(iteratee), keysIn);
     }
 
     /**
@@ -81570,9 +76346,7 @@ return jQuery;
      * // => logs 'c', 'b', then 'a' assuming `_.forIn` logs 'a', 'b', then 'c'
      */
     function forInRight(object, iteratee) {
-      return object == null
-        ? object
-        : baseForRight(object, baseCastFunction(iteratee), keysIn);
+      return object == null ? object : baseForRight(object, toFunction(iteratee), keysIn);
     }
 
     /**
@@ -81602,7 +76376,7 @@ return jQuery;
      * // => logs 'a' then 'b' (iteration order is not guaranteed)
      */
     function forOwn(object, iteratee) {
-      return object && baseForOwn(object, baseCastFunction(iteratee));
+      return object && baseForOwn(object, toFunction(iteratee));
     }
 
     /**
@@ -81630,7 +76404,7 @@ return jQuery;
      * // => logs 'b' then 'a' assuming `_.forOwn` logs 'a' then 'b'
      */
     function forOwnRight(object, iteratee) {
-      return object && baseForOwnRight(object, baseCastFunction(iteratee));
+      return object && baseForOwnRight(object, toFunction(iteratee));
     }
 
     /**
@@ -81997,12 +76771,12 @@ return jQuery;
     }
 
     /**
-     * Recursively merges own and inherited enumerable properties of source objects
-     * into the destination object. Source properties that resolve to `undefined`
-     * are skipped if a destination value exists. Array and plain object properties
-     * are merged recursively. Other objects and value types are overridden by
-     * assignment. Source objects are applied from left to right. Subsequent
-     * sources overwrite property assignments of previous sources.
+     * Recursively merges own and inherited enumerable properties of source
+     * objects into the destination object, skipping source properties that resolve
+     * to `undefined`. Array and plain object properties are merged recursively.
+     * Other objects and value types are overridden by assignment. Source objects
+     * are applied from left to right. Subsequent sources overwrite property
+     * assignments of previous sources.
      *
      * **Note:** This method mutates `object`.
      *
@@ -82079,7 +76853,7 @@ return jQuery;
      * @category Object
      * @param {Object} object The source object.
      * @param {...(string|string[])} [props] The property names to omit, specified
-     *  individually or in arrays.
+     *  individually or in arrays..
      * @returns {Object} Returns the new object.
      * @example
      *
@@ -82092,7 +76866,7 @@ return jQuery;
       if (object == null) {
         return {};
       }
-      props = arrayMap(baseFlatten(props, 1), String);
+      props = arrayMap(baseFlatten(props), String);
       return basePick(object, baseDifference(keysIn(object), props));
     });
 
@@ -82139,7 +76913,7 @@ return jQuery;
      * // => { 'a': 1, 'c': 3 }
      */
     var pick = rest(function(object, props) {
-      return object == null ? {} : basePick(object, baseFlatten(props, 1));
+      return object == null ? {} : basePick(object, baseFlatten(props));
     });
 
     /**
@@ -82193,7 +76967,7 @@ return jQuery;
      */
     function result(object, path, defaultValue) {
       if (!isKey(path, object)) {
-        path = baseCastPath(path);
+        path = baseToPath(path);
         var result = get(object, path);
         object = parent(object, path);
       } else {
@@ -82263,8 +77037,7 @@ return jQuery;
     }
 
     /**
-     * Creates an array of own enumerable key-value pairs for `object` which
-     * can be consumed by `_.fromPairs`.
+     * Creates an array of own enumerable key-value pairs for `object`.
      *
      * @static
      * @memberOf _
@@ -82288,8 +77061,7 @@ return jQuery;
     }
 
     /**
-     * Creates an array of own and inherited enumerable key-value pairs for
-     * `object` which can be consumed by `_.fromPairs`.
+     * Creates an array of own and inherited enumerable key-value pairs for `object`.
      *
      * @static
      * @memberOf _
@@ -82444,7 +77216,7 @@ return jQuery;
      * // => [1, 2, 3] (iteration order is not guaranteed)
      */
     function valuesIn(object) {
-      return object == null ? [] : baseValues(object, keysIn(object));
+      return object == null ? baseValues(object, keysIn(object)) : [];
     }
 
     /*------------------------------------------------------------------------*/
@@ -82942,7 +77714,7 @@ return jQuery;
      * @memberOf _
      * @category String
      * @param {string} string The string to convert.
-     * @param {number} [radix=10] The radix to interpret `value` by.
+     * @param {number} [radix] The radix to interpret `value` by.
      * @param- {Object} [guard] Enables use as an iteratee for functions like `_.map`.
      * @returns {number} Returns the converted integer.
      * @example
@@ -83314,8 +78086,7 @@ return jQuery;
         'return __p\n}';
 
       var result = attempt(function() {
-        return Function(importsKeys, sourceURL + 'return ' + source)
-          .apply(undefined, importsValues);
+        return Function(importsKeys, sourceURL + 'return ' + source).apply(undefined, importsValues);
       });
 
       // Provide the compiled function's source by its `toString` method or
@@ -83409,9 +78180,7 @@ return jQuery;
       var strSymbols = stringToArray(string),
           chrSymbols = stringToArray(chars);
 
-      return strSymbols
-        .slice(charsStartIndex(strSymbols, chrSymbols), charsEndIndex(strSymbols, chrSymbols) + 1)
-        .join('');
+      return strSymbols.slice(charsStartIndex(strSymbols, chrSymbols), charsEndIndex(strSymbols, chrSymbols) + 1).join('');
     }
 
     /**
@@ -83445,9 +78214,7 @@ return jQuery;
         return string;
       }
       var strSymbols = stringToArray(string);
-      return strSymbols
-        .slice(0, charsEndIndex(strSymbols, stringToArray(chars)) + 1)
-        .join('');
+      return strSymbols.slice(0, charsEndIndex(strSymbols, stringToArray(chars)) + 1).join('');
     }
 
     /**
@@ -83481,9 +78248,7 @@ return jQuery;
         return string;
       }
       var strSymbols = stringToArray(string);
-      return strSymbols
-        .slice(charsStartIndex(strSymbols, stringToArray(chars)))
-        .join('');
+      return strSymbols.slice(charsStartIndex(strSymbols, stringToArray(chars))).join('');
     }
 
     /**
@@ -83495,7 +78260,7 @@ return jQuery;
      * @memberOf _
      * @category String
      * @param {string} [string=''] The string to truncate.
-     * @param {Object} [options=({})] The options object.
+     * @param {Object} [options] The options object.
      * @param {number} [options.length=30] The maximum string length.
      * @param {string} [options.omission='...'] The string to indicate text is omitted.
      * @param {RegExp|string} [options.separator] The separator pattern to truncate to.
@@ -83680,7 +78445,7 @@ return jQuery;
       try {
         return apply(func, undefined, args);
       } catch (e) {
-        return isError(e) ? e : new Error(e);
+        return isObject(e) ? e : new Error(e);
       }
     });
 
@@ -83711,7 +78476,7 @@ return jQuery;
      * // => logs 'clicked docs' when clicked
      */
     var bindAll = rest(function(object, methodNames) {
-      arrayEach(baseFlatten(methodNames, 1), function(key) {
+      arrayEach(baseFlatten(methodNames), function(key) {
         object[key] = bind(object[key], object);
       });
       return object;
@@ -83879,8 +78644,7 @@ return jQuery;
      * Creates a function that invokes `func` with the arguments of the created
      * function. If `func` is a property name the created callback returns the
      * property value for a given element. If `func` is an object the created
-     * callback returns `true` for elements that contain the equivalent object
-     * properties, otherwise it returns `false`.
+     * callback returns `true` for elements that contain the equivalent object properties, otherwise it returns `false`.
      *
      * @static
      * @memberOf _
@@ -83910,10 +78674,9 @@ return jQuery;
     }
 
     /**
-     * Creates a function that performs a partial deep comparison between a given
+     * Creates a function that performs a deep partial comparison between a given
      * object and `source`, returning `true` if the given object has equivalent
-     * property values, else `false`. The created function is equivalent to
-     * `_.isMatch` with a `source` partially applied.
+     * property values, else `false`.
      *
      * **Note:** This method supports comparing the same values as `_.isEqual`.
      *
@@ -83937,7 +78700,7 @@ return jQuery;
     }
 
     /**
-     * Creates a function that performs a partial deep comparison between the
+     * Creates a function that performs a deep partial comparison between the
      * value at `path` of a given object to `srcValue`, returning `true` if the
      * object value is equivalent, else `false`.
      *
@@ -84371,7 +79134,7 @@ return jQuery;
       var index = MAX_ARRAY_LENGTH,
           length = nativeMin(n, MAX_ARRAY_LENGTH);
 
-      iteratee = baseCastFunction(iteratee);
+      iteratee = toFunction(iteratee);
       n -= MAX_ARRAY_LENGTH;
 
       var result = baseTimes(length, iteratee);
@@ -84416,7 +79179,7 @@ return jQuery;
      * @static
      * @memberOf _
      * @category Util
-     * @param {string} [prefix=''] The value to prefix the ID with.
+     * @param {string} [prefix] The value to prefix the ID with.
      * @returns {string} Returns the unique ID.
      * @example
      *
@@ -84767,7 +79530,6 @@ return jQuery;
     lodash.bind = bind;
     lodash.bindAll = bindAll;
     lodash.bindKey = bindKey;
-    lodash.castArray = castArray;
     lodash.chain = chain;
     lodash.chunk = chunk;
     lodash.compact = compact;
@@ -84796,7 +79558,6 @@ return jQuery;
     lodash.flatMap = flatMap;
     lodash.flatten = flatten;
     lodash.flattenDeep = flattenDeep;
-    lodash.flattenDepth = flattenDepth;
     lodash.flip = flip;
     lodash.flow = flow;
     lodash.flowRight = flowRight;
@@ -85071,7 +79832,7 @@ return jQuery;
      *
      * @static
      * @memberOf _
-     * @type {string}
+     * @type string
      */
     lodash.VERSION = VERSION;
 
@@ -85093,10 +79854,7 @@ return jQuery;
         if (filtered) {
           result.__takeCount__ = nativeMin(n, result.__takeCount__);
         } else {
-          result.__views__.push({
-            'size': nativeMin(n, MAX_ARRAY_LENGTH),
-            'type': methodName + (result.__dir__ < 0 ? 'Right' : '')
-          });
+          result.__views__.push({ 'size': nativeMin(n, MAX_ARRAY_LENGTH), 'type': methodName + (result.__dir__ < 0 ? 'Right' : '') });
         }
         return result;
       };
@@ -85113,10 +79871,7 @@ return jQuery;
 
       LazyWrapper.prototype[methodName] = function(iteratee) {
         var result = this.clone();
-        result.__iteratees__.push({
-          'iteratee': getIteratee(iteratee, 3),
-          'type': type
-        });
+        result.__iteratees__.push({ 'iteratee': getIteratee(iteratee, 3), 'type': type });
         result.__filtered__ = result.__filtered__ || isFilter;
         return result;
       };
@@ -85268,10 +80023,7 @@ return jQuery;
       }
     });
 
-    realNames[createHybridWrapper(undefined, BIND_KEY_FLAG).name] = [{
-      'name': 'wrapper',
-      'func': undefined
-    }];
+    realNames[createHybridWrapper(undefined, BIND_KEY_FLAG).name] = [{ 'name': 'wrapper', 'func': undefined }];
 
     // Add functions to the lazy wrapper.
     LazyWrapper.prototype.clone = lazyClone;
@@ -85328,7 +80080,7 @@ return jQuery;
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],173:[function(require,module,exports){
+},{}],162:[function(require,module,exports){
 //! moment.js
 //! version : 2.11.2
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -88934,17 +83686,12 @@ return jQuery;
 
     return _moment;
 
-<<<<<<< HEAD
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],153:[function(require,module,exports){
-=======
 }));
-},{}],174:[function(require,module,exports){
->>>>>>> 1b28185db2465fae8b64af96b3f8a903a007d13f
+},{}],163:[function(require,module,exports){
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
- * Version: 0.14.2 - 2016-02-18T10:06:20.436Z
+ * Version: 0.14.2 - 2016-02-13T06:55:42.594Z
  * License: MIT
  */
 
@@ -90274,79 +85021,46 @@ uis.directive('uiSelectMultiple', ['uiSelectMinErr','$timeout', function(uiSelec
           resultMultiple.unshift(result);
         }
         return resultMultiple;
-      });      // From model --> view
+      });
+
+      // From model --> view
       ngModel.$formatters.unshift(function (inputValue) {
-          var data = $select.parserResult.source(scope, { $select: { search: '' } }), //Overwrite $search
-              locals = {},
-              result;
-          if (!data) return inputValue;
-          var resultMultiple = [];
-
-          var alreadyExistsInResultsFn = function (candidate) {
-              var trackBy = $select.parserResult.trackByExp;
-
-              for (var i = 0; i < resultMultiple.length; i++) {
-                  var current = resultMultiple[i];
-
-                  if (trackBy) {
-                      var matches = /\.(.+)/.exec($select.parserResult.trackByExp);
-                      if (matches && matches.length > 0 && current[matches[1]] !== undefined && current[matches[1]] == candidate[matches[1]]) {
-                          return true;
-                      }
-                  }
-                  else {
-                      if (angular.equals(current, candidate)) {
-                          return true;
-                      }
-                  }
-              }
-
-              return false;
-          };
-
-          var addToResultsSafeFn = function (candidate) {
-
-              if (!alreadyExistsInResultsFn(candidate)) {
-                  resultMultiple.unshift(candidate);
-                  return true;
-              }
-
-              return false;
-          };
-
-          var checkFnMultiple = function (list, value) {
-              if (!list || !list.length) return;
-              for (var p = list.length - 1; p >= 0; p--) {
-                  locals[$select.parserResult.itemName] = list[p];
-                  result = $select.parserResult.modelMapper(scope, locals);
-                  if ($select.parserResult.trackByExp) {
-                      var matches = /\.(.+)/.exec($select.parserResult.trackByExp);
-                      if (matches && matches.length > 0 && result[matches[1]] !== undefined && result[matches[1]] === value[matches[1]]) {
-                          if (addToResultsSafeFn(list[p])) {
-                              return true;
-                          }
-                      }
-                  }
-                  if (angular.equals(result, value)) {
-                      if (addToResultsSafeFn(list[p])) {
-                          return true;
-                      }
-                  }
-              }
-              return false;
-          };
-          if (!inputValue) return resultMultiple; //If ngModel was undefined
-          for (var k = inputValue.length - 1; k >= 0; k--) {
-              //Check model array of currently selected items 
-              if (!checkFnMultiple($select.selected, inputValue[k])) {
-                  //Check model array of all items available
-                  if (!checkFnMultiple(data, inputValue[k])) {
-                      //If not found on previous lists, just add it directly to resultMultiple
-                      addToResultsSafeFn(inputValue[k]);
-                  }
-              }
+        var data = $select.parserResult.source (scope, { $select : {search:''}}), //Overwrite $search
+            locals = {},
+            result;
+        if (!data) return inputValue;
+        var resultMultiple = [];
+        var checkFnMultiple = function(list, value){
+          if (!list || !list.length) return;
+          for (var p = list.length - 1; p >= 0; p--) {
+            locals[$select.parserResult.itemName] = list[p];
+            result = $select.parserResult.modelMapper(scope, locals);
+            if($select.parserResult.trackByExp){
+                var matches = /\.(.+)/.exec($select.parserResult.trackByExp);
+                if(matches.length>0 && result[matches[1]] == value[matches[1]]){
+                    resultMultiple.unshift(list[p]);
+                    return true;
+                }
+            }
+            if (angular.equals(result,value)){
+              resultMultiple.unshift(list[p]);
+              return true;
+            }
           }
-          return resultMultiple;
+          return false;
+        };
+        if (!inputValue) return resultMultiple; //If ngModel was undefined
+        for (var k = inputValue.length - 1; k >= 0; k--) {
+          //Check model array of currently selected items 
+          if (!checkFnMultiple($select.selected, inputValue[k])){
+            //Check model array of all items available
+            if (!checkFnMultiple(data, inputValue[k])){
+              //If not found on previous lists, just add it directly to resultMultiple
+              resultMultiple.unshift(inputValue[k]);
+            }
+          }
+        }
+        return resultMultiple;
       });
       
       //Watch for external model changes 
@@ -90963,16 +85677,16 @@ $templateCache.put("bootstrap/match-multiple.tpl.html","<span class=\"ui-select-
 $templateCache.put("bootstrap/match.tpl.html","<div class=\"ui-select-match\" ng-hide=\"$select.open\" ng-disabled=\"$select.disabled\" ng-class=\"{\'btn-default-focus\':$select.focus}\"><span tabindex=\"-1\" class=\"btn btn-default form-control ui-select-toggle\" aria-label=\"{{ $select.baseTitle }} activate\" ng-disabled=\"$select.disabled\" ng-click=\"$select.activate()\" style=\"outline: 0;\"><span ng-show=\"$select.isEmpty()\" class=\"ui-select-placeholder text-muted\">{{$select.placeholder}}</span> <span ng-hide=\"$select.isEmpty()\" class=\"ui-select-match-text pull-left\" ng-class=\"{\'ui-select-allow-clear\': $select.allowClear && !$select.isEmpty()}\" ng-transclude=\"\"></span> <i class=\"caret pull-right\" ng-click=\"$select.toggle($event)\"></i> <a ng-show=\"$select.allowClear && !$select.isEmpty()\" aria-label=\"{{ $select.baseTitle }} clear\" style=\"margin-right: 10px\" ng-click=\"$select.clear($event)\" class=\"btn btn-xs btn-link pull-right\"><i class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></i></a></span></div>");
 $templateCache.put("bootstrap/select-multiple.tpl.html","<div class=\"ui-select-container ui-select-multiple ui-select-bootstrap dropdown form-control\" ng-class=\"{open: $select.open}\"><div><div class=\"ui-select-match\"></div><input type=\"text\" autocomplete=\"false\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" class=\"ui-select-search input-xs\" placeholder=\"{{$selectMultiple.getPlaceholder()}}\" ng-disabled=\"$select.disabled\" ng-hide=\"$select.disabled\" ng-click=\"$select.activate()\" ng-model=\"$select.search\" role=\"combobox\" aria-label=\"{{ $select.baseTitle }}\" ondrop=\"return false;\"></div><div class=\"ui-select-choices\"></div></div>");
 $templateCache.put("bootstrap/select.tpl.html","<div class=\"ui-select-container ui-select-bootstrap dropdown\" ng-class=\"{open: $select.open}\"><div class=\"ui-select-match\"></div><input type=\"text\" autocomplete=\"false\" tabindex=\"-1\" aria-expanded=\"true\" aria-label=\"{{ $select.baseTitle }}\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"form-control ui-select-search\" placeholder=\"{{$select.placeholder}}\" ng-model=\"$select.search\" ng-show=\"$select.searchEnabled && $select.open\"><div class=\"ui-select-choices\"></div></div>");
-$templateCache.put("selectize/choices.tpl.html","<div ng-show=\"$select.open\" class=\"ui-select-choices ui-select-dropdown selectize-dropdown single\"><div class=\"ui-select-choices-content selectize-dropdown-content\"><div class=\"ui-select-choices-group optgroup\" role=\"listbox\"><div ng-show=\"$select.isGrouped\" class=\"ui-select-choices-group-label optgroup-header\" ng-bind=\"$group.name\"></div><div role=\"option\" class=\"ui-select-choices-row\" ng-class=\"{active: $select.isActive(this), disabled: $select.isDisabled(this)}\"><div class=\"option ui-select-choices-row-inner\" data-selectable=\"\"></div></div></div></div></div>");
-$templateCache.put("selectize/match.tpl.html","<div ng-hide=\"($select.open || $select.isEmpty())\" class=\"ui-select-match\" ng-transclude=\"\"></div>");
-$templateCache.put("selectize/select.tpl.html","<div class=\"ui-select-container selectize-control single\" ng-class=\"{\'open\': $select.open}\"><div class=\"selectize-input\" ng-class=\"{\'focus\': $select.open, \'disabled\': $select.disabled, \'selectize-focus\' : $select.focus}\" ng-click=\"$select.open && !$select.searchEnabled ? $select.toggle($event) : $select.activate()\"><div class=\"ui-select-match\"></div><input type=\"text\" autocomplete=\"false\" tabindex=\"-1\" class=\"ui-select-search ui-select-toggle\" ng-click=\"$select.toggle($event)\" placeholder=\"{{$select.placeholder}}\" ng-model=\"$select.search\" ng-hide=\"!$select.searchEnabled || ($select.selected && !$select.open)\" ng-disabled=\"$select.disabled\" aria-label=\"{{ $select.baseTitle }}\"></div><div class=\"ui-select-choices\"></div></div>");
 $templateCache.put("select2/choices.tpl.html","<ul class=\"ui-select-choices ui-select-choices-content select2-results\"><li class=\"ui-select-choices-group\" ng-class=\"{\'select2-result-with-children\': $select.choiceGrouped($group) }\"><div ng-show=\"$select.choiceGrouped($group)\" class=\"ui-select-choices-group-label select2-result-label\" ng-bind=\"$group.name\"></div><ul role=\"listbox\" id=\"ui-select-choices-{{ $select.generatedId }}\" ng-class=\"{\'select2-result-sub\': $select.choiceGrouped($group), \'select2-result-single\': !$select.choiceGrouped($group) }\"><li role=\"option\" id=\"ui-select-choices-row-{{ $select.generatedId }}-{{$index}}\" class=\"ui-select-choices-row\" ng-class=\"{\'select2-highlighted\': $select.isActive(this), \'select2-disabled\': $select.isDisabled(this)}\"><div class=\"select2-result-label ui-select-choices-row-inner\"></div></li></ul></li></ul>");
 $templateCache.put("select2/match-multiple.tpl.html","<span class=\"ui-select-match\"><li class=\"ui-select-match-item select2-search-choice\" ng-repeat=\"$item in $select.selected\" ng-class=\"{\'select2-search-choice-focus\':$selectMultiple.activeMatchIndex === $index, \'select2-locked\':$select.isLocked(this, $index)}\" ui-select-sort=\"$select.selected\"><span uis-transclude-append=\"\"></span> <a href=\"javascript:;\" class=\"ui-select-match-close select2-search-choice-close\" ng-click=\"$selectMultiple.removeChoice($index)\" tabindex=\"-1\"></a></li></span>");
 $templateCache.put("select2/match.tpl.html","<a class=\"select2-choice ui-select-match\" ng-class=\"{\'select2-default\': $select.isEmpty()}\" ng-click=\"$select.toggle($event)\" aria-label=\"{{ $select.baseTitle }} select\"><span ng-show=\"$select.isEmpty()\" class=\"select2-chosen\">{{$select.placeholder}}</span> <span ng-hide=\"$select.isEmpty()\" class=\"select2-chosen\" ng-transclude=\"\"></span> <abbr ng-if=\"$select.allowClear && !$select.isEmpty()\" class=\"select2-search-choice-close\" ng-click=\"$select.clear($event)\"></abbr> <span class=\"select2-arrow ui-select-toggle\"><b></b></span></a>");
 $templateCache.put("select2/select-multiple.tpl.html","<div class=\"ui-select-container ui-select-multiple select2 select2-container select2-container-multi\" ng-class=\"{\'select2-container-active select2-dropdown-open open\': $select.open, \'select2-container-disabled\': $select.disabled}\"><ul class=\"select2-choices\"><span class=\"ui-select-match\"></span><li class=\"select2-search-field\"><input type=\"text\" autocomplete=\"false\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" role=\"combobox\" aria-expanded=\"true\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-label=\"{{ $select.baseTitle }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"select2-input ui-select-search\" placeholder=\"{{$selectMultiple.getPlaceholder()}}\" ng-disabled=\"$select.disabled\" ng-hide=\"$select.disabled\" ng-model=\"$select.search\" ng-click=\"$select.activate()\" style=\"width: 34px;\" ondrop=\"return false;\"></li></ul><div class=\"ui-select-dropdown select2-drop select2-with-searchbox select2-drop-active\" ng-class=\"{\'select2-display-none\': !$select.open}\"><div class=\"ui-select-choices\"></div></div></div>");
-$templateCache.put("select2/select.tpl.html","<div class=\"ui-select-container select2 select2-container\" ng-class=\"{\'select2-container-active select2-dropdown-open open\': $select.open, \'select2-container-disabled\': $select.disabled, \'select2-container-active\': $select.focus, \'select2-allowclear\': $select.allowClear && !$select.isEmpty()}\"><div class=\"ui-select-match\"></div><div class=\"ui-select-dropdown select2-drop select2-with-searchbox select2-drop-active\" ng-class=\"{\'select2-display-none\': !$select.open}\"><div class=\"select2-search\" ng-show=\"$select.searchEnabled\"><input type=\"text\" autocomplete=\"false\" autocorrect=\"false\" autocapitalize=\"off\" spellcheck=\"false\" role=\"combobox\" aria-expanded=\"true\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-label=\"{{ $select.baseTitle }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"ui-select-search select2-input\" ng-model=\"$select.search\"></div><div class=\"ui-select-choices\"></div></div></div>");}]);
-},{}],175:[function(require,module,exports){
+$templateCache.put("select2/select.tpl.html","<div class=\"ui-select-container select2 select2-container\" ng-class=\"{\'select2-container-active select2-dropdown-open open\': $select.open, \'select2-container-disabled\': $select.disabled, \'select2-container-active\': $select.focus, \'select2-allowclear\': $select.allowClear && !$select.isEmpty()}\"><div class=\"ui-select-match\"></div><div class=\"ui-select-dropdown select2-drop select2-with-searchbox select2-drop-active\" ng-class=\"{\'select2-display-none\': !$select.open}\"><div class=\"select2-search\" ng-show=\"$select.searchEnabled\"><input type=\"text\" autocomplete=\"false\" autocorrect=\"false\" autocapitalize=\"off\" spellcheck=\"false\" role=\"combobox\" aria-expanded=\"true\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-label=\"{{ $select.baseTitle }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"ui-select-search select2-input\" ng-model=\"$select.search\"></div><div class=\"ui-select-choices\"></div></div></div>");
+$templateCache.put("selectize/choices.tpl.html","<div ng-show=\"$select.open\" class=\"ui-select-choices ui-select-dropdown selectize-dropdown single\"><div class=\"ui-select-choices-content selectize-dropdown-content\"><div class=\"ui-select-choices-group optgroup\" role=\"listbox\"><div ng-show=\"$select.isGrouped\" class=\"ui-select-choices-group-label optgroup-header\" ng-bind=\"$group.name\"></div><div role=\"option\" class=\"ui-select-choices-row\" ng-class=\"{active: $select.isActive(this), disabled: $select.isDisabled(this)}\"><div class=\"option ui-select-choices-row-inner\" data-selectable=\"\"></div></div></div></div></div>");
+$templateCache.put("selectize/match.tpl.html","<div ng-hide=\"($select.open || $select.isEmpty())\" class=\"ui-select-match\" ng-transclude=\"\"></div>");
+$templateCache.put("selectize/select.tpl.html","<div class=\"ui-select-container selectize-control single\" ng-class=\"{\'open\': $select.open}\"><div class=\"selectize-input\" ng-class=\"{\'focus\': $select.open, \'disabled\': $select.disabled, \'selectize-focus\' : $select.focus}\" ng-click=\"$select.open && !$select.searchEnabled ? $select.toggle($event) : $select.activate()\"><div class=\"ui-select-match\"></div><input type=\"text\" autocomplete=\"false\" tabindex=\"-1\" class=\"ui-select-search ui-select-toggle\" ng-click=\"$select.toggle($event)\" placeholder=\"{{$select.placeholder}}\" ng-model=\"$select.search\" ng-hide=\"!$select.searchEnabled || ($select.selected && !$select.open)\" ng-disabled=\"$select.disabled\" aria-label=\"{{ $select.baseTitle }}\"></div><div class=\"ui-select-choices\"></div></div>");}]);
+},{}],164:[function(require,module,exports){
 require('./dist/select.js');
 module.exports = 'ui.select';
 
-},{"./dist/select.js":174}]},{},[1]);
+},{"./dist/select.js":163}]},{},[1]);

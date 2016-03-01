@@ -32,8 +32,8 @@
   },
   "scripts": {
     "build": "grunt scripts",
+    "start": "php -S 0.0.0.0:5000 -t public",
     "buildAll": "grunt",
-    "serve": "php -S 0.0.0.0:5000 -t public",
     "deploy": "git push origin production && git push live production"
   },
   "dependencies": {
