@@ -15325,6 +15325,11 @@ ng-transclude.has-error .form-control {
   line-height: 16px;
 }
 
+/* line 276, ../../../assets/screen.scss */
+.import-page ol {
+  -webkit-padding-start: 15px;
+}
+
 @keyframes shake {
   0% {
     transform: translateX(0);
@@ -15365,7 +15370,7 @@ ng-transclude.has-error .form-control {
     -webkit-transform: translateX(0);
   }
 }
-/* line 293, ../../../assets/screen.scss */
+/* line 299, ../../../assets/screen.scss */
 .shake {
   -webkit-animation: shake 400ms ease-in-out;
   animation: shake 400ms ease-in-out;
