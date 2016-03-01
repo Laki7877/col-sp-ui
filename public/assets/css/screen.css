@@ -15319,6 +15319,12 @@ ng-transclude.has-error .form-control {
   outline: 0;
 }
 
+/* line 270, ../../../assets/screen.scss */
+.color-warning {
+  color: #8a6d3b;
+  line-height: 16px;
+}
+
 @keyframes shake {
   0% {
     transform: translateX(0);
@@ -15359,7 +15365,7 @@ ng-transclude.has-error .form-control {
     -webkit-transform: translateX(0);
   }
 }
-/* line 288, ../../../assets/screen.scss */
+/* line 293, ../../../assets/screen.scss */
 .shake {
   -webkit-animation: shake 400ms ease-in-out;
   animation: shake 400ms ease-in-out;
