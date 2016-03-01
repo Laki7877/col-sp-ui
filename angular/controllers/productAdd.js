@@ -137,13 +137,12 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
                 };
 
                 var secondAttribute = {
-                    AttributeId: $scope.dataSet.attributeOptions[0].Attribute.AttributeId,
+                    AttributeId: $scope.dataSet.attributeOptions[1].Attribute.AttributeId,
                     AttributeValues: (!BVId ? [] : [{
                         AttributeValueId: BVId
                     }]),
                     ValueEn: B
                 };
-
 
                 kpair.FirstAttribute = firstAttribute;
                 kpair.SecondAttribute = secondAttribute;

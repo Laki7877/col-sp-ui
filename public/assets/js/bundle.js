@@ -2305,7 +2305,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
                 };
 
                 var secondAttribute = {
-                    AttributeId: $scope.dataSet.attributeOptions[0].Attribute.AttributeId,
+                    AttributeId: $scope.dataSet.attributeOptions[1].Attribute.AttributeId,
                     AttributeValues: (!BVId ? [] : [{
                         AttributeValueId: BVId
                     }]),
