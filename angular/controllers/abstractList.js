@@ -131,7 +131,7 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 	}, true);
 
 	$timeout(function() {
-		$scope.reload();
+		//$scope.reload();
 		(options.onInit || _.noop)($scope);
 	}, 0);
 };

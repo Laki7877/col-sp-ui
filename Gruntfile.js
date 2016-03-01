@@ -1,6 +1,11 @@
 
 module.exports = function (grunt) {
   'use strict';
+  /**
+   * Browserify points
+   */
+  
+
   // Project configuration.
   grunt.initConfig({
     connect: {
@@ -14,7 +19,7 @@ module.exports = function (grunt) {
   	browserify: {
   	  dist: {
   	    files: {
-  	      'public/assets/js/bundle.js': ['angular/app.js']
+  	      'public/assets/js/bundle.js': ['angular2/app.js']
   	    },
   	    options: {
           transform: [require('bulkify'), require('browserify-ngannotate')],

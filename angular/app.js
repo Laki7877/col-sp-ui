@@ -124,7 +124,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
   }])
   //Configuration
   .value('config', config)
-.value('route', route)
+  .value('route', route)
   .value('$templateOptionsCache', bulk['template-options'])
 
 //Helpers
