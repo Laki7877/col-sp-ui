@@ -1,15 +1,38 @@
 ﻿<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Colleciton']) ?>
 
 <?php $this->start('page-body') ?>
-<!--<div ng-controller="ProductListCtrl" ng-init="init(<?= $params ?>)">-->
 <div ng-controller="ProductCollectionListCtrl" ng-init="init(<?= $params ?>)">
-    <? $this->insert('components/modal-export-product-collection', ['id' => 'export-product-collection', 'newProductNum' => '1,500']) ?>
-    <? $this->insert('components/modal-export-product-collection-progressing', ['id' => 'export-product-collection-progressing', 'percent' => '60']) ?>
+   
+    <nc-alert nc-model="alert"></nc-alert>
+   <nc-page-title nc-title="Collections">
+      <form id="exportForm" name="exportForm" action="/collections/export" method="post">
+          <input type="hidden" name="selected_collections[]" ng-repeat="item in bulkContainer" value="{{ item.CMSId }}"/>
 
-    <? $this->insert('components/page-title-product-collection-with-buttons', ['text' => 'Product Collection']) ?>
-    <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{alert.type}}" close="alert.close()">{{alert.message}}</div>
+          <div class="btn-group margin-right-10">
+            <button type="button" class="btn btn-white dropdown-toggle btn-width-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Export <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="/collections/export">Export All Collections</a></li>
+              <li><a ng-click="exportSelected()">Export Selected Collections</a></li>
+            </ul>
+          </div>
+          <div class="btn-group margin-right-10">
+            <button type="button" class="btn btn-white dropdown-toggle btn-width-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Import <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="/collections/import">Add New Collections</a></li>
+              <li><a href="/collections/import/update">Update Existing Collections</a></li>
+            </ul>
+          </div>
+        <a href="/collections/add" class="btn-blue btn btn-width-xl">
+          <span class="">Add Collections</span>
+        </a>
+      </form>
+   </nc-page-title>
     <div class="row search-section-wrapper">
-      <form ng-submit="bulk.fn()" class="search-section section-action">
+      <!-- <form ng-submit="bulk.fn()" class="search-section section-action">
         <div class="input-group">
           <div class="input-group-btn">
             <div class="dropdown-btn">
@@ -23,7 +46,7 @@
                 <li ng-repeat="option in bulkOptions"><a>{{option.name}}</a></li>
               </ul>
             </div>
-          </div><!-- /btn-group -->
+          </div>
           <div class="input-group-btn">
             <button class="btn-white-fluid btn">
               <span class="button-text-blue">Confirm <strong ng-show="checkBoxCount() > 0">({{ checkBoxCount() }})</strong></span>
@@ -38,8 +61,10 @@
             <button class="btn btn-white">Search</button>
           </span>
         </div>
-      </form>
-       
+      </form> -->
+      <nc-bulk nc-model="bulkOptions" nc-bulk-fn="bulks" nc-bulk-track-by="CMSId"></nc-bulk>
+      <nc-search nc-model="searchText" nc-search-event="applySearch()" nc-search-placeholder="'Search for Collection Name, Description, ...'"></nc-search>
+      <nc-advance-search-button nc-model="advanceSearch"></nc-advance-search-button>
     </div>
     <div class="filter-section">
       <div class="filter-container">

@@ -91,6 +91,18 @@ var seller = {
 	'Account|fa-user': {
 		'User Accounts': '/accounts',
 		'User Roles': '/roles'
+	},
+	'Collection|fa-product-hunt': {
+		'View': '/collections',
+		'Add': '/collections/add',
+		'Category View|margin-top-30': '/collections/cat',
+	  	'Category Add': '/collections/catadd',
+	  	'Group View|margin-top-30': '/collections/cat',
+	  	'Group Add': '/collections/catadd',
+	},
+	'Buy 1 Get 1|fa-gift': {
+		'View': '/buy1get1',
+		'Add': '/buy1get1/add'
 	}
 };
 
