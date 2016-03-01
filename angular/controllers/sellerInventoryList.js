@@ -38,7 +38,7 @@ module.exports = function($scope, $controller, $window, InventoryService, config
 		//Out of stock
 		if(measure <= 0) return $scope.statusDropdown[2];
 
-		measure = measure - item.SaftyStockSeller;
+		measure = measure - item.SafetyStockSeller;
 		
 		//Low stock
 		if(measure <= 0) return $scope.statusDropdown[1];
