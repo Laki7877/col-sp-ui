@@ -37,22 +37,20 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
 ])
 
 //App config
-
 .config(['$uibTooltipProvider', 'uiSelectConfig', '$ncPaginationProvider', '$ncAlertProvider', 
     function ($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
 
-	//Default close tooltip when click again
-	$tooltipProvider.setTriggers({
-    'clickanystart': 'clickanyend'
-	});
-	$tooltipProvider.options({
-		trigger: 'clickanystart'
-	});
-    $ncPaginationProvider.paginationSizes = [10, 20, 50, 100];
-    uiSelectConfig.taggingTokens = '[ENTER|,]';
+        //Default close tooltip when click again
+        $tooltipProvider.setTriggers({
+            'clickanystart': 'clickanyend'
+        });
+        $tooltipProvider.options({
+            trigger: 'clickanystart'
+        });
+        $ncPaginationProvider.paginationSizes = [10, 20, 50, 100];
+        uiSelectConfig.taggingTokens = '[ENTER|,]';
 
     } ])
-
 
 //App template cache load
 .run(template)
@@ -186,6 +184,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
 .factory('$Buy1Get1Add', services.buy1get1Add)
 .factory('OnTopCreditService', services.OnTopCreditService)
 .factory('OnTopCredit', services.OnTopCredit)
+    .factory('OnTopCreditService', services.OnTopCreditService)
+    .factory('OnTopCredit', services.OnTopCredit)
 
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)
@@ -270,5 +270,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
 
 .controller('AdminOnTopCreditCtrl', controllers.adminOnTopCreditAdd)
 .controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
+
+    .controller('AdminOnTopCreditCtrl', controllers.adminOnTopCreditAdd)
+    .controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
 
 .controller('TestCtrl', controllers.test)
