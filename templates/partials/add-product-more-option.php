@@ -8,7 +8,8 @@
                         <h2>Relationship</h2></div>
                     <div class="form-section-content">
 
-                        <div nc-template="common/input/form-group-with-label" nc-label="Related Products" nc-template-form="addProductForm.RelatedProducts" nc-template-options-path="addProductForm/RelatedProducts">
+                        <div nc-template="common/input/form-group-with-label" nc-label="Related Products" nc-template-form="addProductForm.RelatedProducts" 
+                        nc-template-options-path="addProductForm/RelatedProducts">
                             <ui-select ng-model="formData.RelatedProducts" name="RelatedProducts" nc-tag-validator nc-max-tag-count="10" multiple>
                                 <ui-select-match placeholder="Input Product Name">
                                     <span>{{ $item.ProductNameEn }}</span>

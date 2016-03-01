@@ -396,7 +396,6 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
       try {
         if (hasVariants) {
-          var masterProps = []
           clean.Variants = (fd.Variants || []).map(mapper.Variants)
           // Find DefaultVariant
           var target = fd.DefaultVariant.text

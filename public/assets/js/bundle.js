@@ -3,7 +3,7 @@
 'use strict';
 //App Start here
 var angular = require('angular');
-var bulk = ({"controllers":(function () {var f = require("./controllers/index.js");f["abstractAdd"]=require("./controllers/abstractAdd.js");f["abstractAdvanceList"]=require("./controllers/abstractAdvanceList.js");f["abstractList"]=require("./controllers/abstractList.js");f["adminAccount"]=require("./controllers/adminAccount.js");f["adminAccountAdd"]=require("./controllers/adminAccountAdd.js");f["adminAttribute"]=require("./controllers/adminAttribute.js");f["adminAttributeAdd"]=require("./controllers/adminAttributeAdd.js");f["adminAttributeSet"]=require("./controllers/adminAttributeSet.js");f["adminAttributeSetAdd"]=require("./controllers/adminAttributeSetAdd.js");f["adminBrand"]=require("./controllers/adminBrand.js");f["adminBrandAdd"]=require("./controllers/adminBrandAdd.js");f["adminCategory"]=require("./controllers/adminCategory.js");f["adminCoupon"]=require("./controllers/adminCoupon.js");f["adminCouponAdd"]=require("./controllers/adminCouponAdd.js");f["adminProductApprovalList"]=require("./controllers/adminProductApprovalList.js");f["adminProductList"]=require("./controllers/adminProductList.js");f["adminRole"]=require("./controllers/adminRole.js");f["adminRoleAdd"]=require("./controllers/adminRoleAdd.js");f["adminShop"]=require("./controllers/adminShop.js");f["adminShopAdd"]=require("./controllers/adminShopAdd.js");f["adminShoptype"]=require("./controllers/adminShoptype.js");f["adminShoptypeAdd"]=require("./controllers/adminShoptypeAdd.js");f["index"]=require("./controllers/index.js");f["localCategory"]=require("./controllers/localCategory.js");f["login"]=require("./controllers/login.js");f["productAdd"]=require("./controllers/productAdd.js");f["productAddSelectCategory"]=require("./controllers/productAddSelectCategory.js");f["productExport"]=require("./controllers/productExport.js");f["productImageList"]=require("./controllers/productImageList.js");f["productImageManagement"]=require("./controllers/productImageManagement.js");f["productImport"]=require("./controllers/productImport.js");f["productList"]=require("./controllers/productList.js");f["productListLocalCategory"]=require("./controllers/productListLocalCategory.js");f["productReview"]=require("./controllers/productReview.js");f["root"]=require("./controllers/root.js");f["sellerAccount"]=require("./controllers/sellerAccount.js");f["sellerAccountAdd"]=require("./controllers/sellerAccountAdd.js");f["sellerInventoryList"]=require("./controllers/sellerInventoryList.js");f["sellerRole"]=require("./controllers/sellerRole.js");f["sellerRoleAdd"]=require("./controllers/sellerRoleAdd.js");f["sellerShopSetting"]=require("./controllers/sellerShopSetting.js");f["test"]=require("./controllers/test.js");return f;})(),"services":({"adminAccountService":require("./services/adminAccountService.js"),"adminPermissionService":require("./services/adminPermissionService.js"),"adminRoleService":require("./services/adminRoleService.js"),"adminShopService":require("./services/adminShopService.js"),"adminShoptypeService":require("./services/adminShoptypeService.js"),"alert":require("./services/alert.js"),"attribute":require("./services/attribute.js"),"attributeService":require("./services/attributeService.js"),"attributeSet":require("./services/attributeSet.js"),"attributeSetService":require("./services/attributeSetService.js"),"blocker":require("./services/blocker.js"),"brand":require("./services/brand.js"),"brandService":require("./services/brandService.js"),"category":require("./services/category.js"),"coupon":require("./services/coupon.js"),"credential":require("./services/credential.js"),"exceptionHandler":require("./services/exceptionHandler.js"),"fileService":require("./services/fileService.js"),"globalCategory":require("./services/globalCategory.js"),"globalCategoryService":require("./services/globalCategoryService.js"),"image":require("./services/image.js"),"imageService":require("./services/imageService.js"),"inventoryService":require("./services/inventoryService.js"),"knownException":require("./services/knownException.js"),"localCategory":require("./services/localCategory.js"),"localCategoryService":require("./services/localCategoryService.js"),"product":require("./services/product.js"),"productAdd":require("./services/productAdd.js"),"productReviewService":require("./services/productReviewService.js"),"sellerAccountService":require("./services/sellerAccountService.js"),"sellerPermissionService":require("./services/sellerPermissionService.js"),"sellerRoleService":require("./services/sellerRoleService.js"),"shop":require("./services/shop.js"),"shopPermissionService":require("./services/shopPermissionService.js")}),"helpers":({"base64":require("./helpers/base64.js"),"common":require("./helpers/common.js"),"storage":require("./helpers/storage.js"),"util":require("./helpers/util.js"),"variantPair":require("./helpers/variantPair.js")}),"directives":({"ncTradableSelect":require("./directives/ncTradableSelect.js"),"ngCkeditor":require("./directives/ngCkeditor.js"),"ngDateBefore":require("./directives/ngDateBefore.js"),"ngDelegate":require("./directives/ngDelegate.js"),"ngMatch":require("./directives/ngMatch.js"),"ngMaxnumber":require("./directives/ngMaxnumber.js"),"ngMinnumber":require("./directives/ngMinnumber.js"),"ngPatternRestrict":require("./directives/ngPatternRestrict.js"),"ngPermission":require("./directives/ngPermission.js"),"ngSlideToggle":require("./directives/ngSlideToggle.js"),"ngTemplate":require("./directives/ngTemplate.js"),"popoverAny":require("./directives/popoverAny.js")}),"filters":({"capitalize":require("./filters/capitalize.js"),"exclude":require("./filters/exclude.js"),"excludeCategory":require("./filters/excludeCategory.js"),"html":require("./filters/html.js"),"importGuidelineExample":require("./filters/importGuidelineExample.js"),"leadingzero":require("./filters/leadingzero.js"),"ordinal":require("./filters/ordinal.js"),"slice":require("./filters/slice.js"),"truncate":require("./filters/truncate.js"),"truth":require("./filters/truth.js"),"variantValue":require("./filters/variantValue.js")}),"template-options":({"addProductForm":require("./template-options/addProductForm.js"),"adminShopAccountForm":require("./template-options/adminShopAccountForm.js"),"couponForm":require("./template-options/couponForm.js"),"productExport":require("./template-options/productExport.js"),"productImport":require("./template-options/productImport.js"),"searchForm":require("./template-options/searchForm.js"),"shopSettingForm":require("./template-options/shopSettingForm.js")})});
+var bulk = ({"controllers":(function () {var f = require("./controllers\\index.js");f["abstractAdd"]=require("./controllers\\abstractAdd.js");f["abstractAdvanceList"]=require("./controllers\\abstractAdvanceList.js");f["abstractList"]=require("./controllers\\abstractList.js");f["adminAccount"]=require("./controllers\\adminAccount.js");f["adminAccountAdd"]=require("./controllers\\adminAccountAdd.js");f["adminAttribute"]=require("./controllers\\adminAttribute.js");f["adminAttributeAdd"]=require("./controllers\\adminAttributeAdd.js");f["adminAttributeSet"]=require("./controllers\\adminAttributeSet.js");f["adminAttributeSetAdd"]=require("./controllers\\adminAttributeSetAdd.js");f["adminBrand"]=require("./controllers\\adminBrand.js");f["adminBrandAdd"]=require("./controllers\\adminBrandAdd.js");f["adminCategory"]=require("./controllers\\adminCategory.js");f["adminCoupon"]=require("./controllers\\adminCoupon.js");f["adminCouponAdd"]=require("./controllers\\adminCouponAdd.js");f["adminOnTopCreditAdd"]=require("./controllers\\adminOnTopCreditAdd.js");f["adminOnTopCreditList"]=require("./controllers\\adminOnTopCreditList.js");f["adminProductApprovalList"]=require("./controllers\\adminProductApprovalList.js");f["adminProductList"]=require("./controllers\\adminProductList.js");f["adminRole"]=require("./controllers\\adminRole.js");f["adminRoleAdd"]=require("./controllers\\adminRoleAdd.js");f["adminShop"]=require("./controllers\\adminShop.js");f["adminShopAdd"]=require("./controllers\\adminShopAdd.js");f["adminShoptype"]=require("./controllers\\adminShoptype.js");f["adminShoptypeAdd"]=require("./controllers\\adminShoptypeAdd.js");f["index"]=require("./controllers\\index.js");f["localCategory"]=require("./controllers\\localCategory.js");f["login"]=require("./controllers\\login.js");f["productAdd"]=require("./controllers\\productAdd.js");f["productAddSelectCategory"]=require("./controllers\\productAddSelectCategory.js");f["productExport"]=require("./controllers\\productExport.js");f["productImageList"]=require("./controllers\\productImageList.js");f["productImageManagement"]=require("./controllers\\productImageManagement.js");f["productImport"]=require("./controllers\\productImport.js");f["productList"]=require("./controllers\\productList.js");f["productListLocalCategory"]=require("./controllers\\productListLocalCategory.js");f["productReview"]=require("./controllers\\productReview.js");f["root"]=require("./controllers\\root.js");f["sellerAccount"]=require("./controllers\\sellerAccount.js");f["sellerAccountAdd"]=require("./controllers\\sellerAccountAdd.js");f["sellerInventoryList"]=require("./controllers\\sellerInventoryList.js");f["sellerRole"]=require("./controllers\\sellerRole.js");f["sellerRoleAdd"]=require("./controllers\\sellerRoleAdd.js");f["sellerShopSetting"]=require("./controllers\\sellerShopSetting.js");f["test"]=require("./controllers\\test.js");return f;})(),"services":({"OnTopCredit":require("./services\\OnTopCredit.js"),"OnTopCreditService":require("./services\\OnTopCreditService.js"),"adminAccountService":require("./services\\adminAccountService.js"),"adminPermissionService":require("./services\\adminPermissionService.js"),"adminRoleService":require("./services\\adminRoleService.js"),"adminShopService":require("./services\\adminShopService.js"),"adminShoptypeService":require("./services\\adminShoptypeService.js"),"alert":require("./services\\alert.js"),"attribute":require("./services\\attribute.js"),"attributeService":require("./services\\attributeService.js"),"attributeSet":require("./services\\attributeSet.js"),"attributeSetService":require("./services\\attributeSetService.js"),"blocker":require("./services\\blocker.js"),"brand":require("./services\\brand.js"),"brandService":require("./services\\brandService.js"),"category":require("./services\\category.js"),"coupon":require("./services\\coupon.js"),"credential":require("./services\\credential.js"),"exceptionHandler":require("./services\\exceptionHandler.js"),"fileService":require("./services\\fileService.js"),"globalCategory":require("./services\\globalCategory.js"),"globalCategoryService":require("./services\\globalCategoryService.js"),"image":require("./services\\image.js"),"imageService":require("./services\\imageService.js"),"inventoryService":require("./services\\inventoryService.js"),"knownException":require("./services\\knownException.js"),"localCategory":require("./services\\localCategory.js"),"localCategoryService":require("./services\\localCategoryService.js"),"product":require("./services\\product.js"),"productAdd":require("./services\\productAdd.js"),"productReviewService":require("./services\\productReviewService.js"),"sellerAccountService":require("./services\\sellerAccountService.js"),"sellerPermissionService":require("./services\\sellerPermissionService.js"),"sellerRoleService":require("./services\\sellerRoleService.js"),"shop":require("./services\\shop.js"),"shopPermissionService":require("./services\\shopPermissionService.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDateBefore":require("./directives\\ngDateBefore.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngMatch":require("./directives\\ngMatch.js"),"ngMaxnumber":require("./directives\\ngMaxnumber.js"),"ngMinnumber":require("./directives\\ngMinnumber.js"),"ngPatternRestrict":require("./directives\\ngPatternRestrict.js"),"ngPermission":require("./directives\\ngPermission.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"popoverAny":require("./directives\\popoverAny.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"exclude":require("./filters\\exclude.js"),"excludeCategory":require("./filters\\excludeCategory.js"),"html":require("./filters\\html.js"),"importGuidelineExample":require("./filters\\importGuidelineExample.js"),"leadingzero":require("./filters\\leadingzero.js"),"ordinal":require("./filters\\ordinal.js"),"slice":require("./filters\\slice.js"),"truncate":require("./filters\\truncate.js"),"truth":require("./filters\\truth.js"),"variantValue":require("./filters\\variantValue.js")}),"template-options":({"PromotionForm":require("./template-options\\PromotionForm.js"),"addProductForm":require("./template-options\\addProductForm.js"),"adminShopAccountForm":require("./template-options\\adminShopAccountForm.js"),"couponForm":require("./template-options\\couponForm.js"),"productExport":require("./template-options\\productExport.js"),"productImport":require("./template-options\\productImport.js"),"searchForm":require("./template-options\\searchForm.js"),"shopSettingForm":require("./template-options\\shopSettingForm.js")})});
 var config = require('./config');
 var route = require('./route');
 var template = require('./template');
@@ -48,13 +48,84 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
 .run(template)
 
 //App init
-/* Moved to root.js */
+.run(['$rootScope', 'storage', '$window', '$location', 'Credential', function($rootScope, storage, $window, $location, Credential) {
 
 
-//Configuration
-.value('config', config)
+    //Create global logout function
+    $rootScope.logout = function() {
+      if ($rootScope.Imposter) {
+        return Credential.logoutAs().then(function(R) {
+          //return to normal flow
+          if (R.User.IsAdmin) {
+            $window.location.href = "/admin";
+          } else {
+            $window.location.href = "/products";
+          }
+        }, function() {
+          alert("Fetal error while logging out.");
+        });
+      }
+
+      Credential.logout();
+      $window.location.href = "/login"
+    };
+
+
+    //Create generic form validator functions
+    //This is now inside ncTemplate
+    $rootScope.isInvalid = function(form) {
+      if (angular.isDefined(form) &&
+        angular.isDefined(form.$invalid) &&
+        angular.isDefined(form.$dirty)) {
+        return form.$invalid && (form.$dirty || form.$$parentForm.$submitted);
+      }
+      return false;
+    };
+
+
+    //Prevent image dragdrop on other elements
+    $window.addEventListener("dragover", function(e) {
+      e = e || event;
+      e.preventDefault();
+    }, false);
+    $window.addEventListener("drop", function(e) {
+      e = e || event;
+      e.preventDefault();
+    }, false);
+
+    //Match route with
+    $rootScope.isUrl = function(url) {
+      if (url.length > 0) {
+        var path = $window.location.pathname;
+        if (path == url) {
+          return true;
+        } else if (path.startsWith(url) && path.charAt(url.length) != '/') {
+          return false;
+        } else {
+          return path.startsWith(url);
+        }
+      } else {
+        return false;
+      }
+    };
+
+    $rootScope.activeParentUrl = function(url, sub) {
+      return {
+        'forced-active': $rootScope.isUrl(url)
+      };
+    };
+
+    //For active class url
+    $rootScope.activeUrl = function(url) {
+      return {
+        'active': $window.location.pathname == url
+      };
+    };
+  }])
+  //Configuration
+  .value('config', config)
 .value('route', route)
-.value('$templateOptionsCache', bulk['template-options'])
+  .value('$templateOptionsCache', bulk['template-options'])
 
 //Helpers
 .factory('common', helpers.common)
@@ -97,6 +168,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
   .factory('$exceptionHandler', services.exceptionHandler)
   .factory('KnownException', services.knownException)
   .factory('$productAdd', services.productAdd)
+    .factory('OnTopCreditService', services.OnTopCreditService)
+    .factory('OnTopCredit', services.OnTopCredit)
 
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)
@@ -170,10 +243,13 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
   .controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
   .controller('AbstractAddCtrl', controllers.abstractAdd)
 
+    .controller('AdminOnTopCreditCtrl', controllers.adminOnTopCreditAdd)
+    .controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
+
 .controller('TestCtrl', controllers.test)
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./config":2,"./controllers/abstractAdd.js":3,"./controllers/abstractAdvanceList.js":4,"./controllers/abstractList.js":5,"./controllers/adminAccount.js":6,"./controllers/adminAccountAdd.js":7,"./controllers/adminAttribute.js":8,"./controllers/adminAttributeAdd.js":9,"./controllers/adminAttributeSet.js":10,"./controllers/adminAttributeSetAdd.js":11,"./controllers/adminBrand.js":12,"./controllers/adminBrandAdd.js":13,"./controllers/adminCategory.js":14,"./controllers/adminCoupon.js":15,"./controllers/adminCouponAdd.js":16,"./controllers/adminProductApprovalList.js":17,"./controllers/adminProductList.js":18,"./controllers/adminRole.js":19,"./controllers/adminRoleAdd.js":20,"./controllers/adminShop.js":21,"./controllers/adminShopAdd.js":22,"./controllers/adminShoptype.js":23,"./controllers/adminShoptypeAdd.js":24,"./controllers/index.js":25,"./controllers/localCategory.js":26,"./controllers/login.js":27,"./controllers/productAdd.js":28,"./controllers/productAddSelectCategory.js":29,"./controllers/productExport.js":30,"./controllers/productImageList.js":31,"./controllers/productImageManagement.js":32,"./controllers/productImport.js":33,"./controllers/productList.js":34,"./controllers/productListLocalCategory.js":35,"./controllers/productReview.js":36,"./controllers/root.js":37,"./controllers/sellerAccount.js":38,"./controllers/sellerAccountAdd.js":39,"./controllers/sellerInventoryList.js":40,"./controllers/sellerRole.js":41,"./controllers/sellerRoleAdd.js":42,"./controllers/sellerShopSetting.js":43,"./controllers/test.js":44,"./directives/ncTradableSelect.js":45,"./directives/ngCkeditor.js":46,"./directives/ngDateBefore.js":47,"./directives/ngDelegate.js":48,"./directives/ngMatch.js":49,"./directives/ngMaxnumber.js":50,"./directives/ngMinnumber.js":51,"./directives/ngPatternRestrict.js":52,"./directives/ngPermission.js":53,"./directives/ngSlideToggle.js":54,"./directives/ngTemplate.js":55,"./directives/popoverAny.js":56,"./filters/capitalize.js":57,"./filters/exclude.js":58,"./filters/excludeCategory.js":59,"./filters/html.js":60,"./filters/importGuidelineExample.js":61,"./filters/leadingzero.js":62,"./filters/ordinal.js":63,"./filters/slice.js":64,"./filters/truncate.js":65,"./filters/truth.js":66,"./filters/variantValue.js":67,"./helpers/base64.js":68,"./helpers/common.js":69,"./helpers/storage.js":70,"./helpers/util.js":71,"./helpers/variantPair.js":72,"./nc":99,"./route":101,"./services/adminAccountService.js":102,"./services/adminPermissionService.js":103,"./services/adminRoleService.js":104,"./services/adminShopService.js":105,"./services/adminShoptypeService.js":106,"./services/alert.js":107,"./services/attribute.js":108,"./services/attributeService.js":109,"./services/attributeSet.js":110,"./services/attributeSetService.js":111,"./services/blocker.js":112,"./services/brand.js":113,"./services/brandService.js":114,"./services/category.js":115,"./services/coupon.js":116,"./services/credential.js":117,"./services/exceptionHandler.js":118,"./services/fileService.js":119,"./services/globalCategory.js":120,"./services/globalCategoryService.js":121,"./services/image.js":122,"./services/imageService.js":123,"./services/inventoryService.js":124,"./services/knownException.js":125,"./services/localCategory.js":126,"./services/localCategoryService.js":127,"./services/product.js":128,"./services/productAdd.js":129,"./services/productReviewService.js":130,"./services/sellerAccountService.js":131,"./services/sellerPermissionService.js":132,"./services/sellerRoleService.js":133,"./services/shop.js":134,"./services/shopPermissionService.js":135,"./template":143,"./template-options/addProductForm.js":136,"./template-options/adminShopAccountForm.js":137,"./template-options/couponForm.js":138,"./template-options/productExport.js":139,"./template-options/productImport.js":140,"./template-options/searchForm.js":141,"./template-options/shopSettingForm.js":142,"angular":159,"angular-animate":145,"angular-base64":146,"angular-bootstrap-datetimepicker":147,"angular-clipboard":148,"angular-file-upload":149,"angular-sanitize":151,"angular-scroll":153,"angular-ui-bootstrap":155,"angular-ui-tree":157,"lodash":161,"ui-select/dist/select.js":163}],2:[function(require,module,exports){
+},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractAdvanceList.js":4,"./controllers\\abstractList.js":5,"./controllers\\adminAccount.js":6,"./controllers\\adminAccountAdd.js":7,"./controllers\\adminAttribute.js":8,"./controllers\\adminAttributeAdd.js":9,"./controllers\\adminAttributeSet.js":10,"./controllers\\adminAttributeSetAdd.js":11,"./controllers\\adminBrand.js":12,"./controllers\\adminBrandAdd.js":13,"./controllers\\adminCategory.js":14,"./controllers\\adminCoupon.js":15,"./controllers\\adminCouponAdd.js":16,"./controllers\\adminOnTopCreditAdd.js":17,"./controllers\\adminOnTopCreditList.js":18,"./controllers\\adminProductApprovalList.js":19,"./controllers\\adminProductList.js":20,"./controllers\\adminRole.js":21,"./controllers\\adminRoleAdd.js":22,"./controllers\\adminShop.js":23,"./controllers\\adminShopAdd.js":24,"./controllers\\adminShoptype.js":25,"./controllers\\adminShoptypeAdd.js":26,"./controllers\\index.js":27,"./controllers\\localCategory.js":28,"./controllers\\login.js":29,"./controllers\\productAdd.js":30,"./controllers\\productAddSelectCategory.js":31,"./controllers\\productExport.js":32,"./controllers\\productImageList.js":33,"./controllers\\productImageManagement.js":34,"./controllers\\productImport.js":35,"./controllers\\productList.js":36,"./controllers\\productListLocalCategory.js":37,"./controllers\\productReview.js":38,"./controllers\\root.js":39,"./controllers\\sellerAccount.js":40,"./controllers\\sellerAccountAdd.js":41,"./controllers\\sellerInventoryList.js":42,"./controllers\\sellerRole.js":43,"./controllers\\sellerRoleAdd.js":44,"./controllers\\sellerShopSetting.js":45,"./controllers\\test.js":46,"./directives\\ncTradableSelect.js":47,"./directives\\ngCkeditor.js":48,"./directives\\ngDateBefore.js":49,"./directives\\ngDelegate.js":50,"./directives\\ngMatch.js":51,"./directives\\ngMaxnumber.js":52,"./directives\\ngMinnumber.js":53,"./directives\\ngPatternRestrict.js":54,"./directives\\ngPermission.js":55,"./directives\\ngSlideToggle.js":56,"./directives\\ngTemplate.js":57,"./directives\\popoverAny.js":58,"./filters\\capitalize.js":59,"./filters\\exclude.js":60,"./filters\\excludeCategory.js":61,"./filters\\html.js":62,"./filters\\importGuidelineExample.js":63,"./filters\\leadingzero.js":64,"./filters\\ordinal.js":65,"./filters\\slice.js":66,"./filters\\truncate.js":67,"./filters\\truth.js":68,"./filters\\variantValue.js":69,"./helpers\\base64.js":70,"./helpers\\common.js":71,"./helpers\\storage.js":72,"./helpers\\util.js":73,"./helpers\\variantPair.js":74,"./nc":101,"./route":103,"./services\\OnTopCredit.js":104,"./services\\OnTopCreditService.js":105,"./services\\adminAccountService.js":106,"./services\\adminPermissionService.js":107,"./services\\adminRoleService.js":108,"./services\\adminShopService.js":109,"./services\\adminShoptypeService.js":110,"./services\\alert.js":111,"./services\\attribute.js":112,"./services\\attributeService.js":113,"./services\\attributeSet.js":114,"./services\\attributeSetService.js":115,"./services\\blocker.js":116,"./services\\brand.js":117,"./services\\brandService.js":118,"./services\\category.js":119,"./services\\coupon.js":120,"./services\\credential.js":121,"./services\\exceptionHandler.js":122,"./services\\fileService.js":123,"./services\\globalCategory.js":124,"./services\\globalCategoryService.js":125,"./services\\image.js":126,"./services\\imageService.js":127,"./services\\inventoryService.js":128,"./services\\knownException.js":129,"./services\\localCategory.js":130,"./services\\localCategoryService.js":131,"./services\\product.js":132,"./services\\productAdd.js":133,"./services\\productReviewService.js":134,"./services\\sellerAccountService.js":135,"./services\\sellerPermissionService.js":136,"./services\\sellerRoleService.js":137,"./services\\shop.js":138,"./services\\shopPermissionService.js":139,"./template":148,"./template-options\\PromotionForm.js":140,"./template-options\\addProductForm.js":141,"./template-options\\adminShopAccountForm.js":142,"./template-options\\couponForm.js":143,"./template-options\\productExport.js":144,"./template-options\\productImport.js":145,"./template-options\\searchForm.js":146,"./template-options\\shopSettingForm.js":147,"angular":164,"angular-animate":150,"angular-base64":151,"angular-bootstrap-datetimepicker":152,"angular-clipboard":153,"angular-file-upload":154,"angular-sanitize":156,"angular-scroll":158,"angular-ui-bootstrap":160,"angular-ui-tree":162,"lodash":166,"ui-select/dist/select.js":168}],2:[function(require,module,exports){
 module.exports = {
 	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
@@ -853,7 +929,7 @@ module.exports = ["$scope", "$controller", "AttributeService", "config", "util",
 		}
 	}, true);
 }];
-},{"angular":159}],10:[function(require,module,exports){
+},{"angular":164}],10:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AttributeSetService", "util", "config", function($scope, $controller, AttributeSetService, util, config) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -936,7 +1012,6 @@ module.exports = ["$scope", "$controller", "BrandService", "config", function($s
 		}
 	});
 }]
-
 },{}],13:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "BrandService", "ImageService", function($scope, $controller, BrandService, ImageService) {
 	'ngInject';
@@ -1379,6 +1454,191 @@ module.exports = function($scope, $controller, CouponService, config, Brand, Sho
 };
 
 },{}],17:[function(require,module,exports){
+module.exports = function ($scope, $controller, OnTopCredit, config) {
+    $scope.formData = {
+        OnTopCreditCardId: null,
+        NameTH: null,
+        NameEN: null,
+        EffectiveDate: null,
+        ExpiryDate: null,
+        BankNameTH: null,
+        BankNameEN: null,
+        PromotionCode: null,
+        PaymentId: null,
+        Status:null ,
+        DiscountType: null,
+        DiscountValue: 0,
+        MinimumOrderAmount: 0,
+        MaximumDiscountAmount: 0,
+        FreeShipping: null,
+        ShortDescriptionTH: null,
+        ShortDescriptionEN: null,
+        IconURLTH: null,
+        IconURLEN: null,
+        Sequence: null,
+        Visibility: null,
+        CreateIP: null,
+        CardItemList: []
+    };
+  
+    /*
+    '*CARD TYPES            *PREFIX           *WIDTH
+    'American Express       34, 37            15
+    'Diners Club            300 to 305, 36    14
+    'Carte Blanche          38                14
+    'Discover               6011              16
+    'EnRoute                2014, 2149        15
+    'JCB                    3                 16
+    'JCB                    2131, 1800        15
+    'Master Card            51 to 55          16
+    'Visa                   4                 13, 16
+    */
+    $scope.dataSet = {
+        criteria: [{ value: '0', text: 'Not Set' },
+    { value: '15A', text: 'American Express - (15 digit)' },
+    { value: '14D', text: 'Diners Club - (14 digit)' },
+    { value: '14C', text: 'Carte Blanche - (14 digit)' },
+    { value: '16D', text: 'Discover - (16 digit)' },
+    { value: '15E', text: 'EnRoute - (15 digit)' },
+    { value: '16J', text: 'JCB - (16 digit)' },
+    { value: '15J', text: 'JCB - (15 digit)' },
+    { value: '16M', text: 'Master Card - (16 digit)' },
+    { value: '13V', text: 'Visa - (13 digit)' },
+    { value: '16V', text: 'Visa - (16 digit)' },
+        ],
+        filters: [{ value: 'None', text: 'No filter' },
+    { text: 'Brand', value: 'Brand' },
+    { text: 'Global Category', value: 'GlobalCategory' },
+    { text: 'Shop', value: 'Shop' },
+    { text: 'Email', value: 'Email'}]
+    }
+
+    // Item List Arrays
+    $scope.items = [{
+        CreditCardTypeCode: null,
+        CreditCardTypeText: null,
+        CreditNumberFormat: null,
+        Digit: null,
+        Visibility: 1,
+        Status: true
+    }];
+    // Add a Item to the list
+    $scope.addItem = function () {
+        switch ($scope.items.CreditCardTypeCode) {
+            case "15A":
+                $scope.items.CreditCardTypeText = 'American Express - (15 digit)';
+                $scope.items.Digit = 15;
+                break;
+            case "14D":
+                $scope.items.CreditCardTypeText = 'Diners Club - (14 digit)';
+                $scope.items.Digit = 14;
+                break;
+            case "14C":
+                $scope.items.CreditCardTypeText = 'Carte Blanche - (14 digit)';
+                $scope.items.Digit = 14;
+                break;
+            case "16D":
+                $scope.items.CreditCardTypeText = 'Discover - (16 digit)';
+                $scope.items.Digit = 16;
+                break;
+            case "15E":
+                $scope.items.CreditCardTypeText = 'EnRoute - (15 digit)';
+                $scope.items.Digit = 15;
+                break;
+            case "16J":
+                $scope.items.CreditCardTypeText = 'JCB - (16 digit)';
+                $scope.items.Digit = 16;
+                break;
+            case "15J":
+                $scope.items.CreditCardTypeText = 'JCB - (15 digit)';
+                $scope.items.Digit = 15;
+                break;
+            case "16M":
+                $scope.items.CreditCardTypeText = 'Master Card - (16 digit)';
+                $scope.items.Digit = 16;
+                break;
+            case "13V":
+                $scope.items.CreditCardTypeText = 'Visa - (13 digit)';
+                $scope.items.Digit = 13;
+                break;
+            case "16V":
+                $scope.items.CreditCardTypeText = 'Visa - (16 digit)';
+                $scope.items.Digit = 16;
+                break;
+        }
+        $scope.items.push({
+            CreditCardTypeCode: $scope.items.CreditCardTypeCode,
+            CreditCardTypeText: $scope.items.CreditCardTypeText,
+            CreditNumberFormat: $scope.items.CreditNumberFormat,
+            Digit: $scope.items.Digit,
+            Visibility: 1,
+            Status: true
+        });
+        $scope.formData.CardItemList = $scope.items;
+        // Clear input fields after push
+        $scope.items.CreditCardTypeCode = "0";
+        $scope.items.CreditCardTypeText = "";
+        $scope.items.CreditNumberFormat = "";
+
+        
+    };
+
+    //Remove
+    $scope.removeItems = function (item, index) {
+        debugger;
+        $scope.items.splice(index, 1);
+    }
+
+    // Get Total Items
+    $scope.getTotalItems = function () {
+        return $scope.items.length;
+    };
+
+
+
+    $controller('AbstractAddCtrl', {
+        $scope: $scope,
+        options: {
+            id: 'OnTopCreditCardId',
+            url: '/admin/ontopcredit',
+            item: 'OnTopCreditCard',
+            service: OnTopCredit,
+            init: function(scope) {	},
+            onLoad: function (scope, load) {
+
+            },
+            onSave: function (scope) {
+
+            }
+        }
+    });
+};
+
+},{}],18:[function(require,module,exports){
+module.exports = ["$scope", "$controller", "OnTopCredit", "config", function($scope, $controller, OnTopCredit, config) {
+	'ngInject';
+	$controller('AbstractAdvanceListCtrl', {
+		$scope: $scope,
+		options: {
+			url: '/admin/ontopcredit',
+			service: OnTopCredit,
+			item: 'OnTopCredit',
+			order: 'UpdateDate',
+			id: 'OnTopCreditCardId',
+			actions: ['View', 'Delete'],
+			bulks: ['Delete', 'Show', 'Hide'],
+			filters: [
+				{ name: "All", value: 'All'},
+				{ name: "Approved", value: 'Approved'},
+				{ name: "Not Approved", value: 'NotApproved'},
+				{ name: "Wait For Approved", value: 'WaitForApproved'},
+				{ name: "Draft", value: 'Draft'}
+			]
+		}
+	});
+	$scope.statusDropdown = config.PRODUCT_STATUS;
+}];
+},{}],19:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "config", "util", function($scope, $controller, Product, config, util) {
 	'ngInject';
     $scope.asStatus = Product.getStatus;
@@ -1417,7 +1677,7 @@ module.exports = ["$scope", "$controller", "Product", "config", "util", function
 	$scope.params._filter = $scope.filterOptions[4].value;
 }];
 
-},{}],18:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "config", function($scope, $controller, Product, config) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
@@ -1441,7 +1701,7 @@ module.exports = ["$scope", "$controller", "Product", "config", function($scope,
 	});
 	$scope.statusDropdown = config.PRODUCT_STATUS;
 }];
-},{}],19:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminRoleService", "config", function($scope, $controller, AdminRoleService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -1457,7 +1717,7 @@ module.exports = ["$scope", "$controller", "AdminRoleService", "config", functio
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }]
-},{}],20:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminRoleService", function($scope, $controller, AdminRoleService) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -1472,7 +1732,7 @@ module.exports = ["$scope", "$controller", "AdminRoleService", function($scope, 
 		}
 	});
 }];
-},{}],21:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminShopService", "config", function($scope, $controller, AdminShopService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -1488,7 +1748,7 @@ module.exports = ["$scope", "$controller", "AdminShopService", "config", functio
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
-},{}],22:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "AdminShoptypeService", "config", "common", "Credential", "$rootScope", "$window", function($scope, $controller, $uibModal, AdminShopService, AdminShoptypeService, config, common, Credential, $rootScope, $window) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -1563,7 +1823,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
 
-},{}],23:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminShoptypeService", function($scope, $controller, AdminShoptypeService) {
 	'ngInject';
 	//Inherit from parent
@@ -1578,7 +1838,7 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", function($sco
 		}
 	});
 }];
-},{}],24:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminShoptypeService", function($scope, $controller, AdminShoptypeService) {
 	'ngInject';
 	//Inherit from parent
@@ -1635,7 +1895,7 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", function($sco
 		}
 	}, true);
 }];
-},{}],25:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 module.exports = ["storage", "Credential", "$window", function(storage, Credential, $window) {
 	'ngInject';
   var profile = storage.getCurrentUserProfile()
@@ -1645,7 +1905,7 @@ module.exports = ["storage", "Credential", "$window", function(storage, Credenti
   	$window.location.href = '/login';
   }
 }]
-},{}],26:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Category", "LocalCategoryService", "AttributeSetService", "NcAlert", "util", "config", function($scope, $rootScope, $uibModal, $timeout, common, Category, LocalCategoryService, AttributeSetService, NcAlert, util, config){
 	'ngInject';
 	$scope.modalScope = null;
@@ -1861,7 +2121,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 	};
 
 }];
-},{}],27:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
   module.exports = ["$scope", "Credential", "$window", "NcAlert", "$uibModal", "storage", "config", function ($scope, Credential, $window, NcAlert, $uibModal, storage, config) {
     'ngInject';
   $scope.uform = {};
@@ -1905,739 +2165,747 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
   }
 }];
 
-},{}],28:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 var angular = require('angular');
 
-module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product", "ImageService", "AttributeSet", "Brand", "Shop", "LocalCategoryService", "GlobalCategory", "Category", "VariantPair", "$rootScope", "$q", "KnownException", "NcAlert", "$productAdd", function($scope, $uibModal, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, VariantPair, $rootScope, $q, KnownException, NcAlert, $productAdd) {
-  'ngInject';
+module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product", "ImageService", "AttributeSet", "Brand", "Shop", "LocalCategoryService", "GlobalCategory", "Category", "VariantPair", "$rootScope", "$q", "KnownException", "NcAlert", "$productAdd", function ($scope, $uibModal, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, VariantPair, $rootScope, $q, KnownException, NcAlert, $productAdd) {
+    'ngInject';
 
-  $scope.alert = new NcAlert();
+    $scope.alert = new NcAlert();
 
-  var MAX_FILESIZE = 5000000; //5MB
-  var QUEUE_LIMIT = 20;
-  var QUEUE_LIMIT_360 = 60;
-  var MAX_VARIANT = 100;
-  $scope.image_alert = new NcAlert();
-  $scope.dataSet = {};
-  $scope.dataSet.AttributeSets = [{
-    AttributeSetId: null,
-    disabled: true,
-    AttributeSetNameEn: "No Attribute Set"
-  }];
-  $scope.dataSet.GlobalCategories = [];
-  $scope.dataSet.LocalCategories = [];
-  $scope.dataSet.Brands = [{
-    BrandId: null,
-    BrandNameEn: "Input brand by name or ID...",
-    disabled: true
-  }];
-  $scope.enableVariation = function(){
-    $scope.controlFlags.variation = 'enable';
-  };
-  $scope.dataSet.SearchTags = [];
-  $scope.dataSet.RelatedProducts = [];
-  $scope.dataSet.StockTypes = ['Stock', 'Pre-Order'];
-  $scope.dataSet.VariantDisplayOption = [{
-    text: 'Show as group of variants',
-    value: 'GROUP'
-  }, {
-    text: 'Show as individual product',
-    value: 'INDIVIDUAL'
-  }];
+    var MAX_FILESIZE = 5000000; //5MB
+    var QUEUE_LIMIT = 20;
+    var QUEUE_LIMIT_360 = 60;
+    var MAX_VARIANT = 100;
+    $scope.image_alert = new NcAlert();
+    $scope.dataSet = {};
+    $scope.dataSet.AttributeSets = [{
+        AttributeSetId: null,
+        disabled: true,
+        AttributeSetNameEn: "No Attribute Set"
+    }];
+    $scope.dataSet.GlobalCategories = [];
+    $scope.dataSet.LocalCategories = [];
+    $scope.dataSet.Brands = [{
+        BrandId: null,
+        BrandNameEn: "Input brand by name or ID...",
+        disabled: true
+    }];
+    $scope.enableVariation = function () {
+        $scope.controlFlags.variation = 'enable';
+    };
+    $scope.dataSet.SearchTags = [];
+    $scope.dataSet.RelatedProducts = [];
+    $scope.dataSet.StockTypes = ['Stock', 'Pre-Order'];
+    $scope.dataSet.VariantDisplayOption = [{
+        text: 'Show as group of variants',
+        value: 'GROUP'
+    }, {
+            text: 'Show as individual product',
+            value: 'INDIVIDUAL'
+        }];
 
-  var protoAttributeOptions = {
-    0: {
-      Attribute: false,
-      options: []
-    },
-    1: {
-      Attribute: false,
-      options: []
-    }
-  };
-  $scope.dataSet.attributeOptions = angular.copy(protoAttributeOptions);
-  $scope.controlFlags = {
-    variation: 'disable',
-    enableSections: {
-      embedVideo: false,
-      embed360: false
-    }
-  };
+    var protoAttributeOptions = {
+        0: {
+            Attribute: false,
+            options: []
+        },
+        1: {
+            Attribute: false,
+            options: []
+        }
+    };
+    $scope.dataSet.attributeOptions = angular.copy(protoAttributeOptions);
+    $scope.controlFlags = {
+        variation: 'disable',
+        enableSections: {
+            embedVideo: false,
+            embed360: false
+        }
+    };
 
-  $window.onbeforeunload = function(e) {
-    if (!$scope.addProductForm.$dirty) {
-      //only warn when form is dirty
-      return null;
-    }
-    var message = "Your changes will not be saved.",
-      e = e || window.event;
-    // For IE and Firefox
-    if (e) {
-      e.returnValue = message;
-    }
-
-    // For Safari
-    return message;
-  }; // end onbeforeunload
-
-  var onImageUploadFail = function(item, filter) {
-    $scope.image_alert.error(item.Message || 'Your image does not meet guideline.');
-  }
-
-  var onImageUploadSuccess = function() {
-    $scope.image_alert.close();
-  }
-
-  var onImageUploadQueueLimit = function() {}
-  $scope.asStatus = Product.getStatus;
-
-  var watchVariantChanges = function() {
-      $scope.$watch('dataSet.attributeOptions', function() {
-        var vHashSet = {};
-        var prevVariants = angular.copy($scope.formData.Variants);
-        prevVariants.forEach(function(elem, index) {
-          vHashSet[elem.text] = prevVariants[index];
-        });
-
-        var protoCheckState = {
-          uploadProductImages: false,
-          embedVideo: false,
-          description: false,
-          packageDetail: false
-        };
-
-        //Unset
-        prevVariants = undefined;
-
-        $scope.formData.Variants = [];
-        var trackVariant = new Set();
-        var expand = function(A0, B0) {
-          var AVId = null;
-          if (_.has(A0, 'AttributeValue')) {
-            AVId = A0.AttributeValue.AttributeValueId;
-            A = A0.AttributeValue.AttributeValueEn;
-          }
-
-          var BId = null;
-          var BVId = null;
-
-          if (angular.isDefined(B0)) {
-            BId = $scope.dataSet.attributeOptions[1].Attribute.AttributeId;
-            if (B0['AttributeValue']) {
-              B = B0.AttributeValue.AttributeValueEn;
-            }
-            if (_.has(B0, 'AttributeValue.AttributeValueId')) {
-              BVId = B0.AttributeValue.AttributeValueId;
-            }
-          } else {
-            B = ''
-            BId = null;
-          }
-
-          var kpair = new VariantPair({
-            AttributeId: $scope.dataSet.attributeOptions[0].Attribute.AttributeId,
-            AttributeValues: (!AVId ? [] : [{
-              AttributeValueId: AVId
-            }]),
-            ValueEn: A
-          }, {
-            AttributeId: BId,
-            AttributeValues: (!BVId ? [] : [{
-              AttributeValueId: BVId
-            }]),
-            ValueEn: B
-          });
-
-          //Copy default value over from main variant
-          kpair.ProductNameEn = $scope.formData.MasterVariant.ProductNameEn;
-          kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
-          kpair.Display = $scope.dataSet.VariantDisplayOption[0].value;
-          kpair.Visibility = true;
-          kpair.DimensionUnit = "MM";
-          kpair.WeightUnit = "G";
-          kpair.Sku = ($scope.formData.MasterVariant.Sku || "SKU") + "-" + (Number(($scope.formData.Variants || []).length) + 1);
-          kpair.OriginalPrice = $scope.formData.MasterVariant.OriginalPrice;
-          kpair.SalePrice = $scope.formData.MasterVariant.SalePrice;
-          kpair.Quantity = $scope.formData.MasterVariant.Quantity;
-          kpair.Length = $scope.formData.MasterVariant.Length;
-          kpair.Width = $scope.formData.MasterVariant.Width;
-          kpair.Height = $scope.formData.MasterVariant.Height;
-          kpair.Upc = $scope.formData.MasterVariant.Upc;
-          kpair.Weight = $scope.formData.MasterVariant.Weight;
-          kpair.DescriptionFullEn = $scope.formData.MasterVariant.DescriptionFullEn;
-          kpair.DescriptionFullTh = $scope.formData.MasterVariant.DescriptionFullTh;
-          kpair.DescriptionShortEn = $scope.formData.MasterVariant.DescriptionShortEn;
-          kpair.DescriptionShortTh = $scope.formData.MasterVariant.DescriptionShortTh;
-          kpair.Images = angular.copy($scope.formData.MasterImages);
-          kpair.VideoLinks = angular.copy($scope.formData.VideoLinks);
-          kpair.PrepareDay = $scope.formData.PrepareDay;
-          kpair.SEO = angular.copy($scope.formData.SEO || {});
-
-          kpair._override = angular.copy(protoCheckState);
-
-          if (kpair.text in vHashSet) {
-            //Replace with value from vHashSet
-
-            kpair = vHashSet[kpair.text];
-
-            kpair._override = angular.copy(protoCheckState);
-            kpair._override.uploadProductImages = ((kpair.Images || []).length > 0);
-            kpair._override.embedVideo = ((kpair.VideoLinks || []).length > 0);
-            kpair._override.description = (angular.isDefined(kpair.DescriptionFullEn) ||
-              angular.isDefined(kpair.DescriptionFullTh) ||
-              angular.isDefined(kpair.DescriptionShortEn) ||
-              angular.isDefined(kpair.DescriptionShortTh));
-
-            kpair._override.packageDetail = (angular.isDefined(kpair.Length) ||
-              angular.isDefined(kpair.Height) ||
-              angular.isDefined(kpair.Width) ||
-              angular.isDefined(kpair.Weight));
-
-          }
-
-          var hashNew = (util.variant.toString(kpair.FirstAttribute, kpair.SecondAttribute));
-          if(!trackVariant.has(hashNew)){
-            //Only push new variant if don't exist
-
-            $scope.formData.Variants.push(kpair);
-            trackVariant.add(hashNew);
-          }
-
+    $window.onbeforeunload = function (e) {
+        if (!$scope.addProductForm.$dirty) {
+            //only warn when form is dirty
+            return null;
+        }
+        var message = "Your changes will not be saved.",
+            e = e || window.event;
+        // For IE and Firefox
+        if (e) {
+            e.returnValue = message;
         }
 
+        // For Safari
+        return message;
+    }; // end onbeforeunload
 
-        console.log("Recalculating Factors", $scope.dataSet.attributeOptions);
-        //Multiply out unmultiplied options
-        if ($scope.dataSet.attributeOptions && Object.keys($scope.dataSet.attributeOptions).length > 0) {
-          for (var aKey in $scope.dataSet.attributeOptions[0].options) {
-            var A = $scope.dataSet.attributeOptions[0].options[aKey];
+    var onImageUploadFail = function (item, filter) {
+        $scope.image_alert.error(item.Message || 'Your image does not meet guideline.');
+    }
 
-            if (angular.isDefined($scope.dataSet.attributeOptions[1]['options']) && $scope.dataSet.attributeOptions[1].options.length == 0) {
-              console.log("expanding A" , A);
-              expand(A);
+    var onImageUploadSuccess = function () {
+        $scope.image_alert.close();
+    }
+
+    var onImageUploadQueueLimit = function () { }
+    $scope.asStatus = Product.getStatus;
+
+    var watchVariantChanges = function () {
+        $scope.$watch('dataSet.attributeOptions', function () {
+            var vHashSet = {};
+            var prevVariants = angular.copy($scope.formData.Variants);
+            prevVariants.forEach(function (elem, index) {
+                vHashSet[elem.text] = prevVariants[index];
+            });
+
+            var protoCheckState = {
+                uploadProductImages: false,
+                embedVideo: false,
+                description: false,
+                packageDetail: false
+            };
+
+            //Unset
+            prevVariants = undefined;
+
+            $scope.formData.Variants = [];
+            var trackVariant = new Set();
+            
+            var VARIANT_DUMMY_FACTOR = '';
+            var expand = function (A0, B0) {
+
+                var AVId = null;
+                var BVId = null;
+                var B = B0;
+                var A = A0;
+                
+                if (_.has(A0, 'AttributeValue.AttributeValueId')) {
+                    AVId = A0.AttributeValue.AttributeValueId;
+                    A = A0.AttributeValue.AttributeValueEn;
+                }
+
+                if (angular.isDefined(B0)) {
+                    if (_.has(B0, 'AttributeValue.AttributeValueId')) {
+                        BVId = B0.AttributeValue.AttributeValueId;
+                        B = B0.AttributeValue.AttributeValueEn;
+                    }
+                } else {
+                    //B is not defined
+                    B = VARIANT_DUMMY_FACTOR;
+                }
+
+                var kpair = {};
+                var firstAttribute = {
+                    AttributeId: $scope.dataSet.attributeOptions[0].Attribute.AttributeId,
+                    AttributeValues: (!AVId ? [] : [{
+                        AttributeValueId: AVId
+                    }]),
+                    ValueEn: A
+                };
+
+                var secondAttribute = {
+                    AttributeId: $scope.dataSet.attributeOptions[0].Attribute.AttributeId,
+                    AttributeValues: (!BVId ? [] : [{
+                        AttributeValueId: BVId
+                    }]),
+                    ValueEn: B
+                };
+
+
+                kpair.FirstAttribute = firstAttribute;
+                kpair.SecondAttribute = secondAttribute;
+                kpair.text = util.variant.toString(firstAttribute, secondAttribute);
+                //Copy default value over from main variant
+                kpair.ProductNameEn = $scope.formData.MasterVariant.ProductNameEn;
+                kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
+                kpair.Display = $scope.dataSet.VariantDisplayOption[0].value;
+                kpair.Visibility = true;
+                kpair.DimensionUnit = "MM";
+                kpair.WeightUnit = "G";
+                kpair.Sku = ($scope.formData.MasterVariant.Sku || "SKU") + "-" + (Number(($scope.formData.Variants || []).length) + 1);
+                kpair.OriginalPrice = $scope.formData.MasterVariant.OriginalPrice;
+                kpair.SalePrice = $scope.formData.MasterVariant.SalePrice;
+                kpair.Quantity = $scope.formData.MasterVariant.Quantity;
+                kpair.Length = $scope.formData.MasterVariant.Length;
+                kpair.Width = $scope.formData.MasterVariant.Width;
+                kpair.Height = $scope.formData.MasterVariant.Height;
+                kpair.Upc = $scope.formData.MasterVariant.Upc;
+                kpair.Weight = $scope.formData.MasterVariant.Weight;
+                kpair.DescriptionFullEn = $scope.formData.MasterVariant.DescriptionFullEn;
+                kpair.DescriptionFullTh = $scope.formData.MasterVariant.DescriptionFullTh;
+                kpair.DescriptionShortEn = $scope.formData.MasterVariant.DescriptionShortEn;
+                kpair.DescriptionShortTh = $scope.formData.MasterVariant.DescriptionShortTh;
+                kpair.Images = angular.copy($scope.formData.MasterImages);
+                kpair.VideoLinks = angular.copy($scope.formData.VideoLinks);
+                kpair.PrepareDay = $scope.formData.PrepareDay;
+                kpair.SEO = angular.copy($scope.formData.SEO || {});
+
+                //   kpair._override = angular.copy(protoCheckState);
+
+                if (kpair.text in vHashSet) {
+                    //Replace with value from vHashSet
+
+                    kpair = vHashSet[kpair.text];
+
+                    kpair._override = angular.copy(protoCheckState);
+                    kpair._override.uploadProductImages = ((kpair.Images || []).length > 0);
+                    kpair._override.embedVideo = ((kpair.VideoLinks || []).length > 0);
+                    kpair._override.description = (angular.isDefined(kpair.DescriptionFullEn) ||
+                        angular.isDefined(kpair.DescriptionFullTh) ||
+                        angular.isDefined(kpair.DescriptionShortEn) ||
+                        angular.isDefined(kpair.DescriptionShortTh));
+
+                    kpair._override.packageDetail = (angular.isDefined(kpair.Length) ||
+                        angular.isDefined(kpair.Height) ||
+                        angular.isDefined(kpair.Width) ||
+                        angular.isDefined(kpair.Weight));
+
+                }
+
+                var hashNew = (util.variant.toString(kpair.FirstAttribute, kpair.SecondAttribute));
+                if (!trackVariant.has(hashNew)) {
+                    //Only push new variant if don't exist
+
+                    $scope.formData.Variants.push(kpair);
+                    trackVariant.add(hashNew);
+                }
+
             }
 
-            for (var bKey in $scope.dataSet.attributeOptions[1].options) {
-              var B = $scope.dataSet.attributeOptions[1].options[bKey];
-              console.log("Expanding A,B", A,B);
-              expand(A, B);
-            }
-          }
-        }
 
-        $scope.formData.DefaultVariant = $scope.formData.Variants[0];
-      }, true); //end of $watch
+            console.log("Recalculating Factors", $scope.dataSet.attributeOptions);
+            //Multiply out unmultiplied options
+            if ($scope.dataSet.attributeOptions && Object.keys($scope.dataSet.attributeOptions).length > 0) {
+                for (var aKey in $scope.dataSet.attributeOptions[0].options) {
+                    var A = $scope.dataSet.attributeOptions[0].options[aKey];
+
+                    if (angular.isDefined($scope.dataSet.attributeOptions[1]['options']) && $scope.dataSet.attributeOptions[1].options.length == 0) {
+                        console.log("expanding A", A);
+                        expand(A);
+                    }
+
+                    for (var bKey in $scope.dataSet.attributeOptions[1].options) {
+                        var B = $scope.dataSet.attributeOptions[1].options[bKey];
+                        console.log("Expanding A,B", A, B);
+                        expand(A, B);
+                    }
+                }
+            }
+
+            $scope.formData.DefaultVariant = $scope.formData.Variants[0];
+        }, true); //end of $watch
 
     } //end of watch func
 
-  $scope.overview = {}
+    $scope.overview = {}
 
-  $scope.formData = {
-    Brand: {
-      id: null
-    },
-    MasterVariant: {
-      DimensionUnit: "MM",
-      WeightUnit: "G",
-      StockType: "Stock"
-    },
-    ShippingMethod: "1",
-    AttributeSet: {
-      AttributeSetTagMaps: []
-    },
-    RelatedProducts: [],
-    MasterImages: [],
-    MasterImages360: [],
-    VideoLinks: [],
-    Variants: [],
-    GlobalCategories: [null, null, null],
-    LocalCategories: [null, null, null],
-    SEO: {
-      ProductBoostingWeight: 5000
-    },
-    ControlFlags: [],
-    Keywords: []
-  };
+    $scope.formData = {
+        Brand: {
+            id: null
+        },
+        MasterVariant: {
+            DimensionUnit: "MM",
+            WeightUnit: "G",
+            StockType: "Stock"
+        },
+        ShippingMethod: "1",
+        AttributeSet: {
+            AttributeSetTagMaps: []
+        },
+        RelatedProducts: [],
+        MasterImages: [],
+        MasterImages360: [],
+        VideoLinks: [],
+        Variants: [],
+        GlobalCategories: [null, null, null],
+        LocalCategories: [null, null, null],
+        SEO: {
+            ProductBoostingWeight: 5000
+        },
+        ControlFlags: [],
+        Keywords: []
+    };
 
-  //Variation Factor (lhs) Indices are used as index
-  //for ng-repeat in variation tab
-  $scope.variationFactorIndices = {};
-  $scope.variationFactorIndices.iterator = [0];
-  $scope.variationFactorIndices.length = function() {
-    return $scope.variationFactorIndices.iterator.length;
-  }
-  $scope.variationFactorIndices.popSecond = function() {
-    $scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop();
-    $scope.dataSet.attributeOptions[1].options = [];
-    $scope.dataSet.attributeOptions[1].Attribute = null;
-  }
-  $scope.variationFactorIndices.pushSecond = function() {
-    $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1);
-  }
-
-  //TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
-  //$scope._attrEnTh = function (t) { return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
-  $scope.isFreeTextInput = util.isFreeTextDataType;
-  $scope.isListInput = util.isListDataType;
-  $scope.isHtmlInput = util.isHtmlDataType;
-
-  //CK editor options
-  $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
-
-  $scope.pageState = {
-    loading: {
-      state: true,
-      message: 'Loading..'
-    },
-    load: function(msg) {
-      $scope.pageState.loading.message = msg;
-      $scope.pageState.loading.state = true;
-    },
-    reset: function() {
-      $scope.alert.close();
-      $scope.pageState.loading.state = false;
+    //Variation Factor (lhs) Indices are used as index
+    //for ng-repeat in variation tab
+    $scope.variationFactorIndices = {};
+    $scope.variationFactorIndices.iterator = [0];
+    $scope.variationFactorIndices.length = function () {
+        return $scope.variationFactorIndices.iterator.length;
     }
-  };
-
-  $scope.breadcrumbs = {
-    globalCategory: null
-  };
-  $scope.preview = function() {
-    return console.log($scope.formData);
-  };
-
-  $scope.refreshRelatedProducts = function(q) {
-    return Product.getAll({
-      searchText: q,
-      pageSize: 4
-    }).then(function(ds) {
-      $scope.dataSet.RelatedProducts = ds.data;
-    });
-  };
-
-  $scope.refreshBrands = function(q) {
-    if (q == "" || !q || q == null) return;
-    $scope.dataSet.Brands = [{
-      BrandId: -1,
-      BrandNameEn: "Searching..",
-      disabled: true
-    }];
-
-    Brand.getAll({
-      pageSize: 10,
-      searchText: q
-    }).then(function(ds) {
-      $scope.dataSet.Brands = ds.data;
-    });
-  };
-
-  $scope.$watch('formData.MasterVariant.OriginalPrice+formData.MasterVariant.SalePrice', function() {
-    var form = $scope.addProductForm;
-    if (form.MasterVariant_SalePrice) form.MasterVariant_SalePrice.$setValidity("min", true);
-    if (!form.MasterVariant_SalePrice) return;
-    if ($scope.formData.MasterVariant.SalePrice == "") return;
-
-    if (Number($scope.formData.MasterVariant.SalePrice) >= Number($scope.formData.MasterVariant.OriginalPrice)) {
-      if (form.MasterVariant_SalePrice) form.MasterVariant_SalePrice.$setValidity("min", false);
-      form.MasterVariant_SalePrice.$error["min"] = "Sale Price must not exceed Original Price";
+    $scope.variationFactorIndices.popSecond = function () {
+        $scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop();
+        $scope.dataSet.attributeOptions[1].options = [];
+        $scope.dataSet.attributeOptions[1].Attribute = null;
     }
-  });
-
-  $scope.$watch('formData.ExpireDate', function() {
-    //TODO: refactor use nctemplate
-    var form = $scope.addProductForm;
-    if (form.EffectiveDate == null) {
-      return
+    $scope.variationFactorIndices.pushSecond = function () {
+        $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1);
     }
-    if (form.ExpireDate) form.ExpireDate.$setValidity("min", true);
-    if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
-      if (!form.ExpireDate) return;
-      if (form.ExpireDate) form.ExpireDate.$setValidity("min", false);
-      form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
-    }
-  });
 
-  var manualValidate = function(Status) {
-    var mat = [];
+    //TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
+    //$scope._attrEnTh = function (t) { return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
+    $scope.isFreeTextInput = util.isFreeTextDataType;
+    $scope.isListInput = util.isListDataType;
+    $scope.isHtmlInput = util.isHtmlDataType;
 
-    if (Status == 'WA') {
-      if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == "") {
-        mat.push("Description (Thai)");
-      }
+    //CK editor options
+    $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
 
-      if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == "") {
-        mat.push("Description (English)");
-      }
-
-      if (!$scope.formData.Brand.BrandId) {
-        mat.push("Brand");
-      }
-
-      if ($scope.formData.MasterImages.length == 0) {
-        mat.push("At least one image");
-      }
-
-      $scope.formData.Variants.forEach(function(variant){
-        if(variant.Images.length == 0){
-          mat.push("At least one image for variation " + "'" + variant.text + "'");
+    $scope.pageState = {
+        loading: {
+            state: true,
+            message: 'Loading..'
+        },
+        load: function (msg) {
+            $scope.pageState.loading.message = msg;
+            $scope.pageState.loading.state = true;
+        },
+        reset: function () {
+            $scope.alert.close();
+            $scope.pageState.loading.state = false;
         }
-      });
+    };
 
-    }
+    $scope.breadcrumbs = {
+        globalCategory: null
+    };
+    $scope.preview = function () {
+        return console.log($scope.formData);
+    };
 
-    var cnt = $scope.formData.Variants.reduce(function(total, x) {
-      return x.Visibility ? total + 1 : total
-    }, 0);
-
-    if (cnt == 0 && $scope.formData.Variants.length > 0) {
-      mat.push("At least one variant must be visible.");
-    }
-
-    if ($scope.formData.ExpireDate && $scope.formData.ExpireDate <= $scope.formData.EffectiveDate) {
-      mat.push("Effective date/time must come before expire date/time.");
-    }
-
-
-    return mat;
-  };
-
-  $scope.prePublishWA = function(){
-    var modalInstance = $uibModal.open({
-      animation: $scope.animationsEnabled,
-      templateUrl: 'product/modalConfirmPublish',
-      controller: ["$scope", "$uibModalInstance", "$timeout", function($scope, $uibModalInstance, $timeout) {
-        'ngInject';
-        $scope.no = function() {
-          $uibModalInstance.close('no');
-        }
-
-        $scope.yes = function() {
-          $uibModalInstance.close('yes');
-        }
-      }],
-      size: 'size-warning',
-      resolve: {
-
-      }
-    });
-    modalInstance.result.then(function(selectedItem) {
-      console.log(selectedItem);
-      if (selectedItem == 'yes') {
-        $scope.publish('WA');
-      }
-    }, function() {
-      console.log('Modal dismissed at: ' + new Date());
-    });
-
-  }
-  /*
-   *  Publish (both Draft and WA)
-   */
-  $scope.publish = function(Status) {
-
-    $scope.pageState.reset();
-    $scope.pageState.load('Validating..');
-
-
-    if($scope.controlFlags.variation == 'enable' && $scope.formData.Variants.length == 0){
-      $scope.controlFlags.variation == 'disable';
-    }
-
-    if($scope.controlFlags.variation == 'disable'){
-      $scope.formData.Variants = [];
-    }
-
-
-    $scope.onPublishing = (Status == "WA");
-    //On click validation
-    var validateMat = manualValidate(Status);
-    if (validateMat.length > 0) {
-      $scope.pageState.reset();
-      $scope.alert.error(validateMat.join(", "));
-      return;
-    }
-
-    if ($scope.addProductForm.$invalid) {
-      $scope.pageState.reset();
-      var requiredMissing = ('required' in $scope.addProductForm.$error);
-      if (Status == 'DF' && requiredMissing) {
-        var mfd = [];
-        if($scope.addProductForm.MasterVariant_ProductNameEn.$invalid){
-          mfd.push('Product Name (English)');
-        }
-        //Product Name (Thai), Product Name (English), and Sale Price,
-        if($scope.addProductForm.MasterVariant_ProductNameTh.$invalid){
-          mfd.push('Product Name (Thai)');
-        }
-
-        if($scope.addProductForm.MasterVariant_SalePrice.$invalid){
-          mfd.push('Sale Price');
-        }
-        mfd.push('Master Attributes');
-
-        $scope.alert.error("Unable to save. Please make sure that " + mfd.join(" and ") + " are filled correctly.");
-      } else if (Status == 'WA' && requiredMissing) {
-        $scope.alert.error("Unable to publish because you are missing required fields");
-      } else {
-        $scope.alert.error("Unable to save. Please make sure all fields have no error.");
-      }
-      return;
-    }
-
-    $scope.pageState.load('Publishing..');
-    console.log("Publishing with Status = ", Status);
-
-    var apiRequest = Product.serialize($scope.formData);
-    Product.publish(apiRequest, Status).then(function(res) {
-      $scope.pageState.reset();
-      if (res.ProductId) {
-        $scope.overview = res;
-        $scope.dataSet.attributeOptions = angular.copy(protoAttributeOptions); //will trigger watchvariantchange
-        var catId = Number(res.GlobalCategory);
-        $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function() {
-          $scope.formData.ProductId = Number(res.ProductId);
-          $scope.pageState.reset();
-          $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
-          ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
-          ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
+    $scope.refreshRelatedProducts = function (q) {
+        return Product.getAll({
+            searchText: q,
+            pageSize: 4
+        }).then(function (ds) {
+            $scope.dataSet.RelatedProducts = ds.data;
         });
-        $scope.addProductForm.$setPristine(true);
-      } else {
-        $scope.alert.error('Unable to save because ' + (res.message || res.Message));
-        $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-      }
-    }, function(er) {
-      $scope.pageState.reset();
-      $scope.alert.error('Unable to save because ' + (er.message || er.Message));
-      $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
+    };
+
+    $scope.refreshBrands = function (q) {
+        if (q == "" || !q || q == null) return;
+        $scope.dataSet.Brands = [{
+            BrandId: -1,
+            BrandNameEn: "Searching..",
+            disabled: true
+        }];
+
+        Brand.getAll({
+            pageSize: 10,
+            searchText: q
+        }).then(function (ds) {
+            $scope.dataSet.Brands = ds.data;
+        });
+    };
+
+    $scope.$watch('formData.MasterVariant.OriginalPrice+formData.MasterVariant.SalePrice', function () {
+        var form = $scope.addProductForm;
+        if (form.MasterVariant_SalePrice) form.MasterVariant_SalePrice.$setValidity("min", true);
+        if (!form.MasterVariant_SalePrice) return;
+        if ($scope.formData.MasterVariant.SalePrice == "") return;
+
+        if (Number($scope.formData.MasterVariant.SalePrice) >= Number($scope.formData.MasterVariant.OriginalPrice)) {
+            if (form.MasterVariant_SalePrice) form.MasterVariant_SalePrice.$setValidity("min", false);
+            form.MasterVariant_SalePrice.$error["min"] = "Sale Price must not exceed Original Price";
+        }
     });
 
-  };
+    $scope.$watch('formData.ExpireDate', function () {
+        //TODO: refactor use nctemplate
+        var form = $scope.addProductForm;
+        if (form.EffectiveDate == null) {
+            return
+        }
+        if (form.ExpireDate) form.ExpireDate.$setValidity("min", true);
+        if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
+            if (!form.ExpireDate) return;
+            if (form.ExpireDate) form.ExpireDate.$setValidity("min", false);
+            form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
+        }
+    });
 
-  $scope.uploader = ImageService.getUploader('/ProductImages', {
-    queueLimit: QUEUE_LIMIT
-  });
+    var manualValidate = function (Status) {
+        var mat = [];
 
-  $scope.uploader.filters.push({
-    'name': 'enforceMaxFileSize',
-    'fn': function(item) {
-      return item.size <= MAX_FILESIZE;
-    }
-  });
+        if (Status == 'WA') {
+            if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == "") {
+                mat.push("Description (Thai)");
+            }
 
-  $scope.uploader360 = ImageService.getUploader('/ProductImages', {
-    queueLimit: QUEUE_LIMIT_360
-  });
+            if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == "") {
+                mat.push("Description (English)");
+            }
 
-  $scope.init = function(viewBag) {
+            if (!$scope.formData.Brand.BrandId) {
+                mat.push("Brand");
+            }
 
-    if (!angular.isObject(viewBag)) throw new KnownException("View bag is corrupted");
+            if ($scope.formData.MasterImages.length == 0) {
+                mat.push("At least one image");
+            }
 
-    var shopId = $rootScope.Profile.Shop.ShopId; //TODO: Get from user
-    var _editMode = ("productId" in viewBag)
-    for (var page in tabPage) {
-      tabPage[page].angular();
-    }
+            $scope.formData.Variants.forEach(function (variant) {
+                if (variant.Images.length == 0) {
+                    mat.push("At least one image for variation " + "'" + variant.text + "'");
+                }
+            });
 
-    if (_editMode) {
-      var productId = viewBag.productId;
-      $scope.pageState.load('Loading Product..');
+        }
 
-      Product.getOne(productId)
-        .then(function(inverseFormData) {
-          $scope.overview = angular.copy(inverseFormData);
-          var catId = Number(inverseFormData.GlobalCategory);
-          $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs, $scope.controlFlags,
-            $scope.variationFactorIndices, inverseFormData).then(function() {
-            $scope.formData.ProductId = Number(productId);
-            $scope.pageState.reset();
-            watchVariantChanges();
-            ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
-            ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
-          });
-        }, function(error) {
-          throw new KnownException("Unable to fetch product with id " + productId);
+        var cnt = $scope.formData.Variants.reduce(function (total, x) {
+            return x.Visibility ? total + 1 : total
+        }, 0);
+
+        if (cnt == 0 && $scope.formData.Variants.length > 0) {
+            mat.push("At least one variant must be visible.");
+        }
+
+        if ($scope.formData.ExpireDate && $scope.formData.ExpireDate <= $scope.formData.EffectiveDate) {
+            mat.push("Effective date/time must come before expire date/time.");
+        }
+
+
+        return mat;
+    };
+
+    $scope.prePublishWA = function () {
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'product/modalConfirmPublish',
+            controller: ["$scope", "$uibModalInstance", "$timeout", function ($scope, $uibModalInstance, $timeout) {
+                'ngInject';
+                $scope.no = function () {
+                    $uibModalInstance.close('no');
+                }
+
+                $scope.yes = function () {
+                    $uibModalInstance.close('yes');
+                }
+            }],
+            size: 'size-warning',
+            resolve: {
+
+            }
+        });
+        modalInstance.result.then(function (selectedItem) {
+            console.log(selectedItem);
+            if (selectedItem == 'yes') {
+                $scope.publish('WA');
+            }
+        }, function () {
+            console.log('Modal dismissed at: ' + new Date());
         });
 
-    } else if ('catId' in viewBag) {
-      if(viewBag.catId == null) window.location.href = "/products/select";
+    }
+    /*
+     *  Publish (both Draft and WA)
+     */
+    $scope.publish = function (Status) {
 
-      var catId = Number(viewBag.catId);
-      $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs,
-        $scope.controlFlags, $scope.variationFactorIndices).then(function() {
         $scope.pageState.reset();
-        watchVariantChanges();
-        ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
-        ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
-      });
-    } else {
+        $scope.pageState.load('Validating..');
 
-      throw new KnownException("Invalid mode, viewBag garbage");
-    }
 
-    //Load Local Cat
-    LocalCategoryService.list().then(function(data) {
-      $scope.dataSet.LocalCategories = Category.transformNestedSetToUITree(data);
-    });
-  }
+        if ($scope.controlFlags.variation == 'enable' && $scope.formData.Variants.length == 0) {
+            $scope.controlFlags.variation == 'disable';
+        }
 
-  var tabPage = {};
+        if ($scope.controlFlags.variation == 'disable') {
+            $scope.formData.Variants = [];
+        }
 
-  tabPage.images = {
-    angular: function() {
 
-      /**
-       * IMAGE THUMBNAIL EVENTS
-       */
-      $scope.$on('left', function(evt, item, array, index) {
-        var to = index - 1;
-        if (to < 0) to = array.length - 1;
+        $scope.onPublishing = (Status == "WA");
+        //On click validation
+        var validateMat = manualValidate(Status);
+        if (validateMat.length > 0) {
+            $scope.pageState.reset();
+            $scope.alert.error(validateMat.join(", "));
+            return;
+        }
 
-        var tmp = array[to];
-        array[to] = item;
-        array[index] = tmp;
-      });
-      $scope.$on('right', function(evt, item, array, index) {
-        var to = index + 1;
-        if (to >= array.length) to = 0;
+        if ($scope.addProductForm.$invalid) {
+            $scope.pageState.reset();
+            var requiredMissing = ('required' in $scope.addProductForm.$error);
+            if (Status == 'DF' && requiredMissing) {
+                var mfd = [];
+                if ($scope.addProductForm.MasterVariant_ProductNameEn.$invalid) {
+                    mfd.push('Product Name (English)');
+                }
+                //Product Name (Thai), Product Name (English), and Sale Price,
+                if ($scope.addProductForm.MasterVariant_ProductNameTh.$invalid) {
+                    mfd.push('Product Name (Thai)');
+                }
 
-        var tmp = array[to];
-        array[to] = item;
-        array[index] = tmp;
-      });
-      $scope.$on('delete', function(evt, item, array, index) {
-        array.splice(index, 1);
-      });
-      $scope.$on('zoom', function(evt, item, array, index) {
-        //Should use angular way, but ok whatever
-        $('#product-image-zoom img').attr('src', item.url);
-        $('#product-image-zoom').modal('show');
-      });
-    }
-  };
+                if ($scope.addProductForm.MasterVariant_SalePrice.$invalid) {
+                    mfd.push('Sale Price');
+                }
+                mfd.push('Master Attributes');
 
-  tabPage.category = {
-    angular: function() {
-      //For viewing only
-      $scope.viewCategoryColumns = [];
-      $scope.viewCategorySelected = null;
-      $scope.viewCategoryIndex = 0;
-      $scope.selectCategory = angular.noop;
+                $scope.alert.error("Unable to save. Please make sure that " + mfd.join(" and ") + " are filled correctly.");
+            } else if (Status == 'WA' && requiredMissing) {
+                $scope.alert.error("Unable to publish because you are missing required fields");
+            } else {
+                $scope.alert.error("Unable to save. Please make sure all fields have no error.");
+            }
+            return;
+        }
 
-      //Events
-      $scope.$on('openGlobalCat', function(evt, item, indx) {
-        console.log('openGloCat', item, $scope.dataSet.GlobalCategories);
-        $scope.viewCategoryColumns = Category.createColumns(item, $scope.dataSet.GlobalCategories);
-        $scope.viewCategorySelected = item;
-        $scope.viewCategoryIndex = indx;
-        $scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function(selectedItem) {
-          $scope.viewCategorySelected = selectedItem;
+        $scope.pageState.load('Publishing..');
+        console.log("Publishing with Status = ", Status);
+
+        var apiRequest = Product.serialize($scope.formData);
+        Product.publish(apiRequest, Status).then(function (res) {
+            $scope.pageState.reset();
+            if (res.ProductId) {
+                $scope.overview = res;
+                $scope.dataSet.attributeOptions = angular.copy(protoAttributeOptions); //will trigger watchvariantchange
+                var catId = Number(res.GlobalCategory);
+                $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function () {
+                    $scope.formData.ProductId = Number(res.ProductId);
+                    $scope.pageState.reset();
+                    $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
+                    ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
+                    ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
+                });
+                $scope.addProductForm.$setPristine(true);
+            } else {
+                $scope.alert.error('Unable to save because ' + (res.message || res.Message));
+                $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
+            }
+        }, function (er) {
+            $scope.pageState.reset();
+            $scope.alert.error('Unable to save because ' + (er.message || er.Message));
+            $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
         });
-      });
-      $scope.$on('deleteGlobalCat', function(evt, indx) {
-        $scope.formData.GlobalCategories[indx] = null;
-      });
-      $scope.$on('selectGlobalCat', function(evt, row, indx, parentIndx) {
-        $scope.selectCategory(row, indx, parentIndx);
-      });
-      $scope.$on('saveGlobalCat', function(evt) {
-        $scope.formData.GlobalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected;
-      });
 
-      //Events
-      $scope.$on('openLocalCat', function(evt, item, indx) {
-        console.log(item, $scope.dataSet.LocalCategories);
-        $scope.viewCategoryColumns = Category.createColumns(item, $scope.dataSet.LocalCategories);
-        $scope.viewCategorySelected = item;
-        $scope.viewCategoryIndex = indx;
-        $scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function(selectedItem) {
-          $scope.viewCategorySelected = selectedItem;
-        });
-      });
-      $scope.$on('deleteLocalCat', function(evt, indx) {
-        $scope.formData.LocalCategories[indx] = null;
-      });
-      $scope.$on('selectLocalCat', function(evt, row, indx, parentIndx) {
-        $scope.selectCategory(row, indx, parentIndx);
-      });
-      $scope.$on('saveLocalCat', function(evt) {
-        $scope.formData.LocalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected;
-      });
-    }
-  }
+    };
 
-  tabPage.variation = {
-
-    angular: function() {
-      /**
-       * This part handles when user click on More Detail and open pair form
-       */
-
-      $scope.uploaderModal = ImageService.getUploader('/ProductImages', {
+    $scope.uploader = ImageService.getUploader('/ProductImages', {
         queueLimit: QUEUE_LIMIT
-      });
+    });
 
-      $scope.uploaderModal.filters.push({
+    $scope.uploader.filters.push({
         'name': 'enforceMaxFileSize',
-        'fn': function(item) {
-          return item.size <= MAX_FILESIZE;
+        'fn': function (item) {
+            return item.size <= MAX_FILESIZE;
         }
-      });
+    });
 
-      $scope.$on('openPairModal', function(evt, pair, array, index) {
-        //Define if not defined
+    $scope.uploader360 = ImageService.getUploader('/ProductImages', {
+        queueLimit: QUEUE_LIMIT_360
+    });
 
-        if (angular.isUndefined(pair.Images)) {
-          pair.Images = [];
+    $scope.init = function (viewBag) {
+
+        if (!angular.isObject(viewBag)) throw new KnownException("View bag is corrupted");
+
+        var shopId = $rootScope.Profile.Shop.ShopId; //TODO: Get from user
+        var _editMode = ("productId" in viewBag)
+        for (var page in tabPage) {
+            tabPage[page].angular();
         }
-        if (angular.isUndefined(pair.queue)) {
-          pair.queue = [];
+
+        if (_editMode) {
+            var productId = viewBag.productId;
+            $scope.pageState.load('Loading Product..');
+
+            Product.getOne(productId)
+                .then(function (inverseFormData) {
+                    $scope.overview = angular.copy(inverseFormData);
+                    var catId = Number(inverseFormData.GlobalCategory);
+                    $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs, $scope.controlFlags,
+                        $scope.variationFactorIndices, inverseFormData).then(function () {
+                            $scope.formData.ProductId = Number(productId);
+                            $scope.pageState.reset();
+                            watchVariantChanges();
+                            ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
+                            ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
+                        });
+                }, function (error) {
+                    throw new KnownException("Unable to fetch product with id " + productId);
+                });
+
+        } else if ('catId' in viewBag) {
+            if (viewBag.catId == null) window.location.href = "/products/select";
+
+            var catId = Number(viewBag.catId);
+            $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs,
+                $scope.controlFlags, $scope.variationFactorIndices).then(function () {
+                    $scope.pageState.reset();
+                    watchVariantChanges();
+                    ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
+                    ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
+                });
+        } else {
+
+            throw new KnownException("Invalid mode, viewBag garbage");
         }
-        //Modal target (for viewing pair)
-        $scope.pairModal = angular.copy(pair);
-        $scope.pairModal.alert = new NcAlert();
-        $scope.pairIndex = index;
-        $scope.uploaderModal.queue = $scope.pairModal.queue;
-        ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
-      });
 
-      $scope.$on('savePairModal', function(evt) {
-        console.log("adform", $scope.addProductVariantForm.$invalid);
-        //
-        // if (!$scope.pairModal._override.uploadProductImages) {
-        //   $scope.pairModal.Images = [];
-        // }
-        //
-        // if (!$scope.pairModal._override.embedVideo) {
-        //   $scope.pairModal.VideoLinks = [];
-        // }
-        //
-        // if (!$scope.pairModal._override.description) {
-        //   $scope.pairModal.DescriptionFullEn = null;
-        //   $scope.pairModal.DescriptionFullTh = null;
-        //   $scope.pairModal.ShortDescriptionEn = null;
-        //   $scope.pairModal.ShortDescriptionTh = null;
-        // }
-        //
-        // if (!$scope.pairModal._override.packageDetail) {
-        //   $scope.pairModal.Length = null;
-        //   $scope.pairModal.Height = null;
-        //   $scope.pairModal.Width = null;
-        //   $scope.pairModal.Length = null;
-        //
-        // }
-
-        $scope.formData.Variants[$scope.pairIndex] = $scope.pairModal;
-      });
+        //Load Local Cat
+        LocalCategoryService.list().then(function (data) {
+            $scope.dataSet.LocalCategories = Category.transformNestedSetToUITree(data);
+        });
     }
-  };
+
+    var tabPage = {};
+
+    tabPage.images = {
+        angular: function () {
+
+            /**
+             * IMAGE THUMBNAIL EVENTS
+             */
+            $scope.$on('left', function (evt, item, array, index) {
+                var to = index - 1;
+                if (to < 0) to = array.length - 1;
+
+                var tmp = array[to];
+                array[to] = item;
+                array[index] = tmp;
+            });
+            $scope.$on('right', function (evt, item, array, index) {
+                var to = index + 1;
+                if (to >= array.length) to = 0;
+
+                var tmp = array[to];
+                array[to] = item;
+                array[index] = tmp;
+            });
+            $scope.$on('delete', function (evt, item, array, index) {
+                array.splice(index, 1);
+            });
+            $scope.$on('zoom', function (evt, item, array, index) {
+                //Should use angular way, but ok whatever
+                $('#product-image-zoom img').attr('src', item.url);
+                $('#product-image-zoom').modal('show');
+            });
+        }
+    };
+
+    tabPage.category = {
+        angular: function () {
+            //For viewing only
+            $scope.viewCategoryColumns = [];
+            $scope.viewCategorySelected = null;
+            $scope.viewCategoryIndex = 0;
+            $scope.selectCategory = angular.noop;
+
+            //Events
+            $scope.$on('openGlobalCat', function (evt, item, indx) {
+                console.log('openGloCat', item, $scope.dataSet.GlobalCategories);
+                $scope.viewCategoryColumns = Category.createColumns(item, $scope.dataSet.GlobalCategories);
+                $scope.viewCategorySelected = item;
+                $scope.viewCategoryIndex = indx;
+                $scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function (selectedItem) {
+                    $scope.viewCategorySelected = selectedItem;
+                });
+            });
+            $scope.$on('deleteGlobalCat', function (evt, indx) {
+                $scope.formData.GlobalCategories[indx] = null;
+            });
+            $scope.$on('selectGlobalCat', function (evt, row, indx, parentIndx) {
+                $scope.selectCategory(row, indx, parentIndx);
+            });
+            $scope.$on('saveGlobalCat', function (evt) {
+                $scope.formData.GlobalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected;
+            });
+
+            //Events
+            $scope.$on('openLocalCat', function (evt, item, indx) {
+                console.log(item, $scope.dataSet.LocalCategories);
+                $scope.viewCategoryColumns = Category.createColumns(item, $scope.dataSet.LocalCategories);
+                $scope.viewCategorySelected = item;
+                $scope.viewCategoryIndex = indx;
+                $scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function (selectedItem) {
+                    $scope.viewCategorySelected = selectedItem;
+                });
+            });
+            $scope.$on('deleteLocalCat', function (evt, indx) {
+                $scope.formData.LocalCategories[indx] = null;
+            });
+            $scope.$on('selectLocalCat', function (evt, row, indx, parentIndx) {
+                $scope.selectCategory(row, indx, parentIndx);
+            });
+            $scope.$on('saveLocalCat', function (evt) {
+                $scope.formData.LocalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected;
+            });
+        }
+    }
+
+    tabPage.variation = {
+
+        angular: function () {
+            /**
+             * This part handles when user click on More Detail and open pair form
+             */
+
+            $scope.uploaderModal = ImageService.getUploader('/ProductImages', {
+                queueLimit: QUEUE_LIMIT
+            });
+
+            $scope.uploaderModal.filters.push({
+                'name': 'enforceMaxFileSize',
+                'fn': function (item) {
+                    return item.size <= MAX_FILESIZE;
+                }
+            });
+
+            $scope.$on('openPairModal', function (evt, pair, array, index) {
+                //Define if not defined
+
+                if (angular.isUndefined(pair.Images)) {
+                    pair.Images = [];
+                }
+                if (angular.isUndefined(pair.queue)) {
+                    pair.queue = [];
+                }
+                //Modal target (for viewing pair)
+                $scope.pairModal = angular.copy(pair);
+                $scope.pairModal.alert = new NcAlert();
+                $scope.pairIndex = index;
+                $scope.uploaderModal.queue = $scope.pairModal.queue;
+                ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
+            });
+
+            $scope.$on('savePairModal', function (evt) {
+                console.log("adform", $scope.addProductVariantForm.$invalid);
+                //
+                // if (!$scope.pairModal._override.uploadProductImages) {
+                //   $scope.pairModal.Images = [];
+                // }
+                //
+                // if (!$scope.pairModal._override.embedVideo) {
+                //   $scope.pairModal.VideoLinks = [];
+                // }
+                //
+                // if (!$scope.pairModal._override.description) {
+                //   $scope.pairModal.DescriptionFullEn = null;
+                //   $scope.pairModal.DescriptionFullTh = null;
+                //   $scope.pairModal.ShortDescriptionEn = null;
+                //   $scope.pairModal.ShortDescriptionTh = null;
+                // }
+                //
+                // if (!$scope.pairModal._override.packageDetail) {
+                //   $scope.pairModal.Length = null;
+                //   $scope.pairModal.Height = null;
+                //   $scope.pairModal.Width = null;
+                //   $scope.pairModal.Length = null;
+                //
+                // }
+
+                $scope.formData.Variants[$scope.pairIndex] = $scope.pairModal;
+            });
+        }
+    };
 
 
 
 
 }];
 
-},{"angular":159}],29:[function(require,module,exports){
+},{"angular":164}],31:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Category, GlobalCategory) {
@@ -2661,7 +2929,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 	});
 }];
 
-},{"angular":159}],30:[function(require,module,exports){
+},{"angular":164}],32:[function(require,module,exports){
 module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product, AttributeSet) {
   $scope.ProductList = [];
   $scope.SELECT_ALL = false;
@@ -2804,7 +3072,7 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
   };
 }];
 
-},{}],31:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 //Not Used
 module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader', function ($scope, Product, util, Alert, $window, FileUploader) {
     $scope.productList = [];
@@ -2814,7 +3082,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader
     });
 }];
 
-},{}],32:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$window", "FileUploader", "ImageService", "config", "common", function ($scope, $controller, Product, util, NcAlert, $window, FileUploader, ImageService, config, common) {
     'ngInject';
 	$controller('AbstractListCtrl', {
@@ -3021,7 +3289,7 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
     }, true);
 }];
 
-},{}],33:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "GlobalCategoryService", "LocalCategoryService", "FileService", "Product", "GlobalCategoryService", "Category", "AttributeSet", "storage", "config", "$timeout", function($scope, $window, NcAlert, $uibModal, BrandService, GlobalCategoryService, LocalCategoryService, FileService, Product, GlobalCategoryService, Category, AttributeSet, storage, config, $timeout) {
   'ngInject';
   //Select Global Category
@@ -3251,7 +3519,7 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
       });
 }];
 
-},{}],34:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "util", "Alert", "$window", "$rootScope", "config", "storage", function ($scope, $controller, Product, util, Alert, $window, $rootScope, config, storage) {
     'ngInject';
     $controller('AbstractAdvanceListCtrl', {
@@ -3378,7 +3646,7 @@ module.exports = ["$scope", "$controller", "Product", "util", "Alert", "$window"
     }
 }];
 
-},{}],35:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 module.exports = ['$scope', 'LocalCategory', function($scope, LocalCategory) {
 	//UI binding variables
 	$scope.showOnOffStatus = true;
@@ -3452,7 +3720,7 @@ module.exports = ['$scope', 'LocalCategory', function($scope, LocalCategory) {
 		});
 	});
 }];
-},{}],36:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$uibModal", "util", "common", function($scope, $controller, ProductReviewService, config, $uibModal, util, common) {
 	'ngInject';
 	//Inherit from parent
@@ -3528,7 +3796,7 @@ module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$u
 	$scope.reviewButton = config.PRODUCT_REVIEW_BUTTON;
 }];
 
-},{}],37:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential", "route", "config", function($rootScope, $uibModal, $window, storage, Credential, route, config) {
 	'ngInject';
 	//Root controller of the application
@@ -3683,7 +3951,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
     });
   };
 }];
-},{}],38:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerAccountService", "config", function($scope, $controller, SellerAccountService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -3699,7 +3967,7 @@ module.exports = ["$scope", "$controller", "SellerAccountService", "config", fun
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
-},{}],39:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 module.exports = function($scope, $controller, SellerAccountService, SellerRoleService) {
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -3724,7 +3992,7 @@ module.exports = function($scope, $controller, SellerAccountService, SellerRoleS
 	});
 }
 
-},{}],40:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "$window", "InventoryService", "config", "common", function($scope, $controller, $window, InventoryService, config, common) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
@@ -3799,7 +4067,7 @@ module.exports = ["$scope", "$controller", "$window", "InventoryService", "confi
 	$scope.advanceSearchOptions.Admin = false;
 	$scope.statusDropdown = config.INVENTORY_STATUS;
 }];
-},{}],41:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerRoleService", "config", function($scope, $controller, SellerRoleService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -3815,7 +4083,7 @@ module.exports = ["$scope", "$controller", "SellerRoleService", "config", functi
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
-},{}],42:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerRoleService", function($scope, $controller, SellerRoleService) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -3894,7 +4162,7 @@ module.exports = ["$scope", "$controller", "SellerRoleService", function($scope,
 		}
 	}, true);
 }];
-},{}],43:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 module.exports = function($rootScope, $scope, Shop, ImageService, NcAlert, config, storage) {
   $scope.alert = new NcAlert();
 
@@ -3963,7 +4231,7 @@ module.exports = function($rootScope, $scope, Shop, ImageService, NcAlert, confi
   };
 };
 
-},{}],44:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 module.exports = function($scope, Attribute, util, GlobalCategoryService, Category) {
 		$scope.filterOptions = [
 			{ name: "All", value: 'All'},
@@ -4049,7 +4317,7 @@ module.exports = function($scope, Attribute, util, GlobalCategoryService, Catego
 				$scope.treeSelectTree = Category.transformNestedSetToUITree(data);
 			});
 };
-},{}],45:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 module.exports = ["$templateCache", "$filter", function($templateCache, $filter) {
 	'ngInject';
 	return {
@@ -4191,7 +4459,7 @@ module.exports = ["$templateCache", "$filter", function($templateCache, $filter)
 		}]
 	};
 }];
-},{}],46:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 module.exports = [function () {
     return {
 	priority: 1010,
@@ -4215,7 +4483,7 @@ module.exports = [function () {
     };
 }];
 
-},{}],47:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return {
@@ -4248,7 +4516,7 @@ module.exports = function() {
 		}
 	}
 }
-},{}],48:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 var angular = require('angular');
 module.exports = [function() {
 	'use strict';
@@ -4270,7 +4538,7 @@ module.exports = [function() {
 		}
 	};
 }];
-},{"angular":159}],49:[function(require,module,exports){
+},{"angular":164}],51:[function(require,module,exports){
 module.exports = ["$interpolate", function($interpolate) {
 	'ngInject';
 	return {
@@ -4292,7 +4560,7 @@ module.exports = ["$interpolate", function($interpolate) {
 		}
 	}
 }]
-},{}],50:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return {
@@ -4317,7 +4585,7 @@ module.exports = function() {
 		}
 	}
 }
-},{}],51:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return {
@@ -4342,7 +4610,7 @@ module.exports = function() {
 		}
 	}
 }
-},{}],52:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 /*jslint browser: true, plusplus: true, indent: 2 */
 
 // This will be removed by uglify, along with the DEBUG code
@@ -4637,7 +4905,7 @@ angular.module('ngPatternRestrict', [])
       }
     };
   }]);
-},{}],53:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 module.exports = ["$rootScope", "$parse", "$animate", function($rootScope, $parse, $animate) {
   'ngInject';
   return {
@@ -4703,7 +4971,7 @@ module.exports = ["$rootScope", "$parse", "$animate", function($rootScope, $pars
     }
   }
 }];
-},{}],54:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 module.exports = function() {
     'ngInject';
     return {
@@ -4720,7 +4988,7 @@ module.exports = function() {
         }
     };
 };
-},{}],55:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$templateCache', '$compile', '$templateOptionsCache', 'KnownException', function ($templateCache, $compile, $templateOptionsCache, KnownException) {
     var originalAttr = {};
@@ -4748,7 +5016,7 @@ module.exports = ['$templateCache', '$compile', '$templateOptionsCache', 'KnownE
         }
     };
 }];
-},{"angular":159}],56:[function(require,module,exports){
+},{"angular":164}],58:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$document', '$window', function($document, $window) {
 	$window._globalPopoverAny = null;
@@ -4778,7 +5046,7 @@ module.exports = ['$document', '$window', function($document, $window) {
 		}
 	};
 }];
-},{"angular":159}],57:[function(require,module,exports){
+},{"angular":164}],59:[function(require,module,exports){
 module.exports = [function() {
   return function(input, scope) {
     if (input!=null)
@@ -4786,7 +5054,7 @@ module.exports = [function() {
     return input.substring(0,1).toUpperCase()+input.substring(1);
   }
 }];
-},{}],58:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = [function() {
@@ -4821,7 +5089,7 @@ module.exports = [function() {
      });
   }
 }];
-},{"angular":159}],59:[function(require,module,exports){
+},{"angular":164}],61:[function(require,module,exports){
 module.exports = [function() {
   
 var search = function(catId, tmp) {
@@ -4890,14 +5158,14 @@ return function(arr, other, include) {
     return arr;
   }
 }];
-},{}],60:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 module.exports = [function(){
    return function(data) {
 	   if (!data) return data;
 	   return data.replace(/\n\r?/g, '<br />');
  };
 }]
-},{}],61:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 module.exports = function() {
 	return function(input) {
 		var result = '<ul>';
@@ -4914,7 +5182,7 @@ module.exports = function() {
 		return result;
 	}
 };
-},{}],62:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return function(str, num) {
@@ -4935,7 +5203,7 @@ module.exports = function() {
 		return result;
 	}
 };
-},{}],63:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = [function() {
@@ -4951,7 +5219,7 @@ module.exports = [function() {
   	return input;
   }
 }];
-},{"angular":159}],64:[function(require,module,exports){
+},{"angular":164}],66:[function(require,module,exports){
 /*
  * Get slice or subarray of array
  */
@@ -4967,7 +5235,7 @@ module.exports = [function() {
     return _.slice(arr, from, to);
   }
 }];
-},{}],65:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 module.exports = [function () {
         return function (text, length, end) {
             if (isNaN(length))
@@ -4985,7 +5253,7 @@ module.exports = [function () {
 
         };
 }];
-},{}],66:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 var angular = require('angular');
 
 /*
@@ -5013,7 +5281,7 @@ module.exports = [function() {
      return i;
   }
 }];
-},{"angular":159}],67:[function(require,module,exports){
+},{"angular":164}],69:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return function(value) {
@@ -5022,7 +5290,7 @@ module.exports = function() {
 		}), ' / ');
 	};
 };
-},{}],68:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 module.exports = [function () {
     'use strict';
     var service = {};
@@ -5041,7 +5309,7 @@ module.exports = [function () {
     };
     return service;
 }];
-},{}],69:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http, $q, storage, config, $window) {
     'use strict';
         var service = {};
@@ -5193,7 +5461,7 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
         return service;
 }];
 
-},{}],70:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 module.exports = [function () {
     'use strict';
     var service = {};
@@ -5306,7 +5574,7 @@ module.exports = [function () {
     return service;
 }];
 
-},{}],71:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$interpolate', 'KnownException', function (storage, config, common, $window, $rootScope, $interpolate, KnownException) {
@@ -5697,7 +5965,7 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     return service;
 }];
 
-},{"angular":159}],72:[function(require,module,exports){
+},{"angular":164}],74:[function(require,module,exports){
 module.exports = ['util', function (util) {
 	
 	//Struct for Variant Pair
@@ -5711,7 +5979,7 @@ module.exports = ['util', function (util) {
 	return VariantPair;
 }];
 
-},{}],73:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncAction', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
@@ -5767,7 +6035,7 @@ angular.module('nc')
 		}
 	}]);
 
-},{}],74:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncAdvanceSearch', ["$templateCache", "$timeout", "$uibModal", function($templateCache, $timeout, $uibModal) {
 		return {
@@ -5829,7 +6097,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],75:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncAlert', function() {
 		this.defaultErrorMessage = 'Error';
@@ -5886,7 +6154,7 @@ angular.module('nc')
 			this.message = '';
 		};
 	}]);
-},{}],76:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncBindCompile', ["$compile", "$templateCache", function($compile, $templateCache) {
        return {
@@ -5915,7 +6183,7 @@ angular.module('nc')
             }
         };
     }]);
-},{}],77:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncBreadcrumbSelect', ["$templateCache", "$filter", "$timeout", function($templateCache, $filter, $timeout) {
 		var _globalOptions = {};
@@ -5992,7 +6260,7 @@ angular.module('nc')
 			}
 		};
 	}])
-},{}],78:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncBulk', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
@@ -6145,7 +6413,7 @@ angular.module('nc')
 			}
 		}
 	}])
-},{}],79:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncDateRange', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse) {
@@ -6196,7 +6464,7 @@ angular.module('nc')
             };
         }]);
 
-},{"angular":159}],80:[function(require,module,exports){
+},{"angular":164}],82:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEmpty', ["$templateCache", function($templateCache) {
 		return {
@@ -6210,7 +6478,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],81:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEye', ["$templateCache", function($templateCache) {
 		return {
@@ -6228,7 +6496,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-},{}],82:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncFilter', ["$templateCache", function($templateCache) {
 		return {
@@ -6250,7 +6518,7 @@ angular.module('nc')
 			}
 		}
 	}])
-},{}],83:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncImageGallery', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
@@ -6405,7 +6673,7 @@ angular.module('nc')
 			}
 		};
 	}])
-},{}],84:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 angular.module('nc')
 .directive('ncImageIntegrity', function() {
     //Only show if image loaded by <img> integrity is OK (100% finished loading)
@@ -6425,7 +6693,7 @@ angular.module('nc')
             }
         };
     })
-},{}],85:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncLoading', ["$templateCache", function($templateCache) {
 		return {
@@ -6451,7 +6719,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],86:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncPageTitle', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "$parse", "KnownException", function ($rootScope, $templateCache, $compile, $templateOptionsCache, $parse, KnownException) {
@@ -6475,7 +6743,7 @@ angular.module('nc')
             }
         };
     }]);
-},{"angular":159}],87:[function(require,module,exports){
+},{"angular":164}],89:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncPagination', function() {
 		this.paginationSizes = [10,20,30];
@@ -6542,7 +6810,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-},{}],88:[function(require,module,exports){
+},{}],90:[function(require,module,exports){
 angular.module('nc')
 	.provider('ncPermissionProvider', function() {
 		this.permission = function() {
@@ -6563,7 +6831,7 @@ angular.module('nc')
 	.directive('ncShowPermission', function() {
 		
 	});
-},{}],89:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncSearch', ["$templateCache", function($templateCache) {
 		return {
@@ -6585,7 +6853,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],90:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncTable', function() {
 		this.tableOptions = {
@@ -6674,7 +6942,7 @@ angular.module('nc')
 			template: '<a ng-href="{{link}}" ng-transclude></a>',
 		}
 	});
-},{}],91:[function(require,module,exports){
+},{}],93:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncTemplate', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", "KnownException", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException,  $parse, KnownException) {
@@ -6731,7 +6999,7 @@ angular.module('nc')
             };
         }]);
 
-},{"angular":159}],92:[function(require,module,exports){
+},{"angular":164}],94:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncTreeSelect', ["$interpolate", "$templateCache", function($interpolate, $templateCache) {
 		/**
@@ -6943,7 +7211,7 @@ angular.module('nc')
 		};
 	}]);
 
-},{}],93:[function(require,module,exports){
+},{}],95:[function(require,module,exports){
 angular.module('nc')
     .directive('ncTagValidator', function () {
         return {
@@ -7003,14 +7271,14 @@ angular.module('nc')
             }
         }
     });
-},{}],94:[function(require,module,exports){
+},{}],96:[function(require,module,exports){
 angular.module('nc')
 	.filter('compact', function() {
 		return function(input) {
 			return _.compact(input);
 		};
 	});
-},{}],95:[function(require,module,exports){
+},{}],97:[function(require,module,exports){
 angular.module('nc')
 	.filter('dateTh', ["$filter", function($filter) {
 		return function(input) {
@@ -7022,7 +7290,7 @@ angular.module('nc')
 			return $filter('date')(input, 'H:m', '+700');
 		}
 	}]);
-},{}],96:[function(require,module,exports){
+},{}],98:[function(require,module,exports){
 angular.module('nc')
     .filter('escapeHtml', function () {
         var entityMap = {
@@ -7040,7 +7308,7 @@ angular.module('nc')
             });
         }
     });
-},{}],97:[function(require,module,exports){
+},{}],99:[function(require,module,exports){
 /*
  Return dropdown[value] if input == dropdown[name]
  */
@@ -7063,14 +7331,14 @@ angular.module('nc')
 			return _.isUndefined(find) ? input : find[name];
 		}
 	});
-},{}],98:[function(require,module,exports){
+},{}],100:[function(require,module,exports){
 angular.module('nc')
 	.filter('replace', function() {
 		return function(input, from, to) {
 			return input.replace(from, to);
 		};
 	});
-},{}],99:[function(require,module,exports){
+},{}],101:[function(require,module,exports){
 (function (global){
 var angular = require('angular');
 
@@ -7090,11 +7358,11 @@ angular.module('nc', ['ngSanitize', 'ui.bootstrap', 'ui.select', 'duScroll', 'an
 		'clickanystart' : 'clickanyend'
 	});
 }]);
-(function () {var f = require("./index.js");f["directives"]=({"ncAction":require("./directives/ncAction.js"),"ncAdvanceSearch":require("./directives/ncAdvanceSearch.js"),"ncAlert":require("./directives/ncAlert.js"),"ncBindCompile":require("./directives/ncBindCompile.js"),"ncBreadcrumpSelect":require("./directives/ncBreadcrumpSelect.js"),"ncBulk":require("./directives/ncBulk.js"),"ncDateRange":require("./directives/ncDateRange.js"),"ncEmpty":require("./directives/ncEmpty.js"),"ncEye":require("./directives/ncEye.js"),"ncFilter":require("./directives/ncFilter.js"),"ncImageGallery":require("./directives/ncImageGallery.js"),"ncImageIntegrity":require("./directives/ncImageIntegrity.js"),"ncLoading":require("./directives/ncLoading.js"),"ncPageTitle":require("./directives/ncPageTitle.js"),"ncPagination":require("./directives/ncPagination.js"),"ncPermission":require("./directives/ncPermission.js"),"ncSearch":require("./directives/ncSearch.js"),"ncTable":require("./directives/ncTable.js"),"ncTemplate":require("./directives/ncTemplate.js"),"ncTreeSelect":require("./directives/ncTreeSelect.js"),"ncUiSelect":require("./directives/ncUiSelect.js")});f["filters"]=({"compact":require("./filters/compact.js"),"date":require("./filters/date.js"),"escapeHtml":require("./filters/escapeHtml.js"),"map":require("./filters/map.js"),"replace":require("./filters/replace.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
+(function () {var f = require("./index.js");f["directives"]=({"ncAction":require("./directives\\ncAction.js"),"ncAdvanceSearch":require("./directives\\ncAdvanceSearch.js"),"ncAlert":require("./directives\\ncAlert.js"),"ncBindCompile":require("./directives\\ncBindCompile.js"),"ncBreadcrumpSelect":require("./directives\\ncBreadcrumpSelect.js"),"ncBulk":require("./directives\\ncBulk.js"),"ncDateRange":require("./directives\\ncDateRange.js"),"ncEmpty":require("./directives\\ncEmpty.js"),"ncEye":require("./directives\\ncEye.js"),"ncFilter":require("./directives\\ncFilter.js"),"ncImageGallery":require("./directives\\ncImageGallery.js"),"ncImageIntegrity":require("./directives\\ncImageIntegrity.js"),"ncLoading":require("./directives\\ncLoading.js"),"ncPageTitle":require("./directives\\ncPageTitle.js"),"ncPagination":require("./directives\\ncPagination.js"),"ncPermission":require("./directives\\ncPermission.js"),"ncSearch":require("./directives\\ncSearch.js"),"ncTable":require("./directives\\ncTable.js"),"ncTemplate":require("./directives\\ncTemplate.js"),"ncTreeSelect":require("./directives\\ncTreeSelect.js"),"ncUiSelect":require("./directives\\ncUiSelect.js")});f["filters"]=({"compact":require("./filters\\compact.js"),"date":require("./filters\\date.js"),"escapeHtml":require("./filters\\escapeHtml.js"),"map":require("./filters\\map.js"),"replace":require("./filters\\replace.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./directives/ncAction.js":73,"./directives/ncAdvanceSearch.js":74,"./directives/ncAlert.js":75,"./directives/ncBindCompile.js":76,"./directives/ncBreadcrumpSelect.js":77,"./directives/ncBulk.js":78,"./directives/ncDateRange.js":79,"./directives/ncEmpty.js":80,"./directives/ncEye.js":81,"./directives/ncFilter.js":82,"./directives/ncImageGallery.js":83,"./directives/ncImageIntegrity.js":84,"./directives/ncLoading.js":85,"./directives/ncPageTitle.js":86,"./directives/ncPagination.js":87,"./directives/ncPermission.js":88,"./directives/ncSearch.js":89,"./directives/ncTable.js":90,"./directives/ncTemplate.js":91,"./directives/ncTreeSelect.js":92,"./directives/ncUiSelect.js":93,"./filters/compact.js":94,"./filters/date.js":95,"./filters/escapeHtml.js":96,"./filters/map.js":97,"./filters/replace.js":98,"./index.js":99,"./template.js":100,"angular":159,"angular-file-upload":149,"angular-sanitize":151,"angular-scroll":153,"angular-ui-bootstrap":155,"jquery":160,"lodash":161,"ui-select":164}],100:[function(require,module,exports){
+},{"./directives\\ncAction.js":75,"./directives\\ncAdvanceSearch.js":76,"./directives\\ncAlert.js":77,"./directives\\ncBindCompile.js":78,"./directives\\ncBreadcrumpSelect.js":79,"./directives\\ncBulk.js":80,"./directives\\ncDateRange.js":81,"./directives\\ncEmpty.js":82,"./directives\\ncEye.js":83,"./directives\\ncFilter.js":84,"./directives\\ncImageGallery.js":85,"./directives\\ncImageIntegrity.js":86,"./directives\\ncLoading.js":87,"./directives\\ncPageTitle.js":88,"./directives\\ncPagination.js":89,"./directives\\ncPermission.js":90,"./directives\\ncSearch.js":91,"./directives\\ncTable.js":92,"./directives\\ncTemplate.js":93,"./directives\\ncTreeSelect.js":94,"./directives\\ncUiSelect.js":95,"./filters\\compact.js":96,"./filters\\date.js":97,"./filters\\escapeHtml.js":98,"./filters\\map.js":99,"./filters\\replace.js":100,"./index.js":101,"./template.js":102,"angular":164,"angular-file-upload":154,"angular-sanitize":156,"angular-scroll":158,"angular-ui-bootstrap":160,"jquery":165,"lodash":166,"ui-select":169}],102:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -7253,7 +7521,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
     "<div class=\"page-header with-border\"><h1 class=\"float-left page-header-title\">{{ title }}</h1><span class=\"float-right page-header-action\"><ng-transclude></ng-transclude></span></div>"
   );
  }]);
-},{}],101:[function(require,module,exports){
+},{}],103:[function(require,module,exports){
 /**
  * Collection of Route ID (Object key) with route string
  *
@@ -7382,7 +7650,106 @@ module.exports = {
   seller: generateRouteArray(seller),
   admin: generateRouteArray(admin)
 }
-},{"lodash":161}],102:[function(require,module,exports){
+},{"lodash":166}],104:[function(require,module,exports){
+//Products Service
+module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
+    function ($http, common, util, config, KnownException) {
+        'use strict';
+        var service = common.Rest('/Promotion/Ontopcredit');
+
+        service.getOne = function (OnTopCreditCardId) {
+            var req = {
+                method: 'GET',
+                url: '/Promotion/Ontopcredit/' + OnTopCreditCardId
+            };
+            return common.makeRequest(req);
+        };
+        service.create = function (obj) {
+            return common.makeRequest({
+                method: 'POST',
+                url: '/Promotion/OnTopCreate',
+                data: obj,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            });
+        };
+        service.update = function (OnTopCreditCardId, obj) {
+            return common.makeRequest({
+                method: 'PUT',
+                url: '/Promotion/OntopUpdate/' + OnTopCreditCardId,
+                data: obj,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            });
+        };
+        service.duplicate = function (OnTopCreditCardId) {
+            //this URL structure is weird dont u think
+            var req = {
+                method: 'POST',
+                url: '/Promotion/' + OnTopCreditCardId
+            };
+
+            return common.makeRequest(req);
+        };
+
+        service.getAll = function (parameters) {
+            var req = {
+                method: 'GET',
+                url: '/Promotion/Ontopcredit/',
+                params: {
+                    _order: parameters.orderBy || 'OnTopCreditCardId',
+                    _limit: parameters.pageSize || 10,
+                    _offset: parameters.page * parameters.pageSize || 0,
+                    _direction: parameters.direction || 'asc',
+                    _filter: parameters.filter || 'ALL',
+                    searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined
+                }
+            };
+
+            return common.makeRequest(req);
+        };
+
+
+        service.visible = function (obj) {
+            return common.makeRequest({
+                method: 'PUT',
+                url: '/Promotion/Ontopcredit/Visibility',
+                data: obj,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            });
+        };
+        service.deleteBulk = function (arr) {
+            return common.makeRequest({
+                method: 'DELETE',
+                url: '/Promotion/Ontopcredit',
+                data: arr,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            });
+        };
+
+
+        service.getStatus = function (abbreviation) {
+            return StatusLookup[abbreviation];
+        }
+
+
+        return service;
+    }
+];
+
+},{}],105:[function(require,module,exports){
+module.exports = ["common", function(common) {
+	'ngInject';
+	var service = common.Rest('/Promotion/Ontopcreate');
+	return service;
+}];
+},{}],106:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Admin');
@@ -7417,14 +7784,14 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-},{}],103:[function(require,module,exports){
+},{}],107:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Admin');
 
 	return service;
 }]
-},{}],104:[function(require,module,exports){
+},{}],108:[function(require,module,exports){
 module.exports = ["common", "AdminPermissionService", function(common, AdminPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Admin');
@@ -7470,7 +7837,7 @@ module.exports = ["common", "AdminPermissionService", function(common, AdminPerm
 	};
 	return service;	
 }]
-},{}],105:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 module.exports = ["common", "config", "util", function(common, config, util) {
 	'ngInject';
 	var service = common.Rest('/Shops');
@@ -7509,7 +7876,7 @@ module.exports = ["common", "config", "util", function(common, config, util) {
 	};
 	return service;	
 }]
-},{}],106:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 module.exports = ["common", "ShopPermissionService", function(common, ShopPermissionService) {
 	'ngInject';
 	var service = common.Rest('/Shoptypes');
@@ -7555,7 +7922,7 @@ module.exports = ["common", "ShopPermissionService", function(common, ShopPermis
 	};
 	return service;	
 }]
-},{}],107:[function(require,module,exports){
+},{}],111:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', '$document', '$timeout', function(common, $document, $timeout) {
 	return function() {
@@ -7589,7 +7956,7 @@ module.exports = ['common', '$document', '$timeout', function(common, $document,
 		this.message = '';
 	};
 }];
-},{"angular":159}],108:[function(require,module,exports){
+},{"angular":164}],112:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common){
 	'use strict';
@@ -7835,7 +8202,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{"angular":159}],109:[function(require,module,exports){
+},{"angular":164}],113:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/Attributes');
@@ -7941,7 +8308,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }];
-},{}],110:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 module.exports = ['common', function(common){
 	'use strict';
 	var service = {};
@@ -8089,7 +8456,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{}],111:[function(require,module,exports){
+},{}],115:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/AttributeSets');
@@ -8151,7 +8518,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }]
-},{}],112:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 module.exports = ['$window', function($window) {
 	return function(fn, close) {
 		var vm = this;
@@ -8187,7 +8554,7 @@ module.exports = ['$window', function($window) {
 		};
 	};
 }];
-},{}],113:[function(require,module,exports){
+},{}],117:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$q', 'common', function($q, common){
 	var service = {};
@@ -8273,7 +8640,7 @@ module.exports = ['$q', 'common', function($q, common){
 	};
 	return service;
 }];
-},{"angular":159}],114:[function(require,module,exports){
+},{"angular":164}],118:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	service = common.Rest('/Brands');
@@ -8304,7 +8671,7 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }]
-},{}],115:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 /**
  * Util class for category
  * @author poonwu
@@ -8631,14 +8998,14 @@ module.exports = ['config', function(config) {
     return service;
 }];
 
-},{"angular":159}],116:[function(require,module,exports){
+},{"angular":164}],120:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common) {
 	var service = common.Rest('/Coupons');
 	return service;
 }];
 
-},{"angular":159}],117:[function(require,module,exports){
+},{"angular":164}],121:[function(require,module,exports){
 //TODO: maybe merge this with user service? (doesnt exist yet, but probably exists in poon's local)
 module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(common, $base64, storage, $q, $rootScope) {
     'use strict';
@@ -8709,7 +9076,7 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 	return service;
 }];
 
-},{}],118:[function(require,module,exports){
+},{}],122:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$window', '$base64', 'config', function($window, $base64, config) {
@@ -8728,7 +9095,7 @@ module.exports = ['$window', '$base64', 'config', function($window, $base64, con
     };
 }];
 
-},{"angular":159}],119:[function(require,module,exports){
+},{"angular":164}],123:[function(require,module,exports){
 module.exports = ["config", "storage", "FileUploader", function(config, storage, FileUploader) {
 	'ngInject';
 	var service = {};
@@ -8748,7 +9115,7 @@ module.exports = ["config", "storage", "FileUploader", function(config, storage,
 	};
 	return service;
 }];
-},{}],120:[function(require,module,exports){
+},{}],124:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/GlobalCategories');
@@ -8816,7 +9183,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],121:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	service = common.Rest('/GlobalCategories');
@@ -8885,7 +9252,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],122:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 var angular = require('angular');
 //Image Service
 //Note: this file is not used anywhere (legacy!!! dOnt edit )
@@ -8976,7 +9343,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	return service;
 }];
 
-},{"angular":159}],123:[function(require,module,exports){
+},{"angular":164}],127:[function(require,module,exports){
 //Image Service
 module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", function($q, $http, common, storage, config, FileUploader) {
   'ngInject';
@@ -9078,12 +9445,12 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
   return service;
 }];
 
-},{}],124:[function(require,module,exports){
+},{}],128:[function(require,module,exports){
 module.exports = function(common) {
 	var service = common.Rest('/Inventories');
 	return service;
 };
-},{}],125:[function(require,module,exports){
+},{}],129:[function(require,module,exports){
 module.exports = [function() {
 	'use strict';
 
@@ -9091,7 +9458,7 @@ module.exports = [function() {
         this.message = "Known Exception - " + msg;   
     };
 }];
-},{}],126:[function(require,module,exports){
+},{}],130:[function(require,module,exports){
 module.exports = ['common', function(common) {
 	'use strict';
 	var service = {};
@@ -9130,7 +9497,7 @@ module.exports = ['common', function(common) {
 
 	return service;
 }];
-},{}],127:[function(require,module,exports){
+},{}],131:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/LocalCategories');
@@ -9158,7 +9525,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],128:[function(require,module,exports){
+},{}],132:[function(require,module,exports){
 // Products Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config', 'KnownException',
   function ($http, common, util, LocalCategory, Brand, config, KnownException) {
@@ -9557,7 +9924,6 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
       try {
         if (hasVariants) {
-          var masterProps = []
           clean.Variants = (fd.Variants || []).map(mapper.Variants)
           // Find DefaultVariant
           var target = fd.DefaultVariant.text
@@ -9832,7 +10198,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
   }
 ]
 
-},{}],129:[function(require,module,exports){
+},{}],133:[function(require,module,exports){
 module.exports = ["Product", "Brand", "AttributeSet", "ImageService", "GlobalCategory", "$q", "Category", function(Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
   'ngInject';
   var $productAdd = {};
@@ -9906,7 +10272,7 @@ module.exports = ["Product", "Brand", "AttributeSet", "ImageService", "GlobalCat
   return $productAdd;
 }];
 
-},{}],130:[function(require,module,exports){
+},{}],134:[function(require,module,exports){
 module.exports = ["common", "util", function(common, util) {
 	'ngInject';
 	var service = common.Rest('/ProductReviews');
@@ -9942,7 +10308,7 @@ module.exports = ["common", "util", function(common, util) {
 	};	
 	return service;
 }];
-},{}],131:[function(require,module,exports){
+},{}],135:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Seller');
@@ -9977,14 +10343,14 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-},{}],132:[function(require,module,exports){
+},{}],136:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Seller');
 	
 	return service;
 }]
-},{}],133:[function(require,module,exports){
+},{}],137:[function(require,module,exports){
 module.exports = ["common", "SellerPermissionService", function(common, SellerPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Seller');
@@ -10030,7 +10396,7 @@ module.exports = ["common", "SellerPermissionService", function(common, SellerPe
 	};
 	return service;	
 }]
-},{}],134:[function(require,module,exports){
+},{}],138:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
     'use strict';
@@ -10089,14 +10455,153 @@ module.exports = ["common", "config", "util", function (common, config, util) {
     return service;
 }];
 
-},{}],135:[function(require,module,exports){
+},{}],139:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Shop');
 
 	return service;
 }]
-},{}],136:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
+module.exports = {
+    NameTH: {
+        labelClass: "required",
+        inputSize: "large",
+        error:{
+          messages: {
+              pattern: 'Special characters are not allowed',
+              required: 'This is a required field'
+          }
+        }
+    },
+     NameEN: {
+        labelClass: "required",
+        inputSize: "large",
+        error:{
+          messages: {
+              pattern: 'Special characters are not allowed',
+              required: 'This is a required field'
+          }
+        }
+    },
+    BankNameTH: {
+        labelClass: "required",
+        inputSize: "large",
+        error:{
+          messages: {
+              pattern: 'Special characters are not allowed',
+              required: 'This is a required field'
+          }
+        }
+    },
+    BankNameEN: {
+        labelClass: "required",
+        inputSize: "large",
+        error:{
+          messages: {
+              pattern: 'Special characters are not allowed',
+              required: 'This is a required field'
+          }
+        }
+    },
+    PromotionCode: {
+        //labelClass: "required",
+        //inputSize: "large",
+        //error:{
+            //messages: {
+                //  pattern: 'Special characters are not allowed',
+                // required: 'This is a required field'
+        //}
+        //}
+    },
+    DateRange: {},
+    MinimumOrderAmount: {
+      labelClass: "required",
+      hint: {
+          show: true,
+          message: 'Example: 50 or 75'
+      },
+      error:{
+        messages: {
+            required: 'This is a required field'
+        }
+      }
+    },
+    MaximumDiscountAmount: {
+      labelClass: "required",
+      hint: {
+          show: true,
+          message: 'Example: 50 or 75'
+      },
+      error:{
+        messages: {
+            required: 'This is a required field'
+        }
+      }
+    },
+    Format15AValue: {
+      hint: {
+          show: true,
+          message: 'PREFIX: 34 or 37'
+      }
+    },
+     Format14DValue: {
+      hint: {
+          show: true,
+          message: 'PREFIX: 300 to 305, 36'
+      }
+    },
+    Format14CValue:{
+        hint:{
+            show:true,
+            message:'PREFIX: 38'
+        }
+    },
+    Format16DValue:{
+        hint:{
+            show:true,
+            message:'PREFIX: 6011'
+        }
+    },
+     Format15EValue:{
+        hint:{
+            show:true,
+            message:'PREFIX: 2014, 2149'
+        }
+    },
+    Format16JValue:{
+        hint:{
+            show:true,
+            message:'PREFIX: 3'
+        }
+    },
+    Format15JValue:{
+        hint:{
+            show:true,
+            message:'PREFIX: 2131, 1800'
+        }
+    },
+    Format16MValue:{
+        hint:{
+            show:true,
+            message:'PREFIX: 51 to 55'
+        }
+    },
+    Format13VValue:{
+        hint:{
+            show:true,
+            message:'PREFIX: 4'
+        }
+    },
+    Format16VValue:{
+        hint:{
+            show:true,
+            message:'PREFIX: 4'
+        }
+    }
+}
+
+},{}],141:[function(require,module,exports){
 module.exports = {
     MasterVariant_ProductNameEn: {
         'labelClass': 'required',
@@ -10231,7 +10736,7 @@ module.exports = {
     }
 }
 
-},{}],137:[function(require,module,exports){
+},{}],142:[function(require,module,exports){
 module.exports = {
 	BankAccountNumber: {
         inputSize: 'large',
@@ -10242,7 +10747,7 @@ module.exports = {
         labelClass: 'required'
 	}
 }
-},{}],138:[function(require,module,exports){
+},{}],143:[function(require,module,exports){
 module.exports = {
   CouponName: {
     labelClass: "required",
@@ -10294,14 +10799,14 @@ module.exports = {
   }
 }
 
-},{}],139:[function(require,module,exports){
+},{}],144:[function(require,module,exports){
 module.exports = {
   MultiCheckbox: {
     transcludeClasses:  "checkbox multiple-checkbox multiline"
   }
 }
 
-},{}],140:[function(require,module,exports){
+},{}],145:[function(require,module,exports){
 module.exports = {
 	ColumnSearch: {
 
@@ -10357,7 +10862,7 @@ module.exports = {
 	}
 }
 
-},{}],141:[function(require,module,exports){
+},{}],146:[function(require,module,exports){
 module.exports = {
   ProductName: {},
   Pid: {},
@@ -10389,7 +10894,7 @@ module.exports = {
   }
 }
 
-},{}],142:[function(require,module,exports){
+},{}],147:[function(require,module,exports){
 module.exports = {
     GiftWrap: {
         tooltip: "Please select 'Available' if you can provide gift wrapping service to your customer"
@@ -10454,7 +10959,7 @@ module.exports = {
     }
 }
 
-},{}],143:[function(require,module,exports){
+},{}],148:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  * Mon Feb 29 2016 13:38:34 GMT+0700 (ICT)
@@ -10789,7 +11294,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "<a><span ng-bind-html=\"match.label.HeaderName | uibTypeaheadHighlight:query\"></span></a>"
   );
  }];
-},{}],144:[function(require,module,exports){
+},{}],149:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -14912,11 +15417,11 @@ angular.module('ngAnimate', [])
 
 })(window, window.angular);
 
-},{}],145:[function(require,module,exports){
+},{}],150:[function(require,module,exports){
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":144}],146:[function(require,module,exports){
+},{"./angular-animate":149}],151:[function(require,module,exports){
 (function() {
     'use strict';
 
@@ -15084,7 +15589,7 @@ module.exports = 'ngAnimate';
 
 })();
 
-},{}],147:[function(require,module,exports){
+},{}],152:[function(require,module,exports){
 /*globals define, jQuery, module, require */
 /*jslint vars:true */
 
@@ -15534,7 +16039,7 @@ module.exports = 'ngAnimate';
     }]);
 }));
 
-},{"angular":159,"moment":162}],148:[function(require,module,exports){
+},{"angular":164,"moment":167}],153:[function(require,module,exports){
 (function (root, factory) {
     /* istanbul ignore next */
     if (typeof define === 'function' && define.amd) {
@@ -15612,7 +16117,7 @@ return angular.module('angular-clipboard', [])
     }]);
 
 }));
-},{"angular":159}],149:[function(require,module,exports){
+},{"angular":164}],154:[function(require,module,exports){
 /*
  angular-file-upload v2.2.0
  https://github.com/nervgh/angular-file-upload
@@ -15620,7 +16125,7 @@ return angular.module('angular-clipboard', [])
 
 !function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["angular-file-upload"]=t():e["angular-file-upload"]=t()}(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var i=n[r]={exports:{},id:r,loaded:!1};return e[r].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=r(n(1)),o=r(n(2)),s=r(n(3)),a=r(n(4)),u=r(n(5)),l=r(n(6)),c=r(n(7)),f=r(n(8)),p=r(n(9)),d=r(n(10)),v=r(n(11)),h=r(n(12));angular.module(i.name,[]).value("fileUploaderOptions",o).factory("FileUploader",s).factory("FileLikeObject",a).factory("FileItem",u).factory("FileDirective",l).factory("FileSelect",c).factory("FileDrop",f).factory("FileOver",p).directive("nvFileSelect",d).directive("nvFileDrop",v).directive("nvFileOver",h).run(["FileUploader","FileLikeObject","FileItem","FileDirective","FileSelect","FileDrop","FileOver",function(e,t,n,r,i,o,s){e.FileLikeObject=t,e.FileItem=n,e.FileDirective=r,e.FileSelect=i,e.FileDrop=o,e.FileOver=s}])},function(e,t){e.exports={name:"angularFileUpload"}},function(e,t){"use strict";e.exports={url:"/",alias:"file",headers:{},queue:[],progress:0,autoUpload:!1,removeAfterUpload:!1,method:"POST",filters:[],formData:[],queueLimit:Number.MAX_VALUE,withCredentials:!1}},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.forEach,l=angular.isObject,c=angular.isNumber,f=angular.isDefined,p=angular.isArray,d=angular.element;e.exports=function(e,t,n,r,v,h){var m=r.File,g=r.FormData,_=function(){function r(t){o(this,r);var n=s(e);a(this,n,t,{isUploading:!1,_nextIndex:0,_failFilterIndex:-1,_directives:{select:[],drop:[],over:[]}}),this.filters.unshift({name:"queueLimit",fn:this._queueLimitFilter}),this.filters.unshift({name:"folder",fn:this._folderFilter})}return i(r,{addToQueue:{value:function(e,t,n){var r=this,i=this.isArrayLikeObject(e)?e:[e],o=this._getFilters(n),s=this.queue.length,a=[];u(i,function(e){var n=new v(e);if(r._isValidFile(n,o,t)){var i=new h(r,e,t);a.push(i),r.queue.push(i),r._onAfterAddingFile(i)}else{var s=o[r._failFilterIndex];r._onWhenAddingFileFailed(n,s,t)}}),this.queue.length!==s&&(this._onAfterAddingAll(a),this.progress=this._getTotalProgress()),this._render(),this.autoUpload&&this.uploadAll()}},removeFromQueue:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t];n.isUploading&&n.cancel(),this.queue.splice(t,1),n._destroy(),this.progress=this._getTotalProgress()}},clearQueue:{value:function(){for(;this.queue.length;)this.queue[0].remove();this.progress=0}},uploadItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhrTransport":"_iframeTransport";n._prepareToUploading(),this.isUploading||(this.isUploading=!0,this[r](n))}},cancelItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhr":"_form";n&&n.isUploading&&n[r].abort()}},uploadAll:{value:function(){var e=this.getNotUploadedItems().filter(function(e){return!e.isUploading});e.length&&(u(e,function(e){return e._prepareToUploading()}),e[0].upload())}},cancelAll:{value:function(){var e=this.getNotUploadedItems();u(e,function(e){return e.cancel()})}},isFile:{value:function(e){return this.constructor.isFile(e)}},isFileLikeObject:{value:function(e){return this.constructor.isFileLikeObject(e)}},isArrayLikeObject:{value:function(e){return this.constructor.isArrayLikeObject(e)}},getIndexOfItem:{value:function(e){return c(e)?e:this.queue.indexOf(e)}},getNotUploadedItems:{value:function(){return this.queue.filter(function(e){return!e.isUploaded})}},getReadyItems:{value:function(){return this.queue.filter(function(e){return e.isReady&&!e.isUploading}).sort(function(e,t){return e.index-t.index})}},destroy:{value:function(){var e=this;u(this._directives,function(t){u(e._directives[t],function(e){e.destroy()})})}},onAfterAddingAll:{value:function(e){}},onAfterAddingFile:{value:function(e){}},onWhenAddingFileFailed:{value:function(e,t,n){}},onBeforeUploadItem:{value:function(e){}},onProgressItem:{value:function(e,t){}},onProgressAll:{value:function(e){}},onSuccessItem:{value:function(e,t,n,r){}},onErrorItem:{value:function(e,t,n,r){}},onCancelItem:{value:function(e,t,n,r){}},onCompleteItem:{value:function(e,t,n,r){}},onCompleteAll:{value:function(){}},_getTotalProgress:{value:function(e){if(this.removeAfterUpload)return e||0;var t=this.getNotUploadedItems().length,n=t?this.queue.length-t:this.queue.length,r=100/this.queue.length,i=(e||0)*r/100;return Math.round(n*r+i)}},_getFilters:{value:function(e){if(!e)return this.filters;if(p(e))return e;var t=e.match(/[^\s,]+/g);return this.filters.filter(function(e){return-1!==t.indexOf(e.name)})}},_render:{value:function(){t.$$phase||t.$apply()}},_folderFilter:{value:function(e){return!(!e.size&&!e.type)}},_queueLimitFilter:{value:function(){return this.queue.length<this.queueLimit}},_isValidFile:{value:function(e,t,n){var r=this;return this._failFilterIndex=-1,t.length?t.every(function(t){return r._failFilterIndex++,t.fn.call(r,e,n)}):!0}},_isSuccessCode:{value:function(e){return e>=200&&300>e||304===e}},_transformResponse:{value:function(e,t){var r=this._headersGetter(t);return u(n.defaults.transformResponse,function(t){e=t(e,r)}),e}},_parseHeaders:{value:function(e){var t,n,r,i={};return e?(u(e.split("\n"),function(e){r=e.indexOf(":"),t=e.slice(0,r).trim().toLowerCase(),n=e.slice(r+1).trim(),t&&(i[t]=i[t]?i[t]+", "+n:n)}),i):i}},_headersGetter:{value:function(e){return function(t){return t?e[t.toLowerCase()]||null:e}}},_xhrTransport:{value:function(e){var t=this,n=e._xhr=new XMLHttpRequest,r=new g;if(this._onBeforeUploadItem(e),u(e.formData,function(e){u(e,function(e,t){r.append(t,e)})}),"number"!=typeof e._file.size)throw new TypeError("The file specified is no longer valid");r.append(e.alias,e._file,e.file.name),n.upload.onprogress=function(n){var r=Math.round(n.lengthComputable?100*n.loaded/n.total:0);t._onProgressItem(e,r)},n.onload=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r),o=t._isSuccessCode(n.status)?"Success":"Error",s="_on"+o+"Item";t[s](e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onerror=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onErrorItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onabort=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onCancelItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.open(e.method,e.url,!0),n.withCredentials=e.withCredentials,u(e.headers,function(e,t){n.setRequestHeader(t,e)}),n.send(r),this._render()}},_iframeTransport:{value:function(e){var t=this,n=d('<form style="display: none;" />'),r=d('<iframe name="iframeTransport'+Date.now()+'">'),i=e._input;e._form&&e._form.replaceWith(i),e._form=n,this._onBeforeUploadItem(e),i.prop("name",e.alias),u(e.formData,function(e){u(e,function(e,t){var r=d('<input type="hidden" name="'+t+'" />');r.val(e),n.append(r)})}),n.prop({action:e.url,method:"POST",target:r.prop("name"),enctype:"multipart/form-data",encoding:"multipart/form-data"}),r.bind("load",function(){var n="",i=200;try{n=r[0].contentDocument.body.innerHTML}catch(o){i=500}var s={response:n,status:i,dummy:!0},a={},u=t._transformResponse(s.response,a);t._onSuccessItem(e,u,s.status,a),t._onCompleteItem(e,u,s.status,a)}),n.abort=function(){var o,s={status:0,dummy:!0},a={};r.unbind("load").prop("src","javascript:false;"),n.replaceWith(i),t._onCancelItem(e,o,s.status,a),t._onCompleteItem(e,o,s.status,a)},i.after(n),n.append(i).append(r),n[0].submit(),this._render()}},_onWhenAddingFileFailed:{value:function(e,t,n){this.onWhenAddingFileFailed(e,t,n)}},_onAfterAddingFile:{value:function(e){this.onAfterAddingFile(e)}},_onAfterAddingAll:{value:function(e){this.onAfterAddingAll(e)}},_onBeforeUploadItem:{value:function(e){e._onBeforeUpload(),this.onBeforeUploadItem(e)}},_onProgressItem:{value:function(e,t){var n=this._getTotalProgress(t);this.progress=n,e._onProgress(t),this.onProgressItem(e,t),this.onProgressAll(n),this._render()}},_onSuccessItem:{value:function(e,t,n,r){e._onSuccess(t,n,r),this.onSuccessItem(e,t,n,r)}},_onErrorItem:{value:function(e,t,n,r){e._onError(t,n,r),this.onErrorItem(e,t,n,r)}},_onCancelItem:{value:function(e,t,n,r){e._onCancel(t,n,r),this.onCancelItem(e,t,n,r)}},_onCompleteItem:{value:function(e,t,n,r){e._onComplete(t,n,r),this.onCompleteItem(e,t,n,r);var i=this.getReadyItems()[0];return this.isUploading=!1,f(i)?void i.upload():(this.onCompleteAll(),this.progress=this._getTotalProgress(),void this._render())}}},{isFile:{value:function(e){return m&&e instanceof m}},isFileLikeObject:{value:function(e){return e instanceof v}},isArrayLikeObject:{value:function(e){return l(e)&&"length"in e}},inherit:{value:function(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,e.super_=t}}}),r}();return _.prototype.isHTML5=!(!m||!g),_.isHTML5=_.prototype.isHTML5,_},e.exports.$inject=["fileUploaderOptions","$rootScope","$http","$window","FileLikeObject","FileItem"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.isElement,u=angular.isString;e.exports=function(){var e=function(){function e(t){o(this,e);var n=a(t),r=n?t.value:t,i=u(r)?"FakePath":"Object",s="_createFrom"+i;this[s](r)}return i(e,{_createFromFakePath:{value:function(e){this.lastModifiedDate=null,this.size=null,this.type="like/"+e.slice(e.lastIndexOf(".")+1).toLowerCase(),this.name=e.slice(e.lastIndexOf("/")+e.lastIndexOf("\\")+2)}},_createFromObject:{value:function(e){this.lastModifiedDate=s(e.lastModifiedDate),this.size=e.size,this.type=e.type,this.name=e.name}}}),e}();return e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.element,l=angular.isElement;e.exports=function(e,t){var n=function(){function n(e,r,i){o(this,n);var c=l(r),f=c?u(r):null,p=c?null:r;a(this,{url:e.url,alias:e.alias,headers:s(e.headers),formData:s(e.formData),removeAfterUpload:e.removeAfterUpload,withCredentials:e.withCredentials,method:e.method},i,{uploader:e,file:new t(r),isReady:!1,isUploading:!1,isUploaded:!1,isSuccess:!1,isCancel:!1,isError:!1,progress:0,index:null,_file:p,_input:f}),f&&this._replaceNode(f)}return i(n,{upload:{value:function(){try{this.uploader.uploadItem(this)}catch(e){this.uploader._onCompleteItem(this,"",0,[]),this.uploader._onErrorItem(this,"",0,[])}}},cancel:{value:function(){this.uploader.cancelItem(this)}},remove:{value:function(){this.uploader.removeFromQueue(this)}},onBeforeUpload:{value:function(){}},onProgress:{value:function(e){}},onSuccess:{value:function(e,t,n){}},onError:{value:function(e,t,n){}},onCancel:{value:function(e,t,n){}},onComplete:{value:function(e,t,n){}},_onBeforeUpload:{value:function(){this.isReady=!0,this.isUploading=!0,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!1,this.isError=!1,this.progress=0,this.onBeforeUpload()}},_onProgress:{value:function(e){this.progress=e,this.onProgress(e)}},_onSuccess:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!0,this.isCancel=!1,this.isError=!1,this.progress=100,this.index=null,this.onSuccess(e,t,n)}},_onError:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!1,this.isCancel=!1,this.isError=!0,this.progress=0,this.index=null,this.onError(e,t,n)}},_onCancel:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!0,this.isError=!1,this.progress=0,this.index=null,this.onCancel(e,t,n)}},_onComplete:{value:function(e,t,n){this.onComplete(e,t,n),this.removeAfterUpload&&this.remove()}},_destroy:{value:function(){this._input&&this._input.remove(),this._form&&this._form.remove(),delete this._form,delete this._input}},_prepareToUploading:{value:function(){this.index=this.index||++this.uploader._nextIndex,this.isReady=!0}},_replaceNode:{value:function(t){var n=e(t.clone())(t.scope());n.prop("value",null),t.css("display","none"),t.after(n)}}}),n}();return n},e.exports.$inject=["$compile","FileLikeObject"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.extend);e.exports=function(){var e=function(){function e(t){o(this,e),s(this,t),this.uploader._directives[this.prop].push(this),this._saveLinks(),this.bind()}return i(e,{bind:{value:function(){for(var e in this.events){var t=this.events[e];this.element.bind(e,this[t])}}},unbind:{value:function(){for(var e in this.events)this.element.unbind(e,this.events[e])}},destroy:{value:function(){var e=this.uploader._directives[this.prop].indexOf(this);this.uploader._directives[this.prop].splice(e,1),this.unbind()}},_saveLinks:{value:function(){for(var e in this.events){var t=this.events[e];this[t]=this[t].bind(this)}}}}),e}();return e.prototype.events={},e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",change:"onChange"},prop:"select"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n),this.uploader.isHTML5||this.element.removeAttr("multiple"),this.element.prop("value",null)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},isEmptyAfterSelection:{value:function(){return!!this.element.attr("multiple")}},onChange:{value:function(){var e=this.uploader.isHTML5?this.element[0].files:this.element[0],t=this.getOptions(),n=this.getFilters();this.uploader.isHTML5||this.destroy(),this.uploader.addToQueue(e,t,n),this.isEmptyAfterSelection()&&(this.element.prop("value",null),this.element.replaceWith(this.element=this.element.clone(!0)))}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function c(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:c(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend),l=angular.forEach;e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",drop:"onDrop",dragover:"onDragOver",dragleave:"onDragLeave"},prop:"drop"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},onDrop:{value:function(e){var t=this._getTransfer(e);if(t){var n=this.getOptions(),r=this.getFilters();this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this),this.uploader.addToQueue(t.files,n,r)}}},onDragOver:{value:function(e){var t=this._getTransfer(e);this._haveFiles(t.types)&&(t.dropEffect="copy",this._preventAndStop(e),l(this.uploader._directives.over,this._addOverClass,this))}},onDragLeave:{value:function(e){e.currentTarget!==this.element[0]&&(this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this))}},_getTransfer:{value:function(e){return e.dataTransfer?e.dataTransfer:e.originalEvent.dataTransfer}},_preventAndStop:{value:function(e){e.preventDefault(),e.stopPropagation()}},_haveFiles:{value:function(e){return e?e.indexOf?-1!==e.indexOf("Files"):e.contains?e.contains("Files"):!1:!1}},_addOverClass:{value:function(e){e.addOverClass()}},_removeOverClass:{value:function(e){e.removeOverClass()}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy"},prop:"over",overClass:"nv-file-over"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{addOverClass:{value:function(){this.element.addClass(this.getOverClass())}},removeOverClass:{value:function(){this.element.removeClass(this.getOverClass())}},getOverClass:{value:function(){return this.overClass}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}},e.exports.$inject=["$parse","FileUploader","FileSelect"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');if(s.isHTML5){var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}}},e.exports.$inject=["$parse","FileUploader","FileDrop"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t){return{link:function(n,r,i){var o=n.$eval(i.uploader);if(!(o instanceof e))throw new TypeError('"Uploader" must be an instance of FileUploader');var s=new t({uploader:o,element:r});s.getOverClass=function(){return i.overClass||s.overClass}}}},e.exports.$inject=["FileUploader","FileOver"]}])});
 
-},{}],150:[function(require,module,exports){
+},{}],155:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -16339,11 +16844,11 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 })(window, window.angular);
 
-},{}],151:[function(require,module,exports){
+},{}],156:[function(require,module,exports){
 require('./angular-sanitize');
 module.exports = 'ngSanitize';
 
-},{"./angular-sanitize":150}],152:[function(require,module,exports){
+},{"./angular-sanitize":155}],157:[function(require,module,exports){
 /**
   * x is a value between 0 and 1, indicating where in the animation you are.
   */
@@ -16972,18 +17477,18 @@ angular.module('duScroll.scrollspy', ['duScroll.spyAPI'])
   };
 }]);
 
-},{}],153:[function(require,module,exports){
+},{}],158:[function(require,module,exports){
 require('angular');
 require('./angular-scroll');
 
 module.exports = 'duScroll';
 
-},{"./angular-scroll":152,"angular":159}],154:[function(require,module,exports){
+},{"./angular-scroll":157,"angular":164}],159:[function(require,module,exports){
 /*
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
 
- * Version: 1.2.1 - 2016-02-27
+ * Version: 1.1.2 - 2016-02-01
  * License: MIT
  */angular.module("ui.bootstrap", ["ui.bootstrap.tpls", "ui.bootstrap.collapse","ui.bootstrap.accordion","ui.bootstrap.alert","ui.bootstrap.buttons","ui.bootstrap.carousel","ui.bootstrap.dateparser","ui.bootstrap.isClass","ui.bootstrap.position","ui.bootstrap.datepicker","ui.bootstrap.debounce","ui.bootstrap.dropdown","ui.bootstrap.stackedMap","ui.bootstrap.modal","ui.bootstrap.paging","ui.bootstrap.pager","ui.bootstrap.pagination","ui.bootstrap.tooltip","ui.bootstrap.popover","ui.bootstrap.progressbar","ui.bootstrap.rating","ui.bootstrap.tabs","ui.bootstrap.timepicker","ui.bootstrap.typeahead"]);
 angular.module("ui.bootstrap.tpls", ["uib/template/accordion/accordion-group.html","uib/template/accordion/accordion.html","uib/template/alert/alert.html","uib/template/carousel/carousel.html","uib/template/carousel/slide.html","uib/template/datepicker/datepicker.html","uib/template/datepicker/day.html","uib/template/datepicker/month.html","uib/template/datepicker/popup.html","uib/template/datepicker/year.html","uib/template/modal/backdrop.html","uib/template/modal/window.html","uib/template/pager/pager.html","uib/template/pagination/pagination.html","uib/template/tooltip/tooltip-html-popup.html","uib/template/tooltip/tooltip-popup.html","uib/template/tooltip/tooltip-template-popup.html","uib/template/popover/popover-html.html","uib/template/popover/popover-template.html","uib/template/popover/popover.html","uib/template/progressbar/bar.html","uib/template/progressbar/progress.html","uib/template/progressbar/progressbar.html","uib/template/rating/rating.html","uib/template/tabs/tab.html","uib/template/tabs/tabset.html","uib/template/timepicker/timepicker.html","uib/template/typeahead/typeahead-match.html","uib/template/typeahead/typeahead-popup.html"]);
@@ -17214,9 +17719,8 @@ angular.module('ui.bootstrap.accordion', ['ui.bootstrap.collapse'])
     link: function(scope, element, attrs, controller) {
       scope.$watch(function() { return controller[attrs.uibAccordionTransclude]; }, function(heading) {
         if (heading) {
-          var elem = angular.element(element[0].querySelector('[uib-accordion-header]'));
-          elem.html('');
-          elem.append(heading);
+          element.find('span').html('');
+          element.find('span').append(heading);
         }
       });
     }
@@ -17300,7 +17804,7 @@ angular.module('ui.bootstrap.buttons', [])
 
       if (attrs.uibUncheckable) {
         scope.$watch(uncheckableExpr, function(uncheckable) {
-          attrs.$set('uncheckable', uncheckable ? '' : undefined);
+          attrs.$set('uncheckable', uncheckable ? '' : null);
         });
       }
     }
@@ -17355,41 +17859,35 @@ angular.module('ui.bootstrap.carousel', [])
   var self = this,
     slides = self.slides = $scope.slides = [],
     SLIDE_DIRECTION = 'uib-slideDirection',
-    currentIndex = $scope.active,
+    currentIndex = -1,
     currentInterval, isPlaying, bufferedTransitions = [];
+  self.currentSlide = null;
 
   var destroyed = false;
 
   self.addSlide = function(slide, element) {
-    slides.push({
-      slide: slide,
-      element: element
-    });
-    slides.sort(function(a, b) {
-      return +a.slide.index > +b.slide.index;
-    });
+    slide.$element = element;
+    slides.push(slide);
     //if this is the first slide or the slide is set to active, select it
-    if (slide.index === $scope.active || slides.length === 1 && !angular.isNumber($scope.active)) {
+    if (slides.length === 1 || slide.active) {
       if ($scope.$currentTransition) {
         $scope.$currentTransition = null;
       }
 
-      currentIndex = slide.index;
-      $scope.active = slide.index;
-      setActive(currentIndex);
-      self.select(slides[findSlideIndex(slide)]);
+      self.select(slides[slides.length - 1]);
       if (slides.length === 1) {
         $scope.play();
       }
+    } else {
+      slide.active = false;
     }
   };
 
   self.getCurrentIndex = function() {
-    for (var i = 0; i < slides.length; i++) {
-      if (slides[i].slide.index === currentIndex) {
-        return i;
-      }
+    if (self.currentSlide && angular.isDefined(self.currentSlide.index)) {
+      return +self.currentSlide.index;
     }
+    return currentIndex;
   };
 
   self.next = $scope.next = function() {
@@ -17400,7 +17898,7 @@ angular.module('ui.bootstrap.carousel', [])
       return;
     }
 
-    return self.select(slides[newIndex], 'next');
+    return self.select(getSlideByIndex(newIndex), 'next');
   };
 
   self.prev = $scope.prev = function() {
@@ -17411,67 +17909,65 @@ angular.module('ui.bootstrap.carousel', [])
       return;
     }
 
-    return self.select(slides[newIndex], 'prev');
+    return self.select(getSlideByIndex(newIndex), 'prev');
   };
 
   self.removeSlide = function(slide) {
-    var index = findSlideIndex(slide);
+    if (angular.isDefined(slide.index)) {
+      slides.sort(function(a, b) {
+        return +a.index > +b.index;
+      });
+    }
 
-    var bufferedIndex = bufferedTransitions.indexOf(slides[index]);
+    var bufferedIndex = bufferedTransitions.indexOf(slide);
     if (bufferedIndex !== -1) {
       bufferedTransitions.splice(bufferedIndex, 1);
     }
-
     //get the index of the slide inside the carousel
+    var index = slides.indexOf(slide);
     slides.splice(index, 1);
-    if (slides.length > 0 && currentIndex === index) {
-      if (index >= slides.length) {
-        currentIndex = slides.length - 1;
-        $scope.active = currentIndex;
-        setActive(currentIndex);
-        self.select(slides[slides.length - 1]);
-      } else {
-        currentIndex = index;
-        $scope.active = currentIndex;
-        setActive(currentIndex);
-        self.select(slides[index]);
+    $timeout(function() {
+      if (slides.length > 0 && slide.active) {
+        if (index >= slides.length) {
+          self.select(slides[index - 1]);
+        } else {
+          self.select(slides[index]);
+        }
+      } else if (currentIndex > index) {
+        currentIndex--;
       }
-    } else if (currentIndex > index) {
-      currentIndex--;
-      $scope.active = currentIndex;
-    }
+    });
 
-    //clean the active value when no more slide
+    //clean the currentSlide when no more slide
     if (slides.length === 0) {
-      currentIndex = null;
-      $scope.active = null;
+      self.currentSlide = null;
       clearBufferedTransitions();
     }
   };
 
   /* direction: "prev" or "next" */
   self.select = $scope.select = function(nextSlide, direction) {
-    var nextIndex = findSlideIndex(nextSlide.slide);
+    var nextIndex = $scope.indexOfSlide(nextSlide);
     //Decide direction if it's not given
     if (direction === undefined) {
       direction = nextIndex > self.getCurrentIndex() ? 'next' : 'prev';
     }
     //Prevent this user-triggered transition from occurring if there is already one in progress
-    if (nextSlide.slide.index !== currentIndex &&
-      !$scope.$currentTransition) {
-      goNext(nextSlide.slide, nextIndex, direction);
-    } else if (nextSlide && nextSlide.slide.index !== currentIndex && $scope.$currentTransition) {
-      bufferedTransitions.push(slides[nextIndex]);
+    if (nextSlide && nextSlide !== self.currentSlide && !$scope.$currentTransition) {
+      goNext(nextSlide, nextIndex, direction);
+    } else if (nextSlide && nextSlide !== self.currentSlide && $scope.$currentTransition) {
+      bufferedTransitions.push(nextSlide);
+      nextSlide.active = false;
     }
   };
 
   /* Allow outside people to call indexOf on slides array */
   $scope.indexOfSlide = function(slide) {
-    return +slide.slide.index;
+    return angular.isDefined(slide.index) ? +slide.index : slides.indexOf(slide);
   };
 
   $scope.isActive = function(slide) {
-    return $scope.active === slide.slide.index;
+    return self.currentSlide === slide;
   };
 
   $scope.pause = function() {
@@ -17501,24 +17997,6 @@ angular.module('ui.bootstrap.carousel', [])
 
   $scope.$watchCollection('slides', resetTransition);
 
-  $scope.$watch('active', function(index) {
-    if (angular.isNumber(index) && currentIndex !== index) {
-      for (var i = 0; i < slides.length; i++) {
-        if (slides[i].slide.index === index) {
-          index = i;
-          break;
-        }
-      }
-
-      var slide = slides[index];
-      if (slide) {
-        currentIndex = index;
-        setActive(index);
-        self.select(slides[index]);
-      }
-    }
-  });
-
   function clearBufferedTransitions() {
     while (bufferedTransitions.length) {
       bufferedTransitions.shift();
@@ -17526,6 +18004,9 @@ angular.module('ui.bootstrap.carousel', [])
   }
 
   function getSlideByIndex(index) {
+    if (angular.isUndefined(slides[index].index)) {
+      return slides[index];
+    }
     for (var i = 0, l = slides.length; i < l; ++i) {
       if (slides[i].index === index) {
         return slides[i];
@@ -17533,36 +18014,26 @@ angular.module('ui.bootstrap.carousel', [])
     }
   }
 
-  function setActive(index) {
-    for (var i = 0; i < slides.length; i++) {
-      slides[i].slide.active = i === index;
-    }
-  }
-
   function goNext(slide, index, direction) {
-    if (destroyed) {
-      return;
-    }
+    if (destroyed) { return; }
 
-    angular.extend(slide, {direction: direction});
-    angular.extend(slides[currentIndex].slide || {}, {direction: direction});
+    angular.extend(slide, {direction: direction, active: true});
+    angular.extend(self.currentSlide || {}, {direction: direction, active: false});
     if ($animate.enabled($element) && !$scope.$currentTransition &&
-      slides[index].element && self.slides.length > 1) {
-      slides[index].element.data(SLIDE_DIRECTION, slide.direction);
-      var currentIdx = self.getCurrentIndex();
-
-      if (angular.isNumber(currentIdx) && slides[currentIdx].element) {
-        slides[currentIdx].element.data(SLIDE_DIRECTION, slide.direction);
+      slide.$element && self.slides.length > 1) {
+      slide.$element.data(SLIDE_DIRECTION, slide.direction);
+      if (self.currentSlide && self.currentSlide.$element) {
+        self.currentSlide.$element.data(SLIDE_DIRECTION, slide.direction);
       }
 
       $scope.$currentTransition = true;
-      $animate.on('addClass', slides[index].element, function(element, phase) {
+      $animate.on('addClass', slide.$element, function(element, phase) {
         if (phase === 'close') {
           $scope.$currentTransition = null;
           $animate.off('addClass', element);
           if (bufferedTransitions.length) {
-            var nextSlide = bufferedTransitions.pop().slide;
-            var nextIndex = nextSlide.index;
+            var nextSlide = bufferedTransitions.pop();
+            var nextIndex = $scope.indexOfSlide(nextSlide);
             var nextDirection = nextIndex > self.getCurrentIndex() ? 'next' : 'prev';
             clearBufferedTransitions();
 
@@ -17572,20 +18043,11 @@ angular.module('ui.bootstrap.carousel', [])
       });
     }
 
-    $scope.active = slide.index;
-    currentIndex = slide.index;
-    setActive(index);
+    self.currentSlide = slide;
+    currentIndex = index;
 
     //every time you change slides, reset the timer
     restartTimer();
-  }
-
-  function findSlideIndex(slide) {
-    for (var i = 0; i < slides.length; i++) {
-      if (slides[i].slide === slide) {
-        return i;
-      }
-    }
   }
 
   function resetTimer() {
@@ -17630,7 +18092,6 @@ angular.module('ui.bootstrap.carousel', [])
       return attrs.templateUrl || 'uib/template/carousel/carousel.html';
     },
     scope: {
-      active: '=',
       interval: '=',
       noTransition: '=',
       noPause: '=',
@@ -17648,6 +18109,7 @@ angular.module('ui.bootstrap.carousel', [])
       return attrs.templateUrl || 'uib/template/carousel/slide.html';
     },
     scope: {
+      active: '=?',
       actual: '=?',
       index: '=?'
     },
@@ -17656,6 +18118,12 @@ angular.module('ui.bootstrap.carousel', [])
       //when the scope is destroyed then remove the slide from the current slides array
       scope.$on('$destroy', function() {
         carouselCtrl.removeSlide(scope);
+      });
+
+      scope.$watch('active', function(active) {
+        if (active) {
+          carouselCtrl.select(scope);
+        }
       });
     }
   };
@@ -18036,13 +18504,11 @@ angular.module('ui.bootstrap.dateparser', [])
         _format = _format.replace(match[1] + mapper.key, '');
       }
 
-      var endStr = i === map.length - 1 ? _format : '';
-
       if (mapper.apply) {
-        return str + mapper.apply.call(null, date) + endStr;
+        return str + mapper.apply.call(null, date);
       }
 
-      return str + endStr;
+      return str;
     }, '');
   };
 
@@ -18308,7 +18774,7 @@ angular.module('ui.bootstrap.position', [])
        * @returns {element} A HTML element.
        */
       getRawNode: function(elem) {
-        return elem.nodeName ? elem : elem[0] || elem;
+        return elem[0] || elem;
       },
 
       /**
@@ -18355,7 +18821,7 @@ angular.module('ui.bootstrap.position', [])
        */
       scrollbarWidth: function() {
         if (angular.isUndefined(SCROLLBAR_WIDTH)) {
-          var scrollElem = angular.element('<div class="uib-position-scrollbar-measure"></div>');
+          var scrollElem = angular.element('<div style="position: absolute; top: -9999px; width: 50px; height: 50px; overflow: scroll;"></div>');
           $document.find('body').append(scrollElem);
           SCROLLBAR_WIDTH = scrollElem[0].offsetWidth - scrollElem[0].clientWidth;
           SCROLLBAR_WIDTH = isFinite(SCROLLBAR_WIDTH) ? SCROLLBAR_WIDTH : 0;
@@ -18363,23 +18829,6 @@ angular.module('ui.bootstrap.position', [])
         }
 
         return SCROLLBAR_WIDTH;
-      },
-
-      /**
-       * Checks to see if the element is scrollable.
-       *
-       * @param {element} elem - The element to check.
-       * @param {boolean=} [includeHidden=false] - Should scroll style of 'hidden' be considered,
-       *   default is false.
-       *
-       * @returns {boolean} Whether the element is scrollable.
-       */
-      isScrollable: function(elem, includeHidden) {
-        elem = this.getRawNode(elem);
-
-        var overflowRegex = includeHidden ? OVERFLOW_REGEX.hidden : OVERFLOW_REGEX.normal;
-        var elemStyle = $window.getComputedStyle(elem);
-        return overflowRegex.test(elemStyle.overflow + elemStyle.overflowY + elemStyle.overflowX);
       },
 
       /**
@@ -18768,17 +19217,10 @@ angular.module('ui.bootstrap.position', [])
           return;
         }
 
-        var arrowCss = {
-          top: '',
-          bottom: '',
-          left: '',
-          right: ''
-        };
-
         placement = this.parsePlacement(placement);
         if (placement[1] === 'center') {
           // no adjustment necessary - just reset styles
-          angular.element(arrowElem).css(arrowCss);
+          angular.element(arrowElem).css({top: '', bottom: '', right: '', left: '', margin: ''});
           return;
         }
 
@@ -18793,6 +19235,14 @@ angular.module('ui.bootstrap.position', [])
         }
         borderRadiusProp += '-radius';
         var borderRadius = $window.getComputedStyle(isTooltip ? innerElem : elem)[borderRadiusProp];
+
+        var arrowCss = {
+          top: 'auto',
+          bottom: 'auto',
+          left: 'auto',
+          right: 'auto',
+          margin: 0
+        };
 
         switch (placement[0]) {
           case 'top':
@@ -18819,7 +19269,6 @@ angular.module('ui.bootstrap.position', [])
 angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootstrap.isClass', 'ui.bootstrap.position'])
 
 .value('$datepickerSuppressError', false)
-.value('uibDatepickerAttributeWarning', true)
 
 .constant('uibDatepickerConfig', {
   datepickerMode: 'day',
@@ -18840,22 +19289,18 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
   yearRows: 4
 })
 
-.controller('UibDatepickerController', ['$scope', '$attrs', '$parse', '$interpolate', '$locale', '$log', 'dateFilter', 'uibDatepickerConfig', '$datepickerSuppressError', 'uibDatepickerAttributeWarning', 'uibDateParser',
-  function($scope, $attrs, $parse, $interpolate, $locale, $log, dateFilter, datepickerConfig, $datepickerSuppressError, datepickerAttributeWarning, dateParser) {
+.controller('UibDatepickerController', ['$scope', '$attrs', '$parse', '$interpolate', '$locale', '$log', 'dateFilter', 'uibDatepickerConfig', '$datepickerSuppressError', 'uibDateParser',
+  function($scope, $attrs, $parse, $interpolate, $locale, $log, dateFilter, datepickerConfig, $datepickerSuppressError, dateParser) {
   var self = this,
       ngModelCtrl = { $setViewValue: angular.noop }, // nullModelCtrl;
       ngModelOptions = {},
-      watchListeners = [],
-      optionsUsed = !!$attrs.datepickerOptions;
+      watchListeners = [];
 
   // Modes chain
   this.modes = ['day', 'month', 'year'];
 
-  if (optionsUsed) {
-    [
-      'customClass',
-      'dateDisabled',
-      'datepickerMode',
+  if ($attrs.datepickerOptions) {
+    angular.forEach([
       'formatDay',
       'formatDayHeader',
       'formatDayTitle',
@@ -18872,25 +19317,15 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
       'startingDay',
       'yearColumns',
       'yearRows'
-    ].forEach(function(key) {
+    ], function(key) {
       switch (key) {
-        case 'customClass':
-        case 'dateDisabled':
-          $scope[key] = $scope.datepickerOptions[key] || angular.noop;
-          break;
-        case 'datepickerMode':
-          $scope.datepickerMode = angular.isDefined($scope.datepickerOptions.datepickerMode) ?
-            $scope.datepickerOptions.datepickerMode : datepickerConfig.datepickerMode;
-          break;
         case 'formatDay':
         case 'formatDayHeader':
         case 'formatDayTitle':
         case 'formatMonth':
         case 'formatMonthTitle':
         case 'formatYear':
-          self[key] = angular.isDefined($scope.datepickerOptions[key]) ?
-            $interpolate($scope.datepickerOptions[key])($scope.$parent) :
-            datepickerConfig[key];
+          self[key] = angular.isDefined($scope.datepickerOptions[key]) ? $interpolate($scope.datepickerOptions[key])($scope.$parent) : datepickerConfig[key];
           break;
         case 'showWeeks':
         case 'shortcutPropagation':
@@ -18935,10 +19370,9 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
           if ($scope.datepickerOptions[key]) {
             $scope.$watch(function() { return $scope.datepickerOptions[key]; }, function(value) {
               self[key] = $scope[key] = angular.isDefined(value) ? value : datepickerOptions[key];
-              if (key === 'minMode' && self.modes.indexOf($scope.datepickerOptions.datepickerMode) < self.modes.indexOf(self[key]) ||
-                key === 'maxMode' && self.modes.indexOf($scope.datepickerOptions.datepickerMode) > self.modes.indexOf(self[key])) {
+              if (key === 'minMode' && self.modes.indexOf($scope.datepickerMode) < self.modes.indexOf(self[key]) ||
+                key === 'maxMode' && self.modes.indexOf($scope.datepickerMode) > self.modes.indexOf(self[key])) {
                 $scope.datepickerMode = self[key];
-                $scope.datepickerOptions.datepickerMode = self[key];
               }
             });
           } else {
@@ -18948,7 +19382,7 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
           break;
         case 'initDate':
           if ($scope.datepickerOptions.initDate) {
-            self.activeDate = dateParser.fromTimezone($scope.datepickerOptions.initDate, ngModelOptions.timezone) || new Date();
+            this.activeDate = dateParser.fromTimezone($scope.datepickerOptions.initDate, ngModelOptions.timezone) || new Date();
             $scope.$watch(function() { return $scope.datepickerOptions.initDate; }, function(initDate) {
               if (initDate && (ngModelCtrl.$isEmpty(ngModelCtrl.$modelValue) || ngModelCtrl.$invalid)) {
                 self.activeDate = dateParser.fromTimezone(initDate, ngModelOptions.timezone);
@@ -18956,7 +19390,7 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
               }
             });
           } else {
-            self.activeDate = new Date();
+            this.activeDate = new Date();
           }
       }
     });
@@ -18964,33 +19398,15 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
     // Interpolated configuration attributes
     angular.forEach(['formatDay', 'formatMonth', 'formatYear', 'formatDayHeader', 'formatDayTitle', 'formatMonthTitle'], function(key) {
       self[key] = angular.isDefined($attrs[key]) ? $interpolate($attrs[key])($scope.$parent) : datepickerConfig[key];
-
-      if (angular.isDefined($attrs[key]) && datepickerAttributeWarning) {
-        $log.warn('uib-datepicker ' + key + ' attribute usage is deprecated, use datepicker-options attribute instead');
-      }
     });
 
     // Evaled configuration attributes
     angular.forEach(['showWeeks', 'yearRows', 'yearColumns', 'shortcutPropagation'], function(key) {
       self[key] = angular.isDefined($attrs[key]) ?
         $scope.$parent.$eval($attrs[key]) : datepickerConfig[key];
-
-      if (angular.isDefined($attrs[key]) && datepickerAttributeWarning) {
-        $log.warn('uib-datepicker ' + key + ' attribute usage is deprecated, use datepicker-options attribute instead');
-      }
-    });
-
-    angular.forEach(['dateDisabled', 'customClass'], function(key) {
-      if (angular.isDefined($attrs[key]) && datepickerAttributeWarning) {
-        $log.warn('uib-datepicker ' + key + ' attribute usage is deprecated, use datepicker-options attribute instead');
-      }
     });
 
     if (angular.isDefined($attrs.startingDay)) {
-      if (datepickerAttributeWarning) {
-        $log.warn('uib-datepicker startingDay attribute usage is deprecated, use datepicker-options attribute instead');
-      }
-
       self.startingDay = $scope.$parent.$eval($attrs.startingDay);
     } else if (angular.isNumber(datepickerConfig.startingDay)) {
       self.startingDay = datepickerConfig.startingDay;
@@ -19001,10 +19417,6 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
     // Watchable date attributes
     angular.forEach(['minDate', 'maxDate'], function(key) {
       if ($attrs[key]) {
-        if (datepickerAttributeWarning) {
-          $log.warn('uib-datepicker ' + key + ' attribute usage is deprecated, use datepicker-options attribute instead');
-        }
-
         watchListeners.push($scope.$parent.$watch($attrs[key], function(value) {
           if (value) {
             if (angular.isDate(value)) {
@@ -19025,10 +19437,6 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
 
     angular.forEach(['minMode', 'maxMode'], function(key) {
       if ($attrs[key]) {
-        if (datepickerAttributeWarning) {
-          $log.warn('uib-datepicker ' + key + ' attribute usage is deprecated, use datepicker-options attribute instead');
-        }
-
         watchListeners.push($scope.$parent.$watch($attrs[key], function(value) {
           self[key] = $scope[key] = angular.isDefined(value) ? value : $attrs[key];
           if (key === 'minMode' && self.modes.indexOf($scope.datepickerMode) < self.modes.indexOf(self[key]) ||
@@ -19042,31 +19450,19 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
     });
 
     if (angular.isDefined($attrs.initDate)) {
-      if (datepickerAttributeWarning) {
-        $log.warn('uib-datepicker initDate attribute usage is deprecated, use datepicker-options attribute instead');
-      }
-
-      var initDate = dateParser.fromTimezone($scope.$parent.$eval($attrs.initDate), ngModelOptions.timezone);
-      this.activeDate = !isNaN(initDate) ? initDate : new Date();
+      this.activeDate = dateParser.fromTimezone($scope.$parent.$eval($attrs.initDate), ngModelOptions.timezone) || new Date();
       watchListeners.push($scope.$parent.$watch($attrs.initDate, function(initDate) {
         if (initDate && (ngModelCtrl.$isEmpty(ngModelCtrl.$modelValue) || ngModelCtrl.$invalid)) {
-          initDate = dateParser.fromTimezone(initDate, ngModelOptions.timezone);
-          self.activeDate = !isNaN(initDate) ? initDate : new Date();
+          self.activeDate = dateParser.fromTimezone(initDate, ngModelOptions.timezone);
           self.refreshView();
         }
       }));
     } else {
       this.activeDate = new Date();
     }
-
-    if ($attrs.datepickerMode && datepickerAttributeWarning) {
-      $log.warn('uib-datepicker datepickerMode attribute usage is deprecated, use datepicker-options attribute instead');
-    }
-
-    $scope.datepickerMode = $scope.datepickerMode ||
-      datepickerConfig.datepickerMode;
   }
 
+  $scope.datepickerMode = $scope.datepickerMode || datepickerConfig.datepickerMode;
   $scope.uniqueId = 'datepicker-' + $scope.$id + '-' + Math.floor(Math.random() * 10000);
 
   $scope.disabled = angular.isDefined($attrs.disabled) || false;
@@ -19089,7 +19485,9 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
     ngModelCtrl = ngModelCtrl_;
     ngModelOptions = ngModelCtrl_.$options || datepickerConfig.ngModelOptions;
 
-    this.activeDate = ngModelCtrl.$modelValue || new Date();
+    if (ngModelCtrl.$modelValue) {
+      this.activeDate = ngModelCtrl.$modelValue;
+    }
 
     ngModelCtrl.$render = function() {
       self.render();
@@ -19152,7 +19550,7 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
     return $scope.disabled ||
       this.minDate && this.compare(date, this.minDate) < 0 ||
       this.maxDate && this.compare(date, this.maxDate) > 0 ||
-      $scope.dateDisabled && $scope.dateDisabled({date: date, mode: $scope.datepickerMode});
+      $attrs.dateDisabled && $scope.dateDisabled({date: date, mode: $scope.datepickerMode});
   };
 
   this.customClass = function(date) {
@@ -19177,9 +19575,7 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
       ngModelCtrl.$render();
     } else {
       self.activeDate = date;
-      setMode(self.modes[self.modes.indexOf($scope.datepickerMode) - 1]);
-
-      $scope.$emit('uib:datepicker.mode');
+      $scope.datepickerMode = self.modes[self.modes.indexOf($scope.datepickerMode) - 1];
     }
   };
 
@@ -19198,9 +19594,7 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
       return;
     }
 
-    setMode(self.modes[self.modes.indexOf($scope.datepickerMode) + direction]);
-
-    $scope.$emit('uib:datepicker.mode');
+    $scope.datepickerMode = self.modes[self.modes.indexOf($scope.datepickerMode) + direction];
   };
 
   // Key event mapper
@@ -19244,13 +19638,6 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
       watchListeners.shift()();
     }
   });
-
-  function setMode(mode) {
-    $scope.datepickerMode = mode;
-    if (optionsUsed) {
-      $scope.datepickerOptions.datepickerMode = mode;
-    }
-  }
 }])
 
 .controller('UibDaypickerController', ['$scope', '$element', 'dateFilter', function(scope, $element, dateFilter) {
@@ -19556,8 +19943,6 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
   };
 })
 
-.value('uibDatepickerPopupAttributeWarning', true)
-
 .constant('uibDatepickerPopupConfig', {
   altInputFormats: [],
   appendToBody: false,
@@ -19574,50 +19959,37 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
     'month': 'yyyy-MM'
   },
   onOpenFocus: true,
-  showButtonBar: true,
-  placement: 'auto bottom-left'
+  showButtonBar: true
 })
 
-.controller('UibDatepickerPopupController', ['$scope', '$element', '$attrs', '$compile', '$log', '$parse', '$window', '$document', '$rootScope', '$uibPosition', 'dateFilter', 'uibDateParser', 'uibDatepickerPopupConfig', '$timeout', 'uibDatepickerConfig', 'uibDatepickerPopupAttributeWarning',
-function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $rootScope, $position, dateFilter, dateParser, datepickerPopupConfig, $timeout, datepickerConfig, datepickerPopupAttributeWarning) {
+.controller('UibDatepickerPopupController', ['$scope', '$element', '$attrs', '$compile', '$parse', '$document', '$rootScope', '$uibPosition', 'dateFilter', 'uibDateParser', 'uibDatepickerPopupConfig', '$timeout', 'uibDatepickerConfig',
+function(scope, element, attrs, $compile, $parse, $document, $rootScope, $position, dateFilter, dateParser, datepickerPopupConfig, $timeout, datepickerConfig) {
   var cache = {},
     isHtml5DateInput = false;
   var dateFormat, closeOnDateSelection, appendToBody, onOpenFocus,
-    datepickerPopupTemplateUrl, datepickerTemplateUrl, popupEl, datepickerEl, scrollParentEl,
+    datepickerPopupTemplateUrl, datepickerTemplateUrl, popupEl, datepickerEl,
     ngModel, ngModelOptions, $popup, altInputFormats, watchListeners = [];
 
-  $scope.watchData = {};
+  scope.watchData = {};
 
   this.init = function(_ngModel_) {
     ngModel = _ngModel_;
     ngModelOptions = _ngModel_.$options || datepickerConfig.ngModelOptions;
-    closeOnDateSelection = angular.isDefined($attrs.closeOnDateSelection) ?
-      $scope.$parent.$eval($attrs.closeOnDateSelection) :
-      datepickerPopupConfig.closeOnDateSelection;
-    appendToBody = angular.isDefined($attrs.datepickerAppendToBody) ?
-      $scope.$parent.$eval($attrs.datepickerAppendToBody) :
-      datepickerPopupConfig.appendToBody;
-    onOpenFocus = angular.isDefined($attrs.onOpenFocus) ?
-      $scope.$parent.$eval($attrs.onOpenFocus) : datepickerPopupConfig.onOpenFocus;
-    datepickerPopupTemplateUrl = angular.isDefined($attrs.datepickerPopupTemplateUrl) ?
-      $attrs.datepickerPopupTemplateUrl :
-      datepickerPopupConfig.datepickerPopupTemplateUrl;
-    datepickerTemplateUrl = angular.isDefined($attrs.datepickerTemplateUrl) ?
-      $attrs.datepickerTemplateUrl : datepickerPopupConfig.datepickerTemplateUrl;
-    altInputFormats = angular.isDefined($attrs.altInputFormats) ?
-      $scope.$parent.$eval($attrs.altInputFormats) :
-      datepickerPopupConfig.altInputFormats;
+    closeOnDateSelection = angular.isDefined(attrs.closeOnDateSelection) ? scope.$parent.$eval(attrs.closeOnDateSelection) : datepickerPopupConfig.closeOnDateSelection;
+    appendToBody = angular.isDefined(attrs.datepickerAppendToBody) ? scope.$parent.$eval(attrs.datepickerAppendToBody) : datepickerPopupConfig.appendToBody;
+    onOpenFocus = angular.isDefined(attrs.onOpenFocus) ? scope.$parent.$eval(attrs.onOpenFocus) : datepickerPopupConfig.onOpenFocus;
+    datepickerPopupTemplateUrl = angular.isDefined(attrs.datepickerPopupTemplateUrl) ? attrs.datepickerPopupTemplateUrl : datepickerPopupConfig.datepickerPopupTemplateUrl;
+    datepickerTemplateUrl = angular.isDefined(attrs.datepickerTemplateUrl) ? attrs.datepickerTemplateUrl : datepickerPopupConfig.datepickerTemplateUrl;
+    altInputFormats = angular.isDefined(attrs.altInputFormats) ? scope.$parent.$eval(attrs.altInputFormats) : datepickerPopupConfig.altInputFormats;
 
-    $scope.showButtonBar = angular.isDefined($attrs.showButtonBar) ?
-      $scope.$parent.$eval($attrs.showButtonBar) :
-      datepickerPopupConfig.showButtonBar;
+    scope.showButtonBar = angular.isDefined(attrs.showButtonBar) ? scope.$parent.$eval(attrs.showButtonBar) : datepickerPopupConfig.showButtonBar;
 
-    if (datepickerPopupConfig.html5Types[$attrs.type]) {
-      dateFormat = datepickerPopupConfig.html5Types[$attrs.type];
+    if (datepickerPopupConfig.html5Types[attrs.type]) {
+      dateFormat = datepickerPopupConfig.html5Types[attrs.type];
       isHtml5DateInput = true;
     } else {
-      dateFormat = $attrs.uibDatepickerPopup || datepickerPopupConfig.datepickerPopup;
-      $attrs.$observe('uibDatepickerPopup', function(value, oldValue) {
+      dateFormat = attrs.uibDatepickerPopup || datepickerPopupConfig.datepickerPopup;
+      attrs.$observe('uibDatepickerPopup', function(value, oldValue) {
         var newDateFormat = value || datepickerPopupConfig.datepickerPopup;
         // Invalidate the $modelValue to ensure that formatters re-run
         // FIXME: Refactor when PR is merged: https://github.com/angular/angular.js/pull/10764
@@ -19636,19 +20008,14 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
       throw new Error('uibDatepickerPopup must have a date format specified.');
     }
 
-    if (isHtml5DateInput && $attrs.uibDatepickerPopup) {
+    if (isHtml5DateInput && attrs.uibDatepickerPopup) {
       throw new Error('HTML5 date input types do not support custom formats.');
     }
 
     // popup element used to display calendar
     popupEl = angular.element('<div uib-datepicker-popup-wrap><div uib-datepicker></div></div>');
-    $scope.ngModelOptions = angular.copy(ngModelOptions);
-    $scope.ngModelOptions.timezone = null;
-    if ($scope.ngModelOptions.updateOnDefault === true) {
-      $scope.ngModelOptions.updateOn = $scope.ngModelOptions.updateOn ?
-        $scope.ngModelOptions.updateOn + ' default' : 'default';
-    }
-
+    scope.ngModelOptions = angular.copy(ngModelOptions);
+    scope.ngModelOptions.timezone = null;
     popupEl.attr({
       'ng-model': 'date',
       'ng-model-options': 'ngModelOptions',
@@ -19661,26 +20028,29 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
     datepickerEl.attr('template-url', datepickerTemplateUrl);
 
     if (isHtml5DateInput) {
-      if ($attrs.type === 'month') {
+      if (attrs.type === 'month') {
         datepickerEl.attr('datepicker-mode', '"month"');
         datepickerEl.attr('min-mode', 'month');
       }
     }
 
-    if ($scope.datepickerOptions) {
-      datepickerEl.attr('datepicker-options', 'datepickerOptions');
+    if (scope.datepickerOptions) {
+      angular.forEach(scope.datepickerOptions, function(value, option) {
+        // Ignore this options, will be managed later
+        if (['minDate', 'maxDate', 'minMode', 'maxMode', 'initDate', 'datepickerMode'].indexOf(option) === -1) {
+          datepickerEl.attr(cameltoDash(option), value);
+        } else {
+          datepickerEl.attr(cameltoDash(option), 'datepickerOptions.' + option);
+        }
+      });
     }
 
     angular.forEach(['minMode', 'maxMode', 'datepickerMode', 'shortcutPropagation'], function(key) {
-      if ($attrs[key]) {
-        if (datepickerPopupAttributeWarning) {
-          $log.warn('uib-datepicker settings via uib-datepicker-popup attributes are deprecated and will be removed in UI Bootstrap 1.3, use datepicker-options attribute instead');
-        }
-
-        var getAttribute = $parse($attrs[key]);
+      if (attrs[key]) {
+        var getAttribute = $parse(attrs[key]);
         var propConfig = {
           get: function() {
-            return getAttribute($scope.$parent);
+            return getAttribute(scope.$parent);
           }
         };
 
@@ -19690,23 +20060,19 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
         if (key === 'datepickerMode') {
           var setAttribute = getAttribute.assign;
           propConfig.set = function(v) {
-            setAttribute($scope.$parent, v);
+            setAttribute(scope.$parent, v);
           };
         }
 
-        Object.defineProperty($scope.watchData, key, propConfig);
+        Object.defineProperty(scope.watchData, key, propConfig);
       }
     });
 
     angular.forEach(['minDate', 'maxDate', 'initDate'], function(key) {
-      if ($attrs[key]) {
-        if (datepickerPopupAttributeWarning) {
-          $log.warn('uib-datepicker settings via uib-datepicker-popup attributes are deprecated and will be removed in UI Bootstrap 1.3, use datepicker-options attribute instead');
-        }
+      if (attrs[key]) {
+        var getAttribute = $parse(attrs[key]);
 
-        var getAttribute = $parse($attrs[key]);
-
-        watchListeners.push($scope.$parent.$watch(getAttribute, function(value) {
+        watchListeners.push(scope.$parent.$watch(getAttribute, function(value) {
           if (key === 'minDate' || key === 'maxDate') {
             if (value === null) {
               cache[key] = null;
@@ -19716,10 +20082,9 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
               cache[key] = new Date(dateFilter(value, 'medium'));
             }
 
-            $scope.watchData[key] = value === null ? null : cache[key];
+            scope.watchData[key] = value === null ? null : cache[key];
           } else {
-            var date = value ? new Date(value) : new Date();
-            $scope.watchData[key] = dateParser.fromTimezone(date, ngModelOptions.timezone);
+            scope.watchData[key] = dateParser.fromTimezone(new Date(value), ngModelOptions.timezone);
           }
         }));
 
@@ -19727,29 +20092,17 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
       }
     });
 
-    if ($attrs.dateDisabled) {
-      if (datepickerPopupAttributeWarning) {
-        $log.warn('uib-datepicker settings via uib-datepicker-popup attributes are deprecated and will be removed in UI Bootstrap 1.3, use datepicker-options attribute instead');
-      }
-
+    if (attrs.dateDisabled) {
       datepickerEl.attr('date-disabled', 'dateDisabled({ date: date, mode: mode })');
     }
 
     angular.forEach(['formatDay', 'formatMonth', 'formatYear', 'formatDayHeader', 'formatDayTitle', 'formatMonthTitle', 'showWeeks', 'startingDay', 'yearRows', 'yearColumns'], function(key) {
-      if (angular.isDefined($attrs[key])) {
-        if (datepickerPopupAttributeWarning) {
-          $log.warn('uib-datepicker settings via uib-datepicker-popup attributes are deprecated and will be removed in UI Bootstrap 1.3, use datepicker-options attribute instead');
-        }
-
-        datepickerEl.attr(cameltoDash(key), $attrs[key]);
+      if (angular.isDefined(attrs[key])) {
+        datepickerEl.attr(cameltoDash(key), attrs[key]);
       }
     });
 
-    if ($attrs.customClass) {
-      if (datepickerPopupAttributeWarning) {
-        $log.warn('uib-datepicker settings via uib-datepicker-popup attributes are deprecated and will be removed in UI Bootstrap 1.3, use datepicker-options attribute instead');
-      }
-
+    if (attrs.customClass) {
       datepickerEl.attr('custom-class', 'customClass({ date: date, mode: mode })');
     }
 
@@ -19760,58 +20113,54 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
       ngModel.$parsers.unshift(parseDate);
       ngModel.$formatters.push(function(value) {
         if (ngModel.$isEmpty(value)) {
-          $scope.date = value;
+          scope.date = value;
           return value;
         }
 
-        $scope.date = dateParser.fromTimezone(value, ngModelOptions.timezone);
+        scope.date = dateParser.fromTimezone(value, ngModelOptions.timezone);
 
-        if (angular.isNumber($scope.date)) {
-          $scope.date = new Date($scope.date);
+        if (angular.isNumber(scope.date)) {
+          scope.date = new Date(scope.date);
         }
 
-        return dateParser.filter($scope.date, dateFormat);
+        return dateParser.filter(scope.date, dateFormat);
       });
     } else {
       ngModel.$formatters.push(function(value) {
-        $scope.date = dateParser.fromTimezone(value, ngModelOptions.timezone);
+        scope.date = dateParser.fromTimezone(value, ngModelOptions.timezone);
         return value;
       });
     }
 
     // Detect changes in the view from the text box
     ngModel.$viewChangeListeners.push(function() {
-      $scope.date = parseDateString(ngModel.$viewValue);
+      scope.date = parseDateString(ngModel.$viewValue);
     });
 
-    $element.on('keydown', inputKeydownBind);
+    element.on('keydown', inputKeydownBind);
 
-    $popup = $compile(popupEl)($scope);
+    $popup = $compile(popupEl)(scope);
     // Prevent jQuery cache memory leak (template is now redundant after linking)
     popupEl.remove();
 
     if (appendToBody) {
       $document.find('body').append($popup);
     } else {
-      $element.after($popup);
+      element.after($popup);
     }
 
-    $scope.$on('$destroy', function() {
-      if ($scope.isOpen === true) {
+    scope.$on('$destroy', function() {
+      if (scope.isOpen === true) {
         if (!$rootScope.$$phase) {
-          $scope.$apply(function() {
-            $scope.isOpen = false;
+          scope.$apply(function() {
+            scope.isOpen = false;
           });
         }
       }
 
       $popup.remove();
-      $element.off('keydown', inputKeydownBind);
+      element.off('keydown', inputKeydownBind);
       $document.off('click', documentClickBind);
-      if (scrollParentEl) {
-        scrollParentEl.off('scroll', positionPopup);
-      }
-      angular.element($window).off('resize', positionPopup);
 
       //Clear all watch listeners on destroy
       while (watchListeners.length) {
@@ -19820,107 +20169,88 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
     });
   };
 
-  $scope.getText = function(key) {
-    return $scope[key + 'Text'] || datepickerPopupConfig[key + 'Text'];
+  scope.getText = function(key) {
+    return scope[key + 'Text'] || datepickerPopupConfig[key + 'Text'];
   };
 
-  $scope.isDisabled = function(date) {
+  scope.isDisabled = function(date) {
     if (date === 'today') {
       date = new Date();
     }
 
-    return $scope.watchData.minDate && $scope.compare(date, cache.minDate) < 0 ||
-        $scope.watchData.maxDate && $scope.compare(date, cache.maxDate) > 0;
+    return scope.watchData.minDate && scope.compare(date, cache.minDate) < 0 ||
+        scope.watchData.maxDate && scope.compare(date, cache.maxDate) > 0;
   };
 
-  $scope.compare = function(date1, date2) {
+  scope.compare = function(date1, date2) {
     return new Date(date1.getFullYear(), date1.getMonth(), date1.getDate()) - new Date(date2.getFullYear(), date2.getMonth(), date2.getDate());
   };
 
   // Inner change
-  $scope.dateSelection = function(dt) {
+  scope.dateSelection = function(dt) {
     if (angular.isDefined(dt)) {
-      $scope.date = dt;
+      scope.date = dt;
     }
-    var date = $scope.date ? dateParser.filter($scope.date, dateFormat) : null; // Setting to NULL is necessary for form validators to function
-    $element.val(date);
+    var date = scope.date ? dateParser.filter(scope.date, dateFormat) : null; // Setting to NULL is necessary for form validators to function
+    element.val(date);
     ngModel.$setViewValue(date);
 
     if (closeOnDateSelection) {
-      $scope.isOpen = false;
-      $element[0].focus();
+      scope.isOpen = false;
+      element[0].focus();
     }
   };
 
-  $scope.keydown = function(evt) {
+  scope.keydown = function(evt) {
     if (evt.which === 27) {
       evt.stopPropagation();
-      $scope.isOpen = false;
-      $element[0].focus();
+      scope.isOpen = false;
+      element[0].focus();
     }
   };
 
-  $scope.select = function(date, evt) {
-    evt.stopPropagation();
-
+  scope.select = function(date) {
     if (date === 'today') {
       var today = new Date();
-      if (angular.isDate($scope.date)) {
-        date = new Date($scope.date);
+      if (angular.isDate(scope.date)) {
+        date = new Date(scope.date);
         date.setFullYear(today.getFullYear(), today.getMonth(), today.getDate());
       } else {
         date = new Date(today.setHours(0, 0, 0, 0));
       }
     }
-    $scope.dateSelection(date);
+    scope.dateSelection(date);
   };
 
-  $scope.close = function(evt) {
-    evt.stopPropagation();
-
-    $scope.isOpen = false;
-    $element[0].focus();
+  scope.close = function() {
+    scope.isOpen = false;
+    element[0].focus();
   };
 
-  $scope.disabled = angular.isDefined($attrs.disabled) || false;
-  if ($attrs.ngDisabled) {
-    watchListeners.push($scope.$parent.$watch($parse($attrs.ngDisabled), function(disabled) {
-      $scope.disabled = disabled;
+  scope.disabled = angular.isDefined(attrs.disabled) || false;
+  if (attrs.ngDisabled) {
+    watchListeners.push(scope.$parent.$watch($parse(attrs.ngDisabled), function(disabled) {
+      scope.disabled = disabled;
     }));
   }
 
-  $scope.$watch('isOpen', function(value) {
+  scope.$watch('isOpen', function(value) {
     if (value) {
-      if (!$scope.disabled) {
-        $timeout(function() {
-          positionPopup();
+      if (!scope.disabled) {
+        scope.position = appendToBody ? $position.offset(element) : $position.position(element);
+        scope.position.top = scope.position.top + element.prop('offsetHeight');
 
+        $timeout(function() {
           if (onOpenFocus) {
-            $scope.$broadcast('uib:datepicker.focus');
+            scope.$broadcast('uib:datepicker.focus');
           }
           $document.on('click', documentClickBind);
-
-          var placement = $attrs.popupPlacement ? $attrs.popupPlacement : datepickerPopupConfig.placement;
-          if (appendToBody || $position.parsePlacement(placement)[2]) {
-            scrollParentEl = scrollParentEl || angular.element($position.scrollParent($element));
-            if (scrollParentEl) {
-              scrollParentEl.on('scroll', positionPopup);
-            }
-          } else {
-            scrollParentEl = null;
-          }
-
-          angular.element($window).on('resize', positionPopup);
         }, 0, false);
       } else {
-        $scope.isOpen = false;
+        scope.isOpen = false;
       }
     } else {
       $document.off('click', documentClickBind);
-      if (scrollParentEl) {
-        scrollParentEl.off('scroll', positionPopup);
-      }
-      angular.element($window).off('resize', positionPopup);
     }
   });
 
@@ -19929,10 +20259,10 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
   }
 
   function parseDateString(viewValue) {
-    var date = dateParser.parse(viewValue, dateFormat, $scope.date);
+    var date = dateParser.parse(viewValue, dateFormat, scope.date);
     if (isNaN(date)) {
       for (var i = 0; i < altInputFormats.length; i++) {
-        date = dateParser.parse(viewValue, altInputFormats[i], $scope.date);
+        date = dateParser.parse(viewValue, altInputFormats[i], scope.date);
         if (!isNaN(date)) {
           return date;
         }
@@ -19968,7 +20298,7 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
   function validator(modelValue, viewValue) {
     var value = modelValue || viewValue;
 
-    if (!$attrs.ngRequired && !value) {
+    if (!attrs.ngRequired && !value) {
       return true;
     }
 
@@ -19992,54 +20322,38 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
   }
 
   function documentClickBind(event) {
-    if (!$scope.isOpen && $scope.disabled) {
+    if (!scope.isOpen && scope.disabled) {
       return;
     }
 
     var popup = $popup[0];
-    var dpContainsTarget = $element[0].contains(event.target);
+    var dpContainsTarget = element[0].contains(event.target);
     // The popup node may not be an element node
     // In some browsers (IE) only element nodes have the 'contains' function
     var popupContainsTarget = popup.contains !== undefined && popup.contains(event.target);
-    if ($scope.isOpen && !(dpContainsTarget || popupContainsTarget)) {
-      $scope.$apply(function() {
-        $scope.isOpen = false;
+    if (scope.isOpen && !(dpContainsTarget || popupContainsTarget)) {
+      scope.$apply(function() {
+        scope.isOpen = false;
       });
     }
   }
 
   function inputKeydownBind(evt) {
-    if (evt.which === 27 && $scope.isOpen) {
+    if (evt.which === 27 && scope.isOpen) {
       evt.preventDefault();
       evt.stopPropagation();
-      $scope.$apply(function() {
-        $scope.isOpen = false;
+      scope.$apply(function() {
+        scope.isOpen = false;
       });
-      $element[0].focus();
-    } else if (evt.which === 40 && !$scope.isOpen) {
+      element[0].focus();
+    } else if (evt.which === 40 && !scope.isOpen) {
       evt.preventDefault();
       evt.stopPropagation();
-      $scope.$apply(function() {
-        $scope.isOpen = true;
+      scope.$apply(function() {
+        scope.isOpen = true;
       });
     }
   }
-
-  function positionPopup() {
-    if ($scope.isOpen) {
-      var dpElement = angular.element($popup[0].querySelector('.uib-datepicker-popup'));
-      var placement = $attrs.popupPlacement ? $attrs.popupPlacement : datepickerPopupConfig.placement;
-      var position = $position.positionElements($element, dpElement, placement, appendToBody);
-      dpElement.css({top: position.top + 'px', left: position.left + 'px'});
-      if (dpElement.hasClass('uib-position-measure')) {
-        dpElement.removeClass('uib-position-measure');
-      }
-    }
-  }
-
-  $scope.$on('uib:datepicker.mode', function() {
-    $timeout(positionPopup, 0, false);
-  });
 }])
 
 .directive('uibDatepickerPopup', function() {
@@ -20319,15 +20633,12 @@ angular.module('ui.bootstrap.dropdown', ['ui.bootstrap.position'])
     }
 
     var openContainer = appendTo ? appendTo : $element;
-    var hasOpenClass = openContainer.hasClass(appendTo ? appendToOpenClass : openClass);
 
-    if (hasOpenClass === !isOpen) {
-      $animate[isOpen ? 'addClass' : 'removeClass'](openContainer, appendTo ? appendToOpenClass : openClass).then(function() {
-        if (angular.isDefined(isOpen) && isOpen !== wasOpen) {
-          toggleInvoker($scope, { open: !!isOpen });
-        }
-      });
-    }
+    $animate[isOpen ? 'addClass' : 'removeClass'](openContainer, appendTo ? appendToOpenClass : openClass).then(function() {
+      if (angular.isDefined(isOpen) && isOpen !== wasOpen) {
+        toggleInvoker($scope, { open: !!isOpen });
+      }
+    });
 
     if (isOpen) {
       if (self.dropdownMenuTemplateUrl) {
@@ -20695,12 +21006,6 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap'])
 
 
           $q.when(animationPromise).then(function() {
-            // Notify {@link $modalStack} that modal is rendered.
-            var modal = $modalStack.getTop();
-            if (modal) {
-              $modalStack.modalRendered(modal.key);
-            }
-
             /**
              * If something within the freshly-opened modal already has focus (perhaps via a
              * directive that causes focus). then no need to try and focus anything.
@@ -20722,6 +21027,12 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap'])
               }
             }
           });
+
+          // Notify {@link $modalStack} that modal is rendered.
+          var modal = $modalStack.getTop();
+          if (modal) {
+            $modalStack.modalRendered(modal.key);
+          }
         });
       }
     };
@@ -20973,9 +21284,7 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap'])
 
         $animate.enter($compile(angularDomEl)(modal.scope), appendToElement)
           .then(function() {
-            if (!modal.scope.$$uibDestructionScheduled) {
-              $animate.addClass(appendToElement, modalBodyClass);
-            }
+            $animate.addClass(appendToElement, modalBodyClass);
           });
 
         openedWindows.top().value.modalDomEl = angularDomEl;
@@ -21181,9 +21490,6 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap'])
                       ctrlInstance.$close = modalScope.$close;
                       ctrlInstance.$dismiss = modalScope.$dismiss;
                       angular.extend(ctrlInstance, providedScope);
-                      if (angular.isFunction(ctrlInstance.$onInit)) {
-                        ctrlInstance.$onInit();
-                      }
                     }
 
                     modalScope[modalOptions.controllerAs] = ctrlInstance;
@@ -21250,7 +21556,7 @@ angular.module('ui.bootstrap.paging', [])
         };
 
         if ($attrs.itemsPerPage) {
-          ctrl._watchers.push($scope.$parent.$watch($attrs.itemsPerPage, function(value) {
+          ctrl._watchers.push($scope.$parent.$watch($parse($attrs.itemsPerPage), function(value) {
             ctrl.itemsPerPage = parseInt(value, 10);
             $scope.totalPages = ctrl.calculateTotalPages();
             ctrl.updatePage();
@@ -21371,8 +21677,7 @@ angular.module('ui.bootstrap.pagination', ['ui.bootstrap.paging'])
   var maxSize = angular.isDefined($attrs.maxSize) ? $scope.$parent.$eval($attrs.maxSize) : uibPaginationConfig.maxSize,
     rotate = angular.isDefined($attrs.rotate) ? $scope.$parent.$eval($attrs.rotate) : uibPaginationConfig.rotate,
     forceEllipses = angular.isDefined($attrs.forceEllipses) ? $scope.$parent.$eval($attrs.forceEllipses) : uibPaginationConfig.forceEllipses,
-    boundaryLinkNumbers = angular.isDefined($attrs.boundaryLinkNumbers) ? $scope.$parent.$eval($attrs.boundaryLinkNumbers) : uibPaginationConfig.boundaryLinkNumbers,
-    pageLabel = angular.isDefined($attrs.pageLabel) ? function(idx) { return $scope.$parent.$eval($attrs.pageLabel, {$page: idx}); } : angular.identity;
+    boundaryLinkNumbers = angular.isDefined($attrs.boundaryLinkNumbers) ? $scope.$parent.$eval($attrs.boundaryLinkNumbers) : uibPaginationConfig.boundaryLinkNumbers;
   $scope.boundaryLinks = angular.isDefined($attrs.boundaryLinks) ? $scope.$parent.$eval($attrs.boundaryLinks) : uibPaginationConfig.boundaryLinks;
   $scope.directionLinks = angular.isDefined($attrs.directionLinks) ? $scope.$parent.$eval($attrs.directionLinks) : uibPaginationConfig.directionLinks;
 
@@ -21424,7 +21729,7 @@ angular.module('ui.bootstrap.pagination', ['ui.bootstrap.paging'])
 
     // Add page number links
     for (var number = startPage; number <= endPage; number++) {
-      var page = makePage(number, pageLabel(number), number === currentPage);
+      var page = makePage(number, number, number === currentPage);
       pages.push(page);
     }
 
@@ -21649,7 +21954,7 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
           'animation="animation" ' +
           'is-open="isOpen"' +
           'origin-scope="origScope" ' +
-          'class="uib-position-measure"' +
+          'style="visibility: hidden; display: block; top: -9999px; left: -9999px;"' +
           '>' +
         '</div>';
 
@@ -21672,7 +21977,6 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
             var isOpenParse = angular.isDefined(attrs[prefix + 'IsOpen']) ? $parse(attrs[prefix + 'IsOpen']) : false;
             var contentParse = options.useContentExp ? $parse(attrs[ttType]) : false;
             var observers = [];
-            var lastPlacement;
 
             var positionTooltip = function() {
               // check if tooltip exists and is not empty
@@ -21680,29 +21984,36 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
 
               if (!positionTimeout) {
                 positionTimeout = $timeout(function() {
+                  // Reset the positioning.
+                  tooltip.css({ top: 0, left: 0 });
+
+                  // Now set the calculated positioning.
                   var ttPosition = $position.positionElements(element, tooltip, ttScope.placement, appendToBody);
-                  tooltip.css({ top: ttPosition.top + 'px', left: ttPosition.left + 'px' });
+                  tooltip.css({ top: ttPosition.top + 'px', left: ttPosition.left + 'px', visibility: 'visible' });
 
-                  if (!tooltip.hasClass(ttPosition.placement.split('-')[0])) {
-                    tooltip.removeClass(lastPlacement.split('-')[0]);
-                    tooltip.addClass(ttPosition.placement.split('-')[0]);
+                  // If the placement class is prefixed, still need
+                  // to remove the TWBS standard class.
+                  if (options.placementClassPrefix) {
+                    tooltip.removeClass('top bottom left right');
                   }
 
-                  if (!tooltip.hasClass(options.placementClassPrefix + ttPosition.placement)) {
-                    tooltip.removeClass(options.placementClassPrefix + lastPlacement);
-                    tooltip.addClass(options.placementClassPrefix + ttPosition.placement);
-                  }
+                  tooltip.removeClass(
+                    options.placementClassPrefix + 'top ' +
+                    options.placementClassPrefix + 'top-left ' +
+                    options.placementClassPrefix + 'top-right ' +
+                    options.placementClassPrefix + 'bottom ' +
+                    options.placementClassPrefix + 'bottom-left ' +
+                    options.placementClassPrefix + 'bottom-right ' +
+                    options.placementClassPrefix + 'left ' +
+                    options.placementClassPrefix + 'left-top ' +
+                    options.placementClassPrefix + 'left-bottom ' +
+                    options.placementClassPrefix + 'right ' +
+                    options.placementClassPrefix + 'right-top ' +
+                    options.placementClassPrefix + 'right-bottom');
 
-                  // first time through tt element will have the
-                  // uib-position-measure class or if the placement
-                  // has changed we need to position the arrow.
-                  if (tooltip.hasClass('uib-position-measure')) {
-                    $position.positionArrow(tooltip, ttPosition.placement);
-                    tooltip.removeClass('uib-position-measure');
-                  } else if (lastPlacement !== ttPosition.placement) {
-                    $position.positionArrow(tooltip, ttPosition.placement);
-                  }
-                  lastPlacement = ttPosition.placement;
+                  var placement = ttPosition.placement.split('-');
+                  tooltip.addClass(placement[0] + ' ' + options.placementClassPrefix + ttPosition.placement);
+                  $position.positionArrow(tooltip, ttPosition.placement);
 
                   positionTimeout = null;
                 }, 0, false);
@@ -21877,8 +22188,6 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
 
               ttScope.popupClass = attrs[prefix + 'Class'];
               ttScope.placement = angular.isDefined(attrs[prefix + 'Placement']) ? attrs[prefix + 'Placement'] : options.placement;
-              var placement = $position.parsePlacement(ttScope.placement);
-              lastPlacement = placement[1] ? placement[0] + '-' + placement[1] : placement[0];
 
               var delay = parseInt(attrs[prefix + 'PopupDelay'], 10);
               var closeDelay = parseInt(attrs[prefix + 'PopupCloseDelay'], 10);
@@ -21968,8 +22277,6 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
               observers.push(
                 attrs.$observe(prefix + 'Placement', function(val) {
                   ttScope.placement = val ? val : options.placement;
-                  var placement = $position.parsePlacement(ttScope.placement);
-                  lastPlacement = placement[1] ? placement[0] + '-' + placement[1] : placement[0];
                   if (ttScope.isOpen) {
                     positionTooltip();
                   }
@@ -22056,7 +22363,7 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
             }
 
             appendToBody = angular.isDefined(appendToBodyVal) ? appendToBodyVal : appendToBody;
-
+            
             // Make sure tooltip is destroyed and removed.
             scope.$on('$destroy', function onDestroyTooltip() {
               unregisterTriggers();
@@ -22158,6 +22465,8 @@ function ($animate, $sce, $compile, $templateRequest) {
         // // in TWBS, so we need the primary position.
         var position = $uibPosition.parsePlacement(scope.placement);
         element.addClass(position[0]);
+      } else {
+        element.addClass('top');
       }
 
       if (scope.popupClass) {
@@ -22272,7 +22581,7 @@ angular.module('ui.bootstrap.progressbar', [])
       animate = angular.isDefined($attrs.animate) ? $scope.$parent.$eval($attrs.animate) : progressConfig.animate;
 
   this.bars = [];
-  $scope.max = getMaxOrDefault();
+  $scope.max = angular.isDefined($scope.max) ? $scope.max : progressConfig.max;
 
   this.addBar = function(bar, element, attrs) {
     if (!animate) {
@@ -22281,7 +22590,7 @@ angular.module('ui.bootstrap.progressbar', [])
 
     this.bars.push(bar);
 
-    bar.max = getMaxOrDefault();
+    bar.max = $scope.max;
     bar.title = attrs && angular.isDefined(attrs.title) ? attrs.title : 'progressbar';
 
     bar.$watch('value', function(value) {
@@ -22312,17 +22621,12 @@ angular.module('ui.bootstrap.progressbar', [])
     });
   };
 
-  //$attrs.$observe('maxParam', function(maxParam) {
-  $scope.$watch('maxParam', function(maxParam) {
+  $scope.$watch('max', function(max) {
     self.bars.forEach(function(bar) {
-      bar.max = getMaxOrDefault();
+      bar.max = $scope.max;
       bar.recalculatePercentage();
     });
   });
-
-  function getMaxOrDefault () {
-    return angular.isDefined($scope.maxParam) ? $scope.maxParam : progressConfig.max;
-  }
 }])
 
 .directive('uibProgress', function() {
@@ -22332,7 +22636,7 @@ angular.module('ui.bootstrap.progressbar', [])
     controller: 'UibProgressController',
     require: 'uibProgress',
     scope: {
-      maxParam: '=?max'
+      max: '=?'
     },
     templateUrl: 'uib/template/progressbar/progress.html'
   };
@@ -22361,7 +22665,7 @@ angular.module('ui.bootstrap.progressbar', [])
     controller: 'UibProgressController',
     scope: {
       value: '=',
-      maxParam: '=?max',
+      max: '=?',
       type: '@'
     },
     templateUrl: 'uib/template/progressbar/progressbar.html',
@@ -22458,7 +22762,7 @@ angular.module('ui.bootstrap.rating', [])
   return {
     require: ['uibRating', 'ngModel'],
     scope: {
-      readonly: '=?readOnly',
+      readonly: '=?',
       onHover: '&',
       onLeave: '&'
     },
@@ -22476,108 +22780,66 @@ angular.module('ui.bootstrap.tabs', [])
 
 .controller('UibTabsetController', ['$scope', function ($scope) {
   var ctrl = this,
-    oldIndex;
-  ctrl.tabs = [];
+      tabs = ctrl.tabs = $scope.tabs = [];
 
-  ctrl.select = function(index) {
-    if (!destroyed) {
-      var previousIndex = findTabIndex(oldIndex);
-      var previousSelected = ctrl.tabs[previousIndex];
-      if (previousSelected) {
-        previousSelected.tab.onDeselect();
-        previousSelected.tab.active = false;
+  ctrl.select = function(selectedTab) {
+    angular.forEach(tabs, function(tab) {
+      if (tab.active && tab !== selectedTab) {
+        tab.active = false;
+        tab.onDeselect();
+        selectedTab.selectCalled = false;
       }
-
-      var selected = ctrl.tabs[index];
-      if (selected) {
-        selected.tab.onSelect();
-        selected.tab.active = true;
-        ctrl.active = selected.index;
-        oldIndex = selected.index;
-      } else if (!selected && angular.isNumber(oldIndex)) {
-        ctrl.active = null;
-        oldIndex = null;
-      }
+    });
+    selectedTab.active = true;
+    // only call select if it has not already been called
+    if (!selectedTab.selectCalled) {
+      selectedTab.onSelect();
+      selectedTab.selectCalled = true;
     }
   };
 
   ctrl.addTab = function addTab(tab) {
-    ctrl.tabs.push({
-      tab: tab,
-      index: tab.index
-    });
-    ctrl.tabs.sort(function(t1, t2) {
-      if (t1.index > t2.index) {
-        return 1;
-      }
-
-      if (t1.index < t2.index) {
-        return -1;
-      }
-
-      return 0;
-    });
-
-    if (tab.index === ctrl.active || !angular.isNumber(ctrl.active) && ctrl.tabs.length === 1) {
-      var newActiveIndex = findTabIndex(tab.index);
-      ctrl.select(newActiveIndex);
+    tabs.push(tab);
+    // we can't run the select function on the first tab
+    // since that would select it twice
+    if (tabs.length === 1 && tab.active !== false) {
+      tab.active = true;
+    } else if (tab.active) {
+      ctrl.select(tab);
+    } else {
+      tab.active = false;
     }
   };
 
   ctrl.removeTab = function removeTab(tab) {
-    var index = findTabIndex(tab.index);
-
-    if (tab.index === ctrl.active) {
-      var newActiveTabIndex = index === ctrl.tabs.length - 1 ?
-        index - 1 : index + 1 % ctrl.tabs.length;
-      ctrl.select(newActiveTabIndex);
+    var index = tabs.indexOf(tab);
+    //Select a new tab if the tab to be removed is selected and not destroyed
+    if (tab.active && tabs.length > 1 && !destroyed) {
+      //If this is the last tab, select the previous tab. else, the next tab.
+      var newActiveIndex = index === tabs.length - 1 ? index - 1 : index + 1;
+      ctrl.select(tabs[newActiveIndex]);
     }
-
-    ctrl.tabs.splice(index, 1);
+    tabs.splice(index, 1);
   };
-
-  $scope.$watch('tabset.active', function(val) {
-    if (angular.isNumber(val) && val !== oldIndex) {
-      ctrl.select(findTabIndex(val));
-    }
-  });
 
   var destroyed;
   $scope.$on('$destroy', function() {
     destroyed = true;
   });
-
-  function findTabIndex(index) {
-    for (var i = 0; i < ctrl.tabs.length; i++) {
-      if (ctrl.tabs[i].index === index) {
-        return i;
-      }
-    }
-  }
 }])
 
 .directive('uibTabset', function() {
   return {
     transclude: true,
     replace: true,
-    scope: {},
-    bindToController: {
-      active: '=?',
+    scope: {
       type: '@'
     },
     controller: 'UibTabsetController',
-    controllerAs: 'tabset',
-    templateUrl: function(element, attrs) {
-      return attrs.templateUrl || 'uib/template/tabs/tabset.html';
-    },
+    templateUrl: 'uib/template/tabs/tabset.html',
     link: function(scope, element, attrs) {
-      scope.vertical = angular.isDefined(attrs.vertical) ?
-        scope.$parent.$eval(attrs.vertical) : false;
-      scope.justified = angular.isDefined(attrs.justified) ?
-        scope.$parent.$eval(attrs.justified) : false;
-      if (angular.isUndefined(attrs.active)) {
-        scope.active = 0;
-      }
+      scope.vertical = angular.isDefined(attrs.vertical) ? scope.$parent.$eval(attrs.vertical) : false;
+      scope.justified = angular.isDefined(attrs.justified) ? scope.$parent.$eval(attrs.justified) : false;
     }
   };
 })
@@ -22586,14 +22848,11 @@ angular.module('ui.bootstrap.tabs', [])
   return {
     require: '^uibTabset',
     replace: true,
-    templateUrl: function(element, attrs) {
-      return attrs.templateUrl || 'uib/template/tabs/tab.html';
-    },
+    templateUrl: 'uib/template/tabs/tab.html',
     transclude: true,
     scope: {
+      active: '=?',
       heading: '@',
-      index: '=?',
-      classes: '@?',
       onSelect: '&select', //This callback is called in contentHeadingTransclude
                           //once it inserts the tab's content into the dom
       onDeselect: '&deselect'
@@ -22603,6 +22862,12 @@ angular.module('ui.bootstrap.tabs', [])
     },
     controllerAs: 'tab',
     link: function(scope, elm, attrs, tabsetCtrl, transclude) {
+      scope.$watch('active', function(active) {
+        if (active) {
+          tabsetCtrl.select(scope);
+        }
+      });
+
       scope.disabled = false;
       if (attrs.disable) {
         scope.$parent.$watch($parse(attrs.disable), function(value) {
@@ -22610,29 +22875,9 @@ angular.module('ui.bootstrap.tabs', [])
         });
       }
 
-      if (angular.isUndefined(attrs.index)) {
-        if (tabsetCtrl.tabs && tabsetCtrl.tabs.length) {
-          scope.index = Math.max.apply(null, tabsetCtrl.tabs.map(function(t) { return t.index; })) + 1;
-        } else {
-          scope.index = 0;
-        }
-      }
-
-      if (angular.isUndefined(attrs.classes)) {
-        scope.classes = '';
-      }
-
       scope.select = function() {
         if (!scope.disabled) {
-          var index;
-          for (var i = 0; i < tabsetCtrl.tabs.length; i++) {
-            if (tabsetCtrl.tabs[i].tab === scope) {
-              index = i;
-              break;
-            }
-          }
-
-          tabsetCtrl.select(index);
+          scope.active = true;
         }
       };
 
@@ -22668,7 +22913,7 @@ angular.module('ui.bootstrap.tabs', [])
     restrict: 'A',
     require: '^uibTabset',
     link: function(scope, elm, attrs) {
-      var tab = scope.$eval(attrs.uibTabContentTransclude).tab;
+      var tab = scope.$eval(attrs.uibTabContentTransclude);
 
       //Now our tab is ready to be transcluded: both the tab heading area
       //and the tab content area are loaded.  Transclude 'em both.
@@ -23287,10 +23532,6 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.debounce', 'ui.bootstrap
       minLength = 1;
     }
 
-    originalScope.$watch(attrs.typeaheadMinLength, function (newVal) {
-        minLength = !newVal && newVal !== 0 ? 1 : newVal;
-    });
-    
     //minimal wait time after last character typed before typeahead kicks-in
     var waitTime = originalScope.$eval(attrs.typeaheadWaitMs) || 0;
 
@@ -23377,7 +23618,6 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.debounce', 'ui.bootstrap
       element.after(inputsContainer);
       hintInputElem = element.clone();
       hintInputElem.attr('placeholder', '');
-      hintInputElem.attr('tabindex', '-1');
       hintInputElem.val('');
       hintInputElem.css({
         'position': 'absolute',
@@ -23618,13 +23858,8 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.debounce', 'ui.bootstrap
         return;
       }
 
-      /**
-       * if there's nothing selected (i.e. focusFirst) and enter or tab is hit
-       * or
-       * shift + tab is pressed to bring focus to the previous element
-       * then clear the results
-       */
-      if (scope.activeIdx === -1 && (evt.which === 9 || evt.which === 13) || evt.which === 9 && !!evt.shiftKey) {
+      // if there's nothing selected (i.e. focusFirst) and enter or tab is hit, clear the results
+      if (scope.activeIdx === -1 && (evt.which === 9 || evt.which === 13)) {
         resetMatches();
         scope.$digest();
         return;
@@ -23910,7 +24145,7 @@ angular.module("uib/template/accordion/accordion-group.html", []).run(["$templat
     "<div class=\"panel\" ng-class=\"panelClass || 'panel-default'\">\n" +
     "  <div role=\"tab\" id=\"{{::headingId}}\" aria-selected=\"{{isOpen}}\" class=\"panel-heading\" ng-keypress=\"toggleOpen($event)\">\n" +
     "    <h4 class=\"panel-title\">\n" +
-    "      <a role=\"button\" data-toggle=\"collapse\" href aria-expanded=\"{{isOpen}}\" aria-controls=\"{{::panelId}}\" tabindex=\"0\" class=\"accordion-toggle\" ng-click=\"toggleOpen()\" uib-accordion-transclude=\"heading\"><span uib-accordion-header ng-class=\"{'text-muted': isDisabled}\">{{heading}}</span></a>\n" +
+    "      <a role=\"button\" data-toggle=\"collapse\" href aria-expanded=\"{{isOpen}}\" aria-controls=\"{{::panelId}}\" tabindex=\"0\" class=\"accordion-toggle\" ng-click=\"toggleOpen()\" uib-accordion-transclude=\"heading\"><span ng-class=\"{'text-muted': isDisabled}\">{{heading}}</span></a>\n" +
     "    </h4>\n" +
     "  </div>\n" +
     "  <div id=\"{{::panelId}}\" aria-labelledby=\"{{::headingId}}\" aria-hidden=\"{{!isOpen}}\" role=\"tabpanel\" class=\"panel-collapse collapse\" uib-collapse=\"!isOpen\">\n" +
@@ -23954,8 +24189,7 @@ angular.module("uib/template/carousel/carousel.html", []).run(["$templateCache",
     "      <span class=\"sr-only\">slide {{ $index + 1 }} of {{ slides.length }}<span ng-if=\"isActive(slide)\">, currently active</span></span>\n" +
     "    </li>\n" +
     "  </ol>\n" +
-    "</div>\n" +
-    "");
+    "</div>");
 }]);
 
 angular.module("uib/template/carousel/slide.html", []).run(["$templateCache", function($templateCache) {
@@ -23972,8 +24206,7 @@ angular.module("uib/template/datepicker/datepicker.html", []).run(["$templateCac
     "  <uib-daypicker ng-switch-when=\"day\" tabindex=\"0\"></uib-daypicker>\n" +
     "  <uib-monthpicker ng-switch-when=\"month\" tabindex=\"0\"></uib-monthpicker>\n" +
     "  <uib-yearpicker ng-switch-when=\"year\" tabindex=\"0\"></uib-yearpicker>\n" +
-    "</div>\n" +
-    "");
+    "</div>");
 }]);
 
 angular.module("uib/template/datepicker/day.html", []).run(["$templateCache", function($templateCache) {
@@ -24044,14 +24277,14 @@ angular.module("uib/template/datepicker/month.html", []).run(["$templateCache", 
 angular.module("uib/template/datepicker/popup.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("uib/template/datepicker/popup.html",
     "<div>\n" +
-    "  <ul class=\"uib-datepicker-popup dropdown-menu uib-position-measure\" dropdown-nested ng-if=\"isOpen\" ng-keydown=\"keydown($event)\" ng-click=\"$event.stopPropagation()\">\n" +
+    "  <ul class=\"uib-datepicker-popup dropdown-menu\" dropdown-nested ng-if=\"isOpen\" ng-style=\"{top: position.top+'px', left: position.left+'px'}\" ng-keydown=\"keydown($event)\" ng-click=\"$event.stopPropagation()\">\n" +
     "    <li ng-transclude></li>\n" +
     "    <li ng-if=\"showButtonBar\" class=\"uib-button-bar\">\n" +
-    "      <span class=\"btn-group pull-left\">\n" +
-    "        <button type=\"button\" class=\"btn btn-sm btn-info uib-datepicker-current\" ng-click=\"select('today', $event)\" ng-disabled=\"isDisabled('today')\">{{ getText('current') }}</button>\n" +
-    "        <button type=\"button\" class=\"btn btn-sm btn-danger uib-clear\" ng-click=\"select(null, $event)\">{{ getText('clear') }}</button>\n" +
-    "      </span>\n" +
-    "      <button type=\"button\" class=\"btn btn-sm btn-success pull-right uib-close\" ng-click=\"close($event)\">{{ getText('close') }}</button>\n" +
+    "    <span class=\"btn-group pull-left\">\n" +
+    "      <button type=\"button\" class=\"btn btn-sm btn-info uib-datepicker-current\" ng-click=\"select('today')\" ng-disabled=\"isDisabled('today')\">{{ getText('current') }}</button>\n" +
+    "      <button type=\"button\" class=\"btn btn-sm btn-danger uib-clear\" ng-click=\"select(null)\">{{ getText('clear') }}</button>\n" +
+    "    </span>\n" +
+    "      <button type=\"button\" class=\"btn btn-sm btn-success pull-right uib-close\" ng-click=\"close()\">{{ getText('close') }}</button>\n" +
     "    </li>\n" +
     "  </ul>\n" +
     "</div>\n" +
@@ -24111,15 +24344,6 @@ angular.module("uib/template/modal/window.html", []).run(["$templateCache", func
 
 angular.module("uib/template/pager/pager.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("uib/template/pager/pager.html",
-    "<ul class=\"pager\">\n" +
-    "  <li ng-class=\"{disabled: noPrevious()||ngDisabled, previous: align}\"><a href ng-click=\"selectPage(page - 1, $event)\">{{::getText('previous')}}</a></li>\n" +
-    "  <li ng-class=\"{disabled: noNext()||ngDisabled, next: align}\"><a href ng-click=\"selectPage(page + 1, $event)\">{{::getText('next')}}</a></li>\n" +
-    "</ul>\n" +
-    "");
-}]);
-
-angular.module("uib/template/pagination/pager.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("uib/template/pagination/pager.html",
     "<ul class=\"pager\">\n" +
     "  <li ng-class=\"{disabled: noPrevious()||ngDisabled, previous: align}\"><a href ng-click=\"selectPage(page - 1, $event)\">{{::getText('previous')}}</a></li>\n" +
     "  <li ng-class=\"{disabled: noNext()||ngDisabled, next: align}\"><a href ng-click=\"selectPage(page + 1, $event)\">{{::getText('next')}}</a></li>\n" +
@@ -24257,8 +24481,8 @@ angular.module("uib/template/rating/rating.html", []).run(["$templateCache", fun
 
 angular.module("uib/template/tabs/tab.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("uib/template/tabs/tab.html",
-    "<li ng-class=\"[{active: active, disabled: disabled}, classes]\" class=\"uib-tab nav-item\">\n" +
-    "  <a href ng-click=\"select()\" class=\"nav-link\" uib-tab-heading-transclude>{{heading}}</a>\n" +
+    "<li ng-class=\"{active: active, disabled: disabled}\" class=\"uib-tab\">\n" +
+    "  <a href ng-click=\"select()\" uib-tab-heading-transclude>{{heading}}</a>\n" +
     "</li>\n" +
     "");
 }]);
@@ -24266,11 +24490,11 @@ angular.module("uib/template/tabs/tab.html", []).run(["$templateCache", function
 angular.module("uib/template/tabs/tabset.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("uib/template/tabs/tabset.html",
     "<div>\n" +
-    "  <ul class=\"nav nav-{{tabset.type || 'tabs'}}\" ng-class=\"{'nav-stacked': vertical, 'nav-justified': justified}\" ng-transclude></ul>\n" +
+    "  <ul class=\"nav nav-{{type || 'tabs'}}\" ng-class=\"{'nav-stacked': vertical, 'nav-justified': justified}\" ng-transclude></ul>\n" +
     "  <div class=\"tab-content\">\n" +
-    "    <div class=\"tab-pane\"\n" +
-    "         ng-repeat=\"tab in tabset.tabs\"\n" +
-    "         ng-class=\"{active: tabset.active === tab.index}\"\n" +
+    "    <div class=\"tab-pane\" \n" +
+    "         ng-repeat=\"tab in tabs\" \n" +
+    "         ng-class=\"{active: tab.active}\"\n" +
     "         uib-tab-content-transclude=\"tab\">\n" +
     "    </div>\n" +
     "  </div>\n" +
@@ -24336,20 +24560,18 @@ angular.module("uib/template/typeahead/typeahead-popup.html", []).run(["$templat
     "");
 }]);
 angular.module('ui.bootstrap.carousel').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.ng-animate.item:not(.left):not(.right){-webkit-transition:0s ease-in-out left;transition:0s ease-in-out left}</style>'); });
-angular.module('ui.bootstrap.position').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-position-measure{display:block !important;visibility:hidden !important;position:absolute !important;top:-9999px !important;left:-9999px !important;}.uib-position-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll;}</style>'); });
-angular.module('ui.bootstrap.datepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-datepicker .uib-title{width:100%;}.uib-day button,.uib-month button,.uib-year button{min-width:100%;}.uib-datepicker-popup.dropdown-menu{display:block;float:none;margin:0;}.uib-button-bar{padding:10px 9px 2px;}.uib-left,.uib-right{width:100%}</style>'); });
-angular.module('ui.bootstrap.tooltip').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow,[uib-popover-popup].popover.top-left > .arrow,[uib-popover-popup].popover.top-right > .arrow,[uib-popover-popup].popover.bottom-left > .arrow,[uib-popover-popup].popover.bottom-right > .arrow,[uib-popover-popup].popover.left-top > .arrow,[uib-popover-popup].popover.left-bottom > .arrow,[uib-popover-popup].popover.right-top > .arrow,[uib-popover-popup].popover.right-bottom > .arrow{top:auto;bottom:auto;left:auto;right:auto;margin:0;}[uib-popover-popup].popover,[uib-popover-template-popup].popover{display:block !important;}</style>'); });
+angular.module('ui.bootstrap.datepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-datepicker .uib-title{width:100%;}.uib-day button,.uib-month button,.uib-year button{min-width:100%;}.uib-datepicker-popup.dropdown-menu{display:block;}.uib-button-bar{padding:10px 9px 2px;}</style>'); });
 angular.module('ui.bootstrap.timepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-time input{width:50px;}</style>'); });
 angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); });
-},{}],155:[function(require,module,exports){
+},{}],160:[function(require,module,exports){
 require('./dist/ui-bootstrap-tpls');
 
 module.exports = 'ui.bootstrap';
 
-},{"./dist/ui-bootstrap-tpls":154}],156:[function(require,module,exports){
+},{"./dist/ui-bootstrap-tpls":159}],161:[function(require,module,exports){
 /**
- * @license Angular UI Tree v2.14.0
- * (c) 2010-2015. https://github.com/angular-ui-tree/angular-ui-tree
+ * @license Angular UI Tree v2.15.0
+ * (c) 2010-2016. https://github.com/angular-ui-tree/angular-ui-tree
  * License: MIT
  */
 (function () {
@@ -24679,27 +24901,6 @@ module.exports = 'ui.bootstrap';
         };
 
         $scope.resetEmptyElement = this.resetEmptyElement;
-
-        var collapseOrExpand = function (scope, collapsed) {
-          var i, subScope,
-              nodes = scope.childNodes();
-          for (i = 0; i < nodes.length; i++) {
-            collapsed ? nodes[i].collapse() : nodes[i].expand();
-            subScope = nodes[i].$childNodesScope;
-            if (subScope) {
-              collapseOrExpand(subScope, collapsed);
-            }
-          }
-        };
-
-        $scope.collapseAll = function () {
-          collapseOrExpand($scope.$nodesScope, true);
-        };
-
-        $scope.expandAll = function () {
-          collapseOrExpand($scope.$nodesScope, false);
-        };
-
       }
     ]);
 })();
@@ -24950,7 +25151,10 @@ module.exports = 'ui.bootstrap';
               bindDragMoveEvents,
               unbindDragMoveEvents,
               keydownHandler,
-              outOfBounds;
+              outOfBounds,
+              isHandleChild,
+              el;
+
             angular.extend(config, treeConfig);
             if (config.nodeClass) {
               element.addClass(config.nodeClass);
@@ -24971,34 +25175,52 @@ module.exports = 'ui.bootstrap';
               attrs.$set('collapsed', val);
             });
 
+            scope.$on('angular-ui-tree:collapse-all', function () {
+              scope.collapsed = true;
+            });
+
+            scope.$on('angular-ui-tree:expand-all', function () {
+              scope.collapsed = false;
+            });
+
             /**
              * Called when the user has grabbed a node and started dragging it
              * @param e
              */
             dragStart = function (e) {
-              if (!hasTouch && (e.button == 2 || e.which == 3)) {
-                // disable right click
+              // disable right click
+              if (!hasTouch && (e.button === 2 || e.which === 3)) {
                 return;
               }
-              if (e.uiTreeDragging || (e.originalEvent && e.originalEvent.uiTreeDragging)) { // event has already fired in other scope.
+
+              // event has already fired in other scope
+              if (e.uiTreeDragging || (e.originalEvent && e.originalEvent.uiTreeDragging)) {
                 return;
               }
 
               // the node being dragged
               var eventElm = angular.element(e.target),
-                eventScope = eventElm.scope(),
-                cloneElm = element.clone(),
-                eventElmTagName, tagName,
-                eventObj, tdElm, hStyle;
-              if (!eventScope || !eventScope.$type) {
+                isHandleChild, cloneElm, eventElmTagName, tagName,
+                eventObj, tdElm, hStyle,
+                isTreeNode,
+                isTreeNodeHandle;
+
+              // if the target element is a child element of a ui-tree-handle,
+              // use the containing handle element as target element
+              isHandleChild = UiTreeHelper.treeNodeHandlerContainerOfElement(eventElm);
+              if (isHandleChild) {
+                eventElm = angular.element(isHandleChild);
+              }
+
+              cloneElm = element.clone();
+              isTreeNode = UiTreeHelper.elementIsTreeNode(eventElm);
+              isTreeNodeHandle = UiTreeHelper.elementIsTreeNodeHandle(eventElm);
+
+              if (!isTreeNode && !isTreeNodeHandle) {
                 return;
               }
-              if (eventScope.$type != 'uiTreeNode'
-                && eventScope.$type != 'uiTreeHandle') { // Check if it is a node or a handle
-                return;
-              }
-              if (eventScope.$type == 'uiTreeNode'
-                && eventScope.$handleScope) { // If the node has a handle, then it should be clicked by the handle
+
+              if (isTreeNode && UiTreeHelper.elementContainsTreeNodeHandler(eventElm)) {
                 return;
               }
 
@@ -25011,11 +25233,12 @@ module.exports = 'ui.bootstrap';
               }
 
               // check if it or it's parents has a 'data-nodrag' attribute
-              while (eventElm && eventElm[0] && eventElm[0] != element) {
-                if (UiTreeHelper.nodrag(eventElm)) { // if the node mark as `nodrag`, DONOT drag it.
+              el = angular.element(e.target);
+              while (el && el[0] && el[0] !== element) {
+                if (UiTreeHelper.nodrag(el)) { // if the node mark as `nodrag`, DONOT drag it.
                   return;
                 }
-                eventElm = eventElm.parent();
+                el = el.parent();
               }
 
               if (!scope.beforeDrag(scope)) {
@@ -25201,13 +25424,24 @@ module.exports = 'ui.bootstrap';
 
                 targetElm = angular.element($window.document.elementFromPoint(targetX, targetY));
 
+                // if the target element is a child element of a ui-tree-handle,
+                // use the containing handle element as target element
+                isHandleChild = UiTreeHelper.treeNodeHandlerContainerOfElement(targetElm);
+                if (isHandleChild) {
+                  targetElm = angular.element(isHandleChild);
+                }
+
                 if (angular.isFunction(dragElm.show)) {
                   dragElm.show();
                 } else {
                   dragElm[0].style.display = displayElm;
                 }
 
-                outOfBounds = !targetElm.scope() || !(targetElm.scope().$type);
+                outOfBounds = !UiTreeHelper.elementIsTreeNodeHandle(targetElm) &&
+                              !UiTreeHelper.elementIsTreeNode(targetElm) &&
+                              !UiTreeHelper.elementIsTreeNodes(targetElm) &&
+                              !UiTreeHelper.elementIsTree(targetElm) &&
+                              !UiTreeHelper.elementIsPlaceholder(targetElm);
 
                 // Detect out of bounds condition, update drop target display, and prevent drop
                 if (outOfBounds) {
@@ -25253,8 +25487,22 @@ module.exports = 'ui.bootstrap';
 
                 // move vertical
                 if (!pos.dirAx) {
+                  if (UiTreeHelper.elementIsTree(targetElm)) {
+                    targetNode = targetElm.controller('uiTree').scope;
+                  } else if (UiTreeHelper.elementIsTreeNodeHandle(targetElm)) {
+                    targetNode = targetElm.controller('uiTreeHandle').scope;
+                  } else if (UiTreeHelper.elementIsTreeNode(targetElm)) {
+                    targetNode = targetElm.controller('uiTreeNode').scope;
+                  } else if (UiTreeHelper.elementIsTreeNodes(targetElm)) {
+                    targetNode = targetElm.controller('uiTreeNodes').scope;
+                  } else if (UiTreeHelper.elementIsPlaceholder(targetElm)) {
+                    targetNode = targetElm.controller('uiTreeNodes').scope;
+                  } else if (targetElm.controller('uiTreeNode')) {
+                    // is a child element of a node
+                    targetNode = targetElm.controller('uiTreeNode').scope;
+                  }
+
                   // check it's new position
-                  targetNode = targetElm.scope();
                   isEmpty = false;
                   if (!targetNode) {
                     return;
@@ -25535,8 +25783,8 @@ module.exports = 'ui.bootstrap';
    * @description
    * angular-ui-tree.
    */
-    .factory('UiTreeHelper', ['$document', '$window',
-      function ($document, $window) {
+    .factory('UiTreeHelper', ['$document', '$window', 'treeConfig',
+      function ($document, $window, treeConfig) {
         return {
 
           /**
@@ -25838,19 +26086,64 @@ module.exports = 'ui.bootstrap';
             }
 
             pos.dirAx = newAx;
+          },
+
+          elementIsTreeNode: function (element) {
+            return typeof element.attr('ui-tree-node') !== 'undefined';
+          },
+
+          elementIsTreeNodeHandle: function (element) {
+            return typeof element.attr('ui-tree-handle') !== 'undefined';
+          },
+          elementIsTree: function (element) {
+            return typeof element.attr('ui-tree') !== 'undefined';
+          },
+          elementIsTreeNodes: function (element) {
+            return typeof element.attr('ui-tree-nodes') !== 'undefined';
+          },
+          elementIsPlaceholder: function (element) {
+            return element.hasClass(treeConfig.placeholderClass);
+          },
+          elementContainsTreeNodeHandler: function (element) {
+            return element[0].querySelectorAll('[ui-tree-handle]').length >= 1;
+          },
+          treeNodeHandlerContainerOfElement: function (element) {
+            return findFirstParentElementWithAttribute('ui-tree-handle', element[0]);
           }
         };
       }
-
     ]);
+
+  // TODO: optimize this loop
+  function findFirstParentElementWithAttribute(attributeName, childObj) {
+    // undefined if the mouse leaves the browser window
+    if (childObj === undefined) {
+      return null;
+    }
+    var testObj = childObj.parentNode,
+      count = 1,
+      // check for setAttribute due to exception thrown by Firefox when a node is dragged outside the browser window
+      res = (typeof testObj.setAttribute === 'function' && testObj.hasAttribute(attributeName)) ? testObj : null;
+    while (testObj && typeof testObj.setAttribute === 'function' && !testObj.hasAttribute(attributeName)) {
+      testObj = testObj.parentNode;
+      res = testObj;
+      if (testObj === document.documentElement) {
+        res = null;
+        break;
+      }
+      count++;
+    }
+
+    return res;
+  }
 
 })();
 
-},{}],157:[function(require,module,exports){
+},{}],162:[function(require,module,exports){
 require('./dist/angular-ui-tree');
 module.exports = 'ui.tree';
 
-},{"./dist/angular-ui-tree":156}],158:[function(require,module,exports){
+},{"./dist/angular-ui-tree":161}],163:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.9
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -55508,13 +55801,13 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],159:[function(require,module,exports){
+},{}],164:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":158}],160:[function(require,module,exports){
+},{"./angular":163}],165:[function(require,module,exports){
 /*!
- * jQuery JavaScript Library v2.2.0
+ * jQuery JavaScript Library v2.2.1
  * http://jquery.com/
  *
  * Includes Sizzle.js
@@ -55524,7 +55817,7 @@ module.exports = angular;
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2016-01-08T20:02Z
+ * Date: 2016-02-22T19:11Z
  */
 
 (function( global, factory ) {
@@ -55580,7 +55873,7 @@ var support = {};
 
 
 var
-	version = "2.2.0",
+	version = "2.2.1",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -59994,7 +60287,7 @@ function on( elem, types, selector, data, fn, one ) {
 	if ( fn === false ) {
 		fn = returnFalse;
 	} else if ( !fn ) {
-		return this;
+		return elem;
 	}
 
 	if ( one === 1 ) {
@@ -60643,14 +60936,14 @@ var
 	rscriptTypeMasked = /^true\/(.*)/,
 	rcleanScript = /^\s*<!(?:\[CDATA\[|--)|(?:\]\]|--)>\s*$/g;
 
+// Manipulating tables requires a tbody
 function manipulationTarget( elem, content ) {
-	if ( jQuery.nodeName( elem, "table" ) &&
-		jQuery.nodeName( content.nodeType !== 11 ? content : content.firstChild, "tr" ) ) {
+	return jQuery.nodeName( elem, "table" ) &&
+		jQuery.nodeName( content.nodeType !== 11 ? content : content.firstChild, "tr" ) ?
 
-		return elem.getElementsByTagName( "tbody" )[ 0 ] || elem;
-	}
-
-	return elem;
+		elem.getElementsByTagName( "tbody" )[ 0 ] ||
+			elem.appendChild( elem.ownerDocument.createElement( "tbody" ) ) :
+		elem;
 }
 
 // Replace/restore the type attribute of script elements for safe DOM manipulation
@@ -61157,7 +61450,7 @@ var getStyles = function( elem ) {
 		// FF meanwhile throws on frame elements through "defaultView.getComputedStyle"
 		var view = elem.ownerDocument.defaultView;
 
-		if ( !view.opener ) {
+		if ( !view || !view.opener ) {
 			view = window;
 		}
 
@@ -61306,15 +61599,18 @@ function curCSS( elem, name, computed ) {
 		style = elem.style;
 
 	computed = computed || getStyles( elem );
+	ret = computed ? computed.getPropertyValue( name ) || computed[ name ] : undefined;
+
+	// Support: Opera 12.1x only
+	// Fall back to style even without computed
+	// computed is undefined for elems on document fragments
+	if ( ( ret === "" || ret === undefined ) && !jQuery.contains( elem.ownerDocument, elem ) ) {
+		ret = jQuery.style( elem, name );
+	}
 
 	// Support: IE9
 	// getPropertyValue is only needed for .css('filter') (#12537)
 	if ( computed ) {
-		ret = computed.getPropertyValue( name ) || computed[ name ];
-
-		if ( ret === "" && !jQuery.contains( elem.ownerDocument, elem ) ) {
-			ret = jQuery.style( elem, name );
-		}
 
 		// A tribute to the "awesome hack by Dean Edwards"
 		// Android Browser returns percentage for some values,
@@ -63364,7 +63660,7 @@ jQuery.extend( jQuery.event, {
 				// But now, this "simulate" function is used only for events
 				// for which stopPropagation() is noop, so there is no need for that anymore.
 				//
-				// For the compat branch though, guard for "click" and "submit"
+				// For the 1.x branch though, guard for "click" and "submit"
 				// events is still used, but was moved to jQuery.event.stopPropagation function
 				// because `originalEvent` should point to the original event for the constancy
 				// with other events and for more focused logic
@@ -65134,11 +65430,8 @@ jQuery.fn.extend( {
 			}
 
 			// Add offsetParent borders
-			// Subtract offsetParent scroll positions
-			parentOffset.top += jQuery.css( offsetParent[ 0 ], "borderTopWidth", true ) -
-				offsetParent.scrollTop();
-			parentOffset.left += jQuery.css( offsetParent[ 0 ], "borderLeftWidth", true ) -
-				offsetParent.scrollLeft();
+			parentOffset.top += jQuery.css( offsetParent[ 0 ], "borderTopWidth", true );
+			parentOffset.left += jQuery.css( offsetParent[ 0 ], "borderLeftWidth", true );
 		}
 
 		// Subtract parent offsets and element margins
@@ -65345,11 +65638,11 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],161:[function(require,module,exports){
+},{}],166:[function(require,module,exports){
 (function (global){
 /**
  * @license
- * lodash 4.3.0 (Custom Build) <https://lodash.com/>
+ * lodash 4.5.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash -d -o ./foo/lodash.js`
  * Copyright 2012-2016 The Dojo Foundation <http://dojofoundation.org/>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
@@ -65362,7 +65655,7 @@ return jQuery;
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.3.0';
+  var VERSION = '4.5.1';
 
   /** Used to compose bitmasks for wrapper metadata. */
   var BIND_FLAG = 1,
@@ -65684,10 +65977,19 @@ return jQuery;
       freeParseInt = parseInt;
 
   /** Detect free variable `exports`. */
-  var freeExports = (objectTypes[typeof exports] && exports && !exports.nodeType) ? exports : null;
+  var freeExports = (objectTypes[typeof exports] && exports && !exports.nodeType)
+    ? exports
+    : undefined;
 
   /** Detect free variable `module`. */
-  var freeModule = (objectTypes[typeof module] && module && !module.nodeType) ? module : null;
+  var freeModule = (objectTypes[typeof module] && module && !module.nodeType)
+    ? module
+    : undefined;
+
+  /** Detect the popular CommonJS extension `module.exports`. */
+  var moduleExports = (freeModule && freeModule.exports === freeExports)
+    ? freeExports
+    : undefined;
 
   /** Detect free variable `global` from Node.js. */
   var freeGlobal = checkGlobal(freeExports && freeModule && typeof global == 'object' && global);
@@ -65698,9 +66000,6 @@ return jQuery;
   /** Detect free variable `window`. */
   var freeWindow = checkGlobal(objectTypes[typeof window] && window);
 
-  /** Detect the popular CommonJS extension `module.exports`. */
-  var moduleExports = (freeModule && freeModule.exports === freeExports) ? freeExports : null;
-
   /** Detect `this` as the global object. */
   var thisGlobal = checkGlobal(objectTypes[typeof this] && this);
 
@@ -65710,7 +66009,9 @@ return jQuery;
    * The `this` value is used if it's the global object to avoid Greasemonkey's
    * restricted `window` object, otherwise the `window` object is used.
    */
-  var root = freeGlobal || ((freeWindow !== (thisGlobal && thisGlobal.window)) && freeWindow) || freeSelf || thisGlobal || Function('return this')();
+  var root = freeGlobal ||
+    ((freeWindow !== (thisGlobal && thisGlobal.window)) && freeWindow) ||
+      freeSelf || thisGlobal || Function('return this')();
 
   /*--------------------------------------------------------------------------*/
 
@@ -66375,6 +66676,26 @@ return jQuery;
   }
 
   /**
+   * Gets the number of `placeholder` occurrences in `array`.
+   *
+   * @private
+   * @param {Array} array The array to inspect.
+   * @param {*} placeholder The placeholder to search for.
+   * @returns {number} Returns the placeholder count.
+   */
+  function countHolders(array, placeholder) {
+    var length = array.length,
+        result = 0;
+
+    while (length--) {
+      if (array[length] === placeholder) {
+        result++;
+      }
+    }
+    return result;
+  }
+
+  /**
    * Used by `_.deburr` to convert latin-1 supplementary letters to basic latin letters.
    *
    * @private
@@ -66512,7 +66833,8 @@ return jQuery;
         result = [];
 
     while (++index < length) {
-      if (array[index] === placeholder) {
+      var value = array[index];
+      if (value === placeholder || value === PLACEHOLDER) {
         array[index] = PLACEHOLDER;
         result[++resIndex] = index;
       }
@@ -66665,6 +66987,7 @@ return jQuery;
         getPrototypeOf = Object.getPrototypeOf,
         getOwnPropertySymbols = Object.getOwnPropertySymbols,
         iteratorSymbol = typeof (iteratorSymbol = Symbol && Symbol.iterator) == 'symbol' ? iteratorSymbol : undefined,
+        objectCreate = Object.create,
         propertyIsEnumerable = objectProto.propertyIsEnumerable,
         setTimeout = context.setTimeout,
         splice = arrayProto.splice;
@@ -66744,51 +67067,52 @@ return jQuery;
      * `tail`, `take`, `takeRight`, `takeRightWhile`, `takeWhile`, and `toArray`
      *
      * The chainable wrapper methods are:
-     * `after`, `ary`, `assign`, `assignIn`, `assignInWith`, `assignWith`,
-     * `at`, `before`, `bind`, `bindAll`, `bindKey`, `chain`, `chunk`, `commit`,
-     * `compact`, `concat`, `conforms`, `constant`, `countBy`, `create`, `curry`,
-     * `debounce`, `defaults`, `defaultsDeep`, `defer`, `delay`, `difference`,
+     * `after`, `ary`, `assign`, `assignIn`, `assignInWith`, `assignWith`, `at`,
+     * `before`, `bind`, `bindAll`, `bindKey`, `castArray`, `chain`, `chunk`,
+     * `commit`, `compact`, `concat`, `conforms`, `constant`, `countBy`, `create`,
+     * `curry`, `debounce`, `defaults`, `defaultsDeep`, `defer`, `delay`, `difference`,
      * `differenceBy`, `differenceWith`, `drop`, `dropRight`, `dropRightWhile`,
-     * `dropWhile`, `fill`, `filter`, `flatten`, `flattenDeep`, `flip`, `flow`,
-     * `flowRight`, `fromPairs`, `functions`, `functionsIn`, `groupBy`, `initial`,
-     * `intersection`, `intersectionBy`, `intersectionWith`, `invert`, `invertBy`,
-     * `invokeMap`, `iteratee`, `keyBy`, `keys`, `keysIn`, `map`, `mapKeys`,
-     * `mapValues`, `matches`, `matchesProperty`, `memoize`, `merge`, `mergeWith`,
-     * `method`, `methodOf`, `mixin`, `negate`, `nthArg`, `omit`, `omitBy`, `once`,
-     * `orderBy`, `over`, `overArgs`, `overEvery`, `overSome`, `partial`,
-     * `partialRight`, `partition`, `pick`, `pickBy`, `plant`, `property`,
-     * `propertyOf`, `pull`, `pullAll`, `pullAllBy`, `pullAt`, `push`, `range`,
-     * `rangeRight`, `rearg`, `reject`, `remove`, `rest`, `reverse`, `sampleSize`,
-     * `set`, `setWith`, `shuffle`, `slice`, `sort`, `sortBy`, `splice`, `spread`,
-     * `tail`, `take`, `takeRight`, `takeRightWhile`, `takeWhile`, `tap`, `throttle`,
-     * `thru`, `toArray`, `toPairs`, `toPairsIn`, `toPath`, `toPlainObject`,
-     * `transform`, `unary`, `union`, `unionBy`, `unionWith`, `uniq`, `uniqBy`,
-     * `uniqWith`, `unset`, `unshift`, `unzip`, `unzipWith`, `values`, `valuesIn`,
-     * `without`, `wrap`, `xor`, `xorBy`, `xorWith`, `zip`, `zipObject`,
-     * `zipObjectDeep`, and `zipWith`
+     * `dropWhile`, `fill`, `filter`, `flatten`, `flattenDeep`, `flattenDepth`,
+     * `flip`, `flow`, `flowRight`, `fromPairs`, `functions`, `functionsIn`,
+     * `groupBy`, `initial`, `intersection`, `intersectionBy`, `intersectionWith`,
+     * `invert`, `invertBy`, `invokeMap`, `iteratee`, `keyBy`, `keys`, `keysIn`,
+     * `map`, `mapKeys`, `mapValues`, `matches`, `matchesProperty`, `memoize`,
+     * `merge`, `mergeWith`, `method`, `methodOf`, `mixin`, `negate`, `nthArg`,
+     * `omit`, `omitBy`, `once`, `orderBy`, `over`, `overArgs`, `overEvery`,
+     * `overSome`, `partial`, `partialRight`, `partition`, `pick`, `pickBy`, `plant`,
+     * `property`, `propertyOf`, `pull`, `pullAll`, `pullAllBy`, `pullAt`, `push`,
+     * `range`, `rangeRight`, `rearg`, `reject`, `remove`, `rest`, `reverse`,
+     * `sampleSize`, `set`, `setWith`, `shuffle`, `slice`, `sort`, `sortBy`,
+     * `splice`, `spread`, `tail`, `take`, `takeRight`, `takeRightWhile`,
+     * `takeWhile`, `tap`, `throttle`, `thru`, `toArray`, `toPairs`, `toPairsIn`,
+     * `toPath`, `toPlainObject`, `transform`, `unary`, `union`, `unionBy`,
+     * `unionWith`, `uniq`, `uniqBy`, `uniqWith`, `unset`, `unshift`, `unzip`,
+     * `unzipWith`, `values`, `valuesIn`, `without`, `wrap`, `xor`, `xorBy`,
+     * `xorWith`, `zip`, `zipObject`, `zipObjectDeep`, and `zipWith`
      *
      * The wrapper methods that are **not** chainable by default are:
      * `add`, `attempt`, `camelCase`, `capitalize`, `ceil`, `clamp`, `clone`,
      * `cloneDeep`, `cloneDeepWith`, `cloneWith`, `deburr`, `endsWith`, `eq`,
-     * `escape`, `escapeRegExp`, `every`, `find`, `findIndex`, `findKey`,
-     * `findLast`, `findLastIndex`, `findLastKey`, `floor`, `forEach`, `forEachRight`,
-     * `forIn`, `forInRight`, `forOwn`, `forOwnRight`, `get`, `gt`, `gte`, `has`,
-     * `hasIn`, `head`, `identity`, `includes`, `indexOf`, `inRange`, `invoke`,
-     * `isArguments`, `isArray`, `isArrayLike`, `isArrayLikeObject`, `isBoolean`,
-     * `isDate`, `isElement`, `isEmpty`, `isEqual`, `isEqualWith`, `isError`,
-     * `isFinite`, `isFunction`, `isInteger`, `isLength`, `isMatch`, `isMatchWith`,
-     * `isNaN`, `isNative`, `isNil`, `isNull`, `isNumber`, `isObject`, `isObjectLike`,
-     * `isPlainObject`, `isRegExp`, `isSafeInteger`, `isString`, `isUndefined`,
-     * `isTypedArray`, `join`, `kebabCase`, `last`, `lastIndexOf`, `lowerCase`,
-     * `lowerFirst`, `lt`, `lte`, `max`, `maxBy`, `mean`, `min`, `minBy`,
-     * `noConflict`, `noop`, `now`, `pad`, `padEnd`, `padStart`, `parseInt`,
-     * `pop`, `random`, `reduce`, `reduceRight`, `repeat`, `result`, `round`,
-     * `runInContext`, `sample`, `shift`, `size`, `snakeCase`, `some`, `sortedIndex`,
-     * `sortedIndexBy`, `sortedLastIndex`, `sortedLastIndexBy`, `startCase`,
-     * `startsWith`, `subtract`, `sum`, `sumBy`, `template`, `times`, `toLower`,
-     * `toInteger`, `toLength`, `toNumber`, `toSafeInteger`, `toString`, `toUpper`,
-     * `trim`, `trimEnd`, `trimStart`, `truncate`, `unescape`, `uniqueId`,
-     * `upperCase`, `upperFirst`, `value`, and `words`
+     * `escape`, `escapeRegExp`, `every`, `find`, `findIndex`, `findKey`, `findLast`,
+     * `findLastIndex`, `findLastKey`, `floor`, `forEach`, `forEachRight`, `forIn`,
+     * `forInRight`, `forOwn`, `forOwnRight`, `get`, `gt`, `gte`, `has`, `hasIn`,
+     * `head`, `identity`, `includes`, `indexOf`, `inRange`, `invoke`, `isArguments`,
+     * `isArray`, `isArrayBuffer`, `isArrayLike`, `isArrayLikeObject`, `isBoolean`,
+     * `isBuffer`, `isDate`, `isElement`, `isEmpty`, `isEqual`, `isEqualWith`,
+     * `isError`, `isFinite`, `isFunction`, `isInteger`, `isLength`, `isMap`,
+     * `isMatch`, `isMatchWith`, `isNaN`, `isNative`, `isNil`, `isNull`, `isNumber`,
+     * `isObject`, `isObjectLike`, `isPlainObject`, `isRegExp`, `isSafeInteger`,
+     * `isSet`, `isString`, `isUndefined`, `isTypedArray`, `isWeakMap`, `isWeakSet`,
+     * `join`, `kebabCase`, `last`, `lastIndexOf`, `lowerCase`, `lowerFirst`,
+     * `lt`, `lte`, `max`, `maxBy`, `mean`, `min`, `minBy`, `noConflict`, `noop`,
+     * `now`, `pad`, `padEnd`, `padStart`, `parseInt`, `pop`, `random`, `reduce`,
+     * `reduceRight`, `repeat`, `result`, `round`, `runInContext`, `sample`,
+     * `shift`, `size`, `snakeCase`, `some`, `sortedIndex`, `sortedIndexBy`,
+     * `sortedLastIndex`, `sortedLastIndexBy`, `startCase`, `startsWith`, `subtract`,
+     * `sum`, `sumBy`, `template`, `times`, `toLower`, `toInteger`, `toLength`,
+     * `toNumber`, `toSafeInteger`, `toString`, `toUpper`, `trim`, `trimEnd`,
+     * `trimStart`, `truncate`, `unescape`, `uniqueId`, `upperCase`, `upperFirst`,
+     * `value`, and `words`
      *
      * @name _
      * @constructor
@@ -66859,7 +67183,7 @@ return jQuery;
      *
      * @static
      * @memberOf _
-     * @type Object
+     * @type {Object}
      */
     lodash.templateSettings = {
 
@@ -66867,7 +67191,7 @@ return jQuery;
        * Used to detect `data` property values to be HTML-escaped.
        *
        * @memberOf _.templateSettings
-       * @type RegExp
+       * @type {RegExp}
        */
       'escape': reEscape,
 
@@ -66875,7 +67199,7 @@ return jQuery;
        * Used to detect code to be evaluated.
        *
        * @memberOf _.templateSettings
-       * @type RegExp
+       * @type {RegExp}
        */
       'evaluate': reEvaluate,
 
@@ -66883,7 +67207,7 @@ return jQuery;
        * Used to detect `data` property values to inject.
        *
        * @memberOf _.templateSettings
-       * @type RegExp
+       * @type {RegExp}
        */
       'interpolate': reInterpolate,
 
@@ -66891,7 +67215,7 @@ return jQuery;
        * Used to reference the data object in the template text.
        *
        * @memberOf _.templateSettings
-       * @type string
+       * @type {string}
        */
       'variable': '',
 
@@ -66899,7 +67223,7 @@ return jQuery;
        * Used to import variables into the compiled template.
        *
        * @memberOf _.templateSettings
-       * @type Object
+       * @type {Object}
        */
       'imports': {
 
@@ -66907,7 +67231,7 @@ return jQuery;
          * A reference to the `lodash` function.
          *
          * @memberOf _.templateSettings.imports
-         * @type Function
+         * @type {Function}
          */
         '_': lodash
       }
@@ -66919,6 +67243,7 @@ return jQuery;
      * Creates a lazy wrapper object which wraps `value` to enable lazy evaluation.
      *
      * @private
+     * @constructor
      * @param {*} value The value to wrap.
      */
     function LazyWrapper(value) {
@@ -66994,7 +67319,8 @@ return jQuery;
           resIndex = 0,
           takeCount = nativeMin(length, this.__takeCount__);
 
-      if (!isArr || arrLength < LARGE_ARRAY_SIZE || (arrLength == length && takeCount == length)) {
+      if (!isArr || arrLength < LARGE_ARRAY_SIZE ||
+          (arrLength == length && takeCount == length)) {
         return baseWrapperValue(array, this.__actions__);
       }
       var result = [];
@@ -67033,6 +67359,7 @@ return jQuery;
      * Creates an hash object.
      *
      * @private
+     * @constructor
      * @returns {Object} Returns the new hash object.
      */
     function Hash() {}
@@ -67095,6 +67422,7 @@ return jQuery;
      * Creates a map cache object to store key-value pairs.
      *
      * @private
+     * @constructor
      * @param {Array} [values] The values to cache.
      */
     function MapCache(values) {
@@ -67116,7 +67444,11 @@ return jQuery;
      * @memberOf MapCache
      */
     function mapClear() {
-      this.__data__ = { 'hash': new Hash, 'map': Map ? new Map : [], 'string': new Hash };
+      this.__data__ = {
+        'hash': new Hash,
+        'map': Map ? new Map : [],
+        'string': new Hash
+      };
     }
 
     /**
@@ -67199,6 +67531,7 @@ return jQuery;
      * Creates a set cache object to store unique values.
      *
      * @private
+     * @constructor
      * @param {Array} [values] The values to cache.
      */
     function SetCache(values) {
@@ -67257,6 +67590,7 @@ return jQuery;
      * Creates a stack cache object to store key-value pairs.
      *
      * @private
+     * @constructor
      * @param {Array} [values] The values to cache.
      */
     function Stack(values) {
@@ -67490,8 +67824,7 @@ return jQuery;
      */
     function assignValue(object, key, value) {
       var objValue = object[key];
-      if ((!eq(objValue, value) ||
-            (eq(objValue, objectProto[key]) && !hasOwnProperty.call(object, key))) ||
+      if (!(hasOwnProperty.call(object, key) && eq(objValue, value)) ||
           (value === undefined && !(key in object))) {
         object[key] = value;
       }
@@ -67546,6 +67879,39 @@ return jQuery;
         result[index] = isNil ? undefined : get(object, paths[index]);
       }
       return result;
+    }
+
+    /**
+     * Casts `value` to an empty array if it's not an array like object.
+     *
+     * @private
+     * @param {*} value The value to inspect.
+     * @returns {Array} Returns the array-like object.
+     */
+    function baseCastArrayLikeObject(value) {
+      return isArrayLikeObject(value) ? value : [];
+    }
+
+    /**
+     * Casts `value` to `identity` if it's not a function.
+     *
+     * @private
+     * @param {*} value The value to inspect.
+     * @returns {Array} Returns the array-like object.
+     */
+    function baseCastFunction(value) {
+      return typeof value == 'function' ? value : identity;
+    }
+
+    /**
+     * Casts `value` to a path array if it's not one.
+     *
+     * @private
+     * @param {*} value The value to inspect.
+     * @returns {Array} Returns the cast property path array.
+     */
+    function baseCastPath(value) {
+      return isArray(value) ? value : stringToPath(value);
     }
 
     /**
@@ -67615,9 +67981,10 @@ return jQuery;
             return copySymbols(value, baseAssign(result, value));
           }
         } else {
-          return cloneableTags[tag]
-            ? initCloneByTag(value, tag, isDeep)
-            : (object ? value : {});
+          if (!cloneableTags[tag]) {
+            return object ? value : {};
+          }
+          result = initCloneByTag(value, tag, isDeep);
         }
       }
       // Check for circular references and return its corresponding clone.
@@ -67672,17 +68039,9 @@ return jQuery;
      * @param {Object} prototype The object to inherit from.
      * @returns {Object} Returns the new object.
      */
-    var baseCreate = (function() {
-      function object() {}
-      return function(prototype) {
-        if (isObject(prototype)) {
-          object.prototype = prototype;
-          var result = new object;
-          object.prototype = undefined;
-        }
-        return result || {};
-      };
-    }());
+    function baseCreate(proto) {
+      return isObject(proto) ? objectCreate(proto) : {};
+    }
 
     /**
      * The base implementation of `_.delay` and `_.defer` which accepts an array
@@ -67844,12 +68203,12 @@ return jQuery;
      *
      * @private
      * @param {Array} array The array to flatten.
-     * @param {boolean} [isDeep] Specify a deep flatten.
+     * @param {number} depth The maximum recursion depth.
      * @param {boolean} [isStrict] Restrict flattening to arrays-like objects.
      * @param {Array} [result=[]] The initial result value.
      * @returns {Array} Returns the new flattened array.
      */
-    function baseFlatten(array, isDeep, isStrict, result) {
+    function baseFlatten(array, depth, isStrict, result) {
       result || (result = []);
 
       var index = -1,
@@ -67857,11 +68216,11 @@ return jQuery;
 
       while (++index < length) {
         var value = array[index];
-        if (isArrayLikeObject(value) &&
+        if (depth > 0 && isArrayLikeObject(value) &&
             (isStrict || isArray(value) || isArguments(value))) {
-          if (isDeep) {
+          if (depth > 1) {
             // Recursively flatten arrays (susceptible to call stack limits).
-            baseFlatten(value, isDeep, isStrict, result);
+            baseFlatten(value, depth - 1, isStrict, result);
           } else {
             arrayPush(result, value);
           }
@@ -67958,7 +68317,7 @@ return jQuery;
      * @returns {*} Returns the resolved value.
      */
     function baseGet(object, path) {
-      path = isKey(path, object) ? [path + ''] : baseToPath(path);
+      path = isKey(path, object) ? [path + ''] : baseCastPath(path);
 
       var index = 0,
           length = path.length;
@@ -68047,11 +68406,17 @@ return jQuery;
         var value = array[index],
             computed = iteratee ? iteratee(value) : value;
 
-        if (!(seen ? cacheHas(seen, computed) : includes(result, computed, comparator))) {
+        if (!(seen
+              ? cacheHas(seen, computed)
+              : includes(result, computed, comparator)
+            )) {
           var othIndex = othLength;
           while (--othIndex) {
             var cache = caches[othIndex];
-            if (!(cache ? cacheHas(cache, computed) : includes(arrays[othIndex], computed, comparator))) {
+            if (!(cache
+                  ? cacheHas(cache, computed)
+                  : includes(arrays[othIndex], computed, comparator))
+                ) {
               continue outer;
             }
           }
@@ -68094,7 +68459,7 @@ return jQuery;
      */
     function baseInvoke(object, path, args) {
       if (!isKey(path, object)) {
-        path = baseToPath(path);
+        path = baseCastPath(path);
         object = parent(object, path);
         path = last(path);
       }
@@ -68267,7 +68632,6 @@ return jQuery;
      * property of prototypes or treat sparse arrays as dense.
      *
      * @private
-     * @type Function
      * @param {Object} object The object to query.
      * @returns {Array} Returns the array of property names.
      */
@@ -68375,7 +68739,10 @@ return jQuery;
       if (object === source) {
         return;
       }
-      var props = (isArray(source) || isTypedArray(source)) ? undefined : keysIn(source);
+      var props = (isArray(source) || isTypedArray(source))
+        ? undefined
+        : keysIn(source);
+
       arrayEach(props || source, function(srcValue, key) {
         if (props) {
           key = srcValue;
@@ -68386,7 +68753,10 @@ return jQuery;
           baseMergeDeep(object, source, key, srcIndex, baseMerge, customizer, stack);
         }
         else {
-          var newValue = customizer ? customizer(object[key], srcValue, (key + ''), object, source, stack) : undefined;
+          var newValue = customizer
+            ? customizer(object[key], srcValue, (key + ''), object, source, stack)
+            : undefined;
+
           if (newValue === undefined) {
             newValue = srcValue;
           }
@@ -68418,21 +68788,24 @@ return jQuery;
         assignMergeValue(object, key, stacked);
         return;
       }
-      var newValue = customizer ? customizer(objValue, srcValue, (key + ''), object, source, stack) : undefined,
-          isCommon = newValue === undefined;
+      var newValue = customizer
+        ? customizer(objValue, srcValue, (key + ''), object, source, stack)
+        : undefined;
+
+      var isCommon = newValue === undefined;
 
       if (isCommon) {
         newValue = srcValue;
         if (isArray(srcValue) || isTypedArray(srcValue)) {
           if (isArray(objValue)) {
-            newValue = srcIndex ? copyArray(objValue) : objValue;
+            newValue = objValue;
           }
           else if (isArrayLikeObject(objValue)) {
             newValue = copyArray(objValue);
           }
           else {
             isCommon = false;
-            newValue = baseClone(srcValue);
+            newValue = baseClone(srcValue, true);
           }
         }
         else if (isPlainObject(srcValue) || isArguments(srcValue)) {
@@ -68441,10 +68814,10 @@ return jQuery;
           }
           else if (!isObject(objValue) || (srcIndex && isFunction(objValue))) {
             isCommon = false;
-            newValue = baseClone(srcValue);
+            newValue = baseClone(srcValue, true);
           }
           else {
-            newValue = srcIndex ? baseClone(objValue) : objValue;
+            newValue = objValue;
           }
         }
         else {
@@ -68618,7 +68991,7 @@ return jQuery;
             splice.call(array, index, 1);
           }
           else if (!isKey(index, array)) {
-            var path = baseToPath(index),
+            var path = baseCastPath(index),
                 object = parent(array, path);
 
             if (object != null) {
@@ -68680,7 +69053,7 @@ return jQuery;
      * @returns {Object} Returns `object`.
      */
     function baseSet(object, path, value, customizer) {
-      path = isKey(path, object) ? [path + ''] : baseToPath(path);
+      path = isKey(path, object) ? [path + ''] : baseCastPath(path);
 
       var index = -1,
           length = path.length,
@@ -68695,7 +69068,9 @@ return jQuery;
             var objValue = nested[key];
             newValue = customizer ? customizer(objValue, key, nested) : undefined;
             if (newValue === undefined) {
-              newValue = objValue == null ? (isIndex(path[index + 1]) ? [] : {}) : objValue;
+              newValue = objValue == null
+                ? (isIndex(path[index + 1]) ? [] : {})
+                : objValue;
             }
           }
           assignValue(nested, key, newValue);
@@ -68887,18 +69262,6 @@ return jQuery;
     }
 
     /**
-     * The base implementation of `_.toPath` which only converts `value` to a
-     * path if it's not one.
-     *
-     * @private
-     * @param {*} value The value to process.
-     * @returns {Array} Returns the property path array.
-     */
-    function baseToPath(value) {
-      return isArray(value) ? value : stringToPath(value);
-    }
-
-    /**
      * The base implementation of `_.uniqBy` without support for iteratee shorthands.
      *
      * @private
@@ -68967,7 +69330,7 @@ return jQuery;
      * @returns {boolean} Returns `true` if the property is deleted, else `false`.
      */
     function baseUnset(object, path) {
-      path = isKey(path, object) ? [path + ''] : baseToPath(path);
+      path = isKey(path, object) ? [path + ''] : baseCastPath(path);
       object = parent(object, path);
       var key = last(path);
       return (object != null && has(object, key)) ? delete object[key] : true;
@@ -69156,10 +69519,11 @@ return jQuery;
      * @returns {Object} Returns the cloned typed array.
      */
     function cloneTypedArray(typedArray, isDeep) {
-      var buffer = typedArray.buffer,
+      var arrayBuffer = typedArray.buffer,
+          buffer = isDeep ? cloneArrayBuffer(arrayBuffer) : arrayBuffer,
           Ctor = typedArray.constructor;
 
-      return new Ctor(isDeep ? cloneArrayBuffer(buffer) : buffer, typedArray.byteOffset, typedArray.length);
+      return new Ctor(buffer, typedArray.byteOffset, typedArray.length);
     }
 
     /**
@@ -69170,23 +69534,28 @@ return jQuery;
      * @param {Array|Object} args The provided arguments.
      * @param {Array} partials The arguments to prepend to those provided.
      * @param {Array} holders The `partials` placeholder indexes.
+     * @params {boolean} [isCurried] Specify composing for a curried function.
      * @returns {Array} Returns the new array of composed arguments.
      */
-    function composeArgs(args, partials, holders) {
-      var holdersLength = holders.length,
-          argsIndex = -1,
-          argsLength = nativeMax(args.length - holdersLength, 0),
+    function composeArgs(args, partials, holders, isCurried) {
+      var argsIndex = -1,
+          argsLength = args.length,
+          holdersLength = holders.length,
           leftIndex = -1,
           leftLength = partials.length,
-          result = Array(leftLength + argsLength);
+          rangeLength = nativeMax(argsLength - holdersLength, 0),
+          result = Array(leftLength + rangeLength),
+          isUncurried = !isCurried;
 
       while (++leftIndex < leftLength) {
         result[leftIndex] = partials[leftIndex];
       }
       while (++argsIndex < holdersLength) {
-        result[holders[argsIndex]] = args[argsIndex];
+        if (isUncurried || argsIndex < argsLength) {
+          result[holders[argsIndex]] = args[argsIndex];
+        }
       }
-      while (argsLength--) {
+      while (rangeLength--) {
         result[leftIndex++] = args[argsIndex++];
       }
       return result;
@@ -69200,18 +69569,21 @@ return jQuery;
      * @param {Array|Object} args The provided arguments.
      * @param {Array} partials The arguments to append to those provided.
      * @param {Array} holders The `partials` placeholder indexes.
+     * @params {boolean} [isCurried] Specify composing for a curried function.
      * @returns {Array} Returns the new array of composed arguments.
      */
-    function composeArgsRight(args, partials, holders) {
-      var holdersIndex = -1,
+    function composeArgsRight(args, partials, holders, isCurried) {
+      var argsIndex = -1,
+          argsLength = args.length,
+          holdersIndex = -1,
           holdersLength = holders.length,
-          argsIndex = -1,
-          argsLength = nativeMax(args.length - holdersLength, 0),
           rightIndex = -1,
           rightLength = partials.length,
-          result = Array(argsLength + rightLength);
+          rangeLength = nativeMax(argsLength - holdersLength, 0),
+          result = Array(rangeLength + rightLength),
+          isUncurried = !isCurried;
 
-      while (++argsIndex < argsLength) {
+      while (++argsIndex < rangeLength) {
         result[argsIndex] = args[argsIndex];
       }
       var offset = argsIndex;
@@ -69219,7 +69591,9 @@ return jQuery;
         result[offset + rightIndex] = partials[rightIndex];
       }
       while (++holdersIndex < holdersLength) {
-        result[offset + holders[holdersIndex]] = args[argsIndex++];
+        if (isUncurried || argsIndex < argsLength) {
+          result[offset + holders[holdersIndex]] = args[argsIndex++];
+        }
       }
       return result;
     }
@@ -69274,8 +69648,11 @@ return jQuery;
           length = props.length;
 
       while (++index < length) {
-        var key = props[index],
-            newValue = customizer ? customizer(object[key], source[key], key, object, source) : source[key];
+        var key = props[index];
+
+        var newValue = customizer
+          ? customizer(object[key], source[key], key, object, source)
+          : source[key];
 
         assignValue(object, key, newValue);
       }
@@ -69325,7 +69702,10 @@ return jQuery;
             customizer = length > 1 ? sources[length - 1] : undefined,
             guard = length > 2 ? sources[2] : undefined;
 
-        customizer = typeof customizer == 'function' ? (length--, customizer) : undefined;
+        customizer = typeof customizer == 'function'
+          ? (length--, customizer)
+          : undefined;
+
         if (guard && isIterateeCall(sources[0], sources[1], guard)) {
           customizer = length < 3 ? undefined : customizer;
           length = 1;
@@ -69426,8 +69806,11 @@ return jQuery;
       return function(string) {
         string = toString(string);
 
-        var strSymbols = reHasComplexSymbol.test(string) ? stringToArray(string) : undefined,
-            chr = strSymbols ? strSymbols[0] : string.charAt(0),
+        var strSymbols = reHasComplexSymbol.test(string)
+          ? stringToArray(string)
+          : undefined;
+
+        var chr = strSymbols ? strSymbols[0] : string.charAt(0),
             trailing = strSymbols ? strSymbols.slice(1).join('') : string.slice(1);
 
         return chr[methodName]() + trailing;
@@ -69494,10 +69877,9 @@ return jQuery;
 
       function wrapper() {
         var length = arguments.length,
-            index = length,
             args = Array(length),
-            fn = (this && this !== root && this instanceof wrapper) ? Ctor : func,
-            placeholder = lodash.placeholder || wrapper.placeholder;
+            index = length,
+            placeholder = getPlaceholder(wrapper);
 
         while (index--) {
           args[index] = arguments[index];
@@ -69507,9 +69889,13 @@ return jQuery;
           : replaceHolders(args, placeholder);
 
         length -= holders.length;
-        return length < arity
-          ? createRecurryWrapper(func, bitmask, createHybridWrapper, placeholder, undefined, args, holders, undefined, undefined, arity - length)
-          : apply(fn, this, args);
+        if (length < arity) {
+          return createRecurryWrapper(
+            func, bitmask, createHybridWrapper, wrapper.placeholder, undefined,
+            args, holders, undefined, undefined, arity - length);
+        }
+        var fn = (this && this !== root && this instanceof wrapper) ? Ctor : func;
+        return apply(fn, this, args);
       }
       return wrapper;
     }
@@ -69523,7 +69909,7 @@ return jQuery;
      */
     function createFlow(fromRight) {
       return rest(function(funcs) {
-        funcs = baseFlatten(funcs);
+        funcs = baseFlatten(funcs, 1);
 
         var length = funcs.length,
             index = length,
@@ -69548,7 +69934,10 @@ return jQuery;
           var funcName = getFuncName(func),
               data = funcName == 'wrapper' ? getData(func) : undefined;
 
-          if (data && isLaziable(data[0]) && data[1] == (ARY_FLAG | CURRY_FLAG | PARTIAL_FLAG | REARG_FLAG) && !data[4].length && data[9] == 1) {
+          if (data && isLaziable(data[0]) &&
+                data[1] == (ARY_FLAG | CURRY_FLAG | PARTIAL_FLAG | REARG_FLAG) &&
+                !data[4].length && data[9] == 1
+              ) {
             wrapper = wrapper[getFuncName(data[0])].apply(wrapper, data[3]);
           } else {
             wrapper = (func.length == 1 && isLaziable(func)) ? wrapper[funcName]() : wrapper.thru(func);
@@ -69558,7 +69947,8 @@ return jQuery;
           var args = arguments,
               value = args[0];
 
-          if (wrapper && args.length == 1 && isArray(value) && value.length >= LARGE_ARRAY_SIZE) {
+          if (wrapper && args.length == 1 &&
+              isArray(value) && value.length >= LARGE_ARRAY_SIZE) {
             return wrapper.plant(value).value();
           }
           var index = 0,
@@ -69593,8 +69983,7 @@ return jQuery;
       var isAry = bitmask & ARY_FLAG,
           isBind = bitmask & BIND_FLAG,
           isBindKey = bitmask & BIND_KEY_FLAG,
-          isCurry = bitmask & CURRY_FLAG,
-          isCurryRight = bitmask & CURRY_RIGHT_FLAG,
+          isCurried = bitmask & (CURRY_FLAG | CURRY_RIGHT_FLAG),
           isFlip = bitmask & FLIP_FLAG,
           Ctor = isBindKey ? undefined : createCtorWrapper(func);
 
@@ -69606,30 +69995,34 @@ return jQuery;
         while (index--) {
           args[index] = arguments[index];
         }
+        if (isCurried) {
+          var placeholder = getPlaceholder(wrapper),
+              holdersCount = countHolders(args, placeholder);
+        }
         if (partials) {
-          args = composeArgs(args, partials, holders);
+          args = composeArgs(args, partials, holders, isCurried);
         }
         if (partialsRight) {
-          args = composeArgsRight(args, partialsRight, holdersRight);
+          args = composeArgsRight(args, partialsRight, holdersRight, isCurried);
         }
-        if (isCurry || isCurryRight) {
-          var placeholder = lodash.placeholder || wrapper.placeholder,
-              argsHolders = replaceHolders(args, placeholder);
-
-          length -= argsHolders.length;
-          if (length < arity) {
-            return createRecurryWrapper(func, bitmask, createHybridWrapper, placeholder, thisArg, args, argsHolders, argPos, ary, arity - length);
-          }
+        length -= holdersCount;
+        if (isCurried && length < arity) {
+          var newHolders = replaceHolders(args, placeholder);
+          return createRecurryWrapper(
+            func, bitmask, createHybridWrapper, wrapper.placeholder, thisArg,
+            args, newHolders, argPos, ary, arity - length
+          );
         }
         var thisBinding = isBind ? thisArg : this,
             fn = isBindKey ? thisBinding[func] : func;
 
+        length = args.length;
         if (argPos) {
           args = reorder(args, argPos);
-        } else if (isFlip && args.length > 1) {
+        } else if (isFlip && length > 1) {
           args.reverse();
         }
-        if (isAry && ary < args.length) {
+        if (isAry && ary < length) {
           args.length = ary;
         }
         if (this && this !== root && this instanceof wrapper) {
@@ -69663,7 +70056,7 @@ return jQuery;
      */
     function createOver(arrayFunc) {
       return rest(function(iteratees) {
-        iteratees = arrayMap(baseFlatten(iteratees), getIteratee());
+        iteratees = arrayMap(baseFlatten(iteratees, 1), getIteratee());
         return rest(function(args) {
           var thisArg = this;
           return arrayFunc(iteratees, function(iteratee) {
@@ -69767,7 +70160,7 @@ return jQuery;
      * @param {Function} func The function to wrap.
      * @param {number} bitmask The bitmask of wrapper flags. See `createWrapper` for more details.
      * @param {Function} wrapFunc The function to create the `func` wrapper.
-     * @param {*} placeholder The placeholder to replace.
+     * @param {*} placeholder The placeholder value.
      * @param {*} [thisArg] The `this` binding of `func`.
      * @param {Array} [partials] The arguments to prepend to those provided to the new function.
      * @param {Array} [holders] The `partials` placeholder indexes.
@@ -69779,7 +70172,7 @@ return jQuery;
     function createRecurryWrapper(func, bitmask, wrapFunc, placeholder, thisArg, partials, holders, argPos, ary, arity) {
       var isCurry = bitmask & CURRY_FLAG,
           newArgPos = argPos ? copyArray(argPos) : undefined,
-          newsHolders = isCurry ? holders : undefined,
+          newHolders = isCurry ? holders : undefined,
           newHoldersRight = isCurry ? undefined : holders,
           newPartials = isCurry ? partials : undefined,
           newPartialsRight = isCurry ? undefined : partials;
@@ -69790,9 +70183,12 @@ return jQuery;
       if (!(bitmask & CURRY_BOUND_FLAG)) {
         bitmask &= ~(BIND_FLAG | BIND_KEY_FLAG);
       }
-      var newData = [func, bitmask, thisArg, newPartials, newsHolders, newPartialsRight, newHoldersRight, newArgPos, ary, arity],
-          result = wrapFunc.apply(undefined, newData);
+      var newData = [
+        func, bitmask, thisArg, newPartials, newHolders, newPartialsRight,
+        newHoldersRight, newArgPos, ary, arity
+      ];
 
+      var result = wrapFunc.apply(undefined, newData);
       if (isLaziable(func)) {
         setData(result, newData);
       }
@@ -69881,8 +70277,12 @@ return jQuery;
 
         partials = holders = undefined;
       }
-      var data = isBindKey ? undefined : getData(func),
-          newData = [func, bitmask, thisArg, partials, holders, partialsRight, holdersRight, argPos, ary, arity];
+      var data = isBindKey ? undefined : getData(func);
+
+      var newData = [
+        func, bitmask, thisArg, partials, holders, partialsRight, holdersRight,
+        argPos, ary, arity
+      ];
 
       if (data) {
         mergeData(newData, data);
@@ -70206,6 +70606,18 @@ return jQuery;
     }
 
     /**
+     * Gets the argument placeholder value for `func`.
+     *
+     * @private
+     * @param {Function} func The function to inspect.
+     * @returns {*} Returns the placeholder value.
+     */
+    function getPlaceholder(func) {
+      var object = hasOwnProperty.call(lodash, 'placeholder') ? lodash : func;
+      return object.placeholder;
+    }
+
+    /**
      * Creates an array of the own symbol properties of `object`.
      *
      * @private
@@ -70290,7 +70702,7 @@ return jQuery;
       }
       var result = hasFunc(object, path);
       if (!result && !isKey(path)) {
-        path = baseToPath(path);
+        path = baseCastPath(path);
         object = parent(object, path);
         if (object != null) {
           path = last(path);
@@ -70331,11 +70743,9 @@ return jQuery;
      * @returns {Object} Returns the initialized clone.
      */
     function initCloneObject(object) {
-      if (isPrototype(object)) {
-        return {};
-      }
-      var Ctor = object.constructor;
-      return baseCreate(isFunction(Ctor) ? Ctor.prototype : undefined);
+      return (isFunction(object.constructor) && !isPrototype(object))
+        ? baseCreate(getPrototypeOf(object))
+        : {};
     }
 
     /**
@@ -70449,7 +70859,7 @@ return jQuery;
     function isKeyable(value) {
       var type = typeof value;
       return type == 'number' || type == 'boolean' ||
-        (type == 'string' && value !== '__proto__') || value == null;
+        (type == 'string' && value != '__proto__') || value == null;
     }
 
     /**
@@ -70482,7 +70892,7 @@ return jQuery;
      */
     function isPrototype(value) {
       var Ctor = value && value.constructor,
-          proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto;
+          proto = (isFunction(Ctor) && Ctor.prototype) || objectProto;
 
       return value === proto;
     }
@@ -70521,9 +70931,9 @@ return jQuery;
           isCommon = newBitmask < (BIND_FLAG | BIND_KEY_FLAG | ARY_FLAG);
 
       var isCombo =
-        (srcBitmask == ARY_FLAG && (bitmask == CURRY_FLAG)) ||
-        (srcBitmask == ARY_FLAG && (bitmask == REARG_FLAG) && (data[7].length <= source[8])) ||
-        (srcBitmask == (ARY_FLAG | REARG_FLAG) && (source[7].length <= source[8]) && (bitmask == CURRY_FLAG));
+        ((srcBitmask == ARY_FLAG) && (bitmask == CURRY_FLAG)) ||
+        ((srcBitmask == ARY_FLAG) && (bitmask == REARG_FLAG) && (data[7].length <= source[8])) ||
+        ((srcBitmask == (ARY_FLAG | REARG_FLAG)) && (source[7].length <= source[8]) && (bitmask == CURRY_FLAG));
 
       // Exit early if metadata can't be merged.
       if (!(isCommon || isCombo)) {
@@ -70533,7 +70943,7 @@ return jQuery;
       if (srcBitmask & BIND_FLAG) {
         data[2] = source[2];
         // Set when currying a bound function.
-        newBitmask |= (bitmask & BIND_FLAG) ? 0 : CURRY_BOUND_FLAG;
+        newBitmask |= bitmask & BIND_FLAG ? 0 : CURRY_BOUND_FLAG;
       }
       // Compose partial arguments.
       var value = source[3];
@@ -70672,28 +71082,6 @@ return jQuery;
     }
 
     /**
-     * Converts `value` to an array-like object if it's not one.
-     *
-     * @private
-     * @param {*} value The value to process.
-     * @returns {Array} Returns the array-like object.
-     */
-    function toArrayLikeObject(value) {
-      return isArrayLikeObject(value) ? value : [];
-    }
-
-    /**
-     * Converts `value` to a function if it's not one.
-     *
-     * @private
-     * @param {*} value The value to process.
-     * @returns {Function} Returns the function.
-     */
-    function toFunction(value) {
-      return typeof value == 'function' ? value : identity;
-    }
-
-    /**
      * Creates a clone of `wrapper`.
      *
      * @private
@@ -70803,7 +71191,7 @@ return jQuery;
       if (!isArray(array)) {
         array = array == null ? [] : [Object(array)];
       }
-      values = baseFlatten(values);
+      values = baseFlatten(values, 1);
       return arrayConcat(array, values);
     });
 
@@ -70825,7 +71213,7 @@ return jQuery;
      */
     var difference = rest(function(array, values) {
       return isArrayLikeObject(array)
-        ? baseDifference(array, baseFlatten(values, false, true))
+        ? baseDifference(array, baseFlatten(values, 1, true))
         : [];
     });
 
@@ -70856,7 +71244,7 @@ return jQuery;
         iteratee = undefined;
       }
       return isArrayLikeObject(array)
-        ? baseDifference(array, baseFlatten(values, false, true), getIteratee(iteratee))
+        ? baseDifference(array, baseFlatten(values, 1, true), getIteratee(iteratee))
         : [];
     });
 
@@ -70885,7 +71273,7 @@ return jQuery;
         comparator = undefined;
       }
       return isArrayLikeObject(array)
-        ? baseDifference(array, baseFlatten(values, false, true), undefined, comparator)
+        ? baseDifference(array, baseFlatten(values, 1, true), undefined, comparator)
         : [];
     });
 
@@ -71155,7 +71543,7 @@ return jQuery;
     }
 
     /**
-     * Flattens `array` a single level.
+     * Flattens `array` a single level deep.
      *
      * @static
      * @memberOf _
@@ -71164,30 +71552,58 @@ return jQuery;
      * @returns {Array} Returns the new flattened array.
      * @example
      *
-     * _.flatten([1, [2, 3, [4]]]);
-     * // => [1, 2, 3, [4]]
+     * _.flatten([1, [2, [3, [4]], 5]]);
+     * // => [1, 2, [3, [4]], 5]
      */
     function flatten(array) {
       var length = array ? array.length : 0;
-      return length ? baseFlatten(array) : [];
+      return length ? baseFlatten(array, 1) : [];
     }
 
     /**
-     * This method is like `_.flatten` except that it recursively flattens `array`.
+     * Recursively flattens `array`.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to recursively flatten.
+     * @param {Array} array The array to flatten.
      * @returns {Array} Returns the new flattened array.
      * @example
      *
-     * _.flattenDeep([1, [2, 3, [4]]]);
-     * // => [1, 2, 3, 4]
+     * _.flattenDeep([1, [2, [3, [4]], 5]]);
+     * // => [1, 2, 3, 4, 5]
      */
     function flattenDeep(array) {
       var length = array ? array.length : 0;
-      return length ? baseFlatten(array, true) : [];
+      return length ? baseFlatten(array, INFINITY) : [];
+    }
+
+    /**
+     * Recursively flatten `array` up to `depth` times.
+     *
+     * @static
+     * @memberOf _
+     * @category Array
+     * @param {Array} array The array to flatten.
+     * @param {number} [depth=1] The maximum recursion depth.
+     * @returns {Array} Returns the new flattened array.
+     * @example
+     *
+     * var array = [1, [2, [3, [4]], 5]];
+     *
+     * _.flattenDepth(array, 1);
+     * // => [1, 2, [3, [4]], 5]
+     *
+     * _.flattenDepth(array, 2);
+     * // => [1, 2, 3, [4], 5]
+     */
+    function flattenDepth(array, depth) {
+      var length = array ? array.length : 0;
+      if (!length) {
+        return [];
+      }
+      depth = depth === undefined ? 1 : toInteger(depth);
+      return baseFlatten(array, depth);
     }
 
     /**
@@ -71304,7 +71720,7 @@ return jQuery;
      * // => [2]
      */
     var intersection = rest(function(arrays) {
-      var mapped = arrayMap(arrays, toArrayLikeObject);
+      var mapped = arrayMap(arrays, baseCastArrayLikeObject);
       return (mapped.length && mapped[0] === arrays[0])
         ? baseIntersection(mapped)
         : [];
@@ -71332,7 +71748,7 @@ return jQuery;
      */
     var intersectionBy = rest(function(arrays) {
       var iteratee = last(arrays),
-          mapped = arrayMap(arrays, toArrayLikeObject);
+          mapped = arrayMap(arrays, baseCastArrayLikeObject);
 
       if (iteratee === last(mapped)) {
         iteratee = undefined;
@@ -71365,7 +71781,7 @@ return jQuery;
      */
     var intersectionWith = rest(function(arrays) {
       var comparator = last(arrays),
-          mapped = arrayMap(arrays, toArrayLikeObject);
+          mapped = arrayMap(arrays, baseCastArrayLikeObject);
 
       if (comparator === last(mapped)) {
         comparator = undefined;
@@ -71459,7 +71875,8 @@ return jQuery;
      * [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
      * for equality comparisons.
      *
-     * **Note:** Unlike `_.without`, this method mutates `array`.
+     * **Note:** Unlike `_.without`, this method mutates `array`. Use `_.remove`
+     * to remove elements from an array by predicate.
      *
      * @static
      * @memberOf _
@@ -71555,7 +71972,7 @@ return jQuery;
      * // => [10, 20]
      */
     var pullAt = rest(function(array, indexes) {
-      indexes = arrayMap(baseFlatten(indexes), String);
+      indexes = arrayMap(baseFlatten(indexes, 1), String);
 
       var result = baseAt(array, indexes);
       basePullAt(array, indexes.sort(compareAscending));
@@ -71564,10 +71981,11 @@ return jQuery;
 
     /**
      * Removes all elements from `array` that `predicate` returns truthy for
-     * and returns an array of the removed elements. The predicate is invoked with
-     * three arguments: (value, index, array).
+     * and returns an array of the removed elements. The predicate is invoked
+     * with three arguments: (value, index, array).
      *
-     * **Note:** Unlike `_.filter`, this method mutates `array`.
+     * **Note:** Unlike `_.filter`, this method mutates `array`. Use `_.pull`
+     * to pull elements from an array by value.
      *
      * @static
      * @memberOf _
@@ -72027,7 +72445,7 @@ return jQuery;
      * // => [2, 1, 4]
      */
     var union = rest(function(arrays) {
-      return baseUniq(baseFlatten(arrays, false, true));
+      return baseUniq(baseFlatten(arrays, 1, true));
     });
 
     /**
@@ -72055,7 +72473,7 @@ return jQuery;
       if (isArrayLikeObject(iteratee)) {
         iteratee = undefined;
       }
-      return baseUniq(baseFlatten(arrays, false, true), getIteratee(iteratee));
+      return baseUniq(baseFlatten(arrays, 1, true), getIteratee(iteratee));
     });
 
     /**
@@ -72082,7 +72500,7 @@ return jQuery;
       if (isArrayLikeObject(comparator)) {
         comparator = undefined;
       }
-      return baseUniq(baseFlatten(arrays, false, true), undefined, comparator);
+      return baseUniq(baseFlatten(arrays, 1, true), undefined, comparator);
     });
 
     /**
@@ -72506,17 +72924,22 @@ return jQuery;
      * // => ['a', 'c']
      */
     var wrapperAt = rest(function(paths) {
-      paths = baseFlatten(paths);
+      paths = baseFlatten(paths, 1);
       var length = paths.length,
           start = length ? paths[0] : 0,
           value = this.__wrapped__,
           interceptor = function(object) { return baseAt(object, paths); };
 
-      if (length > 1 || this.__actions__.length || !(value instanceof LazyWrapper) || !isIndex(start)) {
+      if (length > 1 || this.__actions__.length ||
+          !(value instanceof LazyWrapper) || !isIndex(start)) {
         return this.thru(interceptor);
       }
       value = value.slice(start, +start + (length ? 1 : 0));
-      value.__actions__.push({ 'func': thru, 'args': [interceptor], 'thisArg': undefined });
+      value.__actions__.push({
+        'func': thru,
+        'args': [interceptor],
+        'thisArg': undefined
+      });
       return new LodashWrapper(value, this.__chain__).thru(function(array) {
         if (length && !array.length) {
           array.push(undefined);
@@ -72727,7 +73150,11 @@ return jQuery;
           wrapped = new LazyWrapper(this);
         }
         wrapped = wrapped.reverse();
-        wrapped.__actions__.push({ 'func': thru, 'args': [reverse], 'thisArg': undefined });
+        wrapped.__actions__.push({
+          'func': thru,
+          'args': [reverse],
+          'thisArg': undefined
+        });
         return new LodashWrapper(wrapped, this.__chain__);
       }
       return this.thru(reverse);
@@ -72946,7 +73373,7 @@ return jQuery;
      * // => [1, 1, 2, 2]
      */
     function flatMap(collection, iteratee) {
-      return baseFlatten(map(collection, iteratee));
+      return baseFlatten(map(collection, iteratee), 1);
     }
 
     /**
@@ -72980,7 +73407,7 @@ return jQuery;
     function forEach(collection, iteratee) {
       return (typeof iteratee == 'function' && isArray(collection))
         ? arrayEach(collection, iteratee)
-        : baseEach(collection, toFunction(iteratee));
+        : baseEach(collection, baseCastFunction(iteratee));
     }
 
     /**
@@ -73004,7 +73431,7 @@ return jQuery;
     function forEachRight(collection, iteratee) {
       return (typeof iteratee == 'function' && isArray(collection))
         ? arrayEachRight(collection, iteratee)
-        : baseEachRight(collection, toFunction(iteratee));
+        : baseEachRight(collection, baseCastFunction(iteratee));
     }
 
     /**
@@ -73568,7 +73995,7 @@ return jQuery;
       } else if (length > 2 && isIterateeCall(iteratees[0], iteratees[1], iteratees[2])) {
         iteratees.length = 1;
       }
-      return baseOrderBy(collection, baseFlatten(iteratees), []);
+      return baseOrderBy(collection, baseFlatten(iteratees, 1), []);
     });
 
     /*------------------------------------------------------------------------*/
@@ -73579,7 +74006,7 @@ return jQuery;
      *
      * @static
      * @memberOf _
-     * @type Function
+     * @type {Function}
      * @category Date
      * @returns {number} Returns the timestamp.
      * @example
@@ -73721,9 +74148,7 @@ return jQuery;
     var bind = rest(function(func, thisArg, partials) {
       var bitmask = BIND_FLAG;
       if (partials.length) {
-        var placeholder = lodash.placeholder || bind.placeholder,
-            holders = replaceHolders(partials, placeholder);
-
+        var holders = replaceHolders(partials, getPlaceholder(bind));
         bitmask |= PARTIAL_FLAG;
       }
       return createWrapper(func, bitmask, thisArg, partials, holders);
@@ -73776,9 +74201,7 @@ return jQuery;
     var bindKey = rest(function(object, key, partials) {
       var bitmask = BIND_FLAG | BIND_KEY_FLAG;
       if (partials.length) {
-        var placeholder = lodash.placeholder || bindKey.placeholder,
-            holders = replaceHolders(partials, placeholder);
-
+        var holders = replaceHolders(partials, getPlaceholder(bindKey));
         bitmask |= PARTIAL_FLAG;
       }
       return createWrapper(key, bitmask, object, partials, holders);
@@ -73827,7 +74250,7 @@ return jQuery;
     function curry(func, arity, guard) {
       arity = guard ? undefined : arity;
       var result = createWrapper(func, CURRY_FLAG, undefined, undefined, undefined, undefined, undefined, arity);
-      result.placeholder = lodash.placeholder || curry.placeholder;
+      result.placeholder = curry.placeholder;
       return result;
     }
 
@@ -73871,7 +74294,7 @@ return jQuery;
     function curryRight(func, arity, guard) {
       arity = guard ? undefined : arity;
       var result = createWrapper(func, CURRY_RIGHT_FLAG, undefined, undefined, undefined, undefined, undefined, arity);
-      result.placeholder = lodash.placeholder || curryRight.placeholder;
+      result.placeholder = curryRight.placeholder;
       return result;
     }
 
@@ -74005,8 +74428,10 @@ return jQuery;
           if (!lastCalled && !maxTimeoutId && !leading) {
             lastCalled = stamp;
           }
-          var remaining = maxWait - (stamp - lastCalled),
-              isCalled = remaining <= 0 || remaining > maxWait;
+          var remaining = maxWait - (stamp - lastCalled);
+
+          var isCalled = (remaining <= 0 || remaining > maxWait) &&
+            (leading || maxTimeoutId);
 
           if (isCalled) {
             if (maxTimeoutId) {
@@ -74246,7 +74671,7 @@ return jQuery;
      * // => [100, 10]
      */
     var overArgs = rest(function(func, transforms) {
-      transforms = arrayMap(baseFlatten(transforms), getIteratee());
+      transforms = arrayMap(baseFlatten(transforms, 1), getIteratee());
 
       var funcsLength = transforms.length;
       return rest(function(args) {
@@ -74293,9 +74718,7 @@ return jQuery;
      * // => 'hi fred'
      */
     var partial = rest(function(func, partials) {
-      var placeholder = lodash.placeholder || partial.placeholder,
-          holders = replaceHolders(partials, placeholder);
-
+      var holders = replaceHolders(partials, getPlaceholder(partial));
       return createWrapper(func, PARTIAL_FLAG, undefined, partials, holders);
     });
 
@@ -74331,9 +74754,7 @@ return jQuery;
      * // => 'hello fred'
      */
     var partialRight = rest(function(func, partials) {
-      var placeholder = lodash.placeholder || partialRight.placeholder,
-          holders = replaceHolders(partials, placeholder);
-
+      var holders = replaceHolders(partials, getPlaceholder(partialRight));
       return createWrapper(func, PARTIAL_RIGHT_FLAG, undefined, partials, holders);
     });
 
@@ -74360,7 +74781,7 @@ return jQuery;
      * // => ['a', 'b', 'c']
      */
     var rearg = rest(function(func, indexes) {
-      return createWrapper(func, REARG_FLAG, undefined, undefined, undefined, baseFlatten(indexes));
+      return createWrapper(func, REARG_FLAG, undefined, undefined, undefined, baseFlatten(indexes, 1));
     });
 
     /**
@@ -74512,7 +74933,11 @@ return jQuery;
         leading = 'leading' in options ? !!options.leading : leading;
         trailing = 'trailing' in options ? !!options.trailing : trailing;
       }
-      return debounce(func, wait, { 'leading': leading, 'maxWait': wait, 'trailing': trailing });
+      return debounce(func, wait, {
+        'leading': leading,
+        'maxWait': wait,
+        'trailing': trailing
+      });
     }
 
     /**
@@ -74543,7 +74968,7 @@ return jQuery;
      * @memberOf _
      * @category Function
      * @param {*} value The value to wrap.
-     * @param {Function} wrapper The wrapper function.
+     * @param {Function} [wrapper=identity] The wrapper function.
      * @returns {Function} Returns the new function.
      * @example
      *
@@ -74560,6 +74985,46 @@ return jQuery;
     }
 
     /*------------------------------------------------------------------------*/
+
+    /**
+     * Casts `value` as an array if it's not one.
+     *
+     * @static
+     * @memberOf _
+     * @category Lang
+     * @param {*} value The value to inspect.
+     * @returns {Array} Returns the cast array.
+     * @example
+     *
+     * _.castArray(1);
+     * // => [1]
+     *
+     * _.castArray({ 'a': 1 });
+     * // => [{ 'a': 1 }]
+     *
+     * _.castArray('abc');
+     * // => ['abc']
+     *
+     * _.castArray(null);
+     * // => [null]
+     *
+     * _.castArray(undefined);
+     * // => [undefined]
+     *
+     * _.castArray();
+     * // => []
+     *
+     * var array = [1, 2, 3];
+     * console.log(_.castArray(array) === array);
+     * // => true
+     */
+    function castArray() {
+      if (!arguments.length) {
+        return [];
+      }
+      var value = arguments[0];
+      return isArray(value) ? value : [value];
+    }
 
     /**
      * Creates a shallow clone of `value`.
@@ -74781,7 +75246,7 @@ return jQuery;
      *
      * @static
      * @memberOf _
-     * @type Function
+     * @type {Function}
      * @category Lang
      * @param {*} value The value to check.
      * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
@@ -74806,7 +75271,6 @@ return jQuery;
      *
      * @static
      * @memberOf _
-     * @type Function
      * @category Lang
      * @param {*} value The value to check.
      * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
@@ -74829,7 +75293,6 @@ return jQuery;
      *
      * @static
      * @memberOf _
-     * @type Function
      * @category Lang
      * @param {*} value The value to check.
      * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
@@ -74858,7 +75321,6 @@ return jQuery;
      *
      * @static
      * @memberOf _
-     * @type Function
      * @category Lang
      * @param {*} value The value to check.
      * @returns {boolean} Returns `true` if `value` is an array-like object, else `false`.
@@ -74990,7 +75452,8 @@ return jQuery;
      */
     function isEmpty(value) {
       if (isArrayLike(value) &&
-          (isArray(value) || isString(value) || isFunction(value.splice) || isArguments(value))) {
+          (isArray(value) || isString(value) ||
+            isFunction(value.splice) || isArguments(value))) {
         return !value.length;
       }
       for (var key in value) {
@@ -75033,10 +75496,10 @@ return jQuery;
     }
 
     /**
-     * This method is like `_.isEqual` except that it accepts `customizer` which is
-     * invoked to compare values. If `customizer` returns `undefined` comparisons are
-     * handled by the method instead. The `customizer` is invoked with up to six arguments:
-     * (objValue, othValue [, index|key, object, other, stack]).
+     * This method is like `_.isEqual` except that it accepts `customizer` which
+     * is invoked to compare values. If `customizer` returns `undefined` comparisons
+     * are handled by the method instead. The `customizer` is invoked with up to
+     * six arguments: (objValue, othValue [, index|key, object, other, stack]).
      *
      * @static
      * @memberOf _
@@ -75087,8 +75550,11 @@ return jQuery;
      * // => false
      */
     function isError(value) {
-      return isObjectLike(value) &&
-        typeof value.message == 'string' && objectToString.call(value) == errorTag;
+      if (!isObjectLike(value)) {
+        return false;
+      }
+      return (objectToString.call(value) == errorTag) ||
+        (typeof value.message == 'string' && typeof value.name == 'string');
     }
 
     /**
@@ -75196,7 +75662,8 @@ return jQuery;
      * // => false
      */
     function isLength(value) {
-      return typeof value == 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+      return typeof value == 'number' &&
+        value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
     }
 
     /**
@@ -75275,8 +75742,9 @@ return jQuery;
     }
 
     /**
-     * Performs a deep comparison between `object` and `source` to determine if
-     * `object` contains equivalent property values.
+     * Performs a partial deep comparison between `object` and `source` to
+     * determine if `object` contains equivalent property values. This method is
+     * equivalent to a `_.matches` function when `source` is partially applied.
      *
      * **Note:** This method supports comparing the same values as `_.isEqual`.
      *
@@ -75495,13 +75963,11 @@ return jQuery;
      * // => true
      */
     function isPlainObject(value) {
-      if (!isObjectLike(value) || objectToString.call(value) != objectTag || isHostObject(value)) {
+      if (!isObjectLike(value) ||
+          objectToString.call(value) != objectTag || isHostObject(value)) {
         return false;
       }
-      var proto = objectProto;
-      if (typeof value.constructor == 'function') {
-        proto = getPrototypeOf(value);
-      }
+      var proto = getPrototypeOf(value);
       if (proto === null) {
         return true;
       }
@@ -75638,7 +76104,8 @@ return jQuery;
      * // => false
      */
     function isTypedArray(value) {
-      return isObjectLike(value) && isLength(value.length) && !!typedArrayTags[objectToString.call(value)];
+      return isObjectLike(value) &&
+        isLength(value.length) && !!typedArrayTags[objectToString.call(value)];
     }
 
     /**
@@ -76130,7 +76597,7 @@ return jQuery;
      * // => ['a', 'c']
      */
     var at = rest(function(object, paths) {
-      return baseAt(object, baseFlatten(paths));
+      return baseAt(object, baseFlatten(paths, 1));
     });
 
     /**
@@ -76318,7 +76785,9 @@ return jQuery;
      * // => logs 'a', 'b', then 'c' (iteration order is not guaranteed)
      */
     function forIn(object, iteratee) {
-      return object == null ? object : baseFor(object, toFunction(iteratee), keysIn);
+      return object == null
+        ? object
+        : baseFor(object, baseCastFunction(iteratee), keysIn);
     }
 
     /**
@@ -76346,7 +76815,9 @@ return jQuery;
      * // => logs 'c', 'b', then 'a' assuming `_.forIn` logs 'a', 'b', then 'c'
      */
     function forInRight(object, iteratee) {
-      return object == null ? object : baseForRight(object, toFunction(iteratee), keysIn);
+      return object == null
+        ? object
+        : baseForRight(object, baseCastFunction(iteratee), keysIn);
     }
 
     /**
@@ -76376,7 +76847,7 @@ return jQuery;
      * // => logs 'a' then 'b' (iteration order is not guaranteed)
      */
     function forOwn(object, iteratee) {
-      return object && baseForOwn(object, toFunction(iteratee));
+      return object && baseForOwn(object, baseCastFunction(iteratee));
     }
 
     /**
@@ -76404,7 +76875,7 @@ return jQuery;
      * // => logs 'b' then 'a' assuming `_.forOwn` logs 'a' then 'b'
      */
     function forOwnRight(object, iteratee) {
-      return object && baseForOwnRight(object, toFunction(iteratee));
+      return object && baseForOwnRight(object, baseCastFunction(iteratee));
     }
 
     /**
@@ -76710,7 +77181,8 @@ return jQuery;
     /**
      * The opposite of `_.mapValues`; this method creates an object with the
      * same values as `object` and keys generated by running each own enumerable
-     * property of `object` through `iteratee`.
+     * property of `object` through `iteratee`. The iteratee is invoked with
+     * three arguments: (value, key, object).
      *
      * @static
      * @memberOf _
@@ -76738,7 +77210,7 @@ return jQuery;
     /**
      * Creates an object with the same keys as `object` and values generated by
      * running each own enumerable property of `object` through `iteratee`. The
-     * iteratee function is invoked with three arguments: (value, key, object).
+     * iteratee is invoked with three arguments: (value, key, object).
      *
      * @static
      * @memberOf _
@@ -76771,12 +77243,12 @@ return jQuery;
     }
 
     /**
-     * Recursively merges own and inherited enumerable properties of source
-     * objects into the destination object, skipping source properties that resolve
-     * to `undefined`. Array and plain object properties are merged recursively.
-     * Other objects and value types are overridden by assignment. Source objects
-     * are applied from left to right. Subsequent sources overwrite property
-     * assignments of previous sources.
+     * Recursively merges own and inherited enumerable properties of source objects
+     * into the destination object. Source properties that resolve to `undefined`
+     * are skipped if a destination value exists. Array and plain object properties
+     * are merged recursively. Other objects and value types are overridden by
+     * assignment. Source objects are applied from left to right. Subsequent
+     * sources overwrite property assignments of previous sources.
      *
      * **Note:** This method mutates `object`.
      *
@@ -76853,7 +77325,7 @@ return jQuery;
      * @category Object
      * @param {Object} object The source object.
      * @param {...(string|string[])} [props] The property names to omit, specified
-     *  individually or in arrays..
+     *  individually or in arrays.
      * @returns {Object} Returns the new object.
      * @example
      *
@@ -76866,14 +77338,15 @@ return jQuery;
       if (object == null) {
         return {};
       }
-      props = arrayMap(baseFlatten(props), String);
+      props = arrayMap(baseFlatten(props, 1), String);
       return basePick(object, baseDifference(keysIn(object), props));
     });
 
     /**
-     * The opposite of `_.pickBy`; this method creates an object composed of the
-     * own and inherited enumerable properties of `object` that `predicate`
-     * doesn't return truthy for.
+     * The opposite of `_.pickBy`; this method creates an object composed of
+     * the own and inherited enumerable properties of `object` that `predicate`
+     * doesn't return truthy for. The predicate is invoked with two arguments:
+     * (value, key).
      *
      * @static
      * @memberOf _
@@ -76889,7 +77362,7 @@ return jQuery;
      * // => { 'b': '2' }
      */
     function omitBy(object, predicate) {
-      predicate = getIteratee(predicate, 2);
+      predicate = getIteratee(predicate);
       return basePickBy(object, function(value, key) {
         return !predicate(value, key);
       });
@@ -76913,7 +77386,7 @@ return jQuery;
      * // => { 'a': 1, 'c': 3 }
      */
     var pick = rest(function(object, props) {
-      return object == null ? {} : basePick(object, baseFlatten(props));
+      return object == null ? {} : basePick(object, baseFlatten(props, 1));
     });
 
     /**
@@ -76934,7 +77407,7 @@ return jQuery;
      * // => { 'a': 1, 'c': 3 }
      */
     function pickBy(object, predicate) {
-      return object == null ? {} : basePickBy(object, getIteratee(predicate, 2));
+      return object == null ? {} : basePickBy(object, getIteratee(predicate));
     }
 
     /**
@@ -76967,7 +77440,7 @@ return jQuery;
      */
     function result(object, path, defaultValue) {
       if (!isKey(path, object)) {
-        path = baseToPath(path);
+        path = baseCastPath(path);
         var result = get(object, path);
         object = parent(object, path);
       } else {
@@ -77037,7 +77510,8 @@ return jQuery;
     }
 
     /**
-     * Creates an array of own enumerable key-value pairs for `object`.
+     * Creates an array of own enumerable key-value pairs for `object` which
+     * can be consumed by `_.fromPairs`.
      *
      * @static
      * @memberOf _
@@ -77061,7 +77535,8 @@ return jQuery;
     }
 
     /**
-     * Creates an array of own and inherited enumerable key-value pairs for `object`.
+     * Creates an array of own and inherited enumerable key-value pairs for
+     * `object` which can be consumed by `_.fromPairs`.
      *
      * @static
      * @memberOf _
@@ -77122,7 +77597,7 @@ return jQuery;
           if (isArr) {
             accumulator = isArray(object) ? new Ctor : [];
           } else {
-            accumulator = baseCreate(isFunction(Ctor) ? Ctor.prototype : undefined);
+            accumulator = isFunction(Ctor) ? baseCreate(getPrototypeOf(object)) : {};
           }
         } else {
           accumulator = {};
@@ -77216,7 +77691,7 @@ return jQuery;
      * // => [1, 2, 3] (iteration order is not guaranteed)
      */
     function valuesIn(object) {
-      return object == null ? baseValues(object, keysIn(object)) : [];
+      return object == null ? [] : baseValues(object, keysIn(object));
     }
 
     /*------------------------------------------------------------------------*/
@@ -77714,7 +78189,7 @@ return jQuery;
      * @memberOf _
      * @category String
      * @param {string} string The string to convert.
-     * @param {number} [radix] The radix to interpret `value` by.
+     * @param {number} [radix=10] The radix to interpret `value` by.
      * @param- {Object} [guard] Enables use as an iteratee for functions like `_.map`.
      * @returns {number} Returns the converted integer.
      * @example
@@ -78086,7 +78561,8 @@ return jQuery;
         'return __p\n}';
 
       var result = attempt(function() {
-        return Function(importsKeys, sourceURL + 'return ' + source).apply(undefined, importsValues);
+        return Function(importsKeys, sourceURL + 'return ' + source)
+          .apply(undefined, importsValues);
       });
 
       // Provide the compiled function's source by its `toString` method or
@@ -78180,7 +78656,9 @@ return jQuery;
       var strSymbols = stringToArray(string),
           chrSymbols = stringToArray(chars);
 
-      return strSymbols.slice(charsStartIndex(strSymbols, chrSymbols), charsEndIndex(strSymbols, chrSymbols) + 1).join('');
+      return strSymbols
+        .slice(charsStartIndex(strSymbols, chrSymbols), charsEndIndex(strSymbols, chrSymbols) + 1)
+        .join('');
     }
 
     /**
@@ -78214,7 +78692,9 @@ return jQuery;
         return string;
       }
       var strSymbols = stringToArray(string);
-      return strSymbols.slice(0, charsEndIndex(strSymbols, stringToArray(chars)) + 1).join('');
+      return strSymbols
+        .slice(0, charsEndIndex(strSymbols, stringToArray(chars)) + 1)
+        .join('');
     }
 
     /**
@@ -78248,7 +78728,9 @@ return jQuery;
         return string;
       }
       var strSymbols = stringToArray(string);
-      return strSymbols.slice(charsStartIndex(strSymbols, stringToArray(chars))).join('');
+      return strSymbols
+        .slice(charsStartIndex(strSymbols, stringToArray(chars)))
+        .join('');
     }
 
     /**
@@ -78260,7 +78742,7 @@ return jQuery;
      * @memberOf _
      * @category String
      * @param {string} [string=''] The string to truncate.
-     * @param {Object} [options] The options object.
+     * @param {Object} [options=({})] The options object.
      * @param {number} [options.length=30] The maximum string length.
      * @param {string} [options.omission='...'] The string to indicate text is omitted.
      * @param {RegExp|string} [options.separator] The separator pattern to truncate to.
@@ -78445,7 +78927,7 @@ return jQuery;
       try {
         return apply(func, undefined, args);
       } catch (e) {
-        return isObject(e) ? e : new Error(e);
+        return isError(e) ? e : new Error(e);
       }
     });
 
@@ -78476,7 +78958,7 @@ return jQuery;
      * // => logs 'clicked docs' when clicked
      */
     var bindAll = rest(function(object, methodNames) {
-      arrayEach(baseFlatten(methodNames), function(key) {
+      arrayEach(baseFlatten(methodNames, 1), function(key) {
         object[key] = bind(object[key], object);
       });
       return object;
@@ -78644,7 +79126,8 @@ return jQuery;
      * Creates a function that invokes `func` with the arguments of the created
      * function. If `func` is a property name the created callback returns the
      * property value for a given element. If `func` is an object the created
-     * callback returns `true` for elements that contain the equivalent object properties, otherwise it returns `false`.
+     * callback returns `true` for elements that contain the equivalent object
+     * properties, otherwise it returns `false`.
      *
      * @static
      * @memberOf _
@@ -78674,9 +79157,10 @@ return jQuery;
     }
 
     /**
-     * Creates a function that performs a deep partial comparison between a given
+     * Creates a function that performs a partial deep comparison between a given
      * object and `source`, returning `true` if the given object has equivalent
-     * property values, else `false`.
+     * property values, else `false`. The created function is equivalent to
+     * `_.isMatch` with a `source` partially applied.
      *
      * **Note:** This method supports comparing the same values as `_.isEqual`.
      *
@@ -78700,7 +79184,7 @@ return jQuery;
     }
 
     /**
-     * Creates a function that performs a deep partial comparison between the
+     * Creates a function that performs a partial deep comparison between the
      * value at `path` of a given object to `srcValue`, returning `true` if the
      * object value is equivalent, else `false`.
      *
@@ -79109,8 +79593,8 @@ return jQuery;
     var rangeRight = createRange(true);
 
     /**
-     * Invokes the iteratee function `n` times, returning an array of the results
-     * of each invocation. The iteratee is invoked with one argument; (index).
+     * Invokes the iteratee `n` times, returning an array of the results of
+     * each invocation. The iteratee is invoked with one argument; (index).
      *
      * @static
      * @memberOf _
@@ -79134,7 +79618,7 @@ return jQuery;
       var index = MAX_ARRAY_LENGTH,
           length = nativeMin(n, MAX_ARRAY_LENGTH);
 
-      iteratee = toFunction(iteratee);
+      iteratee = baseCastFunction(iteratee);
       n -= MAX_ARRAY_LENGTH;
 
       var result = baseTimes(length, iteratee);
@@ -79179,7 +79663,7 @@ return jQuery;
      * @static
      * @memberOf _
      * @category Util
-     * @param {string} [prefix] The value to prefix the ID with.
+     * @param {string} [prefix=''] The value to prefix the ID with.
      * @returns {string} Returns the unique ID.
      * @example
      *
@@ -79530,6 +80014,7 @@ return jQuery;
     lodash.bind = bind;
     lodash.bindAll = bindAll;
     lodash.bindKey = bindKey;
+    lodash.castArray = castArray;
     lodash.chain = chain;
     lodash.chunk = chunk;
     lodash.compact = compact;
@@ -79558,6 +80043,7 @@ return jQuery;
     lodash.flatMap = flatMap;
     lodash.flatten = flatten;
     lodash.flattenDeep = flattenDeep;
+    lodash.flattenDepth = flattenDepth;
     lodash.flip = flip;
     lodash.flow = flow;
     lodash.flowRight = flowRight;
@@ -79832,7 +80318,7 @@ return jQuery;
      *
      * @static
      * @memberOf _
-     * @type string
+     * @type {string}
      */
     lodash.VERSION = VERSION;
 
@@ -79854,7 +80340,10 @@ return jQuery;
         if (filtered) {
           result.__takeCount__ = nativeMin(n, result.__takeCount__);
         } else {
-          result.__views__.push({ 'size': nativeMin(n, MAX_ARRAY_LENGTH), 'type': methodName + (result.__dir__ < 0 ? 'Right' : '') });
+          result.__views__.push({
+            'size': nativeMin(n, MAX_ARRAY_LENGTH),
+            'type': methodName + (result.__dir__ < 0 ? 'Right' : '')
+          });
         }
         return result;
       };
@@ -79871,7 +80360,10 @@ return jQuery;
 
       LazyWrapper.prototype[methodName] = function(iteratee) {
         var result = this.clone();
-        result.__iteratees__.push({ 'iteratee': getIteratee(iteratee, 3), 'type': type });
+        result.__iteratees__.push({
+          'iteratee': getIteratee(iteratee, 3),
+          'type': type
+        });
         result.__filtered__ = result.__filtered__ || isFilter;
         return result;
       };
@@ -80023,7 +80515,10 @@ return jQuery;
       }
     });
 
-    realNames[createHybridWrapper(undefined, BIND_KEY_FLAG).name] = [{ 'name': 'wrapper', 'func': undefined }];
+    realNames[createHybridWrapper(undefined, BIND_KEY_FLAG).name] = [{
+      'name': 'wrapper',
+      'func': undefined
+    }];
 
     // Add functions to the lazy wrapper.
     LazyWrapper.prototype.clone = lazyClone;
@@ -80080,7 +80575,7 @@ return jQuery;
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],162:[function(require,module,exports){
+},{}],167:[function(require,module,exports){
 //! moment.js
 //! version : 2.11.2
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -83687,11 +84182,11 @@ return jQuery;
     return _moment;
 
 }));
-},{}],163:[function(require,module,exports){
+},{}],168:[function(require,module,exports){
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
- * Version: 0.14.2 - 2016-02-13T06:55:42.594Z
+ * Version: 0.14.2 - 2016-02-18T10:06:20.436Z
  * License: MIT
  */
 
@@ -85021,46 +85516,79 @@ uis.directive('uiSelectMultiple', ['uiSelectMinErr','$timeout', function(uiSelec
           resultMultiple.unshift(result);
         }
         return resultMultiple;
-      });
-
-      // From model --> view
+      });      // From model --> view
       ngModel.$formatters.unshift(function (inputValue) {
-        var data = $select.parserResult.source (scope, { $select : {search:''}}), //Overwrite $search
-            locals = {},
-            result;
-        if (!data) return inputValue;
-        var resultMultiple = [];
-        var checkFnMultiple = function(list, value){
-          if (!list || !list.length) return;
-          for (var p = list.length - 1; p >= 0; p--) {
-            locals[$select.parserResult.itemName] = list[p];
-            result = $select.parserResult.modelMapper(scope, locals);
-            if($select.parserResult.trackByExp){
-                var matches = /\.(.+)/.exec($select.parserResult.trackByExp);
-                if(matches.length>0 && result[matches[1]] == value[matches[1]]){
-                    resultMultiple.unshift(list[p]);
-                    return true;
-                }
-            }
-            if (angular.equals(result,value)){
-              resultMultiple.unshift(list[p]);
-              return true;
-            }
+          var data = $select.parserResult.source(scope, { $select: { search: '' } }), //Overwrite $search
+              locals = {},
+              result;
+          if (!data) return inputValue;
+          var resultMultiple = [];
+
+          var alreadyExistsInResultsFn = function (candidate) {
+              var trackBy = $select.parserResult.trackByExp;
+
+              for (var i = 0; i < resultMultiple.length; i++) {
+                  var current = resultMultiple[i];
+
+                  if (trackBy) {
+                      var matches = /\.(.+)/.exec($select.parserResult.trackByExp);
+                      if (matches && matches.length > 0 && current[matches[1]] !== undefined && current[matches[1]] == candidate[matches[1]]) {
+                          return true;
+                      }
+                  }
+                  else {
+                      if (angular.equals(current, candidate)) {
+                          return true;
+                      }
+                  }
+              }
+
+              return false;
+          };
+
+          var addToResultsSafeFn = function (candidate) {
+
+              if (!alreadyExistsInResultsFn(candidate)) {
+                  resultMultiple.unshift(candidate);
+                  return true;
+              }
+
+              return false;
+          };
+
+          var checkFnMultiple = function (list, value) {
+              if (!list || !list.length) return;
+              for (var p = list.length - 1; p >= 0; p--) {
+                  locals[$select.parserResult.itemName] = list[p];
+                  result = $select.parserResult.modelMapper(scope, locals);
+                  if ($select.parserResult.trackByExp) {
+                      var matches = /\.(.+)/.exec($select.parserResult.trackByExp);
+                      if (matches && matches.length > 0 && result[matches[1]] !== undefined && result[matches[1]] === value[matches[1]]) {
+                          if (addToResultsSafeFn(list[p])) {
+                              return true;
+                          }
+                      }
+                  }
+                  if (angular.equals(result, value)) {
+                      if (addToResultsSafeFn(list[p])) {
+                          return true;
+                      }
+                  }
+              }
+              return false;
+          };
+          if (!inputValue) return resultMultiple; //If ngModel was undefined
+          for (var k = inputValue.length - 1; k >= 0; k--) {
+              //Check model array of currently selected items 
+              if (!checkFnMultiple($select.selected, inputValue[k])) {
+                  //Check model array of all items available
+                  if (!checkFnMultiple(data, inputValue[k])) {
+                      //If not found on previous lists, just add it directly to resultMultiple
+                      addToResultsSafeFn(inputValue[k]);
+                  }
+              }
           }
-          return false;
-        };
-        if (!inputValue) return resultMultiple; //If ngModel was undefined
-        for (var k = inputValue.length - 1; k >= 0; k--) {
-          //Check model array of currently selected items 
-          if (!checkFnMultiple($select.selected, inputValue[k])){
-            //Check model array of all items available
-            if (!checkFnMultiple(data, inputValue[k])){
-              //If not found on previous lists, just add it directly to resultMultiple
-              resultMultiple.unshift(inputValue[k]);
-            }
-          }
-        }
-        return resultMultiple;
+          return resultMultiple;
       });
       
       //Watch for external model changes 
@@ -85677,16 +86205,16 @@ $templateCache.put("bootstrap/match-multiple.tpl.html","<span class=\"ui-select-
 $templateCache.put("bootstrap/match.tpl.html","<div class=\"ui-select-match\" ng-hide=\"$select.open\" ng-disabled=\"$select.disabled\" ng-class=\"{\'btn-default-focus\':$select.focus}\"><span tabindex=\"-1\" class=\"btn btn-default form-control ui-select-toggle\" aria-label=\"{{ $select.baseTitle }} activate\" ng-disabled=\"$select.disabled\" ng-click=\"$select.activate()\" style=\"outline: 0;\"><span ng-show=\"$select.isEmpty()\" class=\"ui-select-placeholder text-muted\">{{$select.placeholder}}</span> <span ng-hide=\"$select.isEmpty()\" class=\"ui-select-match-text pull-left\" ng-class=\"{\'ui-select-allow-clear\': $select.allowClear && !$select.isEmpty()}\" ng-transclude=\"\"></span> <i class=\"caret pull-right\" ng-click=\"$select.toggle($event)\"></i> <a ng-show=\"$select.allowClear && !$select.isEmpty()\" aria-label=\"{{ $select.baseTitle }} clear\" style=\"margin-right: 10px\" ng-click=\"$select.clear($event)\" class=\"btn btn-xs btn-link pull-right\"><i class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></i></a></span></div>");
 $templateCache.put("bootstrap/select-multiple.tpl.html","<div class=\"ui-select-container ui-select-multiple ui-select-bootstrap dropdown form-control\" ng-class=\"{open: $select.open}\"><div><div class=\"ui-select-match\"></div><input type=\"text\" autocomplete=\"false\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" class=\"ui-select-search input-xs\" placeholder=\"{{$selectMultiple.getPlaceholder()}}\" ng-disabled=\"$select.disabled\" ng-hide=\"$select.disabled\" ng-click=\"$select.activate()\" ng-model=\"$select.search\" role=\"combobox\" aria-label=\"{{ $select.baseTitle }}\" ondrop=\"return false;\"></div><div class=\"ui-select-choices\"></div></div>");
 $templateCache.put("bootstrap/select.tpl.html","<div class=\"ui-select-container ui-select-bootstrap dropdown\" ng-class=\"{open: $select.open}\"><div class=\"ui-select-match\"></div><input type=\"text\" autocomplete=\"false\" tabindex=\"-1\" aria-expanded=\"true\" aria-label=\"{{ $select.baseTitle }}\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"form-control ui-select-search\" placeholder=\"{{$select.placeholder}}\" ng-model=\"$select.search\" ng-show=\"$select.searchEnabled && $select.open\"><div class=\"ui-select-choices\"></div></div>");
+$templateCache.put("selectize/choices.tpl.html","<div ng-show=\"$select.open\" class=\"ui-select-choices ui-select-dropdown selectize-dropdown single\"><div class=\"ui-select-choices-content selectize-dropdown-content\"><div class=\"ui-select-choices-group optgroup\" role=\"listbox\"><div ng-show=\"$select.isGrouped\" class=\"ui-select-choices-group-label optgroup-header\" ng-bind=\"$group.name\"></div><div role=\"option\" class=\"ui-select-choices-row\" ng-class=\"{active: $select.isActive(this), disabled: $select.isDisabled(this)}\"><div class=\"option ui-select-choices-row-inner\" data-selectable=\"\"></div></div></div></div></div>");
+$templateCache.put("selectize/match.tpl.html","<div ng-hide=\"($select.open || $select.isEmpty())\" class=\"ui-select-match\" ng-transclude=\"\"></div>");
+$templateCache.put("selectize/select.tpl.html","<div class=\"ui-select-container selectize-control single\" ng-class=\"{\'open\': $select.open}\"><div class=\"selectize-input\" ng-class=\"{\'focus\': $select.open, \'disabled\': $select.disabled, \'selectize-focus\' : $select.focus}\" ng-click=\"$select.open && !$select.searchEnabled ? $select.toggle($event) : $select.activate()\"><div class=\"ui-select-match\"></div><input type=\"text\" autocomplete=\"false\" tabindex=\"-1\" class=\"ui-select-search ui-select-toggle\" ng-click=\"$select.toggle($event)\" placeholder=\"{{$select.placeholder}}\" ng-model=\"$select.search\" ng-hide=\"!$select.searchEnabled || ($select.selected && !$select.open)\" ng-disabled=\"$select.disabled\" aria-label=\"{{ $select.baseTitle }}\"></div><div class=\"ui-select-choices\"></div></div>");
 $templateCache.put("select2/choices.tpl.html","<ul class=\"ui-select-choices ui-select-choices-content select2-results\"><li class=\"ui-select-choices-group\" ng-class=\"{\'select2-result-with-children\': $select.choiceGrouped($group) }\"><div ng-show=\"$select.choiceGrouped($group)\" class=\"ui-select-choices-group-label select2-result-label\" ng-bind=\"$group.name\"></div><ul role=\"listbox\" id=\"ui-select-choices-{{ $select.generatedId }}\" ng-class=\"{\'select2-result-sub\': $select.choiceGrouped($group), \'select2-result-single\': !$select.choiceGrouped($group) }\"><li role=\"option\" id=\"ui-select-choices-row-{{ $select.generatedId }}-{{$index}}\" class=\"ui-select-choices-row\" ng-class=\"{\'select2-highlighted\': $select.isActive(this), \'select2-disabled\': $select.isDisabled(this)}\"><div class=\"select2-result-label ui-select-choices-row-inner\"></div></li></ul></li></ul>");
 $templateCache.put("select2/match-multiple.tpl.html","<span class=\"ui-select-match\"><li class=\"ui-select-match-item select2-search-choice\" ng-repeat=\"$item in $select.selected\" ng-class=\"{\'select2-search-choice-focus\':$selectMultiple.activeMatchIndex === $index, \'select2-locked\':$select.isLocked(this, $index)}\" ui-select-sort=\"$select.selected\"><span uis-transclude-append=\"\"></span> <a href=\"javascript:;\" class=\"ui-select-match-close select2-search-choice-close\" ng-click=\"$selectMultiple.removeChoice($index)\" tabindex=\"-1\"></a></li></span>");
 $templateCache.put("select2/match.tpl.html","<a class=\"select2-choice ui-select-match\" ng-class=\"{\'select2-default\': $select.isEmpty()}\" ng-click=\"$select.toggle($event)\" aria-label=\"{{ $select.baseTitle }} select\"><span ng-show=\"$select.isEmpty()\" class=\"select2-chosen\">{{$select.placeholder}}</span> <span ng-hide=\"$select.isEmpty()\" class=\"select2-chosen\" ng-transclude=\"\"></span> <abbr ng-if=\"$select.allowClear && !$select.isEmpty()\" class=\"select2-search-choice-close\" ng-click=\"$select.clear($event)\"></abbr> <span class=\"select2-arrow ui-select-toggle\"><b></b></span></a>");
 $templateCache.put("select2/select-multiple.tpl.html","<div class=\"ui-select-container ui-select-multiple select2 select2-container select2-container-multi\" ng-class=\"{\'select2-container-active select2-dropdown-open open\': $select.open, \'select2-container-disabled\': $select.disabled}\"><ul class=\"select2-choices\"><span class=\"ui-select-match\"></span><li class=\"select2-search-field\"><input type=\"text\" autocomplete=\"false\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" role=\"combobox\" aria-expanded=\"true\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-label=\"{{ $select.baseTitle }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"select2-input ui-select-search\" placeholder=\"{{$selectMultiple.getPlaceholder()}}\" ng-disabled=\"$select.disabled\" ng-hide=\"$select.disabled\" ng-model=\"$select.search\" ng-click=\"$select.activate()\" style=\"width: 34px;\" ondrop=\"return false;\"></li></ul><div class=\"ui-select-dropdown select2-drop select2-with-searchbox select2-drop-active\" ng-class=\"{\'select2-display-none\': !$select.open}\"><div class=\"ui-select-choices\"></div></div></div>");
-$templateCache.put("select2/select.tpl.html","<div class=\"ui-select-container select2 select2-container\" ng-class=\"{\'select2-container-active select2-dropdown-open open\': $select.open, \'select2-container-disabled\': $select.disabled, \'select2-container-active\': $select.focus, \'select2-allowclear\': $select.allowClear && !$select.isEmpty()}\"><div class=\"ui-select-match\"></div><div class=\"ui-select-dropdown select2-drop select2-with-searchbox select2-drop-active\" ng-class=\"{\'select2-display-none\': !$select.open}\"><div class=\"select2-search\" ng-show=\"$select.searchEnabled\"><input type=\"text\" autocomplete=\"false\" autocorrect=\"false\" autocapitalize=\"off\" spellcheck=\"false\" role=\"combobox\" aria-expanded=\"true\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-label=\"{{ $select.baseTitle }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"ui-select-search select2-input\" ng-model=\"$select.search\"></div><div class=\"ui-select-choices\"></div></div></div>");
-$templateCache.put("selectize/choices.tpl.html","<div ng-show=\"$select.open\" class=\"ui-select-choices ui-select-dropdown selectize-dropdown single\"><div class=\"ui-select-choices-content selectize-dropdown-content\"><div class=\"ui-select-choices-group optgroup\" role=\"listbox\"><div ng-show=\"$select.isGrouped\" class=\"ui-select-choices-group-label optgroup-header\" ng-bind=\"$group.name\"></div><div role=\"option\" class=\"ui-select-choices-row\" ng-class=\"{active: $select.isActive(this), disabled: $select.isDisabled(this)}\"><div class=\"option ui-select-choices-row-inner\" data-selectable=\"\"></div></div></div></div></div>");
-$templateCache.put("selectize/match.tpl.html","<div ng-hide=\"($select.open || $select.isEmpty())\" class=\"ui-select-match\" ng-transclude=\"\"></div>");
-$templateCache.put("selectize/select.tpl.html","<div class=\"ui-select-container selectize-control single\" ng-class=\"{\'open\': $select.open}\"><div class=\"selectize-input\" ng-class=\"{\'focus\': $select.open, \'disabled\': $select.disabled, \'selectize-focus\' : $select.focus}\" ng-click=\"$select.open && !$select.searchEnabled ? $select.toggle($event) : $select.activate()\"><div class=\"ui-select-match\"></div><input type=\"text\" autocomplete=\"false\" tabindex=\"-1\" class=\"ui-select-search ui-select-toggle\" ng-click=\"$select.toggle($event)\" placeholder=\"{{$select.placeholder}}\" ng-model=\"$select.search\" ng-hide=\"!$select.searchEnabled || ($select.selected && !$select.open)\" ng-disabled=\"$select.disabled\" aria-label=\"{{ $select.baseTitle }}\"></div><div class=\"ui-select-choices\"></div></div>");}]);
-},{}],164:[function(require,module,exports){
+$templateCache.put("select2/select.tpl.html","<div class=\"ui-select-container select2 select2-container\" ng-class=\"{\'select2-container-active select2-dropdown-open open\': $select.open, \'select2-container-disabled\': $select.disabled, \'select2-container-active\': $select.focus, \'select2-allowclear\': $select.allowClear && !$select.isEmpty()}\"><div class=\"ui-select-match\"></div><div class=\"ui-select-dropdown select2-drop select2-with-searchbox select2-drop-active\" ng-class=\"{\'select2-display-none\': !$select.open}\"><div class=\"select2-search\" ng-show=\"$select.searchEnabled\"><input type=\"text\" autocomplete=\"false\" autocorrect=\"false\" autocapitalize=\"off\" spellcheck=\"false\" role=\"combobox\" aria-expanded=\"true\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-label=\"{{ $select.baseTitle }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"ui-select-search select2-input\" ng-model=\"$select.search\"></div><div class=\"ui-select-choices\"></div></div></div>");}]);
+},{}],169:[function(require,module,exports){
 require('./dist/select.js');
 module.exports = 'ui.select';
 
-},{"./dist/select.js":163}]},{},[1]);
+},{"./dist/select.js":168}]},{},[1]);
