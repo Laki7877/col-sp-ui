@@ -16,7 +16,7 @@
     <form class="ah-form sticky-mainform-action" name="form" ng-show="!loading && !saving" novalidate>
 
         <div>
-            <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Promotion/Create On top credit card", 'border_class' => 'no-padding']) ?>
+            <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Promotion/Create On Top Credit Card", 'border_class' => 'no-padding']) ?>
         </div>
 
         <div class="add-product-body">

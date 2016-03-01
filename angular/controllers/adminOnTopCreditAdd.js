@@ -9,7 +9,7 @@ module.exports = function ($scope, $controller, OnTopCredit, config) {
         BankNameEN: null,
         PromotionCode: null,
         PaymentId: null,
-        Status:null ,
+        Status: null,
         DiscountType: null,
         DiscountValue: 0,
         MinimumOrderAmount: 0,
@@ -24,7 +24,7 @@ module.exports = function ($scope, $controller, OnTopCredit, config) {
         CreateIP: null,
         CardItemList: []
     };
-  
+
     /*
     '*CARD TYPES            *PREFIX           *WIDTH
     'American Express       34, 37            15
@@ -54,18 +54,11 @@ module.exports = function ($scope, $controller, OnTopCredit, config) {
     { text: 'Brand', value: 'Brand' },
     { text: 'Global Category', value: 'GlobalCategory' },
     { text: 'Shop', value: 'Shop' },
-    { text: 'Email', value: 'Email'}]
+    { text: 'Email', value: 'Email' }]
     }
 
     // Item List Arrays
-    $scope.items = [{
-        CreditCardTypeCode: null,
-        CreditCardTypeText: null,
-        CreditNumberFormat: null,
-        Digit: null,
-        Visibility: 1,
-        Status: true
-    }];
+    $scope.items = [];
     // Add a Item to the list
     $scope.addItem = function () {
         switch ($scope.items.CreditCardTypeCode) {
@@ -124,7 +117,7 @@ module.exports = function ($scope, $controller, OnTopCredit, config) {
         $scope.items.CreditCardTypeText = "";
         $scope.items.CreditNumberFormat = "";
 
-        
+
     };
 
     //Remove
@@ -147,7 +140,7 @@ module.exports = function ($scope, $controller, OnTopCredit, config) {
             url: '/admin/ontopcredit',
             item: 'OnTopCreditCard',
             service: OnTopCredit,
-            init: function(scope) {	},
+            init: function (scope) { },
             onLoad: function (scope, load) {
 
             },
