@@ -37,6 +37,8 @@
                                     <option value="" disabled selected>Select an option..</option>
                                 </select>
                             </div>
+                            
+                          
 
                             <div ng-template="common/input/width-field-large" ng-template-options="{
                                     'error' : {
@@ -70,7 +72,6 @@
                                 </ui-select>
 
                                 <input ng-if="!dataSet.attributeOptions[jth].Attribute.DataType" type="text" disabled class="form-control" />
-
 
                             </div>
                             <!--</div>-->
