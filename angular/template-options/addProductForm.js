@@ -8,6 +8,11 @@ module.exports = {
             }
         }
     },
+    MasterVariant_DescriptionFull: {
+        'formGroupClass': 'margin-top-40',
+        'labelClass': 'required',
+        'inputSize': 'xxl'
+    },
     MasterVariant_ProductNameTh: {
         'labelClass': 'required',
         'error': {
