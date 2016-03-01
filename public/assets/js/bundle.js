@@ -2168,7 +2168,9 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 },{}],30:[function(require,module,exports){
 var angular = require('angular');
 
-module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product", "ImageService", "AttributeSet", "Brand", "Shop", "LocalCategoryService", "GlobalCategory", "Category", "VariantPair", "$rootScope", "$q", "KnownException", "NcAlert", "$productAdd", function ($scope, $uibModal, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, VariantPair, $rootScope, $q, KnownException, NcAlert, $productAdd) {
+module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product", "ImageService", "AttributeSet", "Brand", "Shop", "LocalCategoryService", "GlobalCategory", "Category", "VariantPair", "$rootScope", "$q", "KnownException", "NcAlert", "$productAdd", function ($scope, $uibModal, $window, util, config, Product, ImageService,
+    AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, VariantPair, $rootScope, $q,
+    KnownException, NcAlert, $productAdd) {
     'ngInject';
 
     $scope.alert = new NcAlert();
@@ -2176,7 +2178,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
     var MAX_FILESIZE = 5000000; //5MB
     var QUEUE_LIMIT = 20;
     var QUEUE_LIMIT_360 = 60;
-    var MAX_VARIANT = 100;
+
     $scope.image_alert = new NcAlert();
     $scope.dataSet = {};
     $scope.dataSet.AttributeSets = [{
@@ -2197,13 +2199,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
     $scope.dataSet.SearchTags = [];
     $scope.dataSet.RelatedProducts = [];
     $scope.dataSet.StockTypes = ['Stock', 'Pre-Order'];
-    $scope.dataSet.VariantDisplayOption = [{
-        text: 'Show as group of variants',
-        value: 'GROUP'
-    }, {
-            text: 'Show as individual product',
-            value: 'INDIVIDUAL'
-        }];
+    $scope.dataSet.VariantDisplayOption = [{ text: 'Show as group of variants', value: 'GROUP' }, { text: 'Show as individual product', value: 'INDIVIDUAL' }];
 
     var protoAttributeOptions = {
         0: {
@@ -2241,7 +2237,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
     }; // end onbeforeunload
 
     var onImageUploadFail = function (item, filter) {
-        $scope.image_alert.error(item.Message || 'Your image does not meet guideline.');
+        $scope.image_alert.error(item.Message || 'Your image does not meet guideline. Images must be smaller than 5 MB, with square size larger than 1500x1500.');
     }
 
     var onImageUploadSuccess = function () {
@@ -2251,154 +2247,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
     var onImageUploadQueueLimit = function () { }
     $scope.asStatus = Product.getStatus;
 
-    var watchVariantChanges = function () {
-        $scope.$watch('dataSet.attributeOptions', function () {
-            var vHashSet = {};
-            var prevVariants = angular.copy($scope.formData.Variants);
-            prevVariants.forEach(function (elem, index) {
-                vHashSet[elem.text] = prevVariants[index];
-            });
-
-            var protoCheckState = {
-                uploadProductImages: false,
-                embedVideo: false,
-                description: false,
-                packageDetail: false
-            };
-
-            //Unset
-            prevVariants = undefined;
-
-            $scope.formData.Variants = [];
-            var trackVariant = new Set();
-            
-            var VARIANT_DUMMY_FACTOR = '';
-            var expand = function (A0, B0) {
-
-                var AVId = null;
-                var BVId = null;
-                var B = B0;
-                var A = A0;
-                
-                if (_.has(A0, 'AttributeValue.AttributeValueId')) {
-                    AVId = A0.AttributeValue.AttributeValueId;
-                    A = A0.AttributeValue.AttributeValueEn;
-                }
-
-                if (angular.isDefined(B0)) {
-                    if (_.has(B0, 'AttributeValue.AttributeValueId')) {
-                        BVId = B0.AttributeValue.AttributeValueId;
-                        B = B0.AttributeValue.AttributeValueEn;
-                    }
-                } else {
-                    //B is not defined
-                    B = VARIANT_DUMMY_FACTOR;
-                }
-
-                var kpair = {};
-                var firstAttribute = {
-                    AttributeId: $scope.dataSet.attributeOptions[0].Attribute.AttributeId,
-                    AttributeValues: (!AVId ? [] : [{
-                        AttributeValueId: AVId
-                    }]),
-                    ValueEn: A
-                };
-
-                var secondAttribute = {
-                    AttributeId: $scope.dataSet.attributeOptions[1].Attribute.AttributeId,
-                    AttributeValues: (!BVId ? [] : [{
-                        AttributeValueId: BVId
-                    }]),
-                    ValueEn: B
-                };
-
-
-                kpair.FirstAttribute = firstAttribute;
-                kpair.SecondAttribute = secondAttribute;
-                kpair.text = util.variant.toString(firstAttribute, secondAttribute);
-                //Copy default value over from main variant
-                kpair.ProductNameEn = $scope.formData.MasterVariant.ProductNameEn;
-                kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
-                kpair.Display = $scope.dataSet.VariantDisplayOption[0].value;
-                kpair.Visibility = true;
-                kpair.DimensionUnit = "MM";
-                kpair.WeightUnit = "G";
-                kpair.Sku = ($scope.formData.MasterVariant.Sku || "SKU") + "-" + (Number(($scope.formData.Variants || []).length) + 1);
-                kpair.OriginalPrice = $scope.formData.MasterVariant.OriginalPrice;
-                kpair.SalePrice = $scope.formData.MasterVariant.SalePrice;
-                kpair.Quantity = $scope.formData.MasterVariant.Quantity;
-                kpair.Length = $scope.formData.MasterVariant.Length;
-                kpair.Width = $scope.formData.MasterVariant.Width;
-                kpair.Height = $scope.formData.MasterVariant.Height;
-                kpair.Upc = $scope.formData.MasterVariant.Upc;
-                kpair.Weight = $scope.formData.MasterVariant.Weight;
-                kpair.DescriptionFullEn = $scope.formData.MasterVariant.DescriptionFullEn;
-                kpair.DescriptionFullTh = $scope.formData.MasterVariant.DescriptionFullTh;
-                kpair.DescriptionShortEn = $scope.formData.MasterVariant.DescriptionShortEn;
-                kpair.DescriptionShortTh = $scope.formData.MasterVariant.DescriptionShortTh;
-                kpair.Images = angular.copy($scope.formData.MasterImages);
-                kpair.VideoLinks = angular.copy($scope.formData.VideoLinks);
-                kpair.PrepareDay = $scope.formData.PrepareDay;
-                kpair.SEO = angular.copy($scope.formData.SEO || {});
-
-                //   kpair._override = angular.copy(protoCheckState);
-
-                if (kpair.text in vHashSet) {
-                    //Replace with value from vHashSet
-
-                    kpair = vHashSet[kpair.text];
-
-                    kpair._override = angular.copy(protoCheckState);
-                    kpair._override.uploadProductImages = ((kpair.Images || []).length > 0);
-                    kpair._override.embedVideo = ((kpair.VideoLinks || []).length > 0);
-                    kpair._override.description = (angular.isDefined(kpair.DescriptionFullEn) ||
-                        angular.isDefined(kpair.DescriptionFullTh) ||
-                        angular.isDefined(kpair.DescriptionShortEn) ||
-                        angular.isDefined(kpair.DescriptionShortTh));
-
-                    kpair._override.packageDetail = (angular.isDefined(kpair.Length) ||
-                        angular.isDefined(kpair.Height) ||
-                        angular.isDefined(kpair.Width) ||
-                        angular.isDefined(kpair.Weight));
-
-                }
-
-                var hashNew = (util.variant.toString(kpair.FirstAttribute, kpair.SecondAttribute));
-                if (!trackVariant.has(hashNew)) {
-                    //Only push new variant if don't exist
-
-                    $scope.formData.Variants.push(kpair);
-                    trackVariant.add(hashNew);
-                }
-
-            }
-
-
-            console.log("Recalculating Factors", $scope.dataSet.attributeOptions);
-            //Multiply out unmultiplied options
-            if ($scope.dataSet.attributeOptions && Object.keys($scope.dataSet.attributeOptions).length > 0) {
-                for (var aKey in $scope.dataSet.attributeOptions[0].options) {
-                    var A = $scope.dataSet.attributeOptions[0].options[aKey];
-
-                    if (angular.isDefined($scope.dataSet.attributeOptions[1]['options']) && $scope.dataSet.attributeOptions[1].options.length == 0) {
-                        console.log("expanding A", A);
-                        expand(A);
-                    }
-
-                    for (var bKey in $scope.dataSet.attributeOptions[1].options) {
-                        var B = $scope.dataSet.attributeOptions[1].options[bKey];
-                        console.log("Expanding A,B", A, B);
-                        expand(A, B);
-                    }
-                }
-            }
-
-            $scope.formData.DefaultVariant = $scope.formData.Variants[0];
-        }, true); //end of $watch
-
-    } //end of watch func
-
-    $scope.overview = {}
+    $scope.overview = {};
 
     $scope.formData = {
         Brand: {
@@ -2427,24 +2276,30 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
         Keywords: []
     };
 
+
+    var watchVariantFactorChanges = function () {
+        $scope.$watch('dataSet.attributeOptions', function () {
+            $productAdd.generateVariants($scope.formData, $scope.dataSet);
+        }, true);
+    };
+
     //Variation Factor (lhs) Indices are used as index
     //for ng-repeat in variation tab
-    $scope.variationFactorIndices = {};
-    $scope.variationFactorIndices.iterator = [0];
-    $scope.variationFactorIndices.length = function () {
-        return $scope.variationFactorIndices.iterator.length;
-    }
-    $scope.variationFactorIndices.popSecond = function () {
-        $scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop();
-        $scope.dataSet.attributeOptions[1].options = [];
-        $scope.dataSet.attributeOptions[1].Attribute = null;
-    }
-    $scope.variationFactorIndices.pushSecond = function () {
-        $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1);
-    }
+    $scope.variationFactorIndices = {
+        iterator: [0],
+        length: function () {
+            return $scope.variationFactorIndices.iterator.length;
+        },
+        popSecond: function () {
+            $scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop();
+            $scope.dataSet.attributeOptions[1].options = [];
+            $scope.dataSet.attributeOptions[1].Attribute = null;
+        },
+        pushSecond: function () {
+            $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1);
+        }
+    };
 
-    //TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
-    //$scope._attrEnTh = function (t) { return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
     $scope.isFreeTextInput = util.isFreeTextDataType;
     $scope.isListInput = util.isListDataType;
     $scope.isHtmlInput = util.isHtmlDataType;
@@ -2470,10 +2325,16 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
     $scope.breadcrumbs = {
         globalCategory: null
     };
+
+
     $scope.preview = function () {
         return console.log($scope.formData);
     };
-
+    
+    /**
+     * Refresh Related Product Data 
+     * @param  {String} q
+     */
     $scope.refreshRelatedProducts = function (q) {
         return Product.getAll({
             searchText: q,
@@ -2482,7 +2343,11 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
             $scope.dataSet.RelatedProducts = ds.data;
         });
     };
-
+    
+    /**
+     * Refresh Brand Data Set used for searching 
+     * @param  {String} q
+     */
     $scope.refreshBrands = function (q) {
         if (q == "" || !q || q == null) return;
         $scope.dataSet.Brands = [{
@@ -2524,7 +2389,11 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
             form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
         }
     });
-
+    
+    /**
+     * Other additional validations
+     * @param  {String} Status
+     */
     var manualValidate = function (Status) {
         var mat = [];
 
@@ -2568,7 +2437,11 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
 
         return mat;
     };
-
+    
+    /**
+     * Publish Confirmation
+     * Show dialog to ask if user really want to publish
+     */
     $scope.prePublishWA = function () {
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
@@ -2598,8 +2471,10 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
         });
 
     }
-    /*
-     *  Publish (both Draft and WA)
+    
+    /**
+     * Publish (save as draft and publish)
+     * @param  {String} Status (WA or DF or other enum sent to server)
      */
     $scope.publish = function (Status) {
 
@@ -2629,21 +2504,21 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
             $scope.pageState.reset();
             var requiredMissing = ('required' in $scope.addProductForm.$error);
             if (Status == 'DF' && requiredMissing) {
-                var mfd = [];
+                var errorList = [];
                 if ($scope.addProductForm.MasterVariant_ProductNameEn.$invalid) {
-                    mfd.push('Product Name (English)');
+                    errorList.push('Product Name (English)');
                 }
                 //Product Name (Thai), Product Name (English), and Sale Price,
                 if ($scope.addProductForm.MasterVariant_ProductNameTh.$invalid) {
-                    mfd.push('Product Name (Thai)');
+                    errorList.push('Product Name (Thai)');
                 }
 
                 if ($scope.addProductForm.MasterVariant_SalePrice.$invalid) {
-                    mfd.push('Sale Price');
+                    errorList.push('Sale Price');
                 }
-                mfd.push('Master Attributes');
+                errorList.push('Master Attributes');
 
-                $scope.alert.error("Unable to save. Please make sure that " + mfd.join(" and ") + " are filled correctly.");
+                $scope.alert.error("Unable to save. Please make sure that " + errorList.join(" and ") + " are filled correctly.");
             } else if (Status == 'WA' && requiredMissing) {
                 $scope.alert.error("Unable to publish because you are missing required fields");
             } else {
@@ -2652,8 +2527,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
             return;
         }
 
-        $scope.pageState.load('Publishing..');
-        console.log("Publishing with Status = ", Status);
+        $scope.pageState.load('Saving..');
 
         var apiRequest = Product.serialize($scope.formData);
         Product.publish(apiRequest, Status).then(function (res) {
@@ -2701,7 +2575,6 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
 
         if (!angular.isObject(viewBag)) throw new KnownException("View bag is corrupted");
 
-        var shopId = $rootScope.Profile.Shop.ShopId; //TODO: Get from user
         var _editMode = ("productId" in viewBag)
         for (var page in tabPage) {
             tabPage[page].angular();
@@ -2719,7 +2592,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
                         $scope.variationFactorIndices, inverseFormData).then(function () {
                             $scope.formData.ProductId = Number(productId);
                             $scope.pageState.reset();
-                            watchVariantChanges();
+                            watchVariantFactorChanges();
                             ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
                             ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
                         });
@@ -2734,7 +2607,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
             $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs,
                 $scope.controlFlags, $scope.variationFactorIndices).then(function () {
                     $scope.pageState.reset();
-                    watchVariantChanges();
+                    watchVariantFactorChanges();
                     ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
                     ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
                 });
@@ -2853,7 +2726,6 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
             });
 
             $scope.$on('openPairModal', function (evt, pair, array, index) {
-                //Define if not defined
 
                 if (angular.isUndefined(pair.Images)) {
                     pair.Images = [];
@@ -2861,6 +2733,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
                 if (angular.isUndefined(pair.queue)) {
                     pair.queue = [];
                 }
+                
                 //Modal target (for viewing pair)
                 $scope.pairModal = angular.copy(pair);
                 $scope.pairModal.alert = new NcAlert();
@@ -2870,31 +2743,6 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
             });
 
             $scope.$on('savePairModal', function (evt) {
-                console.log("adform", $scope.addProductVariantForm.$invalid);
-                //
-                // if (!$scope.pairModal._override.uploadProductImages) {
-                //   $scope.pairModal.Images = [];
-                // }
-                //
-                // if (!$scope.pairModal._override.embedVideo) {
-                //   $scope.pairModal.VideoLinks = [];
-                // }
-                //
-                // if (!$scope.pairModal._override.description) {
-                //   $scope.pairModal.DescriptionFullEn = null;
-                //   $scope.pairModal.DescriptionFullTh = null;
-                //   $scope.pairModal.ShortDescriptionEn = null;
-                //   $scope.pairModal.ShortDescriptionTh = null;
-                // }
-                //
-                // if (!$scope.pairModal._override.packageDetail) {
-                //   $scope.pairModal.Length = null;
-                //   $scope.pairModal.Height = null;
-                //   $scope.pairModal.Width = null;
-                //   $scope.pairModal.Length = null;
-                //
-                // }
-
                 $scope.formData.Variants[$scope.pairIndex] = $scope.pairModal;
             });
         }
@@ -9532,751 +9380,882 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 },{}],132:[function(require,module,exports){
 // Products Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config', 'KnownException',
-  function ($http, common, util, LocalCategory, Brand, config, KnownException) {
-    'use strict'
-    var service = common.Rest('/ProductStages')
+    function ($http, common, util, LocalCategory, Brand, config, KnownException) {
+        'use strict'
+        var service = common.Rest('/ProductStages')
 
-    service.getExportableFields = function () {
-      var req = {
-        method: 'GET',
-        url: '/ProductStages/Guidance/Export'
-      }
-      return common.makeRequest(req)
-    }
-
-    service.downloadTemplate = function (globalCat, aset) {
-      var req = {
-        method: 'POST',
-        url: '/ProductStages/Template',
-        data: {
-          GlobalCategories: [globalCat],
-          AttributeSets: _.isNil(aset) ? [] : [aset]
-        }
-      }
-      return common.makeRequest(req)
-    }
-
-    service.getAllAttributeSetsForProducts = function (productList) {
-      var req = {
-        method: 'POST',
-        url: '/ProductStages/AttributeSet',
-        data: productList
-      }
-      return common.makeRequest(req)
-    }
-
-    service.export = function (ps) {
-      var req = {
-        method: 'POST',
-        url: '/ProductStages/Export',
-        data: ps
-      }
-      return common.makeRequest(req)
-    }
-
-    service.guideline = function (params) {
-      var req = {
-        method: 'GET',
-        url: '/ProductStages/Guidance',
-        params: params
-      }
-      return common.makeRequest(req)
-    }
-    service.approve = function (obj) {
-      return common.makeRequest({
-        method: 'PUT',
-        url: '/ProductStages/Approve',
-        data: obj,
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8'
-        }
-      })
-    }
-    service.reject = function (obj) {
-      return common.makeRequest({
-        method: 'PUT',
-        url: '/ProductStages/Reject',
-        data: obj,
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8'
-        }
-      })
-    }
-
-    service.getOne = function (productId) {
-      var req = {
-        method: 'GET',
-        url: '/ProductStages/' + productId
-      }
-      return common.makeRequest(req)
-    }
-
-    service.getAllVariants = function (parameters) {
-      var req = {
-        method: 'GET',
-        url: '/ProductStages/All',
-        params: parameters
-      }
-
-      return common.makeRequest(req)
-    }
-
-    service.updateAllVariants = function (obj) {
-      var req = {
-        method: 'PUT',
-        url: '/ProductStages/All/Image',
-        data: obj,
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8'
-        }
-      }
-
-      return common.makeRequest(req)
-    }
-
-    service.duplicate = function (ProductId) {
-      // this URL structure is weird dont u think
-      var req = {
-        method: 'POST',
-        url: '/ProductStages/' + ProductId
-      }
-
-      return common.makeRequest(req)
-    }
-
-    service.getAll = function (parameters) {
-      var req = {
-        method: 'GET',
-        url: '/ProductStages/',
-        params: {
-          _order: parameters.orderBy || 'ProductId',
-          _limit: parameters.pageSize || 10,
-          _offset: parameters.page * parameters.pageSize || 0,
-          _direction: parameters.direction || 'asc',
-          _filter: parameters.filter || 'ALL',
-          searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined
-        }
-      }
-
-      return common.makeRequest(req)
-    }
-
-    service.export = function (tobj) {
-      var path = '/ProductStages/Export'
-      return common.makeRequest({
-        responseType: 'arraybuffer',
-        method: 'POST',
-        url: path,
-        data: tobj
-      })
-    }
-
-    service.publish = function (tobj, Status) {
-      tobj.Status = Status
-      var mode = 'POST'
-      var path = '/ProductStages'
-      if (tobj.ProductId) {
-        mode = 'PUT'
-        path = path + '/' + tobj.ProductId
-      }
-      return common.makeRequest({
-        method: mode,
-        url: path,
-        data: tobj
-      })
-    }
-
-    service.bulkPublish = function (tobj) {
-      return common.makeRequest({
-        method: 'POST',
-        url: '/ProductStages/Publish',
-        data: tobj,
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8'
-        }
-      })
-    }
-
-    service.visible = function (obj) {
-      return common.makeRequest({
-        method: 'PUT',
-        url: '/ProductStages/Visibility',
-        data: obj,
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8'
-        }
-      })
-    }
-    service.deleteBulk = function (arr) {
-      return common.makeRequest({
-        method: 'DELETE',
-        url: '/ProductStages',
-        data: arr,
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8'
-        }
-      })
-    }
-
-    var StatusLookup = {}
-    config.PRODUCT_STATUS.forEach(function (object) {
-      StatusLookup[object.value] = object
-    })
-    service.getStatus = function (abbreviation) {
-      if (_.isNil(abbreviation)) {
-        return {
-          name: 'No Status',
-          color: 'color-grey'
-        }
-      }
-      return StatusLookup[abbreviation]
-    }
-
-    service.serialize = function (fd) {
-      var hasVariants = (!util.nullOrUndefined(fd.Variants) && fd.Variants.length > 0)
-
-      // Cleaned data
-      var clean = {}
-      clean.Variants = []
-
-      var objectMapper = {
-        VideoLinks: function (vlink) {
-          var f = []
-          Object.keys(vlink).forEach(function (key) {
-            var value = vlink[key]
-            var obj = {
-              'Url': value
+        service.getExportableFields = function () {
+            var req = {
+                method: 'GET',
+                url: '/ProductStages/Guidance/Export'
             }
-
-            f.push(obj)
-          })
-          return f
+            return common.makeRequest(req)
         }
-      }
-      // Mapper functions
-      var mapper = {
-        Images: function (image, pos) {
-          if (image.$id) delete image.$id
-          image.position = pos
-          return image
-        },
-        Variants: function (_variant) {
-          var variant = angular.copy(_variant)
 
-          if (util.nullOrUndefined(variant['VideoLinks'])) variant.VideoLinks = []
-          if (util.nullOrUndefined(variant['VideoLinks'])) variant.Images = []
-          if ('queue' in variant) delete variant.queue // circular
-
-          variant.Visibility = variant.Visibility
-          variant.Images = (variant.Images || []).map(mapper.Images)
-          variant.Images360 = [] // for future
-
-          try {
-            variant.VideoLinks = objectMapper.VideoLinks(variant.VideoLinks)
-          } catch (ex) {
-            variant.VideoLinks = []
-          }
-
-          return variant
-        },
-        Categories: function (lcat) {
-          if (lcat == null) return null
-          return {
-            CategoryId: lcat.CategoryId
-          }
-        }
-      }
-
-      try {
-        clean.GlobalCategories = fd.GlobalCategories.map(mapper.Categories)
-      } catch (ex) {
-        console.warn('Unable to map Global Cat Array, Global Cat array is mandatory', ex)
-      }
-
-      try {
-        clean.LocalCategories = fd.LocalCategories.map(mapper.Categories)
-      } catch (ex) {
-        console.warn('Unable to map Local Cat array, Initializing', ex)
-        clean.LocalCategories = [null, null, null]
-      }
-
-      try {
-        fd.Keywords = util.uniqueSet(fd.Keywords)
-        clean.Keywords = (!fd.Keywords ? '' : fd.Keywords.join(','))
-      } catch (ex) {
-        console.warn('Keyword not set, will not serialize', ex)
-      }
-
-      try {
-        clean.AttributeSet = {
-          AttributeSetId: fd.AttributeSet.AttributeSetId
-        }
-      } catch (ex) {
-        console.warn('AttributeSet not set, will not serialize', ex)
-      }
-
-      try {
-        clean.MasterAttribute = []
-        Object.keys(fd.MasterAttribute).forEach(function (key) {
-          if (fd.MasterAttribute[key].AttributeValueId) {
-            var g = {
-              AttributeValues: [],
-              AttributeId: fd.MasterAttribute[key].AttributeId,
-              ValueEn: fd.MasterAttribute[key].AttributeValueEn
+        service.downloadTemplate = function (globalCat, aset) {
+            var req = {
+                method: 'POST',
+                url: '/ProductStages/Template',
+                data: {
+                    GlobalCategories: [globalCat],
+                    AttributeSets: _.isNil(aset) ? [] : [aset]
+                }
             }
+            return common.makeRequest(req)
+        }
 
-            g.AttributeValues.push(fd.MasterAttribute[key])
-            clean.MasterAttribute.push(g)
-          } else {
-            clean.MasterAttribute.push({
-              AttributeValues: [],
-              AttributeId: Number(key),
-              ValueEn: fd.MasterAttribute[key]
+        service.getAllAttributeSetsForProducts = function (productList) {
+            var req = {
+                method: 'POST',
+                url: '/ProductStages/AttributeSet',
+                data: productList
+            }
+            return common.makeRequest(req)
+        }
+
+        service.export = function (ps) {
+            var req = {
+                method: 'POST',
+                url: '/ProductStages/Export',
+                data: ps
+            }
+            return common.makeRequest(req)
+        }
+
+        service.guideline = function (params) {
+            var req = {
+                method: 'GET',
+                url: '/ProductStages/Guidance',
+                params: params
+            }
+            return common.makeRequest(req)
+        }
+        service.approve = function (obj) {
+            return common.makeRequest({
+                method: 'PUT',
+                url: '/ProductStages/Approve',
+                data: obj,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
             })
-          }
-
-        })
-      } catch (ex) {
-        console.warn('Master Attributes', ex)
-      }
-
-      try {
-        clean.Remark = fd.Remark
-        clean.PrepareDay = fd.PrepareDay || 0
-        clean.SEO = fd.SEO
-        clean.ControlFlags = fd.ControlFlags
-        clean.Brand = fd.Brand
-        clean.ShippingMethod = fd.ShippingMethod
-        clean.EffectiveDate = null
-        clean.ExpireDate = null
-        clean.ExpireTime = null
-        clean.ExpireDate = null
-
-        if (fd.ExpireDate && fd.EffectiveDate) {
-          var cpdate = angular.copy(fd.ExpireDate)
-          clean.ExpireDate = moment(cpdate).format('LL')
-          clean.ExpireTime = moment(cpdate).format('HH:mm:ss')
-
-          cpdate = angular.copy(fd.EffectiveDate)
-
-          clean.EffectiveDate = moment(cpdate).format('LL')
-          clean.EffectiveTime = moment(cpdate).format('HH:mm:ss')
+        }
+        service.reject = function (obj) {
+            return common.makeRequest({
+                method: 'PUT',
+                url: '/ProductStages/Reject',
+                data: obj,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            })
         }
 
-        console.log('1-1', clean)
-      // clean.EffectiveDate = moment(fd.EffectiveDate + " " + fd.EffectiveTime)
-      // clean.EffectiveTime = fd.EffectiveTime
-      // clean.ExpireDate = moment(fd.ExpireDate + " " + fd.ExpireTime)
-      // clean.ExpireTime = fd.ExpireTime
-      } catch (ex) {
-        console.warn('One-To-One Fields', ex)
-      }
-
-      try {
-        // Move first entry of Categories out into Category
-        clean.GlobalCategory = clean.GlobalCategories[0].CategoryId
-        clean.GlobalCategories.shift()
-
-      } catch (ex) {
-        console.warn('shift global cat', ex)
-      }
-
-      try {
-        clean.LocalCategory = clean.LocalCategories[0].CategoryId
-        clean.LocalCategories.shift()
-
-      } catch (ex) {
-        console.warn('shfiting local cat', ex)
-        // Local cat can be null
-        clean.LocalCategories = [null, null]
-        clean.LocalCategory = null
-      }
-
-      try {
-        clean.RelatedProducts = []
-        Object.keys(fd.RelatedProducts || []).forEach(function (key) {
-          clean.RelatedProducts.push(
-            fd.RelatedProducts[key]
-          )
-        })
-      } catch (ex) {
-        console.warn('Organizing Related Products', ex)
-      }
-
-      // MasterVariant
-      clean.MasterVariant = fd.MasterVariant
-
-      if (fd.ProductId) clean.ProductId = fd.ProductId
-
-      try {
-        clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks)
-      } catch (ex) {
-        clean.MasterVariant.VideoLinks = []
-      }
-
-      try {
-        clean.MasterVariant.Images360 = (fd.MasterImages360 | []).map(mapper.Images)
-      } catch (ex) {
-        clean.MasterVariant.Images360 = []
-      }
-
-      try {
-        clean.MasterVariant.Images = (fd.MasterImages || []).map(mapper.Images)
-      } catch (ex) {
-        clean.MasterVariant.Images = []
-      }
-
-      try {
-        if (hasVariants) {
-          clean.Variants = (fd.Variants || []).map(mapper.Variants)
-          // Find DefaultVariant
-          var target = fd.DefaultVariant.text
-          clean.Variants.forEach(function (vari, index) {
-            vari.SafetyStock = 0; // Placeholder, no UI yet
-            vari.StockType = 0 // Placeholder
-            vari.DefaultVariant = false
-            if (vari.text == target) {
-              clean.Variants[index].DefaultVariant = true
+        service.getOne = function (productId) {
+            var req = {
+                method: 'GET',
+                url: '/ProductStages/' + productId
             }
-          })
+            return common.makeRequest(req)
         }
-      } catch (ex) {
-        console.warn('Variant Distribute', ex)
-      }
 
-      // HardCoD
-      clean.SellerId = 1
-      clean.ShopId = 1
+        service.getAllVariants = function (parameters) {
+            var req = {
+                method: 'GET',
+                url: '/ProductStages/All',
+                params: parameters
+            }
 
-      return clean
+            return common.makeRequest(req)
+        }
+
+        service.updateAllVariants = function (obj) {
+            var req = {
+                method: 'PUT',
+                url: '/ProductStages/All/Image',
+                data: obj,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            }
+
+            return common.makeRequest(req)
+        }
+
+        service.duplicate = function (ProductId) {
+            // this URL structure is weird dont u think
+            var req = {
+                method: 'POST',
+                url: '/ProductStages/' + ProductId
+            }
+
+            return common.makeRequest(req)
+        }
+
+        service.getAll = function (parameters) {
+            var req = {
+                method: 'GET',
+                url: '/ProductStages/',
+                params: {
+                    _order: parameters.orderBy || 'ProductId',
+                    _limit: parameters.pageSize || 10,
+                    _offset: parameters.page * parameters.pageSize || 0,
+                    _direction: parameters.direction || 'asc',
+                    _filter: parameters.filter || 'ALL',
+                    searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined
+                }
+            }
+
+            return common.makeRequest(req)
+        }
+
+        service.export = function (tobj) {
+            var path = '/ProductStages/Export'
+            return common.makeRequest({
+                responseType: 'arraybuffer',
+                method: 'POST',
+                url: path,
+                data: tobj
+            })
+        }
+
+        service.publish = function (tobj, Status) {
+            tobj.Status = Status
+            var mode = 'POST'
+            var path = '/ProductStages'
+            if (tobj.ProductId) {
+                mode = 'PUT'
+                path = path + '/' + tobj.ProductId
+            }
+            return common.makeRequest({
+                method: mode,
+                url: path,
+                data: tobj
+            })
+        }
+
+        service.bulkPublish = function (tobj) {
+            return common.makeRequest({
+                method: 'POST',
+                url: '/ProductStages/Publish',
+                data: tobj,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            })
+        }
+
+        service.visible = function (obj) {
+            return common.makeRequest({
+                method: 'PUT',
+                url: '/ProductStages/Visibility',
+                data: obj,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            })
+        }
+        service.deleteBulk = function (arr) {
+            return common.makeRequest({
+                method: 'DELETE',
+                url: '/ProductStages',
+                data: arr,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            })
+        }
+
+        var StatusLookup = {}
+        config.PRODUCT_STATUS.forEach(function (object) {
+            StatusLookup[object.value] = object
+        })
+        service.getStatus = function (abbreviation) {
+            if (_.isNil(abbreviation)) {
+                return {
+                    name: 'No Status',
+                    color: 'color-grey'
+                }
+            }
+            return StatusLookup[abbreviation]
+        }
+
+        service.serialize = function (fd) {
+            var hasVariants = (!util.nullOrUndefined(fd.Variants) && fd.Variants.length > 0)
+
+            // Cleaned data
+            var clean = {}
+            clean.Variants = []
+
+            var objectMapper = {
+                VideoLinks: function (vlink) {
+                    var f = []
+                    Object.keys(vlink).forEach(function (key) {
+                        var value = vlink[key]
+                        var obj = {
+                            'Url': value
+                        }
+
+                        f.push(obj)
+                    })
+                    return f
+                }
+            }
+            // Mapper functions
+            var mapper = {
+                Images: function (image, pos) {
+                    if (image.$id) delete image.$id
+                    image.position = pos
+                    return image
+                },
+                Variants: function (_variant) {
+                    var variant = angular.copy(_variant)
+
+                    if (util.nullOrUndefined(variant['VideoLinks'])) variant.VideoLinks = []
+                    if (util.nullOrUndefined(variant['VideoLinks'])) variant.Images = []
+                    if ('queue' in variant) delete variant.queue // circular
+
+                    variant.Visibility = variant.Visibility
+                    variant.Images = (variant.Images || []).map(mapper.Images)
+                    variant.Images360 = [] // for future
+
+                    try {
+                        variant.VideoLinks = objectMapper.VideoLinks(variant.VideoLinks)
+                    } catch (ex) {
+                        variant.VideoLinks = []
+                    }
+
+                    return variant
+                },
+                Categories: function (lcat) {
+                    if (lcat == null) return null
+                    return {
+                        CategoryId: lcat.CategoryId
+                    }
+                }
+            }
+
+            try {
+                clean.GlobalCategories = fd.GlobalCategories.map(mapper.Categories)
+            } catch (ex) {
+                console.warn('Unable to map Global Cat Array, Global Cat array is mandatory', ex)
+            }
+
+            try {
+                clean.LocalCategories = fd.LocalCategories.map(mapper.Categories)
+            } catch (ex) {
+                console.warn('Unable to map Local Cat array, Initializing', ex)
+                clean.LocalCategories = [null, null, null]
+            }
+
+            try {
+                fd.Keywords = util.uniqueSet(fd.Keywords)
+                clean.Keywords = (!fd.Keywords ? '' : fd.Keywords.join(','))
+            } catch (ex) {
+                console.warn('Keyword not set, will not serialize', ex)
+            }
+
+            try {
+                clean.AttributeSet = {
+                    AttributeSetId: fd.AttributeSet.AttributeSetId
+                }
+            } catch (ex) {
+                console.warn('AttributeSet not set, will not serialize', ex)
+            }
+
+            try {
+                clean.MasterAttribute = []
+                Object.keys(fd.MasterAttribute).forEach(function (key) {
+                    if (fd.MasterAttribute[key].AttributeValueId) {
+                        var g = {
+                            AttributeValues: [],
+                            AttributeId: fd.MasterAttribute[key].AttributeId,
+                            ValueEn: fd.MasterAttribute[key].AttributeValueEn
+                        }
+
+                        g.AttributeValues.push(fd.MasterAttribute[key])
+                        clean.MasterAttribute.push(g)
+                    } else {
+                        clean.MasterAttribute.push({
+                            AttributeValues: [],
+                            AttributeId: Number(key),
+                            ValueEn: fd.MasterAttribute[key]
+                        })
+                    }
+
+                })
+            } catch (ex) {
+                console.warn('Master Attributes', ex)
+            }
+
+            try {
+                clean.Remark = fd.Remark
+                clean.PrepareDay = fd.PrepareDay || 0
+                clean.SEO = fd.SEO
+                clean.ControlFlags = fd.ControlFlags
+                clean.Brand = fd.Brand
+                clean.ShippingMethod = fd.ShippingMethod
+                clean.EffectiveDate = null
+                clean.ExpireDate = null
+                clean.ExpireTime = null
+                clean.ExpireDate = null
+
+                if (fd.ExpireDate && fd.EffectiveDate) {
+                    var cpdate = angular.copy(fd.ExpireDate)
+                    clean.ExpireDate = moment(cpdate).format('LL')
+                    clean.ExpireTime = moment(cpdate).format('HH:mm:ss')
+
+                    cpdate = angular.copy(fd.EffectiveDate)
+
+                    clean.EffectiveDate = moment(cpdate).format('LL')
+                    clean.EffectiveTime = moment(cpdate).format('HH:mm:ss')
+                }
+
+
+            } catch (ex) {
+                console.warn('One-To-One Fields', ex)
+            }
+
+            try {
+                // Move first entry of Categories out into Category
+                clean.GlobalCategory = clean.GlobalCategories[0].CategoryId
+                clean.GlobalCategories.shift()
+
+            } catch (ex) {
+                console.warn('shift global cat', ex)
+            }
+
+            try {
+                clean.LocalCategory = clean.LocalCategories[0].CategoryId
+                clean.LocalCategories.shift()
+
+            } catch (ex) {
+                console.warn('shfiting local cat', ex)
+                // Local cat can be null
+                clean.LocalCategories = [null, null]
+                clean.LocalCategory = null
+            }
+
+            try {
+                clean.RelatedProducts = []
+                Object.keys(fd.RelatedProducts || []).forEach(function (key) {
+                    clean.RelatedProducts.push(
+                        fd.RelatedProducts[key]
+                        )
+                })
+            } catch (ex) {
+                console.warn('Organizing Related Products', ex)
+            }
+
+            // MasterVariant
+            clean.MasterVariant = fd.MasterVariant
+
+            if (fd.ProductId) clean.ProductId = fd.ProductId
+
+            try {
+                clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks)
+            } catch (ex) {
+                clean.MasterVariant.VideoLinks = []
+            }
+
+            try {
+                clean.MasterVariant.Images360 = (fd.MasterImages360 | []).map(mapper.Images)
+            } catch (ex) {
+                clean.MasterVariant.Images360 = []
+            }
+
+            try {
+                clean.MasterVariant.Images = (fd.MasterImages || []).map(mapper.Images)
+            } catch (ex) {
+                clean.MasterVariant.Images = []
+            }
+
+            try {
+                if (hasVariants) {
+                    clean.Variants = (fd.Variants || []).map(mapper.Variants)
+                    // Find DefaultVariant
+                    var target = fd.DefaultVariant.text
+                    clean.Variants.forEach(function (vari, index) {
+                        vari.SafetyStock = 0; // Placeholder, no UI yet
+                        vari.StockType = 0 // Placeholder
+                        vari.DefaultVariant = false
+                        if (vari.text == target) {
+                            clean.Variants[index].DefaultVariant = true
+                        }
+                    })
+                }
+            } catch (ex) {
+                console.warn('Variant Distribute', ex)
+            }
+
+            // HardCoD
+            clean.SellerId = 1
+            clean.ShopId = 1
+
+            return clean
+        }
+
+        service.deserialize = function (invFd, FullAttributeSet) {
+            console.log('FullAttributeSet', FullAttributeSet)
+
+            invFd.AttributeSet = FullAttributeSet
+            invFd.PrepareDay = invFd.PrepareDay || ''
+
+            if (invFd.EffectiveDate != '' && invFd.EffectiveDate != null) {
+                invFd.EffectiveDate = moment(invFd.EffectiveDate + ' ' + invFd.EffectiveTime).toDate()
+                invFd.EffectiveTime = invFd.EffectiveTime
+            }
+
+            if (invFd.ExpireDate != '' && invFd.ExpireDate != null) {
+                invFd.ExpireDate = moment(invFd.ExpireDate + ' ' + invFd.ExpireTime).toDate()
+                invFd.ExpireTime = invFd.ExpireTime
+            }
+
+            var BrandId = invFd.Brand.BrandId
+            Brand.getOne(BrandId).then(function (data) {
+                invFd.Brand = data
+                delete invFd.Brand.$id
+                invFd.Brand.id = BrandId
+            }, function () {
+                console.log('brand resolve failure')
+                invFd.Brand = {
+                    BrandId: null,
+                    BrandNameEn: 'Please select brand..'
+                }
+            })
+
+            var invMapper = {
+                VideoLinks: function (m) {
+                    return m.Url
+                },
+                Variants: function (m) {
+                    m.Visibility = m.Visibility
+                    m.Images = m.Images || []
+                    m.Images360 = m.Images360 || []
+                    m.WeightUnit = (m.WeightUnit || '').trim()
+                    m.DimensionUnit = (m.DimensionUnit || '').trim()
+                    m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute)
+                    return m
+                }
+            }
+
+            try {
+                var DefaultVariantIndex = (invFd.Variants || []).map(function (o) {
+                    return o.DefaultVariant || false
+                }).indexOf(true)
+
+                invFd.DefaultVariant = invFd.Variants[DefaultVariantIndex]
+            } catch (er) {
+                console.warn('Unable to set DefaultVariant, will not set', er)
+            }
+
+            try {
+                invFd.Variants = (invFd.Variants || []).map(invMapper.Variants)
+            } catch (er) {
+                console.warn('Unable to set Variants, will set empty', er)
+                invFd.Variants = []
+            }
+
+            var MasterAttribute = {}
+            try {
+                invFd.MasterAttribute.forEach(function (ma) {
+                    var k = { 'AttributeValue': ma.AttributeValues[0] }
+                    if (ma.AttributeValues.length > 0 && ma.AttributeValues[0].AttributeValueId) {
+                        k.AttributeId = ma.AttributeId
+                        k.AttributeValueId = ma.AttributeValues[0].AttributeValueId
+                    }
+                    MasterAttribute[ma.AttributeId] = ma.ValueEn || k
+                })
+            } catch (ex) {
+                console.warn('Unable to set MasterAttribute', ex)
+            }
+            invFd.MasterAttribute = MasterAttribute
+
+            if (!invFd.LocalCategories) {
+                invFd.LocalCategories = []
+            }
+
+            if (invFd.LocalCategories.length == 0) {
+                invFd.LocalCategories = [null, null, null]
+            } else {
+                var kmax = invFd.LocalCategories.length
+                for (var k = 0; k < 3 - kmax; k++) {
+                    console.log('pushing null')
+                    invFd.LocalCategories.push(null)
+                }
+            }
+
+            if (invFd.LocalCategory) {
+                LocalCategory.getOne(invFd.LocalCategory).then(function (locat) {
+                    invFd.LocalCategories.unshift(locat)
+
+                    if (invFd.LocalCategories.length > 3) {
+                        invFd.LocalCategories.pop()
+                    }
+
+                })
+            }
+
+            // TODO: replace with try-catch
+            if (invFd.MasterVariant.VideoLinks) {
+                invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks)
+            } else {
+                invFd.MasterVariant.VideoLinks = []
+            }
+
+            invFd.Variants.forEach(function (variant, index) {
+                try {
+                    variant.VideoLinks = (variant.VideoLinks || []).map(invMapper.VideoLinks)
+                } catch (ex) {
+                    variant.VideoLinks = []
+                }
+            })
+
+            if (!invFd.GlobalCategories) {
+                invFd.GlobalCategories = [null, null, null]
+            }
+
+            if (invFd.GlobalCategories.length == 0) {
+                invFd.GlobalCategories = [null, null, null]
+            } else {
+                var kmax = invFd.GlobalCategories.length
+                for (var k = 0; k < 3 - kmax; k++) {
+                    console.log('pushing null')
+                    invFd.GlobalCategories.push(null)
+                }
+            }
+
+            invFd.GlobalCategories.unshift({
+                CategoryId: invFd.GlobalCategory
+            })
+
+            if (invFd.GlobalCategories.length > 3) {
+                invFd.GlobalCategories.pop()
+            }
+
+            delete invFd.GlobalCategory
+            delete invFd.LocalCategory
+
+            // TODO: Just change ngmodel to bind to MasterVariant.MasterImages Directly
+            invFd.MasterImages = invFd.MasterVariant.Images || []
+            delete invFd.MasterVariant.Images
+            invFd.MasterImages360 = invFd.MasterVariant.Images360 || []
+            delete invFd.MasterVariant.Images360
+
+            try {
+                invFd.MasterVariant.WeightUnit = invFd.MasterVariant.WeightUnit.trim()
+            } catch (ex) {
+                invFd.MasterVariant.WeightUnit = undefined
+            }
+
+            try {
+                invFd.MasterVariant.DimensionUnit = invFd.MasterVariant.DimensionUnit.trim()
+            } catch (ex) {
+                invFd.MasterVariant.DimensionUnit = undefined
+            }
+
+            try {
+                var _split = invFd.Keywords.trim().split(',')
+                if (_split[0] == '') {
+                    invFd.Keywords = []
+                } else {
+                    invFd.Keywords = util.uniqueSet(_split)
+                }
+            } catch (ex) {
+                invFd.Keywords = []
+            }
+
+            if (invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; // TODO: Hardcode
+
+            var transformed = {
+                formData: invFd
+            }
+
+            if (invFd.Variants.length > 0) {
+                // Figure out the Attributes that make up each Variant
+                var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId'])
+
+                // Generate attributeOptions
+                var map0_index = FullAttributeSet.AttributeSetMaps.map(function (a) {
+                    return a.Attribute.AttributeId
+                }).indexOf(invFd.Variants[0].FirstAttribute.AttributeId)
+
+                var map1_index, SecondArray
+                if (HasTwoAttr) {
+                    map1_index = FullAttributeSet.AttributeSetMaps.map(function (a) {
+                        return a.Attribute.AttributeId
+                    }).indexOf(invFd.Variants[0].SecondAttribute.AttributeId)
+                }
+
+                // Find array of values to populate factors array that can be used to reproduce
+                // the expanded variants
+                var FirstArray = invFd.Variants.map(function (variant) {
+                    if (variant.FirstAttribute.AttributeValues.length > 0) {
+                        return {
+                            'AttributeValue': variant.FirstAttribute.AttributeValues[0],
+                            'AttributeId': variant.FirstAttribute.AttributeId
+                        }
+                    }
+
+                    return variant.FirstAttribute.ValueEn.trim()
+                })
+
+                if (HasTwoAttr) {
+                    SecondArray = invFd.Variants.map(function (variant) {
+                        if (variant.SecondAttribute.AttributeValues.length > 0) {
+                            return {
+                                'AttributeValue': variant.SecondAttribute.AttributeValues[0],
+                                'AttributeId': variant.SecondAttribute.AttributeId
+                            }
+                        }
+                        return variant.SecondAttribute.ValueEn.trim()
+                    })
+                }
+
+                // Get updated map from invFd.AttributeSet
+                // and load factorization array
+                var uniqueFirst = util.uniqueSet(FirstArray, 'AttributeValue.AttributeValueId')
+                console.log('ufirst', uniqueFirst)
+                transformed.attributeOptions = [{
+                    Attribute: FullAttributeSet.AttributeSetMaps[map0_index].Attribute,
+                    options: uniqueFirst
+                }]
+
+                if (HasTwoAttr) {
+                    var uniqueSecond = util.uniqueSet(SecondArray, 'AttributeValue.AttributeValueId')
+                    console.log(uniqueSecond)
+                    transformed.attributeOptions.push({
+                        Attribute: FullAttributeSet.AttributeSetMaps[map1_index].Attribute,
+                        options: uniqueSecond
+                    })
+                } else {
+                    transformed.attributeOptions.push({
+                        Attribute: null,
+                        options: []
+                    })
+                }
+
+            }
+
+            console.log('transformation array', transformed)
+
+            return transformed
+        }
+
+        return service
     }
-
-    service.deserialize = function (invFd, FullAttributeSet) {
-      console.log('FullAttributeSet', FullAttributeSet)
-
-      invFd.AttributeSet = FullAttributeSet
-      invFd.PrepareDay = invFd.PrepareDay || ''
-
-      if (invFd.EffectiveDate != '' && invFd.EffectiveDate != null) {
-        invFd.EffectiveDate = moment(invFd.EffectiveDate + ' ' + invFd.EffectiveTime).toDate()
-        invFd.EffectiveTime = invFd.EffectiveTime
-      }
-
-      if (invFd.ExpireDate != '' && invFd.ExpireDate != null) {
-        invFd.ExpireDate = moment(invFd.ExpireDate + ' ' + invFd.ExpireTime).toDate()
-        invFd.ExpireTime = invFd.ExpireTime
-      }
-
-      var BrandId = invFd.Brand.BrandId
-      Brand.getOne(BrandId).then(function (data) {
-        invFd.Brand = data
-        delete invFd.Brand.$id
-        invFd.Brand.id = BrandId
-      }, function () {
-        console.log('brand resolve failure')
-        invFd.Brand = {
-          BrandId: null,
-          BrandNameEn: 'Please select brand..'
-        }
-      })
-
-      var invMapper = {
-        VideoLinks: function (m) {
-          return m.Url
-        },
-        Variants: function (m) {
-          m.Visibility = m.Visibility
-          m.Images = m.Images || []
-          m.Images360 = m.Images360 || []
-          m.WeightUnit = (m.WeightUnit || '').trim()
-          m.DimensionUnit = (m.DimensionUnit || '').trim()
-          m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute)
-          return m
-        }
-      }
-
-      try {
-        var DefaultVariantIndex = (invFd.Variants || []).map(function (o) {
-          return o.DefaultVariant || false
-        }).indexOf(true)
-
-        invFd.DefaultVariant = invFd.Variants[DefaultVariantIndex]
-      } catch (er) {
-        console.warn('Unable to set DefaultVariant, will not set', er)
-      }
-
-      try {
-        invFd.Variants = (invFd.Variants || []).map(invMapper.Variants)
-      } catch (er) {
-        console.warn('Unable to set Variants, will set empty', er)
-        invFd.Variants = []
-      }
-
-      var MasterAttribute = {}
-      try {
-        invFd.MasterAttribute.forEach(function (ma) {
-          var k = { 'AttributeValue': ma.AttributeValues[0]}
-          if (ma.AttributeValues.length > 0 && ma.AttributeValues[0].AttributeValueId) {
-            k.AttributeId = ma.AttributeId
-            k.AttributeValueId = ma.AttributeValues[0].AttributeValueId
-          }
-          MasterAttribute[ma.AttributeId] = ma.ValueEn || k
-        })
-      } catch (ex) {
-        console.warn('Unable to set MasterAttribute', ex)
-      }
-      invFd.MasterAttribute = MasterAttribute
-
-      if (!invFd.LocalCategories) {
-        invFd.LocalCategories = []
-      }
-
-      if (invFd.LocalCategories.length == 0) {
-        invFd.LocalCategories = [null, null, null]
-      } else {
-        var kmax = invFd.LocalCategories.length
-        for (var k = 0; k < 3 - kmax; k++) {
-          console.log('pushing null')
-          invFd.LocalCategories.push(null)
-        }
-      }
-
-      if (invFd.LocalCategory) {
-        LocalCategory.getOne(invFd.LocalCategory).then(function (locat) {
-          invFd.LocalCategories.unshift(locat)
-
-          if (invFd.LocalCategories.length > 3) {
-            invFd.LocalCategories.pop()
-          }
-
-        })
-      }
-
-      // TODO: replace with try-catch
-      if (invFd.MasterVariant.VideoLinks) {
-        invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks)
-      } else {
-        invFd.MasterVariant.VideoLinks = []
-      }
-
-      invFd.Variants.forEach(function (variant, index) {
-        try {
-          variant.VideoLinks = (variant.VideoLinks || []).map(invMapper.VideoLinks)
-        } catch (ex) {
-          variant.VideoLinks = []
-        }
-      })
-
-      if (!invFd.GlobalCategories) {
-        invFd.GlobalCategories = [null, null, null]
-      }
-
-      if (invFd.GlobalCategories.length == 0) {
-        invFd.GlobalCategories = [null, null, null]
-      } else {
-        var kmax = invFd.GlobalCategories.length
-        for (var k = 0; k < 3 - kmax; k++) {
-          console.log('pushing null')
-          invFd.GlobalCategories.push(null)
-        }
-      }
-
-      invFd.GlobalCategories.unshift({
-        CategoryId: invFd.GlobalCategory
-      })
-
-      if (invFd.GlobalCategories.length > 3) {
-        invFd.GlobalCategories.pop()
-      }
-
-      delete invFd.GlobalCategory
-      delete invFd.LocalCategory
-
-      // TODO: Just change ngmodel to bind to MasterVariant.MasterImages Directly
-      invFd.MasterImages = invFd.MasterVariant.Images || []
-      delete invFd.MasterVariant.Images
-      invFd.MasterImages360 = invFd.MasterVariant.Images360 || []
-      delete invFd.MasterVariant.Images360
-
-      try {
-        invFd.MasterVariant.WeightUnit = invFd.MasterVariant.WeightUnit.trim()
-      } catch (ex) {
-        invFd.MasterVariant.WeightUnit = undefined
-      }
-
-      try {
-        invFd.MasterVariant.DimensionUnit = invFd.MasterVariant.DimensionUnit.trim()
-      } catch (ex) {
-        invFd.MasterVariant.DimensionUnit = undefined
-      }
-
-      try {
-        var _split = invFd.Keywords.trim().split(',')
-        if (_split[0] == '') {
-          invFd.Keywords = []
-        } else {
-          invFd.Keywords = util.uniqueSet(_split)
-        }
-      } catch (ex) {
-        invFd.Keywords = []
-      }
-
-      if (invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; // TODO: Hardcode
-
-      var transformed = {
-        formData: invFd
-      }
-
-      if (invFd.Variants.length > 0) {
-        // Figure out the Attributes that make up each Variant
-        var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId'])
-
-        // Generate attributeOptions
-        var map0_index = FullAttributeSet.AttributeSetMaps.map(function (a) {
-          return a.Attribute.AttributeId
-        }).indexOf(invFd.Variants[0].FirstAttribute.AttributeId)
-
-        var map1_index, SecondArray
-        if (HasTwoAttr) {
-          map1_index = FullAttributeSet.AttributeSetMaps.map(function (a) {
-            return a.Attribute.AttributeId
-          }).indexOf(invFd.Variants[0].SecondAttribute.AttributeId)
-        }
-
-        // Find array of values to populate factors array that can be used to reproduce
-        // the expanded variants
-        var FirstArray = invFd.Variants.map(function (variant) {
-          if (variant.FirstAttribute.AttributeValues.length > 0) {
-            return {
-              'AttributeValue': variant.FirstAttribute.AttributeValues[0],
-              'AttributeId': variant.FirstAttribute.AttributeId
-            }
-          }
-
-          return variant.FirstAttribute.ValueEn.trim()
-        })
-
-        if (HasTwoAttr) {
-          SecondArray = invFd.Variants.map(function (variant) {
-            if (variant.SecondAttribute.AttributeValues.length > 0) {
-              return {
-                'AttributeValue': variant.SecondAttribute.AttributeValues[0],
-                'AttributeId': variant.SecondAttribute.AttributeId
-              }
-            }
-            return variant.SecondAttribute.ValueEn.trim()
-          })
-        }
-
-        // Get updated map from invFd.AttributeSet
-        // and load factorization array
-        var uniqueFirst = util.uniqueSet(FirstArray, 'AttributeValue.AttributeValueId')
-        console.log('ufirst', uniqueFirst)
-        transformed.attributeOptions = [{
-          Attribute: FullAttributeSet.AttributeSetMaps[map0_index].Attribute,
-          options: uniqueFirst
-        }]
-
-        if (HasTwoAttr) {
-          var uniqueSecond = util.uniqueSet(SecondArray, 'AttributeValue.AttributeValueId')
-          console.log(uniqueSecond)
-          transformed.attributeOptions.push({
-            Attribute: FullAttributeSet.AttributeSetMaps[map1_index].Attribute,
-            options: uniqueSecond
-          })
-        } else {
-          transformed.attributeOptions.push({
-            Attribute: null,
-            options: []
-          })
-        }
-
-      }
-
-      console.log('transformation array', transformed)
-
-      return transformed
-    }
-
-    return service
-  }
 ]
 
 },{}],133:[function(require,module,exports){
-module.exports = ["Product", "Brand", "AttributeSet", "ImageService", "GlobalCategory", "$q", "Category", function(Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
-  'ngInject';
-  var $productAdd = {};
-
-  /*
-   * Wraps around multiple services,
-   * and solves dependencies needed for AddProduct view variables
-   * to be parsable
-   */
-  $productAdd.fill = function(globalCatId, pageLoader, sharedDataSet,
-    sharedFormData, breadcrumbs, controlFlags, variationFactorIndices, ivFormData) {
-
-
-    var deferred = $q.defer();
-    pageLoader.load('Downloading Attribute Sets..');
-
-    AttributeSet.getByCategory(globalCatId)
-      .then(function(data) {
-        sharedDataSet.AttributeSets = data.map(function(aset) {
-          aset.AttributeSetTagMaps = aset.AttributeSetTagMaps.map(function(asti) {
-            return asti.Tag.TagName;
-          });
-          return aset;
+var angular = require('angular');
+module.exports = ["Product", "Brand", "AttributeSet", "ImageService", "GlobalCategory", "$q", "Category", "util", function (Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category, util) {
+    'ngInject';
+    var $productAdd = {};
+    
+    /**
+     * 
+     * Rebuild variations array from set of attribute options in dataset
+     * 
+     * @param  {FormData} formData
+     * @param  {DataSet} dataSet
+     */
+    $productAdd.generateVariants = function (formData, dataSet) {
+        var vHashSet = {};
+        var prevVariants = angular.copy(formData.Variants);
+        prevVariants.forEach(function (elem, index) {
+            vHashSet[elem.text] = prevVariants[index];
         });
 
+        //Unset
+        prevVariants = undefined;
 
-        if (ivFormData) {
-          pageLoader.load('Indexing AttributeSet');
-          sharedFormData.AttributeSet = sharedDataSet.AttributeSets[sharedDataSet.AttributeSets.map(function(o) {
-            return o.AttributeSetId
-          }).indexOf(ivFormData.AttributeSet.AttributeSetId)];
+        formData.Variants = [];
+        var trackVariant = new Set();
 
-          var parse = function(ivFormData, FullAttributeSet) {
-            pageLoader.load('Loading product data..');
-            var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
+        var VARIANT_DUMMY_FACTOR = '';
+        var expand = function (A0, B0) {
 
-            //copy it out
-            Object.keys(inverseResult.formData).forEach(function(key) {
-              sharedFormData[key] = inverseResult.formData[key];
-            })
+            var AVId = null;
+            var BVId = null;
+            var B = B0;
+            var A = A0;
 
-            console.log("After Inverse Transformation", sharedFormData);
-            if (sharedFormData.Variants.length > 0) {
-              controlFlags.variation = "enable";
+            if (_.has(A0, 'AttributeValue.AttributeValueId')) {
+                AVId = A0.AttributeValue.AttributeValueId;
+                A = A0.AttributeValue.AttributeValueEn;
             }
-            sharedDataSet.attributeOptions = inverseResult.attributeOptions || sharedDataSet.attributeOptions;
-            if (sharedDataSet.attributeOptions[1].options.length > 0) {
-              variationFactorIndices.pushSecond();
+
+            if (angular.isDefined(B0)) {
+                if (_.has(B0, 'AttributeValue.AttributeValueId')) {
+                    BVId = B0.AttributeValue.AttributeValueId;
+                    B = B0.AttributeValue.AttributeValueEn;
+                }
+            } else {
+                //B is not defined
+                B = VARIANT_DUMMY_FACTOR;
             }
-          };
-          parse(ivFormData, sharedFormData.AttributeSet);
+
+            var kpair = {};
+            var firstAttribute = {
+                AttributeId: dataSet.attributeOptions[0].Attribute.AttributeId,
+                AttributeValues: (!AVId ? [] : [{
+                    AttributeValueId: AVId
+                }]),
+                ValueEn: A
+            };
+
+            var secondAttribute = {
+                AttributeId: dataSet.attributeOptions[1].Attribute.AttributeId,
+                AttributeValues: (!BVId ? [] : [{
+                    AttributeValueId: BVId
+                }]),
+                ValueEn: B
+            };
+
+            kpair.FirstAttribute = firstAttribute;
+            kpair.SecondAttribute = secondAttribute;
+            kpair.text = util.variant.toString(firstAttribute, secondAttribute);
+            //Copy default value over from main variant
+            kpair.ProductNameEn = formData.MasterVariant.ProductNameEn;
+            kpair.ProductNameTh = formData.MasterVariant.ProductNameTh;
+            kpair.Display = dataSet.VariantDisplayOption[0].value;
+            kpair.Visibility = true;
+            kpair.DimensionUnit = "MM";
+            kpair.WeightUnit = "G";
+            kpair.Sku = (formData.MasterVariant.Sku || "SKU") + "-" + (Number((formData.Variants || []).length) + 1);
+            kpair.OriginalPrice = formData.MasterVariant.OriginalPrice;
+            kpair.SalePrice = formData.MasterVariant.SalePrice;
+            kpair.Quantity = formData.MasterVariant.Quantity;
+            kpair.Length = formData.MasterVariant.Length;
+            kpair.Width = formData.MasterVariant.Width;
+            kpair.Height = formData.MasterVariant.Height;
+            kpair.Upc = formData.MasterVariant.Upc;
+            kpair.Weight = formData.MasterVariant.Weight;
+            kpair.DescriptionFullEn = formData.MasterVariant.DescriptionFullEn;
+            kpair.DescriptionFullTh = formData.MasterVariant.DescriptionFullTh;
+            kpair.DescriptionShortEn = formData.MasterVariant.DescriptionShortEn;
+            kpair.DescriptionShortTh = formData.MasterVariant.DescriptionShortTh;
+            kpair.Images = angular.copy(formData.MasterImages);
+            kpair.VideoLinks = angular.copy(formData.VideoLinks);
+            kpair.PrepareDay = formData.PrepareDay;
+            kpair.SEO = angular.copy(formData.SEO || {});
+            kpair.SEO.ProductUrlKeyEn = "";
+
+            if (kpair.text in vHashSet) {
+                //Replace with value from vHashSet
+                kpair = vHashSet[kpair.text];
+            }
+
+            var hashNew = (util.variant.toString(kpair.FirstAttribute, kpair.SecondAttribute));
+            if (!trackVariant.has(hashNew)) {
+                //Only push new variant if don't exist
+
+                formData.Variants.push(kpair);
+                trackVariant.add(hashNew);
+            }
+
         }
 
-        pageLoader.load('Downloading Category Tree..');
-        //Load Global Cat
-        GlobalCategory.getAll().then(function(data) {
-          sharedDataSet.GlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
-          sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
-          breadcrumbs.globalCategory = Category.createCatStringById(globalCatId, sharedDataSet.GlobalCategories);
-          console.log(breadcrumbs, "breadcrumb");
-          pageLoader.load('Preparing content..');
-          deferred.resolve();
-        });
+        //Multiply out unmultiplied options
+        if (dataSet.attributeOptions && Object.keys(dataSet.attributeOptions).length > 0) {
+            for (var aKey in dataSet.attributeOptions[0].options) {
+                var A = dataSet.attributeOptions[0].options[aKey];
+
+                if (angular.isDefined(dataSet.attributeOptions[1]['options']) && dataSet.attributeOptions[1].options.length == 0) {
+                    expand(A);
+                }
+
+                for (var bKey in dataSet.attributeOptions[1].options) {
+                    var B = dataSet.attributeOptions[1].options[bKey];
+                    expand(A, B);
+                }
+            }
+        }
+
+        formData.DefaultVariant = formData.Variants[0];
+    };
+  
+
+  
+    
+    /**
+     * 
+     * Fill product add page with data of related dependencies
+     * 
+     * @param  {Integer} globalCatId
+     * @param  {AddProductPageLoader} pageLoader
+     * @param  {DataSet} sharedDataSet
+     * @param  {FormData} sharedFormData
+     * @param  {object} breadcrumbs
+     * @param  {object} controlFlags
+     * @param  {object} variationFactorIndices
+     * @param  {InverseFormData} ivFormData (Optional)
+     */
+    $productAdd.fill = function (globalCatId, pageLoader, sharedDataSet,
+        sharedFormData, breadcrumbs, controlFlags, variationFactorIndices, ivFormData) {
 
 
-      });
+        var deferred = $q.defer();
+        pageLoader.load('Downloading Attribute Sets..');
 
-    return deferred.promise;
-  };
+        AttributeSet.getByCategory(globalCatId)
+            .then(function (data) {
+                sharedDataSet.AttributeSets = data.map(function (aset) {
+                    aset.AttributeSetTagMaps = aset.AttributeSetTagMaps.map(function (asti) {
+                        return asti.Tag.TagName;
+                    });
+                    return aset;
+                });
 
-  return $productAdd;
+
+                if (ivFormData) {
+                    pageLoader.load('Indexing AttributeSet');
+                    sharedFormData.AttributeSet = sharedDataSet.AttributeSets[sharedDataSet.AttributeSets.map(function (o) {
+                        return o.AttributeSetId
+                    }).indexOf(ivFormData.AttributeSet.AttributeSetId)];
+
+                    var parse = function (ivFormData, FullAttributeSet) {
+                        pageLoader.load('Loading product data..');
+                        var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
+
+                        //copy it out
+                        Object.keys(inverseResult.formData).forEach(function (key) {
+                            sharedFormData[key] = inverseResult.formData[key];
+                        })
+
+                        console.log("After Inverse Transformation", sharedFormData);
+                        if (sharedFormData.Variants.length > 0) {
+                            controlFlags.variation = "enable";
+                        }
+                        sharedDataSet.attributeOptions = inverseResult.attributeOptions || sharedDataSet.attributeOptions;
+                        if (sharedDataSet.attributeOptions[1].options.length > 0) {
+                            variationFactorIndices.pushSecond();
+                        }
+                    };
+                    parse(ivFormData, sharedFormData.AttributeSet);
+                }
+
+                pageLoader.load('Downloading Category Tree..');
+                //Load Global Cat
+                GlobalCategory.getAll().then(function (data) {
+                    sharedDataSet.GlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
+                    sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
+                    breadcrumbs.globalCategory = Category.createCatStringById(globalCatId, sharedDataSet.GlobalCategories);
+                    console.log(breadcrumbs, "breadcrumb");
+                    pageLoader.load('Preparing content..');
+                    deferred.resolve();
+                });
+
+
+            });
+
+        return deferred.promise;
+    };
+
+    return $productAdd;
 }];
 
-},{}],134:[function(require,module,exports){
+},{"angular":164}],134:[function(require,module,exports){
 module.exports = ["common", "util", function(common, util) {
 	'ngInject';
 	var service = common.Rest('/ProductReviews');
@@ -10652,7 +10631,7 @@ module.exports = {
         }
     },
     MasterVariant_SalePrice: {
-      'labelClass': 'required',
+        'labelClass': 'required',
         'error': {
             'messages': {
                 'min': 'Sale price must be lower than the original price',
@@ -10722,7 +10701,7 @@ module.exports = {
         },
         'unit': 'Day'
     },
-    MasterVariant_Length: {
+    MasterVariant_Dimension: {
         'error': {
             'messages': {
                 'required': 'This is a required field',
@@ -10732,9 +10711,30 @@ module.exports = {
     },
     RelatedProducts: {
         'inputSize': 'xxl',
-         'error': {
+        'error': {
             'messages': {
                 'maxtagcount': 'Cannot exceed 10 related products'
+            }
+        }
+    },
+    Nothing: {
+
+    },
+    SEO_BoostingWeight: {
+        'error': {
+            'messages': {
+                'max': 'Only numbers from 1 to 10000 is allowed',
+                'min': 'Only numbers from 1 to 10000 is allowed',
+                'pattern': 'Only numbers from 1 to 10000 is allowed'
+            }
+        }
+    },
+    Remark: {
+        'inputSize': 'normal',
+        'formGroupClass': 'margin-top-30',
+        'error': {
+            'messages': {
+                'pattern': 'Special characters are not allowed'
             }
         }
     }
@@ -10966,7 +10966,7 @@ module.exports = {
 },{}],148:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Tue Mar 01 2016 11:54:15 GMT+0700 (Russia TZ 6 Standard Time)
+ * Tue Mar 01 2016 16:37:38 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -10992,6 +10992,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('common/breadcrumb/normal',
     ""
+  );
+
+
+  $templateCache.put('common/input/div-with-label',
+    "<div><label ng-class=\"options.labelClass || {}\">{{ label }}</label><ng-transclude class=\"{{ options.transcludeClasses }}\" ng-class=\"{ 'has-error' : isInvalid(templateField()) }\"></ng-transclude><span class=\"help-block color-red\" ng-if=isInvalid(templateField()) ng-repeat=\"(key, prop) in (templateField().$error) track by key\"><span ng-bind-html=options.error.messages[key]></span></span></div>"
   );
 
 
@@ -11034,6 +11039,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('common/input/password',
     "<div class=\"form-group {{ options.formGroupClass }}\" ng-init=\"inputType='password'\"><div class=width-label><label class=control-label ng-class=\"options.labelClass || {}\" ng-bind-html=options.label></label></div><div ng-class=\"['width-field-' + (options.inputSize || 'normal')]\"><div class=input-password><ng-transclude></ng-transclude><a ng-click=\"inputType = (inputType == 'password' ? 'text' : 'password')\"><i class=\"fa fa-eye fa-lg input-password-eye pointer\" ng-class=\"{'active' : inputType == 'text' }\"></i></a></div><span class=help-block ng-if=options.hint ng-show=options.hint.show>{{options.hint.message}}</span> <span class=\"help-block color-red\" ng-if=options.error ng-show=options.error.show ng-repeat=\"(key, prop) in options.error.conditions\"><span ng-bind-html=options.error.messages[key]></span></span></div><div ng-if=\"options.tooltip && options.tooltip.length > 0\" class=\"width-field-tooltip padding-left-30\"><i class=\"fa fa-2x fa-question-circle color-grey\" uib-tooltip-html=options.tooltip tooltip-trigger=mouseenter tooltip-placement=right></i></div></div>"
+  );
+
+
+  $templateCache.put('common/input/text-column-no-label',
+    "<div class=input-column><ng-transclude class=\"{{ options.transcludeClasses }}\" ng-class=\"{ 'has-error' : isInvalid(templateField()) }\"></ng-transclude><span class=\"help-block color-red\" ng-if=options.error ng-show=options.error.show ng-repeat=\"(key, prop) in (templateField().$error) track by key\">{{ options.error.messages[key] }}</span></div>"
   );
 
 

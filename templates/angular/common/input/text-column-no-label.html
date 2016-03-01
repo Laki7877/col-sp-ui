@@ -1,0 +1,7 @@
+<!-- NC TEMPLATE ONLY -->
+<div class="input-column">
+        <ng-transclude class="{{ options.transcludeClasses }}" ng-class="{ 'has-error' : isInvalid(templateField()) }"></ng-transclude>
+        <span class="help-block color-red" ng-if="options.error" ng-show="options.error.show" ng-repeat="(key, prop) in (templateField().$error) track by key">
+            {{ options.error.messages[key] }}
+        </span>
+</div>

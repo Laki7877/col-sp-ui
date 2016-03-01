@@ -8,8 +8,7 @@
                         <h2>Relationship</h2></div>
                     <div class="form-section-content">
 
-                        <div nc-template="common/input/form-group-with-label" nc-label="Related Products" nc-template-form="addProductForm.RelatedProducts" 
-                        nc-template-options-path="addProductForm/RelatedProducts">
+                        <div nc-template="common/input/form-group-with-label" nc-label="Related Products" nc-template-form="addProductForm.RelatedProducts" nc-template-options-path="addProductForm/RelatedProducts">
                             <ui-select ng-model="formData.RelatedProducts" name="RelatedProducts" nc-tag-validator nc-max-tag-count="10" multiple>
                                 <ui-select-match placeholder="Input Product Name">
                                     <span>{{ $item.ProductNameEn }}</span>
@@ -31,48 +30,42 @@
                         <h2>SEO</h2></div>
                     <div class="form-section-content">
 
-                        <div ng-template="common/input/text2" ng-template-options="{ 'label': 'Meta Title (English)' }">
-                            <input maxlength="60" class="form-control width-field-normal" name="SEO_MetaTitleEn" ng-model="formData.SEO.MetaTitleEn" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaTitleEn) }" />
+                        
+                        <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.SEO_MetaTitleEn" nc-label="Meta Title (English)" 
+                        nc-template-options-path="addProductForm/Nothing">
+                            <input class="form-control width-field-normal" name="SEO_MetaTitleEn" ng-model="formData.SEO.MetaTitleEn" maxlength="60" required />
+                        </div>
+                        
+                        <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.SEO_MetaTitleTh" nc-label="Meta Title (ไทย)" 
+                        nc-template-options-path="addProductForm/Nothing">
+                            <input class="form-control width-field-normal" name="SEO_MetaTitleTh" ng-model="formData.SEO.MetaTitleTh" maxlength="60" required />
                         </div>
 
-                        <div ng-template="common/input/text2" ng-template-options="{ 'label': 'Meta Title (ไทย)' }">
-                            <input maxlength="60" class="form-control width-field-normal" name="SEO_MetaTitleTh" ng-model="formData.SEO.MetaTitleTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaTitleTh) }" />
+                        <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.SEO_MetaDescriptionEn" nc-label="Meta Description (English)" nc-template-options-path="addProductForm/Nothing">
+                            <input maxlength="150" class="form-control width-field-normal" name="SEO_MetaDescriptionEn" ng-model="formData.SEO.MetaDescriptionEn" />
+                        </div>
+                        
+                        <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.SEO_MetaDescriptionTh" nc-label="Meta Description (ไทย)" nc-template-options-path="addProductForm/Nothing">
+                            <input maxlength="150" class="form-control width-field-normal" name="SEO_MetaDescriptionTh" ng-model="formData.SEO.MetaDescriptionTh" />
                         </div>
 
-                        <div ng-template="common/input/text2" ng-template-options="{   'label': 'Meta Description (English)' }">
-                            <input maxlength="150" class="form-control width-field-normal" name="SEO_MetaDescriptionEn" ng-model="formData.SEO.MetaDescriptionEn" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaDescriptionEn) }" />
-                        </div>
-
-                        <div ng-template="common/input/text2" ng-template-options="{ 'label': 'Meta Description (ไทย)' }">
-                            <input maxlength="150" class="form-control width-field-normal" name="SEO_MetaDescriptionTh" ng-model="formData.SEO.MetaDescriptionTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaDescriptionTh) }" />
-                        </div>
-
-                        <div ng-template="common/input/text2" ng-template-options="{  'label': 'Meta Keywords (English)'	}">
+                        <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.SEO_MetaKeywordsEn" nc-label="Meta Keywords (English)" nc-template-options-path="addProductForm/Nothing">
                             <input placeholder="Keywords separated by comma" class="form-control width-field-normal" name="SEO_MetaKeywordsEn" ng-model="formData.SEO.MetaKeywordEn" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaKeywordsEn) }" />
                         </div>
 
-                        <div ng-template="common/input/text2" ng-template-options="{   'label': 'Meta Keywords (ไทย)' }">
+                        <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.SEO_MetaKeywordsTh" nc-label="Meta Keywords (ไทย)" nc-template-options-path="addProductForm/Nothing">
                             <input placeholder="Keywords separated by comma" class="form-control width-field-normal" name="SEO_MetaKeywordsTh" ng-model="formData.SEO.MetaKeywordTh" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaKeywordsTh) }" />
                         </div>
 
-                        <div ng-template="common/input/text2" ng-template-options="{ 'label': 'Product URL Key' }">
+                        <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.SEO_ProductUrlKeyEn" nc-label="Product URL Key" 
+                        nc-template-options-path="addProductForm/Nothing">
                             <input maxlength="300" class="form-control width-field-normal" ng-pattern="/^[A-Za-z0-9_\-]+$/" name="SEO_ProductUrlKeyEn" ng-model="formData.SEO.ProductUrlKeyEn" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_ProductUrlKeyEn) }" />
                         </div>
 
-                        <div ng-template="common/input/text2" ng-template-options="{
-						'label': 'Product Boosting Weight',
-						'error' : {
-						'messages': {
-						'max': 'Only numbers from 1 to 10000 is allowed',
-						'min': 'Only numbers from 1 to 10000 is allowed',
-                        'pattern': 'Only numbers from 1 to 10000 is allowed'
-						},
-						'show': $root.isInvalid(addProductForm.SEO_ProductBoostingWeight),
-						'conditions' : addProductForm.SEO_ProductBoostingWeight.$error
-						}
-						}">
-                            <input type="number" class="form-control width-field-normal" min="0" max="10000" step="1" ng-pattern="/^[0-9]+$/" name="SEO_ProductBoostingWeight" ng-model="formData.SEO.ProductBoostingWeight" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_ProductBoostingWeight) }"
-                            />
+                        <div nc-template="common/input/form-group-with-label" nc-template-options-path="addProductForm/Nothing" nc-template-form="addProductForm.SEO_ProductBoostingWeight" nc-label="Product Boosting Weight">
+                            <input type="number" class="form-control width-field-normal" min="0" max="10000" step="1" 
+                            ng-pattern="/^[0-9]+$/" name="SEO_ProductBoostingWeight" ng-model="formData.SEO.ProductBoostingWeight" 
+                            ng-class="{ 'has-error' : $root.isInvalid(addProductForm.SEO_ProductBoostingWeight) }"/>
                         </div>
 
                     </div>
@@ -93,10 +86,8 @@
                             <div class="width-field-normal">
                                 <div class="dropdown">
                                     <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
-                                        <input readonly style="background-color:white" type="text"
-                                         ng-class="{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }"
-                                         placeholder="Select date and time when product will go online"
-                                         class="input-icon-calendar form-control" value="{{ formData.EffectiveDate | date: 'dd/MM/yy HH:mm' }}" />
+                                        <input readonly style="background-color:white" type="text" ng-class="{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }" placeholder="Select date and time when product will go online" class="input-icon-calendar form-control"
+                                        value="{{ formData.EffectiveDate | date: 'dd/MM/yy HH:mm' }}" />
                                     </a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                                         <datetimepicker data-ng-model="formData.EffectiveDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'hour' }" />
@@ -116,15 +107,11 @@
                             <div class="width-field-normal">
                                 <div class="dropdown">
                                     <a class="dropdown-toggle" id="dropdown3" role="button" data-toggle="dropdown" data-target="#" href="#">
-                                        <input readonly style="background-color:white" type="text"
-                                        placeholder="Select date and time when product will go offline"
-                                        class="input-icon-calendar form-control" name="ExpireDate"
-                                        ng-class="{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }"
+                                        <input readonly style="background-color:white" type="text" placeholder="Select date and time when product will go offline" class="input-icon-calendar form-control" name="ExpireDate" ng-class="{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }"
                                         value="{{ formData.ExpireDate | date: 'dd/MM/yy HH:mm' }}">
                                     </a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                        <datetimepicker data-ng-model="formData.ExpireDate"
-                                        data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'hour' }" />
+                                        <datetimepicker data-ng-model="formData.ExpireDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'hour' }" />
                                     </ul>
                                 </div>
                                 <div class="width-field-large">
@@ -141,19 +128,8 @@
 
                         <? $this->insert('components/forms/multiple-checkbox', ["label" => "Control Flag", "ng_model" => "formData.ControlFlags", "choices" => ["Flag 1", "Flag 2", "Flag 3"]]) ?>
 
-                            <div ng-template="common/input/textarea2" ng-template-options="{
-						'label': 'Remark',
-						'inputSize': 'normal',
-						'formGroupClass' : 'margin-top-30',
-						'error' : {
-						'messages': {
-
-						},
-						'show': $root.isInvalid(addProductForm.Remark),
-						'conditions' : addProductForm.Remark.$error
-						}
-						}">
-                                <textarea class="form-control" maxlength="2000" name="Remark" ng-model="formData.Remark" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.Remark) }" />
+                        <div nc-template="common/input/form-group-with-label" nc-template-options-path="addProductForm/Remark" nc-template-form="addProductForm.Remark" nc-label="Remark">
+                                <textarea class="form-control" ng-pattern="/^[^<>]+$/"  maxlength="2000" name="Remark" ng-model="formData.Remark"  />
                                 </textarea>
                             </div>
 

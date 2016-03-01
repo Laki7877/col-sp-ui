@@ -1,6 +1,8 @@
 var angular = require('angular');
 
-module.exports = function ($scope, $uibModal, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, VariantPair, $rootScope, $q, KnownException, NcAlert, $productAdd) {
+module.exports = function ($scope, $uibModal, $window, util, config, Product, ImageService,
+    AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, VariantPair, $rootScope, $q,
+    KnownException, NcAlert, $productAdd) {
     'ngInject';
 
     $scope.alert = new NcAlert();
@@ -8,7 +10,7 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
     var MAX_FILESIZE = 5000000; //5MB
     var QUEUE_LIMIT = 20;
     var QUEUE_LIMIT_360 = 60;
-    var MAX_VARIANT = 100;
+
     $scope.image_alert = new NcAlert();
     $scope.dataSet = {};
     $scope.dataSet.AttributeSets = [{
@@ -29,13 +31,7 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
     $scope.dataSet.SearchTags = [];
     $scope.dataSet.RelatedProducts = [];
     $scope.dataSet.StockTypes = ['Stock', 'Pre-Order'];
-    $scope.dataSet.VariantDisplayOption = [{
-        text: 'Show as group of variants',
-        value: 'GROUP'
-    }, {
-            text: 'Show as individual product',
-            value: 'INDIVIDUAL'
-        }];
+    $scope.dataSet.VariantDisplayOption = [{ text: 'Show as group of variants', value: 'GROUP' }, { text: 'Show as individual product', value: 'INDIVIDUAL' }];
 
     var protoAttributeOptions = {
         0: {
@@ -73,7 +69,7 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
     }; // end onbeforeunload
 
     var onImageUploadFail = function (item, filter) {
-        $scope.image_alert.error(item.Message || 'Your image does not meet guideline.');
+        $scope.image_alert.error(item.Message || 'Your image does not meet guideline. Images must be smaller than 5 MB, with square size larger than 1500x1500.');
     }
 
     var onImageUploadSuccess = function () {
@@ -83,153 +79,7 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
     var onImageUploadQueueLimit = function () { }
     $scope.asStatus = Product.getStatus;
 
-    var watchVariantChanges = function () {
-        $scope.$watch('dataSet.attributeOptions', function () {
-            var vHashSet = {};
-            var prevVariants = angular.copy($scope.formData.Variants);
-            prevVariants.forEach(function (elem, index) {
-                vHashSet[elem.text] = prevVariants[index];
-            });
-
-            var protoCheckState = {
-                uploadProductImages: false,
-                embedVideo: false,
-                description: false,
-                packageDetail: false
-            };
-
-            //Unset
-            prevVariants = undefined;
-
-            $scope.formData.Variants = [];
-            var trackVariant = new Set();
-            
-            var VARIANT_DUMMY_FACTOR = '';
-            var expand = function (A0, B0) {
-
-                var AVId = null;
-                var BVId = null;
-                var B = B0;
-                var A = A0;
-                
-                if (_.has(A0, 'AttributeValue.AttributeValueId')) {
-                    AVId = A0.AttributeValue.AttributeValueId;
-                    A = A0.AttributeValue.AttributeValueEn;
-                }
-
-                if (angular.isDefined(B0)) {
-                    if (_.has(B0, 'AttributeValue.AttributeValueId')) {
-                        BVId = B0.AttributeValue.AttributeValueId;
-                        B = B0.AttributeValue.AttributeValueEn;
-                    }
-                } else {
-                    //B is not defined
-                    B = VARIANT_DUMMY_FACTOR;
-                }
-
-                var kpair = {};
-                var firstAttribute = {
-                    AttributeId: $scope.dataSet.attributeOptions[0].Attribute.AttributeId,
-                    AttributeValues: (!AVId ? [] : [{
-                        AttributeValueId: AVId
-                    }]),
-                    ValueEn: A
-                };
-
-                var secondAttribute = {
-                    AttributeId: $scope.dataSet.attributeOptions[1].Attribute.AttributeId,
-                    AttributeValues: (!BVId ? [] : [{
-                        AttributeValueId: BVId
-                    }]),
-                    ValueEn: B
-                };
-
-                kpair.FirstAttribute = firstAttribute;
-                kpair.SecondAttribute = secondAttribute;
-                kpair.text = util.variant.toString(firstAttribute, secondAttribute);
-                //Copy default value over from main variant
-                kpair.ProductNameEn = $scope.formData.MasterVariant.ProductNameEn;
-                kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
-                kpair.Display = $scope.dataSet.VariantDisplayOption[0].value;
-                kpair.Visibility = true;
-                kpair.DimensionUnit = "MM";
-                kpair.WeightUnit = "G";
-                kpair.Sku = ($scope.formData.MasterVariant.Sku || "SKU") + "-" + (Number(($scope.formData.Variants || []).length) + 1);
-                kpair.OriginalPrice = $scope.formData.MasterVariant.OriginalPrice;
-                kpair.SalePrice = $scope.formData.MasterVariant.SalePrice;
-                kpair.Quantity = $scope.formData.MasterVariant.Quantity;
-                kpair.Length = $scope.formData.MasterVariant.Length;
-                kpair.Width = $scope.formData.MasterVariant.Width;
-                kpair.Height = $scope.formData.MasterVariant.Height;
-                kpair.Upc = $scope.formData.MasterVariant.Upc;
-                kpair.Weight = $scope.formData.MasterVariant.Weight;
-                kpair.DescriptionFullEn = $scope.formData.MasterVariant.DescriptionFullEn;
-                kpair.DescriptionFullTh = $scope.formData.MasterVariant.DescriptionFullTh;
-                kpair.DescriptionShortEn = $scope.formData.MasterVariant.DescriptionShortEn;
-                kpair.DescriptionShortTh = $scope.formData.MasterVariant.DescriptionShortTh;
-                kpair.Images = angular.copy($scope.formData.MasterImages);
-                kpair.VideoLinks = angular.copy($scope.formData.VideoLinks);
-                kpair.PrepareDay = $scope.formData.PrepareDay;
-                kpair.SEO = angular.copy($scope.formData.SEO || {});
-
-                //   kpair._override = angular.copy(protoCheckState);
-
-                if (kpair.text in vHashSet) {
-                    //Replace with value from vHashSet
-
-                    kpair = vHashSet[kpair.text];
-
-                    kpair._override = angular.copy(protoCheckState);
-                    kpair._override.uploadProductImages = ((kpair.Images || []).length > 0);
-                    kpair._override.embedVideo = ((kpair.VideoLinks || []).length > 0);
-                    kpair._override.description = (angular.isDefined(kpair.DescriptionFullEn) ||
-                        angular.isDefined(kpair.DescriptionFullTh) ||
-                        angular.isDefined(kpair.DescriptionShortEn) ||
-                        angular.isDefined(kpair.DescriptionShortTh));
-
-                    kpair._override.packageDetail = (angular.isDefined(kpair.Length) ||
-                        angular.isDefined(kpair.Height) ||
-                        angular.isDefined(kpair.Width) ||
-                        angular.isDefined(kpair.Weight));
-
-                }
-
-                var hashNew = (util.variant.toString(kpair.FirstAttribute, kpair.SecondAttribute));
-                if (!trackVariant.has(hashNew)) {
-                    //Only push new variant if don't exist
-
-                    $scope.formData.Variants.push(kpair);
-                    trackVariant.add(hashNew);
-                }
-
-            }
-
-
-            console.log("Recalculating Factors", $scope.dataSet.attributeOptions);
-            //Multiply out unmultiplied options
-            if ($scope.dataSet.attributeOptions && Object.keys($scope.dataSet.attributeOptions).length > 0) {
-                for (var aKey in $scope.dataSet.attributeOptions[0].options) {
-                    var A = $scope.dataSet.attributeOptions[0].options[aKey];
-
-                    if (angular.isDefined($scope.dataSet.attributeOptions[1]['options']) && $scope.dataSet.attributeOptions[1].options.length == 0) {
-                        console.log("expanding A", A);
-                        expand(A);
-                    }
-
-                    for (var bKey in $scope.dataSet.attributeOptions[1].options) {
-                        var B = $scope.dataSet.attributeOptions[1].options[bKey];
-                        console.log("Expanding A,B", A, B);
-                        expand(A, B);
-                    }
-                }
-            }
-
-            $scope.formData.DefaultVariant = $scope.formData.Variants[0];
-        }, true); //end of $watch
-
-    } //end of watch func
-
-    $scope.overview = {}
+    $scope.overview = {};
 
     $scope.formData = {
         Brand: {
@@ -258,24 +108,30 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
         Keywords: []
     };
 
+
+    var watchVariantFactorChanges = function () {
+        $scope.$watch('dataSet.attributeOptions', function () {
+            $productAdd.generateVariants($scope.formData, $scope.dataSet);
+        }, true);
+    };
+
     //Variation Factor (lhs) Indices are used as index
     //for ng-repeat in variation tab
-    $scope.variationFactorIndices = {};
-    $scope.variationFactorIndices.iterator = [0];
-    $scope.variationFactorIndices.length = function () {
-        return $scope.variationFactorIndices.iterator.length;
-    }
-    $scope.variationFactorIndices.popSecond = function () {
-        $scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop();
-        $scope.dataSet.attributeOptions[1].options = [];
-        $scope.dataSet.attributeOptions[1].Attribute = null;
-    }
-    $scope.variationFactorIndices.pushSecond = function () {
-        $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1);
-    }
+    $scope.variationFactorIndices = {
+        iterator: [0],
+        length: function () {
+            return $scope.variationFactorIndices.iterator.length;
+        },
+        popSecond: function () {
+            $scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop();
+            $scope.dataSet.attributeOptions[1].options = [];
+            $scope.dataSet.attributeOptions[1].Attribute = null;
+        },
+        pushSecond: function () {
+            $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1);
+        }
+    };
 
-    //TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
-    //$scope._attrEnTh = function (t) { return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
     $scope.isFreeTextInput = util.isFreeTextDataType;
     $scope.isListInput = util.isListDataType;
     $scope.isHtmlInput = util.isHtmlDataType;
@@ -301,10 +157,16 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
     $scope.breadcrumbs = {
         globalCategory: null
     };
+
+
     $scope.preview = function () {
         return console.log($scope.formData);
     };
-
+    
+    /**
+     * Refresh Related Product Data 
+     * @param  {String} q
+     */
     $scope.refreshRelatedProducts = function (q) {
         return Product.getAll({
             searchText: q,
@@ -313,7 +175,11 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
             $scope.dataSet.RelatedProducts = ds.data;
         });
     };
-
+    
+    /**
+     * Refresh Brand Data Set used for searching 
+     * @param  {String} q
+     */
     $scope.refreshBrands = function (q) {
         if (q == "" || !q || q == null) return;
         $scope.dataSet.Brands = [{
@@ -355,7 +221,11 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
             form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
         }
     });
-
+    
+    /**
+     * Other additional validations
+     * @param  {String} Status
+     */
     var manualValidate = function (Status) {
         var mat = [];
 
@@ -399,7 +269,11 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
 
         return mat;
     };
-
+    
+    /**
+     * Publish Confirmation
+     * Show dialog to ask if user really want to publish
+     */
     $scope.prePublishWA = function () {
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
@@ -429,8 +303,10 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
         });
 
     }
-    /*
-     *  Publish (both Draft and WA)
+    
+    /**
+     * Publish (save as draft and publish)
+     * @param  {String} Status (WA or DF or other enum sent to server)
      */
     $scope.publish = function (Status) {
 
@@ -460,21 +336,21 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
             $scope.pageState.reset();
             var requiredMissing = ('required' in $scope.addProductForm.$error);
             if (Status == 'DF' && requiredMissing) {
-                var mfd = [];
+                var errorList = [];
                 if ($scope.addProductForm.MasterVariant_ProductNameEn.$invalid) {
-                    mfd.push('Product Name (English)');
+                    errorList.push('Product Name (English)');
                 }
                 //Product Name (Thai), Product Name (English), and Sale Price,
                 if ($scope.addProductForm.MasterVariant_ProductNameTh.$invalid) {
-                    mfd.push('Product Name (Thai)');
+                    errorList.push('Product Name (Thai)');
                 }
 
                 if ($scope.addProductForm.MasterVariant_SalePrice.$invalid) {
-                    mfd.push('Sale Price');
+                    errorList.push('Sale Price');
                 }
-                mfd.push('Master Attributes');
+                errorList.push('Master Attributes');
 
-                $scope.alert.error("Unable to save. Please make sure that " + mfd.join(" and ") + " are filled correctly.");
+                $scope.alert.error("Unable to save. Please make sure that " + errorList.join(" and ") + " are filled correctly.");
             } else if (Status == 'WA' && requiredMissing) {
                 $scope.alert.error("Unable to publish because you are missing required fields");
             } else {
@@ -483,8 +359,7 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
             return;
         }
 
-        $scope.pageState.load('Publishing..');
-        console.log("Publishing with Status = ", Status);
+        $scope.pageState.load('Saving..');
 
         var apiRequest = Product.serialize($scope.formData);
         Product.publish(apiRequest, Status).then(function (res) {
@@ -532,7 +407,6 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
 
         if (!angular.isObject(viewBag)) throw new KnownException("View bag is corrupted");
 
-        var shopId = $rootScope.Profile.Shop.ShopId; //TODO: Get from user
         var _editMode = ("productId" in viewBag)
         for (var page in tabPage) {
             tabPage[page].angular();
@@ -550,7 +424,7 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
                         $scope.variationFactorIndices, inverseFormData).then(function () {
                             $scope.formData.ProductId = Number(productId);
                             $scope.pageState.reset();
-                            watchVariantChanges();
+                            watchVariantFactorChanges();
                             ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
                             ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
                         });
@@ -565,7 +439,7 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
             $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs,
                 $scope.controlFlags, $scope.variationFactorIndices).then(function () {
                     $scope.pageState.reset();
-                    watchVariantChanges();
+                    watchVariantFactorChanges();
                     ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
                     ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
                 });
@@ -684,7 +558,6 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
             });
 
             $scope.$on('openPairModal', function (evt, pair, array, index) {
-                //Define if not defined
 
                 if (angular.isUndefined(pair.Images)) {
                     pair.Images = [];
@@ -692,6 +565,7 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
                 if (angular.isUndefined(pair.queue)) {
                     pair.queue = [];
                 }
+                
                 //Modal target (for viewing pair)
                 $scope.pairModal = angular.copy(pair);
                 $scope.pairModal.alert = new NcAlert();
@@ -701,31 +575,6 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
             });
 
             $scope.$on('savePairModal', function (evt) {
-                console.log("adform", $scope.addProductVariantForm.$invalid);
-                //
-                // if (!$scope.pairModal._override.uploadProductImages) {
-                //   $scope.pairModal.Images = [];
-                // }
-                //
-                // if (!$scope.pairModal._override.embedVideo) {
-                //   $scope.pairModal.VideoLinks = [];
-                // }
-                //
-                // if (!$scope.pairModal._override.description) {
-                //   $scope.pairModal.DescriptionFullEn = null;
-                //   $scope.pairModal.DescriptionFullTh = null;
-                //   $scope.pairModal.ShortDescriptionEn = null;
-                //   $scope.pairModal.ShortDescriptionTh = null;
-                // }
-                //
-                // if (!$scope.pairModal._override.packageDetail) {
-                //   $scope.pairModal.Length = null;
-                //   $scope.pairModal.Height = null;
-                //   $scope.pairModal.Width = null;
-                //   $scope.pairModal.Length = null;
-                //
-                // }
-
                 $scope.formData.Variants[$scope.pairIndex] = $scope.pairModal;
             });
         }
