@@ -3,7 +3,7 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminAttributeCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <? $this->insert('components/page-title-with-one-button', ['text' => 'Attributes','button' => 'Add Attribute', 'button_class' => 'btn-width-xxl', 'link' => '/admin/attributes/add']) ?>
+    <?php $this->insert('components/page-title-with-one-button', ['text' => 'Attributes','button' => 'Add Attribute', 'button_class' => 'btn-width-xxl', 'link' => '/admin/attributes/add']) ?>
     <div class="row search-section-wrapper">
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="AttributeId"></nc-bulk>
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Attribute Name'"></nc-search>
