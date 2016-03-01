@@ -15,7 +15,6 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="stylesheet" href="<?=$this->asset('/assets/css/screen.css')?>" />
     <link rel="stylesheet" href="<?=$this->asset('/assets/libs/angular-bootstrap-datetimepicker/datetimepicker.css')?>" />
-
     <script src="<?= $this->asset('/assets/js/jquery.min.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/jquery.rest.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/bundle.js') ?>"></script>
@@ -28,9 +27,9 @@
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-    <div id="wrapper">
-    	<ng-view></ng-view>
+    <div ng-class="$root.wrapper" ng-include="$root.state.view">
     </div>
+
     <script src="<?= $this->asset('/assets/js/jquery-ui.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/jquery.ui.nestedSortable.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/custom-js.js') ?>"></script>

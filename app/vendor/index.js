@@ -1,20 +1,12 @@
 /**
+ * Copyright © 2016 COL Public Company Limited. All Rights Reserved.
+ */
+'use strict';
+/**
  * Third party packages
  *
  * @version 1.0.0
  * @author ahancer
- */
-'use strict';
-/**
- * 
- * Global variable
- * 
- */
-global._ = require('lodash');
-/**
- *
- * Third party packages
- * 
  */
 require('angular');
 require('angular-animate');

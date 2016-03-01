@@ -1,17 +1,26 @@
 /**
- * Handles controller functionality shared in every pages 
+ * Copyright © 2016 COL Public Company Limited. All Rights Reserved.
+ */
+'use strict';
+/**
+ * Handles functionalities exposed to every pages 
  *
  * @version 1.0.0
  * @author ahancer
- * @copyright Copyright © 2016 COL Public Company Limited. All Rights Reserved.
  */
-'use strict';
 angular.module('colsp.core')
-	.controller('RootCtrl', function ($rootScope) {
-		/**
-		 * Global angular lodash
-		 */
+	.controller('RootCtrl', function ($rootScope, route) {
+		//Global lodash
 		$rootScope._ = _;
+		/**
+		 * Handle route rendering
+		 */
+		$rootScope.view = route();
+		$rootScope.w
+		/**
+		 * 
+		 */
+
 		/**
 		 * Prevent dragging image from triggering browser default behavior
 		 */
@@ -23,7 +32,4 @@ angular.module('colsp.core')
 		  e = e || event;
 		  e.preventDefault();
 		}, false);
-		/**
-		 * 
-		 */
 	});

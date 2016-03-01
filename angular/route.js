@@ -93,7 +93,6 @@ var seller = {
 		'User Roles': '/roles'
 	}
 };
-
 var admin = {
 	'Products|fa-tag': {
 		'View All Products': '/admin/products',
@@ -121,7 +120,6 @@ var admin = {
 		'Newsletters': '/admin/newsletters'
 	}
 };
-
 module.exports = {
   seller: generateRouteArray(seller),
   admin: generateRouteArray(admin)

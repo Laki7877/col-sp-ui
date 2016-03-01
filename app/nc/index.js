@@ -1,3 +1,7 @@
+/**
+ * Copyright © 2016 COL Public Company Limited. All Rights Reserved.
+ */
+'use strict';
 var angular = require('angular');
 
 require('angular-ui-bootstrap');
