@@ -14119,17 +14119,17 @@ form h6 {
 /* line 41, ../../../assets/_seller_page.sass */
 .onboarding_content .home_task .image-thumbs-img-wrapper {
   display: inline-flex;
-  padding-left: 22px;
+  padding-left: 17px;
 }
 /* line 44, ../../../assets/_seller_page.sass */
 .onboarding_content .home_task .home_task_text {
-  padding: 11px 22px;
+  padding: 11px 17px;
   display: inline-block;
 }
 /* line 47, ../../../assets/_seller_page.sass */
 .onboarding_content .home_task .home_task_button {
   float: right;
-  padding: 17px 10px;
+  padding: 17px 17px;
 }
 /* line 51, ../../../assets/_seller_page.sass */
 .onboarding_content .home_task .home_task_button .btn-width-xxl {
@@ -14264,111 +14264,106 @@ form h6 {
 /* line 158, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field div:last-child {
   line-height: 40px;
-  padding-top: 5px;
 }
-/* line 163, ../../../assets/_seller_page.sass */
+/* line 162, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field .row_container > div:nth-child(2) {
   float: none;
   display: inline;
   padding-left: 10px;
 }
-/* line 168, ../../../assets/_seller_page.sass */
+/* line 167, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field .column-text-ellipsis {
   padding-left: 50px;
   position: absolute;
   top: 0;
 }
-/* line 173, ../../../assets/_seller_page.sass */
+/* line 172, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container:first-child {
   padding-top: 0;
 }
-/* line 176, ../../../assets/_seller_page.sass */
+/* line 175, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container:last-child {
   border: none;
   padding-top: 0;
   padding-bottom: 0;
 }
-/* line 181, ../../../assets/_seller_page.sass */
+/* line 180, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container:last-child.small_field {
   padding-top: 10px;
 }
-/* line 184, ../../../assets/_seller_page.sass */
-#dashboard_page .group_container:last-child.top_selling_field:last-child {
-  padding-top: 5px;
-}
-/* line 187, ../../../assets/_seller_page.sass */
+/* line 183, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_header {
   margin-bottom: 15px;
 }
-/* line 190, ../../../assets/_seller_page.sass */
+/* line 186, ../../../assets/_seller_page.sass */
 #dashboard_page .width_100 {
   width: 100px;
 }
-/* line 193, ../../../assets/_seller_page.sass */
+/* line 189, ../../../assets/_seller_page.sass */
 #dashboard_page .width_150 {
   width: 150px;
 }
-/* line 196, ../../../assets/_seller_page.sass */
+/* line 192, ../../../assets/_seller_page.sass */
 #dashboard_page .table {
   margin-bottom: 0;
 }
-/* line 200, ../../../assets/_seller_page.sass */
+/* line 196, ../../../assets/_seller_page.sass */
 #dashboard_page .table_dashboard td {
   padding: 15px 0 15px 0;
   border-top: 0;
   border-bottom: 1px solid #BCC7D5;
 }
-/* line 205, ../../../assets/_seller_page.sass */
+/* line 201, ../../../assets/_seller_page.sass */
 #dashboard_page .table_dashboard td.column-text-ellipsis {
   max-width: 0;
 }
-/* line 209, ../../../assets/_seller_page.sass */
+/* line 205, ../../../assets/_seller_page.sass */
 #dashboard_page .table_dashboard tr:last-child td {
   border-bottom: 0;
   padding-bottom: 0;
 }
-/* line 214, ../../../assets/_seller_page.sass */
+/* line 210, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:first-child {
   width: 100px;
 }
-/* line 217, ../../../assets/_seller_page.sass */
+/* line 213, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:nth-child(2) {
   width: 120px;
 }
-/* line 220, ../../../assets/_seller_page.sass */
+/* line 216, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:nth-child(3) {
   width: 120px;
 }
-/* line 223, ../../../assets/_seller_page.sass */
+/* line 219, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:last-child {
   padding-left: 30px;
   width: 56px;
 }
-/* line 228, ../../../assets/_seller_page.sass */
+/* line 224, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:first-child {
   width: 100px;
 }
-/* line 231, ../../../assets/_seller_page.sass */
+/* line 227, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:nth-child(2) {
   width: 120px;
 }
-/* line 235, ../../../assets/_seller_page.sass */
+/* line 231, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:last-child {
   padding-left: 30px;
   width: 80px;
 }
-/* line 240, ../../../assets/_seller_page.sass */
+/* line 236, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter .newsletter_date {
   font-size: 12px;
   margin-top: 5px;
   color: #7B7F8F;
 }
-/* line 244, ../../../assets/_seller_page.sass */
+/* line 240, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter td:last-child {
   padding-left: 30px;
   width: 80px;
 }
-/* line 249, ../../../assets/_seller_page.sass */
+/* line 245, ../../../assets/_seller_page.sass */
 #dashboard_page .account_health .group_container:last-child {
   padding: 10px 0px 0px 0px;
 }

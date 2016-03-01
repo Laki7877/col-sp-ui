@@ -36,7 +36,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
 
       <? $this->insert('components/forms/seller_task',
         ["field_header" => "Decorate your store",
-         "field_text" => "Make your store unique by adding banner",
+         "field_text" => "Add at least one banner to make your store unique",
          "button_text" => "Set Appearance",
          "image_name" => "icon-onboard-decorate"]) ?>
 

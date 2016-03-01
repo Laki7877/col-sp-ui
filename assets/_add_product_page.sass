@@ -90,14 +90,14 @@
 
 .variation-table
 	$table-column-padding: $table-cell-padding * 2
-	width: 940px - 60px - 2px // - 2px for border, -60px for form padding
+	width: 940px - 60px - 2px
 
 	.column-sku, .column-price, .column-sale-price, .column-inventory, .column-pid
-		width: 90px + $table-column-padding // + 16px for table's column padding
+		width: 90px + $table-column-padding
 	.column-detail
-		width: $button-width-xl + $table-column-padding // + 16px for table's column padding
+		width: $button-width-xl + $table-column-padding
 	.column-visibility
-		width: $button-width-default + $table-column-padding // + 16px for table's column padding
+		width: $button-width-default + $table-column-padding
 
 .modal-size-warning
 	width: 400px
@@ -107,7 +107,7 @@
 
 	&.no-margin
 		margin-top: 0
-	
+
 	.confirmation-modal-text
 		@extend .clearfix
 		@include make-xs-column(12)
