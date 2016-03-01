@@ -48,13 +48,84 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
 .run(template)
 
 //App init
-/* Moved to root.js */
+.run(['$rootScope', 'storage', '$window', '$location', 'Credential', function($rootScope, storage, $window, $location, Credential) {
 
 
-//Configuration
-.value('config', config)
+    //Create global logout function
+    $rootScope.logout = function() {
+      if ($rootScope.Imposter) {
+        return Credential.logoutAs().then(function(R) {
+          //return to normal flow
+          if (R.User.IsAdmin) {
+            $window.location.href = "/admin";
+          } else {
+            $window.location.href = "/products";
+          }
+        }, function() {
+          alert("Fetal error while logging out.");
+        });
+      }
+
+      Credential.logout();
+      $window.location.href = "/login"
+    };
+
+
+    //Create generic form validator functions
+    //This is now inside ncTemplate
+    $rootScope.isInvalid = function(form) {
+      if (angular.isDefined(form) &&
+        angular.isDefined(form.$invalid) &&
+        angular.isDefined(form.$dirty)) {
+        return form.$invalid && (form.$dirty || form.$$parentForm.$submitted);
+      }
+      return false;
+    };
+
+
+    //Prevent image dragdrop on other elements
+    $window.addEventListener("dragover", function(e) {
+      e = e || event;
+      e.preventDefault();
+    }, false);
+    $window.addEventListener("drop", function(e) {
+      e = e || event;
+      e.preventDefault();
+    }, false);
+
+    //Match route with
+    $rootScope.isUrl = function(url) {
+      if (url.length > 0) {
+        var path = $window.location.pathname;
+        if (path == url) {
+          return true;
+        } else if (path.startsWith(url) && path.charAt(url.length) != '/') {
+          return false;
+        } else {
+          return path.startsWith(url);
+        }
+      } else {
+        return false;
+      }
+    };
+
+    $rootScope.activeParentUrl = function(url, sub) {
+      return {
+        'forced-active': $rootScope.isUrl(url)
+      };
+    };
+
+    //For active class url
+    $rootScope.activeUrl = function(url) {
+      return {
+        'active': $window.location.pathname == url
+      };
+    };
+  }])
+  //Configuration
+  .value('config', config)
 .value('route', route)
-.value('$templateOptionsCache', bulk['template-options'])
+  .value('$templateOptionsCache', bulk['template-options'])
 
 //Helpers
 .factory('common', helpers.common)
@@ -97,6 +168,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
   .factory('$exceptionHandler', services.exceptionHandler)
   .factory('KnownException', services.knownException)
   .factory('$productAdd', services.productAdd)
+    .factory('OnTopCreditService', services.OnTopCreditService)
+    .factory('OnTopCredit', services.OnTopCredit)
 
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)
@@ -169,5 +242,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
   .controller('AbstractListCtrl', controllers.abstractList)
   .controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
   .controller('AbstractAddCtrl', controllers.abstractAdd)
+
+    .controller('AdminOnTopCreditCtrl', controllers.adminOnTopCreditAdd)
+    .controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
 
 .controller('TestCtrl', controllers.test)
