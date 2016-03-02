@@ -37,6 +37,15 @@ ul.sidebar-nav {
       color:  $sidebar-font-color-active;
     }
   }
+  li.forced-active {
+    background: $sidebar-bg-color-active;
+    a {
+      color:  $sidebar-font-color-active;
+    }
+    i {
+      color:  $sidebar-font-color-active;
+    }
+  }
   li.active {
     background: $sidebar-bg-color-active;
     a {

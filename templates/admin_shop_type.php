@@ -3,12 +3,12 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminShoptypeCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <? $this->insert('components/page-title-with-one-button', ['text' => 'Shop Type','button' => 'Create New Shop Types', 'button_class' => 'btn-width-xxxl', 'link' => '/admin/shoptypes/add']) ?>
+    <? $this->insert('components/page-title-with-one-button', ['text' => 'Shop Type','button' => 'Add Shop Types', 'button_class' => 'btn-width-xxl', 'link' => '/admin/shoptypes/add']) ?>
     <div class="row search-section-wrapper">
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="ShopTypeId"></nc-bulk>
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Shop Type'"></nc-search>
     </div>
-    <nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="params.searchText.length > 0" >
+    <nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="isSearching()" >
       <table class="table table-curved">
         <thead>
           <tr class="table-head">
@@ -23,9 +23,9 @@
           <tr ng-repeat="row in list.data">
             <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
             <td nc-link="/admin/shoptypes/{{row.ShopTypeId}}">{{row.ShopTypeNameEn}}</td>
-            <td>{{row.ShopCount}}</td>
-            <td><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
-            <td>{{row.UpdatedDt | dateTh}}</td>
+            <td class="width_200">{{row.ShopCount}}</td>
+            <td class="width_100"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
+            <td class="width_100">{{row.UpdatedDt | dateTh}}</td>
           </tr>
         </tbody>
       </table>

@@ -5,6 +5,7 @@
  * 
  *  @version 1.0.0
  *  @author poonwu <poon.wuthi@gmail.com>
+ *          ssabpisa <ecegrid@gmail.com>
  */
 
 require __DIR__.'/../vendor/autoload.php';
@@ -76,7 +77,7 @@ class Route
 		foreach (self::$_routes as $route) 
 		{
 			$routePattern = $route['pattern'];
-			$len = preg_match("#^$routePattern$#", $uri, $out);
+			$len = preg_match("#^$routePattern(\?.*)?$#", $uri, $out);
 			
 			if ($len != false) 
 			{

@@ -8,16 +8,14 @@
 				<div class="row">
 					<div class="col-xs-12 margin-bottom-30">
 						<h2 class="font-size-20 text-centerx text-normal margin-bottom-20">Export Products</h2>
-
-					   <div>{{ checkBoxCount() }} new products to be imported</div>
-
-						<? if (!empty($updatedProductNum)): ?>
-							<div><?= $updatedProductNum ?> products to be updated</div>
-						<? endif ?>					
+						 <div ng-if="ProductList.length > 0">{{ ProductList.length }} products will be exported</div>
+						  <div ng-if="ProductList.length == 0">All products will be exported</div>
 					</div>
 					<div class="confirmation-action no-margin">
 						<button class="btn btn-white" data-dismiss="modal">Cancel</button>
-						<button type="button" class="btn btn-blue" data-toggle="modal" ng-click="confirmExportProducts()" data-target="#export-product-progressing">Continue</button>
+						<button type="button" class="btn btn-blue" data-toggle="modal"
+						ng-click="confirmExportProducts()"
+						data-target="#export-product-progressing">Continue</button>
 					</div> <!-- end .col-xs-12 -->
 				</div> <!-- end .row -->
 			</div> <!-- end .modal-body -->

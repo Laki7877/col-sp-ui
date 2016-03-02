@@ -20,7 +20,7 @@ module.exports = function($scope, $controller, AdminShoptypeService) {
 		var test = true;
 		var test2 = true;
 
-		for (var i = 0; i < 4; i++) {
+		for (var i = 0; i < 8; i++) {
 			test = test && $scope.formData.Permission[i].check;
 		}
 		for (var i = 4; i < 8; i++) {
@@ -33,7 +33,7 @@ module.exports = function($scope, $controller, AdminShoptypeService) {
 
 	$scope.checkAll = function(val, id) {
 		if(id == 'ShopTypePermission') {
-			for (var i = 0; i < 4; i++) {
+			for (var i = 0; i < 8; i++) {
 				$scope.formData.Permission[i].check = val;
 			}
 		}

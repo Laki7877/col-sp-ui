@@ -131,3 +131,8 @@ bower_components
 
 test/node_modules
 test/backstop_data/bitmaps_test
+
+angular/nc/template.js
+angular/template.js
+## include bundle because, test team doesnt want to grunt
+## public/assets/js/bundle.js

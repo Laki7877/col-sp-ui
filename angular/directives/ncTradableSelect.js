@@ -1,5 +1,5 @@
-var angular = require('angular');
-module.exports = ['$templateCache', '$filter', function($templateCache, $filter) {
+module.exports = function($templateCache, $filter) {
+	'ngInject';
 	return {
 		restrict: 'EA',
 		replace: true,
@@ -8,11 +8,11 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 			selectable: '=ncSelectOptions',
 			model: '=ncModel',
 			options: '=ncOptions',
-			test: '=ncTest'
+			test: '=?ncTest'
 		},
 		template: function(element, attrs) {
-			if(attrs.ncTemplate) {
-				return $templateCache.get(attrs.ncTemplate);
+			if(attrs.ncTradableSelect) {
+				return $templateCache.get(attrs.ncTradableSelect);
 			} else {
 				return $templateCache.get('common/input/tradable-select');
 			}
@@ -31,11 +31,12 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 				throw 'Please set required field "ncSelectOptions"';
 			}
 		},
-		controller: ['$scope', function($scope) {
+		controller: function($scope) {
+			'ngInject';
 			$scope.search = {};
 			$scope.activeRight = -1;
 			$scope.activeLeft = -1;
-			$scope.test = $scope.test || function() { return true; };
+			$scope.test = $scope.test || function() { return false; };
 			var findFn = function(element) {
 				if ($scope.options.map.value != null) {
 					if (element[$scope.options.map.value] === this[$scope.options.map.value]) {
@@ -54,14 +55,14 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 				} else {
 					for (var i = $scope.activeRight; i < $scope.model.length; i++) {
 						if(angular.isDefined($scope.model[$scope.activeRight]) && 
-							!$scope.test($scope.model[$scope.activeRight])) {
+							$scope.test($scope.model[$scope.activeRight])) {
 							continue;
 						}
 						return i;
 					}
 					for (var i = $scope.activeRight; i >= 0; i--) {
 						if(angular.isDefined($scope.model[$scope.activeRight]) &&
-							!$scope.test($scope.model[$scope.activeRight])) {
+							$scope.test($scope.model[$scope.activeRight])) {
 							continue;
 						}
 						return i;
@@ -103,7 +104,7 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 				} else {
 					if ($scope.activeRight < 0 || 
 						(angular.isDefined($scope.model[$scope.activeRight]) &&
-						!$scope.test($scope.model[$scope.activeRight]))) {
+						$scope.test($scope.model[$scope.activeRight]))) {
 						return;
 					}
 					$scope.model.splice($scope.activeRight, 1);
@@ -113,7 +114,7 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 			};
 			$scope.active = function(direction) {
 				if(direction) {
-					if($scope.activeRight >= 0 && angular.isDefined($scope.model[$scope.activeRight]) && $scope.test($scope.model[$scope.activeRight])) 
+					if($scope.activeRight >= 0 && angular.isDefined($scope.model[$scope.activeRight]) && !$scope.test($scope.model[$scope.activeRight])) 
 						return 'active';
 				} else {
 					if($scope.activeLeft >= 0 && !$scope.contain($scope.selectable[$scope.activeLeft])) 
@@ -126,7 +127,7 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 					$scope.activeRight = -1;
 				} else {
 					if(angular.isDefined($scope.model[$index]) &&
-						!$scope.test($scope.model[$index]))
+						$scope.test($scope.model[$index]))
 						return;
 					$scope.activeRight = $index;
 					$scope.activeLeft = -1;
@@ -135,6 +136,6 @@ module.exports = ['$templateCache', '$filter', function($templateCache, $filter)
 			$scope.contain = function(item) {
 				return $scope.model.findIndex(findFn, item) != -1;
 			};
-		}]
+		}
 	};
-}];
+};

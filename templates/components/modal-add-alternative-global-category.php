@@ -8,7 +8,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h3 class="modal-title"><?=$header?></h3>
       </div>
-      <div class="modal-body">
+      <div class="modal-body margin-top-20">
 
             <div class="category-section column-<?=$numberOfColumn?>">
                 <div class="category-section-border-box">
@@ -26,7 +26,6 @@
                         <a class="link-btn-plain" data-dismiss="modal">Cancel</a>
                         <button type="button" class="btn btn-blue btn-width-xl" ng-if="<?= $ng_model?>" data-dismiss="modal" ng-click="$emit('saveGlobalCat')" ng-class="{'disabled' : !<?= $ng_model?> }">Select</button>
                         <button type="button" class="btn btn-blue disabled btn-width-xl" ng-if="!<?= $ng_model?>">Select</button>
-
                     </span>
                 </div>
             </div>

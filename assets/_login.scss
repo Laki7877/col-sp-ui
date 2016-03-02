@@ -1,3 +1,11 @@
+#wrapper-login {
+  position: relative;
+  display: block;
+  min-width: 1200px;
+  min-height: 100%;
+  background-color: $sidebar-color;
+}
+
 .login-page {
 
 	.logo-img-wrapper {
@@ -22,8 +30,7 @@
 	.btn-100 {
 		width:	100%;
 	}
-
-	.login-loading{
-		margin-left: 5px;
-	}
+}
+.login-loading{
+	margin-right: 5px;
 }

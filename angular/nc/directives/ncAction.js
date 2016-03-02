@@ -15,9 +15,12 @@ angular.module('nc')
 							animation: true,
 							size: 'size-warning',
 							templateUrl: 'common/ncActionModal',
-							controller: function($scope, $uibModalInstance, options) {
+							controller: function($scope, $uibModalInstance, options, $interpolate) {
 								$scope.title = options.title;
-								$scope.message = options.message;
+								$scope.message = $interpolate(options.message)(scope);
+								$scope.btnNo = options.btnNo || 'Cancel';
+								$scope.btnYes = options.btnYes || 'Confirm';
+								$scope.btnClass = options.btnClass || 'btn-blue';
 								$scope.yes = function() {
 									$uibModalInstance.close();
 								};
@@ -29,13 +32,16 @@ angular.module('nc')
 								options: function() {
 									return {
 										title: action.confirmation.title,
-										message: action.confirmation.message
+										message: action.confirmation.message,
+										btnNo: action.confirmation.btnCancel,
+										btnYes: action.confirmation.btnConfirm,
+										btnClass: action.confirmation.btnClass
 									}
 								}
 							}
 						});
 
-						//Modal 
+						//Modal
 						modal.result.then(function() {
 							action.fn(scope.model);
 						});
@@ -45,30 +51,4 @@ angular.module('nc')
 				};
 			}
 		}
-	})
-	.directive('ncPopoverAny', function($document, $window) {
-		$window._globalPopoverAny = null;
-		return {
-			restrict: 'A',
-			link: function(scope, element, attrs) {
-				scope.isOpen = false;
-				element.on('click', function(e) {
-					if(scope.isOpen) {
-						element.get(0).dispatchEvent(new Event('clickanyend'));
-						scope.isOpen = false;
-						$window._globalPopoverAny = null;
-					} else {
-						element.get(0).dispatchEvent(new Event('clickanystart'));
-						scope.isOpen = true;
-						if($window._globalPopoverAny != null) 
-							$window._globalPopoverAny.get(0).dispatchEvent(new Event('clickanyend'));
-						$window._globalPopoverAny = element;
-						e.stopPropagation();
-					}
-				});
-				$document.on('click', function() {
-					element.get(0).dispatchEvent(new Event('clickanyend'));
-				});
-			}
-		};
 	});

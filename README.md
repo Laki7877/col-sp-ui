@@ -1,26 +1,99 @@
 [![Gitter](https://badges.gitter.im/Laki7877/col-sp-ui.svg)](https://gitter.im/Laki7877/col-sp-ui?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-# Seller Portal (Super Bleeding Edge)
-Uses PHP for routing, and rendering (non-SPA)
-However, minimally uses angularJS for data binding and controllers.
+# Central Online Seller Portal 
+Seller portal web application for Central Online.
 
-## Development Requirement
- * ruby 2.1+
- * php 5.5+
- * composer
- * npm
- * bower
- * *nix OS
+## Pre-prerequisites
+    - Ruby (and gem)
+    - NodeJS (and npm)
+    - Git
+    - PHP
 
+## Installing prerequisites (Windows)
+*Caution:* Make sure `git`, `ruby`, `gem`, `php` are included in `$PATH`
+   
+    gem install compass
+    npm install -g bower
+    npm install -g grunt-cli
+    npm install
+    bower install
+    
+## Installing prerequisites (OS X / Linux)
 
-## How to get html
- 1. open this directory in terminal
- 2. start server by run command `./server.sh`
- 3. open web and go to url `http://localhost:5000/index.html` (see html file in `public` directory)
+    sudo gem install compass
+    sudo npm install -g bower
+    sudo npm install -g grunt-cli
+    npm install
+    bower install
+    
+## Installing prerequisites (OS X El Capitan)
 
+    sudo gem install -n /usr/local/bin compass
+    sudo npm install -g bower
+    sudo npm install -g grunt-cli
+    sudo npm install
+    sudo bower install
+    
+## Compiling and running
+    
+    compass compile
+    npm buildAll
+    npm serve
 
-## Current pages
- * index.html
- * add_product.html
+## ncPlugin Design Document
 
-## Angular controllers
- * ProductListCtrl 
+* Plugin should be declared in angular module format. One file per one plugin module (not necessarily one directive)
+
+``` javascript
+angular.module('nc')
+  .directive('ncTestPlugin', function() {
+    return {
+      restrict: 'E',
+      link: function(scope) {
+        //Main ncTestPlugin link function
+      }
+    };
+  }
+  .directive('ncTestChildPlugin', function() {
+    return {
+      restrict: 'EA',
+      require: '^ncTestPlugin',
+      link: function(scope, elem, attrs, parentCtrl) {
+        //Main ncChild link function
+      }
+    }
+  });
+```
+
+* Plugin's isolate scope argument should precede by directive name except for `ncModel`.
+
+``` javascript
+angular.module('nc')
+  .directive('ncTestPlugin', function() {
+    return {
+      restrict: 'E',
+      scope: {
+        options: '=ncTestPluginOptions'
+      }
+    }
+  });
+```
+
+* Plugin's provider should be its own name precede by `$` character.
+
+``` javascript
+angular.module('nc')
+  .provider('$ncTestPlugin', function() {
+    this.testOptions = {};
+    this.$get = function() {
+      return this;
+    }
+  })
+  .directive('ncTestPlugin', function($ncTestPlugin) {
+    return {
+      restrict: 'E',
+      link: function(scope) {
+        scope.options = $ncTestPlugin.testOptions;
+      }
+    }
+  });
+```

@@ -1,27 +1,42 @@
-module.exports = ['$scope', 'Alert', 'Credential', '$window', 'storage', function($scope, Alert, Credential, $window, storage) {
-	$scope.uform = {}
-	$scope.alert = new Alert();
-	$scope.doLogin = function(){
-		if(!$scope.loginForm.$valid) return;
-		$scope.loading = true;
-		var user = $scope.uform.user; //$scope.loginForm.user.$viewValue;
-		var pass = $scope.uform.pass; //$scope.loginForm.pass.$viewValue;
-		Credential.login(user, pass).then(function(r){
-			$scope.alert.close();
-			$scope.loading = false;
+  module.exports = function ($scope, Credential, $window, NcAlert, $uibModal, storage, config) {
+    'ngInject';
+  $scope.uform = {};
+  $scope.loginForm = {};
+  $scope.events = {};
+  $scope.alert = new NcAlert();
+  var redir = storage.get('redirect');
+  var profile = storage.getCurrentUserProfile();
+  if (profile && profile.User.IsAdmin) {
+    $window.location.href = Credential.getRedirPath(profile)
+  }
+  if(redir && redir != '/') {
+    $scope.alert.open(false, 'Your session has timed out', '');
+    storage.remove('redirect');
+  }
 
-			var redir = storage.get('redirect');
-			if(!redir){
-				redir = "/";
-			}else{
-				storage.remove('redirect');
-			}
-
-			$window.location.href = redir;
-		}, function(){
-			storage.clear();
-			$scope.alert.error('Incorrect user name or passsword');
-			$scope.loading = false;
-		});
-	}
-}];
+  $scope.doLogin = function () {
+    if ($scope.loginForm.$invalid) {
+      if(_.isEmpty($scope.events)) {
+        $scope.events.user = false;
+        $scope.events.pass = false;
+      }
+      return;
+    }
+    $scope.loading = true;
+    $scope.error = false;
+    var user = $scope.uform.user;
+    var pass = $scope.uform.pass;
+    Credential.login(user, pass).then(function (r) {
+      $scope.loading = false;
+      if (!redir) {
+        redir = Credential.getRedirPath(r);
+      }
+      $window.location.href = redir;
+    }, function (err) {
+      storage.clear();
+      $scope.error = true;
+      $scope.loading = false;
+      $scope.loginForm.$setPristine();
+    });
+  }
+};

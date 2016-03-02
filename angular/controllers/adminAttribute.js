@@ -8,14 +8,15 @@ module.exports = function($scope, $controller, AttributeService, config) {
 			item: 'Attribute',
 			order: 'UpdatedDt',
 			id: 'AttributeId',
-			actions: ['View', 'Duplicate', 'Delete'],
+			actions: ['View', 'Delete'],
 			bulks: ['Delete'],
 			filters: [
 				{ name: "All", value: 'All'},
 				{ name: "Free Text", value: 'FreeText'},
 				{ name: "Dropdown", value: 'Dropdown'},
-				{ name: "Has Variation", value: 'HasVariation'},
-				{ name: "No Variation", value: 'NoVariation'}
+				{ name: "HTML Box", value: 'HTMLBox'},
+				{ name: "Allow Variation", value: 'HasVariation'},
+				{ name: "Do Not Allow Variation", value: 'NoVariation'}
 			]
 		}
 	});

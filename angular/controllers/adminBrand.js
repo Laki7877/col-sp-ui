@@ -1,5 +1,5 @@
 module.exports = function($scope, $controller, BrandService, config) {
-	'ngInject';	
+	'ngInject';
 	//Inherit from parent
 	$controller('AbstractListCtrl', {
 		$scope: $scope,

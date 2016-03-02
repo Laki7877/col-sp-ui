@@ -17,13 +17,19 @@ module.exports = function(common, config) {
 			AttributeSetDescriptionEn: '',
 			AttributeSetDescriptionTh: '',
 			Visibility: true,
-			Tags: []
+			Tags: [],
+			Categories: 'None',
 		};
 	};
 	service.deserialize = function(data) {
 		var processed = angular.merge(service.generate(), data);
 		processed.Tags = [];
-
+		processed.Categories = _.join(_.map(data.Category, function(e) {
+			return e.NameEn + ' (' + e.CategoryAbbreviation + ')';
+		}), ', ');
+		if(processed.Categories.length == 0) {
+			processed.Categories = 'None'; 
+		}
 		if(angular.isUndefined(processed.Attributes)) {
 			processed.Attributes = [];
 		}
@@ -34,7 +40,7 @@ module.exports = function(common, config) {
 			attr.Required = attr.Required || false;
 			attr.Filterable = attr.Filterable || false;
 		});
-		return processed;
+		return _.omit(processed, ['Category']);
 	};
 	service.serialize = function(data) {
 		var processed = angular.copy(data);

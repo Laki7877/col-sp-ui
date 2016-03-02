@@ -3,7 +3,7 @@
 <?php $this->start('page-body') ?>
 	<div ng-controller="ProductAddSelectCategoryCtrl" class="global-category-page">
 		<? $this->insert('components/page-title-breadcrumb-border', ['text' => 'Products/Add Product', 'urls' => ['/products']]) ?>
-		
+
 		<div ng-show="loading">
 			<img src="/assets/img/loader.gif" width="40"> <small>Loading Global Categories..</small>
 		</div>
@@ -19,7 +19,7 @@
 			<div class="category-section column-4">
 				<div class="category-section-border-box">
 					<div class="category-header">
-						<span class="required">Global Category</span>
+						<span>Global Category</span>
 					</div>
 					<div class="category-content no-padding">
 						<ul ng-repeat="column in columns track by $index" ng-class="{'empty-column': column.list.length <= 0 }" class="content-column">

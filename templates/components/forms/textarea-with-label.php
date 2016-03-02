@@ -6,10 +6,10 @@ if (isset($size)) $inputSize = "width-field-$size";
 	<div class="width-label"><label class="control-label"><?= $label ?></label></div>
 	<div class="<?= $inputSize ?>">
 		<textarea class="form-control"
-			
+			rows="<?=$rows?>"
 			<?php if(isset($ng_model)): ?>
 			ng-model="<?=$ng_model?>"
-
+            placeholder="<?=$placeholder?>"
 			<?php endif; ?>
 		></textarea>
 	</div>

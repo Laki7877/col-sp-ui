@@ -15,6 +15,8 @@ module.exports = [function () {
     };
 
     service.put = function(key, obj, flag) {
+        //Always use local storage
+        flag = true;
         sessionStorage.setItem('central.seller.portal.shared.' + key, obj);
         if (flag) {
             localStorage.setItem('central.seller.portal.shared.' + key, obj);

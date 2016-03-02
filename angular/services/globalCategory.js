@@ -1,7 +1,7 @@
-module.exports = ['common', '$q', 'util', function(common, $q, util) {
-	'use strict';
-	var service = {};
-
+module.exports = function(common, $q, util) {
+	'ngInject';
+	var service = common.Rest('/GlobalCategories');
+	
 	//Generate empty template
 	service.generate = function(extend) {
 		return angular.extend({
@@ -9,17 +9,11 @@ module.exports = ['common', '$q', 'util', function(common, $q, util) {
 			NameTh: "",
 			UrlKeyEn: "",
 			Commission: 0,
-			Status: "AT",
 			Visibility: true,
-			ProductCount: 0,
-			AttributeSets: [],
-			nodes: []
+			AttributeSets: []
 		}, extend);
-	}
+	};
 
-	/**
-	 * Get all global cat
-	 **/
 	service.getAll = function() {
 		return common.makeRequest({
 			method: 'GET',
@@ -37,6 +31,7 @@ module.exports = ['common', '$q', 'util', function(common, $q, util) {
 			data: data
 		});
 	};
+
 	service.getAllForSeller2 = function(treeArray) {
 		var array = [];
 		angular.forEach(treeArray, function(item) {
@@ -68,4 +63,4 @@ module.exports = ['common', '$q', 'util', function(common, $q, util) {
 		return array;
 	};
 	return service;
-}];
+};

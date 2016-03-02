@@ -1,4 +1,4 @@
-module.exports = function($scope, Attribute, util) {
+module.exports = function($scope, Attribute, util, GlobalCategoryService, Category) {
 		$scope.filterOptions = [
 			{ name: "All", value: 'All'},
 			{ name: "Free Text", value: 'FreeText'},
@@ -6,6 +6,13 @@ module.exports = function($scope, Attribute, util) {
 			{ name: "Has Variation", value: 'HasVariation'},
 			{ name: "No Variation", value: 'NoVariation'}
 		];
+		$scope.tags = [];
+		$scope.eval = function(test) {
+			return {name: test};
+		}
+		$scope.$watchCollection('some', function() {
+			console.log($scope.some);
+		});
 		$scope.dataTypeOptions = [
 			{
 				name: 'Free Text',
@@ -15,7 +22,7 @@ module.exports = function($scope, Attribute, util) {
 				name: 'Dropdown',
 				value: 'LT'
 			},
-			{
+		{
 				name: 'HTML Box',
 				value: 'HB'
 			}
@@ -65,4 +72,14 @@ module.exports = function($scope, Attribute, util) {
 		};
 		$scope.reload();
 		$scope.$watch('params', $scope.reload, true); 	
+
+		$scope.treeSelectTree = [];
+		$scope.treeSelectModel = [];
+
+		GlobalCategoryService.list()
+			.then(function(data) {
+				console.log(data);
+				$scope.data = data;
+				$scope.treeSelectTree = Category.transformNestedSetToUITree(data);
+			});
 };

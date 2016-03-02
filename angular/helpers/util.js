@@ -1,33 +1,32 @@
 var angular = require('angular');
 
-module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$interpolate', function (storage, config, common, $window, $rootScope, $interpolate) {
+module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$interpolate', 'KnownException', function (storage, config, common, $window, $rootScope, $interpolate, KnownException) {
     'use strict';
     var service = {};
 
     service.variant = {};
 
-    service.variant.hash = function(a,b){
-        if(!("ValueEn" in a) || a.ValueEn) return "[API Error]";
-        if(!('ValueEn' in b) || b.ValueEn) return  (a.AttributeId + "-" + a.ValueEn.trim() + "-" + "null" + "-" );
-	    return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + b.AttributeId + "-" + b.ValueEn.trim());
+    service.variant.toString = function (a, b) {
+        var left = null;
+        var right = null;
+        left = (a.ValueEn || a.AttributeValueEn || a.AttributeValues.length && a.AttributeValues[0].AttributeValueEn || '');
+        right = (b.ValueEn || b.AttributeValueEn || b.AttributeValues.length > 0 && b.AttributeValues[0].AttributeValueEn || '');
+        console.log(a,b, 'toString variant');
+        return left + (right ? ", " + right : "");
     };
 
-    service.variant.toString = function(a,b){
-        if(!("ValueEn" in a) || !a.ValueEn) return "[API Error]";
-        if(!('ValueEn' in b) || !b.ValueEn) return a.ValueEn.trim();
-	    return (a.ValueEn.trim() + (b.ValueEn == '' ? '' : (", " + b.ValueEn.trim())));	
+    service.uniqueSet = function (a, prop) {
+
+        return _.uniqWith(a, function(x,y){
+            if(x == y) return true;
+            if(prop && _.get(x, prop) && _.get(y, prop)){
+                return _.get(x, prop) == _.get(y, prop);
+            }
+            return false;
+        });
     };
 
-    service.uniqueSet = function(a, prop){
-        var seen = new Set();
-        return a.filter(function(x) {
-            var y = x;
-            if(prop) y = x[prop];
-            return !seen.has(y) && seen.add(y);
-        })
-    };
-
-    service.nullOrUndefined = function(a){
+    service.nullOrUndefined = function (a) {
         return angular.isUndefined(a) || a === null;
     };
 
@@ -39,24 +38,40 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
         var sessionToken = storage.getSessionToken();
         return !!(profile && sessionToken);
     };
-    service.isFreeTextDataType = function(dataType){
-	return (dataType == "ST");
+
+    var DataTypeDropDown = {};
+    if (!('DROPDOWN' in config)) throw new KnownException("Config is malformed. Expect 'DROPDOWN'");
+    if (!('DATA_TYPE_DROPDOWN' in config.DROPDOWN)) throw new KnownException("Config is malformed. Expect 'DROPDOWN.DATA_TYPE_DROPDOWN'");
+    config.DROPDOWN.DATA_TYPE_DROPDOWN.forEach(function (dt) {
+        DataTypeDropDown[dt.value] = dt.name;
+    });
+
+
+    service.isFreeTextDataType = function (dataType) {
+        if (!('ST' in DataTypeDropDown)) throw new KnownException("FreeText in no longer 'ST' in config");
+        return (dataType == "ST");
     };
 
-    service.isListDataType = function(dataType){
-	return (dataType == "LT");
+    service.isListDataType = function (dataType) {
+        if (!('LT' in DataTypeDropDown)) throw new KnownException("List in no longer 'LT' in config");
+        return (dataType == "LT");
     };
 
-    service.tableSortClass = function($scope) {
-        return function(id, flag) {
+    service.isHtmlDataType = function (dataType) {
+        if (!('HB' in DataTypeDropDown)) throw new KnownException("HTML Box in no longer 'HB' in config");
+        return (dataType == 'HB');
+    }
 
-            if(flag) {
-                return $scope.tableParams.orderBy == id ? 'active-underline' : '';
+    service.tableSortClass = function ($scope) {
+        return function (id, flag) {
+
+            if (flag) {
+                return $scope.tableParams.orderBy == id ? ['active-underline'] : [''];
             }
 
             var classes = ['fa'];
-            if($scope.tableParams.orderBy == id) {
-                if($scope.tableParams.direction == 'desc') {
+            if ($scope.tableParams.orderBy == id) {
+                if ($scope.tableParams.direction == 'desc') {
                     classes.push('fa-caret-down');
                 } else {
                     classes.push('fa-caret-up');
@@ -68,58 +83,37 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
             return classes;
         }
     };
-    service.getCheckedArray = function(arr) {
-        return arr.filter(function(elem) {
+    service.getCheckedArray = function (arr) {
+        return arr.filter(function (elem) {
             return angular.isDefined(elem.checked) && elem.checked;
         });
     };
 
     //Goto 404
-    service.page404 = function() {
-        $window.location.href="/error";
+    service.page404 = function () {
+        $window.location.href = "/error";
     };
-
-    //block before leaving
-    service.warningOnLeave = function(scope, form) {
+    service.warningOnLeave = function (fn) {
         $window.onbeforeunload = function () {
-            if(!scope[form].$dirty){
+            if (!fn()) {
                 //not dirty
                 return null;
             }
 
             var message = "Your changes will not be saved.",
-            e = e || window.event;
+                e = e || window.event;
             // For IE and Firefox
             if (e) {
-              e.returnValue = message;
+                e.returnValue = message;
             }
 
             // For Safari
             return message;
-        };  
-    };
-
-    service.warningOnLeaveFn = function(fn) {
-        $window.onbeforeunload = function () {
-            if(fn()){
-                //not dirty
-                return null;
-            }
-
-            var message = "Your changes will not be saved.",
-            e = e || window.event;
-            // For IE and Firefox
-            if (e) {
-              e.returnValue = message;
-            }
-
-            // For Safari
-            return message;
-        };  
+        };
     };
 
     //Convert ncTable params to our older params version
-    service.ncParams = function(param) {
+    service.ncParams = function (param) {
         return {
             orderBy: param._order,
             pageSize: param._limit,
@@ -130,187 +124,225 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     };
 
     //Generate Success message for add-<stuff> pages
-    service.saveAlertError = function() {
+    service.saveAlertError = function () {
         return config.DEFAULT_ERROR_MESSAGE;
     };
-    service.saveAlertSuccess = function(itemName, link) {
+    service.saveAlertSuccess = function (itemName, link) {
         return config.DEFAULT_SUCCESS_MESSAGE + ' View <a href="' + link + '">' + itemName + ' List</a>';
     };
 
+    service.bulkTemplate = function (actionName, restFn, id, item, confirmOpts) {
+        return function (scope) {
+             return {
+                name: actionName,
+                fail: function() {
+                    scope.alert.error('Unable to ' + actionName.toLowerCase() + '. Please select ' + item + ' for this action.');
+                },
+                fn: function (array, cb) {
+                    scope.alert.close();
+
+                    //Only pass ShopId
+                    var array = _.map(array, function (e) {
+                        return _.pick(e, [id]);
+                    });
+
+                    //On launch endpoint
+                    scope.onLoad();
+
+                    //generic bulk
+                    restFn(array)
+                        .then(function () {
+                            scope.alert.success(actionName + ' successful.');
+                            cb();
+                        }, function (err) {
+                            scope.alert.error(common.getError(err));
+                        })
+                        .finally(scope.reload);
+                },
+                confirmation: _.extend({
+                    title: 'Confirm to ' + actionName.toLowerCase(),
+                    message: 'Are you sure you want to '+ actionName.toLowerCase() + ' {{model.length}} items?'
+                }, confirmOpts || {})
+            };
+        };
+    };
+
     //Create bulk-action from template
-    service.bulkDelete = function(rest, id, item, alert, reload)  {
+    service.bulkDelete = function (rest, id, item, alert, reload, onload) {
         return {
             name: 'Delete',
-            fn: function(array, cb) {
+            fail: function() {
+                alert.error('Unable to delete. Please select ' + item + ' for this action.');
+            },
+            fn: function (array, cb) {
                 alert.close();
 
                 //Only pass ShopId
-                var array = _.map(array, function(e) { 
-                    return _.pick(e, [id]); 
+                var array = _.map(array, function (e) {
+                    return _.pick(e, [id]);
                 });
 
-                //Blank array?
-                if(array.length <= 0) {
-                    alert.error('Unable to delete. Please select ' + item + ' for this action.');
-                    return;
-                }
+                //On launch endpoint
+                (onload || _.noop)();
 
                 //Delete bulk
                 rest.delete(array)
-                    .then(function() {
+                    .then(function () {
                         alert.success('Delete successful.');
                         cb();
-                    }, function(err) {
+                    }, function (err) {
                         alert.error(common.getError(err));
                     })
                     .finally(reload);
             },
             confirmation: {
                 title: 'Confirm to delete',
-                message: 'Are you sure you want to delete {{model.length}} items?'
+                message: 'Are you sure you want to delete {{model.length}} items?',
+                btnConfirm: 'Delete',
+                btnClass: 'btn-red'
             }
         };
     };
 
-    service.bulkShow = function(rest, id, item, alert, reload) {
+    service.bulkShow = function (rest, id, item, alert, reload) {
         return {
             name: 'Show',
-            fn: function(array, cb) {
+            fail: function() {
+                alert.error('Unable to change visibility. Please select ' + item + ' for this action.');
+            },
+            fn: function (array, cb) {
                 alert.close();
 
                 //Only pass ShopId
-                var array = _.map(array, function(e) { 
-                    var i = _.pick(e, [id]); 
+                var array = _.map(array, function (e) {
+                    var i = _.pick(e, [id]);
                     i.Visibility = true;
                     return i;
                 });
 
-                //Blank array?
-                if(array.length <= 0) {
-                    alert.error('Unable to show. Please select ' + item + ' for this action.');
-                    return;
-                }
-
                 //Delete bulk
                 rest.visible(array)
-                    .then(function() {
+                    .then(function () {
                         alert.success('Changed successful.');
                         cb();
-                    }, function(err) {
+                    }, function (err) {
                         alert.error(common.getError(err));
                     })
                     .finally(reload);
             },
             confirmation: {
                 title: 'Confirm to show',
-                message: 'Are you sure you want to change visibility of {{model.length}} items?'
+                message: 'Are you sure you want to change visibility of {{model.length}} items?',
+                btnConfirm: 'Show'
             }
-        };  
+        };
     };
 
-    service.bulkHide = function(rest, id, item, alert, reload) {
+    service.bulkHide = function (rest, id, item, alert, reload) {
         return {
             name: 'Hide',
-            fn: function(array, cb) {
+            fail: function() {
+                alert.error('Unable to hide. Please select ' + item + ' for this action.');
+            },
+            fn: function (array, cb) {
                 alert.close();
 
                 //Only pass ShopId
-                var array = _.map(array, function(e) { 
-                    var i = _.pick(e, [id]); 
+                var array = _.map(array, function (e) {
+                    var i = _.pick(e, [id]);
                     i.Visibility = false;
                     return i;
                 });
 
-                //Blank array?
-                if(array.length <= 0) {
-                    alert.error('Unable to show. Please select ' + item + ' for this action.');
-                    return;
-                }
-
                 //Delete bulk
                 rest.visible(array)
-                    .then(function() {
+                    .then(function () {
                         alert.success('Changed successful.');
                         cb();
-                    }, function(err) {
+                    }, function (err) {
                         alert.error(common.getError(err));
                     })
                     .finally(reload);
             },
             confirmation: {
                 title: 'Confirm to hide',
-                message: 'Are you sure you want to change visibility of {{model.length}} items?'
-            }
-        };  
-    };
-
-    //Create action from template
-    service.actionView = function(uri, id) {
-        return {
-            name: 'View / Edit',
-            fn: function(item) {
-                $window.location.href= uri + '/' + item[id];
+                message: 'Are you sure you want to hide {{model.length}} items?',
+                btnConfirm: 'Hide',
+                btnClass: 'btn-red'
             }
         };
     };
 
     //Create action from template
-    service.actionDelete = function(rest, id, item, alert, reload, cb)  {
+    service.actionView = function (uri, id, name) {
+        return {
+            name: name || 'View / Edit',
+            fn: function (item) {
+                $window.location.href = uri + '/' + item[id];
+            }
+        };
+    };
+
+    //Create action from template
+    service.actionDelete = function (rest, id, item, alert, reload, cb) {
         return {
             name: 'Delete',
-            fn: function(obj) {
+            fn: function (obj) {
                 alert.close();
 
                 //Only pass id
-                var obj = _.pick(obj, [id]); 
-               
+                var obj = _.pick(obj, [id]);
+
 
                 //Delete bulk
                 rest.delete([obj])
-                    .then(function() {
+                    .then(function () {
                         alert.success('Delete successful.');
                         cb(obj, id);
-                    }, function(err) {
+                    }, function (err) {
                         alert.error(common.getError(err));
                     })
                     .finally(reload);
             },
             confirmation: {
                 title: 'Delete',
-                message: 'Are you sure you want to delete selected ' + item + '?'
+                message: 'Are you sure you want to delete selected ' + item + '?',
+                btnConfirm: 'Delete',
+                btnClass: 'btn-red'
             }
         };
     };
     //Create action from template
-    service.actionDuplicate = function(rest, id, item, alert, reload)  {
+    service.actionDuplicate = function (rest, id, item, alert, reload) {
         return {
             name: 'Duplicate',
-            fn: function(obj) {
+            fn: function (obj) {
                 alert.close();
 
                 //Delete bulk
                 rest.duplicate(obj[id])
-                    .then(function() {
+                    .then(function () {
                         alert.success('Duplicate successful.');
-                    }, function(err) {
+                    }, function (err) {
                         alert.error(common.getError(err));
                     })
                     .finally(reload);
             },
             confirmation: {
                 title: 'Duplicate',
-                message: 'Are you sure you want to duplicate selected ' + item + '?'
+                message: 'Are you sure you want to duplicate selected ' + item + '?',
+                btnConfirm: 'Duplicate'
             }
         };
     };
 
-    service.eyeToggle = function(rest, id, alert, reload) {
-        return function(item) {
+    service.eyeToggle = function (rest, id, alert, reload) {
+        return function (item) {
             item.Visibility = !item.Visibility;
             rest.visible([_.pick(item, [id, 'Visibility'])])
-                .then(function() {
+                .then(function () {
                     //success
-                }, function(err) {
+                }, function (err) {
                     alert.error(common.getError(err));
                 })
                 .finally(reload);
@@ -318,8 +350,8 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     };
 
     //Map value to dropdown name&value
-    service.getDropdownItem = function(array, value) {
-        return array.find(function(element) {
+    service.getDropdownItem = function (array, value) {
+        return array.find(function (element) {
             if (element.value === value) {
                 return true;
             }
@@ -327,12 +359,12 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
         });
     };
 
-    service.getTitle = function(id, item) {
+    service.getTitle = function (id, item) {
         var scope = $rootScope.$new(true);
         var content = '';
         scope.content = item;
 
-        if(id > 0) {
+        if (id > 0) {
             content = $interpolate(config.TITLE.DETAIL)(scope);
         } else {
             content = $interpolate(config.TITLE.CREATE)(scope);
