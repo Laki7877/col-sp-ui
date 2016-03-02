@@ -1,7 +1,7 @@
 <?php $this->layout('layouts/page-with-sidebar', ['title' => 'Product - Import']) ?>
 
 <?php $this->start('page-body') ?>
-	<div class="local-category-page" ng-controller="ProductImportCtrl" ng-init="init(<?=$update?>)">
+	<div class="import-page" ng-controller="ProductImportCtrl" ng-init="init(<?=$update?>)">
 		<!-- MODAL -->
 		<div class="modal fade" tabindex="-1" role="dialog" id="modal-choose-template">
 		  <div class="modal-dialog modal-category-section column-4">

@@ -34,9 +34,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
                         <div role="tabpanel" class="tab-pane margin-top-20" id="category">
                             <? $this->insert('partials/add-product-category') ?>
                         </div>
-												<div role="tabpanel" class="tab-pane margin-top-20" id="more_option">
-														<? $this->insert('partials/add-product-more-option') ?>
-												</div>
+    					<div role="tabpanel" class="tab-pane margin-top-20" id="more_option">
+    							<? $this->insert('partials/add-product-more-option') ?>
+    					</div>
                         <div role="tabpanel" class="tab-pane margin-top-20" id="variation">
                             <? $this->insert('partials/add-product-variation') ?>
                         </div>

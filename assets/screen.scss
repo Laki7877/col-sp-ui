@@ -267,6 +267,17 @@ ng-transclude.has-error .form-control{
   }
 }
 
+.color-warning{
+	color: #8a6d3b;
+	line-height: 16px;
+}
+
+.import-page{
+	ol{
+		-webkit-padding-start: 15px;
+	}
+}
+
 @keyframes shake {
   0% {transform: translateX(0);}
   12.5% {transform: translateX(-6px) rotateY(-5deg)}

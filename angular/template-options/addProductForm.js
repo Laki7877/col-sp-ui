@@ -8,6 +8,11 @@ module.exports = {
             }
         }
     },
+    MasterVariant_DescriptionFull: {
+        'formGroupClass': 'margin-top-40',
+        'labelClass': 'required',
+        'inputSize': 'xxl'
+    },
     MasterVariant_ProductNameTh: {
         'labelClass': 'required',
         'error': {
@@ -44,7 +49,7 @@ module.exports = {
         }
     },
     MasterVariant_SalePrice: {
-      'labelClass': 'required',
+        'labelClass': 'required',
         'error': {
             'messages': {
                 'min': 'Sale price must be lower than the original price',
@@ -114,7 +119,7 @@ module.exports = {
         },
         'unit': 'Day'
     },
-    MasterVariant_Length: {
+    MasterVariant_Dimension: {
         'error': {
             'messages': {
                 'required': 'This is a required field',
@@ -124,9 +129,30 @@ module.exports = {
     },
     RelatedProducts: {
         'inputSize': 'xxl',
-         'error': {
+        'error': {
             'messages': {
                 'maxtagcount': 'Cannot exceed 10 related products'
+            }
+        }
+    },
+    Nothing: {
+
+    },
+    SEO_BoostingWeight: {
+        'error': {
+            'messages': {
+                'max': 'Only numbers from 1 to 10000 is allowed',
+                'min': 'Only numbers from 1 to 10000 is allowed',
+                'pattern': 'Only numbers from 1 to 10000 is allowed'
+            }
+        }
+    },
+    Remark: {
+        'inputSize': 'normal',
+        'formGroupClass': 'margin-top-30',
+        'error': {
+            'messages': {
+                'pattern': 'Special characters are not allowed'
             }
         }
     }
