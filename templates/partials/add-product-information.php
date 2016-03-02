@@ -128,7 +128,7 @@
                             <div nc-template="common/input/form-group-with-label" nc-label="Description (English)" 
                                 nc-template-options-path="addProductForm/MasterVariant_DescriptionFull" 
                                 nc-template-form="addProductForm.MasterVariant_DescriptionFullEn">
-                               <textarea ng-pattern="/^[^<>]+$/" 
+                               <textarea
                                ng-ckeditor="ckOptions"
                                class="form-control" maxlength="500" 
                                name="MasterVariant_DescriptionFullEn" ng-model="formData.MasterVariant.DescriptionFullEn" />
@@ -145,7 +145,7 @@
                             <div nc-template="common/input/form-group-with-label" nc-label="Description (ไทย)" 
                                 nc-template-options-path="addProductForm/MasterVariant_DescriptionFull" 
                                 nc-template-form="addProductForm.MasterVariant_DescriptionFullTh">
-                               <textarea ng-pattern="/^[^<>]+$/" 
+                               <textarea 
                                ng-ckeditor="ckOptions"
                                class="form-control" maxlength="500" 
                                name="MasterVariant_DescriptionFullTh" ng-model="formData.MasterVariant.DescriptionFullTh" />

@@ -354,6 +354,7 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
             } else if (Status == 'WA' && requiredMissing) {
                 $scope.alert.error("Unable to publish because you are missing required fields");
             } else {
+                console.warn($scope.addProductForm.$error)
                 $scope.alert.error("Unable to save. Please make sure all fields have no error.");
             }
             return;

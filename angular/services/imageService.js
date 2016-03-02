@@ -16,7 +16,8 @@ module.exports = function($q, $http, common, storage, config, FileUploader) {
       headers: {
         Authorization: 'Basic ' + accessToken
       },
-      queueLimit: 10,
+      queueLimit: 100,
+      removeAfterUpload : true,
       filters: [{
         name: 'imageFilter',
         fn: function(item /*{File|FileLikeObject}*/ , options) {
