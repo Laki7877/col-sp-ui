@@ -22,11 +22,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
           "button_text" => "Check Profile",
           "image_name" => "icon-onboard-setting"]) ?>
 
-      <? $this->insert('components/forms/seller_task',
-        ["field_header" => "Add your own category",
-         "field_text" => "Build categories that match your products",
-         "button_text" => "Add Category",
-         "image_name" => "icon-onboard-category"]) ?>
+      
 
       <? $this->insert('components/forms/seller_task',
         ["field_header" => "Add product",
