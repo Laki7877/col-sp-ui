@@ -1,0 +1,10 @@
+<div class="page-header" ng-class="{{css}}">
+    <h1 class="float-left page-header-title ah-breadcrumb">
+    	<a ng-repeat-start="t in title track by $index" ng-href="{{link[$index]}}" class="ah-breadcrumb-path" ng-class="['ah-breadcrumb-idx-' + $index]">{{t}}</a>
+    	<span ng-if="!($index == 0 && title.length == 1)" class="ah-breadcrumb-splitter"></span>
+    </h1>
+    <div class="page-actions float-right">
+    	<ng-transclude></ng-transclude>
+	</div>
+</div>
+

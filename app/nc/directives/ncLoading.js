@@ -5,7 +5,7 @@ angular.module('nc')
 			scope: {
 				message: '@ncLoading'
 			},
-			template: $templateCache.get('common/ncLoading'),
+			template: $templateCache.get('common/ncLoading.html'),
 			link: function(scope) {
 				scope.message = _.extend('Loading...', scope.message);
 			}
@@ -17,7 +17,7 @@ angular.module('nc')
 			scope: {
 				message: '@ncLoadingSmall'
 			},
-			template: $templateCache.get('common/ncLoadingSmall'),
+			template: $templateCache.get('common/ncLoadingSmall.html'),
 			link: function(scope) {
 				scope.message = _.extend('Loading...', scope.message);
 			}

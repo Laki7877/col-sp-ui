@@ -6,7 +6,7 @@ angular.module('nc')
 				model: '=ncModel',
 				options: '=ncActionFn'
 			},
-			template: $templateCache.get('common/ncAction'),
+			template: $templateCache.get('common/ncAction.html'),
 			link: function(scope) {
 				scope.options = _.defaults(scope.options, []);
 				scope.call = function(action) {
@@ -14,7 +14,7 @@ angular.module('nc')
 						var modal = $uibModal.open({
 							animation: true,
 							size: 'size-warning',
-							templateUrl: 'common/ncActionModal',
+							templateUrl: 'common/ncActionModal.html',
 							controller: function($scope, $uibModalInstance, options, $interpolate) {
 								$scope.title = options.title;
 								$scope.message = $interpolate(options.message)(scope);

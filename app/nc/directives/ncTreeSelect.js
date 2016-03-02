@@ -164,7 +164,7 @@ angular.module('nc')
 				title: '@ncTreeSelectTitle',
 				options: '=?ncTreeSelectOptions'
 			},
-			template: $templateCache.get('common/ncTreeSelect'),
+			template: $templateCache.get('common/ncTreeSelect.html'),
 			link: function(scope, element, attrs) {
 				// Directive options
 				scope.options = _.defaults(scope.options, {

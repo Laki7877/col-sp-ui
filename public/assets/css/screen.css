@@ -15044,7 +15044,7 @@ html, body {
 }
 
 /* line 1, ../../../assets/_login.scss */
-#wrapper-login {
+.wrapper-login {
   position: relative;
   display: block;
   min-width: 1200px;

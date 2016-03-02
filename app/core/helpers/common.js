@@ -12,7 +12,7 @@ angular.module('colsp.core')
 		this.makeRequestErrorHandler = _.noop;
 		this.$get = function ($http, $q, $window, storage, config) {
 			'ngInject';
-			return {
+			var service = {
 				/**
 				 * Make $http request to REST API endpoint
 				 * API base url fetched defined in config.js
@@ -24,7 +24,9 @@ angular.module('colsp.core')
 				makeRequest: function (options) {
 					var deferred = $q.defer();
 					var accessToken = storage.getSessionToken();
-					
+					if(!options.headers) {
+						options.headers = {};
+					}
 					if (accessToken && !options.headers.Authorization) {
 	                    options.headers.Authorization = 'Basic ' + accessToken;
 	                }
@@ -85,7 +87,7 @@ angular.module('colsp.core')
 				 * @param      {string}  resourceUri  { description }
 				 * @return     {Object}  { description_of_the_return_value }
 				 */
-				createRestObject: function(resourceUri) {
+				makeRestObject: function(resourceUri) {
 		            return {
 		            	/**
 		            	 * Get single resource by resource id
@@ -107,7 +109,7 @@ angular.module('colsp.core')
 			             * @param      {Object}  params  custom endpoint parameters
 			             * @return     {Promise}  $q promise with Array|Object of resources
 			             */
-			            list = function(params) {
+			            list: function(params) {
 			                return service.makeRequest({
 			                    method: 'GET',
 			                    url: resourceUri,
@@ -245,5 +247,6 @@ angular.module('colsp.core')
 			        }
 				}
 			};
+			return service;
 		};
 	});

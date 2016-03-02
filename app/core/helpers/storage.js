@@ -83,6 +83,31 @@ angular.module('colsp.core')
 			 */
 			storeCurrentUserProfile: function(profile) {
 				$cookies.putObject('central.seller.portal.auth.profile', profile);
-			}
+			},
+
+		    storeImposterProfile: function (profile){
+			profile = angular.toJson(profile);
+		        sessionStorage.setItem('central.seller.portal.auth.imposter', profile);
+		    },
+			
+		    getImposterProfile: function () {
+		        var profile = sessionStorage.getItem('central.seller.portal.auth.imposter');
+		        return angular.fromJson(profile);
+		    },
+		    
+		    clearImposterProfile: function () {
+		         sessionStorage.removeItem('central.seller.portal.auth.imposter');
+		    },
+
+		    /**
+		     * Utility method to clear the sessionStorage
+		     */
+		    clear: function () {
+		        sessionStorage.removeItem('central.seller.portal.auth.token');
+		        sessionStorage.removeItem('central.seller.portal.auth.profile');
+			    sessionStorage.removeItem('central.seller.portal.auth.imposter');
+		        localStorage.removeItem('central.seller.portal.auth.actions');
+		        localStorage.removeItem('central.seller.portal.auth.profile');
+		    }
 		};
 });

@@ -8,7 +8,7 @@ angular.module('nc')
 				placeholder: '=ncSearchPlaceholder',
 				event: '=?ncSearchEvent'
 			},
-			template: $templateCache.get('common/ncSearch'),
+			template: $templateCache.get('common/ncSearch.html'),
 			link: function(scope) {
 				scope.event = scope.event || function() { return false };
 				scope.searchText = '';

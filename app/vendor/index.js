@@ -8,6 +8,11 @@
  * @version 1.0.0
  * @author ahancer
  */
+/* Globally available */
+global._ = require('lodash');
+global.$ = require('jquery');
+global.jQuery = require('jquery');
+/* Third party */
 require('angular');
 require('angular-animate');
 require('angular-base64');
@@ -19,7 +24,7 @@ require('angular-sanitize');
 require('angular-scroll');
 require('angular-ui-bootstrap');
 require('angular-ui-tree');
-require('ui-select');
+require('ui-select/dist/select.js');
 /**
  *
  * App module
@@ -33,8 +38,8 @@ angular.module('colsp.vendor', [
 	'ngAnimate',
 	'ngCookies',
 	'ngSanitize',
-	'ui-select',
-	'ui-tree',
+	'ui.select',
+	'ui.tree',
 	'ui.bootstrap',
 	'ui.bootstrap.datetimepicker'
 ]);

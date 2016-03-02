@@ -5,7 +5,7 @@ angular.module('nc')
 			scope: {
 				message: '@ncEmpty'
 			},
-			template: $templateCache.get('common/ncEmpty'),
+			template: $templateCache.get('common/ncEmpty.html'),
 			link: function(scope) {
 				scope.message = _.extend('Empty content', scope.message);
 			}

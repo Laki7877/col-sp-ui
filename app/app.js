@@ -16,15 +16,15 @@ angular.module('colsp', [
 /**
  * App configuration
  */
-.config(function(uiSelectConfig, $ncPaginationProvider, $cookiesProvider) {
+.config(function(uiSelectConfig, $ncPaginationProvider, $cookiesProvider, route) {
 	//Set default pagination sizes
 	$ncPaginationProvider.paginationSizes = [10, 20, 50, 100];
 
 	//Set default tagging uiSelectConfig
-	tokens.taggingTokens = '[ENTER|,]';
+	uiSelectConfig.taggingTokens = '[ENTER|,]';
 })
 .value('config', require('./config.js'))
-.value('route', require('./route.js'))
+.run(require('./template.js'))
 /**
  * Export angular module
  */

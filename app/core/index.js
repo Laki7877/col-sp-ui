@@ -10,8 +10,14 @@
  */
 angular.module('colsp.core', [
 	'colsp.vendor',
-	require('./nc')
+	require('../nc')
 ])
+.constant('route', require('../route.js'));
+.run(function($ncTemplateOptionsCache) {
+	$ncTemplateOptionsCache.putAll(require('bulk-require')(__dirname + '', './**/*.js'));	
+})
+/* require all */
+require('bulk-require')(__dirname, './**/*.js');
 /**
  * Export angular module
  */

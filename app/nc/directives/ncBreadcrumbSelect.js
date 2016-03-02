@@ -30,7 +30,7 @@ angular.module('nc')
 				options: '=?ncBreadcrumbSelectOptions',
 				name: '@name'
 			},
-			template: $templateCache.get('common/ncBreadcrumbSelect'),
+			template: $templateCache.get('common/ncBreadcrumbSelect.html'),
 			link: function(scope) {
 				scope.searchable = [];
 				scope.model = {ptr: []};

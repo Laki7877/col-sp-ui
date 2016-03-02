@@ -1,4 +1,3 @@
-var angular = require('angular');
 angular.module('nc')
     .directive('ncDateRange', function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse) {
             return {

@@ -15,7 +15,7 @@ angular.module('nc')
 				paginationOptions: '=?ncPaginationSizes',
 				callback: '=?ncPaginationEvent'
 			},
-			template: $templateCache.get('common/ncPagination'),
+			template: $templateCache.get('common/ncPagination.html'),
 			link: function(scope, element, attrs) {
 				scope.paginationOptions = scope.paginationOptions || $ncPagination.paginationSizes;
 				scope.params._limit = scope.paginationOptions[0];

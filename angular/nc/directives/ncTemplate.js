@@ -1,4 +1,3 @@
-var angular = require('angular');
 angular.module('nc')
     .directive('ncTemplate', function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException,  $parse, KnownException) {
             return {

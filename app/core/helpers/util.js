@@ -7,7 +7,7 @@
  */
 'use strict';
 angular.module('colsp.core')
-	.factory('util', function() {
+	.factory('util', function(config) {
 		var service = { variant: {} };
 
 	    service.variant.toString = function (a, b) {

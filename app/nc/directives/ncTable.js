@@ -20,7 +20,7 @@ angular.module('nc')
 			restrict: 'E',
 			replace: true,
 			transclude: true,
-			template: $templateCache.get('common/ncTable'),
+			template: $templateCache.get('common/ncTable.html'),
 			scope: {
 				model: '=ncModel',
 				options: '=ncTableOptions',
@@ -62,7 +62,7 @@ angular.module('nc')
 			scope: {
 				sort: '@ncSort'
 			},
-			template: $templateCache.get('common/ncTableSort'),
+			template: $templateCache.get('common/ncTableSort.html'),
 			link: function(scope, element, attrs, parent) {
 				scope.isCurrent = function() {
 					return parent.isOrderBy(scope.sort);

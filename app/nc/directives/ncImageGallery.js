@@ -9,7 +9,7 @@ angular.module('nc')
 				options: '=ncImageGalleryOptions',
 				lock: '&?ncImageGalleryDisabled'
 			},
-			template: $templateCache.get('common/ncImageGallery'),
+			template: $templateCache.get('common/ncImageGallery.html'),
 			link: function(scope) {
 				scope.options = _.defaults(scope.options, {
 					actions: [],
@@ -39,7 +39,7 @@ angular.module('nc')
 					if(action.confirmation) {
 						var modal = $uibModal.open({
 							size: 'size-warning',
-							templateUrl: 'common/ncActionModal',
+							templateUrl: 'common/ncActionModal.html',
 							controller: function($scope, $uibModalInstance, options, $interpolate) {
 								$scope.title = options.title;
 								$scope.message = $interpolate(options.message)(scope);
@@ -93,7 +93,7 @@ angular.module('nc')
 			},
 			link: function(scope, element) {
 				scope.uploader = new FileUploader(scope.originalUploader);
-				scope.template = scope.template || 'common/ncImageDropzoneTemplate';
+				scope.template = scope.template || 'common/ncImageDropzoneTemplate.html';
 				scope.options = _.defaults(scope.options, {
 					urlKey: 'url',
 					onQueueLimit: _.noop,

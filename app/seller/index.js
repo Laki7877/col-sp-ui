@@ -10,9 +10,10 @@
  * @copyright Copyright © 2016 COL Public Company Limited. All Rights Reserved.
  */
 angular.module('colsp.seller', [
-	require('./nc'),
-	require('./core')
+	require('../core')
 ]);
+/* require all */
+require('bulk-require')(__dirname, './**/*.js');
 /**
  * Export angular module
  */

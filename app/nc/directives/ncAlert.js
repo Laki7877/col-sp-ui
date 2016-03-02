@@ -12,7 +12,7 @@ angular.module('nc')
 			scope: {
 				alert: '=ncModel'
 			},
-			template: $templateCache.get('common/ncAlert')
+			template: $templateCache.get('common/ncAlert.html')
 		}
 	})
 	.factory('NcAlert', function($document, $timeout, $ncAlert) {

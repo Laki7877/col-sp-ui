@@ -11,6 +11,7 @@
 /**
  * Application path configuration
  */
+var _ = require('lodash');
 var appPath = {
     vendor: {
       src: 'app/vendor/index.js',
@@ -19,24 +20,16 @@ var appPath = {
     app: {
       srcFolder: 'app',
       src: 'app/app.js',
-      dest: 'public/assets/js/app.js'
+      dest: 'public/assets/js/bundle.js'
     },
     templates: {
-      core: {
-        src: 'app/core/templates/**/*.html',
-        dest: 'app/core/template.js'
+      all: {
+        src: 'app/**/*.html',
+        dest: 'app/template.js'
       },
       nc: {
         src: 'app/nc/templates/**/*.html',
         dest: 'app/nc/template.js'
-      },
-      seller: {
-        src: 'app/seller/templates/**/*.html',
-        dest: 'app/seller/template.js'
-      },
-      admin: {
-        src: 'app/admin/templates/**/*.html',
-        dest: 'app/admin/template.js'
       }
     }
 };
@@ -51,8 +44,6 @@ var browserifyConfig = function () {
       require('bulkify'),
       require('browserify-ngannotate')
     ],
-    /* Globally available packages */
-    require: ['jquery:$', 'lodash:_'],
     keepAlive: true,
     watch: false
   };
@@ -64,8 +55,6 @@ var browserifyConfig = function () {
       require('browserify-ngannotate'),
       require('uglifyify')
     ],
-    /* Globally available packages */
-    require: ['jquery:$', 'lodash:_'],
     keepAlive: true,
     watch: false
   };
@@ -98,7 +87,7 @@ var watchConfig = function () {
   var config = {
     dev: {
       files: [appPath.app.srcFolder + '/**/*'],
-      tasks: ['browserify:dev']
+      tasks: ['ngtemplates', 'browserify:dev']
     }
   };
   return config;
@@ -112,45 +101,55 @@ var ngTemplatesConfig = function () {
     config[k] = _.extend({}, v);
     config[k].options = {
       bootstrap: function (module, script){
-        return 'module.exports = function($templateCache) {' + script + '}';
+        return 'module.exports = ["$templateCache", function($templateCache) {' + script + '}]';
       },
       htmlmin: {
-        collapseBooleanAttributes:      true,
-        collapseWhitespace:             true,
-        removeAttributeQuotes:          true,
-        removeComments:                 true,
-        removeEmptyAttributes:          true,
-        removeRedundantAttributes:      true,
-        removeScriptTypeAttributes:     true,
-        removeStyleLinkTypeAttributes:  true
       },
       url: function(url) {
         //Remove url and .html
-        return url.replace(v.src.split('/**/*')[0], '').replace('.html', '');
+        return url.replace(v.src.split('/**/*')[0], '').substring(1);
       }
     }
   });
   return config;
-}
+};
+/**
+ * JSHint Config
+ */
+var jshintConfig = function() {
+  var config = {
+    all: ['app/**/*.js'],
+    options: {
+      reporter: require('jshint-stylish'),
+      jshintrc: true
+    }
+  };
+  return config;
+};
 /* Module export */
 module.exports = function (grunt) {
   /**
    * Just-in-time loading grunt task
    */
-  require('jit-grunt')(grunt);
+  require('jit-grunt')(grunt,{
+    ngtemplates: 'grunt-angular-templates'
+  });
   /**
    * 
    * Grunt config initialization
    *
    */
-  grunt.initConfig(
+  grunt.initConfig({
   	browserify: browserifyConfig(),
     watch: watchConfig(),
-    ngtemplates: ngTemplatesConfig()
+    ngtemplates: ngTemplatesConfig(),
+    jshint: jshintConfig()
   });
   /**
    * Register grunt tasks
    */
   grunt.registerTask('default', ['ngtemplates', 'browserify:dev']);
+  grunt.registerTask('vendor', ['browserify:vendor']);
+  grunt.registerTask('check', ['jshint:all']);
   grunt.registerTask('build', ['ngtemplates', 'browserify:prod']);
 };

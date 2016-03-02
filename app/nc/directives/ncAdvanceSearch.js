@@ -13,7 +13,7 @@ angular.module('nc')
 				if(attrs.ncAdvanceSearch) {
 					return $templateCache.get(attrs.ncAdvanceSearch);
 				} else {
-					return $templateCache.get('common/ncAdvanceSearch');
+					return $templateCache.get('common/ncAdvanceSearch.html');
 				}
 			},
 			link: function(scope, elem, attrs) {
@@ -49,7 +49,7 @@ angular.module('nc')
 				if(attrs.ncAdvanceSearch) {
 					return $templateCache.get(attrs.ncAdvanceSearch);
 				} else {
-					return $templateCache.get('common/ncAdvanceSearchButton');
+					return $templateCache.get('common/ncAdvanceSearchButton.html');
 				}
 			},
 			link: function(scope, elem, attrs) {

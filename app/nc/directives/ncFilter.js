@@ -9,7 +9,7 @@ angular.module('nc')
 				filters: '=ncFilterOptions',
 				callback: '=?ncFilterEvent'
 			},
-			template: $templateCache.get('common/ncFilter'),
+			template: $templateCache.get('common/ncFilter.html'),
 			link: function(scope) {
 				scope.callback = scope.callback || function() { return false };
 				scope.select = function(value) {

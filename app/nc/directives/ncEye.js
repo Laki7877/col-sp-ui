@@ -6,7 +6,7 @@ angular.module('nc')
 				model: '=ncModel',
 				callback: '&ncEyeOnToggle'
 			},
-			template: $templateCache.get('common/ncEye'),
+			template: $templateCache.get('common/ncEye.html'),
 			link: function(scope) {
 				scope._toggle = function() {
 					scope.model =!scope.model;

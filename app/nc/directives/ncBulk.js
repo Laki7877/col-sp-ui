@@ -141,7 +141,7 @@ angular.module('nc')
 	.directive('ncBulk', function($templateCache, $uibModal) {
 		return {
 			restrict: 'E',
-			template: $templateCache.get('common/ncBulk'),
+			template: $templateCache.get('common/ncBulk.html'),
 			scope: {
 				model: '=ncModel',
 				options: '=ncBulkFn',
@@ -205,7 +205,7 @@ angular.module('nc')
 							var modal = $uibModal.open({
 								animation: true,
 								size: 'size-warning',
-								templateUrl: 'common/ncBulkModal',
+								templateUrl: 'common/ncBulkModal.html',
 								controller: function($scope, $uibModalInstance, options, $interpolate) {
 									$scope.title = options.title;
 									$scope.message = $interpolate(options.message)(scope);
@@ -249,7 +249,7 @@ angular.module('nc')
 			}
 		}
 	})
-	.directive('ncBulkCheckbox', function($templateCache) {
+	.directive('ncBulkCheckbox', function($document, $templateCache) {
 		return {
 			restrict: 'E',
 			replace: true,
@@ -257,7 +257,7 @@ angular.module('nc')
 				model: '=ncModel',
 				tag: '@ncTag'
 			},
-			template: $templateCache.get('common/ncBulkCheckbox'),
+			template: $templateCache.get('common/ncBulkCheckbox.html'),
 			link: function(scope) {
 				if (_.isUndefined(scope.tag)) {
 					scope.parent = angular.element(document).find('nc-bulk').isolateScope();
