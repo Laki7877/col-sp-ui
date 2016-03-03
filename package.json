@@ -50,6 +50,6 @@
     "angular-ui-bootstrap": "^1.1.2",
     "angular-ui-tree": "^2.13.0",
     "jquery": "^2.2.0",
-    "ui-select": "https://github.com/poonwu/ui-select.git"
+    "ui-select": "git://github.com:poonwu/ui-select.git"
   }
 }
