@@ -1,6 +1,4 @@
-var angular = require('angular');
-
-module.exports = function($scope, $controller, AttributeService, config, util) {
+module.exports = function($scope, $controller, AttributeService, ImageService, config, util) {
 	'ngInject';
 	$scope.dataTypeOptions = config.DROPDOWN.DATA_TYPE_DROPDOWN;
 	$scope.variantOptions = config.DROPDOWN.VARIANT_DROPDOWN;
@@ -18,11 +16,22 @@ module.exports = function($scope, $controller, AttributeService, config, util) {
 			init: function(scope) {	}
 		}
 	});
- 
+
+	var uploader = ImageService.getUploader('/AttributeValueImages');
+ 		
+ 	//Brand image
+ 	$scope.upload = function($file, choice) {
+ 		console.log($file, choice);
+ 	};
+
 	$scope.$watch('formData.DataType', function() {
-		if(_.isUndefined($scope.formData.DataType)) return;
-		if($scope.formData.DataType.value == 'HB') {
-			$scope.formData.VariantStatus = $scope.boolOptions[0];
+		if($scope.formData.DataType == 'HB') {
+			$scope.formData.VariantStatus = false;
+		}
+		if($scope.formData.DataType == 'LT') {
+			$scope.variantOptions = config.DROPDOWN.VARIANT2_DROPDOWN;
+		} else {
+			$scope.variantOptions = config.DROPDOWN.VARIANT_DROPDOWN;
 		}
 	}, true);
 };

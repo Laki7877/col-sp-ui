@@ -4,7 +4,7 @@
 angular.module("nc").run(function($templateCache) {  'use strict';
 
   $templateCache.put('addProducts/inner-tab-breadcrumb',
-    "<div><div class=\"alert alert-yellow\" ng-if=\"formData.Status == 'WA'\">This product is waiting for approval from the admin. You cannot edit it now.</div><div class=margin-bottom-20><span>Global Category:</span> <span>{{ breadcrumbs.globalCategory }}</span></div></div>"
+    "<div><div class=\"alert alert-yellow\" ng-if=\"viewBag.Status == 'WA'\">This product is waiting for approval from the admin. You cannot edit it now.</div><div class=margin-bottom-20><span>Global Category:</span> <span>{{ viewBag.breadcrumbs.globalCategory }}</span></div></div>"
   );
 
 

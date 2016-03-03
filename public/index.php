@@ -89,6 +89,7 @@ Route::add('/admin/coupons/admin/create', 'AdminController::admin_coupons_create
 Route::add('/admin/ontopcredit', 'AdminController::listOntopcredit');
 Route::add('/admin/ontopcredit/create', 'AdminController::addOntopcredit');
 Route::add('/admin/ontopcredit/:id', 'AdminController::editOntopcredit');
+
 //test route
 Route::add('/test/:name', 'TestController::any');
 
