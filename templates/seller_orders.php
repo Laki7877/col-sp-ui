@@ -13,7 +13,6 @@
       <div class="filter-container">
         <span>Filters:</span>
         <a class="filter-first-option filter-active">All</a>
-        <a class="filter-seperator">Payment Pending</a>
         <a class="filter-seperator">Payment Confirmed</a>
         <a class="filter-seperator">Preparing</a>
         <a class="filter-seperator">Ready to ship</a>
@@ -61,33 +60,6 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="checkbox-column">
-              <input type="checkbox" aria-label="Checkbox for following text input">
-            </td>
-            <td class="modified-column">
-              14/12/15
-            </td>
-            <td class="modified-column"><a href="?p=seller_order_detail">IV002321</a></td>
-            <td class="column-text-ellipsis ">John Bravo</td>
-            <td class="width_100">฿400.00</td>
-            <td class="width_100">Kerry</td>
-            <td class="width_200">
-              <span class="color-grey">
-                <i class="fa fa-clock-o"></i>
-                Payment Pending
-              </span>
-            </td>
-            <td class="width_200">
-                <button disabled class="btn btn-white btn-width-xl btn_disabled margin-right-15">Acknowledge</button>
-                <span class="text-align-center popover-gear">
-                <i class="fa fa-gear color-dark-grey icon-size-20"></i>
-                <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="
-                  <div><a href='#' data-toggle='modal' data-target='#'>View Detail</a></div>
-                  "></i>
-              </span>
-            </td>
-          </tr>
           <tr>
             <td class="checkbox-column">
               <input type="checkbox" aria-label="Checkbox for following text input">

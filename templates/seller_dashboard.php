@@ -32,7 +32,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
           <span class="image-thumbs-img-wrapper">
             <img class="" src="<?= $this->asset('/assets/img/icon-dashboard-order.png') ?>" />
           </span>
-          <span class="font-size-18 header_name_space">Recent Orders</span>
+          <span class="font-size-18 header_name_space">New Orders</span>
           <span class="float-right group_span_right">
             <span class="hide-component header-link" href="#"><a class="active-underline">Today (2)</a></span>
             <span class="hide-component"><a href="#" class="color-grey">Pending (4)</a></span>
@@ -75,9 +75,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
                   112,226.00
                 </td>
                 <td>
-                  <span class="color-green">
+                  <span class="color-grey">
                     <i class="fa fa-check-circle-o"></i>
-                    Delivered
+                    Payment Confirmed
                   </span>
                 </td>
                 <td>
