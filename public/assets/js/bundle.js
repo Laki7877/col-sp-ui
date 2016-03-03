@@ -2134,6 +2134,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
   if (profile) {
     $window.location.href = Credential.getRedirPath(profile)
   }
+  
   if(redir && redir != '/') {
     $scope.alert.open(false, 'Your session has timed out', '');
     storage.remove('redirect');
@@ -2153,7 +2154,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
     var pass = $scope.uform.pass;
     Credential.login(user, pass).then(function (r) {
       $scope.loading = false;
-      if (!redir) {
+      if (!redir || redir == '/') {
         redir = Credential.getRedirPath(r);
       }
       $window.location.href = redir;
