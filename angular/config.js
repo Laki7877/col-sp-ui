@@ -56,12 +56,34 @@ module.exports = {
 			{
 				name: 'HTML Box',
 				value: 'HB'
+			},
+			{
+				name: 'Checkbox',
+				value: 'CB'
 			}
 		],
 		VARIANT_DROPDOWN: [
 			{
 				name: 'Image',
 				value: 'IO'
+			},
+			{
+				name: 'Textbox',
+				value: 'TO'
+			},
+			{
+				name: 'Dropdown',
+				value: 'DD'
+			}
+		],
+		VARIANT2_DROPDOWN: [
+			{
+				name: 'Image',
+				value: 'IO'
+			},
+			{
+				name: 'Custom Image',
+				value: 'CI'
 			},
 			{
 				name: 'Textbox',

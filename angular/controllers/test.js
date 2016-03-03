@@ -27,6 +27,7 @@ module.exports = function($scope, Attribute, util, GlobalCategoryService, Catego
 				value: 'HB'
 			}
 		];
+		$scope.datatype = {model: 'HB'};
         // stop your wrgo
 		$scope.yesNoOptions = [
 			{

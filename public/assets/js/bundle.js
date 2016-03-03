@@ -19,6 +19,7 @@ require('angular-base64');
 require('angular-sanitize');
 require('angular-scroll');
 require('angular-bootstrap-datetimepicker');
+require('ng-file-upload');
 require('ui-select/dist/select.js');
 
 //Nc package
@@ -31,9 +32,11 @@ var helpers = bulk.helpers;
 var directives = bulk.directives;
 var filters = bulk.filters;
 
-var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.datetimepicker',
+var app = angular.module('colspApp', [
+  'ngPatternRestrict', 
+  'nc', 'ui.bootstrap.datetimepicker',
   'duScroll', 'ngSanitize', 'ngAnimate',
-  'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'
+  'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64', 'ngFileUpload'
 ])
 
 //App config
@@ -47,85 +50,10 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
 //App template cache load
 .run(template)
 
-//App init
-.run(['$rootScope', 'storage', '$window', '$location', 'Credential', function($rootScope, storage, $window, $location, Credential) {
-
-
-    //Create global logout function
-    $rootScope.logout = function() {
-      if ($rootScope.Imposter) {
-        return Credential.logoutAs().then(function(R) {
-          //return to normal flow
-          if (R.User.IsAdmin) {
-            $window.location.href = "/admin";
-          } else {
-            $window.location.href = "/products";
-          }
-        }, function() {
-          alert("Fetal error while logging out.");
-        });
-      }
-
-      Credential.logout();
-      $window.location.href = "/login"
-    };
-
-
-    //Create generic form validator functions
-    //This is now inside ncTemplate
-    $rootScope.isInvalid = function(form) {
-      if (angular.isDefined(form) &&
-        angular.isDefined(form.$invalid) &&
-        angular.isDefined(form.$dirty)) {
-        return form.$invalid && (form.$dirty || form.$$parentForm.$submitted);
-      }
-      return false;
-    };
-
-
-    //Prevent image dragdrop on other elements
-    $window.addEventListener("dragover", function(e) {
-      e = e || event;
-      e.preventDefault();
-    }, false);
-    $window.addEventListener("drop", function(e) {
-      e = e || event;
-      e.preventDefault();
-    }, false);
-
-    //Match route with
-    $rootScope.isUrl = function(url) {
-      if (url.length > 0) {
-        var path = $window.location.pathname;
-        if (path == url) {
-          return true;
-        } else if (path.startsWith(url) && path.charAt(url.length) != '/') {
-          return false;
-        } else {
-          return path.startsWith(url);
-        }
-      } else {
-        return false;
-      }
-    };
-
-    $rootScope.activeParentUrl = function(url, sub) {
-      return {
-        'forced-active': $rootScope.isUrl(url)
-      };
-    };
-
-    //For active class url
-    $rootScope.activeUrl = function(url) {
-      return {
-        'active': $window.location.pathname == url
-      };
-    };
-  }])
-  //Configuration
-  .value('config', config)
+//Configuration
+.value('config', config)
 .value('route', route)
-  .value('$templateOptionsCache', bulk['template-options'])
+.value('$templateOptionsCache', bulk['template-options'])
 
 //Helpers
 .factory('common', helpers.common)
@@ -168,8 +96,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
   .factory('$exceptionHandler', services.exceptionHandler)
   .factory('KnownException', services.knownException)
   .factory('$productAdd', services.productAdd)
-    .factory('OnTopCreditService', services.OnTopCreditService)
-    .factory('OnTopCredit', services.OnTopCredit)
+  .factory('OnTopCreditService', services.OnTopCreditService)
+  .factory('OnTopCredit', services.OnTopCredit)
 
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)
@@ -249,7 +177,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
 .controller('TestCtrl', controllers.test)
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractAdvanceList.js":4,"./controllers\\abstractList.js":5,"./controllers\\adminAccount.js":6,"./controllers\\adminAccountAdd.js":7,"./controllers\\adminAttribute.js":8,"./controllers\\adminAttributeAdd.js":9,"./controllers\\adminAttributeSet.js":10,"./controllers\\adminAttributeSetAdd.js":11,"./controllers\\adminBrand.js":12,"./controllers\\adminBrandAdd.js":13,"./controllers\\adminCategory.js":14,"./controllers\\adminCoupon.js":15,"./controllers\\adminCouponAdd.js":16,"./controllers\\adminOnTopCreditAdd.js":17,"./controllers\\adminOnTopCreditList.js":18,"./controllers\\adminProductApprovalList.js":19,"./controllers\\adminProductList.js":20,"./controllers\\adminRole.js":21,"./controllers\\adminRoleAdd.js":22,"./controllers\\adminShop.js":23,"./controllers\\adminShopAdd.js":24,"./controllers\\adminShoptype.js":25,"./controllers\\adminShoptypeAdd.js":26,"./controllers\\index.js":27,"./controllers\\localCategory.js":28,"./controllers\\login.js":29,"./controllers\\productAdd.js":30,"./controllers\\productAddSelectCategory.js":31,"./controllers\\productExport.js":32,"./controllers\\productImageList.js":33,"./controllers\\productImageManagement.js":34,"./controllers\\productImport.js":35,"./controllers\\productList.js":36,"./controllers\\productListLocalCategory.js":37,"./controllers\\productReview.js":38,"./controllers\\root.js":39,"./controllers\\sellerAccount.js":40,"./controllers\\sellerAccountAdd.js":41,"./controllers\\sellerInventoryList.js":42,"./controllers\\sellerRole.js":43,"./controllers\\sellerRoleAdd.js":44,"./controllers\\sellerShopSetting.js":45,"./controllers\\test.js":46,"./directives\\ncTradableSelect.js":47,"./directives\\ngCkeditor.js":48,"./directives\\ngDateBefore.js":49,"./directives\\ngDelegate.js":50,"./directives\\ngMatch.js":51,"./directives\\ngMaxnumber.js":52,"./directives\\ngMinnumber.js":53,"./directives\\ngPatternRestrict.js":54,"./directives\\ngPermission.js":55,"./directives\\ngSlideToggle.js":56,"./directives\\ngTemplate.js":57,"./directives\\popoverAny.js":58,"./filters\\capitalize.js":59,"./filters\\exclude.js":60,"./filters\\excludeCategory.js":61,"./filters\\html.js":62,"./filters\\importGuidelineExample.js":63,"./filters\\leadingzero.js":64,"./filters\\ordinal.js":65,"./filters\\slice.js":66,"./filters\\truncate.js":67,"./filters\\truth.js":68,"./filters\\variantValue.js":69,"./helpers\\base64.js":70,"./helpers\\common.js":71,"./helpers\\storage.js":72,"./helpers\\util.js":73,"./helpers\\variantPair.js":74,"./nc":101,"./route":103,"./services\\OnTopCredit.js":104,"./services\\OnTopCreditService.js":105,"./services\\adminAccountService.js":106,"./services\\adminPermissionService.js":107,"./services\\adminRoleService.js":108,"./services\\adminShopService.js":109,"./services\\adminShoptypeService.js":110,"./services\\alert.js":111,"./services\\attribute.js":112,"./services\\attributeService.js":113,"./services\\attributeSet.js":114,"./services\\attributeSetService.js":115,"./services\\blocker.js":116,"./services\\brand.js":117,"./services\\brandService.js":118,"./services\\category.js":119,"./services\\coupon.js":120,"./services\\credential.js":121,"./services\\exceptionHandler.js":122,"./services\\fileService.js":123,"./services\\globalCategory.js":124,"./services\\globalCategoryService.js":125,"./services\\image.js":126,"./services\\imageService.js":127,"./services\\inventoryService.js":128,"./services\\knownException.js":129,"./services\\localCategory.js":130,"./services\\localCategoryService.js":131,"./services\\product.js":132,"./services\\productAdd.js":133,"./services\\productReviewService.js":134,"./services\\sellerAccountService.js":135,"./services\\sellerPermissionService.js":136,"./services\\sellerRoleService.js":137,"./services\\shop.js":138,"./services\\shopPermissionService.js":139,"./template":148,"./template-options\\PromotionForm.js":140,"./template-options\\addProductForm.js":141,"./template-options\\adminShopAccountForm.js":142,"./template-options\\couponForm.js":143,"./template-options\\productExport.js":144,"./template-options\\productImport.js":145,"./template-options\\searchForm.js":146,"./template-options\\shopSettingForm.js":147,"angular":164,"angular-animate":150,"angular-base64":151,"angular-bootstrap-datetimepicker":152,"angular-clipboard":153,"angular-file-upload":154,"angular-sanitize":156,"angular-scroll":158,"angular-ui-bootstrap":160,"angular-ui-tree":162,"lodash":166,"ui-select/dist/select.js":168}],2:[function(require,module,exports){
+},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractAdvanceList.js":4,"./controllers\\abstractList.js":5,"./controllers\\adminAccount.js":6,"./controllers\\adminAccountAdd.js":7,"./controllers\\adminAttribute.js":8,"./controllers\\adminAttributeAdd.js":9,"./controllers\\adminAttributeSet.js":10,"./controllers\\adminAttributeSetAdd.js":11,"./controllers\\adminBrand.js":12,"./controllers\\adminBrandAdd.js":13,"./controllers\\adminCategory.js":14,"./controllers\\adminCoupon.js":15,"./controllers\\adminCouponAdd.js":16,"./controllers\\adminOnTopCreditAdd.js":17,"./controllers\\adminOnTopCreditList.js":18,"./controllers\\adminProductApprovalList.js":19,"./controllers\\adminProductList.js":20,"./controllers\\adminRole.js":21,"./controllers\\adminRoleAdd.js":22,"./controllers\\adminShop.js":23,"./controllers\\adminShopAdd.js":24,"./controllers\\adminShoptype.js":25,"./controllers\\adminShoptypeAdd.js":26,"./controllers\\index.js":27,"./controllers\\localCategory.js":28,"./controllers\\login.js":29,"./controllers\\productAdd.js":30,"./controllers\\productAddSelectCategory.js":31,"./controllers\\productExport.js":32,"./controllers\\productImageList.js":33,"./controllers\\productImageManagement.js":34,"./controllers\\productImport.js":35,"./controllers\\productList.js":36,"./controllers\\productListLocalCategory.js":37,"./controllers\\productReview.js":38,"./controllers\\root.js":39,"./controllers\\sellerAccount.js":40,"./controllers\\sellerAccountAdd.js":41,"./controllers\\sellerInventoryList.js":42,"./controllers\\sellerRole.js":43,"./controllers\\sellerRoleAdd.js":44,"./controllers\\sellerShopSetting.js":45,"./controllers\\test.js":46,"./directives\\ncTradableSelect.js":47,"./directives\\ngCkeditor.js":48,"./directives\\ngDateBefore.js":49,"./directives\\ngDelegate.js":50,"./directives\\ngMatch.js":51,"./directives\\ngMaxnumber.js":52,"./directives\\ngMinnumber.js":53,"./directives\\ngPatternRestrict.js":54,"./directives\\ngPermission.js":55,"./directives\\ngSlideToggle.js":56,"./directives\\ngTemplate.js":57,"./directives\\popoverAny.js":58,"./filters\\capitalize.js":59,"./filters\\exclude.js":60,"./filters\\excludeCategory.js":61,"./filters\\html.js":62,"./filters\\importGuidelineExample.js":63,"./filters\\leadingzero.js":64,"./filters\\ordinal.js":65,"./filters\\slice.js":66,"./filters\\truncate.js":67,"./filters\\truth.js":68,"./filters\\variantValue.js":69,"./helpers\\base64.js":70,"./helpers\\common.js":71,"./helpers\\storage.js":72,"./helpers\\util.js":73,"./helpers\\variantPair.js":74,"./nc":101,"./route":103,"./services\\OnTopCredit.js":104,"./services\\OnTopCreditService.js":105,"./services\\adminAccountService.js":106,"./services\\adminPermissionService.js":107,"./services\\adminRoleService.js":108,"./services\\adminShopService.js":109,"./services\\adminShoptypeService.js":110,"./services\\alert.js":111,"./services\\attribute.js":112,"./services\\attributeService.js":113,"./services\\attributeSet.js":114,"./services\\attributeSetService.js":115,"./services\\blocker.js":116,"./services\\brand.js":117,"./services\\brandService.js":118,"./services\\category.js":119,"./services\\coupon.js":120,"./services\\credential.js":121,"./services\\exceptionHandler.js":122,"./services\\fileService.js":123,"./services\\globalCategory.js":124,"./services\\globalCategoryService.js":125,"./services\\image.js":126,"./services\\imageService.js":127,"./services\\inventoryService.js":128,"./services\\knownException.js":129,"./services\\localCategory.js":130,"./services\\localCategoryService.js":131,"./services\\product.js":132,"./services\\productAdd.js":133,"./services\\productReviewService.js":134,"./services\\sellerAccountService.js":135,"./services\\sellerPermissionService.js":136,"./services\\sellerRoleService.js":137,"./services\\shop.js":138,"./services\\shopPermissionService.js":139,"./template":148,"./template-options\\PromotionForm.js":140,"./template-options\\addProductForm.js":141,"./template-options\\adminShopAccountForm.js":142,"./template-options\\couponForm.js":143,"./template-options\\productExport.js":144,"./template-options\\productImport.js":145,"./template-options\\searchForm.js":146,"./template-options\\shopSettingForm.js":147,"angular":164,"angular-animate":150,"angular-base64":151,"angular-bootstrap-datetimepicker":152,"angular-clipboard":153,"angular-file-upload":154,"angular-sanitize":156,"angular-scroll":158,"angular-ui-bootstrap":160,"angular-ui-tree":162,"lodash":166,"ng-file-upload":169,"ui-select/dist/select.js":170}],2:[function(require,module,exports){
 module.exports = {
 	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
@@ -308,12 +236,34 @@ module.exports = {
 			{
 				name: 'HTML Box',
 				value: 'HB'
+			},
+			{
+				name: 'Checkbox',
+				value: 'CB'
 			}
 		],
 		VARIANT_DROPDOWN: [
 			{
 				name: 'Image',
 				value: 'IO'
+			},
+			{
+				name: 'Textbox',
+				value: 'TO'
+			},
+			{
+				name: 'Dropdown',
+				value: 'DD'
+			}
+		],
+		VARIANT2_DROPDOWN: [
+			{
+				name: 'Image',
+				value: 'IO'
+			},
+			{
+				name: 'Custom Image',
+				value: 'CI'
 			},
 			{
 				name: 'Textbox',
@@ -901,9 +851,7 @@ module.exports = ["$scope", "$controller", "AttributeService", "config", functio
 }]
 
 },{}],9:[function(require,module,exports){
-var angular = require('angular');
-
-module.exports = ["$scope", "$controller", "AttributeService", "config", "util", function($scope, $controller, AttributeService, config, util) {
+module.exports = ["$scope", "$controller", "AttributeService", "ImageService", "config", "util", function($scope, $controller, AttributeService, ImageService, config, util) {
 	'ngInject';
 	$scope.dataTypeOptions = config.DROPDOWN.DATA_TYPE_DROPDOWN;
 	$scope.variantOptions = config.DROPDOWN.VARIANT_DROPDOWN;
@@ -921,15 +869,26 @@ module.exports = ["$scope", "$controller", "AttributeService", "config", "util",
 			init: function(scope) {	}
 		}
 	});
- 
+
+	var uploader = ImageService.getUploader('/AttributeValueImages');
+ 		
+ 	//Brand image
+ 	$scope.upload = function($file, choice) {
+ 		console.log($file, choice);
+ 	};
+
 	$scope.$watch('formData.DataType', function() {
-		if(_.isUndefined($scope.formData.DataType)) return;
-		if($scope.formData.DataType.value == 'HB') {
-			$scope.formData.VariantStatus = $scope.boolOptions[0];
+		if($scope.formData.DataType == 'HB') {
+			$scope.formData.VariantStatus = false;
+		}
+		if($scope.formData.DataType == 'LT') {
+			$scope.variantOptions = config.DROPDOWN.VARIANT2_DROPDOWN;
+		} else {
+			$scope.variantOptions = config.DROPDOWN.VARIANT_DROPDOWN;
 		}
 	}, true);
 }];
-},{"angular":164}],10:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AttributeSetService", "util", "config", function($scope, $controller, AttributeSetService, util, config) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -1004,7 +963,7 @@ module.exports = ["$scope", "$controller", "BrandService", "config", function($s
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
 		options: {
-			url: '/admin/Brands',
+			url: '/admin/brands',
 			service: BrandService,
 			item: 'Brand',
 			order: 'UpdatedDt',
@@ -4111,6 +4070,7 @@ module.exports = function($scope, Attribute, util, GlobalCategoryService, Catego
 				value: 'HB'
 			}
 		];
+		$scope.datatype = {model: 'HB'};
         // stop your wrgo
 		$scope.yesNoOptions = [
 			{
@@ -7198,7 +7158,7 @@ angular.module('nc', ['ngSanitize', 'ui.bootstrap', 'ui.select', 'duScroll', 'an
 require('./template.js');
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./directives\\ncAction.js":75,"./directives\\ncAdvanceSearch.js":76,"./directives\\ncAlert.js":77,"./directives\\ncBindCompile.js":78,"./directives\\ncBreadcrumpSelect.js":79,"./directives\\ncBulk.js":80,"./directives\\ncDateRange.js":81,"./directives\\ncEmpty.js":82,"./directives\\ncEye.js":83,"./directives\\ncFilter.js":84,"./directives\\ncImageGallery.js":85,"./directives\\ncImageIntegrity.js":86,"./directives\\ncLoading.js":87,"./directives\\ncPageTitle.js":88,"./directives\\ncPagination.js":89,"./directives\\ncPermission.js":90,"./directives\\ncSearch.js":91,"./directives\\ncTable.js":92,"./directives\\ncTemplate.js":93,"./directives\\ncTreeSelect.js":94,"./directives\\ncUiSelect.js":95,"./filters\\compact.js":96,"./filters\\date.js":97,"./filters\\escapeHtml.js":98,"./filters\\map.js":99,"./filters\\replace.js":100,"./index.js":101,"./template.js":102,"angular":164,"angular-file-upload":154,"angular-sanitize":156,"angular-scroll":158,"angular-ui-bootstrap":160,"jquery":165,"lodash":166,"ui-select":169}],102:[function(require,module,exports){
+},{"./directives\\ncAction.js":75,"./directives\\ncAdvanceSearch.js":76,"./directives\\ncAlert.js":77,"./directives\\ncBindCompile.js":78,"./directives\\ncBreadcrumpSelect.js":79,"./directives\\ncBulk.js":80,"./directives\\ncDateRange.js":81,"./directives\\ncEmpty.js":82,"./directives\\ncEye.js":83,"./directives\\ncFilter.js":84,"./directives\\ncImageGallery.js":85,"./directives\\ncImageIntegrity.js":86,"./directives\\ncLoading.js":87,"./directives\\ncPageTitle.js":88,"./directives\\ncPagination.js":89,"./directives\\ncPermission.js":90,"./directives\\ncSearch.js":91,"./directives\\ncTable.js":92,"./directives\\ncTemplate.js":93,"./directives\\ncTreeSelect.js":94,"./directives\\ncUiSelect.js":95,"./filters\\compact.js":96,"./filters\\date.js":97,"./filters\\escapeHtml.js":98,"./filters\\map.js":99,"./filters\\replace.js":100,"./index.js":101,"./template.js":102,"angular":164,"angular-file-upload":154,"angular-sanitize":156,"angular-scroll":158,"angular-ui-bootstrap":160,"jquery":165,"lodash":166,"ui-select":171}],102:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -8064,37 +8024,33 @@ module.exports = ["common", "config", function(common, config) {
 			AttributeNameTh: '',
 			DisplayNameEn: '',
 			DisplayNameTh: '',
-			Required: boolOptions[0],
-			Filterable: boolOptions[0],
-			DataValidation: validationOptions[0],
-			DataType: dataTypeOptions[0],
-			VariantStatus: boolOptions[0],
+			Required: false,
+			Filterable: false,
+			DataValidation: validationOptions[0].value,
+			DataType: dataTypeOptions[0].value,
+			VariantStatus: false,
 			HB: {
 				DefaultValue: ''
 			},
 			LT: {
+				DefaultValue: '',
 				AttributeValues: [{}]
 			},
 			ST: {
-				DataValidation: validationOptions[0],
+				DataValidation: validationOptions[0].value,
 				DefaultValue: ''
 			},
-			ShowGlobalSearchFlag: boolOptions[0],
-			ShowLocalSearchFlag: boolOptions[0],
-			VariantDataType: variantOptions[0]
+			CB: {
+				DefaultValue: '',
+				AttributeValues: [{}]
+			},
+			ShowGlobalSearchFlag: false,
+			ShowLocalSearchFlag: false,
+			VariantDataType: variantOptions[0].value
 		};
 	};
 	service.deserialize = function(data) {
 		var processed = angular.merge(service.generate(), data);
-		processed.VariantStatus = find(boolOptions,data.VariantStatus);
-		processed.VariantDataType = find(variantOptions,data.VariantDataType);
-		processed.DataType = find(dataTypeOptions,data.DataType);
-		processed.DataValidation = find(validationOptions, data.DataValidation);
-		processed.ShowLocalSearchFlag = find(boolOptions, data.ShowLocalSearchFlag);
-		processed.ShowGlobalSearchFlag = find(boolOptions, data.ShowGlobalSearchFlag);
-		processed.Required = find(boolOptions, data.Required) || boolOptions[0];
-		processed.Filterable = find(boolOptions, data.Filterable) || boolOptions[0];
-
 		switch(data.DataType) {
 			case 'ST':
 				processed['ST'] = {
@@ -8112,20 +8068,17 @@ module.exports = ["common", "config", function(common, config) {
 					DefaultValue: processed.DefaultValue
 				}
 			break;
+			case 'CB':
+				processed['CB'] = {
+					AttributeValues: processed.AttributeValues,
+					DefaultValue: processed.DefaultValue
+				}
+			break;
 		}
 		return processed;
 	};
 	service.serialize = function(data) {
 		var processed = angular.extend(service.generate(), data);
-
-		processed.VariantStatus = processed.VariantStatus ? processed.VariantStatus.value : undefined;
-		processed.VariantDataType = processed.VariantDataType ? processed.VariantDataType.value : undefined;
-		processed.DataType = processed.DataType ? processed.DataType.value : undefined;
-		processed.ShowLocalSearchFlag = processed.ShowLocalSearchFlag ? processed.ShowLocalSearchFlag.value : undefined;
-		processed.ShowGlobalSearchFlag = processed.ShowGlobalSearchFlag ? processed.ShowGlobalSearchFlag.value : undefined;
-		processed.Required = processed.Required ? processed.Required.value : undefined;
-		processed.Filterable = processed.Filterable ? processed.Filterable.value : undefined;
-
 		switch(processed.DataType) {
 			case 'ST':
 				processed.DefaultValue = data.ST.DefaultValue;
@@ -8136,6 +8089,10 @@ module.exports = ["common", "config", function(common, config) {
 				processed.DefaultValue = data.LT.DefaultValue;
 			break;
 			case 'HB':
+				processed.DefaultValue = data.HB.DefaultValue;
+				delete processed['AttributeValues'];
+			break;
+			case 'CB':
 				processed.DefaultValue = data.HB.DefaultValue;
 				delete processed['AttributeValues'];
 			break;
@@ -10960,7 +10917,7 @@ module.exports = {
 },{}],148:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Wed Mar 02 2016 19:13:08 GMT+0700 (SE Asia Standard Time)
+ * Thu Mar 03 2016 16:50:47 GMT+0700 (Russia TZ 6 Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -11179,6 +11136,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "              }\r" +
     "\n" +
     "              }\"><input class=form-control type={{$parent.inputType}} name=ConfirmPassword ng-model=formData.ConfirmPassword ng-class=\"{ 'has-error' : isInvalid(form.ConfirmPassword) || (form.$pristine && formData.error) }\" ng-match={{formData.NewPassword}} required></div></div><div class=\"container-fluid no-padding margin-top-20\"><div class=float-right><a href=# class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()><span class=login-loading ng-cloak ng-show=saving><i class=\"fa fa-spinner fa-spin\"></i></span>Save</button></div></div></div></div></form></div>"
+  );
+
+
+  $templateCache.put('common/modalPreviewImage',
+    "<img ng-src={{url}} alt=\"\">"
   );
 
 
@@ -55929,7 +55891,7 @@ module.exports = angular;
 
 },{"./angular":163}],165:[function(require,module,exports){
 /*!
- * jQuery JavaScript Library v2.2.1
+ * jQuery JavaScript Library v2.2.0
  * http://jquery.com/
  *
  * Includes Sizzle.js
@@ -55939,7 +55901,7 @@ module.exports = angular;
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2016-02-22T19:11Z
+ * Date: 2016-01-08T20:02Z
  */
 
 (function( global, factory ) {
@@ -55995,7 +55957,7 @@ var support = {};
 
 
 var
-	version = "2.2.1",
+	version = "2.2.0",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -60409,7 +60371,7 @@ function on( elem, types, selector, data, fn, one ) {
 	if ( fn === false ) {
 		fn = returnFalse;
 	} else if ( !fn ) {
-		return elem;
+		return this;
 	}
 
 	if ( one === 1 ) {
@@ -61058,14 +61020,14 @@ var
 	rscriptTypeMasked = /^true\/(.*)/,
 	rcleanScript = /^\s*<!(?:\[CDATA\[|--)|(?:\]\]|--)>\s*$/g;
 
-// Manipulating tables requires a tbody
 function manipulationTarget( elem, content ) {
-	return jQuery.nodeName( elem, "table" ) &&
-		jQuery.nodeName( content.nodeType !== 11 ? content : content.firstChild, "tr" ) ?
+	if ( jQuery.nodeName( elem, "table" ) &&
+		jQuery.nodeName( content.nodeType !== 11 ? content : content.firstChild, "tr" ) ) {
 
-		elem.getElementsByTagName( "tbody" )[ 0 ] ||
-			elem.appendChild( elem.ownerDocument.createElement( "tbody" ) ) :
-		elem;
+		return elem.getElementsByTagName( "tbody" )[ 0 ] || elem;
+	}
+
+	return elem;
 }
 
 // Replace/restore the type attribute of script elements for safe DOM manipulation
@@ -61572,7 +61534,7 @@ var getStyles = function( elem ) {
 		// FF meanwhile throws on frame elements through "defaultView.getComputedStyle"
 		var view = elem.ownerDocument.defaultView;
 
-		if ( !view || !view.opener ) {
+		if ( !view.opener ) {
 			view = window;
 		}
 
@@ -61721,18 +61683,15 @@ function curCSS( elem, name, computed ) {
 		style = elem.style;
 
 	computed = computed || getStyles( elem );
-	ret = computed ? computed.getPropertyValue( name ) || computed[ name ] : undefined;
-
-	// Support: Opera 12.1x only
-	// Fall back to style even without computed
-	// computed is undefined for elems on document fragments
-	if ( ( ret === "" || ret === undefined ) && !jQuery.contains( elem.ownerDocument, elem ) ) {
-		ret = jQuery.style( elem, name );
-	}
 
 	// Support: IE9
 	// getPropertyValue is only needed for .css('filter') (#12537)
 	if ( computed ) {
+		ret = computed.getPropertyValue( name ) || computed[ name ];
+
+		if ( ret === "" && !jQuery.contains( elem.ownerDocument, elem ) ) {
+			ret = jQuery.style( elem, name );
+		}
 
 		// A tribute to the "awesome hack by Dean Edwards"
 		// Android Browser returns percentage for some values,
@@ -63782,7 +63741,7 @@ jQuery.extend( jQuery.event, {
 				// But now, this "simulate" function is used only for events
 				// for which stopPropagation() is noop, so there is no need for that anymore.
 				//
-				// For the 1.x branch though, guard for "click" and "submit"
+				// For the compat branch though, guard for "click" and "submit"
 				// events is still used, but was moved to jQuery.event.stopPropagation function
 				// because `originalEvent` should point to the original event for the constancy
 				// with other events and for more focused logic
@@ -65552,8 +65511,11 @@ jQuery.fn.extend( {
 			}
 
 			// Add offsetParent borders
-			parentOffset.top += jQuery.css( offsetParent[ 0 ], "borderTopWidth", true );
-			parentOffset.left += jQuery.css( offsetParent[ 0 ], "borderLeftWidth", true );
+			// Subtract offsetParent scroll positions
+			parentOffset.top += jQuery.css( offsetParent[ 0 ], "borderTopWidth", true ) -
+				offsetParent.scrollTop();
+			parentOffset.left += jQuery.css( offsetParent[ 0 ], "borderLeftWidth", true ) -
+				offsetParent.scrollLeft();
 		}
 
 		// Subtract parent offsets and element margins
@@ -65764,7 +65726,7 @@ return jQuery;
 (function (global){
 /**
  * @license
- * lodash 4.5.1 (Custom Build) <https://lodash.com/>
+ * lodash 4.5.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash -d -o ./foo/lodash.js`
  * Copyright 2012-2016 The Dojo Foundation <http://dojofoundation.org/>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
@@ -65777,7 +65739,7 @@ return jQuery;
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.5.1';
+  var VERSION = '4.5.0';
 
   /** Used to compose bitmasks for wrapper metadata. */
   var BIND_FLAG = 1,
@@ -66798,26 +66760,6 @@ return jQuery;
   }
 
   /**
-   * Gets the number of `placeholder` occurrences in `array`.
-   *
-   * @private
-   * @param {Array} array The array to inspect.
-   * @param {*} placeholder The placeholder to search for.
-   * @returns {number} Returns the placeholder count.
-   */
-  function countHolders(array, placeholder) {
-    var length = array.length,
-        result = 0;
-
-    while (length--) {
-      if (array[length] === placeholder) {
-        result++;
-      }
-    }
-    return result;
-  }
-
-  /**
    * Used by `_.deburr` to convert latin-1 supplementary letters to basic latin letters.
    *
    * @private
@@ -66955,8 +66897,7 @@ return jQuery;
         result = [];
 
     while (++index < length) {
-      var value = array[index];
-      if (value === placeholder || value === PLACEHOLDER) {
+      if (array[index] === placeholder) {
         array[index] = PLACEHOLDER;
         result[++resIndex] = index;
       }
@@ -67946,7 +67887,8 @@ return jQuery;
      */
     function assignValue(object, key, value) {
       var objValue = object[key];
-      if (!(hasOwnProperty.call(object, key) && eq(objValue, value)) ||
+      if ((!eq(objValue, value) ||
+            (eq(objValue, objectProto[key]) && !hasOwnProperty.call(object, key))) ||
           (value === undefined && !(key in object))) {
         object[key] = value;
       }
@@ -69656,28 +69598,23 @@ return jQuery;
      * @param {Array|Object} args The provided arguments.
      * @param {Array} partials The arguments to prepend to those provided.
      * @param {Array} holders The `partials` placeholder indexes.
-     * @params {boolean} [isCurried] Specify composing for a curried function.
      * @returns {Array} Returns the new array of composed arguments.
      */
-    function composeArgs(args, partials, holders, isCurried) {
-      var argsIndex = -1,
-          argsLength = args.length,
-          holdersLength = holders.length,
+    function composeArgs(args, partials, holders) {
+      var holdersLength = holders.length,
+          argsIndex = -1,
+          argsLength = nativeMax(args.length - holdersLength, 0),
           leftIndex = -1,
           leftLength = partials.length,
-          rangeLength = nativeMax(argsLength - holdersLength, 0),
-          result = Array(leftLength + rangeLength),
-          isUncurried = !isCurried;
+          result = Array(leftLength + argsLength);
 
       while (++leftIndex < leftLength) {
         result[leftIndex] = partials[leftIndex];
       }
       while (++argsIndex < holdersLength) {
-        if (isUncurried || argsIndex < argsLength) {
-          result[holders[argsIndex]] = args[argsIndex];
-        }
+        result[holders[argsIndex]] = args[argsIndex];
       }
-      while (rangeLength--) {
+      while (argsLength--) {
         result[leftIndex++] = args[argsIndex++];
       }
       return result;
@@ -69691,21 +69628,18 @@ return jQuery;
      * @param {Array|Object} args The provided arguments.
      * @param {Array} partials The arguments to append to those provided.
      * @param {Array} holders The `partials` placeholder indexes.
-     * @params {boolean} [isCurried] Specify composing for a curried function.
      * @returns {Array} Returns the new array of composed arguments.
      */
-    function composeArgsRight(args, partials, holders, isCurried) {
-      var argsIndex = -1,
-          argsLength = args.length,
-          holdersIndex = -1,
+    function composeArgsRight(args, partials, holders) {
+      var holdersIndex = -1,
           holdersLength = holders.length,
+          argsIndex = -1,
+          argsLength = nativeMax(args.length - holdersLength, 0),
           rightIndex = -1,
           rightLength = partials.length,
-          rangeLength = nativeMax(argsLength - holdersLength, 0),
-          result = Array(rangeLength + rightLength),
-          isUncurried = !isCurried;
+          result = Array(argsLength + rightLength);
 
-      while (++argsIndex < rangeLength) {
+      while (++argsIndex < argsLength) {
         result[argsIndex] = args[argsIndex];
       }
       var offset = argsIndex;
@@ -69713,9 +69647,7 @@ return jQuery;
         result[offset + rightIndex] = partials[rightIndex];
       }
       while (++holdersIndex < holdersLength) {
-        if (isUncurried || argsIndex < argsLength) {
-          result[offset + holders[holdersIndex]] = args[argsIndex++];
-        }
+        result[offset + holders[holdersIndex]] = args[argsIndex++];
       }
       return result;
     }
@@ -69999,9 +69931,10 @@ return jQuery;
 
       function wrapper() {
         var length = arguments.length,
-            args = Array(length),
             index = length,
-            placeholder = getPlaceholder(wrapper);
+            args = Array(length),
+            fn = (this && this !== root && this instanceof wrapper) ? Ctor : func,
+            placeholder = lodash.placeholder || wrapper.placeholder;
 
         while (index--) {
           args[index] = arguments[index];
@@ -70011,13 +69944,9 @@ return jQuery;
           : replaceHolders(args, placeholder);
 
         length -= holders.length;
-        if (length < arity) {
-          return createRecurryWrapper(
-            func, bitmask, createHybridWrapper, wrapper.placeholder, undefined,
-            args, holders, undefined, undefined, arity - length);
-        }
-        var fn = (this && this !== root && this instanceof wrapper) ? Ctor : func;
-        return apply(fn, this, args);
+        return length < arity
+          ? createRecurryWrapper(func, bitmask, createHybridWrapper, placeholder, undefined, args, holders, undefined, undefined, arity - length)
+          : apply(fn, this, args);
       }
       return wrapper;
     }
@@ -70105,7 +70034,8 @@ return jQuery;
       var isAry = bitmask & ARY_FLAG,
           isBind = bitmask & BIND_FLAG,
           isBindKey = bitmask & BIND_KEY_FLAG,
-          isCurried = bitmask & (CURRY_FLAG | CURRY_RIGHT_FLAG),
+          isCurry = bitmask & CURRY_FLAG,
+          isCurryRight = bitmask & CURRY_RIGHT_FLAG,
           isFlip = bitmask & FLIP_FLAG,
           Ctor = isBindKey ? undefined : createCtorWrapper(func);
 
@@ -70117,34 +70047,33 @@ return jQuery;
         while (index--) {
           args[index] = arguments[index];
         }
-        if (isCurried) {
-          var placeholder = getPlaceholder(wrapper),
-              holdersCount = countHolders(args, placeholder);
-        }
         if (partials) {
-          args = composeArgs(args, partials, holders, isCurried);
+          args = composeArgs(args, partials, holders);
         }
         if (partialsRight) {
-          args = composeArgsRight(args, partialsRight, holdersRight, isCurried);
+          args = composeArgsRight(args, partialsRight, holdersRight);
         }
-        length -= holdersCount;
-        if (isCurried && length < arity) {
-          var newHolders = replaceHolders(args, placeholder);
-          return createRecurryWrapper(
-            func, bitmask, createHybridWrapper, wrapper.placeholder, thisArg,
-            args, newHolders, argPos, ary, arity - length
-          );
+        if (isCurry || isCurryRight) {
+          var placeholder = lodash.placeholder || wrapper.placeholder,
+              argsHolders = replaceHolders(args, placeholder);
+
+          length -= argsHolders.length;
+          if (length < arity) {
+            return createRecurryWrapper(
+              func, bitmask, createHybridWrapper, placeholder, thisArg, args,
+              argsHolders, argPos, ary, arity - length
+            );
+          }
         }
         var thisBinding = isBind ? thisArg : this,
             fn = isBindKey ? thisBinding[func] : func;
 
-        length = args.length;
         if (argPos) {
           args = reorder(args, argPos);
-        } else if (isFlip && length > 1) {
+        } else if (isFlip && args.length > 1) {
           args.reverse();
         }
-        if (isAry && ary < length) {
+        if (isAry && ary < args.length) {
           args.length = ary;
         }
         if (this && this !== root && this instanceof wrapper) {
@@ -70282,7 +70211,7 @@ return jQuery;
      * @param {Function} func The function to wrap.
      * @param {number} bitmask The bitmask of wrapper flags. See `createWrapper` for more details.
      * @param {Function} wrapFunc The function to create the `func` wrapper.
-     * @param {*} placeholder The placeholder value.
+     * @param {*} placeholder The placeholder to replace.
      * @param {*} [thisArg] The `this` binding of `func`.
      * @param {Array} [partials] The arguments to prepend to those provided to the new function.
      * @param {Array} [holders] The `partials` placeholder indexes.
@@ -70294,7 +70223,7 @@ return jQuery;
     function createRecurryWrapper(func, bitmask, wrapFunc, placeholder, thisArg, partials, holders, argPos, ary, arity) {
       var isCurry = bitmask & CURRY_FLAG,
           newArgPos = argPos ? copyArray(argPos) : undefined,
-          newHolders = isCurry ? holders : undefined,
+          newsHolders = isCurry ? holders : undefined,
           newHoldersRight = isCurry ? undefined : holders,
           newPartials = isCurry ? partials : undefined,
           newPartialsRight = isCurry ? undefined : partials;
@@ -70306,7 +70235,7 @@ return jQuery;
         bitmask &= ~(BIND_FLAG | BIND_KEY_FLAG);
       }
       var newData = [
-        func, bitmask, thisArg, newPartials, newHolders, newPartialsRight,
+        func, bitmask, thisArg, newPartials, newsHolders, newPartialsRight,
         newHoldersRight, newArgPos, ary, arity
       ];
 
@@ -70728,18 +70657,6 @@ return jQuery;
     }
 
     /**
-     * Gets the argument placeholder value for `func`.
-     *
-     * @private
-     * @param {Function} func The function to inspect.
-     * @returns {*} Returns the placeholder value.
-     */
-    function getPlaceholder(func) {
-      var object = hasOwnProperty.call(lodash, 'placeholder') ? lodash : func;
-      return object.placeholder;
-    }
-
-    /**
      * Creates an array of the own symbol properties of `object`.
      *
      * @private
@@ -70865,9 +70782,11 @@ return jQuery;
      * @returns {Object} Returns the initialized clone.
      */
     function initCloneObject(object) {
-      return (isFunction(object.constructor) && !isPrototype(object))
-        ? baseCreate(getPrototypeOf(object))
-        : {};
+      if (isPrototype(object)) {
+        return {};
+      }
+      var Ctor = object.constructor;
+      return baseCreate(isFunction(Ctor) ? Ctor.prototype : undefined);
     }
 
     /**
@@ -71014,7 +70933,7 @@ return jQuery;
      */
     function isPrototype(value) {
       var Ctor = value && value.constructor,
-          proto = (isFunction(Ctor) && Ctor.prototype) || objectProto;
+          proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto;
 
       return value === proto;
     }
@@ -71053,9 +70972,9 @@ return jQuery;
           isCommon = newBitmask < (BIND_FLAG | BIND_KEY_FLAG | ARY_FLAG);
 
       var isCombo =
-        ((srcBitmask == ARY_FLAG) && (bitmask == CURRY_FLAG)) ||
-        ((srcBitmask == ARY_FLAG) && (bitmask == REARG_FLAG) && (data[7].length <= source[8])) ||
-        ((srcBitmask == (ARY_FLAG | REARG_FLAG)) && (source[7].length <= source[8]) && (bitmask == CURRY_FLAG));
+        (srcBitmask == ARY_FLAG && (bitmask == CURRY_FLAG)) ||
+        (srcBitmask == ARY_FLAG && (bitmask == REARG_FLAG) && (data[7].length <= source[8])) ||
+        (srcBitmask == (ARY_FLAG | REARG_FLAG) && (source[7].length <= source[8]) && (bitmask == CURRY_FLAG));
 
       // Exit early if metadata can't be merged.
       if (!(isCommon || isCombo)) {
@@ -71065,7 +70984,7 @@ return jQuery;
       if (srcBitmask & BIND_FLAG) {
         data[2] = source[2];
         // Set when currying a bound function.
-        newBitmask |= bitmask & BIND_FLAG ? 0 : CURRY_BOUND_FLAG;
+        newBitmask |= (bitmask & BIND_FLAG) ? 0 : CURRY_BOUND_FLAG;
       }
       // Compose partial arguments.
       var value = source[3];
@@ -71997,8 +71916,7 @@ return jQuery;
      * [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
      * for equality comparisons.
      *
-     * **Note:** Unlike `_.without`, this method mutates `array`. Use `_.remove`
-     * to remove elements from an array by predicate.
+     * **Note:** Unlike `_.without`, this method mutates `array`.
      *
      * @static
      * @memberOf _
@@ -72103,11 +72021,10 @@ return jQuery;
 
     /**
      * Removes all elements from `array` that `predicate` returns truthy for
-     * and returns an array of the removed elements. The predicate is invoked
-     * with three arguments: (value, index, array).
+     * and returns an array of the removed elements. The predicate is invoked with
+     * three arguments: (value, index, array).
      *
-     * **Note:** Unlike `_.filter`, this method mutates `array`. Use `_.pull`
-     * to pull elements from an array by value.
+     * **Note:** Unlike `_.filter`, this method mutates `array`.
      *
      * @static
      * @memberOf _
@@ -74270,7 +74187,9 @@ return jQuery;
     var bind = rest(function(func, thisArg, partials) {
       var bitmask = BIND_FLAG;
       if (partials.length) {
-        var holders = replaceHolders(partials, getPlaceholder(bind));
+        var placeholder = lodash.placeholder || bind.placeholder,
+            holders = replaceHolders(partials, placeholder);
+
         bitmask |= PARTIAL_FLAG;
       }
       return createWrapper(func, bitmask, thisArg, partials, holders);
@@ -74323,7 +74242,9 @@ return jQuery;
     var bindKey = rest(function(object, key, partials) {
       var bitmask = BIND_FLAG | BIND_KEY_FLAG;
       if (partials.length) {
-        var holders = replaceHolders(partials, getPlaceholder(bindKey));
+        var placeholder = lodash.placeholder || bindKey.placeholder,
+            holders = replaceHolders(partials, placeholder);
+
         bitmask |= PARTIAL_FLAG;
       }
       return createWrapper(key, bitmask, object, partials, holders);
@@ -74372,7 +74293,7 @@ return jQuery;
     function curry(func, arity, guard) {
       arity = guard ? undefined : arity;
       var result = createWrapper(func, CURRY_FLAG, undefined, undefined, undefined, undefined, undefined, arity);
-      result.placeholder = curry.placeholder;
+      result.placeholder = lodash.placeholder || curry.placeholder;
       return result;
     }
 
@@ -74416,7 +74337,7 @@ return jQuery;
     function curryRight(func, arity, guard) {
       arity = guard ? undefined : arity;
       var result = createWrapper(func, CURRY_RIGHT_FLAG, undefined, undefined, undefined, undefined, undefined, arity);
-      result.placeholder = curryRight.placeholder;
+      result.placeholder = lodash.placeholder || curryRight.placeholder;
       return result;
     }
 
@@ -74840,7 +74761,9 @@ return jQuery;
      * // => 'hi fred'
      */
     var partial = rest(function(func, partials) {
-      var holders = replaceHolders(partials, getPlaceholder(partial));
+      var placeholder = lodash.placeholder || partial.placeholder,
+          holders = replaceHolders(partials, placeholder);
+
       return createWrapper(func, PARTIAL_FLAG, undefined, partials, holders);
     });
 
@@ -74876,7 +74799,9 @@ return jQuery;
      * // => 'hello fred'
      */
     var partialRight = rest(function(func, partials) {
-      var holders = replaceHolders(partials, getPlaceholder(partialRight));
+      var placeholder = lodash.placeholder || partialRight.placeholder,
+          holders = replaceHolders(partials, placeholder);
+
       return createWrapper(func, PARTIAL_RIGHT_FLAG, undefined, partials, holders);
     });
 
@@ -75675,8 +75600,9 @@ return jQuery;
       if (!isObjectLike(value)) {
         return false;
       }
+      var Ctor = value.constructor;
       return (objectToString.call(value) == errorTag) ||
-        (typeof value.message == 'string' && typeof value.name == 'string');
+        (typeof Ctor == 'function' && objectToString.call(Ctor.prototype) == errorTag);
     }
 
     /**
@@ -76089,7 +76015,10 @@ return jQuery;
           objectToString.call(value) != objectTag || isHostObject(value)) {
         return false;
       }
-      var proto = getPrototypeOf(value);
+      var proto = objectProto;
+      if (typeof value.constructor == 'function') {
+        proto = getPrototypeOf(value);
+      }
       if (proto === null) {
         return true;
       }
@@ -77303,8 +77232,7 @@ return jQuery;
     /**
      * The opposite of `_.mapValues`; this method creates an object with the
      * same values as `object` and keys generated by running each own enumerable
-     * property of `object` through `iteratee`. The iteratee is invoked with
-     * three arguments: (value, key, object).
+     * property of `object` through `iteratee`.
      *
      * @static
      * @memberOf _
@@ -77332,7 +77260,7 @@ return jQuery;
     /**
      * Creates an object with the same keys as `object` and values generated by
      * running each own enumerable property of `object` through `iteratee`. The
-     * iteratee is invoked with three arguments: (value, key, object).
+     * iteratee function is invoked with three arguments: (value, key, object).
      *
      * @static
      * @memberOf _
@@ -77465,10 +77393,9 @@ return jQuery;
     });
 
     /**
-     * The opposite of `_.pickBy`; this method creates an object composed of
-     * the own and inherited enumerable properties of `object` that `predicate`
-     * doesn't return truthy for. The predicate is invoked with two arguments:
-     * (value, key).
+     * The opposite of `_.pickBy`; this method creates an object composed of the
+     * own and inherited enumerable properties of `object` that `predicate`
+     * doesn't return truthy for.
      *
      * @static
      * @memberOf _
@@ -77484,7 +77411,7 @@ return jQuery;
      * // => { 'b': '2' }
      */
     function omitBy(object, predicate) {
-      predicate = getIteratee(predicate);
+      predicate = getIteratee(predicate, 2);
       return basePickBy(object, function(value, key) {
         return !predicate(value, key);
       });
@@ -77529,7 +77456,7 @@ return jQuery;
      * // => { 'a': 1, 'c': 3 }
      */
     function pickBy(object, predicate) {
-      return object == null ? {} : basePickBy(object, getIteratee(predicate));
+      return object == null ? {} : basePickBy(object, getIteratee(predicate, 2));
     }
 
     /**
@@ -77719,7 +77646,7 @@ return jQuery;
           if (isArr) {
             accumulator = isArray(object) ? new Ctor : [];
           } else {
-            accumulator = isFunction(Ctor) ? baseCreate(getPrototypeOf(object)) : {};
+            accumulator = baseCreate(isFunction(Ctor) ? Ctor.prototype : undefined);
           }
         } else {
           accumulator = {};
@@ -79715,8 +79642,8 @@ return jQuery;
     var rangeRight = createRange(true);
 
     /**
-     * Invokes the iteratee `n` times, returning an array of the results of
-     * each invocation. The iteratee is invoked with one argument; (index).
+     * Invokes the iteratee function `n` times, returning an array of the results
+     * of each invocation. The iteratee is invoked with one argument; (index).
      *
      * @static
      * @memberOf _
@@ -84305,6 +84232,2788 @@ return jQuery;
 
 }));
 },{}],168:[function(require,module,exports){
+/**!
+ * AngularJS file upload directives and services. Supoorts: file upload/drop/paste, resume, cancel/abort,
+ * progress, resize, thumbnail, preview, validation and CORS
+ * FileAPI Flash shim for old browsers not supporting FormData
+ * @author  Danial  <danial.farid@gmail.com>
+ * @version 12.0.1
+ */
+
+(function () {
+  /** @namespace FileAPI.noContentTimeout */
+
+  function patchXHR(fnName, newFn) {
+    window.XMLHttpRequest.prototype[fnName] = newFn(window.XMLHttpRequest.prototype[fnName]);
+  }
+
+  function redefineProp(xhr, prop, fn) {
+    try {
+      Object.defineProperty(xhr, prop, {get: fn});
+    } catch (e) {/*ignore*/
+    }
+  }
+
+  if (!window.FileAPI) {
+    window.FileAPI = {};
+  }
+
+  if (!window.XMLHttpRequest) {
+    throw 'AJAX is not supported. XMLHttpRequest is not defined.';
+  }
+
+  FileAPI.shouldLoad = !window.FormData || FileAPI.forceLoad;
+  if (FileAPI.shouldLoad) {
+    var initializeUploadListener = function (xhr) {
+      if (!xhr.__listeners) {
+        if (!xhr.upload) xhr.upload = {};
+        xhr.__listeners = [];
+        var origAddEventListener = xhr.upload.addEventListener;
+        xhr.upload.addEventListener = function (t, fn) {
+          xhr.__listeners[t] = fn;
+          if (origAddEventListener) origAddEventListener.apply(this, arguments);
+        };
+      }
+    };
+
+    patchXHR('open', function (orig) {
+      return function (m, url, b) {
+        initializeUploadListener(this);
+        this.__url = url;
+        try {
+          orig.apply(this, [m, url, b]);
+        } catch (e) {
+          if (e.message.indexOf('Access is denied') > -1) {
+            this.__origError = e;
+            orig.apply(this, [m, '_fix_for_ie_crossdomain__', b]);
+          }
+        }
+      };
+    });
+
+    patchXHR('getResponseHeader', function (orig) {
+      return function (h) {
+        return this.__fileApiXHR && this.__fileApiXHR.getResponseHeader ? this.__fileApiXHR.getResponseHeader(h) : (orig == null ? null : orig.apply(this, [h]));
+      };
+    });
+
+    patchXHR('getAllResponseHeaders', function (orig) {
+      return function () {
+        return this.__fileApiXHR && this.__fileApiXHR.getAllResponseHeaders ? this.__fileApiXHR.getAllResponseHeaders() : (orig == null ? null : orig.apply(this));
+      };
+    });
+
+    patchXHR('abort', function (orig) {
+      return function () {
+        return this.__fileApiXHR && this.__fileApiXHR.abort ? this.__fileApiXHR.abort() : (orig == null ? null : orig.apply(this));
+      };
+    });
+
+    patchXHR('setRequestHeader', function (orig) {
+      return function (header, value) {
+        if (header === '__setXHR_') {
+          initializeUploadListener(this);
+          var val = value(this);
+          // fix for angular < 1.2.0
+          if (val instanceof Function) {
+            val(this);
+          }
+        } else {
+          this.__requestHeaders = this.__requestHeaders || {};
+          this.__requestHeaders[header] = value;
+          orig.apply(this, arguments);
+        }
+      };
+    });
+
+    patchXHR('send', function (orig) {
+      return function () {
+        var xhr = this;
+        if (arguments[0] && arguments[0].__isFileAPIShim) {
+          var formData = arguments[0];
+          var config = {
+            url: xhr.__url,
+            jsonp: false, //removes the callback form param
+            cache: true, //removes the ?fileapiXXX in the url
+            complete: function (err, fileApiXHR) {
+              if (err && angular.isString(err) && err.indexOf('#2174') !== -1) {
+                // this error seems to be fine the file is being uploaded properly.
+                err = null;
+              }
+              xhr.__completed = true;
+              if (!err && xhr.__listeners.load)
+                xhr.__listeners.load({
+                  type: 'load',
+                  loaded: xhr.__loaded,
+                  total: xhr.__total,
+                  target: xhr,
+                  lengthComputable: true
+                });
+              if (!err && xhr.__listeners.loadend)
+                xhr.__listeners.loadend({
+                  type: 'loadend',
+                  loaded: xhr.__loaded,
+                  total: xhr.__total,
+                  target: xhr,
+                  lengthComputable: true
+                });
+              if (err === 'abort' && xhr.__listeners.abort)
+                xhr.__listeners.abort({
+                  type: 'abort',
+                  loaded: xhr.__loaded,
+                  total: xhr.__total,
+                  target: xhr,
+                  lengthComputable: true
+                });
+              if (fileApiXHR.status !== undefined) redefineProp(xhr, 'status', function () {
+                return (fileApiXHR.status === 0 && err && err !== 'abort') ? 500 : fileApiXHR.status;
+              });
+              if (fileApiXHR.statusText !== undefined) redefineProp(xhr, 'statusText', function () {
+                return fileApiXHR.statusText;
+              });
+              redefineProp(xhr, 'readyState', function () {
+                return 4;
+              });
+              if (fileApiXHR.response !== undefined) redefineProp(xhr, 'response', function () {
+                return fileApiXHR.response;
+              });
+              var resp = fileApiXHR.responseText || (err && fileApiXHR.status === 0 && err !== 'abort' ? err : undefined);
+              redefineProp(xhr, 'responseText', function () {
+                return resp;
+              });
+              redefineProp(xhr, 'response', function () {
+                return resp;
+              });
+              if (err) redefineProp(xhr, 'err', function () {
+                return err;
+              });
+              xhr.__fileApiXHR = fileApiXHR;
+              if (xhr.onreadystatechange) xhr.onreadystatechange();
+              if (xhr.onload) xhr.onload();
+            },
+            progress: function (e) {
+              e.target = xhr;
+              if (xhr.__listeners.progress) xhr.__listeners.progress(e);
+              xhr.__total = e.total;
+              xhr.__loaded = e.loaded;
+              if (e.total === e.loaded) {
+                // fix flash issue that doesn't call complete if there is no response text from the server
+                var _this = this;
+                setTimeout(function () {
+                  if (!xhr.__completed) {
+                    xhr.getAllResponseHeaders = function () {
+                    };
+                    _this.complete(null, {status: 204, statusText: 'No Content'});
+                  }
+                }, FileAPI.noContentTimeout || 10000);
+              }
+            },
+            headers: xhr.__requestHeaders
+          };
+          config.data = {};
+          config.files = {};
+          for (var i = 0; i < formData.data.length; i++) {
+            var item = formData.data[i];
+            if (item.val != null && item.val.name != null && item.val.size != null && item.val.type != null) {
+              config.files[item.key] = item.val;
+            } else {
+              config.data[item.key] = item.val;
+            }
+          }
+
+          setTimeout(function () {
+            if (!FileAPI.hasFlash) {
+              throw 'Adode Flash Player need to be installed. To check ahead use "FileAPI.hasFlash"';
+            }
+            xhr.__fileApiXHR = FileAPI.upload(config);
+          }, 1);
+        } else {
+          if (this.__origError) {
+            throw this.__origError;
+          }
+          orig.apply(xhr, arguments);
+        }
+      };
+    });
+    window.XMLHttpRequest.__isFileAPIShim = true;
+    window.FormData = FormData = function () {
+      return {
+        append: function (key, val, name) {
+          if (val.__isFileAPIBlobShim) {
+            val = val.data[0];
+          }
+          this.data.push({
+            key: key,
+            val: val,
+            name: name
+          });
+        },
+        data: [],
+        __isFileAPIShim: true
+      };
+    };
+
+    window.Blob = Blob = function (b) {
+      return {
+        data: b,
+        __isFileAPIBlobShim: true
+      };
+    };
+  }
+
+})();
+
+(function () {
+  /** @namespace FileAPI.forceLoad */
+  /** @namespace window.FileAPI.jsUrl */
+  /** @namespace window.FileAPI.jsPath */
+
+  function isInputTypeFile(elem) {
+    return elem[0].tagName.toLowerCase() === 'input' && elem.attr('type') && elem.attr('type').toLowerCase() === 'file';
+  }
+
+  function hasFlash() {
+    try {
+      var fo = new ActiveXObject('ShockwaveFlash.ShockwaveFlash');
+      if (fo) return true;
+    } catch (e) {
+      if (navigator.mimeTypes['application/x-shockwave-flash'] !== undefined) return true;
+    }
+    return false;
+  }
+
+  function getOffset(obj) {
+    var left = 0, top = 0;
+
+    if (window.jQuery) {
+      return jQuery(obj).offset();
+    }
+
+    if (obj.offsetParent) {
+      do {
+        left += (obj.offsetLeft - obj.scrollLeft);
+        top += (obj.offsetTop - obj.scrollTop);
+        obj = obj.offsetParent;
+      } while (obj);
+    }
+    return {
+      left: left,
+      top: top
+    };
+  }
+
+  if (FileAPI.shouldLoad) {
+    FileAPI.hasFlash = hasFlash();
+
+    //load FileAPI
+    if (FileAPI.forceLoad) {
+      FileAPI.html5 = false;
+    }
+
+    if (!FileAPI.upload) {
+      var jsUrl, basePath, script = document.createElement('script'), allScripts = document.getElementsByTagName('script'), i, index, src;
+      if (window.FileAPI.jsUrl) {
+        jsUrl = window.FileAPI.jsUrl;
+      } else if (window.FileAPI.jsPath) {
+        basePath = window.FileAPI.jsPath;
+      } else {
+        for (i = 0; i < allScripts.length; i++) {
+          src = allScripts[i].src;
+          index = src.search(/\/ng\-file\-upload[\-a-zA-z0-9\.]*\.js/);
+          if (index > -1) {
+            basePath = src.substring(0, index + 1);
+            break;
+          }
+        }
+      }
+
+      if (FileAPI.staticPath == null) FileAPI.staticPath = basePath;
+      script.setAttribute('src', jsUrl || basePath + 'FileAPI.min.js');
+      document.getElementsByTagName('head')[0].appendChild(script);
+    }
+
+    FileAPI.ngfFixIE = function (elem, fileElem, changeFn) {
+      if (!hasFlash()) {
+        throw 'Adode Flash Player need to be installed. To check ahead use "FileAPI.hasFlash"';
+      }
+      var fixInputStyle = function () {
+        var label = fileElem.parent();
+        if (elem.attr('disabled')) {
+          if (label) label.removeClass('js-fileapi-wrapper');
+        } else {
+          if (!fileElem.attr('__ngf_flash_')) {
+            fileElem.unbind('change');
+            fileElem.unbind('click');
+            fileElem.bind('change', function (evt) {
+              fileApiChangeFn.apply(this, [evt]);
+              changeFn.apply(this, [evt]);
+            });
+            fileElem.attr('__ngf_flash_', 'true');
+          }
+          label.addClass('js-fileapi-wrapper');
+          if (!isInputTypeFile(elem)) {
+            label.css('position', 'absolute')
+              .css('top', getOffset(elem[0]).top + 'px').css('left', getOffset(elem[0]).left + 'px')
+              .css('width', elem[0].offsetWidth + 'px').css('height', elem[0].offsetHeight + 'px')
+              .css('filter', 'alpha(opacity=0)').css('display', elem.css('display'))
+              .css('overflow', 'hidden').css('z-index', '900000')
+              .css('visibility', 'visible');
+            fileElem.css('width', elem[0].offsetWidth + 'px').css('height', elem[0].offsetHeight + 'px')
+              .css('position', 'absolute').css('top', '0px').css('left', '0px');
+          }
+        }
+      };
+
+      elem.bind('mouseenter', fixInputStyle);
+
+      var fileApiChangeFn = function (evt) {
+        var files = FileAPI.getFiles(evt);
+        //just a double check for #233
+        for (var i = 0; i < files.length; i++) {
+          if (files[i].size === undefined) files[i].size = 0;
+          if (files[i].name === undefined) files[i].name = 'file';
+          if (files[i].type === undefined) files[i].type = 'undefined';
+        }
+        if (!evt.target) {
+          evt.target = {};
+        }
+        evt.target.files = files;
+        // if evt.target.files is not writable use helper field
+        if (evt.target.files !== files) {
+          evt.__files_ = files;
+        }
+        (evt.__files_ || evt.target.files).item = function (i) {
+          return (evt.__files_ || evt.target.files)[i] || null;
+        };
+      };
+    };
+
+    FileAPI.disableFileInput = function (elem, disable) {
+      if (disable) {
+        elem.removeClass('js-fileapi-wrapper');
+      } else {
+        elem.addClass('js-fileapi-wrapper');
+      }
+    };
+  }
+})();
+
+if (!window.FileReader) {
+  window.FileReader = function () {
+    var _this = this, loadStarted = false;
+    this.listeners = {};
+    this.addEventListener = function (type, fn) {
+      _this.listeners[type] = _this.listeners[type] || [];
+      _this.listeners[type].push(fn);
+    };
+    this.removeEventListener = function (type, fn) {
+      if (_this.listeners[type]) _this.listeners[type].splice(_this.listeners[type].indexOf(fn), 1);
+    };
+    this.dispatchEvent = function (evt) {
+      var list = _this.listeners[evt.type];
+      if (list) {
+        for (var i = 0; i < list.length; i++) {
+          list[i].call(_this, evt);
+        }
+      }
+    };
+    this.onabort = this.onerror = this.onload = this.onloadstart = this.onloadend = this.onprogress = null;
+
+    var constructEvent = function (type, evt) {
+      var e = {type: type, target: _this, loaded: evt.loaded, total: evt.total, error: evt.error};
+      if (evt.result != null) e.target.result = evt.result;
+      return e;
+    };
+    var listener = function (evt) {
+      if (!loadStarted) {
+        loadStarted = true;
+        if (_this.onloadstart) _this.onloadstart(constructEvent('loadstart', evt));
+      }
+      var e;
+      if (evt.type === 'load') {
+        if (_this.onloadend) _this.onloadend(constructEvent('loadend', evt));
+        e = constructEvent('load', evt);
+        if (_this.onload) _this.onload(e);
+        _this.dispatchEvent(e);
+      } else if (evt.type === 'progress') {
+        e = constructEvent('progress', evt);
+        if (_this.onprogress) _this.onprogress(e);
+        _this.dispatchEvent(e);
+      } else {
+        e = constructEvent('error', evt);
+        if (_this.onerror) _this.onerror(e);
+        _this.dispatchEvent(e);
+      }
+    };
+    this.readAsDataURL = function (file) {
+      FileAPI.readAsDataURL(file, listener);
+    };
+    this.readAsText = function (file) {
+      FileAPI.readAsText(file, listener);
+    };
+  };
+}
+
+/**!
+ * AngularJS file upload directives and services. Supoorts: file upload/drop/paste, resume, cancel/abort,
+ * progress, resize, thumbnail, preview, validation and CORS
+ * @author  Danial  <danial.farid@gmail.com>
+ * @version 12.0.1
+ */
+
+if (window.XMLHttpRequest && !(window.FileAPI && FileAPI.shouldLoad)) {
+  window.XMLHttpRequest.prototype.setRequestHeader = (function (orig) {
+    return function (header, value) {
+      if (header === '__setXHR_') {
+        var val = value(this);
+        // fix for angular < 1.2.0
+        if (val instanceof Function) {
+          val(this);
+        }
+      } else {
+        orig.apply(this, arguments);
+      }
+    };
+  })(window.XMLHttpRequest.prototype.setRequestHeader);
+}
+
+var ngFileUpload = angular.module('ngFileUpload', []);
+
+ngFileUpload.version = '12.0.1';
+
+ngFileUpload.service('UploadBase', ['$http', '$q', '$timeout', function ($http, $q, $timeout) {
+  var upload = this;
+  upload.promisesCount = 0;
+
+  this.isResumeSupported = function () {
+    return window.Blob && (window.Blob instanceof Function) && window.Blob.prototype.slice;
+  };
+
+  var resumeSupported = this.isResumeSupported();
+
+  function sendHttp(config) {
+    config.method = config.method || 'POST';
+    config.headers = config.headers || {};
+
+    var deferred = config._deferred = config._deferred || $q.defer();
+    var promise = deferred.promise;
+
+    function notifyProgress(e) {
+      if (deferred.notify) {
+        deferred.notify(e);
+      }
+      if (promise.progressFunc) {
+        $timeout(function () {
+          promise.progressFunc(e);
+        });
+      }
+    }
+
+    function getNotifyEvent(n) {
+      if (config._start != null && resumeSupported) {
+        return {
+          loaded: n.loaded + config._start,
+          total: (config._file && config._file.size) || n.total,
+          type: n.type, config: config,
+          lengthComputable: true, target: n.target
+        };
+      } else {
+        return n;
+      }
+    }
+
+    if (!config.disableProgress) {
+      config.headers.__setXHR_ = function () {
+        return function (xhr) {
+          if (!xhr || !xhr.upload || !xhr.upload.addEventListener) return;
+          config.__XHR = xhr;
+          if (config.xhrFn) config.xhrFn(xhr);
+          xhr.upload.addEventListener('progress', function (e) {
+            e.config = config;
+            notifyProgress(getNotifyEvent(e));
+          }, false);
+          //fix for firefox not firing upload progress end, also IE8-9
+          xhr.upload.addEventListener('load', function (e) {
+            if (e.lengthComputable) {
+              e.config = config;
+              notifyProgress(getNotifyEvent(e));
+            }
+          }, false);
+        };
+      };
+    }
+
+    function uploadWithAngular() {
+      $http(config).then(function (r) {
+          if (resumeSupported && config._chunkSize && !config._finished && config._file) {
+            notifyProgress({
+                loaded: config._end,
+                total: config._file && config._file.size,
+                config: config, type: 'progress'
+              }
+            );
+            upload.upload(config, true);
+          } else {
+            if (config._finished) delete config._finished;
+            deferred.resolve(r);
+          }
+        }, function (e) {
+          deferred.reject(e);
+        }, function (n) {
+          deferred.notify(n);
+        }
+      );
+    }
+
+    if (!resumeSupported) {
+      uploadWithAngular();
+    } else if (config._chunkSize && config._end && !config._finished) {
+      config._start = config._end;
+      config._end += config._chunkSize;
+      uploadWithAngular();
+    } else if (config.resumeSizeUrl) {
+      $http.get(config.resumeSizeUrl).then(function (resp) {
+        if (config.resumeSizeResponseReader) {
+          config._start = config.resumeSizeResponseReader(resp.data);
+        } else {
+          config._start = parseInt((resp.data.size == null ? resp.data : resp.data.size).toString());
+        }
+        if (config._chunkSize) {
+          config._end = config._start + config._chunkSize;
+        }
+        uploadWithAngular();
+      }, function (e) {
+        throw e;
+      });
+    } else if (config.resumeSize) {
+      config.resumeSize().then(function (size) {
+        config._start = size;
+        uploadWithAngular();
+      }, function (e) {
+        throw e;
+      });
+    } else {
+      if (config._chunkSize) {
+        config._start = 0;
+        config._end = config._start + config._chunkSize;
+      }
+      uploadWithAngular();
+    }
+
+
+    promise.success = function (fn) {
+      promise.then(function (response) {
+        fn(response.data, response.status, response.headers, config);
+      });
+      return promise;
+    };
+
+    promise.error = function (fn) {
+      promise.then(null, function (response) {
+        fn(response.data, response.status, response.headers, config);
+      });
+      return promise;
+    };
+
+    promise.progress = function (fn) {
+      promise.progressFunc = fn;
+      promise.then(null, null, function (n) {
+        fn(n);
+      });
+      return promise;
+    };
+    promise.abort = promise.pause = function () {
+      if (config.__XHR) {
+        $timeout(function () {
+          config.__XHR.abort();
+        });
+      }
+      return promise;
+    };
+    promise.xhr = function (fn) {
+      config.xhrFn = (function (origXhrFn) {
+        return function () {
+          if (origXhrFn) origXhrFn.apply(promise, arguments);
+          fn.apply(promise, arguments);
+        };
+      })(config.xhrFn);
+      return promise;
+    };
+
+    upload.promisesCount++;
+    promise['finally'](function () {
+      upload.promisesCount--;
+    });
+    return promise;
+  }
+
+  this.isUploadInProgress = function () {
+    return upload.promisesCount > 0;
+  };
+
+  this.rename = function (file, name) {
+    file.ngfName = name;
+    return file;
+  };
+
+  this.jsonBlob = function (val) {
+    if (val != null && !angular.isString(val)) {
+      val = JSON.stringify(val);
+    }
+    var blob = new window.Blob([val], {type: 'application/json'});
+    blob._ngfBlob = true;
+    return blob;
+  };
+
+  this.json = function (val) {
+    return angular.toJson(val);
+  };
+
+  function copy(obj) {
+    var clone = {};
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        clone[key] = obj[key];
+      }
+    }
+    return clone;
+  }
+
+  this.isFile = function (file) {
+    return file != null && (file instanceof window.Blob || (file.flashId && file.name && file.size));
+  };
+
+  this.upload = function (config, internal) {
+    function toResumeFile(file, formData) {
+      if (file._ngfBlob) return file;
+      config._file = config._file || file;
+      if (config._start != null && resumeSupported) {
+        if (config._end && config._end >= file.size) {
+          config._finished = true;
+          config._end = file.size;
+        }
+        var slice = file.slice(config._start, config._end || file.size);
+        slice.name = file.name;
+        slice.ngfName = file.ngfName;
+        if (config._chunkSize) {
+          formData.append('_chunkSize', config._chunkSize);
+          formData.append('_currentChunkSize', config._end - config._start);
+          formData.append('_chunkNumber', Math.floor(config._start / config._chunkSize));
+          formData.append('_totalSize', config._file.size);
+        }
+        return slice;
+      }
+      return file;
+    }
+
+    function addFieldToFormData(formData, val, key) {
+      if (val !== undefined) {
+        if (angular.isDate(val)) {
+          val = val.toISOString();
+        }
+        if (angular.isString(val)) {
+          formData.append(key, val);
+        } else if (upload.isFile(val)) {
+          var file = toResumeFile(val, formData);
+          var split = key.split(',');
+          if (split[1]) {
+            file.ngfName = split[1].replace(/^\s+|\s+$/g, '');
+            key = split[0];
+          }
+          config._fileKey = config._fileKey || key;
+          formData.append(key, file, file.ngfName || file.name);
+        } else {
+          if (angular.isObject(val)) {
+            if (val.$$ngfCircularDetection) throw 'ngFileUpload: Circular reference in config.data. Make sure specified data for Upload.upload() has no circular reference: ' + key;
+
+            val.$$ngfCircularDetection = true;
+            try {
+              for (var k in val) {
+                if (val.hasOwnProperty(k) && k !== '$$ngfCircularDetection') {
+                  var objectKey = config.objectKey == null ? '[i]' : config.objectKey;
+                  if (val.length && parseInt(k) > -1) {
+                    objectKey = config.arrayKey == null ? objectKey : config.arrayKey;
+                  }
+                  addFieldToFormData(formData, val[k], key + objectKey.replace(/[ik]/g, k));
+                }
+              }
+            } finally {
+              delete val.$$ngfCircularDetection;
+            }
+          } else {
+            formData.append(key, val);
+          }
+        }
+      }
+    }
+
+    function digestConfig() {
+      config._chunkSize = upload.translateScalars(config.resumeChunkSize);
+      config._chunkSize = config._chunkSize ? parseInt(config._chunkSize.toString()) : null;
+
+      config.headers = config.headers || {};
+      config.headers['Content-Type'] = undefined;
+      config.transformRequest = config.transformRequest ?
+        (angular.isArray(config.transformRequest) ?
+          config.transformRequest : [config.transformRequest]) : [];
+      config.transformRequest.push(function (data) {
+        var formData = new window.FormData(), key;
+        data = data || config.fields || {};
+        if (config.file) {
+          data.file = config.file;
+        }
+        for (key in data) {
+          if (data.hasOwnProperty(key)) {
+            var val = data[key];
+            if (config.formDataAppender) {
+              config.formDataAppender(formData, key, val);
+            } else {
+              addFieldToFormData(formData, val, key);
+            }
+          }
+        }
+
+        return formData;
+      });
+    }
+
+    if (!internal) config = copy(config);
+    if (!config._isDigested) {
+      config._isDigested = true;
+      digestConfig();
+    }
+
+    return sendHttp(config);
+  };
+
+  this.http = function (config) {
+    config = copy(config);
+    config.transformRequest = config.transformRequest || function (data) {
+        if ((window.ArrayBuffer && data instanceof window.ArrayBuffer) || data instanceof window.Blob) {
+          return data;
+        }
+        return $http.defaults.transformRequest[0].apply(this, arguments);
+      };
+    config._chunkSize = upload.translateScalars(config.resumeChunkSize);
+    config._chunkSize = config._chunkSize ? parseInt(config._chunkSize.toString()) : null;
+
+    return sendHttp(config);
+  };
+
+  this.translateScalars = function (str) {
+    if (angular.isString(str)) {
+      if (str.search(/kb/i) === str.length - 2) {
+        return parseFloat(str.substring(0, str.length - 2) * 1024);
+      } else if (str.search(/mb/i) === str.length - 2) {
+        return parseFloat(str.substring(0, str.length - 2) * 1048576);
+      } else if (str.search(/gb/i) === str.length - 2) {
+        return parseFloat(str.substring(0, str.length - 2) * 1073741824);
+      } else if (str.search(/b/i) === str.length - 1) {
+        return parseFloat(str.substring(0, str.length - 1));
+      } else if (str.search(/s/i) === str.length - 1) {
+        return parseFloat(str.substring(0, str.length - 1));
+      } else if (str.search(/m/i) === str.length - 1) {
+        return parseFloat(str.substring(0, str.length - 1) * 60);
+      } else if (str.search(/h/i) === str.length - 1) {
+        return parseFloat(str.substring(0, str.length - 1) * 3600);
+      }
+    }
+    return str;
+  };
+
+  this.urlToBlob = function(url) {
+    var defer = $q.defer();
+    $http({url: url, method: 'get', responseType: 'arraybuffer'}).then(function (resp) {
+      var arrayBufferView = new Uint8Array(resp.data);
+      var type = resp.headers('content-type') || 'image/WebP';
+      var blob = new window.Blob([arrayBufferView], {type: type});
+      defer.resolve(blob);
+      //var split = type.split('[/;]');
+      //blob.name = url.substring(0, 150).replace(/\W+/g, '') + '.' + (split.length > 1 ? split[1] : 'jpg');
+    }, function (e) {
+      defer.reject(e);
+    });
+    return defer.promise;
+  };
+
+  this.setDefaults = function (defaults) {
+    this.defaults = defaults || {};
+  };
+
+  this.defaults = {};
+  this.version = ngFileUpload.version;
+}
+
+]);
+
+ngFileUpload.service('Upload', ['$parse', '$timeout', '$compile', '$q', 'UploadExif', function ($parse, $timeout, $compile, $q, UploadExif) {
+  var upload = UploadExif;
+  upload.getAttrWithDefaults = function (attr, name) {
+    if (attr[name] != null) return attr[name];
+    var def = upload.defaults[name];
+    return (def == null ? def : (angular.isString(def) ? def : JSON.stringify(def)));
+  };
+
+  upload.attrGetter = function (name, attr, scope, params) {
+    var attrVal = this.getAttrWithDefaults(attr, name);
+    if (scope) {
+      try {
+        if (params) {
+          return $parse(attrVal)(scope, params);
+        } else {
+          return $parse(attrVal)(scope);
+        }
+      } catch (e) {
+        // hangle string value without single qoute
+        if (name.search(/min|max|pattern/i)) {
+          return attrVal;
+        } else {
+          throw e;
+        }
+      }
+    } else {
+      return attrVal;
+    }
+  };
+
+  upload.shouldUpdateOn = function (type, attr, scope) {
+    var modelOptions = upload.attrGetter('ngModelOptions', attr, scope);
+    if (modelOptions && modelOptions.updateOn) {
+      return modelOptions.updateOn.split(' ').indexOf(type) > -1;
+    }
+    return true;
+  };
+
+  upload.emptyPromise = function () {
+    var d = $q.defer();
+    var args = arguments;
+    $timeout(function () {
+      d.resolve.apply(d, args);
+    });
+    return d.promise;
+  };
+
+  upload.rejectPromise = function () {
+    var d = $q.defer();
+    var args = arguments;
+    $timeout(function () {
+      d.reject.apply(d, args);
+    });
+    return d.promise;
+  };
+
+  upload.happyPromise = function (promise, data) {
+    var d = $q.defer();
+    promise.then(function (result) {
+      d.resolve(result);
+    }, function (error) {
+      $timeout(function () {
+        throw error;
+      });
+      d.resolve(data);
+    });
+    return d.promise;
+  };
+
+  function applyExifRotations(files, attr, scope) {
+    var promises = [upload.emptyPromise()];
+    angular.forEach(files, function (f, i) {
+      if (f.type.indexOf('image/jpeg') === 0 && upload.attrGetter('ngfFixOrientation', attr, scope, {$file: f})) {
+        promises.push(upload.happyPromise(upload.applyExifRotation(f), f).then(function (fixedFile) {
+          files.splice(i, 1, fixedFile);
+        }));
+      }
+    });
+    return $q.all(promises);
+  }
+
+  function resize(files, attr, scope) {
+    var param = upload.attrGetter('ngfResize', attr, scope);
+    if (!param || !angular.isObject(param) || !upload.isResizeSupported() || !files.length) return upload.emptyPromise();
+    var promises = [upload.emptyPromise()];
+
+    function handleFile(f, i) {
+      if (f.type.indexOf('image') === 0) {
+        if (param.pattern && !upload.validatePattern(f, param.pattern)) return;
+        var promise = upload.resize(f, param.width, param.height, param.quality,
+          param.type, param.ratio, param.centerCrop, function (width, height) {
+            return upload.attrGetter('ngfResizeIf', attr, scope,
+              {$width: width, $height: height, $file: f});
+          }, param.restoreExif !== false);
+        promises.push(promise);
+        promise.then(function (resizedFile) {
+          files.splice(i, 1, resizedFile);
+        }, function (e) {
+          f.$error = 'resize';
+          f.$errorParam = (e ? (e.message ? e.message : e) + ': ' : '') + (f && f.name);
+        });
+      }
+    }
+
+    for (var i = 0; i < files.length; i++) {
+      handleFile(files[i], i);
+    }
+    return $q.all(promises);
+  }
+
+  upload.updateModel = function (ngModel, attr, scope, fileChange, files, evt, noDelay) {
+    function update(files, invalidFiles, newFiles, dupFiles, isSingleModel) {
+      attr.$$ngfPrevValidFiles = files;
+      attr.$$ngfPrevInvalidFiles = invalidFiles;
+      var file = files && files.length ? files[0] : null;
+      var invalidFile = invalidFiles && invalidFiles.length ? invalidFiles[0] : null;
+
+      if (ngModel) {
+        upload.applyModelValidation(ngModel, files);
+        ngModel.$setViewValue(isSingleModel ? file : files);
+      }
+
+      if (fileChange) {
+        $parse(fileChange)(scope, {
+          $files: files,
+          $file: file,
+          $newFiles: newFiles,
+          $duplicateFiles: dupFiles,
+          $invalidFiles: invalidFiles,
+          $invalidFile: invalidFile,
+          $event: evt
+        });
+      }
+
+      var invalidModel = upload.attrGetter('ngfModelInvalid', attr);
+      if (invalidModel) {
+        $timeout(function () {
+          $parse(invalidModel).assign(scope, isSingleModel ? invalidFile : invalidFiles);
+        });
+      }
+      $timeout(function () {
+        // scope apply changes
+      });
+    }
+
+    var allNewFiles, dupFiles = [], prevValidFiles, prevInvalidFiles,
+      invalids = [], valids = [];
+
+    function removeDuplicates() {
+      function equals(f1, f2) {
+        return f1.name === f2.name && (f1.$ngfOrigSize || f1.size) === (f2.$ngfOrigSize || f2.size) &&
+          f1.type === f2.type;
+      }
+
+      function isInPrevFiles(f) {
+        var j;
+        for (j = 0; j < prevValidFiles.length; j++) {
+          if (equals(f, prevValidFiles[j])) {
+            return true;
+          }
+        }
+        for (j = 0; j < prevInvalidFiles.length; j++) {
+          if (equals(f, prevInvalidFiles[j])) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      if (files) {
+        allNewFiles = [];
+        dupFiles = [];
+        for (var i = 0; i < files.length; i++) {
+          if (isInPrevFiles(files[i])) {
+            dupFiles.push(files[i]);
+          } else {
+            allNewFiles.push(files[i]);
+          }
+        }
+      }
+    }
+
+    function toArray(v) {
+      return angular.isArray(v) ? v : [v];
+    }
+
+    function separateInvalids() {
+      valids = [];
+      invalids = [];
+      angular.forEach(allNewFiles, function (file) {
+        if (file.$error) {
+          invalids.push(file);
+        } else {
+          valids.push(file);
+        }
+      });
+    }
+
+    function resizeAndUpdate() {
+      function updateModel() {
+        $timeout(function () {
+          update(keep ? prevValidFiles.concat(valids) : valids,
+            keep ? prevInvalidFiles.concat(invalids) : invalids,
+            files, dupFiles, isSingleModel);
+        }, options && options.debounce ? options.debounce.change || options.debounce : 0);
+      }
+
+      resize(validateAfterResize ? allNewFiles : valids, attr, scope).then(function () {
+        if (validateAfterResize) {
+          upload.validate(allNewFiles, allLength, ngModel, attr, scope).then(function () {
+            separateInvalids();
+            updateModel();
+          });
+        } else {
+          updateModel();
+        }
+      }, function (e) {
+        throw 'Could not resize files ' + e;
+      });
+    }
+
+    prevValidFiles = attr.$$ngfPrevValidFiles || [];
+    prevInvalidFiles = attr.$$ngfPrevInvalidFiles || [];
+    if (ngModel && ngModel.$modelValue) {
+      prevValidFiles = toArray(ngModel.$modelValue);
+    }
+
+    var keep = upload.attrGetter('ngfKeep', attr, scope);
+    allNewFiles = (files || []).slice(0);
+    if (keep === 'distinct' || upload.attrGetter('ngfKeepDistinct', attr, scope) === true) {
+      removeDuplicates(attr, scope);
+    }
+
+    var isSingleModel = !keep && !upload.attrGetter('ngfMultiple', attr, scope) && !upload.attrGetter('multiple', attr);
+
+    if (keep && !allNewFiles.length) return;
+
+    upload.attrGetter('ngfBeforeModelChange', attr, scope, {
+      $files: files,
+      $file: files && files.length ? files[0] : null,
+      $newFiles: allNewFiles,
+      $duplicateFiles: dupFiles,
+      $event: evt
+    });
+
+    var validateAfterResize = upload.attrGetter('ngfValidateAfterResize', attr, scope);
+
+    var allLength = allNewFiles.length + prevValidFiles.length + prevInvalidFiles.length;
+    var options = upload.attrGetter('ngModelOptions', attr, scope);
+    upload.validate(allNewFiles, allLength, ngModel, attr, scope).then(function () {
+      if (noDelay) {
+        update(allNewFiles, [], files, dupFiles, isSingleModel);
+      } else {
+        if ((!options || !options.allowInvalid) && !validateAfterResize) {
+          separateInvalids();
+        } else {
+          valids = allNewFiles;
+        }
+        if (upload.attrGetter('ngfFixOrientation', attr, scope) && upload.isExifSupported()) {
+          applyExifRotations(valids, attr, scope).then(function () {
+            resizeAndUpdate();
+          });
+        } else {
+          resizeAndUpdate();
+        }
+      }
+    });
+  };
+
+  return upload;
+}]);
+
+ngFileUpload.directive('ngfSelect', ['$parse', '$timeout', '$compile', 'Upload', function ($parse, $timeout, $compile, Upload) {
+  var generatedElems = [];
+
+  function isDelayedClickSupported(ua) {
+    // fix for android native browser < 4.4 and safari windows
+    var m = ua.match(/Android[^\d]*(\d+)\.(\d+)/);
+    if (m && m.length > 2) {
+      var v = Upload.defaults.androidFixMinorVersion || 4;
+      return parseInt(m[1]) < 4 || (parseInt(m[1]) === v && parseInt(m[2]) < v);
+    }
+
+    // safari on windows
+    return ua.indexOf('Chrome') === -1 && /.*Windows.*Safari.*/.test(ua);
+  }
+
+  function linkFileSelect(scope, elem, attr, ngModel, $parse, $timeout, $compile, upload) {
+    /** @namespace attr.ngfSelect */
+    /** @namespace attr.ngfChange */
+    /** @namespace attr.ngModel */
+    /** @namespace attr.ngModelOptions */
+    /** @namespace attr.ngfMultiple */
+    /** @namespace attr.ngfCapture */
+    /** @namespace attr.ngfValidate */
+    /** @namespace attr.ngfKeep */
+    var attrGetter = function (name, scope) {
+      return upload.attrGetter(name, attr, scope);
+    };
+
+    function isInputTypeFile() {
+      return elem[0].tagName.toLowerCase() === 'input' && attr.type && attr.type.toLowerCase() === 'file';
+    }
+
+    function fileChangeAttr() {
+      return attrGetter('ngfChange') || attrGetter('ngfSelect');
+    }
+
+    function changeFn(evt) {
+      if (upload.shouldUpdateOn('change', attr, scope)) {
+        var fileList = evt.__files_ || (evt.target && evt.target.files), files = [];
+        for (var i = 0; i < fileList.length; i++) {
+          files.push(fileList[i]);
+        }
+        upload.updateModel(ngModel, attr, scope, fileChangeAttr(),
+          files.length ? files : null, evt);
+      }
+    }
+
+    upload.registerModelChangeValidator(ngModel, attr, scope);
+
+    var unwatches = [];
+    unwatches.push(scope.$watch(attrGetter('ngfMultiple'), function () {
+      fileElem.attr('multiple', attrGetter('ngfMultiple', scope));
+    }));
+    unwatches.push(scope.$watch(attrGetter('ngfCapture'), function () {
+      fileElem.attr('capture', attrGetter('ngfCapture', scope));
+    }));
+    unwatches.push(scope.$watch(attrGetter('ngfAccept'), function () {
+      fileElem.attr('accept', attrGetter('ngfAccept', scope));
+    }));
+    attr.$observe('accept', function () {
+      fileElem.attr('accept', attrGetter('accept'));
+    });
+    unwatches.push(function () {
+      if (attr.$$observers) delete attr.$$observers.accept;
+    });
+    function bindAttrToFileInput(fileElem) {
+      if (elem !== fileElem) {
+        for (var i = 0; i < elem[0].attributes.length; i++) {
+          var attribute = elem[0].attributes[i];
+          if (attribute.name !== 'type' && attribute.name !== 'class' && attribute.name !== 'style') {
+            if (attribute.value == null || attribute.value === '') {
+              if (attribute.name === 'required') attribute.value = 'required';
+              if (attribute.name === 'multiple') attribute.value = 'multiple';
+            }
+            fileElem.attr(attribute.name, attribute.name === 'id' ? 'ngf-' + attribute.value : attribute.value);
+          }
+        }
+      }
+    }
+
+    function createFileInput() {
+      if (isInputTypeFile()) {
+        return elem;
+      }
+
+      var fileElem = angular.element('<input type="file">');
+
+      bindAttrToFileInput(fileElem);
+
+      var label = angular.element('<label>upload</label>');
+      label.css('visibility', 'hidden').css('position', 'absolute').css('overflow', 'hidden')
+        .css('width', '0px').css('height', '0px').css('border', 'none')
+        .css('margin', '0px').css('padding', '0px').attr('tabindex', '-1');
+      generatedElems.push({el: elem, ref: label});
+
+      document.body.appendChild(label.append(fileElem)[0]);
+
+      return fileElem;
+    }
+
+    var initialTouchStartY = 0;
+
+    function clickHandler(evt) {
+      if (elem.attr('disabled')) return false;
+      if (attrGetter('ngfSelectDisabled', scope)) return;
+
+      var r = handleTouch(evt);
+      if (r != null) return r;
+
+      resetModel(evt);
+
+      // fix for md when the element is removed from the DOM and added back #460
+      try {
+        if (!isInputTypeFile() && !document.body.contains(fileElem[0])) {
+          generatedElems.push({el: elem, ref: fileElem.parent()});
+          document.body.appendChild(fileElem.parent()[0]);
+          fileElem.bind('change', changeFn);
+        }
+      } catch(e){/*ignore*/}
+
+      if (isDelayedClickSupported(navigator.userAgent)) {
+        setTimeout(function () {
+          fileElem[0].click();
+        }, 0);
+      } else {
+        fileElem[0].click();
+      }
+
+      return false;
+    }
+
+    function handleTouch(evt) {
+      var touches = evt.changedTouches || (evt.originalEvent && evt.originalEvent.changedTouches);
+      if (evt.type === 'touchstart') {
+        initialTouchStartY = touches ? touches[0].clientY : 0;
+        return true; // don't block event default
+      } else {
+        evt.stopPropagation();
+        evt.preventDefault();
+
+        // prevent scroll from triggering event
+        if (evt.type === 'touchend') {
+          var currentLocation = touches ? touches[0].clientY : 0;
+          if (Math.abs(currentLocation - initialTouchStartY) > 20) return false;
+        }
+      }
+    }
+
+    var fileElem = elem;
+
+    function resetModel(evt) {
+      if (upload.shouldUpdateOn('click', attr, scope) && fileElem.val()) {
+        fileElem.val(null);
+        upload.updateModel(ngModel, attr, scope, fileChangeAttr(), null, evt, true);
+      }
+    }
+
+    if (!isInputTypeFile()) {
+      fileElem = createFileInput();
+    }
+    fileElem.bind('change', changeFn);
+
+    if (!isInputTypeFile()) {
+      elem.bind('click touchstart touchend', clickHandler);
+    } else {
+      elem.bind('click', resetModel);
+    }
+
+    function ie10SameFileSelectFix(evt) {
+      if (fileElem && !fileElem.attr('__ngf_ie10_Fix_')) {
+        if (!fileElem[0].parentNode) {
+          fileElem = null;
+          return;
+        }
+        evt.preventDefault();
+        evt.stopPropagation();
+        fileElem.unbind('click');
+        var clone = fileElem.clone();
+        fileElem.replaceWith(clone);
+        fileElem = clone;
+        fileElem.attr('__ngf_ie10_Fix_', 'true');
+        fileElem.bind('change', changeFn);
+        fileElem.bind('click', ie10SameFileSelectFix);
+        fileElem[0].click();
+        return false;
+      } else {
+        fileElem.removeAttr('__ngf_ie10_Fix_');
+      }
+    }
+
+    if (navigator.appVersion.indexOf('MSIE 10') !== -1) {
+      fileElem.bind('click', ie10SameFileSelectFix);
+    }
+
+    if (ngModel) ngModel.$formatters.push(function (val) {
+      if (val == null || val.length === 0) {
+        if (fileElem.val()) {
+          fileElem.val(null);
+        }
+      }
+      return val;
+    });
+
+    scope.$on('$destroy', function () {
+      if (!isInputTypeFile()) fileElem.parent().remove();
+      angular.forEach(unwatches, function (unwatch) {
+        unwatch();
+      });
+    });
+
+    $timeout(function () {
+      for (var i = 0; i < generatedElems.length; i++) {
+        var g = generatedElems[i];
+        if (!document.body.contains(g.el[0])) {
+          generatedElems.splice(i, 1);
+          g.ref.remove();
+        }
+      }
+    });
+
+    if (window.FileAPI && window.FileAPI.ngfFixIE) {
+      window.FileAPI.ngfFixIE(elem, fileElem, changeFn);
+    }
+  }
+
+  return {
+    restrict: 'AEC',
+    require: '?ngModel',
+    link: function (scope, elem, attr, ngModel) {
+      linkFileSelect(scope, elem, attr, ngModel, $parse, $timeout, $compile, Upload);
+    }
+  };
+}]);
+
+(function () {
+
+  ngFileUpload.service('UploadDataUrl', ['UploadBase', '$timeout', '$q', function (UploadBase, $timeout, $q) {
+    var upload = UploadBase;
+    upload.base64DataUrl = function (file) {
+      if (angular.isArray(file)) {
+        var d = $q.defer(), count = 0;
+        angular.forEach(file, function (f) {
+          upload.dataUrl(f, true)['finally'](function () {
+            count++;
+            if (count === file.length) {
+              var urls = [];
+              angular.forEach(file, function (ff) {
+                urls.push(ff.$ngfDataUrl);
+              });
+              d.resolve(urls, file);
+            }
+          });
+        });
+        return d.promise;
+      } else {
+        return upload.dataUrl(file, true);
+      }
+    };
+    upload.dataUrl = function (file, disallowObjectUrl) {
+      if (!file) return upload.emptyPromise(file, file);
+      if ((disallowObjectUrl && file.$ngfDataUrl != null) || (!disallowObjectUrl && file.$ngfBlobUrl != null)) {
+        return upload.emptyPromise(disallowObjectUrl ? file.$ngfDataUrl : file.$ngfBlobUrl, file);
+      }
+      var p = disallowObjectUrl ? file.$$ngfDataUrlPromise : file.$$ngfBlobUrlPromise;
+      if (p) return p;
+
+      var deferred = $q.defer();
+      $timeout(function () {
+        if (window.FileReader && file &&
+          (!window.FileAPI || navigator.userAgent.indexOf('MSIE 8') === -1 || file.size < 20000) &&
+          (!window.FileAPI || navigator.userAgent.indexOf('MSIE 9') === -1 || file.size < 4000000)) {
+          //prefer URL.createObjectURL for handling refrences to files of all sizes
+          //since it doesn´t build a large string in memory
+          var URL = window.URL || window.webkitURL;
+          if (URL && URL.createObjectURL && !disallowObjectUrl) {
+            var url;
+            try {
+              url = URL.createObjectURL(file);
+            } catch (e) {
+              $timeout(function () {
+                file.$ngfBlobUrl = '';
+                deferred.reject();
+              });
+              return;
+            }
+            $timeout(function () {
+              file.$ngfBlobUrl = url;
+              if (url) {
+                deferred.resolve(url, file);
+                upload.blobUrls = upload.blobUrls || [];
+                upload.blobUrlsTotalSize = upload.blobUrlsTotalSize || 0;
+                upload.blobUrls.push({url: url, size: file.size});
+                upload.blobUrlsTotalSize += file.size || 0;
+                var maxMemory = upload.defaults.blobUrlsMaxMemory || 268435456;
+                var maxLength = upload.defaults.blobUrlsMaxQueueSize || 200;
+                while ((upload.blobUrlsTotalSize > maxMemory || upload.blobUrls.length > maxLength) && upload.blobUrls.length > 1) {
+                  var obj = upload.blobUrls.splice(0, 1)[0];
+                  URL.revokeObjectURL(obj.url);
+                  upload.blobUrlsTotalSize -= obj.size;
+                }
+              }
+            });
+          } else {
+            var fileReader = new FileReader();
+            fileReader.onload = function (e) {
+              $timeout(function () {
+                file.$ngfDataUrl = e.target.result;
+                deferred.resolve(e.target.result, file);
+                $timeout(function () {
+                  delete file.$ngfDataUrl;
+                }, 1000);
+              });
+            };
+            fileReader.onerror = function () {
+              $timeout(function () {
+                file.$ngfDataUrl = '';
+                deferred.reject();
+              });
+            };
+            fileReader.readAsDataURL(file);
+          }
+        } else {
+          $timeout(function () {
+            file[disallowObjectUrl ? '$ngfDataUrl' : '$ngfBlobUrl'] = '';
+            deferred.reject();
+          });
+        }
+      });
+
+      if (disallowObjectUrl) {
+        p = file.$$ngfDataUrlPromise = deferred.promise;
+      } else {
+        p = file.$$ngfBlobUrlPromise = deferred.promise;
+      }
+      p['finally'](function () {
+        delete file[disallowObjectUrl ? '$$ngfDataUrlPromise' : '$$ngfBlobUrlPromise'];
+      });
+      return p;
+    };
+    return upload;
+  }]);
+
+  function getTagType(el) {
+    if (el.tagName.toLowerCase() === 'img') return 'image';
+    if (el.tagName.toLowerCase() === 'audio') return 'audio';
+    if (el.tagName.toLowerCase() === 'video') return 'video';
+    return /./;
+  }
+
+  function linkFileDirective(Upload, $timeout, scope, elem, attr, directiveName, resizeParams, isBackground) {
+    function constructDataUrl(file) {
+      var disallowObjectUrl = Upload.attrGetter('ngfNoObjectUrl', attr, scope);
+      Upload.dataUrl(file, disallowObjectUrl)['finally'](function () {
+        $timeout(function () {
+          var src = (disallowObjectUrl ? file.$ngfDataUrl : file.$ngfBlobUrl) || file.$ngfDataUrl;
+          if (isBackground) {
+            elem.css('background-image', 'url(\'' + (src || '') + '\')');
+          } else {
+            elem.attr('src', src);
+          }
+          if (src) {
+            elem.removeClass('ng-hide');
+          } else {
+            elem.addClass('ng-hide');
+          }
+        });
+      });
+    }
+
+    $timeout(function () {
+      var unwatch = scope.$watch(attr[directiveName], function (file) {
+        var size = resizeParams;
+        if (directiveName === 'ngfThumbnail') {
+          if (!size) {
+            size = {width: elem[0].clientWidth, height: elem[0].clientHeight};
+          }
+          if (size.width === 0 && window.getComputedStyle) {
+            var style = getComputedStyle(elem[0]);
+            size = {
+              width: parseInt(style.width.slice(0, -2)),
+              height: parseInt(style.height.slice(0, -2))
+            };
+          }
+        }
+
+        if (angular.isString(file)) {
+          elem.removeClass('ng-hide');
+          if (isBackground) {
+            return elem.css('background-image', 'url(\'' + file + '\')');
+          } else {
+            return elem.attr('src', file);
+          }
+        }
+        if (file && file.type && file.type.search(getTagType(elem[0])) === 0 &&
+          (!isBackground || file.type.indexOf('image') === 0)) {
+          if (size && Upload.isResizeSupported()) {
+            Upload.resize(file, size.width, size.height, size.quality).then(
+              function (f) {
+                constructDataUrl(f);
+              }, function (e) {
+                throw e;
+              }
+            );
+          } else {
+            constructDataUrl(file);
+          }
+        } else {
+          elem.addClass('ng-hide');
+        }
+      });
+
+      scope.$on('$destroy', function () {
+        unwatch();
+      });
+    });
+  }
+
+
+  /** @namespace attr.ngfSrc */
+  /** @namespace attr.ngfNoObjectUrl */
+  ngFileUpload.directive('ngfSrc', ['Upload', '$timeout', function (Upload, $timeout) {
+    return {
+      restrict: 'AE',
+      link: function (scope, elem, attr) {
+        linkFileDirective(Upload, $timeout, scope, elem, attr, 'ngfSrc',
+          Upload.attrGetter('ngfResize', attr, scope), false);
+      }
+    };
+  }]);
+
+  /** @namespace attr.ngfBackground */
+  /** @namespace attr.ngfNoObjectUrl */
+  ngFileUpload.directive('ngfBackground', ['Upload', '$timeout', function (Upload, $timeout) {
+    return {
+      restrict: 'AE',
+      link: function (scope, elem, attr) {
+        linkFileDirective(Upload, $timeout, scope, elem, attr, 'ngfBackground',
+          Upload.attrGetter('ngfResize', attr, scope), true);
+      }
+    };
+  }]);
+
+  /** @namespace attr.ngfThumbnail */
+  /** @namespace attr.ngfAsBackground */
+  /** @namespace attr.ngfSize */
+  /** @namespace attr.ngfNoObjectUrl */
+  ngFileUpload.directive('ngfThumbnail', ['Upload', '$timeout', function (Upload, $timeout) {
+    return {
+      restrict: 'AE',
+      link: function (scope, elem, attr) {
+        var size = Upload.attrGetter('ngfSize', attr, scope);
+        linkFileDirective(Upload, $timeout, scope, elem, attr, 'ngfThumbnail', size,
+          Upload.attrGetter('ngfAsBackground', attr, scope));
+      }
+    };
+  }]);
+
+  ngFileUpload.config(['$compileProvider', function ($compileProvider) {
+    if ($compileProvider.imgSrcSanitizationWhitelist) $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|tel|local|file|data|blob):/);
+    if ($compileProvider.aHrefSanitizationWhitelist) $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|tel|local|file|data|blob):/);
+  }]);
+
+  ngFileUpload.filter('ngfDataUrl', ['UploadDataUrl', '$sce', function (UploadDataUrl, $sce) {
+    return function (file, disallowObjectUrl, trustedUrl) {
+      if (angular.isString(file)) {
+        return $sce.trustAsResourceUrl(file);
+      }
+      var src = file && ((disallowObjectUrl ? file.$ngfDataUrl : file.$ngfBlobUrl) || file.$ngfDataUrl);
+      if (file && !src) {
+        if (!file.$ngfDataUrlFilterInProgress && angular.isObject(file)) {
+          file.$ngfDataUrlFilterInProgress = true;
+          UploadDataUrl.dataUrl(file, disallowObjectUrl);
+        }
+        return '';
+      }
+      if (file) delete file.$ngfDataUrlFilterInProgress;
+      return (file && src ? (trustedUrl ? $sce.trustAsResourceUrl(src) : src) : file) || '';
+    };
+  }]);
+
+})();
+
+ngFileUpload.service('UploadValidate', ['UploadDataUrl', '$q', '$timeout', function (UploadDataUrl, $q, $timeout) {
+  var upload = UploadDataUrl;
+
+  function globStringToRegex(str) {
+    var regexp = '', excludes = [];
+    if (str.length > 2 && str[0] === '/' && str[str.length - 1] === '/') {
+      regexp = str.substring(1, str.length - 1);
+    } else {
+      var split = str.split(',');
+      if (split.length > 1) {
+        for (var i = 0; i < split.length; i++) {
+          var r = globStringToRegex(split[i]);
+          if (r.regexp) {
+            regexp += '(' + r.regexp + ')';
+            if (i < split.length - 1) {
+              regexp += '|';
+            }
+          } else {
+            excludes = excludes.concat(r.excludes);
+          }
+        }
+      } else {
+        if (str.indexOf('!') === 0) {
+          excludes.push('^((?!' + globStringToRegex(str.substring(1)).regexp + ').)*$');
+        } else {
+          if (str.indexOf('.') === 0) {
+            str = '*' + str;
+          }
+          regexp = '^' + str.replace(new RegExp('[.\\\\+*?\\[\\^\\]$(){}=!<>|:\\-]', 'g'), '\\$&') + '$';
+          regexp = regexp.replace(/\\\*/g, '.*').replace(/\\\?/g, '.');
+        }
+      }
+    }
+    return {regexp: regexp, excludes: excludes};
+  }
+
+  upload.validatePattern = function (file, val) {
+    if (!val) {
+      return true;
+    }
+    var pattern = globStringToRegex(val), valid = true;
+    if (pattern.regexp && pattern.regexp.length) {
+      var regexp = new RegExp(pattern.regexp, 'i');
+      valid = (file.type != null && regexp.test(file.type)) ||
+        (file.name != null && regexp.test(file.name));
+    }
+    var len = pattern.excludes.length;
+    while (len--) {
+      var exclude = new RegExp(pattern.excludes[len], 'i');
+      valid = valid && (file.type == null || exclude.test(file.type)) &&
+        (file.name == null || exclude.test(file.name));
+    }
+    return valid;
+  };
+
+  upload.ratioToFloat = function (val) {
+    var r = val.toString(), xIndex = r.search(/[x:]/i);
+    if (xIndex > -1) {
+      r = parseFloat(r.substring(0, xIndex)) / parseFloat(r.substring(xIndex + 1));
+    } else {
+      r = parseFloat(r);
+    }
+    return r;
+  };
+
+  upload.registerModelChangeValidator = function (ngModel, attr, scope) {
+    if (ngModel) {
+      ngModel.$formatters.push(function (files) {
+        if (ngModel.$dirty) {
+          if (files && !angular.isArray(files)) {
+            files = [files];
+          }
+          upload.validate(files, files ? files.length : 0, ngModel, attr, scope).then(function () {
+            upload.applyModelValidation(ngModel, files);
+          });
+        }
+      });
+    }
+  };
+
+  function markModelAsDirty(ngModel, files) {
+    if (files != null && !ngModel.$dirty) {
+      if (ngModel.$setDirty) {
+        ngModel.$setDirty();
+      } else {
+        ngModel.$dirty = true;
+      }
+    }
+  }
+
+  upload.applyModelValidation = function (ngModel, files) {
+    markModelAsDirty(ngModel, files);
+    angular.forEach(ngModel.$ngfValidations, function (validation) {
+      ngModel.$setValidity(validation.name, validation.valid);
+    });
+  };
+
+  upload.getValidationAttr = function (attr, scope, name, validationName, file) {
+    var dName = 'ngf' + name[0].toUpperCase() + name.substr(1);
+    var val = upload.attrGetter(dName, attr, scope, {$file: file});
+    if (val == null) {
+      val = upload.attrGetter('ngfValidate', attr, scope, {$file: file});
+      if (val) {
+        var split = (validationName || name).split('.');
+        val = val[split[0]];
+        if (split.length > 1) {
+          val = val && val[split[1]];
+        }
+      }
+    }
+    return val;
+  };
+
+  upload.validate = function (files, allLength, ngModel, attr, scope) {
+    ngModel = ngModel || {};
+    ngModel.$ngfValidations = ngModel.$ngfValidations || [];
+
+    angular.forEach(ngModel.$ngfValidations, function (v) {
+      v.valid = true;
+    });
+
+    var attrGetter = function (name, params) {
+      return upload.attrGetter(name, attr, scope, params);
+    };
+
+    if (files == null || files.length === 0) {
+      return upload.emptyPromise(ngModel);
+    }
+
+    files = files.length === undefined ? [files] : files.slice(0);
+
+    function validateSync(name, validationName, fn) {
+      if (files) {
+        var i = files.length, valid = null;
+        while (i--) {
+          var file = files[i];
+          if (file) {
+            var val = upload.getValidationAttr(attr, scope, name, validationName, file);
+            if (val != null) {
+              if (!fn(file, val)) {
+                file.$error = name;
+                (file.$errorMessages = (file.$errorMessages || {})).name = true;
+                file.$errorParam = val;
+                files.splice(i, 1);
+                valid = false;
+              }
+            }
+          }
+        }
+        if (valid !== null) {
+          ngModel.$ngfValidations.push({name: name, valid: valid});
+        }
+      }
+    }
+
+    validateSync('maxFiles', null, function (file, val) {
+      return allLength <= val;
+    });
+    validateSync('pattern', null, upload.validatePattern);
+    validateSync('minSize', 'size.min', function (file, val) {
+      return file.size + 0.1 >= upload.translateScalars(val);
+    });
+    validateSync('maxSize', 'size.max', function (file, val) {
+      return file.size - 0.1 <= upload.translateScalars(val);
+    });
+    var totalSize = 0;
+    validateSync('maxTotalSize', null, function (file, val) {
+      totalSize += file.size;
+      if (totalSize > upload.translateScalars(val)) {
+        files.splice(0, files.length);
+        return false;
+      }
+      return true;
+    });
+
+    validateSync('validateFn', null, function (file, r) {
+      return r === true || r === null || r === '';
+    });
+
+    if (!files.length) {
+      return upload.emptyPromise(ngModel, ngModel.$ngfValidations);
+    }
+
+    function validateAsync(name, validationName, type, asyncFn, fn) {
+      function resolveResult(defer, file, val) {
+        if (val != null) {
+          asyncFn(file, val).then(function (d) {
+            if (!fn(d, val)) {
+              file.$error = name;
+              (file.$errorMessages = (file.$errorMessages || {})).name = true;
+              file.$errorParam = val;
+              defer.reject();
+            } else {
+              defer.resolve();
+            }
+          }, function () {
+            if (attrGetter('ngfValidateForce', {$file: file})) {
+              file.$error = name;
+              (file.$errorMessages = (file.$errorMessages || {})).name = true;
+              file.$errorParam = val;
+              defer.reject();
+            } else {
+              defer.resolve();
+            }
+          });
+        } else {
+          defer.resolve();
+        }
+      }
+
+      var promises = [upload.emptyPromise()];
+      if (files) {
+        files = files.length === undefined ? [files] : files;
+        angular.forEach(files, function (file) {
+          var defer = $q.defer();
+          promises.push(defer.promise);
+          if (type && (file.type == null || file.type.search(type) !== 0)) {
+            defer.resolve();
+            return;
+          }
+          if (name === 'dimensions' && upload.attrGetter('ngfDimensions', attr) != null) {
+            upload.imageDimensions(file).then(function (d) {
+              resolveResult(defer, file,
+                attrGetter('ngfDimensions', {$file: file, $width: d.width, $height: d.height}));
+            }, function () {
+              defer.reject();
+            });
+          } else if (name === 'duration' && upload.attrGetter('ngfDuration', attr) != null) {
+            upload.mediaDuration(file).then(function (d) {
+              resolveResult(defer, file,
+                attrGetter('ngfDuration', {$file: file, $duration: d}));
+            }, function () {
+              defer.reject();
+            });
+          } else {
+            resolveResult(defer, file,
+              upload.getValidationAttr(attr, scope, name, validationName, file));
+          }
+        });
+        return $q.all(promises).then(function () {
+          ngModel.$ngfValidations.push({name: name, valid: true});
+        }, function () {
+          ngModel.$ngfValidations.push({name: name, valid: false});
+        });
+      }
+    }
+
+    var deffer = $q.defer();
+    var promises = [];
+
+    promises.push(upload.happyPromise(validateAsync('maxHeight', 'height.max', /image/,
+      this.imageDimensions, function (d, val) {
+        return d.height <= val;
+      })));
+    promises.push(upload.happyPromise(validateAsync('minHeight', 'height.min', /image/,
+      this.imageDimensions, function (d, val) {
+        return d.height >= val;
+      })));
+    promises.push(upload.happyPromise(validateAsync('maxWidth', 'width.max', /image/,
+      this.imageDimensions, function (d, val) {
+        return d.width <= val;
+      })));
+    promises.push(upload.happyPromise(validateAsync('minWidth', 'width.min', /image/,
+      this.imageDimensions, function (d, val) {
+        return d.width >= val;
+      })));
+    promises.push(upload.happyPromise(validateAsync('dimensions', null, /image/,
+      function (file, val) {
+        return upload.emptyPromise(val);
+      }, function (r) {
+        return r;
+      })));
+    promises.push(upload.happyPromise(validateAsync('ratio', null, /image/,
+      this.imageDimensions, function (d, val) {
+        var split = val.toString().split(','), valid = false;
+        for (var i = 0; i < split.length; i++) {
+          if (Math.abs((d.width / d.height) - upload.ratioToFloat(split[i])) < 0.0001) {
+            valid = true;
+          }
+        }
+        return valid;
+      })));
+    promises.push(upload.happyPromise(validateAsync('maxRatio', 'ratio.max', /image/,
+      this.imageDimensions, function (d, val) {
+        return (d.width / d.height) - upload.ratioToFloat(val) < 0.0001;
+      })));
+    promises.push(upload.happyPromise(validateAsync('minRatio', 'ratio.min', /image/,
+      this.imageDimensions, function (d, val) {
+        return (d.width / d.height) - upload.ratioToFloat(val) > -0.0001;
+      })));
+    promises.push(upload.happyPromise(validateAsync('maxDuration', 'duration.max', /audio|video/,
+      this.mediaDuration, function (d, val) {
+        return d <= upload.translateScalars(val);
+      })));
+    promises.push(upload.happyPromise(validateAsync('minDuration', 'duration.min', /audio|video/,
+      this.mediaDuration, function (d, val) {
+        return d >= upload.translateScalars(val);
+      })));
+    promises.push(upload.happyPromise(validateAsync('duration', null, /audio|video/,
+      function (file, val) {
+        return upload.emptyPromise(val);
+      }, function (r) {
+        return r;
+      })));
+
+    promises.push(upload.happyPromise(validateAsync('validateAsyncFn', null, null,
+      function (file, val) {
+        return val;
+      }, function (r) {
+        return r === true || r === null || r === '';
+      })));
+
+    return $q.all(promises).then(function () {
+      deffer.resolve(ngModel, ngModel.$ngfValidations);
+    });
+  };
+
+  upload.imageDimensions = function (file) {
+    if (file.$ngfWidth && file.$ngfHeight) {
+      var d = $q.defer();
+      $timeout(function () {
+        d.resolve({width: file.$ngfWidth, height: file.$ngfHeight});
+      });
+      return d.promise;
+    }
+    if (file.$ngfDimensionPromise) return file.$ngfDimensionPromise;
+
+    var deferred = $q.defer();
+    $timeout(function () {
+      if (file.type.indexOf('image') !== 0) {
+        deferred.reject('not image');
+        return;
+      }
+      upload.dataUrl(file).then(function (dataUrl) {
+        var img = angular.element('<img>').attr('src', dataUrl).css('visibility', 'hidden').css('position', 'fixed');
+
+        function success() {
+          var width = img[0].clientWidth;
+          var height = img[0].clientHeight;
+          img.remove();
+          file.$ngfWidth = width;
+          file.$ngfHeight = height;
+          deferred.resolve({width: width, height: height});
+        }
+
+        function error() {
+          img.remove();
+          deferred.reject('load error');
+        }
+
+        img.on('load', success);
+        img.on('error', error);
+        var count = 0;
+
+        function checkLoadError() {
+          $timeout(function () {
+            if (img[0].parentNode) {
+              if (img[0].clientWidth) {
+                success();
+              } else if (count > 10) {
+                error();
+              } else {
+                checkLoadError();
+              }
+            }
+          }, 1000);
+        }
+
+        checkLoadError();
+
+        angular.element(document.getElementsByTagName('body')[0]).append(img);
+      }, function () {
+        deferred.reject('load error');
+      });
+    });
+
+    file.$ngfDimensionPromise = deferred.promise;
+    file.$ngfDimensionPromise['finally'](function () {
+      delete file.$ngfDimensionPromise;
+    });
+    return file.$ngfDimensionPromise;
+  };
+
+  upload.mediaDuration = function (file) {
+    if (file.$ngfDuration) {
+      var d = $q.defer();
+      $timeout(function () {
+        d.resolve(file.$ngfDuration);
+      });
+      return d.promise;
+    }
+    if (file.$ngfDurationPromise) return file.$ngfDurationPromise;
+
+    var deferred = $q.defer();
+    $timeout(function () {
+      if (file.type.indexOf('audio') !== 0 && file.type.indexOf('video') !== 0) {
+        deferred.reject('not media');
+        return;
+      }
+      upload.dataUrl(file).then(function (dataUrl) {
+        var el = angular.element(file.type.indexOf('audio') === 0 ? '<audio>' : '<video>')
+          .attr('src', dataUrl).css('visibility', 'none').css('position', 'fixed');
+
+        function success() {
+          var duration = el[0].duration;
+          file.$ngfDuration = duration;
+          el.remove();
+          deferred.resolve(duration);
+        }
+
+        function error() {
+          el.remove();
+          deferred.reject('load error');
+        }
+
+        el.on('loadedmetadata', success);
+        el.on('error', error);
+        var count = 0;
+
+        function checkLoadError() {
+          $timeout(function () {
+            if (el[0].parentNode) {
+              if (el[0].duration) {
+                success();
+              } else if (count > 10) {
+                error();
+              } else {
+                checkLoadError();
+              }
+            }
+          }, 1000);
+        }
+
+        checkLoadError();
+
+        angular.element(document.body).append(el);
+      }, function () {
+        deferred.reject('load error');
+      });
+    });
+
+    file.$ngfDurationPromise = deferred.promise;
+    file.$ngfDurationPromise['finally'](function () {
+      delete file.$ngfDurationPromise;
+    });
+    return file.$ngfDurationPromise;
+  };
+  return upload;
+}
+]);
+
+ngFileUpload.service('UploadResize', ['UploadValidate', '$q', function (UploadValidate, $q) {
+  var upload = UploadValidate;
+
+  /**
+   * Conserve aspect ratio of the original region. Useful when shrinking/enlarging
+   * images to fit into a certain area.
+   * Source:  http://stackoverflow.com/a/14731922
+   *
+   * @param {Number} srcWidth Source area width
+   * @param {Number} srcHeight Source area height
+   * @param {Number} maxWidth Nestable area maximum available width
+   * @param {Number} maxHeight Nestable area maximum available height
+   * @return {Object} { width, height }
+   */
+  var calculateAspectRatioFit = function (srcWidth, srcHeight, maxWidth, maxHeight, centerCrop) {
+    var ratio = centerCrop ? Math.max(maxWidth / srcWidth, maxHeight / srcHeight) :
+      Math.min(maxWidth / srcWidth, maxHeight / srcHeight);
+    return {
+      width: srcWidth * ratio, height: srcHeight * ratio,
+      marginX: srcWidth * ratio - maxWidth, marginY: srcHeight * ratio - maxHeight
+    };
+  };
+
+  // Extracted from https://github.com/romelgomez/angular-firebase-image-upload/blob/master/app/scripts/fileUpload.js#L89
+  var resize = function (imagen, width, height, quality, type, ratio, centerCrop, resizeIf) {
+    var deferred = $q.defer();
+    var canvasElement = document.createElement('canvas');
+    var imageElement = document.createElement('img');
+
+    imageElement.onload = function () {
+      if (resizeIf != null && resizeIf(imageElement.width, imageElement.height) === false) {
+        deferred.reject('resizeIf');
+        return;
+      }
+      try {
+        if (ratio) {
+          var ratioFloat = upload.ratioToFloat(ratio);
+          var imgRatio = imageElement.width / imageElement.height;
+          if (imgRatio < ratioFloat) {
+            width = imageElement.width;
+            height = width / ratioFloat;
+          } else {
+            height = imageElement.height;
+            width = height * ratioFloat;
+          }
+        }
+        if (!width) {
+          width = imageElement.width;
+        }
+        if (!height) {
+          height = imageElement.height;
+        }
+        var dimensions = calculateAspectRatioFit(imageElement.width, imageElement.height, width, height, centerCrop);
+        canvasElement.width = Math.min(dimensions.width, width);
+        canvasElement.height = Math.min(dimensions.height, height);
+        var context = canvasElement.getContext('2d');
+        context.drawImage(imageElement,
+          Math.min(0, -dimensions.marginX / 2), Math.min(0, -dimensions.marginY / 2),
+          dimensions.width, dimensions.height);
+        deferred.resolve(canvasElement.toDataURL(type || 'image/WebP', quality || 0.934));
+      } catch (e) {
+        deferred.reject(e);
+      }
+    };
+    imageElement.onerror = function () {
+      deferred.reject();
+    };
+    imageElement.src = imagen;
+    return deferred.promise;
+  };
+
+  upload.dataUrltoBlob = function (dataurl, name, origSize) {
+    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    var blob = new window.Blob([u8arr], {type: mime});
+    blob.name = name;
+    blob.$ngfOrigSize = origSize;
+    return blob;
+  };
+
+  upload.isResizeSupported = function () {
+    var elem = document.createElement('canvas');
+    return window.atob && elem.getContext && elem.getContext('2d') && window.Blob;
+  };
+
+  if (upload.isResizeSupported()) {
+    // add name getter to the blob constructor prototype
+    Object.defineProperty(window.Blob.prototype, 'name', {
+      get: function () {
+        return this.$ngfName;
+      },
+      set: function (v) {
+        this.$ngfName = v;
+      },
+      configurable: true
+    });
+  }
+
+  upload.resize = function (file, width, height, quality, type, ratio, centerCrop, resizeIf, restoreExif) {
+    if (file.type.indexOf('image') !== 0) return upload.emptyPromise(file);
+
+    var deferred = $q.defer();
+    upload.dataUrl(file, true).then(function (url) {
+      resize(url, width, height, quality, type || file.type, ratio, centerCrop, resizeIf)
+        .then(function (dataUrl) {
+          if (file.type === 'image/jpeg' && restoreExif) {
+            try {
+              dataUrl = upload.restoreExif(url, dataUrl);
+            } catch (e) {
+              setTimeout(function () {throw e;}, 1);
+            }
+          }
+          deferred.resolve(upload.dataUrltoBlob(dataUrl, file.name, file.size));
+        }, function (r) {
+          if (r === 'resizeIf') {
+            deferred.resolve(file);
+          }
+          deferred.reject();
+        });
+    }, function () {
+      deferred.reject();
+    });
+    return deferred.promise;
+  };
+
+  return upload;
+}]);
+
+(function () {
+  ngFileUpload.directive('ngfDrop', ['$parse', '$timeout', '$location', 'Upload', '$http', '$q',
+    function ($parse, $timeout, $location, Upload, $http, $q) {
+      return {
+        restrict: 'AEC',
+        require: '?ngModel',
+        link: function (scope, elem, attr, ngModel) {
+          linkDrop(scope, elem, attr, ngModel, $parse, $timeout, $location, Upload, $http, $q);
+        }
+      };
+    }]);
+
+  ngFileUpload.directive('ngfNoFileDrop', function () {
+    return function (scope, elem) {
+      if (dropAvailable()) elem.css('display', 'none');
+    };
+  });
+
+  ngFileUpload.directive('ngfDropAvailable', ['$parse', '$timeout', 'Upload', function ($parse, $timeout, Upload) {
+    return function (scope, elem, attr) {
+      if (dropAvailable()) {
+        var model = $parse(Upload.attrGetter('ngfDropAvailable', attr));
+        $timeout(function () {
+          model(scope);
+          if (model.assign) {
+            model.assign(scope, true);
+          }
+        });
+      }
+    };
+  }]);
+
+  function linkDrop(scope, elem, attr, ngModel, $parse, $timeout, $location, upload, $http, $q) {
+    var available = dropAvailable();
+
+    var attrGetter = function (name, scope, params) {
+      return upload.attrGetter(name, attr, scope, params);
+    };
+
+    if (attrGetter('dropAvailable')) {
+      $timeout(function () {
+        if (scope[attrGetter('dropAvailable')]) {
+          scope[attrGetter('dropAvailable')].value = available;
+        } else {
+          scope[attrGetter('dropAvailable')] = available;
+        }
+      });
+    }
+    if (!available) {
+      if (attrGetter('ngfHideOnDropNotAvailable', scope) === true) {
+        elem.css('display', 'none');
+      }
+      return;
+    }
+
+    function isDisabled() {
+      return elem.attr('disabled') || attrGetter('ngfDropDisabled', scope);
+    }
+
+    if (attrGetter('ngfSelect') == null) {
+      upload.registerModelChangeValidator(ngModel, attr, scope);
+    }
+
+    var leaveTimeout = null;
+    var stopPropagation = $parse(attrGetter('ngfStopPropagation'));
+    var dragOverDelay = 1;
+    var actualDragOverClass;
+
+    elem[0].addEventListener('dragover', function (evt) {
+      if (isDisabled() || !upload.shouldUpdateOn('drop', attr, scope)) return;
+      evt.preventDefault();
+      if (stopPropagation(scope)) evt.stopPropagation();
+      // handling dragover events from the Chrome download bar
+      if (navigator.userAgent.indexOf('Chrome') > -1) {
+        var b = evt.dataTransfer.effectAllowed;
+        evt.dataTransfer.dropEffect = ('move' === b || 'linkMove' === b) ? 'move' : 'copy';
+      }
+      $timeout.cancel(leaveTimeout);
+      if (!actualDragOverClass) {
+        actualDragOverClass = 'C';
+        calculateDragOverClass(scope, attr, evt, function (clazz) {
+          actualDragOverClass = clazz;
+          elem.addClass(actualDragOverClass);
+          attrGetter('ngfDrag', scope, {$isDragging: true, $class: actualDragOverClass, $event: evt});
+        });
+      }
+    }, false);
+    elem[0].addEventListener('dragenter', function (evt) {
+      if (isDisabled() || !upload.shouldUpdateOn('drop', attr, scope)) return;
+      evt.preventDefault();
+      if (stopPropagation(scope)) evt.stopPropagation();
+    }, false);
+    elem[0].addEventListener('dragleave', function (evt) {
+      if (isDisabled() || !upload.shouldUpdateOn('drop', attr, scope)) return;
+      evt.preventDefault();
+      if (stopPropagation(scope)) evt.stopPropagation();
+      leaveTimeout = $timeout(function () {
+        if (actualDragOverClass) elem.removeClass(actualDragOverClass);
+        actualDragOverClass = null;
+        attrGetter('ngfDrag', scope, {$isDragging: false, $event: evt});
+      }, dragOverDelay || 100);
+    }, false);
+    elem[0].addEventListener('drop', function (evt) {
+      if (isDisabled() || !upload.shouldUpdateOn('drop', attr, scope)) return;
+      evt.preventDefault();
+      if (stopPropagation(scope)) evt.stopPropagation();
+      if (actualDragOverClass) elem.removeClass(actualDragOverClass);
+      actualDragOverClass = null;
+      var items = evt.dataTransfer.items;
+      var html;
+      try {
+        html = evt.dataTransfer && evt.dataTransfer.getData && evt.dataTransfer.getData('text/html');
+      } catch (e) {/* Fix IE11 that throw error calling getData */
+      }
+
+      extractFiles(items, evt.dataTransfer.files, attrGetter('ngfAllowDir', scope) !== false,
+        attrGetter('multiple') || attrGetter('ngfMultiple', scope)).then(function (files) {
+        if (files.length) {
+          updateModel(files, evt);
+        } else {
+          extractFilesFromHtml('dropUrl', html).then(function (files) {
+            updateModel(files, evt);
+          });
+        }
+      });
+    }, false);
+    elem[0].addEventListener('paste', function (evt) {
+      if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1 &&
+        attrGetter('ngfEnableFirefoxPaste', scope)) {
+        evt.preventDefault();
+      }
+      if (isDisabled() || !upload.shouldUpdateOn('paste', attr, scope)) return;
+      var files = [];
+      var clipboard = evt.clipboardData || evt.originalEvent.clipboardData;
+      if (clipboard && clipboard.items) {
+        for (var k = 0; k < clipboard.items.length; k++) {
+          if (clipboard.items[k].type.indexOf('image') !== -1) {
+            files.push(clipboard.items[k].getAsFile());
+          }
+        }
+      }
+      if (files.length) {
+        updateModel(files, evt);
+      } else {
+        extractFilesFromHtml('pasteUrl', clipboard).then(function (files) {
+          updateModel(files, evt);
+        });
+      }
+    }, false);
+
+    if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1 &&
+      attrGetter('ngfEnableFirefoxPaste', scope)) {
+      elem.attr('contenteditable', true);
+      elem.on('keypress', function (e) {
+        if (!e.metaKey && !e.ctrlKey) {
+          e.preventDefault();
+        }
+      });
+    }
+
+    function updateModel(files, evt) {
+      upload.updateModel(ngModel, attr, scope, attrGetter('ngfChange') || attrGetter('ngfDrop'), files, evt);
+    }
+
+    function extractFilesFromHtml(updateOn, html) {
+      if (!upload.shouldUpdateOn(updateOn, attr, scope) || !html) return upload.rejectPromise([]);
+      var urls = [];
+      html.replace(/<(img src|img [^>]* src) *=\"([^\"]*)\"/gi, function (m, n, src) {
+        urls.push(src);
+      });
+      var promises = [], files = [];
+      if (urls.length) {
+        angular.forEach(urls, function (url) {
+          promises.push(upload.urlToBlob(url).then(function (blob) {
+            files.push(blob);
+          }));
+        });
+        var defer = $q.defer();
+        $q.all(promises).then(function () {
+          defer.resolve(files);
+        }, function (e) {
+          defer.reject(e);
+        });
+        return defer.promise;
+      }
+    }
+
+    function calculateDragOverClass(scope, attr, evt, callback) {
+      var obj = attrGetter('ngfDragOverClass', scope, {$event: evt}), dClass = 'dragover';
+      if (angular.isString(obj)) {
+        dClass = obj;
+      } else if (obj) {
+        if (obj.delay) dragOverDelay = obj.delay;
+        if (obj.accept || obj.reject) {
+          var items = evt.dataTransfer.items;
+          if (items == null || !items.length) {
+            dClass = obj.accept;
+          } else {
+            var pattern = obj.pattern || attrGetter('ngfPattern', scope, {$event: evt});
+            var len = items.length;
+            while (len--) {
+              if (!upload.validatePattern(items[len], pattern)) {
+                dClass = obj.reject;
+                break;
+              } else {
+                dClass = obj.accept;
+              }
+            }
+          }
+        }
+      }
+      callback(dClass);
+    }
+
+    function extractFiles(items, fileList, allowDir, multiple) {
+      var maxFiles = upload.getValidationAttr(attr, scope, 'maxFiles') || Number.MAX_VALUE;
+      var maxTotalSize = upload.getValidationAttr(attr, scope, 'maxTotalSize') || Number.MAX_VALUE;
+      var includeDir = attrGetter('ngfIncludeDir', scope);
+      var files = [], totalSize = 0;
+
+      function traverseFileTree(entry, path) {
+        var defer = $q.defer();
+        if (entry != null) {
+          if (entry.isDirectory) {
+            var promises = [upload.emptyPromise()];
+            if (includeDir) {
+              var file = {type: 'directory'};
+              file.name = file.path = (path || '') + entry.name + entry.name;
+              files.push(file);
+            }
+            var dirReader = entry.createReader();
+            var entries = [];
+            var readEntries = function () {
+              dirReader.readEntries(function (results) {
+                try {
+                  if (!results.length) {
+                    angular.forEach(entries.slice(0), function (e) {
+                      if (files.length <= maxFiles && totalSize <= maxTotalSize) {
+                        promises.push(traverseFileTree(e, (path ? path : '') + entry.name + '/'));
+                      }
+                    });
+                    $q.all(promises).then(function () {
+                      defer.resolve();
+                    }, function (e) {
+                      defer.reject(e);
+                    });
+                  } else {
+                    entries = entries.concat(Array.prototype.slice.call(results || [], 0));
+                    readEntries();
+                  }
+                } catch (e) {
+                  defer.reject(e);
+                }
+              }, function (e) {
+                defer.reject(e);
+              });
+            };
+            readEntries();
+          } else {
+            entry.file(function (file) {
+              try {
+                file.path = (path ? path : '') + file.name;
+                if (includeDir) {
+                  file = upload.rename(file, file.path);
+                }
+                files.push(file);
+                totalSize += file.size;
+                defer.resolve();
+              } catch (e) {
+                defer.reject(e);
+              }
+            }, function (e) {
+              defer.reject(e);
+            });
+          }
+        }
+        return defer.promise;
+      }
+
+      var promises = [upload.emptyPromise()];
+
+      if (items && items.length > 0 && $location.protocol() !== 'file') {
+        for (var i = 0; i < items.length; i++) {
+          if (items[i].webkitGetAsEntry && items[i].webkitGetAsEntry() && items[i].webkitGetAsEntry().isDirectory) {
+            var entry = items[i].webkitGetAsEntry();
+            if (entry.isDirectory && !allowDir) {
+              continue;
+            }
+            if (entry != null) {
+              promises.push(traverseFileTree(entry));
+            }
+          } else {
+            var f = items[i].getAsFile();
+            if (f != null) {
+              files.push(f);
+              totalSize += f.size;
+            }
+          }
+          if (files.length > maxFiles || totalSize > maxTotalSize ||
+            (!multiple && files.length > 0)) break;
+        }
+      } else {
+        if (fileList != null) {
+          for (var j = 0; j < fileList.length; j++) {
+            var file = fileList.item(j);
+            if (file.type || file.size > 0) {
+              files.push(file);
+              totalSize += file.size;
+            }
+            if (files.length > maxFiles || totalSize > maxTotalSize ||
+              (!multiple && files.length > 0)) break;
+          }
+        }
+      }
+
+      var defer = $q.defer();
+      $q.all(promises).then(function () {
+        if (!multiple && !includeDir) {
+          var i = 0;
+          while (files[i] && files[i].type === 'directory') i++;
+          defer.resolve([files[i]]);
+        } else {
+          defer.resolve(files);
+        }
+      }, function (e) {
+        defer.reject(e);
+      });
+
+      return defer.promise;
+    }
+  }
+
+  function dropAvailable() {
+    var div = document.createElement('div');
+    return ('draggable' in div) && ('ondrop' in div) && !/Edge\/12./i.test(navigator.userAgent);
+  }
+
+})();
+
+// customized version of https://github.com/exif-js/exif-js
+ngFileUpload.service('UploadExif', ['UploadResize', '$q', function (UploadResize, $q) {
+  var upload = UploadResize;
+
+  upload.isExifSupported = function () {
+    return window.FileReader && new FileReader().readAsArrayBuffer && upload.isResizeSupported();
+  };
+
+  function applyTransform(ctx, orientation, width, height) {
+    switch (orientation) {
+      case 2:
+        return ctx.transform(-1, 0, 0, 1, width, 0);
+      case 3:
+        return ctx.transform(-1, 0, 0, -1, width, height);
+      case 4:
+        return ctx.transform(1, 0, 0, -1, 0, height);
+      case 5:
+        return ctx.transform(0, 1, 1, 0, 0, 0);
+      case 6:
+        return ctx.transform(0, 1, -1, 0, height, 0);
+      case 7:
+        return ctx.transform(0, -1, -1, 0, height, width);
+      case 8:
+        return ctx.transform(0, -1, 1, 0, 0, width);
+    }
+  }
+
+  upload.readOrientation = function (file) {
+    var defer = $q.defer();
+    var reader = new FileReader();
+    var slicedFile = file.slice(0, 64 * 1024);
+    reader.readAsArrayBuffer(slicedFile);
+    reader.onerror = function (e) {
+      return defer.reject(e);
+    };
+    reader.onload = function (e) {
+      var result = {orientation: 1};
+      var view = new DataView(this.result);
+      if (view.getUint16(0, false) !== 0xFFD8) return defer.resolve(result);
+
+      var length = view.byteLength,
+        offset = 2;
+      while (offset < length) {
+        var marker = view.getUint16(offset, false);
+        offset += 2;
+        if (marker === 0xFFE1) {
+          if (view.getUint32(offset += 2, false) !== 0x45786966) return defer.resolve(result);
+
+          var little = view.getUint16(offset += 6, false) === 0x4949;
+          offset += view.getUint32(offset + 4, little);
+          var tags = view.getUint16(offset, little);
+          offset += 2;
+          for (var i = 0; i < tags; i++)
+            if (view.getUint16(offset + (i * 12), little) === 0x0112) {
+              var orientation = view.getUint16(offset + (i * 12) + 8, little);
+              if (orientation >= 2 && orientation <= 8) {
+                view.setUint16(offset + (i * 12) + 8, 1, little);
+                result.fixedArrayBuffer = e.target.result;
+              }
+              result.orientation = orientation;
+              return defer.resolve(result);
+            }
+        } else if ((marker & 0xFF00) !== 0xFF00) break;
+        else offset += view.getUint16(offset, false);
+      }
+      return defer.resolve(result);
+    };
+    return defer.promise;
+  };
+
+  function arrayBufferToBase64(buffer) {
+    var binary = '';
+    var bytes = new Uint8Array(buffer);
+    var len = bytes.byteLength;
+    for (var i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binary);
+  }
+
+  upload.applyExifRotation = function (file) {
+    if (file.type.indexOf('image/jpeg') !== 0) {
+      return upload.emptyPromise(file);
+    }
+
+    var deferred = $q.defer();
+    upload.readOrientation(file).then(function (result) {
+      if (result.orientation < 2 || result.orientation > 8) {
+        return deferred.resolve(file);
+      }
+      upload.dataUrl(file, true).then(function (url) {
+        var canvas = document.createElement('canvas');
+        var img = document.createElement('img');
+
+        img.onload = function () {
+          try {
+            canvas.width = result.orientation > 4 ? img.height : img.width;
+            canvas.height = result.orientation > 4 ? img.width : img.height;
+            var ctx = canvas.getContext('2d');
+            applyTransform(ctx, result.orientation, img.width, img.height);
+            ctx.drawImage(img, 0, 0);
+            var dataUrl = canvas.toDataURL(file.type || 'image/WebP', 0.934);
+            dataUrl = upload.restoreExif(arrayBufferToBase64(result.fixedArrayBuffer), dataUrl);
+            var blob = upload.dataUrltoBlob(dataUrl, file.name);
+            deferred.resolve(blob);
+          } catch (e) {
+            return deferred.reject(e);
+          }
+        };
+        img.onerror = function () {
+          deferred.reject();
+        };
+        img.src = url;
+      }, function (e) {
+        deferred.reject(e);
+      });
+    }, function (e) {
+      deferred.reject(e);
+    });
+    return deferred.promise;
+  };
+
+  upload.restoreExif = function (orig, resized) {
+    var ExifRestorer = {};
+
+    ExifRestorer.KEY_STR = 'ABCDEFGHIJKLMNOP' +
+      'QRSTUVWXYZabcdef' +
+      'ghijklmnopqrstuv' +
+      'wxyz0123456789+/' +
+      '=';
+
+    ExifRestorer.encode64 = function (input) {
+      var output = '',
+        chr1, chr2, chr3 = '',
+        enc1, enc2, enc3, enc4 = '',
+        i = 0;
+
+      do {
+        chr1 = input[i++];
+        chr2 = input[i++];
+        chr3 = input[i++];
+
+        enc1 = chr1 >> 2;
+        enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+        enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+        enc4 = chr3 & 63;
+
+        if (isNaN(chr2)) {
+          enc3 = enc4 = 64;
+        } else if (isNaN(chr3)) {
+          enc4 = 64;
+        }
+
+        output = output +
+          this.KEY_STR.charAt(enc1) +
+          this.KEY_STR.charAt(enc2) +
+          this.KEY_STR.charAt(enc3) +
+          this.KEY_STR.charAt(enc4);
+        chr1 = chr2 = chr3 = '';
+        enc1 = enc2 = enc3 = enc4 = '';
+      } while (i < input.length);
+
+      return output;
+    };
+
+    ExifRestorer.restore = function (origFileBase64, resizedFileBase64) {
+      if (origFileBase64.match('data:image/jpeg;base64,')) {
+        origFileBase64 = origFileBase64.replace('data:image/jpeg;base64,', '');
+      }
+
+      var rawImage = this.decode64(origFileBase64);
+      var segments = this.slice2Segments(rawImage);
+
+      var image = this.exifManipulation(resizedFileBase64, segments);
+
+      return 'data:image/jpeg;base64,' + this.encode64(image);
+    };
+
+
+    ExifRestorer.exifManipulation = function (resizedFileBase64, segments) {
+      var exifArray = this.getExifArray(segments),
+        newImageArray = this.insertExif(resizedFileBase64, exifArray);
+      return new Uint8Array(newImageArray);
+    };
+
+
+    ExifRestorer.getExifArray = function (segments) {
+      var seg;
+      for (var x = 0; x < segments.length; x++) {
+        seg = segments[x];
+        if (seg[0] === 255 & seg[1] === 225) //(ff e1)
+        {
+          return seg;
+        }
+      }
+      return [];
+    };
+
+
+    ExifRestorer.insertExif = function (resizedFileBase64, exifArray) {
+      var imageData = resizedFileBase64.replace('data:image/jpeg;base64,', ''),
+        buf = this.decode64(imageData),
+        separatePoint = buf.indexOf(255, 3),
+        mae = buf.slice(0, separatePoint),
+        ato = buf.slice(separatePoint),
+        array = mae;
+
+      array = array.concat(exifArray);
+      array = array.concat(ato);
+      return array;
+    };
+
+
+    ExifRestorer.slice2Segments = function (rawImageArray) {
+      var head = 0,
+        segments = [];
+
+      while (1) {
+        if (rawImageArray[head] === 255 & rawImageArray[head + 1] === 218) {
+          break;
+        }
+        if (rawImageArray[head] === 255 & rawImageArray[head + 1] === 216) {
+          head += 2;
+        }
+        else {
+          var length = rawImageArray[head + 2] * 256 + rawImageArray[head + 3],
+            endPoint = head + length + 2,
+            seg = rawImageArray.slice(head, endPoint);
+          segments.push(seg);
+          head = endPoint;
+        }
+        if (head > rawImageArray.length) {
+          break;
+        }
+      }
+
+      return segments;
+    };
+
+
+    ExifRestorer.decode64 = function (input) {
+      var chr1, chr2, chr3 = '',
+        enc1, enc2, enc3, enc4 = '',
+        i = 0,
+        buf = [];
+
+      // remove all characters that are not A-Z, a-z, 0-9, +, /, or =
+      var base64test = /[^A-Za-z0-9\+\/\=]/g;
+      if (base64test.exec(input)) {
+        console.log('There were invalid base64 characters in the input text.\n' +
+          'Valid base64 characters are A-Z, a-z, 0-9, ' + ', ' / ',and "="\n' +
+          'Expect errors in decoding.');
+      }
+      input = input.replace(/[^A-Za-z0-9\+\/\=]/g, '');
+
+      do {
+        enc1 = this.KEY_STR.indexOf(input.charAt(i++));
+        enc2 = this.KEY_STR.indexOf(input.charAt(i++));
+        enc3 = this.KEY_STR.indexOf(input.charAt(i++));
+        enc4 = this.KEY_STR.indexOf(input.charAt(i++));
+
+        chr1 = (enc1 << 2) | (enc2 >> 4);
+        chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+        chr3 = ((enc3 & 3) << 6) | enc4;
+
+        buf.push(chr1);
+
+        if (enc3 !== 64) {
+          buf.push(chr2);
+        }
+        if (enc4 !== 64) {
+          buf.push(chr3);
+        }
+
+        chr1 = chr2 = chr3 = '';
+        enc1 = enc2 = enc3 = enc4 = '';
+
+      } while (i < input.length);
+
+      return buf;
+    };
+
+    return ExifRestorer.restore(orig, resized);  //<= EXIF
+  };
+
+  return upload;
+}]);
+
+
+},{}],169:[function(require,module,exports){
+require('./dist/ng-file-upload-all');
+module.exports = 'ngFileUpload';
+},{"./dist/ng-file-upload-all":168}],170:[function(require,module,exports){
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
@@ -86335,8 +89044,8 @@ $templateCache.put("select2/match-multiple.tpl.html","<span class=\"ui-select-ma
 $templateCache.put("select2/match.tpl.html","<a class=\"select2-choice ui-select-match\" ng-class=\"{\'select2-default\': $select.isEmpty()}\" ng-click=\"$select.toggle($event)\" aria-label=\"{{ $select.baseTitle }} select\"><span ng-show=\"$select.isEmpty()\" class=\"select2-chosen\">{{$select.placeholder}}</span> <span ng-hide=\"$select.isEmpty()\" class=\"select2-chosen\" ng-transclude=\"\"></span> <abbr ng-if=\"$select.allowClear && !$select.isEmpty()\" class=\"select2-search-choice-close\" ng-click=\"$select.clear($event)\"></abbr> <span class=\"select2-arrow ui-select-toggle\"><b></b></span></a>");
 $templateCache.put("select2/select-multiple.tpl.html","<div class=\"ui-select-container ui-select-multiple select2 select2-container select2-container-multi\" ng-class=\"{\'select2-container-active select2-dropdown-open open\': $select.open, \'select2-container-disabled\': $select.disabled}\"><ul class=\"select2-choices\"><span class=\"ui-select-match\"></span><li class=\"select2-search-field\"><input type=\"text\" autocomplete=\"false\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" role=\"combobox\" aria-expanded=\"true\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-label=\"{{ $select.baseTitle }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"select2-input ui-select-search\" placeholder=\"{{$selectMultiple.getPlaceholder()}}\" ng-disabled=\"$select.disabled\" ng-hide=\"$select.disabled\" ng-model=\"$select.search\" ng-click=\"$select.activate()\" style=\"width: 34px;\" ondrop=\"return false;\"></li></ul><div class=\"ui-select-dropdown select2-drop select2-with-searchbox select2-drop-active\" ng-class=\"{\'select2-display-none\': !$select.open}\"><div class=\"ui-select-choices\"></div></div></div>");
 $templateCache.put("select2/select.tpl.html","<div class=\"ui-select-container select2 select2-container\" ng-class=\"{\'select2-container-active select2-dropdown-open open\': $select.open, \'select2-container-disabled\': $select.disabled, \'select2-container-active\': $select.focus, \'select2-allowclear\': $select.allowClear && !$select.isEmpty()}\"><div class=\"ui-select-match\"></div><div class=\"ui-select-dropdown select2-drop select2-with-searchbox select2-drop-active\" ng-class=\"{\'select2-display-none\': !$select.open}\"><div class=\"select2-search\" ng-show=\"$select.searchEnabled\"><input type=\"text\" autocomplete=\"false\" autocorrect=\"false\" autocapitalize=\"off\" spellcheck=\"false\" role=\"combobox\" aria-expanded=\"true\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-label=\"{{ $select.baseTitle }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"ui-select-search select2-input\" ng-model=\"$select.search\"></div><div class=\"ui-select-choices\"></div></div></div>");}]);
-},{}],169:[function(require,module,exports){
+},{}],171:[function(require,module,exports){
 require('./dist/select.js');
 module.exports = 'ui.select';
 
-},{"./dist/select.js":168}]},{},[1]);
+},{"./dist/select.js":170}]},{},[1]);
