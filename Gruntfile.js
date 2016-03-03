@@ -35,6 +35,10 @@ module.exports = function (grunt) {
       scripts: {
         files: ['angular/**/*', 'templates/angular/**/*.html'],
         tasks: ['default']
+      },
+      livereload: {
+        options: { livereload: true },
+        files: ['templates/**/*', 'angular/**/*']
       }
     },
     exec: {
@@ -109,5 +113,8 @@ module.exports = function (grunt) {
   grunt.registerTask('template', ['ngtemplates']);
   grunt.registerTask('watchall', ['watch']);
   grunt.registerTask('compass', ['exec:compass']);
+
+  // live reload
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
 }; 

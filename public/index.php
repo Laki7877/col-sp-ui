@@ -78,8 +78,13 @@ Route::add('/admin/shoptypes/:id', 'AdminController::editShoptype');
 Route::add('/admin/products', 'AdminController::allProducts');
 
 
+Route::add('/admin/cms', 'AdminController::adminCMS');
+//Route::add('/admin/cms/create', 'AdminController::adminCMSCreate');
+Route::add('/admin/cms/static', 'AdminController::adminCMSStatic');
+Route::add('/admin/cms/collection', 'AdminController::adminCMSCollection');
+
 Route::add('/collections', 'ProductCollectionController::index');
-Route::add('/collections/add', 'ProductCollectionController::add');
+Route::add('/collections/add/:category', 'ProductCollectionController::add');
 Route::add('/collections/addlist', 'ProductCollectionController::addlist');
 Route::add('/collections/import', 'ProductCollectionController::import');
 Route::add('/collections/group', 'ProductCollectionController::group');

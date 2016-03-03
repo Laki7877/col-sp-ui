@@ -126,6 +126,15 @@ var admin = {
 		'Global Coupons': '/admin/coupons/admin',
 		'Seller Coupons': '/admin/coupons/seller'
 	},
+	// 'CMS Collections|fa-product-hunt': {
+	// 	'Static': '/admin/cms/static',
+	// 	'Collection': '/admin/cms/collection'
+	// },
+	'CMS|fa-product-hunt': {
+	 	'View All CMS': '/admin/cms',
+	 	'Create CMS Static': '/admin/cms/static',
+	 	'Create CMS Collection': '/admin/cms/collection'
+	},
 	'Reports|fa-line-chart': {
 		'View': '/admin/reports'
 	},

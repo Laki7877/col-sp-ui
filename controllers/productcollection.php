@@ -11,7 +11,7 @@ class ProductCollectionController extends Controller
 	{
 		return View::render('add_product_collection', [
 			'title' => 'Add Collection',
-			'viewBag' => array('catId' => $_POST['category'])
+			'viewBag' => array('catId' => $params['category'])
 		]);
 	}
 

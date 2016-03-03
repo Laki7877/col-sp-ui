@@ -161,4 +161,25 @@ class AdminController extends Controller
 	{
         return View::render('admin_add_ontopcredit',  ['params' => json_encode_n($params), 'title' => 'Admin On Top Credit Card Detail']);
 	}
+
+	// CMS
+	public static function adminCMS($params)
+	{
+		return View::render('admin_cms');
+	}
+
+	public static function adminCMSCreate($params)
+	{
+		return View::render('admin_cms_create');
+	}
+
+	public static function adminCMSStatic($params)
+	{
+		return View::render('admin_cms_static');
+	}
+
+	public static function adminCMSCollection($params)
+	{
+		return View::render('admin_cms_collection');
+	}
 }
