@@ -273,15 +273,33 @@
                         <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.MasterVariant_SafetyStock" nc-template-options-path="addProductForm/MasterVariant_SafetyStock" nc-label="Safety Stock Amount">
                             <input class="form-control" name="MasterVariant_SafetyStock" ng-pattern-restrict="^[0-9]*$" maxlength="10" ng-model="formData.MasterVariant.SafetyStock" />
                         </div>
-
-                        <? $this->insert('components/forms/dropdown-with-label', ["label" => "Stock Type", "ng_model" => "formData.MasterVariant.StockType", "choices" => "dataSet.StockTypes", "options" => ["Stock", "Pre-Order"]]) ?>
+                        
+                        <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.MasterVariant_StockType" 
+                        nc-template-options-path="addProductForm/MasterVariant_StockType" nc-label="Stock Type">
+                            <select ng-model="formData.MasterVariant.StockType" class="form-control" name="MasterVariant_StockType">
+                                <option selected disabled>- Select Stock Type -</option>
+                                <option>Stock</option>
+                                <option>Pre-Order</option>
+                            </select>
+                        </div>
+                       
                     </div>
                 </div>
                 <div class="form-section">
                     <div class="form-section-header">
                         <h2>Shipping Detail</h2></div>
                     <div class="form-section-content">
-                        <? $this->insert('components/forms/multiple-radio-multiline', ["label" => "Shipping Method", "ng_model" => "formData.ShippingMethod", "choices" => ["Dropship by 3PL", "Central Fulfillment"]]) ?>
+
+                            
+                            <div class="form-group ">
+                                <div class="width-label"><label class="control-label">Shipping Method</label></div>
+                                <div class="width-field-normal">
+                                    <div class="radio multiple-radio multiline">
+                                        <label><input type="radio" name="shipping_method" value="1" ng-model="formData.ShippingMethod" /> Dropship by 3PL</label>
+                                        <label><input type="radio" name="shipping_method" value="2" ng-model="formData.ShippingMethod" /> Central Fulfillment</label>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div nc-template="common/input/form-group-with-label" nc-label="Preparation Time" nc-template-form="addProductForm.PrepareDay" nc-template-options-path="addProductForm/PrepareDay">
                                 <input class="form-control width-field-normal" name="PrepareDay" ng-pattern-restrict="^[0-9]*$" ng-required="onPublishing" maxlength="5" ng-model="formData.PrepareDay" />

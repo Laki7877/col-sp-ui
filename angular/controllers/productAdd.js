@@ -30,7 +30,6 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
     };
     $scope.dataSet.SearchTags = [];
     $scope.dataSet.RelatedProducts = [];
-    $scope.dataSet.StockTypes = ['Stock', 'Pre-Order'];
     $scope.dataSet.VariantDisplayOption = [{ text: 'Show as group of variants', value: 'GROUP' }, { text: 'Show as individual product', value: 'INDIVIDUAL' }];
 
     var protoAttributeOptions = {
@@ -334,6 +333,7 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
 
         if ($scope.addProductForm.$invalid) {
             $scope.pageState.reset();
+            console.log($scope.addProductForm.$error);
             var requiredMissing = ('required' in $scope.addProductForm.$error);
             if (Status == 'DF' && requiredMissing) {
                 var errorList = [];
