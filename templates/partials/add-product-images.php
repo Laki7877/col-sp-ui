@@ -7,7 +7,7 @@
                     <strong>Please note: </strong> Images from this tab will be the default images of all product variants. However, you may choose to add product variant images and override images from this tab.
                 </div> -->
                 <nc-alert nc-model="image_alert"></nc-alert>
-                <?php $this->insert('components/forms/form-section-upload-new-product-image', ['uploader' => 'uploader', 'images' => 'formData.MasterImages']) ?>
+                        <?php $this->insert('components/forms/form-section-upload-new-product-image', ['uploader' => 'uploader', 'images' => 'formData.MasterImages']) ?>
                         <div class="form-section">
                             <!-- TODO: change label to span with ng-click -->
                             <div class="form-section-header checkbox">
@@ -33,7 +33,6 @@
                                     <input class="form-control width-field-normal" name="VideoLinks0" type="url" maxlength="500" ng-model="formData.VideoLinks[0]" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.VideoLinks0) }" />
                                 </div>
 
-
                                 <div ng-template="common/input/text2" ng-template-options="{
 				                        'label': 'Video Link 2',
 				                        'hint': {
@@ -50,7 +49,6 @@
 				                      }">
                                     <input class="form-control width-field-normal" name="VideoLinks1" type="url" maxlength="500" ng-model="formData.VideoLinks[1]" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.VideoLinks1) }" />
                                 </div>
-
 
                                 <div ng-template="common/input/text2" ng-template-options="{
 				                        'label': 'Video Link 3',

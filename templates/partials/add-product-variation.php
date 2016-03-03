@@ -1,6 +1,6 @@
 <div id="add-product-variation-tab-content">
-    <? $this->insert('partials/add-product-inner-tab-breadcrumb') ?>
-
+    
+        <div nc-template="addProducts/inner-tab-breadcrumb"></div>
 
         <div class="row" ng-if="controlFlags.variation != 'enable'">
             <div class="col-xs-12">
