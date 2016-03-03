@@ -15680,56 +15680,9 @@ ng-transclude.has-error .form-control {
   -webkit-padding-start: 15px;
 }
 
-<<<<<<< HEAD
-/* line 280, ../../../assets/screen.scss */
+/* line 281, ../../../assets/screen.scss */
 .image-wrapper {
   border: 1px solid #BCC7D5;
   border-radius: 3px;
   background-color: #EDF2F9;
-=======
-@keyframes shake {
-  0% {
-    transform: translateX(0);
-  }
-  12.5% {
-    transform: translateX(-6px) rotateY(-5deg);
-  }
-  37.5% {
-    transform: translateX(5px) rotateY(4deg);
-  }
-  62.5% {
-    transform: translateX(-3px) rotateY(-2deg);
-  }
-  87.5% {
-    transform: translateX(2px) rotateY(1deg);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-@-webkit-keyframes shake {
-  0% {
-    -webkit-transform: translateX(0);
-  }
-  12.5% {
-    -webkit-transform: translateX(-6px) rotateY(-5deg);
-  }
-  37.5% {
-    -webkit-transform: translateX(5px) rotateY(4deg);
-  }
-  62.5% {
-    -webkit-transform: translateX(-3px) rotateY(-2deg);
-  }
-  87.5% {
-    -webkit-transform: translateX(2px) rotateY(1deg);
-  }
-  100% {
-    -webkit-transform: translateX(0);
-  }
-}
-/* line 300, ../../../assets/screen.scss */
-.shake {
-  -webkit-animation: shake 400ms ease-in-out;
-  animation: shake 400ms ease-in-out;
->>>>>>> 8901bb2dc9b3d3c72f9a2191bfaf1d70fe4306c9
 }

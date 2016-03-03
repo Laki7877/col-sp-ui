@@ -98,9 +98,14 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .factory('$exceptionHandler', services.exceptionHandler)
   .factory('KnownException', services.knownException)
   .factory('$productAdd', services.productAdd)
+<<<<<<< HEAD
     .factory('OnTopCreditService', services.OnTopCreditService)
     .factory('OnTopCredit', services.OnTopCredit)
   .factory('Onboarding', services.Onboarding)
+=======
+  .factory('OnTopCreditService', services.OnTopCreditService)
+  .factory('OnTopCredit', services.OnTopCredit)
+>>>>>>> 168658aae0c4be6d4f57ea5385da5ff3ffd1600c
 
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)

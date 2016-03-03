@@ -33,4 +33,9 @@ class SellerController extends Controller
     {
         return View::render('seller_inventory');
     }
+    //Home
+    public static function onboarding($params)
+    {
+        return View::render('seller_onboarding');
+    }
 }
