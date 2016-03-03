@@ -26,7 +26,6 @@ require('angular-chart.js')
 
 //Nc package
 require('./nc');
-require('./modules/product-detail');
 
 //Internal dependencies
 var controllers = bulk.controllers;
@@ -39,7 +38,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   'nc', 'ui.bootstrap.datetimepicker',
   'duScroll', 'ngSanitize', 'ngAnimate',
   'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select', 
-  'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail' , 'ngFileUpload'
+  'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'ngFileUpload'
 ])
 
 //App config
@@ -99,9 +98,14 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .factory('$exceptionHandler', services.exceptionHandler)
   .factory('KnownException', services.knownException)
   .factory('$productAdd', services.productAdd)
+<<<<<<< HEAD
     .factory('OnTopCreditService', services.OnTopCreditService)
     .factory('OnTopCredit', services.OnTopCredit)
   .factory('Onboarding', services.Onboarding)
+=======
+  .factory('OnTopCreditService', services.OnTopCreditService)
+  .factory('OnTopCredit', services.OnTopCredit)
+>>>>>>> 168658aae0c4be6d4f57ea5385da5ff3ffd1600c
 
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)

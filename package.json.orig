@@ -50,7 +50,11 @@
     "angular-ui-bootstrap": "^1.1.2",
     "angular-ui-tree": "^2.13.0",
     "jquery": "^2.2.0",
+<<<<<<< HEAD
+    "ui-select": "git://github.com:poonwu/ui-select.git"
+=======
     "ng-file-upload": "^12.0.1",
     "ui-select": "git+https://github.com/poonwu/ui-select.git"
+>>>>>>> 168658aae0c4be6d4f57ea5385da5ff3ffd1600c
   }
 }

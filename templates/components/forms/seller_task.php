@@ -1,4 +1,4 @@
-<div class="home_task home_task_space <?=$home_task_container_class?>">
+<div class="home_task home_task_space <?=$home_task_container_class?>" <?=$task_display?>>
   <div class="image-thumbs-img-wrapper">
       <img class="logo-imgx" src="<?= $this->asset('/assets/img/'.$image_name.'.png') ?>" />
   </div>
