@@ -27,7 +27,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
                 <? $this->insert('components/tab-nav', ["items" => $menus]) ?>
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
-                            <? $this->insert('partials/add-product-information') ?>
+                             <div ap-component="ap/tab-information" form-data="formData" breadcrumb="breadcrumbs" dataset="dataSet" control-flags="controlFlags"></div>
                         </div>
                         <div role="tabpanel" class="tab-pane margin-top-20" id="images">
                             <? $this->insert('partials/add-product-images') ?>
@@ -36,7 +36,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
                             <? $this->insert('partials/add-product-category') ?>
                         </div>
     					<div role="tabpanel" class="tab-pane margin-top-20" id="more_option">
-    							<? $this->insert('partials/add-product-more-option') ?>
+                             <div ap-component="ap/tab-more-option" form-data="formData" breadcrumb="breadcrumbs" control-flags="controlFlags"></div>
     					</div>
                         <div role="tabpanel" class="tab-pane margin-top-20" id="variation">
                             <? $this->insert('partials/add-product-variation') ?>

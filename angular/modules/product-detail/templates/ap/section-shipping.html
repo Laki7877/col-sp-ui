@@ -1,0 +1,100 @@
+<div class="form-section">
+    <div class="form-section-header">
+        <h2>Shipping Detail</h2></div>
+    <div class="form-section-content">
+
+        <div class="form-group ">
+            <div class="width-label">
+                <label class="control-label">Shipping Method</label>
+            </div>
+            <div class="width-field-normal">
+                <div class="radio multiple-radio multiline">
+                    <label>
+                        <input type="radio" name="shipping_method" value="1" ng-model="formData.ShippingMethod" /> Dropship by 3PL</label>
+                    <label>
+                        <input type="radio" name="shipping_method" value="2" ng-model="formData.ShippingMethod" /> Central Fulfillment</label>
+                </div>
+            </div>
+        </div>
+
+        <div nc-template="common/input/form-group-with-label" nc-label="Preparation Time" nc-template-form="addProductForm.PrepareDay"
+        nc-template-options-path="addProductForm/PrepareDay">
+            <input class="form-control width-field-normal" name="PrepareDay" ng-pattern-restrict="^[0-9]*$" ng-required="onPublishing"
+            maxlength="5" ng-model="formData.PrepareDay" />
+        </div>
+
+        <div class="form-group">
+            <div class="width-label">
+                <label class="control-label required" stytle="margin-top:25px">Package Dimension</label>
+            </div>
+            <div class="width-field-xxl">
+                <div class="multiple-input">
+                    <div class="input-column">
+                        <div nc-template="common/input/div-with-label" nc-label="Length" nc-template-options-path="addProductForm/MasterVariant_Dimension"
+                        nc-template-form="addProductForm.MasterVariant_Length">
+                            <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11" ng-required="onPublishing" name="MasterVariant_Length"
+                            ng-model="formData.MasterVariant.Length" />
+                        </div>
+                    </div>
+
+                    <div class="input-column">
+                        <div nc-template="common/input/div-with-label" nc-label="Height" nc-template-options-path="addProductForm/MasterVariant_Dimension"
+                        nc-template-form="addProductForm.MasterVariant_Height">
+                            <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11" ng-required="onPublishing" name="MasterVariant_Height"
+                            ng-model="formData.MasterVariant.Height" />
+                        </div>
+                    </div>
+
+                    <div class="input-column">
+                        <div nc-template="common/input/div-with-label" nc-label="Width" nc-template-options-path="addProductForm/MasterVariant_Dimension"
+                        nc-template-form="addProductForm.MasterVariant_Width">
+                            <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11" ng-required="onPublishing" name="MasterVariant_Width"
+                            ng-model="formData.MasterVariant.Width" />
+                        </div>
+                    </div>
+
+                    <div class="input-column no-label select input-xl" style="padding-top: 24px">
+                        <select ng-model="formData.MasterVariant.DimensionUnit" class="form-control">
+                            <option value="MM"> Millimeter </option>
+                            <option value="CM"> Centimeter </option>
+                            <option value="M"> Meter </option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="width-label">
+                <label class="control-label required">Weight</label>
+            </div>
+            <div class="width-field-xxl">
+                <div class="multiple-input">
+
+                    <div nc-template="common/input/text-column-no-label" nc-label="" nc-template-options-path="addProductForm/MasterVariant_Dimension"
+                    nc-template-form="addProductForm.MasterVariant_Weight">
+                        <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11" ng-required="onPublishing" name="MasterVariant_Weight"
+                        ng-model="formData.MasterVariant.Weight" />
+                    </div>
+
+
+                    <div class="input-column select input-xl">
+                        <div class="ah-select2-dropdown">
+                            <select class="form-control" ng-model="formData.MasterVariant.WeightUnit">
+                                <option value="G"> Grams </option>
+                                <option value="KG"> Kilograms </option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- input-xl-->
+                </div>
+                <!--multi-->
+            </div>
+            <!-- widht-xxl-->
+        </div>
+        <!--formgp-->
+
+    </div>
+</div>

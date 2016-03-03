@@ -1,6 +1,5 @@
 <div id="add-product-variation-tab-content">
-
-    <div nc-template="addProducts/inner-tab-breadcrumb"></div>
+    <div nc-template="add-product/inner-tab-breadcrumb" nc-view-bag="formData"></div>
 
     <div class="row" ng-if="controlFlags.variation != 'enable'">
         <div class="col-xs-12">
@@ -176,8 +175,8 @@
                                     <input type="text" ng-model="pair.Quantity" maxlength="5" ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Quantity{{$index}}) }" ng-disabled='!pair.Visibility' ng-pattern="/^[0-9]+$/" name="pair_Quantity{{$index}}"
                                     class="form-control" />
                                 </td>
-
-                                <td><a class="btn btn-white btn-width-xl" ng-disabled='!pair.Visibility' data-toggle="modal" data-target="#variant-detail-1" ng-click="$emit('openPairModal', pair, formData.Variants, $index)">More Detail</a></td>
+                                 <!--$emit('openPairModal', pair, formData.Variants, $index)-->
+                                <td><a class="btn btn-white btn-width-xl" ng-disabled='!pair.Visibility' ng-click="openVariantDetail(pair, formData.Variants, $index)">More Detail</a></td>
                                 <td>
                                     <a class="btn btn-white" ng-click='pair.Visibility = !pair.Visibility'>
                                         <span ng-if='pair.Visibility'>Hide</span>

@@ -78,9 +78,8 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
     var onImageUploadQueueLimit = function () { }
     $scope.asStatus = Product.getStatus;
 
-    $scope.overview = {};
-
     $scope.formData = {
+        overview: {},
         Brand: {
             id: null
         },
@@ -130,7 +129,8 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
             $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1);
         }
     };
-
+    
+    //TODO: remove
     $scope.isFreeTextInput = util.isFreeTextDataType;
     $scope.isListInput = util.isListDataType;
     $scope.isHtmlInput = util.isHtmlDataType;
@@ -366,7 +366,7 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
         Product.publish(apiRequest, Status).then(function (res) {
             $scope.pageState.reset();
             if (res.ProductId) {
-                $scope.overview = res;
+                $scope.formData.overview = res;
                 $scope.dataSet.attributeOptions = angular.copy(protoAttributeOptions); //will trigger watchvariantchange
                 var catId = Number(res.GlobalCategory);
                 $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function () {
@@ -418,7 +418,7 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
 
             Product.getOne(productId)
                 .then(function (inverseFormData) {
-                    $scope.overview = angular.copy(inverseFormData);
+                    $scope.formData.overview = angular.copy(inverseFormData);
                     var catId = Number(inverseFormData.GlobalCategory);
                     $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs, $scope.controlFlags,
                         $scope.variationFactorIndices, inverseFormData).then(function () {
@@ -450,6 +450,7 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
         LocalCategoryService.list().then(function (data) {
             $scope.dataSet.LocalCategories = Category.transformNestedSetToUITree(data);
         });
+        
     }
 
     var tabPage = {};
@@ -555,11 +556,63 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
                 }
             });
 
+            $scope.openVariantDetail = function (pair, array, index) {
+                if (angular.isUndefined(pair.Images)) {
+                    pair.Images = [];
+                }
+
+                if (angular.isUndefined(pair.queue)) {
+                    pair.queue = [];
+                }
+
+                var variantModal = $uibModal.open({
+                    animation: true,
+                    templateUrl: 'add-product/variant-modal',
+                    controller: function ($scope, $uibModalInstance, $timeout) {
+                        'ngInject';
+                        
+                        $scope.no = function () {
+                            $uibModalInstance.close('no');
+                        }
+
+                        $scope.yes = function () {
+                            $uibModalInstance.close('yes');
+                        }
+                    },
+                    size: 'xl',
+                    resolve: {
+                        model: function () {
+                            return $scope.pairModal;
+                        },
+                        ckOptions: function(){
+                            return $scope.ckOptions;
+                        }
+                    }
+                });
+                
+                variantModal.result.then(function (selectedItem) {
+                    if (selectedItem == 'yes') {
+                        console.log("closed mdoal hyes");
+                    }
+                }, function () {
+                    console.log('Modal dismissed at: ' + new Date());
+                });
+
+                
+                //Modal target (for viewing pair)
+                $scope.pairModal = angular.copy(pair);
+                $scope.pairModal.alert = new NcAlert();
+                $scope.pairIndex = index;
+                $scope.uploaderModal.queue = $scope.pairModal.queue;
+                ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
+            };
+
             $scope.$on('openPairModal', function (evt, pair, array, index) {
 
                 if (angular.isUndefined(pair.Images)) {
                     pair.Images = [];
                 }
+
                 if (angular.isUndefined(pair.queue)) {
                     pair.queue = [];
                 }

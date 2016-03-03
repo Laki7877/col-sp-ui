@@ -25,6 +25,7 @@ require('angular-chart.js')
 
 //Nc package
 require('./nc');
+require('./modules/product-detail');
 
 //Internal dependencies
 var controllers = bulk.controllers;
@@ -37,7 +38,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   'nc', 'ui.bootstrap.datetimepicker',
   'duScroll', 'ngSanitize', 'ngAnimate',
   'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select', 
-  'ui.bootstrap', 'base64', 'ngCookies', 'chart.js'
+  'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail'
 ])
 
 //App config
@@ -253,7 +254,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
 .controller('TestCtrl', controllers.test)
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractAdvanceList.js":4,"./controllers\\abstractList.js":5,"./controllers\\adminAccount.js":6,"./controllers\\adminAccountAdd.js":7,"./controllers\\adminAttribute.js":8,"./controllers\\adminAttributeAdd.js":9,"./controllers\\adminAttributeSet.js":10,"./controllers\\adminAttributeSetAdd.js":11,"./controllers\\adminBrand.js":12,"./controllers\\adminBrandAdd.js":13,"./controllers\\adminCategory.js":14,"./controllers\\adminCoupon.js":15,"./controllers\\adminCouponAdd.js":16,"./controllers\\adminOnTopCreditAdd.js":17,"./controllers\\adminOnTopCreditList.js":18,"./controllers\\adminProductApprovalList.js":19,"./controllers\\adminProductList.js":20,"./controllers\\adminRole.js":21,"./controllers\\adminRoleAdd.js":22,"./controllers\\adminShop.js":23,"./controllers\\adminShopAdd.js":24,"./controllers\\adminShoptype.js":25,"./controllers\\adminShoptypeAdd.js":26,"./controllers\\index.js":27,"./controllers\\localCategory.js":28,"./controllers\\login.js":29,"./controllers\\productAdd.js":30,"./controllers\\productAddSelectCategory.js":31,"./controllers\\productExport.js":32,"./controllers\\productImageList.js":33,"./controllers\\productImageManagement.js":34,"./controllers\\productImport.js":35,"./controllers\\productList.js":36,"./controllers\\productListLocalCategory.js":37,"./controllers\\productReview.js":38,"./controllers\\root.js":39,"./controllers\\sellerAccount.js":40,"./controllers\\sellerAccountAdd.js":41,"./controllers\\sellerInventoryList.js":42,"./controllers\\sellerRole.js":43,"./controllers\\sellerRoleAdd.js":44,"./controllers\\sellerShopSetting.js":45,"./controllers\\test.js":46,"./directives\\ncTradableSelect.js":47,"./directives\\ngCkeditor.js":48,"./directives\\ngDateBefore.js":49,"./directives\\ngDelegate.js":50,"./directives\\ngMatch.js":51,"./directives\\ngMaxnumber.js":52,"./directives\\ngMinnumber.js":53,"./directives\\ngPatternRestrict.js":54,"./directives\\ngPermission.js":55,"./directives\\ngSlideToggle.js":56,"./directives\\ngTemplate.js":57,"./directives\\popoverAny.js":58,"./filters\\capitalize.js":59,"./filters\\exclude.js":60,"./filters\\excludeCategory.js":61,"./filters\\html.js":62,"./filters\\importGuidelineExample.js":63,"./filters\\leadingzero.js":64,"./filters\\ordinal.js":65,"./filters\\slice.js":66,"./filters\\truncate.js":67,"./filters\\truth.js":68,"./filters\\variantValue.js":69,"./helpers\\base64.js":70,"./helpers\\common.js":71,"./helpers\\storage.js":72,"./helpers\\util.js":73,"./helpers\\variantPair.js":74,"./nc":101,"./route":103,"./services\\OnTopCredit.js":104,"./services\\OnTopCreditService.js":105,"./services\\adminAccountService.js":106,"./services\\adminPermissionService.js":107,"./services\\adminRoleService.js":108,"./services\\adminShopService.js":109,"./services\\adminShoptypeService.js":110,"./services\\alert.js":111,"./services\\attribute.js":112,"./services\\attributeService.js":113,"./services\\attributeSet.js":114,"./services\\attributeSetService.js":115,"./services\\blocker.js":116,"./services\\brand.js":117,"./services\\brandService.js":118,"./services\\category.js":119,"./services\\coupon.js":120,"./services\\credential.js":121,"./services\\exceptionHandler.js":122,"./services\\fileService.js":123,"./services\\globalCategory.js":124,"./services\\globalCategoryService.js":125,"./services\\image.js":126,"./services\\imageService.js":127,"./services\\inventoryService.js":128,"./services\\knownException.js":129,"./services\\localCategory.js":130,"./services\\localCategoryService.js":131,"./services\\product.js":132,"./services\\productAdd.js":133,"./services\\productReviewService.js":134,"./services\\sellerAccountService.js":135,"./services\\sellerPermissionService.js":136,"./services\\sellerRoleService.js":137,"./services\\shop.js":138,"./services\\shopPermissionService.js":139,"./template":148,"./template-options\\PromotionForm.js":140,"./template-options\\addProductForm.js":141,"./template-options\\adminShopAccountForm.js":142,"./template-options\\couponForm.js":143,"./template-options\\productExport.js":144,"./template-options\\productImport.js":145,"./template-options\\searchForm.js":146,"./template-options\\shopSettingForm.js":147,"angular":167,"angular-animate":150,"angular-base64":151,"angular-bootstrap-datetimepicker":152,"angular-chart.js":153,"angular-clipboard":154,"angular-cookies":156,"angular-file-upload":157,"angular-sanitize":159,"angular-scroll":161,"angular-ui-bootstrap":163,"angular-ui-tree":165,"lodash":170,"ui-select/dist/select.js":172}],2:[function(require,module,exports){
+},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractAdvanceList.js":4,"./controllers\\abstractList.js":5,"./controllers\\adminAccount.js":6,"./controllers\\adminAccountAdd.js":7,"./controllers\\adminAttribute.js":8,"./controllers\\adminAttributeAdd.js":9,"./controllers\\adminAttributeSet.js":10,"./controllers\\adminAttributeSetAdd.js":11,"./controllers\\adminBrand.js":12,"./controllers\\adminBrandAdd.js":13,"./controllers\\adminCategory.js":14,"./controllers\\adminCoupon.js":15,"./controllers\\adminCouponAdd.js":16,"./controllers\\adminOnTopCreditAdd.js":17,"./controllers\\adminOnTopCreditList.js":18,"./controllers\\adminProductApprovalList.js":19,"./controllers\\adminProductList.js":20,"./controllers\\adminRole.js":21,"./controllers\\adminRoleAdd.js":22,"./controllers\\adminShop.js":23,"./controllers\\adminShopAdd.js":24,"./controllers\\adminShoptype.js":25,"./controllers\\adminShoptypeAdd.js":26,"./controllers\\index.js":27,"./controllers\\localCategory.js":28,"./controllers\\login.js":29,"./controllers\\productAdd.js":30,"./controllers\\productAddSelectCategory.js":31,"./controllers\\productExport.js":32,"./controllers\\productImageList.js":33,"./controllers\\productImageManagement.js":34,"./controllers\\productImport.js":35,"./controllers\\productList.js":36,"./controllers\\productListLocalCategory.js":37,"./controllers\\productReview.js":38,"./controllers\\root.js":39,"./controllers\\sellerAccount.js":40,"./controllers\\sellerAccountAdd.js":41,"./controllers\\sellerInventoryList.js":42,"./controllers\\sellerRole.js":43,"./controllers\\sellerRoleAdd.js":44,"./controllers\\sellerShopSetting.js":45,"./controllers\\test.js":46,"./directives\\ncTradableSelect.js":47,"./directives\\ngCkeditor.js":48,"./directives\\ngDateBefore.js":49,"./directives\\ngDelegate.js":50,"./directives\\ngMatch.js":51,"./directives\\ngMaxnumber.js":52,"./directives\\ngMinnumber.js":53,"./directives\\ngPatternRestrict.js":54,"./directives\\ngPermission.js":55,"./directives\\ngSlideToggle.js":56,"./directives\\ngTemplate.js":57,"./directives\\popoverAny.js":58,"./filters\\capitalize.js":59,"./filters\\exclude.js":60,"./filters\\excludeCategory.js":61,"./filters\\html.js":62,"./filters\\importGuidelineExample.js":63,"./filters\\leadingzero.js":64,"./filters\\ordinal.js":65,"./filters\\slice.js":66,"./filters\\truncate.js":67,"./filters\\truth.js":68,"./filters\\variantValue.js":69,"./helpers\\base64.js":70,"./helpers\\common.js":71,"./helpers\\storage.js":72,"./helpers\\util.js":73,"./helpers\\variantPair.js":74,"./modules/product-detail":77,"./nc":105,"./route":107,"./services\\OnTopCredit.js":108,"./services\\OnTopCreditService.js":109,"./services\\adminAccountService.js":110,"./services\\adminPermissionService.js":111,"./services\\adminRoleService.js":112,"./services\\adminShopService.js":113,"./services\\adminShoptypeService.js":114,"./services\\alert.js":115,"./services\\attribute.js":116,"./services\\attributeService.js":117,"./services\\attributeSet.js":118,"./services\\attributeSetService.js":119,"./services\\blocker.js":120,"./services\\brand.js":121,"./services\\brandService.js":122,"./services\\category.js":123,"./services\\coupon.js":124,"./services\\credential.js":125,"./services\\exceptionHandler.js":126,"./services\\fileService.js":127,"./services\\globalCategory.js":128,"./services\\globalCategoryService.js":129,"./services\\image.js":130,"./services\\imageService.js":131,"./services\\inventoryService.js":132,"./services\\knownException.js":133,"./services\\localCategory.js":134,"./services\\localCategoryService.js":135,"./services\\product.js":136,"./services\\productAdd.js":137,"./services\\productReviewService.js":138,"./services\\sellerAccountService.js":139,"./services\\sellerPermissionService.js":140,"./services\\sellerRoleService.js":141,"./services\\shop.js":142,"./services\\shopPermissionService.js":143,"./template":152,"./template-options\\PromotionForm.js":144,"./template-options\\addProductForm.js":145,"./template-options\\adminShopAccountForm.js":146,"./template-options\\couponForm.js":147,"./template-options\\productExport.js":148,"./template-options\\productImport.js":149,"./template-options\\searchForm.js":150,"./template-options\\shopSettingForm.js":151,"angular":171,"angular-animate":154,"angular-base64":155,"angular-bootstrap-datetimepicker":156,"angular-chart.js":157,"angular-clipboard":158,"angular-cookies":160,"angular-file-upload":161,"angular-sanitize":163,"angular-scroll":165,"angular-ui-bootstrap":167,"angular-ui-tree":169,"lodash":174,"ui-select/dist/select.js":176}],2:[function(require,module,exports){
 module.exports = {
 	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api/',
 	MAX_GLOBAL_CAT_COLUMN : 4,
@@ -933,7 +934,7 @@ module.exports = ["$scope", "$controller", "AttributeService", "config", "util",
 		}
 	}, true);
 }];
-},{"angular":167}],10:[function(require,module,exports){
+},{"angular":171}],10:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AttributeSetService", "util", "config", function($scope, $controller, AttributeSetService, util, config) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -2251,9 +2252,8 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
     var onImageUploadQueueLimit = function () { }
     $scope.asStatus = Product.getStatus;
 
-    $scope.overview = {};
-
     $scope.formData = {
+        overview: {},
         Brand: {
             id: null
         },
@@ -2303,7 +2303,8 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
             $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1);
         }
     };
-
+    
+    //TODO: remove
     $scope.isFreeTextInput = util.isFreeTextDataType;
     $scope.isListInput = util.isListDataType;
     $scope.isHtmlInput = util.isHtmlDataType;
@@ -2539,7 +2540,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
         Product.publish(apiRequest, Status).then(function (res) {
             $scope.pageState.reset();
             if (res.ProductId) {
-                $scope.overview = res;
+                $scope.formData.overview = res;
                 $scope.dataSet.attributeOptions = angular.copy(protoAttributeOptions); //will trigger watchvariantchange
                 var catId = Number(res.GlobalCategory);
                 $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function () {
@@ -2591,7 +2592,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
 
             Product.getOne(productId)
                 .then(function (inverseFormData) {
-                    $scope.overview = angular.copy(inverseFormData);
+                    $scope.formData.overview = angular.copy(inverseFormData);
                     var catId = Number(inverseFormData.GlobalCategory);
                     $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs, $scope.controlFlags,
                         $scope.variationFactorIndices, inverseFormData).then(function () {
@@ -2623,6 +2624,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
         LocalCategoryService.list().then(function (data) {
             $scope.dataSet.LocalCategories = Category.transformNestedSetToUITree(data);
         });
+        
     }
 
     var tabPage = {};
@@ -2728,11 +2730,63 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
                 }
             });
 
+            $scope.openVariantDetail = function (pair, array, index) {
+                if (angular.isUndefined(pair.Images)) {
+                    pair.Images = [];
+                }
+
+                if (angular.isUndefined(pair.queue)) {
+                    pair.queue = [];
+                }
+
+                var variantModal = $uibModal.open({
+                    animation: true,
+                    templateUrl: 'add-product/variant-modal',
+                    controller: ["$scope", "$uibModalInstance", "$timeout", function ($scope, $uibModalInstance, $timeout) {
+                        'ngInject';
+                        
+                        $scope.no = function () {
+                            $uibModalInstance.close('no');
+                        }
+
+                        $scope.yes = function () {
+                            $uibModalInstance.close('yes');
+                        }
+                    }],
+                    size: 'xl',
+                    resolve: {
+                        model: function () {
+                            return $scope.pairModal;
+                        },
+                        ckOptions: function(){
+                            return $scope.ckOptions;
+                        }
+                    }
+                });
+                
+                variantModal.result.then(function (selectedItem) {
+                    if (selectedItem == 'yes') {
+                        console.log("closed mdoal hyes");
+                    }
+                }, function () {
+                    console.log('Modal dismissed at: ' + new Date());
+                });
+
+                
+                //Modal target (for viewing pair)
+                $scope.pairModal = angular.copy(pair);
+                $scope.pairModal.alert = new NcAlert();
+                $scope.pairIndex = index;
+                $scope.uploaderModal.queue = $scope.pairModal.queue;
+                ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
+            };
+
             $scope.$on('openPairModal', function (evt, pair, array, index) {
 
                 if (angular.isUndefined(pair.Images)) {
                     pair.Images = [];
                 }
+
                 if (angular.isUndefined(pair.queue)) {
                     pair.queue = [];
                 }
@@ -2756,7 +2810,7 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
 
 }];
 
-},{"angular":167}],31:[function(require,module,exports){
+},{"angular":171}],31:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Category, GlobalCategory) {
@@ -2780,7 +2834,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 	});
 }];
 
-},{"angular":167}],32:[function(require,module,exports){
+},{"angular":171}],32:[function(require,module,exports){
 module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product, AttributeSet) {
   $scope.ProductList = [];
   $scope.SELECT_ALL = false;
@@ -4395,7 +4449,7 @@ module.exports = [function() {
 		}
 	};
 }];
-},{"angular":167}],51:[function(require,module,exports){
+},{"angular":171}],51:[function(require,module,exports){
 module.exports = ["$interpolate", function($interpolate) {
 	'ngInject';
 	return {
@@ -4873,7 +4927,7 @@ module.exports = ['$templateCache', '$compile', '$templateOptionsCache', 'KnownE
         }
     };
 }];
-},{"angular":167}],58:[function(require,module,exports){
+},{"angular":171}],58:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$document', '$window', function($document, $window) {
 	$window._globalPopoverAny = null;
@@ -4903,7 +4957,7 @@ module.exports = ['$document', '$window', function($document, $window) {
 		}
 	};
 }];
-},{"angular":167}],59:[function(require,module,exports){
+},{"angular":171}],59:[function(require,module,exports){
 module.exports = [function() {
   return function(input, scope) {
     if (input!=null)
@@ -4916,7 +4970,7 @@ var angular = require('angular');
 
 module.exports = [function() {
   return function(arr, other, trackBy) {
-
+     if(!arr) arr = [];
      return arr.filter(function(elem){
         if(other == null || other === undefined) return true;
         if(other instanceof Array){
@@ -4946,7 +5000,7 @@ module.exports = [function() {
      });
   }
 }];
-},{"angular":167}],61:[function(require,module,exports){
+},{"angular":171}],61:[function(require,module,exports){
 module.exports = [function() {
   
 var search = function(catId, tmp) {
@@ -5076,7 +5130,7 @@ module.exports = [function() {
   	return input;
   }
 }];
-},{"angular":167}],66:[function(require,module,exports){
+},{"angular":171}],66:[function(require,module,exports){
 /*
  * Get slice or subarray of array
  */
@@ -5138,7 +5192,7 @@ module.exports = [function() {
      return i;
   }
 }];
-},{"angular":167}],69:[function(require,module,exports){
+},{"angular":171}],69:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return function(value) {
@@ -5815,7 +5869,7 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     return service;
 }];
 
-},{"angular":167}],74:[function(require,module,exports){
+},{"angular":171}],74:[function(require,module,exports){
 module.exports = ['util', function (util) {
 	
 	//Struct for Variant Pair
@@ -5830,6 +5884,442 @@ module.exports = ['util', function (util) {
 }];
 
 },{}],75:[function(require,module,exports){
+module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", function($scope, $window, NcAlert, util, common, options) {
+	'ngInject';
+	
+    
+}];
+},{}],76:[function(require,module,exports){
+var angular = require('angular');
+angular.module('productDetail')
+    .directive('apComponent', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", "Product", "util", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse, Product, util) {
+        return {
+            restrict: 'A',
+            transclude: true,
+            replace: true,
+            priority: 1010,
+            scope: {
+                formData: '=formData',
+                breadcrumb: '=?breadcrumb',
+                controlFlags: '=?controlFlags',
+                dataset: '=dataset'
+            },
+            template: function (element, attrs) {
+                var templateHTML = $templateCache.get(attrs.apComponent);
+                if (!templateHTML) {
+                    throw new KnownException("Unable to load specified tab template " + attrs.apComponent);
+                }
+                return templateHTML;
+            },
+            link: function (scope, element, attrs, ctrl, transclude) {
+
+                scope.isInvalid = function (form) {
+                    if (angular.isDefined(form) &&
+                        angular.isDefined(form.$invalid) &&
+                        angular.isDefined(form.$dirty)) {
+                        return form.$invalid && (form.$dirty || form.$$parentForm.$submitted);
+                    }
+                    return false;
+                };
+
+                scope.asStatus = Product.getStatus;
+                scope.isFreeTextInput = util.isFreeTextDataType;
+                scope.isListInput = util.isListDataType;
+                scope.isHtmlInput = util.isHtmlDataType;
+
+                var pathComp;
+                var opt = {};
+                if (scope.optionsPath) {
+                    pathComp = scope.optionsPath.split('/');
+                    opt = $templateOptionsCache[pathComp[0]][pathComp[1]];
+                }
+
+                if (!opt) {
+                    throw new KnownException('Warning: cannot find tab ' + scope.optionsPath);
+                    opt = {};
+                }
+
+                if (!('error' in opt)) {
+                    opt.error = {};
+                };
+
+                scope.options = opt;
+
+            }
+        };
+    }]);
+
+},{"angular":171}],77:[function(require,module,exports){
+var angular = require('angular');
+
+
+angular.module('productDetail', []);
+
+(function () {var f = require("./index.js");f["controllers"]=({"abstractProductAdd":require("./controllers\\abstractProductAdd.js")});f["directives"]=({"apComponent":require("./directives\\apComponent.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
+require('./template.js');
+},{"./controllers\\abstractProductAdd.js":75,"./directives\\apComponent.js":76,"./index.js":77,"./template.js":78,"angular":171}],78:[function(require,module,exports){
+/**
+ * Generated by grunt-angular-templates 
+ */
+angular.module("nc").run(["$templateCache", function($templateCache) {  'use strict';
+
+  $templateCache.put('ap/inner-tab-breadcrumb',
+    "<div><div class=\"alert alert-yellow\" ng-if=\"formData.Status == 'WA'\">This product is waiting for approval from the admin. You cannot edit it now.</div><div class=margin-bottom-20><span>Global Category:</span> <span>{{ breadcrumb.globalCategory }}</span></div></div>"
+  );
+
+
+  $templateCache.put('ap/modal-variant-detail',
+    "<form class=\"ah-form sticky-mainform-action\"><div class=modal-header><h3 class=\"float-left modal-title\">Variant: {{ model.text }}</h3><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div><div class=\"modal-body margin-top-20\"><div class=row><div class=col-xs-12><div ng-show=addProductVariantForm.$invalid class=\"alert alert-red\">Please make sure all fields have no error.</div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'label': 'Product Name (English)',\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'labelClass': 'required',\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'error' : {\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'messages': {\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t\t'pattern': 'Special characters are not allowed'\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t},\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'show': $root.isInvalid(addProductVariantForm.Modal_ProductNameEn),\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'conditions' : addProductVariantForm.Modal_ProductNameEn.$error\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t}\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t}\"><input class=\"form-control width-field-large\" name=Modal_ProductNameEn ng-model=model.ProductNameEn maxlength=300 ng-pattern=\"/^[^<>ก-๙]+$/\" ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_ProductNameEn) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'label': 'Product Name (ไทย)',\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'labelClass': 'required',\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'error' : {\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'messages': {\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'pattern': 'Only letters and numbers allowed'\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t},\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'show': $root.isInvalid(addProductVariantForm.Modal_ProductNameTh),\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'conditions' : addProductVariantForm.Modal_ProductNameTh.$error\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t}\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t}\"><input class=\"form-control width-field-large\" name=Modal_ProductNameTh ng-model=model.ProductNameTh ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_ProductNameTh) }\" ng-pattern=\"/^[^<>]+$/\" maxlength=\"300\"></div><div nc-template=common/input/form-group-with-label nc-template-form=addProductForm.Modal_Upc nc-label=UPC nc-template-options-path=addProductForm/MasterVariant_Upc><input class=\"form-control width-field-large\" name=Modal_Upc ng-model=model.Upc maxlength=\"100\"></div><div class=form-group><div class=width-label><label class=control-label>Display</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select class=form-control ng-model=model.Display><option value={{op.value}} ng-repeat=\"op in dataSet.VariantDisplayOption\">{{ op.text }}</option></select></div></div></div></div></div><div class=form-section><div class=form-section-header>Embed Video</div><div class=form-section-content><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "\t\t\t\t                        'label': 'Video Link 1',\r" +
+    "\n" +
+    "\t\t\t\t                        'hint': {\r" +
+    "\n" +
+    "\t\t\t\t                        \t'show': true,\r" +
+    "\n" +
+    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\r" +
+    "\n" +
+    "\t\t\t\t                        },\r" +
+    "\n" +
+    "\t\t\t\t                        'error' : {\r" +
+    "\n" +
+    "\t\t\t\t                              'messages': {\r" +
+    "\n" +
+    "\t\t\t\t                              \t'url': 'Please enter valid URL'\r" +
+    "\n" +
+    "\t\t\t\t                              },\r" +
+    "\n" +
+    "\t\t\t\t                              'show': $root.isInvalid(addProductVariantForm.Modal_VideoLinks0),\r" +
+    "\n" +
+    "\t\t\t\t                              'conditions' : addProductVariantForm.Modal_VideoLinks0.$error\r" +
+    "\n" +
+    "\t\t\t\t                         }\r" +
+    "\n" +
+    "\t\t\t\t                      }\"><input class=\"form-control width-field-normal\" name=Modal_VideoLinks0 type=url maxlength=500 ng-model=model.VideoLinks[0] ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_VideoLinks0) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "\t\t\t\t                        'label': 'Video Link 2',\r" +
+    "\n" +
+    "\t\t\t\t                        'hint': {\r" +
+    "\n" +
+    "\t\t\t\t                        \t'show': true,\r" +
+    "\n" +
+    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\r" +
+    "\n" +
+    "\t\t\t\t                        },\r" +
+    "\n" +
+    "\t\t\t\t                        'error' : {\r" +
+    "\n" +
+    "\t\t\t\t                              'messages': {\r" +
+    "\n" +
+    "\t\t\t\t                              \t'url': 'Please enter valid URL'\r" +
+    "\n" +
+    "\t\t\t\t                              },\r" +
+    "\n" +
+    "\t\t\t\t                              'show': $root.isInvalid(addProductVariantForm.Modal_VideoLinks1),\r" +
+    "\n" +
+    "\t\t\t\t                              'conditions' : addProductVariantForm.Modal_VideoLinks1.$error\r" +
+    "\n" +
+    "\t\t\t\t                         }\r" +
+    "\n" +
+    "\t\t\t\t                      }\"><input class=\"form-control width-field-normal\" name=Modal_VideoLinks1 type=url maxlength=500 ng-model=model.VideoLinks[1] ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_VideoLinks1) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "\t\t\t\t                        'label': 'Video Link 3',\r" +
+    "\n" +
+    "\t\t\t\t                        'hint': {\r" +
+    "\n" +
+    "\t\t\t\t                        \t'show': true,\r" +
+    "\n" +
+    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\r" +
+    "\n" +
+    "\t\t\t\t                        },\r" +
+    "\n" +
+    "\t\t\t\t                        'error' : {\r" +
+    "\n" +
+    "\t\t\t\t                              'messages': {\r" +
+    "\n" +
+    "\t\t\t\t                              \t'url': 'Please enter valid URL'\r" +
+    "\n" +
+    "\t\t\t\t                              },\r" +
+    "\n" +
+    "\t\t\t\t                              'show': $root.isInvalid(addProductVariantForm.Modal_VideoLinks2),\r" +
+    "\n" +
+    "\t\t\t\t                              'conditions' : addProductVariantForm.Modal_VideoLinks2.$error\r" +
+    "\n" +
+    "\t\t\t\t                         }\r" +
+    "\n" +
+    "\t\t\t\t                      }\"><input type=url class=\"form-control width-field-normal\" name=Modal_VideoLinks2 maxlength=500 ng-model=model.VideoLinks[2] ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_VideoLinks2) }\"></div></div></div><div class=form-section><div class=form-section-header>Description</div><div class=form-section-content><div ng-template=common/input/textarea2 ng-template-options=\"{\r" +
+    "\n" +
+    "                                                'label': 'Short Description (English)',\r" +
+    "\n" +
+    "                                                'inputSize': 'xxl',\r" +
+    "\n" +
+    "                                                'formGroupClass' : 'margin-top-30',\r" +
+    "\n" +
+    "                                                'error' : {\r" +
+    "\n" +
+    "                                                'messages': {\r" +
+    "\n" +
+    "                                                    'pattern': 'Special characters are not allowed'\r" +
+    "\n" +
+    "                                                },\r" +
+    "\n" +
+    "                                                'show': $root.isInvalid(addProductVariantForm.Modal_DescriptionShortEn),\r" +
+    "\n" +
+    "                                                'conditions' : addProductVariantForm.Modal_DescriptionShortEn.$error\r" +
+    "\n" +
+    "                                                }\r" +
+    "\n" +
+    "                                                }\"><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=Modal_DescriptionShortEn ng-model=model.DescriptionShortEn ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_DescriptionShortEn) }\">\r" +
+    "\n" +
+    "                            </textarea></div><div ng-template=common/input/textarea2 ng-template-options=\"{\r" +
+    "\n" +
+    "                                            'label': 'Short Description (ไทย)',\r" +
+    "\n" +
+    "                                            'inputSize': 'xxl',\r" +
+    "\n" +
+    "                                            'formGroupClass' : 'margin-top-30',\r" +
+    "\n" +
+    "                                            'error' : {\r" +
+    "\n" +
+    "                                            'messages': {\r" +
+    "\n" +
+    "                                            'pattern': 'Special characters are not allowed'\r" +
+    "\n" +
+    "                                            },\r" +
+    "\n" +
+    "                                            'show': $root.isInvalid(addProductVariantForm.Modal_DescriptionShortTh),\r" +
+    "\n" +
+    "                                            'conditions' : addProductVariantForm.Modal_DescriptionShortTh.$error\r" +
+    "\n" +
+    "                                            }\r" +
+    "\n" +
+    "                                            }\"><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=Modal_DescriptionShortTh ng-model=model.DescriptionShortTh ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_DescriptionShortTh) }\">\r" +
+    "\n" +
+    "                            </textarea></div></div></div><div class=form-section><div class=form-section-header>Package Detail</div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Preparation Time\" nc-template-form=Modal_PrepareDay nc-template-options-path=addProductForm/PrepareDay><input class=\"form-control width-field-normal\" name=Modal_PrepareDay ng-pattern-restrict=^[0-9]*$ maxlength=5 ng-model=\"model.PrepareDay\"></div><div class=form-group><div class=width-label><label class=\"control-label required\" style=\"margin-top: 25px\">Package Dimension</label></div><div class=width-field-xxl><div class=multiple-input><div class=input-column><div ng-template=common/input/text3 ng-template-options=\"{\r" +
+    "\n" +
+    "                                                        'label': 'Length',\r" +
+    "\n" +
+    "                                                        'error' : {\r" +
+    "\n" +
+    "                                                        'messages': {\r" +
+    "\n" +
+    "                                                        'required': 'This is a required field',\r" +
+    "\n" +
+    "                                                        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\r" +
+    "\n" +
+    "                                                        },\r" +
+    "\n" +
+    "                                                        'show': $root.isInvalid(addProductVariantForm.Modal_Length),\r" +
+    "\n" +
+    "                                                        'conditions' : addProductVariantForm.Modal_Length.$error\r" +
+    "\n" +
+    "                                                        }\r" +
+    "\n" +
+    "                                                        }\"><input class=form-control name=Modal_Length maxlength=11 ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" ng-model=model.Length ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Length) }\"></div></div><div class=input-column><div ng-template=common/input/text3 ng-template-options=\"{\r" +
+    "\n" +
+    "                                                        'label': 'Height',\r" +
+    "\n" +
+    "                                                        'error' : {\r" +
+    "\n" +
+    "                                                        'messages': {\r" +
+    "\n" +
+    "                                                        'required': 'This is a required field',\r" +
+    "\n" +
+    "                                                        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\r" +
+    "\n" +
+    "                                                        },\r" +
+    "\n" +
+    "                                                        'show': $root.isInvalid(addProductVariantForm.Modal_Height),\r" +
+    "\n" +
+    "                                                        'conditions' : addProductVariantForm.Modal_Height.$error\r" +
+    "\n" +
+    "                                                        }\r" +
+    "\n" +
+    "                                                        }\"><input class=form-control maxlength=11 name=Modal_Height ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" ng-model=model.Height ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Height) }\"></div></div><div class=input-column><div ng-template=common/input/text3 ng-template-options=\"{\r" +
+    "\n" +
+    "                                                        'label': 'Width',\r" +
+    "\n" +
+    "                                                        'error' : {\r" +
+    "\n" +
+    "                                                        'messages': {\r" +
+    "\n" +
+    "                                                        'required': 'This is a required field',\r" +
+    "\n" +
+    "                                                        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\r" +
+    "\n" +
+    "                                                        },\r" +
+    "\n" +
+    "                                                        'show': $root.isInvalid(addProductVariantForm.Modal_Width),\r" +
+    "\n" +
+    "                                                        'conditions' : addProductVariantForm.Modal_Width.$error\r" +
+    "\n" +
+    "                                                        }\r" +
+    "\n" +
+    "                                                        }\"><input class=form-control maxlength=11 name=Modal_Width ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" ng-model=model.Width ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Width) }\"></div></div><div class=\"input-column no-label select input-xl\" style=\"padding-top: 24px\"><select ng-model=model.DimensionUnit class=form-control><option value=MM>Millimeter</option><option value=CM>Centimeter</option><option value=M>Meter</option></select></div></div></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Weight</label></div><div class=width-field-xxl><div class=multiple-input><div ng-template=common/input/text-column ng-template-options=\"{\r" +
+    "\n" +
+    "                                                        'error' : {\r" +
+    "\n" +
+    "                                                            'messages': {\r" +
+    "\n" +
+    "                                                                'required': 'This is a required field',\r" +
+    "\n" +
+    "                                                                'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\r" +
+    "\n" +
+    "                                                            },\r" +
+    "\n" +
+    "                                                        'show': $root.isInvalid(addProductVariantForm.Modal_Weight),\r" +
+    "\n" +
+    "                                                        'conditions' : addProductVariantForm.Modal_Weight.$error\r" +
+    "\n" +
+    "                                                        }\r" +
+    "\n" +
+    "                                                    }\"><input name=Modal_Weight maxlength=11 ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Weight) }\" class=form-control ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" ng-model=\"model.Weight\"></div><div class=\"input-column select input-xl\"><div class=ah-select2-dropdown><select class=form-control ng-model=model.WeightUnit><option value=G>Grams</option><option value=KG>Kilograms</option></select></div></div></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>SEO</h2></div><div class=form-section-content><div ng-template=common/input/text2 ng-template-options=\"{ 'label': 'Meta Title (English)' }\"><input maxlength=60 class=\"form-control width-field-normal\" name=Modal_SEO_MetaTitleEn ng-model=model.SEO.MetaTitleEn ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaTitleEn) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{ 'label': 'Meta Title (ไทย)' }\"><input maxlength=60 class=\"form-control width-field-normal\" name=Modal_SEO_MetaTitleTh ng-model=model.SEO.MetaTitleTh ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaTitleTh) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{   'label': 'Meta Description (English)' }\"><input maxlength=150 class=\"form-control width-field-normal\" name=Modal_SEO_MetaDescriptionEn ng-model=model.SEO.MetaDescriptionEn ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaDescriptionEn) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{ 'label': 'Meta Description (ไทย)' }\"><input maxlength=150 class=\"form-control width-field-normal\" name=Modal_SEO_MetaDescriptionTh ng-model=model.SEO.MetaDescriptionTh ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaDescriptionTh) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{  'label': 'Meta Keywords (English)'\t}\"><input placeholder=\"Keywords separated by comma\" class=\"form-control width-field-normal\" name=Modal_SEO_MetaKeywordsEn ng-model=model.SEO.MetaKeywordEn ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaKeywordsEn) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{   'label': 'Meta Keywords (ไทย)' }\"><input placeholder=\"Keywords separated by comma\" class=\"form-control width-field-normal\" name=Modal_SEO_MetaKeywordTh ng-model=model.SEO.MetaKeywordTh ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaKeywordsTh) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{ 'label': 'Product URL Key' }\"><input maxlength=300 class=\"form-control width-field-normal\" ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" name=Modal_SEO_ProductUrlKeyEn ng-model=model.SEO.ProductUrlKeyEn ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_ProductUrlKeyEn) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "            \t\t\t\t\t\t'label': 'Product Boosting Weight',\r" +
+    "\n" +
+    "            \t\t\t\t\t\t'error' : {\r" +
+    "\n" +
+    "            \t\t\t\t\t\t'messages': {\r" +
+    "\n" +
+    "            \t\t\t\t\t\t'max': 'Only numbers from 1 to 10000 is allowed',\r" +
+    "\n" +
+    "            \t\t\t\t\t\t'min': 'Only numbers from 1 to 10000 is allowed',\r" +
+    "\n" +
+    "                                    'pattern': 'Only numbers from 1 to 10000 is allowed'\r" +
+    "\n" +
+    "            \t\t\t\t\t\t},\r" +
+    "\n" +
+    "            \t\t\t\t\t\t'show': $root.isInvalid(addProductForm.SEO_ProductBoostingWeight),\r" +
+    "\n" +
+    "            \t\t\t\t\t\t'conditions' : addProductForm.SEO_ProductBoostingWeight.$error\r" +
+    "\n" +
+    "            \t\t\t\t\t\t}\r" +
+    "\n" +
+    "            \t\t\t\t\t\t}\"><input type=number class=\"form-control width-field-normal\" min=0 max=10000 step=1 ng-pattern=\"/^[0-9]+$/\" name=Modal_SEO_ProductBoostingWeight ng-model=model.SEO.ProductBoostingWeight ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_ProductBoostingWeight) }\"></div></div></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div></div></div><form></form></form>"
+  );
+
+
+  $templateCache.put('ap/section-description',
+    "<div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Description (English)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionFull nc-template-form=addProductForm.MasterVariant_DescriptionFullEn><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=MasterVariant_DescriptionFullEn ng-model=formData.MasterVariant.DescriptionFullEn>\r" +
+    "\n" +
+    "            </textarea></div><div nc-template=common/input/form-group-with-label nc-label=\"Short Description (English)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionShortEn nc-template-form=addProductForm.MasterVariant_DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=MasterVariant_DescriptionShortEn ng-model=formData.MasterVariant.DescriptionShortEn>\r" +
+    "\n" +
+    "            </textarea></div><div nc-template=common/input/form-group-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionFull nc-template-form=addProductForm.MasterVariant_DescriptionFullTh><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=MasterVariant_DescriptionFullTh ng-model=formData.MasterVariant.DescriptionFullTh>\r" +
+    "\n" +
+    "            </textarea></div><div nc-template=common/input/form-group-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionShortTh nc-template-form=addProductForm.MasterVariant_DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=MasterVariant_DescriptionShortTh ng-model=formData.MasterVariant.DescriptionShortTh>\r" +
+    "\n" +
+    "            </textarea></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/section-detail',
+    "<div class=form-section><div class=form-section-header><h2>Detail</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Attribute Set</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-if=\"controlFlags.variation == 'enable'\" class=form-control disabled><option disabled>{{ formData.AttributeSet.AttributeSetNameEn }}</option></select><ui-select ng-if=\"controlFlags.variation != 'enable'\" ng-model=formData.AttributeSet ng-show=\"dataset.AttributeSets.length > 0\"><ui-select-match placeholder=\"Search Attribute Set\"><span ng-bind=$select.selected.AttributeSetNameEn></span> <span ng-show=!$select.selected.AttributeSetNameEn>- Select Attribute Set -</span></ui-select-match><ui-select-choices repeat=\"item in (dataset.AttributeSets) | filter : $select.search track by item.AttributeSetId\"><span ng-bind=item.AttributeSetNameEn></span></ui-select-choices></ui-select><select class=form-control ng-if=\"dataset.AttributeSets.length == 0\" disabled><option disabled>This category has no attribute sets</option></select></div></div><a class=\"like-text form-text\" ng-if=\"formData.AttributeSet.AttributeSetId && controlFlags.variation != 'enable'\" ng-click=\"formData.AttributeSet = {}\"><i class=\"fa fa-minus-circle color-theme\"></i></a></div><div class=form-group ng-repeat=\"amap in formData.AttributeSet.AttributeSetMaps\"><div class=width-label><label class=control-label ng-class=\"{'required': amap.Attribute.Required}\">{{ amap.Attribute.AttributeNameEn }}</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(amap.Attribute.DataType), 'width-field-xxl': isHtmlInput(amap.Attribute.DataType)}\"><select ng-if=isListInput(amap.Attribute.DataType) ng-required=\"amap.Attribute.Required && onPublishing\" class=form-control ng-model=formData.MasterAttribute[amap.Attribute.AttributeId] ng-class=\"{'has-error' : $root.isInvalid(addProductForm.AmapInput{{ $index }}) }\" name=AmapInput{{$index}} ng-options=\"item as item.AttributeValue.AttributeValueEn for item in amap.Attribute.AttributeValueMaps track by item.AttributeValueId\"><option disabled value=\"\" selected>- Select option -</option></select><div ng-if=isHtmlInput(amap.Attribute.DataType)><textarea ng-required=\"amap.Attribute.Required && onPublishing\" ng-class=\"{'has-error' : $root.isInvalid(addProductForm.AmapInput{{ $index }}) }\" ng-model=formData.MasterAttribute[amap.Attribute.AttributeId] name=AmapInput{{$index}} class=form-control ng-ckeditor=ckOptions></textarea></div><input ng-if=isFreeTextInput(amap.Attribute.DataType) ng-class=\"{'has-error' : $root.isInvalid(addProductForm.AmapInput{{ $index }}) }\" ng-required=\"amap.Attribute.Required && onPublishing\" class=form-control name=AmapInput{{$index}} ng-model=\"formData.MasterAttribute[amap.Attribute.AttributeId]\"></div></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/section-image-video',
+    ""
+  );
+
+
+  $templateCache.put('ap/section-inventory',
+    "<div class=form-section><div class=form-section-header><h2>Inventory</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=addProductForm.MasterVariant_Quantity nc-template-options-path=addProductForm/MasterVariant_Quantity nc-label=\"Inventory Amount\"><input class=form-control name=MasterVariant_Quantity ng-pattern-restrict=^[0-9]*$ maxlength=10 ng-model=\"formData.MasterVariant.Quantity\"></div><div nc-template=common/input/form-group-with-label nc-template-form=addProductForm.MasterVariant_SafetyStock nc-template-options-path=addProductForm/MasterVariant_SafetyStock nc-label=\"Safety Stock Amount\"><input class=form-control name=MasterVariant_SafetyStock ng-pattern-restrict=^[0-9]*$ maxlength=10 ng-model=\"formData.MasterVariant.SafetyStock\"></div><div nc-template=common/input/form-group-with-label nc-template-form=addProductForm.MasterVariant_StockType nc-template-options-path=addProductForm/MasterVariant_StockType nc-label=\"Stock Type\"><select ng-model=formData.MasterVariant.StockType class=form-control name=MasterVariant_StockType><option selected disabled>- Select Stock Type -</option><option>Stock</option><option>Pre-Order</option></select></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/section-keywords',
+    "<div class=form-section><div class=form-section-header><h2>Keywords</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=Keywords nc-template-form=addProductForm.Keywords nc-template-options-path=addProductForm/Keywords><ui-select ng-model=formData.Keywords name=Keywords nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 nc-tag-pattern=^[a-zA-Z0-9ก-๙\\s\\-]+$ multiple tagging tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match placeholder=\"Input keywords\">{{$item}}</ui-select-match><ui-select-choices repeat=\"item in formData.AttributeSet.AttributeSetTagMaps\">{{item}}</ui-select-choices></ui-select></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Keywords).length > 0\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Keywords\" ng-click=\"(formData.Keywords.indexOf(tag) == -1) && formData.Keywords.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/section-overview',
+    "<div class=row ng-if=formData.Status><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Overview</h2></div><div class=form-section-content><div class=container-fluid style=\"margin: -15px\"><table class=table><thead><th>Product Name</th><th ng-if=\"(formData.Variants || []).length == 0\">PID</th><th ng-if=\"(formData.Variants || []).length > 0\">Group ID</th><th>Price</th><th>Info</th><th>Image</th><th>Status</th><th>Live</th><th>Visible</th></thead><tbody><tr><td>{{ formData.MasterVariant.ProductNameEn }}</td><td>{{ formData.MasterVariant.Pid }}</td><td>{{ formData.MasterVariant.OriginalPrice | number: 2 }}</td><td><i ng-if=!formData.InfoFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=formData.InfoFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td><i ng-if=!formData.ImageFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=formData.ImageFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td><span class=\"{{ asStatus(formData.Status).color }}\"><i class=\"fa {{ asStatus(formData.Status).icon }}\"></i> {{ asStatus(formData.Status).name }}</span></td><td><i class=\"fa fa-circle color-grey\"></i></td><td><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon font-size-16' : !formData.Visibility, 'fa fa-eye color-dark-grey eye-icon font-size-16' : formData.Visibility}\"></i></td></tr><tbody></tbody></tbody></table></div></div></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/section-price',
+    "<div class=form-section><div class=form-section-header><h2>Price</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=addProductForm.MasterVariant_SalePrice nc-label=\"Sale Price\" nc-template-options-path=addProductForm/MasterVariant_SalePrice><input ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" class=\"form-control width-field-normal\" maxlength=20 name=MasterVariant_SalePrice ng-model=formData.MasterVariant.SalePrice required></div><div nc-template=common/input/form-group-with-label nc-label=\"Original Price\" nc-template-options-path=addProductForm/MasterVariant_OriginalPrice nc-template-form=addProductForm.MasterVariant_OriginalPrice><input class=\"form-control width-field-normal\" name=MasterVariant_OriginalPrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"formData.MasterVariant.OriginalPrice\"></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/section-shipping',
+    "<div class=form-section><div class=form-section-header><h2>Shipping Detail</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Shipping Method</label></div><div class=width-field-normal><div class=\"radio multiple-radio multiline\"><label><input type=radio name=shipping_method value=1 ng-model=\"formData.ShippingMethod\"> Dropship by 3PL</label><label><input type=radio name=shipping_method value=2 ng-model=\"formData.ShippingMethod\"> Central Fulfillment</label></div></div></div><div nc-template=common/input/form-group-with-label nc-label=\"Preparation Time\" nc-template-form=addProductForm.PrepareDay nc-template-options-path=addProductForm/PrepareDay><input class=\"form-control width-field-normal\" name=PrepareDay ng-pattern-restrict=^[0-9]*$ ng-required=onPublishing maxlength=5 ng-model=\"formData.PrepareDay\"></div><div class=form-group><div class=width-label><label class=\"control-label required\" stytle=margin-top:25px>Package Dimension</label></div><div class=width-field-xxl><div class=multiple-input><div class=input-column><div nc-template=common/input/div-with-label nc-label=Length nc-template-options-path=addProductForm/MasterVariant_Dimension nc-template-form=addProductForm.MasterVariant_Length><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=MasterVariant_Length ng-model=\"formData.MasterVariant.Length\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Height nc-template-options-path=addProductForm/MasterVariant_Dimension nc-template-form=addProductForm.MasterVariant_Height><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=MasterVariant_Height ng-model=\"formData.MasterVariant.Height\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Width nc-template-options-path=addProductForm/MasterVariant_Dimension nc-template-form=addProductForm.MasterVariant_Width><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=MasterVariant_Width ng-model=\"formData.MasterVariant.Width\"></div></div><div class=\"input-column no-label select input-xl\" style=\"padding-top: 24px\"><select ng-model=formData.MasterVariant.DimensionUnit class=form-control><option value=MM>Millimeter</option><option value=CM>Centimeter</option><option value=M>Meter</option></select></div></div></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Weight</label></div><div class=width-field-xxl><div class=multiple-input><div nc-template=common/input/text-column-no-label nc-label=\"\" nc-template-options-path=addProductForm/MasterVariant_Dimension nc-template-form=addProductForm.MasterVariant_Weight><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=MasterVariant_Weight ng-model=\"formData.MasterVariant.Weight\"></div><div class=\"input-column select input-xl\"><div class=ah-select2-dropdown><select class=form-control ng-model=formData.MasterVariant.WeightUnit><option value=G>Grams</option><option value=KG>Kilograms</option></select></div></div></div></div></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/section-vital-information',
+    "<div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=addProductForm.MasterVariant_ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/MasterVariant_ProductNameEn><input class=\"form-control width-field-large\" name=MasterVariant_ProductNameEn ng-model=formData.MasterVariant.ProductNameEn maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=addProductForm.MasterVariant_ProductNameTh nc-template-options-path=addProductForm/MasterVariant_ProductNameTh><input class=\"form-control width-field-large\" name=MasterVariant_ProductNameTh ng-model=formData.MasterVariant.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=addProductForm.MasterVariant_Sku nc-template-options-path=addProductForm/MasterVariant_Sku><input class=\"form-control width-field-large\" name=MasterVariant_Sku ng-model=formData.MasterVariant.Sku maxlength=300 ng-pattern=\"/^[^<>]+$/\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=addProductForm.MasterVariant_Upc nc-template-options-path=addProductForm/MasterVariant_Upc><input class=\"form-control width-field-large\" ng-pattern=\"/^[^<>]+$/\" name=MasterVariant_Upc maxlength=300 ng-model=\"formData.MasterVariant.Upc\"></div><div ng-if=formData.MasterVariant.Pid><div nc-template=common/input/form-group-with-label nc-template-form=addProductForm.MasterVariant_Pid nc-label=\"{{ (formData.Variants || []).length > 0 ? 'Group ID' : 'PID' }}\" nc-template-options-path=addProductForm/MasterVariant_Pid><input class=\"form-control width-field-large\" name=MasterVariant_Pid disabled ng-model=\"formData.MasterVariant.Pid\"></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Brand Name</label></div><div class=width-field-normal><div class=ah-select2-dropdown><ui-select ng-model=formData.Brand><ui-select-match><span ng-bind=$select.selected.BrandNameEn></span> <span ng-show=!$select.selected.BrandNameEn><span class=color-grey><i class=\"fa fa-search\"></i> Search Brand</span></span></ui-select-match><ui-select-choices ui-disable-choice=item.disabled refresh-delay=500 refresh=refreshBrands($select.search) repeat=\"item in (dataSet.Brands)  | filter : $select.search  track by item.BrandId\"><span>{{ item.BrandNameEn }}</span> <span ng-if=item.BrandNameTh>/ {{ item.BrandNameTh }}</span></ui-select-choices></ui-select></div></div></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/tab-information',
+    "<div><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div ap-component=ap/section-overview form-data=formData.overview></div><div class=row><div class=col-xs-12><div ap-component=ap/section-vital-information form-data=formData></div><div ap-component=ap/section-price form-data=formData></div><div ap-component=ap/section-description form-data=formData></div><div ap-component=ap/section-detail form-data=formData control-flags=controlFlags dataset=dataset></div><div ap-component=ap/section-keywords form-data=formData></div><div ap-component=ap/section-inventory form-data=formData></div><div ap-component=ap/section-shipping form-data=formData></div></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/tab-more-option',
+    "<div id=add-product-more-option-tab-content><div nc-template=add-product/inner-tab-breadcrumb nc-view-bag=formData></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Relationship</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Related Products\" nc-template-form=addProductForm.RelatedProducts nc-template-options-path=addProductForm/RelatedProducts><ui-select ng-model=formData.RelatedProducts name=RelatedProducts nc-tag-validator nc-max-tag-count=10 multiple><ui-select-match placeholder=\"Input Product Name\"><span>{{ $item.ProductNameEn }}</span></ui-select-match><ui-select-choices repeat=\"item in (dataSet.RelatedProducts | exclude: formData.RelatedProducts : 'ProductId' | exclude: [formData] : 'ProductId' ) track by item.Pid\" refresh=refreshRelatedProducts($select.search) refresh-delay=1>{{ item.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>SEO</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=addProductForm.SEO_MetaTitleEn nc-label=\"Meta Title (English)\" nc-template-options-path=addProductForm/Nothing><input class=\"form-control width-field-normal\" name=SEO_MetaTitleEn ng-model=formData.SEO.MetaTitleEn maxlength=\"60\"></div><div nc-template=common/input/form-group-with-label nc-template-form=addProductForm.SEO_MetaTitleTh nc-label=\"Meta Title (ไทย)\" nc-template-options-path=addProductForm/Nothing><input class=\"form-control width-field-normal\" name=SEO_MetaTitleTh ng-model=formData.SEO.MetaTitleTh maxlength=\"60\"></div><div nc-template=common/input/form-group-with-label nc-template-form=addProductForm.SEO_MetaDescriptionEn nc-label=\"Meta Description (English)\" nc-template-options-path=addProductForm/Nothing><input maxlength=150 class=\"form-control width-field-normal\" name=SEO_MetaDescriptionEn ng-model=\"formData.SEO.MetaDescriptionEn\"></div><div nc-template=common/input/form-group-with-label nc-template-form=addProductForm.SEO_MetaDescriptionTh nc-label=\"Meta Description (ไทย)\" nc-template-options-path=addProductForm/Nothing><input maxlength=150 class=\"form-control width-field-normal\" name=SEO_MetaDescriptionTh ng-model=\"formData.SEO.MetaDescriptionTh\"></div><div nc-template=common/input/form-group-with-label nc-template-form=addProductForm.SEO_MetaKeywordsEn nc-label=\"Meta Keywords (English)\" nc-template-options-path=addProductForm/Nothing><input placeholder=\"Keywords separated by comma\" class=\"form-control width-field-normal\" name=SEO_MetaKeywordsEn ng-model=formData.SEO.MetaKeywordEn ng-class=\"{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaKeywordsEn) }\"></div><div nc-template=common/input/form-group-with-label nc-template-form=addProductForm.SEO_MetaKeywordsTh nc-label=\"Meta Keywords (ไทย)\" nc-template-options-path=addProductForm/Nothing><input placeholder=\"Keywords separated by comma\" class=\"form-control width-field-normal\" name=SEO_MetaKeywordsTh ng-model=formData.SEO.MetaKeywordTh ng-class=\"{ 'has-error' : $root.isInvalid(addProductForm.SEO_MetaKeywordsTh) }\"></div><div nc-template=common/input/form-group-with-label nc-template-form=addProductForm.SEO_ProductUrlKeyEn nc-label=\"Product URL Key\" nc-template-options-path=addProductForm/Nothing><input maxlength=300 class=\"form-control width-field-normal\" ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" name=SEO_ProductUrlKeyEn ng-model=formData.SEO.ProductUrlKeyEn ng-class=\"{ 'has-error' : $root.isInvalid(addProductForm.SEO_ProductUrlKeyEn) }\"></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Nothing nc-template-form=addProductForm.SEO_ProductBoostingWeight nc-label=\"Product Boosting Weight\"><input type=number class=\"form-control width-field-normal\" min=0 max=10000 step=1 ng-pattern=\"/^[0-9]+$/\" name=SEO_ProductBoostingWeight ng-model=formData.SEO.ProductBoostingWeight ng-class=\"{ 'has-error' : $root.isInvalid(addProductForm.SEO_ProductBoostingWeight) }\"></div></div></div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>More Details</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Effective On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }\" placeholder=\"Select date and time when product will go online\" class=\"input-icon-calendar form-control\" value=\"{{ formData.EffectiveDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.EffectiveDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'hour' }\"></ul></div><span class=help-block></span></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go online\"></i></div></div><div class=form-group><div class=width-label><label class=control-label>Expire On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white placeholder=\"Select date and time when product will go offline\" class=\"input-icon-calendar form-control\" name=ExpireDate ng-class=\"{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }\" value=\"{{ formData.ExpireDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ExpireDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'hour' }\"></ul></div><div class=width-field-large><span class=\"help-block color-red\" ng-if=\"formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate\"><span>Effective date/time must come before expire date/time</span></span></div></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go offline\"></i></div></div><div class=form-group><div class=width-label><label class=control-label>Control Flag</label></div><div class=width-field-normal><div class=\"checkbox multiple-checkbox\"><label><input type=checkbox ng-model=formData.ControlFlags.Flag1>Flag 1</label><label><input type=checkbox ng-model=formData.ControlFlags.Flag2>Flag 2</label><label><input type=checkbox ng-model=formData.ControlFlags.Flag3>Flag 3</label></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Remark nc-template-form=addProductForm.Remark nc-label=Remark><textarea class=form-control ng-pattern=\"/^[^<>]+$/\" maxlength=2000 name=Remark ng-model=\"formData.Remark\">\r" +
+    "\n" +
+    "                                \r" +
+    "\n" +
+    "                            </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "</div>"
+  );
+ }]);
+},{}],79:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncAction', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
@@ -5885,7 +6375,7 @@ angular.module('nc')
 		}
 	}]);
 
-},{}],76:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncAdvanceSearch', ["$templateCache", "$timeout", "$uibModal", function($templateCache, $timeout, $uibModal) {
 		return {
@@ -5947,7 +6437,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],77:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncAlert', function() {
 		this.defaultErrorMessage = 'Error';
@@ -6004,7 +6494,7 @@ angular.module('nc')
 			this.message = '';
 		};
 	}]);
-},{}],78:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncBindCompile', ["$compile", "$templateCache", function($compile, $templateCache) {
        return {
@@ -6033,7 +6523,7 @@ angular.module('nc')
             }
         };
     }]);
-},{}],79:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncBreadcrumbSelect', ["$templateCache", "$filter", "$timeout", function($templateCache, $filter, $timeout) {
 		var _globalOptions = {};
@@ -6110,7 +6600,7 @@ angular.module('nc')
 			}
 		};
 	}])
-},{}],80:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncBulk', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
@@ -6263,7 +6753,7 @@ angular.module('nc')
 			}
 		}
 	}])
-},{}],81:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncDateRange', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse) {
@@ -6314,7 +6804,7 @@ angular.module('nc')
             };
         }]);
 
-},{"angular":167}],82:[function(require,module,exports){
+},{"angular":171}],86:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEmpty', ["$templateCache", function($templateCache) {
 		return {
@@ -6328,7 +6818,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],83:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEye', ["$templateCache", function($templateCache) {
 		return {
@@ -6346,7 +6836,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-},{}],84:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncFilter', ["$templateCache", function($templateCache) {
 		return {
@@ -6368,7 +6858,7 @@ angular.module('nc')
 			}
 		}
 	}])
-},{}],85:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncImageGallery', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
@@ -6523,7 +7013,7 @@ angular.module('nc')
 			}
 		};
 	}])
-},{}],86:[function(require,module,exports){
+},{}],90:[function(require,module,exports){
 angular.module('nc')
 .directive('ncImageIntegrity', function() {
     //Only show if image loaded by <img> integrity is OK (100% finished loading)
@@ -6543,7 +7033,7 @@ angular.module('nc')
             }
         };
     })
-},{}],87:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncLoading', ["$templateCache", function($templateCache) {
 		return {
@@ -6569,7 +7059,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],88:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncPageTitle', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "$parse", "KnownException", function ($rootScope, $templateCache, $compile, $templateOptionsCache, $parse, KnownException) {
@@ -6593,7 +7083,7 @@ angular.module('nc')
             }
         };
     }]);
-},{"angular":167}],89:[function(require,module,exports){
+},{"angular":171}],93:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncPagination', function() {
 		this.paginationSizes = [10,20,30];
@@ -6660,7 +7150,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-},{}],90:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 angular.module('nc')
 	.provider('ncPermissionProvider', function() {
 		this.permission = function() {
@@ -6681,7 +7171,7 @@ angular.module('nc')
 	.directive('ncShowPermission', function() {
 		
 	});
-},{}],91:[function(require,module,exports){
+},{}],95:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncSearch', ["$templateCache", function($templateCache) {
 		return {
@@ -6703,7 +7193,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],92:[function(require,module,exports){
+},{}],96:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncTable', function() {
 		this.tableOptions = {
@@ -6792,10 +7282,10 @@ angular.module('nc')
 			template: '<a ng-href="{{link}}" ng-transclude></a>',
 		}
 	});
-},{}],93:[function(require,module,exports){
+},{}],97:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
-    .directive('ncTemplate', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", "KnownException", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException,  $parse, KnownException) {
+    .directive('ncTemplate', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException,  $parse) {
             return {
                 restrict: 'A',
                 transclude: true,
@@ -6849,7 +7339,7 @@ angular.module('nc')
             };
         }]);
 
-},{"angular":167}],94:[function(require,module,exports){
+},{"angular":171}],98:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncTreeSelect', ["$interpolate", "$templateCache", function($interpolate, $templateCache) {
 		/**
@@ -7061,7 +7551,7 @@ angular.module('nc')
 		};
 	}]);
 
-},{}],95:[function(require,module,exports){
+},{}],99:[function(require,module,exports){
 angular.module('nc')
     .directive('ncTagValidator', function () {
         return {
@@ -7121,14 +7611,14 @@ angular.module('nc')
             }
         }
     });
-},{}],96:[function(require,module,exports){
+},{}],100:[function(require,module,exports){
 angular.module('nc')
 	.filter('compact', function() {
 		return function(input) {
 			return _.compact(input);
 		};
 	});
-},{}],97:[function(require,module,exports){
+},{}],101:[function(require,module,exports){
 angular.module('nc')
 	.filter('dateTh', ["$filter", function($filter) {
 		return function(input) {
@@ -7140,7 +7630,7 @@ angular.module('nc')
 			return $filter('date')(input, 'H:m', '+700');
 		}
 	}]);
-},{}],98:[function(require,module,exports){
+},{}],102:[function(require,module,exports){
 angular.module('nc')
     .filter('escapeHtml', function () {
         var entityMap = {
@@ -7158,7 +7648,7 @@ angular.module('nc')
             });
         }
     });
-},{}],99:[function(require,module,exports){
+},{}],103:[function(require,module,exports){
 /*
  Return dropdown[value] if input == dropdown[name]
  */
@@ -7181,14 +7671,14 @@ angular.module('nc')
 			return _.isUndefined(find) ? input : find[name];
 		}
 	});
-},{}],100:[function(require,module,exports){
+},{}],104:[function(require,module,exports){
 angular.module('nc')
 	.filter('replace', function() {
 		return function(input, from, to) {
 			return input.replace(from, to);
 		};
 	});
-},{}],101:[function(require,module,exports){
+},{}],105:[function(require,module,exports){
 (function (global){
 var angular = require('angular');
 
@@ -7212,16 +7702,11 @@ angular.module('nc', ['ngSanitize', 'ui.bootstrap', 'ui.select', 'duScroll', 'an
 require('./template.js');
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./directives\\ncAction.js":75,"./directives\\ncAdvanceSearch.js":76,"./directives\\ncAlert.js":77,"./directives\\ncBindCompile.js":78,"./directives\\ncBreadcrumpSelect.js":79,"./directives\\ncBulk.js":80,"./directives\\ncDateRange.js":81,"./directives\\ncEmpty.js":82,"./directives\\ncEye.js":83,"./directives\\ncFilter.js":84,"./directives\\ncImageGallery.js":85,"./directives\\ncImageIntegrity.js":86,"./directives\\ncLoading.js":87,"./directives\\ncPageTitle.js":88,"./directives\\ncPagination.js":89,"./directives\\ncPermission.js":90,"./directives\\ncSearch.js":91,"./directives\\ncTable.js":92,"./directives\\ncTemplate.js":93,"./directives\\ncTreeSelect.js":94,"./directives\\ncUiSelect.js":95,"./filters\\compact.js":96,"./filters\\date.js":97,"./filters\\escapeHtml.js":98,"./filters\\map.js":99,"./filters\\replace.js":100,"./index.js":101,"./template.js":102,"angular":167,"angular-file-upload":157,"angular-sanitize":159,"angular-scroll":161,"angular-ui-bootstrap":163,"jquery":169,"lodash":170,"ui-select":173}],102:[function(require,module,exports){
+},{"./directives\\ncAction.js":79,"./directives\\ncAdvanceSearch.js":80,"./directives\\ncAlert.js":81,"./directives\\ncBindCompile.js":82,"./directives\\ncBreadcrumpSelect.js":83,"./directives\\ncBulk.js":84,"./directives\\ncDateRange.js":85,"./directives\\ncEmpty.js":86,"./directives\\ncEye.js":87,"./directives\\ncFilter.js":88,"./directives\\ncImageGallery.js":89,"./directives\\ncImageIntegrity.js":90,"./directives\\ncLoading.js":91,"./directives\\ncPageTitle.js":92,"./directives\\ncPagination.js":93,"./directives\\ncPermission.js":94,"./directives\\ncSearch.js":95,"./directives\\ncTable.js":96,"./directives\\ncTemplate.js":97,"./directives\\ncTreeSelect.js":98,"./directives\\ncUiSelect.js":99,"./filters\\compact.js":100,"./filters\\date.js":101,"./filters\\escapeHtml.js":102,"./filters\\map.js":103,"./filters\\replace.js":104,"./index.js":105,"./template.js":106,"angular":171,"angular-file-upload":161,"angular-sanitize":163,"angular-scroll":165,"angular-ui-bootstrap":167,"jquery":173,"lodash":174,"ui-select":177}],106:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
 angular.module("nc").run(["$templateCache", function($templateCache) {  'use strict';
-
-  $templateCache.put('addProducts/inner-tab-breadcrumb',
-    "<div><div class=\"alert alert-yellow\" ng-if=\"viewBag.Status == 'WA'\">This product is waiting for approval from the admin. You cannot edit it now.</div><div class=margin-bottom-20><span>Global Category:</span> <span>{{ viewBag.breadcrumbs.globalCategory }}</span></div></div>"
-  );
-
 
   $templateCache.put('common/ncAction',
     "<a class=action-gear href=javascript:; uib-popover-template=\"'common/ncActionPopover'\" popover-placement=bottom popover-append-to-body=true popover-trigger=outsideClick class=action-gear><i class=\"fa fa-gear color-dark-grey icon-size-20\"></i> <i class=\"fa fa-caret-down color-dark-grey\"></i></a>"
@@ -7380,7 +7865,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
     "<div class=\"page-header with-border\"><h1 class=\"float-left page-header-title\">{{ title }}</h1><span class=\"float-right page-header-action\"><ng-transclude></ng-transclude></span></div>"
   );
  }]);
-},{}],103:[function(require,module,exports){
+},{}],107:[function(require,module,exports){
 /**
  * Collection of Route ID (Object key) with route string
  *
@@ -7509,7 +7994,7 @@ module.exports = {
   seller: generateRouteArray(seller),
   admin: generateRouteArray(admin)
 }
-},{"lodash":170}],104:[function(require,module,exports){
+},{"lodash":174}],108:[function(require,module,exports){
 //Products Service
 module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
     function ($http, common, util, config, KnownException) {
@@ -7602,13 +8087,13 @@ module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
     }
 ];
 
-},{}],105:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Promotion/Ontopcreate');
 	return service;
 }];
-},{}],106:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Admin');
@@ -7643,14 +8128,14 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-},{}],107:[function(require,module,exports){
+},{}],111:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Admin');
 
 	return service;
 }]
-},{}],108:[function(require,module,exports){
+},{}],112:[function(require,module,exports){
 module.exports = ["common", "AdminPermissionService", function(common, AdminPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Admin');
@@ -7696,7 +8181,7 @@ module.exports = ["common", "AdminPermissionService", function(common, AdminPerm
 	};
 	return service;	
 }]
-},{}],109:[function(require,module,exports){
+},{}],113:[function(require,module,exports){
 module.exports = ["common", "config", "util", function(common, config, util) {
 	'ngInject';
 	var service = common.Rest('/Shops');
@@ -7735,7 +8220,7 @@ module.exports = ["common", "config", "util", function(common, config, util) {
 	};
 	return service;	
 }]
-},{}],110:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 module.exports = ["common", "ShopPermissionService", function(common, ShopPermissionService) {
 	'ngInject';
 	var service = common.Rest('/Shoptypes');
@@ -7781,7 +8266,7 @@ module.exports = ["common", "ShopPermissionService", function(common, ShopPermis
 	};
 	return service;	
 }]
-},{}],111:[function(require,module,exports){
+},{}],115:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', '$document', '$timeout', function(common, $document, $timeout) {
 	return function() {
@@ -7815,7 +8300,7 @@ module.exports = ['common', '$document', '$timeout', function(common, $document,
 		this.message = '';
 	};
 }];
-},{"angular":167}],112:[function(require,module,exports){
+},{"angular":171}],116:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common){
 	'use strict';
@@ -8061,7 +8546,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{"angular":167}],113:[function(require,module,exports){
+},{"angular":171}],117:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/Attributes');
@@ -8167,7 +8652,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }];
-},{}],114:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 module.exports = ['common', function(common){
 	'use strict';
 	var service = {};
@@ -8315,7 +8800,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{}],115:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/AttributeSets');
@@ -8377,7 +8862,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }]
-},{}],116:[function(require,module,exports){
+},{}],120:[function(require,module,exports){
 module.exports = ['$window', function($window) {
 	return function(fn, close) {
 		var vm = this;
@@ -8413,7 +8898,7 @@ module.exports = ['$window', function($window) {
 		};
 	};
 }];
-},{}],117:[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$q', 'common', function($q, common){
 	var service = {};
@@ -8499,7 +8984,7 @@ module.exports = ['$q', 'common', function($q, common){
 	};
 	return service;
 }];
-},{"angular":167}],118:[function(require,module,exports){
+},{"angular":171}],122:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	service = common.Rest('/Brands');
@@ -8530,7 +9015,7 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }]
-},{}],119:[function(require,module,exports){
+},{}],123:[function(require,module,exports){
 /**
  * Util class for category
  * @author poonwu
@@ -8857,14 +9342,14 @@ module.exports = ['config', function(config) {
     return service;
 }];
 
-},{"angular":167}],120:[function(require,module,exports){
+},{"angular":171}],124:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common) {
 	var service = common.Rest('/Coupons');
 	return service;
 }];
 
-},{"angular":167}],121:[function(require,module,exports){
+},{"angular":171}],125:[function(require,module,exports){
 //TODO: maybe merge this with user service? (doesnt exist yet, but probably exists in poon's local)
 module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(common, $base64, storage, $q, $rootScope) {
     'use strict';
@@ -8935,7 +9420,7 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 	return service;
 }];
 
-},{}],122:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$window', '$base64', 'config', function($window, $base64, config) {
@@ -8954,7 +9439,7 @@ module.exports = ['$window', '$base64', 'config', function($window, $base64, con
     };
 }];
 
-},{"angular":167}],123:[function(require,module,exports){
+},{"angular":171}],127:[function(require,module,exports){
 module.exports = ["config", "storage", "FileUploader", function(config, storage, FileUploader) {
 	'ngInject';
 	var service = {};
@@ -8974,7 +9459,7 @@ module.exports = ["config", "storage", "FileUploader", function(config, storage,
 	};
 	return service;
 }];
-},{}],124:[function(require,module,exports){
+},{}],128:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/GlobalCategories');
@@ -9042,7 +9527,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],125:[function(require,module,exports){
+},{}],129:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	service = common.Rest('/GlobalCategories');
@@ -9111,7 +9596,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],126:[function(require,module,exports){
+},{}],130:[function(require,module,exports){
 var angular = require('angular');
 //Image Service
 //Note: this file is not used anywhere (legacy!!! dOnt edit )
@@ -9202,7 +9687,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	return service;
 }];
 
-},{"angular":167}],127:[function(require,module,exports){
+},{"angular":171}],131:[function(require,module,exports){
 //Image Service
 module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", function($q, $http, common, storage, config, FileUploader) {
   'ngInject';
@@ -9305,12 +9790,12 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
   return service;
 }];
 
-},{}],128:[function(require,module,exports){
+},{}],132:[function(require,module,exports){
 module.exports = function(common) {
 	var service = common.Rest('/Inventories');
 	return service;
 };
-},{}],129:[function(require,module,exports){
+},{}],133:[function(require,module,exports){
 module.exports = [function() {
 	'use strict';
 
@@ -9318,7 +9803,7 @@ module.exports = [function() {
         this.message = "Known Exception - " + msg;   
     };
 }];
-},{}],130:[function(require,module,exports){
+},{}],134:[function(require,module,exports){
 module.exports = ['common', function(common) {
 	'use strict';
 	var service = {};
@@ -9357,7 +9842,7 @@ module.exports = ['common', function(common) {
 
 	return service;
 }];
-},{}],131:[function(require,module,exports){
+},{}],135:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/LocalCategories');
@@ -9385,7 +9870,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],132:[function(require,module,exports){
+},{}],136:[function(require,module,exports){
 // Products Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config', 'KnownException',
     function ($http, common, util, LocalCategory, Brand, config, KnownException) {
@@ -10054,7 +10539,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
     }
 ]
 
-},{}],133:[function(require,module,exports){
+},{}],137:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ["Product", "Brand", "AttributeSet", "ImageService", "GlobalCategory", "$q", "Category", "util", function (Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category, util) {
     'ngInject';
@@ -10263,7 +10748,7 @@ module.exports = ["Product", "Brand", "AttributeSet", "ImageService", "GlobalCat
     return $productAdd;
 }];
 
-},{"angular":167}],134:[function(require,module,exports){
+},{"angular":171}],138:[function(require,module,exports){
 module.exports = ["common", "util", function(common, util) {
 	'ngInject';
 	var service = common.Rest('/ProductReviews');
@@ -10299,7 +10784,7 @@ module.exports = ["common", "util", function(common, util) {
 	};	
 	return service;
 }];
-},{}],135:[function(require,module,exports){
+},{}],139:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Seller');
@@ -10334,14 +10819,14 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-},{}],136:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Seller');
 	
 	return service;
 }]
-},{}],137:[function(require,module,exports){
+},{}],141:[function(require,module,exports){
 module.exports = ["common", "SellerPermissionService", function(common, SellerPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Seller');
@@ -10387,7 +10872,7 @@ module.exports = ["common", "SellerPermissionService", function(common, SellerPe
 	};
 	return service;	
 }]
-},{}],138:[function(require,module,exports){
+},{}],142:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
     'use strict';
@@ -10446,14 +10931,14 @@ module.exports = ["common", "config", "util", function (common, config, util) {
     return service;
 }];
 
-},{}],139:[function(require,module,exports){
+},{}],143:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Shop');
 
 	return service;
 }]
-},{}],140:[function(require,module,exports){
+},{}],144:[function(require,module,exports){
 module.exports = {
     NameTH: {
         labelClass: "required",
@@ -10592,7 +11077,7 @@ module.exports = {
     }
 }
 
-},{}],141:[function(require,module,exports){
+},{}],145:[function(require,module,exports){
 module.exports = {
     MasterVariant_ProductNameEn: {
         'labelClass': 'required',
@@ -10603,6 +11088,7 @@ module.exports = {
             }
         }
     },
+    MasterVariant_StockType: {},
     MasterVariant_DescriptionFull: {
         'formGroupClass': 'margin-top-40',
         'labelClass': 'required',
@@ -10753,7 +11239,7 @@ module.exports = {
     }
 }
 
-},{}],142:[function(require,module,exports){
+},{}],146:[function(require,module,exports){
 module.exports = {
 	BankAccountNumber: {
         inputSize: 'large',
@@ -10764,7 +11250,7 @@ module.exports = {
         labelClass: 'required'
 	}
 }
-},{}],143:[function(require,module,exports){
+},{}],147:[function(require,module,exports){
 module.exports = {
   CouponName: {
     labelClass: "required",
@@ -10816,14 +11302,14 @@ module.exports = {
   }
 }
 
-},{}],144:[function(require,module,exports){
+},{}],148:[function(require,module,exports){
 module.exports = {
   MultiCheckbox: {
     transcludeClasses:  "checkbox multiple-checkbox multiline"
   }
 }
 
-},{}],145:[function(require,module,exports){
+},{}],149:[function(require,module,exports){
 module.exports = {
 	ColumnSearch: {
 
@@ -10879,7 +11365,7 @@ module.exports = {
 	}
 }
 
-},{}],146:[function(require,module,exports){
+},{}],150:[function(require,module,exports){
 module.exports = {
   ProductName: {},
   Pid: {},
@@ -10911,7 +11397,7 @@ module.exports = {
   }
 }
 
-},{}],147:[function(require,module,exports){
+},{}],151:[function(require,module,exports){
 module.exports = {
     GiftWrap: {
         tooltip: "Please select 'Available' if you can provide gift wrapping service to your customer"
@@ -10976,12 +11462,288 @@ module.exports = {
     }
 }
 
-},{}],148:[function(require,module,exports){
+},{}],152:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Mar 03 2016 15:15:40 GMT+0700 (SE Asia Standard Time)
+ * Thu Mar 03 2016 19:16:51 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
+
+  $templateCache.put('add-product/inner-tab-breadcrumb',
+    "<div><div class=\"alert alert-yellow\" ng-if=\"viewBag.Status == 'WA'\">This product is waiting for approval from the admin. You cannot edit it now.</div><div class=margin-bottom-20><span>Global Category:</span> <span>{{ viewBag.breadcrumbs.globalCategory }}</span></div></div>"
+  );
+
+
+  $templateCache.put('add-product/variant-modal',
+    "<form class=\"ah-form sticky-mainform-action\"><div class=modal-header><h3 class=\"float-left modal-title\">Variant: {{ model.text }}</h3><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div><div class=\"modal-body margin-top-20\"><div class=row><div class=col-xs-12><div ng-show=addProductVariantForm.$invalid class=\"alert alert-red\">Please make sure all fields have no error.</div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'label': 'Product Name (English)',\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'labelClass': 'required',\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'error' : {\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'messages': {\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t\t'pattern': 'Special characters are not allowed'\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t},\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'show': $root.isInvalid(addProductVariantForm.Modal_ProductNameEn),\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'conditions' : addProductVariantForm.Modal_ProductNameEn.$error\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t}\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t}\"><input class=\"form-control width-field-large\" name=Modal_ProductNameEn ng-model=model.ProductNameEn maxlength=300 ng-pattern=\"/^[^<>ก-๙]+$/\" ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_ProductNameEn) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'label': 'Product Name (ไทย)',\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'labelClass': 'required',\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'error' : {\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'messages': {\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'pattern': 'Only letters and numbers allowed'\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t},\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'show': $root.isInvalid(addProductVariantForm.Modal_ProductNameTh),\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t'conditions' : addProductVariantForm.Modal_ProductNameTh.$error\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t}\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t}\"><input class=\"form-control width-field-large\" name=Modal_ProductNameTh ng-model=model.ProductNameTh ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_ProductNameTh) }\" ng-pattern=\"/^[^<>]+$/\" maxlength=\"300\"></div><div nc-template=common/input/form-group-with-label nc-template-form=addProductForm.Modal_Upc nc-label=UPC nc-template-options-path=addProductForm/MasterVariant_Upc><input class=\"form-control width-field-large\" name=Modal_Upc ng-model=model.Upc maxlength=\"100\"></div><div class=form-group><div class=width-label><label class=control-label>Display</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select class=form-control ng-model=model.Display><option value={{op.value}} ng-repeat=\"op in dataSet.VariantDisplayOption\">{{ op.text }}</option></select></div></div></div></div></div><div class=form-section><div class=form-section-header>Embed Video</div><div class=form-section-content><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "\t\t\t\t                        'label': 'Video Link 1',\r" +
+    "\n" +
+    "\t\t\t\t                        'hint': {\r" +
+    "\n" +
+    "\t\t\t\t                        \t'show': true,\r" +
+    "\n" +
+    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\r" +
+    "\n" +
+    "\t\t\t\t                        },\r" +
+    "\n" +
+    "\t\t\t\t                        'error' : {\r" +
+    "\n" +
+    "\t\t\t\t                              'messages': {\r" +
+    "\n" +
+    "\t\t\t\t                              \t'url': 'Please enter valid URL'\r" +
+    "\n" +
+    "\t\t\t\t                              },\r" +
+    "\n" +
+    "\t\t\t\t                              'show': $root.isInvalid(addProductVariantForm.Modal_VideoLinks0),\r" +
+    "\n" +
+    "\t\t\t\t                              'conditions' : addProductVariantForm.Modal_VideoLinks0.$error\r" +
+    "\n" +
+    "\t\t\t\t                         }\r" +
+    "\n" +
+    "\t\t\t\t                      }\"><input class=\"form-control width-field-normal\" name=Modal_VideoLinks0 type=url maxlength=500 ng-model=model.VideoLinks[0] ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_VideoLinks0) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "\t\t\t\t                        'label': 'Video Link 2',\r" +
+    "\n" +
+    "\t\t\t\t                        'hint': {\r" +
+    "\n" +
+    "\t\t\t\t                        \t'show': true,\r" +
+    "\n" +
+    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\r" +
+    "\n" +
+    "\t\t\t\t                        },\r" +
+    "\n" +
+    "\t\t\t\t                        'error' : {\r" +
+    "\n" +
+    "\t\t\t\t                              'messages': {\r" +
+    "\n" +
+    "\t\t\t\t                              \t'url': 'Please enter valid URL'\r" +
+    "\n" +
+    "\t\t\t\t                              },\r" +
+    "\n" +
+    "\t\t\t\t                              'show': $root.isInvalid(addProductVariantForm.Modal_VideoLinks1),\r" +
+    "\n" +
+    "\t\t\t\t                              'conditions' : addProductVariantForm.Modal_VideoLinks1.$error\r" +
+    "\n" +
+    "\t\t\t\t                         }\r" +
+    "\n" +
+    "\t\t\t\t                      }\"><input class=\"form-control width-field-normal\" name=Modal_VideoLinks1 type=url maxlength=500 ng-model=model.VideoLinks[1] ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_VideoLinks1) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "\t\t\t\t                        'label': 'Video Link 3',\r" +
+    "\n" +
+    "\t\t\t\t                        'hint': {\r" +
+    "\n" +
+    "\t\t\t\t                        \t'show': true,\r" +
+    "\n" +
+    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\r" +
+    "\n" +
+    "\t\t\t\t                        },\r" +
+    "\n" +
+    "\t\t\t\t                        'error' : {\r" +
+    "\n" +
+    "\t\t\t\t                              'messages': {\r" +
+    "\n" +
+    "\t\t\t\t                              \t'url': 'Please enter valid URL'\r" +
+    "\n" +
+    "\t\t\t\t                              },\r" +
+    "\n" +
+    "\t\t\t\t                              'show': $root.isInvalid(addProductVariantForm.Modal_VideoLinks2),\r" +
+    "\n" +
+    "\t\t\t\t                              'conditions' : addProductVariantForm.Modal_VideoLinks2.$error\r" +
+    "\n" +
+    "\t\t\t\t                         }\r" +
+    "\n" +
+    "\t\t\t\t                      }\"><input type=url class=\"form-control width-field-normal\" name=Modal_VideoLinks2 maxlength=500 ng-model=model.VideoLinks[2] ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_VideoLinks2) }\"></div></div></div><div class=form-section><div class=form-section-header>Description</div><div class=form-section-content><div ng-template=common/input/textarea2 ng-template-options=\"{\r" +
+    "\n" +
+    "                                                'label': 'Short Description (English)',\r" +
+    "\n" +
+    "                                                'inputSize': 'xxl',\r" +
+    "\n" +
+    "                                                'formGroupClass' : 'margin-top-30',\r" +
+    "\n" +
+    "                                                'error' : {\r" +
+    "\n" +
+    "                                                'messages': {\r" +
+    "\n" +
+    "                                                    'pattern': 'Special characters are not allowed'\r" +
+    "\n" +
+    "                                                },\r" +
+    "\n" +
+    "                                                'show': $root.isInvalid(addProductVariantForm.Modal_DescriptionShortEn),\r" +
+    "\n" +
+    "                                                'conditions' : addProductVariantForm.Modal_DescriptionShortEn.$error\r" +
+    "\n" +
+    "                                                }\r" +
+    "\n" +
+    "                                                }\"><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=Modal_DescriptionShortEn ng-model=model.DescriptionShortEn ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_DescriptionShortEn) }\">\r" +
+    "\n" +
+    "                            </textarea></div><div ng-template=common/input/textarea2 ng-template-options=\"{\r" +
+    "\n" +
+    "                                            'label': 'Short Description (ไทย)',\r" +
+    "\n" +
+    "                                            'inputSize': 'xxl',\r" +
+    "\n" +
+    "                                            'formGroupClass' : 'margin-top-30',\r" +
+    "\n" +
+    "                                            'error' : {\r" +
+    "\n" +
+    "                                            'messages': {\r" +
+    "\n" +
+    "                                            'pattern': 'Special characters are not allowed'\r" +
+    "\n" +
+    "                                            },\r" +
+    "\n" +
+    "                                            'show': $root.isInvalid(addProductVariantForm.Modal_DescriptionShortTh),\r" +
+    "\n" +
+    "                                            'conditions' : addProductVariantForm.Modal_DescriptionShortTh.$error\r" +
+    "\n" +
+    "                                            }\r" +
+    "\n" +
+    "                                            }\"><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=Modal_DescriptionShortTh ng-model=model.DescriptionShortTh ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_DescriptionShortTh) }\">\r" +
+    "\n" +
+    "                            </textarea></div></div></div><div class=form-section><div class=form-section-header>Package Detail</div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Preparation Time\" nc-template-form=Modal_PrepareDay nc-template-options-path=addProductForm/PrepareDay><input class=\"form-control width-field-normal\" name=Modal_PrepareDay ng-pattern-restrict=^[0-9]*$ maxlength=5 ng-model=\"model.PrepareDay\"></div><div class=form-group><div class=width-label><label class=\"control-label required\" style=\"margin-top: 25px\">Package Dimension</label></div><div class=width-field-xxl><div class=multiple-input><div class=input-column><div ng-template=common/input/text3 ng-template-options=\"{\r" +
+    "\n" +
+    "                                                        'label': 'Length',\r" +
+    "\n" +
+    "                                                        'error' : {\r" +
+    "\n" +
+    "                                                        'messages': {\r" +
+    "\n" +
+    "                                                        'required': 'This is a required field',\r" +
+    "\n" +
+    "                                                        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\r" +
+    "\n" +
+    "                                                        },\r" +
+    "\n" +
+    "                                                        'show': $root.isInvalid(addProductVariantForm.Modal_Length),\r" +
+    "\n" +
+    "                                                        'conditions' : addProductVariantForm.Modal_Length.$error\r" +
+    "\n" +
+    "                                                        }\r" +
+    "\n" +
+    "                                                        }\"><input class=form-control name=Modal_Length maxlength=11 ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" ng-model=model.Length ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Length) }\"></div></div><div class=input-column><div ng-template=common/input/text3 ng-template-options=\"{\r" +
+    "\n" +
+    "                                                        'label': 'Height',\r" +
+    "\n" +
+    "                                                        'error' : {\r" +
+    "\n" +
+    "                                                        'messages': {\r" +
+    "\n" +
+    "                                                        'required': 'This is a required field',\r" +
+    "\n" +
+    "                                                        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\r" +
+    "\n" +
+    "                                                        },\r" +
+    "\n" +
+    "                                                        'show': $root.isInvalid(addProductVariantForm.Modal_Height),\r" +
+    "\n" +
+    "                                                        'conditions' : addProductVariantForm.Modal_Height.$error\r" +
+    "\n" +
+    "                                                        }\r" +
+    "\n" +
+    "                                                        }\"><input class=form-control maxlength=11 name=Modal_Height ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" ng-model=model.Height ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Height) }\"></div></div><div class=input-column><div ng-template=common/input/text3 ng-template-options=\"{\r" +
+    "\n" +
+    "                                                        'label': 'Width',\r" +
+    "\n" +
+    "                                                        'error' : {\r" +
+    "\n" +
+    "                                                        'messages': {\r" +
+    "\n" +
+    "                                                        'required': 'This is a required field',\r" +
+    "\n" +
+    "                                                        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\r" +
+    "\n" +
+    "                                                        },\r" +
+    "\n" +
+    "                                                        'show': $root.isInvalid(addProductVariantForm.Modal_Width),\r" +
+    "\n" +
+    "                                                        'conditions' : addProductVariantForm.Modal_Width.$error\r" +
+    "\n" +
+    "                                                        }\r" +
+    "\n" +
+    "                                                        }\"><input class=form-control maxlength=11 name=Modal_Width ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" ng-model=model.Width ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Width) }\"></div></div><div class=\"input-column no-label select input-xl\" style=\"padding-top: 24px\"><select ng-model=model.DimensionUnit class=form-control><option value=MM>Millimeter</option><option value=CM>Centimeter</option><option value=M>Meter</option></select></div></div></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Weight</label></div><div class=width-field-xxl><div class=multiple-input><div ng-template=common/input/text-column ng-template-options=\"{\r" +
+    "\n" +
+    "                                                        'error' : {\r" +
+    "\n" +
+    "                                                            'messages': {\r" +
+    "\n" +
+    "                                                                'required': 'This is a required field',\r" +
+    "\n" +
+    "                                                                'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\r" +
+    "\n" +
+    "                                                            },\r" +
+    "\n" +
+    "                                                        'show': $root.isInvalid(addProductVariantForm.Modal_Weight),\r" +
+    "\n" +
+    "                                                        'conditions' : addProductVariantForm.Modal_Weight.$error\r" +
+    "\n" +
+    "                                                        }\r" +
+    "\n" +
+    "                                                    }\"><input name=Modal_Weight maxlength=11 ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Weight) }\" class=form-control ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" ng-model=\"model.Weight\"></div><div class=\"input-column select input-xl\"><div class=ah-select2-dropdown><select class=form-control ng-model=model.WeightUnit><option value=G>Grams</option><option value=KG>Kilograms</option></select></div></div></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>SEO</h2></div><div class=form-section-content><div ng-template=common/input/text2 ng-template-options=\"{ 'label': 'Meta Title (English)' }\"><input maxlength=60 class=\"form-control width-field-normal\" name=Modal_SEO_MetaTitleEn ng-model=model.SEO.MetaTitleEn ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaTitleEn) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{ 'label': 'Meta Title (ไทย)' }\"><input maxlength=60 class=\"form-control width-field-normal\" name=Modal_SEO_MetaTitleTh ng-model=model.SEO.MetaTitleTh ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaTitleTh) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{   'label': 'Meta Description (English)' }\"><input maxlength=150 class=\"form-control width-field-normal\" name=Modal_SEO_MetaDescriptionEn ng-model=model.SEO.MetaDescriptionEn ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaDescriptionEn) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{ 'label': 'Meta Description (ไทย)' }\"><input maxlength=150 class=\"form-control width-field-normal\" name=Modal_SEO_MetaDescriptionTh ng-model=model.SEO.MetaDescriptionTh ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaDescriptionTh) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{  'label': 'Meta Keywords (English)'\t}\"><input placeholder=\"Keywords separated by comma\" class=\"form-control width-field-normal\" name=Modal_SEO_MetaKeywordsEn ng-model=model.SEO.MetaKeywordEn ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaKeywordsEn) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{   'label': 'Meta Keywords (ไทย)' }\"><input placeholder=\"Keywords separated by comma\" class=\"form-control width-field-normal\" name=Modal_SEO_MetaKeywordTh ng-model=model.SEO.MetaKeywordTh ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaKeywordsTh) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{ 'label': 'Product URL Key' }\"><input maxlength=300 class=\"form-control width-field-normal\" ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" name=Modal_SEO_ProductUrlKeyEn ng-model=model.SEO.ProductUrlKeyEn ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_ProductUrlKeyEn) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "\n" +
+    "            \t\t\t\t\t\t'label': 'Product Boosting Weight',\r" +
+    "\n" +
+    "            \t\t\t\t\t\t'error' : {\r" +
+    "\n" +
+    "            \t\t\t\t\t\t'messages': {\r" +
+    "\n" +
+    "            \t\t\t\t\t\t'max': 'Only numbers from 1 to 10000 is allowed',\r" +
+    "\n" +
+    "            \t\t\t\t\t\t'min': 'Only numbers from 1 to 10000 is allowed',\r" +
+    "\n" +
+    "                                    'pattern': 'Only numbers from 1 to 10000 is allowed'\r" +
+    "\n" +
+    "            \t\t\t\t\t\t},\r" +
+    "\n" +
+    "            \t\t\t\t\t\t'show': $root.isInvalid(addProductForm.SEO_ProductBoostingWeight),\r" +
+    "\n" +
+    "            \t\t\t\t\t\t'conditions' : addProductForm.SEO_ProductBoostingWeight.$error\r" +
+    "\n" +
+    "            \t\t\t\t\t\t}\r" +
+    "\n" +
+    "            \t\t\t\t\t\t}\"><input type=number class=\"form-control width-field-normal\" min=0 max=10000 step=1 ng-pattern=\"/^[0-9]+$/\" name=Modal_SEO_ProductBoostingWeight ng-model=model.SEO.ProductBoostingWeight ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_ProductBoostingWeight) }\"></div></div></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div></div></div><form></form></form>"
+  );
+
 
   $templateCache.put('attribute/action',
     "<div><a ng-click=\"actions.edit(row, true)\">View / Edit</a></div><div><a ng-click=\"actions.duplicate(row, true)\">Duplicate</a></div><div><a ng-click=\"actions.delete(row, true)\">Delete</a></div>"
@@ -11435,7 +12197,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "<a><span ng-bind-html=\"match.label.HeaderName | uibTypeaheadHighlight:query\"></span></a>"
   );
  }];
-},{}],149:[function(require,module,exports){
+},{}],153:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -15558,11 +16320,11 @@ angular.module('ngAnimate', [])
 
 })(window, window.angular);
 
-},{}],150:[function(require,module,exports){
+},{}],154:[function(require,module,exports){
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":149}],151:[function(require,module,exports){
+},{"./angular-animate":153}],155:[function(require,module,exports){
 (function() {
     'use strict';
 
@@ -15730,7 +16492,7 @@ module.exports = 'ngAnimate';
 
 })();
 
-},{}],152:[function(require,module,exports){
+},{}],156:[function(require,module,exports){
 /*globals define, jQuery, module, require */
 /*jslint vars:true */
 
@@ -16180,7 +16942,7 @@ module.exports = 'ngAnimate';
     }]);
 }));
 
-},{"angular":167,"moment":171}],153:[function(require,module,exports){
+},{"angular":171,"moment":175}],157:[function(require,module,exports){
 (function (factory) {
   'use strict';
   if (typeof exports === 'object') {
@@ -16544,7 +17306,7 @@ module.exports = 'ngAnimate';
   }
 }));
 
-},{"angular":167,"chart.js":168}],154:[function(require,module,exports){
+},{"angular":171,"chart.js":172}],158:[function(require,module,exports){
 (function (root, factory) {
     /* istanbul ignore next */
     if (typeof define === 'function' && define.amd) {
@@ -16622,7 +17384,7 @@ return angular.module('angular-clipboard', [])
     }]);
 
 }));
-},{"angular":167}],155:[function(require,module,exports){
+},{"angular":171}],159:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -16946,11 +17708,11 @@ angular.module('ngCookies').provider('$$cookieWriter', function $$CookieWriterPr
 
 })(window, window.angular);
 
-},{}],156:[function(require,module,exports){
+},{}],160:[function(require,module,exports){
 require('./angular-cookies');
 module.exports = 'ngCookies';
 
-},{"./angular-cookies":155}],157:[function(require,module,exports){
+},{"./angular-cookies":159}],161:[function(require,module,exports){
 /*
  angular-file-upload v2.2.0
  https://github.com/nervgh/angular-file-upload
@@ -16958,7 +17720,7 @@ module.exports = 'ngCookies';
 
 !function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["angular-file-upload"]=t():e["angular-file-upload"]=t()}(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var i=n[r]={exports:{},id:r,loaded:!1};return e[r].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=r(n(1)),o=r(n(2)),s=r(n(3)),a=r(n(4)),u=r(n(5)),l=r(n(6)),c=r(n(7)),f=r(n(8)),p=r(n(9)),d=r(n(10)),v=r(n(11)),h=r(n(12));angular.module(i.name,[]).value("fileUploaderOptions",o).factory("FileUploader",s).factory("FileLikeObject",a).factory("FileItem",u).factory("FileDirective",l).factory("FileSelect",c).factory("FileDrop",f).factory("FileOver",p).directive("nvFileSelect",d).directive("nvFileDrop",v).directive("nvFileOver",h).run(["FileUploader","FileLikeObject","FileItem","FileDirective","FileSelect","FileDrop","FileOver",function(e,t,n,r,i,o,s){e.FileLikeObject=t,e.FileItem=n,e.FileDirective=r,e.FileSelect=i,e.FileDrop=o,e.FileOver=s}])},function(e,t){e.exports={name:"angularFileUpload"}},function(e,t){"use strict";e.exports={url:"/",alias:"file",headers:{},queue:[],progress:0,autoUpload:!1,removeAfterUpload:!1,method:"POST",filters:[],formData:[],queueLimit:Number.MAX_VALUE,withCredentials:!1}},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.forEach,l=angular.isObject,c=angular.isNumber,f=angular.isDefined,p=angular.isArray,d=angular.element;e.exports=function(e,t,n,r,v,h){var m=r.File,g=r.FormData,_=function(){function r(t){o(this,r);var n=s(e);a(this,n,t,{isUploading:!1,_nextIndex:0,_failFilterIndex:-1,_directives:{select:[],drop:[],over:[]}}),this.filters.unshift({name:"queueLimit",fn:this._queueLimitFilter}),this.filters.unshift({name:"folder",fn:this._folderFilter})}return i(r,{addToQueue:{value:function(e,t,n){var r=this,i=this.isArrayLikeObject(e)?e:[e],o=this._getFilters(n),s=this.queue.length,a=[];u(i,function(e){var n=new v(e);if(r._isValidFile(n,o,t)){var i=new h(r,e,t);a.push(i),r.queue.push(i),r._onAfterAddingFile(i)}else{var s=o[r._failFilterIndex];r._onWhenAddingFileFailed(n,s,t)}}),this.queue.length!==s&&(this._onAfterAddingAll(a),this.progress=this._getTotalProgress()),this._render(),this.autoUpload&&this.uploadAll()}},removeFromQueue:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t];n.isUploading&&n.cancel(),this.queue.splice(t,1),n._destroy(),this.progress=this._getTotalProgress()}},clearQueue:{value:function(){for(;this.queue.length;)this.queue[0].remove();this.progress=0}},uploadItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhrTransport":"_iframeTransport";n._prepareToUploading(),this.isUploading||(this.isUploading=!0,this[r](n))}},cancelItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhr":"_form";n&&n.isUploading&&n[r].abort()}},uploadAll:{value:function(){var e=this.getNotUploadedItems().filter(function(e){return!e.isUploading});e.length&&(u(e,function(e){return e._prepareToUploading()}),e[0].upload())}},cancelAll:{value:function(){var e=this.getNotUploadedItems();u(e,function(e){return e.cancel()})}},isFile:{value:function(e){return this.constructor.isFile(e)}},isFileLikeObject:{value:function(e){return this.constructor.isFileLikeObject(e)}},isArrayLikeObject:{value:function(e){return this.constructor.isArrayLikeObject(e)}},getIndexOfItem:{value:function(e){return c(e)?e:this.queue.indexOf(e)}},getNotUploadedItems:{value:function(){return this.queue.filter(function(e){return!e.isUploaded})}},getReadyItems:{value:function(){return this.queue.filter(function(e){return e.isReady&&!e.isUploading}).sort(function(e,t){return e.index-t.index})}},destroy:{value:function(){var e=this;u(this._directives,function(t){u(e._directives[t],function(e){e.destroy()})})}},onAfterAddingAll:{value:function(e){}},onAfterAddingFile:{value:function(e){}},onWhenAddingFileFailed:{value:function(e,t,n){}},onBeforeUploadItem:{value:function(e){}},onProgressItem:{value:function(e,t){}},onProgressAll:{value:function(e){}},onSuccessItem:{value:function(e,t,n,r){}},onErrorItem:{value:function(e,t,n,r){}},onCancelItem:{value:function(e,t,n,r){}},onCompleteItem:{value:function(e,t,n,r){}},onCompleteAll:{value:function(){}},_getTotalProgress:{value:function(e){if(this.removeAfterUpload)return e||0;var t=this.getNotUploadedItems().length,n=t?this.queue.length-t:this.queue.length,r=100/this.queue.length,i=(e||0)*r/100;return Math.round(n*r+i)}},_getFilters:{value:function(e){if(!e)return this.filters;if(p(e))return e;var t=e.match(/[^\s,]+/g);return this.filters.filter(function(e){return-1!==t.indexOf(e.name)})}},_render:{value:function(){t.$$phase||t.$apply()}},_folderFilter:{value:function(e){return!(!e.size&&!e.type)}},_queueLimitFilter:{value:function(){return this.queue.length<this.queueLimit}},_isValidFile:{value:function(e,t,n){var r=this;return this._failFilterIndex=-1,t.length?t.every(function(t){return r._failFilterIndex++,t.fn.call(r,e,n)}):!0}},_isSuccessCode:{value:function(e){return e>=200&&300>e||304===e}},_transformResponse:{value:function(e,t){var r=this._headersGetter(t);return u(n.defaults.transformResponse,function(t){e=t(e,r)}),e}},_parseHeaders:{value:function(e){var t,n,r,i={};return e?(u(e.split("\n"),function(e){r=e.indexOf(":"),t=e.slice(0,r).trim().toLowerCase(),n=e.slice(r+1).trim(),t&&(i[t]=i[t]?i[t]+", "+n:n)}),i):i}},_headersGetter:{value:function(e){return function(t){return t?e[t.toLowerCase()]||null:e}}},_xhrTransport:{value:function(e){var t=this,n=e._xhr=new XMLHttpRequest,r=new g;if(this._onBeforeUploadItem(e),u(e.formData,function(e){u(e,function(e,t){r.append(t,e)})}),"number"!=typeof e._file.size)throw new TypeError("The file specified is no longer valid");r.append(e.alias,e._file,e.file.name),n.upload.onprogress=function(n){var r=Math.round(n.lengthComputable?100*n.loaded/n.total:0);t._onProgressItem(e,r)},n.onload=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r),o=t._isSuccessCode(n.status)?"Success":"Error",s="_on"+o+"Item";t[s](e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onerror=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onErrorItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onabort=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onCancelItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.open(e.method,e.url,!0),n.withCredentials=e.withCredentials,u(e.headers,function(e,t){n.setRequestHeader(t,e)}),n.send(r),this._render()}},_iframeTransport:{value:function(e){var t=this,n=d('<form style="display: none;" />'),r=d('<iframe name="iframeTransport'+Date.now()+'">'),i=e._input;e._form&&e._form.replaceWith(i),e._form=n,this._onBeforeUploadItem(e),i.prop("name",e.alias),u(e.formData,function(e){u(e,function(e,t){var r=d('<input type="hidden" name="'+t+'" />');r.val(e),n.append(r)})}),n.prop({action:e.url,method:"POST",target:r.prop("name"),enctype:"multipart/form-data",encoding:"multipart/form-data"}),r.bind("load",function(){var n="",i=200;try{n=r[0].contentDocument.body.innerHTML}catch(o){i=500}var s={response:n,status:i,dummy:!0},a={},u=t._transformResponse(s.response,a);t._onSuccessItem(e,u,s.status,a),t._onCompleteItem(e,u,s.status,a)}),n.abort=function(){var o,s={status:0,dummy:!0},a={};r.unbind("load").prop("src","javascript:false;"),n.replaceWith(i),t._onCancelItem(e,o,s.status,a),t._onCompleteItem(e,o,s.status,a)},i.after(n),n.append(i).append(r),n[0].submit(),this._render()}},_onWhenAddingFileFailed:{value:function(e,t,n){this.onWhenAddingFileFailed(e,t,n)}},_onAfterAddingFile:{value:function(e){this.onAfterAddingFile(e)}},_onAfterAddingAll:{value:function(e){this.onAfterAddingAll(e)}},_onBeforeUploadItem:{value:function(e){e._onBeforeUpload(),this.onBeforeUploadItem(e)}},_onProgressItem:{value:function(e,t){var n=this._getTotalProgress(t);this.progress=n,e._onProgress(t),this.onProgressItem(e,t),this.onProgressAll(n),this._render()}},_onSuccessItem:{value:function(e,t,n,r){e._onSuccess(t,n,r),this.onSuccessItem(e,t,n,r)}},_onErrorItem:{value:function(e,t,n,r){e._onError(t,n,r),this.onErrorItem(e,t,n,r)}},_onCancelItem:{value:function(e,t,n,r){e._onCancel(t,n,r),this.onCancelItem(e,t,n,r)}},_onCompleteItem:{value:function(e,t,n,r){e._onComplete(t,n,r),this.onCompleteItem(e,t,n,r);var i=this.getReadyItems()[0];return this.isUploading=!1,f(i)?void i.upload():(this.onCompleteAll(),this.progress=this._getTotalProgress(),void this._render())}}},{isFile:{value:function(e){return m&&e instanceof m}},isFileLikeObject:{value:function(e){return e instanceof v}},isArrayLikeObject:{value:function(e){return l(e)&&"length"in e}},inherit:{value:function(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,e.super_=t}}}),r}();return _.prototype.isHTML5=!(!m||!g),_.isHTML5=_.prototype.isHTML5,_},e.exports.$inject=["fileUploaderOptions","$rootScope","$http","$window","FileLikeObject","FileItem"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.isElement,u=angular.isString;e.exports=function(){var e=function(){function e(t){o(this,e);var n=a(t),r=n?t.value:t,i=u(r)?"FakePath":"Object",s="_createFrom"+i;this[s](r)}return i(e,{_createFromFakePath:{value:function(e){this.lastModifiedDate=null,this.size=null,this.type="like/"+e.slice(e.lastIndexOf(".")+1).toLowerCase(),this.name=e.slice(e.lastIndexOf("/")+e.lastIndexOf("\\")+2)}},_createFromObject:{value:function(e){this.lastModifiedDate=s(e.lastModifiedDate),this.size=e.size,this.type=e.type,this.name=e.name}}}),e}();return e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.element,l=angular.isElement;e.exports=function(e,t){var n=function(){function n(e,r,i){o(this,n);var c=l(r),f=c?u(r):null,p=c?null:r;a(this,{url:e.url,alias:e.alias,headers:s(e.headers),formData:s(e.formData),removeAfterUpload:e.removeAfterUpload,withCredentials:e.withCredentials,method:e.method},i,{uploader:e,file:new t(r),isReady:!1,isUploading:!1,isUploaded:!1,isSuccess:!1,isCancel:!1,isError:!1,progress:0,index:null,_file:p,_input:f}),f&&this._replaceNode(f)}return i(n,{upload:{value:function(){try{this.uploader.uploadItem(this)}catch(e){this.uploader._onCompleteItem(this,"",0,[]),this.uploader._onErrorItem(this,"",0,[])}}},cancel:{value:function(){this.uploader.cancelItem(this)}},remove:{value:function(){this.uploader.removeFromQueue(this)}},onBeforeUpload:{value:function(){}},onProgress:{value:function(e){}},onSuccess:{value:function(e,t,n){}},onError:{value:function(e,t,n){}},onCancel:{value:function(e,t,n){}},onComplete:{value:function(e,t,n){}},_onBeforeUpload:{value:function(){this.isReady=!0,this.isUploading=!0,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!1,this.isError=!1,this.progress=0,this.onBeforeUpload()}},_onProgress:{value:function(e){this.progress=e,this.onProgress(e)}},_onSuccess:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!0,this.isCancel=!1,this.isError=!1,this.progress=100,this.index=null,this.onSuccess(e,t,n)}},_onError:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!1,this.isCancel=!1,this.isError=!0,this.progress=0,this.index=null,this.onError(e,t,n)}},_onCancel:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!0,this.isError=!1,this.progress=0,this.index=null,this.onCancel(e,t,n)}},_onComplete:{value:function(e,t,n){this.onComplete(e,t,n),this.removeAfterUpload&&this.remove()}},_destroy:{value:function(){this._input&&this._input.remove(),this._form&&this._form.remove(),delete this._form,delete this._input}},_prepareToUploading:{value:function(){this.index=this.index||++this.uploader._nextIndex,this.isReady=!0}},_replaceNode:{value:function(t){var n=e(t.clone())(t.scope());n.prop("value",null),t.css("display","none"),t.after(n)}}}),n}();return n},e.exports.$inject=["$compile","FileLikeObject"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.extend);e.exports=function(){var e=function(){function e(t){o(this,e),s(this,t),this.uploader._directives[this.prop].push(this),this._saveLinks(),this.bind()}return i(e,{bind:{value:function(){for(var e in this.events){var t=this.events[e];this.element.bind(e,this[t])}}},unbind:{value:function(){for(var e in this.events)this.element.unbind(e,this.events[e])}},destroy:{value:function(){var e=this.uploader._directives[this.prop].indexOf(this);this.uploader._directives[this.prop].splice(e,1),this.unbind()}},_saveLinks:{value:function(){for(var e in this.events){var t=this.events[e];this[t]=this[t].bind(this)}}}}),e}();return e.prototype.events={},e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",change:"onChange"},prop:"select"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n),this.uploader.isHTML5||this.element.removeAttr("multiple"),this.element.prop("value",null)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},isEmptyAfterSelection:{value:function(){return!!this.element.attr("multiple")}},onChange:{value:function(){var e=this.uploader.isHTML5?this.element[0].files:this.element[0],t=this.getOptions(),n=this.getFilters();this.uploader.isHTML5||this.destroy(),this.uploader.addToQueue(e,t,n),this.isEmptyAfterSelection()&&(this.element.prop("value",null),this.element.replaceWith(this.element=this.element.clone(!0)))}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function c(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:c(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend),l=angular.forEach;e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",drop:"onDrop",dragover:"onDragOver",dragleave:"onDragLeave"},prop:"drop"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},onDrop:{value:function(e){var t=this._getTransfer(e);if(t){var n=this.getOptions(),r=this.getFilters();this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this),this.uploader.addToQueue(t.files,n,r)}}},onDragOver:{value:function(e){var t=this._getTransfer(e);this._haveFiles(t.types)&&(t.dropEffect="copy",this._preventAndStop(e),l(this.uploader._directives.over,this._addOverClass,this))}},onDragLeave:{value:function(e){e.currentTarget!==this.element[0]&&(this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this))}},_getTransfer:{value:function(e){return e.dataTransfer?e.dataTransfer:e.originalEvent.dataTransfer}},_preventAndStop:{value:function(e){e.preventDefault(),e.stopPropagation()}},_haveFiles:{value:function(e){return e?e.indexOf?-1!==e.indexOf("Files"):e.contains?e.contains("Files"):!1:!1}},_addOverClass:{value:function(e){e.addOverClass()}},_removeOverClass:{value:function(e){e.removeOverClass()}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy"},prop:"over",overClass:"nv-file-over"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{addOverClass:{value:function(){this.element.addClass(this.getOverClass())}},removeOverClass:{value:function(){this.element.removeClass(this.getOverClass())}},getOverClass:{value:function(){return this.overClass}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}},e.exports.$inject=["$parse","FileUploader","FileSelect"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');if(s.isHTML5){var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}}},e.exports.$inject=["$parse","FileUploader","FileDrop"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t){return{link:function(n,r,i){var o=n.$eval(i.uploader);if(!(o instanceof e))throw new TypeError('"Uploader" must be an instance of FileUploader');var s=new t({uploader:o,element:r});s.getOverClass=function(){return i.overClass||s.overClass}}}},e.exports.$inject=["FileUploader","FileOver"]}])});
 
-},{}],158:[function(require,module,exports){
+},{}],162:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -17677,11 +18439,11 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 })(window, window.angular);
 
-},{}],159:[function(require,module,exports){
+},{}],163:[function(require,module,exports){
 require('./angular-sanitize');
 module.exports = 'ngSanitize';
 
-},{"./angular-sanitize":158}],160:[function(require,module,exports){
+},{"./angular-sanitize":162}],164:[function(require,module,exports){
 /**
   * x is a value between 0 and 1, indicating where in the animation you are.
   */
@@ -18310,13 +19072,13 @@ angular.module('duScroll.scrollspy', ['duScroll.spyAPI'])
   };
 }]);
 
-},{}],161:[function(require,module,exports){
+},{}],165:[function(require,module,exports){
 require('angular');
 require('./angular-scroll');
 
 module.exports = 'duScroll';
 
-},{"./angular-scroll":160,"angular":167}],162:[function(require,module,exports){
+},{"./angular-scroll":164,"angular":171}],166:[function(require,module,exports){
 /*
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
@@ -25396,12 +26158,12 @@ angular.module('ui.bootstrap.carousel').run(function() {!angular.$$csp().noInlin
 angular.module('ui.bootstrap.datepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-datepicker .uib-title{width:100%;}.uib-day button,.uib-month button,.uib-year button{min-width:100%;}.uib-datepicker-popup.dropdown-menu{display:block;}.uib-button-bar{padding:10px 9px 2px;}</style>'); });
 angular.module('ui.bootstrap.timepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-time input{width:50px;}</style>'); });
 angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); });
-},{}],163:[function(require,module,exports){
+},{}],167:[function(require,module,exports){
 require('./dist/ui-bootstrap-tpls');
 
 module.exports = 'ui.bootstrap';
 
-},{"./dist/ui-bootstrap-tpls":162}],164:[function(require,module,exports){
+},{"./dist/ui-bootstrap-tpls":166}],168:[function(require,module,exports){
 /**
  * @license Angular UI Tree v2.15.0
  * (c) 2010-2016. https://github.com/angular-ui-tree/angular-ui-tree
@@ -26972,11 +27734,11 @@ module.exports = 'ui.bootstrap';
 
 })();
 
-},{}],165:[function(require,module,exports){
+},{}],169:[function(require,module,exports){
 require('./dist/angular-ui-tree');
 module.exports = 'ui.tree';
 
-},{"./dist/angular-ui-tree":164}],166:[function(require,module,exports){
+},{"./dist/angular-ui-tree":168}],170:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.9
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -56634,11 +57396,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],167:[function(require,module,exports){
+},{}],171:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":166}],168:[function(require,module,exports){
+},{"./angular":170}],172:[function(require,module,exports){
 /*!
  * Chart.js
  * http://chartjs.org/
@@ -60116,7 +60878,7 @@ module.exports = angular;
 
 
 }).call(this);
-},{}],169:[function(require,module,exports){
+},{}],173:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.1
  * http://jquery.com/
@@ -69949,7 +70711,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],170:[function(require,module,exports){
+},{}],174:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -84886,7 +85648,7 @@ return jQuery;
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],171:[function(require,module,exports){
+},{}],175:[function(require,module,exports){
 //! moment.js
 //! version : 2.11.2
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -88493,7 +89255,7 @@ return jQuery;
     return _moment;
 
 }));
-},{}],172:[function(require,module,exports){
+},{}],176:[function(require,module,exports){
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
@@ -90524,8 +91286,8 @@ $templateCache.put("select2/match-multiple.tpl.html","<span class=\"ui-select-ma
 $templateCache.put("select2/match.tpl.html","<a class=\"select2-choice ui-select-match\" ng-class=\"{\'select2-default\': $select.isEmpty()}\" ng-click=\"$select.toggle($event)\" aria-label=\"{{ $select.baseTitle }} select\"><span ng-show=\"$select.isEmpty()\" class=\"select2-chosen\">{{$select.placeholder}}</span> <span ng-hide=\"$select.isEmpty()\" class=\"select2-chosen\" ng-transclude=\"\"></span> <abbr ng-if=\"$select.allowClear && !$select.isEmpty()\" class=\"select2-search-choice-close\" ng-click=\"$select.clear($event)\"></abbr> <span class=\"select2-arrow ui-select-toggle\"><b></b></span></a>");
 $templateCache.put("select2/select-multiple.tpl.html","<div class=\"ui-select-container ui-select-multiple select2 select2-container select2-container-multi\" ng-class=\"{\'select2-container-active select2-dropdown-open open\': $select.open, \'select2-container-disabled\': $select.disabled}\"><ul class=\"select2-choices\"><span class=\"ui-select-match\"></span><li class=\"select2-search-field\"><input type=\"text\" autocomplete=\"false\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" role=\"combobox\" aria-expanded=\"true\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-label=\"{{ $select.baseTitle }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"select2-input ui-select-search\" placeholder=\"{{$selectMultiple.getPlaceholder()}}\" ng-disabled=\"$select.disabled\" ng-hide=\"$select.disabled\" ng-model=\"$select.search\" ng-click=\"$select.activate()\" style=\"width: 34px;\" ondrop=\"return false;\"></li></ul><div class=\"ui-select-dropdown select2-drop select2-with-searchbox select2-drop-active\" ng-class=\"{\'select2-display-none\': !$select.open}\"><div class=\"ui-select-choices\"></div></div></div>");
 $templateCache.put("select2/select.tpl.html","<div class=\"ui-select-container select2 select2-container\" ng-class=\"{\'select2-container-active select2-dropdown-open open\': $select.open, \'select2-container-disabled\': $select.disabled, \'select2-container-active\': $select.focus, \'select2-allowclear\': $select.allowClear && !$select.isEmpty()}\"><div class=\"ui-select-match\"></div><div class=\"ui-select-dropdown select2-drop select2-with-searchbox select2-drop-active\" ng-class=\"{\'select2-display-none\': !$select.open}\"><div class=\"select2-search\" ng-show=\"$select.searchEnabled\"><input type=\"text\" autocomplete=\"false\" autocorrect=\"false\" autocapitalize=\"off\" spellcheck=\"false\" role=\"combobox\" aria-expanded=\"true\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-label=\"{{ $select.baseTitle }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"ui-select-search select2-input\" ng-model=\"$select.search\"></div><div class=\"ui-select-choices\"></div></div></div>");}]);
-},{}],173:[function(require,module,exports){
+},{}],177:[function(require,module,exports){
 require('./dist/select.js');
 module.exports = 'ui.select';
 
-},{"./dist/select.js":172}]},{},[1]);
+},{"./dist/select.js":176}]},{},[1]);

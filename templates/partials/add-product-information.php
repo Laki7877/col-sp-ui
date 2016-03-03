@@ -1,5 +1,5 @@
 <div id="add-product-information-tab-content">
-        <div nc-template="addProducts/inner-tab-breadcrumb"></div>
+        <div nc-template="add-product/inner-tab-breadcrumb" nc-view-bag="formData"></div>
 
         <div class="row" ng-if="overview.Status">
             <div class="col-xs-12">
@@ -53,11 +53,13 @@
                 </div>
             </div>
         </div>
+        
         <div class="row">
             <div class="col-xs-12">
                 <div class="form-section">
                     <div class="form-section-header">
-                        <h2>Vital Information</h2></div>
+                        <h2>Vital Information</h2>
+                    </div>
                     <div class="form-section-content">
 
                         <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.MasterVariant_ProductNameEn" nc-label="Product Name (English)" nc-template-options-path="addProductForm/MasterVariant_ProductNameEn">
@@ -123,7 +125,6 @@
                         <h2>Description</h2></div>
                     <div class="form-section-content">
 
-                            
                             
                             <div nc-template="common/input/form-group-with-label" nc-label="Description (English)" 
                                 nc-template-options-path="addProductForm/MasterVariant_DescriptionFull" 

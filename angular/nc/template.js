@@ -3,11 +3,6 @@
  */
 angular.module("nc").run(function($templateCache) {  'use strict';
 
-  $templateCache.put('addProducts/inner-tab-breadcrumb',
-    "<div><div class=\"alert alert-yellow\" ng-if=\"viewBag.Status == 'WA'\">This product is waiting for approval from the admin. You cannot edit it now.</div><div class=margin-bottom-20><span>Global Category:</span> <span>{{ viewBag.breadcrumbs.globalCategory }}</span></div></div>"
-  );
-
-
   $templateCache.put('common/ncAction',
     "<a class=action-gear href=javascript:; uib-popover-template=\"'common/ncActionPopover'\" popover-placement=bottom popover-append-to-body=true popover-trigger=outsideClick class=action-gear><i class=\"fa fa-gear color-dark-grey icon-size-20\"></i> <i class=\"fa fa-caret-down color-dark-grey\"></i></a>"
   );

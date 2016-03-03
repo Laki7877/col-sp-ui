@@ -1,5 +1,5 @@
 <div id="add-product-category-tab-content">
-        <div nc-template="addProducts/inner-tab-breadcrumb"></div>
+        <div nc-template="add-product/inner-tab-breadcrumb" nc-view-bag="formData"></div>
 
 	<div class="row">
 		<div class="col-xs-9">
