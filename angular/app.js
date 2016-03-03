@@ -172,6 +172,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
   .factory('$productAdd', services.productAdd)
     .factory('OnTopCreditService', services.OnTopCreditService)
     .factory('OnTopCredit', services.OnTopCredit)
+  .factory('Onboarding', services.Onboarding)
 
 //Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)
@@ -218,6 +219,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
   .controller('SellerRoleAddCtrl', controllers.sellerRoleAdd)
   .controller('SellerShopSettingCtrl', controllers.sellerShopSetting)
   .controller('SellerInventoryListCtrl', controllers.sellerInventoryList)
+  .controller('SellerOnboardingCtrl', controllers.sellerOnboarding)
 
 .controller('AdminAttributeCtrl', controllers.adminAttribute)
   .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)

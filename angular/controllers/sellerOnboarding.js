@@ -1,5 +1,10 @@
-module.exports = function($scope, $controller, config) {
+
+module.exports = function($scope, $rootScope, Onboarding){
 	'ngInject';
-	//Inherit from parent
-	$controller();
+
+	Onboarding.getListCompletedTask()
+		.then(function(data) {
+		  // data.SetUpShop = true;
+	      return $scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct, data.DecorateStore];
+	    });
 };
