@@ -159,14 +159,13 @@
                         </div>
                         <img class="image-wrapper"
                           style="margin-top:-4px;"
-                          ngf-thumbnail="choice.File"
+                          ngf-src="choice.Image.src"
                           width="34" />
                         <i uib-tooltip="Upload checkbox image"
                           tooltip-placement="top"
                           tooltip-popup-delay="200"
                           tooltip-append-to-body="true"
                           ngf-select="upload($file, choice)"
-                          ng-model="choice.File"
                           ngf-accept="'.png,.jpg,.jpeg'"
                           class="clickable fa fa-upload margin-left-10 color-dark-grey icon-size-20" ng-click="open(choice)" 
                           style="margin-top:6px;"

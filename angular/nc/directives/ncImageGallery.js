@@ -43,6 +43,9 @@ angular.module('nc')
 							controller: function($scope, $uibModalInstance, options, $interpolate) {
 								$scope.title = options.title;
 								$scope.message = $interpolate(options.message)(scope);
+								$scope.btnNo = options.btnNo || 'Cancel';
+								$scope.btnYes = options.btnYes || 'Confirm';
+								$scope.btnClass = options.btnClass || 'btn-blue';
 								$scope.yes = function() {
 									$uibModalInstance.close();
 								};
@@ -54,7 +57,9 @@ angular.module('nc')
 								options: function() {
 									return {
 										title: action.confirmation.title,
-										message: action.confirmation.message
+										message: action.confirmation.message,
+										btnYes: action.confirmation.btnConfirm,
+										btnClass: action.confirmation.btnClass
 									}
 								}
 							}
