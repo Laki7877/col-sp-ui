@@ -18,9 +18,11 @@ require('angular-ui-tree');
 require('angular-base64');
 require('angular-sanitize');
 require('angular-scroll');
+require('angular-cookies');
 require('angular-bootstrap-datetimepicker');
 require('ng-file-upload');
 require('ui-select/dist/select.js');
+require('angular-chart.js')
 
 //Nc package
 require('./nc');
@@ -32,11 +34,11 @@ var helpers = bulk.helpers;
 var directives = bulk.directives;
 var filters = bulk.filters;
 
-var app = angular.module('colspApp', [
-  'ngPatternRestrict', 
+var app = angular.module('colspApp', ['ngPatternRestrict', 
   'nc', 'ui.bootstrap.datetimepicker',
   'duScroll', 'ngSanitize', 'ngAnimate',
-  'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64', 'ngFileUpload'
+  'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select', 
+  'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'ngFileUpload'
 ])
 
 //App config

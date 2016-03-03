@@ -30,7 +30,6 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
     };
     $scope.dataSet.SearchTags = [];
     $scope.dataSet.RelatedProducts = [];
-    $scope.dataSet.StockTypes = ['Stock', 'Pre-Order'];
     $scope.dataSet.VariantDisplayOption = [{ text: 'Show as group of variants', value: 'GROUP' }, { text: 'Show as individual product', value: 'INDIVIDUAL' }];
 
     var protoAttributeOptions = {
@@ -334,6 +333,7 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
 
         if ($scope.addProductForm.$invalid) {
             $scope.pageState.reset();
+            console.log($scope.addProductForm.$error);
             var requiredMissing = ('required' in $scope.addProductForm.$error);
             if (Status == 'DF' && requiredMissing) {
                 var errorList = [];
@@ -374,7 +374,6 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
                     $scope.pageState.reset();
                     $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
                     ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
-                    ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
                 });
                 $scope.addProductForm.$setPristine(true);
             } else {
@@ -427,7 +426,6 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
                             $scope.pageState.reset();
                             watchVariantFactorChanges();
                             ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
-                            ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
                         });
                 }, function (error) {
                     throw new KnownException("Unable to fetch product with id " + productId);
@@ -442,7 +440,6 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
                     $scope.pageState.reset();
                     watchVariantFactorChanges();
                     ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
-                    ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
                 });
         } else {
 

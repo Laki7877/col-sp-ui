@@ -1,7 +1,6 @@
 <?php
     $items = [
 
-
         [ "name" => "Products", "icon" => "fa-tag", "sub_sidebar" => "#sub-admin-products", "link" =>"/admin/products" ],
         [ "name" => "Accounts", "icon" => "fa-user", "sub_sidebar" => "#sub-admin-accounts", "link" =>"/admin/shops" ],
         [ "name" => "Promotion", "icon" => "fa-bookmark", "sub_sidebar" => "#sub-admin-promotion", "link" =>"/admin/coupons/admin" ],
@@ -19,6 +18,7 @@
         // [ "name" => "Product Approval", "icon" => "fa-chevron-right", "sub_sidebar" => "#sub-product-approval" ],
         // [ "name" => "All Product", "icon" => "fa-chevron-right", "sub_sidebar" => "#sub-all-product" ],
         // [ "name" => "Promotion", "icon" => "fa-chevron-right", "sub_sidebar" => "#sub-promotion" ]
+
 
     ];
 ?>

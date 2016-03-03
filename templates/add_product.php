@@ -10,6 +10,7 @@ $menus = [
 $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'])
 ?>
 <?php $this->start('page-body') ?>
+
 <div ng-controller="ProductAddCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
 
         <nc-alert nc-model="alert"></nc-alert>
@@ -65,13 +66,13 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
             <!-- apbvody-->
         </fieldset>
 	</form>
+    
     <form name="addProductVariantForm" class="ah-form sticky-mainform-action" novalidate>
         <fieldset ng-disabled="formData.Status == 'WA'">
         <? $this->insert('components/modal-product-variant-detail', ["id" => "variant-detail-1", "model" => "pairModal"]) ?>
         </fieldset>
     </form>
 </div>
-
 
 	<script src="/assets/libs/ckeditor/ckeditor.js"></script>
 	<script src="/assets/libs/ckeditor/config.js"></script>
@@ -83,5 +84,6 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 
 	<script src="/assets/libs/select2/js/select2.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/assets/libs/select2/css/select2.min.css">
+
 
 <?php $this->stop() ?>
