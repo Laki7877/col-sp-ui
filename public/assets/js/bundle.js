@@ -6328,6 +6328,133 @@ angular.module('nc')
 	}])
 },{}],85:[function(require,module,exports){
 angular.module('nc')
+	.directive('ncImageBanner', ["$uibModal", "$templateCache", "FileItem", function($uibModal, $templateCache, FileItem) {
+		return {
+			restrict: 'E',
+			replace: true,
+			scope: {
+				images: '=ncModel',
+				onfail: '=ncImageBannerFail',
+				uploader: '=ncImageBannerUploader',
+				title: '=ncImageBannerTitle'
+			},
+			template: $templateCache.get('common/ncImageBanner'),
+			link: function(scope) {
+				scope.upload = function(file) {
+					var obj = {};
+					scope.images.push(obj);
+					var f = new FileItem(scope.uploader, file, {
+						onSuccess: function(response) {
+							obj = response;
+						},
+						onError: function(response, status, headers) {
+							scope.onfail(response, status, headers);
+							_.remove(scope.images, function(n) {
+								return n === obj;
+							});
+						}
+					});
+				};
+				scope.call = function(image, index, action) {
+					if(!_.isNil(action.confirmation)) {
+						var modal = $uibModal.open ({
+							size: 'size-warning',
+							templateUrl: 'common/ncActionModal',
+							controller: ["$scope", "$uibModalInstance", "options", "$interpolate", function($scope, $uibModalInstance, options, $interpolate) {
+								$scope.title = options.title;
+								$scope.message = $interpolate(options.message)(scope);
+								$scope.btnNo = options.btnNo || 'Cancel';
+								$scope.btnYes = options.btnYes || 'Confirm';
+								$scope.btnClass = options.btnClass || 'btn-blue';
+								$scope.yes = function() {
+									$uibModalInstance.close();
+								};
+								$scope.no = function() {
+									$uibModalInstance.dismiss();
+								}
+							}],
+							resolve: {
+								options: function() {
+									return {
+										title: action.confirmation.title,
+										message: action.confirmation.message,
+										btnYes: action.confirmation.btnConfirm,
+										btnClass: action.confirmation.btnClass
+									}
+								}
+							}
+						});
+
+						modal.result.then(function() {
+							action.fn(image, scope.images, index);
+						});
+					} else {
+						action.fn(image, scope.images, index);
+					}
+				};
+				scope.actions = [
+					{
+						//Zoom
+						fn: function(item, array, index) {
+							$uibModal.open({
+								size: 'product-image',
+								template: '<img ng-src="{{url}}" alt=""/>',
+								controller: ["$scope", "url", function($scope, url) {
+									$scope.url = url;
+								}],
+								resolve: {
+									url: function() {
+										return item.url;
+									}
+								}
+							});
+						},
+						icon: 'fa-zoom-in'
+					},
+					{
+						//Trash
+						fn: function(item, array, index) {
+							array.splice(index, 1);
+						},
+						icon: 'fa-trash',
+						confirmation: {
+							title: 'Confirm to delete',
+							message: 'Are you sure you want to delete the image?',
+							btnConfirm: 'Delete',
+							btnCancel: 'Cancel',
+							btnClass: 'btn-red'
+						}
+					},
+					{
+						//Left
+						fn: function(item, array, index) {
+							//console.log(item, array, index);
+						    var to = index - 1;
+						    if (to < 0) return;
+
+						    var tmp = array[to];
+						    array[to] = item;
+						    array[index] = tmp;
+						},
+						icon: 'fa-arrow-left'
+					},
+					{
+						//Right
+						fn: function(item, array, index) {
+							//console.log(item, array, index);
+						    var to = index + 1;
+						    if (to >= array.length) return;
+
+						    var tmp = array[to];
+						    array[to] = item;
+						    array[index] = tmp;
+						},
+						icon: 'fa-arrow-right'
+					}
+				];
+			}
+		}
+	}])
 	.directive('ncImageGallery', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
 			restrict: 'E',
@@ -7260,6 +7387,11 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
   $templateCache.put('common/ncImage',
     "<li class=list-item><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ model.ImageUrlEn.length > 0 && model.ImageUrlEn  || '/assets/img/loader.gif' }}\"></div><div ng-if=\"actions.length > 0\" class=actions-wrapper ng-style=\"width: {{100 / actions.length}}%;\"><a ng-repeat=\"action in options.actions\" class=action ng-click=\"action.fn(model, parent, $index)\"><i class=fa ng-class={{action.icon}}></i></a></div></div></li>"
+  );
+
+
+  $templateCache.put('common/ncImageBanner',
+    "<div class=form-section><div class=form-section-header>{{title}}</div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p></div></div><div class=image-select-alternative-text><span>Or</span> <a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">Select Images from your computer</a></div></div></div><div class=col-xs-5><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 8 images</li><li>Image ratio 16:9</li></ul></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ getSrc(image) }}\"></div><div class=actions-wrapper><a class=action ng-repeat=\"action in options.actions\" ng-click=\"call(image, $index, action)\"><i class=\"fa {{action.icon}}\"></i></a></div></div><div style=\"text-align:center; padding-top: 10px; color: grey\" ng-if=\"$index == 0\">Featured Image</div></li></ul></div></div>"
   );
 
 
@@ -10940,7 +11072,6 @@ module.exports = {
 },{}],148:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Mar 03 2016 17:41:26 GMT+0700 (Russia TZ 6 Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 

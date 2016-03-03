@@ -69,7 +69,7 @@ angular.module('nc')
 						fn: function(item, array, index) {
 							$uibModal.open({
 								size: 'product-image',
-								template: '<img ng-src="{{url}}" alt=""/>'
+								template: '<img ng-src="{{url}}" alt=""/>',
 								controller: function($scope, url) {
 									$scope.url = url;
 								},
