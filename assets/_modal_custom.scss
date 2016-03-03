@@ -17,6 +17,7 @@
 		    margin-right: -15px;
 		}
 	}
+
 	.modal-change-password {
 		width: 505px;
 		.ah-form .form-group {
@@ -41,6 +42,14 @@
 	    	font-size: 36px;
 	    	margin-top: -6px;
 		}
+
+
+	.modal_title_abosolute {
+		position: absolute;
+	}
+	.title_relative {
+		position: relative;
+
 	}
 }
 
