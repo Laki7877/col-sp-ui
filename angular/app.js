@@ -18,6 +18,7 @@ require('angular-ui-tree');
 require('angular-base64');
 require('angular-sanitize');
 require('angular-scroll');
+require('angular-cookies');
 require('angular-bootstrap-datetimepicker');
 require('ui-select/dist/select.js');
 
@@ -33,7 +34,7 @@ var filters = bulk.filters;
 
 var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.datetimepicker',
   'duScroll', 'ngSanitize', 'ngAnimate',
-  'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'
+  'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64', 'ngCookies'
 ])
 
 //App config

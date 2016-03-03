@@ -6,7 +6,7 @@
   $scope.alert = new NcAlert();
   var redir = storage.get('redirect');
   var profile = storage.getCurrentUserProfile();
-  if (profile && profile.User.IsAdmin) {
+  if (profile) {
     $window.location.href = Credential.getRedirPath(profile)
   }
   if(redir && redir != '/') {
