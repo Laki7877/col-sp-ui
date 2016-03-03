@@ -1,5 +1,5 @@
 <div id="add-product-information-tab-content">
-    <? $this->insert('partials/add-product-inner-tab-breadcrumb') ?>
+        <div nc-template="addProducts/inner-tab-breadcrumb"></div>
 
         <div class="row" ng-if="overview.Status">
             <div class="col-xs-12">

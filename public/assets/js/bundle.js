@@ -33,9 +33,11 @@ var helpers = bulk.helpers;
 var directives = bulk.directives;
 var filters = bulk.filters;
 
-var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.datetimepicker',
+var app = angular.module('colspApp', ['ngPatternRestrict', 
+  'nc', 'ui.bootstrap.datetimepicker',
   'duScroll', 'ngSanitize', 'ngAnimate',
-  'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64', 'ngCookies', 'chart.js'
+  'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select', 
+  'ui.bootstrap', 'base64', 'ngCookies', 'chart.js'
 ])
 
 //App config
@@ -2545,7 +2547,6 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
                     $scope.pageState.reset();
                     $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
                     ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
-                    ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
                 });
                 $scope.addProductForm.$setPristine(true);
             } else {
@@ -2598,7 +2599,6 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
                             $scope.pageState.reset();
                             watchVariantFactorChanges();
                             ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
-                            ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
                         });
                 }, function (error) {
                     throw new KnownException("Unable to fetch product with id " + productId);
@@ -2613,7 +2613,6 @@ module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product",
                     $scope.pageState.reset();
                     watchVariantFactorChanges();
                     ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
-                    ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
                 });
         } else {
 
@@ -4051,7 +4050,12 @@ module.exports = function($rootScope, $scope, Shop, ImageService, NcAlert, confi
     queueLimit: 1
   });
 
-  ImageService.assignUploaderEvents($scope.uploadViewBag.uploader, $scope.uploadViewBag.images, 1, function() {
+
+  var onQueueLimit = function(images, item, obj){
+    console.log('queue limit reached');    
+  };
+  
+  ImageService.assignUploaderEvents($scope.uploadViewBag.uploader, $scope.uploadViewBag.images, onQueueLimit, function() {
     //On Fail
     alert("Failed to upload image");
   });
@@ -7215,7 +7219,7 @@ require('./template.js');
 angular.module("nc").run(["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('addProducts/inner-tab-breadcrumb',
-    "<div><div class=\"alert alert-yellow\" ng-if=\"formData.Status == 'WA'\">This product is waiting for approval from the admin. You cannot edit it now.</div><div class=margin-bottom-20><span>Global Category:</span> <span>{{ breadcrumbs.globalCategory }}</span></div></div>"
+    "<div><div class=\"alert alert-yellow\" ng-if=\"viewBag.Status == 'WA'\">This product is waiting for approval from the admin. You cannot edit it now.</div><div class=margin-bottom-20><span>Global Category:</span> <span>{{ viewBag.breadcrumbs.globalCategory }}</span></div></div>"
   );
 
 
@@ -9240,7 +9244,7 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
   /**
    * Assign image uploader events specifically to COL-image uploading feature
    */
-  service.assignUploaderEvents = function(uploader, images, queueLimit, onFail, onValidation, onSuccess) {
+  service.assignUploaderEvents = function(uploader, images, queueLimit, onFail, onValidation, onDoneItem) {
 
     uploader.onWhenAddingFileFailed = function(item, filter, options) {
       console.info('onAfterAddingFile', item, filter, options);
@@ -9266,9 +9270,9 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
       console.info('onAfterAddingFile', images, uploader.queue);
     };
     uploader.onSuccessItem = function(item, response, status, headers) {
-      images[item.indx] = response;
+      images[item.indx || 0] = response;
       console.info('onSuccessItem', images, uploader.queue);
-			// onSuccess();
+	  if(onDoneItem) onDoneItem(images);
     };
     uploader.onErrorItem = function(item, response, status, headers) {
       images.splice(item.indx, 1);
@@ -10975,7 +10979,7 @@ module.exports = {
 },{}],148:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Mar 03 2016 14:38:00 GMT+0700 (SE Asia Standard Time)
+ * Thu Mar 03 2016 15:15:40 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 

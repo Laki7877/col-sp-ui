@@ -33,9 +33,11 @@ var helpers = bulk.helpers;
 var directives = bulk.directives;
 var filters = bulk.filters;
 
-var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.datetimepicker',
+var app = angular.module('colspApp', ['ngPatternRestrict', 
+  'nc', 'ui.bootstrap.datetimepicker',
   'duScroll', 'ngSanitize', 'ngAnimate',
-  'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64', 'ngCookies', 'chart.js'
+  'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select', 
+  'ui.bootstrap', 'base64', 'ngCookies', 'chart.js'
 ])
 
 //App config

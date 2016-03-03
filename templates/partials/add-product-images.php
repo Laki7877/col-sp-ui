@@ -1,5 +1,5 @@
 <div id="add-product-images-tab-content">
-    <?php $this->insert('partials/add-product-inner-tab-breadcrumb') ?>
+        <div nc-template="addProducts/inner-tab-breadcrumb"></div>
 
         <div class="row">
             <div class="col-xs-12">
