@@ -2,35 +2,17 @@ var angular = require('angular');
 
 module.exports = function ($scope, $uibModal, $window, util, config, Product, ImageService,
     AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, VariantPair, $rootScope, $q,
-    KnownException, NcAlert, $productAdd) {
+    KnownException, NcAlert, $productAdd, $controller) {
     'ngInject';
-
-    $scope.alert = new NcAlert();
-
-    var MAX_FILESIZE = 5000000; //5MB
+    
+    //TO DO: PASS IN
+    var MAX_FILESIZE = 5000000;
     var QUEUE_LIMIT = 20;
     var QUEUE_LIMIT_360 = 60;
 
-    $scope.image_alert = new NcAlert();
-    $scope.dataSet = {};
-    $scope.dataSet.AttributeSets = [{
-        AttributeSetId: null,
-        disabled: true,
-        AttributeSetNameEn: "No Attribute Set"
-    }];
-    $scope.dataSet.GlobalCategories = [];
-    $scope.dataSet.LocalCategories = [];
-    $scope.dataSet.Brands = [{
-        BrandId: null,
-        BrandNameEn: "Input brand by name or ID...",
-        disabled: true
-    }];
-    $scope.enableVariation = function () {
-        $scope.controlFlags.variation = 'enable';
-    };
-    $scope.dataSet.SearchTags = [];
-    $scope.dataSet.RelatedProducts = [];
-    $scope.dataSet.VariantDisplayOption = [{ text: 'Show as group of variants', value: 'GROUP' }, { text: 'Show as individual product', value: 'INDIVIDUAL' }];
+    $controller('AbstractProductAddCtrl', {
+        $scope: $scope
+    });
 
     var protoAttributeOptions = {
         0: {
@@ -42,7 +24,7 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
             options: []
         }
     };
-    $scope.dataSet.attributeOptions = angular.copy(protoAttributeOptions);
+    $scope.dataset.attributeOptions = angular.copy(protoAttributeOptions);
     $scope.controlFlags = {
         variation: 'disable',
         enableSections: {
@@ -51,21 +33,6 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
         }
     };
 
-    $window.onbeforeunload = function (e) {
-        if (!$scope.addProductForm.$dirty) {
-            //only warn when form is dirty
-            return null;
-        }
-        var message = "Your changes will not be saved.",
-            e = e || window.event;
-        // For IE and Firefox
-        if (e) {
-            e.returnValue = message;
-        }
-
-        // For Safari
-        return message;
-    }; // end onbeforeunload
 
     var onImageUploadFail = function (item, filter) {
         $scope.image_alert.error(item.Message || 'Your image does not meet guideline. Images must be smaller than 5 MB, with square size larger than 1500x1500.');
@@ -78,62 +45,12 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
     var onImageUploadQueueLimit = function () { }
     $scope.asStatus = Product.getStatus;
 
-    $scope.formData = {
-        overview: {},
-        Brand: {
-            id: null
-        },
-        MasterVariant: {
-            DimensionUnit: "MM",
-            WeightUnit: "G",
-            StockType: "Stock"
-        },
-        ShippingMethod: "1",
-        AttributeSet: {
-            AttributeSetTagMaps: []
-        },
-        RelatedProducts: [],
-        MasterImages: [],
-        MasterImages360: [],
-        VideoLinks: [],
-        Variants: [],
-        GlobalCategories: [null, null, null],
-        LocalCategories: [null, null, null],
-        SEO: {
-            ProductBoostingWeight: 5000
-        },
-        ControlFlags: [],
-        Keywords: []
-    };
-
-
+    $scope.refresher = {};
     var watchVariantFactorChanges = function () {
-        $scope.$watch('dataSet.attributeOptions', function () {
-            $productAdd.generateVariants($scope.formData, $scope.dataSet);
+        $scope.$watch('dataset.attributeOptions', function () {
+            $productAdd.generateVariants($scope.formData, $scope.dataset);
         }, true);
     };
-
-    //Variation Factor (lhs) Indices are used as index
-    //for ng-repeat in variation tab
-    $scope.variationFactorIndices = {
-        iterator: [0],
-        length: function () {
-            return $scope.variationFactorIndices.iterator.length;
-        },
-        popSecond: function () {
-            $scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop();
-            $scope.dataSet.attributeOptions[1].options = [];
-            $scope.dataSet.attributeOptions[1].Attribute = null;
-        },
-        pushSecond: function () {
-            $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1);
-        }
-    };
-    
-    //TODO: remove
-    $scope.isFreeTextInput = util.isFreeTextDataType;
-    $scope.isListInput = util.isListDataType;
-    $scope.isHtmlInput = util.isHtmlDataType;
 
     //CK editor options
     $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
@@ -153,10 +70,9 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
         }
     };
 
-    $scope.breadcrumbs = {
+    $scope.breadcrumb = {
         globalCategory: null
     };
-
 
     $scope.preview = function () {
         return console.log($scope.formData);
@@ -166,12 +82,12 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
      * Refresh Related Product Data 
      * @param  {String} q
      */
-    $scope.refreshRelatedProducts = function (q) {
+    $scope.refresher.RelatedProducts = function (q) {
         return Product.getAll({
             searchText: q,
             pageSize: 4
         }).then(function (ds) {
-            $scope.dataSet.RelatedProducts = ds.data;
+            $scope.dataset.RelatedProducts = ds.data;
         });
     };
     
@@ -179,9 +95,9 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
      * Refresh Brand Data Set used for searching 
      * @param  {String} q
      */
-    $scope.refreshBrands = function (q) {
+    $scope.refresher.Brands = function (q) {
         if (q == "" || !q || q == null) return;
-        $scope.dataSet.Brands = [{
+        $scope.dataset.Brands = [{
             BrandId: -1,
             BrandNameEn: "Searching..",
             disabled: true
@@ -191,7 +107,7 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
             pageSize: 10,
             searchText: q
         }).then(function (ds) {
-            $scope.dataSet.Brands = ds.data;
+            $scope.dataset.Brands = ds.data;
         });
     };
 
@@ -367,9 +283,9 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
             $scope.pageState.reset();
             if (res.ProductId) {
                 $scope.formData.overview = res;
-                $scope.dataSet.attributeOptions = angular.copy(protoAttributeOptions); //will trigger watchvariantchange
+                $scope.dataset.attributeOptions = angular.copy(protoAttributeOptions); //will trigger watchvariantchange
                 var catId = Number(res.GlobalCategory);
-                $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function () {
+                $productAdd.fill(catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function () {
                     $scope.formData.ProductId = Number(res.ProductId);
                     $scope.pageState.reset();
                     $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
@@ -420,7 +336,7 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
                 .then(function (inverseFormData) {
                     $scope.formData.overview = angular.copy(inverseFormData);
                     var catId = Number(inverseFormData.GlobalCategory);
-                    $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs, $scope.controlFlags,
+                    $productAdd.fill(catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb, $scope.controlFlags,
                         $scope.variationFactorIndices, inverseFormData).then(function () {
                             $scope.formData.ProductId = Number(productId);
                             $scope.pageState.reset();
@@ -435,7 +351,7 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
             if (viewBag.catId == null) window.location.href = "/products/select";
 
             var catId = Number(viewBag.catId);
-            $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs,
+            $productAdd.fill(catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb,
                 $scope.controlFlags, $scope.variationFactorIndices).then(function () {
                     $scope.pageState.reset();
                     watchVariantFactorChanges();
@@ -448,9 +364,9 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
 
         //Load Local Cat
         LocalCategoryService.list().then(function (data) {
-            $scope.dataSet.LocalCategories = Category.transformNestedSetToUITree(data);
+            $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data);
         });
-        
+
     }
 
     var tabPage = {};
@@ -498,8 +414,8 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
 
             //Events
             $scope.$on('openGlobalCat', function (evt, item, indx) {
-                console.log('openGloCat', item, $scope.dataSet.GlobalCategories);
-                $scope.viewCategoryColumns = Category.createColumns(item, $scope.dataSet.GlobalCategories);
+                console.log('openGloCat', item, $scope.dataset.GlobalCategories);
+                $scope.viewCategoryColumns = Category.createColumns(item, $scope.dataset.GlobalCategories);
                 $scope.viewCategorySelected = item;
                 $scope.viewCategoryIndex = indx;
                 $scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function (selectedItem) {
@@ -518,8 +434,8 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
 
             //Events
             $scope.$on('openLocalCat', function (evt, item, indx) {
-                console.log(item, $scope.dataSet.LocalCategories);
-                $scope.viewCategoryColumns = Category.createColumns(item, $scope.dataSet.LocalCategories);
+                console.log(item, $scope.dataset.LocalCategories);
+                $scope.viewCategoryColumns = Category.createColumns(item, $scope.dataset.LocalCategories);
                 $scope.viewCategorySelected = item;
                 $scope.viewCategoryIndex = indx;
                 $scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function (selectedItem) {
@@ -541,9 +457,6 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
     tabPage.variation = {
 
         angular: function () {
-            /**
-             * This part handles when user click on More Detail and open pair form
-             */
 
             $scope.uploaderModal = ImageService.getUploader('/ProductImages', {
                 queueLimit: QUEUE_LIMIT
@@ -570,7 +483,7 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
                     templateUrl: 'add-product/variant-modal',
                     controller: function ($scope, $uibModalInstance, $timeout) {
                         'ngInject';
-                        
+
                         $scope.no = function () {
                             $uibModalInstance.close('no');
                         }
@@ -584,12 +497,12 @@ module.exports = function ($scope, $uibModal, $window, util, config, Product, Im
                         model: function () {
                             return $scope.pairModal;
                         },
-                        ckOptions: function(){
+                        ckOptions: function () {
                             return $scope.ckOptions;
                         }
                     }
                 });
-                
+
                 variantModal.result.then(function (selectedItem) {
                     if (selectedItem == 'yes') {
                         console.log("closed mdoal hyes");

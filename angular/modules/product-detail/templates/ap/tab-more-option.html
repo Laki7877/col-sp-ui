@@ -1,5 +1,5 @@
 <div id="add-product-more-option-tab-content">
-        <div nc-template="add-product/inner-tab-breadcrumb" nc-view-bag="formData"></div>
+    <div ap-component="ap/inner-tab-breadcrumb" form-data="formData" breadcrumb="breadcrumb"></div>
 
         <div class="row">
             <div class="col-xs-12">
@@ -8,12 +8,15 @@
                         <h2>Relationship</h2></div>
                     <div class="form-section-content">
 
-                        <div nc-template="common/input/form-group-with-label" nc-label="Related Products" nc-template-form="addProductForm.RelatedProducts" nc-template-options-path="addProductForm/RelatedProducts">
+                        <div nc-template="common/input/form-group-with-label" nc-label="Related Products" nc-template-form="addProductForm.RelatedProducts" 
+                        nc-template-options-path="addProductForm/RelatedProducts">
                             <ui-select ng-model="formData.RelatedProducts" name="RelatedProducts" nc-tag-validator nc-max-tag-count="10" multiple>
                                 <ui-select-match placeholder="Input Product Name">
                                     <span>{{ $item.ProductNameEn }}</span>
                                 </ui-select-match>
-                                <ui-select-choices repeat="item in (dataSet.RelatedProducts | exclude: formData.RelatedProducts : 'ProductId' | exclude: [formData] : 'ProductId' ) track by item.Pid" refresh="refreshRelatedProducts($select.search)" refresh-delay="1">
+                                <ui-select-choices 
+                                 repeat="item in (dataset.RelatedProducts | exclude: formData.RelatedProducts : 'ProductId' | exclude: [formData] : 'ProductId' ) track by item.Pid"
+                                 refresh="refresher.RelatedProducts($select.search)" refresh-delay="1">
                                     {{ item.ProductNameEn }}
                                 </ui-select-choices>
                             </ui-select>
@@ -30,7 +33,6 @@
                         <h2>SEO</h2></div>
                     <div class="form-section-content">
 
-                        
                         <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.SEO_MetaTitleEn" nc-label="Meta Title (English)" 
                         nc-template-options-path="addProductForm/Nothing">
                             <input class="form-control width-field-normal" name="SEO_MetaTitleEn" ng-model="formData.SEO.MetaTitleEn" maxlength="60" />

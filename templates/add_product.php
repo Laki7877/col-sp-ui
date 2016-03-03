@@ -13,6 +13,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 
 <div ng-controller="ProductAddCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
 
+        <? $this->insert('components/modal-add-alternative-global-category', ['id' => 'global-category', 'header' => 'Add Alternative Global Category', 'ng_model' => 'viewCategorySelected', 'template' => 'viewCategoryColumns']) ?>
+        <? $this->insert('components/modal-add-local-category', ['id' => 'local-category', 'header' => 'Add Local Category', 'ng_model' => 'viewCategorySelected', 'template' => 'viewCategoryColumns']) ?>
         <nc-alert nc-model="alert"></nc-alert>
 
 		<form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
@@ -27,19 +29,19 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
                 <? $this->insert('components/tab-nav', ["items" => $menus]) ?>
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
-                             <div ap-component="ap/tab-information" form-data="formData" breadcrumb="breadcrumbs" dataset="dataSet" control-flags="controlFlags"></div>
+                             <div ap-component="ap/tab-information"></div>
                         </div>
                         <div role="tabpanel" class="tab-pane margin-top-20" id="images">
-                            <? $this->insert('partials/add-product-images') ?>
+                           <div ap-component="ap/tab-images"></div>
                         </div>
                         <div role="tabpanel" class="tab-pane margin-top-20" id="category">
-                            <? $this->insert('partials/add-product-category') ?>
+                            <div ap-component="ap/tab-category"></div>
                         </div>
     					<div role="tabpanel" class="tab-pane margin-top-20" id="more_option">
-                             <div ap-component="ap/tab-more-option" form-data="formData" breadcrumb="breadcrumbs" control-flags="controlFlags"></div>
+                             <div ap-component="ap/tab-more-option"></div>
     					</div>
                         <div role="tabpanel" class="tab-pane margin-top-20" id="variation">
-                            <? $this->insert('partials/add-product-variation') ?>
+                             <div ap-component="ap/tab-variations"></div>
                         </div>
                     </div>
                     <!-- tablc-ntent-->

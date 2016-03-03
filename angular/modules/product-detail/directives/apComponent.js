@@ -4,14 +4,9 @@ angular.module('productDetail')
         return {
             restrict: 'A',
             transclude: true,
+            scope: false,
             replace: true,
             priority: 1010,
-            scope: {
-                formData: '=formData',
-                breadcrumb: '=?breadcrumb',
-                controlFlags: '=?controlFlags',
-                dataset: '=dataset'
-            },
             template: function (element, attrs) {
                 var templateHTML = $templateCache.get(attrs.apComponent);
                 if (!templateHTML) {
@@ -30,10 +25,7 @@ angular.module('productDetail')
                     return false;
                 };
 
-                scope.asStatus = Product.getStatus;
-                scope.isFreeTextInput = util.isFreeTextDataType;
-                scope.isListInput = util.isListDataType;
-                scope.isHtmlInput = util.isHtmlDataType;
+               
 
                 var pathComp;
                 var opt = {};
