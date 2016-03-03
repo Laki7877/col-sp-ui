@@ -57,7 +57,7 @@ function generateRouteArray(obj) {
 
 var seller = {
 	'Home|fa-home': {
-
+		'Onboarding': '/onboarding'
 	},
 	'Orders|fa-inbox': {
 
