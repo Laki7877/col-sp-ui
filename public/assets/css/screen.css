@@ -14239,11 +14239,10 @@ form h6 {
 /* line 7, ../../../assets/_seller_page.sass */
 .onboarding_wrapper {
   background-image: url("/assets/img/bg-onboarding.png");
-  background-size: 1025px 478px;
+  background-size: 1100px 200px;
   background-color: #f8e6e6;
   background-repeat: no-repeat;
-  background-position: center 48%;
-  background-origin: content-box;
+  background-position: center top;
   margin-top: -30px;
   margin-bottom: -30px;
   margin-left: -40px;
@@ -14251,21 +14250,22 @@ form h6 {
   height: 200px;
   padding-top: 200px;
 }
-/* line 21, ../../../assets/_seller_page.sass */
+/* line 20, ../../../assets/_seller_page.sass */
 .onboarding_wrapper .welcome_text_big {
   margin-top: -164px;
   font-size: 32px;
 }
-/* line 25, ../../../assets/_seller_page.sass */
+/* line 24, ../../../assets/_seller_page.sass */
 .onboarding_wrapper .welcome_text_small {
   font-size: 21px;
 }
 
-/* line 28, ../../../assets/_seller_page.sass */
+/* line 27, ../../../assets/_seller_page.sass */
 .onboarding_content {
   margin-top: -36px;
-  margin-left: 190px;
-  margin-right: 190px;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 /* line 33, ../../../assets/_seller_page.sass */
 .onboarding_content > .home_task_space {
