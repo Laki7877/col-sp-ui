@@ -98,7 +98,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
     .factory('Credential', services.credential)
     .factory('$exceptionHandler', services.exceptionHandler)
     .factory('KnownException', services.knownException)
-    .factory('$productAdd', services.productAdd)
     .factory('OnTopCreditService', services.OnTopCreditService)
     .factory('OnTopCredit', services.OnTopCredit)
     .factory('Onboarding', services.Onboarding)

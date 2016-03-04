@@ -148,7 +148,7 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
   $templateCache.put('ap/section-description',
     "<div class=form-section><div class=form-section-header><h2>DescriptionX</h2></div><div class=form-section-content><div class=two-columns><div class=row><div class=col-sm-6><label>Description (English)</label><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=MasterVariant_DescriptionFullEn ng-model=formData.MasterVariant.DescriptionFullEn>\n" +
-    "            </textarea></div><div class=col-sm-6><label>Description (ไทย)</label><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=MasterVariant_DescriptionFullEn ng-model=formData.MasterVariant.DescriptionFullEn>\n" +
+    "            </textarea></div><div class=col-sm-6><label>Description (ไทย)</label><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=MasterVariant_DescriptionFullTh ng-model=formData.MasterVariant.DescriptionFullTh>\n" +
     "            </textarea></div></div><div class=\"row margin-top-30\"><div class=col-sm-6><label>Short Description (English)</label><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=MasterVariant_DescriptionShortEn ng-model=formData.MasterVariant.DescriptionShortEn>\n" +
     "            </textarea></div><div class=col-sm-6><label>Short Description (ไทย)</label><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=MasterVariant_DescriptionShortTh ng-model=formData.MasterVariant.DescriptionShortTh>\n" +
     "            </textarea></div></div></div></div></div>"
