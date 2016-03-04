@@ -446,7 +446,7 @@ function ($scope, $uibModal, $window, util, config, Product, ImageService,
 
         var variantModal = $uibModal.open({
           animation: true,
-          templateUrl: 'add-product/variant-modal',
+          templateUrl: 'ap/modal-variant',
           controller: function ($scope, $uibModalInstance, $timeout) {
             'ngInject'
 

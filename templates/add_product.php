@@ -69,11 +69,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
         </fieldset>
 	</form>
     
-    <form name="addProductVariantForm" class="ah-form sticky-mainform-action" novalidate>
-        <fieldset ng-disabled="formData.Status == 'WA'">
-        <? $this->insert('components/modal-product-variant-detail', ["id" => "variant-detail-1", "model" => "pairModal"]) ?>
-        </fieldset>
-    </form>
+   
 </div>
 
 	<script src="/assets/libs/ckeditor/ckeditor.js"></script>
