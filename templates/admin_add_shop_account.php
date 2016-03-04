@@ -106,6 +106,23 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										</ui-select-choices>
 										</ui-select>
 									</div>
+									<!-- Max local cat -->
+									<div ng-template="common/input/text2"
+										ng-template-options="{
+										'label': 'Maximum Local Category',
+										'inputSize' : 'small',
+										'error' : {
+										'show': $root.isInvalid(form.MaxLocalCategory),
+										'conditions' : form.MaxLocalCategory.$error
+										}
+										}">
+										<input
+										class="form-control"
+										name="MaxLocalCategory"
+										ng-model="formData.MaxLocalCategory"
+										ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"
+										/>
+									</div>
 									<!-- Commission -->
 									<div ng-template="common/input/text2"
 										ng-template-options="{
@@ -133,6 +150,19 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										ng-minnumber="0"
 										/>
 									</div>
+									<div nc-template="common/input/form-group-with-label"
+										nc-label="Commission by Category">
+				                        <div class="width-field-normal" ng-repeat="item in formData.Commissions track by $index">
+				                        	<span class="form-text">{{item.Commission}}% for <a ng-click="openCommissionSelector(item)">{{item.NameEn}}</a>
+				                            </span>
+				                            <i class="clickable color-dark-grey fa fa-trash margin-left-10" ng-click="formData.Commissions.splice($index, 1)"></i>
+				                        </div>
+				                        <div class="width-field-normal">
+				                            <a class="like-text form-text" ng-click="openCommissionSelector()">
+				                                <i class="fa fa-plus-circle color-theme"></i> Add Commission Rule
+				                            </a>
+				                        </div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -145,13 +175,13 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.BankAccountNumber"
 				                    	nc-label="Bank Account Number"
-				                    	nc-template-options-path="adminShopAccountForm/BankAccountNumber">
+				                    	nc-template-options-path="addShopAccountForm/BankAccountNumber">
 				                           <input class="form-control" name="BankAccountNumber" type="text" ng-model="formData.BankAccountNumber" required/>
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.BankAccountName" 
 				                    	nc-label="Bank Account Name"
-				                    	nc-template-options-path="adminShopAccountForm/BankAccountName">
+				                    	nc-template-options-path="addShopAccountForm/BankAccountName">
 				                           <input class="form-control" name="BankAccountName" type="text" ng-model="formData.BankAccountName" required/>
 				                    </div>
 								</div>

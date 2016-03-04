@@ -1,11 +1,12 @@
 <div class="form-section">
-	<div class="form-section-header">{{title}}</div>
+	<div class="form-section-header"><h2>{{title}}</h2></div>
 	<div class="form-section-content padding-left-15 padding-right-15">
 		<div class="col-xs-7">
 			<div class="image-drop-wrapper">
 				<div 
 					ngf-drop="upload($files)" 
 					ngf-pattern="'.png,.jpg,.jpeg'"
+					ngf-multiple="true"
 					class="image-drop-zone">
 					<div class="image-drop-zone-text">
 						<p><i class="fa fa-image fa-3x color-theme"></i></p>
@@ -39,7 +40,7 @@
 						<img ng-src="{{ getSrc(image) }}" />
 					</div>
 					<div class="actions-wrapper" >
-						<a class="action" ng-repeat="action in options.actions" ng-click="call(image, $index, action)">
+						<a class="action" ng-repeat="action in actions" ng-click="call(image, $index, action)">
 							<i class="fa {{action.icon}}"></i>
 						</a>
 						<!-- fa-search-icon fa-trash -->

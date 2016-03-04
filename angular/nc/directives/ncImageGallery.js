@@ -1,30 +1,70 @@
 angular.module('nc')
-	.directive('ncImageBanner', function($uibModal, $templateCache, FileItem) {
+	.directive('ncImageBanner', function($uibModal, $templateCache, FileItem, FileUploader) {
 		return {
 			restrict: 'E',
 			replace: true,
 			scope: {
 				images: '=ncModel',
-				onfail: '=ncImageBannerFail',
-				uploader: '=ncImageBannerUploader',
-				title: '=ncImageBannerTitle'
+				onfail: '=onFail',
+				uploader: '=uploader',
+				size: '@size',
+				title: '@title'
 			},
 			template: $templateCache.get('common/ncImageBanner'),
 			link: function(scope) {
-				scope.upload = function(file) {
-					var obj = {};
-					scope.images.push(obj);
-					var f = new FileItem(scope.uploader, file, {
-						onSuccess: function(response) {
-							obj = response;
-						},
-						onError: function(response, status, headers) {
-							scope.onfail(response, status, headers);
-							_.remove(scope.images, function(n) {
-								return n === obj;
+				var fileUploader = false;
+				scope.images = scope.images || [];
+				scope.$watch('uploader', function(val) {
+					if(val instanceof FileUploader) {
+						fileUploader = true;
+					} else {
+						fileUploader = false;
+					}
+				});
+				scope.upload = function(files) {
+					if(fileUploader) {
+						_.forEach(files, function(file) {
+							//max size
+							if(scope.images.length >= _.toInteger(scope.size)) {
+								scope.onfail('onmaxsize', scope.size);
+								return;
+							}
+							var obj = {};
+							scope.images.push(obj);
+							var f = new FileItem(scope.uploader, file, {
+								onSuccess: function(response) {
+									console.log(response);
+									_.extend(obj, response);
+								},
+								onError: function(response, status, headers) {
+									scope.onfail('onerror', response, status, headers);
+									_.remove(scope.images, function(n) {
+										return n === obj;
+									});
+								}
 							});
-						}
-					});
+						});
+					} else {
+						//newer version
+						_.forEach(files, function(file) {
+							//max size
+							if(scope.images.length >= _.toInteger(scope.size)) {
+								scope.onfail('onmaxsize', scope.size);
+								return;
+							}
+							var obj = {};
+							scope.images.push(obj);
+							scope.uploader.upload(file)
+								.then(function(response) {
+									_.extend(obj, response.data);
+								}, function(response) {
+									scope.onfail('onerror', response);
+									_.remove(scope.images, function(n) {
+										return n === obj;
+									});
+								});
+						});
+					}
 				};
 				scope.call = function(image, index, action) {
 					if(!_.isNil(action.confirmation)) {
@@ -62,6 +102,9 @@ angular.module('nc')
 					} else {
 						action.fn(image, scope.images, index);
 					}
+				};
+				scope.getSrc = function(image) {
+					return image.url || '/assets/img/loader.gif';
 				};
 				scope.actions = [
 					{

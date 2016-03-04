@@ -11,12 +11,12 @@
         <div class="col-xs-12">
           <div class="form-section">
             <div class="form-section-header">
-              <h2>Brand Information</h2>
+              <h2>Information</h2>
             </div>
             <div class="form-section-content modal-custom">
               <div ng-template="common/input/text2"
                 ng-template-options="{
-                  'label': 'Brand Name (English)',
+                  'label': 'Brand Name',
                   'labelClass': 'required',
                   'error' : {
                         'messages': {
@@ -56,14 +56,52 @@
                   maxlength="100"
                   required />
               </div>
+              <div ng-template="common/input/text2"
+                ng-template-options="{
+                  'label': 'URL (English)',
+                  'error' : {
+                        'messages': {
+                          'pattern': 'Only English letters, numbers,  &quot;- &quot;, and  &quot;_&quot; allowed. Space is not allowed'
+                          },
+                        'show': isInvalid(form.SEO_ProductUrlKeyEn),
+                        'conditions' : form.SEO_ProductUrlKeyEn.$error
+                   }
+                }">
+                <input
+                  class="form-control"
+                  name="SEO_ProductUrlKeyEn"
+                  ng-model="formData.SEO.ProductUrlKeyEn"
+                  ng-pattern="/^[A-Za-z0-9_\-]+$/"
+                  ng-class="{ 'has-error' : isInvalid(form.SEO_ProductUrlKeyEn) }"
+                  maxlength="300"
+                  />
+              </div>
             </div>
           </div>
-          <? $this->insert('components/forms/form-section-upload-new-product-image-single',
-              ["uploader" => "uploader",
-              "no_guideline" => true,
-              "header" => "<label class='required'>Upload New Brand Image (512 x 512)</label>",
-              "images" => "formData.BrandImages"])
-          ?>
+          <div class="form-section">
+            <div class="form-section-header"><h2>Logo</h2></div>
+            <div class="form-section-content">
+              <div nc-template="common/input/form-group-with-label" 
+                nc-label="Logo File" nc-template-options-path="addBrandForm/BrandImage">
+                  <button 
+                  type="button"
+                  class="btn btn-default"
+                  ngf-accept="'.png,.jpg,.jpeg'"
+                  ngf-select="uploadLogo($file)"
+                  >Choose File</button>
+              </div>
+              <div ng-show="formData.BrandImage"
+                nc-template="common/input/form-group-with-label" 
+                nc-label="Logo Preview">
+                  <img
+                    ng-src="{{formData.BrandImage.url}}"
+                    width="160"
+                    />
+              </div>
+            </div>
+          </div>
+          <nc-image-banner nc-model="formData.BrandBannerEn" title="Banner Upload (English)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner> 
+          <nc-image-banner nc-model="formData.BrandBannerTh" title="Banner Upload (ไทย)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner> 
           <div class="form-section">
             <div class="form-section-header"><h2>SEO</h2></div>
             <div class="form-section-content">
@@ -152,26 +190,6 @@
                   ng-class="{ 'has-error' : isInvalid(form.SEO_MetaKeywordTh) }"
                   maxlength="300"
                   placeholder="Keywords seperated by comma"
-                  />
-              </div>
-              <div ng-template="common/input/text2"
-                ng-template-options="{
-                  'label': 'Brand URL Key (English)',
-                  'error' : {
-                        'messages': {
-                          'pattern': 'Only English letters, numbers,  &quot;- &quot;, and  &quot;_&quot; allowed. Space is not allowed'
-                          },
-                        'show': isInvalid(form.SEO_ProductUrlKeyEn),
-                        'conditions' : form.SEO_ProductUrlKeyEn.$error
-                   }
-                }">
-                <input
-                  class="form-control"
-                  name="SEO_ProductUrlKeyEn"
-                  ng-model="formData.SEO.ProductUrlKeyEn"
-                  ng-pattern="/^[A-Za-z0-9_\-]+$/"
-                  ng-class="{ 'has-error' : isInvalid(form.SEO_ProductUrlKeyEn) }"
-                  maxlength="300"
                   />
               </div>
             </div>
