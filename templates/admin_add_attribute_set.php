@@ -53,7 +53,7 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Attribute Mapping</h2></div>
             <div class="form-section-content">
-                <nc-tradable-select nc-test="lockAttributeset" nc-model="formData.Attributes" nc-select-options="attributeOptions" nc-options="{ 'map' : { 'text': 'AttributeNameEn', 'value' : 'AttributeId' } }"></nc-tradable-select>
+                <nc-tradable-select nc-test="lockAttributeset" nc-model="formData.Attributes" nc-select-options="attributeOptions" column-header="Attribute in This Attribute Set" nc-options="{ 'map' : { 'text': 'AttributeNameEn', 'value' : 'AttributeId'} }"></nc-tradable-select>
                 <div class="row col-xs-12">
                   <p style="margin-left: 30px; margin-top:15px">* Changing attribute mapping may affect products under this attribute set</p>
                 </div>

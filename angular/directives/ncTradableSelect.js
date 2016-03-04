@@ -30,6 +30,8 @@ module.exports = function($templateCache, $filter) {
 			if(angular.isUndefined(scope.selectable)) {
 				throw 'Please set required field "ncSelectOptions"';
 			}
+			//Header
+			scope.header = attrs.columnHeader;
 		},
 		controller: function($scope) {
 			'ngInject';
@@ -54,7 +56,7 @@ module.exports = function($templateCache, $filter) {
 					return $scope.model.length - 1;
 				} else {
 					for (var i = $scope.activeRight; i < $scope.model.length; i++) {
-						if(angular.isDefined($scope.model[$scope.activeRight]) && 
+						if(angular.isDefined($scope.model[$scope.activeRight]) &&
 							$scope.test($scope.model[$scope.activeRight])) {
 							continue;
 						}
@@ -102,7 +104,7 @@ module.exports = function($templateCache, $filter) {
 					$scope.activeLeft = next;
 
 				} else {
-					if ($scope.activeRight < 0 || 
+					if ($scope.activeRight < 0 ||
 						(angular.isDefined($scope.model[$scope.activeRight]) &&
 						$scope.test($scope.model[$scope.activeRight]))) {
 						return;
@@ -114,10 +116,10 @@ module.exports = function($templateCache, $filter) {
 			};
 			$scope.active = function(direction) {
 				if(direction) {
-					if($scope.activeRight >= 0 && angular.isDefined($scope.model[$scope.activeRight]) && !$scope.test($scope.model[$scope.activeRight])) 
+					if($scope.activeRight >= 0 && angular.isDefined($scope.model[$scope.activeRight]) && !$scope.test($scope.model[$scope.activeRight]))
 						return 'active';
 				} else {
-					if($scope.activeLeft >= 0 && !$scope.contain($scope.selectable[$scope.activeLeft])) 
+					if($scope.activeLeft >= 0 && !$scope.contain($scope.selectable[$scope.activeLeft]))
 						return 'active';
 				}
 			}

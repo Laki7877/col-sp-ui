@@ -11,17 +11,17 @@
   </div>
 
   <div class="center-column">
-    <div class="trade-button" ng-class="active(false)" ng-click="transfer(true)"> 
+    <div class="trade-button" ng-class="active(false)" ng-click="transfer(true)">
        <i class="fa fa-chevron-right"></i>
     </div>
-    <div class="trade-button" ng-class="active(true)" ng-click="transfer(false)"> 
+    <div class="trade-button" ng-class="active(true)" ng-click="transfer(false)">
       <i class="fa fa-chevron-left"></i>
     </div>
   </div>
 
   <div class="right-column">
     <div class="list-header">
-      <span class="column-1">Attribute Set in This Category</span>
+      <span class="column-1">{{ header }}</span>
     </div>
     <div class="clickable-list">
       <ul class="content-column">
@@ -31,4 +31,4 @@
       </ul>
     </div>
   </div>
-</div> 
+</div>
