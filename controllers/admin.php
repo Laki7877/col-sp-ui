@@ -7,6 +7,11 @@ class AdminController extends Controller
 		return View::render('admin_category');
 	}
     
+    public static function detail($params)
+	{
+		return View::render('admin_product_detail');
+	}
+    
     public static function approve($params)
 	{
 		return View::render('admin_product_approval');

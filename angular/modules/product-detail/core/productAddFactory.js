@@ -1,6 +1,6 @@
 var angular = require('angular');
 angular.module('productDetail').
-controller('ProductDataWaterfall', function (Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category, util) {
+factory('$productAdd', function (Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category, util) {
     'ngInject';
     var $productAdd = {};
     
