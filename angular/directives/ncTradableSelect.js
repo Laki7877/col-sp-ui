@@ -30,8 +30,10 @@ module.exports = function($templateCache, $filter) {
 			if(angular.isUndefined(scope.selectable)) {
 				throw 'Please set required field "ncSelectOptions"';
 			}
-			//Header
+			//Right Column Header
 			scope.header = attrs.columnHeader;
+			//Search Placeholder
+			scope.searchPlaceholder = attrs.searchPlaceholder;
 		},
 		controller: function($scope) {
 			'ngInject';
