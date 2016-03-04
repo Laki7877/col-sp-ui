@@ -3,7 +3,11 @@
   display: block;
   min-width: 1200px;
   min-height: 100%;
-  background-color: $sidebar-color;
+  background: url('/assets/img/bg-login.png');
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 100% auto;
+  background-color: #FFFEFE;
 }
 
 .login-page {
@@ -11,11 +15,11 @@
 	.logo-img-wrapper {
 		text-align: center;
     	margin-top: 50px;
-    	margin-bottom: 30px;
+    	margin-bottom: 20px;
 	}
 
 	.logo-img {
-		height: 75px;
+		height: 130px;
 	}
 
 	.form-login {

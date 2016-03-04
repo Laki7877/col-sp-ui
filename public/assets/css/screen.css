@@ -15411,20 +15411,24 @@ html, body {
   display: block;
   min-width: 1200px;
   min-height: 100%;
-  background-color: #252d40;
+  background: url("/assets/img/bg-login.png");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 100% auto;
+  background-color: #FFFEFE;
 }
 
-/* line 11, ../../../assets/_login.scss */
+/* line 15, ../../../assets/_login.scss */
 .login-page .logo-img-wrapper {
   text-align: center;
   margin-top: 50px;
-  margin-bottom: 30px;
-}
-/* line 17, ../../../assets/_login.scss */
-.login-page .logo-img {
-  height: 75px;
+  margin-bottom: 20px;
 }
 /* line 21, ../../../assets/_login.scss */
+.login-page .logo-img {
+  height: 130px;
+}
+/* line 25, ../../../assets/_login.scss */
 .login-page .form-login {
   background-color: #FFFFFF;
   border: solid #BCC7D5 1px;
@@ -15433,12 +15437,12 @@ html, body {
   margin: auto;
   padding: 40px 30px 20px 30px;
 }
-/* line 30, ../../../assets/_login.scss */
+/* line 34, ../../../assets/_login.scss */
 .login-page .btn-100 {
   width: 100%;
 }
 
-/* line 34, ../../../assets/_login.scss */
+/* line 38, ../../../assets/_login.scss */
 .login-loading {
   margin-right: 5px;
 }
