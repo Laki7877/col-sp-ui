@@ -117,6 +117,7 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + config.ERROR_MESSAGE.WRONG_IMAGE_FORMAT);
     	} else {
     		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + common.getError(response));
+            console.log(response);
 		}
 	};
     $scope.isDisabled = function(product) {

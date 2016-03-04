@@ -1,5 +1,5 @@
 module.exports = {
-	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
+	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api/',
 	MAX_GLOBAL_CAT_COLUMN : 4,
     HANDLE_EXCEPTION: false,
     MAX_IMAGE_UPLOAD_SIZE: 5242880,
@@ -56,12 +56,34 @@ module.exports = {
 			{
 				name: 'HTML Box',
 				value: 'HB'
+			},
+			{
+				name: 'Checkbox',
+				value: 'CB'
 			}
 		],
 		VARIANT_DROPDOWN: [
 			{
 				name: 'Image',
 				value: 'IO'
+			},
+			{
+				name: 'Textbox',
+				value: 'TO'
+			},
+			{
+				name: 'Dropdown',
+				value: 'DD'
+			}
+		],
+		VARIANT2_DROPDOWN: [
+			{
+				name: 'Image',
+				value: 'IO'
+			},
+			{
+				name: 'Custom Image',
+				value: 'CI'
 			},
 			{
 				name: 'Textbox',

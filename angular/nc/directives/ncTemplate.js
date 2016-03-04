@@ -1,6 +1,6 @@
 var angular = require('angular');
 angular.module('nc')
-    .directive('ncTemplate', function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException,  $parse, KnownException) {
+    .directive('ncTemplate', function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException,  $parse) {
             return {
                 restrict: 'A',
                 transclude: true,

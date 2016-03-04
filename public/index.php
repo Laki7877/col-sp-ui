@@ -51,6 +51,8 @@ Route::add('/roles', 'SellerController::listRole');
 Route::add('/roles/add', 'SellerController::addRole');
 Route::add('/roles/:id', 'SellerController::editRole');
 Route::add('/inventory', 'SellerController::listInventory');
+Route::add('/onboarding', 'SellerController::onboarding');
+
 
 //admin routing
 Route::add('/admin/attributes/add','AdminController::addAttribute');
@@ -87,6 +89,7 @@ Route::add('/admin/coupons/admin/create', 'AdminController::admin_coupons_create
 Route::add('/admin/ontopcredit', 'AdminController::listOntopcredit');
 Route::add('/admin/ontopcredit/create', 'AdminController::addOntopcredit');
 Route::add('/admin/ontopcredit/:id', 'AdminController::editOntopcredit');
+
 //test route
 Route::add('/test/:name', 'TestController::any');
 

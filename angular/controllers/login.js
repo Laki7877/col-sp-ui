@@ -6,9 +6,10 @@
   $scope.alert = new NcAlert();
   var redir = storage.get('redirect');
   var profile = storage.getCurrentUserProfile();
-  if (profile && profile.User.IsAdmin) {
+  if (profile) {
     $window.location.href = Credential.getRedirPath(profile)
   }
+  
   if(redir && redir != '/') {
     $scope.alert.open(false, 'Your session has timed out', '');
     storage.remove('redirect');
@@ -28,7 +29,7 @@
     var pass = $scope.uform.pass;
     Credential.login(user, pass).then(function (r) {
       $scope.loading = false;
-      if (!redir) {
+      if (!redir || redir == '/') {
         redir = Credential.getRedirPath(r);
       }
       $window.location.href = redir;

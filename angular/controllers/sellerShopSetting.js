@@ -33,7 +33,12 @@ module.exports = function($rootScope, $scope, Shop, ImageService, NcAlert, confi
     queueLimit: 1
   });
 
-  ImageService.assignUploaderEvents($scope.uploadViewBag.uploader, $scope.uploadViewBag.images, 1, function() {
+
+  var onQueueLimit = function(images, item, obj){
+    console.log('queue limit reached');    
+  };
+  
+  ImageService.assignUploaderEvents($scope.uploadViewBag.uploader, $scope.uploadViewBag.images, onQueueLimit, function() {
     //On Fail
     alert("Failed to upload image");
   });

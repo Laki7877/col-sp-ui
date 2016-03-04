@@ -38,4 +38,4 @@ if (!isset($serach_placeholder)) {
     </span>
   </div>
 
-</div>  
+</div>

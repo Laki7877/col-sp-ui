@@ -10,8 +10,11 @@ $menus = [
 $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'])
 ?>
 <?php $this->start('page-body') ?>
+
 <div ng-controller="ProductAddCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
 
+        <? $this->insert('components/modal-add-alternative-global-category', ['id' => 'global-category', 'header' => 'Add Alternative Global Category', 'ng_model' => 'viewCategorySelected', 'template' => 'viewCategoryColumns']) ?>
+        <? $this->insert('components/modal-add-local-category', ['id' => 'local-category', 'header' => 'Add Local Category', 'ng_model' => 'viewCategorySelected', 'template' => 'viewCategoryColumns']) ?>
         <nc-alert nc-model="alert"></nc-alert>
 
 		<form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
@@ -26,19 +29,19 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
                 <? $this->insert('components/tab-nav', ["items" => $menus]) ?>
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
-                            <? $this->insert('partials/add-product-information') ?>
+                             <div ap-component="ap/tab-information"></div>
                         </div>
                         <div role="tabpanel" class="tab-pane margin-top-20" id="images">
-                            <? $this->insert('partials/add-product-images') ?>
+                           <div ap-component="ap/tab-images"></div>
                         </div>
                         <div role="tabpanel" class="tab-pane margin-top-20" id="category">
-                            <? $this->insert('partials/add-product-category') ?>
+                            <div ap-component="ap/tab-category"></div>
                         </div>
     					<div role="tabpanel" class="tab-pane margin-top-20" id="more_option">
-    							<? $this->insert('partials/add-product-more-option') ?>
+                             <div ap-component="ap/tab-more-option"></div>
     					</div>
                         <div role="tabpanel" class="tab-pane margin-top-20" id="variation">
-                            <? $this->insert('partials/add-product-variation') ?>
+                             <div ap-component="ap/tab-variations"></div>
                         </div>
                     </div>
                     <!-- tablc-ntent-->
@@ -65,13 +68,13 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
             <!-- apbvody-->
         </fieldset>
 	</form>
+    
     <form name="addProductVariantForm" class="ah-form sticky-mainform-action" novalidate>
         <fieldset ng-disabled="formData.Status == 'WA'">
         <? $this->insert('components/modal-product-variant-detail', ["id" => "variant-detail-1", "model" => "pairModal"]) ?>
         </fieldset>
     </form>
 </div>
-
 
 	<script src="/assets/libs/ckeditor/ckeditor.js"></script>
 	<script src="/assets/libs/ckeditor/config.js"></script>
@@ -83,5 +86,6 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 
 	<script src="/assets/libs/select2/js/select2.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/assets/libs/select2/css/select2.min.css">
+
 
 <?php $this->stop() ?>

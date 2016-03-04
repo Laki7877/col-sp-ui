@@ -8,6 +8,7 @@ module.exports = {
             }
         }
     },
+    MasterVariant_StockType: {},
     MasterVariant_DescriptionFull: {
         'formGroupClass': 'margin-top-40',
         'labelClass': 'required',

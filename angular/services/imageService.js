@@ -17,6 +17,7 @@ module.exports = function($q, $http, common, storage, config, FileUploader) {
         Authorization: 'Basic ' + accessToken
       },
       queueLimit: 10,
+      removeAfterUpload : true,
       filters: [{
         name: 'imageFilter',
         fn: function(item /*{File|FileLikeObject}*/ , options) {
@@ -38,7 +39,7 @@ module.exports = function($q, $http, common, storage, config, FileUploader) {
   /**
    * Assign image uploader events specifically to COL-image uploading feature
    */
-  service.assignUploaderEvents = function(uploader, images, queueLimit, onFail, onValidation, onSuccess) {
+  service.assignUploaderEvents = function(uploader, images, queueLimit, onFail, onValidation, onDoneItem) {
 
     uploader.onWhenAddingFileFailed = function(item, filter, options) {
       console.info('onAfterAddingFile', item, filter, options);
@@ -64,9 +65,9 @@ module.exports = function($q, $http, common, storage, config, FileUploader) {
       console.info('onAfterAddingFile', images, uploader.queue);
     };
     uploader.onSuccessItem = function(item, response, status, headers) {
-      images[item.indx] = response;
+      images[item.indx || 0] = response;
       console.info('onSuccessItem', images, uploader.queue);
-			// onSuccess();
+	  if(onDoneItem) onDoneItem(images);
     };
     uploader.onErrorItem = function(item, response, status, headers) {
       images.splice(item.indx, 1);

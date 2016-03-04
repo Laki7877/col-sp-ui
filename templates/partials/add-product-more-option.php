@@ -1,5 +1,5 @@
 <div id="add-product-more-option-tab-content">
-    <? $this->insert('partials/add-product-inner-tab-breadcrumb') ?>
+        <div nc-template="add-product/inner-tab-breadcrumb" nc-view-bag="formData"></div>
 
         <div class="row">
             <div class="col-xs-12">
@@ -33,12 +33,12 @@
                         
                         <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.SEO_MetaTitleEn" nc-label="Meta Title (English)" 
                         nc-template-options-path="addProductForm/Nothing">
-                            <input class="form-control width-field-normal" name="SEO_MetaTitleEn" ng-model="formData.SEO.MetaTitleEn" maxlength="60" required />
+                            <input class="form-control width-field-normal" name="SEO_MetaTitleEn" ng-model="formData.SEO.MetaTitleEn" maxlength="60" />
                         </div>
                         
                         <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.SEO_MetaTitleTh" nc-label="Meta Title (ไทย)" 
                         nc-template-options-path="addProductForm/Nothing">
-                            <input class="form-control width-field-normal" name="SEO_MetaTitleTh" ng-model="formData.SEO.MetaTitleTh" maxlength="60" required />
+                            <input class="form-control width-field-normal" name="SEO_MetaTitleTh" ng-model="formData.SEO.MetaTitleTh" maxlength="60" />
                         </div>
 
                         <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.SEO_MetaDescriptionEn" nc-label="Meta Description (English)" nc-template-options-path="addProductForm/Nothing">
@@ -126,7 +126,19 @@
                             </div>
                         </div>
 
-                        <? $this->insert('components/forms/multiple-checkbox', ["label" => "Control Flag", "ng_model" => "formData.ControlFlags", "choices" => ["Flag 1", "Flag 2", "Flag 3"]]) ?>
+                        
+                        <div class="form-group">
+                            <div class="width-label"><label class="control-label">Control Flag</label></div>
+                            <div class="width-field-normal">
+                                <div class="checkbox multiple-checkbox">
+
+                                        <label><input type="checkbox"  ng-model="formData.ControlFlags.Flag1">Flag 1</label>
+                                        <label><input type="checkbox"  ng-model="formData.ControlFlags.Flag2">Flag 2</label>
+                                        <label><input type="checkbox"  ng-model="formData.ControlFlags.Flag3">Flag 3</label>
+
+                                </div>
+                            </div>
+                        </div>
 
                         <div nc-template="common/input/form-group-with-label" nc-template-options-path="addProductForm/Remark" nc-template-form="addProductForm.Remark" nc-label="Remark">
                                 <textarea class="form-control" ng-pattern="/^[^<>]+$/"  maxlength="2000" name="Remark" ng-model="formData.Remark"  />

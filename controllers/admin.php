@@ -17,12 +17,12 @@ class AdminController extends Controller
 		return View::render('admin_coupons');
 	}
     
-		public static function admin_coupons_edit($params)
-		{
-		  	return View::render('admin_coupons_detail',  [
-            'viewBag' => array('id' => $params["id"])
-        ]);
-		}
+	public static function admin_coupons_edit($params)
+	{
+	  	return View::render('admin_coupons_detail',  [
+        'viewBag' => array('id' => $params["id"])
+    ]);
+	}
 
     public static function admin_coupons_create($params)
 	{

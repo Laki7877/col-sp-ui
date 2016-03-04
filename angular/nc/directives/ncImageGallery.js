@@ -1,4 +1,131 @@
 angular.module('nc')
+	.directive('ncImageBanner', function($uibModal, $templateCache, FileItem) {
+		return {
+			restrict: 'E',
+			replace: true,
+			scope: {
+				images: '=ncModel',
+				onfail: '=ncImageBannerFail',
+				uploader: '=ncImageBannerUploader',
+				title: '=ncImageBannerTitle'
+			},
+			template: $templateCache.get('common/ncImageBanner'),
+			link: function(scope) {
+				scope.upload = function(file) {
+					var obj = {};
+					scope.images.push(obj);
+					var f = new FileItem(scope.uploader, file, {
+						onSuccess: function(response) {
+							obj = response;
+						},
+						onError: function(response, status, headers) {
+							scope.onfail(response, status, headers);
+							_.remove(scope.images, function(n) {
+								return n === obj;
+							});
+						}
+					});
+				};
+				scope.call = function(image, index, action) {
+					if(!_.isNil(action.confirmation)) {
+						var modal = $uibModal.open ({
+							size: 'size-warning',
+							templateUrl: 'common/ncActionModal',
+							controller: function($scope, $uibModalInstance, options, $interpolate) {
+								$scope.title = options.title;
+								$scope.message = $interpolate(options.message)(scope);
+								$scope.btnNo = options.btnNo || 'Cancel';
+								$scope.btnYes = options.btnYes || 'Confirm';
+								$scope.btnClass = options.btnClass || 'btn-blue';
+								$scope.yes = function() {
+									$uibModalInstance.close();
+								};
+								$scope.no = function() {
+									$uibModalInstance.dismiss();
+								}
+							},
+							resolve: {
+								options: function() {
+									return {
+										title: action.confirmation.title,
+										message: action.confirmation.message,
+										btnYes: action.confirmation.btnConfirm,
+										btnClass: action.confirmation.btnClass
+									}
+								}
+							}
+						});
+
+						modal.result.then(function() {
+							action.fn(image, scope.images, index);
+						});
+					} else {
+						action.fn(image, scope.images, index);
+					}
+				};
+				scope.actions = [
+					{
+						//Zoom
+						fn: function(item, array, index) {
+							$uibModal.open({
+								size: 'product-image',
+								template: '<img ng-src="{{url}}" alt=""/>',
+								controller: function($scope, url) {
+									$scope.url = url;
+								},
+								resolve: {
+									url: function() {
+										return item.url;
+									}
+								}
+							});
+						},
+						icon: 'fa-zoom-in'
+					},
+					{
+						//Trash
+						fn: function(item, array, index) {
+							array.splice(index, 1);
+						},
+						icon: 'fa-trash',
+						confirmation: {
+							title: 'Confirm to delete',
+							message: 'Are you sure you want to delete the image?',
+							btnConfirm: 'Delete',
+							btnCancel: 'Cancel',
+							btnClass: 'btn-red'
+						}
+					},
+					{
+						//Left
+						fn: function(item, array, index) {
+							//console.log(item, array, index);
+						    var to = index - 1;
+						    if (to < 0) return;
+
+						    var tmp = array[to];
+						    array[to] = item;
+						    array[index] = tmp;
+						},
+						icon: 'fa-arrow-left'
+					},
+					{
+						//Right
+						fn: function(item, array, index) {
+							//console.log(item, array, index);
+						    var to = index + 1;
+						    if (to >= array.length) return;
+
+						    var tmp = array[to];
+						    array[to] = item;
+						    array[index] = tmp;
+						},
+						icon: 'fa-arrow-right'
+					}
+				];
+			}
+		}
+	})
 	.directive('ncImageGallery', function($templateCache, $uibModal) {
 		return {
 			restrict: 'E',
@@ -43,6 +170,9 @@ angular.module('nc')
 							controller: function($scope, $uibModalInstance, options, $interpolate) {
 								$scope.title = options.title;
 								$scope.message = $interpolate(options.message)(scope);
+								$scope.btnNo = options.btnNo || 'Cancel';
+								$scope.btnYes = options.btnYes || 'Confirm';
+								$scope.btnClass = options.btnClass || 'btn-blue';
 								$scope.yes = function() {
 									$uibModalInstance.close();
 								};
@@ -54,7 +184,9 @@ angular.module('nc')
 								options: function() {
 									return {
 										title: action.confirmation.title,
-										message: action.confirmation.message
+										message: action.confirmation.message,
+										btnYes: action.confirmation.btnConfirm,
+										btnClass: action.confirmation.btnClass
 									}
 								}
 							}
