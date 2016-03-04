@@ -9,7 +9,7 @@
                 <div class="form-section-content">
                     <div nc-template="common/input/form-group-with-label" nc-label="Card Type">
                         <div class="ah-select2-dropdown">
-                            <select ng-model="items.CreditCardTypeCode" class="form-control" required="">
+                            <select ng-model="formData.CardItemList.CreditCardTypeCode" class="form-control" required="">
                                 <option ng-repeat="opt in dataSet.criteria" value="{{ opt.value }}">
                   {{ opt.text }}
                                 </option>
@@ -17,35 +17,35 @@
                         </div>
                     </div>
 
-                    <div ng-show="items.CreditCardTypeCode == '15A'" ng-init="items.CreditCardTypeCode = '0'" nc-template="common/input/form-group-with-label" nc-label="Format" nc-template-options-path="PromotionForm/Format15AValue">
-                        <input type="text" ng-model="items.CreditNumberFormat" class="form-control" placeholder="34XXXXXXXXXXXXX or 37XXXXXXXXXXXXX" />
+                    <div ng-show="formData.CardItemList.CreditCardTypeCode == '15A'" ng-init="formData.CardItemList.CreditCardTypeCode = '0'" nc-template="common/input/form-group-with-label" nc-label="Format" nc-template-options-path="PromotionForm/Format15AValue">
+                        <input type="text" ng-model="formData.CardItemList.CreditNumberFormat" class="form-control" placeholder="34XXXXXXXXXXXXX or 37XXXXXXXXXXXXX" />
                     </div>
-                    <div ng-show="items.CreditCardTypeCode == '14D'" ng-init="items.CreditCardTypeCode = '0'" nc-template="common/input/form-group-with-label" nc-label="Format" nc-template-options-path="PromotionForm/Format14DValue">
-                        <input type="text" ng-model="items.CreditNumberFormat" class="form-control" placeholder="PREFIX: 300 to 305, 36" />
+                    <div ng-show="formData.CardItemList.CreditCardTypeCode == '14D'" ng-init="formData.CardItemList.CreditCardTypeCode = '0'" nc-template="common/input/form-group-with-label" nc-label="Format" nc-template-options-path="PromotionForm/Format14DValue">
+                        <input type="text" ng-model="formData.CardItemList.CreditNumberFormat" class="form-control" placeholder="PREFIX: 300 to 305, 36" />
                     </div>
-                    <div ng-show="items.CreditCardTypeCode == '14C'" ng-init="items.CreditCardTypeCode = '0'" nc-template="common/input/form-group-with-label" nc-label="Format" nc-template-options-path="PromotionForm/Format14CValue">
-                        <input type="text" ng-model="items.CreditNumberFormat" class="form-control" placeholder="38XXXXXXXXXXXX" value="38XXXXXXXXXXXX" />
+                    <div ng-show="formData.CardItemList.CreditCardTypeCode == '14C'" ng-init="formData.CardItemList.CreditCardTypeCode = '0'" nc-template="common/input/form-group-with-label" nc-label="Format" nc-template-options-path="PromotionForm/Format14CValue">
+                        <input type="text" ng-model="formData.CardItemList.CreditNumberFormat" class="form-control" placeholder="38XXXXXXXXXXXX" value="38XXXXXXXXXXXX" />
                     </div>
-                    <div ng-show="items.CreditCardTypeCode == '16D'" ng-init="items.CreditCardTypeCode = '0'" nc-template="common/input/form-group-with-label" nc-label="Format" nc-template-options-path="PromotionForm/Format16DValue">
-                        <input type="text" ng-model="items.CreditNumberFormat" class="form-control" placeholder="6011XXXXXXXXXXXX" value="6011XXXXXXXXXXXX" />
+                    <div ng-show="formData.CardItemList.CreditCardTypeCode == '16D'" ng-init="formData.CardItemList.CreditCardTypeCode = '0'" nc-template="common/input/form-group-with-label" nc-label="Format" nc-template-options-path="PromotionForm/Format16DValue">
+                        <input type="text" ng-model="formData.CardItemList.CreditNumberFormat" class="form-control" placeholder="6011XXXXXXXXXXXX" value="6011XXXXXXXXXXXX" />
                     </div>
-                    <div ng-show="items.CreditCardTypeCode == '15E'" ng-init="items.CreditCardTypeCode = '0'" nc-template="common/input/form-group-with-label" nc-label="Format" nc-template-options-path="PromotionForm/Format15EValue">
-                        <input type="text" ng-model="items.CreditNumberFormat" class="form-control" placeholder="2014XXXXXXXXXX, 2149XXXXXXXXXX " />
+                    <div ng-show="formData.CardItemList.CreditCardTypeCode == '15E'" ng-init="formData.CardItemList.CreditCardTypeCode = '0'" nc-template="common/input/form-group-with-label" nc-label="Format" nc-template-options-path="PromotionForm/Format15EValue">
+                        <input type="text" ng-model="formData.CardItemList.CreditNumberFormat" class="form-control" placeholder="2014XXXXXXXXXX, 2149XXXXXXXXXX " />
                     </div>
-                    <div ng-show="items.CreditCardTypeCode == '16J'" ng-init="items.CreditCardTypeCode = '0'" nc-template="common/input/form-group-with-label" nc-label="Format" nc-template-options-path="PromotionForm/Format16JValue">
-                        <input type="text" ng-model="items.CreditNumberFormat" class="form-control" placeholder="3XXXXXXXXXXXXXXX" />
+                    <div ng-show="formData.CardItemList.CreditCardTypeCode == '16J'" ng-init="formData.CardItemList.CreditCardTypeCode = '0'" nc-template="common/input/form-group-with-label" nc-label="Format" nc-template-options-path="PromotionForm/Format16JValue">
+                        <input type="text" ng-model="formData.CardItemList.CreditNumberFormat" class="form-control" placeholder="3XXXXXXXXXXXXXXX" />
                     </div>
-                    <div ng-show="items.CreditCardTypeCode == '15J'" ng-init="items.CreditCardTypeCode = '0'" nc-template="common/input/form-group-with-label" nc-label="Format" nc-template-options-path="PromotionForm/Format15JValue">
-                        <input type="text" ng-model="items.CreditNumberFormat" class="form-control" placeholder="2131XXXXXXXXXXX or 1800XXXXXXXXXXX" />
+                    <div ng-show="formData.CardItemList.CreditCardTypeCode == '15J'" ng-init="formData.CardItemList.CreditCardTypeCode = '0'" nc-template="common/input/form-group-with-label" nc-label="Format" nc-template-options-path="PromotionForm/Format15JValue">
+                        <input type="text" ng-model="formData.CardItemList.CreditNumberFormat" class="form-control" placeholder="2131XXXXXXXXXXX or 1800XXXXXXXXXXX" />
                     </div>
-                    <div ng-show="items.CreditCardTypeCode == '16M'" ng-init="items.CreditCardTypeCode = '0'" nc-template="common/input/form-group-with-label" nc-label="Format" nc-template-options-path="PromotionForm/Format16MValue">
-                        <input type="text" ng-model="items.CreditNumberFormat" class="form-control" placeholder="PREFIX: 51 to 55" />
+                    <div ng-show="formData.CardItemList.CreditCardTypeCode == '16M'" ng-init="formData.CardItemList.CreditCardTypeCode = '0'" nc-template="common/input/form-group-with-label" nc-label="Format" nc-template-options-path="PromotionForm/Format16MValue">
+                        <input type="text" ng-model="formData.CardItemList.CreditNumberFormat" class="form-control" placeholder="PREFIX: 51 to 55" />
                     </div>
-                    <div ng-show="items.CreditCardTypeCode == '13V'" ng-init="items.CreditCardTypeCode = '0'" nc-template="common/input/form-group-with-label" nc-label="Format" nc-template-options-path="PromotionForm/Format13VValue">
-                        <input type="text" ng-model="items.CreditNumberFormat" class="form-control" placeholder="4XXXXXXXXXXXX" value="4XXXXXXXXXXXX" />
+                    <div ng-show="formData.CardItemList.CreditCardTypeCode == '13V'" ng-init="formData.CardItemList.CreditCardTypeCode = '0'" nc-template="common/input/form-group-with-label" nc-label="Format" nc-template-options-path="PromotionForm/Format13VValue">
+                        <input type="text" ng-model="formData.CardItemList.CreditNumberFormat" class="form-control" placeholder="4XXXXXXXXXXXX" value="4XXXXXXXXXXXX" />
                     </div>
-                    <div ng-show="items.CreditCardTypeCode == '16V'" ng-init="items.CreditCardTypeCode = '0'" nc-template="common/input/form-group-with-label" nc-label="Format" nc-template-options-path="PromotionForm/Format16VValue">
-                        <input type="text" ng-model="items.CreditNumberFormat" class="form-control" placeholder="4XXXXXXXXXXXXXXX" />
+                    <div ng-show="formData.CardItemList.CreditCardTypeCode == '16V'" ng-init="formData.CardItemList.CreditCardTypeCode = '0'" nc-template="common/input/form-group-with-label" nc-label="Format" nc-template-options-path="PromotionForm/Format16VValue">
+                        <input type="text" ng-model="formData.CardItemList.CreditNumberFormat" class="form-control" placeholder="4XXXXXXXXXXXXXXX" />
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-6 col-sm-10">
@@ -68,7 +68,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr ng-repeat="item in items">
+                                <tr ng-repeat="item in formData.CardItemList">
                                     <td>{{item.CreditCardTypeText}}</td>
                                     <td>{{item.CreditNumberFormat}}</td>
                                     <td>
