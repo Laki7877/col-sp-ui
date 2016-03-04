@@ -9,272 +9,139 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('add-product/variant-modal',
-    "<form class=\"ah-form sticky-mainform-action\"><div class=modal-header><h3 class=\"float-left modal-title\">Variant: {{ model.text }}</h3><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div><div class=\"modal-body margin-top-20\"><div class=row><div class=col-xs-12><div ng-show=addProductVariantForm.$invalid class=\"alert alert-red\">Please make sure all fields have no error.</div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'label': 'Product Name (English)',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'labelClass': 'required',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'error' : {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'messages': {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t'pattern': 'Special characters are not allowed'\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t},\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'show': $root.isInvalid(addProductVariantForm.Modal_ProductNameEn),\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'conditions' : addProductVariantForm.Modal_ProductNameEn.$error\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t}\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t}\"><input class=\"form-control width-field-large\" name=Modal_ProductNameEn ng-model=model.ProductNameEn maxlength=300 ng-pattern=\"/^[^<>ก-๙]+$/\" ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_ProductNameEn) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'label': 'Product Name (ไทย)',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'labelClass': 'required',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'error' : {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'messages': {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'pattern': 'Only letters and numbers allowed'\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t},\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'show': $root.isInvalid(addProductVariantForm.Modal_ProductNameTh),\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'conditions' : addProductVariantForm.Modal_ProductNameTh.$error\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t}\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t}\"><input class=\"form-control width-field-large\" name=Modal_ProductNameTh ng-model=model.ProductNameTh ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_ProductNameTh) }\" ng-pattern=\"/^[^<>]+$/\" maxlength=\"300\"></div><div nc-template=common/input/form-group-with-label nc-template-form=addProductForm.Modal_Upc nc-label=UPC nc-template-options-path=addProductForm/MasterVariant_Upc><input class=\"form-control width-field-large\" name=Modal_Upc ng-model=model.Upc maxlength=\"100\"></div><div class=form-group><div class=width-label><label class=control-label>Display</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select class=form-control ng-model=model.Display><option value={{op.value}} ng-repeat=\"op in dataSet.VariantDisplayOption\">{{ op.text }}</option></select></div></div></div></div></div><div class=form-section><div class=form-section-header>Embed Video</div><div class=form-section-content><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t                        'label': 'Video Link 1',\r" +
-    "\n" +
-    "\t\t\t\t                        'hint': {\r" +
-    "\n" +
-    "\t\t\t\t                        \t'show': true,\r" +
-    "\n" +
-    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\r" +
-    "\n" +
-    "\t\t\t\t                        },\r" +
-    "\n" +
-    "\t\t\t\t                        'error' : {\r" +
-    "\n" +
-    "\t\t\t\t                              'messages': {\r" +
-    "\n" +
-    "\t\t\t\t                              \t'url': 'Please enter valid URL'\r" +
-    "\n" +
-    "\t\t\t\t                              },\r" +
-    "\n" +
-    "\t\t\t\t                              'show': $root.isInvalid(addProductVariantForm.Modal_VideoLinks0),\r" +
-    "\n" +
-    "\t\t\t\t                              'conditions' : addProductVariantForm.Modal_VideoLinks0.$error\r" +
-    "\n" +
-    "\t\t\t\t                         }\r" +
-    "\n" +
-    "\t\t\t\t                      }\"><input class=\"form-control width-field-normal\" name=Modal_VideoLinks0 type=url maxlength=500 ng-model=model.VideoLinks[0] ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_VideoLinks0) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t                        'label': 'Video Link 2',\r" +
-    "\n" +
-    "\t\t\t\t                        'hint': {\r" +
-    "\n" +
-    "\t\t\t\t                        \t'show': true,\r" +
-    "\n" +
-    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\r" +
-    "\n" +
-    "\t\t\t\t                        },\r" +
-    "\n" +
-    "\t\t\t\t                        'error' : {\r" +
-    "\n" +
-    "\t\t\t\t                              'messages': {\r" +
-    "\n" +
-    "\t\t\t\t                              \t'url': 'Please enter valid URL'\r" +
-    "\n" +
-    "\t\t\t\t                              },\r" +
-    "\n" +
-    "\t\t\t\t                              'show': $root.isInvalid(addProductVariantForm.Modal_VideoLinks1),\r" +
-    "\n" +
-    "\t\t\t\t                              'conditions' : addProductVariantForm.Modal_VideoLinks1.$error\r" +
-    "\n" +
-    "\t\t\t\t                         }\r" +
-    "\n" +
-    "\t\t\t\t                      }\"><input class=\"form-control width-field-normal\" name=Modal_VideoLinks1 type=url maxlength=500 ng-model=model.VideoLinks[1] ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_VideoLinks1) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t                        'label': 'Video Link 3',\r" +
-    "\n" +
-    "\t\t\t\t                        'hint': {\r" +
-    "\n" +
-    "\t\t\t\t                        \t'show': true,\r" +
-    "\n" +
-    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\r" +
-    "\n" +
-    "\t\t\t\t                        },\r" +
-    "\n" +
-    "\t\t\t\t                        'error' : {\r" +
-    "\n" +
-    "\t\t\t\t                              'messages': {\r" +
-    "\n" +
-    "\t\t\t\t                              \t'url': 'Please enter valid URL'\r" +
-    "\n" +
-    "\t\t\t\t                              },\r" +
-    "\n" +
-    "\t\t\t\t                              'show': $root.isInvalid(addProductVariantForm.Modal_VideoLinks2),\r" +
-    "\n" +
-    "\t\t\t\t                              'conditions' : addProductVariantForm.Modal_VideoLinks2.$error\r" +
-    "\n" +
-    "\t\t\t\t                         }\r" +
-    "\n" +
-    "\t\t\t\t                      }\"><input type=url class=\"form-control width-field-normal\" name=Modal_VideoLinks2 maxlength=500 ng-model=model.VideoLinks[2] ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_VideoLinks2) }\"></div></div></div><div class=form-section><div class=form-section-header>Description</div><div class=form-section-content><div ng-template=common/input/textarea2 ng-template-options=\"{\r" +
-    "\n" +
-    "                                                'label': 'Short Description (English)',\r" +
-    "\n" +
-    "                                                'inputSize': 'xxl',\r" +
-    "\n" +
-    "                                                'formGroupClass' : 'margin-top-30',\r" +
-    "\n" +
-    "                                                'error' : {\r" +
-    "\n" +
-    "                                                'messages': {\r" +
-    "\n" +
-    "                                                    'pattern': 'Special characters are not allowed'\r" +
-    "\n" +
-    "                                                },\r" +
-    "\n" +
-    "                                                'show': $root.isInvalid(addProductVariantForm.Modal_DescriptionShortEn),\r" +
-    "\n" +
-    "                                                'conditions' : addProductVariantForm.Modal_DescriptionShortEn.$error\r" +
-    "\n" +
-    "                                                }\r" +
-    "\n" +
-    "                                                }\"><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=Modal_DescriptionShortEn ng-model=model.DescriptionShortEn ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_DescriptionShortEn) }\">\r" +
-    "\n" +
-    "                            </textarea></div><div ng-template=common/input/textarea2 ng-template-options=\"{\r" +
-    "\n" +
-    "                                            'label': 'Short Description (ไทย)',\r" +
-    "\n" +
-    "                                            'inputSize': 'xxl',\r" +
-    "\n" +
-    "                                            'formGroupClass' : 'margin-top-30',\r" +
-    "\n" +
-    "                                            'error' : {\r" +
-    "\n" +
-    "                                            'messages': {\r" +
-    "\n" +
-    "                                            'pattern': 'Special characters are not allowed'\r" +
-    "\n" +
-    "                                            },\r" +
-    "\n" +
-    "                                            'show': $root.isInvalid(addProductVariantForm.Modal_DescriptionShortTh),\r" +
-    "\n" +
-    "                                            'conditions' : addProductVariantForm.Modal_DescriptionShortTh.$error\r" +
-    "\n" +
-    "                                            }\r" +
-    "\n" +
-    "                                            }\"><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=Modal_DescriptionShortTh ng-model=model.DescriptionShortTh ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_DescriptionShortTh) }\">\r" +
-    "\n" +
-    "                            </textarea></div></div></div><div class=form-section><div class=form-section-header>Package Detail</div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Preparation Time\" nc-template-form=Modal_PrepareDay nc-template-options-path=addProductForm/PrepareDay><input class=\"form-control width-field-normal\" name=Modal_PrepareDay ng-pattern-restrict=^[0-9]*$ maxlength=5 ng-model=\"model.PrepareDay\"></div><div class=form-group><div class=width-label><label class=\"control-label required\" style=\"margin-top: 25px\">Package Dimension</label></div><div class=width-field-xxl><div class=multiple-input><div class=input-column><div ng-template=common/input/text3 ng-template-options=\"{\r" +
-    "\n" +
-    "                                                        'label': 'Length',\r" +
-    "\n" +
-    "                                                        'error' : {\r" +
-    "\n" +
-    "                                                        'messages': {\r" +
-    "\n" +
-    "                                                        'required': 'This is a required field',\r" +
-    "\n" +
-    "                                                        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\r" +
-    "\n" +
-    "                                                        },\r" +
-    "\n" +
-    "                                                        'show': $root.isInvalid(addProductVariantForm.Modal_Length),\r" +
-    "\n" +
-    "                                                        'conditions' : addProductVariantForm.Modal_Length.$error\r" +
-    "\n" +
-    "                                                        }\r" +
-    "\n" +
-    "                                                        }\"><input class=form-control name=Modal_Length maxlength=11 ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" ng-model=model.Length ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Length) }\"></div></div><div class=input-column><div ng-template=common/input/text3 ng-template-options=\"{\r" +
-    "\n" +
-    "                                                        'label': 'Height',\r" +
-    "\n" +
-    "                                                        'error' : {\r" +
-    "\n" +
-    "                                                        'messages': {\r" +
-    "\n" +
-    "                                                        'required': 'This is a required field',\r" +
-    "\n" +
-    "                                                        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\r" +
-    "\n" +
-    "                                                        },\r" +
-    "\n" +
-    "                                                        'show': $root.isInvalid(addProductVariantForm.Modal_Height),\r" +
-    "\n" +
-    "                                                        'conditions' : addProductVariantForm.Modal_Height.$error\r" +
-    "\n" +
-    "                                                        }\r" +
-    "\n" +
-    "                                                        }\"><input class=form-control maxlength=11 name=Modal_Height ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" ng-model=model.Height ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Height) }\"></div></div><div class=input-column><div ng-template=common/input/text3 ng-template-options=\"{\r" +
-    "\n" +
-    "                                                        'label': 'Width',\r" +
-    "\n" +
-    "                                                        'error' : {\r" +
-    "\n" +
-    "                                                        'messages': {\r" +
-    "\n" +
-    "                                                        'required': 'This is a required field',\r" +
-    "\n" +
-    "                                                        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\r" +
-    "\n" +
-    "                                                        },\r" +
-    "\n" +
-    "                                                        'show': $root.isInvalid(addProductVariantForm.Modal_Width),\r" +
-    "\n" +
-    "                                                        'conditions' : addProductVariantForm.Modal_Width.$error\r" +
-    "\n" +
-    "                                                        }\r" +
-    "\n" +
-    "                                                        }\"><input class=form-control maxlength=11 name=Modal_Width ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" ng-model=model.Width ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Width) }\"></div></div><div class=\"input-column no-label select input-xl\" style=\"padding-top: 24px\"><select ng-model=model.DimensionUnit class=form-control><option value=MM>Millimeter</option><option value=CM>Centimeter</option><option value=M>Meter</option></select></div></div></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Weight</label></div><div class=width-field-xxl><div class=multiple-input><div ng-template=common/input/text-column ng-template-options=\"{\r" +
-    "\n" +
-    "                                                        'error' : {\r" +
-    "\n" +
-    "                                                            'messages': {\r" +
-    "\n" +
-    "                                                                'required': 'This is a required field',\r" +
-    "\n" +
-    "                                                                'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\r" +
-    "\n" +
-    "                                                            },\r" +
-    "\n" +
-    "                                                        'show': $root.isInvalid(addProductVariantForm.Modal_Weight),\r" +
-    "\n" +
-    "                                                        'conditions' : addProductVariantForm.Modal_Weight.$error\r" +
-    "\n" +
-    "                                                        }\r" +
-    "\n" +
-    "                                                    }\"><input name=Modal_Weight maxlength=11 ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Weight) }\" class=form-control ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" ng-model=\"model.Weight\"></div><div class=\"input-column select input-xl\"><div class=ah-select2-dropdown><select class=form-control ng-model=model.WeightUnit><option value=G>Grams</option><option value=KG>Kilograms</option></select></div></div></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>SEO</h2></div><div class=form-section-content><div ng-template=common/input/text2 ng-template-options=\"{ 'label': 'Meta Title (English)' }\"><input maxlength=60 class=\"form-control width-field-normal\" name=Modal_SEO_MetaTitleEn ng-model=model.SEO.MetaTitleEn ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaTitleEn) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{ 'label': 'Meta Title (ไทย)' }\"><input maxlength=60 class=\"form-control width-field-normal\" name=Modal_SEO_MetaTitleTh ng-model=model.SEO.MetaTitleTh ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaTitleTh) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{   'label': 'Meta Description (English)' }\"><input maxlength=150 class=\"form-control width-field-normal\" name=Modal_SEO_MetaDescriptionEn ng-model=model.SEO.MetaDescriptionEn ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaDescriptionEn) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{ 'label': 'Meta Description (ไทย)' }\"><input maxlength=150 class=\"form-control width-field-normal\" name=Modal_SEO_MetaDescriptionTh ng-model=model.SEO.MetaDescriptionTh ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaDescriptionTh) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{  'label': 'Meta Keywords (English)'\t}\"><input placeholder=\"Keywords separated by comma\" class=\"form-control width-field-normal\" name=Modal_SEO_MetaKeywordsEn ng-model=model.SEO.MetaKeywordEn ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaKeywordsEn) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{   'label': 'Meta Keywords (ไทย)' }\"><input placeholder=\"Keywords separated by comma\" class=\"form-control width-field-normal\" name=Modal_SEO_MetaKeywordTh ng-model=model.SEO.MetaKeywordTh ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaKeywordsTh) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{ 'label': 'Product URL Key' }\"><input maxlength=300 class=\"form-control width-field-normal\" ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" name=Modal_SEO_ProductUrlKeyEn ng-model=model.SEO.ProductUrlKeyEn ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_ProductUrlKeyEn) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "            \t\t\t\t\t\t'label': 'Product Boosting Weight',\r" +
-    "\n" +
-    "            \t\t\t\t\t\t'error' : {\r" +
-    "\n" +
-    "            \t\t\t\t\t\t'messages': {\r" +
-    "\n" +
-    "            \t\t\t\t\t\t'max': 'Only numbers from 1 to 10000 is allowed',\r" +
-    "\n" +
-    "            \t\t\t\t\t\t'min': 'Only numbers from 1 to 10000 is allowed',\r" +
-    "\n" +
-    "                                    'pattern': 'Only numbers from 1 to 10000 is allowed'\r" +
-    "\n" +
-    "            \t\t\t\t\t\t},\r" +
-    "\n" +
-    "            \t\t\t\t\t\t'show': $root.isInvalid(addProductForm.SEO_ProductBoostingWeight),\r" +
-    "\n" +
-    "            \t\t\t\t\t\t'conditions' : addProductForm.SEO_ProductBoostingWeight.$error\r" +
-    "\n" +
-    "            \t\t\t\t\t\t}\r" +
-    "\n" +
+    "<form class=\"ah-form sticky-mainform-action\"><div class=modal-header><h3 class=\"float-left modal-title\">Variant: {{ model.text }}</h3><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div><div class=\"modal-body margin-top-20\"><div class=row><div class=col-xs-12><div ng-show=addProductVariantForm.$invalid class=\"alert alert-red\">Please make sure all fields have no error.</div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t\t\t\t\t\t\t\t\t'label': 'Product Name (English)',\n" +
+    "\t\t\t\t\t\t\t\t\t'labelClass': 'required',\n" +
+    "\t\t\t\t\t\t\t\t\t'error' : {\n" +
+    "\t\t\t\t\t\t\t\t\t'messages': {\n" +
+    "\t\t\t\t\t\t\t\t\t\t'pattern': 'Special characters are not allowed'\n" +
+    "\t\t\t\t\t\t\t\t\t},\n" +
+    "\t\t\t\t\t\t\t\t\t'show': $root.isInvalid(addProductVariantForm.Modal_ProductNameEn),\n" +
+    "\t\t\t\t\t\t\t\t\t'conditions' : addProductVariantForm.Modal_ProductNameEn.$error\n" +
+    "\t\t\t\t\t\t\t\t\t}\n" +
+    "\t\t\t\t\t\t\t\t\t}\"><input class=\"form-control width-field-large\" name=Modal_ProductNameEn ng-model=model.ProductNameEn maxlength=300 ng-pattern=\"/^[^<>ก-๙]+$/\" ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_ProductNameEn) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t\t\t\t\t\t\t\t\t'label': 'Product Name (ไทย)',\n" +
+    "\t\t\t\t\t\t\t\t\t'labelClass': 'required',\n" +
+    "\t\t\t\t\t\t\t\t\t'error' : {\n" +
+    "\t\t\t\t\t\t\t\t\t'messages': {\n" +
+    "\t\t\t\t\t\t\t\t\t'pattern': 'Only letters and numbers allowed'\n" +
+    "\t\t\t\t\t\t\t\t\t},\n" +
+    "\t\t\t\t\t\t\t\t\t'show': $root.isInvalid(addProductVariantForm.Modal_ProductNameTh),\n" +
+    "\t\t\t\t\t\t\t\t\t'conditions' : addProductVariantForm.Modal_ProductNameTh.$error\n" +
+    "\t\t\t\t\t\t\t\t\t}\n" +
+    "\t\t\t\t\t\t\t\t\t}\"><input class=\"form-control width-field-large\" name=Modal_ProductNameTh ng-model=model.ProductNameTh ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_ProductNameTh) }\" ng-pattern=\"/^[^<>]+$/\" maxlength=\"300\"></div><div nc-template=common/input/form-group-with-label nc-template-form=addProductForm.Modal_Upc nc-label=UPC nc-template-options-path=addProductForm/MasterVariant_Upc><input class=\"form-control width-field-large\" name=Modal_Upc ng-model=model.Upc maxlength=\"100\"></div><div class=form-group><div class=width-label><label class=control-label>Display</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select class=form-control ng-model=model.Display><option value={{op.value}} ng-repeat=\"op in dataSet.VariantDisplayOption\">{{ op.text }}</option></select></div></div></div></div></div><div class=form-section><div class=form-section-header>Embed Video</div><div class=form-section-content><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t\t\t\t                        'label': 'Video Link 1',\n" +
+    "\t\t\t\t                        'hint': {\n" +
+    "\t\t\t\t                        \t'show': true,\n" +
+    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\n" +
+    "\t\t\t\t                        },\n" +
+    "\t\t\t\t                        'error' : {\n" +
+    "\t\t\t\t                              'messages': {\n" +
+    "\t\t\t\t                              \t'url': 'Please enter valid URL'\n" +
+    "\t\t\t\t                              },\n" +
+    "\t\t\t\t                              'show': $root.isInvalid(addProductVariantForm.Modal_VideoLinks0),\n" +
+    "\t\t\t\t                              'conditions' : addProductVariantForm.Modal_VideoLinks0.$error\n" +
+    "\t\t\t\t                         }\n" +
+    "\t\t\t\t                      }\"><input class=\"form-control width-field-normal\" name=Modal_VideoLinks0 type=url maxlength=500 ng-model=model.VideoLinks[0] ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_VideoLinks0) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t\t\t\t                        'label': 'Video Link 2',\n" +
+    "\t\t\t\t                        'hint': {\n" +
+    "\t\t\t\t                        \t'show': true,\n" +
+    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\n" +
+    "\t\t\t\t                        },\n" +
+    "\t\t\t\t                        'error' : {\n" +
+    "\t\t\t\t                              'messages': {\n" +
+    "\t\t\t\t                              \t'url': 'Please enter valid URL'\n" +
+    "\t\t\t\t                              },\n" +
+    "\t\t\t\t                              'show': $root.isInvalid(addProductVariantForm.Modal_VideoLinks1),\n" +
+    "\t\t\t\t                              'conditions' : addProductVariantForm.Modal_VideoLinks1.$error\n" +
+    "\t\t\t\t                         }\n" +
+    "\t\t\t\t                      }\"><input class=\"form-control width-field-normal\" name=Modal_VideoLinks1 type=url maxlength=500 ng-model=model.VideoLinks[1] ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_VideoLinks1) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t\t\t\t                        'label': 'Video Link 3',\n" +
+    "\t\t\t\t                        'hint': {\n" +
+    "\t\t\t\t                        \t'show': true,\n" +
+    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\n" +
+    "\t\t\t\t                        },\n" +
+    "\t\t\t\t                        'error' : {\n" +
+    "\t\t\t\t                              'messages': {\n" +
+    "\t\t\t\t                              \t'url': 'Please enter valid URL'\n" +
+    "\t\t\t\t                              },\n" +
+    "\t\t\t\t                              'show': $root.isInvalid(addProductVariantForm.Modal_VideoLinks2),\n" +
+    "\t\t\t\t                              'conditions' : addProductVariantForm.Modal_VideoLinks2.$error\n" +
+    "\t\t\t\t                         }\n" +
+    "\t\t\t\t                      }\"><input type=url class=\"form-control width-field-normal\" name=Modal_VideoLinks2 maxlength=500 ng-model=model.VideoLinks[2] ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_VideoLinks2) }\"></div></div></div><div class=form-section><div class=form-section-header>Description</div><div class=form-section-content><div ng-template=common/input/textarea2 ng-template-options=\"{\n" +
+    "                                                'label': 'Short Description (English)',\n" +
+    "                                                'inputSize': 'xxl',\n" +
+    "                                                'formGroupClass' : 'margin-top-30',\n" +
+    "                                                'error' : {\n" +
+    "                                                'messages': {\n" +
+    "                                                    'pattern': 'Special characters are not allowed'\n" +
+    "                                                },\n" +
+    "                                                'show': $root.isInvalid(addProductVariantForm.Modal_DescriptionShortEn),\n" +
+    "                                                'conditions' : addProductVariantForm.Modal_DescriptionShortEn.$error\n" +
+    "                                                }\n" +
+    "                                                }\"><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=Modal_DescriptionShortEn ng-model=model.DescriptionShortEn ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_DescriptionShortEn) }\">\n" +
+    "                            </textarea></div><div ng-template=common/input/textarea2 ng-template-options=\"{\n" +
+    "                                            'label': 'Short Description (ไทย)',\n" +
+    "                                            'inputSize': 'xxl',\n" +
+    "                                            'formGroupClass' : 'margin-top-30',\n" +
+    "                                            'error' : {\n" +
+    "                                            'messages': {\n" +
+    "                                            'pattern': 'Special characters are not allowed'\n" +
+    "                                            },\n" +
+    "                                            'show': $root.isInvalid(addProductVariantForm.Modal_DescriptionShortTh),\n" +
+    "                                            'conditions' : addProductVariantForm.Modal_DescriptionShortTh.$error\n" +
+    "                                            }\n" +
+    "                                            }\"><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=Modal_DescriptionShortTh ng-model=model.DescriptionShortTh ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_DescriptionShortTh) }\">\n" +
+    "                            </textarea></div></div></div><div class=form-section><div class=form-section-header>Package Detail</div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Preparation Time\" nc-template-form=Modal_PrepareDay nc-template-options-path=addProductForm/PrepareDay><input class=\"form-control width-field-normal\" name=Modal_PrepareDay ng-pattern-restrict=^[0-9]*$ maxlength=5 ng-model=\"model.PrepareDay\"></div><div class=form-group><div class=width-label><label class=\"control-label required\" style=\"margin-top: 25px\">Package Dimension</label></div><div class=width-field-xxl><div class=multiple-input><div class=input-column><div ng-template=common/input/text3 ng-template-options=\"{\n" +
+    "                                                        'label': 'Length',\n" +
+    "                                                        'error' : {\n" +
+    "                                                        'messages': {\n" +
+    "                                                        'required': 'This is a required field',\n" +
+    "                                                        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\n" +
+    "                                                        },\n" +
+    "                                                        'show': $root.isInvalid(addProductVariantForm.Modal_Length),\n" +
+    "                                                        'conditions' : addProductVariantForm.Modal_Length.$error\n" +
+    "                                                        }\n" +
+    "                                                        }\"><input class=form-control name=Modal_Length maxlength=11 ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" ng-model=model.Length ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Length) }\"></div></div><div class=input-column><div ng-template=common/input/text3 ng-template-options=\"{\n" +
+    "                                                        'label': 'Height',\n" +
+    "                                                        'error' : {\n" +
+    "                                                        'messages': {\n" +
+    "                                                        'required': 'This is a required field',\n" +
+    "                                                        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\n" +
+    "                                                        },\n" +
+    "                                                        'show': $root.isInvalid(addProductVariantForm.Modal_Height),\n" +
+    "                                                        'conditions' : addProductVariantForm.Modal_Height.$error\n" +
+    "                                                        }\n" +
+    "                                                        }\"><input class=form-control maxlength=11 name=Modal_Height ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" ng-model=model.Height ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Height) }\"></div></div><div class=input-column><div ng-template=common/input/text3 ng-template-options=\"{\n" +
+    "                                                        'label': 'Width',\n" +
+    "                                                        'error' : {\n" +
+    "                                                        'messages': {\n" +
+    "                                                        'required': 'This is a required field',\n" +
+    "                                                        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\n" +
+    "                                                        },\n" +
+    "                                                        'show': $root.isInvalid(addProductVariantForm.Modal_Width),\n" +
+    "                                                        'conditions' : addProductVariantForm.Modal_Width.$error\n" +
+    "                                                        }\n" +
+    "                                                        }\"><input class=form-control maxlength=11 name=Modal_Width ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" ng-model=model.Width ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Width) }\"></div></div><div class=\"input-column no-label select input-xl\" style=\"padding-top: 24px\"><select ng-model=model.DimensionUnit class=form-control><option value=MM>Millimeter</option><option value=CM>Centimeter</option><option value=M>Meter</option></select></div></div></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Weight</label></div><div class=width-field-xxl><div class=multiple-input><div ng-template=common/input/text-column ng-template-options=\"{\n" +
+    "                                                        'error' : {\n" +
+    "                                                            'messages': {\n" +
+    "                                                                'required': 'This is a required field',\n" +
+    "                                                                'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\n" +
+    "                                                            },\n" +
+    "                                                        'show': $root.isInvalid(addProductVariantForm.Modal_Weight),\n" +
+    "                                                        'conditions' : addProductVariantForm.Modal_Weight.$error\n" +
+    "                                                        }\n" +
+    "                                                    }\"><input name=Modal_Weight maxlength=11 ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_Weight) }\" class=form-control ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" ng-model=\"model.Weight\"></div><div class=\"input-column select input-xl\"><div class=ah-select2-dropdown><select class=form-control ng-model=model.WeightUnit><option value=G>Grams</option><option value=KG>Kilograms</option></select></div></div></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>SEO</h2></div><div class=form-section-content><div ng-template=common/input/text2 ng-template-options=\"{ 'label': 'Meta Title (English)' }\"><input maxlength=60 class=\"form-control width-field-normal\" name=Modal_SEO_MetaTitleEn ng-model=model.SEO.MetaTitleEn ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaTitleEn) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{ 'label': 'Meta Title (ไทย)' }\"><input maxlength=60 class=\"form-control width-field-normal\" name=Modal_SEO_MetaTitleTh ng-model=model.SEO.MetaTitleTh ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaTitleTh) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{   'label': 'Meta Description (English)' }\"><input maxlength=150 class=\"form-control width-field-normal\" name=Modal_SEO_MetaDescriptionEn ng-model=model.SEO.MetaDescriptionEn ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaDescriptionEn) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{ 'label': 'Meta Description (ไทย)' }\"><input maxlength=150 class=\"form-control width-field-normal\" name=Modal_SEO_MetaDescriptionTh ng-model=model.SEO.MetaDescriptionTh ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaDescriptionTh) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{  'label': 'Meta Keywords (English)'\t}\"><input placeholder=\"Keywords separated by comma\" class=\"form-control width-field-normal\" name=Modal_SEO_MetaKeywordsEn ng-model=model.SEO.MetaKeywordEn ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaKeywordsEn) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{   'label': 'Meta Keywords (ไทย)' }\"><input placeholder=\"Keywords separated by comma\" class=\"form-control width-field-normal\" name=Modal_SEO_MetaKeywordTh ng-model=model.SEO.MetaKeywordTh ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_MetaKeywordsTh) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{ 'label': 'Product URL Key' }\"><input maxlength=300 class=\"form-control width-field-normal\" ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" name=Modal_SEO_ProductUrlKeyEn ng-model=model.SEO.ProductUrlKeyEn ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_ProductUrlKeyEn) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "            \t\t\t\t\t\t'label': 'Product Boosting Weight',\n" +
+    "            \t\t\t\t\t\t'error' : {\n" +
+    "            \t\t\t\t\t\t'messages': {\n" +
+    "            \t\t\t\t\t\t'max': 'Only numbers from 1 to 10000 is allowed',\n" +
+    "            \t\t\t\t\t\t'min': 'Only numbers from 1 to 10000 is allowed',\n" +
+    "                                    'pattern': 'Only numbers from 1 to 10000 is allowed'\n" +
+    "            \t\t\t\t\t\t},\n" +
+    "            \t\t\t\t\t\t'show': $root.isInvalid(addProductForm.SEO_ProductBoostingWeight),\n" +
+    "            \t\t\t\t\t\t'conditions' : addProductForm.SEO_ProductBoostingWeight.$error\n" +
+    "            \t\t\t\t\t\t}\n" +
     "            \t\t\t\t\t\t}\"><input type=number class=\"form-control width-field-normal\" min=0 max=10000 step=1 ng-pattern=\"/^[0-9]+$/\" name=Modal_SEO_ProductBoostingWeight ng-model=model.SEO.ProductBoostingWeight ng-class=\"{ 'has-error' : $root.isInvalid(Modal_SEO_ProductBoostingWeight) }\"></div></div></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div></div></div><form></form></form>"
   );
 
@@ -330,8 +197,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/input/label',
-    "<div class=form-group ng-class=\"options.formGroupClass || {}\"><div class=width-label><label class=control-label ng-class=\"options.labelClass || {}\">{{options.label}}</label></div><div ng-class=\"{ 'width-field-normal' : options.fieldSize == 'normal',\r" +
-    "\n" +
+    "<div class=form-group ng-class=\"options.formGroupClass || {}\"><div class=width-label><label class=control-label ng-class=\"options.labelClass || {}\">{{options.label}}</label></div><div ng-class=\"{ 'width-field-normal' : options.fieldSize == 'normal',\n" +
     "    \t\t\t\t 'width-field-xxl' : options.fieldSize != 'normal' }\"><p class=form-control-static><ng-transclude></ng-transclude></p></div></div>"
   );
 
@@ -417,82 +283,44 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/modalChangePassword',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><button type=button class=close ng-click=$dismiss() aria-label=Close><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Change Password</h3></div><div class=modal-body><form class=\"ah-form margin-top-20\" name=form novalidate><div class=row><div class=col-xs-12><div class=form-section-content><div ng-if=oldPassword><div ng-template=common/input/password ng-template-options=\"{\r" +
-    "\n" +
-    "              'label': 'Old Password',\r" +
-    "\n" +
-    "              'labelClass': 'required',\r" +
-    "\n" +
-    "              'inputSize': 'small',\r" +
-    "\n" +
-    "              'error' : {\r" +
-    "\n" +
-    "                'messages': {\r" +
-    "\n" +
-    "                'required': 'This is a required field'\r" +
-    "\n" +
-    "              },\r" +
-    "\n" +
-    "              'show': isInvalid(form.Password),\r" +
-    "\n" +
-    "              'conditions' : form.Password.$error\r" +
-    "\n" +
-    "              }\r" +
-    "\n" +
-    "              }\"><input class=form-control type={{$parent.inputType}} name=Password ng-model=formData.Password ng-class=\"{ 'has-error' : isInvalid(form.Password) || (form.$pristine && formData.error) }\" required></div></div><div ng-template=common/input/password ng-template-options=\"{\r" +
-    "\n" +
-    "              'label': 'New Password',\r" +
-    "\n" +
-    "              'labelClass': 'required',\r" +
-    "\n" +
-    "              'inputSize': 'small',\r" +
-    "\n" +
-    "              'formGroupClass': oldPassword ? 'margin-top-30': '',\r" +
-    "\n" +
-    "              'error' : {\r" +
-    "\n" +
-    "              'messages': {\r" +
-    "\n" +
-    "              'required': 'This is a required field',\r" +
-    "\n" +
-    "              'pattern': 'Your password must contain letters and numbers',\r" +
-    "\n" +
-    "              'minlength': 'Your password must be 8-20 characters long',\r" +
-    "\n" +
-    "              'maxlength': 'Your password must be 8-20 characters long'\r" +
-    "\n" +
-    "              },\r" +
-    "\n" +
-    "              'show': isInvalid(form.NewPassword),\r" +
-    "\n" +
-    "              'conditions' : form.NewPassword.$error\r" +
-    "\n" +
-    "              }\r" +
-    "\n" +
-    "              }\"><input class=form-control type={{$parent.inputType}} name=NewPassword ng-model=formData.NewPassword ng-class=\"{ 'has-error' : isInvalid(form.NewPassword) || (form.$pristine && formData.error) }\" ng-pattern=\"/^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$/\" ng-pattern-restrict=^[0-9a-zA-Z]*$ ng-maxlength=20 ng-minlength=8 required></div><div ng-template=common/input/password ng-template-options=\"{\r" +
-    "\n" +
-    "              'label': 'Confirm Password',\r" +
-    "\n" +
-    "              'labelClass': 'required',\r" +
-    "\n" +
-    "              'inputSize': 'small',\r" +
-    "\n" +
-    "              'error' : {\r" +
-    "\n" +
-    "              'messages': {\r" +
-    "\n" +
-    "                'required': 'This is a required field',\r" +
-    "\n" +
-    "                'match': 'Your password and password confirmation do not match'\r" +
-    "\n" +
-    "              },\r" +
-    "\n" +
-    "              'show': isInvalid(form.ConfirmPassword),\r" +
-    "\n" +
-    "              'conditions' : form.ConfirmPassword.$error\r" +
-    "\n" +
-    "              }\r" +
-    "\n" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><button type=button class=close ng-click=$dismiss() aria-label=Close><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Change Password</h3></div><div class=modal-body><form class=\"ah-form margin-top-20\" name=form novalidate><div class=row><div class=col-xs-12><div class=form-section-content><div ng-if=oldPassword><div ng-template=common/input/password ng-template-options=\"{\n" +
+    "              'label': 'Old Password',\n" +
+    "              'labelClass': 'required',\n" +
+    "              'inputSize': 'small',\n" +
+    "              'error' : {\n" +
+    "                'messages': {\n" +
+    "                'required': 'This is a required field'\n" +
+    "              },\n" +
+    "              'show': isInvalid(form.Password),\n" +
+    "              'conditions' : form.Password.$error\n" +
+    "              }\n" +
+    "              }\"><input class=form-control type={{$parent.inputType}} name=Password ng-model=formData.Password ng-class=\"{ 'has-error' : isInvalid(form.Password) || (form.$pristine && formData.error) }\" required></div></div><div ng-template=common/input/password ng-template-options=\"{\n" +
+    "              'label': 'New Password',\n" +
+    "              'labelClass': 'required',\n" +
+    "              'inputSize': 'small',\n" +
+    "              'formGroupClass': oldPassword ? 'margin-top-30': '',\n" +
+    "              'error' : {\n" +
+    "              'messages': {\n" +
+    "              'required': 'This is a required field',\n" +
+    "              'pattern': 'Your password must contain letters and numbers',\n" +
+    "              'minlength': 'Your password must be 8-20 characters long',\n" +
+    "              'maxlength': 'Your password must be 8-20 characters long'\n" +
+    "              },\n" +
+    "              'show': isInvalid(form.NewPassword),\n" +
+    "              'conditions' : form.NewPassword.$error\n" +
+    "              }\n" +
+    "              }\"><input class=form-control type={{$parent.inputType}} name=NewPassword ng-model=formData.NewPassword ng-class=\"{ 'has-error' : isInvalid(form.NewPassword) || (form.$pristine && formData.error) }\" ng-pattern=\"/^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$/\" ng-pattern-restrict=^[0-9a-zA-Z]*$ ng-maxlength=20 ng-minlength=8 required></div><div ng-template=common/input/password ng-template-options=\"{\n" +
+    "              'label': 'Confirm Password',\n" +
+    "              'labelClass': 'required',\n" +
+    "              'inputSize': 'small',\n" +
+    "              'error' : {\n" +
+    "              'messages': {\n" +
+    "                'required': 'This is a required field',\n" +
+    "                'match': 'Your password and password confirmation do not match'\n" +
+    "              },\n" +
+    "              'show': isInvalid(form.ConfirmPassword),\n" +
+    "              'conditions' : form.ConfirmPassword.$error\n" +
+    "              }\n" +
     "              }\"><input class=form-control type={{$parent.inputType}} name=ConfirmPassword ng-model=formData.ConfirmPassword ng-class=\"{ 'has-error' : isInvalid(form.ConfirmPassword) || (form.$pristine && formData.error) }\" ng-match={{formData.NewPassword}} required></div></div><div class=\"container-fluid no-padding margin-top-20\"><div class=float-right><a href=# class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()><span class=login-loading ng-cloak ng-show=saving><i class=\"fa fa-spinner fa-spin\"></i></span>Save</button></div></div></div></div></form></div>"
   );
 
@@ -503,99 +331,55 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('global_category/modal',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t                  'label': 'Category Name (English)',\r" +
-    "\n" +
-    "\t\t\t                  'labelClass': 'required',\r" +
-    "\n" +
-    "\t\t\t                  'error' : {\r" +
-    "\n" +
-    "\t\t\t                        'messages': {\r" +
-    "\n" +
-    "\t\t\t                          'required': 'This is a required field',\r" +
-    "\n" +
-    "\t\t\t                          'pattern': 'Only English allowed'\r" +
-    "\n" +
-    "\t\t\t                        },\r" +
-    "\n" +
-    "\t\t\t                        'show': isInvalid(form.NameEn),\r" +
-    "\n" +
-    "\t\t\t                        'conditions' : form.NameEn.$error\r" +
-    "\n" +
-    "\t\t\t                   }\r" +
-    "\n" +
-    "\t\t\t                }\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-class=\"{ 'has-error' : isInvalid(form.NameEn) }\" ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'label': 'Category Name (ไทย)',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'labelClass': 'required',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'error' : {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'messages': {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'required': 'This is a required field'\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t},\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'show': isInvalid(form.NameTh),\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'conditions' : form.NameTh.$error\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t }\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t}\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-class=\"{ 'has-error' : isInvalid(form.NameTh) }\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t                        'label': 'URL (English)',\r" +
-    "\n" +
-    "\t                        'error' : {\r" +
-    "\n" +
-    "\t                              'messages': {\r" +
-    "\n" +
-    "\t                                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'\r" +
-    "\n" +
-    "\t                                },\r" +
-    "\n" +
-    "\t                              'show': isInvalid(form.UrlKeyEn),\r" +
-    "\n" +
-    "\t                              'conditions' : form.UrlKeyEn.$error\r" +
-    "\n" +
-    "\t                         }\r" +
-    "\n" +
-    "\t                      }\"><input class=form-control name=UrlKeyEn ng-model=formData.UrlKeyEn ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" ng-class=\"{ 'has-error' : isInvalid(form.UrlKeyEn) }\" maxlength=\"300\"></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t'label': 'Commission (%)',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t'labelClass': 'required',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t'error' : {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t'messages': {\r" +
-    "\n" +
-    "\t\t\t                    'required': 'This is a required field',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t'pattern': 'Only numbers and decimals (up to 2 digits) allowed',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t'minnumber': 'Please enter between 0% and 100%',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t'maxnumber': 'Please enter between 0% and 100%'\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t},\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t'show': isInvalid(form.Commission),\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t'conditions' : form.Commission.$error\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t}\r" +
-    "\n" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t\t\t                  'label': 'Category Name (English)',\n" +
+    "\t\t\t                  'labelClass': 'required',\n" +
+    "\t\t\t                  'error' : {\n" +
+    "\t\t\t                        'messages': {\n" +
+    "\t\t\t                          'required': 'This is a required field',\n" +
+    "\t\t\t                          'pattern': 'Only English allowed'\n" +
+    "\t\t\t                        },\n" +
+    "\t\t\t                        'show': isInvalid(form.NameEn),\n" +
+    "\t\t\t                        'conditions' : form.NameEn.$error\n" +
+    "\t\t\t                   }\n" +
+    "\t\t\t                }\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-class=\"{ 'has-error' : isInvalid(form.NameEn) }\" ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'label': 'Category Name (ไทย)',\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'labelClass': 'required',\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'error' : {\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'messages': {\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'required': 'This is a required field'\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t},\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'show': isInvalid(form.NameTh),\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'conditions' : form.NameTh.$error\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t }\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t}\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-class=\"{ 'has-error' : isInvalid(form.NameTh) }\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t                        'label': 'URL (English)',\n" +
+    "\t                        'error' : {\n" +
+    "\t                              'messages': {\n" +
+    "\t                                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'\n" +
+    "\t                                },\n" +
+    "\t                              'show': isInvalid(form.UrlKeyEn),\n" +
+    "\t                              'conditions' : form.UrlKeyEn.$error\n" +
+    "\t                         }\n" +
+    "\t                      }\"><input class=form-control name=UrlKeyEn ng-model=formData.UrlKeyEn ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" ng-class=\"{ 'has-error' : isInvalid(form.UrlKeyEn) }\" maxlength=\"300\"></div><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t\t\t\t\t\t\t'label': 'Commission (%)',\n" +
+    "\t\t\t\t\t\t\t'labelClass': 'required',\n" +
+    "\t\t\t\t\t\t\t'error' : {\n" +
+    "\t\t\t\t\t\t\t'messages': {\n" +
+    "\t\t\t                    'required': 'This is a required field',\n" +
+    "\t\t\t\t\t\t\t\t'pattern': 'Only numbers and decimals (up to 2 digits) allowed',\n" +
+    "\t\t\t\t\t\t\t\t'minnumber': 'Please enter between 0% and 100%',\n" +
+    "\t\t\t\t\t\t\t\t'maxnumber': 'Please enter between 0% and 100%'\n" +
+    "\t\t\t\t\t\t\t},\n" +
+    "\t\t\t\t\t\t\t'show': isInvalid(form.Commission),\n" +
+    "\t\t\t\t\t\t\t'conditions' : form.Commission.$error\n" +
+    "\t\t\t\t\t\t\t}\n" +
     "\t\t\t\t\t\t\t}\"><input class=form-control name=Commission ng-model=formData.Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-class=\"{ 'has-error' : isInvalid(form.Commission) }\" maxlength=20 ng-maxnumber=100 ng-minnumber=0 required></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions nc-options=\"{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }\"></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\">* Changing attribute set mapping may affect products under this category</p></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=col-xs-12 style=\"margin-top:-15px; margin-bottom:0px\"><p class=text-align-left><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</p></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
   $templateCache.put('global_category/nodes',
-    "<div class=\"category-content row no-margin\" ui-tree-handle style=\"cursor: pointer\"><div class=category-content-padding><span class=\"col-xs-5 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\r" +
-    "\n" +
+    "<div class=\"category-content row no-margin\" ui-tree-handle style=\"cursor: pointer\"><div class=category-content-padding><span class=\"col-xs-5 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\n" +
     "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this) data-nodrag></i> <i class=\"fa fa-chevron-right caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\" data-nodrag></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\" data-nodrag></span> <a class=inline-block ng-click=open(node) data-nodrag>{{ node.NameEn }}</a></span></span> <span class=col-xs-1>{{ node.CategoryAbbreviation }}</span> <span class=\"col-xs-1 text-align-center\">{{ node.ProductCount }}</span> <span class=\"col-xs-2 text-align-center\">{{ node.AttributeSetCount }}</span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'global_category/nodes'\"></li></ol>"
   );
 
@@ -611,73 +395,42 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('local_category/modal',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Local Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Local Category Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'label': 'Category Name (English)',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'labelClass': 'required',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'error' : {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'messages': {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'required': 'This is a required field',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'pattern': 'Only English allowed'\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t},\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'show': isInvalid(form.NameEn),\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'conditions' : form.NameEn.$error\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t }\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t}\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-class=\"{ 'has-error' : isInvalid(form.NameEn) }\" ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'label': 'Category Name (ไทย)',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'labelClass': 'required',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'error' : {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'messages': {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'required': 'This is a required field'\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t},\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'show': isInvalid(form.NameTh),\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'conditions' : form.NameTh.$error\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t }\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t}\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-class=\"{ 'has-error' : isInvalid(form.NameTh) }\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t                        'label': 'URL (English)',\r" +
-    "\n" +
-    "\t                        'error' : {\r" +
-    "\n" +
-    "\t                              'messages': {\r" +
-    "\n" +
-    "\t                                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'\r" +
-    "\n" +
-    "\t                                },\r" +
-    "\n" +
-    "\t                              'show': isInvalid(form.UrlKeyEn),\r" +
-    "\n" +
-    "\t                              'conditions' : form.UrlKeyEn.$error\r" +
-    "\n" +
-    "\t                         }\r" +
-    "\n" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Local Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Local Category Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'label': 'Category Name (English)',\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'labelClass': 'required',\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'error' : {\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'messages': {\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'required': 'This is a required field',\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'pattern': 'Only English allowed'\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t},\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'show': isInvalid(form.NameEn),\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'conditions' : form.NameEn.$error\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t }\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t}\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-class=\"{ 'has-error' : isInvalid(form.NameEn) }\" ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'label': 'Category Name (ไทย)',\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'labelClass': 'required',\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t'error' : {\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'messages': {\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'required': 'This is a required field'\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t},\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'show': isInvalid(form.NameTh),\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'conditions' : form.NameTh.$error\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t }\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t}\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-class=\"{ 'has-error' : isInvalid(form.NameTh) }\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t                        'label': 'URL (English)',\n" +
+    "\t                        'error' : {\n" +
+    "\t                              'messages': {\n" +
+    "\t                                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'\n" +
+    "\t                                },\n" +
+    "\t                              'show': isInvalid(form.UrlKeyEn),\n" +
+    "\t                              'conditions' : form.UrlKeyEn.$error\n" +
+    "\t                         }\n" +
     "\t                      }\"><input class=form-control name=UrlKeyEn ng-model=formData.UrlKeyEn ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" ng-class=\"{ 'has-error' : isInvalid(form.UrlKeyEn) }\" maxlength=\"300\"></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=col-xs-12 style=\"margin-top:-15px; margin-bottom:0px\"><p class=text-align-left><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</p></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
   $templateCache.put('local_category/nodes',
-    "<div class=\"category-content row no-margin\" ui-tree-handle style=\"cursor: pointer\"><div class=category-content-padding><span class=\"col-xs-8 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\r" +
-    "\n" +
+    "<div class=\"category-content row no-margin\" ui-tree-handle style=\"cursor: pointer\"><div class=category-content-padding><span class=\"col-xs-8 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\n" +
     "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this) data-nodrag></i> <i class=\"fa fa-chevron-right caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\" data-nodrag></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\" data-nodrag></span> <a class=inline-block ng-click=open(node) data-nodrag>{{ node.NameEn }}</a></span></span> <span class=\"col-xs-1 text-align-center\">{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'local_category/nodes'\"></li></ol>"
   );
 

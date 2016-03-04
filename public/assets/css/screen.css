@@ -12880,6 +12880,14 @@ ul.sub-sidebar .item > a {
   padding-right: 30px;
 }
 /* line 41, ../../../assets/_form-section.sass */
+.form-section .form-section-content .two-columns {
+  margin: 0px 30px 15px 30px;
+}
+/* line 43, ../../../assets/_form-section.sass */
+.form-section .form-section-content .two-columns label {
+  margin-bottom: 10px;
+}
+/* line 46, ../../../assets/_form-section.sass */
 .form-section .section-break {
   width: 100%;
   border-bottom: 1px solid #BCC7D5;
