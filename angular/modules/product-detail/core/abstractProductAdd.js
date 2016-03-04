@@ -444,12 +444,19 @@ function ($scope, $uibModal, $window, util, config, Product, ImageService,
           pair.queue = []
         }
 
+        // Modal target (for viewing pair)
+        $scope.pairModal = angular.copy(pair)
+        $scope.pairModal.alert = new NcAlert()
+        $scope.pairIndex = index
+        $scope.uploaderModal.queue = $scope.pairModal.queue
+        ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
+        
         var variantModal = $uibModal.open({
           animation: true,
-          templateUrl: 'ap/modal-variant',
-          controller: function ($scope, $uibModalInstance, $timeout) {
+          templateUrl: 'ap/modal-variant-detail',
+          controller: function ($scope, $uibModalInstance, $timeout, pair) {
             'ngInject'
-
+            $scope.pair = pair;
             $scope.no = function () {
               $uibModalInstance.close('no')
             }
@@ -460,7 +467,8 @@ function ($scope, $uibModal, $window, util, config, Product, ImageService,
           },
           size: 'xl',
           resolve: {
-            model: function () {
+            pair: function () {
+              console.log("resolving", $scope.pairModal);
               return $scope.pairModal
             },
             ckOptions: function () {
@@ -471,18 +479,13 @@ function ($scope, $uibModal, $window, util, config, Product, ImageService,
 
         variantModal.result.then(function (selectedItem) {
           if (selectedItem == 'yes') {
-            console.log('closed mdoal hyes')
+            console.log('closed modal with a big fat yes')
           }
         }, function () {
           console.log('Modal dismissed at: ' + new Date())
         })
 
-        // Modal target (for viewing pair)
-        $scope.pairModal = angular.copy(pair)
-        $scope.pairModal.alert = new NcAlert()
-        $scope.pairIndex = index
-        $scope.uploaderModal.queue = $scope.pairModal.queue
-        ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
+
       }
 
       $scope.$on('openPairModal', function (evt, pair, array, index) {
