@@ -14363,8 +14363,8 @@ form h6 {
 #dashboard_page .header-link a {
   color: #32343C;
 }
-/* line 108, ../../../assets/_seller_page.sass */
-#dashboard_page .header-link {
+/* line 109, ../../../assets/_seller_page.sass */
+#dashboard_page .header-link > .active-underline {
   border-bottom: 2px solid #4891d2;
   padding-bottom: 4px;
 }
