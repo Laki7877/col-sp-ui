@@ -7,6 +7,7 @@ angular.module('nc')
 				images: '=ncModel',
 				onfail: '=onFail',
 				uploader: '=uploader',
+				options: '=?options',
 				size: '@size',
 				title: '@title'
 			},
@@ -14,6 +15,10 @@ angular.module('nc')
 			link: function(scope) {
 				var fileUploader = false;
 				scope.images = scope.images || [];
+				scope.options = _.defaults(scope.options,{
+					height: '144px',
+					width: '256px'
+				});
 				scope.$watch('uploader', function(val) {
 					if(val instanceof FileUploader) {
 						fileUploader = true;
@@ -33,7 +38,6 @@ angular.module('nc')
 							scope.images.push(obj);
 							var f = new FileItem(scope.uploader, file, {
 								onSuccess: function(response) {
-									console.log(response);
 									_.extend(obj, response);
 								},
 								onError: function(response, status, headers) {
@@ -43,6 +47,8 @@ angular.module('nc')
 									});
 								}
 							});
+							scope.uploader.queue.push(f);
+							f.upload();
 						});
 					} else {
 						//newer version
@@ -123,7 +129,7 @@ angular.module('nc')
 								}
 							});
 						},
-						icon: 'fa-zoom-in'
+						icon: 'fa-search-plus'
 					},
 					{
 						//Trash
@@ -142,10 +148,9 @@ angular.module('nc')
 					{
 						//Left
 						fn: function(item, array, index) {
-							//console.log(item, array, index);
 						    var to = index - 1;
 						    if (to < 0) return;
-
+						    console.log(index, to);
 						    var tmp = array[to];
 						    array[to] = item;
 						    array[index] = tmp;

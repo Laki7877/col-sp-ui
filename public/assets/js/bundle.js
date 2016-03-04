@@ -989,10 +989,13 @@ module.exports = ["$scope", "$controller", "BrandService", "config", function($s
 	});
 }]
 },{}],13:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "BrandService", "ImageService", "common", function($scope, $controller, BrandService, ImageService, common) {
+module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageService", "common", "config", function($scope, $controller, Product, BrandService, ImageService, common, config) {
 	'ngInject';
+	$scope.TYPEAHEAD_DELAY = config.TYPEAHEAD_DELAY;
+	$scope.products = [];
+	$scope.availableProducts = -1;
 	$scope.logoUploader = ImageService.getUploaderFn('/BrandImages');
-	$scope.bannerUploader = ImageService.getUploaderFn('/Banner');
+	$scope.bannerUploader = ImageService.getUploader('/BrandImages');
 	$scope.uploadLogo = function(file) {
 		$scope.formData.BrandImage = {
 			url: '/assets/img/loader.gif'
@@ -1012,6 +1015,20 @@ module.exports = ["$scope", "$controller", "BrandService", "ImageService", "comm
 			$scope.alert.error(common.getError(response.data));
 		}
 	};
+	$scope.getFeatureProduct = function(text) {
+		Product.advanceList({
+			Brands: [{BrandId: $scope.id}],
+			_limit: 8,
+			searchText: text
+		}).then(function(response) {
+			$scope.products = response.data;
+		});	
+	};
+	$scope.$watchCollection('formData.BrandBannerEn+formData.BrandBannerTh+formData.Brand', function(a,b) {
+		if(!_.isNil(b)) {
+			$scope.form.$setDirty();
+		}
+	});
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
 		options: {
@@ -1021,6 +1038,17 @@ module.exports = ["$scope", "$controller", "BrandService", "ImageService", "comm
 			service: BrandService,
 			onSave: function(scope) {
 				return false;
+			},
+			onLoad: function(scope, flag) {
+				if(flag) {
+					//Check if product exist for this brand
+					Product.advanceList({
+							Brands: [{BrandId: $scope.id}],
+							_limit: 1,
+						}).then(function(response) {
+							$scope.availableProducts = response.total;
+						});
+				}
 			}
 		}
 	});
@@ -6484,15 +6512,15 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('ap/section-description',
-    "<div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Description (English)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionFull nc-template-form=addProductForm.MasterVariant_DescriptionFullEn><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=MasterVariant_DescriptionFullEn ng-model=formData.MasterVariant.DescriptionFullEn>\r" +
+    "<div class=form-section><div class=form-section-header><h2>DescriptionX</h2></div><div class=form-section-content><div class=two-columns><div class=row><div class=col-sm-6><label>Description (English)</label><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=MasterVariant_DescriptionFullEn ng-model=formData.MasterVariant.DescriptionFullEn>\r" +
     "\n" +
-    "            </textarea></div><div nc-template=common/input/form-group-with-label nc-label=\"Short Description (English)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionShortEn nc-template-form=addProductForm.MasterVariant_DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=MasterVariant_DescriptionShortEn ng-model=formData.MasterVariant.DescriptionShortEn>\r" +
+    "            </textarea></div><div class=col-sm-6><label>Description (ไทย)</label><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=MasterVariant_DescriptionFullEn ng-model=formData.MasterVariant.DescriptionFullEn>\r" +
     "\n" +
-    "            </textarea></div><div nc-template=common/input/form-group-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionFull nc-template-form=addProductForm.MasterVariant_DescriptionFullTh><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=MasterVariant_DescriptionFullTh ng-model=formData.MasterVariant.DescriptionFullTh>\r" +
+    "            </textarea></div></div><div class=\"row margin-top-30\"><div class=col-sm-6><label>Short Description (English)</label><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=MasterVariant_DescriptionShortEn ng-model=formData.MasterVariant.DescriptionShortEn>\r" +
     "\n" +
-    "            </textarea></div><div nc-template=common/input/form-group-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionShortTh nc-template-form=addProductForm.MasterVariant_DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=MasterVariant_DescriptionShortTh ng-model=formData.MasterVariant.DescriptionShortTh>\r" +
+    "            </textarea></div><div class=col-sm-6><label>Short Description (ไทย)</label><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=MasterVariant_DescriptionShortTh ng-model=formData.MasterVariant.DescriptionShortTh>\r" +
     "\n" +
-    "            </textarea></div></div></div>"
+    "            </textarea></div></div></div></div></div>"
   );
 
 
@@ -7306,6 +7334,7 @@ angular.module('nc')
 				images: '=ncModel',
 				onfail: '=onFail',
 				uploader: '=uploader',
+				options: '=?options',
 				size: '@size',
 				title: '@title'
 			},
@@ -7313,6 +7342,10 @@ angular.module('nc')
 			link: function(scope) {
 				var fileUploader = false;
 				scope.images = scope.images || [];
+				scope.options = _.defaults(scope.options,{
+					height: '144px',
+					width: '256px'
+				});
 				scope.$watch('uploader', function(val) {
 					if(val instanceof FileUploader) {
 						fileUploader = true;
@@ -7332,7 +7365,6 @@ angular.module('nc')
 							scope.images.push(obj);
 							var f = new FileItem(scope.uploader, file, {
 								onSuccess: function(response) {
-									console.log(response);
 									_.extend(obj, response);
 								},
 								onError: function(response, status, headers) {
@@ -7342,6 +7374,8 @@ angular.module('nc')
 									});
 								}
 							});
+							scope.uploader.queue.push(f);
+							f.upload();
 						});
 					} else {
 						//newer version
@@ -7422,7 +7456,7 @@ angular.module('nc')
 								}
 							});
 						},
-						icon: 'fa-zoom-in'
+						icon: 'fa-search-plus'
 					},
 					{
 						//Trash
@@ -7441,10 +7475,9 @@ angular.module('nc')
 					{
 						//Left
 						fn: function(item, array, index) {
-							//console.log(item, array, index);
 						    var to = index - 1;
 						    if (to < 0) return;
-
+						    console.log(index, to);
 						    var tmp = array[to];
 						    array[to] = item;
 						    array[index] = tmp;
@@ -8399,7 +8432,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncImageBanner',
-    "<div class=form-section><div class=form-section-header><h2>{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p></div></div><div class=image-select-alternative-text><span>Or</span> <a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">Select Images from your computer</a></div></div></div><div class=col-xs-5><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 8 images</li><li>Image ratio 16:9</li></ul></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ getSrc(image) }}\"></div><div class=actions-wrapper><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $index, action)\"><i class=\"fa {{action.icon}}\"></i></a></div></div><div style=\"text-align:center; padding-top: 10px; color: grey\" ng-if=\"$index == 0\">Featured Image</div></li></ul></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p></div></div><div class=image-select-alternative-text><span>Or</span> <a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">Select Images from your computer</a></div></div></div><div class=col-xs-5><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 8 images</li><li>Image ratio 16:9</li></ul></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-src=\"{{ getSrc(image) }}\"></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div><div style=\"text-align:center; padding-top: 10px; color: grey\" ng-if=\"$index == 0\">Featured Image</div></li></ul></div></div>"
   );
 
 
@@ -9624,16 +9657,18 @@ module.exports = ["common", function(common) {
 	service = common.Rest('/Brands');
 	service.generate = function(data) {
 		return {
-			BrandImages: []
+			BrandImages: [],
+			BrandBannerEn: [],
+			BrandBannerTh: []
 		};
 	}
 	service.deserialize = function(data) {
-		var processed = angular.copy(data);
+		var processed = _.extend(service.generate(), data);
 		return processed;
 	};
 
 	service.serialize = function(data) {
-		var processed = angular.copy(data);
+		var processed = _.extend({}, data);
 		return processed;
 	};
 	return service;
@@ -11725,12 +11760,23 @@ module.exports = {
 },{}],150:[function(require,module,exports){
 module.exports = {
     BrandImage: {
-        'labelClass': 'required',
-        'error': {
-            'messages': {
-                'required': 'This is a required field',
+        labelClass: 'required',
+        error: {
+            messages: {
+                required: 'This is a required field',
             }
         }
+    },
+    FeaturedProducts: {
+    	inputClass: 'large',
+    	error: {
+    		messages: {
+    			maxtagcount: 'Only maximum of 20 feature products are allowed'
+    		}
+    	}
+    },
+    FeaturedProductSearch: {
+    	inputClass: 'large'
     }
 }
 

@@ -280,15 +280,15 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('ap/section-description',
-    "<div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Description (English)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionFull nc-template-form=addProductForm.MasterVariant_DescriptionFullEn><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=MasterVariant_DescriptionFullEn ng-model=formData.MasterVariant.DescriptionFullEn>\r" +
+    "<div class=form-section><div class=form-section-header><h2>DescriptionX</h2></div><div class=form-section-content><div class=two-columns><div class=row><div class=col-sm-6><label>Description (English)</label><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=MasterVariant_DescriptionFullEn ng-model=formData.MasterVariant.DescriptionFullEn>\r" +
     "\n" +
-    "            </textarea></div><div nc-template=common/input/form-group-with-label nc-label=\"Short Description (English)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionShortEn nc-template-form=addProductForm.MasterVariant_DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=MasterVariant_DescriptionShortEn ng-model=formData.MasterVariant.DescriptionShortEn>\r" +
+    "            </textarea></div><div class=col-sm-6><label>Description (ไทย)</label><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=MasterVariant_DescriptionFullEn ng-model=formData.MasterVariant.DescriptionFullEn>\r" +
     "\n" +
-    "            </textarea></div><div nc-template=common/input/form-group-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionFull nc-template-form=addProductForm.MasterVariant_DescriptionFullTh><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=MasterVariant_DescriptionFullTh ng-model=formData.MasterVariant.DescriptionFullTh>\r" +
+    "            </textarea></div></div><div class=\"row margin-top-30\"><div class=col-sm-6><label>Short Description (English)</label><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=MasterVariant_DescriptionShortEn ng-model=formData.MasterVariant.DescriptionShortEn>\r" +
     "\n" +
-    "            </textarea></div><div nc-template=common/input/form-group-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionShortTh nc-template-form=addProductForm.MasterVariant_DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=MasterVariant_DescriptionShortTh ng-model=formData.MasterVariant.DescriptionShortTh>\r" +
+    "            </textarea></div><div class=col-sm-6><label>Short Description (ไทย)</label><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=MasterVariant_DescriptionShortTh ng-model=formData.MasterVariant.DescriptionShortTh>\r" +
     "\n" +
-    "            </textarea></div></div></div>"
+    "            </textarea></div></div></div></div></div>"
   );
 
 

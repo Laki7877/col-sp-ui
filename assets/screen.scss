@@ -283,3 +283,7 @@ ng-transclude.has-error .form-control{
     border-radius: 3px;
     background-color:#EDF2F9;
 }
+
+.ui-select-multiple.ui-select-bootstrap input.ui-select-search {
+    width: 100% !important;
+}

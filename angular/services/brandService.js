@@ -3,16 +3,18 @@ module.exports = function(common) {
 	service = common.Rest('/Brands');
 	service.generate = function(data) {
 		return {
-			BrandImages: []
+			BrandImages: [],
+			BrandBannerEn: [],
+			BrandBannerTh: []
 		};
 	}
 	service.deserialize = function(data) {
-		var processed = angular.copy(data);
+		var processed = _.extend(service.generate(), data);
 		return processed;
 	};
 
 	service.serialize = function(data) {
-		var processed = angular.copy(data);
+		var processed = _.extend({}, data);
 		return processed;
 	};
 	return service;

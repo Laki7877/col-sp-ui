@@ -19,9 +19,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "task_display" => "ng-hide='Completed[0]'"]) ?>
 
          <? $this->insert('components/forms/seller_task',
-           ["field_header" => "Set your shop profile",
-            "field_text" => "Validate your shop name, logo, and etc.",
-            "button_text" => "Check Profile",
+           ["field_header" => "Add shop description",
+            "field_text" => "Tell customers what your shop is about",
+            "button_text" => "Add Description",
             "image_name" => "icon-onboard-setting",
             "task_display" => "ng-hide='Completed[1]'"]) ?>
 
@@ -56,11 +56,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "button_text" => "Change Password",
            "image_name" => "icon-onboard-password",
            "home_task_container_class" => "background_blue",
-           "task_display" => "ng-hide='!Completed[0]'"]) ?>        
+           "task_display" => "ng-hide='!Completed[0]'"]) ?>
 
         <? $this->insert('components/forms/seller_task',
-          ["field_header" => "Set your shop profile",
-           "field_text" => "Validate your shop name, logo, and etc.",
+          ["field_header" => "Add Description",
+           "field_text" => "Tell customers what your shop is about",
            "button_text" => "Check Profile",
            "image_name" => "icon-onboard-setting",
            "home_task_container_class" => "background_blue",
@@ -80,7 +80,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "button_text" => "Set Appearance",
            "image_name" => "icon-onboard-decorate",
            "home_task_container_class" => "background_blue",
-           "task_display" => "ng-hide='!Completed[3]'"]) ?>                
+           "task_display" => "ng-hide='!Completed[3]'"]) ?>
       </div>
     </div>
   </div>
