@@ -1,4 +1,22 @@
 module.exports = {
+    MasterVariant_KillerPointTh: {
+       divClass: 'col-sm-6',
+       error: {
+            messages: {
+                required: 'This is a required field',
+                pattern: 'Special characters are not allowed'
+            }
+        } 
+    },
+    MasterVariant_KillerPointEn: {
+       'divClass': 'col-sm-6',
+        'error': {
+            'messages': {
+                'required': 'This is a required field',
+                'pattern': 'Thai and Special characters are not allowed'
+            }
+        } 
+    },
     MasterVariant_ProductNameEn: {
         'labelClass': 'required',
         'error': {
@@ -10,6 +28,7 @@ module.exports = {
     },
     MasterVariant_StockType: {},
     MasterVariant_DescriptionFull: {
+        'divClass': 'col-sm-6',
         'formGroupClass': 'margin-top-40',
         'labelClass': 'required',
         'inputSize': 'xxl'
@@ -59,6 +78,7 @@ module.exports = {
         }
     },
     MasterVariant_DescriptionShortTh: {
+        'divClass': 'col-sm-6',
         'inputSize': 'xxl',
         'formGroupClass': 'margin-top-30',
         'error': {
@@ -68,6 +88,7 @@ module.exports = {
         }
     },
     MasterVariant_DescriptionShortEn: {
+        'divClass': 'col-sm-6',
         'inputSize': 'xxl',
         'formGroupClass': 'margin-top-30',
         'error': {

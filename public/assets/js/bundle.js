@@ -1,184 +1,184 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (global){
-'use strict';
-//App Start here
-var angular = require('angular');
-var bulk = ({"controllers":(function () {var f = require("./controllers/index.js");f["abstractAdd"]=require("./controllers/abstractAdd.js");f["abstractAdvanceList"]=require("./controllers/abstractAdvanceList.js");f["abstractList"]=require("./controllers/abstractList.js");f["adminAccount"]=require("./controllers/adminAccount.js");f["adminAccountAdd"]=require("./controllers/adminAccountAdd.js");f["adminAttribute"]=require("./controllers/adminAttribute.js");f["adminAttributeAdd"]=require("./controllers/adminAttributeAdd.js");f["adminAttributeSet"]=require("./controllers/adminAttributeSet.js");f["adminAttributeSetAdd"]=require("./controllers/adminAttributeSetAdd.js");f["adminBrand"]=require("./controllers/adminBrand.js");f["adminBrandAdd"]=require("./controllers/adminBrandAdd.js");f["adminCategory"]=require("./controllers/adminCategory.js");f["adminCoupon"]=require("./controllers/adminCoupon.js");f["adminCouponAdd"]=require("./controllers/adminCouponAdd.js");f["adminOnTopCreditAdd"]=require("./controllers/adminOnTopCreditAdd.js");f["adminOnTopCreditList"]=require("./controllers/adminOnTopCreditList.js");f["adminProductApprovalList"]=require("./controllers/adminProductApprovalList.js");f["adminProductList"]=require("./controllers/adminProductList.js");f["adminRole"]=require("./controllers/adminRole.js");f["adminRoleAdd"]=require("./controllers/adminRoleAdd.js");f["adminShop"]=require("./controllers/adminShop.js");f["adminShopAdd"]=require("./controllers/adminShopAdd.js");f["adminShoptype"]=require("./controllers/adminShoptype.js");f["adminShoptypeAdd"]=require("./controllers/adminShoptypeAdd.js");f["index"]=require("./controllers/index.js");f["localCategory"]=require("./controllers/localCategory.js");f["login"]=require("./controllers/login.js");f["productAdd"]=require("./controllers/productAdd.js");f["productAddSelectCategory"]=require("./controllers/productAddSelectCategory.js");f["productExport"]=require("./controllers/productExport.js");f["productImageList"]=require("./controllers/productImageList.js");f["productImageManagement"]=require("./controllers/productImageManagement.js");f["productImport"]=require("./controllers/productImport.js");f["productList"]=require("./controllers/productList.js");f["productListLocalCategory"]=require("./controllers/productListLocalCategory.js");f["productReview"]=require("./controllers/productReview.js");f["root"]=require("./controllers/root.js");f["sellerAccount"]=require("./controllers/sellerAccount.js");f["sellerAccountAdd"]=require("./controllers/sellerAccountAdd.js");f["sellerInventoryList"]=require("./controllers/sellerInventoryList.js");f["sellerOnboarding"]=require("./controllers/sellerOnboarding.js");f["sellerRole"]=require("./controllers/sellerRole.js");f["sellerRoleAdd"]=require("./controllers/sellerRoleAdd.js");f["sellerShopSetting"]=require("./controllers/sellerShopSetting.js");f["test"]=require("./controllers/test.js");return f;})(),"services":({"OnTopCredit":require("./services/OnTopCredit.js"),"OnTopCreditService":require("./services/OnTopCreditService.js"),"Onboarding":require("./services/Onboarding.js"),"adminAccountService":require("./services/adminAccountService.js"),"adminPermissionService":require("./services/adminPermissionService.js"),"adminRoleService":require("./services/adminRoleService.js"),"adminShopService":require("./services/adminShopService.js"),"adminShoptypeService":require("./services/adminShoptypeService.js"),"alert":require("./services/alert.js"),"attribute":require("./services/attribute.js"),"attributeService":require("./services/attributeService.js"),"attributeSet":require("./services/attributeSet.js"),"attributeSetService":require("./services/attributeSetService.js"),"blocker":require("./services/blocker.js"),"brand":require("./services/brand.js"),"brandService":require("./services/brandService.js"),"category":require("./services/category.js"),"coupon":require("./services/coupon.js"),"credential":require("./services/credential.js"),"exceptionHandler":require("./services/exceptionHandler.js"),"fileService":require("./services/fileService.js"),"globalCategory":require("./services/globalCategory.js"),"globalCategoryService":require("./services/globalCategoryService.js"),"image":require("./services/image.js"),"imageService":require("./services/imageService.js"),"inventoryService":require("./services/inventoryService.js"),"knownException":require("./services/knownException.js"),"localCategory":require("./services/localCategory.js"),"localCategoryService":require("./services/localCategoryService.js"),"product":require("./services/product.js"),"productAdd":require("./services/productAdd.js"),"productReviewService":require("./services/productReviewService.js"),"sellerAccountService":require("./services/sellerAccountService.js"),"sellerPermissionService":require("./services/sellerPermissionService.js"),"sellerRoleService":require("./services/sellerRoleService.js"),"shop":require("./services/shop.js"),"shopPermissionService":require("./services/shopPermissionService.js")}),"helpers":({"base64":require("./helpers/base64.js"),"common":require("./helpers/common.js"),"storage":require("./helpers/storage.js"),"util":require("./helpers/util.js"),"variantPair":require("./helpers/variantPair.js")}),"directives":({"ncTradableSelect":require("./directives/ncTradableSelect.js"),"ngCkeditor":require("./directives/ngCkeditor.js"),"ngDateBefore":require("./directives/ngDateBefore.js"),"ngDelegate":require("./directives/ngDelegate.js"),"ngMatch":require("./directives/ngMatch.js"),"ngMaxnumber":require("./directives/ngMaxnumber.js"),"ngMinnumber":require("./directives/ngMinnumber.js"),"ngPatternRestrict":require("./directives/ngPatternRestrict.js"),"ngPermission":require("./directives/ngPermission.js"),"ngSlideToggle":require("./directives/ngSlideToggle.js"),"ngTemplate":require("./directives/ngTemplate.js"),"popoverAny":require("./directives/popoverAny.js")}),"filters":({"capitalize":require("./filters/capitalize.js"),"exclude":require("./filters/exclude.js"),"excludeCategory":require("./filters/excludeCategory.js"),"html":require("./filters/html.js"),"importGuidelineExample":require("./filters/importGuidelineExample.js"),"leadingzero":require("./filters/leadingzero.js"),"ordinal":require("./filters/ordinal.js"),"slice":require("./filters/slice.js"),"truncate":require("./filters/truncate.js"),"truth":require("./filters/truth.js"),"variantValue":require("./filters/variantValue.js")}),"template-options":({"PromotionForm":require("./template-options/PromotionForm.js"),"addProductForm":require("./template-options/addProductForm.js"),"adminShopAccountForm":require("./template-options/adminShopAccountForm.js"),"couponForm":require("./template-options/couponForm.js"),"productExport":require("./template-options/productExport.js"),"productImport":require("./template-options/productImport.js"),"searchForm":require("./template-options/searchForm.js"),"shopSettingForm":require("./template-options/shopSettingForm.js")})});
-var config = require('./config');
-var route = require('./route');
-var template = require('./template');
+'use strict'
+// App Start here
+var angular = require('angular')
+var bulk = ({"controllers":(function () {var f = require("./controllers/index.js");f["abstractAdd"]=require("./controllers/abstractAdd.js");f["abstractAdvanceList"]=require("./controllers/abstractAdvanceList.js");f["abstractList"]=require("./controllers/abstractList.js");f["adminAccount"]=require("./controllers/adminAccount.js");f["adminAccountAdd"]=require("./controllers/adminAccountAdd.js");f["adminAttribute"]=require("./controllers/adminAttribute.js");f["adminAttributeAdd"]=require("./controllers/adminAttributeAdd.js");f["adminAttributeSet"]=require("./controllers/adminAttributeSet.js");f["adminAttributeSetAdd"]=require("./controllers/adminAttributeSetAdd.js");f["adminBrand"]=require("./controllers/adminBrand.js");f["adminBrandAdd"]=require("./controllers/adminBrandAdd.js");f["adminCategory"]=require("./controllers/adminCategory.js");f["adminCoupon"]=require("./controllers/adminCoupon.js");f["adminCouponAdd"]=require("./controllers/adminCouponAdd.js");f["adminOnTopCreditAdd"]=require("./controllers/adminOnTopCreditAdd.js");f["adminOnTopCreditList"]=require("./controllers/adminOnTopCreditList.js");f["adminProductApprovalList"]=require("./controllers/adminProductApprovalList.js");f["adminProductList"]=require("./controllers/adminProductList.js");f["adminRole"]=require("./controllers/adminRole.js");f["adminRoleAdd"]=require("./controllers/adminRoleAdd.js");f["adminShop"]=require("./controllers/adminShop.js");f["adminShopAdd"]=require("./controllers/adminShopAdd.js");f["adminShoptype"]=require("./controllers/adminShoptype.js");f["adminShoptypeAdd"]=require("./controllers/adminShoptypeAdd.js");f["index"]=require("./controllers/index.js");f["localCategory"]=require("./controllers/localCategory.js");f["login"]=require("./controllers/login.js");f["productAdd"]=require("./controllers/productAdd.js");f["productAddSelectCategory"]=require("./controllers/productAddSelectCategory.js");f["productExport"]=require("./controllers/productExport.js");f["productImageList"]=require("./controllers/productImageList.js");f["productImageManagement"]=require("./controllers/productImageManagement.js");f["productImport"]=require("./controllers/productImport.js");f["productList"]=require("./controllers/productList.js");f["productListLocalCategory"]=require("./controllers/productListLocalCategory.js");f["productReview"]=require("./controllers/productReview.js");f["root"]=require("./controllers/root.js");f["sellerAccount"]=require("./controllers/sellerAccount.js");f["sellerAccountAdd"]=require("./controllers/sellerAccountAdd.js");f["sellerInventoryList"]=require("./controllers/sellerInventoryList.js");f["sellerOnboarding"]=require("./controllers/sellerOnboarding.js");f["sellerRole"]=require("./controllers/sellerRole.js");f["sellerRoleAdd"]=require("./controllers/sellerRoleAdd.js");f["sellerShopSetting"]=require("./controllers/sellerShopSetting.js");f["test"]=require("./controllers/test.js");return f;})(),"services":({"OnTopCredit":require("./services/OnTopCredit.js"),"OnTopCreditService":require("./services/OnTopCreditService.js"),"Onboarding":require("./services/Onboarding.js"),"adminAccountService":require("./services/adminAccountService.js"),"adminPermissionService":require("./services/adminPermissionService.js"),"adminRoleService":require("./services/adminRoleService.js"),"adminShopService":require("./services/adminShopService.js"),"adminShoptypeService":require("./services/adminShoptypeService.js"),"alert":require("./services/alert.js"),"attribute":require("./services/attribute.js"),"attributeService":require("./services/attributeService.js"),"attributeSet":require("./services/attributeSet.js"),"attributeSetService":require("./services/attributeSetService.js"),"blocker":require("./services/blocker.js"),"brand":require("./services/brand.js"),"brandService":require("./services/brandService.js"),"category":require("./services/category.js"),"coupon":require("./services/coupon.js"),"credential":require("./services/credential.js"),"exceptionHandler":require("./services/exceptionHandler.js"),"fileService":require("./services/fileService.js"),"globalCategory":require("./services/globalCategory.js"),"globalCategoryService":require("./services/globalCategoryService.js"),"image":require("./services/image.js"),"imageService":require("./services/imageService.js"),"inventoryService":require("./services/inventoryService.js"),"knownException":require("./services/knownException.js"),"localCategory":require("./services/localCategory.js"),"localCategoryService":require("./services/localCategoryService.js"),"product":require("./services/product.js"),"productAdd":require("./services/productAdd.js"),"productReviewService":require("./services/productReviewService.js"),"sellerAccountService":require("./services/sellerAccountService.js"),"sellerPermissionService":require("./services/sellerPermissionService.js"),"sellerRoleService":require("./services/sellerRoleService.js"),"shop":require("./services/shop.js"),"shopPermissionService":require("./services/shopPermissionService.js")}),"helpers":({"base64":require("./helpers/base64.js"),"common":require("./helpers/common.js"),"storage":require("./helpers/storage.js"),"util":require("./helpers/util.js"),"variantPair":require("./helpers/variantPair.js")}),"directives":({"ncTradableSelect":require("./directives/ncTradableSelect.js"),"ngCkeditor":require("./directives/ngCkeditor.js"),"ngDateBefore":require("./directives/ngDateBefore.js"),"ngDelegate":require("./directives/ngDelegate.js"),"ngMatch":require("./directives/ngMatch.js"),"ngMaxnumber":require("./directives/ngMaxnumber.js"),"ngMinnumber":require("./directives/ngMinnumber.js"),"ngPatternRestrict":require("./directives/ngPatternRestrict.js"),"ngPermission":require("./directives/ngPermission.js"),"ngSlideToggle":require("./directives/ngSlideToggle.js"),"ngTemplate":require("./directives/ngTemplate.js"),"popoverAny":require("./directives/popoverAny.js")}),"filters":({"capitalize":require("./filters/capitalize.js"),"exclude":require("./filters/exclude.js"),"excludeCategory":require("./filters/excludeCategory.js"),"html":require("./filters/html.js"),"importGuidelineExample":require("./filters/importGuidelineExample.js"),"leadingzero":require("./filters/leadingzero.js"),"ordinal":require("./filters/ordinal.js"),"slice":require("./filters/slice.js"),"truncate":require("./filters/truncate.js"),"truth":require("./filters/truth.js"),"variantValue":require("./filters/variantValue.js")}),"template-options":({"PromotionForm":require("./template-options/PromotionForm.js"),"addProductForm":require("./template-options/addProductForm.js"),"adminShopAccountForm":require("./template-options/adminShopAccountForm.js"),"couponForm":require("./template-options/couponForm.js"),"productExport":require("./template-options/productExport.js"),"productImport":require("./template-options/productImport.js"),"searchForm":require("./template-options/searchForm.js"),"shopSettingForm":require("./template-options/shopSettingForm.js")})})
+var config = require('./config')
+var route = require('./route')
+var template = require('./template')
 
-//External dependencies
-global._ = require('lodash');
-require('angular-clipboard');
-require('angular-ui-bootstrap');
-require('angular-animate');
-require('angular-file-upload');
-require('angular-ui-tree');
-require('angular-base64');
-require('angular-sanitize');
-require('angular-scroll');
-require('angular-cookies');
-require('angular-bootstrap-datetimepicker');
-require('ng-file-upload');
-require('ui-select/dist/select.js');
+// External dependencies
+global._ = require('lodash')
+require('angular-clipboard')
+require('angular-ui-bootstrap')
+require('angular-animate')
+require('angular-file-upload')
+require('angular-ui-tree')
+require('angular-base64')
+require('angular-sanitize')
+require('angular-scroll')
+require('angular-cookies')
+require('angular-bootstrap-datetimepicker')
+require('ng-file-upload')
+require('ui-select/dist/select.js')
 require('angular-chart.js')
 
-//Nc package
-require('./nc');
-require('./modules/product-detail');
+// Nc package
+require('./nc')
+require('./modules/product-detail')
 
-//Internal dependencies
-var controllers = bulk.controllers;
-var services = bulk.services;
-var helpers = bulk.helpers;
-var directives = bulk.directives;
-var filters = bulk.filters;
+// Internal dependencies
+var controllers = bulk.controllers
+var services = bulk.services
+var helpers = bulk.helpers
+var directives = bulk.directives
+var filters = bulk.filters
 
 var app = angular.module('colspApp', ['ngPatternRestrict',
-    'nc', 'ui.bootstrap.datetimepicker',
-    'duScroll', 'ngSanitize', 'ngAnimate',
-    'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select',
-    'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail', 'ngFileUpload'
+  'nc', 'ui.bootstrap.datetimepicker',
+  'duScroll', 'ngSanitize', 'ngAnimate',
+  'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select',
+  'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail', 'ngFileUpload'
 ])
 
-//App config
-    .config(['uiSelectConfig', '$ncPaginationProvider', '$ncAlertProvider',
-        function (uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
-            $ncPaginationProvider.paginationSizes = [10, 20, 50, 100];
-            uiSelectConfig.taggingTokens = '[ENTER|,]';
-        }
-    ])
+  // App config
+  .config(['uiSelectConfig', '$ncPaginationProvider', '$ncAlertProvider',
+    function (uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
+      $ncPaginationProvider.paginationSizes = [10, 20, 50, 100]
+      uiSelectConfig.taggingTokens = '[ENTER|,]'
+    }
+  ])
 
-//App template cache load
-    .run(template)
+  // App template cache load
+  .run(template)
 
-//Configuration
-    .value('config', config)
-    .value('route', route)
-    .value('$templateOptionsCache', bulk['template-options'])
+  // Configuration
+  .value('config', config)
+  .value('route', route)
+  .value('$templateOptionsCache', bulk['template-options'])
 
-//Helpers
-    .factory('common', helpers.common)
-    .factory('storage', helpers.storage)
-    .factory('util', helpers.util)
-    .factory('base64', helpers.base64)
+  // Helpers
+  .factory('common', helpers.common)
+  .factory('storage', helpers.storage)
+  .factory('util', helpers.util)
+  .factory('base64', helpers.base64)
 
-//Services
-    .factory('Product', services.product)
-    .factory('ProductReviewService', services.productReviewService)
-    .factory('ImageService', services.imageService)
-    .factory('FileService', services.fileService)
-    .factory('CouponService', services.coupon)
-    .factory('Category', services.category)
-    .factory('Shop', services.shop)
-    .factory('LocalCategory', services.localCategory)
-    .factory('LocalCategoryService', services.localCategoryService)
-    .factory('GlobalCategory', services.globalCategory)
-    .factory('GlobalCategoryService', services.globalCategoryService) //newer version
-    .factory('Attribute', services.attribute)
-    .factory('AttributeService', services.attributeService) //newer version
-    .factory('AttributeSet', services.attributeSet)
-    .factory('AttributeSetService', services.attributeSetService) //newer version
-    .factory('Brand', services.brand)
-    .factory('BrandService', services.brandService) //newer version
-    .factory('InventoryService', services.inventoryService) //newer version
-    .factory('SellerAccountService', services.sellerAccountService)
-    .factory('SellerRoleService', services.sellerRoleService)
-    .factory('SellerPermissionService', services.sellerPermissionService)
-    .factory('AdminAccountService', services.adminAccountService)
-    .factory('AdminRoleService', services.adminRoleService)
-    .factory('AdminPermissionService', services.adminPermissionService)
-    .factory('AdminShopService', services.adminShopService)
-    .factory('AdminShoptypeService', services.adminShoptypeService)
-    .factory('ShopPermissionService', services.shopPermissionService)
-    .factory('VariantPair', helpers.variantPair)
-    .factory('Alert', services.alert)
-    .factory('Blocker', services.blocker)
-    .factory('Credential', services.credential)
-    .factory('$exceptionHandler', services.exceptionHandler)
-    .factory('KnownException', services.knownException)
-    .factory('OnTopCreditService', services.OnTopCreditService)
-    .factory('OnTopCredit', services.OnTopCredit)
-    .factory('Onboarding', services.Onboarding)
+  // Services
+  .factory('Product', services.product)
+  .factory('ProductReviewService', services.productReviewService)
+  .factory('ImageService', services.imageService)
+  .factory('FileService', services.fileService)
+  .factory('CouponService', services.coupon)
+  .factory('Category', services.category)
+  .factory('Shop', services.shop)
+  .factory('LocalCategory', services.localCategory)
+  .factory('LocalCategoryService', services.localCategoryService)
+  .factory('GlobalCategory', services.globalCategory)
+  .factory('GlobalCategoryService', services.globalCategoryService) // newer version
+  .factory('Attribute', services.attribute)
+  .factory('AttributeService', services.attributeService) // newer version
+  .factory('AttributeSet', services.attributeSet)
+  .factory('AttributeSetService', services.attributeSetService) // newer version
+  .factory('Brand', services.brand)
+  .factory('BrandService', services.brandService) // newer version
+  .factory('InventoryService', services.inventoryService) // newer version
+  .factory('SellerAccountService', services.sellerAccountService)
+  .factory('SellerRoleService', services.sellerRoleService)
+  .factory('SellerPermissionService', services.sellerPermissionService)
+  .factory('AdminAccountService', services.adminAccountService)
+  .factory('AdminRoleService', services.adminRoleService)
+  .factory('AdminPermissionService', services.adminPermissionService)
+  .factory('AdminShopService', services.adminShopService)
+  .factory('AdminShoptypeService', services.adminShoptypeService)
+  .factory('ShopPermissionService', services.shopPermissionService)
+  .factory('VariantPair', helpers.variantPair)
+  .factory('Alert', services.alert)
+  .factory('Blocker', services.blocker)
+  .factory('Credential', services.credential)
+  .factory('$exceptionHandler', services.exceptionHandler)
+  .factory('KnownException', services.knownException)
+  .factory('OnTopCreditService', services.OnTopCreditService)
+  .factory('OnTopCredit', services.OnTopCredit)
+  .factory('Onboarding', services.Onboarding)
 
-//Directives
-    .directive('ncTradableSelect', directives.ncTradableSelect)
-    .directive('ngPermission', directives.ngPermission)
-    .directive('ngDelegate', directives.ngDelegate)
-    .directive('ngCkeditor', directives.ngCkeditor)
-    .directive('ngSlideToggle', directives.ngSlideToggle)
-    .directive('ngTemplate', directives.ngTemplate)
-    .directive('ngMatch', directives.ngMatch)
-    .directive('ngMinnumber', directives.ngMinnumber)
-    .directive('ngMaxnumber', directives.ngMaxnumber)
-    .directive('ngDateBefore', directives.ngDateBefore)
+  // Directives
+  .directive('ncTradableSelect', directives.ncTradableSelect)
+  .directive('ngPermission', directives.ngPermission)
+  .directive('ngDelegate', directives.ngDelegate)
+  .directive('ngCkeditor', directives.ngCkeditor)
+  .directive('ngSlideToggle', directives.ngSlideToggle)
+  .directive('ngTemplate', directives.ngTemplate)
+  .directive('ngMatch', directives.ngMatch)
+  .directive('ngMinnumber', directives.ngMinnumber)
+  .directive('ngMaxnumber', directives.ngMaxnumber)
+  .directive('ngDateBefore', directives.ngDateBefore)
 
-//Filters
-    .filter('capitalize', filters.capitalize)
-    .filter('ordinal', filters.ordinal)
-    .filter('html', filters.html)
-    .filter('truth', filters.truth)
-    .filter('exclude', filters.exclude)
-    .filter('excludeCategory', filters.excludeCategory)
-    .filter('truncate', filters.truncate)
-    .filter('slice', filters.slice)
-    .filter('leadingzero', filters.leadingzero)
-    .filter('variantValue', filters.variantValue)
-    .filter('importGuidelineExample', filters.importGuidelineExample)
+  // Filters
+  .filter('capitalize', filters.capitalize)
+  .filter('ordinal', filters.ordinal)
+  .filter('html', filters.html)
+  .filter('truth', filters.truth)
+  .filter('exclude', filters.exclude)
+  .filter('excludeCategory', filters.excludeCategory)
+  .filter('truncate', filters.truncate)
+  .filter('slice', filters.slice)
+  .filter('leadingzero', filters.leadingzero)
+  .filter('variantValue', filters.variantValue)
+  .filter('importGuidelineExample', filters.importGuidelineExample)
 
-//Controllers
-    .controller('RootCtrl', controllers.root)
-    .controller('IndexCtrl', controllers.index)
-    .controller('ProductListCtrl', controllers.productList)
-    .controller('ProductAddCtrl', controllers.productAdd)
-    .controller('ProductImageManagementCtrl', controllers.productImageManagement)
-    .controller('ProductAddSelectCategoryCtrl', controllers.productAddSelectCategory)
-    .controller('ProductListLocalCategoryCtrl', controllers.productListLocalCategory)
-    .controller('ProductImportCtrl', controllers.productImport)
-    .controller('ProductReviewCtrl', controllers.productReview)
-    .controller('ProductExportCtrl', controllers.productExport)
+  // Controllers
+  .controller('RootCtrl', controllers.root)
+  .controller('IndexCtrl', controllers.index)
+  .controller('ProductListCtrl', controllers.productList)
+  .controller('ProductAddCtrl', controllers.productAdd)
+  .controller('ProductImageManagementCtrl', controllers.productImageManagement)
+  .controller('ProductAddSelectCategoryCtrl', controllers.productAddSelectCategory)
+  .controller('ProductListLocalCategoryCtrl', controllers.productListLocalCategory)
+  .controller('ProductImportCtrl', controllers.productImport)
+  .controller('ProductReviewCtrl', controllers.productReview)
+  .controller('ProductExportCtrl', controllers.productExport)
 
-    .controller('LocalCategoryCtrl', controllers.localCategory)
-    .controller('SellerShopSettingCtrl', controllers.sellerShopSetting)
-    .controller('SellerAccountCtrl', controllers.sellerAccount)
-    .controller('SellerAccountAddCtrl', controllers.sellerAccountAdd)
-    .controller('SellerRoleCtrl', controllers.sellerRole)
-    .controller('SellerRoleAddCtrl', controllers.sellerRoleAdd)
-    .controller('SellerShopSettingCtrl', controllers.sellerShopSetting)
-    .controller('SellerInventoryListCtrl', controllers.sellerInventoryList)
-    .controller('SellerOnboardingCtrl', controllers.sellerOnboarding)
+  .controller('LocalCategoryCtrl', controllers.localCategory)
+  .controller('SellerShopSettingCtrl', controllers.sellerShopSetting)
+  .controller('SellerAccountCtrl', controllers.sellerAccount)
+  .controller('SellerAccountAddCtrl', controllers.sellerAccountAdd)
+  .controller('SellerRoleCtrl', controllers.sellerRole)
+  .controller('SellerRoleAddCtrl', controllers.sellerRoleAdd)
+  .controller('SellerShopSettingCtrl', controllers.sellerShopSetting)
+  .controller('SellerInventoryListCtrl', controllers.sellerInventoryList)
+  .controller('SellerOnboardingCtrl', controllers.sellerOnboarding)
 
-    .controller('AdminAttributeCtrl', controllers.adminAttribute)
-    .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)
-    .controller('AdminAttributeAddCtrl', controllers.adminAttributeAdd)
-    .controller('AdminAttributeSetAddCtrl', controllers.adminAttributeSetAdd)
-    .controller('AdminCategoryCtrl', controllers.adminCategory)
-    .controller('AdminBrandCtrl', controllers.adminBrand)
-    .controller('AdminBrandAddCtrl', controllers.adminBrandAdd)
-    .controller('AdminAccountCtrl', controllers.adminAccount)
-    .controller('AdminAccountAddCtrl', controllers.adminAccountAdd)
-    .controller('AdminRoleCtrl', controllers.adminRole)
-    .controller('AdminRoleAddCtrl', controllers.adminRoleAdd)
-    .controller('AdminShopCtrl', controllers.adminShop)
-    .controller('AdminShopAddCtrl', controllers.adminShopAdd)
-    .controller('AdminShoptypeCtrl', controllers.adminShoptype)
-    .controller('AdminShoptypeAddCtrl', controllers.adminShoptypeAdd)
-    .controller('AdminCouponCtrl', controllers.adminCoupon)
-    .controller('AdminCouponAddCtrl', controllers.adminCouponAdd)
+  .controller('AdminAttributeCtrl', controllers.adminAttribute)
+  .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)
+  .controller('AdminAttributeAddCtrl', controllers.adminAttributeAdd)
+  .controller('AdminAttributeSetAddCtrl', controllers.adminAttributeSetAdd)
+  .controller('AdminCategoryCtrl', controllers.adminCategory)
+  .controller('AdminBrandCtrl', controllers.adminBrand)
+  .controller('AdminBrandAddCtrl', controllers.adminBrandAdd)
+  .controller('AdminAccountCtrl', controllers.adminAccount)
+  .controller('AdminAccountAddCtrl', controllers.adminAccountAdd)
+  .controller('AdminRoleCtrl', controllers.adminRole)
+  .controller('AdminRoleAddCtrl', controllers.adminRoleAdd)
+  .controller('AdminShopCtrl', controllers.adminShop)
+  .controller('AdminShopAddCtrl', controllers.adminShopAdd)
+  .controller('AdminShoptypeCtrl', controllers.adminShoptype)
+  .controller('AdminShoptypeAddCtrl', controllers.adminShoptypeAdd)
+  .controller('AdminCouponCtrl', controllers.adminCoupon)
+  .controller('AdminCouponAddCtrl', controllers.adminCouponAdd)
 
-    .controller('AdminProductApprovalListCtrl', controllers.adminProductApprovalList)
-    .controller('AdminProductListCtrl', controllers.adminProductList)
+  .controller('AdminProductApprovalListCtrl', controllers.adminProductApprovalList)
+  .controller('AdminProductListCtrl', controllers.adminProductList)
 
-    .controller('LoginCtrl', controllers.login)
-    .controller('AbstractListCtrl', controllers.abstractList)
-    .controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
-    .controller('AbstractAddCtrl', controllers.abstractAdd)
+  .controller('LoginCtrl', controllers.login)
+  .controller('AbstractListCtrl', controllers.abstractList)
+  .controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
+  .controller('AbstractAddCtrl', controllers.abstractAdd)
 
-    .controller('AdminOnTopCreditCtrl', controllers.adminOnTopCreditAdd)
-    .controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
+  .controller('AdminOnTopCreditCtrl', controllers.adminOnTopCreditAdd)
+  .controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
 
-    .controller('TestCtrl', controllers.test)
+  .controller('TestCtrl', controllers.test)
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./config":2,"./controllers/abstractAdd.js":3,"./controllers/abstractAdvanceList.js":4,"./controllers/abstractList.js":5,"./controllers/adminAccount.js":6,"./controllers/adminAccountAdd.js":7,"./controllers/adminAttribute.js":8,"./controllers/adminAttributeAdd.js":9,"./controllers/adminAttributeSet.js":10,"./controllers/adminAttributeSetAdd.js":11,"./controllers/adminBrand.js":12,"./controllers/adminBrandAdd.js":13,"./controllers/adminCategory.js":14,"./controllers/adminCoupon.js":15,"./controllers/adminCouponAdd.js":16,"./controllers/adminOnTopCreditAdd.js":17,"./controllers/adminOnTopCreditList.js":18,"./controllers/adminProductApprovalList.js":19,"./controllers/adminProductList.js":20,"./controllers/adminRole.js":21,"./controllers/adminRoleAdd.js":22,"./controllers/adminShop.js":23,"./controllers/adminShopAdd.js":24,"./controllers/adminShoptype.js":25,"./controllers/adminShoptypeAdd.js":26,"./controllers/index.js":27,"./controllers/localCategory.js":28,"./controllers/login.js":29,"./controllers/productAdd.js":30,"./controllers/productAddSelectCategory.js":31,"./controllers/productExport.js":32,"./controllers/productImageList.js":33,"./controllers/productImageManagement.js":34,"./controllers/productImport.js":35,"./controllers/productList.js":36,"./controllers/productListLocalCategory.js":37,"./controllers/productReview.js":38,"./controllers/root.js":39,"./controllers/sellerAccount.js":40,"./controllers/sellerAccountAdd.js":41,"./controllers/sellerInventoryList.js":42,"./controllers/sellerOnboarding.js":43,"./controllers/sellerRole.js":44,"./controllers/sellerRoleAdd.js":45,"./controllers/sellerShopSetting.js":46,"./controllers/test.js":47,"./directives/ncTradableSelect.js":48,"./directives/ngCkeditor.js":49,"./directives/ngDateBefore.js":50,"./directives/ngDelegate.js":51,"./directives/ngMatch.js":52,"./directives/ngMaxnumber.js":53,"./directives/ngMinnumber.js":54,"./directives/ngPatternRestrict.js":55,"./directives/ngPermission.js":56,"./directives/ngSlideToggle.js":57,"./directives/ngTemplate.js":58,"./directives/popoverAny.js":59,"./filters/capitalize.js":60,"./filters/exclude.js":61,"./filters/excludeCategory.js":62,"./filters/html.js":63,"./filters/importGuidelineExample.js":64,"./filters/leadingzero.js":65,"./filters/ordinal.js":66,"./filters/slice.js":67,"./filters/truncate.js":68,"./filters/truth.js":69,"./filters/variantValue.js":70,"./helpers/base64.js":71,"./helpers/common.js":72,"./helpers/storage.js":73,"./helpers/util.js":74,"./helpers/variantPair.js":75,"./modules/product-detail":79,"./nc":109,"./route":111,"./services/OnTopCredit.js":112,"./services/OnTopCreditService.js":113,"./services/Onboarding.js":114,"./services/adminAccountService.js":115,"./services/adminPermissionService.js":116,"./services/adminRoleService.js":117,"./services/adminShopService.js":118,"./services/adminShoptypeService.js":119,"./services/alert.js":120,"./services/attribute.js":121,"./services/attributeService.js":122,"./services/attributeSet.js":123,"./services/attributeSetService.js":124,"./services/blocker.js":125,"./services/brand.js":126,"./services/brandService.js":127,"./services/category.js":128,"./services/coupon.js":129,"./services/credential.js":130,"./services/exceptionHandler.js":131,"./services/fileService.js":132,"./services/globalCategory.js":133,"./services/globalCategoryService.js":134,"./services/image.js":135,"./services/imageService.js":136,"./services/inventoryService.js":137,"./services/knownException.js":138,"./services/localCategory.js":139,"./services/localCategoryService.js":140,"./services/product.js":141,"./services/productAdd.js":142,"./services/productReviewService.js":143,"./services/sellerAccountService.js":144,"./services/sellerPermissionService.js":145,"./services/sellerRoleService.js":146,"./services/shop.js":147,"./services/shopPermissionService.js":148,"./template":157,"./template-options/PromotionForm.js":149,"./template-options/addProductForm.js":150,"./template-options/adminShopAccountForm.js":151,"./template-options/couponForm.js":152,"./template-options/productExport.js":153,"./template-options/productImport.js":154,"./template-options/searchForm.js":155,"./template-options/shopSettingForm.js":156,"angular":176,"angular-animate":159,"angular-base64":160,"angular-bootstrap-datetimepicker":161,"angular-chart.js":162,"angular-clipboard":163,"angular-cookies":165,"angular-file-upload":166,"angular-sanitize":168,"angular-scroll":170,"angular-ui-bootstrap":172,"angular-ui-tree":174,"lodash":179,"ng-file-upload":182,"ui-select/dist/select.js":183}],2:[function(require,module,exports){
@@ -6275,11 +6275,11 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('ap/section-description',
-    "<div class=form-section><div class=form-section-header><h2>DescriptionX</h2></div><div class=form-section-content><div class=two-columns><div class=row><div class=col-sm-6><label>Description (English)</label><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=MasterVariant_DescriptionFullEn ng-model=formData.MasterVariant.DescriptionFullEn>\n" +
-    "            </textarea></div><div class=col-sm-6><label>Description (ไทย)</label><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=MasterVariant_DescriptionFullTh ng-model=formData.MasterVariant.DescriptionFullTh>\n" +
-    "            </textarea></div></div><div class=\"row margin-top-30\"><div class=col-sm-6><label>Short Description (English)</label><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=MasterVariant_DescriptionShortEn ng-model=formData.MasterVariant.DescriptionShortEn>\n" +
-    "            </textarea></div><div class=col-sm-6><label>Short Description (ไทย)</label><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=MasterVariant_DescriptionShortTh ng-model=formData.MasterVariant.DescriptionShortTh>\n" +
-    "            </textarea></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionFull nc-template-form=addProductForm.MasterVariant_DescriptionFullEn><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=MasterVariant_DescriptionFullEn ng-model=formData.MasterVariant.DescriptionFullEn>\n" +
+    "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionFull nc-template-form=addProductForm.MasterVariant_DescriptionFullTh><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=MasterVariant_DescriptionFullTh ng-model=formData.MasterVariant.DescriptionFullTh>\n" +
+    "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionShortEn nc-template-form=addProductForm.MasterVariant_DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=MasterVariant_DescriptionShortEn ng-model=formData.MasterVariant.DescriptionShortEn>\n" +
+    "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionShortTh nc-template-form=addProductForm.MasterVariant_DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=MasterVariant_DescriptionShortTh ng-model=formData.MasterVariant.DescriptionShortTh>\n" +
+    "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=addProductForm.MasterVariant_KillerPoint1En nc-label=\"Killer Point 1 (English)\" nc-template-options-path=addProductForm/MasterVariant_KillerPointEn><input class=\"form-control width-field-large\" name=MasterVariant_KillerPoint1En ng-model=formData.MasterVariant.KillerPoint1En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=addProductForm.MasterVariant_KillerPoint1Th nc-label=\"Killer Point 1 (ไทย)\" nc-template-options-path=addProductForm/MasterVariant_KillerPointTh><input class=\"form-control width-field-large\" name=MasterVariant_KillerPoint1Th ng-model=formData.MasterVariant.KillerPoint1Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=addProductForm.MasterVariant_KillerPoint2En nc-label=\"Killer Point 2 (English)\" nc-template-options-path=addProductForm/MasterVariant_KillerPointEn><input class=\"form-control width-field-large\" name=MasterVariant_KillerPoint2En ng-model=formData.MasterVariant.KillerPoint2En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=addProductForm.MasterVariant_KillerPoint2Th nc-label=\"Killer Point 2 (ไทย)\" nc-template-options-path=addProductForm/MasterVariant_KillerPointTh><input class=\"form-control width-field-large\" name=MasterVariant_KillerPoint2Th ng-model=formData.MasterVariant.KillerPoint2Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=addProductForm.MasterVariant_KillerPoint3En nc-label=\"Killer Point 3 (English)\" nc-template-options-path=addProductForm/MasterVariant_KillerPointEn><input class=\"form-control width-field-large\" name=MasterVariant_KillerPoint3En ng-model=formData.MasterVariant.KillerPoint2En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=addProductForm.MasterVariant_KillerPoint3Th nc-label=\"Killer Point 3 (ไทย)\" nc-template-options-path=addProductForm/MasterVariant_KillerPointTh><input class=\"form-control width-field-large\" name=MasterVariant_KillerPoint3Th ng-model=formData.MasterVariant.KillerPoint3Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div></div></div></div>"
   );
 
 
@@ -11357,6 +11357,24 @@ module.exports = {
 
 },{}],150:[function(require,module,exports){
 module.exports = {
+    MasterVariant_KillerPointTh: {
+       divClass: 'col-sm-6',
+       error: {
+            messages: {
+                required: 'This is a required field',
+                pattern: 'Special characters are not allowed'
+            }
+        } 
+    },
+    MasterVariant_KillerPointEn: {
+       'divClass': 'col-sm-6',
+        'error': {
+            'messages': {
+                'required': 'This is a required field',
+                'pattern': 'Thai and Special characters are not allowed'
+            }
+        } 
+    },
     MasterVariant_ProductNameEn: {
         'labelClass': 'required',
         'error': {
@@ -11368,6 +11386,7 @@ module.exports = {
     },
     MasterVariant_StockType: {},
     MasterVariant_DescriptionFull: {
+        'divClass': 'col-sm-6',
         'formGroupClass': 'margin-top-40',
         'labelClass': 'required',
         'inputSize': 'xxl'
@@ -11417,6 +11436,7 @@ module.exports = {
         }
     },
     MasterVariant_DescriptionShortTh: {
+        'divClass': 'col-sm-6',
         'inputSize': 'xxl',
         'formGroupClass': 'margin-top-30',
         'error': {
@@ -11426,6 +11446,7 @@ module.exports = {
         }
     },
     MasterVariant_DescriptionShortEn: {
+        'divClass': 'col-sm-6',
         'inputSize': 'xxl',
         'formGroupClass': 'margin-top-30',
         'error': {
@@ -11915,7 +11936,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/input/div-with-label',
-    "<div><label ng-class=\"options.labelClass || {}\">{{ label }}</label><ng-transclude class=\"{{ options.transcludeClasses }}\" ng-class=\"{ 'has-error' : isInvalid(templateField()) }\"></ng-transclude><span class=\"help-block color-red\" ng-if=isInvalid(templateField()) ng-repeat=\"(key, prop) in (templateField().$error) track by key\"><span ng-bind-html=options.error.messages[key]></span></span></div>"
+    "<div ng-class=\"options.divClass || {}\"><label ng-class=\"options.labelClass || {}\">{{ label }}</label><ng-transclude class=\"{{ options.transcludeClasses }}\" ng-class=\"{ 'has-error' : isInvalid(templateField()) }\"></ng-transclude><span class=\"help-block color-red\" ng-if=isInvalid(templateField()) ng-repeat=\"(key, prop) in (templateField().$error) track by key\"><span ng-bind-html=options.error.messages[key]></span></span></div>"
   );
 
 
