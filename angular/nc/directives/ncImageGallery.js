@@ -10,7 +10,13 @@ angular.module('nc')
 				size: '@',
 				title: '@'
 			},
-			template: '<nc-image-block nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 8 images</li><li>Image ratio 16:9</li></ul></nc-image-block>'
+			template: '<nc-image-block nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 8 images</li><li>Image ratio 16:9</li></ul></nc-image-block>',
+			link: function(scope) {
+				scope.options = _.defaults(scope.options,{
+					height: '144px',
+					width: '256px'
+				});
+			}
 		}
 	})
 	.directive('ncImageBlock', function($uibModal, $templateCache, FileItem, FileUploader) {
@@ -32,8 +38,8 @@ angular.module('nc')
 				var fileUploader = false;
 				scope.images = scope.images || [];
 				scope.options = _.defaults(scope.options,{
-					height: '144px',
-					width: '256px'
+					height: '150px',
+					width: '150px'
 				});
 				scope.$watch('uploader', function(val) {
 					if(val instanceof FileUploader) {
