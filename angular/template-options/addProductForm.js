@@ -17,6 +17,9 @@ module.exports = {
             }
         } 
     },
+    TheOneCardEarn: {
+          
+    },
     MasterVariant_ProductNameEn: {
         'labelClass': 'required',
         'error': {

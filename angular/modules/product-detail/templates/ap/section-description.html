@@ -5,62 +5,62 @@
         <div class="two-columns">
             <div class="row">
                 <div nc-template="common/input/div-with-label" nc-label="Description (English)" nc-template-options-path="addProductForm/MasterVariant_DescriptionFull"
-                nc-template-form="addProductForm.MasterVariant_DescriptionFullEn">
-                    <textarea ng-ckeditor="ckOptions" class="form-control" maxlength="500" name="MasterVariant_DescriptionFullEn" ng-model="formData.MasterVariant.DescriptionFullEn">
+                nc-template-form="form.MasterVariant_DescriptionFullEn">
+                    <textarea ng-ckeditor="ckOptions" class="form-control" maxlength="500" name="MasterVariant_DescriptionFullEn" ng-model="formDataPtr.MasterVariant.DescriptionFullEn">
                     </textarea>
                 </div>
                 <div nc-template="common/input/div-with-label" nc-label="Description (ไทย)" nc-template-options-path="addProductForm/MasterVariant_DescriptionFull"
-                nc-template-form="addProductForm.MasterVariant_DescriptionFullTh">
-                    <textarea ng-ckeditor="ckOptions" class="form-control" maxlength="500" name="MasterVariant_DescriptionFullTh" ng-model="formData.MasterVariant.DescriptionFullTh">
+                nc-template-form="form.MasterVariant_DescriptionFullTh">
+                    <textarea ng-ckeditor="ckOptions" class="form-control" maxlength="500" name="MasterVariant_DescriptionFullTh" ng-model="formDataPtr.MasterVariant.DescriptionFullTh">
                     </textarea>
                 </div>
 
             </div>
             <div class="row margin-top-30">
                 <div nc-template="common/input/div-with-label" nc-label="Short Description (English)" nc-template-options-path="addProductForm/MasterVariant_DescriptionShortEn"
-                nc-template-form="addProductForm.MasterVariant_DescriptionShortEn">
-                    <textarea ng-pattern="/^[^<>ก-๙]+$/" class="form-control" maxlength="500" name="MasterVariant_DescriptionShortEn" ng-model="formData.MasterVariant.DescriptionShortEn">
+                nc-template-form="form.MasterVariant_DescriptionShortEn">
+                    <textarea ng-pattern="/^[^<>ก-๙]+$/" class="form-control" maxlength="500" name="MasterVariant_DescriptionShortEn" ng-model="formDataPtr.MasterVariant.DescriptionShortEn">
                     </textarea>
                 </div>
                 <div nc-template="common/input/div-with-label" nc-label="Short Description (ไทย)" nc-template-options-path="addProductForm/MasterVariant_DescriptionShortTh"
-                nc-template-form="addProductForm.MasterVariant_DescriptionShortTh">
-                    <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="MasterVariant_DescriptionShortTh" ng-model="formData.MasterVariant.DescriptionShortTh">
+                nc-template-form="form.MasterVariant_DescriptionShortTh">
+                    <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="MasterVariant_DescriptionShortTh" ng-model="formDataPtr.MasterVariant.DescriptionShortTh">
                     </textarea>
                 </div>
             </div>
             <div class="row margin-top-30">
-                <div nc-template="common/input/div-with-label" nc-template-form="addProductForm.MasterVariant_KillerPoint1En" nc-label="Killer Point 1 (English)"
+                <div nc-template="common/input/div-with-label" nc-template-form="form.MasterVariant_KillerPoint1En" nc-label="Killer Point 1 (English)"
                 nc-template-options-path="addProductForm/MasterVariant_KillerPointEn">
-                    <input class="form-control width-field-large" name="MasterVariant_KillerPoint1En" ng-model="formData.MasterVariant.KillerPoint1En"
+                    <input class="form-control width-field-large" name="MasterVariant_KillerPoint1En" ng-model="formDataPtr.MasterVariant.KillerPoint1En"
                     maxlength="300" ng-pattern="/^([^<>ก-๙])+$/" />
                 </div>
-                <div nc-template="common/input/div-with-label" nc-template-form="addProductForm.MasterVariant_KillerPoint1Th" nc-label="Killer Point 1 (ไทย)"
+                <div nc-template="common/input/div-with-label" nc-template-form="form.MasterVariant_KillerPoint1Th" nc-label="Killer Point 1 (ไทย)"
                 nc-template-options-path="addProductForm/MasterVariant_KillerPointTh">
-                    <input class="form-control width-field-large" name="MasterVariant_KillerPoint1Th" ng-model="formData.MasterVariant.KillerPoint1Th"
+                    <input class="form-control width-field-large" name="MasterVariant_KillerPoint1Th" ng-model="formDataPtr.MasterVariant.KillerPoint1Th"
                     maxlength="300" ng-pattern="/^([^<>])+$/" />
                 </div>
             </div>
             <div class="row margin-top-30">
-                <div nc-template="common/input/div-with-label" nc-template-form="addProductForm.MasterVariant_KillerPoint2En" nc-label="Killer Point 2 (English)"
+                <div nc-template="common/input/div-with-label" nc-template-form="form.MasterVariant_KillerPoint2En" nc-label="Killer Point 2 (English)"
                 nc-template-options-path="addProductForm/MasterVariant_KillerPointEn">
-                    <input class="form-control width-field-large" name="MasterVariant_KillerPoint2En" ng-model="formData.MasterVariant.KillerPoint2En"
+                    <input class="form-control width-field-large" name="MasterVariant_KillerPoint2En" ng-model="formDataPtr.MasterVariant.KillerPoint2En"
                     maxlength="300" ng-pattern="/^([^<>ก-๙])+$/" />
                 </div>
-                <div nc-template="common/input/div-with-label" nc-template-form="addProductForm.MasterVariant_KillerPoint2Th" nc-label="Killer Point 2 (ไทย)"
+                <div nc-template="common/input/div-with-label" nc-template-form="form.MasterVariant_KillerPoint2Th" nc-label="Killer Point 2 (ไทย)"
                 nc-template-options-path="addProductForm/MasterVariant_KillerPointTh">
-                    <input class="form-control width-field-large" name="MasterVariant_KillerPoint2Th" ng-model="formData.MasterVariant.KillerPoint2Th"
+                    <input class="form-control width-field-large" name="MasterVariant_KillerPoint2Th" ng-model="formDataPtr.MasterVariant.KillerPoint2Th"
                     maxlength="300" ng-pattern="/^([^<>])+$/" />
                 </div>
             </div>
             <div class="row margin-top-30">
-                <div nc-template="common/input/div-with-label" nc-template-form="addProductForm.MasterVariant_KillerPoint3En" nc-label="Killer Point 3 (English)"
+                <div nc-template="common/input/div-with-label" nc-template-form="form.MasterVariant_KillerPoint3En" nc-label="Killer Point 3 (English)"
                 nc-template-options-path="addProductForm/MasterVariant_KillerPointEn">
-                    <input class="form-control width-field-large" name="MasterVariant_KillerPoint3En" ng-model="formData.MasterVariant.KillerPoint2En"
+                    <input class="form-control width-field-large" name="MasterVariant_KillerPoint3En" ng-model="formDataPtr.MasterVariant.KillerPoint2En"
                     maxlength="300" ng-pattern="/^([^<>ก-๙])+$/" />
                 </div>
-                <div nc-template="common/input/div-with-label" nc-template-form="addProductForm.MasterVariant_KillerPoint3Th" nc-label="Killer Point 3 (ไทย)"
+                <div nc-template="common/input/div-with-label" nc-template-form="form.MasterVariant_KillerPoint3Th" nc-label="Killer Point 3 (ไทย)"
                 nc-template-options-path="addProductForm/MasterVariant_KillerPointTh">
-                    <input class="form-control width-field-large" name="MasterVariant_KillerPoint3Th" ng-model="formData.MasterVariant.KillerPoint3Th"
+                    <input class="form-control width-field-large" name="MasterVariant_KillerPoint3Th" ng-model="formDataPtr.MasterVariant.KillerPoint3Th"
                     maxlength="300" ng-pattern="/^([^<>])+$/" />
                 </div>
             </div>

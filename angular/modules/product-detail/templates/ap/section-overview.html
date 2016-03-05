@@ -1,52 +1,52 @@
-<div class="row" ng-if="formData.Status">
-            <div class="col-xs-12">
-                <div class="form-section">
-                    <div class="form-section-header">
-                        <h2>Overview</h2></div>
-                    <div class="form-section-content">
-                        <div class="container-fluid" style="margin: -15px">
-                            <table class="table">
-                                <thead>
-                                    <th>Product Name</th>
-                                    <th ng-if="(formData.Variants || []).length == 0">PID</th>
-                                    <th ng-if="(formData.Variants || []).length > 0">Group ID</th>
-                                    <th>Price</th>
-                                    <th>Info</th>
-                                    <th>Image</th>
-                                    <th>Status</th>
-                                    <th>Live</th>
-                                    <th>Visible</th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{{ formData.MasterVariant.ProductNameEn }}</td>
-                                        <td>{{ formData.MasterVariant.Pid }}</td>
-                                        <td>{{ formData.MasterVariant.OriginalPrice | number: 2 }}</td>
-                                        <td>
-                                            <i ng-if="!formData.InfoFlag" class="fa fa-minus color-grey icon-size-18px"></i>
-                                            <i ng-if="formData.InfoFlag" class="fa fa-check color-green icon-size-18px"></i>
-                                        </td>
-                                        <td>
-                                            <i ng-if="!formData.ImageFlag" class="fa fa-minus color-grey icon-size-18px"></i>
-                                            <i ng-if="formData.ImageFlag" class="fa fa-check color-green icon-size-18px"></i>
-                                        </td>
-                                        <td>
-                                            <span class="{{ asStatus(formData.Status).color }}">
-                                                <i class="fa {{ asStatus(formData.Status).icon }}"></i>
-                                                {{ asStatus(formData.Status).name }}
+<div class="row" ng-if="formDataPtr.Status">
+    <div class="col-xs-12">
+        <div class="form-section">
+            <div class="form-section-header">
+                <h2>Overview</h2></div>
+            <div class="form-section-content">
+                <div class="container-fluid" style="margin: -15px">
+                    <table class="table">
+                        <thead>
+                            <th>Product Name</th>
+                            <th ng-if="(formDataPtr.Variants || []).length == 0">PID</th>
+                            <th ng-if="(formDataPtr.Variants || []).length > 0">Group ID</th>
+                            <th>Price</th>
+                            <th>Info</th>
+                            <th>Image</th>
+                            <th>Status</th>
+                            <th>Live</th>
+                            <th>Visible</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ formDataPtr.MasterVariant.ProductNameEn }}</td>
+                                <td>{{ formDataPtr.MasterVariant.Pid }}</td>
+                                <td>{{ formDataPtr.MasterVariant.OriginalPrice | number: 2 }}</td>
+                                <td>
+                                    <i ng-if="!formDataPtr.InfoFlag" class="fa fa-minus color-grey icon-size-18px"></i>
+                                    <i ng-if="formDataPtr.InfoFlag" class="fa fa-check color-green icon-size-18px"></i>
+                                </td>
+                                <td>
+                                    <i ng-if="!formDataPtr.ImageFlag" class="fa fa-minus color-grey icon-size-18px"></i>
+                                    <i ng-if="formDataPtr.ImageFlag" class="fa fa-check color-green icon-size-18px"></i>
+                                </td>
+                                <td>
+                                    <span class="{{ asStatus(formDataPtr.Status).color }}">
+                                                <i class="fa {{ asStatus(formDataPtr.Status).icon }}"></i>
+                                                {{ asStatus(formDataPtr.Status).name }}
                             				</span>
-                                        </td>
-                                        <td>
-                                            <i class="fa fa-circle color-grey"></i>
-                                        </td>
-                                        <td>
-                                            <i ng-class="{'fa fa-eye-slash color-grey eye-icon font-size-16' : !formData.Visibility, 'fa fa-eye color-dark-grey eye-icon font-size-16' : formData.Visibility}"></i>
-                                        </td>
-                                    </tr>
-                                    <tbody>
-                            </table>
-                        </div>
-                    </div>
+                                </td>
+                                <td>
+                                    <i class="fa fa-circle color-grey"></i>
+                                </td>
+                                <td>
+                                    <i ng-class="{'fa fa-eye-slash color-grey eye-icon font-size-16' : !formDataPtr.Visibility, 'fa fa-eye color-dark-grey eye-icon font-size-16' : formDataPtr.Visibility}"></i>
+                                </td>
+                            </tr>
+                            <tbody>
+                    </table>
                 </div>
             </div>
         </div>
+    </div>
+</div>

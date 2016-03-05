@@ -1,0 +1,50 @@
+<div class="form-section">
+    <div class="form-section-header">
+        <h2>SEO</h2></div>
+    <div class="form-section-content">
+
+        <div nc-template="common/input/form-group-with-label" nc-template-form="form.SEO_MetaTitleEn" nc-label="Meta Title (English)"
+        nc-template-options-path="addProductForm/Nothing">
+            <input class="form-control width-field-normal" name="SEO_MetaTitleEn" ng-model="formDataPtr.SEO.MetaTitleEn" maxlength="60" />
+        </div>
+
+        <div nc-template="common/input/form-group-with-label" nc-template-form="form.SEO_MetaTitleTh" nc-label="Meta Title (ไทย)"
+        nc-template-options-path="addProductForm/Nothing">
+            <input class="form-control width-field-normal" name="SEO_MetaTitleTh" ng-model="formDataPtr.SEO.MetaTitleTh" maxlength="60" />
+        </div>
+
+        <div nc-template="common/input/form-group-with-label" nc-template-form="form.SEO_MetaDescriptionEn" nc-label="Meta Description (English)"
+        nc-template-options-path="addProductForm/Nothing">
+            <input maxlength="150" class="form-control width-field-normal" name="SEO_MetaDescriptionEn" ng-model="formDataPtr.SEO.MetaDescriptionEn" />
+        </div>
+
+        <div nc-template="common/input/form-group-with-label" nc-template-form="form.SEO_MetaDescriptionTh" nc-label="Meta Description (ไทย)"
+        nc-template-options-path="addProductForm/Nothing">
+            <input maxlength="150" class="form-control width-field-normal" name="SEO_MetaDescriptionTh" ng-model="formDataPtr.SEO.MetaDescriptionTh" />
+        </div>
+
+        <div nc-template="common/input/form-group-with-label" nc-template-form="form.SEO_MetaKeywordsEn" nc-label="Meta Keywords (English)"
+        nc-template-options-path="addProductForm/Nothing">
+            <input placeholder="Keywords separated by comma" class="form-control width-field-normal" name="SEO_MetaKeywordsEn" ng-model="formDataPtr.SEO.MetaKeywordEn" />
+        </div>
+
+        <div nc-template="common/input/form-group-with-label" nc-template-form="form.SEO_MetaKeywordsTh" nc-label="Meta Keywords (ไทย)"
+        nc-template-options-path="addProductForm/Nothing">
+            <input placeholder="Keywords separated by comma" class="form-control width-field-normal" name="SEO_MetaKeywordsTh" ng-model="formDataPtr.SEO.MetaKeywordTh"/>
+        </div>
+
+        <div nc-template="common/input/form-group-with-label" nc-template-form="form.SEO_ProductUrlKeyEn" nc-label="Product URL Key"
+        nc-template-options-path="addProductForm/Nothing">
+            <input maxlength="300" class="form-control width-field-normal" ng-pattern="/^[A-Za-z0-9_\-]+$/" name="SEO_ProductUrlKeyEn"
+            ng-model="formDataPtr.SEO.ProductUrlKeyEn"/>
+        </div>
+
+        <div nc-template="common/input/form-group-with-label" nc-template-options-path="addProductForm/Nothing" nc-template-form="form.SEO_ProductBoostingWeight"
+        nc-label="Product Boosting Weight">
+            <input type="number" class="form-control width-field-normal" min="0" max="10000" step="1" ng-pattern="/^[0-9]+$/" name="SEO_ProductBoostingWeight"
+            ng-model="formDataPtr.SEO.ProductBoostingWeight"
+            />
+        </div>
+
+    </div>
+</div>

@@ -10,7 +10,7 @@ angular.module('productDetail')
             template: function (element, attrs) {
                 var templateHTML = $templateCache.get(attrs.apComponent);
                 if (!templateHTML) {
-                    throw new KnownException("Unable to load specified tab template " + attrs.apComponent);
+                    throw new KnownException("Unable to load specified ap component " + attrs.apComponent);
                 }
                 return templateHTML;
             },
