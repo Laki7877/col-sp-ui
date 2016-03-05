@@ -109,11 +109,6 @@ angular.module("nc").run(function($templateCache) {  'use strict';
   );
 
 
-  $templateCache.put('ap/section-images',
-    "<div class=\"alert alert-danger\"><strong>Major magicalization in progress</strong> Waiting for Poon's image directive</div>"
-  );
-
-
   $templateCache.put('ap/section-inventory',
     "<div class=form-section><div class=form-section-header><h2>Inventory</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.MasterVariant_Quantity nc-template-options-path=addProductForm/MasterVariant_Quantity nc-label=\"Inventory Amount\"><input class=form-control name=MasterVariant_Quantity ng-pattern-restrict=^[0-9]*$ maxlength=10 ng-model=\"formDataPtr.MasterVariant.Quantity\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.MasterVariant_SafetyStock nc-template-options-path=addProductForm/MasterVariant_SafetyStock nc-label=\"Safety Stock Amount\"><input class=form-control name=MasterVariant_SafetyStock ng-pattern-restrict=^[0-9]*$ maxlength=10 ng-model=\"formDataPtr.MasterVariant.SafetyStock\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.MasterVariant_StockType nc-template-options-path=addProductForm/MasterVariant_StockType nc-label=\"Stock Type\"><select ng-model=formDataPtr.MasterVariant.StockType class=form-control name=MasterVariant_StockType><option selected disabled>- Select Stock Type -</option><option>Stock</option><option>Pre-Order</option></select></div></div></div>"
   );
@@ -160,7 +155,7 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('ap/tab-images',
-    "<div id=add-product-images-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row><div class=col-xs-12><nc-alert nc-model=image_alert></nc-alert><div ap-component=ap/section-images form-data=formData></div><div class=form-section><div class=\"form-section-header checkbox\"><label><input type=checkbox ng-model=controlFlags.enableSections.embedVideo> Embed Video</label></div><div class=form-section-content ng-if=controlFlags.enableSections.embedVideo><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "<div id=add-product-images-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row><div class=col-xs-12><nc-alert nc-model=image_alert></nc-alert><nc-image-block options=\"{height: '150px', width: '150px'}\" name=MasterImages nc-model=formDataPtr.MasterVariant.Images title=\"Product Images\" uploader=uploader on-fail=onImageUploadFail size=5></nc-image-block><div class=form-section><div class=\"form-section-header checkbox\"><label><input type=checkbox ng-model=controlFlags.enableSections.embedVideo> Embed Video</label></div><div class=form-section-content ng-if=controlFlags.enableSections.embedVideo><div ng-template=common/input/text2 ng-template-options=\"{\r" +
     "\n" +
     "\t\t\t\t                        'label': 'Video Link 1',\r" +
     "\n" +
