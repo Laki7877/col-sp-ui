@@ -13,6 +13,17 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 					.then(function(data) {
 						scope.shoptypes = data;
 					});
+			},
+			onLoad: function(scope, flag) {	
+				//Load global cat
+				scope.globalCategory = [];
+				GlobalCategoryService.list()
+					.then(function(data) {
+						scope.globalCategory = Category.transformNestedSetToUITree(data);
+						_.forEach(scope.formData.Commissions, function(item) {
+							item.NameEn = Category.findByCatId(item.CategoryId, scope.globalCategory).NameEn;
+						});
+				});
 			}
 		}
 	});
@@ -114,14 +125,6 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
     		});
 	    });
 	};
-	
-	$scope.globalCategory = [];
 	$scope.shopGroupDropdown = config.SHOP_GROUP;
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
-
-	//Load global cat
-	GlobalCategoryService.list()
-		.then(function(data) {
-			$scope.globalCategory = Category.transformNestedSetToUITree(data);
-		})
 };

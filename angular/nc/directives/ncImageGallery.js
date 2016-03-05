@@ -1,8 +1,24 @@
 angular.module('nc')
-	.directive('ncImageBanner', function($uibModal, $templateCache, FileItem, FileUploader) {
+	.directive('ncImageBanner', function() {
 		return {
 			restrict: 'E',
+			scope: {
+				ncModel: '=',
+				onFail: '=',
+				uploader: '=',
+				options: '=?',
+				size: '@',
+				title: '@'
+			},
+			template: '<nc-image-block nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 8 images</li><li>Image ratio 16:9</li></ul></nc-image-block>'
+		}
+	})
+	.directive('ncImageBlock', function($uibModal, $templateCache, FileItem, FileUploader) {
+		return {
+			restrict: 'E',
+			require: '?^^form',
 			replace: true,
+			transclude: true,
 			scope: {
 				images: '=ncModel',
 				onfail: '=onFail',
@@ -12,7 +28,7 @@ angular.module('nc')
 				title: '@title'
 			},
 			template: $templateCache.get('common/ncImageBanner'),
-			link: function(scope) {
+			link: function(scope, element, attrs, form) {
 				var fileUploader = false;
 				scope.images = scope.images || [];
 				scope.options = _.defaults(scope.options,{
@@ -27,6 +43,9 @@ angular.module('nc')
 					}
 				});
 				scope.upload = function(files) {
+					if(!_.isNil(form) && !_.isNil(attrs.name)) {
+						form.$setDirty();
+					}
 					if(fileUploader) {
 						_.forEach(files, function(file) {
 							//max size
@@ -103,9 +122,15 @@ angular.module('nc')
 						});
 
 						modal.result.then(function() {
+							if(!_.isNil(form) && !_.isNil(attrs.name)) {
+								form.$setDirty();
+							}
 							action.fn(image, scope.images, index);
 						});
 					} else {
+						if(!_.isNil(form) && !_.isNil(attrs.name)) {
+							form.$setDirty();
+						}
 						action.fn(image, scope.images, index);
 					}
 				};
@@ -150,7 +175,6 @@ angular.module('nc')
 						fn: function(item, array, index) {
 						    var to = index - 1;
 						    if (to < 0) return;
-						    console.log(index, to);
 						    var tmp = array[to];
 						    array[to] = item;
 						    array[index] = tmp;

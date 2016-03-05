@@ -994,7 +994,7 @@ module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageServ
 	$scope.products = [];
 	$scope.availableProducts = -1;
 	$scope.logoUploader = ImageService.getUploaderFn('/BrandImages');
-	$scope.bannerUploader = ImageService.getUploader('/BrandImages');
+	$scope.bannerUploader = ImageService.getUploaderFn('/BrandImages');
 	$scope.uploadLogo = function(file) {
 		$scope.formData.BrandImage = {
 			url: '/assets/img/loader.gif'
@@ -1008,7 +1008,7 @@ module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageServ
 	};
 	$scope.uploadBannerFail = function(e, response) {
 		if(e == 'onmaxsize') {
-			$scope.alert.error('Maximum number of banner reached. Please remove previous banner to upload a new one');
+			$scope.alert.error('Maximum number of banner reached. Please remove previous banner before a new one');
 		}
 		else {
 			$scope.alert.error(common.getError(response.data));
@@ -1023,11 +1023,6 @@ module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageServ
 			$scope.products = response.data;
 		});	
 	};
-	$scope.$watchCollection('formData.BrandBannerEn+formData.BrandBannerTh+formData.Brand', function(a,b) {
-		if(!_.isNil(b)) {
-			$scope.form.$setDirty();
-		}
-	});
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
 		options: {
@@ -1747,6 +1742,17 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 					.then(function(data) {
 						scope.shoptypes = data;
 					});
+			},
+			onLoad: function(scope, flag) {	
+				//Load global cat
+				scope.globalCategory = [];
+				GlobalCategoryService.list()
+					.then(function(data) {
+						scope.globalCategory = Category.transformNestedSetToUITree(data);
+						_.forEach(scope.formData.Commissions, function(item) {
+							item.NameEn = Category.findByCatId(item.CategoryId, scope.globalCategory).NameEn;
+						});
+				});
 			}
 		}
 	});
@@ -1848,16 +1854,8 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
     		});
 	    });
 	};
-	
-	$scope.globalCategory = [];
 	$scope.shopGroupDropdown = config.SHOP_GROUP;
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
-
-	//Load global cat
-	GlobalCategoryService.list()
-		.then(function(data) {
-			$scope.globalCategory = Category.transformNestedSetToUITree(data);
-		})
 }];
 
 },{}],25:[function(require,module,exports){
@@ -3142,6 +3140,9 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
     return _.isNil(status) ? config.SHOP_STATUS[0] : $rootScope.shopStatus[status];
   };
 
+  //Load ck editor
+  $rootScope.ckOptions = config.CK_DEFAULT_OPTIONS;
+
   //Create global logout function
   $rootScope.logout = function() {
     if ($rootScope.Imposter) {
@@ -3914,7 +3915,8 @@ module.exports = function() {
 
 			ctrl.$validators.maxnumber = function(modelValue, viewValue) {
 				var value = modelValue || viewValue;
-				if(_.isNil(value) || !value.match(/^[0-9]+(\.[0-9]{0,})?$/)) {
+				var regex = new RegExp('^[0-9]+(\.[0-9]{0,})?$');
+				if(_.isNil(value) || !regex.test(value)) {
 					return true;
 				}
 				return (!value) || (!maxnumber) || (_.toNumber(value) <= _.toNumber(maxnumber)) || false;
@@ -3939,7 +3941,8 @@ module.exports = function() {
 
 			ctrl.$validators.minnumber = function(modelValue, viewValue) {
 				var value = modelValue || viewValue;
-				if(_.isNil(value) || !value.match(/^[0-9]+(\.[0-9]{0,})?$/)) {
+				var regex = new RegExp('^[0-9]+(\.[0-9]{0,})?$');
+				if(_.isNil(value) || !regex.test(value)) {
 					return true;
 				}
 				return (!value) || (!minnumber) || (_.toNumber(value) >= _.toNumber(minnumber)) || false;
@@ -7108,10 +7111,26 @@ angular.module('nc')
 	}])
 },{}],91:[function(require,module,exports){
 angular.module('nc')
-	.directive('ncImageBanner', ["$uibModal", "$templateCache", "FileItem", "FileUploader", function($uibModal, $templateCache, FileItem, FileUploader) {
+	.directive('ncImageBanner', function() {
 		return {
 			restrict: 'E',
+			scope: {
+				ncModel: '=',
+				onFail: '=',
+				uploader: '=',
+				options: '=?',
+				size: '@',
+				title: '@'
+			},
+			template: '<nc-image-block nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 8 images</li><li>Image ratio 16:9</li></ul></nc-image-block>'
+		}
+	})
+	.directive('ncImageBlock', ["$uibModal", "$templateCache", "FileItem", "FileUploader", function($uibModal, $templateCache, FileItem, FileUploader) {
+		return {
+			restrict: 'E',
+			require: '?^^form',
 			replace: true,
+			transclude: true,
 			scope: {
 				images: '=ncModel',
 				onfail: '=onFail',
@@ -7121,7 +7140,7 @@ angular.module('nc')
 				title: '@title'
 			},
 			template: $templateCache.get('common/ncImageBanner'),
-			link: function(scope) {
+			link: function(scope, element, attrs, form) {
 				var fileUploader = false;
 				scope.images = scope.images || [];
 				scope.options = _.defaults(scope.options,{
@@ -7136,6 +7155,9 @@ angular.module('nc')
 					}
 				});
 				scope.upload = function(files) {
+					if(!_.isNil(form) && !_.isNil(attrs.name)) {
+						form.$setDirty();
+					}
 					if(fileUploader) {
 						_.forEach(files, function(file) {
 							//max size
@@ -7212,9 +7234,15 @@ angular.module('nc')
 						});
 
 						modal.result.then(function() {
+							if(!_.isNil(form) && !_.isNil(attrs.name)) {
+								form.$setDirty();
+							}
 							action.fn(image, scope.images, index);
 						});
 					} else {
+						if(!_.isNil(form) && !_.isNil(attrs.name)) {
+							form.$setDirty();
+						}
 						action.fn(image, scope.images, index);
 					}
 				};
@@ -7259,7 +7287,6 @@ angular.module('nc')
 						fn: function(item, array, index) {
 						    var to = index - 1;
 						    if (to < 0) return;
-						    console.log(index, to);
 						    var tmp = array[to];
 						    array[to] = item;
 						    array[index] = tmp;
@@ -8214,7 +8241,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncImageBanner',
-    "<div class=form-section><div class=form-section-header><h2>{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p></div></div><div class=image-select-alternative-text><span>Or</span> <a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">Select Images from your computer</a></div></div></div><div class=col-xs-5><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 8 images</li><li>Image ratio 16:9</li></ul></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-src=\"{{ getSrc(image) }}\"></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div><div style=\"text-align:center; padding-top: 10px; color: grey\" ng-if=\"$index == 0\">Featured Image</div></li></ul></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p></div></div><div class=image-select-alternative-text><span>Or</span> <a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">Select Images from your computer</a></div></div></div><div class=col-xs-5 ng-transclude></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-src=\"{{ getSrc(image) }}\"></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div><div style=\"text-align:center; padding-top: 10px; color: grey\" ng-if=\"$index == 0\">Featured Image</div></li></ul></div></div>"
   );
 
 
@@ -11340,7 +11367,35 @@ module.exports = {
             }
         }
     },
-    FeaturedProducts: {
+    // Description
+    DescriptionFull: {
+        'divClass': 'col-sm-6',
+        'formGroupClass': 'margin-top-40',
+        'labelClass': 'required',
+        'inputSize': 'xxl'
+    },
+    DescriptionShortTh: {
+        'divClass': 'col-sm-6',
+        'inputSize': 'xxl',
+        'formGroupClass': 'margin-top-30',
+        'error': {
+            'messages': {
+                'pattern': 'Special characters are not allowed'
+            }
+        }
+    },
+    DescriptionShortEn: {
+        'divClass': 'col-sm-6',
+        'inputSize': 'xxl',
+        'formGroupClass': 'margin-top-30',
+        'error': {
+            'messages': {
+                'pattern': 'Thai and Special characters are not allowed'
+            }
+        }
+    },
+    // Feature products
+    FeatureProducts: {
     	inputClass: 'large',
     	error: {
     		messages: {
@@ -11348,9 +11403,10 @@ module.exports = {
     		}
     	}
     },
-    FeaturedProductSearch: {
+    FeatureTitle: {
     	inputClass: 'large'
     }
+    
 }
 
 },{}],148:[function(require,module,exports){

@@ -4,7 +4,7 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 	$scope.products = [];
 	$scope.availableProducts = -1;
 	$scope.logoUploader = ImageService.getUploaderFn('/BrandImages');
-	$scope.bannerUploader = ImageService.getUploader('/BrandImages');
+	$scope.bannerUploader = ImageService.getUploaderFn('/BrandImages');
 	$scope.uploadLogo = function(file) {
 		$scope.formData.BrandImage = {
 			url: '/assets/img/loader.gif'
@@ -18,7 +18,7 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 	};
 	$scope.uploadBannerFail = function(e, response) {
 		if(e == 'onmaxsize') {
-			$scope.alert.error('Maximum number of banner reached. Please remove previous banner to upload a new one');
+			$scope.alert.error('Maximum number of banner reached. Please remove previous banner before a new one');
 		}
 		else {
 			$scope.alert.error(common.getError(response.data));
@@ -33,11 +33,6 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 			$scope.products = response.data;
 		});	
 	};
-	$scope.$watchCollection('formData.BrandBannerEn+formData.BrandBannerTh+formData.Brand', function(a,b) {
-		if(!_.isNil(b)) {
-			$scope.form.$setDirty();
-		}
-	});
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
 		options: {
