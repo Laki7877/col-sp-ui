@@ -2,22 +2,22 @@
     <div class="form-section-header">
         <h2>Inventory</h2></div>
     <div class="form-section-content">
-        <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.MasterVariant_Quantity" nc-template-options-path="addProductForm/MasterVariant_Quantity"
+        <div nc-template="common/input/form-group-with-label" nc-template-form="form.MasterVariant_Quantity" nc-template-options-path="addProductForm/MasterVariant_Quantity"
         nc-label="Inventory Amount">
-            <input class="form-control" name="MasterVariant_Quantity" ng-pattern-restrict="^[0-9]*$" maxlength="10" ng-model="formData.MasterVariant.Quantity"
+            <input class="form-control" name="MasterVariant_Quantity" ng-pattern-restrict="^[0-9]*$" maxlength="10" ng-model="formDataPtr.MasterVariant.Quantity"
             />
         </div>
 
 
-        <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.MasterVariant_SafetyStock" nc-template-options-path="addProductForm/MasterVariant_SafetyStock"
+        <div nc-template="common/input/form-group-with-label" nc-template-form="form.MasterVariant_SafetyStock" nc-template-options-path="addProductForm/MasterVariant_SafetyStock"
         nc-label="Safety Stock Amount">
-            <input class="form-control" name="MasterVariant_SafetyStock" ng-pattern-restrict="^[0-9]*$" maxlength="10" ng-model="formData.MasterVariant.SafetyStock"
+            <input class="form-control" name="MasterVariant_SafetyStock" ng-pattern-restrict="^[0-9]*$" maxlength="10" ng-model="formDataPtr.MasterVariant.SafetyStock"
             />
         </div>
 
-        <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.MasterVariant_StockType" nc-template-options-path="addProductForm/MasterVariant_StockType"
+        <div nc-template="common/input/form-group-with-label" nc-template-form="form.MasterVariant_StockType" nc-template-options-path="addProductForm/MasterVariant_StockType"
         nc-label="Stock Type">
-            <select ng-model="formData.MasterVariant.StockType" class="form-control" name="MasterVariant_StockType">
+            <select ng-model="formDataPtr.MasterVariant.StockType" class="form-control" name="MasterVariant_StockType">
                 <option selected disabled>- Select Stock Type -</option>
                 <option>Stock</option>
                 <option>Pre-Order</option>

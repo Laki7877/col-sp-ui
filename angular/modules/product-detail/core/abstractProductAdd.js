@@ -8,9 +8,12 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         // TO DO: PASS IN
         var MAX_FILESIZE = 5000000
         var QUEUE_LIMIT = 20
+       
 
         $scope.formData = {
             overview: {},
+            TheOneCardEarn: 1,
+            GiftWrap: 'No',
             Brand: {
                 id: null
             },
@@ -36,7 +39,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             ControlFlags: [],
             Keywords: []
         }
-
+        
+        $scope.formDataPtr = $scope.formData;
         var onImageUploadFail = function (item, filter) {
             $scope.image_alert.error(item.Message || 'Your image does not meet guideline. Images must be smaller than 5 MB, with square size larger than 1500x1500.')
         }
@@ -448,6 +452,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                     $scope.pairModal = angular.copy(pair);
                     $scope.pairModal.alert = new NcAlert();
                     $scope.pairIndex = index;
+                    $scope.form = $scope.addProductVariantForm;
                     $scope.uploaderModal.queue = $scope.pairModal.queue;
                     ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
 
@@ -458,7 +463,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                             'ngInject'
                             $scope.pair = pair;
                             $scope.dataset = dataset;
-                            $scope.formData = formData;
+                            $scope.formDataPtr = pair;
                             $scope.no = function () {
                                 $uibModalInstance.close()
                             }
@@ -490,6 +495,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                         if (pairModal) {
                             $scope.formData.Variants[$scope.pairIndex] = pairModal;
                         }
+                        $scope.form = $scope.addProductForm;
+                        $scope.formDataPtr = $scope.formData;
                     }, function () {
                         console.log('Modal dismissed at: ' + new Date())
                     });
@@ -608,4 +615,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
         $scope.image_alert = new NcAlert()
 
-    })
+
+        
+ });
