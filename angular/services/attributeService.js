@@ -67,7 +67,7 @@ module.exports = function(common, config) {
 				processed['CB'] = {
 					AttributeValues: processed.AttributeValues,
 					DefaultValue: processed.DefaultValue
-				}
+				};
 			break;
 		}
 		return processed;
@@ -88,7 +88,8 @@ module.exports = function(common, config) {
 				delete processed['AttributeValues'];
 			break;
 			case 'CB':
-				processed.DefaultValue = data.HB.DefaultValue;
+				processed.AttributeValues = data.CB.AttributeValues;
+				processed.DefaultValue = data.CB.DefaultValue;
 				delete processed['AttributeValues'];
 			break;
 		}

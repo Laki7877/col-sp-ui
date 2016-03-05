@@ -5,29 +5,18 @@
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminProductListCtrl">
 	       <nc-page-title nc-title="All Products">
-	      <form id="exportForm" name="exportForm" action="/products/export" method="post">
+	      <form id="exportForm" name="exportForm" action="/admin/products/export" method="post">
 	          <input type="hidden" name="selected_products[]" ng-repeat="item in bulkContainer" value="{{ item.ProductId }}"/>
 	          <div class="btn-group margin-right-10">
 	            <button type="button" class="btn btn-white dropdown-toggle btn-width-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	              Export <span class="caret"></span>
 	            </button>
 	            <ul class="dropdown-menu">
-	              <li><a href="/products/export">Export All Products</a></li>
+	              <li><a href="/admin/products/export">Export All Products</a></li>
 	              <li><a ng-click="exportSelected()">Export Selected Products</a></li>
+	              <li><a ng-click="exportCriteria()">Export Search Result</a></li>
 	            </ul>
 	          </div>
-	          <div class="btn-group margin-right-10">
-	            <button type="button" class="btn btn-white dropdown-toggle btn-width-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	              Import <span class="caret"></span>
-	            </button>
-	            <ul class="dropdown-menu">
-	              <li><a href="/products/import">Add New Products</a></li>
-	              <li><a href="/products/import/update">Update Existing Products</a></li>
-	            </ul>
-	          </div>
-	        <a href="/products/select" class="btn-blue btn btn-width-xl">
-	          <span class="">Add Product</span>
-	        </a>
 	      </form>
        </nc-page-title>
 	    <div class="row search-section-wrapper">

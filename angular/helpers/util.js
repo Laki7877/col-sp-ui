@@ -1,6 +1,5 @@
-var angular = require('angular');
-
-module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$interpolate', 'KnownException', function (storage, config, common, $window, $rootScope, $interpolate, KnownException) {
+module.exports = function (storage, config, common, $window, $rootScope, $interpolate, KnownException, $uibModal) {
+    'ngInject';
     'use strict';
     var service = {};
 
@@ -371,5 +370,21 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
         }
         return content;
     }
+
+    //Open preview image modal
+    service.previewImage = function(url) {
+        $uibModal.open({
+            size: 'product-image',
+            template: '<img ng-src="{{url}}" alt=""/>',
+            controller: function($scope, url) {
+                $scope.url = url;
+            },
+            resolve: {
+                url: function() {
+                    return url;
+                }
+            }
+        });
+    };
     return service;
-}];
+};

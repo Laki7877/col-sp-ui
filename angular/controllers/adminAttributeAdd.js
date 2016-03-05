@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, AttributeService, ImageService, config, util) {
+module.exports = function($scope, $controller, AttributeService, ImageService, config, util, common) {
 	'ngInject';
 	$scope.dataTypeOptions = config.DROPDOWN.DATA_TYPE_DROPDOWN;
 	$scope.variantOptions = config.DROPDOWN.VARIANT_DROPDOWN;
@@ -17,11 +17,23 @@ module.exports = function($scope, $controller, AttributeService, ImageService, c
 		}
 	});
 
-	var uploader = ImageService.getUploader('/AttributeValueImages');
- 		
+	var uploader = ImageService.getUploaderFn('/AttributeValueImages');
+ 	
+ 	//Preview image
+ 	$scope.preview = util.previewImage;
+
  	//Brand image
  	$scope.upload = function($file, choice) {
- 		console.log($file, choice);
+ 		$scope.alert.close();
+ 		choice.Image = {
+ 			url: '/assets/img/placeholder-no-image-blank.png'
+ 		};
+ 		uploader.upload($file).then(function(response) {
+ 			choice.Image = response.data;
+ 		}, function(response) {
+ 			_.unset(choice, ['Image']);
+ 			$scope.alert.error(common.getError(response.data));
+ 		})
  	};
 
 	$scope.$watch('formData.DataType', function() {

@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, $uibModal, AdminShopService, AdminShoptypeService, config, common, Credential, $rootScope, $window) {
+module.exports = function($scope, $controller, $uibModal, AdminShopService, AdminShoptypeService, GlobalCategoryService, Category, config, common, Credential, $rootScope, $window) {
 	'ngInject';
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -68,6 +68,60 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 			$scope.alert.success('Successfully reset password.');
 		});
 	};
+	$scope.openCommissionSelector = function(item) {
+		var category = null;
+		if(!_.isNil(item))
+			category = Category.findByCatId(item.CategoryId, $scope.globalCategory);
+	    var modalInstance = $uibModal.open({
+	      size: 'category-section modal-lg column-4',
+	      keyboard: false,
+	      templateUrl: 'shop_account/modalCommissionCat',
+	      controller: function($scope, $uibModalInstance, tree, model) {
+	        'ngInject';
+	        $scope.model = model;
+	        $scope.tree = tree;
+	        $scope.$watch('model', function(newVal, oldVal) {
+	        	if(!_.isEmpty(newVal))
+	        		$scope.Commission = newVal.Commission;
+	        });
+	        $scope.select = function() {
+	          $scope.model.Commission = _.toNumber($scope.Commission);
+	          $uibModalInstance.close($scope.model);
+	        };
+	      },
+	      resolve: {
+	        model: function() {
+	          return category;
+	        },
+	        tree: function() {
+	          return $scope.globalCategory;
+	        }
+	      }
+	    })
+	    
+	    modalInstance.result.then(function(result) {
+    		if(_.isNil(item)) {
+	    		//Add
+	    		item = {};
+	    		$scope.formData.Commissions.push(item);
+	    	}
+	    	//Update
+	    	item = _.extend(item, _.pick(result, ['Commission', 'CategoryId', 'NameEn']));
+	    	item.Commission = _.toNumber(item.Commission);
+    		//Remove dupe
+    		_.remove($scope.formData.Commissions, function(n) {
+    			return n.CategoryId == item.CategoryId && n !== item;
+    		});
+	    });
+	};
+	
+	$scope.globalCategory = [];
 	$scope.shopGroupDropdown = config.SHOP_GROUP;
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
+
+	//Load global cat
+	GlobalCategoryService.list()
+		.then(function(data) {
+			$scope.globalCategory = Category.transformNestedSetToUITree(data);
+		})
 };
