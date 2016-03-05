@@ -1,7 +1,7 @@
 <form class="ah-form sticky-mainform-action" name="addProductVariantForm">
     <div class="modal-header">
-        <h3 class="float-left modal-title">Variant: {{ pair.text }}</h3>
-
+        <h3 class="float-left modal-title" ng-init="form = addProductVariantForm">Variant: {{ pair.text }}</h3>
+        
         <span class="float-right">
 	   <a class="link-btn-plain" ng-click="no()">Cancel</a>
 	   <button type="button" ng-disabled="form.$invalid" class="btn btn-blue btn-width-xl" ng-click="yes()">Save</button>

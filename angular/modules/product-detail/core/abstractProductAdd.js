@@ -452,7 +452,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                     $scope.pairModal = angular.copy(pair);
                     $scope.pairModal.alert = new NcAlert();
                     $scope.pairIndex = index;
-                    $scope.form = $scope.addProductVariantForm;
+
                     $scope.uploaderModal.queue = $scope.pairModal.queue;
                     ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
 
