@@ -9,97 +9,54 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('ap/modal-variant-detail',
-    "<form class=\"ah-form sticky-mainform-action\" name=addProductVariantForm><div class=modal-header><h3 class=\"float-left modal-title\" ng-init=\"form = addProductVariantForm\">Variant: {{ pair.text }}</h3><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button ng-disabled=form.$invalid class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div><div class=\"modal-body margin-top-20\"><div class=row><div class=col-xs-12><div ng-if=form.$invalid class=\"alert alert-red\" ng-cloak>Please make sure all fields have no error.</div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/MasterVariant_ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=pair.ProductNameEn maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/MasterVariant_ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=pair.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/MasterVariant_Sku><input class=\"form-control width-field-large\" name=Sku ng-model=pair.Sku maxlength=300 ng-pattern=\"/^[^<>]+$/\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/MasterVariant_Upc><input class=\"form-control width-field-large\" ng-pattern=\"/^[^<>]+$/\" name=Upc maxlength=300 ng-model=\"pair.Upc\"></div><div class=form-group><div class=width-label><label class=control-label>Display</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select class=form-control ng-model=pair.Display><option value={{op.value}} ng-repeat=\"op in dataset.VariantDisplayOption\">{{ op.text }}</option></select></div></div></div></div></div><div class=form-section><div class=form-section-header>Embed Video</div><div class=form-section-content><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t                        'label': 'Video Link 1',\r" +
-    "\n" +
-    "\t\t\t\t                        'hint': {\r" +
-    "\n" +
-    "\t\t\t\t                        \t'show': true,\r" +
-    "\n" +
-    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\r" +
-    "\n" +
-    "\t\t\t\t                        },\r" +
-    "\n" +
-    "\t\t\t\t                        'error' : {\r" +
-    "\n" +
-    "\t\t\t\t                              'messages': {\r" +
-    "\n" +
-    "\t\t\t\t                              \t'url': 'Please enter valid URL'\r" +
-    "\n" +
-    "\t\t\t\t                              },\r" +
-    "\n" +
-    "\t\t\t\t                              'show': $root.isInvalid(form.Modal_VideoLinks0),\r" +
-    "\n" +
-    "\t\t\t\t                              'conditions' : form.Modal_VideoLinks0.$error\r" +
-    "\n" +
-    "\t\t\t\t                         }\r" +
-    "\n" +
-    "\t\t\t\t                      }\"><input class=\"form-control width-field-normal\" name=Modal_VideoLinks0 type=url maxlength=500 ng-model=pair.VideoLinks[0] ng-class=\"{ 'has-error' : $root.isInvalid(form.Modal_VideoLinks0) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t                        'label': 'Video Link 2',\r" +
-    "\n" +
-    "\t\t\t\t                        'hint': {\r" +
-    "\n" +
-    "\t\t\t\t                        \t'show': true,\r" +
-    "\n" +
-    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\r" +
-    "\n" +
-    "\t\t\t\t                        },\r" +
-    "\n" +
-    "\t\t\t\t                        'error' : {\r" +
-    "\n" +
-    "\t\t\t\t                              'messages': {\r" +
-    "\n" +
-    "\t\t\t\t                              \t'url': 'Please enter valid URL'\r" +
-    "\n" +
-    "\t\t\t\t                              },\r" +
-    "\n" +
-    "\t\t\t\t                              'show': $root.isInvalid(form.Modal_VideoLinks1),\r" +
-    "\n" +
-    "\t\t\t\t                              'conditions' : form.Modal_VideoLinks1.$error\r" +
-    "\n" +
-    "\t\t\t\t                         }\r" +
-    "\n" +
-    "\t\t\t\t                      }\"><input class=\"form-control width-field-normal\" name=Modal_VideoLinks1 type=url maxlength=500 ng-model=pair.VideoLinks[1] ng-class=\"{ 'has-error' : $root.isInvalid(form.Modal_VideoLinks1) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t                        'label': 'Video Link 3',\r" +
-    "\n" +
-    "\t\t\t\t                        'hint': {\r" +
-    "\n" +
-    "\t\t\t\t                        \t'show': true,\r" +
-    "\n" +
-    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\r" +
-    "\n" +
-    "\t\t\t\t                        },\r" +
-    "\n" +
-    "\t\t\t\t                        'error' : {\r" +
-    "\n" +
-    "\t\t\t\t                              'messages': {\r" +
-    "\n" +
-    "\t\t\t\t                              \t'url': 'Please enter valid URL'\r" +
-    "\n" +
-    "\t\t\t\t                              },\r" +
-    "\n" +
-    "\t\t\t\t                              'show': $root.isInvalid(form.Modal_VideoLinks2),\r" +
-    "\n" +
-    "\t\t\t\t                              'conditions' : form.Modal_VideoLinks2.$error\r" +
-    "\n" +
-    "\t\t\t\t                         }\r" +
-    "\n" +
+    "<form class=\"ah-form sticky-mainform-action\" name=addProductVariantForm><div class=modal-header><h3 class=\"float-left modal-title\" ng-init=\"form = addProductVariantForm\">Variant: {{ pair.text }}</h3><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button ng-disabled=form.$invalid class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div><div class=\"modal-body margin-top-20\"><div class=row><div class=col-xs-12><div ng-if=form.$invalid class=\"alert alert-red\" ng-cloak>Please make sure all fields have no error.</div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/MasterVariant_ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=pair.ProductNameEn maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/MasterVariant_ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=pair.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/MasterVariant_Sku><input class=\"form-control width-field-large\" name=Sku ng-model=pair.Sku maxlength=300 ng-pattern=\"/^[^<>]+$/\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/MasterVariant_Upc><input class=\"form-control width-field-large\" ng-pattern=\"/^[^<>]+$/\" name=Upc maxlength=300 ng-model=\"pair.Upc\"></div><div class=form-group><div class=width-label><label class=control-label>Display</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select class=form-control ng-model=pair.Display><option value={{op.value}} ng-repeat=\"op in dataset.VariantDisplayOption\">{{ op.text }}</option></select></div></div></div></div></div><nc-image-block options=\"{height: '150px', width: '150px'}\" name=VariantImages nc-model=formDataPtr.Images title=\"Product Images\" uploader=uploader on-fail=onImageUploadFail size=5></nc-image-block><div class=form-section><div class=form-section-header>Embed Video</div><div class=form-section-content><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t\t\t\t                        'label': 'Video Link 1',\n" +
+    "\t\t\t\t                        'hint': {\n" +
+    "\t\t\t\t                        \t'show': true,\n" +
+    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\n" +
+    "\t\t\t\t                        },\n" +
+    "\t\t\t\t                        'error' : {\n" +
+    "\t\t\t\t                              'messages': {\n" +
+    "\t\t\t\t                              \t'url': 'Please enter valid URL'\n" +
+    "\t\t\t\t                              },\n" +
+    "\t\t\t\t                              'show': $root.isInvalid(form.Modal_VideoLinks0),\n" +
+    "\t\t\t\t                              'conditions' : form.Modal_VideoLinks0.$error\n" +
+    "\t\t\t\t                         }\n" +
+    "\t\t\t\t                      }\"><input class=\"form-control width-field-normal\" name=Modal_VideoLinks0 type=url maxlength=500 ng-model=pair.VideoLinks[0] ng-class=\"{ 'has-error' : $root.isInvalid(form.Modal_VideoLinks0) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t\t\t\t                        'label': 'Video Link 2',\n" +
+    "\t\t\t\t                        'hint': {\n" +
+    "\t\t\t\t                        \t'show': true,\n" +
+    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\n" +
+    "\t\t\t\t                        },\n" +
+    "\t\t\t\t                        'error' : {\n" +
+    "\t\t\t\t                              'messages': {\n" +
+    "\t\t\t\t                              \t'url': 'Please enter valid URL'\n" +
+    "\t\t\t\t                              },\n" +
+    "\t\t\t\t                              'show': $root.isInvalid(form.Modal_VideoLinks1),\n" +
+    "\t\t\t\t                              'conditions' : form.Modal_VideoLinks1.$error\n" +
+    "\t\t\t\t                         }\n" +
+    "\t\t\t\t                      }\"><input class=\"form-control width-field-normal\" name=Modal_VideoLinks1 type=url maxlength=500 ng-model=pair.VideoLinks[1] ng-class=\"{ 'has-error' : $root.isInvalid(form.Modal_VideoLinks1) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t\t\t\t                        'label': 'Video Link 3',\n" +
+    "\t\t\t\t                        'hint': {\n" +
+    "\t\t\t\t                        \t'show': true,\n" +
+    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\n" +
+    "\t\t\t\t                        },\n" +
+    "\t\t\t\t                        'error' : {\n" +
+    "\t\t\t\t                              'messages': {\n" +
+    "\t\t\t\t                              \t'url': 'Please enter valid URL'\n" +
+    "\t\t\t\t                              },\n" +
+    "\t\t\t\t                              'show': $root.isInvalid(form.Modal_VideoLinks2),\n" +
+    "\t\t\t\t                              'conditions' : form.Modal_VideoLinks2.$error\n" +
+    "\t\t\t\t                         }\n" +
     "\t\t\t\t                      }\"><input type=url class=\"form-control width-field-normal\" name=Modal_VideoLinks2 maxlength=500 ng-model=pair.VideoLinks[2] ng-class=\"{ 'has-error' : $root.isInvalid(form.Modal_VideoLinks2) }\"></div></div></div><div ap-component=ap/section-description></div><div ap-component=ap/section-shipping></div><div ap-component=ap/section-seo></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div></div></div><form></form></form>"
   );
 
 
   $templateCache.put('ap/section-description',
-    "<div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionFull nc-template-form=form.MasterVariant_DescriptionFullEn><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=MasterVariant_DescriptionFullEn ng-model=formDataPtr.MasterVariant.DescriptionFullEn>\r" +
-    "\n" +
-    "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionFull nc-template-form=form.MasterVariant_DescriptionFullTh><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=MasterVariant_DescriptionFullTh ng-model=formDataPtr.MasterVariant.DescriptionFullTh>\r" +
-    "\n" +
-    "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionShortEn nc-template-form=form.MasterVariant_DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=MasterVariant_DescriptionShortEn ng-model=formDataPtr.MasterVariant.DescriptionShortEn>\r" +
-    "\n" +
-    "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionShortTh nc-template-form=form.MasterVariant_DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=MasterVariant_DescriptionShortTh ng-model=formDataPtr.MasterVariant.DescriptionShortTh>\r" +
-    "\n" +
+    "<div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionFull nc-template-form=form.MasterVariant_DescriptionFullEn><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=MasterVariant_DescriptionFullEn ng-model=formDataPtr.MasterVariant.DescriptionFullEn>\n" +
+    "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionFull nc-template-form=form.MasterVariant_DescriptionFullTh><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=MasterVariant_DescriptionFullTh ng-model=formDataPtr.MasterVariant.DescriptionFullTh>\n" +
+    "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionShortEn nc-template-form=form.MasterVariant_DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=MasterVariant_DescriptionShortEn ng-model=formDataPtr.MasterVariant.DescriptionShortEn>\n" +
+    "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionShortTh nc-template-form=form.MasterVariant_DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=MasterVariant_DescriptionShortTh ng-model=formDataPtr.MasterVariant.DescriptionShortTh>\n" +
     "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.MasterVariant_KillerPoint1En nc-label=\"Killer Point 1 (English)\" nc-template-options-path=addProductForm/MasterVariant_KillerPointEn><input class=\"form-control width-field-large\" name=MasterVariant_KillerPoint1En ng-model=formDataPtr.MasterVariant.KillerPoint1En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.MasterVariant_KillerPoint1Th nc-label=\"Killer Point 1 (ไทย)\" nc-template-options-path=addProductForm/MasterVariant_KillerPointTh><input class=\"form-control width-field-large\" name=MasterVariant_KillerPoint1Th ng-model=formDataPtr.MasterVariant.KillerPoint1Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.MasterVariant_KillerPoint2En nc-label=\"Killer Point 2 (English)\" nc-template-options-path=addProductForm/MasterVariant_KillerPointEn><input class=\"form-control width-field-large\" name=MasterVariant_KillerPoint2En ng-model=formDataPtr.MasterVariant.KillerPoint2En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.MasterVariant_KillerPoint2Th nc-label=\"Killer Point 2 (ไทย)\" nc-template-options-path=addProductForm/MasterVariant_KillerPointTh><input class=\"form-control width-field-large\" name=MasterVariant_KillerPoint2Th ng-model=formDataPtr.MasterVariant.KillerPoint2Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.MasterVariant_KillerPoint3En nc-label=\"Killer Point 3 (English)\" nc-template-options-path=addProductForm/MasterVariant_KillerPointEn><input class=\"form-control width-field-large\" name=MasterVariant_KillerPoint3En ng-model=formDataPtr.MasterVariant.KillerPoint2En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.MasterVariant_KillerPoint3Th nc-label=\"Killer Point 3 (ไทย)\" nc-template-options-path=addProductForm/MasterVariant_KillerPointTh><input class=\"form-control width-field-large\" name=MasterVariant_KillerPoint3Th ng-model=formDataPtr.MasterVariant.KillerPoint3Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div></div></div></div>"
   );
 
@@ -155,84 +112,45 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('ap/tab-images',
-    "<div id=add-product-images-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row><div class=col-xs-12><nc-alert nc-model=image_alert></nc-alert><nc-image-block options=\"{height: '150px', width: '150px'}\" name=MasterImages nc-model=formDataPtr.MasterVariant.Images title=\"Product Images\" uploader=uploader on-fail=onImageUploadFail size=5></nc-image-block><div class=form-section><div class=\"form-section-header checkbox\"><label><input type=checkbox ng-model=controlFlags.enableSections.embedVideo> Embed Video</label></div><div class=form-section-content ng-if=controlFlags.enableSections.embedVideo><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t                        'label': 'Video Link 1',\r" +
-    "\n" +
-    "\t\t\t\t                        'hint': {\r" +
-    "\n" +
-    "\t\t\t\t                        \t'show': true,\r" +
-    "\n" +
-    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\r" +
-    "\n" +
-    "\t\t\t\t                        },\r" +
-    "\n" +
-    "\t\t\t\t                        'error' : {\r" +
-    "\n" +
-    "\t\t\t\t                              'messages': {\r" +
-    "\n" +
-    "\t\t\t\t                              \t'url': 'Please enter valid URL'\r" +
-    "\n" +
-    "\t\t\t\t                              },\r" +
-    "\n" +
-    "\t\t\t\t                              'show': $root.isInvalid(addProductForm.VideoLinks0),\r" +
-    "\n" +
-    "\t\t\t\t                              'conditions' : addProductForm.VideoLinks0.$error\r" +
-    "\n" +
-    "\t\t\t\t                         }\r" +
-    "\n" +
-    "\t\t\t\t                      }\"><input class=\"form-control width-field-normal\" name=VideoLinks0 type=url maxlength=500 ng-model=formDataPtr.VideoLinks[0] ng-class=\"{ 'has-error' : $root.isInvalid(addProductForm.VideoLinks0) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t                        'label': 'Video Link 2',\r" +
-    "\n" +
-    "\t\t\t\t                        'hint': {\r" +
-    "\n" +
-    "\t\t\t\t                        \t'show': true,\r" +
-    "\n" +
-    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\r" +
-    "\n" +
-    "\t\t\t\t                        },\r" +
-    "\n" +
-    "\t\t\t\t                        'error' : {\r" +
-    "\n" +
-    "\t\t\t\t                              'messages': {\r" +
-    "\n" +
-    "\t\t\t\t                              \t'url': 'Please enter valid URL'\r" +
-    "\n" +
-    "\t\t\t\t                              },\r" +
-    "\n" +
-    "\t\t\t\t                              'show': $root.isInvalid(addProductForm.VideoLinks1),\r" +
-    "\n" +
-    "\t\t\t\t                              'conditions' : addProductForm.VideoLinks1.$error\r" +
-    "\n" +
-    "\t\t\t\t                         }\r" +
-    "\n" +
-    "\t\t\t\t                      }\"><input class=\"form-control width-field-normal\" name=VideoLinks1 type=url maxlength=500 ng-model=formDataPtr.VideoLinks[1] ng-class=\"{ 'has-error' : $root.isInvalid(addProductForm.VideoLinks1) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t                        'label': 'Video Link 3',\r" +
-    "\n" +
-    "\t\t\t\t                        'hint': {\r" +
-    "\n" +
-    "\t\t\t\t                        \t'show': true,\r" +
-    "\n" +
-    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\r" +
-    "\n" +
-    "\t\t\t\t                        },\r" +
-    "\n" +
-    "\t\t\t\t                        'error' : {\r" +
-    "\n" +
-    "\t\t\t\t                              'messages': {\r" +
-    "\n" +
-    "\t\t\t\t                              \t'url': 'Please enter valid URL'\r" +
-    "\n" +
-    "\t\t\t\t                              },\r" +
-    "\n" +
-    "\t\t\t\t                              'show': $root.isInvalid(addProductForm.VideoLinks2),\r" +
-    "\n" +
-    "\t\t\t\t                              'conditions' : addProductForm.VideoLinks2.$error\r" +
-    "\n" +
-    "\t\t\t\t                         }\r" +
-    "\n" +
+    "<div id=add-product-images-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row><div class=col-xs-12><nc-alert nc-model=image_alert></nc-alert><nc-image-block options=\"{height: '150px', width: '150px'}\" name=MasterImages nc-model=formDataPtr.MasterVariant.Images title=\"Product Images\" uploader=uploader on-fail=onImageUploadFail size=5></nc-image-block><div class=form-section><div class=\"form-section-header checkbox\"><label><input type=checkbox ng-model=controlFlags.enableSections.embedVideo> Embed Video</label></div><div class=form-section-content ng-if=controlFlags.enableSections.embedVideo><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t\t\t\t                        'label': 'Video Link 1',\n" +
+    "\t\t\t\t                        'hint': {\n" +
+    "\t\t\t\t                        \t'show': true,\n" +
+    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\n" +
+    "\t\t\t\t                        },\n" +
+    "\t\t\t\t                        'error' : {\n" +
+    "\t\t\t\t                              'messages': {\n" +
+    "\t\t\t\t                              \t'url': 'Please enter valid URL'\n" +
+    "\t\t\t\t                              },\n" +
+    "\t\t\t\t                              'show': $root.isInvalid(addProductForm.VideoLinks0),\n" +
+    "\t\t\t\t                              'conditions' : addProductForm.VideoLinks0.$error\n" +
+    "\t\t\t\t                         }\n" +
+    "\t\t\t\t                      }\"><input class=\"form-control width-field-normal\" name=VideoLinks0 type=url maxlength=500 ng-model=formDataPtr.VideoLinks[0] ng-class=\"{ 'has-error' : $root.isInvalid(addProductForm.VideoLinks0) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t\t\t\t                        'label': 'Video Link 2',\n" +
+    "\t\t\t\t                        'hint': {\n" +
+    "\t\t\t\t                        \t'show': true,\n" +
+    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\n" +
+    "\t\t\t\t                        },\n" +
+    "\t\t\t\t                        'error' : {\n" +
+    "\t\t\t\t                              'messages': {\n" +
+    "\t\t\t\t                              \t'url': 'Please enter valid URL'\n" +
+    "\t\t\t\t                              },\n" +
+    "\t\t\t\t                              'show': $root.isInvalid(addProductForm.VideoLinks1),\n" +
+    "\t\t\t\t                              'conditions' : addProductForm.VideoLinks1.$error\n" +
+    "\t\t\t\t                         }\n" +
+    "\t\t\t\t                      }\"><input class=\"form-control width-field-normal\" name=VideoLinks1 type=url maxlength=500 ng-model=formDataPtr.VideoLinks[1] ng-class=\"{ 'has-error' : $root.isInvalid(addProductForm.VideoLinks1) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\n" +
+    "\t\t\t\t                        'label': 'Video Link 3',\n" +
+    "\t\t\t\t                        'hint': {\n" +
+    "\t\t\t\t                        \t'show': true,\n" +
+    "\t\t\t\t                        \t'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'\n" +
+    "\t\t\t\t                        },\n" +
+    "\t\t\t\t                        'error' : {\n" +
+    "\t\t\t\t                              'messages': {\n" +
+    "\t\t\t\t                              \t'url': 'Please enter valid URL'\n" +
+    "\t\t\t\t                              },\n" +
+    "\t\t\t\t                              'show': $root.isInvalid(addProductForm.VideoLinks2),\n" +
+    "\t\t\t\t                              'conditions' : addProductForm.VideoLinks2.$error\n" +
+    "\t\t\t\t                         }\n" +
     "\t\t\t\t                      }\"><input type=url class=\"form-control width-field-normal\" name=VideoLinks2 maxlength=500 ng-model=formDataPtr.VideoLinks[2] ng-class=\"{ 'has-error' : $root.isInvalid(addProductForm.VideoLinks2) }\"></div></div></div></div></div><div class=\"modal fade\" tabindex=-1 role=dialog id=product-image-zoom><div class=\"modal-dialog modal-product-image\"><img src=\"data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=\" alt=\"\"></div></div></div>"
   );
 
@@ -243,105 +161,58 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('ap/tab-more-option',
-    "<div id=add-product-more-option-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Relationship</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Related Products\" nc-template-form=form.RelatedProducts nc-template-options-path=addProductForm/RelatedProducts><ui-select ng-model=formDataPtr.RelatedProducts name=RelatedProducts nc-tag-validator nc-max-tag-count=10 multiple><ui-select-match placeholder=\"Input Product Name\"><span>{{ $item.ProductNameEn }}</span></ui-select-match><ui-select-choices repeat=\"item in (dataset.RelatedProducts | exclude: formDataPtr.RelatedProducts : 'ProductId' | exclude: [formData] : 'ProductId' ) track by item.Pid\" refresh=refresher.RelatedProducts($select.search) refresh-delay=1>{{ item.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div></div><div class=row><div class=col-xs-12><div ap-component=ap/section-seo></div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>More Details</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Effective On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': formDataPtr.ExpireDate && formDataPtr.ExpireDate <= formDataPtr.EffectiveDate }\" placeholder=\"Select date and time when product will go online\" class=\"input-icon-calendar form-control\" value=\"{{ formDataPtr.EffectiveDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formDataPtr.EffectiveDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'hour' }\"></ul></div><span class=help-block></span></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go online\"></i></div></div><div class=form-group><div class=width-label><label class=control-label>Expire On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white placeholder=\"Select date and time when product will go offline\" class=\"input-icon-calendar form-control\" name=ExpireDate ng-class=\"{'has-error': formDataPtr.ExpireDate && formDataPtr.ExpireDate <= formDataPtr.EffectiveDate }\" value=\"{{ formDataPtr.ExpireDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formDataPtr.ExpireDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'hour' }\"></ul></div><div class=width-field-large><span class=\"help-block color-red\" ng-if=\"formDataPtr.ExpireDate && formDataPtr.ExpireDate <= formDataPtr.EffectiveDate\"><span>Effective date/time must come before expire date/time</span></span></div></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go offline\"></i></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/TheOneCardEarn nc-template-form=form.TheOneCardEarn nc-label=\"The One Card earn\"><input disabled class=form-control ng-restrict=[0-9]* name=TheOneCardEarn ng-model=\"formDataPtr.TheOneCardEarn\"></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Nothing nc-template-form=form.GiftWrap nc-label=\"Gift Wrap\"><select class=form-control name=formDataPtr.GiftWrap><option>No</option><option>Yes</option></select></div><div class=form-group><div class=width-label><label class=control-label>Control Flag</label></div><div class=width-field-normal><div class=\"checkbox multiple-checkbox\"><label><input type=checkbox ng-model=formDataPtr.ControlFlags.Flag1>Flag 1</label><label><input type=checkbox ng-model=formDataPtr.ControlFlags.Flag2>Flag 2</label><label><input type=checkbox ng-model=formDataPtr.ControlFlags.Flag3>Flag 3</label></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Remark nc-template-form=form.Remark nc-label=Remark><textarea class=form-control ng-pattern=\"/^[^<>]+$/\" maxlength=2000 name=Remark ng-model=formDataPtr.Remark>\r" +
-    "\n" +
+    "<div id=add-product-more-option-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Relationship</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Related Products\" nc-template-form=form.RelatedProducts nc-template-options-path=addProductForm/RelatedProducts><ui-select ng-model=formDataPtr.RelatedProducts name=RelatedProducts nc-tag-validator nc-max-tag-count=10 multiple><ui-select-match placeholder=\"Input Product Name\"><span>{{ $item.ProductNameEn }}</span></ui-select-match><ui-select-choices repeat=\"item in (dataset.RelatedProducts | exclude: formDataPtr.RelatedProducts : 'ProductId' | exclude: [formData] : 'ProductId' ) track by item.Pid\" refresh=refresher.RelatedProducts($select.search) refresh-delay=1>{{ item.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div></div><div class=row><div class=col-xs-12><div ap-component=ap/section-seo></div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>More Details</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Effective On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': formDataPtr.ExpireDate && formDataPtr.ExpireDate <= formDataPtr.EffectiveDate }\" placeholder=\"Select date and time when product will go online\" class=\"input-icon-calendar form-control\" value=\"{{ formDataPtr.EffectiveDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formDataPtr.EffectiveDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'hour' }\"></ul></div><span class=help-block></span></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go online\"></i></div></div><div class=form-group><div class=width-label><label class=control-label>Expire On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white placeholder=\"Select date and time when product will go offline\" class=\"input-icon-calendar form-control\" name=ExpireDate ng-class=\"{'has-error': formDataPtr.ExpireDate && formDataPtr.ExpireDate <= formDataPtr.EffectiveDate }\" value=\"{{ formDataPtr.ExpireDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formDataPtr.ExpireDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'hour' }\"></ul></div><div class=width-field-large><span class=\"help-block color-red\" ng-if=\"formDataPtr.ExpireDate && formDataPtr.ExpireDate <= formDataPtr.EffectiveDate\"><span>Effective date/time must come before expire date/time</span></span></div></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go offline\"></i></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/TheOneCardEarn nc-template-form=form.TheOneCardEarn nc-label=\"The One Card earn\"><input disabled class=form-control ng-restrict=[0-9]* name=TheOneCardEarn ng-model=\"formDataPtr.TheOneCardEarn\"></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Nothing nc-template-form=form.GiftWrap nc-label=\"Gift Wrap\"><select class=form-control name=formDataPtr.GiftWrap><option>No</option><option>Yes</option></select></div><div class=form-group><div class=width-label><label class=control-label>Control Flag</label></div><div class=width-field-normal><div class=\"checkbox multiple-checkbox\"><label><input type=checkbox ng-model=formDataPtr.ControlFlags.Flag1>Flag 1</label><label><input type=checkbox ng-model=formDataPtr.ControlFlags.Flag2>Flag 2</label><label><input type=checkbox ng-model=formDataPtr.ControlFlags.Flag3>Flag 3</label></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Remark nc-template-form=form.Remark nc-label=Remark><textarea class=form-control ng-pattern=\"/^[^<>]+$/\" maxlength=2000 name=Remark ng-model=formDataPtr.Remark>\n" +
     "                        </textarea></div></div></div></div></div></div>"
   );
 
 
   $templateCache.put('ap/tab-variations',
-    "<div id=add-product-variation-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row ng-if=\"controlFlags.variation != 'enable'\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content><div class=form-group><p class=form-control-static>Variation will allow you to create a group of products with different attributes such as size and color. Once you enable variation, information from other tabs will be copied into variants that you will create, and variation cannot be disabled. <strong>Please select attribute set before enabling variation.</strong></p><button class=\"btn btn-width-xxl btn-blue margin-top-20\" ng-disabled=!formDataPtr.AttributeSet.AttributeSetId ng-click=enableVariation()>Enable Variation</button></div></div></div></div></div><div class=row ng-show=\"controlFlags.variation == 'enable'\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content ng-if=\"!(formDataPtr.AttributeSet && !formDataPtr.AttributeSet['AttributeSetId']) && controlFlags.variation == 'enable'\"><div class=form-group ng-repeat=\"jth in variationFactorIndices.iterator\" ng-show=\"(dataset.attributeOptions[0].options.length > 0) || (jth == 0)\"><div class=width-label><select class=form-control ng-options=\"i as i.Attribute.AttributeNameEn\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\tfor i in formDataPtr.AttributeSet.AttributeSetMaps |\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\ttruth: 'Attribute.VariantStatus' |\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\texclude: dataset.attributeOptions[1 - jth].Attribute : 'AttributeId'\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\ttrack by i.Attribute.AttributeId\" ng-model=dataset.attributeOptions[jth]><option value=\"\" disabled selected>Select an option..</option></select></div><div ng-template=common/input/width-field-large ng-template-options=\"{\r" +
-    "\n" +
-    "                                    'error' : {\r" +
-    "\n" +
-    "                                        'messages': {\r" +
-    "\n" +
-    "                                            'maxtagcount': 'Cannot exceed 20 tags',\r" +
-    "\n" +
-    "                                            'maxtaglength': 'Tag must contain 30 characters or less',\r" +
-    "\n" +
-    "                                            'pattern': 'Only letters and numbers allowed'\r" +
-    "\n" +
-    "                                        },\r" +
-    "\n" +
-    "                                        'show': true,\r" +
-    "\n" +
-    "                                        'conditions' :  addProductForm['attributeOptions' + jth].$error\r" +
-    "\n" +
-    "                                    }\r" +
-    "\n" +
-    "                                    }\"><ui-select ng-if=isListInput(dataset.attributeOptions[jth].Attribute.DataType) multiple ng-model=dataset.attributeOptions[jth].options><ui-select-match placeholder=\"Select variant\">{{ $item.AttributeValue.AttributeValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps | exclude: dataset.attributeOptions[jth].options : 'AttributeValue.AttributeValueId' ) | filter:$select.search\">{{ i.AttributeValue.AttributeValueEn }}</ui-select-choices></ui-select><ui-select ng-if=isFreeTextInput(dataset.attributeOptions[jth].Attribute.DataType) multiple tagging tagging-label=\"\" tagging-tokens=,|ENTER name=attributeOptions{{jth}} nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 nc-tag-pattern=^[a-zA-Z0-9ก-๙\\s\\-]+$ ng-model=dataset.attributeOptions[jth].options><ui-select-match placeholder=\"Input variant\">{{ $item }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps) | filter:$select.search\">{{ i }}</ui-select-choices></ui-select><input ng-if=!dataset.attributeOptions[jth].Attribute.DataType disabled class=\"form-control\"></div><a class=\"like-text form-text\" ng-click=variationFactorIndices.pushSecond() ng-if=\"dataset.attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1\"><i class=\"fa fa-plus-circle color-theme\"></i> Add another option</a> <a class=\"like-text form-text\" ng-click=variationFactorIndices.popSecond() ng-if=\"variationFactorIndices.length() == 2 && jth == 1\"><i class=\"fa fa-trash color-theme icon-size-20\"></i></a></div><div class=form-group ng-show=\"formDataPtr.Variants.length > 0\"><div class=width-label><label class=control-label>Default Variant</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-model=formDataPtr.DefaultVariant class=form-control ng-options=\"i as i.text for i in formDataPtr.Variants track by i.text\" required></select></div></div></div></div></div><div class=form-section ng-if=\"formDataPtr.AttributeSet && formDataPtr.Variants.length > 0\" ng-show=\"controlFlags.variation == 'enable'\"><div class=form-section-header>Variant ({{ formDataPtr.Variants.length }})</div><div class=\"form-section-content padding-left-30 padding-right-30\"><table class=\"table ah-table variation-table\"><thead><tr><th class=column-variant>Variant</th><th ng-if=\"formDataPtr.Variants.length > 0 && formDataPtr.Variants[0].Pid\">PID</th><th class=column-sku>SKU</th><th class=column-sale-price><label class=required>Sale Price</label></th><th class=column-price>Original Price</th><th class=column-inventory>Inventory</th><th class=\"column-detail text-center\">Detail</th><th class=column-visibility>Visibility</th></tr></thead><tbody><tr ng-repeat=\"pair in formDataPtr.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td ng-if=\"formDataPtr.Variants.length > 0 && formDataPtr.Variants[0].Pid\">{{pair.Pid }}</td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
-    "\n" +
-    "                                        'error' : {\r" +
-    "\n" +
-    "                                            'messages': {\r" +
-    "\n" +
-    "                                                'pattern': 'Special characters are not allowed'\r" +
-    "\n" +
-    "                                            },\r" +
-    "\n" +
-    "                                            'show': $root.isInvalid(addProductForm['pair_Sku' + $index]),\r" +
-    "\n" +
-    "                                            'conditions' : addProductForm['pair_Sku' + $index].$error\r" +
-    "\n" +
-    "                                        }\r" +
-    "\n" +
-    "                                    }\"><input ng-disabled=!pair.Visibility class=form-control name=\"pair_Sku{{ $index }}\" maxlength=300 ng-pattern=\"/^[^<>]+$/\" ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }\" ng-model=\"pair.Sku\"></td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
-    "\n" +
-    "                                        'error' : {\r" +
-    "\n" +
-    "                                            'messages': {\r" +
-    "\n" +
-    "                                                'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\r" +
-    "\n" +
-    "                                            },\r" +
-    "\n" +
-    "                                            'show': $root.isInvalid(addProductForm['pair_SalePrice' + $index]),\r" +
-    "\n" +
-    "                                            'conditions' : addProductForm['pair_SalePrice' + $index].$error\r" +
-    "\n" +
-    "                                        }\r" +
-    "\n" +
-    "                                    }\"><input ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_SalePrice{{$index}}) }\" ng-model=pair.SalePrice name=\"pair_SalePrice{{ $index }}\" ng-disabled=!pair.Visibility ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t\t\t                                         'error' : {\r" +
-    "\n" +
-    "\t\t\t\t\t\t                                             'messages': {\r" +
-    "\n" +
-    "\t\t\t\t\t\t                                                 'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\r" +
-    "\n" +
-    "\t\t\t\t\t\t                                             },\r" +
-    "\n" +
-    "\t\t\t\t\t\t                                             'show': $root.isInvalid(addProductForm['pair_OriginalPrice' + $index]),\r" +
-    "\n" +
-    "\t\t\t\t\t\t                                             'conditions' : addProductForm['pair_OriginalPrice' + $index].$error\r" +
-    "\n" +
-    "\t\t\t\t\t\t                                         }\r" +
-    "\n" +
-    "\t\t\t\t\t\t                                     }\"><input ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_OriginalPrice{{$index}}) }\" name=pair_OriginalPrice{{$index}} ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" ng-model=pair.OriginalPrice ng-disabled=!pair.Visibility class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
-    "\n" +
-    "                                        'error' : {\r" +
-    "\n" +
-    "                                            'messages': {\r" +
-    "\n" +
-    "                                                'pattern': 'Only numbers allowed'\r" +
-    "\n" +
-    "                                            },\r" +
-    "\n" +
-    "                                            'show': $root.isInvalid(addProductForm['pair_Quantity' + $index]),\r" +
-    "\n" +
-    "                                            'conditions' : addProductForm['pair_Quantity' + $index].$error\r" +
-    "\n" +
-    "                                        }\r" +
-    "\n" +
+    "<div id=add-product-variation-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row ng-if=\"controlFlags.variation != 'enable'\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content><div class=form-group><p class=form-control-static>Variation will allow you to create a group of products with different attributes such as size and color. Once you enable variation, information from other tabs will be copied into variants that you will create, and variation cannot be disabled. <strong>Please select attribute set before enabling variation.</strong></p><button class=\"btn btn-width-xxl btn-blue margin-top-20\" ng-disabled=!formDataPtr.AttributeSet.AttributeSetId ng-click=enableVariation()>Enable Variation</button></div></div></div></div></div><div class=row ng-show=\"controlFlags.variation == 'enable'\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content ng-if=\"!(formDataPtr.AttributeSet && !formDataPtr.AttributeSet['AttributeSetId']) && controlFlags.variation == 'enable'\"><div class=form-group ng-repeat=\"jth in variationFactorIndices.iterator\" ng-show=\"(dataset.attributeOptions[0].options.length > 0) || (jth == 0)\"><div class=width-label><select class=form-control ng-options=\"i as i.Attribute.AttributeNameEn\n" +
+    "\t\t\t\t\t\t\t\tfor i in formDataPtr.AttributeSet.AttributeSetMaps |\n" +
+    "\t\t\t\t\t\t\t\ttruth: 'Attribute.VariantStatus' |\n" +
+    "\t\t\t\t\t\t\t\texclude: dataset.attributeOptions[1 - jth].Attribute : 'AttributeId'\n" +
+    "\t\t\t\t\t\t\t\ttrack by i.Attribute.AttributeId\" ng-model=dataset.attributeOptions[jth]><option value=\"\" disabled selected>Select an option..</option></select></div><div ng-template=common/input/width-field-large ng-template-options=\"{\n" +
+    "                                    'error' : {\n" +
+    "                                        'messages': {\n" +
+    "                                            'maxtagcount': 'Cannot exceed 20 tags',\n" +
+    "                                            'maxtaglength': 'Tag must contain 30 characters or less',\n" +
+    "                                            'pattern': 'Only letters and numbers allowed'\n" +
+    "                                        },\n" +
+    "                                        'show': true,\n" +
+    "                                        'conditions' :  addProductForm['attributeOptions' + jth].$error\n" +
+    "                                    }\n" +
+    "                                    }\"><ui-select ng-if=isListInput(dataset.attributeOptions[jth].Attribute.DataType) multiple ng-model=dataset.attributeOptions[jth].options><ui-select-match placeholder=\"Select variant\">{{ $item.AttributeValue.AttributeValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps | exclude: dataset.attributeOptions[jth].options : 'AttributeValue.AttributeValueId' ) | filter:$select.search\">{{ i.AttributeValue.AttributeValueEn }}</ui-select-choices></ui-select><ui-select ng-if=isFreeTextInput(dataset.attributeOptions[jth].Attribute.DataType) multiple tagging tagging-label=\"\" tagging-tokens=,|ENTER name=attributeOptions{{jth}} nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 nc-tag-pattern=^[a-zA-Z0-9ก-๙\\s\\-]+$ ng-model=dataset.attributeOptions[jth].options><ui-select-match placeholder=\"Input variant\">{{ $item }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps) | filter:$select.search\">{{ i }}</ui-select-choices></ui-select><input ng-if=!dataset.attributeOptions[jth].Attribute.DataType disabled class=\"form-control\"></div><a class=\"like-text form-text\" ng-click=variationFactorIndices.pushSecond() ng-if=\"dataset.attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1\"><i class=\"fa fa-plus-circle color-theme\"></i> Add another option</a> <a class=\"like-text form-text\" ng-click=variationFactorIndices.popSecond() ng-if=\"variationFactorIndices.length() == 2 && jth == 1\"><i class=\"fa fa-trash color-theme icon-size-20\"></i></a></div><div class=form-group ng-show=\"formDataPtr.Variants.length > 0\"><div class=width-label><label class=control-label>Default Variant</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-model=formDataPtr.DefaultVariant class=form-control ng-options=\"i as i.text for i in formDataPtr.Variants track by i.text\" required></select></div></div></div></div></div><div class=form-section ng-if=\"formDataPtr.AttributeSet && formDataPtr.Variants.length > 0\" ng-show=\"controlFlags.variation == 'enable'\"><div class=form-section-header>Variant ({{ formDataPtr.Variants.length }})</div><div class=\"form-section-content padding-left-30 padding-right-30\"><table class=\"table ah-table variation-table\"><thead><tr><th class=column-variant>Variant</th><th ng-if=\"formDataPtr.Variants.length > 0 && formDataPtr.Variants[0].Pid\">PID</th><th class=column-sku>SKU</th><th class=column-sale-price><label class=required>Sale Price</label></th><th class=column-price>Original Price</th><th class=column-inventory>Inventory</th><th class=\"column-detail text-center\">Detail</th><th class=column-visibility>Visibility</th></tr></thead><tbody><tr ng-repeat=\"pair in formDataPtr.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td ng-if=\"formDataPtr.Variants.length > 0 && formDataPtr.Variants[0].Pid\">{{pair.Pid }}</td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
+    "                                        'error' : {\n" +
+    "                                            'messages': {\n" +
+    "                                                'pattern': 'Special characters are not allowed'\n" +
+    "                                            },\n" +
+    "                                            'show': $root.isInvalid(addProductForm['pair_Sku' + $index]),\n" +
+    "                                            'conditions' : addProductForm['pair_Sku' + $index].$error\n" +
+    "                                        }\n" +
+    "                                    }\"><input ng-disabled=!pair.Visibility class=form-control name=\"pair_Sku{{ $index }}\" maxlength=300 ng-pattern=\"/^[^<>]+$/\" ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }\" ng-model=\"pair.Sku\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
+    "                                        'error' : {\n" +
+    "                                            'messages': {\n" +
+    "                                                'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\n" +
+    "                                            },\n" +
+    "                                            'show': $root.isInvalid(addProductForm['pair_SalePrice' + $index]),\n" +
+    "                                            'conditions' : addProductForm['pair_SalePrice' + $index].$error\n" +
+    "                                        }\n" +
+    "                                    }\"><input ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_SalePrice{{$index}}) }\" ng-model=pair.SalePrice name=\"pair_SalePrice{{ $index }}\" ng-disabled=!pair.Visibility ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
+    "\t\t\t\t\t\t                                         'error' : {\n" +
+    "\t\t\t\t\t\t                                             'messages': {\n" +
+    "\t\t\t\t\t\t                                                 'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\n" +
+    "\t\t\t\t\t\t                                             },\n" +
+    "\t\t\t\t\t\t                                             'show': $root.isInvalid(addProductForm['pair_OriginalPrice' + $index]),\n" +
+    "\t\t\t\t\t\t                                             'conditions' : addProductForm['pair_OriginalPrice' + $index].$error\n" +
+    "\t\t\t\t\t\t                                         }\n" +
+    "\t\t\t\t\t\t                                     }\"><input ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_OriginalPrice{{$index}}) }\" name=pair_OriginalPrice{{$index}} ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" ng-model=pair.OriginalPrice ng-disabled=!pair.Visibility class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
+    "                                        'error' : {\n" +
+    "                                            'messages': {\n" +
+    "                                                'pattern': 'Only numbers allowed'\n" +
+    "                                            },\n" +
+    "                                            'show': $root.isInvalid(addProductForm['pair_Quantity' + $index]),\n" +
+    "                                            'conditions' : addProductForm['pair_Quantity' + $index].$error\n" +
+    "                                        }\n" +
     "                                    }\"><input ng-model=pair.Quantity maxlength=5 ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Quantity{{$index}}) }\" ng-disabled=!pair.Visibility ng-pattern=\"/^[0-9]+$/\" name=pair_Quantity{{$index}} class=\"form-control\"></td><td><a class=\"btn btn-white btn-width-xl\" ng-disabled=!pair.Visibility ng-click=\"openVariantDetail(pair, formDataPtr.Variants, $index)\">More Detail</a></td><td><a class=\"btn btn-white\" ng-click=\"pair.Visibility = !pair.Visibility\"><span ng-if=pair.Visibility>Hide</span> <span ng-if=!pair.Visibility>Show</span></a></td></tr></tbody></table></div></div></div></div></div>"
   );
  });
