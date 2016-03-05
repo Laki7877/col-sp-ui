@@ -105,9 +105,11 @@
                 nc-label="Logo File" nc-template-options-path="addBrandForm/BrandImage">
                   <button 
                   type="button"
+                  name="BrandImage"
                   class="btn btn-default"
                   ngf-accept="'.png,.jpg,.jpeg'"
                   ngf-select="uploadLogo($file)"
+                  ng-model="brandImage"
                   >Choose File</button>
               </div>
               <div ng-show="formData.BrandImage"
@@ -120,30 +122,65 @@
               </div>
             </div>
           </div>
-          <pre>{{formData.BrandBannerEn | json}}</pre>
-          <nc-image-banner nc-model="formData.BrandBannerEn" title="Banner Upload (English)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner> 
-          <nc-image-banner nc-model="formData.BrandBannerTh" title="Banner Upload (ไทย)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner> 
+          <nc-image-banner name="BrandBannerEn" nc-model="formData.BrandBannerEn" title="Banner Upload (English)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner> 
+          <nc-image-banner name="BrandBannerTh" nc-model="formData.BrandBannerTh" title="Banner Upload (ไทย)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner> 
+          <!-- Description -->
+          <div class="form-section">
+            <div class="form-section-header">
+                <h2>Description</h2></div>
+            <div class="form-section-content">
+                <div class="two-columns">
+                    <div class="row">
+                        <div nc-template="common/input/div-with-label" nc-label="Description (English)" nc-template-options-path="addBrandForm/DescriptionFull"
+                        nc-template-form="addBrandForm.DescriptionFullEn">
+                            <textarea ng-ckeditor="$root.ckOptions" class="form-control" maxlength="500" name="DescriptionFullEn" ng-model="formData.DescriptionFullEn">
+                            </textarea>
+                        </div>
+                        <div nc-template="common/input/div-with-label" nc-label="Description (ไทย)" nc-template-options-path="addBrandForm/DescriptionFull"
+                        nc-template-form="addBrandForm.DescriptionFullTh">
+                            <textarea ng-ckeditor="$root.ckOptions" class="form-control" maxlength="500" name="DescriptionFullTh" ng-model="formData.DescriptionFullTh">
+                            </textarea>
+                        </div>
+
+                    </div>
+                    <div class="row margin-top-30">
+                        <div nc-template="common/input/div-with-label" nc-label="Short Description (English)" nc-template-options-path="addBrandForm/DescriptionShortEn"
+                        nc-template-form="addBrandForm.DescriptionShortEn">
+                            <textarea ng-pattern="/^[^<>ก-๙]+$/" class="form-control" maxlength="500" name="DescriptionShortEn" ng-model="formData.DescriptionShortEn">
+                            </textarea>
+                        </div>
+                        <div nc-template="common/input/div-with-label" nc-label="Short Description (ไทย)" nc-template-options-path="addBrandForm/DescriptionShortTh"
+                        nc-template-form="addBrandForm.DescriptionShortTh">
+                            <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="DescriptionShortTh" ng-model="formData.DescriptionShortTh">
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <!-- Feature product -->
           <div class="form-section" ng-if="id > 0">
             <div class="form-section-header"><h2>Feature Products</h2></div>
             <div class="form-section-content">
               <div ng-if="availableProducts == 0">
                 <div nc-template="common/input/form-group-with-label"
                   nc-label="Feature Products">
-                  <span class="form-text">Unfortunately, There is no product belonging to this brand.</span>
+                  <span class="form-text">Currently, There are no products belonging to this brand.</span>
                 </div>
               </div>
               <div ng-if="availableProducts > 0">
                 <div nc-template="common/input/form-group-with-label"
                   nc-label="Featured Product Title"
-                  nc-template-options-path="addBrandForm/FeaturedProductSearch">
-                  <input type="text" class="form-control" ng-model="params.FeaturedProductTitle"/>
+                  nc-template-options-path="addBrandForm/FeatureTitle">
+                  <input type="text" class="form-control" ng-model="params.FeatureTitle"/>
                 </div>
                 <div nc-template="common/input/form-group-with-label"
-                  nc-label=""><input type="checkbox" ng-model="FeaturedProductShowcase"/> Title = Showcase </div>
+                  nc-label=""><input type="checkbox" ng-model="TitleShowcase"/> Title = Showcase 
+                </div>
                 <div nc-template="common/input/form-group-with-label"
                   nc-label="Featured Product"
-                  nc-template-options-path="addBrandForm/FeaturedProducts">
-                  <ui-select multiple ng-model="formData.FeaturedProducts" nc-tag-validator nc-max-tag-count="20">
+                  nc-template-options-path="addBrandForm/FeatureProducts">
+                  <ui-select multiple ng-model="formData.FeatureProducts" nc-tag-validator nc-max-tag-count="20">
                       <ui-select-match placeholder="Search for Product name or PID">
                           {{ $item.ProductNameEn }}
                       </ui-select-match>
@@ -155,100 +192,71 @@
               </div>
             </div>
           </div>
+          <!-- SEO -->
           <div class="form-section">
             <div class="form-section-header"><h2>SEO</h2></div>
             <div class="form-section-content">
-
-              <div ng-template="common/input/text"
-                ng-template-options="{
-                  'label': 'Meta Title (English)'
-                }">
+              <div nc-template="common/input/form-group-with-label"
+                nc-label="Meta Title (English)"
+                >
                 <input
                   class="form-control"
-                  name="SEO.MetaTitleEn"
+                  name="SEO_MetaTitleEn"
                   ng-model="formData.SEO.MetaTitleEn"
-                  ng-class="{ 'has-error' : isInvalid(form.SEO.MetaTitleEn) }"
                   maxlength="60"
                    />
               </div>
-              <div ng-template="common/input/text"
-                ng-template-options="{
-                  'label': 'Meta Title (ไทย)'
-                }">
+              <div nc-template="common/input/form-group-with-label"
+                nc-label="Meta Title (ไทย)">
                 <input
                   class="form-control"
-                  name="SEO.MetaTitleTh"
+                  name="SEO_MetaTitleTh"
                   ng-model="formData.SEO.MetaTitleTh"
-                  ng-class="{ 'has-error' : isInvalid(form.SEO.MetaTitleTh) }"
                   maxlength="60"
                    />
               </div>
-              <div ng-template="common/input/text"
-                ng-template-options="{
-                  'label': 'Meta Description (English)'
-                }">
+              <div nc-template="common/input/form-group-with-label"
+                nc-label="Meta Description (English)">
                 <input
                   class="form-control"
-                  name="SEO.MetaDescriptionEn"
+                  name="SEO_MetaDescriptionEn"
                   ng-model="formData.SEO.MetaDescriptionEn"
-                  ng-class="{ 'has-error' : isInvalid(form.SEO.MetaDescriptionEn) }"
                   maxlength="150"
                    />
               </div>
-              <div ng-template="common/input/text"
-                ng-template-options="{
-                  'label': 'Meta Description (ไทย)'
-                }">
+              <div nc-template="common/input/form-group-with-label"
+                nc-label="Meta Description (ไทย)">
                 <input
                   class="form-control"
-                  name="SEO.MetaDescriptionTh"
+                  name="SEO_MetaDescriptionTh"
                   ng-model="formData.SEO.MetaDescriptionTh"
-                  ng-class="{ 'has-error' : isInvalid(form.SEO.MetaDescriptionTh) }"
                   maxlength="150"
                    />
               </div>
-              <div ng-template="common/input/text2"
-                ng-template-options="{
-                  'label': 'Meta Keywords (English)',
-                  'error' : {
-                        'messages': {
-                          },
-                        'show': isInvalid(form.SEO_MetaKeywordEn),
-                        'conditions' : form.SEO_MetaKeywordEn.$error
-                   }
-                }">
+              <div nc-template="common/input/form-group-with-label"
+                nc-label="Meta Keywords (English)">
                 <input
                   class="form-control"
                   name="SEO_MetaKeywordEn"
                   ng-model="formData.SEO.MetaKeywordEn"
-                  ng-class="{ 'has-error' : isInvalid(form.SEO_MetaKeywordEn) }"
                   maxlength="300"
                   placeholder="Keywords seperated by comma"
                   />
               </div>
-              <div ng-template="common/input/text2"
-                ng-template-options="{
-                  'label': 'Meta Keywords (ไทย)',
-                  'error' : {
-                        'messages': {
-                          },
-                        'show': isInvalid(form.SEO_MetaKeywordTh),
-                        'conditions' : form.SEO_MetaKeywordTh.$error
-                   }
-                }">
+              <div nc-template="common/input/form-group-with-label"
+                nc-label="Meta Keywords (ไทย)">
                 <input
                   class="form-control"
                   name="SEO_MetaKeywordTh"
                   ng-model="formData.SEO.MetaKeywordTh"
-                  ng-class="{ 'has-error' : isInvalid(form.SEO_MetaKeywordTh) }"
                   maxlength="300"
                   placeholder="Keywords seperated by comma"
                   />
               </div>
             </div>
           </div>
-        </div> <!-- end .col-xs-12 -->
-      </div> <!-- end .row -->
+        </div>
+      </div>
       <div class="row">
         <div class="col-xs-12">
           <p class="text-align-right"><span class="color-red"><i class="fa fa-asterisk"></i></span> - Required Field</p>
@@ -263,6 +271,5 @@
         </div>
       </div>
     </form>
-    <? $this->insert('components/modal-product-image', ['id' => 'product-image-zoom']) ?>
   </div>
 <?php $this->stop() ?>

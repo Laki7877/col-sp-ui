@@ -2,6 +2,7 @@ angular.module('nc')
 	.directive('ncImageBanner', function($uibModal, $templateCache, FileItem, FileUploader) {
 		return {
 			restrict: 'E',
+			require: '?^^form',
 			replace: true,
 			scope: {
 				images: '=ncModel',
@@ -12,7 +13,7 @@ angular.module('nc')
 				title: '@title'
 			},
 			template: $templateCache.get('common/ncImageBanner'),
-			link: function(scope) {
+			link: function(scope, element, attrs, form) {
 				var fileUploader = false;
 				scope.images = scope.images || [];
 				scope.options = _.defaults(scope.options,{
@@ -27,6 +28,9 @@ angular.module('nc')
 					}
 				});
 				scope.upload = function(files) {
+					if(!_.isNil(form) && !_.isNil(attrs.name)) {
+						form.$setDirty();
+					}
 					if(fileUploader) {
 						_.forEach(files, function(file) {
 							//max size
@@ -103,9 +107,15 @@ angular.module('nc')
 						});
 
 						modal.result.then(function() {
+							if(!_.isNil(form) && !_.isNil(attrs.name)) {
+								form.$setDirty();
+							}
 							action.fn(image, scope.images, index);
 						});
 					} else {
+						if(!_.isNil(form) && !_.isNil(attrs.name)) {
+							form.$setDirty();
+						}
 						action.fn(image, scope.images, index);
 					}
 				};
@@ -150,7 +160,6 @@ angular.module('nc')
 						fn: function(item, array, index) {
 						    var to = index - 1;
 						    if (to < 0) return;
-						    console.log(index, to);
 						    var tmp = array[to];
 						    array[to] = item;
 						    array[index] = tmp;
