@@ -7,44 +7,28 @@ module.exports = {
             }
         }
     },
-    // Description
-    DescriptionFull: {
-        'divClass': 'col-sm-6',
-        'formGroupClass': 'margin-top-40',
+    BrandNameEn: {
+      'labelClass': 'required',
+      'error' : {
+            'messages': {
+              'required': 'This is a required field',
+              'pattern': 'Only English allowed'
+              }
+       }
+    },
+    DisplayNameEn: {
         'labelClass': 'required',
-        'inputSize': 'xxl'
-    },
-    DescriptionShortTh: {
-        'divClass': 'col-sm-6',
-        'inputSize': 'xxl',
-        'formGroupClass': 'margin-top-30',
-        'error': {
-            'messages': {
-                'pattern': 'Special characters are not allowed'
-            }
+        'error' : {
+              'messages': {
+                'required': 'This is a required field',
+                }
         }
     },
-    DescriptionShortEn: {
-        'divClass': 'col-sm-6',
-        'inputSize': 'xxl',
-        'formGroupClass': 'margin-top-30',
+    UrlKeyEn: {
         'error': {
             'messages': {
-                'pattern': 'Thai and Special characters are not allowed'
-            }
+                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'
+            },
         }
-    },
-    // Feature products
-    FeatureProducts: {
-    	inputClass: 'large',
-    	error: {
-    		messages: {
-    			maxtagcount: 'Only maximum of 20 feature products are allowed'
-    		}
-    	}
-    },
-    FeatureTitle: {
-    	inputClass: 'large'
     }
-    
-}
+};

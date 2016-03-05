@@ -18,7 +18,7 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 	};
 	$scope.uploadBannerFail = function(e, response) {
 		if(e == 'onmaxsize') {
-			$scope.alert.error('Maximum number of banner reached. Please remove previous banner before a new one');
+			$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
 		}
 		else {
 			$scope.alert.error(common.getError(response.data));

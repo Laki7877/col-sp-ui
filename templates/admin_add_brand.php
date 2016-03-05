@@ -14,85 +14,49 @@
               <h2>Information</h2>
             </div>
             <div class="form-section-content modal-custom">
-              <div ng-template="common/input/text2"
-                ng-template-options="{
-                  'label': 'Brand Name',
-                  'labelClass': 'required',
-                  'error' : {
-                        'messages': {
-                          'required': 'This is a required field',
-                          'pattern': 'Only English allowed'
-                          },
-                        'show': isInvalid(form.BrandNameEn),
-                        'conditions' : form.BrandNameEn.$error
-                   }
-                }">
+              <div nc-template="common/input/form-group-with-label"
+                nc-template-form="form.BrandNameEn"
+                nc-template-options-path="addBrandForm/BrandNameEn"
+                nc-label="Brand Name" >
                 <input
                   class="form-control"
                   name="BrandNameEn"
                   ng-model="formData.BrandNameEn"
-                  ng-class="{ 'has-error' : isInvalid(form.BrandNameEn) }"
                   ng-pattern="/^[^ก-๙]+$/"
                   maxlength="100"
                   required />
               </div>
-              <div ng-template="common/input/text2"
-                ng-template-options="{
-                  'label': 'Display Name (English)',
-                  'labelClass': 'required',
-                  'error' : {
-                        'messages': {
-                          'required': 'This is a required field',
-                          },
-                        'show': isInvalid(form.DisplayNameEn),
-                        'conditions' : form.DisplayNameEn.$error
-                   }
-                }">
+              <div nc-template="common/input/form-group-with-label"
+                nc-template-form="form.DisplayNameEn"
+                nc-template-options-path="addBrandForm/DisplayNameEn"
+                nc-label="Display Name (English)" >
                 <input
                   class="form-control"
                   name="DisplayNameEn"
                   ng-model="formData.DisplayNameEn"
-                  ng-class="{ 'has-error' : isInvalid(form.DisplayNameEn) }"
                   maxlength="100"
                   required />
               </div>
-              <div ng-template="common/input/text2"
-                ng-template-options="{
-                  'label': 'Display Name (ไทย)',
-                  'labelClass': 'required',
-                  'error' : {
-                        'messages': {
-                          'required': 'This is a required field',
-                          },
-                        'show': isInvalid(form.DisplayNameTh),
-                        'conditions' : form.DisplayNameTh.$error
-                   }
-                }">
+              <div nc-template="common/input/form-group-with-label"
+                nc-template-form="form.DisplayNameTh"
+                nc-template-options-path="addBrandForm/DisplayNameEn"
+                nc-label="Display Name (ไทย)">
                 <input
                   class="form-control"
                   name="DisplayNameTh"
                   ng-model="formData.DisplayNameTh"
-                  ng-class="{ 'has-error' : isInvalid(form.DisplayNameTh) }"
                   maxlength="100"
                   required />
               </div>
-              <div ng-template="common/input/text2"
-                ng-template-options="{
-                  'label': 'URL (English)',
-                  'error' : {
-                        'messages': {
-                          'pattern': 'Only English letters, numbers,  &quot;- &quot;, and  &quot;_&quot; allowed. Space is not allowed'
-                          },
-                        'show': isInvalid(form.SEO_ProductUrlKeyEn),
-                        'conditions' : form.SEO_ProductUrlKeyEn.$error
-                   }
-                }">
+              <div nc-template="common/input/form-group-with-label"
+                nc-template-form="form.UrlKeyEn"
+                nc-template-options-path="addBrandForm/UrlKeyEn"
+                nc-label="URL (English)">
                 <input
                   class="form-control"
                   name="SEO_ProductUrlKeyEn"
                   ng-model="formData.SEO.ProductUrlKeyEn"
                   ng-pattern="/^[A-Za-z0-9_\-]+$/"
-                  ng-class="{ 'has-error' : isInvalid(form.SEO_ProductUrlKeyEn) }"
                   maxlength="300"
                   />
               </div>
@@ -131,26 +95,26 @@
             <div class="form-section-content">
                 <div class="two-columns">
                     <div class="row">
-                        <div nc-template="common/input/div-with-label" nc-label="Description (English)" nc-template-options-path="addBrandForm/DescriptionFull"
-                        nc-template-form="addBrandForm.DescriptionFullEn">
+                        <div nc-template="common/input/div-with-label" nc-label="Description (English)" nc-template-options-path="genericForm/DescriptionFull"
+                        nc-template-form="form.DescriptionFullEn">
                             <textarea ng-ckeditor="$root.ckOptions" class="form-control" maxlength="500" name="DescriptionFullEn" ng-model="formData.DescriptionFullEn">
                             </textarea>
                         </div>
-                        <div nc-template="common/input/div-with-label" nc-label="Description (ไทย)" nc-template-options-path="addBrandForm/DescriptionFull"
-                        nc-template-form="addBrandForm.DescriptionFullTh">
+                        <div nc-template="common/input/div-with-label" nc-label="Description (ไทย)" nc-template-options-path="genericForm/DescriptionFull"
+                        nc-template-form="form.DescriptionFullTh">
                             <textarea ng-ckeditor="$root.ckOptions" class="form-control" maxlength="500" name="DescriptionFullTh" ng-model="formData.DescriptionFullTh">
                             </textarea>
                         </div>
 
                     </div>
                     <div class="row margin-top-30">
-                        <div nc-template="common/input/div-with-label" nc-label="Short Description (English)" nc-template-options-path="addBrandForm/DescriptionShortEn"
-                        nc-template-form="addBrandForm.DescriptionShortEn">
+                        <div nc-template="common/input/div-with-label" nc-label="Short Description (English)" nc-template-options-path="genericForm/DescriptionShortEn"
+                        nc-template-form="form.DescriptionShortEn">
                             <textarea ng-pattern="/^[^<>ก-๙]+$/" class="form-control" maxlength="500" name="DescriptionShortEn" ng-model="formData.DescriptionShortEn">
                             </textarea>
                         </div>
-                        <div nc-template="common/input/div-with-label" nc-label="Short Description (ไทย)" nc-template-options-path="addBrandForm/DescriptionShortTh"
-                        nc-template-form="addBrandForm.DescriptionShortTh">
+                        <div nc-template="common/input/div-with-label" nc-label="Short Description (ไทย)" nc-template-options-path="genericForm/DescriptionShortTh"
+                        nc-template-form="form.DescriptionShortTh">
                             <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="DescriptionShortTh" ng-model="formData.DescriptionShortTh">
                             </textarea>
                         </div>
@@ -171,16 +135,17 @@
               <div ng-if="availableProducts > 0">
                 <div nc-template="common/input/form-group-with-label"
                   nc-label="Featured Product Title"
-                  nc-template-options-path="addBrandForm/FeatureTitle">
+                  nc-template-options-path="genericForm/FeatureTitle">
                   <input type="text" class="form-control" ng-model="params.FeatureTitle"/>
                 </div>
                 <div nc-template="common/input/form-group-with-label"
                   nc-label=""><input type="checkbox" ng-model="TitleShowcase"/> Title = Showcase 
                 </div>
                 <div nc-template="common/input/form-group-with-label"
+                  nc-template-form="form.FeatureProducts"
                   nc-label="Featured Product"
-                  nc-template-options-path="addBrandForm/FeatureProducts">
-                  <ui-select multiple ng-model="formData.FeatureProducts" nc-tag-validator nc-max-tag-count="20">
+                  nc-template-options-path="genericForm/FeatureProducts">
+                  <ui-select name="FeatureProducts" multiple ng-model="formData.FeatureProducts" nc-tag-validator nc-max-tag-count="20">
                       <ui-select-match placeholder="Search for Product name or PID">
                           {{ $item.ProductNameEn }}
                       </ui-select-match>
