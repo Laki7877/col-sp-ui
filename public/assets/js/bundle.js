@@ -7313,11 +7313,26 @@ angular.module('nc')
 	}])
 },{}],91:[function(require,module,exports){
 angular.module('nc')
-	.directive('ncImageBanner', ["$uibModal", "$templateCache", "FileItem", "FileUploader", function($uibModal, $templateCache, FileItem, FileUploader) {
+	.directive('ncImageBanner', function() {
+		return {
+			restrict: 'E',
+			scope: {
+				ncModel: '=',
+				onFail: '=',
+				uploader: '=',
+				options: '=?',
+				size: '@',
+				title: '@'
+			},
+			template: '<nc-image-block nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 8 images</li><li>Image ratio 16:9</li></ul></nc-image-block>'
+		}
+	})
+	.directive('ncImageBlock', ["$uibModal", "$templateCache", "FileItem", "FileUploader", function($uibModal, $templateCache, FileItem, FileUploader) {
 		return {
 			restrict: 'E',
 			require: '?^^form',
 			replace: true,
+			transclude: true,
 			scope: {
 				images: '=ncModel',
 				onfail: '=onFail',
@@ -8428,7 +8443,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncImageBanner',
-    "<div class=form-section><div class=form-section-header><h2>{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p></div></div><div class=image-select-alternative-text><span>Or</span> <a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">Select Images from your computer</a></div></div></div><div class=col-xs-5><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 8 images</li><li>Image ratio 16:9</li></ul></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-src=\"{{ getSrc(image) }}\"></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div><div style=\"text-align:center; padding-top: 10px; color: grey\" ng-if=\"$index == 0\">Featured Image</div></li></ul></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p></div></div><div class=image-select-alternative-text><span>Or</span> <a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">Select Images from your computer</a></div></div></div><div class=col-xs-5 ng-transclude></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-src=\"{{ getSrc(image) }}\"></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div><div style=\"text-align:center; padding-top: 10px; color: grey\" ng-if=\"$index == 0\">Featured Image</div></li></ul></div></div>"
   );
 
 

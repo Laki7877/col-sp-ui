@@ -1,9 +1,24 @@
 angular.module('nc')
-	.directive('ncImageBanner', function($uibModal, $templateCache, FileItem, FileUploader) {
+	.directive('ncImageBanner', function() {
+		return {
+			restrict: 'E',
+			scope: {
+				ncModel: '=',
+				onFail: '=',
+				uploader: '=',
+				options: '=?',
+				size: '@',
+				title: '@'
+			},
+			template: '<nc-image-block nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 8 images</li><li>Image ratio 16:9</li></ul></nc-image-block>'
+		}
+	})
+	.directive('ncImageBlock', function($uibModal, $templateCache, FileItem, FileUploader) {
 		return {
 			restrict: 'E',
 			require: '?^^form',
 			replace: true,
+			transclude: true,
 			scope: {
 				images: '=ncModel',
 				onfail: '=onFail',
