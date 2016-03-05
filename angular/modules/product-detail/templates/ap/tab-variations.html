@@ -184,7 +184,8 @@
                                     class="form-control" />
                                 </td>
                                 <!--$emit('openPairModal', pair, formDataPtr.Variants, $index)-->
-                                <td><a class="btn btn-white btn-width-xl" ng-disabled='!pair.Visibility' ng-click="openVariantDetail(pair, formDataPtr.Variants, $index)">More Detail</a></td>
+                                <td><a class="btn btn-white btn-width-xl" ng-disabled='!pair.Visibility' 
+                                ng-click="openVariantDetail(pair, formDataPtr.Variants, $index)">More Detail</a></td>
                                 <td>
                                     <a class="btn btn-white" ng-click='pair.Visibility = !pair.Visibility'>
                                         <span ng-if='pair.Visibility'>Hide</span>

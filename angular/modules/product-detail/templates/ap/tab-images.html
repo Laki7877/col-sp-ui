@@ -5,7 +5,10 @@
         <div class="col-xs-12">
             <nc-alert nc-model="image_alert"></nc-alert>
             <!--<?php $this->insert('components/forms/form-section-upload-new-product-image', ['uploader' => 'uploader', 'images' => 'formDataPtr.MasterImages']) ?>-->
-            <div ap-component="ap/section-images" form-data="formData"></div>
+            
+            <nc-image-block options="{height: '150px', width: '150px'}" name="MasterImages" nc-model="formDataPtr.MasterVariant.Images" 
+            title="Product Images" uploader="uploader" on-fail="onImageUploadFail"
+            size="5"></nc-image-block>
 
             <div class="form-section">
                 <div class="form-section-header checkbox">

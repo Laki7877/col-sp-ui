@@ -379,13 +379,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             }
 
             try {
-                clean.MasterVariant.Images360 = (fd.MasterImages360 | []).map(mapper.Images)
-            } catch (ex) {
-                clean.MasterVariant.Images360 = []
-            }
-
-            try {
-                clean.MasterVariant.Images = (fd.MasterImages || []).map(mapper.Images)
+                clean.MasterVariant.Images = (fd.MasterVariant.Images || []).map(mapper.Images)
             } catch (ex) {
                 clean.MasterVariant.Images = []
             }
@@ -557,10 +551,10 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             delete invFd.LocalCategory
 
             // TODO: Just change ngmodel to bind to MasterVariant.MasterImages Directly
-            invFd.MasterImages = invFd.MasterVariant.Images || []
-            delete invFd.MasterVariant.Images
-            invFd.MasterImages360 = invFd.MasterVariant.Images360 || []
-            delete invFd.MasterVariant.Images360
+            // invFd.MasterImages = invFd.MasterVariant.Images || []
+            // delete invFd.MasterVariant.Images
+            // invFd.MasterImages360 = invFd.MasterVariant.Images360 || []
+            // delete invFd.MasterVariant.Images360
 
             try {
                 invFd.MasterVariant.WeightUnit = invFd.MasterVariant.WeightUnit.trim()

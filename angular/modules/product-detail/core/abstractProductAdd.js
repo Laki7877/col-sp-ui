@@ -550,11 +550,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 embed360: false
             }
         }
+        
         /**
          * Refresh Brand Data Set used for searching 
          * @param  {String} q
          */
         $scope.refresher.Brands = function (q) {
+            //TODO: too slow
             if (q == '' || !q || q == null) return
             $scope.dataset.Brands = [{
                 BrandId: -1,
@@ -563,7 +565,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             }]
 
             Brand.getAll({
-                pageSize: 10,
+                pageSize: 5,
                 searchText: q
             }).then(function (ds) {
                 $scope.dataset.Brands = ds.data
