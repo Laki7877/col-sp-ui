@@ -9,47 +9,7 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('ap/modal-variant-detail',
-    "<form class=\"ah-form sticky-mainform-action\"><div class=modal-header><h3 class=\"float-left modal-title\">Variant: {{ pair.text }}</h3><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div><div class=\"modal-body margin-top-20\"><div class=row><div class=col-xs-12><div ng-show=addProductVariantForm.$invalid class=\"alert alert-red\">Please make sure all fields have no error.</div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'label': 'Product Name (English)',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'labelClass': 'required',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'error' : {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'messages': {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t'pattern': 'Special characters are not allowed'\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t},\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'show': $root.isInvalid(addProductVariantForm.Modal_ProductNameEn),\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'conditions' : addProductVariantForm.Modal_ProductNameEn.$error\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t}\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t}\"><input class=\"form-control width-field-large\" name=Modal_ProductNameEn ng-model=pair.ProductNameEn maxlength=300 ng-pattern=\"/^[^<>ก-๙]+$/\" ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_ProductNameEn) }\"></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'label': 'Product Name (ไทย)',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'labelClass': 'required',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'error' : {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'messages': {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'pattern': 'Only letters and numbers allowed'\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t},\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'show': $root.isInvalid(addProductVariantForm.Modal_ProductNameTh),\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t'conditions' : addProductVariantForm.Modal_ProductNameTh.$error\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t}\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t}\"><input class=\"form-control width-field-large\" name=Modal_ProductNameTh ng-model=pair.ProductNameTh ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_ProductNameTh) }\" ng-pattern=\"/^[^<>]+$/\" maxlength=\"300\"></div><div nc-template=common/input/form-group-with-label nc-template-form=addProductForm.Modal_Upc nc-label=UPC nc-template-options-path=addProductForm/MasterVariant_Upc><input class=\"form-control width-field-large\" name=Modal_Upc ng-model=pair.Upc maxlength=\"100\"></div><div class=form-group><div class=width-label><label class=control-label>Display</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select class=form-control ng-model=pair.Display><option value={{op.value}} ng-repeat=\"op in dataSet.VariantDisplayOption\">{{ op.text }}</option></select></div></div></div></div></div><div class=form-section><div class=form-section-header>Embed Video</div><div class=form-section-content><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "<form class=\"ah-form sticky-mainform-action\" name=addProductVariantForm><div class=modal-header><h3 class=\"float-left modal-title\">Variant: {{ pair.text }}</h3><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button ng-disabled=addProductVariantForm.$invalid class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div><div class=\"modal-body margin-top-20\"><div class=row><div class=col-xs-12><div ng-if=addProductVariantForm.$invalid class=\"alert alert-red\" ng-cloak>Please make sure all fields have no error.</div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=addProductVariantForm.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/MasterVariant_ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=pair.ProductNameEn maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=addProductVariantForm.ProductNameTh nc-template-options-path=addProductForm/MasterVariant_ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=pair.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=addProductVariantForm.Sku nc-template-options-path=addProductForm/MasterVariant_Sku><input class=\"form-control width-field-large\" name=Sku ng-model=pair.Sku maxlength=300 ng-pattern=\"/^[^<>]+$/\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=addProductVariantForm.Upc nc-template-options-path=addProductForm/MasterVariant_Upc><input class=\"form-control width-field-large\" ng-pattern=\"/^[^<>]+$/\" name=Upc maxlength=300 ng-model=\"pair.Upc\"></div><div class=form-group><div class=width-label><label class=control-label>Display</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select class=form-control ng-model=pair.Display><option value={{op.value}} ng-repeat=\"op in dataset.VariantDisplayOption\">{{ op.text }}</option></select></div></div></div></div></div><div class=form-section><div class=form-section-header>Embed Video</div><div class=form-section-content><div ng-template=common/input/text2 ng-template-options=\"{\r" +
     "\n" +
     "\t\t\t\t                        'label': 'Video Link 1',\r" +
     "\n" +
@@ -127,55 +87,7 @@ angular.module("nc").run(function($templateCache) {  'use strict';
     "\n" +
     "\t\t\t\t                         }\r" +
     "\n" +
-    "\t\t\t\t                      }\"><input type=url class=\"form-control width-field-normal\" name=Modal_VideoLinks2 maxlength=500 ng-model=pair.VideoLinks[2] ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_VideoLinks2) }\"></div></div></div><div class=form-section><div class=form-section-header>Description</div><div class=form-section-content><div ng-template=common/input/textarea2 ng-template-options=\"{\r" +
-    "\n" +
-    "                                                'label': 'Short Description (English)',\r" +
-    "\n" +
-    "                                                'inputSize': 'xxl',\r" +
-    "\n" +
-    "                                                'formGroupClass' : 'margin-top-30',\r" +
-    "\n" +
-    "                                                'error' : {\r" +
-    "\n" +
-    "                                                'messages': {\r" +
-    "\n" +
-    "                                                    'pattern': 'Special characters are not allowed'\r" +
-    "\n" +
-    "                                                },\r" +
-    "\n" +
-    "                                                'show': $root.isInvalid(addProductVariantForm.Modal_DescriptionShortEn),\r" +
-    "\n" +
-    "                                                'conditions' : addProductVariantForm.Modal_DescriptionShortEn.$error\r" +
-    "\n" +
-    "                                                }\r" +
-    "\n" +
-    "                                                }\"><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=Modal_DescriptionShortEn ng-model=pair.DescriptionShortEn ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_DescriptionShortEn) }\">\r" +
-    "\n" +
-    "                            </textarea></div><div ng-template=common/input/textarea2 ng-template-options=\"{\r" +
-    "\n" +
-    "                                            'label': 'Short Description (ไทย)',\r" +
-    "\n" +
-    "                                            'inputSize': 'xxl',\r" +
-    "\n" +
-    "                                            'formGroupClass' : 'margin-top-30',\r" +
-    "\n" +
-    "                                            'error' : {\r" +
-    "\n" +
-    "                                            'messages': {\r" +
-    "\n" +
-    "                                            'pattern': 'Special characters are not allowed'\r" +
-    "\n" +
-    "                                            },\r" +
-    "\n" +
-    "                                            'show': $root.isInvalid(addProductVariantForm.Modal_DescriptionShortTh),\r" +
-    "\n" +
-    "                                            'conditions' : addProductVariantForm.Modal_DescriptionShortTh.$error\r" +
-    "\n" +
-    "                                            }\r" +
-    "\n" +
-    "                                            }\"><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=Modal_DescriptionShortTh ng-model=pair.DescriptionShortTh ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_DescriptionShortTh) }\">\r" +
-    "\n" +
-    "                            </textarea></div></div></div><div class=form-section><div class=form-section-header>Package Detail</div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Preparation Time\" nc-template-form=Modal_PrepareDay nc-template-options-path=addProductForm/PrepareDay><input class=\"form-control width-field-normal\" name=Modal_PrepareDay ng-pattern-restrict=^[0-9]*$ maxlength=5 ng-model=\"pair.PrepareDay\"></div><div class=form-group><div class=width-label><label class=\"control-label required\" style=\"margin-top: 25px\">Package Dimension</label></div><div class=width-field-xxl><div class=multiple-input><div class=input-column><div ng-template=common/input/text3 ng-template-options=\"{\r" +
+    "\t\t\t\t                      }\"><input type=url class=\"form-control width-field-normal\" name=Modal_VideoLinks2 maxlength=500 ng-model=pair.VideoLinks[2] ng-class=\"{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_VideoLinks2) }\"></div></div></div><div ap-component=ap/section-description form-data=formData></div><div class=form-section><div class=form-section-header>Package Detail</div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Preparation Time\" nc-template-form=Modal_PrepareDay nc-template-options-path=addProductForm/PrepareDay><input class=\"form-control width-field-normal\" name=Modal_PrepareDay ng-pattern-restrict=^[0-9]*$ maxlength=5 ng-model=\"pair.PrepareDay\"></div><div class=form-group><div class=width-label><label class=\"control-label required\" style=\"margin-top: 25px\">Package Dimension</label></div><div class=width-field-xxl><div class=multiple-input><div class=input-column><div ng-template=common/input/text3 ng-template-options=\"{\r" +
     "\n" +
     "                                                        'label': 'Length',\r" +
     "\n" +
@@ -269,9 +181,9 @@ angular.module("nc").run(function($templateCache) {  'use strict';
     "\n" +
     "            \t\t\t\t\t\t},\r" +
     "\n" +
-    "            \t\t\t\t\t\t'show': $root.isInvalid(addProductForm.SEO_ProductBoostingWeight),\r" +
+    "            \t\t\t\t\t\t'show': $root.isInvalid(addProductVariantForm.SEO_ProductBoostingWeight),\r" +
     "\n" +
-    "            \t\t\t\t\t\t'conditions' : addProductForm.SEO_ProductBoostingWeight.$error\r" +
+    "            \t\t\t\t\t\t'conditions' : addProductVariantForm.SEO_ProductBoostingWeight.$error\r" +
     "\n" +
     "            \t\t\t\t\t\t}\r" +
     "\n" +
@@ -319,6 +231,11 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
   $templateCache.put('ap/section-price',
     "<div class=form-section><div class=form-section-header><h2>Price</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=addProductForm.MasterVariant_SalePrice nc-label=\"Sale Price\" nc-template-options-path=addProductForm/MasterVariant_SalePrice><input ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" class=\"form-control width-field-normal\" maxlength=20 name=MasterVariant_SalePrice ng-model=formData.MasterVariant.SalePrice required></div><div nc-template=common/input/form-group-with-label nc-label=\"Original Price\" nc-template-options-path=addProductForm/MasterVariant_OriginalPrice nc-template-form=addProductForm.MasterVariant_OriginalPrice><input class=\"form-control width-field-normal\" name=MasterVariant_OriginalPrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"formData.MasterVariant.OriginalPrice\"></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/section-seo',
+    ""
   );
 
 
