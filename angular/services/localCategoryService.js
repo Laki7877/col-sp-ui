@@ -9,7 +9,12 @@ module.exports = function(common, $q, util) {
 			NameTh: "",
 			UrlKeyEn: "",
 			Visibility: true,
+			CategoryBannerTh: [],
+			CategoryBannerEn: []
 		}, extend);
+	};
+	service.deserialize = function(data) {
+		return _.extend(service.generate(), data);
 	};
 
 	/**

@@ -3,7 +3,6 @@ module.exports = {
     DescriptionFull: {
         'divClass': 'col-sm-6',
         'formGroupClass': 'margin-top-40',
-        'labelClass': 'required',
         'inputSize': 'xxl'
     },
     DescriptionShortTh: {

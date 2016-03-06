@@ -106,11 +106,12 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 			size: 'lg',
 			keyboard: false,
 			templateUrl: 'local_category/modal',
-			controller: function($scope, $uibModalInstance, $timeout, LocalCategoryService, NcAlert, config, id, Product) {
+			controller: function($scope, $uibModalInstance, $timeout, LocalCategoryService, NcAlert, config, id, Product, ImageService) {
 				'ngInject';
 				$scope.$parent.modalScope = $scope;
 				$scope.alert = new NcAlert();
 				$scope.statusOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
+				$scope.bannerUploader = ImageService.getUploaderFn('/LocalCategoryImages');
 				$scope.formData = {};
 				$scope.saving = false;
 				$scope.loading = true;
@@ -131,7 +132,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 					});
 					LocalCategoryService.get(id)
 						.then(function(data) {
-							$scope.formData = data;
+							$scope.formData = LocalCategoryService.deserialize(data);
 						}, function(err) {
 							$scope.alert.error(common.getError(err));
 						}).finally(function() {

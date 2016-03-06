@@ -83,6 +83,7 @@
                     ng-src="{{formData.BrandImage.url}}"
                     width="160"
                     />
+                  <a style="display:block;" class="margin-top-5" ng-click="formData.BrandImage=null"><i class="fa-trash fa"></i> Delete this image</a>
               </div>
             </div>
           </div>
@@ -123,13 +124,13 @@
             </div>
           </div>
           <!-- Feature product -->
-          <div class="form-section" ng-if="id > 0">
+          <div class="form-section">
             <div class="form-section-header"><h2>Feature Products</h2></div>
             <div class="form-section-content">
               <div ng-if="availableProducts == 0">
                 <div nc-template="common/input/form-group-with-label"
                   nc-label="Feature Products">
-                  <span class="form-text">Currently, There are no products belonging to this brand.</span>
+                  <span class="form-text">There are no products in this brand</span>
                 </div>
               </div>
               <div ng-if="availableProducts > 0">
