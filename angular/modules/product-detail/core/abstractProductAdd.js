@@ -12,6 +12,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.formData = {
       overview: {},
       TheOneCardEarn: 1,
+      Installment: 'No',
       GiftWrap: 'No',
       Brand: {
         id: null
@@ -69,6 +70,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     }]
     $scope.dataset.GlobalCategories = []
     $scope.dataset.LocalCategories = []
+    
     $scope.dataset.Brands = [{
       BrandId: null,
       BrandNameEn: 'Input brand by name or ID...',
