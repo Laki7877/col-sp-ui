@@ -116,12 +116,13 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 			size: 'lg',
 			keyboard: false,
 			templateUrl: 'global_category/modal',
-			controller: function($scope, $uibModalInstance, $timeout, GlobalCategoryService, NcAlert, config, id, attributeSetOptions, Product) {
+			controller: function($scope, $uibModalInstance, $timeout, GlobalCategoryService, NcAlert, config, id, attributeSetOptions, Product, ImageService) {
 				'ngInject';
 				$scope.$parent.modalScope = $scope;
 				$scope.alert = new NcAlert();
 				$scope.statusOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
 				$scope.attributeSetOptions = attributeSetOptions;
+				$scope.bannerUploader = ImageService.getUploaderFn('/GlobalCategoryImages');
 				$scope.formData = {};
 				$scope.saving = false;
 				$scope.loading = true;
@@ -143,7 +144,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 					//Load cat
 					GlobalCategoryService.get(id)
 						.then(function(data) {
-							$scope.formData = data;
+							$scope.formData = GlobalCategoryService.deserialize(data);
 						}, function(err) {
 							$scope.alert.error(common.getError(err));
 						}).finally(function() {

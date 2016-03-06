@@ -10,8 +10,13 @@ module.exports = function(common, $q, util) {
 			UrlKeyEn: null,
 			Commission: 0,
 			Visibility: true,
-			AttributeSets: []
+			AttributeSets: [],
+			CategoryBannerTh: [],
+			CategoryBannerEn: []
 		}, extend);
+	};
+	service.deserialize = function(data) {
+		return _.extend(service.generate(), data);
 	};
 
 	/**

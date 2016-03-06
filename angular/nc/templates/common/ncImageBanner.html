@@ -31,13 +31,21 @@
 			<li class="list-item" ng-repeat="image in images track by $index">
 				<div class="image-thumbs-actions">
 					<div class="image-thumbs-img-wrapper" ng-style="options">
-						<img ng-src="{{ getSrc(image) }}" />
+						<img ng-show="getSrc(image)" style="background-color:white;" ng-src="{{getSrc(image)}}" />
+				        <h4 ng-show="!getSrc(image)" style="text-align: center;margin-top:20%" class="color-grey ng-binding"><img src="/assets/img/loader.gif" height="55">
+				            <br/>
+				            <span ng-if="getProgress(image) < 100">
+				                {{ getProgress(image) }}%
+				            </span>
+				            <span ng-if="getProgress(image) >= 100">
+				                Processing..
+				            </span>
+				        </h4>
 					</div>
 					<div class="actions-wrapper text-center">
 						<a class="action" ng-repeat="action in actions" ng-click="call(image, $parent.$index, action)" style="width:37px; display:inline-block;">
 							<i class="fa {{action.icon}}"></i>
 						</a>
-						<!-- fa-search-icon fa-trash -->
 					</div>
 				</div>
 				<div style="text-align:center; padding-top: 10px; color: grey" ng-if="$index == 0">

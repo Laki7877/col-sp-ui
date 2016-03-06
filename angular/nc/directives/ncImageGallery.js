@@ -36,8 +36,6 @@ angular.module('nc')
 			template: $templateCache.get('common/ncImageBanner'),
 			link: function(scope, element, attrs, form) {
 				var fileUploader = false;
-                console.log('ncimageblock -scope', scope);
-				scope.images = scope.images || [];
 				scope.options = _.defaults(scope.options,{
 					height: '150px',
 					width: '150px'
@@ -60,7 +58,9 @@ angular.module('nc')
 								scope.onfail('onmaxsize', scope.size);
 								return;
 							}
-							var obj = {};
+							var obj = {
+								progress: 0
+							};
 							scope.images.push(obj);
 							var f = new FileItem(scope.uploader, file, {
 								onSuccess: function(response) {
@@ -71,6 +71,9 @@ angular.module('nc')
 									_.remove(scope.images, function(n) {
 										return n === obj;
 									});
+								},
+								onProgress: function(progress) {
+									obj.progress = progress;
 								}
 							});
 							scope.uploader.queue.push(f);
@@ -84,7 +87,9 @@ angular.module('nc')
 								scope.onfail('onmaxsize', scope.size);
 								return;
 							}
-							var obj = {};
+							var obj = {
+								progress: 0
+							};
 							scope.images.push(obj);
 							scope.uploader.upload(file)
 								.then(function(response) {
@@ -94,6 +99,8 @@ angular.module('nc')
 									_.remove(scope.images, function(n) {
 										return n === obj;
 									});
+								}, function(evt) {
+            						obj.progress = _.parseInt(100.0 * evt.loaded / evt.total);
 								});
 						});
 					}
@@ -142,7 +149,10 @@ angular.module('nc')
 					}
 				};
 				scope.getSrc = function(image) {
-					return image.url || '/assets/img/loader.gif';
+					return image.url || null;
+				};
+				scope.getProgress = function(image) {
+					return image.progress || 0;
 				};
 				scope.actions = [
 					{

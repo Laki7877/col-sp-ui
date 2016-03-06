@@ -64,7 +64,8 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/ncEye',
-    "<a ng-click=_toggle()><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon' : !model,\n" +
+    "<a ng-click=_toggle()><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon' : !model,\r" +
+    "\n" +
     "                            'fa fa-eye color-dark-grey eye-icon' : model}\"></i></a>"
   );
 
@@ -80,7 +81,7 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/ncImageBanner',
-    "<div class=form-section><div class=form-section-header><h2>{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p></div></div><div class=image-select-alternative-text><span>Or</span> <a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">Select Images from your computer</a></div></div></div><div class=col-xs-5 ng-transclude></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-src=\"{{ getSrc(image) }}\"></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div><div style=\"text-align:center; padding-top: 10px; color: grey\" ng-if=\"$index == 0\">Featured Image</div></li></ul></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p></div></div><div class=image-select-alternative-text><span>Or</span> <a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">Select Images from your computer</a></div></div></div><div class=col-xs-5 ng-transclude></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-show=getSrc(image) style=background-color:white ng-src=\"{{getSrc(image)}}\"><h4 ng-show=!getSrc(image) style=\"text-align: center;margin-top:20%\" class=\"color-grey ng-binding\"><img src=/assets/img/loader.gif height=55><br><span ng-if=\"getProgress(image) < 100\">{{ getProgress(image) }}%</span> <span ng-if=\"getProgress(image) >= 100\">Processing..</span></h4></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div><div style=\"text-align:center; padding-top: 10px; color: grey\" ng-if=\"$index == 0\">Featured Image</div></li></ul></div></div>"
   );
 
 
@@ -130,9 +131,12 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/ncTableSort',
-    "<a class=header-link ng-click=click()><span ng-class=\"{ 'active-underline' : isCurrent() }\" ng-transclude></span></a> <i class=fa ng-class=\"{ \n" +
-    "'fa fa-caret-down' : isCurrent() && direction, \n" +
-    "'fa fa-caret-up' : isCurrent() && !direction, \n" +
+    "<a class=header-link ng-click=click()><span ng-class=\"{ 'active-underline' : isCurrent() }\" ng-transclude></span></a> <i class=fa ng-class=\"{ \r" +
+    "\n" +
+    "'fa fa-caret-down' : isCurrent() && direction, \r" +
+    "\n" +
+    "'fa fa-caret-up' : isCurrent() && !direction, \r" +
+    "\n" +
     "'fa fa-caret-down color-grey' : !isCurrent() }\" ng-click=click()></i>"
   );
 
