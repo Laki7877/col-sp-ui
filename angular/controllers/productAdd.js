@@ -6,7 +6,7 @@ module.exports = function ($scope, $controller) {
     $controller('AbstractProductAddCtrl', {
         $scope: $scope,
         options: {
-            
+            maxImageUploadQueueLimit: 25
         }
     });
 

@@ -21,7 +21,7 @@ angular.module('nc')
 			transclude: true,
 			scope: {
 				images: '=ncModel',
-				onfail: '=onFail',
+				onfail: '=onFail', 
 				uploader: '=uploader',
 				options: '=?options',
 				size: '@size',
@@ -30,6 +30,7 @@ angular.module('nc')
 			template: $templateCache.get('common/ncImageBanner'),
 			link: function(scope, element, attrs, form) {
 				var fileUploader = false;
+                console.log('ncimageblock -scope', scope);
 				scope.images = scope.images || [];
 				scope.options = _.defaults(scope.options,{
 					height: '144px',
