@@ -20,15 +20,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       MasterVariant: {
         DimensionUnit: 'MM',
         WeightUnit: 'G',
-        StockType: 'Stock'
+        StockType: 'Stock',
+        Images: []
       },
       ShippingMethod: '1',
       AttributeSet: {
         AttributeSetTagMaps: []
       },
       RelatedProducts: [],
-      MasterImages: [],
-      MasterImages360: [],
       VideoLinks: ['', '', ''],
       Variants: [],
       GlobalCategories: [null, null, null],
