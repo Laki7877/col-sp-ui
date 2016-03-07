@@ -12064,14 +12064,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('global_category/nodes',
-    "<div class=\"category-content row no-margin\" ui-tree-handle style=\"cursor: pointer\"><div class=category-content-padding><span class=\"col-xs-5 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this) data-nodrag></i> <i class=\"fa fa-chevron-right caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\" data-nodrag></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\" data-nodrag></span> <a class=inline-block ng-click=open(node) data-nodrag>{{ node.NameEn }}</a></span></span> <span class=col-xs-1>{{ node.CategoryAbbreviation }}</span> <span class=\"col-xs-1 text-align-center\">{{ node.ProductCount }}</span> <span class=\"col-xs-2 text-align-center\">{{ node.AttributeSetCount }}</span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'global_category/nodes'\"></li></ol>"
-  );
-
-
-  $templateCache.put('global_category/nodes_action',
-    "<div><a href=# data-toggle=modal data-target=#modal-category-detail ng-click=\"$emit('openEditGlobalCategory', node)\">View / Edit</a></div><div><a href=# ng-click=\"$emit('viewGlobalCategory', node)\">View Products</a></div><div><a href=# ng-click=\"remove(); $emit('delete', node);\">Delete</a></div>"
+    "<div ui-tree-handle class=\"tree-node tree-node-content\"><a class=btn-collapse ng-if=\"node.nodes && node.nodes.length > 0\" data-nodrag ng-click=toggle(this)><span class=glyphicon ng-class=\"{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed }\"></span></a> <a ng-click=open(node) data-nodrag>{{node.NameEn}}</a> <span class=\"pull-right category-column action-gear\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span> <span class=\"pull-right category-column\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node) class=ng-isolate-scope></nc-eye></span> <span class=\"pull-right category-column\">{{node.AttributeSetCount}}</span> <span class=\"pull-right category-column\">{{node.ProductCount}}</span> <span class=\"pull-right category-column\">{{node.CategoryId}}</span></div><ol ui-tree-nodes=\"\" ng-model=node.nodes ng-class=\"{hidden: collapsed}\"><li ng-repeat=\"node in node.nodes track by $index\" ui-tree-node ng-include=\"'global_category/nodes'\"></li></ol>"
   );
 
 
@@ -12094,14 +12087,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('local_category/nodes',
-    "<div class=\"category-content row no-margin\" ui-tree-handle style=\"cursor: pointer\"><div class=category-content-padding><span class=\"col-xs-8 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this) data-nodrag></i> <i class=\"fa fa-chevron-right caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\" data-nodrag></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\" data-nodrag></span> <a class=inline-block ng-click=open(node) data-nodrag>{{ node.NameEn }}</a></span></span> <span class=\"col-xs-1 text-align-center\">{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'local_category/nodes'\"></li></ol>"
-  );
-
-
-  $templateCache.put('local_category/nodes_action',
-    "<div><a href=# data-toggle=modal data-target=#local-category-detail ng-click=\"$emit('openEditLocalCategory', node)\">View / Edit</a></div><div><a href=# ng-click=\"$emit('viewLocalCategory', node)\">View Products</a></div><div><a href=# ng-click=\"remove(); $emit('saveLocalCategory');\">Delete</a></div>"
+    "<div ui-tree-handle class=\"tree-node tree-node-content\"><a class=btn-collapse ng-if=\"node.nodes && node.nodes.length > 0\" data-nodrag ng-click=toggle(this)><span class=glyphicon ng-class=\"{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed }\"></span></a> <a ng-click=open(node) data-nodrag>{{node.NameEn}}</a> <span class=\"pull-right category-column action-gear\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span> <span class=\"pull-right category-column\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node) class=ng-isolate-scope></nc-eye></span> <span class=\"pull-right category-column\">{{node.ProductCount}}</span></div><ol ui-tree-nodes=\"\" ng-model=node.nodes ng-class=\"{hidden: collapsed}\"><li ng-repeat=\"node in node.nodes track by $index\" ui-tree-node ng-include=\"'local_category/nodes'\"></li></ol>"
   );
 
 
