@@ -109,7 +109,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 									<!-- Max local cat -->
 									<div ng-template="common/input/text2"
 										ng-template-options="{
-										'label': 'Maximum Local Category',
+										'label': 'Max Local Category (LV1)',
 										'inputSize' : 'small',
 										'error' : {
 										'show': $root.isInvalid(form.MaxLocalCategory),
@@ -121,6 +121,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										name="MaxLocalCategory"
 										ng-model="formData.MaxLocalCategory"
 										ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"
+										placeholder="8"
 										/>
 									</div>
 									<!-- Commission -->
