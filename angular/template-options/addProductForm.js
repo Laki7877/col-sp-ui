@@ -20,6 +20,9 @@ module.exports = {
   TheOneCardEarn: {
 
   },
+  Installment: {
+
+  },
   VideoLink: {
     'hint': {
       'show': true,

@@ -42,12 +42,11 @@
                 <div class="ah-select2-dropdown">
                     <ui-select ng-model="formDataPtr.Brand">
                         <ui-select-match>
-                            <span ng-bind="$select.selected.BrandNameEn"></span>
+                            <span ng-bind-html="$select.selected.BrandNameEn"></span>
                             <span ng-show="!$select.selected.BrandNameEn"><span class="color-grey"><i class="fa fa-search"></i> Search Brand</span></span>
                         </ui-select-match>
-                        <ui-select-choices ui-disable-choice="item.disabled" refresh-delay="500" refresh="refresher.Brands($select.search)" repeat="item in (dataset.Brands)  | filter : $select.search  track by item.BrandId">
-                            <span>{{ item.BrandNameEn }} </span>
-                            <span ng-if="item.BrandNameTh">/ {{ item.BrandNameTh }}</span>
+                        <ui-select-choices group-by="'_group'" ui-disable-choice="item.disabled" refresh-delay="1000" refresh="refresher.Brands($select.search)" repeat="item in (dataset.Brands)  | filter : $select.search  track by item.BrandId">
+                            <span ng-bind-html="item.BrandNameEn | highlight: $select.search"></span>
                         </ui-select-choices>
                     </ui-select>
                 </div>

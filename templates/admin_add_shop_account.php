@@ -47,7 +47,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										ng-class="{ 'has-error' : $root.isInvalid(form.ShopNameEn) }"
 										maxlength="100"
 										required />
-									</div>									
+									</div>
 									<!-- Shop Status -->
 									<div ng-template="common/input/dropdown"
 										ng-template-options="{
@@ -109,7 +109,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 									<!-- Max local cat -->
 									<div ng-template="common/input/text2"
 										ng-template-options="{
-										'label': 'Maximum Local Category',
+										'label': 'Max Local Category (LV1)',
 										'inputSize' : 'small',
 										'error' : {
 										'show': $root.isInvalid(form.MaxLocalCategory),
@@ -121,6 +121,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										name="MaxLocalCategory"
 										ng-model="formData.MaxLocalCategory"
 										ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"
+										placeholder="8"
 										/>
 									</div>
 									<!-- Commission -->
@@ -153,7 +154,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 									<div nc-template="common/input/form-group-with-label"
 										nc-label="Commission by Category">
 				                        <div class="width-field-normal" ng-repeat="item in formData.Commissions track by $index">
-				                        	<span class="form-text">{{item.Commission}}% for <a ng-click="openCommissionSelector(item)">{{item.NameEn}}</a>
+				                        	<span class="form-text"><a ng-click="openCommissionSelector(item)">{{item.Commission}}% for {{item.NameEn}}</a>
 				                            </span>
 				                            <i class="clickable color-dark-grey fa fa-trash margin-left-10" ng-click="formData.Commissions.splice($index, 1)"></i>
 				                        </div>
@@ -179,7 +180,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 				                           <input class="form-control" name="BankAccountNumber" type="text" ng-model="formData.BankAccountNumber" required/>
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label"
-				                    	nc-template-form="form.BankAccountName" 
+				                    	nc-template-form="form.BankAccountName"
 				                    	nc-label="Bank Account Name"
 				                    	nc-template-options-path="addShopAccountForm/BankAccountName">
 				                           <input class="form-control" name="BankAccountName" type="text" ng-model="formData.BankAccountName" required/>

@@ -21,11 +21,12 @@
                             <span ng-bind="$select.selected.AttributeSetNameEn"></span>
                             <span ng-show="!$select.selected.AttributeSetNameEn">- Select Attribute Set -</span>
                         </ui-select-match>
-                        <ui-select-choices repeat="item in (dataset.AttributeSets) | filter : $select.search track by item.AttributeSetId">
+                        <ui-select-choices group-by="'_group'" refresh="refresher.AttributeSets($select.search)" refresh-delay="1000" 
+                        repeat="item in (dataset.CombinedAttributeSets || dataset.AttributeSets) | filter : $select.search track by item.AttributeSetId">
                             <span ng-bind="item.AttributeSetNameEn"></span>
                         </ui-select-choices>
                     </ui-select>
-
+                    
 
                     <!-- if nothing is availalbe to pick -->
                     <select class="form-control" ng-if="dataset.AttributeSets.length == 0" disabled>
