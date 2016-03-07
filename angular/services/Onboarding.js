@@ -1,4 +1,4 @@
-module.exports = function (common, config, util) {
+module.exports = function (common, config, util, $log, $window) {
     'ngInject';
     'use strict';
 
@@ -7,6 +7,13 @@ module.exports = function (common, config, util) {
     service.getListCompletedTask = function () {
         return common.makeRequest({
             url: '/Onboarding',
+            method: 'GET'
+        });
+    };
+
+    service.launchShop = function() {
+        return common.makeRequest({
+            url: '/Shops/Launch?Status=AT',
             method: 'GET'
         });
     };

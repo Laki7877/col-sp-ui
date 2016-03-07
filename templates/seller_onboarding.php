@@ -44,7 +44,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "field_text" => "Complete the tasks above to launch your store",
            "button_text" => "Launch",
            "image_name" => "icon-onboard-launch",
-           "disble_status" => "disabled"]) ?>
+           "disble_status" => "disabled",
+           "type" => "launch"]) ?>
 
         <div class="complete_line home_task_space">
           <span class="complte_line_text">Completed</span>
