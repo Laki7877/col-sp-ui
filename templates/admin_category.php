@@ -10,6 +10,12 @@
 				<span ng-show="saving && pristine" class="margin-left-10" nc-loading-small="Saving..." style="display: inline-block; margin-bottom: -20px; margin-top: -5px;"></span>
 		    </h1>
 		    <span class="float-right page-header-action">
+					<button type="button" class="btn-white btn btn-width-xl margin-right-10" ng-click="expandAll()">
+						Expand All
+					</button>
+					<button type="button" class="btn-white btn btn-width-xl margin-right-10" ng-click="collapseAll()">
+						Collapse All
+					</button>
 		    	<button type="button" class="btn-white btn btn-width-xl margin-right-10">
 		          <span class="">Export</span>
 		        </button>
