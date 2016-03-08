@@ -25,7 +25,7 @@ require('ui-select/dist/select.js')
 require('angular-chart.js')
 
 // Nc package
-require('./nc')
+require('./modules/nc')
 require('./modules/product-detail')
 
 // Internal dependencies
@@ -181,7 +181,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('TestCtrl', controllers.test)
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractAdvanceList.js":4,"./controllers\\abstractList.js":5,"./controllers\\adminAccount.js":6,"./controllers\\adminAccountAdd.js":7,"./controllers\\adminAttribute.js":8,"./controllers\\adminAttributeAdd.js":9,"./controllers\\adminAttributeSet.js":10,"./controllers\\adminAttributeSetAdd.js":11,"./controllers\\adminBrand.js":12,"./controllers\\adminBrandAdd.js":13,"./controllers\\adminCategory.js":14,"./controllers\\adminCoupon.js":15,"./controllers\\adminCouponAdd.js":16,"./controllers\\adminOnTopCreditAdd.js":17,"./controllers\\adminOnTopCreditList.js":18,"./controllers\\adminProductApprovalList.js":19,"./controllers\\adminProductList.js":20,"./controllers\\adminRole.js":21,"./controllers\\adminRoleAdd.js":22,"./controllers\\adminShop.js":23,"./controllers\\adminShopAdd.js":24,"./controllers\\adminShoptype.js":25,"./controllers\\adminShoptypeAdd.js":26,"./controllers\\index.js":27,"./controllers\\localCategory.js":28,"./controllers\\login.js":29,"./controllers\\productAdd.js":30,"./controllers\\productAddSelectCategory.js":31,"./controllers\\productExport.js":32,"./controllers\\productImageList.js":33,"./controllers\\productImageManagement.js":34,"./controllers\\productImport.js":35,"./controllers\\productList.js":36,"./controllers\\productListLocalCategory.js":37,"./controllers\\productReview.js":38,"./controllers\\root.js":39,"./controllers\\sellerAccount.js":40,"./controllers\\sellerAccountAdd.js":41,"./controllers\\sellerInventoryList.js":42,"./controllers\\sellerOnboarding.js":43,"./controllers\\sellerRole.js":44,"./controllers\\sellerRoleAdd.js":45,"./controllers\\sellerShopSetting.js":46,"./controllers\\test.js":47,"./directives\\ncTradableSelect.js":48,"./directives\\ngCkeditor.js":49,"./directives\\ngDateBefore.js":50,"./directives\\ngDelegate.js":51,"./directives\\ngMatch.js":52,"./directives\\ngMaxnumber.js":53,"./directives\\ngMinnumber.js":54,"./directives\\ngPatternRestrict.js":55,"./directives\\ngPermission.js":56,"./directives\\ngSlideToggle.js":57,"./directives\\ngTemplate.js":58,"./directives\\popoverAny.js":59,"./filters\\capitalize.js":60,"./filters\\exclude.js":61,"./filters\\excludeCategory.js":62,"./filters\\html.js":63,"./filters\\importGuidelineExample.js":64,"./filters\\leadingzero.js":65,"./filters\\ordinal.js":66,"./filters\\slice.js":67,"./filters\\truncate.js":68,"./filters\\truth.js":69,"./filters\\variantValue.js":70,"./helpers\\base64.js":71,"./helpers\\common.js":72,"./helpers\\storage.js":73,"./helpers\\util.js":74,"./helpers\\variantPair.js":75,"./modules/product-detail":79,"./nc":107,"./route":109,"./services\\OnTopCredit.js":110,"./services\\OnTopCreditService.js":111,"./services\\Onboarding.js":112,"./services\\adminAccountService.js":113,"./services\\adminPermissionService.js":114,"./services\\adminRoleService.js":115,"./services\\adminShopService.js":116,"./services\\adminShoptypeService.js":117,"./services\\alert.js":118,"./services\\attribute.js":119,"./services\\attributeService.js":120,"./services\\attributeSet.js":121,"./services\\attributeSetService.js":122,"./services\\blocker.js":123,"./services\\brand.js":124,"./services\\brandService.js":125,"./services\\category.js":126,"./services\\coupon.js":127,"./services\\credential.js":128,"./services\\exceptionHandler.js":129,"./services\\fileService.js":130,"./services\\globalCategory.js":131,"./services\\globalCategoryService.js":132,"./services\\image.js":133,"./services\\imageService.js":134,"./services\\inventoryService.js":135,"./services\\knownException.js":136,"./services\\localCategory.js":137,"./services\\localCategoryService.js":138,"./services\\product.js":139,"./services\\productReviewService.js":140,"./services\\sellerAccountService.js":141,"./services\\sellerPermissionService.js":142,"./services\\sellerRoleService.js":143,"./services\\shop.js":144,"./services\\shopPermissionService.js":145,"./template":157,"./template-options\\PromotionForm.js":146,"./template-options\\addBrandForm.js":147,"./template-options\\addCategoryForm.js":148,"./template-options\\addProductForm.js":149,"./template-options\\addShopAccountForm.js":150,"./template-options\\couponForm.js":151,"./template-options\\genericForm.js":152,"./template-options\\productExport.js":153,"./template-options\\productImport.js":154,"./template-options\\searchForm.js":155,"./template-options\\shopSettingForm.js":156,"angular":176,"angular-animate":159,"angular-base64":160,"angular-bootstrap-datetimepicker":161,"angular-chart.js":162,"angular-clipboard":163,"angular-cookies":165,"angular-file-upload":166,"angular-sanitize":168,"angular-scroll":170,"angular-ui-bootstrap":172,"angular-ui-tree":174,"lodash":179,"ng-file-upload":182,"ui-select/dist/select.js":183}],2:[function(require,module,exports){
+},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractAdvanceList.js":4,"./controllers\\abstractList.js":5,"./controllers\\adminAccount.js":6,"./controllers\\adminAccountAdd.js":7,"./controllers\\adminAttribute.js":8,"./controllers\\adminAttributeAdd.js":9,"./controllers\\adminAttributeSet.js":10,"./controllers\\adminAttributeSetAdd.js":11,"./controllers\\adminBrand.js":12,"./controllers\\adminBrandAdd.js":13,"./controllers\\adminCategory.js":14,"./controllers\\adminCoupon.js":15,"./controllers\\adminCouponAdd.js":16,"./controllers\\adminOnTopCreditAdd.js":17,"./controllers\\adminOnTopCreditList.js":18,"./controllers\\adminProductApprovalList.js":19,"./controllers\\adminProductList.js":20,"./controllers\\adminRole.js":21,"./controllers\\adminRoleAdd.js":22,"./controllers\\adminShop.js":23,"./controllers\\adminShopAdd.js":24,"./controllers\\adminShoptype.js":25,"./controllers\\adminShoptypeAdd.js":26,"./controllers\\index.js":27,"./controllers\\localCategory.js":28,"./controllers\\login.js":29,"./controllers\\productAdd.js":30,"./controllers\\productAddSelectCategory.js":31,"./controllers\\productExport.js":32,"./controllers\\productImageList.js":33,"./controllers\\productImageManagement.js":34,"./controllers\\productImport.js":35,"./controllers\\productList.js":36,"./controllers\\productListLocalCategory.js":37,"./controllers\\productReview.js":38,"./controllers\\root.js":39,"./controllers\\sellerAccount.js":40,"./controllers\\sellerAccountAdd.js":41,"./controllers\\sellerInventoryList.js":42,"./controllers\\sellerOnboarding.js":43,"./controllers\\sellerRole.js":44,"./controllers\\sellerRoleAdd.js":45,"./controllers\\sellerShopSetting.js":46,"./controllers\\test.js":47,"./directives\\ncTradableSelect.js":48,"./directives\\ngCkeditor.js":49,"./directives\\ngDateBefore.js":50,"./directives\\ngDelegate.js":51,"./directives\\ngMatch.js":52,"./directives\\ngMaxnumber.js":53,"./directives\\ngMinnumber.js":54,"./directives\\ngPatternRestrict.js":55,"./directives\\ngPermission.js":56,"./directives\\ngSlideToggle.js":57,"./directives\\ngTemplate.js":58,"./directives\\popoverAny.js":59,"./filters\\capitalize.js":60,"./filters\\exclude.js":61,"./filters\\excludeCategory.js":62,"./filters\\html.js":63,"./filters\\importGuidelineExample.js":64,"./filters\\leadingzero.js":65,"./filters\\ordinal.js":66,"./filters\\slice.js":67,"./filters\\truncate.js":68,"./filters\\truth.js":69,"./filters\\variantValue.js":70,"./helpers\\base64.js":71,"./helpers\\common.js":72,"./helpers\\storage.js":73,"./helpers\\util.js":74,"./helpers\\variantPair.js":75,"./modules/nc":102,"./modules/product-detail":107,"./route":109,"./services\\OnTopCredit.js":110,"./services\\OnTopCreditService.js":111,"./services\\Onboarding.js":112,"./services\\adminAccountService.js":113,"./services\\adminPermissionService.js":114,"./services\\adminRoleService.js":115,"./services\\adminShopService.js":116,"./services\\adminShoptypeService.js":117,"./services\\alert.js":118,"./services\\attribute.js":119,"./services\\attributeService.js":120,"./services\\attributeSet.js":121,"./services\\attributeSetService.js":122,"./services\\blocker.js":123,"./services\\brand.js":124,"./services\\brandService.js":125,"./services\\category.js":126,"./services\\coupon.js":127,"./services\\credential.js":128,"./services\\exceptionHandler.js":129,"./services\\fileService.js":130,"./services\\globalCategory.js":131,"./services\\globalCategoryService.js":132,"./services\\image.js":133,"./services\\imageService.js":134,"./services\\inventoryService.js":135,"./services\\knownException.js":136,"./services\\localCategory.js":137,"./services\\localCategoryService.js":138,"./services\\product.js":139,"./services\\productReviewService.js":140,"./services\\sellerAccountService.js":141,"./services\\sellerPermissionService.js":142,"./services\\sellerRoleService.js":143,"./services\\shop.js":144,"./services\\shopPermissionService.js":145,"./template":157,"./template-options\\PromotionForm.js":146,"./template-options\\addBrandForm.js":147,"./template-options\\addCategoryForm.js":148,"./template-options\\addProductForm.js":149,"./template-options\\addShopAccountForm.js":150,"./template-options\\couponForm.js":151,"./template-options\\genericForm.js":152,"./template-options\\productExport.js":153,"./template-options\\productImport.js":154,"./template-options\\searchForm.js":155,"./template-options\\shopSettingForm.js":156,"angular":176,"angular-animate":159,"angular-base64":160,"angular-bootstrap-datetimepicker":161,"angular-chart.js":162,"angular-clipboard":163,"angular-cookies":165,"angular-file-upload":166,"angular-sanitize":168,"angular-scroll":170,"angular-ui-bootstrap":172,"angular-ui-tree":174,"lodash":179,"ng-file-upload":182,"ui-select/dist/select.js":183}],2:[function(require,module,exports){
 module.exports = {
 	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
@@ -5401,6 +5401,1778 @@ module.exports = ['util', function (util) {
 }];
 
 },{}],76:[function(require,module,exports){
+angular.module('nc')
+	.directive('ncAction', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
+		return {
+			restrict: 'E',
+			scope: {
+				model: '=ncModel',
+				options: '=ncActionFn'
+			},
+			template: $templateCache.get('common/ncAction'),
+			link: function(scope) {
+				scope.options = _.defaults(scope.options, []);
+				scope.call = function(action) {
+					if(action.confirmation) {
+						var modal = $uibModal.open({
+							animation: true,
+							size: 'size-warning',
+							templateUrl: 'common/ncActionModal',
+							controller: ["$scope", "$uibModalInstance", "options", "$interpolate", function($scope, $uibModalInstance, options, $interpolate) {
+								$scope.title = options.title;
+								$scope.message = $interpolate(options.message)(scope);
+								$scope.btnNo = options.btnNo || 'Cancel';
+								$scope.btnYes = options.btnYes || 'Confirm';
+								$scope.btnClass = options.btnClass || 'btn-blue';
+								$scope.yes = function() {
+									$uibModalInstance.close();
+								};
+								$scope.no = function() {
+									$uibModalInstance.dismiss();
+								}
+							}],
+							resolve: {
+								options: function() {
+									return {
+										title: action.confirmation.title,
+										message: action.confirmation.message,
+										btnNo: action.confirmation.btnCancel,
+										btnYes: action.confirmation.btnConfirm,
+										btnClass: action.confirmation.btnClass
+									}
+								}
+							}
+						});
+
+						//Modal
+						modal.result.then(function() {
+							action.fn(scope.model);
+						});
+					} else {
+						action.fn(scope.model);
+					}
+				};
+			}
+		}
+	}]);
+
+},{}],77:[function(require,module,exports){
+angular.module('nc')
+	.directive('ncAdvanceSearch', ["$templateCache", "$timeout", "$uibModal", function($templateCache, $timeout, $uibModal) {
+		return {
+			restrict: 'E',
+			replace: true,
+			scope: {
+				model: '=ncModel',
+				open: '=ncAdvanceSearchToggle',
+				options: '=?ncAdvanceSearchOptions',
+				callback: '=?ncAdvanceSearchEvent'
+			},
+			template: function(elem, attrs) {
+				if(attrs.ncAdvanceSearch) {
+					return $templateCache.get(attrs.ncAdvanceSearch);
+				} else {
+					return $templateCache.get('common/ncAdvanceSearch');
+				}
+			},
+			link: function(scope, elem, attrs) {
+				scope.formData = {};
+				scope.form = {};
+				scope.callback = scope.callback || function() { return false };
+				scope.options = _.defaults(scope.options, {
+					Tags: [],
+					Brands: [],
+					LocalCategories: [],
+					GlobalCategories: [],
+					Admin: true
+				});
+				scope.search = function() {
+					if(scope.callback(scope.formData, true)) return;
+					scope.model = _.extend({}, scope.formData);
+				};
+				scope.clear = function() {
+					if(scope.callback(scope.formData, false)) return;
+					scope.formData = {};
+				};
+			}
+		};
+	}])
+	.directive('ncAdvanceSearchButton', ["$templateCache", function($templateCache) {
+		return {
+			restrict: 'E',
+			replace: true,
+			scope: {
+				model: '=ncModel'
+			},
+			template: function(elem, attrs) {
+				if(attrs.ncAdvanceSearch) {
+					return $templateCache.get(attrs.ncAdvanceSearch);
+				} else {
+					return $templateCache.get('common/ncAdvanceSearchButton');
+				}
+			},
+			link: function(scope, elem, attrs) {
+				scope.toggle = function() {
+					scope.model = !scope.model;
+				};
+			}
+		};
+	}]);
+},{}],78:[function(require,module,exports){
+angular.module('nc')
+	.provider('$ncAlert', function() {
+		this.defaultErrorMessage = 'Error';
+		this.defaultSuccessMessage = 'Success';
+		this.$get = function() {
+			return this;
+		};
+	})
+	.directive('ncAlert', ["$templateCache", function($templateCache) {
+		return {
+			restrict: 'E',
+			scope: {
+				alert: '=ncModel'
+			},
+			template: $templateCache.get('common/ncAlert')
+		}
+	}])
+	.factory('NcAlert', ["$document", "$timeout", "$ncAlert", function($document, $timeout, $ncAlert) {
+		return function() {
+			var vm = this;
+			this.type = 'red';
+			this.show = false;
+			this.close = function() {
+				this.show = false;
+			};
+			this.open = function(success, msg, color) {
+				color = _.isNil(color) ? 'red' : color;
+				this.type = (success) ? 'green' : color;
+
+				if(msg) {
+					this.message = msg;
+				} else {
+					this.message = success ? $ncAlert.defaultSuccessMessage : $ncAlert.defaultErrorMessage;
+				}
+
+				this.show = true;
+			};
+			this.error = function(obj) {
+				this.open(false, obj);
+				
+				$timeout(function() {
+					var section = vm.element || $document;
+					section.scrollTopAnimated(0, 1000);
+				}, 10);
+			};
+			this.success = function(obj) {
+				this.open(true, obj);
+				
+				$timeout(function() {
+					var section = vm.element || $document;
+					section.scrollTopAnimated(0, 1000);
+				}, 10);
+			};
+			this.message = '';
+		};
+	}]);
+},{}],79:[function(require,module,exports){
+angular.module('nc')
+	.directive('ncBindCompile', ["$compile", "$templateCache", function($compile, $templateCache) {
+       return {
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                scope.$watch(function () {
+                    return scope.$eval(attrs.ncBindCompile);
+                }, function (value) {
+                    element.html(value);
+                    $compile(element.contents())(scope);
+                });
+            }
+        };
+	}])
+    .directive('ncBindTemplate', ["$compile", "$templateCache", function($compile, $templateCache) {
+       return {
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                scope.$watch(function () {
+                    return scope.$eval(attrs.ncBindTemplate);
+                }, function (value) {
+                    var content = $templateCache.get(value);
+                    element.html(content);
+                    $compile(element.contents())(scope);
+                });
+            }
+        };
+    }]);
+},{}],80:[function(require,module,exports){
+angular.module('nc')
+	.directive('ncBreadcrumbSelect', ["$templateCache", "$filter", "$timeout", function($templateCache, $filter, $timeout) {
+		var _globalOptions = {};
+		var encodedSeparator = '>>>>';
+		function constructBreadcrumbFromTree(tree, breadcrumb, parentObj) {
+			if(_.isUndefined(breadcrumb)) {
+				breadcrumb = [];
+			}
+			if(_.isArray(tree) && tree.length > 0) {
+				_.forEach(tree, function(item) {
+					var encodedName = $filter('escapeHtml')(item[_globalOptions.nameKey]);
+					var name = _.isUndefined(parentObj) ? encodedName : parentObj.name + encodedSeparator + encodedName;
+					var obj = {
+						displayName: name,
+						name: item[_globalOptions.nameKey],
+						id: item[_globalOptions.idKey],
+						item: item
+					};
+					breadcrumb.push(obj);
+					breadcrumb 	= constructBreadcrumbFromTree(item[_globalOptions.childrenKey], breadcrumb, obj);
+				});
+			}
+			return breadcrumb;		
+		};
+		return {
+			restrict: 'E',
+			scope: {
+				originalModel: '=ncModel',
+				tree: '=ncBreadcrumbSelectTree',
+				options: '=?ncBreadcrumbSelectOptions',
+				name: '@name'
+			},
+			template: $templateCache.get('common/ncBreadcrumbSelect'),
+			link: function(scope) {
+				scope.searchable = [];
+				scope.model = {ptr: []};
+				scope.options = _.defaults(scope.options, {
+					nameKey: 'NameEn',
+					childrenKey: 'nodes',
+					idKey: 'CategoryId',
+					placeholder: '',
+					limit: 10,
+					tagCount: 5,
+					seperator: ' <span class="fa fa-angle-right"></span> '
+				});
+				_globalOptions = scope.options;
+				scope.encodedSeparator = encodedSeparator;
+				scope.$watchCollection('model.ptr', function(newObj, oldObj) {
+					scope.originalModel = [];
+					var newArr = _.compact(_.map(scope.model.ptr, 'item'));
+					_.forEach(newArr, function(e) {
+						scope.originalModel.push(e);
+					});
+				});
+				scope.$watchCollection('originalModel', function(newObj, oldObj) {
+					if(_.isUndefined(newObj)) {
+						scope.originalModel = [];
+					}
+					if(_.isArray(scope.originalModel)) {
+						scope.model.ptr = [];
+						_.forEach(scope.originalModel, function(e) {
+							var search = { item: {} };
+							search['item'][scope.options.idKey] = e[scope.options.idKey];
+							var found = _.find(scope.searchable, search);
+							if(_.isObject(found)) {
+								scope.model.ptr.push(found);
+							}
+						});
+					}
+				});
+				scope.$watchCollection('tree', function(newObj, oldObj) {
+					scope.searchable = constructBreadcrumbFromTree(scope.tree, []);
+				});
+			}
+		};
+	}])
+},{}],81:[function(require,module,exports){
+angular.module('nc')
+	.directive('ncBulk', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
+		return {
+			restrict: 'E',
+			template: $templateCache.get('common/ncBulk'),
+			scope: {
+				model: '=ncModel',
+				options: '=ncBulkFn',
+				select: '=?ncBulkSelect',
+				id: '@ncBulkTrackBy',
+				tag: '@ncTag'
+			},
+			link: function(scope) {
+				var defaultOption = {
+					name: '- Choose Action -',
+					fn: function() {
+
+					}
+				};
+				scope.options = _.concat(defaultOption, _.defaults(scope.options, []));
+				scope.model = _.defaults(scope.model, []);
+
+				scope.id = _.defaults(scope.id, null);
+				scope.select = scope.options[0];
+
+				scope.uniq = function(e) {
+					if(scope.id != null) {
+						if(_.isUndefined(e[scope.id])) {
+							throw 'Object does not contain property of ncBulkTrackBy = "' + scope.id + '"';
+						}
+						return e[scope.id];
+					} else {
+						return e;
+					}
+				};
+				scope.selectOption = function(option) {
+					scope.select = option;
+				}
+				scope.onChildChange = function(value, obj) {
+					if(value) {
+						scope.model = _.uniq(_.concat(scope.model, obj), scope.uniq);
+					} else {
+						if(_.isArray(obj)) {
+							_.pullAllBy(scope.model, obj, scope.uniq);
+						} else {
+							_.pullAllBy(scope.model, [obj], scope.uniq);
+						}
+					}
+				};
+				scope.findChild = function(obj) {
+					if(_.isArray(obj)) {
+						return _.differenceBy(scope.model, obj, scope.uniq).length == (scope.model.length - obj.length);
+					} else {
+						return !_.isUndefined(_.find(scope.model, function(e) {
+							return scope.uniq(e) === scope.uniq(obj);
+						}));
+					}
+				};
+				scope.call = function() {
+					if(scope.select != scope.options[0]) {
+						if(scope.select.fail && scope.model.length == 0) {
+							scope.select.fail(scope.model);
+							return;
+						}
+						if(scope.select.confirmation) {
+							var modal = $uibModal.open({
+								animation: true,
+								size: 'size-warning',
+								templateUrl: 'common/ncBulkModal',
+								controller: ["$scope", "$uibModalInstance", "options", "$interpolate", function($scope, $uibModalInstance, options, $interpolate) {
+									$scope.title = options.title;
+									$scope.message = $interpolate(options.message)(scope);
+									$scope.btnNo = options.btnNo || 'Cancel';
+									$scope.btnYes = options.btnYes || 'Confirm';
+									$scope.btnClass = options.btnClass || 'btn-blue';
+									$scope.yes = function() {
+										$uibModalInstance.close();
+									};
+									$scope.no = function() {
+										$uibModalInstance.dismiss();
+									}
+								}],
+								resolve: {
+									options: function() {
+										return {
+											title: scope.select.confirmation.title,
+											message: scope.select.confirmation.message,
+											btnNo: scope.select.confirmation.btnCancel,
+											btnYes: scope.select.confirmation.btnConfirm,
+											btnClass: scope.select.confirmation.btnClass
+										}
+									}
+								}
+							});
+							//Modal 
+							modal.result.then(function() {
+								scope.select.fn(scope.model, function() {
+									//cb to clear all entries
+									scope.model = [];
+								});
+							});
+						} else {
+							scope.select.fn(scope.model, function() {
+								//cb to clear all entries
+								scope.model = [];
+							});
+						}
+					}
+				};
+			}
+		}
+	}])
+	.directive('ncBulkCheckbox', ["$templateCache", function($templateCache) {
+		return {
+			restrict: 'E',
+			replace: true,
+			scope: {
+				model: '=ncModel',
+				tag: '@ncTag'
+			},
+			template: $templateCache.get('common/ncBulkCheckbox'),
+			link: function(scope) {
+				if (_.isUndefined(scope.tag)) {
+					scope.parent = angular.element(document).find('nc-bulk').isolateScope();
+				} else {
+					scope.parent = angular.element(document).find('nc-bulk[ncTag="' + scope.tag + '"]').isolateScope();
+				}
+
+				scope.prevent = false;
+				scope.checkbox = false;
+				
+
+				var updateModel = function(val, val2) {
+					var checkbox = scope.parent.findChild(scope.model);
+					if(checkbox !== scope.checkbox) {
+						scope.prevent = true;
+						scope.checkbox = checkbox;
+					}
+				};
+
+				scope.$watch('model', updateModel, true);
+				scope.$watch('checkbox', function(val, val2) {
+					if(scope.prevent) {
+						scope.prevent = false;
+						return;
+					}
+					scope.parent.onChildChange(val, scope.model);
+				});
+				scope.parent.$watch('model', updateModel, true);
+			}
+		}
+	}])
+},{}],82:[function(require,module,exports){
+var angular = require('angular');
+angular.module('nc')
+    .directive('ncDateRange', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse) {
+            return {
+                restrict: 'A',
+                replace: true,
+                priority: 1010,
+                scope: {
+                    optionsPath: '@ncTemplateOptionsPath',
+                    startLabel: '@?ncStartLabel',
+                    startDate: '=ncModelStart',
+                    endLabel: '@?ncEndLabel',
+                    label: '@?ncLabel',
+                    endDate: '=ncModelEnd',
+                    startMinView: '@ncStartMinView',
+                    endMinView: '@ncEndMinView',
+                    errorText: '@ncErrorText'
+                },
+                template: function (element, attrs) {
+                    var templateHTML = $templateCache.get(attrs.ncDateRange);
+                    if(!templateHTML){
+                        throw new KnownException("Unable to load specified nc-daterange template " + attrs.ncDateRange);
+                    }
+                    return templateHTML;
+                },
+                link: function (scope, element, attrs, ctrl, transclude) {
+                    var pathComp
+                    var opt = {};
+                    if(scope.optionsPath){
+                        pathComp = scope.optionsPath.split('/');
+                        opt = $templateOptionsCache[pathComp[0]][pathComp[1]];
+                    }
+
+                    if (!opt) {
+                        throw new KnownException('Warning: nc-date-range cannot find ' + scope.optionsPath);
+                        opt = {};
+                    }
+
+                    if(!('error' in opt)){
+                        opt.error = {};
+                    };
+
+
+                    scope.options = opt;
+                    scope.config1 = { dropdownSelector: '#date_range_vertical_dropdown1', minView: (scope.startMinView || 'hour') }
+                    scope.config2 = { dropdownSelector: '#date_range_vertical_dropdown2', minView: (scope.endMinView || 'hour') }
+                }
+            };
+        }]);
+
+},{"angular":176}],83:[function(require,module,exports){
+angular.module('nc')
+	.directive('ncEmpty', ["$templateCache", function($templateCache) {
+		return {
+			restrict: 'A',
+			scope: {
+				message: '@ncEmpty'
+			},
+			template: $templateCache.get('common/ncEmpty'),
+			link: function(scope) {
+				scope.message = _.extend('Empty content', scope.message);
+			}
+		};
+	}]);
+},{}],84:[function(require,module,exports){
+angular.module('nc')
+	.directive('ncEye', ["$templateCache", function($templateCache) {
+		return {
+			restrict: 'E',
+			scope: {
+				model: '=ncModel',
+				callback: '&ncEyeOnToggle'
+			},
+			template: $templateCache.get('common/ncEye'),
+			link: function(scope) {
+				scope._toggle = function() {
+					scope.model =!scope.model;
+					scope.$eval(scope.callback);
+				};
+			}
+		}
+	}]);
+},{}],85:[function(require,module,exports){
+angular.module('nc')
+	.directive('ncFilter', ["$templateCache", function($templateCache) {
+		return {
+			restrict: 'E',
+			replace: true,
+			transclude: true,
+			scope: {
+				model: '=ncModel',
+				filters: '=ncFilterOptions',
+				callback: '=?ncFilterEvent'
+			},
+			template: $templateCache.get('common/ncFilter'),
+			link: function(scope) {
+				scope.callback = scope.callback || function() { return false };
+				scope.select = function(value) {
+					if(scope.callback()) return;
+					scope.model = value;
+				}
+			}
+		}
+	}])
+},{}],86:[function(require,module,exports){
+angular.module('nc')
+	.directive('ncImageBanner', function() {
+		return {
+			restrict: 'E',
+			scope: {
+				ncModel: '=',
+				onFail: '=',
+				uploader: '=',
+				options: '=?',
+				size: '@',
+				title: '@'
+			},
+			template: '<nc-image-block nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 8 images</li><li>Image ratio 16:9</li></ul></nc-image-block>',
+			link: function(scope) {
+				scope.options = _.defaults(scope.options,{
+					height: '144px',
+					width: '256px'
+				});
+			}
+		}
+	})
+	.directive('ncImageBlock', ["$uibModal", "$templateCache", "FileItem", "FileUploader", function($uibModal, $templateCache, FileItem, FileUploader) {
+		return {
+			restrict: 'E',
+			require: '?^^form',
+			replace: true,
+			transclude: true,
+			scope: {
+				images: '=ncModel',
+				onfail: '=onFail', 
+				uploader: '=uploader',
+				options: '=?options',
+				size: '@size',
+				title: '@title'
+			},
+			template: $templateCache.get('common/ncImageBanner'),
+			link: function(scope, element, attrs, form) {
+				var fileUploader = false;
+				scope.options = _.defaults(scope.options,{
+					height: '150px',
+					width: '150px'
+				});
+				scope.$watch('uploader', function(val) {
+					if(val instanceof FileUploader) {
+						fileUploader = true;
+					} else {
+						fileUploader = false;
+					}
+				});
+				scope.upload = function(files) {
+					if(!_.isNil(form) && !_.isNil(attrs.name)) {
+						form.$setDirty();
+					}
+					if(fileUploader) {
+						_.forEach(files, function(file) {
+							//max size
+							if(scope.images.length >= _.toInteger(scope.size)) {
+								scope.onfail('onmaxsize', scope.size);
+								return;
+							}
+							var obj = {
+								progress: 0
+							};
+							scope.images.push(obj);
+							var f = new FileItem(scope.uploader, file, {
+								onSuccess: function(response) {
+									_.extend(obj, response);
+								},
+								onError: function(response, status, headers) {
+									scope.onfail('onerror', response, status, headers);
+									_.remove(scope.images, function(n) {
+										return n === obj;
+									});
+								},
+								onProgress: function(progress) {
+									obj.progress = progress;
+								}
+							});
+							scope.uploader.queue.push(f);
+							f.upload();
+						});
+					} else {
+						//newer version
+						_.forEach(files, function(file) {
+							//max size
+							if(scope.images.length >= _.toInteger(scope.size)) {
+								scope.onfail('onmaxsize', scope.size);
+								return;
+							}
+							var obj = {
+								progress: 0
+							};
+							scope.images.push(obj);
+							scope.uploader.upload(file)
+								.then(function(response) {
+									_.extend(obj, response.data);
+								}, function(response) {
+									scope.onfail('onerror', response);
+									_.remove(scope.images, function(n) {
+										return n === obj;
+									});
+								}, function(evt) {
+            						obj.progress = _.parseInt(100.0 * evt.loaded / evt.total);
+								});
+						});
+					}
+				};
+				scope.call = function(image, index, action) {
+					if(!_.isNil(action.confirmation)) {
+						var modal = $uibModal.open ({
+							size: 'size-warning',
+							templateUrl: 'common/ncActionModal',
+							controller: ["$scope", "$uibModalInstance", "options", "$interpolate", function($scope, $uibModalInstance, options, $interpolate) {
+								$scope.title = options.title;
+								$scope.message = $interpolate(options.message)(scope);
+								$scope.btnNo = options.btnNo || 'Cancel';
+								$scope.btnYes = options.btnYes || 'Confirm';
+								$scope.btnClass = options.btnClass || 'btn-blue';
+								$scope.yes = function() {
+									$uibModalInstance.close();
+								};
+								$scope.no = function() {
+									$uibModalInstance.dismiss();
+								}
+							}],
+							resolve: {
+								options: function() {
+									return {
+										title: action.confirmation.title,
+										message: action.confirmation.message,
+										btnYes: action.confirmation.btnConfirm,
+										btnClass: action.confirmation.btnClass
+									}
+								}
+							}
+						});
+
+						modal.result.then(function() {
+							if(!_.isNil(form) && !_.isNil(attrs.name)) {
+								form.$setDirty();
+							}
+							action.fn(image, scope.images, index);
+						});
+					} else {
+						if(!_.isNil(form) && !_.isNil(attrs.name)) {
+							form.$setDirty();
+						}
+						action.fn(image, scope.images, index);
+					}
+				};
+				scope.getSrc = function(image) {
+					return image.url || null;
+				};
+				scope.getProgress = function(image) {
+					return image.progress || 0;
+				};
+				scope.actions = [
+					{
+						//Zoom
+						fn: function(item, array, index) {
+							$uibModal.open({
+								size: 'product-image',
+								template: '<img ng-src="{{url}}" alt=""/>',
+								controller: ["$scope", "url", function($scope, url) {
+									$scope.url = url;
+								}],
+								resolve: {
+									url: function() {
+										return item.url;
+									}
+								}
+							});
+						},
+						icon: 'fa-search-plus'
+					},
+					{
+						//Trash
+						fn: function(item, array, index) {
+							array.splice(index, 1);
+						},
+						icon: 'fa-trash',
+						confirmation: {
+							title: 'Confirm to delete',
+							message: 'Are you sure you want to delete the image?',
+							btnConfirm: 'Delete',
+							btnCancel: 'Cancel',
+							btnClass: 'btn-red'
+						}
+					},
+					{
+						//Left
+						fn: function(item, array, index) {
+						    var to = index - 1;
+						    if (to < 0) return;
+						    var tmp = array[to];
+						    array[to] = item;
+						    array[index] = tmp;
+						},
+						icon: 'fa-arrow-left'
+					},
+					{
+						//Right
+						fn: function(item, array, index) {
+							//console.log(item, array, index);
+						    var to = index + 1;
+						    if (to >= array.length) return;
+
+						    var tmp = array[to];
+						    array[to] = item;
+						    array[index] = tmp;
+						},
+						icon: 'fa-arrow-right'
+					}
+				];
+			}
+		}
+	}])
+	.directive('ncImageGallery', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
+		return {
+			restrict: 'E',
+			replace: true,
+			transclude: true,
+			scope: {
+				model: '=ncModel',
+				options: '=ncImageGalleryOptions',
+				lock: '&?ncImageGalleryDisabled'
+			},
+			template: $templateCache.get('common/ncImageGallery'),
+			link: function(scope) {
+				scope.options = _.defaults(scope.options, {
+					actions: [],
+					size: 10, //max size of gallery
+					urlKey: 'url', //image[urlKey] to get src
+					loaderImg: '/assets/img/loader.gif', //when image[urlKey] = ''
+					emptyImg: '/assets/img/placeholder-no-image-blank.png' //when image = null 
+				});
+				scope.lock = _.defaults(scope.lock, function() { return false; });
+				scope.getSrc = function(image) {
+					if(image == null) {
+						//Empty
+						return scope.options.emptyImg;
+					} else if(image[scope.options.urlKey] == '') {
+						return scope.options.loaderImg;
+					} else {
+						return image[scope.options.urlKey];
+					}
+				};
+				scope.isDisabled = function(image) {
+					return _.isNull(image) || scope.lock();
+				};
+				scope.call = function(action, image) {
+					if(scope.isDisabled(image)) return;
+					var index = scope.model.indexOf(image);
+					
+					if(action.confirmation) {
+						var modal = $uibModal.open({
+							size: 'size-warning',
+							templateUrl: 'common/ncActionModal',
+							controller: ["$scope", "$uibModalInstance", "options", "$interpolate", function($scope, $uibModalInstance, options, $interpolate) {
+								$scope.title = options.title;
+								$scope.message = $interpolate(options.message)(scope);
+								$scope.btnNo = options.btnNo || 'Cancel';
+								$scope.btnYes = options.btnYes || 'Confirm';
+								$scope.btnClass = options.btnClass || 'btn-blue';
+								$scope.yes = function() {
+									$uibModalInstance.close();
+								};
+								$scope.no = function() {
+									$uibModalInstance.dismiss();
+								}
+							}],
+							resolve: {
+								options: function() {
+									return {
+										title: action.confirmation.title,
+										message: action.confirmation.message,
+										btnYes: action.confirmation.btnConfirm,
+										btnClass: action.confirmation.btnClass
+									}
+								}
+							}
+						});
+
+						modal.result.then(function() {
+							action.fn(image, scope.model, index);
+						})
+					} else {
+						action.fn(image, scope.model, index);
+					}
+				}
+				var load = function() {
+					scope.images = _.clone(scope.model);
+					for (var i = 0; i < scope.options.size - scope.model.length; i++) {
+						scope.images.push(null);
+					};
+				};
+				scope.$watch('model', load, true);
+			}
+		};
+	}])
+	.directive('ncImageDropzone', ["$templateCache", "$compile", "FileUploader", function($templateCache, $compile, FileUploader) {
+		return {
+			restrict: 'E',
+			replace: true,
+			scope: {
+				model: '=ncModel',
+				originalUploader: '=ncImageUploader',
+				options: '=?ncImageDropzoneOptions',
+				onEvent: '&?ncImageDropzoneOnEvent',
+				onError: '&?ncImageDropzoneOnError',
+				onSuccess: '&?ncImageDropzoneOnSuccess',
+				isUploading: '=?isUploading',
+				template: '@ncImageTemplate'
+			},
+			link: function(scope, element) {
+				scope.uploader = new FileUploader(scope.originalUploader);
+				scope.template = scope.template || 'common/ncImageDropzoneTemplate';
+				scope.options = _.defaults(scope.options, {
+					urlKey: 'url',
+					onQueueLimit: _.noop,
+					onEvent: _.noop,
+					onResponse: function(item) { return item; },
+					onUpload: function(item) {}
+				});
+				scope.onError = scope.onError || _.noop;
+				scope.onSuccess = scope.onSuccess || _.noop;
+				scope.update = function() {
+					var html = $templateCache.get(scope.template);
+					element.html(html);
+					$compile(element.contents())(scope);
+				};
+	
+				scope.upload = function() {
+					element.find('input').trigger('click');
+				};
+
+				scope.triggerEvent = function(eventName) {
+					scope.onEvent({$eventName: eventName});
+				};
+
+				//Upload
+				scope.uploader.onAfterAddingFile = function(item) {
+					if(scope.uploader.queueLimit == scope.model.length) {
+						if(scope.options.onQueueLimit) {
+							scope.options.onQueueLimit(item, scope.model);
+						}
+						item.cancel();
+						item.remove();
+					} else {
+						var obj = {};
+						obj[scope.options.urlKey] = '';
+						scope.model.push(obj);
+						item.obj = obj;
+						item.indx = scope.model.length-1;
+					}
+				};
+				scope.uploader.onWhenAddingFileFailed = function(item, filter) {
+			    	scope.onError({$response : filter});
+				};
+			    scope.uploader.onSuccessItem = function(item, response, status, headers) {
+					scope.model[item.indx][scope.options.urlKey] = response[scope.options.urlKey];			    	
+			    };
+			    scope.uploader.onErrorItem = function(item, response, status, headers) {
+			    	scope.model.splice(scope.model.indexOf(item.obj), 1);
+			    	scope.onError({$response : response});
+			    };
+
+				scope.update();
+				scope.$watch('template', scope.update);
+				scope.$watch('uploader.isUploading', function(val) {
+					scope.isUploading = val;
+				});
+			}
+		};
+	}])
+},{}],87:[function(require,module,exports){
+angular.module('nc')
+.directive('ncImageIntegrity', function() {
+    //Only show if image loaded by <img> integrity is OK (100% finished loading)
+        return {
+            restrict: 'A',
+            link: function(scope, element, attrs) {
+                element.bind('load', function() {
+                    if(element.naturalWidth !== 0){
+                        element.css('display', 'inherit');
+                    }
+                    
+                });
+                element.bind('error', function(){
+                    element.css('display', 'inherit');
+                    console.error("Unable to load image - integrity check failed", element); //should retry
+                });
+            }
+        };
+    })
+},{}],88:[function(require,module,exports){
+angular.module('nc')
+	.directive('ncLoading', ["$templateCache", function($templateCache) {
+		return {
+			restrict: 'A',
+			scope: {
+				message: '@ncLoading'
+			},
+			template: $templateCache.get('common/ncLoading'),
+			link: function(scope) {
+				scope.message = _.extend('Loading...', scope.message);
+			}
+		};
+	}])
+	.directive('ncLoadingSmall', ["$templateCache", function($templateCache) {
+		return {
+			restrict: 'A',
+			scope: {
+				message: '@ncLoadingSmall'
+			},
+			template: $templateCache.get('common/ncLoadingSmall'),
+			link: function(scope) {
+				scope.message = _.extend('Loading...', scope.message);
+			}
+		};
+	}]);
+},{}],89:[function(require,module,exports){
+var angular = require('angular');
+angular.module('nc')
+    .directive('ncPageTitle', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "$parse", "KnownException", function ($rootScope, $templateCache, $compile, $templateOptionsCache, $parse, KnownException) {
+        return {
+            restrict: 'EA',
+            transclude: true,
+            replace: true,
+            priority: 1010,
+            scope: {
+                title: '@ncTitle'
+            },
+            template: function (element, attrs) {
+                var templateHTML = $templateCache.get('partials/page-title');
+                if (!templateHTML) {
+                    throw new KnownException("Unable to load specified nc-page-title");
+                }
+                return templateHTML;
+            },
+            link: function (scope, element, attrs, ctrl, transclude) {
+            	console.log("nc-page-title"); 
+            }
+        };
+    }]);
+},{"angular":176}],90:[function(require,module,exports){
+angular.module('nc')
+	.provider('$ncPagination', function() {
+		this.paginationSizes = [10,20,30];
+		this.$get = function() {
+			return this;
+		}
+	})
+	.directive('ncPagination', ["$templateCache", "$ncPagination", function($templateCache, $ncPagination) {
+		return {
+			restrict: 'E',
+			replace: true,
+			scope: {
+				params: '=ncModel',
+				total: '=ncPaginationTotal',
+				paginationOptions: '=?ncPaginationSizes',
+				callback: '=?ncPaginationEvent'
+			},
+			template: $templateCache.get('common/ncPagination'),
+			link: function(scope, element, attrs) {
+				scope.paginationOptions = scope.paginationOptions || $ncPagination.paginationSizes;
+				scope.params._limit = scope.paginationOptions[0];
+				scope.callback = scope.callback || function() { return false };
+				scope.page = function() {
+					if(scope.total == 0) {
+						return 0;
+					}
+					return Math.ceil(scope.params._offset / scope.params._limit) + 1;
+				};
+				scope.pageSize = function() {
+					return scope.params._limit; 
+				};	
+				scope.totalPage = function() {
+					return Math.ceil(scope.total / scope.params._limit);
+				};
+				scope.nextPage = function(offset) {
+					var page = scope.page();
+					var total = scope.totalPage();
+					if(page + offset > total ||
+						page + offset <= 0)
+						return;
+					if(scope.callback(scope.params._offset + (offset) * scope.params._limit, 'offset')) {
+						return;
+					}
+					scope.params._offset += offset * scope.params._limit;
+				};
+				scope.setPage = function(i) {
+					scope.params._offset = (i-1) * scope.params._limit;
+				};
+				scope.setPageSize = function(n) {
+					if(scope.params._limit == n) {
+						return;
+					}
+					if(scope.callback(n, 'size')) {
+						return;
+					}
+					scope.params._limit = n;
+					
+				};
+				scope.$watch('params._limit', function() {
+					if(scope.params._limit > scope.total) {
+						scope.setPage(1);
+					}
+				});
+			}
+		}
+	}]);
+},{}],91:[function(require,module,exports){
+angular.module('nc')
+	.provider('ncPermissionProvider', function() {
+		this.permission = function() {
+			return [];
+		};
+		this.$get = function() {
+			return this;
+		};
+	})
+	.directive('ncClassPermission', function() {
+		return {
+			restrict: 'A',
+			link: function(scope, element, attrs) {
+
+			}
+		}
+	})
+	.directive('ncShowPermission', function() {
+		
+	});
+},{}],92:[function(require,module,exports){
+angular.module('nc')
+	.directive('ncSearch', ["$templateCache", function($templateCache) {
+		return {
+			restrict: 'E',
+			replace: true,
+			scope: {
+				model: '=ncModel',
+				placeholder: '=ncSearchPlaceholder',
+				event: '=?ncSearchEvent'
+			},
+			template: $templateCache.get('common/ncSearch'),
+			link: function(scope) {
+				scope.event = scope.event || function() { return false };
+				scope.searchText = '';
+				scope.callback = function() {
+					if(scope.event(scope.searchText)) return;
+					scope.model = scope.searchText;
+				}
+			}
+		};
+	}]);
+},{}],93:[function(require,module,exports){
+angular.module('nc')
+	.provider('$ncTable', function() {
+		this.tableOptions = {
+			loadingMessage: 'Loading...',
+			searchEmptyMessage: 'No search result',
+			emptyMessage: 'You do not have an Entry'
+		};
+		this.tableParams = {
+			_order: '',
+			_limit: 10,
+			_offset: 0,
+			_direction: 'asc'
+		};
+		this.$get = function() {
+			return this;
+		};
+	})
+	.directive('ncTable', ["$log", "$templateCache", "$ncTable", function($log, $templateCache, $ncTable) {
+		return {
+			restrict: 'E',
+			replace: true,
+			transclude: true,
+			template: $templateCache.get('common/ncTable'),
+			scope: {
+				model: '=ncModel',
+				options: '=ncTableOptions',
+				params: '=ncTableParams',
+				loading: '=ncIsLoading',
+				searching: '=ncIsSearching'
+			},
+			controller: ["$scope", function($scope) {
+				this.sort = function(id, direction) {
+					$scope.params._order = id;
+					$scope.params._direction = direction ? 'desc' : 'asc';
+				};
+				this.isOrderBy = function(id) {
+					return $scope.params._order === id;
+				};
+				this.direction = function() {
+					return $scope.params._direction == 'desc' ? true : false;
+				}
+			}],
+			link: function(scope, element, attrs, controller) {
+				//Default values
+				var defaultTableModel = {
+					data: [],
+					total: 0
+				};
+
+				//Aggregriate default value
+				scope.options = _.defaults(scope.options, $ncTable.tableOptions);
+				scope.params = _.defaults(scope.params, $ncTable.tableParams);
+				scope.model = _.merge(scope.model, defaultTableModel);
+			}
+		};
+	}])
+	.directive('ncSort', ["$templateCache", "$log", function($templateCache, $log) {
+		return {
+			restrict: 'A',
+			require: '^ncTable',
+			transclude: true,
+			scope: {
+				sort: '@ncSort'
+			},
+			template: $templateCache.get('common/ncTableSort'),
+			link: function(scope, element, attrs, parent) {
+				scope.isCurrent = function() {
+					return parent.isOrderBy(scope.sort);
+				};
+				scope.click = function() {
+					scope.direction = !scope.direction;
+					parent.sort(scope.sort, scope.direction);
+				};
+				scope.direction = scope.isCurrent() ? parent.direction() : false;
+			}
+		}
+	}])
+	.directive('ncLink', function() {
+		return {
+			restrict: 'A',
+			require: '^ncTable',
+			transclude: true,
+			scope: {
+				link: '@ncLink'
+			},
+			template: '<a ng-href="{{link}}" ng-transclude></a>',
+		}
+	});
+},{}],94:[function(require,module,exports){
+var angular = require('angular');
+angular.module('nc')
+    .directive('ncTemplate', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException,  $parse) {
+            return {
+                restrict: 'A',
+                transclude: true,
+                replace: true,
+                priority: 1010,
+                scope: {
+                    optionsPath: '@ncTemplateOptionsPath',
+                    templateField: '&ncTemplateForm',
+                    viewBag: '=?ncViewBag',
+                    label: '@ncLabel'
+                },
+                template: function (element, attrs) {
+                    var templateHTML = $templateCache.get(attrs.ncTemplate);
+                    if(!templateHTML){
+                        throw new KnownException("Unable to load specified nc-template " + attrs.ncTemplate);
+                    }
+                    return templateHTML;
+                },
+                link: function (scope, element, attrs, ctrl, transclude) {
+
+
+                    scope.isInvalid = function(form) {
+                        if(angular.isDefined(form) &&
+                            angular.isDefined(form.$invalid) &&
+                            angular.isDefined(form.$dirty)) {
+                            return form.$invalid && (form.$dirty || form.$$parentForm.$submitted);
+                        }
+                        return false;
+                    };
+
+                    var pathComp
+                    var opt = {};
+                    if(scope.optionsPath){
+                        pathComp = scope.optionsPath.split('/');
+                        opt = $templateOptionsCache[pathComp[0]][pathComp[1]];
+                    }
+
+
+                    if (!opt) {
+                        throw new KnownException('Warning: nc-template cannot find ' + scope.optionsPath);
+                        opt = {};
+                    }
+
+                    if(!('error' in opt)){
+                        opt.error = {};
+                    };
+
+                    scope.options = opt;
+
+                }
+            };
+        }]);
+
+},{"angular":176}],95:[function(require,module,exports){
+angular.module('nc')
+	.directive('ncTreeSelect', ["$interpolate", "$templateCache", function($interpolate, $templateCache) {
+		/**
+		 * Hold data for column object
+		 */
+		function Column() {
+			this.__list = [];
+			this.__active = -1;
+
+			/**
+			 * Get or set array of child object
+			 *
+			 * @param  {Array} list Set children to this if passed
+			 * @return {Array}      Array of child
+			 */
+			this.list = function(list) {
+				return _.isUndefined(list) ? this.__list : (this.__list = list);
+			};
+
+			/**
+			 * Get or set active index for this column
+			 *
+			 * @param  {Number} active Set active index to this if passed
+			 * @return {Number}        Active index, -1 if none
+			 */
+			this.active = function(active) {
+				return _.isUndefined(active) ? this.__active : (this.__active = active);
+			};
+		};
+
+		/**
+		 * Collection of Column object
+		 * @param {Array} tree Root nested tree
+		 * @param {Number} size Number of columns
+		 * @param {Object} options Extra params
+		 */
+		function Columns(tree, size, options) {
+			/**
+			 * Declare extra options for this class
+			 */
+			options = _.extend({
+				childrenKey: 'nodes',
+				parentKey: 'parent'
+			}, options);
+
+			var childrenKey = options.childrenKey;
+			var parentKey = options.parentKey;
+
+			/**
+			 * Get columns as array of Column
+			 *
+			 * @return {Array} Array of Column object
+			 */
+			this.list = function() {
+				return this.columns;
+			};
+
+			/**
+			 * Clear all columns to default empty
+			 *
+			 * @param  {Boolean} activeOnly If only active flag is clear
+			 */
+			this.clear = function(activeOnly) {
+				// Initialize empty
+				for (var i = 0; i < this.columns.length; i++) {
+					if(_.isUndefined(activeOnly) || !activeOnly) {
+						this.columns[i].list([]);
+					}
+					this.columns[i].active(-1);
+				};
+			};
+
+			/**
+			 * Clear all columns and set first to tree
+			 */
+			this.clearToDefault = function() {
+				this.clear();
+				this.columns[0].list(this.__tree);
+			};
+
+			/**
+			 * [select description]
+			 * @param  {[type]} item [description]
+			 * @return {[type]}      [description]
+			 */
+			this.select = function(item) {
+
+				// Not an item or null
+				if(_.isNil(item)) {
+					// Select nothing
+					this.clear(true);
+					return;
+				}
+
+				/* Traverse and get all array of item to be pushed into display columns */
+				var collection = [];
+				var ctx = item;
+
+				//Push leaf if any
+				if(!_.isEmpty(ctx[childrenKey])) {
+					collection.push({
+						list: ctx[childrenKey],
+						active: -1
+					})
+				}
+
+				while(!_.isUndefined(ctx[parentKey])) {
+					//Bubble up the tree
+					collection.push({
+						list: ctx[parentKey][childrenKey],
+						active: _.indexOf(ctx[parentKey][childrenKey], ctx)
+					});
+					ctx = ctx[parentKey];
+				}
+
+				// Make sure this item is descendent of the tree
+				var index = _.indexOf(this.__tree, ctx);
+
+				if(index >= 0) {
+					// Push root
+					collection.push({
+						list: this.__tree,
+						active: index
+					});
+
+					// Assign to column
+					for (var i = 0; i < this.__size; i++) {
+						if(collection.length > 0) {
+							// Assign collection to display list
+							var col = collection.pop();
+							this.columns[i].list(col.list);
+							this.columns[i].active(col.active);
+						} else {
+							// No more children
+							this.columns[i].list([]);
+							this.columns[i].active(-1);
+						}
+					}
+				} else {
+					// Select nothing
+					this.clearToDefault();
+				}
+			};
+
+
+			/* Class main
+			 ------------------------------- */
+			this.columns = [];
+			for (var i = 0; i < size; i++) {
+			 	this.columns.push(new Column());
+			};
+			this.columns[0].list(tree);
+			this.__tree = tree;
+			this.__size = size;
+
+		};
+
+		return {
+			restrict: 'E',
+			replace: true,
+			scope: {
+				model: '=ncModel',
+				tree: '=ncTreeSelectTree',
+				title: '@ncTreeSelectTitle',
+				options: '=?ncTreeSelectOptions'
+			},
+			template: $templateCache.get('common/ncTreeSelect'),
+			link: function(scope, element, attrs) {
+				// Directive options
+				scope.options = _.defaults(scope.options, {
+					columnSize: 4,
+					contentTemplate: '{{$item.NameEn}}' //basic tree item
+				});
+				scope.columns = new Columns(scope.tree, scope.options.columnSize);
+
+				// Watch for tree change
+ 				scope.$watch('tree', function(newObj, oldObj) {
+ 					var arr = newObj;
+					if(_.isArray(arr)) {
+						// Recreate container from arr
+						scope.columns = new Columns(arr, scope.options.columnSize);
+						scope.columns.select(scope.model);
+					}
+				});
+
+				// Watch for model change
+				scope.$watch('model', function(newObj, oldObj) {
+					if(newObj != oldObj) {
+						scope.columns.select(scope.model);
+					}
+				});
+
+				scope.setModel = function(item) {
+					scope.model = item;
+				};
+
+				scope.getContent = function(item) {
+					return $interpolate(scope.options.contentTemplate)({$item: item});
+				};
+			},
+			controller: ["$scope", function($scope) {
+				this.setHeader = function(html) {
+					$scope.header = html;
+				};
+				this.setFooter = function(html) {
+					$scope.footer = html;
+				};
+			}]
+		};
+	}]);
+
+},{}],96:[function(require,module,exports){
+angular.module('nc')
+    .directive('ncTagValidator', function () {
+        return {
+            restrict: 'A',
+            require: ['ngModel', 'uiSelect'],
+            link: function ($scope, element, attrs, ctrl) {
+                var maxTagCount = 1000;
+                var maxTagLength = 30;
+                var tagPattern = false;
+
+                var $select = ctrl[1];
+                var $model = ctrl[0];
+
+                $select.onSelectCallback = function () {
+                    var array = ($model.$modelValue || []);
+                    var item = (array[array.length - 1] || "");
+                    var _pass = true;
+                    $model.$error = {};
+
+                    if (array.length > maxTagCount) {
+                        $model.$error.maxtagcount = true;
+                        _pass = false;
+                    };
+
+                    if (item.length > maxTagLength) {
+                        $model.$error.maxtaglength = true;
+                        _pass = false;
+                    };
+
+                    if (tagPattern && !item.match(tagPattern)) {
+                        $model.$error.pattern = true;
+                        _pass = false;
+                    }
+
+                    if (!_pass) {
+                        $model.$modelValue.pop();
+                        $model.$viewValue = $model.$modelValue;
+                    }
+
+                };
+
+                attrs.$observe('ncMaxTagCount', function (val) {
+                    if (!val) return;
+                    maxTagCount = Number(val);
+                });
+
+                attrs.$observe('ncTagPattern', function (val) {
+                    if (!val) return;
+                    tagPattern = val;
+                });
+
+                attrs.$observe('ncMaxTagLength', function (val) {
+                    if (!val) return;
+                    maxTagLength = Number(val);
+                });
+
+            }
+        }
+    });
+},{}],97:[function(require,module,exports){
+angular.module('nc')
+	.filter('compact', function() {
+		return function(input) {
+			return _.compact(input);
+		};
+	});
+},{}],98:[function(require,module,exports){
+angular.module('nc')
+	.filter('dateTh', ["$filter", function($filter) {
+		return function(input) {
+			return $filter('date')(input, 'dd/MM/yy', '+700');
+		}
+	}])
+	.filter('timeTh', ["$filter", function($filter) {
+		return function(input) {
+			return $filter('date')(input, 'H:m', '+700');
+		}
+	}]);
+},{}],99:[function(require,module,exports){
+angular.module('nc')
+    .filter('escapeHtml', function () {
+        var entityMap = {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': '&quot;',
+            "'": '&#39;',
+            "/": '&#x2F;'
+        };
+
+        return function(str) {
+            return String(str).replace(/[&<>"'\/]/g, function (s) {
+                return entityMap[s];
+            });
+        }
+    });
+},{}],100:[function(require,module,exports){
+/*
+ Return dropdown[value] if input == dropdown[name]
+ */
+angular.module('nc')
+	.filter('mapDropdown', function() {
+		//Return property
+		return function(input, collections, name) {
+			if(_.isUndefined(collections)) {
+				return input;
+			}
+
+			if(_.isUndefined(name)) {
+				name = 'name';
+			}
+
+			var find = _.find(collections, function(o) {
+				return o.value == input;
+			}) 
+
+			return _.isUndefined(find) ? input : find[name];
+		}
+	});
+},{}],101:[function(require,module,exports){
+angular.module('nc')
+	.filter('replace', function() {
+		return function(input, from, to) {
+			return input.replace(from, to);
+		};
+	});
+},{}],102:[function(require,module,exports){
+(function (global){
+var angular = require('angular');
+
+require('angular-ui-bootstrap');
+require('angular-sanitize');
+require('angular-file-upload');
+require('angular-scroll');
+require('ui-select');
+global.jQuery = require('jquery');
+global.$ = require('jquery');
+global._ = require('lodash');
+
+angular.module('nc', ['ngSanitize', 'ui.bootstrap', 'ui.select', 'duScroll', 'angularFileUpload'])
+
+.config(["$uibTooltipProvider", function($uibTooltipProvider) {
+	$uibTooltipProvider.setTriggers({
+		'clickanystart' : 'clickanyend'
+	});
+}]);
+(function () {var f = require("./index.js");f["directives"]=({"ncAction":require("./directives\\ncAction.js"),"ncAdvanceSearch":require("./directives\\ncAdvanceSearch.js"),"ncAlert":require("./directives\\ncAlert.js"),"ncBindCompile":require("./directives\\ncBindCompile.js"),"ncBreadcrumpSelect":require("./directives\\ncBreadcrumpSelect.js"),"ncBulk":require("./directives\\ncBulk.js"),"ncDateRange":require("./directives\\ncDateRange.js"),"ncEmpty":require("./directives\\ncEmpty.js"),"ncEye":require("./directives\\ncEye.js"),"ncFilter":require("./directives\\ncFilter.js"),"ncImageGallery":require("./directives\\ncImageGallery.js"),"ncImageIntegrity":require("./directives\\ncImageIntegrity.js"),"ncLoading":require("./directives\\ncLoading.js"),"ncPageTitle":require("./directives\\ncPageTitle.js"),"ncPagination":require("./directives\\ncPagination.js"),"ncPermission":require("./directives\\ncPermission.js"),"ncSearch":require("./directives\\ncSearch.js"),"ncTable":require("./directives\\ncTable.js"),"ncTemplate":require("./directives\\ncTemplate.js"),"ncTreeSelect":require("./directives\\ncTreeSelect.js"),"ncUiSelect":require("./directives\\ncUiSelect.js")});f["filters"]=({"compact":require("./filters\\compact.js"),"date":require("./filters\\date.js"),"escapeHtml":require("./filters\\escapeHtml.js"),"map":require("./filters\\map.js"),"replace":require("./filters\\replace.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
+require('./template.js');
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./directives\\ncAction.js":76,"./directives\\ncAdvanceSearch.js":77,"./directives\\ncAlert.js":78,"./directives\\ncBindCompile.js":79,"./directives\\ncBreadcrumpSelect.js":80,"./directives\\ncBulk.js":81,"./directives\\ncDateRange.js":82,"./directives\\ncEmpty.js":83,"./directives\\ncEye.js":84,"./directives\\ncFilter.js":85,"./directives\\ncImageGallery.js":86,"./directives\\ncImageIntegrity.js":87,"./directives\\ncLoading.js":88,"./directives\\ncPageTitle.js":89,"./directives\\ncPagination.js":90,"./directives\\ncPermission.js":91,"./directives\\ncSearch.js":92,"./directives\\ncTable.js":93,"./directives\\ncTemplate.js":94,"./directives\\ncTreeSelect.js":95,"./directives\\ncUiSelect.js":96,"./filters\\compact.js":97,"./filters\\date.js":98,"./filters\\escapeHtml.js":99,"./filters\\map.js":100,"./filters\\replace.js":101,"./index.js":102,"./template.js":103,"angular":176,"angular-file-upload":166,"angular-sanitize":168,"angular-scroll":170,"angular-ui-bootstrap":172,"jquery":178,"lodash":179,"ui-select":184}],103:[function(require,module,exports){
+/**
+ * Generated by grunt-angular-templates 
+ */
+angular.module("nc").run(["$templateCache", function($templateCache) {  'use strict';
+
+  $templateCache.put('common/ncAction',
+    "<a class=action-gear href=javascript:; uib-popover-template=\"'common/ncActionPopover'\" popover-placement=bottom popover-append-to-body=true popover-trigger=outsideClick class=action-gear><i class=\"fa fa-gear color-dark-grey icon-size-20\"></i> <i class=\"fa fa-caret-down color-dark-grey\"></i></a>"
+  );
+
+
+  $templateCache.put('common/ncActionModal',
+    "<div class=\"modal-header no-border\"><button type=button class=close aria-label=Close ng-click=no()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">{{title}}</h2><div ng-bind-html=message></div></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn btn-white\" ng-click=no()>{{btnNo}}</button> <button type=button class=\"btn {{btnClass}}\" ng-click=yes()>{{btnYes}}</button></div></div></div>"
+  );
+
+
+  $templateCache.put('common/ncActionPopover',
+    "<div ng-repeat=\"action in options\"><a ng-click=call(action)>{{action.name}}</a></div>"
+  );
+
+
+  $templateCache.put('common/ncAdvanceSearch',
+    "<div class=\"row margin-top-30\" ng-show=open><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Advance Search</h2></div><div class=form-section-content><form name=form class=ah-form novalidate><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductName nc-label=\"Product Name\" nc-template-options-path=searchForm/ProductName><input class=\"form-control width-field-normal\" name=ProductName ng-model=formData.ProductName required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Pid nc-label=PID nc-template-options-path=searchForm/Pid><input class=\"form-control width-field-normal\" name=Pid ng-model=formData.Pid required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Sku nc-label=SKU nc-template-options-path=searchForm/Sku><input class=\"form-control width-field-normal\" name=Sku ng-model=formData.Sku required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Brand nc-label=\"Brand Name\" nc-template-options-path=searchForm/Brands><ui-select ng-model=formData.Brands name=Brands nc-tag-validator multiple tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match>{{$item.BrandNameEn}}</ui-select-match><ui-select-choices repeat=\"item in options.Brands | filter:{BrandNameEn: $select.search} track by $index\">{{item.BrandNameEn}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.GlobalCategories nc-label=\"Global Category Name\" nc-template-options-path=searchForm/GlobalCategories><nc-breadcrumb-select name=GlobalCategories nc-model=formData.GlobalCategories nc-breadcrumb-select-tree=options.GlobalCategories></nc-breadcrumb-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.LocalCategories nc-label=\"Local Category Name\" nc-template-options-path=searchForm/LocalCategories ng-show=!options.Admin><nc-breadcrumb-select name=LocalCategories nc-model=formData.LocalCategories nc-breadcrumb-select-tree=options.LocalCategories></nc-breadcrumb-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Tags nc-label=\"Search Tag\" nc-template-options-path=searchForm/Tags class=ui-select-dropdown-hide><ui-select ng-model=formData.Tags name=Tags nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field><ui-select-match>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Tags\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.Price nc-label=\"Sale Price\" nc-template-options-path=searchForm/Price><div class=width-field-small-input><input name=Price ng-maxnumber={{formData.PriceTo}} ng-model=formData.PriceFrom class=form-control ng-pattern-restrict=\"^[0-9]*(\\.[0-9]{0,2})?$\"></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><input ng-model=formData.PriceTo class=form-control ng-pattern-restrict=\"^[0-9]*(\\.[0-9]{0,2})?$\"></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.CreatedDate nc-label=\"Created Date\" nc-template-options-path=searchForm/CreatedDate><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.CreatedDtFrom | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=CreatedDate ng-date-before={{formData.CreatedDtTo}} data-ng-model=formData.CreatedDtFrom data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'hour' }\"></ul></div></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.CreatedDtTo | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.CreatedDtTo data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'hour' }\"></ul></div></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.ModifiedDate nc-label=\"Modified Date\" nc-template-options-path=searchForm/ModifiedDate><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.ModifyDtFrom | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ModifyDtFrom name=ModifiedDate ng-date-before={{formData.ModifiedDtTo}} data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'hour' }\"></ul></div></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown4 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.ModifyDtTo | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ModifyDtTo data-datetimepicker-config=\"{ dropdownSelector: '#dropdown4', minView: 'hour' }\"></ul></div></div></div><div class=form-group><div class=width-label><label class=control-label></label></div><div class=button-size-normal><a class=\"button-size-normal btn btn-blue btn-width-xl\" ng-click=search()>Search</a></div><div class=button-size-normal><a class=\"button-size-normal margin-left-10 btn btn-white btn-width-xl\" ng-click=clear()>Clear</a></div></div></form></div></div></div></div>"
+  );
+
+
+  $templateCache.put('common/ncAdvanceSearchButton',
+    "<div class=search-section-item><button class=\"btn btn-default btn-toggle {{model ? 'active' : ''}}\" type=button ng-click=toggle()>Advanced Search</button></div>"
+  );
+
+
+  $templateCache.put('common/ncAlert',
+    "<div ng-show=alert.show uib-alert template-url=common/ncAlertTemplate type=\"{{ alert.type }}\" close=alert.close()><span ng-bind-html=alert.message></span></div>"
+  );
+
+
+  $templateCache.put('common/ncAlertTemplate',
+    "<div class=alert ng-class=\"['alert-' + (type || 'warning')]\" class=\"alert alert-dismissable\" role=alert><span class=\"close color opacity-1\" ng-class=\"'color-' + (type || 'warning')\" aria-hidden=true ng-show=closeable ng-click=\"close({$event: $event})\">&times;</span><ng-transclude><ng-transclude></ng-transclude></div>"
+  );
+
+
+  $templateCache.put('common/ncBreadcrumbSelect',
+    "<ui-select name={{name}} ng-model=model.ptr nc-tag-validator nc-max-tag-count={{options.tagCount}} multiple><ui-select-match><span ng-bind-html=$item.item[options.nameKey]></span></ui-select-match><ui-select-choices repeat=\"value in searchable | filter: { name: $select.search } | limitTo: options.limit track by $index\"><div ng-bind-html=\"value.displayName | highlight: $select.search | replace: encodedSeparator: options.seperator\"></div></ui-select-choices></ui-select>"
+  );
+
+
+  $templateCache.put('common/ncBulk',
+    "<div class=\"btn-group search-section-item\" role=group><div class=btn-group role=group><button type=button class=\"btn btn-default dropdown-toggle bulk-action-dropdown\" data-toggle=dropdown aria-haspopup=true aria-expanded=false uib-dropdown-toggle><span>{{ select.name }}</span> <span class=caret></span></button><ul uib-dropdown-menu role=menu class=dropdown-menu><li ng-repeat=\"option in options\"><a ng-click=selectOption(option)>{{ option.name }}</a></li></ul></div><button type=button class=\"btn btn-default btn-action\" ng-click=call()>Confirm <span ng-show=\"model.length > 0\">({{ model.length }})</span></button></div>"
+  );
+
+
+  $templateCache.put('common/ncBulkCheckbox',
+    "<input type=checkbox ng-model=\"checkbox\">"
+  );
+
+
+  $templateCache.put('common/ncBulkModal',
+    "<div class=\"modal-header no-border\"><button type=button class=close aria-label=Close ng-click=no()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">{{title}}</h2><div ng-bind-html=message></div></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn btn-white\" ng-click=no()>{{btnNo}}</button> <button type=button class=\"btn {{btnClass}}\" ng-click=yes()>{{btnYes}}</button></div></div></div>"
+  );
+
+
+  $templateCache.put('common/ncEmpty',
+    "<div class=\"local-category-page margin-bottom-20\"><div class=\"local-category-empty-section margin-top-20\"><span><span class=zero-category-image></span></span> <span class=local-category-empty-text>{{ message }}</span></div></div>"
+  );
+
+
+  $templateCache.put('common/ncEye',
+    "<a ng-click=_toggle()><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon' : !model,\r" +
+    "\n" +
+    "                            'fa fa-eye color-dark-grey eye-icon' : model}\"></i></a>"
+  );
+
+
+  $templateCache.put('common/ncFilter',
+    "<div class=filter-section><div class=filter-container><span>Filters:</span> <a class=filter-seperator ng-repeat=\"filter in filters\" ng-class=\"{'filter-active': model == filter.value }\" ng-click=select(filter.value)>{{ filter.name }}</a> <span ng-transclude></span></div></div>"
+  );
+
+
+  $templateCache.put('common/ncImage',
+    "<li class=list-item><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ model.ImageUrlEn.length > 0 && model.ImageUrlEn  || '/assets/img/loader.gif' }}\"></div><div ng-if=\"actions.length > 0\" class=actions-wrapper ng-style=\"width: {{100 / actions.length}}%;\"><a ng-repeat=\"action in options.actions\" class=action ng-click=\"action.fn(model, parent, $index)\"><i class=fa ng-class={{action.icon}}></i></a></div></div></li>"
+  );
+
+
+  $templateCache.put('common/ncImageBanner',
+    "<div class=form-section><div class=form-section-header><h2>{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p></div></div><div class=image-select-alternative-text><span>Or</span> <a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">Select Images from your computer</a></div></div></div><div class=col-xs-5 ng-transclude></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-show=getSrc(image) style=background-color:white ng-src=\"{{getSrc(image)}}\"><h4 ng-show=!getSrc(image) style=\"text-align: center;margin-top:20%\" class=\"color-grey ng-binding\"><img src=/assets/img/loader.gif height=55><br><span ng-if=\"getProgress(image) < 100\">{{ getProgress(image) }}%</span> <span ng-if=\"getProgress(image) >= 100\">Processing..</span></h4></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div><div style=\"text-align:center; padding-top: 10px; color: grey\" ng-if=\"$index == 0\">Featured Image</div></li></ul></div></div>"
+  );
+
+
+  $templateCache.put('common/ncImageDropzone',
+    "<div class=image-drop-wrapper><input nv-file-select=\"\" uploader=uploader accept=\".png, .jpg, .jpeg\" type=file multiple><div nv-file-drop=\"\" uploader=uploader class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload()>or select images</a></p></div></div></div>"
+  );
+
+
+  $templateCache.put('common/ncImageDropzoneInline',
+    "<div class=drop-zone-container><div class=image-drop-wrapper><input type=\"file\"><div class=image-drop-zone><div class=image-drop-zone-text ng-bind-compile=content><? $this->insert('components/image-dropzone-inline-text', [\"id\" => \"images-management1\", 'texts' =>['<i class=\"fa fa-image fa-3x color-theme\"></i>', 'Drop images here', '<a href=\"#\" data-trigger=\"file\" data-target=\"#images-management1\">or select images</a>']]) ?><? $this->insert('components/image-dropzone-inline-text', ['texts' =>['<i class=\"fa fa-ban fa-3x color-dark-grey\"></i>', 'Cannot upload', 'Wait for Approval']]) ?><? $this->insert('components/image-dropzone-inline-text', [\"id\" => \"images-management3\", 'texts' =>['This product is already approved', '<a href=\"#\" data-trigger=\"file\" data-target=\"#images-management3\">Click here to edit</a>']]) ?><? $this->insert('components/image-dropzone-inline-text', [\"id\" => \"images-management4\", 'texts' =>['<i class=\"fa fa-image fa-3x color-theme\"></i>', 'Drop images here', '<a href=\"#\" data-trigger=\"file\" data-target=\"#images-management4\">or select images</a>']]) ?><? $this->insert('components/image-dropzone-inline-text', ['texts' =>['<i class=\"fa fa-ban fa-3x color-dark-grey\"></i>', 'Cannot upload', 'Reach Max Photos']]) ?></div></div></div></div>"
+  );
+
+
+  $templateCache.put('common/ncImageDropzoneTemplate',
+    "<div class=image-drop-wrapper><input nv-file-select uploader=uploader type=file multiple><div nv-file-drop uploader=uploader class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload()>or select images</a></p></div></div></div>"
+  );
+
+
+  $templateCache.put('common/ncImageGallery',
+    "<div><p class=featured-image-wrapper>Featured Image</p><ul class=image-management-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ getSrc(image) }}\"></div><div class=actions-wrapper><a class=\"action {{ isDisabled(image) ? 'disabled' : ''}}\" ng-repeat=\"action in options.actions\" style=\"width: {{100 / options.actions.length }}%\" ng-click=\"call(action, image, model)\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div>"
+  );
+
+
+  $templateCache.put('common/ncLoading',
+    "<div class=\"empty-section margin-top-20 margin-bottom-20\"><span><img class=loading-img src=\"/assets/img/loader.gif\"></span>{{ message }}</div>"
+  );
+
+
+  $templateCache.put('common/ncLoadingSmall',
+    "<img src=/assets/img/loader.gif width=40><small>{{ message }}</small>"
+  );
+
+
+  $templateCache.put('common/ncPagination',
+    "<div class=page-navigation><span><a ng-click=nextPage(-1)><i class=\"fa fa-chevron-left\" ng-class=\"{'grey-chevron': page() <= 1, 'blue-chevron' : page() > 1}\"></i></a> <span>Page {{ page() }} of {{ totalPage() }}</span> <a ng-click=nextPage(1)><i class=\"fa fa-chevron-right padding-right-15\" ng-class=\"{'grey-chevron': page() >= totalPage(), 'blue-chevron' : page() < totalPage() }\"></i></a> <span class=\"view-page-separator margin-right-10\">View per page</span><div class=btn-group uib-dropdown><button type=button class=\"btn btn-default\">{{ pageSize() }}</button> <button type=button class=\"btn btn-default\" uib-dropdown-toggle><span class=caret></span> <span class=sr-only>Toggle Dropdown</span></button><ul uib-dropdown-menu role=menu class=dropdown-menu-right><li ng-repeat=\"size in paginationOptions\"><a ng-click=setPageSize(size)>{{size}}</a></li></ul></div></span></div>"
+  );
+
+
+  $templateCache.put('common/ncSearch',
+    "<div class=\"input-group search-section-item\"><form ng-submit=callback()><div class=\"input-group search-box\"><input class=\"form-control input-search-icon\" ng-model=searchText placeholder={{placeholder}}> <span class=input-group-btn><button class=\"btn btn-default btn-action\">Search</button></span></div></form></div>"
+  );
+
+
+  $templateCache.put('common/ncTable',
+    "<div class=table-section><div ng-show=\"!loading && model.data.length != 0\" ng-transclude></div><div nc-loading={{options.loadingMessage}} ng-show=loading></div><div nc-empty={{options.searchEmptyMessage}} ng-show=\"!loading && model.data.length == 0 && searching\"></div><div nc-empty={{options.emptyMessage}} ng-show=\"!loading && model.data.length == 0 && !searching\"></div></div>"
+  );
+
+
+  $templateCache.put('common/ncTableSort',
+    "<a class=header-link ng-click=click()><span ng-class=\"{ 'active-underline' : isCurrent() }\" ng-transclude></span></a> <i class=fa ng-class=\"{ \r" +
+    "\n" +
+    "'fa fa-caret-down' : isCurrent() && direction, \r" +
+    "\n" +
+    "'fa fa-caret-up' : isCurrent() && !direction, \r" +
+    "\n" +
+    "'fa fa-caret-down color-grey' : !isCurrent() }\" ng-click=click()></i>"
+  );
+
+
+  $templateCache.put('common/ncTreeSelect',
+    "<div class=category-section-border-box><div class=category-header>{{title}}</div><div class=\"category-content no-padding\"><ul ng-repeat=\"column in columns.list() track by $index\" ng-class=\"{'empty-column': column.list().length <= 0 }\" class=content-column><li ng-repeat=\"$item in column.list() track by $index\" ng-class=\"{'category-active' : $index == column.active() }\" ng-click=setModel($item)>{{getContent($item)}}</li></ul></div></div>"
+  );
+
+
+  $templateCache.put('components/date-range-inline',
+    "<div ng-class=\"['form-group ' + (options.formGroupClass || '')]\"><div class=width-label><label class=control-label ng-class=\"options.labelClass || {}\">{{ label }}</label></div><div><div ng-class=\"['width-field-' + (options.inputSize || 'small-input')]\" class=input-with-unit><div class=dropdown><a class=dropdown-toggle id=date_range_vertical_dropdown1 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': endDate <= startDate }\" placeholder=\"{{ startPlaceholder || 'Select start date' }}\" class=\"form-control width-field-large\" value=\"{{ startDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=startDate data-datetimepicker-config=\"{ dropdownSelector: '#date_range_vertical_dropdown1', minView: 'minute' }\"></ul></div></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div ng-class=\"['width-field-' + (options.inputSize || 'small-input')]\" class=input-with-unit><div class=dropdown><a class=dropdown-toggle id=date_range_vertical_dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': endDate <= startDate }\" placeholder=\"{{ endPlaceholder || 'Select end date' }}\" class=\"form-control width-field-large\" value=\"{{ endDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel2><datetimepicker data-ng-model=endDate data-datetimepicker-config=\"{ dropdownSelector: '#date_range_vertical_dropdown2', minView: 'minute' }\"></ul></div><div class=width-field-large><span class=\"help-block color-red\" ng-if=\"endDate <= startDate\"><span>{{ errorText || \"Start date/time must come before end date/time\" }}</span></span></div></div></div></div>"
+  );
+
+
+  $templateCache.put('components/date-range-vertical',
+    "<div><div ng-class=\"['form-group ' + (options.formGroupClass || '')]\"><div class=width-label><label class=\"control-label ng-binding\" ng-class=\"options.labelClass || {}\">{{ startLabel }}</label></div><div ng-class=\"['width-field-' + (options.inputSize || 'normal')]\" class=input-with-unit><div class=dropdown><a class=dropdown-toggle id=date_range_vertical_dropdown1 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': endDate <= startDate }\" placeholder=\"{{ startPlaceholder || 'Select start date' }}\" class=\"form-control width-field-large\" value=\"{{ startDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=startDate data-datetimepicker-config=\"{ dropdownSelector: '#date_range_vertical_dropdown1', minView: 'minute' }\"></ul></div></div></div><div ng-class=\"['form-group ' + (options.formGroupClass || '')]\"><div class=width-label><label class=\"control-label ng-binding\" ng-class=\"options.labelClass || {}\">{{ endLabel }}</label></div><div ng-class=\"['width-field-' + (options.inputSize || 'normal')]\" class=input-with-unit><div class=dropdown><a class=dropdown-toggle id=date_range_vertical_dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': endDate <= startDate }\" placeholder=\"{{ endPlaceholder || 'Select end date' }}\" class=\"form-control width-field-large\" value=\"{{ endDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel2><datetimepicker data-ng-model=endDate data-datetimepicker-config=\"{ dropdownSelector: '#date_range_vertical_dropdown2', minView: 'minute' }\"></ul></div><div class=width-field-large><span class=\"help-block color-red\" ng-if=\"endDate <= startDate\"><span>{{ errorText || \"Start date/time must come before end date/time\" }}</span></span></div></div></div></div>"
+  );
+
+
+  $templateCache.put('components/single-upload',
+    "<div class=image-drop-wrapper style=width:320px><input nv-file-select uploader=viewBag.uploader type=file ng-delegatee=viewBag.uploader onclick=\"this.value = null\"><div nv-file-drop uploader=viewBag.uploader class=image-drop-zone style=\"width:320px; height:120px; overflow: hidden\"><div class=image-drop-zone-text><p><img ng-src=\"{{ viewBag.images[0].url }}\" style=\"width:100%; height: auto\"></p><span ng-if=\"!viewBag.images || viewBag.images.length == 0\">Drag &amp; drop your shop logo here</span><h3 ng-if=\"viewBag.uploader.progress > 0 && viewBag.uploader.progress < 100\" class=color-grey>{{ uploader.progress }} %</h3><h3 ng-if=\"viewBag.uploader.progress == 100 && !viewBag.images[0].url\" class=color-grey><img style=\"width:100%; height: auto\" src=\"/assets/img/loader.gif\"></h3></div></div><div ng-show=viewBag.uploader.isHTML5 class=image-select-alternative-text><span>Or</span> <a href=javascript:; ng-delegate=viewBag.uploader><span ng-if=\"viewBag.images.length === 0\">Select image from your computer</span> <span ng-if=\"viewBag.images.length > 0\">Upload new image</span></a></div></div>"
+  );
+
+
+  $templateCache.put('partials/page-title',
+    "<div class=\"page-header with-border\"><h1 class=\"float-left page-header-title\">{{ title }}</h1><span class=\"float-right page-header-action\"><ng-transclude></ng-transclude></span></div>"
+  );
+ }]);
+},{}],104:[function(require,module,exports){
 var angular = require('angular')
 angular.module('productDetail').controller('AbstractProductAddCtrl',
     ["$scope", "$uibModal", "$window", "util", "config", "Product", "ImageService", "AttributeSet", "Brand", "Shop", "LocalCategoryService", "GlobalCategory", "Category", "$rootScope", "KnownException", "NcAlert", "$productAdd", "options", "AttributeSetService", function ($scope, $uibModal, $window, util, config, Product, ImageService,
@@ -6062,7 +7834,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     }])
 
-},{"angular":176}],77:[function(require,module,exports){
+},{"angular":176}],105:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
     factory('$productAdd', ["Product", "Brand", "AttributeSet", "ImageService", "GlobalCategory", "$q", "Category", "util", function (Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category, util) {
@@ -6272,7 +8044,7 @@ angular.module('productDetail').
 
         return $productAdd;
     }]);
-},{"angular":176}],78:[function(require,module,exports){
+},{"angular":176}],106:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail')
     .directive('apComponent', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", "Product", "util", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse, Product, util) {
@@ -6295,7 +8067,7 @@ angular.module('productDetail')
         };
     }]);
 
-},{"angular":176}],79:[function(require,module,exports){
+},{"angular":176}],107:[function(require,module,exports){
 var angular = require('angular');
 
 
@@ -6303,7 +8075,7 @@ angular.module('productDetail', []);
 
 (function () {var f = require("./index.js");f["core"]=({"abstractProductAdd":require("./core\\abstractProductAdd.js"),"productAddFactory":require("./core\\productAddFactory.js")});f["directives"]=({"apComponent":require("./directives\\apComponent.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
-},{"./core\\abstractProductAdd.js":76,"./core\\productAddFactory.js":77,"./directives\\apComponent.js":78,"./index.js":79,"./template.js":80,"angular":176}],80:[function(require,module,exports){
+},{"./core\\abstractProductAdd.js":104,"./core\\productAddFactory.js":105,"./directives\\apComponent.js":106,"./index.js":107,"./template.js":108,"angular":176}],108:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -6493,1778 +8265,6 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
     "                                        }\r" +
     "\n" +
     "                                    }\"><input ng-model=pair.Quantity maxlength=5 ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Quantity{{$index}}) }\" ng-disabled=!pair.Visibility ng-pattern=\"/^[0-9]+$/\" name=pair_Quantity{{$index}} class=\"form-control\"></td><td><a class=\"btn btn-white btn-width-xl\" ng-disabled=!pair.Visibility ng-click=\"openVariantDetail(pair, formDataPtr.Variants, $index)\">More Detail</a></td><td><a class=\"btn btn-white\" ng-click=\"pair.Visibility = !pair.Visibility\"><span ng-if=pair.Visibility>Hide</span> <span ng-if=!pair.Visibility>Show</span></a></td></tr></tbody></table></div></div></div></div></div>"
-  );
- }]);
-},{}],81:[function(require,module,exports){
-angular.module('nc')
-	.directive('ncAction', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
-		return {
-			restrict: 'E',
-			scope: {
-				model: '=ncModel',
-				options: '=ncActionFn'
-			},
-			template: $templateCache.get('common/ncAction'),
-			link: function(scope) {
-				scope.options = _.defaults(scope.options, []);
-				scope.call = function(action) {
-					if(action.confirmation) {
-						var modal = $uibModal.open({
-							animation: true,
-							size: 'size-warning',
-							templateUrl: 'common/ncActionModal',
-							controller: ["$scope", "$uibModalInstance", "options", "$interpolate", function($scope, $uibModalInstance, options, $interpolate) {
-								$scope.title = options.title;
-								$scope.message = $interpolate(options.message)(scope);
-								$scope.btnNo = options.btnNo || 'Cancel';
-								$scope.btnYes = options.btnYes || 'Confirm';
-								$scope.btnClass = options.btnClass || 'btn-blue';
-								$scope.yes = function() {
-									$uibModalInstance.close();
-								};
-								$scope.no = function() {
-									$uibModalInstance.dismiss();
-								}
-							}],
-							resolve: {
-								options: function() {
-									return {
-										title: action.confirmation.title,
-										message: action.confirmation.message,
-										btnNo: action.confirmation.btnCancel,
-										btnYes: action.confirmation.btnConfirm,
-										btnClass: action.confirmation.btnClass
-									}
-								}
-							}
-						});
-
-						//Modal
-						modal.result.then(function() {
-							action.fn(scope.model);
-						});
-					} else {
-						action.fn(scope.model);
-					}
-				};
-			}
-		}
-	}]);
-
-},{}],82:[function(require,module,exports){
-angular.module('nc')
-	.directive('ncAdvanceSearch', ["$templateCache", "$timeout", "$uibModal", function($templateCache, $timeout, $uibModal) {
-		return {
-			restrict: 'E',
-			replace: true,
-			scope: {
-				model: '=ncModel',
-				open: '=ncAdvanceSearchToggle',
-				options: '=?ncAdvanceSearchOptions',
-				callback: '=?ncAdvanceSearchEvent'
-			},
-			template: function(elem, attrs) {
-				if(attrs.ncAdvanceSearch) {
-					return $templateCache.get(attrs.ncAdvanceSearch);
-				} else {
-					return $templateCache.get('common/ncAdvanceSearch');
-				}
-			},
-			link: function(scope, elem, attrs) {
-				scope.formData = {};
-				scope.form = {};
-				scope.callback = scope.callback || function() { return false };
-				scope.options = _.defaults(scope.options, {
-					Tags: [],
-					Brands: [],
-					LocalCategories: [],
-					GlobalCategories: [],
-					Admin: true
-				});
-				scope.search = function() {
-					if(scope.callback(scope.formData, true)) return;
-					scope.model = _.extend({}, scope.formData);
-				};
-				scope.clear = function() {
-					if(scope.callback(scope.formData, false)) return;
-					scope.formData = {};
-				};
-			}
-		};
-	}])
-	.directive('ncAdvanceSearchButton', ["$templateCache", function($templateCache) {
-		return {
-			restrict: 'E',
-			replace: true,
-			scope: {
-				model: '=ncModel'
-			},
-			template: function(elem, attrs) {
-				if(attrs.ncAdvanceSearch) {
-					return $templateCache.get(attrs.ncAdvanceSearch);
-				} else {
-					return $templateCache.get('common/ncAdvanceSearchButton');
-				}
-			},
-			link: function(scope, elem, attrs) {
-				scope.toggle = function() {
-					scope.model = !scope.model;
-				};
-			}
-		};
-	}]);
-},{}],83:[function(require,module,exports){
-angular.module('nc')
-	.provider('$ncAlert', function() {
-		this.defaultErrorMessage = 'Error';
-		this.defaultSuccessMessage = 'Success';
-		this.$get = function() {
-			return this;
-		};
-	})
-	.directive('ncAlert', ["$templateCache", function($templateCache) {
-		return {
-			restrict: 'E',
-			scope: {
-				alert: '=ncModel'
-			},
-			template: $templateCache.get('common/ncAlert')
-		}
-	}])
-	.factory('NcAlert', ["$document", "$timeout", "$ncAlert", function($document, $timeout, $ncAlert) {
-		return function() {
-			var vm = this;
-			this.type = 'red';
-			this.show = false;
-			this.close = function() {
-				this.show = false;
-			};
-			this.open = function(success, msg, color) {
-				color = _.isNil(color) ? 'red' : color;
-				this.type = (success) ? 'green' : color;
-
-				if(msg) {
-					this.message = msg;
-				} else {
-					this.message = success ? $ncAlert.defaultSuccessMessage : $ncAlert.defaultErrorMessage;
-				}
-
-				this.show = true;
-			};
-			this.error = function(obj) {
-				this.open(false, obj);
-				
-				$timeout(function() {
-					var section = vm.element || $document;
-					section.scrollTopAnimated(0, 1000);
-				}, 10);
-			};
-			this.success = function(obj) {
-				this.open(true, obj);
-				
-				$timeout(function() {
-					var section = vm.element || $document;
-					section.scrollTopAnimated(0, 1000);
-				}, 10);
-			};
-			this.message = '';
-		};
-	}]);
-},{}],84:[function(require,module,exports){
-angular.module('nc')
-	.directive('ncBindCompile', ["$compile", "$templateCache", function($compile, $templateCache) {
-       return {
-            restrict: 'A',
-            link: function (scope, element, attrs) {
-                scope.$watch(function () {
-                    return scope.$eval(attrs.ncBindCompile);
-                }, function (value) {
-                    element.html(value);
-                    $compile(element.contents())(scope);
-                });
-            }
-        };
-	}])
-    .directive('ncBindTemplate', ["$compile", "$templateCache", function($compile, $templateCache) {
-       return {
-            restrict: 'A',
-            link: function (scope, element, attrs) {
-                scope.$watch(function () {
-                    return scope.$eval(attrs.ncBindTemplate);
-                }, function (value) {
-                    var content = $templateCache.get(value);
-                    element.html(content);
-                    $compile(element.contents())(scope);
-                });
-            }
-        };
-    }]);
-},{}],85:[function(require,module,exports){
-angular.module('nc')
-	.directive('ncBreadcrumbSelect', ["$templateCache", "$filter", "$timeout", function($templateCache, $filter, $timeout) {
-		var _globalOptions = {};
-		var encodedSeparator = '>>>>';
-		function constructBreadcrumbFromTree(tree, breadcrumb, parentObj) {
-			if(_.isUndefined(breadcrumb)) {
-				breadcrumb = [];
-			}
-			if(_.isArray(tree) && tree.length > 0) {
-				_.forEach(tree, function(item) {
-					var encodedName = $filter('escapeHtml')(item[_globalOptions.nameKey]);
-					var name = _.isUndefined(parentObj) ? encodedName : parentObj.name + encodedSeparator + encodedName;
-					var obj = {
-						displayName: name,
-						name: item[_globalOptions.nameKey],
-						id: item[_globalOptions.idKey],
-						item: item
-					};
-					breadcrumb.push(obj);
-					breadcrumb 	= constructBreadcrumbFromTree(item[_globalOptions.childrenKey], breadcrumb, obj);
-				});
-			}
-			return breadcrumb;		
-		};
-		return {
-			restrict: 'E',
-			scope: {
-				originalModel: '=ncModel',
-				tree: '=ncBreadcrumbSelectTree',
-				options: '=?ncBreadcrumbSelectOptions',
-				name: '@name'
-			},
-			template: $templateCache.get('common/ncBreadcrumbSelect'),
-			link: function(scope) {
-				scope.searchable = [];
-				scope.model = {ptr: []};
-				scope.options = _.defaults(scope.options, {
-					nameKey: 'NameEn',
-					childrenKey: 'nodes',
-					idKey: 'CategoryId',
-					placeholder: '',
-					limit: 10,
-					tagCount: 5,
-					seperator: ' <span class="fa fa-angle-right"></span> '
-				});
-				_globalOptions = scope.options;
-				scope.encodedSeparator = encodedSeparator;
-				scope.$watchCollection('model.ptr', function(newObj, oldObj) {
-					scope.originalModel = [];
-					var newArr = _.compact(_.map(scope.model.ptr, 'item'));
-					_.forEach(newArr, function(e) {
-						scope.originalModel.push(e);
-					});
-				});
-				scope.$watchCollection('originalModel', function(newObj, oldObj) {
-					if(_.isUndefined(newObj)) {
-						scope.originalModel = [];
-					}
-					if(_.isArray(scope.originalModel)) {
-						scope.model.ptr = [];
-						_.forEach(scope.originalModel, function(e) {
-							var search = { item: {} };
-							search['item'][scope.options.idKey] = e[scope.options.idKey];
-							var found = _.find(scope.searchable, search);
-							if(_.isObject(found)) {
-								scope.model.ptr.push(found);
-							}
-						});
-					}
-				});
-				scope.$watchCollection('tree', function(newObj, oldObj) {
-					scope.searchable = constructBreadcrumbFromTree(scope.tree, []);
-				});
-			}
-		};
-	}])
-},{}],86:[function(require,module,exports){
-angular.module('nc')
-	.directive('ncBulk', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
-		return {
-			restrict: 'E',
-			template: $templateCache.get('common/ncBulk'),
-			scope: {
-				model: '=ncModel',
-				options: '=ncBulkFn',
-				select: '=?ncBulkSelect',
-				id: '@ncBulkTrackBy',
-				tag: '@ncTag'
-			},
-			link: function(scope) {
-				var defaultOption = {
-					name: '- Choose Action -',
-					fn: function() {
-
-					}
-				};
-				scope.options = _.concat(defaultOption, _.defaults(scope.options, []));
-				scope.model = _.defaults(scope.model, []);
-
-				scope.id = _.defaults(scope.id, null);
-				scope.select = scope.options[0];
-
-				scope.uniq = function(e) {
-					if(scope.id != null) {
-						if(_.isUndefined(e[scope.id])) {
-							throw 'Object does not contain property of ncBulkTrackBy = "' + scope.id + '"';
-						}
-						return e[scope.id];
-					} else {
-						return e;
-					}
-				};
-				scope.selectOption = function(option) {
-					scope.select = option;
-				}
-				scope.onChildChange = function(value, obj) {
-					if(value) {
-						scope.model = _.uniq(_.concat(scope.model, obj), scope.uniq);
-					} else {
-						if(_.isArray(obj)) {
-							_.pullAllBy(scope.model, obj, scope.uniq);
-						} else {
-							_.pullAllBy(scope.model, [obj], scope.uniq);
-						}
-					}
-				};
-				scope.findChild = function(obj) {
-					if(_.isArray(obj)) {
-						return _.differenceBy(scope.model, obj, scope.uniq).length == (scope.model.length - obj.length);
-					} else {
-						return !_.isUndefined(_.find(scope.model, function(e) {
-							return scope.uniq(e) === scope.uniq(obj);
-						}));
-					}
-				};
-				scope.call = function() {
-					if(scope.select != scope.options[0]) {
-						if(scope.select.fail && scope.model.length == 0) {
-							scope.select.fail(scope.model);
-							return;
-						}
-						if(scope.select.confirmation) {
-							var modal = $uibModal.open({
-								animation: true,
-								size: 'size-warning',
-								templateUrl: 'common/ncBulkModal',
-								controller: ["$scope", "$uibModalInstance", "options", "$interpolate", function($scope, $uibModalInstance, options, $interpolate) {
-									$scope.title = options.title;
-									$scope.message = $interpolate(options.message)(scope);
-									$scope.btnNo = options.btnNo || 'Cancel';
-									$scope.btnYes = options.btnYes || 'Confirm';
-									$scope.btnClass = options.btnClass || 'btn-blue';
-									$scope.yes = function() {
-										$uibModalInstance.close();
-									};
-									$scope.no = function() {
-										$uibModalInstance.dismiss();
-									}
-								}],
-								resolve: {
-									options: function() {
-										return {
-											title: scope.select.confirmation.title,
-											message: scope.select.confirmation.message,
-											btnNo: scope.select.confirmation.btnCancel,
-											btnYes: scope.select.confirmation.btnConfirm,
-											btnClass: scope.select.confirmation.btnClass
-										}
-									}
-								}
-							});
-							//Modal 
-							modal.result.then(function() {
-								scope.select.fn(scope.model, function() {
-									//cb to clear all entries
-									scope.model = [];
-								});
-							});
-						} else {
-							scope.select.fn(scope.model, function() {
-								//cb to clear all entries
-								scope.model = [];
-							});
-						}
-					}
-				};
-			}
-		}
-	}])
-	.directive('ncBulkCheckbox', ["$templateCache", function($templateCache) {
-		return {
-			restrict: 'E',
-			replace: true,
-			scope: {
-				model: '=ncModel',
-				tag: '@ncTag'
-			},
-			template: $templateCache.get('common/ncBulkCheckbox'),
-			link: function(scope) {
-				if (_.isUndefined(scope.tag)) {
-					scope.parent = angular.element(document).find('nc-bulk').isolateScope();
-				} else {
-					scope.parent = angular.element(document).find('nc-bulk[ncTag="' + scope.tag + '"]').isolateScope();
-				}
-
-				scope.prevent = false;
-				scope.checkbox = false;
-				
-
-				var updateModel = function(val, val2) {
-					var checkbox = scope.parent.findChild(scope.model);
-					if(checkbox !== scope.checkbox) {
-						scope.prevent = true;
-						scope.checkbox = checkbox;
-					}
-				};
-
-				scope.$watch('model', updateModel, true);
-				scope.$watch('checkbox', function(val, val2) {
-					if(scope.prevent) {
-						scope.prevent = false;
-						return;
-					}
-					scope.parent.onChildChange(val, scope.model);
-				});
-				scope.parent.$watch('model', updateModel, true);
-			}
-		}
-	}])
-},{}],87:[function(require,module,exports){
-var angular = require('angular');
-angular.module('nc')
-    .directive('ncDateRange', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse) {
-            return {
-                restrict: 'A',
-                replace: true,
-                priority: 1010,
-                scope: {
-                    optionsPath: '@ncTemplateOptionsPath',
-                    startLabel: '@?ncStartLabel',
-                    startDate: '=ncModelStart',
-                    endLabel: '@?ncEndLabel',
-                    label: '@?ncLabel',
-                    endDate: '=ncModelEnd',
-                    startMinView: '@ncStartMinView',
-                    endMinView: '@ncEndMinView',
-                    errorText: '@ncErrorText'
-                },
-                template: function (element, attrs) {
-                    var templateHTML = $templateCache.get(attrs.ncDateRange);
-                    if(!templateHTML){
-                        throw new KnownException("Unable to load specified nc-daterange template " + attrs.ncDateRange);
-                    }
-                    return templateHTML;
-                },
-                link: function (scope, element, attrs, ctrl, transclude) {
-                    var pathComp
-                    var opt = {};
-                    if(scope.optionsPath){
-                        pathComp = scope.optionsPath.split('/');
-                        opt = $templateOptionsCache[pathComp[0]][pathComp[1]];
-                    }
-
-                    if (!opt) {
-                        throw new KnownException('Warning: nc-date-range cannot find ' + scope.optionsPath);
-                        opt = {};
-                    }
-
-                    if(!('error' in opt)){
-                        opt.error = {};
-                    };
-
-
-                    scope.options = opt;
-                    scope.config1 = { dropdownSelector: '#date_range_vertical_dropdown1', minView: (scope.startMinView || 'hour') }
-                    scope.config2 = { dropdownSelector: '#date_range_vertical_dropdown2', minView: (scope.endMinView || 'hour') }
-                }
-            };
-        }]);
-
-},{"angular":176}],88:[function(require,module,exports){
-angular.module('nc')
-	.directive('ncEmpty', ["$templateCache", function($templateCache) {
-		return {
-			restrict: 'A',
-			scope: {
-				message: '@ncEmpty'
-			},
-			template: $templateCache.get('common/ncEmpty'),
-			link: function(scope) {
-				scope.message = _.extend('Empty content', scope.message);
-			}
-		};
-	}]);
-},{}],89:[function(require,module,exports){
-angular.module('nc')
-	.directive('ncEye', ["$templateCache", function($templateCache) {
-		return {
-			restrict: 'E',
-			scope: {
-				model: '=ncModel',
-				callback: '&ncEyeOnToggle'
-			},
-			template: $templateCache.get('common/ncEye'),
-			link: function(scope) {
-				scope._toggle = function() {
-					scope.model =!scope.model;
-					scope.$eval(scope.callback);
-				};
-			}
-		}
-	}]);
-},{}],90:[function(require,module,exports){
-angular.module('nc')
-	.directive('ncFilter', ["$templateCache", function($templateCache) {
-		return {
-			restrict: 'E',
-			replace: true,
-			transclude: true,
-			scope: {
-				model: '=ncModel',
-				filters: '=ncFilterOptions',
-				callback: '=?ncFilterEvent'
-			},
-			template: $templateCache.get('common/ncFilter'),
-			link: function(scope) {
-				scope.callback = scope.callback || function() { return false };
-				scope.select = function(value) {
-					if(scope.callback()) return;
-					scope.model = value;
-				}
-			}
-		}
-	}])
-},{}],91:[function(require,module,exports){
-angular.module('nc')
-	.directive('ncImageBanner', function() {
-		return {
-			restrict: 'E',
-			scope: {
-				ncModel: '=',
-				onFail: '=',
-				uploader: '=',
-				options: '=?',
-				size: '@',
-				title: '@'
-			},
-			template: '<nc-image-block nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 8 images</li><li>Image ratio 16:9</li></ul></nc-image-block>',
-			link: function(scope) {
-				scope.options = _.defaults(scope.options,{
-					height: '144px',
-					width: '256px'
-				});
-			}
-		}
-	})
-	.directive('ncImageBlock', ["$uibModal", "$templateCache", "FileItem", "FileUploader", function($uibModal, $templateCache, FileItem, FileUploader) {
-		return {
-			restrict: 'E',
-			require: '?^^form',
-			replace: true,
-			transclude: true,
-			scope: {
-				images: '=ncModel',
-				onfail: '=onFail', 
-				uploader: '=uploader',
-				options: '=?options',
-				size: '@size',
-				title: '@title'
-			},
-			template: $templateCache.get('common/ncImageBanner'),
-			link: function(scope, element, attrs, form) {
-				var fileUploader = false;
-				scope.options = _.defaults(scope.options,{
-					height: '150px',
-					width: '150px'
-				});
-				scope.$watch('uploader', function(val) {
-					if(val instanceof FileUploader) {
-						fileUploader = true;
-					} else {
-						fileUploader = false;
-					}
-				});
-				scope.upload = function(files) {
-					if(!_.isNil(form) && !_.isNil(attrs.name)) {
-						form.$setDirty();
-					}
-					if(fileUploader) {
-						_.forEach(files, function(file) {
-							//max size
-							if(scope.images.length >= _.toInteger(scope.size)) {
-								scope.onfail('onmaxsize', scope.size);
-								return;
-							}
-							var obj = {
-								progress: 0
-							};
-							scope.images.push(obj);
-							var f = new FileItem(scope.uploader, file, {
-								onSuccess: function(response) {
-									_.extend(obj, response);
-								},
-								onError: function(response, status, headers) {
-									scope.onfail('onerror', response, status, headers);
-									_.remove(scope.images, function(n) {
-										return n === obj;
-									});
-								},
-								onProgress: function(progress) {
-									obj.progress = progress;
-								}
-							});
-							scope.uploader.queue.push(f);
-							f.upload();
-						});
-					} else {
-						//newer version
-						_.forEach(files, function(file) {
-							//max size
-							if(scope.images.length >= _.toInteger(scope.size)) {
-								scope.onfail('onmaxsize', scope.size);
-								return;
-							}
-							var obj = {
-								progress: 0
-							};
-							scope.images.push(obj);
-							scope.uploader.upload(file)
-								.then(function(response) {
-									_.extend(obj, response.data);
-								}, function(response) {
-									scope.onfail('onerror', response);
-									_.remove(scope.images, function(n) {
-										return n === obj;
-									});
-								}, function(evt) {
-            						obj.progress = _.parseInt(100.0 * evt.loaded / evt.total);
-								});
-						});
-					}
-				};
-				scope.call = function(image, index, action) {
-					if(!_.isNil(action.confirmation)) {
-						var modal = $uibModal.open ({
-							size: 'size-warning',
-							templateUrl: 'common/ncActionModal',
-							controller: ["$scope", "$uibModalInstance", "options", "$interpolate", function($scope, $uibModalInstance, options, $interpolate) {
-								$scope.title = options.title;
-								$scope.message = $interpolate(options.message)(scope);
-								$scope.btnNo = options.btnNo || 'Cancel';
-								$scope.btnYes = options.btnYes || 'Confirm';
-								$scope.btnClass = options.btnClass || 'btn-blue';
-								$scope.yes = function() {
-									$uibModalInstance.close();
-								};
-								$scope.no = function() {
-									$uibModalInstance.dismiss();
-								}
-							}],
-							resolve: {
-								options: function() {
-									return {
-										title: action.confirmation.title,
-										message: action.confirmation.message,
-										btnYes: action.confirmation.btnConfirm,
-										btnClass: action.confirmation.btnClass
-									}
-								}
-							}
-						});
-
-						modal.result.then(function() {
-							if(!_.isNil(form) && !_.isNil(attrs.name)) {
-								form.$setDirty();
-							}
-							action.fn(image, scope.images, index);
-						});
-					} else {
-						if(!_.isNil(form) && !_.isNil(attrs.name)) {
-							form.$setDirty();
-						}
-						action.fn(image, scope.images, index);
-					}
-				};
-				scope.getSrc = function(image) {
-					return image.url || null;
-				};
-				scope.getProgress = function(image) {
-					return image.progress || 0;
-				};
-				scope.actions = [
-					{
-						//Zoom
-						fn: function(item, array, index) {
-							$uibModal.open({
-								size: 'product-image',
-								template: '<img ng-src="{{url}}" alt=""/>',
-								controller: ["$scope", "url", function($scope, url) {
-									$scope.url = url;
-								}],
-								resolve: {
-									url: function() {
-										return item.url;
-									}
-								}
-							});
-						},
-						icon: 'fa-search-plus'
-					},
-					{
-						//Trash
-						fn: function(item, array, index) {
-							array.splice(index, 1);
-						},
-						icon: 'fa-trash',
-						confirmation: {
-							title: 'Confirm to delete',
-							message: 'Are you sure you want to delete the image?',
-							btnConfirm: 'Delete',
-							btnCancel: 'Cancel',
-							btnClass: 'btn-red'
-						}
-					},
-					{
-						//Left
-						fn: function(item, array, index) {
-						    var to = index - 1;
-						    if (to < 0) return;
-						    var tmp = array[to];
-						    array[to] = item;
-						    array[index] = tmp;
-						},
-						icon: 'fa-arrow-left'
-					},
-					{
-						//Right
-						fn: function(item, array, index) {
-							//console.log(item, array, index);
-						    var to = index + 1;
-						    if (to >= array.length) return;
-
-						    var tmp = array[to];
-						    array[to] = item;
-						    array[index] = tmp;
-						},
-						icon: 'fa-arrow-right'
-					}
-				];
-			}
-		}
-	}])
-	.directive('ncImageGallery', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
-		return {
-			restrict: 'E',
-			replace: true,
-			transclude: true,
-			scope: {
-				model: '=ncModel',
-				options: '=ncImageGalleryOptions',
-				lock: '&?ncImageGalleryDisabled'
-			},
-			template: $templateCache.get('common/ncImageGallery'),
-			link: function(scope) {
-				scope.options = _.defaults(scope.options, {
-					actions: [],
-					size: 10, //max size of gallery
-					urlKey: 'url', //image[urlKey] to get src
-					loaderImg: '/assets/img/loader.gif', //when image[urlKey] = ''
-					emptyImg: '/assets/img/placeholder-no-image-blank.png' //when image = null 
-				});
-				scope.lock = _.defaults(scope.lock, function() { return false; });
-				scope.getSrc = function(image) {
-					if(image == null) {
-						//Empty
-						return scope.options.emptyImg;
-					} else if(image[scope.options.urlKey] == '') {
-						return scope.options.loaderImg;
-					} else {
-						return image[scope.options.urlKey];
-					}
-				};
-				scope.isDisabled = function(image) {
-					return _.isNull(image) || scope.lock();
-				};
-				scope.call = function(action, image) {
-					if(scope.isDisabled(image)) return;
-					var index = scope.model.indexOf(image);
-					
-					if(action.confirmation) {
-						var modal = $uibModal.open({
-							size: 'size-warning',
-							templateUrl: 'common/ncActionModal',
-							controller: ["$scope", "$uibModalInstance", "options", "$interpolate", function($scope, $uibModalInstance, options, $interpolate) {
-								$scope.title = options.title;
-								$scope.message = $interpolate(options.message)(scope);
-								$scope.btnNo = options.btnNo || 'Cancel';
-								$scope.btnYes = options.btnYes || 'Confirm';
-								$scope.btnClass = options.btnClass || 'btn-blue';
-								$scope.yes = function() {
-									$uibModalInstance.close();
-								};
-								$scope.no = function() {
-									$uibModalInstance.dismiss();
-								}
-							}],
-							resolve: {
-								options: function() {
-									return {
-										title: action.confirmation.title,
-										message: action.confirmation.message,
-										btnYes: action.confirmation.btnConfirm,
-										btnClass: action.confirmation.btnClass
-									}
-								}
-							}
-						});
-
-						modal.result.then(function() {
-							action.fn(image, scope.model, index);
-						})
-					} else {
-						action.fn(image, scope.model, index);
-					}
-				}
-				var load = function() {
-					scope.images = _.clone(scope.model);
-					for (var i = 0; i < scope.options.size - scope.model.length; i++) {
-						scope.images.push(null);
-					};
-				};
-				scope.$watch('model', load, true);
-			}
-		};
-	}])
-	.directive('ncImageDropzone', ["$templateCache", "$compile", "FileUploader", function($templateCache, $compile, FileUploader) {
-		return {
-			restrict: 'E',
-			replace: true,
-			scope: {
-				model: '=ncModel',
-				originalUploader: '=ncImageUploader',
-				options: '=?ncImageDropzoneOptions',
-				onEvent: '&?ncImageDropzoneOnEvent',
-				onError: '&?ncImageDropzoneOnError',
-				onSuccess: '&?ncImageDropzoneOnSuccess',
-				isUploading: '=?isUploading',
-				template: '@ncImageTemplate'
-			},
-			link: function(scope, element) {
-				scope.uploader = new FileUploader(scope.originalUploader);
-				scope.template = scope.template || 'common/ncImageDropzoneTemplate';
-				scope.options = _.defaults(scope.options, {
-					urlKey: 'url',
-					onQueueLimit: _.noop,
-					onEvent: _.noop,
-					onResponse: function(item) { return item; },
-					onUpload: function(item) {}
-				});
-				scope.onError = scope.onError || _.noop;
-				scope.onSuccess = scope.onSuccess || _.noop;
-				scope.update = function() {
-					var html = $templateCache.get(scope.template);
-					element.html(html);
-					$compile(element.contents())(scope);
-				};
-	
-				scope.upload = function() {
-					element.find('input').trigger('click');
-				};
-
-				scope.triggerEvent = function(eventName) {
-					scope.onEvent({$eventName: eventName});
-				};
-
-				//Upload
-				scope.uploader.onAfterAddingFile = function(item) {
-					if(scope.uploader.queueLimit == scope.model.length) {
-						if(scope.options.onQueueLimit) {
-							scope.options.onQueueLimit(item, scope.model);
-						}
-						item.cancel();
-						item.remove();
-					} else {
-						var obj = {};
-						obj[scope.options.urlKey] = '';
-						scope.model.push(obj);
-						item.obj = obj;
-						item.indx = scope.model.length-1;
-					}
-				};
-				scope.uploader.onWhenAddingFileFailed = function(item, filter) {
-			    	scope.onError({$response : filter});
-				};
-			    scope.uploader.onSuccessItem = function(item, response, status, headers) {
-					scope.model[item.indx][scope.options.urlKey] = response[scope.options.urlKey];			    	
-			    };
-			    scope.uploader.onErrorItem = function(item, response, status, headers) {
-			    	scope.model.splice(scope.model.indexOf(item.obj), 1);
-			    	scope.onError({$response : response});
-			    };
-
-				scope.update();
-				scope.$watch('template', scope.update);
-				scope.$watch('uploader.isUploading', function(val) {
-					scope.isUploading = val;
-				});
-			}
-		};
-	}])
-},{}],92:[function(require,module,exports){
-angular.module('nc')
-.directive('ncImageIntegrity', function() {
-    //Only show if image loaded by <img> integrity is OK (100% finished loading)
-        return {
-            restrict: 'A',
-            link: function(scope, element, attrs) {
-                element.bind('load', function() {
-                    if(element.naturalWidth !== 0){
-                        element.css('display', 'inherit');
-                    }
-                    
-                });
-                element.bind('error', function(){
-                    element.css('display', 'inherit');
-                    console.error("Unable to load image - integrity check failed", element); //should retry
-                });
-            }
-        };
-    })
-},{}],93:[function(require,module,exports){
-angular.module('nc')
-	.directive('ncLoading', ["$templateCache", function($templateCache) {
-		return {
-			restrict: 'A',
-			scope: {
-				message: '@ncLoading'
-			},
-			template: $templateCache.get('common/ncLoading'),
-			link: function(scope) {
-				scope.message = _.extend('Loading...', scope.message);
-			}
-		};
-	}])
-	.directive('ncLoadingSmall', ["$templateCache", function($templateCache) {
-		return {
-			restrict: 'A',
-			scope: {
-				message: '@ncLoadingSmall'
-			},
-			template: $templateCache.get('common/ncLoadingSmall'),
-			link: function(scope) {
-				scope.message = _.extend('Loading...', scope.message);
-			}
-		};
-	}]);
-},{}],94:[function(require,module,exports){
-var angular = require('angular');
-angular.module('nc')
-    .directive('ncPageTitle', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "$parse", "KnownException", function ($rootScope, $templateCache, $compile, $templateOptionsCache, $parse, KnownException) {
-        return {
-            restrict: 'EA',
-            transclude: true,
-            replace: true,
-            priority: 1010,
-            scope: {
-                title: '@ncTitle'
-            },
-            template: function (element, attrs) {
-                var templateHTML = $templateCache.get('partials/page-title');
-                if (!templateHTML) {
-                    throw new KnownException("Unable to load specified nc-page-title");
-                }
-                return templateHTML;
-            },
-            link: function (scope, element, attrs, ctrl, transclude) {
-            	console.log("nc-page-title"); 
-            }
-        };
-    }]);
-},{"angular":176}],95:[function(require,module,exports){
-angular.module('nc')
-	.provider('$ncPagination', function() {
-		this.paginationSizes = [10,20,30];
-		this.$get = function() {
-			return this;
-		}
-	})
-	.directive('ncPagination', ["$templateCache", "$ncPagination", function($templateCache, $ncPagination) {
-		return {
-			restrict: 'E',
-			replace: true,
-			scope: {
-				params: '=ncModel',
-				total: '=ncPaginationTotal',
-				paginationOptions: '=?ncPaginationSizes',
-				callback: '=?ncPaginationEvent'
-			},
-			template: $templateCache.get('common/ncPagination'),
-			link: function(scope, element, attrs) {
-				scope.paginationOptions = scope.paginationOptions || $ncPagination.paginationSizes;
-				scope.params._limit = scope.paginationOptions[0];
-				scope.callback = scope.callback || function() { return false };
-				scope.page = function() {
-					if(scope.total == 0) {
-						return 0;
-					}
-					return Math.ceil(scope.params._offset / scope.params._limit) + 1;
-				};
-				scope.pageSize = function() {
-					return scope.params._limit; 
-				};	
-				scope.totalPage = function() {
-					return Math.ceil(scope.total / scope.params._limit);
-				};
-				scope.nextPage = function(offset) {
-					var page = scope.page();
-					var total = scope.totalPage();
-					if(page + offset > total ||
-						page + offset <= 0)
-						return;
-					if(scope.callback(scope.params._offset + (offset) * scope.params._limit, 'offset')) {
-						return;
-					}
-					scope.params._offset += offset * scope.params._limit;
-				};
-				scope.setPage = function(i) {
-					scope.params._offset = (i-1) * scope.params._limit;
-				};
-				scope.setPageSize = function(n) {
-					if(scope.params._limit == n) {
-						return;
-					}
-					if(scope.callback(n, 'size')) {
-						return;
-					}
-					scope.params._limit = n;
-					
-				};
-				scope.$watch('params._limit', function() {
-					if(scope.params._limit > scope.total) {
-						scope.setPage(1);
-					}
-				});
-			}
-		}
-	}]);
-},{}],96:[function(require,module,exports){
-angular.module('nc')
-	.provider('ncPermissionProvider', function() {
-		this.permission = function() {
-			return [];
-		};
-		this.$get = function() {
-			return this;
-		};
-	})
-	.directive('ncClassPermission', function() {
-		return {
-			restrict: 'A',
-			link: function(scope, element, attrs) {
-
-			}
-		}
-	})
-	.directive('ncShowPermission', function() {
-		
-	});
-},{}],97:[function(require,module,exports){
-angular.module('nc')
-	.directive('ncSearch', ["$templateCache", function($templateCache) {
-		return {
-			restrict: 'E',
-			replace: true,
-			scope: {
-				model: '=ncModel',
-				placeholder: '=ncSearchPlaceholder',
-				event: '=?ncSearchEvent'
-			},
-			template: $templateCache.get('common/ncSearch'),
-			link: function(scope) {
-				scope.event = scope.event || function() { return false };
-				scope.searchText = '';
-				scope.callback = function() {
-					if(scope.event(scope.searchText)) return;
-					scope.model = scope.searchText;
-				}
-			}
-		};
-	}]);
-},{}],98:[function(require,module,exports){
-angular.module('nc')
-	.provider('$ncTable', function() {
-		this.tableOptions = {
-			loadingMessage: 'Loading...',
-			searchEmptyMessage: 'No search result',
-			emptyMessage: 'You do not have an Entry'
-		};
-		this.tableParams = {
-			_order: '',
-			_limit: 10,
-			_offset: 0,
-			_direction: 'asc'
-		};
-		this.$get = function() {
-			return this;
-		};
-	})
-	.directive('ncTable', ["$log", "$templateCache", "$ncTable", function($log, $templateCache, $ncTable) {
-		return {
-			restrict: 'E',
-			replace: true,
-			transclude: true,
-			template: $templateCache.get('common/ncTable'),
-			scope: {
-				model: '=ncModel',
-				options: '=ncTableOptions',
-				params: '=ncTableParams',
-				loading: '=ncIsLoading',
-				searching: '=ncIsSearching'
-			},
-			controller: ["$scope", function($scope) {
-				this.sort = function(id, direction) {
-					$scope.params._order = id;
-					$scope.params._direction = direction ? 'desc' : 'asc';
-				};
-				this.isOrderBy = function(id) {
-					return $scope.params._order === id;
-				};
-				this.direction = function() {
-					return $scope.params._direction == 'desc' ? true : false;
-				}
-			}],
-			link: function(scope, element, attrs, controller) {
-				//Default values
-				var defaultTableModel = {
-					data: [],
-					total: 0
-				};
-
-				//Aggregriate default value
-				scope.options = _.defaults(scope.options, $ncTable.tableOptions);
-				scope.params = _.defaults(scope.params, $ncTable.tableParams);
-				scope.model = _.merge(scope.model, defaultTableModel);
-			}
-		};
-	}])
-	.directive('ncSort', ["$templateCache", "$log", function($templateCache, $log) {
-		return {
-			restrict: 'A',
-			require: '^ncTable',
-			transclude: true,
-			scope: {
-				sort: '@ncSort'
-			},
-			template: $templateCache.get('common/ncTableSort'),
-			link: function(scope, element, attrs, parent) {
-				scope.isCurrent = function() {
-					return parent.isOrderBy(scope.sort);
-				};
-				scope.click = function() {
-					scope.direction = !scope.direction;
-					parent.sort(scope.sort, scope.direction);
-				};
-				scope.direction = scope.isCurrent() ? parent.direction() : false;
-			}
-		}
-	}])
-	.directive('ncLink', function() {
-		return {
-			restrict: 'A',
-			require: '^ncTable',
-			transclude: true,
-			scope: {
-				link: '@ncLink'
-			},
-			template: '<a ng-href="{{link}}" ng-transclude></a>',
-		}
-	});
-},{}],99:[function(require,module,exports){
-var angular = require('angular');
-angular.module('nc')
-    .directive('ncTemplate', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException,  $parse) {
-            return {
-                restrict: 'A',
-                transclude: true,
-                replace: true,
-                priority: 1010,
-                scope: {
-                    optionsPath: '@ncTemplateOptionsPath',
-                    templateField: '&ncTemplateForm',
-                    viewBag: '=?ncViewBag',
-                    label: '@ncLabel'
-                },
-                template: function (element, attrs) {
-                    var templateHTML = $templateCache.get(attrs.ncTemplate);
-                    if(!templateHTML){
-                        throw new KnownException("Unable to load specified nc-template " + attrs.ncTemplate);
-                    }
-                    return templateHTML;
-                },
-                link: function (scope, element, attrs, ctrl, transclude) {
-
-
-                    scope.isInvalid = function(form) {
-                        if(angular.isDefined(form) &&
-                            angular.isDefined(form.$invalid) &&
-                            angular.isDefined(form.$dirty)) {
-                            return form.$invalid && (form.$dirty || form.$$parentForm.$submitted);
-                        }
-                        return false;
-                    };
-
-                    var pathComp
-                    var opt = {};
-                    if(scope.optionsPath){
-                        pathComp = scope.optionsPath.split('/');
-                        opt = $templateOptionsCache[pathComp[0]][pathComp[1]];
-                    }
-
-
-                    if (!opt) {
-                        throw new KnownException('Warning: nc-template cannot find ' + scope.optionsPath);
-                        opt = {};
-                    }
-
-                    if(!('error' in opt)){
-                        opt.error = {};
-                    };
-
-                    scope.options = opt;
-
-                }
-            };
-        }]);
-
-},{"angular":176}],100:[function(require,module,exports){
-angular.module('nc')
-	.directive('ncTreeSelect', ["$interpolate", "$templateCache", function($interpolate, $templateCache) {
-		/**
-		 * Hold data for column object
-		 */
-		function Column() {
-			this.__list = [];
-			this.__active = -1;
-
-			/**
-			 * Get or set array of child object
-			 *
-			 * @param  {Array} list Set children to this if passed
-			 * @return {Array}      Array of child
-			 */
-			this.list = function(list) {
-				return _.isUndefined(list) ? this.__list : (this.__list = list);
-			};
-
-			/**
-			 * Get or set active index for this column
-			 *
-			 * @param  {Number} active Set active index to this if passed
-			 * @return {Number}        Active index, -1 if none
-			 */
-			this.active = function(active) {
-				return _.isUndefined(active) ? this.__active : (this.__active = active);
-			};
-		};
-
-		/**
-		 * Collection of Column object
-		 * @param {Array} tree Root nested tree
-		 * @param {Number} size Number of columns
-		 * @param {Object} options Extra params
-		 */
-		function Columns(tree, size, options) {
-			/**
-			 * Declare extra options for this class
-			 */
-			options = _.extend({
-				childrenKey: 'nodes',
-				parentKey: 'parent'
-			}, options);
-
-			var childrenKey = options.childrenKey;
-			var parentKey = options.parentKey;
-
-			/**
-			 * Get columns as array of Column
-			 *
-			 * @return {Array} Array of Column object
-			 */
-			this.list = function() {
-				return this.columns;
-			};
-
-			/**
-			 * Clear all columns to default empty
-			 *
-			 * @param  {Boolean} activeOnly If only active flag is clear
-			 */
-			this.clear = function(activeOnly) {
-				// Initialize empty
-				for (var i = 0; i < this.columns.length; i++) {
-					if(_.isUndefined(activeOnly) || !activeOnly) {
-						this.columns[i].list([]);
-					}
-					this.columns[i].active(-1);
-				};
-			};
-
-			/**
-			 * Clear all columns and set first to tree
-			 */
-			this.clearToDefault = function() {
-				this.clear();
-				this.columns[0].list(this.__tree);
-			};
-
-			/**
-			 * [select description]
-			 * @param  {[type]} item [description]
-			 * @return {[type]}      [description]
-			 */
-			this.select = function(item) {
-
-				// Not an item or null
-				if(_.isNil(item)) {
-					// Select nothing
-					this.clear(true);
-					return;
-				}
-
-				/* Traverse and get all array of item to be pushed into display columns */
-				var collection = [];
-				var ctx = item;
-
-				//Push leaf if any
-				if(!_.isEmpty(ctx[childrenKey])) {
-					collection.push({
-						list: ctx[childrenKey],
-						active: -1
-					})
-				}
-
-				while(!_.isUndefined(ctx[parentKey])) {
-					//Bubble up the tree
-					collection.push({
-						list: ctx[parentKey][childrenKey],
-						active: _.indexOf(ctx[parentKey][childrenKey], ctx)
-					});
-					ctx = ctx[parentKey];
-				}
-
-				// Make sure this item is descendent of the tree
-				var index = _.indexOf(this.__tree, ctx);
-
-				if(index >= 0) {
-					// Push root
-					collection.push({
-						list: this.__tree,
-						active: index
-					});
-
-					// Assign to column
-					for (var i = 0; i < this.__size; i++) {
-						if(collection.length > 0) {
-							// Assign collection to display list
-							var col = collection.pop();
-							this.columns[i].list(col.list);
-							this.columns[i].active(col.active);
-						} else {
-							// No more children
-							this.columns[i].list([]);
-							this.columns[i].active(-1);
-						}
-					}
-				} else {
-					// Select nothing
-					this.clearToDefault();
-				}
-			};
-
-
-			/* Class main
-			 ------------------------------- */
-			this.columns = [];
-			for (var i = 0; i < size; i++) {
-			 	this.columns.push(new Column());
-			};
-			this.columns[0].list(tree);
-			this.__tree = tree;
-			this.__size = size;
-
-		};
-
-		return {
-			restrict: 'E',
-			replace: true,
-			scope: {
-				model: '=ncModel',
-				tree: '=ncTreeSelectTree',
-				title: '@ncTreeSelectTitle',
-				options: '=?ncTreeSelectOptions'
-			},
-			template: $templateCache.get('common/ncTreeSelect'),
-			link: function(scope, element, attrs) {
-				// Directive options
-				scope.options = _.defaults(scope.options, {
-					columnSize: 4,
-					contentTemplate: '{{$item.NameEn}}' //basic tree item
-				});
-				scope.columns = new Columns(scope.tree, scope.options.columnSize);
-
-				// Watch for tree change
- 				scope.$watch('tree', function(newObj, oldObj) {
- 					var arr = newObj;
-					if(_.isArray(arr)) {
-						// Recreate container from arr
-						scope.columns = new Columns(arr, scope.options.columnSize);
-						scope.columns.select(scope.model);
-					}
-				});
-
-				// Watch for model change
-				scope.$watch('model', function(newObj, oldObj) {
-					if(newObj != oldObj) {
-						scope.columns.select(scope.model);
-					}
-				});
-
-				scope.setModel = function(item) {
-					scope.model = item;
-				};
-
-				scope.getContent = function(item) {
-					return $interpolate(scope.options.contentTemplate)({$item: item});
-				};
-			},
-			controller: ["$scope", function($scope) {
-				this.setHeader = function(html) {
-					$scope.header = html;
-				};
-				this.setFooter = function(html) {
-					$scope.footer = html;
-				};
-			}]
-		};
-	}]);
-
-},{}],101:[function(require,module,exports){
-angular.module('nc')
-    .directive('ncTagValidator', function () {
-        return {
-            restrict: 'A',
-            require: ['ngModel', 'uiSelect'],
-            link: function ($scope, element, attrs, ctrl) {
-                var maxTagCount = 1000;
-                var maxTagLength = 30;
-                var tagPattern = false;
-
-                var $select = ctrl[1];
-                var $model = ctrl[0];
-
-                $select.onSelectCallback = function () {
-                    var array = ($model.$modelValue || []);
-                    var item = (array[array.length - 1] || "");
-                    var _pass = true;
-                    $model.$error = {};
-
-                    if (array.length > maxTagCount) {
-                        $model.$error.maxtagcount = true;
-                        _pass = false;
-                    };
-
-                    if (item.length > maxTagLength) {
-                        $model.$error.maxtaglength = true;
-                        _pass = false;
-                    };
-
-                    if (tagPattern && !item.match(tagPattern)) {
-                        $model.$error.pattern = true;
-                        _pass = false;
-                    }
-
-                    if (!_pass) {
-                        $model.$modelValue.pop();
-                        $model.$viewValue = $model.$modelValue;
-                    }
-
-                };
-
-                attrs.$observe('ncMaxTagCount', function (val) {
-                    if (!val) return;
-                    maxTagCount = Number(val);
-                });
-
-                attrs.$observe('ncTagPattern', function (val) {
-                    if (!val) return;
-                    tagPattern = val;
-                });
-
-                attrs.$observe('ncMaxTagLength', function (val) {
-                    if (!val) return;
-                    maxTagLength = Number(val);
-                });
-
-            }
-        }
-    });
-},{}],102:[function(require,module,exports){
-angular.module('nc')
-	.filter('compact', function() {
-		return function(input) {
-			return _.compact(input);
-		};
-	});
-},{}],103:[function(require,module,exports){
-angular.module('nc')
-	.filter('dateTh', ["$filter", function($filter) {
-		return function(input) {
-			return $filter('date')(input, 'dd/MM/yy', '+700');
-		}
-	}])
-	.filter('timeTh', ["$filter", function($filter) {
-		return function(input) {
-			return $filter('date')(input, 'H:m', '+700');
-		}
-	}]);
-},{}],104:[function(require,module,exports){
-angular.module('nc')
-    .filter('escapeHtml', function () {
-        var entityMap = {
-            "&": "&amp;",
-            "<": "&lt;",
-            ">": "&gt;",
-            '"': '&quot;',
-            "'": '&#39;',
-            "/": '&#x2F;'
-        };
-
-        return function(str) {
-            return String(str).replace(/[&<>"'\/]/g, function (s) {
-                return entityMap[s];
-            });
-        }
-    });
-},{}],105:[function(require,module,exports){
-/*
- Return dropdown[value] if input == dropdown[name]
- */
-angular.module('nc')
-	.filter('mapDropdown', function() {
-		//Return property
-		return function(input, collections, name) {
-			if(_.isUndefined(collections)) {
-				return input;
-			}
-
-			if(_.isUndefined(name)) {
-				name = 'name';
-			}
-
-			var find = _.find(collections, function(o) {
-				return o.value == input;
-			}) 
-
-			return _.isUndefined(find) ? input : find[name];
-		}
-	});
-},{}],106:[function(require,module,exports){
-angular.module('nc')
-	.filter('replace', function() {
-		return function(input, from, to) {
-			return input.replace(from, to);
-		};
-	});
-},{}],107:[function(require,module,exports){
-(function (global){
-var angular = require('angular');
-
-require('angular-ui-bootstrap');
-require('angular-sanitize');
-require('angular-file-upload');
-require('angular-scroll');
-require('ui-select');
-global.jQuery = require('jquery');
-global.$ = require('jquery');
-global._ = require('lodash');
-
-angular.module('nc', ['ngSanitize', 'ui.bootstrap', 'ui.select', 'duScroll', 'angularFileUpload'])
-
-.config(["$uibTooltipProvider", function($uibTooltipProvider) {
-	$uibTooltipProvider.setTriggers({
-		'clickanystart' : 'clickanyend'
-	});
-}]);
-(function () {var f = require("./index.js");f["directives"]=({"ncAction":require("./directives\\ncAction.js"),"ncAdvanceSearch":require("./directives\\ncAdvanceSearch.js"),"ncAlert":require("./directives\\ncAlert.js"),"ncBindCompile":require("./directives\\ncBindCompile.js"),"ncBreadcrumpSelect":require("./directives\\ncBreadcrumpSelect.js"),"ncBulk":require("./directives\\ncBulk.js"),"ncDateRange":require("./directives\\ncDateRange.js"),"ncEmpty":require("./directives\\ncEmpty.js"),"ncEye":require("./directives\\ncEye.js"),"ncFilter":require("./directives\\ncFilter.js"),"ncImageGallery":require("./directives\\ncImageGallery.js"),"ncImageIntegrity":require("./directives\\ncImageIntegrity.js"),"ncLoading":require("./directives\\ncLoading.js"),"ncPageTitle":require("./directives\\ncPageTitle.js"),"ncPagination":require("./directives\\ncPagination.js"),"ncPermission":require("./directives\\ncPermission.js"),"ncSearch":require("./directives\\ncSearch.js"),"ncTable":require("./directives\\ncTable.js"),"ncTemplate":require("./directives\\ncTemplate.js"),"ncTreeSelect":require("./directives\\ncTreeSelect.js"),"ncUiSelect":require("./directives\\ncUiSelect.js")});f["filters"]=({"compact":require("./filters\\compact.js"),"date":require("./filters\\date.js"),"escapeHtml":require("./filters\\escapeHtml.js"),"map":require("./filters\\map.js"),"replace":require("./filters\\replace.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
-require('./template.js');
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./directives\\ncAction.js":81,"./directives\\ncAdvanceSearch.js":82,"./directives\\ncAlert.js":83,"./directives\\ncBindCompile.js":84,"./directives\\ncBreadcrumpSelect.js":85,"./directives\\ncBulk.js":86,"./directives\\ncDateRange.js":87,"./directives\\ncEmpty.js":88,"./directives\\ncEye.js":89,"./directives\\ncFilter.js":90,"./directives\\ncImageGallery.js":91,"./directives\\ncImageIntegrity.js":92,"./directives\\ncLoading.js":93,"./directives\\ncPageTitle.js":94,"./directives\\ncPagination.js":95,"./directives\\ncPermission.js":96,"./directives\\ncSearch.js":97,"./directives\\ncTable.js":98,"./directives\\ncTemplate.js":99,"./directives\\ncTreeSelect.js":100,"./directives\\ncUiSelect.js":101,"./filters\\compact.js":102,"./filters\\date.js":103,"./filters\\escapeHtml.js":104,"./filters\\map.js":105,"./filters\\replace.js":106,"./index.js":107,"./template.js":108,"angular":176,"angular-file-upload":166,"angular-sanitize":168,"angular-scroll":170,"angular-ui-bootstrap":172,"jquery":178,"lodash":179,"ui-select":184}],108:[function(require,module,exports){
-/**
- * Generated by grunt-angular-templates 
- */
-angular.module("nc").run(["$templateCache", function($templateCache) {  'use strict';
-
-  $templateCache.put('common/ncAction',
-    "<a class=action-gear href=javascript:; uib-popover-template=\"'common/ncActionPopover'\" popover-placement=bottom popover-append-to-body=true popover-trigger=outsideClick class=action-gear><i class=\"fa fa-gear color-dark-grey icon-size-20\"></i> <i class=\"fa fa-caret-down color-dark-grey\"></i></a>"
-  );
-
-
-  $templateCache.put('common/ncActionModal',
-    "<div class=\"modal-header no-border\"><button type=button class=close aria-label=Close ng-click=no()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">{{title}}</h2><div ng-bind-html=message></div></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn btn-white\" ng-click=no()>{{btnNo}}</button> <button type=button class=\"btn {{btnClass}}\" ng-click=yes()>{{btnYes}}</button></div></div></div>"
-  );
-
-
-  $templateCache.put('common/ncActionPopover',
-    "<div ng-repeat=\"action in options\"><a ng-click=call(action)>{{action.name}}</a></div>"
-  );
-
-
-  $templateCache.put('common/ncAdvanceSearch',
-    "<div class=\"row margin-top-30\" ng-show=open><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Advance Search</h2></div><div class=form-section-content><form name=form class=ah-form novalidate><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductName nc-label=\"Product Name\" nc-template-options-path=searchForm/ProductName><input class=\"form-control width-field-normal\" name=ProductName ng-model=formData.ProductName required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Pid nc-label=PID nc-template-options-path=searchForm/Pid><input class=\"form-control width-field-normal\" name=Pid ng-model=formData.Pid required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Sku nc-label=SKU nc-template-options-path=searchForm/Sku><input class=\"form-control width-field-normal\" name=Sku ng-model=formData.Sku required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Brand nc-label=\"Brand Name\" nc-template-options-path=searchForm/Brands><ui-select ng-model=formData.Brands name=Brands nc-tag-validator multiple tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match>{{$item.BrandNameEn}}</ui-select-match><ui-select-choices repeat=\"item in options.Brands | filter:{BrandNameEn: $select.search} track by $index\">{{item.BrandNameEn}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.GlobalCategories nc-label=\"Global Category Name\" nc-template-options-path=searchForm/GlobalCategories><nc-breadcrumb-select name=GlobalCategories nc-model=formData.GlobalCategories nc-breadcrumb-select-tree=options.GlobalCategories></nc-breadcrumb-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.LocalCategories nc-label=\"Local Category Name\" nc-template-options-path=searchForm/LocalCategories ng-show=!options.Admin><nc-breadcrumb-select name=LocalCategories nc-model=formData.LocalCategories nc-breadcrumb-select-tree=options.LocalCategories></nc-breadcrumb-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Tags nc-label=\"Search Tag\" nc-template-options-path=searchForm/Tags class=ui-select-dropdown-hide><ui-select ng-model=formData.Tags name=Tags nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field><ui-select-match>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Tags\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.Price nc-label=\"Sale Price\" nc-template-options-path=searchForm/Price><div class=width-field-small-input><input name=Price ng-maxnumber={{formData.PriceTo}} ng-model=formData.PriceFrom class=form-control ng-pattern-restrict=\"^[0-9]*(\\.[0-9]{0,2})?$\"></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><input ng-model=formData.PriceTo class=form-control ng-pattern-restrict=\"^[0-9]*(\\.[0-9]{0,2})?$\"></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.CreatedDate nc-label=\"Created Date\" nc-template-options-path=searchForm/CreatedDate><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.CreatedDtFrom | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=CreatedDate ng-date-before={{formData.CreatedDtTo}} data-ng-model=formData.CreatedDtFrom data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'hour' }\"></ul></div></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.CreatedDtTo | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.CreatedDtTo data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'hour' }\"></ul></div></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.ModifiedDate nc-label=\"Modified Date\" nc-template-options-path=searchForm/ModifiedDate><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.ModifyDtFrom | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ModifyDtFrom name=ModifiedDate ng-date-before={{formData.ModifiedDtTo}} data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'hour' }\"></ul></div></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown4 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.ModifyDtTo | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ModifyDtTo data-datetimepicker-config=\"{ dropdownSelector: '#dropdown4', minView: 'hour' }\"></ul></div></div></div><div class=form-group><div class=width-label><label class=control-label></label></div><div class=button-size-normal><a class=\"button-size-normal btn btn-blue btn-width-xl\" ng-click=search()>Search</a></div><div class=button-size-normal><a class=\"button-size-normal margin-left-10 btn btn-white btn-width-xl\" ng-click=clear()>Clear</a></div></div></form></div></div></div></div>"
-  );
-
-
-  $templateCache.put('common/ncAdvanceSearchButton',
-    "<div class=search-section-item><button class=\"btn btn-default btn-toggle {{model ? 'active' : ''}}\" type=button ng-click=toggle()>Advanced Search</button></div>"
-  );
-
-
-  $templateCache.put('common/ncAlert',
-    "<div ng-show=alert.show uib-alert template-url=common/ncAlertTemplate type=\"{{ alert.type }}\" close=alert.close()><span ng-bind-html=alert.message></span></div>"
-  );
-
-
-  $templateCache.put('common/ncAlertTemplate',
-    "<div class=alert ng-class=\"['alert-' + (type || 'warning')]\" class=\"alert alert-dismissable\" role=alert><span class=\"close color opacity-1\" ng-class=\"'color-' + (type || 'warning')\" aria-hidden=true ng-show=closeable ng-click=\"close({$event: $event})\">&times;</span><ng-transclude><ng-transclude></ng-transclude></div>"
-  );
-
-
-  $templateCache.put('common/ncBreadcrumbSelect',
-    "<ui-select name={{name}} ng-model=model.ptr nc-tag-validator nc-max-tag-count={{options.tagCount}} multiple><ui-select-match><span ng-bind-html=$item.item[options.nameKey]></span></ui-select-match><ui-select-choices repeat=\"value in searchable | filter: { name: $select.search } | limitTo: options.limit track by $index\"><div ng-bind-html=\"value.displayName | highlight: $select.search | replace: encodedSeparator: options.seperator\"></div></ui-select-choices></ui-select>"
-  );
-
-
-  $templateCache.put('common/ncBulk',
-    "<div class=\"btn-group search-section-item\" role=group><div class=btn-group role=group><button type=button class=\"btn btn-default dropdown-toggle bulk-action-dropdown\" data-toggle=dropdown aria-haspopup=true aria-expanded=false uib-dropdown-toggle><span>{{ select.name }}</span> <span class=caret></span></button><ul uib-dropdown-menu role=menu class=dropdown-menu><li ng-repeat=\"option in options\"><a ng-click=selectOption(option)>{{ option.name }}</a></li></ul></div><button type=button class=\"btn btn-default btn-action\" ng-click=call()>Confirm <span ng-show=\"model.length > 0\">({{ model.length }})</span></button></div>"
-  );
-
-
-  $templateCache.put('common/ncBulkCheckbox',
-    "<input type=checkbox ng-model=\"checkbox\">"
-  );
-
-
-  $templateCache.put('common/ncBulkModal',
-    "<div class=\"modal-header no-border\"><button type=button class=close aria-label=Close ng-click=no()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">{{title}}</h2><div ng-bind-html=message></div></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn btn-white\" ng-click=no()>{{btnNo}}</button> <button type=button class=\"btn {{btnClass}}\" ng-click=yes()>{{btnYes}}</button></div></div></div>"
-  );
-
-
-  $templateCache.put('common/ncEmpty',
-    "<div class=\"local-category-page margin-bottom-20\"><div class=\"local-category-empty-section margin-top-20\"><span><span class=zero-category-image></span></span> <span class=local-category-empty-text>{{ message }}</span></div></div>"
-  );
-
-
-  $templateCache.put('common/ncEye',
-    "<a ng-click=_toggle()><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon' : !model,\r" +
-    "\n" +
-    "                            'fa fa-eye color-dark-grey eye-icon' : model}\"></i></a>"
-  );
-
-
-  $templateCache.put('common/ncFilter',
-    "<div class=filter-section><div class=filter-container><span>Filters:</span> <a class=filter-seperator ng-repeat=\"filter in filters\" ng-class=\"{'filter-active': model == filter.value }\" ng-click=select(filter.value)>{{ filter.name }}</a> <span ng-transclude></span></div></div>"
-  );
-
-
-  $templateCache.put('common/ncImage',
-    "<li class=list-item><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ model.ImageUrlEn.length > 0 && model.ImageUrlEn  || '/assets/img/loader.gif' }}\"></div><div ng-if=\"actions.length > 0\" class=actions-wrapper ng-style=\"width: {{100 / actions.length}}%;\"><a ng-repeat=\"action in options.actions\" class=action ng-click=\"action.fn(model, parent, $index)\"><i class=fa ng-class={{action.icon}}></i></a></div></div></li>"
-  );
-
-
-  $templateCache.put('common/ncImageBanner',
-    "<div class=form-section><div class=form-section-header><h2>{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p></div></div><div class=image-select-alternative-text><span>Or</span> <a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">Select Images from your computer</a></div></div></div><div class=col-xs-5 ng-transclude></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-show=getSrc(image) style=background-color:white ng-src=\"{{getSrc(image)}}\"><h4 ng-show=!getSrc(image) style=\"text-align: center;margin-top:20%\" class=\"color-grey ng-binding\"><img src=/assets/img/loader.gif height=55><br><span ng-if=\"getProgress(image) < 100\">{{ getProgress(image) }}%</span> <span ng-if=\"getProgress(image) >= 100\">Processing..</span></h4></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div><div style=\"text-align:center; padding-top: 10px; color: grey\" ng-if=\"$index == 0\">Featured Image</div></li></ul></div></div>"
-  );
-
-
-  $templateCache.put('common/ncImageDropzone',
-    "<div class=image-drop-wrapper><input nv-file-select=\"\" uploader=uploader accept=\".png, .jpg, .jpeg\" type=file multiple><div nv-file-drop=\"\" uploader=uploader class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload()>or select images</a></p></div></div></div>"
-  );
-
-
-  $templateCache.put('common/ncImageDropzoneInline',
-    "<div class=drop-zone-container><div class=image-drop-wrapper><input type=\"file\"><div class=image-drop-zone><div class=image-drop-zone-text ng-bind-compile=content><? $this->insert('components/image-dropzone-inline-text', [\"id\" => \"images-management1\", 'texts' =>['<i class=\"fa fa-image fa-3x color-theme\"></i>', 'Drop images here', '<a href=\"#\" data-trigger=\"file\" data-target=\"#images-management1\">or select images</a>']]) ?><? $this->insert('components/image-dropzone-inline-text', ['texts' =>['<i class=\"fa fa-ban fa-3x color-dark-grey\"></i>', 'Cannot upload', 'Wait for Approval']]) ?><? $this->insert('components/image-dropzone-inline-text', [\"id\" => \"images-management3\", 'texts' =>['This product is already approved', '<a href=\"#\" data-trigger=\"file\" data-target=\"#images-management3\">Click here to edit</a>']]) ?><? $this->insert('components/image-dropzone-inline-text', [\"id\" => \"images-management4\", 'texts' =>['<i class=\"fa fa-image fa-3x color-theme\"></i>', 'Drop images here', '<a href=\"#\" data-trigger=\"file\" data-target=\"#images-management4\">or select images</a>']]) ?><? $this->insert('components/image-dropzone-inline-text', ['texts' =>['<i class=\"fa fa-ban fa-3x color-dark-grey\"></i>', 'Cannot upload', 'Reach Max Photos']]) ?></div></div></div></div>"
-  );
-
-
-  $templateCache.put('common/ncImageDropzoneTemplate',
-    "<div class=image-drop-wrapper><input nv-file-select uploader=uploader type=file multiple><div nv-file-drop uploader=uploader class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload()>or select images</a></p></div></div></div>"
-  );
-
-
-  $templateCache.put('common/ncImageGallery',
-    "<div><p class=featured-image-wrapper>Featured Image</p><ul class=image-management-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ getSrc(image) }}\"></div><div class=actions-wrapper><a class=\"action {{ isDisabled(image) ? 'disabled' : ''}}\" ng-repeat=\"action in options.actions\" style=\"width: {{100 / options.actions.length }}%\" ng-click=\"call(action, image, model)\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div>"
-  );
-
-
-  $templateCache.put('common/ncLoading',
-    "<div class=\"empty-section margin-top-20 margin-bottom-20\"><span><img class=loading-img src=\"/assets/img/loader.gif\"></span>{{ message }}</div>"
-  );
-
-
-  $templateCache.put('common/ncLoadingSmall',
-    "<img src=/assets/img/loader.gif width=40><small>{{ message }}</small>"
-  );
-
-
-  $templateCache.put('common/ncPagination',
-    "<div class=page-navigation><span><a ng-click=nextPage(-1)><i class=\"fa fa-chevron-left\" ng-class=\"{'grey-chevron': page() <= 1, 'blue-chevron' : page() > 1}\"></i></a> <span>Page {{ page() }} of {{ totalPage() }}</span> <a ng-click=nextPage(1)><i class=\"fa fa-chevron-right padding-right-15\" ng-class=\"{'grey-chevron': page() >= totalPage(), 'blue-chevron' : page() < totalPage() }\"></i></a> <span class=\"view-page-separator margin-right-10\">View per page</span><div class=btn-group uib-dropdown><button type=button class=\"btn btn-default\">{{ pageSize() }}</button> <button type=button class=\"btn btn-default\" uib-dropdown-toggle><span class=caret></span> <span class=sr-only>Toggle Dropdown</span></button><ul uib-dropdown-menu role=menu class=dropdown-menu-right><li ng-repeat=\"size in paginationOptions\"><a ng-click=setPageSize(size)>{{size}}</a></li></ul></div></span></div>"
-  );
-
-
-  $templateCache.put('common/ncSearch',
-    "<div class=\"input-group search-section-item\"><form ng-submit=callback()><div class=\"input-group search-box\"><input class=\"form-control input-search-icon\" ng-model=searchText placeholder={{placeholder}}> <span class=input-group-btn><button class=\"btn btn-default btn-action\">Search</button></span></div></form></div>"
-  );
-
-
-  $templateCache.put('common/ncTable',
-    "<div class=table-section><div ng-show=\"!loading && model.data.length != 0\" ng-transclude></div><div nc-loading={{options.loadingMessage}} ng-show=loading></div><div nc-empty={{options.searchEmptyMessage}} ng-show=\"!loading && model.data.length == 0 && searching\"></div><div nc-empty={{options.emptyMessage}} ng-show=\"!loading && model.data.length == 0 && !searching\"></div></div>"
-  );
-
-
-  $templateCache.put('common/ncTableSort',
-    "<a class=header-link ng-click=click()><span ng-class=\"{ 'active-underline' : isCurrent() }\" ng-transclude></span></a> <i class=fa ng-class=\"{ \r" +
-    "\n" +
-    "'fa fa-caret-down' : isCurrent() && direction, \r" +
-    "\n" +
-    "'fa fa-caret-up' : isCurrent() && !direction, \r" +
-    "\n" +
-    "'fa fa-caret-down color-grey' : !isCurrent() }\" ng-click=click()></i>"
-  );
-
-
-  $templateCache.put('common/ncTreeSelect',
-    "<div class=category-section-border-box><div class=category-header>{{title}}</div><div class=\"category-content no-padding\"><ul ng-repeat=\"column in columns.list() track by $index\" ng-class=\"{'empty-column': column.list().length <= 0 }\" class=content-column><li ng-repeat=\"$item in column.list() track by $index\" ng-class=\"{'category-active' : $index == column.active() }\" ng-click=setModel($item)>{{getContent($item)}}</li></ul></div></div>"
-  );
-
-
-  $templateCache.put('components/date-range-inline',
-    "<div ng-class=\"['form-group ' + (options.formGroupClass || '')]\"><div class=width-label><label class=control-label ng-class=\"options.labelClass || {}\">{{ label }}</label></div><div><div ng-class=\"['width-field-' + (options.inputSize || 'small-input')]\" class=input-with-unit><div class=dropdown><a class=dropdown-toggle id=date_range_vertical_dropdown1 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': endDate <= startDate }\" placeholder=\"{{ startPlaceholder || 'Select start date' }}\" class=\"form-control width-field-large\" value=\"{{ startDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=startDate data-datetimepicker-config=\"{ dropdownSelector: '#date_range_vertical_dropdown1', minView: 'minute' }\"></ul></div></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div ng-class=\"['width-field-' + (options.inputSize || 'small-input')]\" class=input-with-unit><div class=dropdown><a class=dropdown-toggle id=date_range_vertical_dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': endDate <= startDate }\" placeholder=\"{{ endPlaceholder || 'Select end date' }}\" class=\"form-control width-field-large\" value=\"{{ endDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel2><datetimepicker data-ng-model=endDate data-datetimepicker-config=\"{ dropdownSelector: '#date_range_vertical_dropdown2', minView: 'minute' }\"></ul></div><div class=width-field-large><span class=\"help-block color-red\" ng-if=\"endDate <= startDate\"><span>{{ errorText || \"Start date/time must come before end date/time\" }}</span></span></div></div></div></div>"
-  );
-
-
-  $templateCache.put('components/date-range-vertical',
-    "<div><div ng-class=\"['form-group ' + (options.formGroupClass || '')]\"><div class=width-label><label class=\"control-label ng-binding\" ng-class=\"options.labelClass || {}\">{{ startLabel }}</label></div><div ng-class=\"['width-field-' + (options.inputSize || 'normal')]\" class=input-with-unit><div class=dropdown><a class=dropdown-toggle id=date_range_vertical_dropdown1 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': endDate <= startDate }\" placeholder=\"{{ startPlaceholder || 'Select start date' }}\" class=\"form-control width-field-large\" value=\"{{ startDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=startDate data-datetimepicker-config=\"{ dropdownSelector: '#date_range_vertical_dropdown1', minView: 'minute' }\"></ul></div></div></div><div ng-class=\"['form-group ' + (options.formGroupClass || '')]\"><div class=width-label><label class=\"control-label ng-binding\" ng-class=\"options.labelClass || {}\">{{ endLabel }}</label></div><div ng-class=\"['width-field-' + (options.inputSize || 'normal')]\" class=input-with-unit><div class=dropdown><a class=dropdown-toggle id=date_range_vertical_dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': endDate <= startDate }\" placeholder=\"{{ endPlaceholder || 'Select end date' }}\" class=\"form-control width-field-large\" value=\"{{ endDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel2><datetimepicker data-ng-model=endDate data-datetimepicker-config=\"{ dropdownSelector: '#date_range_vertical_dropdown2', minView: 'minute' }\"></ul></div><div class=width-field-large><span class=\"help-block color-red\" ng-if=\"endDate <= startDate\"><span>{{ errorText || \"Start date/time must come before end date/time\" }}</span></span></div></div></div></div>"
-  );
-
-
-  $templateCache.put('components/single-upload',
-    "<div class=image-drop-wrapper style=width:320px><input nv-file-select uploader=viewBag.uploader type=file ng-delegatee=viewBag.uploader onclick=\"this.value = null\"><div nv-file-drop uploader=viewBag.uploader class=image-drop-zone style=\"width:320px; height:120px; overflow: hidden\"><div class=image-drop-zone-text><p><img ng-src=\"{{ viewBag.images[0].url }}\" style=\"width:100%; height: auto\"></p><span ng-if=\"!viewBag.images || viewBag.images.length == 0\">Drag &amp; drop your shop logo here</span><h3 ng-if=\"viewBag.uploader.progress > 0 && viewBag.uploader.progress < 100\" class=color-grey>{{ uploader.progress }} %</h3><h3 ng-if=\"viewBag.uploader.progress == 100 && !viewBag.images[0].url\" class=color-grey><img style=\"width:100%; height: auto\" src=\"/assets/img/loader.gif\"></h3></div></div><div ng-show=viewBag.uploader.isHTML5 class=image-select-alternative-text><span>Or</span> <a href=javascript:; ng-delegate=viewBag.uploader><span ng-if=\"viewBag.images.length === 0\">Select image from your computer</span> <span ng-if=\"viewBag.images.length > 0\">Upload new image</span></a></div></div>"
-  );
-
-
-  $templateCache.put('partials/page-title',
-    "<div class=\"page-header with-border\"><h1 class=\"float-left page-header-title\">{{ title }}</h1><span class=\"float-right page-header-action\"><ng-transclude></ng-transclude></span></div>"
   );
  }]);
 },{}],109:[function(require,module,exports){

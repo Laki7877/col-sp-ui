@@ -25,7 +25,7 @@ require('ui-select/dist/select.js')
 require('angular-chart.js')
 
 // Nc package
-require('./nc')
+require('./modules/nc')
 require('./modules/product-detail')
 
 // Internal dependencies
