@@ -39,22 +39,22 @@ module.exports = function ($scope, $controller, OnTopCredit, config) {
     */
     $scope.dataSet = {
         criteria: [{ value: '0', text: 'Not Set' },
-    { value: '15A', text: 'American Express - (15 digit)' },
-    { value: '14D', text: 'Diners Club - (14 digit)' },
-    { value: '14C', text: 'Carte Blanche - (14 digit)' },
-    { value: '16D', text: 'Discover - (16 digit)' },
-    { value: '15E', text: 'EnRoute - (15 digit)' },
-    { value: '16J', text: 'JCB - (16 digit)' },
-    { value: '15J', text: 'JCB - (15 digit)' },
-    { value: '16M', text: 'Master Card - (16 digit)' },
-    { value: '13V', text: 'Visa - (13 digit)' },
-    { value: '16V', text: 'Visa - (16 digit)' },
+        { value: '15A', text: 'American Express - (15 digit)' },
+        { value: '14D', text: 'Diners Club - (14 digit)' },
+        { value: '14C', text: 'Carte Blanche - (14 digit)' },
+        { value: '16D', text: 'Discover - (16 digit)' },
+        { value: '15E', text: 'EnRoute - (15 digit)' },
+        { value: '16J', text: 'JCB - (16 digit)' },
+        { value: '15J', text: 'JCB - (15 digit)' },
+        { value: '16M', text: 'Master Card - (16 digit)' },
+        { value: '13V', text: 'Visa - (13 digit)' },
+        { value: '16V', text: 'Visa - (16 digit)' },
         ],
         filters: [{ value: 'None', text: 'No filter' },
-    { text: 'Brand', value: 'Brand' },
-    { text: 'Global Category', value: 'GlobalCategory' },
-    { text: 'Shop', value: 'Shop' },
-    { text: 'Email', value: 'Email' }]
+        { text: 'Brand', value: 'Brand' },
+        { text: 'Global Category', value: 'GlobalCategory' },
+        { text: 'Shop', value: 'Shop' },
+        { text: 'Email', value: 'Email' }]
     }
 
 
