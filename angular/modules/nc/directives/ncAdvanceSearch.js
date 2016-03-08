@@ -23,6 +23,8 @@ angular.module('nc')
 				scope.options = _.defaults(scope.options, {
 					Tags: [],
 					Brands: [],
+					Pids: [],
+					Skus: [],
 					LocalCategories: [],
 					GlobalCategories: [],
 					Admin: true

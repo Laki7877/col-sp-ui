@@ -139,8 +139,8 @@ module.exports = {
 			value: 'IN'
 		},
 		{
-			name: 'Seller',
-			value: 'SE'
+			name: 'Merchant',
+			value: 'ME'
 		}
 	],
 	INVENTORY_STATUS: [

@@ -7,11 +7,25 @@
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form.ProductName" nc-label="Product Name" nc-template-options-path="searchForm/ProductName">
 		                    <input class="form-control width-field-normal" name="ProductName" ng-model="formData.ProductName" required />
 						</div>
-						<div nc-template="common/input/form-group-with-label" nc-template-form="form.Pid" nc-label="PID" nc-template-options-path="searchForm/Pid">
-		                    <input class="form-control width-field-normal" name="Pid" ng-model="formData.Pid" required />
+						<div nc-template="common/input/form-group-with-label" nc-template-form="form.Pids" nc-label="PID" nc-template-options-path="searchForm/Pid">
+							    <ui-select ng-model="formData.Pids" name="Pids" nc-tag-validator tagging tagging-label="" multiple nc-tag-field>
+	                                <ui-select-match>
+	                                    {{$item}}
+	                                </ui-select-match>
+	                                <ui-select-choices repeat="item in options.Pids">
+	                                	{{item}}
+	                                </ui-select-choices>
+	                            </ui-select>
 						</div>
-						<div nc-template="common/input/form-group-with-label" nc-template-form="form.Sku" nc-label="SKU" nc-template-options-path="searchForm/Sku">
-		                    <input class="form-control width-field-normal" name="Sku" ng-model="formData.Sku" required />
+						<div nc-template="common/input/form-group-with-label" nc-template-form="form.Skus" nc-label="SKU" nc-template-options-path="searchForm/Sku">
+							    <ui-select ng-model="formData.Skus" name="Skus" nc-tag-validator tagging tagging-label="" multiple nc-tag-field>
+	                                <ui-select-match>
+	                                    {{$item}}
+	                                </ui-select-match>
+	                                <ui-select-choices repeat="item in options.Skus">
+	                                	{{item}}
+	                                </ui-select-choices>
+	                            </ui-select>
 						</div>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form.Brand" nc-label="Brand Name" nc-template-options-path="searchForm/Brands">
 							    <ui-select ng-model="formData.Brands" name="Brands" nc-tag-validator multiple tagging-tokens=",|ENTER" tagging-label="" nc-tag-field>
@@ -101,7 +115,7 @@
 						<div class="form-group">
 							<div class="width-label"><label class="control-label"></label></div>
 							<div class="button-size-normal">
-								<a class="button-size-normal btn btn-blue btn-width-xl" ng-click="search()">Search</a>
+								<button class="button-size-normal btn btn-blue btn-width-xl" ng-click="search()">Search</button>
 							</div>
 							<div class="button-size-normal">
 								<a class="button-size-normal margin-left-10 btn btn-white btn-width-xl" ng-click="clear()">Clear</a>

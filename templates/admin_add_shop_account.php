@@ -25,7 +25,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										}"
 										ng-show="formData.ShopId"
 										>
-										{{formData.ShopId | leadingzero: 2}}
+										{{formData.ShopId}}
 									</div>
 									<!-- Shop Name -->
 									<div ng-template="common/input/text2"
