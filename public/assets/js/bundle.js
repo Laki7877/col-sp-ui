@@ -3415,9 +3415,10 @@ module.exports = ["$scope", "$controller", "$window", "InventoryService", "confi
 	$scope.popoverStock = function(item) {
 		if(!item.open) {
 			//Is popover open, load popovers
-			$scope.popoverItem = item;
-			item.Quantity = _.toInteger(item.Quantity);
-			item.LastQuantity = item.Quantity;
+			$scope.popoverItemOriginal = item;
+			$scope.popoverItem = _.extend({}, item);
+			$scope.popoverItem.Quantity = _.toInteger(item.Quantity);
+			$scope.popoverItem.LastQuantity = item.Quantity;
 		}
 	};
 	$scope.updateStock = function(item) {
@@ -3425,9 +3426,9 @@ module.exports = ["$scope", "$controller", "$window", "InventoryService", "confi
 		InventoryService.update(item.Pid, _.pick(item, ['Quantity']))
 			.then(function(data) {
 				$scope.lastEdit = item.Pid;
+				$scope.popoverItemOriginal.Quantity = item.Quantity;
 			}, function(err) {
 				$scope.lastEdit = null;
-				item.Quantity = item.LastQuantity;
 				$scope.alert.error(common.getError(err));
 			})
 		.finally(function() {
@@ -12106,7 +12107,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('inventory/stockPopover',
-    "<div class=content><span class=\"col-xs-6 padding-left-0 margin-bottom-15 margin-top-10\">In Stock</span> <input class=\"margin-top-10 text-right col-xs-6\" ng-model=popoverItem.Quantity ng-pattern-restrict=\"^[0-9]*$\"> <span class=\"col-xs-8 padding-left-0 margin-bottom-15\">Defect</span> <span class=\"text-right col-xs-4\">{{popoverItem.Defect || '0'}}</span><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15\">On Hold</span> <span class=\"text-right col-xs-4\">{{popoverItem.OnHold || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15 border_modal\">Reserved</span> <span class=\"text-right col-xs-4 border_modal\">{{popoverItem.Reserve || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 available_inventory\">Available</span><span class=\"text-right col-xs-4 available_inventory\">{{ getAvailableStock(popoverItem) }}</span></div><div class=text-center><button class=\"btn btn-blue btn-width-100 text-center\" ng-click=updateStock(popoverItem)>Save</button></div></div>"
+    "<div id=inventory-tab-content class=content><span class=\"col-xs-6 padding-left-0 margin-bottom-15 margin-top-10\">In Stock</span> <input class=\"margin-top-10 text-right col-xs-6\" ng-model=popoverItem.Quantity ng-pattern-restrict=\"^[0-9]*$\"> <span class=\"col-xs-8 padding-left-0 margin-bottom-15\">Defect</span> <span class=\"text-right col-xs-4\">{{popoverItem.Defect || '0'}}</span><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15\">On Hold</span> <span class=\"text-right col-xs-4\">{{popoverItem.OnHold || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15 border_modal\">Reserved</span> <span class=\"text-right col-xs-4 border_modal\">{{popoverItem.Reserve || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 available_inventory\">Available</span><span class=\"text-right col-xs-4 available_inventory\">{{ getAvailableStock(popoverItem) }}</span></div><div class=text-center><button class=\"btn btn-blue btn-width-100 text-center\" ng-click=updateStock(popoverItem)>Save</button></div></div>"
   );
 
 
