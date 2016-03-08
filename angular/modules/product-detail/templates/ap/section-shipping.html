@@ -17,12 +17,86 @@
         </div>
 
         <div nc-template="common/input/form-group-with-label" nc-label="Preparation Time" nc-template-form="form.PrepareDay"
-        nc-template-options-path="addProductForm/PrepareDay">
+        nc-template-options-path="addProductForm/PrepareDay" style="margin-bottom: 0px;">
             <input class="form-control width-field-normal" name="PrepareDay" ng-pattern-restrict="^[0-9]*$" ng-required="onPublishing"
             maxlength="5" ng-model="formDataPtr.PrepareDay" />
         </div>
-     
-        <div class="form-group">
+
+        <div class="form-group margin-bottom-20">
+            <div class="width-label">
+                <label class="control-label"></label>
+            </div>
+            <div class="width-field-xxl">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" ng-model="individualDayChecked"> Set preparation time for individual day
+                </label>
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group" ng-show="individualDayChecked">
+          <div class="width-label">
+              <label class="control-label"></label>
+          </div>
+            <div class="width-field-xxl">
+                <div class="multiple-input">
+                    <div class="input-column margin-bottom-10">
+                        <div nc-template="common/input/div-with-label" nc-label="Monday" nc-template-options-path="addProductForm/MasterVariant_Dimension"
+                        nc-template-form="form.MasterVariant_Length">
+                            <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11" ng-required="" name=""
+                            ng-model="" />
+                        </div>
+                    </div>
+                    <div class="input-column margin-bottom-10">
+                        <div nc-template="common/input/div-with-label" nc-label="Tuesday" nc-template-options-path="addProductForm/MasterVariant_Dimension"
+                        nc-template-form="form.MasterVariant_Length">
+                            <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11" ng-required="" name=""
+                            ng-model="" />
+                        </div>
+                    </div>
+                    <div class="input-column margin-bottom-10">
+                        <div nc-template="common/input/div-with-label" nc-label="Wednesday" nc-template-options-path="addProductForm/MasterVariant_Dimension"
+                        nc-template-form="form.MasterVariant_Length">
+                            <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11" ng-required="" name=""
+                            ng-model="" />
+                        </div>
+                    </div>
+                    <div class="input-column margin-bottom-10">
+                        <div nc-template="common/input/div-with-label" nc-label="Thursday" nc-template-options-path="addProductForm/MasterVariant_Dimension"
+                        nc-template-form="form.MasterVariant_Length">
+                            <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11" ng-required="" name=""
+                            ng-model="" />
+                        </div>
+                    </div>
+                    <div class="input-column margin-bottom-10">
+                        <div nc-template="common/input/div-with-label" nc-label="Friday" nc-template-options-path="addProductForm/MasterVariant_Dimension"
+                        nc-template-form="form.MasterVariant_Length">
+                            <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11" ng-required="" name=""
+                            ng-model="" />
+                        </div>
+                    </div>
+                    <div class="input-column margin-bottom-10">
+                        <div nc-template="common/input/div-with-label" nc-label="Saturday" nc-template-options-path="addProductForm/MasterVariant_Dimension"
+                        nc-template-form="form.MasterVariant_Length">
+                            <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11" ng-required="" name=""
+                            ng-model="" />
+                        </div>
+                    </div>
+                    <div class="input-column margin-bottom-10">
+                        <div nc-template="common/input/div-with-label" nc-label="Sunday" nc-template-options-path="addProductForm/MasterVariant_Dimension"
+                        nc-template-form="form.MasterVariant_Length">
+                            <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11" ng-required="" name=""
+                            ng-model="" />
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group margin-top-20">
             <div class="width-label">
                 <label class="control-label required" stytle="margin-top:25px">Package Dimension</label>
             </div>

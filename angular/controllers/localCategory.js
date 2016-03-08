@@ -74,7 +74,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 		}
 			$scope.pristine = true;
 			$scope.saving = true;
-		$scope.timerPromise = $timeout(function() {
+			$scope.timerPromise = $timeout(function() {
 				LocalCategoryService.upsert(Category.transformUITreeToNestedSet($scope.categories))
 				.then(function() {
 					$scope.alert.close();

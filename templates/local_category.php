@@ -15,39 +15,33 @@
 		        </button>
 		    </span>
 		</div>
-		<div ng-if="!loading && categories.length > 0" class="local-category-section">
-			<div class="col-xs-12 category-header no-padding">
-				<span class="col-xs-8">
+		<div ng-show="!loading && categories.length > 0" class="row">
+			<div class="col-sm-12">
+				<div class="category-column-header">
 					Category Name
-				</span>
-				<span class="col-xs-1 text-align-center">
-					Products
-				</span>
-				<span class="col-xs-1 text-align-center">
-					Visible
-				</span>
-				<span class="col-xs-1 text-align-center">
-					Move
-				</span>
-				<span class="col-xs-1 text-align-center">
-					Action
-				</span>
-			</div>
-			<div class="col-xs-12 no-padding" ui-tree="treeOptions" max-depth="4">
-				<ol class="sortable no-padding" ui-tree-nodes ng-model="categories">
-					<li ng-repeat="node in categories" ui-tree-node ng-include="'local_category/nodes'"></li>
-				</ol>
+					<span class="pull-right category-column category-action-gear">
+						Action
+					</span>
+					<span class="pull-right category-column">
+						Visible
+					</span>
+					<span class="pull-right category-column">
+						Products
+					</span>
+				</div>
 			</div>
 		</div>
-		<div ng-if="!loading && categories.length == 0" class="local-category-empty-section margin-top-20">
-			<span class="">
-				<span class="zero-category-image">
-				</span>
-			</span>
-			<span class="local-category-empty-text">You have no category</span>
+
+		<div ng-show="!loading && categories.length > 0" class="row">
+		  <div class="col-sm-12">
+		    <div ui-tree="treeOptions" max-depth="4">
+		      <ol class="sortable" ui-tree-nodes ng-model="categories">
+		        <li ng-repeat="node in categories" ui-tree-node ng-include="'local_category/nodes'"></li>
+		      </ol>
+		    </div>
+		  </div>
 		</div>
-      	<div ng-if="loading">
-          <? $this->insert('components/table-loading', ['text' => 'Loading...']) ?>
-      	</div>
+		<div ng-show="!loading && categories.length == 0" nc-empty="You do not have any categories" class="margin-top-20"></div>
+      	<div ng-show="loading" nc-loading="Loading.."></div>
 	</div>
 <?php $this->stop() ?>

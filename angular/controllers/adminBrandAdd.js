@@ -6,6 +6,9 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 	$scope.logoUploader = ImageService.getUploaderFn('/BrandImages');
 	$scope.bannerUploader = ImageService.getUploaderFn('/BrandImages');
 	$scope.uploadLogo = function(file) {
+		if(_.isNil(file)) {
+			return;
+		}
 		$scope.formData.BrandImage = {
 			url: '/assets/img/loader.gif'
 		};

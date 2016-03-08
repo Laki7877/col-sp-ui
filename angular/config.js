@@ -64,7 +64,7 @@ module.exports = {
 		],
 		VARIANT_DROPDOWN: [
 			{
-				name: 'Image',
+				name: 'Product Image',
 				value: 'IO'
 			},
 			{
@@ -139,8 +139,8 @@ module.exports = {
 			value: 'IN'
 		},
 		{
-			name: 'Seller',
-			value: 'SE'
+			name: 'Merchant',
+			value: 'ME'
 		}
 	],
 	INVENTORY_STATUS: [

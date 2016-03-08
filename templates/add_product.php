@@ -21,9 +21,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 		<form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
             <fieldset ng-disabled="formData.Status == 'WA'">
             <? $this->insert('components/page-title-breadcrumb', ['text' => "Products/ " . $title, 'urls' => ['/products']]) ?>
-
-            <div ng-if="pageState.loading.state">
-                <img src="/assets/img/loader.gif" width="40"> <small>{{ pageState.loading.message }}..</small>
+            <div ng-if="pageState.loading.state" nc-loading="{{ pageState.loading.message }}..">
             </div>
             <div class="add-product-body" ng-if="!pageState.loading.state">
 

@@ -49,7 +49,7 @@
                   required />
               </div>
               <div nc-template="common/input/form-group-with-label"
-                nc-template-form="form.UrlKeyEn"
+                nc-template-form="form.SEO_ProductUrlKeyEn"
                 nc-template-options-path="addBrandForm/UrlKeyEn"
                 nc-label="URL (English)">
                 <input
@@ -66,14 +66,18 @@
             <div class="form-section-header"><h2>Logo</h2></div>
             <div class="form-section-content">
               <div nc-template="common/input/form-group-with-label" 
-                nc-label="Logo File" nc-template-options-path="addBrandForm/BrandImage">
+                nc-template-form="form.BrandImage"
+                nc-template-options-path="addBrandForm/BrandImage"
+                nc-label="Logo File">
                   <button 
                   type="button"
                   name="BrandImage"
                   class="btn btn-default"
                   ngf-accept="'.png,.jpg,.jpeg'"
                   ngf-select="uploadLogo($file)"
-                  ng-model="brandImage"
+                  ng-model="formData.brandImage"
+                  ng-class="{'has-error-btn' : isInvalid(form.BrandImage)}"
+                  required
                   >Choose File</button>
               </div>
               <div ng-show="formData.BrandImage"
@@ -135,8 +139,8 @@
               </div>
               <div ng-if="availableProducts > 0">
                 <div nc-template="common/input/form-group-with-label"
-                  nc-label="Featured Product Title"
-                  nc-template-options-path="genericForm/FeatureTitle">
+                  nc-template-options-path="genericForm/FeatureTitle"
+                  nc-label="Featured Product Title">
                   <input type="text" class="form-control" ng-model="params.FeatureTitle"/>
                 </div>
                 <div nc-template="common/input/form-group-with-label"
@@ -163,6 +167,7 @@
             <div class="form-section-header"><h2>SEO</h2></div>
             <div class="form-section-content">
               <div nc-template="common/input/form-group-with-label"
+                nc-template-form="form.SEO_MetaTitleEn"
                 nc-label="Meta Title (English)"
                 >
                 <input
@@ -173,6 +178,7 @@
                    />
               </div>
               <div nc-template="common/input/form-group-with-label"
+                nc-template-form="form.SEO_MetaTitleTh"
                 nc-label="Meta Title (ไทย)">
                 <input
                   class="form-control"
@@ -182,6 +188,7 @@
                    />
               </div>
               <div nc-template="common/input/form-group-with-label"
+                nc-template-form="form.SEO_MetaDescriptionEn"
                 nc-label="Meta Description (English)">
                 <input
                   class="form-control"
@@ -191,6 +198,7 @@
                    />
               </div>
               <div nc-template="common/input/form-group-with-label"
+                nc-template-form="form.SEO_MetaDescriptionTh"
                 nc-label="Meta Description (ไทย)">
                 <input
                   class="form-control"
@@ -200,6 +208,7 @@
                    />
               </div>
               <div nc-template="common/input/form-group-with-label"
+                nc-template-form="form.SEO_MetaKeywordEn"
                 nc-label="Meta Keywords (English)">
                 <input
                   class="form-control"
@@ -210,6 +219,7 @@
                   />
               </div>
               <div nc-template="common/input/form-group-with-label"
+                nc-template-form="form.SEO_MetaKeywordTh"
                 nc-label="Meta Keywords (ไทย)">
                 <input
                   class="form-control"
