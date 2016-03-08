@@ -15775,28 +15775,35 @@ tr.angular-ui-tree-empty {
   padding-bottom: 14px;
 }
 
-/* line 171, ../../../assets/screen.scss */
+/* line 170, ../../../assets/screen.scss */
+button.has-error-btn {
+  border-color: #ec0000;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+/* line 177, ../../../assets/screen.scss */
 .has-error-parent .form-control {
   border-color: #ec0000;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-/* line 178, ../../../assets/screen.scss */
+/* line 184, ../../../assets/screen.scss */
 ng-transclude.has-error .form-control {
   border-color: #ec0000 !important;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-/* line 184, ../../../assets/screen.scss */
+/* line 190, ../../../assets/screen.scss */
 .form-control.has-error {
   border-color: #ec0000;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-/* line 190, ../../../assets/screen.scss */
+/* line 196, ../../../assets/screen.scss */
 .empty-section {
   border: 1px solid;
   border-color: #BCC7D5;
@@ -15804,7 +15811,7 @@ ng-transclude.has-error .form-control {
   height: 80px;
   line-height: 80px;
 }
-/* line 196, ../../../assets/screen.scss */
+/* line 202, ../../../assets/screen.scss */
 .empty-section .loading-img {
   width: 40px;
   height: 40px;
@@ -15812,106 +15819,106 @@ ng-transclude.has-error .form-control {
   margin-right: 15px;
 }
 
-/* line 203, ../../../assets/screen.scss */
+/* line 209, ../../../assets/screen.scss */
 .disabled-chevron {
   cursor: not-allowed;
 }
 
-/* line 207, ../../../assets/screen.scss */
+/* line 213, ../../../assets/screen.scss */
 .opacity-50 {
   opacity: 0.5;
 }
 
-/* line 212, ../../../assets/screen.scss */
+/* line 218, ../../../assets/screen.scss */
 .my_file {
   display: none !important;
 }
 
-/* line 217, ../../../assets/screen.scss */
+/* line 223, ../../../assets/screen.scss */
 .get_file {
   cursor: pointer;
 }
 
 /* ui-select input fix */
-/* line 222, ../../../assets/screen.scss */
+/* line 228, ../../../assets/screen.scss */
 .ui-select-multiple input.ui-select-search:not(.ng-touched) {
   width: 100% !important;
 }
 
-/* line 226, ../../../assets/screen.scss */
+/* line 232, ../../../assets/screen.scss */
 .ui-select-dropdown-hide .ui-select-dropdown {
   display: none !important;
 }
 
 /* Temporary Fix for mysterious ui-search 2 line bug */
-/* line 230, ../../../assets/screen.scss */
+/* line 236, ../../../assets/screen.scss */
 .ui-select-multiple.ui-select-bootstrap input.ui-select-search {
   width: auto !important;
   height: 26px !important;
 }
 
-/* line 235, ../../../assets/screen.scss */
+/* line 241, ../../../assets/screen.scss */
 .ui-select-container .form-control:placeholder-shown {
   color: #32343C;
 }
 
-/* line 239, ../../../assets/screen.scss */
+/* line 245, ../../../assets/screen.scss */
 .export-list {
   margin-left: 30px;
   margin-bottom: 15px;
   list-style-type: none;
   -webkit-padding-start: 0px;
 }
-/* line 244, ../../../assets/screen.scss */
+/* line 250, ../../../assets/screen.scss */
 .export-list li {
   margin-bottom: 5px;
 }
-/* line 247, ../../../assets/screen.scss */
+/* line 253, ../../../assets/screen.scss */
 .export-list .group-label {
   font-weight: bold;
   margin: 20px 0px 5px 0px;
 }
 
-/* line 252, ../../../assets/screen.scss */
+/* line 258, ../../../assets/screen.scss */
 .export-select-all {
   margin-left: 30px;
 }
 
-/* line 256, ../../../assets/screen.scss */
+/* line 262, ../../../assets/screen.scss */
 [uib-typeahead-popup].dropdown-menu {
   width: 93%;
 }
 
-/* line 260, ../../../assets/screen.scss */
+/* line 266, ../../../assets/screen.scss */
 .popover {
   display: block;
 }
 
-/* line 265, ../../../assets/screen.scss */
+/* line 271, ../../../assets/screen.scss */
 .action-gear:hover, .action-gear:focus, .action-gear:active, .action-gear:visited {
   text-decoration: none;
   outline: 0;
 }
 
-/* line 271, ../../../assets/screen.scss */
+/* line 277, ../../../assets/screen.scss */
 .color-warning {
   color: #8a6d3b;
   line-height: 16px;
 }
 
-/* line 277, ../../../assets/screen.scss */
+/* line 283, ../../../assets/screen.scss */
 .import-page ol {
   -webkit-padding-start: 15px;
 }
 
-/* line 281, ../../../assets/screen.scss */
+/* line 287, ../../../assets/screen.scss */
 .image-wrapper {
   border: 1px solid #BCC7D5;
   border-radius: 3px;
   background-color: #EDF2F9;
 }
 
-/* line 287, ../../../assets/screen.scss */
+/* line 293, ../../../assets/screen.scss */
 .ui-select-multiple.ui-select-bootstrap input.ui-select-search {
   width: 100% !important;
 }
