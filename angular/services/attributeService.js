@@ -90,7 +90,6 @@ module.exports = function(common, config) {
 			case 'CB':
 				processed.AttributeValues = data.CB.AttributeValues;
 				processed.DefaultValue = data.CB.DefaultValue;
-				delete processed['AttributeValues'];
 			break;
 		}
 

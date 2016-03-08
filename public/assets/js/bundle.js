@@ -248,7 +248,7 @@ module.exports = {
 		],
 		VARIANT_DROPDOWN: [
 			{
-				name: 'Image',
+				name: 'Product Image',
 				value: 'IO'
 			},
 			{
@@ -9049,6 +9049,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	service.serialize = function(data) {
 		var processed = angular.extend(service.generate(), data);
+		console.log(data);
 		switch(processed.DataType) {
 			case 'ST':
 				processed.DefaultValue = data.ST.DefaultValue;
@@ -9065,7 +9066,6 @@ module.exports = ["common", "config", function(common, config) {
 			case 'CB':
 				processed.AttributeValues = data.CB.AttributeValues;
 				processed.DefaultValue = data.CB.DefaultValue;
-				delete processed['AttributeValues'];
 			break;
 		}
 
