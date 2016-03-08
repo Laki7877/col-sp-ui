@@ -993,6 +993,9 @@ module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageServ
 	$scope.logoUploader = ImageService.getUploaderFn('/BrandImages');
 	$scope.bannerUploader = ImageService.getUploaderFn('/BrandImages');
 	$scope.uploadLogo = function(file) {
+		if(_.isNil(file)) {
+			return;
+		}
 		$scope.formData.BrandImage = {
 			url: '/assets/img/loader.gif'
 		};
@@ -2043,7 +2046,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 		}
 			$scope.pristine = true;
 			$scope.saving = true;
-		$scope.timerPromise = $timeout(function() {
+			$scope.timerPromise = $timeout(function() {
 				LocalCategoryService.upsert(Category.transformUITreeToNestedSet($scope.categories))
 				.then(function() {
 					$scope.alert.close();
@@ -9049,7 +9052,6 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	service.serialize = function(data) {
 		var processed = angular.extend(service.generate(), data);
-		console.log(data);
 		switch(processed.DataType) {
 			case 'ST':
 				processed.DefaultValue = data.ST.DefaultValue;
