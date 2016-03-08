@@ -147,9 +147,9 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 								<div class="form-section-content">
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.BankName"
-				                    	nc-label="Bank Account Number"
+				                    	nc-label="Bank Name"
 				                    	nc-template-options-path="addShopAccountForm/BankName">
-				                           <input class="form-control" name="BankName" type="text" ng-model="formData.BankAccountNumber" required/>
+				                           <input class="form-control" name="BankName" type="text" ng-model="formData.BankName" required/>
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.BankAccountNumber"

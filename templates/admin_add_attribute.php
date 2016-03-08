@@ -158,6 +158,7 @@
                           <input name="ltChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['ltChoiceTh' + $index])}" maxlength="100" required/>
                         </div>
                         <img class="image-wrapper"
+                          ng-if="choice.Image.url"
                           style="cursor: pointer;margin-top:-4px;"
                           ng-src="{{choice.Image.url}}"
                           ng-click="preview(choice.Image.url)"

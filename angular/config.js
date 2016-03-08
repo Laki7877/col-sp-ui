@@ -64,7 +64,7 @@ module.exports = {
 		],
 		VARIANT_DROPDOWN: [
 			{
-				name: 'Image',
+				name: 'Product Image',
 				value: 'IO'
 			},
 			{
