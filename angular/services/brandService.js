@@ -9,7 +9,9 @@ module.exports = function(common) {
 	}
 	service.deserialize = function(data) {
 		var processed = _.extend(service.generate(), data);
-		processed.brandImage = data.BrandImage;
+		if(!_.isNil(data.BrandImage)) {
+			processed.brandImage = data.BrandImage;
+		}
 		return processed;
 	};
 

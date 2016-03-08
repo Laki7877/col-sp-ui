@@ -16,6 +16,13 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 		var modalDirty = $scope.modalScope == null ? false : $scope.modalScope.form.$dirty;
 		return $scope.saving || $scope.dirty || modalDirty;
 	});
+	//Expand and collapse all
+	$scope.collapseAll = function() {
+		$rootScope.$broadcast('angular-ui-tree:collapse-all');
+	}
+	$scope.expandAll = function() {
+        $rootScope.$broadcast('angular-ui-tree:expand-all');
+	}
 
 	//UiTree onchange event
 	$scope.treeOptions = {

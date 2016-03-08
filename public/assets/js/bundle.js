@@ -263,7 +263,7 @@ module.exports = {
 		],
 		VARIANT2_DROPDOWN: [
 			{
-				name: 'Image',
+				name: 'Product Image',
 				value: 'IO'
 			},
 			{
@@ -1032,6 +1032,11 @@ module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageServ
 			item: 'Brand',
 			service: BrandService,
 			onSave: function(scope) {
+				if(!_.isNil(scope.formData.BrandImage)) {
+					scope.form.BrandImage.$setValidity('required', true);
+				} else {
+					scope.form.BrandImage.$setValidity('required', false);
+				}
 				return false;
 			},
 			onLoad: function(scope, flag) {
@@ -1068,6 +1073,13 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 		var modalDirty = $scope.modalScope == null ? false : $scope.modalScope.form.$dirty;
 		return $scope.saving || $scope.dirty || modalDirty;
 	});
+	//Expand and collapse all
+	$scope.collapseAll = function() {
+		$rootScope.$broadcast('angular-ui-tree:collapse-all');
+	}
+	$scope.expandAll = function() {
+        $rootScope.$broadcast('angular-ui-tree:expand-all');
+	}
 
 	//UiTree onchange event
 	$scope.treeOptions = {
@@ -2001,6 +2013,13 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 		var modalDirty = $scope.modalScope == null ? false : $scope.modalScope.form.$dirty;
 		return $scope.saving || $scope.dirty || modalDirty;
 	});	
+	//Expand and collapse all
+	$scope.collapseAll = function() {
+		$rootScope.$broadcast('angular-ui-tree:collapse-all');
+	}
+	$scope.expandAll = function() {
+        $rootScope.$broadcast('angular-ui-tree:expand-all');
+	}
 
 	//UiTree onchange event
 	$scope.treeOptions = {
@@ -7205,19 +7224,27 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
         $scope.formData = {
             overview: {},
-            TheOneCardEarn: 1,
-            GiftWrap: 'No',
             Brand: {
                 id: null
             },
-            DimensionUnit: 'MM',
-                WeightUnit: 'G',
             MasterVariant: {
+                TheOneCardEarn: 1,
+                GiftWrap: 'No',
+                PrepareDay: '',
+                PrepareMon: '',
+                PrepareTue: '',
+                PrepareWed: '',
+                PrepareThu: '',
+                PrepareFri: '',
+                PrepareSat: '',
+                PrepareSun: '',
+                DimensionUnit: 'MM',
+                WeightUnit: 'G',
                 StockType: 'Stock',
                 Images: [],
-                Installment: 'No'
+                Installment: 'No',
+                ShippingMethod: '1',
             },
-            ShippingMethod: '1',
             AttributeSet: {
                 AttributeSetTagMaps: []
             },
@@ -7308,13 +7335,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
         $scope.$watch('formData.MasterVariant.OriginalPrice+formData.MasterVariant.SalePrice', function() {
             var form = $scope.addProductForm
-            if (form.MasterVariant_SalePrice) form.MasterVariant_SalePrice.$setValidity('min', true)
-            if (!form.MasterVariant_SalePrice) return
+            if (form.SalePrice) form.SalePrice.$setValidity('min', true)
+            if (!form.SalePrice) return
             if ($scope.formData.MasterVariant.SalePrice == '') return
 
             if (Number($scope.formData.MasterVariant.SalePrice) >= Number($scope.formData.MasterVariant.OriginalPrice)) {
-                if (form.MasterVariant_SalePrice) form.MasterVariant_SalePrice.$setValidity('min', false)
-                form.MasterVariant_SalePrice.$error['min'] = 'Sale Price must not exceed Original Price'
+                if (form.SalePrice) form.SalePrice.$setValidity('min', false)
+                form.SalePrice.$error['min'] = 'Sale Price must not exceed Original Price'
             }
         })
 
@@ -7444,15 +7471,15 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 var requiredMissing = ('required' in $scope.addProductForm.$error)
                 if (Status == 'DF' && requiredMissing) {
                     var errorList = []
-                    if ($scope.addProductForm.MasterVariant_ProductNameEn.$invalid) {
+                    if ($scope.addProductForm.ProductNameEn.$invalid) {
                         errorList.push('Product Name (English)')
                     }
                     // Product Name (Thai), Product Name (English), and Sale Price,
-                    if ($scope.addProductForm.MasterVariant_ProductNameTh.$invalid) {
+                    if ($scope.addProductForm.ProductNameTh.$invalid) {
                         errorList.push('Product Name (Thai)')
                     }
 
-                    if ($scope.addProductForm.MasterVariant_SalePrice.$invalid) {
+                    if ($scope.addProductForm.SalePrice.$invalid) {
                         errorList.push('Sale Price')
                     }
                     errorList.push('Master Attributes')
@@ -7718,7 +7745,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
                         // Restore pointers
                         $scope.form = $scope.addProductForm
-                        $scope.formDataPtr = $scope.formData
+                        $scope.formDataPtr = $scope.formData.MasterVariant;
                         $scope.imagesPtr = $scope.formData.MasterVariant.Images
 
                     }, function() {
@@ -8141,15 +8168,15 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('ap/section-description',
-    "<div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionFull nc-template-form=form.MasterVariant_DescriptionFullEn><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=MasterVariant_DescriptionFullEn ng-model=formDataPtr.MasterVariant.DescriptionFullEn>\r" +
+    "<div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=DescriptionFullEn ng-model=formDataPtr.MasterVariant.DescriptionFullEn>\r" +
     "\n" +
-    "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionFull nc-template-form=form.MasterVariant_DescriptionFullTh><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=MasterVariant_DescriptionFullTh ng-model=formDataPtr.MasterVariant.DescriptionFullTh>\r" +
+    "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=formDataPtr.MasterVariant.DescriptionFullTh>\r" +
     "\n" +
-    "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionShortEn nc-template-form=form.MasterVariant_DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=MasterVariant_DescriptionShortEn ng-model=formDataPtr.MasterVariant.DescriptionShortEn>\r" +
+    "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=addProductForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=formDataPtr.MasterVariant.DescriptionShortEn>\r" +
     "\n" +
-    "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=addProductForm/MasterVariant_DescriptionShortTh nc-template-form=form.MasterVariant_DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=MasterVariant_DescriptionShortTh ng-model=formDataPtr.MasterVariant.DescriptionShortTh>\r" +
+    "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=addProductForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=formDataPtr.MasterVariant.DescriptionShortTh>\r" +
     "\n" +
-    "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.MasterVariant_KillerPoint1En nc-label=\"Killer Point 1 (English)\" nc-template-options-path=addProductForm/MasterVariant_KillerPointEn><input class=\"form-control width-field-large\" name=MasterVariant_KillerPoint1En ng-model=formDataPtr.MasterVariant.KillerPoint1En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.MasterVariant_KillerPoint1Th nc-label=\"Killer Point 1 (ไทย)\" nc-template-options-path=addProductForm/MasterVariant_KillerPointTh><input class=\"form-control width-field-large\" name=MasterVariant_KillerPoint1Th ng-model=formDataPtr.MasterVariant.KillerPoint1Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.MasterVariant_KillerPoint2En nc-label=\"Killer Point 2 (English)\" nc-template-options-path=addProductForm/MasterVariant_KillerPointEn><input class=\"form-control width-field-large\" name=MasterVariant_KillerPoint2En ng-model=formDataPtr.MasterVariant.KillerPoint2En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.MasterVariant_KillerPoint2Th nc-label=\"Killer Point 2 (ไทย)\" nc-template-options-path=addProductForm/MasterVariant_KillerPointTh><input class=\"form-control width-field-large\" name=MasterVariant_KillerPoint2Th ng-model=formDataPtr.MasterVariant.KillerPoint2Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.MasterVariant_KillerPoint3En nc-label=\"Killer Point 3 (English)\" nc-template-options-path=addProductForm/MasterVariant_KillerPointEn><input class=\"form-control width-field-large\" name=MasterVariant_KillerPoint3En ng-model=formDataPtr.MasterVariant.KillerPoint2En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.MasterVariant_KillerPoint3Th nc-label=\"Killer Point 3 (ไทย)\" nc-template-options-path=addProductForm/MasterVariant_KillerPointTh><input class=\"form-control width-field-large\" name=MasterVariant_KillerPoint3Th ng-model=formDataPtr.MasterVariant.KillerPoint3Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div></div></div></div>"
+    "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint1En nc-label=\"Killer Point 1 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint1En ng-model=formDataPtr.MasterVariant.KillerPoint1En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint1Th nc-label=\"Killer Point 1 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint1Th ng-model=formDataPtr.MasterVariant.KillerPoint1Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint2En nc-label=\"Killer Point 2 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint2En ng-model=formDataPtr.MasterVariant.KillerPoint2En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint2Th nc-label=\"Killer Point 2 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint2Th ng-model=formDataPtr.MasterVariant.KillerPoint2Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint3En nc-label=\"Killer Point 3 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint3En ng-model=formDataPtr.MasterVariant.KillerPoint2En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint3Th nc-label=\"Killer Point 3 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint3Th ng-model=formDataPtr.MasterVariant.KillerPoint3Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div></div></div></div>"
   );
 
 
@@ -8164,7 +8191,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('ap/section-inventory',
-    "<div class=form-section><div class=form-section-header><h2>Inventory</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.MasterVariant_Quantity nc-template-options-path=addProductForm/MasterVariant_Quantity nc-label=\"Inventory Amount\"><input class=form-control name=MasterVariant_Quantity ng-pattern-restrict=^[0-9]*$ maxlength=10 ng-model=\"formDataPtr.MasterVariant.Quantity\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.MasterVariant_SafetyStock nc-template-options-path=addProductForm/MasterVariant_SafetyStock nc-label=\"Safety Stock Amount\"><input class=form-control name=MasterVariant_SafetyStock ng-pattern-restrict=^[0-9]*$ maxlength=10 ng-model=\"formDataPtr.MasterVariant.SafetyStock\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.MasterVariant_StockType nc-template-options-path=addProductForm/MasterVariant_StockType nc-label=\"Stock Type\"><select ng-model=formDataPtr.MasterVariant.StockType class=form-control name=MasterVariant_StockType><option selected disabled>- Select Stock Type -</option><option>Stock</option><option>Pre-Order</option></select></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Inventory</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.Quantity nc-template-options-path=addProductForm/Quantity nc-label=\"Inventory Amount\"><input class=form-control name=Quantity ng-pattern-restrict=^[0-9]*$ maxlength=10 ng-model=\"formDataPtr.MasterVariant.Quantity\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SafetyStock nc-template-options-path=addProductForm/SafetyStock nc-label=\"Safety Stock Amount\"><input class=form-control name=SafetyStock ng-pattern-restrict=^[0-9]*$ maxlength=10 ng-model=\"formDataPtr.MasterVariant.SafetyStock\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.StockType nc-template-options-path=addProductForm/StockType nc-label=\"Stock Type\"><select ng-model=formDataPtr.MasterVariant.StockType class=form-control name=StockType><option selected disabled>- Select Stock Type -</option><option>Stock</option><option>Pre-Order</option></select></div></div></div>"
   );
 
 
@@ -8179,7 +8206,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('ap/section-price',
-    "<div class=form-section><div class=form-section-header><h2>Price</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.MasterVariant_SalePrice nc-label=\"Sale Price\" nc-template-options-path=addProductForm/MasterVariant_SalePrice><input autocomplete=off ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" class=\"form-control width-field-normal\" maxlength=20 name=MasterVariant_SalePrice ng-model=formDataPtr.MasterVariant.SalePrice required></div><div nc-template=common/input/form-group-with-label nc-label=\"Original Price\" nc-template-options-path=addProductForm/MasterVariant_OriginalPrice nc-template-form=form.MasterVariant_OriginalPrice><input autocomplete=off class=\"form-control width-field-normal\" name=MasterVariant_OriginalPrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"formDataPtr.MasterVariant.OriginalPrice\"></div><div nc-template=common/input/form-group-with-label nc-label=Installment nc-template-options-path=addProductForm/Installment nc-template-form=form.MasterVariant_Installment><select ng-if=\"(formDataPtr.MasterVariant.SalePrice || 0) > 5000\" class=form-control ng-model=formDataPtr.MasterVariant.Installment><option>Yes</option><option selected>No</option></select><select disabled ng-if=\"(formDataPtr.MasterVariant.SalePrice || 0) <= 5000\" class=form-control><option value=No selected>Available when price is more than 5,000</option></select></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Price</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.SalePrice nc-label=\"Sale Price\" nc-template-options-path=addProductForm/SalePrice><input autocomplete=off ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" class=\"form-control width-field-normal\" maxlength=20 name=SalePrice ng-model=formDataPtr.MasterVariant.SalePrice required></div><div nc-template=common/input/form-group-with-label nc-label=\"Original Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.OriginalPrice><input autocomplete=off class=\"form-control width-field-normal\" name=OriginalPrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"formDataPtr.MasterVariant.OriginalPrice\"></div><div nc-template=common/input/form-group-with-label nc-label=Installment nc-template-options-path=addProductForm/Installment nc-template-form=form.Installment><select ng-if=\"(formDataPtr.MasterVariant.SalePrice || 0) > 5000\" class=form-control ng-model=formDataPtr.MasterVariant.Installment><option>Yes</option><option selected>No</option></select><select disabled ng-if=\"(formDataPtr.MasterVariant.SalePrice || 0) <= 5000\" class=form-control><option value=No selected>Available when price is more than 5,000</option></select></div></div></div>"
   );
 
 
@@ -8189,12 +8216,12 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('ap/section-shipping',
-    "<div class=form-section><div class=form-section-header><h2>Shipping Detail</h2></div><div class=form-section-content><div class=form-group ng-if=!options.hideShippingMethod><div class=width-label><label class=control-label>Shipping Method</label></div><div class=width-field-normal><div class=\"radio multiple-radio multiline\"><label><input type=radio name=shipping_method value=1 ng-model=\"formDataPtr.ShippingMethod\"> Dropship by 3PL</label><label><input type=radio name=shipping_method value=2 ng-model=\"formDataPtr.ShippingMethod\"> Central Fulfillment</label></div></div></div><div nc-template=common/input/form-group-with-label nc-label=\"Preparation Time\" nc-template-form=form.PrepareDay nc-template-options-path=addProductForm/PrepareDay style=\"margin-bottom: 0px\"><input class=\"form-control width-field-normal\" name=PrepareDay ng-pattern-restrict=^[0-9]*$ ng-required=onPublishing maxlength=5 ng-model=\"formDataPtr.PrepareDay\"></div><div class=\"form-group margin-bottom-20\"><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=checkbox><label><input type=checkbox ng-model=individualDayChecked> Set preparation time for individual day</label></div></div></div><div class=form-group ng-show=individualDayChecked><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=multiple-input><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Monday nc-template-options-path=addProductForm/MasterVariant_Dimension nc-template-form=form.PrepareMon><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareMon ng-model=\"formDataPtr.PrepareMon\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Tuesday nc-template-options-path=addProductForm/MasterVariant_Dimension nc-template-form=form.PrepareTue><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareTue ng-model=\"formDataPtr.PrepareTue\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Wednesday nc-template-options-path=addProductForm/MasterVariant_Dimension nc-template-form=form.PrepareWed><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareWed ng-model=\"formDataPtr.PrepareWed\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Thursday nc-template-options-path=addProductForm/MasterVariant_Dimension nc-template-form=form.PrepareThu><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareThu ng-model=\"formDataPtr.PrepareThu\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Friday nc-template-options-path=addProductForm/MasterVariant_Dimension nc-template-form=form.PrepareFri><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareFri ng-model=\"formDataPtr.PrepareFri\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Saturday nc-template-options-path=addProductForm/MasterVariant_Dimension nc-template-form=form.PrepareSat><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareSat ng-model=\"formDataPtr.PrepareSat\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Sunday nc-template-options-path=addProductForm/MasterVariant_Dimension nc-template-form=form.PrepareSun><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareSun ng-model=\"formDataPtr.PrepareSun\"></div></div></div></div></div><div class=\"form-group margin-top-20\"><div class=width-label><label class=\"control-label required\" stytle=margin-top:25px>Package Dimension</label></div><div class=width-field-xxl><div class=multiple-input><div class=input-column><div nc-template=common/input/div-with-label nc-label=Length nc-template-options-path=addProductForm/MasterVariant_Dimension nc-template-form=form.MasterVariant_Length><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=MasterVariant_Length ng-model=\"formDataPtr.Length\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Height nc-template-options-path=addProductForm/MasterVariant_Dimension nc-template-form=form.MasterVariant_Height><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=MasterVariant_Height ng-model=\"formDataPtr.Height\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Width nc-template-options-path=addProductForm/MasterVariant_Dimension nc-template-form=form.MasterVariant_Width><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=MasterVariant_Width ng-model=\"formDataPtr.Width\"></div></div><div class=\"input-column no-label select input-xl\" style=\"padding-top: 24px\"><select ng-model=formDataPtr.DimensionUnit class=form-control><option value=MM>Millimeter</option><option value=CM>Centimeter</option><option value=M>Meter</option></select></div></div></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Weight</label></div><div class=width-field-xxl><div class=multiple-input><div nc-template=common/input/text-column-no-label nc-label=\"\" nc-template-options-path=addProductForm/MasterVariant_Dimension nc-template-form=form.MasterVariant_Weight><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=MasterVariant_Weight ng-model=\"formDataPtr.Weight\"></div><div class=\"input-column select input-xl\"><div class=ah-select2-dropdown><select class=form-control ng-model=formDataPtr.WeightUnit><option value=G>Grams</option><option value=KG>Kilograms</option></select></div></div></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Shipping Detail</h2></div><div class=form-section-content><div class=form-group ng-if=!options.hideShippingMethod><div class=width-label><label class=control-label>Shipping Method</label></div><div class=width-field-normal><div class=\"radio multiple-radio multiline\"><label><input type=radio name=shipping_method value=1 ng-model=\"formDataPtr.ShippingMethod\"> Dropship by 3PL</label><label><input type=radio name=shipping_method value=2 ng-model=\"formDataPtr.ShippingMethod\"> Central Fulfillment</label></div></div></div><div nc-template=common/input/form-group-with-label nc-label=\"Preparation Time\" nc-template-form=form.PrepareDay nc-template-options-path=addProductForm/PrepareDay style=\"margin-bottom: 0px\"><input class=\"form-control width-field-normal\" name=PrepareDay ng-pattern-restrict=^[0-9]*$ ng-required=onPublishing maxlength=5 ng-model=\"formDataPtr.PrepareDay\"></div><div class=\"form-group margin-bottom-20\"><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=checkbox><label><input type=checkbox ng-model=individualDayChecked> Set preparation time for individual day</label></div></div></div><div class=form-group ng-show=individualDayChecked><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=multiple-input><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Monday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareMon><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareMon ng-model=\"formDataPtr.MasterVariant.PrepareMon\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Tuesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareTue><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareTue ng-model=\"formDataPtr.MasterVariant.PrepareTue\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Wednesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareWed><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareWed ng-model=\"formDataPtr.MasterVariant.PrepareWed\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Thursday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareThu><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareThu ng-model=\"formDataPtr.MasterVariant.PrepareThu\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Friday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareFri><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareFri ng-model=\"formDataPtr.MasterVariant.PrepareFri\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Saturday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSat><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareSat ng-model=\"formDataPtr.MasterVariant.PrepareSat\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Sunday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSun><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareSun ng-model=\"formDataPtr.MasterVariant.PrepareSun\"></div></div></div></div></div><div class=\"form-group margin-top-20\"><div class=width-label><label class=\"control-label required\" stytle=margin-top:25px>Package Dimension</label></div><div class=width-field-xxl><div class=multiple-input><div class=input-column><div nc-template=common/input/div-with-label nc-label=Length nc-template-options-path=addProductForm/Dimension nc-template-form=form.Length><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Length ng-model=\"formDataPtr.MasterVariant.Length\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Height nc-template-options-path=addProductForm/Dimension nc-template-form=form.Height><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Height ng-model=\"formDataPtr.MasterVariant.Height\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Width nc-template-options-path=addProductForm/Dimension nc-template-form=form.Width><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Width ng-model=\"formDataPtr.MasterVariant.Width\"></div></div><div class=\"input-column no-label select input-xl\" style=\"padding-top: 24px\"><select ng-model=formDataPtr.MasterVariant.DimensionUnit class=form-control><option value=MM>Millimeter</option><option value=CM>Centimeter</option><option value=M>Meter</option></select></div></div></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Weight</label></div><div class=width-field-xxl><div class=multiple-input><div nc-template=common/input/text-column-no-label nc-label=\"\" nc-template-options-path=addProductForm/Dimension nc-template-form=form.Weight><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Weight ng-model=\"formDataPtr.MasterVariant.Weight\"></div><div class=\"input-column select input-xl\"><div class=ah-select2-dropdown><select class=form-control ng-model=formDataPtr.MasterVariant.WeightUnit><option value=G>Grams</option><option value=KG>Kilograms</option></select></div></div></div></div></div></div></div>"
   );
 
 
   $templateCache.put('ap/section-vital-information',
-    "<div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label ng-init=\"form = addProductForm\" nc-template-form=form.MasterVariant_ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/MasterVariant_ProductNameEn><input class=\"form-control width-field-large\" name=MasterVariant_ProductNameEn ng-model=formDataPtr.MasterVariant.ProductNameEn maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.MasterVariant_ProductNameTh nc-template-options-path=addProductForm/MasterVariant_ProductNameTh><input class=\"form-control width-field-large\" name=MasterVariant_ProductNameTh ng-model=formDataPtr.MasterVariant.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.MasterVariant_Sku nc-template-options-path=addProductForm/MasterVariant_Sku><input class=\"form-control width-field-large\" name=MasterVariant_Sku ng-model=formDataPtr.MasterVariant.Sku maxlength=300 ng-pattern=\"/^[^<>]+$/\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.MasterVariant_Upc nc-template-options-path=addProductForm/MasterVariant_Upc><input class=\"form-control width-field-large\" ng-pattern=\"/^[^<>]+$/\" name=MasterVariant_Upc maxlength=300 ng-model=\"formDataPtr.MasterVariant.Upc\"></div><div ng-if=formDataPtr.MasterVariant.Pid><div nc-template=common/input/form-group-with-label nc-template-form=form.MasterVariant_Pid nc-label=\"{{ (formDataPtr.Variants || []).length > 0 ? 'Group ID' : 'PID' }}\" nc-template-options-path=addProductForm/MasterVariant_Pid><input class=\"form-control width-field-large\" name=MasterVariant_Pid disabled ng-model=\"formDataPtr.MasterVariant.Pid\"></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Brand Name</label></div><div class=width-field-normal><div class=ah-select2-dropdown><ui-select ng-model=formDataPtr.Brand theme=selectize loading=refresher.BrandLoading><ui-select-match><span ng-bind-html=$select.selected.BrandNameEn></span> <span ng-show=!$select.selected.BrandNameEn><span class=color-grey><i class=\"fa fa-search\"></i> Search Brand</span></span></ui-select-match><ui-select-choices group-by=\"'_group'\" ui-disable-choice=item.disabled refresh-delay=1000 refresh=refresher.Brands($select.search) repeat=\"item in (dataset.Brands.length == 0 || $select.search == '' ? dataset.BrandsEmpty : dataset.Brands) | filter: $select.search  track by item.BrandId\"><span ng-bind-html=\"item.BrandNameEn | highlight: $select.search\"></span></ui-select-choices></ui-select></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label ng-init=\"form = addProductForm\" nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=formDataPtr.MasterVariant.ProductNameEn maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=formDataPtr.MasterVariant.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku ng-model=formDataPtr.MasterVariant.Sku maxlength=300 ng-pattern=\"/^[^<>]+$/\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" ng-pattern=\"/^[^<>]+$/\" name=Upc maxlength=300 ng-model=\"formDataPtr.MasterVariant.Upc\"></div><div ng-if=formDataPtr.MasterVariant.Pid><div nc-template=common/input/form-group-with-label nc-template-form=form.Pid nc-label=\"{{ (formDataPtr.Variants || []).length > 0 ? 'Group ID' : 'PID' }}\" nc-template-options-path=addProductForm/Pid><input class=\"form-control width-field-large\" name=Pid disabled ng-model=\"formDataPtr.MasterVariant.Pid\"></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Brand Name</label></div><div class=width-field-normal><div class=ah-select2-dropdown><ui-select ng-model=formDataPtr.Brand theme=selectize loading=refresher.BrandLoading><ui-select-match><span ng-bind-html=$select.selected.BrandNameEn></span> <span ng-show=!$select.selected.BrandNameEn><span class=color-grey><i class=\"fa fa-search\"></i> Search Brand</span></span></ui-select-match><ui-select-choices group-by=\"'_group'\" ui-disable-choice=item.disabled refresh-delay=1000 refresh=refresher.Brands($select.search) repeat=\"item in (dataset.Brands.length == 0 || $select.search == '' ? dataset.BrandsEmpty : dataset.Brands) | filter: $select.search  track by item.BrandId\"><span ng-bind-html=\"item.BrandNameEn | highlight: $select.search\"></span></ui-select-choices></ui-select></div></div></div></div></div>"
   );
 
 
@@ -8424,10 +8451,10 @@ var admin = {
 		'Global Category': '/admin/categories'
 	},
 	'Accounts|fa-user': {
-		'Shop Accounts': '/admin/shops',
-		'Shop Types': '/admin/shoptypes',
-		'Admin Accounts': '/admin/accounts',
-		'Admin Roles': '/admin/roles'
+		'Shop Accounts': ['/admin/shops', '/admin/shops/add'],
+		'Shop Types': ['/admin/shoptypes', '/admin/shoptypes/add'],
+		'Admin Accounts': ['/admin/accounts', '/admin/accounts/add'],
+		'Admin Roles': ['/admin/roles', '/admin/roles/add']
 	},
 	'Promotion|fa-bookmark': {
 		'Global Coupons': '/admin/coupons/admin',
@@ -9469,7 +9496,9 @@ module.exports = ["common", function(common) {
 	}
 	service.deserialize = function(data) {
 		var processed = _.extend(service.generate(), data);
-		processed.brandImage = data.BrandImage;
+		if(!_.isNil(data.BrandImage)) {
+			processed.brandImage = data.BrandImage;
+		}
 		return processed;
 	};
 
@@ -10379,11 +10408,11 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 },{}],140:[function(require,module,exports){
 // Products Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config', 'KnownException',
-    function ($http, common, util, LocalCategory, Brand, config, KnownException) {
+    function($http, common, util, LocalCategory, Brand, config, KnownException) {
         'use strict'
         var service = common.Rest('/ProductStages')
 
-        service.getExportableFields = function () {
+        service.getExportableFields = function() {
             var req = {
                 method: 'GET',
                 url: '/ProductStages/Guidance/Export'
@@ -10391,7 +10420,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             return common.makeRequest(req)
         }
 
-        service.downloadTemplate = function (globalCat, aset) {
+        service.downloadTemplate = function(globalCat, aset) {
             var req = {
                 method: 'POST',
                 url: '/ProductStages/Template',
@@ -10403,7 +10432,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             return common.makeRequest(req)
         }
 
-        service.getAllAttributeSetsForProducts = function (productList) {
+        service.getAllAttributeSetsForProducts = function(productList) {
             var req = {
                 method: 'POST',
                 url: '/ProductStages/AttributeSet',
@@ -10412,7 +10441,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             return common.makeRequest(req)
         }
 
-        service.export = function (ps) {
+        service.export = function(ps) {
             var req = {
                 method: 'POST',
                 url: '/ProductStages/Export',
@@ -10421,7 +10450,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             return common.makeRequest(req)
         }
 
-        service.guideline = function (params) {
+        service.guideline = function(params) {
             var req = {
                 method: 'GET',
                 url: '/ProductStages/Guidance',
@@ -10429,7 +10458,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             }
             return common.makeRequest(req)
         }
-        service.approve = function (obj) {
+        service.approve = function(obj) {
             return common.makeRequest({
                 method: 'PUT',
                 url: '/ProductStages/Approve',
@@ -10439,7 +10468,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                 }
             })
         }
-        service.reject = function (obj) {
+        service.reject = function(obj) {
             return common.makeRequest({
                 method: 'PUT',
                 url: '/ProductStages/Reject',
@@ -10450,7 +10479,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             })
         }
 
-        service.getOne = function (productId) {
+        service.getOne = function(productId) {
             var req = {
                 method: 'GET',
                 url: '/ProductStages/' + productId
@@ -10458,7 +10487,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             return common.makeRequest(req)
         }
 
-        service.getAllVariants = function (parameters) {
+        service.getAllVariants = function(parameters) {
             var req = {
                 method: 'GET',
                 url: '/ProductStages/All',
@@ -10468,7 +10497,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             return common.makeRequest(req)
         }
 
-        service.updateAllVariants = function (obj) {
+        service.updateAllVariants = function(obj) {
             var req = {
                 method: 'PUT',
                 url: '/ProductStages/All/Image',
@@ -10481,7 +10510,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             return common.makeRequest(req)
         }
 
-        service.duplicate = function (ProductId) {
+        service.duplicate = function(ProductId) {
             // this URL structure is weird dont u think
             var req = {
                 method: 'POST',
@@ -10491,7 +10520,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             return common.makeRequest(req)
         }
 
-        service.getAll = function (parameters) {
+        service.getAll = function(parameters) {
             var req = {
                 method: 'GET',
                 url: '/ProductStages/',
@@ -10508,7 +10537,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             return common.makeRequest(req)
         }
 
-        service.export = function (tobj) {
+        service.export = function(tobj) {
             var path = '/ProductStages/Export'
             return common.makeRequest({
                 responseType: 'arraybuffer',
@@ -10518,7 +10547,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             })
         }
 
-        service.publish = function (tobj, Status) {
+        service.publish = function(tobj, Status) {
             tobj.Status = Status
             var mode = 'POST'
             var path = '/ProductStages'
@@ -10533,7 +10562,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             })
         }
 
-        service.bulkPublish = function (tobj) {
+        service.bulkPublish = function(tobj) {
             return common.makeRequest({
                 method: 'POST',
                 url: '/ProductStages/Publish',
@@ -10544,7 +10573,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             })
         }
 
-        service.visible = function (obj) {
+        service.visible = function(obj) {
             return common.makeRequest({
                 method: 'PUT',
                 url: '/ProductStages/Visibility',
@@ -10554,7 +10583,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                 }
             })
         }
-        service.deleteBulk = function (arr) {
+        service.deleteBulk = function(arr) {
             return common.makeRequest({
                 method: 'DELETE',
                 url: '/ProductStages',
@@ -10566,10 +10595,10 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         }
 
         var StatusLookup = {}
-        config.PRODUCT_STATUS.forEach(function (object) {
+        config.PRODUCT_STATUS.forEach(function(object) {
             StatusLookup[object.value] = object
         })
-        service.getStatus = function (abbreviation) {
+        service.getStatus = function(abbreviation) {
             if (_.isNil(abbreviation)) {
                 return {
                     name: 'No Status',
@@ -10579,17 +10608,65 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             return StatusLookup[abbreviation]
         }
 
-        service.serialize = function (fd) {
-            var hasVariants = (!util.nullOrUndefined(fd.Variants) && fd.Variants.length > 0)
+        /**
+         * @param  {Product Object} fd
+         */
+        service.serialize = function(fd) {
 
-            // Cleaned data
             var clean = {}
-            clean.Variants = []
-
-            var objectMapper = {
-                VideoLinks: function (vlink) {
+            var serializer = {
+                GlobalCategories: {
+                    serialize: function(data) {
+                        return data.map(function(lcat) {
+                            if (lcat == null) return null
+                            return {
+                                CategoryId: lcat.CategoryId
+                            }
+                        });
+                    },
+                    fallback: function(data) {
+                        throw new KnownException("No serialization fallback for Global Categories");
+                    }
+                },
+                LocalCategories: {
+                    serialize: function(data) {
+                        return data.map(function(lcat) {
+                            if (lcat == null) return null
+                            return {
+                                CategoryId: lcat.CategoryId
+                            }
+                        });
+                    },
+                    fallback: function(data) {
+                        return [null, null, null]
+                    }
+                },
+                Keywords: {
+                    serialize: function(data) {
+                        var m = util.uniqueSet(data);
+                        return (!m ? '' : m.join(','));
+                    },
+                    fallback: function(data) {
+                        return '';
+                    }
+                },
+                AttributeSet: {
+                    serialize: function(data) {
+                        var k = null;
+                        if (data.AttributeSetId) k = data.AttributeSetId;
+                        return {
+                            AttributeSetId: k
+                        }
+                    },
+                    fallback: function(data) {
+                        return {
+                            AttributeSetId: null
+                        }
+                    }
+                },
+                VideoLinks: function(vlink) {
                     var f = []
-                    Object.keys(vlink).forEach(function (key) {
+                    Object.keys(vlink).forEach(function(key) {
                         var value = vlink[key]
                         var obj = {
                             'Url': value
@@ -10598,95 +10675,75 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                         f.push(obj)
                     })
                     return f
-                }
-            }
-            // Mapper functions
-            var mapper = {
-                Images: function (image, pos) {
-                    if (image.$id) delete image.$id
-                    image.position = pos
-                    return image
                 },
-                Variants: function (_variant) {
-                    var variant = angular.copy(_variant)
-
-                    if (util.nullOrUndefined(variant['VideoLinks'])) variant.VideoLinks = []
-                    if (util.nullOrUndefined(variant['VideoLinks'])) variant.Images = []
-                    if ('queue' in variant) delete variant.queue // circular
-
-                    variant.Visibility = variant.Visibility
-                    variant.Images = (variant.Images || []).map(mapper.Images)
-                    variant.Images360 = [] // for future
-
-                    try {
-                        variant.VideoLinks = objectMapper.VideoLinks(variant.VideoLinks)
-                    } catch (ex) {
-                        variant.VideoLinks = []
-                    }
-
-                    return variant
+                Images: function(images) {
+                    return images.map(function(image) {
+                        image.position = pos
+                        return image
+                    });
                 },
-                Categories: function (lcat) {
-                    if (lcat == null) return null
-                    return {
-                        CategoryId: lcat.CategoryId
-                    }
-                }
-            }
+                MasterAttribute: function(ma) {
+                    var t = [];
+                    Object.keys(ma.MasterAttribute).forEach(function(key) {
+                        if (ma.MasterAttribute[key].AttributeValueId) {
+                            var g = {
+                                AttributeValues: [],
+                                AttributeId: ma.MasterAttribute[key].AttributeId,
+                                ValueEn: ma.MasterAttribute[key].AttributeValueEn
+                            }
 
-            try {
-                clean.GlobalCategories = fd.GlobalCategories.map(mapper.Categories)
-            } catch (ex) {
-                console.warn('Unable to map Global Cat Array, Global Cat array is mandatory', ex)
-            }
-
-            try {
-                clean.LocalCategories = fd.LocalCategories.map(mapper.Categories)
-            } catch (ex) {
-                console.warn('Unable to map Local Cat array, Initializing', ex)
-                clean.LocalCategories = [null, null, null]
-            }
-
-            try {
-                fd.Keywords = util.uniqueSet(fd.Keywords)
-                clean.Keywords = (!fd.Keywords ? '' : fd.Keywords.join(','))
-            } catch (ex) {
-                console.warn('Keyword not set, will not serialize', ex)
-            }
-
-            try {
-                clean.AttributeSet = {
-                    AttributeSetId: fd.AttributeSet.AttributeSetId
-                }
-            } catch (ex) {
-                console.warn('AttributeSet not set, will not serialize', ex)
-            }
-
-            try {
-                clean.MasterAttribute = []
-                Object.keys(fd.MasterAttribute).forEach(function (key) {
-                    if (fd.MasterAttribute[key].AttributeValueId) {
-                        var g = {
-                            AttributeValues: [],
-                            AttributeId: fd.MasterAttribute[key].AttributeId,
-                            ValueEn: fd.MasterAttribute[key].AttributeValueEn
+                            g.AttributeValues.push(ma.MasterAttribute[key])
+                            t.push(g)
+                        } else {
+                            t.push({
+                                AttributeValues: [],
+                                AttributeId: Number(key),
+                                ValueEn: ma.MasterAttribute[key]
+                            })
                         }
 
-                        g.AttributeValues.push(fd.MasterAttribute[key])
-                        clean.MasterAttribute.push(g)
-                    } else {
-                        clean.MasterAttribute.push({
-                            AttributeValues: [],
-                            AttributeId: Number(key),
-                            ValueEn: fd.MasterAttribute[key]
-                        })
-                    }
-
-                })
-            } catch (ex) {
-                console.warn('Master Attributes', ex)
+                    });
+                    return t;
+                },
+                RelatedProducts: function(rp) {
+                    return rp;
+                }
             }
 
+            for (var key in fd) {
+                if ('queue' in fd[key]) delete fd[key].queue;
+                if (fd[key].$id) delete fd[key].$id;
+                if (key in serializer) {
+                    var f = serializer[key];
+                    var v = fd[key];
+                    try {
+                        clean[key] = f.serialize(v);
+                    } catch (ex) {
+                        clean[key] = f.fallback(v);
+                    }
+                } else {
+                    clean[key] = v;
+                }
+            }
+
+            //other special cases
+            try {
+                clean.GlobalCategory = clean.GlobalCategories[0].CategoryId;
+                clean.GlobalCategories.shift();
+            } catch (ex) {
+                throw new KnownException("Unable to finish serialization of product object");
+            }
+
+            try {
+                clean.LocalCategory = clean.LocalCategories[0].CategoryId;
+                clean.LocalCategories.shift();
+            } catch (ex) {
+                clean.LocalCategories = [null, null]
+                clean.LocalCategory = null
+            }
+
+            /*
+            
             try {
                 clean.Remark = fd.Remark
                 clean.PrepareDay = fd.PrepareDay || 0
@@ -10715,25 +10772,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                 console.warn('One-To-One Fields', ex)
             }
 
-            try {
-                // Move first entry of Categories out into Category
-                clean.GlobalCategory = clean.GlobalCategories[0].CategoryId
-                clean.GlobalCategories.shift()
-
-            } catch (ex) {
-                console.warn('shift global cat', ex)
-            }
-
-            try {
-                clean.LocalCategory = clean.LocalCategories[0].CategoryId
-                clean.LocalCategories.shift()
-
-            } catch (ex) {
-                console.warn('shfiting local cat', ex)
-                // Local cat can be null
-                clean.LocalCategories = [null, null]
-                clean.LocalCategory = null
-            }
+            
 
             try {
                 clean.RelatedProducts = []
@@ -10784,11 +10823,11 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             // HardCoD
             clean.SellerId = 1
             clean.ShopId = 1
-
+            */
             return clean
         }
 
-        service.deserialize = function (invFd, FullAttributeSet) {
+        service.deserialize = function(invFd, FullAttributeSet) {
             console.log('FullAttributeSet', FullAttributeSet)
 
             invFd.AttributeSet = FullAttributeSet
@@ -10805,11 +10844,11 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             }
 
             var BrandId = invFd.Brand.BrandId
-            Brand.getOne(BrandId).then(function (data) {
+            Brand.getOne(BrandId).then(function(data) {
                 invFd.Brand = data
                 delete invFd.Brand.$id
                 invFd.Brand.id = BrandId
-            }, function () {
+            }, function() {
                 console.log('brand resolve failure')
                 invFd.Brand = {
                     BrandId: null,
@@ -10818,10 +10857,10 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             })
 
             var invMapper = {
-                VideoLinks: function (m) {
+                VideoLinks: function(m) {
                     return m.Url
                 },
-                Variants: function (m) {
+                Variants: function(m) {
                     m.Visibility = m.Visibility
                     m.Images = m.Images || []
                     m.Images360 = m.Images360 || []
@@ -10833,7 +10872,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             }
 
             try {
-                var DefaultVariantIndex = (invFd.Variants || []).map(function (o) {
+                var DefaultVariantIndex = (invFd.Variants || []).map(function(o) {
                     return o.DefaultVariant || false
                 }).indexOf(true)
 
@@ -10851,7 +10890,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
             var MasterAttribute = {}
             try {
-                invFd.MasterAttribute.forEach(function (ma) {
+                invFd.MasterAttribute.forEach(function(ma) {
                     var k = { 'AttributeValue': ma.AttributeValues[0] }
                     if (ma.AttributeValues.length > 0 && ma.AttributeValues[0].AttributeValueId) {
                         k.AttributeId = ma.AttributeId
@@ -10879,7 +10918,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             }
 
             if (invFd.LocalCategory) {
-                LocalCategory.getOne(invFd.LocalCategory).then(function (locat) {
+                LocalCategory.getOne(invFd.LocalCategory).then(function(locat) {
                     invFd.LocalCategories.unshift(locat)
 
                     if (invFd.LocalCategories.length > 3) {
@@ -10896,7 +10935,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                 invFd.MasterVariant.VideoLinks = []
             }
 
-            invFd.Variants.forEach(function (variant, index) {
+            invFd.Variants.forEach(function(variant, index) {
                 try {
                     variant.VideoLinks = (variant.VideoLinks || []).map(invMapper.VideoLinks)
                 } catch (ex) {
@@ -10969,20 +11008,20 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                 var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId'])
 
                 // Generate attributeOptions
-                var map0_index = FullAttributeSet.AttributeSetMaps.map(function (a) {
+                var map0_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
                     return a.Attribute.AttributeId
                 }).indexOf(invFd.Variants[0].FirstAttribute.AttributeId)
 
                 var map1_index, SecondArray
                 if (HasTwoAttr) {
-                    map1_index = FullAttributeSet.AttributeSetMaps.map(function (a) {
+                    map1_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
                         return a.Attribute.AttributeId
                     }).indexOf(invFd.Variants[0].SecondAttribute.AttributeId)
                 }
 
                 // Find array of values to populate factors array that can be used to reproduce
                 // the expanded variants
-                var FirstArray = invFd.Variants.map(function (variant) {
+                var FirstArray = invFd.Variants.map(function(variant) {
                     if (variant.FirstAttribute.AttributeValues.length > 0) {
                         return {
                             'AttributeValue': variant.FirstAttribute.AttributeValues[0],
@@ -10994,7 +11033,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                 })
 
                 if (HasTwoAttr) {
-                    SecondArray = invFd.Variants.map(function (variant) {
+                    SecondArray = invFd.Variants.map(function(variant) {
                         if (variant.SecondAttribute.AttributeValues.length > 0) {
                             return {
                                 'AttributeValue': variant.SecondAttribute.AttributeValues[0],
@@ -11446,7 +11485,7 @@ module.exports = {
 
 },{}],150:[function(require,module,exports){
 module.exports = {
-  MasterVariant_KillerPointTh: {
+  KillerPointTh: {
     divClass: 'col-sm-6',
     error: {
       messages: {
@@ -11455,7 +11494,7 @@ module.exports = {
       }
     }
   },
-  MasterVariant_KillerPointEn: {
+  KillerPointEn: {
     'divClass': 'col-sm-6',
     'error': {
       'messages': {
@@ -11481,7 +11520,7 @@ module.exports = {
       }
     }
   },
-  MasterVariant_ProductNameEn: {
+  ProductNameEn: {
     'labelClass': 'required',
     'error': {
       'messages': {
@@ -11490,14 +11529,14 @@ module.exports = {
       }
     }
   },
-  MasterVariant_StockType: {},
-  MasterVariant_DescriptionFull: {
+  StockType: {},
+  DescriptionFull: {
     'divClass': 'col-sm-6',
     'formGroupClass': 'margin-top-40',
     'labelClass': 'required',
     'inputSize': 'xxl'
   },
-  MasterVariant_ProductNameTh: {
+  ProductNameTh: {
     'labelClass': 'required',
     'error': {
       'messages': {
@@ -11506,24 +11545,24 @@ module.exports = {
       }
     }
   },
-  MasterVariant_Sku: {
+  Sku: {
     'error': {
       'messages': {
         'pattern': 'Special characters are not allowed'
       }
     }
   },
-  MasterVariant_Upc: {
+  Upc: {
     'error': {
       'messages': {
         'pattern': 'Special characters are not allowed'
       }
     }
   },
-  MasterVariant_Pid: {
+  Pid: {
     'labelClass': 'required'
   },
-  MasterVariant_OriginalPrice: {
+  OriginalPrice: {
     'error': {
       'messages': {
         'required': 'This is a required field',
@@ -11531,7 +11570,7 @@ module.exports = {
       }
     }
   },
-  MasterVariant_SalePrice: {
+  SalePrice: {
     'labelClass': 'required',
     'error': {
       'messages': {
@@ -11540,7 +11579,7 @@ module.exports = {
       }
     }
   },
-  MasterVariant_DescriptionShortTh: {
+  DescriptionShortTh: {
     'divClass': 'col-sm-6',
     'inputSize': 'xxl',
     'formGroupClass': 'margin-top-30',
@@ -11550,7 +11589,7 @@ module.exports = {
       }
     }
   },
-  MasterVariant_DescriptionShortEn: {
+  DescriptionShortEn: {
     'divClass': 'col-sm-6',
     'inputSize': 'xxl',
     'formGroupClass': 'margin-top-30',
@@ -11571,7 +11610,7 @@ module.exports = {
       }
     }
   },
-  MasterVariant_Quantity: {
+  Quantity: {
     'hint': {
       'message': 'Example: 100',
       'show': true
@@ -11582,7 +11621,7 @@ module.exports = {
       }
     }
   },
-  MasterVariant_SafetyStock: {
+  SafetyStock: {
     'hint': {
       'message': 'Example: 10',
       'show': true
@@ -11604,7 +11643,7 @@ module.exports = {
     },
     'unit': 'Day'
   },
-  MasterVariant_Dimension: {
+  Dimension: {
     'error': {
       'messages': {
         'required': 'This is a required field',
@@ -12157,7 +12196,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('global_category/nodes',
-    "<div ui-tree-handle class=\"tree-node tree-node-content\"><a class=btn-collapse ng-if=\"node.nodes && node.nodes.length > 0\" data-nodrag ng-click=toggle(this)><span class=glyphicon ng-class=\"{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed }\"></span></a> <a ng-click=open(node) data-nodrag>{{node.NameEn}}</a> <span class=\"pull-right category-column category-action-gear\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span> <span class=\"pull-right category-column\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"pull-right category-column\">{{node.AttributeSetCount}}</span> <span class=\"pull-right category-column\">{{node.ProductCount}}</span> <span class=\"pull-right category-column\">{{node.CategoryId}}</span></div><ol ui-tree-nodes=\"\" ng-model=node.nodes ng-class=\"{hidden: collapsed}\"><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'global_category/nodes'\"></li></ol>"
+    "<div ui-tree-handle class=\"tree-node tree-node-content\"><a class=btn-collapse ng-if=\"node.nodes && node.nodes.length > 0\" data-nodrag ng-click=toggle(this)><span class=glyphicon ng-class=\"{\r" +
+    "\n" +
+    "\t\t'glyphicon-chevron-right': collapsed,\r" +
+    "\n" +
+    "\t\t'glyphicon-chevron-down': !collapsed }\"></span></a> <span ng-if=\"!node.nodes || node.nodes.length == 0\"><span class=\"glyphicon glyphicon-chevron-right color-grey\"></span></span> <a ng-click=open(node) data-nodrag>{{node.NameEn}}</a> <span class=\"pull-right category-column category-action-gear\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span> <span class=\"pull-right category-column\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"pull-right category-column\">{{node.AttributeSetCount}}</span> <span class=\"pull-right category-column\">{{node.ProductCount}}</span> <span class=\"pull-right category-column\">{{node.CategoryId}}</span></div><ol ui-tree-nodes=\"\" ng-model=node.nodes ng-class=\"{hidden: collapsed}\"><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'global_category/nodes'\"></li></ol>"
   );
 
 
@@ -12180,7 +12223,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('local_category/nodes',
-    "<div ui-tree-handle class=\"tree-node tree-node-content\"><a class=btn-collapse ng-if=\"node.nodes && node.nodes.length > 0\" data-nodrag ng-click=toggle(this)><span class=glyphicon ng-class=\"{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed }\"></span></a> <a ng-click=open(node) data-nodrag>{{node.NameEn}}</a> <span class=\"pull-right category-column category-action-gear\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span> <span class=\"pull-right category-column\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"pull-right category-column\">{{node.ProductCount}}</span></div><ol ui-tree-nodes ng-model=node.nodes ng-class=\"{hidden: collapsed}\"><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'local_category/nodes'\"></li></ol>"
+    "<div ui-tree-handle class=\"tree-node tree-node-content\"><a class=btn-collapse ng-if=\"node.nodes && node.nodes.length > 0\" data-nodrag ng-click=toggle(this)><span class=glyphicon ng-class=\"{\r" +
+    "\n" +
+    "\t\t'glyphicon-chevron-right': collapsed,\r" +
+    "\n" +
+    "\t\t'glyphicon-chevron-down': !collapsed }\"></span></a> <span ng-if=\"!node.nodes || node.nodes.length == 0\"><span class=\"glyphicon glyphicon-chevron-right color-grey\"></span></span> <a ng-click=open(node) data-nodrag>{{node.NameEn}}</a> <span class=\"pull-right category-column category-action-gear\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span> <span class=\"pull-right category-column\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"pull-right category-column\">{{node.ProductCount}}</span></div><ol ui-tree-nodes ng-model=node.nodes ng-class=\"{hidden: collapsed}\"><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'local_category/nodes'\"></li></ol>"
   );
 
 
