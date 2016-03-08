@@ -248,9 +248,9 @@ tr.angular-ui-tree-empty {
 
 	.category-column-header{
 		margin-top: 30px;
-		padding: 5px 10px 0px 10px;
-		background: #FFFFFF;
-		border: 1px solid #FFFFFF;
+		padding: 5px 10px 5px 10px;
+		background: $color-light-blue;
+		border: 1px solid $color-grey;
 		border-radius: 2px;
 	}
  .category-column{
