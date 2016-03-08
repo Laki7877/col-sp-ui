@@ -1,7 +1,12 @@
 <div ui-tree-handle class="tree-node tree-node-content">
 	<a class="btn-collapse" ng-if="node.nodes && node.nodes.length > 0" data-nodrag ng-click="toggle(this)">
-		<span class="glyphicon" ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed }"></span>
+		<span class="glyphicon" ng-class="{
+		'glyphicon-chevron-right': collapsed,
+		'glyphicon-chevron-down': !collapsed }"></span>
 	</a>
+	<span ng-if="!node.nodes || node.nodes.length == 0">
+		<span class="glyphicon glyphicon-chevron-right color-grey"></span>
+	</span>
 	<a ng-click="open(node)" data-nodrag>{{node.NameEn}}</a>
 	<span class="pull-right category-column category-action-gear" data-nodrag>
 		<nc-action nc-model="$nodeScope" nc-action-fn="actions"></nc-action>
