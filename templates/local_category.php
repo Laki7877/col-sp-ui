@@ -34,9 +34,9 @@
 
 		<div ng-show="!loading && categories.length > 0" class="row">
 		  <div class="col-sm-12">
-		    <div ui-tree>
-		      <ol ui-tree-nodes ng-model="categories">
-		        <li ng-repeat="node in categories track by $index" ui-tree-node ng-include="'local_category/nodes'"></li>
+		    <div ui-tree="treeOptions" max-depth="4">
+		      <ol class="sortable" ui-tree-nodes ng-model="categories">
+		        <li ng-repeat="node in categories" ui-tree-node ng-include="'local_category/nodes'"></li>
 		      </ol>
 		    </div>
 		  </div>

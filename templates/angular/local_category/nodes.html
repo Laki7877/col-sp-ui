@@ -7,11 +7,11 @@
 		<nc-action nc-model="$nodeScope" nc-action-fn="actions"></nc-action>
 	</span>
 	<span class="pull-right category-column" data-nodrag>
-		<nc-eye nc-model="node.Visibility" nc-eye-on-toggle="toggleVisibility(node)" class="ng-isolate-scope"></nc-eye>
+		<nc-eye nc-model="node.Visibility" nc-eye-on-toggle="toggleVisibility(node)"></nc-eye>
 	</span>
 	<span class="pull-right category-column">{{node.ProductCount}}</span>
 </div>
-<ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
-	<li ng-repeat="node in node.nodes track by $index" ui-tree-node ng-include="'local_category/nodes'">
+<ol ui-tree-nodes ng-model="node.nodes" ng-class="{hidden: collapsed}">
+	<li ng-repeat="node in node.nodes" ui-tree-node ng-include="'local_category/nodes'">
 	</li>
 </ol>
