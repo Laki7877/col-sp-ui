@@ -23,7 +23,6 @@
             <div class="form-section">
                 <div class="form-section-header">
                     <h2>Variation Option</h2></div>
-
                 <!-- ng-if too long -->
                 <div class="form-section-content" ng-if="!(formData.AttributeSet && !formData.AttributeSet['AttributeSetId']) && controlFlags.variation == 'enable'">
                     <div class="form-group" ng-repeat="jth in variationFactorIndices.iterator" ng-show="(dataSet.attributeOptions[0].options.length > 0) || (jth == 0)">

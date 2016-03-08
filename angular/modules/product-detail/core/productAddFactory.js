@@ -78,11 +78,11 @@ angular.module('productDetail').
                 kpair.OriginalPrice = formData.MasterVariant.OriginalPrice;
                 kpair.SalePrice = formData.MasterVariant.SalePrice;
                 kpair.Quantity = formData.MasterVariant.Quantity;
-                kpair.Length = formData.MasterVariant.Length;
-                kpair.Width = formData.MasterVariant.Width;
-                kpair.Height = formData.MasterVariant.Height;
+                kpair.Length = formData.Length;
+                kpair.Width = formData.Width;
+                kpair.Height = formData.Height;
                 kpair.Upc = formData.MasterVariant.Upc;
-                kpair.Weight = formData.MasterVariant.Weight;
+                kpair.Weight = formData.Weight;
                 kpair.DescriptionFullEn = formData.MasterVariant.DescriptionFullEn;
                 kpair.DescriptionFullTh = formData.MasterVariant.DescriptionFullTh;
                 kpair.DescriptionShortEn = formData.MasterVariant.DescriptionShortEn;
@@ -90,6 +90,13 @@ angular.module('productDetail').
                 kpair.Images = angular.copy(formData.MasterImages);
                 kpair.VideoLinks = angular.copy(formData.VideoLinks);
                 kpair.PrepareDay = formData.PrepareDay;
+                kpair.PrepareSun = formData.PrepareSun;
+                kpair.PrepareSat = formData.PrepareSat;
+                kpair.PrepareFri = formData.PrepareFri;
+                kpair.PrepareThu = formData.PrepareThu;
+                kpair.PrepareWed = formData.PrepareWed;
+                kpair.PrepareTue = formData.PrepareTue;
+                kpair.PrepareMon = formData.PrepareMon;
                 kpair.SEO = angular.copy(formData.SEO || {});
                 kpair.SEO.ProductUrlKeyEn = "";
 
