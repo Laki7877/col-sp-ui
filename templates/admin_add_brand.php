@@ -77,8 +77,7 @@
                   ngf-select="uploadLogo($file)"
                   ng-model="formData.brandImage"
                   ng-class="{'has-error-btn' : isInvalid(form.BrandImage)}"
-                  required
-                  >Choose File</button>
+                  required>Choose File</button>
               </div>
               <div ng-show="formData.BrandImage"
                 nc-template="common/input/form-group-with-label" 

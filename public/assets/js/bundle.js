@@ -262,7 +262,7 @@ module.exports = {
 		],
 		VARIANT2_DROPDOWN: [
 			{
-				name: 'Image',
+				name: 'Product Image',
 				value: 'IO'
 			},
 			{
@@ -1031,6 +1031,11 @@ module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageServ
 			item: 'Brand',
 			service: BrandService,
 			onSave: function(scope) {
+				if(!_.isNil(scope.formData.BrandImage)) {
+					scope.form.BrandImage.$setValidity('required', true);
+				} else {
+					scope.form.BrandImage.$setValidity('required', false);
+				}
 				return false;
 			},
 			onLoad: function(scope, flag) {
@@ -9435,7 +9440,9 @@ module.exports = ["common", function(common) {
 	}
 	service.deserialize = function(data) {
 		var processed = _.extend(service.generate(), data);
-		processed.brandImage = data.BrandImage;
+		if(!_.isNil(data.BrandImage)) {
+			processed.brandImage = data.BrandImage;
+		}
 		return processed;
 	};
 
