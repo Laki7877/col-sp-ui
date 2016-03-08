@@ -1,10 +1,10 @@
 // Products Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config', 'KnownException',
-    function ($http, common, util, LocalCategory, Brand, config, KnownException) {
+    function($http, common, util, LocalCategory, Brand, config, KnownException) {
         'use strict'
         var service = common.Rest('/ProductStages')
 
-        service.getExportableFields = function () {
+        service.getExportableFields = function() {
             var req = {
                 method: 'GET',
                 url: '/ProductStages/Guidance/Export'
@@ -12,7 +12,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             return common.makeRequest(req)
         }
 
-        service.downloadTemplate = function (globalCat, aset) {
+        service.downloadTemplate = function(globalCat, aset) {
             var req = {
                 method: 'POST',
                 url: '/ProductStages/Template',
@@ -24,7 +24,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             return common.makeRequest(req)
         }
 
-        service.getAllAttributeSetsForProducts = function (productList) {
+        service.getAllAttributeSetsForProducts = function(productList) {
             var req = {
                 method: 'POST',
                 url: '/ProductStages/AttributeSet',
@@ -33,7 +33,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             return common.makeRequest(req)
         }
 
-        service.export = function (ps) {
+        service.export = function(ps) {
             var req = {
                 method: 'POST',
                 url: '/ProductStages/Export',
@@ -42,7 +42,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             return common.makeRequest(req)
         }
 
-        service.guideline = function (params) {
+        service.guideline = function(params) {
             var req = {
                 method: 'GET',
                 url: '/ProductStages/Guidance',
@@ -50,7 +50,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             }
             return common.makeRequest(req)
         }
-        service.approve = function (obj) {
+        service.approve = function(obj) {
             return common.makeRequest({
                 method: 'PUT',
                 url: '/ProductStages/Approve',
@@ -60,7 +60,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                 }
             })
         }
-        service.reject = function (obj) {
+        service.reject = function(obj) {
             return common.makeRequest({
                 method: 'PUT',
                 url: '/ProductStages/Reject',
@@ -71,7 +71,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             })
         }
 
-        service.getOne = function (productId) {
+        service.getOne = function(productId) {
             var req = {
                 method: 'GET',
                 url: '/ProductStages/' + productId
@@ -79,7 +79,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             return common.makeRequest(req)
         }
 
-        service.getAllVariants = function (parameters) {
+        service.getAllVariants = function(parameters) {
             var req = {
                 method: 'GET',
                 url: '/ProductStages/All',
@@ -89,7 +89,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             return common.makeRequest(req)
         }
 
-        service.updateAllVariants = function (obj) {
+        service.updateAllVariants = function(obj) {
             var req = {
                 method: 'PUT',
                 url: '/ProductStages/All/Image',
@@ -102,7 +102,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             return common.makeRequest(req)
         }
 
-        service.duplicate = function (ProductId) {
+        service.duplicate = function(ProductId) {
             // this URL structure is weird dont u think
             var req = {
                 method: 'POST',
@@ -112,7 +112,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             return common.makeRequest(req)
         }
 
-        service.getAll = function (parameters) {
+        service.getAll = function(parameters) {
             var req = {
                 method: 'GET',
                 url: '/ProductStages/',
@@ -129,7 +129,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             return common.makeRequest(req)
         }
 
-        service.export = function (tobj) {
+        service.export = function(tobj) {
             var path = '/ProductStages/Export'
             return common.makeRequest({
                 responseType: 'arraybuffer',
@@ -139,7 +139,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             })
         }
 
-        service.publish = function (tobj, Status) {
+        service.publish = function(tobj, Status) {
             tobj.Status = Status
             var mode = 'POST'
             var path = '/ProductStages'
@@ -154,7 +154,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             })
         }
 
-        service.bulkPublish = function (tobj) {
+        service.bulkPublish = function(tobj) {
             return common.makeRequest({
                 method: 'POST',
                 url: '/ProductStages/Publish',
@@ -165,7 +165,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             })
         }
 
-        service.visible = function (obj) {
+        service.visible = function(obj) {
             return common.makeRequest({
                 method: 'PUT',
                 url: '/ProductStages/Visibility',
@@ -175,7 +175,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                 }
             })
         }
-        service.deleteBulk = function (arr) {
+        service.deleteBulk = function(arr) {
             return common.makeRequest({
                 method: 'DELETE',
                 url: '/ProductStages',
@@ -187,10 +187,10 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         }
 
         var StatusLookup = {}
-        config.PRODUCT_STATUS.forEach(function (object) {
+        config.PRODUCT_STATUS.forEach(function(object) {
             StatusLookup[object.value] = object
         })
-        service.getStatus = function (abbreviation) {
+        service.getStatus = function(abbreviation) {
             if (_.isNil(abbreviation)) {
                 return {
                     name: 'No Status',
@@ -200,17 +200,65 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             return StatusLookup[abbreviation]
         }
 
-        service.serialize = function (fd) {
-            var hasVariants = (!util.nullOrUndefined(fd.Variants) && fd.Variants.length > 0)
+        /**
+         * @param  {Product Object} fd
+         */
+        service.serialize = function(fd) {
 
-            // Cleaned data
             var clean = {}
-            clean.Variants = []
-
-            var objectMapper = {
-                VideoLinks: function (vlink) {
+            var serializer = {
+                GlobalCategories: {
+                    serialize: function(data) {
+                        return data.map(function(lcat) {
+                            if (lcat == null) return null
+                            return {
+                                CategoryId: lcat.CategoryId
+                            }
+                        });
+                    },
+                    fallback: function(data) {
+                        throw new KnownException("No serialization fallback for Global Categories");
+                    }
+                },
+                LocalCategories: {
+                    serialize: function(data) {
+                        return data.map(function(lcat) {
+                            if (lcat == null) return null
+                            return {
+                                CategoryId: lcat.CategoryId
+                            }
+                        });
+                    },
+                    fallback: function(data) {
+                        return [null, null, null]
+                    }
+                },
+                Keywords: {
+                    serialize: function(data) {
+                        var m = util.uniqueSet(data);
+                        return (!m ? '' : m.join(','));
+                    },
+                    fallback: function(data) {
+                        return '';
+                    }
+                },
+                AttributeSet: {
+                    serialize: function(data) {
+                        var k = null;
+                        if (data.AttributeSetId) k = data.AttributeSetId;
+                        return {
+                            AttributeSetId: k
+                        }
+                    },
+                    fallback: function(data) {
+                        return {
+                            AttributeSetId: null
+                        }
+                    }
+                },
+                VideoLinks: function(vlink) {
                     var f = []
-                    Object.keys(vlink).forEach(function (key) {
+                    Object.keys(vlink).forEach(function(key) {
                         var value = vlink[key]
                         var obj = {
                             'Url': value
@@ -219,95 +267,75 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                         f.push(obj)
                     })
                     return f
-                }
-            }
-            // Mapper functions
-            var mapper = {
-                Images: function (image, pos) {
-                    if (image.$id) delete image.$id
-                    image.position = pos
-                    return image
                 },
-                Variants: function (_variant) {
-                    var variant = angular.copy(_variant)
-
-                    if (util.nullOrUndefined(variant['VideoLinks'])) variant.VideoLinks = []
-                    if (util.nullOrUndefined(variant['VideoLinks'])) variant.Images = []
-                    if ('queue' in variant) delete variant.queue // circular
-
-                    variant.Visibility = variant.Visibility
-                    variant.Images = (variant.Images || []).map(mapper.Images)
-                    variant.Images360 = [] // for future
-
-                    try {
-                        variant.VideoLinks = objectMapper.VideoLinks(variant.VideoLinks)
-                    } catch (ex) {
-                        variant.VideoLinks = []
-                    }
-
-                    return variant
+                Images: function(images) {
+                    return images.map(function(image) {
+                        image.position = pos
+                        return image
+                    });
                 },
-                Categories: function (lcat) {
-                    if (lcat == null) return null
-                    return {
-                        CategoryId: lcat.CategoryId
-                    }
-                }
-            }
+                MasterAttribute: function(ma) {
+                    var t = [];
+                    Object.keys(ma.MasterAttribute).forEach(function(key) {
+                        if (ma.MasterAttribute[key].AttributeValueId) {
+                            var g = {
+                                AttributeValues: [],
+                                AttributeId: ma.MasterAttribute[key].AttributeId,
+                                ValueEn: ma.MasterAttribute[key].AttributeValueEn
+                            }
 
-            try {
-                clean.GlobalCategories = fd.GlobalCategories.map(mapper.Categories)
-            } catch (ex) {
-                console.warn('Unable to map Global Cat Array, Global Cat array is mandatory', ex)
-            }
-
-            try {
-                clean.LocalCategories = fd.LocalCategories.map(mapper.Categories)
-            } catch (ex) {
-                console.warn('Unable to map Local Cat array, Initializing', ex)
-                clean.LocalCategories = [null, null, null]
-            }
-
-            try {
-                fd.Keywords = util.uniqueSet(fd.Keywords)
-                clean.Keywords = (!fd.Keywords ? '' : fd.Keywords.join(','))
-            } catch (ex) {
-                console.warn('Keyword not set, will not serialize', ex)
-            }
-
-            try {
-                clean.AttributeSet = {
-                    AttributeSetId: fd.AttributeSet.AttributeSetId
-                }
-            } catch (ex) {
-                console.warn('AttributeSet not set, will not serialize', ex)
-            }
-
-            try {
-                clean.MasterAttribute = []
-                Object.keys(fd.MasterAttribute).forEach(function (key) {
-                    if (fd.MasterAttribute[key].AttributeValueId) {
-                        var g = {
-                            AttributeValues: [],
-                            AttributeId: fd.MasterAttribute[key].AttributeId,
-                            ValueEn: fd.MasterAttribute[key].AttributeValueEn
+                            g.AttributeValues.push(ma.MasterAttribute[key])
+                            t.push(g)
+                        } else {
+                            t.push({
+                                AttributeValues: [],
+                                AttributeId: Number(key),
+                                ValueEn: ma.MasterAttribute[key]
+                            })
                         }
 
-                        g.AttributeValues.push(fd.MasterAttribute[key])
-                        clean.MasterAttribute.push(g)
-                    } else {
-                        clean.MasterAttribute.push({
-                            AttributeValues: [],
-                            AttributeId: Number(key),
-                            ValueEn: fd.MasterAttribute[key]
-                        })
-                    }
-
-                })
-            } catch (ex) {
-                console.warn('Master Attributes', ex)
+                    });
+                    return t;
+                },
+                RelatedProducts: function(rp) {
+                    return rp;
+                }
             }
 
+            for (var key in fd) {
+                if ('queue' in fd[key]) delete fd[key].queue;
+                if (fd[key].$id) delete fd[key].$id;
+                if (key in serializer) {
+                    var f = serializer[key];
+                    var v = fd[key];
+                    try {
+                        clean[key] = f.serialize(v);
+                    } catch (ex) {
+                        clean[key] = f.fallback(v);
+                    }
+                } else {
+                    clean[key] = v;
+                }
+            }
+
+            //other special cases
+            try {
+                clean.GlobalCategory = clean.GlobalCategories[0].CategoryId;
+                clean.GlobalCategories.shift();
+            } catch (ex) {
+                throw new KnownException("Unable to finish serialization of product object");
+            }
+
+            try {
+                clean.LocalCategory = clean.LocalCategories[0].CategoryId;
+                clean.LocalCategories.shift();
+            } catch (ex) {
+                clean.LocalCategories = [null, null]
+                clean.LocalCategory = null
+            }
+
+            /*
+            
             try {
                 clean.Remark = fd.Remark
                 clean.PrepareDay = fd.PrepareDay || 0
@@ -336,25 +364,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                 console.warn('One-To-One Fields', ex)
             }
 
-            try {
-                // Move first entry of Categories out into Category
-                clean.GlobalCategory = clean.GlobalCategories[0].CategoryId
-                clean.GlobalCategories.shift()
-
-            } catch (ex) {
-                console.warn('shift global cat', ex)
-            }
-
-            try {
-                clean.LocalCategory = clean.LocalCategories[0].CategoryId
-                clean.LocalCategories.shift()
-
-            } catch (ex) {
-                console.warn('shfiting local cat', ex)
-                // Local cat can be null
-                clean.LocalCategories = [null, null]
-                clean.LocalCategory = null
-            }
+            
 
             try {
                 clean.RelatedProducts = []
@@ -405,11 +415,11 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             // HardCoD
             clean.SellerId = 1
             clean.ShopId = 1
-
+            */
             return clean
         }
 
-        service.deserialize = function (invFd, FullAttributeSet) {
+        service.deserialize = function(invFd, FullAttributeSet) {
             console.log('FullAttributeSet', FullAttributeSet)
 
             invFd.AttributeSet = FullAttributeSet
@@ -426,11 +436,11 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             }
 
             var BrandId = invFd.Brand.BrandId
-            Brand.getOne(BrandId).then(function (data) {
+            Brand.getOne(BrandId).then(function(data) {
                 invFd.Brand = data
                 delete invFd.Brand.$id
                 invFd.Brand.id = BrandId
-            }, function () {
+            }, function() {
                 console.log('brand resolve failure')
                 invFd.Brand = {
                     BrandId: null,
@@ -439,10 +449,10 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             })
 
             var invMapper = {
-                VideoLinks: function (m) {
+                VideoLinks: function(m) {
                     return m.Url
                 },
-                Variants: function (m) {
+                Variants: function(m) {
                     m.Visibility = m.Visibility
                     m.Images = m.Images || []
                     m.Images360 = m.Images360 || []
@@ -454,7 +464,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             }
 
             try {
-                var DefaultVariantIndex = (invFd.Variants || []).map(function (o) {
+                var DefaultVariantIndex = (invFd.Variants || []).map(function(o) {
                     return o.DefaultVariant || false
                 }).indexOf(true)
 
@@ -472,7 +482,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
             var MasterAttribute = {}
             try {
-                invFd.MasterAttribute.forEach(function (ma) {
+                invFd.MasterAttribute.forEach(function(ma) {
                     var k = { 'AttributeValue': ma.AttributeValues[0] }
                     if (ma.AttributeValues.length > 0 && ma.AttributeValues[0].AttributeValueId) {
                         k.AttributeId = ma.AttributeId
@@ -500,7 +510,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             }
 
             if (invFd.LocalCategory) {
-                LocalCategory.getOne(invFd.LocalCategory).then(function (locat) {
+                LocalCategory.getOne(invFd.LocalCategory).then(function(locat) {
                     invFd.LocalCategories.unshift(locat)
 
                     if (invFd.LocalCategories.length > 3) {
@@ -517,7 +527,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                 invFd.MasterVariant.VideoLinks = []
             }
 
-            invFd.Variants.forEach(function (variant, index) {
+            invFd.Variants.forEach(function(variant, index) {
                 try {
                     variant.VideoLinks = (variant.VideoLinks || []).map(invMapper.VideoLinks)
                 } catch (ex) {
@@ -590,20 +600,20 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                 var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId'])
 
                 // Generate attributeOptions
-                var map0_index = FullAttributeSet.AttributeSetMaps.map(function (a) {
+                var map0_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
                     return a.Attribute.AttributeId
                 }).indexOf(invFd.Variants[0].FirstAttribute.AttributeId)
 
                 var map1_index, SecondArray
                 if (HasTwoAttr) {
-                    map1_index = FullAttributeSet.AttributeSetMaps.map(function (a) {
+                    map1_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
                         return a.Attribute.AttributeId
                     }).indexOf(invFd.Variants[0].SecondAttribute.AttributeId)
                 }
 
                 // Find array of values to populate factors array that can be used to reproduce
                 // the expanded variants
-                var FirstArray = invFd.Variants.map(function (variant) {
+                var FirstArray = invFd.Variants.map(function(variant) {
                     if (variant.FirstAttribute.AttributeValues.length > 0) {
                         return {
                             'AttributeValue': variant.FirstAttribute.AttributeValues[0],
@@ -615,7 +625,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                 })
 
                 if (HasTwoAttr) {
-                    SecondArray = invFd.Variants.map(function (variant) {
+                    SecondArray = invFd.Variants.map(function(variant) {
                         if (variant.SecondAttribute.AttributeValues.length > 0) {
                             return {
                                 'AttributeValue': variant.SecondAttribute.AttributeValues[0],

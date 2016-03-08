@@ -1,5 +1,5 @@
 module.exports = {
-  MasterVariant_KillerPointTh: {
+  KillerPointTh: {
     divClass: 'col-sm-6',
     error: {
       messages: {
@@ -8,7 +8,7 @@ module.exports = {
       }
     }
   },
-  MasterVariant_KillerPointEn: {
+  KillerPointEn: {
     'divClass': 'col-sm-6',
     'error': {
       'messages': {
@@ -34,7 +34,7 @@ module.exports = {
       }
     }
   },
-  MasterVariant_ProductNameEn: {
+  ProductNameEn: {
     'labelClass': 'required',
     'error': {
       'messages': {
@@ -43,14 +43,14 @@ module.exports = {
       }
     }
   },
-  MasterVariant_StockType: {},
-  MasterVariant_DescriptionFull: {
+  StockType: {},
+  DescriptionFull: {
     'divClass': 'col-sm-6',
     'formGroupClass': 'margin-top-40',
     'labelClass': 'required',
     'inputSize': 'xxl'
   },
-  MasterVariant_ProductNameTh: {
+  ProductNameTh: {
     'labelClass': 'required',
     'error': {
       'messages': {
@@ -59,24 +59,24 @@ module.exports = {
       }
     }
   },
-  MasterVariant_Sku: {
+  Sku: {
     'error': {
       'messages': {
         'pattern': 'Special characters are not allowed'
       }
     }
   },
-  MasterVariant_Upc: {
+  Upc: {
     'error': {
       'messages': {
         'pattern': 'Special characters are not allowed'
       }
     }
   },
-  MasterVariant_Pid: {
+  Pid: {
     'labelClass': 'required'
   },
-  MasterVariant_OriginalPrice: {
+  OriginalPrice: {
     'error': {
       'messages': {
         'required': 'This is a required field',
@@ -84,7 +84,7 @@ module.exports = {
       }
     }
   },
-  MasterVariant_SalePrice: {
+  SalePrice: {
     'labelClass': 'required',
     'error': {
       'messages': {
@@ -93,7 +93,7 @@ module.exports = {
       }
     }
   },
-  MasterVariant_DescriptionShortTh: {
+  DescriptionShortTh: {
     'divClass': 'col-sm-6',
     'inputSize': 'xxl',
     'formGroupClass': 'margin-top-30',
@@ -103,7 +103,7 @@ module.exports = {
       }
     }
   },
-  MasterVariant_DescriptionShortEn: {
+  DescriptionShortEn: {
     'divClass': 'col-sm-6',
     'inputSize': 'xxl',
     'formGroupClass': 'margin-top-30',
@@ -124,7 +124,7 @@ module.exports = {
       }
     }
   },
-  MasterVariant_Quantity: {
+  Quantity: {
     'hint': {
       'message': 'Example: 100',
       'show': true
@@ -135,7 +135,7 @@ module.exports = {
       }
     }
   },
-  MasterVariant_SafetyStock: {
+  SafetyStock: {
     'hint': {
       'message': 'Example: 10',
       'show': true
@@ -157,7 +157,7 @@ module.exports = {
     },
     'unit': 'Day'
   },
-  MasterVariant_Dimension: {
+  Dimension: {
     'error': {
       'messages': {
         'required': 'This is a required field',

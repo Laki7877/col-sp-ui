@@ -3,33 +3,33 @@
         <h2>Vital Information</h2>
     </div>
     <div class="form-section-content">
-        <div nc-template="common/input/form-group-with-label" ng-init="form = addProductForm" nc-template-form="form.MasterVariant_ProductNameEn"
-        nc-label="Product Name (English)" nc-template-options-path="addProductForm/MasterVariant_ProductNameEn">
-            <input class="form-control width-field-large" name="MasterVariant_ProductNameEn" ng-model="formDataPtr.MasterVariant.ProductNameEn"
+        <div nc-template="common/input/form-group-with-label" ng-init="form = addProductForm" nc-template-form="form.ProductNameEn"
+        nc-label="Product Name (English)" nc-template-options-path="addProductForm/ProductNameEn">
+            <input class="form-control width-field-large" name="ProductNameEn" ng-model="formDataPtr.MasterVariant.ProductNameEn"
             maxlength="300" ng-pattern="/^([^<>ก-๙])+$/" required />
         </div>
 
-        <div nc-template="common/input/form-group-with-label" nc-label="Product Name (ไทย)" nc-template-form="form.MasterVariant_ProductNameTh"
-        nc-template-options-path="addProductForm/MasterVariant_ProductNameTh">
-            <input class="form-control width-field-large" name="MasterVariant_ProductNameTh" ng-model="formDataPtr.MasterVariant.ProductNameTh"
+        <div nc-template="common/input/form-group-with-label" nc-label="Product Name (ไทย)" nc-template-form="form.ProductNameTh"
+        nc-template-options-path="addProductForm/ProductNameTh">
+            <input class="form-control width-field-large" name="ProductNameTh" ng-model="formDataPtr.MasterVariant.ProductNameTh"
             ng-pattern="/^[^<>]+$/" maxlength="300" required />
         </div>
 
-        <div nc-template="common/input/form-group-with-label" nc-label="SKU" nc-template-form="form.MasterVariant_Sku" nc-template-options-path="addProductForm/MasterVariant_Sku">
-            <input class="form-control width-field-large" name="MasterVariant_Sku" ng-model="formDataPtr.MasterVariant.Sku" maxlength="300"
+        <div nc-template="common/input/form-group-with-label" nc-label="SKU" nc-template-form="form.Sku" nc-template-options-path="addProductForm/Sku">
+            <input class="form-control width-field-large" name="Sku" ng-model="formDataPtr.MasterVariant.Sku" maxlength="300"
             ng-pattern="/^[^<>]+$/" />
         </div>
 
 
-        <div nc-template="common/input/form-group-with-label" nc-label="UPC" nc-template-form="form.MasterVariant_Upc" nc-template-options-path="addProductForm/MasterVariant_Upc">
-            <input class="form-control width-field-large" ng-pattern="/^[^<>]+$/" name="MasterVariant_Upc" maxlength="300" ng-model="formDataPtr.MasterVariant.Upc"
+        <div nc-template="common/input/form-group-with-label" nc-label="UPC" nc-template-form="form.Upc" nc-template-options-path="addProductForm/Upc">
+            <input class="form-control width-field-large" ng-pattern="/^[^<>]+$/" name="Upc" maxlength="300" ng-model="formDataPtr.MasterVariant.Upc"
             />
         </div>
 
         <div ng-if="formDataPtr.MasterVariant.Pid">
-            <div nc-template="common/input/form-group-with-label" nc-template-form="form.MasterVariant_Pid" nc-label="{{ (formDataPtr.Variants || []).length > 0 ? 'Group ID' : 'PID' }}"
-            nc-template-options-path="addProductForm/MasterVariant_Pid">
-                <input class="form-control width-field-large" name="MasterVariant_Pid" disabled ng-model="formDataPtr.MasterVariant.Pid"
+            <div nc-template="common/input/form-group-with-label" nc-template-form="form.Pid" nc-label="{{ (formDataPtr.Variants || []).length > 0 ? 'Group ID' : 'PID' }}"
+            nc-template-options-path="addProductForm/Pid">
+                <input class="form-control width-field-large" name="Pid" disabled ng-model="formDataPtr.MasterVariant.Pid"
                 />
             </div>
         </div>

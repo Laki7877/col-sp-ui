@@ -8,22 +8,31 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         // TO DO: PASS IN
         var MAX_FILESIZE = (options.maxImageUploadSize || 5000000)
         var QUEUE_LIMIT = (options.maxImageUploadQueueLimit || 20)
+        $scope.adminMode = options.adminMode;
 
         $scope.formData = {
             overview: {},
-            TheOneCardEarn: 1,
-            GiftWrap: 'No',
             Brand: {
                 id: null
             },
             MasterVariant: {
+                TheOneCardEarn: 1,
+                GiftWrap: 'No',
+                PrepareDay: '',
+                PrepareMon: '',
+                PrepareTue: '',
+                PrepareWed: '',
+                PrepareThu: '',
+                PrepareFri: '',
+                PrepareSat: '',
+                PrepareSun: '',
                 DimensionUnit: 'MM',
                 WeightUnit: 'G',
                 StockType: 'Stock',
                 Images: [],
-                Installment: 'No'
+                Installment: 'No',
+                ShippingMethod: '1',
             },
-            ShippingMethod: '1',
             AttributeSet: {
                 AttributeSetTagMaps: []
             },
@@ -79,8 +88,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             BrandNameEn: 'Search by brand by name or Brand id...',
             disabled: true
         }]
-        
-         $scope.dataset.Brands = []
+
+        $scope.dataset.Brands = []
 
         $scope.enableVariation = function() {
             $scope.controlFlags.variation = 'enable'
@@ -114,13 +123,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
         $scope.$watch('formData.MasterVariant.OriginalPrice+formData.MasterVariant.SalePrice', function() {
             var form = $scope.addProductForm
-            if (form.MasterVariant_SalePrice) form.MasterVariant_SalePrice.$setValidity('min', true)
-            if (!form.MasterVariant_SalePrice) return
+            if (form.SalePrice) form.SalePrice.$setValidity('min', true)
+            if (!form.SalePrice) return
             if ($scope.formData.MasterVariant.SalePrice == '') return
 
             if (Number($scope.formData.MasterVariant.SalePrice) >= Number($scope.formData.MasterVariant.OriginalPrice)) {
-                if (form.MasterVariant_SalePrice) form.MasterVariant_SalePrice.$setValidity('min', false)
-                form.MasterVariant_SalePrice.$error['min'] = 'Sale Price must not exceed Original Price'
+                if (form.SalePrice) form.SalePrice.$setValidity('min', false)
+                form.SalePrice.$error['min'] = 'Sale Price must not exceed Original Price'
             }
         })
 
@@ -250,15 +259,15 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 var requiredMissing = ('required' in $scope.addProductForm.$error)
                 if (Status == 'DF' && requiredMissing) {
                     var errorList = []
-                    if ($scope.addProductForm.MasterVariant_ProductNameEn.$invalid) {
+                    if ($scope.addProductForm.ProductNameEn.$invalid) {
                         errorList.push('Product Name (English)')
                     }
                     // Product Name (Thai), Product Name (English), and Sale Price,
-                    if ($scope.addProductForm.MasterVariant_ProductNameTh.$invalid) {
+                    if ($scope.addProductForm.ProductNameTh.$invalid) {
                         errorList.push('Product Name (Thai)')
                     }
 
-                    if ($scope.addProductForm.MasterVariant_SalePrice.$invalid) {
+                    if ($scope.addProductForm.SalePrice.$invalid) {
                         errorList.push('Sale Price')
                     }
                     errorList.push('Master Attributes')
@@ -322,15 +331,26 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                                 $scope.formData.ProductId = Number(productId)
                                 $scope.pageState.reset()
                                 watchVariantFactorChanges()
+
+                                LocalCategoryService.getAllByShopId($scope.formData.ShopId).then(function(data) {
+                                    $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data)
+                                })
+
                                 // ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
                             })
+
+
+
+
                     }, function(error) {
                         throw new KnownException('Unable to fetch product with id ' + productId)
                     })
 
             } else if ('catId' in viewBag) {
                 if (viewBag.catId == null) window.location.href = '/products/select'
-
+                LocalCategoryService.list().then(function(data) {
+                    $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data)
+                })
                 var catId = Number(viewBag.catId)
                 $productAdd.fill(catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb,
                     $scope.controlFlags, $scope.variationFactorIndices).then(function() {
@@ -342,10 +362,12 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 throw new KnownException('Invalid mode, viewBag garbage')
             }
 
+            //?ShopId=0120302131
             // Load Local Cat
-            LocalCategoryService.list().then(function(data) {
+            /*LocalCategoryService.list().then(function(data) {
                 $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data)
-            })
+            })*/
+
 
         }
 
@@ -511,7 +533,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
                         // Restore pointers
                         $scope.form = $scope.addProductForm
-                        $scope.formDataPtr = $scope.formData
+                        $scope.formDataPtr = $scope.formData.MasterVariant;
                         $scope.imagesPtr = $scope.formData.MasterVariant.Images
 
                     }, function() {
@@ -590,19 +612,19 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 embed360: false
             }
         }
-        
+
         /**
          * Refresh Brand Data Set used for searching 
          * @param  {String} q
          */
-        
+
         $scope.refresher.BrandLoading = false;
         $scope.refresher.Brands = function(q) {
             // TODO: too slow
             if (!q) return
-            
+
             $scope.refresher.BrandLoading = true;
-            
+
             Brand.getAll({
                 pageSize: 10,
                 searchText: q

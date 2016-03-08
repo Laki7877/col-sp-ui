@@ -52,7 +52,7 @@
 		                    </div>
 		                </td>
 		                <td class="column-text-ellipsis">
-		                    <a ng-href="products/{{row.ProductId}}">{{row.ProductNameEn}}</a>
+		                    <a ng-href="/admin/products/{{row.ProductId}}">{{row.ProductNameEn}}</a>
 		                </td>
 		                <td>{{row.Shop.ShopNameEn}}</td>
 		                <td>{{row.SalePrice | number: 2 }}</td>

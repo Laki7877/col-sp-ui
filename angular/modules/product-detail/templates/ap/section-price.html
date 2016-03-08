@@ -2,19 +2,19 @@
     <div class="form-section-header">
         <h2>Price</h2></div>
     <div class="form-section-content">
-        <div nc-template="common/input/form-group-with-label" nc-template-form="form.MasterVariant_SalePrice" nc-label="Sale Price"
-        nc-template-options-path="addProductForm/MasterVariant_SalePrice">
-            <input autocomplete="off" ng-pattern="/^\d+(\.\d{1,2})?$/" class="form-control width-field-normal" maxlength="20" name="MasterVariant_SalePrice"
+        <div nc-template="common/input/form-group-with-label" nc-template-form="form.SalePrice" nc-label="Sale Price"
+        nc-template-options-path="addProductForm/SalePrice">
+            <input autocomplete="off" ng-pattern="/^\d+(\.\d{1,2})?$/" class="form-control width-field-normal" maxlength="20" name="SalePrice"
             ng-model="formDataPtr.MasterVariant.SalePrice" required/>
         </div>
-        <div nc-template="common/input/form-group-with-label" nc-label="Original Price" nc-template-options-path="addProductForm/MasterVariant_OriginalPrice"
-        nc-template-form="form.MasterVariant_OriginalPrice">
-            <input autocomplete="off" class="form-control width-field-normal" name="MasterVariant_OriginalPrice" ng-pattern="/^\d+(\.\d{1,2})?$/" maxlength="20"
+        <div nc-template="common/input/form-group-with-label" nc-label="Original Price" nc-template-options-path="addProductForm/OriginalPrice"
+        nc-template-form="form.OriginalPrice">
+            <input autocomplete="off" class="form-control width-field-normal" name="OriginalPrice" ng-pattern="/^\d+(\.\d{1,2})?$/" maxlength="20"
             ng-model="formDataPtr.MasterVariant.OriginalPrice" />
         </div>
         
         <div nc-template="common/input/form-group-with-label" nc-label="Installment" nc-template-options-path="addProductForm/Installment"
-        nc-template-form="form.MasterVariant_Installment">
+        nc-template-form="form.Installment">
             <select ng-if="(formDataPtr.MasterVariant.SalePrice || 0) > 5000" class="form-control" ng-model="formDataPtr.MasterVariant.Installment">
                 <option>Yes</option>
                 <option selected>No</option>
