@@ -15916,3 +15916,14 @@ ng-transclude.has-error .form-control {
 .ui-select-multiple.ui-select-bootstrap input.ui-select-search {
   width: 100% !important;
 }
+
+/* Customize CK Editor */
+/* line 299, ../../../assets/screen.scss */
+.cke_toolbox .cke_button__cut, .cke_toolbox .cke_button__copy, .cke_toolbox .cke_button__paste, .cke_toolbox .cke_button__anchor {
+  display: none !important;
+}
+
+/* line 305, ../../../assets/screen.scss */
+.cke_toolbox .cke_toolbar:nth-child(6) .cke_toolbar_separator {
+  display: none;
+}
