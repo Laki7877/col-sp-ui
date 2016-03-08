@@ -12474,151 +12474,156 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 
 /* line 137, ../../../assets/_atomic.scss */
+.padding-top-6 {
+  padding-top: 6px;
+}
+
+/* line 141, ../../../assets/_atomic.scss */
 .padding-top-30 {
   padding-top: 30px;
 }
 
-/* line 141, ../../../assets/_atomic.scss */
+/* line 145, ../../../assets/_atomic.scss */
 .no-margin {
   margin: 0;
 }
 
-/* line 145, ../../../assets/_atomic.scss */
+/* line 149, ../../../assets/_atomic.scss */
 .no-padding {
   padding: 0;
 }
 
-/* line 149, ../../../assets/_atomic.scss */
+/* line 153, ../../../assets/_atomic.scss */
 .no-border {
   border: none;
 }
 
-/* line 153, ../../../assets/_atomic.scss */
+/* line 157, ../../../assets/_atomic.scss */
 .float-left {
   float: left;
 }
 
-/* line 157, ../../../assets/_atomic.scss */
+/* line 161, ../../../assets/_atomic.scss */
 .float-right {
   float: right;
 }
 
-/* line 161, ../../../assets/_atomic.scss */
+/* line 165, ../../../assets/_atomic.scss */
 .color-theme-light {
   color: #b4ddff;
 }
 
-/* line 165, ../../../assets/_atomic.scss */
+/* line 169, ../../../assets/_atomic.scss */
 .color-theme {
   color: #4899DD;
 }
 
-/* line 169, ../../../assets/_atomic.scss */
+/* line 173, ../../../assets/_atomic.scss */
 .color-grey {
   color: #BCC7D5;
 }
 
-/* line 173, ../../../assets/_atomic.scss */
+/* line 177, ../../../assets/_atomic.scss */
 .color-green {
   color: #33bb5b;
 }
 
-/* line 177, ../../../assets/_atomic.scss */
+/* line 181, ../../../assets/_atomic.scss */
 .color-dark-green {
   color: #68d485;
 }
 
-/* line 181, ../../../assets/_atomic.scss */
+/* line 185, ../../../assets/_atomic.scss */
 .color-red {
   color: #ec0000;
 }
 
-/* line 185, ../../../assets/_atomic.scss */
+/* line 189, ../../../assets/_atomic.scss */
 .color-dark-grey {
   color: #7B7F8F;
 }
 
-/* line 189, ../../../assets/_atomic.scss */
+/* line 193, ../../../assets/_atomic.scss */
 .color-yellow {
   color: #f5a623;
 }
 
-/* line 193, ../../../assets/_atomic.scss */
+/* line 197, ../../../assets/_atomic.scss */
 .color-black {
   color: #32343C;
 }
 
-/* line 197, ../../../assets/_atomic.scss */
+/* line 201, ../../../assets/_atomic.scss */
 .vertical-align-middle {
   vertical-align: middle;
 }
 
-/* line 201, ../../../assets/_atomic.scss */
+/* line 205, ../../../assets/_atomic.scss */
 .text-align-center {
   text-align: center;
 }
 
-/* line 209, ../../../assets/_atomic.scss */
+/* line 213, ../../../assets/_atomic.scss */
 .text-underline {
   text-decoration: underline;
 }
 
-/* line 213, ../../../assets/_atomic.scss */
+/* line 217, ../../../assets/_atomic.scss */
 .hide-component {
   display: none;
 }
 
-/* line 217, ../../../assets/_atomic.scss */
+/* line 221, ../../../assets/_atomic.scss */
 .display_inline_block {
   display: inline-block;
 }
 
-/* line 221, ../../../assets/_atomic.scss */
+/* line 225, ../../../assets/_atomic.scss */
 .font-size-12 {
   font-size: 12px;
 }
 
-/* line 225, ../../../assets/_atomic.scss */
+/* line 229, ../../../assets/_atomic.scss */
 .font-size-16 {
   font-size: 16px;
 }
 
-/* line 229, ../../../assets/_atomic.scss */
+/* line 233, ../../../assets/_atomic.scss */
 .font-size-18 {
   font-size: 18px;
 }
 
-/* line 233, ../../../assets/_atomic.scss */
+/* line 237, ../../../assets/_atomic.scss */
 .font-size-20, .icon-size-20 {
   font-size: 20px;
 }
 
-/* line 237, ../../../assets/_atomic.scss */
+/* line 241, ../../../assets/_atomic.scss */
 .font-size-27 {
   font-size: 27px;
 }
 
-/* line 241, ../../../assets/_atomic.scss */
+/* line 245, ../../../assets/_atomic.scss */
 .font-size-38 {
   font-size: 38px;
 }
 
-/* line 249, ../../../assets/_atomic.scss */
+/* line 253, ../../../assets/_atomic.scss */
 .margin-0 {
   margin: 0;
 }
 
-/* line 253, ../../../assets/_atomic.scss */
+/* line 257, ../../../assets/_atomic.scss */
 .font-weight-bold {
   font-weight: bold;
 }
 
-/* line 257, ../../../assets/_atomic.scss */
+/* line 261, ../../../assets/_atomic.scss */
 .opacity-1 {
   opacity: 1;
 }
 
-/* line 261, ../../../assets/_atomic.scss */
+/* line 265, ../../../assets/_atomic.scss */
 .width-100-percent {
   width: 100%;
 }

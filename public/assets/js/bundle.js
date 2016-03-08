@@ -3,7 +3,7 @@
 'use strict'
 // App Start here
 var angular = require('angular')
-var bulk = ({"controllers":(function () {var f = require("./controllers/index.js");f["abstractAdd"]=require("./controllers/abstractAdd.js");f["abstractAdvanceList"]=require("./controllers/abstractAdvanceList.js");f["abstractList"]=require("./controllers/abstractList.js");f["adminAccount"]=require("./controllers/adminAccount.js");f["adminAccountAdd"]=require("./controllers/adminAccountAdd.js");f["adminAttribute"]=require("./controllers/adminAttribute.js");f["adminAttributeAdd"]=require("./controllers/adminAttributeAdd.js");f["adminAttributeSet"]=require("./controllers/adminAttributeSet.js");f["adminAttributeSetAdd"]=require("./controllers/adminAttributeSetAdd.js");f["adminBrand"]=require("./controllers/adminBrand.js");f["adminBrandAdd"]=require("./controllers/adminBrandAdd.js");f["adminCategory"]=require("./controllers/adminCategory.js");f["adminCoupon"]=require("./controllers/adminCoupon.js");f["adminCouponAdd"]=require("./controllers/adminCouponAdd.js");f["adminOnTopCreditAdd"]=require("./controllers/adminOnTopCreditAdd.js");f["adminOnTopCreditList"]=require("./controllers/adminOnTopCreditList.js");f["adminProductApprovalList"]=require("./controllers/adminProductApprovalList.js");f["adminProductList"]=require("./controllers/adminProductList.js");f["adminRole"]=require("./controllers/adminRole.js");f["adminRoleAdd"]=require("./controllers/adminRoleAdd.js");f["adminShop"]=require("./controllers/adminShop.js");f["adminShopAdd"]=require("./controllers/adminShopAdd.js");f["adminShoptype"]=require("./controllers/adminShoptype.js");f["adminShoptypeAdd"]=require("./controllers/adminShoptypeAdd.js");f["index"]=require("./controllers/index.js");f["localCategory"]=require("./controllers/localCategory.js");f["login"]=require("./controllers/login.js");f["productAdd"]=require("./controllers/productAdd.js");f["productAddSelectCategory"]=require("./controllers/productAddSelectCategory.js");f["productExport"]=require("./controllers/productExport.js");f["productImageList"]=require("./controllers/productImageList.js");f["productImageManagement"]=require("./controllers/productImageManagement.js");f["productImport"]=require("./controllers/productImport.js");f["productList"]=require("./controllers/productList.js");f["productListLocalCategory"]=require("./controllers/productListLocalCategory.js");f["productReview"]=require("./controllers/productReview.js");f["root"]=require("./controllers/root.js");f["sellerAccount"]=require("./controllers/sellerAccount.js");f["sellerAccountAdd"]=require("./controllers/sellerAccountAdd.js");f["sellerInventoryList"]=require("./controllers/sellerInventoryList.js");f["sellerOnboarding"]=require("./controllers/sellerOnboarding.js");f["sellerRole"]=require("./controllers/sellerRole.js");f["sellerRoleAdd"]=require("./controllers/sellerRoleAdd.js");f["sellerShopSetting"]=require("./controllers/sellerShopSetting.js");f["test"]=require("./controllers/test.js");return f;})(),"services":({"OnTopCredit":require("./services/OnTopCredit.js"),"OnTopCreditService":require("./services/OnTopCreditService.js"),"Onboarding":require("./services/Onboarding.js"),"adminAccountService":require("./services/adminAccountService.js"),"adminPermissionService":require("./services/adminPermissionService.js"),"adminRoleService":require("./services/adminRoleService.js"),"adminShopService":require("./services/adminShopService.js"),"adminShoptypeService":require("./services/adminShoptypeService.js"),"alert":require("./services/alert.js"),"attribute":require("./services/attribute.js"),"attributeService":require("./services/attributeService.js"),"attributeSet":require("./services/attributeSet.js"),"attributeSetService":require("./services/attributeSetService.js"),"blocker":require("./services/blocker.js"),"brand":require("./services/brand.js"),"brandService":require("./services/brandService.js"),"category":require("./services/category.js"),"coupon":require("./services/coupon.js"),"credential":require("./services/credential.js"),"exceptionHandler":require("./services/exceptionHandler.js"),"fileService":require("./services/fileService.js"),"globalCategory":require("./services/globalCategory.js"),"globalCategoryService":require("./services/globalCategoryService.js"),"image":require("./services/image.js"),"imageService":require("./services/imageService.js"),"inventoryService":require("./services/inventoryService.js"),"knownException":require("./services/knownException.js"),"localCategory":require("./services/localCategory.js"),"localCategoryService":require("./services/localCategoryService.js"),"product":require("./services/product.js"),"productReviewService":require("./services/productReviewService.js"),"sellerAccountService":require("./services/sellerAccountService.js"),"sellerPermissionService":require("./services/sellerPermissionService.js"),"sellerRoleService":require("./services/sellerRoleService.js"),"shop":require("./services/shop.js"),"shopPermissionService":require("./services/shopPermissionService.js")}),"helpers":({"base64":require("./helpers/base64.js"),"common":require("./helpers/common.js"),"storage":require("./helpers/storage.js"),"util":require("./helpers/util.js"),"variantPair":require("./helpers/variantPair.js")}),"directives":({"ncTradableSelect":require("./directives/ncTradableSelect.js"),"ngCkeditor":require("./directives/ngCkeditor.js"),"ngDateBefore":require("./directives/ngDateBefore.js"),"ngDelegate":require("./directives/ngDelegate.js"),"ngMatch":require("./directives/ngMatch.js"),"ngMaxnumber":require("./directives/ngMaxnumber.js"),"ngMinnumber":require("./directives/ngMinnumber.js"),"ngPatternRestrict":require("./directives/ngPatternRestrict.js"),"ngPermission":require("./directives/ngPermission.js"),"ngSlideToggle":require("./directives/ngSlideToggle.js"),"ngTemplate":require("./directives/ngTemplate.js"),"popoverAny":require("./directives/popoverAny.js")}),"filters":({"capitalize":require("./filters/capitalize.js"),"exclude":require("./filters/exclude.js"),"excludeCategory":require("./filters/excludeCategory.js"),"html":require("./filters/html.js"),"importGuidelineExample":require("./filters/importGuidelineExample.js"),"leadingzero":require("./filters/leadingzero.js"),"ordinal":require("./filters/ordinal.js"),"slice":require("./filters/slice.js"),"truncate":require("./filters/truncate.js"),"truth":require("./filters/truth.js"),"variantValue":require("./filters/variantValue.js")}),"template-options":({"PromotionForm":require("./template-options/PromotionForm.js"),"addBrandForm":require("./template-options/addBrandForm.js"),"addCategoryForm":require("./template-options/addCategoryForm.js"),"addProductForm":require("./template-options/addProductForm.js"),"addShopAccountForm":require("./template-options/addShopAccountForm.js"),"couponForm":require("./template-options/couponForm.js"),"genericForm":require("./template-options/genericForm.js"),"productExport":require("./template-options/productExport.js"),"productImport":require("./template-options/productImport.js"),"searchForm":require("./template-options/searchForm.js"),"shopSettingForm":require("./template-options/shopSettingForm.js")})})
+var bulk = ({"controllers":(function () {var f = require("./controllers/index.js");f["abstractAdd"]=require("./controllers/abstractAdd.js");f["abstractAdvanceList"]=require("./controllers/abstractAdvanceList.js");f["abstractList"]=require("./controllers/abstractList.js");f["adminAccount"]=require("./controllers/adminAccount.js");f["adminAccountAdd"]=require("./controllers/adminAccountAdd.js");f["adminAttribute"]=require("./controllers/adminAttribute.js");f["adminAttributeAdd"]=require("./controllers/adminAttributeAdd.js");f["adminAttributeSet"]=require("./controllers/adminAttributeSet.js");f["adminAttributeSetAdd"]=require("./controllers/adminAttributeSetAdd.js");f["adminBrand"]=require("./controllers/adminBrand.js");f["adminBrandAdd"]=require("./controllers/adminBrandAdd.js");f["adminCategory"]=require("./controllers/adminCategory.js");f["adminCoupon"]=require("./controllers/adminCoupon.js");f["adminCouponAdd"]=require("./controllers/adminCouponAdd.js");f["adminOnTopCreditAdd"]=require("./controllers/adminOnTopCreditAdd.js");f["adminOnTopCreditList"]=require("./controllers/adminOnTopCreditList.js");f["adminProductApprovalList"]=require("./controllers/adminProductApprovalList.js");f["adminProductList"]=require("./controllers/adminProductList.js");f["adminRole"]=require("./controllers/adminRole.js");f["adminRoleAdd"]=require("./controllers/adminRoleAdd.js");f["adminShop"]=require("./controllers/adminShop.js");f["adminShopAdd"]=require("./controllers/adminShopAdd.js");f["adminShoptype"]=require("./controllers/adminShoptype.js");f["adminShoptypeAdd"]=require("./controllers/adminShoptypeAdd.js");f["index"]=require("./controllers/index.js");f["localCategory"]=require("./controllers/localCategory.js");f["login"]=require("./controllers/login.js");f["productAdd"]=require("./controllers/productAdd.js");f["productAddSelectCategory"]=require("./controllers/productAddSelectCategory.js");f["productExport"]=require("./controllers/productExport.js");f["productImageList"]=require("./controllers/productImageList.js");f["productImageManagement"]=require("./controllers/productImageManagement.js");f["productImport"]=require("./controllers/productImport.js");f["productList"]=require("./controllers/productList.js");f["productListLocalCategory"]=require("./controllers/productListLocalCategory.js");f["productReview"]=require("./controllers/productReview.js");f["root"]=require("./controllers/root.js");f["sellerAccount"]=require("./controllers/sellerAccount.js");f["sellerAccountAdd"]=require("./controllers/sellerAccountAdd.js");f["sellerInventoryList"]=require("./controllers/sellerInventoryList.js");f["sellerOnboarding"]=require("./controllers/sellerOnboarding.js");f["sellerRole"]=require("./controllers/sellerRole.js");f["sellerRoleAdd"]=require("./controllers/sellerRoleAdd.js");f["sellerShopSetting"]=require("./controllers/sellerShopSetting.js");f["test"]=require("./controllers/test.js");return f;})(),"services":({"OnTopCredit":require("./services/OnTopCredit.js"),"OnTopCreditService":require("./services/OnTopCreditService.js"),"Onboarding":require("./services/Onboarding.js"),"adminAccountService":require("./services/adminAccountService.js"),"adminPermissionService":require("./services/adminPermissionService.js"),"adminRoleService":require("./services/adminRoleService.js"),"adminShopService":require("./services/adminShopService.js"),"adminShoptypeService":require("./services/adminShoptypeService.js"),"alert":require("./services/alert.js"),"attribute":require("./services/attribute.js"),"attributeService":require("./services/attributeService.js"),"attributeSet":require("./services/attributeSet.js"),"attributeSetService":require("./services/attributeSetService.js"),"blocker":require("./services/blocker.js"),"brand":require("./services/brand.js"),"brandService":require("./services/brandService.js"),"category":require("./services/category.js"),"coupon":require("./services/coupon.js"),"credential":require("./services/credential.js"),"exceptionHandler":require("./services/exceptionHandler.js"),"fileService":require("./services/fileService.js"),"globalCategory":require("./services/globalCategory.js"),"globalCategoryService":require("./services/globalCategoryService.js"),"image":require("./services/image.js"),"imageService":require("./services/imageService.js"),"inventoryService":require("./services/inventoryService.js"),"knownException":require("./services/knownException.js"),"localCategory":require("./services/localCategory.js"),"localCategoryService":require("./services/localCategoryService.js"),"product":require("./services/product.js"),"productReviewService":require("./services/productReviewService.js"),"sellerAccountService":require("./services/sellerAccountService.js"),"sellerPermissionService":require("./services/sellerPermissionService.js"),"sellerRoleService":require("./services/sellerRoleService.js"),"shop":require("./services/shop.js"),"shopPermissionService":require("./services/shopPermissionService.js")}),"helpers":({"base64":require("./helpers/base64.js"),"common":require("./helpers/common.js"),"storage":require("./helpers/storage.js"),"util":require("./helpers/util.js"),"variantPair":require("./helpers/variantPair.js")}),"directives":({"ncTradableSelect":require("./directives/ncTradableSelect.js"),"ngCkeditor":require("./directives/ngCkeditor.js"),"ngDateBefore":require("./directives/ngDateBefore.js"),"ngDelegate":require("./directives/ngDelegate.js"),"ngMatch":require("./directives/ngMatch.js"),"ngMaxnumber":require("./directives/ngMaxnumber.js"),"ngMinnumber":require("./directives/ngMinnumber.js"),"ngPatternRestrict":require("./directives/ngPatternRestrict.js"),"ngPermission":require("./directives/ngPermission.js"),"ngSlideToggle":require("./directives/ngSlideToggle.js"),"ngTemplate":require("./directives/ngTemplate.js"),"popoverAny":require("./directives/popoverAny.js")}),"filters":({"capitalize":require("./filters/capitalize.js"),"exclude":require("./filters/exclude.js"),"excludeCategory":require("./filters/excludeCategory.js"),"html":require("./filters/html.js"),"importGuidelineExample":require("./filters/importGuidelineExample.js"),"leadingzero":require("./filters/leadingzero.js"),"ordinal":require("./filters/ordinal.js"),"slice":require("./filters/slice.js"),"truncate":require("./filters/truncate.js"),"truth":require("./filters/truth.js"),"variantValue":require("./filters/variantValue.js")}),"template-options":({"PromotionForm":require("./template-options/PromotionForm.js"),"addBrandForm":require("./template-options/addBrandForm.js"),"addCategoryForm":require("./template-options/addCategoryForm.js"),"addProductForm":require("./template-options/addProductForm.js"),"addShopAccountForm":require("./template-options/addShopAccountForm.js"),"couponForm":require("./template-options/couponForm.js"),"genericForm":require("./template-options/genericForm.js"),"productExport":require("./template-options/productExport.js"),"productImport":require("./template-options/productImport.js"),"searchForm":require("./template-options/searchForm.js"),"shopAppearanceForm":require("./template-options/shopAppearanceForm.js"),"shopSettingForm":require("./template-options/shopSettingForm.js")})})
 var config = require('./config')
 var route = require('./route')
 var template = require('./template')
@@ -181,7 +181,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('TestCtrl', controllers.test)
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./config":2,"./controllers/abstractAdd.js":3,"./controllers/abstractAdvanceList.js":4,"./controllers/abstractList.js":5,"./controllers/adminAccount.js":6,"./controllers/adminAccountAdd.js":7,"./controllers/adminAttribute.js":8,"./controllers/adminAttributeAdd.js":9,"./controllers/adminAttributeSet.js":10,"./controllers/adminAttributeSetAdd.js":11,"./controllers/adminBrand.js":12,"./controllers/adminBrandAdd.js":13,"./controllers/adminCategory.js":14,"./controllers/adminCoupon.js":15,"./controllers/adminCouponAdd.js":16,"./controllers/adminOnTopCreditAdd.js":17,"./controllers/adminOnTopCreditList.js":18,"./controllers/adminProductApprovalList.js":19,"./controllers/adminProductList.js":20,"./controllers/adminRole.js":21,"./controllers/adminRoleAdd.js":22,"./controllers/adminShop.js":23,"./controllers/adminShopAdd.js":24,"./controllers/adminShoptype.js":25,"./controllers/adminShoptypeAdd.js":26,"./controllers/index.js":27,"./controllers/localCategory.js":28,"./controllers/login.js":29,"./controllers/productAdd.js":30,"./controllers/productAddSelectCategory.js":31,"./controllers/productExport.js":32,"./controllers/productImageList.js":33,"./controllers/productImageManagement.js":34,"./controllers/productImport.js":35,"./controllers/productList.js":36,"./controllers/productListLocalCategory.js":37,"./controllers/productReview.js":38,"./controllers/root.js":39,"./controllers/sellerAccount.js":40,"./controllers/sellerAccountAdd.js":41,"./controllers/sellerInventoryList.js":42,"./controllers/sellerOnboarding.js":43,"./controllers/sellerRole.js":44,"./controllers/sellerRoleAdd.js":45,"./controllers/sellerShopSetting.js":46,"./controllers/test.js":47,"./directives/ncTradableSelect.js":48,"./directives/ngCkeditor.js":49,"./directives/ngDateBefore.js":50,"./directives/ngDelegate.js":51,"./directives/ngMatch.js":52,"./directives/ngMaxnumber.js":53,"./directives/ngMinnumber.js":54,"./directives/ngPatternRestrict.js":55,"./directives/ngPermission.js":56,"./directives/ngSlideToggle.js":57,"./directives/ngTemplate.js":58,"./directives/popoverAny.js":59,"./filters/capitalize.js":60,"./filters/exclude.js":61,"./filters/excludeCategory.js":62,"./filters/html.js":63,"./filters/importGuidelineExample.js":64,"./filters/leadingzero.js":65,"./filters/ordinal.js":66,"./filters/slice.js":67,"./filters/truncate.js":68,"./filters/truth.js":69,"./filters/variantValue.js":70,"./helpers/base64.js":71,"./helpers/common.js":72,"./helpers/storage.js":73,"./helpers/util.js":74,"./helpers/variantPair.js":75,"./modules/nc":102,"./modules/product-detail":107,"./route":109,"./services/OnTopCredit.js":110,"./services/OnTopCreditService.js":111,"./services/Onboarding.js":112,"./services/adminAccountService.js":113,"./services/adminPermissionService.js":114,"./services/adminRoleService.js":115,"./services/adminShopService.js":116,"./services/adminShoptypeService.js":117,"./services/alert.js":118,"./services/attribute.js":119,"./services/attributeService.js":120,"./services/attributeSet.js":121,"./services/attributeSetService.js":122,"./services/blocker.js":123,"./services/brand.js":124,"./services/brandService.js":125,"./services/category.js":126,"./services/coupon.js":127,"./services/credential.js":128,"./services/exceptionHandler.js":129,"./services/fileService.js":130,"./services/globalCategory.js":131,"./services/globalCategoryService.js":132,"./services/image.js":133,"./services/imageService.js":134,"./services/inventoryService.js":135,"./services/knownException.js":136,"./services/localCategory.js":137,"./services/localCategoryService.js":138,"./services/product.js":139,"./services/productReviewService.js":140,"./services/sellerAccountService.js":141,"./services/sellerPermissionService.js":142,"./services/sellerRoleService.js":143,"./services/shop.js":144,"./services/shopPermissionService.js":145,"./template":157,"./template-options/PromotionForm.js":146,"./template-options/addBrandForm.js":147,"./template-options/addCategoryForm.js":148,"./template-options/addProductForm.js":149,"./template-options/addShopAccountForm.js":150,"./template-options/couponForm.js":151,"./template-options/genericForm.js":152,"./template-options/productExport.js":153,"./template-options/productImport.js":154,"./template-options/searchForm.js":155,"./template-options/shopSettingForm.js":156,"angular":178,"angular-animate":159,"angular-base64":160,"angular-bootstrap-datetimepicker":162,"angular-chart.js":163,"angular-clipboard":165,"angular-cookies":167,"angular-file-upload":168,"angular-sanitize":170,"angular-scroll":172,"angular-ui-bootstrap":174,"angular-ui-tree":176,"lodash":180,"ng-file-upload":182,"ui-select/dist/select.js":183}],2:[function(require,module,exports){
+},{"./config":2,"./controllers/abstractAdd.js":3,"./controllers/abstractAdvanceList.js":4,"./controllers/abstractList.js":5,"./controllers/adminAccount.js":6,"./controllers/adminAccountAdd.js":7,"./controllers/adminAttribute.js":8,"./controllers/adminAttributeAdd.js":9,"./controllers/adminAttributeSet.js":10,"./controllers/adminAttributeSetAdd.js":11,"./controllers/adminBrand.js":12,"./controllers/adminBrandAdd.js":13,"./controllers/adminCategory.js":14,"./controllers/adminCoupon.js":15,"./controllers/adminCouponAdd.js":16,"./controllers/adminOnTopCreditAdd.js":17,"./controllers/adminOnTopCreditList.js":18,"./controllers/adminProductApprovalList.js":19,"./controllers/adminProductList.js":20,"./controllers/adminRole.js":21,"./controllers/adminRoleAdd.js":22,"./controllers/adminShop.js":23,"./controllers/adminShopAdd.js":24,"./controllers/adminShoptype.js":25,"./controllers/adminShoptypeAdd.js":26,"./controllers/index.js":27,"./controllers/localCategory.js":28,"./controllers/login.js":29,"./controllers/productAdd.js":30,"./controllers/productAddSelectCategory.js":31,"./controllers/productExport.js":32,"./controllers/productImageList.js":33,"./controllers/productImageManagement.js":34,"./controllers/productImport.js":35,"./controllers/productList.js":36,"./controllers/productListLocalCategory.js":37,"./controllers/productReview.js":38,"./controllers/root.js":39,"./controllers/sellerAccount.js":40,"./controllers/sellerAccountAdd.js":41,"./controllers/sellerInventoryList.js":42,"./controllers/sellerOnboarding.js":43,"./controllers/sellerRole.js":44,"./controllers/sellerRoleAdd.js":45,"./controllers/sellerShopSetting.js":46,"./controllers/test.js":47,"./directives/ncTradableSelect.js":48,"./directives/ngCkeditor.js":49,"./directives/ngDateBefore.js":50,"./directives/ngDelegate.js":51,"./directives/ngMatch.js":52,"./directives/ngMaxnumber.js":53,"./directives/ngMinnumber.js":54,"./directives/ngPatternRestrict.js":55,"./directives/ngPermission.js":56,"./directives/ngSlideToggle.js":57,"./directives/ngTemplate.js":58,"./directives/popoverAny.js":59,"./filters/capitalize.js":60,"./filters/exclude.js":61,"./filters/excludeCategory.js":62,"./filters/html.js":63,"./filters/importGuidelineExample.js":64,"./filters/leadingzero.js":65,"./filters/ordinal.js":66,"./filters/slice.js":67,"./filters/truncate.js":68,"./filters/truth.js":69,"./filters/variantValue.js":70,"./helpers/base64.js":71,"./helpers/common.js":72,"./helpers/storage.js":73,"./helpers/util.js":74,"./helpers/variantPair.js":75,"./modules/nc":102,"./modules/product-detail":107,"./route":109,"./services/OnTopCredit.js":110,"./services/OnTopCreditService.js":111,"./services/Onboarding.js":112,"./services/adminAccountService.js":113,"./services/adminPermissionService.js":114,"./services/adminRoleService.js":115,"./services/adminShopService.js":116,"./services/adminShoptypeService.js":117,"./services/alert.js":118,"./services/attribute.js":119,"./services/attributeService.js":120,"./services/attributeSet.js":121,"./services/attributeSetService.js":122,"./services/blocker.js":123,"./services/brand.js":124,"./services/brandService.js":125,"./services/category.js":126,"./services/coupon.js":127,"./services/credential.js":128,"./services/exceptionHandler.js":129,"./services/fileService.js":130,"./services/globalCategory.js":131,"./services/globalCategoryService.js":132,"./services/image.js":133,"./services/imageService.js":134,"./services/inventoryService.js":135,"./services/knownException.js":136,"./services/localCategory.js":137,"./services/localCategoryService.js":138,"./services/product.js":139,"./services/productReviewService.js":140,"./services/sellerAccountService.js":141,"./services/sellerPermissionService.js":142,"./services/sellerRoleService.js":143,"./services/shop.js":144,"./services/shopPermissionService.js":145,"./template":158,"./template-options/PromotionForm.js":146,"./template-options/addBrandForm.js":147,"./template-options/addCategoryForm.js":148,"./template-options/addProductForm.js":149,"./template-options/addShopAccountForm.js":150,"./template-options/couponForm.js":151,"./template-options/genericForm.js":152,"./template-options/productExport.js":153,"./template-options/productImport.js":154,"./template-options/searchForm.js":155,"./template-options/shopAppearanceForm.js":156,"./template-options/shopSettingForm.js":157,"angular":179,"angular-animate":160,"angular-base64":161,"angular-bootstrap-datetimepicker":163,"angular-chart.js":164,"angular-clipboard":166,"angular-cookies":168,"angular-file-upload":169,"angular-sanitize":171,"angular-scroll":173,"angular-ui-bootstrap":175,"angular-ui-tree":177,"lodash":181,"ng-file-upload":183,"ui-select/dist/select.js":184}],2:[function(require,module,exports){
 module.exports = {
 	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
@@ -2269,7 +2269,7 @@ module.exports = ["$scope", "$controller", function ($scope, $controller) {
     });
 
 }];
-},{"angular":178}],31:[function(require,module,exports){
+},{"angular":179}],31:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Category, GlobalCategory) {
@@ -2293,7 +2293,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 	});
 }];
 
-},{"angular":178}],32:[function(require,module,exports){
+},{"angular":179}],32:[function(require,module,exports){
 module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product, AttributeSet) {
   $scope.ProductList = [];
   $scope.SELECT_ALL = false;
@@ -3946,7 +3946,7 @@ module.exports = [function() {
 		}
 	};
 }];
-},{"angular":178}],52:[function(require,module,exports){
+},{"angular":179}],52:[function(require,module,exports){
 module.exports = ["$interpolate", function($interpolate) {
 	'ngInject';
 	return {
@@ -4426,7 +4426,7 @@ module.exports = ['$templateCache', '$compile', '$templateOptionsCache', 'KnownE
         }
     };
 }];
-},{"angular":178}],59:[function(require,module,exports){
+},{"angular":179}],59:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$document', '$window', function($document, $window) {
 	$window._globalPopoverAny = null;
@@ -4456,7 +4456,7 @@ module.exports = ['$document', '$window', function($document, $window) {
 		}
 	};
 }];
-},{"angular":178}],60:[function(require,module,exports){
+},{"angular":179}],60:[function(require,module,exports){
 module.exports = [function() {
   return function(input, scope) {
     if (input!=null)
@@ -4499,7 +4499,7 @@ module.exports = [function() {
      });
   }
 }];
-},{"angular":178}],62:[function(require,module,exports){
+},{"angular":179}],62:[function(require,module,exports){
 module.exports = [function() {
   
 var search = function(catId, tmp) {
@@ -4629,7 +4629,7 @@ module.exports = [function() {
   	return input;
   }
 }];
-},{"angular":178}],67:[function(require,module,exports){
+},{"angular":179}],67:[function(require,module,exports){
 /*
  * Get slice or subarray of array
  */
@@ -4691,7 +4691,7 @@ module.exports = [function() {
      return i;
   }
 }];
-},{"angular":178}],70:[function(require,module,exports){
+},{"angular":179}],70:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return function(value) {
@@ -5884,7 +5884,7 @@ angular.module('nc')
             };
         }]);
 
-},{"angular":178}],83:[function(require,module,exports){
+},{"angular":179}],83:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEmpty', ["$templateCache", function($templateCache) {
 		return {
@@ -6384,7 +6384,7 @@ angular.module('nc')
             }
         };
     }]);
-},{"angular":178}],90:[function(require,module,exports){
+},{"angular":179}],90:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncPagination', function() {
 		this.paginationSizes = [10,20,30];
@@ -6640,7 +6640,7 @@ angular.module('nc')
             };
         }]);
 
-},{"angular":178}],95:[function(require,module,exports){
+},{"angular":179}],95:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncTreeSelect', ["$interpolate", "$templateCache", function($interpolate, $templateCache) {
 		/**
@@ -7003,7 +7003,7 @@ angular.module('nc', ['ngSanitize', 'ui.bootstrap', 'ui.select', 'duScroll', 'an
 require('./template.js');
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./directives/ncAction.js":76,"./directives/ncAdvanceSearch.js":77,"./directives/ncAlert.js":78,"./directives/ncBindCompile.js":79,"./directives/ncBreadcrumpSelect.js":80,"./directives/ncBulk.js":81,"./directives/ncDateRange.js":82,"./directives/ncEmpty.js":83,"./directives/ncEye.js":84,"./directives/ncFilter.js":85,"./directives/ncImageGallery.js":86,"./directives/ncImageIntegrity.js":87,"./directives/ncLoading.js":88,"./directives/ncPageTitle.js":89,"./directives/ncPagination.js":90,"./directives/ncPermission.js":91,"./directives/ncSearch.js":92,"./directives/ncTable.js":93,"./directives/ncTemplate.js":94,"./directives/ncTreeSelect.js":95,"./directives/ncUiSelect.js":96,"./filters/compact.js":97,"./filters/date.js":98,"./filters/escapeHtml.js":99,"./filters/map.js":100,"./filters/replace.js":101,"./index.js":102,"./template.js":103,"angular":178,"angular-file-upload":168,"angular-sanitize":170,"angular-scroll":172,"angular-ui-bootstrap":174,"jquery":179,"lodash":180,"ui-select":184}],103:[function(require,module,exports){
+},{"./directives/ncAction.js":76,"./directives/ncAdvanceSearch.js":77,"./directives/ncAlert.js":78,"./directives/ncBindCompile.js":79,"./directives/ncBreadcrumpSelect.js":80,"./directives/ncBulk.js":81,"./directives/ncDateRange.js":82,"./directives/ncEmpty.js":83,"./directives/ncEye.js":84,"./directives/ncFilter.js":85,"./directives/ncImageGallery.js":86,"./directives/ncImageIntegrity.js":87,"./directives/ncLoading.js":88,"./directives/ncPageTitle.js":89,"./directives/ncPagination.js":90,"./directives/ncPermission.js":91,"./directives/ncSearch.js":92,"./directives/ncTable.js":93,"./directives/ncTemplate.js":94,"./directives/ncTreeSelect.js":95,"./directives/ncUiSelect.js":96,"./filters/compact.js":97,"./filters/date.js":98,"./filters/escapeHtml.js":99,"./filters/map.js":100,"./filters/replace.js":101,"./index.js":102,"./template.js":103,"angular":179,"angular-file-upload":169,"angular-sanitize":171,"angular-scroll":173,"angular-ui-bootstrap":175,"jquery":180,"lodash":181,"ui-select":185}],103:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -7829,7 +7829,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     }])
 
-},{"angular":178}],105:[function(require,module,exports){
+},{"angular":179}],105:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
     factory('$productAdd', ["Product", "Brand", "AttributeSet", "ImageService", "GlobalCategory", "$q", "Category", "util", function (Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category, util) {
@@ -8039,7 +8039,7 @@ angular.module('productDetail').
 
         return $productAdd;
     }]);
-},{"angular":178}],106:[function(require,module,exports){
+},{"angular":179}],106:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail')
     .directive('apComponent', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", "Product", "util", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse, Product, util) {
@@ -8062,7 +8062,7 @@ angular.module('productDetail')
         };
     }]);
 
-},{"angular":178}],107:[function(require,module,exports){
+},{"angular":179}],107:[function(require,module,exports){
 var angular = require('angular');
 
 
@@ -8070,7 +8070,7 @@ angular.module('productDetail', []);
 
 (function () {var f = require("./index.js");f["core"]=({"abstractProductAdd":require("./core/abstractProductAdd.js"),"productAddFactory":require("./core/productAddFactory.js")});f["directives"]=({"apComponent":require("./directives/apComponent.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
-},{"./core/abstractProductAdd.js":104,"./core/productAddFactory.js":105,"./directives/apComponent.js":106,"./index.js":107,"./template.js":108,"angular":178}],108:[function(require,module,exports){
+},{"./core/abstractProductAdd.js":104,"./core/productAddFactory.js":105,"./directives/apComponent.js":106,"./index.js":107,"./template.js":108,"angular":179}],108:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -8340,7 +8340,7 @@ module.exports = {
   seller: generateRouteArray(seller),
   admin: generateRouteArray(admin)
 }
-},{"lodash":180}],110:[function(require,module,exports){
+},{"lodash":181}],110:[function(require,module,exports){
 //Products Service
 module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
     function ($http, common, util, config, KnownException) {
@@ -8671,7 +8671,7 @@ module.exports = ['common', '$document', '$timeout', function(common, $document,
 		this.message = '';
 	};
 }];
-},{"angular":178}],119:[function(require,module,exports){
+},{"angular":179}],119:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common){
 	'use strict';
@@ -8917,7 +8917,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{"angular":178}],120:[function(require,module,exports){
+},{"angular":179}],120:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/Attributes');
@@ -9352,7 +9352,7 @@ module.exports = ['$q', 'common', function($q, common){
 	};
 	return service;
 }];
-},{"angular":178}],125:[function(require,module,exports){
+},{"angular":179}],125:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	service = common.Rest('/Brands');
@@ -9701,14 +9701,14 @@ module.exports = ['config', function(config) {
     return service;
 }];
 
-},{"angular":178}],127:[function(require,module,exports){
+},{"angular":179}],127:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common) {
 	var service = common.Rest('/Coupons');
 	return service;
 }];
 
-},{"angular":178}],128:[function(require,module,exports){
+},{"angular":179}],128:[function(require,module,exports){
 //TODO: maybe merge this with user service? (doesnt exist yet, but probably exists in poon's local)
 module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(common, $base64, storage, $q, $rootScope) {
     'use strict';
@@ -9798,7 +9798,7 @@ module.exports = ['$window', '$base64', 'config', function($window, $base64, con
     };
 }];
 
-},{"angular":178}],130:[function(require,module,exports){
+},{"angular":179}],130:[function(require,module,exports){
 module.exports = ["config", "storage", "FileUploader", function(config, storage, FileUploader) {
 	'ngInject';
 	var service = {};
@@ -10051,7 +10051,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	return service;
 }];
 
-},{"angular":178}],134:[function(require,module,exports){
+},{"angular":179}],134:[function(require,module,exports){
 //Image Service
 module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", "Upload", function($q, $http, common, storage, config, FileUploader, Upload) {
   'ngInject';
@@ -11736,6 +11736,19 @@ module.exports = {
 
 },{}],156:[function(require,module,exports){
 module.exports = {
+    
+    VideoLink: {
+        inputSize: 'normal',
+        tooltip: "Input number of stock before customer will get alerted when they visit your product page",
+        hint: {
+            show: true,
+            message: 'Example:https://www.youtube.com/watch?v=i79M4nKW1Ms'
+        }
+    }
+}
+
+},{}],157:[function(require,module,exports){
+module.exports = {
     GiftWrap: {
         tooltip: "Please select 'Available' if you can provide gift wrapping service to your customer"
     },
@@ -11799,7 +11812,7 @@ module.exports = {
     }
 }
 
-},{}],157:[function(require,module,exports){
+},{}],158:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -12076,7 +12089,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "<div class=modal-header><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Add Commission Rule</h3></div><div class=modal-body style=\"padding-top: 15px\"><div class=\"category-section column-4 ah-form\"><nc-tree-select nc-model=model nc-tree-select-tree=tree nc-tree-select-title=\"Global Category\"></nc-tree-select><div class=\"category-footer no-padding form-group\" style=\"margin: 30px 0\"><div class=float-right><span class=float-left>Commission (%)</span><form name=form class=width-field-normal><input class=form-control ng-class=\"{ 'has-error' : $root.isInvalid(form.Commission) }\" name=Commission ng-model=Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-maxnumber=100 ng-minnumber=\"0\"><div class=\"help-block color-red float-left\"><div ng-if=\"form.Commission.$error.maxnumber || form.Commission.$error.minnumber\">Please enter between 0% and 100%</div><div ng-if=form.Commission.$error.pattern>Only numbers and decimals (up to 2 digits) allowed</div></div></form><button class=\"btn btn-blue btn-width-xl float-left\" ng-click=select() ng-disabled=\"form.$invalid || _.isEmpty(Commission) || _.isEmpty(model)\">Set</button></div></div></div></div>"
   );
  }];
-},{}],158:[function(require,module,exports){
+},{}],159:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -16199,11 +16212,11 @@ angular.module('ngAnimate', [])
 
 })(window, window.angular);
 
-},{}],159:[function(require,module,exports){
+},{}],160:[function(require,module,exports){
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":158}],160:[function(require,module,exports){
+},{"./angular-animate":159}],161:[function(require,module,exports){
 (function() {
     'use strict';
 
@@ -16371,7 +16384,7 @@ module.exports = 'ngAnimate';
 
 })();
 
-},{}],161:[function(require,module,exports){
+},{}],162:[function(require,module,exports){
 //! moment.js
 //! version : 2.11.2
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -19978,7 +19991,7 @@ module.exports = 'ngAnimate';
     return _moment;
 
 }));
-},{}],162:[function(require,module,exports){
+},{}],163:[function(require,module,exports){
 /*globals define, jQuery, module, require */
 /*jslint vars:true */
 
@@ -20428,7 +20441,7 @@ module.exports = 'ngAnimate';
     }]);
 }));
 
-},{"angular":178,"moment":161}],163:[function(require,module,exports){
+},{"angular":179,"moment":162}],164:[function(require,module,exports){
 (function (factory) {
   'use strict';
   if (typeof exports === 'object') {
@@ -20792,7 +20805,7 @@ module.exports = 'ngAnimate';
   }
 }));
 
-},{"angular":178,"chart.js":164}],164:[function(require,module,exports){
+},{"angular":179,"chart.js":165}],165:[function(require,module,exports){
 /*!
  * Chart.js
  * http://chartjs.org/
@@ -24270,7 +24283,7 @@ module.exports = 'ngAnimate';
 
 
 }).call(this);
-},{}],165:[function(require,module,exports){
+},{}],166:[function(require,module,exports){
 (function (root, factory) {
     /* istanbul ignore next */
     if (typeof define === 'function' && define.amd) {
@@ -24348,7 +24361,7 @@ return angular.module('angular-clipboard', [])
     }]);
 
 }));
-},{"angular":178}],166:[function(require,module,exports){
+},{"angular":179}],167:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -24672,11 +24685,11 @@ angular.module('ngCookies').provider('$$cookieWriter', function $$CookieWriterPr
 
 })(window, window.angular);
 
-},{}],167:[function(require,module,exports){
+},{}],168:[function(require,module,exports){
 require('./angular-cookies');
 module.exports = 'ngCookies';
 
-},{"./angular-cookies":166}],168:[function(require,module,exports){
+},{"./angular-cookies":167}],169:[function(require,module,exports){
 /*
  angular-file-upload v2.2.0
  https://github.com/nervgh/angular-file-upload
@@ -24684,7 +24697,7 @@ module.exports = 'ngCookies';
 
 !function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["angular-file-upload"]=t():e["angular-file-upload"]=t()}(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var i=n[r]={exports:{},id:r,loaded:!1};return e[r].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=r(n(1)),o=r(n(2)),s=r(n(3)),a=r(n(4)),u=r(n(5)),l=r(n(6)),c=r(n(7)),f=r(n(8)),p=r(n(9)),d=r(n(10)),v=r(n(11)),h=r(n(12));angular.module(i.name,[]).value("fileUploaderOptions",o).factory("FileUploader",s).factory("FileLikeObject",a).factory("FileItem",u).factory("FileDirective",l).factory("FileSelect",c).factory("FileDrop",f).factory("FileOver",p).directive("nvFileSelect",d).directive("nvFileDrop",v).directive("nvFileOver",h).run(["FileUploader","FileLikeObject","FileItem","FileDirective","FileSelect","FileDrop","FileOver",function(e,t,n,r,i,o,s){e.FileLikeObject=t,e.FileItem=n,e.FileDirective=r,e.FileSelect=i,e.FileDrop=o,e.FileOver=s}])},function(e,t){e.exports={name:"angularFileUpload"}},function(e,t){"use strict";e.exports={url:"/",alias:"file",headers:{},queue:[],progress:0,autoUpload:!1,removeAfterUpload:!1,method:"POST",filters:[],formData:[],queueLimit:Number.MAX_VALUE,withCredentials:!1}},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.forEach,l=angular.isObject,c=angular.isNumber,f=angular.isDefined,p=angular.isArray,d=angular.element;e.exports=function(e,t,n,r,v,h){var m=r.File,g=r.FormData,_=function(){function r(t){o(this,r);var n=s(e);a(this,n,t,{isUploading:!1,_nextIndex:0,_failFilterIndex:-1,_directives:{select:[],drop:[],over:[]}}),this.filters.unshift({name:"queueLimit",fn:this._queueLimitFilter}),this.filters.unshift({name:"folder",fn:this._folderFilter})}return i(r,{addToQueue:{value:function(e,t,n){var r=this,i=this.isArrayLikeObject(e)?e:[e],o=this._getFilters(n),s=this.queue.length,a=[];u(i,function(e){var n=new v(e);if(r._isValidFile(n,o,t)){var i=new h(r,e,t);a.push(i),r.queue.push(i),r._onAfterAddingFile(i)}else{var s=o[r._failFilterIndex];r._onWhenAddingFileFailed(n,s,t)}}),this.queue.length!==s&&(this._onAfterAddingAll(a),this.progress=this._getTotalProgress()),this._render(),this.autoUpload&&this.uploadAll()}},removeFromQueue:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t];n.isUploading&&n.cancel(),this.queue.splice(t,1),n._destroy(),this.progress=this._getTotalProgress()}},clearQueue:{value:function(){for(;this.queue.length;)this.queue[0].remove();this.progress=0}},uploadItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhrTransport":"_iframeTransport";n._prepareToUploading(),this.isUploading||(this.isUploading=!0,this[r](n))}},cancelItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhr":"_form";n&&n.isUploading&&n[r].abort()}},uploadAll:{value:function(){var e=this.getNotUploadedItems().filter(function(e){return!e.isUploading});e.length&&(u(e,function(e){return e._prepareToUploading()}),e[0].upload())}},cancelAll:{value:function(){var e=this.getNotUploadedItems();u(e,function(e){return e.cancel()})}},isFile:{value:function(e){return this.constructor.isFile(e)}},isFileLikeObject:{value:function(e){return this.constructor.isFileLikeObject(e)}},isArrayLikeObject:{value:function(e){return this.constructor.isArrayLikeObject(e)}},getIndexOfItem:{value:function(e){return c(e)?e:this.queue.indexOf(e)}},getNotUploadedItems:{value:function(){return this.queue.filter(function(e){return!e.isUploaded})}},getReadyItems:{value:function(){return this.queue.filter(function(e){return e.isReady&&!e.isUploading}).sort(function(e,t){return e.index-t.index})}},destroy:{value:function(){var e=this;u(this._directives,function(t){u(e._directives[t],function(e){e.destroy()})})}},onAfterAddingAll:{value:function(e){}},onAfterAddingFile:{value:function(e){}},onWhenAddingFileFailed:{value:function(e,t,n){}},onBeforeUploadItem:{value:function(e){}},onProgressItem:{value:function(e,t){}},onProgressAll:{value:function(e){}},onSuccessItem:{value:function(e,t,n,r){}},onErrorItem:{value:function(e,t,n,r){}},onCancelItem:{value:function(e,t,n,r){}},onCompleteItem:{value:function(e,t,n,r){}},onCompleteAll:{value:function(){}},_getTotalProgress:{value:function(e){if(this.removeAfterUpload)return e||0;var t=this.getNotUploadedItems().length,n=t?this.queue.length-t:this.queue.length,r=100/this.queue.length,i=(e||0)*r/100;return Math.round(n*r+i)}},_getFilters:{value:function(e){if(!e)return this.filters;if(p(e))return e;var t=e.match(/[^\s,]+/g);return this.filters.filter(function(e){return-1!==t.indexOf(e.name)})}},_render:{value:function(){t.$$phase||t.$apply()}},_folderFilter:{value:function(e){return!(!e.size&&!e.type)}},_queueLimitFilter:{value:function(){return this.queue.length<this.queueLimit}},_isValidFile:{value:function(e,t,n){var r=this;return this._failFilterIndex=-1,t.length?t.every(function(t){return r._failFilterIndex++,t.fn.call(r,e,n)}):!0}},_isSuccessCode:{value:function(e){return e>=200&&300>e||304===e}},_transformResponse:{value:function(e,t){var r=this._headersGetter(t);return u(n.defaults.transformResponse,function(t){e=t(e,r)}),e}},_parseHeaders:{value:function(e){var t,n,r,i={};return e?(u(e.split("\n"),function(e){r=e.indexOf(":"),t=e.slice(0,r).trim().toLowerCase(),n=e.slice(r+1).trim(),t&&(i[t]=i[t]?i[t]+", "+n:n)}),i):i}},_headersGetter:{value:function(e){return function(t){return t?e[t.toLowerCase()]||null:e}}},_xhrTransport:{value:function(e){var t=this,n=e._xhr=new XMLHttpRequest,r=new g;if(this._onBeforeUploadItem(e),u(e.formData,function(e){u(e,function(e,t){r.append(t,e)})}),"number"!=typeof e._file.size)throw new TypeError("The file specified is no longer valid");r.append(e.alias,e._file,e.file.name),n.upload.onprogress=function(n){var r=Math.round(n.lengthComputable?100*n.loaded/n.total:0);t._onProgressItem(e,r)},n.onload=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r),o=t._isSuccessCode(n.status)?"Success":"Error",s="_on"+o+"Item";t[s](e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onerror=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onErrorItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onabort=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onCancelItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.open(e.method,e.url,!0),n.withCredentials=e.withCredentials,u(e.headers,function(e,t){n.setRequestHeader(t,e)}),n.send(r),this._render()}},_iframeTransport:{value:function(e){var t=this,n=d('<form style="display: none;" />'),r=d('<iframe name="iframeTransport'+Date.now()+'">'),i=e._input;e._form&&e._form.replaceWith(i),e._form=n,this._onBeforeUploadItem(e),i.prop("name",e.alias),u(e.formData,function(e){u(e,function(e,t){var r=d('<input type="hidden" name="'+t+'" />');r.val(e),n.append(r)})}),n.prop({action:e.url,method:"POST",target:r.prop("name"),enctype:"multipart/form-data",encoding:"multipart/form-data"}),r.bind("load",function(){var n="",i=200;try{n=r[0].contentDocument.body.innerHTML}catch(o){i=500}var s={response:n,status:i,dummy:!0},a={},u=t._transformResponse(s.response,a);t._onSuccessItem(e,u,s.status,a),t._onCompleteItem(e,u,s.status,a)}),n.abort=function(){var o,s={status:0,dummy:!0},a={};r.unbind("load").prop("src","javascript:false;"),n.replaceWith(i),t._onCancelItem(e,o,s.status,a),t._onCompleteItem(e,o,s.status,a)},i.after(n),n.append(i).append(r),n[0].submit(),this._render()}},_onWhenAddingFileFailed:{value:function(e,t,n){this.onWhenAddingFileFailed(e,t,n)}},_onAfterAddingFile:{value:function(e){this.onAfterAddingFile(e)}},_onAfterAddingAll:{value:function(e){this.onAfterAddingAll(e)}},_onBeforeUploadItem:{value:function(e){e._onBeforeUpload(),this.onBeforeUploadItem(e)}},_onProgressItem:{value:function(e,t){var n=this._getTotalProgress(t);this.progress=n,e._onProgress(t),this.onProgressItem(e,t),this.onProgressAll(n),this._render()}},_onSuccessItem:{value:function(e,t,n,r){e._onSuccess(t,n,r),this.onSuccessItem(e,t,n,r)}},_onErrorItem:{value:function(e,t,n,r){e._onError(t,n,r),this.onErrorItem(e,t,n,r)}},_onCancelItem:{value:function(e,t,n,r){e._onCancel(t,n,r),this.onCancelItem(e,t,n,r)}},_onCompleteItem:{value:function(e,t,n,r){e._onComplete(t,n,r),this.onCompleteItem(e,t,n,r);var i=this.getReadyItems()[0];return this.isUploading=!1,f(i)?void i.upload():(this.onCompleteAll(),this.progress=this._getTotalProgress(),void this._render())}}},{isFile:{value:function(e){return m&&e instanceof m}},isFileLikeObject:{value:function(e){return e instanceof v}},isArrayLikeObject:{value:function(e){return l(e)&&"length"in e}},inherit:{value:function(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,e.super_=t}}}),r}();return _.prototype.isHTML5=!(!m||!g),_.isHTML5=_.prototype.isHTML5,_},e.exports.$inject=["fileUploaderOptions","$rootScope","$http","$window","FileLikeObject","FileItem"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.isElement,u=angular.isString;e.exports=function(){var e=function(){function e(t){o(this,e);var n=a(t),r=n?t.value:t,i=u(r)?"FakePath":"Object",s="_createFrom"+i;this[s](r)}return i(e,{_createFromFakePath:{value:function(e){this.lastModifiedDate=null,this.size=null,this.type="like/"+e.slice(e.lastIndexOf(".")+1).toLowerCase(),this.name=e.slice(e.lastIndexOf("/")+e.lastIndexOf("\\")+2)}},_createFromObject:{value:function(e){this.lastModifiedDate=s(e.lastModifiedDate),this.size=e.size,this.type=e.type,this.name=e.name}}}),e}();return e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.element,l=angular.isElement;e.exports=function(e,t){var n=function(){function n(e,r,i){o(this,n);var c=l(r),f=c?u(r):null,p=c?null:r;a(this,{url:e.url,alias:e.alias,headers:s(e.headers),formData:s(e.formData),removeAfterUpload:e.removeAfterUpload,withCredentials:e.withCredentials,method:e.method},i,{uploader:e,file:new t(r),isReady:!1,isUploading:!1,isUploaded:!1,isSuccess:!1,isCancel:!1,isError:!1,progress:0,index:null,_file:p,_input:f}),f&&this._replaceNode(f)}return i(n,{upload:{value:function(){try{this.uploader.uploadItem(this)}catch(e){this.uploader._onCompleteItem(this,"",0,[]),this.uploader._onErrorItem(this,"",0,[])}}},cancel:{value:function(){this.uploader.cancelItem(this)}},remove:{value:function(){this.uploader.removeFromQueue(this)}},onBeforeUpload:{value:function(){}},onProgress:{value:function(e){}},onSuccess:{value:function(e,t,n){}},onError:{value:function(e,t,n){}},onCancel:{value:function(e,t,n){}},onComplete:{value:function(e,t,n){}},_onBeforeUpload:{value:function(){this.isReady=!0,this.isUploading=!0,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!1,this.isError=!1,this.progress=0,this.onBeforeUpload()}},_onProgress:{value:function(e){this.progress=e,this.onProgress(e)}},_onSuccess:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!0,this.isCancel=!1,this.isError=!1,this.progress=100,this.index=null,this.onSuccess(e,t,n)}},_onError:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!1,this.isCancel=!1,this.isError=!0,this.progress=0,this.index=null,this.onError(e,t,n)}},_onCancel:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!0,this.isError=!1,this.progress=0,this.index=null,this.onCancel(e,t,n)}},_onComplete:{value:function(e,t,n){this.onComplete(e,t,n),this.removeAfterUpload&&this.remove()}},_destroy:{value:function(){this._input&&this._input.remove(),this._form&&this._form.remove(),delete this._form,delete this._input}},_prepareToUploading:{value:function(){this.index=this.index||++this.uploader._nextIndex,this.isReady=!0}},_replaceNode:{value:function(t){var n=e(t.clone())(t.scope());n.prop("value",null),t.css("display","none"),t.after(n)}}}),n}();return n},e.exports.$inject=["$compile","FileLikeObject"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.extend);e.exports=function(){var e=function(){function e(t){o(this,e),s(this,t),this.uploader._directives[this.prop].push(this),this._saveLinks(),this.bind()}return i(e,{bind:{value:function(){for(var e in this.events){var t=this.events[e];this.element.bind(e,this[t])}}},unbind:{value:function(){for(var e in this.events)this.element.unbind(e,this.events[e])}},destroy:{value:function(){var e=this.uploader._directives[this.prop].indexOf(this);this.uploader._directives[this.prop].splice(e,1),this.unbind()}},_saveLinks:{value:function(){for(var e in this.events){var t=this.events[e];this[t]=this[t].bind(this)}}}}),e}();return e.prototype.events={},e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",change:"onChange"},prop:"select"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n),this.uploader.isHTML5||this.element.removeAttr("multiple"),this.element.prop("value",null)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},isEmptyAfterSelection:{value:function(){return!!this.element.attr("multiple")}},onChange:{value:function(){var e=this.uploader.isHTML5?this.element[0].files:this.element[0],t=this.getOptions(),n=this.getFilters();this.uploader.isHTML5||this.destroy(),this.uploader.addToQueue(e,t,n),this.isEmptyAfterSelection()&&(this.element.prop("value",null),this.element.replaceWith(this.element=this.element.clone(!0)))}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function c(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:c(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend),l=angular.forEach;e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",drop:"onDrop",dragover:"onDragOver",dragleave:"onDragLeave"},prop:"drop"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},onDrop:{value:function(e){var t=this._getTransfer(e);if(t){var n=this.getOptions(),r=this.getFilters();this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this),this.uploader.addToQueue(t.files,n,r)}}},onDragOver:{value:function(e){var t=this._getTransfer(e);this._haveFiles(t.types)&&(t.dropEffect="copy",this._preventAndStop(e),l(this.uploader._directives.over,this._addOverClass,this))}},onDragLeave:{value:function(e){e.currentTarget!==this.element[0]&&(this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this))}},_getTransfer:{value:function(e){return e.dataTransfer?e.dataTransfer:e.originalEvent.dataTransfer}},_preventAndStop:{value:function(e){e.preventDefault(),e.stopPropagation()}},_haveFiles:{value:function(e){return e?e.indexOf?-1!==e.indexOf("Files"):e.contains?e.contains("Files"):!1:!1}},_addOverClass:{value:function(e){e.addOverClass()}},_removeOverClass:{value:function(e){e.removeOverClass()}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy"},prop:"over",overClass:"nv-file-over"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{addOverClass:{value:function(){this.element.addClass(this.getOverClass())}},removeOverClass:{value:function(){this.element.removeClass(this.getOverClass())}},getOverClass:{value:function(){return this.overClass}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}},e.exports.$inject=["$parse","FileUploader","FileSelect"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');if(s.isHTML5){var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}}},e.exports.$inject=["$parse","FileUploader","FileDrop"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t){return{link:function(n,r,i){var o=n.$eval(i.uploader);if(!(o instanceof e))throw new TypeError('"Uploader" must be an instance of FileUploader');var s=new t({uploader:o,element:r});s.getOverClass=function(){return i.overClass||s.overClass}}}},e.exports.$inject=["FileUploader","FileOver"]}])});
 
-},{}],169:[function(require,module,exports){
+},{}],170:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -25403,11 +25416,11 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 })(window, window.angular);
 
-},{}],170:[function(require,module,exports){
+},{}],171:[function(require,module,exports){
 require('./angular-sanitize');
 module.exports = 'ngSanitize';
 
-},{"./angular-sanitize":169}],171:[function(require,module,exports){
+},{"./angular-sanitize":170}],172:[function(require,module,exports){
 /**
   * x is a value between 0 and 1, indicating where in the animation you are.
   */
@@ -26036,13 +26049,13 @@ angular.module('duScroll.scrollspy', ['duScroll.spyAPI'])
   };
 }]);
 
-},{}],172:[function(require,module,exports){
+},{}],173:[function(require,module,exports){
 require('angular');
 require('./angular-scroll');
 
 module.exports = 'duScroll';
 
-},{"./angular-scroll":171,"angular":178}],173:[function(require,module,exports){
+},{"./angular-scroll":172,"angular":179}],174:[function(require,module,exports){
 /*
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
@@ -33405,12 +33418,12 @@ angular.module('ui.bootstrap.datepicker').run(function() {!angular.$$csp().noInl
 angular.module('ui.bootstrap.tooltip').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow,[uib-popover-popup].popover.top-left > .arrow,[uib-popover-popup].popover.top-right > .arrow,[uib-popover-popup].popover.bottom-left > .arrow,[uib-popover-popup].popover.bottom-right > .arrow,[uib-popover-popup].popover.left-top > .arrow,[uib-popover-popup].popover.left-bottom > .arrow,[uib-popover-popup].popover.right-top > .arrow,[uib-popover-popup].popover.right-bottom > .arrow{top:auto;bottom:auto;left:auto;right:auto;margin:0;}[uib-popover-popup].popover,[uib-popover-template-popup].popover{display:block !important;}</style>'); });
 angular.module('ui.bootstrap.timepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-time input{width:50px;}</style>'); });
 angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); });
-},{}],174:[function(require,module,exports){
+},{}],175:[function(require,module,exports){
 require('./dist/ui-bootstrap-tpls');
 
 module.exports = 'ui.bootstrap';
 
-},{"./dist/ui-bootstrap-tpls":173}],175:[function(require,module,exports){
+},{"./dist/ui-bootstrap-tpls":174}],176:[function(require,module,exports){
 /**
  * @license Angular UI Tree v2.14.0
  * (c) 2010-2015. https://github.com/angular-ui-tree/angular-ui-tree
@@ -34910,11 +34923,11 @@ module.exports = 'ui.bootstrap';
 
 })();
 
-},{}],176:[function(require,module,exports){
+},{}],177:[function(require,module,exports){
 require('./dist/angular-ui-tree');
 module.exports = 'ui.tree';
 
-},{"./dist/angular-ui-tree":175}],177:[function(require,module,exports){
+},{"./dist/angular-ui-tree":176}],178:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.9
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -64572,11 +64585,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],178:[function(require,module,exports){
+},{}],179:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":177}],179:[function(require,module,exports){
+},{"./angular":178}],180:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.1
  * http://jquery.com/
@@ -74409,7 +74422,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],180:[function(require,module,exports){
+},{}],181:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -89486,7 +89499,7 @@ return jQuery;
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],181:[function(require,module,exports){
+},{}],182:[function(require,module,exports){
 /**!
  * AngularJS file upload directives and services. Supoorts: file upload/drop/paste, resume, cancel/abort,
  * progress, resize, thumbnail, preview, validation and CORS
@@ -92265,10 +92278,10 @@ ngFileUpload.service('UploadExif', ['UploadResize', '$q', function (UploadResize
 }]);
 
 
-},{}],182:[function(require,module,exports){
+},{}],183:[function(require,module,exports){
 require('./dist/ng-file-upload-all');
 module.exports = 'ngFileUpload';
-},{"./dist/ng-file-upload-all":181}],183:[function(require,module,exports){
+},{"./dist/ng-file-upload-all":182}],184:[function(require,module,exports){
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
@@ -94299,8 +94312,8 @@ $templateCache.put("select2/match-multiple.tpl.html","<span class=\"ui-select-ma
 $templateCache.put("select2/match.tpl.html","<a class=\"select2-choice ui-select-match\" ng-class=\"{\'select2-default\': $select.isEmpty()}\" ng-click=\"$select.toggle($event)\" aria-label=\"{{ $select.baseTitle }} select\"><span ng-show=\"$select.isEmpty()\" class=\"select2-chosen\">{{$select.placeholder}}</span> <span ng-hide=\"$select.isEmpty()\" class=\"select2-chosen\" ng-transclude=\"\"></span> <abbr ng-if=\"$select.allowClear && !$select.isEmpty()\" class=\"select2-search-choice-close\" ng-click=\"$select.clear($event)\"></abbr> <span class=\"select2-arrow ui-select-toggle\"><b></b></span></a>");
 $templateCache.put("select2/select-multiple.tpl.html","<div class=\"ui-select-container ui-select-multiple select2 select2-container select2-container-multi\" ng-class=\"{\'select2-container-active select2-dropdown-open open\': $select.open, \'select2-container-disabled\': $select.disabled}\"><ul class=\"select2-choices\"><span class=\"ui-select-match\"></span><li class=\"select2-search-field\"><input type=\"text\" autocomplete=\"false\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" role=\"combobox\" aria-expanded=\"true\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-label=\"{{ $select.baseTitle }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"select2-input ui-select-search\" placeholder=\"{{$selectMultiple.getPlaceholder()}}\" ng-disabled=\"$select.disabled\" ng-hide=\"$select.disabled\" ng-model=\"$select.search\" ng-click=\"$select.activate()\" style=\"width: 34px;\" ondrop=\"return false;\"></li></ul><div class=\"ui-select-dropdown select2-drop select2-with-searchbox select2-drop-active\" ng-class=\"{\'select2-display-none\': !$select.open}\"><div class=\"ui-select-choices\"></div></div></div>");
 $templateCache.put("select2/select.tpl.html","<div class=\"ui-select-container select2 select2-container\" ng-class=\"{\'select2-container-active select2-dropdown-open open\': $select.open, \'select2-container-disabled\': $select.disabled, \'select2-container-active\': $select.focus, \'select2-allowclear\': $select.allowClear && !$select.isEmpty()}\"><div class=\"ui-select-match\"></div><div class=\"ui-select-dropdown select2-drop select2-with-searchbox select2-drop-active\" ng-class=\"{\'select2-display-none\': !$select.open}\"><div class=\"select2-search\" ng-show=\"$select.searchEnabled\"><input type=\"text\" autocomplete=\"false\" autocorrect=\"false\" autocapitalize=\"off\" spellcheck=\"false\" role=\"combobox\" aria-expanded=\"true\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-label=\"{{ $select.baseTitle }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"ui-select-search select2-input\" ng-model=\"$select.search\"></div><div class=\"ui-select-choices\"></div></div></div>");}]);
-},{}],184:[function(require,module,exports){
+},{}],185:[function(require,module,exports){
 require('./dist/select.js');
 module.exports = 'ui.select';
 
-},{"./dist/select.js":183}]},{},[1]);
+},{"./dist/select.js":184}]},{},[1]);
