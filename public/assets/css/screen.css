@@ -15050,17 +15050,7 @@ html, body {
 }
 
 /* More Style */
-/* line 184, ../../../assets/_global_category.scss */
-ol {
-  list-style: none;
-}
-
-/* line 187, ../../../assets/_global_category.scss */
-.btn {
-  margin-right: 8px;
-}
-
-/* line 191, ../../../assets/_global_category.scss */
+/* line 185, ../../../assets/_global_category.scss */
 .angular-ui-tree-handle {
   background: #f8faff;
   border: 1px solid #dae2ea;
@@ -15068,14 +15058,14 @@ ol {
   padding: 10px 10px;
 }
 
-/* line 198, ../../../assets/_global_category.scss */
+/* line 192, ../../../assets/_global_category.scss */
 .angular-ui-tree-handle:hover {
   color: #438eb9;
   background: #f4f6f7;
   border-color: #dce2e8;
 }
 
-/* line 204, ../../../assets/_global_category.scss */
+/* line 198, ../../../assets/_global_category.scss */
 .angular-ui-tree-placeholder {
   background: #f0f9ff;
   border: 2px dashed #bed2db;
@@ -15084,36 +15074,36 @@ ol {
   box-sizing: border-box;
 }
 
-/* line 212, ../../../assets/_global_category.scss */
+/* line 206, ../../../assets/_global_category.scss */
 tr.angular-ui-tree-empty {
   height: 100px;
 }
 
-/* line 216, ../../../assets/_global_category.scss */
+/* line 210, ../../../assets/_global_category.scss */
 .group-title {
   background-color: #687074 !important;
   color: #FFF !important;
 }
 
 /* --- Tree --- */
-/* line 223, ../../../assets/_global_category.scss */
+/* line 217, ../../../assets/_global_category.scss */
 .tree-node {
   border: 1px solid #dae2ea;
   background: #f8faff;
   color: #7c9eb2;
 }
 
-/* line 229, ../../../assets/_global_category.scss */
+/* line 223, ../../../assets/_global_category.scss */
 .nodrop {
   background-color: #f2dede;
 }
 
-/* line 233, ../../../assets/_global_category.scss */
+/* line 227, ../../../assets/_global_category.scss */
 .tree-node-content {
   margin: 10px;
 }
 
-/* line 236, ../../../assets/_global_category.scss */
+/* line 230, ../../../assets/_global_category.scss */
 .tree-handle {
   padding: 10px;
   background: #428bca;
@@ -15121,7 +15111,7 @@ tr.angular-ui-tree-empty {
   margin-right: 10px;
 }
 
-/* line 246, ../../../assets/_global_category.scss */
+/* line 240, ../../../assets/_global_category.scss */
 .angular-ui-tree-placeholder {
   background: #f0f9ff;
   border: 2px dashed #bed2db;
@@ -15131,22 +15121,22 @@ tr.angular-ui-tree-empty {
 }
 
 /*-- New Style --*/
-/* line 255, ../../../assets/_global_category.scss */
+/* line 249, ../../../assets/_global_category.scss */
 .angular-ui-tree {
   margin: 0px -10px;
 }
 
-/* line 258, ../../../assets/_global_category.scss */
+/* line 252, ../../../assets/_global_category.scss */
 .angular-ui-tree-nodes .angular-ui-tree-nodes {
   padding-left: 40px;
 }
 
-/* line 261, ../../../assets/_global_category.scss */
+/* line 255, ../../../assets/_global_category.scss */
 .angular-ui-tree-handle {
   padding: 5px 10px;
 }
 
-/* line 264, ../../../assets/_global_category.scss */
+/* line 258, ../../../assets/_global_category.scss */
 .category-column-header {
   margin-top: 30px;
   padding: 5px 10px 5px 10px;
@@ -15155,29 +15145,29 @@ tr.angular-ui-tree-empty {
   border-radius: 2px;
 }
 
-/* line 271, ../../../assets/_global_category.scss */
+/* line 265, ../../../assets/_global_category.scss */
 .category-column {
   text-align: center;
   width: 100px;
 }
 
-/* line 275, ../../../assets/_global_category.scss */
+/* line 269, ../../../assets/_global_category.scss */
 .action-gear {
   width: 40px;
 }
 
-/* line 278, ../../../assets/_global_category.scss */
+/* line 272, ../../../assets/_global_category.scss */
 .btn-collapse {
   color: #4891d2;
   margin-right: 3px;
 }
 
-/* line 282, ../../../assets/_global_category.scss */
+/* line 276, ../../../assets/_global_category.scss */
 .btn-collapse:hover {
   color: #4891d2;
 }
 
-/* line 285, ../../../assets/_global_category.scss */
+/* line 279, ../../../assets/_global_category.scss */
 .tree-node {
   font-weight: normal;
   border: 1px solid #EDF2F9;
@@ -15186,17 +15176,17 @@ tr.angular-ui-tree-empty {
   color: #32343C;
 }
 
-/* line 292, ../../../assets/_global_category.scss */
+/* line 286, ../../../assets/_global_category.scss */
 .tree-node-content {
   margin: 5px 10px;
 }
 
-/* line 295, ../../../assets/_global_category.scss */
+/* line 289, ../../../assets/_global_category.scss */
 .angular-ui-tree-drag {
   border: 0px !important;
 }
 
-/* line 298, ../../../assets/_global_category.scss */
+/* line 292, ../../../assets/_global_category.scss */
 .angular-ui-tree-drag .tree-node-content {
   margin: 0px;
 }
