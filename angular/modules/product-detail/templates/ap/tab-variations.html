@@ -14,7 +14,7 @@
                             variation cannot be disabled.
                             <strong>Please select attribute set before enabling variation.</strong>
                         </p>
-                        <button class="btn btn-width-xxl btn-blue margin-top-20" ng-disabled="!formData.AttributeSet.AttributeSetId" ng-click="enableVariation()">Enable Variation</button>
+                        <button class="btn btn-width-xxl btn-blue margin-top-20" ng-disabled="!formDataPtr.AttributeSet.AttributeSetId" ng-click="enableVariation()">Enable Variation</button>
                     </div>
                 </div>
             </div>
@@ -27,12 +27,11 @@
                     <h2>Variation Option</h2></div>
 
                 <!-- ng-if too long -->
-                <div class="form-section-content" 
-                ng-if="!(formData.AttributeSet && !formData.AttributeSet['AttributeSetId']) && controlFlags.variation == 'enable'">
+                <div class="form-section-content" ng-if="!(formDataPtr.AttributeSet && !formDataPtr.AttributeSet['AttributeSetId']) && controlFlags.variation == 'enable'">
                     <div class="form-group" ng-repeat="jth in variationFactorIndices.iterator" ng-show="(dataset.attributeOptions[0].options.length > 0) || (jth == 0)">
                         <div class="width-label">
                             <select class="form-control" ng-options="i as i.Attribute.AttributeNameEn
-								for i in formData.AttributeSet.AttributeSetMaps |
+								for i in formDataPtr.AttributeSet.AttributeSetMaps |
 								truth: 'Attribute.VariantStatus' |
 								exclude: dataset.attributeOptions[1 - jth].Attribute : 'AttributeId'
 								track by i.Attribute.AttributeId" ng-model="dataset.attributeOptions[jth]">
@@ -85,13 +84,13 @@
                         </a>
                     </div>
 
-                    <div class="form-group" ng-show="formData.Variants.length > 0">
+                    <div class="form-group" ng-show="formDataPtr.Variants.length > 0">
                         <div class="width-label">
                             <label class="control-label">Default Variant</label>
                         </div>
                         <div class="width-field-normal">
                             <div class="ah-select2-dropdown">
-                                <select ng-model="formData.DefaultVariant" class="form-control" ng-options="i as i.text for i in formData.Variants track by i.text"
+                                <select ng-model="formDataPtr.DefaultVariant" class="form-control" ng-options="i as i.text for i in formDataPtr.Variants track by i.text"
                                 required>
                                 </select>
                             </div>
@@ -101,14 +100,14 @@
                 </div>
             </div>
             <!-- end .form-section -->
-            <div class="form-section" ng-if="formData.AttributeSet && formData.Variants.length > 0" ng-show="controlFlags.variation == 'enable'">
-                <div class="form-section-header">Variant ({{ formData.Variants.length }})</div>
+            <div class="form-section" ng-if="formDataPtr.AttributeSet && formDataPtr.Variants.length > 0" ng-show="controlFlags.variation == 'enable'">
+                <div class="form-section-header">Variant ({{ formDataPtr.Variants.length }})</div>
                 <div class="form-section-content padding-left-30 padding-right-30">
                     <table class="table ah-table variation-table">
                         <thead>
                             <tr>
                                 <th class="column-variant">Variant</th>
-                                <th ng-if="formData.Variants.length > 0 && formData.Variants[0].Pid">PID</th>
+                                <th ng-if="formDataPtr.Variants.length > 0 && formDataPtr.Variants[0].Pid">PID</th>
                                 <th class="column-sku">SKU</th>
 
                                 <th class="column-sale-price">
@@ -122,11 +121,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="pair in formData.Variants track by $index">
+                            <tr ng-repeat="pair in formDataPtr.Variants track by $index">
                                 <td class="column-text-ellipsis" ng-class="{'opacity-50': !pair.Visibility}">
                                     {{ pair.text }}
                                 </td>
-                                <td ng-if="formData.Variants.length > 0 && formData.Variants[0].Pid">{{pair.Pid }}</td>
+                                <td ng-if="formDataPtr.Variants.length > 0 && formDataPtr.Variants[0].Pid">{{pair.Pid }}</td>
                                 <td ng-template="common/input/text-td" ng-template-options="{
                                         'error' : {
                                             'messages': {
@@ -184,8 +183,9 @@
                                     ng-disabled='!pair.Visibility' ng-pattern="/^[0-9]+$/" name="pair_Quantity{{$index}}"
                                     class="form-control" />
                                 </td>
-                                <!--$emit('openPairModal', pair, formData.Variants, $index)-->
-                                <td><a class="btn btn-white btn-width-xl" ng-disabled='!pair.Visibility' ng-click="openVariantDetail(pair, formData.Variants, $index)">More Detail</a></td>
+                                <!--$emit('openPairModal', pair, formDataPtr.Variants, $index)-->
+                                <td><a class="btn btn-white btn-width-xl" ng-disabled='!pair.Visibility' 
+                                ng-click="openVariantDetail(pair, formDataPtr.Variants, $index)">More Detail</a></td>
                                 <td>
                                     <a class="btn btn-white" ng-click='pair.Visibility = !pair.Visibility'>
                                         <span ng-if='pair.Visibility'>Hide</span>

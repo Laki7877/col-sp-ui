@@ -116,29 +116,58 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 			size: 'lg',
 			keyboard: false,
 			templateUrl: 'global_category/modal',
-			controller: function($scope, $uibModalInstance, $timeout, GlobalCategoryService, NcAlert, config, id, attributeSetOptions) {
+			controller: function($scope, $uibModalInstance, $timeout, GlobalCategoryService, NcAlert, config, id, attributeSetOptions, Product, ImageService) {
 				'ngInject';
 				$scope.$parent.modalScope = $scope;
 				$scope.alert = new NcAlert();
 				$scope.statusOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
 				$scope.attributeSetOptions = attributeSetOptions;
+				$scope.bannerUploader = ImageService.getUploaderFn('/GlobalCategoryImages');
 				$scope.formData = {};
 				$scope.saving = false;
 				$scope.loading = true;
+				$scope.products = [];
+				$scope.availableProducts = -1;
+				$scope.id = id;
 
 				if(id == 0) {
 					$scope.formData = GlobalCategoryService.generate();
 					$scope.loading = false;
 				} else {
+					//Check product count
+					Product.advanceList({
+						GlobalCategories: [{CategoryId: id}],
+						_limit: 1,
+					}).then(function(response) {
+						$scope.availableProducts = response.total;
+					});
+					//Load cat
 					GlobalCategoryService.get(id)
 						.then(function(data) {
-							$scope.formData = data;
+							$scope.formData = GlobalCategoryService.deserialize(data);
 						}, function(err) {
 							$scope.alert.error(common.getError(err));
 						}).finally(function() {
 							$scope.loading = false;
 						});
-				}
+				};
+				$scope.getFeatureProduct = function(text) {
+					Product.advanceList({
+						GlobalCategories: [{CategoryId: id}],
+						_limit: 8,
+						searchText: text
+					}).then(function(response) {
+						$scope.products = response.data;
+					});	
+				};
+				$scope.uploadBannerFail = function(e, response) {
+					if(e == 'onmaxsize') {
+						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+					}
+					else {
+						$scope.alert.error(common.getError(response.data));
+					}
+				};
 
 				$scope.$on('modal.closing', function(e, res, closeType) {
 					if(!closeType) {

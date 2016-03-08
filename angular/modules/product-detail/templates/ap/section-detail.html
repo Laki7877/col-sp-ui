@@ -12,20 +12,21 @@
                 <div class="ah-select2-dropdown">
 
                     <select ng-if="controlFlags.variation == 'enable'" class="form-control" disabled>
-                        <option disabled>{{ formData.AttributeSet.AttributeSetNameEn }}</option>
+                        <option disabled>{{ formDataPtr.AttributeSet.AttributeSetNameEn }}</option>
                     </select>
-                    
+
                     <!-- dont show if nothing is dataset. to choose from -->
-                    <ui-select ng-if="controlFlags.variation != 'enable'" ng-model="formData.AttributeSet" ng-show="dataset.AttributeSets.length > 0">
+                    <ui-select ng-if="controlFlags.variation != 'enable'" ng-model="formDataPtr.AttributeSet" ng-show="dataset.AttributeSets.length > 0">
                         <ui-select-match placeholder="Search Attribute Set">
                             <span ng-bind="$select.selected.AttributeSetNameEn"></span>
                             <span ng-show="!$select.selected.AttributeSetNameEn">- Select Attribute Set -</span>
                         </ui-select-match>
-                        <ui-select-choices repeat="item in (dataset.AttributeSets) | filter : $select.search track by item.AttributeSetId">
+                        <ui-select-choices group-by="'_group'" refresh="refresher.AttributeSets($select.search)" refresh-delay="1000" 
+                        repeat="item in (dataset.CombinedAttributeSets || dataset.AttributeSets) | filter : $select.search track by item.AttributeSetId">
                             <span ng-bind="item.AttributeSetNameEn"></span>
                         </ui-select-choices>
                     </ui-select>
-
+                    
 
                     <!-- if nothing is availalbe to pick -->
                     <select class="form-control" ng-if="dataset.AttributeSets.length == 0" disabled>
@@ -36,13 +37,13 @@
 
 
             </div>
-            <a class="like-text form-text" ng-if="formData.AttributeSet.AttributeSetId && controlFlags.variation != 'enable'" ng-click="formData.AttributeSet = {}">
+            <a class="like-text form-text" ng-if="formDataPtr.AttributeSet.AttributeSetId && controlFlags.variation != 'enable'" ng-click="formDataPtr.AttributeSet = {}">
                 <i class="fa fa-minus-circle color-theme"></i>
             </a>
         </div>
 
         <!-- for each attribute in attribute set -->
-        <div class="form-group" ng-repeat="amap in formData.AttributeSet.AttributeSetMaps">
+        <div class="form-group" ng-repeat="amap in formDataPtr.AttributeSet.AttributeSetMaps">
             <div class="width-label">
                 <label class="control-label" ng-class="{'required': amap.Attribute.Required}">
                     {{ amap.Attribute.AttributeNameEn }}
@@ -51,20 +52,20 @@
             <div ng-class="{'width-field-normal': !isHtmlInput(amap.Attribute.DataType), 'width-field-xxl': isHtmlInput(amap.Attribute.DataType)}">
 
                 <select ng-if="isListInput(amap.Attribute.DataType)" ng-required="amap.Attribute.Required && onPublishing" class="form-control"
-                ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" ng-class="{'has-error' : $root.isInvalid(addProductForm.AmapInput{{ $index }}) }"
+                ng-model="formDataPtr.MasterAttribute[amap.Attribute.AttributeId]" ng-class="{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }"
                 name="AmapInput{{$index}}" ng-options="item as item.AttributeValue.AttributeValueEn for item in amap.Attribute.AttributeValueMaps track by item.AttributeValueId">
                     <option disabled value="" selected>- Select option -</option>
                 </select>
 
                 <div ng-if="isHtmlInput(amap.Attribute.DataType)">
-                    <textarea ng-required="amap.Attribute.Required && onPublishing" ng-class="{'has-error' : $root.isInvalid(addProductForm.AmapInput{{ $index }}) }"
-                    ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" name="AmapInput{{$index}}" class="form-control"
+                    <textarea ng-required="amap.Attribute.Required && onPublishing" ng-class="{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }"
+                    ng-model="formDataPtr.MasterAttribute[amap.Attribute.AttributeId]" name="AmapInput{{$index}}" class="form-control"
                     ng-ckeditor="ckOptions"></textarea>
                 </div>
 
-                <input ng-if="isFreeTextInput(amap.Attribute.DataType)" ng-class="{'has-error' : $root.isInvalid(addProductForm.AmapInput{{ $index }}) }"
+                <input ng-if="isFreeTextInput(amap.Attribute.DataType)" ng-class="{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }"
                 ng-required="amap.Attribute.Required && onPublishing" type="text" class="form-control" name="AmapInput{{$index}}"
-                ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" />
+                ng-model="formDataPtr.MasterAttribute[amap.Attribute.AttributeId]" />
 
             </div>
         </div>

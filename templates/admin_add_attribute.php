@@ -158,19 +158,20 @@
                           <input name="ltChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['ltChoiceTh' + $index])}" maxlength="100" required/>
                         </div>
                         <img class="image-wrapper"
-                          style="margin-top:-4px;"
-                          ngf-src="choice.Image.src"
+                          style="cursor: pointer;margin-top:-4px;"
+                          ng-src="{{choice.Image.url}}"
+                          ng-click="preview(choice.Image.url)"
                           width="34" />
-                        <i uib-tooltip="Upload checkbox image"
+                        <i uib-tooltip="Upload dropdown image"
                           tooltip-placement="top"
                           tooltip-popup-delay="200"
                           tooltip-append-to-body="true"
                           ngf-select="upload($file, choice)"
                           ngf-accept="'.png,.jpg,.jpeg'"
-                          class="clickable fa fa-upload margin-left-10 color-dark-grey icon-size-20" ng-click="open(choice)" 
+                          class="clickable fa fa-upload margin-left-10 color-dark-grey icon-size-20" ng-click="open(choice)"
                           style="margin-top:6px;"
                           ></i>
-                        <i ng-if="$index > 0" class="clickable fa fa-trash margin-left-10 color-dark-grey icon-size-20" ng-click="formData.LT.AttributeValues.splice($index,1)" style="margin-top:6px;"></i>
+                        <i class="clickable fa fa-trash margin-left-10 color-dark-grey icon-size-20" ng-click="formData.LT.AttributeValues.splice($index,1)" style="margin-top:6px;"></i>
                       </div>
                     </div>
                   </div>
@@ -247,7 +248,7 @@
                         <div class="input-column input-xxl">
                           <input name="cbChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['cbChoiceTh' + $index])}" maxlength="100" required/>
                         </div>
-                        <i ng-if="$index > 0" class="clickable fa fa-trash margin-left-10 color-dark-grey icon-size-20" ng-click="formData.CB.AttributeValues.splice($index,1)" style="margin-top:6px;"></i>
+                        <i class="clickable fa fa-trash margin-left-10 color-dark-grey icon-size-20" ng-click="formData.CB.AttributeValues.splice($index,1)" style="margin-top:6px;"></i>
                       </div>
                     </div>
                   </div>

@@ -1,8 +1,30 @@
 //Image Service
-module.exports = function($q, $http, common, storage, config, FileUploader) {
+module.exports = function($q, $http, common, storage, config, FileUploader, Upload) {
   'ngInject';
   var service = {};
 
+  //Upload by url
+  service.upload = function(url, file, opts) {
+    var accessToken = storage.getSessionToken();
+    var options = {
+      url: config.REST_SERVICE_BASE_URL + url,
+      data: { file: file }
+    };
+    if(!_.isNil(accessToken)) {
+      options.headers = {
+        Authorization: 'Basic ' + accessToken
+      };
+    }
+    return Upload.upload(_.extend(options, opts));
+  };
+
+  service.getUploaderFn = function(url, opts) {
+    return {
+      upload: function(file) {
+        return service.upload(url, file, opts);
+      }
+    };
+  }
   /**
    * Get image uploader
    */

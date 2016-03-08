@@ -6,5 +6,8 @@ module.exports = {
 	BankAccountName: {
         inputSize: 'large',
         labelClass: 'required'
+	},
+	Commission: {
+		inputSize: 'large'
 	}
 }

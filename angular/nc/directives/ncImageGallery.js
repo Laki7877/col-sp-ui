@@ -1,30 +1,109 @@
 angular.module('nc')
-	.directive('ncImageBanner', function($uibModal, $templateCache, FileItem) {
+	.directive('ncImageBanner', function() {
 		return {
 			restrict: 'E',
+			scope: {
+				ncModel: '=',
+				onFail: '=',
+				uploader: '=',
+				options: '=?',
+				size: '@',
+				title: '@'
+			},
+			template: '<nc-image-block nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 8 images</li><li>Image ratio 16:9</li></ul></nc-image-block>',
+			link: function(scope) {
+				scope.options = _.defaults(scope.options,{
+					height: '144px',
+					width: '256px'
+				});
+			}
+		}
+	})
+	.directive('ncImageBlock', function($uibModal, $templateCache, FileItem, FileUploader) {
+		return {
+			restrict: 'E',
+			require: '?^^form',
 			replace: true,
+			transclude: true,
 			scope: {
 				images: '=ncModel',
-				onfail: '=ncImageBannerFail',
-				uploader: '=ncImageBannerUploader',
-				title: '=ncImageBannerTitle'
+				onfail: '=onFail', 
+				uploader: '=uploader',
+				options: '=?options',
+				size: '@size',
+				title: '@title'
 			},
 			template: $templateCache.get('common/ncImageBanner'),
-			link: function(scope) {
-				scope.upload = function(file) {
-					var obj = {};
-					scope.images.push(obj);
-					var f = new FileItem(scope.uploader, file, {
-						onSuccess: function(response) {
-							obj = response;
-						},
-						onError: function(response, status, headers) {
-							scope.onfail(response, status, headers);
-							_.remove(scope.images, function(n) {
-								return n === obj;
+			link: function(scope, element, attrs, form) {
+				var fileUploader = false;
+				scope.options = _.defaults(scope.options,{
+					height: '150px',
+					width: '150px'
+				});
+				scope.$watch('uploader', function(val) {
+					if(val instanceof FileUploader) {
+						fileUploader = true;
+					} else {
+						fileUploader = false;
+					}
+				});
+				scope.upload = function(files) {
+					if(!_.isNil(form) && !_.isNil(attrs.name)) {
+						form.$setDirty();
+					}
+					if(fileUploader) {
+						_.forEach(files, function(file) {
+							//max size
+							if(scope.images.length >= _.toInteger(scope.size)) {
+								scope.onfail('onmaxsize', scope.size);
+								return;
+							}
+							var obj = {
+								progress: 0
+							};
+							scope.images.push(obj);
+							var f = new FileItem(scope.uploader, file, {
+								onSuccess: function(response) {
+									_.extend(obj, response);
+								},
+								onError: function(response, status, headers) {
+									scope.onfail('onerror', response, status, headers);
+									_.remove(scope.images, function(n) {
+										return n === obj;
+									});
+								},
+								onProgress: function(progress) {
+									obj.progress = progress;
+								}
 							});
-						}
-					});
+							scope.uploader.queue.push(f);
+							f.upload();
+						});
+					} else {
+						//newer version
+						_.forEach(files, function(file) {
+							//max size
+							if(scope.images.length >= _.toInteger(scope.size)) {
+								scope.onfail('onmaxsize', scope.size);
+								return;
+							}
+							var obj = {
+								progress: 0
+							};
+							scope.images.push(obj);
+							scope.uploader.upload(file)
+								.then(function(response) {
+									_.extend(obj, response.data);
+								}, function(response) {
+									scope.onfail('onerror', response);
+									_.remove(scope.images, function(n) {
+										return n === obj;
+									});
+								}, function(evt) {
+            						obj.progress = _.parseInt(100.0 * evt.loaded / evt.total);
+								});
+						});
+					}
 				};
 				scope.call = function(image, index, action) {
 					if(!_.isNil(action.confirmation)) {
@@ -57,11 +136,23 @@ angular.module('nc')
 						});
 
 						modal.result.then(function() {
+							if(!_.isNil(form) && !_.isNil(attrs.name)) {
+								form.$setDirty();
+							}
 							action.fn(image, scope.images, index);
 						});
 					} else {
+						if(!_.isNil(form) && !_.isNil(attrs.name)) {
+							form.$setDirty();
+						}
 						action.fn(image, scope.images, index);
 					}
+				};
+				scope.getSrc = function(image) {
+					return image.url || null;
+				};
+				scope.getProgress = function(image) {
+					return image.progress || 0;
 				};
 				scope.actions = [
 					{
@@ -80,7 +171,7 @@ angular.module('nc')
 								}
 							});
 						},
-						icon: 'fa-zoom-in'
+						icon: 'fa-search-plus'
 					},
 					{
 						//Trash
@@ -99,10 +190,8 @@ angular.module('nc')
 					{
 						//Left
 						fn: function(item, array, index) {
-							//console.log(item, array, index);
 						    var to = index - 1;
 						    if (to < 0) return;
-
 						    var tmp = array[to];
 						    array[to] = item;
 						    array[index] = tmp;

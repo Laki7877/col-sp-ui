@@ -8,7 +8,11 @@
   </div>
   <div class="home_task_button">
     <div>
-      <button class="btn btn-white btn-width-xxl" <?=$disble_status?> type="button"><?=$button_text?></button>
+      <? if($type == 'launch'): ?>
+        <button class="btn btn-white btn-width-xxl" ng-click='launchShop()' ng-disabled='!checkBeforeLaunch' type="button"><?=$button_text?></button>            
+      <? else: ?>
+        <button class="btn btn-white btn-width-xxl" <?=$disble_status?> type="button"><?=$button_text?></button>
+      <? endif; ?>
     </div>
   </div>
 </div>
