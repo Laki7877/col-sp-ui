@@ -124,38 +124,10 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										placeholder="8"
 										/>
 									</div>
-									<!-- Commission -->
-									<div ng-template="common/input/text2"
-										ng-template-options="{
-										'label': 'Commission (%)',
-										'inputSize' : 'small',
-										'error' : {
-										'messages': {
-										'pattern': 'Only numbers and decimals (up to 2 digits) allowed',
-										'minnumber': 'Please enter between 0% and 100%',
-										'maxnumber': 'Please enter between 0% and 100%'
-										},
-										'show': $root.isInvalid(form.Commission),
-										'conditions' : form.Commission.$error
-										}
-										}">
-										<input
-										class="form-control"
-										name="Commission"
-										ng-model="formData.Commission"
-										ng-pattern="/^[\w]+(\.\w{0,2})?$/"
-										ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"
-										ng-class="{ 'has-error' : $root.isInvalid(form.Commission) }"
-										maxlength="20"
-										ng-maxnumber="100",
-										ng-minnumber="0"
-										/>
-									</div>
 									<div nc-template="common/input/form-group-with-label"
 										nc-label="Commission by Category">
 				                        <div class="width-field-normal" ng-repeat="item in formData.Commissions track by $index">
-				                        	<span class="form-text"><a ng-click="openCommissionSelector(item)">{{item.Commission}}% for {{item.NameEn}}</a>
-				                            </span>
+				                        	<span class="form-text"><a ng-click="openCommissionSelector(item)">{{item.Commission}}% for {{item.NameEn}}</a></span>
 				                            <i class="clickable color-dark-grey fa fa-trash margin-left-10" ng-click="formData.Commissions.splice($index, 1)"></i>
 				                        </div>
 				                        <div class="width-field-normal">
@@ -173,6 +145,12 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							<div class="form-section">
 								<div class="form-section-header"><h2>Financial Information</h2></div>
 								<div class="form-section-content">
+				                    <div nc-template="common/input/form-group-with-label"
+				                    	nc-template-form="form.BankName"
+				                    	nc-label="Bank Account Number"
+				                    	nc-template-options-path="addShopAccountForm/BankName">
+				                           <input class="form-control" name="BankName" type="text" ng-model="formData.BankAccountNumber" required/>
+				                    </div>
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.BankAccountNumber"
 				                    	nc-label="Bank Account Number"
