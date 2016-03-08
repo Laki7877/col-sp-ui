@@ -94,7 +94,7 @@
 		        <div class="form-section">
 		          <div class="form-section-header"><h2>Feature Products</h2></div>
 		          <div class="form-section-content">
-		            <div ng-if="availableProducts == 0">
+		            <div ng-if="availableProducts == 0  || id == 0">
 		              <div nc-template="common/input/form-group-with-label"
 		                nc-label="Feature Products">
 		                <span class="form-text">There are no products in this category</span>
