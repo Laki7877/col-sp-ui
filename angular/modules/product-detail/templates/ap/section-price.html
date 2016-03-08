@@ -17,10 +17,10 @@
         nc-template-form="form.MasterVariant_Installment">
             <select ng-if="(formDataPtr.MasterVariant.SalePrice || 0) > 5000" class="form-control" ng-model="formDataPtr.MasterVariant.Installment">
                 <option>Yes</option>
-                <option>No</option>
+                <option selected>No</option>
             </select>
             
-             <select disabled ng-if="(formDataPtr.MasterVariant.SalePrice || 0) <= 5000" class="form-control" ng-model="formDataPtr.MasterVariant.Installment">
+             <select disabled ng-if="(formDataPtr.MasterVariant.SalePrice || 0) <= 5000" class="form-control">
                  <option value="No" selected>Available when price is more than 5,000</option>
             </select>
         </div>
