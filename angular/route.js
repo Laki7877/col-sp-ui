@@ -91,19 +91,20 @@ var seller = {
 	'Account|fa-user': {
 		'User Accounts': '/accounts',
 		'User Roles': '/roles'
-	},
-	'Collection|fa-product-hunt': {
-		'View': '/collections',
-		'Add': '/collections/add',
-		'Category View|margin-top-30': '/collections/cat',
-	  	'Category Add': '/collections/catadd',
-	  	'Group View|margin-top-30': '/collections/cat',
-	  	'Group Add': '/collections/catadd',
-	},
-	'Buy 1 Get 1|fa-gift': {
-		'View': '/buy1get1',
-		'Add': '/buy1get1/add'
 	}
+	// ,
+	// 'Collection|fa-product-hunt': {
+	// 	'View': '/collections',
+	// 	'Add': '/collections/add',
+	// 	'Category View|margin-top-30': '/collections/cat',
+	//   	'Category Add': '/collections/catadd',
+	//   	'Group View|margin-top-30': '/collections/cat',
+	//   	'Group Add': '/collections/catadd',
+	// },
+	// 'Buy 1 Get 1|fa-gift': {
+	// 	'View': '/buy1get1',
+	// 	'Add': '/buy1get1/add'
+	// }
 };
 
 var admin = {
@@ -126,20 +127,19 @@ var admin = {
 		'Global Coupons': '/admin/coupons/admin',
 		'Seller Coupons': '/admin/coupons/seller'
 	},
-	// 'CMS Collections|fa-product-hunt': {
-	// 	'Static': '/admin/cms/static',
-	// 	'Collection': '/admin/cms/collection'
-	// },
 	'CMS|fa-product-hunt': {
-	 	'View All CMS': '/admin/cms',
-	 	'Create CMS Static': '/admin/cms/static',
-	 	'Create CMS Collection': '/admin/cms/collection'
+		'Collections Category': '/admin/cms/category',
+	 	'Collections': '/admin/cms/collection',	 	
+	 	'Collections Group': '/admin/cms/group'
 	},
 	'Reports|fa-line-chart': {
 		'View': '/admin/reports'
 	},
 	'Others|fa-sliders': {
 		'Newsletters': '/admin/newsletters'
+	},'Buy 1 Get 1|fa-gift': {
+		'View': '/buy1get1',
+		'Add': '/buy1get1/add'
 	}
 };
 

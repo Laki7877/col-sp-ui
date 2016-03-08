@@ -178,8 +178,19 @@ class AdminController extends Controller
 		return View::render('admin_cms_static');
 	}
 
+	public static function adminCMSCategory($params)
+	{
+		return View::render('admin_cms_collection');
+	}
+
 	public static function adminCMSCollection($params)
 	{
 		return View::render('admin_cms_collection');
 	}
+
+	public static function adminCMSGroup($params)
+	{
+		return View::render('admin_cms_collection');
+	}
+
 }
