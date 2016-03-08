@@ -79,8 +79,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 	<script src="/assets/libs/datepicker/js/bootstrap-datetimepicker.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/assets/libs/datepicker/css/bootstrap-datetimepicker.min.css">
 
-	<script src="/assets/libs/select2/js/select2.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/assets/libs/select2/css/select2.min.css">
+    <link rel="stylesheet" href="/assets/libs/select2/css/selectize.css">
 
 
 <?php $this->stop() ?>
