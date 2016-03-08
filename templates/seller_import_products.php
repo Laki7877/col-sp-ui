@@ -51,19 +51,32 @@
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
 					<div id="import-product-content-page">
-						<div class="row">
+						<div ng-if="!update" class="row">
 							<div class="col-xs-12">
 								<div class="form-section">
 									<div class="form-section-header"><h2>Getting Started</h2></div>
 									<div class="form-section-content">
-
 										<div class="form-group ">
 											<div class="width-label"><label class="control-label">Add Products Template</label></div>
 											<div class="button-size-large">
 												<a class="button-size-large btn btn-white btn-width-xl" data-toggle="modal" data-target="#modal-choose-template">Download Template</a>
 											</div>
 										</div>
-
+									</div>
+								</div>
+							</div>
+						</div>
+						<div ng-if="update" class="row">
+							<div class="col-xs-12">
+								<div class="form-section">
+									<div class="form-section-header"><h2>Getting Started</h2></div>
+									<div class="form-section-content">
+										<div class="form-group ">
+											<div class="width-label"><label class="control-label">If not already export</label></div>
+											<div class="button-size-large">
+												<a class="button-size-large btn btn-white btn-width-xl" href="/products/export">Export All Product</a>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>

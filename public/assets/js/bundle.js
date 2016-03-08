@@ -2718,11 +2718,13 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
     //Import new
     $scope.method = 'POST';
     $scope.title = 'Import - Add New Products'
-
+    $scope.update = false;
+    
     //Update only
     if(!_.isNil(update) && update) {
       $scope.method = 'PUT';
       $scope.title = 'Import - Update Products';
+      $scope.update = true;
     }
 
     $scope.uploader = FileService.getUploader('/ProductStages/Import', {
