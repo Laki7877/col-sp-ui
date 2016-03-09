@@ -14228,6 +14228,16 @@ form h6 {
   width: 25%;
 }
 
+/* line 2, ../../../assets/_image_preview.sass */
+.image_preview .image_radion_thumbnail {
+  padding-top: 25px;
+  margin-left: -20px;
+}
+/* line 6, ../../../assets/_image_preview.sass */
+.image_preview .label_width {
+  width: 200px;
+}
+
 /* line 2, ../../../assets/_inventory.scss */
 #inventory-tab-content .border_modal {
   border-bottom: solid 1px #BCC7D5;
@@ -14553,19 +14563,19 @@ form h6 {
   padding: 10px 0px 0px 0px;
 }
 
-/* line 34, ../../../assets/screen.scss */
+/* line 35, ../../../assets/screen.scss */
 body {
   overflow-y: scroll;
   overflow-x: auto;
 }
 
-/* line 39, ../../../assets/screen.scss */
+/* line 40, ../../../assets/screen.scss */
 html, body {
   height: 100%;
   min-height: 100%;
 }
 
-/* line 44, ../../../assets/screen.scss */
+/* line 45, ../../../assets/screen.scss */
 #wrapper {
   position: relative;
   display: block;
@@ -14573,13 +14583,13 @@ html, body {
   min-height: 100%;
 }
 
-/* line 51, ../../../assets/screen.scss */
+/* line 52, ../../../assets/screen.scss */
 #page-content-wrapper {
   margin-left: 180px;
   position: relative;
 }
 
-/* line 56, ../../../assets/screen.scss */
+/* line 57, ../../../assets/screen.scss */
 #page-body-wrapper {
   padding-top: 30px;
   padding-bottom: 30px;
@@ -15674,23 +15684,23 @@ tr.angular-ui-tree-empty {
 }
 
 /* Additional Code */
-/* line 71, ../../../assets/screen.scss */
+/* line 72, ../../../assets/screen.scss */
 .tradable-list .left-column {
   margin-left: 30px;
   float: left;
   width: 300px;
 }
-/* line 75, ../../../assets/screen.scss */
+/* line 76, ../../../assets/screen.scss */
 .tradable-list .left-column .search-box {
   height: 33px;
 }
-/* line 79, ../../../assets/screen.scss */
+/* line 80, ../../../assets/screen.scss */
 .tradable-list .center-column {
   float: left;
   padding-top: 145px;
   margin-left: 30px;
 }
-/* line 83, ../../../assets/screen.scss */
+/* line 84, ../../../assets/screen.scss */
 .tradable-list .center-column .trade-button {
   padding: 8px 10px 5px 10px;
   margin-bottom: 15px;
@@ -15699,39 +15709,39 @@ tr.angular-ui-tree-empty {
   color: #BCC7D5;
   border: 1px solid #BCC7D5;
 }
-/* line 90, ../../../assets/screen.scss */
+/* line 91, ../../../assets/screen.scss */
 .tradable-list .center-column .trade-button.active {
   cursor: pointer;
   color: #4899DD;
 }
-/* line 96, ../../../assets/screen.scss */
+/* line 97, ../../../assets/screen.scss */
 .tradable-list .right-column {
   float: left;
   width: 300px;
   margin-left: 30px;
 }
-/* line 100, ../../../assets/screen.scss */
+/* line 101, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header {
   margin-top: 9px;
   margin-bottom: 5px;
 }
-/* line 103, ../../../assets/screen.scss */
+/* line 104, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header .column-1 {
   margin-left: 15px;
 }
-/* line 106, ../../../assets/screen.scss */
+/* line 107, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header .column-2 {
   margin-left: 120px;
 }
-/* line 109, ../../../assets/screen.scss */
+/* line 110, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header .column-3 {
   margin-left: 30px;
 }
-/* line 114, ../../../assets/screen.scss */
+/* line 115, ../../../assets/screen.scss */
 .tradable-list .clickable-list {
   overflow: hidden;
 }
-/* line 116, ../../../assets/screen.scss */
+/* line 117, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column {
   margin-top: 15px;
   -webkit-padding-start: 0px;
@@ -15741,14 +15751,14 @@ tr.angular-ui-tree-empty {
   border: 1px solid #BCC7D5;
   border-radius: 3px;
 }
-/* line 124, ../../../assets/screen.scss */
+/* line 125, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li {
   padding-left: 15px;
   padding-right: 15px;
   line-height: 30px;
   cursor: pointer;
 }
-/* line 129, ../../../assets/screen.scss */
+/* line 130, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-1 {
   margin-left: 15px;
   display: inline-block;
@@ -15758,59 +15768,59 @@ tr.angular-ui-tree-empty {
   text-overflow: ellipsis;
   float: left;
 }
-/* line 138, ../../../assets/screen.scss */
+/* line 139, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-2 {
   margin-left: 40px;
   display: inline-block;
   float: left;
 }
-/* line 143, ../../../assets/screen.scss */
+/* line 144, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-3 {
   margin-left: 90px;
   display: inline-block;
   float: left;
 }
-/* line 149, ../../../assets/screen.scss */
+/* line 150, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li.disabled {
   cursor: not-allowed !important;
   background: #EDF2F9 !important;
   color: #BCC7D5 !important;
 }
-/* line 154, ../../../assets/screen.scss */
+/* line 155, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li.active {
   background: #4899DD;
   color: #FFFFFF;
 }
 
-/* line 163, ../../../assets/screen.scss */
+/* line 164, ../../../assets/screen.scss */
 .table .action-column {
   width: 60px;
   padding-top: 14px;
   padding-bottom: 14px;
 }
 
-/* line 171, ../../../assets/screen.scss */
+/* line 172, ../../../assets/screen.scss */
 .has-error-parent .form-control {
   border-color: #ec0000;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-/* line 178, ../../../assets/screen.scss */
+/* line 179, ../../../assets/screen.scss */
 ng-transclude.has-error .form-control {
   border-color: #ec0000 !important;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-/* line 184, ../../../assets/screen.scss */
+/* line 185, ../../../assets/screen.scss */
 .form-control.has-error {
   border-color: #ec0000;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-/* line 190, ../../../assets/screen.scss */
+/* line 191, ../../../assets/screen.scss */
 .empty-section {
   border: 1px solid;
   border-color: #BCC7D5;
@@ -15818,7 +15828,7 @@ ng-transclude.has-error .form-control {
   height: 80px;
   line-height: 80px;
 }
-/* line 196, ../../../assets/screen.scss */
+/* line 197, ../../../assets/screen.scss */
 .empty-section .loading-img {
   width: 40px;
   height: 40px;
@@ -15826,106 +15836,106 @@ ng-transclude.has-error .form-control {
   margin-right: 15px;
 }
 
-/* line 203, ../../../assets/screen.scss */
+/* line 204, ../../../assets/screen.scss */
 .disabled-chevron {
   cursor: not-allowed;
 }
 
-/* line 207, ../../../assets/screen.scss */
+/* line 208, ../../../assets/screen.scss */
 .opacity-50 {
   opacity: 0.5;
 }
 
-/* line 212, ../../../assets/screen.scss */
+/* line 213, ../../../assets/screen.scss */
 .my_file {
   display: none !important;
 }
 
-/* line 217, ../../../assets/screen.scss */
+/* line 218, ../../../assets/screen.scss */
 .get_file {
   cursor: pointer;
 }
 
 /* ui-select input fix */
-/* line 222, ../../../assets/screen.scss */
+/* line 223, ../../../assets/screen.scss */
 .ui-select-multiple input.ui-select-search:not(.ng-touched) {
   width: 100% !important;
 }
 
-/* line 226, ../../../assets/screen.scss */
+/* line 227, ../../../assets/screen.scss */
 .ui-select-dropdown-hide .ui-select-dropdown {
   display: none !important;
 }
 
 /* Temporary Fix for mysterious ui-search 2 line bug */
-/* line 230, ../../../assets/screen.scss */
+/* line 231, ../../../assets/screen.scss */
 .ui-select-multiple.ui-select-bootstrap input.ui-select-search {
   width: auto !important;
   height: 26px !important;
 }
 
-/* line 235, ../../../assets/screen.scss */
+/* line 236, ../../../assets/screen.scss */
 .ui-select-container .form-control:placeholder-shown {
   color: #32343C;
 }
 
-/* line 239, ../../../assets/screen.scss */
+/* line 240, ../../../assets/screen.scss */
 .export-list {
   margin-left: 30px;
   margin-bottom: 15px;
   list-style-type: none;
   -webkit-padding-start: 0px;
 }
-/* line 244, ../../../assets/screen.scss */
+/* line 245, ../../../assets/screen.scss */
 .export-list li {
   margin-bottom: 5px;
 }
-/* line 247, ../../../assets/screen.scss */
+/* line 248, ../../../assets/screen.scss */
 .export-list .group-label {
   font-weight: bold;
   margin: 20px 0px 5px 0px;
 }
 
-/* line 252, ../../../assets/screen.scss */
+/* line 253, ../../../assets/screen.scss */
 .export-select-all {
   margin-left: 30px;
 }
 
-/* line 256, ../../../assets/screen.scss */
+/* line 257, ../../../assets/screen.scss */
 [uib-typeahead-popup].dropdown-menu {
   width: 93%;
 }
 
-/* line 260, ../../../assets/screen.scss */
+/* line 261, ../../../assets/screen.scss */
 .popover {
   display: block;
 }
 
-/* line 265, ../../../assets/screen.scss */
+/* line 266, ../../../assets/screen.scss */
 .action-gear:hover, .action-gear:focus, .action-gear:active, .action-gear:visited {
   text-decoration: none;
   outline: 0;
 }
 
-/* line 271, ../../../assets/screen.scss */
+/* line 272, ../../../assets/screen.scss */
 .color-warning {
   color: #8a6d3b;
   line-height: 16px;
 }
 
-/* line 277, ../../../assets/screen.scss */
+/* line 278, ../../../assets/screen.scss */
 .import-page ol {
   -webkit-padding-start: 15px;
 }
 
-/* line 281, ../../../assets/screen.scss */
+/* line 282, ../../../assets/screen.scss */
 .image-wrapper {
   border: 1px solid #BCC7D5;
   border-radius: 3px;
   background-color: #EDF2F9;
 }
 
-/* line 287, ../../../assets/screen.scss */
+/* line 288, ../../../assets/screen.scss */
 .ui-select-multiple.ui-select-bootstrap input.ui-select-search {
   width: 100% !important;
 }

@@ -4,6 +4,16 @@
         <div class="col-xs-12">
             <div class="form-section">
                 <div class="form-section-header">
+                    <h2>Shop Theme</h2>
+                </div>
+                <div class="form-section-content image_preview">
+                    <? $this->insert('components/forms/multiple-radio-image', ["choices" => ["Theme 1", "Theme 2", "Theme 3", "Theme 4"]]) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="form-section">
+                <div class="form-section-header">
                     <h2>Layouts</h2>
                 </div>
                 <div class="form-section-content">
