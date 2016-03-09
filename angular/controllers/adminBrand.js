@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, BrandService, config) {
+module.exports = function($scope, $controller, $uibModal, BrandService, config) {
 	'ngInject';
 	//Inherit from parent
 	$controller('AbstractListCtrl', {
@@ -11,4 +11,7 @@ module.exports = function($scope, $controller, BrandService, config) {
 			id: 'BrandId'
 		}
 	});
+	$scope.open = function(item) {
+		
+	};
 }

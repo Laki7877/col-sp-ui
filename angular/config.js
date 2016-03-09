@@ -14,6 +14,24 @@ module.exports = {
 	TYPEAHEAD_IMPORT_GUIDELINE_LIMIT: 8,
 	TYPEAHEAD_DELAY: 150,
 	DROPDOWN: {
+		SHOP_GROUP_DROPDOWN: [
+			{
+				name: 'All',
+				value: 'AL'
+			},
+			{
+				name: 'BU',
+				value: 'BU'
+			},
+			{
+				name: 'INDY',
+				value: 'IN'
+			},
+			{
+				name: 'Merchant',
+				value: 'ME'
+			}
+		],
 		DEFAULT_STATUS_DROPDOWN: [
 			{
 				name: 'Inactive',

@@ -52,6 +52,7 @@ Route::add('/roles', 'SellerController::listRole');
 Route::add('/roles/add', 'SellerController::addRole');
 Route::add('/roles/:id', 'SellerController::editRole');
 Route::add('/inventory', 'SellerController::listInventory');
+Route::add('/newsletters', 'SellerController::listNewsletter');
 Route::add('/onboarding', 'SellerController::onboarding');
 
 

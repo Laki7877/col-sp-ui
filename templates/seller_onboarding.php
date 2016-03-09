@@ -16,7 +16,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "field_text" => "In order for you to remember password easier",
            "button_text" => "Change Password",
            "image_name" => "icon-onboard-password",
-           "task_display" => "ng-hide='Completed[0]'"]) ?>
+           "task_display" => "ng-hide='Completed[0]'",
+           "type" => "changePassword"]) ?>
 
          <? $this->insert('components/forms/seller_task',
            ["field_header" => "Add shop description",
@@ -47,7 +48,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "disble_status" => "disabled",
            "type" => "launch"]) ?>
 
-        <div class="complete_line home_task_space">
+        <div class="complete_line home_task_space" ng-show='checkIfHaveCompleted'>
           <span class="complte_line_text">Completed</span>
         </div>
 
