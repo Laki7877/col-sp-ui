@@ -24,7 +24,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <canvas id="canvas" height="280"></canvas>
           </div>
         </div>
-
+        <div class="remark">Remark: The revenue does not count canceled and pending orders.</div>
       </div>
 
       <div class="space_column with_border">
@@ -255,7 +255,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
           <span class="image-thumbs-img-wrapper">
             <img class="" src="<?= $this->asset('/assets/img/icon-dashboard-top-selling.png') ?>" />
           </span>
-          <span class="font-size-18 header_name_space">Top Selling Items </span>
+          <span class="font-size-18 header_name_space">Top Selling This Month</span>
         </div>
 
         <div class="group_container top_selling_field">

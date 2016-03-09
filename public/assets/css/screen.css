@@ -14420,208 +14420,213 @@ form h6 {
 }
 
 /* line 75, ../../../assets/_seller_page.sass */
+#dashboard_page .remark {
+  font-size: 12px;
+  color: #BCC7D5;
+}
+/* line 78, ../../../assets/_seller_page.sass */
 #dashboard_page .dashboard_column:first-child {
   padding-left: 0px;
 }
-/* line 78, ../../../assets/_seller_page.sass */
+/* line 81, ../../../assets/_seller_page.sass */
 #dashboard_page .dashboard_column:nth-child(2) {
   padding-right: 0px;
 }
-/* line 82, ../../../assets/_seller_page.sass */
+/* line 85, ../../../assets/_seller_page.sass */
 #dashboard_page .dashboard_graph canvas {
   height: 280px !important;
 }
-/* line 85, ../../../assets/_seller_page.sass */
+/* line 88, ../../../assets/_seller_page.sass */
 #dashboard_page .with_border {
   border: 1px solid #bcc7d5;
 }
-/* line 88, ../../../assets/_seller_page.sass */
+/* line 91, ../../../assets/_seller_page.sass */
 #dashboard_page .column-text-ellipsis {
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 94, ../../../assets/_seller_page.sass */
+/* line 97, ../../../assets/_seller_page.sass */
 #dashboard_page .space_column {
   padding: 15px 15px 15px 15px;
   margin-bottom: 20px;
   line-height: 27px;
   border-radius: 3px;
 }
-/* line 100, ../../../assets/_seller_page.sass */
+/* line 103, ../../../assets/_seller_page.sass */
 #dashboard_page .logo-img {
   max-width: 40px;
   max-heigh: 40px;
 }
-/* line 105, ../../../assets/_seller_page.sass */
+/* line 108, ../../../assets/_seller_page.sass */
 #dashboard_page .header-link a {
   color: #32343C;
 }
-/* line 109, ../../../assets/_seller_page.sass */
+/* line 112, ../../../assets/_seller_page.sass */
 #dashboard_page .header-link > .active-underline {
   border-bottom: 2px solid #4891d2;
   padding-bottom: 4px;
 }
-/* line 112, ../../../assets/_seller_page.sass */
+/* line 115, ../../../assets/_seller_page.sass */
 #dashboard_page .header-link:focus {
   text-decoration: none;
 }
-/* line 115, ../../../assets/_seller_page.sass */
+/* line 118, ../../../assets/_seller_page.sass */
 #dashboard_page .header_name_space {
   padding-left: 10px;
   line-height: 30px;
 }
-/* line 120, ../../../assets/_seller_page.sass */
+/* line 123, ../../../assets/_seller_page.sass */
 #dashboard_page .group_span_right span {
   margin-left: 15px;
   line-height: 30px;
 }
-/* line 124, ../../../assets/_seller_page.sass */
+/* line 127, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container {
   padding-bottom: 10px;
   padding-top: 10px;
   border-bottom: solid 1px #BCC7D5;
 }
-/* line 129, ../../../assets/_seller_page.sass */
+/* line 132, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container .price-column {
   padding-left: 50px;
 }
-/* line 133, ../../../assets/_seller_page.sass */
+/* line 136, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container .row_container > div:first-child {
   display: inline-block;
 }
-/* line 136, ../../../assets/_seller_page.sass */
+/* line 139, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container .row_container > div:nth-child(2) {
   float: right;
 }
-/* line 140, ../../../assets/_seller_page.sass */
+/* line 143, ../../../assets/_seller_page.sass */
 #dashboard_page .no_border {
   border: none;
 }
-/* line 143, ../../../assets/_seller_page.sass */
+/* line 146, ../../../assets/_seller_page.sass */
 #dashboard_page .small_field {
   padding-bottom: 10px;
   padding-top: 10px;
 }
-/* line 147, ../../../assets/_seller_page.sass */
+/* line 150, ../../../assets/_seller_page.sass */
 #dashboard_page .small_field .row:first-child {
   padding-top: 10px;
 }
-/* line 150, ../../../assets/_seller_page.sass */
+/* line 153, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field {
   padding-bottom: 5px;
   padding-top: 5px;
   border: none;
   position: relative;
 }
-/* line 156, ../../../assets/_seller_page.sass */
+/* line 159, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field div:first-child {
   padding-right: 0;
 }
-/* line 158, ../../../assets/_seller_page.sass */
+/* line 161, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field div:last-child {
   line-height: 40px;
 }
-/* line 162, ../../../assets/_seller_page.sass */
+/* line 165, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field .row_container > div:nth-child(2) {
   float: none;
   display: inline;
   padding-left: 10px;
 }
-/* line 167, ../../../assets/_seller_page.sass */
+/* line 170, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field .column-text-ellipsis {
   padding-left: 50px;
   position: absolute;
   top: 0;
 }
-/* line 172, ../../../assets/_seller_page.sass */
+/* line 175, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container:first-child {
   padding-top: 0;
 }
-/* line 175, ../../../assets/_seller_page.sass */
+/* line 178, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container:last-child {
   border: none;
   padding-top: 0;
   padding-bottom: 0;
 }
-/* line 180, ../../../assets/_seller_page.sass */
+/* line 183, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container:last-child.small_field {
   padding-top: 10px;
 }
-/* line 183, ../../../assets/_seller_page.sass */
+/* line 186, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_header {
   margin-bottom: 15px;
 }
-/* line 186, ../../../assets/_seller_page.sass */
+/* line 189, ../../../assets/_seller_page.sass */
 #dashboard_page .width_100 {
   width: 100px;
 }
-/* line 189, ../../../assets/_seller_page.sass */
+/* line 192, ../../../assets/_seller_page.sass */
 #dashboard_page .width_150 {
   width: 150px;
 }
-/* line 192, ../../../assets/_seller_page.sass */
+/* line 195, ../../../assets/_seller_page.sass */
 #dashboard_page .table {
   margin-bottom: 0;
 }
-/* line 196, ../../../assets/_seller_page.sass */
+/* line 199, ../../../assets/_seller_page.sass */
 #dashboard_page .table_dashboard td {
   padding: 15px 0 15px 0;
   border-top: 0;
   border-bottom: 1px solid #BCC7D5;
 }
-/* line 201, ../../../assets/_seller_page.sass */
+/* line 204, ../../../assets/_seller_page.sass */
 #dashboard_page .table_dashboard td.column-text-ellipsis {
   max-width: 0;
 }
-/* line 205, ../../../assets/_seller_page.sass */
+/* line 208, ../../../assets/_seller_page.sass */
 #dashboard_page .table_dashboard tr:last-child td {
   border-bottom: 0;
   padding-bottom: 0;
 }
-/* line 210, ../../../assets/_seller_page.sass */
+/* line 213, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:first-child {
   width: 100px;
 }
-/* line 213, ../../../assets/_seller_page.sass */
+/* line 216, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:nth-child(2) {
   width: 120px;
 }
-/* line 216, ../../../assets/_seller_page.sass */
+/* line 219, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:nth-child(3) {
   width: 120px;
 }
-/* line 219, ../../../assets/_seller_page.sass */
+/* line 222, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:last-child {
   padding-left: 30px;
   width: 56px;
 }
-/* line 224, ../../../assets/_seller_page.sass */
+/* line 227, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:first-child {
   width: 100px;
 }
-/* line 227, ../../../assets/_seller_page.sass */
+/* line 230, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:nth-child(2) {
   width: 120px;
 }
-/* line 231, ../../../assets/_seller_page.sass */
+/* line 234, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:last-child {
   padding-left: 30px;
   width: 80px;
 }
-/* line 236, ../../../assets/_seller_page.sass */
+/* line 239, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter .newsletter_date {
   font-size: 12px;
   margin-top: 5px;
   color: #7B7F8F;
 }
-/* line 240, ../../../assets/_seller_page.sass */
+/* line 243, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter td:last-child {
   padding-left: 30px;
   width: 80px;
 }
-/* line 245, ../../../assets/_seller_page.sass */
+/* line 248, ../../../assets/_seller_page.sass */
 #dashboard_page .account_health .group_container:last-child {
   padding: 10px 0px 0px 0px;
 }
