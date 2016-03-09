@@ -81,13 +81,18 @@
                   ng-model="formData.Tags"
                   on-select="onKeywordAdded($item, $model)"
                   multiple
-                  tagging tagging-tokens=",|ENTER"
+                  nc-tag-validator
+                  nc-tag-pattern="^[0-9a-zA-Z]+$"
+                  nc-max-tag-count="100"
+                  nc-max-tag-length="30"
+                  tagging="tagTransform"
+                  tagging-tokens=",|ENTER"
                   tagging-label="">
                     <ui-select-match placeholder="Input tags">
-                    {{$item}}
+                    {{$item.TagName}}
                     </ui-select-match>
                     <ui-select-choices repeat="item in tagOptions">
-                    {{item}}
+                    {{item.TagName}}
                     </ui-select-choices>
                   </ui-select>
               </div>

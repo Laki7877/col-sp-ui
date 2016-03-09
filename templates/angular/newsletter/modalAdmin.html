@@ -1,0 +1,65 @@
+<div class="modal-header">
+  <h3 class="modal-title modal_title_abosolute">Add Newsletter</h3>
+  <div class="title_relative">
+    <div class="float-right">
+      <a href="#" class="link-btn-plain" ng-click="$dismiss()">Cancel</a>
+      <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+    </div>
+  </div>
+</div>
+<div class="modal-body">
+  <form name="form" class="ah-form margin-top-20">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-section-content">
+          <div nc-template="common/input/form-group-with-label"
+            nc-template-options-path="addNewsletterForm/Subject"
+            nc-template-form="form.Subject"
+            nc-label="Subject">
+            <input
+              type="text"
+              ng-model="formData.Subject"
+              required
+              />
+          </div>
+          <div nc-template="common/input/form-group-with-label"
+            nc-template-options-path="addNewsletterForm/Image"
+            nc-template-form="form.Image"
+            nc-label="Image">
+              <button 
+              type="button"
+              name="Image"
+              class="btn btn-default"
+              ngf-accept="'.png,.jpg,.jpeg'"
+              ngf-select="uploadLogo($file)"
+              ng-model="formData.image"
+              >Choose File</button>
+          </div>
+          <div ng-show="formData.Image"
+            nc-template="common/input/form-group-with-label" 
+            nc-label="Image Preview">
+              <img
+                ng-src="{{formData.Image.url}}"
+                width="160"
+                />
+              <a style="display:block;" class="margin-top-5" ng-click="formData.Image=null"><i class="fa-trash fa"></i> Delete this image</a>
+          </div>
+          <div nc-template="common/input/form-group-with-label"
+            nc-template-options-path="addNewsletterForm/Description"
+            nc-template-form="form.Description"
+            nc-label="Content">
+            <textarea ng-model="formData.Description" required></textarea>
+          </div>
+          <div nc-template="common/input/form-group-with-label"
+            nc-template-options-path="addNewsletterForm/CreatedDt"
+            nc-template-form="form.CreatedDt"
+            nc-label="Content">
+          </div>
+          <? $this->insert('components/forms/input-text-with-label', ["label" => "Subject"]) ?>
+          <? $this->insert('components/forms/textarea-with-label', ["label" => "Content", 'size' => 'large', 'rows' => '10']) ?>          
+          <? $this->insert('components/forms/input-text-with-label', ["label" => "Publish Date", "input_class" => "input-icon-calendar"]) ?>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

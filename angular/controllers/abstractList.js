@@ -93,6 +93,9 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 		];
 	} else {
 		$scope.actions = _.compact(_.map(options.actions, function(item) {
+			if(_.isFunction(item)) {
+				return item($scope);
+			}
 
 			if(_.isString(item)) {
 				switch(item) {

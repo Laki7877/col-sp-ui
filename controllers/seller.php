@@ -33,6 +33,11 @@ class SellerController extends Controller
     {
         return View::render('seller_inventory');
     }
+    //Newsletter
+    public static function listNewsletter($params)
+    {
+        return View::render('seller_newsletters');
+    }
     //Home
     public static function onboarding($params)
     {
