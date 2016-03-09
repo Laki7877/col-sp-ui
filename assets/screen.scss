@@ -308,3 +308,44 @@ ng-transclude.has-error .form-control{
 		}
 	}
 }
+
+/* Collaspable Menu */
+#sidebar-wrapper{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 60px;
+	z-index: 10;
+	.logo-img-wrapper{
+		display: none;
+	}
+	.sidebar-nav{
+		 margin-top: 105px;
+		 li {
+			padding-left: 19px;
+		 	a{
+			 	display: none;
+		 	}
+		}
+	}
+}
+
+#sidebar-wrapper:hover{
+	width: 180px;
+	.logo-img-wrapper{
+		display: block;;
+	}
+	.sidebar-nav{
+		 margin-top: 0px;
+		 li {
+			 a{
+				 display: inline-block;
+			 }
+		 }
+	}
+}
+
+#page-content-wrapper{
+	z-index: 9;
+	margin-left: 60px;
+}

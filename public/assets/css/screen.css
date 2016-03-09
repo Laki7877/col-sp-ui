@@ -15951,3 +15951,52 @@ ng-transclude.has-error .form-control {
 .cke_toolbox .cke_toolbar:nth-child(6) .cke_toolbar_separator {
   display: none;
 }
+
+/* Collaspable Menu */
+/* line 313, ../../../assets/screen.scss */
+#sidebar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px;
+  z-index: 10;
+}
+/* line 319, ../../../assets/screen.scss */
+#sidebar-wrapper .logo-img-wrapper {
+  display: none;
+}
+/* line 322, ../../../assets/screen.scss */
+#sidebar-wrapper .sidebar-nav {
+  margin-top: 105px;
+}
+/* line 324, ../../../assets/screen.scss */
+#sidebar-wrapper .sidebar-nav li {
+  padding-left: 19px;
+}
+/* line 326, ../../../assets/screen.scss */
+#sidebar-wrapper .sidebar-nav li a {
+  display: none;
+}
+
+/* line 333, ../../../assets/screen.scss */
+#sidebar-wrapper:hover {
+  width: 180px;
+}
+/* line 335, ../../../assets/screen.scss */
+#sidebar-wrapper:hover .logo-img-wrapper {
+  display: block;
+}
+/* line 338, ../../../assets/screen.scss */
+#sidebar-wrapper:hover .sidebar-nav {
+  margin-top: 0px;
+}
+/* line 341, ../../../assets/screen.scss */
+#sidebar-wrapper:hover .sidebar-nav li a {
+  display: inline-block;
+}
+
+/* line 348, ../../../assets/screen.scss */
+#page-content-wrapper {
+  z-index: 9;
+  margin-left: 60px;
+}
