@@ -3464,11 +3464,12 @@ module.exports = ["$scope", "$controller", "$window", "InventoryService", "confi
 }];
 },{}],43:[function(require,module,exports){
 
-module.exports = ["$scope", "$rootScope", "Onboarding", "$log", function($scope, $rootScope, Onboarding, $log){
+module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", function($scope, $rootScope, Onboarding, $log, $window){
 	'ngInject';
 
 	Onboarding.getListCompletedTask()
 		.then(function(data) {
+			// $scope.Completed = [false,false,true,false];
 	    	$scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct, data.DecorateStore];
 	    })
 	    .then(function() {
@@ -3492,6 +3493,12 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", function($scope,
 			console.log("can't launch");
 		}
 	};
+
+	$scope.redirectToProducts = function() {
+		console.log("can't change");
+		$window.location.href = '/products';
+    };
+
 }];
 
 },{}],44:[function(require,module,exports){

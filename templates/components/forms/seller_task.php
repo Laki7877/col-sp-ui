@@ -14,7 +14,9 @@
       <? if($type == 'launch'): ?>
         <button class="btn btn-white btn-width-xxl" ng-click='launchShop()' ng-disabled='!checkBeforeLaunch' type="button"><?=$button_text?></button>            
       <? elseif($type == 'changePassword'): ?>
-        <button class="btn btn-white btn-width-xxl" ng-click='changePassword()' type="button"><?=$button_text?></button>            
+        <button class="btn btn-white btn-width-xxl" ng-click='changePassword()' type="button"><?=$button_text?></button>
+      <? elseif($type == 'redirectProduct'): ?>
+        <button class="btn btn-white btn-width-xxl" ng-click='redirectToProducts()' type="button"><?=$button_text?></button>            
       <? else: ?>
         <button class="btn btn-white btn-width-xxl" <?=$disble_status?> type="button"><?=$button_text?></button>
       <? endif; ?>

@@ -1,9 +1,10 @@
 
-module.exports = function($scope, $rootScope, Onboarding, $log){
+module.exports = function($scope, $rootScope, Onboarding, $log, $window){
 	'ngInject';
 
 	Onboarding.getListCompletedTask()
 		.then(function(data) {
+			// $scope.Completed = [false,false,true,false];
 	    	$scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct, data.DecorateStore];
 	    })
 	    .then(function() {
@@ -27,4 +28,10 @@ module.exports = function($scope, $rootScope, Onboarding, $log){
 			console.log("can't launch");
 		}
 	};
+
+	$scope.redirectToProducts = function() {
+		console.log("can't change");
+		$window.location.href = '/products';
+    };
+
 };
