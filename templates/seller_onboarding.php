@@ -47,7 +47,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "disble_status" => "disabled",
            "type" => "launch"]) ?>
 
-        <div class="complete_line home_task_space">
+        <div class="complete_line home_task_space" ng-show='checkIfHaveCompleted'>
           <span class="complte_line_text">Completed</span>
         </div>
 
