@@ -8,9 +8,12 @@ module.exports = function($scope, $rootScope, Onboarding, $log){
 	    })
 	    .then(function() {
 	    	var checkBeforeLaunch = $scope.Completed[$scope.Completed.length-1];
+	    	var checkIfHaveCompleted = $scope.Completed[$scope.Completed.length-1];
 			for (var i = $scope.Completed.length - 1; i >= 0; i--) {
 				checkBeforeLaunch = checkBeforeLaunch && $scope.Completed[i];
+				checkIfHaveCompleted = checkIfHaveCompleted || $scope.Completed[i];
 			};
+			$scope.checkIfHaveCompleted = checkIfHaveCompleted;
 			return $scope.checkBeforeLaunch = checkBeforeLaunch;
 	    });
 
