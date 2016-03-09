@@ -9,7 +9,10 @@ class AdminController extends Controller
     
     public static function detail($params)
 	{
-		return View::render('admin_product_detail');
+		return View::render('admin_product_detail',  [
+            'title' => 'Product Detail',
+            'viewBag' => array( 'productId' => $params['productid']),
+        ]);
 	}
     
     public static function approve($params)

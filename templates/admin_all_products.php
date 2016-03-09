@@ -7,11 +7,11 @@
 	       <nc-page-title nc-title="All Products">
 	      <form id="exportForm" name="exportForm" action="/admin/products/export" method="post">
 	          <input type="hidden" name="selected_products[]" ng-repeat="item in bulkContainer" value="{{ item.ProductId }}"/>
-	          <div class="btn-group margin-right-10">
-	            <button type="button" class="btn btn-white dropdown-toggle btn-width-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	          <div class="btn-group">
+	            <button type="button" class="btn btn-white dropdown-toggle btn-width-xl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	              Export <span class="caret"></span>
 	            </button>
-	            <ul class="dropdown-menu">
+	            <ul class="dropdown-menu" style="right: 0; left: auto;">
 	              <li><a href="/admin/products/export">Export All Products</a></li>
 	              <li><a ng-click="exportSelected()">Export Selected Products</a></li>
 	              <li><a ng-click="exportCriteria()">Export Search Result</a></li>
@@ -52,7 +52,7 @@
 		                    </div>
 		                </td>
 		                <td class="column-text-ellipsis">
-		                    <a ng-href="products/{{row.ProductId}}">{{row.ProductNameEn}}</a>
+		                    <a ng-href="/admin/products/{{row.ProductId}}">{{row.ProductNameEn}}</a>
 		                </td>
 		                <td>{{row.Shop.ShopNameEn}}</td>
 		                <td>{{row.SalePrice | number: 2 }}</td>

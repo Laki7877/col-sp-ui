@@ -49,9 +49,10 @@ module.exports = function($scope, $controller, $window, InventoryService, config
 	$scope.popoverStock = function(item) {
 		if(!item.open) {
 			//Is popover open, load popovers
-			$scope.popoverItem = item;
-			item.Quantity = _.toInteger(item.Quantity);
-			item.LastQuantity = item.Quantity;
+			$scope.popoverItemOriginal = item;
+			$scope.popoverItem = _.extend({}, item);
+			$scope.popoverItem.Quantity = _.toInteger(item.Quantity);
+			$scope.popoverItem.LastQuantity = item.Quantity;
 		}
 	};
 	$scope.updateStock = function(item) {
@@ -59,9 +60,9 @@ module.exports = function($scope, $controller, $window, InventoryService, config
 		InventoryService.update(item.Pid, _.pick(item, ['Quantity']))
 			.then(function(data) {
 				$scope.lastEdit = item.Pid;
+				$scope.popoverItemOriginal.Quantity = item.Quantity;
 			}, function(err) {
 				$scope.lastEdit = null;
-				item.Quantity = item.LastQuantity;
 				$scope.alert.error(common.getError(err));
 			})
 		.finally(function() {

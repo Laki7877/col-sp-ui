@@ -6,6 +6,9 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 	$scope.logoUploader = ImageService.getUploaderFn('/BrandImages');
 	$scope.bannerUploader = ImageService.getUploaderFn('/BrandImages');
 	$scope.uploadLogo = function(file) {
+		if(_.isNil(file)) {
+			return;
+		}
 		$scope.formData.BrandImage = {
 			url: '/assets/img/loader.gif'
 		};
@@ -41,6 +44,11 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 			item: 'Brand',
 			service: BrandService,
 			onSave: function(scope) {
+				if(!_.isNil(scope.formData.BrandImage)) {
+					scope.form.BrandImage.$setValidity('required', true);
+				} else {
+					scope.form.BrandImage.$setValidity('required', false);
+				}
 				return false;
 			},
 			onLoad: function(scope, flag) {

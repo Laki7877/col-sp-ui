@@ -9,6 +9,7 @@
                         <thead>
                             <th>Product Name</th>
                             <th ng-if="(formDataPtr.Variants || []).length == 0">PID</th>
+                            <th>Shop ID</th>
                             <th ng-if="(formDataPtr.Variants || []).length > 0">Group ID</th>
                             <th>Price</th>
                             <th>Info</th>
@@ -21,6 +22,7 @@
                             <tr>
                                 <td>{{ formDataPtr.MasterVariant.ProductNameEn }}</td>
                                 <td>{{ formDataPtr.MasterVariant.Pid }}</td>
+                                <td>{{ formDataPtr.ShopId }}</td>
                                 <td>{{ formDataPtr.MasterVariant.OriginalPrice | number: 2 }}</td>
                                 <td>
                                     <i ng-if="!formDataPtr.InfoFlag" class="fa fa-minus color-grey icon-size-18px"></i>

@@ -1,9 +1,9 @@
 module.exports = {
     BrandImage: {
-        labelClass: 'required',
-        error: {
-            messages: {
-                required: 'This is a required field',
+        'labelClass': 'required',
+        'error': {
+            'messages': {
+                'required': 'This is a required field',
             }
         }
     },
@@ -28,7 +28,7 @@ module.exports = {
         'error': {
             'messages': {
                 'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'
-            },
+            }
         }
     }
 };

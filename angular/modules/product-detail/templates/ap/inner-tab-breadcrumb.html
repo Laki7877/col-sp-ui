@@ -1,5 +1,5 @@
 <div>
-    <div class="alert alert-yellow" ng-if="formDataPtr.Status == 'WA'">
+    <div class="alert alert-yellow" ng-if="formDataPtr.Status == 'WA' && !adminMode">
         This product is waiting for approval from the admin. You cannot edit it now.
     </div>
     <div class="margin-bottom-20">

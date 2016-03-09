@@ -16,17 +16,17 @@
                     </select>
 
                     <!-- dont show if nothing is dataset. to choose from -->
-                    <ui-select ng-if="controlFlags.variation != 'enable'" ng-model="formDataPtr.AttributeSet" ng-show="dataset.AttributeSets.length > 0">
+                    <ui-select theme="selectize" loading="refresher.AttributeSetsLoading" 
+                    ng-if="controlFlags.variation != 'enable'" ng-model="formDataPtr.AttributeSet" ng-show="dataset.AttributeSets.length > 0">
                         <ui-select-match placeholder="Search Attribute Set">
                             <span ng-bind="$select.selected.AttributeSetNameEn"></span>
                             <span ng-show="!$select.selected.AttributeSetNameEn">- Select Attribute Set -</span>
                         </ui-select-match>
                         <ui-select-choices group-by="'_group'" refresh="refresher.AttributeSets($select.search)" refresh-delay="1000" 
-                        repeat="item in (dataset.CombinedAttributeSets || dataset.AttributeSets) | filter : $select.search track by item.AttributeSetId">
+                        repeat="item in ($select.search != '' ? dataset.CombinedAttributeSets : dataset.AttributeSets) | filter : $select.search track by item.AttributeSetId">
                             <span ng-bind="item.AttributeSetNameEn"></span>
                         </ui-select-choices>
                     </ui-select>
-                    
 
                     <!-- if nothing is availalbe to pick -->
                     <select class="form-control" ng-if="dataset.AttributeSets.length == 0" disabled>

@@ -1,9 +1,9 @@
 var angular = require('angular');
 angular.module('productDetail').
-    factory('$productAdd', function (Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category, util) {
+    factory('$productAdd', function(Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category, util) {
         'ngInject';
         var $productAdd = {};
-    
+
         /**
          * 
          * Rebuild variations array from set of attribute options in dataset
@@ -11,10 +11,10 @@ angular.module('productDetail').
          * @param  {FormData} formData
          * @param  {DataSet} dataSet
          */
-        $productAdd.generateVariants = function (formData, dataSet) {
+        $productAdd.generateVariants = function(formData, dataSet) {
             var vHashSet = {};
             var prevVariants = angular.copy(formData.Variants);
-            prevVariants.forEach(function (elem, index) {
+            prevVariants.forEach(function(elem, index) {
                 vHashSet[elem.text] = prevVariants[index];
             });
 
@@ -25,7 +25,7 @@ angular.module('productDetail').
             var trackVariant = new Set();
 
             var VARIANT_DUMMY_FACTOR = '';
-            var expand = function (A0, B0) {
+            var expand = function(A0, B0) {
 
                 var AVId = null;
                 var BVId = null;
@@ -78,11 +78,11 @@ angular.module('productDetail').
                 kpair.OriginalPrice = formData.MasterVariant.OriginalPrice;
                 kpair.SalePrice = formData.MasterVariant.SalePrice;
                 kpair.Quantity = formData.MasterVariant.Quantity;
-                kpair.Length = formData.MasterVariant.Length;
-                kpair.Width = formData.MasterVariant.Width;
-                kpair.Height = formData.MasterVariant.Height;
+                kpair.Length = formData.Length;
+                kpair.Width = formData.Width;
+                kpair.Height = formData.Height;
                 kpair.Upc = formData.MasterVariant.Upc;
-                kpair.Weight = formData.MasterVariant.Weight;
+                kpair.Weight = formData.Weight;
                 kpair.DescriptionFullEn = formData.MasterVariant.DescriptionFullEn;
                 kpair.DescriptionFullTh = formData.MasterVariant.DescriptionFullTh;
                 kpair.DescriptionShortEn = formData.MasterVariant.DescriptionShortEn;
@@ -90,6 +90,13 @@ angular.module('productDetail').
                 kpair.Images = angular.copy(formData.MasterImages);
                 kpair.VideoLinks = angular.copy(formData.VideoLinks);
                 kpair.PrepareDay = formData.PrepareDay;
+                kpair.PrepareSun = formData.PrepareSun;
+                kpair.PrepareSat = formData.PrepareSat;
+                kpair.PrepareFri = formData.PrepareFri;
+                kpair.PrepareThu = formData.PrepareThu;
+                kpair.PrepareWed = formData.PrepareWed;
+                kpair.PrepareTue = formData.PrepareTue;
+                kpair.PrepareMon = formData.PrepareMon;
                 kpair.SEO = angular.copy(formData.SEO || {});
                 kpair.SEO.ProductUrlKeyEn = "";
 
@@ -126,10 +133,16 @@ angular.module('productDetail').
 
             formData.DefaultVariant = formData.Variants[0];
         };
-  
 
-  
-    
+
+        $productAdd.flatten = {
+            'AttributeSetTagMap': function(AttributeSetTagMap) {
+                return AttributeSetTagMap.map(function(asti) {
+                    return asti.Tag.TagName;
+                });
+            }
+        };
+
         /**
          * 
          * Fill product add page with data of related dependencies
@@ -143,7 +156,7 @@ angular.module('productDetail').
          * @param  {object} variationFactorIndices
          * @param  {InverseFormData} ivFormData (Optional)
          */
-        $productAdd.fill = function (globalCatId, pageLoader, sharedDataSet,
+        $productAdd.fill = function(globalCatId, pageLoader, sharedDataSet,
             sharedFormData, breadcrumbs, controlFlags, variationFactorIndices, ivFormData) {
 
 
@@ -151,28 +164,27 @@ angular.module('productDetail').
             pageLoader.load('Downloading Attribute Sets..');
 
             AttributeSet.getByCategory(globalCatId)
-                .then(function (data) {
-                    sharedDataSet.AttributeSets = data.map(function (aset) {
+                .then(function(data) {
+                    sharedDataSet.AttributeSets = data.map(function(aset) {
                         aset._group = "Suggested Attribute Sets";
-                        aset.AttributeSetTagMaps = aset.AttributeSetTagMaps.map(function (asti) {
-                            return asti.Tag.TagName;
-                        });
+                        aset.AttributeSetTagMaps = $productAdd.flatten.AttributeSetTagMap(aset.AttributeSetTagMaps);
                         return aset;
                     });
 
-
+                    sharedDataSet.CombinedAttributeSets = angular.copy(sharedDataSet.AttributeSets);
+                    
                     if (ivFormData) {
                         pageLoader.load('Indexing AttributeSet');
-                        sharedFormData.AttributeSet = sharedDataSet.AttributeSets[sharedDataSet.AttributeSets.map(function (o) {
+                        sharedFormData.AttributeSet = sharedDataSet.AttributeSets[sharedDataSet.AttributeSets.map(function(o) {
                             return o.AttributeSetId
                         }).indexOf(ivFormData.AttributeSet.AttributeSetId)];
 
-                        var parse = function (ivFormData, FullAttributeSet) {
+                        var parse = function(ivFormData, FullAttributeSet) {
                             pageLoader.load('Loading product data..');
                             var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
 
                             //copy it out
-                            Object.keys(inverseResult.formData).forEach(function (key) {
+                            Object.keys(inverseResult.formData).forEach(function(key) {
                                 sharedFormData[key] = inverseResult.formData[key];
                             })
 
@@ -190,7 +202,7 @@ angular.module('productDetail').
 
                     pageLoader.load('Downloading Category Tree..');
                     //Load Global Cat
-                    GlobalCategory.getAll().then(function (data) {
+                    GlobalCategory.getAll().then(function(data) {
                         sharedDataSet.GlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
                         sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
                         breadcrumbs.globalCategory = Category.createCatStringById(globalCatId, sharedDataSet.GlobalCategories);

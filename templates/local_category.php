@@ -19,7 +19,7 @@
 			<div class="col-sm-12">
 				<div class="category-column-header">
 					Category Name
-					<span class="pull-right category-column action-gear">
+					<span class="pull-right category-column category-action-gear">
 						Action
 					</span>
 					<span class="pull-right category-column">
