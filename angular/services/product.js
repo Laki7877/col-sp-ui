@@ -318,22 +318,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                 }
             }
 
-            //other special cases
-            try {
-                clean.GlobalCategory = clean.GlobalCategories[0].CategoryId;
-                clean.GlobalCategories.shift();
-            } catch (ex) {
-                throw new KnownException("Unable to finish serialization of product object");
-            }
-
-            try {
-                clean.LocalCategory = clean.LocalCategories[0].CategoryId;
-                clean.LocalCategories.shift();
-            } catch (ex) {
-                clean.LocalCategories = [null, null]
-                clean.LocalCategory = null
-            }
-
+ 
+	   return clean;
             /*
             
             try {
