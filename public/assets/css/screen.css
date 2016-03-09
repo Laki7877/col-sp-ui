@@ -2411,7 +2411,7 @@ pre code {
 }
 
 /* line 11, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .ah-form .form-group .width-field-tooltip, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .ah-form .form-group .width-label, .ah-form .form-group .width-label-extend, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .ah-form .form-group .width-field-small-input, .ah-form .form-group .width-field-small, .ah-form .form-group .width-field-normal, .ah-form .form-group .width-field-large, .ah-form .form-group .width-field-xl, .ah-form .form-group .width-field-xxl, .ah-form .form-group .button-size-normal, .ah-form .form-group .button-size-large, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .ah-form .form-group .width-field-tooltip, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .ah-form .form-group .width-label, .ah-form .form-group .width-label-extend, .ah-form .form-group .width-field-checkbox, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .ah-form .form-group .width-field-small-input, .ah-form .form-group .width-field-small, .ah-form .form-group .width-field-normal, .ah-form .form-group .width-field-large, .ah-form .form-group .width-field-xl, .ah-form .form-group .width-field-xxl, .ah-form .form-group .button-size-normal, .ah-form .form-group .button-size-large, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -2419,7 +2419,7 @@ pre code {
 }
 
 /* line 27, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-.col-xs-1, .col-xs-2, .ah-form .form-group .width-field-tooltip, .col-xs-3, .ah-form .form-group .width-label, .ah-form .form-group .width-label-extend, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .ah-form .form-group .width-field-small-input, .ah-form .form-group .width-field-small, .ah-form .form-group .width-field-normal, .ah-form .form-group .width-field-large, .ah-form .form-group .width-field-xl, .ah-form .form-group .width-field-xxl, .ah-form .form-group .button-size-normal, .ah-form .form-group .button-size-large, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+.col-xs-1, .col-xs-2, .ah-form .form-group .width-field-tooltip, .col-xs-3, .ah-form .form-group .width-label, .ah-form .form-group .width-label-extend, .ah-form .form-group .width-field-checkbox, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .ah-form .form-group .width-field-small-input, .ah-form .form-group .width-field-small, .ah-form .form-group .width-field-normal, .ah-form .form-group .width-field-large, .ah-form .form-group .width-field-xl, .ah-form .form-group .width-field-xxl, .ah-form .form-group .button-size-normal, .ah-form .form-group .button-size-large, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left;
 }
 
@@ -2434,7 +2434,7 @@ pre code {
 }
 
 /* line 35, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-.col-xs-3, .ah-form .form-group .width-label, .ah-form .form-group .width-label-extend {
+.col-xs-3, .ah-form .form-group .width-label, .ah-form .form-group .width-label-extend, .ah-form .form-group .width-field-checkbox {
   width: 25%;
 }
 
@@ -12474,151 +12474,156 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 
 /* line 137, ../../../assets/_atomic.scss */
+.padding-top-6 {
+  padding-top: 6px;
+}
+
+/* line 141, ../../../assets/_atomic.scss */
 .padding-top-30 {
   padding-top: 30px;
 }
 
-/* line 141, ../../../assets/_atomic.scss */
+/* line 145, ../../../assets/_atomic.scss */
 .no-margin {
   margin: 0;
 }
 
-/* line 145, ../../../assets/_atomic.scss */
+/* line 149, ../../../assets/_atomic.scss */
 .no-padding {
   padding: 0;
 }
 
-/* line 149, ../../../assets/_atomic.scss */
+/* line 153, ../../../assets/_atomic.scss */
 .no-border {
   border: none;
 }
 
-/* line 153, ../../../assets/_atomic.scss */
+/* line 157, ../../../assets/_atomic.scss */
 .float-left {
   float: left;
 }
 
-/* line 157, ../../../assets/_atomic.scss */
+/* line 161, ../../../assets/_atomic.scss */
 .float-right {
   float: right;
 }
 
-/* line 161, ../../../assets/_atomic.scss */
+/* line 165, ../../../assets/_atomic.scss */
 .color-theme-light {
   color: #b4ddff;
 }
 
-/* line 165, ../../../assets/_atomic.scss */
+/* line 169, ../../../assets/_atomic.scss */
 .color-theme {
   color: #4899DD;
 }
 
-/* line 169, ../../../assets/_atomic.scss */
+/* line 173, ../../../assets/_atomic.scss */
 .color-grey {
   color: #BCC7D5;
 }
 
-/* line 173, ../../../assets/_atomic.scss */
+/* line 177, ../../../assets/_atomic.scss */
 .color-green {
   color: #33bb5b;
 }
 
-/* line 177, ../../../assets/_atomic.scss */
+/* line 181, ../../../assets/_atomic.scss */
 .color-dark-green {
   color: #68d485;
 }
 
-/* line 181, ../../../assets/_atomic.scss */
+/* line 185, ../../../assets/_atomic.scss */
 .color-red {
   color: #ec0000;
 }
 
-/* line 185, ../../../assets/_atomic.scss */
+/* line 189, ../../../assets/_atomic.scss */
 .color-dark-grey {
   color: #7B7F8F;
 }
 
-/* line 189, ../../../assets/_atomic.scss */
+/* line 193, ../../../assets/_atomic.scss */
 .color-yellow {
   color: #f5a623;
 }
 
-/* line 193, ../../../assets/_atomic.scss */
+/* line 197, ../../../assets/_atomic.scss */
 .color-black {
   color: #32343C;
 }
 
-/* line 197, ../../../assets/_atomic.scss */
+/* line 201, ../../../assets/_atomic.scss */
 .vertical-align-middle {
   vertical-align: middle;
 }
 
-/* line 201, ../../../assets/_atomic.scss */
+/* line 205, ../../../assets/_atomic.scss */
 .text-align-center {
   text-align: center;
 }
 
-/* line 209, ../../../assets/_atomic.scss */
+/* line 213, ../../../assets/_atomic.scss */
 .text-underline {
   text-decoration: underline;
 }
 
-/* line 213, ../../../assets/_atomic.scss */
+/* line 217, ../../../assets/_atomic.scss */
 .hide-component {
   display: none;
 }
 
-/* line 217, ../../../assets/_atomic.scss */
+/* line 221, ../../../assets/_atomic.scss */
 .display_inline_block {
   display: inline-block;
 }
 
-/* line 221, ../../../assets/_atomic.scss */
+/* line 225, ../../../assets/_atomic.scss */
 .font-size-12 {
   font-size: 12px;
 }
 
-/* line 225, ../../../assets/_atomic.scss */
+/* line 229, ../../../assets/_atomic.scss */
 .font-size-16 {
   font-size: 16px;
 }
 
-/* line 229, ../../../assets/_atomic.scss */
+/* line 233, ../../../assets/_atomic.scss */
 .font-size-18 {
   font-size: 18px;
 }
 
-/* line 233, ../../../assets/_atomic.scss */
+/* line 237, ../../../assets/_atomic.scss */
 .font-size-20, .icon-size-20 {
   font-size: 20px;
 }
 
-/* line 237, ../../../assets/_atomic.scss */
+/* line 241, ../../../assets/_atomic.scss */
 .font-size-27 {
   font-size: 27px;
 }
 
-/* line 241, ../../../assets/_atomic.scss */
+/* line 245, ../../../assets/_atomic.scss */
 .font-size-38 {
   font-size: 38px;
 }
 
-/* line 249, ../../../assets/_atomic.scss */
+/* line 253, ../../../assets/_atomic.scss */
 .margin-0 {
   margin: 0;
 }
 
-/* line 253, ../../../assets/_atomic.scss */
+/* line 257, ../../../assets/_atomic.scss */
 .font-weight-bold {
   font-weight: bold;
 }
 
-/* line 257, ../../../assets/_atomic.scss */
+/* line 261, ../../../assets/_atomic.scss */
 .opacity-1 {
   opacity: 1;
 }
 
-/* line 261, ../../../assets/_atomic.scss */
+/* line 265, ../../../assets/_atomic.scss */
 .width-100-percent {
   width: 100%;
 }
@@ -12803,6 +12808,69 @@ ul.sub-sidebar .item > a {
   color: inherit;
   font-weight: inherit;
   text-decoration: none;
+}
+
+/* --- Collaspable Menu --- */
+/* line 111, ../../../assets/_sidebar.scss */
+#sidebar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px;
+  z-index: 10;
+}
+/* line 117, ../../../assets/_sidebar.scss */
+#sidebar-wrapper .logo-img-wrapper {
+  display: none;
+}
+/* line 120, ../../../assets/_sidebar.scss */
+#sidebar-wrapper .logo-img-wrapper-collased {
+  display: block;
+}
+/* line 122, ../../../assets/_sidebar.scss */
+#sidebar-wrapper .logo-img-wrapper-collased img {
+  width: 20px;
+  height: 20px;
+  margin: 65px 20px 0px 20px;
+}
+/* line 128, ../../../assets/_sidebar.scss */
+#sidebar-wrapper .sidebar-nav {
+  margin-top: 20px;
+}
+/* line 130, ../../../assets/_sidebar.scss */
+#sidebar-wrapper .sidebar-nav li {
+  padding-left: 19px;
+}
+/* line 132, ../../../assets/_sidebar.scss */
+#sidebar-wrapper .sidebar-nav li a {
+  display: none;
+}
+
+/* line 139, ../../../assets/_sidebar.scss */
+#sidebar-wrapper:hover {
+  width: 180px;
+}
+/* line 141, ../../../assets/_sidebar.scss */
+#sidebar-wrapper:hover .logo-img-wrapper-collased {
+  display: none;
+}
+/* line 144, ../../../assets/_sidebar.scss */
+#sidebar-wrapper:hover .logo-img-wrapper {
+  display: block;
+}
+/* line 147, ../../../assets/_sidebar.scss */
+#sidebar-wrapper:hover .sidebar-nav {
+  margin-top: 0px;
+}
+/* line 150, ../../../assets/_sidebar.scss */
+#sidebar-wrapper:hover .sidebar-nav li a {
+  display: inline-block;
+}
+
+/* line 157, ../../../assets/_sidebar.scss */
+#page-content-wrapper {
+  z-index: 9 !important;
+  margin-left: 60px !important;
 }
 
 /* line 2, ../../../assets/_breadcrumb.scss */
@@ -13484,40 +13552,49 @@ form h6 {
   padding-left: 0;
 }
 /* line 96, ../../../assets/_form.sass */
+.ah-form .form-group .width-field-checkbox {
+  width: 250px;
+  line-height: 34px;
+}
+/* line 101, ../../../assets/_form.sass */
+.ah-form .form-group .width-field-checkbox .checkbox_text {
+  padding-left: 10px;
+}
+/* line 104, ../../../assets/_form.sass */
 .ah-form .form-group .button-size-normal {
   width: 120px;
 }
-/* line 99, ../../../assets/_form.sass */
+/* line 107, ../../../assets/_form.sass */
 .ah-form .form-group .button-size-large {
   width: 200px;
 }
-/* line 103, ../../../assets/_form.sass */
+/* line 111, ../../../assets/_form.sass */
 .ah-form .form-group-link-action .form-text {
   padding-top: 0;
 }
-/* line 106, ../../../assets/_form.sass */
+/* line 114, ../../../assets/_form.sass */
 .ah-form .form-group.margin-bottom-0 {
   margin-bottom: 0;
 }
-/* line 109, ../../../assets/_form.sass */
+/* line 117, ../../../assets/_form.sass */
 .ah-form .form-text {
   display: inline-block;
   max-width: 100%;
 }
-/* line 114, ../../../assets/_form.sass */
+/* line 122, ../../../assets/_form.sass */
 .ah-form .text-result {
   text-align: left;
   padding-top: 7px;
 }
-/* line 117, ../../../assets/_form.sass */
+/* line 125, ../../../assets/_form.sass */
 .ah-form .text-result ul {
   padding-left: 0px;
 }
-/* line 120, ../../../assets/_form.sass */
+/* line 128, ../../../assets/_form.sass */
 .ah-form .scrollable-field {
   overflow: hidden;
 }
-/* line 122, ../../../assets/_form.sass */
+/* line 130, ../../../assets/_form.sass */
 .ah-form .scrollable-field .scrollable-content {
   -webkit-padding-start: 0px;
   height: 230px;
@@ -13526,46 +13603,46 @@ form h6 {
   border: 1px solid #BCC7D5;
   border-radius: 3px;
 }
-/* line 129, ../../../assets/_form.sass */
+/* line 137, ../../../assets/_form.sass */
 .ah-form .scrollable-field .scrollable-content li {
   padding-left: 15px;
   padding-right: 15px;
   line-height: 30px;
 }
-/* line 134, ../../../assets/_form.sass */
+/* line 142, ../../../assets/_form.sass */
 .ah-form .help-block {
   margin-bottom: 0;
   font-size: 11px;
 }
-/* line 138, ../../../assets/_form.sass */
+/* line 146, ../../../assets/_form.sass */
 .ah-form .main-form-action {
   padding-top: 15px;
   padding-bottom: 15px;
   border-top: 1px solid #BCC7D5;
 }
-/* line 144, ../../../assets/_form.sass */
+/* line 152, ../../../assets/_form.sass */
 .ah-form .radio.multiline > label, .ah-form .checkbox.multiline > label {
   padding-top: 7px;
   display: block;
 }
-/* line 147, ../../../assets/_form.sass */
+/* line 155, ../../../assets/_form.sass */
 .ah-form .radio.multiline > label:first-child, .ah-form .checkbox.multiline > label:first-child {
   padding-top: 0;
 }
-/* line 150, ../../../assets/_form.sass */
+/* line 158, ../../../assets/_form.sass */
 .ah-form .radio.multiple-radio > label {
   margin-right: 15px;
 }
-/* line 153, ../../../assets/_form.sass */
+/* line 161, ../../../assets/_form.sass */
 .ah-form .checkbox.multiple-checkbox > label {
   margin-right: 15px;
 }
-/* line 157, ../../../assets/_form.sass */
+/* line 165, ../../../assets/_form.sass */
 .ah-form a.required, .ah-form span.required, .ah-form label.required {
   position: relative;
   display: inline-block;
 }
-/* line 160, ../../../assets/_form.sass */
+/* line 168, ../../../assets/_form.sass */
 .ah-form a.required:after, .ah-form span.required:after, .ah-form label.required:after {
   display: block;
   content: "*";
@@ -13576,19 +13653,19 @@ form h6 {
   font-size: 16px;
   line-height: 1;
 }
-/* line 170, ../../../assets/_form.sass */
+/* line 178, ../../../assets/_form.sass */
 .ah-form .main-form-action .btn ~ .btn {
   margin-left: 10px;
 }
-/* line 173, ../../../assets/_form.sass */
+/* line 181, ../../../assets/_form.sass */
 .ah-form .input-with-unit {
   position: relative;
 }
-/* line 175, ../../../assets/_form.sass */
+/* line 183, ../../../assets/_form.sass */
 .ah-form .input-with-unit input.form-control {
   padding-right: 50px;
 }
-/* line 177, ../../../assets/_form.sass */
+/* line 185, ../../../assets/_form.sass */
 .ah-form .input-with-unit .input-unit {
   position: absolute;
   right: 7px;
@@ -13596,7 +13673,7 @@ form h6 {
   color: #BCC7D5;
   pointer-events: none;
 }
-/* line 185, ../../../assets/_form.sass */
+/* line 193, ../../../assets/_form.sass */
 .ah-form .multiple-input {
   margin-left: -7px;
   margin-right: -8px;
@@ -13610,7 +13687,7 @@ form h6 {
 .ah-form .multiple-input:after {
   clear: both;
 }
-/* line 189, ../../../assets/_form.sass */
+/* line 197, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column {
   position: relative;
   float: left;
@@ -13620,23 +13697,23 @@ form h6 {
   padding-right: 7.5px;
   width: 120px;
 }
-/* line 190, ../../../assets/_form.sass */
+/* line 198, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column > label {
   padding-top: 7px;
 }
-/* line 192, ../../../assets/_form.sass */
+/* line 200, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column.no-label {
   padding-top: 31px;
 }
-/* line 198, ../../../assets/_form.sass */
+/* line 206, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column.input-xl {
   width: 150px;
 }
-/* line 201, ../../../assets/_form.sass */
+/* line 209, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column.input-xxl {
   width: 200px;
 }
-/* line 207, ../../../assets/_form.sass */
+/* line 215, ../../../assets/_form.sass */
 .ah-form select.form-control {
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -13645,24 +13722,24 @@ form h6 {
   background-image: url("/assets/img/dropdown.png");
   background-size: 9px 6px;
 }
-/* line 214, ../../../assets/_form.sass */
+/* line 222, ../../../assets/_form.sass */
 .ah-form .ah-select2-dropdown {
   width: 100%;
 }
-/* line 217, ../../../assets/_form.sass */
+/* line 225, ../../../assets/_form.sass */
 .ah-form.sticky-mainform-action {
   padding-bottom: 64px;
 }
-/* line 219, ../../../assets/_form.sass */
+/* line 227, ../../../assets/_form.sass */
 .ah-form.sticky-mainform-action .main-form-action {
   position: fixed;
   bottom: 0;
   width: 100%;
-  padding-right: 180px;
+  padding-right: 60px;
   background: #fff;
 }
 
-/* line 227, ../../../assets/_form.sass */
+/* line 235, ../../../assets/_form.sass */
 .form-inline .width-field-small-input {
   width: 230px;
 }
@@ -14214,6 +14291,16 @@ form h6 {
   width: 25%;
 }
 
+/* line 2, ../../../assets/_image_preview.sass */
+.image_preview .image_radion_thumbnail {
+  padding-top: 25px;
+  margin-left: -20px;
+}
+/* line 6, ../../../assets/_image_preview.sass */
+.image_preview .label_width {
+  width: 200px;
+}
+
 /* line 2, ../../../assets/_inventory.scss */
 #inventory-tab-content .border_modal {
   border-bottom: solid 1px #BCC7D5;
@@ -14333,225 +14420,230 @@ form h6 {
 }
 
 /* line 75, ../../../assets/_seller_page.sass */
+#dashboard_page .remark {
+  font-size: 12px;
+  color: #BCC7D5;
+}
+/* line 78, ../../../assets/_seller_page.sass */
 #dashboard_page .dashboard_column:first-child {
   padding-left: 0px;
 }
-/* line 78, ../../../assets/_seller_page.sass */
+/* line 81, ../../../assets/_seller_page.sass */
 #dashboard_page .dashboard_column:nth-child(2) {
   padding-right: 0px;
 }
-/* line 82, ../../../assets/_seller_page.sass */
+/* line 85, ../../../assets/_seller_page.sass */
 #dashboard_page .dashboard_graph canvas {
   height: 280px !important;
 }
-/* line 85, ../../../assets/_seller_page.sass */
+/* line 88, ../../../assets/_seller_page.sass */
 #dashboard_page .with_border {
   border: 1px solid #bcc7d5;
 }
-/* line 88, ../../../assets/_seller_page.sass */
+/* line 91, ../../../assets/_seller_page.sass */
 #dashboard_page .column-text-ellipsis {
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 94, ../../../assets/_seller_page.sass */
+/* line 97, ../../../assets/_seller_page.sass */
 #dashboard_page .space_column {
   padding: 15px 15px 15px 15px;
   margin-bottom: 20px;
   line-height: 27px;
   border-radius: 3px;
 }
-/* line 100, ../../../assets/_seller_page.sass */
+/* line 103, ../../../assets/_seller_page.sass */
 #dashboard_page .logo-img {
   max-width: 40px;
   max-heigh: 40px;
 }
-/* line 105, ../../../assets/_seller_page.sass */
+/* line 108, ../../../assets/_seller_page.sass */
 #dashboard_page .header-link a {
   color: #32343C;
 }
-/* line 109, ../../../assets/_seller_page.sass */
+/* line 112, ../../../assets/_seller_page.sass */
 #dashboard_page .header-link > .active-underline {
   border-bottom: 2px solid #4891d2;
   padding-bottom: 4px;
 }
-/* line 112, ../../../assets/_seller_page.sass */
+/* line 115, ../../../assets/_seller_page.sass */
 #dashboard_page .header-link:focus {
   text-decoration: none;
 }
-/* line 115, ../../../assets/_seller_page.sass */
+/* line 118, ../../../assets/_seller_page.sass */
 #dashboard_page .header_name_space {
   padding-left: 10px;
   line-height: 30px;
 }
-/* line 120, ../../../assets/_seller_page.sass */
+/* line 123, ../../../assets/_seller_page.sass */
 #dashboard_page .group_span_right span {
   margin-left: 15px;
   line-height: 30px;
 }
-/* line 124, ../../../assets/_seller_page.sass */
+/* line 127, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container {
   padding-bottom: 10px;
   padding-top: 10px;
   border-bottom: solid 1px #BCC7D5;
 }
-/* line 129, ../../../assets/_seller_page.sass */
+/* line 132, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container .price-column {
   padding-left: 50px;
 }
-/* line 133, ../../../assets/_seller_page.sass */
+/* line 136, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container .row_container > div:first-child {
   display: inline-block;
 }
-/* line 136, ../../../assets/_seller_page.sass */
+/* line 139, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container .row_container > div:nth-child(2) {
   float: right;
 }
-/* line 140, ../../../assets/_seller_page.sass */
+/* line 143, ../../../assets/_seller_page.sass */
 #dashboard_page .no_border {
   border: none;
 }
-/* line 143, ../../../assets/_seller_page.sass */
+/* line 146, ../../../assets/_seller_page.sass */
 #dashboard_page .small_field {
   padding-bottom: 10px;
   padding-top: 10px;
 }
-/* line 147, ../../../assets/_seller_page.sass */
+/* line 150, ../../../assets/_seller_page.sass */
 #dashboard_page .small_field .row:first-child {
   padding-top: 10px;
 }
-/* line 150, ../../../assets/_seller_page.sass */
+/* line 153, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field {
   padding-bottom: 5px;
   padding-top: 5px;
   border: none;
   position: relative;
 }
-/* line 156, ../../../assets/_seller_page.sass */
+/* line 159, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field div:first-child {
   padding-right: 0;
 }
-/* line 158, ../../../assets/_seller_page.sass */
+/* line 161, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field div:last-child {
   line-height: 40px;
 }
-/* line 162, ../../../assets/_seller_page.sass */
+/* line 165, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field .row_container > div:nth-child(2) {
   float: none;
   display: inline;
   padding-left: 10px;
 }
-/* line 167, ../../../assets/_seller_page.sass */
+/* line 170, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field .column-text-ellipsis {
   padding-left: 50px;
   position: absolute;
   top: 0;
 }
-/* line 172, ../../../assets/_seller_page.sass */
+/* line 175, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container:first-child {
   padding-top: 0;
 }
-/* line 175, ../../../assets/_seller_page.sass */
+/* line 178, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container:last-child {
   border: none;
   padding-top: 0;
   padding-bottom: 0;
 }
-/* line 180, ../../../assets/_seller_page.sass */
+/* line 183, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container:last-child.small_field {
   padding-top: 10px;
 }
-/* line 183, ../../../assets/_seller_page.sass */
+/* line 186, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_header {
   margin-bottom: 15px;
 }
-/* line 186, ../../../assets/_seller_page.sass */
+/* line 189, ../../../assets/_seller_page.sass */
 #dashboard_page .width_100 {
   width: 100px;
 }
-/* line 189, ../../../assets/_seller_page.sass */
+/* line 192, ../../../assets/_seller_page.sass */
 #dashboard_page .width_150 {
   width: 150px;
 }
-/* line 192, ../../../assets/_seller_page.sass */
+/* line 195, ../../../assets/_seller_page.sass */
 #dashboard_page .table {
   margin-bottom: 0;
 }
-/* line 196, ../../../assets/_seller_page.sass */
+/* line 199, ../../../assets/_seller_page.sass */
 #dashboard_page .table_dashboard td {
   padding: 15px 0 15px 0;
   border-top: 0;
   border-bottom: 1px solid #BCC7D5;
 }
-/* line 201, ../../../assets/_seller_page.sass */
+/* line 204, ../../../assets/_seller_page.sass */
 #dashboard_page .table_dashboard td.column-text-ellipsis {
   max-width: 0;
 }
-/* line 205, ../../../assets/_seller_page.sass */
+/* line 208, ../../../assets/_seller_page.sass */
 #dashboard_page .table_dashboard tr:last-child td {
   border-bottom: 0;
   padding-bottom: 0;
 }
-/* line 210, ../../../assets/_seller_page.sass */
+/* line 213, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:first-child {
   width: 100px;
 }
-/* line 213, ../../../assets/_seller_page.sass */
+/* line 216, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:nth-child(2) {
   width: 120px;
 }
-/* line 216, ../../../assets/_seller_page.sass */
+/* line 219, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:nth-child(3) {
   width: 120px;
 }
-/* line 219, ../../../assets/_seller_page.sass */
+/* line 222, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:last-child {
   padding-left: 30px;
   width: 56px;
 }
-/* line 224, ../../../assets/_seller_page.sass */
+/* line 227, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:first-child {
   width: 100px;
 }
-/* line 227, ../../../assets/_seller_page.sass */
+/* line 230, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:nth-child(2) {
   width: 120px;
 }
-/* line 231, ../../../assets/_seller_page.sass */
+/* line 234, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:last-child {
   padding-left: 30px;
   width: 80px;
 }
-/* line 236, ../../../assets/_seller_page.sass */
+/* line 239, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter .newsletter_date {
   font-size: 12px;
   margin-top: 5px;
   color: #7B7F8F;
 }
-/* line 240, ../../../assets/_seller_page.sass */
+/* line 243, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter td:last-child {
   padding-left: 30px;
   width: 80px;
 }
-/* line 245, ../../../assets/_seller_page.sass */
+/* line 248, ../../../assets/_seller_page.sass */
 #dashboard_page .account_health .group_container:last-child {
   padding: 10px 0px 0px 0px;
 }
 
-/* line 34, ../../../assets/screen.scss */
+/* line 35, ../../../assets/screen.scss */
 body {
   overflow-y: scroll;
   overflow-x: auto;
 }
 
-/* line 39, ../../../assets/screen.scss */
+/* line 40, ../../../assets/screen.scss */
 html, body {
   height: 100%;
   min-height: 100%;
 }
 
-/* line 44, ../../../assets/screen.scss */
+/* line 45, ../../../assets/screen.scss */
 #wrapper {
   position: relative;
   display: block;
@@ -14559,13 +14651,13 @@ html, body {
   min-height: 100%;
 }
 
-/* line 51, ../../../assets/screen.scss */
+/* line 52, ../../../assets/screen.scss */
 #page-content-wrapper {
   margin-left: 180px;
   position: relative;
 }
 
-/* line 56, ../../../assets/screen.scss */
+/* line 57, ../../../assets/screen.scss */
 #page-body-wrapper {
   padding-top: 30px;
   padding-bottom: 30px;
@@ -15654,23 +15746,23 @@ tr.angular-ui-tree-empty {
 }
 
 /* Additional Code */
-/* line 71, ../../../assets/screen.scss */
+/* line 72, ../../../assets/screen.scss */
 .tradable-list .left-column {
   margin-left: 30px;
   float: left;
   width: 300px;
 }
-/* line 75, ../../../assets/screen.scss */
+/* line 76, ../../../assets/screen.scss */
 .tradable-list .left-column .search-box {
   height: 33px;
 }
-/* line 79, ../../../assets/screen.scss */
+/* line 80, ../../../assets/screen.scss */
 .tradable-list .center-column {
   float: left;
   padding-top: 145px;
   margin-left: 30px;
 }
-/* line 83, ../../../assets/screen.scss */
+/* line 84, ../../../assets/screen.scss */
 .tradable-list .center-column .trade-button {
   padding: 8px 10px 5px 10px;
   margin-bottom: 15px;
@@ -15679,39 +15771,39 @@ tr.angular-ui-tree-empty {
   color: #BCC7D5;
   border: 1px solid #BCC7D5;
 }
-/* line 90, ../../../assets/screen.scss */
+/* line 91, ../../../assets/screen.scss */
 .tradable-list .center-column .trade-button.active {
   cursor: pointer;
   color: #4899DD;
 }
-/* line 96, ../../../assets/screen.scss */
+/* line 97, ../../../assets/screen.scss */
 .tradable-list .right-column {
   float: left;
   width: 300px;
   margin-left: 30px;
 }
-/* line 100, ../../../assets/screen.scss */
+/* line 101, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header {
   margin-top: 9px;
   margin-bottom: 5px;
 }
-/* line 103, ../../../assets/screen.scss */
+/* line 104, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header .column-1 {
   margin-left: 15px;
 }
-/* line 106, ../../../assets/screen.scss */
+/* line 107, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header .column-2 {
   margin-left: 120px;
 }
-/* line 109, ../../../assets/screen.scss */
+/* line 110, ../../../assets/screen.scss */
 .tradable-list .right-column .list-header .column-3 {
   margin-left: 30px;
 }
-/* line 114, ../../../assets/screen.scss */
+/* line 115, ../../../assets/screen.scss */
 .tradable-list .clickable-list {
   overflow: hidden;
 }
-/* line 116, ../../../assets/screen.scss */
+/* line 117, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column {
   margin-top: 15px;
   -webkit-padding-start: 0px;
@@ -15721,14 +15813,14 @@ tr.angular-ui-tree-empty {
   border: 1px solid #BCC7D5;
   border-radius: 3px;
 }
-/* line 124, ../../../assets/screen.scss */
+/* line 125, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li {
   padding-left: 15px;
   padding-right: 15px;
   line-height: 30px;
   cursor: pointer;
 }
-/* line 129, ../../../assets/screen.scss */
+/* line 130, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-1 {
   margin-left: 15px;
   display: inline-block;
@@ -15738,66 +15830,66 @@ tr.angular-ui-tree-empty {
   text-overflow: ellipsis;
   float: left;
 }
-/* line 138, ../../../assets/screen.scss */
+/* line 139, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-2 {
   margin-left: 40px;
   display: inline-block;
   float: left;
 }
-/* line 143, ../../../assets/screen.scss */
+/* line 144, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li .column-3 {
   margin-left: 90px;
   display: inline-block;
   float: left;
 }
-/* line 149, ../../../assets/screen.scss */
+/* line 150, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li.disabled {
   cursor: not-allowed !important;
   background: #EDF2F9 !important;
   color: #BCC7D5 !important;
 }
-/* line 154, ../../../assets/screen.scss */
+/* line 155, ../../../assets/screen.scss */
 .tradable-list .clickable-list .content-column li.active {
   background: #4899DD;
   color: #FFFFFF;
 }
 
-/* line 163, ../../../assets/screen.scss */
+/* line 164, ../../../assets/screen.scss */
 .table .action-column {
   width: 60px;
   padding-top: 14px;
   padding-bottom: 14px;
 }
 
-/* line 170, ../../../assets/screen.scss */
+/* line 171, ../../../assets/screen.scss */
 button.has-error-btn {
   border-color: #ec0000;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-/* line 177, ../../../assets/screen.scss */
+/* line 178, ../../../assets/screen.scss */
 .has-error-parent .form-control {
   border-color: #ec0000;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-/* line 184, ../../../assets/screen.scss */
+/* line 185, ../../../assets/screen.scss */
 ng-transclude.has-error .form-control {
   border-color: #ec0000 !important;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-/* line 190, ../../../assets/screen.scss */
+/* line 191, ../../../assets/screen.scss */
 .form-control.has-error {
   border-color: #ec0000;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-/* line 196, ../../../assets/screen.scss */
+/* line 197, ../../../assets/screen.scss */
 .empty-section {
   border: 1px solid;
   border-color: #BCC7D5;
@@ -15805,7 +15897,7 @@ ng-transclude.has-error .form-control {
   height: 80px;
   line-height: 80px;
 }
-/* line 202, ../../../assets/screen.scss */
+/* line 203, ../../../assets/screen.scss */
 .empty-section .loading-img {
   width: 40px;
   height: 40px;
@@ -15813,117 +15905,117 @@ ng-transclude.has-error .form-control {
   margin-right: 15px;
 }
 
-/* line 209, ../../../assets/screen.scss */
+/* line 210, ../../../assets/screen.scss */
 .disabled-chevron {
   cursor: not-allowed;
 }
 
-/* line 213, ../../../assets/screen.scss */
+/* line 214, ../../../assets/screen.scss */
 .opacity-50 {
   opacity: 0.5;
 }
 
-/* line 218, ../../../assets/screen.scss */
+/* line 219, ../../../assets/screen.scss */
 .my_file {
   display: none !important;
 }
 
-/* line 223, ../../../assets/screen.scss */
+/* line 224, ../../../assets/screen.scss */
 .get_file {
   cursor: pointer;
 }
 
 /* ui-select input fix */
-/* line 228, ../../../assets/screen.scss */
+/* line 229, ../../../assets/screen.scss */
 .ui-select-multiple input.ui-select-search:not(.ng-touched) {
   width: 100% !important;
 }
 
-/* line 232, ../../../assets/screen.scss */
+/* line 233, ../../../assets/screen.scss */
 .ui-select-dropdown-hide .ui-select-dropdown {
   display: none !important;
 }
 
 /* Temporary Fix for mysterious ui-search 2 line bug */
-/* line 236, ../../../assets/screen.scss */
+/* line 237, ../../../assets/screen.scss */
 .ui-select-multiple.ui-select-bootstrap input.ui-select-search {
   width: auto !important;
   height: 26px !important;
 }
 
-/* line 241, ../../../assets/screen.scss */
+/* line 242, ../../../assets/screen.scss */
 .ui-select-container .form-control:placeholder-shown {
   color: #32343C;
 }
 
-/* line 245, ../../../assets/screen.scss */
+/* line 246, ../../../assets/screen.scss */
 .export-list {
   margin-left: 30px;
   margin-bottom: 15px;
   list-style-type: none;
   -webkit-padding-start: 0px;
 }
-/* line 250, ../../../assets/screen.scss */
+/* line 251, ../../../assets/screen.scss */
 .export-list li {
   margin-bottom: 5px;
 }
-/* line 253, ../../../assets/screen.scss */
+/* line 254, ../../../assets/screen.scss */
 .export-list .group-label {
   font-weight: bold;
   margin: 20px 0px 5px 0px;
 }
 
-/* line 258, ../../../assets/screen.scss */
+/* line 259, ../../../assets/screen.scss */
 .export-select-all {
   margin-left: 30px;
 }
 
-/* line 262, ../../../assets/screen.scss */
+/* line 263, ../../../assets/screen.scss */
 [uib-typeahead-popup].dropdown-menu {
   width: 93%;
 }
 
-/* line 266, ../../../assets/screen.scss */
+/* line 267, ../../../assets/screen.scss */
 .popover {
   display: block;
 }
 
-/* line 271, ../../../assets/screen.scss */
+/* line 272, ../../../assets/screen.scss */
 .action-gear:hover, .action-gear:focus, .action-gear:active, .action-gear:visited {
   text-decoration: none;
   outline: 0;
 }
 
-/* line 277, ../../../assets/screen.scss */
+/* line 278, ../../../assets/screen.scss */
 .color-warning {
   color: #8a6d3b;
   line-height: 16px;
 }
 
-/* line 283, ../../../assets/screen.scss */
+/* line 284, ../../../assets/screen.scss */
 .import-page ol {
   -webkit-padding-start: 15px;
 }
 
-/* line 287, ../../../assets/screen.scss */
+/* line 288, ../../../assets/screen.scss */
 .image-wrapper {
   border: 1px solid #BCC7D5;
   border-radius: 3px;
   background-color: #EDF2F9;
 }
 
-/* line 293, ../../../assets/screen.scss */
+/* line 294, ../../../assets/screen.scss */
 .ui-select-multiple.ui-select-bootstrap input.ui-select-search {
   width: 100% !important;
 }
 
 /* Customize CK Editor */
-/* line 299, ../../../assets/screen.scss */
+/* line 300, ../../../assets/screen.scss */
 .cke_toolbox .cke_button__cut, .cke_toolbox .cke_button__copy, .cke_toolbox .cke_button__paste, .cke_toolbox .cke_button__anchor {
   display: none !important;
 }
 
-/* line 305, ../../../assets/screen.scss */
+/* line 306, ../../../assets/screen.scss */
 .cke_toolbox .cke_toolbar:nth-child(6) .cke_toolbar_separator {
   display: none;
 }

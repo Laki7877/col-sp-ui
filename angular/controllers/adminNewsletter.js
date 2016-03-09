@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, $uibModal, NewsletterService) {
+module.exports = function($scope, $controller, $uibModal, NewsletterService, ImageService) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
@@ -16,15 +16,28 @@ module.exports = function($scope, $controller, $uibModal, NewsletterService) {
 			}, 'Delete']
 		}
 	});
+
 	$scope.open = function(item) {
 		var modal = $uibModal.open({
 			size: 'lg',
 			templateUrl: 'newsletter/modalAdmin',
-			controller: function($scope, $uibModalInstance, NcAlert, id) {
+			controller: function($scope, $uibModalInstance, NcAlert, config, id, uploader) {
 				'ngInject';
-				$scope.formData = item;
+				$scope.formData = NewsletterService.generate();
 				$scope.form = {};
 				$scope.alert = new NcAlert();
+				$scope.shopGroupOptions = config.DROPDOWN.SHOP_GROUP_DROPDOWN;
+
+				//Load
+				if(id == 0) {
+					NewsletterService.get(id)
+						.then(function(data) {
+							$scope.formData = NewsletterService.deserialize(data);
+						}, function() {
+							$uibModalInstance.dismiss();
+						});
+				}
+
 				$scope.save = function() {
 					if(id == 0) {
 						//Create
@@ -48,6 +61,9 @@ module.exports = function($scope, $controller, $uibModal, NewsletterService) {
 			resolve: {
 				id: function() {
 					return _.isNil(item) ? 0 : item.NewsletterId;
+				},
+				uploader: function() {
+					return ImageService.getUploaderFn('/NewsletterImages');
 				}
 			}
 		});

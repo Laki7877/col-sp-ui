@@ -42,6 +42,7 @@ Route::add('/categories', 'CategoryController::index');
 
 //Shop Setting tab
 Route::add('/shops/settings', 'ShopController::settings');
+Route::add('/shops/appearance', 'ShopController::appearance');
 
 //seller routing
 Route::add('/accounts', 'SellerController::listAccount');
