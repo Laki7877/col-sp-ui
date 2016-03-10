@@ -43,4 +43,9 @@ class SellerController extends Controller
     {
         return View::render('seller_onboarding');
     }
+    public static function dashboard($params)
+    {
+        return View::render('seller_dashboard');
+    }
+
 }
