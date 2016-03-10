@@ -4,10 +4,11 @@ module.exports = function($scope, $rootScope, Onboarding, $log, $window){
 
 	Onboarding.getListCompletedTask()
 		.then(function(data) {
+			$scope.Completed = [true,true,true,true];
 			// $scope.Completed = [false,false,false,false];
-	    	$scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct, data.DecorateStore];
+	    	// $scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct, data.DecorateStore];
 	    })
-	    .then(function() {
+	    .then(function(data) {
 	    	var checkBeforeLaunch = $scope.Completed[$scope.Completed.length-1];
 	    	var checkIfHaveCompleted = $scope.Completed[$scope.Completed.length-1];
 			for (var i = $scope.Completed.length - 1; i >= 0; i--) {
@@ -16,7 +17,13 @@ module.exports = function($scope, $rootScope, Onboarding, $log, $window){
 			};
 			$scope.checkIfHaveCompleted = checkIfHaveCompleted;
 			return $scope.checkBeforeLaunch = checkBeforeLaunch;
+	    }).then(function(data) {
+	    	// Change text of Launch subtitle to 'Time to go live' if all tasks are completed
+	    	$scope.launchTextSubtitle = "Complete the tasks above to launch your store";
+			return $scope.launchTextSubtitle =	(data == true ? 'Time to go live!': 'Complete the tasks above to launch your store');
 	    });
+
+	
 
 	$scope.launchShop = function() {
 

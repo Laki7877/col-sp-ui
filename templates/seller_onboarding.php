@@ -45,7 +45,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
 
         <? $this->insert('components/forms/seller_task',
           ["field_header" => "Review & launch your store",
-           "field_text" => "Complete the tasks above to launch your store",
+           "field_text" => "{{launchTextSubtitle}}",
            "button_text" => "Launch",
            "image_name" => "icon-onboard-launch",
            "disble_status" => "disabled",
