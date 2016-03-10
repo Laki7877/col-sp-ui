@@ -1602,7 +1602,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", "Im
 					$scope.saving = true;
 					if(id == 0) {
 						//Create
-						NewsletterService.create(NewsletterService.serialize(res))
+						NewsletterService.create(NewsletterService.serialize($scope.formData))
 							.then(function() {
 								$uibModalInstance.close();
 							}, function(err) {
@@ -1613,7 +1613,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", "Im
 							});
 					} else {
 						//Update
-						NewsletterService.update(id, NewsletterService(serialize(res)))
+						NewsletterService.update(id, NewsletterService.serialize($scope.formData))
 							.then(function() {
 								$uibModalInstance.close();
 							}, function(err) {
@@ -1636,6 +1636,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", "Im
 		});
 		modal.result.then(function(res) {
 			$scope.reload();
+			$scope.alert.success('Successfully saved.')
 		});
 	};
 }];
@@ -10699,6 +10700,16 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 },{}],142:[function(require,module,exports){
 module.exports = function(common) {
 	var service = common.Rest('/Newsletters');
+
+	service.generate = function() {
+		return {
+			VisibleShopGroup: 'All'
+		};
+	};
+	service.deserialize = function(data) {
+		return _.extend(this.generate(), data);
+	};
+
 	return service;
 };
 },{}],143:[function(require,module,exports){

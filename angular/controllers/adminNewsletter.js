@@ -90,7 +90,7 @@ module.exports = function($scope, $controller, $uibModal, NewsletterService, Ima
 					$scope.saving = true;
 					if(id == 0) {
 						//Create
-						NewsletterService.create(NewsletterService.serialize(res))
+						NewsletterService.create(NewsletterService.serialize($scope.formData))
 							.then(function() {
 								$uibModalInstance.close();
 							}, function(err) {
@@ -101,7 +101,7 @@ module.exports = function($scope, $controller, $uibModal, NewsletterService, Ima
 							});
 					} else {
 						//Update
-						NewsletterService.update(id, NewsletterService(serialize(res)))
+						NewsletterService.update(id, NewsletterService.serialize($scope.formData))
 							.then(function() {
 								$uibModalInstance.close();
 							}, function(err) {
@@ -124,6 +124,7 @@ module.exports = function($scope, $controller, $uibModal, NewsletterService, Ima
 		});
 		modal.result.then(function(res) {
 			$scope.reload();
+			$scope.alert.success('Successfully saved.')
 		});
 	};
 };
