@@ -1,0 +1,249 @@
+.field_seller
+
+	.with_border
+		padding-bottom: 14px
+		border-bottom: 1px solid $header-border-grey
+
+.onboarding_wrapper
+	background-image: url('/assets/img/bg-onboarding.png')
+	background-size: 1100px 200px
+	background-color: #f8e6e6
+	background-repeat: no-repeat
+	background-position: center top
+	margin-top: -30px
+	margin-bottom: -30px
+	margin-left: -40px
+	margin-right: -40px
+	height:	200px
+	padding-top: 200px
+
+	.welcome_text_big
+		margin-top: -164px
+		font-size: 32px
+
+	.welcome_text_small
+		font-size: 21px
+
+.onboarding_content
+	margin-top: -36px
+	width: 800px
+	margin-left: auto
+	margin-right: auto
+
+	> .home_task_space
+		margin-bottom: 20px
+
+	.home_task
+		border:	1px solid $color-grey
+		@include border-radius(3px)
+		background-color:	$color-white
+
+		.image-thumbs-img-wrapper
+			display: inline-flex
+			padding-left: 17px
+		.home_task_text
+			padding: 11px 17px
+			display: inline-block
+		.home_task_button
+			float: right
+			padding: 17px 17px
+
+			.btn-width-xxl
+				width: 150px
+
+	& .background_blue
+		background-color: $color-light-blue
+		.btn-white
+			background-color: $color-light-blue
+
+	.complete_line
+		margin: 40px 0px
+		border-top: solid 1px $color-grey
+		position: relative
+		min-height: 1px
+		> .complte_line_text
+			position: absolute
+			left: 50%
+			top: 50%
+			padding-left: 15px
+			padding-right: 15px
+			transform: translate(-50%, -50%)
+			background-color: white
+
+
+#dashboard_page
+	.remark
+		font-size: 12px
+		color: $color-grey
+	.dashboard_column:first-child
+		padding-left: 0px
+
+	.dashboard_column:nth-child(2)
+		padding-right: 0px
+
+	.dashboard_graph
+		canvas
+			height: 280px !important
+
+	.with_border
+		border: 1px solid $header-border-grey
+
+	.column-text-ellipsis
+		max-width: 100%
+		overflow: hidden
+		text-overflow: ellipsis
+		white-space: nowrap
+
+	.space_column
+		padding: 15px 15px 15px 15px
+		margin-bottom: 20px
+		line-height: 27px
+		border-radius: 3px
+
+	.logo-img
+		max-width: 40px
+		max-heigh: 40px
+
+	.header-link
+		a
+			color: $color-black
+
+	.header-link
+		> .active-underline
+			border-bottom: 2px solid $color-soft-blue
+			padding-bottom: 4px
+		&:focus
+			text-decoration: none
+
+	.header_name_space
+		padding-left: 10px
+		line-height: 30px
+
+	.group_span_right
+		span
+			margin-left: 15px
+			line-height: 30px
+
+	.group_container
+		padding-bottom: 10px
+		padding-top: 10px
+		border-bottom: solid 1px $color-grey
+
+		.price-column
+			padding-left: 50px
+
+		.row_container
+			> div:first-child
+				display: inline-block
+
+			> div:nth-child(2)
+				float: right
+
+
+	& .no_border
+		border: none
+
+	& .small_field
+		padding-bottom: 10px
+		padding-top: 10px
+
+		& .row:first-child
+			padding-top: 10px
+
+	& .top_selling_field
+		padding-bottom: 5px
+		padding-top: 5px
+		border: none
+		position: relative
+
+		& div:first-child
+			padding-right: 0
+		& div:last-child
+			line-height: 40px
+
+		.row_container
+			> div:nth-child(2)
+				float: none
+				display: inline
+				padding-left: 10px
+
+		.column-text-ellipsis
+			padding-left: 50px
+			position: absolute
+			top: 0
+
+	.group_container:first-child
+		padding-top: 0
+
+	.group_container:last-child
+		border: none
+		padding-top: 0
+		padding-bottom: 0
+
+		&.small_field
+			padding-top: 10px
+
+	.top_selling_header
+		margin-bottom: 15px
+
+	.width_100
+		width:	100px
+
+	.width_150
+		width:	150px
+
+	.table
+		margin-bottom: 0
+
+	.table_dashboard
+		td
+			padding: 15px 0 15px 0
+			border-top: 0
+			border-bottom: 1px solid $color-grey
+
+			&.column-text-ellipsis
+				max-width: 0
+
+		tr:last-child
+			td
+				border-bottom: 0
+				padding-bottom: 0
+
+	.table_recent_order
+		td:first-child
+			width: 100px
+
+		td:nth-child(2)
+			width: 120px
+
+		td:nth-child(3)
+			width: 	120px
+
+		td:last-child
+			padding-left: 30px
+			width: 56px
+
+	.table_lsa
+		td:first-child
+			width: 100px
+
+		td:nth-child(2)
+			width: 120px
+
+
+		td:last-child
+			padding-left: 30px
+			width: 80px
+
+	.table_newsletter
+		.newsletter_date
+			font-size: 12px
+			margin-top: 5px
+			color: $color-dark-grey
+		td:last-child
+			padding-left: 30px
+			width: 80px
+
+	.account_health
+		.group_container:last-child
+			padding: 10px 0px 0px 0px

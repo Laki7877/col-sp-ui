@@ -1,4 +1,4 @@
-module.exports = [function () {
+module.exports = ['$cookies', function ($cookies) {
     'use strict';
     var service = {};
 
@@ -40,10 +40,11 @@ module.exports = [function () {
      * The controllers has to implement the logic that if sessionToken is null/undefined then user is not authorized
      */
     service.getSessionToken = function () {
-        var token = sessionStorage.getItem('central.seller.portal.auth.token');
-        if (!token) {
-            token = localStorage.getItem('central.seller.portal.auth.token');
-        }
+        // var token = sessionStorage.getItem('central.seller.portal.auth.token');
+        // if (!token) {
+        //     token = localStorage.getItem('central.seller.portal.auth.token');
+        // }
+        var token = $cookies.get('central.seller.portal.auth.token');
         return token;
     };
     /**
@@ -52,10 +53,11 @@ module.exports = [function () {
      * also be stored in localStorage
      */
     service.storeSessionToken = function (sessionToken, flag) {
-        sessionStorage.setItem('central.seller.portal.auth.token', sessionToken);
-        if (flag) {
-            localStorage.setItem('central.seller.portal.auth.token', sessionToken);
-        }
+        // sessionStorage.setItem('central.seller.portal.auth.token', sessionToken);
+        // if (flag) {
+        //     localStorage.setItem('central.seller.portal.auth.token', sessionToken);
+        // }
+        $cookies.put('central.seller.portal.auth.token', sessionToken);
     };
 
     /**
@@ -83,7 +85,7 @@ module.exports = [function () {
     };
 
     service.storeImposterProfile = function(profile){
-	profile = angular.toJson(profile);
+	    profile = angular.toJson(profile);
         sessionStorage.setItem('central.seller.portal.auth.imposter', profile);
     };
 	
@@ -102,6 +104,8 @@ module.exports = [function () {
     service.clear = function () {
         sessionStorage.removeItem('central.seller.portal.auth.token');
         sessionStorage.removeItem('central.seller.portal.auth.profile');
+        $cookies.remove('central.seller.portal.auth.token');
+        $cookies.remove('central.seller.portal.auth.profile');
 	    sessionStorage.removeItem('central.seller.portal.auth.imposter');
         localStorage.removeItem('central.seller.portal.auth.actions');
         localStorage.removeItem('central.seller.portal.auth.profile');

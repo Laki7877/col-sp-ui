@@ -3,27 +3,21 @@ module.exports = function(common) {
 	service = common.Rest('/Brands');
 	service.generate = function(data) {
 		return {
-			BrandImages: []
+			BrandBannerEn: [],
+			BrandBannerTh: []
 		};
 	}
 	service.deserialize = function(data) {
-		var processed = angular.copy(data);
-		if(angular.isDefined(processed.BrandImage) && processed.BrandImage != null) {
-			processed.BrandImages = [processed.BrandImage];
-		} else {
-			processed.BrandImages = [];
+		var processed = _.extend(service.generate(), data);
+		if(!_.isNil(data.BrandImage)) {
+			processed.brandImage = data.BrandImage;
 		}
 		return processed;
 	};
 
 	service.serialize = function(data) {
-		var processed = angular.copy(data);
-		if(processed.BrandImages.length > 0) {
-			processed.BrandImage = processed.BrandImages[0];
-		} else {
-			processed.BrandImage = null;
-		}
-		processed = _.omit(processed, ['BrandImages']);
+		var processed = _.extend({}, data);
+		_.unset(processed, ['brandImage']);
 		return processed;
 	};
 	return service;

@@ -29,19 +29,6 @@ if(!isset($optional_button_name)) {
   </div>
 
 
-  <!-- <div class="search-section section-action">
-    <div class="input-group">
-      <div class="input-group-btn">
-        <button type="button" class="body-dropdown-button btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="dropdown-text margin-right-10">- Choose Action -</span>
-            <span class="caret margin-left-10"></span>
-        </button>
-        <ul class="dropdown-menu">
-            <li><a ng-click="bulk.delete()">Delete </a></li>
-            <li><a ng-click="bulk.hide()">Hide </a></li>
-            <li><a ng-click="bulk.show()">Show </a></li>
-        </ul>
-      </div>
       <div class="input-group-btn">
         <button type="button" class="btn-white btn">
           <span class="button-text-blue">Confirm</span>

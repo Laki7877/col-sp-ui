@@ -2,6 +2,16 @@ module.exports = function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/LocalCategories');
 	
+    service.getAllByShopId = function(shopId){
+        return common.makeRequest({
+			method: 'GET',
+			url: '/LocalCategories',
+            params: {
+                ShopId: shopId
+            }
+		});
+    }
+    
 	//Generate empty template
 	service.generate = function(extend) {
 		return angular.extend({
@@ -9,7 +19,12 @@ module.exports = function(common, $q, util) {
 			NameTh: "",
 			UrlKeyEn: "",
 			Visibility: true,
+			CategoryBannerTh: [],
+			CategoryBannerEn: []
 		}, extend);
+	};
+	service.deserialize = function(data) {
+		return _.extend(service.generate(), data);
 	};
 
 	/**

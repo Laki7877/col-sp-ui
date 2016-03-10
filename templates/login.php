@@ -4,7 +4,7 @@
 <div class="login-page" ng-controller="LoginCtrl">
 
 	<div class="logo-img-wrapper">
-		<img class="logo-img" src="<?= $this->asset('/assets/img/seller_logo.png') ?>" />
+		<img class="logo-img" src="<?= $this->asset('/assets/img/login_logo.png') ?>" />
 	</div>
 	<form ng-submit="doLogin()" name="loginForm" novalidate>
 		<div class="form-login" ng-cloak>

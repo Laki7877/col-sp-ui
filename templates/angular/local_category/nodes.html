@@ -1,33 +1,22 @@
-<div class="category-content row no-margin" ui-tree-handle style="cursor: pointer;">
-	<div class="category-content-padding">
-		<span class="col-xs-8 column-lc-name" >
-			<span class="lc-icon-name-warpper" >
-				<i 	class ="fa toggle-button"
-					ng-if="node.nodes && node.nodes.length > 0"
-					ng-class="{	'fa-chevron-down' : !collapsed,
-								'fa-chevron-right' : collapsed }"
-					ng-click="toggle(this)"
-					data-nodrag ></i>
-				<i  class = "fa fa-chevron-right caret-grey"
-					ng-if="(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0"
-					data-nodrag></i>
-				<span class="no-children-row"
-					ng-if="$parentNodesScope.depth() == 0"
-					data-nodrag></span>
-				<a class="inline-block" ng-click="open(node)" data-nodrag>{{ node.NameEn }}</a>
-			</span>
-		</span>
-		<span class="col-xs-1 text-align-center">{{ node.ProductCount }}</span>
-		<span class="col-xs-1 text-align-center" data-nodrag><nc-eye nc-model="node.Visibility" nc-eye-on-toggle="toggleVisibility(node)"></nc-eye>
-		</span>
-		<span class="col-xs-1 text-align-center">
-			<i class="fa fa-arrows color-dark-grey icon-size-20"></i>
-		</span>
-		<span class="col-xs-1 text-align-center" data-nodrag>
-			<nc-action nc-model="$nodeScope" nc-action-fn="actions"></nc-action>
-		</span>	
-	</div>
+<div ui-tree-handle class="tree-node tree-node-content">
+	<a class="btn-collapse" ng-if="node.nodes && node.nodes.length > 0" data-nodrag ng-click="toggle(this)">
+		<span class="glyphicon" ng-class="{
+		'glyphicon-chevron-right': collapsed,
+		'glyphicon-chevron-down': !collapsed }"></span>
+	</a>
+	<span ng-if="!node.nodes || node.nodes.length == 0">
+		<span class="glyphicon glyphicon-chevron-right color-grey"></span>
+	</span>
+	<a ng-click="open(node)" data-nodrag>{{node.NameEn}}</a>
+	<span class="pull-right category-column category-action-gear" data-nodrag>
+		<nc-action nc-model="$nodeScope" nc-action-fn="actions"></nc-action>
+	</span>
+	<span class="pull-right category-column" data-nodrag>
+		<nc-eye nc-model="node.Visibility" nc-eye-on-toggle="toggleVisibility(node)"></nc-eye>
+	</span>
+	<span class="pull-right category-column">{{node.ProductCount}}</span>
 </div>
-<ol ui-tree-nodes ng-model="node.nodes" ng-slide-toggle="!collapsed">
-	<li ng-repeat="node in node.nodes" ui-tree-node ng-include="'local_category/nodes'"></li>
+<ol ui-tree-nodes ng-model="node.nodes" ng-class="{hidden: collapsed}">
+	<li ng-repeat="node in node.nodes" ui-tree-node ng-include="'local_category/nodes'">
+	</li>
 </ol>

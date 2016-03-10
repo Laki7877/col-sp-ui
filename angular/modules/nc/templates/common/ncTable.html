@@ -1,0 +1,7 @@
+<div class="table-section">
+  <div ng-show="!loading && model.data.length != 0" ng-transclude></div>
+  <div nc-loading="{{options.loadingMessage}}" ng-show="loading"></div>
+  <div nc-empty="{{options.searchEmptyMessage}}" ng-show="!loading && model.data.length == 0 && searching">
+  </div>
+  <div nc-empty="{{options.emptyMessage}}" ng-show="!loading && model.data.length == 0 && !searching"></div>
+</div>

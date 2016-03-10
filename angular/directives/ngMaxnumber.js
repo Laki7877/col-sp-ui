@@ -14,7 +14,8 @@ module.exports = function() {
 
 			ctrl.$validators.maxnumber = function(modelValue, viewValue) {
 				var value = modelValue || viewValue;
-				if(_.isNil(value) || !value.match(/^[0-9]+(\.[0-9]{0,})?$/)) {
+				var regex = new RegExp('^[0-9]+(\.[0-9]{0,})?$');
+				if(_.isNil(value) || !regex.test(value)) {
 					return true;
 				}
 				return (!value) || (!maxnumber) || (_.toNumber(value) <= _.toNumber(maxnumber)) || false;

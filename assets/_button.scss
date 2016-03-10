@@ -51,6 +51,10 @@
   @include button-variant($white, $color-red, $color-red);
 }
 
+.btn_disabled:disabled {
+  color:  $color-grey;
+}
+
 .btn.btn-width-xl {
 	width: $button-width-xl;
 }

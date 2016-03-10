@@ -105,3 +105,56 @@ ul.sub-sidebar {
     }
   }
 }
+
+
+/* --- Collaspable Menu --- */
+#sidebar-wrapper{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 60px;
+	z-index: 10;
+	.logo-img-wrapper{
+		display: none;
+	}
+  .logo-img-wrapper-collased{
+    display: block;
+    img{
+      width: 20px;
+      height: 20px;
+      margin: 65px 20px 0px 20px;
+    }
+  }
+	.sidebar-nav{
+		 margin-top: 20px;
+		 li {
+			padding-left: 19px;
+		 	a{
+			 	display: none;
+		 	}
+		}
+	}
+}
+
+#sidebar-wrapper:hover{
+	width: 180px;
+  .logo-img-wrapper-collased{
+    display: none;
+  }
+	.logo-img-wrapper{
+		display: block;;
+	}
+	.sidebar-nav{
+		 margin-top: 0px;
+		 li {
+			 a{
+				 display: inline-block;
+			 }
+		 }
+	}
+}
+
+#page-content-wrapper{
+	z-index: 9 !important;
+	margin-left: 60px !important;
+}

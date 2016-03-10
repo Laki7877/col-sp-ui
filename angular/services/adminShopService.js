@@ -30,7 +30,8 @@ module.exports = function(common, config, util) {
 		var processed = {
 			Status: config.DROPDOWN.DEFAULT_STATUS_DROPDOWN[0],
 			ShopOwner: {},
-			Users: []
+			Users: [],
+			Commissions: []
 		};
 		return processed;
 	};

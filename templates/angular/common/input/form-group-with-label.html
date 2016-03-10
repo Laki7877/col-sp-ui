@@ -10,10 +10,16 @@
 			<span ng-bind-html="options.error.messages[key]"></span>
 		</span>
 	</div>
-	<div class="width-field-tooltip padding-left-30">
+	<div class="width-field-tooltip padding-left-30" ng-class="{'hide-component': !(options.tooltip && options.tooltip.length > 0)}">
         <i class="fa fa-2x fa-question-circle color-grey" uib-tooltip-html="options.tooltip"
         tooltip-trigger="mouseenter" tooltip-placement="right"
         ng-if="options.tooltip && options.tooltip.length > 0">
         </i>
+   </div>
+   <div class="width-field-checkbox padding-left-30">
+		<div ng-if="options.checkbox.show">
+			<input type="checkbox" name="vehicle" value="Car">
+			<span class="checkbox_text">{{options.checkbox.message}}</span>
+		</div>        
    </div>
 </div>

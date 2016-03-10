@@ -29,6 +29,9 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
     return _.isNil(status) ? config.SHOP_STATUS[0] : $rootScope.shopStatus[status];
   };
 
+  //Load ck editor
+  $rootScope.ckOptions = config.CK_DEFAULT_OPTIONS;
+
   //Create global logout function
   $rootScope.logout = function() {
     if ($rootScope.Imposter) {

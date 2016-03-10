@@ -1,9 +1,5 @@
 module.exports = {
-	//baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/',
-	//REST_SERVICE_BASE_URL: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api',
-    baseUrl: 'http://localhost:58127/api/',
-	REST_SERVICE_BASE_URL: 'http://localhost:58127/api/',
-	//REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
+	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
     HANDLE_EXCEPTION: false,
     MAX_IMAGE_UPLOAD_SIZE: 5242880,
@@ -18,6 +14,24 @@ module.exports = {
 	TYPEAHEAD_IMPORT_GUIDELINE_LIMIT: 8,
 	TYPEAHEAD_DELAY: 150,
 	DROPDOWN: {
+		SHOP_GROUP_DROPDOWN: [
+			{
+				name: 'All',
+				value: 'AL'
+			},
+			{
+				name: 'BU',
+				value: 'BU'
+			},
+			{
+				name: 'INDY',
+				value: 'IN'
+			},
+			{
+				name: 'Merchant',
+				value: 'ME'
+			}
+		],
 		DEFAULT_STATUS_DROPDOWN: [
 			{
 				name: 'Inactive',
@@ -60,12 +74,34 @@ module.exports = {
 			{
 				name: 'HTML Box',
 				value: 'HB'
+			},
+			{
+				name: 'Checkbox',
+				value: 'CB'
 			}
 		],
 		VARIANT_DROPDOWN: [
 			{
-				name: 'Image',
+				name: 'Product Image',
 				value: 'IO'
+			},
+			{
+				name: 'Textbox',
+				value: 'TO'
+			},
+			{
+				name: 'Dropdown',
+				value: 'DD'
+			}
+		],
+		VARIANT2_DROPDOWN: [
+			{
+				name: 'Product Image',
+				value: 'IO'
+			},
+			{
+				name: 'Custom Image',
+				value: 'CI'
 			},
 			{
 				name: 'Textbox',
@@ -121,8 +157,8 @@ module.exports = {
 			value: 'IN'
 		},
 		{
-			name: 'Seller',
-			value: 'SE'
+			name: 'Merchant',
+			value: 'ME'
 		}
 	],
 	INVENTORY_STATUS: [
@@ -144,7 +180,7 @@ module.exports = {
 			name: 'Not Approved',
 			value: 'WA',
 			color: 'color-grey'
-		}, 
+		},
 		{
 			name: 'Approved',
 			value: 'AP',
@@ -190,7 +226,7 @@ module.exports = {
 	],
 	CATEGORY_SYNC_DELAY: 1200, //Category wait for x millisecond before actually saving
 	DEFAULT_SUCCESS_MESSAGE: 'Your changes have been saved successfully.',
-	DEFAULT_ERROR_MESSAGE: 'Unable to save because required fields are missing or incorrect.', 
+	DEFAULT_ERROR_MESSAGE: 'Unable to save because required fields are missing or incorrect.',
 	TITLE: {
 		CREATE: 'Add {{content}}',
 		DETAIL: '{{content}} Detail'

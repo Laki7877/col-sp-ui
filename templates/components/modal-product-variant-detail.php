@@ -23,8 +23,6 @@
                             <div class="form-section-header">
                                 <h2>Vital Information</h2></div>
                             <div class="form-section-content modal-custom">
-
-
                                 <div ng-template="common/input/text2" ng-template-options="{
 									'label': 'Product Name (English)',
 									'labelClass': 'required',
@@ -57,7 +55,6 @@
                                 nc-label="UPC" nc-template-options-path="addProductForm/MasterVariant_Upc">
                                     <input class="form-control width-field-large" name="Modal_Upc" ng-model="<?= $model ?>.Upc" maxlength="100" />
                                 </div>
-
 
                                 <div class="form-group">
                                     <div class="width-label">

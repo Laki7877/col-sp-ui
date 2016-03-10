@@ -1,5 +1,5 @@
 <div id="add-product-category-tab-content">
-	<? $this->insert('partials/add-product-inner-tab-breadcrumb') ?>
+        <div nc-template="add-product/inner-tab-breadcrumb" nc-view-bag="formData"></div>
 
 	<div class="row">
 		<div class="col-xs-9">

@@ -1,9 +1,14 @@
 <?php $this->layout('layouts/simple-sidebar', get_defined_vars()) ?>
 
 <?php $this->start('sidebar') ?>
+
     <div class="logo-img-wrapper">
         <img class="logo-img" src="<?= $this->asset('/assets/img/seller_logo.png') ?>" />
     </div>
+    <div class="logo-img-wrapper-collased">
+        <img class="logo-img" src="<?= $this->asset('/assets/img/seller_logo_small.png') ?>" />
+    </div>
+
 
     <ul ng-init="initMenu('seller')" class="sidebar-nav no-padding">
         <li ng-repeat="menuItem in menu track by $index" class="sidebar-brand {{activeMenuItem(menuItem)}}" ng-mouseenter="menuItem.hover=true" ng-mouseleave="menuItem.hover=false">

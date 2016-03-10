@@ -57,7 +57,7 @@ function generateRouteArray(obj) {
 
 var seller = {
 	'Home|fa-home': {
-
+		'Onboarding': '/onboarding'
 	},
 	'Orders|fa-inbox': {
 
@@ -117,10 +117,10 @@ var admin = {
 		'Global Category': '/admin/categories'
 	},
 	'Accounts|fa-user': {
-		'Shop Accounts': '/admin/shops',
-		'Shop Types': '/admin/shoptypes',
-		'Admin Accounts': '/admin/accounts',
-		'Admin Roles': '/admin/roles'
+		'Shop Accounts': ['/admin/shops', '/admin/shops/add'],
+		'Shop Types': ['/admin/shoptypes', '/admin/shoptypes/add'],
+		'Admin Accounts': ['/admin/accounts', '/admin/accounts/add'],
+		'Admin Roles': ['/admin/roles', '/admin/roles/add']
 	},
 	'Promotion|fa-bookmark': {
 		'Global Coupons': '/admin/coupons/admin',

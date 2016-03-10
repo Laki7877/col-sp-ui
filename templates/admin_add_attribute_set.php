@@ -53,7 +53,7 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Attribute Mapping</h2></div>
             <div class="form-section-content">
-                <nc-tradable-select nc-test="lockAttributeset" nc-model="formData.Attributes" nc-select-options="attributeOptions" nc-options="{ 'map' : { 'text': 'AttributeNameEn', 'value' : 'AttributeId' } }"></nc-tradable-select>
+                <nc-tradable-select nc-test="lockAttributeset" nc-model="formData.Attributes" nc-select-options="attributeOptions" column-header="Attribute in this Attribute Set" search-placeholder="Search Attribute" nc-options="{ 'map' : { 'text': 'AttributeNameEn', 'value' : 'AttributeId'} }"></nc-tradable-select>
                 <div class="row col-xs-12">
                   <p style="margin-left: 30px; margin-top:15px">* Changing attribute mapping may affect products under this attribute set</p>
                 </div>
@@ -81,13 +81,18 @@
                   ng-model="formData.Tags"
                   on-select="onKeywordAdded($item, $model)"
                   multiple
-                  tagging tagging-tokens=",|ENTER"
+                  nc-tag-validator
+                  nc-tag-pattern="^[0-9a-zA-Z]+$"
+                  nc-max-tag-count="100"
+                  nc-max-tag-length="30"
+                  tagging="tagTransform"
+                  tagging-tokens=",|ENTER"
                   tagging-label="">
                     <ui-select-match placeholder="Input tags">
-                    {{$item}}
+                    {{$item.TagName}}
                     </ui-select-match>
                     <ui-select-choices repeat="item in tagOptions">
-                    {{item}}
+                    {{item.TagName}}
                     </ui-select-choices>
                   </ui-select>
               </div>

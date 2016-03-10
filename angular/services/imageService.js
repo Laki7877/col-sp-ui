@@ -1,8 +1,30 @@
 //Image Service
-module.exports = function($q, $http, common, storage, config, FileUploader) {
+module.exports = function($q, $http, common, storage, config, FileUploader, Upload) {
   'ngInject';
   var service = {};
 
+  //Upload by url
+  service.upload = function(url, file, opts) {
+    var accessToken = storage.getSessionToken();
+    var options = {
+      url: config.REST_SERVICE_BASE_URL + url,
+      data: { file: file }
+    };
+    if(!_.isNil(accessToken)) {
+      options.headers = {
+        Authorization: 'Basic ' + accessToken
+      };
+    }
+    return Upload.upload(_.extend(options, opts));
+  };
+
+  service.getUploaderFn = function(url, opts) {
+    return {
+      upload: function(file) {
+        return service.upload(url, file, opts);
+      }
+    };
+  }
   /**
    * Get image uploader
    */
@@ -17,6 +39,7 @@ module.exports = function($q, $http, common, storage, config, FileUploader) {
         Authorization: 'Basic ' + accessToken
       },
       queueLimit: 10,
+      removeAfterUpload : true,
       filters: [{
         name: 'imageFilter',
         fn: function(item /*{File|FileLikeObject}*/ , options) {
@@ -38,7 +61,7 @@ module.exports = function($q, $http, common, storage, config, FileUploader) {
   /**
    * Assign image uploader events specifically to COL-image uploading feature
    */
-  service.assignUploaderEvents = function(uploader, images, queueLimit, onFail, onValidation, onSuccess) {
+  service.assignUploaderEvents = function(uploader, images, queueLimit, onFail, onValidation, onDoneItem) {
 
     uploader.onWhenAddingFileFailed = function(item, filter, options) {
       console.info('onAfterAddingFile', item, filter, options);
@@ -64,9 +87,9 @@ module.exports = function($q, $http, common, storage, config, FileUploader) {
       console.info('onAfterAddingFile', images, uploader.queue);
     };
     uploader.onSuccessItem = function(item, response, status, headers) {
-      images[item.indx] = response;
+      images[item.indx || 0] = response;
       console.info('onSuccessItem', images, uploader.queue);
-			// onSuccess();
+	  if(onDoneItem) onDoneItem(images);
     };
     uploader.onErrorItem = function(item, response, status, headers) {
       images.splice(item.indx, 1);

@@ -15,13 +15,22 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="stylesheet" href="<?=$this->asset('/assets/css/screen.css')?>" />
     <link rel="stylesheet" href="<?=$this->asset('/assets/libs/angular-bootstrap-datetimepicker/datetimepicker.css')?>" />
-
     <script src="<?= $this->asset('/assets/js/jquery.min.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/jquery.rest.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/bundle.js') ?>"></script>
 
     <script src="<?= $this->asset('/assets/js/bootstrap.min.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/bootstrap-fixconflict.js') ?>"></script>
+    <script src="<?= $this->asset('/assets/js/jquery-ui.js') ?>"></script>
+    <script src="<?= $this->asset('/assets/js/jquery.ui.nestedSortable.js') ?>"></script>
+    <script src="<?= $this->asset('/assets/js/custom-js.js') ?>"></script>
+    <script src="/assets/libs/ckeditor/ckeditor.js"></script>
+    <script src="/assets/libs/ckeditor/config.js"></script>
+    <script src="/assets/libs/ckfinder/ckfinder.js"></script>
+
+    <script src="/assets/libs/moment/moment.min.js"></script>
+
+    <script src="/assets/libs/datepicker/js/bootstrap-datetimepicker.min.js"></script>
 </head>
 
 <body class="ahpt" ng-cloak ng-controller="RootCtrl">
@@ -53,14 +62,6 @@
     <div id="wrapper">
         <?= $this->section('content') ?>
     </div>
-    <script src="<?= $this->asset('/assets/js/jquery-ui.js') ?>"></script>
-    <script src="<?= $this->asset('/assets/js/jquery.ui.nestedSortable.js') ?>"></script>
-    <script src="<?= $this->asset('/assets/js/custom-js.js') ?>"></script>
-    <script src="/assets/libs/ckeditor/ckeditor.js"></script>
-    <script src="/assets/libs/ckeditor/config.js"></script>
-    <script src="/assets/libs/moment/moment.min.js"></script>
-
-    <script src="/assets/libs/datepicker/js/bootstrap-datetimepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/assets/libs/datepicker/css/bootstrap-datetimepicker.min.css">
 
     <!--<script src="/assets/libs/select2/js/select2.js"></script>-->

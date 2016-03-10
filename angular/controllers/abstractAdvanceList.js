@@ -47,10 +47,7 @@ module.exports = function($scope, $controller, options, Product, LocalCategorySe
 	};
 	$scope.serializeAdvanceSearch = function(formData) {
 		var processed = _.extend({}, formData);
-
 		processed.ProductNames = _.compact([processed.ProductName]);
-		processed.Pids = _.compact([processed.Pid]);
-		processed.Skus = _.compact([processed.Sku]);
 		processed.Brands = _.map(processed.Brands, function(e) { return _.pick(e, ['BrandId']); });
 		processed.GlobalCategories = _.map(processed.GlobalCategories, function(e) { return _.pick(e, ['Lft', 'Rgt']); });
 		processed.LocalCategories = _.map(processed.LocalCategories, function(e) { return _.pick(e, ['Lft', 'Rgt']); });
@@ -58,7 +55,7 @@ module.exports = function($scope, $controller, options, Product, LocalCategorySe
 		if(!_.isEmpty(processed.PriceTo)) processed.PriceTo = _.toInteger(processed.PriceTo);
 		if(!_.isEmpty(processed.PriceFrom)) processed.PriceFrom = _.toInteger(processed.PriceFrom);
 
-		processed = _.omitBy(_.omit(processed, ['ProductName', 'Pid', 'Sku', 'GlobalCategory']), function(e) {
+		processed = _.omitBy(_.omit(processed, ['ProductName', 'GlobalCategory']), function(e) {
 			if(_.isArrayLike(e)) return _.isEmpty(e);
 			if(_.isObjectLike(e)) return false; //don't omit
 			if(_.isNumber(e)) return _.isNaN(e);

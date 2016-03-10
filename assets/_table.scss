@@ -142,6 +142,10 @@
     color:  $color-grey;
   }
 
+  .background_light_yellow {
+    background-color:   $color-light-yellow;
+  }
+
   .eye-icon {
     font-size: 20px;
   }
@@ -205,6 +209,21 @@
     background: $color-light-blue;
     color: $color-black;
     border-top-left-radius: 10px;
+  }
+
+  &.table_order {
+
+    th:first-child {
+      padding-left: 20px;
+    }
+
+    td:first-child {
+      padding-left: 15px;
+    }
+
+    td {
+      line-height: 40px;
+    }
   }
 }
 
@@ -281,6 +300,7 @@
 
 //Page body: Search section
 .search-section-wrapper {
+
 	margin: 15px 0px -10px -10px;
 
 	.search-section-item{
@@ -319,6 +339,7 @@
 	    }
 	  }
 	}
+
 
   .body-dropdown-button {
 	  height: 30px;
@@ -377,25 +398,20 @@
 			border-top: none;
 		}
 
-		> tbody > tr > td {
-			border-top: 1px solid $color-grey;
-		}
-	}
+        > tbody > tr > td {
+            border-top: 1px solid $color-grey;
+        }
+  }
 
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .table {
-	.column-text-ellipsis {
-		max-width: 0;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-	}
-}
+  .column-text-ellipsis {
+    max-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
-.table-border-none {
-	> tbody > tr:first-child > td {
-		border-top: none;
-	}
 }

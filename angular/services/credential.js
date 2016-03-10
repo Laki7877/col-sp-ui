@@ -20,7 +20,7 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
     }
 
 	service.login = function(user, pass, remember){
-		var deferred = $q.defer();
+		var deferred = $q.defer(); 
 		storage.storeSessionToken($base64.encode(user + ":" + pass), true);
 		common.makeRequest({
 			type: 'GET',
@@ -67,4 +67,3 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 
 	return service;
 }];
-

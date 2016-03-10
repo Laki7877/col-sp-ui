@@ -1,539 +1,193 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (global){
-'use strict';
-//App Start here
-var angular = require('angular');
-var bulk = ({"controllers":(function () {var f = require("./controllers\\index.js");f["abstractAdd"]=require("./controllers\\abstractAdd.js");f["abstractAdvanceList"]=require("./controllers\\abstractAdvanceList.js");f["abstractList"]=require("./controllers\\abstractList.js");f["adminAccount"]=require("./controllers\\adminAccount.js");f["adminAccountAdd"]=require("./controllers\\adminAccountAdd.js");f["adminAttribute"]=require("./controllers\\adminAttribute.js");f["adminAttributeAdd"]=require("./controllers\\adminAttributeAdd.js");f["adminAttributeSet"]=require("./controllers\\adminAttributeSet.js");f["adminAttributeSetAdd"]=require("./controllers\\adminAttributeSetAdd.js");f["adminBrand"]=require("./controllers\\adminBrand.js");f["adminBrandAdd"]=require("./controllers\\adminBrandAdd.js");f["adminCMS"]=require("./controllers\\adminCMS.js");f["adminCMSStatic"]=require("./controllers\\adminCMSStatic.js");f["adminCategory"]=require("./controllers\\adminCategory.js");f["adminCoupon"]=require("./controllers\\adminCoupon.js");f["adminCouponAdd"]=require("./controllers\\adminCouponAdd.js");f["adminOnTopCreditAdd"]=require("./controllers\\adminOnTopCreditAdd.js");f["adminOnTopCreditList"]=require("./controllers\\adminOnTopCreditList.js");f["adminProductApprovalList"]=require("./controllers\\adminProductApprovalList.js");f["adminProductList"]=require("./controllers\\adminProductList.js");f["adminRole"]=require("./controllers\\adminRole.js");f["adminRoleAdd"]=require("./controllers\\adminRoleAdd.js");f["adminShop"]=require("./controllers\\adminShop.js");f["adminShopAdd"]=require("./controllers\\adminShopAdd.js");f["adminShoptype"]=require("./controllers\\adminShoptype.js");f["adminShoptypeAdd"]=require("./controllers\\adminShoptypeAdd.js");f["buy1get1Add"]=require("./controllers\\buy1get1Add.js");f["buy1get1Import"]=require("./controllers\\buy1get1Import.js");f["buy1get1List"]=require("./controllers\\buy1get1List.js");f["index"]=require("./controllers\\index.js");f["localCategory"]=require("./controllers\\localCategory.js");f["login"]=require("./controllers\\login.js");f["productAdd"]=require("./controllers\\productAdd.js");f["productAddSelectCategory"]=require("./controllers\\productAddSelectCategory.js");f["productCollectionAdd"]=require("./controllers\\productCollectionAdd.js");f["productCollectionAddListItem"]=require("./controllers\\productCollectionAddListItem.js");f["productCollectionImport"]=require("./controllers\\productCollectionImport.js");f["productCollectionList"]=require("./controllers\\productCollectionList.js");f["productExport"]=require("./controllers\\productExport.js");f["productGroupCollectionList"]=require("./controllers\\productGroupCollectionList.js");f["productImageList"]=require("./controllers\\productImageList.js");f["productImageManagement"]=require("./controllers\\productImageManagement.js");f["productImport"]=require("./controllers\\productImport.js");f["productList"]=require("./controllers\\productList.js");f["productListLocalCategory"]=require("./controllers\\productListLocalCategory.js");f["productReview"]=require("./controllers\\productReview.js");f["root"]=require("./controllers\\root.js");f["sellerAccount"]=require("./controllers\\sellerAccount.js");f["sellerAccountAdd"]=require("./controllers\\sellerAccountAdd.js");f["sellerInventoryList"]=require("./controllers\\sellerInventoryList.js");f["sellerRole"]=require("./controllers\\sellerRole.js");f["sellerRoleAdd"]=require("./controllers\\sellerRoleAdd.js");f["sellerShopSetting"]=require("./controllers\\sellerShopSetting.js");f["test"]=require("./controllers\\test.js");return f;})(),"colDev":({"adminCMSCategoryController":require("./colDev\\adminCMSCategoryController.js"),"adminCMSCollectionController":require("./colDev\\adminCMSCollectionController.js")}),"services":({"OnTopCredit":require("./services\\OnTopCredit.js"),"OnTopCreditService":require("./services\\OnTopCreditService.js"),"adminAccountService":require("./services\\adminAccountService.js"),"adminPermissionService":require("./services\\adminPermissionService.js"),"adminRoleService":require("./services\\adminRoleService.js"),"adminShopService":require("./services\\adminShopService.js"),"adminShoptypeService":require("./services\\adminShoptypeService.js"),"alert":require("./services\\alert.js"),"attribute":require("./services\\attribute.js"),"attributeService":require("./services\\attributeService.js"),"attributeSet":require("./services\\attributeSet.js"),"attributeSetService":require("./services\\attributeSetService.js"),"blocker":require("./services\\blocker.js"),"brand":require("./services\\brand.js"),"brandService":require("./services\\brandService.js"),"buy1get1":require("./services\\buy1get1.js"),"buy1get1Add":require("./services\\buy1get1Add.js"),"category":require("./services\\category.js"),"coupon":require("./services\\coupon.js"),"credential":require("./services\\credential.js"),"exceptionHandler":require("./services\\exceptionHandler.js"),"fileService":require("./services\\fileService.js"),"globalCategory":require("./services\\globalCategory.js"),"globalCategoryService":require("./services\\globalCategoryService.js"),"image":require("./services\\image.js"),"imageService":require("./services\\imageService.js"),"inventoryService":require("./services\\inventoryService.js"),"knownException":require("./services\\knownException.js"),"localCategory":require("./services\\localCategory.js"),"localCategoryService":require("./services\\localCategoryService.js"),"product":require("./services\\product.js"),"productAdd":require("./services\\productAdd.js"),"productCollection":require("./services\\productCollection.js"),"productCollectionAdd":require("./services\\productCollectionAdd.js"),"productCollectionAddListItem":require("./services\\productCollectionAddListItem.js"),"productReviewService":require("./services\\productReviewService.js"),"sellerAccountService":require("./services\\sellerAccountService.js"),"sellerPermissionService":require("./services\\sellerPermissionService.js"),"sellerRoleService":require("./services\\sellerRoleService.js"),"shop":require("./services\\shop.js"),"shopPermissionService":require("./services\\shopPermissionService.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDateBefore":require("./directives\\ngDateBefore.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngMatch":require("./directives\\ngMatch.js"),"ngMaxnumber":require("./directives\\ngMaxnumber.js"),"ngMinnumber":require("./directives\\ngMinnumber.js"),"ngPatternRestrict":require("./directives\\ngPatternRestrict.js"),"ngPermission":require("./directives\\ngPermission.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"popoverAny":require("./directives\\popoverAny.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"exclude":require("./filters\\exclude.js"),"excludeCategory":require("./filters\\excludeCategory.js"),"html":require("./filters\\html.js"),"importGuidelineExample":require("./filters\\importGuidelineExample.js"),"leadingzero":require("./filters\\leadingzero.js"),"ordinal":require("./filters\\ordinal.js"),"slice":require("./filters\\slice.js"),"truncate":require("./filters\\truncate.js"),"truth":require("./filters\\truth.js"),"variantValue":require("./filters\\variantValue.js")}),"template-options":({"PromotionForm":require("./template-options\\PromotionForm.js"),"addProductForm":require("./template-options\\addProductForm.js"),"adminShopAccountForm":require("./template-options\\adminShopAccountForm.js"),"couponForm":require("./template-options\\couponForm.js"),"productExport":require("./template-options\\productExport.js"),"productImport":require("./template-options\\productImport.js"),"searchForm":require("./template-options\\searchForm.js"),"shopSettingForm":require("./template-options\\shopSettingForm.js")})});
-var config = require('./config');
-var route = require('./route');
-var template = require('./template');
+'use strict'
+// App Start here
+var angular = require('angular')
+var bulk = ({"controllers":(function () {var f = require("./controllers\\index.js");f["abstractAdd"]=require("./controllers\\abstractAdd.js");f["abstractAdvanceList"]=require("./controllers\\abstractAdvanceList.js");f["abstractList"]=require("./controllers\\abstractList.js");f["adminAccount"]=require("./controllers\\adminAccount.js");f["adminAccountAdd"]=require("./controllers\\adminAccountAdd.js");f["adminAttribute"]=require("./controllers\\adminAttribute.js");f["adminAttributeAdd"]=require("./controllers\\adminAttributeAdd.js");f["adminAttributeSet"]=require("./controllers\\adminAttributeSet.js");f["adminAttributeSetAdd"]=require("./controllers\\adminAttributeSetAdd.js");f["adminBrand"]=require("./controllers\\adminBrand.js");f["adminBrandAdd"]=require("./controllers\\adminBrandAdd.js");f["adminCategory"]=require("./controllers\\adminCategory.js");f["adminCoupon"]=require("./controllers\\adminCoupon.js");f["adminCouponAdd"]=require("./controllers\\adminCouponAdd.js");f["adminNewsletter"]=require("./controllers\\adminNewsletter.js");f["adminOnTopCreditAdd"]=require("./controllers\\adminOnTopCreditAdd.js");f["adminOnTopCreditList"]=require("./controllers\\adminOnTopCreditList.js");f["adminProductApprovalList"]=require("./controllers\\adminProductApprovalList.js");f["adminProductDetail"]=require("./controllers\\adminProductDetail.js");f["adminProductList"]=require("./controllers\\adminProductList.js");f["adminRole"]=require("./controllers\\adminRole.js");f["adminRoleAdd"]=require("./controllers\\adminRoleAdd.js");f["adminShop"]=require("./controllers\\adminShop.js");f["adminShopAdd"]=require("./controllers\\adminShopAdd.js");f["adminShoptype"]=require("./controllers\\adminShoptype.js");f["adminShoptypeAdd"]=require("./controllers\\adminShoptypeAdd.js");f["index"]=require("./controllers\\index.js");f["localCategory"]=require("./controllers\\localCategory.js");f["login"]=require("./controllers\\login.js");f["productAddSelectCategory"]=require("./controllers\\productAddSelectCategory.js");f["productExport"]=require("./controllers\\productExport.js");f["productImageList"]=require("./controllers\\productImageList.js");f["productImageManagement"]=require("./controllers\\productImageManagement.js");f["productImport"]=require("./controllers\\productImport.js");f["productList"]=require("./controllers\\productList.js");f["productListLocalCategory"]=require("./controllers\\productListLocalCategory.js");f["productReview"]=require("./controllers\\productReview.js");f["root"]=require("./controllers\\root.js");f["sellerAccount"]=require("./controllers\\sellerAccount.js");f["sellerAccountAdd"]=require("./controllers\\sellerAccountAdd.js");f["sellerInventoryList"]=require("./controllers\\sellerInventoryList.js");f["sellerNewsletter"]=require("./controllers\\sellerNewsletter.js");f["sellerOnboarding"]=require("./controllers\\sellerOnboarding.js");f["sellerProductDetail"]=require("./controllers\\sellerProductDetail.js");f["sellerRole"]=require("./controllers\\sellerRole.js");f["sellerRoleAdd"]=require("./controllers\\sellerRoleAdd.js");f["sellerShopSetting"]=require("./controllers\\sellerShopSetting.js");f["test"]=require("./controllers\\test.js");return f;})(),"services":({"OnTopCredit":require("./services\\OnTopCredit.js"),"OnTopCreditService":require("./services\\OnTopCreditService.js"),"Onboarding":require("./services\\Onboarding.js"),"adminAccountService":require("./services\\adminAccountService.js"),"adminPermissionService":require("./services\\adminPermissionService.js"),"adminRoleService":require("./services\\adminRoleService.js"),"adminShopService":require("./services\\adminShopService.js"),"adminShoptypeService":require("./services\\adminShoptypeService.js"),"alert":require("./services\\alert.js"),"attribute":require("./services\\attribute.js"),"attributeService":require("./services\\attributeService.js"),"attributeSet":require("./services\\attributeSet.js"),"attributeSetService":require("./services\\attributeSetService.js"),"blocker":require("./services\\blocker.js"),"brand":require("./services\\brand.js"),"brandService":require("./services\\brandService.js"),"category":require("./services\\category.js"),"coupon":require("./services\\coupon.js"),"credential":require("./services\\credential.js"),"exceptionHandler":require("./services\\exceptionHandler.js"),"fileService":require("./services\\fileService.js"),"globalCategory":require("./services\\globalCategory.js"),"globalCategoryService":require("./services\\globalCategoryService.js"),"image":require("./services\\image.js"),"imageService":require("./services\\imageService.js"),"inventoryService":require("./services\\inventoryService.js"),"knownException":require("./services\\knownException.js"),"localCategory":require("./services\\localCategory.js"),"localCategoryService":require("./services\\localCategoryService.js"),"newsletterService":require("./services\\newsletterService.js"),"product":require("./services\\product.js"),"productReviewService":require("./services\\productReviewService.js"),"sellerAccountService":require("./services\\sellerAccountService.js"),"sellerPermissionService":require("./services\\sellerPermissionService.js"),"sellerRoleService":require("./services\\sellerRoleService.js"),"shop":require("./services\\shop.js"),"shopPermissionService":require("./services\\shopPermissionService.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDateBefore":require("./directives\\ngDateBefore.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngMatch":require("./directives\\ngMatch.js"),"ngMaxnumber":require("./directives\\ngMaxnumber.js"),"ngMinnumber":require("./directives\\ngMinnumber.js"),"ngPatternRestrict":require("./directives\\ngPatternRestrict.js"),"ngPermission":require("./directives\\ngPermission.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"popoverAny":require("./directives\\popoverAny.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"exclude":require("./filters\\exclude.js"),"excludeCategory":require("./filters\\excludeCategory.js"),"html":require("./filters\\html.js"),"importGuidelineExample":require("./filters\\importGuidelineExample.js"),"leadingzero":require("./filters\\leadingzero.js"),"ordinal":require("./filters\\ordinal.js"),"slice":require("./filters\\slice.js"),"truncate":require("./filters\\truncate.js"),"truth":require("./filters\\truth.js"),"variantValue":require("./filters\\variantValue.js")}),"template-options":({"PromotionForm":require("./template-options\\PromotionForm.js"),"addBrandForm":require("./template-options\\addBrandForm.js"),"addCategoryForm":require("./template-options\\addCategoryForm.js"),"addNewsletterForm":require("./template-options\\addNewsletterForm.js"),"addProductForm":require("./template-options\\addProductForm.js"),"addShopAccountForm":require("./template-options\\addShopAccountForm.js"),"couponForm":require("./template-options\\couponForm.js"),"genericForm":require("./template-options\\genericForm.js"),"productExport":require("./template-options\\productExport.js"),"productImport":require("./template-options\\productImport.js"),"searchForm":require("./template-options\\searchForm.js"),"shopAppearanceForm":require("./template-options\\shopAppearanceForm.js"),"shopSettingForm":require("./template-options\\shopSettingForm.js")})})
+var config = require('./config')
+var route = require('./route')
+var template = require('./template')
 
-//External dependencies
-global._ = require('lodash');
-require('angular-clipboard');
-require('angular-ui-bootstrap');
-require('angular-animate');
-require('angular-file-upload');
-require('angular-ui-tree');
-require('angular-base64');
-require('angular-sanitize');
-require('angular-scroll');
-require('angular-bootstrap-datetimepicker');
-require('ui-select/dist/select.js');
+// External dependencies
+global._ = require('lodash')
+require('angular-clipboard')
+require('angular-ui-bootstrap')
+require('angular-animate')
+require('angular-file-upload')
+require('angular-ui-tree')
+require('angular-base64')
+require('angular-sanitize')
+require('angular-scroll')
+require('angular-cookies')
+require('angular-bootstrap-datetimepicker')
+require('ng-file-upload')
+require('ui-select/dist/select.js')
+require('angular-chart.js')
 
-//Nc package
-require('./nc');
+// Nc package
+require('./modules/nc')
+require('./modules/product-detail')
 
-//Internal dependencies
-var controllers = bulk.controllers;
-var colController = bulk.colDev;
-var services = bulk.services;
-var helpers = bulk.helpers;
-var directives = bulk.directives;
-var filters = bulk.filters;
+// Internal dependencies
+var controllers = bulk.controllers
+var services = bulk.services
+var helpers = bulk.helpers
+var directives = bulk.directives
+var filters = bulk.filters
 
-var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.datetimepicker',
+var app = angular.module('colspApp', ['ngPatternRestrict',
+  'nc', 'ui.bootstrap.datetimepicker',
   'duScroll', 'ngSanitize', 'ngAnimate',
-  'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select', 'ui.bootstrap', 'base64'
+  'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select',
+  'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail', 'ngFileUpload'
 ])
 
-//App config
-.config(['$uibTooltipProvider', 'uiSelectConfig', '$ncPaginationProvider', '$ncAlertProvider', 
-    function ($tooltipProvider, uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
+  // App config
+  .config(['uiSelectConfig', '$ncPaginationProvider', '$ncAlertProvider',
+    function (uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
+      $ncPaginationProvider.paginationSizes = [10, 20, 50, 100]
+      uiSelectConfig.taggingTokens = '[ENTER|,]'
+    }
+  ])
 
-        //Default close tooltip when click again
-        $tooltipProvider.setTriggers({
-            'clickanystart': 'clickanyend'
-        });
-        $tooltipProvider.options({
-            trigger: 'clickanystart'
-        });
-        $ncPaginationProvider.paginationSizes = [10, 20, 50, 100];
-        uiSelectConfig.taggingTokens = '[ENTER|,]';
+  // App template cache load
+  .run(template)
 
-    } ])
-
-//App template cache load
-.run(template)
-
-//App init
-.run(['$rootScope', 'storage', '$window', '$location', 'Credential', function($rootScope, storage, $window, $location, Credential) {
-
-
-    //Create global logout function
-    $rootScope.logout = function() {
-      if ($rootScope.Imposter) {
-        return Credential.logoutAs().then(function(R) {
-          //return to normal flow
-          if (R.User.IsAdmin) {
-            $window.location.href = "/admin";
-          } else {
-            $window.location.href = "/products";
-          }
-        }, function() {
-          alert("Fetal error while logging out.");
-        });
-      }
-
-      Credential.logout();
-      $window.location.href = "/login"
-    };
-
-
-    //Create generic form validator functions
-    //This is now inside ncTemplate
-    $rootScope.isInvalid = function(form) {
-      if (angular.isDefined(form) &&
-        angular.isDefined(form.$invalid) &&
-        angular.isDefined(form.$dirty)) {
-        return form.$invalid && (form.$dirty || form.$$parentForm.$submitted);
-      }
-      return false;
-    };
-
-
-    //Prevent image dragdrop on other elements
-    $window.addEventListener("dragover", function(e) {
-      e = e || event;
-      e.preventDefault();
-    }, false);
-    $window.addEventListener("drop", function(e) {
-      e = e || event;
-      e.preventDefault();
-    }, false);
-
-    //Match route with
-    $rootScope.isUrl = function(url) {
-      if (url.length > 0) {
-        var path = $window.location.pathname;
-        if (path == url) {
-          return true;
-        } else if (path.startsWith(url) && path.charAt(url.length) != '/') {
-          return false;
-        } else {
-          return path.startsWith(url);
-        }
-      } else {
-        return false;
-      }
-    };
-
-    $rootScope.activeParentUrl = function(url, sub) {
-      return {
-        'forced-active': $rootScope.isUrl(url)
-      };
-    };
-
-    //For active class url
-    $rootScope.activeUrl = function(url) {
-      return {
-        'active': $window.location.pathname == url
-      };
-    };
-  }])
-  //Configuration
+  // Configuration
   .value('config', config)
-.value('route', route)
+  .value('route', route)
   .value('$templateOptionsCache', bulk['template-options'])
 
-//Helpers
-.factory('common', helpers.common)
-.factory('storage', helpers.storage)
-.factory('util', helpers.util)
-.factory('base64', helpers.base64)
+  // Helpers
+  .factory('common', helpers.common)
+  .factory('storage', helpers.storage)
+  .factory('util', helpers.util)
+  .factory('base64', helpers.base64)
 
-//Services
-.factory('Product', services.product)
-.factory('ProductReviewService', services.productReviewService)
-.factory('ImageService', services.imageService)
-.factory('FileService', services.fileService)
-.factory('CouponService', services.coupon)
-.factory('Category', services.category)
-.factory('Shop', services.shop)
-.factory('LocalCategory', services.localCategory)
-.factory('LocalCategoryService', services.localCategoryService)
-.factory('GlobalCategory', services.globalCategory)
-.factory('GlobalCategoryService', services.globalCategoryService) //newer version
-.factory('Attribute', services.attribute)
-.factory('AttributeService', services.attributeService) //newer version
-.factory('AttributeSet', services.attributeSet)
-.factory('AttributeSetService', services.attributeSetService) //newer version
-.factory('Brand', services.brand)
-.factory('BrandService', services.brandService) //newer version
-.factory('InventoryService', services.inventoryService) //newer version
-.factory('SellerAccountService', services.sellerAccountService)
-.factory('SellerRoleService', services.sellerRoleService)
-.factory('SellerPermissionService', services.sellerPermissionService)
-.factory('AdminAccountService', services.adminAccountService)
-.factory('AdminRoleService', services.adminRoleService)
-.factory('AdminPermissionService', services.adminPermissionService)
-.factory('AdminShopService', services.adminShopService)
-.factory('AdminShoptypeService', services.adminShoptypeService)
-.factory('ShopPermissionService', services.shopPermissionService)
-.factory('VariantPair', helpers.variantPair)
-.factory('Alert', services.alert)
-.factory('Blocker', services.blocker)
-.factory('Credential', services.credential)
-.factory('$exceptionHandler', services.exceptionHandler)
-.factory('KnownException', services.knownException)
-.factory('$productAdd', services.productAdd)
-.factory('Collection', services.productCollection)
-.factory('$CollectionAdd', services.productCollectionAdd)
-.factory('$CollectionAddListItem', services.productCollectionAddListItem)
-.factory('Image', services.image)
-.factory('Buy1Get1', services.buy1get1)
-.factory('$Buy1Get1Add', services.buy1get1Add)
-.factory('OnTopCreditService', services.OnTopCreditService)
-.factory('OnTopCredit', services.OnTopCredit)
-.factory('OnTopCreditService', services.OnTopCreditService)
-.factory('OnTopCredit', services.OnTopCredit)
+  // Services
+  .factory('Product', services.product)
+  .factory('ProductReviewService', services.productReviewService)
+  .factory('ImageService', services.imageService)
+  .factory('FileService', services.fileService)
+  .factory('CouponService', services.coupon)
+  .factory('Category', services.category)
+  .factory('Shop', services.shop)
+  .factory('LocalCategory', services.localCategory)
+  .factory('LocalCategoryService', services.localCategoryService)
+  .factory('GlobalCategory', services.globalCategory)
+  .factory('GlobalCategoryService', services.globalCategoryService) // newer version
+  .factory('Attribute', services.attribute)
+  .factory('AttributeService', services.attributeService) // newer version
+  .factory('AttributeSet', services.attributeSet)
+  .factory('AttributeSetService', services.attributeSetService) // newer version
+  .factory('Brand', services.brand)
+  .factory('BrandService', services.brandService) // newer version
+  .factory('InventoryService', services.inventoryService) // newer version
+  .factory('SellerAccountService', services.sellerAccountService)
+  .factory('SellerRoleService', services.sellerRoleService)
+  .factory('SellerPermissionService', services.sellerPermissionService)
+  .factory('AdminAccountService', services.adminAccountService)
+  .factory('AdminRoleService', services.adminRoleService)
+  .factory('AdminPermissionService', services.adminPermissionService)
+  .factory('AdminShopService', services.adminShopService)
+  .factory('AdminShoptypeService', services.adminShoptypeService)
+  .factory('ShopPermissionService', services.shopPermissionService)
+  .factory('NewsletterService', services.newsletterService)
+  .factory('VariantPair', helpers.variantPair)
+  .factory('Alert', services.alert)
+  .factory('Blocker', services.blocker)
+  .factory('Credential', services.credential)
+  .factory('$exceptionHandler', services.exceptionHandler)
+  .factory('KnownException', services.knownException)
+  .factory('OnTopCreditService', services.OnTopCreditService)
+  .factory('OnTopCredit', services.OnTopCredit)
+  .factory('Onboarding', services.Onboarding)
 
-//Directives
-.directive('ncTradableSelect', directives.ncTradableSelect)
-.directive('ngPermission', directives.ngPermission)
-.directive('ngDelegate', directives.ngDelegate)
-.directive('ngCkeditor', directives.ngCkeditor)
-.directive('ngSlideToggle', directives.ngSlideToggle)
-.directive('ngTemplate', directives.ngTemplate)
-.directive('ngMatch', directives.ngMatch)
-.directive('ngMinnumber', directives.ngMinnumber)
-.directive('ngMaxnumber', directives.ngMaxnumber)
-.directive('ngDateBefore', directives.ngDateBefore)
+  // Directives
+  .directive('ncTradableSelect', directives.ncTradableSelect)
+  .directive('ngPermission', directives.ngPermission)
+  .directive('ngDelegate', directives.ngDelegate)
+  .directive('ngCkeditor', directives.ngCkeditor)
+  .directive('ngSlideToggle', directives.ngSlideToggle)
+  .directive('ngTemplate', directives.ngTemplate)
+  .directive('ngMatch', directives.ngMatch)
+  .directive('ngMinnumber', directives.ngMinnumber)
+  .directive('ngMaxnumber', directives.ngMaxnumber)
+  .directive('ngDateBefore', directives.ngDateBefore)
 
-//Filters
-.filter('capitalize', filters.capitalize)
-.filter('ordinal', filters.ordinal)
-.filter('html', filters.html)
-.filter('truth', filters.truth)
-.filter('exclude', filters.exclude)
-.filter('excludeCategory', filters.excludeCategory)
-.filter('truncate', filters.truncate)
-.filter('slice', filters.slice)
-.filter('leadingzero', filters.leadingzero)
-.filter('variantValue', filters.variantValue)
-.filter('importGuidelineExample', filters.importGuidelineExample)
+  // Filters
+  .filter('capitalize', filters.capitalize)
+  .filter('ordinal', filters.ordinal)
+  .filter('html', filters.html)
+  .filter('truth', filters.truth)
+  .filter('exclude', filters.exclude)
+  .filter('excludeCategory', filters.excludeCategory)
+  .filter('truncate', filters.truncate)
+  .filter('slice', filters.slice)
+  .filter('leadingzero', filters.leadingzero)
+  .filter('variantValue', filters.variantValue)
+  .filter('importGuidelineExample', filters.importGuidelineExample)
 
-//Controllers
-.controller('RootCtrl', controllers.root)
-.controller('IndexCtrl', controllers.index)
-.controller('ProductListCtrl', controllers.productList)
-.controller('ProductAddCtrl', controllers.productAdd)
-.controller('ProductImageManagementCtrl', controllers.productImageManagement)
-.controller('ProductAddSelectCategoryCtrl', controllers.productAddSelectCategory)
-.controller('ProductListLocalCategoryCtrl', controllers.productListLocalCategory)
-.controller('ProductImportCtrl', controllers.productImport)
-.controller('ProductReviewCtrl', controllers.productReview)
-.controller('ProductExportCtrl', controllers.productExport)
+  // Controllers
+  .controller('RootCtrl', controllers.root)
+  .controller('IndexCtrl', controllers.index)
+  .controller('ProductListCtrl', controllers.productList)
+  .controller('SellerProductDetailCtrl', controllers.sellerProductDetail)
+  .controller('ProductImageManagementCtrl', controllers.productImageManagement)
+  .controller('ProductAddSelectCategoryCtrl', controllers.productAddSelectCategory)
+  .controller('ProductListLocalCategoryCtrl', controllers.productListLocalCategory)
+  .controller('ProductImportCtrl', controllers.productImport)
+  .controller('ProductReviewCtrl', controllers.productReview)
+  .controller('ProductExportCtrl', controllers.productExport)
 
-.controller('LocalCategoryCtrl', controllers.localCategory)
-.controller('SellerShopSettingCtrl', controllers.sellerShopSetting)
-.controller('SellerAccountCtrl', controllers.sellerAccount)
-.controller('SellerAccountAddCtrl', controllers.sellerAccountAdd)
-.controller('SellerRoleCtrl', controllers.sellerRole)
-.controller('SellerRoleAddCtrl', controllers.sellerRoleAdd)
-.controller('SellerShopSettingCtrl', controllers.sellerShopSetting)
-.controller('SellerInventoryListCtrl', controllers.sellerInventoryList)
+  .controller('LocalCategoryCtrl', controllers.localCategory)
+  .controller('SellerShopSettingCtrl', controllers.sellerShopSetting)
+  .controller('SellerAccountCtrl', controllers.sellerAccount)
+  .controller('SellerAccountAddCtrl', controllers.sellerAccountAdd)
+  .controller('SellerRoleCtrl', controllers.sellerRole)
+  .controller('SellerRoleAddCtrl', controllers.sellerRoleAdd)
+  .controller('SellerShopSettingCtrl', controllers.sellerShopSetting)
+  .controller('SellerInventoryListCtrl', controllers.sellerInventoryList)
+  .controller('SellerOnboardingCtrl', controllers.sellerOnboarding)
+  .controller('SellerNewsletterCtrl', controllers.sellerNewsletter)
 
-.controller('AdminAttributeCtrl', controllers.adminAttribute)
-.controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)
-.controller('AdminAttributeAddCtrl', controllers.adminAttributeAdd)
-.controller('AdminAttributeSetAddCtrl', controllers.adminAttributeSetAdd)
-.controller('AdminCategoryCtrl', controllers.adminCategory)
-.controller('AdminBrandCtrl', controllers.adminBrand)
-.controller('AdminBrandAddCtrl', controllers.adminBrandAdd)
-.controller('AdminAccountCtrl', controllers.adminAccount)
-.controller('AdminAccountAddCtrl', controllers.adminAccountAdd)
-.controller('AdminRoleCtrl', controllers.adminRole)
-.controller('AdminRoleAddCtrl', controllers.adminRoleAdd)
-.controller('AdminShopCtrl', controllers.adminShop)
-.controller('AdminShopAddCtrl', controllers.adminShopAdd)
-.controller('AdminShoptypeCtrl', controllers.adminShoptype)
-.controller('AdminShoptypeAddCtrl', controllers.adminShoptypeAdd)
-.controller('AdminCouponCtrl', controllers.adminCoupon)
-.controller('AdminCouponAddCtrl', controllers.adminCouponAdd)
+  .controller('AdminAttributeCtrl', controllers.adminAttribute)
+  .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)
+  .controller('AdminAttributeAddCtrl', controllers.adminAttributeAdd)
+  .controller('AdminAttributeSetAddCtrl', controllers.adminAttributeSetAdd)
+  .controller('AdminCategoryCtrl', controllers.adminCategory)
+  .controller('AdminBrandCtrl', controllers.adminBrand)
+  .controller('AdminBrandAddCtrl', controllers.adminBrandAdd)
+  .controller('AdminAccountCtrl', controllers.adminAccount)
+  .controller('AdminAccountAddCtrl', controllers.adminAccountAdd)
+  .controller('AdminRoleCtrl', controllers.adminRole)
+  .controller('AdminRoleAddCtrl', controllers.adminRoleAdd)
+  .controller('AdminShopCtrl', controllers.adminShop)
+  .controller('AdminShopAddCtrl', controllers.adminShopAdd)
+  .controller('AdminShoptypeCtrl', controllers.adminShoptype)
+  .controller('AdminShoptypeAddCtrl', controllers.adminShoptypeAdd)
+  .controller('AdminCouponCtrl', controllers.adminCoupon)
+  .controller('AdminCouponAddCtrl', controllers.adminCouponAdd)
+  .controller('AdminNewsletterCtrl', controllers.adminNewsletter)
 
-.controller('AdminProductApprovalListCtrl', controllers.adminProductApprovalList)
-.controller('AdminProductListCtrl', controllers.adminProductList)
+  .controller('AdminProductApprovalListCtrl', controllers.adminProductApprovalList)
+  .controller('AdminProductListCtrl', controllers.adminProductList)
+  .controller('AdminProductDetailCtrl', controllers.adminProductDetail)
 
-.controller('LoginCtrl', controllers.login)
-.controller('AbstractListCtrl', controllers.abstractList)
-.controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
-.controller('AbstractAddCtrl', controllers.abstractAdd)
-.controller('ProductCollectionListCtrl', controllers.productCollectionList)
-.controller('ProductCollectionAddCtrl', controllers.productCollectionAdd)
-.controller('ProductCollectionAddListItemCtrl', controllers.productCollectionAddListItem)
-.controller('ProductCollectionImportCtrl', controllers.productCollectionImport)
-.controller('ProductGroupCollectionListCtrl', controllers.productGroupCollectionList)
-.controller('AdminCouponsCtrl', controllers.adminCoupons)
-.controller('Buy1Get1ListCtrl', controllers.buy1get1List)
-.controller('Buy1Get1AddCtrl', controllers.buy1get1Add)
-.controller('Buy1Get1ImportCtrl', controllers.buy1get1Import)
+  .controller('LoginCtrl', controllers.login)
+  .controller('AbstractListCtrl', controllers.abstractList)
+  .controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
+  .controller('AbstractAddCtrl', controllers.abstractAdd)
 
-.controller('AdminOnTopCreditCtrl', controllers.adminOnTopCreditAdd)
-.controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
+  .controller('AdminOnTopCreditCtrl', controllers.adminOnTopCreditAdd)
+  .controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
 
-.controller('AdminOnTopCreditCtrl', controllers.adminOnTopCreditAdd)
-.controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
-
-// Create By Col Dev (Natee)
-.controller('AdminCMSCategoryController', colController.adminCMSCategoryController)
-.controller('AdminCMSCollectionController', colController.adminCMSCollectionController)
-.controller('AdminCMSGroupController', colController.adminCMSGroupController)
-
-.controller('TestCtrl', controllers.test)
+  .controller('TestCtrl', controllers.test)
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./colDev\\adminCMSCategoryController.js":2,"./colDev\\adminCMSCollectionController.js":3,"./config":4,"./controllers\\abstractAdd.js":5,"./controllers\\abstractAdvanceList.js":6,"./controllers\\abstractList.js":7,"./controllers\\adminAccount.js":8,"./controllers\\adminAccountAdd.js":9,"./controllers\\adminAttribute.js":10,"./controllers\\adminAttributeAdd.js":11,"./controllers\\adminAttributeSet.js":12,"./controllers\\adminAttributeSetAdd.js":13,"./controllers\\adminBrand.js":14,"./controllers\\adminBrandAdd.js":15,"./controllers\\adminCMS.js":16,"./controllers\\adminCMSStatic.js":17,"./controllers\\adminCategory.js":18,"./controllers\\adminCoupon.js":19,"./controllers\\adminCouponAdd.js":20,"./controllers\\adminOnTopCreditAdd.js":21,"./controllers\\adminOnTopCreditList.js":22,"./controllers\\adminProductApprovalList.js":23,"./controllers\\adminProductList.js":24,"./controllers\\adminRole.js":25,"./controllers\\adminRoleAdd.js":26,"./controllers\\adminShop.js":27,"./controllers\\adminShopAdd.js":28,"./controllers\\adminShoptype.js":29,"./controllers\\adminShoptypeAdd.js":30,"./controllers\\buy1get1Add.js":31,"./controllers\\buy1get1Import.js":32,"./controllers\\buy1get1List.js":33,"./controllers\\index.js":34,"./controllers\\localCategory.js":35,"./controllers\\login.js":36,"./controllers\\productAdd.js":37,"./controllers\\productAddSelectCategory.js":38,"./controllers\\productCollectionAdd.js":39,"./controllers\\productCollectionAddListItem.js":40,"./controllers\\productCollectionImport.js":41,"./controllers\\productCollectionList.js":42,"./controllers\\productExport.js":43,"./controllers\\productGroupCollectionList.js":44,"./controllers\\productImageList.js":45,"./controllers\\productImageManagement.js":46,"./controllers\\productImport.js":47,"./controllers\\productList.js":48,"./controllers\\productListLocalCategory.js":49,"./controllers\\productReview.js":50,"./controllers\\root.js":51,"./controllers\\sellerAccount.js":52,"./controllers\\sellerAccountAdd.js":53,"./controllers\\sellerInventoryList.js":54,"./controllers\\sellerRole.js":55,"./controllers\\sellerRoleAdd.js":56,"./controllers\\sellerShopSetting.js":57,"./controllers\\test.js":58,"./directives\\ncTradableSelect.js":59,"./directives\\ngCkeditor.js":60,"./directives\\ngDateBefore.js":61,"./directives\\ngDelegate.js":62,"./directives\\ngMatch.js":63,"./directives\\ngMaxnumber.js":64,"./directives\\ngMinnumber.js":65,"./directives\\ngPatternRestrict.js":66,"./directives\\ngPermission.js":67,"./directives\\ngSlideToggle.js":68,"./directives\\ngTemplate.js":69,"./directives\\popoverAny.js":70,"./filters\\capitalize.js":71,"./filters\\exclude.js":72,"./filters\\excludeCategory.js":73,"./filters\\html.js":74,"./filters\\importGuidelineExample.js":75,"./filters\\leadingzero.js":76,"./filters\\ordinal.js":77,"./filters\\slice.js":78,"./filters\\truncate.js":79,"./filters\\truth.js":80,"./filters\\variantValue.js":81,"./helpers\\base64.js":82,"./helpers\\common.js":83,"./helpers\\storage.js":84,"./helpers\\util.js":85,"./helpers\\variantPair.js":86,"./nc":113,"./route":115,"./services\\OnTopCredit.js":116,"./services\\OnTopCreditService.js":117,"./services\\adminAccountService.js":118,"./services\\adminPermissionService.js":119,"./services\\adminRoleService.js":120,"./services\\adminShopService.js":121,"./services\\adminShoptypeService.js":122,"./services\\alert.js":123,"./services\\attribute.js":124,"./services\\attributeService.js":125,"./services\\attributeSet.js":126,"./services\\attributeSetService.js":127,"./services\\blocker.js":128,"./services\\brand.js":129,"./services\\brandService.js":130,"./services\\buy1get1.js":131,"./services\\buy1get1Add.js":132,"./services\\category.js":133,"./services\\coupon.js":134,"./services\\credential.js":135,"./services\\exceptionHandler.js":136,"./services\\fileService.js":137,"./services\\globalCategory.js":138,"./services\\globalCategoryService.js":139,"./services\\image.js":140,"./services\\imageService.js":141,"./services\\inventoryService.js":142,"./services\\knownException.js":143,"./services\\localCategory.js":144,"./services\\localCategoryService.js":145,"./services\\product.js":146,"./services\\productAdd.js":147,"./services\\productCollection.js":148,"./services\\productCollectionAdd.js":149,"./services\\productCollectionAddListItem.js":150,"./services\\productReviewService.js":151,"./services\\sellerAccountService.js":152,"./services\\sellerPermissionService.js":153,"./services\\sellerRoleService.js":154,"./services\\shop.js":155,"./services\\shopPermissionService.js":156,"./template":165,"./template-options\\PromotionForm.js":157,"./template-options\\addProductForm.js":158,"./template-options\\adminShopAccountForm.js":159,"./template-options\\couponForm.js":160,"./template-options\\productExport.js":161,"./template-options\\productImport.js":162,"./template-options\\searchForm.js":163,"./template-options\\shopSettingForm.js":164,"angular":181,"angular-animate":167,"angular-base64":168,"angular-bootstrap-datetimepicker":169,"angular-clipboard":170,"angular-file-upload":171,"angular-sanitize":173,"angular-scroll":175,"angular-ui-bootstrap":177,"angular-ui-tree":179,"lodash":183,"ui-select/dist/select.js":185}],2:[function(require,module,exports){
-
-module.exports = function($scope, config, $uibModal, $timeout) {
-
-	$scope.categorys 	= [];
-	$scope.isEmpty 		= false;
-	$scope.loading 		= true;
-
-	$timeout(function() {
-		//$scope.isEmpty = true;
-		$scope.loading = false;
-	}, 3000);
-
-	$scope.params = {
-		_order: '',
-		_limit: 10,
-		_offset: 0,
-		_direction: '' || 'desc'
-	};
-
-	$scope.$watch('params._limit', function(newVal, oldVal) {
-		console.log(newVal)
-	});
-	$scope.$watch('params._offset', function(newVal, oldVal) {
-		console.log(newVal)
-	});
-
-	$scope.loadAllCategory = function() {
-		// call api
-
-	};
-
-	$scope.addNewCategory = function() {
-
-		// open modal
-		$uibModal.open({
-	      templateUrl: 'templates/admin-cms-category-manage.html',
-	      size: 'lg',
-	      scope: $scope,
-	      controller: function($scope, $uibModalInstance) {
-
-	      	$scope.products = [];
-	      	$scope.isEmpty = true;
-      		$scope.loading = false;
-      		$scope.message = 'You do not have any Product';      		
-	      	$scope.singleDate = moment();
-	      	
-	      	var categoryProducts = [];
-
-	      	$scope.checkAll = function(isChecked) {
-	      		
-	      		$scope.isCheckedAll != isChecked;
-
-	      		if (!isChecked) {
-	      			angular.forEach($scope.products, function(item) {
-		      			item.IsChecked = false;
-		      		});
-	      			categoryProducts = [];
-	      		}
-	      		else {
-		      		angular.forEach($scope.products, function(item) {
-		      			item.IsChecked = isChecked;
-				        categoryProducts.push(item);
-		      		});
-	      		}
-	      	};
-
-	      	$scope.checkOnce = function(item, isChecked) {
-	      		
-	      		if (!isChecked) {
-	      			var index = categoryProducts.indexOf(item);
-	      			if (index > -1)
-	      				categoryProducts.splice(index, 1);
-	      		}
-	      		else {
-	      			categoryProducts.push(item);
-	      		}
-	      	};
-
-	      	$scope.addProductItem = function() {
-	      		// open modal
-				$uibModal.open({
-			      	templateUrl: 'templates/admin-cms-category-manage-add-item.html',
-			      	size: 'lg',
-			      	controller: function($scope, $uibModalInstance) {
-
-			      		$scope.products = [];
-			      		$scope.isEmpty = true;
-			      		$scope.loading = false;
-			      		$scope.message = 'You do not have any Product';
-
-			      		$scope.search = function() {
-			      			
-			      			$scope.isEmpty = false;
-			      			$scope.loading = true;
-
-			      			$timeout(function() {
-			      				$scope.loading = false;
-			      				$scope.isEmpty = true;
-			      				$scope.message = 'Not Found Product.';
-			      			}, 1000);
-			      		};
-
-			      		$scope.ok = function() {
-			      			$uibModalInstance.close($scope.products)
-			      		};
-			      	}
-			  	})
-			  	.result.then(function(result) {
-
-			  	});
-	      	};
-
-	        $scope.save = function(categoryName) {
-	        	var category = {
-	        		CategoryName: categoryName,
-	        		CategoryProducts: categoryProducts
-	        	};
-	          $uibModalInstance.close(category)
-	        };
-
-	        
-	      }
-	    })
-	    .result.then(function(data) {
-	      console.log(data)
-	      $scope.categorys.push(data);
-	    });
-	};
-
-	$scope.detailCategory = function(item) {
-		alert(item.CategoryName)
-	};
-
-	$scope.editCategory = function(item) {
-
-	};
-
-	$scope.deleteCategoey = function(item) {
-
-	};
-}
-},{}],3:[function(require,module,exports){
-
-module.exports = function($scope, config, $uibModal) {
-
-	$scope.categorys = [];
-
-	$scope.params = {
-		_order: '',
-		_limit: 10,
-		_offset: 0,
-		_direction: '' || 'desc'
-	};
-
-	$scope.$watch('params._limit', function(newVal, oldVal) {
-		console.log(newVal)
-	});
-	$scope.$watch('params._offset', function(newVal, oldVal) {
-		console.log(newVal)
-	});
-
-	$scope.loadAllCategory = function() {
-		// call api
-
-	};
-
-	$scope.addNewCollection = function() {
-
-		// open modal
-		$uibModal.open({
-	      templateUrl: 'templates/admin-cms-collection-manage.html',
-	      size: 'lg',
-	      scope: $scope,
-	      controller: function($scope, $uibModalInstance) {
-
-	      	$scope.products = [
-	      		{ ProductName: 'P1' },
-	      		{ ProductName: 'P2' },
-	      		{ ProductName: 'P3' },
-	      	];
-	      	
-	      	$scope.singleDate = moment();
-	      	var categoryProducts = [];
-
-	      	$scope.checkAll = function(isChecked) {
-	      		
-	      		$scope.isCheckedAll != isChecked;
-
-	      		if (!isChecked) {
-	      			angular.forEach($scope.products, function(item) {
-		      			item.IsChecked = false;
-		      		});
-	      			categoryProducts = [];
-	      		}
-	      		else {
-		      		angular.forEach($scope.products, function(item) {
-		      			item.IsChecked = isChecked;
-				        categoryProducts.push(item);
-		      		});
-	      		}
-	      	};
-
-	      	$scope.checkOnce = function(item, isChecked) {
-	      		
-	      		if (!isChecked) {
-	      			var index = categoryProducts.indexOf(item);
-	      			if (index > -1)
-	      				categoryProducts.splice(index, 1);
-	      		}
-	      		else {
-	      			categoryProducts.push(item);
-	      		}
-	      	};
-
-	        $scope.save = function(categoryName) {
-	        	var category = {
-	        		CategoryName: categoryName,
-	        		CategoryProducts: categoryProducts
-	        	};
-	          $uibModalInstance.close(category)
-	        };
-
-	        
-	      }
-	    })
-	    .result.then(function(data) {
-	      console.log(data)
-	      $scope.categorys.push(data);
-	    });
-	};
-
-	$scope.detailCategory = function(item) {
-		alert(item.CategoryName)
-	};
-
-	$scope.editCategory = function(item) {
-
-	};
-
-	$scope.deleteCategoey = function(item) {
-
-	};
-}
-},{}],4:[function(require,module,exports){
+},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractAdvanceList.js":4,"./controllers\\abstractList.js":5,"./controllers\\adminAccount.js":6,"./controllers\\adminAccountAdd.js":7,"./controllers\\adminAttribute.js":8,"./controllers\\adminAttributeAdd.js":9,"./controllers\\adminAttributeSet.js":10,"./controllers\\adminAttributeSetAdd.js":11,"./controllers\\adminBrand.js":12,"./controllers\\adminBrandAdd.js":13,"./controllers\\adminCategory.js":14,"./controllers\\adminCoupon.js":15,"./controllers\\adminCouponAdd.js":16,"./controllers\\adminNewsletter.js":17,"./controllers\\adminOnTopCreditAdd.js":18,"./controllers\\adminOnTopCreditList.js":19,"./controllers\\adminProductApprovalList.js":20,"./controllers\\adminProductDetail.js":21,"./controllers\\adminProductList.js":22,"./controllers\\adminRole.js":23,"./controllers\\adminRoleAdd.js":24,"./controllers\\adminShop.js":25,"./controllers\\adminShopAdd.js":26,"./controllers\\adminShoptype.js":27,"./controllers\\adminShoptypeAdd.js":28,"./controllers\\index.js":29,"./controllers\\localCategory.js":30,"./controllers\\login.js":31,"./controllers\\productAddSelectCategory.js":32,"./controllers\\productExport.js":33,"./controllers\\productImageList.js":34,"./controllers\\productImageManagement.js":35,"./controllers\\productImport.js":36,"./controllers\\productList.js":37,"./controllers\\productListLocalCategory.js":38,"./controllers\\productReview.js":39,"./controllers\\root.js":40,"./controllers\\sellerAccount.js":41,"./controllers\\sellerAccountAdd.js":42,"./controllers\\sellerInventoryList.js":43,"./controllers\\sellerNewsletter.js":44,"./controllers\\sellerOnboarding.js":45,"./controllers\\sellerProductDetail.js":46,"./controllers\\sellerRole.js":47,"./controllers\\sellerRoleAdd.js":48,"./controllers\\sellerShopSetting.js":49,"./controllers\\test.js":50,"./directives\\ncTradableSelect.js":51,"./directives\\ngCkeditor.js":52,"./directives\\ngDateBefore.js":53,"./directives\\ngDelegate.js":54,"./directives\\ngMatch.js":55,"./directives\\ngMaxnumber.js":56,"./directives\\ngMinnumber.js":57,"./directives\\ngPatternRestrict.js":58,"./directives\\ngPermission.js":59,"./directives\\ngSlideToggle.js":60,"./directives\\ngTemplate.js":61,"./directives\\popoverAny.js":62,"./filters\\capitalize.js":63,"./filters\\exclude.js":64,"./filters\\excludeCategory.js":65,"./filters\\html.js":66,"./filters\\importGuidelineExample.js":67,"./filters\\leadingzero.js":68,"./filters\\ordinal.js":69,"./filters\\slice.js":70,"./filters\\truncate.js":71,"./filters\\truth.js":72,"./filters\\variantValue.js":73,"./helpers\\base64.js":74,"./helpers\\common.js":75,"./helpers\\storage.js":76,"./helpers\\util.js":77,"./helpers\\variantPair.js":78,"./modules/nc":105,"./modules/product-detail":110,"./route":112,"./services\\OnTopCredit.js":113,"./services\\OnTopCreditService.js":114,"./services\\Onboarding.js":115,"./services\\adminAccountService.js":116,"./services\\adminPermissionService.js":117,"./services\\adminRoleService.js":118,"./services\\adminShopService.js":119,"./services\\adminShoptypeService.js":120,"./services\\alert.js":121,"./services\\attribute.js":122,"./services\\attributeService.js":123,"./services\\attributeSet.js":124,"./services\\attributeSetService.js":125,"./services\\blocker.js":126,"./services\\brand.js":127,"./services\\brandService.js":128,"./services\\category.js":129,"./services\\coupon.js":130,"./services\\credential.js":131,"./services\\exceptionHandler.js":132,"./services\\fileService.js":133,"./services\\globalCategory.js":134,"./services\\globalCategoryService.js":135,"./services\\image.js":136,"./services\\imageService.js":137,"./services\\inventoryService.js":138,"./services\\knownException.js":139,"./services\\localCategory.js":140,"./services\\localCategoryService.js":141,"./services\\newsletterService.js":142,"./services\\product.js":143,"./services\\productReviewService.js":144,"./services\\sellerAccountService.js":145,"./services\\sellerPermissionService.js":146,"./services\\sellerRoleService.js":147,"./services\\shop.js":148,"./services\\shopPermissionService.js":149,"./template":163,"./template-options\\PromotionForm.js":150,"./template-options\\addBrandForm.js":151,"./template-options\\addCategoryForm.js":152,"./template-options\\addNewsletterForm.js":153,"./template-options\\addProductForm.js":154,"./template-options\\addShopAccountForm.js":155,"./template-options\\couponForm.js":156,"./template-options\\genericForm.js":157,"./template-options\\productExport.js":158,"./template-options\\productImport.js":159,"./template-options\\searchForm.js":160,"./template-options\\shopAppearanceForm.js":161,"./template-options\\shopSettingForm.js":162,"angular":182,"angular-animate":165,"angular-base64":166,"angular-bootstrap-datetimepicker":167,"angular-chart.js":168,"angular-clipboard":169,"angular-cookies":171,"angular-file-upload":172,"angular-sanitize":174,"angular-scroll":176,"angular-ui-bootstrap":178,"angular-ui-tree":180,"lodash":185,"ng-file-upload":188,"ui-select/dist/select.js":189}],2:[function(require,module,exports){
 module.exports = {
-	//baseUrl: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api/',
-	//REST_SERVICE_BASE_URL: 'https://microsoft-apiappa79c5198dccb42299762ef0adfb72ee8.azurewebsites.net/api',
-    baseUrl: 'http://localhost:58127/api/',
-	REST_SERVICE_BASE_URL: 'http://localhost:58127/api/',
-	//REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
+	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
     HANDLE_EXCEPTION: false,
     MAX_IMAGE_UPLOAD_SIZE: 5242880,
@@ -548,6 +202,24 @@ module.exports = {
 	TYPEAHEAD_IMPORT_GUIDELINE_LIMIT: 8,
 	TYPEAHEAD_DELAY: 150,
 	DROPDOWN: {
+		SHOP_GROUP_DROPDOWN: [
+			{
+				name: 'All',
+				value: 'AL'
+			},
+			{
+				name: 'BU',
+				value: 'BU'
+			},
+			{
+				name: 'INDY',
+				value: 'IN'
+			},
+			{
+				name: 'Merchant',
+				value: 'ME'
+			}
+		],
 		DEFAULT_STATUS_DROPDOWN: [
 			{
 				name: 'Inactive',
@@ -590,12 +262,34 @@ module.exports = {
 			{
 				name: 'HTML Box',
 				value: 'HB'
+			},
+			{
+				name: 'Checkbox',
+				value: 'CB'
 			}
 		],
 		VARIANT_DROPDOWN: [
 			{
-				name: 'Image',
+				name: 'Product Image',
 				value: 'IO'
+			},
+			{
+				name: 'Textbox',
+				value: 'TO'
+			},
+			{
+				name: 'Dropdown',
+				value: 'DD'
+			}
+		],
+		VARIANT2_DROPDOWN: [
+			{
+				name: 'Product Image',
+				value: 'IO'
+			},
+			{
+				name: 'Custom Image',
+				value: 'CI'
 			},
 			{
 				name: 'Textbox',
@@ -651,8 +345,8 @@ module.exports = {
 			value: 'IN'
 		},
 		{
-			name: 'Seller',
-			value: 'SE'
+			name: 'Merchant',
+			value: 'ME'
 		}
 	],
 	INVENTORY_STATUS: [
@@ -674,7 +368,7 @@ module.exports = {
 			name: 'Not Approved',
 			value: 'WA',
 			color: 'color-grey'
-		}, 
+		},
 		{
 			name: 'Approved',
 			value: 'AP',
@@ -720,7 +414,7 @@ module.exports = {
 	],
 	CATEGORY_SYNC_DELAY: 1200, //Category wait for x millisecond before actually saving
 	DEFAULT_SUCCESS_MESSAGE: 'Your changes have been saved successfully.',
-	DEFAULT_ERROR_MESSAGE: 'Unable to save because required fields are missing or incorrect.', 
+	DEFAULT_ERROR_MESSAGE: 'Unable to save because required fields are missing or incorrect.',
 	TITLE: {
 		CREATE: 'Add {{content}}',
 		DETAIL: '{{content}} Detail'
@@ -731,7 +425,7 @@ module.exports = {
 	}
 };
 
-},{}],5:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", function($scope, $window, NcAlert, util, common, options) {
 	'ngInject';
 	$scope.formData = {};
@@ -864,7 +558,7 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 	});
 }];
 
-},{}],6:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryService", "GlobalCategoryService", "BrandService", "Category", function($scope, $controller, options, Product, LocalCategoryService, GlobalCategoryService, BrandService, Category) {
 	'ngInject';
 	var overrideReload = function(newObj, oldObj) {
@@ -914,10 +608,7 @@ module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryS
 	};
 	$scope.serializeAdvanceSearch = function(formData) {
 		var processed = _.extend({}, formData);
-
 		processed.ProductNames = _.compact([processed.ProductName]);
-		processed.Pids = _.compact([processed.Pid]);
-		processed.Skus = _.compact([processed.Sku]);
 		processed.Brands = _.map(processed.Brands, function(e) { return _.pick(e, ['BrandId']); });
 		processed.GlobalCategories = _.map(processed.GlobalCategories, function(e) { return _.pick(e, ['Lft', 'Rgt']); });
 		processed.LocalCategories = _.map(processed.LocalCategories, function(e) { return _.pick(e, ['Lft', 'Rgt']); });
@@ -925,7 +616,7 @@ module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryS
 		if(!_.isEmpty(processed.PriceTo)) processed.PriceTo = _.toInteger(processed.PriceTo);
 		if(!_.isEmpty(processed.PriceFrom)) processed.PriceFrom = _.toInteger(processed.PriceFrom);
 
-		processed = _.omitBy(_.omit(processed, ['ProductName', 'Pid', 'Sku', 'GlobalCategory']), function(e) {
+		processed = _.omitBy(_.omit(processed, ['ProductName', 'GlobalCategory']), function(e) {
 			if(_.isArrayLike(e)) return _.isEmpty(e);
 			if(_.isObjectLike(e)) return false; //don't omit
 			if(_.isNumber(e)) return _.isNaN(e);
@@ -975,7 +666,7 @@ module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryS
 		$scope.reload();
 	});
 }]
-},{}],7:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options", function($scope, $window, $timeout, NcAlert, util, options) {
 	'ngInject';
 	var a = _.includes(['a','e','i','o','u'], _.lowerCase(options.item.charAt(0))) ? 'an' : 'a';
@@ -1071,6 +762,9 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 		];
 	} else {
 		$scope.actions = _.compact(_.map(options.actions, function(item) {
+			if(_.isFunction(item)) {
+				return item($scope);
+			}
 
 			if(_.isString(item)) {
 				switch(item) {
@@ -1114,7 +808,7 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 	}, 0);
 }];
 
-},{}],8:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminAccountService", "config", function($scope, $controller, AdminAccountService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -1130,7 +824,7 @@ module.exports = ["$scope", "$controller", "AdminAccountService", "config", func
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
-},{}],9:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminAccountService", "AdminRoleService", "Credential", function($scope, $controller, AdminAccountService, AdminRoleService, Credential) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -1155,7 +849,7 @@ module.exports = ["$scope", "$controller", "AdminAccountService", "AdminRoleServ
 	});
    
 }];
-},{}],10:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AttributeService", "config", function($scope, $controller, AttributeService, config) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -1182,10 +876,8 @@ module.exports = ["$scope", "$controller", "AttributeService", "config", functio
 	$scope.dataTypeDropdown = config.DROPDOWN.DATA_TYPE_DROPDOWN;
 }]
 
-},{}],11:[function(require,module,exports){
-var angular = require('angular');
-
-module.exports = ["$scope", "$controller", "AttributeService", "config", "util", function($scope, $controller, AttributeService, config, util) {
+},{}],9:[function(require,module,exports){
+module.exports = ["$scope", "$controller", "AttributeService", "ImageService", "config", "util", "common", function($scope, $controller, AttributeService, ImageService, config, util, common) {
 	'ngInject';
 	$scope.dataTypeOptions = config.DROPDOWN.DATA_TYPE_DROPDOWN;
 	$scope.variantOptions = config.DROPDOWN.VARIANT_DROPDOWN;
@@ -1203,15 +895,38 @@ module.exports = ["$scope", "$controller", "AttributeService", "config", "util",
 			init: function(scope) {	}
 		}
 	});
- 
+
+	var uploader = ImageService.getUploaderFn('/AttributeValueImages');
+ 	
+ 	//Preview image
+ 	$scope.preview = util.previewImage;
+
+ 	//Brand image
+ 	$scope.upload = function($file, choice) {
+ 		$scope.alert.close();
+ 		choice.Image = {
+ 			url: '/assets/img/placeholder-no-image-blank.png'
+ 		};
+ 		uploader.upload($file).then(function(response) {
+ 			choice.Image = response.data;
+ 		}, function(response) {
+ 			_.unset(choice, ['Image']);
+ 			$scope.alert.error(common.getError(response.data));
+ 		})
+ 	};
+
 	$scope.$watch('formData.DataType', function() {
-		if(_.isUndefined($scope.formData.DataType)) return;
-		if($scope.formData.DataType.value == 'HB') {
-			$scope.formData.VariantStatus = $scope.boolOptions[0];
+		if($scope.formData.DataType == 'HB') {
+			$scope.formData.VariantStatus = false;
+		}
+		if($scope.formData.DataType == 'LT') {
+			$scope.variantOptions = config.DROPDOWN.VARIANT2_DROPDOWN;
+		} else {
+			$scope.variantOptions = config.DROPDOWN.VARIANT_DROPDOWN;
 		}
 	}, true);
 }];
-},{"angular":181}],12:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AttributeSetService", "util", "config", function($scope, $controller, AttributeSetService, util, config) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -1232,7 +947,7 @@ module.exports = ["$scope", "$controller", "AttributeSetService", "util", "confi
 		}
 	});
 }]
-},{}],13:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AttributeSetService", "AttributeService", "config", function($scope, $controller, AttributeSetService, AttributeService, config) {
 	'ngInject';
 	$scope.visibleOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
@@ -1262,6 +977,14 @@ module.exports = ["$scope", "$controller", "AttributeSetService", "AttributeServ
 	$scope.lockAttributeset = function(i) {	
 		return false;
 	};
+	$scope.tagTransform = function(newTag) {
+		return {
+			TagName: newTag,
+			match: function(i) {
+				return this.TagName.match(i);
+			}
+		};
+	};
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
 		options: {
@@ -1279,54 +1002,63 @@ module.exports = ["$scope", "$controller", "AttributeSetService", "AttributeServ
 		}
 	});
 }]
-},{}],14:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "BrandService", "config", function($scope, $controller, BrandService, config) {
-	'ngInject';	
+},{}],12:[function(require,module,exports){
+module.exports = ["$scope", "$controller", "$uibModal", "BrandService", "config", function($scope, $controller, $uibModal, BrandService, config) {
+	'ngInject';
 	//Inherit from parent
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
 		options: {
-			url: '/admin/Brands',
+			url: '/admin/brands',
 			service: BrandService,
 			item: 'Brand',
 			order: 'UpdatedDt',
 			id: 'BrandId'
 		}
 	});
+	$scope.open = function(item) {
+		
+	};
 }]
-},{}],15:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "BrandService", "ImageService", function($scope, $controller, BrandService, ImageService) {
+},{}],13:[function(require,module,exports){
+module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageService", "common", "config", function($scope, $controller, Product, BrandService, ImageService, common, config) {
 	'ngInject';
-	//Inherit from abstract ctrl
-	$scope.uploader = ImageService.getUploader('/BrandImages', {
-		queueLimit: 1
-	});
-
-	$scope.customImageQueueHandler = function(images, item, obj) {
-		item.remove();
-		item.cancel();
-		$scope.alert.error('Your brand cannot have more than 1 image');
-		return false;
+	$scope.TYPEAHEAD_DELAY = config.TYPEAHEAD_DELAY;
+	$scope.products = [];
+	$scope.availableProducts = -1;
+	$scope.logoUploader = ImageService.getUploaderFn('/BrandImages');
+	$scope.bannerUploader = ImageService.getUploaderFn('/BrandImages');
+	$scope.uploadLogo = function(file) {
+		if(_.isNil(file)) {
+			return;
+		}
+		$scope.formData.BrandImage = {
+			url: '/assets/img/loader.gif'
+		};
+		$scope.logoUploader.upload(file)
+			.then(function(response) {
+				$scope.formData.BrandImage = response.data;
+			}, function(err) {
+				$scope.alert.error(common.getError(err.data));
+			});
 	};
-	$scope.onFail = function() {
-		$scope.alert.error('Error uploading your image, please try again');
+	$scope.uploadBannerFail = function(e, response) {
+		if(e == 'onmaxsize') {
+			$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+		}
+		else {
+			$scope.alert.error(common.getError(response.data));
+		}
 	};
-
-	//Events
-	$scope.$on('delete', function(e, item, arr, indx, uploader){
-		angular.forEach(uploader.queue, function(i) {
-			if(i.indx == indx) {
-				i.remove();
-				i.cancel();
-			}
-		});
-		arr.splice(indx, 1);
-	});
-   	$scope.$on('zoom', function(evt, item, array, index) {
-   		//Should use angular way, but ok whatever
-        $('#product-image-zoom img').attr('src', item.url);
-        $('#product-image-zoom').modal('show');
-   	});
+	$scope.getFeatureProduct = function(text) {
+		Product.advanceList({
+			Brands: [{BrandId: $scope.id}],
+			_limit: 8,
+			searchText: text
+		}).then(function(response) {
+			$scope.products = response.data;
+		});	
+	};
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
 		options: {
@@ -1334,144 +1066,30 @@ module.exports = ["$scope", "$controller", "BrandService", "ImageService", funct
 			url: '/admin/brands',
 			item: 'Brand',
 			service: BrandService,
-			onLoad: function(scope, load) {
-				ImageService.assignUploaderEvents(scope.uploader, scope.formData.BrandImages, scope.customImageQueueHandler, scope.onFail);
-			},
 			onSave: function(scope) {
-				if(scope.formData.BrandImages.length == 0) {
-					scope.alert.error('Your brand must have 1 image');
-					return true;
-				}
-				if(scope.uploader.isUploading) {
-					scope.alert.error('Please wait until the uploading is finished.');
-					return true;
+				if(!_.isNil(scope.formData.BrandImage)) {
+					scope.form.BrandImage.$setValidity('required', true);
+				} else {
+					scope.form.BrandImage.$setValidity('required', false);
 				}
 				return false;
+			},
+			onLoad: function(scope, flag) {
+				if(flag) {
+					//Check if product exist for this brand
+					Product.advanceList({
+							Brands: [{BrandId: $scope.id}],
+							_limit: 1,
+						}).then(function(response) {
+							$scope.availableProducts = response.total;
+						});
+				}
 			}
 		}
 	});
 }];
-},{}],16:[function(require,module,exports){
-module.exports = function($scope, $controller, CouponService, config, $uibModal) {
-  $controller('AbstractListCtrl', {
-    $scope: $scope,
-    options: {
-      url: '/admin/cms',
-      service: CouponService,
-      item: 'Coupon',
-      order: 'ExpireDate',
-      id: 'CouponId',
-      actions: [{
-        name: 'View Detail',
-        fn: function(item) {
-          console.log(item, 'view detail')
-        }
-      }],
-      bulks: [],
-      filters: []
-    }
-  });
 
-  $controller('AbstractAddCtrl', {
-    $scope: $scope,
-    options: {
-      id: 'CouponId',
-      url: '/admin/cms/create',
-      item: 'Coupon',
-      service: CouponService,
-      dateFields: ['StartDate', 'ExpireDate'],
-      onLoad: function(){
-        //map dropdonws
-      },
-      onSave: function(scope) {
-        //hacky speed fix
-        console.log($scope.formData)
-        //scope.formData.Conditions.Order = [scope.formData.Conditions.Order["0"]];
-      }
-    }
-  });
-
-
-  $scope.formData = {};
-  $scope.groupItemList = [];
-
-
-  $scope.loadAllCMS = function() {
-    
-  };
-
-  $scope.addNewGroup = function() {
-     $uibModal.open({
-      template: '<div class="modal-header">' +
-                '  <h3 class="modal-title">Add New Group</h3>' +
-                '</div>' +
-                '<div class="modal-body">' +
-                '  <form class="ah-form margin-top-20" name="form" novalidate>' +
-                '    <div class="row">' +
-                '      <div class="col-xs-12">' +
-                '   <div class="form-section-content">' +
-                '     <input type="text" class="form-control" ng-model="groupName" />' +
-                '   </div>' +
-                '        <div class="container-fluid no-padding margin-top-20">' +
-                '            <div class="float-right">' +
-                '              <a href="#" class="link-btn-plain" ng-click="$dismiss()">Cancel</a>' +
-                '              <button class="btn btn-blue btn-width-xl" ng-click="save(groupName)"><span class="login-loading" ng-cloak ng-show="saving"><i class="fa fa-spinner fa-spin" ></i></span>Save</button>' +
-                '            </div' +
-                '        </div' +
-                '      </div>' +
-                '    </div>' +
-                '  </form>' +
-                '</div>',
-      size: 'md',
-      scope: $scope,
-      controller: function($scope, $uibModalInstance) {
-
-
-        $scope.save = function(groupName) {
-          var group = {
-            GroupName: groupName,
-            GroupTotal: 0
-          }
-          $uibModalInstance.close(group)
-        };
-
-        
-      }
-    })
-    .result.then(function(data) {
-      console.log(data)
-      $scope.groupItemList.push(data);
-    });
-  };
-
-  $scope.AddToList = function() {
-    console.log($scope.formData)
-  };
-}
-
-},{}],17:[function(require,module,exports){
-module.exports = function($scope, $controller, CouponService, config) {
-  $controller('AbstractListCtrl', {
-    $scope: $scope,
-    options: {
-      url: '/admin/cms/static',
-      service: CouponService,
-      item: 'Coupon',
-      order: 'ExpireDate',
-      id: 'CouponId',
-      actions: [{
-        name: 'View Detail',
-        fn: function(item) {
-          console.log(item, 'view detail')
-        }
-      }],
-      bulks: [],
-      filters: []
-    }
-  });
-}
-
-},{}],18:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 
 module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Category", "GlobalCategoryService", "AttributeSetService", "NcAlert", "util", "config", function($scope, $rootScope, $uibModal, $timeout, common, Category, GlobalCategoryService, AttributeSetService, NcAlert, util, config){
 	'ngInject';
@@ -1490,6 +1108,13 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 		var modalDirty = $scope.modalScope == null ? false : $scope.modalScope.form.$dirty;
 		return $scope.saving || $scope.dirty || modalDirty;
 	});
+	//Expand and collapse all
+	$scope.collapseAll = function() {
+		$rootScope.$broadcast('angular-ui-tree:collapse-all');
+	}
+	$scope.expandAll = function() {
+        $rootScope.$broadcast('angular-ui-tree:expand-all');
+	}
 
 	//UiTree onchange event
 	$scope.treeOptions = {
@@ -1590,29 +1215,58 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 			size: 'lg',
 			keyboard: false,
 			templateUrl: 'global_category/modal',
-			controller: ["$scope", "$uibModalInstance", "$timeout", "GlobalCategoryService", "NcAlert", "config", "id", "attributeSetOptions", function($scope, $uibModalInstance, $timeout, GlobalCategoryService, NcAlert, config, id, attributeSetOptions) {
+			controller: ["$scope", "$uibModalInstance", "$timeout", "GlobalCategoryService", "NcAlert", "config", "id", "attributeSetOptions", "Product", "ImageService", function($scope, $uibModalInstance, $timeout, GlobalCategoryService, NcAlert, config, id, attributeSetOptions, Product, ImageService) {
 				'ngInject';
 				$scope.$parent.modalScope = $scope;
 				$scope.alert = new NcAlert();
 				$scope.statusOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
 				$scope.attributeSetOptions = attributeSetOptions;
+				$scope.bannerUploader = ImageService.getUploaderFn('/GlobalCategoryImages');
 				$scope.formData = {};
 				$scope.saving = false;
 				$scope.loading = true;
+				$scope.products = [];
+				$scope.availableProducts = -1;
+				$scope.id = id;
 
 				if(id == 0) {
 					$scope.formData = GlobalCategoryService.generate();
 					$scope.loading = false;
 				} else {
+					//Check product count
+					Product.advanceList({
+						GlobalCategories: [{CategoryId: id}],
+						_limit: 1,
+					}).then(function(response) {
+						$scope.availableProducts = response.total;
+					});
+					//Load cat
 					GlobalCategoryService.get(id)
 						.then(function(data) {
-							$scope.formData = data;
+							$scope.formData = GlobalCategoryService.deserialize(data);
 						}, function(err) {
 							$scope.alert.error(common.getError(err));
 						}).finally(function() {
 							$scope.loading = false;
 						});
-				}
+				};
+				$scope.getFeatureProduct = function(text) {
+					Product.advanceList({
+						GlobalCategories: [{CategoryId: id}],
+						_limit: 8,
+						searchText: text
+					}).then(function(response) {
+						$scope.products = response.data;
+					});	
+				};
+				$scope.uploadBannerFail = function(e, response) {
+					if(e == 'onmaxsize') {
+						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+					}
+					else {
+						$scope.alert.error(common.getError(response.data));
+					}
+				};
 
 				$scope.$on('modal.closing', function(e, res, closeType) {
 					if(!closeType) {
@@ -1706,7 +1360,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 
 }];
 
-},{}],19:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 module.exports = function($scope, $controller, CouponService, config) {
   $controller('AbstractListCtrl', {
     $scope: $scope,
@@ -1719,7 +1373,6 @@ module.exports = function($scope, $controller, CouponService, config) {
       actions: [{
         name: 'View Detail',
         fn: function(item) {
-          console.log(item, 'view detail')
         }
       }],
       bulks: [],
@@ -1728,7 +1381,7 @@ module.exports = function($scope, $controller, CouponService, config) {
   });
 }
 
-},{}],20:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 module.exports = function($scope, $controller, CouponService, config, Brand, Shop, Product) {
   $scope.formData = {
     ExpireDate: null,
@@ -1854,7 +1507,81 @@ module.exports = function($scope, $controller, CouponService, config, Brand, Sho
 
 };
 
-},{}],21:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
+module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", "ImageService", function($scope, $controller, $uibModal, NewsletterService, ImageService) {
+	'ngInject';
+	$controller('AbstractListCtrl', {
+		$scope: $scope,
+		options: {
+			url: '/newsletters',
+			service: NewsletterService,
+			item: 'Newsletter',
+			order: 'CreatedDt',
+			id: 'NewsletterId',
+			actions: [{
+				name: 'View / Edit',
+				fn: function(item) {
+					$scope.open(item);
+				}
+			}, 'Delete']
+		}
+	});
+
+	$scope.open = function(item) {
+		var modal = $uibModal.open({
+			size: 'lg',
+			templateUrl: 'newsletter/modalAdmin',
+			controller: ["$scope", "$uibModalInstance", "NcAlert", "config", "id", "uploader", function($scope, $uibModalInstance, NcAlert, config, id, uploader) {
+				'ngInject';
+				$scope.formData = NewsletterService.generate();
+				$scope.form = {};
+				$scope.alert = new NcAlert();
+				$scope.shopGroupOptions = config.DROPDOWN.SHOP_GROUP_DROPDOWN;
+
+				//Load
+				if(id == 0) {
+					NewsletterService.get(id)
+						.then(function(data) {
+							$scope.formData = NewsletterService.deserialize(data);
+						}, function() {
+							$uibModalInstance.dismiss();
+						});
+				}
+
+				$scope.save = function() {
+					if(id == 0) {
+						//Create
+						NewsletterService.create(NewsletterService.serialize(res))
+							.then(function() {
+								$uibModalInstance.close();
+							}, function(err) {
+								$scope.alert.error(common.getError(err));
+							});
+					} else {
+						//Update
+						NewsletterService.update(id, NewsletterService(serialize(res)))
+							.then(function() {
+								$uibModalInstance.close();
+							}, function(err) {
+								$scope.alert.error(common.getError(err));
+							});
+					}
+				}
+			}],
+			resolve: {
+				id: function() {
+					return _.isNil(item) ? 0 : item.NewsletterId;
+				},
+				uploader: function() {
+					return ImageService.getUploaderFn('/NewsletterImages');
+				}
+			}
+		});
+		modal.result.then(function(res) {
+		});
+	};
+}];
+},{}],18:[function(require,module,exports){
 module.exports = function ($scope, $controller, OnTopCredit, config) {
     $scope.formData = {
         OnTopCreditCardId: null,
@@ -2015,7 +1742,7 @@ module.exports = function ($scope, $controller, OnTopCredit, config) {
     });
 };
 
-},{}],22:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "OnTopCredit", "config", function($scope, $controller, OnTopCredit, config) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
@@ -2039,7 +1766,7 @@ module.exports = ["$scope", "$controller", "OnTopCredit", "config", function($sc
 	});
 	$scope.statusDropdown = config.PRODUCT_STATUS;
 }];
-},{}],23:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "config", "util", function($scope, $controller, Product, config, util) {
 	'ngInject';
     $scope.asStatus = Product.getStatus;
@@ -2078,7 +1805,22 @@ module.exports = ["$scope", "$controller", "Product", "config", "util", function
 	$scope.params._filter = $scope.filterOptions[4].value;
 }];
 
-},{}],24:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
+var angular = require('angular');
+
+module.exports = ["$scope", "$controller", function ($scope, $controller) {
+    'ngInject';
+    
+    $controller('AbstractProductAddCtrl', {
+        $scope: $scope,
+        options: {
+            maxImageUploadQueueLimit: 25,
+            adminMode : true
+        }
+    });
+
+}];
+},{"angular":182}],22:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "config", function($scope, $controller, Product, config) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
@@ -2102,7 +1844,7 @@ module.exports = ["$scope", "$controller", "Product", "config", function($scope,
 	});
 	$scope.statusDropdown = config.PRODUCT_STATUS;
 }];
-},{}],25:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminRoleService", "config", function($scope, $controller, AdminRoleService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -2118,7 +1860,7 @@ module.exports = ["$scope", "$controller", "AdminRoleService", "config", functio
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }]
-},{}],26:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminRoleService", function($scope, $controller, AdminRoleService) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -2133,7 +1875,7 @@ module.exports = ["$scope", "$controller", "AdminRoleService", function($scope, 
 		}
 	});
 }];
-},{}],27:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminShopService", "config", function($scope, $controller, AdminShopService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -2149,8 +1891,8 @@ module.exports = ["$scope", "$controller", "AdminShopService", "config", functio
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
-},{}],28:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "AdminShoptypeService", "config", "common", "Credential", "$rootScope", "$window", function($scope, $controller, $uibModal, AdminShopService, AdminShoptypeService, config, common, Credential, $rootScope, $window) {
+},{}],26:[function(require,module,exports){
+module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "AdminShoptypeService", "GlobalCategoryService", "Category", "config", "common", "Credential", "$rootScope", "$window", function($scope, $controller, $uibModal, AdminShopService, AdminShoptypeService, GlobalCategoryService, Category, config, common, Credential, $rootScope, $window) {
 	'ngInject';
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -2165,6 +1907,17 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 					.then(function(data) {
 						scope.shoptypes = data;
 					});
+			},
+			onLoad: function(scope, flag) {	
+				//Load global cat
+				scope.globalCategory = [];
+				GlobalCategoryService.list()
+					.then(function(data) {
+						scope.globalCategory = Category.transformNestedSetToUITree(data);
+						_.forEach(scope.formData.Commissions, function(item) {
+							item.NameEn = Category.findByCatId(item.CategoryId, scope.globalCategory).NameEn;
+						});
+				});
 			}
 		}
 	});
@@ -2220,11 +1973,57 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 			$scope.alert.success('Successfully reset password.');
 		});
 	};
+	$scope.openCommissionSelector = function(item) {
+		var category = null;
+		if(!_.isNil(item))
+			category = Category.findByCatId(item.CategoryId, $scope.globalCategory);
+	    var modalInstance = $uibModal.open({
+	      size: 'category-section modal-lg column-4',
+	      keyboard: false,
+	      templateUrl: 'shop_account/modalCommissionCat',
+	      controller: ["$scope", "$uibModalInstance", "tree", "model", function($scope, $uibModalInstance, tree, model) {
+	        'ngInject';
+	        $scope.model = model;
+	        $scope.tree = tree;
+	        $scope.$watch('model', function(newVal, oldVal) {
+	        	if(!_.isEmpty(newVal))
+	        		$scope.Commission = newVal.Commission;
+	        });
+	        $scope.select = function() {
+	          $scope.model.Commission = _.toNumber($scope.Commission);
+	          $uibModalInstance.close($scope.model);
+	        };
+	      }],
+	      resolve: {
+	        model: function() {
+	          return category;
+	        },
+	        tree: function() {
+	          return $scope.globalCategory;
+	        }
+	      }
+	    })
+	    
+	    modalInstance.result.then(function(result) {
+    		if(_.isNil(item)) {
+	    		//Add
+	    		item = {};
+	    		$scope.formData.Commissions.push(item);
+	    	}
+	    	//Update
+	    	item = _.extend(item, _.pick(result, ['Commission', 'CategoryId', 'NameEn']));
+	    	item.Commission = _.toNumber(item.Commission);
+    		//Remove dupe
+    		_.remove($scope.formData.Commissions, function(n) {
+    			return n.CategoryId == item.CategoryId && n !== item;
+    		});
+	    });
+	};
 	$scope.shopGroupDropdown = config.SHOP_GROUP;
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
 
-},{}],29:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminShoptypeService", function($scope, $controller, AdminShoptypeService) {
 	'ngInject';
 	//Inherit from parent
@@ -2239,7 +2038,7 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", function($sco
 		}
 	});
 }];
-},{}],30:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminShoptypeService", function($scope, $controller, AdminShoptypeService) {
 	'ngInject';
 	//Inherit from parent
@@ -2296,857 +2095,7 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", function($sco
 		}
 	}, true);
 }];
-},{}],31:[function(require,module,exports){
-var angular = require('angular');
-
-module.exports = ['$scope', '$window', 'util', 'config','Product', 'Buy1Get1','Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$Buy1Get1Add',
-function ($scope, $window, util, config,Product,  Buy1Get1, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, $rootScope , $q, KnownException, NcAlert, $Buy1Get1Add) {
-    'use strict';
-
-    //TODO: use Poons' Alert class
-
-    $window.onbeforeunload = function (e) {
-        if (!$scope.addBuy1Get1Form.$dirty) {
-            //only warn when form is dirty
-            return null;
-        }
-        var message = "Your changes will not be saved.",
-        e = e || window.event;
-        // For IE and Firefox
-        if (e) {
-            e.returnValue = message;
-        }
-
-        // For Safari
-        return message;
-    }; // end onbefore unload
-
-
-
-
-$scope.productList = [];
-$scope.productTotal = 0 ;
-$scope.defaultProductModalParam ={
-        filter: 'All',
-        searchText: null,
-        orderBy: 'UpdateDate',
-        direction: 'desc',
-        page: 0,
-        pageSize: 5
-    };
-
-$scope.statusLookup = {};
- config.PRODUCT_STATUS.forEach(function(object){
-       $scope.statusLookup[object.value] = object; 
-    });
- $scope.totalPage = function (x) {
-        return Math.ceil($scope.productTotal / $scope.defaultProductModalParam.pageSize);
-    };
- $scope.asStatus = function (ab) {
-        return $scope.statusLookup[ab];
-    };   
-$scope.nextPage = function (m) {
-    if ($scope.defaultProductModalParam.page + m >= $scope.totalPage() ||
-        $scope.defaultProductModalParam.page + m < 0)
-        return;
-
-    $scope.defaultProductModalParam.page += m;
-};
-$scope.setOrderBy = function (nextOrderBy) {
-    if ($scope.defaultProductModalParam.orderBy == nextOrderBy) {
-        $scope.defaultProductModalParam.direction = ($scope.defaultProductModalParam.direction == 'asc' ? 'desc' : 'asc');
-    }
-    $scope.defaultProductModalParam.orderBy = nextOrderBy;
-}; 
-$scope.setPageSize = function (p) {
-    $scope.defaultProductModalParam.pageSize = p;
-}
-$scope.applySearch = function () {
-    $scope.defaultProductModalParam.searchText = $scope.searchText;
-};
-$scope.reloadData = function () {        
-       $scope.notReady = true;
-            Product.getAll($scope.defaultProductModalParam).then(function (x) {
-            $scope.productTotal = x.total;
-            $scope.productList = x.data;
-            $scope.notReady = false;
-        });
-    };
-
-$scope.$watch('defaultProductModalParam', function () {
-        $scope.reloadData();
-        $scope.allChecked = false;
-    }, true);
-
-//start buy 1 item select modal
-$scope.BuyItemSelected = function () {
-        $scope.exporter = {
-            progress: 10,
-            title: 'Select Buy 1 Item...'
-        };
-            $scope.reloadData();
-
-        $("#modal-buy1item-selected").modal('show');
-    };
-    
-    $scope.confirmBuy1ItemSelected = function(){
-        $("#modal-buy1item-selected").modal('hide');
-        var chb_product_buy_val=$("input[name='chb_product_buy']:checked").val();
-        var jsonObjBuy = jQuery.parseJSON(chb_product_buy_val);
-    
-        $scope.formData.BuyItemSelStatus = true;
-        $scope.formData.PIDBuy = jsonObjBuy.ProductId;
-        $scope.formData.PNameBuy = jsonObjBuy.ProductNameEn;     
-    }
-//end buy 1 get item
-
-//start get 1 item select modal
-$scope.GetItemSelected = function () {
-        $scope.exporter = {
-            progress: 10,
-            title: 'Select Get 1 Item...'
-        };
-            $scope.reloadData();
-
-        $("#modal-get1item-selected").modal('show');
-    };
-    
-    $scope.confirmGet1ItemSelected = function(){
-        $("#modal-get1item-selected").modal('hide');
-        var chb_product_get_val=$("input[name='chb_product_get']:checked").val();
-        var jsonObjGet = jQuery.parseJSON(chb_product_get_val);
-    
-        $scope.formData.GetItemSelStatus = true;
-        $scope.formData.PIDGet = jsonObjGet.ProductId;
-        $scope.formData.PNameGet = jsonObjGet.ProductNameEn;
-        // var arr = [];
-        // Object.keys($scope.checkBoxCache).forEach(function (m) {
-        //     if (!$scope.checkBoxCache[m]) return;
-        //     arr.push({
-        //         ProductId: Number(m)
-        //     });
-        // });
-    }
-
-//end get 1 get item
-    $scope.keywordValidConditions = {};
-    $scope.variationOptionWarning = [[], []];
-    $scope.onKeywordAdded = function (item, model) {
-
-        $scope.keywordValidConditions = {};
-        if (!item) return $scope.formData.Keywords.pop();
-
-        if ($scope.formData.Keywords.length > 20) {
-            $scope.keywordValidConditions['tagcount'] = true;
-        }
-
-        if (item.length > 30) {
-            $scope.keywordValidConditions['taglength'] = true;
-        }
-
-        if (!item.match(/^[a-zA-Z0-9ก-ฮ\s\-]+$/)) {
-            $scope.keywordValidConditions['pattern'] = true;
-        }
-
-        if (Object.keys($scope.keywordValidConditions).length > 0) {
-            //if there is error, revert
-            $scope.formData.Keywords.pop();
-        }
-    }
-  
-    $scope.onVariationOptionFreeTextAdded = function (item, model, jth) {
-        $scope.variationOptionWarning[jth] = [];
-        if (!item) return;
-        if (item.length > 30) $scope.variationOptionWarning[jth].push("Variation option must contain 30 characters or less");
-        if (!item.match(/^[a-zA-Z0-9\s]+$/)) $scope.variationOptionWarning[jth].push("Only letters and numbers allowed");
-
-        var optlen1 = $scope.attributeOptions[0].options.length;
-        var optlen2 = $scope.attributeOptions[1].options.length;
-        if ((optlen1 == 0 ? 1 : optlen1) * (optlen2 == 0 ? 1 : optlen2) > MAX_VARIANT) {
-            $scope.variationOptionWarning[jth].push("Maximum combination of variants (" + MAX_VARIANT + ") reached.");
-        }
-
-        if ($scope.variationOptionWarning[jth].length > 0) {
-            $scope.attributeOptions[jth].options.pop();
-        }
-    }
-
-    //Attribute Options to be filled via API
-    $scope.availableAttributeSets = [];
-    $scope.availableGlobalCategories = [];
-    $scope.availableLocalCategories = [];
-    $scope.availableBrands = [];
-    $scope.availableSearchTags = [];
-    $scope.availableRelatedProducts = [];
-    $scope.availableStockTypes = ['Stock', 'Pre-Order'];
-    $scope.availableVariantDisplayOption = [{ text: 'Show as group of variants', value: 'GROUP' }, { text: 'Show as individual product', value: 'INDIVIDUAL' }];
-
-    $scope.overview = {}
-
-    $scope.formData = {
-        PIDBuy :"",
-        PIDGet : "",
-        Brand: { id: null, BrandNameEn: "Please select brand.." },
-        MasterVariant: { DimensionUnit: "CM", WeightUnit: "G", StockType: "Stock" },
-        ShippingMethod: "1",
-        AttributeSet: {
-            AttributeSetTagMaps: []
-        },
-        RelatedProducts: [],
-        MasterImages: [],
-        MasterImages360: [],
-        VideoLinks: [],
-        Variants: [],
-        GlobalCategories: [null, null, null],
-        LocalCategories: [null, null, null],
-        SEO: { ProductBoostingWeight: 10000 },
-        ControlFlags: [],
-        Keywords: []
-    };
-    //Variation Factor Indices are used as index
-    //for ng-repeat in variation tab
-    $scope.variationFactorIndices = {};
-    $scope.variationFactorIndices.iterator = [0];
-    $scope.variationFactorIndices.length = function () {
-        return $scope.variationFactorIndices.iterator.length;
-    }
-    $scope.variationFactorIndices.popSecond = function () {
-        $scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop();
-        $scope.attributeOptions[1].options = [];
-    }
-    $scope.variationFactorIndices.pushSecond = function () {
-        $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1);
-    }
-
-    //Unmultiplied Variants (factor)
-    $scope.attributeOptions = {
-        0: {
-            Attribute: false,
-            options: []
-        },
-        1: {
-            Attribute: false,
-            options: []
-        }
-    };
-
-    //TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
-    $scope._attrEnTh = function (t) { return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
-    $scope._isFreeTextInput = util.isFreeTextDataType;
-    $scope._isListInput = util.isListDataType;
-
-    //CK editor options
-    $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
-
-    /*
-     * Page can be in 3 states
-     * --------------------------------
-     *  success: OK stat
-     *  failure: L2 validation error (client + server)
-     *  invalid: L1 validation error (client)
-     */
-    $scope.pageState = {
-        success: false,
-        failure: false,
-        invalid: false,
-        loading: {
-            state: true,
-            message: 'Loading..'
-        },
-        load: function (msg) {
-            $scope.pageState.loading.message = msg;
-            $scope.pageState.loading.state = true;
-        },
-        reset: function () {
-            $scope.pageState.success = false;
-            $scope.pageState.failure = false;
-            $scope.pageState.invalid = false;
-            $scope.pageState.loading.state = false;
-        }
-    };
-    //Modal State
-    $scope.formData.BuyItemSelStatus = true;
-    $scope.formData.GetItemSelStatus = true;
-    // $scope.formData.PNameBuy = "";
-    // $scope.formData.PNameGet = "";
-    //TODO: Initialize non-formData variable
-    $scope.enableProductVariations = "disable";
-
-    /*
-     *  Run clean data before any publishing
-     *  which will try to reduce imperfection before
-     *  serialization
-     */
-    var cleanData = function () {
-
-    };
-
-    $scope.preview = function () {
-        return console.log($scope.formData);
-        cleanData();
-        var apiRequest = Buy1Get1.serialize($scope.formData);
-        console.log(JSON.stringify(apiRequest));
-    };
-
-    $scope.$watch('formData.ExpireDate', function () {
-        var form = $scope.addBuy1Get1Form;
-            if (!form.ExpireDate) return;
-            form.ExpireDate.$setValidity("min", true);
-                
-        if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
-            if (!form.ExpireDate) return;
-            form.ExpireDate.$setValidity("min", false);
-            form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
-        }
-    });
-
-    var manualValidate = function () {
-        var mat = [];
-         if (!$scope.formData.NameTH || $scope.formData.NameTH == "") {
-            mat.push("Missing Thai Name");
-        }
-        if (!$scope.formData.NameEN || $scope.formData.NameEN == "") {
-            mat.push("Missing English Name");
-        }       
-        if (!$scope.formData.PIDBuy || $scope.formData.PIDBuy == "") {
-            mat.push("Please Select Buy Item");
-        }
-        if (!$scope.formData.PIDGet || $scope.formData.PIDGet == "") {
-            mat.push("Please Select Get Item");
-        }        
-        return mat;
-    };
-
-    /*
-     *  Publish (both Draft and WA)
-     */
-    $scope.publish = function (Status) {
-
-        $scope.pageState.reset();
-        $scope.pageState.load('Validating..');
-
-        $scope.onPublishing = (Status == "4");
-        console.log("befor validate");
-        //On click validation
-        var validateMat = manualValidate();
-        if (validateMat.length > 0 ) {
-            $scope.pageState.reset();
-            $scope.pageState.failure = true;
-            $scope.pageState.failure_message = validateMat[0];
-            $window.location.hash = 'alert';
-            $window.location.hash = 'alert-failure';
-            return;
-        }
-
-
-        $scope.pageState.load('Publishing..');
-        cleanData();
-        console.log("Publishing with Status = ", Status);
-        //Error Handling too Messi
-        try {            
-                $scope.formData.CMSStatusFlowId = Status
-                $scope.formData.Status = true;
-                $scope.formData.UpdateBy =1;
-                $scope.formData.CreateBy =1;
-                $scope.formData.Visibility = 1;
-                $scope.formData.CreateIP ='203.146.156.34';
-
-
-                var apiRequest =  Buy1Get1.serialize($scope.formData);  
-                var tmpObjArr =[];
-                var apiParameter ;
-                if($scope.formData.PromotionBuy1Get1ItemId != null && typeof $scope.formData.PromotionBuy1Get1ItemId != "undefined"){
-                    tmpObjArr.push(apiRequest);
-                    apiParameter = tmpObjArr;
-                }else{ apiParameter = apiRequest;}
-
-
-                Buy1Get1.publish(apiParameter, Status).then(function (res) {
-                $scope.pageState.reset();
-                if (res.PromotionBuy1Get1ItemId) {
-                    $scope.overview = res;
-                    $scope.pageState.success = true;
-                    $scope.formData.PromotionBuy1Get1ItemId = res.PromotionBuy1Get1ItemId;
-                    $scope.addBuy1Get1Form.$setPristine(true)
-                } else {
-                    $scope.pageState.failure = true;
-                    $scope.pageState.failure_message = res.message || res.Message;
-                    $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-                    $window.location.hash = 'alert'
-                    $window.location.hash = 'alert-failure'
-                }
-            }, function (er) {
-                $scope.pageState.reset();
-                $scope.pageState.failure = true;
-                $scope.pageState.failure_message = er.Message || er.message;
-                $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-
-                $window.location.hash = 'alert' //Need to toggle hash otherwise it wont scroll
-                $window.location.hash = 'alert-failure'
-            });
-
-        } catch (ex) {
-            console.log("catch exception from publish process");
-            $scope.pageState.reset();
-            $scope.pageState.failure = true;
-            $scope.pageState.failure_message = ex.message;
-            $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-            $window.location.hash = 'alert'
-            $window.location.hash = 'alert-failure'
-            console.log('publish failure', ex);
-            return;
-        }
-    };
-
-    $scope.init = function (viewBag) {
-        //TODO: Refactor, use better callback mechanism
-        if (!angular.isObject(viewBag)) throw new KnownException("View bag is corrupted");
-
-        var shopId = 1;
-        var _editMode = ("PromotionBuy1Get1ItemId" in viewBag)
-      
-
-        if (_editMode) {
-                        var PromotionBuy1Get1ItemId = viewBag.PromotionBuy1Get1ItemId;
-                        $scope.pageState.load('Loading Buy 1 Get 1 ..');
-
-                        Buy1Get1.getOne(PromotionBuy1Get1ItemId)
-                            .then(function (inverseFormData) {
-                                $scope.overview = angular.copy(inverseFormData);
-                              
-                                $Buy1Get1Add.fill( $scope.pageState, $scope.dataSet, $scope.formData,  $scope.controlFlags,
-                                    $scope.variationFactorIndices, inverseFormData).then(function () {
-                                        $scope.formData.PromotionBuy1Get1ItemId = Number(PromotionBuy1Get1ItemId);                                      
-                                        $scope.pageState.reset();
-                                      
-                                    });
-                            }, function (error) {
-                                 console.log("function (error)");
-                                throw new KnownException("Unable to fetch buLy 1 get 1 with id " + PromotionBuy1Get1ItemId);
-                            });
-
-                    } else if ('catId' in viewBag) {
-                        // var catId = Number(viewBag.catId);
-                        // $Buy1Get1Add.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs,
-                        //     $scope.controlFlags, $scope.variationFactorIndices).then(function () {
-                        //         $scope.pageState.reset();
-                             
-                        //     });
-                    } else {
-                        throw new KnownException("Invalid mode, viewBag garbage");
-        }
-
-
-    }//end init
-
-    var tabPage = {};
-
-   
-}];
-
-},{"angular":181}],32:[function(require,module,exports){
-var angular = require('angular');
-
-module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', function ($scope, Product, util, Alert, $window) {
-    
-}];
-},{"angular":181}],33:[function(require,module,exports){
-module.exports = ['$scope',  'Buy1Get1', 'util', 'Alert', '$window', '$rootScope', function
-
-($scope, Buy1Get1, util, Alert, $window, $rootScope) {
-    //UI binding variables    
-
-    $scope.checkBoxCache = {};
-    $scope.hidCMSTypeId = {};    
-    $scope.showOnOffStatus = true;
-    $scope.allChecked = false;
-    $scope.alert = new Alert();
-    $scope.filterOptions = [
-        { name: "All", value: 'All' },
-        { name: "Approved", value: 'Approved' },
-        { name: 'Draft', value: 'Draft' },
-        { name: "Not Approved", value: 'NotApproved' },
-        { name: "Wait for Approval", value: 'WaitforApproval' },
-    ];
-
-    $scope.startExportBuy1Get1 = function () {
-        $scope.exporter = {
-            progress: 10,
-            title: 'Exporting...'
-        };
-
-        $("#export-buy1get1").modal('show');
-    };
-
-    $scope.confirmExportBuy1Get1 = function () {
-        $("#export-buy1get1").modal('hide');
-
-        var arr = [];
-        Object.keys($scope.checkBoxCache).forEach(function (m) {
-            if (!$scope.checkBoxCache[m]) return;
-            arr.push({
-                PromotionBuy1Get1ItemId: Number(m)
-            });
-        });
-
-        if (arr.length == 0) return;
-
-
-        var fileName = 'Buy1Get1Export-' + moment(new Date(), 'MM-DD-YYYY-HHmm') + ".csv";
-        var a = document.getElementById("export_download_btn");
-
-        var error = function (r) {
-            $(".modal").modal('hide');
-            $scope.exporter.title = 'Error'
-            $scope.alert.error('Unable to Export Buy 1 Get 1');
-            $scope.reloadData();
-        };
-
-        $scope.exporter.progress = 15;
-        var blobs = [];
-
-        var chunks = _.chunk(arr, 3);
-
-
-        chunks.forEach(function (chunk) {
-            Buy1Get1.export(chunk).then(function (result) {
-
-                $scope.exporter.progress += (100 / chunks);
-                blobs.push(result);
-
-                var file = new Blob(blobs, { type: 'application/csv' });
-                var fileURL = URL.createObjectURL(file);
-
-                $scope.exporter.href = fileURL;
-                $scope.exporter.download = fileName;
-                $scope.exporter.progress = 100;
-                $scope.exporter.title = 'Export Complete'
-
-                a.href = fileURL;
-            }, error);
-        });
-    }
-
-
-    $scope.setPageSize = function (p) {
-        $scope.tableParams.pageSize = p;
-    }
-
-    $scope.bulk = {
-        fn: function () {
-            var bulk = $scope.bulkOptions.find(function (item) {
-                return item.name == $('#bulk').html();
-            });
-            if (bulk) {
-                bulk.fn();
-            }
-            $scope.allChecked = false;
-        }
-    };
-
-    $scope.bulkOptions = [
-        {
-            name: 'Delete',
-            value: 'delete',
-            fn: function () {
-                $scope.alert.close();
-             
-
-
-             var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { PromotionBuy1Get1ItemId: -1 , CMSStatusFlowId: 5  };  
-                    }else{
-                            rObj = {
-                            PromotionBuy1Get1ItemId: Number(id),
-                            CMSStatusFlowId: 5 
-                        };
-                    }                   
-                    return rObj ;
-                });
-    
-                if (selList.length > 0) {
-                       
-                        var apiRequest = Buy1Get1.arrSerialize(selList);                         
-                        Buy1Get1.deleteBulk(apiRequest).then(function () {
-                        $scope.alert.success('Successfully deleted');
-                        $scope.reloadData();
-                    }, function (result) {
-                        $scope.alert.error('Unable to Delete');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Show',
-            value: 'show',
-            fn: function () {
-
-        var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { PromotionBuy1Get1ItemId: -1 , Visibility: true  };  
-                    }else{
-                            rObj = {
-                            PromotionBuy1Get1ItemId: Number(id) ,
-                            Visibility : true 
-                        };
-                    }                   
-                    return rObj ;
-                });
-
-
-                if (selList.length > 0) {
-                     var apiRequest = Buy1Get1.arrSerialize(selList);
-                        Buy1Get1.visible(apiRequest).then(function () {
-                        $scope.alert.success('Successfully changed');
-                        $scope.reloadData();
-                    }, function () {
-                        $scope.alert.error('Unable to Show');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Hide',
-            value: 'hide',
-            fn: function () {
-               
-                 var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { PromotionBuy1Get1ItemId: -1 , Visibility: false  };  
-                    }else{
-                            rObj = {
-                            PromotionBuy1Get1ItemId: Number(id) ,
-                            Visibility : false 
-                        };
-                    }                   
-                    return rObj ;
-                });
-
-                if (selList.length > 0) {
-                      var apiRequest = Buy1Get1.arrSerialize(selList);
-                        Buy1Get1.visible(apiRequest).then(function () {
-                        $scope.alert.success('Successfully changed');
-                        $scope.reloadData();
-                    }, function () {
-                        $scope.alert.error('Unable to Hide');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Publish',
-            value: 'publish',
-            fn: function () {
-              
-                 var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { PromotionBuy1Get1ItemId: -1 ,CMSStatusFlowId: 2  };  
-                    }else{
-                            rObj = {
-                            PromotionBuy1Get1ItemId: Number(id) ,
-                            CMSStatusFlowId: 2 
-                        };
-                    }                   
-                    return rObj ;
-                });
-
-                if (selList.length == 0) return;
-
-                    var apiRequest = Buy1Get1.arrSerialize(selList);
-                Buy1Get1.bulkPublish(apiRequest).then(function () {
-                     $scope.alert.success('Successfully published');
-                     $scope.reloadData();
-                }, function (r) {
-                    $scope.alert.success('Unable to publish');
-                     $scope.reloadData();
-                });
-            }
-        }
-    ];
-    $scope.actions = {
-        edit: function (row) {
-            $window.location.href = "/buy1get1/" + row.PromotionBuy1Get1ItemId;
-        },
-        delete: function (row) {
-            $scope.alert.close();
-            Buy1Get1.deleteBulk([{ PromotionBuy1Get1ItemId: row.PromotionBuy1Get1ItemId ,CMSStatusFlowId:5 }]).then(function () {
-                $scope.alert.success('You have successfully remove an entry.');
-                $scope.reloadData();
-            }, function (err) {
-                $scope.alert.error(err);
-            });
-        },
-        duplicate: function (row) {
-            $scope.alert.close();
-            Buy1Get1.duplicate(row.PromotionBuy1Get1ItemId).then(function () {
-                $scope.alert.success();
-                $scope.reloadData();
-            }, function (err) {
-                $scope.alert.error(err);
-            });
-        },
-        toggle: function (row) {
-            $scope.alert.close();
-            row.Visibility = !row.Visibility;
-            console.log("[row]");
-            console.log([row]);
-            Buy1Get1.visible([row]).then(function () {
-            }, function (err) {
-                $scope.alert.error(err);
-                $scope.reloadData();
-            });
-        }
-    };
-    $scope.sort = util.tableSortClass($scope);
-    var StatusLookup = {
-
-        '1': {
-            Class: 'fa-circle-o',
-            Text: 'Draft',
-            Color: 'color-grey'
-        },
-        '2': {
-            Class: 'fa-check-square-o',
-            Text: 'Approve',
-            Color: 'color-green'
-        },
-        '3': {
-            Class: 'fa-circle-o',
-            Text: 'Not approve',
-            Color: 'color-orange'
-        },
-        '4': {
-            Class: 'fa-clock-o',
-            Text: 'Wait for approval',
-            Color: 'color-yellow'
-        },
-       '5': {
-            Class: 'fa-clock-o',
-            Text: 'Junk',
-            Color: 'color-red'
-        }
-    }
-    $scope.init = function (params) {
-        if (angular.isDefined(params)) {
-            if (angular.isDefined(params.success) && params.success != null) {
-                $scope.alert.success();
-            }
-        }
-    };
-    $scope.asStatus = function (ab) {
-        return StatusLookup[ab];
-    };
-
-    //Buy1Get1 List
-    $scope.buy1get1List = [];
-    //Default parameters
-    $scope.tableParams = {
-        filter: 'All',
-        searchText: null,
-        orderBy: 'UpdateDate',
-        direction: 'desc',
-        page: 0,
-        pageSize: 10,
-        shopID :0
-    };
-
-    $scope.notReady = true;
-
-    $scope.applySearch = function () {
-        $scope.tableParams.searchText = $scope.searchText;
-    };
-
-    $scope.totalPage = function (x) {
-        return Math.ceil($scope.buy1get1Total / $scope.tableParams.pageSize);
-    };
-
-
-    $scope.nextPage = function (m) {
-        if ($scope.tableParams.page + m >= $scope.totalPage() ||
-            $scope.tableParams.page + m < 0)
-            return;
-
-        $scope.tableParams.page += m;
-    };
-
-
-    $scope.setOrderBy = function (nextOrderBy) {
-        if ($scope.tableParams.orderBy == nextOrderBy) {
-            $scope.tableParams.direction = ($scope.tableParams.direction == 'asc' ? 'desc' :
-
-'asc');
-        }
-        $scope.tableParams.orderBy = nextOrderBy;
-    };
-
-    $scope.buy1get1Total = 0;
-    //Populate Data Source
-    $scope.reloadData = function () {
-        console.log("reload data fire");
-        $scope.buy1get1List = [];
-        $scope.notReady = true;
-        Buy1Get1.getAll($scope.tableParams).then(function (x) {
-            $scope.buy1get1Total = x.total;
-            $scope.buy1get1List = x.data;
-            $scope.notReady = false;
-        });
-    };
-
-    //Watch any change in table parameter, trigger reload
-    $scope.$watch('tableParams', function () {
-        $scope.reloadData();
-        $scope.allChecked = false;
-    }, true);
-
-    
-
-   
-    $scope.checkAll = function(){
-        var first = $scope.buy1get1List[0];
-        var tval = !($scope.checkBoxCache[first.PromotionBuy1Get1ItemId] || false);
-        $scope.buy1get1List.forEach(function (d) {
-            $scope.checkBoxCache[d.PromotionBuy1Get1ItemId] = tval;
-        });
-    }
-
-
-    
-
-    $scope.checkBoxCount = function () {
-        var m = [];
-        Object.keys($scope.checkBoxCache).forEach(function (key) {
-            if ($scope.checkBoxCache[key]) m.push($scope.checkBoxCache[key]);
-        });
-      
-        //Count checked checkbox (on this page only)
-        //TODO: I don't like this solution, I'd rather trade space for time
-        //note: can't just count checkboxcache because checkboxcache is global across
-        //all pages. 
-        var chkCount = 0;
-        $scope.buy1get1List.forEach(function(p){
-            chkCount += ($scope.checkBoxCache[p.PromotionBuy1Get1ItemId] ? 1 : 0);
-        });
-        
-        //Change selectAll checkbox state
-        if(chkCount != $scope.buy1get1List.length){
-            $scope.allChecked = false;
-        }else{
-            $scope.allChecked = true;
-        }
-        return m.length;
-    }
-}];
-
-},{}],34:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 module.exports = ["storage", "Credential", "$window", function(storage, Credential, $window) {
 	'ngInject';
   var profile = storage.getCurrentUserProfile()
@@ -3156,7 +2105,7 @@ module.exports = ["storage", "Credential", "$window", function(storage, Credenti
   	$window.location.href = '/login';
   }
 }]
-},{}],35:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Category", "LocalCategoryService", "AttributeSetService", "NcAlert", "util", "config", function($scope, $rootScope, $uibModal, $timeout, common, Category, LocalCategoryService, AttributeSetService, NcAlert, util, config){
 	'ngInject';
 	$scope.modalScope = null;
@@ -3172,6 +2121,13 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 		var modalDirty = $scope.modalScope == null ? false : $scope.modalScope.form.$dirty;
 		return $scope.saving || $scope.dirty || modalDirty;
 	});	
+	//Expand and collapse all
+	$scope.collapseAll = function() {
+		$rootScope.$broadcast('angular-ui-tree:collapse-all');
+	}
+	$scope.expandAll = function() {
+        $rootScope.$broadcast('angular-ui-tree:expand-all');
+	}
 
 	//UiTree onchange event
 	$scope.treeOptions = {
@@ -3233,7 +2189,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 		}
 			$scope.pristine = true;
 			$scope.saving = true;
-		$scope.timerPromise = $timeout(function() {
+			$scope.timerPromise = $timeout(function() {
 				LocalCategoryService.upsert(Category.transformUITreeToNestedSet($scope.categories))
 				.then(function() {
 					$scope.alert.close();
@@ -3265,28 +2221,56 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 			size: 'lg',
 			keyboard: false,
 			templateUrl: 'local_category/modal',
-			controller: ["$scope", "$uibModalInstance", "$timeout", "LocalCategoryService", "NcAlert", "config", "id", function($scope, $uibModalInstance, $timeout, LocalCategoryService, NcAlert, config, id) {
+			controller: ["$scope", "$uibModalInstance", "$timeout", "LocalCategoryService", "NcAlert", "config", "id", "Product", "ImageService", function($scope, $uibModalInstance, $timeout, LocalCategoryService, NcAlert, config, id, Product, ImageService) {
 				'ngInject';
 				$scope.$parent.modalScope = $scope;
 				$scope.alert = new NcAlert();
 				$scope.statusOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
+				$scope.bannerUploader = ImageService.getUploaderFn('/LocalCategoryImages');
 				$scope.formData = {};
 				$scope.saving = false;
 				$scope.loading = true;
+				$scope.products = [];
+				$scope.availableProducts = -1;
+				$scope.id = id;
 
 				if(id == 0) {
 					$scope.formData = LocalCategoryService.generate();
 					$scope.loading = false;
 				} else {
+					//Check product count
+					Product.advanceList({
+						LocalCategories: [{CategoryId: id}],
+						_limit: 1,
+					}).then(function(response) {
+						$scope.availableProducts = response.total;
+					});
 					LocalCategoryService.get(id)
 						.then(function(data) {
-							$scope.formData = data;
+							$scope.formData = LocalCategoryService.deserialize(data);
 						}, function(err) {
 							$scope.alert.error(common.getError(err));
 						}).finally(function() {
 							$scope.loading = false;
 						});
-				}
+				};
+				$scope.getFeatureProduct = function(text) {
+					Product.advanceList({
+						LocalCategories: [{CategoryId: id}],
+						_limit: 8,
+						searchText: text
+					}).then(function(response) {
+						$scope.products = response.data;
+					});	
+				};
+				$scope.uploadBannerFail = function(e, response) {
+					if(e == 'onmaxsize') {
+						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+					}
+					else {
+						$scope.alert.error(common.getError(response.data));
+					}
+				};
 
 				$scope.$on('modal.closing', function(e, res, closeType) {
 					if(!closeType) {
@@ -3372,783 +2356,52 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 	};
 
 }];
-},{}],36:[function(require,module,exports){
-module.exports = ["$scope", "Credential", "$window", "NcAlert", "$uibModal", "storage", "config", function ($scope, Credential, $window, NcAlert, $uibModal, storage, config) {
+},{}],31:[function(require,module,exports){
+  module.exports = ["$scope", "Credential", "$window", "NcAlert", "$uibModal", "storage", "config", function ($scope, Credential, $window, NcAlert, $uibModal, storage, config) {
     'ngInject';
-    $scope.uform = {};
-    $scope.loginForm = {};
-    $scope.events = {};
-    $scope.alert = new NcAlert();
-    var redir = storage.get('redirect');
-    var profile = storage.getCurrentUserProfile();
-    if (profile && profile.User.IsAdmin) {
-        $window.location.href = Credential.getRedirPath(profile)
-    }
-    if (redir && redir != '/') {
-        $scope.alert.open(false, 'Your session has timed out', '');
-        storage.remove('redirect');
-    }
-
-    $scope.doLogin = function () {
-        if ($scope.loginForm.$invalid) {
-            if (_.isEmpty($scope.events)) {
-                $scope.events.user = false;
-                $scope.events.pass = false;
-            }
-            return;
-        }
-        $scope.loading = true;
-        $scope.error = false;
-        var user = $scope.uform.user;
-        var pass = $scope.uform.pass;
-        Credential.login(user, pass).then(function (r) {
-            $scope.loading = false;
-            if (!redir) {
-                redir = Credential.getRedirPath(r);
-            }
-            $window.location.href = redir;
-        }, function (err) {
-            storage.clear();
-            $scope.error = true;
-            $scope.loading = false;
-            $scope.loginForm.$setPristine();
-        });
-    }
-}];
-
-},{}],37:[function(require,module,exports){
-var angular = require('angular');
-
-module.exports = ["$scope", "$uibModal", "$window", "util", "config", "Product", "ImageService", "AttributeSet", "Brand", "Shop", "LocalCategoryService", "GlobalCategory", "Category", "VariantPair", "$rootScope", "$q", "KnownException", "NcAlert", "$productAdd", function($scope, $uibModal, $window, util, config, Product, ImageService, AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, VariantPair, $rootScope, $q, KnownException, NcAlert, $productAdd) {
-  'ngInject';
-
+  $scope.uform = {};
+  $scope.loginForm = {};
+  $scope.events = {};
   $scope.alert = new NcAlert();
-
-  var MAX_FILESIZE = 5000000; //5MB
-  var QUEUE_LIMIT = 20;
-  var QUEUE_LIMIT_360 = 60;
-  var MAX_VARIANT = 100;
-  $scope.image_alert = new NcAlert();
-  $scope.dataSet = {};
-  $scope.dataSet.AttributeSets = [{
-    AttributeSetId: null,
-    disabled: true,
-    AttributeSetNameEn: "No Attribute Set"
-  }];
-  $scope.dataSet.GlobalCategories = [];
-  $scope.dataSet.LocalCategories = [];
-  $scope.dataSet.Brands = [{
-    BrandId: null,
-    BrandNameEn: "Input brand by name or ID...",
-    disabled: true
-  }];
-  $scope.enableVariation = function(){
-    $scope.controlFlags.variation = 'enable';
-  };
-  $scope.dataSet.SearchTags = [];
-  $scope.dataSet.RelatedProducts = [];
-  $scope.dataSet.StockTypes = ['Stock', 'Pre-Order'];
-  $scope.dataSet.VariantDisplayOption = [{
-    text: 'Show as group of variants',
-    value: 'GROUP'
-  }, {
-    text: 'Show as individual product',
-    value: 'INDIVIDUAL'
-  }];
-
-  var protoAttributeOptions = {
-    0: {
-      Attribute: false,
-      options: []
-    },
-    1: {
-      Attribute: false,
-      options: []
-    }
-  };
-  $scope.dataSet.attributeOptions = angular.copy(protoAttributeOptions);
-  $scope.controlFlags = {
-    variation: 'disable',
-    enableSections: {
-      embedVideo: false,
-      embed360: false
-    }
-  };
-
-  $window.onbeforeunload = function(e) {
-    if (!$scope.addProductForm.$dirty) {
-      //only warn when form is dirty
-      return null;
-    }
-    var message = "Your changes will not be saved.",
-      e = e || window.event;
-    // For IE and Firefox
-    if (e) {
-      e.returnValue = message;
-    }
-
-    // For Safari
-    return message;
-  }; // end onbeforeunload
-
-  var onImageUploadFail = function(item, filter) {
-    $scope.image_alert.error(item.Message || 'Your image does not meet guideline.');
+  var redir = storage.get('redirect');
+  var profile = storage.getCurrentUserProfile();
+  if (profile) {
+    $window.location.href = Credential.getRedirPath(profile)
+  }
+  
+  if(redir && redir != '/') {
+    $scope.alert.open(false, 'Your session has timed out', '');
+    storage.remove('redirect');
   }
 
-  var onImageUploadSuccess = function() {
-    $scope.image_alert.close();
-  }
-
-  var onImageUploadQueueLimit = function() {}
-  $scope.asStatus = Product.getStatus;
-
-  var watchVariantChanges = function() {
-      $scope.$watch('dataSet.attributeOptions', function() {
-        var vHashSet = {};
-        var prevVariants = angular.copy($scope.formData.Variants);
-        prevVariants.forEach(function(elem, index) {
-          vHashSet[elem.text] = prevVariants[index];
-        });
-
-        var protoCheckState = {
-          uploadProductImages: false,
-          embedVideo: false,
-          description: false,
-          packageDetail: false
-        };
-
-        //Unset
-        prevVariants = undefined;
-
-        $scope.formData.Variants = [];
-        var trackVariant = new Set();
-        var expand = function(A0, B0) {
-          var AVId = null;
-          if (_.has(A0, 'AttributeValue')) {
-            AVId = A0.AttributeValue.AttributeValueId;
-            A = A0.AttributeValue.AttributeValueEn;
-          }
-
-          var BId = null;
-          var BVId = null;
-
-          if (angular.isDefined(B0)) {
-            BId = $scope.dataSet.attributeOptions[1].Attribute.AttributeId;
-            if (B0['AttributeValue']) {
-              B = B0.AttributeValue.AttributeValueEn;
-            }
-            if (_.has(B0, 'AttributeValue.AttributeValueId')) {
-              BVId = B0.AttributeValue.AttributeValueId;
-            }
-          } else {
-            B = ''
-            BId = null;
-          }
-
-          var kpair = new VariantPair({
-            AttributeId: $scope.dataSet.attributeOptions[0].Attribute.AttributeId,
-            AttributeValues: (!AVId ? [] : [{
-              AttributeValueId: AVId
-            }]),
-            ValueEn: A
-          }, {
-            AttributeId: BId,
-            AttributeValues: (!BVId ? [] : [{
-              AttributeValueId: BVId
-            }]),
-            ValueEn: B
-          });
-
-          //Copy default value over from main variant
-          kpair.ProductNameEn = $scope.formData.MasterVariant.ProductNameEn;
-          kpair.ProductNameTh = $scope.formData.MasterVariant.ProductNameTh;
-          kpair.Display = $scope.dataSet.VariantDisplayOption[0].value;
-          kpair.Visibility = true;
-          kpair.DimensionUnit = "MM";
-          kpair.WeightUnit = "G";
-          kpair.Sku = ($scope.formData.MasterVariant.Sku || "SKU") + "-" + (Number(($scope.formData.Variants || []).length) + 1);
-          kpair.OriginalPrice = $scope.formData.MasterVariant.OriginalPrice;
-          kpair.SalePrice = $scope.formData.MasterVariant.SalePrice;
-          kpair.Quantity = $scope.formData.MasterVariant.Quantity;
-          kpair.Length = $scope.formData.MasterVariant.Length;
-          kpair.Width = $scope.formData.MasterVariant.Width;
-          kpair.Height = $scope.formData.MasterVariant.Height;
-          kpair.Upc = $scope.formData.MasterVariant.Upc;
-          kpair.Weight = $scope.formData.MasterVariant.Weight;
-          kpair.DescriptionFullEn = $scope.formData.MasterVariant.DescriptionFullEn;
-          kpair.DescriptionFullTh = $scope.formData.MasterVariant.DescriptionFullTh;
-          kpair.DescriptionShortEn = $scope.formData.MasterVariant.DescriptionShortEn;
-          kpair.DescriptionShortTh = $scope.formData.MasterVariant.DescriptionShortTh;
-          kpair.Images = angular.copy($scope.formData.MasterImages);
-          kpair.VideoLinks = angular.copy($scope.formData.VideoLinks);
-          kpair.PrepareDay = $scope.formData.PrepareDay;
-          kpair.SEO = angular.copy($scope.formData.SEO || {});
-
-          kpair._override = angular.copy(protoCheckState);
-
-          if (kpair.text in vHashSet) {
-            //Replace with value from vHashSet
-
-            kpair = vHashSet[kpair.text];
-
-            kpair._override = angular.copy(protoCheckState);
-            kpair._override.uploadProductImages = ((kpair.Images || []).length > 0);
-            kpair._override.embedVideo = ((kpair.VideoLinks || []).length > 0);
-            kpair._override.description = (angular.isDefined(kpair.DescriptionFullEn) ||
-              angular.isDefined(kpair.DescriptionFullTh) ||
-              angular.isDefined(kpair.DescriptionShortEn) ||
-              angular.isDefined(kpair.DescriptionShortTh));
-
-            kpair._override.packageDetail = (angular.isDefined(kpair.Length) ||
-              angular.isDefined(kpair.Height) ||
-              angular.isDefined(kpair.Width) ||
-              angular.isDefined(kpair.Weight));
-
-          }
-
-          var hashNew = (util.variant.toString(kpair.FirstAttribute, kpair.SecondAttribute));
-          if(!trackVariant.has(hashNew)){
-            //Only push new variant if don't exist
-
-            $scope.formData.Variants.push(kpair);
-            trackVariant.add(hashNew);
-          }
-
-        }
-
-
-        console.log("Recalculating Factors", $scope.dataSet.attributeOptions);
-        //Multiply out unmultiplied options
-        if ($scope.dataSet.attributeOptions && Object.keys($scope.dataSet.attributeOptions).length > 0) {
-          for (var aKey in $scope.dataSet.attributeOptions[0].options) {
-            var A = $scope.dataSet.attributeOptions[0].options[aKey];
-
-            if (angular.isDefined($scope.dataSet.attributeOptions[1]['options']) && $scope.dataSet.attributeOptions[1].options.length == 0) {
-              console.log("expanding A" , A);
-              expand(A);
-            }
-
-            for (var bKey in $scope.dataSet.attributeOptions[1].options) {
-              var B = $scope.dataSet.attributeOptions[1].options[bKey];
-              console.log("Expanding A,B", A,B);
-              expand(A, B);
-            }
-          }
-        }
-
-        $scope.formData.DefaultVariant = $scope.formData.Variants[0];
-      }, true); //end of $watch
-
-    } //end of watch func
-
-  $scope.overview = {}
-
-  $scope.formData = {
-    Brand: {
-      id: null
-    },
-    MasterVariant: {
-      DimensionUnit: "MM",
-      WeightUnit: "G",
-      StockType: "Stock"
-    },
-    ShippingMethod: "1",
-    AttributeSet: {
-      AttributeSetTagMaps: []
-    },
-    RelatedProducts: [],
-    MasterImages: [],
-    MasterImages360: [],
-    VideoLinks: [],
-    Variants: [],
-    GlobalCategories: [null, null, null],
-    LocalCategories: [null, null, null],
-    SEO: {
-      ProductBoostingWeight: 5000
-    },
-    ControlFlags: [],
-    Keywords: []
-  };
-
-  //Variation Factor (lhs) Indices are used as index
-  //for ng-repeat in variation tab
-  $scope.variationFactorIndices = {};
-  $scope.variationFactorIndices.iterator = [0];
-  $scope.variationFactorIndices.length = function() {
-    return $scope.variationFactorIndices.iterator.length;
-  }
-  $scope.variationFactorIndices.popSecond = function() {
-    $scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop();
-    $scope.dataSet.attributeOptions[1].options = [];
-    $scope.dataSet.attributeOptions[1].Attribute = null;
-  }
-  $scope.variationFactorIndices.pushSecond = function() {
-    $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1);
-  }
-
-  //TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
-  //$scope._attrEnTh = function (t) { return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
-  $scope.isFreeTextInput = util.isFreeTextDataType;
-  $scope.isListInput = util.isListDataType;
-  $scope.isHtmlInput = util.isHtmlDataType;
-
-  //CK editor options
-  $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
-
-  $scope.pageState = {
-    loading: {
-      state: true,
-      message: 'Loading..'
-    },
-    load: function(msg) {
-      $scope.pageState.loading.message = msg;
-      $scope.pageState.loading.state = true;
-    },
-    reset: function() {
-      $scope.alert.close();
-      $scope.pageState.loading.state = false;
-    }
-  };
-
-  $scope.breadcrumbs = {
-    globalCategory: null
-  };
-  $scope.preview = function() {
-    return console.log($scope.formData);
-  };
-
-  $scope.refreshRelatedProducts = function(q) {
-    return Product.getAll({
-      searchText: q,
-      pageSize: 4
-    }).then(function(ds) {
-      $scope.dataSet.RelatedProducts = ds.data;
-    });
-  };
-
-  $scope.refreshBrands = function(q) {
-    if (q == "" || !q || q == null) return;
-    $scope.dataSet.Brands = [{
-      BrandId: -1,
-      BrandNameEn: "Searching..",
-      disabled: true
-    }];
-
-    Brand.getAll({
-      pageSize: 10,
-      searchText: q
-    }).then(function(ds) {
-      $scope.dataSet.Brands = ds.data;
-    });
-  };
-
-  $scope.$watch('formData.MasterVariant.OriginalPrice+formData.MasterVariant.SalePrice', function() {
-    var form = $scope.addProductForm;
-    if (form.MasterVariant_SalePrice) form.MasterVariant_SalePrice.$setValidity("min", true);
-    if (!form.MasterVariant_SalePrice) return;
-    if ($scope.formData.MasterVariant.SalePrice == "") return;
-
-    if (Number($scope.formData.MasterVariant.SalePrice) >= Number($scope.formData.MasterVariant.OriginalPrice)) {
-      if (form.MasterVariant_SalePrice) form.MasterVariant_SalePrice.$setValidity("min", false);
-      form.MasterVariant_SalePrice.$error["min"] = "Sale Price must not exceed Original Price";
-    }
-  });
-
-  $scope.$watch('formData.ExpireDate', function() {
-    //TODO: refactor use nctemplate
-    var form = $scope.addProductForm;
-    if (form.EffectiveDate == null) {
-      return
-    }
-    if (form.ExpireDate) form.ExpireDate.$setValidity("min", true);
-    if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
-      if (!form.ExpireDate) return;
-      if (form.ExpireDate) form.ExpireDate.$setValidity("min", false);
-      form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
-    }
-  });
-
-  var manualValidate = function(Status) {
-    var mat = [];
-
-    if (Status == 'WA') {
-      if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == "") {
-        mat.push("Description (Thai)");
-      }
-
-      if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == "") {
-        mat.push("Description (English)");
-      }
-
-      if (!$scope.formData.Brand.BrandId) {
-        mat.push("Brand");
-      }
-
-      if ($scope.formData.MasterImages.length == 0) {
-        mat.push("At least one image");
-      }
-
-      $scope.formData.Variants.forEach(function(variant){
-        if(variant.Images.length == 0){
-          mat.push("At least one image for variation " + "'" + variant.text + "'");
-        }
-      });
-
-    }
-
-    var cnt = $scope.formData.Variants.reduce(function(total, x) {
-      return x.Visibility ? total + 1 : total
-    }, 0);
-
-    if (cnt == 0 && $scope.formData.Variants.length > 0) {
-      mat.push("At least one variant must be visible.");
-    }
-
-    if ($scope.formData.ExpireDate && $scope.formData.ExpireDate <= $scope.formData.EffectiveDate) {
-      mat.push("Effective date/time must come before expire date/time.");
-    }
-
-
-    return mat;
-  };
-
-  $scope.prePublishWA = function(){
-    var modalInstance = $uibModal.open({
-      animation: $scope.animationsEnabled,
-      templateUrl: 'product/modalConfirmPublish',
-      controller: ["$scope", "$uibModalInstance", "$timeout", function($scope, $uibModalInstance, $timeout) {
-        'ngInject';
-        $scope.no = function() {
-          $uibModalInstance.close('no');
-        }
-
-        $scope.yes = function() {
-          $uibModalInstance.close('yes');
-        }
-      }],
-      size: 'size-warning',
-      resolve: {
-
-      }
-    });
-    modalInstance.result.then(function(selectedItem) {
-      console.log(selectedItem);
-      if (selectedItem == 'yes') {
-        $scope.publish('WA');
-      }
-    }, function() {
-      console.log('Modal dismissed at: ' + new Date());
-    });
-
-  }
-  /*
-   *  Publish (both Draft and WA)
-   */
-  $scope.publish = function(Status) {
-
-    $scope.pageState.reset();
-    $scope.pageState.load('Validating..');
-
-
-    if($scope.controlFlags.variation == 'enable' && $scope.formData.Variants.length == 0){
-      $scope.controlFlags.variation == 'disable';
-    }
-
-    if($scope.controlFlags.variation == 'disable'){
-      $scope.formData.Variants = [];
-    }
-
-
-    $scope.onPublishing = (Status == "WA");
-    //On click validation
-    var validateMat = manualValidate(Status);
-    if (validateMat.length > 0) {
-      $scope.pageState.reset();
-      $scope.alert.error(validateMat.join(", "));
-      return;
-    }
-
-    if ($scope.addProductForm.$invalid) {
-      $scope.pageState.reset();
-      var requiredMissing = ('required' in $scope.addProductForm.$error);
-      if (Status == 'DF' && requiredMissing) {
-        var mfd = [];
-        if($scope.addProductForm.MasterVariant_ProductNameEn.$invalid){
-          mfd.push('Product Name (English)');
-        }
-        //Product Name (Thai), Product Name (English), and Sale Price,
-        if($scope.addProductForm.MasterVariant_ProductNameTh.$invalid){
-          mfd.push('Product Name (Thai)');
-        }
-
-        if($scope.addProductForm.MasterVariant_SalePrice.$invalid){
-          mfd.push('Sale Price');
-        }
-        mfd.push('Master Attributes');
-
-        $scope.alert.error("Unable to save. Please make sure that " + mfd.join(" and ") + " are filled correctly.");
-      } else if (Status == 'WA' && requiredMissing) {
-        $scope.alert.error("Unable to publish because you are missing required fields");
-      } else {
-        $scope.alert.error("Unable to save. Please make sure all fields have no error.");
+  $scope.doLogin = function () {
+    if ($scope.loginForm.$invalid) {
+      if(_.isEmpty($scope.events)) {
+        $scope.events.user = false;
+        $scope.events.pass = false;
       }
       return;
     }
-
-    $scope.pageState.load('Publishing..');
-    console.log("Publishing with Status = ", Status);
-
-    var apiRequest = Product.serialize($scope.formData);
-    Product.publish(apiRequest, Status).then(function(res) {
-      $scope.pageState.reset();
-      if (res.ProductId) {
-        $scope.overview = res;
-        $scope.dataSet.attributeOptions = angular.copy(protoAttributeOptions); //will trigger watchvariantchange
-        var catId = Number(res.GlobalCategory);
-        $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function() {
-          $scope.formData.ProductId = Number(res.ProductId);
-          $scope.pageState.reset();
-          $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
-          ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
-          ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
-        });
-        $scope.addProductForm.$setPristine(true);
-      } else {
-        $scope.alert.error('Unable to save because ' + (res.message || res.Message));
-        $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
+    $scope.loading = true;
+    $scope.error = false;
+    var user = $scope.uform.user;
+    var pass = $scope.uform.pass;
+    Credential.login(user, pass).then(function (r) {
+      $scope.loading = false;
+      if (!redir || redir == '/') {
+        redir = Credential.getRedirPath(r);
       }
-    }, function(er) {
-      $scope.pageState.reset();
-      $scope.alert.error('Unable to save because ' + (er.message || er.Message));
-      $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-    });
-
-  };
-
-  $scope.uploader = ImageService.getUploader('/ProductImages', {
-    queueLimit: QUEUE_LIMIT
-  });
-
-  $scope.uploader.filters.push({
-    'name': 'enforceMaxFileSize',
-    'fn': function(item) {
-      return item.size <= MAX_FILESIZE;
-    }
-  });
-
-  $scope.uploader360 = ImageService.getUploader('/ProductImages', {
-    queueLimit: QUEUE_LIMIT_360
-  });
-
-  $scope.init = function(viewBag) {
-
-    if (!angular.isObject(viewBag)) throw new KnownException("View bag is corrupted");
-
-    var shopId = $rootScope.Profile.Shop.ShopId; //TODO: Get from user
-    var _editMode = ("productId" in viewBag)
-    for (var page in tabPage) {
-      tabPage[page].angular();
-    }
-
-    if (_editMode) {
-      var productId = viewBag.productId;
-      $scope.pageState.load('Loading Product..');
-
-      Product.getOne(productId)
-        .then(function(inverseFormData) {
-          $scope.overview = angular.copy(inverseFormData);
-          var catId = Number(inverseFormData.GlobalCategory);
-          $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs, $scope.controlFlags,
-            $scope.variationFactorIndices, inverseFormData).then(function() {
-            $scope.formData.ProductId = Number(productId);
-            $scope.pageState.reset();
-            watchVariantChanges();
-            ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
-            ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
-          });
-        }, function(error) {
-          throw new KnownException("Unable to fetch product with id " + productId);
-        });
-
-    } else if ('catId' in viewBag) {
-      if(viewBag.catId == null) window.location.href = "/products/select";
-
-      var catId = Number(viewBag.catId);
-      $productAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs,
-        $scope.controlFlags, $scope.variationFactorIndices).then(function() {
-        $scope.pageState.reset();
-        watchVariantChanges();
-        ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
-        ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
-      });
-    } else {
-
-      throw new KnownException("Invalid mode, viewBag garbage");
-    }
-
-    //Load Local Cat
-    LocalCategoryService.list().then(function(data) {
-      $scope.dataSet.LocalCategories = Category.transformNestedSetToUITree(data);
+      $window.location.href = redir;
+    }, function (err) {
+      storage.clear();
+      $scope.error = true;
+      $scope.loading = false;
+      $scope.loginForm.$setPristine();
     });
   }
-
-  var tabPage = {};
-
-  tabPage.images = {
-    angular: function() {
-
-      /**
-       * IMAGE THUMBNAIL EVENTS
-       */
-      $scope.$on('left', function(evt, item, array, index) {
-        var to = index - 1;
-        if (to < 0) to = array.length - 1;
-
-        var tmp = array[to];
-        array[to] = item;
-        array[index] = tmp;
-      });
-      $scope.$on('right', function(evt, item, array, index) {
-        var to = index + 1;
-        if (to >= array.length) to = 0;
-
-        var tmp = array[to];
-        array[to] = item;
-        array[index] = tmp;
-      });
-      $scope.$on('delete', function(evt, item, array, index) {
-        array.splice(index, 1);
-      });
-      $scope.$on('zoom', function(evt, item, array, index) {
-        //Should use angular way, but ok whatever
-        $('#product-image-zoom img').attr('src', item.url);
-        $('#product-image-zoom').modal('show');
-      });
-    }
-  };
-
-  tabPage.category = {
-    angular: function() {
-      //For viewing only
-      $scope.viewCategoryColumns = [];
-      $scope.viewCategorySelected = null;
-      $scope.viewCategoryIndex = 0;
-      $scope.selectCategory = angular.noop;
-
-      //Events
-      $scope.$on('openGlobalCat', function(evt, item, indx) {
-        console.log('openGloCat', item, $scope.dataSet.GlobalCategories);
-        $scope.viewCategoryColumns = Category.createColumns(item, $scope.dataSet.GlobalCategories);
-        $scope.viewCategorySelected = item;
-        $scope.viewCategoryIndex = indx;
-        $scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function(selectedItem) {
-          $scope.viewCategorySelected = selectedItem;
-        });
-      });
-      $scope.$on('deleteGlobalCat', function(evt, indx) {
-        $scope.formData.GlobalCategories[indx] = null;
-      });
-      $scope.$on('selectGlobalCat', function(evt, row, indx, parentIndx) {
-        $scope.selectCategory(row, indx, parentIndx);
-      });
-      $scope.$on('saveGlobalCat', function(evt) {
-        $scope.formData.GlobalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected;
-      });
-
-      //Events
-      $scope.$on('openLocalCat', function(evt, item, indx) {
-        console.log(item, $scope.dataSet.LocalCategories);
-        $scope.viewCategoryColumns = Category.createColumns(item, $scope.dataSet.LocalCategories);
-        $scope.viewCategorySelected = item;
-        $scope.viewCategoryIndex = indx;
-        $scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function(selectedItem) {
-          $scope.viewCategorySelected = selectedItem;
-        });
-      });
-      $scope.$on('deleteLocalCat', function(evt, indx) {
-        $scope.formData.LocalCategories[indx] = null;
-      });
-      $scope.$on('selectLocalCat', function(evt, row, indx, parentIndx) {
-        $scope.selectCategory(row, indx, parentIndx);
-      });
-      $scope.$on('saveLocalCat', function(evt) {
-        $scope.formData.LocalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected;
-      });
-    }
-  }
-
-  tabPage.variation = {
-
-    angular: function() {
-      /**
-       * This part handles when user click on More Detail and open pair form
-       */
-
-      $scope.uploaderModal = ImageService.getUploader('/ProductImages', {
-        queueLimit: QUEUE_LIMIT
-      });
-
-      $scope.uploaderModal.filters.push({
-        'name': 'enforceMaxFileSize',
-        'fn': function(item) {
-          return item.size <= MAX_FILESIZE;
-        }
-      });
-
-      $scope.$on('openPairModal', function(evt, pair, array, index) {
-        //Define if not defined
-
-        if (angular.isUndefined(pair.Images)) {
-          pair.Images = [];
-        }
-        if (angular.isUndefined(pair.queue)) {
-          pair.queue = [];
-        }
-        //Modal target (for viewing pair)
-        $scope.pairModal = angular.copy(pair);
-        $scope.pairModal.alert = new NcAlert();
-        $scope.pairIndex = index;
-        $scope.uploaderModal.queue = $scope.pairModal.queue;
-        ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess);
-      });
-
-      $scope.$on('savePairModal', function(evt) {
-        console.log("adform", $scope.addProductVariantForm.$invalid);
-        //
-        // if (!$scope.pairModal._override.uploadProductImages) {
-        //   $scope.pairModal.Images = [];
-        // }
-        //
-        // if (!$scope.pairModal._override.embedVideo) {
-        //   $scope.pairModal.VideoLinks = [];
-        // }
-        //
-        // if (!$scope.pairModal._override.description) {
-        //   $scope.pairModal.DescriptionFullEn = null;
-        //   $scope.pairModal.DescriptionFullTh = null;
-        //   $scope.pairModal.ShortDescriptionEn = null;
-        //   $scope.pairModal.ShortDescriptionTh = null;
-        // }
-        //
-        // if (!$scope.pairModal._override.packageDetail) {
-        //   $scope.pairModal.Length = null;
-        //   $scope.pairModal.Height = null;
-        //   $scope.pairModal.Width = null;
-        //   $scope.pairModal.Length = null;
-        //
-        // }
-
-        $scope.formData.Variants[$scope.pairIndex] = $scope.pairModal;
-      });
-    }
-  };
-
-
-
-
 }];
 
-},{"angular":181}],38:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Category, GlobalCategory) {
@@ -4172,1408 +2425,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 	});
 }];
 
-},{"angular":181}],39:[function(require,module,exports){
-var angular = require('angular');
-
-module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Collection','Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$CollectionAdd',
-function ($scope, $window, util, config, Product, Collection, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, $rootScope , $q, KnownException, NcAlert, $CollectionAdd) {
-    'use strict';
-
-    //TODO: use Poons' Alert class
-
-    var MAX_FILESIZE = 5000000; //5MB
-    var QUEUE_LIMIT = 20;
-    var QUEUE_LIMIT_360 = 60;
-    var MAX_VARIANT = 100;
-
-    $window.onbeforeunload = function (e) {
-        if (!$scope.addProductCollectionForm.$dirty) {
-            //only warn when form is dirty
-            return null;
-        }
-        var message = "Your changes will not be saved.",
-        e = e || window.event;
-        // For IE and Firefox
-        if (e) {
-            e.returnValue = message;
-        }
-
-        // For Safari
-        return message;
-    }; // end onbefore unload
-
-
-    var onImageUploadFail = function (item, filter) {
-        alert("File Size must not exceed 5 MB");
-    }
-
-    var onQueueLimit = function () {
-        //TODO: Poon? Wtf is queue limit handler
-    }
-
-
-    $scope.keywordValidConditions = {};
-    $scope.variationOptionWarning = [[], []];
-    $scope.onKeywordAdded = function (item, model) {
-
-        $scope.keywordValidConditions = {};
-        if (!item) return $scope.formData.Keywords.pop();
-
-        if ($scope.formData.Keywords.length > 20) {
-            $scope.keywordValidConditions['tagcount'] = true;
-        }
-
-        if (item.length > 30) {
-            $scope.keywordValidConditions['taglength'] = true;
-        }
-
-        if (!item.match(/^[a-zA-Z0-9ก-ฮ\s\-]+$/)) {
-            $scope.keywordValidConditions['pattern'] = true;
-        }
-
-        if (Object.keys($scope.keywordValidConditions).length > 0) {
-            //if there is error, revert
-            $scope.formData.Keywords.pop();
-        }
-    }
-
-    $scope.onKeywordRemoved = function (item, model) {
-        console.log($scope.formData.Keywords);
-    }
-
-    var StatusLookup = {
-        'DF': {
-            Class: 'fa-circle-o',
-            Text: 'Draft',
-            Color: 'color-grey'
-        },
-        'WA': {
-            Class: 'fa-clock-o',
-            Text: 'Wait for Approval',
-            Color: 'color-yellow'
-        }
-
-    }
-
-    $scope.asStatus = function (ab) {
-        return StatusLookup[ab];
-    };
-
-    $scope.onVariationOptionFreeTextAdded = function (item, model, jth) {
-        $scope.variationOptionWarning[jth] = [];
-        if (!item) return;
-        if (item.length > 30) $scope.variationOptionWarning[jth].push("Variation option must contain 30 characters or less");
-        if (!item.match(/^[a-zA-Z0-9\s]+$/)) $scope.variationOptionWarning[jth].push("Only letters and numbers allowed");
-
-        var optlen1 = $scope.attributeOptions[0].options.length;
-        var optlen2 = $scope.attributeOptions[1].options.length;
-        if ((optlen1 == 0 ? 1 : optlen1) * (optlen2 == 0 ? 1 : optlen2) > MAX_VARIANT) {
-            $scope.variationOptionWarning[jth].push("Maximum combination of variants (" + MAX_VARIANT + ") reached.");
-        }
-
-        if ($scope.variationOptionWarning[jth].length > 0) {
-            $scope.attributeOptions[jth].options.pop();
-        }
-
-    }
-
-
-
-    //Attribute Options to be filled via API
-    $scope.availableAttributeSets = [];
-    $scope.availableGlobalCategories = [];
-    $scope.availableLocalCategories = [];
-    $scope.availableBrands = [];
-    $scope.availableSearchTags = [];
-    $scope.availableRelatedProducts = [];
-    $scope.availableStockTypes = ['Stock', 'Pre-Order'];
-    $scope.availableVariantDisplayOption = [{ text: 'Show as group of variants', value: 'GROUP' }, { text: 'Show as individual product', value: 'INDIVIDUAL' }];
-
-    $scope.overview = {}
-
-    $scope.formData = {
-        Brand: { id: null, BrandNameEn: "Please select brand.." },
-        MasterVariant: { DimensionUnit: "CM", WeightUnit: "G", StockType: "Stock" },
-        ShippingMethod: "1",
-        AttributeSet: {
-            AttributeSetTagMaps: []
-        },
-        RelatedProducts: [],
-        MasterImages: [],
-        MasterImages360: [],
-        VideoLinks: [],
-        Variants: [],
-        GlobalCategories: [null, null, null],
-        LocalCategories: [null, null, null],
-        SEO: { ProductBoostingWeight: 10000 },
-        ControlFlags: [],
-        Keywords: []
-    };
-    //Variation Factor Indices are used as index
-    //for ng-repeat in variation tab
-    $scope.variationFactorIndices = {};
-    $scope.variationFactorIndices.iterator = [0];
-    $scope.variationFactorIndices.length = function () {
-        return $scope.variationFactorIndices.iterator.length;
-    }
-    $scope.variationFactorIndices.popSecond = function () {
-        $scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop();
-        $scope.attributeOptions[1].options = [];
-    }
-    $scope.variationFactorIndices.pushSecond = function () {
-        $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1);
-    }
-
-    //Unmultiplied Variants (factor)
-    $scope.attributeOptions = {
-        0: {
-            Attribute: false,
-            options: []
-        },
-        1: {
-            Attribute: false,
-            options: []
-        }
-    };
-
-    //TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
-    $scope._attrEnTh = function (t) { return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
-    $scope._isFreeTextInput = util.isFreeTextDataType;
-    $scope._isListInput = util.isListDataType;
-
-    //CK editor options
-    $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
-
-    /*
-     * Page can be in 3 states
-     * --------------------------------
-     *  success: OK stat
-     *  failure: L2 validation error (client + server)
-     *  invalid: L1 validation error (client)
-     */
-    $scope.pageState = {
-        success: false,
-        failure: false,
-        invalid: false,
-        loading: {
-            state: true,
-            message: 'Loading..'
-        },
-        load: function (msg) {
-            $scope.pageState.loading.message = msg;
-            $scope.pageState.loading.state = true;
-        },
-        reset: function () {
-            $scope.pageState.success = false;
-            $scope.pageState.failure = false;
-            $scope.pageState.invalid = false;
-            $scope.pageState.loading.state = false;
-        }
-    };
-
-    //TODO: Initialize non-formData variable
-    $scope.enableProductVariations = "disable";
-
-    /*
-     *  Run clean data before any publishing
-     *  which will try to reduce imperfection before
-     *  serialization
-     */
-    var cleanData = function () {
-
-    };
-
-    $scope.preview = function () {
-        return console.log($scope.formData);
-        cleanData();
-        var apiRequest = Product.serialize($scope.formData);
-        console.log(JSON.stringify(apiRequest));
-    };
-
-
-    /*
-     *  refresh functions
-     *  for dropdown suggestions
-     */
-
-    $scope.refreshRelatedProducts = function (q) {
-        return Product.getAll({
-            searchText: q
-        }).then(function (dataSet) {
-            $scope.availableRelatedProducts = dataSet.data;
-        });
-    };
-
-    $scope.refreshBrands = function (q) {
-        Brand.getAll({
-            pageSize: 6,
-            searchText: q
-        }).then(function (dataSet) {
-            $scope.availableBrands = dataSet.data;
-        });
-    };
-
-
-    $scope.$watch('formData.ExpireDate', function () {
-        var form = $scope.addProductCollectionForm;
-        form.ExpireDate.$setValidity("min", true);
-        if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
-            if (!form.ExpireDate) return;
-            form.ExpireDate.$setValidity("min", false);
-            form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
-        }
-    });
-
-    var manualValidate = function () {
-        var mat = [];
-        // if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == "") {
-        //     mat.push("Missing Description (Thai)");
-        // }
-
-        // if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == "") {
-        //     mat.push("Missing Description (English)");
-        // }
-
-        // if (!$scope.formData.Brand.BrandId) {
-        //     mat.push("Missing Brand");
-        // }
-
-        return mat;
-    };
-
-    /*
-     *  Publish (both Draft and WA)
-     */
-    $scope.publish = function (Status) {
-
-        $scope.pageState.reset();
-        $scope.pageState.load('Validating..');
-
-        $scope.onPublishing = (Status == "4");
-        console.log("befor validate");
-        //On click validation
-        var validateMat = manualValidate();
-        if (validateMat.length > 0 && Status == '4') {
-            $scope.pageState.reset();
-            $scope.pageState.failure = true;
-            $scope.pageState.failure_message = validateMat[0];
-            $window.location.hash = 'alert';
-            $window.location.hash = 'alert-failure';
-            return;
-        }
-
-
-        $scope.pageState.load('Publishing..');
-        cleanData();
-        console.log("Publishing with Status = ", Status);
-        //Error Handling too Messi
-        try {
-            // var apiRequest = Product.serialize($scope.formData);            
-            //Product.publish(apiRequest, Status).then(function (res) {
-                //console.log($scope.formData);
-                $scope.formData.CMSStatusId = Status
-                $scope.formData.Status = true;
-                $scope.formData.CMSTypeId = 1;
-                $scope.formData.UpdateBy =1;
-                $scope.formData.CreateBy =1;
-                $scope.formData.Visibility = 1;
-                $scope.formData.CreateIP ='203.146.156.34';
-               
-                var apiRequest =  Collection.serialize($scope.formData);  
-                var tmpObjArr =[];
-                var apiParameter ;
-                if($scope.formData.CMSId != null && typeof $scope.formData.CMSId != "undefined"){
-                    tmpObjArr.push(apiRequest);
-                    apiParameter = tmpObjArr;
-                }else{ apiParameter = apiRequest;}
-
-
-                Collection.publish(apiParameter, Status).then(function (res) {
-                $scope.pageState.reset();
-                if (res.CMSId) {
-                    $scope.overview = res;
-                    $scope.pageState.success = true;
-                    $scope.formData.CMSId = res.ProductId;
-                    $scope.addProductCollectionForm.$setPristine(true)
-                } else {
-                    $scope.pageState.failure = true;
-                    $scope.pageState.failure_message = res.message || res.Message;
-                    $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-                    $window.location.hash = 'alert'
-                    $window.location.hash = 'alert-failure'
-                }
-            }, function (er) {
-                $scope.pageState.reset();
-                $scope.pageState.failure = true;
-                $scope.pageState.failure_message = er.Message || er.message;
-                $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-
-                $window.location.hash = 'alert' //Need to toggle hash otherwise it wont scroll
-                $window.location.hash = 'alert-failure'
-            });
-
-        } catch (ex) {
-            console.log("catch exception from publish process");
-            $scope.pageState.reset();
-            $scope.pageState.failure = true;
-            $scope.pageState.failure_message = ex.message;
-            $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-            $window.location.hash = 'alert'
-            $window.location.hash = 'alert-failure'
-            console.log('publish failure', ex);
-            return;
-        }
-    };
-
-
-    $scope.uploader = ImageService.getUploader('/ProductImages', {
-        queueLimit: QUEUE_LIMIT
-    });
-
-    $scope.uploader.filters.push({
-        'name': 'enforceMaxFileSize',
-        'fn': function (item) {
-            return item.size <= MAX_FILESIZE;
-        }
-    });
-
-    $scope.uploader360 = ImageService.getUploader('/ProductImages', {
-        queueLimit: QUEUE_LIMIT_360
-    });
-
-
-    $scope.init = function (viewBag) {
-        //TODO: Refactor, use better callback mechanism
-        if (!angular.isObject(viewBag)) throw new KnownException("View bag is corrupted");
-
-        var shopId = 1;
-        var _editMode = ("CMSId" in viewBag)
-        for (var page in tabPage) {
-            tabPage[page].angular();
-        }
-
-
-        for (var page in tabPage) {
-            tabPage[page].angular();
-        }
-
-        if (_editMode) {
-                        var CMSId = viewBag.CMSId;
-                        $scope.pageState.load('Loading Collection..');
-
-                        Collection.getOne(CMSId)
-                            .then(function (inverseFormData) {
-                                $scope.overview = angular.copy(inverseFormData);
-                              
-                                $CollectionAdd.fill( $scope.pageState, $scope.dataSet, $scope.formData,  $scope.controlFlags,
-                                    $scope.variationFactorIndices, inverseFormData).then(function () {
-                                        $scope.formData.CMSId = Number(CMSId);
-                                        $scope.pageState.reset();
-                                        console.log("$scope.formData");
-                                        console.log($scope.formData);
-                                    });
-                            }, function (error) {
-                                 console.log("function (error)");
-                                throw new KnownException("Unable to fetch collection with id " + CMSId);
-                            });
-
-                    } else if ('catId' in viewBag) {
-                        var catId = Number(viewBag.catId);
-                        $CollectionAdd.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs,
-                            $scope.controlFlags, $scope.variationFactorIndices).then(function () {
-                                $scope.pageState.reset();
-                             
-                            });
-                    } else {
-                        throw new KnownException("Invalid mode, viewBag garbage");
-        }
-
-        //Load Local Cat
-        // Shop.getLocalCategories(shopId).then(function (data) {
-        //     $scope.availableLocalCategories = Category.transformNestedSetToUITree(data);
-        // });
-
-
-    }//end init
-
-    var tabPage = {};
-
-    tabPage.images = {
-        angular: function () {
-
-
-            //Assign uploader images
-            ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onQueueLimit, onImageUploadFail);
-            ImageService.assignUploaderEvents($scope.uploader360, $scope.formData.MasterImages360, onQueueLimit, onImageUploadFail);
-
-            /**
-		     * IMAGE THUMBNAIL EVENTS
-		     */
-            $scope.$on('left', function (evt, item, array, index) {
-                var to = index - 1;
-                if (to < 0) to = array.length - 1;
-
-                var tmp = array[to];
-                array[to] = item;
-                array[index] = tmp;
-            });
-            $scope.$on('right', function (evt, item, array, index) {
-                var to = index + 1;
-                if (to >= array.length) to = 0;
-
-                var tmp = array[to];
-                array[to] = item;
-                array[index] = tmp;
-            });
-            $scope.$on('delete', function (evt, item, array, index) {
-                array.splice(index, 1);
-            });
-            $scope.$on('zoom', function (evt, item, array, index) {
-                //Should use angular way, but ok whatever
-                $('#product-image-zoom img').attr('src', item.url);
-                $('#product-image-zoom').modal('show');
-            });
-        }
-    };
-
-    tabPage.category = {
-        angular: function () {
-            //For viewing only
-            $scope.viewCategoryColumns = [];
-            $scope.viewCategorySelected = null;
-            $scope.viewCategoryIndex = 0;
-            $scope.selectCategory = angular.noop;
-
-            //Events
-            $scope.$on('openGlobalCat', function (evt, item, indx) {
-                console.log('openGloCat', item, $scope.availableGlobalCategories);
-                $scope.viewCategoryColumns = Category.createColumns(item, $scope.availableGlobalCategories);
-                $scope.viewCategorySelected = item;
-                $scope.viewCategoryIndex = indx;
-                $scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function (selectedItem) {
-                    $scope.viewCategorySelected = selectedItem;
-                });
-            });
-            $scope.$on('deleteGlobalCat', function (evt, indx) {
-                $scope.formData.GlobalCategories[indx] = null;
-            });
-            $scope.$on('selectGlobalCat', function (evt, row, indx, parentIndx) {
-                $scope.selectCategory(row, indx, parentIndx);
-            });
-            $scope.$on('saveGlobalCat', function (evt) {
-                $scope.formData.GlobalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected;
-            });
-
-            //Events
-            $scope.$on('openLocalCat', function (evt, item, indx) {
-                console.log(item, $scope.availableLocalCategories);
-                $scope.viewCategoryColumns = Category.createColumns(item, $scope.availableLocalCategories);
-                $scope.viewCategorySelected = item;
-                $scope.viewCategoryIndex = indx;
-                $scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function (selectedItem) {
-                    $scope.viewCategorySelected = selectedItem;
-                });
-            });
-            $scope.$on('deleteLocalCat', function (evt, indx) {
-                $scope.formData.LocalCategories[indx] = null;
-            });
-            $scope.$on('selectLocalCat', function (evt, row, indx, parentIndx) {
-                $scope.selectCategory(row, indx, parentIndx);
-            });
-            $scope.$on('saveLocalCat', function (evt) {
-                $scope.formData.LocalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected;
-            });
-        }
-    }
-
-    tabPage.variation = {
-
-        angular: function () {
-            /**
-		     * This part handles when user click on More Detail and open pair form
-		     */
-
-            $scope.uploaderModal = ImageService.getUploader('/ProductImages', {
-                queueLimit: QUEUE_LIMIT
-            });
-
-            $scope.uploaderModal.filters.push({
-                'name': 'enforceMaxFileSize',
-                'fn': function (item) {
-                    return item.size <= MAX_FILESIZE;
-                }
-            });
-
-            $scope.$on('openPairModal', function (evt, pair, array, index) {
-                //Define if not defined
-                if (angular.isUndefined(pair.Images)) {
-                    pair.Images = [];
-                }
-                if (angular.isUndefined(pair.queue)) {
-                    pair.queue = [];
-                }
-                //Modal target (for viewing pair)
-                $scope.pairModal = angular.copy(pair);
-                $scope.pairIndex = index;
-                $scope.uploaderModal.queue = $scope.pairModal.queue;
-                ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onQueueLimit, onImageUploadFail);
-            });
-            $scope.$on('savePairModal', function (evt) {
-                $scope.formData.Variants[$scope.pairIndex] = $scope.pairModal;
-            });
-        }
-    };
-
-
-
-
-}];
-
-},{"angular":181}],40:[function(require,module,exports){
-var angular = require('angular');
-
-module.exports = ['$scope', '$filter' ,'$window', 'util', 'config', 'Product', 'Collection','Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$CollectionAddListItem',
-function ($scope, $filter,$window, util, config, Product, Collection, ImageService, AttributeSet, Brand, Shop, GlobalCategory, Category, VariantPair, $rootScope , $q, KnownException, NcAlert, $CollectionAddListItem) {
-    'use strict';
-
-
-    $window.onbeforeunload = function (e) {
-        if (!$scope.addProductCollectionForm.$dirty) {
-            //only warn when form is dirty
-            return null;
-        }
-        var message = "Your changes will not be saved.",
-        e = e || window.event;
-        // For IE and Firefox
-        if (e) {
-            e.returnValue = message;
-        }
-
-        // For Safari
-        return message;
-    }; // end onbefore unload
-//productAddListItem
-    $scope.productAddListItem = [];
-//for modal add item list
-$scope.checkBoxCache = {};
-$scope.productList = [];
-$scope.productTotal = 0 ;
-$scope.defaultProductModalParam ={
-        filter: 'All',
-        searchText: null,
-        orderBy: 'UpdateDate',
-        direction: 'desc',
-        page: 0,
-        pageSize: 5
-    };
-
-$scope.statusLookup = {};
- config.PRODUCT_STATUS.forEach(function(object){
-       $scope.statusLookup[object.value] = object; 
-    });
- $scope.totalPage = function (x) {
-        return Math.ceil($scope.productTotal / $scope.defaultProductModalParam.pageSize);
-    };
- $scope.asStatus = function (ab) {
-        return $scope.statusLookup[ab];
-    };   
-$scope.nextPage = function (m) {
-    if ($scope.defaultProductModalParam.page + m >= $scope.totalPage() ||
-        $scope.defaultProductModalParam.page + m < 0)
-        return;
-
-    $scope.defaultProductModalParam.page += m;
-};
-$scope.setOrderBy = function (nextOrderBy) {
-    if ($scope.defaultProductModalParam.orderBy == nextOrderBy) {
-        $scope.defaultProductModalParam.direction = ($scope.defaultProductModalParam.direction == 'asc' ? 'desc' : 'asc');
-    }
-    $scope.defaultProductModalParam.orderBy = nextOrderBy;
-}; 
-$scope.setPageSize = function (p) {
-    $scope.defaultProductModalParam.pageSize = p;
-}
-$scope.applySearch = function () {
-    $scope.defaultProductModalParam.searchText = $scope.searchText;
-};
-$scope.reloadData = function () {        
-       $scope.notReady = true;
-            Product.getAll($scope.defaultProductModalParam).then(function (x) {
-            $scope.productTotal = x.total;
-            $scope.productList = x.data;
-            $scope.notReady = false;
-        });
-    };
-
-$scope.$watch('defaultProductModalParam', function () {
-        $scope.reloadData();
-        $scope.allChecked = false;
-    }, true);
-
- $scope.checkAll = function(){
-    // console.log("chk all");
-    // console.log($scope.productList);
-    // console.log($scope.productList[0]);
-        var first = $scope.productList[0];
-        var tval = !($scope.checkBoxCache[first.ProductId] || false);
-        $scope.productList.forEach(function (d) {
-            $scope.checkBoxCache[d.ProductId] = tval;
-        });
-    }
-
-    $scope.checkBoxCount = function () {
-        var m = [];
-        Object.keys($scope.checkBoxCache).forEach(function (key) {
-            if ($scope.checkBoxCache[key]) m.push($scope.checkBoxCache[key]);
-        });
-        
-        var chkCount = 0;
-        $scope.productList.forEach(function(p){
-            chkCount += ($scope.checkBoxCache[p.ProductId] ? 1 : 0);
-        });
-        
-        if(chkCount != $scope.productList.length){
-            $scope.allChecked = false;
-        }else{
-            $scope.allChecked = true;
-        }
-        return m.length;
-    }
-
-// end modal item list
-
-//begin open and confirm modal action
-//AddToList
-$scope.AddToList = function () {
-        $scope.exporter = {
-            progress: 10,
-            title: 'Select Get 1 Item...'
-        };
-            $scope.reloadData();
-
-        $("#add-product-cli").modal('show');
-    };
-    
-    $scope.AddToListConfirm = function(){
-        $("#add-product-cli").modal('hide');
-      
-        var arr = [];
-        Object.keys($scope.checkBoxCache).forEach(function (m,index) {
-            if (!$scope.checkBoxCache[m]) return;
-            arr.push({
-                ProductId: Number(m)
-            });
-            var tmpObj =$filter('filter')($scope.productList, {ProductId: Number(m) })[0];
-            $scope.productAddListItem[index] = tmpObj;
-        });
-        if (arr.length == 0) return;
-      
-      // var  a = $filter('filter')($scope.productList, {ProductId: arr[0].ProductId })[0];      
-      //   console.log("a");
-      //   console.log(a);
-    }
-//end open and confirm modal action
-
- $scope.actions = {       
-        remove: function (index,row) {
-            console.log($scope.checkBoxCache);
-            var uid= row.ProductId;
-            delete $scope.checkBoxCache[uid] ;
-             console.log($scope.checkBoxCache);
-            $scope.productAddListItem.splice(index, 1);
-        }
-    };
-
-    $scope.keywordValidConditions = {};
-    $scope.variationOptionWarning = [[], []];
-    $scope.onKeywordAdded = function (item, model) {
-
-        $scope.keywordValidConditions = {};
-        if (!item) return $scope.formData.Keywords.pop();
-
-        if ($scope.formData.Keywords.length > 20) {
-            $scope.keywordValidConditions['tagcount'] = true;
-        }
-
-        if (item.length > 30) {
-            $scope.keywordValidConditions['taglength'] = true;
-        }
-
-        if (!item.match(/^[a-zA-Z0-9ก-ฮ\s\-]+$/)) {
-            $scope.keywordValidConditions['pattern'] = true;
-        }
-
-        if (Object.keys($scope.keywordValidConditions).length > 0) {
-            //if there is error, revert
-            $scope.formData.Keywords.pop();
-        }
-    }
-
-    $scope.onKeywordRemoved = function (item, model) {
-        console.log($scope.formData.Keywords);
-    }
-
-   
-   
-    $scope.overview = {}
-
-    $scope.formData = {
-        Brand: { id: null, BrandNameEn: "Please select brand.." },
-        MasterVariant: { DimensionUnit: "CM", WeightUnit: "G", StockType: "Stock" },
-        ShippingMethod: "1",
-        AttributeSet: {
-            AttributeSetTagMaps: []
-        },
-        RelatedProducts: [],
-        MasterImages: [],
-        MasterImages360: [],
-        VideoLinks: [],
-        Variants: [],
-        GlobalCategories: [null, null, null],
-        LocalCategories: [null, null, null],
-        SEO: { ProductBoostingWeight: 10000 },
-        ControlFlags: [],
-        Keywords: []
-    };
-  
-    //TODO: Change _attrEnTh(t) to _attrEnTh(Name, t)
-    $scope._attrEnTh = function (t) { return t.AttributeSetNameEn + " / " + t.AttributeSetNameTh; }
-    $scope._isFreeTextInput = util.isFreeTextDataType;
-    $scope._isListInput = util.isListDataType;
-
-    //CK editor options
-    $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
-
-    /*
-     * Page can be in 3 states
-     * --------------------------------
-     *  success: OK stat
-     *  failure: L2 validation error (client + server)
-     *  invalid: L1 validation error (client)
-     */
-    $scope.pageState = {
-        success: false,
-        failure: false,
-        invalid: false,
-        loading: {
-            state: true,
-            message: 'Loading..'
-        },
-        load: function (msg) {
-            $scope.pageState.loading.message = msg;
-            $scope.pageState.loading.state = true;
-        },
-        reset: function () {
-            $scope.pageState.success = false;
-            $scope.pageState.failure = false;
-            $scope.pageState.invalid = false;
-            $scope.pageState.loading.state = false;
-        }
-    };
-
-  
-    /*
-     *  Run clean data before any publishing
-     *  which will try to reduce imperfection before
-     *  serialization
-     */
-    var cleanData = function () {
-
-    };
-
-    $scope.preview = function () {
-        return console.log($scope.formData);
-        cleanData();
-        var apiRequest = Product.serialize($scope.formData);
-        console.log(JSON.stringify(apiRequest));
-    };
-
-
-    /*
-     *  refresh functions
-     *  for dropdown suggestions
-     */
-
-    $scope.refreshRelatedProducts = function (q) {
-        return Product.getAll({
-            searchText: q
-        }).then(function (dataSet) {
-            $scope.availableRelatedProducts = dataSet.data;
-        });
-    };
-
-   
-
-    $scope.$watch('formData.ExpireDate', function () {
-        var form = $scope.addProductCollectionForm;
-        if (form.ExpireDate)
-        form.ExpireDate.$setValidity("min", true);
-        if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
-            if (!form.ExpireDate) return;
-            form.ExpireDate.$setValidity("min", false);
-            form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
-        }
-    });
-
-    var manualValidate = function () {
-        var mat = [];
-        // if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == "") {
-        //     mat.push("Missing Description (Thai)");
-        // }
-
-        // if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == "") {
-        //     mat.push("Missing Description (English)");
-        // }
-
-        // if (!$scope.formData.Brand.BrandId) {
-        //     mat.push("Missing Brand");
-        // }
-
-        return mat;
-    };
-
-    /*
-     *  Publish (both Draft and WA)
-     */
-    $scope.publish = function (Status) {
-
-        $scope.pageState.reset();
-        $scope.pageState.load('Validating..');
-
-        $scope.onPublishing = (Status == "4");
-        //On click validation
-        var validateMat = manualValidate();
-        if (validateMat.length > 0 && Status == '4') {
-            $scope.pageState.reset();
-            $scope.pageState.failure = true;
-            $scope.pageState.failure_message = validateMat[0];
-            $window.location.hash = 'alert';
-            $window.location.hash = 'alert-failure';
-            return;
-        }
-
-
-        $scope.pageState.load('Publishing..');
-        cleanData();
-        console.log("Publishing with Status = ", Status);
-        //Error Handling too Messi
-        try {
-            // var apiRequest = Product.serialize($scope.formData);            
-            //Product.publish(apiRequest, Status).then(function (res) {
-                //console.log($scope.formData);
-                $scope.formData.CMSStatusId = Status
-                $scope.formData.Status = true;
-                $scope.formData.CMSTypeId = 1;
-                $scope.formData.UpdateBy =1;
-                $scope.formData.CreateBy =1;
-                $scope.formData.Visibility = 1;
-                $scope.formData.CreateIP ='203.146.156.34';
-               
-                var apiRequest =  Collection.serialize($scope.formData);  
-                var tmpObjArr =[];
-                var apiParameter ;
-                if($scope.formData.CMSId != null && typeof $scope.formData.CMSId != "undefined"){
-                    tmpObjArr.push(apiRequest);
-                    apiParameter = tmpObjArr;
-                }else{ apiParameter = apiRequest;}
-
-
-                Collection.publish(apiParameter, Status).then(function (res) {
-                $scope.pageState.reset();
-                if (res.CMSId) {
-                    $scope.overview = res;
-                    $scope.pageState.success = true;
-                    $scope.formData.CMSId = res.ProductId;
-                    $scope.addProductCollectionForm.$setPristine(true)
-                } else {
-                    $scope.pageState.failure = true;
-                    $scope.pageState.failure_message = res.message || res.Message;
-                    $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-                    $window.location.hash = 'alert'
-                    $window.location.hash = 'alert-failure'
-                }
-            }, function (er) {
-                $scope.pageState.reset();
-                $scope.pageState.failure = true;
-                $scope.pageState.failure_message = er.Message || er.message;
-                $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-
-                $window.location.hash = 'alert' //Need to toggle hash otherwise it wont scroll
-                $window.location.hash = 'alert-failure'
-            });
-
-        } catch (ex) {
-            console.log("catch exception from publish process");
-            $scope.pageState.reset();
-            $scope.pageState.failure = true;
-            $scope.pageState.failure_message = ex.message;
-            $scope.enableProductVariations = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-            $window.location.hash = 'alert'
-            $window.location.hash = 'alert-failure'
-            console.log('publish failure', ex);
-            return;
-        }
-    };
-
-
-    $scope.init = function (viewBag) {
-        //TODO: Refactor, use better callback mechanism
-        if (!angular.isObject(viewBag)) throw new KnownException("View bag is corrupted");
-
-        var shopId = 1;
-        var _editMode = ("CMSId" in viewBag)
-        for (var page in tabPage) {
-            tabPage[page].angular();
-        }
-
-
-        for (var page in tabPage) {
-            tabPage[page].angular();
-        }
-
-        if (_editMode) {
-                        var CMSId = viewBag.CMSId;
-                        $scope.pageState.load('Loading Collection..');
-
-                        Collection.getOne(CMSId)
-                            .then(function (inverseFormData) {
-                                $scope.overview = angular.copy(inverseFormData);
-                              
-                                $CollectionAddListItem.fill( $scope.pageState, $scope.dataSet, $scope.formData,  $scope.controlFlags,
-                                     inverseFormData).then(function () {
-                                        $scope.formData.CMSId = Number(CMSId);
-                                        $scope.pageState.reset();
-                                        console.log("$scope.formData");
-                                        console.log($scope.formData);
-                                    });
-                            }, function (error) {
-                                 console.log("function (error)");
-                                throw new KnownException("Unable to fetch collection with id " + CMSId);
-                            });
-
-                    } 
-                    // else if ('catId' in viewBag) {
-                    //     var catId = Number(viewBag.catId);
-                    //     $CollectionAddListItem.fill(catId, $scope.pageState, $scope.dataSet, $scope.formData, $scope.breadcrumbs,
-                    //         $scope.controlFlags).then(function () {
-                    //             $scope.pageState.reset();
-                             
-                    //         });
-                    // }  else {
-                    //     throw new KnownException("Invalid mode, viewBag garbage"); }
-
-
-    }//end init
-
-    var tabPage = {};
-
-}];
-
-},{"angular":181}],41:[function(require,module,exports){
-arguments[4][32][0].apply(exports,arguments)
-},{"angular":181,"dup":32}],42:[function(require,module,exports){
-module.exports = ['$scope', 'Product', 'Collection', 'util', 'Alert', '$window', '$rootScope', function
-
-($scope, Product,Collection, util, Alert, $window, $rootScope) {
-    //UI binding variables    
-
-    $scope.checkBoxCache = {};
-    $scope.hidCMSTypeId = {};    
-    $scope.showOnOffStatus = true;
-    $scope.allChecked = false;
-    $scope.alert = new Alert();
-    $scope.filterOptions = [
-        { name: "All", value: 'All' },
-        { name: "Approved", value: 'Approved' },
-        { name: 'Draft', value: 'Draft' },
-        { name: "Not Approved", value: 'NotApproved' },
-        { name: "Wait for Approval", value: 'WaitforApproval' },
-    ];
-
-    $scope.startExportProductCollection = function () {
-        $scope.exporter = {
-            progress: 10,
-            title: 'Exporting...'
-        };
-
-        $("#export-product-collection").modal('show');
-    };
-
-    $scope.confirmExportProductCollection = function () {
-        $("#export-product-collection").modal('hide');
-
-        var arr = [];
-        Object.keys($scope.checkBoxCache).forEach(function (m) {
-            if (!$scope.checkBoxCache[m]) return;
-            arr.push({
-                CMSId: Number(m)
-            });
-        });
-
-        if (arr.length == 0) return;
-
-
-        var fileName = 'ProductCollectionExport-' + moment(new Date(), 'MM-DD-YYYY-HHmm') + ".csv";
-        var a = document.getElementById("export_download_btn");
-
-        var error = function (r) {
-            $(".modal").modal('hide');
-            $scope.exporter.title = 'Error'
-            $scope.alert.error('Unable to Export Product');
-            $scope.reloadData();
-        };
-
-        $scope.exporter.progress = 15;
-        var blobs = [];
-
-        var chunks = _.chunk(arr, 3);
-
-
-        chunks.forEach(function (chunk) {
-            Collection.export(chunk).then(function (result) {
-
-                $scope.exporter.progress += (100 / chunks);
-                blobs.push(result);
-
-                var file = new Blob(blobs, { type: 'application/csv' });
-                var fileURL = URL.createObjectURL(file);
-
-                $scope.exporter.href = fileURL;
-                $scope.exporter.download = fileName;
-                $scope.exporter.progress = 100;
-                $scope.exporter.title = 'Export Complete'
-
-                a.href = fileURL;
-
-            }, error);
-        });
-    }
-
-
-    $scope.setPageSize = function (p) {
-        $scope.tableParams.pageSize = p;
-    }
-
-    $scope.bulk = {
-        fn: function () {
-            var bulk = $scope.bulkOptions.find(function (item) {
-                return item.name == $('#bulk').html();
-            });
-            if (bulk) {
-                bulk.fn();
-            }
-            $scope.allChecked = false;
-        }
-    };
-
-    $scope.bulkOptions = [
-        {
-            name: 'Delete',
-            value: 'delete',
-            fn: function () {
-                $scope.alert.close();
-             
-
-
-             var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSId: -1 , CMSStatusFlowId: 5 , CMSTypeId : -1 };  
-                    }else{
-                            rObj = {
-                            CMSId: Number(id),
-                            CMSStatusFlowId: 5 ,
-                            CMSTypeId: $scope.hidCMSTypeId[id]
-                        };
-                    }                   
-                    return rObj ;
-                });
-    
-                if (selList.length > 0) {
-                       
-                        var apiRequest = Collection.arrSerialize(selList);                         
-                        Collection.deleteBulk(apiRequest).then(function () {
-                        $scope.alert.success('Successfully deleted');
-                        $scope.reloadData();
-                    }, function (result) {
-                        $scope.alert.error('Unable to Delete');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Show',
-            value: 'show',
-            fn: function () {
-
-        var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSId: -1 , Visibility: true ,CMSTypeId :-1 };  
-                    }else{
-                            rObj = {
-                            CMSId: Number(id) ,
-                            Visibility : true ,
-                            CMSTypeId: $scope.hidCMSTypeId[id]
-                        };
-                    }                   
-                    return rObj ;
-                });
-
-
-                if (selList.length > 0) {
-                     var apiRequest = Collection.arrSerialize(selList);
-                        Collection.visible(apiRequest).then(function () {
-                        $scope.alert.success('Successfully changed');
-                        $scope.reloadData();
-                    }, function () {
-                        $scope.alert.error('Unable to Show');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Hide',
-            value: 'hide',
-            fn: function () {
-               
-                 var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSId: -1 , Visibility: false ,CMSTypeId :-1 };  
-                    }else{
-                            rObj = {
-                            CMSId: Number(id) ,
-                            Visibility : false ,
-                            CMSTypeId: $scope.hidCMSTypeId[id]
-                        };
-                    }                   
-                    return rObj ;
-                });
-
-                if (selList.length > 0) {
-                      var apiRequest = Collection.arrSerialize(selList);
-                        Collection.visible(apiRequest).then(function () {
-                        $scope.alert.success('Successfully changed');
-                        $scope.reloadData();
-                    }, function () {
-                        $scope.alert.error('Unable to Hide');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Publish',
-            value: 'publish',
-            fn: function () {
-              
-                 var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSId: -1 ,CMSStatusFlowId: 2 , CMSTypeId :-1 };  
-                    }else{
-                            rObj = {
-                            CMSId: Number(id) ,
-                            CMSStatusFlowId: 2 ,
-                            CMSTypeId: $scope.hidCMSTypeId[id]
-                        };
-                    }                   
-                    return rObj ;
-                });
-
-                if (selList.length == 0) return;
-
-                    var apiRequest = Collection.arrSerialize(selList);
-                Collection.bulkPublish(apiRequest).then(function () {
-                    // $scope.alert.success("Successfully published " + arr.length + " items");
-                    // $scope.reloadData();
-                     $scope.alert.success('Successfully published');
-                     $scope.reloadData();
-                }, function (r) {
-                    //$scope.alert.error('Unable to publish because ' + r.message);
-                    $scope.alert.success('Unable to publish');
-                     $scope.reloadData();
-                });
-            }
-        }
-    ];
-    $scope.actions = {
-        edit: function (row) {
-            $window.location.href = "/collections/" + row.CMSId;
-        },
-        delete: function (row) {
-            $scope.alert.close();
-            Collection.deleteBulk([{ CMSId: row.CMSId ,CMSTypeId : row.CMSTypeId,CMSStatusFlowId:5 }]).then(function () {
-                $scope.alert.success('You have successfully remove an entry.');
-                $scope.reloadData();
-            }, function (err) {
-                $scope.alert.error(err);
-            });
-        },
-        duplicate: function (row) {
-            $scope.alert.close();
-            Collection.duplicate(row.CMSId).then(function () {
-                $scope.alert.success();
-                $scope.reloadData();
-            }, function (err) {
-                $scope.alert.error(err);
-            });
-        },
-        toggle: function (row) {
-            $scope.alert.close();
-            row.Visibility = !row.Visibility;
-            console.log("[row]");
-            console.log([row]);
-            Collection.visible([row]).then(function () {
-            }, function (err) {
-                $scope.alert.error(err);
-                $scope.reloadData();
-            });
-        }
-    };
-    $scope.sort = util.tableSortClass($scope);
-    var StatusLookup = {
-
-        '1': {
-            Class: 'fa-circle-o',
-            Text: 'Draft',
-            Color: 'color-grey'
-        },
-        '2': {
-            Class: 'fa-check-square-o',
-            Text: 'Approve',
-            Color: 'color-green'
-        },
-        '3': {
-            Class: 'fa-circle-o',
-            Text: 'Not approve',
-            Color: 'color-orange'
-        },
-        '4': {
-            Class: 'fa-clock-o',
-            Text: 'Wait for approval',
-            Color: 'color-yellow'
-        },
-       '5': {
-            Class: 'fa-clock-o',
-            Text: 'Junk',
-            Color: 'color-red'
-        }
-    }
-    $scope.init = function (params) {
-        if (angular.isDefined(params)) {
-            if (angular.isDefined(params.success) && params.success != null) {
-                $scope.alert.success();
-            }
-        }
-    };
-    $scope.asStatus = function (ab) {
-        return StatusLookup[ab];
-    };
-
-    //Product List
-    $scope.productList = [];
-    //Default parameters
-    $scope.tableParams = {
-        filter: 'All',
-        searchText: null,
-        orderBy: 'UpdateDate',
-        direction: 'desc',
-        page: 0,
-        pageSize: 10,
-        shopID :0
-    };
-
-    $scope.notReady = true;
-
-    $scope.applySearch = function () {
-        $scope.tableParams.searchText = $scope.searchText;
-    };
-
-    $scope.totalPage = function (x) {
-        return Math.ceil($scope.productTotal / $scope.tableParams.pageSize);
-    };
-
-    $scope.nextPage = function (m) {
-        if ($scope.tableParams.page + m >= $scope.totalPage() ||
-            $scope.tableParams.page + m < 0)
-            return;
-
-        $scope.tableParams.page += m;
-    };
-
-
-    $scope.setOrderBy = function (nextOrderBy) {
-        if ($scope.tableParams.orderBy == nextOrderBy) {
-            $scope.tableParams.direction = ($scope.tableParams.direction == 'asc' ? 'desc' :
-
-'asc');
-        }
-        $scope.tableParams.orderBy = nextOrderBy;
-    };
-
-    $scope.productTotal = 0;
-    //Populate Data Source
-    $scope.reloadData = function () {
-        $scope.productList = [];
-        $scope.notReady = true;
-        Collection.getAll($scope.tableParams).then(function (x) {
-            $scope.productTotal = x.total;
-            $scope.productList = x.data;
-            $scope.notReady = false;
-        });
-    };
-
-    //Watch any change in table parameter, trigger reload
-    $scope.$watch('tableParams', function () {
-        $scope.reloadData();
-        $scope.allChecked = false;
-    }, true);
-
-    
-
-   
-    $scope.checkAll = function(){
-        var first = $scope.productList[0];
-        var tval = !($scope.checkBoxCache[first.CMSId] || false);
-        $scope.productList.forEach(function (d) {
-            $scope.checkBoxCache[d.CMSId] = tval;
-        });
-    }
-
-
-    
-
-    $scope.checkBoxCount = function () {
-        var m = [];
-        Object.keys($scope.checkBoxCache).forEach(function (key) {
-            if ($scope.checkBoxCache[key]) m.push($scope.checkBoxCache[key]);
-        });
-      
-        //Count checked checkbox (on this page only)
-        //TODO: I don't like this solution, I'd rather trade space for time
-        //note: can't just count checkboxcache because checkboxcache is global across
-        //all pages. 
-        var chkCount = 0;
-        $scope.productList.forEach(function(p){
-            chkCount += ($scope.checkBoxCache[p.CMSId] ? 1 : 0);
-        });
-        
-        //Change selectAll checkbox state
-        if(chkCount != $scope.productList.length){
-            $scope.allChecked = false;
-        }else{
-            $scope.allChecked = true;
-        }
-        return m.length;
-    }
-}];
-
-},{}],43:[function(require,module,exports){
+},{"angular":182}],33:[function(require,module,exports){
 module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product, AttributeSet) {
   $scope.ProductList = [];
   $scope.SELECT_ALL = false;
@@ -5716,405 +2568,7 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
   };
 }];
 
-},{}],44:[function(require,module,exports){
-module.exports = ['$scope', 'Product', 'Collection', 'util', 'Alert', '$window', '$rootScope', function
-
-($scope, Product,Collection, util, Alert, $window, $rootScope) {
-    //UI binding variables    
-
-    $scope.checkBoxCache = {};
-    $scope.hidCMSTypeId = {};    
-    $scope.showOnOffStatus = true;
-    $scope.allChecked = false;
-    $scope.alert = new Alert();
-    $scope.filterOptions = [
-        { name: "All", value: 'All' },
-        { name: "Approved", value: 'Approved' },
-        { name: 'Draft', value: 'Draft' },
-        { name: "Not Approved", value: 'NotApproved' },
-        { name: "Wait for Approval", value: 'WaitforApproval' },
-    ];
-
-    $scope.startExportProductGroupCollection = function () {
-        $scope.exporter = {
-            progress: 10,
-            title: 'Exporting...'
-        };
-
-        $("#export-product-group-collection").modal('show');
-    };
-
-    $scope.confirmExportProductGroupCollection = function () {
-        $("#export-product-group-collection").modal('hide');
-
-        var arr = [];
-        Object.keys($scope.checkBoxCache).forEach(function (m) {
-            if (!$scope.checkBoxCache[m]) return;
-            arr.push({
-                CMSCollectionGroupId: Number(m)
-            });
-        });
-
-        if (arr.length == 0) return;
-
-
-        var fileName = 'ProductGroupCollectionExport-' + moment(new Date(), 'MM-DD-YYYY-HHmm') + ".csv";
-        var a = document.getElementById("export_download_btn");
-
-        var error = function (r) {
-            $(".modal").modal('hide');
-            $scope.exporter.title = 'Error'
-            $scope.alert.error('Unable to Export Product');
-            $scope.reloadData();
-        };
-
-        $scope.exporter.progress = 15;
-        var blobs = [];
-
-        var chunks = _.chunk(arr, 3);
-
-
-        chunks.forEach(function (chunk) {
-            Collection.exportGroup(chunk).then(function (result) {
-
-                $scope.exporter.progress += (100 / chunks);
-                blobs.push(result);
-
-                var file = new Blob(blobs, { type: 'application/csv' });
-                var fileURL = URL.createObjectURL(file);
-
-                $scope.exporter.href = fileURL;
-                $scope.exporter.download = fileName;
-                $scope.exporter.progress = 100;
-                $scope.exporter.title = 'Export Complete'
-
-                a.href = fileURL;
-
-            }, error);
-        });
-    }
-
-
-    $scope.setPageSize = function (p) {
-        $scope.tableParams.pageSize = p;
-    }
-
-    $scope.bulk = {
-        fn: function () {
-            var bulk = $scope.bulkOptions.find(function (item) {
-                return item.name == $('#bulk').html();
-            });
-            if (bulk) {
-                bulk.fn();
-            }
-            $scope.allChecked = false;
-        }
-    };
-
-    $scope.bulkOptions = [
-        {
-            name: 'Delete',
-            value: 'delete',
-            fn: function () {
-                $scope.alert.close();
-             
-
-
-             var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSCollectionGroupId: -1 , CMSStatusFlowId: 5 };  
-                    }else{
-                            rObj = {
-                            CMSCollectionGroupId: Number(id),
-                            CMSStatusFlowId: 5 
-                        };
-                    }                   
-                    return rObj ;
-                });
-    
-                if (selList.length > 0) {
-                       
-                        var apiRequest = Collection.arrSerialize(selList);                         
-                        Collection.deleteBulkGroup(apiRequest).then(function () {
-                        $scope.alert.success('Successfully deleted');
-                        $scope.reloadData();
-                    }, function (result) {
-                        $scope.alert.error('Unable to Delete');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Show',
-            value: 'show',
-            fn: function () {
-
-        var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSCollectionGroupId: -1 , Visibility: true ,CMSTypeId :-1 };  
-                    }else{
-                            rObj = {
-                            CMSCollectionGroupId: Number(id) ,
-                            Visibility : true ,
-                            CMSTypeId: $scope.hidCMSTypeId[id]
-                        };
-                    }                   
-                    return rObj ;
-                });
-
-
-                if (selList.length > 0) {
-                     var apiRequest = Collection.arrSerialize(selList);
-                        Collection.visibleGroup(apiRequest).then(function () {
-                        $scope.alert.success('Successfully changed');
-                        $scope.reloadData();
-                    }, function () {
-                        $scope.alert.error('Unable to Show');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Hide',
-            value: 'hide',
-            fn: function () {
-               
-                 var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSCollectionGroupId: -1 , Visibility: false };  
-                    }else{
-                            rObj = {
-                            CMSCollectionGroupId: Number(id) ,
-                            Visibility : false 
-                        };
-                    }                   
-                    return rObj ;
-                });
-
-                if (selList.length > 0) {
-                      var apiRequest = Collection.arrSerialize(selList);
-                        Collection.visibleGroup(apiRequest).then(function () {
-                        $scope.alert.success('Successfully changed');
-                        $scope.reloadData();
-                    }, function () {
-                        $scope.alert.error('Unable to Hide');
-                        $scope.reloadData();
-                    });
-                }
-            }
-        },
-        {
-            name: 'Publish',
-            value: 'publish',
-            fn: function () {
-              
-                 var selList = Object.keys($scope.checkBoxCache).map(function (id) {
-                    var rObj = {};
-                    if (!$scope.checkBoxCache[id]) { 
-                            rObj = { CMSCollectionGroupId: -1 ,CMSStatusFlowId: 2 , CMSTypeId :-1 };  
-                    }else{
-                            rObj = {
-                            CMSCollectionGroupId: Number(id) ,
-                            CMSStatusFlowId: 2
-                        };
-                    }                   
-                    return rObj ;
-                });
-
-                if (selList.length == 0) return;
-
-                    var apiRequest = Collection.arrSerialize(selList);
-                Collection.bulkPublishGroup(apiRequest).then(function () {
-                    
-                     $scope.alert.success('Successfully published');
-                     $scope.reloadData();
-                }, function (r) {
-                    $scope.alert.success('Unable to publish');
-                     $scope.reloadData();
-                });
-            }
-        }
-    ];
-    $scope.actions = {
-        edit: function (row) {
-            $window.location.href = "/collections/" + row.CMSId;
-        },
-        delete: function (row) {
-            $scope.alert.close();
-            Collection.deleteBulkGroup([{ CMSId: row.CMSCollectionGroupId ,CMSStatusFlowId:5 }]).then(function () {
-                $scope.alert.success('You have successfully remove an entry.');
-                $scope.reloadData();
-            }, function (err) {
-                $scope.alert.error(err);
-            });
-        },
-        duplicate: function (row) {
-            $scope.alert.close();
-            Collection.duplicateGroup(row.CMSId).then(function () {
-                $scope.alert.success();
-                $scope.reloadData();
-            }, function (err) {
-                $scope.alert.error(err);
-            });
-        },
-        toggle: function (row) {
-            $scope.alert.close();
-            row.Visibility = !row.Visibility;
-            console.log("[row]");
-            console.log([row]);
-            Collection.visibleGroup([row]).then(function () {
-            }, function (err) {
-                $scope.alert.error(err);
-                $scope.reloadData();
-            });
-        }
-    };
-    $scope.sort = util.tableSortClass($scope);
-    var StatusLookup = {
-
-        '1': {
-            Class: 'fa-circle-o',
-            Text: 'Draft',
-            Color: 'color-grey'
-        },
-        '2': {
-            Class: 'fa-check-square-o',
-            Text: 'Approve',
-            Color: 'color-green'
-        },
-        '3': {
-            Class: 'fa-circle-o',
-            Text: 'Not approve',
-            Color: 'color-orange'
-        },
-        '4': {
-            Class: 'fa-clock-o',
-            Text: 'Wait for approval',
-            Color: 'color-yellow'
-        },
-       '5': {
-            Class: 'fa-clock-o',
-            Text: 'Junk',
-            Color: 'color-red'
-        }
-    }
-    $scope.init = function (params) {
-        console.log(" group collection list init");
-        if (angular.isDefined(params)) {
-            if (angular.isDefined(params.success) && params.success != null) {
-                $scope.alert.success();
-            }
-        }
-    };
-    $scope.asStatus = function (ab) {
-        return StatusLookup[ab];
-    };
-
-    //Product List
-    $scope.productGroupList = [];
-    //Default parameters
-    $scope.tableParams = {
-        filter: 'All',
-        searchText: null,
-        orderBy: 'UpdateDate',
-        direction: 'desc',
-        page: 0,
-        pageSize: 10,
-        shopID :0
-    };
-
-    $scope.notReady = true;
-
-    $scope.applySearch = function () {
-        $scope.tableParams.searchText = $scope.searchText;
-    };
-
-    $scope.totalPage = function (x) {
-        return Math.ceil($scope.productGroupTotal / $scope.tableParams.pageSize);
-    };
-
-    $scope.nextPage = function (m) {
-        if ($scope.tableParams.page + m >= $scope.totalPage() ||
-            $scope.tableParams.page + m < 0)
-            return;
-
-        $scope.tableParams.page += m;
-    };
-
-
-    $scope.setOrderBy = function (nextOrderBy) {
-        if ($scope.tableParams.orderBy == nextOrderBy) {
-            $scope.tableParams.direction = ($scope.tableParams.direction == 'asc' ? 'desc' :
-
-'asc');
-        }
-        $scope.tableParams.orderBy = nextOrderBy;
-    };
-
-    $scope.productGroupTotal = 0;
-    //Populate Data Source
-    $scope.reloadData = function () {
-        $scope.productGroupList = [];
-        $scope.notReady = true;
-        Collection.getAllGroup($scope.tableParams).then(function (x) {
-            $scope.productGroupTotal = x.total;
-            $scope.productGroupList = x.data;
-            $scope.notReady = false;
-        });
-    };
-
-    //Watch any change in table parameter, trigger reload
-    $scope.$watch('tableParams', function () {
-        $scope.reloadData();
-        $scope.allChecked = false;
-    }, true);
-
-    
-
-   
-    $scope.checkAll = function(){
-        var first = $scope.productGroupList[0];
-        var tval = !($scope.checkBoxCache[first.CMSCollectionGroupId] || false);
-        $scope.productGroupList.forEach(function (d) {
-            $scope.checkBoxCache[d.CMSCollectionGroupId] = tval;
-        });
-    }
-
-
-    
-
-    $scope.checkBoxCount = function () {
-        var m = [];
-        Object.keys($scope.checkBoxCache).forEach(function (key) {
-            if ($scope.checkBoxCache[key]) m.push($scope.checkBoxCache[key]);
-        });
-      
-        //Count checked checkbox (on this page only)
-        //TODO: I don't like this solution, I'd rather trade space for time
-        //note: can't just count checkboxcache because checkboxcache is global across
-        //all pages. 
-        var chkCount = 0;
-        $scope.productGroupList.forEach(function(p){
-            chkCount += ($scope.checkBoxCache[p.CMSId] ? 1 : 0);
-        });
-        
-        //Change selectAll checkbox state
-        if(chkCount != $scope.productGroupList.length){
-            $scope.allChecked = false;
-        }else{
-            $scope.allChecked = true;
-        }
-        return m.length;
-    }
-}];
-
-},{}],45:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 //Not Used
 module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader', function ($scope, Product, util, Alert, $window, FileUploader) {
     $scope.productList = [];
@@ -6124,214 +2578,215 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader
     });
 }];
 
-},{}],46:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$window", "FileUploader", "ImageService", "config", "common", function ($scope, $controller, Product, util, NcAlert, $window, FileUploader, ImageService, config, common) {
     'ngInject';
-    $controller('AbstractListCtrl', {
-        $scope: $scope,
-        options: {
-            url: '/products/images',
-            service: Product,
-            item: 'Product',
-            order: 'ProductId',
-            id: 'ProductId',
-            actions: [],
-            bulks: [],
-            filters: [
-					{ name: "All", value: 'All' },
-					{ name: "Image Missing", value: 'ImageMissing' },
-					{ name: "Approved", value: 'Approved' },
-					{ name: "Not Approved", value: 'NotApproved' },
-					{ name: "Draft", value: 'Draft' },
-					{ name: "Wait For Approval", value: 'WaitForApproval' }
-            ],
-            reload: function (newObj, oldObj) {
-                $scope.loading = true;
-                if (!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
-                    if (newObj.searchText !== oldObj.searchText) {
-                        $scope.params._offset = 0;
-                        $scope.bulkContainer.length = 0;
-                    }
-                    if (newObj._filter !== oldObj._filter) {
-                        $scope.params._offset = 0;
-                        $scope.bulkContainer.length = 0;
-                    }
-                }
-                Product.getAllVariants($scope.params).then(function (data) {
-                    $scope.loading = false;
-                    $scope.ignored = true;
-                    $scope.list = data;
-                    _.forEach($scope.list.data, function (e) {
-                        _.extend(e, { alert: new NcAlert() })
-                    });
-                    $scope.watcher = _.map(data.data, function (e) {
-                        if (e.IsVariant) {
-                            return e.VariantImg;
-                        } else {
-                            return e.MasterImg;
-                        }
-                    });
-                });
-            }
-        }
-    });
-    util.warningOnLeave(function () {
-        return $scope.dirty;
-    });
-    $scope.paginationSize = [5, 10, 15];
-    $scope.imageDropzoneOptions = {
-        urlKey: 'url'
-    };
-    $scope.imageGalleryOptions = {
-        urlKey: 'url',
-        actions: [
-			{
-			    //Left
-			    fn: function (item, array, index) {
-			        //console.log(item, array, index);
-			        var to = index - 1;
-			        if (to < 0) return;
-
-			        var tmp = array[to];
-			        array[to] = item;
-			        array[index] = tmp;
-			    },
-			    icon: 'fa-arrow-left'
-			},
-			{
-			    //Right
-			    fn: function (item, array, index) {
-			        //console.log(item, array, index);
-			        var to = index + 1;
-			        if (to >= array.length) return;
-
-			        var tmp = array[to];
-			        array[to] = item;
-			        array[index] = tmp;
-			    },
-			    icon: 'fa-arrow-right'
-			},
-			{
-			    //Trash
-			    fn: function (item, array, index) {
-			        array.splice(index, 1);
-			    },
-			    icon: 'fa-trash',
-			    confirmation: {
-			        title: 'Confirm to delete',
-			        message: 'Are you sure you want to delete the image?',
-			        btnConfirm: 'Delete',
-			        btnCancel: 'Cancel',
-			        btnClass: 'btn-red'
-			    }
+	$controller('AbstractListCtrl', {
+		$scope: $scope,
+		options: {
+			url: '/products/images',
+			service: Product,
+			item: 'Product',
+			order: 'ProductId',
+			id: 'ProductId',
+			actions: [],
+			bulks: [],
+			filters: [
+					{ name: "All", value: 'All'},
+					{ name: "Image Missing", value: 'ImageMissing'},
+					{ name: "Approved", value: 'Approved'},
+					{ name: "Not Approved", value: 'NotApproved'},
+					{ name: "Draft", value: 'Draft'},
+					{ name: "Wait For Approval", value: 'WaitForApproval'}
+			],
+			reload: function(newObj, oldObj){
+				$scope.loading = true;
+				if(!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
+					if(newObj.searchText !== oldObj.searchText) {
+						$scope.params._offset = 0;
+						$scope.bulkContainer.length = 0;
+					}
+					if(newObj._filter !== oldObj._filter) {
+						$scope.params._offset = 0;
+						$scope.bulkContainer.length = 0;
+					}
+				}
+				Product.getAllVariants($scope.params).then(function(data){
+					$scope.loading = false;
+			        $scope.ignored = true;
+			        $scope.list = data;
+			        _.forEach($scope.list.data, function(e) {
+			        	_.extend(e, {alert: new NcAlert() })
+			        });
+			        $scope.watcher = _.map(data.data, function(e) {
+			        	if(e.IsVariant) {
+			        		return e.VariantImg;
+			        	} else {
+			        		return e.MasterImg;
+			        	}
+			        });
+			    });
 			}
-        ]
-    };
-    $scope.dirty = false;
+		}
+	});
+    util.warningOnLeave(function() {
+    	return $scope.dirty;
+    });
+	$scope.paginationSize = [5,10,15];
+	$scope.imageDropzoneOptions = {
+		urlKey: 'url'
+	};
+	$scope.imageGalleryOptions = {
+		urlKey: 'url',
+		actions: [
+			{
+				//Left
+				fn: function(item, array, index) {
+					//console.log(item, array, index);
+				    var to = index - 1;
+				    if (to < 0) return;
+
+				    var tmp = array[to];
+				    array[to] = item;
+				    array[index] = tmp;
+				},
+				icon: 'fa-arrow-left'
+			},
+			{
+				//Right
+				fn: function(item, array, index) {
+					//console.log(item, array, index);
+				    var to = index + 1;
+				    if (to >= array.length) return;
+
+				    var tmp = array[to];
+				    array[to] = item;
+				    array[index] = tmp;
+				},
+				icon: 'fa-arrow-right'
+			},
+			{
+				//Trash
+				fn: function(item, array, index) {
+					array.splice(index, 1);
+				},
+				icon: 'fa-trash',
+				confirmation: {
+					title: 'Confirm to delete',
+					message: 'Are you sure you want to delete the image?',
+					btnConfirm: 'Delete',
+					btnCancel: 'Cancel',
+					btnClass: 'btn-red'
+				}
+			}
+		]
+	};
+	$scope.dirty = false;
     $scope.uploader = ImageService.getUploader('/ProductImages');
     $scope.productStatus = config.PRODUCT_STATUS;
 
-    $scope.onEvent = function (product, eventName) {
-        if (eventName == 'edit') {
-            product.Status = $scope.productStatus[0].value;
-        }
+    $scope.onEvent = function(product, eventName) {
+    	if(eventName == 'edit') {
+    		product.Status = $scope.productStatus[0].value;
+    	}
     }
-    $scope.onError = function (item, response) {
-        if (response.name == 'sizeFilter') {
-            item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + config.ERROR_MESSAGE.WRONG_IMAGE_SIZE);
-        }
-        else if (response.name == 'imageFilter') {
-            item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + config.ERROR_MESSAGE.WRONG_IMAGE_FORMAT);
-        } else {
-            item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + common.getError(response));
-        }
-    };
-    $scope.isDisabled = function (product) {
-        return product.Status == $scope.productStatus[1].value || product.Status == $scope.productStatus[2].value;
+    $scope.onError = function(item, response) {
+    	if(response.name == 'sizeFilter') {
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + config.ERROR_MESSAGE.WRONG_IMAGE_SIZE);
+    	}
+    	else if(response.name == 'imageFilter') {
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + config.ERROR_MESSAGE.WRONG_IMAGE_FORMAT);
+    	} else {
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + common.getError(response));
+            console.log(response);
+		}
+	};
+    $scope.isDisabled = function(product) {
+    	return product.Status == $scope.productStatus[1].value || product.Status == $scope.productStatus[2].value;
     };
     //Prevent unsaved event
-    $scope.onUnsave = function () {
-        if ($scope.dirty) {
-            return confirm('Your change will not be saved.');
-        }
-        return false;
+    $scope.onUnsave = function() {
+    	if($scope.dirty) {
+    		return confirm('Your change will not be saved.');
+    	}
+    	return false;
     };
-    $scope.getTemplate = function (product) {
-        var images = null;
-        if (product.IsVariant) {
-            images = product.VariantImg;
-        } else {
-            images = product.MasterImg;
-        }
+    $scope.getTemplate = function(product) {
+    	var images = null;
+    	if(product.IsVariant) {
+    		images = product.VariantImg;
+    	} else {
+    		images = product.MasterImg;
+    	}
 
-        if ($scope.productStatus[1].value == product.Status) {
-            //Wait for approval
-            return 'product/dropzone/waitForApproval';
-        }
+    	if($scope.productStatus[1].value == product.Status) {
+    		//Wait for approval
+    		return 'product/dropzone/waitForApproval';
+    	}
 
-        if ($scope.productStatus[2].value == product.Status) {
-            return 'product/dropzone/approved';
-        }
+    	if($scope.productStatus[2].value == product.Status) {
+    		return 'product/dropzone/approved';
+    	}
 
-        if (images.length >= 10) {
-            return 'product/dropzone/reachMax';
-        } else {
-            return 'product/dropzone/normal';
-        }
+		if(images.length >= 10) {
+			return 'product/dropzone/reachMax';
+		} else {
+			return 'product/dropzone/normal';
+		}
     };
-    $scope.getContainer = function (product) {
-        var images = null;
-        if (product.IsVariant) {
-            images = product.VariantImg;
-        } else {
-            images = product.MasterImg;
-        }
+    $scope.getContainer = function(product) {
+    	var images = null;
+    	if(product.IsVariant) {
+    		images = product.VariantImg;
+    	} else {
+    		images = product.MasterImg;
+    	}
 
-        if (images.length < 10 && product.Status == $scope.productStatus[0].value) {
-            return '';
-        }
-        return 'disabled';
+    	if(images.length < 10 && product.Status == $scope.productStatus[0].value) {
+    		return '';
+    	}
+    	return 'disabled';
     };
-    $scope.validate = function () {
-        //Make sure everything is uploaded before saving
-        var result = false;
-        _.forEach($scope.list.data, function (item) {
-            result = result || item.isUploading;
-        });
+    $scope.validate = function() {
+    	//Make sure everything is uploaded before saving
+    	var result = false;
+    	_.forEach($scope.list.data, function(item) {
+    		result = result || item.isUploading;
+    	});
 
-        if (result) {
-            $scope.alert.error('Please wait for every images to be uploaded before saving');
-        }
+    	if(result) {
+    		$scope.alert.error('Please wait for every images to be uploaded before saving');
+    	}
 
-        return !result;
+    	return !result;
     }
-    $scope.save = function () {
-        $scope.alert.close();
-        if (!$scope.validate()) {
-            return;
-        }
-        $scope.saving = true;
-        Product.updateAllVariants($scope.list.data)
-			.then(function (data) {
-			    $scope.dirty = false;
-			    $scope.alert.success("Successfully save changes.");
-			}, function (err) {
-			    $scope.alert.error(common.getError(err));
-			}).finally(function () {
-			    $scope.saving = false;
-			    $scope.reload();
+    $scope.save = function() {
+    	$scope.alert.close();
+    	if(!$scope.validate()) {
+    		return;
+    	}
+    	$scope.saving = true;
+		Product.updateAllVariants($scope.list.data)
+			.then(function(data) {
+				$scope.dirty = false;
+				$scope.alert.success("Successfully save changes.");
+			}, function(err) {
+				$scope.alert.error(common.getError(err));
+			}).finally(function() {
+				$scope.saving = false;
+				$scope.reload();
 			});
-        $scope.dirty = false;
-    };
-    $scope.$watch('watcher', function (val, val2) {
-        if (!_.isUndefined(val2) && !$scope.ignored) {
-            $scope.dirty = true;
-        }
-        $scope.ignored = false;
+		$scope.dirty = false;
+	};
+    $scope.$watch('watcher', function(val, val2) {
+    	if(!_.isUndefined(val2) && !$scope.ignored) {
+    		$scope.dirty = true;
+    	}
+    	$scope.ignored = false;
     }, true);
 }];
 
-},{}],47:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "GlobalCategoryService", "LocalCategoryService", "FileService", "Product", "GlobalCategoryService", "Category", "AttributeSet", "storage", "config", "$timeout", function($scope, $window, NcAlert, $uibModal, BrandService, GlobalCategoryService, LocalCategoryService, FileService, Product, GlobalCategoryService, Category, AttributeSet, storage, config, $timeout) {
   'ngInject';
   //Select Global Category
@@ -6392,11 +2847,13 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
     //Import new
     $scope.method = 'POST';
     $scope.title = 'Import - Add New Products'
-
+    $scope.update = false;
+    
     //Update only
     if(!_.isNil(update) && update) {
       $scope.method = 'PUT';
       $scope.title = 'Import - Update Products';
+      $scope.update = true;
     }
 
     $scope.uploader = FileService.getUploader('/ProductStages/Import', {
@@ -6552,7 +3009,7 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
     .then(function(data) {
       $scope.ctrl.LocalCategoryTree = Category.transformNestedSetToUITree(data);
     });
-    
+
   BrandService.list()
       .then(function(data) {
         $scope.ctrl.Brands = _.map(data, function(e) {
@@ -6561,7 +3018,7 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
       });
 }];
 
-},{}],48:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "util", "Alert", "$window", "$rootScope", "config", "storage", function ($scope, $controller, Product, util, Alert, $window, $rootScope, config, storage) {
     'ngInject';
     $controller('AbstractAdvanceListCtrl', {
@@ -6688,7 +3145,7 @@ module.exports = ["$scope", "$controller", "Product", "util", "Alert", "$window"
     }
 }];
 
-},{}],49:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 module.exports = ['$scope', 'LocalCategory', function($scope, LocalCategory) {
 	//UI binding variables
 	$scope.showOnOffStatus = true;
@@ -6762,7 +3219,7 @@ module.exports = ['$scope', 'LocalCategory', function($scope, LocalCategory) {
 		});
 	});
 }];
-},{}],50:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$uibModal", "util", "common", function($scope, $controller, ProductReviewService, config, $uibModal, util, common) {
 	'ngInject';
 	//Inherit from parent
@@ -6838,7 +3295,7 @@ module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$u
 	$scope.reviewButton = config.PRODUCT_REVIEW_BUTTON;
 }];
 
-},{}],51:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential", "route", "config", function($rootScope, $uibModal, $window, storage, Credential, route, config) {
 	'ngInject';
 	//Root controller of the application
@@ -6869,6 +3326,9 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
   $rootScope.asShopStatus = function(status) {
     return _.isNil(status) ? config.SHOP_STATUS[0] : $rootScope.shopStatus[status];
   };
+
+  //Load ck editor
+  $rootScope.ckOptions = config.CK_DEFAULT_OPTIONS;
 
   //Create global logout function
   $rootScope.logout = function() {
@@ -6993,7 +3453,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
     });
   };
 }];
-},{}],52:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerAccountService", "config", function($scope, $controller, SellerAccountService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -7009,7 +3469,7 @@ module.exports = ["$scope", "$controller", "SellerAccountService", "config", fun
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
-},{}],53:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 module.exports = function($scope, $controller, SellerAccountService, SellerRoleService) {
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -7034,7 +3494,7 @@ module.exports = function($scope, $controller, SellerAccountService, SellerRoleS
 	});
 }
 
-},{}],54:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "$window", "InventoryService", "config", "common", function($scope, $controller, $window, InventoryService, config, common) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
@@ -7075,7 +3535,7 @@ module.exports = ["$scope", "$controller", "$window", "InventoryService", "confi
 		//Out of stock
 		if(measure <= 0) return $scope.statusDropdown[2];
 
-		measure = measure - item.SaftyStockSeller;
+		measure = measure - item.SafetyStockSeller;
 		
 		//Low stock
 		if(measure <= 0) return $scope.statusDropdown[1];
@@ -7086,9 +3546,10 @@ module.exports = ["$scope", "$controller", "$window", "InventoryService", "confi
 	$scope.popoverStock = function(item) {
 		if(!item.open) {
 			//Is popover open, load popovers
-			$scope.popoverItem = item;
-			item.Quantity = _.toInteger(item.Quantity);
-			item.LastQuantity = item.Quantity;
+			$scope.popoverItemOriginal = item;
+			$scope.popoverItem = _.extend({}, item);
+			$scope.popoverItem.Quantity = _.toInteger(item.Quantity);
+			$scope.popoverItem.LastQuantity = item.Quantity;
 		}
 	};
 	$scope.updateStock = function(item) {
@@ -7096,9 +3557,9 @@ module.exports = ["$scope", "$controller", "$window", "InventoryService", "confi
 		InventoryService.update(item.Pid, _.pick(item, ['Quantity']))
 			.then(function(data) {
 				$scope.lastEdit = item.Pid;
+				$scope.popoverItemOriginal.Quantity = item.Quantity;
 			}, function(err) {
 				$scope.lastEdit = null;
-				item.Quantity = item.LastQuantity;
 				$scope.alert.error(common.getError(err));
 			})
 		.finally(function() {
@@ -7109,7 +3570,85 @@ module.exports = ["$scope", "$controller", "$window", "InventoryService", "confi
 	$scope.advanceSearchOptions.Admin = false;
 	$scope.statusDropdown = config.INVENTORY_STATUS;
 }];
-},{}],55:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
+module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", function($scope, $controller, $uibModal, NewsletterService) {
+	'ngInject';
+	$controller('AbstractListCtrl', {
+		$scope: $scope,
+		options: {
+			url: '/newsletters',
+			service: NewsletterService,
+			item: 'Newsletter',
+			order: 'CreatedDt',
+			id: 'NewsletterId'
+		}
+	});
+	$scope.open = function(item) {
+		NewsletterService.get(item.NewsletterId)
+			.then(function(data) {
+				$uibModal.open({
+					size: 'lg',
+					templateUrl: 'newsletter/modalSeller',
+					controller: ["$scope", "item", function($scope, item) {
+						'ngInject';
+						$scope.item = item;
+					}],
+					resolve: {
+						item: function() {
+							return data;
+						}
+					}
+				});
+			});
+	};
+}];
+},{}],45:[function(require,module,exports){
+
+module.exports = ["$scope", "$rootScope", "Onboarding", "$log", function($scope, $rootScope, Onboarding, $log){
+	'ngInject';
+
+	Onboarding.getListCompletedTask()
+		.then(function(data) {
+	    	$scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct, data.DecorateStore];
+	    })
+	    .then(function() {
+	    	var checkBeforeLaunch = $scope.Completed[$scope.Completed.length-1];
+	    	var checkIfHaveCompleted = $scope.Completed[$scope.Completed.length-1];
+			for (var i = $scope.Completed.length - 1; i >= 0; i--) {
+				checkBeforeLaunch = checkBeforeLaunch && $scope.Completed[i];
+				checkIfHaveCompleted = checkIfHaveCompleted || $scope.Completed[i];
+			};
+			$scope.checkIfHaveCompleted = checkIfHaveCompleted;
+			return $scope.checkBeforeLaunch = checkBeforeLaunch;
+	    });
+
+	$scope.launchShop = function() {
+
+		if($scope.checkBeforeLaunch) {
+			console.log("Shop launched");
+			Onboarding.launchShop();
+		}
+		else {
+			console.log("can't launch");
+		}
+	};
+}];
+
+},{}],46:[function(require,module,exports){
+var angular = require('angular');
+
+module.exports = ["$scope", "$controller", function ($scope, $controller) {
+    'ngInject';
+    
+    $controller('AbstractProductAddCtrl', {
+        $scope: $scope,
+        options: {
+            maxImageUploadQueueLimit: 25
+        }
+    });
+
+}];
+},{"angular":182}],47:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerRoleService", "config", function($scope, $controller, SellerRoleService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -7125,7 +3664,7 @@ module.exports = ["$scope", "$controller", "SellerRoleService", "config", functi
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
-},{}],56:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerRoleService", function($scope, $controller, SellerRoleService) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -7204,7 +3743,7 @@ module.exports = ["$scope", "$controller", "SellerRoleService", function($scope,
 		}
 	}, true);
 }];
-},{}],57:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 module.exports = function($rootScope, $scope, Shop, ImageService, NcAlert, config, storage) {
   $scope.alert = new NcAlert();
 
@@ -7240,7 +3779,12 @@ module.exports = function($rootScope, $scope, Shop, ImageService, NcAlert, confi
     queueLimit: 1
   });
 
-  ImageService.assignUploaderEvents($scope.uploadViewBag.uploader, $scope.uploadViewBag.images, 1, function() {
+
+  var onQueueLimit = function(images, item, obj){
+    console.log('queue limit reached');    
+  };
+  
+  ImageService.assignUploaderEvents($scope.uploadViewBag.uploader, $scope.uploadViewBag.images, onQueueLimit, function() {
     //On Fail
     alert("Failed to upload image");
   });
@@ -7273,7 +3817,7 @@ module.exports = function($rootScope, $scope, Shop, ImageService, NcAlert, confi
   };
 };
 
-},{}],58:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 module.exports = function($scope, Attribute, util, GlobalCategoryService, Category) {
 		$scope.filterOptions = [
 			{ name: "All", value: 'All'},
@@ -7303,6 +3847,7 @@ module.exports = function($scope, Attribute, util, GlobalCategoryService, Catego
 				value: 'HB'
 			}
 		];
+		$scope.datatype = {model: 'HB'};
         // stop your wrgo
 		$scope.yesNoOptions = [
 			{
@@ -7359,7 +3904,7 @@ module.exports = function($scope, Attribute, util, GlobalCategoryService, Catego
 				$scope.treeSelectTree = Category.transformNestedSetToUITree(data);
 			});
 };
-},{}],59:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 module.exports = ["$templateCache", "$filter", function($templateCache, $filter) {
 	'ngInject';
 	return {
@@ -7392,6 +3937,10 @@ module.exports = ["$templateCache", "$filter", function($templateCache, $filter)
 			if(angular.isUndefined(scope.selectable)) {
 				throw 'Please set required field "ncSelectOptions"';
 			}
+			//Right Column Header
+			scope.header = attrs.columnHeader;
+			//Search Placeholder
+			scope.searchPlaceholder = attrs.searchPlaceholder;
 		},
 		controller: ["$scope", function($scope) {
 			'ngInject';
@@ -7416,7 +3965,7 @@ module.exports = ["$templateCache", "$filter", function($templateCache, $filter)
 					return $scope.model.length - 1;
 				} else {
 					for (var i = $scope.activeRight; i < $scope.model.length; i++) {
-						if(angular.isDefined($scope.model[$scope.activeRight]) && 
+						if(angular.isDefined($scope.model[$scope.activeRight]) &&
 							$scope.test($scope.model[$scope.activeRight])) {
 							continue;
 						}
@@ -7464,7 +4013,7 @@ module.exports = ["$templateCache", "$filter", function($templateCache, $filter)
 					$scope.activeLeft = next;
 
 				} else {
-					if ($scope.activeRight < 0 || 
+					if ($scope.activeRight < 0 ||
 						(angular.isDefined($scope.model[$scope.activeRight]) &&
 						$scope.test($scope.model[$scope.activeRight]))) {
 						return;
@@ -7476,10 +4025,10 @@ module.exports = ["$templateCache", "$filter", function($templateCache, $filter)
 			};
 			$scope.active = function(direction) {
 				if(direction) {
-					if($scope.activeRight >= 0 && angular.isDefined($scope.model[$scope.activeRight]) && !$scope.test($scope.model[$scope.activeRight])) 
+					if($scope.activeRight >= 0 && angular.isDefined($scope.model[$scope.activeRight]) && !$scope.test($scope.model[$scope.activeRight]))
 						return 'active';
 				} else {
-					if($scope.activeLeft >= 0 && !$scope.contain($scope.selectable[$scope.activeLeft])) 
+					if($scope.activeLeft >= 0 && !$scope.contain($scope.selectable[$scope.activeLeft]))
 						return 'active';
 				}
 			}
@@ -7501,7 +4050,8 @@ module.exports = ["$templateCache", "$filter", function($templateCache, $filter)
 		}]
 	};
 }];
-},{}],60:[function(require,module,exports){
+
+},{}],52:[function(require,module,exports){
 module.exports = [function () {
     return {
 	priority: 1010,
@@ -7525,7 +4075,7 @@ module.exports = [function () {
     };
 }];
 
-},{}],61:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return {
@@ -7558,7 +4108,7 @@ module.exports = function() {
 		}
 	}
 }
-},{}],62:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 var angular = require('angular');
 module.exports = [function() {
 	'use strict';
@@ -7580,7 +4130,7 @@ module.exports = [function() {
 		}
 	};
 }];
-},{"angular":181}],63:[function(require,module,exports){
+},{"angular":182}],55:[function(require,module,exports){
 module.exports = ["$interpolate", function($interpolate) {
 	'ngInject';
 	return {
@@ -7602,7 +4152,7 @@ module.exports = ["$interpolate", function($interpolate) {
 		}
 	}
 }]
-},{}],64:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return {
@@ -7619,7 +4169,8 @@ module.exports = function() {
 
 			ctrl.$validators.maxnumber = function(modelValue, viewValue) {
 				var value = modelValue || viewValue;
-				if(_.isNil(value) || !value.match(/^[0-9]+(\.[0-9]{0,})?$/)) {
+				var regex = new RegExp('^[0-9]+(\.[0-9]{0,})?$');
+				if(_.isNil(value) || !regex.test(value)) {
 					return true;
 				}
 				return (!value) || (!maxnumber) || (_.toNumber(value) <= _.toNumber(maxnumber)) || false;
@@ -7627,7 +4178,7 @@ module.exports = function() {
 		}
 	}
 }
-},{}],65:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return {
@@ -7644,7 +4195,8 @@ module.exports = function() {
 
 			ctrl.$validators.minnumber = function(modelValue, viewValue) {
 				var value = modelValue || viewValue;
-				if(_.isNil(value) || !value.match(/^[0-9]+(\.[0-9]{0,})?$/)) {
+				var regex = new RegExp('^[0-9]+(\.[0-9]{0,})?$');
+				if(_.isNil(value) || !regex.test(value)) {
 					return true;
 				}
 				return (!value) || (!minnumber) || (_.toNumber(value) >= _.toNumber(minnumber)) || false;
@@ -7652,7 +4204,7 @@ module.exports = function() {
 		}
 	}
 }
-},{}],66:[function(require,module,exports){
+},{}],58:[function(require,module,exports){
 /*jslint browser: true, plusplus: true, indent: 2 */
 
 // This will be removed by uglify, along with the DEBUG code
@@ -7947,7 +4499,7 @@ angular.module('ngPatternRestrict', [])
       }
     };
   }]);
-},{}],67:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 module.exports = ["$rootScope", "$parse", "$animate", function($rootScope, $parse, $animate) {
   'ngInject';
   return {
@@ -8013,7 +4565,7 @@ module.exports = ["$rootScope", "$parse", "$animate", function($rootScope, $pars
     }
   }
 }];
-},{}],68:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 module.exports = function() {
     'ngInject';
     return {
@@ -8030,7 +4582,7 @@ module.exports = function() {
         }
     };
 };
-},{}],69:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$templateCache', '$compile', '$templateOptionsCache', 'KnownException', function ($templateCache, $compile, $templateOptionsCache, KnownException) {
     var originalAttr = {};
@@ -8058,7 +4610,7 @@ module.exports = ['$templateCache', '$compile', '$templateOptionsCache', 'KnownE
         }
     };
 }];
-},{"angular":181}],70:[function(require,module,exports){
+},{"angular":182}],62:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$document', '$window', function($document, $window) {
 	$window._globalPopoverAny = null;
@@ -8088,7 +4640,7 @@ module.exports = ['$document', '$window', function($document, $window) {
 		}
 	};
 }];
-},{"angular":181}],71:[function(require,module,exports){
+},{"angular":182}],63:[function(require,module,exports){
 module.exports = [function() {
   return function(input, scope) {
     if (input!=null)
@@ -8096,12 +4648,12 @@ module.exports = [function() {
     return input.substring(0,1).toUpperCase()+input.substring(1);
   }
 }];
-},{}],72:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = [function() {
   return function(arr, other, trackBy) {
-
+     if(!arr) arr = [];
      return arr.filter(function(elem){
         if(other == null || other === undefined) return true;
         if(other instanceof Array){
@@ -8131,7 +4683,7 @@ module.exports = [function() {
      });
   }
 }];
-},{"angular":181}],73:[function(require,module,exports){
+},{"angular":182}],65:[function(require,module,exports){
 module.exports = [function() {
   
 var search = function(catId, tmp) {
@@ -8200,14 +4752,14 @@ return function(arr, other, include) {
     return arr;
   }
 }];
-},{}],74:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 module.exports = [function(){
    return function(data) {
 	   if (!data) return data;
 	   return data.replace(/\n\r?/g, '<br />');
  };
 }]
-},{}],75:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 module.exports = function() {
 	return function(input) {
 		var result = '<ul>';
@@ -8224,7 +4776,7 @@ module.exports = function() {
 		return result;
 	}
 };
-},{}],76:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return function(str, num) {
@@ -8245,7 +4797,7 @@ module.exports = function() {
 		return result;
 	}
 };
-},{}],77:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = [function() {
@@ -8261,7 +4813,7 @@ module.exports = [function() {
   	return input;
   }
 }];
-},{"angular":181}],78:[function(require,module,exports){
+},{"angular":182}],70:[function(require,module,exports){
 /*
  * Get slice or subarray of array
  */
@@ -8277,7 +4829,7 @@ module.exports = [function() {
     return _.slice(arr, from, to);
   }
 }];
-},{}],79:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 module.exports = [function () {
         return function (text, length, end) {
             if (isNaN(length))
@@ -8295,7 +4847,7 @@ module.exports = [function () {
 
         };
 }];
-},{}],80:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 var angular = require('angular');
 
 /*
@@ -8310,20 +4862,17 @@ module.exports = [function() {
   	 //TODO: use map
      arr.forEach(function(obj){
           var path = value.split('.');
-
-          var state = angular.copy(obj);
-          for(var j = 0; j < path.length; j++){
-          	 state = state[path[j]];
-          }
+          var state = _.get(obj, value);
 
           if(state === true){
      	     i.push(obj);
           }
      });
+     
      return i;
   }
 }];
-},{"angular":181}],81:[function(require,module,exports){
+},{"angular":182}],73:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return function(value) {
@@ -8332,7 +4881,7 @@ module.exports = function() {
 		}), ' / ');
 	};
 };
-},{}],82:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 module.exports = [function () {
     'use strict';
     var service = {};
@@ -8351,7 +4900,7 @@ module.exports = [function () {
     };
     return service;
 }];
-},{}],83:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http, $q, storage, config, $window) {
     'use strict';
         var service = {};
@@ -8377,7 +4926,10 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
 			             var onLoginPage = ($window.location.pathname == "/login");
                         if(status == 401 && !onLoginPage){
                             //Catch Forbidden
+                            console.log('redirecting to', $window.location.pathname);
                             storage.put('redirect', $window.location.pathname);
+                            storage.clear();
+                            
                             $window.location.href = "/login";
                         }
                         deferred.reject(data || {"error": "Unknown error"});
@@ -8503,8 +5055,8 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
         return service;
 }];
 
-},{}],84:[function(require,module,exports){
-module.exports = [function () {
+},{}],76:[function(require,module,exports){
+module.exports = ['$cookies', function ($cookies) {
     'use strict';
     var service = {};
 
@@ -8546,10 +5098,11 @@ module.exports = [function () {
      * The controllers has to implement the logic that if sessionToken is null/undefined then user is not authorized
      */
     service.getSessionToken = function () {
-        var token = sessionStorage.getItem('central.seller.portal.auth.token');
-        if (!token) {
-            token = localStorage.getItem('central.seller.portal.auth.token');
-        }
+        // var token = sessionStorage.getItem('central.seller.portal.auth.token');
+        // if (!token) {
+        //     token = localStorage.getItem('central.seller.portal.auth.token');
+        // }
+        var token = $cookies.get('central.seller.portal.auth.token');
         return token;
     };
     /**
@@ -8558,10 +5111,11 @@ module.exports = [function () {
      * also be stored in localStorage
      */
     service.storeSessionToken = function (sessionToken, flag) {
-        sessionStorage.setItem('central.seller.portal.auth.token', sessionToken);
-        if (flag) {
-            localStorage.setItem('central.seller.portal.auth.token', sessionToken);
-        }
+        // sessionStorage.setItem('central.seller.portal.auth.token', sessionToken);
+        // if (flag) {
+        //     localStorage.setItem('central.seller.portal.auth.token', sessionToken);
+        // }
+        $cookies.put('central.seller.portal.auth.token', sessionToken);
     };
 
     /**
@@ -8589,7 +5143,7 @@ module.exports = [function () {
     };
 
     service.storeImposterProfile = function(profile){
-	profile = angular.toJson(profile);
+	    profile = angular.toJson(profile);
         sessionStorage.setItem('central.seller.portal.auth.imposter', profile);
     };
 	
@@ -8608,6 +5162,8 @@ module.exports = [function () {
     service.clear = function () {
         sessionStorage.removeItem('central.seller.portal.auth.token');
         sessionStorage.removeItem('central.seller.portal.auth.profile');
+        $cookies.remove('central.seller.portal.auth.token');
+        $cookies.remove('central.seller.portal.auth.profile');
 	    sessionStorage.removeItem('central.seller.portal.auth.imposter');
         localStorage.removeItem('central.seller.portal.auth.actions');
         localStorage.removeItem('central.seller.portal.auth.profile');
@@ -8616,25 +5172,15 @@ module.exports = [function () {
     return service;
 }];
 
-},{}],85:[function(require,module,exports){
-var angular = require('angular');
-
-module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$interpolate', 'KnownException', function (storage, config, common, $window, $rootScope, $interpolate, KnownException) {
+},{}],77:[function(require,module,exports){
+module.exports = ["storage", "config", "common", "$window", "$rootScope", "$interpolate", "KnownException", "$uibModal", function (storage, config, common, $window, $rootScope, $interpolate, KnownException, $uibModal) {
+    'ngInject';
     'use strict';
     var service = {};
 
     service.variant = {};
 
-    // service.variant.hash = function (a, b) {
-    //     if (!("ValueEn" in a) || a.ValueEn) return "[API Error]";
-    //     if (!('ValueEn' in b) || b.ValueEn) return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + "null" + "-");
-    //     return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + b.AttributeId + "-" + b.ValueEn.trim());
-    // };
-
     service.variant.toString = function (a, b) {
-        // if (!("ValueEn" in a) || !a.ValueEn) return "[API Error]";
-        // if (!('ValueEn' in b) || !b.ValueEn) return a.ValueEn.trim();
-
         var left = null;
         var right = null;
         left = (a.ValueEn || a.AttributeValueEn || a.AttributeValues.length && a.AttributeValues[0].AttributeValueEn || '');
@@ -8644,12 +5190,7 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     };
 
     service.uniqueSet = function (a, prop) {
-        // var seen = new Set();
-        // return a.filter(function (x) {
-        //     var y = x;
-        //     if (prop) y = x[prop];
-        //     return !seen.has(y) && seen.add(y);
-        // })
+
         return _.uniqWith(a, function(x,y){
             if(x == y) return true;
             if(prop && _.get(x, prop) && _.get(y, prop)){
@@ -8694,6 +5235,12 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
         if (!('HB' in DataTypeDropDown)) throw new KnownException("HTML Box in no longer 'HB' in config");
         return (dataType == 'HB');
     }
+
+    service.isCheckboxDataType = function (dataType) {
+        if (!('CB' in DataTypeDropDown)) throw new KnownException("Checkbox in no longer 'CB' in config");
+        return (dataType == 'CB');
+    }
+
 
     service.tableSortClass = function ($scope) {
         return function (id, flag) {
@@ -9004,10 +5551,26 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
         }
         return content;
     }
+
+    //Open preview image modal
+    service.previewImage = function(url) {
+        $uibModal.open({
+            size: 'product-image',
+            template: '<img ng-src="{{url}}" alt=""/>',
+            controller: ["$scope", "url", function($scope, url) {
+                $scope.url = url;
+            }],
+            resolve: {
+                url: function() {
+                    return url;
+                }
+            }
+        });
+    };
     return service;
 }];
 
-},{"angular":181}],86:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 module.exports = ['util', function (util) {
 	
 	//Struct for Variant Pair
@@ -9021,7 +5584,7 @@ module.exports = ['util', function (util) {
 	return VariantPair;
 }];
 
-},{}],87:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncAction', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
@@ -9077,7 +5640,7 @@ angular.module('nc')
 		}
 	}]);
 
-},{}],88:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncAdvanceSearch', ["$templateCache", "$timeout", "$uibModal", function($templateCache, $timeout, $uibModal) {
 		return {
@@ -9103,6 +5666,8 @@ angular.module('nc')
 				scope.options = _.defaults(scope.options, {
 					Tags: [],
 					Brands: [],
+					Pids: [],
+					Skus: [],
 					LocalCategories: [],
 					GlobalCategories: [],
 					Admin: true
@@ -9139,7 +5704,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],89:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncAlert', function() {
 		this.defaultErrorMessage = 'Error';
@@ -9196,7 +5761,7 @@ angular.module('nc')
 			this.message = '';
 		};
 	}]);
-},{}],90:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncBindCompile', ["$compile", "$templateCache", function($compile, $templateCache) {
        return {
@@ -9225,7 +5790,7 @@ angular.module('nc')
             }
         };
     }]);
-},{}],91:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncBreadcrumbSelect', ["$templateCache", "$filter", "$timeout", function($templateCache, $filter, $timeout) {
 		var _globalOptions = {};
@@ -9302,7 +5867,7 @@ angular.module('nc')
 			}
 		};
 	}])
-},{}],92:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncBulk', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
@@ -9455,7 +6020,7 @@ angular.module('nc')
 			}
 		}
 	}])
-},{}],93:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncDateRange', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse) {
@@ -9506,7 +6071,7 @@ angular.module('nc')
             };
         }]);
 
-},{"angular":181}],94:[function(require,module,exports){
+},{"angular":182}],86:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEmpty', ["$templateCache", function($templateCache) {
 		return {
@@ -9520,7 +6085,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],95:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEye', ["$templateCache", function($templateCache) {
 		return {
@@ -9538,7 +6103,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-},{}],96:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncFilter', ["$templateCache", function($templateCache) {
 		return {
@@ -9560,8 +6125,224 @@ angular.module('nc')
 			}
 		}
 	}])
-},{}],97:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 angular.module('nc')
+	.directive('ncImageBanner', function() {
+		return {
+			restrict: 'E',
+			scope: {
+				ncModel: '=',
+				onFail: '=',
+				uploader: '=',
+				options: '=?',
+				size: '@',
+				title: '@'
+			},
+			template: '<nc-image-block nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 8 images</li><li>Image ratio 16:9</li></ul></nc-image-block>',
+			link: function(scope) {
+				scope.options = _.defaults(scope.options,{
+					height: '144px',
+					width: '256px'
+				});
+			}
+		}
+	})
+	.directive('ncImageBlock', ["$uibModal", "$templateCache", "FileItem", "FileUploader", function($uibModal, $templateCache, FileItem, FileUploader) {
+		return {
+			restrict: 'E',
+			require: '?^^form',
+			replace: true,
+			transclude: true,
+			scope: {
+				images: '=ncModel',
+				onfail: '=onFail', 
+				uploader: '=uploader',
+				options: '=?options',
+				size: '@size',
+				title: '@title'
+			},
+			template: $templateCache.get('common/ncImageBanner'),
+			link: function(scope, element, attrs, form) {
+				var fileUploader = false;
+				scope.options = _.defaults(scope.options,{
+					height: '150px',
+					width: '150px'
+				});
+				scope.$watch('uploader', function(val) {
+					if(val instanceof FileUploader) {
+						fileUploader = true;
+					} else {
+						fileUploader = false;
+					}
+				});
+				scope.upload = function(files) {
+					if(!_.isNil(form) && !_.isNil(attrs.name)) {
+						form.$setDirty();
+					}
+					if(fileUploader) {
+						_.forEach(files, function(file) {
+							//max size
+							if(scope.images.length >= _.toInteger(scope.size)) {
+								scope.onfail('onmaxsize', scope.size);
+								return;
+							}
+							var obj = {
+								progress: 0
+							};
+							scope.images.push(obj);
+							var f = new FileItem(scope.uploader, file, {
+								onSuccess: function(response) {
+									_.extend(obj, response);
+								},
+								onError: function(response, status, headers) {
+									scope.onfail('onerror', response, status, headers);
+									_.remove(scope.images, function(n) {
+										return n === obj;
+									});
+								},
+								onProgress: function(progress) {
+									obj.progress = progress;
+								}
+							});
+							scope.uploader.queue.push(f);
+							f.upload();
+						});
+					} else {
+						//newer version
+						_.forEach(files, function(file) {
+							//max size
+							if(scope.images.length >= _.toInteger(scope.size)) {
+								scope.onfail('onmaxsize', scope.size);
+								return;
+							}
+							var obj = {
+								progress: 0
+							};
+							scope.images.push(obj);
+							scope.uploader.upload(file)
+								.then(function(response) {
+									_.extend(obj, response.data);
+								}, function(response) {
+									scope.onfail('onerror', response);
+									_.remove(scope.images, function(n) {
+										return n === obj;
+									});
+								}, function(evt) {
+            						obj.progress = _.parseInt(100.0 * evt.loaded / evt.total);
+								});
+						});
+					}
+				};
+				scope.call = function(image, index, action) {
+					if(!_.isNil(action.confirmation)) {
+						var modal = $uibModal.open ({
+							size: 'size-warning',
+							templateUrl: 'common/ncActionModal',
+							controller: ["$scope", "$uibModalInstance", "options", "$interpolate", function($scope, $uibModalInstance, options, $interpolate) {
+								$scope.title = options.title;
+								$scope.message = $interpolate(options.message)(scope);
+								$scope.btnNo = options.btnNo || 'Cancel';
+								$scope.btnYes = options.btnYes || 'Confirm';
+								$scope.btnClass = options.btnClass || 'btn-blue';
+								$scope.yes = function() {
+									$uibModalInstance.close();
+								};
+								$scope.no = function() {
+									$uibModalInstance.dismiss();
+								}
+							}],
+							resolve: {
+								options: function() {
+									return {
+										title: action.confirmation.title,
+										message: action.confirmation.message,
+										btnYes: action.confirmation.btnConfirm,
+										btnClass: action.confirmation.btnClass
+									}
+								}
+							}
+						});
+
+						modal.result.then(function() {
+							if(!_.isNil(form) && !_.isNil(attrs.name)) {
+								form.$setDirty();
+							}
+							action.fn(image, scope.images, index);
+						});
+					} else {
+						if(!_.isNil(form) && !_.isNil(attrs.name)) {
+							form.$setDirty();
+						}
+						action.fn(image, scope.images, index);
+					}
+				};
+				scope.getSrc = function(image) {
+					return image.url || null;
+				};
+				scope.getProgress = function(image) {
+					return image.progress || 0;
+				};
+				scope.actions = [
+					{
+						//Zoom
+						fn: function(item, array, index) {
+							$uibModal.open({
+								size: 'product-image',
+								template: '<img ng-src="{{url}}" alt=""/>',
+								controller: ["$scope", "url", function($scope, url) {
+									$scope.url = url;
+								}],
+								resolve: {
+									url: function() {
+										return item.url;
+									}
+								}
+							});
+						},
+						icon: 'fa-search-plus'
+					},
+					{
+						//Trash
+						fn: function(item, array, index) {
+							array.splice(index, 1);
+						},
+						icon: 'fa-trash',
+						confirmation: {
+							title: 'Confirm to delete',
+							message: 'Are you sure you want to delete the image?',
+							btnConfirm: 'Delete',
+							btnCancel: 'Cancel',
+							btnClass: 'btn-red'
+						}
+					},
+					{
+						//Left
+						fn: function(item, array, index) {
+						    var to = index - 1;
+						    if (to < 0) return;
+						    var tmp = array[to];
+						    array[to] = item;
+						    array[index] = tmp;
+						},
+						icon: 'fa-arrow-left'
+					},
+					{
+						//Right
+						fn: function(item, array, index) {
+							//console.log(item, array, index);
+						    var to = index + 1;
+						    if (to >= array.length) return;
+
+						    var tmp = array[to];
+						    array[to] = item;
+						    array[index] = tmp;
+						},
+						icon: 'fa-arrow-right'
+					}
+				];
+			}
+		}
+	}])
 	.directive('ncImageGallery', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
 			restrict: 'E',
@@ -9606,6 +6387,9 @@ angular.module('nc')
 							controller: ["$scope", "$uibModalInstance", "options", "$interpolate", function($scope, $uibModalInstance, options, $interpolate) {
 								$scope.title = options.title;
 								$scope.message = $interpolate(options.message)(scope);
+								$scope.btnNo = options.btnNo || 'Cancel';
+								$scope.btnYes = options.btnYes || 'Confirm';
+								$scope.btnClass = options.btnClass || 'btn-blue';
 								$scope.yes = function() {
 									$uibModalInstance.close();
 								};
@@ -9617,7 +6401,9 @@ angular.module('nc')
 								options: function() {
 									return {
 										title: action.confirmation.title,
-										message: action.confirmation.message
+										message: action.confirmation.message,
+										btnYes: action.confirmation.btnConfirm,
+										btnClass: action.confirmation.btnClass
 									}
 								}
 							}
@@ -9715,7 +6501,7 @@ angular.module('nc')
 			}
 		};
 	}])
-},{}],98:[function(require,module,exports){
+},{}],90:[function(require,module,exports){
 angular.module('nc')
 .directive('ncImageIntegrity', function() {
     //Only show if image loaded by <img> integrity is OK (100% finished loading)
@@ -9735,7 +6521,7 @@ angular.module('nc')
             }
         };
     })
-},{}],99:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncLoading', ["$templateCache", function($templateCache) {
 		return {
@@ -9761,7 +6547,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],100:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncPageTitle', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "$parse", "KnownException", function ($rootScope, $templateCache, $compile, $templateOptionsCache, $parse, KnownException) {
@@ -9785,7 +6571,7 @@ angular.module('nc')
             }
         };
     }]);
-},{"angular":181}],101:[function(require,module,exports){
+},{"angular":182}],93:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncPagination', function() {
 		this.paginationSizes = [10,20,30];
@@ -9852,7 +6638,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-},{}],102:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 angular.module('nc')
 	.provider('ncPermissionProvider', function() {
 		this.permission = function() {
@@ -9873,7 +6659,7 @@ angular.module('nc')
 	.directive('ncShowPermission', function() {
 		
 	});
-},{}],103:[function(require,module,exports){
+},{}],95:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncSearch', ["$templateCache", function($templateCache) {
 		return {
@@ -9895,7 +6681,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],104:[function(require,module,exports){
+},{}],96:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncTable', function() {
 		this.tableOptions = {
@@ -9984,10 +6770,10 @@ angular.module('nc')
 			template: '<a ng-href="{{link}}" ng-transclude></a>',
 		}
 	});
-},{}],105:[function(require,module,exports){
+},{}],97:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
-    .directive('ncTemplate', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", "KnownException", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException,  $parse, KnownException) {
+    .directive('ncTemplate', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException,  $parse) {
             return {
                 restrict: 'A',
                 transclude: true,
@@ -10041,7 +6827,7 @@ angular.module('nc')
             };
         }]);
 
-},{"angular":181}],106:[function(require,module,exports){
+},{"angular":182}],98:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncTreeSelect', ["$interpolate", "$templateCache", function($interpolate, $templateCache) {
 		/**
@@ -10253,7 +7039,7 @@ angular.module('nc')
 		};
 	}]);
 
-},{}],107:[function(require,module,exports){
+},{}],99:[function(require,module,exports){
 angular.module('nc')
     .directive('ncTagValidator', function () {
         return {
@@ -10313,14 +7099,14 @@ angular.module('nc')
             }
         }
     });
-},{}],108:[function(require,module,exports){
+},{}],100:[function(require,module,exports){
 angular.module('nc')
 	.filter('compact', function() {
 		return function(input) {
 			return _.compact(input);
 		};
 	});
-},{}],109:[function(require,module,exports){
+},{}],101:[function(require,module,exports){
 angular.module('nc')
 	.filter('dateTh', ["$filter", function($filter) {
 		return function(input) {
@@ -10332,7 +7118,7 @@ angular.module('nc')
 			return $filter('date')(input, 'H:m', '+700');
 		}
 	}]);
-},{}],110:[function(require,module,exports){
+},{}],102:[function(require,module,exports){
 angular.module('nc')
     .filter('escapeHtml', function () {
         var entityMap = {
@@ -10350,7 +7136,7 @@ angular.module('nc')
             });
         }
     });
-},{}],111:[function(require,module,exports){
+},{}],103:[function(require,module,exports){
 /*
  Return dropdown[value] if input == dropdown[name]
  */
@@ -10373,14 +7159,14 @@ angular.module('nc')
 			return _.isUndefined(find) ? input : find[name];
 		}
 	});
-},{}],112:[function(require,module,exports){
+},{}],104:[function(require,module,exports){
 angular.module('nc')
 	.filter('replace', function() {
 		return function(input, from, to) {
 			return input.replace(from, to);
 		};
 	});
-},{}],113:[function(require,module,exports){
+},{}],105:[function(require,module,exports){
 (function (global){
 var angular = require('angular');
 
@@ -10404,7 +7190,7 @@ angular.module('nc', ['ngSanitize', 'ui.bootstrap', 'ui.select', 'duScroll', 'an
 require('./template.js');
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./directives\\ncAction.js":87,"./directives\\ncAdvanceSearch.js":88,"./directives\\ncAlert.js":89,"./directives\\ncBindCompile.js":90,"./directives\\ncBreadcrumpSelect.js":91,"./directives\\ncBulk.js":92,"./directives\\ncDateRange.js":93,"./directives\\ncEmpty.js":94,"./directives\\ncEye.js":95,"./directives\\ncFilter.js":96,"./directives\\ncImageGallery.js":97,"./directives\\ncImageIntegrity.js":98,"./directives\\ncLoading.js":99,"./directives\\ncPageTitle.js":100,"./directives\\ncPagination.js":101,"./directives\\ncPermission.js":102,"./directives\\ncSearch.js":103,"./directives\\ncTable.js":104,"./directives\\ncTemplate.js":105,"./directives\\ncTreeSelect.js":106,"./directives\\ncUiSelect.js":107,"./filters\\compact.js":108,"./filters\\date.js":109,"./filters\\escapeHtml.js":110,"./filters\\map.js":111,"./filters\\replace.js":112,"./index.js":113,"./template.js":114,"angular":181,"angular-file-upload":171,"angular-sanitize":173,"angular-scroll":175,"angular-ui-bootstrap":177,"jquery":182,"lodash":183,"ui-select":186}],114:[function(require,module,exports){
+},{"./directives\\ncAction.js":79,"./directives\\ncAdvanceSearch.js":80,"./directives\\ncAlert.js":81,"./directives\\ncBindCompile.js":82,"./directives\\ncBreadcrumpSelect.js":83,"./directives\\ncBulk.js":84,"./directives\\ncDateRange.js":85,"./directives\\ncEmpty.js":86,"./directives\\ncEye.js":87,"./directives\\ncFilter.js":88,"./directives\\ncImageGallery.js":89,"./directives\\ncImageIntegrity.js":90,"./directives\\ncLoading.js":91,"./directives\\ncPageTitle.js":92,"./directives\\ncPagination.js":93,"./directives\\ncPermission.js":94,"./directives\\ncSearch.js":95,"./directives\\ncTable.js":96,"./directives\\ncTemplate.js":97,"./directives\\ncTreeSelect.js":98,"./directives\\ncUiSelect.js":99,"./filters\\compact.js":100,"./filters\\date.js":101,"./filters\\escapeHtml.js":102,"./filters\\map.js":103,"./filters\\replace.js":104,"./index.js":105,"./template.js":106,"angular":182,"angular-file-upload":172,"angular-sanitize":174,"angular-scroll":176,"angular-ui-bootstrap":178,"jquery":184,"lodash":185,"ui-select":190}],106:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -10426,7 +7212,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncAdvanceSearch',
-    "<div class=\"row margin-top-30\" ng-show=open><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Advance Search</h2></div><div class=form-section-content><form name=form class=ah-form novalidate><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductName nc-label=\"Product Name\" nc-template-options-path=searchForm/ProductName><input class=\"form-control width-field-normal\" name=ProductName ng-model=formData.ProductName required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Pid nc-label=PID nc-template-options-path=searchForm/Pid><input class=\"form-control width-field-normal\" name=Pid ng-model=formData.Pid required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Sku nc-label=SKU nc-template-options-path=searchForm/Sku><input class=\"form-control width-field-normal\" name=Sku ng-model=formData.Sku required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Brand nc-label=\"Brand Name\" nc-template-options-path=searchForm/Brands><ui-select ng-model=formData.Brands name=Brands nc-tag-validator multiple tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match>{{$item.BrandNameEn}}</ui-select-match><ui-select-choices repeat=\"item in options.Brands | filter:{BrandNameEn: $select.search} track by $index\">{{item.BrandNameEn}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.GlobalCategories nc-label=\"Global Category Name\" nc-template-options-path=searchForm/GlobalCategories><nc-breadcrumb-select name=GlobalCategories nc-model=formData.GlobalCategories nc-breadcrumb-select-tree=options.GlobalCategories></nc-breadcrumb-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.LocalCategories nc-label=\"Local Category Name\" nc-template-options-path=searchForm/LocalCategories ng-show=!options.Admin><nc-breadcrumb-select name=LocalCategories nc-model=formData.LocalCategories nc-breadcrumb-select-tree=options.LocalCategories></nc-breadcrumb-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Tags nc-label=\"Search Tag\" nc-template-options-path=searchForm/Tags class=ui-select-dropdown-hide><ui-select ng-model=formData.Tags name=Tags nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field><ui-select-match>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Tags\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.Price nc-label=\"Sale Price\" nc-template-options-path=searchForm/Price><div class=width-field-small-input><input name=Price ng-maxnumber={{formData.PriceTo}} ng-model=formData.PriceFrom class=form-control ng-pattern-restrict=\"^[0-9]*(\\.[0-9]{0,2})?$\"></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><input ng-model=formData.PriceTo class=form-control ng-pattern-restrict=\"^[0-9]*(\\.[0-9]{0,2})?$\"></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.CreatedDate nc-label=\"Created Date\" nc-template-options-path=searchForm/CreatedDate><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.CreatedDtFrom | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=CreatedDate ng-date-before={{formData.CreatedDtTo}} data-ng-model=formData.CreatedDtFrom data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'hour' }\"></ul></div></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.CreatedDtTo | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.CreatedDtTo data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'hour' }\"></ul></div></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.ModifiedDate nc-label=\"Modified Date\" nc-template-options-path=searchForm/ModifiedDate><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.ModifyDtFrom | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ModifyDtFrom name=ModifiedDate ng-date-before={{formData.ModifiedDtTo}} data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'hour' }\"></ul></div></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown4 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.ModifyDtTo | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ModifyDtTo data-datetimepicker-config=\"{ dropdownSelector: '#dropdown4', minView: 'hour' }\"></ul></div></div></div><div class=form-group><div class=width-label><label class=control-label></label></div><div class=button-size-normal><a class=\"button-size-normal btn btn-blue btn-width-xl\" ng-click=search()>Search</a></div><div class=button-size-normal><a class=\"button-size-normal margin-left-10 btn btn-white btn-width-xl\" ng-click=clear()>Clear</a></div></div></form></div></div></div></div>"
+    "<div class=\"row margin-top-30\" ng-show=open><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Advance Search</h2></div><div class=form-section-content><form name=form class=ah-form novalidate><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductName nc-label=\"Product Name\" nc-template-options-path=searchForm/ProductName><input class=\"form-control width-field-normal\" name=ProductName ng-model=formData.ProductName required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Pids nc-label=PID nc-template-options-path=searchForm/Pid><ui-select ng-model=formData.Pids name=Pids nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field><ui-select-match>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Pids\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Skus nc-label=SKU nc-template-options-path=searchForm/Sku><ui-select ng-model=formData.Skus name=Skus nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field><ui-select-match>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Skus\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Brand nc-label=\"Brand Name\" nc-template-options-path=searchForm/Brands><ui-select ng-model=formData.Brands name=Brands nc-tag-validator multiple tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match>{{$item.BrandNameEn}}</ui-select-match><ui-select-choices repeat=\"item in options.Brands | filter:{BrandNameEn: $select.search} track by $index\">{{item.BrandNameEn}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.GlobalCategories nc-label=\"Global Category Name\" nc-template-options-path=searchForm/GlobalCategories><nc-breadcrumb-select name=GlobalCategories nc-model=formData.GlobalCategories nc-breadcrumb-select-tree=options.GlobalCategories></nc-breadcrumb-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.LocalCategories nc-label=\"Local Category Name\" nc-template-options-path=searchForm/LocalCategories ng-show=!options.Admin><nc-breadcrumb-select name=LocalCategories nc-model=formData.LocalCategories nc-breadcrumb-select-tree=options.LocalCategories></nc-breadcrumb-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Tags nc-label=\"Search Tag\" nc-template-options-path=searchForm/Tags class=ui-select-dropdown-hide><ui-select ng-model=formData.Tags name=Tags nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field><ui-select-match>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Tags\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.Price nc-label=\"Sale Price\" nc-template-options-path=searchForm/Price><div class=width-field-small-input><input name=Price ng-maxnumber={{formData.PriceTo}} ng-model=formData.PriceFrom class=form-control ng-pattern-restrict=\"^[0-9]*(\\.[0-9]{0,2})?$\"></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><input ng-model=formData.PriceTo class=form-control ng-pattern-restrict=\"^[0-9]*(\\.[0-9]{0,2})?$\"></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.CreatedDate nc-label=\"Created Date\" nc-template-options-path=searchForm/CreatedDate><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.CreatedDtFrom | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=CreatedDate ng-date-before={{formData.CreatedDtTo}} data-ng-model=formData.CreatedDtFrom data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'hour' }\"></ul></div></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.CreatedDtTo | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.CreatedDtTo data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'hour' }\"></ul></div></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.ModifiedDate nc-label=\"Modified Date\" nc-template-options-path=searchForm/ModifiedDate><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.ModifyDtFrom | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ModifyDtFrom name=ModifiedDate ng-date-before={{formData.ModifiedDtTo}} data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'hour' }\"></ul></div></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown4 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.ModifyDtTo | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ModifyDtTo data-datetimepicker-config=\"{ dropdownSelector: '#dropdown4', minView: 'hour' }\"></ul></div></div></div><div class=form-group><div class=width-label><label class=control-label></label></div><div class=button-size-normal><button class=\"button-size-normal btn btn-blue btn-width-xl\" ng-click=search()>Search</button></div><div class=button-size-normal><a class=\"button-size-normal margin-left-10 btn btn-white btn-width-xl\" ng-click=clear()>Clear</a></div></div></form></div></div></div></div>"
   );
 
 
@@ -10484,6 +7270,11 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
   $templateCache.put('common/ncImage',
     "<li class=list-item><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ model.ImageUrlEn.length > 0 && model.ImageUrlEn  || '/assets/img/loader.gif' }}\"></div><div ng-if=\"actions.length > 0\" class=actions-wrapper ng-style=\"width: {{100 / actions.length}}%;\"><a ng-repeat=\"action in options.actions\" class=action ng-click=\"action.fn(model, parent, $index)\"><i class=fa ng-class={{action.icon}}></i></a></div></div></li>"
+  );
+
+
+  $templateCache.put('common/ncImageBanner',
+    "<div class=form-section><div class=form-section-header><h2>{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p></div></div><div class=image-select-alternative-text><span>Or</span> <a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">Select Images from your computer</a></div></div></div><div class=col-xs-5 ng-transclude></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-show=getSrc(image) style=background-color:white ng-src=\"{{getSrc(image)}}\"><h4 ng-show=!getSrc(image) style=\"text-align: center;margin-top:35px\" class=color-grey><img src=/assets/img/loader.gif height=55><br><span ng-if=\"getProgress(image) < 100\">{{ getProgress(image) }}%</span> <span ng-if=\"getProgress(image) >= 100\">Processing..</span></h4></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div><div style=\"text-align:center; padding-top: 10px; color: grey\" ng-if=\"$index == 0\">Featured Image</div></li></ul></div></div>"
   );
 
 
@@ -10567,7 +7358,1168 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
     "<div class=\"page-header with-border\"><h1 class=\"float-left page-header-title\">{{ title }}</h1><span class=\"float-right page-header-action\"><ng-transclude></ng-transclude></span></div>"
   );
  }]);
-},{}],115:[function(require,module,exports){
+},{}],107:[function(require,module,exports){
+var angular = require('angular')
+angular.module('productDetail').controller('AbstractProductAddCtrl',
+		["$scope", "$uibModal", "$window", "util", "config", "Product", "ImageService", "AttributeSet", "Brand", "Shop", "LocalCategoryService", "GlobalCategory", "Category", "$rootScope", "KnownException", "NcAlert", "$productAdd", "options", "AttributeSetService", function($scope, $uibModal, $window, util, config, Product, ImageService,
+			AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
+			KnownException, NcAlert, $productAdd, options, AttributeSetService) {
+			'ngInject';
+
+			var MAX_FILESIZE = (options.maxImageUploadSize || 5000000);
+			var QUEUE_LIMIT = (options.maxImageUploadQueueLimit || 20);
+
+			$scope.adminMode = options.adminMode;
+			$scope.overview = {};
+			$scope.formData = {
+				Status : 'DF',
+				ShopId: null,
+				Visibility: true,
+				GlobalCategories: [null, null, null],
+				LocalCategories: [null, null, null],
+				Keywords: [],
+				ControlFlags: [],
+				Brand: { id: null },
+				TheOneCardEarn: 1,
+				GiftWrap: 'No',
+				AttributeSet: {
+					AttributeSetTagMaps: []
+				},
+				MasterAttribute: {
+						
+				},
+				RelatedProducts: [],
+				EffectiveDate: null,
+				ExpireDate: null,
+				MasterVariant: {
+					Length: '',
+					Width: '',
+					Height: '',
+					Weight: '',
+					ProductNameEn: '',
+					Pid: null,
+					ProductNameTh: '',
+					Sku: '',
+					DescriptionFullEn: '',
+					DescriptionShortEn: '',
+					DescriptionShortTh: '',
+					DescriptionFullTh: '',
+					OriginalPrice: '',
+					SalePrice: '',
+					PrepareDay: '',
+					PrepareMon: '',
+					PrepareTue: '',
+					PrepareWed: '',
+					PrepareThu: '',
+					PrepareFri: '',
+					PrepareSat: '',
+					PrepareSun: '',
+					DimensionUnit: 'MM',
+					WeightUnit: 'G',
+					StockType: 'Stock',
+					Images: [],
+					Installment: 'No',
+					ShippingMethod: '1',
+					VideoLinks: ['', '', ''],
+					SEO: {
+						ProductBoostingWeight: 5000
+					}
+				},
+				Variants: []
+			};
+
+			//Initialize Pointers
+			$scope.imagesPtr = $scope.formData.MasterVariant.Images;
+			$scope.variantPtr = $scope.formData.MasterVariant;
+
+
+			$scope.onImageUploadFail = function(item, filter) {
+				$scope.image_alert.error(item.Message || 'Your image does not meet guideline. Images must be smaller than 5 MB, with square size larger than 1500x1500.');
+			}
+
+			$scope.onImageUploadSuccess = function() {
+				$scope.image_alert.close();
+			}
+
+			$scope.onImageUploadQueueLimit = function() { 
+				//nop
+			};
+			$scope.asStatus = Product.getStatus;
+			$scope.refresher = {};
+
+
+			var watchVariantFactorChanges = function() {
+				$scope.$watch('dataset.attributeOptions', function() {
+					$productAdd.generateVariants($scope.formData, $scope.dataset)
+				}, true);
+			};
+
+			// CK editor options
+			$scope.ckOptions = config.CK_DEFAULT_OPTIONS;
+			$scope.dataset = {
+				CombinedAttributeSets: []
+			};
+
+			$scope.dataset.AttributeSets = [{
+				AttributeSetId: null,
+				disabled: true,
+				AttributeSetNameEn: 'No Attribute Set'
+			}];
+			$scope.dataset.GlobalCategories = [];
+			$scope.dataset.LocalCategories = [];
+
+			$scope.dataset.BrandsEmpty = [{
+				BrandId: null,
+				_group: 'No Result',
+				BrandNameEn: 'Search by brand by name or Brand id...',
+				disabled: true
+			}]
+
+			$scope.dataset.Brands = []
+
+			$scope.enableVariation = function() {
+				$scope.controlFlags.variation = 'enable'
+			}
+
+			$scope.dataset.SearchTags = []
+			$scope.dataset.RelatedProducts = []
+			$scope.dataset.VariantDisplayOption = [{ text: 'Show as group of variants', value: 'GROUP' }, { text: 'Show as individual product', value: 'INDIVIDUAL' }]
+			$scope.pageState = {
+				loading: {
+					state: true,
+					message: 'Loading..'
+				},
+				load: function(msg) {
+					$scope.pageState.loading.message = msg;
+					$scope.pageState.loading.state = true;
+				},
+				reset: function() {
+					$scope.alert.close();
+					$scope.pageState.loading.state = false;
+				}
+			}
+
+			$scope.breadcrumb = {
+				globalCategory: null
+			}
+
+			$scope.preview = function() {
+				return console.log($scope.formData)
+			}
+
+			$scope.$watch('formData.MasterVariant.OriginalPrice+formData.MasterVariant.SalePrice', function() {
+				var form = $scope.addProductForm;
+				if (form.SalePrice) form.SalePrice.$setValidity('min', true);
+				if (!form.SalePrice) return;
+				if ($scope.formData.MasterVariant.SalePrice == '') return;
+
+				if (Number($scope.formData.MasterVariant.SalePrice) >= Number($scope.formData.MasterVariant.OriginalPrice)) {
+					if (form.SalePrice) form.SalePrice.$setValidity('min', false)
+						form.SalePrice.$error['min'] = 'Sale Price must not exceed Original Price'
+				}
+			})
+
+			$scope.$watch('formData.ExpireDate', function() {
+				// TODO: refactor use nctemplate
+				var form = $scope.addProductForm;
+				if (form.EffectiveDate == null) {
+					return
+				}
+				if (form.ExpireDate) form.ExpireDate.$setValidity('min', true)
+					if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
+						if (!form.ExpireDate) return;
+						if (form.ExpireDate) form.ExpireDate.$setValidity('min', false);
+						form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
+					}
+			})
+
+			/**
+			 * Other additional validations
+			 * @param  {String} Status
+			 */
+			var manualValidate = function(Status) {
+				var mat = []
+
+				if (Status == 'WA') {
+					if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == '') {
+						mat.push('Description (Thai)')
+					}
+
+					if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == '') {
+						mat.push('Description (English)')
+					}
+
+					if (!$scope.formData.Brand.BrandId) {
+						mat.push('Brand')
+					}
+
+					if ($scope.formData.MasterImages.length == 0) {
+						mat.push('At least one image')
+					}
+
+					$scope.formData.Variants.forEach(function(variant) {
+						if (variant.Images.length == 0) {
+							mat.push('At least one image for variation ' + "'" + variant.text + "'")
+						}
+					})
+
+				}
+
+				var cnt = $scope.formData.Variants.reduce(function(total, x) {
+					return x.Visibility ? total + 1 : total
+				}, 0)
+
+				if (cnt == 0 && $scope.formData.Variants.length > 0) {
+					mat.push('At least one variant must be visible.')
+				}
+
+				if ($scope.formData.ExpireDate && $scope.formData.ExpireDate <= $scope.formData.EffectiveDate) {
+					mat.push('Effective date/time must come before expire date/time.')
+				}
+
+				return mat
+			}
+
+			/**
+			 * Publish Confirmation
+			 * Show dialog to ask if user really want to publish
+			 */
+			$scope.prePublishWA = function() {
+				var modalInstance = $uibModal.open({
+					animation: $scope.animationsEnabled,
+					templateUrl: 'product/modalConfirmPublish',
+					controller: ["$scope", "$uibModalInstance", "$timeout", function($scope, $uibModalInstance, $timeout) {
+						'ngInject'
+							$scope.no = function() {
+								$uibModalInstance.close('no')
+							}
+
+						$scope.yes = function() {
+							$uibModalInstance.close('yes')
+						}
+					}],
+					size: 'size-warning',
+					resolve: {
+
+					}
+				})
+				modalInstance.result.then(function(selectedItem) {
+					console.log(selectedItem)
+						if (selectedItem == 'yes') {
+							$scope.publish('WA')
+						}
+				}, function() {
+					console.log('Modal dismissed at: ' + new Date())
+				})
+
+			}
+
+			/**
+			 * Publish (save as draft and publish)
+			 * @param  {String} Status (WA or DF or other enum sent to server)
+			 */
+			$scope.publish = function(Status) {
+				$scope.pageState.reset()
+					$scope.pageState.load('Validating..')
+
+					if ($scope.controlFlags.variation == 'enable' && $scope.formData.Variants.length == 0) {
+						$scope.controlFlags.variation == 'disable'
+					}
+
+				if ($scope.controlFlags.variation == 'disable') {
+					$scope.formData.Variants = []
+				}
+
+				$scope.onPublishing = (Status == 'WA')
+					// On click validation
+					var validateMat = manualValidate(Status)
+					if (validateMat.length > 0) {
+						$scope.pageState.reset()
+							$scope.alert.error(validateMat.join(', '))
+							return
+					}
+
+				if ($scope.addProductForm.$invalid) {
+					$scope.pageState.reset()
+						console.log($scope.addProductForm.$error)
+						var requiredMissing = ('required' in $scope.addProductForm.$error)
+						if (Status == 'DF' && requiredMissing) {
+							var errorList = []
+							if ($scope.addProductForm.ProductNameEn.$invalid) {
+								errorList.push('Product Name (English)')
+							}
+							// Product Name (Thai), Product Name (English), and Sale Price,
+							if ($scope.addProductForm.ProductNameTh.$invalid) {
+								errorList.push('Product Name (Thai)')
+							}
+
+							if ($scope.addProductForm.SalePrice.$invalid) {
+								errorList.push('Sale Price')
+							}
+							errorList.push('Master Attributes')
+
+								$scope.alert.error('Unable to save. Please make sure that ' + errorList.join(' and ') + ' are filled correctly.')
+						} else if (Status == 'WA' && requiredMissing) {
+							$scope.alert.error('Unable to publish because you are missing required fields')
+						} else {
+							console.warn($scope.addProductForm.$error)
+								$scope.alert.error('Unable to save. Please make sure all fields have no error.')
+						}
+					return
+				}
+
+				$scope.pageState.load('Saving..')
+
+					var apiRequest = Product.serialize($scope.formData)
+					Product.publish(apiRequest, Status).then(function(res) {
+						$scope.pageState.reset()
+							if (res.ProductId) {
+								$scope.overview = res
+									$scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions) // will trigger watchvariantchange
+									var catId = Number(res.GlobalCategory)
+									$productAdd.fill(catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function() {
+										$scope.formData.ProductId = Number(res.ProductId)
+											$scope.pageState.reset()
+											$scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>')
+											// ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
+									})
+								$scope.addProductForm.$setPristine(true)
+							} else {
+								$scope.alert.error('Unable to save because ' + (res.message || res.Message))
+									$scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable')
+							}
+					}, function(er) {
+						$scope.pageState.reset()
+							$scope.alert.error('Unable to save because ' + (er.message || er.Message))
+							$scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable')
+					})
+
+			}
+
+			$scope.init = function(viewBag) {
+				if (!angular.isObject(viewBag)) throw new KnownException('View bag is corrupted')
+
+					var _editMode = ('productId' in viewBag)
+						for (var page in tabPage) {
+							tabPage[page].angular()
+						}
+
+				if (_editMode) {
+					var productId = viewBag.productId
+						$scope.pageState.load('Loading Product..')
+
+						Product.getOne(productId)
+						.then(function(inverseFormData) {
+							$scope.overview = angular.copy(inverseFormData)
+								var catId = Number(inverseFormData.GlobalCategory)
+								$productAdd.fill(catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb, $scope.controlFlags,
+										$scope.variationFactorIndices, inverseFormData).then(function() {
+									$scope.formData.ProductId = Number(productId)
+										$scope.pageState.reset()
+										watchVariantFactorChanges()
+
+										LocalCategoryService.getAllByShopId($scope.formData.ShopId).then(function(data) {
+											$scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data)
+										})
+
+									// ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
+								})
+
+
+
+
+						}, function(error) {
+							throw new KnownException('Unable to fetch product with id ' + productId)
+						})
+
+				} else if ('catId' in viewBag) {
+					if (viewBag.catId == null) window.location.href = '/products/select'
+						LocalCategoryService.list().then(function(data) {
+							$scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data)
+						})
+					var catId = Number(viewBag.catId)
+						$productAdd.fill(catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb,
+								$scope.controlFlags, $scope.variationFactorIndices).then(function() {
+							$scope.pageState.reset()
+								watchVariantFactorChanges()
+								// ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
+						})
+				} else {
+					throw new KnownException('Invalid mode, viewBag garbage')
+				}
+
+				//?ShopId=0120302131
+				// Load Local Cat
+				/*LocalCategoryService.list().then(function(data) {
+				  $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data)
+				  })*/
+
+
+			}
+
+			var tabPage = {}
+
+			tabPage.images = {
+				angular: function() {
+					/**
+					 * IMAGE THUMBNAIL EVENTS
+					 */
+					$scope.$on('left', function(evt, item, array, index) {
+						var to = index - 1
+							if (to < 0) to = array.length - 1
+
+								var tmp = array[to]
+								array[to] = item
+								array[index] = tmp
+					})
+					$scope.$on('right', function(evt, item, array, index) {
+						var to = index + 1
+							if (to >= array.length) to = 0
+
+								var tmp = array[to]
+								array[to] = item
+								array[index] = tmp
+					})
+					$scope.$on('delete', function(evt, item, array, index) {
+						array.splice(index, 1)
+					})
+					$scope.$on('zoom', function(evt, item, array, index) {
+						// Should use angular way, but ok whatever
+						$('#product-image-zoom img').attr('src', item.url)
+							$('#product-image-zoom').modal('show')
+					})
+				}
+			}
+
+			tabPage.category = {
+				angular: function() {
+					// For viewing only
+					$scope.viewCategoryColumns = []
+					$scope.viewCategorySelected = null
+					$scope.viewCategoryIndex = 0
+					$scope.selectCategory = angular.noop
+
+					// Events
+					$scope.$on('openGlobalCat', function(evt, item, indx) {
+						console.log('openGloCat', item, $scope.dataset.GlobalCategories)
+							$scope.viewCategoryColumns = Category.createColumns(item, $scope.dataset.GlobalCategories)
+							$scope.viewCategorySelected = item
+							$scope.viewCategoryIndex = indx
+							$scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function(selectedItem) {
+								$scope.viewCategorySelected = selectedItem
+							})
+					})
+					$scope.$on('deleteGlobalCat', function(evt, indx) {
+						$scope.formData.GlobalCategories[indx] = null
+					})
+					$scope.$on('selectGlobalCat', function(evt, row, indx, parentIndx) {
+						$scope.selectCategory(row, indx, parentIndx)
+					})
+					$scope.$on('saveGlobalCat', function(evt) {
+						$scope.formData.GlobalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected
+					})
+
+					// Events
+					$scope.$on('openLocalCat', function(evt, item, indx) {
+						console.log(item, $scope.dataset.LocalCategories)
+							$scope.viewCategoryColumns = Category.createColumns(item, $scope.dataset.LocalCategories)
+							$scope.viewCategorySelected = item
+							$scope.viewCategoryIndex = indx
+							$scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function(selectedItem) {
+								$scope.viewCategorySelected = selectedItem
+							})
+					})
+					$scope.$on('deleteLocalCat', function(evt, indx) {
+						$scope.formData.LocalCategories[indx] = null
+					})
+					$scope.$on('selectLocalCat', function(evt, row, indx, parentIndx) {
+						$scope.selectCategory(row, indx, parentIndx)
+					})
+					$scope.$on('saveLocalCat', function(evt) {
+						$scope.formData.LocalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected
+					})
+				}
+			}
+
+			tabPage.variation = {
+				angular: function() {
+					$scope.uploaderModal = ImageService.getUploader('/ProductImages', {
+						queueLimit: QUEUE_LIMIT
+					})
+
+					$scope.uploaderModal.filters.push({
+						'name': 'enforceMaxFileSize',
+						'fn': function(item) {
+							return item.size <= MAX_FILESIZE
+						}
+					})
+
+					$scope.openVariantDetail = function(pair, array, index) {
+						if (angular.isUndefined(pair.Images)) {
+							pair.Images = []
+						}
+
+						if (angular.isUndefined(pair.queue)) {
+							pair.queue = []
+						}
+
+						// Modal target (for viewing pair)
+						$scope.pairModal = angular.copy(pair)
+							$scope.pairModal.alert = new NcAlert()
+							$scope.pairIndex = index
+
+							$scope.uploaderModal.queue = $scope.pairModal.queue
+							// ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
+
+							var variantModal = $uibModal.open({
+								animation: false,
+								templateUrl: 'ap/modal-variant-detail',
+								controller: ["$scope", "$uibModalInstance", "$timeout", "pair", "dataset", "formData", "uploader", function($scope, $uibModalInstance, $timeout, pair, dataset, formData, uploader) {
+									'ngInject';
+									$scope.pair = pair;
+									$scope.dataset = dataset;
+									$scope.variantPtr = pair;
+									$scope.imagesPtr = pair.Images;
+									$scope.uploader = uploader;
+									$scope.no = function() {
+										$uibModalInstance.close();
+									}
+									$scope.yes = function() {
+										$uibModalInstance.close($scope.pair);
+									}
+								}],
+								size: 'xl',
+								resolve: {
+									uploader: function() {
+										return ImageService.getUploader('/ProductImages', {
+											queueLimit: QUEUE_LIMIT
+										});
+									},
+									formData: function() {
+										return $scope.formData
+									},
+									pair: function() {
+										console.log('resolving', $scope.pairModal)
+											return $scope.pairModal
+									},
+									ckOptions: function() {
+										return $scope.ckOptions
+									},
+									dataset: function() {
+										return $scope.dataset
+									}
+								}
+							})
+
+						variantModal.result.then(function(pairModal) {
+							console.log(pairModal);
+							if (pairModal) {
+								$scope.formData.Variants[$scope.pairIndex] = pairModal
+							}
+
+							// Restore pointers
+							$scope.form = $scope.addProductForm;
+							$scope.variantPtr = $scope.formData.MasterVariant;
+							$scope.imagesPtr = $scope.formData.MasterVariant.Images
+
+						}, function() {
+							console.log('Modal dismissed at: ' + new Date())
+						})
+
+					}
+
+				}
+			}
+
+			$scope.protoAttributeOptions = {
+				0: {
+					Attribute: false,
+					options: []
+				},
+				1: {
+					Attribute: false,
+					options: []
+				}
+			}
+
+			$scope.uploader = ImageService.getUploader('/ProductImages', {
+				queueLimit: QUEUE_LIMIT
+			})
+
+			$scope.uploader.filters.push({
+				'name': 'enforceMaxFileSize',
+				'fn': function(item) {
+					return item.size <= MAX_FILESIZE
+				}
+			})
+
+			$scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions)
+
+				$scope.refresher.AttributeSetsLoading = false;
+			$scope.refresher.AttributeSets = function(q) {
+				if (!q) return;
+				$scope.refresher.AttributeSetsLoading = true;
+				return AttributeSetService.list({
+					_order: 'AttributeSetId',
+					_limit: 5,
+					_offset: 0,
+					_direction: 'asc',
+					searchText: q
+				}).then(function(ds) {
+					$scope.refresher.AttributeSetsLoading = false;
+					var searchRes = ds.data.map(function(d) {
+						d._group = 'Search Results';
+						d.AttributeSetTagMaps = $productAdd.flatten.AttributeSetTagMap(d.AttributeSetTagMaps);
+						return d;
+					});
+					$scope.dataset.CombinedAttributeSets = _.unionBy(searchRes, $scope.dataset.AttributeSets, 'AttributeSetId');
+				})
+			}
+
+
+
+			/**
+			 * Refresh Related Product Data 
+			 * @param  {String} q
+			 */
+			$scope.refresher.RelatedProducts = function(q) {
+				return Product.getAll({
+					searchText: q,
+					pageSize: 8
+				}).then(function(ds) {
+					$scope.dataset.RelatedProducts = ds.data
+				})
+			}
+
+			$scope.controlFlags = {
+				variation: 'disable',
+				enableSections: {
+					embedVideo: false,
+					embed360: false
+				}
+			}
+
+			/**
+			 * Refresh Brand Data Set used for searching 
+			 * @param  {String} q
+			 */
+
+			$scope.refresher.BrandLoading = false;
+			$scope.refresher.Brands = function(q) {
+				// TODO: too slow
+				if (!q) return
+
+					$scope.refresher.BrandLoading = true;
+
+				Brand.getAll({
+					pageSize: 10,
+					searchText: q
+				}).then(function(ds) {
+					$scope.refresher.BrandLoading = false;
+					$scope.dataset.Brands = ds.data;// _.unionBy($scope.dataset.Brands, ds.data, 'BrandId');
+					$scope.dataset.Brands.map(function(m) {
+						m._group = "Search Results";
+						return m;
+					});
+				});
+
+
+			}
+
+			$window.onbeforeunload = function(e) {
+				if (!$scope.addProductForm.$dirty) {
+					// only warn when form is dirty
+					return null
+				}
+				var message = 'Your changes will not be saved.',
+				e = e || window.event
+					// For IE and Firefox
+					if (e) {
+						e.returnValue = message
+					}
+
+				// For Safari
+				return message
+			} // end onbeforeunload
+
+			$scope.asStatus = Product.getStatus
+				$scope.isFreeTextInput = util.isFreeTextDataType
+				$scope.isListInput = util.isListDataType
+				$scope.isHtmlInput = util.isHtmlDataType
+				$scope.isCheckboxInput = util.isCheckboxDataType
+
+				$scope.enableVariation = function() {
+					$scope.controlFlags.variation = 'enable'
+				}
+			$scope.alert = new NcAlert()
+
+				// Variation Factor (lhs) Indices are used as index
+				// for ng-repeat in variation tab
+				$scope.variationFactorIndices = {
+					iterator: [0],
+					length: function() {
+						return $scope.variationFactorIndices.iterator.length
+					},
+					popSecond: function() {
+						$scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop()
+							$scope.dataSet.attributeOptions[1].options = []
+							$scope.dataSet.attributeOptions[1].Attribute = null
+					},
+					pushSecond: function() {
+						$scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1)
+					}
+				}
+
+			$scope.image_alert = new NcAlert()
+
+		}])
+
+},{"angular":182}],108:[function(require,module,exports){
+var angular = require('angular');
+angular.module('productDetail').
+    factory('$productAdd', ["Product", "Brand", "AttributeSet", "ImageService", "GlobalCategory", "$q", "Category", "util", function(Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category, util) {
+        'ngInject';
+        var $productAdd = {};
+
+        /**
+         * 
+         * Rebuild variations array from set of attribute options in dataset
+         * 
+         * @param  {FormData} formData
+         * @param  {DataSet} dataSet
+         */
+        $productAdd.generateVariants = function(formData, dataSet) {
+            var vHashSet = {};
+            var prevVariants = angular.copy(formData.Variants);
+            prevVariants.forEach(function(elem, index) {
+                vHashSet[elem.text] = prevVariants[index];
+            });
+
+            //Unset
+            prevVariants = undefined;
+
+            formData.Variants = [];
+            var trackVariant = new Set();
+
+            var VARIANT_DUMMY_FACTOR = '';
+            var expand = function(A0, B0) {
+
+                var AVId = null;
+                var BVId = null;
+                var B = B0;
+                var A = A0;
+
+                if (_.has(A0, 'AttributeValue.AttributeValueId')) {
+                    AVId = A0.AttributeValue.AttributeValueId;
+                    A = A0.AttributeValue.AttributeValueEn;
+                }
+
+                if (angular.isDefined(B0)) {
+                    if (_.has(B0, 'AttributeValue.AttributeValueId')) {
+                        BVId = B0.AttributeValue.AttributeValueId;
+                        B = B0.AttributeValue.AttributeValueEn;
+                    }
+                } else {
+                    //B is not defined
+                    B = VARIANT_DUMMY_FACTOR;
+                }
+
+                var kpair = {};
+                var firstAttribute = {
+                    AttributeId: !dataSet.attributeOptions[0].Attribute ? null : dataSet.attributeOptions[0].Attribute.AttributeId,
+                    AttributeValues: (!AVId ? [] : [{
+                        AttributeValueId: AVId
+                    }]),
+                    ValueEn: A
+                };
+
+                var secondAttribute = {
+                    AttributeId: !dataSet.attributeOptions[1].Attribute ? null : dataSet.attributeOptions[1].Attribute.AttributeId,
+                    AttributeValues: (!BVId ? [] : [{
+                        AttributeValueId: BVId
+                    }]),
+                    ValueEn: B
+                };
+
+                kpair.FirstAttribute = firstAttribute;
+                kpair.SecondAttribute = secondAttribute;
+                kpair.text = util.variant.toString(firstAttribute, secondAttribute);
+                //Copy default value over from main variant
+                kpair.ProductNameEn = formData.MasterVariant.ProductNameEn;
+                kpair.ProductNameTh = formData.MasterVariant.ProductNameTh;
+                kpair.Display = dataSet.VariantDisplayOption[0].value;
+                kpair.Visibility = true;
+                kpair.DimensionUnit = "MM";
+                kpair.WeightUnit = "G";
+                kpair.Sku = (formData.MasterVariant.Sku || "SKU") + "-" + (Number((formData.Variants || []).length) + 1);
+                kpair.OriginalPrice = formData.MasterVariant.OriginalPrice;
+                kpair.SalePrice = formData.MasterVariant.SalePrice;
+                kpair.Quantity = formData.MasterVariant.Quantity;
+                kpair.Length = formData.Length;
+                kpair.Width = formData.Width;
+                kpair.Height = formData.Height;
+                kpair.Upc = formData.MasterVariant.Upc;
+                kpair.Weight = formData.Weight;
+                kpair.DescriptionFullEn = formData.MasterVariant.DescriptionFullEn;
+                kpair.DescriptionFullTh = formData.MasterVariant.DescriptionFullTh;
+                kpair.DescriptionShortEn = formData.MasterVariant.DescriptionShortEn;
+                kpair.DescriptionShortTh = formData.MasterVariant.DescriptionShortTh;
+                kpair.Images = angular.copy(formData.MasterImages);
+                kpair.VideoLinks = angular.copy(formData.VideoLinks);
+                kpair.PrepareDay = formData.PrepareDay;
+                kpair.PrepareSun = formData.PrepareSun;
+                kpair.PrepareSat = formData.PrepareSat;
+                kpair.PrepareFri = formData.PrepareFri;
+                kpair.PrepareThu = formData.PrepareThu;
+                kpair.PrepareWed = formData.PrepareWed;
+                kpair.PrepareTue = formData.PrepareTue;
+                kpair.PrepareMon = formData.PrepareMon;
+                kpair.SEO = angular.copy(formData.SEO || {});
+                kpair.SEO.ProductUrlKeyEn = "";
+
+                if (kpair.text in vHashSet) {
+                    //Replace with value from vHashSet
+                    kpair = vHashSet[kpair.text];
+                }
+
+                var hashNew = (util.variant.toString(kpair.FirstAttribute, kpair.SecondAttribute));
+                if (!trackVariant.has(hashNew)) {
+                    //Only push new variant if don't exist
+
+                    formData.Variants.push(kpair);
+                    trackVariant.add(hashNew);
+                }
+
+            }
+
+            //Multiply out unmultiplied options
+            if (dataSet.attributeOptions && Object.keys(dataSet.attributeOptions).length > 0) {
+                for (var aKey in dataSet.attributeOptions[0].options) {
+                    var A = dataSet.attributeOptions[0].options[aKey];
+
+                    if (angular.isDefined(dataSet.attributeOptions[1]['options']) && dataSet.attributeOptions[1].options.length == 0) {
+                        expand(A);
+                    }
+
+                    for (var bKey in dataSet.attributeOptions[1].options) {
+                        var B = dataSet.attributeOptions[1].options[bKey];
+                        expand(A, B);
+                    }
+                }
+            }
+
+            formData.DefaultVariant = formData.Variants[0];
+        };
+
+
+        $productAdd.flatten = {
+            'AttributeSetTagMap': function(AttributeSetTagMap) {
+                return AttributeSetTagMap.map(function(asti) {
+                    return asti.Tag.TagName;
+                });
+            }
+        };
+
+        /**
+         * 
+         * Fill product add page with data of related dependencies
+         * 
+         * @param  {Integer} globalCatId
+         * @param  {AddProductPageLoader} pageLoader
+         * @param  {DataSet} sharedDataSet
+         * @param  {FormData} sharedFormData
+         * @param  {object} breadcrumbs
+         * @param  {object} controlFlags
+         * @param  {object} variationFactorIndices
+         * @param  {InverseFormData} ivFormData (Optional)
+         */
+        $productAdd.fill = function(globalCatId, pageLoader, sharedDataSet,
+            sharedFormData, breadcrumbs, controlFlags, variationFactorIndices, ivFormData) {
+
+
+            var deferred = $q.defer();
+            pageLoader.load('Downloading Attribute Sets..');
+
+            AttributeSet.getByCategory(globalCatId)
+                .then(function(data) {
+                    sharedDataSet.AttributeSets = data.map(function(aset) {
+                        aset._group = "Suggested Attribute Sets";
+                        aset.AttributeSetTagMaps = $productAdd.flatten.AttributeSetTagMap(aset.AttributeSetTagMaps);
+                        return aset;
+                    });
+
+                    sharedDataSet.CombinedAttributeSets = angular.copy(sharedDataSet.AttributeSets);
+                    
+                    if (ivFormData) {
+                        pageLoader.load('Indexing AttributeSet');
+                        sharedFormData.AttributeSet = sharedDataSet.AttributeSets[sharedDataSet.AttributeSets.map(function(o) {
+                            return o.AttributeSetId
+                        }).indexOf(ivFormData.AttributeSet.AttributeSetId)];
+
+                        var parse = function(ivFormData, FullAttributeSet) {
+                            pageLoader.load('Loading product data..');
+                            var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
+
+                            //copy it out
+                            Object.keys(inverseResult.formData).forEach(function(key) {
+                                sharedFormData[key] = inverseResult.formData[key];
+                            })
+
+                            console.log("After Inverse Transformation", sharedFormData);
+                            if (sharedFormData.Variants.length > 0) {
+                                controlFlags.variation = "enable";
+                            }
+                            sharedDataSet.attributeOptions = inverseResult.attributeOptions || sharedDataSet.attributeOptions;
+                            if (sharedDataSet.attributeOptions[1].options.length > 0) {
+                                variationFactorIndices.pushSecond();
+                            }
+                        };
+                        parse(ivFormData, sharedFormData.AttributeSet);
+                    }
+
+                    pageLoader.load('Downloading Category Tree..');
+                    //Load Global Cat
+                    GlobalCategory.getAll().then(function(data) {
+                        sharedDataSet.GlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
+                        sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
+                        breadcrumbs.globalCategory = Category.createCatStringById(globalCatId, sharedDataSet.GlobalCategories);
+                        console.log(breadcrumbs, "breadcrumb");
+                        pageLoader.load('Preparing content..');
+                        deferred.resolve();
+                    });
+
+
+                });
+
+            return deferred.promise;
+        };
+
+        return $productAdd;
+    }]);
+},{"angular":182}],109:[function(require,module,exports){
+var angular = require('angular');
+angular.module('productDetail')
+    .directive('apComponent', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", "Product", "util", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse, Product, util) {
+        return {
+            restrict: 'A',
+            transclude: true,
+            scope: false,
+            replace: true,
+            priority: 1010,
+            template: function (element, attrs) {
+                var templateHTML = $templateCache.get(attrs.apComponent);
+                if (!templateHTML) {
+                    throw new KnownException("Unable to load specified ap component " + attrs.apComponent);
+                }
+                return templateHTML;
+            },
+            link: function (scope, element, attrs, ctrl, transclude) {
+
+            }
+        };
+    }]);
+
+},{"angular":182}],110:[function(require,module,exports){
+var angular = require('angular');
+
+
+angular.module('productDetail', []);
+
+(function () {var f = require("./index.js");f["core"]=({"abstractProductAdd":require("./core\\abstractProductAdd.js"),"productAddFactory":require("./core\\productAddFactory.js")});f["directives"]=({"apComponent":require("./directives\\apComponent.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
+require('./template.js');
+},{"./core\\abstractProductAdd.js":107,"./core\\productAddFactory.js":108,"./directives\\apComponent.js":109,"./index.js":110,"./template.js":111,"angular":182}],111:[function(require,module,exports){
+/**
+ * Generated by grunt-angular-templates 
+ */
+angular.module("nc").run(["$templateCache", function($templateCache) {  'use strict';
+
+  $templateCache.put('ap/inner-tab-breadcrumb',
+    "<div><div class=\"alert alert-yellow\" ng-if=\"formDataPtr.Status == 'WA' && !adminMode\">This product is waiting for approval from the admin. You cannot edit it now.</div><div class=margin-bottom-20><span>Global Category:</span> <span>{{ breadcrumb.globalCategory }}</span></div></div>"
+  );
+
+
+  $templateCache.put('ap/modal-variant-detail',
+    "<form class=\"ah-form sticky-mainform-action\" name=addProductVariantForm><div class=modal-header><h3 class=\"float-left modal-title\" ng-init=\"form = addProductVariantForm\">Variant: {{ pair.text }}</h3><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button ng-disabled=form.$invalid class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div><div class=\"modal-body margin-top-20\"><div class=row><div class=col-xs-12><div ng-if=form.$invalid class=\"alert alert-red\" ng-cloak>Please make sure all fields have no error.</div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/MasterVariant_ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=pair.ProductNameEn maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/MasterVariant_ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=pair.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/MasterVariant_Sku><input class=\"form-control width-field-large\" name=Sku ng-model=pair.Sku maxlength=300 ng-pattern=\"/^[^<>]+$/\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/MasterVariant_Upc><input class=\"form-control width-field-large\" ng-pattern=\"/^[^<>]+$/\" name=Upc maxlength=300 ng-model=\"pair.Upc\"></div><div class=form-group><div class=width-label><label class=control-label>Display</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select class=form-control ng-model=pair.Display><option value={{op.value}} ng-repeat=\"op in dataset.VariantDisplayOption\">{{ op.text }}</option></select></div></div></div></div></div><div ap-component=ap/section-image-video></div><div ap-component=ap/section-description></div><div ap-component=ap/section-shipping></div><div ap-component=ap/section-seo></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div></div></div><form></form></form>"
+  );
+
+
+  $templateCache.put('ap/section-description',
+    "<div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=DescriptionFullEn ng-model=variantPtr.DescriptionFullEn>\r" +
+    "\n" +
+    "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=variantPtr.DescriptionFullTh>\r" +
+    "\n" +
+    "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=addProductForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=variantPtr.DescriptionShortEn>\r" +
+    "\n" +
+    "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=addProductForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=variantPtr.DescriptionShortTh>\r" +
+    "\n" +
+    "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint1En nc-label=\"Killer Point 1 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint1En ng-model=variantPtr.KillerPoint1En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint1Th nc-label=\"Killer Point 1 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint1Th ng-model=variantPtr.KillerPoint1Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint2En nc-label=\"Killer Point 2 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint2En ng-model=variantPtr.KillerPoint2En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint2Th nc-label=\"Killer Point 2 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint2Th ng-model=variantPtr.KillerPoint2Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint3En nc-label=\"Killer Point 3 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint3En ng-model=variantPtr.KillerPoint2En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint3Th nc-label=\"Killer Point 3 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint3Th ng-model=variantPtr.KillerPoint3Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/section-detail',
+    "<div class=form-section><div class=form-section-header><h2>Detail</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Attribute Set</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-if=\"controlFlags.variation == 'enable'\" class=form-control disabled><option disabled>{{ formData.AttributeSet.AttributeSetNameEn }}</option></select><ui-select theme=selectize loading=refresher.AttributeSetsLoading ng-if=\"controlFlags.variation != 'enable'\" ng-model=formData.AttributeSet ng-show=\"dataset.AttributeSets.length > 0\"><ui-select-match placeholder=\"Search Attribute Set\"><span ng-bind=$select.selected.AttributeSetNameEn></span> <span ng-show=!$select.selected.AttributeSetNameEn>- Select Attribute Set -</span></ui-select-match><ui-select-choices group-by=\"'_group'\" refresh=refresher.AttributeSets($select.search) refresh-delay=1000 repeat=\"item in ($select.search != '' ? dataset.CombinedAttributeSets : dataset.AttributeSets) | filter : $select.search track by item.AttributeSetId\"><span ng-bind=item.AttributeSetNameEn></span></ui-select-choices></ui-select><select class=form-control ng-if=\"dataset.AttributeSets.length == 0\" disabled><option disabled>This category has no attribute sets</option></select></div></div><a class=\"like-text form-text\" ng-if=\"formData.AttributeSet.AttributeSetId && controlFlags.variation != 'enable'\" ng-click=\"formData.AttributeSet = {}\"><i class=\"fa fa-minus-circle color-theme\"></i></a></div><div class=form-group ng-repeat=\"amap in formData.AttributeSet.AttributeSetMaps\"><div class=width-label><label class=control-label ng-class=\"{'required': amap.Attribute.Required}\">{{ amap.Attribute.AttributeNameEn }}</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(amap.Attribute.DataType), 'width-field-xxl': isHtmlInput(amap.Attribute.DataType)}\"><select ng-if=isListInput(amap.Attribute.DataType) ng-required=\"amap.Attribute.Required && onPublishing\" class=form-control ng-model=formData.MasterAttribute[amap.Attribute.AttributeId] ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" name=AmapInput{{$index}} ng-options=\"item as item.AttributeValue.AttributeValueEn for item in amap.Attribute.AttributeValueMaps track by item.AttributeValueId\"><option disabled value=\"\" selected>- Select option -</option></select><div ng-if=isHtmlInput(amap.Attribute.DataType)><textarea ng-required=\"amap.Attribute.Required && onPublishing\" ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" ng-model=formData.MasterAttribute[amap.Attribute.AttributeId] name=AmapInput{{$index}} class=form-control ng-ckeditor=ckOptions></textarea></div><input ng-if=isFreeTextInput(amap.Attribute.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" ng-required=\"amap.Attribute.Required && onPublishing\" class=form-control name=AmapInput{{$index}} ng-model=\"formData.MasterAttribute[amap.Attribute.AttributeId]\"><div ng-if=isCheckboxInput(amap.Attribute.DataType) ng-init=\"formData.MasterAttribute[amap.Attribute.AttributeId] = {}\"><div class=checkbox ng-repeat=\"vmap in amap.Attribute.AttributeValueMaps\"><label><input type=checkbox ng-model=\"formData.MasterAttribute[amap.Attribute.AttributeId][vmap.AttributeValueId]\"> {{ vmap.AttributeValue.AttributeValueEn }}</label></div></div></div></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/section-image-video',
+    "<div><nc-image-block options=\"{height: '150px', width: '150px'}\" name=Images nc-model=imagesPtr title=\"Product Images\" uploader=uploader on-fail=onImageUploadFail size=120></nc-image-block><div class=form-section ng-show=\"imagesPtr.length > 0\"><div class=form-section-header>Embed Video</div><div class=form-section-content><div ng-repeat=\"i in imagesPtr\"><div nc-template=common/input/form-group-with-label nc-label=\"Video Link {{$index + 1}}\" nc-template-form=\"form['VideoLinks' + $index]\" nc-template-options-path=addProductForm/VideoLink><input class=\"form-control width-field-normal\" name=VideoLinks{{$index}} type=url maxlength=500 ng-model=\"variantPtr.VideoLinks[$index]\"></div></div></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/section-inventory',
+    "<div class=form-section><div class=form-section-header><h2>Inventory</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.Quantity nc-template-options-path=addProductForm/Quantity nc-label=\"Inventory Amount\"><input class=form-control name=Quantity ng-pattern-restrict=^[0-9]*$ maxlength=10 ng-model=\"variantPtr.Quantity\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SafetyStock nc-template-options-path=addProductForm/SafetyStock nc-label=\"Safety Stock Amount\"><input class=form-control name=SafetyStock ng-pattern-restrict=^[0-9]*$ maxlength=10 ng-model=\"variantPtr.SafetyStock\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.StockType nc-template-options-path=addProductForm/StockType nc-label=\"Stock Type\"><select ng-model=variantPtr.StockType class=form-control name=StockType><option selected disabled>- Select Stock Type -</option><option>Stock</option><option>Pre-Order</option></select></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/section-keywords',
+    "<div class=form-section><div class=form-section-header><h2>Keywords</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=Keywords nc-template-form=form.Keywords nc-template-options-path=addProductForm/Keywords><ui-select ng-model=formData.Keywords name=Keywords nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 nc-tag-pattern=^[a-zA-Z0-9ก-๙\\s\\-]+$ multiple tagging tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match placeholder=\"Input keywords\">{{$item}}</ui-select-match><ui-select-choices repeat=\"item in formData.AttributeSet.AttributeSetTagMaps\">{{item}}</ui-select-choices></ui-select></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Keywords).length > 0\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Keywords\" ng-click=\"(formData.Keywords.indexOf(tag) == -1) && formData.Keywords.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/section-overview',
+    "<div class=row ng-if=\"formData.Status == 'WA'\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Overview</h2></div><div class=form-section-content><div class=container-fluid style=\"margin: -15px\"><table class=table><thead><th>Product Name</th><th ng-if=\"(overview.Variants || []).length == 0\">PID</th><th>Shop ID</th><th ng-if=\"(overview.Variants || []).length > 0\">Group ID</th><th>Price</th><th>Info</th><th>Image</th><th>Status</th><th>Live</th><th>Visible</th></thead><tbody><tr><td>{{ overview.MasterVariant.ProductNameEn }}</td><td>{{ overview.MasterVariant.Pid }}</td><td>{{ overview.ShopId }}</td><td>{{ overview.MasterVariant.OriginalPrice | number: 2 }}</td><td><i ng-if=!overview.InfoFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=overview.InfoFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td><i ng-if=!overview.ImageFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=overview.ImageFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td><span class=\"{{ asStatus(overview.Status).color }}\"><i class=\"fa {{ asStatus(overview.Status).icon }}\"></i> {{ asStatus(formData.Status).name }}</span></td><td><i class=\"fa fa-circle color-grey\"></i></td><td><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon font-size-16' : !overview.Visibility, 'fa fa-eye color-dark-grey eye-icon font-size-16' : overview.Visibility}\"></i></td></tr><tbody></tbody></tbody></table></div></div></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/section-price',
+    "<div class=form-section><div class=form-section-header><h2>Price</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.SalePrice nc-label=\"Sale Price\" nc-template-options-path=addProductForm/SalePrice><input autocomplete=off ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" class=\"form-control width-field-normal\" maxlength=20 name=SalePrice ng-model=variantPtr.SalePrice required></div><div nc-template=common/input/form-group-with-label nc-label=\"Original Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.OriginalPrice><input autocomplete=off class=\"form-control width-field-normal\" name=OriginalPrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"variantPtr.OriginalPrice\"></div><div nc-template=common/input/form-group-with-label nc-label=Installment nc-template-options-path=addProductForm/Installment nc-template-form=form.Installment><select ng-if=\"(variantPtr.SalePrice || 0) > 5000\" class=form-control ng-model=variantPtr.Installment><option>Yes</option><option selected>No</option></select><select disabled ng-if=\"(variantPtr.SalePrice || 0) <= 5000\" class=form-control><option value=No selected>Available when price is more than 5,000</option></select></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/section-seo',
+    "<div class=form-section><div class=form-section-header><h2>SEO</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaTitleEn nc-label=\"Meta Title (English)\" nc-template-options-path=addProductForm/Nothing><input class=\"form-control width-field-normal\" name=SEO_MetaTitleEn ng-model=variantPtr.SEO.MetaTitleEn maxlength=\"60\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaTitleTh nc-label=\"Meta Title (ไทย)\" nc-template-options-path=addProductForm/Nothing><input class=\"form-control width-field-normal\" name=SEO_MetaTitleTh ng-model=variantPtr.SEO.MetaTitleTh maxlength=\"60\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaDescriptionEn nc-label=\"Meta Description (English)\" nc-template-options-path=addProductForm/Nothing><input maxlength=150 class=\"form-control width-field-normal\" name=SEO_MetaDescriptionEn ng-model=\"variantPtr.SEO.MetaDescriptionEn\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaDescriptionTh nc-label=\"Meta Description (ไทย)\" nc-template-options-path=addProductForm/Nothing><input maxlength=150 class=\"form-control width-field-normal\" name=SEO_MetaDescriptionTh ng-model=\"variantPtr.SEO.MetaDescriptionTh\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaKeywordsEn nc-label=\"Meta Keywords (English)\" nc-template-options-path=addProductForm/Nothing><input placeholder=\"Keywords separated by comma\" class=\"form-control width-field-normal\" name=SEO_MetaKeywordsEn ng-model=\"variantPtr.SEO.MetaKeywordEn\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaKeywordsTh nc-label=\"Meta Keywords (ไทย)\" nc-template-options-path=addProductForm/Nothing><input placeholder=\"Keywords separated by comma\" class=\"form-control width-field-normal\" name=SEO_MetaKeywordsTh ng-model=\"variantPtr.SEO.MetaKeywordTh\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_ProductUrlKeyEn nc-label=\"Product URL Key\" nc-template-options-path=addProductForm/Nothing><input maxlength=300 class=\"form-control width-field-normal\" ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" name=SEO_ProductUrlKeyEn ng-model=\"variantPtr.SEO.ProductUrlKeyEn\"></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Nothing nc-template-form=form.SEO_ProductBoostingWeight nc-label=\"Product Boosting\"><input type=number class=\"form-control width-field-normal\" min=0 max=10000 step=1 ng-pattern=\"/^[0-9]+$/\" name=SEO_ProductBoostingWeight ng-model=\"variantPtr.SEO.ProductBoostingWeight\"></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/section-shipping',
+    "<div class=form-section><div class=form-section-header><h2>Shipping Detail</h2></div><div class=form-section-content><div class=form-group ng-if=!options.hideShippingMethod><div class=width-label><label class=control-label>Shipping Method</label></div><div class=width-field-normal><div class=\"radio multiple-radio multiline\"><label><input type=radio name=shipping_method value=1 ng-model=\"variantPtr.ShippingMethod\"> Dropship by 3PL</label><label><input type=radio name=shipping_method value=2 ng-model=\"variantPtr.ShippingMethod\"> Central Fulfillment</label></div></div></div><div nc-template=common/input/form-group-with-label nc-label=\"Preparation Time\" nc-template-form=form.PrepareDay nc-template-options-path=addProductForm/PrepareDay style=\"margin-bottom: 0px\"><input class=\"form-control width-field-normal\" name=PrepareDay ng-pattern-restrict=^[0-9]*$ ng-required=onPublishing maxlength=5 ng-model=\"variantPtr.PrepareDay\"></div><div class=\"form-group margin-bottom-20\"><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=checkbox><label><input type=checkbox ng-model=individualDayChecked> Set preparation time for individual day</label></div></div></div><div class=form-group ng-show=individualDayChecked><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=multiple-input><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Monday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareMon><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareMon ng-model=\"variantPtr.PrepareMon\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Tuesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareTue><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareTue ng-model=\"variantPtr.PrepareTue\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Wednesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareWed><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareWed ng-model=\"variantPtr.PrepareWed\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Thursday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareThu><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareThu ng-model=\"variantPtr.PrepareThu\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Friday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareFri><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareFri ng-model=\"variantPtr.PrepareFri\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Saturday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSat><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareSat ng-model=\"variantPtr.PrepareSat\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Sunday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSun><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareSun ng-model=\"variantPtr.PrepareSun\"></div></div></div></div></div><div class=\"form-group margin-top-20\"><div class=width-label><label class=\"control-label required\" stytle=margin-top:25px>Package Dimension</label></div><div class=width-field-xxl><div class=multiple-input><div class=input-column><div nc-template=common/input/div-with-label nc-label=Length nc-template-options-path=addProductForm/Dimension nc-template-form=form.Length><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Length ng-model=\"variantPtr.Length\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Height nc-template-options-path=addProductForm/Dimension nc-template-form=form.Height><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Height ng-model=\"variantPtr.Height\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Width nc-template-options-path=addProductForm/Dimension nc-template-form=form.Width><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Width ng-model=\"variantPtr.Width\"></div></div><div class=\"input-column no-label select input-xl\" style=\"padding-top: 24px\"><select ng-model=variantPtr.DimensionUnit class=form-control><option value=MM>Millimeter</option><option value=CM>Centimeter</option><option value=M>Meter</option></select></div></div></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Weight</label></div><div class=width-field-xxl><div class=multiple-input><div nc-template=common/input/text-column-no-label nc-label=\"\" nc-template-options-path=addProductForm/Dimension nc-template-form=form.Weight><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Weight ng-model=\"variantPtr.Weight\"></div><div class=\"input-column select input-xl\"><div class=ah-select2-dropdown><select class=form-control ng-model=formDataPtr.MasterVariant.WeightUnit><option value=G>Grams</option><option value=KG>Kilograms</option></select></div></div></div></div></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/section-vital-information',
+    "<div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label ng-init=\"form = addProductForm\" nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=variantPtr.ProductNameEn maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=variantPtr.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku ng-model=variantPtr.Sku maxlength=300 ng-pattern=\"/^[^<>]+$/\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" ng-pattern=\"/^[^<>]+$/\" name=Upc maxlength=300 ng-model=\"variantPtr.Upc\"></div><div ng-if=variantPtr.MasterVariant.Pid><div nc-template=common/input/form-group-with-label nc-template-form=form.Pid nc-label=\"{{ (formData.Variants || []).length > 0 ? 'Group ID' : 'PID' }}\" nc-template-options-path=addProductForm/Pid><input class=\"form-control width-field-large\" name=Pid disabled ng-model=\"variantPtr.Pid\"></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Brand Name</label></div><div class=width-field-normal><div class=ah-select2-dropdown><ui-select ng-model=formData.Brand theme=selectize loading=refresher.BrandLoading><ui-select-match><span ng-bind-html=$select.selected.BrandNameEn></span> <span ng-show=!$select.selected.BrandNameEn><span class=color-grey><i class=\"fa fa-search\"></i> Search Brand</span></span></ui-select-match><ui-select-choices group-by=\"'_group'\" ui-disable-choice=item.disabled refresh-delay=1000 refresh=refresher.Brands($select.search) repeat=\"item in (dataset.Brands.length == 0 || $select.search == '' ? dataset.BrandsEmpty : dataset.Brands) | filter: $select.search  track by item.BrandId\"><span ng-bind-html=\"item.BrandNameEn | highlight: $select.search\"></span></ui-select-choices></ui-select></div></div></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/tab-category',
+    "<div id=add-product-category-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row><div class=col-xs-9><div class=form-section><div class=form-section-header><h2>Global Category</h2></div><div class=form-section-content><div class=form-group ng-repeat=\"item in formData.GlobalCategories track by $index\" ng-cloak><div class=width-label ng-if=\"$index == 0\"><label class=control-label>Global Category:</label></div><div class=width-label ng-if=\"$index != 0 && formData.GlobalCategories[$index - 1] != null\"><label class=control-label>{{$index | ordinal}} Alternative:</label></div><div class=width-field-normal ng-if=\"$index == 0\"><span class=form-text>{{item.NameEn}}</span></div><div class=width-field-normal ng-if=\"$index != 0 && item != null\"><a class=form-text data-toggle=modal data-target=#global-category ng-click=\"$emit('openGlobalCat', item, $index)\">{{item.NameEn}}</a> <i ng-if=\"!formData.GlobalCategories[$index + 1]\" ng-click=\"$emit('deleteGlobalCat', $index)\" class=\"clickable color-dark-grey fa fa-trash margin-left-10\"></i></div><div class=width-field-normal ng-if=\"$index != 0 && item == null && formData.GlobalCategories[$index - 1] != null\"><a class=\"like-text form-text\" data-toggle=modal data-target=#global-category ng-click=\"$emit('openGlobalCat', item, $index)\"><i class=\"fa fa-plus-circle color-theme\"></i> Add Alternative Category</a></div></div></div></div></div><div class=col-xs-3><h4>Global Category</h4><p>Global category is where this product will belong to when user finds it on the market place. You can have one main global category, but you can have an alternative category where the product will be cloned into.</p></div></div><div class=row><div class=col-xs-9><div class=form-section><div class=form-section-header><h2>Local Category</h2></div><div class=form-section-content><div class=form-group ng-repeat=\"item in formData.LocalCategories track by $index\" ng-cloak><div class=width-label ng-if=\"$index == 0\"><label class=control-label>Local Category:</label></div><div class=width-label ng-if=\"$index != 0 && formData.LocalCategories[$index - 1] != null\"><label class=control-label>{{$index | ordinal}} Alternative:</label></div><div class=width-field-normal ng-if=\"item != null\"><a class=form-text data-toggle=modal data-target=#local-category ng-click=\"$emit('openLocalCat', item, $index)\">{{item.NameEn}}</a> <i ng-if=\"!formData.LocalCategories[$index + 1]\" ng-click=\"$emit('deleteLocalCat', $index)\" class=\"clickable color-dark-grey fa fa-trash margin-left-10\"></i></div><div class=width-field-normal ng-if=\"item == null && (formData.LocalCategories[$index - 1] != null || $index == 0)\"><a class=\"like-text form-text\" data-toggle=modal data-target=#local-category ng-click=\"$emit('openLocalCat', item, $index)\"><i class=\"fa fa-plus-circle color-theme\"></i> Add <span ng-if=\"$index == 0\">Local</span> <span ng-if=\"$index > 0\">Alternative Local</span> Category</a></div></div></div></div></div><div class=col-xs-3><h4>Local Category</h4><p>Local category is where this product will belong when user finds it on this store. You can have one main local category but many alternative ones.</p></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/tab-images',
+    "<div id=add-product-images-tab-content><div ap-component=ap/inner-tab-breadcrumb></div><div class=row><div class=col-xs-12><nc-alert nc-model=image_alert></nc-alert><div ap-component=ap/section-image-video></div></div></div><div class=\"modal fade\" tabindex=-1 role=dialog id=product-image-zoom><div class=\"modal-dialog modal-product-image\"><img src=\"data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=\" alt=\"\"></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/tab-information',
+    "<div><div ap-component=ap/inner-tab-breadcrumb></div><div ap-component=ap/section-overview></div><div class=row><div class=col-xs-12><div ap-component=ap/section-vital-information></div><div ap-component=ap/section-price></div><div ap-component=ap/section-description></div><div ap-component=ap/section-detail></div><div ap-component=ap/section-keywords></div><div ap-component=ap/section-inventory></div><div ap-component=ap/section-shipping></div></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/tab-more-option',
+    "<div id=add-product-more-option-tab-content><div ap-component=ap/inner-tab-breadcrumb></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Relationship</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Related Products\" nc-template-form=form.RelatedProducts nc-template-options-path=addProductForm/RelatedProducts><ui-select ng-model=formData.RelatedProducts name=RelatedProducts nc-tag-validator nc-max-tag-count=10 multiple><ui-select-match placeholder=\"Input Product Name\"><span>{{ $item.ProductNameEn }}</span></ui-select-match><ui-select-choices repeat=\"item in (dataset.RelatedProducts | exclude: formData.RelatedProducts : 'ProductId' | exclude: [formData] : 'ProductId' ) track by item.Pid\" refresh=refresher.RelatedProducts($select.search) refresh-delay=1>{{ item.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div></div><div class=row><div class=col-xs-12><div ap-component=ap/section-seo></div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>More Details</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Effective On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }\" placeholder=\"Select date and time when product will go online\" class=\"input-icon-calendar form-control\" value=\"{{ formData.EffectiveDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.EffectiveDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'hour' }\"></ul></div><span class=help-block></span></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go online\"></i></div></div><div class=form-group><div class=width-label><label class=control-label>Expire On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white placeholder=\"Select date and time when product will go offline\" class=\"input-icon-calendar form-control\" name=ExpireDate ng-class=\"{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }\" value=\"{{ formData.ExpireDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ExpireDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'hour' }\"></ul></div><div class=width-field-large><span class=\"help-block color-red\" ng-if=\"formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate\"><span>Effective date/time must come before expire date/time</span></span></div></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go offline\"></i></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/TheOneCardEarn nc-template-form=form.TheOneCardEarn nc-label=\"The One Card earn\"><input disabled class=form-control ng-restrict=[0-9]* name=TheOneCardEarn ng-model=\"formData.TheOneCardEarn\"></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Nothing nc-template-form=form.GiftWrap nc-label=\"Gift Wrap\"><select class=form-control name=formData.GiftWrap><option>No</option><option>Yes</option></select></div><div class=form-group><div class=width-label><label class=control-label>Control Flag</label></div><div class=width-field-normal><div class=\"checkbox multiple-checkbox\"><label><input type=checkbox ng-model=formData.ControlFlags.Flag1>Flag 1</label><label><input type=checkbox ng-model=formData.ControlFlags.Flag2>Flag 2</label><label><input type=checkbox ng-model=formData.ControlFlags.Flag3>Flag 3</label></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Remark nc-template-form=form.Remark nc-label=Remark><textarea class=form-control ng-pattern=\"/^[^<>]+$/\" maxlength=2000 name=Remark ng-model=formData.Remark>\r" +
+    "\n" +
+    "\t\t\t\t\t\t</textarea></div></div></div></div></div></div>"
+  );
+
+
+  $templateCache.put('ap/tab-variations',
+    "<div id=add-product-variation-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row ng-if=\"controlFlags.variation != 'enable'\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content><div class=form-group><p class=form-control-static>Variation will allow you to create a group of products with different attributes such as size and color. Once you enable variation, information from other tabs will be copied into variants that you will create, and variation cannot be disabled. <strong>Please select attribute set before enabling variation.</strong></p><button class=\"btn btn-width-xxl btn-blue margin-top-20\" ng-disabled=!formData.AttributeSet.AttributeSetId ng-click=enableVariation()>Enable Variation</button></div></div></div></div></div><div class=row ng-show=\"controlFlags.variation == 'enable'\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content ng-if=\"!(formData.AttributeSet && !formData.AttributeSet['AttributeSetId']) && controlFlags.variation == 'enable'\"><div class=form-group ng-repeat=\"jth in variationFactorIndices.iterator\" ng-show=\"(dataset.attributeOptions[0].options.length > 0) || (jth == 0)\"><div class=width-label><select class=form-control ng-options=\"i as i.Attribute.AttributeNameEn\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\tfor i in formData.AttributeSet.AttributeSetMaps |\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\ttruth: 'Attribute.VariantStatus' |\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\texclude: dataset.attributeOptions[1 - jth].Attribute : 'AttributeId'\r" +
+    "\n" +
+    "\t\t\t\t\t\t\t\ttrack by i.Attribute.AttributeId\" ng-model=dataset.attributeOptions[jth]><option value=\"\" disabled selected>Select an option..</option></select></div><div ng-template=common/input/width-field-large ng-template-options=\"{\r" +
+    "\n" +
+    "                                    'error' : {\r" +
+    "\n" +
+    "                                        'messages': {\r" +
+    "\n" +
+    "                                            'maxtagcount': 'Cannot exceed 20 tags',\r" +
+    "\n" +
+    "                                            'maxtaglength': 'Tag must contain 30 characters or less',\r" +
+    "\n" +
+    "                                            'pattern': 'Only letters and numbers allowed'\r" +
+    "\n" +
+    "                                        },\r" +
+    "\n" +
+    "                                        'show': true,\r" +
+    "\n" +
+    "                                        'conditions' :  addProductForm['attributeOptions' + jth].$error\r" +
+    "\n" +
+    "                                    }\r" +
+    "\n" +
+    "                                    }\"><ui-select ng-if=isListInput(dataset.attributeOptions[jth].Attribute.DataType) multiple ng-model=dataset.attributeOptions[jth].options><ui-select-match placeholder=\"Select variant\">{{ $item.AttributeValue.AttributeValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps | exclude: dataset.attributeOptions[jth].options : 'AttributeValue.AttributeValueId' ) | filter:$select.search\">{{ i.AttributeValue.AttributeValueEn }}</ui-select-choices></ui-select><ui-select ng-if=isFreeTextInput(dataset.attributeOptions[jth].Attribute.DataType) multiple tagging tagging-label=\"\" tagging-tokens=,|ENTER name=attributeOptions{{jth}} nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 nc-tag-pattern=^[a-zA-Z0-9ก-๙\\s\\-]+$ ng-model=dataset.attributeOptions[jth].options><ui-select-match placeholder=\"Input variant\">{{ $item }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps) | filter:$select.search\">{{ i }}</ui-select-choices></ui-select><input ng-if=!dataset.attributeOptions[jth].Attribute.DataType disabled class=\"form-control\"></div><a class=\"like-text form-text\" ng-click=variationFactorIndices.pushSecond() ng-if=\"dataset.attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1\"><i class=\"fa fa-plus-circle color-theme\"></i> Add another option</a> <a class=\"like-text form-text\" ng-click=variationFactorIndices.popSecond() ng-if=\"variationFactorIndices.length() == 2 && jth == 1\"><i class=\"fa fa-trash color-theme icon-size-20\"></i></a></div><div class=form-group ng-show=\"formData.Variants.length > 0\"><div class=width-label><label class=control-label>Default Variant</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-model=formData.DefaultVariant class=form-control ng-options=\"i as i.text for i in formData.Variants track by i.text\" required></select></div></div></div></div></div><div class=form-section ng-if=\"formData.AttributeSet && formData.Variants.length > 0\" ng-show=\"controlFlags.variation == 'enable'\"><div class=form-section-header>Variant ({{ formData.Variants.length }})</div><div class=\"form-section-content padding-left-30 padding-right-30\"><table class=\"table ah-table variation-table\"><thead><tr><th class=column-variant>Variant</th><th ng-if=\"formData.Variants.length > 0 && formData.Variants[0].Pid\">PID</th><th class=column-sku>SKU</th><th class=column-sale-price><label class=required>Sale Price</label></th><th class=column-price>Original Price</th><th class=column-inventory>Inventory</th><th class=\"column-detail text-center\">Detail</th><th class=column-visibility>Visibility</th></tr></thead><tbody><tr ng-repeat=\"pair in formData.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td ng-if=\"formData.Variants.length > 0 && formData.Variants[0].Pid\">{{pair.Pid }}</td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
+    "\n" +
+    "                                        'error' : {\r" +
+    "\n" +
+    "                                            'messages': {\r" +
+    "\n" +
+    "                                                'pattern': 'Special characters are not allowed'\r" +
+    "\n" +
+    "                                            },\r" +
+    "\n" +
+    "                                            'show': $root.isInvalid(addProductForm['pair_Sku' + $index]),\r" +
+    "\n" +
+    "                                            'conditions' : addProductForm['pair_Sku' + $index].$error\r" +
+    "\n" +
+    "                                        }\r" +
+    "\n" +
+    "                                    }\"><input ng-disabled=!pair.Visibility class=form-control name=\"pair_Sku{{ $index }}\" maxlength=300 ng-pattern=\"/^[^<>]+$/\" ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }\" ng-model=\"pair.Sku\"></td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
+    "\n" +
+    "                                        'error' : {\r" +
+    "\n" +
+    "                                            'messages': {\r" +
+    "\n" +
+    "                                                'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\r" +
+    "\n" +
+    "                                            },\r" +
+    "\n" +
+    "                                            'show': $root.isInvalid(addProductForm['pair_SalePrice' + $index]),\r" +
+    "\n" +
+    "                                            'conditions' : addProductForm['pair_SalePrice' + $index].$error\r" +
+    "\n" +
+    "                                        }\r" +
+    "\n" +
+    "                                    }\"><input ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_SalePrice{{$index}}) }\" ng-model=pair.SalePrice name=\"pair_SalePrice{{ $index }}\" ng-disabled=!pair.Visibility ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
+    "\n" +
+    "\t\t\t\t\t\t                                         'error' : {\r" +
+    "\n" +
+    "\t\t\t\t\t\t                                             'messages': {\r" +
+    "\n" +
+    "\t\t\t\t\t\t                                                 'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\r" +
+    "\n" +
+    "\t\t\t\t\t\t                                             },\r" +
+    "\n" +
+    "\t\t\t\t\t\t                                             'show': $root.isInvalid(addProductForm['pair_OriginalPrice' + $index]),\r" +
+    "\n" +
+    "\t\t\t\t\t\t                                             'conditions' : addProductForm['pair_OriginalPrice' + $index].$error\r" +
+    "\n" +
+    "\t\t\t\t\t\t                                         }\r" +
+    "\n" +
+    "\t\t\t\t\t\t                                     }\"><input ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_OriginalPrice{{$index}}) }\" name=pair_OriginalPrice{{$index}} ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" ng-model=pair.OriginalPrice ng-disabled=!pair.Visibility class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
+    "\n" +
+    "                                        'error' : {\r" +
+    "\n" +
+    "                                            'messages': {\r" +
+    "\n" +
+    "                                                'pattern': 'Only numbers allowed'\r" +
+    "\n" +
+    "                                            },\r" +
+    "\n" +
+    "                                            'show': $root.isInvalid(addProductForm['pair_Quantity' + $index]),\r" +
+    "\n" +
+    "                                            'conditions' : addProductForm['pair_Quantity' + $index].$error\r" +
+    "\n" +
+    "                                        }\r" +
+    "\n" +
+    "                                    }\"><input ng-model=pair.Quantity maxlength=5 ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Quantity{{$index}}) }\" ng-disabled=!pair.Visibility ng-pattern=\"/^[0-9]+$/\" name=pair_Quantity{{$index}} class=\"form-control\"></td><td><a class=\"btn btn-white btn-width-xl\" ng-disabled=!pair.Visibility ng-click=\"openVariantDetail(pair, formData.Variants, $index)\">More Detail</a></td><td><a class=\"btn btn-white\" ng-click=\"pair.Visibility = !pair.Visibility\"><span ng-if=pair.Visibility>Hide</span> <span ng-if=!pair.Visibility>Show</span></a></td></tr></tbody></table></div></div></div></div></div>"
+  );
+ }]);
+},{}],112:[function(require,module,exports){
 /**
  * Collection of Route ID (Object key) with route string
  *
@@ -10627,7 +8579,7 @@ function generateRouteArray(obj) {
 
 var seller = {
 	'Home|fa-home': {
-
+		'Onboarding': '/onboarding'
 	},
 	'Orders|fa-inbox': {
 
@@ -10661,18 +8613,6 @@ var seller = {
 	'Account|fa-user': {
 		'User Accounts': '/accounts',
 		'User Roles': '/roles'
-	},
-	'Collection|fa-product-hunt': {
-		'View': '/collections',
-		'Add': '/collections/add',
-		'Category View|margin-top-30': '/collections/cat',
-	  	'Category Add': '/collections/catadd',
-	  	'Group View|margin-top-30': '/collections/cat',
-	  	'Group Add': '/collections/catadd',
-	},
-	'Buy 1 Get 1|fa-gift': {
-		'View': '/buy1get1',
-		'Add': '/buy1get1/add'
 	}
 };
 
@@ -10687,21 +8627,14 @@ var admin = {
 		'Global Category': '/admin/categories'
 	},
 	'Accounts|fa-user': {
-		'Shop Accounts': '/admin/shops',
-		'Shop Types': '/admin/shoptypes',
-		'Admin Accounts': '/admin/accounts',
-		'Admin Roles': '/admin/roles'
+		'Shop Accounts': ['/admin/shops', '/admin/shops/add'],
+		'Shop Types': ['/admin/shoptypes', '/admin/shoptypes/add'],
+		'Admin Accounts': ['/admin/accounts', '/admin/accounts/add'],
+		'Admin Roles': ['/admin/roles', '/admin/roles/add']
 	},
 	'Promotion|fa-bookmark': {
 		'Global Coupons': '/admin/coupons/admin',
 		'Seller Coupons': '/admin/coupons/seller'
-	},
-
-	// Create By Col Dev (Natee)
-	'CMS|fa-product-hunt': {
-	 	'CMS Category': '/admin/cms/category',
-	 	'CMS Collection': '/admin/cms/collection',
-	 	'CMS Group': '/admin/cms/group'
 	},
 	'Reports|fa-line-chart': {
 		'View': '/admin/reports'
@@ -10715,7 +8648,7 @@ module.exports = {
   seller: generateRouteArray(seller),
   admin: generateRouteArray(admin)
 }
-},{"lodash":183}],116:[function(require,module,exports){
+},{"lodash":185}],113:[function(require,module,exports){
 //Products Service
 module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
     function ($http, common, util, config, KnownException) {
@@ -10808,13 +8741,37 @@ module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
     }
 ];
 
-},{}],117:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Promotion/Ontopcreate');
 	return service;
 }];
-},{}],118:[function(require,module,exports){
+},{}],115:[function(require,module,exports){
+module.exports = ["common", "config", "util", "$log", "$window", function (common, config, util, $log, $window) {
+    'ngInject';
+    'use strict';
+
+    var service = common.Rest('/Onboarding');
+
+    service.getListCompletedTask = function () {
+        return common.makeRequest({
+            url: '/Onboarding',
+            method: 'GET'
+        });
+    };
+
+    service.launchShop = function() {
+        return common.makeRequest({
+            url: '/Shops/Launch?Status=AT',
+            method: 'GET'
+        });
+    };
+
+    return service;
+}];
+
+},{}],116:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Admin');
@@ -10849,14 +8806,14 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-},{}],119:[function(require,module,exports){
+},{}],117:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Admin');
 
 	return service;
 }]
-},{}],120:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 module.exports = ["common", "AdminPermissionService", function(common, AdminPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Admin');
@@ -10902,7 +8859,7 @@ module.exports = ["common", "AdminPermissionService", function(common, AdminPerm
 	};
 	return service;	
 }]
-},{}],121:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 module.exports = ["common", "config", "util", function(common, config, util) {
 	'ngInject';
 	var service = common.Rest('/Shops');
@@ -10935,13 +8892,14 @@ module.exports = ["common", "config", "util", function(common, config, util) {
 		var processed = {
 			Status: config.DROPDOWN.DEFAULT_STATUS_DROPDOWN[0],
 			ShopOwner: {},
-			Users: []
+			Users: [],
+			Commissions: []
 		};
 		return processed;
 	};
 	return service;	
 }]
-},{}],122:[function(require,module,exports){
+},{}],120:[function(require,module,exports){
 module.exports = ["common", "ShopPermissionService", function(common, ShopPermissionService) {
 	'ngInject';
 	var service = common.Rest('/Shoptypes');
@@ -10987,7 +8945,7 @@ module.exports = ["common", "ShopPermissionService", function(common, ShopPermis
 	};
 	return service;	
 }]
-},{}],123:[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', '$document', '$timeout', function(common, $document, $timeout) {
 	return function() {
@@ -11021,7 +8979,7 @@ module.exports = ['common', '$document', '$timeout', function(common, $document,
 		this.message = '';
 	};
 }];
-},{"angular":181}],124:[function(require,module,exports){
+},{"angular":182}],122:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common){
 	'use strict';
@@ -11267,7 +9225,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{"angular":181}],125:[function(require,module,exports){
+},{"angular":182}],123:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/Attributes');
@@ -11289,37 +9247,33 @@ module.exports = ["common", "config", function(common, config) {
 			AttributeNameTh: '',
 			DisplayNameEn: '',
 			DisplayNameTh: '',
-			Required: boolOptions[0],
-			Filterable: boolOptions[0],
-			DataValidation: validationOptions[0],
-			DataType: dataTypeOptions[0],
-			VariantStatus: boolOptions[0],
+			Required: false,
+			Filterable: false,
+			DataValidation: validationOptions[0].value,
+			DataType: dataTypeOptions[0].value,
+			VariantStatus: false,
 			HB: {
 				DefaultValue: ''
 			},
 			LT: {
+				DefaultValue: '',
 				AttributeValues: [{}]
 			},
 			ST: {
-				DataValidation: validationOptions[0],
+				DataValidation: validationOptions[0].value,
 				DefaultValue: ''
 			},
-			ShowGlobalSearchFlag: boolOptions[0],
-			ShowLocalSearchFlag: boolOptions[0],
-			VariantDataType: variantOptions[0]
+			CB: {
+				DefaultValue: '',
+				AttributeValues: [{}]
+			},
+			ShowGlobalSearchFlag: false,
+			ShowLocalSearchFlag: false,
+			VariantDataType: variantOptions[0].value
 		};
 	};
 	service.deserialize = function(data) {
 		var processed = angular.merge(service.generate(), data);
-		processed.VariantStatus = find(boolOptions,data.VariantStatus);
-		processed.VariantDataType = find(variantOptions,data.VariantDataType);
-		processed.DataType = find(dataTypeOptions,data.DataType);
-		processed.DataValidation = find(validationOptions, data.DataValidation);
-		processed.ShowLocalSearchFlag = find(boolOptions, data.ShowLocalSearchFlag);
-		processed.ShowGlobalSearchFlag = find(boolOptions, data.ShowGlobalSearchFlag);
-		processed.Required = find(boolOptions, data.Required) || boolOptions[0];
-		processed.Filterable = find(boolOptions, data.Filterable) || boolOptions[0];
-
 		switch(data.DataType) {
 			case 'ST':
 				processed['ST'] = {
@@ -11337,20 +9291,17 @@ module.exports = ["common", "config", function(common, config) {
 					DefaultValue: processed.DefaultValue
 				}
 			break;
+			case 'CB':
+				processed['CB'] = {
+					AttributeValues: processed.AttributeValues,
+					DefaultValue: processed.DefaultValue
+				};
+			break;
 		}
 		return processed;
 	};
 	service.serialize = function(data) {
 		var processed = angular.extend(service.generate(), data);
-
-		processed.VariantStatus = processed.VariantStatus ? processed.VariantStatus.value : undefined;
-		processed.VariantDataType = processed.VariantDataType ? processed.VariantDataType.value : undefined;
-		processed.DataType = processed.DataType ? processed.DataType.value : undefined;
-		processed.ShowLocalSearchFlag = processed.ShowLocalSearchFlag ? processed.ShowLocalSearchFlag.value : undefined;
-		processed.ShowGlobalSearchFlag = processed.ShowGlobalSearchFlag ? processed.ShowGlobalSearchFlag.value : undefined;
-		processed.Required = processed.Required ? processed.Required.value : undefined;
-		processed.Filterable = processed.Filterable ? processed.Filterable.value : undefined;
-
 		switch(processed.DataType) {
 			case 'ST':
 				processed.DefaultValue = data.ST.DefaultValue;
@@ -11364,6 +9315,10 @@ module.exports = ["common", "config", function(common, config) {
 				processed.DefaultValue = data.HB.DefaultValue;
 				delete processed['AttributeValues'];
 			break;
+			case 'CB':
+				processed.AttributeValues = data.CB.AttributeValues;
+				processed.DefaultValue = data.CB.DefaultValue;
+			break;
 		}
 
 		angular.forEach(dataTypeOptions, function(item) {
@@ -11373,7 +9328,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }];
-},{}],126:[function(require,module,exports){
+},{}],124:[function(require,module,exports){
 module.exports = ['common', function(common){
 	'use strict';
 	var service = {};
@@ -11521,7 +9476,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{}],127:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/AttributeSets');
@@ -11547,7 +9502,9 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	service.deserialize = function(data) {
 		var processed = angular.merge(service.generate(), data);
-		processed.Tags = [];
+		processed.Tags = _.map(processed.Tags, function(e) {
+			return _.pick(e, ['TagId', 'TagName']);
+		});
 		processed.Categories = _.join(_.map(data.Category, function(e) {
 			return e.NameEn + ' (' + e.CategoryAbbreviation + ')';
 		}), ', ');
@@ -11557,9 +9514,6 @@ module.exports = ["common", "config", function(common, config) {
 		if(angular.isUndefined(processed.Attributes)) {
 			processed.Attributes = [];
 		}
-		angular.forEach(data.Tags, function(tag) {
-			processed.Tags.push(tag.TagName);
-		});
 		angular.forEach(processed.Attributes, function(attr) {
 			attr.Required = attr.Required || false;
 			attr.Filterable = attr.Filterable || false;
@@ -11568,12 +9522,11 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	service.serialize = function(data) {
 		var processed = angular.copy(data);
-		processed.Tags = [];
-		//processed.Visibility = processed.Status.value;
-		angular.forEach(data.Tags, function(tag) {
-			processed.Tags.push({
-				TagName: tag
-			});
+		processed.Tags = _.map(processed.Tags, function(e) {
+			e.match = function(i) {
+				return this.TagName.match(i);
+			};
+			return e;
 		});
 		angular.forEach(processed.Attributes, function(attr) {
 			attr.Required = attr.Required || false;
@@ -11583,7 +9536,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }]
-},{}],128:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 module.exports = ['$window', function($window) {
 	return function(fn, close) {
 		var vm = this;
@@ -11619,7 +9572,7 @@ module.exports = ['$window', function($window) {
 		};
 	};
 }];
-},{}],129:[function(require,module,exports){
+},{}],127:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$q', 'common', function($q, common){
 	var service = {};
@@ -11705,295 +9658,32 @@ module.exports = ['$q', 'common', function($q, common){
 	};
 	return service;
 }];
-},{"angular":181}],130:[function(require,module,exports){
+},{"angular":182}],128:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	service = common.Rest('/Brands');
 	service.generate = function(data) {
 		return {
-			BrandImages: []
+			BrandBannerEn: [],
+			BrandBannerTh: []
 		};
 	}
 	service.deserialize = function(data) {
-		var processed = angular.copy(data);
-		if(angular.isDefined(processed.BrandImage) && processed.BrandImage != null) {
-			processed.BrandImages = [processed.BrandImage];
-		} else {
-			processed.BrandImages = [];
+		var processed = _.extend(service.generate(), data);
+		if(!_.isNil(data.BrandImage)) {
+			processed.brandImage = data.BrandImage;
 		}
 		return processed;
 	};
 
 	service.serialize = function(data) {
-		var processed = angular.copy(data);
-		if(processed.BrandImages.length > 0) {
-			processed.BrandImage = processed.BrandImages[0];
-		} else {
-			processed.BrandImage = null;
-		}
-		processed = _.omit(processed, ['BrandImages']);
+		var processed = _.extend({}, data);
+		_.unset(processed, ['brandImage']);
 		return processed;
 	};
 	return service;
 }]
-},{}],131:[function(require,module,exports){
-//Buy 1 Get 1 Service
-module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
-    function ($http, common, util, LocalCategory, Brand, config) {
-        'use strict';
-        var service = common.Rest('/ProductStages');
-
-        service.getOne = function (PromotionBuy1Get1ItemId) {
-            var req = {
-                method: 'GET',
-                url: '/ProBuy1Get1/' + PromotionBuy1Get1ItemId
-            };
-            return common.makeRequest(req);
-        };
-     
-        service.duplicate = function (PromotionBuy1Get1ItemId) {
-            //this URL structure is weird dont u think
-            var req = {
-                method: 'POST',
-                url: '/ProBuy1Get1/duplicate/' + PromotionBuy1Get1ItemId
-            };
-
-            return common.makeRequest(req);
-        };
-
-        service.getAll = function (parameters) {
-            var req = {
-                method: 'GET',
-                url: '/ProBuy1Get1/List',
-                params: {
-                    _order: parameters.orderBy || 'UpdateDate',
-                    _limit: parameters.pageSize || 10,
-                    _offset: parameters.page * parameters.pageSize || 0,
-                    _direction: parameters.direction || 'asc',
-                    _filter: parameters.filter || 'ALL',
-                    searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined
-                }
-            };
-
-            return common.makeRequest(req);
-        };
-
-        service.export = function (tobj) {
-            var path = '/ProBuy1Get1/Export';
-            return common.makeRequest({
-                responseType: 'arraybuffer',
-                method: 'POST',
-                url: path,
-                data: tobj
-            });
-        };
-
-        service.publish = function (tobj, Status) {
-           var path = '/ProBuy1Get1/Create';
-            if(typeof tobj.length != "undefined"){path = "/ProBuy1Get1/UpdateList";}
-                       
-            return common.makeRequest({
-                method: 'POST',
-                url: path,
-                data: tobj
-            });
-        };
-
-
-        service.bulkPublish = function (tobj) {
-            return common.makeRequest({
-                method: 'POST',
-                url: '/ProBuy1Get1/UpdateList',
-                data: tobj
-            });
-        };
-
-        service.visible = function (obj) {
-            return common.makeRequest({
-                method: 'POST',
-                url: '/ProBuy1Get1/UpdateList',
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            });
-        };
-        service.deleteBulk = function (arr) {
-            return common.makeRequest({
-                method: 'POST',
-                url: '/ProBuy1Get1/UpdateList',
-                data: arr,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            });
-        };
-
-        var StatusLookup = {};
-        config.PRODUCT_STATUS.forEach(function (object) {
-            StatusLookup[object.value] = object;
-        });
-        service.getStatus = function (abbreviation) {
-            return StatusLookup[abbreviation];
-        }
-
-        service.serialize = function (fd) {
-            var hasVariants = (!util.nullOrUndefined(fd.Variants) && fd.Variants.length > 0);
-
-            //Cleaned data
-            var clean = {};
-            clean.Variants = [];
-
-
-            try {
-                
-                clean.PromotionBuy1Get1ItemId   = fd.PromotionBuy1Get1ItemId;
-                clean.NameEN                    = fd.NameEN;
-                clean.NameTH                    = fd.NameTH;
-                clean.URLKey                    = fd.URLKey;
-                clean.PIDBuy                    = fd.PIDBuy;
-                clean.PIDGet                    = fd.PIDGet;
-                clean.ShortDescriptionTH        = fd.ShortDescriptionTH;
-                clean.LongDescriptionTH         = fd.LongDescriptionTH;
-                clean.ShortDescriptionEN        = fd.ShortDescriptionEN;
-                clean.LongDescriptionEN         = fd.LongDescriptionEN;
-               
-                clean.ProductBoxBadge           = null;
-                clean.Sequence                  = null;
-                clean.Status                    = fd.Status;
-                clean.CreateBy                  = fd.CreateBy;
-                clean.Createdate                = null              
-                clean.UpdateBy                  = fd.UpdateBy;
-                clean.UpdateDate                = null
-                clean.CreateIP                  = fd.CreateIP;
-                clean.UpdateIP                  = fd.UpdateIP;
-                clean.CMSStatusFlowId           = fd.CMSStatusFlowId;
-                clean.Visibility           = fd.Visibility;
-
-
-                if(fd.ExpiryDate && fd.EffectiveDate){
-                    var cpdate = angular.copy(fd.ExpiryDate);
-                    clean.ExpiryDate = moment(cpdate).format('LL');
-                    clean.ExpiryTime = moment(cpdate).format('HH:mm:ss');
-
-                    cpdate = angular.copy(fd.EffectiveDate);
-                    clean.EffectiveDate = moment(cpdate).format('LL');
-                    clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
-                }
-                
-                console.log('buy 1 get 1 create', clean);
-            } catch (ex) {
-                console.warn("buy 1 get 1 create exception", ex);
-            }
-           
-
-            return clean;
-        }
-
-         service.arrSerialize = function (fd) {
-            var retObjArr =[]
-
-            for(var index = 0 ; index <= fd.length ; index ++){
-                var clean = {};
-                try {
-
-//console.log("loop value : " + index + ", cmsid : "+ fd[index].CMSId +", status : "+ fd[index].Status + ", EffectiveDate : " + fd[index].EffectiveDate );
-
-                clean.PromotionBuy1Get1ItemId  = fd[index].PromotionBuy1Get1ItemId;
-                clean.NameEN                    = fd[index].NameEN;
-                clean.NameTH                    = fd[index].NameTH;
-                clean.URLKey                    = fd[index].URLKey;
-                clean.PIDBuy                    = fd[index].PIDBuy;
-                clean.PIDGet                    = fd[index].PIDGet;
-                clean.ShortDescriptionTH        = fd[index].ShortDescriptionTH;
-                clean.LongDescriptionTH         = fd[index].LongDescriptionTH;
-                clean.ShortDescriptionEN        = fd[index].ShortDescriptionEN;
-                clean.LongDescriptionEN         = fd[index].LongDescriptionEN;
-               
-                clean.ProductBoxBadge           = fd[index].ProductBoxBadge;
-                clean.Sequence                  = fd[index].Sequence;
-                clean.Status                    = fd[index].Status;
-                clean.CreateBy                  = fd[index].CreateBy;
-                clean.Createdate                = fd[index].Createdate ;              
-                clean.UpdateBy                  = fd[index].UpdateBy;
-                clean.UpdateDate                = fd[index].UpdateDate ;
-                clean.CreateIP                  = fd[index].CreateIP;
-                clean.UpdateIP                  = fd[index].UpdateIP;
-                clean.CMSStatusFlowId           = fd[index].CMSStatusFlowId;
-                clean.Visibility           = fd[index].Visibility;
-
-
-                if(fd[index].ExpiryDate && fd[index].EffectiveDate){
-                    var cpdate = angular.copy(fd[index].ExpiryDate);
-                    clean.ExpiryDate = moment(cpdate).format('LL');
-                    clean.ExpiryTime = moment(cpdate).format('HH:mm:ss');
-
-                    cpdate = angular.copy(fd[index].EffectiveDate);
-                    clean.EffectiveDate = moment(cpdate).format('LL');
-                    clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
-                }
-                               
-               retObjArr.push(clean);
-            } catch (ex) {
-                console.warn("Arr serialize error", ex);
-            }
-            }
-            
-            return retObjArr;
-        }
-
-        service.deserialize = function (invFd, FullAttributeSet) {
-       
-
-            var transformed = {
-                formData: invFd
-            };
-
-
-
-            console.log('transformation array', transformed);
-
-            return transformed;
-        };
-
-        return service;
-    }
-];
-
-},{}],132:[function(require,module,exports){
-module.exports = ['Product', 'Collection', 'Buy1Get1','Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
-    function (Product,  Collection, Buy1Get1 , Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
-        var $buy1get1Add = {};
-        
-        /*
-        * Wraps around multiple services,
-        * and solves dependencies needed for AddProduct Collection view variables
-        * to be parsable
-        */
-        $buy1get1Add.fill = function ( pageLoader, sharedDataSet,
-            sharedFormData, controlFlags, variationFactorIndices, ivFormData) {
-
-
-            var deferred = $q.defer();
-
-              var parse = function (ivFormData) {
-                            pageLoader.load('Loading product data..');
-                            // var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
-                            var inverseResult = Buy1Get1.deserialize(ivFormData);
-
-                            //copy it out
-                            Object.keys(inverseResult.formData).forEach(function (key) {
-                                sharedFormData[key] = inverseResult.formData[key];
-                            })
-                        };
-                        parse(ivFormData);
-
-            return deferred.promise;
-        };
-
-        return $buy1get1Add;
-    }];
-},{}],133:[function(require,module,exports){
+},{}],129:[function(require,module,exports){
 /**
  * Util class for category
  * @author poonwu
@@ -12320,14 +10010,14 @@ module.exports = ['config', function(config) {
     return service;
 }];
 
-},{"angular":181}],134:[function(require,module,exports){
+},{"angular":182}],130:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common) {
 	var service = common.Rest('/Coupons');
 	return service;
 }];
 
-},{"angular":181}],135:[function(require,module,exports){
+},{"angular":182}],131:[function(require,module,exports){
 //TODO: maybe merge this with user service? (doesnt exist yet, but probably exists in poon's local)
 module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(common, $base64, storage, $q, $rootScope) {
     'use strict';
@@ -12350,7 +10040,7 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
     }
 
 	service.login = function(user, pass, remember){
-		var deferred = $q.defer();
+		var deferred = $q.defer(); 
 		storage.storeSessionToken($base64.encode(user + ":" + pass), true);
 		common.makeRequest({
 			type: 'GET',
@@ -12398,8 +10088,7 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 	return service;
 }];
 
-
-},{}],136:[function(require,module,exports){
+},{}],132:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$window', '$base64', 'config', function($window, $base64, config) {
@@ -12418,7 +10107,7 @@ module.exports = ['$window', '$base64', 'config', function($window, $base64, con
     };
 }];
 
-},{"angular":181}],137:[function(require,module,exports){
+},{"angular":182}],133:[function(require,module,exports){
 module.exports = ["config", "storage", "FileUploader", function(config, storage, FileUploader) {
 	'ngInject';
 	var service = {};
@@ -12438,7 +10127,7 @@ module.exports = ["config", "storage", "FileUploader", function(config, storage,
 	};
 	return service;
 }];
-},{}],138:[function(require,module,exports){
+},{}],134:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/GlobalCategories');
@@ -12506,7 +10195,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],139:[function(require,module,exports){
+},{}],135:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	service = common.Rest('/GlobalCategories');
@@ -12519,8 +10208,13 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 			UrlKeyEn: null,
 			Commission: 0,
 			Visibility: true,
-			AttributeSets: []
+			AttributeSets: [],
+			CategoryBannerTh: [],
+			CategoryBannerEn: []
 		}, extend);
+	};
+	service.deserialize = function(data) {
+		return _.extend(service.generate(), data);
 	};
 
 	/**
@@ -12575,7 +10269,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],140:[function(require,module,exports){
+},{}],136:[function(require,module,exports){
 var angular = require('angular');
 //Image Service
 //Note: this file is not used anywhere (legacy!!! dOnt edit )
@@ -12666,12 +10360,34 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	return service;
 }];
 
-},{"angular":181}],141:[function(require,module,exports){
+},{"angular":182}],137:[function(require,module,exports){
 //Image Service
-module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", function($q, $http, common, storage, config, FileUploader) {
+module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", "Upload", function($q, $http, common, storage, config, FileUploader, Upload) {
   'ngInject';
   var service = {};
 
+  //Upload by url
+  service.upload = function(url, file, opts) {
+    var accessToken = storage.getSessionToken();
+    var options = {
+      url: config.REST_SERVICE_BASE_URL + url,
+      data: { file: file }
+    };
+    if(!_.isNil(accessToken)) {
+      options.headers = {
+        Authorization: 'Basic ' + accessToken
+      };
+    }
+    return Upload.upload(_.extend(options, opts));
+  };
+
+  service.getUploaderFn = function(url, opts) {
+    return {
+      upload: function(file) {
+        return service.upload(url, file, opts);
+      }
+    };
+  }
   /**
    * Get image uploader
    */
@@ -12686,6 +10402,7 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
         Authorization: 'Basic ' + accessToken
       },
       queueLimit: 10,
+      removeAfterUpload : true,
       filters: [{
         name: 'imageFilter',
         fn: function(item /*{File|FileLikeObject}*/ , options) {
@@ -12707,7 +10424,7 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
   /**
    * Assign image uploader events specifically to COL-image uploading feature
    */
-  service.assignUploaderEvents = function(uploader, images, queueLimit, onFail, onValidation, onSuccess) {
+  service.assignUploaderEvents = function(uploader, images, queueLimit, onFail, onValidation, onDoneItem) {
 
     uploader.onWhenAddingFileFailed = function(item, filter, options) {
       console.info('onAfterAddingFile', item, filter, options);
@@ -12733,9 +10450,9 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
       console.info('onAfterAddingFile', images, uploader.queue);
     };
     uploader.onSuccessItem = function(item, response, status, headers) {
-      images[item.indx] = response;
+      images[item.indx || 0] = response;
       console.info('onSuccessItem', images, uploader.queue);
-			// onSuccess();
+	  if(onDoneItem) onDoneItem(images);
     };
     uploader.onErrorItem = function(item, response, status, headers) {
       images.splice(item.indx, 1);
@@ -12768,12 +10485,12 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
   return service;
 }];
 
-},{}],142:[function(require,module,exports){
+},{}],138:[function(require,module,exports){
 module.exports = function(common) {
 	var service = common.Rest('/Inventories');
 	return service;
 };
-},{}],143:[function(require,module,exports){
+},{}],139:[function(require,module,exports){
 module.exports = [function() {
 	'use strict';
 
@@ -12781,7 +10498,7 @@ module.exports = [function() {
         this.message = "Known Exception - " + msg;   
     };
 }];
-},{}],144:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
 module.exports = ['common', function(common) {
 	'use strict';
 	var service = {};
@@ -12820,11 +10537,21 @@ module.exports = ['common', function(common) {
 
 	return service;
 }];
-},{}],145:[function(require,module,exports){
+},{}],141:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/LocalCategories');
 	
+    service.getAllByShopId = function(shopId){
+        return common.makeRequest({
+			method: 'GET',
+			url: '/LocalCategories',
+            params: {
+                ShopId: shopId
+            }
+		});
+    }
+    
 	//Generate empty template
 	service.generate = function(extend) {
 		return angular.extend({
@@ -12832,7 +10559,12 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 			NameTh: "",
 			UrlKeyEn: "",
 			Visibility: true,
+			CategoryBannerTh: [],
+			CategoryBannerEn: []
 		}, extend);
+	};
+	service.deserialize = function(data) {
+		return _.extend(service.generate(), data);
 	};
 
 	/**
@@ -12847,1251 +10579,671 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	};
 	return service;
 }];
-
-},{}],146:[function(require,module,exports){
+},{}],142:[function(require,module,exports){
+module.exports = function(common) {
+	var service = common.Rest('/Newsletters');
+	return service;
+};
+},{}],143:[function(require,module,exports){
 // Products Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config', 'KnownException',
-  function ($http, common, util, LocalCategory, Brand, config, KnownException) {
-    'use strict'
-    var service = common.Rest('/ProductStages')
-
-    service.getExportableFields = function () {
-      var req = {
-        method: 'GET',
-        url: '/ProductStages/Guidance/Export'
-      }
-      return common.makeRequest(req)
-    }
-
-    service.downloadTemplate = function (globalCat, aset) {
-      var req = {
-        method: 'POST',
-        url: '/ProductStages/Template',
-        data: {
-          GlobalCategories: [globalCat],
-          AttributeSets: _.isNil(aset) ? [] : [aset]
-        }
-      }
-      return common.makeRequest(req)
-    }
-
-    service.getAllAttributeSetsForProducts = function (productList) {
-      var req = {
-        method: 'POST',
-        url: '/ProductStages/AttributeSet',
-        data: productList
-      }
-      return common.makeRequest(req)
-    }
-
-    service.export = function (ps) {
-      var req = {
-        method: 'POST',
-        url: '/ProductStages/Export',
-        data: ps
-      }
-      return common.makeRequest(req)
-    }
-
-    service.guideline = function (params) {
-      var req = {
-        method: 'GET',
-        url: '/ProductStages/Guidance',
-        params: params
-      }
-      return common.makeRequest(req)
-    }
-    service.approve = function (obj) {
-      return common.makeRequest({
-        method: 'PUT',
-        url: '/ProductStages/Approve',
-        data: obj,
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8'
-        }
-      })
-    }
-    service.reject = function (obj) {
-      return common.makeRequest({
-        method: 'PUT',
-        url: '/ProductStages/Reject',
-        data: obj,
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8'
-        }
-      })
-    }
-
-    service.getOne = function (productId) {
-      var req = {
-        method: 'GET',
-        url: '/ProductStages/' + productId
-      }
-      return common.makeRequest(req)
-    }
-
-    service.getAllVariants = function (parameters) {
-      var req = {
-        method: 'GET',
-        url: '/ProductStages/All',
-        params: parameters
-      }
-
-      return common.makeRequest(req)
-    }
-
-    service.updateAllVariants = function (obj) {
-      var req = {
-        method: 'PUT',
-        url: '/ProductStages/All/Image',
-        data: obj,
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8'
-        }
-      }
-
-      return common.makeRequest(req)
-    }
-
-    service.duplicate = function (ProductId) {
-      // this URL structure is weird dont u think
-      var req = {
-        method: 'POST',
-        url: '/ProductStages/' + ProductId
-      }
-
-      return common.makeRequest(req)
-    }
-
-    service.getAll = function (parameters) {
-      var req = {
-        method: 'GET',
-        url: '/ProductStages/',
-        params: {
-          _order: parameters.orderBy || 'ProductId',
-          _limit: parameters.pageSize || 10,
-          _offset: parameters.page * parameters.pageSize || 0,
-          _direction: parameters.direction || 'asc',
-          _filter: parameters.filter || 'ALL',
-          searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined
-        }
-      }
-
-      return common.makeRequest(req)
-    }
-
-    service.export = function (tobj) {
-      var path = '/ProductStages/Export'
-      return common.makeRequest({
-        responseType: 'arraybuffer',
-        method: 'POST',
-        url: path,
-        data: tobj
-      })
-    }
-
-    service.publish = function (tobj, Status) {
-      tobj.Status = Status
-      var mode = 'POST'
-      var path = '/ProductStages'
-      if (tobj.ProductId) {
-        mode = 'PUT'
-        path = path + '/' + tobj.ProductId
-      }
-      return common.makeRequest({
-        method: mode,
-        url: path,
-        data: tobj
-      })
-    }
-
-    service.bulkPublish = function (tobj) {
-      return common.makeRequest({
-        method: 'POST',
-        url: '/ProductStages/Publish',
-        data: tobj,
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8'
-        }
-      })
-    }
-
-    service.visible = function (obj) {
-      return common.makeRequest({
-        method: 'PUT',
-        url: '/ProductStages/Visibility',
-        data: obj,
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8'
-        }
-      })
-    }
-    service.deleteBulk = function (arr) {
-      return common.makeRequest({
-        method: 'DELETE',
-        url: '/ProductStages',
-        data: arr,
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8'
-        }
-      })
-    }
-
-    var StatusLookup = {}
-    config.PRODUCT_STATUS.forEach(function (object) {
-      StatusLookup[object.value] = object
-    })
-    service.getStatus = function (abbreviation) {
-      if (_.isNil(abbreviation)) {
-        return {
-          name: 'No Status',
-          color: 'color-grey'
-        }
-      }
-      return StatusLookup[abbreviation]
-    }
-
-    service.serialize = function (fd) {
-      var hasVariants = (!util.nullOrUndefined(fd.Variants) && fd.Variants.length > 0)
-
-      // Cleaned data
-      var clean = {}
-      clean.Variants = []
-
-      var objectMapper = {
-        VideoLinks: function (vlink) {
-          var f = []
-          Object.keys(vlink).forEach(function (key) {
-            var value = vlink[key]
-            var obj = {
-              'Url': value
-            }
-
-            f.push(obj)
-          })
-          return f
-        }
-      }
-      // Mapper functions
-      var mapper = {
-        Images: function (image, pos) {
-          if (image.$id) delete image.$id
-          image.position = pos
-          return image
-        },
-        Variants: function (_variant) {
-          var variant = angular.copy(_variant)
-
-          if (util.nullOrUndefined(variant['VideoLinks'])) variant.VideoLinks = []
-          if (util.nullOrUndefined(variant['VideoLinks'])) variant.Images = []
-          if ('queue' in variant) delete variant.queue // circular
-
-          variant.Visibility = variant.Visibility
-          variant.Images = (variant.Images || []).map(mapper.Images)
-          variant.Images360 = [] // for future
-
-          try {
-            variant.VideoLinks = objectMapper.VideoLinks(variant.VideoLinks)
-          } catch (ex) {
-            variant.VideoLinks = []
-          }
-
-          return variant
-        },
-        Categories: function (lcat) {
-          if (lcat == null) return null
-          return {
-            CategoryId: lcat.CategoryId
-          }
-        }
-      }
-
-      try {
-        clean.GlobalCategories = fd.GlobalCategories.map(mapper.Categories)
-      } catch (ex) {
-        console.warn('Unable to map Global Cat Array, Global Cat array is mandatory', ex)
-      }
-
-      try {
-        clean.LocalCategories = fd.LocalCategories.map(mapper.Categories)
-      } catch (ex) {
-        console.warn('Unable to map Local Cat array, Initializing', ex)
-        clean.LocalCategories = [null, null, null]
-      }
-
-      try {
-        fd.Keywords = util.uniqueSet(fd.Keywords)
-        clean.Keywords = (!fd.Keywords ? '' : fd.Keywords.join(','))
-      } catch (ex) {
-        console.warn('Keyword not set, will not serialize', ex)
-      }
-
-      try {
-        clean.AttributeSet = {
-          AttributeSetId: fd.AttributeSet.AttributeSetId
-        }
-      } catch (ex) {
-        console.warn('AttributeSet not set, will not serialize', ex)
-      }
-
-      try {
-        clean.MasterAttribute = []
-        Object.keys(fd.MasterAttribute).forEach(function (key) {
-          if (fd.MasterAttribute[key].AttributeValueId) {
-            var g = {
-              AttributeValues: [],
-              AttributeId: fd.MasterAttribute[key].AttributeId,
-              ValueEn: fd.MasterAttribute[key].AttributeValueEn
-            }
-
-            g.AttributeValues.push(fd.MasterAttribute[key])
-            clean.MasterAttribute.push(g)
-          } else {
-            clean.MasterAttribute.push({
-              AttributeValues: [],
-              AttributeId: Number(key),
-              ValueEn: fd.MasterAttribute[key]
-            })
-          }
-
-        })
-      } catch (ex) {
-        console.warn('Master Attributes', ex)
-      }
-
-      try {
-        clean.Remark = fd.Remark
-        clean.PrepareDay = fd.PrepareDay || 0
-        clean.SEO = fd.SEO
-        clean.ControlFlags = fd.ControlFlags
-        clean.Brand = fd.Brand
-        clean.ShippingMethod = fd.ShippingMethod
-        clean.EffectiveDate = null
-        clean.ExpireDate = null
-        clean.ExpireTime = null
-        clean.ExpireDate = null
-
-        if (fd.ExpireDate && fd.EffectiveDate) {
-          var cpdate = angular.copy(fd.ExpireDate)
-          clean.ExpireDate = moment(cpdate).format('LL')
-          clean.ExpireTime = moment(cpdate).format('HH:mm:ss')
-
-          cpdate = angular.copy(fd.EffectiveDate)
-
-          clean.EffectiveDate = moment(cpdate).format('LL')
-          clean.EffectiveTime = moment(cpdate).format('HH:mm:ss')
-        }
-
-        console.log('1-1', clean)
-      // clean.EffectiveDate = moment(fd.EffectiveDate + " " + fd.EffectiveTime)
-      // clean.EffectiveTime = fd.EffectiveTime
-      // clean.ExpireDate = moment(fd.ExpireDate + " " + fd.ExpireTime)
-      // clean.ExpireTime = fd.ExpireTime
-      } catch (ex) {
-        console.warn('One-To-One Fields', ex)
-      }
-
-      try {
-        // Move first entry of Categories out into Category
-        clean.GlobalCategory = clean.GlobalCategories[0].CategoryId
-        clean.GlobalCategories.shift()
-
-      } catch (ex) {
-        console.warn('shift global cat', ex)
-      }
-
-      try {
-        clean.LocalCategory = clean.LocalCategories[0].CategoryId
-        clean.LocalCategories.shift()
-
-      } catch (ex) {
-        console.warn('shfiting local cat', ex)
-        // Local cat can be null
-        clean.LocalCategories = [null, null]
-        clean.LocalCategory = null
-      }
-
-      try {
-        clean.RelatedProducts = []
-        Object.keys(fd.RelatedProducts || []).forEach(function (key) {
-          clean.RelatedProducts.push(
-            fd.RelatedProducts[key]
-          )
-        })
-      } catch (ex) {
-        console.warn('Organizing Related Products', ex)
-      }
-
-      // MasterVariant
-      clean.MasterVariant = fd.MasterVariant
-
-      if (fd.ProductId) clean.ProductId = fd.ProductId
-
-      try {
-        clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks)
-      } catch (ex) {
-        clean.MasterVariant.VideoLinks = []
-      }
-
-      try {
-        clean.MasterVariant.Images360 = (fd.MasterImages360 | []).map(mapper.Images)
-      } catch (ex) {
-        clean.MasterVariant.Images360 = []
-      }
-
-      try {
-        clean.MasterVariant.Images = (fd.MasterImages || []).map(mapper.Images)
-      } catch (ex) {
-        clean.MasterVariant.Images = []
-      }
-
-      try {
-        if (hasVariants) {
-          var masterProps = []
-          clean.Variants = (fd.Variants || []).map(mapper.Variants)
-          // Find DefaultVariant
-          var target = fd.DefaultVariant.text
-          clean.Variants.forEach(function (vari, index) {
-            vari.SafetyStock = 0; // Placeholder, no UI yet
-            vari.StockType = 0 // Placeholder
-            vari.DefaultVariant = false
-            if (vari.text == target) {
-              clean.Variants[index].DefaultVariant = true
-            }
-          })
-        }
-      } catch (ex) {
-        console.warn('Variant Distribute', ex)
-      }
-
-      // HardCoD
-      clean.SellerId = 1
-      clean.ShopId = 1
-
-      return clean
-    }
-
-    service.deserialize = function (invFd, FullAttributeSet) {
-      console.log('FullAttributeSet', FullAttributeSet)
-
-      invFd.AttributeSet = FullAttributeSet
-      invFd.PrepareDay = invFd.PrepareDay || ''
-
-      if (invFd.EffectiveDate != '' && invFd.EffectiveDate != null) {
-        invFd.EffectiveDate = moment(invFd.EffectiveDate + ' ' + invFd.EffectiveTime).toDate()
-        invFd.EffectiveTime = invFd.EffectiveTime
-      }
-
-      if (invFd.ExpireDate != '' && invFd.ExpireDate != null) {
-        invFd.ExpireDate = moment(invFd.ExpireDate + ' ' + invFd.ExpireTime).toDate()
-        invFd.ExpireTime = invFd.ExpireTime
-      }
-
-      var BrandId = invFd.Brand.BrandId
-      Brand.getOne(BrandId).then(function (data) {
-        invFd.Brand = data
-        delete invFd.Brand.$id
-        invFd.Brand.id = BrandId
-      }, function () {
-        console.log('brand resolve failure')
-        invFd.Brand = {
-          BrandId: null,
-          BrandNameEn: 'Please select brand..'
-        }
-      })
-
-      var invMapper = {
-        VideoLinks: function (m) {
-          return m.Url
-        },
-        Variants: function (m) {
-          m.Visibility = m.Visibility
-          m.Images = m.Images || []
-          m.Images360 = m.Images360 || []
-          m.WeightUnit = (m.WeightUnit || '').trim()
-          m.DimensionUnit = (m.DimensionUnit || '').trim()
-          m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute)
-          return m
-        }
-      }
-
-      try {
-        var DefaultVariantIndex = (invFd.Variants || []).map(function (o) {
-          return o.DefaultVariant || false
-        }).indexOf(true)
-
-        invFd.DefaultVariant = invFd.Variants[DefaultVariantIndex]
-      } catch (er) {
-        console.warn('Unable to set DefaultVariant, will not set', er)
-      }
-
-      try {
-        invFd.Variants = (invFd.Variants || []).map(invMapper.Variants)
-      } catch (er) {
-        console.warn('Unable to set Variants, will set empty', er)
-        invFd.Variants = []
-      }
-
-      var MasterAttribute = {}
-      try {
-        invFd.MasterAttribute.forEach(function (ma) {
-          var k = { 'AttributeValue': ma.AttributeValues[0]}
-          if (ma.AttributeValues.length > 0 && ma.AttributeValues[0].AttributeValueId) {
-            k.AttributeId = ma.AttributeId
-            k.AttributeValueId = ma.AttributeValues[0].AttributeValueId
-          }
-          MasterAttribute[ma.AttributeId] = ma.ValueEn || k
-        })
-      } catch (ex) {
-        console.warn('Unable to set MasterAttribute', ex)
-      }
-      invFd.MasterAttribute = MasterAttribute
-
-      if (!invFd.LocalCategories) {
-        invFd.LocalCategories = []
-      }
-
-      if (invFd.LocalCategories.length == 0) {
-        invFd.LocalCategories = [null, null, null]
-      } else {
-        var kmax = invFd.LocalCategories.length
-        for (var k = 0; k < 3 - kmax; k++) {
-          console.log('pushing null')
-          invFd.LocalCategories.push(null)
-        }
-      }
-
-      if (invFd.LocalCategory) {
-        LocalCategory.getOne(invFd.LocalCategory).then(function (locat) {
-          invFd.LocalCategories.unshift(locat)
-
-          if (invFd.LocalCategories.length > 3) {
-            invFd.LocalCategories.pop()
-          }
-
-        })
-      }
-
-      // TODO: replace with try-catch
-      if (invFd.MasterVariant.VideoLinks) {
-        invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks)
-      } else {
-        invFd.MasterVariant.VideoLinks = []
-      }
-
-      invFd.Variants.forEach(function (variant, index) {
-        try {
-          variant.VideoLinks = (variant.VideoLinks || []).map(invMapper.VideoLinks)
-        } catch (ex) {
-          variant.VideoLinks = []
-        }
-      })
-
-      if (!invFd.GlobalCategories) {
-        invFd.GlobalCategories = [null, null, null]
-      }
-
-      if (invFd.GlobalCategories.length == 0) {
-        invFd.GlobalCategories = [null, null, null]
-      } else {
-        var kmax = invFd.GlobalCategories.length
-        for (var k = 0; k < 3 - kmax; k++) {
-          console.log('pushing null')
-          invFd.GlobalCategories.push(null)
-        }
-      }
-
-      invFd.GlobalCategories.unshift({
-        CategoryId: invFd.GlobalCategory
-      })
-
-      if (invFd.GlobalCategories.length > 3) {
-        invFd.GlobalCategories.pop()
-      }
-
-      delete invFd.GlobalCategory
-      delete invFd.LocalCategory
-
-      // TODO: Just change ngmodel to bind to MasterVariant.MasterImages Directly
-      invFd.MasterImages = invFd.MasterVariant.Images || []
-      delete invFd.MasterVariant.Images
-      invFd.MasterImages360 = invFd.MasterVariant.Images360 || []
-      delete invFd.MasterVariant.Images360
-
-      try {
-        invFd.MasterVariant.WeightUnit = invFd.MasterVariant.WeightUnit.trim()
-      } catch (ex) {
-        invFd.MasterVariant.WeightUnit = undefined
-      }
-
-      try {
-        invFd.MasterVariant.DimensionUnit = invFd.MasterVariant.DimensionUnit.trim()
-      } catch (ex) {
-        invFd.MasterVariant.DimensionUnit = undefined
-      }
-
-      try {
-        var _split = invFd.Keywords.trim().split(',')
-        if (_split[0] == '') {
-          invFd.Keywords = []
-        } else {
-          invFd.Keywords = util.uniqueSet(_split)
-        }
-      } catch (ex) {
-        invFd.Keywords = []
-      }
-
-      if (invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; // TODO: Hardcode
-
-      var transformed = {
-        formData: invFd
-      }
-
-      if (invFd.Variants.length > 0) {
-        // Figure out the Attributes that make up each Variant
-        var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId'])
-
-        // Generate attributeOptions
-        var map0_index = FullAttributeSet.AttributeSetMaps.map(function (a) {
-          return a.Attribute.AttributeId
-        }).indexOf(invFd.Variants[0].FirstAttribute.AttributeId)
-
-        var map1_index, SecondArray
-        if (HasTwoAttr) {
-          map1_index = FullAttributeSet.AttributeSetMaps.map(function (a) {
-            return a.Attribute.AttributeId
-          }).indexOf(invFd.Variants[0].SecondAttribute.AttributeId)
-        }
-
-        // Find array of values to populate factors array that can be used to reproduce
-        // the expanded variants
-        var FirstArray = invFd.Variants.map(function (variant) {
-          if (variant.FirstAttribute.AttributeValues.length > 0) {
-            return {
-              'AttributeValue': variant.FirstAttribute.AttributeValues[0],
-              'AttributeId': variant.FirstAttribute.AttributeId
-            }
-          }
-
-          return variant.FirstAttribute.ValueEn.trim()
-        })
-
-        if (HasTwoAttr) {
-          SecondArray = invFd.Variants.map(function (variant) {
-            if (variant.SecondAttribute.AttributeValues.length > 0) {
-              return {
-                'AttributeValue': variant.SecondAttribute.AttributeValues[0],
-                'AttributeId': variant.SecondAttribute.AttributeId
-              }
-            }
-            return variant.SecondAttribute.ValueEn.trim()
-          })
-        }
-
-        // Get updated map from invFd.AttributeSet
-        // and load factorization array
-        var uniqueFirst = util.uniqueSet(FirstArray, 'AttributeValue.AttributeValueId')
-        console.log('ufirst', uniqueFirst)
-        transformed.attributeOptions = [{
-          Attribute: FullAttributeSet.AttributeSetMaps[map0_index].Attribute,
-          options: uniqueFirst
-        }]
-
-        if (HasTwoAttr) {
-          var uniqueSecond = util.uniqueSet(SecondArray, 'AttributeValue.AttributeValueId')
-          console.log(uniqueSecond)
-          transformed.attributeOptions.push({
-            Attribute: FullAttributeSet.AttributeSetMaps[map1_index].Attribute,
-            options: uniqueSecond
-          })
-        } else {
-          transformed.attributeOptions.push({
-            Attribute: null,
-            options: []
-          })
-        }
-
-      }
-
-      console.log('transformation array', transformed)
-
-      return transformed
-    }
-
-    return service
-  }
-]
-
-},{}],147:[function(require,module,exports){
-module.exports = ["Product", "Brand", "AttributeSet", "ImageService", "GlobalCategory", "$q", "Category", function(Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
-  'ngInject';
-  var $productAdd = {};
-
-  /*
-   * Wraps around multiple services,
-   * and solves dependencies needed for AddProduct view variables
-   * to be parsable
-   */
-  $productAdd.fill = function(globalCatId, pageLoader, sharedDataSet,
-    sharedFormData, breadcrumbs, controlFlags, variationFactorIndices, ivFormData) {
-
-
-    var deferred = $q.defer();
-    pageLoader.load('Downloading Attribute Sets..');
-
-    AttributeSet.getByCategory(globalCatId)
-      .then(function(data) {
-        sharedDataSet.AttributeSets = data.map(function(aset) {
-          aset.AttributeSetTagMaps = aset.AttributeSetTagMaps.map(function(asti) {
-            return asti.Tag.TagName;
-          });
-          return aset;
-        });
-
-
-        if (ivFormData) {
-          pageLoader.load('Indexing AttributeSet');
-          sharedFormData.AttributeSet = sharedDataSet.AttributeSets[sharedDataSet.AttributeSets.map(function(o) {
-            return o.AttributeSetId
-          }).indexOf(ivFormData.AttributeSet.AttributeSetId)];
-
-          var parse = function(ivFormData, FullAttributeSet) {
-            pageLoader.load('Loading product data..');
-            var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
-
-            //copy it out
-            Object.keys(inverseResult.formData).forEach(function(key) {
-              sharedFormData[key] = inverseResult.formData[key];
-            })
-
-            console.log("After Inverse Transformation", sharedFormData);
-            if (sharedFormData.Variants.length > 0) {
-              controlFlags.variation = "enable";
-            }
-            sharedDataSet.attributeOptions = inverseResult.attributeOptions || sharedDataSet.attributeOptions;
-            if (sharedDataSet.attributeOptions[1].options.length > 0) {
-              variationFactorIndices.pushSecond();
-            }
-          };
-          parse(ivFormData, sharedFormData.AttributeSet);
-        }
-
-        pageLoader.load('Downloading Category Tree..');
-        //Load Global Cat
-        GlobalCategory.getAll().then(function(data) {
-          sharedDataSet.GlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
-          sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
-          breadcrumbs.globalCategory = Category.createCatStringById(globalCatId, sharedDataSet.GlobalCategories);
-          console.log(breadcrumbs, "breadcrumb");
-          pageLoader.load('Preparing content..');
-          deferred.resolve();
-        });
-
-
-      });
-
-    return deferred.promise;
-  };
-
-  return $productAdd;
-}];
-
-},{}],148:[function(require,module,exports){
-//Products Collection Service
-module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
-    function ($http, common, util, LocalCategory, Brand) {
-        'use strict';
-        var service = {};
-
-        service.getOne = function (CMSId) {
+    function($http, common, util, LocalCategory, Brand, config, KnownException) {
+        'use strict'
+        var service = common.Rest('/ProductStages')
+
+        service.getExportableFields = function() {
             var req = {
                 method: 'GET',
-                url: '/CMSStages/' + CMSId
-            };
-            return common.makeRequest(req);
-        };
+                url: '/ProductStages/Guidance/Export'
+            }
+            return common.makeRequest(req)
+        }
 
-        service.getAllVariants = function (parameters) {
+        service.downloadTemplate = function(globalCat, aset) {
+            var req = {
+                method: 'POST',
+                url: '/ProductStages/Template',
+                data: {
+                    GlobalCategories: [globalCat],
+                    AttributeSets: _.isNil(aset) ? [] : [aset]
+                }
+            }
+            return common.makeRequest(req)
+        }
+
+        service.getAllAttributeSetsForProducts = function(productList) {
+            var req = {
+                method: 'POST',
+                url: '/ProductStages/AttributeSet',
+                data: productList
+            }
+            return common.makeRequest(req)
+        }
+
+        service.export = function(ps) {
+            var req = {
+                method: 'POST',
+                url: '/ProductStages/Export',
+                data: ps
+            }
+            return common.makeRequest(req)
+        }
+
+        service.guideline = function(params) {
+            var req = {
+                method: 'GET',
+                url: '/ProductStages/Guidance',
+                params: params
+            }
+            return common.makeRequest(req)
+        }
+        service.approve = function(obj) {
+            return common.makeRequest({
+                method: 'PUT',
+                url: '/ProductStages/Approve',
+                data: obj,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            })
+        }
+        service.reject = function(obj) {
+            return common.makeRequest({
+                method: 'PUT',
+                url: '/ProductStages/Reject',
+                data: obj,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            })
+        }
+
+        service.getOne = function(productId) {
+            var req = {
+                method: 'GET',
+                url: '/ProductStages/' + productId
+            }
+            return common.makeRequest(req)
+        }
+
+        service.getAllVariants = function(parameters) {
             var req = {
                 method: 'GET',
                 url: '/ProductStages/All',
                 params: parameters
-            };
+            }
 
-            return common.makeRequest(req);
+            return common.makeRequest(req)
         }
 
-        service.duplicate = function (CMSId) {
-            //this URL structure is weird dont u think
+        service.updateAllVariants = function(obj) {
+            var req = {
+                method: 'PUT',
+                url: '/ProductStages/All/Image',
+                data: obj,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            }
+
+            return common.makeRequest(req)
+        }
+
+        service.duplicate = function(ProductId) {
+            // this URL structure is weird dont u think
             var req = {
                 method: 'POST',
-                url: '/CMSStages/' + CMSId
-            };
+                url: '/ProductStages/' + ProductId
+            }
 
-            return common.makeRequest(req);
-        };
+            return common.makeRequest(req)
+        }
 
-        service.getAll = function (parameters) {
+        service.getAll = function(parameters) {
             var req = {
                 method: 'GET',
-                url: '/CMSShopList',
+                url: '/ProductStages/',
                 params: {
-                    _order: parameters.orderBy || 'UpdateDate',
+                    _order: parameters.orderBy || 'ProductId',
                     _limit: parameters.pageSize || 10,
                     _offset: parameters.page * parameters.pageSize || 0,
-                    _direction: parameters.direction || 'desc',
+                    _direction: parameters.direction || 'asc',
                     _filter: parameters.filter || 'ALL',
-                    searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined ,
-                    ShopId: parameters.shopId|| 0
+                    searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined
                 }
-            };
+            }
 
-            console.log(req);
+            return common.makeRequest(req)
+        }
 
-            return common.makeRequest(req);
-        };
-
-     //Start CMSStage
-        service.export = function (tobj) {
-            var path = '/CMSStages/Export';
+        service.export = function(tobj) {
+            var path = '/ProductStages/Export'
             return common.makeRequest({
                 responseType: 'arraybuffer',
                 method: 'POST',
                 url: path,
                 data: tobj
-            });
-        };
+            })
+        }
 
-        service.publish = function (tobj, Status) {  
-             var path = '/CMSStages';
-            if(typeof tobj.length != "undefined"){path = "/CMSUpdateStages";}                       
+        service.publish = function(tobj, Status) {
+            tobj.Status = Status
+            var mode = 'POST'
+            var path = '/ProductStages'
+            if (tobj.ProductId) {
+                mode = 'PUT'
+                path = path + '/' + tobj.ProductId
+            }
             return common.makeRequest({
-                method: 'POST',
+                method: mode,
                 url: path,
                 data: tobj
-            });
-        };
+            })
+        }
 
-        service.bulkPublish = function (tobj) {
+        service.bulkPublish = function(tobj) {
             return common.makeRequest({
                 method: 'POST',
-                url: '/CMSUpdateStages',
-                data: tobj
-            });
-        };
-
-        service.visible = function (obj) {
-            return common.makeRequest({
-                method: 'POST',
-                url: '/CMSUpdateStages',
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            });
-        };
-      
-         service.deleteBulk = function (tobj) {
-            return common.makeRequest({
-                method: 'POST',
-                url: '/CMSUpdateStages',
+                url: '/ProductStages/Publish',
                 data: tobj,
                 headers: {
                     'Content-Type': 'application/json;charset=UTF-8'
                 }
-            });
-        };
-
-         service.arrSerialize = function (fd) {
-            var retObjArr =[]
-
-            for(var index = 0 ; index <= fd.length ; index ++){
-                var clean = {};
-                try {
-
-//console.log("loop value : " + index + ", cmsid : "+ fd[index].CMSId +", status : "+ fd[index].Status + ", EffectiveDate : " + fd[index].EffectiveDate );
-
-                clean.CMSId = fd[index].CMSId;
-                clean.CMSNameEN = fd[index].CMSNameEN;
-                clean.CMSNameTH = fd[index].CMSNameTH;
-                clean.URLKey = fd[index].URLKey ;
-                clean.CMSTypeId = fd[index].CMSTypeId ;
-                clean.CMSStatusId = fd[index].CMSStatusId;
-                clean.Status = fd[index].Status ;
-                clean.UpdateBy =fd[index].UpdateBy;
-                clean.CreateBy =fd[index].CreateBy;
-                clean.Visibility = fd[index].Visibility;
-
-                clean.CreateIP =fd[index].CreateIP;
-                clean.ShortDescriptionTH = fd[index].ShortDescriptionTH ;
-                clean.LongDescriptionTH = fd[index].LongDescriptionTH;
-                clean.ShortDescriptionEN = fd[index].ShortDescriptionEN ;
-                clean.LongDescriptionEN = fd[index].LongDescriptionEN;
-
-                clean.Sequence = fd[index].Sequence;
-                clean.CMSCollectionGroupId =fd[index].CMSCollectionGroupId;
-                clean.CMSStatusFlowId =fd[index].CMSStatusFlowId;
-
-
-                if( !(typeof fd[index].ExpiryDate === 'undefined' || fd[index].ExpiryDate === null) ){
-                     var cpdate = angular.copy(fd[index].ExpiryDate);
-                                clean.ExpiryDate = moment(cpdate).format('LL');
-                                clean.ExpiryTime = moment(cpdate).format('HH:mm:ss');
-                }
-               
-                if( !(typeof fd[index].EffectiveDate === 'undefined' || fd[index].EffectiveDate === null) ){
-                 cpdate = angular.copy(fd[index].EffectiveDate);
-                                clean.EffectiveDate = moment(cpdate).format('LL');
-                                clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
-                }
-                               
-               retObjArr.push(clean);
-            } catch (ex) {
-                console.warn("Arr serialize error", ex);
-            }
-            }
-            
-            return retObjArr;
+            })
         }
 
-        service.serialize = function (fd) {
-            var hasVariants = (!util.nullOrUndefined(fd.Variants) && fd.Variants.length > 0);
-
-            //Cleaned data
-            var clean = {};
-          
-
-            try {
-
-                clean.CMSId = fd.CMSId;
-                clean.CMSNameEN = fd.CMSNameEN;
-                clean.CMSNameTH = fd.CMSNameTH;
-                clean.URLKey = fd.URLKey ;
-                clean.CMSTypeId = fd.CMSTypeId ;
-                clean.CMSStatusId = fd.CMSStatusId;
-                clean.Status = fd.Status ;
-                clean.UpdateBy =fd.UpdateBy;
-                clean.CreateBy =fd.CreateBy;
-                clean.Visibility = fd.Visibility;
-
-                clean.CreateIP =fd.CreateIP;
-                clean.ShortDescriptionTH = fd.ShortDescriptionTH ;
-                clean.LongDescriptionTH = fd.LongDescriptionTH;
-                clean.ShortDescriptionEN = fd.ShortDescriptionEN ;
-                clean.LongDescriptionEN = fd.LongDescriptionEN;
-
-
-                var cpdate = angular.copy(fd.ExpiryDate);
-                clean.ExpiryDate = moment(cpdate).format('LL');
-                clean.ExpiryTime = moment(cpdate).format('HH:mm:ss');
-
-                cpdate = angular.copy(fd.EffectiveDate);
-
-                clean.EffectiveDate = moment(cpdate).format('LL');
-                clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
-
-                console.log('1-1', clean);
-            } catch (ex) {
-                console.warn("One-To-One Fields", ex);
-            }
-
-           
-
-            //HardCoD
-            clean.SellerId = 1;
-            clean.ShopId = 1;
-
-            return clean;
-        }
-
-        service.deserialize = function (invFd,  _Loading) {
-          
-            if (invFd.EffectiveDate != "" && invFd.EffectiveDate != null) {
-                invFd.EffectiveDate = moment(invFd.EffectiveDate + " " + invFd.EffectiveTime);
-                invFd.EffectiveTime = invFd.EffectiveTime;
-            }
-
-            if (invFd.ExpireDate != "" && invFd.ExpireDate != null) {
-                invFd.ExpireDate = moment(invFd.ExpireDate + " " + invFd.ExpireTime);
-                invFd.ExpireTime = invFd.ExpireTime;
-            }
-                  
-            var transformed = {
-                formData: invFd
-            };
-        
-            console.log('transformation array', transformed);
-
-            return transformed;
-        };
-    //End CMSStage
-
-
-//Start CMSGroup
-
-        service.getAllGroup = function (parameters) {
-            var req = {
-                method: 'GET',
-                url: '/CMSGroupList',
-                params: {
-                    _order: parameters.orderBy || 'UpdateDate',
-                    _limit: parameters.pageSize || 10,
-                    _offset: parameters.page * parameters.pageSize || 0,
-                    _direction: parameters.direction || 'desc',
-                    _filter: parameters.filter || 'ALL',
-                    searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined ,
-                    ShopId: parameters.shopId|| 0
-                }
-            };
-
-            console.log(req);
-
-            return common.makeRequest(req);
-        };
-
-        service.exportGroup = function (tobj) {
-            var path = '/CMSStages/ExportGroup';
+        service.visible = function(obj) {
             return common.makeRequest({
-                responseType: 'arraybuffer',
-                method: 'POST',
-                url: path,
-                data: tobj
-            });
-        };
-
-          service.publishGroup = function (tobj, Status) {  
-             var path = '/CMSStages/Group';
-            if(typeof tobj.length != "undefined"){path = "/CMSUpdateStages";}                       
-            return common.makeRequest({
-                method: 'POST',
-                url: path,
-                data: tobj
-            });
-        };
-
-        service.bulkPublishGroup = function (tobj) {
-            return common.makeRequest({
-                method: 'POST',
-                url: '/CMSUpdateStages/Group',
-                data: tobj
-            });
-        };
-
-        service.visibleGroup = function (obj) {
-            return common.makeRequest({
-                method: 'POST',
-                url: '/CMSUpdateStages/Group',
+                method: 'PUT',
+                url: '/ProductStages/Visibility',
                 data: obj,
                 headers: {
                     'Content-Type': 'application/json;charset=UTF-8'
                 }
-            });
-        };
-      
-         service.deleteBulkGroup = function (tobj) {
+            })
+        }
+        service.deleteBulk = function(arr) {
             return common.makeRequest({
-                method: 'POST',
-                url: '/CMSUpdateStages/Group',
-                data: tobj,
+                method: 'DELETE',
+                url: '/ProductStages',
+                data: arr,
                 headers: {
                     'Content-Type': 'application/json;charset=UTF-8'
                 }
-            });
-        };
-
-         service.arrSerializeGroup = function (fd) {
-            var retObjArr =[]
-
-            for(var index = 0 ; index <= fd.length ; index ++){
-                var clean = {};
-                try {
-
-                clean.CMSId = fd[index].CMSId;
-                clean.CMSNameEN = fd[index].CMSNameEN;
-                clean.CMSNameTH = fd[index].CMSNameTH;
-                clean.URLKey = fd[index].URLKey ;
-                clean.CMSTypeId = fd[index].CMSTypeId ;
-                clean.CMSStatusId = fd[index].CMSStatusId;
-                clean.Status = fd[index].Status ;
-                clean.UpdateBy =fd[index].UpdateBy;
-                clean.CreateBy =fd[index].CreateBy;
-                clean.Visibility = fd[index].Visibility;
-
-                clean.CreateIP =fd[index].CreateIP;
-                clean.ShortDescriptionTH = fd[index].ShortDescriptionTH ;
-                clean.LongDescriptionTH = fd[index].LongDescriptionTH;
-                clean.ShortDescriptionEN = fd[index].ShortDescriptionEN ;
-                clean.LongDescriptionEN = fd[index].LongDescriptionEN;
-
-                clean.Sequence = fd[index].Sequence;
-                clean.CMSCollectionGroupId =fd[index].CMSCollectionGroupId;
-                clean.CMSStatusFlowId =fd[index].CMSStatusFlowId;
-
-
-                if( !(typeof fd[index].ExpiryDate === 'undefined' || fd[index].ExpiryDate === null) ){
-                     var cpdate = angular.copy(fd[index].ExpiryDate);
-                                clean.ExpiryDate = moment(cpdate).format('LL');
-                                clean.ExpiryTime = moment(cpdate).format('HH:mm:ss');
-                }
-               
-                if( !(typeof fd[index].EffectiveDate === 'undefined' || fd[index].EffectiveDate === null) ){
-                 cpdate = angular.copy(fd[index].EffectiveDate);
-                                clean.EffectiveDate = moment(cpdate).format('LL');
-                                clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
-                }
-                               
-               retObjArr.push(clean);
-            } catch (ex) {
-                console.warn("Arr serialize error", ex);
-            }
-            }
-            
-            return retObjArr;
+            })
         }
 
-        service.serializeGroup = function (fd) {
-            var hasVariants = (!util.nullOrUndefined(fd.Variants) && fd.Variants.length > 0);
+        var StatusLookup = {}
+        config.PRODUCT_STATUS.forEach(function(object) {
+            StatusLookup[object.value] = object
+        })
+        service.getStatus = function(abbreviation) {
+            if (_.isNil(abbreviation)) {
+                return {
+                    name: 'No Status',
+                    color: 'color-grey'
+                }
+            }
+            return StatusLookup[abbreviation]
+        }
 
-            //Cleaned data
-            var clean = {};
-          
+        /**
+         * @param  {Product Object} fd
+         */
+        service.serialize = function(fd) {
+
+            var clean = {}
+            var serializer = {
+                GlobalCategories: {
+                    serialize: function(data) {
+                        return data.map(function(lcat) {
+                            if (lcat == null) return null
+                            return {
+                                CategoryId: lcat.CategoryId
+                            }
+                        });
+                    },
+                    fallback: function(data) {
+                        throw new KnownException("No serialization fallback for Global Categories");
+                    }
+                },
+                LocalCategories: {
+                    serialize: function(data) {
+                        return data.map(function(lcat) {
+                            if (lcat == null) return null
+                            return {
+                                CategoryId: lcat.CategoryId
+                            }
+                        });
+                    },
+                    fallback: function(data) {
+                        return [null, null, null]
+                    }
+                },
+                Keywords: {
+                    serialize: function(data) {
+                        var m = util.uniqueSet(data);
+                        return (!m ? '' : m.join(','));
+                    },
+                    fallback: function(data) {
+                        return '';
+                    }
+                },
+                AttributeSet: {
+                    serialize: function(data) {
+                        var k = null;
+                        if (data.AttributeSetId) k = data.AttributeSetId;
+                        return {
+                            AttributeSetId: k
+                        }
+                    },
+                    fallback: function(data) {
+                        return {
+                            AttributeSetId: null
+                        }
+                    }
+                },
+                VideoLinks: function(vlink) {
+                    var f = []
+                    Object.keys(vlink).forEach(function(key) {
+                        var value = vlink[key]
+                        var obj = {
+                            'Url': value
+                        }
+
+                        f.push(obj)
+                    })
+                    return f
+                },
+                Images: function(images) {
+                    return images.map(function(image) {
+                        image.position = pos
+                        return image
+                    });
+                },
+                MasterAttribute: function(ma) {
+                    var t = [];
+                    Object.keys(ma.MasterAttribute).forEach(function(key) {
+                        if (ma.MasterAttribute[key].AttributeValueId) {
+                            var g = {
+                                AttributeValues: [],
+                                AttributeId: ma.MasterAttribute[key].AttributeId,
+                                ValueEn: ma.MasterAttribute[key].AttributeValueEn
+                            }
+
+                            g.AttributeValues.push(ma.MasterAttribute[key])
+                            t.push(g)
+                        } else {
+                            t.push({
+                                AttributeValues: [],
+                                AttributeId: Number(key),
+                                ValueEn: ma.MasterAttribute[key]
+                            })
+                        }
+
+                    });
+                    return t;
+                },
+                RelatedProducts: function(rp) {
+                    return rp;
+                }
+            }
+
+            for (var key in fd) {
+                if ('queue' in fd[key]) delete fd[key].queue;
+                if (fd[key].$id) delete fd[key].$id;
+                if (key in serializer) {
+                    var f = serializer[key];
+                    var v = fd[key];
+                    try {
+                        clean[key] = f.serialize(v);
+                    } catch (ex) {
+                        clean[key] = f.fallback(v);
+                    }
+                } else {
+                    clean[key] = v;
+                }
+            }
+
+ 
+	   return clean;
+            /*
+            
+            try {
+                clean.Remark = fd.Remark
+                clean.PrepareDay = fd.PrepareDay || 0
+                clean.SEO = fd.SEO
+                clean.ControlFlags = fd.ControlFlags
+                clean.Brand = fd.Brand
+                clean.ShippingMethod = fd.ShippingMethod
+                clean.EffectiveDate = null
+                clean.ExpireDate = null
+                clean.ExpireTime = null
+                clean.ExpireDate = null
+
+                if (fd.ExpireDate && fd.EffectiveDate) {
+                    var cpdate = angular.copy(fd.ExpireDate)
+                    clean.ExpireDate = moment(cpdate).format('LL')
+                    clean.ExpireTime = moment(cpdate).format('HH:mm:ss')
+
+                    cpdate = angular.copy(fd.EffectiveDate)
+
+                    clean.EffectiveDate = moment(cpdate).format('LL')
+                    clean.EffectiveTime = moment(cpdate).format('HH:mm:ss')
+                }
+
+
+            } catch (ex) {
+                console.warn('One-To-One Fields', ex)
+            }
+
+            
 
             try {
-
-                clean.CMSId = fd.CMSId;
-                clean.CMSNameEN = fd.CMSNameEN;
-                clean.CMSNameTH = fd.CMSNameTH;
-                clean.URLKey = fd.URLKey ;
-                clean.CMSTypeId = fd.CMSTypeId ;
-                clean.CMSStatusId = fd.CMSStatusId;
-                clean.Status = fd.Status ;
-                clean.UpdateBy =fd.UpdateBy;
-                clean.CreateBy =fd.CreateBy;
-                clean.Visibility = fd.Visibility;
-
-                clean.CreateIP =fd.CreateIP;
-                clean.ShortDescriptionTH = fd.ShortDescriptionTH ;
-                clean.LongDescriptionTH = fd.LongDescriptionTH;
-                clean.ShortDescriptionEN = fd.ShortDescriptionEN ;
-                clean.LongDescriptionEN = fd.LongDescriptionEN;
-
-
-                var cpdate = angular.copy(fd.ExpiryDate);
-                clean.ExpiryDate = moment(cpdate).format('LL');
-                clean.ExpiryTime = moment(cpdate).format('HH:mm:ss');
-
-                cpdate = angular.copy(fd.EffectiveDate);
-
-                clean.EffectiveDate = moment(cpdate).format('LL');
-                clean.EffectiveTime = moment(cpdate).format('HH:mm:ss');
-
-                console.log('1-1', clean);
+                clean.RelatedProducts = []
+                Object.keys(fd.RelatedProducts || []).forEach(function (key) {
+                    clean.RelatedProducts.push(
+                        fd.RelatedProducts[key]
+                        )
+                })
             } catch (ex) {
-                console.warn("One-To-One Fields", ex);
+                console.warn('Organizing Related Products', ex)
             }
 
-           
+            // MasterVariant
+            clean.MasterVariant = fd.MasterVariant
 
-            //HardCoD
-            clean.SellerId = 1;
-            clean.ShopId = 1;
+            if (fd.ProductId) clean.ProductId = fd.ProductId
 
-            return clean;
+            try {
+                clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks)
+            } catch (ex) {
+                clean.MasterVariant.VideoLinks = []
+            }
+
+            try {
+                clean.MasterVariant.Images = (fd.MasterVariant.Images || []).map(mapper.Images)
+            } catch (ex) {
+                clean.MasterVariant.Images = []
+            }
+
+            try {
+                if (hasVariants) {
+                    clean.Variants = (fd.Variants || []).map(mapper.Variants)
+                    // Find DefaultVariant
+                    var target = fd.DefaultVariant.text
+                    clean.Variants.forEach(function (vari, index) {
+                        vari.SafetyStock = 0; // Placeholder, no UI yet
+                        vari.StockType = 0 // Placeholder
+                        vari.DefaultVariant = false
+                        if (vari.text == target) {
+                            clean.Variants[index].DefaultVariant = true
+                        }
+                    })
+                }
+            } catch (ex) {
+                console.warn('Variant Distribute', ex)
+            }
+
+            // HardCoD
+            clean.SellerId = 1
+            clean.ShopId = 1
+            */
+            return clean
         }
 
-        service.deserializeGroup = function (invFd,  _Loading) {
-          
-            if (invFd.EffectiveDate != "" && invFd.EffectiveDate != null) {
-                invFd.EffectiveDate = moment(invFd.EffectiveDate + " " + invFd.EffectiveTime);
-                invFd.EffectiveTime = invFd.EffectiveTime;
+        service.deserialize = function(invFd, FullAttributeSet) {
+            console.log('FullAttributeSet', FullAttributeSet)
+
+            invFd.AttributeSet = FullAttributeSet
+            invFd.PrepareDay = invFd.PrepareDay || ''
+
+            if (invFd.EffectiveDate != '' && invFd.EffectiveDate != null) {
+                invFd.EffectiveDate = moment(invFd.EffectiveDate + ' ' + invFd.EffectiveTime).toDate()
+                invFd.EffectiveTime = invFd.EffectiveTime
             }
 
-            if (invFd.ExpireDate != "" && invFd.ExpireDate != null) {
-                invFd.ExpireDate = moment(invFd.ExpireDate + " " + invFd.ExpireTime);
-                invFd.ExpireTime = invFd.ExpireTime;
+            if (invFd.ExpireDate != '' && invFd.ExpireDate != null) {
+                invFd.ExpireDate = moment(invFd.ExpireDate + ' ' + invFd.ExpireTime).toDate()
+                invFd.ExpireTime = invFd.ExpireTime
             }
-                  
+
+            var BrandId = invFd.Brand.BrandId
+            Brand.getOne(BrandId).then(function(data) {
+                invFd.Brand = data
+                delete invFd.Brand.$id
+                invFd.Brand.id = BrandId
+            }, function() {
+                console.log('brand resolve failure')
+                invFd.Brand = {
+                    BrandId: null,
+                    BrandNameEn: 'Please select brand..'
+                }
+            })
+
+            var invMapper = {
+                VideoLinks: function(m) {
+                    return m.Url
+                },
+                Variants: function(m) {
+                    m.Visibility = m.Visibility
+                    m.Images = m.Images || []
+                    m.Images360 = m.Images360 || []
+                    m.WeightUnit = (m.WeightUnit || '').trim()
+                    m.DimensionUnit = (m.DimensionUnit || '').trim()
+                    m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute)
+                    return m
+                }
+            }
+
+            try {
+                var DefaultVariantIndex = (invFd.Variants || []).map(function(o) {
+                    return o.DefaultVariant || false
+                }).indexOf(true)
+
+                invFd.DefaultVariant = invFd.Variants[DefaultVariantIndex]
+            } catch (er) {
+                console.warn('Unable to set DefaultVariant, will not set', er)
+            }
+
+            try {
+                invFd.Variants = (invFd.Variants || []).map(invMapper.Variants)
+            } catch (er) {
+                console.warn('Unable to set Variants, will set empty', er)
+                invFd.Variants = []
+            }
+
+            var MasterAttribute = {}
+            try {
+                invFd.MasterAttribute.forEach(function(ma) {
+                    var k = { 'AttributeValue': ma.AttributeValues[0] }
+                    if (ma.AttributeValues.length > 0 && ma.AttributeValues[0].AttributeValueId) {
+                        k.AttributeId = ma.AttributeId
+                        k.AttributeValueId = ma.AttributeValues[0].AttributeValueId
+                    }
+                    MasterAttribute[ma.AttributeId] = ma.ValueEn || k
+                })
+            } catch (ex) {
+                console.warn('Unable to set MasterAttribute', ex)
+            }
+            invFd.MasterAttribute = MasterAttribute
+
+            if (!invFd.LocalCategories) {
+                invFd.LocalCategories = []
+            }
+
+            if (invFd.LocalCategories.length == 0) {
+                invFd.LocalCategories = [null, null, null]
+            } else {
+                var kmax = invFd.LocalCategories.length
+                for (var k = 0; k < 3 - kmax; k++) {
+                    console.log('pushing null')
+                    invFd.LocalCategories.push(null)
+                }
+            }
+
+            if (invFd.LocalCategory) {
+                LocalCategory.getOne(invFd.LocalCategory).then(function(locat) {
+                    invFd.LocalCategories.unshift(locat)
+
+                    if (invFd.LocalCategories.length > 3) {
+                        invFd.LocalCategories.pop()
+                    }
+
+                })
+            }
+
+            // TODO: replace with try-catch
+            if (invFd.MasterVariant.VideoLinks) {
+                invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks)
+            } else {
+                invFd.MasterVariant.VideoLinks = []
+            }
+
+            invFd.Variants.forEach(function(variant, index) {
+                try {
+                    variant.VideoLinks = (variant.VideoLinks || []).map(invMapper.VideoLinks)
+                } catch (ex) {
+                    variant.VideoLinks = []
+                }
+            })
+
+            if (!invFd.GlobalCategories) {
+                invFd.GlobalCategories = [null, null, null]
+            }
+
+            if (invFd.GlobalCategories.length == 0) {
+                invFd.GlobalCategories = [null, null, null]
+            } else {
+                var kmax = invFd.GlobalCategories.length
+                for (var k = 0; k < 3 - kmax; k++) {
+                    console.log('pushing null')
+                    invFd.GlobalCategories.push(null)
+                }
+            }
+
+            invFd.GlobalCategories.unshift({
+                CategoryId: invFd.GlobalCategory
+            })
+
+            if (invFd.GlobalCategories.length > 3) {
+                invFd.GlobalCategories.pop()
+            }
+
+            delete invFd.GlobalCategory
+            delete invFd.LocalCategory
+
+            // TODO: Just change ngmodel to bind to MasterVariant.MasterImages Directly
+            // invFd.MasterImages = invFd.MasterVariant.Images || []
+            // delete invFd.MasterVariant.Images
+            // invFd.MasterImages360 = invFd.MasterVariant.Images360 || []
+            // delete invFd.MasterVariant.Images360
+
+            try {
+                invFd.MasterVariant.WeightUnit = invFd.MasterVariant.WeightUnit.trim()
+            } catch (ex) {
+                invFd.MasterVariant.WeightUnit = undefined
+            }
+
+            try {
+                invFd.MasterVariant.DimensionUnit = invFd.MasterVariant.DimensionUnit.trim()
+            } catch (ex) {
+                invFd.MasterVariant.DimensionUnit = undefined
+            }
+
+            try {
+                var _split = invFd.Keywords.trim().split(',')
+                if (_split[0] == '') {
+                    invFd.Keywords = []
+                } else {
+                    invFd.Keywords = util.uniqueSet(_split)
+                }
+            } catch (ex) {
+                invFd.Keywords = []
+            }
+
+            if (invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; // TODO: Hardcode
+
             var transformed = {
                 formData: invFd
-            };
-        
-            console.log('transformation array', transformed);
+            }
 
-            return transformed;
-        };
-//END CMSGroup
+            if (invFd.Variants.length > 0) {
+                // Figure out the Attributes that make up each Variant
+                var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId'])
 
-        return service;
+                // Generate attributeOptions
+                var map0_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
+                    return a.Attribute.AttributeId
+                }).indexOf(invFd.Variants[0].FirstAttribute.AttributeId)
+
+                var map1_index, SecondArray
+                if (HasTwoAttr) {
+                    map1_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
+                        return a.Attribute.AttributeId
+                    }).indexOf(invFd.Variants[0].SecondAttribute.AttributeId)
+                }
+
+                // Find array of values to populate factors array that can be used to reproduce
+                // the expanded variants
+                var FirstArray = invFd.Variants.map(function(variant) {
+                    if (variant.FirstAttribute.AttributeValues.length > 0) {
+                        return {
+                            'AttributeValue': variant.FirstAttribute.AttributeValues[0],
+                            'AttributeId': variant.FirstAttribute.AttributeId
+                        }
+                    }
+
+                    return variant.FirstAttribute.ValueEn.trim()
+                })
+
+                if (HasTwoAttr) {
+                    SecondArray = invFd.Variants.map(function(variant) {
+                        if (variant.SecondAttribute.AttributeValues.length > 0) {
+                            return {
+                                'AttributeValue': variant.SecondAttribute.AttributeValues[0],
+                                'AttributeId': variant.SecondAttribute.AttributeId
+                            }
+                        }
+                        return variant.SecondAttribute.ValueEn.trim()
+                    })
+                }
+
+                // Get updated map from invFd.AttributeSet
+                // and load factorization array
+                var uniqueFirst = util.uniqueSet(FirstArray, 'AttributeValue.AttributeValueId')
+                console.log('ufirst', uniqueFirst)
+                transformed.attributeOptions = [{
+                    Attribute: FullAttributeSet.AttributeSetMaps[map0_index].Attribute,
+                    options: uniqueFirst
+                }]
+
+                if (HasTwoAttr) {
+                    var uniqueSecond = util.uniqueSet(SecondArray, 'AttributeValue.AttributeValueId')
+                    console.log(uniqueSecond)
+                    transformed.attributeOptions.push({
+                        Attribute: FullAttributeSet.AttributeSetMaps[map1_index].Attribute,
+                        options: uniqueSecond
+                    })
+                } else {
+                    transformed.attributeOptions.push({
+                        Attribute: null,
+                        options: []
+                    })
+                }
+
+            }
+
+            console.log('transformation array', transformed)
+
+            return transformed
+        }
+
+        return service
     }
-];
+]
 
-},{}],149:[function(require,module,exports){
-module.exports = ['Product', 'Collection', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
-    function (Product,  Collection, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
-        var $productCollectionAdd = {};
-        
-        /*
-        * Wraps around multiple services,
-        * and solves dependencies needed for AddProduct Collection view variables
-        * to be parsable
-        */
-        $productCollectionAdd.fill = function ( pageLoader, sharedDataSet,
-            sharedFormData, controlFlags, variationFactorIndices, ivFormData) {
-
-
-            var deferred = $q.defer();
-
-              var parse = function (ivFormData) {
-                            pageLoader.load('Loading product data..');
-                            // var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
-                            var inverseResult = Collection.deserialize(ivFormData);
-
-                            //copy it out
-                            Object.keys(inverseResult.formData).forEach(function (key) {
-                                sharedFormData[key] = inverseResult.formData[key];
-                            })
-                        };
-                        parse(ivFormData);
-
-            return deferred.promise;
-        };
-
-        return $productCollectionAdd;
-    }];
-},{}],150:[function(require,module,exports){
-module.exports = ['Product', 'Collection', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
-    function (Product,  Collection, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
-        var $productCollectionAddListItem = {};
-        
-        /*
-        * Wraps around multiple services,
-        * and solves dependencies needed for AddProduct Collection view variables
-        * to be parsable
-        */
-        $productCollectionAddListItem.fill = function ( pageLoader, sharedDataSet,
-            sharedFormData, controlFlags,  ivFormData) {
-
-
-            var deferred = $q.defer();
-
-              var parse = function (ivFormData) {
-                            pageLoader.load('Loading product data..');
-                            // var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
-                            var inverseResult = Collection.deserialize(ivFormData);
-
-                            //copy it out
-                            Object.keys(inverseResult.formData).forEach(function (key) {
-                                sharedFormData[key] = inverseResult.formData[key];
-                            })
-                        };
-                        parse(ivFormData);
-
-            return deferred.promise;
-        };
-
-        return $productCollectionAddListItem;
-    }];
-},{}],151:[function(require,module,exports){
+},{}],144:[function(require,module,exports){
 module.exports = ["common", "util", function(common, util) {
 	'ngInject';
 	var service = common.Rest('/ProductReviews');
@@ -14127,7 +11279,7 @@ module.exports = ["common", "util", function(common, util) {
 	};	
 	return service;
 }];
-},{}],152:[function(require,module,exports){
+},{}],145:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Seller');
@@ -14162,14 +11314,14 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-},{}],153:[function(require,module,exports){
+},{}],146:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Seller');
 	
 	return service;
 }]
-},{}],154:[function(require,module,exports){
+},{}],147:[function(require,module,exports){
 module.exports = ["common", "SellerPermissionService", function(common, SellerPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Seller');
@@ -14215,7 +11367,7 @@ module.exports = ["common", "SellerPermissionService", function(common, SellerPe
 	};
 	return service;	
 }]
-},{}],155:[function(require,module,exports){
+},{}],148:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
     'use strict';
@@ -14274,14 +11426,14 @@ module.exports = ["common", "config", "util", function (common, config, util) {
     return service;
 }];
 
-},{}],156:[function(require,module,exports){
+},{}],149:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Shop');
 
 	return service;
 }]
-},{}],157:[function(require,module,exports){
+},{}],150:[function(require,module,exports){
 module.exports = {
     NameTH: {
         labelClass: "required",
@@ -14420,143 +11572,306 @@ module.exports = {
     }
 }
 
-},{}],158:[function(require,module,exports){
+},{}],151:[function(require,module,exports){
 module.exports = {
-    MasterVariant_ProductNameEn: {
+    BrandImage: {
         'labelClass': 'required',
         'error': {
             'messages': {
                 'required': 'This is a required field',
-                'pattern': 'Thai and Special characters are not allowed'
             }
         }
     },
-    MasterVariant_ProductNameTh: {
-        'labelClass': 'required',
-        'error': {
-            'messages': {
-                'required': 'This is a required field',
-                'pattern': 'Special characters are not allowed'
-            }
-        }
-    },
-    MasterVariant_Sku: {
-        'error': {
-            'messages': {
-                'pattern': 'Special characters are not allowed'
-            }
-        }
-    },
-    MasterVariant_Upc: {
-        'error': {
-            'messages': {
-                'pattern': 'Special characters are not allowed'
-            }
-        }
-    },
-    MasterVariant_Pid: {
-        'labelClass': 'required'
-    },
-    MasterVariant_OriginalPrice: {
-
-        'error': {
-            'messages': {
-                'required': 'This is a required field',
-                'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
-            }
-        }
-    },
-    MasterVariant_SalePrice: {
+    BrandNameEn: {
       'labelClass': 'required',
-        'error': {
+      'error' : {
             'messages': {
-                'min': 'Sale price must be lower than the original price',
-                'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
-            }
+              'required': 'This is a required field',
+              'pattern': 'Only English allowed'
+              }
+       }
+    },
+    DisplayNameEn: {
+        'labelClass': 'required',
+        'error' : {
+              'messages': {
+                'required': 'This is a required field',
+                }
         }
     },
-    MasterVariant_DescriptionShortTh: {
-        'inputSize': 'xxl',
-        'formGroupClass': 'margin-top-30',
+    UrlKeyEn: {
         'error': {
             'messages': {
-                'pattern': 'Special characters are not allowed'
+                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'
             }
         }
-    },
-    MasterVariant_DescriptionShortEn: {
-        'inputSize': 'xxl',
-        'formGroupClass': 'margin-top-30',
-        'error': {
-            'messages': {
-                'pattern': 'Thai and Special characters are not allowed'
-            }
-        }
-    },
-    Keywords: {
-        'inputSize': 'large',
-        'tooltip': 'Search Tag will help your product easier to be discovered',
-        'error': {
-            'messages': {
-                'maxtagcount': 'Cannot exceed 20 tags',
-                'maxtaglength': 'Tag must contain 30 characters or less',
-                'pattern': 'Only letters and numbers allowed'
-            }
-        }
-    },
-    MasterVariant_Quantity: {
-        'hint': {
-            'message': 'Example: 100',
-            'show': true
-        },
-        'error': {
-            'messages': {
-                'pattern': 'Only numbers allowed'
-            }
-        }
-    },
-    MasterVariant_SafetyStock: {
-        'hint': {
-            'message': 'Example: 10',
-            'show': true
-        },
-        'error': {
-            'messages': {
-                'pattern': 'Only numbers allowed'
-            }
-        },
-        'tooltip': 'When your inventory gets lower than saftety stock, you will get a warning'
-    },
-    PrepareDay: {
+    }
+};
+
+},{}],152:[function(require,module,exports){
+module.exports = {
+    NameEn: {
         'labelClass': 'required',
         'error': {
             'messages': {
                 'required': 'This is a required field',
-                'pattern': 'Only numbers allowed'
-            }
-        },
-        'unit': 'Day'
-    },
-    MasterVariant_Length: {
-        'error': {
-            'messages': {
-                'required': 'This is a required field',
-                'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
+                'pattern': 'Only English allowed'
             }
         }
     },
-    RelatedProducts: {
-        'inputSize': 'xxl',
-         'error': {
+    NameTh: {
+        'labelClass': 'required',
+        'error': {
             'messages': {
-                'maxtagcount': 'Cannot exceed 10 related products'
+                'required': 'This is a required field'
+            }
+        }
+    },
+    UrlKeyEn: {
+        'error': {
+            'messages': {
+                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'
+            },
+        }
+    },
+    Commission: {
+        'labelClass': 'required',
+        'error': {
+            'messages': {
+                'required': 'This is a required field',
+                'pattern': 'Only numbers and decimals (up to 2 digits) allowed',
+                'minnumber': 'Please enter between 0% and 100%',
+                'maxnumber': 'Please enter between 0% and 100%'
+            }
+        }
+    },
+
+}
+
+},{}],153:[function(require,module,exports){
+module.exports = {
+    Subject: {
+        'labelClass': 'required',
+        'error': {
+            'messages': {
+                'required': 'This is a required field',
+            }
+        }
+    },
+    Description: {
+        'labelClass': 'required',
+        'error': {
+            'messages': {
+                'required': 'This is a required field',
             }
         }
     }
 }
-
-},{}],159:[function(require,module,exports){
+},{}],154:[function(require,module,exports){
 module.exports = {
+  KillerPointTh: {
+    divClass: 'col-sm-6',
+    error: {
+      messages: {
+        required: 'This is a required field',
+        pattern: 'Special characters are not allowed'
+      }
+    }
+  },
+  KillerPointEn: {
+    'divClass': 'col-sm-6',
+    'error': {
+      'messages': {
+        'required': 'This is a required field',
+        'pattern': 'Thai and Special characters are not allowed'
+      }
+    }
+  },
+  TheOneCardEarn: {
+
+  },
+  Installment: {
+
+  },
+  VideoLink: {
+    'hint': {
+      'show': true,
+      'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'
+    },
+    'error': {
+      'messages': {
+        'url': 'Please enter valid URL'
+      }
+    }
+  },
+  ProductNameEn: {
+    'labelClass': 'required',
+    'error': {
+      'messages': {
+        'required': 'This is a required field',
+        'pattern': 'Thai and Special characters are not allowed'
+      }
+    }
+  },
+  StockType: {},
+  DescriptionFull: {
+    'divClass': 'col-sm-6',
+    'formGroupClass': 'margin-top-40',
+    'labelClass': 'required',
+    'inputSize': 'xxl'
+  },
+  ProductNameTh: {
+    'labelClass': 'required',
+    'error': {
+      'messages': {
+        'required': 'This is a required field',
+        'pattern': 'Special characters are not allowed'
+      }
+    }
+  },
+  Sku: {
+    'error': {
+      'messages': {
+        'pattern': 'Special characters are not allowed'
+      }
+    }
+  },
+  Upc: {
+    'error': {
+      'messages': {
+        'pattern': 'Special characters are not allowed'
+      }
+    }
+  },
+  Pid: {
+    'labelClass': 'required'
+  },
+  OriginalPrice: {
+    'error': {
+      'messages': {
+        'required': 'This is a required field',
+        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
+      }
+    }
+  },
+  SalePrice: {
+    'labelClass': 'required',
+    'error': {
+      'messages': {
+        'min': 'Sale price must be lower than the original price',
+        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
+      }
+    }
+  },
+  DescriptionShortTh: {
+    'divClass': 'col-sm-6',
+    'inputSize': 'xxl',
+    'formGroupClass': 'margin-top-30',
+    'error': {
+      'messages': {
+        'pattern': 'Special characters are not allowed'
+      }
+    }
+  },
+  DescriptionShortEn: {
+    'divClass': 'col-sm-6',
+    'inputSize': 'xxl',
+    'formGroupClass': 'margin-top-30',
+    'error': {
+      'messages': {
+        'pattern': 'Thai and Special characters are not allowed'
+      }
+    }
+  },
+  Keywords: {
+    'inputSize': 'large',
+    'tooltip': 'Search Tag will help your product easier to be discovered',
+    'error': {
+      'messages': {
+        'maxtagcount': 'Cannot exceed 20 tags',
+        'maxtaglength': 'Tag must contain 30 characters or less',
+        'pattern': 'Only letters and numbers allowed'
+      }
+    }
+  },
+  Quantity: {
+    'hint': {
+      'message': 'Example: 100',
+      'show': true
+    },
+    'error': {
+      'messages': {
+        'pattern': 'Only numbers allowed'
+      }
+    }
+  },
+  SafetyStock: {
+    'hint': {
+      'message': 'Example: 10',
+      'show': true
+    },
+    'error': {
+      'messages': {
+        'pattern': 'Only numbers allowed'
+      }
+    },
+    'tooltip': 'When your inventory gets lower than saftety stock, you will get a warning'
+  },
+  PrepareDay: {
+    'labelClass': 'required',
+    'error': {
+      'messages': {
+        'required': 'This is a required field',
+        'pattern': 'Only numbers allowed'
+      }
+    },
+    'unit': 'Day'
+  },
+  Dimension: {
+    'error': {
+      'messages': {
+        'required': 'This is a required field',
+        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
+      }
+    }
+  },
+  RelatedProducts: {
+    'inputSize': 'xxl',
+    'error': {
+      'messages': {
+        'maxtagcount': 'Cannot exceed 10 related products'
+      }
+    }
+  },
+  Nothing: {
+
+  },
+  SEO_BoostingWeight: {
+    'error': {
+      'messages': {
+        'max': 'Only numbers from 1 to 10000 is allowed',
+        'min': 'Only numbers from 1 to 10000 is allowed',
+        'pattern': 'Only numbers from 1 to 10000 is allowed'
+      }
+    }
+  },
+  Remark: {
+    'inputSize': 'normal',
+    'formGroupClass': 'margin-top-30',
+    'error': {
+      'messages': {
+        'pattern': 'Special characters are not allowed'
+      }
+    }
+  }
+}
+
+},{}],155:[function(require,module,exports){
+module.exports = {
+	BankName: {
+        inputSize: 'large',
+        labelClass: 'required'
+	},
 	BankAccountNumber: {
         inputSize: 'large',
         labelClass: 'required'
@@ -14564,9 +11879,12 @@ module.exports = {
 	BankAccountName: {
         inputSize: 'large',
         labelClass: 'required'
+	},
+	Commission: {
+		inputSize: 'large'
 	}
 }
-},{}],160:[function(require,module,exports){
+},{}],156:[function(require,module,exports){
 module.exports = {
   CouponName: {
     labelClass: "required",
@@ -14618,14 +11936,55 @@ module.exports = {
   }
 }
 
-},{}],161:[function(require,module,exports){
+},{}],157:[function(require,module,exports){
+module.exports = {
+  // Description
+    DescriptionFull: {
+        'divClass': 'col-sm-6',
+        'formGroupClass': 'margin-top-40',
+        'inputSize': 'xxl'
+    },
+    DescriptionShortTh: {
+        'divClass': 'col-sm-6',
+        'inputSize': 'xxl',
+        'formGroupClass': 'margin-top-30',
+        'error': {
+            'messages': {
+                'pattern': 'Special characters are not allowed'
+            }
+        }
+    },
+    DescriptionShortEn: {
+        'divClass': 'col-sm-6',
+        'inputSize': 'xxl',
+        'formGroupClass': 'margin-top-30',
+        'error': {
+            'messages': {
+                'pattern': 'Thai and Special characters are not allowed'
+            }
+        }
+    },
+    // Feature products
+    FeatureProducts: {
+        inputClass: 'large',
+        error: {
+            messages: {
+                maxtagcount: 'Only maximum of 20 feature products are allowed'
+            }
+        }
+    },
+    FeatureTitle: {
+        inputClass: 'large'
+    }
+}
+},{}],158:[function(require,module,exports){
 module.exports = {
   MultiCheckbox: {
     transcludeClasses:  "checkbox multiple-checkbox multiline"
   }
 }
 
-},{}],162:[function(require,module,exports){
+},{}],159:[function(require,module,exports){
 module.exports = {
 	ColumnSearch: {
 
@@ -14681,7 +12040,7 @@ module.exports = {
 	}
 }
 
-},{}],163:[function(require,module,exports){
+},{}],160:[function(require,module,exports){
 module.exports = {
   ProductName: {},
   Pid: {},
@@ -14713,7 +12072,26 @@ module.exports = {
   }
 }
 
-},{}],164:[function(require,module,exports){
+},{}],161:[function(require,module,exports){
+module.exports = {
+    Layout: {
+        // tooltip: "Please select 'Available' if you can provide gift wrapping service to your customer",
+        checkbox: {
+            show: true,
+            message: 'Display Countdown Time'
+        }
+    },
+    VideoLink: {
+        inputSize: 'normal',
+        tooltip: "Input number of stock before customer will get alerted when they visit your product page",
+        hint: {
+            show: true,
+            message: 'Example:https://www.youtube.com/watch?v=i79M4nKW1Ms'
+        }
+    }
+}
+
+},{}],162:[function(require,module,exports){
 module.exports = {
     GiftWrap: {
         tooltip: "Please select 'Available' if you can provide gift wrapping service to your customer"
@@ -14778,10 +12156,9 @@ module.exports = {
     }
 }
 
-},{}],165:[function(require,module,exports){
+},{}],163:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
- * Thu Mar 10 2016 15:34:26 GMT+0700 (SE Asia Standard Time)
  */
 module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
@@ -14800,11 +12177,6 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
   );
 
 
-  $templateCache.put('collection/action',
-    "<div><a ng-click=\"actions.edit(row, true)\">View / Edit</a></div><div><a ng-click=actions.duplicate(row)>Duplicate</a></div><div><a ng-click=\"actions.delete(row, true)\">Delete</a></div>"
-  );
-
-
   $templateCache.put('common/alert',
     "<div id=alert class=alert ng-class=\"['alert-' + (type || 'warning')]\" role=alert><span class=\"close color opacity-1\" ng-class=\"'color-' + (type || 'warning')\" aria-hidden=true ng-show=closeable ng-click=\"close({$event: $event})\">&times;</span><ng-transclude><ng-transclude></ng-transclude></div>"
   );
@@ -14812,6 +12184,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('common/breadcrumb/normal',
     ""
+  );
+
+
+  $templateCache.put('common/input/div-with-label',
+    "<div ng-class=\"options.divClass || {}\"><label ng-class=\"options.labelClass || {}\">{{ label }}</label><ng-transclude class=\"{{ options.transcludeClasses }}\" ng-class=\"{ 'has-error' : isInvalid(templateField()) }\"></ng-transclude><span class=\"help-block color-red\" ng-if=isInvalid(templateField()) ng-repeat=\"(key, prop) in (templateField().$error) track by key\"><span ng-bind-html=options.error.messages[key]></span></span></div>"
   );
 
 
@@ -14831,7 +12208,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/input/form-group-with-label',
-    "<div ng-class=\"['form-group ' + (options.formGroupClass || '')]\"><div class=width-label><label class=control-label ng-class=\"options.labelClass || {}\">{{ label }}</label></div><div ng-class=\"['width-field-' + (options.inputSize || 'normal')]\" class={{options.inputClass}}><ng-transclude class=\"{{ options.transcludeClasses }}\" ng-class=\"{ 'has-error' : isInvalid(templateField()) }\"></ng-transclude><span class=input-with-unit ng-if=options.unit><span class=input-unit>{{ options.unit }}</span></span> <span class=help-block ng-if=options.hint ng-show=options.hint.show>{{options.hint.message}}</span> <span class=\"help-block color-red\" ng-if=isInvalid(templateField()) ng-repeat=\"(key, prop) in (templateField().$error) track by key\"><span ng-bind-html=options.error.messages[key]></span></span></div><div class=\"width-field-tooltip padding-left-30\"><i class=\"fa fa-2x fa-question-circle color-grey\" uib-tooltip-html=options.tooltip tooltip-trigger=mouseenter tooltip-placement=right ng-if=\"options.tooltip && options.tooltip.length > 0\"></i></div></div>"
+    "<div ng-class=\"['form-group ' + (options.formGroupClass || '')]\"><div class=width-label><label class=control-label ng-class=\"options.labelClass || {}\">{{ label }}</label></div><div ng-class=\"['width-field-' + (options.inputSize || 'normal')]\" class={{options.inputClass}}><ng-transclude class=\"{{ options.transcludeClasses }}\" ng-class=\"{ 'has-error' : isInvalid(templateField()) }\"></ng-transclude><span class=input-with-unit ng-if=options.unit><span class=input-unit>{{ options.unit }}</span></span> <span class=help-block ng-if=options.hint ng-show=options.hint.show>{{options.hint.message}}</span> <span class=\"help-block color-red\" ng-if=isInvalid(templateField()) ng-repeat=\"(key, prop) in (templateField().$error) track by key\"><span ng-bind-html=options.error.messages[key]></span></span></div><div class=\"width-field-tooltip padding-left-30\" ng-class=\"{'hide-component': !(options.tooltip && options.tooltip.length > 0)}\"><i class=\"fa fa-2x fa-question-circle color-grey\" uib-tooltip-html=options.tooltip tooltip-trigger=mouseenter tooltip-placement=right ng-if=\"options.tooltip && options.tooltip.length > 0\"></i></div><div class=\"width-field-checkbox padding-left-30\"><div ng-if=options.checkbox.show><input type=checkbox name=vehicle value=Car> <span class=checkbox_text>{{options.checkbox.message}}</span></div></div></div>"
   );
 
 
@@ -14854,6 +12231,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('common/input/password',
     "<div class=\"form-group {{ options.formGroupClass }}\" ng-init=\"inputType='password'\"><div class=width-label><label class=control-label ng-class=\"options.labelClass || {}\" ng-bind-html=options.label></label></div><div ng-class=\"['width-field-' + (options.inputSize || 'normal')]\"><div class=input-password><ng-transclude></ng-transclude><a ng-click=\"inputType = (inputType == 'password' ? 'text' : 'password')\"><i class=\"fa fa-eye fa-lg input-password-eye pointer\" ng-class=\"{'active' : inputType == 'text' }\"></i></a></div><span class=help-block ng-if=options.hint ng-show=options.hint.show>{{options.hint.message}}</span> <span class=\"help-block color-red\" ng-if=options.error ng-show=options.error.show ng-repeat=\"(key, prop) in options.error.conditions\"><span ng-bind-html=options.error.messages[key]></span></span></div><div ng-if=\"options.tooltip && options.tooltip.length > 0\" class=\"width-field-tooltip padding-left-30\"><i class=\"fa fa-2x fa-question-circle color-grey\" uib-tooltip-html=options.tooltip tooltip-trigger=mouseenter tooltip-placement=right></i></div></div>"
+  );
+
+
+  $templateCache.put('common/input/text-column-no-label',
+    "<div class=input-column><ng-transclude class=\"{{ options.transcludeClasses }}\" ng-class=\"{ 'has-error' : isInvalid(templateField()) }\"></ng-transclude><span class=\"help-block color-red\" ng-if=options.error ng-show=options.error.show ng-repeat=\"(key, prop) in (templateField().$error) track by key\">{{ options.error.messages[key] }}</span></div>"
   );
 
 
@@ -14898,7 +12280,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/input/tradable-select',
-    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><input ng-model=search[options.map.text] class=\"form-control input-search-icon search-box\" placeholder=\"Search Attribute Set\" aria-describedby=basic-addon2></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable | filter:search:strict track by $index\" ng-class=\"{ 'active' : activeLeft == selectable.indexOf(item) }\" ng-click=\"select(selectable.indexOf(item), true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=active(false) ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=active(true) ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>Attribute Set in This Category</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == model.indexOf(item), 'disabled' : test(item) }\" ng-click=\"select(model.indexOf(item), false)\">{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div></div>"
+    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><input ng-model=search[options.map.text] class=\"form-control input-search-icon search-box\" placeholder=\"{{ searchPlaceholder }}\" aria-describedby=basic-addon2></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable | filter:search:strict track by $index\" ng-class=\"{ 'active' : activeLeft == selectable.indexOf(item) }\" ng-click=\"select(selectable.indexOf(item), true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=active(false) ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=active(true) ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>{{ header }}</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == model.indexOf(item), 'disabled' : test(item) }\" ng-click=\"select(model.indexOf(item), false)\">{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div></div>"
   );
 
 
@@ -14998,198 +12380,67 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
   );
 
 
-  $templateCache.put('general/action',
-    "<div><a ng-click=\"actions.edit(row, true)\">View / Edit</a></div><div><a ng-click=actions.duplicate(row)>Duplicate</a></div><div><a ng-click=\"actions.delete(row, true)\">Delete</a></div>"
-  );
-
-
-  $templateCache.put('general/remove_row_add_list_item',
-    "<div><a ng-click=\"actions.remove($index,row, true)\">Remove</a></div>"
+  $templateCache.put('common/modalPreviewImage',
+    "<img ng-src={{url}} alt=\"\">"
   );
 
 
   $templateCache.put('global_category/modal',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKeyEn nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL (English)\"><input class=form-control name=UrlKeyEn ng-model=formData.UrlKeyEn ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" maxlength=\"300\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Commission nc-template-options-path=addCategoryForm/Commission nc-label=\"Commission (%)\"><input class=form-control name=Commission ng-model=formData.Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ maxlength=20 ng-maxnumber=100 ng-minnumber=0 required></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions column-header=\"Attribute Set in this Category\" search-placeholder=\"Search Attribute Set\" nc-options=\"{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }\"></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\">* Changing attribute set mapping may affect products under this category</p></div></div></div><nc-image-banner name=CategoryBannerEn nc-model=formData.CategoryBannerEn title=\"Banner Upload (English)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh nc-model=formData.CategoryBannerTh title=\"Banner Upload (ไทย)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\r" +
     "\n" +
-    "\t\t\t                  'label': 'Category Name (English)',\r" +
+    "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\r" +
     "\n" +
-    "\t\t\t                  'labelClass': 'required',\r" +
+    "\t\t                          </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=genericForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=formData.DescriptionShortEn>\r" +
     "\n" +
-    "\t\t\t                  'error' : {\r" +
+    "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=formData.DescriptionShortTh>\r" +
     "\n" +
-    "\t\t\t                        'messages': {\r" +
-    "\n" +
-    "\t\t\t                          'required': 'This is a required field',\r" +
-    "\n" +
-    "\t\t\t                          'pattern': 'Only English allowed'\r" +
-    "\n" +
-    "\t\t\t                        },\r" +
-    "\n" +
-    "\t\t\t                        'show': isInvalid(form.NameEn),\r" +
-    "\n" +
-    "\t\t\t                        'conditions' : form.NameEn.$error\r" +
-    "\n" +
-    "\t\t\t                   }\r" +
-    "\n" +
-    "\t\t\t                }\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-class=\"{ 'has-error' : isInvalid(form.NameEn) }\" ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'label': 'Category Name (ไทย)',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'labelClass': 'required',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'error' : {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'messages': {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'required': 'This is a required field'\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t},\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'show': isInvalid(form.NameTh),\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'conditions' : form.NameTh.$error\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t }\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t}\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-class=\"{ 'has-error' : isInvalid(form.NameTh) }\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t                        'label': 'URL (English)',\r" +
-    "\n" +
-    "\t                        'error' : {\r" +
-    "\n" +
-    "\t                              'messages': {\r" +
-    "\n" +
-    "\t                                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'\r" +
-    "\n" +
-    "\t                                },\r" +
-    "\n" +
-    "\t                              'show': isInvalid(form.UrlKeyEn),\r" +
-    "\n" +
-    "\t                              'conditions' : form.UrlKeyEn.$error\r" +
-    "\n" +
-    "\t                         }\r" +
-    "\n" +
-    "\t                      }\"><input class=form-control name=UrlKeyEn ng-model=formData.UrlKeyEn ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" ng-class=\"{ 'has-error' : isInvalid(form.UrlKeyEn) }\" maxlength=\"300\"></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t'label': 'Commission (%)',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t'labelClass': 'required',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t'error' : {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t'messages': {\r" +
-    "\n" +
-    "\t\t\t                    'required': 'This is a required field',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t'pattern': 'Only numbers and decimals (up to 2 digits) allowed',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t'minnumber': 'Please enter between 0% and 100%',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t'maxnumber': 'Please enter between 0% and 100%'\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t},\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t'show': isInvalid(form.Commission),\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t'conditions' : form.Commission.$error\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t}\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t}\"><input class=form-control name=Commission ng-model=formData.Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-class=\"{ 'has-error' : isInvalid(form.Commission) }\" maxlength=20 ng-maxnumber=100 ng-minnumber=0 required></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions nc-options=\"{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }\"></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\">* Changing attribute set mapping may affect products under this category</p></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=col-xs-12 style=\"margin-top:-15px; margin-bottom:0px\"><p class=text-align-left><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</p></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
+    "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Feature Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Feature Products\"><span class=form-text>There are no products in this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=\"params.FeatureTitle\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=col-xs-12 style=\"margin-top:-15px; margin-bottom:0px\"><p class=text-align-left><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</p></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
   $templateCache.put('global_category/nodes',
-    "<div class=\"category-content row no-margin\" ui-tree-handle style=\"cursor: pointer\"><div class=category-content-padding><span class=\"col-xs-5 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\r" +
+    "<div ui-tree-handle class=\"tree-node tree-node-content\"><a class=btn-collapse ng-if=\"node.nodes && node.nodes.length > 0\" data-nodrag ng-click=toggle(this)><span class=glyphicon ng-class=\"{\r" +
     "\n" +
-    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this) data-nodrag></i> <i class=\"fa fa-chevron-right caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\" data-nodrag></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\" data-nodrag></span> <a class=inline-block ng-click=open(node) data-nodrag>{{ node.NameEn }}</a></span></span> <span class=col-xs-1>{{ node.CategoryAbbreviation }}</span> <span class=\"col-xs-1 text-align-center\">{{ node.ProductCount }}</span> <span class=\"col-xs-2 text-align-center\">{{ node.AttributeSetCount }}</span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'global_category/nodes'\"></li></ol>"
-  );
-
-
-  $templateCache.put('global_category/nodes_action',
-    "<div><a href=# data-toggle=modal data-target=#modal-category-detail ng-click=\"$emit('openEditGlobalCategory', node)\">View / Edit</a></div><div><a href=# ng-click=\"$emit('viewGlobalCategory', node)\">View Products</a></div><div><a href=# ng-click=\"remove(); $emit('delete', node);\">Delete</a></div>"
+    "\t\t'glyphicon-chevron-right': collapsed,\r" +
+    "\n" +
+    "\t\t'glyphicon-chevron-down': !collapsed }\"></span></a> <span ng-if=\"!node.nodes || node.nodes.length == 0\"><span class=\"glyphicon glyphicon-chevron-right color-grey\"></span></span> <a ng-click=open(node) data-nodrag>{{node.NameEn}}</a> <span class=\"pull-right category-column category-action-gear\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span> <span class=\"pull-right category-column\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"pull-right category-column\">{{node.AttributeSetCount}}</span> <span class=\"pull-right category-column\">{{node.ProductCount}}</span> <span class=\"pull-right category-column\">{{node.CategoryId}}</span></div><ol ui-tree-nodes=\"\" ng-model=node.nodes ng-class=\"{hidden: collapsed}\"><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'global_category/nodes'\"></li></ol>"
   );
 
 
   $templateCache.put('inventory/stockPopover',
-    "<div class=content><span class=\"col-xs-6 padding-left-0 margin-bottom-15 margin-top-10\">In Stock</span> <input class=\"margin-top-10 text-right col-xs-6\" ng-model=popoverItem.Quantity ng-pattern-restrict=\"^[0-9]*$\"> <span class=\"col-xs-8 padding-left-0 margin-bottom-15\">Defect</span> <span class=\"text-right col-xs-4\">{{popoverItem.Defect || '0'}}</span><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15\">On Hold</span> <span class=\"text-right col-xs-4\">{{popoverItem.OnHold || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15 border_modal\">Reserved</span> <span class=\"text-right col-xs-4 border_modal\">{{popoverItem.Reserve || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 available_inventory\">Available</span><span class=\"text-right col-xs-4 available_inventory\">{{ getAvailableStock(popoverItem) }}</span></div><div class=text-center><button class=\"btn btn-blue btn-width-100 text-center\" ng-click=updateStock(popoverItem)>Save</button></div></div>"
+    "<div id=inventory-tab-content class=content><span class=\"col-xs-6 padding-left-0 margin-bottom-15 margin-top-10\">In Stock</span> <input class=\"margin-top-10 text-right col-xs-6\" ng-model=popoverItem.Quantity ng-pattern-restrict=\"^[0-9]*$\"> <span class=\"col-xs-8 padding-left-0 margin-bottom-15\">Defect</span> <span class=\"text-right col-xs-4\">{{popoverItem.Defect || '0'}}</span><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15\">On Hold</span> <span class=\"text-right col-xs-4\">{{popoverItem.OnHold || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15 border_modal\">Reserved</span> <span class=\"text-right col-xs-4 border_modal\">{{popoverItem.Reserve || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 available_inventory\">Available</span><span class=\"text-right col-xs-4 available_inventory\">{{ getAvailableStock(popoverItem) }}</span></div><div class=text-center><button class=\"btn btn-blue btn-width-100 text-center\" ng-click=updateStock(popoverItem)>Save</button></div></div>"
   );
 
 
   $templateCache.put('local_category/modal',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Local Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Local Category Information</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/text2 ng-template-options=\"{\r" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Local Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Local Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKeyEn nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL (English)\"><input class=form-control name=UrlKeyEn ng-model=formData.UrlKeyEn ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" maxlength=\"300\"></div></div></div><nc-image-banner name=CategoryBannerEn nc-model=formData.CategoryBannerEn title=\"Banner Upload (English)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh nc-model=formData.CategoryBannerTh title=\"Banner Upload (ไทย)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\r" +
     "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'label': 'Category Name (English)',\r" +
+    "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\r" +
     "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'labelClass': 'required',\r" +
+    "\t\t                          </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=genericForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=formData.DescriptionShortEn>\r" +
     "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'error' : {\r" +
+    "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=formData.DescriptionShortTh>\r" +
     "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'messages': {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'required': 'This is a required field',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'pattern': 'Only English allowed'\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t},\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'show': isInvalid(form.NameEn),\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'conditions' : form.NameEn.$error\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t }\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t}\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-class=\"{ 'has-error' : isInvalid(form.NameEn) }\" ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'label': 'Category Name (ไทย)',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'labelClass': 'required',\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t'error' : {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'messages': {\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'required': 'This is a required field'\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t},\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'show': isInvalid(form.NameTh),\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'conditions' : form.NameTh.$error\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t }\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t}\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-class=\"{ 'has-error' : isInvalid(form.NameTh) }\" maxlength=100 required></div><div ng-template=common/input/text2 ng-template-options=\"{\r" +
-    "\n" +
-    "\t                        'label': 'URL (English)',\r" +
-    "\n" +
-    "\t                        'error' : {\r" +
-    "\n" +
-    "\t                              'messages': {\r" +
-    "\n" +
-    "\t                                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'\r" +
-    "\n" +
-    "\t                                },\r" +
-    "\n" +
-    "\t                              'show': isInvalid(form.UrlKeyEn),\r" +
-    "\n" +
-    "\t                              'conditions' : form.UrlKeyEn.$error\r" +
-    "\n" +
-    "\t                         }\r" +
-    "\n" +
-    "\t                      }\"><input class=form-control name=UrlKeyEn ng-model=formData.UrlKeyEn ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" ng-class=\"{ 'has-error' : isInvalid(form.UrlKeyEn) }\" maxlength=\"300\"></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=col-xs-12 style=\"margin-top:-15px; margin-bottom:0px\"><p class=text-align-left><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</p></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
+    "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Feature Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Feature Products\"><span class=form-text>There are no products in this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=\"params.FeatureTitle\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=col-xs-12 style=\"margin-top:-15px; margin-bottom:0px\"><p class=text-align-left><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</p></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
   $templateCache.put('local_category/nodes',
-    "<div class=\"category-content row no-margin\" ui-tree-handle style=\"cursor: pointer\"><div class=category-content-padding><span class=\"col-xs-8 column-lc-name\"><span class=lc-icon-name-warpper><i class=\"fa toggle-button\" ng-if=\"node.nodes && node.nodes.length > 0\" ng-class=\"{\t'fa-chevron-down' : !collapsed,\r" +
+    "<div ui-tree-handle class=\"tree-node tree-node-content\"><a class=btn-collapse ng-if=\"node.nodes && node.nodes.length > 0\" data-nodrag ng-click=toggle(this)><span class=glyphicon ng-class=\"{\r" +
     "\n" +
-    "\t\t\t\t\t\t\t\t'fa-chevron-right' : collapsed }\" ng-click=toggle(this) data-nodrag></i> <i class=\"fa fa-chevron-right caret-grey\" ng-if=\"(!node.nodes || node.nodes.length == 0) && $parentNodesScope.depth() != 0\" data-nodrag></i> <span class=no-children-row ng-if=\"$parentNodesScope.depth() == 0\" data-nodrag></span> <a class=inline-block ng-click=open(node) data-nodrag>{{ node.NameEn }}</a></span></span> <span class=\"col-xs-1 text-align-center\">{{ node.ProductCount }}</span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"col-xs-1 text-align-center\"><i class=\"fa fa-arrows color-dark-grey icon-size-20\"></i></span> <span class=\"col-xs-1 text-align-center\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span></div></div><ol ui-tree-nodes ng-model=node.nodes ng-slide-toggle=!collapsed><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'local_category/nodes'\"></li></ol>"
+    "\t\t'glyphicon-chevron-right': collapsed,\r" +
+    "\n" +
+    "\t\t'glyphicon-chevron-down': !collapsed }\"></span></a> <span ng-if=\"!node.nodes || node.nodes.length == 0\"><span class=\"glyphicon glyphicon-chevron-right color-grey\"></span></span> <a ng-click=open(node) data-nodrag>{{node.NameEn}}</a> <span class=\"pull-right category-column category-action-gear\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span> <span class=\"pull-right category-column\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"pull-right category-column\">{{node.ProductCount}}</span></div><ol ui-tree-nodes ng-model=node.nodes ng-class=\"{hidden: collapsed}\"><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'local_category/nodes'\"></li></ol>"
   );
 
 
-  $templateCache.put('local_category/nodes_action',
-    "<div><a href=# data-toggle=modal data-target=#local-category-detail ng-click=\"$emit('openEditLocalCategory', node)\">View / Edit</a></div><div><a href=# ng-click=\"$emit('viewLocalCategory', node)\">View Products</a></div><div><a href=# ng-click=\"remove(); $emit('saveLocalCategory');\">Delete</a></div>"
+  $templateCache.put('newsletter/modalAdmin',
+    "<div class=modal-header><h3 class=\"modal-title modal_title_abosolute\">Add Newsletter</h3><div class=title_relative><div class=float-right><a href=# class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></div></div></div><div class=modal-body><form name=form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Subject nc-template-form=form.Subject nc-label=Subject><input ng-model=formData.Subject required></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Image nc-template-form=form.Image nc-label=Image><button type=button name=Image class=\"btn btn-default\" ngf-accept=\"'.png,.jpg,.jpeg'\" ngf-select=uploadLogo($file) ng-model=formData.image>Choose File</button></div><div ng-show=formData.Image nc-template=common/input/form-group-with-label nc-label=\"Image Preview\"><img ng-src={{formData.Image.url}} width=\"160\"> <a style=display:block class=margin-top-5 ng-click=\"formData.Image=null\"><i class=\"fa-trash fa\"></i> Delete this image</a></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Description nc-template-form=form.Description nc-label=Content><textarea ng-model=formData.Description required></textarea></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/PublishDate nc-template-form=form.PublishDate nc-label=\"Publish Date\"><div class=width-field-normal></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/VisibleShopGroup nc-template-form=form.VisibleShopGroup nc-label=\"Allow Reader\"><ui-select ng-model=formData.VisibleShopGroup><ui-select-match>{{$select.selected}}</ui-select-match><ui-select-choices repeat=\"item.value as item for shopGroupOptions\"></ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/IncludeShop nc-template-form=form.IncludeShop nc-label=IncludeShop></div></div></div></div></form></div>"
+  );
+
+
+  $templateCache.put('newsletter/modalSeller',
+    "<div class=modal-header><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>{{ item.Subject }}</h3></div><div class=modal-body><form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section-content><div class=color-grey>Publish Date: {{ item.CreatedDt | dateTh }}</div><div class=color-grey>By: Admin</div><p class=margin-top-30><img ng-if=item.ImageUrl src=\"item.ImageUrl\"> {{ item.Description }}</p></div></div></div></form></div>"
   );
 
 
@@ -15219,7 +12470,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('product/modalCategorySelector',
-    "<div class=modal-header><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>{{title}}</h3></div><div class=modal-body style=\"padding-top: 15px\"><div class=\"category-section column-4\"><nc-tree-select nc-model=model nc-tree-select-tree=tree nc-tree-select-title=\"Choose Global Category\"></nc-tree-select><div class=\"category-footer no-padding\"><span class=float-right><button ng-click=select() class=\"btn btn-blue btn-width-xl\" ng-disabled=\"model == null\">Select</button></span></div></div></div>"
+    "<div class=modal-header><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>{{title}}</h3></div><div class=modal-body style=\"padding-top: 15px\"><div class=\"category-section column-4\"><nc-tree-select nc-model=model nc-tree-select-tree=tree nc-tree-select-title=\"Global Category\"></nc-tree-select><div class=\"category-footer no-padding\"><span class=float-right><button ng-click=select() class=\"btn btn-blue btn-width-xl\" ng-disabled=\"model == null\">Select</button></span></div></div></div>"
   );
 
 
@@ -15241,8 +12492,13 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
   $templateCache.put('product/typeahead',
     "<a><span ng-bind-html=\"match.label.HeaderName | uibTypeaheadHighlight:query\"></span></a>"
   );
+
+
+  $templateCache.put('shop_account/modalCommissionCat',
+    "<div class=modal-header><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Add Commission Rule</h3></div><div class=modal-body style=\"padding-top: 15px\"><div class=\"category-section column-4 ah-form\"><nc-tree-select nc-model=model nc-tree-select-tree=tree nc-tree-select-title=\"Global Category\"></nc-tree-select><div class=\"category-footer no-padding form-group\" style=\"margin: 30px 0px 0px 0px\"><div class=float-right><span class=float-left>Commission (%)</span><form name=form class=width-field-normal><input class=form-control ng-class=\"{ 'has-error' : $root.isInvalid(form.Commission) }\" name=Commission ng-model=Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-maxnumber=100 ng-minnumber=\"0\"><div class=\"help-block color-red float-left\"><div ng-if=\"form.Commission.$error.maxnumber || form.Commission.$error.minnumber\">Please enter between 0% and 100%</div><div ng-if=form.Commission.$error.pattern>Only numbers and decimals (up to 2 digits) allowed</div></div></form><button class=\"btn btn-blue btn-width-xl float-left\" ng-click=select() ng-disabled=\"form.$invalid || _.isEmpty(Commission) || _.isEmpty(model)\">Set</button></div></div></div></div>"
+  );
  }];
-},{}],166:[function(require,module,exports){
+},{}],164:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -19365,11 +16621,11 @@ angular.module('ngAnimate', [])
 
 })(window, window.angular);
 
-},{}],167:[function(require,module,exports){
+},{}],165:[function(require,module,exports){
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":166}],168:[function(require,module,exports){
+},{"./angular-animate":164}],166:[function(require,module,exports){
 (function() {
     'use strict';
 
@@ -19537,7 +16793,7 @@ module.exports = 'ngAnimate';
 
 })();
 
-},{}],169:[function(require,module,exports){
+},{}],167:[function(require,module,exports){
 /*globals define, jQuery, module, require */
 /*jslint vars:true */
 
@@ -19987,7 +17243,371 @@ module.exports = 'ngAnimate';
     }]);
 }));
 
-},{"angular":181,"moment":184}],170:[function(require,module,exports){
+},{"angular":182,"moment":186}],168:[function(require,module,exports){
+(function (factory) {
+  'use strict';
+  if (typeof exports === 'object') {
+    // Node/CommonJS
+    module.exports = factory(
+      typeof angular !== 'undefined' ? angular : require('angular'),
+      typeof Chart !== 'undefined' ? Chart : require('chart.js'));
+  }  else if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define(['angular', 'chart'], factory);
+  } else {
+    // Browser globals
+    factory(angular, Chart);
+  }
+}(function (angular, Chart) {
+  'use strict';
+
+  Chart.defaults.global.responsive = true;
+  Chart.defaults.global.multiTooltipTemplate = '<%if (datasetLabel){%><%=datasetLabel%>: <%}%><%= value %>';
+
+  Chart.defaults.global.colours = [
+    '#97BBCD', // blue
+    '#DCDCDC', // light grey
+    '#F7464A', // red
+    '#46BFBD', // green
+    '#FDB45C', // yellow
+    '#949FB1', // grey
+    '#4D5360'  // dark grey
+  ];
+
+  var usingExcanvas = typeof window.G_vmlCanvasManager === 'object' &&
+    window.G_vmlCanvasManager !== null &&
+    typeof window.G_vmlCanvasManager.initElement === 'function';
+
+  if (usingExcanvas) Chart.defaults.global.animation = false;
+
+  return angular.module('chart.js', [])
+    .provider('ChartJs', ChartJsProvider)
+    .factory('ChartJsFactory', ['ChartJs', '$timeout', ChartJsFactory])
+    .directive('chartBase', ['ChartJsFactory', function (ChartJsFactory) { return new ChartJsFactory(); }])
+    .directive('chartLine', ['ChartJsFactory', function (ChartJsFactory) { return new ChartJsFactory('Line'); }])
+    .directive('chartBar', ['ChartJsFactory', function (ChartJsFactory) { return new ChartJsFactory('Bar'); }])
+    .directive('chartRadar', ['ChartJsFactory', function (ChartJsFactory) { return new ChartJsFactory('Radar'); }])
+    .directive('chartDoughnut', ['ChartJsFactory', function (ChartJsFactory) { return new ChartJsFactory('Doughnut'); }])
+    .directive('chartPie', ['ChartJsFactory', function (ChartJsFactory) { return new ChartJsFactory('Pie'); }])
+    .directive('chartPolarArea', ['ChartJsFactory', function (ChartJsFactory) { return new ChartJsFactory('PolarArea'); }]);
+
+  /**
+   * Wrapper for chart.js
+   * Allows configuring chart js using the provider
+   *
+   * angular.module('myModule', ['chart.js']).config(function(ChartJsProvider) {
+   *   ChartJsProvider.setOptions({ responsive: true });
+   *   ChartJsProvider.setOptions('Line', { responsive: false });
+   * })))
+   */
+  function ChartJsProvider () {
+    var options = {};
+    var ChartJs = {
+      Chart: Chart,
+      getOptions: function (type) {
+        var typeOptions = type && options[type] || {};
+        return angular.extend({}, options, typeOptions);
+      }
+    };
+
+    /**
+     * Allow to set global options during configuration
+     */
+    this.setOptions = function (type, customOptions) {
+      // If no type was specified set option for the global object
+      if (! customOptions) {
+        customOptions = type;
+        options = angular.extend(options, customOptions);
+        return;
+      }
+      // Set options for the specific chart
+      options[type] = angular.extend(options[type] || {}, customOptions);
+    };
+
+    this.$get = function () {
+      return ChartJs;
+    };
+  }
+
+  function ChartJsFactory (ChartJs, $timeout) {
+    return function chart (type) {
+      return {
+        restrict: 'CA',
+        scope: {
+          data: '=?',
+          labels: '=?',
+          options: '=?',
+          series: '=?',
+          colours: '=?',
+          getColour: '=?',
+          chartType: '=',
+          legend: '@',
+          click: '=?',
+          hover: '=?',
+
+          chartData: '=?',
+          chartLabels: '=?',
+          chartOptions: '=?',
+          chartSeries: '=?',
+          chartColours: '=?',
+          chartLegend: '@',
+          chartClick: '=?',
+          chartHover: '=?'
+        },
+        link: function (scope, elem/*, attrs */) {
+          var chart, container = document.createElement('div');
+          container.className = 'chart-container';
+          elem.replaceWith(container);
+          container.appendChild(elem[0]);
+
+          if (usingExcanvas) window.G_vmlCanvasManager.initElement(elem[0]);
+
+          ['data', 'labels', 'options', 'series', 'colours', 'legend', 'click', 'hover'].forEach(deprecated);
+          function aliasVar (fromName, toName) {
+            scope.$watch(fromName, function (newVal) {
+              if (typeof newVal === 'undefined') return;
+              scope[toName] = newVal;
+            });
+          }
+          /* provide backward compatibility to "old" directive names, by
+           * having an alias point from the new names to the old names. */
+          aliasVar('chartData', 'data');
+          aliasVar('chartLabels', 'labels');
+          aliasVar('chartOptions', 'options');
+          aliasVar('chartSeries', 'series');
+          aliasVar('chartColours', 'colours');
+          aliasVar('chartLegend', 'legend');
+          aliasVar('chartClick', 'click');
+          aliasVar('chartHover', 'hover');
+
+          // Order of setting "watch" matter
+
+          scope.$watch('data', function (newVal, oldVal) {
+            if (! newVal || ! newVal.length || (Array.isArray(newVal[0]) && ! newVal[0].length)) return;
+            var chartType = type || scope.chartType;
+            if (! chartType) return;
+
+            if (chart) {
+              if (canUpdateChart(newVal, oldVal)) return updateChart(chart, newVal, scope, elem);
+              chart.destroy();
+            }
+
+            createChart(chartType);
+          }, true);
+
+          scope.$watch('series', resetChart, true);
+          scope.$watch('labels', resetChart, true);
+          scope.$watch('options', resetChart, true);
+          scope.$watch('colours', resetChart, true);
+
+          scope.$watch('chartType', function (newVal, oldVal) {
+            if (isEmpty(newVal)) return;
+            if (angular.equals(newVal, oldVal)) return;
+            if (chart) chart.destroy();
+            createChart(newVal);
+          });
+
+          scope.$on('$destroy', function () {
+            if (chart) chart.destroy();
+          });
+
+          function resetChart (newVal, oldVal) {
+            if (isEmpty(newVal)) return;
+            if (angular.equals(newVal, oldVal)) return;
+            var chartType = type || scope.chartType;
+            if (! chartType) return;
+
+            // chart.update() doesn't work for series and labels
+            // so we have to re-create the chart entirely
+            if (chart) chart.destroy();
+
+            createChart(chartType);
+          }
+
+          function createChart (type) {
+            if (isResponsive(type, scope) && elem[0].clientHeight === 0 && container.clientHeight === 0) {
+              return $timeout(function () {
+                createChart(type);
+              }, 50, false);
+            }
+            if (! scope.data || ! scope.data.length) return;
+            scope.getColour = typeof scope.getColour === 'function' ? scope.getColour : getRandomColour;
+            scope.colours = getColours(type, scope);
+            var cvs = elem[0], ctx = cvs.getContext('2d');
+            var data = Array.isArray(scope.data[0]) ?
+              getDataSets(scope.labels, scope.data, scope.series || [], scope.colours) :
+              getData(scope.labels, scope.data, scope.colours);
+            var options = angular.extend({}, ChartJs.getOptions(type), scope.options);
+            chart = new ChartJs.Chart(ctx)[type](data, options);
+            scope.$emit('create', chart);
+
+            // Bind events
+            cvs.onclick = scope.click ? getEventHandler(scope, chart, 'click', false) : angular.noop;
+            cvs.onmousemove = scope.hover ? getEventHandler(scope, chart, 'hover', true) : angular.noop;
+
+            if (scope.legend && scope.legend !== 'false') setLegend(elem, chart);
+          }
+
+          function deprecated (attr) {
+            if (typeof console !== 'undefined' && ChartJs.getOptions().env !== 'test') {
+              var warn = typeof console.warn === 'function' ? console.warn : console.log;
+              if (!! scope[attr]) {
+                warn.call(console, '"%s" is deprecated and will be removed in a future version. ' +
+                  'Please use "chart-%s" instead.', attr, attr);
+              }
+            }
+          }
+        }
+      };
+    };
+
+    function canUpdateChart (newVal, oldVal) {
+      if (newVal && oldVal && newVal.length && oldVal.length) {
+        return Array.isArray(newVal[0]) ?
+        newVal.length === oldVal.length && newVal.every(function (element, index) {
+          return element.length === oldVal[index].length; }) :
+          oldVal.reduce(sum, 0) > 0 ? newVal.length === oldVal.length : false;
+      }
+      return false;
+    }
+
+    function sum (carry, val) {
+      return carry + val;
+    }
+
+    function getEventHandler (scope, chart, action, triggerOnlyOnChange) {
+      var lastState = null;
+      return function (evt) {
+        var atEvent = chart.getPointsAtEvent || chart.getBarsAtEvent || chart.getSegmentsAtEvent;
+        if (atEvent) {
+          var activePoints = atEvent.call(chart, evt);
+          if (triggerOnlyOnChange === false || angular.equals(lastState, activePoints) === false) {
+            lastState = activePoints;
+            scope[action](activePoints, evt);
+            scope.$apply();
+          }
+        }
+      };
+    }
+
+    function getColours (type, scope) {
+      var colours = angular.copy(scope.colours ||
+        ChartJs.getOptions(type).colours ||
+        Chart.defaults.global.colours
+      );
+      while (colours.length < scope.data.length) {
+        colours.push(scope.getColour());
+      }
+      return colours.map(convertColour);
+    }
+
+    function convertColour (colour) {
+      if (typeof colour === 'object' && colour !== null) return colour;
+      if (typeof colour === 'string' && colour[0] === '#') return getColour(hexToRgb(colour.substr(1)));
+      return getRandomColour();
+    }
+
+    function getRandomColour () {
+      var colour = [getRandomInt(0, 255), getRandomInt(0, 255), getRandomInt(0, 255)];
+      return getColour(colour);
+    }
+
+    function getColour (colour) {
+      return {
+        fillColor: rgba(colour, 0.2),
+        strokeColor: rgba(colour, 1),
+        pointColor: rgba(colour, 1),
+        pointStrokeColor: '#fff',
+        pointHighlightFill: '#fff',
+        pointHighlightStroke: rgba(colour, 0.8)
+      };
+    }
+
+    function getRandomInt (min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function rgba (colour, alpha) {
+      if (usingExcanvas) {
+        // rgba not supported by IE8
+        return 'rgb(' + colour.join(',') + ')';
+      } else {
+        return 'rgba(' + colour.concat(alpha).join(',') + ')';
+      }
+    }
+
+    // Credit: http://stackoverflow.com/a/11508164/1190235
+    function hexToRgb (hex) {
+      var bigint = parseInt(hex, 16),
+        r = (bigint >> 16) & 255,
+        g = (bigint >> 8) & 255,
+        b = bigint & 255;
+
+      return [r, g, b];
+    }
+
+    function getDataSets (labels, data, series, colours) {
+      return {
+        labels: labels,
+        datasets: data.map(function (item, i) {
+          return angular.extend({}, colours[i], {
+            label: series[i],
+            data: item
+          });
+        })
+      };
+    }
+
+    function getData (labels, data, colours) {
+      return labels.map(function (label, i) {
+        return angular.extend({}, colours[i], {
+          label: label,
+          value: data[i],
+          color: colours[i].strokeColor,
+          highlight: colours[i].pointHighlightStroke
+        });
+      });
+    }
+
+    function setLegend (elem, chart) {
+      var $parent = elem.parent(),
+          $oldLegend = $parent.find('chart-legend'),
+          legend = '<chart-legend>' + chart.generateLegend() + '</chart-legend>';
+      if ($oldLegend.length) $oldLegend.replaceWith(legend);
+      else $parent.append(legend);
+    }
+
+    function updateChart (chart, values, scope, elem) {
+      if (Array.isArray(scope.data[0])) {
+        chart.datasets.forEach(function (dataset, i) {
+          (dataset.points || dataset.bars).forEach(function (dataItem, j) {
+            dataItem.value = values[i][j];
+          });
+        });
+      } else {
+        chart.segments.forEach(function (segment, i) {
+          segment.value = values[i];
+        });
+      }
+      chart.update();
+      scope.$emit('update', chart);
+      if (scope.legend && scope.legend !== 'false') setLegend(elem, chart);
+    }
+
+    function isEmpty (value) {
+      return ! value ||
+        (Array.isArray(value) && ! value.length) ||
+        (typeof value === 'object' && ! Object.keys(value).length);
+    }
+
+    function isResponsive (type, scope) {
+      var options = angular.extend({}, Chart.defaults.global, ChartJs.getOptions(type), scope.options);
+      return options.responsive;
+    }
+  }
+}));
+
+},{"angular":182,"chart.js":183}],169:[function(require,module,exports){
 (function (root, factory) {
     /* istanbul ignore next */
     if (typeof define === 'function' && define.amd) {
@@ -20065,7 +17685,335 @@ return angular.module('angular-clipboard', [])
     }]);
 
 }));
-},{"angular":181}],171:[function(require,module,exports){
+},{"angular":182}],170:[function(require,module,exports){
+/**
+ * @license AngularJS v1.5.0
+ * (c) 2010-2016 Google, Inc. http://angularjs.org
+ * License: MIT
+ */
+(function(window, angular, undefined) {'use strict';
+
+/**
+ * @ngdoc module
+ * @name ngCookies
+ * @description
+ *
+ * # ngCookies
+ *
+ * The `ngCookies` module provides a convenient wrapper for reading and writing browser cookies.
+ *
+ *
+ * <div doc-module-components="ngCookies"></div>
+ *
+ * See {@link ngCookies.$cookies `$cookies`} for usage.
+ */
+
+
+angular.module('ngCookies', ['ng']).
+  /**
+   * @ngdoc provider
+   * @name $cookiesProvider
+   * @description
+   * Use `$cookiesProvider` to change the default behavior of the {@link ngCookies.$cookies $cookies} service.
+   * */
+   provider('$cookies', [function $CookiesProvider() {
+    /**
+     * @ngdoc property
+     * @name $cookiesProvider#defaults
+     * @description
+     *
+     * Object containing default options to pass when setting cookies.
+     *
+     * The object may have following properties:
+     *
+     * - **path** - `{string}` - The cookie will be available only for this path and its
+     *   sub-paths. By default, this is the URL that appears in your `<base>` tag.
+     * - **domain** - `{string}` - The cookie will be available only for this domain and
+     *   its sub-domains. For security reasons the user agent will not accept the cookie
+     *   if the current domain is not a sub-domain of this domain or equal to it.
+     * - **expires** - `{string|Date}` - String of the form "Wdy, DD Mon YYYY HH:MM:SS GMT"
+     *   or a Date object indicating the exact date/time this cookie will expire.
+     * - **secure** - `{boolean}` - If `true`, then the cookie will only be available through a
+     *   secured connection.
+     *
+     * Note: By default, the address that appears in your `<base>` tag will be used as the path.
+     * This is important so that cookies will be visible for all routes when html5mode is enabled.
+     *
+     **/
+    var defaults = this.defaults = {};
+
+    function calcOptions(options) {
+      return options ? angular.extend({}, defaults, options) : defaults;
+    }
+
+    /**
+     * @ngdoc service
+     * @name $cookies
+     *
+     * @description
+     * Provides read/write access to browser's cookies.
+     *
+     * <div class="alert alert-info">
+     * Up until Angular 1.3, `$cookies` exposed properties that represented the
+     * current browser cookie values. In version 1.4, this behavior has changed, and
+     * `$cookies` now provides a standard api of getters, setters etc.
+     * </div>
+     *
+     * Requires the {@link ngCookies `ngCookies`} module to be installed.
+     *
+     * @example
+     *
+     * ```js
+     * angular.module('cookiesExample', ['ngCookies'])
+     *   .controller('ExampleController', ['$cookies', function($cookies) {
+     *     // Retrieving a cookie
+     *     var favoriteCookie = $cookies.get('myFavorite');
+     *     // Setting a cookie
+     *     $cookies.put('myFavorite', 'oatmeal');
+     *   }]);
+     * ```
+     */
+    this.$get = ['$$cookieReader', '$$cookieWriter', function($$cookieReader, $$cookieWriter) {
+      return {
+        /**
+         * @ngdoc method
+         * @name $cookies#get
+         *
+         * @description
+         * Returns the value of given cookie key
+         *
+         * @param {string} key Id to use for lookup.
+         * @returns {string} Raw cookie value.
+         */
+        get: function(key) {
+          return $$cookieReader()[key];
+        },
+
+        /**
+         * @ngdoc method
+         * @name $cookies#getObject
+         *
+         * @description
+         * Returns the deserialized value of given cookie key
+         *
+         * @param {string} key Id to use for lookup.
+         * @returns {Object} Deserialized cookie value.
+         */
+        getObject: function(key) {
+          var value = this.get(key);
+          return value ? angular.fromJson(value) : value;
+        },
+
+        /**
+         * @ngdoc method
+         * @name $cookies#getAll
+         *
+         * @description
+         * Returns a key value object with all the cookies
+         *
+         * @returns {Object} All cookies
+         */
+        getAll: function() {
+          return $$cookieReader();
+        },
+
+        /**
+         * @ngdoc method
+         * @name $cookies#put
+         *
+         * @description
+         * Sets a value for given cookie key
+         *
+         * @param {string} key Id for the `value`.
+         * @param {string} value Raw value to be stored.
+         * @param {Object=} options Options object.
+         *    See {@link ngCookies.$cookiesProvider#defaults $cookiesProvider.defaults}
+         */
+        put: function(key, value, options) {
+          $$cookieWriter(key, value, calcOptions(options));
+        },
+
+        /**
+         * @ngdoc method
+         * @name $cookies#putObject
+         *
+         * @description
+         * Serializes and sets a value for given cookie key
+         *
+         * @param {string} key Id for the `value`.
+         * @param {Object} value Value to be stored.
+         * @param {Object=} options Options object.
+         *    See {@link ngCookies.$cookiesProvider#defaults $cookiesProvider.defaults}
+         */
+        putObject: function(key, value, options) {
+          this.put(key, angular.toJson(value), options);
+        },
+
+        /**
+         * @ngdoc method
+         * @name $cookies#remove
+         *
+         * @description
+         * Remove given cookie
+         *
+         * @param {string} key Id of the key-value pair to delete.
+         * @param {Object=} options Options object.
+         *    See {@link ngCookies.$cookiesProvider#defaults $cookiesProvider.defaults}
+         */
+        remove: function(key, options) {
+          $$cookieWriter(key, undefined, calcOptions(options));
+        }
+      };
+    }];
+  }]);
+
+angular.module('ngCookies').
+/**
+ * @ngdoc service
+ * @name $cookieStore
+ * @deprecated
+ * @requires $cookies
+ *
+ * @description
+ * Provides a key-value (string-object) storage, that is backed by session cookies.
+ * Objects put or retrieved from this storage are automatically serialized or
+ * deserialized by angular's toJson/fromJson.
+ *
+ * Requires the {@link ngCookies `ngCookies`} module to be installed.
+ *
+ * <div class="alert alert-danger">
+ * **Note:** The $cookieStore service is **deprecated**.
+ * Please use the {@link ngCookies.$cookies `$cookies`} service instead.
+ * </div>
+ *
+ * @example
+ *
+ * ```js
+ * angular.module('cookieStoreExample', ['ngCookies'])
+ *   .controller('ExampleController', ['$cookieStore', function($cookieStore) {
+ *     // Put cookie
+ *     $cookieStore.put('myFavorite','oatmeal');
+ *     // Get cookie
+ *     var favoriteCookie = $cookieStore.get('myFavorite');
+ *     // Removing a cookie
+ *     $cookieStore.remove('myFavorite');
+ *   }]);
+ * ```
+ */
+ factory('$cookieStore', ['$cookies', function($cookies) {
+
+    return {
+      /**
+       * @ngdoc method
+       * @name $cookieStore#get
+       *
+       * @description
+       * Returns the value of given cookie key
+       *
+       * @param {string} key Id to use for lookup.
+       * @returns {Object} Deserialized cookie value, undefined if the cookie does not exist.
+       */
+      get: function(key) {
+        return $cookies.getObject(key);
+      },
+
+      /**
+       * @ngdoc method
+       * @name $cookieStore#put
+       *
+       * @description
+       * Sets a value for given cookie key
+       *
+       * @param {string} key Id for the `value`.
+       * @param {Object} value Value to be stored.
+       */
+      put: function(key, value) {
+        $cookies.putObject(key, value);
+      },
+
+      /**
+       * @ngdoc method
+       * @name $cookieStore#remove
+       *
+       * @description
+       * Remove given cookie
+       *
+       * @param {string} key Id of the key-value pair to delete.
+       */
+      remove: function(key) {
+        $cookies.remove(key);
+      }
+    };
+
+  }]);
+
+/**
+ * @name $$cookieWriter
+ * @requires $document
+ *
+ * @description
+ * This is a private service for writing cookies
+ *
+ * @param {string} name Cookie name
+ * @param {string=} value Cookie value (if undefined, cookie will be deleted)
+ * @param {Object=} options Object with options that need to be stored for the cookie.
+ */
+function $$CookieWriter($document, $log, $browser) {
+  var cookiePath = $browser.baseHref();
+  var rawDocument = $document[0];
+
+  function buildCookieString(name, value, options) {
+    var path, expires;
+    options = options || {};
+    expires = options.expires;
+    path = angular.isDefined(options.path) ? options.path : cookiePath;
+    if (angular.isUndefined(value)) {
+      expires = 'Thu, 01 Jan 1970 00:00:00 GMT';
+      value = '';
+    }
+    if (angular.isString(expires)) {
+      expires = new Date(expires);
+    }
+
+    var str = encodeURIComponent(name) + '=' + encodeURIComponent(value);
+    str += path ? ';path=' + path : '';
+    str += options.domain ? ';domain=' + options.domain : '';
+    str += expires ? ';expires=' + expires.toUTCString() : '';
+    str += options.secure ? ';secure' : '';
+
+    // per http://www.ietf.org/rfc/rfc2109.txt browser must allow at minimum:
+    // - 300 cookies
+    // - 20 cookies per unique domain
+    // - 4096 bytes per cookie
+    var cookieLength = str.length + 1;
+    if (cookieLength > 4096) {
+      $log.warn("Cookie '" + name +
+        "' possibly not set or overflowed because it was too large (" +
+        cookieLength + " > 4096 bytes)!");
+    }
+
+    return str;
+  }
+
+  return function(name, value, options) {
+    rawDocument.cookie = buildCookieString(name, value, options);
+  };
+}
+
+$$CookieWriter.$inject = ['$document', '$log', '$browser'];
+
+angular.module('ngCookies').provider('$$cookieWriter', function $$CookieWriterProvider() {
+  this.$get = $$CookieWriter;
+});
+
+
+})(window, window.angular);
+
+},{}],171:[function(require,module,exports){
+require('./angular-cookies');
+module.exports = 'ngCookies';
+
+},{"./angular-cookies":170}],172:[function(require,module,exports){
 /*
  angular-file-upload v2.2.0
  https://github.com/nervgh/angular-file-upload
@@ -20073,7 +18021,7 @@ return angular.module('angular-clipboard', [])
 
 !function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["angular-file-upload"]=t():e["angular-file-upload"]=t()}(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var i=n[r]={exports:{},id:r,loaded:!1};return e[r].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=r(n(1)),o=r(n(2)),s=r(n(3)),a=r(n(4)),u=r(n(5)),l=r(n(6)),c=r(n(7)),f=r(n(8)),p=r(n(9)),d=r(n(10)),v=r(n(11)),h=r(n(12));angular.module(i.name,[]).value("fileUploaderOptions",o).factory("FileUploader",s).factory("FileLikeObject",a).factory("FileItem",u).factory("FileDirective",l).factory("FileSelect",c).factory("FileDrop",f).factory("FileOver",p).directive("nvFileSelect",d).directive("nvFileDrop",v).directive("nvFileOver",h).run(["FileUploader","FileLikeObject","FileItem","FileDirective","FileSelect","FileDrop","FileOver",function(e,t,n,r,i,o,s){e.FileLikeObject=t,e.FileItem=n,e.FileDirective=r,e.FileSelect=i,e.FileDrop=o,e.FileOver=s}])},function(e,t){e.exports={name:"angularFileUpload"}},function(e,t){"use strict";e.exports={url:"/",alias:"file",headers:{},queue:[],progress:0,autoUpload:!1,removeAfterUpload:!1,method:"POST",filters:[],formData:[],queueLimit:Number.MAX_VALUE,withCredentials:!1}},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.forEach,l=angular.isObject,c=angular.isNumber,f=angular.isDefined,p=angular.isArray,d=angular.element;e.exports=function(e,t,n,r,v,h){var m=r.File,g=r.FormData,_=function(){function r(t){o(this,r);var n=s(e);a(this,n,t,{isUploading:!1,_nextIndex:0,_failFilterIndex:-1,_directives:{select:[],drop:[],over:[]}}),this.filters.unshift({name:"queueLimit",fn:this._queueLimitFilter}),this.filters.unshift({name:"folder",fn:this._folderFilter})}return i(r,{addToQueue:{value:function(e,t,n){var r=this,i=this.isArrayLikeObject(e)?e:[e],o=this._getFilters(n),s=this.queue.length,a=[];u(i,function(e){var n=new v(e);if(r._isValidFile(n,o,t)){var i=new h(r,e,t);a.push(i),r.queue.push(i),r._onAfterAddingFile(i)}else{var s=o[r._failFilterIndex];r._onWhenAddingFileFailed(n,s,t)}}),this.queue.length!==s&&(this._onAfterAddingAll(a),this.progress=this._getTotalProgress()),this._render(),this.autoUpload&&this.uploadAll()}},removeFromQueue:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t];n.isUploading&&n.cancel(),this.queue.splice(t,1),n._destroy(),this.progress=this._getTotalProgress()}},clearQueue:{value:function(){for(;this.queue.length;)this.queue[0].remove();this.progress=0}},uploadItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhrTransport":"_iframeTransport";n._prepareToUploading(),this.isUploading||(this.isUploading=!0,this[r](n))}},cancelItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhr":"_form";n&&n.isUploading&&n[r].abort()}},uploadAll:{value:function(){var e=this.getNotUploadedItems().filter(function(e){return!e.isUploading});e.length&&(u(e,function(e){return e._prepareToUploading()}),e[0].upload())}},cancelAll:{value:function(){var e=this.getNotUploadedItems();u(e,function(e){return e.cancel()})}},isFile:{value:function(e){return this.constructor.isFile(e)}},isFileLikeObject:{value:function(e){return this.constructor.isFileLikeObject(e)}},isArrayLikeObject:{value:function(e){return this.constructor.isArrayLikeObject(e)}},getIndexOfItem:{value:function(e){return c(e)?e:this.queue.indexOf(e)}},getNotUploadedItems:{value:function(){return this.queue.filter(function(e){return!e.isUploaded})}},getReadyItems:{value:function(){return this.queue.filter(function(e){return e.isReady&&!e.isUploading}).sort(function(e,t){return e.index-t.index})}},destroy:{value:function(){var e=this;u(this._directives,function(t){u(e._directives[t],function(e){e.destroy()})})}},onAfterAddingAll:{value:function(e){}},onAfterAddingFile:{value:function(e){}},onWhenAddingFileFailed:{value:function(e,t,n){}},onBeforeUploadItem:{value:function(e){}},onProgressItem:{value:function(e,t){}},onProgressAll:{value:function(e){}},onSuccessItem:{value:function(e,t,n,r){}},onErrorItem:{value:function(e,t,n,r){}},onCancelItem:{value:function(e,t,n,r){}},onCompleteItem:{value:function(e,t,n,r){}},onCompleteAll:{value:function(){}},_getTotalProgress:{value:function(e){if(this.removeAfterUpload)return e||0;var t=this.getNotUploadedItems().length,n=t?this.queue.length-t:this.queue.length,r=100/this.queue.length,i=(e||0)*r/100;return Math.round(n*r+i)}},_getFilters:{value:function(e){if(!e)return this.filters;if(p(e))return e;var t=e.match(/[^\s,]+/g);return this.filters.filter(function(e){return-1!==t.indexOf(e.name)})}},_render:{value:function(){t.$$phase||t.$apply()}},_folderFilter:{value:function(e){return!(!e.size&&!e.type)}},_queueLimitFilter:{value:function(){return this.queue.length<this.queueLimit}},_isValidFile:{value:function(e,t,n){var r=this;return this._failFilterIndex=-1,t.length?t.every(function(t){return r._failFilterIndex++,t.fn.call(r,e,n)}):!0}},_isSuccessCode:{value:function(e){return e>=200&&300>e||304===e}},_transformResponse:{value:function(e,t){var r=this._headersGetter(t);return u(n.defaults.transformResponse,function(t){e=t(e,r)}),e}},_parseHeaders:{value:function(e){var t,n,r,i={};return e?(u(e.split("\n"),function(e){r=e.indexOf(":"),t=e.slice(0,r).trim().toLowerCase(),n=e.slice(r+1).trim(),t&&(i[t]=i[t]?i[t]+", "+n:n)}),i):i}},_headersGetter:{value:function(e){return function(t){return t?e[t.toLowerCase()]||null:e}}},_xhrTransport:{value:function(e){var t=this,n=e._xhr=new XMLHttpRequest,r=new g;if(this._onBeforeUploadItem(e),u(e.formData,function(e){u(e,function(e,t){r.append(t,e)})}),"number"!=typeof e._file.size)throw new TypeError("The file specified is no longer valid");r.append(e.alias,e._file,e.file.name),n.upload.onprogress=function(n){var r=Math.round(n.lengthComputable?100*n.loaded/n.total:0);t._onProgressItem(e,r)},n.onload=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r),o=t._isSuccessCode(n.status)?"Success":"Error",s="_on"+o+"Item";t[s](e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onerror=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onErrorItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onabort=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onCancelItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.open(e.method,e.url,!0),n.withCredentials=e.withCredentials,u(e.headers,function(e,t){n.setRequestHeader(t,e)}),n.send(r),this._render()}},_iframeTransport:{value:function(e){var t=this,n=d('<form style="display: none;" />'),r=d('<iframe name="iframeTransport'+Date.now()+'">'),i=e._input;e._form&&e._form.replaceWith(i),e._form=n,this._onBeforeUploadItem(e),i.prop("name",e.alias),u(e.formData,function(e){u(e,function(e,t){var r=d('<input type="hidden" name="'+t+'" />');r.val(e),n.append(r)})}),n.prop({action:e.url,method:"POST",target:r.prop("name"),enctype:"multipart/form-data",encoding:"multipart/form-data"}),r.bind("load",function(){var n="",i=200;try{n=r[0].contentDocument.body.innerHTML}catch(o){i=500}var s={response:n,status:i,dummy:!0},a={},u=t._transformResponse(s.response,a);t._onSuccessItem(e,u,s.status,a),t._onCompleteItem(e,u,s.status,a)}),n.abort=function(){var o,s={status:0,dummy:!0},a={};r.unbind("load").prop("src","javascript:false;"),n.replaceWith(i),t._onCancelItem(e,o,s.status,a),t._onCompleteItem(e,o,s.status,a)},i.after(n),n.append(i).append(r),n[0].submit(),this._render()}},_onWhenAddingFileFailed:{value:function(e,t,n){this.onWhenAddingFileFailed(e,t,n)}},_onAfterAddingFile:{value:function(e){this.onAfterAddingFile(e)}},_onAfterAddingAll:{value:function(e){this.onAfterAddingAll(e)}},_onBeforeUploadItem:{value:function(e){e._onBeforeUpload(),this.onBeforeUploadItem(e)}},_onProgressItem:{value:function(e,t){var n=this._getTotalProgress(t);this.progress=n,e._onProgress(t),this.onProgressItem(e,t),this.onProgressAll(n),this._render()}},_onSuccessItem:{value:function(e,t,n,r){e._onSuccess(t,n,r),this.onSuccessItem(e,t,n,r)}},_onErrorItem:{value:function(e,t,n,r){e._onError(t,n,r),this.onErrorItem(e,t,n,r)}},_onCancelItem:{value:function(e,t,n,r){e._onCancel(t,n,r),this.onCancelItem(e,t,n,r)}},_onCompleteItem:{value:function(e,t,n,r){e._onComplete(t,n,r),this.onCompleteItem(e,t,n,r);var i=this.getReadyItems()[0];return this.isUploading=!1,f(i)?void i.upload():(this.onCompleteAll(),this.progress=this._getTotalProgress(),void this._render())}}},{isFile:{value:function(e){return m&&e instanceof m}},isFileLikeObject:{value:function(e){return e instanceof v}},isArrayLikeObject:{value:function(e){return l(e)&&"length"in e}},inherit:{value:function(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,e.super_=t}}}),r}();return _.prototype.isHTML5=!(!m||!g),_.isHTML5=_.prototype.isHTML5,_},e.exports.$inject=["fileUploaderOptions","$rootScope","$http","$window","FileLikeObject","FileItem"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.isElement,u=angular.isString;e.exports=function(){var e=function(){function e(t){o(this,e);var n=a(t),r=n?t.value:t,i=u(r)?"FakePath":"Object",s="_createFrom"+i;this[s](r)}return i(e,{_createFromFakePath:{value:function(e){this.lastModifiedDate=null,this.size=null,this.type="like/"+e.slice(e.lastIndexOf(".")+1).toLowerCase(),this.name=e.slice(e.lastIndexOf("/")+e.lastIndexOf("\\")+2)}},_createFromObject:{value:function(e){this.lastModifiedDate=s(e.lastModifiedDate),this.size=e.size,this.type=e.type,this.name=e.name}}}),e}();return e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.element,l=angular.isElement;e.exports=function(e,t){var n=function(){function n(e,r,i){o(this,n);var c=l(r),f=c?u(r):null,p=c?null:r;a(this,{url:e.url,alias:e.alias,headers:s(e.headers),formData:s(e.formData),removeAfterUpload:e.removeAfterUpload,withCredentials:e.withCredentials,method:e.method},i,{uploader:e,file:new t(r),isReady:!1,isUploading:!1,isUploaded:!1,isSuccess:!1,isCancel:!1,isError:!1,progress:0,index:null,_file:p,_input:f}),f&&this._replaceNode(f)}return i(n,{upload:{value:function(){try{this.uploader.uploadItem(this)}catch(e){this.uploader._onCompleteItem(this,"",0,[]),this.uploader._onErrorItem(this,"",0,[])}}},cancel:{value:function(){this.uploader.cancelItem(this)}},remove:{value:function(){this.uploader.removeFromQueue(this)}},onBeforeUpload:{value:function(){}},onProgress:{value:function(e){}},onSuccess:{value:function(e,t,n){}},onError:{value:function(e,t,n){}},onCancel:{value:function(e,t,n){}},onComplete:{value:function(e,t,n){}},_onBeforeUpload:{value:function(){this.isReady=!0,this.isUploading=!0,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!1,this.isError=!1,this.progress=0,this.onBeforeUpload()}},_onProgress:{value:function(e){this.progress=e,this.onProgress(e)}},_onSuccess:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!0,this.isCancel=!1,this.isError=!1,this.progress=100,this.index=null,this.onSuccess(e,t,n)}},_onError:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!1,this.isCancel=!1,this.isError=!0,this.progress=0,this.index=null,this.onError(e,t,n)}},_onCancel:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!0,this.isError=!1,this.progress=0,this.index=null,this.onCancel(e,t,n)}},_onComplete:{value:function(e,t,n){this.onComplete(e,t,n),this.removeAfterUpload&&this.remove()}},_destroy:{value:function(){this._input&&this._input.remove(),this._form&&this._form.remove(),delete this._form,delete this._input}},_prepareToUploading:{value:function(){this.index=this.index||++this.uploader._nextIndex,this.isReady=!0}},_replaceNode:{value:function(t){var n=e(t.clone())(t.scope());n.prop("value",null),t.css("display","none"),t.after(n)}}}),n}();return n},e.exports.$inject=["$compile","FileLikeObject"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.extend);e.exports=function(){var e=function(){function e(t){o(this,e),s(this,t),this.uploader._directives[this.prop].push(this),this._saveLinks(),this.bind()}return i(e,{bind:{value:function(){for(var e in this.events){var t=this.events[e];this.element.bind(e,this[t])}}},unbind:{value:function(){for(var e in this.events)this.element.unbind(e,this.events[e])}},destroy:{value:function(){var e=this.uploader._directives[this.prop].indexOf(this);this.uploader._directives[this.prop].splice(e,1),this.unbind()}},_saveLinks:{value:function(){for(var e in this.events){var t=this.events[e];this[t]=this[t].bind(this)}}}}),e}();return e.prototype.events={},e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",change:"onChange"},prop:"select"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n),this.uploader.isHTML5||this.element.removeAttr("multiple"),this.element.prop("value",null)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},isEmptyAfterSelection:{value:function(){return!!this.element.attr("multiple")}},onChange:{value:function(){var e=this.uploader.isHTML5?this.element[0].files:this.element[0],t=this.getOptions(),n=this.getFilters();this.uploader.isHTML5||this.destroy(),this.uploader.addToQueue(e,t,n),this.isEmptyAfterSelection()&&(this.element.prop("value",null),this.element.replaceWith(this.element=this.element.clone(!0)))}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function c(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:c(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend),l=angular.forEach;e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",drop:"onDrop",dragover:"onDragOver",dragleave:"onDragLeave"},prop:"drop"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},onDrop:{value:function(e){var t=this._getTransfer(e);if(t){var n=this.getOptions(),r=this.getFilters();this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this),this.uploader.addToQueue(t.files,n,r)}}},onDragOver:{value:function(e){var t=this._getTransfer(e);this._haveFiles(t.types)&&(t.dropEffect="copy",this._preventAndStop(e),l(this.uploader._directives.over,this._addOverClass,this))}},onDragLeave:{value:function(e){e.currentTarget!==this.element[0]&&(this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this))}},_getTransfer:{value:function(e){return e.dataTransfer?e.dataTransfer:e.originalEvent.dataTransfer}},_preventAndStop:{value:function(e){e.preventDefault(),e.stopPropagation()}},_haveFiles:{value:function(e){return e?e.indexOf?-1!==e.indexOf("Files"):e.contains?e.contains("Files"):!1:!1}},_addOverClass:{value:function(e){e.addOverClass()}},_removeOverClass:{value:function(e){e.removeOverClass()}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy"},prop:"over",overClass:"nv-file-over"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{addOverClass:{value:function(){this.element.addClass(this.getOverClass())}},removeOverClass:{value:function(){this.element.removeClass(this.getOverClass())}},getOverClass:{value:function(){return this.overClass}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}},e.exports.$inject=["$parse","FileUploader","FileSelect"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');if(s.isHTML5){var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}}},e.exports.$inject=["$parse","FileUploader","FileDrop"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t){return{link:function(n,r,i){var o=n.$eval(i.uploader);if(!(o instanceof e))throw new TypeError('"Uploader" must be an instance of FileUploader');var s=new t({uploader:o,element:r});s.getOverClass=function(){return i.overClass||s.overClass}}}},e.exports.$inject=["FileUploader","FileOver"]}])});
 
-},{}],172:[function(require,module,exports){
+},{}],173:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -20792,11 +18740,11 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 })(window, window.angular);
 
-},{}],173:[function(require,module,exports){
+},{}],174:[function(require,module,exports){
 require('./angular-sanitize');
 module.exports = 'ngSanitize';
 
-},{"./angular-sanitize":172}],174:[function(require,module,exports){
+},{"./angular-sanitize":173}],175:[function(require,module,exports){
 /**
   * x is a value between 0 and 1, indicating where in the animation you are.
   */
@@ -21425,18 +19373,18 @@ angular.module('duScroll.scrollspy', ['duScroll.spyAPI'])
   };
 }]);
 
-},{}],175:[function(require,module,exports){
+},{}],176:[function(require,module,exports){
 require('angular');
 require('./angular-scroll');
 
 module.exports = 'duScroll';
 
-},{"./angular-scroll":174,"angular":181}],176:[function(require,module,exports){
+},{"./angular-scroll":175,"angular":182}],177:[function(require,module,exports){
 /*
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
 
- * Version: 1.2.4 - 2016-03-06
+ * Version: 1.2.1 - 2016-02-27
  * License: MIT
  */angular.module("ui.bootstrap", ["ui.bootstrap.tpls", "ui.bootstrap.collapse","ui.bootstrap.accordion","ui.bootstrap.alert","ui.bootstrap.buttons","ui.bootstrap.carousel","ui.bootstrap.dateparser","ui.bootstrap.isClass","ui.bootstrap.position","ui.bootstrap.datepicker","ui.bootstrap.debounce","ui.bootstrap.dropdown","ui.bootstrap.stackedMap","ui.bootstrap.modal","ui.bootstrap.paging","ui.bootstrap.pager","ui.bootstrap.pagination","ui.bootstrap.tooltip","ui.bootstrap.popover","ui.bootstrap.progressbar","ui.bootstrap.rating","ui.bootstrap.tabs","ui.bootstrap.timepicker","ui.bootstrap.typeahead"]);
 angular.module("ui.bootstrap.tpls", ["uib/template/accordion/accordion-group.html","uib/template/accordion/accordion.html","uib/template/alert/alert.html","uib/template/carousel/carousel.html","uib/template/carousel/slide.html","uib/template/datepicker/datepicker.html","uib/template/datepicker/day.html","uib/template/datepicker/month.html","uib/template/datepicker/popup.html","uib/template/datepicker/year.html","uib/template/modal/backdrop.html","uib/template/modal/window.html","uib/template/pager/pager.html","uib/template/pagination/pagination.html","uib/template/tooltip/tooltip-html-popup.html","uib/template/tooltip/tooltip-popup.html","uib/template/tooltip/tooltip-template-popup.html","uib/template/popover/popover-html.html","uib/template/popover/popover-template.html","uib/template/popover/popover.html","uib/template/progressbar/bar.html","uib/template/progressbar/progress.html","uib/template/progressbar/progressbar.html","uib/template/rating/rating.html","uib/template/tabs/tab.html","uib/template/tabs/tabset.html","uib/template/timepicker/timepicker.html","uib/template/typeahead/typeahead-match.html","uib/template/typeahead/typeahead-popup.html"]);
@@ -23115,7 +21063,7 @@ angular.module('ui.bootstrap.position', [])
         var targetElemPos = {top: 0, left: 0, placement: ''};
 
         if (placement[2]) {
-          var viewportOffset = this.viewportOffset(hostElem, appendToBody);
+          var viewportOffset = this.viewportOffset(hostElem);
 
           var targetElemStyle = $window.getComputedStyle(targetElem);
           var adjustedSize = {
@@ -23581,17 +21529,12 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
   this.createDateObject = function(date, format) {
     var model = ngModelCtrl.$viewValue ? new Date(ngModelCtrl.$viewValue) : null;
     model = dateParser.fromTimezone(model, ngModelOptions.timezone);
-    var today = new Date();
-    today = dateParser.fromTimezone(today, ngModelOptions.timezone);
-    var time = this.compare(date, today);
     var dt = {
       date: date,
       label: dateParser.filter(date, format),
       selected: model && this.compare(date, model) === 0,
       disabled: this.isDisabled(date),
-      past: time < 0,
-      current: time === 0,
-      future: time > 0,
+      current: this.compare(date, new Date()) === 0,
       customClass: this.customClass(date) || null
     };
 
@@ -24674,12 +22617,7 @@ angular.module('ui.bootstrap.dropdown', ['ui.bootstrap.position'])
   };
 
   this.toggle = function(open) {
-    scope.isOpen = arguments.length ? !!open : !scope.isOpen;
-    if (angular.isFunction(setIsOpen)) {
-      setIsOpen(scope, scope.isOpen);
-    }
-
-    return scope.isOpen;
+    return scope.isOpen = arguments.length ? !!open : !scope.isOpen;
   };
 
   // Allow other directives to watch status
@@ -25060,8 +22998,8 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap'])
 /**
  * A helper directive for the $modal service. It creates a backdrop element.
  */
-  .directive('uibModalBackdrop', ['$animate', '$injector', '$uibModalStack',
-  function($animate, $injector, $modalStack) {
+  .directive('uibModalBackdrop', ['$animateCss', '$injector', '$uibModalStack',
+  function($animateCss, $injector, $modalStack) {
     return {
       replace: true,
       templateUrl: 'uib/template/modal/backdrop.html',
@@ -25073,12 +23011,16 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap'])
 
     function linkFn(scope, element, attrs) {
       if (attrs.modalInClass) {
-        $animate.addClass(element, attrs.modalInClass);
+        $animateCss(element, {
+          addClass: attrs.modalInClass
+        }).start();
 
         scope.$on($modalStack.NOW_CLOSING_EVENT, function(e, setIsAsync) {
           var done = setIsAsync();
           if (scope.modalOptions.animation) {
-            $animate.removeClass(element, attrs.modalInClass).then(done);
+            $animateCss(element, {
+              removeClass: attrs.modalInClass
+            }).start().then(done);
           } else {
             done();
           }
@@ -25087,8 +23029,8 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap'])
     }
   }])
 
-  .directive('uibModalWindow', ['$uibModalStack', '$q', '$animateCss', '$document',
-  function($modalStack, $q, $animateCss, $document) {
+  .directive('uibModalWindow', ['$uibModalStack', '$q', '$animate', '$animateCss', '$document',
+  function($modalStack, $q, $animate, $animateCss, $document) {
     return {
       scope: {
         index: '@'
@@ -25142,9 +23084,13 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap'])
 
             scope.$on($modalStack.NOW_CLOSING_EVENT, function(e, setIsAsync) {
               var done = setIsAsync();
-              $animateCss(element, {
-                removeClass: attrs.modalInClass
-              }).start().then(done);
+              if ($animateCss) {
+                $animateCss(element, {
+                  removeClass: attrs.modalInClass
+                }).start().then(done);
+              } else {
+                $animate.removeClass(element, attrs.modalInClass).then(done);
+              }
             });
           }
 
@@ -25310,7 +23256,9 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap'])
           }
           afterAnimating.done = true;
 
-          $animate.leave(domEl).then(function() {
+          $animateCss(domEl, {
+            event: 'leave'
+          }).start().then(function() {
             domEl.remove();
             if (closedDeferred) {
               closedDeferred.resolve();
@@ -25618,7 +23566,7 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap'])
                   }
                 });
 
-                var ctrlInstance, ctrlInstantiate, ctrlLocals = {};
+                var ctrlInstance, ctrlLocals = {};
 
                 //controllers
                 if (modalOptions.controller) {
@@ -25628,27 +23576,18 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap'])
                     ctrlLocals[key] = value;
                   });
 
-                  // the third param will make the controller instantiate later,private api
-                  // @see https://github.com/angular/angular.js/blob/master/src/ng/controller.js#L126
-                  ctrlInstantiate = $controller(modalOptions.controller, ctrlLocals, true);
+                  ctrlInstance = $controller(modalOptions.controller, ctrlLocals);
                   if (modalOptions.controllerAs) {
-                    ctrlInstance = ctrlInstantiate.instance;
-
                     if (modalOptions.bindToController) {
                       ctrlInstance.$close = modalScope.$close;
                       ctrlInstance.$dismiss = modalScope.$dismiss;
                       angular.extend(ctrlInstance, providedScope);
+                      if (angular.isFunction(ctrlInstance.$onInit)) {
+                        ctrlInstance.$onInit();
+                      }
                     }
 
-                    ctrlInstance = ctrlInstantiate();
-
                     modalScope[modalOptions.controllerAs] = ctrlInstance;
-                  } else {
-                    ctrlInstance = ctrlInstantiate();
-                  }
-
-                  if (angular.isFunction(ctrlInstance.$onInit)) {
-                    ctrlInstance.$onInit();
                   }
                 }
 
@@ -26843,8 +24782,7 @@ angular.module('ui.bootstrap.rating', [])
 })
 
 .controller('UibRatingController', ['$scope', '$attrs', 'uibRatingConfig', function($scope, $attrs, ratingConfig) {
-  var ngModelCtrl = { $setViewValue: angular.noop },
-    self = this;
+  var ngModelCtrl = { $setViewValue: angular.noop };
 
   this.init = function(ngModelCtrl_) {
     ngModelCtrl = ngModelCtrl_;
@@ -26914,7 +24852,6 @@ angular.module('ui.bootstrap.rating', [])
 
   this.render = function() {
     $scope.value = ngModelCtrl.$viewValue;
-    $scope.title = self.getTitle($scope.value - 1);
   };
 }])
 
@@ -27156,8 +25093,7 @@ angular.module('ui.bootstrap.tabs', [])
       node.hasAttribute('x-uib-tab-heading') ||
       node.tagName.toLowerCase() === 'uib-tab-heading' ||
       node.tagName.toLowerCase() === 'data-uib-tab-heading' ||
-      node.tagName.toLowerCase() === 'x-uib-tab-heading' ||
-      node.tagName.toLowerCase() === 'uib:tab-heading'
+      node.tagName.toLowerCase() === 'x-uib-tab-heading'
     );
   }
 });
@@ -28114,7 +26050,7 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.debounce', 'ui.bootstrap
           evt.stopPropagation();
 
           resetMatches();
-          originalScope.$digest();
+          scope.$digest();
           break;
         case 38:
           scope.activeIdx = (scope.activeIdx > 0 ? scope.activeIdx : scope.matches.length) - 1;
@@ -28168,7 +26104,7 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.debounce', 'ui.bootstrap
       if (element[0] !== evt.target && evt.which !== 3 && scope.matches.length !== 0) {
         resetMatches();
         if (!$rootScope.$$phase) {
-          originalScope.$digest();
+          scope.$digest();
         }
       }
     };
@@ -28713,9 +26649,9 @@ angular.module("uib/template/progressbar/progressbar.html", []).run(["$templateC
 
 angular.module("uib/template/rating/rating.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("uib/template/rating/rating.html",
-    "<span ng-mouseleave=\"reset()\" ng-keydown=\"onKeydown($event)\" tabindex=\"0\" role=\"slider\" aria-valuemin=\"0\" aria-valuemax=\"{{range.length}}\" aria-valuenow=\"{{value}}\" aria-valuetext=\"{{title}}\">\n" +
+    "<span ng-mouseleave=\"reset()\" ng-keydown=\"onKeydown($event)\" tabindex=\"0\" role=\"slider\" aria-valuemin=\"0\" aria-valuemax=\"{{range.length}}\" aria-valuenow=\"{{value}}\">\n" +
     "    <span ng-repeat-start=\"r in range track by $index\" class=\"sr-only\">({{ $index < value ? '*' : ' ' }})</span>\n" +
-    "    <i ng-repeat-end ng-mouseenter=\"enter($index + 1)\" ng-click=\"rate($index + 1)\" class=\"glyphicon\" ng-class=\"$index < value && (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')\" ng-attr-title=\"{{r.title}}\"></i>\n" +
+    "    <i ng-repeat-end ng-mouseenter=\"enter($index + 1)\" ng-click=\"rate($index + 1)\" class=\"glyphicon\" ng-class=\"$index < value && (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')\" ng-attr-title=\"{{r.title}}\" aria-valuetext=\"{{r.title}}\"></i>\n" +
     "</span>\n" +
     "");
 }]);
@@ -28800,18 +26736,18 @@ angular.module("uib/template/typeahead/typeahead-popup.html", []).run(["$templat
     "</ul>\n" +
     "");
 }]);
-angular.module('ui.bootstrap.carousel').run(function() {!angular.$$csp().noInlineStyle && !angular.$$uibCarouselCss && angular.element(document).find('head').prepend('<style type="text/css">.ng-animate.item:not(.left):not(.right){-webkit-transition:0s ease-in-out left;transition:0s ease-in-out left}</style>'); angular.$$uibCarouselCss = true; });
-angular.module('ui.bootstrap.position').run(function() {!angular.$$csp().noInlineStyle && !angular.$$uibPositionCss && angular.element(document).find('head').prepend('<style type="text/css">.uib-position-measure{display:block !important;visibility:hidden !important;position:absolute !important;top:-9999px !important;left:-9999px !important;}.uib-position-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll;}</style>'); angular.$$uibPositionCss = true; });
-angular.module('ui.bootstrap.datepicker').run(function() {!angular.$$csp().noInlineStyle && !angular.$$uibDatepickerCss && angular.element(document).find('head').prepend('<style type="text/css">.uib-datepicker .uib-title{width:100%;}.uib-day button,.uib-month button,.uib-year button{min-width:100%;}.uib-datepicker-popup.dropdown-menu{display:block;float:none;margin:0;}.uib-button-bar{padding:10px 9px 2px;}.uib-left,.uib-right{width:100%}</style>'); angular.$$uibDatepickerCss = true; });
-angular.module('ui.bootstrap.tooltip').run(function() {!angular.$$csp().noInlineStyle && !angular.$$uibTooltipCss && angular.element(document).find('head').prepend('<style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow,[uib-popover-popup].popover.top-left > .arrow,[uib-popover-popup].popover.top-right > .arrow,[uib-popover-popup].popover.bottom-left > .arrow,[uib-popover-popup].popover.bottom-right > .arrow,[uib-popover-popup].popover.left-top > .arrow,[uib-popover-popup].popover.left-bottom > .arrow,[uib-popover-popup].popover.right-top > .arrow,[uib-popover-popup].popover.right-bottom > .arrow{top:auto;bottom:auto;left:auto;right:auto;margin:0;}[uib-popover-popup].popover,[uib-popover-template-popup].popover{display:block !important;}</style>'); angular.$$uibTooltipCss = true; });
-angular.module('ui.bootstrap.timepicker').run(function() {!angular.$$csp().noInlineStyle && !angular.$$uibTimepickerCss && angular.element(document).find('head').prepend('<style type="text/css">.uib-time input{width:50px;}</style>'); angular.$$uibTimepickerCss = true; });
-angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && !angular.$$uibTypeaheadCss && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); angular.$$uibTypeaheadCss = true; });
-},{}],177:[function(require,module,exports){
+angular.module('ui.bootstrap.carousel').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.ng-animate.item:not(.left):not(.right){-webkit-transition:0s ease-in-out left;transition:0s ease-in-out left}</style>'); });
+angular.module('ui.bootstrap.position').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-position-measure{display:block !important;visibility:hidden !important;position:absolute !important;top:-9999px !important;left:-9999px !important;}.uib-position-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll;}</style>'); });
+angular.module('ui.bootstrap.datepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-datepicker .uib-title{width:100%;}.uib-day button,.uib-month button,.uib-year button{min-width:100%;}.uib-datepicker-popup.dropdown-menu{display:block;float:none;margin:0;}.uib-button-bar{padding:10px 9px 2px;}.uib-left,.uib-right{width:100%}</style>'); });
+angular.module('ui.bootstrap.tooltip').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow,[uib-popover-popup].popover.top-left > .arrow,[uib-popover-popup].popover.top-right > .arrow,[uib-popover-popup].popover.bottom-left > .arrow,[uib-popover-popup].popover.bottom-right > .arrow,[uib-popover-popup].popover.left-top > .arrow,[uib-popover-popup].popover.left-bottom > .arrow,[uib-popover-popup].popover.right-top > .arrow,[uib-popover-popup].popover.right-bottom > .arrow{top:auto;bottom:auto;left:auto;right:auto;margin:0;}[uib-popover-popup].popover,[uib-popover-template-popup].popover{display:block !important;}</style>'); });
+angular.module('ui.bootstrap.timepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-time input{width:50px;}</style>'); });
+angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); });
+},{}],178:[function(require,module,exports){
 require('./dist/ui-bootstrap-tpls');
 
 module.exports = 'ui.bootstrap';
 
-},{"./dist/ui-bootstrap-tpls":176}],178:[function(require,module,exports){
+},{"./dist/ui-bootstrap-tpls":177}],179:[function(require,module,exports){
 /**
  * @license Angular UI Tree v2.15.0
  * (c) 2010-2016. https://github.com/angular-ui-tree/angular-ui-tree
@@ -30382,11 +28318,11 @@ module.exports = 'ui.bootstrap';
 
 })();
 
-},{}],179:[function(require,module,exports){
+},{}],180:[function(require,module,exports){
 require('./dist/angular-ui-tree');
 module.exports = 'ui.tree';
 
-},{"./dist/angular-ui-tree":178}],180:[function(require,module,exports){
+},{"./dist/angular-ui-tree":179}],181:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.9
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -60044,11 +57980,3489 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],181:[function(require,module,exports){
+},{}],182:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":180}],182:[function(require,module,exports){
+},{"./angular":181}],183:[function(require,module,exports){
+/*!
+ * Chart.js
+ * http://chartjs.org/
+ * Version: 1.0.2
+ *
+ * Copyright 2015 Nick Downie
+ * Released under the MIT license
+ * https://github.com/nnnick/Chart.js/blob/master/LICENSE.md
+ */
+
+
+(function(){
+
+	"use strict";
+
+	//Declare root variable - window in the browser, global on the server
+	var root = this,
+		previous = root.Chart;
+
+	//Occupy the global variable of Chart, and create a simple base class
+	var Chart = function(context){
+		var chart = this;
+		this.canvas = context.canvas;
+
+		this.ctx = context;
+
+		//Variables global to the chart
+		var computeDimension = function(element,dimension)
+		{
+			if (element['offset'+dimension])
+			{
+				return element['offset'+dimension];
+			}
+			else
+			{
+				return document.defaultView.getComputedStyle(element).getPropertyValue(dimension);
+			}
+		}
+
+		var width = this.width = computeDimension(context.canvas,'Width');
+		var height = this.height = computeDimension(context.canvas,'Height');
+
+		// Firefox requires this to work correctly
+		context.canvas.width  = width;
+		context.canvas.height = height;
+
+		var width = this.width = context.canvas.width;
+		var height = this.height = context.canvas.height;
+		this.aspectRatio = this.width / this.height;
+		//High pixel density displays - multiply the size of the canvas height/width by the device pixel ratio, then scale.
+		helpers.retinaScale(this);
+
+		return this;
+	};
+	//Globally expose the defaults to allow for user updating/changing
+	Chart.defaults = {
+		global: {
+			// Boolean - Whether to animate the chart
+			animation: true,
+
+			// Number - Number of animation steps
+			animationSteps: 60,
+
+			// String - Animation easing effect
+			animationEasing: "easeOutQuart",
+
+			// Boolean - If we should show the scale at all
+			showScale: true,
+
+			// Boolean - If we want to override with a hard coded scale
+			scaleOverride: false,
+
+			// ** Required if scaleOverride is true **
+			// Number - The number of steps in a hard coded scale
+			scaleSteps: null,
+			// Number - The value jump in the hard coded scale
+			scaleStepWidth: null,
+			// Number - The scale starting value
+			scaleStartValue: null,
+
+			// String - Colour of the scale line
+			scaleLineColor: "rgba(0,0,0,.1)",
+
+			// Number - Pixel width of the scale line
+			scaleLineWidth: 1,
+
+			// Boolean - Whether to show labels on the scale
+			scaleShowLabels: true,
+
+			// Interpolated JS string - can access value
+			scaleLabel: "<%=value%>",
+
+			// Boolean - Whether the scale should stick to integers, and not show any floats even if drawing space is there
+			scaleIntegersOnly: true,
+
+			// Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+			scaleBeginAtZero: false,
+
+			// String - Scale label font declaration for the scale label
+			scaleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+
+			// Number - Scale label font size in pixels
+			scaleFontSize: 12,
+
+			// String - Scale label font weight style
+			scaleFontStyle: "normal",
+
+			// String - Scale label font colour
+			scaleFontColor: "#666",
+
+			// Boolean - whether or not the chart should be responsive and resize when the browser does.
+			responsive: false,
+
+			// Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+			maintainAspectRatio: true,
+
+			// Boolean - Determines whether to draw tooltips on the canvas or not - attaches events to touchmove & mousemove
+			showTooltips: true,
+
+			// Boolean - Determines whether to draw built-in tooltip or call custom tooltip function
+			customTooltips: false,
+
+			// Array - Array of string names to attach tooltip events
+			tooltipEvents: ["mousemove", "touchstart", "touchmove", "mouseout"],
+
+			// String - Tooltip background colour
+			tooltipFillColor: "rgba(0,0,0,0.8)",
+
+			// String - Tooltip label font declaration for the scale label
+			tooltipFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+
+			// Number - Tooltip label font size in pixels
+			tooltipFontSize: 14,
+
+			// String - Tooltip font weight style
+			tooltipFontStyle: "normal",
+
+			// String - Tooltip label font colour
+			tooltipFontColor: "#fff",
+
+			// String - Tooltip title font declaration for the scale label
+			tooltipTitleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+
+			// Number - Tooltip title font size in pixels
+			tooltipTitleFontSize: 14,
+
+			// String - Tooltip title font weight style
+			tooltipTitleFontStyle: "bold",
+
+			// String - Tooltip title font colour
+			tooltipTitleFontColor: "#fff",
+
+			// Number - pixel width of padding around tooltip text
+			tooltipYPadding: 6,
+
+			// Number - pixel width of padding around tooltip text
+			tooltipXPadding: 6,
+
+			// Number - Size of the caret on the tooltip
+			tooltipCaretSize: 8,
+
+			// Number - Pixel radius of the tooltip border
+			tooltipCornerRadius: 6,
+
+			// Number - Pixel offset from point x to tooltip edge
+			tooltipXOffset: 10,
+
+			// String - Template string for single tooltips
+			tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
+
+			// String - Template string for single tooltips
+			multiTooltipTemplate: "<%= value %>",
+
+			// String - Colour behind the legend colour block
+			multiTooltipKeyBackground: '#fff',
+
+			// Function - Will fire on animation progression.
+			onAnimationProgress: function(){},
+
+			// Function - Will fire on animation completion.
+			onAnimationComplete: function(){}
+
+		}
+	};
+
+	//Create a dictionary of chart types, to allow for extension of existing types
+	Chart.types = {};
+
+	//Global Chart helpers object for utility methods and classes
+	var helpers = Chart.helpers = {};
+
+		//-- Basic js utility methods
+	var each = helpers.each = function(loopable,callback,self){
+			var additionalArgs = Array.prototype.slice.call(arguments, 3);
+			// Check to see if null or undefined firstly.
+			if (loopable){
+				if (loopable.length === +loopable.length){
+					var i;
+					for (i=0; i<loopable.length; i++){
+						callback.apply(self,[loopable[i], i].concat(additionalArgs));
+					}
+				}
+				else{
+					for (var item in loopable){
+						callback.apply(self,[loopable[item],item].concat(additionalArgs));
+					}
+				}
+			}
+		},
+		clone = helpers.clone = function(obj){
+			var objClone = {};
+			each(obj,function(value,key){
+				if (obj.hasOwnProperty(key)) objClone[key] = value;
+			});
+			return objClone;
+		},
+		extend = helpers.extend = function(base){
+			each(Array.prototype.slice.call(arguments,1), function(extensionObject) {
+				each(extensionObject,function(value,key){
+					if (extensionObject.hasOwnProperty(key)) base[key] = value;
+				});
+			});
+			return base;
+		},
+		merge = helpers.merge = function(base,master){
+			//Merge properties in left object over to a shallow clone of object right.
+			var args = Array.prototype.slice.call(arguments,0);
+			args.unshift({});
+			return extend.apply(null, args);
+		},
+		indexOf = helpers.indexOf = function(arrayToSearch, item){
+			if (Array.prototype.indexOf) {
+				return arrayToSearch.indexOf(item);
+			}
+			else{
+				for (var i = 0; i < arrayToSearch.length; i++) {
+					if (arrayToSearch[i] === item) return i;
+				}
+				return -1;
+			}
+		},
+		where = helpers.where = function(collection, filterCallback){
+			var filtered = [];
+
+			helpers.each(collection, function(item){
+				if (filterCallback(item)){
+					filtered.push(item);
+				}
+			});
+
+			return filtered;
+		},
+		findNextWhere = helpers.findNextWhere = function(arrayToSearch, filterCallback, startIndex){
+			// Default to start of the array
+			if (!startIndex){
+				startIndex = -1;
+			}
+			for (var i = startIndex + 1; i < arrayToSearch.length; i++) {
+				var currentItem = arrayToSearch[i];
+				if (filterCallback(currentItem)){
+					return currentItem;
+				}
+			}
+		},
+		findPreviousWhere = helpers.findPreviousWhere = function(arrayToSearch, filterCallback, startIndex){
+			// Default to end of the array
+			if (!startIndex){
+				startIndex = arrayToSearch.length;
+			}
+			for (var i = startIndex - 1; i >= 0; i--) {
+				var currentItem = arrayToSearch[i];
+				if (filterCallback(currentItem)){
+					return currentItem;
+				}
+			}
+		},
+		inherits = helpers.inherits = function(extensions){
+			//Basic javascript inheritance based on the model created in Backbone.js
+			var parent = this;
+			var ChartElement = (extensions && extensions.hasOwnProperty("constructor")) ? extensions.constructor : function(){ return parent.apply(this, arguments); };
+
+			var Surrogate = function(){ this.constructor = ChartElement;};
+			Surrogate.prototype = parent.prototype;
+			ChartElement.prototype = new Surrogate();
+
+			ChartElement.extend = inherits;
+
+			if (extensions) extend(ChartElement.prototype, extensions);
+
+			ChartElement.__super__ = parent.prototype;
+
+			return ChartElement;
+		},
+		noop = helpers.noop = function(){},
+		uid = helpers.uid = (function(){
+			var id=0;
+			return function(){
+				return "chart-" + id++;
+			};
+		})(),
+		warn = helpers.warn = function(str){
+			//Method for warning of errors
+			if (window.console && typeof window.console.warn == "function") console.warn(str);
+		},
+		amd = helpers.amd = (typeof define == 'function' && define.amd),
+		//-- Math methods
+		isNumber = helpers.isNumber = function(n){
+			return !isNaN(parseFloat(n)) && isFinite(n);
+		},
+		max = helpers.max = function(array){
+			return Math.max.apply( Math, array );
+		},
+		min = helpers.min = function(array){
+			return Math.min.apply( Math, array );
+		},
+		cap = helpers.cap = function(valueToCap,maxValue,minValue){
+			if(isNumber(maxValue)) {
+				if( valueToCap > maxValue ) {
+					return maxValue;
+				}
+			}
+			else if(isNumber(minValue)){
+				if ( valueToCap < minValue ){
+					return minValue;
+				}
+			}
+			return valueToCap;
+		},
+		getDecimalPlaces = helpers.getDecimalPlaces = function(num){
+			if (num%1!==0 && isNumber(num)){
+				return num.toString().split(".")[1].length;
+			}
+			else {
+				return 0;
+			}
+		},
+		toRadians = helpers.radians = function(degrees){
+			return degrees * (Math.PI/180);
+		},
+		// Gets the angle from vertical upright to the point about a centre.
+		getAngleFromPoint = helpers.getAngleFromPoint = function(centrePoint, anglePoint){
+			var distanceFromXCenter = anglePoint.x - centrePoint.x,
+				distanceFromYCenter = anglePoint.y - centrePoint.y,
+				radialDistanceFromCenter = Math.sqrt( distanceFromXCenter * distanceFromXCenter + distanceFromYCenter * distanceFromYCenter);
+
+
+			var angle = Math.PI * 2 + Math.atan2(distanceFromYCenter, distanceFromXCenter);
+
+			//If the segment is in the top left quadrant, we need to add another rotation to the angle
+			if (distanceFromXCenter < 0 && distanceFromYCenter < 0){
+				angle += Math.PI*2;
+			}
+
+			return {
+				angle: angle,
+				distance: radialDistanceFromCenter
+			};
+		},
+		aliasPixel = helpers.aliasPixel = function(pixelWidth){
+			return (pixelWidth % 2 === 0) ? 0 : 0.5;
+		},
+		splineCurve = helpers.splineCurve = function(FirstPoint,MiddlePoint,AfterPoint,t){
+			//Props to Rob Spencer at scaled innovation for his post on splining between points
+			//http://scaledinnovation.com/analytics/splines/aboutSplines.html
+			var d01=Math.sqrt(Math.pow(MiddlePoint.x-FirstPoint.x,2)+Math.pow(MiddlePoint.y-FirstPoint.y,2)),
+				d12=Math.sqrt(Math.pow(AfterPoint.x-MiddlePoint.x,2)+Math.pow(AfterPoint.y-MiddlePoint.y,2)),
+				fa=t*d01/(d01+d12),// scaling factor for triangle Ta
+				fb=t*d12/(d01+d12);
+			return {
+				inner : {
+					x : MiddlePoint.x-fa*(AfterPoint.x-FirstPoint.x),
+					y : MiddlePoint.y-fa*(AfterPoint.y-FirstPoint.y)
+				},
+				outer : {
+					x: MiddlePoint.x+fb*(AfterPoint.x-FirstPoint.x),
+					y : MiddlePoint.y+fb*(AfterPoint.y-FirstPoint.y)
+				}
+			};
+		},
+		calculateOrderOfMagnitude = helpers.calculateOrderOfMagnitude = function(val){
+			return Math.floor(Math.log(val) / Math.LN10);
+		},
+		calculateScaleRange = helpers.calculateScaleRange = function(valuesArray, drawingSize, textSize, startFromZero, integersOnly){
+
+			//Set a minimum step of two - a point at the top of the graph, and a point at the base
+			var minSteps = 2,
+				maxSteps = Math.floor(drawingSize/(textSize * 1.5)),
+				skipFitting = (minSteps >= maxSteps);
+
+			var maxValue = max(valuesArray),
+				minValue = min(valuesArray);
+
+			// We need some degree of seperation here to calculate the scales if all the values are the same
+			// Adding/minusing 0.5 will give us a range of 1.
+			if (maxValue === minValue){
+				maxValue += 0.5;
+				// So we don't end up with a graph with a negative start value if we've said always start from zero
+				if (minValue >= 0.5 && !startFromZero){
+					minValue -= 0.5;
+				}
+				else{
+					// Make up a whole number above the values
+					maxValue += 0.5;
+				}
+			}
+
+			var	valueRange = Math.abs(maxValue - minValue),
+				rangeOrderOfMagnitude = calculateOrderOfMagnitude(valueRange),
+				graphMax = Math.ceil(maxValue / (1 * Math.pow(10, rangeOrderOfMagnitude))) * Math.pow(10, rangeOrderOfMagnitude),
+				graphMin = (startFromZero) ? 0 : Math.floor(minValue / (1 * Math.pow(10, rangeOrderOfMagnitude))) * Math.pow(10, rangeOrderOfMagnitude),
+				graphRange = graphMax - graphMin,
+				stepValue = Math.pow(10, rangeOrderOfMagnitude),
+				numberOfSteps = Math.round(graphRange / stepValue);
+
+			//If we have more space on the graph we'll use it to give more definition to the data
+			while((numberOfSteps > maxSteps || (numberOfSteps * 2) < maxSteps) && !skipFitting) {
+				if(numberOfSteps > maxSteps){
+					stepValue *=2;
+					numberOfSteps = Math.round(graphRange/stepValue);
+					// Don't ever deal with a decimal number of steps - cancel fitting and just use the minimum number of steps.
+					if (numberOfSteps % 1 !== 0){
+						skipFitting = true;
+					}
+				}
+				//We can fit in double the amount of scale points on the scale
+				else{
+					//If user has declared ints only, and the step value isn't a decimal
+					if (integersOnly && rangeOrderOfMagnitude >= 0){
+						//If the user has said integers only, we need to check that making the scale more granular wouldn't make it a float
+						if(stepValue/2 % 1 === 0){
+							stepValue /=2;
+							numberOfSteps = Math.round(graphRange/stepValue);
+						}
+						//If it would make it a float break out of the loop
+						else{
+							break;
+						}
+					}
+					//If the scale doesn't have to be an int, make the scale more granular anyway.
+					else{
+						stepValue /=2;
+						numberOfSteps = Math.round(graphRange/stepValue);
+					}
+
+				}
+			}
+
+			if (skipFitting){
+				numberOfSteps = minSteps;
+				stepValue = graphRange / numberOfSteps;
+			}
+
+			return {
+				steps : numberOfSteps,
+				stepValue : stepValue,
+				min : graphMin,
+				max	: graphMin + (numberOfSteps * stepValue)
+			};
+
+		},
+		/* jshint ignore:start */
+		// Blows up jshint errors based on the new Function constructor
+		//Templating methods
+		//Javascript micro templating by John Resig - source at http://ejohn.org/blog/javascript-micro-templating/
+		template = helpers.template = function(templateString, valuesObject){
+
+			// If templateString is function rather than string-template - call the function for valuesObject
+
+			if(templateString instanceof Function){
+			 	return templateString(valuesObject);
+		 	}
+
+			var cache = {};
+			function tmpl(str, data){
+				// Figure out if we're getting a template, or if we need to
+				// load the template - and be sure to cache the result.
+				var fn = !/\W/.test(str) ?
+				cache[str] = cache[str] :
+
+				// Generate a reusable function that will serve as a template
+				// generator (and which will be cached).
+				new Function("obj",
+					"var p=[],print=function(){p.push.apply(p,arguments);};" +
+
+					// Introduce the data as local variables using with(){}
+					"with(obj){p.push('" +
+
+					// Convert the template into pure JavaScript
+					str
+						.replace(/[\r\t\n]/g, " ")
+						.split("<%").join("\t")
+						.replace(/((^|%>)[^\t]*)'/g, "$1\r")
+						.replace(/\t=(.*?)%>/g, "',$1,'")
+						.split("\t").join("');")
+						.split("%>").join("p.push('")
+						.split("\r").join("\\'") +
+					"');}return p.join('');"
+				);
+
+				// Provide some basic currying to the user
+				return data ? fn( data ) : fn;
+			}
+			return tmpl(templateString,valuesObject);
+		},
+		/* jshint ignore:end */
+		generateLabels = helpers.generateLabels = function(templateString,numberOfSteps,graphMin,stepValue){
+			var labelsArray = new Array(numberOfSteps);
+			if (labelTemplateString){
+				each(labelsArray,function(val,index){
+					labelsArray[index] = template(templateString,{value: (graphMin + (stepValue*(index+1)))});
+				});
+			}
+			return labelsArray;
+		},
+		//--Animation methods
+		//Easing functions adapted from Robert Penner's easing equations
+		//http://www.robertpenner.com/easing/
+		easingEffects = helpers.easingEffects = {
+			linear: function (t) {
+				return t;
+			},
+			easeInQuad: function (t) {
+				return t * t;
+			},
+			easeOutQuad: function (t) {
+				return -1 * t * (t - 2);
+			},
+			easeInOutQuad: function (t) {
+				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t;
+				return -1 / 2 * ((--t) * (t - 2) - 1);
+			},
+			easeInCubic: function (t) {
+				return t * t * t;
+			},
+			easeOutCubic: function (t) {
+				return 1 * ((t = t / 1 - 1) * t * t + 1);
+			},
+			easeInOutCubic: function (t) {
+				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t * t;
+				return 1 / 2 * ((t -= 2) * t * t + 2);
+			},
+			easeInQuart: function (t) {
+				return t * t * t * t;
+			},
+			easeOutQuart: function (t) {
+				return -1 * ((t = t / 1 - 1) * t * t * t - 1);
+			},
+			easeInOutQuart: function (t) {
+				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t * t * t;
+				return -1 / 2 * ((t -= 2) * t * t * t - 2);
+			},
+			easeInQuint: function (t) {
+				return 1 * (t /= 1) * t * t * t * t;
+			},
+			easeOutQuint: function (t) {
+				return 1 * ((t = t / 1 - 1) * t * t * t * t + 1);
+			},
+			easeInOutQuint: function (t) {
+				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t * t * t * t;
+				return 1 / 2 * ((t -= 2) * t * t * t * t + 2);
+			},
+			easeInSine: function (t) {
+				return -1 * Math.cos(t / 1 * (Math.PI / 2)) + 1;
+			},
+			easeOutSine: function (t) {
+				return 1 * Math.sin(t / 1 * (Math.PI / 2));
+			},
+			easeInOutSine: function (t) {
+				return -1 / 2 * (Math.cos(Math.PI * t / 1) - 1);
+			},
+			easeInExpo: function (t) {
+				return (t === 0) ? 1 : 1 * Math.pow(2, 10 * (t / 1 - 1));
+			},
+			easeOutExpo: function (t) {
+				return (t === 1) ? 1 : 1 * (-Math.pow(2, -10 * t / 1) + 1);
+			},
+			easeInOutExpo: function (t) {
+				if (t === 0) return 0;
+				if (t === 1) return 1;
+				if ((t /= 1 / 2) < 1) return 1 / 2 * Math.pow(2, 10 * (t - 1));
+				return 1 / 2 * (-Math.pow(2, -10 * --t) + 2);
+			},
+			easeInCirc: function (t) {
+				if (t >= 1) return t;
+				return -1 * (Math.sqrt(1 - (t /= 1) * t) - 1);
+			},
+			easeOutCirc: function (t) {
+				return 1 * Math.sqrt(1 - (t = t / 1 - 1) * t);
+			},
+			easeInOutCirc: function (t) {
+				if ((t /= 1 / 2) < 1) return -1 / 2 * (Math.sqrt(1 - t * t) - 1);
+				return 1 / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1);
+			},
+			easeInElastic: function (t) {
+				var s = 1.70158;
+				var p = 0;
+				var a = 1;
+				if (t === 0) return 0;
+				if ((t /= 1) == 1) return 1;
+				if (!p) p = 1 * 0.3;
+				if (a < Math.abs(1)) {
+					a = 1;
+					s = p / 4;
+				} else s = p / (2 * Math.PI) * Math.asin(1 / a);
+				return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p));
+			},
+			easeOutElastic: function (t) {
+				var s = 1.70158;
+				var p = 0;
+				var a = 1;
+				if (t === 0) return 0;
+				if ((t /= 1) == 1) return 1;
+				if (!p) p = 1 * 0.3;
+				if (a < Math.abs(1)) {
+					a = 1;
+					s = p / 4;
+				} else s = p / (2 * Math.PI) * Math.asin(1 / a);
+				return a * Math.pow(2, -10 * t) * Math.sin((t * 1 - s) * (2 * Math.PI) / p) + 1;
+			},
+			easeInOutElastic: function (t) {
+				var s = 1.70158;
+				var p = 0;
+				var a = 1;
+				if (t === 0) return 0;
+				if ((t /= 1 / 2) == 2) return 1;
+				if (!p) p = 1 * (0.3 * 1.5);
+				if (a < Math.abs(1)) {
+					a = 1;
+					s = p / 4;
+				} else s = p / (2 * Math.PI) * Math.asin(1 / a);
+				if (t < 1) return -0.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p));
+				return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p) * 0.5 + 1;
+			},
+			easeInBack: function (t) {
+				var s = 1.70158;
+				return 1 * (t /= 1) * t * ((s + 1) * t - s);
+			},
+			easeOutBack: function (t) {
+				var s = 1.70158;
+				return 1 * ((t = t / 1 - 1) * t * ((s + 1) * t + s) + 1);
+			},
+			easeInOutBack: function (t) {
+				var s = 1.70158;
+				if ((t /= 1 / 2) < 1) return 1 / 2 * (t * t * (((s *= (1.525)) + 1) * t - s));
+				return 1 / 2 * ((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2);
+			},
+			easeInBounce: function (t) {
+				return 1 - easingEffects.easeOutBounce(1 - t);
+			},
+			easeOutBounce: function (t) {
+				if ((t /= 1) < (1 / 2.75)) {
+					return 1 * (7.5625 * t * t);
+				} else if (t < (2 / 2.75)) {
+					return 1 * (7.5625 * (t -= (1.5 / 2.75)) * t + 0.75);
+				} else if (t < (2.5 / 2.75)) {
+					return 1 * (7.5625 * (t -= (2.25 / 2.75)) * t + 0.9375);
+				} else {
+					return 1 * (7.5625 * (t -= (2.625 / 2.75)) * t + 0.984375);
+				}
+			},
+			easeInOutBounce: function (t) {
+				if (t < 1 / 2) return easingEffects.easeInBounce(t * 2) * 0.5;
+				return easingEffects.easeOutBounce(t * 2 - 1) * 0.5 + 1 * 0.5;
+			}
+		},
+		//Request animation polyfill - http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
+		requestAnimFrame = helpers.requestAnimFrame = (function(){
+			return window.requestAnimationFrame ||
+				window.webkitRequestAnimationFrame ||
+				window.mozRequestAnimationFrame ||
+				window.oRequestAnimationFrame ||
+				window.msRequestAnimationFrame ||
+				function(callback) {
+					return window.setTimeout(callback, 1000 / 60);
+				};
+		})(),
+		cancelAnimFrame = helpers.cancelAnimFrame = (function(){
+			return window.cancelAnimationFrame ||
+				window.webkitCancelAnimationFrame ||
+				window.mozCancelAnimationFrame ||
+				window.oCancelAnimationFrame ||
+				window.msCancelAnimationFrame ||
+				function(callback) {
+					return window.clearTimeout(callback, 1000 / 60);
+				};
+		})(),
+		animationLoop = helpers.animationLoop = function(callback,totalSteps,easingString,onProgress,onComplete,chartInstance){
+
+			var currentStep = 0,
+				easingFunction = easingEffects[easingString] || easingEffects.linear;
+
+			var animationFrame = function(){
+				currentStep++;
+				var stepDecimal = currentStep/totalSteps;
+				var easeDecimal = easingFunction(stepDecimal);
+
+				callback.call(chartInstance,easeDecimal,stepDecimal, currentStep);
+				onProgress.call(chartInstance,easeDecimal,stepDecimal);
+				if (currentStep < totalSteps){
+					chartInstance.animationFrame = requestAnimFrame(animationFrame);
+				} else{
+					onComplete.apply(chartInstance);
+				}
+			};
+			requestAnimFrame(animationFrame);
+		},
+		//-- DOM methods
+		getRelativePosition = helpers.getRelativePosition = function(evt){
+			var mouseX, mouseY;
+			var e = evt.originalEvent || evt,
+				canvas = evt.currentTarget || evt.srcElement,
+				boundingRect = canvas.getBoundingClientRect();
+
+			if (e.touches){
+				mouseX = e.touches[0].clientX - boundingRect.left;
+				mouseY = e.touches[0].clientY - boundingRect.top;
+
+			}
+			else{
+				mouseX = e.clientX - boundingRect.left;
+				mouseY = e.clientY - boundingRect.top;
+			}
+
+			return {
+				x : mouseX,
+				y : mouseY
+			};
+
+		},
+		addEvent = helpers.addEvent = function(node,eventType,method){
+			if (node.addEventListener){
+				node.addEventListener(eventType,method);
+			} else if (node.attachEvent){
+				node.attachEvent("on"+eventType, method);
+			} else {
+				node["on"+eventType] = method;
+			}
+		},
+		removeEvent = helpers.removeEvent = function(node, eventType, handler){
+			if (node.removeEventListener){
+				node.removeEventListener(eventType, handler, false);
+			} else if (node.detachEvent){
+				node.detachEvent("on"+eventType,handler);
+			} else{
+				node["on" + eventType] = noop;
+			}
+		},
+		bindEvents = helpers.bindEvents = function(chartInstance, arrayOfEvents, handler){
+			// Create the events object if it's not already present
+			if (!chartInstance.events) chartInstance.events = {};
+
+			each(arrayOfEvents,function(eventName){
+				chartInstance.events[eventName] = function(){
+					handler.apply(chartInstance, arguments);
+				};
+				addEvent(chartInstance.chart.canvas,eventName,chartInstance.events[eventName]);
+			});
+		},
+		unbindEvents = helpers.unbindEvents = function (chartInstance, arrayOfEvents) {
+			each(arrayOfEvents, function(handler,eventName){
+				removeEvent(chartInstance.chart.canvas, eventName, handler);
+			});
+		},
+		getMaximumWidth = helpers.getMaximumWidth = function(domNode){
+			var container = domNode.parentNode;
+			// TODO = check cross browser stuff with this.
+			return container.clientWidth;
+		},
+		getMaximumHeight = helpers.getMaximumHeight = function(domNode){
+			var container = domNode.parentNode;
+			// TODO = check cross browser stuff with this.
+			return container.clientHeight;
+		},
+		getMaximumSize = helpers.getMaximumSize = helpers.getMaximumWidth, // legacy support
+		retinaScale = helpers.retinaScale = function(chart){
+			var ctx = chart.ctx,
+				width = chart.canvas.width,
+				height = chart.canvas.height;
+
+			if (window.devicePixelRatio) {
+				ctx.canvas.style.width = width + "px";
+				ctx.canvas.style.height = height + "px";
+				ctx.canvas.height = height * window.devicePixelRatio;
+				ctx.canvas.width = width * window.devicePixelRatio;
+				ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+			}
+		},
+		//-- Canvas methods
+		clear = helpers.clear = function(chart){
+			chart.ctx.clearRect(0,0,chart.width,chart.height);
+		},
+		fontString = helpers.fontString = function(pixelSize,fontStyle,fontFamily){
+			return fontStyle + " " + pixelSize+"px " + fontFamily;
+		},
+		longestText = helpers.longestText = function(ctx,font,arrayOfStrings){
+			ctx.font = font;
+			var longest = 0;
+			each(arrayOfStrings,function(string){
+				var textWidth = ctx.measureText(string).width;
+				longest = (textWidth > longest) ? textWidth : longest;
+			});
+			return longest;
+		},
+		drawRoundedRectangle = helpers.drawRoundedRectangle = function(ctx,x,y,width,height,radius){
+			ctx.beginPath();
+			ctx.moveTo(x + radius, y);
+			ctx.lineTo(x + width - radius, y);
+			ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+			ctx.lineTo(x + width, y + height - radius);
+			ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+			ctx.lineTo(x + radius, y + height);
+			ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+			ctx.lineTo(x, y + radius);
+			ctx.quadraticCurveTo(x, y, x + radius, y);
+			ctx.closePath();
+		};
+
+
+	//Store a reference to each instance - allowing us to globally resize chart instances on window resize.
+	//Destroy method on the chart will remove the instance of the chart from this reference.
+	Chart.instances = {};
+
+	Chart.Type = function(data,options,chart){
+		this.options = options;
+		this.chart = chart;
+		this.id = uid();
+		//Add the chart instance to the global namespace
+		Chart.instances[this.id] = this;
+
+		// Initialize is always called when a chart type is created
+		// By default it is a no op, but it should be extended
+		if (options.responsive){
+			this.resize();
+		}
+		this.initialize.call(this,data);
+	};
+
+	//Core methods that'll be a part of every chart type
+	extend(Chart.Type.prototype,{
+		initialize : function(){return this;},
+		clear : function(){
+			clear(this.chart);
+			return this;
+		},
+		stop : function(){
+			// Stops any current animation loop occuring
+			cancelAnimFrame(this.animationFrame);
+			return this;
+		},
+		resize : function(callback){
+			this.stop();
+			var canvas = this.chart.canvas,
+				newWidth = getMaximumWidth(this.chart.canvas),
+				newHeight = this.options.maintainAspectRatio ? newWidth / this.chart.aspectRatio : getMaximumHeight(this.chart.canvas);
+
+			canvas.width = this.chart.width = newWidth;
+			canvas.height = this.chart.height = newHeight;
+
+			retinaScale(this.chart);
+
+			if (typeof callback === "function"){
+				callback.apply(this, Array.prototype.slice.call(arguments, 1));
+			}
+			return this;
+		},
+		reflow : noop,
+		render : function(reflow){
+			if (reflow){
+				this.reflow();
+			}
+			if (this.options.animation && !reflow){
+				helpers.animationLoop(
+					this.draw,
+					this.options.animationSteps,
+					this.options.animationEasing,
+					this.options.onAnimationProgress,
+					this.options.onAnimationComplete,
+					this
+				);
+			}
+			else{
+				this.draw();
+				this.options.onAnimationComplete.call(this);
+			}
+			return this;
+		},
+		generateLegend : function(){
+			return template(this.options.legendTemplate,this);
+		},
+		destroy : function(){
+			this.clear();
+			unbindEvents(this, this.events);
+			var canvas = this.chart.canvas;
+
+			// Reset canvas height/width attributes starts a fresh with the canvas context
+			canvas.width = this.chart.width;
+			canvas.height = this.chart.height;
+
+			// < IE9 doesn't support removeProperty
+			if (canvas.style.removeProperty) {
+				canvas.style.removeProperty('width');
+				canvas.style.removeProperty('height');
+			} else {
+				canvas.style.removeAttribute('width');
+				canvas.style.removeAttribute('height');
+			}
+
+			delete Chart.instances[this.id];
+		},
+		showTooltip : function(ChartElements, forceRedraw){
+			// Only redraw the chart if we've actually changed what we're hovering on.
+			if (typeof this.activeElements === 'undefined') this.activeElements = [];
+
+			var isChanged = (function(Elements){
+				var changed = false;
+
+				if (Elements.length !== this.activeElements.length){
+					changed = true;
+					return changed;
+				}
+
+				each(Elements, function(element, index){
+					if (element !== this.activeElements[index]){
+						changed = true;
+					}
+				}, this);
+				return changed;
+			}).call(this, ChartElements);
+
+			if (!isChanged && !forceRedraw){
+				return;
+			}
+			else{
+				this.activeElements = ChartElements;
+			}
+			this.draw();
+			if(this.options.customTooltips){
+				this.options.customTooltips(false);
+			}
+			if (ChartElements.length > 0){
+				// If we have multiple datasets, show a MultiTooltip for all of the data points at that index
+				if (this.datasets && this.datasets.length > 1) {
+					var dataArray,
+						dataIndex;
+
+					for (var i = this.datasets.length - 1; i >= 0; i--) {
+						dataArray = this.datasets[i].points || this.datasets[i].bars || this.datasets[i].segments;
+						dataIndex = indexOf(dataArray, ChartElements[0]);
+						if (dataIndex !== -1){
+							break;
+						}
+					}
+					var tooltipLabels = [],
+						tooltipColors = [],
+						medianPosition = (function(index) {
+
+							// Get all the points at that particular index
+							var Elements = [],
+								dataCollection,
+								xPositions = [],
+								yPositions = [],
+								xMax,
+								yMax,
+								xMin,
+								yMin;
+							helpers.each(this.datasets, function(dataset){
+								dataCollection = dataset.points || dataset.bars || dataset.segments;
+								if (dataCollection[dataIndex] && dataCollection[dataIndex].hasValue()){
+									Elements.push(dataCollection[dataIndex]);
+								}
+							});
+
+							helpers.each(Elements, function(element) {
+								xPositions.push(element.x);
+								yPositions.push(element.y);
+
+
+								//Include any colour information about the element
+								tooltipLabels.push(helpers.template(this.options.multiTooltipTemplate, element));
+								tooltipColors.push({
+									fill: element._saved.fillColor || element.fillColor,
+									stroke: element._saved.strokeColor || element.strokeColor
+								});
+
+							}, this);
+
+							yMin = min(yPositions);
+							yMax = max(yPositions);
+
+							xMin = min(xPositions);
+							xMax = max(xPositions);
+
+							return {
+								x: (xMin > this.chart.width/2) ? xMin : xMax,
+								y: (yMin + yMax)/2
+							};
+						}).call(this, dataIndex);
+
+					new Chart.MultiTooltip({
+						x: medianPosition.x,
+						y: medianPosition.y,
+						xPadding: this.options.tooltipXPadding,
+						yPadding: this.options.tooltipYPadding,
+						xOffset: this.options.tooltipXOffset,
+						fillColor: this.options.tooltipFillColor,
+						textColor: this.options.tooltipFontColor,
+						fontFamily: this.options.tooltipFontFamily,
+						fontStyle: this.options.tooltipFontStyle,
+						fontSize: this.options.tooltipFontSize,
+						titleTextColor: this.options.tooltipTitleFontColor,
+						titleFontFamily: this.options.tooltipTitleFontFamily,
+						titleFontStyle: this.options.tooltipTitleFontStyle,
+						titleFontSize: this.options.tooltipTitleFontSize,
+						cornerRadius: this.options.tooltipCornerRadius,
+						labels: tooltipLabels,
+						legendColors: tooltipColors,
+						legendColorBackground : this.options.multiTooltipKeyBackground,
+						title: ChartElements[0].label,
+						chart: this.chart,
+						ctx: this.chart.ctx,
+						custom: this.options.customTooltips
+					}).draw();
+
+				} else {
+					each(ChartElements, function(Element) {
+						var tooltipPosition = Element.tooltipPosition();
+						new Chart.Tooltip({
+							x: Math.round(tooltipPosition.x),
+							y: Math.round(tooltipPosition.y),
+							xPadding: this.options.tooltipXPadding,
+							yPadding: this.options.tooltipYPadding,
+							fillColor: this.options.tooltipFillColor,
+							textColor: this.options.tooltipFontColor,
+							fontFamily: this.options.tooltipFontFamily,
+							fontStyle: this.options.tooltipFontStyle,
+							fontSize: this.options.tooltipFontSize,
+							caretHeight: this.options.tooltipCaretSize,
+							cornerRadius: this.options.tooltipCornerRadius,
+							text: template(this.options.tooltipTemplate, Element),
+							chart: this.chart,
+							custom: this.options.customTooltips
+						}).draw();
+					}, this);
+				}
+			}
+			return this;
+		},
+		toBase64Image : function(){
+			return this.chart.canvas.toDataURL.apply(this.chart.canvas, arguments);
+		}
+	});
+
+	Chart.Type.extend = function(extensions){
+
+		var parent = this;
+
+		var ChartType = function(){
+			return parent.apply(this,arguments);
+		};
+
+		//Copy the prototype object of the this class
+		ChartType.prototype = clone(parent.prototype);
+		//Now overwrite some of the properties in the base class with the new extensions
+		extend(ChartType.prototype, extensions);
+
+		ChartType.extend = Chart.Type.extend;
+
+		if (extensions.name || parent.prototype.name){
+
+			var chartName = extensions.name || parent.prototype.name;
+			//Assign any potential default values of the new chart type
+
+			//If none are defined, we'll use a clone of the chart type this is being extended from.
+			//I.e. if we extend a line chart, we'll use the defaults from the line chart if our new chart
+			//doesn't define some defaults of their own.
+
+			var baseDefaults = (Chart.defaults[parent.prototype.name]) ? clone(Chart.defaults[parent.prototype.name]) : {};
+
+			Chart.defaults[chartName] = extend(baseDefaults,extensions.defaults);
+
+			Chart.types[chartName] = ChartType;
+
+			//Register this new chart type in the Chart prototype
+			Chart.prototype[chartName] = function(data,options){
+				var config = merge(Chart.defaults.global, Chart.defaults[chartName], options || {});
+				return new ChartType(data,config,this);
+			};
+		} else{
+			warn("Name not provided for this chart, so it hasn't been registered");
+		}
+		return parent;
+	};
+
+	Chart.Element = function(configuration){
+		extend(this,configuration);
+		this.initialize.apply(this,arguments);
+		this.save();
+	};
+	extend(Chart.Element.prototype,{
+		initialize : function(){},
+		restore : function(props){
+			if (!props){
+				extend(this,this._saved);
+			} else {
+				each(props,function(key){
+					this[key] = this._saved[key];
+				},this);
+			}
+			return this;
+		},
+		save : function(){
+			this._saved = clone(this);
+			delete this._saved._saved;
+			return this;
+		},
+		update : function(newProps){
+			each(newProps,function(value,key){
+				this._saved[key] = this[key];
+				this[key] = value;
+			},this);
+			return this;
+		},
+		transition : function(props,ease){
+			each(props,function(value,key){
+				this[key] = ((value - this._saved[key]) * ease) + this._saved[key];
+			},this);
+			return this;
+		},
+		tooltipPosition : function(){
+			return {
+				x : this.x,
+				y : this.y
+			};
+		},
+		hasValue: function(){
+			return isNumber(this.value);
+		}
+	});
+
+	Chart.Element.extend = inherits;
+
+
+	Chart.Point = Chart.Element.extend({
+		display: true,
+		inRange: function(chartX,chartY){
+			var hitDetectionRange = this.hitDetectionRadius + this.radius;
+			return ((Math.pow(chartX-this.x, 2)+Math.pow(chartY-this.y, 2)) < Math.pow(hitDetectionRange,2));
+		},
+		draw : function(){
+			if (this.display){
+				var ctx = this.ctx;
+				ctx.beginPath();
+
+				ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
+				ctx.closePath();
+
+				ctx.strokeStyle = this.strokeColor;
+				ctx.lineWidth = this.strokeWidth;
+
+				ctx.fillStyle = this.fillColor;
+
+				ctx.fill();
+				ctx.stroke();
+			}
+
+
+			//Quick debug for bezier curve splining
+			//Highlights control points and the line between them.
+			//Handy for dev - stripped in the min version.
+
+			// ctx.save();
+			// ctx.fillStyle = "black";
+			// ctx.strokeStyle = "black"
+			// ctx.beginPath();
+			// ctx.arc(this.controlPoints.inner.x,this.controlPoints.inner.y, 2, 0, Math.PI*2);
+			// ctx.fill();
+
+			// ctx.beginPath();
+			// ctx.arc(this.controlPoints.outer.x,this.controlPoints.outer.y, 2, 0, Math.PI*2);
+			// ctx.fill();
+
+			// ctx.moveTo(this.controlPoints.inner.x,this.controlPoints.inner.y);
+			// ctx.lineTo(this.x, this.y);
+			// ctx.lineTo(this.controlPoints.outer.x,this.controlPoints.outer.y);
+			// ctx.stroke();
+
+			// ctx.restore();
+
+
+
+		}
+	});
+
+	Chart.Arc = Chart.Element.extend({
+		inRange : function(chartX,chartY){
+
+			var pointRelativePosition = helpers.getAngleFromPoint(this, {
+				x: chartX,
+				y: chartY
+			});
+
+			//Check if within the range of the open/close angle
+			var betweenAngles = (pointRelativePosition.angle >= this.startAngle && pointRelativePosition.angle <= this.endAngle),
+				withinRadius = (pointRelativePosition.distance >= this.innerRadius && pointRelativePosition.distance <= this.outerRadius);
+
+			return (betweenAngles && withinRadius);
+			//Ensure within the outside of the arc centre, but inside arc outer
+		},
+		tooltipPosition : function(){
+			var centreAngle = this.startAngle + ((this.endAngle - this.startAngle) / 2),
+				rangeFromCentre = (this.outerRadius - this.innerRadius) / 2 + this.innerRadius;
+			return {
+				x : this.x + (Math.cos(centreAngle) * rangeFromCentre),
+				y : this.y + (Math.sin(centreAngle) * rangeFromCentre)
+			};
+		},
+		draw : function(animationPercent){
+
+			var easingDecimal = animationPercent || 1;
+
+			var ctx = this.ctx;
+
+			ctx.beginPath();
+
+			ctx.arc(this.x, this.y, this.outerRadius, this.startAngle, this.endAngle);
+
+			ctx.arc(this.x, this.y, this.innerRadius, this.endAngle, this.startAngle, true);
+
+			ctx.closePath();
+			ctx.strokeStyle = this.strokeColor;
+			ctx.lineWidth = this.strokeWidth;
+
+			ctx.fillStyle = this.fillColor;
+
+			ctx.fill();
+			ctx.lineJoin = 'bevel';
+
+			if (this.showStroke){
+				ctx.stroke();
+			}
+		}
+	});
+
+	Chart.Rectangle = Chart.Element.extend({
+		draw : function(){
+			var ctx = this.ctx,
+				halfWidth = this.width/2,
+				leftX = this.x - halfWidth,
+				rightX = this.x + halfWidth,
+				top = this.base - (this.base - this.y),
+				halfStroke = this.strokeWidth / 2;
+
+			// Canvas doesn't allow us to stroke inside the width so we can
+			// adjust the sizes to fit if we're setting a stroke on the line
+			if (this.showStroke){
+				leftX += halfStroke;
+				rightX -= halfStroke;
+				top += halfStroke;
+			}
+
+			ctx.beginPath();
+
+			ctx.fillStyle = this.fillColor;
+			ctx.strokeStyle = this.strokeColor;
+			ctx.lineWidth = this.strokeWidth;
+
+			// It'd be nice to keep this class totally generic to any rectangle
+			// and simply specify which border to miss out.
+			ctx.moveTo(leftX, this.base);
+			ctx.lineTo(leftX, top);
+			ctx.lineTo(rightX, top);
+			ctx.lineTo(rightX, this.base);
+			ctx.fill();
+			if (this.showStroke){
+				ctx.stroke();
+			}
+		},
+		height : function(){
+			return this.base - this.y;
+		},
+		inRange : function(chartX,chartY){
+			return (chartX >= this.x - this.width/2 && chartX <= this.x + this.width/2) && (chartY >= this.y && chartY <= this.base);
+		}
+	});
+
+	Chart.Tooltip = Chart.Element.extend({
+		draw : function(){
+
+			var ctx = this.chart.ctx;
+
+			ctx.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
+
+			this.xAlign = "center";
+			this.yAlign = "above";
+
+			//Distance between the actual element.y position and the start of the tooltip caret
+			var caretPadding = this.caretPadding = 2;
+
+			var tooltipWidth = ctx.measureText(this.text).width + 2*this.xPadding,
+				tooltipRectHeight = this.fontSize + 2*this.yPadding,
+				tooltipHeight = tooltipRectHeight + this.caretHeight + caretPadding;
+
+			if (this.x + tooltipWidth/2 >this.chart.width){
+				this.xAlign = "left";
+			} else if (this.x - tooltipWidth/2 < 0){
+				this.xAlign = "right";
+			}
+
+			if (this.y - tooltipHeight < 0){
+				this.yAlign = "below";
+			}
+
+
+			var tooltipX = this.x - tooltipWidth/2,
+				tooltipY = this.y - tooltipHeight;
+
+			ctx.fillStyle = this.fillColor;
+
+			// Custom Tooltips
+			if(this.custom){
+				this.custom(this);
+			}
+			else{
+				switch(this.yAlign)
+				{
+				case "above":
+					//Draw a caret above the x/y
+					ctx.beginPath();
+					ctx.moveTo(this.x,this.y - caretPadding);
+					ctx.lineTo(this.x + this.caretHeight, this.y - (caretPadding + this.caretHeight));
+					ctx.lineTo(this.x - this.caretHeight, this.y - (caretPadding + this.caretHeight));
+					ctx.closePath();
+					ctx.fill();
+					break;
+				case "below":
+					tooltipY = this.y + caretPadding + this.caretHeight;
+					//Draw a caret below the x/y
+					ctx.beginPath();
+					ctx.moveTo(this.x, this.y + caretPadding);
+					ctx.lineTo(this.x + this.caretHeight, this.y + caretPadding + this.caretHeight);
+					ctx.lineTo(this.x - this.caretHeight, this.y + caretPadding + this.caretHeight);
+					ctx.closePath();
+					ctx.fill();
+					break;
+				}
+
+				switch(this.xAlign)
+				{
+				case "left":
+					tooltipX = this.x - tooltipWidth + (this.cornerRadius + this.caretHeight);
+					break;
+				case "right":
+					tooltipX = this.x - (this.cornerRadius + this.caretHeight);
+					break;
+				}
+
+				drawRoundedRectangle(ctx,tooltipX,tooltipY,tooltipWidth,tooltipRectHeight,this.cornerRadius);
+
+				ctx.fill();
+
+				ctx.fillStyle = this.textColor;
+				ctx.textAlign = "center";
+				ctx.textBaseline = "middle";
+				ctx.fillText(this.text, tooltipX + tooltipWidth/2, tooltipY + tooltipRectHeight/2);
+			}
+		}
+	});
+
+	Chart.MultiTooltip = Chart.Element.extend({
+		initialize : function(){
+			this.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
+
+			this.titleFont = fontString(this.titleFontSize,this.titleFontStyle,this.titleFontFamily);
+
+			this.height = (this.labels.length * this.fontSize) + ((this.labels.length-1) * (this.fontSize/2)) + (this.yPadding*2) + this.titleFontSize *1.5;
+
+			this.ctx.font = this.titleFont;
+
+			var titleWidth = this.ctx.measureText(this.title).width,
+				//Label has a legend square as well so account for this.
+				labelWidth = longestText(this.ctx,this.font,this.labels) + this.fontSize + 3,
+				longestTextWidth = max([labelWidth,titleWidth]);
+
+			this.width = longestTextWidth + (this.xPadding*2);
+
+
+			var halfHeight = this.height/2;
+
+			//Check to ensure the height will fit on the canvas
+			if (this.y - halfHeight < 0 ){
+				this.y = halfHeight;
+			} else if (this.y + halfHeight > this.chart.height){
+				this.y = this.chart.height - halfHeight;
+			}
+
+			//Decide whether to align left or right based on position on canvas
+			if (this.x > this.chart.width/2){
+				this.x -= this.xOffset + this.width;
+			} else {
+				this.x += this.xOffset;
+			}
+
+
+		},
+		getLineHeight : function(index){
+			var baseLineHeight = this.y - (this.height/2) + this.yPadding,
+				afterTitleIndex = index-1;
+
+			//If the index is zero, we're getting the title
+			if (index === 0){
+				return baseLineHeight + this.titleFontSize/2;
+			} else{
+				return baseLineHeight + ((this.fontSize*1.5*afterTitleIndex) + this.fontSize/2) + this.titleFontSize * 1.5;
+			}
+
+		},
+		draw : function(){
+			// Custom Tooltips
+			if(this.custom){
+				this.custom(this);
+			}
+			else{
+				drawRoundedRectangle(this.ctx,this.x,this.y - this.height/2,this.width,this.height,this.cornerRadius);
+				var ctx = this.ctx;
+				ctx.fillStyle = this.fillColor;
+				ctx.fill();
+				ctx.closePath();
+
+				ctx.textAlign = "left";
+				ctx.textBaseline = "middle";
+				ctx.fillStyle = this.titleTextColor;
+				ctx.font = this.titleFont;
+
+				ctx.fillText(this.title,this.x + this.xPadding, this.getLineHeight(0));
+
+				ctx.font = this.font;
+				helpers.each(this.labels,function(label,index){
+					ctx.fillStyle = this.textColor;
+					ctx.fillText(label,this.x + this.xPadding + this.fontSize + 3, this.getLineHeight(index + 1));
+
+					//A bit gnarly, but clearing this rectangle breaks when using explorercanvas (clears whole canvas)
+					//ctx.clearRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
+					//Instead we'll make a white filled block to put the legendColour palette over.
+
+					ctx.fillStyle = this.legendColorBackground;
+					ctx.fillRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
+
+					ctx.fillStyle = this.legendColors[index].fill;
+					ctx.fillRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
+
+
+				},this);
+			}
+		}
+	});
+
+	Chart.Scale = Chart.Element.extend({
+		initialize : function(){
+			this.fit();
+		},
+		buildYLabels : function(){
+			this.yLabels = [];
+
+			var stepDecimalPlaces = getDecimalPlaces(this.stepValue);
+
+			for (var i=0; i<=this.steps; i++){
+				this.yLabels.push(template(this.templateString,{value:(this.min + (i * this.stepValue)).toFixed(stepDecimalPlaces)}));
+			}
+			this.yLabelWidth = (this.display && this.showLabels) ? longestText(this.ctx,this.font,this.yLabels) : 0;
+		},
+		addXLabel : function(label){
+			this.xLabels.push(label);
+			this.valuesCount++;
+			this.fit();
+		},
+		removeXLabel : function(){
+			this.xLabels.shift();
+			this.valuesCount--;
+			this.fit();
+		},
+		// Fitting loop to rotate x Labels and figure out what fits there, and also calculate how many Y steps to use
+		fit: function(){
+			// First we need the width of the yLabels, assuming the xLabels aren't rotated
+
+			// To do that we need the base line at the top and base of the chart, assuming there is no x label rotation
+			this.startPoint = (this.display) ? this.fontSize : 0;
+			this.endPoint = (this.display) ? this.height - (this.fontSize * 1.5) - 5 : this.height; // -5 to pad labels
+
+			// Apply padding settings to the start and end point.
+			this.startPoint += this.padding;
+			this.endPoint -= this.padding;
+
+			// Cache the starting height, so can determine if we need to recalculate the scale yAxis
+			var cachedHeight = this.endPoint - this.startPoint,
+				cachedYLabelWidth;
+
+			// Build the current yLabels so we have an idea of what size they'll be to start
+			/*
+			 *	This sets what is returned from calculateScaleRange as static properties of this class:
+			 *
+				this.steps;
+				this.stepValue;
+				this.min;
+				this.max;
+			 *
+			 */
+			this.calculateYRange(cachedHeight);
+
+			// With these properties set we can now build the array of yLabels
+			// and also the width of the largest yLabel
+			this.buildYLabels();
+
+			this.calculateXLabelRotation();
+
+			while((cachedHeight > this.endPoint - this.startPoint)){
+				cachedHeight = this.endPoint - this.startPoint;
+				cachedYLabelWidth = this.yLabelWidth;
+
+				this.calculateYRange(cachedHeight);
+				this.buildYLabels();
+
+				// Only go through the xLabel loop again if the yLabel width has changed
+				if (cachedYLabelWidth < this.yLabelWidth){
+					this.calculateXLabelRotation();
+				}
+			}
+
+		},
+		calculateXLabelRotation : function(){
+			//Get the width of each grid by calculating the difference
+			//between x offsets between 0 and 1.
+
+			this.ctx.font = this.font;
+
+			var firstWidth = this.ctx.measureText(this.xLabels[0]).width,
+				lastWidth = this.ctx.measureText(this.xLabels[this.xLabels.length - 1]).width,
+				firstRotated,
+				lastRotated;
+
+
+			this.xScalePaddingRight = lastWidth/2 + 3;
+			this.xScalePaddingLeft = (firstWidth/2 > this.yLabelWidth + 10) ? firstWidth/2 : this.yLabelWidth + 10;
+
+			this.xLabelRotation = 0;
+			if (this.display){
+				var originalLabelWidth = longestText(this.ctx,this.font,this.xLabels),
+					cosRotation,
+					firstRotatedWidth;
+				this.xLabelWidth = originalLabelWidth;
+				//Allow 3 pixels x2 padding either side for label readability
+				var xGridWidth = Math.floor(this.calculateX(1) - this.calculateX(0)) - 6;
+
+				//Max label rotate should be 90 - also act as a loop counter
+				while ((this.xLabelWidth > xGridWidth && this.xLabelRotation === 0) || (this.xLabelWidth > xGridWidth && this.xLabelRotation <= 90 && this.xLabelRotation > 0)){
+					cosRotation = Math.cos(toRadians(this.xLabelRotation));
+
+					firstRotated = cosRotation * firstWidth;
+					lastRotated = cosRotation * lastWidth;
+
+					// We're right aligning the text now.
+					if (firstRotated + this.fontSize / 2 > this.yLabelWidth + 8){
+						this.xScalePaddingLeft = firstRotated + this.fontSize / 2;
+					}
+					this.xScalePaddingRight = this.fontSize/2;
+
+
+					this.xLabelRotation++;
+					this.xLabelWidth = cosRotation * originalLabelWidth;
+
+				}
+				if (this.xLabelRotation > 0){
+					this.endPoint -= Math.sin(toRadians(this.xLabelRotation))*originalLabelWidth + 3;
+				}
+			}
+			else{
+				this.xLabelWidth = 0;
+				this.xScalePaddingRight = this.padding;
+				this.xScalePaddingLeft = this.padding;
+			}
+
+		},
+		// Needs to be overidden in each Chart type
+		// Otherwise we need to pass all the data into the scale class
+		calculateYRange: noop,
+		drawingArea: function(){
+			return this.startPoint - this.endPoint;
+		},
+		calculateY : function(value){
+			var scalingFactor = this.drawingArea() / (this.min - this.max);
+			return this.endPoint - (scalingFactor * (value - this.min));
+		},
+		calculateX : function(index){
+			var isRotated = (this.xLabelRotation > 0),
+				// innerWidth = (this.offsetGridLines) ? this.width - offsetLeft - this.padding : this.width - (offsetLeft + halfLabelWidth * 2) - this.padding,
+				innerWidth = this.width - (this.xScalePaddingLeft + this.xScalePaddingRight),
+				valueWidth = innerWidth/Math.max((this.valuesCount - ((this.offsetGridLines) ? 0 : 1)), 1),
+				valueOffset = (valueWidth * index) + this.xScalePaddingLeft;
+
+			if (this.offsetGridLines){
+				valueOffset += (valueWidth/2);
+			}
+
+			return Math.round(valueOffset);
+		},
+		update : function(newProps){
+			helpers.extend(this, newProps);
+			this.fit();
+		},
+		draw : function(){
+			var ctx = this.ctx,
+				yLabelGap = (this.endPoint - this.startPoint) / this.steps,
+				xStart = Math.round(this.xScalePaddingLeft);
+			if (this.display){
+				ctx.fillStyle = this.textColor;
+				ctx.font = this.font;
+				each(this.yLabels,function(labelString,index){
+					var yLabelCenter = this.endPoint - (yLabelGap * index),
+						linePositionY = Math.round(yLabelCenter),
+						drawHorizontalLine = this.showHorizontalLines;
+
+					ctx.textAlign = "right";
+					ctx.textBaseline = "middle";
+					if (this.showLabels){
+						ctx.fillText(labelString,xStart - 10,yLabelCenter);
+					}
+
+					// This is X axis, so draw it
+					if (index === 0 && !drawHorizontalLine){
+						drawHorizontalLine = true;
+					}
+
+					if (drawHorizontalLine){
+						ctx.beginPath();
+					}
+
+					if (index > 0){
+						// This is a grid line in the centre, so drop that
+						ctx.lineWidth = this.gridLineWidth;
+						ctx.strokeStyle = this.gridLineColor;
+					} else {
+						// This is the first line on the scale
+						ctx.lineWidth = this.lineWidth;
+						ctx.strokeStyle = this.lineColor;
+					}
+
+					linePositionY += helpers.aliasPixel(ctx.lineWidth);
+
+					if(drawHorizontalLine){
+						ctx.moveTo(xStart, linePositionY);
+						ctx.lineTo(this.width, linePositionY);
+						ctx.stroke();
+						ctx.closePath();
+					}
+
+					ctx.lineWidth = this.lineWidth;
+					ctx.strokeStyle = this.lineColor;
+					ctx.beginPath();
+					ctx.moveTo(xStart - 5, linePositionY);
+					ctx.lineTo(xStart, linePositionY);
+					ctx.stroke();
+					ctx.closePath();
+
+				},this);
+
+				each(this.xLabels,function(label,index){
+					var xPos = this.calculateX(index) + aliasPixel(this.lineWidth),
+						// Check to see if line/bar here and decide where to place the line
+						linePos = this.calculateX(index - (this.offsetGridLines ? 0.5 : 0)) + aliasPixel(this.lineWidth),
+						isRotated = (this.xLabelRotation > 0),
+						drawVerticalLine = this.showVerticalLines;
+
+					// This is Y axis, so draw it
+					if (index === 0 && !drawVerticalLine){
+						drawVerticalLine = true;
+					}
+
+					if (drawVerticalLine){
+						ctx.beginPath();
+					}
+
+					if (index > 0){
+						// This is a grid line in the centre, so drop that
+						ctx.lineWidth = this.gridLineWidth;
+						ctx.strokeStyle = this.gridLineColor;
+					} else {
+						// This is the first line on the scale
+						ctx.lineWidth = this.lineWidth;
+						ctx.strokeStyle = this.lineColor;
+					}
+
+					if (drawVerticalLine){
+						ctx.moveTo(linePos,this.endPoint);
+						ctx.lineTo(linePos,this.startPoint - 3);
+						ctx.stroke();
+						ctx.closePath();
+					}
+
+
+					ctx.lineWidth = this.lineWidth;
+					ctx.strokeStyle = this.lineColor;
+
+
+					// Small lines at the bottom of the base grid line
+					ctx.beginPath();
+					ctx.moveTo(linePos,this.endPoint);
+					ctx.lineTo(linePos,this.endPoint + 5);
+					ctx.stroke();
+					ctx.closePath();
+
+					ctx.save();
+					ctx.translate(xPos,(isRotated) ? this.endPoint + 12 : this.endPoint + 8);
+					ctx.rotate(toRadians(this.xLabelRotation)*-1);
+					ctx.font = this.font;
+					ctx.textAlign = (isRotated) ? "right" : "center";
+					ctx.textBaseline = (isRotated) ? "middle" : "top";
+					ctx.fillText(label, 0, 0);
+					ctx.restore();
+				},this);
+
+			}
+		}
+
+	});
+
+	Chart.RadialScale = Chart.Element.extend({
+		initialize: function(){
+			this.size = min([this.height, this.width]);
+			this.drawingArea = (this.display) ? (this.size/2) - (this.fontSize/2 + this.backdropPaddingY) : (this.size/2);
+		},
+		calculateCenterOffset: function(value){
+			// Take into account half font size + the yPadding of the top value
+			var scalingFactor = this.drawingArea / (this.max - this.min);
+
+			return (value - this.min) * scalingFactor;
+		},
+		update : function(){
+			if (!this.lineArc){
+				this.setScaleSize();
+			} else {
+				this.drawingArea = (this.display) ? (this.size/2) - (this.fontSize/2 + this.backdropPaddingY) : (this.size/2);
+			}
+			this.buildYLabels();
+		},
+		buildYLabels: function(){
+			this.yLabels = [];
+
+			var stepDecimalPlaces = getDecimalPlaces(this.stepValue);
+
+			for (var i=0; i<=this.steps; i++){
+				this.yLabels.push(template(this.templateString,{value:(this.min + (i * this.stepValue)).toFixed(stepDecimalPlaces)}));
+			}
+		},
+		getCircumference : function(){
+			return ((Math.PI*2) / this.valuesCount);
+		},
+		setScaleSize: function(){
+			/*
+			 * Right, this is really confusing and there is a lot of maths going on here
+			 * The gist of the problem is here: https://gist.github.com/nnnick/696cc9c55f4b0beb8fe9
+			 *
+			 * Reaction: https://dl.dropboxusercontent.com/u/34601363/toomuchscience.gif
+			 *
+			 * Solution:
+			 *
+			 * We assume the radius of the polygon is half the size of the canvas at first
+			 * at each index we check if the text overlaps.
+			 *
+			 * Where it does, we store that angle and that index.
+			 *
+			 * After finding the largest index and angle we calculate how much we need to remove
+			 * from the shape radius to move the point inwards by that x.
+			 *
+			 * We average the left and right distances to get the maximum shape radius that can fit in the box
+			 * along with labels.
+			 *
+			 * Once we have that, we can find the centre point for the chart, by taking the x text protrusion
+			 * on each side, removing that from the size, halving it and adding the left x protrusion width.
+			 *
+			 * This will mean we have a shape fitted to the canvas, as large as it can be with the labels
+			 * and position it in the most space efficient manner
+			 *
+			 * https://dl.dropboxusercontent.com/u/34601363/yeahscience.gif
+			 */
+
+
+			// Get maximum radius of the polygon. Either half the height (minus the text width) or half the width.
+			// Use this to calculate the offset + change. - Make sure L/R protrusion is at least 0 to stop issues with centre points
+			var largestPossibleRadius = min([(this.height/2 - this.pointLabelFontSize - 5), this.width/2]),
+				pointPosition,
+				i,
+				textWidth,
+				halfTextWidth,
+				furthestRight = this.width,
+				furthestRightIndex,
+				furthestRightAngle,
+				furthestLeft = 0,
+				furthestLeftIndex,
+				furthestLeftAngle,
+				xProtrusionLeft,
+				xProtrusionRight,
+				radiusReductionRight,
+				radiusReductionLeft,
+				maxWidthRadius;
+			this.ctx.font = fontString(this.pointLabelFontSize,this.pointLabelFontStyle,this.pointLabelFontFamily);
+			for (i=0;i<this.valuesCount;i++){
+				// 5px to space the text slightly out - similar to what we do in the draw function.
+				pointPosition = this.getPointPosition(i, largestPossibleRadius);
+				textWidth = this.ctx.measureText(template(this.templateString, { value: this.labels[i] })).width + 5;
+				if (i === 0 || i === this.valuesCount/2){
+					// If we're at index zero, or exactly the middle, we're at exactly the top/bottom
+					// of the radar chart, so text will be aligned centrally, so we'll half it and compare
+					// w/left and right text sizes
+					halfTextWidth = textWidth/2;
+					if (pointPosition.x + halfTextWidth > furthestRight) {
+						furthestRight = pointPosition.x + halfTextWidth;
+						furthestRightIndex = i;
+					}
+					if (pointPosition.x - halfTextWidth < furthestLeft) {
+						furthestLeft = pointPosition.x - halfTextWidth;
+						furthestLeftIndex = i;
+					}
+				}
+				else if (i < this.valuesCount/2) {
+					// Less than half the values means we'll left align the text
+					if (pointPosition.x + textWidth > furthestRight) {
+						furthestRight = pointPosition.x + textWidth;
+						furthestRightIndex = i;
+					}
+				}
+				else if (i > this.valuesCount/2){
+					// More than half the values means we'll right align the text
+					if (pointPosition.x - textWidth < furthestLeft) {
+						furthestLeft = pointPosition.x - textWidth;
+						furthestLeftIndex = i;
+					}
+				}
+			}
+
+			xProtrusionLeft = furthestLeft;
+
+			xProtrusionRight = Math.ceil(furthestRight - this.width);
+
+			furthestRightAngle = this.getIndexAngle(furthestRightIndex);
+
+			furthestLeftAngle = this.getIndexAngle(furthestLeftIndex);
+
+			radiusReductionRight = xProtrusionRight / Math.sin(furthestRightAngle + Math.PI/2);
+
+			radiusReductionLeft = xProtrusionLeft / Math.sin(furthestLeftAngle + Math.PI/2);
+
+			// Ensure we actually need to reduce the size of the chart
+			radiusReductionRight = (isNumber(radiusReductionRight)) ? radiusReductionRight : 0;
+			radiusReductionLeft = (isNumber(radiusReductionLeft)) ? radiusReductionLeft : 0;
+
+			this.drawingArea = largestPossibleRadius - (radiusReductionLeft + radiusReductionRight)/2;
+
+			//this.drawingArea = min([maxWidthRadius, (this.height - (2 * (this.pointLabelFontSize + 5)))/2])
+			this.setCenterPoint(radiusReductionLeft, radiusReductionRight);
+
+		},
+		setCenterPoint: function(leftMovement, rightMovement){
+
+			var maxRight = this.width - rightMovement - this.drawingArea,
+				maxLeft = leftMovement + this.drawingArea;
+
+			this.xCenter = (maxLeft + maxRight)/2;
+			// Always vertically in the centre as the text height doesn't change
+			this.yCenter = (this.height/2);
+		},
+
+		getIndexAngle : function(index){
+			var angleMultiplier = (Math.PI * 2) / this.valuesCount;
+			// Start from the top instead of right, so remove a quarter of the circle
+
+			return index * angleMultiplier - (Math.PI/2);
+		},
+		getPointPosition : function(index, distanceFromCenter){
+			var thisAngle = this.getIndexAngle(index);
+			return {
+				x : (Math.cos(thisAngle) * distanceFromCenter) + this.xCenter,
+				y : (Math.sin(thisAngle) * distanceFromCenter) + this.yCenter
+			};
+		},
+		draw: function(){
+			if (this.display){
+				var ctx = this.ctx;
+				each(this.yLabels, function(label, index){
+					// Don't draw a centre value
+					if (index > 0){
+						var yCenterOffset = index * (this.drawingArea/this.steps),
+							yHeight = this.yCenter - yCenterOffset,
+							pointPosition;
+
+						// Draw circular lines around the scale
+						if (this.lineWidth > 0){
+							ctx.strokeStyle = this.lineColor;
+							ctx.lineWidth = this.lineWidth;
+
+							if(this.lineArc){
+								ctx.beginPath();
+								ctx.arc(this.xCenter, this.yCenter, yCenterOffset, 0, Math.PI*2);
+								ctx.closePath();
+								ctx.stroke();
+							} else{
+								ctx.beginPath();
+								for (var i=0;i<this.valuesCount;i++)
+								{
+									pointPosition = this.getPointPosition(i, this.calculateCenterOffset(this.min + (index * this.stepValue)));
+									if (i === 0){
+										ctx.moveTo(pointPosition.x, pointPosition.y);
+									} else {
+										ctx.lineTo(pointPosition.x, pointPosition.y);
+									}
+								}
+								ctx.closePath();
+								ctx.stroke();
+							}
+						}
+						if(this.showLabels){
+							ctx.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
+							if (this.showLabelBackdrop){
+								var labelWidth = ctx.measureText(label).width;
+								ctx.fillStyle = this.backdropColor;
+								ctx.fillRect(
+									this.xCenter - labelWidth/2 - this.backdropPaddingX,
+									yHeight - this.fontSize/2 - this.backdropPaddingY,
+									labelWidth + this.backdropPaddingX*2,
+									this.fontSize + this.backdropPaddingY*2
+								);
+							}
+							ctx.textAlign = 'center';
+							ctx.textBaseline = "middle";
+							ctx.fillStyle = this.fontColor;
+							ctx.fillText(label, this.xCenter, yHeight);
+						}
+					}
+				}, this);
+
+				if (!this.lineArc){
+					ctx.lineWidth = this.angleLineWidth;
+					ctx.strokeStyle = this.angleLineColor;
+					for (var i = this.valuesCount - 1; i >= 0; i--) {
+						if (this.angleLineWidth > 0){
+							var outerPosition = this.getPointPosition(i, this.calculateCenterOffset(this.max));
+							ctx.beginPath();
+							ctx.moveTo(this.xCenter, this.yCenter);
+							ctx.lineTo(outerPosition.x, outerPosition.y);
+							ctx.stroke();
+							ctx.closePath();
+						}
+						// Extra 3px out for some label spacing
+						var pointLabelPosition = this.getPointPosition(i, this.calculateCenterOffset(this.max) + 5);
+						ctx.font = fontString(this.pointLabelFontSize,this.pointLabelFontStyle,this.pointLabelFontFamily);
+						ctx.fillStyle = this.pointLabelFontColor;
+
+						var labelsCount = this.labels.length,
+							halfLabelsCount = this.labels.length/2,
+							quarterLabelsCount = halfLabelsCount/2,
+							upperHalf = (i < quarterLabelsCount || i > labelsCount - quarterLabelsCount),
+							exactQuarter = (i === quarterLabelsCount || i === labelsCount - quarterLabelsCount);
+						if (i === 0){
+							ctx.textAlign = 'center';
+						} else if(i === halfLabelsCount){
+							ctx.textAlign = 'center';
+						} else if (i < halfLabelsCount){
+							ctx.textAlign = 'left';
+						} else {
+							ctx.textAlign = 'right';
+						}
+
+						// Set the correct text baseline based on outer positioning
+						if (exactQuarter){
+							ctx.textBaseline = 'middle';
+						} else if (upperHalf){
+							ctx.textBaseline = 'bottom';
+						} else {
+							ctx.textBaseline = 'top';
+						}
+
+						ctx.fillText(this.labels[i], pointLabelPosition.x, pointLabelPosition.y);
+					}
+				}
+			}
+		}
+	});
+
+	// Attach global event to resize each chart instance when the browser resizes
+	helpers.addEvent(window, "resize", (function(){
+		// Basic debounce of resize function so it doesn't hurt performance when resizing browser.
+		var timeout;
+		return function(){
+			clearTimeout(timeout);
+			timeout = setTimeout(function(){
+				each(Chart.instances,function(instance){
+					// If the responsive flag is set in the chart instance config
+					// Cascade the resize event down to the chart.
+					if (instance.options.responsive){
+						instance.resize(instance.render, true);
+					}
+				});
+			}, 50);
+		};
+	})());
+
+
+	if (amd) {
+		define(function(){
+			return Chart;
+		});
+	} else if (typeof module === 'object' && module.exports) {
+		module.exports = Chart;
+	}
+
+	root.Chart = Chart;
+
+	Chart.noConflict = function(){
+		root.Chart = previous;
+		return Chart;
+	};
+
+}).call(this);
+
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		helpers = Chart.helpers;
+
+
+	var defaultConfig = {
+		//Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+		scaleBeginAtZero : true,
+
+		//Boolean - Whether grid lines are shown across the chart
+		scaleShowGridLines : true,
+
+		//String - Colour of the grid lines
+		scaleGridLineColor : "rgba(0,0,0,.05)",
+
+		//Number - Width of the grid lines
+		scaleGridLineWidth : 1,
+
+		//Boolean - Whether to show horizontal lines (except X axis)
+		scaleShowHorizontalLines: true,
+
+		//Boolean - Whether to show vertical lines (except Y axis)
+		scaleShowVerticalLines: true,
+
+		//Boolean - If there is a stroke on each bar
+		barShowStroke : true,
+
+		//Number - Pixel width of the bar stroke
+		barStrokeWidth : 2,
+
+		//Number - Spacing between each of the X value sets
+		barValueSpacing : 5,
+
+		//Number - Spacing between data sets within X values
+		barDatasetSpacing : 1,
+
+		//String - A legend template
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
+	};
+
+
+	Chart.Type.extend({
+		name: "Bar",
+		defaults : defaultConfig,
+		initialize:  function(data){
+
+			//Expose options as a scope variable here so we can access it in the ScaleClass
+			var options = this.options;
+
+			this.ScaleClass = Chart.Scale.extend({
+				offsetGridLines : true,
+				calculateBarX : function(datasetCount, datasetIndex, barIndex){
+					//Reusable method for calculating the xPosition of a given bar based on datasetIndex & width of the bar
+					var xWidth = this.calculateBaseWidth(),
+						xAbsolute = this.calculateX(barIndex) - (xWidth/2),
+						barWidth = this.calculateBarWidth(datasetCount);
+
+					return xAbsolute + (barWidth * datasetIndex) + (datasetIndex * options.barDatasetSpacing) + barWidth/2;
+				},
+				calculateBaseWidth : function(){
+					return (this.calculateX(1) - this.calculateX(0)) - (2*options.barValueSpacing);
+				},
+				calculateBarWidth : function(datasetCount){
+					//The padding between datasets is to the right of each bar, providing that there are more than 1 dataset
+					var baseWidth = this.calculateBaseWidth() - ((datasetCount - 1) * options.barDatasetSpacing);
+
+					return (baseWidth / datasetCount);
+				}
+			});
+
+			this.datasets = [];
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activeBars = (evt.type !== 'mouseout') ? this.getBarsAtEvent(evt) : [];
+
+					this.eachBars(function(bar){
+						bar.restore(['fillColor', 'strokeColor']);
+					});
+					helpers.each(activeBars, function(activeBar){
+						activeBar.fillColor = activeBar.highlightFill;
+						activeBar.strokeColor = activeBar.highlightStroke;
+					});
+					this.showTooltip(activeBars);
+				});
+			}
+
+			//Declare the extension of the default point, to cater for the options passed in to the constructor
+			this.BarClass = Chart.Rectangle.extend({
+				strokeWidth : this.options.barStrokeWidth,
+				showStroke : this.options.barShowStroke,
+				ctx : this.chart.ctx
+			});
+
+			//Iterate through each of the datasets, and build this into a property of the chart
+			helpers.each(data.datasets,function(dataset,datasetIndex){
+
+				var datasetObject = {
+					label : dataset.label || null,
+					fillColor : dataset.fillColor,
+					strokeColor : dataset.strokeColor,
+					bars : []
+				};
+
+				this.datasets.push(datasetObject);
+
+				helpers.each(dataset.data,function(dataPoint,index){
+					//Add a new point for each piece of data, passing any required data to draw.
+					datasetObject.bars.push(new this.BarClass({
+						value : dataPoint,
+						label : data.labels[index],
+						datasetLabel: dataset.label,
+						strokeColor : dataset.strokeColor,
+						fillColor : dataset.fillColor,
+						highlightFill : dataset.highlightFill || dataset.fillColor,
+						highlightStroke : dataset.highlightStroke || dataset.strokeColor
+					}));
+				},this);
+
+			},this);
+
+			this.buildScale(data.labels);
+
+			this.BarClass.prototype.base = this.scale.endPoint;
+
+			this.eachBars(function(bar, index, datasetIndex){
+				helpers.extend(bar, {
+					width : this.scale.calculateBarWidth(this.datasets.length),
+					x: this.scale.calculateBarX(this.datasets.length, datasetIndex, index),
+					y: this.scale.endPoint
+				});
+				bar.save();
+			}, this);
+
+			this.render();
+		},
+		update : function(){
+			this.scale.update();
+			// Reset any highlight colours before updating.
+			helpers.each(this.activeElements, function(activeElement){
+				activeElement.restore(['fillColor', 'strokeColor']);
+			});
+
+			this.eachBars(function(bar){
+				bar.save();
+			});
+			this.render();
+		},
+		eachBars : function(callback){
+			helpers.each(this.datasets,function(dataset, datasetIndex){
+				helpers.each(dataset.bars, callback, this, datasetIndex);
+			},this);
+		},
+		getBarsAtEvent : function(e){
+			var barsArray = [],
+				eventPosition = helpers.getRelativePosition(e),
+				datasetIterator = function(dataset){
+					barsArray.push(dataset.bars[barIndex]);
+				},
+				barIndex;
+
+			for (var datasetIndex = 0; datasetIndex < this.datasets.length; datasetIndex++) {
+				for (barIndex = 0; barIndex < this.datasets[datasetIndex].bars.length; barIndex++) {
+					if (this.datasets[datasetIndex].bars[barIndex].inRange(eventPosition.x,eventPosition.y)){
+						helpers.each(this.datasets, datasetIterator);
+						return barsArray;
+					}
+				}
+			}
+
+			return barsArray;
+		},
+		buildScale : function(labels){
+			var self = this;
+
+			var dataTotal = function(){
+				var values = [];
+				self.eachBars(function(bar){
+					values.push(bar.value);
+				});
+				return values;
+			};
+
+			var scaleOptions = {
+				templateString : this.options.scaleLabel,
+				height : this.chart.height,
+				width : this.chart.width,
+				ctx : this.chart.ctx,
+				textColor : this.options.scaleFontColor,
+				fontSize : this.options.scaleFontSize,
+				fontStyle : this.options.scaleFontStyle,
+				fontFamily : this.options.scaleFontFamily,
+				valuesCount : labels.length,
+				beginAtZero : this.options.scaleBeginAtZero,
+				integersOnly : this.options.scaleIntegersOnly,
+				calculateYRange: function(currentHeight){
+					var updatedRanges = helpers.calculateScaleRange(
+						dataTotal(),
+						currentHeight,
+						this.fontSize,
+						this.beginAtZero,
+						this.integersOnly
+					);
+					helpers.extend(this, updatedRanges);
+				},
+				xLabels : labels,
+				font : helpers.fontString(this.options.scaleFontSize, this.options.scaleFontStyle, this.options.scaleFontFamily),
+				lineWidth : this.options.scaleLineWidth,
+				lineColor : this.options.scaleLineColor,
+				showHorizontalLines : this.options.scaleShowHorizontalLines,
+				showVerticalLines : this.options.scaleShowVerticalLines,
+				gridLineWidth : (this.options.scaleShowGridLines) ? this.options.scaleGridLineWidth : 0,
+				gridLineColor : (this.options.scaleShowGridLines) ? this.options.scaleGridLineColor : "rgba(0,0,0,0)",
+				padding : (this.options.showScale) ? 0 : (this.options.barShowStroke) ? this.options.barStrokeWidth : 0,
+				showLabels : this.options.scaleShowLabels,
+				display : this.options.showScale
+			};
+
+			if (this.options.scaleOverride){
+				helpers.extend(scaleOptions, {
+					calculateYRange: helpers.noop,
+					steps: this.options.scaleSteps,
+					stepValue: this.options.scaleStepWidth,
+					min: this.options.scaleStartValue,
+					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+				});
+			}
+
+			this.scale = new this.ScaleClass(scaleOptions);
+		},
+		addData : function(valuesArray,label){
+			//Map the values array for each of the datasets
+			helpers.each(valuesArray,function(value,datasetIndex){
+				//Add a new point for each piece of data, passing any required data to draw.
+				this.datasets[datasetIndex].bars.push(new this.BarClass({
+					value : value,
+					label : label,
+					x: this.scale.calculateBarX(this.datasets.length, datasetIndex, this.scale.valuesCount+1),
+					y: this.scale.endPoint,
+					width : this.scale.calculateBarWidth(this.datasets.length),
+					base : this.scale.endPoint,
+					strokeColor : this.datasets[datasetIndex].strokeColor,
+					fillColor : this.datasets[datasetIndex].fillColor
+				}));
+			},this);
+
+			this.scale.addXLabel(label);
+			//Then re-render the chart.
+			this.update();
+		},
+		removeData : function(){
+			this.scale.removeXLabel();
+			//Then re-render the chart.
+			helpers.each(this.datasets,function(dataset){
+				dataset.bars.shift();
+			},this);
+			this.update();
+		},
+		reflow : function(){
+			helpers.extend(this.BarClass.prototype,{
+				y: this.scale.endPoint,
+				base : this.scale.endPoint
+			});
+			var newScaleProps = helpers.extend({
+				height : this.chart.height,
+				width : this.chart.width
+			});
+			this.scale.update(newScaleProps);
+		},
+		draw : function(ease){
+			var easingDecimal = ease || 1;
+			this.clear();
+
+			var ctx = this.chart.ctx;
+
+			this.scale.draw(easingDecimal);
+
+			//Draw all the bars for each dataset
+			helpers.each(this.datasets,function(dataset,datasetIndex){
+				helpers.each(dataset.bars,function(bar,index){
+					if (bar.hasValue()){
+						bar.base = this.scale.endPoint;
+						//Transition then draw
+						bar.transition({
+							x : this.scale.calculateBarX(this.datasets.length, datasetIndex, index),
+							y : this.scale.calculateY(bar.value),
+							width : this.scale.calculateBarWidth(this.datasets.length)
+						}, easingDecimal).draw();
+					}
+				},this);
+
+			},this);
+		}
+	});
+
+
+}).call(this);
+
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		//Cache a local reference to Chart.helpers
+		helpers = Chart.helpers;
+
+	var defaultConfig = {
+		//Boolean - Whether we should show a stroke on each segment
+		segmentShowStroke : true,
+
+		//String - The colour of each segment stroke
+		segmentStrokeColor : "#fff",
+
+		//Number - The width of each segment stroke
+		segmentStrokeWidth : 2,
+
+		//The percentage of the chart that we cut out of the middle.
+		percentageInnerCutout : 50,
+
+		//Number - Amount of animation steps
+		animationSteps : 100,
+
+		//String - Animation easing effect
+		animationEasing : "easeOutBounce",
+
+		//Boolean - Whether we animate the rotation of the Doughnut
+		animateRotate : true,
+
+		//Boolean - Whether we animate scaling the Doughnut from the centre
+		animateScale : false,
+
+		//String - A legend template
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+
+	};
+
+
+	Chart.Type.extend({
+		//Passing in a name registers this chart in the Chart namespace
+		name: "Doughnut",
+		//Providing a defaults will also register the deafults in the chart namespace
+		defaults : defaultConfig,
+		//Initialize is fired when the chart is initialized - Data is passed in as a parameter
+		//Config is automatically merged by the core of Chart.js, and is available at this.options
+		initialize:  function(data){
+
+			//Declare segments as a static property to prevent inheriting across the Chart type prototype
+			this.segments = [];
+			this.outerRadius = (helpers.min([this.chart.width,this.chart.height]) -	this.options.segmentStrokeWidth/2)/2;
+
+			this.SegmentArc = Chart.Arc.extend({
+				ctx : this.chart.ctx,
+				x : this.chart.width/2,
+				y : this.chart.height/2
+			});
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activeSegments = (evt.type !== 'mouseout') ? this.getSegmentsAtEvent(evt) : [];
+
+					helpers.each(this.segments,function(segment){
+						segment.restore(["fillColor"]);
+					});
+					helpers.each(activeSegments,function(activeSegment){
+						activeSegment.fillColor = activeSegment.highlightColor;
+					});
+					this.showTooltip(activeSegments);
+				});
+			}
+			this.calculateTotal(data);
+
+			helpers.each(data,function(datapoint, index){
+				this.addData(datapoint, index, true);
+			},this);
+
+			this.render();
+		},
+		getSegmentsAtEvent : function(e){
+			var segmentsArray = [];
+
+			var location = helpers.getRelativePosition(e);
+
+			helpers.each(this.segments,function(segment){
+				if (segment.inRange(location.x,location.y)) segmentsArray.push(segment);
+			},this);
+			return segmentsArray;
+		},
+		addData : function(segment, atIndex, silent){
+			var index = atIndex || this.segments.length;
+			this.segments.splice(index, 0, new this.SegmentArc({
+				value : segment.value,
+				outerRadius : (this.options.animateScale) ? 0 : this.outerRadius,
+				innerRadius : (this.options.animateScale) ? 0 : (this.outerRadius/100) * this.options.percentageInnerCutout,
+				fillColor : segment.color,
+				highlightColor : segment.highlight || segment.color,
+				showStroke : this.options.segmentShowStroke,
+				strokeWidth : this.options.segmentStrokeWidth,
+				strokeColor : this.options.segmentStrokeColor,
+				startAngle : Math.PI * 1.5,
+				circumference : (this.options.animateRotate) ? 0 : this.calculateCircumference(segment.value),
+				label : segment.label
+			}));
+			if (!silent){
+				this.reflow();
+				this.update();
+			}
+		},
+		calculateCircumference : function(value){
+			return (Math.PI*2)*(Math.abs(value) / this.total);
+		},
+		calculateTotal : function(data){
+			this.total = 0;
+			helpers.each(data,function(segment){
+				this.total += Math.abs(segment.value);
+			},this);
+		},
+		update : function(){
+			this.calculateTotal(this.segments);
+
+			// Reset any highlight colours before updating.
+			helpers.each(this.activeElements, function(activeElement){
+				activeElement.restore(['fillColor']);
+			});
+
+			helpers.each(this.segments,function(segment){
+				segment.save();
+			});
+			this.render();
+		},
+
+		removeData: function(atIndex){
+			var indexToDelete = (helpers.isNumber(atIndex)) ? atIndex : this.segments.length-1;
+			this.segments.splice(indexToDelete, 1);
+			this.reflow();
+			this.update();
+		},
+
+		reflow : function(){
+			helpers.extend(this.SegmentArc.prototype,{
+				x : this.chart.width/2,
+				y : this.chart.height/2
+			});
+			this.outerRadius = (helpers.min([this.chart.width,this.chart.height]) -	this.options.segmentStrokeWidth/2)/2;
+			helpers.each(this.segments, function(segment){
+				segment.update({
+					outerRadius : this.outerRadius,
+					innerRadius : (this.outerRadius/100) * this.options.percentageInnerCutout
+				});
+			}, this);
+		},
+		draw : function(easeDecimal){
+			var animDecimal = (easeDecimal) ? easeDecimal : 1;
+			this.clear();
+			helpers.each(this.segments,function(segment,index){
+				segment.transition({
+					circumference : this.calculateCircumference(segment.value),
+					outerRadius : this.outerRadius,
+					innerRadius : (this.outerRadius/100) * this.options.percentageInnerCutout
+				},animDecimal);
+
+				segment.endAngle = segment.startAngle + segment.circumference;
+
+				segment.draw();
+				if (index === 0){
+					segment.startAngle = Math.PI * 1.5;
+				}
+				//Check to see if it's the last segment, if not get the next and update the start angle
+				if (index < this.segments.length-1){
+					this.segments[index+1].startAngle = segment.endAngle;
+				}
+			},this);
+
+		}
+	});
+
+	Chart.types.Doughnut.extend({
+		name : "Pie",
+		defaults : helpers.merge(defaultConfig,{percentageInnerCutout : 0})
+	});
+
+}).call(this);
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		helpers = Chart.helpers;
+
+	var defaultConfig = {
+
+		///Boolean - Whether grid lines are shown across the chart
+		scaleShowGridLines : true,
+
+		//String - Colour of the grid lines
+		scaleGridLineColor : "rgba(0,0,0,.05)",
+
+		//Number - Width of the grid lines
+		scaleGridLineWidth : 1,
+
+		//Boolean - Whether to show horizontal lines (except X axis)
+		scaleShowHorizontalLines: true,
+
+		//Boolean - Whether to show vertical lines (except Y axis)
+		scaleShowVerticalLines: true,
+
+		//Boolean - Whether the line is curved between points
+		bezierCurve : true,
+
+		//Number - Tension of the bezier curve between points
+		bezierCurveTension : 0.4,
+
+		//Boolean - Whether to show a dot for each point
+		pointDot : true,
+
+		//Number - Radius of each point dot in pixels
+		pointDotRadius : 4,
+
+		//Number - Pixel width of point dot stroke
+		pointDotStrokeWidth : 1,
+
+		//Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+		pointHitDetectionRadius : 20,
+
+		//Boolean - Whether to show a stroke for datasets
+		datasetStroke : true,
+
+		//Number - Pixel width of dataset stroke
+		datasetStrokeWidth : 2,
+
+		//Boolean - Whether to fill the dataset with a colour
+		datasetFill : true,
+
+		//String - A legend template
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
+	};
+
+
+	Chart.Type.extend({
+		name: "Line",
+		defaults : defaultConfig,
+		initialize:  function(data){
+			//Declare the extension of the default point, to cater for the options passed in to the constructor
+			this.PointClass = Chart.Point.extend({
+				strokeWidth : this.options.pointDotStrokeWidth,
+				radius : this.options.pointDotRadius,
+				display: this.options.pointDot,
+				hitDetectionRadius : this.options.pointHitDetectionRadius,
+				ctx : this.chart.ctx,
+				inRange : function(mouseX){
+					return (Math.pow(mouseX-this.x, 2) < Math.pow(this.radius + this.hitDetectionRadius,2));
+				}
+			});
+
+			this.datasets = [];
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activePoints = (evt.type !== 'mouseout') ? this.getPointsAtEvent(evt) : [];
+					this.eachPoints(function(point){
+						point.restore(['fillColor', 'strokeColor']);
+					});
+					helpers.each(activePoints, function(activePoint){
+						activePoint.fillColor = activePoint.highlightFill;
+						activePoint.strokeColor = activePoint.highlightStroke;
+					});
+					this.showTooltip(activePoints);
+				});
+			}
+
+			//Iterate through each of the datasets, and build this into a property of the chart
+			helpers.each(data.datasets,function(dataset){
+
+				var datasetObject = {
+					label : dataset.label || null,
+					fillColor : dataset.fillColor,
+					strokeColor : dataset.strokeColor,
+					pointColor : dataset.pointColor,
+					pointStrokeColor : dataset.pointStrokeColor,
+					points : []
+				};
+
+				this.datasets.push(datasetObject);
+
+
+				helpers.each(dataset.data,function(dataPoint,index){
+					//Add a new point for each piece of data, passing any required data to draw.
+					datasetObject.points.push(new this.PointClass({
+						value : dataPoint,
+						label : data.labels[index],
+						datasetLabel: dataset.label,
+						strokeColor : dataset.pointStrokeColor,
+						fillColor : dataset.pointColor,
+						highlightFill : dataset.pointHighlightFill || dataset.pointColor,
+						highlightStroke : dataset.pointHighlightStroke || dataset.pointStrokeColor
+					}));
+				},this);
+
+				this.buildScale(data.labels);
+
+
+				this.eachPoints(function(point, index){
+					helpers.extend(point, {
+						x: this.scale.calculateX(index),
+						y: this.scale.endPoint
+					});
+					point.save();
+				}, this);
+
+			},this);
+
+
+			this.render();
+		},
+		update : function(){
+			this.scale.update();
+			// Reset any highlight colours before updating.
+			helpers.each(this.activeElements, function(activeElement){
+				activeElement.restore(['fillColor', 'strokeColor']);
+			});
+			this.eachPoints(function(point){
+				point.save();
+			});
+			this.render();
+		},
+		eachPoints : function(callback){
+			helpers.each(this.datasets,function(dataset){
+				helpers.each(dataset.points,callback,this);
+			},this);
+		},
+		getPointsAtEvent : function(e){
+			var pointsArray = [],
+				eventPosition = helpers.getRelativePosition(e);
+			helpers.each(this.datasets,function(dataset){
+				helpers.each(dataset.points,function(point){
+					if (point.inRange(eventPosition.x,eventPosition.y)) pointsArray.push(point);
+				});
+			},this);
+			return pointsArray;
+		},
+		buildScale : function(labels){
+			var self = this;
+
+			var dataTotal = function(){
+				var values = [];
+				self.eachPoints(function(point){
+					values.push(point.value);
+				});
+
+				return values;
+			};
+
+			var scaleOptions = {
+				templateString : this.options.scaleLabel,
+				height : this.chart.height,
+				width : this.chart.width,
+				ctx : this.chart.ctx,
+				textColor : this.options.scaleFontColor,
+				fontSize : this.options.scaleFontSize,
+				fontStyle : this.options.scaleFontStyle,
+				fontFamily : this.options.scaleFontFamily,
+				valuesCount : labels.length,
+				beginAtZero : this.options.scaleBeginAtZero,
+				integersOnly : this.options.scaleIntegersOnly,
+				calculateYRange : function(currentHeight){
+					var updatedRanges = helpers.calculateScaleRange(
+						dataTotal(),
+						currentHeight,
+						this.fontSize,
+						this.beginAtZero,
+						this.integersOnly
+					);
+					helpers.extend(this, updatedRanges);
+				},
+				xLabels : labels,
+				font : helpers.fontString(this.options.scaleFontSize, this.options.scaleFontStyle, this.options.scaleFontFamily),
+				lineWidth : this.options.scaleLineWidth,
+				lineColor : this.options.scaleLineColor,
+				showHorizontalLines : this.options.scaleShowHorizontalLines,
+				showVerticalLines : this.options.scaleShowVerticalLines,
+				gridLineWidth : (this.options.scaleShowGridLines) ? this.options.scaleGridLineWidth : 0,
+				gridLineColor : (this.options.scaleShowGridLines) ? this.options.scaleGridLineColor : "rgba(0,0,0,0)",
+				padding: (this.options.showScale) ? 0 : this.options.pointDotRadius + this.options.pointDotStrokeWidth,
+				showLabels : this.options.scaleShowLabels,
+				display : this.options.showScale
+			};
+
+			if (this.options.scaleOverride){
+				helpers.extend(scaleOptions, {
+					calculateYRange: helpers.noop,
+					steps: this.options.scaleSteps,
+					stepValue: this.options.scaleStepWidth,
+					min: this.options.scaleStartValue,
+					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+				});
+			}
+
+
+			this.scale = new Chart.Scale(scaleOptions);
+		},
+		addData : function(valuesArray,label){
+			//Map the values array for each of the datasets
+
+			helpers.each(valuesArray,function(value,datasetIndex){
+				//Add a new point for each piece of data, passing any required data to draw.
+				this.datasets[datasetIndex].points.push(new this.PointClass({
+					value : value,
+					label : label,
+					x: this.scale.calculateX(this.scale.valuesCount+1),
+					y: this.scale.endPoint,
+					strokeColor : this.datasets[datasetIndex].pointStrokeColor,
+					fillColor : this.datasets[datasetIndex].pointColor
+				}));
+			},this);
+
+			this.scale.addXLabel(label);
+			//Then re-render the chart.
+			this.update();
+		},
+		removeData : function(){
+			this.scale.removeXLabel();
+			//Then re-render the chart.
+			helpers.each(this.datasets,function(dataset){
+				dataset.points.shift();
+			},this);
+			this.update();
+		},
+		reflow : function(){
+			var newScaleProps = helpers.extend({
+				height : this.chart.height,
+				width : this.chart.width
+			});
+			this.scale.update(newScaleProps);
+		},
+		draw : function(ease){
+			var easingDecimal = ease || 1;
+			this.clear();
+
+			var ctx = this.chart.ctx;
+
+			// Some helper methods for getting the next/prev points
+			var hasValue = function(item){
+				return item.value !== null;
+			},
+			nextPoint = function(point, collection, index){
+				return helpers.findNextWhere(collection, hasValue, index) || point;
+			},
+			previousPoint = function(point, collection, index){
+				return helpers.findPreviousWhere(collection, hasValue, index) || point;
+			};
+
+			this.scale.draw(easingDecimal);
+
+
+			helpers.each(this.datasets,function(dataset){
+				var pointsWithValues = helpers.where(dataset.points, hasValue);
+
+				//Transition each point first so that the line and point drawing isn't out of sync
+				//We can use this extra loop to calculate the control points of this dataset also in this loop
+
+				helpers.each(dataset.points, function(point, index){
+					if (point.hasValue()){
+						point.transition({
+							y : this.scale.calculateY(point.value),
+							x : this.scale.calculateX(index)
+						}, easingDecimal);
+					}
+				},this);
+
+
+				// Control points need to be calculated in a seperate loop, because we need to know the current x/y of the point
+				// This would cause issues when there is no animation, because the y of the next point would be 0, so beziers would be skewed
+				if (this.options.bezierCurve){
+					helpers.each(pointsWithValues, function(point, index){
+						var tension = (index > 0 && index < pointsWithValues.length - 1) ? this.options.bezierCurveTension : 0;
+						point.controlPoints = helpers.splineCurve(
+							previousPoint(point, pointsWithValues, index),
+							point,
+							nextPoint(point, pointsWithValues, index),
+							tension
+						);
+
+						// Prevent the bezier going outside of the bounds of the graph
+
+						// Cap puter bezier handles to the upper/lower scale bounds
+						if (point.controlPoints.outer.y > this.scale.endPoint){
+							point.controlPoints.outer.y = this.scale.endPoint;
+						}
+						else if (point.controlPoints.outer.y < this.scale.startPoint){
+							point.controlPoints.outer.y = this.scale.startPoint;
+						}
+
+						// Cap inner bezier handles to the upper/lower scale bounds
+						if (point.controlPoints.inner.y > this.scale.endPoint){
+							point.controlPoints.inner.y = this.scale.endPoint;
+						}
+						else if (point.controlPoints.inner.y < this.scale.startPoint){
+							point.controlPoints.inner.y = this.scale.startPoint;
+						}
+					},this);
+				}
+
+
+				//Draw the line between all the points
+				ctx.lineWidth = this.options.datasetStrokeWidth;
+				ctx.strokeStyle = dataset.strokeColor;
+				ctx.beginPath();
+
+				helpers.each(pointsWithValues, function(point, index){
+					if (index === 0){
+						ctx.moveTo(point.x, point.y);
+					}
+					else{
+						if(this.options.bezierCurve){
+							var previous = previousPoint(point, pointsWithValues, index);
+
+							ctx.bezierCurveTo(
+								previous.controlPoints.outer.x,
+								previous.controlPoints.outer.y,
+								point.controlPoints.inner.x,
+								point.controlPoints.inner.y,
+								point.x,
+								point.y
+							);
+						}
+						else{
+							ctx.lineTo(point.x,point.y);
+						}
+					}
+				}, this);
+
+				ctx.stroke();
+
+				if (this.options.datasetFill && pointsWithValues.length > 0){
+					//Round off the line by going to the base of the chart, back to the start, then fill.
+					ctx.lineTo(pointsWithValues[pointsWithValues.length - 1].x, this.scale.endPoint);
+					ctx.lineTo(pointsWithValues[0].x, this.scale.endPoint);
+					ctx.fillStyle = dataset.fillColor;
+					ctx.closePath();
+					ctx.fill();
+				}
+
+				//Now draw the points over the line
+				//A little inefficient double looping, but better than the line
+				//lagging behind the point positions
+				helpers.each(pointsWithValues,function(point){
+					point.draw();
+				});
+			},this);
+		}
+	});
+
+
+}).call(this);
+
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		//Cache a local reference to Chart.helpers
+		helpers = Chart.helpers;
+
+	var defaultConfig = {
+		//Boolean - Show a backdrop to the scale label
+		scaleShowLabelBackdrop : true,
+
+		//String - The colour of the label backdrop
+		scaleBackdropColor : "rgba(255,255,255,0.75)",
+
+		// Boolean - Whether the scale should begin at zero
+		scaleBeginAtZero : true,
+
+		//Number - The backdrop padding above & below the label in pixels
+		scaleBackdropPaddingY : 2,
+
+		//Number - The backdrop padding to the side of the label in pixels
+		scaleBackdropPaddingX : 2,
+
+		//Boolean - Show line for each value in the scale
+		scaleShowLine : true,
+
+		//Boolean - Stroke a line around each segment in the chart
+		segmentShowStroke : true,
+
+		//String - The colour of the stroke on each segement.
+		segmentStrokeColor : "#fff",
+
+		//Number - The width of the stroke value in pixels
+		segmentStrokeWidth : 2,
+
+		//Number - Amount of animation steps
+		animationSteps : 100,
+
+		//String - Animation easing effect.
+		animationEasing : "easeOutBounce",
+
+		//Boolean - Whether to animate the rotation of the chart
+		animateRotate : true,
+
+		//Boolean - Whether to animate scaling the chart from the centre
+		animateScale : false,
+
+		//String - A legend template
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+	};
+
+
+	Chart.Type.extend({
+		//Passing in a name registers this chart in the Chart namespace
+		name: "PolarArea",
+		//Providing a defaults will also register the deafults in the chart namespace
+		defaults : defaultConfig,
+		//Initialize is fired when the chart is initialized - Data is passed in as a parameter
+		//Config is automatically merged by the core of Chart.js, and is available at this.options
+		initialize:  function(data){
+			this.segments = [];
+			//Declare segment class as a chart instance specific class, so it can share props for this instance
+			this.SegmentArc = Chart.Arc.extend({
+				showStroke : this.options.segmentShowStroke,
+				strokeWidth : this.options.segmentStrokeWidth,
+				strokeColor : this.options.segmentStrokeColor,
+				ctx : this.chart.ctx,
+				innerRadius : 0,
+				x : this.chart.width/2,
+				y : this.chart.height/2
+			});
+			this.scale = new Chart.RadialScale({
+				display: this.options.showScale,
+				fontStyle: this.options.scaleFontStyle,
+				fontSize: this.options.scaleFontSize,
+				fontFamily: this.options.scaleFontFamily,
+				fontColor: this.options.scaleFontColor,
+				showLabels: this.options.scaleShowLabels,
+				showLabelBackdrop: this.options.scaleShowLabelBackdrop,
+				backdropColor: this.options.scaleBackdropColor,
+				backdropPaddingY : this.options.scaleBackdropPaddingY,
+				backdropPaddingX: this.options.scaleBackdropPaddingX,
+				lineWidth: (this.options.scaleShowLine) ? this.options.scaleLineWidth : 0,
+				lineColor: this.options.scaleLineColor,
+				lineArc: true,
+				width: this.chart.width,
+				height: this.chart.height,
+				xCenter: this.chart.width/2,
+				yCenter: this.chart.height/2,
+				ctx : this.chart.ctx,
+				templateString: this.options.scaleLabel,
+				valuesCount: data.length
+			});
+
+			this.updateScaleRange(data);
+
+			this.scale.update();
+
+			helpers.each(data,function(segment,index){
+				this.addData(segment,index,true);
+			},this);
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activeSegments = (evt.type !== 'mouseout') ? this.getSegmentsAtEvent(evt) : [];
+					helpers.each(this.segments,function(segment){
+						segment.restore(["fillColor"]);
+					});
+					helpers.each(activeSegments,function(activeSegment){
+						activeSegment.fillColor = activeSegment.highlightColor;
+					});
+					this.showTooltip(activeSegments);
+				});
+			}
+
+			this.render();
+		},
+		getSegmentsAtEvent : function(e){
+			var segmentsArray = [];
+
+			var location = helpers.getRelativePosition(e);
+
+			helpers.each(this.segments,function(segment){
+				if (segment.inRange(location.x,location.y)) segmentsArray.push(segment);
+			},this);
+			return segmentsArray;
+		},
+		addData : function(segment, atIndex, silent){
+			var index = atIndex || this.segments.length;
+
+			this.segments.splice(index, 0, new this.SegmentArc({
+				fillColor: segment.color,
+				highlightColor: segment.highlight || segment.color,
+				label: segment.label,
+				value: segment.value,
+				outerRadius: (this.options.animateScale) ? 0 : this.scale.calculateCenterOffset(segment.value),
+				circumference: (this.options.animateRotate) ? 0 : this.scale.getCircumference(),
+				startAngle: Math.PI * 1.5
+			}));
+			if (!silent){
+				this.reflow();
+				this.update();
+			}
+		},
+		removeData: function(atIndex){
+			var indexToDelete = (helpers.isNumber(atIndex)) ? atIndex : this.segments.length-1;
+			this.segments.splice(indexToDelete, 1);
+			this.reflow();
+			this.update();
+		},
+		calculateTotal: function(data){
+			this.total = 0;
+			helpers.each(data,function(segment){
+				this.total += segment.value;
+			},this);
+			this.scale.valuesCount = this.segments.length;
+		},
+		updateScaleRange: function(datapoints){
+			var valuesArray = [];
+			helpers.each(datapoints,function(segment){
+				valuesArray.push(segment.value);
+			});
+
+			var scaleSizes = (this.options.scaleOverride) ?
+				{
+					steps: this.options.scaleSteps,
+					stepValue: this.options.scaleStepWidth,
+					min: this.options.scaleStartValue,
+					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+				} :
+				helpers.calculateScaleRange(
+					valuesArray,
+					helpers.min([this.chart.width, this.chart.height])/2,
+					this.options.scaleFontSize,
+					this.options.scaleBeginAtZero,
+					this.options.scaleIntegersOnly
+				);
+
+			helpers.extend(
+				this.scale,
+				scaleSizes,
+				{
+					size: helpers.min([this.chart.width, this.chart.height]),
+					xCenter: this.chart.width/2,
+					yCenter: this.chart.height/2
+				}
+			);
+
+		},
+		update : function(){
+			this.calculateTotal(this.segments);
+
+			helpers.each(this.segments,function(segment){
+				segment.save();
+			});
+			
+			this.reflow();
+			this.render();
+		},
+		reflow : function(){
+			helpers.extend(this.SegmentArc.prototype,{
+				x : this.chart.width/2,
+				y : this.chart.height/2
+			});
+			this.updateScaleRange(this.segments);
+			this.scale.update();
+
+			helpers.extend(this.scale,{
+				xCenter: this.chart.width/2,
+				yCenter: this.chart.height/2
+			});
+
+			helpers.each(this.segments, function(segment){
+				segment.update({
+					outerRadius : this.scale.calculateCenterOffset(segment.value)
+				});
+			}, this);
+
+		},
+		draw : function(ease){
+			var easingDecimal = ease || 1;
+			//Clear & draw the canvas
+			this.clear();
+			helpers.each(this.segments,function(segment, index){
+				segment.transition({
+					circumference : this.scale.getCircumference(),
+					outerRadius : this.scale.calculateCenterOffset(segment.value)
+				},easingDecimal);
+
+				segment.endAngle = segment.startAngle + segment.circumference;
+
+				// If we've removed the first segment we need to set the first one to
+				// start at the top.
+				if (index === 0){
+					segment.startAngle = Math.PI * 1.5;
+				}
+
+				//Check to see if it's the last segment, if not get the next and update the start angle
+				if (index < this.segments.length - 1){
+					this.segments[index+1].startAngle = segment.endAngle;
+				}
+				segment.draw();
+			}, this);
+			this.scale.draw();
+		}
+	});
+
+}).call(this);
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		helpers = Chart.helpers;
+
+
+
+	Chart.Type.extend({
+		name: "Radar",
+		defaults:{
+			//Boolean - Whether to show lines for each scale point
+			scaleShowLine : true,
+
+			//Boolean - Whether we show the angle lines out of the radar
+			angleShowLineOut : true,
+
+			//Boolean - Whether to show labels on the scale
+			scaleShowLabels : false,
+
+			// Boolean - Whether the scale should begin at zero
+			scaleBeginAtZero : true,
+
+			//String - Colour of the angle line
+			angleLineColor : "rgba(0,0,0,.1)",
+
+			//Number - Pixel width of the angle line
+			angleLineWidth : 1,
+
+			//String - Point label font declaration
+			pointLabelFontFamily : "'Arial'",
+
+			//String - Point label font weight
+			pointLabelFontStyle : "normal",
+
+			//Number - Point label font size in pixels
+			pointLabelFontSize : 10,
+
+			//String - Point label font colour
+			pointLabelFontColor : "#666",
+
+			//Boolean - Whether to show a dot for each point
+			pointDot : true,
+
+			//Number - Radius of each point dot in pixels
+			pointDotRadius : 3,
+
+			//Number - Pixel width of point dot stroke
+			pointDotStrokeWidth : 1,
+
+			//Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+			pointHitDetectionRadius : 20,
+
+			//Boolean - Whether to show a stroke for datasets
+			datasetStroke : true,
+
+			//Number - Pixel width of dataset stroke
+			datasetStrokeWidth : 2,
+
+			//Boolean - Whether to fill the dataset with a colour
+			datasetFill : true,
+
+			//String - A legend template
+			legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
+		},
+
+		initialize: function(data){
+			this.PointClass = Chart.Point.extend({
+				strokeWidth : this.options.pointDotStrokeWidth,
+				radius : this.options.pointDotRadius,
+				display: this.options.pointDot,
+				hitDetectionRadius : this.options.pointHitDetectionRadius,
+				ctx : this.chart.ctx
+			});
+
+			this.datasets = [];
+
+			this.buildScale(data);
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activePointsCollection = (evt.type !== 'mouseout') ? this.getPointsAtEvent(evt) : [];
+
+					this.eachPoints(function(point){
+						point.restore(['fillColor', 'strokeColor']);
+					});
+					helpers.each(activePointsCollection, function(activePoint){
+						activePoint.fillColor = activePoint.highlightFill;
+						activePoint.strokeColor = activePoint.highlightStroke;
+					});
+
+					this.showTooltip(activePointsCollection);
+				});
+			}
+
+			//Iterate through each of the datasets, and build this into a property of the chart
+			helpers.each(data.datasets,function(dataset){
+
+				var datasetObject = {
+					label: dataset.label || null,
+					fillColor : dataset.fillColor,
+					strokeColor : dataset.strokeColor,
+					pointColor : dataset.pointColor,
+					pointStrokeColor : dataset.pointStrokeColor,
+					points : []
+				};
+
+				this.datasets.push(datasetObject);
+
+				helpers.each(dataset.data,function(dataPoint,index){
+					//Add a new point for each piece of data, passing any required data to draw.
+					var pointPosition;
+					if (!this.scale.animation){
+						pointPosition = this.scale.getPointPosition(index, this.scale.calculateCenterOffset(dataPoint));
+					}
+					datasetObject.points.push(new this.PointClass({
+						value : dataPoint,
+						label : data.labels[index],
+						datasetLabel: dataset.label,
+						x: (this.options.animation) ? this.scale.xCenter : pointPosition.x,
+						y: (this.options.animation) ? this.scale.yCenter : pointPosition.y,
+						strokeColor : dataset.pointStrokeColor,
+						fillColor : dataset.pointColor,
+						highlightFill : dataset.pointHighlightFill || dataset.pointColor,
+						highlightStroke : dataset.pointHighlightStroke || dataset.pointStrokeColor
+					}));
+				},this);
+
+			},this);
+
+			this.render();
+		},
+		eachPoints : function(callback){
+			helpers.each(this.datasets,function(dataset){
+				helpers.each(dataset.points,callback,this);
+			},this);
+		},
+
+		getPointsAtEvent : function(evt){
+			var mousePosition = helpers.getRelativePosition(evt),
+				fromCenter = helpers.getAngleFromPoint({
+					x: this.scale.xCenter,
+					y: this.scale.yCenter
+				}, mousePosition);
+
+			var anglePerIndex = (Math.PI * 2) /this.scale.valuesCount,
+				pointIndex = Math.round((fromCenter.angle - Math.PI * 1.5) / anglePerIndex),
+				activePointsCollection = [];
+
+			// If we're at the top, make the pointIndex 0 to get the first of the array.
+			if (pointIndex >= this.scale.valuesCount || pointIndex < 0){
+				pointIndex = 0;
+			}
+
+			if (fromCenter.distance <= this.scale.drawingArea){
+				helpers.each(this.datasets, function(dataset){
+					activePointsCollection.push(dataset.points[pointIndex]);
+				});
+			}
+
+			return activePointsCollection;
+		},
+
+		buildScale : function(data){
+			this.scale = new Chart.RadialScale({
+				display: this.options.showScale,
+				fontStyle: this.options.scaleFontStyle,
+				fontSize: this.options.scaleFontSize,
+				fontFamily: this.options.scaleFontFamily,
+				fontColor: this.options.scaleFontColor,
+				showLabels: this.options.scaleShowLabels,
+				showLabelBackdrop: this.options.scaleShowLabelBackdrop,
+				backdropColor: this.options.scaleBackdropColor,
+				backdropPaddingY : this.options.scaleBackdropPaddingY,
+				backdropPaddingX: this.options.scaleBackdropPaddingX,
+				lineWidth: (this.options.scaleShowLine) ? this.options.scaleLineWidth : 0,
+				lineColor: this.options.scaleLineColor,
+				angleLineColor : this.options.angleLineColor,
+				angleLineWidth : (this.options.angleShowLineOut) ? this.options.angleLineWidth : 0,
+				// Point labels at the edge of each line
+				pointLabelFontColor : this.options.pointLabelFontColor,
+				pointLabelFontSize : this.options.pointLabelFontSize,
+				pointLabelFontFamily : this.options.pointLabelFontFamily,
+				pointLabelFontStyle : this.options.pointLabelFontStyle,
+				height : this.chart.height,
+				width: this.chart.width,
+				xCenter: this.chart.width/2,
+				yCenter: this.chart.height/2,
+				ctx : this.chart.ctx,
+				templateString: this.options.scaleLabel,
+				labels: data.labels,
+				valuesCount: data.datasets[0].data.length
+			});
+
+			this.scale.setScaleSize();
+			this.updateScaleRange(data.datasets);
+			this.scale.buildYLabels();
+		},
+		updateScaleRange: function(datasets){
+			var valuesArray = (function(){
+				var totalDataArray = [];
+				helpers.each(datasets,function(dataset){
+					if (dataset.data){
+						totalDataArray = totalDataArray.concat(dataset.data);
+					}
+					else {
+						helpers.each(dataset.points, function(point){
+							totalDataArray.push(point.value);
+						});
+					}
+				});
+				return totalDataArray;
+			})();
+
+
+			var scaleSizes = (this.options.scaleOverride) ?
+				{
+					steps: this.options.scaleSteps,
+					stepValue: this.options.scaleStepWidth,
+					min: this.options.scaleStartValue,
+					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+				} :
+				helpers.calculateScaleRange(
+					valuesArray,
+					helpers.min([this.chart.width, this.chart.height])/2,
+					this.options.scaleFontSize,
+					this.options.scaleBeginAtZero,
+					this.options.scaleIntegersOnly
+				);
+
+			helpers.extend(
+				this.scale,
+				scaleSizes
+			);
+
+		},
+		addData : function(valuesArray,label){
+			//Map the values array for each of the datasets
+			this.scale.valuesCount++;
+			helpers.each(valuesArray,function(value,datasetIndex){
+				var pointPosition = this.scale.getPointPosition(this.scale.valuesCount, this.scale.calculateCenterOffset(value));
+				this.datasets[datasetIndex].points.push(new this.PointClass({
+					value : value,
+					label : label,
+					x: pointPosition.x,
+					y: pointPosition.y,
+					strokeColor : this.datasets[datasetIndex].pointStrokeColor,
+					fillColor : this.datasets[datasetIndex].pointColor
+				}));
+			},this);
+
+			this.scale.labels.push(label);
+
+			this.reflow();
+
+			this.update();
+		},
+		removeData : function(){
+			this.scale.valuesCount--;
+			this.scale.labels.shift();
+			helpers.each(this.datasets,function(dataset){
+				dataset.points.shift();
+			},this);
+			this.reflow();
+			this.update();
+		},
+		update : function(){
+			this.eachPoints(function(point){
+				point.save();
+			});
+			this.reflow();
+			this.render();
+		},
+		reflow: function(){
+			helpers.extend(this.scale, {
+				width : this.chart.width,
+				height: this.chart.height,
+				size : helpers.min([this.chart.width, this.chart.height]),
+				xCenter: this.chart.width/2,
+				yCenter: this.chart.height/2
+			});
+			this.updateScaleRange(this.datasets);
+			this.scale.setScaleSize();
+			this.scale.buildYLabels();
+		},
+		draw : function(ease){
+			var easeDecimal = ease || 1,
+				ctx = this.chart.ctx;
+			this.clear();
+			this.scale.draw();
+
+			helpers.each(this.datasets,function(dataset){
+
+				//Transition each point first so that the line and point drawing isn't out of sync
+				helpers.each(dataset.points,function(point,index){
+					if (point.hasValue()){
+						point.transition(this.scale.getPointPosition(index, this.scale.calculateCenterOffset(point.value)), easeDecimal);
+					}
+				},this);
+
+
+
+				//Draw the line between all the points
+				ctx.lineWidth = this.options.datasetStrokeWidth;
+				ctx.strokeStyle = dataset.strokeColor;
+				ctx.beginPath();
+				helpers.each(dataset.points,function(point,index){
+					if (index === 0){
+						ctx.moveTo(point.x,point.y);
+					}
+					else{
+						ctx.lineTo(point.x,point.y);
+					}
+				},this);
+				ctx.closePath();
+				ctx.stroke();
+
+				ctx.fillStyle = dataset.fillColor;
+				ctx.fill();
+
+				//Now draw the points over the line
+				//A little inefficient double looping, but better than the line
+				//lagging behind the point positions
+				helpers.each(dataset.points,function(point){
+					if (point.hasValue()){
+						point.draw();
+					}
+				});
+
+			},this);
+
+		}
+
+	});
+
+
+
+
+
+}).call(this);
+},{}],184:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.1
  * http://jquery.com/
@@ -69881,7 +71295,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],183:[function(require,module,exports){
+},{}],185:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -84958,9 +86372,9 @@ return jQuery;
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],184:[function(require,module,exports){
+},{}],186:[function(require,module,exports){
 //! moment.js
-//! version : 2.12.0
+//! version : 2.11.2
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
 //! license : MIT
 //! momentjs.com
@@ -84984,7 +86398,7 @@ return jQuery;
     }
 
     function isArray(input) {
-        return input instanceof Array || Object.prototype.toString.call(input) === '[object Array]';
+        return Object.prototype.toString.call(input) === '[object Array]';
     }
 
     function isDate(input) {
@@ -85190,82 +86604,7 @@ return jQuery;
         return diffs + lengthDiff;
     }
 
-    function warn(msg) {
-        if (utils_hooks__hooks.suppressDeprecationWarnings === false &&
-                (typeof console !==  'undefined') && console.warn) {
-            console.warn('Deprecation warning: ' + msg);
-        }
-    }
-
-    function deprecate(msg, fn) {
-        var firstTime = true;
-
-        return extend(function () {
-            if (firstTime) {
-                warn(msg + '\nArguments: ' + Array.prototype.slice.call(arguments).join(', ') + '\n' + (new Error()).stack);
-                firstTime = false;
-            }
-            return fn.apply(this, arguments);
-        }, fn);
-    }
-
-    var deprecations = {};
-
-    function deprecateSimple(name, msg) {
-        if (!deprecations[name]) {
-            warn(msg);
-            deprecations[name] = true;
-        }
-    }
-
-    utils_hooks__hooks.suppressDeprecationWarnings = false;
-
-    function isFunction(input) {
-        return input instanceof Function || Object.prototype.toString.call(input) === '[object Function]';
-    }
-
-    function isObject(input) {
-        return Object.prototype.toString.call(input) === '[object Object]';
-    }
-
-    function locale_set__set (config) {
-        var prop, i;
-        for (i in config) {
-            prop = config[i];
-            if (isFunction(prop)) {
-                this[i] = prop;
-            } else {
-                this['_' + i] = prop;
-            }
-        }
-        this._config = config;
-        // Lenient ordinal parsing accepts just a number in addition to
-        // number + (possibly) stuff coming from _ordinalParseLenient.
-        this._ordinalParseLenient = new RegExp(this._ordinalParse.source + '|' + (/\d{1,2}/).source);
-    }
-
-    function mergeConfigs(parentConfig, childConfig) {
-        var res = extend({}, parentConfig), prop;
-        for (prop in childConfig) {
-            if (hasOwnProp(childConfig, prop)) {
-                if (isObject(parentConfig[prop]) && isObject(childConfig[prop])) {
-                    res[prop] = {};
-                    extend(res[prop], parentConfig[prop]);
-                    extend(res[prop], childConfig[prop]);
-                } else if (childConfig[prop] != null) {
-                    res[prop] = childConfig[prop];
-                } else {
-                    delete res[prop];
-                }
-            }
-        }
-        return res;
-    }
-
-    function Locale(config) {
-        if (config != null) {
-            this.set(config);
-        }
+    function Locale() {
     }
 
     // internal storage for locale config files
@@ -85341,25 +86680,11 @@ return jQuery;
         return globalLocale._abbr;
     }
 
-    function defineLocale (name, config) {
-        if (config !== null) {
-            config.abbr = name;
-            if (locales[name] != null) {
-                deprecateSimple('defineLocaleOverride',
-                        'use moment.updateLocale(localeName, config) to change ' +
-                        'an existing locale. moment.defineLocale(localeName, ' +
-                        'config) should only be used for creating a new locale');
-                config = mergeConfigs(locales[name]._config, config);
-            } else if (config.parentLocale != null) {
-                if (locales[config.parentLocale] != null) {
-                    config = mergeConfigs(locales[config.parentLocale]._config, config);
-                } else {
-                    // treat as if there is no base config
-                    deprecateSimple('parentLocaleUndefined',
-                            'specified parentLocale is not defined yet');
-                }
-            }
-            locales[name] = new Locale(config);
+    function defineLocale (name, values) {
+        if (values !== null) {
+            values.abbr = name;
+            locales[name] = locales[name] || new Locale();
+            locales[name].set(values);
 
             // backwards compat for now: also set the locale
             locale_locales__getSetGlobalLocale(name);
@@ -85370,31 +86695,6 @@ return jQuery;
             delete locales[name];
             return null;
         }
-    }
-
-    function updateLocale(name, config) {
-        if (config != null) {
-            var locale;
-            if (locales[name] != null) {
-                config = mergeConfigs(locales[name]._config, config);
-            }
-            locale = new Locale(config);
-            locale.parentLocale = locales[name];
-            locales[name] = locale;
-
-            // backwards compat for now: also set the locale
-            locale_locales__getSetGlobalLocale(name);
-        } else {
-            // pass null for config to unupdate, useful for tests
-            if (locales[name] != null) {
-                if (locales[name].parentLocale != null) {
-                    locales[name] = locales[name].parentLocale;
-                } else if (locales[name] != null) {
-                    delete locales[name];
-                }
-            }
-        }
-        return locales[name];
     }
 
     // returns locale data
@@ -85419,10 +86719,6 @@ return jQuery;
         }
 
         return chooseLocale(key);
-    }
-
-    function locale_locales__listLocales() {
-        return Object.keys(locales);
     }
 
     var aliases = {};
@@ -85451,6 +86747,10 @@ return jQuery;
         }
 
         return normalizedInput;
+    }
+
+    function isFunction(input) {
+        return input instanceof Function || Object.prototype.toString.call(input) === '[object Function]';
     }
 
     function makeGetSet (unit, keepTime) {
@@ -85786,15 +87086,12 @@ return jQuery;
             return mom;
         }
 
+        // TODO: Move this out of here!
         if (typeof value === 'string') {
-            if (/^\d+$/.test(value)) {
-                value = toInt(value);
-            } else {
-                value = mom.localeData().monthsParse(value);
-                // TODO: Another silent failure?
-                if (typeof value !== 'number') {
-                    return mom;
-                }
+            value = mom.localeData().monthsParse(value);
+            // TODO: Another silent failure?
+            if (typeof value !== 'number') {
+                return mom;
             }
         }
 
@@ -85912,6 +87209,36 @@ return jQuery;
 
         return m;
     }
+
+    function warn(msg) {
+        if (utils_hooks__hooks.suppressDeprecationWarnings === false &&
+                (typeof console !==  'undefined') && console.warn) {
+            console.warn('Deprecation warning: ' + msg);
+        }
+    }
+
+    function deprecate(msg, fn) {
+        var firstTime = true;
+
+        return extend(function () {
+            if (firstTime) {
+                warn(msg + '\nArguments: ' + Array.prototype.slice.call(arguments).join(', ') + '\n' + (new Error()).stack);
+                firstTime = false;
+            }
+            return fn.apply(this, arguments);
+        }, fn);
+    }
+
+    var deprecations = {};
+
+    function deprecateSimple(name, msg) {
+        if (!deprecations[name]) {
+            warn(msg);
+            deprecations[name] = true;
+        }
+    }
+
+    utils_hooks__hooks.suppressDeprecationWarnings = false;
 
     // iso 8601 regex
     // 0000-00-00 0000-W00 or 0000-W00-0 + T + 00 or 00:00 or 00:00:00 or 00:00:00.000 + +00:00 or +0000 or +00)
@@ -86558,7 +87885,7 @@ return jQuery;
     }
 
     var prototypeMin = deprecate(
-         'moment().min is deprecated, use moment.max instead. https://github.com/moment/moment/issues/1548',
+         'moment().min is deprecated, use moment.min instead. https://github.com/moment/moment/issues/1548',
          function () {
              var other = local__createLocal.apply(null, arguments);
              if (this.isValid() && other.isValid()) {
@@ -86570,7 +87897,7 @@ return jQuery;
      );
 
     var prototypeMax = deprecate(
-        'moment().max is deprecated, use moment.min instead. https://github.com/moment/moment/issues/1548',
+        'moment().max is deprecated, use moment.max instead. https://github.com/moment/moment/issues/1548',
         function () {
             var other = local__createLocal.apply(null, arguments);
             if (this.isValid() && other.isValid()) {
@@ -86868,8 +88195,7 @@ return jQuery;
 
     // from http://docs.closure-library.googlecode.com/git/closure_goog_date_date.js.source.html
     // somewhat more in line with 4.4.3.2 2004 spec, but allows decimal anywhere
-    // and further modified to allow for strings containing both week and day
-    var isoRegex = /^(-)?P(?:([0-9,.]*)Y)?(?:([0-9,.]*)M)?(?:([0-9,.]*)W)?(?:([0-9,.]*)D)?(?:T(?:([0-9,.]*)H)?(?:([0-9,.]*)M)?(?:([0-9,.]*)S)?)?$/;
+    var isoRegex = /^(-)?P(?:(?:([0-9,.]*)Y)?(?:([0-9,.]*)M)?(?:([0-9,.]*)D)?(?:T(?:([0-9,.]*)H)?(?:([0-9,.]*)M)?(?:([0-9,.]*)S)?)?|([0-9,.]*)W)$/;
 
     function create__createDuration (input, key) {
         var duration = input,
@@ -86907,11 +88233,11 @@ return jQuery;
             duration = {
                 y : parseIso(match[2], sign),
                 M : parseIso(match[3], sign),
-                w : parseIso(match[4], sign),
-                d : parseIso(match[5], sign),
-                h : parseIso(match[6], sign),
-                m : parseIso(match[7], sign),
-                s : parseIso(match[8], sign)
+                d : parseIso(match[4], sign),
+                h : parseIso(match[5], sign),
+                m : parseIso(match[6], sign),
+                s : parseIso(match[7], sign),
+                w : parseIso(match[8], sign)
             };
         } else if (duration == null) {// checks for null or undefined
             duration = {};
@@ -86975,14 +88301,6 @@ return jQuery;
         return res;
     }
 
-    function absRound (number) {
-        if (number < 0) {
-            return Math.round(-1 * number) * -1;
-        } else {
-            return Math.round(number);
-        }
-    }
-
     // TODO: remove 'name' arg after deprecation is removed
     function createAdder(direction, name) {
         return function (val, period) {
@@ -87002,8 +88320,8 @@ return jQuery;
 
     function add_subtract__addSubtract (mom, duration, isAdding, updateOffset) {
         var milliseconds = duration._milliseconds,
-            days = absRound(duration._days),
-            months = absRound(duration._months);
+            days = duration._days,
+            months = duration._months;
 
         if (!mom.isValid()) {
             // No op
@@ -87329,8 +88647,8 @@ return jQuery;
     }
 
     function toJSON () {
-        // new Date(NaN).toJSON() === null
-        return this.isValid() ? this.toISOString() : null;
+        // JSON.stringify(new Date(NaN)) === 'null'
+        return this.isValid() ? this.toISOString() : 'null';
     }
 
     function moment_valid__isValid () {
@@ -87440,6 +88758,7 @@ return jQuery;
         var dayOfYearData = dayOfYearFromWeeks(weekYear, week, weekday, dow, doy),
             date = createUTCDate(dayOfYearData.year, 0, dayOfYearData.dayOfYear);
 
+        // console.log("got", weekYear, week, weekday, "set", date.toISOString());
         this.year(date.getUTCFullYear());
         this.month(date.getUTCMonth());
         this.date(date.getUTCDate());
@@ -88149,6 +89468,21 @@ return jQuery;
         return isFunction(format) ? format(output) : format.replace(/%s/i, output);
     }
 
+    function locale_set__set (config) {
+        var prop, i;
+        for (i in config) {
+            prop = config[i];
+            if (isFunction(prop)) {
+                this[i] = prop;
+            } else {
+                this['_' + i] = prop;
+            }
+        }
+        // Lenient ordinal parsing accepts just a number in addition to
+        // number + (possibly) stuff coming from _ordinalParseLenient.
+        this._ordinalParseLenient = new RegExp(this._ordinalParse.source + '|' + (/\d{1,2}/).source);
+    }
+
     var prototype__proto = Locale.prototype;
 
     prototype__proto._calendar       = defaultCalendar;
@@ -88612,7 +89946,7 @@ return jQuery;
     // Side effect imports
 
 
-    utils_hooks__hooks.version = '2.12.0';
+    utils_hooks__hooks.version = '2.11.2';
 
     setHookCallback(local__createLocal);
 
@@ -88635,8 +89969,6 @@ return jQuery;
     utils_hooks__hooks.monthsShort           = lists__listMonthsShort;
     utils_hooks__hooks.weekdaysMin           = lists__listWeekdaysMin;
     utils_hooks__hooks.defineLocale          = defineLocale;
-    utils_hooks__hooks.updateLocale          = updateLocale;
-    utils_hooks__hooks.locales               = locale_locales__listLocales;
     utils_hooks__hooks.weekdaysShort         = lists__listWeekdaysShort;
     utils_hooks__hooks.normalizeUnits        = normalizeUnits;
     utils_hooks__hooks.relativeTimeThreshold = duration_humanize__getSetRelativeTimeThreshold;
@@ -88647,7 +89979,2789 @@ return jQuery;
     return _moment;
 
 }));
-},{}],185:[function(require,module,exports){
+},{}],187:[function(require,module,exports){
+/**!
+ * AngularJS file upload directives and services. Supoorts: file upload/drop/paste, resume, cancel/abort,
+ * progress, resize, thumbnail, preview, validation and CORS
+ * FileAPI Flash shim for old browsers not supporting FormData
+ * @author  Danial  <danial.farid@gmail.com>
+ * @version 12.0.1
+ */
+
+(function () {
+  /** @namespace FileAPI.noContentTimeout */
+
+  function patchXHR(fnName, newFn) {
+    window.XMLHttpRequest.prototype[fnName] = newFn(window.XMLHttpRequest.prototype[fnName]);
+  }
+
+  function redefineProp(xhr, prop, fn) {
+    try {
+      Object.defineProperty(xhr, prop, {get: fn});
+    } catch (e) {/*ignore*/
+    }
+  }
+
+  if (!window.FileAPI) {
+    window.FileAPI = {};
+  }
+
+  if (!window.XMLHttpRequest) {
+    throw 'AJAX is not supported. XMLHttpRequest is not defined.';
+  }
+
+  FileAPI.shouldLoad = !window.FormData || FileAPI.forceLoad;
+  if (FileAPI.shouldLoad) {
+    var initializeUploadListener = function (xhr) {
+      if (!xhr.__listeners) {
+        if (!xhr.upload) xhr.upload = {};
+        xhr.__listeners = [];
+        var origAddEventListener = xhr.upload.addEventListener;
+        xhr.upload.addEventListener = function (t, fn) {
+          xhr.__listeners[t] = fn;
+          if (origAddEventListener) origAddEventListener.apply(this, arguments);
+        };
+      }
+    };
+
+    patchXHR('open', function (orig) {
+      return function (m, url, b) {
+        initializeUploadListener(this);
+        this.__url = url;
+        try {
+          orig.apply(this, [m, url, b]);
+        } catch (e) {
+          if (e.message.indexOf('Access is denied') > -1) {
+            this.__origError = e;
+            orig.apply(this, [m, '_fix_for_ie_crossdomain__', b]);
+          }
+        }
+      };
+    });
+
+    patchXHR('getResponseHeader', function (orig) {
+      return function (h) {
+        return this.__fileApiXHR && this.__fileApiXHR.getResponseHeader ? this.__fileApiXHR.getResponseHeader(h) : (orig == null ? null : orig.apply(this, [h]));
+      };
+    });
+
+    patchXHR('getAllResponseHeaders', function (orig) {
+      return function () {
+        return this.__fileApiXHR && this.__fileApiXHR.getAllResponseHeaders ? this.__fileApiXHR.getAllResponseHeaders() : (orig == null ? null : orig.apply(this));
+      };
+    });
+
+    patchXHR('abort', function (orig) {
+      return function () {
+        return this.__fileApiXHR && this.__fileApiXHR.abort ? this.__fileApiXHR.abort() : (orig == null ? null : orig.apply(this));
+      };
+    });
+
+    patchXHR('setRequestHeader', function (orig) {
+      return function (header, value) {
+        if (header === '__setXHR_') {
+          initializeUploadListener(this);
+          var val = value(this);
+          // fix for angular < 1.2.0
+          if (val instanceof Function) {
+            val(this);
+          }
+        } else {
+          this.__requestHeaders = this.__requestHeaders || {};
+          this.__requestHeaders[header] = value;
+          orig.apply(this, arguments);
+        }
+      };
+    });
+
+    patchXHR('send', function (orig) {
+      return function () {
+        var xhr = this;
+        if (arguments[0] && arguments[0].__isFileAPIShim) {
+          var formData = arguments[0];
+          var config = {
+            url: xhr.__url,
+            jsonp: false, //removes the callback form param
+            cache: true, //removes the ?fileapiXXX in the url
+            complete: function (err, fileApiXHR) {
+              if (err && angular.isString(err) && err.indexOf('#2174') !== -1) {
+                // this error seems to be fine the file is being uploaded properly.
+                err = null;
+              }
+              xhr.__completed = true;
+              if (!err && xhr.__listeners.load)
+                xhr.__listeners.load({
+                  type: 'load',
+                  loaded: xhr.__loaded,
+                  total: xhr.__total,
+                  target: xhr,
+                  lengthComputable: true
+                });
+              if (!err && xhr.__listeners.loadend)
+                xhr.__listeners.loadend({
+                  type: 'loadend',
+                  loaded: xhr.__loaded,
+                  total: xhr.__total,
+                  target: xhr,
+                  lengthComputable: true
+                });
+              if (err === 'abort' && xhr.__listeners.abort)
+                xhr.__listeners.abort({
+                  type: 'abort',
+                  loaded: xhr.__loaded,
+                  total: xhr.__total,
+                  target: xhr,
+                  lengthComputable: true
+                });
+              if (fileApiXHR.status !== undefined) redefineProp(xhr, 'status', function () {
+                return (fileApiXHR.status === 0 && err && err !== 'abort') ? 500 : fileApiXHR.status;
+              });
+              if (fileApiXHR.statusText !== undefined) redefineProp(xhr, 'statusText', function () {
+                return fileApiXHR.statusText;
+              });
+              redefineProp(xhr, 'readyState', function () {
+                return 4;
+              });
+              if (fileApiXHR.response !== undefined) redefineProp(xhr, 'response', function () {
+                return fileApiXHR.response;
+              });
+              var resp = fileApiXHR.responseText || (err && fileApiXHR.status === 0 && err !== 'abort' ? err : undefined);
+              redefineProp(xhr, 'responseText', function () {
+                return resp;
+              });
+              redefineProp(xhr, 'response', function () {
+                return resp;
+              });
+              if (err) redefineProp(xhr, 'err', function () {
+                return err;
+              });
+              xhr.__fileApiXHR = fileApiXHR;
+              if (xhr.onreadystatechange) xhr.onreadystatechange();
+              if (xhr.onload) xhr.onload();
+            },
+            progress: function (e) {
+              e.target = xhr;
+              if (xhr.__listeners.progress) xhr.__listeners.progress(e);
+              xhr.__total = e.total;
+              xhr.__loaded = e.loaded;
+              if (e.total === e.loaded) {
+                // fix flash issue that doesn't call complete if there is no response text from the server
+                var _this = this;
+                setTimeout(function () {
+                  if (!xhr.__completed) {
+                    xhr.getAllResponseHeaders = function () {
+                    };
+                    _this.complete(null, {status: 204, statusText: 'No Content'});
+                  }
+                }, FileAPI.noContentTimeout || 10000);
+              }
+            },
+            headers: xhr.__requestHeaders
+          };
+          config.data = {};
+          config.files = {};
+          for (var i = 0; i < formData.data.length; i++) {
+            var item = formData.data[i];
+            if (item.val != null && item.val.name != null && item.val.size != null && item.val.type != null) {
+              config.files[item.key] = item.val;
+            } else {
+              config.data[item.key] = item.val;
+            }
+          }
+
+          setTimeout(function () {
+            if (!FileAPI.hasFlash) {
+              throw 'Adode Flash Player need to be installed. To check ahead use "FileAPI.hasFlash"';
+            }
+            xhr.__fileApiXHR = FileAPI.upload(config);
+          }, 1);
+        } else {
+          if (this.__origError) {
+            throw this.__origError;
+          }
+          orig.apply(xhr, arguments);
+        }
+      };
+    });
+    window.XMLHttpRequest.__isFileAPIShim = true;
+    window.FormData = FormData = function () {
+      return {
+        append: function (key, val, name) {
+          if (val.__isFileAPIBlobShim) {
+            val = val.data[0];
+          }
+          this.data.push({
+            key: key,
+            val: val,
+            name: name
+          });
+        },
+        data: [],
+        __isFileAPIShim: true
+      };
+    };
+
+    window.Blob = Blob = function (b) {
+      return {
+        data: b,
+        __isFileAPIBlobShim: true
+      };
+    };
+  }
+
+})();
+
+(function () {
+  /** @namespace FileAPI.forceLoad */
+  /** @namespace window.FileAPI.jsUrl */
+  /** @namespace window.FileAPI.jsPath */
+
+  function isInputTypeFile(elem) {
+    return elem[0].tagName.toLowerCase() === 'input' && elem.attr('type') && elem.attr('type').toLowerCase() === 'file';
+  }
+
+  function hasFlash() {
+    try {
+      var fo = new ActiveXObject('ShockwaveFlash.ShockwaveFlash');
+      if (fo) return true;
+    } catch (e) {
+      if (navigator.mimeTypes['application/x-shockwave-flash'] !== undefined) return true;
+    }
+    return false;
+  }
+
+  function getOffset(obj) {
+    var left = 0, top = 0;
+
+    if (window.jQuery) {
+      return jQuery(obj).offset();
+    }
+
+    if (obj.offsetParent) {
+      do {
+        left += (obj.offsetLeft - obj.scrollLeft);
+        top += (obj.offsetTop - obj.scrollTop);
+        obj = obj.offsetParent;
+      } while (obj);
+    }
+    return {
+      left: left,
+      top: top
+    };
+  }
+
+  if (FileAPI.shouldLoad) {
+    FileAPI.hasFlash = hasFlash();
+
+    //load FileAPI
+    if (FileAPI.forceLoad) {
+      FileAPI.html5 = false;
+    }
+
+    if (!FileAPI.upload) {
+      var jsUrl, basePath, script = document.createElement('script'), allScripts = document.getElementsByTagName('script'), i, index, src;
+      if (window.FileAPI.jsUrl) {
+        jsUrl = window.FileAPI.jsUrl;
+      } else if (window.FileAPI.jsPath) {
+        basePath = window.FileAPI.jsPath;
+      } else {
+        for (i = 0; i < allScripts.length; i++) {
+          src = allScripts[i].src;
+          index = src.search(/\/ng\-file\-upload[\-a-zA-z0-9\.]*\.js/);
+          if (index > -1) {
+            basePath = src.substring(0, index + 1);
+            break;
+          }
+        }
+      }
+
+      if (FileAPI.staticPath == null) FileAPI.staticPath = basePath;
+      script.setAttribute('src', jsUrl || basePath + 'FileAPI.min.js');
+      document.getElementsByTagName('head')[0].appendChild(script);
+    }
+
+    FileAPI.ngfFixIE = function (elem, fileElem, changeFn) {
+      if (!hasFlash()) {
+        throw 'Adode Flash Player need to be installed. To check ahead use "FileAPI.hasFlash"';
+      }
+      var fixInputStyle = function () {
+        var label = fileElem.parent();
+        if (elem.attr('disabled')) {
+          if (label) label.removeClass('js-fileapi-wrapper');
+        } else {
+          if (!fileElem.attr('__ngf_flash_')) {
+            fileElem.unbind('change');
+            fileElem.unbind('click');
+            fileElem.bind('change', function (evt) {
+              fileApiChangeFn.apply(this, [evt]);
+              changeFn.apply(this, [evt]);
+            });
+            fileElem.attr('__ngf_flash_', 'true');
+          }
+          label.addClass('js-fileapi-wrapper');
+          if (!isInputTypeFile(elem)) {
+            label.css('position', 'absolute')
+              .css('top', getOffset(elem[0]).top + 'px').css('left', getOffset(elem[0]).left + 'px')
+              .css('width', elem[0].offsetWidth + 'px').css('height', elem[0].offsetHeight + 'px')
+              .css('filter', 'alpha(opacity=0)').css('display', elem.css('display'))
+              .css('overflow', 'hidden').css('z-index', '900000')
+              .css('visibility', 'visible');
+            fileElem.css('width', elem[0].offsetWidth + 'px').css('height', elem[0].offsetHeight + 'px')
+              .css('position', 'absolute').css('top', '0px').css('left', '0px');
+          }
+        }
+      };
+
+      elem.bind('mouseenter', fixInputStyle);
+
+      var fileApiChangeFn = function (evt) {
+        var files = FileAPI.getFiles(evt);
+        //just a double check for #233
+        for (var i = 0; i < files.length; i++) {
+          if (files[i].size === undefined) files[i].size = 0;
+          if (files[i].name === undefined) files[i].name = 'file';
+          if (files[i].type === undefined) files[i].type = 'undefined';
+        }
+        if (!evt.target) {
+          evt.target = {};
+        }
+        evt.target.files = files;
+        // if evt.target.files is not writable use helper field
+        if (evt.target.files !== files) {
+          evt.__files_ = files;
+        }
+        (evt.__files_ || evt.target.files).item = function (i) {
+          return (evt.__files_ || evt.target.files)[i] || null;
+        };
+      };
+    };
+
+    FileAPI.disableFileInput = function (elem, disable) {
+      if (disable) {
+        elem.removeClass('js-fileapi-wrapper');
+      } else {
+        elem.addClass('js-fileapi-wrapper');
+      }
+    };
+  }
+})();
+
+if (!window.FileReader) {
+  window.FileReader = function () {
+    var _this = this, loadStarted = false;
+    this.listeners = {};
+    this.addEventListener = function (type, fn) {
+      _this.listeners[type] = _this.listeners[type] || [];
+      _this.listeners[type].push(fn);
+    };
+    this.removeEventListener = function (type, fn) {
+      if (_this.listeners[type]) _this.listeners[type].splice(_this.listeners[type].indexOf(fn), 1);
+    };
+    this.dispatchEvent = function (evt) {
+      var list = _this.listeners[evt.type];
+      if (list) {
+        for (var i = 0; i < list.length; i++) {
+          list[i].call(_this, evt);
+        }
+      }
+    };
+    this.onabort = this.onerror = this.onload = this.onloadstart = this.onloadend = this.onprogress = null;
+
+    var constructEvent = function (type, evt) {
+      var e = {type: type, target: _this, loaded: evt.loaded, total: evt.total, error: evt.error};
+      if (evt.result != null) e.target.result = evt.result;
+      return e;
+    };
+    var listener = function (evt) {
+      if (!loadStarted) {
+        loadStarted = true;
+        if (_this.onloadstart) _this.onloadstart(constructEvent('loadstart', evt));
+      }
+      var e;
+      if (evt.type === 'load') {
+        if (_this.onloadend) _this.onloadend(constructEvent('loadend', evt));
+        e = constructEvent('load', evt);
+        if (_this.onload) _this.onload(e);
+        _this.dispatchEvent(e);
+      } else if (evt.type === 'progress') {
+        e = constructEvent('progress', evt);
+        if (_this.onprogress) _this.onprogress(e);
+        _this.dispatchEvent(e);
+      } else {
+        e = constructEvent('error', evt);
+        if (_this.onerror) _this.onerror(e);
+        _this.dispatchEvent(e);
+      }
+    };
+    this.readAsDataURL = function (file) {
+      FileAPI.readAsDataURL(file, listener);
+    };
+    this.readAsText = function (file) {
+      FileAPI.readAsText(file, listener);
+    };
+  };
+}
+
+/**!
+ * AngularJS file upload directives and services. Supoorts: file upload/drop/paste, resume, cancel/abort,
+ * progress, resize, thumbnail, preview, validation and CORS
+ * @author  Danial  <danial.farid@gmail.com>
+ * @version 12.0.1
+ */
+
+if (window.XMLHttpRequest && !(window.FileAPI && FileAPI.shouldLoad)) {
+  window.XMLHttpRequest.prototype.setRequestHeader = (function (orig) {
+    return function (header, value) {
+      if (header === '__setXHR_') {
+        var val = value(this);
+        // fix for angular < 1.2.0
+        if (val instanceof Function) {
+          val(this);
+        }
+      } else {
+        orig.apply(this, arguments);
+      }
+    };
+  })(window.XMLHttpRequest.prototype.setRequestHeader);
+}
+
+var ngFileUpload = angular.module('ngFileUpload', []);
+
+ngFileUpload.version = '12.0.1';
+
+ngFileUpload.service('UploadBase', ['$http', '$q', '$timeout', function ($http, $q, $timeout) {
+  var upload = this;
+  upload.promisesCount = 0;
+
+  this.isResumeSupported = function () {
+    return window.Blob && (window.Blob instanceof Function) && window.Blob.prototype.slice;
+  };
+
+  var resumeSupported = this.isResumeSupported();
+
+  function sendHttp(config) {
+    config.method = config.method || 'POST';
+    config.headers = config.headers || {};
+
+    var deferred = config._deferred = config._deferred || $q.defer();
+    var promise = deferred.promise;
+
+    function notifyProgress(e) {
+      if (deferred.notify) {
+        deferred.notify(e);
+      }
+      if (promise.progressFunc) {
+        $timeout(function () {
+          promise.progressFunc(e);
+        });
+      }
+    }
+
+    function getNotifyEvent(n) {
+      if (config._start != null && resumeSupported) {
+        return {
+          loaded: n.loaded + config._start,
+          total: (config._file && config._file.size) || n.total,
+          type: n.type, config: config,
+          lengthComputable: true, target: n.target
+        };
+      } else {
+        return n;
+      }
+    }
+
+    if (!config.disableProgress) {
+      config.headers.__setXHR_ = function () {
+        return function (xhr) {
+          if (!xhr || !xhr.upload || !xhr.upload.addEventListener) return;
+          config.__XHR = xhr;
+          if (config.xhrFn) config.xhrFn(xhr);
+          xhr.upload.addEventListener('progress', function (e) {
+            e.config = config;
+            notifyProgress(getNotifyEvent(e));
+          }, false);
+          //fix for firefox not firing upload progress end, also IE8-9
+          xhr.upload.addEventListener('load', function (e) {
+            if (e.lengthComputable) {
+              e.config = config;
+              notifyProgress(getNotifyEvent(e));
+            }
+          }, false);
+        };
+      };
+    }
+
+    function uploadWithAngular() {
+      $http(config).then(function (r) {
+          if (resumeSupported && config._chunkSize && !config._finished && config._file) {
+            notifyProgress({
+                loaded: config._end,
+                total: config._file && config._file.size,
+                config: config, type: 'progress'
+              }
+            );
+            upload.upload(config, true);
+          } else {
+            if (config._finished) delete config._finished;
+            deferred.resolve(r);
+          }
+        }, function (e) {
+          deferred.reject(e);
+        }, function (n) {
+          deferred.notify(n);
+        }
+      );
+    }
+
+    if (!resumeSupported) {
+      uploadWithAngular();
+    } else if (config._chunkSize && config._end && !config._finished) {
+      config._start = config._end;
+      config._end += config._chunkSize;
+      uploadWithAngular();
+    } else if (config.resumeSizeUrl) {
+      $http.get(config.resumeSizeUrl).then(function (resp) {
+        if (config.resumeSizeResponseReader) {
+          config._start = config.resumeSizeResponseReader(resp.data);
+        } else {
+          config._start = parseInt((resp.data.size == null ? resp.data : resp.data.size).toString());
+        }
+        if (config._chunkSize) {
+          config._end = config._start + config._chunkSize;
+        }
+        uploadWithAngular();
+      }, function (e) {
+        throw e;
+      });
+    } else if (config.resumeSize) {
+      config.resumeSize().then(function (size) {
+        config._start = size;
+        uploadWithAngular();
+      }, function (e) {
+        throw e;
+      });
+    } else {
+      if (config._chunkSize) {
+        config._start = 0;
+        config._end = config._start + config._chunkSize;
+      }
+      uploadWithAngular();
+    }
+
+
+    promise.success = function (fn) {
+      promise.then(function (response) {
+        fn(response.data, response.status, response.headers, config);
+      });
+      return promise;
+    };
+
+    promise.error = function (fn) {
+      promise.then(null, function (response) {
+        fn(response.data, response.status, response.headers, config);
+      });
+      return promise;
+    };
+
+    promise.progress = function (fn) {
+      promise.progressFunc = fn;
+      promise.then(null, null, function (n) {
+        fn(n);
+      });
+      return promise;
+    };
+    promise.abort = promise.pause = function () {
+      if (config.__XHR) {
+        $timeout(function () {
+          config.__XHR.abort();
+        });
+      }
+      return promise;
+    };
+    promise.xhr = function (fn) {
+      config.xhrFn = (function (origXhrFn) {
+        return function () {
+          if (origXhrFn) origXhrFn.apply(promise, arguments);
+          fn.apply(promise, arguments);
+        };
+      })(config.xhrFn);
+      return promise;
+    };
+
+    upload.promisesCount++;
+    promise['finally'](function () {
+      upload.promisesCount--;
+    });
+    return promise;
+  }
+
+  this.isUploadInProgress = function () {
+    return upload.promisesCount > 0;
+  };
+
+  this.rename = function (file, name) {
+    file.ngfName = name;
+    return file;
+  };
+
+  this.jsonBlob = function (val) {
+    if (val != null && !angular.isString(val)) {
+      val = JSON.stringify(val);
+    }
+    var blob = new window.Blob([val], {type: 'application/json'});
+    blob._ngfBlob = true;
+    return blob;
+  };
+
+  this.json = function (val) {
+    return angular.toJson(val);
+  };
+
+  function copy(obj) {
+    var clone = {};
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        clone[key] = obj[key];
+      }
+    }
+    return clone;
+  }
+
+  this.isFile = function (file) {
+    return file != null && (file instanceof window.Blob || (file.flashId && file.name && file.size));
+  };
+
+  this.upload = function (config, internal) {
+    function toResumeFile(file, formData) {
+      if (file._ngfBlob) return file;
+      config._file = config._file || file;
+      if (config._start != null && resumeSupported) {
+        if (config._end && config._end >= file.size) {
+          config._finished = true;
+          config._end = file.size;
+        }
+        var slice = file.slice(config._start, config._end || file.size);
+        slice.name = file.name;
+        slice.ngfName = file.ngfName;
+        if (config._chunkSize) {
+          formData.append('_chunkSize', config._chunkSize);
+          formData.append('_currentChunkSize', config._end - config._start);
+          formData.append('_chunkNumber', Math.floor(config._start / config._chunkSize));
+          formData.append('_totalSize', config._file.size);
+        }
+        return slice;
+      }
+      return file;
+    }
+
+    function addFieldToFormData(formData, val, key) {
+      if (val !== undefined) {
+        if (angular.isDate(val)) {
+          val = val.toISOString();
+        }
+        if (angular.isString(val)) {
+          formData.append(key, val);
+        } else if (upload.isFile(val)) {
+          var file = toResumeFile(val, formData);
+          var split = key.split(',');
+          if (split[1]) {
+            file.ngfName = split[1].replace(/^\s+|\s+$/g, '');
+            key = split[0];
+          }
+          config._fileKey = config._fileKey || key;
+          formData.append(key, file, file.ngfName || file.name);
+        } else {
+          if (angular.isObject(val)) {
+            if (val.$$ngfCircularDetection) throw 'ngFileUpload: Circular reference in config.data. Make sure specified data for Upload.upload() has no circular reference: ' + key;
+
+            val.$$ngfCircularDetection = true;
+            try {
+              for (var k in val) {
+                if (val.hasOwnProperty(k) && k !== '$$ngfCircularDetection') {
+                  var objectKey = config.objectKey == null ? '[i]' : config.objectKey;
+                  if (val.length && parseInt(k) > -1) {
+                    objectKey = config.arrayKey == null ? objectKey : config.arrayKey;
+                  }
+                  addFieldToFormData(formData, val[k], key + objectKey.replace(/[ik]/g, k));
+                }
+              }
+            } finally {
+              delete val.$$ngfCircularDetection;
+            }
+          } else {
+            formData.append(key, val);
+          }
+        }
+      }
+    }
+
+    function digestConfig() {
+      config._chunkSize = upload.translateScalars(config.resumeChunkSize);
+      config._chunkSize = config._chunkSize ? parseInt(config._chunkSize.toString()) : null;
+
+      config.headers = config.headers || {};
+      config.headers['Content-Type'] = undefined;
+      config.transformRequest = config.transformRequest ?
+        (angular.isArray(config.transformRequest) ?
+          config.transformRequest : [config.transformRequest]) : [];
+      config.transformRequest.push(function (data) {
+        var formData = new window.FormData(), key;
+        data = data || config.fields || {};
+        if (config.file) {
+          data.file = config.file;
+        }
+        for (key in data) {
+          if (data.hasOwnProperty(key)) {
+            var val = data[key];
+            if (config.formDataAppender) {
+              config.formDataAppender(formData, key, val);
+            } else {
+              addFieldToFormData(formData, val, key);
+            }
+          }
+        }
+
+        return formData;
+      });
+    }
+
+    if (!internal) config = copy(config);
+    if (!config._isDigested) {
+      config._isDigested = true;
+      digestConfig();
+    }
+
+    return sendHttp(config);
+  };
+
+  this.http = function (config) {
+    config = copy(config);
+    config.transformRequest = config.transformRequest || function (data) {
+        if ((window.ArrayBuffer && data instanceof window.ArrayBuffer) || data instanceof window.Blob) {
+          return data;
+        }
+        return $http.defaults.transformRequest[0].apply(this, arguments);
+      };
+    config._chunkSize = upload.translateScalars(config.resumeChunkSize);
+    config._chunkSize = config._chunkSize ? parseInt(config._chunkSize.toString()) : null;
+
+    return sendHttp(config);
+  };
+
+  this.translateScalars = function (str) {
+    if (angular.isString(str)) {
+      if (str.search(/kb/i) === str.length - 2) {
+        return parseFloat(str.substring(0, str.length - 2) * 1024);
+      } else if (str.search(/mb/i) === str.length - 2) {
+        return parseFloat(str.substring(0, str.length - 2) * 1048576);
+      } else if (str.search(/gb/i) === str.length - 2) {
+        return parseFloat(str.substring(0, str.length - 2) * 1073741824);
+      } else if (str.search(/b/i) === str.length - 1) {
+        return parseFloat(str.substring(0, str.length - 1));
+      } else if (str.search(/s/i) === str.length - 1) {
+        return parseFloat(str.substring(0, str.length - 1));
+      } else if (str.search(/m/i) === str.length - 1) {
+        return parseFloat(str.substring(0, str.length - 1) * 60);
+      } else if (str.search(/h/i) === str.length - 1) {
+        return parseFloat(str.substring(0, str.length - 1) * 3600);
+      }
+    }
+    return str;
+  };
+
+  this.urlToBlob = function(url) {
+    var defer = $q.defer();
+    $http({url: url, method: 'get', responseType: 'arraybuffer'}).then(function (resp) {
+      var arrayBufferView = new Uint8Array(resp.data);
+      var type = resp.headers('content-type') || 'image/WebP';
+      var blob = new window.Blob([arrayBufferView], {type: type});
+      defer.resolve(blob);
+      //var split = type.split('[/;]');
+      //blob.name = url.substring(0, 150).replace(/\W+/g, '') + '.' + (split.length > 1 ? split[1] : 'jpg');
+    }, function (e) {
+      defer.reject(e);
+    });
+    return defer.promise;
+  };
+
+  this.setDefaults = function (defaults) {
+    this.defaults = defaults || {};
+  };
+
+  this.defaults = {};
+  this.version = ngFileUpload.version;
+}
+
+]);
+
+ngFileUpload.service('Upload', ['$parse', '$timeout', '$compile', '$q', 'UploadExif', function ($parse, $timeout, $compile, $q, UploadExif) {
+  var upload = UploadExif;
+  upload.getAttrWithDefaults = function (attr, name) {
+    if (attr[name] != null) return attr[name];
+    var def = upload.defaults[name];
+    return (def == null ? def : (angular.isString(def) ? def : JSON.stringify(def)));
+  };
+
+  upload.attrGetter = function (name, attr, scope, params) {
+    var attrVal = this.getAttrWithDefaults(attr, name);
+    if (scope) {
+      try {
+        if (params) {
+          return $parse(attrVal)(scope, params);
+        } else {
+          return $parse(attrVal)(scope);
+        }
+      } catch (e) {
+        // hangle string value without single qoute
+        if (name.search(/min|max|pattern/i)) {
+          return attrVal;
+        } else {
+          throw e;
+        }
+      }
+    } else {
+      return attrVal;
+    }
+  };
+
+  upload.shouldUpdateOn = function (type, attr, scope) {
+    var modelOptions = upload.attrGetter('ngModelOptions', attr, scope);
+    if (modelOptions && modelOptions.updateOn) {
+      return modelOptions.updateOn.split(' ').indexOf(type) > -1;
+    }
+    return true;
+  };
+
+  upload.emptyPromise = function () {
+    var d = $q.defer();
+    var args = arguments;
+    $timeout(function () {
+      d.resolve.apply(d, args);
+    });
+    return d.promise;
+  };
+
+  upload.rejectPromise = function () {
+    var d = $q.defer();
+    var args = arguments;
+    $timeout(function () {
+      d.reject.apply(d, args);
+    });
+    return d.promise;
+  };
+
+  upload.happyPromise = function (promise, data) {
+    var d = $q.defer();
+    promise.then(function (result) {
+      d.resolve(result);
+    }, function (error) {
+      $timeout(function () {
+        throw error;
+      });
+      d.resolve(data);
+    });
+    return d.promise;
+  };
+
+  function applyExifRotations(files, attr, scope) {
+    var promises = [upload.emptyPromise()];
+    angular.forEach(files, function (f, i) {
+      if (f.type.indexOf('image/jpeg') === 0 && upload.attrGetter('ngfFixOrientation', attr, scope, {$file: f})) {
+        promises.push(upload.happyPromise(upload.applyExifRotation(f), f).then(function (fixedFile) {
+          files.splice(i, 1, fixedFile);
+        }));
+      }
+    });
+    return $q.all(promises);
+  }
+
+  function resize(files, attr, scope) {
+    var param = upload.attrGetter('ngfResize', attr, scope);
+    if (!param || !angular.isObject(param) || !upload.isResizeSupported() || !files.length) return upload.emptyPromise();
+    var promises = [upload.emptyPromise()];
+
+    function handleFile(f, i) {
+      if (f.type.indexOf('image') === 0) {
+        if (param.pattern && !upload.validatePattern(f, param.pattern)) return;
+        var promise = upload.resize(f, param.width, param.height, param.quality,
+          param.type, param.ratio, param.centerCrop, function (width, height) {
+            return upload.attrGetter('ngfResizeIf', attr, scope,
+              {$width: width, $height: height, $file: f});
+          }, param.restoreExif !== false);
+        promises.push(promise);
+        promise.then(function (resizedFile) {
+          files.splice(i, 1, resizedFile);
+        }, function (e) {
+          f.$error = 'resize';
+          f.$errorParam = (e ? (e.message ? e.message : e) + ': ' : '') + (f && f.name);
+        });
+      }
+    }
+
+    for (var i = 0; i < files.length; i++) {
+      handleFile(files[i], i);
+    }
+    return $q.all(promises);
+  }
+
+  upload.updateModel = function (ngModel, attr, scope, fileChange, files, evt, noDelay) {
+    function update(files, invalidFiles, newFiles, dupFiles, isSingleModel) {
+      attr.$$ngfPrevValidFiles = files;
+      attr.$$ngfPrevInvalidFiles = invalidFiles;
+      var file = files && files.length ? files[0] : null;
+      var invalidFile = invalidFiles && invalidFiles.length ? invalidFiles[0] : null;
+
+      if (ngModel) {
+        upload.applyModelValidation(ngModel, files);
+        ngModel.$setViewValue(isSingleModel ? file : files);
+      }
+
+      if (fileChange) {
+        $parse(fileChange)(scope, {
+          $files: files,
+          $file: file,
+          $newFiles: newFiles,
+          $duplicateFiles: dupFiles,
+          $invalidFiles: invalidFiles,
+          $invalidFile: invalidFile,
+          $event: evt
+        });
+      }
+
+      var invalidModel = upload.attrGetter('ngfModelInvalid', attr);
+      if (invalidModel) {
+        $timeout(function () {
+          $parse(invalidModel).assign(scope, isSingleModel ? invalidFile : invalidFiles);
+        });
+      }
+      $timeout(function () {
+        // scope apply changes
+      });
+    }
+
+    var allNewFiles, dupFiles = [], prevValidFiles, prevInvalidFiles,
+      invalids = [], valids = [];
+
+    function removeDuplicates() {
+      function equals(f1, f2) {
+        return f1.name === f2.name && (f1.$ngfOrigSize || f1.size) === (f2.$ngfOrigSize || f2.size) &&
+          f1.type === f2.type;
+      }
+
+      function isInPrevFiles(f) {
+        var j;
+        for (j = 0; j < prevValidFiles.length; j++) {
+          if (equals(f, prevValidFiles[j])) {
+            return true;
+          }
+        }
+        for (j = 0; j < prevInvalidFiles.length; j++) {
+          if (equals(f, prevInvalidFiles[j])) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      if (files) {
+        allNewFiles = [];
+        dupFiles = [];
+        for (var i = 0; i < files.length; i++) {
+          if (isInPrevFiles(files[i])) {
+            dupFiles.push(files[i]);
+          } else {
+            allNewFiles.push(files[i]);
+          }
+        }
+      }
+    }
+
+    function toArray(v) {
+      return angular.isArray(v) ? v : [v];
+    }
+
+    function separateInvalids() {
+      valids = [];
+      invalids = [];
+      angular.forEach(allNewFiles, function (file) {
+        if (file.$error) {
+          invalids.push(file);
+        } else {
+          valids.push(file);
+        }
+      });
+    }
+
+    function resizeAndUpdate() {
+      function updateModel() {
+        $timeout(function () {
+          update(keep ? prevValidFiles.concat(valids) : valids,
+            keep ? prevInvalidFiles.concat(invalids) : invalids,
+            files, dupFiles, isSingleModel);
+        }, options && options.debounce ? options.debounce.change || options.debounce : 0);
+      }
+
+      resize(validateAfterResize ? allNewFiles : valids, attr, scope).then(function () {
+        if (validateAfterResize) {
+          upload.validate(allNewFiles, allLength, ngModel, attr, scope).then(function () {
+            separateInvalids();
+            updateModel();
+          });
+        } else {
+          updateModel();
+        }
+      }, function (e) {
+        throw 'Could not resize files ' + e;
+      });
+    }
+
+    prevValidFiles = attr.$$ngfPrevValidFiles || [];
+    prevInvalidFiles = attr.$$ngfPrevInvalidFiles || [];
+    if (ngModel && ngModel.$modelValue) {
+      prevValidFiles = toArray(ngModel.$modelValue);
+    }
+
+    var keep = upload.attrGetter('ngfKeep', attr, scope);
+    allNewFiles = (files || []).slice(0);
+    if (keep === 'distinct' || upload.attrGetter('ngfKeepDistinct', attr, scope) === true) {
+      removeDuplicates(attr, scope);
+    }
+
+    var isSingleModel = !keep && !upload.attrGetter('ngfMultiple', attr, scope) && !upload.attrGetter('multiple', attr);
+
+    if (keep && !allNewFiles.length) return;
+
+    upload.attrGetter('ngfBeforeModelChange', attr, scope, {
+      $files: files,
+      $file: files && files.length ? files[0] : null,
+      $newFiles: allNewFiles,
+      $duplicateFiles: dupFiles,
+      $event: evt
+    });
+
+    var validateAfterResize = upload.attrGetter('ngfValidateAfterResize', attr, scope);
+
+    var allLength = allNewFiles.length + prevValidFiles.length + prevInvalidFiles.length;
+    var options = upload.attrGetter('ngModelOptions', attr, scope);
+    upload.validate(allNewFiles, allLength, ngModel, attr, scope).then(function () {
+      if (noDelay) {
+        update(allNewFiles, [], files, dupFiles, isSingleModel);
+      } else {
+        if ((!options || !options.allowInvalid) && !validateAfterResize) {
+          separateInvalids();
+        } else {
+          valids = allNewFiles;
+        }
+        if (upload.attrGetter('ngfFixOrientation', attr, scope) && upload.isExifSupported()) {
+          applyExifRotations(valids, attr, scope).then(function () {
+            resizeAndUpdate();
+          });
+        } else {
+          resizeAndUpdate();
+        }
+      }
+    });
+  };
+
+  return upload;
+}]);
+
+ngFileUpload.directive('ngfSelect', ['$parse', '$timeout', '$compile', 'Upload', function ($parse, $timeout, $compile, Upload) {
+  var generatedElems = [];
+
+  function isDelayedClickSupported(ua) {
+    // fix for android native browser < 4.4 and safari windows
+    var m = ua.match(/Android[^\d]*(\d+)\.(\d+)/);
+    if (m && m.length > 2) {
+      var v = Upload.defaults.androidFixMinorVersion || 4;
+      return parseInt(m[1]) < 4 || (parseInt(m[1]) === v && parseInt(m[2]) < v);
+    }
+
+    // safari on windows
+    return ua.indexOf('Chrome') === -1 && /.*Windows.*Safari.*/.test(ua);
+  }
+
+  function linkFileSelect(scope, elem, attr, ngModel, $parse, $timeout, $compile, upload) {
+    /** @namespace attr.ngfSelect */
+    /** @namespace attr.ngfChange */
+    /** @namespace attr.ngModel */
+    /** @namespace attr.ngModelOptions */
+    /** @namespace attr.ngfMultiple */
+    /** @namespace attr.ngfCapture */
+    /** @namespace attr.ngfValidate */
+    /** @namespace attr.ngfKeep */
+    var attrGetter = function (name, scope) {
+      return upload.attrGetter(name, attr, scope);
+    };
+
+    function isInputTypeFile() {
+      return elem[0].tagName.toLowerCase() === 'input' && attr.type && attr.type.toLowerCase() === 'file';
+    }
+
+    function fileChangeAttr() {
+      return attrGetter('ngfChange') || attrGetter('ngfSelect');
+    }
+
+    function changeFn(evt) {
+      if (upload.shouldUpdateOn('change', attr, scope)) {
+        var fileList = evt.__files_ || (evt.target && evt.target.files), files = [];
+        for (var i = 0; i < fileList.length; i++) {
+          files.push(fileList[i]);
+        }
+        upload.updateModel(ngModel, attr, scope, fileChangeAttr(),
+          files.length ? files : null, evt);
+      }
+    }
+
+    upload.registerModelChangeValidator(ngModel, attr, scope);
+
+    var unwatches = [];
+    unwatches.push(scope.$watch(attrGetter('ngfMultiple'), function () {
+      fileElem.attr('multiple', attrGetter('ngfMultiple', scope));
+    }));
+    unwatches.push(scope.$watch(attrGetter('ngfCapture'), function () {
+      fileElem.attr('capture', attrGetter('ngfCapture', scope));
+    }));
+    unwatches.push(scope.$watch(attrGetter('ngfAccept'), function () {
+      fileElem.attr('accept', attrGetter('ngfAccept', scope));
+    }));
+    attr.$observe('accept', function () {
+      fileElem.attr('accept', attrGetter('accept'));
+    });
+    unwatches.push(function () {
+      if (attr.$$observers) delete attr.$$observers.accept;
+    });
+    function bindAttrToFileInput(fileElem) {
+      if (elem !== fileElem) {
+        for (var i = 0; i < elem[0].attributes.length; i++) {
+          var attribute = elem[0].attributes[i];
+          if (attribute.name !== 'type' && attribute.name !== 'class' && attribute.name !== 'style') {
+            if (attribute.value == null || attribute.value === '') {
+              if (attribute.name === 'required') attribute.value = 'required';
+              if (attribute.name === 'multiple') attribute.value = 'multiple';
+            }
+            fileElem.attr(attribute.name, attribute.name === 'id' ? 'ngf-' + attribute.value : attribute.value);
+          }
+        }
+      }
+    }
+
+    function createFileInput() {
+      if (isInputTypeFile()) {
+        return elem;
+      }
+
+      var fileElem = angular.element('<input type="file">');
+
+      bindAttrToFileInput(fileElem);
+
+      var label = angular.element('<label>upload</label>');
+      label.css('visibility', 'hidden').css('position', 'absolute').css('overflow', 'hidden')
+        .css('width', '0px').css('height', '0px').css('border', 'none')
+        .css('margin', '0px').css('padding', '0px').attr('tabindex', '-1');
+      generatedElems.push({el: elem, ref: label});
+
+      document.body.appendChild(label.append(fileElem)[0]);
+
+      return fileElem;
+    }
+
+    var initialTouchStartY = 0;
+
+    function clickHandler(evt) {
+      if (elem.attr('disabled')) return false;
+      if (attrGetter('ngfSelectDisabled', scope)) return;
+
+      var r = handleTouch(evt);
+      if (r != null) return r;
+
+      resetModel(evt);
+
+      // fix for md when the element is removed from the DOM and added back #460
+      try {
+        if (!isInputTypeFile() && !document.body.contains(fileElem[0])) {
+          generatedElems.push({el: elem, ref: fileElem.parent()});
+          document.body.appendChild(fileElem.parent()[0]);
+          fileElem.bind('change', changeFn);
+        }
+      } catch(e){/*ignore*/}
+
+      if (isDelayedClickSupported(navigator.userAgent)) {
+        setTimeout(function () {
+          fileElem[0].click();
+        }, 0);
+      } else {
+        fileElem[0].click();
+      }
+
+      return false;
+    }
+
+    function handleTouch(evt) {
+      var touches = evt.changedTouches || (evt.originalEvent && evt.originalEvent.changedTouches);
+      if (evt.type === 'touchstart') {
+        initialTouchStartY = touches ? touches[0].clientY : 0;
+        return true; // don't block event default
+      } else {
+        evt.stopPropagation();
+        evt.preventDefault();
+
+        // prevent scroll from triggering event
+        if (evt.type === 'touchend') {
+          var currentLocation = touches ? touches[0].clientY : 0;
+          if (Math.abs(currentLocation - initialTouchStartY) > 20) return false;
+        }
+      }
+    }
+
+    var fileElem = elem;
+
+    function resetModel(evt) {
+      if (upload.shouldUpdateOn('click', attr, scope) && fileElem.val()) {
+        fileElem.val(null);
+        upload.updateModel(ngModel, attr, scope, fileChangeAttr(), null, evt, true);
+      }
+    }
+
+    if (!isInputTypeFile()) {
+      fileElem = createFileInput();
+    }
+    fileElem.bind('change', changeFn);
+
+    if (!isInputTypeFile()) {
+      elem.bind('click touchstart touchend', clickHandler);
+    } else {
+      elem.bind('click', resetModel);
+    }
+
+    function ie10SameFileSelectFix(evt) {
+      if (fileElem && !fileElem.attr('__ngf_ie10_Fix_')) {
+        if (!fileElem[0].parentNode) {
+          fileElem = null;
+          return;
+        }
+        evt.preventDefault();
+        evt.stopPropagation();
+        fileElem.unbind('click');
+        var clone = fileElem.clone();
+        fileElem.replaceWith(clone);
+        fileElem = clone;
+        fileElem.attr('__ngf_ie10_Fix_', 'true');
+        fileElem.bind('change', changeFn);
+        fileElem.bind('click', ie10SameFileSelectFix);
+        fileElem[0].click();
+        return false;
+      } else {
+        fileElem.removeAttr('__ngf_ie10_Fix_');
+      }
+    }
+
+    if (navigator.appVersion.indexOf('MSIE 10') !== -1) {
+      fileElem.bind('click', ie10SameFileSelectFix);
+    }
+
+    if (ngModel) ngModel.$formatters.push(function (val) {
+      if (val == null || val.length === 0) {
+        if (fileElem.val()) {
+          fileElem.val(null);
+        }
+      }
+      return val;
+    });
+
+    scope.$on('$destroy', function () {
+      if (!isInputTypeFile()) fileElem.parent().remove();
+      angular.forEach(unwatches, function (unwatch) {
+        unwatch();
+      });
+    });
+
+    $timeout(function () {
+      for (var i = 0; i < generatedElems.length; i++) {
+        var g = generatedElems[i];
+        if (!document.body.contains(g.el[0])) {
+          generatedElems.splice(i, 1);
+          g.ref.remove();
+        }
+      }
+    });
+
+    if (window.FileAPI && window.FileAPI.ngfFixIE) {
+      window.FileAPI.ngfFixIE(elem, fileElem, changeFn);
+    }
+  }
+
+  return {
+    restrict: 'AEC',
+    require: '?ngModel',
+    link: function (scope, elem, attr, ngModel) {
+      linkFileSelect(scope, elem, attr, ngModel, $parse, $timeout, $compile, Upload);
+    }
+  };
+}]);
+
+(function () {
+
+  ngFileUpload.service('UploadDataUrl', ['UploadBase', '$timeout', '$q', function (UploadBase, $timeout, $q) {
+    var upload = UploadBase;
+    upload.base64DataUrl = function (file) {
+      if (angular.isArray(file)) {
+        var d = $q.defer(), count = 0;
+        angular.forEach(file, function (f) {
+          upload.dataUrl(f, true)['finally'](function () {
+            count++;
+            if (count === file.length) {
+              var urls = [];
+              angular.forEach(file, function (ff) {
+                urls.push(ff.$ngfDataUrl);
+              });
+              d.resolve(urls, file);
+            }
+          });
+        });
+        return d.promise;
+      } else {
+        return upload.dataUrl(file, true);
+      }
+    };
+    upload.dataUrl = function (file, disallowObjectUrl) {
+      if (!file) return upload.emptyPromise(file, file);
+      if ((disallowObjectUrl && file.$ngfDataUrl != null) || (!disallowObjectUrl && file.$ngfBlobUrl != null)) {
+        return upload.emptyPromise(disallowObjectUrl ? file.$ngfDataUrl : file.$ngfBlobUrl, file);
+      }
+      var p = disallowObjectUrl ? file.$$ngfDataUrlPromise : file.$$ngfBlobUrlPromise;
+      if (p) return p;
+
+      var deferred = $q.defer();
+      $timeout(function () {
+        if (window.FileReader && file &&
+          (!window.FileAPI || navigator.userAgent.indexOf('MSIE 8') === -1 || file.size < 20000) &&
+          (!window.FileAPI || navigator.userAgent.indexOf('MSIE 9') === -1 || file.size < 4000000)) {
+          //prefer URL.createObjectURL for handling refrences to files of all sizes
+          //since it doesn´t build a large string in memory
+          var URL = window.URL || window.webkitURL;
+          if (URL && URL.createObjectURL && !disallowObjectUrl) {
+            var url;
+            try {
+              url = URL.createObjectURL(file);
+            } catch (e) {
+              $timeout(function () {
+                file.$ngfBlobUrl = '';
+                deferred.reject();
+              });
+              return;
+            }
+            $timeout(function () {
+              file.$ngfBlobUrl = url;
+              if (url) {
+                deferred.resolve(url, file);
+                upload.blobUrls = upload.blobUrls || [];
+                upload.blobUrlsTotalSize = upload.blobUrlsTotalSize || 0;
+                upload.blobUrls.push({url: url, size: file.size});
+                upload.blobUrlsTotalSize += file.size || 0;
+                var maxMemory = upload.defaults.blobUrlsMaxMemory || 268435456;
+                var maxLength = upload.defaults.blobUrlsMaxQueueSize || 200;
+                while ((upload.blobUrlsTotalSize > maxMemory || upload.blobUrls.length > maxLength) && upload.blobUrls.length > 1) {
+                  var obj = upload.blobUrls.splice(0, 1)[0];
+                  URL.revokeObjectURL(obj.url);
+                  upload.blobUrlsTotalSize -= obj.size;
+                }
+              }
+            });
+          } else {
+            var fileReader = new FileReader();
+            fileReader.onload = function (e) {
+              $timeout(function () {
+                file.$ngfDataUrl = e.target.result;
+                deferred.resolve(e.target.result, file);
+                $timeout(function () {
+                  delete file.$ngfDataUrl;
+                }, 1000);
+              });
+            };
+            fileReader.onerror = function () {
+              $timeout(function () {
+                file.$ngfDataUrl = '';
+                deferred.reject();
+              });
+            };
+            fileReader.readAsDataURL(file);
+          }
+        } else {
+          $timeout(function () {
+            file[disallowObjectUrl ? '$ngfDataUrl' : '$ngfBlobUrl'] = '';
+            deferred.reject();
+          });
+        }
+      });
+
+      if (disallowObjectUrl) {
+        p = file.$$ngfDataUrlPromise = deferred.promise;
+      } else {
+        p = file.$$ngfBlobUrlPromise = deferred.promise;
+      }
+      p['finally'](function () {
+        delete file[disallowObjectUrl ? '$$ngfDataUrlPromise' : '$$ngfBlobUrlPromise'];
+      });
+      return p;
+    };
+    return upload;
+  }]);
+
+  function getTagType(el) {
+    if (el.tagName.toLowerCase() === 'img') return 'image';
+    if (el.tagName.toLowerCase() === 'audio') return 'audio';
+    if (el.tagName.toLowerCase() === 'video') return 'video';
+    return /./;
+  }
+
+  function linkFileDirective(Upload, $timeout, scope, elem, attr, directiveName, resizeParams, isBackground) {
+    function constructDataUrl(file) {
+      var disallowObjectUrl = Upload.attrGetter('ngfNoObjectUrl', attr, scope);
+      Upload.dataUrl(file, disallowObjectUrl)['finally'](function () {
+        $timeout(function () {
+          var src = (disallowObjectUrl ? file.$ngfDataUrl : file.$ngfBlobUrl) || file.$ngfDataUrl;
+          if (isBackground) {
+            elem.css('background-image', 'url(\'' + (src || '') + '\')');
+          } else {
+            elem.attr('src', src);
+          }
+          if (src) {
+            elem.removeClass('ng-hide');
+          } else {
+            elem.addClass('ng-hide');
+          }
+        });
+      });
+    }
+
+    $timeout(function () {
+      var unwatch = scope.$watch(attr[directiveName], function (file) {
+        var size = resizeParams;
+        if (directiveName === 'ngfThumbnail') {
+          if (!size) {
+            size = {width: elem[0].clientWidth, height: elem[0].clientHeight};
+          }
+          if (size.width === 0 && window.getComputedStyle) {
+            var style = getComputedStyle(elem[0]);
+            size = {
+              width: parseInt(style.width.slice(0, -2)),
+              height: parseInt(style.height.slice(0, -2))
+            };
+          }
+        }
+
+        if (angular.isString(file)) {
+          elem.removeClass('ng-hide');
+          if (isBackground) {
+            return elem.css('background-image', 'url(\'' + file + '\')');
+          } else {
+            return elem.attr('src', file);
+          }
+        }
+        if (file && file.type && file.type.search(getTagType(elem[0])) === 0 &&
+          (!isBackground || file.type.indexOf('image') === 0)) {
+          if (size && Upload.isResizeSupported()) {
+            Upload.resize(file, size.width, size.height, size.quality).then(
+              function (f) {
+                constructDataUrl(f);
+              }, function (e) {
+                throw e;
+              }
+            );
+          } else {
+            constructDataUrl(file);
+          }
+        } else {
+          elem.addClass('ng-hide');
+        }
+      });
+
+      scope.$on('$destroy', function () {
+        unwatch();
+      });
+    });
+  }
+
+
+  /** @namespace attr.ngfSrc */
+  /** @namespace attr.ngfNoObjectUrl */
+  ngFileUpload.directive('ngfSrc', ['Upload', '$timeout', function (Upload, $timeout) {
+    return {
+      restrict: 'AE',
+      link: function (scope, elem, attr) {
+        linkFileDirective(Upload, $timeout, scope, elem, attr, 'ngfSrc',
+          Upload.attrGetter('ngfResize', attr, scope), false);
+      }
+    };
+  }]);
+
+  /** @namespace attr.ngfBackground */
+  /** @namespace attr.ngfNoObjectUrl */
+  ngFileUpload.directive('ngfBackground', ['Upload', '$timeout', function (Upload, $timeout) {
+    return {
+      restrict: 'AE',
+      link: function (scope, elem, attr) {
+        linkFileDirective(Upload, $timeout, scope, elem, attr, 'ngfBackground',
+          Upload.attrGetter('ngfResize', attr, scope), true);
+      }
+    };
+  }]);
+
+  /** @namespace attr.ngfThumbnail */
+  /** @namespace attr.ngfAsBackground */
+  /** @namespace attr.ngfSize */
+  /** @namespace attr.ngfNoObjectUrl */
+  ngFileUpload.directive('ngfThumbnail', ['Upload', '$timeout', function (Upload, $timeout) {
+    return {
+      restrict: 'AE',
+      link: function (scope, elem, attr) {
+        var size = Upload.attrGetter('ngfSize', attr, scope);
+        linkFileDirective(Upload, $timeout, scope, elem, attr, 'ngfThumbnail', size,
+          Upload.attrGetter('ngfAsBackground', attr, scope));
+      }
+    };
+  }]);
+
+  ngFileUpload.config(['$compileProvider', function ($compileProvider) {
+    if ($compileProvider.imgSrcSanitizationWhitelist) $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|tel|local|file|data|blob):/);
+    if ($compileProvider.aHrefSanitizationWhitelist) $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|tel|local|file|data|blob):/);
+  }]);
+
+  ngFileUpload.filter('ngfDataUrl', ['UploadDataUrl', '$sce', function (UploadDataUrl, $sce) {
+    return function (file, disallowObjectUrl, trustedUrl) {
+      if (angular.isString(file)) {
+        return $sce.trustAsResourceUrl(file);
+      }
+      var src = file && ((disallowObjectUrl ? file.$ngfDataUrl : file.$ngfBlobUrl) || file.$ngfDataUrl);
+      if (file && !src) {
+        if (!file.$ngfDataUrlFilterInProgress && angular.isObject(file)) {
+          file.$ngfDataUrlFilterInProgress = true;
+          UploadDataUrl.dataUrl(file, disallowObjectUrl);
+        }
+        return '';
+      }
+      if (file) delete file.$ngfDataUrlFilterInProgress;
+      return (file && src ? (trustedUrl ? $sce.trustAsResourceUrl(src) : src) : file) || '';
+    };
+  }]);
+
+})();
+
+ngFileUpload.service('UploadValidate', ['UploadDataUrl', '$q', '$timeout', function (UploadDataUrl, $q, $timeout) {
+  var upload = UploadDataUrl;
+
+  function globStringToRegex(str) {
+    var regexp = '', excludes = [];
+    if (str.length > 2 && str[0] === '/' && str[str.length - 1] === '/') {
+      regexp = str.substring(1, str.length - 1);
+    } else {
+      var split = str.split(',');
+      if (split.length > 1) {
+        for (var i = 0; i < split.length; i++) {
+          var r = globStringToRegex(split[i]);
+          if (r.regexp) {
+            regexp += '(' + r.regexp + ')';
+            if (i < split.length - 1) {
+              regexp += '|';
+            }
+          } else {
+            excludes = excludes.concat(r.excludes);
+          }
+        }
+      } else {
+        if (str.indexOf('!') === 0) {
+          excludes.push('^((?!' + globStringToRegex(str.substring(1)).regexp + ').)*$');
+        } else {
+          if (str.indexOf('.') === 0) {
+            str = '*' + str;
+          }
+          regexp = '^' + str.replace(new RegExp('[.\\\\+*?\\[\\^\\]$(){}=!<>|:\\-]', 'g'), '\\$&') + '$';
+          regexp = regexp.replace(/\\\*/g, '.*').replace(/\\\?/g, '.');
+        }
+      }
+    }
+    return {regexp: regexp, excludes: excludes};
+  }
+
+  upload.validatePattern = function (file, val) {
+    if (!val) {
+      return true;
+    }
+    var pattern = globStringToRegex(val), valid = true;
+    if (pattern.regexp && pattern.regexp.length) {
+      var regexp = new RegExp(pattern.regexp, 'i');
+      valid = (file.type != null && regexp.test(file.type)) ||
+        (file.name != null && regexp.test(file.name));
+    }
+    var len = pattern.excludes.length;
+    while (len--) {
+      var exclude = new RegExp(pattern.excludes[len], 'i');
+      valid = valid && (file.type == null || exclude.test(file.type)) &&
+        (file.name == null || exclude.test(file.name));
+    }
+    return valid;
+  };
+
+  upload.ratioToFloat = function (val) {
+    var r = val.toString(), xIndex = r.search(/[x:]/i);
+    if (xIndex > -1) {
+      r = parseFloat(r.substring(0, xIndex)) / parseFloat(r.substring(xIndex + 1));
+    } else {
+      r = parseFloat(r);
+    }
+    return r;
+  };
+
+  upload.registerModelChangeValidator = function (ngModel, attr, scope) {
+    if (ngModel) {
+      ngModel.$formatters.push(function (files) {
+        if (ngModel.$dirty) {
+          if (files && !angular.isArray(files)) {
+            files = [files];
+          }
+          upload.validate(files, files ? files.length : 0, ngModel, attr, scope).then(function () {
+            upload.applyModelValidation(ngModel, files);
+          });
+        }
+      });
+    }
+  };
+
+  function markModelAsDirty(ngModel, files) {
+    if (files != null && !ngModel.$dirty) {
+      if (ngModel.$setDirty) {
+        ngModel.$setDirty();
+      } else {
+        ngModel.$dirty = true;
+      }
+    }
+  }
+
+  upload.applyModelValidation = function (ngModel, files) {
+    markModelAsDirty(ngModel, files);
+    angular.forEach(ngModel.$ngfValidations, function (validation) {
+      ngModel.$setValidity(validation.name, validation.valid);
+    });
+  };
+
+  upload.getValidationAttr = function (attr, scope, name, validationName, file) {
+    var dName = 'ngf' + name[0].toUpperCase() + name.substr(1);
+    var val = upload.attrGetter(dName, attr, scope, {$file: file});
+    if (val == null) {
+      val = upload.attrGetter('ngfValidate', attr, scope, {$file: file});
+      if (val) {
+        var split = (validationName || name).split('.');
+        val = val[split[0]];
+        if (split.length > 1) {
+          val = val && val[split[1]];
+        }
+      }
+    }
+    return val;
+  };
+
+  upload.validate = function (files, allLength, ngModel, attr, scope) {
+    ngModel = ngModel || {};
+    ngModel.$ngfValidations = ngModel.$ngfValidations || [];
+
+    angular.forEach(ngModel.$ngfValidations, function (v) {
+      v.valid = true;
+    });
+
+    var attrGetter = function (name, params) {
+      return upload.attrGetter(name, attr, scope, params);
+    };
+
+    if (files == null || files.length === 0) {
+      return upload.emptyPromise(ngModel);
+    }
+
+    files = files.length === undefined ? [files] : files.slice(0);
+
+    function validateSync(name, validationName, fn) {
+      if (files) {
+        var i = files.length, valid = null;
+        while (i--) {
+          var file = files[i];
+          if (file) {
+            var val = upload.getValidationAttr(attr, scope, name, validationName, file);
+            if (val != null) {
+              if (!fn(file, val)) {
+                file.$error = name;
+                (file.$errorMessages = (file.$errorMessages || {})).name = true;
+                file.$errorParam = val;
+                files.splice(i, 1);
+                valid = false;
+              }
+            }
+          }
+        }
+        if (valid !== null) {
+          ngModel.$ngfValidations.push({name: name, valid: valid});
+        }
+      }
+    }
+
+    validateSync('maxFiles', null, function (file, val) {
+      return allLength <= val;
+    });
+    validateSync('pattern', null, upload.validatePattern);
+    validateSync('minSize', 'size.min', function (file, val) {
+      return file.size + 0.1 >= upload.translateScalars(val);
+    });
+    validateSync('maxSize', 'size.max', function (file, val) {
+      return file.size - 0.1 <= upload.translateScalars(val);
+    });
+    var totalSize = 0;
+    validateSync('maxTotalSize', null, function (file, val) {
+      totalSize += file.size;
+      if (totalSize > upload.translateScalars(val)) {
+        files.splice(0, files.length);
+        return false;
+      }
+      return true;
+    });
+
+    validateSync('validateFn', null, function (file, r) {
+      return r === true || r === null || r === '';
+    });
+
+    if (!files.length) {
+      return upload.emptyPromise(ngModel, ngModel.$ngfValidations);
+    }
+
+    function validateAsync(name, validationName, type, asyncFn, fn) {
+      function resolveResult(defer, file, val) {
+        if (val != null) {
+          asyncFn(file, val).then(function (d) {
+            if (!fn(d, val)) {
+              file.$error = name;
+              (file.$errorMessages = (file.$errorMessages || {})).name = true;
+              file.$errorParam = val;
+              defer.reject();
+            } else {
+              defer.resolve();
+            }
+          }, function () {
+            if (attrGetter('ngfValidateForce', {$file: file})) {
+              file.$error = name;
+              (file.$errorMessages = (file.$errorMessages || {})).name = true;
+              file.$errorParam = val;
+              defer.reject();
+            } else {
+              defer.resolve();
+            }
+          });
+        } else {
+          defer.resolve();
+        }
+      }
+
+      var promises = [upload.emptyPromise()];
+      if (files) {
+        files = files.length === undefined ? [files] : files;
+        angular.forEach(files, function (file) {
+          var defer = $q.defer();
+          promises.push(defer.promise);
+          if (type && (file.type == null || file.type.search(type) !== 0)) {
+            defer.resolve();
+            return;
+          }
+          if (name === 'dimensions' && upload.attrGetter('ngfDimensions', attr) != null) {
+            upload.imageDimensions(file).then(function (d) {
+              resolveResult(defer, file,
+                attrGetter('ngfDimensions', {$file: file, $width: d.width, $height: d.height}));
+            }, function () {
+              defer.reject();
+            });
+          } else if (name === 'duration' && upload.attrGetter('ngfDuration', attr) != null) {
+            upload.mediaDuration(file).then(function (d) {
+              resolveResult(defer, file,
+                attrGetter('ngfDuration', {$file: file, $duration: d}));
+            }, function () {
+              defer.reject();
+            });
+          } else {
+            resolveResult(defer, file,
+              upload.getValidationAttr(attr, scope, name, validationName, file));
+          }
+        });
+        return $q.all(promises).then(function () {
+          ngModel.$ngfValidations.push({name: name, valid: true});
+        }, function () {
+          ngModel.$ngfValidations.push({name: name, valid: false});
+        });
+      }
+    }
+
+    var deffer = $q.defer();
+    var promises = [];
+
+    promises.push(upload.happyPromise(validateAsync('maxHeight', 'height.max', /image/,
+      this.imageDimensions, function (d, val) {
+        return d.height <= val;
+      })));
+    promises.push(upload.happyPromise(validateAsync('minHeight', 'height.min', /image/,
+      this.imageDimensions, function (d, val) {
+        return d.height >= val;
+      })));
+    promises.push(upload.happyPromise(validateAsync('maxWidth', 'width.max', /image/,
+      this.imageDimensions, function (d, val) {
+        return d.width <= val;
+      })));
+    promises.push(upload.happyPromise(validateAsync('minWidth', 'width.min', /image/,
+      this.imageDimensions, function (d, val) {
+        return d.width >= val;
+      })));
+    promises.push(upload.happyPromise(validateAsync('dimensions', null, /image/,
+      function (file, val) {
+        return upload.emptyPromise(val);
+      }, function (r) {
+        return r;
+      })));
+    promises.push(upload.happyPromise(validateAsync('ratio', null, /image/,
+      this.imageDimensions, function (d, val) {
+        var split = val.toString().split(','), valid = false;
+        for (var i = 0; i < split.length; i++) {
+          if (Math.abs((d.width / d.height) - upload.ratioToFloat(split[i])) < 0.0001) {
+            valid = true;
+          }
+        }
+        return valid;
+      })));
+    promises.push(upload.happyPromise(validateAsync('maxRatio', 'ratio.max', /image/,
+      this.imageDimensions, function (d, val) {
+        return (d.width / d.height) - upload.ratioToFloat(val) < 0.0001;
+      })));
+    promises.push(upload.happyPromise(validateAsync('minRatio', 'ratio.min', /image/,
+      this.imageDimensions, function (d, val) {
+        return (d.width / d.height) - upload.ratioToFloat(val) > -0.0001;
+      })));
+    promises.push(upload.happyPromise(validateAsync('maxDuration', 'duration.max', /audio|video/,
+      this.mediaDuration, function (d, val) {
+        return d <= upload.translateScalars(val);
+      })));
+    promises.push(upload.happyPromise(validateAsync('minDuration', 'duration.min', /audio|video/,
+      this.mediaDuration, function (d, val) {
+        return d >= upload.translateScalars(val);
+      })));
+    promises.push(upload.happyPromise(validateAsync('duration', null, /audio|video/,
+      function (file, val) {
+        return upload.emptyPromise(val);
+      }, function (r) {
+        return r;
+      })));
+
+    promises.push(upload.happyPromise(validateAsync('validateAsyncFn', null, null,
+      function (file, val) {
+        return val;
+      }, function (r) {
+        return r === true || r === null || r === '';
+      })));
+
+    return $q.all(promises).then(function () {
+      deffer.resolve(ngModel, ngModel.$ngfValidations);
+    });
+  };
+
+  upload.imageDimensions = function (file) {
+    if (file.$ngfWidth && file.$ngfHeight) {
+      var d = $q.defer();
+      $timeout(function () {
+        d.resolve({width: file.$ngfWidth, height: file.$ngfHeight});
+      });
+      return d.promise;
+    }
+    if (file.$ngfDimensionPromise) return file.$ngfDimensionPromise;
+
+    var deferred = $q.defer();
+    $timeout(function () {
+      if (file.type.indexOf('image') !== 0) {
+        deferred.reject('not image');
+        return;
+      }
+      upload.dataUrl(file).then(function (dataUrl) {
+        var img = angular.element('<img>').attr('src', dataUrl).css('visibility', 'hidden').css('position', 'fixed');
+
+        function success() {
+          var width = img[0].clientWidth;
+          var height = img[0].clientHeight;
+          img.remove();
+          file.$ngfWidth = width;
+          file.$ngfHeight = height;
+          deferred.resolve({width: width, height: height});
+        }
+
+        function error() {
+          img.remove();
+          deferred.reject('load error');
+        }
+
+        img.on('load', success);
+        img.on('error', error);
+        var count = 0;
+
+        function checkLoadError() {
+          $timeout(function () {
+            if (img[0].parentNode) {
+              if (img[0].clientWidth) {
+                success();
+              } else if (count > 10) {
+                error();
+              } else {
+                checkLoadError();
+              }
+            }
+          }, 1000);
+        }
+
+        checkLoadError();
+
+        angular.element(document.getElementsByTagName('body')[0]).append(img);
+      }, function () {
+        deferred.reject('load error');
+      });
+    });
+
+    file.$ngfDimensionPromise = deferred.promise;
+    file.$ngfDimensionPromise['finally'](function () {
+      delete file.$ngfDimensionPromise;
+    });
+    return file.$ngfDimensionPromise;
+  };
+
+  upload.mediaDuration = function (file) {
+    if (file.$ngfDuration) {
+      var d = $q.defer();
+      $timeout(function () {
+        d.resolve(file.$ngfDuration);
+      });
+      return d.promise;
+    }
+    if (file.$ngfDurationPromise) return file.$ngfDurationPromise;
+
+    var deferred = $q.defer();
+    $timeout(function () {
+      if (file.type.indexOf('audio') !== 0 && file.type.indexOf('video') !== 0) {
+        deferred.reject('not media');
+        return;
+      }
+      upload.dataUrl(file).then(function (dataUrl) {
+        var el = angular.element(file.type.indexOf('audio') === 0 ? '<audio>' : '<video>')
+          .attr('src', dataUrl).css('visibility', 'none').css('position', 'fixed');
+
+        function success() {
+          var duration = el[0].duration;
+          file.$ngfDuration = duration;
+          el.remove();
+          deferred.resolve(duration);
+        }
+
+        function error() {
+          el.remove();
+          deferred.reject('load error');
+        }
+
+        el.on('loadedmetadata', success);
+        el.on('error', error);
+        var count = 0;
+
+        function checkLoadError() {
+          $timeout(function () {
+            if (el[0].parentNode) {
+              if (el[0].duration) {
+                success();
+              } else if (count > 10) {
+                error();
+              } else {
+                checkLoadError();
+              }
+            }
+          }, 1000);
+        }
+
+        checkLoadError();
+
+        angular.element(document.body).append(el);
+      }, function () {
+        deferred.reject('load error');
+      });
+    });
+
+    file.$ngfDurationPromise = deferred.promise;
+    file.$ngfDurationPromise['finally'](function () {
+      delete file.$ngfDurationPromise;
+    });
+    return file.$ngfDurationPromise;
+  };
+  return upload;
+}
+]);
+
+ngFileUpload.service('UploadResize', ['UploadValidate', '$q', function (UploadValidate, $q) {
+  var upload = UploadValidate;
+
+  /**
+   * Conserve aspect ratio of the original region. Useful when shrinking/enlarging
+   * images to fit into a certain area.
+   * Source:  http://stackoverflow.com/a/14731922
+   *
+   * @param {Number} srcWidth Source area width
+   * @param {Number} srcHeight Source area height
+   * @param {Number} maxWidth Nestable area maximum available width
+   * @param {Number} maxHeight Nestable area maximum available height
+   * @return {Object} { width, height }
+   */
+  var calculateAspectRatioFit = function (srcWidth, srcHeight, maxWidth, maxHeight, centerCrop) {
+    var ratio = centerCrop ? Math.max(maxWidth / srcWidth, maxHeight / srcHeight) :
+      Math.min(maxWidth / srcWidth, maxHeight / srcHeight);
+    return {
+      width: srcWidth * ratio, height: srcHeight * ratio,
+      marginX: srcWidth * ratio - maxWidth, marginY: srcHeight * ratio - maxHeight
+    };
+  };
+
+  // Extracted from https://github.com/romelgomez/angular-firebase-image-upload/blob/master/app/scripts/fileUpload.js#L89
+  var resize = function (imagen, width, height, quality, type, ratio, centerCrop, resizeIf) {
+    var deferred = $q.defer();
+    var canvasElement = document.createElement('canvas');
+    var imageElement = document.createElement('img');
+
+    imageElement.onload = function () {
+      if (resizeIf != null && resizeIf(imageElement.width, imageElement.height) === false) {
+        deferred.reject('resizeIf');
+        return;
+      }
+      try {
+        if (ratio) {
+          var ratioFloat = upload.ratioToFloat(ratio);
+          var imgRatio = imageElement.width / imageElement.height;
+          if (imgRatio < ratioFloat) {
+            width = imageElement.width;
+            height = width / ratioFloat;
+          } else {
+            height = imageElement.height;
+            width = height * ratioFloat;
+          }
+        }
+        if (!width) {
+          width = imageElement.width;
+        }
+        if (!height) {
+          height = imageElement.height;
+        }
+        var dimensions = calculateAspectRatioFit(imageElement.width, imageElement.height, width, height, centerCrop);
+        canvasElement.width = Math.min(dimensions.width, width);
+        canvasElement.height = Math.min(dimensions.height, height);
+        var context = canvasElement.getContext('2d');
+        context.drawImage(imageElement,
+          Math.min(0, -dimensions.marginX / 2), Math.min(0, -dimensions.marginY / 2),
+          dimensions.width, dimensions.height);
+        deferred.resolve(canvasElement.toDataURL(type || 'image/WebP', quality || 0.934));
+      } catch (e) {
+        deferred.reject(e);
+      }
+    };
+    imageElement.onerror = function () {
+      deferred.reject();
+    };
+    imageElement.src = imagen;
+    return deferred.promise;
+  };
+
+  upload.dataUrltoBlob = function (dataurl, name, origSize) {
+    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    var blob = new window.Blob([u8arr], {type: mime});
+    blob.name = name;
+    blob.$ngfOrigSize = origSize;
+    return blob;
+  };
+
+  upload.isResizeSupported = function () {
+    var elem = document.createElement('canvas');
+    return window.atob && elem.getContext && elem.getContext('2d') && window.Blob;
+  };
+
+  if (upload.isResizeSupported()) {
+    // add name getter to the blob constructor prototype
+    Object.defineProperty(window.Blob.prototype, 'name', {
+      get: function () {
+        return this.$ngfName;
+      },
+      set: function (v) {
+        this.$ngfName = v;
+      },
+      configurable: true
+    });
+  }
+
+  upload.resize = function (file, width, height, quality, type, ratio, centerCrop, resizeIf, restoreExif) {
+    if (file.type.indexOf('image') !== 0) return upload.emptyPromise(file);
+
+    var deferred = $q.defer();
+    upload.dataUrl(file, true).then(function (url) {
+      resize(url, width, height, quality, type || file.type, ratio, centerCrop, resizeIf)
+        .then(function (dataUrl) {
+          if (file.type === 'image/jpeg' && restoreExif) {
+            try {
+              dataUrl = upload.restoreExif(url, dataUrl);
+            } catch (e) {
+              setTimeout(function () {throw e;}, 1);
+            }
+          }
+          deferred.resolve(upload.dataUrltoBlob(dataUrl, file.name, file.size));
+        }, function (r) {
+          if (r === 'resizeIf') {
+            deferred.resolve(file);
+          }
+          deferred.reject();
+        });
+    }, function () {
+      deferred.reject();
+    });
+    return deferred.promise;
+  };
+
+  return upload;
+}]);
+
+(function () {
+  ngFileUpload.directive('ngfDrop', ['$parse', '$timeout', '$location', 'Upload', '$http', '$q',
+    function ($parse, $timeout, $location, Upload, $http, $q) {
+      return {
+        restrict: 'AEC',
+        require: '?ngModel',
+        link: function (scope, elem, attr, ngModel) {
+          linkDrop(scope, elem, attr, ngModel, $parse, $timeout, $location, Upload, $http, $q);
+        }
+      };
+    }]);
+
+  ngFileUpload.directive('ngfNoFileDrop', function () {
+    return function (scope, elem) {
+      if (dropAvailable()) elem.css('display', 'none');
+    };
+  });
+
+  ngFileUpload.directive('ngfDropAvailable', ['$parse', '$timeout', 'Upload', function ($parse, $timeout, Upload) {
+    return function (scope, elem, attr) {
+      if (dropAvailable()) {
+        var model = $parse(Upload.attrGetter('ngfDropAvailable', attr));
+        $timeout(function () {
+          model(scope);
+          if (model.assign) {
+            model.assign(scope, true);
+          }
+        });
+      }
+    };
+  }]);
+
+  function linkDrop(scope, elem, attr, ngModel, $parse, $timeout, $location, upload, $http, $q) {
+    var available = dropAvailable();
+
+    var attrGetter = function (name, scope, params) {
+      return upload.attrGetter(name, attr, scope, params);
+    };
+
+    if (attrGetter('dropAvailable')) {
+      $timeout(function () {
+        if (scope[attrGetter('dropAvailable')]) {
+          scope[attrGetter('dropAvailable')].value = available;
+        } else {
+          scope[attrGetter('dropAvailable')] = available;
+        }
+      });
+    }
+    if (!available) {
+      if (attrGetter('ngfHideOnDropNotAvailable', scope) === true) {
+        elem.css('display', 'none');
+      }
+      return;
+    }
+
+    function isDisabled() {
+      return elem.attr('disabled') || attrGetter('ngfDropDisabled', scope);
+    }
+
+    if (attrGetter('ngfSelect') == null) {
+      upload.registerModelChangeValidator(ngModel, attr, scope);
+    }
+
+    var leaveTimeout = null;
+    var stopPropagation = $parse(attrGetter('ngfStopPropagation'));
+    var dragOverDelay = 1;
+    var actualDragOverClass;
+
+    elem[0].addEventListener('dragover', function (evt) {
+      if (isDisabled() || !upload.shouldUpdateOn('drop', attr, scope)) return;
+      evt.preventDefault();
+      if (stopPropagation(scope)) evt.stopPropagation();
+      // handling dragover events from the Chrome download bar
+      if (navigator.userAgent.indexOf('Chrome') > -1) {
+        var b = evt.dataTransfer.effectAllowed;
+        evt.dataTransfer.dropEffect = ('move' === b || 'linkMove' === b) ? 'move' : 'copy';
+      }
+      $timeout.cancel(leaveTimeout);
+      if (!actualDragOverClass) {
+        actualDragOverClass = 'C';
+        calculateDragOverClass(scope, attr, evt, function (clazz) {
+          actualDragOverClass = clazz;
+          elem.addClass(actualDragOverClass);
+          attrGetter('ngfDrag', scope, {$isDragging: true, $class: actualDragOverClass, $event: evt});
+        });
+      }
+    }, false);
+    elem[0].addEventListener('dragenter', function (evt) {
+      if (isDisabled() || !upload.shouldUpdateOn('drop', attr, scope)) return;
+      evt.preventDefault();
+      if (stopPropagation(scope)) evt.stopPropagation();
+    }, false);
+    elem[0].addEventListener('dragleave', function (evt) {
+      if (isDisabled() || !upload.shouldUpdateOn('drop', attr, scope)) return;
+      evt.preventDefault();
+      if (stopPropagation(scope)) evt.stopPropagation();
+      leaveTimeout = $timeout(function () {
+        if (actualDragOverClass) elem.removeClass(actualDragOverClass);
+        actualDragOverClass = null;
+        attrGetter('ngfDrag', scope, {$isDragging: false, $event: evt});
+      }, dragOverDelay || 100);
+    }, false);
+    elem[0].addEventListener('drop', function (evt) {
+      if (isDisabled() || !upload.shouldUpdateOn('drop', attr, scope)) return;
+      evt.preventDefault();
+      if (stopPropagation(scope)) evt.stopPropagation();
+      if (actualDragOverClass) elem.removeClass(actualDragOverClass);
+      actualDragOverClass = null;
+      var items = evt.dataTransfer.items;
+      var html;
+      try {
+        html = evt.dataTransfer && evt.dataTransfer.getData && evt.dataTransfer.getData('text/html');
+      } catch (e) {/* Fix IE11 that throw error calling getData */
+      }
+
+      extractFiles(items, evt.dataTransfer.files, attrGetter('ngfAllowDir', scope) !== false,
+        attrGetter('multiple') || attrGetter('ngfMultiple', scope)).then(function (files) {
+        if (files.length) {
+          updateModel(files, evt);
+        } else {
+          extractFilesFromHtml('dropUrl', html).then(function (files) {
+            updateModel(files, evt);
+          });
+        }
+      });
+    }, false);
+    elem[0].addEventListener('paste', function (evt) {
+      if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1 &&
+        attrGetter('ngfEnableFirefoxPaste', scope)) {
+        evt.preventDefault();
+      }
+      if (isDisabled() || !upload.shouldUpdateOn('paste', attr, scope)) return;
+      var files = [];
+      var clipboard = evt.clipboardData || evt.originalEvent.clipboardData;
+      if (clipboard && clipboard.items) {
+        for (var k = 0; k < clipboard.items.length; k++) {
+          if (clipboard.items[k].type.indexOf('image') !== -1) {
+            files.push(clipboard.items[k].getAsFile());
+          }
+        }
+      }
+      if (files.length) {
+        updateModel(files, evt);
+      } else {
+        extractFilesFromHtml('pasteUrl', clipboard).then(function (files) {
+          updateModel(files, evt);
+        });
+      }
+    }, false);
+
+    if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1 &&
+      attrGetter('ngfEnableFirefoxPaste', scope)) {
+      elem.attr('contenteditable', true);
+      elem.on('keypress', function (e) {
+        if (!e.metaKey && !e.ctrlKey) {
+          e.preventDefault();
+        }
+      });
+    }
+
+    function updateModel(files, evt) {
+      upload.updateModel(ngModel, attr, scope, attrGetter('ngfChange') || attrGetter('ngfDrop'), files, evt);
+    }
+
+    function extractFilesFromHtml(updateOn, html) {
+      if (!upload.shouldUpdateOn(updateOn, attr, scope) || !html) return upload.rejectPromise([]);
+      var urls = [];
+      html.replace(/<(img src|img [^>]* src) *=\"([^\"]*)\"/gi, function (m, n, src) {
+        urls.push(src);
+      });
+      var promises = [], files = [];
+      if (urls.length) {
+        angular.forEach(urls, function (url) {
+          promises.push(upload.urlToBlob(url).then(function (blob) {
+            files.push(blob);
+          }));
+        });
+        var defer = $q.defer();
+        $q.all(promises).then(function () {
+          defer.resolve(files);
+        }, function (e) {
+          defer.reject(e);
+        });
+        return defer.promise;
+      }
+    }
+
+    function calculateDragOverClass(scope, attr, evt, callback) {
+      var obj = attrGetter('ngfDragOverClass', scope, {$event: evt}), dClass = 'dragover';
+      if (angular.isString(obj)) {
+        dClass = obj;
+      } else if (obj) {
+        if (obj.delay) dragOverDelay = obj.delay;
+        if (obj.accept || obj.reject) {
+          var items = evt.dataTransfer.items;
+          if (items == null || !items.length) {
+            dClass = obj.accept;
+          } else {
+            var pattern = obj.pattern || attrGetter('ngfPattern', scope, {$event: evt});
+            var len = items.length;
+            while (len--) {
+              if (!upload.validatePattern(items[len], pattern)) {
+                dClass = obj.reject;
+                break;
+              } else {
+                dClass = obj.accept;
+              }
+            }
+          }
+        }
+      }
+      callback(dClass);
+    }
+
+    function extractFiles(items, fileList, allowDir, multiple) {
+      var maxFiles = upload.getValidationAttr(attr, scope, 'maxFiles') || Number.MAX_VALUE;
+      var maxTotalSize = upload.getValidationAttr(attr, scope, 'maxTotalSize') || Number.MAX_VALUE;
+      var includeDir = attrGetter('ngfIncludeDir', scope);
+      var files = [], totalSize = 0;
+
+      function traverseFileTree(entry, path) {
+        var defer = $q.defer();
+        if (entry != null) {
+          if (entry.isDirectory) {
+            var promises = [upload.emptyPromise()];
+            if (includeDir) {
+              var file = {type: 'directory'};
+              file.name = file.path = (path || '') + entry.name + entry.name;
+              files.push(file);
+            }
+            var dirReader = entry.createReader();
+            var entries = [];
+            var readEntries = function () {
+              dirReader.readEntries(function (results) {
+                try {
+                  if (!results.length) {
+                    angular.forEach(entries.slice(0), function (e) {
+                      if (files.length <= maxFiles && totalSize <= maxTotalSize) {
+                        promises.push(traverseFileTree(e, (path ? path : '') + entry.name + '/'));
+                      }
+                    });
+                    $q.all(promises).then(function () {
+                      defer.resolve();
+                    }, function (e) {
+                      defer.reject(e);
+                    });
+                  } else {
+                    entries = entries.concat(Array.prototype.slice.call(results || [], 0));
+                    readEntries();
+                  }
+                } catch (e) {
+                  defer.reject(e);
+                }
+              }, function (e) {
+                defer.reject(e);
+              });
+            };
+            readEntries();
+          } else {
+            entry.file(function (file) {
+              try {
+                file.path = (path ? path : '') + file.name;
+                if (includeDir) {
+                  file = upload.rename(file, file.path);
+                }
+                files.push(file);
+                totalSize += file.size;
+                defer.resolve();
+              } catch (e) {
+                defer.reject(e);
+              }
+            }, function (e) {
+              defer.reject(e);
+            });
+          }
+        }
+        return defer.promise;
+      }
+
+      var promises = [upload.emptyPromise()];
+
+      if (items && items.length > 0 && $location.protocol() !== 'file') {
+        for (var i = 0; i < items.length; i++) {
+          if (items[i].webkitGetAsEntry && items[i].webkitGetAsEntry() && items[i].webkitGetAsEntry().isDirectory) {
+            var entry = items[i].webkitGetAsEntry();
+            if (entry.isDirectory && !allowDir) {
+              continue;
+            }
+            if (entry != null) {
+              promises.push(traverseFileTree(entry));
+            }
+          } else {
+            var f = items[i].getAsFile();
+            if (f != null) {
+              files.push(f);
+              totalSize += f.size;
+            }
+          }
+          if (files.length > maxFiles || totalSize > maxTotalSize ||
+            (!multiple && files.length > 0)) break;
+        }
+      } else {
+        if (fileList != null) {
+          for (var j = 0; j < fileList.length; j++) {
+            var file = fileList.item(j);
+            if (file.type || file.size > 0) {
+              files.push(file);
+              totalSize += file.size;
+            }
+            if (files.length > maxFiles || totalSize > maxTotalSize ||
+              (!multiple && files.length > 0)) break;
+          }
+        }
+      }
+
+      var defer = $q.defer();
+      $q.all(promises).then(function () {
+        if (!multiple && !includeDir) {
+          var i = 0;
+          while (files[i] && files[i].type === 'directory') i++;
+          defer.resolve([files[i]]);
+        } else {
+          defer.resolve(files);
+        }
+      }, function (e) {
+        defer.reject(e);
+      });
+
+      return defer.promise;
+    }
+  }
+
+  function dropAvailable() {
+    var div = document.createElement('div');
+    return ('draggable' in div) && ('ondrop' in div) && !/Edge\/12./i.test(navigator.userAgent);
+  }
+
+})();
+
+// customized version of https://github.com/exif-js/exif-js
+ngFileUpload.service('UploadExif', ['UploadResize', '$q', function (UploadResize, $q) {
+  var upload = UploadResize;
+
+  upload.isExifSupported = function () {
+    return window.FileReader && new FileReader().readAsArrayBuffer && upload.isResizeSupported();
+  };
+
+  function applyTransform(ctx, orientation, width, height) {
+    switch (orientation) {
+      case 2:
+        return ctx.transform(-1, 0, 0, 1, width, 0);
+      case 3:
+        return ctx.transform(-1, 0, 0, -1, width, height);
+      case 4:
+        return ctx.transform(1, 0, 0, -1, 0, height);
+      case 5:
+        return ctx.transform(0, 1, 1, 0, 0, 0);
+      case 6:
+        return ctx.transform(0, 1, -1, 0, height, 0);
+      case 7:
+        return ctx.transform(0, -1, -1, 0, height, width);
+      case 8:
+        return ctx.transform(0, -1, 1, 0, 0, width);
+    }
+  }
+
+  upload.readOrientation = function (file) {
+    var defer = $q.defer();
+    var reader = new FileReader();
+    var slicedFile = file.slice(0, 64 * 1024);
+    reader.readAsArrayBuffer(slicedFile);
+    reader.onerror = function (e) {
+      return defer.reject(e);
+    };
+    reader.onload = function (e) {
+      var result = {orientation: 1};
+      var view = new DataView(this.result);
+      if (view.getUint16(0, false) !== 0xFFD8) return defer.resolve(result);
+
+      var length = view.byteLength,
+        offset = 2;
+      while (offset < length) {
+        var marker = view.getUint16(offset, false);
+        offset += 2;
+        if (marker === 0xFFE1) {
+          if (view.getUint32(offset += 2, false) !== 0x45786966) return defer.resolve(result);
+
+          var little = view.getUint16(offset += 6, false) === 0x4949;
+          offset += view.getUint32(offset + 4, little);
+          var tags = view.getUint16(offset, little);
+          offset += 2;
+          for (var i = 0; i < tags; i++)
+            if (view.getUint16(offset + (i * 12), little) === 0x0112) {
+              var orientation = view.getUint16(offset + (i * 12) + 8, little);
+              if (orientation >= 2 && orientation <= 8) {
+                view.setUint16(offset + (i * 12) + 8, 1, little);
+                result.fixedArrayBuffer = e.target.result;
+              }
+              result.orientation = orientation;
+              return defer.resolve(result);
+            }
+        } else if ((marker & 0xFF00) !== 0xFF00) break;
+        else offset += view.getUint16(offset, false);
+      }
+      return defer.resolve(result);
+    };
+    return defer.promise;
+  };
+
+  function arrayBufferToBase64(buffer) {
+    var binary = '';
+    var bytes = new Uint8Array(buffer);
+    var len = bytes.byteLength;
+    for (var i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binary);
+  }
+
+  upload.applyExifRotation = function (file) {
+    if (file.type.indexOf('image/jpeg') !== 0) {
+      return upload.emptyPromise(file);
+    }
+
+    var deferred = $q.defer();
+    upload.readOrientation(file).then(function (result) {
+      if (result.orientation < 2 || result.orientation > 8) {
+        return deferred.resolve(file);
+      }
+      upload.dataUrl(file, true).then(function (url) {
+        var canvas = document.createElement('canvas');
+        var img = document.createElement('img');
+
+        img.onload = function () {
+          try {
+            canvas.width = result.orientation > 4 ? img.height : img.width;
+            canvas.height = result.orientation > 4 ? img.width : img.height;
+            var ctx = canvas.getContext('2d');
+            applyTransform(ctx, result.orientation, img.width, img.height);
+            ctx.drawImage(img, 0, 0);
+            var dataUrl = canvas.toDataURL(file.type || 'image/WebP', 0.934);
+            dataUrl = upload.restoreExif(arrayBufferToBase64(result.fixedArrayBuffer), dataUrl);
+            var blob = upload.dataUrltoBlob(dataUrl, file.name);
+            deferred.resolve(blob);
+          } catch (e) {
+            return deferred.reject(e);
+          }
+        };
+        img.onerror = function () {
+          deferred.reject();
+        };
+        img.src = url;
+      }, function (e) {
+        deferred.reject(e);
+      });
+    }, function (e) {
+      deferred.reject(e);
+    });
+    return deferred.promise;
+  };
+
+  upload.restoreExif = function (orig, resized) {
+    var ExifRestorer = {};
+
+    ExifRestorer.KEY_STR = 'ABCDEFGHIJKLMNOP' +
+      'QRSTUVWXYZabcdef' +
+      'ghijklmnopqrstuv' +
+      'wxyz0123456789+/' +
+      '=';
+
+    ExifRestorer.encode64 = function (input) {
+      var output = '',
+        chr1, chr2, chr3 = '',
+        enc1, enc2, enc3, enc4 = '',
+        i = 0;
+
+      do {
+        chr1 = input[i++];
+        chr2 = input[i++];
+        chr3 = input[i++];
+
+        enc1 = chr1 >> 2;
+        enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+        enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+        enc4 = chr3 & 63;
+
+        if (isNaN(chr2)) {
+          enc3 = enc4 = 64;
+        } else if (isNaN(chr3)) {
+          enc4 = 64;
+        }
+
+        output = output +
+          this.KEY_STR.charAt(enc1) +
+          this.KEY_STR.charAt(enc2) +
+          this.KEY_STR.charAt(enc3) +
+          this.KEY_STR.charAt(enc4);
+        chr1 = chr2 = chr3 = '';
+        enc1 = enc2 = enc3 = enc4 = '';
+      } while (i < input.length);
+
+      return output;
+    };
+
+    ExifRestorer.restore = function (origFileBase64, resizedFileBase64) {
+      if (origFileBase64.match('data:image/jpeg;base64,')) {
+        origFileBase64 = origFileBase64.replace('data:image/jpeg;base64,', '');
+      }
+
+      var rawImage = this.decode64(origFileBase64);
+      var segments = this.slice2Segments(rawImage);
+
+      var image = this.exifManipulation(resizedFileBase64, segments);
+
+      return 'data:image/jpeg;base64,' + this.encode64(image);
+    };
+
+
+    ExifRestorer.exifManipulation = function (resizedFileBase64, segments) {
+      var exifArray = this.getExifArray(segments),
+        newImageArray = this.insertExif(resizedFileBase64, exifArray);
+      return new Uint8Array(newImageArray);
+    };
+
+
+    ExifRestorer.getExifArray = function (segments) {
+      var seg;
+      for (var x = 0; x < segments.length; x++) {
+        seg = segments[x];
+        if (seg[0] === 255 & seg[1] === 225) //(ff e1)
+        {
+          return seg;
+        }
+      }
+      return [];
+    };
+
+
+    ExifRestorer.insertExif = function (resizedFileBase64, exifArray) {
+      var imageData = resizedFileBase64.replace('data:image/jpeg;base64,', ''),
+        buf = this.decode64(imageData),
+        separatePoint = buf.indexOf(255, 3),
+        mae = buf.slice(0, separatePoint),
+        ato = buf.slice(separatePoint),
+        array = mae;
+
+      array = array.concat(exifArray);
+      array = array.concat(ato);
+      return array;
+    };
+
+
+    ExifRestorer.slice2Segments = function (rawImageArray) {
+      var head = 0,
+        segments = [];
+
+      while (1) {
+        if (rawImageArray[head] === 255 & rawImageArray[head + 1] === 218) {
+          break;
+        }
+        if (rawImageArray[head] === 255 & rawImageArray[head + 1] === 216) {
+          head += 2;
+        }
+        else {
+          var length = rawImageArray[head + 2] * 256 + rawImageArray[head + 3],
+            endPoint = head + length + 2,
+            seg = rawImageArray.slice(head, endPoint);
+          segments.push(seg);
+          head = endPoint;
+        }
+        if (head > rawImageArray.length) {
+          break;
+        }
+      }
+
+      return segments;
+    };
+
+
+    ExifRestorer.decode64 = function (input) {
+      var chr1, chr2, chr3 = '',
+        enc1, enc2, enc3, enc4 = '',
+        i = 0,
+        buf = [];
+
+      // remove all characters that are not A-Z, a-z, 0-9, +, /, or =
+      var base64test = /[^A-Za-z0-9\+\/\=]/g;
+      if (base64test.exec(input)) {
+        console.log('There were invalid base64 characters in the input text.\n' +
+          'Valid base64 characters are A-Z, a-z, 0-9, ' + ', ' / ',and "="\n' +
+          'Expect errors in decoding.');
+      }
+      input = input.replace(/[^A-Za-z0-9\+\/\=]/g, '');
+
+      do {
+        enc1 = this.KEY_STR.indexOf(input.charAt(i++));
+        enc2 = this.KEY_STR.indexOf(input.charAt(i++));
+        enc3 = this.KEY_STR.indexOf(input.charAt(i++));
+        enc4 = this.KEY_STR.indexOf(input.charAt(i++));
+
+        chr1 = (enc1 << 2) | (enc2 >> 4);
+        chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+        chr3 = ((enc3 & 3) << 6) | enc4;
+
+        buf.push(chr1);
+
+        if (enc3 !== 64) {
+          buf.push(chr2);
+        }
+        if (enc4 !== 64) {
+          buf.push(chr3);
+        }
+
+        chr1 = chr2 = chr3 = '';
+        enc1 = enc2 = enc3 = enc4 = '';
+
+      } while (i < input.length);
+
+      return buf;
+    };
+
+    return ExifRestorer.restore(orig, resized);  //<= EXIF
+  };
+
+  return upload;
+}]);
+
+
+},{}],188:[function(require,module,exports){
+require('./dist/ng-file-upload-all');
+module.exports = 'ngFileUpload';
+},{"./dist/ng-file-upload-all":187}],189:[function(require,module,exports){
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
@@ -90678,8 +94792,8 @@ $templateCache.put("select2/match-multiple.tpl.html","<span class=\"ui-select-ma
 $templateCache.put("select2/match.tpl.html","<a class=\"select2-choice ui-select-match\" ng-class=\"{\'select2-default\': $select.isEmpty()}\" ng-click=\"$select.toggle($event)\" aria-label=\"{{ $select.baseTitle }} select\"><span ng-show=\"$select.isEmpty()\" class=\"select2-chosen\">{{$select.placeholder}}</span> <span ng-hide=\"$select.isEmpty()\" class=\"select2-chosen\" ng-transclude=\"\"></span> <abbr ng-if=\"$select.allowClear && !$select.isEmpty()\" class=\"select2-search-choice-close\" ng-click=\"$select.clear($event)\"></abbr> <span class=\"select2-arrow ui-select-toggle\"><b></b></span></a>");
 $templateCache.put("select2/select-multiple.tpl.html","<div class=\"ui-select-container ui-select-multiple select2 select2-container select2-container-multi\" ng-class=\"{\'select2-container-active select2-dropdown-open open\': $select.open, \'select2-container-disabled\': $select.disabled}\"><ul class=\"select2-choices\"><span class=\"ui-select-match\"></span><li class=\"select2-search-field\"><input type=\"text\" autocomplete=\"false\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" role=\"combobox\" aria-expanded=\"true\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-label=\"{{ $select.baseTitle }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"select2-input ui-select-search\" placeholder=\"{{$selectMultiple.getPlaceholder()}}\" ng-disabled=\"$select.disabled\" ng-hide=\"$select.disabled\" ng-model=\"$select.search\" ng-click=\"$select.activate()\" style=\"width: 34px;\" ondrop=\"return false;\"></li></ul><div class=\"ui-select-dropdown select2-drop select2-with-searchbox select2-drop-active\" ng-class=\"{\'select2-display-none\': !$select.open}\"><div class=\"ui-select-choices\"></div></div></div>");
 $templateCache.put("select2/select.tpl.html","<div class=\"ui-select-container select2 select2-container\" ng-class=\"{\'select2-container-active select2-dropdown-open open\': $select.open, \'select2-container-disabled\': $select.disabled, \'select2-container-active\': $select.focus, \'select2-allowclear\': $select.allowClear && !$select.isEmpty()}\"><div class=\"ui-select-match\"></div><div class=\"ui-select-dropdown select2-drop select2-with-searchbox select2-drop-active\" ng-class=\"{\'select2-display-none\': !$select.open}\"><div class=\"select2-search\" ng-show=\"$select.searchEnabled\"><input type=\"text\" autocomplete=\"false\" autocorrect=\"false\" autocapitalize=\"off\" spellcheck=\"false\" role=\"combobox\" aria-expanded=\"true\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-label=\"{{ $select.baseTitle }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"ui-select-search select2-input\" ng-model=\"$select.search\"></div><div class=\"ui-select-choices\"></div></div></div>");}]);
-},{}],186:[function(require,module,exports){
+},{}],190:[function(require,module,exports){
 require('./dist/select.js');
 module.exports = 'ui.select';
 
-},{"./dist/select.js":185}]},{},[1]);
+},{"./dist/select.js":189}]},{},[1]);
