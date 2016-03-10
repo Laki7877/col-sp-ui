@@ -1541,7 +1541,16 @@ module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", "Im
 				$scope.saving = false;
 				$scope.alert = new NcAlert();
 				$scope.shopGroupOptions = config.DROPDOWN.SHOP_GROUP_DROPDOWN;
-				$scope.shops = [];
+				$scope.shops = {
+					include: {
+						data: [],
+						loading: false
+					},
+					exclude: {
+						data: [],
+						loading: false
+					}
+				};
 
 				//Load
 				if(id != 0) {
@@ -1558,13 +1567,17 @@ module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", "Im
 				} else {
 					$scope.formData = NewsletterService.generate();
 				}
-				$scope.getShops = function(search) {
+				$scope.getShops = function(search, key) {
+					$scope.shops[key].loading = true;
 					AdminShopService.list({
 							searchText: search,
 							_limit: 8
 						})
 						.then(function(data) {
-							$scope.shops = data.data;
+							$scope.shops[key].data = data.data;
+						})
+						.finally(function() {
+							$scope.shops[key].loading = false;
 						})
 				};
 				$scope.upload = function($file) {
@@ -3464,7 +3477,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
       size: 'change-password',
       windowClass: 'modal-custom',
       templateUrl: 'common/modalChangePassword',
-      controller: ["$scope", "$uibModalInstance", "NcAlert", "Credential", "common", function($scope, $uibModalInstance, NcAlert, Credential, common) {
+      controller: ["$rootScope", "$scope", "$uibModalInstance", "NcAlert", "Credential", "common", function($rootScope, $scope, $uibModalInstance, NcAlert, Credential, common) {
         'ngInject';
         $scope.alert = new NcAlert();
         $scope.form = {};
@@ -3483,6 +3496,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
                 $scope.formData = {};
                 $scope.formData.error = false;
                 $scope.form.$setPristine();
+                $rootScope.$broadcast('change-password');
               }, function(err) {
                 $scope.alert.error(common.getError(err));
                 $scope.formData.error = true;
@@ -3649,34 +3663,92 @@ module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", fun
 }];
 },{}],45:[function(require,module,exports){
 
-module.exports = ["$scope", "$rootScope", "Onboarding", "$log", function($scope, $rootScope, Onboarding, $log){
+module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", function($scope, $rootScope, Onboarding, $log, $window){
 	'ngInject';
 
-	Onboarding.getListCompletedTask()
-		.then(function(data) {
-	    	$scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct, data.DecorateStore];
-	    })
-	    .then(function() {
-	    	var checkBeforeLaunch = $scope.Completed[$scope.Completed.length-1];
-	    	var checkIfHaveCompleted = $scope.Completed[$scope.Completed.length-1];
-			for (var i = $scope.Completed.length - 1; i >= 0; i--) {
-				checkBeforeLaunch = checkBeforeLaunch && $scope.Completed[i];
-				checkIfHaveCompleted = checkIfHaveCompleted || $scope.Completed[i];
-			};
-			$scope.checkIfHaveCompleted = checkIfHaveCompleted;
-			return $scope.checkBeforeLaunch = checkBeforeLaunch;
-	    });
+	$scope.$on('change-password', function() {
+		$scope.load();
+	})
+
+	$scope.load = function() {
+		Onboarding.getListCompletedTask()
+			.then(function(data) {
+				// console.log(data);
+				// data.AddProduct = false;
+				// data.ProductApprove = true;
+				// $scope.Completed = [true,true,data.AddProduct && data.ProductApprove,true];
+				// $scope.Completed = [false,false,false,false];
+		    	$scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct && data.ProductApprove, data.DecorateStore];
+
+		    	// Begin section Product Field: return text for Product Field 
+		    	if (data.AddProduct == true && data.ProductApprove == false) {
+		    		// Atleast, a product is added and admin is processing approving process.
+		    		$scope.productFieldContent = {
+		    			title:"Wait for product to be approved",
+		    			subTitle:"Admin is reviewing your product",
+		    			button:"Add More Product"
+		    		};
+		    	}
+		    	else if (data.AddProduct == true && data.ProductApprove == true) {
+		    		// Atleast, a product is added and approved 
+		    		$scope.productFieldContent = {
+		    			title:"Congratuation! Your product is approved",
+		    			subTitle:"You can add more products to your store",
+		    			button:"Add More Product"
+		    		};
+		    	}
+		    	else {
+		    		// In case no products are added and no products are approved
+		    		$scope.productFieldContent = {
+		    			title:"Add product",
+		    			subTitle:"Add at least one item to your store",
+		    			button:"Add Product"
+		    		};
+		    	}
+		    	// End section Product Field
+		    })
+		    .then(function(data) {
+		    	var checkBeforeLaunch = $scope.Completed[$scope.Completed.length-1];
+		    	var checkIfHaveCompleted = $scope.Completed[$scope.Completed.length-1];
+				for (var i = $scope.Completed.length - 1; i >= 0; i--) {
+					checkBeforeLaunch = checkBeforeLaunch && $scope.Completed[i];
+					checkIfHaveCompleted = checkIfHaveCompleted || $scope.Completed[i];
+				};
+				//$scope.checkIfHaveCompleted is used for hide or show completed line.
+				//$scope.checkBeforeLaunch is used for check if all task are completed.
+				$scope.checkIfHaveCompleted = checkIfHaveCompleted;
+				return $scope.checkBeforeLaunch = checkBeforeLaunch;
+		    }).then(function(data) {
+		    	// Change text of Launch subtitle to 'Time to go live' if all tasks are completed
+		    	$scope.launchTextSubtitle = "Complete the tasks above to launch your store";
+				return $scope.launchTextSubtitle =	(data == true ? 'Time to go live!': 'Complete the tasks above to launch your store');
+		    });
+	};
 
 	$scope.launchShop = function() {
 
 		if($scope.checkBeforeLaunch) {
-			console.log("Shop launched");
 			Onboarding.launchShop();
 		}
 		else {
-			console.log("can't launch");
+			// console.log("can't launch");
 		}
 	};
+
+	$scope.redirectToProducts = function() {
+		$window.location.href = '/products';
+    };
+
+    $scope.redirectToShopSetting = function() {
+    	$window.location.href = 'shops/settings';
+    }
+
+    $scope.redirectToShopAppearance = function() {
+    	$window.location.href = 'shops/appearance';
+    }
+
+    //Init
+    $scope.load();
 }];
 
 },{}],46:[function(require,module,exports){
@@ -12500,7 +12572,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('newsletter/modalAdmin',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><h3 class=\"modal-title modal_title_abosolute\">Add Newsletter</h3><div class=title_relative><div class=float-right><a href=# class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></div></div></div><div class=modal-body><form ng-show=\"!saving && !loading\" name=form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Subject nc-template-form=form.Subject nc-label=Subject><input class=form-control ng-model=formData.Subject required></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Image nc-template-form=form.Image nc-label=Image><button type=button name=Image class=\"btn btn-default\" ngf-accept=\"'.png,.jpg,.jpeg'\" ngf-select=upload($file)>Choose File</button></div><div ng-show=formData.Image nc-template=common/input/form-group-with-label nc-label=\"Image Preview\"><img ng-src={{formData.Image.url}} class=\"img-responsive\"> <a style=display:block class=margin-top-5 ng-click=\"formData.Image=null\"><i class=\"fa-trash fa\"></i> Delete this image</a></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Description nc-template-form=form.Description nc-label=Content><textarea class=form-control ng-model=formData.Description required></textarea></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/PublishedDt nc-template-form=form.PublishedDt nc-label=\"Publish Date\"><div><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.PublishedDt | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=PublishedDt ng-date-before={{formData.PublishedDt}} data-ng-model=formData.PublishedDt data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'hour' }\"></ul></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/VisibleShopGroup nc-template-form=form.VisibleShopGroup nc-label=\"Allow Reader\"><ui-select ng-model=formData.VisibleShopGroup><ui-select-match>{{$select.selected.name}}</ui-select-match><ui-select-choices repeat=\"item.value as item in shopGroupOptions\">{{item.name}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/IncludeShop nc-template-form=form.IncludeShop nc-label=\"Include Shop\"><ui-select ng-model=formData.IncludeShop multiple tagging-label=\"\"><ui-select-match>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices refresh=getShops($select.search) repeat=\"item in shops\">{{item.ShopNameEn}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/ExcludeShop nc-template-form=form.ExcludeShop nc-label=\"Exclude Shop\"><ui-select ng-model=formData.ExcludeShop multiple tagging-label=\"\"><ui-select-match>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices refresh=getShops($select.search) repeat=\"item in shops\">{{item.ShopNameEn}}</ui-select-choices></ui-select></div></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><h3 class=\"modal-title modal_title_abosolute\">Add Newsletter</h3><div class=title_relative><div class=float-right><a href=# class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></div></div></div><div class=modal-body><form ng-show=\"!saving && !loading\" name=form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Subject nc-template-form=form.Subject nc-label=Subject><input class=form-control ng-model=formData.Subject required></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Image nc-template-form=form.Image nc-label=Image><button type=button name=Image class=\"btn btn-default\" ngf-accept=\"'.png,.jpg,.jpeg'\" ngf-select=upload($file)>Choose File</button></div><div ng-show=formData.Image nc-template=common/input/form-group-with-label nc-label=\"Image Preview\"><img ng-src={{formData.Image.url}} class=\"img-responsive\"> <a style=display:block class=margin-top-5 ng-click=\"formData.Image=null\"><i class=\"fa-trash fa\"></i> Delete this image</a></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Description nc-template-form=form.Description nc-label=Content><textarea class=form-control ng-model=formData.Description required></textarea></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/PublishedDt nc-template-form=form.PublishedDt nc-label=\"Publish Date\"><div><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.PublishedDt | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=PublishedDt ng-date-before={{formData.PublishedDt}} data-ng-model=formData.PublishedDt data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'hour' }\"></ul></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/VisibleShopGroup nc-template-form=form.VisibleShopGroup nc-label=\"Allow Reader\"><ui-select ng-model=formData.VisibleShopGroup><ui-select-match>{{$select.selected.name}}</ui-select-match><ui-select-choices repeat=\"item.value as item in shopGroupOptions\">{{item.name}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/IncludeShop nc-template-form=form.IncludeShop nc-label=\"Include Shop\"><ui-select ng-model=formData.IncludeShop multiple tagging-label=\"\"><ui-select-match>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices refresh=\"getShops($select.search, 'include')\" repeat=\"item in shops.include.data\">{{item.ShopNameEn}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/ExcludeShop nc-template-form=form.ExcludeShop nc-label=\"Exclude Shop\"><ui-select ng-model=formData.ExcludeShop multiple tagging-label=\"\"><ui-select-match>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices refresh=\"getShops($select.search, 'exclude')\" repeat=\"item in shops.exclude.data\">{{item.ShopNameEn}}</ui-select-choices></ui-select></div></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
