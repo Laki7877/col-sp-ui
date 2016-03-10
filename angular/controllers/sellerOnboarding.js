@@ -4,7 +4,7 @@ module.exports = function($scope, $rootScope, Onboarding, $log, $window){
 
 	Onboarding.getListCompletedTask()
 		.then(function(data) {
-			// $scope.Completed = [false,false,true,false];
+			// $scope.Completed = [false,false,false,false];
 	    	$scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct, data.DecorateStore];
 	    })
 	    .then(function() {
@@ -30,8 +30,11 @@ module.exports = function($scope, $rootScope, Onboarding, $log, $window){
 	};
 
 	$scope.redirectToProducts = function() {
-		console.log("can't change");
 		$window.location.href = '/products';
     };
+
+    $scope.redirectToShopSetting = function() {
+    	$window.location.href = 'shops/settings';
+    }
 
 };

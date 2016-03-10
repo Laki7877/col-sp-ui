@@ -17,6 +17,8 @@
         <button class="btn btn-white btn-width-xxl" ng-click='changePassword()' type="button"><?=$button_text?></button>
       <? elseif($type == 'redirectProduct'): ?>
         <button class="btn btn-white btn-width-xxl" ng-click='redirectToProducts()' type="button"><?=$button_text?></button>            
+      <? elseif($type == 'redirectShopSetting'): ?>
+        <button class="btn btn-white btn-width-xxl" ng-click='redirectToShopSetting()' type="button"><?=$button_text?></button>            
       <? else: ?>
         <button class="btn btn-white btn-width-xxl" <?=$disble_status?> type="button"><?=$button_text?></button>
       <? endif; ?>

@@ -22,9 +22,10 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
          <? $this->insert('components/forms/seller_task',
            ["field_header" => "Add shop description",
             "field_text" => "Tell customers what your shop is about",
-            "button_text" => "Add Description",
+            "button_text" => "Check Profile",
             "image_name" => "icon-onboard-setting",
-            "task_display" => "ng-hide='Completed[1]'"]) ?> 
+            "task_display" => "ng-hide='Completed[1]'",
+            "type" => "redirectShopSetting"]) ?> 
 
         <? $this->insert('components/forms/seller_task',
           ["field_header" => "Add product",
@@ -68,7 +69,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "button_text" => "Check Profile",
            "image_name" => "icon-onboard-setting",
            "home_task_container_class" => "background_blue",
-           "task_display" => "ng-hide='!Completed[1]'"]) ?>
+           "task_display" => "ng-hide='!Completed[1]'",
+           "type" => "redirectShopSetting"]) ?>
 
         <? $this->insert('components/forms/seller_task',
           ["field_header" => "Add product",
