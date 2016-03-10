@@ -6,7 +6,7 @@ module.exports = function($scope, $controller, $uibModal, NewsletterService, Ima
 			url: '/newsletters',
 			service: NewsletterService,
 			item: 'Newsletter',
-			order: 'CreatedDt',
+			order: 'PublishedDt',
 			id: 'NewsletterId',
 			actions: [{
 				name: 'View / Edit',

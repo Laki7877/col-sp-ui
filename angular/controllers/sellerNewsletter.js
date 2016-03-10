@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, $uibModal, NewsletterService) {
+module.exports = function($scope, $controller, $uibModal, NewsletterService, AdminShopService) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
@@ -6,10 +6,20 @@ module.exports = function($scope, $controller, $uibModal, NewsletterService) {
 			url: '/newsletters',
 			service: NewsletterService,
 			item: 'Newsletter',
-			order: 'CreatedDt',
+			order: 'UpdatedDt',
 			id: 'NewsletterId'
 		}
 	});
+	$scope.shops = [];
+	$scope.getShops = function(search) {
+		AdminShopService.list({
+				searchText: search,
+				limit: 8
+			})
+			.then(function() {
+
+			})
+	};
 	$scope.open = function(item) {
 		NewsletterService.get(item.NewsletterId)
 			.then(function(data) {
