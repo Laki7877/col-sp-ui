@@ -1,4 +1,7 @@
 module.exports = {
+    Image: {
+
+    },
     Subject: {
         'labelClass': 'required',
         'error': {

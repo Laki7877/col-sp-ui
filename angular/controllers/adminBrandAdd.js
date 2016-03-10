@@ -15,7 +15,9 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 		$scope.logoUploader.upload(file)
 			.then(function(response) {
 				$scope.formData.BrandImage = response.data;
+				$scope.formData.BrandImage.IsLogo = true;
 			}, function(err) {
+				$scope.formData.BrandImage = null;
 				$scope.alert.error(common.getError(err.data));
 			});
 	};
