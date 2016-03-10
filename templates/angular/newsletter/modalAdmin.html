@@ -11,8 +11,7 @@
   <form name="form" class="ah-form margin-top-20">
     <div class="row">
       <div class="col-xs-12">
-        <div class="form-section-content">
-          <div nc-template="common/input/form-group-with-label"
+        <div class="form-section-content">         <div nc-template="common/input/form-group-with-label"
             nc-template-options-path="addNewsletterForm/Subject"
             nc-template-form="form.Subject"
             nc-label="Subject">
@@ -50,6 +49,7 @@
             nc-label="Content">
             <textarea ng-model="formData.Description" required></textarea>
           </div>
+        </div>
           <div nc-template="common/input/form-group-with-label"
             nc-template-options-path="addNewsletterForm/PublishedDt"
             nc-template-form="form.PublishedDt"
@@ -61,9 +61,9 @@
                          class="input-icon-calendar form-control" value="{{ formData.PublishedDt | date: 'dd/MM/yy HH:mm' }}" />
                     </a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                        <datetimepicker name="PublishedDt" ng-date-before="{{formData.PublishedDt}}" data-ng-model="formData.CreatedDtFrom" data-sdatetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'hour' }" /required>
+                        <datetimepicker name="PublishedDt" ng-date-before="{{formData.PublishedDt}}" data-ng-model="formData.CreatedDtFrom" data-sdatetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'hour' }" required />
                     </ul>
-                </div-->
+                </div>
               </div>
           </div>
           <div nc-template="common/input/form-group-with-label"
@@ -93,7 +93,6 @@
               <ui-select-choices refresh="getShops($select.search)" repeat="item in shops track by $index"></ui-select-choices>
             </ul-select>
           </div>
-        </div>
       </div>
     </div>
   </form>
