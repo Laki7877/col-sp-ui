@@ -150,6 +150,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('SellerInventoryListCtrl', controllers.sellerInventoryList)
   .controller('SellerOnboardingCtrl', controllers.sellerOnboarding)
   .controller('SellerNewsletterCtrl', controllers.sellerNewsletter)
+  .controller('SellerDashboardCtrl', controllers.sellerDashboard)
 
   .controller('AdminAttributeCtrl', controllers.adminAttribute)
   .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)

@@ -4,7 +4,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
 
 <?php $this->start('page-body') ?>
 
-  <div id="dashboard_page">
+  <div id="dashboard_page" ng-controller="SellerDashboardCtrl">
     <div class="dashboard_column col-xs-8">
       <div class="space_column with_border">
         <div class="group_container no_border">
@@ -43,7 +43,27 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         <div class="group_container no-padding">
           <table class="table table_dashboard table_recent_order">
             <tbody>
-              <tr>
+              <tr ng-repeat="order in newOrders | orderBy: 'date' | limitTo:maxNewOrders"">
+                <td>
+                  {{order.date | date:'MM/dd/yyyy'}}
+                </td>
+                <td>
+                  {{order.id}}
+                </td>
+                <td>
+                  {{order.amount}}
+                </td>
+                <td>
+                  <span ng-class="getColorClass(order.status)">
+                    <i class="fa" ng-class="getFaClass(order.status)"></i>
+                    {{order.status}}
+                  </span>
+                </td>
+                <td>
+                  <button class="btn btn-white btn-width-default">View</button>
+                </td>
+              </tr>
+              <!-- <tr>
                 <td>
                   13/12/2015
                 </td>
@@ -83,7 +103,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
                 <td>
                   <button class="btn btn-white btn-width-default">View</button>
                 </td>
-              </tr>
+              </tr> -->
             </tbody>
           </table>
         </div>
