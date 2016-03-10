@@ -1,7 +1,7 @@
 'use strict';
 //App Start here
 var angular = require('angular');
-var bulk = require('bulk-require')(__dirname, ['controllers/*.js', 'services/*.js', 'helpers/*.js',
+var bulk = require('bulk-require')(__dirname, ['controllers/*.js', 'colDev/*.js', 'services/*.js', 'helpers/*.js',
   'directives/*.js', 'filters/*.js', 'libs/*.js', 'template-options/*.js'
 ]);
 var config = require('./config');
@@ -26,6 +26,7 @@ require('./nc');
 
 //Internal dependencies
 var controllers = bulk.controllers;
+var colController = bulk.colDev;
 var services = bulk.services;
 var helpers = bulk.helpers;
 var directives = bulk.directives;
@@ -274,8 +275,9 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'nc', 'ui.bootstrap.d
 .controller('AdminOnTopCreditCtrl', controllers.adminOnTopCreditAdd)
 .controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
 
-.controller('AdminCMSCtrl', controllers.adminCMS)
-//.controller('AdminCMSStaticCtrl', controllers.adminCMSStatic)
-//.controller('AdminCMSCollectionCtrl', controllers.adminCMSCollection)
+// Create By Col Dev (Natee)
+.controller('AdminCMSCategoryController', colController.adminCMSCategoryController)
+.controller('AdminCMSCollectionController', colController.adminCMSCollectionController)
+.controller('AdminCMSGroupController', colController.adminCMSGroupController)
 
 .controller('TestCtrl', controllers.test)

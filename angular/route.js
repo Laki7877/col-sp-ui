@@ -126,14 +126,12 @@ var admin = {
 		'Global Coupons': '/admin/coupons/admin',
 		'Seller Coupons': '/admin/coupons/seller'
 	},
-	// 'CMS Collections|fa-product-hunt': {
-	// 	'Static': '/admin/cms/static',
-	// 	'Collection': '/admin/cms/collection'
-	// },
+
+	// Create By Col Dev (Natee)
 	'CMS|fa-product-hunt': {
-	 	'View All CMS': '/admin/cms',
-	 	'Create CMS Static': '/admin/cms/static',
-	 	'Create CMS Collection': '/admin/cms/collection'
+	 	'CMS Category': '/admin/cms/category',
+	 	'CMS Collection': '/admin/cms/collection',
+	 	'CMS Group': '/admin/cms/group'
 	},
 	'Reports|fa-line-chart': {
 		'View': '/admin/reports'

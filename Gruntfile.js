@@ -33,9 +33,11 @@ module.exports = function (grunt) {
     },
     watch: {
       scripts: {
-        files: ['angular/**/*', 'templates/angular/**/*.html'],
+        files: ['angular/**/*', 'angular/colDev/*.js', 'templates/angular/**/*.html'],
         tasks: ['default']
       },
+
+      // Create By Col Dev (Natee)
       livereload: {
         options: { livereload: true },
         files: ['templates/**/*', 'angular/**/*']
@@ -114,6 +116,7 @@ module.exports = function (grunt) {
   grunt.registerTask('watchall', ['watch']);
   grunt.registerTask('compass', ['exec:compass']);
 
+  // Create By Col Dev (Natee)
   // live reload
   grunt.loadNpmTasks('grunt-contrib-watch');
 
