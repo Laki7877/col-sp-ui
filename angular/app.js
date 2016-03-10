@@ -92,6 +92,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .factory('AdminShopService', services.adminShopService)
   .factory('AdminShoptypeService', services.adminShoptypeService)
   .factory('ShopPermissionService', services.shopPermissionService)
+  .factory('NewsletterService', services.newsletterService)
   .factory('VariantPair', helpers.variantPair)
   .factory('Alert', services.alert)
   .factory('Blocker', services.blocker)
@@ -148,6 +149,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('SellerShopSettingCtrl', controllers.sellerShopSetting)
   .controller('SellerInventoryListCtrl', controllers.sellerInventoryList)
   .controller('SellerOnboardingCtrl', controllers.sellerOnboarding)
+  .controller('SellerNewsletterCtrl', controllers.sellerNewsletter)
 
   .controller('AdminAttributeCtrl', controllers.adminAttribute)
   .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)
@@ -166,6 +168,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('AdminShoptypeAddCtrl', controllers.adminShoptypeAdd)
   .controller('AdminCouponCtrl', controllers.adminCoupon)
   .controller('AdminCouponAddCtrl', controllers.adminCouponAdd)
+  .controller('AdminNewsletterCtrl', controllers.adminNewsletter)
 
   .controller('AdminProductApprovalListCtrl', controllers.adminProductApprovalList)
   .controller('AdminProductListCtrl', controllers.adminProductList)

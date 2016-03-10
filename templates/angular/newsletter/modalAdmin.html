@@ -1,0 +1,99 @@
+<div class="modal-header">
+  <h3 class="modal-title modal_title_abosolute">Add Newsletter</h3>
+  <div class="title_relative">
+    <div class="float-right">
+      <a href="#" class="link-btn-plain" ng-click="$dismiss()">Cancel</a>
+      <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+    </div>
+  </div>
+</div>
+<div class="modal-body">
+  <form name="form" class="ah-form margin-top-20">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-section-content">         <div nc-template="common/input/form-group-with-label"
+            nc-template-options-path="addNewsletterForm/Subject"
+            nc-template-form="form.Subject"
+            nc-label="Subject">
+            <input
+              type="text"
+              ng-model="formData.Subject"
+              required
+              />
+          </div>
+          <div nc-template="common/input/form-group-with-label"
+            nc-template-options-path="addNewsletterForm/Image"
+            nc-template-form="form.Image"
+            nc-label="Image">
+              <button 
+              type="button"
+              name="Image"
+              class="btn btn-default"
+              ngf-accept="'.png,.jpg,.jpeg'"
+              ngf-select="uploadLogo($file)"
+              ng-model="formData.image"
+              >Choose File</button>
+          </div>
+          <div ng-show="formData.Image"
+            nc-template="common/input/form-group-with-label" 
+            nc-label="Image Preview">
+              <img
+                ng-src="{{formData.Image.url}}"
+                width="160"
+                />
+              <a style="display:block;" class="margin-top-5" ng-click="formData.Image=null"><i class="fa-trash fa"></i> Delete this image</a>
+          </div>
+          <div nc-template="common/input/form-group-with-label"
+            nc-template-options-path="addNewsletterForm/Description"
+            nc-template-form="form.Description"
+            nc-label="Content">
+            <textarea ng-model="formData.Description" required></textarea>
+          </div>
+        </div>
+          <div nc-template="common/input/form-group-with-label"
+            nc-template-options-path="addNewsletterForm/PublishedDt"
+            nc-template-form="form.PublishedDt"
+            nc-label="Publish Date">
+            <div class="width-field-normal">
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="dropdown" role="button" data-toggle="dropdown" data-target="#" href="#">
+                        <input readonly style="background-color:white" type="text"
+                         class="input-icon-calendar form-control" value="{{ formData.PublishedDt | date: 'dd/MM/yy HH:mm' }}" />
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <datetimepicker name="PublishedDt" ng-date-before="{{formData.PublishedDt}}" data-ng-model="formData.CreatedDtFrom" data-sdatetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'hour' }" required />
+                    </ul>
+                </div>
+              </div>
+          </div>
+          <div nc-template="common/input/form-group-with-label"
+            nc-template-options-path="addNewsletterForm/VisibleShopGroup"
+            nc-template-form="form.VisibleShopGroup"
+            nc-label="Allow Reader">
+            <ui-select ng-model="formData.VisibleShopGroup">
+              <ui-select-match>{{$select.selected}}</ui-select-match>
+              <ui-select-choices repeat="item.value as item in shopGroupOptions track by $index"></ui-select-choices>
+            </ul-select>
+          </div>
+          <div nc-template="common/input/form-group-with-label"
+            nc-template-options-path="addNewsletterForm/IncludeShop"
+            nc-template-form="form.IncludeShop"
+            nc-label="IncludeShop">
+            <ui-select ng-model="formData.IncludeShop">
+              <ui-select-match>{{$item.ShopNameEn}}</ui-select-match>
+              <ui-select-choices refresh="getShops($select.search)" repeat="item in shops track by $index"></ui-select-choices>
+            </ul-select>
+          </div>
+          <div nc-template="common/input/form-group-with-label"
+            nc-template-options-path="addNewsletterForm/ExcludeShop"
+            nc-template-form="form.ExcludeShop"
+            nc-label="ExcludeShop">
+            <ui-select ng-model="formData.ExcludeShop">
+              <ui-select-match>{{$item.ShopNameEn}}</ui-select-match>
+              <ui-select-choices refresh="getShops($select.search)" repeat="item in shops track by $index"></ui-select-choices>
+            </ul-select>
+          </div>
+      </div>
+    </div>
+  </form>
+</div>

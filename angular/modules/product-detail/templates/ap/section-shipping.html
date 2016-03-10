@@ -9,9 +9,9 @@
             <div class="width-field-normal">
                 <div class="radio multiple-radio multiline">
                     <label>
-                        <input type="radio" name="shipping_method" value="1" ng-model="formDataPtr.ShippingMethod" /> Dropship by 3PL</label>
+                        <input type="radio" name="shipping_method" value="1" ng-model="variantPtr.ShippingMethod" /> Dropship by 3PL</label>
                     <label>
-                        <input type="radio" name="shipping_method" value="2" ng-model="formDataPtr.ShippingMethod" /> Central Fulfillment</label>
+                        <input type="radio" name="shipping_method" value="2" ng-model="variantPtr.ShippingMethod" /> Central Fulfillment</label>
                 </div>
             </div>
         </div>
@@ -19,7 +19,7 @@
         <div nc-template="common/input/form-group-with-label" nc-label="Preparation Time" nc-template-form="form.PrepareDay"
         nc-template-options-path="addProductForm/PrepareDay" style="margin-bottom: 0px;">
             <input class="form-control width-field-normal" name="PrepareDay" ng-pattern-restrict="^[0-9]*$" ng-required="onPublishing"
-            maxlength="5" ng-model="formDataPtr.PrepareDay" />
+            maxlength="5" ng-model="variantPtr.PrepareDay"/>
         </div>
 
         <div class="form-group margin-bottom-20">
@@ -45,49 +45,49 @@
                         <div nc-template="common/input/div-with-label" nc-label="Monday" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.PrepareMon">
                             <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="3" name="PrepareMon"
-                            ng-model="formDataPtr.MasterVariant.PrepareMon" />
+                            ng-model="variantPtr.PrepareMon" />
                         </div>
                     </div>
                     <div class="input-column margin-bottom-10">
                         <div nc-template="common/input/div-with-label" nc-label="Tuesday" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.PrepareTue">
                             <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="3" name="PrepareTue"
-                            ng-model="formDataPtr.MasterVariant.PrepareTue" />
+                            ng-model="variantPtr.PrepareTue" />
                         </div>
                     </div>
                     <div class="input-column margin-bottom-10">
                         <div nc-template="common/input/div-with-label" nc-label="Wednesday" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.PrepareWed">
                             <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="3" name="PrepareWed"
-                            ng-model="formDataPtr.MasterVariant.PrepareWed" />
+                            ng-model="variantPtr.PrepareWed" />
                         </div>
                     </div>
                     <div class="input-column margin-bottom-10">
                         <div nc-template="common/input/div-with-label" nc-label="Thursday" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.PrepareThu">
                             <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="3" name="PrepareThu"
-                            ng-model="formDataPtr.MasterVariant.PrepareThu" />
+                            ng-model="variantPtr.PrepareThu" />
                         </div>
                     </div>
                     <div class="input-column margin-bottom-10">
                         <div nc-template="common/input/div-with-label" nc-label="Friday" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.PrepareFri">
                             <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="3" name="PrepareFri"
-                            ng-model="formDataPtr.MasterVariant.PrepareFri" />
+                            ng-model="variantPtr.PrepareFri" />
                         </div>
                     </div>
                     <div class="input-column margin-bottom-10">
                         <div nc-template="common/input/div-with-label" nc-label="Saturday" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.PrepareSat">
                             <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="3" name="PrepareSat"
-                            ng-model="formDataPtr.MasterVariant.PrepareSat" />
+                            ng-model="variantPtr.PrepareSat" />
                         </div>
                     </div>
                     <div class="input-column margin-bottom-10">
                         <div nc-template="common/input/div-with-label" nc-label="Sunday" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.PrepareSun">
                             <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="3" name="PrepareSun"
-                            ng-model="formDataPtr.MasterVariant.PrepareSun" />
+                            ng-model="variantPtr.PrepareSun" />
                         </div>
                     </div>
 
@@ -106,7 +106,7 @@
                         <div nc-template="common/input/div-with-label" nc-label="Length" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.Length">
                             <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11" ng-required="onPublishing" name="Length"
-                            ng-model="formDataPtr.MasterVariant.Length" />
+                            ng-model="variantPtr.Length" />
                         </div>
                     </div>
 
@@ -114,7 +114,7 @@
                         <div nc-template="common/input/div-with-label" nc-label="Height" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.Height">
                             <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11" ng-required="onPublishing" name="Height"
-                            ng-model="formDataPtr.MasterVariant.Height" />
+                            ng-model="variantPtr.Height" />
                         </div>
                     </div>
 
@@ -122,12 +122,12 @@
                         <div nc-template="common/input/div-with-label" nc-label="Width" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.Width">
                             <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11" ng-required="onPublishing" name="Width"
-                            ng-model="formDataPtr.MasterVariant.Width" />
+                            ng-model="variantPtr.Width" />
                         </div>
                     </div>
 
                     <div class="input-column no-label select input-xl" style="padding-top: 24px">
-                        <select ng-model="formDataPtr.MasterVariant.DimensionUnit" class="form-control">
+                        <select ng-model="variantPtr.DimensionUnit" class="form-control">
                             <option value="MM"> Millimeter </option>
                             <option value="CM"> Centimeter </option>
                             <option value="M"> Meter </option>
@@ -149,7 +149,7 @@
                     <div nc-template="common/input/text-column-no-label" nc-label="" nc-template-options-path="addProductForm/Dimension"
                     nc-template-form="form.Weight">
                         <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11" ng-required="onPublishing" name="Weight"
-                        ng-model="formDataPtr.MasterVariant.Weight" />
+                        ng-model="variantPtr.Weight" />
                     </div>
 
 

@@ -61,6 +61,12 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
         return (dataType == 'HB');
     }
 
+    service.isCheckboxDataType = function (dataType) {
+        if (!('CB' in DataTypeDropDown)) throw new KnownException("Checkbox in no longer 'CB' in config");
+        return (dataType == 'CB');
+    }
+
+
     service.tableSortClass = function ($scope) {
         return function (id, flag) {
 

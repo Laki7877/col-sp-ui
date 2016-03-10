@@ -52,6 +52,7 @@ Route::add('/roles', 'SellerController::listRole');
 Route::add('/roles/add', 'SellerController::addRole');
 Route::add('/roles/:id', 'SellerController::editRole');
 Route::add('/inventory', 'SellerController::listInventory');
+Route::add('/newsletters', 'SellerController::listNewsletter');
 Route::add('/onboarding', 'SellerController::onboarding');
 
 
@@ -91,7 +92,7 @@ Route::add('/admin/coupons/admin/create', 'AdminController::admin_coupons_create
 Route::add('/admin/ontopcredit', 'AdminController::listOntopcredit');
 Route::add('/admin/ontopcredit/create', 'AdminController::addOntopcredit');
 Route::add('/admin/ontopcredit/:id', 'AdminController::editOntopcredit');
-
+Route::add('/admin/newsletters', 'AdminController::listNewsletter');
 //test route
 Route::add('/test/:name', 'TestController::any');
 
