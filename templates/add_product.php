@@ -49,7 +49,10 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
                             <div class="float-right">
                                 <a href="/products" class="link-btn-plain">Cancel</a>
 
-                                <button ng-show="formData.Status != 'WA'"
+				<button ng-click="_debugLoad()" class="btn btn-success"><i class="glyphicon glyphicon-folder-open"></i>&nbsp;Load.. </button>
+				<button ng-click="_debugSave()" class="btn btn-success"><i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;Save as..</button>
+				
+				<button ng-show="formData.Status != 'WA'"
                                 class="btn btn-white btn-width-xl" ng-click="preview()">Preview</button>
 
                                 <button ng-show="formData.Status != 'WA'"

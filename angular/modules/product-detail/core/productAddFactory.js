@@ -47,7 +47,7 @@ angular.module('productDetail').
                     B = VARIANT_DUMMY_FACTOR;
                 }
 
-                var kpair = {};
+                var kpair = angular.copy(formData.MasterVariant);
                 var firstAttribute = {
                     AttributeId: !dataSet.attributeOptions[0].Attribute ? null : dataSet.attributeOptions[0].Attribute.AttributeId,
                     AttributeValues: (!AVId ? [] : [{
@@ -67,37 +67,8 @@ angular.module('productDetail').
                 kpair.FirstAttribute = firstAttribute;
                 kpair.SecondAttribute = secondAttribute;
                 kpair.text = util.variant.toString(firstAttribute, secondAttribute);
-                //Copy default value over from main variant
-                kpair.ProductNameEn = formData.MasterVariant.ProductNameEn;
-                kpair.ProductNameTh = formData.MasterVariant.ProductNameTh;
                 kpair.Display = dataSet.VariantDisplayOption[0].value;
                 kpair.Visibility = true;
-                kpair.DimensionUnit = "MM";
-                kpair.WeightUnit = "G";
-                kpair.Sku = (formData.MasterVariant.Sku || "SKU") + "-" + (Number((formData.Variants || []).length) + 1);
-                kpair.OriginalPrice = formData.MasterVariant.OriginalPrice;
-                kpair.SalePrice = formData.MasterVariant.SalePrice;
-                kpair.Quantity = formData.MasterVariant.Quantity;
-                kpair.Length = formData.Length;
-                kpair.Width = formData.Width;
-                kpair.Height = formData.Height;
-                kpair.Upc = formData.MasterVariant.Upc;
-                kpair.Weight = formData.Weight;
-                kpair.DescriptionFullEn = formData.MasterVariant.DescriptionFullEn;
-                kpair.DescriptionFullTh = formData.MasterVariant.DescriptionFullTh;
-                kpair.DescriptionShortEn = formData.MasterVariant.DescriptionShortEn;
-                kpair.DescriptionShortTh = formData.MasterVariant.DescriptionShortTh;
-                kpair.Images = angular.copy(formData.MasterImages);
-                kpair.VideoLinks = angular.copy(formData.VideoLinks);
-                kpair.PrepareDay = formData.PrepareDay;
-                kpair.PrepareSun = formData.PrepareSun;
-                kpair.PrepareSat = formData.PrepareSat;
-                kpair.PrepareFri = formData.PrepareFri;
-                kpair.PrepareThu = formData.PrepareThu;
-                kpair.PrepareWed = formData.PrepareWed;
-                kpair.PrepareTue = formData.PrepareTue;
-                kpair.PrepareMon = formData.PrepareMon;
-                kpair.SEO = angular.copy(formData.SEO || {});
                 kpair.SEO.ProductUrlKeyEn = "";
 
                 if (kpair.text in vHashSet) {
@@ -175,6 +146,8 @@ angular.module('productDetail').
                     
                     if (ivFormData) {
                         pageLoader.load('Indexing AttributeSet');
+			//Search for Attribute Set from Attribute Set list that matches the Id
+			//TODO: just let backend send entire thing
                         sharedFormData.AttributeSet = sharedDataSet.AttributeSets[sharedDataSet.AttributeSets.map(function(o) {
                             return o.AttributeSetId
                         }).indexOf(ivFormData.AttributeSet.AttributeSetId)];

@@ -185,7 +185,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('TestCtrl', controllers.test)
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./config":2,"./controllers/abstractAdd.js":3,"./controllers/abstractAdvanceList.js":4,"./controllers/abstractList.js":5,"./controllers/adminAccount.js":6,"./controllers/adminAccountAdd.js":7,"./controllers/adminAttribute.js":8,"./controllers/adminAttributeAdd.js":9,"./controllers/adminAttributeSet.js":10,"./controllers/adminAttributeSetAdd.js":11,"./controllers/adminBrand.js":12,"./controllers/adminBrandAdd.js":13,"./controllers/adminCategory.js":14,"./controllers/adminCoupon.js":15,"./controllers/adminCouponAdd.js":16,"./controllers/adminNewsletter.js":17,"./controllers/adminOnTopCreditAdd.js":18,"./controllers/adminOnTopCreditList.js":19,"./controllers/adminProductApprovalList.js":20,"./controllers/adminProductDetail.js":21,"./controllers/adminProductList.js":22,"./controllers/adminRole.js":23,"./controllers/adminRoleAdd.js":24,"./controllers/adminShop.js":25,"./controllers/adminShopAdd.js":26,"./controllers/adminShoptype.js":27,"./controllers/adminShoptypeAdd.js":28,"./controllers/index.js":29,"./controllers/localCategory.js":30,"./controllers/login.js":31,"./controllers/productAddSelectCategory.js":32,"./controllers/productExport.js":33,"./controllers/productImageList.js":34,"./controllers/productImageManagement.js":35,"./controllers/productImport.js":36,"./controllers/productList.js":37,"./controllers/productListLocalCategory.js":38,"./controllers/productReview.js":39,"./controllers/root.js":40,"./controllers/sellerAccount.js":41,"./controllers/sellerAccountAdd.js":42,"./controllers/sellerInventoryList.js":43,"./controllers/sellerNewsletter.js":44,"./controllers/sellerOnboarding.js":45,"./controllers/sellerProductDetail.js":46,"./controllers/sellerRole.js":47,"./controllers/sellerRoleAdd.js":48,"./controllers/sellerShopSetting.js":49,"./controllers/test.js":50,"./directives/ncTradableSelect.js":51,"./directives/ngCkeditor.js":52,"./directives/ngDateBefore.js":53,"./directives/ngDelegate.js":54,"./directives/ngMatch.js":55,"./directives/ngMaxnumber.js":56,"./directives/ngMinnumber.js":57,"./directives/ngPatternRestrict.js":58,"./directives/ngPermission.js":59,"./directives/ngSlideToggle.js":60,"./directives/ngTemplate.js":61,"./directives/popoverAny.js":62,"./filters/capitalize.js":63,"./filters/exclude.js":64,"./filters/excludeCategory.js":65,"./filters/html.js":66,"./filters/importGuidelineExample.js":67,"./filters/leadingzero.js":68,"./filters/ordinal.js":69,"./filters/slice.js":70,"./filters/truncate.js":71,"./filters/truth.js":72,"./filters/variantValue.js":73,"./helpers/base64.js":74,"./helpers/common.js":75,"./helpers/storage.js":76,"./helpers/util.js":77,"./helpers/variantPair.js":78,"./modules/nc":105,"./modules/product-detail":110,"./route":112,"./services/OnTopCredit.js":113,"./services/OnTopCreditService.js":114,"./services/Onboarding.js":115,"./services/adminAccountService.js":116,"./services/adminPermissionService.js":117,"./services/adminRoleService.js":118,"./services/adminShopService.js":119,"./services/adminShoptypeService.js":120,"./services/alert.js":121,"./services/attribute.js":122,"./services/attributeService.js":123,"./services/attributeSet.js":124,"./services/attributeSetService.js":125,"./services/blocker.js":126,"./services/brand.js":127,"./services/brandService.js":128,"./services/category.js":129,"./services/coupon.js":130,"./services/credential.js":131,"./services/exceptionHandler.js":132,"./services/fileService.js":133,"./services/globalCategory.js":134,"./services/globalCategoryService.js":135,"./services/image.js":136,"./services/imageService.js":137,"./services/inventoryService.js":138,"./services/knownException.js":139,"./services/localCategory.js":140,"./services/localCategoryService.js":141,"./services/newsletterService.js":142,"./services/product.js":143,"./services/productReviewService.js":144,"./services/sellerAccountService.js":145,"./services/sellerPermissionService.js":146,"./services/sellerRoleService.js":147,"./services/shop.js":148,"./services/shopPermissionService.js":149,"./template":163,"./template-options/PromotionForm.js":150,"./template-options/addBrandForm.js":151,"./template-options/addCategoryForm.js":152,"./template-options/addNewsletterForm.js":153,"./template-options/addProductForm.js":154,"./template-options/addShopAccountForm.js":155,"./template-options/couponForm.js":156,"./template-options/genericForm.js":157,"./template-options/productExport.js":158,"./template-options/productImport.js":159,"./template-options/searchForm.js":160,"./template-options/shopAppearanceForm.js":161,"./template-options/shopSettingForm.js":162,"angular":184,"angular-animate":165,"angular-base64":166,"angular-bootstrap-datetimepicker":168,"angular-chart.js":169,"angular-clipboard":171,"angular-cookies":173,"angular-file-upload":174,"angular-sanitize":176,"angular-scroll":178,"angular-ui-bootstrap":180,"angular-ui-tree":182,"lodash":186,"ng-file-upload":188,"ui-select/dist/select.js":189}],2:[function(require,module,exports){
+},{"./config":2,"./controllers/abstractAdd.js":3,"./controllers/abstractAdvanceList.js":4,"./controllers/abstractList.js":5,"./controllers/adminAccount.js":6,"./controllers/adminAccountAdd.js":7,"./controllers/adminAttribute.js":8,"./controllers/adminAttributeAdd.js":9,"./controllers/adminAttributeSet.js":10,"./controllers/adminAttributeSetAdd.js":11,"./controllers/adminBrand.js":12,"./controllers/adminBrandAdd.js":13,"./controllers/adminCategory.js":14,"./controllers/adminCoupon.js":15,"./controllers/adminCouponAdd.js":16,"./controllers/adminNewsletter.js":17,"./controllers/adminOnTopCreditAdd.js":18,"./controllers/adminOnTopCreditList.js":19,"./controllers/adminProductApprovalList.js":20,"./controllers/adminProductDetail.js":21,"./controllers/adminProductList.js":22,"./controllers/adminRole.js":23,"./controllers/adminRoleAdd.js":24,"./controllers/adminShop.js":25,"./controllers/adminShopAdd.js":26,"./controllers/adminShoptype.js":27,"./controllers/adminShoptypeAdd.js":28,"./controllers/index.js":29,"./controllers/localCategory.js":30,"./controllers/login.js":31,"./controllers/productAddSelectCategory.js":32,"./controllers/productExport.js":33,"./controllers/productImageList.js":34,"./controllers/productImageManagement.js":35,"./controllers/productImport.js":36,"./controllers/productList.js":37,"./controllers/productListLocalCategory.js":38,"./controllers/productReview.js":39,"./controllers/root.js":40,"./controllers/sellerAccount.js":41,"./controllers/sellerAccountAdd.js":42,"./controllers/sellerInventoryList.js":43,"./controllers/sellerNewsletter.js":44,"./controllers/sellerOnboarding.js":45,"./controllers/sellerProductDetail.js":46,"./controllers/sellerRole.js":47,"./controllers/sellerRoleAdd.js":48,"./controllers/sellerShopSetting.js":49,"./controllers/test.js":50,"./directives/ncTradableSelect.js":51,"./directives/ngCkeditor.js":52,"./directives/ngDateBefore.js":53,"./directives/ngDelegate.js":54,"./directives/ngMatch.js":55,"./directives/ngMaxnumber.js":56,"./directives/ngMinnumber.js":57,"./directives/ngPatternRestrict.js":58,"./directives/ngPermission.js":59,"./directives/ngSlideToggle.js":60,"./directives/ngTemplate.js":61,"./directives/popoverAny.js":62,"./filters/capitalize.js":63,"./filters/exclude.js":64,"./filters/excludeCategory.js":65,"./filters/html.js":66,"./filters/importGuidelineExample.js":67,"./filters/leadingzero.js":68,"./filters/ordinal.js":69,"./filters/slice.js":70,"./filters/truncate.js":71,"./filters/truth.js":72,"./filters/variantValue.js":73,"./helpers/base64.js":74,"./helpers/common.js":75,"./helpers/storage.js":76,"./helpers/util.js":77,"./helpers/variantPair.js":78,"./modules/nc":105,"./modules/product-detail":110,"./route":112,"./services/OnTopCredit.js":113,"./services/OnTopCreditService.js":114,"./services/Onboarding.js":115,"./services/adminAccountService.js":116,"./services/adminPermissionService.js":117,"./services/adminRoleService.js":118,"./services/adminShopService.js":119,"./services/adminShoptypeService.js":120,"./services/alert.js":121,"./services/attribute.js":122,"./services/attributeService.js":123,"./services/attributeSet.js":124,"./services/attributeSetService.js":125,"./services/blocker.js":126,"./services/brand.js":127,"./services/brandService.js":128,"./services/category.js":129,"./services/coupon.js":130,"./services/credential.js":131,"./services/exceptionHandler.js":132,"./services/fileService.js":133,"./services/globalCategory.js":134,"./services/globalCategoryService.js":135,"./services/image.js":136,"./services/imageService.js":137,"./services/inventoryService.js":138,"./services/knownException.js":139,"./services/localCategory.js":140,"./services/localCategoryService.js":141,"./services/newsletterService.js":142,"./services/product.js":143,"./services/productReviewService.js":144,"./services/sellerAccountService.js":145,"./services/sellerPermissionService.js":146,"./services/sellerRoleService.js":147,"./services/shop.js":148,"./services/shopPermissionService.js":149,"./template":163,"./template-options/PromotionForm.js":150,"./template-options/addBrandForm.js":151,"./template-options/addCategoryForm.js":152,"./template-options/addNewsletterForm.js":153,"./template-options/addProductForm.js":154,"./template-options/addShopAccountForm.js":155,"./template-options/couponForm.js":156,"./template-options/genericForm.js":157,"./template-options/productExport.js":158,"./template-options/productImport.js":159,"./template-options/searchForm.js":160,"./template-options/shopAppearanceForm.js":161,"./template-options/shopSettingForm.js":162,"angular":184,"angular-animate":165,"angular-base64":166,"angular-bootstrap-datetimepicker":168,"angular-chart.js":169,"angular-clipboard":171,"angular-cookies":173,"angular-file-upload":174,"angular-sanitize":176,"angular-scroll":178,"angular-ui-bootstrap":180,"angular-ui-tree":182,"lodash":187,"ng-file-upload":189,"ui-select/dist/select.js":204}],2:[function(require,module,exports){
 module.exports = {
 	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
@@ -3637,7 +3637,7 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", function($scope,
 },{}],46:[function(require,module,exports){
 var angular = require('angular');
 
-module.exports = ["$scope", "$controller", function ($scope, $controller) {
+module.exports = ["$scope", "$controller", "storage", function ($scope, $controller, storage) {
     'ngInject';
     
     $controller('AbstractProductAddCtrl', {
@@ -3647,7 +3647,40 @@ module.exports = ["$scope", "$controller", function ($scope, $controller) {
         }
     });
 
+    $scope._debugLoad = function(){
+
+	    var checkpoint = prompt("Enter checkpoint name you want to load from");
+	    $scope.formData = JSON.parse(storage.get('save-fd-' + checkpoint));
+	    $scope.dataset = JSON.parse(storage.get('save-ds-' + checkpoint));
+	    $scope.variationFactorIndices.iterator = JSON.parse(storage.get('save-it-' + checkpoint));
+	    $scope.controlFlags = JSON.parse(storage.get('save-cf-' + checkpoint));
+
+	    console.log($scope.formData, "loaded");
+	    $scope.variantPtr = $scope.formData.MasterVariant;
+	    $scope.imagesPtr = $scope.formData.MasterVariant.Images;
+    }
+
+    $scope._debugSave = function(){
+
+	    var checkpoint = prompt("Enter checkpoint name, you will need to enter this name when you want to load..");
+	    $scope.formData.GlobalCategories.forEach(function(gc){
+	    	if(gc == null) return;
+		delete gc.nodes;
+		delete gc.parent;
+	    });
+	     
+	    delete $scope.dataset.GlobalCategories;
+	    delete $scope.dataset.LocalCategories; 
+	    console.log($scope.dataset, $scope.variationFactorIndices);
+ 
+	    storage.put('save-cf-' + checkpoint, JSON.stringify($scope.controlFlags));
+	    storage.put('save-fd-' + checkpoint, JSON.stringify($scope.formData));
+	    storage.put('save-ds-' + checkpoint, JSON.stringify($scope.dataset));
+	    storage.put('save-it-' + checkpoint, JSON.stringify($scope.variationFactorIndices.iterator));
+    }; 
+
 }];
+
 },{"angular":184}],47:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerRoleService", "config", function($scope, $controller, SellerRoleService, config) {
 	'ngInject';
@@ -7190,7 +7223,7 @@ angular.module('nc', ['ngSanitize', 'ui.bootstrap', 'ui.select', 'duScroll', 'an
 require('./template.js');
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./directives/ncAction.js":79,"./directives/ncAdvanceSearch.js":80,"./directives/ncAlert.js":81,"./directives/ncBindCompile.js":82,"./directives/ncBreadcrumpSelect.js":83,"./directives/ncBulk.js":84,"./directives/ncDateRange.js":85,"./directives/ncEmpty.js":86,"./directives/ncEye.js":87,"./directives/ncFilter.js":88,"./directives/ncImageGallery.js":89,"./directives/ncImageIntegrity.js":90,"./directives/ncLoading.js":91,"./directives/ncPageTitle.js":92,"./directives/ncPagination.js":93,"./directives/ncPermission.js":94,"./directives/ncSearch.js":95,"./directives/ncTable.js":96,"./directives/ncTemplate.js":97,"./directives/ncTreeSelect.js":98,"./directives/ncUiSelect.js":99,"./filters/compact.js":100,"./filters/date.js":101,"./filters/escapeHtml.js":102,"./filters/map.js":103,"./filters/replace.js":104,"./index.js":105,"./template.js":106,"angular":184,"angular-file-upload":174,"angular-sanitize":176,"angular-scroll":178,"angular-ui-bootstrap":180,"jquery":185,"lodash":186,"ui-select":190}],106:[function(require,module,exports){
+},{"./directives/ncAction.js":79,"./directives/ncAdvanceSearch.js":80,"./directives/ncAlert.js":81,"./directives/ncBindCompile.js":82,"./directives/ncBreadcrumpSelect.js":83,"./directives/ncBulk.js":84,"./directives/ncDateRange.js":85,"./directives/ncEmpty.js":86,"./directives/ncEye.js":87,"./directives/ncFilter.js":88,"./directives/ncImageGallery.js":89,"./directives/ncImageIntegrity.js":90,"./directives/ncLoading.js":91,"./directives/ncPageTitle.js":92,"./directives/ncPagination.js":93,"./directives/ncPermission.js":94,"./directives/ncSearch.js":95,"./directives/ncTable.js":96,"./directives/ncTemplate.js":97,"./directives/ncTreeSelect.js":98,"./directives/ncUiSelect.js":99,"./filters/compact.js":100,"./filters/date.js":101,"./filters/escapeHtml.js":102,"./filters/map.js":103,"./filters/replace.js":104,"./index.js":105,"./template.js":106,"angular":184,"angular-file-upload":174,"angular-sanitize":176,"angular-scroll":178,"angular-ui-bootstrap":180,"jquery":186,"lodash":187,"ui-select":205}],106:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -7356,6 +7389,8 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
  }]);
 },{}],107:[function(require,module,exports){
 var angular = require('angular')
+var skeemas = require('skeemas');
+
 angular.module('productDetail').controller('AbstractProductAddCtrl',
 		["$scope", "$uibModal", "$window", "util", "config", "Product", "ImageService", "AttributeSet", "Brand", "Shop", "LocalCategoryService", "GlobalCategory", "Category", "$rootScope", "KnownException", "NcAlert", "$productAdd", "options", "AttributeSetService", function($scope, $uibModal, $window, util, config, Product, ImageService,
 			AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
@@ -7373,7 +7408,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 				Visibility: true,
 				GlobalCategories: [null, null, null],
 				LocalCategories: [null, null, null],
-				Keywords: [],
+				MainGlobalCategory: null,
+				MainLocalCategory: null,
+				Tags: [],
 				ControlFlags: [],
 				Brand: { id: null },
 				TheOneCardEarn: 1,
@@ -7381,17 +7418,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 				AttributeSet: {
 					AttributeSetTagMaps: []
 				},
-				MasterAttribute: {
-						
-				},
+				MasterAttribute: {},
 				RelatedProducts: [],
 				EffectiveDate: null,
 				ExpireDate: null,
 				MasterVariant: {
-					Length: '',
-					Width: '',
-					Height: '',
-					Weight: '',
 					ProductNameEn: '',
 					Pid: null,
 					ProductNameTh: '',
@@ -7400,16 +7431,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 					DescriptionShortEn: '',
 					DescriptionShortTh: '',
 					DescriptionFullTh: '',
-					OriginalPrice: '',
-					SalePrice: '',
-					PrepareDay: '',
-					PrepareMon: '',
-					PrepareTue: '',
-					PrepareWed: '',
-					PrepareThu: '',
-					PrepareFri: '',
-					PrepareSat: '',
-					PrepareSun: '',
 					DimensionUnit: 'MM',
 					WeightUnit: 'G',
 					StockType: 'Stock',
@@ -7443,7 +7464,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 			$scope.asStatus = Product.getStatus;
 			$scope.refresher = {};
 
-
 			var watchVariantFactorChanges = function() {
 				$scope.$watch('dataset.attributeOptions', function() {
 					$productAdd.generateVariants($scope.formData, $scope.dataset)
@@ -7471,15 +7491,15 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 				disabled: true
 			}]
 
-			$scope.dataset.Brands = []
+			$scope.dataset.Brands = [];
 
 			$scope.enableVariation = function() {
-				$scope.controlFlags.variation = 'enable'
+				$scope.controlFlags.variation = 'enable';
 			}
 
-			$scope.dataset.SearchTags = []
-			$scope.dataset.RelatedProducts = []
-			$scope.dataset.VariantDisplayOption = [{ text: 'Show as group of variants', value: 'GROUP' }, { text: 'Show as individual product', value: 'INDIVIDUAL' }]
+			$scope.dataset.SearchTags = [];
+			$scope.dataset.RelatedProducts = [];
+			$scope.dataset.VariantDisplayOption = [{ text: 'Show as group of variants', value: 'GROUP' }, { text: 'Show as individual product', value: 'INDIVIDUAL' }];
 			$scope.pageState = {
 				loading: {
 					state: true,
@@ -7493,15 +7513,20 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 					$scope.alert.close();
 					$scope.pageState.loading.state = false;
 				}
-			}
+			};
 
 			$scope.breadcrumb = {
 				globalCategory: null
-			}
+			};
 
 			$scope.preview = function() {
-				return console.log($scope.formData)
-			}
+				console.log("Before Serialization", $scope.formData);
+				var serialized = Product.serialize($scope.formData);    
+				console.log("After Serialization", serialized);
+				var schema = require('../../../../schemas/ProductStages.json');
+				var v = skeemas.validate(serialized, schema);
+				console.log("Schema is valid: ", v);
+			};
 
 			$scope.$watch('formData.MasterVariant.OriginalPrice+formData.MasterVariant.SalePrice', function() {
 				var form = $scope.addProductForm;
@@ -7513,7 +7538,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 					if (form.SalePrice) form.SalePrice.$setValidity('min', false)
 						form.SalePrice.$error['min'] = 'Sale Price must not exceed Original Price'
 				}
-			})
+			});
 
 			$scope.$watch('formData.ExpireDate', function() {
 				// TODO: refactor use nctemplate
@@ -7527,7 +7552,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 						if (form.ExpireDate) form.ExpireDate.$setValidity('min', false);
 						form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
 					}
-			})
+			});
 
 			/**
 			 * Other additional validations
@@ -7574,7 +7599,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 				}
 
 				return mat
-			}
+			};
 
 			/**
 			 * Publish Confirmation
@@ -7636,119 +7661,111 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 					}
 
 				if ($scope.addProductForm.$invalid) {
-					$scope.pageState.reset()
-						console.log($scope.addProductForm.$error)
-						var requiredMissing = ('required' in $scope.addProductForm.$error)
-						if (Status == 'DF' && requiredMissing) {
-							var errorList = []
-							if ($scope.addProductForm.ProductNameEn.$invalid) {
-								errorList.push('Product Name (English)')
-							}
-							// Product Name (Thai), Product Name (English), and Sale Price,
-							if ($scope.addProductForm.ProductNameTh.$invalid) {
-								errorList.push('Product Name (Thai)')
-							}
-
-							if ($scope.addProductForm.SalePrice.$invalid) {
-								errorList.push('Sale Price')
-							}
-							errorList.push('Master Attributes')
-
-								$scope.alert.error('Unable to save. Please make sure that ' + errorList.join(' and ') + ' are filled correctly.')
-						} else if (Status == 'WA' && requiredMissing) {
-							$scope.alert.error('Unable to publish because you are missing required fields')
-						} else {
-							console.warn($scope.addProductForm.$error)
-								$scope.alert.error('Unable to save. Please make sure all fields have no error.')
+					$scope.pageState.reset();
+					console.log($scope.addProductForm.$error);
+					var requiredMissing = ('required' in $scope.addProductForm.$error);
+					if (Status == 'DF' && requiredMissing) {
+						var errorList = []
+						if ($scope.addProductForm.ProductNameEn.$invalid) {
+							errorList.push('Product Name (English)');
 						}
+						// Product Name (Thai), Product Name (English), and Sale Price,
+						if ($scope.addProductForm.ProductNameTh.$invalid) {
+							errorList.push('Product Name (Thai)');
+						}
+
+						if ($scope.addProductForm.SalePrice.$invalid) {
+							errorList.push('Sale Price');
+						}
+						errorList.push('Master Attributes')
+
+							$scope.alert.error('Unable to save. Please make sure that ' + errorList.join(' and ') + ' are filled correctly.')
+					} else if (Status == 'WA' && requiredMissing) {
+						$scope.alert.error('Unable to publish because you are missing required fields')
+					} else {
+						console.warn($scope.addProductForm.$error)
+							$scope.alert.error('Unable to save. Please make sure all fields have no error.')
+					}
 					return
 				}
 
-				$scope.pageState.load('Saving..')
+				$scope.pageState.load('Saving..');
 
-					var apiRequest = Product.serialize($scope.formData)
-					Product.publish(apiRequest, Status).then(function(res) {
-						$scope.pageState.reset()
-							if (res.ProductId) {
-								$scope.overview = res
-									$scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions) // will trigger watchvariantchange
-									var catId = Number(res.GlobalCategory)
-									$productAdd.fill(catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function() {
-										$scope.formData.ProductId = Number(res.ProductId)
-											$scope.pageState.reset()
-											$scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>')
-											// ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
-									})
-								$scope.addProductForm.$setPristine(true)
-							} else {
-								$scope.alert.error('Unable to save because ' + (res.message || res.Message))
-									$scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable')
-							}
-					}, function(er) {
-						$scope.pageState.reset()
-							$scope.alert.error('Unable to save because ' + (er.message || er.Message))
-							$scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable')
-					})
+				var apiRequest = Product.serialize($scope.formData);
+				Product.publish(apiRequest, Status).then(function(res) {
+					$scope.pageState.reset();
+					if (res.ProductId) {
+						$scope.overview = res;
+						$scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions); // will trigger watchvariantchange
+						var catId = Number(res.GlobalCategory);
+						$productAdd.fill(catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function() {
+							$scope.formData.ProductId = Number(res.ProductId);
+							$scope.pageState.reset();
+							$scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
+							// ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
+						});
+						$scope.addProductForm.$setPristine(true);
+					} else {
+						$scope.alert.error('Unable to save because ' + (res.message || res.Message));
+						$scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
+					}
+				}, function(er) {
+					$scope.pageState.reset();
+					$scope.alert.error('Unable to save because ' + (er.message || er.Message));
+					$scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
+				})
 
 			}
 
 			$scope.init = function(viewBag) {
-				if (!angular.isObject(viewBag)) throw new KnownException('View bag is corrupted')
+				if (!angular.isObject(viewBag)) throw new KnownException('View bag is corrupted');
 
-					var _editMode = ('productId' in viewBag)
-						for (var page in tabPage) {
-							tabPage[page].angular()
-						}
+				var _editMode = ('productId' in viewBag);
+				for (var page in tabPage) {
+					tabPage[page].angular()
+				}
 
 				if (_editMode) {
-					var productId = viewBag.productId
-						$scope.pageState.load('Loading Product..')
+					var productId = viewBag.productId;
+					$scope.pageState.load('Loading Product..');
 
-						Product.getOne(productId)
+					Product.getOne(productId)
 						.then(function(inverseFormData) {
-							$scope.overview = angular.copy(inverseFormData)
-								var catId = Number(inverseFormData.GlobalCategory)
-								$productAdd.fill(catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb, $scope.controlFlags,
-										$scope.variationFactorIndices, inverseFormData).then(function() {
-									$scope.formData.ProductId = Number(productId)
-										$scope.pageState.reset()
-										watchVariantFactorChanges()
+							$scope.overview = angular.copy(inverseFormData);
+							var catId = Number(inverseFormData.GlobalCategory);
+							$productAdd.fill(catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb, $scope.controlFlags,
+									$scope.variationFactorIndices, inverseFormData).then(function() {
+								$scope.formData.ProductId = Number(productId);
+								$scope.pageState.reset();
+								watchVariantFactorChanges();
 
-										LocalCategoryService.getAllByShopId($scope.formData.ShopId).then(function(data) {
-											$scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data)
-										})
-
-									// ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
+								LocalCategoryService.getAllByShopId($scope.formData.ShopId).then(function(data) {
+									$scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data);
 								})
 
-
+								// ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
+							});
 
 
 						}, function(error) {
-							throw new KnownException('Unable to fetch product with id ' + productId)
+							throw new KnownException('Unable to fetch product with id ' + productId);
 						})
 
 				} else if ('catId' in viewBag) {
-					if (viewBag.catId == null) window.location.href = '/products/select'
-						LocalCategoryService.list().then(function(data) {
-							$scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data)
-						})
-					var catId = Number(viewBag.catId)
-						$productAdd.fill(catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb,
-								$scope.controlFlags, $scope.variationFactorIndices).then(function() {
-							$scope.pageState.reset()
-								watchVariantFactorChanges()
-								// ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
-						})
+					if (viewBag.catId == null) window.location.href = '/products/select';
+					LocalCategoryService.list().then(function(data) {
+						$scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data);
+					})
+					var catId = Number(viewBag.catId);
+					$productAdd.fill(catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb,
+							$scope.controlFlags, $scope.variationFactorIndices).then(function() {
+						$scope.pageState.reset();
+						watchVariantFactorChanges();
+						// ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
+					})
 				} else {
 					throw new KnownException('Invalid mode, viewBag garbage')
 				}
-
-				//?ShopId=0120302131
-				// Load Local Cat
-				/*LocalCategoryService.list().then(function(data) {
-				  $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data)
-				  })*/
 
 
 			}
@@ -7806,33 +7823,32 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 							})
 					})
 					$scope.$on('deleteGlobalCat', function(evt, indx) {
-						$scope.formData.GlobalCategories[indx] = null
+						$scope.formData.GlobalCategories[indx] = null;
 					})
 					$scope.$on('selectGlobalCat', function(evt, row, indx, parentIndx) {
-						$scope.selectCategory(row, indx, parentIndx)
+						$scope.selectCategory(row, indx, parentIndx);
 					})
 					$scope.$on('saveGlobalCat', function(evt) {
-						$scope.formData.GlobalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected
+						$scope.formData.GlobalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected;
 					})
 
 					// Events
 					$scope.$on('openLocalCat', function(evt, item, indx) {
-						console.log(item, $scope.dataset.LocalCategories)
-							$scope.viewCategoryColumns = Category.createColumns(item, $scope.dataset.LocalCategories)
-							$scope.viewCategorySelected = item
-							$scope.viewCategoryIndex = indx
-							$scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function(selectedItem) {
-								$scope.viewCategorySelected = selectedItem
-							})
+						$scope.viewCategoryColumns = Category.createColumns(item, $scope.dataset.LocalCategories);
+						$scope.viewCategorySelected = item;
+						$scope.viewCategoryIndex = indx;
+						$scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function(selectedItem) {
+							$scope.viewCategorySelected = selectedItem;
+						})
 					})
 					$scope.$on('deleteLocalCat', function(evt, indx) {
-						$scope.formData.LocalCategories[indx] = null
+						$scope.formData.LocalCategories[indx] = null;
 					})
 					$scope.$on('selectLocalCat', function(evt, row, indx, parentIndx) {
-						$scope.selectCategory(row, indx, parentIndx)
+						$scope.selectCategory(row, indx, parentIndx);
 					})
 					$scope.$on('saveLocalCat', function(evt) {
-						$scope.formData.LocalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected
+						$scope.formData.LocalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected;
 					})
 				}
 			}
@@ -7841,71 +7857,71 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 				angular: function() {
 					$scope.uploaderModal = ImageService.getUploader('/ProductImages', {
 						queueLimit: QUEUE_LIMIT
-					})
+					});
 
 					$scope.uploaderModal.filters.push({
 						'name': 'enforceMaxFileSize',
 						'fn': function(item) {
 							return item.size <= MAX_FILESIZE
 						}
-					})
+					});
 
 					$scope.openVariantDetail = function(pair, array, index) {
 						if (angular.isUndefined(pair.Images)) {
-							pair.Images = []
+							pair.Images = [];
 						}
 
 						if (angular.isUndefined(pair.queue)) {
-							pair.queue = []
+							pair.queue = [];
 						}
 
 						// Modal target (for viewing pair)
-						$scope.pairModal = angular.copy(pair)
-							$scope.pairModal.alert = new NcAlert()
-							$scope.pairIndex = index
+						$scope.pairModal = angular.copy(pair);
+						$scope.pairModal.alert = new NcAlert();
+						$scope.pairIndex = index;
 
-							$scope.uploaderModal.queue = $scope.pairModal.queue
-							// ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
+						$scope.uploaderModal.queue = $scope.pairModal.queue;
+						// ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
 
-							var variantModal = $uibModal.open({
-								animation: false,
-								templateUrl: 'ap/modal-variant-detail',
-								controller: ["$scope", "$uibModalInstance", "$timeout", "pair", "dataset", "formData", "uploader", function($scope, $uibModalInstance, $timeout, pair, dataset, formData, uploader) {
-									'ngInject';
-									$scope.pair = pair;
-									$scope.dataset = dataset;
-									$scope.variantPtr = pair;
-									$scope.imagesPtr = pair.Images;
-									$scope.uploader = uploader;
-									$scope.no = function() {
-										$uibModalInstance.close();
-									}
-									$scope.yes = function() {
-										$uibModalInstance.close($scope.pair);
-									}
-								}],
-								size: 'xl',
-								resolve: {
-									uploader: function() {
-										return ImageService.getUploader('/ProductImages', {
-											queueLimit: QUEUE_LIMIT
-										});
-									},
-									formData: function() {
-										return $scope.formData
-									},
-									pair: function() {
-										console.log('resolving', $scope.pairModal)
-											return $scope.pairModal
-									},
-									ckOptions: function() {
-										return $scope.ckOptions
-									},
-									dataset: function() {
-										return $scope.dataset
-									}
+						var variantModal = $uibModal.open({
+							animation: false,
+							templateUrl: 'ap/modal-variant-detail',
+							controller: ["$scope", "$uibModalInstance", "$timeout", "pair", "dataset", "formData", "uploader", function($scope, $uibModalInstance, $timeout, pair, dataset, formData, uploader) {
+								'ngInject';
+								$scope.pair = pair;
+								$scope.dataset = dataset;
+								$scope.variantPtr = pair;
+								$scope.imagesPtr = pair.Images;
+								$scope.uploader = uploader;
+								$scope.no = function() {
+									$uibModalInstance.close();
 								}
-							})
+								$scope.yes = function() {
+									$uibModalInstance.close($scope.pair);
+								}
+							}],
+							size: 'xl',
+							resolve: {
+								uploader: function() {
+									return ImageService.getUploader('/ProductImages', {
+										queueLimit: QUEUE_LIMIT
+									});
+								},
+								formData: function() {
+									return $scope.formData
+								},
+								pair: function() {
+									console.log('resolving', $scope.pairModal)
+										return $scope.pairModal
+								},
+								ckOptions: function() {
+									return $scope.ckOptions
+								},
+								dataset: function() {
+									return $scope.dataset
+								}
+							}
+						})
 
 						variantModal.result.then(function(pairModal) {
 							console.log(pairModal);
@@ -7919,7 +7935,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 							$scope.imagesPtr = $scope.formData.MasterVariant.Images
 
 						}, function() {
-							console.log('Modal dismissed at: ' + new Date())
+							console.log('Modal dismissed at: ' + new Date());
 						})
 
 					}
@@ -7936,22 +7952,22 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 					Attribute: false,
 					options: []
 				}
-			}
+			};
 
 			$scope.uploader = ImageService.getUploader('/ProductImages', {
 				queueLimit: QUEUE_LIMIT
-			})
+			});
 
 			$scope.uploader.filters.push({
 				'name': 'enforceMaxFileSize',
 				'fn': function(item) {
 					return item.size <= MAX_FILESIZE
 				}
-			})
+			});
 
-			$scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions)
+			$scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions);
 
-				$scope.refresher.AttributeSetsLoading = false;
+			$scope.refresher.AttributeSetsLoading = false;
 			$scope.refresher.AttributeSets = function(q) {
 				if (!q) return;
 				$scope.refresher.AttributeSetsLoading = true;
@@ -7970,8 +7986,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 					});
 					$scope.dataset.CombinedAttributeSets = _.unionBy(searchRes, $scope.dataset.AttributeSets, 'AttributeSetId');
 				})
-			}
-
+			};
 
 
 			/**
@@ -7983,7 +7998,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 					searchText: q,
 					pageSize: 8
 				}).then(function(ds) {
-					$scope.dataset.RelatedProducts = ds.data
+					$scope.dataset.RelatedProducts = ds.data;
 				})
 			}
 
@@ -7993,7 +8008,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 					embedVideo: false,
 					embed360: false
 				}
-			}
+			};
 
 			/**
 			 * Refresh Brand Data Set used for searching 
@@ -8025,7 +8040,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 			$window.onbeforeunload = function(e) {
 				if (!$scope.addProductForm.$dirty) {
 					// only warn when form is dirty
-					return null
+					return null;
 				}
 				var message = 'Your changes will not be saved.',
 				e = e || window.event
@@ -8038,39 +8053,39 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 				return message
 			} // end onbeforeunload
 
-			$scope.asStatus = Product.getStatus
-				$scope.isFreeTextInput = util.isFreeTextDataType
-				$scope.isListInput = util.isListDataType
-				$scope.isHtmlInput = util.isHtmlDataType
-				$scope.isCheckboxInput = util.isCheckboxDataType
+			$scope.asStatus = Product.getStatus;
+			$scope.isFreeTextInput = util.isFreeTextDataType;
+			$scope.isListInput = util.isListDataType;
+			$scope.isHtmlInput = util.isHtmlDataType;
+			$scope.isCheckboxInput = util.isCheckboxDataType;
 
-				$scope.enableVariation = function() {
-					$scope.controlFlags.variation = 'enable'
+			$scope.enableVariation = function() {
+				$scope.controlFlags.variation = 'enable';
+			}
+			$scope.alert = new NcAlert();
+
+			// Variation Factor (lhs) Indices are used as index
+			// for ng-repeat in variation tab
+			$scope.variationFactorIndices = {
+				iterator: [0],
+				length: function() {
+					return $scope.variationFactorIndices.iterator.length
+				},
+				popSecond: function() {
+					$scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop()
+						$scope.dataSet.attributeOptions[1].options = []
+						$scope.dataSet.attributeOptions[1].Attribute = null
+				},
+				pushSecond: function() {
+					$scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1)
 				}
-			$scope.alert = new NcAlert()
+			};
 
-				// Variation Factor (lhs) Indices are used as index
-				// for ng-repeat in variation tab
-				$scope.variationFactorIndices = {
-					iterator: [0],
-					length: function() {
-						return $scope.variationFactorIndices.iterator.length
-					},
-					popSecond: function() {
-						$scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop()
-							$scope.dataSet.attributeOptions[1].options = []
-							$scope.dataSet.attributeOptions[1].Attribute = null
-					},
-					pushSecond: function() {
-						$scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1)
-					}
-				}
-
-			$scope.image_alert = new NcAlert()
+			$scope.image_alert = new NcAlert();
 
 		}])
 
-},{"angular":184}],108:[function(require,module,exports){
+},{"../../../../schemas/ProductStages.json":206,"angular":184,"skeemas":190}],108:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
     factory('$productAdd', ["Product", "Brand", "AttributeSet", "ImageService", "GlobalCategory", "$q", "Category", "util", function(Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category, util) {
@@ -8120,7 +8135,7 @@ angular.module('productDetail').
                     B = VARIANT_DUMMY_FACTOR;
                 }
 
-                var kpair = {};
+                var kpair = angular.copy(formData.MasterVariant);
                 var firstAttribute = {
                     AttributeId: !dataSet.attributeOptions[0].Attribute ? null : dataSet.attributeOptions[0].Attribute.AttributeId,
                     AttributeValues: (!AVId ? [] : [{
@@ -8140,37 +8155,8 @@ angular.module('productDetail').
                 kpair.FirstAttribute = firstAttribute;
                 kpair.SecondAttribute = secondAttribute;
                 kpair.text = util.variant.toString(firstAttribute, secondAttribute);
-                //Copy default value over from main variant
-                kpair.ProductNameEn = formData.MasterVariant.ProductNameEn;
-                kpair.ProductNameTh = formData.MasterVariant.ProductNameTh;
                 kpair.Display = dataSet.VariantDisplayOption[0].value;
                 kpair.Visibility = true;
-                kpair.DimensionUnit = "MM";
-                kpair.WeightUnit = "G";
-                kpair.Sku = (formData.MasterVariant.Sku || "SKU") + "-" + (Number((formData.Variants || []).length) + 1);
-                kpair.OriginalPrice = formData.MasterVariant.OriginalPrice;
-                kpair.SalePrice = formData.MasterVariant.SalePrice;
-                kpair.Quantity = formData.MasterVariant.Quantity;
-                kpair.Length = formData.Length;
-                kpair.Width = formData.Width;
-                kpair.Height = formData.Height;
-                kpair.Upc = formData.MasterVariant.Upc;
-                kpair.Weight = formData.Weight;
-                kpair.DescriptionFullEn = formData.MasterVariant.DescriptionFullEn;
-                kpair.DescriptionFullTh = formData.MasterVariant.DescriptionFullTh;
-                kpair.DescriptionShortEn = formData.MasterVariant.DescriptionShortEn;
-                kpair.DescriptionShortTh = formData.MasterVariant.DescriptionShortTh;
-                kpair.Images = angular.copy(formData.MasterImages);
-                kpair.VideoLinks = angular.copy(formData.VideoLinks);
-                kpair.PrepareDay = formData.PrepareDay;
-                kpair.PrepareSun = formData.PrepareSun;
-                kpair.PrepareSat = formData.PrepareSat;
-                kpair.PrepareFri = formData.PrepareFri;
-                kpair.PrepareThu = formData.PrepareThu;
-                kpair.PrepareWed = formData.PrepareWed;
-                kpair.PrepareTue = formData.PrepareTue;
-                kpair.PrepareMon = formData.PrepareMon;
-                kpair.SEO = angular.copy(formData.SEO || {});
                 kpair.SEO.ProductUrlKeyEn = "";
 
                 if (kpair.text in vHashSet) {
@@ -8248,6 +8234,8 @@ angular.module('productDetail').
                     
                     if (ivFormData) {
                         pageLoader.load('Indexing AttributeSet');
+			//Search for Attribute Set from Attribute Set list that matches the Id
+			//TODO: just let backend send entire thing
                         sharedFormData.AttributeSet = sharedDataSet.AttributeSets[sharedDataSet.AttributeSets.map(function(o) {
                             return o.AttributeSetId
                         }).indexOf(ivFormData.AttributeSet.AttributeSetId)];
@@ -8292,6 +8280,7 @@ angular.module('productDetail').
 
         return $productAdd;
     }]);
+
 },{"angular":184}],109:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail')
@@ -8344,7 +8333,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
     "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=variantPtr.DescriptionFullTh>\n" +
     "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=addProductForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=variantPtr.DescriptionShortEn>\n" +
     "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=addProductForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=variantPtr.DescriptionShortTh>\n" +
-    "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint1En nc-label=\"Killer Point 1 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint1En ng-model=variantPtr.KillerPoint1En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint1Th nc-label=\"Killer Point 1 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint1Th ng-model=variantPtr.KillerPoint1Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint2En nc-label=\"Killer Point 2 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint2En ng-model=variantPtr.KillerPoint2En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint2Th nc-label=\"Killer Point 2 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint2Th ng-model=variantPtr.KillerPoint2Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint3En nc-label=\"Killer Point 3 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint3En ng-model=variantPtr.KillerPoint2En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint3Th nc-label=\"Killer Point 3 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint3Th ng-model=variantPtr.KillerPoint3Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div></div></div></div>"
+    "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint1En nc-label=\"Killer Point 1 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint1En ng-model=variantPtr.KillerPoint1En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint1Th nc-label=\"Killer Point 1 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint1Th ng-model=variantPtr.KillerPoint1Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint2En nc-label=\"Killer Point 2 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint2En ng-model=variantPtr.KillerPoint2En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint2Th nc-label=\"Killer Point 2 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint2Th ng-model=variantPtr.KillerPoint2Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint3En nc-label=\"Killer Point 3 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint3En ng-model=variantPtr.KillerPoint3En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint3Th nc-label=\"Killer Point 3 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint3Th ng-model=variantPtr.KillerPoint3Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div></div></div></div>"
   );
 
 
@@ -8354,7 +8343,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('ap/section-image-video',
-    "<div><nc-image-block options=\"{height: '150px', width: '150px'}\" name=Images nc-model=imagesPtr title=\"Product Images\" uploader=uploader on-fail=onImageUploadFail size=120></nc-image-block><div class=form-section ng-show=\"imagesPtr.length > 0\"><div class=form-section-header>Embed Video</div><div class=form-section-content><div ng-repeat=\"i in imagesPtr\"><div nc-template=common/input/form-group-with-label nc-label=\"Video Link {{$index + 1}}\" nc-template-form=\"form['VideoLinks' + $index]\" nc-template-options-path=addProductForm/VideoLink><input class=\"form-control width-field-normal\" name=VideoLinks{{$index}} type=url maxlength=500 ng-model=\"variantPtr.VideoLinks[$index]\"></div></div></div></div></div>"
+    "<div><nc-image-block options=\"{height: '150px', width: '150px'}\" name=Images nc-model=imagesPtr title=\"Product Images\" uploader=uploader on-fail=onImageUploadFail size=120></nc-image-block><div class=form-section ng-show=\"imagesPtr.length > 0\"><div class=form-section-header>Embed Video</div><div class=form-section-content><div ng-repeat=\"i in imagesPtr\"><div nc-template=common/input/form-group-with-label nc-label=\"Video Link {{$index + 1}}\" nc-template-form=\"form['VideoLinks' + $index]\" nc-template-options-path=addProductForm/VideoLink><input class=\"form-control width-field-normal\" name=VideoLinks{{$index}} type=url ng-init=\"variantPtr.VideoLinks[$index] = { Url : null }\" maxlength=500 ng-model=\"variantPtr.VideoLinks[$index].Url\"></div></div></div></div></div>"
   );
 
 
@@ -8364,7 +8353,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('ap/section-keywords',
-    "<div class=form-section><div class=form-section-header><h2>Keywords</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=Keywords nc-template-form=form.Keywords nc-template-options-path=addProductForm/Keywords><ui-select ng-model=formData.Keywords name=Keywords nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 nc-tag-pattern=^[a-zA-Z0-9ก-๙\\s\\-]+$ multiple tagging tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match placeholder=\"Input keywords\">{{$item}}</ui-select-match><ui-select-choices repeat=\"item in formData.AttributeSet.AttributeSetTagMaps\">{{item}}</ui-select-choices></ui-select></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Keywords).length > 0\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Keywords\" ng-click=\"(formData.Keywords.indexOf(tag) == -1) && formData.Keywords.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Keywords</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=Keywords nc-template-form=form.Keywords nc-template-options-path=addProductForm/Keywords><ui-select ng-model=formData.Tags name=Keywords nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 nc-tag-pattern=^[a-zA-Z0-9ก-๙\\s\\-]+$ multiple tagging tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match placeholder=\"Input keywords\">{{$item}}</ui-select-match><ui-select-choices repeat=\"item in formData.AttributeSet.AttributeSetTagMaps\">{{item}}</ui-select-choices></ui-select></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Keywords).length > 0\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags\" ng-click=\"(formData.Tags.indexOf(tag) == -1) && formData.Tags.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
   );
 
 
@@ -8374,7 +8363,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('ap/section-price',
-    "<div class=form-section><div class=form-section-header><h2>Price</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.SalePrice nc-label=\"Sale Price\" nc-template-options-path=addProductForm/SalePrice><input autocomplete=off ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" class=\"form-control width-field-normal\" maxlength=20 name=SalePrice ng-model=variantPtr.SalePrice required></div><div nc-template=common/input/form-group-with-label nc-label=\"Original Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.OriginalPrice><input autocomplete=off class=\"form-control width-field-normal\" name=OriginalPrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"variantPtr.OriginalPrice\"></div><div nc-template=common/input/form-group-with-label nc-label=Installment nc-template-options-path=addProductForm/Installment nc-template-form=form.Installment><select ng-if=\"(variantPtr.SalePrice || 0) > 5000\" class=form-control ng-model=variantPtr.Installment><option>Yes</option><option selected>No</option></select><select disabled ng-if=\"(variantPtr.SalePrice || 0) <= 5000\" class=form-control><option value=No selected>Available when price is more than 5,000</option></select></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Price</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.SalePrice nc-label=\"Sale Price\" nc-template-options-path=addProductForm/SalePrice><input autocomplete=off type=number class=\"form-control width-field-normal\" maxlength=20 name=SalePrice ng-model=variantPtr.SalePrice required></div><div nc-template=common/input/form-group-with-label nc-label=\"Original Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.OriginalPrice><input autocomplete=off class=\"form-control width-field-normal\" type=number name=OriginalPrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"variantPtr.OriginalPrice\"></div><div nc-template=common/input/form-group-with-label nc-label=Installment nc-template-options-path=addProductForm/Installment nc-template-form=form.Installment><select ng-if=\"(variantPtr.SalePrice || 0) > 5000\" class=form-control ng-model=variantPtr.Installment><option>Yes</option><option selected>No</option></select><select disabled ng-if=\"(variantPtr.SalePrice || 0) <= 5000\" class=form-control><option value=No selected>Available when price is more than 5,000</option></select></div></div></div>"
   );
 
 
@@ -8384,12 +8373,12 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('ap/section-shipping',
-    "<div class=form-section><div class=form-section-header><h2>Shipping Detail</h2></div><div class=form-section-content><div class=form-group ng-if=!options.hideShippingMethod><div class=width-label><label class=control-label>Shipping Method</label></div><div class=width-field-normal><div class=\"radio multiple-radio multiline\"><label><input type=radio name=shipping_method value=1 ng-model=\"variantPtr.ShippingMethod\"> Dropship by 3PL</label><label><input type=radio name=shipping_method value=2 ng-model=\"variantPtr.ShippingMethod\"> Central Fulfillment</label></div></div></div><div nc-template=common/input/form-group-with-label nc-label=\"Preparation Time\" nc-template-form=form.PrepareDay nc-template-options-path=addProductForm/PrepareDay style=\"margin-bottom: 0px\"><input class=\"form-control width-field-normal\" name=PrepareDay ng-pattern-restrict=^[0-9]*$ ng-required=onPublishing maxlength=5 ng-model=\"variantPtr.PrepareDay\"></div><div class=\"form-group margin-bottom-20\"><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=checkbox><label><input type=checkbox ng-model=individualDayChecked> Set preparation time for individual day</label></div></div></div><div class=form-group ng-show=individualDayChecked><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=multiple-input><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Monday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareMon><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareMon ng-model=\"variantPtr.PrepareMon\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Tuesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareTue><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareTue ng-model=\"variantPtr.PrepareTue\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Wednesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareWed><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareWed ng-model=\"variantPtr.PrepareWed\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Thursday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareThu><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareThu ng-model=\"variantPtr.PrepareThu\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Friday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareFri><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareFri ng-model=\"variantPtr.PrepareFri\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Saturday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSat><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareSat ng-model=\"variantPtr.PrepareSat\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Sunday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSun><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareSun ng-model=\"variantPtr.PrepareSun\"></div></div></div></div></div><div class=\"form-group margin-top-20\"><div class=width-label><label class=\"control-label required\" stytle=margin-top:25px>Package Dimension</label></div><div class=width-field-xxl><div class=multiple-input><div class=input-column><div nc-template=common/input/div-with-label nc-label=Length nc-template-options-path=addProductForm/Dimension nc-template-form=form.Length><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Length ng-model=\"variantPtr.Length\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Height nc-template-options-path=addProductForm/Dimension nc-template-form=form.Height><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Height ng-model=\"variantPtr.Height\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Width nc-template-options-path=addProductForm/Dimension nc-template-form=form.Width><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Width ng-model=\"variantPtr.Width\"></div></div><div class=\"input-column no-label select input-xl\" style=\"padding-top: 24px\"><select ng-model=variantPtr.DimensionUnit class=form-control><option value=MM>Millimeter</option><option value=CM>Centimeter</option><option value=M>Meter</option></select></div></div></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Weight</label></div><div class=width-field-xxl><div class=multiple-input><div nc-template=common/input/text-column-no-label nc-label=\"\" nc-template-options-path=addProductForm/Dimension nc-template-form=form.Weight><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Weight ng-model=\"variantPtr.Weight\"></div><div class=\"input-column select input-xl\"><div class=ah-select2-dropdown><select class=form-control ng-model=formDataPtr.MasterVariant.WeightUnit><option value=G>Grams</option><option value=KG>Kilograms</option></select></div></div></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Shipping Detail</h2></div><div class=form-section-content><div class=form-group ng-if=!options.hideShippingMethod><div class=width-label><label class=control-label>Shipping Method</label></div><div class=width-field-normal><div class=\"radio multiple-radio multiline\"><label><input type=radio name=shipping_method value=1 ng-model=\"variantPtr.ShippingMethod\"> Dropship by 3PL</label><label><input type=radio name=shipping_method value=2 ng-model=\"variantPtr.ShippingMethod\"> Central Fulfillment</label></div></div></div><div nc-template=common/input/form-group-with-label nc-label=\"Preparation Time\" nc-template-form=form.PrepareDay nc-template-options-path=addProductForm/PrepareDay style=\"margin-bottom: 0px\"><input class=\"form-control width-field-normal\" name=PrepareDay ng-pattern-restrict=^[0-9]*$ ng-required=onPublishing maxlength=5 ng-model=\"variantPtr.PrepareDay\"></div><div class=\"form-group margin-bottom-20\"><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=checkbox><label><input type=checkbox ng-model=individualDayChecked> Set preparation time for individual day</label></div></div></div><div class=form-group ng-show=individualDayChecked><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=multiple-input><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Monday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareMon><input type=number ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareMon ng-model=\"variantPtr.PrepareMon\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Tuesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareTue><input type=number ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareTue ng-model=\"variantPtr.PrepareTue\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Wednesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareWed><input type=number ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareWed ng-model=\"variantPtr.PrepareWed\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Thursday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareThu><input type=number ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareThu ng-model=\"variantPtr.PrepareThu\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Friday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareFri><input type=number ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareFri ng-model=\"variantPtr.PrepareFri\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Saturday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSat><input type=number ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareSat ng-model=\"variantPtr.PrepareSat\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Sunday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSun><input type=number ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareSun ng-model=\"variantPtr.PrepareSun\"></div></div></div></div></div><div class=\"form-group margin-top-20\"><div class=width-label><label class=\"control-label required\" stytle=margin-top:25px>Package Dimension</label></div><div class=width-field-xxl><div class=multiple-input><div class=input-column><div nc-template=common/input/div-with-label nc-label=Length nc-template-options-path=addProductForm/Dimension nc-template-form=form.Length><input type=number ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Length ng-model=\"variantPtr.Length\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Height nc-template-options-path=addProductForm/Dimension nc-template-form=form.Height><input type=number ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Height ng-model=\"variantPtr.Height\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Width nc-template-options-path=addProductForm/Dimension nc-template-form=form.Width><input type=number ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Width ng-model=\"variantPtr.Width\"></div></div><div class=\"input-column no-label select input-xl\" style=\"padding-top: 24px\"><select ng-model=variantPtr.DimensionUnit class=form-control><option value=MM>Millimeter</option><option value=CM>Centimeter</option><option value=M>Meter</option></select></div></div></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Weight</label></div><div class=width-field-xxl><div class=multiple-input><div nc-template=common/input/text-column-no-label nc-label=\"\" nc-template-options-path=addProductForm/Dimension nc-template-form=form.Weight><input type=number ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Weight ng-model=\"variantPtr.Weight\"></div><div class=\"input-column select input-xl\"><div class=ah-select2-dropdown><select class=form-control ng-model=variantPtr.WeightUnit><option value=G>Grams</option><option value=KG>Kilograms</option></select></div></div></div></div></div></div></div>"
   );
 
 
   $templateCache.put('ap/section-vital-information',
-    "<div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label ng-init=\"form = addProductForm\" nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=variantPtr.ProductNameEn maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=variantPtr.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku ng-model=variantPtr.Sku maxlength=300 ng-pattern=\"/^[^<>]+$/\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" ng-pattern=\"/^[^<>]+$/\" name=Upc maxlength=300 ng-model=\"variantPtr.Upc\"></div><div ng-if=variantPtr.MasterVariant.Pid><div nc-template=common/input/form-group-with-label nc-template-form=form.Pid nc-label=\"{{ (formData.Variants || []).length > 0 ? 'Group ID' : 'PID' }}\" nc-template-options-path=addProductForm/Pid><input class=\"form-control width-field-large\" name=Pid disabled ng-model=\"variantPtr.Pid\"></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Brand Name</label></div><div class=width-field-normal><div class=ah-select2-dropdown><ui-select ng-model=variantPtr.Brand theme=selectize loading=refresher.BrandLoading><ui-select-match><span ng-bind-html=$select.selected.BrandNameEn></span> <span ng-show=!$select.selected.BrandNameEn><span class=color-grey><i class=\"fa fa-search\"></i> Search Brand</span></span></ui-select-match><ui-select-choices group-by=\"'_group'\" ui-disable-choice=item.disabled refresh-delay=1000 refresh=refresher.Brands($select.search) repeat=\"item in (dataset.Brands.length == 0 || $select.search == '' ? dataset.BrandsEmpty : dataset.Brands) | filter: $select.search  track by item.BrandId\"><span ng-bind-html=\"item.BrandNameEn | highlight: $select.search\"></span></ui-select-choices></ui-select></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label ng-init=\"form = addProductForm\" nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=variantPtr.ProductNameEn maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=variantPtr.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku ng-model=variantPtr.Sku maxlength=300 ng-pattern=\"/^[^<>]+$/\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" ng-pattern=\"/^[^<>]+$/\" name=Upc maxlength=300 ng-model=\"variantPtr.Upc\"></div><div ng-if=variantPtr.MasterVariant.Pid><div nc-template=common/input/form-group-with-label nc-template-form=form.Pid nc-label=\"{{ (formData.Variants || []).length > 0 ? 'Group ID' : 'PID' }}\" nc-template-options-path=addProductForm/Pid><input class=\"form-control width-field-large\" name=Pid disabled ng-model=\"variantPtr.Pid\"></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Brand Name</label></div><div class=width-field-normal><div class=ah-select2-dropdown><ui-select ng-model=formData.Brand theme=selectize loading=refresher.BrandLoading><ui-select-match><span ng-bind-html=$select.selected.BrandNameEn></span> <span ng-show=!$select.selected.BrandNameEn><span class=color-grey><i class=\"fa fa-search\"></i> Search Brand</span></span></ui-select-match><ui-select-choices group-by=\"'_group'\" ui-disable-choice=item.disabled refresh-delay=1000 refresh=refresher.Brands($select.search) repeat=\"item in (dataset.Brands.length == 0 || $select.search == '' ? dataset.BrandsEmpty : dataset.Brands) | filter: $select.search  track by item.BrandId\"><span ng-bind-html=\"item.BrandNameEn | highlight: $select.search\"></span></ui-select-choices></ui-select></div></div></div></div></div>"
   );
 
 
@@ -8593,7 +8582,7 @@ module.exports = {
   seller: generateRouteArray(seller),
   admin: generateRouteArray(admin)
 }
-},{"lodash":186}],113:[function(require,module,exports){
+},{"lodash":187}],113:[function(require,module,exports){
 //Products Service
 module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
     function ($http, common, util, config, KnownException) {
@@ -10532,660 +10521,519 @@ module.exports = function(common) {
 },{}],143:[function(require,module,exports){
 // Products Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config', 'KnownException',
-    function($http, common, util, LocalCategory, Brand, config, KnownException) {
-        'use strict'
-        var service = common.Rest('/ProductStages')
-
-        service.getExportableFields = function() {
-            var req = {
-                method: 'GET',
-                url: '/ProductStages/Guidance/Export'
-            }
-            return common.makeRequest(req)
-        }
-
-        service.downloadTemplate = function(globalCat, aset) {
-            var req = {
-                method: 'POST',
-                url: '/ProductStages/Template',
-                data: {
-                    GlobalCategories: [globalCat],
-                    AttributeSets: _.isNil(aset) ? [] : [aset]
-                }
-            }
-            return common.makeRequest(req)
-        }
-
-        service.getAllAttributeSetsForProducts = function(productList) {
-            var req = {
-                method: 'POST',
-                url: '/ProductStages/AttributeSet',
-                data: productList
-            }
-            return common.makeRequest(req)
-        }
-
-        service.export = function(ps) {
-            var req = {
-                method: 'POST',
-                url: '/ProductStages/Export',
-                data: ps
-            }
-            return common.makeRequest(req)
-        }
-
-        service.guideline = function(params) {
-            var req = {
-                method: 'GET',
-                url: '/ProductStages/Guidance',
-                params: params
-            }
-            return common.makeRequest(req)
-        }
-        service.approve = function(obj) {
-            return common.makeRequest({
-                method: 'PUT',
-                url: '/ProductStages/Approve',
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            })
-        }
-        service.reject = function(obj) {
-            return common.makeRequest({
-                method: 'PUT',
-                url: '/ProductStages/Reject',
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            })
-        }
-
-        service.getOne = function(productId) {
-            var req = {
-                method: 'GET',
-                url: '/ProductStages/' + productId
-            }
-            return common.makeRequest(req)
-        }
-
-        service.getAllVariants = function(parameters) {
-            var req = {
-                method: 'GET',
-                url: '/ProductStages/All',
-                params: parameters
-            }
-
-            return common.makeRequest(req)
-        }
-
-        service.updateAllVariants = function(obj) {
-            var req = {
-                method: 'PUT',
-                url: '/ProductStages/All/Image',
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            }
-
-            return common.makeRequest(req)
-        }
-
-        service.duplicate = function(ProductId) {
-            // this URL structure is weird dont u think
-            var req = {
-                method: 'POST',
-                url: '/ProductStages/' + ProductId
-            }
-
-            return common.makeRequest(req)
-        }
-
-        service.getAll = function(parameters) {
-            var req = {
-                method: 'GET',
-                url: '/ProductStages/',
-                params: {
-                    _order: parameters.orderBy || 'ProductId',
-                    _limit: parameters.pageSize || 10,
-                    _offset: parameters.page * parameters.pageSize || 0,
-                    _direction: parameters.direction || 'asc',
-                    _filter: parameters.filter || 'ALL',
-                    searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined
-                }
-            }
-
-            return common.makeRequest(req)
-        }
-
-        service.export = function(tobj) {
-            var path = '/ProductStages/Export'
-            return common.makeRequest({
-                responseType: 'arraybuffer',
-                method: 'POST',
-                url: path,
-                data: tobj
-            })
-        }
-
-        service.publish = function(tobj, Status) {
-            tobj.Status = Status
-            var mode = 'POST'
-            var path = '/ProductStages'
-            if (tobj.ProductId) {
-                mode = 'PUT'
-                path = path + '/' + tobj.ProductId
-            }
-            return common.makeRequest({
-                method: mode,
-                url: path,
-                data: tobj
-            })
-        }
-
-        service.bulkPublish = function(tobj) {
-            return common.makeRequest({
-                method: 'POST',
-                url: '/ProductStages/Publish',
-                data: tobj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            })
-        }
-
-        service.visible = function(obj) {
-            return common.makeRequest({
-                method: 'PUT',
-                url: '/ProductStages/Visibility',
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            })
-        }
-        service.deleteBulk = function(arr) {
-            return common.makeRequest({
-                method: 'DELETE',
-                url: '/ProductStages',
-                data: arr,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            })
-        }
-
-        var StatusLookup = {}
-        config.PRODUCT_STATUS.forEach(function(object) {
-            StatusLookup[object.value] = object
-        })
-        service.getStatus = function(abbreviation) {
-            if (_.isNil(abbreviation)) {
-                return {
-                    name: 'No Status',
-                    color: 'color-grey'
-                }
-            }
-            return StatusLookup[abbreviation]
-        }
-
-        /**
-         * @param  {Product Object} fd
-         */
-        service.serialize = function(fd) {
-
-            var clean = {}
-            var serializer = {
-                GlobalCategories: {
-                    serialize: function(data) {
-                        return data.map(function(lcat) {
-                            if (lcat == null) return null
-                            return {
-                                CategoryId: lcat.CategoryId
-                            }
-                        });
-                    },
-                    fallback: function(data) {
-                        throw new KnownException("No serialization fallback for Global Categories");
-                    }
-                },
-                LocalCategories: {
-                    serialize: function(data) {
-                        return data.map(function(lcat) {
-                            if (lcat == null) return null
-                            return {
-                                CategoryId: lcat.CategoryId
-                            }
-                        });
-                    },
-                    fallback: function(data) {
-                        return [null, null, null]
-                    }
-                },
-                Keywords: {
-                    serialize: function(data) {
-                        var m = util.uniqueSet(data);
-                        return (!m ? '' : m.join(','));
-                    },
-                    fallback: function(data) {
-                        return '';
-                    }
-                },
-                AttributeSet: {
-                    serialize: function(data) {
-                        var k = null;
-                        if (data.AttributeSetId) k = data.AttributeSetId;
-                        return {
-                            AttributeSetId: k
-                        }
-                    },
-                    fallback: function(data) {
-                        return {
-                            AttributeSetId: null
-                        }
-                    }
-                },
-                VideoLinks: function(vlink) {
-                    var f = []
-                    Object.keys(vlink).forEach(function(key) {
-                        var value = vlink[key]
-                        var obj = {
-                            'Url': value
-                        }
-
-                        f.push(obj)
-                    })
-                    return f
-                },
-                Images: function(images) {
-                    return images.map(function(image) {
-                        image.position = pos
-                        return image
-                    });
-                },
-                MasterAttribute: function(ma) {
-                    var t = [];
-                    Object.keys(ma.MasterAttribute).forEach(function(key) {
-                        if (ma.MasterAttribute[key].AttributeValueId) {
-                            var g = {
-                                AttributeValues: [],
-                                AttributeId: ma.MasterAttribute[key].AttributeId,
-                                ValueEn: ma.MasterAttribute[key].AttributeValueEn
-                            }
-
-                            g.AttributeValues.push(ma.MasterAttribute[key])
-                            t.push(g)
-                        } else {
-                            t.push({
-                                AttributeValues: [],
-                                AttributeId: Number(key),
-                                ValueEn: ma.MasterAttribute[key]
-                            })
-                        }
-
-                    });
-                    return t;
-                },
-                RelatedProducts: function(rp) {
-                    return rp;
-                }
-            }
-
-            for (var key in fd) {
-                if ('queue' in fd[key]) delete fd[key].queue;
-                if (fd[key].$id) delete fd[key].$id;
-                if (key in serializer) {
-                    var f = serializer[key];
-                    var v = fd[key];
-                    try {
-                        clean[key] = f.serialize(v);
-                    } catch (ex) {
-                        clean[key] = f.fallback(v);
-                    }
-                } else {
-                    clean[key] = v;
-                }
-            }
-
- 
-	   return clean;
-            /*
-            
-            try {
-                clean.Remark = fd.Remark
-                clean.PrepareDay = fd.PrepareDay || 0
-                clean.SEO = fd.SEO
-                clean.ControlFlags = fd.ControlFlags
-                clean.Brand = fd.Brand
-                clean.ShippingMethod = fd.ShippingMethod
-                clean.EffectiveDate = null
-                clean.ExpireDate = null
-                clean.ExpireTime = null
-                clean.ExpireDate = null
-
-                if (fd.ExpireDate && fd.EffectiveDate) {
-                    var cpdate = angular.copy(fd.ExpireDate)
-                    clean.ExpireDate = moment(cpdate).format('LL')
-                    clean.ExpireTime = moment(cpdate).format('HH:mm:ss')
-
-                    cpdate = angular.copy(fd.EffectiveDate)
-
-                    clean.EffectiveDate = moment(cpdate).format('LL')
-                    clean.EffectiveTime = moment(cpdate).format('HH:mm:ss')
-                }
-
-
-            } catch (ex) {
-                console.warn('One-To-One Fields', ex)
-            }
-
-            
-
-            try {
-                clean.RelatedProducts = []
-                Object.keys(fd.RelatedProducts || []).forEach(function (key) {
-                    clean.RelatedProducts.push(
-                        fd.RelatedProducts[key]
-                        )
-                })
-            } catch (ex) {
-                console.warn('Organizing Related Products', ex)
-            }
-
-            // MasterVariant
-            clean.MasterVariant = fd.MasterVariant
-
-            if (fd.ProductId) clean.ProductId = fd.ProductId
-
-            try {
-                clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks)
-            } catch (ex) {
-                clean.MasterVariant.VideoLinks = []
-            }
-
-            try {
-                clean.MasterVariant.Images = (fd.MasterVariant.Images || []).map(mapper.Images)
-            } catch (ex) {
-                clean.MasterVariant.Images = []
-            }
-
-            try {
-                if (hasVariants) {
-                    clean.Variants = (fd.Variants || []).map(mapper.Variants)
-                    // Find DefaultVariant
-                    var target = fd.DefaultVariant.text
-                    clean.Variants.forEach(function (vari, index) {
-                        vari.SafetyStock = 0; // Placeholder, no UI yet
-                        vari.StockType = 0 // Placeholder
-                        vari.DefaultVariant = false
-                        if (vari.text == target) {
-                            clean.Variants[index].DefaultVariant = true
-                        }
-                    })
-                }
-            } catch (ex) {
-                console.warn('Variant Distribute', ex)
-            }
-
-            // HardCoD
-            clean.SellerId = 1
-            clean.ShopId = 1
-            */
-            return clean
-        }
-
-        service.deserialize = function(invFd, FullAttributeSet) {
-            console.log('FullAttributeSet', FullAttributeSet)
-
-            invFd.AttributeSet = FullAttributeSet
-            invFd.PrepareDay = invFd.PrepareDay || ''
-
-            if (invFd.EffectiveDate != '' && invFd.EffectiveDate != null) {
-                invFd.EffectiveDate = moment(invFd.EffectiveDate + ' ' + invFd.EffectiveTime).toDate()
-                invFd.EffectiveTime = invFd.EffectiveTime
-            }
-
-            if (invFd.ExpireDate != '' && invFd.ExpireDate != null) {
-                invFd.ExpireDate = moment(invFd.ExpireDate + ' ' + invFd.ExpireTime).toDate()
-                invFd.ExpireTime = invFd.ExpireTime
-            }
-
-            var BrandId = invFd.Brand.BrandId
-            Brand.getOne(BrandId).then(function(data) {
-                invFd.Brand = data
-                delete invFd.Brand.$id
-                invFd.Brand.id = BrandId
-            }, function() {
-                console.log('brand resolve failure')
-                invFd.Brand = {
-                    BrandId: null,
-                    BrandNameEn: 'Please select brand..'
-                }
-            })
-
-            var invMapper = {
-                VideoLinks: function(m) {
-                    return m.Url
-                },
-                Variants: function(m) {
-                    m.Visibility = m.Visibility
-                    m.Images = m.Images || []
-                    m.Images360 = m.Images360 || []
-                    m.WeightUnit = (m.WeightUnit || '').trim()
-                    m.DimensionUnit = (m.DimensionUnit || '').trim()
-                    m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute)
-                    return m
-                }
-            }
-
-            try {
-                var DefaultVariantIndex = (invFd.Variants || []).map(function(o) {
-                    return o.DefaultVariant || false
-                }).indexOf(true)
-
-                invFd.DefaultVariant = invFd.Variants[DefaultVariantIndex]
-            } catch (er) {
-                console.warn('Unable to set DefaultVariant, will not set', er)
-            }
-
-            try {
-                invFd.Variants = (invFd.Variants || []).map(invMapper.Variants)
-            } catch (er) {
-                console.warn('Unable to set Variants, will set empty', er)
-                invFd.Variants = []
-            }
-
-            var MasterAttribute = {}
-            try {
-                invFd.MasterAttribute.forEach(function(ma) {
-                    var k = { 'AttributeValue': ma.AttributeValues[0] }
-                    if (ma.AttributeValues.length > 0 && ma.AttributeValues[0].AttributeValueId) {
-                        k.AttributeId = ma.AttributeId
-                        k.AttributeValueId = ma.AttributeValues[0].AttributeValueId
-                    }
-                    MasterAttribute[ma.AttributeId] = ma.ValueEn || k
-                })
-            } catch (ex) {
-                console.warn('Unable to set MasterAttribute', ex)
-            }
-            invFd.MasterAttribute = MasterAttribute
-
-            if (!invFd.LocalCategories) {
-                invFd.LocalCategories = []
-            }
-
-            if (invFd.LocalCategories.length == 0) {
-                invFd.LocalCategories = [null, null, null]
-            } else {
-                var kmax = invFd.LocalCategories.length
-                for (var k = 0; k < 3 - kmax; k++) {
-                    console.log('pushing null')
-                    invFd.LocalCategories.push(null)
-                }
-            }
-
-            if (invFd.LocalCategory) {
-                LocalCategory.getOne(invFd.LocalCategory).then(function(locat) {
-                    invFd.LocalCategories.unshift(locat)
-
-                    if (invFd.LocalCategories.length > 3) {
-                        invFd.LocalCategories.pop()
-                    }
-
-                })
-            }
-
-            // TODO: replace with try-catch
-            if (invFd.MasterVariant.VideoLinks) {
-                invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks)
-            } else {
-                invFd.MasterVariant.VideoLinks = []
-            }
-
-            invFd.Variants.forEach(function(variant, index) {
-                try {
-                    variant.VideoLinks = (variant.VideoLinks || []).map(invMapper.VideoLinks)
-                } catch (ex) {
-                    variant.VideoLinks = []
-                }
-            })
-
-            if (!invFd.GlobalCategories) {
-                invFd.GlobalCategories = [null, null, null]
-            }
-
-            if (invFd.GlobalCategories.length == 0) {
-                invFd.GlobalCategories = [null, null, null]
-            } else {
-                var kmax = invFd.GlobalCategories.length
-                for (var k = 0; k < 3 - kmax; k++) {
-                    console.log('pushing null')
-                    invFd.GlobalCategories.push(null)
-                }
-            }
-
-            invFd.GlobalCategories.unshift({
-                CategoryId: invFd.GlobalCategory
-            })
-
-            if (invFd.GlobalCategories.length > 3) {
-                invFd.GlobalCategories.pop()
-            }
-
-            delete invFd.GlobalCategory
-            delete invFd.LocalCategory
-
-            // TODO: Just change ngmodel to bind to MasterVariant.MasterImages Directly
-            // invFd.MasterImages = invFd.MasterVariant.Images || []
-            // delete invFd.MasterVariant.Images
-            // invFd.MasterImages360 = invFd.MasterVariant.Images360 || []
-            // delete invFd.MasterVariant.Images360
-
-            try {
-                invFd.MasterVariant.WeightUnit = invFd.MasterVariant.WeightUnit.trim()
-            } catch (ex) {
-                invFd.MasterVariant.WeightUnit = undefined
-            }
-
-            try {
-                invFd.MasterVariant.DimensionUnit = invFd.MasterVariant.DimensionUnit.trim()
-            } catch (ex) {
-                invFd.MasterVariant.DimensionUnit = undefined
-            }
-
-            try {
-                var _split = invFd.Keywords.trim().split(',')
-                if (_split[0] == '') {
-                    invFd.Keywords = []
-                } else {
-                    invFd.Keywords = util.uniqueSet(_split)
-                }
-            } catch (ex) {
-                invFd.Keywords = []
-            }
-
-            if (invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; // TODO: Hardcode
-
-            var transformed = {
-                formData: invFd
-            }
-
-            if (invFd.Variants.length > 0) {
-                // Figure out the Attributes that make up each Variant
-                var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId'])
-
-                // Generate attributeOptions
-                var map0_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
-                    return a.Attribute.AttributeId
-                }).indexOf(invFd.Variants[0].FirstAttribute.AttributeId)
-
-                var map1_index, SecondArray
-                if (HasTwoAttr) {
-                    map1_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
-                        return a.Attribute.AttributeId
-                    }).indexOf(invFd.Variants[0].SecondAttribute.AttributeId)
-                }
-
-                // Find array of values to populate factors array that can be used to reproduce
-                // the expanded variants
-                var FirstArray = invFd.Variants.map(function(variant) {
-                    if (variant.FirstAttribute.AttributeValues.length > 0) {
-                        return {
-                            'AttributeValue': variant.FirstAttribute.AttributeValues[0],
-                            'AttributeId': variant.FirstAttribute.AttributeId
-                        }
-                    }
-
-                    return variant.FirstAttribute.ValueEn.trim()
-                })
-
-                if (HasTwoAttr) {
-                    SecondArray = invFd.Variants.map(function(variant) {
-                        if (variant.SecondAttribute.AttributeValues.length > 0) {
-                            return {
-                                'AttributeValue': variant.SecondAttribute.AttributeValues[0],
-                                'AttributeId': variant.SecondAttribute.AttributeId
-                            }
-                        }
-                        return variant.SecondAttribute.ValueEn.trim()
-                    })
-                }
-
-                // Get updated map from invFd.AttributeSet
-                // and load factorization array
-                var uniqueFirst = util.uniqueSet(FirstArray, 'AttributeValue.AttributeValueId')
-                console.log('ufirst', uniqueFirst)
-                transformed.attributeOptions = [{
-                    Attribute: FullAttributeSet.AttributeSetMaps[map0_index].Attribute,
-                    options: uniqueFirst
-                }]
-
-                if (HasTwoAttr) {
-                    var uniqueSecond = util.uniqueSet(SecondArray, 'AttributeValue.AttributeValueId')
-                    console.log(uniqueSecond)
-                    transformed.attributeOptions.push({
-                        Attribute: FullAttributeSet.AttributeSetMaps[map1_index].Attribute,
-                        options: uniqueSecond
-                    })
-                } else {
-                    transformed.attributeOptions.push({
-                        Attribute: null,
-                        options: []
-                    })
-                }
-
-            }
-
-            console.log('transformation array', transformed)
-
-            return transformed
-        }
-
-        return service
-    }
+	function($http, common, util, LocalCategory, Brand, config, KnownException) {
+		'use strict'
+			var service = common.Rest('/ProductStages')
+
+			service.getExportableFields = function() {
+				var req = {
+					method: 'GET',
+					url: '/ProductStages/Guidance/Export'
+				}
+				return common.makeRequest(req)
+			}
+
+		service.downloadTemplate = function(globalCat, aset) {
+			var req = {
+				method: 'POST',
+				url: '/ProductStages/Template',
+				data: {
+					GlobalCategories: [globalCat],
+					AttributeSets: _.isNil(aset) ? [] : [aset]
+				}
+			}
+			return common.makeRequest(req)
+		}
+
+		service.getAllAttributeSetsForProducts = function(productList) {
+			var req = {
+				method: 'POST',
+				url: '/ProductStages/AttributeSet',
+				data: productList
+			}
+			return common.makeRequest(req)
+		}
+
+		service.export = function(ps) {
+			var req = {
+				method: 'POST',
+				url: '/ProductStages/Export',
+				data: ps
+			}
+			return common.makeRequest(req)
+		}
+
+		service.guideline = function(params) {
+			var req = {
+				method: 'GET',
+				url: '/ProductStages/Guidance',
+				params: params
+			}
+			return common.makeRequest(req)
+		}
+		service.approve = function(obj) {
+			return common.makeRequest({
+				method: 'PUT',
+				url: '/ProductStages/Approve',
+				data: obj,
+				headers: {
+					'Content-Type': 'application/json;charset=UTF-8'
+				}
+			})
+		}
+		service.reject = function(obj) {
+			return common.makeRequest({
+				method: 'PUT',
+				url: '/ProductStages/Reject',
+				data: obj,
+				headers: {
+					'Content-Type': 'application/json;charset=UTF-8'
+				}
+			})
+		}
+
+		service.getOne = function(productId) {
+			var req = {
+				method: 'GET',
+				url: '/ProductStages/' + productId
+			}
+			return common.makeRequest(req)
+		}
+
+		service.getAllVariants = function(parameters) {
+			var req = {
+				method: 'GET',
+				url: '/ProductStages/All',
+				params: parameters
+			}
+
+			return common.makeRequest(req)
+		}
+
+		service.updateAllVariants = function(obj) {
+			var req = {
+				method: 'PUT',
+				url: '/ProductStages/All/Image',
+				data: obj,
+				headers: {
+					'Content-Type': 'application/json;charset=UTF-8'
+				}
+			}
+
+			return common.makeRequest(req)
+		}
+
+		service.duplicate = function(ProductId) {
+			// this URL structure is weird dont u think
+			var req = {
+				method: 'POST',
+				url: '/ProductStages/' + ProductId
+			}
+
+			return common.makeRequest(req)
+		}
+
+		service.getAll = function(parameters) {
+			var req = {
+				method: 'GET',
+				url: '/ProductStages/',
+				params: {
+					_order: parameters.orderBy || 'ProductId',
+					_limit: parameters.pageSize || 10,
+					_offset: parameters.page * parameters.pageSize || 0,
+					_direction: parameters.direction || 'asc',
+					_filter: parameters.filter || 'ALL',
+					searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined
+				}
+			}
+
+			return common.makeRequest(req)
+		}
+
+		service.export = function(tobj) {
+			var path = '/ProductStages/Export'
+				return common.makeRequest({
+					responseType: 'arraybuffer',
+					method: 'POST',
+					url: path,
+					data: tobj
+				})
+		}
+
+		service.publish = function(tobj, Status) {
+			tobj.Status = Status
+				var mode = 'POST'
+				var path = '/ProductStages'
+				if (tobj.ProductId) {
+					mode = 'PUT'
+						path = path + '/' + tobj.ProductId
+				}
+			return common.makeRequest({
+				method: mode,
+				url: path,
+				data: tobj
+			})
+		}
+
+		service.bulkPublish = function(tobj) {
+			return common.makeRequest({
+				method: 'POST',
+				url: '/ProductStages/Publish',
+				data: tobj,
+				headers: {
+					'Content-Type': 'application/json;charset=UTF-8'
+				}
+			})
+		}
+
+		service.visible = function(obj) {
+			return common.makeRequest({
+				method: 'PUT',
+				url: '/ProductStages/Visibility',
+				data: obj,
+				headers: {
+					'Content-Type': 'application/json;charset=UTF-8'
+				}
+			})
+		}
+		service.deleteBulk = function(arr) {
+			return common.makeRequest({
+				method: 'DELETE',
+				url: '/ProductStages',
+				data: arr,
+				headers: {
+					'Content-Type': 'application/json;charset=UTF-8'
+				}
+			})
+		}
+
+		var StatusLookup = {}
+		config.PRODUCT_STATUS.forEach(function(object) {
+			StatusLookup[object.value] = object;
+		})
+		service.getStatus = function(abbreviation) {
+			if (_.isNil(abbreviation)) {
+				return {
+					name: 'No Status',
+					color: 'color-grey'
+				}
+			}
+			return StatusLookup[abbreviation];
+		}
+
+		/**
+		 * @param  {Product Object} fd
+		 */
+		service.serialize = function(fd) {
+
+			var clean = {}
+			var serializer = {
+				GlobalCategories: {
+					serialize: function(data) {
+						return data.map(function(lcat) {
+							if (lcat == null) return null;
+							return {
+								CategoryId: lcat.CategoryId
+							}
+						});
+					},
+					fallback: function(data) {
+						throw new KnownException("No serialization fallback for Global Categories");
+					}
+				},
+				LocalCategories: {
+					serialize: function(data) {
+						return data.map(function(lcat) {
+							if (lcat == null) return null;
+							return {
+								CategoryId: lcat.CategoryId
+							}
+						});
+					},
+					fallback: function(data) {
+						return [null, null, null];
+					}
+				},
+				AttributeSet: {
+					serialize: function(data) {
+						var k = null;
+						if (data.AttributeSetId) k = data.AttributeSetId;
+						return {
+							AttributeSetId: k
+						};
+					},
+					fallback: function(data) {
+						return {
+							AttributeSetId: null
+						};
+					}
+				},
+				Images: {
+					serialize: function(images) {
+						return images.map(function(image) {
+							image.position = pos;
+							return image;
+						});
+					},
+					fallback: function(x){
+						return [];
+					}
+				}, 
+				MasterAttribute: {
+					serialize:  function(ma) {
+						var t = [];
+						Object.keys(ma).forEach(function(key) {
+							if (ma[key].AttributeValueId) {
+								var g = {
+									AttributeValues: [],
+									AttributeId: ma[key].AttributeId,
+									ValueEn: ma[key].AttributeValueEn
+								};
+
+								g.AttributeValues.push(ma[key]);
+								t.push(g);
+							} else {
+								t.push({
+									AttributeValues: [],
+									AttributeId: Number(key),
+									ValueEn: ma[key]
+								});
+							}
+
+						});
+						return t;
+					},
+					fallback: function(){
+						return [];
+					}
+				}
+			};
+
+			for (var key in fd) {
+				if (_.has(fd[key], 'queue')) delete fd[key].queue;
+				if (_.has(fd[key], '$id')) delete fd[key].$id;
+				if (key in serializer) {
+					var f = serializer[key];
+					var v = fd[key];
+					try {
+						clean[key] = f.serialize(v);
+					} catch (ex) {
+						console.warn("Using fallback strategy to serialize " + key, ex);
+						clean[key] = f.fallback(v);
+					}
+				} else {
+					clean[key] = fd[key];
+				}
+			}
+
+			//Other corner cases
+			clean.MainGlobalCategory = clean.GlobalCategories.shift();
+			clean.MainLocalCategory = clean.LocalCategories.shift();
+			clean.GlobalCategories = _.pick(clean.GlobalCategories, _.identity);
+			clean.LocalCategories = _.pick(clean.LocalCategories, _.identity);
+			return clean;
+		}
+
+		/*
+		 * Deserialize server format
+		 * invFd {Server FormData}
+		 */
+		service.deserialize = function(invFd, FullAttributeSet) {
+
+			invFd.AttributeSet = FullAttributeSet;
+			var BrandId = invFd.Brand.BrandId;
+			invFd.Brand = {
+				BrandId: null,
+				BrandNameEn: 'Search brand by name or id..'
+			};
+
+			Brand.getOne(BrandId).then(function(data) {
+				invFd.Brand = data;
+				delete invFd.Brand.$id;
+				invFd.Brand.id = BrandId;
+			});
+
+			try {
+				var DefaultVariantIndex = (invFd.Variants || []).map(function(o) {
+					return o.DefaultVariant || false;
+				}).indexOf(true);
+
+				invFd.DefaultVariant = invFd.Variants[DefaultVariantIndex];
+			} catch (er) {
+				console.warn('Unable to set DefaultVariant, will not set', er);
+			}
+
+			try {
+				invFd.Variants = (invFd.Variants || []).map(invMapper.Variants);
+			} catch (er) {
+				console.warn('Unable to set Variants, will set empty', er);
+				invFd.Variants = [];
+			}
+
+			var MasterAttribute = {};
+			try {
+				invFd.MasterAttribute.forEach(function(ma) {
+					var k = { 'AttributeValue': ma.AttributeValues[0] }
+					if (ma.AttributeValues.length > 0 && ma.AttributeValues[0].AttributeValueId) {
+						k.AttributeId = ma.AttributeId;
+						k.AttributeValueId = ma.AttributeValues[0].AttributeValueId;
+					}
+					MasterAttribute[ma.AttributeId] = ma.ValueEn || k;
+				});
+			} catch (ex) {
+				console.warn('Unable to set MasterAttribute', ex);
+			}
+			invFd.MasterAttribute = MasterAttribute;
+
+			if (!invFd.LocalCategories) {
+				invFd.LocalCategories = [];
+			}
+
+			if (invFd.LocalCategories.length == 0) {
+				invFd.LocalCategories = [null, null, null];
+			} else {
+				var kmax = invFd.LocalCategories.length;
+				for (var k = 0; k < 3 - kmax; k++) {
+					console.log('pushing null');
+					invFd.LocalCategories.push(null);
+				}
+			}
+
+			if (invFd.LocalCategory) {
+				LocalCategory.getOne(invFd.LocalCategory).then(function(locat) {
+					invFd.LocalCategories.unshift(locat);
+					if (invFd.LocalCategories.length > 3) {
+						invFd.LocalCategories.pop();
+					}
+				});
+			}
+
+			if (invFd.MasterVariant.VideoLinks) {
+				invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
+			} else {
+				invFd.MasterVariant.VideoLinks = [];
+			}
+
+			invFd.Variants.forEach(function(variant, index) {
+				try {
+					variant.VideoLinks = (variant.VideoLinks || []).map(invMapper.VideoLinks);
+				} catch (ex) {
+					variant.VideoLinks = []
+				}
+			})
+
+			if (invFd.GlobalCategories.length == 0) {
+				invFd.GlobalCategories = [null, null, null];
+			} else {
+				var kmax = invFd.GlobalCategories.length;
+				for (var k = 0; k < 3 - kmax; k++) {
+					console.log('pushing null');
+					invFd.GlobalCategories.push(null);
+				}
+			}
+
+			invFd.GlobalCategories.unshift({
+				CategoryId: invFd.GlobalCategory
+			})
+
+			if (invFd.GlobalCategories.length > 3) {
+				invFd.GlobalCategories.pop()
+			}
+
+			delete invFd.GlobalCategory;
+			delete invFd.LocalCategory;
+
+			try {
+				var _split = invFd.Keywords.trim().split(',');
+				if (_split[0] == '') {
+					invFd.Keywords = [];
+				} else {
+					invFd.Keywords = util.uniqueSet(_split);
+				}
+			} catch (ex) {
+				invFd.Keywords = [];
+			}
+
+			//Find out which variant is default variant
+			if (invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; // TODO: Hardcode
+
+			var transformed = {
+				formData: invFd
+			};
+
+			if (invFd.Variants.length > 0) {
+				// Figure out the Attributes that make up each Variant
+				var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId'])
+
+					// Generate attributeOptions
+					var map0_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
+						return a.Attribute.AttributeId
+					}).indexOf(invFd.Variants[0].FirstAttribute.AttributeId)
+
+				var map1_index, SecondArray
+					if (HasTwoAttr) {
+						map1_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
+							return a.Attribute.AttributeId
+						}).indexOf(invFd.Variants[0].SecondAttribute.AttributeId)
+					}
+
+				// Find array of values to populate factors array that can be used to reproduce
+				// the expanded variants
+				var FirstArray = invFd.Variants.map(function(variant) {
+					if (variant.FirstAttribute.AttributeValues.length > 0) {
+						return {
+							'AttributeValue': variant.FirstAttribute.AttributeValues[0],
+							'AttributeId': variant.FirstAttribute.AttributeId
+						}
+					}
+
+					return variant.FirstAttribute.ValueEn.trim()
+				})
+
+				if (HasTwoAttr) {
+					SecondArray = invFd.Variants.map(function(variant) {
+						if (variant.SecondAttribute.AttributeValues.length > 0) {
+							return {
+								'AttributeValue': variant.SecondAttribute.AttributeValues[0],
+								'AttributeId': variant.SecondAttribute.AttributeId
+							}
+						}
+						return variant.SecondAttribute.ValueEn.trim()
+					})
+				}
+
+				// Get updated map from invFd.AttributeSet
+				// and load factorization array
+				var uniqueFirst = util.uniqueSet(FirstArray, 'AttributeValue.AttributeValueId')
+					console.log('ufirst', uniqueFirst)
+					transformed.attributeOptions = [{
+						Attribute: FullAttributeSet.AttributeSetMaps[map0_index].Attribute,
+						options: uniqueFirst
+					}]
+
+				if (HasTwoAttr) {
+					var uniqueSecond = util.uniqueSet(SecondArray, 'AttributeValue.AttributeValueId')
+						console.log(uniqueSecond)
+						transformed.attributeOptions.push({
+							Attribute: FullAttributeSet.AttributeSetMaps[map1_index].Attribute,
+							options: uniqueSecond
+						})
+				} else {
+					transformed.attributeOptions.push({
+						Attribute: null,
+						options: []
+					})
+				}
+
+			}
+
+			console.log('transformation array', transformed);
+
+			return transformed;
+		}
+
+		return service
+	}
 ]
 
 },{}],144:[function(require,module,exports){
@@ -65058,6 +64906,543 @@ require('./angular');
 module.exports = angular;
 
 },{"./angular":183}],185:[function(require,module,exports){
+(function (global){
+/*! https://mths.be/punycode v1.4.0 by @mathias */
+;(function(root) {
+
+	/** Detect free variables */
+	var freeExports = typeof exports == 'object' && exports &&
+		!exports.nodeType && exports;
+	var freeModule = typeof module == 'object' && module &&
+		!module.nodeType && module;
+	var freeGlobal = typeof global == 'object' && global;
+	if (
+		freeGlobal.global === freeGlobal ||
+		freeGlobal.window === freeGlobal ||
+		freeGlobal.self === freeGlobal
+	) {
+		root = freeGlobal;
+	}
+
+	/**
+	 * The `punycode` object.
+	 * @name punycode
+	 * @type Object
+	 */
+	var punycode,
+
+	/** Highest positive signed 32-bit float value */
+	maxInt = 2147483647, // aka. 0x7FFFFFFF or 2^31-1
+
+	/** Bootstring parameters */
+	base = 36,
+	tMin = 1,
+	tMax = 26,
+	skew = 38,
+	damp = 700,
+	initialBias = 72,
+	initialN = 128, // 0x80
+	delimiter = '-', // '\x2D'
+
+	/** Regular expressions */
+	regexPunycode = /^xn--/,
+	regexNonASCII = /[^\x20-\x7E]/, // unprintable ASCII chars + non-ASCII chars
+	regexSeparators = /[\x2E\u3002\uFF0E\uFF61]/g, // RFC 3490 separators
+
+	/** Error messages */
+	errors = {
+		'overflow': 'Overflow: input needs wider integers to process',
+		'not-basic': 'Illegal input >= 0x80 (not a basic code point)',
+		'invalid-input': 'Invalid input'
+	},
+
+	/** Convenience shortcuts */
+	baseMinusTMin = base - tMin,
+	floor = Math.floor,
+	stringFromCharCode = String.fromCharCode,
+
+	/** Temporary variable */
+	key;
+
+	/*--------------------------------------------------------------------------*/
+
+	/**
+	 * A generic error utility function.
+	 * @private
+	 * @param {String} type The error type.
+	 * @returns {Error} Throws a `RangeError` with the applicable error message.
+	 */
+	function error(type) {
+		throw new RangeError(errors[type]);
+	}
+
+	/**
+	 * A generic `Array#map` utility function.
+	 * @private
+	 * @param {Array} array The array to iterate over.
+	 * @param {Function} callback The function that gets called for every array
+	 * item.
+	 * @returns {Array} A new array of values returned by the callback function.
+	 */
+	function map(array, fn) {
+		var length = array.length;
+		var result = [];
+		while (length--) {
+			result[length] = fn(array[length]);
+		}
+		return result;
+	}
+
+	/**
+	 * A simple `Array#map`-like wrapper to work with domain name strings or email
+	 * addresses.
+	 * @private
+	 * @param {String} domain The domain name or email address.
+	 * @param {Function} callback The function that gets called for every
+	 * character.
+	 * @returns {Array} A new string of characters returned by the callback
+	 * function.
+	 */
+	function mapDomain(string, fn) {
+		var parts = string.split('@');
+		var result = '';
+		if (parts.length > 1) {
+			// In email addresses, only the domain name should be punycoded. Leave
+			// the local part (i.e. everything up to `@`) intact.
+			result = parts[0] + '@';
+			string = parts[1];
+		}
+		// Avoid `split(regex)` for IE8 compatibility. See #17.
+		string = string.replace(regexSeparators, '\x2E');
+		var labels = string.split('.');
+		var encoded = map(labels, fn).join('.');
+		return result + encoded;
+	}
+
+	/**
+	 * Creates an array containing the numeric code points of each Unicode
+	 * character in the string. While JavaScript uses UCS-2 internally,
+	 * this function will convert a pair of surrogate halves (each of which
+	 * UCS-2 exposes as separate characters) into a single code point,
+	 * matching UTF-16.
+	 * @see `punycode.ucs2.encode`
+	 * @see <https://mathiasbynens.be/notes/javascript-encoding>
+	 * @memberOf punycode.ucs2
+	 * @name decode
+	 * @param {String} string The Unicode input string (UCS-2).
+	 * @returns {Array} The new array of code points.
+	 */
+	function ucs2decode(string) {
+		var output = [],
+		    counter = 0,
+		    length = string.length,
+		    value,
+		    extra;
+		while (counter < length) {
+			value = string.charCodeAt(counter++);
+			if (value >= 0xD800 && value <= 0xDBFF && counter < length) {
+				// high surrogate, and there is a next character
+				extra = string.charCodeAt(counter++);
+				if ((extra & 0xFC00) == 0xDC00) { // low surrogate
+					output.push(((value & 0x3FF) << 10) + (extra & 0x3FF) + 0x10000);
+				} else {
+					// unmatched surrogate; only append this code unit, in case the next
+					// code unit is the high surrogate of a surrogate pair
+					output.push(value);
+					counter--;
+				}
+			} else {
+				output.push(value);
+			}
+		}
+		return output;
+	}
+
+	/**
+	 * Creates a string based on an array of numeric code points.
+	 * @see `punycode.ucs2.decode`
+	 * @memberOf punycode.ucs2
+	 * @name encode
+	 * @param {Array} codePoints The array of numeric code points.
+	 * @returns {String} The new Unicode string (UCS-2).
+	 */
+	function ucs2encode(array) {
+		return map(array, function(value) {
+			var output = '';
+			if (value > 0xFFFF) {
+				value -= 0x10000;
+				output += stringFromCharCode(value >>> 10 & 0x3FF | 0xD800);
+				value = 0xDC00 | value & 0x3FF;
+			}
+			output += stringFromCharCode(value);
+			return output;
+		}).join('');
+	}
+
+	/**
+	 * Converts a basic code point into a digit/integer.
+	 * @see `digitToBasic()`
+	 * @private
+	 * @param {Number} codePoint The basic numeric code point value.
+	 * @returns {Number} The numeric value of a basic code point (for use in
+	 * representing integers) in the range `0` to `base - 1`, or `base` if
+	 * the code point does not represent a value.
+	 */
+	function basicToDigit(codePoint) {
+		if (codePoint - 48 < 10) {
+			return codePoint - 22;
+		}
+		if (codePoint - 65 < 26) {
+			return codePoint - 65;
+		}
+		if (codePoint - 97 < 26) {
+			return codePoint - 97;
+		}
+		return base;
+	}
+
+	/**
+	 * Converts a digit/integer into a basic code point.
+	 * @see `basicToDigit()`
+	 * @private
+	 * @param {Number} digit The numeric value of a basic code point.
+	 * @returns {Number} The basic code point whose value (when used for
+	 * representing integers) is `digit`, which needs to be in the range
+	 * `0` to `base - 1`. If `flag` is non-zero, the uppercase form is
+	 * used; else, the lowercase form is used. The behavior is undefined
+	 * if `flag` is non-zero and `digit` has no uppercase form.
+	 */
+	function digitToBasic(digit, flag) {
+		//  0..25 map to ASCII a..z or A..Z
+		// 26..35 map to ASCII 0..9
+		return digit + 22 + 75 * (digit < 26) - ((flag != 0) << 5);
+	}
+
+	/**
+	 * Bias adaptation function as per section 3.4 of RFC 3492.
+	 * https://tools.ietf.org/html/rfc3492#section-3.4
+	 * @private
+	 */
+	function adapt(delta, numPoints, firstTime) {
+		var k = 0;
+		delta = firstTime ? floor(delta / damp) : delta >> 1;
+		delta += floor(delta / numPoints);
+		for (/* no initialization */; delta > baseMinusTMin * tMax >> 1; k += base) {
+			delta = floor(delta / baseMinusTMin);
+		}
+		return floor(k + (baseMinusTMin + 1) * delta / (delta + skew));
+	}
+
+	/**
+	 * Converts a Punycode string of ASCII-only symbols to a string of Unicode
+	 * symbols.
+	 * @memberOf punycode
+	 * @param {String} input The Punycode string of ASCII-only symbols.
+	 * @returns {String} The resulting string of Unicode symbols.
+	 */
+	function decode(input) {
+		// Don't use UCS-2
+		var output = [],
+		    inputLength = input.length,
+		    out,
+		    i = 0,
+		    n = initialN,
+		    bias = initialBias,
+		    basic,
+		    j,
+		    index,
+		    oldi,
+		    w,
+		    k,
+		    digit,
+		    t,
+		    /** Cached calculation results */
+		    baseMinusT;
+
+		// Handle the basic code points: let `basic` be the number of input code
+		// points before the last delimiter, or `0` if there is none, then copy
+		// the first basic code points to the output.
+
+		basic = input.lastIndexOf(delimiter);
+		if (basic < 0) {
+			basic = 0;
+		}
+
+		for (j = 0; j < basic; ++j) {
+			// if it's not a basic code point
+			if (input.charCodeAt(j) >= 0x80) {
+				error('not-basic');
+			}
+			output.push(input.charCodeAt(j));
+		}
+
+		// Main decoding loop: start just after the last delimiter if any basic code
+		// points were copied; start at the beginning otherwise.
+
+		for (index = basic > 0 ? basic + 1 : 0; index < inputLength; /* no final expression */) {
+
+			// `index` is the index of the next character to be consumed.
+			// Decode a generalized variable-length integer into `delta`,
+			// which gets added to `i`. The overflow checking is easier
+			// if we increase `i` as we go, then subtract off its starting
+			// value at the end to obtain `delta`.
+			for (oldi = i, w = 1, k = base; /* no condition */; k += base) {
+
+				if (index >= inputLength) {
+					error('invalid-input');
+				}
+
+				digit = basicToDigit(input.charCodeAt(index++));
+
+				if (digit >= base || digit > floor((maxInt - i) / w)) {
+					error('overflow');
+				}
+
+				i += digit * w;
+				t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
+
+				if (digit < t) {
+					break;
+				}
+
+				baseMinusT = base - t;
+				if (w > floor(maxInt / baseMinusT)) {
+					error('overflow');
+				}
+
+				w *= baseMinusT;
+
+			}
+
+			out = output.length + 1;
+			bias = adapt(i - oldi, out, oldi == 0);
+
+			// `i` was supposed to wrap around from `out` to `0`,
+			// incrementing `n` each time, so we'll fix that now:
+			if (floor(i / out) > maxInt - n) {
+				error('overflow');
+			}
+
+			n += floor(i / out);
+			i %= out;
+
+			// Insert `n` at position `i` of the output
+			output.splice(i++, 0, n);
+
+		}
+
+		return ucs2encode(output);
+	}
+
+	/**
+	 * Converts a string of Unicode symbols (e.g. a domain name label) to a
+	 * Punycode string of ASCII-only symbols.
+	 * @memberOf punycode
+	 * @param {String} input The string of Unicode symbols.
+	 * @returns {String} The resulting Punycode string of ASCII-only symbols.
+	 */
+	function encode(input) {
+		var n,
+		    delta,
+		    handledCPCount,
+		    basicLength,
+		    bias,
+		    j,
+		    m,
+		    q,
+		    k,
+		    t,
+		    currentValue,
+		    output = [],
+		    /** `inputLength` will hold the number of code points in `input`. */
+		    inputLength,
+		    /** Cached calculation results */
+		    handledCPCountPlusOne,
+		    baseMinusT,
+		    qMinusT;
+
+		// Convert the input in UCS-2 to Unicode
+		input = ucs2decode(input);
+
+		// Cache the length
+		inputLength = input.length;
+
+		// Initialize the state
+		n = initialN;
+		delta = 0;
+		bias = initialBias;
+
+		// Handle the basic code points
+		for (j = 0; j < inputLength; ++j) {
+			currentValue = input[j];
+			if (currentValue < 0x80) {
+				output.push(stringFromCharCode(currentValue));
+			}
+		}
+
+		handledCPCount = basicLength = output.length;
+
+		// `handledCPCount` is the number of code points that have been handled;
+		// `basicLength` is the number of basic code points.
+
+		// Finish the basic string - if it is not empty - with a delimiter
+		if (basicLength) {
+			output.push(delimiter);
+		}
+
+		// Main encoding loop:
+		while (handledCPCount < inputLength) {
+
+			// All non-basic code points < n have been handled already. Find the next
+			// larger one:
+			for (m = maxInt, j = 0; j < inputLength; ++j) {
+				currentValue = input[j];
+				if (currentValue >= n && currentValue < m) {
+					m = currentValue;
+				}
+			}
+
+			// Increase `delta` enough to advance the decoder's <n,i> state to <m,0>,
+			// but guard against overflow
+			handledCPCountPlusOne = handledCPCount + 1;
+			if (m - n > floor((maxInt - delta) / handledCPCountPlusOne)) {
+				error('overflow');
+			}
+
+			delta += (m - n) * handledCPCountPlusOne;
+			n = m;
+
+			for (j = 0; j < inputLength; ++j) {
+				currentValue = input[j];
+
+				if (currentValue < n && ++delta > maxInt) {
+					error('overflow');
+				}
+
+				if (currentValue == n) {
+					// Represent delta as a generalized variable-length integer
+					for (q = delta, k = base; /* no condition */; k += base) {
+						t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
+						if (q < t) {
+							break;
+						}
+						qMinusT = q - t;
+						baseMinusT = base - t;
+						output.push(
+							stringFromCharCode(digitToBasic(t + qMinusT % baseMinusT, 0))
+						);
+						q = floor(qMinusT / baseMinusT);
+					}
+
+					output.push(stringFromCharCode(digitToBasic(q, 0)));
+					bias = adapt(delta, handledCPCountPlusOne, handledCPCount == basicLength);
+					delta = 0;
+					++handledCPCount;
+				}
+			}
+
+			++delta;
+			++n;
+
+		}
+		return output.join('');
+	}
+
+	/**
+	 * Converts a Punycode string representing a domain name or an email address
+	 * to Unicode. Only the Punycoded parts of the input will be converted, i.e.
+	 * it doesn't matter if you call it on a string that has already been
+	 * converted to Unicode.
+	 * @memberOf punycode
+	 * @param {String} input The Punycoded domain name or email address to
+	 * convert to Unicode.
+	 * @returns {String} The Unicode representation of the given Punycode
+	 * string.
+	 */
+	function toUnicode(input) {
+		return mapDomain(input, function(string) {
+			return regexPunycode.test(string)
+				? decode(string.slice(4).toLowerCase())
+				: string;
+		});
+	}
+
+	/**
+	 * Converts a Unicode string representing a domain name or an email address to
+	 * Punycode. Only the non-ASCII parts of the domain name will be converted,
+	 * i.e. it doesn't matter if you call it with a domain that's already in
+	 * ASCII.
+	 * @memberOf punycode
+	 * @param {String} input The domain name or email address to convert, as a
+	 * Unicode string.
+	 * @returns {String} The Punycode representation of the given domain name or
+	 * email address.
+	 */
+	function toASCII(input) {
+		return mapDomain(input, function(string) {
+			return regexNonASCII.test(string)
+				? 'xn--' + encode(string)
+				: string;
+		});
+	}
+
+	/*--------------------------------------------------------------------------*/
+
+	/** Define the public API */
+	punycode = {
+		/**
+		 * A string representing the current Punycode.js version number.
+		 * @memberOf punycode
+		 * @type String
+		 */
+		'version': '1.3.2',
+		/**
+		 * An object of methods to convert from JavaScript's internal character
+		 * representation (UCS-2) to Unicode code points, and back.
+		 * @see <https://mathiasbynens.be/notes/javascript-encoding>
+		 * @memberOf punycode
+		 * @type Object
+		 */
+		'ucs2': {
+			'decode': ucs2decode,
+			'encode': ucs2encode
+		},
+		'decode': decode,
+		'encode': encode,
+		'toASCII': toASCII,
+		'toUnicode': toUnicode
+	};
+
+	/** Expose `punycode` */
+	// Some AMD build optimizers, like r.js, check for specific condition patterns
+	// like the following:
+	if (
+		typeof define == 'function' &&
+		typeof define.amd == 'object' &&
+		define.amd
+	) {
+		define('punycode', function() {
+			return punycode;
+		});
+	} else if (freeExports && freeModule) {
+		if (module.exports == freeExports) {
+			// in Node.js, io.js, or RingoJS v0.8.0+
+			freeModule.exports = punycode;
+		} else {
+			// in Narwhal or RingoJS v0.7.0-
+			for (key in punycode) {
+				punycode.hasOwnProperty(key) && (freeExports[key] = punycode[key]);
+			}
+		}
+	} else {
+		// in Rhino or a web browser
+		root.punycode = punycode;
+	}
+
+}(this));
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],186:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.1
  * http://jquery.com/
@@ -74890,7 +75275,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],186:[function(require,module,exports){
+},{}],187:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -89967,7 +90352,7 @@ return jQuery;
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],187:[function(require,module,exports){
+},{}],188:[function(require,module,exports){
 /**!
  * AngularJS file upload directives and services. Supoorts: file upload/drop/paste, resume, cancel/abort,
  * progress, resize, thumbnail, preview, validation and CORS
@@ -92746,10 +93131,1090 @@ ngFileUpload.service('UploadExif', ['UploadResize', '$q', function (UploadResize
 }]);
 
 
-},{}],188:[function(require,module,exports){
+},{}],189:[function(require,module,exports){
 require('./dist/ng-file-upload-all');
 module.exports = 'ngFileUpload';
-},{"./dist/ng-file-upload-all":187}],189:[function(require,module,exports){
+},{"./dist/ng-file-upload-all":188}],190:[function(require,module,exports){
+var validators = require('./validators'),
+	validationContext = require('./validation-context'),
+	jsonRefs = require('skeemas-json-refs');
+
+var protoValidator = {
+	addRef: function(uri, ref) {
+		if(typeof uri === 'object') {
+			ref = uri;
+			uri = null;
+		}
+		uri = uri || ref.id;
+
+		if(!uri) throw new Error('Cannot add a json schema reference without a uri/id.');
+
+		this._refs.add(uri, ref);
+
+		return this;
+	},
+	validate: function(instance, schema, options) {
+		if(instance === undefined) throw new Error('Instance undefined in call to validate.');
+		if(!schema) throw new Error('No schema specified in call to validate.');
+
+		if(typeof schema === 'string') {
+			var uri = schema;
+			schema = this._refs.get(uri);
+
+			if(!schema) throw new Error('Unable to locate schema (' + uri + '). Did you call addRef with this schema?');
+		}
+
+		var context = validationContext(schema, {
+			instance: instance,
+			refs: this._refs,
+			breakOnError: options && options.breakOnError,
+			cleanWithDefaults: options && options.cleanWithDefaults
+		});
+		validators.base(context, instance, schema);
+		if(context.result.valid) context.result.cleanInstance = context.cleanSubject;
+		return context.result;
+	}
+};
+
+function makeValidator() {
+	return Object.create(protoValidator, {
+		_refs: { enumerable:false, writable:false, value:jsonRefs() }
+	});
+}
+
+module.exports = makeValidator;
+
+module.exports.validate = function(instance, schema, options) {
+	if(instance === undefined) throw new Error('Instance undefined in call to validate.');
+	if(!schema) throw new Error('No schema specified in call to validate.');
+
+	var context = validationContext(schema, {
+		instance: instance,
+		breakOnError: options && options.breakOnError,
+		cleanWithDefaults: options && options.cleanWithDefaults
+	});
+	validators.base(context, instance, schema);
+	if(context.result.valid) context.result.cleanInstance = context.cleanSubject;
+	return context.result;
+};
+
+module.exports.use = function(plugin) {
+	if(typeof plugin !== 'function') throw new Error('skeemas.use called with non-function. Plugins are in the form function(skeemas){}.');
+	plugin(protoValidator);
+	return this;
+};
+
+},{"./validation-context":193,"./validators":199,"skeemas-json-refs":192}],191:[function(require,module,exports){
+function fastMap(array, fn) {
+	var len = array.length,
+		result = new Array(len);
+
+	for(var i = 0; i < len; i++) result[i] = fn(array[i]);
+
+	return result;
+}
+
+function decodeToken(ref) {
+	return decodeURI(ref.replace(/~1/g, '/').replace(/~0/g, '~'));
+}
+
+function parse(strPointer) {
+	if(typeof strPointer !== 'string')
+		throw new Error('Invalid JSON Pointer: invalid type (' + (typeof strPointer) + ')');
+
+	// Remove the leading hash if it exists
+	var arrPointer = fastMap((strPointer[0] === '#' ? strPointer.substr(1) : strPointer).split('/'), decodeToken);
+
+	if(arrPointer[0] !== '')
+		throw new Error('Invalid JSON Pointer ("' + strPointer + '"): non-empty pointers must begin with "/" or "#/"');
+
+	return arrPointer;
+}
+
+function get(arrPointer, subject) {
+	for(var i = 1, len = arrPointer.length; i < len; i++) {
+		subject = subject && subject[arrPointer[i]];
+		if(subject === undefined) return;
+	}
+	return subject;
+}
+
+function set(arrPointer, subject, value) {
+	for(var i = 1, len = arrPointer.length - 1; i < len; i++) {
+		subject = (subject || undefined) && subject[arrPointer[i]];
+		if(subject === undefined) return false;
+	}
+
+	if(typeof subject !== 'object') return false;
+
+	var key = arrPointer[i];
+	if(key === '-') {
+		if(!Array.isArray(subject)) return false;
+		subject[subject.length] = value;
+		return true;
+	}
+
+	subject[key] = value;
+	return true;
+}
+
+var protoPointer = {
+	get: function(subject) {
+		return get(this.__arrPointer, subject);
+	},
+	set: function(subject, value) {
+		return set(this.__arrPointer, subject, value);
+	}
+};
+
+module.exports = function(sPointer) {
+	return Object.create(protoPointer, {
+		__sPointer: { writable:false, configurable:false, enumerable:false, value: sPointer },
+		__arrPointer: { writable:false, configurable:false, enumerable:false, value: parse(sPointer) }
+	});
+};
+
+},{}],192:[function(require,module,exports){
+var jsonPointer = require('skeemas-json-pointer');
+
+var protoJsonRefs = {
+	add: function(uri, subject) {
+		if(typeof uri !== 'string')
+			throw new Error('Unable to add JSON Ref: uri must be of type "string"');
+
+		if(~uri.indexOf('#'))
+			throw new Error('Unable to add JSON Ref (' + uri + '): uri cannot include a fragment identifier (#)');
+
+		this.__refs[uri] = subject;
+		return this;
+	},
+
+	remove: function(uri) {
+		delete this.__refs[uri];
+		return this;
+	},
+
+	get: function(uri, subject, ignoreFragment) {
+		if(typeof uri !== 'string')
+			throw new Error('Unable to get JSON Ref: uri must be of type "string"');
+
+		var parts = uri.split('#');
+
+		if(parts.length > 2)
+			throw new Error('Unable to get JSON Ref (' + uri + '): uri cannot contain multiple fragment identifiers (#)');
+
+		if(parts[0])
+			subject = this.__refs[parts[0]];
+
+		if(!subject)
+			throw new Error('Unable to locate JSON Ref (' + parts[0] + ')');
+
+		if(parts.length === 1 || ignoreFragment)
+			return subject;
+
+		return jsonPointer(parts[1]).get(subject);
+	}
+};
+
+module.exports = function() {
+	return Object.create(protoJsonRefs, {
+		__refs: { writable:false, configurable:false, enumerable:false, value: {} }
+	});
+};
+
+},{"skeemas-json-pointer":191}],193:[function(require,module,exports){
+var validationResult = require('./validation-result'),
+	jsonRefs = require('skeemas-json-refs');
+
+var protoContext = {
+	addError: function(message, subject, criteria) {
+		if(!this.silent) this.result.addError(message, subject, criteria, this);
+		return this;
+	},
+	silently: function(fn) {
+		this.silent = true;
+		var result = fn();
+		this.silent = false;
+		return result;
+	},
+	subcontext: function(schema) {
+		return makeContext(schema, this, this.silent);
+	},
+	runValidations: function(validations, subject, schema) {
+		var breakOnError = this.breakOnError,
+			args = Array.prototype.slice.call(arguments),
+			valid = true,
+			validation;
+
+		args[0] = this;
+
+		for(var i = 0, len = validations.length; i < len; i++) {
+			validation = validations[i];
+			if(!validation[0]) continue;
+			valid = validation[1].apply(null, args) && valid;
+			if(breakOnError && !valid) return false;
+		}
+
+		return valid;
+	}
+};
+
+var makeContext = module.exports = function(schema, context, forceNewResult) {
+	context = context || {};
+	return Object.create(protoContext, {
+		id: { enumerable:true, writable:false, value: [] },
+		schema: { enumerable:true, writable:false, value: schema || context.schema },
+		path: { enumerable:true, writable:false, value: context.path && context.path.slice() || ['#'] },
+		result: { enumerable:true, writable:false, value: (!forceNewResult && context.result) || validationResult(context.instance) },
+		refs: { enumerable:true, writable:false, value: context.refs || jsonRefs() },
+		silent: { enumerable:true, writable:true, value: false },
+		breakOnError: { enumerable:true, writable:true, value: context.breakOnError || false },
+		cleanWithDefaults: { enumerable:true, writable:true, value: context.cleanWithDefaults || false },
+		cleanSubject: { enumerable:true, writable:true, value: undefined }
+	});
+};
+
+},{"./validation-result":194,"skeemas-json-refs":192}],194:[function(require,module,exports){
+function errorToString() {
+	return this.message + ' (pointer: ' + this.context + ')';
+}
+
+var protoValidationResult = {
+	addError: function(message, subject, criteria, context) {
+		this.errors.push({
+			message: message,
+			context: context.path.join('/'),
+			value: subject,
+			criteria: criteria,
+			toString: errorToString
+		});
+		this.valid = false;
+		return this;
+	}
+};
+
+module.exports = function(instance) {
+	return Object.create(protoValidationResult, {
+		instance: { enumerable:true, writable:false, value:instance },
+		cleanInstance: { enumerable:true, writable:true, value: undefined },
+		valid: { enumerable:true, writable:true, value:true },
+		errors: { enumerable:true, writable:false, value:[] }
+	});
+};
+
+},{}],195:[function(require,module,exports){
+var validateBase = require('./base'),
+	deepEqual = require('./deep-equal');
+
+function items(context, subject, schema, cleanItems) {
+	var valid = true;
+
+	if(Array.isArray(schema.items)) {
+		valid = tupleItems(context, subject, schema, cleanItems);
+		if('additionalItems' in schema) valid = additionalItems(context, subject, schema, cleanItems) && valid;
+	} else if(schema.items) {
+		valid = itemSchema(context, subject, schema, cleanItems);
+	}
+
+	return valid;
+}
+
+function itemSchema(context, subject, schema, cleanItems) {
+	var items = schema.items;
+
+	if(typeof items !== 'object')
+		throw new Error('Invalid schema: invalid "items"');
+
+	var lastPath = context.path.length;
+	for(var i = 0, len = subject.length; i < len; i++) {
+		context.path[lastPath] = i;
+		if(!validateBase(context, subject[i], items)) {
+			context.addError('Failed "items" criteria', subject, items);
+			context.path.length = lastPath;
+			return false;
+		}
+		cleanItems.push(context.cleanSubject);
+	}
+	context.path.length = lastPath;
+
+	return true;
+}
+
+function tupleItems(context, subject, schema, cleanItems) {
+	var items = schema.items,
+		lastPath = context.path.length;
+	for(var i = 0, len = items.length; i < len; i++) {
+		context.path[lastPath] = i;
+		if(!validateBase(context, subject[i], items[i])) {
+			context.addError('Failed "items" criteria', subject, items);
+			context.path.length = lastPath;
+			return false;
+		}
+		cleanItems.push(context.cleanSubject);
+	}
+	context.path.length = lastPath;
+
+	return true;
+}
+
+function additionalItems(context, subject, schema, cleanItems) {
+	var i = schema.items.length,
+		len = subject.length,
+		additionalItemSchema = schema.additionalItems;
+
+	if(additionalItemSchema === false) {
+		if(len <= i) return true;
+
+		context.addError('Failed "additionalItems" criteria: no additional items are allowed', subject, schema);
+		return false;
+	}
+
+	if(typeof additionalItemSchema !== 'object')
+		throw new Error('Invalid schema: invalid "additionalItems"');
+
+	var lastPath = context.path.length;
+	for(; i < len; i++) {
+		context.path[lastPath] = i;
+		if(!validateBase(context, subject[i], additionalItemSchema)) {
+			context.addError('Failed "additionalItems" criteria', subject, schema);
+			context.path.length = lastPath;
+			return false;
+		}
+		cleanItems.push(context.cleanSubject);
+	}
+	context.path.length = lastPath;
+
+	return true;
+}
+
+function minItems(context, subject, schema) {
+	if(subject.length < schema.minItems) {
+		context.addError('Failed "minItems" criteria', subject, schema);
+		return false;
+	}
+
+	return true;
+}
+
+function maxItems(context, subject, schema) {
+	if(subject.length > schema.maxItems) {
+		context.addError('Failed "maxItems" criteria', subject, schema);
+		return false;
+	}
+
+	return true;
+}
+
+function uniqueItems(context, subject, schema) {
+	var i = subject.length, j;
+
+	while(i--) {
+		j = i;
+		while(j--) {
+			if(deepEqual(subject[i], subject[j])) {
+				context.addError('Failed "uniqueItems" criteria', subject, schema);
+				return false;
+			}
+		}
+	}
+
+	return true;
+}
+
+
+module.exports = function(context, subject, schema) {
+	if(!Array.isArray(subject)) {
+		context.addError('Failed type:array criteria', schema);
+		return false;
+	}
+
+	var cleanItems = [],
+		valid = context.runValidations([
+			[ 'minItems' in schema, minItems ],
+			[ 'maxItems' in schema, maxItems ],
+			[ 'uniqueItems' in schema, uniqueItems ],
+			[ 'items' in schema, items ]
+		], subject, schema, cleanItems);
+
+	if('items' in schema)
+		context.cleanSubject = cleanItems;
+	else
+		context.cleanSubject = subject.slice();
+
+	return valid;
+};
+
+},{"./base":196,"./deep-equal":198}],196:[function(require,module,exports){
+var validators = require('./'),
+	formats = {
+		'date-time': /^\d{4}-(0[0-9]{1}|1[0-2]{1})-[0-9]{2}[t ]\d{2}:\d{2}:\d{2}(\.\d+)?([zZ]|[+-]\d{2}:\d{2})$/i,
+		'date': /^\d{4}-(0[0-9]{1}|1[0-2]{1})-[0-9]{2}$/,
+		'time': /^\d{2}:\d{2}:\d{2}$/,
+		'color': /^(#[0-9a-f]{3}|#[0-9a-f]{6}|aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white|yellow)$/i,
+		'style': /^(?:\s*-?[_A-Z]+[_A-Z0-9-]*:[^\n\r\f;]+;)*\s*-?[_A-Z]+[_A-Z0-9-]*:[^\n\r\f;]+;?\s*$/i,
+		'phone': /^(?:(?:\(?(?:00|\+)(?:[1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?(?:(?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(?:\d+))?$/i,
+		'uri': /^(?:([a-z0-9+.-]+:\/\/)((?:(?:[a-z0-9-._~!$&'()*+,;=:]|%[0-9A-F]{2})*)@)?((?:[a-z0-9-._~!$&'()*+,;=]|%[0-9A-F]{2})*)(:(?:\d*))?(\/(?:[a-z0-9-._~!$&'()*+,;=:@\/]|%[0-9A-F]{2})*)?|([a-z0-9+.-]+:)(\/?(?:[a-z0-9-._~!$&'()*+,;=:@]|%[0-9A-F]{2})+(?:[a-z0-9-._~!$&'()*+,;=:@\/]|%[0-9A-F]{2})*)?)(\?(?:[a-z0-9-._~!$&'()*+,;=:\/?@]|%[0-9A-F]{2})*)?(#(?:[a-z0-9-._~!$&'()*+,;=:\/?@]|%[0-9A-F]{2})*)?$/i,
+		'email': /^[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,}$/i,
+		'ipv4': /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/,
+		'ipv6': /^\s*((([0-9A-F]{1,4}:){7}([0-9A-F]{1,4}|:))|(([0-9A-F]{1,4}:){6}(:[0-9A-F]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-F]{1,4}:){5}(((:[0-9A-F]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-F]{1,4}:){4}(((:[0-9A-F]{1,4}){1,3})|((:[0-9A-F]{1,4})((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-F]{1,4}:){3}(((:[0-9A-F]{1,4}){1,4})|((:[0-9A-F]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-F]{1,4}:){2}(((:[0-9A-F]{1,4}){1,5})|((:[0-9A-F]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-F]{1,4}:){1}(((:[0-9A-F]{1,4}){1,6})|((:[0-9A-F]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-F]{1,4}){1,7})|((:[0-9A-F]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$/i,
+
+		// hostname regex from: http://stackoverflow.com/a/1420225/5628
+		'hostname': /^(?=.{1,255}$)[0-9A-Z](?:(?:[0-9A-Z]|-){0,61}[0-9A-Z])?(?:\.[0-9A-Z](?:(?:[0-9A-Z]|-){0,61}[0-9A-Z])?)*\.?$/i,
+
+		'utc-millisec': function(subject) {
+			var parsed = parseInt(subject, 10);
+			return !isNaN(parsed) && parsed.toString() === subject.toString();
+		},
+		'regex': function (subject) {
+			try { new RegExp(subject); }
+			catch(e) { return false; }
+			return true;
+		}
+	};
+
+// aliases
+formats['host-name'] = formats.hostname;
+formats['ip-address'] = formats.ipv4;
+
+
+function getType(subject) {
+	var type = typeof subject;
+
+	if(type === 'object') {
+		if(subject === null) return 'null';
+		if(Array.isArray(subject)) return 'array';
+	}
+
+	if(type === 'number' && subject === Math.round(subject)) return 'integer';
+
+	return type;
+}
+
+function format(context, subject, schema) {
+	var fmt = schema.format,
+		validator = formats[fmt];
+
+	if(!validator)
+		throw new Error('Invalid schema: unknown format (' + fmt + ')');
+
+	var valid = validator.test ? validator.test(subject) : validator(subject);
+	if(!valid) {
+		context.addError('Failed "format" criteria (' + fmt + ')', subject, schema);
+	}
+
+	return valid;
+}
+
+function validateTypes(context, subject, type, validTypes) {
+	var i = validTypes.length,
+		validType, valid;
+	while(i--) {
+		validType = validTypes[i];
+
+		if(validType === 'any') return true;
+
+		if(typeof validType === 'object') {
+			valid = context.silently(function() {
+				return validateBase(context, subject, validType);
+			}); // jshint ignore:line
+			if(valid) return true;
+			else continue;
+		}
+
+		if(!(validType in validators.types))
+			throw new Error('Invalid schema: invalid type (' + validType + ')');
+
+		if(validType === 'number' && type === 'integer') return true;
+
+		if(type === validType) return true;
+	}
+
+	return false;
+}
+
+function allOf(context, subject, schema) {
+	var schemas = schema.allOf;
+
+	if(!Array.isArray(schemas))
+		throw new Error('Invalid schema: "allOf" value must be an array');
+
+	var i = schemas.length,
+		invalidCount = 0;
+	while(i--) {
+		if(!validateBase(context, subject, schemas[i])) {
+			invalidCount += 1;
+		}
+	}
+
+	if(invalidCount === 0) return true;
+
+	context.addError('Failed "allOf" criteria', subject, schemas);
+	return false;
+}
+
+function anyOf(context, subject, schema) {
+	var schemas = schema.anyOf;
+
+	if(!Array.isArray(schemas))
+		throw new Error('Invalid schema: "anyOf" value must be an array');
+
+	var matched = context.silently(function() {
+		var i = schemas.length;
+		while(i--) {
+			if(validateBase(context, subject, schemas[i])) return true;
+		}
+		return false;
+	});
+
+	if(matched) return true;
+
+	context.addError('Failed "anyOf" criteria', subject, schemas);
+	return false;
+}
+
+function oneOf(context, subject, schema) {
+	var schemas = schema.oneOf;
+
+	if(!Array.isArray(schemas))
+		throw new Error('Invalid schema: "oneOf" value must be an array');
+
+	var i = schemas.length,
+		validCount = 0;
+	context.silently(function() {
+		while(i--) {
+			if(validateBase(context, subject, schemas[i])) validCount += 1;
+		}
+	});
+
+	if(validCount === 1) return true;
+
+	context.addError('Failed "oneOf" criteria', subject, schemas);
+	return false;
+}
+
+function not(context, subject, schema) {
+	var badSchema = schema.not,
+		valid = context.silently(function() {
+			return !validateBase(context, subject, badSchema);
+		});
+
+	if(valid) return true;
+
+	context.addError('Failed "not" criteria', subject, schema);
+	return false;
+}
+
+function disallow(context, subject, schema, type) {
+	var invalidTypes = Array.isArray(schema.disallow) ? schema.disallow : [ schema.disallow ],
+		valid = !validateTypes(context, subject, type, invalidTypes);
+
+	if(!valid) {
+		context.addError('Failed "disallow" criteria: expecting ' + invalidTypes.join(' or ') + ', found ' + type, subject, schema);
+	}
+
+	return valid;
+}
+
+function validateExtends(context, subject, schema) {
+	var schemas = Array.isArray(schema["extends"]) ? schema["extends"] : [ schema["extends"] ];
+
+	var i = schemas.length,
+		invalidCount = 0;
+	while(i--) {
+		if(!validateBase(context, subject, schemas[i])) {
+			invalidCount += 1;
+		}
+	}
+
+	return invalidCount === 0;
+}
+
+function validateEnum(context, subject, schema) {
+	var values = schema['enum'];
+
+	if(!Array.isArray(values))
+		throw new Error('Invalid schema: "enum" value must be an array');
+
+	var i = values.length;
+	while(i--) {
+		if(validators.deepEqual(subject, values[i])) return true;
+	}
+
+	context.addError('Failed "enum" criteria', subject, values);
+	return false;
+}
+
+function validateType(context, subject, schema, type) {
+	var validTypes = Array.isArray(schema.type) ? schema.type : [ schema.type ],
+		valid = validateTypes(context, subject, type, validTypes);
+
+	if(!valid) {
+		context.addError('Failed "type" criteria: expecting ' + validTypes.join(' or ') + ', found ' + type, subject, schema);
+	}
+
+	return valid;
+}
+
+function typeValidations(context, subject, schema, type) {
+	return validators.types[type](context, subject, schema);
+}
+
+function $ref(context, subject, schema) {
+	var absolute = /^#|\//.test(schema.$ref),
+		ref = absolute ? schema.$ref : context.id.join('') + schema.$ref,
+		refSchema = context.refs.get(ref, context.schema),
+		ctx = context;
+
+	if(schema.$ref[0] !== '#') {
+		ctx = context.subcontext(context.refs.get(ref, context.schema, true));
+	}
+
+	var valid = validateBase(ctx, subject, refSchema);
+
+	context.cleanSubject = ctx.cleanSubject;
+
+	return valid;
+}
+
+
+
+function validateBase(context, subject, schema) {
+	if(schema.$ref) {
+		return $ref(context, subject, schema);
+	}
+
+	if(schema.id) context.id.push(schema.id);
+
+	var valid = context.runValidations([
+		[ 'type' in schema, validateType ],
+		[ 'disallow' in schema, disallow ],
+		[ 'enum' in schema, validateEnum ],
+		[ true, typeValidations ],
+		[ 'format' in schema, format ],
+		[ 'extends' in schema, validateExtends ],
+		[ 'allOf' in schema, allOf ],
+		[ 'anyOf' in schema, anyOf ],
+		[ 'oneOf' in schema, oneOf ],
+		[ 'not' in schema, not ]
+	], subject, schema, getType(subject));
+
+	if(schema.id) context.id.pop();
+
+	return valid;
+}
+
+module.exports = validateBase;
+
+},{"./":199}],197:[function(require,module,exports){
+function validateBoolean(context, subject, schema) {
+	if(typeof subject !== 'boolean') {
+		context.addError('Failed type:boolean criteria', subject, schema);
+		return false;
+	}
+
+	context.cleanSubject = subject;
+
+	return true;
+}
+
+module.exports = validateBoolean;
+
+},{}],198:[function(require,module,exports){
+function getType(subject) {
+	var type = typeof subject;
+
+	if(type === 'object') {
+		if(subject === null) return 'null';
+		if(Array.isArray(subject)) return 'array';
+	}
+	return type;
+}
+
+function arrayEqual(a, b) {
+	var i = a.length;
+
+	if(i !== b.length) return false;
+
+	while(i--) {
+		if(!deepEqual(a[i], b[i])) return false;
+	}
+
+	return true;
+}
+
+function objectEqual(a, b) {
+	var keys = Object.keys(a),
+		i = keys.length;
+
+	if(i !== Object.keys(b).length) return false;
+
+	while(i--) {
+		if(!deepEqual(a[keys[i]], b[keys[i]])) return false;
+	}
+
+	return true;
+}
+
+var deepEqual = module.exports = function(a, b) {
+	if(a === b) return true;
+
+	var t = getType(a);
+
+	if(t !== getType(b)) return false;
+
+	if(t === 'array') return arrayEqual(a, b);
+	if(t === 'object') return objectEqual(a, b);
+
+	return false;
+};
+
+},{}],199:[function(require,module,exports){
+exports.types = {
+	'any': function() { return true; },
+	'array': require('./array'),
+	'boolean': require('./boolean'),
+	'integer': require('./number'),
+	'null': require('./null'),
+	'number': require('./number'),
+	'object': require('./object'),
+	'string': require('./string')
+};
+
+exports.deepEqual = require('./deep-equal');
+
+// base cannot be required until other validators are added
+exports.base = require('./base');
+
+},{"./array":195,"./base":196,"./boolean":197,"./deep-equal":198,"./null":200,"./number":201,"./object":202,"./string":203}],200:[function(require,module,exports){
+function validateNull(context, subject, schema) {
+	if(subject !== null) {
+		context.addError('Failed type:null criteria', subject, schema);
+		return false;
+	}
+
+	context.cleanSubject = subject;
+
+	return true;
+}
+
+module.exports = validateNull;
+
+},{}],201:[function(require,module,exports){
+function validateNumber(context, subject, schema) {
+	if(typeof subject !== 'number') {
+		context.addError('Failed type:number criteria', subject, schema);
+		return false;
+	}
+
+	return true;
+}
+
+function validateInteger(context, subject, schema) {
+	if(typeof subject !== 'number' || subject !== Math.round(subject)) {
+		context.addError('Failed type:integer criteria', subject, schema);
+		return false;
+	}
+
+	return true;
+}
+
+function minimum(context, subject, schema) {
+	var valid = (schema.exclusiveMinimum) ? subject > schema.minimum : subject >= schema.minimum;
+
+	if(!valid) context.addError('Failed "minimum" criteria', subject, schema);
+
+	return valid;
+}
+
+function maximum(context, subject, schema) {
+	var valid = (schema.exclusiveMaximum) ? subject < schema.maximum : subject <= schema.maximum;
+
+	if(!valid) context.addError('Failed "maximum" criteria', subject, schema);
+
+	return valid;
+}
+
+function multipleOf(context, subject, schema, key) {
+	key = key || 'multipleOf';
+
+	var valid = (subject / schema[key] % 1) === 0;
+
+	if(!valid) context.addError('Failed "' + key + '" criteria', subject, schema);
+
+	return valid;
+}
+
+function divisibleBy(context, subject, schema) {
+	return multipleOf(context, subject, schema, 'divisibleBy');
+}
+
+
+
+module.exports = function(context, subject, schema) {
+	var valid = true,
+		isType = true;
+
+	if(schema.type === 'number') isType = validateNumber(context, subject, schema);
+	if(schema.type === 'integer') isType = validateInteger(context, subject, schema);
+
+	context.cleanSubject = subject;
+
+	return isType && context.runValidations([
+		[ 'minimum' in schema, minimum ],
+		[ 'maximum' in schema, maximum ],
+		[ 'multipleOf' in schema, multipleOf ],
+		[ 'divisibleBy' in schema, divisibleBy ]
+	], subject, schema);
+};
+
+},{}],202:[function(require,module,exports){
+var validateBase = require('./base');
+
+function properties(context, subject, schema, handledProps) {
+	var props = schema.properties,
+		valid = true;
+	for(var key in props) {
+		if(key in subject) {
+			context.path.push(key);
+			valid = validateBase(context, subject[key], props[key]) && valid;
+			context.path.pop();
+			handledProps[key] = context.cleanSubject;
+		} else if(props[key].required === true) {
+			context.addError('Failed "required" criteria: missing property (' + key + ')', subject, props);
+			valid = false;
+		}
+	}
+
+	return valid;
+}
+
+function patternProperties(context, subject, schema, handledProps) {
+	var patternProps = schema.patternProperties;
+
+	if(typeof patternProps !== 'object')
+		throw new Error('Invalid schema: "patternProperties" must be an object');
+
+	var valid = true,
+		patterns = Object.keys(patternProps),
+		len = patterns.length,
+		keys = Object.keys(subject),
+		i = keys.length,
+		j, key;
+
+	while(i--) {
+		key = keys[i];
+
+		j = len;
+		while(j--) {
+			if(key.match(patterns[j])) {
+				context.path.push(key);
+				valid = validateBase(context, subject[key], patternProps[patterns[j]]) && valid;
+				context.path.pop();
+				if(!(key in handledProps)) handledProps[key] = context.cleanSubject;
+			}
+		}
+	}
+
+	return valid;
+}
+
+function additionalProperties(context, subject, schema, handledProps) {
+	var additionalProps = schema.additionalProperties;
+
+	if(additionalProps === true) return true;
+
+	var keys = Object.keys(subject),
+		i = keys.length;
+	if(additionalProps === false) {
+		while(i--) {
+			if(!(keys[i] in handledProps)) {
+				context.addError('Failed "additionalProperties" criteria: unexpected property (' + keys[i] + ')', subject, schema);
+				return false;
+			}
+		}
+		return true;
+	}
+
+	if(typeof additionalProps !== 'object')
+		throw new Error('Invalid schema: "additionalProperties" must be a valid schema');
+
+	var valid;
+	while(i--) {
+		if(keys[i] in handledProps) continue;
+
+		context.path.push(keys[i]);
+		valid = validateBase(context, subject[keys[i]], additionalProps) && valid;
+		context.path.pop();
+		handledProps[keys[i]] = context.cleanSubject;
+	}
+
+	return valid;
+}
+
+function minProperties(context, subject, schema) {
+	var keys = Object.keys(subject);
+	if(keys.length < schema.minProperties) {
+		context.addError('Failed "minProperties" criteria', subject, schema);
+		return false;
+	}
+	return true;
+}
+
+function maxProperties(context, subject, schema) {
+	var keys = Object.keys(subject);
+	if(keys.length > schema.maxProperties) {
+		context.addError('Failed "maxProperties" criteria', subject, schema);
+		return false;
+	}
+	return true;
+}
+
+function required(context, subject, schema) {
+	var requiredProps = schema.required;
+
+	if(!Array.isArray(requiredProps))
+		throw new Error('Invalid schema: "required" must be an array');
+
+	var valid = true,
+		i = requiredProps.length;
+	while(i--) {
+		if(!(requiredProps[i] in subject)) {
+			context.addError('Missing required property "' + requiredProps[i] + '"', subject, requiredProps[i]);
+			valid = false;
+		}
+	}
+
+	return valid;
+}
+
+function dependencies(context, subject, schema) {
+	var deps = schema.dependencies;
+
+	if(typeof deps !== 'object')
+		throw new Error('Invalid schema: "dependencies" must be an object');
+
+	var valid = true,
+		keys = Object.keys(deps),
+		i = keys.length,
+		requiredProps, j;
+
+	while(i--) {
+		if(!(keys[i] in subject)) continue;
+
+		requiredProps = deps[keys[i]];
+
+		if(typeof requiredProps === 'string') requiredProps = [ requiredProps ];
+
+		if(Array.isArray(requiredProps)) {
+			j = requiredProps.length;
+			while(j--) {
+				if(!(requiredProps[j] in subject)) {
+					context.addError('Missing required property "' + requiredProps[j] + '"', subject, requiredProps[j]);
+					valid = false;
+				}
+			}
+		} else if(typeof requiredProps === 'object') {
+			valid = validateBase(context, subject, requiredProps) && valid;
+		} else {
+			throw new Error('Invalid schema: dependencies must be string, array, or object');
+		}
+	}
+
+	return valid;
+}
+
+function addDefaults(subject, schema) {
+	var props = schema.properties;
+
+	if(!props) return;
+
+	for(var key in props) {
+		if('default' in props[key] && !(key in subject)) {
+			subject[key] = props[key].default;
+		}
+	}
+}
+
+
+function validateObject(context, subject, schema) {
+	if(typeof subject !== 'object') {
+		context.addError('Failed type:object criteria', subject, schema);
+		return false;
+	}
+
+	var handledProps = {},
+		valid = context.runValidations([
+			[ 'properties' in schema, properties ],
+			[ 'patternProperties' in schema, patternProperties ],
+			[ 'additionalProperties' in schema, additionalProperties ],
+			[ 'minProperties' in schema, minProperties ],
+			[ 'maxProperties' in schema, maxProperties ],
+			[ Array.isArray(schema.required), required ],
+			[ 'dependencies' in schema, dependencies ]
+		], subject, schema, handledProps);
+
+	if(context.cleanWithDefaults) addDefaults(handledProps, schema);
+
+	context.cleanSubject = handledProps;
+
+	return valid;
+}
+
+module.exports = validateObject;
+
+},{"./base":196}],203:[function(require,module,exports){
+var decode = require('punycode').ucs2.decode;
+
+
+function minLength(context, subject, schema) {
+	if(decode(subject).length < schema.minLength) {
+		context.addError('Failed "minLength" criteria', subject, schema);
+		return false;
+	}
+
+	return true;
+}
+
+function maxLength(context, subject, schema) {
+	if(decode(subject).length > schema.maxLength) {
+		context.addError('Failed "maxLength" criteria', subject, schema);
+		return false;
+	}
+
+	return true;
+}
+
+function pattern(context, subject, schema) {
+	var strPattern = schema.pattern;
+
+	if(!subject.match(strPattern)) {
+		context.addError('Failed "pattern" criteria (' + strPattern + ')', subject, strPattern);
+		return false;
+	}
+
+	return true;
+}
+
+
+
+function validateString(context, subject, schema) {
+	if(typeof subject !== 'string') {
+		context.addError('Failed type:string criteria', schema);
+		return false;
+	}
+
+	context.cleanSubject = subject;
+
+	return context.runValidations([
+		[ 'minLength' in schema, minLength ],
+		[ 'maxLength' in schema, maxLength ],
+		[ 'pattern' in schema, pattern ]
+	], subject, schema);
+}
+
+module.exports = validateString;
+
+},{"punycode":185}],204:[function(require,module,exports){
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
@@ -94788,8 +96253,211 @@ $templateCache.put("select2/select.tpl.html","<div class=\"ui-select-container s
 $templateCache.put("selectize/choices.tpl.html","<div ng-show=\"$select.open\" class=\"ui-select-choices ui-select-dropdown selectize-dropdown single\"><div class=\"ui-select-choices-content selectize-dropdown-content\"><div class=\"ui-select-choices-group optgroup\" role=\"listbox\"><div ng-show=\"$select.isGrouped\" class=\"ui-select-choices-group-label optgroup-header\" ng-bind=\"$group.name\"></div><div role=\"option\" class=\"ui-select-choices-row\" ng-class=\"{active: $select.isActive(this), disabled: $select.isDisabled(this)}\"><div class=\"option ui-select-choices-row-inner\" data-selectable=\"\"></div></div></div></div></div>");
 $templateCache.put("selectize/match.tpl.html","<div ng-hide=\"($select.open || $select.isEmpty())\" class=\"ui-select-match\" ng-transclude=\"\"></div>");
 $templateCache.put("selectize/select.tpl.html","<div class=\"ui-select-container selectize-control single\" ng-class=\"{\'open\': $select.open}\"><div class=\"row\"><div class=\"col-md-11\"><div class=\"selectize-input\" ng-class=\"{\'focus\': $select.open, \'disabled\': $select.disabled, \'selectize-focus\' : $select.focus}\" ng-click=\"$select.open && !$select.searchEnabled ? $select.toggle($event) : $select.activate()\"><div class=\"ui-select-match\"></div><input type=\"text\" autocomplete=\"false\" tabindex=\"-1\" class=\"ui-select-search ui-select-toggle\" ng-click=\"$select.toggle($event)\" placeholder=\"{{$select.placeholder}}\" ng-model=\"$select.search\" ng-hide=\"!$select.searchEnabled || ($select.selected && !$select.open)\" ng-disabled=\"$select.disabled\" aria-label=\"{{ $select.baseTitle }}\"></div></div><div class=\"col-md-1\"><img ng-if=\"$select.loading\" width=\"30\" src=\"data:image/gif;base64,R0lGODlhlACUAPeAAEuW34q76prE7Wem5GWl5G6q5Wqo5Xyz6FCZ4E6Y4Hmx53Cr5lme4pTA7Fqf4nKt5lyg4kyX30qW31Sb4abL71id4eDt+YK26Y2960yX4LHS8anM8Nnp+K7Q8fz9/k2X4MHa9I++60+Y4EqV38Xd9Xiw58rg9rjV8nav51Wc4aTK72up5WOk41Ka4NPl94a56p7G7rXU8oS46fn7/v3+/lKa4ZfC7GGj41+i4+zz+/r8/n606PD2/HWv5t7r+bzX80yW32Ci44O36c7i9mCj412h41Sc4cPc9NHk9+Tv+r7Z86vO8Obw+rvX89bn9/T4/ejy+6LI7lac4Z/H7lie4e71/H+16FGZ4JC/6/7+/l6h4/X5/Vug4uz0/FGa4KPJ79Xm+Nzq+LnW88/i9snf9vb6/efx+7PT8ePu+ZXC7czh9vL3/azO8PH3/Mje9ery+9zr+ZzF7uLt+s/j97fU8v7+/7TS8qDH7srg9fj7/evz/Njn9+fw+vj6/vr7/f///////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/wtYTVAgRGF0YVhNUDw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NzQ4RDczNjVBRDM0MTFFNTg0ODlGMDgwQkJDRjVCMDAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NzQ4RDczNjZBRDM0MTFFNTg0ODlGMDgwQkJDRjVCMDAiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3NDhENzM2M0FEMzQxMUU1ODQ4OUYwODBCQkNGNUIwMCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo3NDhENzM2NEFEMzQxMUU1ODQ4OUYwODBCQkNGNUIwMCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5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\"></div></div><div class=\"ui-select-choices\"></div></div>");}]);
-},{}],190:[function(require,module,exports){
+},{}],205:[function(require,module,exports){
 require('./dist/select.js');
 module.exports = 'ui.select';
 
-},{"./dist/select.js":189}]},{},[1]);
+},{"./dist/select.js":204}],206:[function(require,module,exports){
+module.exports={
+   "title" : "Product Stage Schema V3 Rev B",
+   "type": "object",
+   "properties": {
+	  "ProductId": {
+		"type" : "integer"
+	  },
+	  "MasterVariant": {
+		"$ref": "#/defs/ProductVariant"	
+	  },
+	  "Variants": {
+		"type" : "array",
+		"oneOf": [
+			{ "$ref": "#/defs/ProductVariant" }
+		]
+	  },
+	  "Status": {
+		"enum": [ "DF", "WA" ]
+	  },
+	  "ShopId": {
+		"type": "integer"
+	  },
+	  "Visibility": {
+		"type": "boolean"
+	  },
+	  "GlobalCategories": {
+		"type": "array",
+		"oneOf": [
+			{ "$ref": "#/defs/Category" }
+		]
+	  },
+	  "LocalCategories": {
+		"$ref" : "#/defs/Category"	
+	  },
+	  "MainGlobalCategory": {
+		"$ref" : "#/defs/Category"	
+	  },
+	  "MainLocalCategory": {
+		"$ref" : "#/defs/Category"	
+	  },
+	  "Tags": {
+		"type": "array"
+	  },
+	  "ControlFlags": {
+	  	"$ref" : "#/defs/ControlFlags"	
+	  }
+   },
+   "required" : ["ProductId"],
+   "defs": {
+	"ProductVariant": {
+		"properties": {
+			"Length": {
+				"type": "number"
+			},
+			"Width": {
+				"type": "number"
+			},
+			"Height": {
+				"type": "number"
+			},
+			"Weight": {
+				"type": "number"
+			},
+			"ProductNameEn": {
+				"type": "string"
+			},
+			"ProductNameTh": {
+				"type": "string"
+			},
+			"Pid": {
+				"type": "integer"
+			},
+			"Sku": {
+				"type": "string"
+			},
+			"DescriptionShortTh": {
+				"type": "string"
+			},
+			"DescriptionShortEn": {  
+				"type": "string" 
+			},
+			"DescriptionFullTh": {
+				"type": "string"
+			},
+			"DescriptionFullEn": {
+				"type": "string"
+			},
+			"OriginalPrice": {
+				"type": "number"
+			},
+			"SalePrice": {
+				"type": "number"
+			},
+			"Quantity": {
+				"type": "integer"
+			},
+			"PrepareDay": {
+				"type": "integer"
+			},
+			"PrepareMon": {
+				"type": "integer"
+			},
+			"PrepareTue": {
+				"type": "integer"
+			},
+			"PrepareWed": {
+				"type": "integer"
+			},
+			"PrepareThu": {
+				"type": "integer"
+			},
+			"PrepareFri": {
+				"type": "integer"
+			},
+			"PrepareSat": {
+				"type": "integer"
+			},
+			"PrepareSun": {
+				"type": "integer"
+			},
+			"KillerPoint1En": {
+				"type": "string"
+			},
+			"KillerPoint2En": {
+				"type": "string"
+			},
+			"KillerPoint3En": {
+				"type": "string"
+			},
+			"KillerPoint1Th": {
+				"type": "string"
+			},
+			"KillerPoint2Th": {
+				"type": "string"
+			},
+			"KillerPoint3Th": {
+				"type": "string"
+			},
+			"DimensionUnit": {
+				"type": "string"
+			},
+			"WeightUnit": {
+				"type": "string"
+			},
+			"StockType": {
+				"type": "string"
+			},
+			"SafetyStock": {
+				"type": "number"
+			},
+			"Images": {
+				"$ref": "#/defs/Image" 
+			},
+			"Installment": {
+				"enum": ["Y", "N"]
+			},
+			"ShippingMethod": {},
+			"VideoLinks" : {},
+			"SEO": {},
+			"DefaultVariant": {},
+			"LimitIndividualDay": {},
+			"Upc": {},
+			"FirstAttribute": {},
+			"SecondAttribute": {},
+			"Display": {},
+			"Visibility": {},
+			"DefaultVariant": {}
+		},
+		"required": []	
+	},
+	"Image": {
+		"properties": {
+			"position": {
+				"type": "integer"
+			}		
+		}
+	},
+	"Category" : {
+		"properties": {
+			"CategoryId": {
+				"type": "integer"
+			},
+			"required": ["CategoryId"]
+		}
+	},
+	"ControlFlags": {
+		"properties": {
+			"required": ["Flag1", "Flag2", "Flag3"],
+			"Flag1": {
+				"type" : "boolean"
+			},
+			"Flag2": {
+				"type" : "boolean"
+			},
+			"Flag3": {
+				"type": "boolean"
+			}
+		}
+	}
+   }
+}
+
+},{}]},{},[1]);
