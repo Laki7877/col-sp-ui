@@ -28,9 +28,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
             "type" => "redirectShopSetting"]) ?> 
 
         <? $this->insert('components/forms/seller_task',
-          ["field_header" => "Add product",
-           "field_text" => "Add at least one item to your store",
-           "button_text" => "Add Product",
+          ["field_header" => "{{productFieldContent.title}}",
+           "field_text" => "{{productFieldContent.subTitle}}",
+           "button_text" => "{{productFieldContent.button}}",
            "image_name" => "icon-onboard-product",
            "task_display" => "ng-hide='Completed[2]'",
            "type" => "redirectProduct"]) ?>
@@ -74,9 +74,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "type" => "redirectShopSetting"]) ?>
 
         <? $this->insert('components/forms/seller_task',
-          ["field_header" => "Add product",
-           "field_text" => "Add at least one item to your store",
-           "button_text" => "Add Product",
+          ["field_header" => "{{productFieldContent.title}}",
+           "field_text" => "{{productFieldContent.subTitle}}",
+           "button_text" => "{{productFieldContent.button}}",
            "image_name" => "icon-onboard-product",
            "home_task_container_class" => "background_blue",
            "task_display" => "ng-hide='!Completed[2]'",

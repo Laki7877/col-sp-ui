@@ -3619,9 +3619,40 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", funct
 
 	Onboarding.getListCompletedTask()
 		.then(function(data) {
-			$scope.Completed = [true,true,true,true];
+			// console.log(data);
+			// data.AddProduct = false;
+			// data.ProductApprove = true;
+			// $scope.Completed = [true,true,data.AddProduct && data.ProductApprove,true];
 			// $scope.Completed = [false,false,false,false];
-	    	// $scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct, data.DecorateStore];
+	    	$scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct && data.ProductApprove, data.DecorateStore];
+	   		// console.log($scope.Completed); 	
+
+	    	// Begin section Product Field: return text for Product Field 
+	    	if (data.AddProduct == true && data.ProductApprove == false) {
+	    		// Atleast, a product is added and admin is processing approving process.
+	    		$scope.productFieldContent = {
+	    			title:"Wait for product to be approved",
+	    			subTitle:"Admin is reviewing your product",
+	    			button:"Add More Product"
+	    		};
+	    	}
+	    	else if (data.AddProduct == true && data.ProductApprove == true) {
+	    		// Atleast, a product is added and approved 
+	    		$scope.productFieldContent = {
+	    			title:"Congratuation! Your product is approved",
+	    			subTitle:"You can add more products to your store",
+	    			button:"Add More Product"
+	    		};
+	    	}
+	    	else {
+	    		// In case no products are added and no products are approved
+	    		$scope.productFieldContent = {
+	    			title:"Add product",
+	    			subTitle:"Add at least one item to your store",
+	    			button:"Add Product"
+	    		};
+	    	}
+	    	// End section Product Field
 	    })
 	    .then(function(data) {
 	    	var checkBeforeLaunch = $scope.Completed[$scope.Completed.length-1];
@@ -3630,6 +3661,8 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", funct
 				checkBeforeLaunch = checkBeforeLaunch && $scope.Completed[i];
 				checkIfHaveCompleted = checkIfHaveCompleted || $scope.Completed[i];
 			};
+			//$scope.checkIfHaveCompleted is used for hide or show completed line.
+			//$scope.checkBeforeLaunch is used for check if all task are completed.
 			$scope.checkIfHaveCompleted = checkIfHaveCompleted;
 			return $scope.checkBeforeLaunch = checkBeforeLaunch;
 	    }).then(function(data) {
@@ -3638,16 +3671,14 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", funct
 			return $scope.launchTextSubtitle =	(data == true ? 'Time to go live!': 'Complete the tasks above to launch your store');
 	    });
 
-	
 
 	$scope.launchShop = function() {
 
 		if($scope.checkBeforeLaunch) {
-			console.log("Shop launched");
 			Onboarding.launchShop();
 		}
 		else {
-			console.log("can't launch");
+			// console.log("can't launch");
 		}
 	};
 
