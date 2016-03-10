@@ -1,7 +1,7 @@
 'use strict';
 //App Start here
 var angular = require('angular');
-var bulk = require('bulk-require')(__dirname, ['controllers/*.js', 'services/*.js', 'helpers/*.js',
+var bulk = require('bulk-require')(__dirname, ['controllers/*.js', 'colDev/*.js', 'services/*.js', 'helpers/*.js',
   'directives/*.js', 'filters/*.js', 'libs/*.js', 'template-options/*.js'
 ])
 var config = require('./config')
@@ -31,6 +31,7 @@ require('./modules/product-detail')
 //Internal dependencies
 var controllers = bulk.controllers;
 var colController = bulk.colDev;
+console.log(colController)
 var services = bulk.services;
 var helpers = bulk.helpers;
 var directives = bulk.directives;

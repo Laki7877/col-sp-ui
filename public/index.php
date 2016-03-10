@@ -81,11 +81,7 @@ Route::add('/admin/shoptypes/add', 'AdminController::addShoptype');
 Route::add('/admin/shoptypes/:id', 'AdminController::editShoptype');
 Route::add('/admin/products', 'AdminController::allProducts');
 
-
-Route::add('/admin/cms', 'AdminController::adminCMS');
-//Route::add('/admin/cms/create', 'AdminController::adminCMSCreate');
-Route::add('/admin/cms/static', 'AdminController::adminCMSStatic');
-
+// Create By Col Dev (Natee)
 Route::add('/admin/cms/category', 'AdminController::adminCMSCategory');
 Route::add('/admin/cms/collection', 'AdminController::adminCMSCollection');
 Route::add('/admin/cms/group', 'AdminController::adminCMSGroup');
