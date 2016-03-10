@@ -27,8 +27,10 @@
 @import "modal_custom";
 @import "dropdown";
 @import "image_thumbs";
+@import "image_preview";
 @import "inventory";
 @import "search_section";
+@import "seller_page";
 
 body {
 	overflow-y: scroll;
@@ -166,6 +168,12 @@ html, body {
   }
 }
 
+button.has-error-btn {
+  border-color: $color-red;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
 .has-error-parent {
   .form-control {
     border-color: $color-red;
@@ -267,25 +275,36 @@ ng-transclude.has-error .form-control{
   }
 }
 
-@keyframes shake {
-  0% {transform: translateX(0);}
-  12.5% {transform: translateX(-6px) rotateY(-5deg)}
-  37.5% {transform: translateX(5px) rotateY(4deg)}
-  62.5% {transform: translateX(-3px) rotateY(-2deg)}
-  87.5% {transform: translateX(2px) rotateY(1deg)}
-  100% {transform: translateX(0)}
+.color-warning{
+	color: #8a6d3b;
+	line-height: 16px;
 }
 
-@-webkit-keyframes shake {
-  0% {-webkit-transform: translateX(0);}
-  12.5% {-webkit-transform: translateX(-6px) rotateY(-5deg)}
-  37.5% {-webkit-transform: translateX(5px) rotateY(4deg)}
-  62.5% {-webkit-transform: translateX(-3px) rotateY(-2deg)}
-  87.5% {-webkit-transform: translateX(2px) rotateY(1deg)}
-  100% {-webkit-transform: translateX(0)}
+.import-page{
+	ol{
+		-webkit-padding-start: 15px;
+	}
+}
+.image-wrapper {
+    border: 1px solid #BCC7D5;
+    border-radius: 3px;
+    background-color:#EDF2F9;
 }
 
-.shake {
-  -webkit-animation: shake 400ms ease-in-out;
-  animation: shake 400ms ease-in-out;
+.ui-select-multiple.ui-select-bootstrap input.ui-select-search {
+    width: 100% !important;
+}
+
+/* Customize CK Editor */
+.cke_toolbox{
+	.cke_button__cut, .cke_button__copy, .cke_button__paste, .cke_button__anchor{
+		display: none !important;
+	}
+}
+.cke_toolbox {
+	.cke_toolbar:nth-child(6){
+		.cke_toolbar_separator{
+			display:none;
+		}
+	}
 }

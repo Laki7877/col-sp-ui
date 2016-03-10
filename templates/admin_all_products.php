@@ -4,10 +4,20 @@
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminProductListCtrl">
-       <nc-page-title nc-title="All Products">
-            <a ng-href="/admin/exports" class="btn ng-scope btn-white btn-width-xl">
-          	  <span class="">Export</span>
-          	</a>
+	       <nc-page-title nc-title="All Products">
+	      <form id="exportForm" name="exportForm" action="/admin/products/export" method="post">
+	          <input type="hidden" name="selected_products[]" ng-repeat="item in bulkContainer" value="{{ item.ProductId }}"/>
+	          <div class="btn-group">
+	            <button type="button" class="btn btn-white dropdown-toggle btn-width-xl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	              Export <span class="caret"></span>
+	            </button>
+	            <ul class="dropdown-menu" style="right: 0; left: auto;">
+	              <li><a href="/admin/products/export">Export All Products</a></li>
+	              <li><a ng-click="exportSelected()">Export Selected Products</a></li>
+	              <li><a ng-click="exportCriteria()">Export Search Result</a></li>
+	            </ul>
+	          </div>
+	      </form>
        </nc-page-title>
 	    <div class="row search-section-wrapper">
   			<nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="ProductId"></nc-bulk>
@@ -42,7 +52,7 @@
 		                    </div>
 		                </td>
 		                <td class="column-text-ellipsis">
-		                    {{row.ProductNameEn}}
+		                    <a ng-href="/admin/products/{{row.ProductId}}">{{row.ProductNameEn}}</a>
 		                </td>
 		                <td>{{row.Shop.ShopNameEn}}</td>
 		                <td>{{row.SalePrice | number: 2 }}</td>

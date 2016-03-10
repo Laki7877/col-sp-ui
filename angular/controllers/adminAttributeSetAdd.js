@@ -27,6 +27,14 @@ module.exports = function($scope, $controller, AttributeSetService, AttributeSer
 	$scope.lockAttributeset = function(i) {	
 		return false;
 	};
+	$scope.tagTransform = function(newTag) {
+		return {
+			TagName: newTag,
+			match: function(i) {
+				return this.TagName.match(i);
+			}
+		};
+	};
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
 		options: {

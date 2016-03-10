@@ -7,6 +7,14 @@ class AdminController extends Controller
 		return View::render('admin_category');
 	}
     
+    public static function detail($params)
+	{
+		return View::render('admin_product_detail',  [
+            'title' => 'Product Detail',
+            'viewBag' => array( 'productId' => $params['productid']),
+        ]);
+	}
+    
     public static function approve($params)
 	{
 		return View::render('admin_product_approval');
@@ -17,12 +25,12 @@ class AdminController extends Controller
 		return View::render('admin_coupons');
 	}
     
-		public static function admin_coupons_edit($params)
-		{
-		  	return View::render('admin_coupons_detail',  [
-            'viewBag' => array('id' => $params["id"])
-        ]);
-		}
+	public static function admin_coupons_edit($params)
+	{
+	  	return View::render('admin_coupons_detail',  [
+        'viewBag' => array('id' => $params["id"])
+    ]);
+	}
 
     public static function admin_coupons_create($params)
 	{
@@ -162,24 +170,9 @@ class AdminController extends Controller
         return View::render('admin_add_ontopcredit',  ['params' => json_encode_n($params), 'title' => 'Admin On Top Credit Card Detail']);
 	}
 
-	// CMS
-	public static function adminCMS($params)
+	//Newsletter
+	public static function listNewsletter($params)
 	{
-		return View::render('admin_cms');
-	}
-
-	public static function adminCMSCreate($params)
-	{
-		return View::render('admin_cms_create');
-	}
-
-	public static function adminCMSStatic($params)
-	{
-		return View::render('admin_cms_static');
-	}
-
-	public static function adminCMSCollection($params)
-	{
-		return View::render('admin_cms_collection');
+		return View::render('admin_newsletters');
 	}
 }

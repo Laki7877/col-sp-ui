@@ -1,0 +1,22 @@
+<div>
+    <nc-image-block options="{height: '150px', width: '150px'}" name="Images" nc-model="imagesPtr"
+    title="Product Images" uploader="uploader" on-fail="onImageUploadFail" size="120"></nc-image-block>
+
+    <div class="form-section" ng-show="imagesPtr.length > 0">
+        <div class="form-section-header">
+            Embed Video
+        </div>
+        <div class="form-section-content">
+            <div ng-repeat="i in imagesPtr">
+                <div nc-template="common/input/form-group-with-label" 
+                nc-label="Video Link {{$index + 1}}" 
+                nc-template-form="form['VideoLinks' + $index]" nc-template-options-path="addProductForm/VideoLink">
+                    <input class="form-control width-field-normal" 
+                    name="VideoLinks{{$index}}" type="url" 
+                    maxlength="500" ng-model="variantPtr.VideoLinks[$index]"/>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

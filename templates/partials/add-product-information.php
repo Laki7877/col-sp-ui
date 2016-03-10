@@ -1,5 +1,5 @@
 <div id="add-product-information-tab-content">
-    <? $this->insert('partials/add-product-inner-tab-breadcrumb') ?>
+        <div nc-template="add-product/inner-tab-breadcrumb" nc-view-bag="formData"></div>
 
         <div class="row" ng-if="overview.Status">
             <div class="col-xs-12">
@@ -35,9 +35,9 @@
                                         </td>
                                         <td>
                                             <span class="{{ asStatus(overview.Status).color }}">
-                            									<i class="fa {{ asStatus(overview.Status).icon }}"></i>
-                            									{{ asStatus(overview.Status).name }}
-                            								</span>
+                                                <i class="fa {{ asStatus(overview.Status).icon }}"></i>
+                                                {{ asStatus(overview.Status).name }}
+                            				</span>
                                         </td>
                                         <td>
                                             <i class="fa fa-circle color-grey"></i>
@@ -53,11 +53,13 @@
                 </div>
             </div>
         </div>
+        
         <div class="row">
             <div class="col-xs-12">
                 <div class="form-section">
                     <div class="form-section-header">
-                        <h2>Vital Information</h2></div>
+                        <h2>Vital Information</h2>
+                    </div>
                     <div class="form-section-content">
 
                         <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.MasterVariant_ProductNameEn" nc-label="Product Name (English)" nc-template-options-path="addProductForm/MasterVariant_ProductNameEn">
@@ -69,10 +71,7 @@
                         </div>
 
                         <div nc-template="common/input/form-group-with-label" nc-label="SKU" nc-template-form="addProductForm.MasterVariant_Sku" nc-template-options-path="addProductForm/MasterVariant_Sku">
-
                             <input class="form-control width-field-large" name="MasterVariant_Sku" ng-model="formData.MasterVariant.Sku" maxlength="300" ng-pattern="/^[^<>]+$/" />
-
-
                         </div>
 
 
@@ -113,14 +112,11 @@
                     <div class="form-section-header">
                         <h2>Price</h2></div>
                     <div class="form-section-content">
-                        <div nc-template="common/input/form-group-with-label"
-                        nc-template-form="addProductForm.MasterVariant_SalePrice"
-                        nc-label="Sale Price" nc-template-options-path="addProductForm/MasterVariant_SalePrice">
-                            <input ng-pattern="/^\d+(\.\d{1,2})?$/" class="form-control width-field-normal"
-                            maxlength="20" name="MasterVariant_SalePrice" ng-model="formData.MasterVariant.SalePrice" required/>
+                        <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.MasterVariant_SalePrice" nc-label="Sale Price" nc-template-options-path="addProductForm/MasterVariant_SalePrice">
+                            <input ng-pattern="/^\d+(\.\d{1,2})?$/" class="form-control width-field-normal" maxlength="20" name="MasterVariant_SalePrice" ng-model="formData.MasterVariant.SalePrice" required/>
                         </div>
                         <div nc-template="common/input/form-group-with-label" nc-label="Original Price" nc-template-options-path="addProductForm/MasterVariant_OriginalPrice" nc-template-form="addProductForm.MasterVariant_OriginalPrice">
-                            <input class="form-control width-field-normal" name="MasterVariant_OriginalPrice" ng-pattern="/^\d+(\.\d{1,2})?$/" maxlength="20" ng-model="formData.MasterVariant.OriginalPrice"/>
+                            <input class="form-control width-field-normal" name="MasterVariant_OriginalPrice" ng-pattern="/^\d+(\.\d{1,2})?$/" maxlength="20" ng-model="formData.MasterVariant.OriginalPrice" />
                         </div>
                     </div>
                 </div>
@@ -129,20 +125,39 @@
                         <h2>Description</h2></div>
                     <div class="form-section-content">
 
-                        <? $this->insert('components/forms/ckeditor-with-label',
-                            ["label" => "Description (English)", "ng_model" => "formData.MasterVariant.DescriptionFullEn", "size" => "xxl", "label_class" => "required"]) ?>
+                            
+                            <div nc-template="common/input/form-group-with-label" nc-label="Description (English)" 
+                                nc-template-options-path="addProductForm/MasterVariant_DescriptionFull" 
+                                nc-template-form="addProductForm.MasterVariant_DescriptionFullEn">
+                               <textarea
+                               ng-ckeditor="ckOptions"
+                               class="form-control" maxlength="500" 
+                               name="MasterVariant_DescriptionFullEn" ng-model="formData.MasterVariant.DescriptionFullEn" />
+                               </textarea>
+                            </div>
 
                             <div nc-template="common/input/form-group-with-label" nc-label="Short Description (English)" nc-template-options-path="addProductForm/MasterVariant_DescriptionShortEn" nc-template-form="addProductForm.MasterVariant_DescriptionShortEn">
                                 <textarea ng-pattern="/^[^<>ก-๙]+$/" class="form-control" maxlength="500" name="MasterVariant_DescriptionShortEn" ng-model="formData.MasterVariant.DescriptionShortEn" />
                                 </textarea>
                             </div>
+                            
+                            
 
-                            <? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (ไทย)", "ng_model" => "formData.MasterVariant.DescriptionFullTh", "size" => "xxl", "form_group_class" => "margin-top-40","label_class" => "required"]) ?>
-
-                                <div nc-template="common/input/form-group-with-label" nc-label="Short Description (ไทย)" nc-template-options-path="addProductForm/MasterVariant_DescriptionShortTh" nc-template-form="addProductForm.MasterVariant_DescriptionShortTh">
-                                    <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="MasterVariant_DescriptionShortTh" ng-model="formData.MasterVariant.DescriptionShortTh" />
-                                    </textarea>
-                                </div>
+                            <div nc-template="common/input/form-group-with-label" nc-label="Description (ไทย)" 
+                                nc-template-options-path="addProductForm/MasterVariant_DescriptionFull" 
+                                nc-template-form="addProductForm.MasterVariant_DescriptionFullTh">
+                               <textarea 
+                               ng-ckeditor="ckOptions"
+                               class="form-control" maxlength="500" 
+                               name="MasterVariant_DescriptionFullTh" ng-model="formData.MasterVariant.DescriptionFullTh" />
+                               </textarea>
+                            </div>
+                                        
+                             
+                            <div nc-template="common/input/form-group-with-label" nc-label="Short Description (ไทย)" nc-template-options-path="addProductForm/MasterVariant_DescriptionShortTh" nc-template-form="addProductForm.MasterVariant_DescriptionShortTh">
+                               <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="MasterVariant_DescriptionShortTh" ng-model="formData.MasterVariant.DescriptionShortTh" />
+                               </textarea>
+                            </div>
 
                     </div>
                 </div>
@@ -160,7 +175,7 @@
                                 <div class="ah-select2-dropdown">
 
                                     <select ng-if="controlFlags.variation == 'enable'" class="form-control" disabled>
-                                      <option disabled>{{ formData.AttributeSet.AttributeSetNameEn }}</option>
+                                        <option disabled>{{ formData.AttributeSet.AttributeSetNameEn }}</option>
                                     </select>
 
                                     <!-- dont show if nothing is dataSet. to choose from -->
@@ -198,28 +213,17 @@
                             </div>
                             <div ng-class="{'width-field-normal': !isHtmlInput(amap.Attribute.DataType), 'width-field-xxl': isHtmlInput(amap.Attribute.DataType)}">
 
-                                <select ng-if="isListInput(amap.Attribute.DataType)" ng-required="amap.Attribute.Required && onPublishing"
-                                class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]"
-                                ng-class="{'has-error' : $root.isInvalid(addProductForm.AmapInput{{ $index }}) }"
-                                name="AmapInput{{$index}}"
-                                ng-options="item as item.AttributeValue.AttributeValueEn for item in amap.Attribute.AttributeValueMaps track by item.AttributeValueId">
+                                <select ng-if="isListInput(amap.Attribute.DataType)" ng-required="amap.Attribute.Required && onPublishing" class="form-control" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" ng-class="{'has-error' : $root.isInvalid(addProductForm.AmapInput{{ $index }}) }"
+                                name="AmapInput{{$index}}" ng-options="item as item.AttributeValue.AttributeValueEn for item in amap.Attribute.AttributeValueMaps track by item.AttributeValueId">
                                     <option disabled value="" selected>- Select option -</option>
                                 </select>
 
                                 <div ng-if="isHtmlInput(amap.Attribute.DataType)">
-                                    <textarea ng-required="amap.Attribute.Required && onPublishing"
-                                    ng-class="{'has-error' : $root.isInvalid(addProductForm.AmapInput{{ $index }}) }"
-                                    ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]"
-                                    name="AmapInput{{$index}}"
-                                    class="form-control" ng-ckeditor="ckOptions"></textarea>
+                                    <textarea ng-required="amap.Attribute.Required && onPublishing" ng-class="{'has-error' : $root.isInvalid(addProductForm.AmapInput{{ $index }}) }" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" name="AmapInput{{$index}}" class="form-control"
+                                    ng-ckeditor="ckOptions"></textarea>
                                 </div>
 
-                                <input
-                                ng-if="isFreeTextInput(amap.Attribute.DataType)"
-                                ng-class="{'has-error' : $root.isInvalid(addProductForm.AmapInput{{ $index }}) }"
-                                ng-required="amap.Attribute.Required && onPublishing"
-                                type="text" class="form-control"
-                                name="AmapInput{{$index}}"
+                                <input ng-if="isFreeTextInput(amap.Attribute.DataType)" ng-class="{'has-error' : $root.isInvalid(addProductForm.AmapInput{{ $index }}) }" ng-required="amap.Attribute.Required && onPublishing" type="text" class="form-control" name="AmapInput{{$index}}"
                                 ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" />
 
                             </div>
@@ -250,9 +254,7 @@
                             </div>
                             <div class="width-field-xl">
                                 <div class="bootstrap-tagsinput tagsinput-plain">
-                                    <a class="tag label label-info"
-                                    ng-repeat="tag in formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Keywords"
-                                    ng-click="(formData.Keywords.indexOf(tag) == -1) && formData.Keywords.push(tag)"> {{ tag }}</a>
+                                    <a class="tag label label-info" ng-repeat="tag in formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Keywords" ng-click="(formData.Keywords.indexOf(tag) == -1) && formData.Keywords.push(tag)"> {{ tag }}</a>
                                 </div>
                             </div>
                         </div>
@@ -272,19 +274,36 @@
                         <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.MasterVariant_SafetyStock" nc-template-options-path="addProductForm/MasterVariant_SafetyStock" nc-label="Safety Stock Amount">
                             <input class="form-control" name="MasterVariant_SafetyStock" ng-pattern-restrict="^[0-9]*$" maxlength="10" ng-model="formData.MasterVariant.SafetyStock" />
                         </div>
-
-                        <? $this->insert('components/forms/dropdown-with-label', ["label" => "Stock Type", "ng_model" => "formData.MasterVariant.StockType", "choices" => "dataSet.StockTypes", "options" => ["Stock", "Pre-Order"]]) ?>
+                        
+                        <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.MasterVariant_StockType" 
+                        nc-template-options-path="addProductForm/MasterVariant_StockType" nc-label="Stock Type">
+                            <select ng-model="formData.MasterVariant.StockType" class="form-control" name="MasterVariant_StockType">
+                                <option selected disabled>- Select Stock Type -</option>
+                                <option>Stock</option>
+                                <option>Pre-Order</option>
+                            </select>
+                        </div>
+                       
                     </div>
                 </div>
                 <div class="form-section">
                     <div class="form-section-header">
                         <h2>Shipping Detail</h2></div>
                     <div class="form-section-content">
-                        <? $this->insert('components/forms/multiple-radio-multiline', ["label" => "Shipping Method", "ng_model" => "formData.ShippingMethod", "choices" => ["Dropship by 3PL", "Central Fulfillment"]]) ?>
+
+                            
+                            <div class="form-group ">
+                                <div class="width-label"><label class="control-label">Shipping Method</label></div>
+                                <div class="width-field-normal">
+                                    <div class="radio multiple-radio multiline">
+                                        <label><input type="radio" name="shipping_method" value="1" ng-model="formData.ShippingMethod" /> Dropship by 3PL</label>
+                                        <label><input type="radio" name="shipping_method" value="2" ng-model="formData.ShippingMethod" /> Central Fulfillment</label>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div nc-template="common/input/form-group-with-label" nc-label="Preparation Time" nc-template-form="addProductForm.PrepareDay" nc-template-options-path="addProductForm/PrepareDay">
-                                <input class="form-control width-field-normal" name="PrepareDay" ng-pattern-restrict="^[0-9]*$"
-                                ng-required="onPublishing" maxlength="5" ng-model="formData.PrepareDay" />
+                                <input class="form-control width-field-normal" name="PrepareDay" ng-pattern-restrict="^[0-9]*$" ng-required="onPublishing" maxlength="5" ng-model="formData.PrepareDay" />
                             </div>
 
                             <div class="form-group">
@@ -294,55 +313,26 @@
                                 <div class="width-field-xxl">
                                     <div class="multiple-input">
                                         <div class="input-column">
-
-                                            <div ng-template="common/input/text3" ng-template-options="{
-									'label': 'Length',
-									'error' : {
-									'messages': {
-									'required': 'This is a required field',
-									'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
-									},
-									'show': $root.isInvalid(addProductForm.MasterVariant_Length),
-									'conditions' : addProductForm.MasterVariant_Length.$error
-									}
-									}">
-                                                <input class="form-control" name="MasterVariant_Length" ng-pattern="/^\d+(\.\d{1,2})?$/" maxlength="11" ng-required="onPublishing" ng-model="formData.MasterVariant.Length" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Length) }"
-                                                />
-                                            </div>
-
-                                        </div>
-
-                                        <div class="input-column">
-                                            <div ng-template="common/input/text3" ng-template-options="{
-									'label': 'Height',
-									'error' : {
-									'messages': {
-									'required': 'This is a required field',
-									'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
-									},
-									'show': $root.isInvalid(addProductForm.MasterVariant_Height),
-									'conditions' : addProductForm.MasterVariant_Height.$error
-									}
-									}">
-                                                <input class="form-control" name="MasterVariant_Height" ng-pattern="/^\d+(\.\d{1,2})?$/" maxlength="11" ng-required="onPublishing" ng-model="formData.MasterVariant.Height" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Height) }"
-                                                />
+                                             <div nc-template="common/input/div-with-label" nc-label="Length" nc-template-options-path="addProductForm/MasterVariant_Dimension" 
+                                             nc-template-form="addProductForm.MasterVariant_Length">
+                                                <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11"  ng-required="onPublishing" 
+                                                name="MasterVariant_Length" ng-model="formData.MasterVariant.Length" />
                                             </div>
                                         </div>
 
                                         <div class="input-column">
-                                            <div ng-template="common/input/text3" ng-template-options="{
-									'label': 'Width',
-									'error' : {
-									'messages': {
-									'required': 'This is a required field',
-									'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
-									},
-									'show': $root.isInvalid(addProductForm.MasterVariant_Width),
-									'conditions' : addProductForm.MasterVariant_Width.$error
-									}
-									}">
-                                                <input class="form-control" maxlength="11" name="MasterVariant_Width" ng-pattern="/^\d+(\.\d{1,2})?$/" ng-model="formData.MasterVariant.Width" ng-required="onPublishing" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Width) }"
-                                                />
+                                             <div nc-template="common/input/div-with-label" nc-label="Height" nc-template-options-path="addProductForm/MasterVariant_Dimension" 
+                                             nc-template-form="addProductForm.MasterVariant_Height">
+                                                <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11"  ng-required="onPublishing" 
+                                                name="MasterVariant_Height" ng-model="formData.MasterVariant.Height" />
+                                            </div>
+                                        </div>
+
+                                        <div class="input-column">
+                                             <div nc-template="common/input/div-with-label" nc-label="Width" nc-template-options-path="addProductForm/MasterVariant_Dimension" 
+                                             nc-template-form="addProductForm.MasterVariant_Width">
+                                                <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11"  ng-required="onPublishing" 
+                                                name="MasterVariant_Width" ng-model="formData.MasterVariant.Width" />
                                             </div>
                                         </div>
 
@@ -365,20 +355,13 @@
                                 </div>
                                 <div class="width-field-xxl">
                                     <div class="multiple-input">
-
-                                        <div ng-template="common/input/text-column" ng-template-options="{
-                                        'error' : {
-                                            'messages': {
-                                                'required': 'This is a required field',
-                                                'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
-                                            },
-                                        'show': $root.isInvalid(addProductForm.MasterVariant_Weight),
-                                        'conditions' : addProductForm.MasterVariant_Weight.$error
-                                        }
-									}">
-                                            <input type="text" name="MasterVariant_Weight" maxlength="11" ng-required="onPublishing" ng-class="{ 'has-error' : $root.isInvalid(addProductForm.MasterVariant_Weight) }" class="form-control" ng-pattern="/^\d+(\.\d{1,2})?$/" ng-model="formData.MasterVariant.Weight"
-                                            />
+                                        
+                                        <div nc-template="common/input/text-column-no-label" nc-label="" nc-template-options-path="addProductForm/MasterVariant_Dimension" 
+                                             nc-template-form="addProductForm.MasterVariant_Weight">
+                                                <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11"  ng-required="onPublishing" 
+                                                name="MasterVariant_Weight" ng-model="formData.MasterVariant.Weight" />
                                         </div>
+                                            
 
                                         <div class="input-column select input-xl">
                                             <div class="ah-select2-dropdown">

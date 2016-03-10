@@ -4,6 +4,9 @@
     <div class="logo-img-wrapper">
         <img class="logo-img" src="<?= $this->asset('/assets/img/seller_logo.png') ?>" />
     </div>
+    <div class="logo-img-wrapper-collased">
+        <img class="logo-img" src="<?= $this->asset('/assets/img/seller_logo_small.png') ?>" />
+    </div>
 
     <ul ng-init="initMenu('admin')" class="sidebar-nav no-padding">
         <li ng-repeat="menuItem in menu track by $index" class="sidebar-brand {{activeMenuItem(menuItem)}}" ng-mouseenter="menuItem.hover=true" ng-mouseleave="menuItem.hover=false">
@@ -18,6 +21,12 @@
             <a ng-if="submenuItem.url.length > 0" ng-href="{{ submenuItem.url }}">{{ submenuItem.header }}</a>
         </li>
     </ul>
+
+    <ul class="sub-sidebar" style="display: none;" id="sub-newsletters">
+        <li class="sub-sidebar-header">Newsletters</li>
+        <li class="item active margin-top-20"><a href="?p=admin_newsletters">View</a></li>
+    </ul>
+
 
 <?php $this->stop() ?>
 

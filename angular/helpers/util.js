@@ -1,21 +1,11 @@
-var angular = require('angular');
-
-module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$interpolate', 'KnownException', function (storage, config, common, $window, $rootScope, $interpolate, KnownException) {
+module.exports = function (storage, config, common, $window, $rootScope, $interpolate, KnownException, $uibModal) {
+    'ngInject';
     'use strict';
     var service = {};
 
     service.variant = {};
 
-    // service.variant.hash = function (a, b) {
-    //     if (!("ValueEn" in a) || a.ValueEn) return "[API Error]";
-    //     if (!('ValueEn' in b) || b.ValueEn) return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + "null" + "-");
-    //     return (a.AttributeId + "-" + a.ValueEn.trim() + "-" + b.AttributeId + "-" + b.ValueEn.trim());
-    // };
-
     service.variant.toString = function (a, b) {
-        // if (!("ValueEn" in a) || !a.ValueEn) return "[API Error]";
-        // if (!('ValueEn' in b) || !b.ValueEn) return a.ValueEn.trim();
-
         var left = null;
         var right = null;
         left = (a.ValueEn || a.AttributeValueEn || a.AttributeValues.length && a.AttributeValues[0].AttributeValueEn || '');
@@ -25,12 +15,7 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     };
 
     service.uniqueSet = function (a, prop) {
-        // var seen = new Set();
-        // return a.filter(function (x) {
-        //     var y = x;
-        //     if (prop) y = x[prop];
-        //     return !seen.has(y) && seen.add(y);
-        // })
+
         return _.uniqWith(a, function(x,y){
             if(x == y) return true;
             if(prop && _.get(x, prop) && _.get(y, prop)){
@@ -75,6 +60,12 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
         if (!('HB' in DataTypeDropDown)) throw new KnownException("HTML Box in no longer 'HB' in config");
         return (dataType == 'HB');
     }
+
+    service.isCheckboxDataType = function (dataType) {
+        if (!('CB' in DataTypeDropDown)) throw new KnownException("Checkbox in no longer 'CB' in config");
+        return (dataType == 'CB');
+    }
+
 
     service.tableSortClass = function ($scope) {
         return function (id, flag) {
@@ -385,5 +376,21 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
         }
         return content;
     }
+
+    //Open preview image modal
+    service.previewImage = function(url) {
+        $uibModal.open({
+            size: 'product-image',
+            template: '<img ng-src="{{url}}" alt=""/>',
+            controller: function($scope, url) {
+                $scope.url = url;
+            },
+            resolve: {
+                url: function() {
+                    return url;
+                }
+            }
+        });
+    };
     return service;
-}];
+};

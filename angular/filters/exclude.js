@@ -2,7 +2,7 @@ var angular = require('angular');
 
 module.exports = [function() {
   return function(arr, other, trackBy) {
-
+     if(!arr) arr = [];
      return arr.filter(function(elem){
         if(other == null || other === undefined) return true;
         if(other instanceof Array){

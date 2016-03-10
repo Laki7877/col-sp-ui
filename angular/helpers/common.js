@@ -23,7 +23,10 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
 			             var onLoginPage = ($window.location.pathname == "/login");
                         if(status == 401 && !onLoginPage){
                             //Catch Forbidden
+                            console.log('redirecting to', $window.location.pathname);
                             storage.put('redirect', $window.location.pathname);
+                            storage.clear();
+                            
                             $window.location.href = "/login";
                         }
                         deferred.reject(data || {"error": "Unknown error"});
