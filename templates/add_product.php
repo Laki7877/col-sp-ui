@@ -13,19 +13,19 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 
 <div ng-controller="SellerProductDetailCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
 
-        <? $this->insert('components/modal-add-alternative-global-category', ['id' => 'global-category', 'header' => 'Add Alternative Global Category', 'ng_model' => 'viewCategorySelected', 'template' => 'viewCategoryColumns']) ?>
-        <? $this->insert('components/modal-add-local-category', ['id' => 'local-category', 'header' => 'Add Local Category', 'ng_model' => 'viewCategorySelected', 'template' => 'viewCategoryColumns']) ?>
+        <?php $this->insert('components/modal-add-alternative-global-category', ['id' => 'global-category', 'header' => 'Add Alternative Global Category', 'ng_model' => 'viewCategorySelected', 'template' => 'viewCategoryColumns']) ?>
+        <?php $this->insert('components/modal-add-local-category', ['id' => 'local-category', 'header' => 'Add Local Category', 'ng_model' => 'viewCategorySelected', 'template' => 'viewCategoryColumns']) ?>
         
         <nc-alert nc-model="alert"></nc-alert>
 
 		<form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
             <fieldset ng-disabled="formData.Status == 'WA'">
-            <? $this->insert('components/page-title-breadcrumb', ['text' => "Products/ " . $title, 'urls' => ['/products']]) ?>
+            <?php $this->insert('components/page-title-breadcrumb', ['text' => "Products/ " . $title, 'urls' => ['/products']]) ?>
             <div ng-if="pageState.loading.state" nc-loading="{{ pageState.loading.message }}..">
             </div>
             <div class="add-product-body" ng-if="!pageState.loading.state">
 
-                <? $this->insert('components/tab-nav', ["items" => $menus]) ?>
+                <?php $this->insert('components/tab-nav', ["items" => $menus]) ?>
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
                              <div ap-component="ap/tab-information"></div>

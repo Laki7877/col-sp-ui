@@ -12,18 +12,18 @@
               <div class="form-section">
                 <div class="form-section-header"><h2>Review Detail</h2></div>
                 <div class="form-section-content modal-custom">
-                  <? $this->insert('components/forms/text-with-label', ["label" => "Date & Time", "field_content" => "14/10/2015 at 10:20", "size" => "normal"]) ?>
-                  <? $this->insert('components/forms/text-with-label', ["label" => "Customer", "field_content" => "Harry Belafonte", "size" => "normal"]) ?>
-                  <? $this->insert('components/forms/text-with-label', ["label" => "Comment", "field_content" => "Harry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry Belafonte", "size" => "normal"]) ?>
+                  <?php $this->insert('components/forms/text-with-label', ["label" => "Date & Time", "field_content" => "14/10/2015 at 10:20", "size" => "normal"]) ?>
+                  <?php $this->insert('components/forms/text-with-label', ["label" => "Customer", "field_content" => "Harry Belafonte", "size" => "normal"]) ?>
+                  <?php $this->insert('components/forms/text-with-label', ["label" => "Comment", "field_content" => "Harry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry BelafonteHarry Belafonte", "size" => "normal"]) ?>
                 </div>
               </div>
               <div class="form-section">
                 <div class="form-section-header"><h2>Review Product</h2></div>
                 <div class="form-section-content modal-custom">
-                  <? $this->insert('components/forms/text-with-label', ["label" => "PID", "field_content" => "1234567", "size" => "normal"]) ?>
-                  <? $this->insert('components/forms/text-with-label', ["label" => "Product Name (ไทย)", "field_content" => "รองเท้าแตะสีรุ้ง", "size" => "normal"]) ?>
-                  <? $this->insert('components/forms/text-with-label', ["label" => "Product Name (English)", "field_content" => "Rainbow Sandal", "size" => "normal"]) ?>
-                  <? $this->insert('components/forms/text-with-label', ["label" => "Brand", "field_content" => "Nike", "size" => "normal"]) ?>
+                  <?php $this->insert('components/forms/text-with-label', ["label" => "PID", "field_content" => "1234567", "size" => "normal"]) ?>
+                  <?php $this->insert('components/forms/text-with-label', ["label" => "Product Name (ไทย)", "field_content" => "รองเท้าแตะสีรุ้ง", "size" => "normal"]) ?>
+                  <?php $this->insert('components/forms/text-with-label', ["label" => "Product Name (English)", "field_content" => "Rainbow Sandal", "size" => "normal"]) ?>
+                  <?php $this->insert('components/forms/text-with-label', ["label" => "Brand", "field_content" => "Nike", "size" => "normal"]) ?>
                 </div>
               </div>
             </div>

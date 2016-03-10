@@ -9,7 +9,7 @@
 					<div class="col-xs-12 margin-bottom-30">
 						<h2 class="font-size-20 text-centerx text-normal margin-bottom-20">Get 1 Item Select</h2>
 
-					 <? $this->insert('partials/selected_product_item_content', ['text' => 'Products' ,'id' =>'buy1itemmodal' , 'chb_target' => "chb_product_get" ]) ?>
+					 <?php $this->insert('partials/selected_product_item_content', ['text' => 'Products' ,'id' =>'buy1itemmodal' , 'chb_target' => "chb_product_get" ]) ?>
 				
 					</div>
 					<div class="confirmation-action no-margin">

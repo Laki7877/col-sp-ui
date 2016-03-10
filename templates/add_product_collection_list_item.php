@@ -27,10 +27,10 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Collecti
 			</ul>
 		</div>
 
-	<? $this->insert('components/modal-add-product-cli', ['id' => 'add-product-cli', 'confirmfunc' => 'AddToListConfirm()' ]) ?>
+	<?php $this->insert('components/modal-add-product-cli', ['id' => 'add-product-cli', 'confirmfunc' => 'AddToListConfirm()' ]) ?>
 	
 
-	<? $this->insert('components/page-title-product-collection-breadcrumb', ['text' => "Collection" , 'urls' => ['/collections']]) ?>		
+	<?php $this->insert('components/page-title-product-collection-breadcrumb', ['text' => "Collection" , 'urls' => ['/collections']]) ?>		
 		
 		<form name="addProductCollectionForm" class="ah-form sticky-mainform-action" novalidate class="ah-form margin-top-30" >
 			<input type="hidden" name="category" ng-value="selected.CategoryId" />
@@ -39,7 +39,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Collecti
 <div>
 			
 					<div class="category-content no-padding">					
-						<? $this->insert('partials/add-product-collection-list-item-information') ?>
+						<?php $this->insert('partials/add-product-collection-list-item-information') ?>
 					</div>
 				</div>
 				<div class="category-footer no-padding">

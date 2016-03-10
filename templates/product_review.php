@@ -3,7 +3,7 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="ProductReviewCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <? $this->insert('components/page-title-breadcrumb-border', ['text' => 'Product Review']) ?>
+    <?php $this->insert('components/page-title-breadcrumb-border', ['text' => 'Product Review']) ?>
     <div class="row search-section-wrapper">
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="ProductReviewId"></nc-bulk>
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for PID or Customer'"></nc-search>

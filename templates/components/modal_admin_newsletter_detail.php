@@ -16,9 +16,9 @@
           <div class="row">
             <div class="col-xs-12">
               <div class="form-section-content">
-                <? $this->insert('components/forms/input-text-with-label', ["label" => "Subject"]) ?>
-                <? $this->insert('components/forms/textarea-with-label', ["label" => "Content", 'size' => 'large', 'rows' => '10']) ?>          
-                <? $this->insert('components/forms/input-text-with-label', ["label" => "Publish Date", "input_class" => "input-icon-calendar"]) ?>
+                <?php $this->insert('components/forms/input-text-with-label', ["label" => "Subject"]) ?>
+                <?php $this->insert('components/forms/textarea-with-label', ["label" => "Content", 'size' => 'large', 'rows' => '10']) ?>          
+                <?php $this->insert('components/forms/input-text-with-label', ["label" => "Publish Date", "input_class" => "input-icon-calendar"]) ?>
               </div>
             </div>
           </div>

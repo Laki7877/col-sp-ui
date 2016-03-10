@@ -2,13 +2,13 @@
 
 <?php $this->start('page-body') ?>
 	<div>
-    <? $this->insert('components/page-title-with-buttons', ['text' => 'Orders',
+    <?php $this->insert('components/page-title-with-buttons', ['text' => 'Orders',
         'buttons' => [
           ]
       ])
     ?>
 
-    <? $this->insert('components/search-section', ['serach_placeholder' => 'Search for Order ID, Customer Name' , 'actions' => ['Acknowledge', 'Ready to ship'], 'optional_class' => 'hide-component']) ?>
+    <?php $this->insert('components/search-section', ['serach_placeholder' => 'Search for Order ID, Customer Name' , 'actions' => ['Acknowledge', 'Ready to ship'], 'optional_class' => 'hide-component']) ?>
     <div class="filter-section">
       <div class="filter-container">
         <span>Filters:</span>

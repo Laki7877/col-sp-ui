@@ -16,7 +16,7 @@
 			<form class="ah-form sticky-mainform-action">
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
-						<? $this->insert('partials/admin_product_approval_list_content') ?>
+						<?php $this->insert('partials/admin_product_approval_list_content') ?>
 					</div>
 				</div>
 			</form>

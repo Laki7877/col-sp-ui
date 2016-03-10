@@ -26,6 +26,6 @@
     </nc-table>
     <nc-pagination nc-model="params" nc-pagination-total="list.total" ></nc-pagination>
   </div>
-  <? $this->insert('components/modal_admin_newsletter_detail', ['id' => 'image-guideline', 'header' => 'Add Newsletter']) ?>
+  <?php $this->insert('components/modal_admin_newsletter_detail', ['id' => 'image-guideline', 'header' => 'Add Newsletter']) ?>
  
 <?php $this->stop() ?>

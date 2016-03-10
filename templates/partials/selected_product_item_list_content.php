@@ -92,16 +92,16 @@
         </tbody>
       </table>
       <div ng-show="notReady">
-          <? $this->insert('components/table-loading', ['text' => 'Loading...']) ?>
+          <?php $this->insert('components/table-loading', ['text' => 'Loading...']) ?>
       </div>
       <div ng-show="!notReady && productList.length == 0 && defaultProductModalParam.searchText.length > 0">
           <div class="local-category-page margin-bottom-20">
-            <? $this->insert('components/local-category-empty-content', ['text' => 'No Search Result']) ?>      
+            <?php $this->insert('components/local-category-empty-content', ['text' => 'No Search Result']) ?>      
           </div>
       </div>
       <div ng-show="!notReady && productList.length == 0 && defaultProductModalParam.searchText.length <= 0">
           <div class="local-category-page margin-bottom-20">
-            <? $this->insert('components/local-category-empty-content', ['text' => 'You do not have a Product']) ?>      
+            <?php $this->insert('components/local-category-empty-content', ['text' => 'You do not have a Product']) ?>      
           </div>
       </div>
     </div>
