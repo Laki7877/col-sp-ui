@@ -37,4 +37,8 @@ module.exports = function($scope, $rootScope, Onboarding, $log, $window){
     	$window.location.href = 'shops/settings';
     }
 
+    $scope.redirectToShopAppearance = function() {
+    	$window.location.href = 'shops/appearance';
+    }
+
 };

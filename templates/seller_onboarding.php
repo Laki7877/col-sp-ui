@@ -40,7 +40,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "field_text" => "Add at least one banner to make your store unique",
            "button_text" => "Set Appearance",
            "image_name" => "icon-onboard-decorate",
-           "task_display" => "ng-hide='Completed[3]'"]) ?>
+           "task_display" => "ng-hide='Completed[3]'",
+           "type" => "redirectShopAppearance"]) ?>
 
         <? $this->insert('components/forms/seller_task',
           ["field_header" => "Review & launch your store",
@@ -87,7 +88,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "button_text" => "Set Appearance",
            "image_name" => "icon-onboard-decorate",
            "home_task_container_class" => "background_blue",
-           "task_display" => "ng-hide='!Completed[3]'"]) ?>
+           "task_display" => "ng-hide='!Completed[3]'",
+           "type" => "redirectShopAppearance"]) ?>
       </div>
     </div>
   </div>
