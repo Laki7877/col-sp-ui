@@ -12,7 +12,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products'])
 
 <?php $this->start('page-body') ?>
 	<div>
-		<? $this->insert('components/page-title-breadcrumb', ['text' => "Product Approval List/Product Detail", 
+		<?php $this->insert('components/page-title-breadcrumb', ['text' => "Product Approval List/Product Detail", 
 			'buttons' => [
 	        	['link' => '#', 'class' => 'margin-bottom-15 btn-white btn-width-xl', 'name' => 'Preview'],
 	        	['link' => '#', 'class' => 'margin-bottom-15 btn-blue btn-width-xl', 'name' => 'Save'],
@@ -25,29 +25,29 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products'])
 				<form class="ah-form sticky-mainform-action">
 					<div class="tab-content">
 						<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
-							<? $this->insert('partials/product_approval_list_content') ?>
+							<?php $this->insert('partials/product_approval_list_content') ?>
 						</div>
 					</div>
 				</form>
 			</div>
 
-			<? $this->insert('components/tab-nav', ["items" => $menus]) ?>
+			<?php $this->insert('components/tab-nav', ["items" => $menus]) ?>
 			<form class="ah-form sticky-mainform-action">
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
-						<? $this->insert('partials/add-product-information') ?>
+						<?php $this->insert('partials/add-product-information') ?>
 					</div>
 					<div role="tabpanel" class="tab-pane margin-top-20" id="images">
-						<? $this->insert('partials/add-product-images') ?>
+						<?php $this->insert('partials/add-product-images') ?>
 					</div>
 					<div role="tabpanel" class="tab-pane margin-top-20" id="category">
-						<? $this->insert('partials/add-product-category') ?>
+						<?php $this->insert('partials/add-product-category') ?>
 					</div>
 					<div role="tabpanel" class="tab-pane margin-top-20" id="variation">
-						<? $this->insert('partials/add-product-variation') ?>
+						<?php $this->insert('partials/add-product-variation') ?>
 					</div>
 					<div role="tabpanel" class="tab-pane margin-top-20" id="more_option">
-						<? $this->insert('partials/add-product-more-option') ?>
+						<?php $this->insert('partials/add-product-more-option') ?>
 					</div>
 				</div>
 				<div class="add-product-form-action main-form-action full-width-row">

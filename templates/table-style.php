@@ -3,11 +3,11 @@
 <?php $this->start('page-body') ?>
 	<div>
 
-    <? $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => 'Your changes have been saved.']) ?>
-    <? $this->insert('components/alert-text', ['close' => true, 'color' => 'red', 'text' => 'There is an error!']) ?>
+    <?php $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => 'Your changes have been saved.']) ?>
+    <?php $this->insert('components/alert-text', ['close' => true, 'color' => 'red', 'text' => 'There is an error!']) ?>
 
-    <? $this->insert('components/page-title-with-buttons', ['text' => 'Table Stlye']) ?>
-    <? $this->insert('components/search-section') ?>
+    <?php $this->insert('components/page-title-with-buttons', ['text' => 'Table Stlye']) ?>
+    <?php $this->insert('components/search-section') ?>
     <div class="filter-section">
       <div class="filter-container">
         <span>Filters:</span>
@@ -19,10 +19,10 @@
       </div>
     </div>
 
-    <? $this->insert('components/table-loading', ['text' => 'Loading...']) ?>
+    <?php $this->insert('components/table-loading', ['text' => 'Loading...']) ?>
 
     <div class="local-category-page margin-bottom-20">
-      <? $this->insert('components/local-category-empty-content', ['text' => 'No Search Result']) ?>      
+      <?php $this->insert('components/local-category-empty-content', ['text' => 'No Search Result']) ?>      
     </div>
 
     <div class="page-navigation">

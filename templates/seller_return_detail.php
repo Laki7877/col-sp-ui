@@ -5,7 +5,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Return Detail'])
 <?php $this->start('page-body') ?>
   <div>
     <div>
-      <? $this->insert('components/page-title-with-buttons', ['text' => 'Return Requests/Return Detail',
+      <?php $this->insert('components/page-title-with-buttons', ['text' => 'Return Requests/Return Detail',
         'buttons' => [
             ['link' => '#', 'class' => 'btn-white btn-width-xl', 'name' => 'Cancel'],
             ['link' => '#', 'class' => 'btn-green btn-width-xl', 'name' => 'Accept']
@@ -80,7 +80,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Return Detail'])
       <form class="ah-form sticky-mainform-action">
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
-            <? $this->insert('partials/seller_return_detail_info') ?>
+            <?php $this->insert('partials/seller_return_detail_info') ?>
           </div>
         </div>
         <div class="add-product-form-action main-form-action full-width-row">

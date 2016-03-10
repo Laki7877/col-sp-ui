@@ -11,7 +11,7 @@
 		    <div>
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
-						<? $this->insert('partials/shop_appearance_content') ?>
+						<?php $this->insert('partials/shop_appearance_content') ?>
 					</div>
 				</div>
 				<div class="add-product-form-action main-form-action full-width-row">

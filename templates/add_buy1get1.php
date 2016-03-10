@@ -26,11 +26,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Buy 1 Ge
 				<li ng-repeat="e in addProductForm.$error.required">{{ e.$name }}</li>
 			</ul>
 		</div>
-    <? $this->insert('components/modal-buy1item-selected', ['id' => 'modal-buy1item-selected', 'buy1ItemId' => '1' ,'confirmfunc' =>'confirmBuy1ItemSelected()']) ?>
-    <? $this->insert('components/modal-get1item-selected', ['id' => 'modal-get1item-selected', 'get1ItemId' => '1' ,'confirmfunc' =>'confirmGet1ItemSelected()']) ?>
+    <?php $this->insert('components/modal-buy1item-selected', ['id' => 'modal-buy1item-selected', 'buy1ItemId' => '1' ,'confirmfunc' =>'confirmBuy1ItemSelected()']) ?>
+    <?php $this->insert('components/modal-get1item-selected', ['id' => 'modal-get1item-selected', 'get1ItemId' => '1' ,'confirmfunc' =>'confirmGet1ItemSelected()']) ?>
     
 
-	<? $this->insert('components/page-title-buy1get1-breadcrumb', ['text' => "Buy 1 Get 1 " , 'urls' => ['/buy1get1']]) ?>
+	<?php $this->insert('components/page-title-buy1get1-breadcrumb', ['text' => "Buy 1 Get 1 " , 'urls' => ['/buy1get1']]) ?>
 		
 		<!-- <div ng-show="loading">
 			<img src="/assets/img/loader.gif" width="40"> <small>Loading Global Categories..</small>
@@ -41,7 +41,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Buy 1 Ge
 <div>
 <div>			
 					<div class="category-content no-padding">					
-						<? $this->insert('partials/add-buy1get1-information') ?>
+						<?php $this->insert('partials/add-buy1get1-information') ?>
 					</div>
 				</div>
 				<div class="category-footer no-padding">

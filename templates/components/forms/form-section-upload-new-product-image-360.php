@@ -7,7 +7,7 @@
     </div>
     <div class="form-section-content padding-left-15 padding-right-15" ng-if="controlFlags.enableSections.embed360">
         <div class="col-xs-7">
-            <? $this->insert('components/image-dropzone', ["id" => "product-360", "uploader" => $uploader]) ?>
+            <?php $this->insert('components/image-dropzone', ["id" => "product-360", "uploader" => $uploader]) ?>
         </div>
         <div class="col-xs-5">
             <h4>Product images style guideline</h4>
@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="form-section-content padding-left-15 padding-right-15" style="margin-bottom:0px;" ng-if="checked_master_upload360">
-        <? $this->insert('components/image-thumbs-list', [
+        <?php $this->insert('components/image-thumbs-list', [
 			"action" => 2, 
 			"images" => $images,
 			"uploader" => $uploader]) ?>

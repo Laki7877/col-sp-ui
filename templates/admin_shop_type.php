@@ -3,7 +3,7 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminShoptypeCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <? $this->insert('components/page-title-with-one-button', ['text' => 'Shop Type','button' => 'Add Shop Types', 'button_class' => 'btn-width-xxl', 'link' => '/admin/shoptypes/add']) ?>
+    <?php $this->insert('components/page-title-with-one-button', ['text' => 'Shop Type','button' => 'Add Shop Types', 'button_class' => 'btn-width-xxl', 'link' => '/admin/shoptypes/add']) ?>
     <div class="row search-section-wrapper">
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="ShopTypeId"></nc-bulk>
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Shop Type'"></nc-search>

@@ -2,8 +2,8 @@
 
 <?php $this->start('page-body') ?>
 	<div class="local-category-page">
-		<? $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => 'Successfully Import Products. <a class="color-black text-underline">View Product List</a>']) ?>
-		<? $this->insert('components/alert-text', ['close' => true, 'color' => 'red', 'text' => 'Fail to import products', 'header_class' => 'font-weight-bold',
+		<?php $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => 'Successfully Import Products. <a class="color-black text-underline">View Product List</a>']) ?>
+		<?php $this->insert('components/alert-text', ['close' => true, 'color' => 'red', 'text' => 'Fail to import products', 'header_class' => 'font-weight-bold',
 		 'text_multilines' => ['- Wrong template file or format'
 		,'- Required fields are missing'
 		, '- Products with wrong PID'
@@ -13,7 +13,7 @@
 		, '- Alien Attack'
 		]]) ?>
 
-		<? $this->insert('components/page-title-breadcrumb-border', ['text' => 'Products/Import - Add New Products']) ?>
+		<?php $this->insert('components/page-title-breadcrumb-border', ['text' => 'Products/Import - Add New Products']) ?>
 
 		<div>
 			<form class="ah-form sticky-mainform-action">
@@ -44,8 +44,8 @@
 									<div class="form-section">
 										<div class="form-section-header"><h2>Upload File</h2></div>
 										<div class="form-section-content">
-											<? $this->insert('components/forms/upload-field-with-label', ["label" => "Choose File", "input_attrs" => "Browse from your computer"]) ?>
-											<? $this->insert('components/forms/button-with-label', ["buttonText" => "Import", "btnClass" => "btn-blue", "modalData" => 'data-toggle="modal" data-target="#import-product"']) ?>
+											<?php $this->insert('components/forms/upload-field-with-label', ["label" => "Choose File", "input_attrs" => "Browse from your computer"]) ?>
+											<?php $this->insert('components/forms/button-with-label', ["buttonText" => "Import", "btnClass" => "btn-blue", "modalData" => 'data-toggle="modal" data-target="#import-product"']) ?>
 										</div>
 									</div>
 								</div>
@@ -60,7 +60,7 @@
 									<div class="form-section">
 										<div class="form-section-header"><h2>Brand Guideline</h2></div>
 										<div class="form-section-content">
-											<? $this->insert('components/forms/input-text-with-label', ["label" => "Search Brand", 'input_class' => 'input-icon-right-search', 'placeholder' => 'Search for Brand Name']) ?>
+											<?php $this->insert('components/forms/input-text-with-label', ["label" => "Search Brand", 'input_class' => 'input-icon-right-search', 'placeholder' => 'Search for Brand Name']) ?>
 											
 											<div class="form-group ">
 												<div class="width-label">
@@ -85,7 +85,7 @@
 									<div class="form-section">
 										<div class="form-section-header"><h2>Attribute Guideline</h2></div>
 										<div class="form-section-content">
-											<? $this->insert('components/forms/input-text-with-label', ["label" => "Search Attribute", 'input_class' => 'input-icon-right-search', 'placeholder' => 'Search for Attribute Name']) ?>
+											<?php $this->insert('components/forms/input-text-with-label', ["label" => "Search Attribute", 'input_class' => 'input-icon-right-search', 'placeholder' => 'Search for Attribute Name']) ?>
 											
 											<div class="form-group ">
 												<div class="width-label">
@@ -253,7 +253,7 @@
 		</div>
 	</div>
 
-<? $this->insert('components/modal-local-category', ['id' => 'local-category-detail', 'header' => 'Local Category Detail']) ?>
+<?php $this->insert('components/modal-local-category', ['id' => 'local-category-detail', 'header' => 'Local Category Detail']) ?>
 
 
 <div class="modal fade" tabindex="-1" role="dialog" id="modal-choose-template">
@@ -333,7 +333,7 @@
   </div>
 </div>
 
-<? $this->insert('components/modal-import-product', ['id' => 'import-product', 'newProductNum' => '', 'updatedProductNum' => '1,500 products to be updated']) ?>
+<?php $this->insert('components/modal-import-product', ['id' => 'import-product', 'newProductNum' => '', 'updatedProductNum' => '1,500 products to be updated']) ?>
 
 
 <?php $this->stop() ?>

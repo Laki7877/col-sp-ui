@@ -5,7 +5,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 <?php $this->start('page-body') ?>
 	<div ng-controller="SellerAccountAddCtrl" ng-init="init(<?=$params?>)">
 		<nc-alert nc-model="alert"></nc-alert>
-		<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "User Accounts/{{title}}", 'urls' => ['/accounts']]) ?>
+		<?php $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "User Accounts/{{title}}", 'urls' => ['/accounts']]) ?>
 		<div ng-show="loading" nc-loading="Loading User Account.."></div>
 		<div ng-show="saving" nc-loading="Saving User Account.."></div>
 		<form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>

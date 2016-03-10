@@ -2,10 +2,10 @@
 
 <?php $this->start('page-body') ?>
 <div ng-controller="Buy1Get1ListCtrl" ng-init="init(<?= $params ?>)">
-    <? $this->insert('components/modal-export-buy1get1', ['id' => 'export-buy1get1', 'newBuy1get1Num' => '1,500']) ?>
-    <? $this->insert('components/modal-export-buy1get1-progressing', ['id' => 'export-buy1get1-progressing', 'percent' => '60']) ?>
+    <?php $this->insert('components/modal-export-buy1get1', ['id' => 'export-buy1get1', 'newBuy1get1Num' => '1,500']) ?>
+    <?php $this->insert('components/modal-export-buy1get1-progressing', ['id' => 'export-buy1get1-progressing', 'percent' => '60']) ?>
 
-    <? $this->insert('components/page-title-buy1get1-with-buttons', ['text' => 'Buy 1 Get 1']) ?>
+    <?php $this->insert('components/page-title-buy1get1-with-buttons', ['text' => 'Buy 1 Get 1']) ?>
     <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{alert.type}}" close="alert.close()">{{alert.message}}</div>
     <div class="row search-section-wrapper">
       <form ng-submit="bulk.fn()" class="search-section section-action">
@@ -125,16 +125,16 @@
       </table>
 	  
       <div ng-show="notReady">
-          <? $this->insert('components/table-loading', ['text' => 'Loading...']) ?>
+          <?php $this->insert('components/table-loading', ['text' => 'Loading...']) ?>
       </div>
       <div ng-show="!notReady && buy1get1List.length == 0 && tableParams.searchText.length > 0">
           <div class="local-category-page margin-bottom-20">
-            <? $this->insert('components/local-category-empty-content', ['text' => 'No Search Result']) ?>      
+            <?php $this->insert('components/local-category-empty-content', ['text' => 'No Search Result']) ?>      
           </div>
       </div>
       <div ng-show="!notReady && buy1get1List.length == 0 && tableParams.searchText.length <= 0">
           <div class="local-category-page margin-bottom-20">
-            <? $this->insert('components/local-category-empty-content', ['text' => 'You do not have a Buy 1 Get 1']) ?>      
+            <?php $this->insert('components/local-category-empty-content', ['text' => 'You do not have a Buy 1 Get 1']) ?>      
           </div>
       </div>
     </div>

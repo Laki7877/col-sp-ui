@@ -12,26 +12,26 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 
 <?php $this->start('page-body') ?>
 	<div>
-		<? $this->insert('components/view-product-title-breadcrumb', ['text' => "Products/View Product"]) ?>
+		<?php $this->insert('components/view-product-title-breadcrumb', ['text' => "Products/View Product"]) ?>
 
 		<div class="add-product-body">
-			<? $this->insert('components/tab-nav', ["items" => $menus]) ?>
+			<?php $this->insert('components/tab-nav', ["items" => $menus]) ?>
 			<form class="ah-form sticky-mainform-action">
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
-						<? $this->insert('partials/view-product-information') ?>
+						<?php $this->insert('partials/view-product-information') ?>
 					</div>
 					<div role="tabpanel" class="tab-pane margin-top-20" id="images">
-						<? $this->insert('partials/add-product-images') ?>
+						<?php $this->insert('partials/add-product-images') ?>
 					</div>
 					<div role="tabpanel" class="tab-pane margin-top-20" id="category">
-						<? $this->insert('partials/add-product-category') ?>
+						<?php $this->insert('partials/add-product-category') ?>
 					</div>
 					<div role="tabpanel" class="tab-pane margin-top-20" id="variation">
-						<? $this->insert('partials/add-product-variation') ?>
+						<?php $this->insert('partials/add-product-variation') ?>
 					</div>
 					<div role="tabpanel" class="tab-pane margin-top-20" id="more_option">
-						<? $this->insert('partials/add-product-more-option') ?>
+						<?php $this->insert('partials/add-product-more-option') ?>
 					</div>
 				</div>
 				<div class="add-product-form-action main-form-action full-width-row">
@@ -46,5 +46,5 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 			</form>
 		</div>
 	</div>
-	<? $this->insert('components/modal-edit-product', ['id' => 'edit-product-confirm']) ?>
+	<?php $this->insert('components/modal-edit-product', ['id' => 'edit-product-confirm']) ?>
 <?php $this->stop() ?>
