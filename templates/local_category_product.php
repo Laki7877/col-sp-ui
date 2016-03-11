@@ -1,8 +1,8 @@
 <?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Local Category Product']) ?>
 <?php $this->start('page-body') ?>
 <div ng-controller="ProductListLocalCategoryCtrl" ng-init="init(<?= $catid ?>)" ng-cloak>
-	<? $this->insert('components/page-title-breadcrumb-local-category', ['text' => "Products/Add Product"]) ?>
-	<? $this->insert('components/search-section', ['optional_class' => 'hide-component']) ?>
+	<?php $this->insert('components/page-title-breadcrumb-local-category', ['text' => "Products/Add Product"]) ?>
+	<?php $this->insert('components/search-section', ['optional_class' => 'hide-component']) ?>
 	<div ng-if="productList.length > 0 || notReady">
 		<div class="filter-section">
 			<div class="filter-container">
@@ -104,7 +104,7 @@
 		</div>
 	</div>
 	<div ng-if="productList.length <= 0 && !notReady" class="local-category-page margin-bottom-20">
-		<? $this->insert('components/local-category-empty-content', ['text' => 'You do not have any product in this category']) ?>      
+		<?php $this->insert('components/local-category-empty-content', ['text' => 'You do not have any product in this category']) ?>      
 	</div>
 </div>
 <?php $this->stop() ?>

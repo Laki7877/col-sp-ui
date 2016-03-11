@@ -76,7 +76,7 @@
 
                             </div>
                         </div>
-                        <? $this->insert('components/forms/form-section-upload-new-product-image',
+                        <?php $this->insert('components/forms/form-section-upload-new-product-image',
                         ["uploader" => "uploaderModal",
                         "model" => $model,
                         "images" => $model .".Images"]) ?>
@@ -146,7 +146,7 @@
                                 </div>
                                 <div class="form-section-content">
 
-                                        <? $this->insert('components/forms/ckeditor-with-label',
+                                        <?php $this->insert('components/forms/ckeditor-with-label',
 								            ["label" => "Description (English)", "size" => "xxl", "label_class" => "required", "ng_model" => $model.".DescriptionFullEn"]) ?>
 
                                             <div ng-template="common/input/textarea2" ng-template-options="{
@@ -166,7 +166,7 @@
                                             </div>
 
 
-                                             <? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (ไทย)", "size" => "xxl", "label_class" => "required","form_group_class" => "margin-top-40", "ng_model" => $model.".DescriptionFullTh"]) ?>
+                                             <?php $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (ไทย)", "size" => "xxl", "label_class" => "required","form_group_class" => "margin-top-40", "ng_model" => $model.".DescriptionFullTh"]) ?>
 
                                         <div ng-template="common/input/textarea2" ng-template-options="{
                                             'label': 'Short Description (ไทย)',

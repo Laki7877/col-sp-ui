@@ -7,7 +7,7 @@
                     <h2>Shop Theme</h2>
                 </div>
                 <div class="form-section-content image_preview">
-                    <? $this->insert('components/forms/multiple-radio-image', ["choices" => ["Theme 1", "Theme 2", "Theme 3", "Theme 4"]]) ?>
+                    <?php $this->insert('components/forms/multiple-radio-image', ["choices" => ["Theme 1", "Theme 2", "Theme 3", "Theme 4"]]) ?>
                 </div>
             </div>
         </div>
@@ -62,8 +62,8 @@
                         <div nc-template="common/input/form-group-with-label" nc-label="Description" nc-template-options-path="">
                             <textarea class="form-control" rows="4" type="text" ng-model="" /></textarea>
                         </div>
-                        <? $this->insert('components/forms/upload-field-input-with-label', ["label" => "Thumbnail Image"]) ?>
-                        <? $this->insert('components/forms/image-preview', ["label" => "Thumbnail Image Preview"]) ?>
+                        <?php $this->insert('components/forms/upload-field-input-with-label', ["label" => "Thumbnail Image"]) ?>
+                        <?php $this->insert('components/forms/image-preview', ["label" => "Thumbnail Image Preview"]) ?>
                     </div>
                     <div>
                         <div nc-template="common/input/form-group-with-label" nc-label="Video Link 1" nc-template-options-path="shopAppearanceForm/VideoLink">
@@ -72,8 +72,8 @@
                         <div nc-template="common/input/form-group-with-label" nc-label="Description" nc-template-options-path="">
                             <textarea class="form-control" rows="4" type="text" ng-model="" /></textarea>
                         </div>
-                        <? $this->insert('components/forms/upload-field-input-with-label', ["label" => "Thumbnail Image"]) ?>
-                        <? $this->insert('components/forms/image-preview', ["label" => "Thumbnail Image Preview"]) ?>
+                        <?php $this->insert('components/forms/upload-field-input-with-label', ["label" => "Thumbnail Image"]) ?>
+                        <?php $this->insert('components/forms/image-preview', ["label" => "Thumbnail Image Preview"]) ?>
                     </div>
                 </div>
             </div>

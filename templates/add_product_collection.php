@@ -28,7 +28,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Collecti
 		</div>
 
 
-	<? $this->insert('components/page-title-product-collection-breadcrumb', ['text' => "Collection " , 'urls' => ['/collections']]) ?>
+	<?php $this->insert('components/page-title-product-collection-breadcrumb', ['text' => "Collection " , 'urls' => ['/collections']]) ?>
 		
 		<div ng-show="loading">
 			<img src="/assets/img/loader.gif" width="40"> <small>Loading Global Categories..</small>
@@ -40,7 +40,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Collecti
 <div>
 			
 					<div class="category-content no-padding">					
-						<? $this->insert('partials/add-product-collection-information') ?>
+						<?php $this->insert('partials/add-product-collection-information') ?>
 					</div>
 				</div>
 				<div class="category-footer no-padding">

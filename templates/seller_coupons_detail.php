@@ -10,18 +10,18 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
 <?php $this->start('page-body') ?>
   <div>
     <div>
-      <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Coupons/Create Coupon", 'border_class' => 'no-padding']) ?>
+      <?php $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Coupons/Create Coupon", 'border_class' => 'no-padding']) ?>
     </div>
 
     <div class="add-product-body">
-      <? $this->insert('components/tab-nav', ["items" => $menus]) ?>
+      <?php $this->insert('components/tab-nav', ["items" => $menus]) ?>
       <form class="ah-form sticky-mainform-action">
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
-            <? $this->insert('partials/create_coupon_information') ?>
+            <?php $this->insert('partials/create_coupon_information') ?>
           </div>
           <div role="tabpanel" class="tab-pane margin-top-20" id="conditions">
-            <? $this->insert('partials/coupon_condition') ?>
+            <?php $this->insert('partials/coupon_condition') ?>
           </div>
         </div>
         <div class="add-product-form-action main-form-action full-width-row">

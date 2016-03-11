@@ -211,7 +211,7 @@
 		<div class="form-section">
 			<div class="form-section-header"><h2>Description</h2></div>
 			<div class="form-section-content">
-				<? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (Thai)", "ng_model" => "formData.LongDescriptionTH", "size" => "xxl"]) ?>
+				<?php $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (Thai)", "ng_model" => "formData.LongDescriptionTH", "size" => "xxl"]) ?>
 
 				<div ng-template="common/input/textarea2"
 					ng-template-options="{
@@ -236,7 +236,7 @@
 					</textarea>
 				</div>
 
-				<? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (English)", "ng_model" => "formData.LongDescriptionEN", "size" => "xxl", "form_group_class" => "margin-top-40"]) ?>
+				<?php $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (English)", "ng_model" => "formData.LongDescriptionEN", "size" => "xxl", "form_group_class" => "margin-top-40"]) ?>
 
 				<div ng-template="common/input/textarea2"
 					ng-template-options="{

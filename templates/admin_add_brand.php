@@ -3,7 +3,7 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminBrandAddCtrl" ng-init="init(<?=$params?>)">
     <nc-alert nc-model="alert"></nc-alert>
-    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Brands/{{title}}", 'urls' => ['/admin/brands']]) ?>
+    <?php $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Brands/{{title}}", 'urls' => ['/admin/brands']]) ?>
     <div ng-show="loading" nc-loading="Loading Brand.."></div>
     <div ng-show="saving" nc-loading="Saving Brand.."></div>
     <form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>

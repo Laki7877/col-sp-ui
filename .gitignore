@@ -136,3 +136,8 @@ angular/nc/template.js
 angular/template.js
 ## include bundle because, test team doesnt want to grunt
 ## public/assets/js/bundle.js
+
+
+angular\modules\nc\template.js
+angular\modules\product-detail\template.js
+public\assets\js\bundle.js

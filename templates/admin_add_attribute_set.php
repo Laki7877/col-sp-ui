@@ -2,7 +2,7 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminAttributeSetAddCtrl" ng-init="init(<?=$params?>)">
     <nc-alert nc-model="alert"></nc-alert>
-    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute Sets/{{title}}", 'urls' => ['/admin/attributesets']]) ?>
+    <?php $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attribute Sets/{{title}}", 'urls' => ['/admin/attributesets']]) ?>
     <div ng-show="loading" nc-loading="Loading Attribute Set.."></div>
     <div ng-show="saving" nc-loading="Saving Attribute Set.."></div>
     <form ng-show="!saving && !loading" class="ah-form sticky-mainform-action margin-top-30" name="form" novalidate>

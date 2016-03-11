@@ -3,10 +3,10 @@
 <?php $this->start('page-body') ?>
 <!--<div ng-controller="ProductListCtrl" ng-init="init(<?= $params ?>)">-->
 <div ng-controller="ProductGroupCollectionListCtrl" ng-init="init(<?= $params ?>)">
-    <? $this->insert('components/modal-export-product-group-collection', ['id' => 'export-product-collection', 'newProductNum' => '1,500']) ?>
-    <? $this->insert('components/modal-export-product-group-collection-progressing', ['id' => 'export-product-collection-progressing', 'percent' => '60']) ?>
+    <?php $this->insert('components/modal-export-product-group-collection', ['id' => 'export-product-collection', 'newProductNum' => '1,500']) ?>
+    <?php $this->insert('components/modal-export-product-group-collection-progressing', ['id' => 'export-product-collection-progressing', 'percent' => '60']) ?>
 
-    <? $this->insert('components/page-title-product-group-collection-with-buttons', ['text' => 'Product Collection']) ?>
+    <?php $this->insert('components/page-title-product-group-collection-with-buttons', ['text' => 'Product Collection']) ?>
     <div ng-show="alert.show" uib-alert template-url="common/alert" type="{{alert.type}}" close="alert.close()">{{alert.message}}</div>
     <div class="row search-section-wrapper">
       <form ng-submit="bulk.fn()" class="search-section section-action">
@@ -124,16 +124,16 @@
       </table>
 	  
       <div ng-show="notReady">
-          <? $this->insert('components/table-loading', ['text' => 'Loading...']) ?>
+          <?php $this->insert('components/table-loading', ['text' => 'Loading...']) ?>
       </div>
       <div ng-show="!notReady && productGroupList.length == 0 && tableParams.searchText.length > 0">
           <div class="local-category-page margin-bottom-20">
-            <? $this->insert('components/local-category-empty-content', ['text' => 'No Search Result']) ?>      
+            <?php $this->insert('components/local-category-empty-content', ['text' => 'No Search Result']) ?>      
           </div>
       </div>
       <div ng-show="!notReady && productGroupList.length == 0 && tableParams.searchText.length <= 0">
           <div class="local-category-page margin-bottom-20">
-            <? $this->insert('components/local-category-empty-content', ['text' => 'You do not have a Product']) ?>      
+            <?php $this->insert('components/local-category-empty-content', ['text' => 'You do not have a Product']) ?>      
           </div>
       </div>
     </div>

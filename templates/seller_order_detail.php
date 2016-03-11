@@ -5,7 +5,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Order Detail'])
 <?php $this->start('page-body') ?>
   <div>
     <div>
-      <? $this->insert('components/page-title-with-buttons', ['text' => 'Orders/Order Detail',
+      <?php $this->insert('components/page-title-with-buttons', ['text' => 'Orders/Order Detail',
         'buttons' => [
             ['link' => '#', 'class' => 'btn-white btn-width-xl', 'name' => 'Print Invoice'],
             ['link' => '#', 'class' => 'btn-white btn-width-xxl', 'name' => 'Print Shipping Label'],
@@ -143,7 +143,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Order Detail'])
       <form class="ah-form sticky-mainform-action">
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
-            <? $this->insert('partials/order_cancel') ?>
+            <?php $this->insert('partials/order_cancel') ?>
           </div>
         </div>
         <div class="add-product-form-action main-form-action full-width-row">

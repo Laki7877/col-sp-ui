@@ -5,15 +5,15 @@
       <div class="form-section">
         <div class="form-section-header"><h2>Advanced Search</h2></div>
         <div class="form-section-content">
-          <? $this->insert('components/forms/input-text-with-label', ["label" => "Product Name", ]) ?>
-          <? $this->insert('components/forms/input-text-with-label', ["label" => "PID" ]) ?>
-          <? $this->insert('components/forms/dropdown_tags', ["label" => "Brand Name", "default_choices" => ["Gulp", "Adico"], "choices" => ["Gulp", "Adico","Pascal"] ]) ?>
-          <? $this->insert('components/forms/input-text-with-label', ["label" => "Global Category Name" ]) ?>
-          <? $this->insert('components/forms/input-text-with-label', ["label" => "Shop Name" ]) ?>
-          <? $this->insert('components/forms/input_tags', ["label" => "Search Tag", "default_choices" => ["Gulp", "Adico"], "choices" => ["Gulp", "Adico","Pascal"] ]) ?>
-          <? $this->insert('components/forms/input_from_to', ["label" => "Price", "label_extend" => "To" ]) ?>
-          <? $this->insert('components/forms/input_from_to', ["label" => "Created Date", "input_class" => "input-icon-calendar", "label_extend" => "To" ]) ?>
-          <? $this->insert('components/forms/input_from_to', ["label" => "Modified Date", "input_class" => "input-icon-calendar", "label_extend" => "To" ]) ?>
+          <?php $this->insert('components/forms/input-text-with-label', ["label" => "Product Name", ]) ?>
+          <?php $this->insert('components/forms/input-text-with-label', ["label" => "PID" ]) ?>
+          <?php $this->insert('components/forms/dropdown_tags', ["label" => "Brand Name", "default_choices" => ["Gulp", "Adico"], "choices" => ["Gulp", "Adico","Pascal"] ]) ?>
+          <?php $this->insert('components/forms/input-text-with-label', ["label" => "Global Category Name" ]) ?>
+          <?php $this->insert('components/forms/input-text-with-label', ["label" => "Shop Name" ]) ?>
+          <?php $this->insert('components/forms/input_tags', ["label" => "Search Tag", "default_choices" => ["Gulp", "Adico"], "choices" => ["Gulp", "Adico","Pascal"] ]) ?>
+          <?php $this->insert('components/forms/input_from_to', ["label" => "Price", "label_extend" => "To" ]) ?>
+          <?php $this->insert('components/forms/input_from_to', ["label" => "Created Date", "input_class" => "input-icon-calendar", "label_extend" => "To" ]) ?>
+          <?php $this->insert('components/forms/input_from_to', ["label" => "Modified Date", "input_class" => "input-icon-calendar", "label_extend" => "To" ]) ?>
           <div class="form-group">
             <div class="width-label"><label class="control-label"></label></div>
             <div class="button-size-normal">

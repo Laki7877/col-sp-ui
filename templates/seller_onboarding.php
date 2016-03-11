@@ -11,7 +11,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
 
     <div>
       <div class="onboarding_content">
-        <? $this->insert('components/forms/seller_task',
+        <?php $this->insert('components/forms/seller_task',
           ["field_header" => "Change password",
            "field_text" => "In order for you to remember password easier",
            "button_text" => "Change Password",
@@ -19,7 +19,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "task_display" => "ng-hide='Completed[0]'",
            "type" => "changePassword"]) ?>
 
-         <? $this->insert('components/forms/seller_task',
+         <?php $this->insert('components/forms/seller_task',
            ["field_header" => "Add shop description",
             "field_text" => "Tell customers what your shop is about",
             "button_text" => "Check Profile",
@@ -27,7 +27,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
             "task_display" => "ng-hide='Completed[1]'",
             "type" => "redirectShopSetting"]) ?> 
 
-        <? $this->insert('components/forms/seller_task',
+        <?php $this->insert('components/forms/seller_task',
           ["field_header" => "Add product",
            "field_text" => "Add at least one item to your store",
            "button_text" => "Add Product",
@@ -35,14 +35,14 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "task_display" => "ng-hide='Completed[2]'",
            "type" => "redirectProduct"]) ?>
 
-        <? $this->insert('components/forms/seller_task',
+        <?php $this->insert('components/forms/seller_task',
           ["field_header" => "Decorate your store",
            "field_text" => "Add at least one banner to make your store unique",
            "button_text" => "Set Appearance",
            "image_name" => "icon-onboard-decorate",
            "task_display" => "ng-hide='Completed[3]'"]) ?>
 
-        <? $this->insert('components/forms/seller_task',
+        <?php $this->insert('components/forms/seller_task',
           ["field_header" => "Review & launch your store",
            "field_text" => "Complete the tasks above to launch your store",
            "button_text" => "Launch",
@@ -54,7 +54,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
           <span class="complte_line_text">Completed</span>
         </div>
 
-        <? $this->insert('components/forms/seller_task',
+        <?php $this->insert('components/forms/seller_task',
           ["field_header" => "Change password",
            "field_text" => "In order for you to remember password easier",
            "button_text" => "Change Password",
@@ -63,7 +63,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "task_display" => "ng-hide='!Completed[0]'",
            "type" => "changePassword"]) ?>
 
-        <? $this->insert('components/forms/seller_task',
+        <?php $this->insert('components/forms/seller_task',
           ["field_header" => "Add Description",
            "field_text" => "Tell customers what your shop is about",
            "button_text" => "Check Profile",
@@ -72,7 +72,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "task_display" => "ng-hide='!Completed[1]'",
            "type" => "redirectShopSetting"]) ?>
 
-        <? $this->insert('components/forms/seller_task',
+        <?php $this->insert('components/forms/seller_task',
           ["field_header" => "Add product",
            "field_text" => "Add at least one item to your store",
            "button_text" => "Add Product",
@@ -81,7 +81,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "task_display" => "ng-hide='!Completed[2]'",
            "type" => "redirectProduct"]) ?>
 
-        <? $this->insert('components/forms/seller_task',
+        <?php $this->insert('components/forms/seller_task',
           ["field_header" => "Decorate your store",
            "field_text" => "Add at least one banner to make your store unique",
            "button_text" => "Set Appearance",

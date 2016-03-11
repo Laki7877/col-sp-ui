@@ -16,18 +16,18 @@
     <form class="ah-form sticky-mainform-action" name="form" ng-show="!loading && !saving" novalidate>
 
         <div>
-            <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Promotion/Create On top credit card", 'border_class' => 'no-padding']) ?>
+            <?php $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Promotion/Create On top credit card", 'border_class' => 'no-padding']) ?>
         </div>
 
         <div class="add-product-body">
-            <? $this->insert('components/tab-nav', ["items" => $menus]) ?>
+            <?php $this->insert('components/tab-nav', ["items" => $menus]) ?>
 
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
-                    <? $this->insert('partials/create_ontopcredit_information') ?>
+                    <?php $this->insert('partials/create_ontopcredit_information') ?>
                 </div>
                 <div role="tabpanel" class="tab-pane margin-top-20" id="conditions">
-                    <? $this->insert('partials/ontopcredit_condition') ?>
+                    <?php $this->insert('partials/ontopcredit_condition') ?>
                 </div>
             </div>
             <div class="add-product-form-action main-form-action full-width-row">
