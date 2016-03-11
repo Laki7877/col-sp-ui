@@ -12840,34 +12840,35 @@ ul.sub-sidebar .item > a {
 /* line 130, ../../../assets/_sidebar.scss */
 #sidebar-wrapper .sidebar-nav li {
   padding-left: 19px;
+  border-bottom: 1px solid #252d40;
 }
-/* line 132, ../../../assets/_sidebar.scss */
+/* line 133, ../../../assets/_sidebar.scss */
 #sidebar-wrapper .sidebar-nav li a {
   display: none;
 }
 
-/* line 139, ../../../assets/_sidebar.scss */
+/* line 140, ../../../assets/_sidebar.scss */
 #sidebar-wrapper:hover {
   width: 180px;
 }
-/* line 141, ../../../assets/_sidebar.scss */
+/* line 142, ../../../assets/_sidebar.scss */
 #sidebar-wrapper:hover .logo-img-wrapper-collased {
   display: none;
 }
-/* line 144, ../../../assets/_sidebar.scss */
+/* line 145, ../../../assets/_sidebar.scss */
 #sidebar-wrapper:hover .logo-img-wrapper {
   display: block;
 }
-/* line 147, ../../../assets/_sidebar.scss */
+/* line 148, ../../../assets/_sidebar.scss */
 #sidebar-wrapper:hover .sidebar-nav {
   margin-top: 0px;
 }
-/* line 150, ../../../assets/_sidebar.scss */
+/* line 151, ../../../assets/_sidebar.scss */
 #sidebar-wrapper:hover .sidebar-nav li a {
   display: inline-block;
 }
 
-/* line 157, ../../../assets/_sidebar.scss */
+/* line 158, ../../../assets/_sidebar.scss */
 #page-content-wrapper {
   z-index: 9 !important;
   margin-left: 60px !important;
