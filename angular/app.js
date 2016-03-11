@@ -105,6 +105,9 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
 .factory('OnTopCredit', services.OnTopCredit)
   .factory('Onboarding', services.Onboarding)
 
+// Col Dev (Natee)
+.factory('CMSService', services.cmsService)
+
   // Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)
 .directive('ngPermission', directives.ngPermission)
@@ -116,6 +119,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
 .directive('ngMinnumber', directives.ngMinnumber)
 .directive('ngMaxnumber', directives.ngMaxnumber)
 .directive('ngDateBefore', directives.ngDateBefore)
+.directive('ngEnter', directives.ngEnter) // Col Dev (Natee)
 
   // Filters
 .filter('capitalize', filters.capitalize)

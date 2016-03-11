@@ -11,9 +11,13 @@
   </div>
 
     <div class="add-product-body">
+      <div class="row search-section-wrapper">
+        <nc-search nc-model="params.searchText" nc-search-placeholder="'Search Category'"></nc-search>
+      </div>
         <div class="row">
           <div class="col-xs-12">
-            <div class="table-section">
+          
+            <div class="table-section" ng-show="!loading && !isEmpty">
               <table class="table table-curved">
                 <thead>
                   <tr class="table-head">
@@ -44,10 +48,32 @@
                 </tbody>
               </table>
               <nc-pagination nc-model="params" nc-pagination-total="categorys.length"></nc-pagination>
-          </div>
+            </div>
+
+            <!-- loading -->
+            <div class="empty-section margin-top-20 margin-bottom-20" ng-show="loading">
+              <span>
+                <img class="loading-img" src="/assets/img/loader.gif" />
+              </span>Loading...</span>
+            </div>
+
+            <!-- empty -->
+            <div class="local-category-page margin-bottom-20" ng-show="isEmpty">
+              <div class="local-category-empty-section margin-top-20">
+                <span class="">
+                  <span class="zero-category-image">
+                  </span>
+                </span>
+                <span class="local-category-empty-text">
+                    You do not have any Category
+                </span>
+              </div>
+            </div>
+
           </div>
         </div>
 
+        <!-- Actions -->
         <script type="text/ng-template" id="myPopoverTemplate.html">
           <div><a ng-click="detailCategory(item)">View / Detail</a></div>
           <div><a ng-click="editCategory(item)">Edit</a></div>

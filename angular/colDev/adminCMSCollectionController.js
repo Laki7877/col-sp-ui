@@ -1,7 +1,14 @@
 
-module.exports = function($scope, config, $uibModal) {
+module.exports = function($scope, config, $uibModal, $timeout) {
 
 	$scope.categorys = [];
+	$scope.isEmpty 		= false;
+	$scope.loading 		= true;
+
+	$timeout(function() {
+		//$scope.isEmpty = true;
+		$scope.loading = false;
+	}, 3000);
 
 	$scope.params = {
 		_order: '',
@@ -31,13 +38,12 @@ module.exports = function($scope, config, $uibModal) {
 	      scope: $scope,
 	      controller: function($scope, $uibModalInstance) {
 
-	      	$scope.products = [
-	      		{ ProductName: 'P1' },
-	      		{ ProductName: 'P2' },
-	      		{ ProductName: 'P3' },
-	      	];
-	      	
+	      	$scope.products = [];
+	      	$scope.isEmpty = true;
+	      	$scope.loading = false;
+	      	$scope.message = 'You do not have any Category';
 	      	$scope.singleDate = moment();
+
 	      	var categoryProducts = [];
 
 	      	$scope.checkAll = function(isChecked) {
@@ -68,6 +74,40 @@ module.exports = function($scope, config, $uibModal) {
 	      		else {
 	      			categoryProducts.push(item);
 	      		}
+	      	};
+
+	      	$scope.addCategoryItem = function () {
+	      	    // open modal
+	      	    $uibModal.open({
+	      	        templateUrl: 'templates/admin-cms-collection-manage-add-item.html',
+	      	        size: 'lg',
+	      	        controller: function ($scope, $uibModalInstance) {
+
+	      	            $scope.products = [];
+	      	            $scope.isEmpty = true;
+	      	            $scope.loading = false;
+	      	            $scope.message = 'You do not have any Category';
+
+	      	            $scope.search = function () {
+
+	      	                $scope.isEmpty = false;
+	      	                $scope.loading = true;
+
+	      	                $timeout(function () {
+	      	                    $scope.loading = false;
+	      	                    $scope.isEmpty = true;
+	      	                    $scope.message = 'Not Found Category.';
+	      	                }, 1000);
+	      	            };
+
+	      	            $scope.ok = function () {
+	      	                $uibModalInstance.close($scope.products)
+	      	            };
+	      	        }
+	      	    })
+			  	.result.then(function (result) {
+
+			  	});
 	      	};
 
 	        $scope.save = function(categoryName) {
