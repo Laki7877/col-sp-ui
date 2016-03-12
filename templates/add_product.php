@@ -13,8 +13,6 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 
 <div ng-controller="SellerProductDetailCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
 
-        <? $this->insert('components/modal-add-alternative-global-category', ['id' => 'global-category', 'header' => 'Add Alternative Global Category', 'ng_model' => 'viewCategorySelected', 'template' => 'viewCategoryColumns']) ?>
-        <? $this->insert('components/modal-add-local-category', ['id' => 'local-category', 'header' => 'Add Local Category', 'ng_model' => 'viewCategorySelected', 'template' => 'viewCategoryColumns']) ?>
         
         <nc-alert nc-model="alert"></nc-alert>
 
@@ -71,7 +69,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
         </fieldset>
 	</form>
     
-   
+         <? $this->insert('components/modal-add-alternative-global-category', ['id' => 'global-category', 'header' => 'Add Alternative Global Category', 'ng_model' => 'viewCategorySelected', 'template' => 'viewCategoryColumns']) ?>
+        <? $this->insert('components/modal-add-local-category', ['id' => 'local-category', 'header' => 'Add Local Category', 'ng_model' => 'viewCategorySelected', 'template' => 'viewCategoryColumns']) ?>
+  
 </div>
 
 	<script src="/assets/libs/ckeditor/ckeditor.js"></script>

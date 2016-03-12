@@ -318,7 +318,6 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 		 * invFd {Server FormData}
 		 */
 		service.deserialize = function(invFd, FullAttributeSet) {
-
 			invFd.AttributeSet = FullAttributeSet;
 			var BrandId = invFd.Brand.BrandId;
 			invFd.Brand = {
@@ -440,6 +439,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				formData: invFd
 			};
 
+			//Figure out attribute options from loaded data
 			if (invFd.Variants.length > 0) {
 				// Figure out the Attributes that make up each Variant
 				var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId'])

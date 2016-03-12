@@ -60,6 +60,40 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 			$scope.variantPtr = $scope.formData.MasterVariant;
 
 
+			//Open modal
+			var openModal = function(ith){
+				var modalInstance = $uibModal.open({
+					size: 'category-section modal-lg column-4',
+					keyboard: false,
+					templateUrl: 'product/modalCategorySelector',
+					controller: function($scope, $uibModalInstance, tree, model) {
+						'ngInject';
+						$scope.model = model;
+						$scope.tree = tree;
+						$scope.title = 'Select Global Category';
+
+						$scope.select = function() {
+							$uibModalInstance.close($scope.model);
+						};
+					},
+					resolve: {
+						model: function() {
+							return $scope.formData.GlobalCategories[ith];
+						},
+						tree: function() {
+							return $scope.dataset.GlobalCategories;
+						}
+					}
+				});
+
+				modalInstance.result.then(function(data) {
+					$scope.formData.GlobalCategories[ith] = data;	
+				});
+
+			};
+
+
+
 			$scope.onImageUploadFail = function(item, filter) {
 				$scope.image_alert.error(item.Message || 'Your image does not meet guideline. Images must be smaller than 5 MB, with square size larger than 1500x1500.');
 			}

@@ -7450,6 +7450,40 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 			$scope.variantPtr = $scope.formData.MasterVariant;
 
 
+			//Open modal
+			var openModal = function(ith){
+				var modalInstance = $uibModal.open({
+					size: 'category-section modal-lg column-4',
+					keyboard: false,
+					templateUrl: 'product/modalCategorySelector',
+					controller: ["$scope", "$uibModalInstance", "tree", "model", function($scope, $uibModalInstance, tree, model) {
+						'ngInject';
+						$scope.model = model;
+						$scope.tree = tree;
+						$scope.title = 'Select Global Category';
+
+						$scope.select = function() {
+							$uibModalInstance.close($scope.model);
+						};
+					}],
+					resolve: {
+						model: function() {
+							return $scope.formData.GlobalCategories[ith];
+						},
+						tree: function() {
+							return $scope.dataset.GlobalCategories;
+						}
+					}
+				});
+
+				modalInstance.result.then(function(data) {
+					$scope.formData.GlobalCategories[ith] = data;	
+				});
+
+			};
+
+
+
 			$scope.onImageUploadFail = function(item, filter) {
 				$scope.image_alert.error(item.Message || 'Your image does not meet guideline. Images must be smaller than 5 MB, with square size larger than 1500x1500.');
 			}
@@ -12212,7 +12246,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('product/modalCategorySelector',
-    "<div class=modal-header><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>{{title}}</h3></div><div class=modal-body style=\"padding-top: 15px\"><div class=\"category-section column-4\"><nc-tree-select nc-model=model nc-tree-select-tree=tree nc-tree-select-title=\"Global Category\"></nc-tree-select><div class=\"category-footer no-padding\"><span class=float-right><button ng-click=select() class=\"btn btn-blue btn-width-xl\" ng-disabled=\"model == null\">Select</button></span></div></div></div>"
+    "<div class=modal-header><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>{{title}}</h3></div><div class=modal-body style=\"padding-top: 15px\"><div class=\"category-section column-4\"><nc-tree-select nc-model=model nc-tree-select-tree=tree nc-tree-select-title=\"Global Category\"></nc-tree-select><div class=\"category-footer no-padding\"><span class=float-right><button ng-click=select() class=\"btn btn-blue btn-width-xl\" ng-disabled=\"model == null || (disabledOn || _.noop)(model)\">Select</button></span></div></div></div>"
   );
 
 
