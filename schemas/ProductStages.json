@@ -6,7 +6,7 @@
 		"type" : "integer"
 	  },
 	  "MasterVariant": {
-		"$ref": "#/defs/ProductVariant"	
+		"$ref": "#/defs/ProductVariant"
 	  },
 	  "Variants": {
 		"type" : "array",
@@ -30,19 +30,19 @@
 		]
 	  },
 	  "LocalCategories": {
-		"$ref" : "#/defs/Category"	
+		"$ref" : "#/defs/Category"
 	  },
 	  "MainGlobalCategory": {
-		"$ref" : "#/defs/Category"	
+		"$ref" : "#/defs/Category"
 	  },
 	  "MainLocalCategory": {
-		"$ref" : "#/defs/Category"	
+		"$ref" : "#/defs/Category"
 	  },
 	  "Tags": {
 		"type": "array"
 	  },
 	  "ControlFlags": {
-	  	"$ref" : "#/defs/ControlFlags"	
+	  	"$ref" : "#/defs/ControlFlags"
 	  }
    },
    "required" : ["ProductId"],
@@ -76,8 +76,8 @@
 			"DescriptionShortTh": {
 				"type": "string"
 			},
-			"DescriptionShortEn": {  
-				"type": "string" 
+			"DescriptionShortEn": {
+				"type": "string"
 			},
 			"DescriptionFullTh": {
 				"type": "string"
@@ -143,13 +143,13 @@
 				"type": "string"
 			},
 			"StockType": {
-				"type": "string"
+				"enum": ["Stock", "PreOrder", "-"]
 			},
 			"SafetyStock": {
 				"type": "number"
 			},
 			"Images": {
-				"$ref": "#/defs/Image" 
+				"$ref": "#/defs/Image"
 			},
 			"Installment": {
 				"enum": ["Y", "N"]
@@ -166,13 +166,13 @@
 			"Visibility": {},
 			"DefaultVariant": {}
 		},
-		"required": []	
+		"required": []
 	},
 	"Image": {
 		"properties": {
 			"position": {
 				"type": "integer"
-			}		
+			}
 		}
 	},
 	"Category" : {

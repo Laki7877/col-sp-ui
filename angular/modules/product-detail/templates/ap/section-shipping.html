@@ -2,7 +2,7 @@
     <div class="form-section-header">
         <h2>Shipping Detail</h2></div>
     <div class="form-section-content">
-        <div class="form-group" ng-if="!options.hideShippingMethod">
+        <div class="form-group">
             <div class="width-label">
                 <label class="control-label">Shipping Method</label>
             </div>
@@ -29,13 +29,13 @@
             <div class="width-field-xxl">
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" ng-model="individualDayChecked"> Set preparation time for individual day
+                  <input type="checkbox" ng-model="variantPtr.LimitIndividualDay"> Set preparation time for individual day
                 </label>
               </div>
             </div>
         </div>
 
-        <div class="form-group" ng-show="individualDayChecked">
+        <div class="form-group" ng-show="variantPtr.LimitIndividualDay">
           <div class="width-label">
               <label class="control-label"></label>
           </div>

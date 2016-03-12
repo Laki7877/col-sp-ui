@@ -12,18 +12,18 @@
             <input autocomplete="off" class="form-control width-field-normal" type="number" name="OriginalPrice" ng-pattern="/^\d+(\.\d{1,2})?$/" maxlength="20"
             ng-model="variantPtr.OriginalPrice" />
         </div>
-        
+
         <div nc-template="common/input/form-group-with-label" nc-label="Installment" nc-template-options-path="addProductForm/Installment"
         nc-template-form="form.Installment">
             <select ng-if="(variantPtr.SalePrice || 0) > 5000" class="form-control" ng-model="variantPtr.Installment">
-                <option>Yes</option>
-                <option selected>No</option>
+                <option value="Y">Yes</option>
+                <option value="N" selected>No</option>
             </select>
-            
+
              <select disabled ng-if="(variantPtr.SalePrice || 0) <= 5000" class="form-control">
                  <option value="No" selected>Available when price is more than 5,000</option>
             </select>
         </div>
-        
+
     </div>
 </div>

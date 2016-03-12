@@ -257,7 +257,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 					fallback: function(x){
 						return [];
 					}
-				}, 
+				},
 				MasterAttribute: {
 					serialize:  function(ma) {
 						var t = [];
@@ -386,19 +386,19 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				});
 			}
 
-			if (invFd.MasterVariant.VideoLinks) {
-				invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
-			} else {
-				invFd.MasterVariant.VideoLinks = [];
-			}
+			// if (invFd.MasterVariant.VideoLinks) {
+			// 	invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
+			// } else {
+			// 	invFd.MasterVariant.VideoLinks = [];
+			// }
 
-			invFd.Variants.forEach(function(variant, index) {
-				try {
-					variant.VideoLinks = (variant.VideoLinks || []).map(invMapper.VideoLinks);
-				} catch (ex) {
-					variant.VideoLinks = []
-				}
-			})
+			// invFd.Variants.forEach(function(variant, index) {
+			// 	try {
+			// 		variant.VideoLinks = (variant.VideoLinks || []).map(invMapper.VideoLinks);
+			// 	} catch (ex) {
+			// 		variant.VideoLinks = []
+			// 	}
+			// })
 
 			if (invFd.GlobalCategories.length == 0) {
 				invFd.GlobalCategories = [null, null, null];

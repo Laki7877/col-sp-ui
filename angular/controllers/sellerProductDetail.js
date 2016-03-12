@@ -20,7 +20,7 @@ module.exports = function ($scope, $controller, storage) {
 
 	    console.log($scope.formData, "loaded");
 	    $scope.variantPtr = $scope.formData.MasterVariant;
-	    $scope.imagesPtr = $scope.formData.MasterVariant.Images;
+	    $scope.variantPtr.Images = $scope.formData.MasterVariant.Images;
     }
 
     $scope._debugSave = function(){
@@ -31,15 +31,15 @@ module.exports = function ($scope, $controller, storage) {
 		delete gc.nodes;
 		delete gc.parent;
 	    });
-	     
+
 	    delete $scope.dataset.GlobalCategories;
-	    delete $scope.dataset.LocalCategories; 
+	    delete $scope.dataset.LocalCategories;
 	    console.log($scope.dataset, $scope.variationFactorIndices);
- 
+
 	    storage.put('save-cf-' + checkpoint, JSON.stringify($scope.controlFlags));
 	    storage.put('save-fd-' + checkpoint, JSON.stringify($scope.formData));
 	    storage.put('save-ds-' + checkpoint, JSON.stringify($scope.dataset));
 	    storage.put('save-it-' + checkpoint, JSON.stringify($scope.variationFactorIndices.iterator));
-    }; 
+    };
 
 };
