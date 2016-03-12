@@ -169,4 +169,10 @@ class AdminController extends Controller
 	{
         return View::render('admin_add_ontopcredit',  ['params' => json_encode_n($params), 'title' => 'Admin On Top Credit Card Detail']);
 	}
+
+	//Newsletter
+	public static function listNewsletter($params)
+	{
+		return View::render('admin_newsletters');
+	}
 }

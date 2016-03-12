@@ -22,27 +22,30 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
          <? $this->insert('components/forms/seller_task',
            ["field_header" => "Add shop description",
             "field_text" => "Tell customers what your shop is about",
-            "button_text" => "Add Description",
+            "button_text" => "Check Profile",
             "image_name" => "icon-onboard-setting",
-            "task_display" => "ng-hide='Completed[1]'"]) ?>
+            "task_display" => "ng-hide='Completed[1]'",
+            "type" => "redirectShopSetting"]) ?> 
 
         <? $this->insert('components/forms/seller_task',
-          ["field_header" => "Add product",
-           "field_text" => "Add at least one item to your store",
-           "button_text" => "Add Product",
+          ["field_header" => "{{productFieldContent.title}}",
+           "field_text" => "{{productFieldContent.subTitle}}",
+           "button_text" => "{{productFieldContent.button}}",
            "image_name" => "icon-onboard-product",
-           "task_display" => "ng-hide='Completed[2]'"]) ?>
+           "task_display" => "ng-hide='Completed[2]'",
+           "type" => "redirectProduct"]) ?>
 
         <? $this->insert('components/forms/seller_task',
           ["field_header" => "Decorate your store",
            "field_text" => "Add at least one banner to make your store unique",
            "button_text" => "Set Appearance",
            "image_name" => "icon-onboard-decorate",
-           "task_display" => "ng-hide='Completed[3]'"]) ?>
+           "task_display" => "ng-hide='Completed[3]'",
+           "type" => "redirectShopAppearance"]) ?>
 
         <? $this->insert('components/forms/seller_task',
           ["field_header" => "Review & launch your store",
-           "field_text" => "Complete the tasks above to launch your store",
+           "field_text" => "{{launchTextSubtitle}}",
            "button_text" => "Launch",
            "image_name" => "icon-onboard-launch",
            "disble_status" => "disabled",
@@ -58,7 +61,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "button_text" => "Change Password",
            "image_name" => "icon-onboard-password",
            "home_task_container_class" => "background_blue",
-           "task_display" => "ng-hide='!Completed[0]'"]) ?>
+           "task_display" => "ng-hide='!Completed[0]'",
+           "type" => "changePassword"]) ?>
 
         <? $this->insert('components/forms/seller_task',
           ["field_header" => "Add Description",
@@ -66,15 +70,17 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "button_text" => "Check Profile",
            "image_name" => "icon-onboard-setting",
            "home_task_container_class" => "background_blue",
-           "task_display" => "ng-hide='!Completed[1]'"]) ?>
+           "task_display" => "ng-hide='!Completed[1]'",
+           "type" => "redirectShopSetting"]) ?>
 
         <? $this->insert('components/forms/seller_task',
-          ["field_header" => "Add product",
-           "field_text" => "Add at least one item to your store",
-           "button_text" => "Add Product",
+          ["field_header" => "{{productFieldContent.title}}",
+           "field_text" => "{{productFieldContent.subTitle}}",
+           "button_text" => "{{productFieldContent.button}}",
            "image_name" => "icon-onboard-product",
            "home_task_container_class" => "background_blue",
-           "task_display" => "ng-hide='!Completed[2]'"]) ?>
+           "task_display" => "ng-hide='!Completed[2]'",
+           "type" => "redirectProduct"]) ?>
 
         <? $this->insert('components/forms/seller_task',
           ["field_header" => "Decorate your store",
@@ -82,7 +88,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "button_text" => "Set Appearance",
            "image_name" => "icon-onboard-decorate",
            "home_task_container_class" => "background_blue",
-           "task_display" => "ng-hide='!Completed[3]'"]) ?>
+           "task_display" => "ng-hide='!Completed[3]'",
+           "type" => "redirectShopAppearance"]) ?>
       </div>
     </div>
   </div>

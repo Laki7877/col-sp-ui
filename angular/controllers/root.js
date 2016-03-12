@@ -121,7 +121,7 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
       size: 'change-password',
       windowClass: 'modal-custom',
       templateUrl: 'common/modalChangePassword',
-      controller: function($scope, $uibModalInstance, NcAlert, Credential, common) {
+      controller: function($rootScope, $scope, $uibModalInstance, NcAlert, Credential, common) {
         'ngInject';
         $scope.alert = new NcAlert();
         $scope.form = {};
@@ -140,6 +140,7 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
                 $scope.formData = {};
                 $scope.formData.error = false;
                 $scope.form.$setPristine();
+                $rootScope.$broadcast('change-password');
               }, function(err) {
                 $scope.alert.error(common.getError(err));
                 $scope.formData.error = true;

@@ -8,14 +8,14 @@
       <table class="table table-curved">
         <thead>
           <tr class="table-head">
-            <th nc-sort="CreatedDt">Date</th>
+            <th nc-sort="PublishedDt">Date</th>
             <th nc-sort="Subject">Subject</th>
             <th class="text-align-center">Action</th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="row in list.data">
-            <td class="modified-column">{{ row.CreatedDt | dateTh }}</td>
+            <td class="modified-column">{{ row.PublishedDt | dateTh }}</td>
             <td><a ng-click="open(row)">{{ row.Subject }}</a></td>
             <td class="action-column text-align-center"><button class="btn btn-white btn-width-default" ng-click="open(row)">Read</button></td>
           </tr>
