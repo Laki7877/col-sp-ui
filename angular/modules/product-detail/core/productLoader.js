@@ -118,6 +118,7 @@ factory('$productAdd', function(Product, Brand, AttributeSet, ImageService, Glob
    *
    * Fill product add page with data of related dependencies
    *
+   * @param  {function} checkSchema
    * @param  {Integer} globalCatId
    * @param  {AddProductPageLoader} pageLoader
    * @param  {DataSet} sharedDataSet
@@ -127,15 +128,15 @@ factory('$productAdd', function(Product, Brand, AttributeSet, ImageService, Glob
    * @param  {object} variationFactorIndices
    * @param  {InverseFormData} ivFormData (Optional)
    */
-  $productAdd.fill = function(globalCatId, pageLoader, sharedDataSet,
+  $productAdd.fill = function(checkSchema, globalCatId, pageLoader, sharedDataSet,
     sharedFormData, breadcrumbs, controlFlags, variationFactorIndices, ivFormData) {
-
 
     var deferred = $q.defer();
     pageLoader.load('Downloading Attribute Sets..');
 
     AttributeSet.getByCategory(globalCatId)
       .then(function(data) {
+        if(data.length > 0) checkSchema(data[0], 'attributeSet');
         sharedDataSet.AttributeSets = data.map(function(aset) {
           aset._group = "Suggested Attribute Sets";
           aset.AttributeSetTagMaps = $productAdd.flatten.AttributeSetTagMap(aset.AttributeSetTagMaps);

@@ -10,9 +10,9 @@ module.exports = {
     },
     "Variants": {
       "type": "array",
-      "oneOf": [{
+      "items": {
         "$ref": "#/defs/ProductVariant"
-      }]
+      }
     },
     "Status": {
       "enum": ["DF", "WA"]
@@ -45,12 +45,12 @@ module.exports = {
       "$ref": "#/defs/ControlFlags"
     },
     "Brands": {
-       "type": "object",
-       "properties": {
-         "BrandId": {
-           "type": "integer"
-         }
-       }
+      "type": "object",
+      "properties": {
+        "BrandId": {
+          "type": "integer"
+        }
+      }
     },
     "TheOneCardEarn": {
       "type": "integer"
@@ -62,13 +62,16 @@ module.exports = {
       "$ref": "#/defs/Attribute"
     },
     "RelatedProducts": {
-      "type": "object",
-      "properties": {
-        "ProductId": {
-          "type" : "integer"
-        }
-      },
-      "required": ['ProductId']
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ProductId": {
+            "type": "integer"
+          }
+        },
+        "required": ["ProductId"]
+      }
     },
     "EffectiveDate": {
       "type": "string"
@@ -77,14 +80,27 @@ module.exports = {
       "type": "string"
     },
     "Visibility": {
-      "type": "integer"
+      "type": "boolean"
     }
   },
   "required": [],
   "defs": {
-    "Attribute": {
-      "type": "object"
+    "AttributeValueObject": {
+        "type": "object",
+        "properties": {
+          "AttributeValueEn": {
+            "type": "string"
+          },
+          "AttributeValueId": {
+            "type": "integer"
+          },
+          "Status": {
+            "type": "string"
+          }
+        },
+        "required":  ["AttributeValueEn", "AttributeValueId", "Status"]
     },
+    "Attribute": require('./attribute'),
     "ProductVariant": {
       "properties": {
         "Length": {
@@ -106,7 +122,7 @@ module.exports = {
           "type": "string"
         },
         "Pid": {
-          "type": "integer"
+          "type": "string"
         },
         "Sku": {
           "type": "string"
@@ -175,10 +191,10 @@ module.exports = {
           "type": "string"
         },
         "DimensionUnit": {
-          "type": "string"
+          "enum": ["MM", "CM", "M"]
         },
         "WeightUnit": {
-          "type": "string"
+          "enum": ["G", "KG"]
         },
         "StockType": {
           "enum": ["Stock", "Pre-Order", ""]
@@ -194,7 +210,7 @@ module.exports = {
         },
         "ShippingMethod": {
           "type": "integer",
-          "enum": [0,1]
+          "enum": [0, 1]
         },
         "VideoLinks": {},
         "SEO": {},
@@ -202,7 +218,9 @@ module.exports = {
         "LimitIndividualDay": {
           "type": "boolean"
         },
-        "Upc": {},
+        "Upc": {
+          "type": "string"
+        },
         "FirstAttribute": {},
         "SecondAttribute": {},
         "Display": {},
@@ -210,8 +228,9 @@ module.exports = {
         "DefaultVariant": {}
       },
       "required": ["ShippingMethod", "ProductNameEn", "ProductNameTh",
-      "StockType", "DimensionUnit", "SEO", "VideoLinks", "DefaultVariant", "Images",
-      "Installment", "PrepareDay", "LimitIndividualDay"]
+        "StockType", "DimensionUnit", "SEO", "VideoLinks", "DefaultVariant", "Images",
+        "Installment", "PrepareDay", "LimitIndividualDay"
+      ]
     },
     "Image": {
       "properties": {

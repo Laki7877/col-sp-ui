@@ -1,10 +1,9 @@
 var angular = require('angular')
-var skeemas = require('skeemas');
 
 angular.module('productDetail').controller('AbstractProductAddCtrl',
   function($scope, $uibModal, $window, util, config, Product, ImageService,
     AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
-    KnownException, NcAlert, $productAdd, options, AttributeSetService, JSONCache) {
+    KnownException, NcAlert, $productAdd, options, AttributeSetService, JSONCache, skeemas) {
     'ngInject';
 
     var MAX_FILESIZE = (options.maxImageUploadSize || 5000000);
@@ -60,9 +59,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     //Initialize Pointers
     $scope.variantPtr = $scope.formData.MasterVariant;
 
-    var checkSchema = function(data){
+    var checkSchema = function(data, schemaName){
       //Perform schema check
-      var schema = JSONCache.get('productStages');
+      var schema = JSONCache.get(schemaName || 'productStages');
       var validation = skeemas.validate(data, schema);
       console.log("Schema validation result: ", validation);
       if(!validation.valid){
@@ -371,7 +370,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions); // will trigger watchvariantchange
           var catId = Number(res.MainGlobalCategory.CategoryId);
 
-          $productAdd.fill(catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function() {
+          $productAdd.fill(checkSchema, catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function() {
             $scope.formData.ProductId = Number(res.ProductId);
             $scope.pageState.reset();
             $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
@@ -413,7 +412,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
 
             //Fill the page with data
-            $productAdd.fill(catId,
+            $productAdd.fill(checkSchema, catId,
               $scope.pageState, $scope.dataset,
               $scope.formData, $scope.breadcrumb, $scope.controlFlags,
               $scope.variationFactorIndices, inverseFormData)
@@ -441,7 +440,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data);
         })
         var catId = Number(viewBag.catId);
-        $productAdd.fill(catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb,
+        $productAdd.fill(checkSchema, catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb,
           $scope.controlFlags, $scope.variationFactorIndices).then(function() {
           $scope.pageState.reset();
           watchVariantFactorChanges();

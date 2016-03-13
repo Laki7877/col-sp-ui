@@ -7,6 +7,7 @@ var bulk = require('bulk-require')(__dirname, ['controllers/*.js', 'services/*.j
 var config = require('./config')
 var route = require('./route')
 var template = require('./template')
+var skeemas = require('skeemas');
 
 // External dependencies
 global._ = require('lodash')
@@ -61,6 +62,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .value('$templateOptionsCache', bulk['template-options'])
 
   // Helpers
+  .factory('skeemas', skeemas)
   .factory('common', helpers.common)
   .factory('storage', helpers.storage)
   .factory('util', helpers.util)

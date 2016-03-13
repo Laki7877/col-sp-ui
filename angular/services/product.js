@@ -318,19 +318,21 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 		 * invFd {Server FormData}
 		 */
 		service.deserialize = function(invFd, FullAttributeSet) {
+			//Load attribute set (TODO: we won't have to do this in future)
 			invFd.AttributeSet = FullAttributeSet;
+			//Load full Brand (TODO: we won't have to do this in future)
 			var BrandId = invFd.Brand.BrandId;
 			invFd.Brand = {
 				BrandId: null,
 				BrandNameEn: 'Search brand by name or id..'
 			};
-
 			Brand.getOne(BrandId).then(function(data) {
 				invFd.Brand = data;
 				delete invFd.Brand.$id;
 				invFd.Brand.id = BrandId;
 			});
 
+			//Find which variant is default
 			try {
 				var DefaultVariantIndex = (invFd.Variants || []).map(function(o) {
 					return o.DefaultVariant || false;
@@ -341,12 +343,12 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				console.warn('Unable to set DefaultVariant, will not set', er);
 			}
 
-			try {
-				invFd.Variants = (invFd.Variants || []).map(invMapper.Variants);
-			} catch (er) {
-				console.warn('Unable to set Variants, will set empty', er);
-				invFd.Variants = [];
-			}
+			// try {
+			// 	invFd.Variants = (invFd.Variants || []).map(invMapper.Variants);
+			// } catch (er) {
+			// 	console.warn('Unable to set Variants, will set empty', er);
+			// 	invFd.Variants = [];
+			// }
 
 			var MasterAttribute = {};
 			try {
