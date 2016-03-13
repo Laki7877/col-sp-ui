@@ -43,10 +43,48 @@ module.exports = {
     },
     "ControlFlags": {
       "$ref": "#/defs/ControlFlags"
+    },
+    "Brands": {
+       "type": "object",
+       "properties": {
+         "BrandId": {
+           "type": "integer"
+         }
+       }
+    },
+    "TheOneCardEarn": {
+      "type": "integer"
+    },
+    "Remark": {
+      "type": "string"
+    },
+    "MasterAttribute": {
+      "$ref": "#/defs/Attribute"
+    },
+    "RelatedProducts": {
+      "type": "object",
+      "properties": {
+        "ProductId": {
+          "type" : "integer"
+        }
+      },
+      "required": ['ProductId']
+    },
+    "EffectiveDate": {
+      "type": "string"
+    },
+    "ExpireDate": {
+      "type": "string"
+    },
+    "Visibility": {
+      "type": "integer"
     }
   },
-  "required": ["ProductId", "Status", "ControlFlags", "MasterVariant"],
+  "required": [],
   "defs": {
+    "Attribute": {
+      "type": "object"
+    },
     "ProductVariant": {
       "properties": {
         "Length": {

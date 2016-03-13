@@ -7622,6 +7622,18 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     //Initialize Pointers
     $scope.variantPtr = $scope.formData.MasterVariant;
 
+    var checkSchema = function(data){
+      //Perform schema check
+      var schema = JSONCache.get('productStages');
+      var validation = skeemas.validate(data, schema);
+      console.log("Schema validation result: ", validation);
+      if(!validation.valid){
+        $scope.devAlert.error('<strong>Warning</strong> Automated API structure pre-check procedure failed. ' +
+        'Format does not comply with the <strong>Ahancer Product Add Exchange Protocol (A-PAEP)</strong> V3 Rev B. ' +
+        'For more detail, look for <i>schema validation result</i> in your js console.');
+      }
+    };
+
     //Open modal for cat selector
     $scope.openCategorySelectorModal = function(ith, key, title) {
       if(!key){
@@ -7696,7 +7708,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.dataset = {
       CombinedAttributeSets: []
     };
-
     $scope.dataset.AttributeSets = [{
       AttributeSetId: null,
       disabled: true,
@@ -7704,16 +7715,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     }];
     $scope.dataset.GlobalCategories = [];
     $scope.dataset.LocalCategories = [];
-
     $scope.dataset.BrandsEmpty = [{
       BrandId: null,
       _group: 'No Result',
       BrandNameEn: 'Search by brand by name or Brand id...',
       disabled: true
-    }]
-
+    }];
     $scope.dataset.Brands = [];
-
     $scope.enableVariation = function() {
       $scope.controlFlags.variation = 'enable';
     }
@@ -7727,6 +7735,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       text: 'Show as individual product',
       value: 'INDIVIDUAL'
     }];
+
     $scope.pageState = {
       loading: {
         state: true,
@@ -7750,9 +7759,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       console.log("Before Serialization", $scope.formData);
       var serialized = Product.serialize($scope.formData);
       console.log("After Serialization", serialized);
-      var schema = JSONCache.get('productStages');
-      var validation = skeemas.validate(serialized, schema);
-      console.log("Schema validation result: ", validation);
+      checkSchema(serialized);
     };
 
     $scope.$watch('formData.MasterVariant.OriginalPrice+formData.MasterVariant.SalePrice', function() {
@@ -7867,24 +7874,24 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
      * @param  {String} Status (WA or DF or other enum sent to server)
      */
     $scope.publish = function(Status) {
-      $scope.pageState.reset()
-      $scope.pageState.load('Validating..')
+      $scope.pageState.reset();
+      $scope.pageState.load('Validating..');
 
       if ($scope.controlFlags.variation == 'enable' && $scope.formData.Variants.length == 0) {
-        $scope.controlFlags.variation == 'disable'
+        $scope.controlFlags.variation == 'disable';
       }
 
       if ($scope.controlFlags.variation == 'disable') {
-        $scope.formData.Variants = []
+        $scope.formData.Variants = [];
       }
 
-      $scope.onPublishing = (Status == 'WA')
+      $scope.onPublishing = (Status == 'WA');
         // On click validation
-      var validateMat = manualValidate(Status)
+      var validateMat = manualValidate(Status);
       if (validateMat.length > 0) {
-        $scope.pageState.reset()
-        $scope.alert.error(validateMat.join(', '))
-        return
+        $scope.pageState.reset();
+        $scope.alert.error(validateMat.join(', '));
+        return;
       }
 
       if ($scope.addProductForm.$invalid) {
@@ -7930,6 +7937,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             $scope.formData.ProductId = Number(res.ProductId);
             $scope.pageState.reset();
             $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
+
           });
 
           $scope.addProductForm.$setPristine(true);
@@ -7941,9 +7949,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         $scope.pageState.reset();
         $scope.alert.error('Unable to save because ' + (er.message || er.Message));
         $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
-      })
+      });
 
     }
+
+
 
     $scope.init = function(viewBag) {
       if (!angular.isObject(viewBag)) throw new KnownException('View bag is corrupted');
@@ -7962,11 +7972,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             $scope.overview = angular.copy(inverseFormData);
             var catId = Number(inverseFormData.MainGlobalCategory.CategoryId);
 
-            //Perform schema check
-            var schema = JSONCache.get('productStages');
-            var validation = skeemas.validate(inverseFormData, schema);
-            console.log("Schema validation result: ", validation);
-
 
 
             //Fill the page with data
@@ -7984,11 +7989,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 	                $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data);
 	              });
 
-                if(!validation.valid){
-                  $scope.devAlert.error('<strong>Warning</strong> Automated API structure pre-check procedure failed. ' +
-                  'Incompliant with the <strong>Ahancer Product Add Exchange Protocol (A-PAEP)</strong> V3 Rev B. Proceed with caution. ' +
-                  'For more detail, look for <i>schema validation result</i> in your js console.');
-                }
+                checkSchema(inverseFormData);
+
             });
 
           }, function(error) {
@@ -8265,9 +8267,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.isHtmlInput = util.isHtmlDataType;
     $scope.isCheckboxInput = util.isCheckboxDataType;
 
-    $scope.enableVariation = function() {
-      $scope.controlFlags.variation = 'enable';
-    }
     $scope.alert = new NcAlert();
     $scope.devAlert = new NcAlert();
     $scope.image_alert = new NcAlert();
@@ -8288,7 +8287,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1)
       }
     };
-
 
 
   }])
@@ -8775,10 +8773,48 @@ module.exports = {
     },
     "ControlFlags": {
       "$ref": "#/defs/ControlFlags"
+    },
+    "Brands": {
+       "type": "object",
+       "properties": {
+         "BrandId": {
+           "type": "integer"
+         }
+       }
+    },
+    "TheOneCardEarn": {
+      "type": "integer"
+    },
+    "Remark": {
+      "type": "string"
+    },
+    "MasterAttribute": {
+      "$ref": "#/defs/Attribute"
+    },
+    "RelatedProducts": {
+      "type": "object",
+      "properties": {
+        "ProductId": {
+          "type" : "integer"
+        }
+      },
+      "required": ['ProductId']
+    },
+    "EffectiveDate": {
+      "type": "string"
+    },
+    "ExpireDate": {
+      "type": "string"
+    },
+    "Visibility": {
+      "type": "integer"
     }
   },
-  "required": ["ProductId", "Status", "ControlFlags", "MasterVariant"],
+  "required": [],
   "defs": {
+    "Attribute": {
+      "type": "object"
+    },
     "ProductVariant": {
       "properties": {
         "Length": {
