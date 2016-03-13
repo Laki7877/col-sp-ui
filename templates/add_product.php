@@ -1,10 +1,10 @@
 <?php
 $menus = [
-	["id" => "information", "name" => 'Information', "class" => "require active"],
-	["id" => "images", "name" => 'Images', "class" => "require"], // "ng_class" => "{require : ((formData.Variants || []).length == 0) }"
-	["id" => "category", "name" => 'Category', 'class' => ''],
-	["id" => "more_option", "name" => 'More Options', 'class' => ''],
-	["id" => "variation", "name" => 'Variation', 'class' => ''],
+    ['id' => 'information', 'name' => 'Information', 'class' => 'require active'],
+    ['id' => 'images', 'name' => 'Images', 'class' => 'require'], // "ng_class" => "{require : ((formData.Variants || []).length == 0) }"
+    ['id' => 'category', 'name' => 'Category', 'class' => ''],
+    ['id' => 'more_option', 'name' => 'More Options', 'class' => ''],
+    ['id' => 'variation', 'name' => 'Variation', 'class' => ''],
 ];
 
 $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'])
@@ -12,18 +12,17 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 <?php $this->start('page-body') ?>
 
 <div ng-controller="SellerProductDetailCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
-
-        
-        <nc-alert nc-model="alert"></nc-alert>
+   <nc-alert nc-model="devAlert"></nc-alert>
+   <nc-alert nc-model="alert"></nc-alert>
 
 		<form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
             <fieldset ng-disabled="formData.Status == 'WA'">
-            <? $this->insert('components/page-title-breadcrumb', ['text' => "Products/ " . $title, 'urls' => ['/products']]) ?>
+            <?php $this->insert('components/page-title-breadcrumb', ['text' => 'Products/ '.$title, 'urls' => ['/products']]) ?>
             <div ng-if="pageState.loading.state" nc-loading="{{ pageState.loading.message }}..">
             </div>
             <div class="add-product-body" ng-if="!pageState.loading.state">
 
-                <? $this->insert('components/tab-nav', ["items" => $menus]) ?>
+                <?php $this->insert('components/tab-nav', ['items' => $menus]) ?>
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
                              <div ap-component="ap/tab-information"></div>
@@ -49,7 +48,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 
 				<button ng-click="_debugLoad()" class="btn btn-success"><i class="glyphicon glyphicon-folder-open"></i>&nbsp;Load.. </button>
 				<button ng-click="_debugSave()" class="btn btn-success"><i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;Save as..</button>
-				
+
 				<button ng-show="formData.Status != 'WA'"
                                 class="btn btn-white btn-width-xl" ng-click="preview()">Preview</button>
 
@@ -68,10 +67,10 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
             <!-- apbvody-->
         </fieldset>
 	</form>
-    
-         <? $this->insert('components/modal-add-alternative-global-category', ['id' => 'global-category', 'header' => 'Add Alternative Global Category', 'ng_model' => 'viewCategorySelected', 'template' => 'viewCategoryColumns']) ?>
-        <? $this->insert('components/modal-add-local-category', ['id' => 'local-category', 'header' => 'Add Local Category', 'ng_model' => 'viewCategorySelected', 'template' => 'viewCategoryColumns']) ?>
-  
+
+  <?php //$this->insert('components/modal-add-alternative-global-category', ['id' => 'global-category', 'header' => 'Add Alternative Global Category', 'ng_model' => 'viewCategorySelected', 'template' => 'viewCategoryColumns']) ?>
+  <?php //$this->insert('components/modal-add-local-category', ['id' => 'local-category', 'header' => 'Add Local Category', 'ng_model' => 'viewCategorySelected', 'template' => 'viewCategoryColumns']) ?>
+
 </div>
 
 	<script src="/assets/libs/ckeditor/ckeditor.js"></script>

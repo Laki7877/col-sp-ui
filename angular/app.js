@@ -27,6 +27,7 @@ require('angular-chart.js')
 // Nc package
 require('./modules/nc')
 require('./modules/product-detail')
+require('./modules/schematics')
 
 // Internal dependencies
 var controllers = bulk.controllers
@@ -39,7 +40,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   'nc', 'ui.bootstrap.datetimepicker',
   'duScroll', 'ngSanitize', 'ngAnimate',
   'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select',
-  'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail', 'ngFileUpload'
+  'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail', 'ngFileUpload',
+  'schematics'
 ])
 
   // App config

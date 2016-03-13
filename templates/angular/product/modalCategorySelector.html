@@ -4,10 +4,12 @@
 </div>
 <div class="modal-body" style="padding-top: 15px">
 <div class="category-section column-4">
-		<nc-tree-select nc-model="model" nc-tree-select-tree="tree" nc-tree-select-title="Global Category"></nc-tree-select>
+		<nc-tree-select nc-model="model" nc-tree-select-tree="tree" nc-exclude="exclude"
+		nc-tree-select-title="{{categoryHeaderText || 'Global Category'}}"></nc-tree-select>
 	<div class="category-footer no-padding">
 		<span class="float-right">
-			<button ng-click="select()"class="btn btn-blue btn-width-xl" ng-disabled="model == null || (disabledOn || _.noop)(model)">Select</button>
+			<button ng-click="select()"class="btn btn-blue btn-width-xl"
+			ng-disabled="model == null || (disabledOn || _.noop)(model)">Select</button>
 		</span>
 	</div>
 </div>

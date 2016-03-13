@@ -186,8 +186,6 @@ factory('$productAdd', function(Product, Brand, AttributeSet, ImageService, Glob
           pageLoader.load('Preparing content..');
           deferred.resolve();
         });
-
-
       });
 
     return deferred.promise;

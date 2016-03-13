@@ -308,8 +308,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			//Other corner cases
 			clean.MainGlobalCategory = clean.GlobalCategories.shift();
 			clean.MainLocalCategory = clean.LocalCategories.shift();
-			clean.GlobalCategories = _.pick(clean.GlobalCategories, _.identity);
-			clean.LocalCategories = _.pick(clean.LocalCategories, _.identity);
+			clean.GlobalCategories = _.filter(clean.GlobalCategories, _.identity);
+			clean.LocalCategories = _.filter(clean.LocalCategories, _.identity);
 			return clean;
 		}
 

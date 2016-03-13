@@ -4,7 +4,7 @@ var skeemas = require('skeemas');
 angular.module('productDetail').controller('AbstractProductAddCtrl',
   function($scope, $uibModal, $window, util, config, Product, ImageService,
     AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
-    KnownException, NcAlert, $productAdd, options, AttributeSetService) {
+    KnownException, NcAlert, $productAdd, options, AttributeSetService, JSONCache) {
     'ngInject';
 
     var MAX_FILESIZE = (options.maxImageUploadSize || 5000000);
@@ -37,7 +37,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       LimitIndividualDay: false,
       MasterVariant: {
         ProductNameEn: '',
-        Pid: null,
         ProductNameTh: '',
         Sku: '',
         DescriptionFullEn: '',
@@ -61,17 +60,24 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     //Initialize Pointers
     $scope.variantPtr = $scope.formData.MasterVariant;
 
-    //Open modal
-    var openModal = function(ith) {
+    //Open modal for cat selector
+    $scope.openCategorySelectorModal = function(ith, key, title) {
+      if(!key){
+        key= 'GlobalCategories';
+      }
+
       var modalInstance = $uibModal.open({
         size: 'category-section modal-lg column-4',
         keyboard: false,
         templateUrl: 'product/modalCategorySelector',
-        controller: function($scope, $uibModalInstance, tree, model) {
+        controller: function($scope, $uibModalInstance, tree, model, disable, exclude) {
           'ngInject';
           $scope.model = model;
+          $scope.exclude = exclude;
           $scope.tree = tree;
-          $scope.title = 'Select Global Category';
+          $scope.title = 'Select Category';
+          $scope.categoryHeaderText = title;
+          $scope.disabledOn = disable;
 
           $scope.select = function() {
             $uibModalInstance.close($scope.model);
@@ -79,21 +85,29 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         },
         resolve: {
           model: function() {
-            return $scope.formData.GlobalCategories[ith];
+            return $scope.formData[key][ith];
           },
           tree: function() {
-            return $scope.dataset.GlobalCategories;
+            return $scope.dataset[key];
+          },
+          disable: function(){
+            return function(m){
+              if(m.nodes.length == 0) return false;
+              return true;
+            }
+          },
+          exclude: function(){
+            console.log('will exclude', $scope.formData[key])
+            return $scope.formData[key];
           }
         }
       });
 
       modalInstance.result.then(function(data) {
-        $scope.formData.GlobalCategories[ith] = data;
+        $scope.formData[key][ith] = data;
       });
 
     };
-
-
 
     $scope.onImageUploadFail = function(item, filter) {
       $scope.image_alert.error(item.Message || 'Your image does not meet guideline. Images must be smaller than 5 MB, with square size larger than 1500x1500.');
@@ -174,9 +188,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       console.log("Before Serialization", $scope.formData);
       var serialized = Product.serialize($scope.formData);
       console.log("After Serialization", serialized);
-      var schema = require('../../../../schemas/ProductStages.json');
-      var v = skeemas.validate(serialized, schema);
-      console.log("Schema is valid: ", v);
+      var schema = JSONCache.get('productStages');
+      var validation = skeemas.validate(serialized, schema);
+      console.log("Schema validation result: ", validation);
     };
 
     $scope.$watch('formData.MasterVariant.OriginalPrice+formData.MasterVariant.SalePrice', function() {
@@ -349,12 +363,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $scope.overview = res;
           $scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions); // will trigger watchvariantchange
           var catId = Number(res.MainGlobalCategory.CategoryId);
+
           $productAdd.fill(catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function() {
             $scope.formData.ProductId = Number(res.ProductId);
             $scope.pageState.reset();
             $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
-            // ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
           });
+
           $scope.addProductForm.$setPristine(true);
         } else {
           $scope.alert.error('Unable to save because ' + (res.message || res.Message));
@@ -384,6 +399,15 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           .then(function(inverseFormData) {
             $scope.overview = angular.copy(inverseFormData);
             var catId = Number(inverseFormData.MainGlobalCategory.CategoryId);
+
+            //Perform schema check
+            var schema = JSONCache.get('productStages');
+            var validation = skeemas.validate(inverseFormData, schema);
+            console.log("Schema validation result: ", validation);
+
+
+
+            //Fill the page with data
             $productAdd.fill(catId,
               $scope.pageState, $scope.dataset,
               $scope.formData, $scope.breadcrumb, $scope.controlFlags,
@@ -396,11 +420,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
 	              LocalCategoryService.getAllByShopId($scope.formData.ShopId).then(function(data) {
 	                $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data);
-	              })
+	              });
 
-              // ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
+                if(!validation.valid){
+                  $scope.devAlert.error('<strong>Warning</strong> Automated API structure pre-check procedure failed. ' +
+                  'Incompliant with the <strong>Ahancer Product Add Exchange Protocol (A-PAEP)</strong> V3 Rev B. Proceed with caution. ' +
+                  'For more detail, look for <i>schema validation result</i> in your js console.');
+                }
             });
-
 
           }, function(error) {
             throw new KnownException('Unable to fetch product with id ' + productId);
@@ -461,49 +488,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     tabPage.category = {
       angular: function() {
-        // For viewing only
-        $scope.viewCategoryColumns = []
-        $scope.viewCategorySelected = null
-        $scope.viewCategoryIndex = 0
-        $scope.selectCategory = angular.noop
-
         // Events
-        $scope.$on('openGlobalCat', function(evt, item, indx) {
-          console.log('openGloCat', item, $scope.dataset.GlobalCategories)
-          $scope.viewCategoryColumns = Category.createColumns(item, $scope.dataset.GlobalCategories)
-          $scope.viewCategorySelected = item
-          $scope.viewCategoryIndex = indx
-          $scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function(selectedItem) {
-            $scope.viewCategorySelected = selectedItem
-          })
-        })
         $scope.$on('deleteGlobalCat', function(evt, indx) {
           $scope.formData.GlobalCategories[indx] = null;
         })
-        $scope.$on('selectGlobalCat', function(evt, row, indx, parentIndx) {
-          $scope.selectCategory(row, indx, parentIndx);
-        })
-        $scope.$on('saveGlobalCat', function(evt) {
-          $scope.formData.GlobalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected;
-        })
 
-        // Events
-        $scope.$on('openLocalCat', function(evt, item, indx) {
-          $scope.viewCategoryColumns = Category.createColumns(item, $scope.dataset.LocalCategories);
-          $scope.viewCategorySelected = item;
-          $scope.viewCategoryIndex = indx;
-          $scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function(selectedItem) {
-            $scope.viewCategorySelected = selectedItem;
-          })
-        })
         $scope.$on('deleteLocalCat', function(evt, indx) {
           $scope.formData.LocalCategories[indx] = null;
-        })
-        $scope.$on('selectLocalCat', function(evt, row, indx, parentIndx) {
-          $scope.selectCategory(row, indx, parentIndx);
-        })
-        $scope.$on('saveLocalCat', function(evt) {
-          $scope.formData.LocalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected;
         })
       }
     }
@@ -716,6 +707,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       $scope.controlFlags.variation = 'enable';
     }
     $scope.alert = new NcAlert();
+    $scope.devAlert = new NcAlert();
+    $scope.image_alert = new NcAlert();
 
     // Variation Factor (lhs) Indices are used as index
     // for ng-repeat in variation tab
@@ -734,6 +727,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
     };
 
-    $scope.image_alert = new NcAlert();
+
 
   })
