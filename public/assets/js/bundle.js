@@ -8745,7 +8745,24 @@ module.exports = {
       "type": "integer"
     }
   },
-  "required": []
+  "required": ["AttributeValues", "ValueEn", "AttributeId"],
+  "defs": {
+    "AttributeValueObject": {
+        "type": "object",
+        "properties": {
+          "AttributeValueEn": {
+            "type": "string"
+          },
+          "AttributeValueId": {
+            "type": "integer"
+          },
+          "Status": {
+            "type": "string"
+          }
+        },
+        "required":  ["AttributeValueEn", "AttributeValueId", "Status"]
+    }
+  }
 };
 
 },{}],116:[function(require,module,exports){
@@ -8858,7 +8875,10 @@ module.exports = {
       "type": "string"
     },
     "MasterAttribute": {
-      "$ref": "#/defs/Attribute"
+      "type": "array",
+      "items": {
+        "$ref": "#/defs/Attribute"
+      }
     },
     "RelatedProducts": {
       "type": "array",
@@ -8884,21 +8904,6 @@ module.exports = {
   },
   "required": [],
   "defs": {
-    "AttributeValueObject": {
-        "type": "object",
-        "properties": {
-          "AttributeValueEn": {
-            "type": "string"
-          },
-          "AttributeValueId": {
-            "type": "integer"
-          },
-          "Status": {
-            "type": "string"
-          }
-        },
-        "required":  ["AttributeValueEn", "AttributeValueId", "Status"]
-    },
     "Attribute": require('./attribute'),
     "ProductVariant": {
       "properties": {
@@ -11458,7 +11463,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 		 * Deserialize server format
 		 * invFd {Server FormData}
 		 */
-		service.deserialize = function(invFd, FullAttributeSet) {
+		service.deserialize = function(pap, FullAttributeSet) {
+			var invFd = angular.copy(pap);
 			//Load attribute set (TODO: we won't have to do this in future)
 			invFd.AttributeSet = FullAttributeSet;
 			//Load full Brand (TODO: we won't have to do this in future)
@@ -11483,13 +11489,6 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			} catch (er) {
 				console.warn('Unable to set DefaultVariant, will not set', er);
 			}
-
-			// try {
-			// 	invFd.Variants = (invFd.Variants || []).map(invMapper.Variants);
-			// } catch (er) {
-			// 	console.warn('Unable to set Variants, will set empty', er);
-			// 	invFd.Variants = [];
-			// }
 
 			var MasterAttribute = {};
 			try {
@@ -11528,6 +11527,20 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 					}
 				});
 			}
+
+			var invMapper = {
+							 Variants: function (m) {
+									 m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
+									 return m;
+							 }
+					 };
+
+					 try {
+						 invFd.Variants = (invFd.Variants || []).map(invMapper.Variants);
+					  } catch (er) {
+					    console.warn("Unable to set deserialize variants, will set empty", er);
+					    invFd.Variants =[];
+					 }
 
 			// if (invFd.MasterVariant.VideoLinks) {
 			// 	invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);

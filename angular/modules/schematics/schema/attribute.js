@@ -13,5 +13,22 @@ module.exports = {
       "type": "integer"
     }
   },
-  "required": []
+  "required": ["AttributeValues", "ValueEn", "AttributeId"],
+  "defs": {
+    "AttributeValueObject": {
+        "type": "object",
+        "properties": {
+          "AttributeValueEn": {
+            "type": "string"
+          },
+          "AttributeValueId": {
+            "type": "integer"
+          },
+          "Status": {
+            "type": "string"
+          }
+        },
+        "required":  ["AttributeValueEn", "AttributeValueId", "Status"]
+    }
+  }
 };

@@ -59,7 +59,10 @@ module.exports = {
       "type": "string"
     },
     "MasterAttribute": {
-      "$ref": "#/defs/Attribute"
+      "type": "array",
+      "items": {
+        "$ref": "#/defs/Attribute"
+      }
     },
     "RelatedProducts": {
       "type": "array",
@@ -85,21 +88,6 @@ module.exports = {
   },
   "required": [],
   "defs": {
-    "AttributeValueObject": {
-        "type": "object",
-        "properties": {
-          "AttributeValueEn": {
-            "type": "string"
-          },
-          "AttributeValueId": {
-            "type": "integer"
-          },
-          "Status": {
-            "type": "string"
-          }
-        },
-        "required":  ["AttributeValueEn", "AttributeValueId", "Status"]
-    },
     "Attribute": require('./attribute'),
     "ProductVariant": {
       "properties": {
