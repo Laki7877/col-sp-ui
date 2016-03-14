@@ -234,24 +234,24 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
       if (Status == 'WA') {
         if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == '') {
-          mat.push('Description (Thai)')
+          mat.push('Description (Thai)');
         }
 
         if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == '') {
-          mat.push('Description (English)')
+          mat.push('Description (English)');
         }
 
         if (!$scope.formData.Brand.BrandId) {
-          mat.push('Brand')
+          mat.push('Brand');
         }
 
-        if ($scope.formData.MasterImages.length == 0) {
-          mat.push('At least one image')
+        if ($scope.formData.MasterVariant.Images.length == 0) {
+          mat.push('At least one image');
         }
 
         $scope.formData.Variants.forEach(function(variant) {
           if (variant.Images.length == 0) {
-            mat.push('At least one image for variation ' + "'" + variant.text + "'")
+            mat.push('At least one image for variation ' + "'" + variant.text + "'");
           }
         })
 
@@ -327,7 +327,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       var validateMat = manualValidate(Status);
       if (validateMat.length > 0) {
         $scope.pageState.reset();
-        $scope.alert.error(validateMat.join(', '));
+        $scope.alert.error(validateMat.join(', ') + ' are required.');
         return;
       }
 

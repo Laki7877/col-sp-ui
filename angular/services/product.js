@@ -454,8 +454,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
       //Figure out attribute options from loaded data
       if (invFd.Variants.length > 0) {
         // Figure out the Attributes that make up each Variant
-        var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId'])
-
+        var HasTwoAttr = _.has(invFd.Variants[0], 'SecondAttribute.AttributeId');
         // Generate attributeOptions
         var map0_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
           return a.Attribute.AttributeId

@@ -2,33 +2,22 @@ module.exports = {
   "title": "Attribute Schema V3 Rev B",
   "type": "object",
   "properties": {
-    "AttributeValues": {
+    "AttributeValueMaps": {
       "type": "array",
-      "items": {"$ref": "#/defs/AttributeValueObject"}
-    },
-    "ValueEn": {
-      "type": "string"
+      "items": require('./attributeValueMap')
     },
     "AttributeId": {
       "type": "integer"
+    },
+    "AttributeNameEn": {
+      "type": "string"
+    },
+    "DataType": {
+      "type": "string"
+    },
+    "Required": {
+      "type": "boolean"
     }
   },
-  "required": ["AttributeValues", "ValueEn", "AttributeId"],
-  "defs": {
-    "AttributeValueObject": {
-        "type": "object",
-        "properties": {
-          "AttributeValueEn": {
-            "type": "string"
-          },
-          "AttributeValueId": {
-            "type": "integer"
-          },
-          "Status": {
-            "type": "string"
-          }
-        },
-        "required":  ["AttributeValueEn", "AttributeValueId", "Status"]
-    }
-  }
+  "required": ["AttributeValueMaps", "AttributeId", "DataType", "Required", "AttributeNameEn"]
 };
