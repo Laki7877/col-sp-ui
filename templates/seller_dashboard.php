@@ -43,7 +43,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         <div class="group_container no-padding">
           <table class="table table_dashboard table_recent_order">
             <tbody>
-              <tr ng-repeat="order in newOrders | orderBy: 'date' | limitTo:maxNewOrders"">
+              <tr ng-repeat="order in newOrders | orderBy: 'date' | limitTo:maxNewOrders">
                 <td>
                   {{order.date | date:'MM/dd/yyyy'}}
                 </td>
@@ -63,47 +63,6 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
                   <button class="btn btn-white btn-width-default">View</button>
                 </td>
               </tr>
-              <!-- <tr>
-                <td>
-                  13/12/2015
-                </td>
-                <td>
-                  ID: 1231412
-                </td>
-                <td>
-                  226.00
-                </td>
-                <td>
-                  <span class="color-grey">
-                    <i class="fa fa-check-circle-o"></i>
-                    Payment Confirmed
-                  </span>
-                </td>
-
-                <td>
-                  <button class="btn btn-white btn-width-default">View</button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  10/12/2015
-                </td>
-                <td>
-                  ID: 1231412
-                </td>
-                <td>
-                  112,226.00
-                </td>
-                <td>
-                  <span class="color-grey">
-                    <i class="fa fa-check-circle-o"></i>
-                    Payment Confirmed
-                  </span>
-                </td>
-                <td>
-                  <button class="btn btn-white btn-width-default">View</button>
-                </td>
-              </tr> -->
             </tbody>
           </table>
         </div>
