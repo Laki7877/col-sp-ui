@@ -43,7 +43,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         <div class="group_container no-padding">
           <table class="table table_dashboard table_recent_order">
             <tbody>
-              <tr ng-repeat="order in newOrders | orderBy: 'date' | limitTo:maxNewOrders" ng-show="newOrders.length != 0">
+              <tr ng-repeat="order in newOrdersData | orderBy: 'date' | limitTo:maxNewOrders" ng-show="newOrdersData.length != 0">
                 <td>
                   {{order.date | date:'MM/dd/yyyy'}}
                 </td>
@@ -63,7 +63,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
                   <button class="btn btn-white btn-width-default">View</button>
                 </td>
               </tr>
-              <tr ng-show="newOrders.length == 0">
+              <tr ng-show="newOrdersData.length == 0">
                 <td class="empty_data">- No New Orders -</td>
               </tr>
             </tbody>
@@ -84,32 +84,22 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         <div class="group_container">
           <table class="table table_dashboard table_lsa">
             <tbody>
-              <tr>
+              <tr ng-repeat="product in lowStockAlertData | orderBy: 'date' | limitTo:maxLowStockAlert" ng-show="lowStockAlertData.length != 0">
                 <td>
-                  Inventory: 5
+                  {{product.inventory}}
                 </td>
                 <td>
-                  PID:1234567
+                  {{product.p_id}}
                 </td>
                 <td class="column-text-ellipsis">
-                  Nanyang Original Footwear T-model x10 Limited Edition for Thailand sale only
+                  {{product.name}}
                 </td>
                 <td>
                   <button class="btn btn-white btn-width-default">View</button>
                 </td>
               </tr>
-              <tr>
-                <td>
-                  Inventory: 10
-                </td>
-                <td>
-                  PID:5323312
-                </td>
-                <td class="column-text-ellipsis">
-                  Jordan Nike Super Shoe
-                <td>
-                  <button class="btn btn-white btn-width-default">View</button>
-                </td>
+              <tr ng-show="lowStockAlertData.length == 0">
+                <td class="empty_data">- No Low Stock Alert -</td>
               </tr>
             </tbody>
           </table>
@@ -211,7 +201,12 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <div class="width_150">
               Product Rating
             </div>
-            <div class="font-size-16 color-red">2.0 / 5.0</div>
+            <div ng-switch on="productRatingRank">
+              <div class="font-size-16 color-green" ng-switch-when="green">{{productRatingScore}}</div>
+              <div class="font-size-16 color-yellow" ng-switch-when="yellow">{{productRatingScore}}</div>
+              <div class="font-size-16 color-red" ng-switch-when="red">{{productRatingScore}}</div>
+              <div class="font-size-16" ng-switch-default>n/a</div>
+            </div>
           </div>
         </div>
         <div class="group_container">

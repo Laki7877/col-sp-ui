@@ -14596,52 +14596,62 @@ form h6 {
   padding-bottom: 0;
 }
 /* line 213, ../../../assets/_seller_page.sass */
+#dashboard_page .table_dashboard tr:nth-last-child(2) td {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+/* line 218, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:first-child {
   width: 100px;
 }
-/* line 216, ../../../assets/_seller_page.sass */
+/* line 221, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:nth-child(2) {
   width: 120px;
 }
-/* line 219, ../../../assets/_seller_page.sass */
+/* line 224, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:nth-child(3) {
   width: 120px;
 }
-/* line 222, ../../../assets/_seller_page.sass */
+/* line 227, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:last-child {
   padding-left: 30px;
   width: 56px;
 }
-/* line 226, ../../../assets/_seller_page.sass */
+/* line 231, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td.empty_data {
   text-align: center;
   padding-left: 0;
 }
-/* line 232, ../../../assets/_seller_page.sass */
+/* line 237, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:first-child {
   width: 100px;
 }
-/* line 235, ../../../assets/_seller_page.sass */
+/* line 240, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:nth-child(2) {
   width: 120px;
 }
-/* line 239, ../../../assets/_seller_page.sass */
+/* line 244, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:last-child {
   padding-left: 30px;
   width: 80px;
 }
-/* line 244, ../../../assets/_seller_page.sass */
+/* line 248, ../../../assets/_seller_page.sass */
+#dashboard_page .table_lsa td.empty_data {
+  text-align: center;
+  padding-left: 0;
+}
+/* line 253, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter .newsletter_date {
   font-size: 12px;
   margin-top: 5px;
   color: #7B7F8F;
 }
-/* line 248, ../../../assets/_seller_page.sass */
+/* line 257, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter td:last-child {
   padding-left: 30px;
   width: 80px;
 }
-/* line 253, ../../../assets/_seller_page.sass */
+/* line 262, ../../../assets/_seller_page.sass */
 #dashboard_page .account_health .group_container:last-child {
   padding: 10px 0px 0px 0px;
 }
