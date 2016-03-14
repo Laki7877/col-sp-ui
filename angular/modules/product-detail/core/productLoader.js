@@ -163,7 +163,7 @@ factory('$productAdd', function(Product, AttributeSet, ImageService, GlobalCateg
               sharedFormData[key] = inverseResult.formData[key];
             });
 
-            console.log("After Inverse Transformation", sharedFormData);
+            console.log("After Inverse Transformation", sharedFormData, inverseResult);
             if (sharedFormData.Variants.length > 0) {
               controlFlags.variation = "enable";
             }

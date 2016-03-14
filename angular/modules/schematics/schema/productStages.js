@@ -96,11 +96,15 @@ module.exports = {
         }
       ]
     },
+    "GiftWrap": {
+      "type": "string",
+      "enum": ["Y", "N"]
+    },
     "Visibility": {
       "type": "boolean"
     }
   },
-  "required": [],
+  "required": ["GiftWrap"],
   "defs": {
     "Attribute": require('./attribute'),
     "ProductVariant": require('./variant'),

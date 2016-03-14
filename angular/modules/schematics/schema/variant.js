@@ -119,10 +119,6 @@ module.exports =  {
     "Upc": {
       "type": "string"
     },
-    "GiftWrap": {
-      "type": "string",
-      "enum": ["Y", "N"]
-    },
     "FirstAttribute": require('./nthAttribute'),
     "SecondAttribute": require('./nthAttribute'),
     "Display": {},
@@ -131,7 +127,7 @@ module.exports =  {
       "type": "boolean"
     }
   },
-  "required": ["ShippingMethod", "ProductNameEn", "ProductNameTh", "GiftWrap",
+  "required": ["ShippingMethod", "ProductNameEn", "ProductNameTh",
     "StockType", "DimensionUnit", "SEO", "VideoLinks", "Images",
     "Installment", "PrepareDay", "LimitIndividualDay"
   ]

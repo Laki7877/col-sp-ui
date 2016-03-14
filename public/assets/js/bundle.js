@@ -8497,7 +8497,7 @@ factory('$productAdd', ["Product", "AttributeSet", "ImageService", "GlobalCatego
               sharedFormData[key] = inverseResult.formData[key];
             });
 
-            console.log("After Inverse Transformation", sharedFormData);
+            console.log("After Inverse Transformation", sharedFormData, inverseResult);
             if (sharedFormData.Variants.length > 0) {
               controlFlags.variation = "enable";
             }
@@ -8987,11 +8987,15 @@ module.exports = {
         }
       ]
     },
+    "GiftWrap": {
+      "type": "string",
+      "enum": ["Y", "N"]
+    },
     "Visibility": {
       "type": "boolean"
     }
   },
-  "required": [],
+  "required": ["GiftWrap"],
   "defs": {
     "Attribute": require('./attribute'),
     "ProductVariant": require('./variant'),
@@ -9149,10 +9153,6 @@ module.exports =  {
     "Upc": {
       "type": "string"
     },
-    "GiftWrap": {
-      "type": "string",
-      "enum": ["Y", "N"]
-    },
     "FirstAttribute": require('./nthAttribute'),
     "SecondAttribute": require('./nthAttribute'),
     "Display": {},
@@ -9161,7 +9161,7 @@ module.exports =  {
       "type": "boolean"
     }
   },
-  "required": ["ShippingMethod", "ProductNameEn", "ProductNameTh", "GiftWrap",
+  "required": ["ShippingMethod", "ProductNameEn", "ProductNameTh",
     "StockType", "DimensionUnit", "SEO", "VideoLinks", "Images",
     "Installment", "PrepareDay", "LimitIndividualDay"
   ]

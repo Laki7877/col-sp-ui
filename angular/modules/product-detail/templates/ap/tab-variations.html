@@ -1,6 +1,5 @@
 <div id="add-product-variation-tab-content">
     <div ap-component="ap/inner-tab-breadcrumb" form-data="formData" breadcrumb="breadcrumb"></div>
-
     <div class="row" ng-if="controlFlags.variation != 'enable'">
         <div class="col-xs-12">
             <div class="form-section">
@@ -183,7 +182,7 @@
                                     class="form-control" />
                                 </td>
                                 <!--$emit('openPairModal', pair, formData.Variants, $index)-->
-                                <td><a class="btn btn-white btn-width-xl" ng-disabled='!pair.Visibility' 
+                                <td><a class="btn btn-white btn-width-xl" ng-disabled='!pair.Visibility'
                                 ng-click="openVariantDetail(pair, formData.Variants, $index)">More Detail</a></td>
                                 <td>
                                     <a class="btn btn-white" ng-click='pair.Visibility = !pair.Visibility'>
