@@ -16,17 +16,17 @@ module.exports = function($scope, $rootScope, Onboarding, $log, $window){
 				// $scope.Completed = [false,false,false,false];
 		    	$scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct && data.ProductApprove, data.DecorateStore];
 
-		    	// Begin section Product Field: return text for Product Field 
+		    	// Begin section Product Field: return text for Product Field
 		    	if (data.AddProduct == true && data.ProductApprove == false) {
 		    		// Atleast, a product is added and admin is processing approving process.
 		    		$scope.productFieldContent = {
-		    			title:"Wait for product to be approved",
+		    			title:"Wait for your product to be approved",
 		    			subTitle:"Admin is reviewing your product",
 		    			button:"Add More Product"
 		    		};
 		    	}
 		    	else if (data.AddProduct == true && data.ProductApprove == true) {
-		    		// Atleast, a product is added and approved 
+		    		// Atleast, a product is added and approved
 		    		$scope.productFieldContent = {
 		    			title:"Congratuation! Your product is approved",
 		    			subTitle:"You can add more products to your store",
