@@ -12354,281 +12354,276 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 
 /* line 41, ../../../assets/_atomic.scss */
-.margin-top-17 {
-  margin-top: 17px;
-}
-
-/* line 45, ../../../assets/_atomic.scss */
 .margin-top-20 {
   margin-top: 20px;
 }
 
-/* line 49, ../../../assets/_atomic.scss */
+/* line 45, ../../../assets/_atomic.scss */
 .margin-top-30 {
   margin-top: 30px;
 }
 
-/* line 53, ../../../assets/_atomic.scss */
+/* line 49, ../../../assets/_atomic.scss */
 .margin-top-40 {
   margin-top: 40px;
 }
 
-/* line 57, ../../../assets/_atomic.scss */
+/* line 53, ../../../assets/_atomic.scss */
 .margin-top-200 {
   margin-top: 200px;
 }
 
-/* line 61, ../../../assets/_atomic.scss */
+/* line 57, ../../../assets/_atomic.scss */
 .margin-top-220 {
   margin-top: 220px;
 }
 
-/* line 65, ../../../assets/_atomic.scss */
+/* line 61, ../../../assets/_atomic.scss */
 .margin-bottom-20 {
   margin-bottom: 20px;
 }
 
-/* line 69, ../../../assets/_atomic.scss */
+/* line 65, ../../../assets/_atomic.scss */
 .margin-bottom-15 {
   margin-bottom: 15px;
 }
 
-/* line 73, ../../../assets/_atomic.scss */
+/* line 69, ../../../assets/_atomic.scss */
 .margin-bottom-30 {
   margin-bottom: 30px;
 }
 
-/* line 77, ../../../assets/_atomic.scss */
+/* line 73, ../../../assets/_atomic.scss */
 .margin-bottom-40 {
   margin-bottom: 40px;
 }
 
-/* line 81, ../../../assets/_atomic.scss */
+/* line 77, ../../../assets/_atomic.scss */
 .margin-bottom-60 {
   margin-bottom: 60px;
 }
 
-/* line 85, ../../../assets/_atomic.scss */
+/* line 81, ../../../assets/_atomic.scss */
 .margin-bottom-80 {
   margin-bottom: 80px;
 }
 
-/* line 89, ../../../assets/_atomic.scss */
+/* line 85, ../../../assets/_atomic.scss */
 .margin-bottom-20 {
   margin-bottom: 20px;
 }
 
-/* line 93, ../../../assets/_atomic.scss */
+/* line 89, ../../../assets/_atomic.scss */
 .margin-bottom-10 {
   margin-bottom: 10px;
 }
 
-/* line 97, ../../../assets/_atomic.scss */
+/* line 93, ../../../assets/_atomic.scss */
 .margin-bottom-0 {
   margin-bottom: 0px;
 }
 
-/* line 101, ../../../assets/_atomic.scss */
+/* line 97, ../../../assets/_atomic.scss */
 .padding-left-15 {
   padding-left: 15px;
 }
 
-/* line 105, ../../../assets/_atomic.scss */
+/* line 101, ../../../assets/_atomic.scss */
 .padding-left-30 {
   padding-left: 30px;
 }
 
-/* line 109, ../../../assets/_atomic.scss */
+/* line 105, ../../../assets/_atomic.scss */
 .padding-left-0 {
   padding-left: 0;
 }
 
-/* line 113, ../../../assets/_atomic.scss */
+/* line 109, ../../../assets/_atomic.scss */
 .padding-right-5 {
   padding-right: 5px;
 }
 
-/* line 117, ../../../assets/_atomic.scss */
+/* line 113, ../../../assets/_atomic.scss */
 .padding-right-15 {
   padding-right: 15px;
 }
 
-/* line 121, ../../../assets/_atomic.scss */
+/* line 117, ../../../assets/_atomic.scss */
 .padding-right-30 {
   padding-right: 30px;
 }
 
-/* line 125, ../../../assets/_atomic.scss */
+/* line 121, ../../../assets/_atomic.scss */
 .padding-bottom-5 {
   padding-bottom: 5px;
 }
 
-/* line 129, ../../../assets/_atomic.scss */
+/* line 125, ../../../assets/_atomic.scss */
 .padding-bottom-10 {
   padding-bottom: 10px;
 }
 
-/* line 133, ../../../assets/_atomic.scss */
+/* line 129, ../../../assets/_atomic.scss */
 .padding-bottom-30 {
   padding-bottom: 30px;
 }
 
-/* line 137, ../../../assets/_atomic.scss */
+/* line 133, ../../../assets/_atomic.scss */
 .padding-bottom-60 {
   padding-bottom: 60px;
 }
 
-/* line 141, ../../../assets/_atomic.scss */
+/* line 137, ../../../assets/_atomic.scss */
 .padding-top-6 {
   padding-top: 6px;
 }
 
-/* line 145, ../../../assets/_atomic.scss */
+/* line 141, ../../../assets/_atomic.scss */
 .padding-top-30 {
   padding-top: 30px;
 }
 
-/* line 149, ../../../assets/_atomic.scss */
+/* line 145, ../../../assets/_atomic.scss */
 .no-margin {
   margin: 0;
 }
 
-/* line 153, ../../../assets/_atomic.scss */
+/* line 149, ../../../assets/_atomic.scss */
 .no-padding {
   padding: 0;
 }
 
-/* line 157, ../../../assets/_atomic.scss */
+/* line 153, ../../../assets/_atomic.scss */
 .no-border {
   border: none;
 }
 
-/* line 161, ../../../assets/_atomic.scss */
+/* line 157, ../../../assets/_atomic.scss */
 .float-left {
   float: left;
 }
 
-/* line 165, ../../../assets/_atomic.scss */
+/* line 161, ../../../assets/_atomic.scss */
 .float-right {
   float: right;
 }
 
-/* line 169, ../../../assets/_atomic.scss */
+/* line 165, ../../../assets/_atomic.scss */
 .color-theme-light {
   color: #b4ddff;
 }
 
-/* line 173, ../../../assets/_atomic.scss */
+/* line 169, ../../../assets/_atomic.scss */
 .color-theme {
   color: #4899DD;
 }
 
-/* line 177, ../../../assets/_atomic.scss */
+/* line 173, ../../../assets/_atomic.scss */
 .color-grey {
   color: #BCC7D5;
 }
 
-/* line 181, ../../../assets/_atomic.scss */
+/* line 177, ../../../assets/_atomic.scss */
 .color-green {
   color: #33bb5b;
 }
 
-/* line 185, ../../../assets/_atomic.scss */
+/* line 181, ../../../assets/_atomic.scss */
 .color-dark-green {
   color: #68d485;
 }
 
-/* line 189, ../../../assets/_atomic.scss */
+/* line 185, ../../../assets/_atomic.scss */
 .color-red {
   color: #ec0000;
 }
 
-/* line 193, ../../../assets/_atomic.scss */
+/* line 189, ../../../assets/_atomic.scss */
 .color-dark-grey {
   color: #7B7F8F;
 }
 
-/* line 197, ../../../assets/_atomic.scss */
+/* line 193, ../../../assets/_atomic.scss */
 .color-yellow {
   color: #f5a623;
 }
 
-/* line 201, ../../../assets/_atomic.scss */
+/* line 197, ../../../assets/_atomic.scss */
 .color-black {
   color: #32343C;
 }
 
-/* line 205, ../../../assets/_atomic.scss */
+/* line 201, ../../../assets/_atomic.scss */
 .vertical-align-middle {
   vertical-align: middle;
 }
 
-/* line 209, ../../../assets/_atomic.scss */
+/* line 205, ../../../assets/_atomic.scss */
 .text-align-center {
   text-align: center;
 }
 
-/* line 217, ../../../assets/_atomic.scss */
+/* line 213, ../../../assets/_atomic.scss */
 .text-underline {
   text-decoration: underline;
 }
 
-/* line 221, ../../../assets/_atomic.scss */
+/* line 217, ../../../assets/_atomic.scss */
 .hide-component {
   display: none;
 }
 
-/* line 225, ../../../assets/_atomic.scss */
+/* line 221, ../../../assets/_atomic.scss */
 .display_inline_block {
   display: inline-block;
 }
 
-/* line 229, ../../../assets/_atomic.scss */
+/* line 225, ../../../assets/_atomic.scss */
 .font-size-12 {
   font-size: 12px;
 }
 
-/* line 233, ../../../assets/_atomic.scss */
+/* line 229, ../../../assets/_atomic.scss */
 .font-size-16 {
   font-size: 16px;
 }
 
-/* line 237, ../../../assets/_atomic.scss */
+/* line 233, ../../../assets/_atomic.scss */
 .font-size-18 {
   font-size: 18px;
 }
 
-/* line 241, ../../../assets/_atomic.scss */
+/* line 237, ../../../assets/_atomic.scss */
 .font-size-20, .icon-size-20 {
   font-size: 20px;
 }
 
-/* line 245, ../../../assets/_atomic.scss */
+/* line 241, ../../../assets/_atomic.scss */
 .font-size-27 {
   font-size: 27px;
 }
 
-/* line 249, ../../../assets/_atomic.scss */
+/* line 245, ../../../assets/_atomic.scss */
 .font-size-38 {
   font-size: 38px;
 }
 
-/* line 257, ../../../assets/_atomic.scss */
+/* line 253, ../../../assets/_atomic.scss */
 .margin-0 {
   margin: 0;
 }
 
-/* line 261, ../../../assets/_atomic.scss */
+/* line 257, ../../../assets/_atomic.scss */
 .font-weight-bold {
   font-weight: bold;
 }
 
-/* line 265, ../../../assets/_atomic.scss */
+/* line 261, ../../../assets/_atomic.scss */
 .opacity-1 {
   opacity: 1;
 }
 
-/* line 269, ../../../assets/_atomic.scss */
+/* line 265, ../../../assets/_atomic.scss */
 .width-100-percent {
   width: 100%;
 }
@@ -14617,31 +14612,36 @@ form h6 {
   padding-left: 30px;
   width: 56px;
 }
-/* line 227, ../../../assets/_seller_page.sass */
+/* line 226, ../../../assets/_seller_page.sass */
+#dashboard_page .table_recent_order td.empty_data {
+  text-align: center;
+  padding-left: 0;
+}
+/* line 232, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:first-child {
   width: 100px;
 }
-/* line 230, ../../../assets/_seller_page.sass */
+/* line 235, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:nth-child(2) {
   width: 120px;
 }
-/* line 234, ../../../assets/_seller_page.sass */
+/* line 239, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:last-child {
   padding-left: 30px;
   width: 80px;
 }
-/* line 239, ../../../assets/_seller_page.sass */
+/* line 244, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter .newsletter_date {
   font-size: 12px;
   margin-top: 5px;
   color: #7B7F8F;
 }
-/* line 243, ../../../assets/_seller_page.sass */
+/* line 248, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter td:last-child {
   padding-left: 30px;
   width: 80px;
 }
-/* line 248, ../../../assets/_seller_page.sass */
+/* line 253, ../../../assets/_seller_page.sass */
 #dashboard_page .account_health .group_container:last-child {
   padding: 10px 0px 0px 0px;
 }
