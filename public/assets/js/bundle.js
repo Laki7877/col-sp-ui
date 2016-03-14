@@ -5382,14 +5382,11 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
         var left = null;
         var right = null;
         left = (a.ValueEn || a.AttributeValueEn || a.AttributeValues.length > 0 && a.AttributeValues[0].AttributeValueEn || '');
-        
         if(b == null){
           right = '';
         }else{
           right = (b.ValueEn || b.AttributeValueEn || b.AttributeValues.length > 0 && b.AttributeValues[0].AttributeValueEn || '');
         }
-
-        console.log(a,b, 'toString variant');
         return left + (right ? ", " + right : "");
     };
 
@@ -8337,7 +8334,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 },{"angular":193}],111:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
-factory('$productAdd', ["Product", "Brand", "AttributeSet", "ImageService", "GlobalCategory", "$q", "Category", "util", function(Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category, util) {
+factory('$productAdd', ["Product", "AttributeSet", "ImageService", "GlobalCategory", "$q", "Category", "util", function(Product, AttributeSet, ImageService, GlobalCategory, $q, Category, util) {
   'ngInject';
   var $productAdd = {};
 
@@ -11576,11 +11573,14 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         BrandId: null,
         BrandNameEn: 'Search brand by name or id..'
       };
-      Brand.getOne(BrandId).then(function(data) {
-        invFd.Brand = data;
-        delete invFd.Brand.$id;
-        invFd.Brand.id = BrandId;
-      });
+
+      if(BrandId > 0){
+        Brand.getOne(BrandId).then(function(data) {
+          invFd.Brand = data;
+          delete invFd.Brand.$id;
+          invFd.Brand.id = BrandId;
+        });
+      }
 
       //Find which variant is default
       try {
@@ -11647,20 +11647,6 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         invFd.Variants = [];
       }
 
-      // if (invFd.MasterVariant.VideoLinks) {
-      // 	invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
-      // } else {
-      // 	invFd.MasterVariant.VideoLinks = [];
-      // }
-
-      // invFd.Variants.forEach(function(variant, index) {
-      // 	try {
-      // 		variant.VideoLinks = (variant.VideoLinks || []).map(invMapper.VideoLinks);
-      // 	} catch (ex) {
-      // 		variant.VideoLinks = []
-      // 	}
-      // })
-
       if (invFd.GlobalCategories.length == 0) {
         invFd.GlobalCategories = [null, null, null];
       } else {
@@ -11703,7 +11689,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
       //Figure out attribute options from loaded data
       if (invFd.Variants.length > 0) {
         // Figure out the Attributes that make up each Variant
-        var HasTwoAttr = _.has(invFd.Variants[0], 'SecondAttribute.AttributeId');
+        var HasTwoAttr = _.has(invFd.Variants[0], 'SecondAttribute.AttributeId') && invFd.Variants[0].SecondAttribute.AttributeId != 0;
         // Generate attributeOptions
         var map0_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
           return a.Attribute.AttributeId

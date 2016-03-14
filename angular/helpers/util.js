@@ -9,14 +9,11 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
         var left = null;
         var right = null;
         left = (a.ValueEn || a.AttributeValueEn || a.AttributeValues.length > 0 && a.AttributeValues[0].AttributeValueEn || '');
-        
         if(b == null){
           right = '';
         }else{
           right = (b.ValueEn || b.AttributeValueEn || b.AttributeValues.length > 0 && b.AttributeValues[0].AttributeValueEn || '');
         }
-
-        console.log(a,b, 'toString variant');
         return left + (right ? ", " + right : "");
     };
 
