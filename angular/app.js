@@ -86,6 +86,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .factory('SellerAccountService', services.sellerAccountService)
   .factory('SellerRoleService', services.sellerRoleService)
   .factory('SellerPermissionService', services.sellerPermissionService)
+  .factory('SellerShopAppearanceService', services.sellerShopAppearanceService)
   .factory('AdminAccountService', services.adminAccountService)
   .factory('AdminRoleService', services.adminRoleService)
   .factory('AdminPermissionService', services.adminPermissionService)
@@ -147,10 +148,12 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('SellerRoleCtrl', controllers.sellerRole)
   .controller('SellerRoleAddCtrl', controllers.sellerRoleAdd)
   .controller('SellerShopSettingCtrl', controllers.sellerShopSetting)
+  .controller('SellerShopAppearanceCtrl', controllers.sellerShopAppearance)
   .controller('SellerInventoryListCtrl', controllers.sellerInventoryList)
   .controller('SellerOnboardingCtrl', controllers.sellerOnboarding)
   .controller('SellerNewsletterCtrl', controllers.sellerNewsletter)
   .controller('SellerDashboardCtrl', controllers.sellerDashboard)
+
 
   .controller('AdminAttributeCtrl', controllers.adminAttribute)
   .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)

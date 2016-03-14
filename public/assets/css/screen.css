@@ -14195,33 +14195,38 @@ form h6 {
 .modal-custom .modal-change-password {
   width: 505px;
 }
+/* line 23, ../../../assets/_modal_custom.scss */
+.modal-custom .modal-change-password .ah-form .form-group {
+  margin-left: -15px;
+  margin-right: -15px;
+}
 
-/* line 27, ../../../assets/_modal_custom.scss */
+/* line 31, ../../../assets/_modal_custom.scss */
 .modal .trim-form-group .ah-form .form-group {
   margin-left: -15px;
   margin-right: -15px;
 }
 
-/* line 37, ../../../assets/_modal_custom.scss */
+/* line 41, ../../../assets/_modal_custom.scss */
 .modal .modal-content .modal-header {
   border-bottom: 0px;
   padding-bottom: 0px;
 }
-/* line 40, ../../../assets/_modal_custom.scss */
+/* line 44, ../../../assets/_modal_custom.scss */
 .modal .modal-content .modal-header h3 {
   font-size: 20px;
 }
-/* line 44, ../../../assets/_modal_custom.scss */
+/* line 48, ../../../assets/_modal_custom.scss */
 .modal .modal-content button.close > span {
   line-height: 1;
   font-size: 36px;
   margin-top: -6px;
 }
-/* line 51, ../../../assets/_modal_custom.scss */
+/* line 55, ../../../assets/_modal_custom.scss */
 .modal .modal-content .modal_title_abosolute {
   position: absolute;
 }
-/* line 54, ../../../assets/_modal_custom.scss */
+/* line 58, ../../../assets/_modal_custom.scss */
 .modal .modal-content .title_relative {
   position: relative;
 }
