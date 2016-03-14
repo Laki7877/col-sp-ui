@@ -44,14 +44,14 @@ module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
         service.getAll = function (parameters) {
             var req = {
                 method: 'GET',
-                url: '/Promotion/Ontopcredit/',
+                url: '/Promotion/Ontopcredit',
                 params: {
                     _order: parameters.orderBy || 'OnTopCreditCardId',
                     _limit: parameters.pageSize || 10,
                     _offset: parameters.page * parameters.pageSize || 0,
                     _direction: parameters.direction || 'asc',
                     _filter: parameters.filter || 'ALL',
-                    searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined
+                    _text: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined
                 }
             };
 
@@ -79,11 +79,6 @@ module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
                 }
             });
         };
-
-
-        service.getStatus = function (abbreviation) {
-            return StatusLookup[abbreviation];
-        }
 
 
         return service;

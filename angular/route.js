@@ -11,22 +11,22 @@ var _ = require('lodash');
 
 function generateRouteArray(obj) {
 	var menu = [];
-	_.forOwn(obj, function(object, header) {
+    _.forOwn(obj, function (object, header) {
 		var token = header.split('|');
 		var menuItem = {
 			header: token[0],
 			submenu: []
 		};
 
-		if(token.length > 1) {
+        if (token.length > 1) {
 			menuItem.icon = token[1];
 		}
 
-		if(!_.isEmpty(object)) {
-			_.forOwn(object, function(url, subheader) {
+        if (!_.isEmpty(object)) {
+            _.forOwn(object, function (url, subheader) {
 
 				var urls = [];
-				if(_.isArray(url)) {
+                if (_.isArray(url)) {
 					urls = url;
 					url = url[0];
 				}
@@ -38,13 +38,13 @@ function generateRouteArray(obj) {
 					urls: urls
 				};
 				
-				if(token2.length > 1) {
+                if (token2.length > 1) {
 					submenuItem.css += token2[1];
 				}
 
 				menuItem.submenu.push(submenuItem);
 			});
-			if(menuItem.submenu.length > 0) {
+            if (menuItem.submenu.length > 0) {
 				menuItem.url = menuItem.submenu[0].url;
 			}
 		}
@@ -124,7 +124,9 @@ var admin = {
 	},
 	'Promotion|fa-bookmark': {
 		'Global Coupons': '/admin/coupons/admin',
-		'Seller Coupons': '/admin/coupons/seller'
+        'Seller Coupons': '/admin/coupons/seller',
+        'On Top Credit Card': '/admin/ontopcredit',
+        'Redeem': '/admin/redeem'
 	},
 
 	// Create By Col Dev (Natee)
