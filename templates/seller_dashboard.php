@@ -43,7 +43,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         <div class="group_container no-padding">
           <table class="table table_dashboard table_recent_order">
             <tbody>
-              <tr ng-repeat="order in newOrders | orderBy: 'date' | limitTo:maxNewOrders">
+              <tr ng-repeat="order in newOrders | orderBy: 'date' | limitTo:maxNewOrders" ng-show="newOrders.length != 0">
                 <td>
                   {{order.date | date:'MM/dd/yyyy'}}
                 </td>
@@ -62,6 +62,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
                 <td>
                   <button class="btn btn-white btn-width-default">View</button>
                 </td>
+              </tr>
+              <tr ng-show="newOrders.length == 0">
+                <td class="empty_data">- No New Orders -</td>
               </tr>
             </tbody>
           </table>
