@@ -15,12 +15,13 @@
             />
         </div>
 
-        <div nc-template="common/input/form-group-with-label" nc-template-form="form.StockType" nc-template-options-path="addProductForm/StockType"
+        <div nc-template="common/input/form-group-with-label" nc-template-form="form.StockType"
+        nc-template-options-path="addProductForm/StockType"
         nc-label="Stock Type">
             <select ng-model="variantPtr.StockType" class="form-control" name="StockType">
-                <option selected disabled>- Select Stock Type -</option>
-                <option>Stock</option>
-                <option>Pre-Order</option>
+                <option selected value="-" disabled>- Select Stock Type -</option>
+                <option value="Stock">Stock</option>
+                <option value="Pre-Order">Pre-Order</option>
             </select>
         </div>
 

@@ -7,6 +7,7 @@ var bulk = ({"controllers":(function () {var f = require("./controllers/index.js
 var config = require('./config')
 var route = require('./route')
 var template = require('./template')
+var skeemas = require('skeemas');
 
 // External dependencies
 global._ = require('lodash')
@@ -27,6 +28,7 @@ require('angular-chart.js')
 // Nc package
 require('./modules/nc')
 require('./modules/product-detail')
+require('./modules/schematics')
 
 // Internal dependencies
 var controllers = bulk.controllers
@@ -39,7 +41,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   'nc', 'ui.bootstrap.datetimepicker',
   'duScroll', 'ngSanitize', 'ngAnimate',
   'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select',
-  'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail', 'ngFileUpload'
+  'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail', 'ngFileUpload',
+  'schematics'
 ])
 
   // App config
@@ -59,6 +62,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .value('$templateOptionsCache', bulk['template-options'])
 
   // Helpers
+  .factory('skeemas', skeemas)
   .factory('common', helpers.common)
   .factory('storage', helpers.storage)
   .factory('util', helpers.util)
@@ -189,7 +193,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('TestCtrl', controllers.test)
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./config":2,"./controllers/abstractAdd.js":3,"./controllers/abstractAdvanceList.js":4,"./controllers/abstractList.js":5,"./controllers/adminAccount.js":6,"./controllers/adminAccountAdd.js":7,"./controllers/adminAttribute.js":8,"./controllers/adminAttributeAdd.js":9,"./controllers/adminAttributeSet.js":10,"./controllers/adminAttributeSetAdd.js":11,"./controllers/adminBrand.js":12,"./controllers/adminBrandAdd.js":13,"./controllers/adminCategory.js":14,"./controllers/adminCoupon.js":15,"./controllers/adminCouponAdd.js":16,"./controllers/adminNewsletter.js":17,"./controllers/adminOnTopCreditAdd.js":18,"./controllers/adminOnTopCreditList.js":19,"./controllers/adminProductApprovalList.js":20,"./controllers/adminProductDetail.js":21,"./controllers/adminProductList.js":22,"./controllers/adminRole.js":23,"./controllers/adminRoleAdd.js":24,"./controllers/adminShop.js":25,"./controllers/adminShopAdd.js":26,"./controllers/adminShoptype.js":27,"./controllers/adminShoptypeAdd.js":28,"./controllers/index.js":29,"./controllers/localCategory.js":30,"./controllers/login.js":31,"./controllers/productAddSelectCategory.js":32,"./controllers/productExport.js":33,"./controllers/productImageList.js":34,"./controllers/productImageManagement.js":35,"./controllers/productImport.js":36,"./controllers/productList.js":37,"./controllers/productListLocalCategory.js":38,"./controllers/productReview.js":39,"./controllers/root.js":40,"./controllers/sellerAccount.js":41,"./controllers/sellerAccountAdd.js":42,"./controllers/sellerDashboard.js":43,"./controllers/sellerInventoryList.js":44,"./controllers/sellerNewsletter.js":45,"./controllers/sellerOnboarding.js":46,"./controllers/sellerProductDetail.js":47,"./controllers/sellerRole.js":48,"./controllers/sellerRoleAdd.js":49,"./controllers/sellerShopAppearance.js":50,"./controllers/sellerShopSetting.js":51,"./controllers/test.js":52,"./directives/ncTradableSelect.js":53,"./directives/ngCkeditor.js":54,"./directives/ngDateBefore.js":55,"./directives/ngDelegate.js":56,"./directives/ngMatch.js":57,"./directives/ngMaxnumber.js":58,"./directives/ngMinnumber.js":59,"./directives/ngPatternRestrict.js":60,"./directives/ngPermission.js":61,"./directives/ngSlideToggle.js":62,"./directives/ngTemplate.js":63,"./directives/popoverAny.js":64,"./filters/capitalize.js":65,"./filters/exclude.js":66,"./filters/excludeCategory.js":67,"./filters/html.js":68,"./filters/importGuidelineExample.js":69,"./filters/leadingzero.js":70,"./filters/ordinal.js":71,"./filters/slice.js":72,"./filters/truncate.js":73,"./filters/truth.js":74,"./filters/variantValue.js":75,"./helpers/base64.js":76,"./helpers/common.js":77,"./helpers/storage.js":78,"./helpers/util.js":79,"./helpers/variantPair.js":80,"./modules/nc":107,"./modules/product-detail":112,"./route":114,"./services/OnTopCredit.js":115,"./services/OnTopCreditService.js":116,"./services/Onboarding.js":117,"./services/adminAccountService.js":118,"./services/adminPermissionService.js":119,"./services/adminRoleService.js":120,"./services/adminShopService.js":121,"./services/adminShoptypeService.js":122,"./services/alert.js":123,"./services/attribute.js":124,"./services/attributeService.js":125,"./services/attributeSet.js":126,"./services/attributeSetService.js":127,"./services/blocker.js":128,"./services/brand.js":129,"./services/brandService.js":130,"./services/category.js":131,"./services/coupon.js":132,"./services/credential.js":133,"./services/exceptionHandler.js":134,"./services/fileService.js":135,"./services/globalCategory.js":136,"./services/globalCategoryService.js":137,"./services/image.js":138,"./services/imageService.js":139,"./services/inventoryService.js":140,"./services/knownException.js":141,"./services/localCategory.js":142,"./services/localCategoryService.js":143,"./services/newsletterService.js":144,"./services/product.js":145,"./services/productReviewService.js":146,"./services/sellerAccountService.js":147,"./services/sellerPermissionService.js":148,"./services/sellerRoleService.js":149,"./services/shop.js":150,"./services/shopPermissionService.js":151,"./template":165,"./template-options/PromotionForm.js":152,"./template-options/addBrandForm.js":153,"./template-options/addCategoryForm.js":154,"./template-options/addNewsletterForm.js":155,"./template-options/addProductForm.js":156,"./template-options/addShopAccountForm.js":157,"./template-options/addShopAppearanceForm.js":158,"./template-options/couponForm.js":159,"./template-options/genericForm.js":160,"./template-options/productExport.js":161,"./template-options/productImport.js":162,"./template-options/searchForm.js":163,"./template-options/shopSettingForm.js":164,"angular":186,"angular-animate":167,"angular-base64":168,"angular-bootstrap-datetimepicker":170,"angular-chart.js":171,"angular-clipboard":173,"angular-cookies":175,"angular-file-upload":176,"angular-sanitize":178,"angular-scroll":180,"angular-ui-bootstrap":182,"angular-ui-tree":184,"lodash":188,"ng-file-upload":190,"ui-select/dist/select.js":191}],2:[function(require,module,exports){
+},{"./config":2,"./controllers/abstractAdd.js":3,"./controllers/abstractAdvanceList.js":4,"./controllers/abstractList.js":5,"./controllers/adminAccount.js":6,"./controllers/adminAccountAdd.js":7,"./controllers/adminAttribute.js":8,"./controllers/adminAttributeAdd.js":9,"./controllers/adminAttributeSet.js":10,"./controllers/adminAttributeSetAdd.js":11,"./controllers/adminBrand.js":12,"./controllers/adminBrandAdd.js":13,"./controllers/adminCategory.js":14,"./controllers/adminCoupon.js":15,"./controllers/adminCouponAdd.js":16,"./controllers/adminNewsletter.js":17,"./controllers/adminOnTopCreditAdd.js":18,"./controllers/adminOnTopCreditList.js":19,"./controllers/adminProductApprovalList.js":20,"./controllers/adminProductDetail.js":21,"./controllers/adminProductList.js":22,"./controllers/adminRole.js":23,"./controllers/adminRoleAdd.js":24,"./controllers/adminShop.js":25,"./controllers/adminShopAdd.js":26,"./controllers/adminShoptype.js":27,"./controllers/adminShoptypeAdd.js":28,"./controllers/index.js":29,"./controllers/localCategory.js":30,"./controllers/login.js":31,"./controllers/productAddSelectCategory.js":32,"./controllers/productExport.js":33,"./controllers/productImageList.js":34,"./controllers/productImageManagement.js":35,"./controllers/productImport.js":36,"./controllers/productList.js":37,"./controllers/productListLocalCategory.js":38,"./controllers/productReview.js":39,"./controllers/root.js":40,"./controllers/sellerAccount.js":41,"./controllers/sellerAccountAdd.js":42,"./controllers/sellerDashboard.js":43,"./controllers/sellerInventoryList.js":44,"./controllers/sellerNewsletter.js":45,"./controllers/sellerOnboarding.js":46,"./controllers/sellerProductDetail.js":47,"./controllers/sellerRole.js":48,"./controllers/sellerRoleAdd.js":49,"./controllers/sellerShopAppearance.js":50,"./controllers/sellerShopSetting.js":51,"./controllers/test.js":52,"./directives/ncTradableSelect.js":53,"./directives/ngCkeditor.js":54,"./directives/ngDateBefore.js":55,"./directives/ngDelegate.js":56,"./directives/ngMatch.js":57,"./directives/ngMaxnumber.js":58,"./directives/ngMinnumber.js":59,"./directives/ngPatternRestrict.js":60,"./directives/ngPermission.js":61,"./directives/ngSlideToggle.js":62,"./directives/ngTemplate.js":63,"./directives/popoverAny.js":64,"./filters/capitalize.js":65,"./filters/exclude.js":66,"./filters/excludeCategory.js":67,"./filters/html.js":68,"./filters/importGuidelineExample.js":69,"./filters/leadingzero.js":70,"./filters/ordinal.js":71,"./filters/slice.js":72,"./filters/truncate.js":73,"./filters/truth.js":74,"./filters/variantValue.js":75,"./helpers/base64.js":76,"./helpers/common.js":77,"./helpers/storage.js":78,"./helpers/util.js":79,"./helpers/variantPair.js":80,"./modules/nc":108,"./modules/product-detail":113,"./modules/schematics":115,"./route":119,"./services/OnTopCredit.js":120,"./services/OnTopCreditService.js":121,"./services/Onboarding.js":122,"./services/adminAccountService.js":123,"./services/adminPermissionService.js":124,"./services/adminRoleService.js":125,"./services/adminShopService.js":126,"./services/adminShoptypeService.js":127,"./services/alert.js":128,"./services/attribute.js":129,"./services/attributeService.js":130,"./services/attributeSet.js":131,"./services/attributeSetService.js":132,"./services/blocker.js":133,"./services/brand.js":134,"./services/brandService.js":135,"./services/category.js":136,"./services/coupon.js":137,"./services/credential.js":138,"./services/exceptionHandler.js":139,"./services/fileService.js":140,"./services/globalCategory.js":141,"./services/globalCategoryService.js":142,"./services/image.js":143,"./services/imageService.js":144,"./services/inventoryService.js":145,"./services/knownException.js":146,"./services/localCategory.js":147,"./services/localCategoryService.js":148,"./services/newsletterService.js":149,"./services/product.js":150,"./services/productReviewService.js":151,"./services/sellerAccountService.js":152,"./services/sellerPermissionService.js":153,"./services/sellerRoleService.js":154,"./services/shop.js":155,"./services/shopPermissionService.js":156,"./template":170,"./template-options/PromotionForm.js":157,"./template-options/addBrandForm.js":158,"./template-options/addCategoryForm.js":159,"./template-options/addNewsletterForm.js":160,"./template-options/addProductForm.js":161,"./template-options/addShopAccountForm.js":162,"./template-options/addShopAppearanceForm.js":163,"./template-options/couponForm.js":164,"./template-options/genericForm.js":165,"./template-options/productExport.js":166,"./template-options/productImport.js":167,"./template-options/searchForm.js":168,"./template-options/shopSettingForm.js":169,"angular":191,"angular-animate":172,"angular-base64":173,"angular-bootstrap-datetimepicker":175,"angular-chart.js":176,"angular-clipboard":178,"angular-cookies":180,"angular-file-upload":181,"angular-sanitize":183,"angular-scroll":185,"angular-ui-bootstrap":187,"angular-ui-tree":189,"lodash":194,"ng-file-upload":196,"skeemas":197,"ui-select/dist/select.js":211}],2:[function(require,module,exports){
 module.exports = {
 	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
@@ -1883,7 +1887,7 @@ module.exports = ["$scope", "$controller", function ($scope, $controller) {
     });
 
 }];
-},{"angular":186}],22:[function(require,module,exports){
+},{"angular":191}],22:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "config", function($scope, $controller, Product, config) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
@@ -2488,147 +2492,147 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 	});
 }];
 
-},{"angular":186}],33:[function(require,module,exports){
+},{"angular":191}],33:[function(require,module,exports){
 module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product, AttributeSet) {
-  $scope.ProductList = [];
-  $scope.SELECT_ALL = false;
-  $scope.sumProductAttributeSet = 0;
-  $scope.loading = [];
-  $scope.availableFields = {};
-  $scope.selectAllAttributeSets = false;
-  Product.getExportableFields().then(function(data){
-      data.forEach(function(record){
-        var groupName = record.GroupName;
-        var headerName = record.HeaderName;
-        if(!_.has($scope.availableFields, groupName)){
-          $scope.availableFields[groupName] = [];
-        }
+	$scope.ProductList = [];
+	$scope.SELECT_ALL = false;
+	$scope.sumProductAttributeSet = 0;
+	$scope.loading = [];
+	$scope.availableFields = {};
+	$scope.selectAllAttributeSets = false;
+	Product.getExportableFields().then(function(data){
+		data.forEach(function(record){
+			var groupName = record.GroupName;
+			var headerName = record.HeaderName;
+			if(!_.has($scope.availableFields, groupName)){
+				$scope.availableFields[groupName] = [];
+			}
 
-        $scope.availableFields[groupName].push(record);
-        $scope.fields[record.MapName] = (record.MapName == 'PID');
-          $scope.loading.push(true);
-      });
-  });
+			$scope.availableFields[groupName].push(record);
+			$scope.fields[record.MapName] = (record.MapName == 'PID');
+			$scope.loading.push(true);
+		});
+	});
 
-  $scope.init = function(viewBag){
-    var productIds = viewBag || [];
-    if(productIds.length == 0){
-      $scope.SELECT_ALL = true;
-    }
+	$scope.init = function(viewBag){
+		var productIds = viewBag || [];
+		if(productIds.length == 0){
+			$scope.SELECT_ALL = true;
+		}
 
-    $scope.ProductList = productIds.map(function(p){
-      return { ProductId: p }
-    });
+		$scope.ProductList = productIds.map(function(p){
+			return { ProductId: p }
+		});
 
-    if($scope.SELECT_ALL){
-      AttributeSet.getAll().then(function(data){
-        $scope.dataSet.attributeSets = data.map(function(m){
-            m.Display = m.AttributeSetNameEn + " (" + m.ProductCount + ")";
-            $scope.sumProductAttributeSet += Number(m.ProductCount);
-              $scope.loading.push(true);
-            return m;
-        });
-        console.log(data);
-      });
-    }else{
-      Product.getAllAttributeSetsForProducts($scope.ProductList).then(function(data){
-        $scope.dataSet.attributeSets = data.map(function(m){
-            m.Display = m.AttributeSetNameEn + " (" + m.ProductCount.length + ")";
-            $scope.sumProductAttributeSet += Number(m.ProductCount.length);
-            $scope.loading.push(true);
-            return m;
-        });
-        console.log(data);
-      });
-    }
-  }
+		if($scope.SELECT_ALL){
+			AttributeSet.getAll().then(function(data){
+				$scope.dataSet.attributeSets = data.map(function(m){
+					m.Display = m.AttributeSetNameEn + " (" + m.ProductCount + ")";
+					$scope.sumProductAttributeSet += Number(m.ProductCount);
+					$scope.loading.push(true);
+					return m;
+				});
+				console.log(data);
+			});
+		}else{
+			Product.getAllAttributeSetsForProducts($scope.ProductList).then(function(data){
+				$scope.dataSet.attributeSets = data.map(function(m){
+					m.Display = m.AttributeSetNameEn + " (" + m.ProductCount.length + ")";
+					$scope.sumProductAttributeSet += Number(m.ProductCount.length);
+					$scope.loading.push(true);
+					return m;
+				});
+				console.log(data);
+			});
+		}
+	}
 
-  $scope.startExportProducts = function () {
-      $scope.exporter = {
-          progress: 10,
-          title: 'Exporting...'
-      };
+	$scope.startExportProducts = function () {
+		$scope.exporter = {
+			progress: 10,
+			title: 'Exporting...'
+		};
 
-      $("#export-product").modal('show');
-  };
+		$("#export-product").modal('show');
+	};
 
-  $scope.confirmExportProducts = function(){
+	$scope.confirmExportProducts = function(){
 
-      $("#export-product").modal('hide');
+		$("#export-product").modal('hide');
 
-      var fileName = "ProductExport.csv";
-      var a = document.getElementById("export_download_btn");
+		var fileName = "ProductExport.csv";
+		var a = document.getElementById("export_download_btn");
 
-      var error = function (r) {
-          $(".modal").modal('hide');
-          $scope.exporter.title = 'Error'
-          $scope.alert.error('Unable to Export Product');
-          $scope.reloadData();
-      };
+		var error = function (r) {
+			$(".modal").modal('hide');
+			$scope.exporter.title = 'Error'
+				$scope.alert.error('Unable to Export Product');
+			$scope.reloadData();
+		};
 
-      $scope.exporter.progress = 15;
-      var blobs = [];
+		$scope.exporter.progress = 15;
+		var blobs = [];
 
-      var body = {};
-      body.Options  = [];
-      body.ProductList = $scope.ProductList;
-      body.AttributeSets = $scope.ctrl.tradedAS;
+		var body = {};
+		body.Options  = [];
+		body.ProductList = $scope.ProductList;
+		body.AttributeSets = $scope.ctrl.tradedAS;
 
-      Object.keys($scope.fields).forEach(function(fieldKey){
-        if($scope.fields[fieldKey] == true){
-          body.Options.push(fieldKey);
-        }
-      });
+		Object.keys($scope.fields).forEach(function(fieldKey){
+			if($scope.fields[fieldKey] == true){
+				body.Options.push(fieldKey);
+			}
+		});
 
-      if($scope.selectAllAttributeSets){
-        body.AttributeSets = $scope.dataSet.attributeSets;
-      }
+		if($scope.selectAllAttributeSets){
+			body.AttributeSets = $scope.dataSet.attributeSets;
+		}
 
-      Product.export(body).then(function (result) {
+		Product.export(body).then(function (result) {
 
-          blobs.push(result);
-          var file = new Blob(blobs, {type: 'application/csv'});
-          var fileURL = URL.createObjectURL(file);
-          $scope.exporter.href = fileURL;
-          $scope.exporter.download = fileName;
-          $scope.exporter.progress = 100;
-          $scope.exporter.title = 'Export Complete'
-          a.href = fileURL;
-          a.click();
-      }, error);
-  }
+			blobs.push(result);
+			var file = new Blob(blobs, {type: 'application/csv'});
+			var fileURL = URL.createObjectURL(file);
+			$scope.exporter.href = fileURL;
+			$scope.exporter.download = fileName;
+			$scope.exporter.progress = 100;
+			$scope.exporter.title = 'Export Complete'
+				a.href = fileURL;
+			a.click();
+		}, error);
+	}
 
-  $scope.lockAS = function(){
-    return false
-  }
+	$scope.lockAS = function(){
+		return false
+	}
 
-  $scope.dataSet = {};
-
-
-  $scope.ctrl = {
-    selectAll: false,
-    tradedAS: []
-  };
-  $scope.toggleSelectAll = function(){
-    Object.keys($scope.fields).forEach(function(key){
-        $scope.fields[key] = $scope.ctrl.selectAll;
-    });
-    $scope.fields.PID = true;
-  };
+	$scope.dataSet = {};
 
 
-  $scope.$watch('fields', function(){
-    var m = Object.keys($scope.fields).map(function(k){
-      return $scope.fields[k];
-    }).reduce(function(prev,cur){
-      return prev && cur;
-    }, true);
-    $scope.ctrl.selectAll = m;
-  }, true);
+	$scope.ctrl = {
+		selectAll: false,
+		tradedAS: []
+	};
+	$scope.toggleSelectAll = function(){
+		Object.keys($scope.fields).forEach(function(key){
+			$scope.fields[key] = $scope.ctrl.selectAll;
+		});
+		$scope.fields.PID = true;
+	};
 
-  $scope.fields = {
-    PID: true
-  };
+
+	$scope.$watch('fields', function(){
+		var m = Object.keys($scope.fields).map(function(k){
+			return $scope.fields[k];
+		}).reduce(function(prev,cur){
+			return prev && cur;
+		}, true);
+		$scope.ctrl.selectAll = m;
+	}, true);
+
+	$scope.fields = {
+		PID: true
+	};
 }];
 
 },{}],34:[function(require,module,exports){
@@ -3794,18 +3798,51 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", funct
 },{}],47:[function(require,module,exports){
 var angular = require('angular');
 
-module.exports = ["$scope", "$controller", function ($scope, $controller) {
-    'ngInject';
-    
-    $controller('AbstractProductAddCtrl', {
-        $scope: $scope,
-        options: {
-            maxImageUploadQueueLimit: 25
-        }
+module.exports = ["$scope", "$controller", "storage", function($scope, $controller, storage) {
+  'ngInject';
+
+  $controller('AbstractProductAddCtrl', {
+    $scope: $scope,
+    options: {
+      maxImageUploadQueueLimit: 25
+    }
+  });
+
+  $scope._debugLoad = function() {
+
+    var checkpoint = "T100";
+    $scope.formData = JSON.parse(storage.get('save-fd-' + checkpoint));
+    $scope.dataset = JSON.parse(storage.get('save-ds-' + checkpoint));
+    $scope.variationFactorIndices.iterator = JSON.parse(storage.get('save-it-' + checkpoint));
+    $scope.controlFlags = JSON.parse(storage.get('save-cf-' + checkpoint));
+
+    console.log($scope.formData, "loaded");
+    $scope.variantPtr = $scope.formData.MasterVariant;
+    $scope.variantPtr.Images = $scope.formData.MasterVariant.Images;
+  }
+
+  $scope._debugSave = function() {
+
+    var checkpoint = "T100";
+    $scope.formData.GlobalCategories.forEach(function(gc) {
+      if (gc == null) return;
+      delete gc.nodes;
+      delete gc.parent;
     });
 
+    delete $scope.dataset.GlobalCategories;
+    delete $scope.dataset.LocalCategories;
+    console.log($scope.dataset, $scope.variationFactorIndices);
+
+    storage.put('save-cf-' + checkpoint, JSON.stringify($scope.controlFlags));
+    storage.put('save-fd-' + checkpoint, JSON.stringify($scope.formData));
+    storage.put('save-ds-' + checkpoint, JSON.stringify($scope.dataset));
+    storage.put('save-it-' + checkpoint, JSON.stringify($scope.variationFactorIndices.iterator));
+  };
+
 }];
-},{"angular":186}],48:[function(require,module,exports){
+
+},{"angular":191}],48:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerRoleService", "config", function($scope, $controller, SellerRoleService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -4291,7 +4328,7 @@ module.exports = [function() {
 		}
 	};
 }];
-},{"angular":186}],57:[function(require,module,exports){
+},{"angular":191}],57:[function(require,module,exports){
 module.exports = ["$interpolate", function($interpolate) {
 	'ngInject';
 	return {
@@ -4771,7 +4808,7 @@ module.exports = ['$templateCache', '$compile', '$templateOptionsCache', 'KnownE
         }
     };
 }];
-},{"angular":186}],64:[function(require,module,exports){
+},{"angular":191}],64:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$document', '$window', function($document, $window) {
 	$window._globalPopoverAny = null;
@@ -4801,7 +4838,7 @@ module.exports = ['$document', '$window', function($document, $window) {
 		}
 	};
 }];
-},{"angular":186}],65:[function(require,module,exports){
+},{"angular":191}],65:[function(require,module,exports){
 module.exports = [function() {
   return function(input, scope) {
     if (input!=null)
@@ -4844,7 +4881,7 @@ module.exports = [function() {
      });
   }
 }];
-},{"angular":186}],67:[function(require,module,exports){
+},{"angular":191}],67:[function(require,module,exports){
 module.exports = [function() {
   
 var search = function(catId, tmp) {
@@ -4974,7 +5011,7 @@ module.exports = [function() {
   	return input;
   }
 }];
-},{"angular":186}],72:[function(require,module,exports){
+},{"angular":191}],72:[function(require,module,exports){
 /*
  * Get slice or subarray of array
  */
@@ -5033,7 +5070,7 @@ module.exports = [function() {
      return i;
   }
 }];
-},{"angular":186}],75:[function(require,module,exports){
+},{"angular":191}],75:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return function(value) {
@@ -6232,7 +6269,7 @@ angular.module('nc')
             };
         }]);
 
-},{"angular":186}],88:[function(require,module,exports){
+},{"angular":191}],88:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEmpty', ["$templateCache", function($templateCache) {
 		return {
@@ -6732,7 +6769,7 @@ angular.module('nc')
             }
         };
     }]);
-},{"angular":186}],95:[function(require,module,exports){
+},{"angular":191}],95:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncPagination', function() {
 		this.paginationSizes = [10,20,30];
@@ -6988,7 +7025,7 @@ angular.module('nc')
             };
         }]);
 
-},{"angular":186}],100:[function(require,module,exports){
+},{"angular":191}],100:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncTreeSelect', ["$interpolate", "$templateCache", function($interpolate, $templateCache) {
 		/**
@@ -7153,10 +7190,14 @@ angular.module('nc')
 				model: '=ncModel',
 				tree: '=ncTreeSelectTree',
 				title: '@ncTreeSelectTitle',
-				options: '=?ncTreeSelectOptions'
+				options: '=?ncTreeSelectOptions',
+				excludeBy: '=?ncExclude'
 			},
 			template: $templateCache.get('common/ncTreeSelect'),
 			link: function(scope, element, attrs) {
+				if(!scope.excludeBy){
+					scope.excludeBy = [];
+				}
 				// Directive options
 				scope.options = _.defaults(scope.options, {
 					columnSize: 4,
@@ -7321,13 +7362,50 @@ angular.module('nc')
 		}
 	});
 },{}],106:[function(require,module,exports){
+var angular = require('angular');
+
+angular.module('nc')
+	.filter('nexclude', function() {
+    return function(arr, other, trackBy) {
+       if(!arr) arr = [];
+       return arr.filter(function(elem){
+          if(other == null || other === undefined) return true;
+          if(other instanceof Array){
+          	//throw away if elem matches any of the given other list
+          	var p = true;
+          	for(var j = 0; j < other.length; j++){
+                  var k = (elem == ((other[j] || null ) || null));
+          		if(angular.isDefined(trackBy)){
+                      var deepOther = _.get(other[j], trackBy, null);
+                      k = (_.get(elem, trackBy, null) == deepOther);
+                  }
+          		//matched atleast one, stop and throw away
+          		if(k){
+          			p = false;
+          			break;
+          		}
+          	}
+          	return p;
+          }else{
+          	//return true to keep
+          	if(!angular.isDefined(trackBy)){
+                  return elem != (other || null);
+              }
+
+              return elem[trackBy] != (other[trackBy] || null);
+          }
+       });
+    }
+  });
+
+},{"angular":191}],107:[function(require,module,exports){
 angular.module('nc')
 	.filter('replace', function() {
 		return function(input, from, to) {
 			return input.replace(from, to);
 		};
 	});
-},{}],107:[function(require,module,exports){
+},{}],108:[function(require,module,exports){
 (function (global){
 var angular = require('angular');
 
@@ -7347,11 +7425,11 @@ angular.module('nc', ['ngSanitize', 'ui.bootstrap', 'ui.select', 'duScroll', 'an
 		'clickanystart' : 'clickanyend'
 	});
 }]);
-(function () {var f = require("./index.js");f["directives"]=({"ncAction":require("./directives/ncAction.js"),"ncAdvanceSearch":require("./directives/ncAdvanceSearch.js"),"ncAlert":require("./directives/ncAlert.js"),"ncBindCompile":require("./directives/ncBindCompile.js"),"ncBreadcrumpSelect":require("./directives/ncBreadcrumpSelect.js"),"ncBulk":require("./directives/ncBulk.js"),"ncDateRange":require("./directives/ncDateRange.js"),"ncEmpty":require("./directives/ncEmpty.js"),"ncEye":require("./directives/ncEye.js"),"ncFilter":require("./directives/ncFilter.js"),"ncImageGallery":require("./directives/ncImageGallery.js"),"ncImageIntegrity":require("./directives/ncImageIntegrity.js"),"ncLoading":require("./directives/ncLoading.js"),"ncPageTitle":require("./directives/ncPageTitle.js"),"ncPagination":require("./directives/ncPagination.js"),"ncPermission":require("./directives/ncPermission.js"),"ncSearch":require("./directives/ncSearch.js"),"ncTable":require("./directives/ncTable.js"),"ncTemplate":require("./directives/ncTemplate.js"),"ncTreeSelect":require("./directives/ncTreeSelect.js"),"ncUiSelect":require("./directives/ncUiSelect.js")});f["filters"]=({"compact":require("./filters/compact.js"),"date":require("./filters/date.js"),"escapeHtml":require("./filters/escapeHtml.js"),"map":require("./filters/map.js"),"replace":require("./filters/replace.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
+(function () {var f = require("./index.js");f["directives"]=({"ncAction":require("./directives/ncAction.js"),"ncAdvanceSearch":require("./directives/ncAdvanceSearch.js"),"ncAlert":require("./directives/ncAlert.js"),"ncBindCompile":require("./directives/ncBindCompile.js"),"ncBreadcrumpSelect":require("./directives/ncBreadcrumpSelect.js"),"ncBulk":require("./directives/ncBulk.js"),"ncDateRange":require("./directives/ncDateRange.js"),"ncEmpty":require("./directives/ncEmpty.js"),"ncEye":require("./directives/ncEye.js"),"ncFilter":require("./directives/ncFilter.js"),"ncImageGallery":require("./directives/ncImageGallery.js"),"ncImageIntegrity":require("./directives/ncImageIntegrity.js"),"ncLoading":require("./directives/ncLoading.js"),"ncPageTitle":require("./directives/ncPageTitle.js"),"ncPagination":require("./directives/ncPagination.js"),"ncPermission":require("./directives/ncPermission.js"),"ncSearch":require("./directives/ncSearch.js"),"ncTable":require("./directives/ncTable.js"),"ncTemplate":require("./directives/ncTemplate.js"),"ncTreeSelect":require("./directives/ncTreeSelect.js"),"ncUiSelect":require("./directives/ncUiSelect.js")});f["filters"]=({"compact":require("./filters/compact.js"),"date":require("./filters/date.js"),"escapeHtml":require("./filters/escapeHtml.js"),"map":require("./filters/map.js"),"ncexclude":require("./filters/ncexclude.js"),"replace":require("./filters/replace.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./directives/ncAction.js":81,"./directives/ncAdvanceSearch.js":82,"./directives/ncAlert.js":83,"./directives/ncBindCompile.js":84,"./directives/ncBreadcrumpSelect.js":85,"./directives/ncBulk.js":86,"./directives/ncDateRange.js":87,"./directives/ncEmpty.js":88,"./directives/ncEye.js":89,"./directives/ncFilter.js":90,"./directives/ncImageGallery.js":91,"./directives/ncImageIntegrity.js":92,"./directives/ncLoading.js":93,"./directives/ncPageTitle.js":94,"./directives/ncPagination.js":95,"./directives/ncPermission.js":96,"./directives/ncSearch.js":97,"./directives/ncTable.js":98,"./directives/ncTemplate.js":99,"./directives/ncTreeSelect.js":100,"./directives/ncUiSelect.js":101,"./filters/compact.js":102,"./filters/date.js":103,"./filters/escapeHtml.js":104,"./filters/map.js":105,"./filters/replace.js":106,"./index.js":107,"./template.js":108,"angular":186,"angular-file-upload":176,"angular-sanitize":178,"angular-scroll":180,"angular-ui-bootstrap":182,"jquery":187,"lodash":188,"ui-select":192}],108:[function(require,module,exports){
+},{"./directives/ncAction.js":81,"./directives/ncAdvanceSearch.js":82,"./directives/ncAlert.js":83,"./directives/ncBindCompile.js":84,"./directives/ncBreadcrumpSelect.js":85,"./directives/ncBulk.js":86,"./directives/ncDateRange.js":87,"./directives/ncEmpty.js":88,"./directives/ncEye.js":89,"./directives/ncFilter.js":90,"./directives/ncImageGallery.js":91,"./directives/ncImageIntegrity.js":92,"./directives/ncLoading.js":93,"./directives/ncPageTitle.js":94,"./directives/ncPagination.js":95,"./directives/ncPermission.js":96,"./directives/ncSearch.js":97,"./directives/ncTable.js":98,"./directives/ncTemplate.js":99,"./directives/ncTreeSelect.js":100,"./directives/ncUiSelect.js":101,"./filters/compact.js":102,"./filters/date.js":103,"./filters/escapeHtml.js":104,"./filters/map.js":105,"./filters/ncexclude.js":106,"./filters/replace.js":107,"./index.js":108,"./template.js":109,"angular":191,"angular-file-upload":181,"angular-sanitize":183,"angular-scroll":185,"angular-ui-bootstrap":187,"jquery":193,"lodash":194,"ui-select":212}],109:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -7492,7 +7570,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncTreeSelect',
-    "<div class=category-section-border-box><div class=category-header>{{title}}</div><div class=\"category-content no-padding\"><ul ng-repeat=\"column in columns.list() track by $index\" ng-class=\"{'empty-column': column.list().length <= 0 }\" class=content-column><li ng-repeat=\"$item in column.list() track by $index\" ng-class=\"{'category-active' : $index == column.active() }\" ng-click=setModel($item)>{{getContent($item)}}</li></ul></div></div>"
+    "<div class=category-section-border-box><div class=category-header>{{title}}</div><div class=\"category-content no-padding\"><ul ng-repeat=\"column in (columns.list()) track by $index\" ng-class=\"{'empty-column': column.list().length <= 0 }\" class=content-column><li ng-repeat=\"$item in (column.list() | nexclude: excludeBy : 'CategoryId') track by $index\" ng-class=\"{'category-active' : $index == column.active() }\" ng-click=setModel($item)>{{getContent($item)}}</li></ul></div></div>"
   );
 
 
@@ -7515,945 +7593,936 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
     "<div class=\"page-header with-border\"><h1 class=\"float-left page-header-title\">{{ title }}</h1><span class=\"float-right page-header-action\"><ng-transclude></ng-transclude></span></div>"
   );
  }]);
-},{}],109:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 var angular = require('angular')
+
 angular.module('productDetail').controller('AbstractProductAddCtrl',
-		["$scope", "$uibModal", "$window", "util", "config", "Product", "ImageService", "AttributeSet", "Brand", "Shop", "LocalCategoryService", "GlobalCategory", "Category", "$rootScope", "KnownException", "NcAlert", "$productAdd", "options", "AttributeSetService", function($scope, $uibModal, $window, util, config, Product, ImageService,
-			AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
-			KnownException, NcAlert, $productAdd, options, AttributeSetService) {
-			'ngInject';
-
-			var MAX_FILESIZE = (options.maxImageUploadSize || 5000000);
-			var QUEUE_LIMIT = (options.maxImageUploadQueueLimit || 20);
-
-			$scope.adminMode = options.adminMode;
-			$scope.overview = {};
-			$scope.formData = {
-				Status : 'DF',
-				ShopId: null,
-				Visibility: true,
-				GlobalCategories: [null, null, null],
-				LocalCategories: [null, null, null],
-				Keywords: [],
-				ControlFlags: [],
-				Brand: { id: null },
-				TheOneCardEarn: 1,
-				GiftWrap: 'No',
-				AttributeSet: {
-					AttributeSetTagMaps: []
-				},
-				MasterAttribute: {
-						
-				},
-				RelatedProducts: [],
-				EffectiveDate: null,
-				ExpireDate: null,
-				MasterVariant: {
-					Length: '',
-					Width: '',
-					Height: '',
-					Weight: '',
-					ProductNameEn: '',
-					Pid: null,
-					ProductNameTh: '',
-					Sku: '',
-					DescriptionFullEn: '',
-					DescriptionShortEn: '',
-					DescriptionShortTh: '',
-					DescriptionFullTh: '',
-					OriginalPrice: '',
-					SalePrice: '',
-					PrepareDay: '',
-					PrepareMon: '',
-					PrepareTue: '',
-					PrepareWed: '',
-					PrepareThu: '',
-					PrepareFri: '',
-					PrepareSat: '',
-					PrepareSun: '',
-					DimensionUnit: 'MM',
-					WeightUnit: 'G',
-					StockType: 'Stock',
-					Images: [],
-					Installment: 'No',
-					ShippingMethod: '1',
-					VideoLinks: ['', '', ''],
-					SEO: {
-						ProductBoostingWeight: 5000
-					}
-				},
-				Variants: []
-			};
-
-			//Initialize Pointers
-			$scope.imagesPtr = $scope.formData.MasterVariant.Images;
-			$scope.variantPtr = $scope.formData.MasterVariant;
-
-
-			$scope.onImageUploadFail = function(item, filter) {
-				$scope.image_alert.error(item.Message || 'Your image does not meet guideline. Images must be smaller than 5 MB, with square size larger than 1500x1500.');
-			}
-
-			$scope.onImageUploadSuccess = function() {
-				$scope.image_alert.close();
-			}
-
-			$scope.onImageUploadQueueLimit = function() { 
-				//nop
-			};
-			$scope.asStatus = Product.getStatus;
-			$scope.refresher = {};
-
-
-			var watchVariantFactorChanges = function() {
-				$scope.$watch('dataset.attributeOptions', function() {
-					$productAdd.generateVariants($scope.formData, $scope.dataset)
-				}, true);
-			};
-
-			// CK editor options
-			$scope.ckOptions = config.CK_DEFAULT_OPTIONS;
-			$scope.dataset = {
-				CombinedAttributeSets: []
-			};
-
-			$scope.dataset.AttributeSets = [{
-				AttributeSetId: null,
-				disabled: true,
-				AttributeSetNameEn: 'No Attribute Set'
-			}];
-			$scope.dataset.GlobalCategories = [];
-			$scope.dataset.LocalCategories = [];
-
-			$scope.dataset.BrandsEmpty = [{
-				BrandId: null,
-				_group: 'No Result',
-				BrandNameEn: 'Search by brand by name or Brand id...',
-				disabled: true
-			}]
-
-			$scope.dataset.Brands = []
-
-			$scope.enableVariation = function() {
-				$scope.controlFlags.variation = 'enable'
-			}
-
-			$scope.dataset.SearchTags = []
-			$scope.dataset.RelatedProducts = []
-			$scope.dataset.VariantDisplayOption = [{ text: 'Show as group of variants', value: 'GROUP' }, { text: 'Show as individual product', value: 'INDIVIDUAL' }]
-			$scope.pageState = {
-				loading: {
-					state: true,
-					message: 'Loading..'
-				},
-				load: function(msg) {
-					$scope.pageState.loading.message = msg;
-					$scope.pageState.loading.state = true;
-				},
-				reset: function() {
-					$scope.alert.close();
-					$scope.pageState.loading.state = false;
-				}
-			}
-
-			$scope.breadcrumb = {
-				globalCategory: null
-			}
-
-			$scope.preview = function() {
-				return console.log($scope.formData)
-			}
-
-			$scope.$watch('formData.MasterVariant.OriginalPrice+formData.MasterVariant.SalePrice', function() {
-				var form = $scope.addProductForm;
-				if (form.SalePrice) form.SalePrice.$setValidity('min', true);
-				if (!form.SalePrice) return;
-				if ($scope.formData.MasterVariant.SalePrice == '') return;
-
-				if (Number($scope.formData.MasterVariant.SalePrice) >= Number($scope.formData.MasterVariant.OriginalPrice)) {
-					if (form.SalePrice) form.SalePrice.$setValidity('min', false)
-						form.SalePrice.$error['min'] = 'Sale Price must not exceed Original Price'
-				}
-			})
-
-			$scope.$watch('formData.ExpireDate', function() {
-				// TODO: refactor use nctemplate
-				var form = $scope.addProductForm;
-				if (form.EffectiveDate == null) {
-					return
-				}
-				if (form.ExpireDate) form.ExpireDate.$setValidity('min', true)
-					if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
-						if (!form.ExpireDate) return;
-						if (form.ExpireDate) form.ExpireDate.$setValidity('min', false);
-						form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
-					}
-			})
-
-			/**
-			 * Other additional validations
-			 * @param  {String} Status
-			 */
-			var manualValidate = function(Status) {
-				var mat = []
-
-				if (Status == 'WA') {
-					if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == '') {
-						mat.push('Description (Thai)')
-					}
-
-					if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == '') {
-						mat.push('Description (English)')
-					}
-
-					if (!$scope.formData.Brand.BrandId) {
-						mat.push('Brand')
-					}
-
-					if ($scope.formData.MasterImages.length == 0) {
-						mat.push('At least one image')
-					}
-
-					$scope.formData.Variants.forEach(function(variant) {
-						if (variant.Images.length == 0) {
-							mat.push('At least one image for variation ' + "'" + variant.text + "'")
-						}
-					})
-
-				}
-
-				var cnt = $scope.formData.Variants.reduce(function(total, x) {
-					return x.Visibility ? total + 1 : total
-				}, 0)
-
-				if (cnt == 0 && $scope.formData.Variants.length > 0) {
-					mat.push('At least one variant must be visible.')
-				}
-
-				if ($scope.formData.ExpireDate && $scope.formData.ExpireDate <= $scope.formData.EffectiveDate) {
-					mat.push('Effective date/time must come before expire date/time.')
-				}
-
-				return mat
-			}
-
-			/**
-			 * Publish Confirmation
-			 * Show dialog to ask if user really want to publish
-			 */
-			$scope.prePublishWA = function() {
-				var modalInstance = $uibModal.open({
-					animation: $scope.animationsEnabled,
-					templateUrl: 'product/modalConfirmPublish',
-					controller: ["$scope", "$uibModalInstance", "$timeout", function($scope, $uibModalInstance, $timeout) {
-						'ngInject'
-							$scope.no = function() {
-								$uibModalInstance.close('no')
-							}
-
-						$scope.yes = function() {
-							$uibModalInstance.close('yes')
-						}
-					}],
-					size: 'size-warning',
-					resolve: {
-
-					}
-				})
-				modalInstance.result.then(function(selectedItem) {
-					console.log(selectedItem)
-						if (selectedItem == 'yes') {
-							$scope.publish('WA')
-						}
-				}, function() {
-					console.log('Modal dismissed at: ' + new Date())
-				})
-
-			}
-
-			/**
-			 * Publish (save as draft and publish)
-			 * @param  {String} Status (WA or DF or other enum sent to server)
-			 */
-			$scope.publish = function(Status) {
-				$scope.pageState.reset()
-					$scope.pageState.load('Validating..')
-
-					if ($scope.controlFlags.variation == 'enable' && $scope.formData.Variants.length == 0) {
-						$scope.controlFlags.variation == 'disable'
-					}
-
-				if ($scope.controlFlags.variation == 'disable') {
-					$scope.formData.Variants = []
-				}
-
-				$scope.onPublishing = (Status == 'WA')
-					// On click validation
-					var validateMat = manualValidate(Status)
-					if (validateMat.length > 0) {
-						$scope.pageState.reset()
-							$scope.alert.error(validateMat.join(', '))
-							return
-					}
-
-				if ($scope.addProductForm.$invalid) {
-					$scope.pageState.reset()
-						console.log($scope.addProductForm.$error)
-						var requiredMissing = ('required' in $scope.addProductForm.$error)
-						if (Status == 'DF' && requiredMissing) {
-							var errorList = []
-							if ($scope.addProductForm.ProductNameEn.$invalid) {
-								errorList.push('Product Name (English)')
-							}
-							// Product Name (Thai), Product Name (English), and Sale Price,
-							if ($scope.addProductForm.ProductNameTh.$invalid) {
-								errorList.push('Product Name (Thai)')
-							}
-
-							if ($scope.addProductForm.SalePrice.$invalid) {
-								errorList.push('Sale Price')
-							}
-							errorList.push('Master Attributes')
-
-								$scope.alert.error('Unable to save. Please make sure that ' + errorList.join(' and ') + ' are filled correctly.')
-						} else if (Status == 'WA' && requiredMissing) {
-							$scope.alert.error('Unable to publish because you are missing required fields')
-						} else {
-							console.warn($scope.addProductForm.$error)
-								$scope.alert.error('Unable to save. Please make sure all fields have no error.')
-						}
-					return
-				}
-
-				$scope.pageState.load('Saving..')
-
-					var apiRequest = Product.serialize($scope.formData)
-					Product.publish(apiRequest, Status).then(function(res) {
-						$scope.pageState.reset()
-							if (res.ProductId) {
-								$scope.overview = res
-									$scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions) // will trigger watchvariantchange
-									var catId = Number(res.GlobalCategory)
-									$productAdd.fill(catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function() {
-										$scope.formData.ProductId = Number(res.ProductId)
-											$scope.pageState.reset()
-											$scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>')
-											// ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
-									})
-								$scope.addProductForm.$setPristine(true)
-							} else {
-								$scope.alert.error('Unable to save because ' + (res.message || res.Message))
-									$scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable')
-							}
-					}, function(er) {
-						$scope.pageState.reset()
-							$scope.alert.error('Unable to save because ' + (er.message || er.Message))
-							$scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable')
-					})
-
-			}
-
-			$scope.init = function(viewBag) {
-				if (!angular.isObject(viewBag)) throw new KnownException('View bag is corrupted')
-
-					var _editMode = ('productId' in viewBag)
-						for (var page in tabPage) {
-							tabPage[page].angular()
-						}
-
-				if (_editMode) {
-					var productId = viewBag.productId
-						$scope.pageState.load('Loading Product..')
-
-						Product.getOne(productId)
-						.then(function(inverseFormData) {
-							$scope.overview = angular.copy(inverseFormData)
-								var catId = Number(inverseFormData.GlobalCategory)
-								$productAdd.fill(catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb, $scope.controlFlags,
-										$scope.variationFactorIndices, inverseFormData).then(function() {
-									$scope.formData.ProductId = Number(productId)
-										$scope.pageState.reset()
-										watchVariantFactorChanges()
-
-										LocalCategoryService.getAllByShopId($scope.formData.ShopId).then(function(data) {
-											$scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data)
-										})
-
-									// ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
-								})
-
-
-
-
-						}, function(error) {
-							throw new KnownException('Unable to fetch product with id ' + productId)
-						})
-
-				} else if ('catId' in viewBag) {
-					if (viewBag.catId == null) window.location.href = '/products/select'
-						LocalCategoryService.list().then(function(data) {
-							$scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data)
-						})
-					var catId = Number(viewBag.catId)
-						$productAdd.fill(catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb,
-								$scope.controlFlags, $scope.variationFactorIndices).then(function() {
-							$scope.pageState.reset()
-								watchVariantFactorChanges()
-								// ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
-						})
-				} else {
-					throw new KnownException('Invalid mode, viewBag garbage')
-				}
-
-				//?ShopId=0120302131
-				// Load Local Cat
-				/*LocalCategoryService.list().then(function(data) {
-				  $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data)
-				  })*/
-
-
-			}
-
-			var tabPage = {}
-
-			tabPage.images = {
-				angular: function() {
-					/**
-					 * IMAGE THUMBNAIL EVENTS
-					 */
-					$scope.$on('left', function(evt, item, array, index) {
-						var to = index - 1
-							if (to < 0) to = array.length - 1
-
-								var tmp = array[to]
-								array[to] = item
-								array[index] = tmp
-					})
-					$scope.$on('right', function(evt, item, array, index) {
-						var to = index + 1
-							if (to >= array.length) to = 0
-
-								var tmp = array[to]
-								array[to] = item
-								array[index] = tmp
-					})
-					$scope.$on('delete', function(evt, item, array, index) {
-						array.splice(index, 1)
-					})
-					$scope.$on('zoom', function(evt, item, array, index) {
-						// Should use angular way, but ok whatever
-						$('#product-image-zoom img').attr('src', item.url)
-							$('#product-image-zoom').modal('show')
-					})
-				}
-			}
-
-			tabPage.category = {
-				angular: function() {
-					// For viewing only
-					$scope.viewCategoryColumns = []
-					$scope.viewCategorySelected = null
-					$scope.viewCategoryIndex = 0
-					$scope.selectCategory = angular.noop
-
-					// Events
-					$scope.$on('openGlobalCat', function(evt, item, indx) {
-						console.log('openGloCat', item, $scope.dataset.GlobalCategories)
-							$scope.viewCategoryColumns = Category.createColumns(item, $scope.dataset.GlobalCategories)
-							$scope.viewCategorySelected = item
-							$scope.viewCategoryIndex = indx
-							$scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function(selectedItem) {
-								$scope.viewCategorySelected = selectedItem
-							})
-					})
-					$scope.$on('deleteGlobalCat', function(evt, indx) {
-						$scope.formData.GlobalCategories[indx] = null
-					})
-					$scope.$on('selectGlobalCat', function(evt, row, indx, parentIndx) {
-						$scope.selectCategory(row, indx, parentIndx)
-					})
-					$scope.$on('saveGlobalCat', function(evt) {
-						$scope.formData.GlobalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected
-					})
-
-					// Events
-					$scope.$on('openLocalCat', function(evt, item, indx) {
-						console.log(item, $scope.dataset.LocalCategories)
-							$scope.viewCategoryColumns = Category.createColumns(item, $scope.dataset.LocalCategories)
-							$scope.viewCategorySelected = item
-							$scope.viewCategoryIndex = indx
-							$scope.selectCategory = Category.createSelectFunc($scope.viewCategoryColumns, function(selectedItem) {
-								$scope.viewCategorySelected = selectedItem
-							})
-					})
-					$scope.$on('deleteLocalCat', function(evt, indx) {
-						$scope.formData.LocalCategories[indx] = null
-					})
-					$scope.$on('selectLocalCat', function(evt, row, indx, parentIndx) {
-						$scope.selectCategory(row, indx, parentIndx)
-					})
-					$scope.$on('saveLocalCat', function(evt) {
-						$scope.formData.LocalCategories[$scope.viewCategoryIndex] = $scope.viewCategorySelected
-					})
-				}
-			}
-
-			tabPage.variation = {
-				angular: function() {
-					$scope.uploaderModal = ImageService.getUploader('/ProductImages', {
-						queueLimit: QUEUE_LIMIT
-					})
-
-					$scope.uploaderModal.filters.push({
-						'name': 'enforceMaxFileSize',
-						'fn': function(item) {
-							return item.size <= MAX_FILESIZE
-						}
-					})
-
-					$scope.openVariantDetail = function(pair, array, index) {
-						if (angular.isUndefined(pair.Images)) {
-							pair.Images = []
-						}
-
-						if (angular.isUndefined(pair.queue)) {
-							pair.queue = []
-						}
-
-						// Modal target (for viewing pair)
-						$scope.pairModal = angular.copy(pair)
-							$scope.pairModal.alert = new NcAlert()
-							$scope.pairIndex = index
-
-							$scope.uploaderModal.queue = $scope.pairModal.queue
-							// ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
-
-							var variantModal = $uibModal.open({
-								animation: false,
-								templateUrl: 'ap/modal-variant-detail',
-								controller: ["$scope", "$uibModalInstance", "$timeout", "pair", "dataset", "formData", "uploader", function($scope, $uibModalInstance, $timeout, pair, dataset, formData, uploader) {
-									'ngInject';
-									$scope.pair = pair;
-									$scope.dataset = dataset;
-									$scope.variantPtr = pair;
-									$scope.imagesPtr = pair.Images;
-									$scope.uploader = uploader;
-									$scope.no = function() {
-										$uibModalInstance.close();
-									}
-									$scope.yes = function() {
-										$uibModalInstance.close($scope.pair);
-									}
-								}],
-								size: 'xl',
-								resolve: {
-									uploader: function() {
-										return ImageService.getUploader('/ProductImages', {
-											queueLimit: QUEUE_LIMIT
-										});
-									},
-									formData: function() {
-										return $scope.formData
-									},
-									pair: function() {
-										console.log('resolving', $scope.pairModal)
-											return $scope.pairModal
-									},
-									ckOptions: function() {
-										return $scope.ckOptions
-									},
-									dataset: function() {
-										return $scope.dataset
-									}
-								}
-							})
-
-						variantModal.result.then(function(pairModal) {
-							console.log(pairModal);
-							if (pairModal) {
-								$scope.formData.Variants[$scope.pairIndex] = pairModal
-							}
-
-							// Restore pointers
-							$scope.form = $scope.addProductForm;
-							$scope.variantPtr = $scope.formData.MasterVariant;
-							$scope.imagesPtr = $scope.formData.MasterVariant.Images
-
-						}, function() {
-							console.log('Modal dismissed at: ' + new Date())
-						})
-
-					}
-
-				}
-			}
-
-			$scope.protoAttributeOptions = {
-				0: {
-					Attribute: false,
-					options: []
-				},
-				1: {
-					Attribute: false,
-					options: []
-				}
-			}
-
-			$scope.uploader = ImageService.getUploader('/ProductImages', {
-				queueLimit: QUEUE_LIMIT
-			})
-
-			$scope.uploader.filters.push({
-				'name': 'enforceMaxFileSize',
-				'fn': function(item) {
-					return item.size <= MAX_FILESIZE
-				}
-			})
-
-			$scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions)
-
-				$scope.refresher.AttributeSetsLoading = false;
-			$scope.refresher.AttributeSets = function(q) {
-				if (!q) return;
-				$scope.refresher.AttributeSetsLoading = true;
-				return AttributeSetService.list({
-					_order: 'AttributeSetId',
-					_limit: 5,
-					_offset: 0,
-					_direction: 'asc',
-					searchText: q
-				}).then(function(ds) {
-					$scope.refresher.AttributeSetsLoading = false;
-					var searchRes = ds.data.map(function(d) {
-						d._group = 'Search Results';
-						d.AttributeSetTagMaps = $productAdd.flatten.AttributeSetTagMap(d.AttributeSetTagMaps);
-						return d;
-					});
-					$scope.dataset.CombinedAttributeSets = _.unionBy(searchRes, $scope.dataset.AttributeSets, 'AttributeSetId');
-				})
-			}
-
-
-
-			/**
-			 * Refresh Related Product Data 
-			 * @param  {String} q
-			 */
-			$scope.refresher.RelatedProducts = function(q) {
-				return Product.getAll({
-					searchText: q,
-					pageSize: 8
-				}).then(function(ds) {
-					$scope.dataset.RelatedProducts = ds.data
-				})
-			}
-
-			$scope.controlFlags = {
-				variation: 'disable',
-				enableSections: {
-					embedVideo: false,
-					embed360: false
-				}
-			}
-
-			/**
-			 * Refresh Brand Data Set used for searching 
-			 * @param  {String} q
-			 */
-
-			$scope.refresher.BrandLoading = false;
-			$scope.refresher.Brands = function(q) {
-				// TODO: too slow
-				if (!q) return
-
-					$scope.refresher.BrandLoading = true;
-
-				Brand.getAll({
-					pageSize: 10,
-					searchText: q
-				}).then(function(ds) {
-					$scope.refresher.BrandLoading = false;
-					$scope.dataset.Brands = ds.data;// _.unionBy($scope.dataset.Brands, ds.data, 'BrandId');
-					$scope.dataset.Brands.map(function(m) {
-						m._group = "Search Results";
-						return m;
-					});
-				});
-
-
-			}
-
-			$window.onbeforeunload = function(e) {
-				if (!$scope.addProductForm.$dirty) {
-					// only warn when form is dirty
-					return null
-				}
-				var message = 'Your changes will not be saved.',
-				e = e || window.event
-					// For IE and Firefox
-					if (e) {
-						e.returnValue = message
-					}
-
-				// For Safari
-				return message
-			} // end onbeforeunload
-
-			$scope.asStatus = Product.getStatus
-				$scope.isFreeTextInput = util.isFreeTextDataType
-				$scope.isListInput = util.isListDataType
-				$scope.isHtmlInput = util.isHtmlDataType
-				$scope.isCheckboxInput = util.isCheckboxDataType
-
-				$scope.enableVariation = function() {
-					$scope.controlFlags.variation = 'enable'
-				}
-			$scope.alert = new NcAlert()
-
-				// Variation Factor (lhs) Indices are used as index
-				// for ng-repeat in variation tab
-				$scope.variationFactorIndices = {
-					iterator: [0],
-					length: function() {
-						return $scope.variationFactorIndices.iterator.length
-					},
-					popSecond: function() {
-						$scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop()
-							$scope.dataSet.attributeOptions[1].options = []
-							$scope.dataSet.attributeOptions[1].Attribute = null
-					},
-					pushSecond: function() {
-						$scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1)
-					}
-				}
-
-			$scope.image_alert = new NcAlert()
-
-		}])
-
-},{"angular":186}],110:[function(require,module,exports){
-var angular = require('angular');
-angular.module('productDetail').
-    factory('$productAdd', ["Product", "Brand", "AttributeSet", "ImageService", "GlobalCategory", "$q", "Category", "util", function(Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category, util) {
-        'ngInject';
-        var $productAdd = {};
-
-        /**
-         * 
-         * Rebuild variations array from set of attribute options in dataset
-         * 
-         * @param  {FormData} formData
-         * @param  {DataSet} dataSet
-         */
-        $productAdd.generateVariants = function(formData, dataSet) {
-            var vHashSet = {};
-            var prevVariants = angular.copy(formData.Variants);
-            prevVariants.forEach(function(elem, index) {
-                vHashSet[elem.text] = prevVariants[index];
+  ["$scope", "$uibModal", "$window", "util", "config", "Product", "ImageService", "AttributeSet", "Brand", "Shop", "LocalCategoryService", "GlobalCategory", "Category", "$rootScope", "KnownException", "NcAlert", "$productAdd", "options", "AttributeSetService", "JSONCache", "skeemas", function($scope, $uibModal, $window, util, config, Product, ImageService,
+    AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
+    KnownException, NcAlert, $productAdd, options, AttributeSetService, JSONCache, skeemas) {
+    'ngInject';
+
+    var MAX_FILESIZE = (options.maxImageUploadSize || 5000000);
+    var QUEUE_LIMIT = (options.maxImageUploadQueueLimit || 20);
+
+    $scope.adminMode = options.adminMode;
+    $scope.overview = {};
+    $scope.formData = {
+      Status: 'DF',
+      ShopId: null,
+      Visibility: true,
+      GlobalCategories: [null, null, null],
+      LocalCategories: [null, null, null],
+      MainGlobalCategory: null,
+      MainLocalCategory: null,
+      Tags: [],
+      ControlFlags: [],
+      Brand: {
+        id: null
+      },
+      TheOneCardEarn: 1,
+      GiftWrap: 'No',
+      AttributeSet: {
+        AttributeSetTagMaps: []
+      },
+      MasterAttribute: {},
+      RelatedProducts: [],
+      EffectiveDate: null,
+      ExpireDate: null,
+      LimitIndividualDay: false,
+      MasterVariant: {
+        ProductNameEn: '',
+        ProductNameTh: '',
+        Sku: '',
+        DescriptionFullEn: '',
+        DescriptionShortEn: '',
+        DescriptionShortTh: '',
+        DescriptionFullTh: '',
+        DimensionUnit: 'MM',
+        WeightUnit: 'G',
+        StockType: 'Stock',
+        Images: [],
+        Installment: 'N',
+        ShippingMethod: '1',
+        VideoLinks: [],
+        SEO: {
+          ProductBoostingWeight: 5000
+        }
+      },
+      Variants: []
+    };
+
+    //Initialize Pointers
+    $scope.variantPtr = $scope.formData.MasterVariant;
+
+    var checkSchema = function(data, schemaName){
+      //Perform schema check
+      var schema = JSONCache.get(schemaName || 'productStages');
+      var validation = skeemas.validate(data, schema);
+      console.log("Schema validation result: ", validation);
+      if(!validation.valid){
+        $scope.devAlert.error('<strong>Warning</strong> Automated API structure pre-check procedure failed. ' +
+        'Format does not comply with the <strong>Ahancer Product Add Exchange Protocol (A-PAEP)</strong> V3 Rev B. ' +
+        'For more detail, look for <i>schema validation result</i> in your js console.');
+      }
+    };
+
+    //Open modal for cat selector
+    $scope.openCategorySelectorModal = function(ith, key, title) {
+      if(!key){
+        key= 'GlobalCategories';
+      }
+
+      var modalInstance = $uibModal.open({
+        size: 'category-section modal-lg column-4',
+        keyboard: false,
+        templateUrl: 'product/modalCategorySelector',
+        controller: ["$scope", "$uibModalInstance", "tree", "model", "disable", "exclude", function($scope, $uibModalInstance, tree, model, disable, exclude) {
+          'ngInject';
+          $scope.model = model;
+          $scope.exclude = exclude;
+          $scope.tree = tree;
+          $scope.title = 'Select Category';
+          $scope.categoryHeaderText = title;
+          $scope.disabledOn = disable;
+
+          $scope.select = function() {
+            $uibModalInstance.close($scope.model);
+          };
+        }],
+        resolve: {
+          model: function() {
+            return $scope.formData[key][ith];
+          },
+          tree: function() {
+            return $scope.dataset[key];
+          },
+          disable: function(){
+            return function(m){
+              if(m.nodes.length == 0) return false;
+              return true;
+            }
+          },
+          exclude: function(){
+            console.log('will exclude', $scope.formData[key])
+            return $scope.formData[key];
+          }
+        }
+      });
+
+      modalInstance.result.then(function(data) {
+        $scope.formData[key][ith] = data;
+      });
+
+    };
+
+    $scope.onImageUploadFail = function(item, filter) {
+      $scope.image_alert.error(item.Message || 'Your image does not meet guideline. Images must be smaller than 5 MB, with square size larger than 1500x1500.');
+    }
+
+    $scope.onImageUploadSuccess = function() {
+      $scope.image_alert.close();
+    }
+
+    $scope.onImageUploadQueueLimit = function() {
+      //nop
+    };
+    $scope.asStatus = Product.getStatus;
+    $scope.refresher = {};
+
+    var watchVariantFactorChanges = function() {
+      $scope.$watch('dataset.attributeOptions', function() {
+        $productAdd.generateVariants($scope.formData, $scope.dataset)
+      }, true);
+    };
+
+    // CK editor options
+    $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
+    $scope.dataset = {
+      CombinedAttributeSets: []
+    };
+    $scope.dataset.AttributeSets = [{
+      AttributeSetId: null,
+      disabled: true,
+      AttributeSetNameEn: 'No Attribute Set'
+    }];
+    $scope.dataset.GlobalCategories = [];
+    $scope.dataset.LocalCategories = [];
+    $scope.dataset.BrandsEmpty = [{
+      BrandId: null,
+      _group: 'No Result',
+      BrandNameEn: 'Search by brand by name or Brand id...',
+      disabled: true
+    }];
+    $scope.dataset.Brands = [];
+    $scope.enableVariation = function() {
+      $scope.controlFlags.variation = 'enable';
+    }
+
+    $scope.dataset.SearchTags = [];
+    $scope.dataset.RelatedProducts = [];
+    $scope.dataset.VariantDisplayOption = [{
+      text: 'Show as group of variants',
+      value: 'GROUP'
+    }, {
+      text: 'Show as individual product',
+      value: 'INDIVIDUAL'
+    }];
+
+    $scope.pageState = {
+      loading: {
+        state: true,
+        message: 'Loading..'
+      },
+      load: function(msg) {
+        $scope.pageState.loading.message = msg;
+        $scope.pageState.loading.state = true;
+      },
+      reset: function() {
+        $scope.alert.close();
+        $scope.pageState.loading.state = false;
+      }
+    };
+
+    $scope.breadcrumb = {
+      globalCategory: null
+    };
+
+    $scope.preview = function() {
+      console.log("Before Serialization", $scope.formData);
+      var serialized = Product.serialize($scope.formData);
+      console.log("After Serialization", serialized);
+      checkSchema(serialized);
+    };
+
+    $scope.$watch('formData.MasterVariant.OriginalPrice+formData.MasterVariant.SalePrice', function() {
+      var form = $scope.addProductForm;
+      if (form.SalePrice) form.SalePrice.$setValidity('min', true);
+      if (!form.SalePrice) return;
+      if ($scope.formData.MasterVariant.SalePrice == '') return;
+
+      if (Number($scope.formData.MasterVariant.SalePrice) >= Number($scope.formData.MasterVariant.OriginalPrice)) {
+        if (form.SalePrice) form.SalePrice.$setValidity('min', false)
+        form.SalePrice.$error['min'] = 'Sale Price must not exceed Original Price'
+      }
+    });
+
+    $scope.$watch('formData.ExpireDate', function() {
+      // TODO: refactor use nctemplate
+      var form = $scope.addProductForm;
+      if (form.EffectiveDate == null) {
+        return
+      }
+      if (form.ExpireDate) form.ExpireDate.$setValidity('min', true)
+      if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
+        if (!form.ExpireDate) return;
+        if (form.ExpireDate) form.ExpireDate.$setValidity('min', false);
+        form.ExpireDate.$error['min'] = 'Effective date/time must come before expire date/time';
+      }
+    });
+
+    /**
+     * Other additional validations
+     * @param  {String} Status
+     */
+    var manualValidate = function(Status) {
+      var mat = []
+
+      if (Status == 'WA') {
+        if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData.MasterVariant.DescriptionFullTh == '') {
+          mat.push('Description (Thai)')
+        }
+
+        if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData.MasterVariant.DescriptionFullEn == '') {
+          mat.push('Description (English)')
+        }
+
+        if (!$scope.formData.Brand.BrandId) {
+          mat.push('Brand')
+        }
+
+        if ($scope.formData.MasterImages.length == 0) {
+          mat.push('At least one image')
+        }
+
+        $scope.formData.Variants.forEach(function(variant) {
+          if (variant.Images.length == 0) {
+            mat.push('At least one image for variation ' + "'" + variant.text + "'")
+          }
+        })
+
+      }
+
+      var cnt = $scope.formData.Variants.reduce(function(total, x) {
+        return x.Visibility ? total + 1 : total
+      }, 0)
+
+      if (cnt == 0 && $scope.formData.Variants.length > 0) {
+        mat.push('At least one variant must be visible.')
+      }
+
+      if ($scope.formData.ExpireDate && $scope.formData.ExpireDate <= $scope.formData.EffectiveDate) {
+        mat.push('Effective date/time must come before expire date/time.')
+      }
+
+      return mat
+    };
+
+    /**
+     * Publish Confirmation
+     * Show dialog to ask if user really want to publish
+     */
+    $scope.prePublishWA = function() {
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'product/modalConfirmPublish',
+        controller: ["$scope", "$uibModalInstance", "$timeout", function($scope, $uibModalInstance, $timeout) {
+          'ngInject'
+          $scope.no = function() {
+            $uibModalInstance.close('no')
+          }
+
+          $scope.yes = function() {
+            $uibModalInstance.close('yes')
+          }
+        }],
+        size: 'size-warning',
+        resolve: {
+
+        }
+      })
+      modalInstance.result.then(function(selectedItem) {
+        console.log(selectedItem)
+        if (selectedItem == 'yes') {
+          $scope.publish('WA')
+        }
+      }, function() {
+        console.log('Modal dismissed at: ' + new Date())
+      })
+
+    }
+
+    /**
+     * Publish (save as draft and publish)
+     * @param  {String} Status (WA or DF or other enum sent to server)
+     */
+    $scope.publish = function(Status) {
+      $scope.pageState.reset();
+      $scope.pageState.load('Validating..');
+
+      if ($scope.controlFlags.variation == 'enable' && $scope.formData.Variants.length == 0) {
+        $scope.controlFlags.variation == 'disable';
+      }
+
+      if ($scope.controlFlags.variation == 'disable') {
+        $scope.formData.Variants = [];
+      }
+
+      $scope.onPublishing = (Status == 'WA');
+        // On click validation
+      var validateMat = manualValidate(Status);
+      if (validateMat.length > 0) {
+        $scope.pageState.reset();
+        $scope.alert.error(validateMat.join(', '));
+        return;
+      }
+
+      if ($scope.addProductForm.$invalid) {
+        $scope.pageState.reset();
+        console.log($scope.addProductForm.$error);
+        var requiredMissing = ('required' in $scope.addProductForm.$error);
+        if (Status == 'DF' && requiredMissing) {
+          var errorList = []
+          if ($scope.addProductForm.ProductNameEn.$invalid) {
+            errorList.push('Product Name (English)');
+          }
+          // Product Name (Thai), Product Name (English), and Sale Price,
+          if ($scope.addProductForm.ProductNameTh.$invalid) {
+            errorList.push('Product Name (Thai)');
+          }
+
+          if ($scope.addProductForm.SalePrice.$invalid) {
+            errorList.push('Sale Price');
+          }
+          errorList.push('Master Attributes')
+
+          $scope.alert.error('Unable to save. Please make sure that ' + errorList.join(' and ') + ' are filled correctly.')
+        } else if (Status == 'WA' && requiredMissing) {
+          $scope.alert.error('Unable to publish because you are missing required fields')
+        } else {
+          console.warn($scope.addProductForm.$error)
+          $scope.alert.error('Unable to save. Please make sure all fields have no error.')
+        }
+        return
+      }
+
+      $scope.pageState.load('Saving..');
+
+      var apiRequest = Product.serialize($scope.formData);
+      Product.publish(apiRequest, Status).then(function(res) {
+        $scope.pageState.reset();
+        if (res.ProductId) {
+          $scope.overview = res;
+          $scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions); // will trigger watchvariantchange
+          var catId = Number(res.MainGlobalCategory.CategoryId);
+
+          $productAdd.fill(checkSchema, catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function() {
+            $scope.formData.ProductId = Number(res.ProductId);
+            $scope.pageState.reset();
+            $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
+
+          });
+
+          $scope.addProductForm.$setPristine(true);
+        } else {
+          $scope.alert.error('Unable to save because ' + (res.message || res.Message));
+          $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
+        }
+      }, function(er) {
+        $scope.pageState.reset();
+        $scope.alert.error('Unable to save because ' + (er.message || er.Message));
+        $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
+      });
+
+    }
+
+
+
+    $scope.init = function(viewBag) {
+      if (!angular.isObject(viewBag)) throw new KnownException('View bag is corrupted');
+
+      var _editMode = ('productId' in viewBag);
+      for (var page in tabPage) {
+        tabPage[page].angular()
+      }
+
+      if (_editMode) {
+        var productId = viewBag.productId;
+        $scope.pageState.load('Loading Product..');
+
+        Product.getOne(productId)
+          .then(function(inverseFormData) {
+            $scope.overview = angular.copy(inverseFormData);
+            var catId = Number(inverseFormData.MainGlobalCategory.CategoryId);
+
+
+
+            //Fill the page with data
+            $productAdd.fill(checkSchema, catId,
+              $scope.pageState, $scope.dataset,
+              $scope.formData, $scope.breadcrumb, $scope.controlFlags,
+              $scope.variationFactorIndices, inverseFormData)
+							.then(function() {
+								$scope.variantPtr = $scope.formData.MasterVariant;
+	              $scope.formData.ProductId = Number(productId);
+	              $scope.pageState.reset();
+	              watchVariantFactorChanges();
+
+	              LocalCategoryService.getAllByShopId($scope.formData.ShopId).then(function(data) {
+	                $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data);
+	              });
+
+                checkSchema(inverseFormData);
+
             });
 
-            //Unset
-            prevVariants = undefined;
+          }, function(error) {
+            throw new KnownException('Unable to fetch product with id ' + productId);
+          })
 
-            formData.Variants = [];
-            var trackVariant = new Set();
-
-            var VARIANT_DUMMY_FACTOR = '';
-            var expand = function(A0, B0) {
-
-                var AVId = null;
-                var BVId = null;
-                var B = B0;
-                var A = A0;
-
-                if (_.has(A0, 'AttributeValue.AttributeValueId')) {
-                    AVId = A0.AttributeValue.AttributeValueId;
-                    A = A0.AttributeValue.AttributeValueEn;
-                }
-
-                if (angular.isDefined(B0)) {
-                    if (_.has(B0, 'AttributeValue.AttributeValueId')) {
-                        BVId = B0.AttributeValue.AttributeValueId;
-                        B = B0.AttributeValue.AttributeValueEn;
-                    }
-                } else {
-                    //B is not defined
-                    B = VARIANT_DUMMY_FACTOR;
-                }
-
-                var kpair = {};
-                var firstAttribute = {
-                    AttributeId: !dataSet.attributeOptions[0].Attribute ? null : dataSet.attributeOptions[0].Attribute.AttributeId,
-                    AttributeValues: (!AVId ? [] : [{
-                        AttributeValueId: AVId
-                    }]),
-                    ValueEn: A
-                };
-
-                var secondAttribute = {
-                    AttributeId: !dataSet.attributeOptions[1].Attribute ? null : dataSet.attributeOptions[1].Attribute.AttributeId,
-                    AttributeValues: (!BVId ? [] : [{
-                        AttributeValueId: BVId
-                    }]),
-                    ValueEn: B
-                };
-
-                kpair.FirstAttribute = firstAttribute;
-                kpair.SecondAttribute = secondAttribute;
-                kpair.text = util.variant.toString(firstAttribute, secondAttribute);
-                //Copy default value over from main variant
-                kpair.ProductNameEn = formData.MasterVariant.ProductNameEn;
-                kpair.ProductNameTh = formData.MasterVariant.ProductNameTh;
-                kpair.Display = dataSet.VariantDisplayOption[0].value;
-                kpair.Visibility = true;
-                kpair.DimensionUnit = "MM";
-                kpair.WeightUnit = "G";
-                kpair.Sku = (formData.MasterVariant.Sku || "SKU") + "-" + (Number((formData.Variants || []).length) + 1);
-                kpair.OriginalPrice = formData.MasterVariant.OriginalPrice;
-                kpair.SalePrice = formData.MasterVariant.SalePrice;
-                kpair.Quantity = formData.MasterVariant.Quantity;
-                kpair.Length = formData.Length;
-                kpair.Width = formData.Width;
-                kpair.Height = formData.Height;
-                kpair.Upc = formData.MasterVariant.Upc;
-                kpair.Weight = formData.Weight;
-                kpair.DescriptionFullEn = formData.MasterVariant.DescriptionFullEn;
-                kpair.DescriptionFullTh = formData.MasterVariant.DescriptionFullTh;
-                kpair.DescriptionShortEn = formData.MasterVariant.DescriptionShortEn;
-                kpair.DescriptionShortTh = formData.MasterVariant.DescriptionShortTh;
-                kpair.Images = angular.copy(formData.MasterImages);
-                kpair.VideoLinks = angular.copy(formData.VideoLinks);
-                kpair.PrepareDay = formData.PrepareDay;
-                kpair.PrepareSun = formData.PrepareSun;
-                kpair.PrepareSat = formData.PrepareSat;
-                kpair.PrepareFri = formData.PrepareFri;
-                kpair.PrepareThu = formData.PrepareThu;
-                kpair.PrepareWed = formData.PrepareWed;
-                kpair.PrepareTue = formData.PrepareTue;
-                kpair.PrepareMon = formData.PrepareMon;
-                kpair.SEO = angular.copy(formData.SEO || {});
-                kpair.SEO.ProductUrlKeyEn = "";
-
-                if (kpair.text in vHashSet) {
-                    //Replace with value from vHashSet
-                    kpair = vHashSet[kpair.text];
-                }
-
-                var hashNew = (util.variant.toString(kpair.FirstAttribute, kpair.SecondAttribute));
-                if (!trackVariant.has(hashNew)) {
-                    //Only push new variant if don't exist
-
-                    formData.Variants.push(kpair);
-                    trackVariant.add(hashNew);
-                }
-
-            }
-
-            //Multiply out unmultiplied options
-            if (dataSet.attributeOptions && Object.keys(dataSet.attributeOptions).length > 0) {
-                for (var aKey in dataSet.attributeOptions[0].options) {
-                    var A = dataSet.attributeOptions[0].options[aKey];
-
-                    if (angular.isDefined(dataSet.attributeOptions[1]['options']) && dataSet.attributeOptions[1].options.length == 0) {
-                        expand(A);
-                    }
-
-                    for (var bKey in dataSet.attributeOptions[1].options) {
-                        var B = dataSet.attributeOptions[1].options[bKey];
-                        expand(A, B);
-                    }
-                }
-            }
-
-            formData.DefaultVariant = formData.Variants[0];
-        };
+      } else if ('catId' in viewBag) {
+        if (viewBag.catId == null) window.location.href = '/products/select';
+        LocalCategoryService.list().then(function(data) {
+          $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data);
+        })
+        var catId = Number(viewBag.catId);
+        $productAdd.fill(checkSchema, catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb,
+          $scope.controlFlags, $scope.variationFactorIndices).then(function() {
+          $scope.pageState.reset();
+          watchVariantFactorChanges();
+          // ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
+        })
+      } else {
+        throw new KnownException('Invalid mode, viewBag garbage')
+      }
 
 
-        $productAdd.flatten = {
-            'AttributeSetTagMap': function(AttributeSetTagMap) {
-                return AttributeSetTagMap.map(function(asti) {
-                    return asti.Tag.TagName;
-                });
-            }
-        };
+    }
 
+    var tabPage = {}
+
+    tabPage.images = {
+      angular: function() {
         /**
-         * 
-         * Fill product add page with data of related dependencies
-         * 
-         * @param  {Integer} globalCatId
-         * @param  {AddProductPageLoader} pageLoader
-         * @param  {DataSet} sharedDataSet
-         * @param  {FormData} sharedFormData
-         * @param  {object} breadcrumbs
-         * @param  {object} controlFlags
-         * @param  {object} variationFactorIndices
-         * @param  {InverseFormData} ivFormData (Optional)
+         * IMAGE THUMBNAIL EVENTS
          */
-        $productAdd.fill = function(globalCatId, pageLoader, sharedDataSet,
-            sharedFormData, breadcrumbs, controlFlags, variationFactorIndices, ivFormData) {
+        $scope.$on('left', function(evt, item, array, index) {
+          var to = index - 1
+          if (to < 0) to = array.length - 1
 
+          var tmp = array[to]
+          array[to] = item
+          array[index] = tmp
+        })
+        $scope.$on('right', function(evt, item, array, index) {
+          var to = index + 1
+          if (to >= array.length) to = 0
 
-            var deferred = $q.defer();
-            pageLoader.load('Downloading Attribute Sets..');
+          var tmp = array[to]
+          array[to] = item
+          array[index] = tmp
+        })
+        $scope.$on('delete', function(evt, item, array, index) {
+          array.splice(index, 1)
+        })
+        $scope.$on('zoom', function(evt, item, array, index) {
+          // Should use angular way, but ok whatever
+          $('#product-image-zoom img').attr('src', item.url)
+          $('#product-image-zoom').modal('show')
+        })
+      }
+    }
 
-            AttributeSet.getByCategory(globalCatId)
-                .then(function(data) {
-                    sharedDataSet.AttributeSets = data.map(function(aset) {
-                        aset._group = "Suggested Attribute Sets";
-                        aset.AttributeSetTagMaps = $productAdd.flatten.AttributeSetTagMap(aset.AttributeSetTagMaps);
-                        return aset;
-                    });
+    tabPage.category = {
+      angular: function() {
+        // Events
+        $scope.$on('deleteGlobalCat', function(evt, indx) {
+          $scope.formData.GlobalCategories[indx] = null;
+        })
 
-                    sharedDataSet.CombinedAttributeSets = angular.copy(sharedDataSet.AttributeSets);
-                    
-                    if (ivFormData) {
-                        pageLoader.load('Indexing AttributeSet');
-                        sharedFormData.AttributeSet = sharedDataSet.AttributeSets[sharedDataSet.AttributeSets.map(function(o) {
-                            return o.AttributeSetId
-                        }).indexOf(ivFormData.AttributeSet.AttributeSetId)];
+        $scope.$on('deleteLocalCat', function(evt, indx) {
+          $scope.formData.LocalCategories[indx] = null;
+        })
+      }
+    }
 
-                        var parse = function(ivFormData, FullAttributeSet) {
-                            pageLoader.load('Loading product data..');
-                            var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
+    tabPage.variation = {
+      angular: function() {
+        $scope.uploaderModal = ImageService.getUploader('/ProductImages', {
+          queueLimit: QUEUE_LIMIT
+        });
 
-                            //copy it out
-                            Object.keys(inverseResult.formData).forEach(function(key) {
-                                sharedFormData[key] = inverseResult.formData[key];
-                            })
+        $scope.uploaderModal.filters.push({
+          'name': 'enforceMaxFileSize',
+          'fn': function(item) {
+            return item.size <= MAX_FILESIZE
+          }
+        });
 
-                            console.log("After Inverse Transformation", sharedFormData);
-                            if (sharedFormData.Variants.length > 0) {
-                                controlFlags.variation = "enable";
-                            }
-                            sharedDataSet.attributeOptions = inverseResult.attributeOptions || sharedDataSet.attributeOptions;
-                            if (sharedDataSet.attributeOptions[1].options.length > 0) {
-                                variationFactorIndices.pushSecond();
-                            }
-                        };
-                        parse(ivFormData, sharedFormData.AttributeSet);
-                    }
+        $scope.openVariantDetail = function(pair, array, index) {
+          if (angular.isUndefined(pair.Images)) {
+            pair.Images = [];
+          }
 
-                    pageLoader.load('Downloading Category Tree..');
-                    //Load Global Cat
-                    GlobalCategory.getAll().then(function(data) {
-                        sharedDataSet.GlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
-                        sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
-                        breadcrumbs.globalCategory = Category.createCatStringById(globalCatId, sharedDataSet.GlobalCategories);
-                        console.log(breadcrumbs, "breadcrumb");
-                        pageLoader.load('Preparing content..');
-                        deferred.resolve();
-                    });
+          if (angular.isUndefined(pair.queue)) {
+            pair.queue = [];
+          }
 
+          // Modal target (for viewing pair)
+          $scope.pairModal = angular.copy(pair);
+          $scope.pairModal.alert = new NcAlert();
+          $scope.pairIndex = index;
 
+          $scope.uploaderModal.queue = $scope.pairModal.queue;
+          // ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
+
+          var variantModal = $uibModal.open({
+            animation: false,
+            templateUrl: 'ap/modal-variant-detail',
+            controller: ["$scope", "$uibModalInstance", "$timeout", "pair", "dataset", "formData", "uploader", function($scope, $uibModalInstance, $timeout, pair, dataset, formData, uploader) {
+              'ngInject';
+              $scope.pair = pair;
+              $scope.dataset = dataset;
+              $scope.variantPtr = pair;
+              $scope.uploader = uploader;
+              $scope.no = function() {
+                $uibModalInstance.close();
+              }
+              $scope.yes = function() {
+                $uibModalInstance.close($scope.pair);
+              }
+            }],
+            size: 'xl',
+            resolve: {
+              uploader: function() {
+                return ImageService.getUploader('/ProductImages', {
+                  queueLimit: QUEUE_LIMIT
                 });
+              },
+              formData: function() {
+                return $scope.formData
+              },
+              pair: function() {
+                console.log('resolving', $scope.pairModal)
+                return $scope.pairModal
+              },
+              ckOptions: function() {
+                return $scope.ckOptions
+              },
+              dataset: function() {
+                return $scope.dataset
+              }
+            }
+          })
 
-            return deferred.promise;
-        };
+          variantModal.result.then(function(pairModal) {
+            console.log(pairModal);
+            if (pairModal) {
+              $scope.formData.Variants[$scope.pairIndex] = pairModal
+            }
 
-        return $productAdd;
-    }]);
-},{"angular":186}],111:[function(require,module,exports){
+            // Restore pointers
+            $scope.form = $scope.addProductForm;
+            $scope.variantPtr = $scope.formData.MasterVariant;
+
+          }, function() {
+            console.log('Modal dismissed at: ' + new Date());
+          })
+
+        }
+
+      }
+    }
+
+    $scope.protoAttributeOptions = {
+      0: {
+        Attribute: false,
+        options: []
+      },
+      1: {
+        Attribute: false,
+        options: []
+      }
+    };
+
+    $scope.uploader = ImageService.getUploader('/ProductImages', {
+      queueLimit: QUEUE_LIMIT
+    });
+
+    $scope.uploader.filters.push({
+      'name': 'enforceMaxFileSize',
+      'fn': function(item) {
+        return item.size <= MAX_FILESIZE
+      }
+    });
+
+    $scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions);
+
+    $scope.refresher.AttributeSetsLoading = false;
+    $scope.refresher.AttributeSets = function(q) {
+      if (!q) return;
+      $scope.refresher.AttributeSetsLoading = true;
+      return AttributeSetService.list({
+        _order: 'AttributeSetId',
+        _limit: 5,
+        _offset: 0,
+        _direction: 'asc',
+        searchText: q
+      }).then(function(ds) {
+        $scope.refresher.AttributeSetsLoading = false;
+        var searchRes = ds.data.map(function(d) {
+          d._group = 'Search Results';
+          d.AttributeSetTagMaps = $productAdd.flatten.AttributeSetTagMap(d.AttributeSetTagMaps);
+          return d;
+        });
+        $scope.dataset.CombinedAttributeSets = _.unionBy(searchRes, $scope.dataset.AttributeSets, 'AttributeSetId');
+      })
+    };
+
+
+    /**
+     * Refresh Related Product Data
+     * @param  {String} q
+     */
+    $scope.refresher.RelatedProducts = function(q) {
+      return Product.getAll({
+        searchText: q,
+        pageSize: 8
+      }).then(function(ds) {
+        $scope.dataset.RelatedProducts = ds.data;
+      })
+    }
+
+    $scope.controlFlags = {
+      variation: 'disable',
+      enableSections: {
+        embedVideo: false,
+        embed360: false
+      }
+    };
+
+    /**
+     * Refresh Brand Data Set used for searching
+     * @param  {String} q
+     */
+
+    $scope.refresher.BrandLoading = false;
+    $scope.refresher.Brands = function(q) {
+      // TODO: too slow
+      if (!q) return
+
+      $scope.refresher.BrandLoading = true;
+
+      Brand.getAll({
+        pageSize: 10,
+        searchText: q
+      }).then(function(ds) {
+        $scope.refresher.BrandLoading = false;
+        $scope.dataset.Brands = ds.data; // _.unionBy($scope.dataset.Brands, ds.data, 'BrandId');
+        $scope.dataset.Brands.map(function(m) {
+          m._group = "Search Results";
+          return m;
+        });
+      });
+
+
+    }
+
+    $window.onbeforeunload = function(e) {
+        if (!$scope.addProductForm.$dirty) {
+          // only warn when form is dirty
+          return null;
+        }
+        var message = 'Your changes will not be saved.',
+          e = e || window.event
+          // For IE and Firefox
+        if (e) {
+          e.returnValue = message
+        }
+
+        // For Safari
+        return message
+      } // end onbeforeunload
+
+    $scope.asStatus = Product.getStatus;
+    $scope.isFreeTextInput = util.isFreeTextDataType;
+    $scope.isListInput = util.isListDataType;
+    $scope.isHtmlInput = util.isHtmlDataType;
+    $scope.isCheckboxInput = util.isCheckboxDataType;
+
+    $scope.alert = new NcAlert();
+    $scope.devAlert = new NcAlert();
+    $scope.image_alert = new NcAlert();
+
+    // Variation Factor (lhs) Indices are used as index
+    // for ng-repeat in variation tab
+    $scope.variationFactorIndices = {
+      iterator: [0],
+      length: function() {
+        return $scope.variationFactorIndices.iterator.length
+      },
+      popSecond: function() {
+        $scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop()
+        $scope.dataSet.attributeOptions[1].options = []
+        $scope.dataSet.attributeOptions[1].Attribute = null
+      },
+      pushSecond: function() {
+        $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1)
+      }
+    };
+
+
+  }])
+
+},{"angular":191}],111:[function(require,module,exports){
+var angular = require('angular');
+angular.module('productDetail').
+factory('$productAdd', ["Product", "Brand", "AttributeSet", "ImageService", "GlobalCategory", "$q", "Category", "util", function(Product, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category, util) {
+  'ngInject';
+  var $productAdd = {};
+
+  /**
+   *
+   * Rebuild variations array from set of attribute options in dataset
+   *
+   * @param  {FormData} formData
+   * @param  {DataSet} dataSet
+   */
+  $productAdd.generateVariants = function(formData, dataSet) {
+    var vHashSet = {};
+    var prevVariants = angular.copy(formData.Variants);
+    prevVariants.forEach(function(elem, index) {
+      vHashSet[elem.text] = prevVariants[index];
+    });
+
+    //Unset
+    prevVariants = undefined;
+
+    formData.Variants = [];
+    var trackVariant = new Set();
+
+    var VARIANT_DUMMY_FACTOR = '';
+    var expand = function(A0, B0) {
+
+      var AVId = null;
+      var BVId = null;
+      var B = B0;
+      var A = A0;
+
+      if (_.has(A0, 'AttributeValue.AttributeValueId')) {
+        AVId = A0.AttributeValue.AttributeValueId;
+        A = A0.AttributeValue.AttributeValueEn;
+      }
+
+      if (angular.isDefined(B0)) {
+        if (_.has(B0, 'AttributeValue.AttributeValueId')) {
+          BVId = B0.AttributeValue.AttributeValueId;
+          B = B0.AttributeValue.AttributeValueEn;
+        }
+      } else {
+        //B is not defined
+        B = VARIANT_DUMMY_FACTOR;
+      }
+
+      var kpair = angular.copy(formData.MasterVariant);
+      var firstAttribute = {
+        AttributeId: !dataSet.attributeOptions[0].Attribute ? null : dataSet.attributeOptions[0].Attribute.AttributeId,
+        AttributeValues: (!AVId ? [] : [{
+          AttributeValueId: AVId
+        }]),
+        ValueEn: A
+      };
+
+      var secondAttribute = {
+        AttributeId: !dataSet.attributeOptions[1].Attribute ? null : dataSet.attributeOptions[1].Attribute.AttributeId,
+        AttributeValues: (!BVId ? [] : [{
+          AttributeValueId: BVId
+        }]),
+        ValueEn: B
+      };
+
+      kpair.FirstAttribute = firstAttribute;
+      kpair.SecondAttribute = secondAttribute;
+      kpair.text = util.variant.toString(firstAttribute, secondAttribute);
+      kpair.Display = dataSet.VariantDisplayOption[0].value;
+      kpair.Visibility = true;
+      kpair.SEO.ProductUrlKeyEn = "";
+
+      if (kpair.text in vHashSet) {
+        //Replace with value from vHashSet
+        kpair = vHashSet[kpair.text];
+      }
+
+      var hashNew = (util.variant.toString(kpair.FirstAttribute, kpair.SecondAttribute));
+      if (!trackVariant.has(hashNew)) {
+        //Only push new variant if don't exist
+
+        formData.Variants.push(kpair);
+        trackVariant.add(hashNew);
+      }
+
+    }
+
+    //Multiply out unmultiplied options
+    if (dataSet.attributeOptions && Object.keys(dataSet.attributeOptions).length > 0) {
+      for (var aKey in dataSet.attributeOptions[0].options) {
+        var A = dataSet.attributeOptions[0].options[aKey];
+
+        if (angular.isDefined(dataSet.attributeOptions[1]['options']) && dataSet.attributeOptions[1].options.length == 0) {
+          expand(A);
+        }
+
+        for (var bKey in dataSet.attributeOptions[1].options) {
+          var B = dataSet.attributeOptions[1].options[bKey];
+          expand(A, B);
+        }
+      }
+    }
+
+    formData.DefaultVariant = formData.Variants[0];
+  };
+
+
+  $productAdd.flatten = {
+    'AttributeSetTagMap': function(AttributeSetTagMap) {
+      return AttributeSetTagMap.map(function(asti) {
+        return asti.Tag.TagName;
+      });
+    }
+  };
+
+  /**
+   *
+   * Fill product add page with data of related dependencies
+   *
+   * @param  {function} checkSchema
+   * @param  {Integer} globalCatId
+   * @param  {AddProductPageLoader} pageLoader
+   * @param  {DataSet} sharedDataSet
+   * @param  {FormData} sharedFormData
+   * @param  {object} breadcrumbs
+   * @param  {object} controlFlags
+   * @param  {object} variationFactorIndices
+   * @param  {InverseFormData} ivFormData (Optional)
+   */
+  $productAdd.fill = function(checkSchema, globalCatId, pageLoader, sharedDataSet,
+    sharedFormData, breadcrumbs, controlFlags, variationFactorIndices, ivFormData) {
+
+    var deferred = $q.defer();
+    pageLoader.load('Downloading Attribute Sets..');
+
+    AttributeSet.getByCategory(globalCatId)
+      .then(function(data) {
+        if(data.length > 0) checkSchema(data[0], 'attributeSet');
+        sharedDataSet.AttributeSets = data.map(function(aset) {
+          aset._group = "Suggested Attribute Sets";
+          aset.AttributeSetTagMaps = $productAdd.flatten.AttributeSetTagMap(aset.AttributeSetTagMaps);
+          return aset;
+        });
+
+        sharedDataSet.CombinedAttributeSets = angular.copy(sharedDataSet.AttributeSets);
+
+        if (ivFormData) {
+          pageLoader.load('Indexing AttributeSet');
+
+          //Search for Attribute Set from Attribute Set list that matches the Id
+          //TODO: just let backend send entire thing
+          sharedFormData.AttributeSet = sharedDataSet.AttributeSets[sharedDataSet.AttributeSets.map(function(o) {
+            return o.AttributeSetId
+          }).indexOf(ivFormData.AttributeSet.AttributeSetId)];
+
+          var parse = function(ivFormData, FullAttributeSet) {
+            pageLoader.load('Loading product data..');
+            var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
+
+            //copy it out
+            Object.keys(inverseResult.formData).forEach(function(key) {
+              sharedFormData[key] = inverseResult.formData[key];
+            });
+
+            console.log("After Inverse Transformation", sharedFormData);
+            if (sharedFormData.Variants.length > 0) {
+              controlFlags.variation = "enable";
+            }
+            sharedDataSet.attributeOptions = inverseResult.attributeOptions || sharedDataSet.attributeOptions;
+            if (sharedDataSet.attributeOptions[1].options.length > 0) {
+              variationFactorIndices.pushSecond();
+            }
+          };
+
+          parse(ivFormData, sharedFormData.AttributeSet);
+        }
+
+        pageLoader.load('Downloading Category Tree..');
+        //TODO: bad!
+        //Load Global Cat
+        GlobalCategory.getAll().then(function(data) {
+          sharedDataSet.GlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
+          sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
+          breadcrumbs.globalCategory = Category.createCatStringById(globalCatId, sharedDataSet.GlobalCategories);
+          console.log(breadcrumbs, "breadcrumb");
+          pageLoader.load('Preparing content..');
+          deferred.resolve();
+        });
+      });
+
+    return deferred.promise;
+  };
+
+  return $productAdd;
+}]);
+
+},{"angular":191}],112:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail')
     .directive('apComponent', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", "Product", "util", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse, Product, util) {
@@ -8476,19 +8545,19 @@ angular.module('productDetail')
         };
     }]);
 
-},{"angular":186}],112:[function(require,module,exports){
+},{"angular":191}],113:[function(require,module,exports){
 var angular = require('angular');
 
 
 angular.module('productDetail', []);
 
-(function () {var f = require("./index.js");f["core"]=({"abstractProductAdd":require("./core/abstractProductAdd.js"),"productAddFactory":require("./core/productAddFactory.js")});f["directives"]=({"apComponent":require("./directives/apComponent.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
+(function () {var f = require("./index.js");f["core"]=({"abstractProductAddCtrl":require("./core/abstractProductAddCtrl.js"),"productLoader":require("./core/productLoader.js")});f["directives"]=({"apComponent":require("./directives/apComponent.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
-},{"./core/abstractProductAdd.js":109,"./core/productAddFactory.js":110,"./directives/apComponent.js":111,"./index.js":112,"./template.js":113,"angular":186}],113:[function(require,module,exports){
+},{"./core/abstractProductAddCtrl.js":110,"./core/productLoader.js":111,"./directives/apComponent.js":112,"./index.js":113,"./template.js":114,"angular":191}],114:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
-angular.module("nc").run(["$templateCache", function($templateCache) {  'use strict';
+angular.module("productDetail").run(["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('ap/inner-tab-breadcrumb',
     "<div><div class=\"alert alert-yellow\" ng-if=\"formDataPtr.Status == 'WA' && !adminMode\">This product is waiting for approval from the admin. You cannot edit it now.</div><div class=margin-bottom-20><span>Global Category:</span> <span>{{ breadcrumb.globalCategory }}</span></div></div>"
@@ -8505,7 +8574,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
     "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=variantPtr.DescriptionFullTh>\n" +
     "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=addProductForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=variantPtr.DescriptionShortEn>\n" +
     "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=addProductForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=variantPtr.DescriptionShortTh>\n" +
-    "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint1En nc-label=\"Killer Point 1 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint1En ng-model=variantPtr.KillerPoint1En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint1Th nc-label=\"Killer Point 1 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint1Th ng-model=variantPtr.KillerPoint1Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint2En nc-label=\"Killer Point 2 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint2En ng-model=variantPtr.KillerPoint2En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint2Th nc-label=\"Killer Point 2 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint2Th ng-model=variantPtr.KillerPoint2Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint3En nc-label=\"Killer Point 3 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint3En ng-model=variantPtr.KillerPoint2En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint3Th nc-label=\"Killer Point 3 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint3Th ng-model=variantPtr.KillerPoint3Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div></div></div></div>"
+    "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint1En nc-label=\"Killer Point 1 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint1En ng-model=variantPtr.KillerPoint1En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint1Th nc-label=\"Killer Point 1 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint1Th ng-model=variantPtr.KillerPoint1Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint2En nc-label=\"Killer Point 2 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint2En ng-model=variantPtr.KillerPoint2En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint2Th nc-label=\"Killer Point 2 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint2Th ng-model=variantPtr.KillerPoint2Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint3En nc-label=\"Killer Point 3 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint3En ng-model=variantPtr.KillerPoint3En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint3Th nc-label=\"Killer Point 3 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint3Th ng-model=variantPtr.KillerPoint3Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div></div></div></div>"
   );
 
 
@@ -8515,27 +8584,27 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('ap/section-image-video',
-    "<div><nc-image-block options=\"{height: '150px', width: '150px'}\" name=Images nc-model=imagesPtr title=\"Product Images\" uploader=uploader on-fail=onImageUploadFail size=120></nc-image-block><div class=form-section ng-show=\"imagesPtr.length > 0\"><div class=form-section-header>Embed Video</div><div class=form-section-content><div ng-repeat=\"i in imagesPtr\"><div nc-template=common/input/form-group-with-label nc-label=\"Video Link {{$index + 1}}\" nc-template-form=\"form['VideoLinks' + $index]\" nc-template-options-path=addProductForm/VideoLink><input class=\"form-control width-field-normal\" name=VideoLinks{{$index}} type=url maxlength=500 ng-model=\"variantPtr.VideoLinks[$index]\"></div></div></div></div></div>"
+    "<div><nc-image-block options=\"{height: '150px', width: '150px'}\" name=Images nc-model=variantPtr.Images title=\"Product Images\" uploader=uploader on-fail=onImageUploadFail size=120></nc-image-block><div class=form-section ng-show=\"variantPtr.Images.length > 0\"><div class=form-section-header>Embed Video</div><div class=form-section-content><div ng-repeat=\"i in variantPtr.Images\"><div nc-template=common/input/form-group-with-label nc-label=\"Video Link {{$index + 1}}\" nc-template-form=\"form['VideoLinks' + $index]\" nc-template-options-path=addProductForm/VideoLink><input class=\"form-control width-field-normal\" name=VideoLinks{{$index}} type=url ng-init=\"variantPtr.VideoLinks[$index] = { Url : null }\" maxlength=500 ng-model=\"variantPtr.VideoLinks[$index].Url\"></div></div></div></div></div>"
   );
 
 
   $templateCache.put('ap/section-inventory',
-    "<div class=form-section><div class=form-section-header><h2>Inventory</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.Quantity nc-template-options-path=addProductForm/Quantity nc-label=\"Inventory Amount\"><input class=form-control name=Quantity ng-pattern-restrict=^[0-9]*$ maxlength=10 ng-model=\"variantPtr.Quantity\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SafetyStock nc-template-options-path=addProductForm/SafetyStock nc-label=\"Safety Stock Amount\"><input class=form-control name=SafetyStock ng-pattern-restrict=^[0-9]*$ maxlength=10 ng-model=\"variantPtr.SafetyStock\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.StockType nc-template-options-path=addProductForm/StockType nc-label=\"Stock Type\"><select ng-model=variantPtr.StockType class=form-control name=StockType><option selected disabled>- Select Stock Type -</option><option>Stock</option><option>Pre-Order</option></select></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Inventory</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.Quantity nc-template-options-path=addProductForm/Quantity nc-label=\"Inventory Amount\"><input class=form-control name=Quantity ng-pattern-restrict=^[0-9]*$ maxlength=10 ng-model=\"variantPtr.Quantity\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SafetyStock nc-template-options-path=addProductForm/SafetyStock nc-label=\"Safety Stock Amount\"><input class=form-control name=SafetyStock ng-pattern-restrict=^[0-9]*$ maxlength=10 ng-model=\"variantPtr.SafetyStock\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.StockType nc-template-options-path=addProductForm/StockType nc-label=\"Stock Type\"><select ng-model=variantPtr.StockType class=form-control name=StockType><option selected value=- disabled>- Select Stock Type -</option><option value=Stock>Stock</option><option value=Pre-Order>Pre-Order</option></select></div></div></div>"
   );
 
 
   $templateCache.put('ap/section-keywords',
-    "<div class=form-section><div class=form-section-header><h2>Keywords</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=Keywords nc-template-form=form.Keywords nc-template-options-path=addProductForm/Keywords><ui-select ng-model=formData.Keywords name=Keywords nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 nc-tag-pattern=^[a-zA-Z0-9ก-๙\\s\\-]+$ multiple tagging tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match placeholder=\"Input keywords\">{{$item}}</ui-select-match><ui-select-choices repeat=\"item in formData.AttributeSet.AttributeSetTagMaps\">{{item}}</ui-select-choices></ui-select></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Keywords).length > 0\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Keywords\" ng-click=\"(formData.Keywords.indexOf(tag) == -1) && formData.Keywords.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Keywords</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=Keywords nc-template-form=form.Keywords nc-template-options-path=addProductForm/Keywords><ui-select ng-model=formData.Tags name=Keywords nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 nc-tag-pattern=^[a-zA-Z0-9ก-๙\\s\\-]+$ multiple tagging tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match placeholder=\"Input keywords\">{{$item}}</ui-select-match><ui-select-choices repeat=\"item in formData.AttributeSet.AttributeSetTagMaps\">{{item}}</ui-select-choices></ui-select></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Keywords).length > 0\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags\" ng-click=\"(formData.Tags.indexOf(tag) == -1) && formData.Tags.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
   );
 
 
   $templateCache.put('ap/section-overview',
-    "<div class=row ng-if=\"formData.Status == 'WA'\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Overview</h2></div><div class=form-section-content><div class=container-fluid style=\"margin: -15px\"><table class=table><thead><th>Product Name</th><th ng-if=\"(overview.Variants || []).length == 0\">PID</th><th>Shop ID</th><th ng-if=\"(overview.Variants || []).length > 0\">Group ID</th><th>Price</th><th>Info</th><th>Image</th><th>Status</th><th>Live</th><th>Visible</th></thead><tbody><tr><td>{{ overview.MasterVariant.ProductNameEn }}</td><td>{{ overview.MasterVariant.Pid }}</td><td>{{ overview.ShopId }}</td><td>{{ overview.MasterVariant.OriginalPrice | number: 2 }}</td><td><i ng-if=!overview.InfoFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=overview.InfoFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td><i ng-if=!overview.ImageFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=overview.ImageFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td><span class=\"{{ asStatus(overview.Status).color }}\"><i class=\"fa {{ asStatus(overview.Status).icon }}\"></i> {{ asStatus(formData.Status).name }}</span></td><td><i class=\"fa fa-circle color-grey\"></i></td><td><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon font-size-16' : !overview.Visibility, 'fa fa-eye color-dark-grey eye-icon font-size-16' : overview.Visibility}\"></i></td></tr><tbody></tbody></tbody></table></div></div></div></div></div>"
+    "<div class=row ng-if=formData.ProductId><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Overview</h2></div><div class=form-section-content><div class=container-fluid style=\"margin: -15px\"><table class=table><thead><th>Product Name</th><th ng-if=\"(overview.Variants || []).length == 0\">PID</th><th>Shop ID</th><th ng-if=\"(overview.Variants || []).length > 0\">Group ID</th><th>Price</th><th>Info</th><th>Image</th><th>Status</th><th>Live</th><th>Visible</th></thead><tbody><tr><td>{{ overview.MasterVariant.ProductNameEn }}</td><td>{{ overview.MasterVariant.Pid }}</td><td>{{ overview.ShopId }}</td><td>{{ overview.MasterVariant.OriginalPrice | number: 2 }}</td><td><i ng-if=!overview.InfoFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=overview.InfoFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td><i ng-if=!overview.ImageFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=overview.ImageFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td><span class=\"{{ asStatus(overview.Status).color }}\"><i class=\"fa {{ asStatus(overview.Status).icon }}\"></i> {{ asStatus(formData.Status).name }}</span></td><td><i class=\"fa fa-circle color-grey\"></i></td><td><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon font-size-16' : !overview.Visibility, 'fa fa-eye color-dark-grey eye-icon font-size-16' : overview.Visibility}\"></i></td></tr><tbody></tbody></tbody></table></div></div></div></div></div>"
   );
 
 
   $templateCache.put('ap/section-price',
-    "<div class=form-section><div class=form-section-header><h2>Price</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.SalePrice nc-label=\"Sale Price\" nc-template-options-path=addProductForm/SalePrice><input autocomplete=off ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" class=\"form-control width-field-normal\" maxlength=20 name=SalePrice ng-model=variantPtr.SalePrice required></div><div nc-template=common/input/form-group-with-label nc-label=\"Original Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.OriginalPrice><input autocomplete=off class=\"form-control width-field-normal\" name=OriginalPrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"variantPtr.OriginalPrice\"></div><div nc-template=common/input/form-group-with-label nc-label=Installment nc-template-options-path=addProductForm/Installment nc-template-form=form.Installment><select ng-if=\"(variantPtr.SalePrice || 0) > 5000\" class=form-control ng-model=variantPtr.Installment><option>Yes</option><option selected>No</option></select><select disabled ng-if=\"(variantPtr.SalePrice || 0) <= 5000\" class=form-control><option value=No selected>Available when price is more than 5,000</option></select></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Price</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.SalePrice nc-label=\"Sale Price\" nc-template-options-path=addProductForm/SalePrice><input autocomplete=off type=number class=\"form-control width-field-normal\" maxlength=20 name=SalePrice ng-model=variantPtr.SalePrice required></div><div nc-template=common/input/form-group-with-label nc-label=\"Original Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.OriginalPrice><input autocomplete=off class=\"form-control width-field-normal\" type=number name=OriginalPrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"variantPtr.OriginalPrice\"></div><div nc-template=common/input/form-group-with-label nc-label=Installment nc-template-options-path=addProductForm/Installment nc-template-form=form.Installment><select ng-if=\"(variantPtr.SalePrice || 0) > 5000\" class=form-control ng-model=variantPtr.Installment><option value=Y>Yes</option><option value=N selected>No</option></select><select disabled ng-if=\"(variantPtr.SalePrice || 0) <= 5000\" class=form-control><option value=No selected>Available when price is more than 5,000</option></select></div></div></div>"
   );
 
 
@@ -8545,7 +8614,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('ap/section-shipping',
-    "<div class=form-section><div class=form-section-header><h2>Shipping Detail</h2></div><div class=form-section-content><div class=form-group ng-if=!options.hideShippingMethod><div class=width-label><label class=control-label>Shipping Method</label></div><div class=width-field-normal><div class=\"radio multiple-radio multiline\"><label><input type=radio name=shipping_method value=1 ng-model=\"variantPtr.ShippingMethod\"> Dropship by 3PL</label><label><input type=radio name=shipping_method value=2 ng-model=\"variantPtr.ShippingMethod\"> Central Fulfillment</label></div></div></div><div nc-template=common/input/form-group-with-label nc-label=\"Preparation Time\" nc-template-form=form.PrepareDay nc-template-options-path=addProductForm/PrepareDay style=\"margin-bottom: 0px\"><input class=\"form-control width-field-normal\" name=PrepareDay ng-pattern-restrict=^[0-9]*$ ng-required=onPublishing maxlength=5 ng-model=\"variantPtr.PrepareDay\"></div><div class=\"form-group margin-bottom-20\"><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=checkbox><label><input type=checkbox ng-model=individualDayChecked> Set preparation time for individual day</label></div></div></div><div class=form-group ng-show=individualDayChecked><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=multiple-input><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Monday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareMon><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareMon ng-model=\"variantPtr.PrepareMon\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Tuesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareTue><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareTue ng-model=\"variantPtr.PrepareTue\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Wednesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareWed><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareWed ng-model=\"variantPtr.PrepareWed\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Thursday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareThu><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareThu ng-model=\"variantPtr.PrepareThu\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Friday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareFri><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareFri ng-model=\"variantPtr.PrepareFri\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Saturday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSat><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareSat ng-model=\"variantPtr.PrepareSat\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Sunday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSun><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareSun ng-model=\"variantPtr.PrepareSun\"></div></div></div></div></div><div class=\"form-group margin-top-20\"><div class=width-label><label class=\"control-label required\" stytle=margin-top:25px>Package Dimension</label></div><div class=width-field-xxl><div class=multiple-input><div class=input-column><div nc-template=common/input/div-with-label nc-label=Length nc-template-options-path=addProductForm/Dimension nc-template-form=form.Length><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Length ng-model=\"variantPtr.Length\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Height nc-template-options-path=addProductForm/Dimension nc-template-form=form.Height><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Height ng-model=\"variantPtr.Height\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Width nc-template-options-path=addProductForm/Dimension nc-template-form=form.Width><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Width ng-model=\"variantPtr.Width\"></div></div><div class=\"input-column no-label select input-xl\" style=\"padding-top: 24px\"><select ng-model=variantPtr.DimensionUnit class=form-control><option value=MM>Millimeter</option><option value=CM>Centimeter</option><option value=M>Meter</option></select></div></div></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Weight</label></div><div class=width-field-xxl><div class=multiple-input><div nc-template=common/input/text-column-no-label nc-label=\"\" nc-template-options-path=addProductForm/Dimension nc-template-form=form.Weight><input ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Weight ng-model=\"variantPtr.Weight\"></div><div class=\"input-column select input-xl\"><div class=ah-select2-dropdown><select class=form-control ng-model=formDataPtr.MasterVariant.WeightUnit><option value=G>Grams</option><option value=KG>Kilograms</option></select></div></div></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Shipping Detail</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Shipping Method</label></div><div class=width-field-normal><div class=\"radio multiple-radio multiline\"><label><input type=radio name=shipping_method ng-value=1 ng-model=\"variantPtr.ShippingMethod\"> Dropship by 3PL</label><label><input type=radio name=shipping_method ng-value=2 ng-model=\"variantPtr.ShippingMethod\"> Central Fulfillment</label></div></div></div><div nc-template=common/input/form-group-with-label nc-label=\"Preparation Time\" nc-template-form=form.PrepareDay nc-template-options-path=addProductForm/PrepareDay style=\"margin-bottom: 0px\"><input class=\"form-control width-field-normal\" name=PrepareDay ng-pattern-restrict=^[0-9]*$ ng-required=onPublishing maxlength=5 ng-model=\"variantPtr.PrepareDay\"></div><div class=\"form-group margin-bottom-20\"><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=checkbox><label><input type=checkbox ng-model=variantPtr.LimitIndividualDay> Set preparation time for individual day</label></div></div></div><div class=form-group ng-show=variantPtr.LimitIndividualDay><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=multiple-input><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Monday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareMon><input type=number ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareMon ng-model=\"variantPtr.PrepareMon\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Tuesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareTue><input type=number ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareTue ng-model=\"variantPtr.PrepareTue\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Wednesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareWed><input type=number ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareWed ng-model=\"variantPtr.PrepareWed\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Thursday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareThu><input type=number ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareThu ng-model=\"variantPtr.PrepareThu\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Friday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareFri><input type=number ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareFri ng-model=\"variantPtr.PrepareFri\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Saturday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSat><input type=number ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareSat ng-model=\"variantPtr.PrepareSat\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Sunday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSun><input type=number ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=3 name=PrepareSun ng-model=\"variantPtr.PrepareSun\"></div></div></div></div></div><div class=\"form-group margin-top-20\"><div class=width-label><label class=\"control-label required\" stytle=margin-top:25px>Package Dimension</label></div><div class=width-field-xxl><div class=multiple-input><div class=input-column><div nc-template=common/input/div-with-label nc-label=Length nc-template-options-path=addProductForm/Dimension nc-template-form=form.Length><input type=number ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Length ng-model=\"variantPtr.Length\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Height nc-template-options-path=addProductForm/Dimension nc-template-form=form.Height><input type=number ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Height ng-model=\"variantPtr.Height\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Width nc-template-options-path=addProductForm/Dimension nc-template-form=form.Width><input type=number ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Width ng-model=\"variantPtr.Width\"></div></div><div class=\"input-column no-label select input-xl\" style=\"padding-top: 24px\"><select ng-model=variantPtr.DimensionUnit class=form-control><option value=MM>Millimeter</option><option value=CM>Centimeter</option><option value=M>Meter</option></select></div></div></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Weight</label></div><div class=width-field-xxl><div class=multiple-input><div nc-template=common/input/text-column-no-label nc-label=\"\" nc-template-options-path=addProductForm/Dimension nc-template-form=form.Weight><input type=number ng-pattern-restrict=^[0-9\\.]*$ class=form-control maxlength=11 ng-required=onPublishing name=Weight ng-model=\"variantPtr.Weight\"></div><div class=\"input-column select input-xl\"><div class=ah-select2-dropdown><select class=form-control ng-model=variantPtr.WeightUnit><option value=G>Grams</option><option value=KG>Kilograms</option></select></div></div></div></div></div></div></div>"
   );
 
 
@@ -8555,7 +8624,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('ap/tab-category',
-    "<div id=add-product-category-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row><div class=col-xs-9><div class=form-section><div class=form-section-header><h2>Global Category</h2></div><div class=form-section-content><div class=form-group ng-repeat=\"item in formData.GlobalCategories track by $index\" ng-cloak><div class=width-label ng-if=\"$index == 0\"><label class=control-label>Global Category:</label></div><div class=width-label ng-if=\"$index != 0 && formData.GlobalCategories[$index - 1] != null\"><label class=control-label>{{$index | ordinal}} Alternative:</label></div><div class=width-field-normal ng-if=\"$index == 0\"><span class=form-text>{{item.NameEn}}</span></div><div class=width-field-normal ng-if=\"$index != 0 && item != null\"><a class=form-text data-toggle=modal data-target=#global-category ng-click=\"$emit('openGlobalCat', item, $index)\">{{item.NameEn}}</a> <i ng-if=\"!formData.GlobalCategories[$index + 1]\" ng-click=\"$emit('deleteGlobalCat', $index)\" class=\"clickable color-dark-grey fa fa-trash margin-left-10\"></i></div><div class=width-field-normal ng-if=\"$index != 0 && item == null && formData.GlobalCategories[$index - 1] != null\"><a class=\"like-text form-text\" data-toggle=modal data-target=#global-category ng-click=\"$emit('openGlobalCat', item, $index)\"><i class=\"fa fa-plus-circle color-theme\"></i> Add Alternative Category</a></div></div></div></div></div><div class=col-xs-3><h4>Global Category</h4><p>Global category is where this product will belong to when user finds it on the market place. You can have one main global category, but you can have an alternative category where the product will be cloned into.</p></div></div><div class=row><div class=col-xs-9><div class=form-section><div class=form-section-header><h2>Local Category</h2></div><div class=form-section-content><div class=form-group ng-repeat=\"item in formData.LocalCategories track by $index\" ng-cloak><div class=width-label ng-if=\"$index == 0\"><label class=control-label>Local Category:</label></div><div class=width-label ng-if=\"$index != 0 && formData.LocalCategories[$index - 1] != null\"><label class=control-label>{{$index | ordinal}} Alternative:</label></div><div class=width-field-normal ng-if=\"item != null\"><a class=form-text data-toggle=modal data-target=#local-category ng-click=\"$emit('openLocalCat', item, $index)\">{{item.NameEn}}</a> <i ng-if=\"!formData.LocalCategories[$index + 1]\" ng-click=\"$emit('deleteLocalCat', $index)\" class=\"clickable color-dark-grey fa fa-trash margin-left-10\"></i></div><div class=width-field-normal ng-if=\"item == null && (formData.LocalCategories[$index - 1] != null || $index == 0)\"><a class=\"like-text form-text\" data-toggle=modal data-target=#local-category ng-click=\"$emit('openLocalCat', item, $index)\"><i class=\"fa fa-plus-circle color-theme\"></i> Add <span ng-if=\"$index == 0\">Local</span> <span ng-if=\"$index > 0\">Alternative Local</span> Category</a></div></div></div></div></div><div class=col-xs-3><h4>Local Category</h4><p>Local category is where this product will belong when user finds it on this store. You can have one main local category but many alternative ones.</p></div></div></div>"
+    "<div id=add-product-category-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row><div class=col-xs-9><div class=form-section><div class=form-section-header><h2>Global Category</h2></div><div class=form-section-content><div class=form-group ng-repeat=\"item in formData.GlobalCategories track by $index\" ng-cloak><div class=width-label ng-if=\"$index == 0\"><label class=control-label>Global Category:</label></div><div class=width-label ng-if=\"$index != 0 && formData.GlobalCategories[$index - 1] != null\"><label class=control-label>{{$index | ordinal}} Alternative:</label></div><div class=width-field-normal ng-if=\"$index == 0\"><span class=form-text>{{item.NameEn}}</span></div><div class=width-field-normal ng-if=\"$index != 0 && item != null\"><a class=form-text ng-click=openCategorySelectorModal($index)>{{item.NameEn}}</a> <i ng-if=\"!formData.GlobalCategories[$index + 1]\" ng-click=\"$emit('deleteGlobalCat', $index)\" class=\"clickable color-dark-grey fa fa-trash margin-left-10\"></i></div><div class=width-field-normal ng-if=\"$index != 0 && item == null && formData.GlobalCategories[$index - 1] != null\"><a class=\"like-text form-text\" ng-click=openCategorySelectorModal($index)><i class=\"fa fa-plus-circle color-theme\"></i> Add Alternative Category</a></div></div></div></div></div><div class=col-xs-3><h4>Global Category</h4><p>Global category is where this product will belong to when user finds it on the market place. You can have one main global category, but you can have an alternative category where the product will be cloned into.</p></div></div><div class=row><div class=col-xs-9><div class=form-section><div class=form-section-header><h2>Local Category</h2></div><div class=form-section-content><div class=form-group ng-repeat=\"item in formData.LocalCategories track by $index\" ng-cloak><div class=width-label ng-if=\"$index == 0\"><label class=control-label>Local Category:</label></div><div class=width-label ng-if=\"$index != 0 && formData.LocalCategories[$index - 1] != null\"><label class=control-label>{{$index | ordinal}} Alternative:</label></div><div class=width-field-normal ng-if=\"item != null\"><a class=form-text data-toggle=modal data-target=#local-category ng-click=\"openCategorySelectorModal($index, 'LocalCategories', 'Local Categories')\">{{item.NameEn}}</a> <i ng-if=\"!formData.LocalCategories[$index + 1]\" ng-click=\"$emit('deleteLocalCat', $index)\" class=\"clickable color-dark-grey fa fa-trash margin-left-10\"></i></div><div class=width-field-normal ng-if=\"item == null && (formData.LocalCategories[$index - 1] != null || $index == 0)\"><a class=\"like-text form-text\" ng-click=\"openCategorySelectorModal($index, 'LocalCategories', 'Local Categories')\"><i class=\"fa fa-plus-circle color-theme\"></i> Add <span ng-if=\"$index == 0\">Local</span> <span ng-if=\"$index > 0\">Alternative Local</span> Category</a></div></div></div></div></div><div class=col-xs-3><h4>Local Category</h4><p>Local category is where this product will belong when user finds it on this store. You can have one main local category but many alternative ones.</p></div></div></div>"
   );
 
 
@@ -8625,7 +8694,362 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
     "                                    }\"><input ng-model=pair.Quantity maxlength=5 ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Quantity{{$index}}) }\" ng-disabled=!pair.Visibility ng-pattern=\"/^[0-9]+$/\" name=pair_Quantity{{$index}} class=\"form-control\"></td><td><a class=\"btn btn-white btn-width-xl\" ng-disabled=!pair.Visibility ng-click=\"openVariantDetail(pair, formData.Variants, $index)\">More Detail</a></td><td><a class=\"btn btn-white\" ng-click=\"pair.Visibility = !pair.Visibility\"><span ng-if=pair.Visibility>Hide</span> <span ng-if=!pair.Visibility>Show</span></a></td></tr></tbody></table></div></div></div></div></div>"
   );
  }]);
-},{}],114:[function(require,module,exports){
+},{}],115:[function(require,module,exports){
+var angular = require('angular');
+var bulk = {};
+angular.module('schematics', []).
+run(function(){
+  bulk = ({"schema":({"attribute":require("./schema/attribute.js"),"attributeSet":require("./schema/attributeSet.js"),"productStages":require("./schema/productStages.js")})});
+
+}).
+factory('JSONCache', function(){
+  return {
+    get: function(key){
+      return bulk.schema[key];
+    }
+  }
+});
+
+},{"./schema/attribute.js":116,"./schema/attributeSet.js":117,"./schema/productStages.js":118,"angular":191}],116:[function(require,module,exports){
+module.exports = {
+  "title": "Attribute Schema V3 Rev B",
+  "type": "object",
+  "properties": {
+    "AttributeValues": {
+      "type": "array",
+      "items": {"$ref": "#/defs/AttributeValueObject"}
+    },
+    "ValueEn": {
+      "type": "string"
+    },
+    "AttributeId": {
+      "type": "integer"
+    }
+  },
+  "required": ["AttributeValues", "ValueEn", "AttributeId"],
+  "defs": {
+    "AttributeValueObject": {
+        "type": "object",
+        "properties": {
+          "AttributeValueEn": {
+            "type": "string"
+          },
+          "AttributeValueId": {
+            "type": "integer"
+          },
+          "Status": {
+            "type": "string"
+          }
+        },
+        "required":  ["AttributeValueEn", "AttributeValueId", "Status"]
+    }
+  }
+};
+
+},{}],117:[function(require,module,exports){
+module.exports = {
+  "title": "Attribute Set Schema V3 Rev B",
+  "type": "object",
+  "properties": {
+    "AttributeSetId": { "type": "integer" },
+    "AttributeSetNameEn": { "type": "string" },
+    "AttributeSetTagMaps": {
+      "type": "array",
+      "items": {
+        "$ref" : "#/defs/TagMap"
+      }
+    },
+    "AttributeSetMaps": {
+      "type": "array",
+      "items": {
+        "$ref" : "#/defs/AttributeMap"
+      }
+     }
+  },
+  "required": ["AttributeSetId", "AttributeSetNameEn", "AttributeSetTagMaps", "AttributeSetMaps"],
+  "defs": {
+    "Attribute": require('./attribute'),
+    "AttributeMap": {
+      "type": "object",
+      "properties": {
+        "Attribute": { "$ref": "#/defs/Attribute" },
+        "AttributeId": { "type": "integer" },
+        "AttributeSetId": { "type": "integer" }
+      }
+    },
+    "TagMap" : {
+      "type": "object",
+      "properties": {
+        "AttributeSetId": {"type": "integer"},
+        "TagId": {"type":"integer"},
+        "Tag": {
+          "type": "object",
+          "properties": {
+            "TagId": { "type": "integer" },
+            "TagName": { "type" : "string" }
+          }
+        }
+      }
+    }
+  }
+};
+
+},{"./attribute":116}],118:[function(require,module,exports){
+module.exports = {
+  "title": "Product Stage Schema V3 Rev B",
+  "type": "object",
+  "properties": {
+    "ProductId": {
+      "type": "integer"
+    },
+    "MasterVariant": {
+      "$ref": "#/defs/ProductVariant"
+    },
+    "Variants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/defs/ProductVariant"
+      }
+    },
+    "Status": {
+      "enum": ["DF", "WA"]
+    },
+    "ShopId": {
+      "type": "integer"
+    },
+    "Visibility": {
+      "type": "boolean"
+    },
+    "GlobalCategories": {
+      "type": "array",
+      "oneOf": [{
+        "$ref": "#/defs/Category"
+      }]
+    },
+    "LocalCategories": {
+      "$ref": "#/defs/Category"
+    },
+    "MainGlobalCategory": {
+      "$ref": "#/defs/Category"
+    },
+    "MainLocalCategory": {
+      "$ref": "#/defs/Category"
+    },
+    "Tags": {
+      "type": "array"
+    },
+    "ControlFlags": {
+      "$ref": "#/defs/ControlFlags"
+    },
+    "Brands": {
+      "type": "object",
+      "properties": {
+        "BrandId": {
+          "type": "integer"
+        }
+      }
+    },
+    "TheOneCardEarn": {
+      "type": "integer"
+    },
+    "Remark": {
+      "type": "string"
+    },
+    "MasterAttribute": {
+      "type": "array",
+      "items": {
+        "$ref": "#/defs/Attribute"
+      }
+    },
+    "RelatedProducts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ProductId": {
+            "type": "integer"
+          }
+        },
+        "required": ["ProductId"]
+      }
+    },
+    "EffectiveDate": {
+      "type": "string"
+    },
+    "ExpireDate": {
+      "type": "string"
+    },
+    "Visibility": {
+      "type": "boolean"
+    }
+  },
+  "required": [],
+  "defs": {
+    "Attribute": require('./attribute'),
+    "ProductVariant": {
+      "properties": {
+        "Length": {
+          "type": "number"
+        },
+        "Width": {
+          "type": "number"
+        },
+        "Height": {
+          "type": "number"
+        },
+        "Weight": {
+          "type": "number"
+        },
+        "ProductNameEn": {
+          "type": "string"
+        },
+        "ProductNameTh": {
+          "type": "string"
+        },
+        "Pid": {
+          "type": "string"
+        },
+        "Sku": {
+          "type": "string"
+        },
+        "DescriptionShortTh": {
+          "type": "string"
+        },
+        "DescriptionShortEn": {
+          "type": "string"
+        },
+        "DescriptionFullTh": {
+          "type": "string"
+        },
+        "DescriptionFullEn": {
+          "type": "string"
+        },
+        "OriginalPrice": {
+          "type": "number"
+        },
+        "SalePrice": {
+          "type": "number"
+        },
+        "Quantity": {
+          "type": "integer"
+        },
+        "PrepareDay": {
+          "type": "integer"
+        },
+        "PrepareMon": {
+          "type": "integer"
+        },
+        "PrepareTue": {
+          "type": "integer"
+        },
+        "PrepareWed": {
+          "type": "integer"
+        },
+        "PrepareThu": {
+          "type": "integer"
+        },
+        "PrepareFri": {
+          "type": "integer"
+        },
+        "PrepareSat": {
+          "type": "integer"
+        },
+        "PrepareSun": {
+          "type": "integer"
+        },
+        "KillerPoint1En": {
+          "type": "string"
+        },
+        "KillerPoint2En": {
+          "type": "string"
+        },
+        "KillerPoint3En": {
+          "type": "string"
+        },
+        "KillerPoint1Th": {
+          "type": "string"
+        },
+        "KillerPoint2Th": {
+          "type": "string"
+        },
+        "KillerPoint3Th": {
+          "type": "string"
+        },
+        "DimensionUnit": {
+          "enum": ["MM", "CM", "M"]
+        },
+        "WeightUnit": {
+          "enum": ["G", "KG"]
+        },
+        "StockType": {
+          "enum": ["Stock", "Pre-Order", ""]
+        },
+        "SafetyStock": {
+          "type": "number"
+        },
+        "Images": {
+          "$ref": "#/defs/Image"
+        },
+        "Installment": {
+          "enum": ["Y", "N"]
+        },
+        "ShippingMethod": {
+          "type": "integer",
+          "enum": [0, 1]
+        },
+        "VideoLinks": {},
+        "SEO": {},
+        "DefaultVariant": {},
+        "LimitIndividualDay": {
+          "type": "boolean"
+        },
+        "Upc": {
+          "type": "string"
+        },
+        "FirstAttribute": {},
+        "SecondAttribute": {},
+        "Display": {},
+        "Visibility": {},
+        "DefaultVariant": {}
+      },
+      "required": ["ShippingMethod", "ProductNameEn", "ProductNameTh",
+        "StockType", "DimensionUnit", "SEO", "VideoLinks", "DefaultVariant", "Images",
+        "Installment", "PrepareDay", "LimitIndividualDay"
+      ]
+    },
+    "Image": {
+      "properties": {
+        "position": {
+          "type": "integer"
+        }
+      }
+    },
+    "Category": {
+      "properties": {
+        "CategoryId": {
+          "type": "integer"
+        },
+        "required": ["CategoryId"]
+      }
+    },
+    "ControlFlags": {
+      "properties": {
+        "required": ["Flag1", "Flag2", "Flag3"],
+        "Flag1": {
+          "type": "boolean"
+        },
+        "Flag2": {
+          "type": "boolean"
+        },
+        "Flag3": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+};
+
+},{"./attribute":116}],119:[function(require,module,exports){
 /**
  * Collection of Route ID (Object key) with route string
  *
@@ -8755,7 +9179,7 @@ module.exports = {
   seller: generateRouteArray(seller),
   admin: generateRouteArray(admin)
 }
-},{"lodash":188}],115:[function(require,module,exports){
+},{"lodash":194}],120:[function(require,module,exports){
 //Products Service
 module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
     function ($http, common, util, config, KnownException) {
@@ -8848,13 +9272,13 @@ module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
     }
 ];
 
-},{}],116:[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Promotion/Ontopcreate');
 	return service;
 }];
-},{}],117:[function(require,module,exports){
+},{}],122:[function(require,module,exports){
 module.exports = ["common", "config", "util", "$log", "$window", function (common, config, util, $log, $window) {
     'ngInject';
     'use strict';
@@ -8878,7 +9302,7 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
     return service;
 }];
 
-},{}],118:[function(require,module,exports){
+},{}],123:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Admin');
@@ -8913,14 +9337,14 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-},{}],119:[function(require,module,exports){
+},{}],124:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Admin');
 
 	return service;
 }]
-},{}],120:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 module.exports = ["common", "AdminPermissionService", function(common, AdminPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Admin');
@@ -8966,7 +9390,7 @@ module.exports = ["common", "AdminPermissionService", function(common, AdminPerm
 	};
 	return service;	
 }]
-},{}],121:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 module.exports = ["common", "config", "util", function(common, config, util) {
 	'ngInject';
 	var service = common.Rest('/Shops');
@@ -9006,7 +9430,7 @@ module.exports = ["common", "config", "util", function(common, config, util) {
 	};
 	return service;	
 }]
-},{}],122:[function(require,module,exports){
+},{}],127:[function(require,module,exports){
 module.exports = ["common", "ShopPermissionService", function(common, ShopPermissionService) {
 	'ngInject';
 	var service = common.Rest('/Shoptypes');
@@ -9052,7 +9476,7 @@ module.exports = ["common", "ShopPermissionService", function(common, ShopPermis
 	};
 	return service;	
 }]
-},{}],123:[function(require,module,exports){
+},{}],128:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', '$document', '$timeout', function(common, $document, $timeout) {
 	return function() {
@@ -9086,7 +9510,7 @@ module.exports = ['common', '$document', '$timeout', function(common, $document,
 		this.message = '';
 	};
 }];
-},{"angular":186}],124:[function(require,module,exports){
+},{"angular":191}],129:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common){
 	'use strict';
@@ -9332,7 +9756,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{"angular":186}],125:[function(require,module,exports){
+},{"angular":191}],130:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/Attributes');
@@ -9435,7 +9859,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }];
-},{}],126:[function(require,module,exports){
+},{}],131:[function(require,module,exports){
 module.exports = ['common', function(common){
 	'use strict';
 	var service = {};
@@ -9583,7 +10007,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{}],127:[function(require,module,exports){
+},{}],132:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/AttributeSets');
@@ -9643,7 +10067,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }]
-},{}],128:[function(require,module,exports){
+},{}],133:[function(require,module,exports){
 module.exports = ['$window', function($window) {
 	return function(fn, close) {
 		var vm = this;
@@ -9679,7 +10103,7 @@ module.exports = ['$window', function($window) {
 		};
 	};
 }];
-},{}],129:[function(require,module,exports){
+},{}],134:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$q', 'common', function($q, common){
 	var service = {};
@@ -9765,7 +10189,7 @@ module.exports = ['$q', 'common', function($q, common){
 	};
 	return service;
 }];
-},{"angular":186}],130:[function(require,module,exports){
+},{"angular":191}],135:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	service = common.Rest('/Brands');
@@ -9790,7 +10214,7 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }]
-},{}],131:[function(require,module,exports){
+},{}],136:[function(require,module,exports){
 /**
  * Util class for category
  * @author poonwu
@@ -10117,14 +10541,14 @@ module.exports = ['config', function(config) {
     return service;
 }];
 
-},{"angular":186}],132:[function(require,module,exports){
+},{"angular":191}],137:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common) {
 	var service = common.Rest('/Coupons');
 	return service;
 }];
 
-},{"angular":186}],133:[function(require,module,exports){
+},{"angular":191}],138:[function(require,module,exports){
 //TODO: maybe merge this with user service? (doesnt exist yet, but probably exists in poon's local)
 module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(common, $base64, storage, $q, $rootScope) {
     'use strict';
@@ -10195,7 +10619,7 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 	return service;
 }];
 
-},{}],134:[function(require,module,exports){
+},{}],139:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$window', '$base64', 'config', function($window, $base64, config) {
@@ -10214,7 +10638,7 @@ module.exports = ['$window', '$base64', 'config', function($window, $base64, con
     };
 }];
 
-},{"angular":186}],135:[function(require,module,exports){
+},{"angular":191}],140:[function(require,module,exports){
 module.exports = ["config", "storage", "FileUploader", function(config, storage, FileUploader) {
 	'ngInject';
 	var service = {};
@@ -10234,7 +10658,7 @@ module.exports = ["config", "storage", "FileUploader", function(config, storage,
 	};
 	return service;
 }];
-},{}],136:[function(require,module,exports){
+},{}],141:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/GlobalCategories');
@@ -10302,7 +10726,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],137:[function(require,module,exports){
+},{}],142:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	service = common.Rest('/GlobalCategories');
@@ -10376,7 +10800,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],138:[function(require,module,exports){
+},{}],143:[function(require,module,exports){
 var angular = require('angular');
 //Image Service
 //Note: this file is not used anywhere (legacy!!! dOnt edit )
@@ -10467,7 +10891,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	return service;
 }];
 
-},{"angular":186}],139:[function(require,module,exports){
+},{"angular":191}],144:[function(require,module,exports){
 //Image Service
 module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", "Upload", function($q, $http, common, storage, config, FileUploader, Upload) {
   'ngInject';
@@ -10592,12 +11016,12 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
   return service;
 }];
 
-},{}],140:[function(require,module,exports){
+},{}],145:[function(require,module,exports){
 module.exports = function(common) {
 	var service = common.Rest('/Inventories');
 	return service;
 };
-},{}],141:[function(require,module,exports){
+},{}],146:[function(require,module,exports){
 module.exports = [function() {
 	'use strict';
 
@@ -10605,7 +11029,7 @@ module.exports = [function() {
         this.message = "Known Exception - " + msg;   
     };
 }];
-},{}],142:[function(require,module,exports){
+},{}],147:[function(require,module,exports){
 module.exports = ['common', function(common) {
 	'use strict';
 	var service = {};
@@ -10644,7 +11068,7 @@ module.exports = ['common', function(common) {
 
 	return service;
 }];
-},{}],143:[function(require,module,exports){
+},{}],148:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/LocalCategories');
@@ -10686,7 +11110,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	};
 	return service;
 }];
-},{}],144:[function(require,module,exports){
+},{}],149:[function(require,module,exports){
 module.exports = function(common) {
 	var service = common.Rest('/Newsletters');
 
@@ -10701,666 +11125,537 @@ module.exports = function(common) {
 
 	return service;
 };
-},{}],145:[function(require,module,exports){
+},{}],150:[function(require,module,exports){
 // Products Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config', 'KnownException',
-    function($http, common, util, LocalCategory, Brand, config, KnownException) {
-        'use strict'
-        var service = common.Rest('/ProductStages')
-
-        service.getExportableFields = function() {
-            var req = {
-                method: 'GET',
-                url: '/ProductStages/Guidance/Export'
-            }
-            return common.makeRequest(req)
-        }
-
-        service.downloadTemplate = function(globalCat, aset) {
-            var req = {
-                method: 'POST',
-                url: '/ProductStages/Template',
-                data: {
-                    GlobalCategories: [globalCat],
-                    AttributeSets: _.isNil(aset) ? [] : [aset]
-                }
-            }
-            return common.makeRequest(req)
-        }
-
-        service.getAllAttributeSetsForProducts = function(productList) {
-            var req = {
-                method: 'POST',
-                url: '/ProductStages/AttributeSet',
-                data: productList
-            }
-            return common.makeRequest(req)
-        }
-
-        service.export = function(ps) {
-            var req = {
-                method: 'POST',
-                url: '/ProductStages/Export',
-                data: ps
-            }
-            return common.makeRequest(req)
-        }
-
-        service.guideline = function(params) {
-            var req = {
-                method: 'GET',
-                url: '/ProductStages/Guidance',
-                params: params
-            }
-            return common.makeRequest(req)
-        }
-        service.approve = function(obj) {
-            return common.makeRequest({
-                method: 'PUT',
-                url: '/ProductStages/Approve',
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            })
-        }
-        service.reject = function(obj) {
-            return common.makeRequest({
-                method: 'PUT',
-                url: '/ProductStages/Reject',
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            })
-        }
-
-        service.getOne = function(productId) {
-            var req = {
-                method: 'GET',
-                url: '/ProductStages/' + productId
-            }
-            return common.makeRequest(req)
-        }
-
-        service.getAllVariants = function(parameters) {
-            var req = {
-                method: 'GET',
-                url: '/ProductStages/All',
-                params: parameters
-            }
-
-            return common.makeRequest(req)
-        }
-
-        service.updateAllVariants = function(obj) {
-            var req = {
-                method: 'PUT',
-                url: '/ProductStages/All/Image',
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            }
-
-            return common.makeRequest(req)
-        }
-
-        service.duplicate = function(ProductId) {
-            // this URL structure is weird dont u think
-            var req = {
-                method: 'POST',
-                url: '/ProductStages/' + ProductId
-            }
-
-            return common.makeRequest(req)
-        }
-
-        service.getAll = function(parameters) {
-            var req = {
-                method: 'GET',
-                url: '/ProductStages/',
-                params: {
-                    _order: parameters.orderBy || 'ProductId',
-                    _limit: parameters.pageSize || 10,
-                    _offset: parameters.page * parameters.pageSize || 0,
-                    _direction: parameters.direction || 'asc',
-                    _filter: parameters.filter || 'ALL',
-                    searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined
-                }
-            }
-
-            return common.makeRequest(req)
-        }
-
-        service.export = function(tobj) {
-            var path = '/ProductStages/Export'
-            return common.makeRequest({
-                responseType: 'arraybuffer',
-                method: 'POST',
-                url: path,
-                data: tobj
-            })
-        }
-
-        service.publish = function(tobj, Status) {
-            tobj.Status = Status
-            var mode = 'POST'
-            var path = '/ProductStages'
-            if (tobj.ProductId) {
-                mode = 'PUT'
-                path = path + '/' + tobj.ProductId
-            }
-            return common.makeRequest({
-                method: mode,
-                url: path,
-                data: tobj
-            })
-        }
-
-        service.bulkPublish = function(tobj) {
-            return common.makeRequest({
-                method: 'POST',
-                url: '/ProductStages/Publish',
-                data: tobj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            })
-        }
-
-        service.visible = function(obj) {
-            return common.makeRequest({
-                method: 'PUT',
-                url: '/ProductStages/Visibility',
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            })
-        }
-        service.deleteBulk = function(arr) {
-            return common.makeRequest({
-                method: 'DELETE',
-                url: '/ProductStages',
-                data: arr,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            })
-        }
-
-        var StatusLookup = {}
-        config.PRODUCT_STATUS.forEach(function(object) {
-            StatusLookup[object.value] = object
-        })
-        service.getStatus = function(abbreviation) {
-            if (_.isNil(abbreviation)) {
-                return {
-                    name: 'No Status',
-                    color: 'color-grey'
-                }
-            }
-            return StatusLookup[abbreviation]
-        }
-
-        /**
-         * @param  {Product Object} fd
-         */
-        service.serialize = function(fd) {
-
-            var clean = {}
-            var serializer = {
-                GlobalCategories: {
-                    serialize: function(data) {
-                        return data.map(function(lcat) {
-                            if (lcat == null) return null
-                            return {
-                                CategoryId: lcat.CategoryId
-                            }
-                        });
-                    },
-                    fallback: function(data) {
-                        throw new KnownException("No serialization fallback for Global Categories");
-                    }
-                },
-                LocalCategories: {
-                    serialize: function(data) {
-                        return data.map(function(lcat) {
-                            if (lcat == null) return null
-                            return {
-                                CategoryId: lcat.CategoryId
-                            }
-                        });
-                    },
-                    fallback: function(data) {
-                        return [null, null, null]
-                    }
-                },
-                Keywords: {
-                    serialize: function(data) {
-                        var m = util.uniqueSet(data);
-                        return (!m ? '' : m.join(','));
-                    },
-                    fallback: function(data) {
-                        return '';
-                    }
-                },
-                AttributeSet: {
-                    serialize: function(data) {
-                        var k = null;
-                        if (data.AttributeSetId) k = data.AttributeSetId;
-                        return {
-                            AttributeSetId: k
-                        }
-                    },
-                    fallback: function(data) {
-                        return {
-                            AttributeSetId: null
-                        }
-                    }
-                },
-                VideoLinks: function(vlink) {
-                    var f = []
-                    Object.keys(vlink).forEach(function(key) {
-                        var value = vlink[key]
-                        var obj = {
-                            'Url': value
-                        }
-
-                        f.push(obj)
-                    })
-                    return f
-                },
-                Images: function(images) {
-                    return images.map(function(image) {
-                        image.position = pos
-                        return image
-                    });
-                },
-                MasterAttribute: function(ma) {
-                    var t = [];
-                    Object.keys(ma.MasterAttribute).forEach(function(key) {
-                        if (ma.MasterAttribute[key].AttributeValueId) {
-                            var g = {
-                                AttributeValues: [],
-                                AttributeId: ma.MasterAttribute[key].AttributeId,
-                                ValueEn: ma.MasterAttribute[key].AttributeValueEn
-                            }
-
-                            g.AttributeValues.push(ma.MasterAttribute[key])
-                            t.push(g)
-                        } else {
-                            t.push({
-                                AttributeValues: [],
-                                AttributeId: Number(key),
-                                ValueEn: ma.MasterAttribute[key]
-                            })
-                        }
-
-                    });
-                    return t;
-                },
-                RelatedProducts: function(rp) {
-                    return rp;
-                }
-            }
-
-            for (var key in fd) {
-                if ('queue' in fd[key]) delete fd[key].queue;
-                if (fd[key].$id) delete fd[key].$id;
-                if (key in serializer) {
-                    var f = serializer[key];
-                    var v = fd[key];
-                    try {
-                        clean[key] = f.serialize(v);
-                    } catch (ex) {
-                        clean[key] = f.fallback(v);
-                    }
-                } else {
-                    clean[key] = v;
-                }
-            }
-
- 
-	   return clean;
-            /*
-            
-            try {
-                clean.Remark = fd.Remark
-                clean.PrepareDay = fd.PrepareDay || 0
-                clean.SEO = fd.SEO
-                clean.ControlFlags = fd.ControlFlags
-                clean.Brand = fd.Brand
-                clean.ShippingMethod = fd.ShippingMethod
-                clean.EffectiveDate = null
-                clean.ExpireDate = null
-                clean.ExpireTime = null
-                clean.ExpireDate = null
-
-                if (fd.ExpireDate && fd.EffectiveDate) {
-                    var cpdate = angular.copy(fd.ExpireDate)
-                    clean.ExpireDate = moment(cpdate).format('LL')
-                    clean.ExpireTime = moment(cpdate).format('HH:mm:ss')
-
-                    cpdate = angular.copy(fd.EffectiveDate)
-
-                    clean.EffectiveDate = moment(cpdate).format('LL')
-                    clean.EffectiveTime = moment(cpdate).format('HH:mm:ss')
-                }
-
-
-            } catch (ex) {
-                console.warn('One-To-One Fields', ex)
-            }
-
-            
-
-            try {
-                clean.RelatedProducts = []
-                Object.keys(fd.RelatedProducts || []).forEach(function (key) {
-                    clean.RelatedProducts.push(
-                        fd.RelatedProducts[key]
-                        )
-                })
-            } catch (ex) {
-                console.warn('Organizing Related Products', ex)
-            }
-
-            // MasterVariant
-            clean.MasterVariant = fd.MasterVariant
-
-            if (fd.ProductId) clean.ProductId = fd.ProductId
-
-            try {
-                clean.MasterVariant.VideoLinks = objectMapper.VideoLinks(fd.VideoLinks)
-            } catch (ex) {
-                clean.MasterVariant.VideoLinks = []
-            }
-
-            try {
-                clean.MasterVariant.Images = (fd.MasterVariant.Images || []).map(mapper.Images)
-            } catch (ex) {
-                clean.MasterVariant.Images = []
-            }
-
-            try {
-                if (hasVariants) {
-                    clean.Variants = (fd.Variants || []).map(mapper.Variants)
-                    // Find DefaultVariant
-                    var target = fd.DefaultVariant.text
-                    clean.Variants.forEach(function (vari, index) {
-                        vari.SafetyStock = 0; // Placeholder, no UI yet
-                        vari.StockType = 0 // Placeholder
-                        vari.DefaultVariant = false
-                        if (vari.text == target) {
-                            clean.Variants[index].DefaultVariant = true
-                        }
-                    })
-                }
-            } catch (ex) {
-                console.warn('Variant Distribute', ex)
-            }
-
-            // HardCoD
-            clean.SellerId = 1
-            clean.ShopId = 1
-            */
-            return clean
-        }
-
-        service.deserialize = function(invFd, FullAttributeSet) {
-            console.log('FullAttributeSet', FullAttributeSet)
-
-            invFd.AttributeSet = FullAttributeSet
-            invFd.PrepareDay = invFd.PrepareDay || ''
-
-            if (invFd.EffectiveDate != '' && invFd.EffectiveDate != null) {
-                invFd.EffectiveDate = moment(invFd.EffectiveDate + ' ' + invFd.EffectiveTime).toDate()
-                invFd.EffectiveTime = invFd.EffectiveTime
-            }
-
-            if (invFd.ExpireDate != '' && invFd.ExpireDate != null) {
-                invFd.ExpireDate = moment(invFd.ExpireDate + ' ' + invFd.ExpireTime).toDate()
-                invFd.ExpireTime = invFd.ExpireTime
-            }
-
-            var BrandId = invFd.Brand.BrandId
-            Brand.getOne(BrandId).then(function(data) {
-                invFd.Brand = data
-                delete invFd.Brand.$id
-                invFd.Brand.id = BrandId
-            }, function() {
-                console.log('brand resolve failure')
-                invFd.Brand = {
-                    BrandId: null,
-                    BrandNameEn: 'Please select brand..'
-                }
-            })
-
-            var invMapper = {
-                VideoLinks: function(m) {
-                    return m.Url
-                },
-                Variants: function(m) {
-                    m.Visibility = m.Visibility
-                    m.Images = m.Images || []
-                    m.Images360 = m.Images360 || []
-                    m.WeightUnit = (m.WeightUnit || '').trim()
-                    m.DimensionUnit = (m.DimensionUnit || '').trim()
-                    m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute)
-                    return m
-                }
-            }
-
-            try {
-                var DefaultVariantIndex = (invFd.Variants || []).map(function(o) {
-                    return o.DefaultVariant || false
-                }).indexOf(true)
-
-                invFd.DefaultVariant = invFd.Variants[DefaultVariantIndex]
-            } catch (er) {
-                console.warn('Unable to set DefaultVariant, will not set', er)
-            }
-
-            try {
-                invFd.Variants = (invFd.Variants || []).map(invMapper.Variants)
-            } catch (er) {
-                console.warn('Unable to set Variants, will set empty', er)
-                invFd.Variants = []
-            }
-
-            var MasterAttribute = {}
-            try {
-                invFd.MasterAttribute.forEach(function(ma) {
-                    var k = { 'AttributeValue': ma.AttributeValues[0] }
-                    if (ma.AttributeValues.length > 0 && ma.AttributeValues[0].AttributeValueId) {
-                        k.AttributeId = ma.AttributeId
-                        k.AttributeValueId = ma.AttributeValues[0].AttributeValueId
-                    }
-                    MasterAttribute[ma.AttributeId] = ma.ValueEn || k
-                })
-            } catch (ex) {
-                console.warn('Unable to set MasterAttribute', ex)
-            }
-            invFd.MasterAttribute = MasterAttribute
-
-            if (!invFd.LocalCategories) {
-                invFd.LocalCategories = []
-            }
-
-            if (invFd.LocalCategories.length == 0) {
-                invFd.LocalCategories = [null, null, null]
-            } else {
-                var kmax = invFd.LocalCategories.length
-                for (var k = 0; k < 3 - kmax; k++) {
-                    console.log('pushing null')
-                    invFd.LocalCategories.push(null)
-                }
-            }
-
-            if (invFd.LocalCategory) {
-                LocalCategory.getOne(invFd.LocalCategory).then(function(locat) {
-                    invFd.LocalCategories.unshift(locat)
-
-                    if (invFd.LocalCategories.length > 3) {
-                        invFd.LocalCategories.pop()
-                    }
-
-                })
-            }
-
-            // TODO: replace with try-catch
-            if (invFd.MasterVariant.VideoLinks) {
-                invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks)
-            } else {
-                invFd.MasterVariant.VideoLinks = []
-            }
-
-            invFd.Variants.forEach(function(variant, index) {
-                try {
-                    variant.VideoLinks = (variant.VideoLinks || []).map(invMapper.VideoLinks)
-                } catch (ex) {
-                    variant.VideoLinks = []
-                }
-            })
-
-            if (!invFd.GlobalCategories) {
-                invFd.GlobalCategories = [null, null, null]
-            }
-
-            if (invFd.GlobalCategories.length == 0) {
-                invFd.GlobalCategories = [null, null, null]
-            } else {
-                var kmax = invFd.GlobalCategories.length
-                for (var k = 0; k < 3 - kmax; k++) {
-                    console.log('pushing null')
-                    invFd.GlobalCategories.push(null)
-                }
-            }
-
-            invFd.GlobalCategories.unshift({
-                CategoryId: invFd.GlobalCategory
-            })
-
-            if (invFd.GlobalCategories.length > 3) {
-                invFd.GlobalCategories.pop()
-            }
-
-            delete invFd.GlobalCategory
-            delete invFd.LocalCategory
-
-            // TODO: Just change ngmodel to bind to MasterVariant.MasterImages Directly
-            // invFd.MasterImages = invFd.MasterVariant.Images || []
-            // delete invFd.MasterVariant.Images
-            // invFd.MasterImages360 = invFd.MasterVariant.Images360 || []
-            // delete invFd.MasterVariant.Images360
-
-            try {
-                invFd.MasterVariant.WeightUnit = invFd.MasterVariant.WeightUnit.trim()
-            } catch (ex) {
-                invFd.MasterVariant.WeightUnit = undefined
-            }
-
-            try {
-                invFd.MasterVariant.DimensionUnit = invFd.MasterVariant.DimensionUnit.trim()
-            } catch (ex) {
-                invFd.MasterVariant.DimensionUnit = undefined
-            }
-
-            try {
-                var _split = invFd.Keywords.trim().split(',')
-                if (_split[0] == '') {
-                    invFd.Keywords = []
-                } else {
-                    invFd.Keywords = util.uniqueSet(_split)
-                }
-            } catch (ex) {
-                invFd.Keywords = []
-            }
-
-            if (invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; // TODO: Hardcode
-
-            var transformed = {
-                formData: invFd
-            }
-
-            if (invFd.Variants.length > 0) {
-                // Figure out the Attributes that make up each Variant
-                var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId'])
-
-                // Generate attributeOptions
-                var map0_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
-                    return a.Attribute.AttributeId
-                }).indexOf(invFd.Variants[0].FirstAttribute.AttributeId)
-
-                var map1_index, SecondArray
-                if (HasTwoAttr) {
-                    map1_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
-                        return a.Attribute.AttributeId
-                    }).indexOf(invFd.Variants[0].SecondAttribute.AttributeId)
-                }
-
-                // Find array of values to populate factors array that can be used to reproduce
-                // the expanded variants
-                var FirstArray = invFd.Variants.map(function(variant) {
-                    if (variant.FirstAttribute.AttributeValues.length > 0) {
-                        return {
-                            'AttributeValue': variant.FirstAttribute.AttributeValues[0],
-                            'AttributeId': variant.FirstAttribute.AttributeId
-                        }
-                    }
-
-                    return variant.FirstAttribute.ValueEn.trim()
-                })
-
-                if (HasTwoAttr) {
-                    SecondArray = invFd.Variants.map(function(variant) {
-                        if (variant.SecondAttribute.AttributeValues.length > 0) {
-                            return {
-                                'AttributeValue': variant.SecondAttribute.AttributeValues[0],
-                                'AttributeId': variant.SecondAttribute.AttributeId
-                            }
-                        }
-                        return variant.SecondAttribute.ValueEn.trim()
-                    })
-                }
-
-                // Get updated map from invFd.AttributeSet
-                // and load factorization array
-                var uniqueFirst = util.uniqueSet(FirstArray, 'AttributeValue.AttributeValueId')
-                console.log('ufirst', uniqueFirst)
-                transformed.attributeOptions = [{
-                    Attribute: FullAttributeSet.AttributeSetMaps[map0_index].Attribute,
-                    options: uniqueFirst
-                }]
-
-                if (HasTwoAttr) {
-                    var uniqueSecond = util.uniqueSet(SecondArray, 'AttributeValue.AttributeValueId')
-                    console.log(uniqueSecond)
-                    transformed.attributeOptions.push({
-                        Attribute: FullAttributeSet.AttributeSetMaps[map1_index].Attribute,
-                        options: uniqueSecond
-                    })
-                } else {
-                    transformed.attributeOptions.push({
-                        Attribute: null,
-                        options: []
-                    })
-                }
-
-            }
-
-            console.log('transformation array', transformed)
-
-            return transformed
-        }
-
-        return service
+  function($http, common, util, LocalCategory, Brand, config, KnownException) {
+    'use strict'
+    var service = common.Rest('/ProductStages')
+
+    service.getExportableFields = function() {
+      var req = {
+        method: 'GET',
+        url: '/ProductStages/Guidance/Export'
+      }
+      return common.makeRequest(req)
     }
+
+    service.downloadTemplate = function(globalCat, aset) {
+      var req = {
+        method: 'POST',
+        url: '/ProductStages/Template',
+        data: {
+          GlobalCategories: [globalCat],
+          AttributeSets: _.isNil(aset) ? [] : [aset]
+        }
+      }
+      return common.makeRequest(req)
+    }
+
+    service.getAllAttributeSetsForProducts = function(productList) {
+      var req = {
+        method: 'POST',
+        url: '/ProductStages/AttributeSet',
+        data: productList
+      }
+      return common.makeRequest(req)
+    }
+
+    service.export = function(ps) {
+      var req = {
+        method: 'POST',
+        url: '/ProductStages/Export',
+        data: ps
+      }
+      return common.makeRequest(req)
+    }
+
+    service.guideline = function(params) {
+      var req = {
+        method: 'GET',
+        url: '/ProductStages/Guidance',
+        params: params
+      }
+      return common.makeRequest(req)
+    }
+    service.approve = function(obj) {
+      return common.makeRequest({
+        method: 'PUT',
+        url: '/ProductStages/Approve',
+        data: obj,
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8'
+        }
+      })
+    }
+    service.reject = function(obj) {
+      return common.makeRequest({
+        method: 'PUT',
+        url: '/ProductStages/Reject',
+        data: obj,
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8'
+        }
+      })
+    }
+
+    service.getOne = function(productId) {
+      var req = {
+        method: 'GET',
+        url: '/ProductStages/' + productId
+      }
+      return common.makeRequest(req)
+    }
+
+    service.getAllVariants = function(parameters) {
+      var req = {
+        method: 'GET',
+        url: '/ProductStages/All',
+        params: parameters
+      }
+
+      return common.makeRequest(req)
+    }
+
+    service.updateAllVariants = function(obj) {
+      var req = {
+        method: 'PUT',
+        url: '/ProductStages/All/Image',
+        data: obj,
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8'
+        }
+      }
+
+      return common.makeRequest(req)
+    }
+
+    service.duplicate = function(ProductId) {
+      // this URL structure is weird dont u think
+      var req = {
+        method: 'POST',
+        url: '/ProductStages/' + ProductId
+      }
+
+      return common.makeRequest(req)
+    }
+
+    service.getAll = function(parameters) {
+      var req = {
+        method: 'GET',
+        url: '/ProductStages/',
+        params: {
+          _order: parameters.orderBy || 'ProductId',
+          _limit: parameters.pageSize || 10,
+          _offset: parameters.page * parameters.pageSize || 0,
+          _direction: parameters.direction || 'asc',
+          _filter: parameters.filter || 'ALL',
+          searchText: (parameters.searchText && parameters.searchText.length > 0) ? parameters.searchText : undefined
+        }
+      }
+
+      return common.makeRequest(req)
+    }
+
+    service.export = function(tobj) {
+      var path = '/ProductStages/Export'
+      return common.makeRequest({
+        responseType: 'arraybuffer',
+        method: 'POST',
+        url: path,
+        data: tobj
+      })
+    }
+
+    service.publish = function(tobj, Status) {
+      tobj.Status = Status
+      var mode = 'POST'
+      var path = '/ProductStages'
+      if (tobj.ProductId) {
+        mode = 'PUT'
+        path = path + '/' + tobj.ProductId
+      }
+      return common.makeRequest({
+        method: mode,
+        url: path,
+        data: tobj
+      })
+    }
+
+    service.bulkPublish = function(tobj) {
+      return common.makeRequest({
+        method: 'POST',
+        url: '/ProductStages/Publish',
+        data: tobj,
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8'
+        }
+      })
+    }
+
+    service.visible = function(obj) {
+      return common.makeRequest({
+        method: 'PUT',
+        url: '/ProductStages/Visibility',
+        data: obj,
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8'
+        }
+      })
+    }
+    service.deleteBulk = function(arr) {
+      return common.makeRequest({
+        method: 'DELETE',
+        url: '/ProductStages',
+        data: arr,
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8'
+        }
+      })
+    }
+
+    var StatusLookup = {}
+    config.PRODUCT_STATUS.forEach(function(object) {
+      StatusLookup[object.value] = object;
+    })
+    service.getStatus = function(abbreviation) {
+      if (_.isNil(abbreviation)) {
+        return {
+          name: 'No Status',
+          color: 'color-grey'
+        }
+      }
+      return StatusLookup[abbreviation];
+    }
+
+    /**
+     * @param  {Product Object} fd
+     */
+    service.serialize = function(fd) {
+
+      var clean = {}
+      var serializer = {
+        GlobalCategories: {
+          serialize: function(data) {
+            return data.map(function(lcat) {
+              if (lcat == null) return null;
+              return {
+                CategoryId: lcat.CategoryId
+              }
+            });
+          },
+          fallback: function(data) {
+            throw new KnownException("No serialization fallback for Global Categories");
+          }
+        },
+        LocalCategories: {
+          serialize: function(data) {
+            return data.map(function(lcat) {
+              if (lcat == null) return null;
+              return {
+                CategoryId: lcat.CategoryId
+              }
+            });
+          },
+          fallback: function(data) {
+            return [null, null, null];
+          }
+        },
+        AttributeSet: {
+          serialize: function(data) {
+            var k = null;
+            if (data.AttributeSetId) k = data.AttributeSetId;
+            return {
+              AttributeSetId: k
+            };
+          },
+          fallback: function(data) {
+            return {
+              AttributeSetId: null
+            };
+          }
+        },
+        Images: {
+          serialize: function(images) {
+            return images.map(function(image) {
+              image.position = pos;
+              return image;
+            });
+          },
+          fallback: function(x) {
+            return [];
+          }
+        },
+        MasterAttribute: {
+          serialize: function(ma) {
+            var t = [];
+            Object.keys(ma).forEach(function(key) {
+              if (ma[key].AttributeValueId) {
+                var g = {
+                  AttributeValues: [],
+                  AttributeId: ma[key].AttributeId,
+                  ValueEn: ma[key].AttributeValueEn
+                };
+
+                g.AttributeValues.push(ma[key]);
+                t.push(g);
+              } else {
+                t.push({
+                  AttributeValues: [],
+                  AttributeId: Number(key),
+                  ValueEn: ma[key]
+                });
+              }
+
+            });
+            return t;
+          },
+          fallback: function() {
+            return [];
+          }
+        }
+      };
+
+      for (var key in fd) {
+        if (_.has(fd[key], 'queue')) delete fd[key].queue;
+        if (_.has(fd[key], '$id')) delete fd[key].$id;
+        if (key in serializer) {
+          var f = serializer[key];
+          var v = fd[key];
+          try {
+            clean[key] = f.serialize(v);
+          } catch (ex) {
+            console.warn("Using fallback strategy to serialize " + key, ex);
+            clean[key] = f.fallback(v);
+          }
+        } else {
+          clean[key] = fd[key];
+        }
+      }
+
+      //Other corner cases
+      clean.MainGlobalCategory = clean.GlobalCategories.shift();
+      clean.MainLocalCategory = clean.LocalCategories.shift();
+      clean.GlobalCategories = _.filter(clean.GlobalCategories, _.identity);
+      clean.LocalCategories = _.filter(clean.LocalCategories, _.identity);
+      return clean;
+    }
+
+    /*
+     * Deserialize server format
+     * invFd {Server FormData}
+     */
+    service.deserialize = function(pap, FullAttributeSet) {
+      var invFd = angular.copy(pap);
+      //Load attribute set (TODO: we won't have to do this in future)
+      invFd.AttributeSet = FullAttributeSet;
+      //Load full Brand (TODO: we won't have to do this in future)
+      var BrandId = invFd.Brand.BrandId;
+      invFd.Brand = {
+        BrandId: null,
+        BrandNameEn: 'Search brand by name or id..'
+      };
+      Brand.getOne(BrandId).then(function(data) {
+        invFd.Brand = data;
+        delete invFd.Brand.$id;
+        invFd.Brand.id = BrandId;
+      });
+
+      //Find which variant is default
+      try {
+        var DefaultVariantIndex = (invFd.Variants || []).map(function(o) {
+          return o.DefaultVariant || false;
+        }).indexOf(true);
+
+        invFd.DefaultVariant = invFd.Variants[DefaultVariantIndex];
+      } catch (er) {
+        console.warn('Unable to set DefaultVariant, will not set', er);
+      }
+
+      var MasterAttribute = {};
+      try {
+        invFd.MasterAttribute.forEach(function(ma) {
+          var k = {
+            'AttributeValue': ma.AttributeValues[0]
+          }
+          if (ma.AttributeValues.length > 0 && ma.AttributeValues[0].AttributeValueId) {
+            k.AttributeId = ma.AttributeId;
+            k.AttributeValueId = ma.AttributeValues[0].AttributeValueId;
+          }
+          MasterAttribute[ma.AttributeId] = ma.ValueEn || k;
+        });
+      } catch (ex) {
+        console.warn('Unable to set MasterAttribute', ex);
+      }
+      invFd.MasterAttribute = MasterAttribute;
+
+      if (!invFd.LocalCategories) {
+        invFd.LocalCategories = [];
+      }
+
+      if (invFd.LocalCategories.length == 0) {
+        invFd.LocalCategories = [null, null, null];
+      } else {
+        var kmax = invFd.LocalCategories.length;
+        for (var k = 0; k < 3 - kmax; k++) {
+          console.log('pushing null');
+          invFd.LocalCategories.push(null);
+        }
+      }
+
+      if (invFd.LocalCategory) {
+        LocalCategory.getOne(invFd.LocalCategory).then(function(locat) {
+          invFd.LocalCategories.unshift(locat);
+          if (invFd.LocalCategories.length > 3) {
+            invFd.LocalCategories.pop();
+          }
+        });
+      };
+
+      var invMapper = {
+        Variants: function(m) {
+          m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
+          return m;
+        }
+      };
+
+      try {
+        invFd.Variants = (invFd.Variants || []).map(invMapper.Variants);
+      } catch (er) {
+        console.warn("Unable to set deserialize variants, will set empty", er);
+        invFd.Variants = [];
+      }
+
+      // if (invFd.MasterVariant.VideoLinks) {
+      // 	invFd.MasterVariant.VideoLinks = invFd.MasterVariant.VideoLinks.map(invMapper.VideoLinks);
+      // } else {
+      // 	invFd.MasterVariant.VideoLinks = [];
+      // }
+
+      // invFd.Variants.forEach(function(variant, index) {
+      // 	try {
+      // 		variant.VideoLinks = (variant.VideoLinks || []).map(invMapper.VideoLinks);
+      // 	} catch (ex) {
+      // 		variant.VideoLinks = []
+      // 	}
+      // })
+
+      if (invFd.GlobalCategories.length == 0) {
+        invFd.GlobalCategories = [null, null, null];
+      } else {
+        var kmax = invFd.GlobalCategories.length;
+        for (var k = 0; k < 3 - kmax; k++) {
+          console.log('pushing null');
+          invFd.GlobalCategories.push(null);
+        }
+      }
+
+      invFd.GlobalCategories.unshift({
+        CategoryId: invFd.GlobalCategory
+      })
+
+      if (invFd.GlobalCategories.length > 3) {
+        invFd.GlobalCategories.pop()
+      }
+
+      delete invFd.GlobalCategory;
+      delete invFd.LocalCategory;
+
+      try {
+        var _split = invFd.Keywords.trim().split(',');
+        if (_split[0] == '') {
+          invFd.Keywords = [];
+        } else {
+          invFd.Keywords = util.uniqueSet(_split);
+        }
+      } catch (ex) {
+        invFd.Keywords = [];
+      }
+
+      //Find out which variant is default variant
+      if (invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; // TODO: Hardcode
+
+      var transformed = {
+        formData: invFd
+      };
+
+      //Figure out attribute options from loaded data
+      if (invFd.Variants.length > 0) {
+        // Figure out the Attributes that make up each Variant
+        var HasTwoAttr = !util.nullOrUndefined(invFd.Variants[0].SecondAttribute['AttributeId'])
+
+        // Generate attributeOptions
+        var map0_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
+          return a.Attribute.AttributeId
+        }).indexOf(invFd.Variants[0].FirstAttribute.AttributeId)
+
+        var map1_index, SecondArray
+        if (HasTwoAttr) {
+          map1_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
+            return a.Attribute.AttributeId
+          }).indexOf(invFd.Variants[0].SecondAttribute.AttributeId)
+        }
+
+        // Find array of values to populate factors array that can be used to reproduce
+        // the expanded variants
+        var FirstArray = invFd.Variants.map(function(variant) {
+          if (variant.FirstAttribute.AttributeValues.length > 0) {
+            return {
+              'AttributeValue': variant.FirstAttribute.AttributeValues[0],
+              'AttributeId': variant.FirstAttribute.AttributeId
+            }
+          }
+
+          return variant.FirstAttribute.ValueEn.trim()
+        })
+
+        if (HasTwoAttr) {
+          SecondArray = invFd.Variants.map(function(variant) {
+            if (variant.SecondAttribute.AttributeValues.length > 0) {
+              return {
+                'AttributeValue': variant.SecondAttribute.AttributeValues[0],
+                'AttributeId': variant.SecondAttribute.AttributeId
+              }
+            }
+            return variant.SecondAttribute.ValueEn.trim()
+          })
+        }
+
+        // Get updated map from invFd.AttributeSet
+        // and load factorization array
+        var uniqueFirst = util.uniqueSet(FirstArray, 'AttributeValue.AttributeValueId')
+        console.log('ufirst', uniqueFirst)
+        transformed.attributeOptions = [{
+          Attribute: FullAttributeSet.AttributeSetMaps[map0_index].Attribute,
+          options: uniqueFirst
+        }]
+
+        if (HasTwoAttr) {
+          var uniqueSecond = util.uniqueSet(SecondArray, 'AttributeValue.AttributeValueId')
+          console.log(uniqueSecond)
+          transformed.attributeOptions.push({
+            Attribute: FullAttributeSet.AttributeSetMaps[map1_index].Attribute,
+            options: uniqueSecond
+          })
+        } else {
+          transformed.attributeOptions.push({
+            Attribute: null,
+            options: []
+          })
+        }
+
+      }
+
+      console.log('transformation array', transformed);
+
+      return transformed;
+    }
+
+    return service
+  }
 ]
 
-},{}],146:[function(require,module,exports){
+},{}],151:[function(require,module,exports){
 module.exports = ["common", "util", function(common, util) {
 	'ngInject';
 	var service = common.Rest('/ProductReviews');
@@ -11396,7 +11691,7 @@ module.exports = ["common", "util", function(common, util) {
 	};	
 	return service;
 }];
-},{}],147:[function(require,module,exports){
+},{}],152:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Seller');
@@ -11431,14 +11726,14 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-},{}],148:[function(require,module,exports){
+},{}],153:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Seller');
 	
 	return service;
 }]
-},{}],149:[function(require,module,exports){
+},{}],154:[function(require,module,exports){
 module.exports = ["common", "SellerPermissionService", function(common, SellerPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Seller');
@@ -11484,7 +11779,7 @@ module.exports = ["common", "SellerPermissionService", function(common, SellerPe
 	};
 	return service;	
 }]
-},{}],150:[function(require,module,exports){
+},{}],155:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
     'use strict';
@@ -11543,14 +11838,14 @@ module.exports = ["common", "config", "util", function (common, config, util) {
     return service;
 }];
 
-},{}],151:[function(require,module,exports){
+},{}],156:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Shop');
 
 	return service;
 }]
-},{}],152:[function(require,module,exports){
+},{}],157:[function(require,module,exports){
 module.exports = {
     NameTH: {
         labelClass: "required",
@@ -11689,7 +11984,7 @@ module.exports = {
     }
 }
 
-},{}],153:[function(require,module,exports){
+},{}],158:[function(require,module,exports){
 module.exports = {
     BrandImage: {
         'labelClass': 'required',
@@ -11725,7 +12020,7 @@ module.exports = {
     }
 };
 
-},{}],154:[function(require,module,exports){
+},{}],159:[function(require,module,exports){
 module.exports = {
     NameEn: {
         'labelClass': 'required',
@@ -11765,7 +12060,7 @@ module.exports = {
 
 }
 
-},{}],155:[function(require,module,exports){
+},{}],160:[function(require,module,exports){
 module.exports = {
     Image: {
 
@@ -11804,7 +12099,7 @@ module.exports = {
 
     }
 }
-},{}],156:[function(require,module,exports){
+},{}],161:[function(require,module,exports){
 module.exports = {
   KillerPointTh: {
     divClass: 'col-sm-6',
@@ -12003,7 +12298,7 @@ module.exports = {
   }
 }
 
-},{}],157:[function(require,module,exports){
+},{}],162:[function(require,module,exports){
 module.exports = {
 	BankName: {
         inputSize: 'large',
@@ -12021,7 +12316,7 @@ module.exports = {
 		inputSize: 'large'
 	}
 }
-},{}],158:[function(require,module,exports){
+},{}],163:[function(require,module,exports){
 module.exports = {
     Layout: {
         // tooltip: "Please select 'Available' if you can provide gift wrapping service to your customer",
@@ -12040,7 +12335,7 @@ module.exports = {
     }
 }
 
-},{}],159:[function(require,module,exports){
+},{}],164:[function(require,module,exports){
 module.exports = {
   CouponName: {
     labelClass: "required",
@@ -12092,7 +12387,7 @@ module.exports = {
   }
 }
 
-},{}],160:[function(require,module,exports){
+},{}],165:[function(require,module,exports){
 module.exports = {
   // Description
     DescriptionFull: {
@@ -12133,14 +12428,14 @@ module.exports = {
         inputClass: 'large'
     }
 }
-},{}],161:[function(require,module,exports){
+},{}],166:[function(require,module,exports){
 module.exports = {
   MultiCheckbox: {
     transcludeClasses:  "checkbox multiple-checkbox multiline"
   }
 }
 
-},{}],162:[function(require,module,exports){
+},{}],167:[function(require,module,exports){
 module.exports = {
 	ColumnSearch: {
 
@@ -12196,7 +12491,7 @@ module.exports = {
 	}
 }
 
-},{}],163:[function(require,module,exports){
+},{}],168:[function(require,module,exports){
 module.exports = {
   ProductName: {},
   Pid: {},
@@ -12228,7 +12523,7 @@ module.exports = {
   }
 }
 
-},{}],164:[function(require,module,exports){
+},{}],169:[function(require,module,exports){
 module.exports = {
     GiftWrap: {
         tooltip: "Please select 'Available' if you can provide gift wrapping service to your customer"
@@ -12293,7 +12588,7 @@ module.exports = {
     }
 }
 
-},{}],165:[function(require,module,exports){
+},{}],170:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -12488,7 +12783,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\n" +
     "\t\t                          </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=genericForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=formData.DescriptionShortEn>\n" +
     "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=formData.DescriptionShortTh>\n" +
-    "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Feature Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Feature Products\"><span class=form-text>There are no products in this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=\"params.FeatureTitle\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=col-xs-12 style=\"margin-top:-15px; margin-bottom:0px\"><p class=text-align-left><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</p></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
+    "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Feature Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Feature Products\"><span class=form-text>There are no products in this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=\"params.FeatureTitle\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=\"col-xs-12 text-align-left\" style=\"margin-top:-15px; margin-bottom:0px\"><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
@@ -12509,7 +12804,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\n" +
     "\t\t                          </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=genericForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=formData.DescriptionShortEn>\n" +
     "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=formData.DescriptionShortTh>\n" +
-    "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Feature Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Feature Products\"><span class=form-text>There are no products in this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=\"params.FeatureTitle\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=col-xs-12 style=\"margin-top:-15px; margin-bottom:0px\"><p class=text-align-left><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</p></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
+    "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Feature Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Feature Products\"><span class=form-text>There are no products in this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=\"params.FeatureTitle\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=\"col-xs-12 text-align-left\" style=\"margin-top:-15px; margin-bottom:0px\"><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
@@ -12556,7 +12851,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('product/modalCategorySelector',
-    "<div class=modal-header><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>{{title}}</h3></div><div class=modal-body style=\"padding-top: 15px\"><div class=\"category-section column-4\"><nc-tree-select nc-model=model nc-tree-select-tree=tree nc-tree-select-title=\"Global Category\"></nc-tree-select><div class=\"category-footer no-padding\"><span class=float-right><button ng-click=select() class=\"btn btn-blue btn-width-xl\" ng-disabled=\"model == null\">Select</button></span></div></div></div>"
+    "<div class=modal-header><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>{{title}}</h3></div><div class=modal-body style=\"padding-top: 15px\"><div class=\"category-section column-4\"><nc-tree-select nc-model=model nc-tree-select-tree=tree nc-exclude=exclude nc-tree-select-title=\"{{categoryHeaderText || 'Global Category'}}\"></nc-tree-select><div class=\"category-footer no-padding\"><span class=float-right><button ng-click=select() class=\"btn btn-blue btn-width-xl\" ng-disabled=\"model == null || (disabledOn || _.noop)(model)\">Select</button></span></div></div></div>"
   );
 
 
@@ -12584,17 +12879,16 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "<div class=modal-header><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Add Commission Rule</h3></div><div class=modal-body style=\"padding-top: 15px\"><div class=\"category-section column-4 ah-form\"><nc-tree-select nc-model=model nc-tree-select-tree=tree nc-tree-select-title=\"Global Category\"></nc-tree-select><div class=\"category-footer no-padding form-group\" style=\"margin: 30px 0px 0px 0px\"><div class=float-right><span class=float-left>Commission (%)</span><form name=form class=width-field-normal><input class=form-control ng-class=\"{ 'has-error' : $root.isInvalid(form.Commission) }\" name=Commission ng-model=Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-maxnumber=100 ng-minnumber=\"0\"><div class=\"help-block color-red float-left\"><div ng-if=\"form.Commission.$error.maxnumber || form.Commission.$error.minnumber\">Please enter between 0% and 100%</div><div ng-if=form.Commission.$error.pattern>Only numbers and decimals (up to 2 digits) allowed</div></div></form><button class=\"btn btn-blue btn-width-xl float-left\" ng-click=select() ng-disabled=\"form.$invalid || _.isEmpty(Commission) || _.isEmpty(model)\">Set</button></div></div></div></div>"
   );
  }];
-},{}],166:[function(require,module,exports){
+},{}],171:[function(require,module,exports){
 /**
- * @license AngularJS v1.5.0
- * (c) 2010-2016 Google, Inc. http://angularjs.org
+ * @license AngularJS v1.4.8
+ * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
 (function(window, angular, undefined) {'use strict';
 
 /* jshint ignore:start */
 var noop        = angular.noop;
-var copy        = angular.copy;
 var extend      = angular.extend;
 var jqLite      = angular.element;
 var forEach     = angular.forEach;
@@ -12613,7 +12907,6 @@ var ADD_CLASS_SUFFIX = '-add';
 var REMOVE_CLASS_SUFFIX = '-remove';
 var EVENT_CLASS_PREFIX = 'ng-';
 var ACTIVE_CLASS_SUFFIX = '-active';
-var PREPARE_CLASS_SUFFIX = '-prepare';
 
 var NG_ANIMATE_CLASSNAME = 'ng-animate';
 var NG_ANIMATE_CHILDREN_DATA = '$$ngAnimateChildren';
@@ -12665,7 +12958,6 @@ var isPromiseLike = function(p) {
   return p && p.then ? true : false;
 };
 
-var ngMinErr = angular.$$minErr('ng');
 function assertArg(arg, name, reason) {
   if (!arg) {
     throw ngMinErr('areq', "Argument '{0}' is {1}", (name || '?'), (reason || "required"));
@@ -12810,10 +13102,7 @@ function applyAnimationToStyles(element, options) {
   }
 }
 
-function mergeAnimationDetails(element, oldAnimation, newAnimation) {
-  var target = oldAnimation.options || {};
-  var newOptions = newAnimation.options || {};
-
+function mergeAnimationOptions(element, target, newOptions) {
   var toAdd = (target.addClass || '') + ' ' + (newOptions.addClass || '');
   var toRemove = (target.removeClass || '') + ' ' + (newOptions.removeClass || '');
   var classes = resolveElementClasses(element.attr('class'), toAdd, toRemove);
@@ -12844,9 +13133,6 @@ function mergeAnimationDetails(element, oldAnimation, newAnimation) {
   } else {
     target.removeClass = null;
   }
-
-  oldAnimation.addClass = target.addClass;
-  oldAnimation.removeClass = target.removeClass;
 
   return target;
 }
@@ -12983,7 +13269,7 @@ var $$rAFSchedulerFactory = ['$$rAF', function($$rAF) {
   queue = scheduler.queue = [];
 
   /* waitUntilQuiet does two things:
-   * 1. It will run the FINAL `fn` value only when an uncanceled RAF has passed through
+   * 1. It will run the FINAL `fn` value only when an uncancelled RAF has passed through
    * 2. It will delay the next wave of tasks from running until the quiet `fn` has run.
    *
    * The motivation here is that animation code can request more time from the scheduler
@@ -13018,101 +13304,16 @@ var $$rAFSchedulerFactory = ['$$rAF', function($$rAF) {
   }
 }];
 
-/**
- * @ngdoc directive
- * @name ngAnimateChildren
- * @restrict AE
- * @element ANY
- *
- * @description
- *
- * ngAnimateChildren allows you to specify that children of this element should animate even if any
- * of the children's parents are currently animating. By default, when an element has an active `enter`, `leave`, or `move`
- * (structural) animation, child elements that also have an active structural animation are not animated.
- *
- * Note that even if `ngAnimteChildren` is set, no child animations will run when the parent element is removed from the DOM (`leave` animation).
- *
- *
- * @param {string} ngAnimateChildren If the value is empty, `true` or `on`,
- *     then child animations are allowed. If the value is `false`, child animations are not allowed.
- *
- * @example
- * <example module="ngAnimateChildren" name="ngAnimateChildren" deps="angular-animate.js" animations="true">
-     <file name="index.html">
-       <div ng-controller="mainController as main">
-         <label>Show container? <input type="checkbox" ng-model="main.enterElement" /></label>
-         <label>Animate children? <input type="checkbox" ng-model="main.animateChildren" /></label>
-         <hr>
-         <div ng-animate-children="{{main.animateChildren}}">
-           <div ng-if="main.enterElement" class="container">
-             List of items:
-             <div ng-repeat="item in [0, 1, 2, 3]" class="item">Item {{item}}</div>
-           </div>
-         </div>
-       </div>
-     </file>
-     <file name="animations.css">
-
-      .container.ng-enter,
-      .container.ng-leave {
-        transition: all ease 1.5s;
-      }
-
-      .container.ng-enter,
-      .container.ng-leave-active {
-        opacity: 0;
-      }
-
-      .container.ng-leave,
-      .container.ng-enter-active {
-        opacity: 1;
-      }
-
-      .item {
-        background: firebrick;
-        color: #FFF;
-        margin-bottom: 10px;
-      }
-
-      .item.ng-enter,
-      .item.ng-leave {
-        transition: transform 1.5s ease;
-      }
-
-      .item.ng-enter {
-        transform: translateX(50px);
-      }
-
-      .item.ng-enter-active {
-        transform: translateX(0);
-      }
-    </file>
-    <file name="script.js">
-      angular.module('ngAnimateChildren', ['ngAnimate'])
-        .controller('mainController', function() {
-          this.animateChildren = false;
-          this.enterElement = false;
-        });
-    </file>
-  </example>
- */
-var $$AnimateChildrenDirective = ['$interpolate', function($interpolate) {
-  return {
-    link: function(scope, element, attrs) {
-      var val = attrs.ngAnimateChildren;
-      if (angular.isString(val) && val.length === 0) { //empty attribute
-        element.data(NG_ANIMATE_CHILDREN_DATA, true);
-      } else {
-        // Interpolate and set the value, so that it is available to
-        // animations that run right after compilation
-        setData($interpolate(val)(scope));
-        attrs.$observe('ngAnimateChildren', setData);
-      }
-
-      function setData(value) {
+var $$AnimateChildrenDirective = [function() {
+  return function(scope, element, attrs) {
+    var val = attrs.ngAnimateChildren;
+    if (angular.isString(val) && val.length === 0) { //empty attribute
+      element.data(NG_ANIMATE_CHILDREN_DATA, true);
+    } else {
+      attrs.$observe('ngAnimateChildren', function(value) {
         value = value === 'on' || value === 'true';
         element.data(NG_ANIMATE_CHILDREN_DATA, value);
-      }
+      });
     }
   };
 }];
@@ -13284,7 +13485,7 @@ var ANIMATE_TIMER_KEY = '$$animateCss';
  * ```
  *
  * To actually start the animation we need to run `animation.start()` which will then return a promise that we can hook into to detect when the animation ends.
- * If we choose not to run the animation then we MUST run `animation.end()` to perform a cleanup on the element (since some CSS classes and styles may have been
+ * If we choose not to run the animation then we MUST run `animation.end()` to perform a cleanup on the element (since some CSS classes and stlyes may have been
  * applied to the element during the preparation phase). Note that all other properties such as duration, delay, transitions and keyframes are just properties
  * and that changing them will not reconfigure the parameters of the animation.
  *
@@ -13321,11 +13522,11 @@ var ANIMATE_TIMER_KEY = '$$animateCss';
  * * `stagger` - A numeric time value representing the delay between successively animated elements
  * ({@link ngAnimate#css-staggering-animations Click here to learn how CSS-based staggering works in ngAnimate.})
  * * `staggerIndex` - The numeric index representing the stagger item (e.g. a value of 5 is equal to the sixth item in the stagger; therefore when a
- *   `stagger` option value of `0.1` is used then there will be a stagger delay of `600ms`)
- * * `applyClassesEarly` - Whether or not the classes being added or removed will be used when detecting the animation. This is set by `$animate` when enter/leave/move animations are fired to ensure that the CSS classes are resolved in time. (Note that this will prevent any transitions from occurring on the classes being added and removed.)
+ * * `stagger` option value of `0.1` is used then there will be a stagger delay of `600ms`)
+ * * `applyClassesEarly` - Whether or not the classes being added or removed will be used when detecting the animation. This is set by `$animate` when enter/leave/move animations are fired to ensure that the CSS classes are resolved in time. (Note that this will prevent any transitions from occuring on the classes being added and removed.)
  * * `cleanupStyles` - Whether or not the provided `from` and `to` styles will be removed once
  *    the animation is closed. This is useful for when the styles are used purely for the sake of
- *    the animation and do not have a lasting visual effect on the element (e.g. a collapse and open animation).
+ *    the animation and do not have a lasting visual effect on the element (e.g. a colapse and open animation).
  *    By default this value is set to `false`.
  *
  * @return {object} an object with start and end methods and details about the animation.
@@ -13378,7 +13579,7 @@ function computeCssStyles($window, element, properties) {
       }
 
       // by setting this to null in the event that the delay is not set or is set directly as 0
-      // then we can still allow for negative values to be used later on and not mistake this
+      // then we can still allow for zegative values to be used later on and not mistake this
       // value for being greater than any other negative value.
       if (val === 0) {
         val = null;
@@ -13469,9 +13670,9 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
   var gcsStaggerLookup = createLocalCacheLookup();
 
   this.$get = ['$window', '$$jqLite', '$$AnimateRunner', '$timeout',
-               '$$forceReflow', '$sniffer', '$$rAFScheduler', '$$animateQueue',
+               '$$forceReflow', '$sniffer', '$$rAFScheduler', '$animate',
        function($window,   $$jqLite,   $$AnimateRunner,   $timeout,
-                $$forceReflow,   $sniffer,   $$rAFScheduler, $$animateQueue) {
+                $$forceReflow,   $sniffer,   $$rAFScheduler, $animate) {
 
     var applyAnimationClasses = applyAnimationClassesFactory($$jqLite);
 
@@ -13494,7 +13695,7 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
       }
 
       // we keep putting this in multiple times even though the value and the cacheKey are the same
-      // because we're keeping an internal tally of how many duplicate animations are detected.
+      // because we're keeping an interal tally of how many duplicate animations are detected.
       gcsLookup.put(cacheKey, timings);
       return timings;
     }
@@ -13563,23 +13764,16 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
       return timings;
     }
 
-    return function init(element, initialOptions) {
-      // all of the animation functions should create
-      // a copy of the options data, however, if a
-      // parent service has already created a copy then
-      // we should stick to using that
-      var options = initialOptions || {};
-      if (!options.$$prepared) {
-        options = prepareAnimationOptions(copy(options));
-      }
-
+    return function init(element, options) {
       var restoreStyles = {};
       var node = getDomNode(element);
       if (!node
           || !node.parentNode
-          || !$$animateQueue.enabled()) {
+          || !$animate.enabled()) {
         return closeAndReturnNoopAnimator();
       }
+
+      options = prepareAnimationOptions(options);
 
       var temporaryStyles = [];
       var classes = element.attr('class');
@@ -13593,8 +13787,6 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
       var maxDelayTime;
       var maxDuration;
       var maxDurationTime;
-      var startTime;
-      var events = [];
 
       if (options.duration === 0 || (!$sniffer.animations && !$sniffer.transitions)) {
         return closeAndReturnNoopAnimator();
@@ -13748,12 +13940,7 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
       }
 
       if (options.delay != null) {
-        var delayStyle;
-        if (typeof options.delay !== "boolean") {
-          delayStyle = parseFloat(options.delay);
-          // number in options.delay means we have to recalculate the delay for the closing timeout
-          maxDelay = Math.max(delayStyle, 0);
-        }
+        var delayStyle = parseFloat(options.delay);
 
         if (flags.applyTransitionDelay) {
           temporaryStyles.push(getCssDelayStyle(delayStyle));
@@ -13868,18 +14055,6 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
           options.onDone();
         }
 
-        if (events && events.length) {
-          // Remove the transitionend / animationend listener(s)
-          element.off(events.join(' '), onAnimationProgress);
-        }
-
-        //Cancel the fallback closing timeout and remove the timer data
-        var animationTimerData = element.data(ANIMATE_TIMER_KEY);
-        if (animationTimerData) {
-          $timeout.cancel(animationTimerData[0].timer);
-          element.removeData(ANIMATE_TIMER_KEY);
-        }
-
         // if the preparation function fails then the promise is not setup
         if (runner) {
           runner.complete(!rejected);
@@ -13915,39 +14090,14 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
         };
       }
 
-      function onAnimationProgress(event) {
-        event.stopPropagation();
-        var ev = event.originalEvent || event;
-
-        // we now always use `Date.now()` due to the recent changes with
-        // event.timeStamp in Firefox, Webkit and Chrome (see #13494 for more info)
-        var timeStamp = ev.$manualTimeStamp || Date.now();
-
-        /* Firefox (or possibly just Gecko) likes to not round values up
-         * when a ms measurement is used for the animation */
-        var elapsedTime = parseFloat(ev.elapsedTime.toFixed(ELAPSED_TIME_MAX_DECIMAL_PLACES));
-
-        /* $manualTimeStamp is a mocked timeStamp value which is set
-         * within browserTrigger(). This is only here so that tests can
-         * mock animations properly. Real events fallback to event.timeStamp,
-         * or, if they don't, then a timeStamp is automatically created for them.
-         * We're checking to see if the timeStamp surpasses the expected delay,
-         * but we're using elapsedTime instead of the timeStamp on the 2nd
-         * pre-condition since animationPauseds sometimes close off early */
-        if (Math.max(timeStamp - startTime, 0) >= maxDelayTime && elapsedTime >= maxDuration) {
-          // we set this flag to ensure that if the transition is paused then, when resumed,
-          // the animation will automatically close itself since transitions cannot be paused.
-          animationCompleted = true;
-          close();
-        }
-      }
-
       function start() {
         if (animationClosed) return;
         if (!node.parentNode) {
           close();
           return;
         }
+
+        var startTime, events = [];
 
         // even though we only pause keyframe animations here the pause flag
         // will still happen when transitions are used. Only the transition will
@@ -13968,9 +14118,9 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
           }
         };
 
-        // checking the stagger duration prevents an accidentally cascade of the CSS delay style
+        // checking the stagger duration prevents an accidently cascade of the CSS delay style
         // being inherited from the parent. If the transition duration is zero then we can safely
-        // rely that the delay value is an intentional stagger delay style.
+        // rely that the delay value is an intential stagger delay style.
         var maxStagger = itemIndex > 0
                          && ((timings.transitionDuration && stagger.transitionDuration === 0) ||
                             (timings.animationDuration && stagger.animationDuration === 0))
@@ -14089,10 +14239,7 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
             element.data(ANIMATE_TIMER_KEY, animationsData);
           }
 
-          if (events.length) {
-            element.on(events.join(' '), onAnimationProgress);
-          }
-
+          element.on(events.join(' '), onAnimationProgress);
           if (options.to) {
             if (options.cleanupStyles) {
               registerRestorableStyles(restoreStyles, node, Object.keys(options.to));
@@ -14112,6 +14259,30 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
               animationsData[i]();
             }
             element.removeData(ANIMATE_TIMER_KEY);
+          }
+        }
+
+        function onAnimationProgress(event) {
+          event.stopPropagation();
+          var ev = event.originalEvent || event;
+          var timeStamp = ev.$manualTimeStamp || ev.timeStamp || Date.now();
+
+          /* Firefox (or possibly just Gecko) likes to not round values up
+           * when a ms measurement is used for the animation */
+          var elapsedTime = parseFloat(ev.elapsedTime.toFixed(ELAPSED_TIME_MAX_DECIMAL_PLACES));
+
+          /* $manualTimeStamp is a mocked timeStamp value which is set
+           * within browserTrigger(). This is only here so that tests can
+           * mock animations properly. Real events fallback to event.timeStamp,
+           * or, if they don't, then a timeStamp is automatically created for them.
+           * We're checking to see if the timeStamp surpasses the expected delay,
+           * but we're using elapsedTime instead of the timeStamp on the 2nd
+           * pre-condition since animations sometimes close off early */
+          if (Math.max(timeStamp - startTime, 0) >= maxDelayTime && elapsedTime >= maxDuration) {
+            // we set this flag to ensure that if the transition is paused then, when resumed,
+            // the animation will automatically close itself since transitions cannot be paused.
+            animationCompleted = true;
+            close();
           }
         }
       }
@@ -14143,7 +14314,7 @@ var $$AnimateCssDriverProvider = ['$$animationProvider', function($$animationPro
 
     var rootBodyElement = jqLite(
       // this is to avoid using something that exists outside of the body
-      // we also special case the doc fragment case because our unit test code
+      // we also special case the doc fragement case because our unit test code
       // appends the $rootElement to the body after the app has been bootstrapped
       isDocumentFragment(rootNode) || bodyNode.contains(rootNode) ? rootNode : bodyNode
     );
@@ -14243,7 +14414,7 @@ var $$AnimateCssDriverProvider = ['$$animationProvider', function($$animationPro
         var coords = getDomNode(anchor).getBoundingClientRect();
 
         // we iterate directly since safari messes up and doesn't return
-        // all the keys for the coords object when iterated
+        // all the keys for the coods object when iterated
         forEach(['width','height','top','left'], function(key) {
           var value = coords[key];
           switch (key) {
@@ -14398,8 +14569,6 @@ var $$AnimateJsProvider = ['$animateProvider', function($animateProvider) {
     var applyAnimationClasses = applyAnimationClassesFactory($$jqLite);
          // $animateJs(element, 'enter');
     return function(element, event, classes, options) {
-      var animationClosed = false;
-
       // the `classes` argument is optional and if it is not used
       // then the classes will be resolved from the element's className
       // property as well as options.addClass/options.removeClass.
@@ -14452,32 +14621,8 @@ var $$AnimateJsProvider = ['$animateProvider', function($animateProvider) {
         applyAnimationClasses(element, options);
       }
 
-      function close() {
-        animationClosed = true;
-        applyOptions();
-        applyAnimationStyles(element, options);
-      }
-
-      var runner;
-
       return {
-        $$willAnimate: true,
-        end: function() {
-          if (runner) {
-            runner.end();
-          } else {
-            close();
-            runner = new $$AnimateRunner();
-            runner.complete(true);
-          }
-          return runner;
-        },
         start: function() {
-          if (runner) {
-            return runner;
-          }
-
-          runner = new $$AnimateRunner();
           var closeActiveAnimations;
           var chain = [];
 
@@ -14502,7 +14647,8 @@ var $$AnimateJsProvider = ['$animateProvider', function($animateProvider) {
             });
           }
 
-          runner.setHost({
+          var animationClosed = false;
+          var runner = new $$AnimateRunner({
             end: function() {
               endAnimations();
             },
@@ -14515,7 +14661,9 @@ var $$AnimateJsProvider = ['$animateProvider', function($animateProvider) {
           return runner;
 
           function onComplete(success) {
-            close(success);
+            animationClosed = true;
+            applyOptions();
+            applyAnimationStyles(element, options);
             runner.complete(success);
           }
 
@@ -14735,7 +14883,6 @@ var NG_ANIMATE_PIN_DATA = '$ngAnimatePin';
 var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
   var PRE_DIGEST_STATE = 1;
   var RUNNING_STATE = 2;
-  var ONE_SPACE = ' ';
 
   var rules = this.rules = {
     skip: [],
@@ -14743,50 +14890,28 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
     join: []
   };
 
-  function makeTruthyCssClassMap(classString) {
-    if (!classString) {
-      return null;
-    }
-
-    var keys = classString.split(ONE_SPACE);
-    var map = Object.create(null);
-
-    forEach(keys, function(key) {
-      map[key] = true;
-    });
-    return map;
-  }
-
-  function hasMatchingClasses(newClassString, currentClassString) {
-    if (newClassString && currentClassString) {
-      var currentClassMap = makeTruthyCssClassMap(currentClassString);
-      return newClassString.split(ONE_SPACE).some(function(className) {
-        return currentClassMap[className];
-      });
-    }
-  }
-
   function isAllowed(ruleType, element, currentAnimation, previousAnimation) {
     return rules[ruleType].some(function(fn) {
       return fn(element, currentAnimation, previousAnimation);
     });
   }
 
-  function hasAnimationClasses(animation, and) {
-    var a = (animation.addClass || '').length > 0;
-    var b = (animation.removeClass || '').length > 0;
+  function hasAnimationClasses(options, and) {
+    options = options || {};
+    var a = (options.addClass || '').length > 0;
+    var b = (options.removeClass || '').length > 0;
     return and ? a && b : a || b;
   }
 
   rules.join.push(function(element, newAnimation, currentAnimation) {
     // if the new animation is class-based then we can just tack that on
-    return !newAnimation.structural && hasAnimationClasses(newAnimation);
+    return !newAnimation.structural && hasAnimationClasses(newAnimation.options);
   });
 
   rules.skip.push(function(element, newAnimation, currentAnimation) {
     // there is no need to animate anything if no classes are being added and
     // there is no structural animation that will be triggered
-    return !newAnimation.structural && !hasAnimationClasses(newAnimation);
+    return !newAnimation.structural && !hasAnimationClasses(newAnimation.options);
   });
 
   rules.skip.push(function(element, newAnimation, currentAnimation) {
@@ -14812,17 +14937,11 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
   });
 
   rules.cancel.push(function(element, newAnimation, currentAnimation) {
-    var nA = newAnimation.addClass;
-    var nR = newAnimation.removeClass;
-    var cA = currentAnimation.addClass;
-    var cR = currentAnimation.removeClass;
+    var nO = newAnimation.options;
+    var cO = currentAnimation.options;
 
-    // early detection to save the global CPU shortage :)
-    if ((isUndefined(nA) && isUndefined(nR)) || (isUndefined(cA) && isUndefined(cR))) {
-      return false;
-    }
-
-    return hasMatchingClasses(nA, cR) || hasMatchingClasses(nR, cA);
+    // if the exact same CSS class is added/removed then it's safe to cancel it
+    return (nO.addClass && nO.addClass === cO.removeClass) || (nO.removeClass && nO.removeClass === cO.addClass);
   });
 
   this.$get = ['$$rAF', '$rootScope', '$rootElement', '$document', '$$HashMap',
@@ -14894,16 +15013,9 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
 
     var applyAnimationClasses = applyAnimationClassesFactory($$jqLite);
 
-    function normalizeAnimationDetails(element, animation) {
-      return mergeAnimationDetails(element, animation, {});
+    function normalizeAnimationOptions(element, options) {
+      return mergeAnimationOptions(element, options, {});
     }
-
-    // IE9-11 has no method "contains" in SVG element and in Node.prototype. Bug #10259.
-    var contains = Node.prototype.contains || function(arg) {
-      // jshint bitwise: false
-      return this === arg || !!(this.compareDocumentPosition(arg) & 16);
-      // jshint bitwise: true
-    };
 
     function findCallbacks(parent, element, event) {
       var targetNode = getDomNode(element);
@@ -14913,9 +15025,9 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
       var entries = callbackRegistry[event];
       if (entries) {
         forEach(entries, function(entry) {
-          if (contains.call(entry.node, targetNode)) {
+          if (entry.node.contains(targetNode)) {
             matches.push(entry.callback);
-          } else if (event === 'leave' && contains.call(entry.node, targetParentNode)) {
+          } else if (event === 'leave' && entry.node.contains(targetParentNode)) {
             matches.push(entry.callback);
           }
         });
@@ -14990,7 +15102,12 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
               bool = !recordExists;
             } else {
               // (element, bool) - Element setter
-              disabledElementsLookup.put(node, !bool);
+              bool = !!bool;
+              if (!bool) {
+                disabledElementsLookup.put(node, true);
+              } else if (recordExists) {
+                disabledElementsLookup.remove(node);
+              }
             }
           }
         }
@@ -14999,12 +15116,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
       }
     };
 
-    function queueAnimation(element, event, initialOptions) {
-      // we always make a copy of the options since
-      // there should never be any side effects on
-      // the input data when running `$animateCss`.
-      var options = copy(initialOptions);
-
+    function queueAnimation(element, event, options) {
       var node, parent;
       element = stripCommentsFromElement(element);
       if (element) {
@@ -15064,9 +15176,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
       // this is a hard disable of all animations for the application or on
       // the element itself, therefore  there is no need to continue further
       // past this point if not enabled
-      // Animations are also disabled if the document is currently hidden (page is not visible
-      // to the user), because browsers slow down or do not flush calls to requestAnimationFrame
-      var skipAnimations = !animationsEnabled || $document[0].hidden || disabledElementsLookup.get(node);
+      var skipAnimations = !animationsEnabled || disabledElementsLookup.get(node);
       var existingAnimation = (!skipAnimations && activeAnimationsLookup.get(node)) || {};
       var hasExistingAnimation = !!existingAnimation.state;
 
@@ -15089,8 +15199,6 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
         structural: isStructural,
         element: element,
         event: event,
-        addClass: options.addClass,
-        removeClass: options.removeClass,
         close: close,
         options: options,
         runner: runner
@@ -15103,10 +15211,11 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
             close();
             return runner;
           } else {
-            mergeAnimationDetails(element, existingAnimation, newAnimation);
+            mergeAnimationOptions(element, existingAnimation.options, options);
             return existingAnimation.runner;
           }
         }
+
         var cancelAnimationFlag = isAllowed('cancel', element, newAnimation, existingAnimation);
         if (cancelAnimationFlag) {
           if (existingAnimation.state === RUNNING_STATE) {
@@ -15121,8 +15230,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
             existingAnimation.close();
           } else {
             // this will merge the new animation options into existing animation options
-            mergeAnimationDetails(element, existingAnimation, newAnimation);
-
+            mergeAnimationOptions(element, existingAnimation.options, newAnimation.options);
             return existingAnimation.runner;
           }
         } else {
@@ -15132,12 +15240,12 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
           var joinAnimationFlag = isAllowed('join', element, newAnimation, existingAnimation);
           if (joinAnimationFlag) {
             if (existingAnimation.state === RUNNING_STATE) {
-              normalizeAnimationDetails(element, newAnimation);
+              normalizeAnimationOptions(element, options);
             } else {
               applyGeneratedPreparationClasses(element, isStructural ? event : null, options);
 
               event = newAnimation.event = existingAnimation.event;
-              options = mergeAnimationDetails(element, existingAnimation, newAnimation);
+              options = mergeAnimationOptions(element, existingAnimation.options, newAnimation.options);
 
               //we return the same runner since only the option values of this animation will
               //be fed into the `existingAnimation`.
@@ -15148,7 +15256,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
       } else {
         // normalization in this case means that it removes redundant CSS classes that
         // already exist (addClass) or do not exist (removeClass) on the element
-        normalizeAnimationDetails(element, newAnimation);
+        normalizeAnimationOptions(element, options);
       }
 
       // when the options are merged and cleaned up we may end up not having to do
@@ -15158,7 +15266,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
       if (!isValidAnimation) {
         // animate (from/to) can be quickly checked first, otherwise we check if any classes are present
         isValidAnimation = (newAnimation.event === 'animate' && Object.keys(newAnimation.options.to || {}).length > 0)
-                            || hasAnimationClasses(newAnimation);
+                            || hasAnimationClasses(newAnimation.options);
       }
 
       if (!isValidAnimation) {
@@ -15188,7 +15296,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
         var isValidAnimation = parentElement.length > 0
                                 && (animationDetails.event === 'animate'
                                     || animationDetails.structural
-                                    || hasAnimationClasses(animationDetails));
+                                    || hasAnimationClasses(animationDetails.options));
 
         // this means that the previous animation was cancelled
         // even if the follow-up animation is the same event
@@ -15220,7 +15328,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
 
         // this combined multiple class to addClass / removeClass into a setClass event
         // so long as a structural event did not take over the animation
-        event = !animationDetails.structural && hasAnimationClasses(animationDetails, true)
+        event = !animationDetails.structural && hasAnimationClasses(animationDetails.options, true)
             ? 'setClass'
             : animationDetails.event;
 
@@ -15277,15 +15385,15 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
       forEach(children, function(child) {
         var state = parseInt(child.getAttribute(NG_ANIMATE_ATTR_NAME));
         var animationDetails = activeAnimationsLookup.get(child);
-        if (animationDetails) {
-          switch (state) {
-            case RUNNING_STATE:
-              animationDetails.runner.end();
-              /* falls through */
-            case PRE_DIGEST_STATE:
+        switch (state) {
+          case RUNNING_STATE:
+            animationDetails.runner.end();
+            /* falls through */
+          case PRE_DIGEST_STATE:
+            if (animationDetails) {
               activeAnimationsLookup.remove(child);
-              break;
-          }
+            }
+            break;
         }
       });
     }
@@ -15300,20 +15408,12 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
       return getDomNode(nodeOrElmA) === getDomNode(nodeOrElmB);
     }
 
-    /**
-     * This fn returns false if any of the following is true:
-     * a) animations on any parent element are disabled, and animations on the element aren't explicitly allowed
-     * b) a parent element has an ongoing structural animation, and animateChildren is false
-     * c) the element is not a child of the body
-     * d) the element is not a child of the $rootElement
-     */
     function areAnimationsAllowed(element, parentElement, event) {
       var bodyElement = jqLite($document[0].body);
       var bodyElementDetected = isMatchingElement(element, bodyElement) || element[0].nodeName === 'HTML';
       var rootElementDetected = isMatchingElement(element, $rootElement);
       var parentAnimationDetected = false;
       var animateChildren;
-      var elementDisabled = disabledElementsLookup.get(getDomNode(element));
 
       var parentHost = element.data(NG_ANIMATE_PIN_DATA);
       if (parentHost) {
@@ -15338,18 +15438,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
         // therefore we can't allow any animations to take place
         // but if a parent animation is class-based then that's ok
         if (!parentAnimationDetected) {
-          var parentElementDisabled = disabledElementsLookup.get(parentNode);
-
-          if (parentElementDisabled === true && elementDisabled !== false) {
-            // disable animations if the user hasn't explicitly enabled animations on the
-            // current element
-            elementDisabled = true;
-            // element is disabled via parent element, no need to check anything else
-            break;
-          } else if (parentElementDisabled === false) {
-            elementDisabled = false;
-          }
-          parentAnimationDetected = details.structural;
+          parentAnimationDetected = details.structural || disabledElementsLookup.get(parentNode);
         }
 
         if (isUndefined(animateChildren) || animateChildren === true) {
@@ -15362,32 +15451,28 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
         // there is no need to continue traversing at this point
         if (parentAnimationDetected && animateChildren === false) break;
 
+        if (!rootElementDetected) {
+          // angular doesn't want to attempt to animate elements outside of the application
+          // therefore we need to ensure that the rootElement is an ancestor of the current element
+          rootElementDetected = isMatchingElement(parentElement, $rootElement);
+          if (!rootElementDetected) {
+            parentHost = parentElement.data(NG_ANIMATE_PIN_DATA);
+            if (parentHost) {
+              parentElement = parentHost;
+            }
+          }
+        }
+
         if (!bodyElementDetected) {
-          // we also need to ensure that the element is or will be a part of the body element
+          // we also need to ensure that the element is or will be apart of the body element
           // otherwise it is pointless to even issue an animation to be rendered
           bodyElementDetected = isMatchingElement(parentElement, bodyElement);
-        }
-
-        if (bodyElementDetected && rootElementDetected) {
-          // If both body and root have been found, any other checks are pointless,
-          // as no animation data should live outside the application
-          break;
-        }
-
-        if (!rootElementDetected) {
-          // If no rootElement is detected, check if the parentElement is pinned to another element
-          parentHost = parentElement.data(NG_ANIMATE_PIN_DATA);
-          if (parentHost) {
-            // The pin target element becomes the next parent element
-            parentElement = parentHost;
-            continue;
-          }
         }
 
         parentElement = parentElement.parent();
       }
 
-      var allowAnimation = (!parentAnimationDetected || animateChildren) && elementDisabled !== true;
+      var allowAnimation = !parentAnimationDetected || animateChildren;
       return allowAnimation && rootElementDetected && bodyElementDetected;
     }
 
@@ -15405,6 +15490,171 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
       activeAnimationsLookup.put(node, newValue);
     }
   }];
+}];
+
+var $$AnimateAsyncRunFactory = ['$$rAF', function($$rAF) {
+  var waitQueue = [];
+
+  function waitForTick(fn) {
+    waitQueue.push(fn);
+    if (waitQueue.length > 1) return;
+    $$rAF(function() {
+      for (var i = 0; i < waitQueue.length; i++) {
+        waitQueue[i]();
+      }
+      waitQueue = [];
+    });
+  }
+
+  return function() {
+    var passed = false;
+    waitForTick(function() {
+      passed = true;
+    });
+    return function(callback) {
+      passed ? callback() : waitForTick(callback);
+    };
+  };
+}];
+
+var $$AnimateRunnerFactory = ['$q', '$sniffer', '$$animateAsyncRun',
+                      function($q,   $sniffer,   $$animateAsyncRun) {
+
+  var INITIAL_STATE = 0;
+  var DONE_PENDING_STATE = 1;
+  var DONE_COMPLETE_STATE = 2;
+
+  AnimateRunner.chain = function(chain, callback) {
+    var index = 0;
+
+    next();
+    function next() {
+      if (index === chain.length) {
+        callback(true);
+        return;
+      }
+
+      chain[index](function(response) {
+        if (response === false) {
+          callback(false);
+          return;
+        }
+        index++;
+        next();
+      });
+    }
+  };
+
+  AnimateRunner.all = function(runners, callback) {
+    var count = 0;
+    var status = true;
+    forEach(runners, function(runner) {
+      runner.done(onProgress);
+    });
+
+    function onProgress(response) {
+      status = status && response;
+      if (++count === runners.length) {
+        callback(status);
+      }
+    }
+  };
+
+  function AnimateRunner(host) {
+    this.setHost(host);
+
+    this._doneCallbacks = [];
+    this._runInAnimationFrame = $$animateAsyncRun();
+    this._state = 0;
+  }
+
+  AnimateRunner.prototype = {
+    setHost: function(host) {
+      this.host = host || {};
+    },
+
+    done: function(fn) {
+      if (this._state === DONE_COMPLETE_STATE) {
+        fn();
+      } else {
+        this._doneCallbacks.push(fn);
+      }
+    },
+
+    progress: noop,
+
+    getPromise: function() {
+      if (!this.promise) {
+        var self = this;
+        this.promise = $q(function(resolve, reject) {
+          self.done(function(status) {
+            status === false ? reject() : resolve();
+          });
+        });
+      }
+      return this.promise;
+    },
+
+    then: function(resolveHandler, rejectHandler) {
+      return this.getPromise().then(resolveHandler, rejectHandler);
+    },
+
+    'catch': function(handler) {
+      return this.getPromise()['catch'](handler);
+    },
+
+    'finally': function(handler) {
+      return this.getPromise()['finally'](handler);
+    },
+
+    pause: function() {
+      if (this.host.pause) {
+        this.host.pause();
+      }
+    },
+
+    resume: function() {
+      if (this.host.resume) {
+        this.host.resume();
+      }
+    },
+
+    end: function() {
+      if (this.host.end) {
+        this.host.end();
+      }
+      this._resolve(true);
+    },
+
+    cancel: function() {
+      if (this.host.cancel) {
+        this.host.cancel();
+      }
+      this._resolve(false);
+    },
+
+    complete: function(response) {
+      var self = this;
+      if (self._state === INITIAL_STATE) {
+        self._state = DONE_PENDING_STATE;
+        self._runInAnimationFrame(function() {
+          self._resolve(response);
+        });
+      }
+    },
+
+    _resolve: function(response) {
+      if (this._state !== DONE_COMPLETE_STATE) {
+        forEach(this._doneCallbacks, function(fn) {
+          fn(response);
+        });
+        this._doneCallbacks.length = 0;
+        this._state = DONE_COMPLETE_STATE;
+      }
+    }
+  };
+
+  return AnimateRunner;
 }];
 
 var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
@@ -15540,12 +15790,6 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
       if (tempClasses) {
         classes += ' ' + tempClasses;
         options.tempClasses = null;
-      }
-
-      var prepareClassName;
-      if (isStructural) {
-        prepareClassName = 'ng-' + event + PREPARE_CLASS_SUFFIX;
-        $$jqLite.addClass(element, prepareClassName);
       }
 
       animationQueue.push({
@@ -15712,7 +15956,7 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
             };
 
             // the anchor animations require that the from and to elements both have at least
-            // one shared CSS class which effectively marries the two elements together to use
+            // one shared CSS class which effictively marries the two elements together to use
             // the same animation driver and to properly sequence the anchor animation.
             if (group.classes.length) {
               preparedAnimations.push(group);
@@ -15770,10 +16014,6 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
         if (tempClasses) {
           $$jqLite.addClass(element, tempClasses);
         }
-        if (prepareClassName) {
-          $$jqLite.removeClass(element, prepareClassName);
-          prepareClassName = null;
-        }
       }
 
       function updateAnimationRunners(animation, newRunner) {
@@ -15815,121 +16055,12 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
   }];
 }];
 
-/**
- * @ngdoc directive
- * @name ngAnimateSwap
- * @restrict A
- * @scope
- *
- * @description
- *
- * ngAnimateSwap is a animation-oriented directive that allows for the container to
- * be removed and entered in whenever the associated expression changes. A
- * common usecase for this directive is a rotating banner component which
- * contains one image being present at a time. When the active image changes
- * then the old image will perform a `leave` animation and the new element
- * will be inserted via an `enter` animation.
- *
- * @example
- * <example name="ngAnimateSwap-directive" module="ngAnimateSwapExample"
- *          deps="angular-animate.js"
- *          animations="true" fixBase="true">
- *   <file name="index.html">
- *     <div class="container" ng-controller="AppCtrl">
- *       <div ng-animate-swap="number" class="cell swap-animation" ng-class="colorClass(number)">
- *         {{ number }}
- *       </div>
- *     </div>
- *   </file>
- *   <file name="script.js">
- *     angular.module('ngAnimateSwapExample', ['ngAnimate'])
- *       .controller('AppCtrl', ['$scope', '$interval', function($scope, $interval) {
- *         $scope.number = 0;
- *         $interval(function() {
- *           $scope.number++;
- *         }, 1000);
- *
- *         var colors = ['red','blue','green','yellow','orange'];
- *         $scope.colorClass = function(number) {
- *           return colors[number % colors.length];
- *         };
- *       }]);
- *   </file>
- *  <file name="animations.css">
- *  .container {
- *    height:250px;
- *    width:250px;
- *    position:relative;
- *    overflow:hidden;
- *    border:2px solid black;
- *  }
- *  .container .cell {
- *    font-size:150px;
- *    text-align:center;
- *    line-height:250px;
- *    position:absolute;
- *    top:0;
- *    left:0;
- *    right:0;
- *    border-bottom:2px solid black;
- *  }
- *  .swap-animation.ng-enter, .swap-animation.ng-leave {
- *    transition:0.5s linear all;
- *  }
- *  .swap-animation.ng-enter {
- *    top:-250px;
- *  }
- *  .swap-animation.ng-enter-active {
- *    top:0px;
- *  }
- *  .swap-animation.ng-leave {
- *    top:0px;
- *  }
- *  .swap-animation.ng-leave-active {
- *    top:250px;
- *  }
- *  .red { background:red; }
- *  .green { background:green; }
- *  .blue { background:blue; }
- *  .yellow { background:yellow; }
- *  .orange { background:orange; }
- *  </file>
- * </example>
- */
-var ngAnimateSwapDirective = ['$animate', '$rootScope', function($animate, $rootScope) {
-  return {
-    restrict: 'A',
-    transclude: 'element',
-    terminal: true,
-    priority: 600, // we use 600 here to ensure that the directive is caught before others
-    link: function(scope, $element, attrs, ctrl, $transclude) {
-      var previousElement, previousScope;
-      scope.$watchCollection(attrs.ngAnimateSwap || attrs['for'], function(value) {
-        if (previousElement) {
-          $animate.leave(previousElement);
-        }
-        if (previousScope) {
-          previousScope.$destroy();
-          previousScope = null;
-        }
-        if (value || value === 0) {
-          previousScope = scope.$new();
-          $transclude(previousScope, function(element) {
-            previousElement = element;
-            $animate.enter(element, null, $element);
-          });
-        }
-      });
-    }
-  };
-}];
-
 /* global angularAnimateModule: true,
 
-   ngAnimateSwapDirective,
    $$AnimateAsyncRunFactory,
    $$rAFSchedulerFactory,
    $$AnimateChildrenDirective,
+   $$AnimateRunnerFactory,
    $$AnimateQueueProvider,
    $$AnimationProvider,
    $AnimateCssProvider,
@@ -16178,39 +16309,11 @@ var ngAnimateSwapDirective = ['$animate', '$rootScope', function($animate, $root
  * the CSS class once an animation has completed.)
  *
  *
- * ### The `ng-[event]-prepare` class
- *
- * This is a special class that can be used to prevent unwanted flickering / flash of content before
- * the actual animation starts. The class is added as soon as an animation is initialized, but removed
- * before the actual animation starts (after waiting for a $digest).
- * It is also only added for *structural* animations (`enter`, `move`, and `leave`).
- *
- * In practice, flickering can appear when nesting elements with structural animations such as `ngIf`
- * into elements that have class-based animations such as `ngClass`.
- *
- * ```html
- * <div ng-class="{red: myProp}">
- *   <div ng-class="{blue: myProp}">
- *     <div class="message" ng-if="myProp"></div>
- *   </div>
- * </div>
- * ```
- *
- * It is possible that during the `enter` animation, the `.message` div will be briefly visible before it starts animating.
- * In that case, you can add styles to the CSS that make sure the element stays hidden before the animation starts:
- *
- * ```css
- * .message.ng-enter-prepare {
- *   opacity: 0;
- * }
- *
- * ```
- *
  * ## JavaScript-based Animations
  *
  * ngAnimate also allows for animations to be consumed by JavaScript code. The approach is similar to CSS-based animations (where there is a shared
  * CSS class that is referenced in our HTML code) but in addition we need to register the JavaScript animation on the module. By making use of the
- * `module.animation()` module function we can register the animation.
+ * `module.animation()` module function we can register the ainmation.
  *
  * Let's see an example of a enter/leave animation using `ngRepeat`:
  *
@@ -16690,10 +16793,11 @@ var ngAnimateSwapDirective = ['$animate', '$rootScope', function($animate, $root
  * Click here {@link ng.$animate to learn more about animations with `$animate`}.
  */
 angular.module('ngAnimate', [])
-  .directive('ngAnimateSwap', ngAnimateSwapDirective)
-
   .directive('ngAnimateChildren', $$AnimateChildrenDirective)
   .factory('$$rAFScheduler', $$rAFSchedulerFactory)
+
+  .factory('$$AnimateRunner', $$AnimateRunnerFactory)
+  .factory('$$animateAsyncRun', $$AnimateAsyncRunFactory)
 
   .provider('$$animateQueue', $$AnimateQueueProvider)
   .provider('$$animation', $$AnimationProvider)
@@ -16707,11 +16811,11 @@ angular.module('ngAnimate', [])
 
 })(window, window.angular);
 
-},{}],167:[function(require,module,exports){
+},{}],172:[function(require,module,exports){
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":166}],168:[function(require,module,exports){
+},{"./angular-animate":171}],173:[function(require,module,exports){
 (function() {
     'use strict';
 
@@ -16879,7 +16983,7 @@ module.exports = 'ngAnimate';
 
 })();
 
-},{}],169:[function(require,module,exports){
+},{}],174:[function(require,module,exports){
 //! moment.js
 //! version : 2.11.2
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -20486,7 +20590,7 @@ module.exports = 'ngAnimate';
     return _moment;
 
 }));
-},{}],170:[function(require,module,exports){
+},{}],175:[function(require,module,exports){
 /*globals define, jQuery, module, require */
 /*jslint vars:true */
 
@@ -20936,7 +21040,7 @@ module.exports = 'ngAnimate';
     }]);
 }));
 
-},{"angular":186,"moment":169}],171:[function(require,module,exports){
+},{"angular":191,"moment":174}],176:[function(require,module,exports){
 (function (factory) {
   'use strict';
   if (typeof exports === 'object') {
@@ -21300,7 +21404,7 @@ module.exports = 'ngAnimate';
   }
 }));
 
-},{"angular":186,"chart.js":172}],172:[function(require,module,exports){
+},{"angular":191,"chart.js":177}],177:[function(require,module,exports){
 /*!
  * Chart.js
  * http://chartjs.org/
@@ -24778,7 +24882,7 @@ module.exports = 'ngAnimate';
 
 
 }).call(this);
-},{}],173:[function(require,module,exports){
+},{}],178:[function(require,module,exports){
 (function (root, factory) {
     /* istanbul ignore next */
     if (typeof define === 'function' && define.amd) {
@@ -24856,7 +24960,7 @@ return angular.module('angular-clipboard', [])
     }]);
 
 }));
-},{"angular":186}],174:[function(require,module,exports){
+},{"angular":191}],179:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -25180,11 +25284,11 @@ angular.module('ngCookies').provider('$$cookieWriter', function $$CookieWriterPr
 
 })(window, window.angular);
 
-},{}],175:[function(require,module,exports){
+},{}],180:[function(require,module,exports){
 require('./angular-cookies');
 module.exports = 'ngCookies';
 
-},{"./angular-cookies":174}],176:[function(require,module,exports){
+},{"./angular-cookies":179}],181:[function(require,module,exports){
 /*
  angular-file-upload v2.2.0
  https://github.com/nervgh/angular-file-upload
@@ -25192,10 +25296,10 @@ module.exports = 'ngCookies';
 
 !function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["angular-file-upload"]=t():e["angular-file-upload"]=t()}(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var i=n[r]={exports:{},id:r,loaded:!1};return e[r].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=r(n(1)),o=r(n(2)),s=r(n(3)),a=r(n(4)),u=r(n(5)),l=r(n(6)),c=r(n(7)),f=r(n(8)),p=r(n(9)),d=r(n(10)),v=r(n(11)),h=r(n(12));angular.module(i.name,[]).value("fileUploaderOptions",o).factory("FileUploader",s).factory("FileLikeObject",a).factory("FileItem",u).factory("FileDirective",l).factory("FileSelect",c).factory("FileDrop",f).factory("FileOver",p).directive("nvFileSelect",d).directive("nvFileDrop",v).directive("nvFileOver",h).run(["FileUploader","FileLikeObject","FileItem","FileDirective","FileSelect","FileDrop","FileOver",function(e,t,n,r,i,o,s){e.FileLikeObject=t,e.FileItem=n,e.FileDirective=r,e.FileSelect=i,e.FileDrop=o,e.FileOver=s}])},function(e,t){e.exports={name:"angularFileUpload"}},function(e,t){"use strict";e.exports={url:"/",alias:"file",headers:{},queue:[],progress:0,autoUpload:!1,removeAfterUpload:!1,method:"POST",filters:[],formData:[],queueLimit:Number.MAX_VALUE,withCredentials:!1}},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.forEach,l=angular.isObject,c=angular.isNumber,f=angular.isDefined,p=angular.isArray,d=angular.element;e.exports=function(e,t,n,r,v,h){var m=r.File,g=r.FormData,_=function(){function r(t){o(this,r);var n=s(e);a(this,n,t,{isUploading:!1,_nextIndex:0,_failFilterIndex:-1,_directives:{select:[],drop:[],over:[]}}),this.filters.unshift({name:"queueLimit",fn:this._queueLimitFilter}),this.filters.unshift({name:"folder",fn:this._folderFilter})}return i(r,{addToQueue:{value:function(e,t,n){var r=this,i=this.isArrayLikeObject(e)?e:[e],o=this._getFilters(n),s=this.queue.length,a=[];u(i,function(e){var n=new v(e);if(r._isValidFile(n,o,t)){var i=new h(r,e,t);a.push(i),r.queue.push(i),r._onAfterAddingFile(i)}else{var s=o[r._failFilterIndex];r._onWhenAddingFileFailed(n,s,t)}}),this.queue.length!==s&&(this._onAfterAddingAll(a),this.progress=this._getTotalProgress()),this._render(),this.autoUpload&&this.uploadAll()}},removeFromQueue:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t];n.isUploading&&n.cancel(),this.queue.splice(t,1),n._destroy(),this.progress=this._getTotalProgress()}},clearQueue:{value:function(){for(;this.queue.length;)this.queue[0].remove();this.progress=0}},uploadItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhrTransport":"_iframeTransport";n._prepareToUploading(),this.isUploading||(this.isUploading=!0,this[r](n))}},cancelItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhr":"_form";n&&n.isUploading&&n[r].abort()}},uploadAll:{value:function(){var e=this.getNotUploadedItems().filter(function(e){return!e.isUploading});e.length&&(u(e,function(e){return e._prepareToUploading()}),e[0].upload())}},cancelAll:{value:function(){var e=this.getNotUploadedItems();u(e,function(e){return e.cancel()})}},isFile:{value:function(e){return this.constructor.isFile(e)}},isFileLikeObject:{value:function(e){return this.constructor.isFileLikeObject(e)}},isArrayLikeObject:{value:function(e){return this.constructor.isArrayLikeObject(e)}},getIndexOfItem:{value:function(e){return c(e)?e:this.queue.indexOf(e)}},getNotUploadedItems:{value:function(){return this.queue.filter(function(e){return!e.isUploaded})}},getReadyItems:{value:function(){return this.queue.filter(function(e){return e.isReady&&!e.isUploading}).sort(function(e,t){return e.index-t.index})}},destroy:{value:function(){var e=this;u(this._directives,function(t){u(e._directives[t],function(e){e.destroy()})})}},onAfterAddingAll:{value:function(e){}},onAfterAddingFile:{value:function(e){}},onWhenAddingFileFailed:{value:function(e,t,n){}},onBeforeUploadItem:{value:function(e){}},onProgressItem:{value:function(e,t){}},onProgressAll:{value:function(e){}},onSuccessItem:{value:function(e,t,n,r){}},onErrorItem:{value:function(e,t,n,r){}},onCancelItem:{value:function(e,t,n,r){}},onCompleteItem:{value:function(e,t,n,r){}},onCompleteAll:{value:function(){}},_getTotalProgress:{value:function(e){if(this.removeAfterUpload)return e||0;var t=this.getNotUploadedItems().length,n=t?this.queue.length-t:this.queue.length,r=100/this.queue.length,i=(e||0)*r/100;return Math.round(n*r+i)}},_getFilters:{value:function(e){if(!e)return this.filters;if(p(e))return e;var t=e.match(/[^\s,]+/g);return this.filters.filter(function(e){return-1!==t.indexOf(e.name)})}},_render:{value:function(){t.$$phase||t.$apply()}},_folderFilter:{value:function(e){return!(!e.size&&!e.type)}},_queueLimitFilter:{value:function(){return this.queue.length<this.queueLimit}},_isValidFile:{value:function(e,t,n){var r=this;return this._failFilterIndex=-1,t.length?t.every(function(t){return r._failFilterIndex++,t.fn.call(r,e,n)}):!0}},_isSuccessCode:{value:function(e){return e>=200&&300>e||304===e}},_transformResponse:{value:function(e,t){var r=this._headersGetter(t);return u(n.defaults.transformResponse,function(t){e=t(e,r)}),e}},_parseHeaders:{value:function(e){var t,n,r,i={};return e?(u(e.split("\n"),function(e){r=e.indexOf(":"),t=e.slice(0,r).trim().toLowerCase(),n=e.slice(r+1).trim(),t&&(i[t]=i[t]?i[t]+", "+n:n)}),i):i}},_headersGetter:{value:function(e){return function(t){return t?e[t.toLowerCase()]||null:e}}},_xhrTransport:{value:function(e){var t=this,n=e._xhr=new XMLHttpRequest,r=new g;if(this._onBeforeUploadItem(e),u(e.formData,function(e){u(e,function(e,t){r.append(t,e)})}),"number"!=typeof e._file.size)throw new TypeError("The file specified is no longer valid");r.append(e.alias,e._file,e.file.name),n.upload.onprogress=function(n){var r=Math.round(n.lengthComputable?100*n.loaded/n.total:0);t._onProgressItem(e,r)},n.onload=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r),o=t._isSuccessCode(n.status)?"Success":"Error",s="_on"+o+"Item";t[s](e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onerror=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onErrorItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onabort=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onCancelItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.open(e.method,e.url,!0),n.withCredentials=e.withCredentials,u(e.headers,function(e,t){n.setRequestHeader(t,e)}),n.send(r),this._render()}},_iframeTransport:{value:function(e){var t=this,n=d('<form style="display: none;" />'),r=d('<iframe name="iframeTransport'+Date.now()+'">'),i=e._input;e._form&&e._form.replaceWith(i),e._form=n,this._onBeforeUploadItem(e),i.prop("name",e.alias),u(e.formData,function(e){u(e,function(e,t){var r=d('<input type="hidden" name="'+t+'" />');r.val(e),n.append(r)})}),n.prop({action:e.url,method:"POST",target:r.prop("name"),enctype:"multipart/form-data",encoding:"multipart/form-data"}),r.bind("load",function(){var n="",i=200;try{n=r[0].contentDocument.body.innerHTML}catch(o){i=500}var s={response:n,status:i,dummy:!0},a={},u=t._transformResponse(s.response,a);t._onSuccessItem(e,u,s.status,a),t._onCompleteItem(e,u,s.status,a)}),n.abort=function(){var o,s={status:0,dummy:!0},a={};r.unbind("load").prop("src","javascript:false;"),n.replaceWith(i),t._onCancelItem(e,o,s.status,a),t._onCompleteItem(e,o,s.status,a)},i.after(n),n.append(i).append(r),n[0].submit(),this._render()}},_onWhenAddingFileFailed:{value:function(e,t,n){this.onWhenAddingFileFailed(e,t,n)}},_onAfterAddingFile:{value:function(e){this.onAfterAddingFile(e)}},_onAfterAddingAll:{value:function(e){this.onAfterAddingAll(e)}},_onBeforeUploadItem:{value:function(e){e._onBeforeUpload(),this.onBeforeUploadItem(e)}},_onProgressItem:{value:function(e,t){var n=this._getTotalProgress(t);this.progress=n,e._onProgress(t),this.onProgressItem(e,t),this.onProgressAll(n),this._render()}},_onSuccessItem:{value:function(e,t,n,r){e._onSuccess(t,n,r),this.onSuccessItem(e,t,n,r)}},_onErrorItem:{value:function(e,t,n,r){e._onError(t,n,r),this.onErrorItem(e,t,n,r)}},_onCancelItem:{value:function(e,t,n,r){e._onCancel(t,n,r),this.onCancelItem(e,t,n,r)}},_onCompleteItem:{value:function(e,t,n,r){e._onComplete(t,n,r),this.onCompleteItem(e,t,n,r);var i=this.getReadyItems()[0];return this.isUploading=!1,f(i)?void i.upload():(this.onCompleteAll(),this.progress=this._getTotalProgress(),void this._render())}}},{isFile:{value:function(e){return m&&e instanceof m}},isFileLikeObject:{value:function(e){return e instanceof v}},isArrayLikeObject:{value:function(e){return l(e)&&"length"in e}},inherit:{value:function(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,e.super_=t}}}),r}();return _.prototype.isHTML5=!(!m||!g),_.isHTML5=_.prototype.isHTML5,_},e.exports.$inject=["fileUploaderOptions","$rootScope","$http","$window","FileLikeObject","FileItem"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.isElement,u=angular.isString;e.exports=function(){var e=function(){function e(t){o(this,e);var n=a(t),r=n?t.value:t,i=u(r)?"FakePath":"Object",s="_createFrom"+i;this[s](r)}return i(e,{_createFromFakePath:{value:function(e){this.lastModifiedDate=null,this.size=null,this.type="like/"+e.slice(e.lastIndexOf(".")+1).toLowerCase(),this.name=e.slice(e.lastIndexOf("/")+e.lastIndexOf("\\")+2)}},_createFromObject:{value:function(e){this.lastModifiedDate=s(e.lastModifiedDate),this.size=e.size,this.type=e.type,this.name=e.name}}}),e}();return e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.element,l=angular.isElement;e.exports=function(e,t){var n=function(){function n(e,r,i){o(this,n);var c=l(r),f=c?u(r):null,p=c?null:r;a(this,{url:e.url,alias:e.alias,headers:s(e.headers),formData:s(e.formData),removeAfterUpload:e.removeAfterUpload,withCredentials:e.withCredentials,method:e.method},i,{uploader:e,file:new t(r),isReady:!1,isUploading:!1,isUploaded:!1,isSuccess:!1,isCancel:!1,isError:!1,progress:0,index:null,_file:p,_input:f}),f&&this._replaceNode(f)}return i(n,{upload:{value:function(){try{this.uploader.uploadItem(this)}catch(e){this.uploader._onCompleteItem(this,"",0,[]),this.uploader._onErrorItem(this,"",0,[])}}},cancel:{value:function(){this.uploader.cancelItem(this)}},remove:{value:function(){this.uploader.removeFromQueue(this)}},onBeforeUpload:{value:function(){}},onProgress:{value:function(e){}},onSuccess:{value:function(e,t,n){}},onError:{value:function(e,t,n){}},onCancel:{value:function(e,t,n){}},onComplete:{value:function(e,t,n){}},_onBeforeUpload:{value:function(){this.isReady=!0,this.isUploading=!0,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!1,this.isError=!1,this.progress=0,this.onBeforeUpload()}},_onProgress:{value:function(e){this.progress=e,this.onProgress(e)}},_onSuccess:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!0,this.isCancel=!1,this.isError=!1,this.progress=100,this.index=null,this.onSuccess(e,t,n)}},_onError:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!1,this.isCancel=!1,this.isError=!0,this.progress=0,this.index=null,this.onError(e,t,n)}},_onCancel:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!0,this.isError=!1,this.progress=0,this.index=null,this.onCancel(e,t,n)}},_onComplete:{value:function(e,t,n){this.onComplete(e,t,n),this.removeAfterUpload&&this.remove()}},_destroy:{value:function(){this._input&&this._input.remove(),this._form&&this._form.remove(),delete this._form,delete this._input}},_prepareToUploading:{value:function(){this.index=this.index||++this.uploader._nextIndex,this.isReady=!0}},_replaceNode:{value:function(t){var n=e(t.clone())(t.scope());n.prop("value",null),t.css("display","none"),t.after(n)}}}),n}();return n},e.exports.$inject=["$compile","FileLikeObject"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.extend);e.exports=function(){var e=function(){function e(t){o(this,e),s(this,t),this.uploader._directives[this.prop].push(this),this._saveLinks(),this.bind()}return i(e,{bind:{value:function(){for(var e in this.events){var t=this.events[e];this.element.bind(e,this[t])}}},unbind:{value:function(){for(var e in this.events)this.element.unbind(e,this.events[e])}},destroy:{value:function(){var e=this.uploader._directives[this.prop].indexOf(this);this.uploader._directives[this.prop].splice(e,1),this.unbind()}},_saveLinks:{value:function(){for(var e in this.events){var t=this.events[e];this[t]=this[t].bind(this)}}}}),e}();return e.prototype.events={},e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",change:"onChange"},prop:"select"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n),this.uploader.isHTML5||this.element.removeAttr("multiple"),this.element.prop("value",null)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},isEmptyAfterSelection:{value:function(){return!!this.element.attr("multiple")}},onChange:{value:function(){var e=this.uploader.isHTML5?this.element[0].files:this.element[0],t=this.getOptions(),n=this.getFilters();this.uploader.isHTML5||this.destroy(),this.uploader.addToQueue(e,t,n),this.isEmptyAfterSelection()&&(this.element.prop("value",null),this.element.replaceWith(this.element=this.element.clone(!0)))}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function c(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:c(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend),l=angular.forEach;e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",drop:"onDrop",dragover:"onDragOver",dragleave:"onDragLeave"},prop:"drop"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},onDrop:{value:function(e){var t=this._getTransfer(e);if(t){var n=this.getOptions(),r=this.getFilters();this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this),this.uploader.addToQueue(t.files,n,r)}}},onDragOver:{value:function(e){var t=this._getTransfer(e);this._haveFiles(t.types)&&(t.dropEffect="copy",this._preventAndStop(e),l(this.uploader._directives.over,this._addOverClass,this))}},onDragLeave:{value:function(e){e.currentTarget!==this.element[0]&&(this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this))}},_getTransfer:{value:function(e){return e.dataTransfer?e.dataTransfer:e.originalEvent.dataTransfer}},_preventAndStop:{value:function(e){e.preventDefault(),e.stopPropagation()}},_haveFiles:{value:function(e){return e?e.indexOf?-1!==e.indexOf("Files"):e.contains?e.contains("Files"):!1:!1}},_addOverClass:{value:function(e){e.addOverClass()}},_removeOverClass:{value:function(e){e.removeOverClass()}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy"},prop:"over",overClass:"nv-file-over"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{addOverClass:{value:function(){this.element.addClass(this.getOverClass())}},removeOverClass:{value:function(){this.element.removeClass(this.getOverClass())}},getOverClass:{value:function(){return this.overClass}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}},e.exports.$inject=["$parse","FileUploader","FileSelect"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');if(s.isHTML5){var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}}},e.exports.$inject=["$parse","FileUploader","FileDrop"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t){return{link:function(n,r,i){var o=n.$eval(i.uploader);if(!(o instanceof e))throw new TypeError('"Uploader" must be an instance of FileUploader');var s=new t({uploader:o,element:r});s.getOverClass=function(){return i.overClass||s.overClass}}}},e.exports.$inject=["FileUploader","FileOver"]}])});
 
-},{}],177:[function(require,module,exports){
+},{}],182:[function(require,module,exports){
 /**
- * @license AngularJS v1.5.0
- * (c) 2010-2016 Google, Inc. http://angularjs.org
+ * @license AngularJS v1.4.8
+ * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
 (function(window, angular, undefined) {'use strict';
@@ -25228,23 +25332,36 @@ var $sanitizeMinErr = angular.$$minErr('$sanitize');
  * See {@link ngSanitize.$sanitize `$sanitize`} for usage.
  */
 
+/*
+ * HTML Parser By Misko Hevery (misko@hevery.com)
+ * based on:  HTML Parser By John Resig (ejohn.org)
+ * Original code by Erik Arvidsson, Mozilla Public License
+ * http://erik.eae.net/simplehtmlparser/simplehtmlparser.js
+ *
+ * // Use like so:
+ * htmlParser(htmlString, {
+ *     start: function(tag, attrs, unary) {},
+ *     end: function(tag) {},
+ *     chars: function(text) {},
+ *     comment: function(text) {}
+ * });
+ *
+ */
+
+
 /**
  * @ngdoc service
  * @name $sanitize
  * @kind function
  *
  * @description
- *   Sanitizes an html string by stripping all potentially dangerous tokens.
- *
  *   The input is sanitized by parsing the HTML into tokens. All safe tokens (from a whitelist) are
  *   then serialized back to properly escaped html string. This means that no unsafe input can make
- *   it into the returned string.
- *
- *   The whitelist for URL sanitization of attribute values is configured using the functions
- *   `aHrefSanitizationWhitelist` and `imgSrcSanitizationWhitelist` of {@link ng.$compileProvider
- *   `$compileProvider`}.
- *
- *   The input may also contain SVG markup if this is enabled via {@link $sanitizeProvider}.
+ *   it into the returned string, however, since our parser is more strict than a typical browser
+ *   parser, it's possible that some obscure input, which would be recognized as valid HTML by a
+ *   browser, won't make it through the sanitizer. The input may also contain SVG markup.
+ *   The whitelist is configured using the functions `aHrefSanitizationWhitelist` and
+ *   `imgSrcSanitizationWhitelist` of {@link ng.$compileProvider `$compileProvider`}.
  *
  * @param {string} html HTML input.
  * @returns {string} Sanitized HTML.
@@ -25330,70 +25447,16 @@ var $sanitizeMinErr = angular.$$minErr('$sanitize');
    </file>
    </example>
  */
-
-
-/**
- * @ngdoc provider
- * @name $sanitizeProvider
- *
- * @description
- * Creates and configures {@link $sanitize} instance.
- */
 function $SanitizeProvider() {
-  var svgEnabled = false;
-
   this.$get = ['$$sanitizeUri', function($$sanitizeUri) {
-    if (svgEnabled) {
-      angular.extend(validElements, svgElements);
-    }
     return function(html) {
       var buf = [];
       htmlParser(html, htmlSanitizeWriter(buf, function(uri, isImage) {
-        return !/^unsafe:/.test($$sanitizeUri(uri, isImage));
+        return !/^unsafe/.test($$sanitizeUri(uri, isImage));
       }));
       return buf.join('');
     };
   }];
-
-
-  /**
-   * @ngdoc method
-   * @name $sanitizeProvider#enableSvg
-   * @kind function
-   *
-   * @description
-   * Enables a subset of svg to be supported by the sanitizer.
-   *
-   * <div class="alert alert-warning">
-   *   <p>By enabling this setting without taking other precautions, you might expose your
-   *   application to click-hijacking attacks. In these attacks, sanitized svg elements could be positioned
-   *   outside of the containing element and be rendered over other elements on the page (e.g. a login
-   *   link). Such behavior can then result in phishing incidents.</p>
-   *
-   *   <p>To protect against these, explicitly setup `overflow: hidden` css rule for all potential svg
-   *   tags within the sanitized content:</p>
-   *
-   *   <br>
-   *
-   *   <pre><code>
-   *   .rootOfTheIncludedContent svg {
-   *     overflow: hidden !important;
-   *   }
-   *   </code></pre>
-   * </div>
-   *
-   * @param {boolean=} regexp New regexp to whitelist urls with.
-   * @returns {boolean|ng.$sanitizeProvider} Returns the currently configured value if called
-   *    without an argument or self for chaining otherwise.
-   */
-  this.enableSvg = function(enableSvg) {
-    if (angular.isDefined(enableSvg)) {
-      svgEnabled = enableSvg;
-      return this;
-    } else {
-      return svgEnabled;
-    }
-  };
 }
 
 function sanitizeText(chars) {
@@ -25405,9 +25468,18 @@ function sanitizeText(chars) {
 
 
 // Regular Expressions for parsing tags and attributes
-var SURROGATE_PAIR_REGEXP = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g,
+var START_TAG_REGEXP =
+       /^<((?:[a-zA-Z])[\w:-]*)((?:\s+[\w:-]+(?:\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|[^>\s]+))?)*)\s*(\/?)\s*(>?)/,
+  END_TAG_REGEXP = /^<\/\s*([\w:-]+)[^>]*>/,
+  ATTR_REGEXP = /([\w:-]+)(?:\s*=\s*(?:(?:"((?:[^"])*)")|(?:'((?:[^'])*)')|([^>\s]+)))?/g,
+  BEGIN_TAG_REGEXP = /^</,
+  BEGING_END_TAGE_REGEXP = /^<\//,
+  COMMENT_REGEXP = /<!--(.*?)-->/g,
+  DOCTYPE_REGEXP = /<!DOCTYPE([^>]*?)>/i,
+  CDATA_REGEXP = /<!\[CDATA\[(.*?)]]>/g,
+  SURROGATE_PAIR_REGEXP = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g,
   // Match everything outside of normal chars and " (quote character)
-  NON_ALPHANUMERIC_REGEXP = /([^\#-~ |!])/g;
+  NON_ALPHANUMERIC_REGEXP = /([^\#-~| |!])/g;
 
 
 // Good source of info about elements and attributes
@@ -25416,23 +25488,23 @@ var SURROGATE_PAIR_REGEXP = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g,
 
 // Safe Void Elements - HTML5
 // http://dev.w3.org/html5/spec/Overview.html#void-elements
-var voidElements = toMap("area,br,col,hr,img,wbr");
+var voidElements = makeMap("area,br,col,hr,img,wbr");
 
 // Elements that you can, intentionally, leave open (and which close themselves)
 // http://dev.w3.org/html5/spec/Overview.html#optional-tags
-var optionalEndTagBlockElements = toMap("colgroup,dd,dt,li,p,tbody,td,tfoot,th,thead,tr"),
-    optionalEndTagInlineElements = toMap("rp,rt"),
+var optionalEndTagBlockElements = makeMap("colgroup,dd,dt,li,p,tbody,td,tfoot,th,thead,tr"),
+    optionalEndTagInlineElements = makeMap("rp,rt"),
     optionalEndTagElements = angular.extend({},
                                             optionalEndTagInlineElements,
                                             optionalEndTagBlockElements);
 
 // Safe Block Elements - HTML5
-var blockElements = angular.extend({}, optionalEndTagBlockElements, toMap("address,article," +
+var blockElements = angular.extend({}, optionalEndTagBlockElements, makeMap("address,article," +
         "aside,blockquote,caption,center,del,dir,div,dl,figure,figcaption,footer,h1,h2,h3,h4,h5," +
-        "h6,header,hgroup,hr,ins,map,menu,nav,ol,pre,section,table,ul"));
+        "h6,header,hgroup,hr,ins,map,menu,nav,ol,pre,script,section,table,ul"));
 
 // Inline Elements - HTML5
-var inlineElements = angular.extend({}, optionalEndTagInlineElements, toMap("a,abbr,acronym,b," +
+var inlineElements = angular.extend({}, optionalEndTagInlineElements, makeMap("a,abbr,acronym,b," +
         "bdi,bdo,big,br,cite,code,del,dfn,em,font,i,img,ins,kbd,label,map,mark,q,ruby,rp,rt,s," +
         "samp,small,span,strike,strong,sub,sup,time,tt,u,var"));
 
@@ -25440,23 +25512,24 @@ var inlineElements = angular.extend({}, optionalEndTagInlineElements, toMap("a,a
 // https://wiki.whatwg.org/wiki/Sanitization_rules#svg_Elements
 // Note: the elements animate,animateColor,animateMotion,animateTransform,set are intentionally omitted.
 // They can potentially allow for arbitrary javascript to be executed. See #11290
-var svgElements = toMap("circle,defs,desc,ellipse,font-face,font-face-name,font-face-src,g,glyph," +
+var svgElements = makeMap("circle,defs,desc,ellipse,font-face,font-face-name,font-face-src,g,glyph," +
         "hkern,image,linearGradient,line,marker,metadata,missing-glyph,mpath,path,polygon,polyline," +
-        "radialGradient,rect,stop,svg,switch,text,title,tspan");
+        "radialGradient,rect,stop,svg,switch,text,title,tspan,use");
 
-// Blocked Elements (will be stripped)
-var blockedElements = toMap("script,style");
+// Special Elements (can contain anything)
+var specialElements = makeMap("script,style");
 
 var validElements = angular.extend({},
                                    voidElements,
                                    blockElements,
                                    inlineElements,
-                                   optionalEndTagElements);
+                                   optionalEndTagElements,
+                                   svgElements);
 
 //Attributes that have href and hence need to be sanitized
-var uriAttrs = toMap("background,cite,href,longdesc,src,xlink:href");
+var uriAttrs = makeMap("background,cite,href,longdesc,src,usemap,xlink:href");
 
-var htmlAttrs = toMap('abbr,align,alt,axis,bgcolor,border,cellpadding,cellspacing,class,clear,' +
+var htmlAttrs = makeMap('abbr,align,alt,axis,bgcolor,border,cellpadding,cellspacing,class,clear,' +
     'color,cols,colspan,compact,coords,dir,face,headers,height,hreflang,hspace,' +
     'ismap,lang,language,nohref,nowrap,rel,rev,rows,rowspan,rules,' +
     'scope,scrolling,shape,size,span,start,summary,tabindex,target,title,type,' +
@@ -25464,7 +25537,7 @@ var htmlAttrs = toMap('abbr,align,alt,axis,bgcolor,border,cellpadding,cellspacin
 
 // SVG attributes (without "id" and "name" attributes)
 // https://wiki.whatwg.org/wiki/Sanitization_rules#svg_Attributes
-var svgAttrs = toMap('accent-height,accumulate,additive,alphabetic,arabic-form,ascent,' +
+var svgAttrs = makeMap('accent-height,accumulate,additive,alphabetic,arabic-form,ascent,' +
     'baseProfile,bbox,begin,by,calcMode,cap-height,class,color,color-rendering,content,' +
     'cx,cy,d,dx,dy,descent,display,dur,end,fill,fill-rule,font-family,font-size,font-stretch,' +
     'font-style,font-variant,font-weight,from,fx,fy,g1,g2,glyph-name,gradientUnits,hanging,' +
@@ -25485,7 +25558,7 @@ var validAttrs = angular.extend({},
                                 svgAttrs,
                                 htmlAttrs);
 
-function toMap(str, lowercaseKeys) {
+function makeMap(str, lowercaseKeys) {
   var obj = {}, items = str.split(','), i;
   for (i = 0; i < items.length; i++) {
     obj[lowercaseKeys ? angular.lowercase(items[i]) : items[i]] = true;
@@ -25493,32 +25566,11 @@ function toMap(str, lowercaseKeys) {
   return obj;
 }
 
-var inertBodyElement;
-(function(window) {
-  var doc;
-  if (window.document && window.document.implementation) {
-    doc = window.document.implementation.createHTMLDocument("inert");
-  } else {
-    throw $sanitizeMinErr('noinert', "Can't create an inert html document");
-  }
-  var docElement = doc.documentElement || doc.getDocumentElement();
-  var bodyElements = docElement.getElementsByTagName('body');
-
-  // usually there should be only one body element in the document, but IE doesn't have any, so we need to create one
-  if (bodyElements.length === 1) {
-    inertBodyElement = bodyElements[0];
-  } else {
-    var html = doc.createElement('html');
-    inertBodyElement = doc.createElement('body');
-    html.appendChild(inertBodyElement);
-    doc.appendChild(html);
-  }
-})(window);
 
 /**
  * @example
  * htmlParser(htmlString, {
- *     start: function(tag, attrs) {},
+ *     start: function(tag, attrs, unary) {},
  *     end: function(tag) {},
  *     chars: function(text) {},
  *     comment: function(text) {}
@@ -25528,74 +25580,169 @@ var inertBodyElement;
  * @param {object} handler
  */
 function htmlParser(html, handler) {
-  if (html === null || html === undefined) {
-    html = '';
-  } else if (typeof html !== 'string') {
-    html = '' + html;
+  if (typeof html !== 'string') {
+    if (html === null || typeof html === 'undefined') {
+      html = '';
+    } else {
+      html = '' + html;
+    }
   }
-  inertBodyElement.innerHTML = html;
+  var index, chars, match, stack = [], last = html, text;
+  stack.last = function() { return stack[stack.length - 1]; };
 
-  //mXSS protection
-  var mXSSAttempts = 5;
-  do {
-    if (mXSSAttempts === 0) {
-      throw $sanitizeMinErr('uinput', "Failed to sanitize html because the input is unstable");
-    }
-    mXSSAttempts--;
+  while (html) {
+    text = '';
+    chars = true;
 
-    // strip custom-namespaced attributes on IE<=11
-    if (document.documentMode <= 11) {
-      stripCustomNsAttrs(inertBodyElement);
-    }
-    html = inertBodyElement.innerHTML; //trigger mXSS
-    inertBodyElement.innerHTML = html;
-  } while (html !== inertBodyElement.innerHTML);
+    // Make sure we're not in a script or style element
+    if (!stack.last() || !specialElements[stack.last()]) {
 
-  var node = inertBodyElement.firstChild;
-  while (node) {
-    switch (node.nodeType) {
-      case 1: // ELEMENT_NODE
-        handler.start(node.nodeName.toLowerCase(), attrToMap(node.attributes));
-        break;
-      case 3: // TEXT NODE
-        handler.chars(node.textContent);
-        break;
-    }
+      // Comment
+      if (html.indexOf("<!--") === 0) {
+        // comments containing -- are not allowed unless they terminate the comment
+        index = html.indexOf("--", 4);
 
-    var nextNode;
-    if (!(nextNode = node.firstChild)) {
-      if (node.nodeType == 1) {
-        handler.end(node.nodeName.toLowerCase());
-      }
-      nextNode = node.nextSibling;
-      if (!nextNode) {
-        while (nextNode == null) {
-          node = node.parentNode;
-          if (node === inertBodyElement) break;
-          nextNode = node.nextSibling;
-          if (node.nodeType == 1) {
-            handler.end(node.nodeName.toLowerCase());
+        if (index >= 0 && html.lastIndexOf("-->", index) === index) {
+          if (handler.comment) handler.comment(html.substring(4, index));
+          html = html.substring(index + 3);
+          chars = false;
+        }
+      // DOCTYPE
+      } else if (DOCTYPE_REGEXP.test(html)) {
+        match = html.match(DOCTYPE_REGEXP);
+
+        if (match) {
+          html = html.replace(match[0], '');
+          chars = false;
+        }
+      // end tag
+      } else if (BEGING_END_TAGE_REGEXP.test(html)) {
+        match = html.match(END_TAG_REGEXP);
+
+        if (match) {
+          html = html.substring(match[0].length);
+          match[0].replace(END_TAG_REGEXP, parseEndTag);
+          chars = false;
+        }
+
+      // start tag
+      } else if (BEGIN_TAG_REGEXP.test(html)) {
+        match = html.match(START_TAG_REGEXP);
+
+        if (match) {
+          // We only have a valid start-tag if there is a '>'.
+          if (match[4]) {
+            html = html.substring(match[0].length);
+            match[0].replace(START_TAG_REGEXP, parseStartTag);
           }
+          chars = false;
+        } else {
+          // no ending tag found --- this piece should be encoded as an entity.
+          text += '<';
+          html = html.substring(1);
         }
       }
+
+      if (chars) {
+        index = html.indexOf("<");
+
+        text += index < 0 ? html : html.substring(0, index);
+        html = index < 0 ? "" : html.substring(index);
+
+        if (handler.chars) handler.chars(decodeEntities(text));
+      }
+
+    } else {
+      // IE versions 9 and 10 do not understand the regex '[^]', so using a workaround with [\W\w].
+      html = html.replace(new RegExp("([\\W\\w]*)<\\s*\\/\\s*" + stack.last() + "[^>]*>", 'i'),
+        function(all, text) {
+          text = text.replace(COMMENT_REGEXP, "$1").replace(CDATA_REGEXP, "$1");
+
+          if (handler.chars) handler.chars(decodeEntities(text));
+
+          return "";
+      });
+
+      parseEndTag("", stack.last());
     }
-    node = nextNode;
+
+    if (html == last) {
+      throw $sanitizeMinErr('badparse', "The sanitizer was unable to parse the following block " +
+                                        "of html: {0}", html);
+    }
+    last = html;
   }
 
-  while (node = inertBodyElement.firstChild) {
-    inertBodyElement.removeChild(node);
+  // Clean up any remaining tags
+  parseEndTag();
+
+  function parseStartTag(tag, tagName, rest, unary) {
+    tagName = angular.lowercase(tagName);
+    if (blockElements[tagName]) {
+      while (stack.last() && inlineElements[stack.last()]) {
+        parseEndTag("", stack.last());
+      }
+    }
+
+    if (optionalEndTagElements[tagName] && stack.last() == tagName) {
+      parseEndTag("", tagName);
+    }
+
+    unary = voidElements[tagName] || !!unary;
+
+    if (!unary) {
+      stack.push(tagName);
+    }
+
+    var attrs = {};
+
+    rest.replace(ATTR_REGEXP,
+      function(match, name, doubleQuotedValue, singleQuotedValue, unquotedValue) {
+        var value = doubleQuotedValue
+          || singleQuotedValue
+          || unquotedValue
+          || '';
+
+        attrs[name] = decodeEntities(value);
+    });
+    if (handler.start) handler.start(tagName, attrs, unary);
+  }
+
+  function parseEndTag(tag, tagName) {
+    var pos = 0, i;
+    tagName = angular.lowercase(tagName);
+    if (tagName) {
+      // Find the closest opened tag of the same type
+      for (pos = stack.length - 1; pos >= 0; pos--) {
+        if (stack[pos] == tagName) break;
+      }
+    }
+
+    if (pos >= 0) {
+      // Close all the open elements, up the stack
+      for (i = stack.length - 1; i >= pos; i--)
+        if (handler.end) handler.end(stack[i]);
+
+      // Remove the open elements from the stack
+      stack.length = pos;
+    }
   }
 }
 
-function attrToMap(attrs) {
-  var map = {};
-  for (var i = 0, ii = attrs.length; i < ii; i++) {
-    var attr = attrs[i];
-    map[attr.name] = attr.value;
-  }
-  return map;
-}
+var hiddenPre=document.createElement("pre");
+/**
+ * decodes all entities into regular string
+ * @param value
+ * @returns {string} A string with decoded entities.
+ */
+function decodeEntities(value) {
+  if (!value) { return ''; }
 
+  hiddenPre.innerHTML = value.replace(/</g,"&lt;");
+  // innerText depends on styling as it doesn't display hidden elements.
+  // Therefore, it's better to use textContent not to cause unnecessary reflows.
+  return hiddenPre.textContent;
+}
 
 /**
  * Escapes all potentially dangerous characters, so that the
@@ -25621,24 +25768,24 @@ function encodeEntities(value) {
 
 /**
  * create an HTML/XML writer which writes to buffer
- * @param {Array} buf use buf.join('') to get out sanitized html string
+ * @param {Array} buf use buf.jain('') to get out sanitized html string
  * @returns {object} in the form of {
- *     start: function(tag, attrs) {},
+ *     start: function(tag, attrs, unary) {},
  *     end: function(tag) {},
  *     chars: function(text) {},
  *     comment: function(text) {}
  * }
  */
 function htmlSanitizeWriter(buf, uriValidator) {
-  var ignoreCurrentElement = false;
+  var ignore = false;
   var out = angular.bind(buf, buf.push);
   return {
-    start: function(tag, attrs) {
+    start: function(tag, attrs, unary) {
       tag = angular.lowercase(tag);
-      if (!ignoreCurrentElement && blockedElements[tag]) {
-        ignoreCurrentElement = tag;
+      if (!ignore && specialElements[tag]) {
+        ignore = tag;
       }
-      if (!ignoreCurrentElement && validElements[tag] === true) {
+      if (!ignore && validElements[tag] === true) {
         out('<');
         out(tag);
         angular.forEach(attrs, function(value, key) {
@@ -25653,61 +25800,27 @@ function htmlSanitizeWriter(buf, uriValidator) {
             out('"');
           }
         });
-        out('>');
+        out(unary ? '/>' : '>');
       }
     },
     end: function(tag) {
-      tag = angular.lowercase(tag);
-      if (!ignoreCurrentElement && validElements[tag] === true && voidElements[tag] !== true) {
-        out('</');
-        out(tag);
-        out('>');
-      }
-      if (tag == ignoreCurrentElement) {
-        ignoreCurrentElement = false;
-      }
-    },
+        tag = angular.lowercase(tag);
+        if (!ignore && validElements[tag] === true) {
+          out('</');
+          out(tag);
+          out('>');
+        }
+        if (tag == ignore) {
+          ignore = false;
+        }
+      },
     chars: function(chars) {
-      if (!ignoreCurrentElement) {
-        out(encodeEntities(chars));
+        if (!ignore) {
+          out(encodeEntities(chars));
+        }
       }
-    }
   };
 }
-
-
-/**
- * When IE9-11 comes across an unknown namespaced attribute e.g. 'xlink:foo' it adds 'xmlns:ns1' attribute to declare
- * ns1 namespace and prefixes the attribute with 'ns1' (e.g. 'ns1:xlink:foo'). This is undesirable since we don't want
- * to allow any of these custom attributes. This method strips them all.
- *
- * @param node Root element to process
- */
-function stripCustomNsAttrs(node) {
-  if (node.nodeType === Node.ELEMENT_NODE) {
-    var attrs = node.attributes;
-    for (var i = 0, l = attrs.length; i < l; i++) {
-      var attrNode = attrs[i];
-      var attrName = attrNode.name.toLowerCase();
-      if (attrName === 'xmlns:ns1' || attrName.indexOf('ns1:') === 0) {
-        node.removeAttributeNode(attrNode);
-        i--;
-        l--;
-      }
-    }
-  }
-
-  var nextNode = node.firstChild;
-  if (nextNode) {
-    stripCustomNsAttrs(nextNode);
-  }
-
-  nextNode = node.nextSibling;
-  if (nextNode) {
-    stripCustomNsAttrs(nextNode);
-  }
-}
-
 
 
 // define ngSanitize module and register $sanitize service
@@ -25721,25 +25834,14 @@ angular.module('ngSanitize', []).provider('$sanitize', $SanitizeProvider);
  * @kind function
  *
  * @description
- * Finds links in text input and turns them into html links. Supports `http/https/ftp/mailto` and
+ * Finds links in text input and turns them into html links. Supports http/https/ftp/mailto and
  * plain email address links.
  *
  * Requires the {@link ngSanitize `ngSanitize`} module to be installed.
  *
  * @param {string} text Input text.
- * @param {string} target Window (`_blank|_self|_parent|_top`) or named frame to open links in.
- * @param {object|function(url)} [attributes] Add custom attributes to the link element.
- *
- *    Can be one of:
- *
- *    - `object`: A map of attributes
- *    - `function`: Takes the url as a parameter and returns a map of attributes
- *
- *    If the map of attributes contains a value for `target`, it overrides the value of
- *    the target parameter.
- *
- *
- * @returns {string} Html-linkified and {@link $sanitize sanitized} text.
+ * @param {string} target Window (_blank|_self|_parent|_top) or named frame to open links in.
+ * @returns {string} Html-linkified text.
  *
  * @usage
    <span ng-bind-html="linky_expression | linky"></span>
@@ -25747,13 +25849,25 @@ angular.module('ngSanitize', []).provider('$sanitize', $SanitizeProvider);
  * @example
    <example module="linkyExample" deps="angular-sanitize.js">
      <file name="index.html">
+       <script>
+         angular.module('linkyExample', ['ngSanitize'])
+           .controller('ExampleController', ['$scope', function($scope) {
+             $scope.snippet =
+               'Pretty text with some links:\n'+
+               'http://angularjs.org/,\n'+
+               'mailto:us@somewhere.org,\n'+
+               'another@somewhere.org,\n'+
+               'and one more: ftp://127.0.0.1/.';
+             $scope.snippetWithTarget = 'http://angularjs.org/';
+           }]);
+       </script>
        <div ng-controller="ExampleController">
        Snippet: <textarea ng-model="snippet" cols="60" rows="3"></textarea>
        <table>
          <tr>
-           <th>Filter</th>
-           <th>Source</th>
-           <th>Rendered</th>
+           <td>Filter</td>
+           <td>Source</td>
+           <td>Rendered</td>
          </tr>
          <tr id="linky-filter">
            <td>linky filter</td>
@@ -25767,19 +25881,10 @@ angular.module('ngSanitize', []).provider('$sanitize', $SanitizeProvider);
          <tr id="linky-target">
           <td>linky target</td>
           <td>
-            <pre>&lt;div ng-bind-html="snippetWithSingleURL | linky:'_blank'"&gt;<br>&lt;/div&gt;</pre>
+            <pre>&lt;div ng-bind-html="snippetWithTarget | linky:'_blank'"&gt;<br>&lt;/div&gt;</pre>
           </td>
           <td>
-            <div ng-bind-html="snippetWithSingleURL | linky:'_blank'"></div>
-          </td>
-         </tr>
-         <tr id="linky-custom-attributes">
-          <td>linky custom attributes</td>
-          <td>
-            <pre>&lt;div ng-bind-html="snippetWithSingleURL | linky:'_self':{rel: 'nofollow'}"&gt;<br>&lt;/div&gt;</pre>
-          </td>
-          <td>
-            <div ng-bind-html="snippetWithSingleURL | linky:'_self':{rel: 'nofollow'}"></div>
+            <div ng-bind-html="snippetWithTarget | linky:'_blank'"></div>
           </td>
          </tr>
          <tr id="escaped-html">
@@ -25788,18 +25893,6 @@ angular.module('ngSanitize', []).provider('$sanitize', $SanitizeProvider);
            <td><div ng-bind="snippet"></div></td>
          </tr>
        </table>
-     </file>
-     <file name="script.js">
-       angular.module('linkyExample', ['ngSanitize'])
-         .controller('ExampleController', ['$scope', function($scope) {
-           $scope.snippet =
-             'Pretty text with some links:\n'+
-             'http://angularjs.org/,\n'+
-             'mailto:us@somewhere.org,\n'+
-             'another@somewhere.org,\n'+
-             'and one more: ftp://127.0.0.1/.';
-           $scope.snippetWithSingleURL = 'http://angularjs.org/';
-         }]);
      </file>
      <file name="protractor.js" type="protractor">
        it('should linkify the snippet with urls', function() {
@@ -25828,16 +25921,9 @@ angular.module('ngSanitize', []).provider('$sanitize', $SanitizeProvider);
 
        it('should work with the target property', function() {
         expect(element(by.id('linky-target')).
-            element(by.binding("snippetWithSingleURL | linky:'_blank'")).getText()).
+            element(by.binding("snippetWithTarget | linky:'_blank'")).getText()).
             toBe('http://angularjs.org/');
         expect(element(by.css('#linky-target a')).getAttribute('target')).toEqual('_blank');
-       });
-
-       it('should optionally add custom attributes', function() {
-        expect(element(by.id('linky-custom-attributes')).
-            element(by.binding("snippetWithSingleURL | linky:'_self':{rel: 'nofollow'}")).getText()).
-            toBe('http://angularjs.org/');
-        expect(element(by.css('#linky-custom-attributes a')).getAttribute('rel')).toEqual('nofollow');
        });
      </file>
    </example>
@@ -25847,13 +25933,8 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
         /((ftp|https?):\/\/|(www\.)|(mailto:)?[A-Za-z0-9._%+-]+@)\S*[^\s.;,(){}<>"\u201d\u2019]/i,
       MAILTO_REGEXP = /^mailto:/i;
 
-  var linkyMinErr = angular.$$minErr('linky');
-  var isString = angular.isString;
-
-  return function(text, target, attributes) {
-    if (text == null || text === '') return text;
-    if (!isString(text)) throw linkyMinErr('notstring', 'Expected string but received: {0}', text);
-
+  return function(text, target) {
+    if (!text) return text;
     var match;
     var raw = text;
     var html = [];
@@ -25882,19 +25963,8 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
     }
 
     function addLink(url, text) {
-      var key;
       html.push('<a ');
-      if (angular.isFunction(attributes)) {
-        attributes = attributes(url);
-      }
-      if (angular.isObject(attributes)) {
-        for (key in attributes) {
-          html.push(key + '="' + attributes[key] + '" ');
-        }
-      } else {
-        attributes = {};
-      }
-      if (angular.isDefined(target) && !('target' in attributes)) {
+      if (angular.isDefined(target)) {
         html.push('target="',
                   target,
                   '" ');
@@ -25911,11 +25981,11 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 })(window, window.angular);
 
-},{}],178:[function(require,module,exports){
+},{}],183:[function(require,module,exports){
 require('./angular-sanitize');
 module.exports = 'ngSanitize';
 
-},{"./angular-sanitize":177}],179:[function(require,module,exports){
+},{"./angular-sanitize":182}],184:[function(require,module,exports){
 /**
   * x is a value between 0 and 1, indicating where in the animation you are.
   */
@@ -26544,18 +26614,18 @@ angular.module('duScroll.scrollspy', ['duScroll.spyAPI'])
   };
 }]);
 
-},{}],180:[function(require,module,exports){
+},{}],185:[function(require,module,exports){
 require('angular');
 require('./angular-scroll');
 
 module.exports = 'duScroll';
 
-},{"./angular-scroll":179,"angular":186}],181:[function(require,module,exports){
+},{"./angular-scroll":184,"angular":191}],186:[function(require,module,exports){
 /*
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
 
- * Version: 1.2.1 - 2016-02-27
+ * Version: 1.1.2 - 2016-02-01
  * License: MIT
  */angular.module("ui.bootstrap", ["ui.bootstrap.tpls", "ui.bootstrap.collapse","ui.bootstrap.accordion","ui.bootstrap.alert","ui.bootstrap.buttons","ui.bootstrap.carousel","ui.bootstrap.dateparser","ui.bootstrap.isClass","ui.bootstrap.position","ui.bootstrap.datepicker","ui.bootstrap.debounce","ui.bootstrap.dropdown","ui.bootstrap.stackedMap","ui.bootstrap.modal","ui.bootstrap.paging","ui.bootstrap.pager","ui.bootstrap.pagination","ui.bootstrap.tooltip","ui.bootstrap.popover","ui.bootstrap.progressbar","ui.bootstrap.rating","ui.bootstrap.tabs","ui.bootstrap.timepicker","ui.bootstrap.typeahead"]);
 angular.module("ui.bootstrap.tpls", ["uib/template/accordion/accordion-group.html","uib/template/accordion/accordion.html","uib/template/alert/alert.html","uib/template/carousel/carousel.html","uib/template/carousel/slide.html","uib/template/datepicker/datepicker.html","uib/template/datepicker/day.html","uib/template/datepicker/month.html","uib/template/datepicker/popup.html","uib/template/datepicker/year.html","uib/template/modal/backdrop.html","uib/template/modal/window.html","uib/template/pager/pager.html","uib/template/pagination/pagination.html","uib/template/tooltip/tooltip-html-popup.html","uib/template/tooltip/tooltip-popup.html","uib/template/tooltip/tooltip-template-popup.html","uib/template/popover/popover-html.html","uib/template/popover/popover-template.html","uib/template/popover/popover.html","uib/template/progressbar/bar.html","uib/template/progressbar/progress.html","uib/template/progressbar/progressbar.html","uib/template/rating/rating.html","uib/template/tabs/tab.html","uib/template/tabs/tabset.html","uib/template/timepicker/timepicker.html","uib/template/typeahead/typeahead-match.html","uib/template/typeahead/typeahead-popup.html"]);
@@ -26786,9 +26856,8 @@ angular.module('ui.bootstrap.accordion', ['ui.bootstrap.collapse'])
     link: function(scope, element, attrs, controller) {
       scope.$watch(function() { return controller[attrs.uibAccordionTransclude]; }, function(heading) {
         if (heading) {
-          var elem = angular.element(element[0].querySelector('[uib-accordion-header]'));
-          elem.html('');
-          elem.append(heading);
+          element.find('span').html('');
+          element.find('span').append(heading);
         }
       });
     }
@@ -26872,7 +26941,7 @@ angular.module('ui.bootstrap.buttons', [])
 
       if (attrs.uibUncheckable) {
         scope.$watch(uncheckableExpr, function(uncheckable) {
-          attrs.$set('uncheckable', uncheckable ? '' : undefined);
+          attrs.$set('uncheckable', uncheckable ? '' : null);
         });
       }
     }
@@ -26927,41 +26996,35 @@ angular.module('ui.bootstrap.carousel', [])
   var self = this,
     slides = self.slides = $scope.slides = [],
     SLIDE_DIRECTION = 'uib-slideDirection',
-    currentIndex = $scope.active,
+    currentIndex = -1,
     currentInterval, isPlaying, bufferedTransitions = [];
+  self.currentSlide = null;
 
   var destroyed = false;
 
   self.addSlide = function(slide, element) {
-    slides.push({
-      slide: slide,
-      element: element
-    });
-    slides.sort(function(a, b) {
-      return +a.slide.index > +b.slide.index;
-    });
+    slide.$element = element;
+    slides.push(slide);
     //if this is the first slide or the slide is set to active, select it
-    if (slide.index === $scope.active || slides.length === 1 && !angular.isNumber($scope.active)) {
+    if (slides.length === 1 || slide.active) {
       if ($scope.$currentTransition) {
         $scope.$currentTransition = null;
       }
 
-      currentIndex = slide.index;
-      $scope.active = slide.index;
-      setActive(currentIndex);
-      self.select(slides[findSlideIndex(slide)]);
+      self.select(slides[slides.length - 1]);
       if (slides.length === 1) {
         $scope.play();
       }
+    } else {
+      slide.active = false;
     }
   };
 
   self.getCurrentIndex = function() {
-    for (var i = 0; i < slides.length; i++) {
-      if (slides[i].slide.index === currentIndex) {
-        return i;
-      }
+    if (self.currentSlide && angular.isDefined(self.currentSlide.index)) {
+      return +self.currentSlide.index;
     }
+    return currentIndex;
   };
 
   self.next = $scope.next = function() {
@@ -26972,7 +27035,7 @@ angular.module('ui.bootstrap.carousel', [])
       return;
     }
 
-    return self.select(slides[newIndex], 'next');
+    return self.select(getSlideByIndex(newIndex), 'next');
   };
 
   self.prev = $scope.prev = function() {
@@ -26983,67 +27046,65 @@ angular.module('ui.bootstrap.carousel', [])
       return;
     }
 
-    return self.select(slides[newIndex], 'prev');
+    return self.select(getSlideByIndex(newIndex), 'prev');
   };
 
   self.removeSlide = function(slide) {
-    var index = findSlideIndex(slide);
+    if (angular.isDefined(slide.index)) {
+      slides.sort(function(a, b) {
+        return +a.index > +b.index;
+      });
+    }
 
-    var bufferedIndex = bufferedTransitions.indexOf(slides[index]);
+    var bufferedIndex = bufferedTransitions.indexOf(slide);
     if (bufferedIndex !== -1) {
       bufferedTransitions.splice(bufferedIndex, 1);
     }
-
     //get the index of the slide inside the carousel
+    var index = slides.indexOf(slide);
     slides.splice(index, 1);
-    if (slides.length > 0 && currentIndex === index) {
-      if (index >= slides.length) {
-        currentIndex = slides.length - 1;
-        $scope.active = currentIndex;
-        setActive(currentIndex);
-        self.select(slides[slides.length - 1]);
-      } else {
-        currentIndex = index;
-        $scope.active = currentIndex;
-        setActive(currentIndex);
-        self.select(slides[index]);
+    $timeout(function() {
+      if (slides.length > 0 && slide.active) {
+        if (index >= slides.length) {
+          self.select(slides[index - 1]);
+        } else {
+          self.select(slides[index]);
+        }
+      } else if (currentIndex > index) {
+        currentIndex--;
       }
-    } else if (currentIndex > index) {
-      currentIndex--;
-      $scope.active = currentIndex;
-    }
+    });
 
-    //clean the active value when no more slide
+    //clean the currentSlide when no more slide
     if (slides.length === 0) {
-      currentIndex = null;
-      $scope.active = null;
+      self.currentSlide = null;
       clearBufferedTransitions();
     }
   };
 
   /* direction: "prev" or "next" */
   self.select = $scope.select = function(nextSlide, direction) {
-    var nextIndex = findSlideIndex(nextSlide.slide);
+    var nextIndex = $scope.indexOfSlide(nextSlide);
     //Decide direction if it's not given
     if (direction === undefined) {
       direction = nextIndex > self.getCurrentIndex() ? 'next' : 'prev';
     }
     //Prevent this user-triggered transition from occurring if there is already one in progress
-    if (nextSlide.slide.index !== currentIndex &&
-      !$scope.$currentTransition) {
-      goNext(nextSlide.slide, nextIndex, direction);
-    } else if (nextSlide && nextSlide.slide.index !== currentIndex && $scope.$currentTransition) {
-      bufferedTransitions.push(slides[nextIndex]);
+    if (nextSlide && nextSlide !== self.currentSlide && !$scope.$currentTransition) {
+      goNext(nextSlide, nextIndex, direction);
+    } else if (nextSlide && nextSlide !== self.currentSlide && $scope.$currentTransition) {
+      bufferedTransitions.push(nextSlide);
+      nextSlide.active = false;
     }
   };
 
   /* Allow outside people to call indexOf on slides array */
   $scope.indexOfSlide = function(slide) {
-    return +slide.slide.index;
+    return angular.isDefined(slide.index) ? +slide.index : slides.indexOf(slide);
   };
 
   $scope.isActive = function(slide) {
-    return $scope.active === slide.slide.index;
+    return self.currentSlide === slide;
   };
 
   $scope.pause = function() {
@@ -27073,24 +27134,6 @@ angular.module('ui.bootstrap.carousel', [])
 
   $scope.$watchCollection('slides', resetTransition);
 
-  $scope.$watch('active', function(index) {
-    if (angular.isNumber(index) && currentIndex !== index) {
-      for (var i = 0; i < slides.length; i++) {
-        if (slides[i].slide.index === index) {
-          index = i;
-          break;
-        }
-      }
-
-      var slide = slides[index];
-      if (slide) {
-        currentIndex = index;
-        setActive(index);
-        self.select(slides[index]);
-      }
-    }
-  });
-
   function clearBufferedTransitions() {
     while (bufferedTransitions.length) {
       bufferedTransitions.shift();
@@ -27098,6 +27141,9 @@ angular.module('ui.bootstrap.carousel', [])
   }
 
   function getSlideByIndex(index) {
+    if (angular.isUndefined(slides[index].index)) {
+      return slides[index];
+    }
     for (var i = 0, l = slides.length; i < l; ++i) {
       if (slides[i].index === index) {
         return slides[i];
@@ -27105,36 +27151,26 @@ angular.module('ui.bootstrap.carousel', [])
     }
   }
 
-  function setActive(index) {
-    for (var i = 0; i < slides.length; i++) {
-      slides[i].slide.active = i === index;
-    }
-  }
-
   function goNext(slide, index, direction) {
-    if (destroyed) {
-      return;
-    }
+    if (destroyed) { return; }
 
-    angular.extend(slide, {direction: direction});
-    angular.extend(slides[currentIndex].slide || {}, {direction: direction});
+    angular.extend(slide, {direction: direction, active: true});
+    angular.extend(self.currentSlide || {}, {direction: direction, active: false});
     if ($animate.enabled($element) && !$scope.$currentTransition &&
-      slides[index].element && self.slides.length > 1) {
-      slides[index].element.data(SLIDE_DIRECTION, slide.direction);
-      var currentIdx = self.getCurrentIndex();
-
-      if (angular.isNumber(currentIdx) && slides[currentIdx].element) {
-        slides[currentIdx].element.data(SLIDE_DIRECTION, slide.direction);
+      slide.$element && self.slides.length > 1) {
+      slide.$element.data(SLIDE_DIRECTION, slide.direction);
+      if (self.currentSlide && self.currentSlide.$element) {
+        self.currentSlide.$element.data(SLIDE_DIRECTION, slide.direction);
       }
 
       $scope.$currentTransition = true;
-      $animate.on('addClass', slides[index].element, function(element, phase) {
+      $animate.on('addClass', slide.$element, function(element, phase) {
         if (phase === 'close') {
           $scope.$currentTransition = null;
           $animate.off('addClass', element);
           if (bufferedTransitions.length) {
-            var nextSlide = bufferedTransitions.pop().slide;
-            var nextIndex = nextSlide.index;
+            var nextSlide = bufferedTransitions.pop();
+            var nextIndex = $scope.indexOfSlide(nextSlide);
             var nextDirection = nextIndex > self.getCurrentIndex() ? 'next' : 'prev';
             clearBufferedTransitions();
 
@@ -27144,20 +27180,11 @@ angular.module('ui.bootstrap.carousel', [])
       });
     }
 
-    $scope.active = slide.index;
-    currentIndex = slide.index;
-    setActive(index);
+    self.currentSlide = slide;
+    currentIndex = index;
 
     //every time you change slides, reset the timer
     restartTimer();
-  }
-
-  function findSlideIndex(slide) {
-    for (var i = 0; i < slides.length; i++) {
-      if (slides[i].slide === slide) {
-        return i;
-      }
-    }
   }
 
   function resetTimer() {
@@ -27202,7 +27229,6 @@ angular.module('ui.bootstrap.carousel', [])
       return attrs.templateUrl || 'uib/template/carousel/carousel.html';
     },
     scope: {
-      active: '=',
       interval: '=',
       noTransition: '=',
       noPause: '=',
@@ -27220,6 +27246,7 @@ angular.module('ui.bootstrap.carousel', [])
       return attrs.templateUrl || 'uib/template/carousel/slide.html';
     },
     scope: {
+      active: '=?',
       actual: '=?',
       index: '=?'
     },
@@ -27228,6 +27255,12 @@ angular.module('ui.bootstrap.carousel', [])
       //when the scope is destroyed then remove the slide from the current slides array
       scope.$on('$destroy', function() {
         carouselCtrl.removeSlide(scope);
+      });
+
+      scope.$watch('active', function(active) {
+        if (active) {
+          carouselCtrl.select(scope);
+        }
       });
     }
   };
@@ -27608,13 +27641,11 @@ angular.module('ui.bootstrap.dateparser', [])
         _format = _format.replace(match[1] + mapper.key, '');
       }
 
-      var endStr = i === map.length - 1 ? _format : '';
-
       if (mapper.apply) {
-        return str + mapper.apply.call(null, date) + endStr;
+        return str + mapper.apply.call(null, date);
       }
 
-      return str + endStr;
+      return str;
     }, '');
   };
 
@@ -27880,7 +27911,7 @@ angular.module('ui.bootstrap.position', [])
        * @returns {element} A HTML element.
        */
       getRawNode: function(elem) {
-        return elem.nodeName ? elem : elem[0] || elem;
+        return elem[0] || elem;
       },
 
       /**
@@ -27927,7 +27958,7 @@ angular.module('ui.bootstrap.position', [])
        */
       scrollbarWidth: function() {
         if (angular.isUndefined(SCROLLBAR_WIDTH)) {
-          var scrollElem = angular.element('<div class="uib-position-scrollbar-measure"></div>');
+          var scrollElem = angular.element('<div style="position: absolute; top: -9999px; width: 50px; height: 50px; overflow: scroll;"></div>');
           $document.find('body').append(scrollElem);
           SCROLLBAR_WIDTH = scrollElem[0].offsetWidth - scrollElem[0].clientWidth;
           SCROLLBAR_WIDTH = isFinite(SCROLLBAR_WIDTH) ? SCROLLBAR_WIDTH : 0;
@@ -27935,23 +27966,6 @@ angular.module('ui.bootstrap.position', [])
         }
 
         return SCROLLBAR_WIDTH;
-      },
-
-      /**
-       * Checks to see if the element is scrollable.
-       *
-       * @param {element} elem - The element to check.
-       * @param {boolean=} [includeHidden=false] - Should scroll style of 'hidden' be considered,
-       *   default is false.
-       *
-       * @returns {boolean} Whether the element is scrollable.
-       */
-      isScrollable: function(elem, includeHidden) {
-        elem = this.getRawNode(elem);
-
-        var overflowRegex = includeHidden ? OVERFLOW_REGEX.hidden : OVERFLOW_REGEX.normal;
-        var elemStyle = $window.getComputedStyle(elem);
-        return overflowRegex.test(elemStyle.overflow + elemStyle.overflowY + elemStyle.overflowX);
       },
 
       /**
@@ -28340,17 +28354,10 @@ angular.module('ui.bootstrap.position', [])
           return;
         }
 
-        var arrowCss = {
-          top: '',
-          bottom: '',
-          left: '',
-          right: ''
-        };
-
         placement = this.parsePlacement(placement);
         if (placement[1] === 'center') {
           // no adjustment necessary - just reset styles
-          angular.element(arrowElem).css(arrowCss);
+          angular.element(arrowElem).css({top: '', bottom: '', right: '', left: '', margin: ''});
           return;
         }
 
@@ -28365,6 +28372,14 @@ angular.module('ui.bootstrap.position', [])
         }
         borderRadiusProp += '-radius';
         var borderRadius = $window.getComputedStyle(isTooltip ? innerElem : elem)[borderRadiusProp];
+
+        var arrowCss = {
+          top: 'auto',
+          bottom: 'auto',
+          left: 'auto',
+          right: 'auto',
+          margin: 0
+        };
 
         switch (placement[0]) {
           case 'top':
@@ -28391,7 +28406,6 @@ angular.module('ui.bootstrap.position', [])
 angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootstrap.isClass', 'ui.bootstrap.position'])
 
 .value('$datepickerSuppressError', false)
-.value('uibDatepickerAttributeWarning', true)
 
 .constant('uibDatepickerConfig', {
   datepickerMode: 'day',
@@ -28412,22 +28426,18 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
   yearRows: 4
 })
 
-.controller('UibDatepickerController', ['$scope', '$attrs', '$parse', '$interpolate', '$locale', '$log', 'dateFilter', 'uibDatepickerConfig', '$datepickerSuppressError', 'uibDatepickerAttributeWarning', 'uibDateParser',
-  function($scope, $attrs, $parse, $interpolate, $locale, $log, dateFilter, datepickerConfig, $datepickerSuppressError, datepickerAttributeWarning, dateParser) {
+.controller('UibDatepickerController', ['$scope', '$attrs', '$parse', '$interpolate', '$locale', '$log', 'dateFilter', 'uibDatepickerConfig', '$datepickerSuppressError', 'uibDateParser',
+  function($scope, $attrs, $parse, $interpolate, $locale, $log, dateFilter, datepickerConfig, $datepickerSuppressError, dateParser) {
   var self = this,
       ngModelCtrl = { $setViewValue: angular.noop }, // nullModelCtrl;
       ngModelOptions = {},
-      watchListeners = [],
-      optionsUsed = !!$attrs.datepickerOptions;
+      watchListeners = [];
 
   // Modes chain
   this.modes = ['day', 'month', 'year'];
 
-  if (optionsUsed) {
-    [
-      'customClass',
-      'dateDisabled',
-      'datepickerMode',
+  if ($attrs.datepickerOptions) {
+    angular.forEach([
       'formatDay',
       'formatDayHeader',
       'formatDayTitle',
@@ -28444,25 +28454,15 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
       'startingDay',
       'yearColumns',
       'yearRows'
-    ].forEach(function(key) {
+    ], function(key) {
       switch (key) {
-        case 'customClass':
-        case 'dateDisabled':
-          $scope[key] = $scope.datepickerOptions[key] || angular.noop;
-          break;
-        case 'datepickerMode':
-          $scope.datepickerMode = angular.isDefined($scope.datepickerOptions.datepickerMode) ?
-            $scope.datepickerOptions.datepickerMode : datepickerConfig.datepickerMode;
-          break;
         case 'formatDay':
         case 'formatDayHeader':
         case 'formatDayTitle':
         case 'formatMonth':
         case 'formatMonthTitle':
         case 'formatYear':
-          self[key] = angular.isDefined($scope.datepickerOptions[key]) ?
-            $interpolate($scope.datepickerOptions[key])($scope.$parent) :
-            datepickerConfig[key];
+          self[key] = angular.isDefined($scope.datepickerOptions[key]) ? $interpolate($scope.datepickerOptions[key])($scope.$parent) : datepickerConfig[key];
           break;
         case 'showWeeks':
         case 'shortcutPropagation':
@@ -28507,10 +28507,9 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
           if ($scope.datepickerOptions[key]) {
             $scope.$watch(function() { return $scope.datepickerOptions[key]; }, function(value) {
               self[key] = $scope[key] = angular.isDefined(value) ? value : datepickerOptions[key];
-              if (key === 'minMode' && self.modes.indexOf($scope.datepickerOptions.datepickerMode) < self.modes.indexOf(self[key]) ||
-                key === 'maxMode' && self.modes.indexOf($scope.datepickerOptions.datepickerMode) > self.modes.indexOf(self[key])) {
+              if (key === 'minMode' && self.modes.indexOf($scope.datepickerMode) < self.modes.indexOf(self[key]) ||
+                key === 'maxMode' && self.modes.indexOf($scope.datepickerMode) > self.modes.indexOf(self[key])) {
                 $scope.datepickerMode = self[key];
-                $scope.datepickerOptions.datepickerMode = self[key];
               }
             });
           } else {
@@ -28520,7 +28519,7 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
           break;
         case 'initDate':
           if ($scope.datepickerOptions.initDate) {
-            self.activeDate = dateParser.fromTimezone($scope.datepickerOptions.initDate, ngModelOptions.timezone) || new Date();
+            this.activeDate = dateParser.fromTimezone($scope.datepickerOptions.initDate, ngModelOptions.timezone) || new Date();
             $scope.$watch(function() { return $scope.datepickerOptions.initDate; }, function(initDate) {
               if (initDate && (ngModelCtrl.$isEmpty(ngModelCtrl.$modelValue) || ngModelCtrl.$invalid)) {
                 self.activeDate = dateParser.fromTimezone(initDate, ngModelOptions.timezone);
@@ -28528,7 +28527,7 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
               }
             });
           } else {
-            self.activeDate = new Date();
+            this.activeDate = new Date();
           }
       }
     });
@@ -28536,33 +28535,15 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
     // Interpolated configuration attributes
     angular.forEach(['formatDay', 'formatMonth', 'formatYear', 'formatDayHeader', 'formatDayTitle', 'formatMonthTitle'], function(key) {
       self[key] = angular.isDefined($attrs[key]) ? $interpolate($attrs[key])($scope.$parent) : datepickerConfig[key];
-
-      if (angular.isDefined($attrs[key]) && datepickerAttributeWarning) {
-        $log.warn('uib-datepicker ' + key + ' attribute usage is deprecated, use datepicker-options attribute instead');
-      }
     });
 
     // Evaled configuration attributes
     angular.forEach(['showWeeks', 'yearRows', 'yearColumns', 'shortcutPropagation'], function(key) {
       self[key] = angular.isDefined($attrs[key]) ?
         $scope.$parent.$eval($attrs[key]) : datepickerConfig[key];
-
-      if (angular.isDefined($attrs[key]) && datepickerAttributeWarning) {
-        $log.warn('uib-datepicker ' + key + ' attribute usage is deprecated, use datepicker-options attribute instead');
-      }
-    });
-
-    angular.forEach(['dateDisabled', 'customClass'], function(key) {
-      if (angular.isDefined($attrs[key]) && datepickerAttributeWarning) {
-        $log.warn('uib-datepicker ' + key + ' attribute usage is deprecated, use datepicker-options attribute instead');
-      }
     });
 
     if (angular.isDefined($attrs.startingDay)) {
-      if (datepickerAttributeWarning) {
-        $log.warn('uib-datepicker startingDay attribute usage is deprecated, use datepicker-options attribute instead');
-      }
-
       self.startingDay = $scope.$parent.$eval($attrs.startingDay);
     } else if (angular.isNumber(datepickerConfig.startingDay)) {
       self.startingDay = datepickerConfig.startingDay;
@@ -28573,10 +28554,6 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
     // Watchable date attributes
     angular.forEach(['minDate', 'maxDate'], function(key) {
       if ($attrs[key]) {
-        if (datepickerAttributeWarning) {
-          $log.warn('uib-datepicker ' + key + ' attribute usage is deprecated, use datepicker-options attribute instead');
-        }
-
         watchListeners.push($scope.$parent.$watch($attrs[key], function(value) {
           if (value) {
             if (angular.isDate(value)) {
@@ -28597,10 +28574,6 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
 
     angular.forEach(['minMode', 'maxMode'], function(key) {
       if ($attrs[key]) {
-        if (datepickerAttributeWarning) {
-          $log.warn('uib-datepicker ' + key + ' attribute usage is deprecated, use datepicker-options attribute instead');
-        }
-
         watchListeners.push($scope.$parent.$watch($attrs[key], function(value) {
           self[key] = $scope[key] = angular.isDefined(value) ? value : $attrs[key];
           if (key === 'minMode' && self.modes.indexOf($scope.datepickerMode) < self.modes.indexOf(self[key]) ||
@@ -28614,31 +28587,19 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
     });
 
     if (angular.isDefined($attrs.initDate)) {
-      if (datepickerAttributeWarning) {
-        $log.warn('uib-datepicker initDate attribute usage is deprecated, use datepicker-options attribute instead');
-      }
-
-      var initDate = dateParser.fromTimezone($scope.$parent.$eval($attrs.initDate), ngModelOptions.timezone);
-      this.activeDate = !isNaN(initDate) ? initDate : new Date();
+      this.activeDate = dateParser.fromTimezone($scope.$parent.$eval($attrs.initDate), ngModelOptions.timezone) || new Date();
       watchListeners.push($scope.$parent.$watch($attrs.initDate, function(initDate) {
         if (initDate && (ngModelCtrl.$isEmpty(ngModelCtrl.$modelValue) || ngModelCtrl.$invalid)) {
-          initDate = dateParser.fromTimezone(initDate, ngModelOptions.timezone);
-          self.activeDate = !isNaN(initDate) ? initDate : new Date();
+          self.activeDate = dateParser.fromTimezone(initDate, ngModelOptions.timezone);
           self.refreshView();
         }
       }));
     } else {
       this.activeDate = new Date();
     }
-
-    if ($attrs.datepickerMode && datepickerAttributeWarning) {
-      $log.warn('uib-datepicker datepickerMode attribute usage is deprecated, use datepicker-options attribute instead');
-    }
-
-    $scope.datepickerMode = $scope.datepickerMode ||
-      datepickerConfig.datepickerMode;
   }
 
+  $scope.datepickerMode = $scope.datepickerMode || datepickerConfig.datepickerMode;
   $scope.uniqueId = 'datepicker-' + $scope.$id + '-' + Math.floor(Math.random() * 10000);
 
   $scope.disabled = angular.isDefined($attrs.disabled) || false;
@@ -28661,7 +28622,9 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
     ngModelCtrl = ngModelCtrl_;
     ngModelOptions = ngModelCtrl_.$options || datepickerConfig.ngModelOptions;
 
-    this.activeDate = ngModelCtrl.$modelValue || new Date();
+    if (ngModelCtrl.$modelValue) {
+      this.activeDate = ngModelCtrl.$modelValue;
+    }
 
     ngModelCtrl.$render = function() {
       self.render();
@@ -28724,7 +28687,7 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
     return $scope.disabled ||
       this.minDate && this.compare(date, this.minDate) < 0 ||
       this.maxDate && this.compare(date, this.maxDate) > 0 ||
-      $scope.dateDisabled && $scope.dateDisabled({date: date, mode: $scope.datepickerMode});
+      $attrs.dateDisabled && $scope.dateDisabled({date: date, mode: $scope.datepickerMode});
   };
 
   this.customClass = function(date) {
@@ -28749,9 +28712,7 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
       ngModelCtrl.$render();
     } else {
       self.activeDate = date;
-      setMode(self.modes[self.modes.indexOf($scope.datepickerMode) - 1]);
-
-      $scope.$emit('uib:datepicker.mode');
+      $scope.datepickerMode = self.modes[self.modes.indexOf($scope.datepickerMode) - 1];
     }
   };
 
@@ -28770,9 +28731,7 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
       return;
     }
 
-    setMode(self.modes[self.modes.indexOf($scope.datepickerMode) + direction]);
-
-    $scope.$emit('uib:datepicker.mode');
+    $scope.datepickerMode = self.modes[self.modes.indexOf($scope.datepickerMode) + direction];
   };
 
   // Key event mapper
@@ -28816,13 +28775,6 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
       watchListeners.shift()();
     }
   });
-
-  function setMode(mode) {
-    $scope.datepickerMode = mode;
-    if (optionsUsed) {
-      $scope.datepickerOptions.datepickerMode = mode;
-    }
-  }
 }])
 
 .controller('UibDaypickerController', ['$scope', '$element', 'dateFilter', function(scope, $element, dateFilter) {
@@ -29128,8 +29080,6 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
   };
 })
 
-.value('uibDatepickerPopupAttributeWarning', true)
-
 .constant('uibDatepickerPopupConfig', {
   altInputFormats: [],
   appendToBody: false,
@@ -29146,50 +29096,37 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
     'month': 'yyyy-MM'
   },
   onOpenFocus: true,
-  showButtonBar: true,
-  placement: 'auto bottom-left'
+  showButtonBar: true
 })
 
-.controller('UibDatepickerPopupController', ['$scope', '$element', '$attrs', '$compile', '$log', '$parse', '$window', '$document', '$rootScope', '$uibPosition', 'dateFilter', 'uibDateParser', 'uibDatepickerPopupConfig', '$timeout', 'uibDatepickerConfig', 'uibDatepickerPopupAttributeWarning',
-function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $rootScope, $position, dateFilter, dateParser, datepickerPopupConfig, $timeout, datepickerConfig, datepickerPopupAttributeWarning) {
+.controller('UibDatepickerPopupController', ['$scope', '$element', '$attrs', '$compile', '$parse', '$document', '$rootScope', '$uibPosition', 'dateFilter', 'uibDateParser', 'uibDatepickerPopupConfig', '$timeout', 'uibDatepickerConfig',
+function(scope, element, attrs, $compile, $parse, $document, $rootScope, $position, dateFilter, dateParser, datepickerPopupConfig, $timeout, datepickerConfig) {
   var cache = {},
     isHtml5DateInput = false;
   var dateFormat, closeOnDateSelection, appendToBody, onOpenFocus,
-    datepickerPopupTemplateUrl, datepickerTemplateUrl, popupEl, datepickerEl, scrollParentEl,
+    datepickerPopupTemplateUrl, datepickerTemplateUrl, popupEl, datepickerEl,
     ngModel, ngModelOptions, $popup, altInputFormats, watchListeners = [];
 
-  $scope.watchData = {};
+  scope.watchData = {};
 
   this.init = function(_ngModel_) {
     ngModel = _ngModel_;
     ngModelOptions = _ngModel_.$options || datepickerConfig.ngModelOptions;
-    closeOnDateSelection = angular.isDefined($attrs.closeOnDateSelection) ?
-      $scope.$parent.$eval($attrs.closeOnDateSelection) :
-      datepickerPopupConfig.closeOnDateSelection;
-    appendToBody = angular.isDefined($attrs.datepickerAppendToBody) ?
-      $scope.$parent.$eval($attrs.datepickerAppendToBody) :
-      datepickerPopupConfig.appendToBody;
-    onOpenFocus = angular.isDefined($attrs.onOpenFocus) ?
-      $scope.$parent.$eval($attrs.onOpenFocus) : datepickerPopupConfig.onOpenFocus;
-    datepickerPopupTemplateUrl = angular.isDefined($attrs.datepickerPopupTemplateUrl) ?
-      $attrs.datepickerPopupTemplateUrl :
-      datepickerPopupConfig.datepickerPopupTemplateUrl;
-    datepickerTemplateUrl = angular.isDefined($attrs.datepickerTemplateUrl) ?
-      $attrs.datepickerTemplateUrl : datepickerPopupConfig.datepickerTemplateUrl;
-    altInputFormats = angular.isDefined($attrs.altInputFormats) ?
-      $scope.$parent.$eval($attrs.altInputFormats) :
-      datepickerPopupConfig.altInputFormats;
+    closeOnDateSelection = angular.isDefined(attrs.closeOnDateSelection) ? scope.$parent.$eval(attrs.closeOnDateSelection) : datepickerPopupConfig.closeOnDateSelection;
+    appendToBody = angular.isDefined(attrs.datepickerAppendToBody) ? scope.$parent.$eval(attrs.datepickerAppendToBody) : datepickerPopupConfig.appendToBody;
+    onOpenFocus = angular.isDefined(attrs.onOpenFocus) ? scope.$parent.$eval(attrs.onOpenFocus) : datepickerPopupConfig.onOpenFocus;
+    datepickerPopupTemplateUrl = angular.isDefined(attrs.datepickerPopupTemplateUrl) ? attrs.datepickerPopupTemplateUrl : datepickerPopupConfig.datepickerPopupTemplateUrl;
+    datepickerTemplateUrl = angular.isDefined(attrs.datepickerTemplateUrl) ? attrs.datepickerTemplateUrl : datepickerPopupConfig.datepickerTemplateUrl;
+    altInputFormats = angular.isDefined(attrs.altInputFormats) ? scope.$parent.$eval(attrs.altInputFormats) : datepickerPopupConfig.altInputFormats;
 
-    $scope.showButtonBar = angular.isDefined($attrs.showButtonBar) ?
-      $scope.$parent.$eval($attrs.showButtonBar) :
-      datepickerPopupConfig.showButtonBar;
+    scope.showButtonBar = angular.isDefined(attrs.showButtonBar) ? scope.$parent.$eval(attrs.showButtonBar) : datepickerPopupConfig.showButtonBar;
 
-    if (datepickerPopupConfig.html5Types[$attrs.type]) {
-      dateFormat = datepickerPopupConfig.html5Types[$attrs.type];
+    if (datepickerPopupConfig.html5Types[attrs.type]) {
+      dateFormat = datepickerPopupConfig.html5Types[attrs.type];
       isHtml5DateInput = true;
     } else {
-      dateFormat = $attrs.uibDatepickerPopup || datepickerPopupConfig.datepickerPopup;
-      $attrs.$observe('uibDatepickerPopup', function(value, oldValue) {
+      dateFormat = attrs.uibDatepickerPopup || datepickerPopupConfig.datepickerPopup;
+      attrs.$observe('uibDatepickerPopup', function(value, oldValue) {
         var newDateFormat = value || datepickerPopupConfig.datepickerPopup;
         // Invalidate the $modelValue to ensure that formatters re-run
         // FIXME: Refactor when PR is merged: https://github.com/angular/angular.js/pull/10764
@@ -29208,19 +29145,14 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
       throw new Error('uibDatepickerPopup must have a date format specified.');
     }
 
-    if (isHtml5DateInput && $attrs.uibDatepickerPopup) {
+    if (isHtml5DateInput && attrs.uibDatepickerPopup) {
       throw new Error('HTML5 date input types do not support custom formats.');
     }
 
     // popup element used to display calendar
     popupEl = angular.element('<div uib-datepicker-popup-wrap><div uib-datepicker></div></div>');
-    $scope.ngModelOptions = angular.copy(ngModelOptions);
-    $scope.ngModelOptions.timezone = null;
-    if ($scope.ngModelOptions.updateOnDefault === true) {
-      $scope.ngModelOptions.updateOn = $scope.ngModelOptions.updateOn ?
-        $scope.ngModelOptions.updateOn + ' default' : 'default';
-    }
-
+    scope.ngModelOptions = angular.copy(ngModelOptions);
+    scope.ngModelOptions.timezone = null;
     popupEl.attr({
       'ng-model': 'date',
       'ng-model-options': 'ngModelOptions',
@@ -29233,26 +29165,29 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
     datepickerEl.attr('template-url', datepickerTemplateUrl);
 
     if (isHtml5DateInput) {
-      if ($attrs.type === 'month') {
+      if (attrs.type === 'month') {
         datepickerEl.attr('datepicker-mode', '"month"');
         datepickerEl.attr('min-mode', 'month');
       }
     }
 
-    if ($scope.datepickerOptions) {
-      datepickerEl.attr('datepicker-options', 'datepickerOptions');
+    if (scope.datepickerOptions) {
+      angular.forEach(scope.datepickerOptions, function(value, option) {
+        // Ignore this options, will be managed later
+        if (['minDate', 'maxDate', 'minMode', 'maxMode', 'initDate', 'datepickerMode'].indexOf(option) === -1) {
+          datepickerEl.attr(cameltoDash(option), value);
+        } else {
+          datepickerEl.attr(cameltoDash(option), 'datepickerOptions.' + option);
+        }
+      });
     }
 
     angular.forEach(['minMode', 'maxMode', 'datepickerMode', 'shortcutPropagation'], function(key) {
-      if ($attrs[key]) {
-        if (datepickerPopupAttributeWarning) {
-          $log.warn('uib-datepicker settings via uib-datepicker-popup attributes are deprecated and will be removed in UI Bootstrap 1.3, use datepicker-options attribute instead');
-        }
-
-        var getAttribute = $parse($attrs[key]);
+      if (attrs[key]) {
+        var getAttribute = $parse(attrs[key]);
         var propConfig = {
           get: function() {
-            return getAttribute($scope.$parent);
+            return getAttribute(scope.$parent);
           }
         };
 
@@ -29262,23 +29197,19 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
         if (key === 'datepickerMode') {
           var setAttribute = getAttribute.assign;
           propConfig.set = function(v) {
-            setAttribute($scope.$parent, v);
+            setAttribute(scope.$parent, v);
           };
         }
 
-        Object.defineProperty($scope.watchData, key, propConfig);
+        Object.defineProperty(scope.watchData, key, propConfig);
       }
     });
 
     angular.forEach(['minDate', 'maxDate', 'initDate'], function(key) {
-      if ($attrs[key]) {
-        if (datepickerPopupAttributeWarning) {
-          $log.warn('uib-datepicker settings via uib-datepicker-popup attributes are deprecated and will be removed in UI Bootstrap 1.3, use datepicker-options attribute instead');
-        }
+      if (attrs[key]) {
+        var getAttribute = $parse(attrs[key]);
 
-        var getAttribute = $parse($attrs[key]);
-
-        watchListeners.push($scope.$parent.$watch(getAttribute, function(value) {
+        watchListeners.push(scope.$parent.$watch(getAttribute, function(value) {
           if (key === 'minDate' || key === 'maxDate') {
             if (value === null) {
               cache[key] = null;
@@ -29288,10 +29219,9 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
               cache[key] = new Date(dateFilter(value, 'medium'));
             }
 
-            $scope.watchData[key] = value === null ? null : cache[key];
+            scope.watchData[key] = value === null ? null : cache[key];
           } else {
-            var date = value ? new Date(value) : new Date();
-            $scope.watchData[key] = dateParser.fromTimezone(date, ngModelOptions.timezone);
+            scope.watchData[key] = dateParser.fromTimezone(new Date(value), ngModelOptions.timezone);
           }
         }));
 
@@ -29299,29 +29229,17 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
       }
     });
 
-    if ($attrs.dateDisabled) {
-      if (datepickerPopupAttributeWarning) {
-        $log.warn('uib-datepicker settings via uib-datepicker-popup attributes are deprecated and will be removed in UI Bootstrap 1.3, use datepicker-options attribute instead');
-      }
-
+    if (attrs.dateDisabled) {
       datepickerEl.attr('date-disabled', 'dateDisabled({ date: date, mode: mode })');
     }
 
     angular.forEach(['formatDay', 'formatMonth', 'formatYear', 'formatDayHeader', 'formatDayTitle', 'formatMonthTitle', 'showWeeks', 'startingDay', 'yearRows', 'yearColumns'], function(key) {
-      if (angular.isDefined($attrs[key])) {
-        if (datepickerPopupAttributeWarning) {
-          $log.warn('uib-datepicker settings via uib-datepicker-popup attributes are deprecated and will be removed in UI Bootstrap 1.3, use datepicker-options attribute instead');
-        }
-
-        datepickerEl.attr(cameltoDash(key), $attrs[key]);
+      if (angular.isDefined(attrs[key])) {
+        datepickerEl.attr(cameltoDash(key), attrs[key]);
       }
     });
 
-    if ($attrs.customClass) {
-      if (datepickerPopupAttributeWarning) {
-        $log.warn('uib-datepicker settings via uib-datepicker-popup attributes are deprecated and will be removed in UI Bootstrap 1.3, use datepicker-options attribute instead');
-      }
-
+    if (attrs.customClass) {
       datepickerEl.attr('custom-class', 'customClass({ date: date, mode: mode })');
     }
 
@@ -29332,58 +29250,54 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
       ngModel.$parsers.unshift(parseDate);
       ngModel.$formatters.push(function(value) {
         if (ngModel.$isEmpty(value)) {
-          $scope.date = value;
+          scope.date = value;
           return value;
         }
 
-        $scope.date = dateParser.fromTimezone(value, ngModelOptions.timezone);
+        scope.date = dateParser.fromTimezone(value, ngModelOptions.timezone);
 
-        if (angular.isNumber($scope.date)) {
-          $scope.date = new Date($scope.date);
+        if (angular.isNumber(scope.date)) {
+          scope.date = new Date(scope.date);
         }
 
-        return dateParser.filter($scope.date, dateFormat);
+        return dateParser.filter(scope.date, dateFormat);
       });
     } else {
       ngModel.$formatters.push(function(value) {
-        $scope.date = dateParser.fromTimezone(value, ngModelOptions.timezone);
+        scope.date = dateParser.fromTimezone(value, ngModelOptions.timezone);
         return value;
       });
     }
 
     // Detect changes in the view from the text box
     ngModel.$viewChangeListeners.push(function() {
-      $scope.date = parseDateString(ngModel.$viewValue);
+      scope.date = parseDateString(ngModel.$viewValue);
     });
 
-    $element.on('keydown', inputKeydownBind);
+    element.on('keydown', inputKeydownBind);
 
-    $popup = $compile(popupEl)($scope);
+    $popup = $compile(popupEl)(scope);
     // Prevent jQuery cache memory leak (template is now redundant after linking)
     popupEl.remove();
 
     if (appendToBody) {
       $document.find('body').append($popup);
     } else {
-      $element.after($popup);
+      element.after($popup);
     }
 
-    $scope.$on('$destroy', function() {
-      if ($scope.isOpen === true) {
+    scope.$on('$destroy', function() {
+      if (scope.isOpen === true) {
         if (!$rootScope.$$phase) {
-          $scope.$apply(function() {
-            $scope.isOpen = false;
+          scope.$apply(function() {
+            scope.isOpen = false;
           });
         }
       }
 
       $popup.remove();
-      $element.off('keydown', inputKeydownBind);
+      element.off('keydown', inputKeydownBind);
       $document.off('click', documentClickBind);
-      if (scrollParentEl) {
-        scrollParentEl.off('scroll', positionPopup);
-      }
-      angular.element($window).off('resize', positionPopup);
 
       //Clear all watch listeners on destroy
       while (watchListeners.length) {
@@ -29392,107 +29306,88 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
     });
   };
 
-  $scope.getText = function(key) {
-    return $scope[key + 'Text'] || datepickerPopupConfig[key + 'Text'];
+  scope.getText = function(key) {
+    return scope[key + 'Text'] || datepickerPopupConfig[key + 'Text'];
   };
 
-  $scope.isDisabled = function(date) {
+  scope.isDisabled = function(date) {
     if (date === 'today') {
       date = new Date();
     }
 
-    return $scope.watchData.minDate && $scope.compare(date, cache.minDate) < 0 ||
-        $scope.watchData.maxDate && $scope.compare(date, cache.maxDate) > 0;
+    return scope.watchData.minDate && scope.compare(date, cache.minDate) < 0 ||
+        scope.watchData.maxDate && scope.compare(date, cache.maxDate) > 0;
   };
 
-  $scope.compare = function(date1, date2) {
+  scope.compare = function(date1, date2) {
     return new Date(date1.getFullYear(), date1.getMonth(), date1.getDate()) - new Date(date2.getFullYear(), date2.getMonth(), date2.getDate());
   };
 
   // Inner change
-  $scope.dateSelection = function(dt) {
+  scope.dateSelection = function(dt) {
     if (angular.isDefined(dt)) {
-      $scope.date = dt;
+      scope.date = dt;
     }
-    var date = $scope.date ? dateParser.filter($scope.date, dateFormat) : null; // Setting to NULL is necessary for form validators to function
-    $element.val(date);
+    var date = scope.date ? dateParser.filter(scope.date, dateFormat) : null; // Setting to NULL is necessary for form validators to function
+    element.val(date);
     ngModel.$setViewValue(date);
 
     if (closeOnDateSelection) {
-      $scope.isOpen = false;
-      $element[0].focus();
+      scope.isOpen = false;
+      element[0].focus();
     }
   };
 
-  $scope.keydown = function(evt) {
+  scope.keydown = function(evt) {
     if (evt.which === 27) {
       evt.stopPropagation();
-      $scope.isOpen = false;
-      $element[0].focus();
+      scope.isOpen = false;
+      element[0].focus();
     }
   };
 
-  $scope.select = function(date, evt) {
-    evt.stopPropagation();
-
+  scope.select = function(date) {
     if (date === 'today') {
       var today = new Date();
-      if (angular.isDate($scope.date)) {
-        date = new Date($scope.date);
+      if (angular.isDate(scope.date)) {
+        date = new Date(scope.date);
         date.setFullYear(today.getFullYear(), today.getMonth(), today.getDate());
       } else {
         date = new Date(today.setHours(0, 0, 0, 0));
       }
     }
-    $scope.dateSelection(date);
+    scope.dateSelection(date);
   };
 
-  $scope.close = function(evt) {
-    evt.stopPropagation();
-
-    $scope.isOpen = false;
-    $element[0].focus();
+  scope.close = function() {
+    scope.isOpen = false;
+    element[0].focus();
   };
 
-  $scope.disabled = angular.isDefined($attrs.disabled) || false;
-  if ($attrs.ngDisabled) {
-    watchListeners.push($scope.$parent.$watch($parse($attrs.ngDisabled), function(disabled) {
-      $scope.disabled = disabled;
+  scope.disabled = angular.isDefined(attrs.disabled) || false;
+  if (attrs.ngDisabled) {
+    watchListeners.push(scope.$parent.$watch($parse(attrs.ngDisabled), function(disabled) {
+      scope.disabled = disabled;
     }));
   }
 
-  $scope.$watch('isOpen', function(value) {
+  scope.$watch('isOpen', function(value) {
     if (value) {
-      if (!$scope.disabled) {
-        $timeout(function() {
-          positionPopup();
+      if (!scope.disabled) {
+        scope.position = appendToBody ? $position.offset(element) : $position.position(element);
+        scope.position.top = scope.position.top + element.prop('offsetHeight');
 
+        $timeout(function() {
           if (onOpenFocus) {
-            $scope.$broadcast('uib:datepicker.focus');
+            scope.$broadcast('uib:datepicker.focus');
           }
           $document.on('click', documentClickBind);
-
-          var placement = $attrs.popupPlacement ? $attrs.popupPlacement : datepickerPopupConfig.placement;
-          if (appendToBody || $position.parsePlacement(placement)[2]) {
-            scrollParentEl = scrollParentEl || angular.element($position.scrollParent($element));
-            if (scrollParentEl) {
-              scrollParentEl.on('scroll', positionPopup);
-            }
-          } else {
-            scrollParentEl = null;
-          }
-
-          angular.element($window).on('resize', positionPopup);
         }, 0, false);
       } else {
-        $scope.isOpen = false;
+        scope.isOpen = false;
       }
     } else {
       $document.off('click', documentClickBind);
-      if (scrollParentEl) {
-        scrollParentEl.off('scroll', positionPopup);
-      }
-      angular.element($window).off('resize', positionPopup);
     }
   });
 
@@ -29501,10 +29396,10 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
   }
 
   function parseDateString(viewValue) {
-    var date = dateParser.parse(viewValue, dateFormat, $scope.date);
+    var date = dateParser.parse(viewValue, dateFormat, scope.date);
     if (isNaN(date)) {
       for (var i = 0; i < altInputFormats.length; i++) {
-        date = dateParser.parse(viewValue, altInputFormats[i], $scope.date);
+        date = dateParser.parse(viewValue, altInputFormats[i], scope.date);
         if (!isNaN(date)) {
           return date;
         }
@@ -29540,7 +29435,7 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
   function validator(modelValue, viewValue) {
     var value = modelValue || viewValue;
 
-    if (!$attrs.ngRequired && !value) {
+    if (!attrs.ngRequired && !value) {
       return true;
     }
 
@@ -29564,54 +29459,38 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
   }
 
   function documentClickBind(event) {
-    if (!$scope.isOpen && $scope.disabled) {
+    if (!scope.isOpen && scope.disabled) {
       return;
     }
 
     var popup = $popup[0];
-    var dpContainsTarget = $element[0].contains(event.target);
+    var dpContainsTarget = element[0].contains(event.target);
     // The popup node may not be an element node
     // In some browsers (IE) only element nodes have the 'contains' function
     var popupContainsTarget = popup.contains !== undefined && popup.contains(event.target);
-    if ($scope.isOpen && !(dpContainsTarget || popupContainsTarget)) {
-      $scope.$apply(function() {
-        $scope.isOpen = false;
+    if (scope.isOpen && !(dpContainsTarget || popupContainsTarget)) {
+      scope.$apply(function() {
+        scope.isOpen = false;
       });
     }
   }
 
   function inputKeydownBind(evt) {
-    if (evt.which === 27 && $scope.isOpen) {
+    if (evt.which === 27 && scope.isOpen) {
       evt.preventDefault();
       evt.stopPropagation();
-      $scope.$apply(function() {
-        $scope.isOpen = false;
+      scope.$apply(function() {
+        scope.isOpen = false;
       });
-      $element[0].focus();
-    } else if (evt.which === 40 && !$scope.isOpen) {
+      element[0].focus();
+    } else if (evt.which === 40 && !scope.isOpen) {
       evt.preventDefault();
       evt.stopPropagation();
-      $scope.$apply(function() {
-        $scope.isOpen = true;
+      scope.$apply(function() {
+        scope.isOpen = true;
       });
     }
   }
-
-  function positionPopup() {
-    if ($scope.isOpen) {
-      var dpElement = angular.element($popup[0].querySelector('.uib-datepicker-popup'));
-      var placement = $attrs.popupPlacement ? $attrs.popupPlacement : datepickerPopupConfig.placement;
-      var position = $position.positionElements($element, dpElement, placement, appendToBody);
-      dpElement.css({top: position.top + 'px', left: position.left + 'px'});
-      if (dpElement.hasClass('uib-position-measure')) {
-        dpElement.removeClass('uib-position-measure');
-      }
-    }
-  }
-
-  $scope.$on('uib:datepicker.mode', function() {
-    $timeout(positionPopup, 0, false);
-  });
 }])
 
 .directive('uibDatepickerPopup', function() {
@@ -29891,15 +29770,12 @@ angular.module('ui.bootstrap.dropdown', ['ui.bootstrap.position'])
     }
 
     var openContainer = appendTo ? appendTo : $element;
-    var hasOpenClass = openContainer.hasClass(appendTo ? appendToOpenClass : openClass);
 
-    if (hasOpenClass === !isOpen) {
-      $animate[isOpen ? 'addClass' : 'removeClass'](openContainer, appendTo ? appendToOpenClass : openClass).then(function() {
-        if (angular.isDefined(isOpen) && isOpen !== wasOpen) {
-          toggleInvoker($scope, { open: !!isOpen });
-        }
-      });
-    }
+    $animate[isOpen ? 'addClass' : 'removeClass'](openContainer, appendTo ? appendToOpenClass : openClass).then(function() {
+      if (angular.isDefined(isOpen) && isOpen !== wasOpen) {
+        toggleInvoker($scope, { open: !!isOpen });
+      }
+    });
 
     if (isOpen) {
       if (self.dropdownMenuTemplateUrl) {
@@ -30267,12 +30143,6 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap'])
 
 
           $q.when(animationPromise).then(function() {
-            // Notify {@link $modalStack} that modal is rendered.
-            var modal = $modalStack.getTop();
-            if (modal) {
-              $modalStack.modalRendered(modal.key);
-            }
-
             /**
              * If something within the freshly-opened modal already has focus (perhaps via a
              * directive that causes focus). then no need to try and focus anything.
@@ -30294,6 +30164,12 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap'])
               }
             }
           });
+
+          // Notify {@link $modalStack} that modal is rendered.
+          var modal = $modalStack.getTop();
+          if (modal) {
+            $modalStack.modalRendered(modal.key);
+          }
         });
       }
     };
@@ -30545,9 +30421,7 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap'])
 
         $animate.enter($compile(angularDomEl)(modal.scope), appendToElement)
           .then(function() {
-            if (!modal.scope.$$uibDestructionScheduled) {
-              $animate.addClass(appendToElement, modalBodyClass);
-            }
+            $animate.addClass(appendToElement, modalBodyClass);
           });
 
         openedWindows.top().value.modalDomEl = angularDomEl;
@@ -30753,9 +30627,6 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap'])
                       ctrlInstance.$close = modalScope.$close;
                       ctrlInstance.$dismiss = modalScope.$dismiss;
                       angular.extend(ctrlInstance, providedScope);
-                      if (angular.isFunction(ctrlInstance.$onInit)) {
-                        ctrlInstance.$onInit();
-                      }
                     }
 
                     modalScope[modalOptions.controllerAs] = ctrlInstance;
@@ -30822,7 +30693,7 @@ angular.module('ui.bootstrap.paging', [])
         };
 
         if ($attrs.itemsPerPage) {
-          ctrl._watchers.push($scope.$parent.$watch($attrs.itemsPerPage, function(value) {
+          ctrl._watchers.push($scope.$parent.$watch($parse($attrs.itemsPerPage), function(value) {
             ctrl.itemsPerPage = parseInt(value, 10);
             $scope.totalPages = ctrl.calculateTotalPages();
             ctrl.updatePage();
@@ -30943,8 +30814,7 @@ angular.module('ui.bootstrap.pagination', ['ui.bootstrap.paging'])
   var maxSize = angular.isDefined($attrs.maxSize) ? $scope.$parent.$eval($attrs.maxSize) : uibPaginationConfig.maxSize,
     rotate = angular.isDefined($attrs.rotate) ? $scope.$parent.$eval($attrs.rotate) : uibPaginationConfig.rotate,
     forceEllipses = angular.isDefined($attrs.forceEllipses) ? $scope.$parent.$eval($attrs.forceEllipses) : uibPaginationConfig.forceEllipses,
-    boundaryLinkNumbers = angular.isDefined($attrs.boundaryLinkNumbers) ? $scope.$parent.$eval($attrs.boundaryLinkNumbers) : uibPaginationConfig.boundaryLinkNumbers,
-    pageLabel = angular.isDefined($attrs.pageLabel) ? function(idx) { return $scope.$parent.$eval($attrs.pageLabel, {$page: idx}); } : angular.identity;
+    boundaryLinkNumbers = angular.isDefined($attrs.boundaryLinkNumbers) ? $scope.$parent.$eval($attrs.boundaryLinkNumbers) : uibPaginationConfig.boundaryLinkNumbers;
   $scope.boundaryLinks = angular.isDefined($attrs.boundaryLinks) ? $scope.$parent.$eval($attrs.boundaryLinks) : uibPaginationConfig.boundaryLinks;
   $scope.directionLinks = angular.isDefined($attrs.directionLinks) ? $scope.$parent.$eval($attrs.directionLinks) : uibPaginationConfig.directionLinks;
 
@@ -30996,7 +30866,7 @@ angular.module('ui.bootstrap.pagination', ['ui.bootstrap.paging'])
 
     // Add page number links
     for (var number = startPage; number <= endPage; number++) {
-      var page = makePage(number, pageLabel(number), number === currentPage);
+      var page = makePage(number, number, number === currentPage);
       pages.push(page);
     }
 
@@ -31221,7 +31091,7 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
           'animation="animation" ' +
           'is-open="isOpen"' +
           'origin-scope="origScope" ' +
-          'class="uib-position-measure"' +
+          'style="visibility: hidden; display: block; top: -9999px; left: -9999px;"' +
           '>' +
         '</div>';
 
@@ -31244,7 +31114,6 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
             var isOpenParse = angular.isDefined(attrs[prefix + 'IsOpen']) ? $parse(attrs[prefix + 'IsOpen']) : false;
             var contentParse = options.useContentExp ? $parse(attrs[ttType]) : false;
             var observers = [];
-            var lastPlacement;
 
             var positionTooltip = function() {
               // check if tooltip exists and is not empty
@@ -31252,29 +31121,36 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
 
               if (!positionTimeout) {
                 positionTimeout = $timeout(function() {
+                  // Reset the positioning.
+                  tooltip.css({ top: 0, left: 0 });
+
+                  // Now set the calculated positioning.
                   var ttPosition = $position.positionElements(element, tooltip, ttScope.placement, appendToBody);
-                  tooltip.css({ top: ttPosition.top + 'px', left: ttPosition.left + 'px' });
+                  tooltip.css({ top: ttPosition.top + 'px', left: ttPosition.left + 'px', visibility: 'visible' });
 
-                  if (!tooltip.hasClass(ttPosition.placement.split('-')[0])) {
-                    tooltip.removeClass(lastPlacement.split('-')[0]);
-                    tooltip.addClass(ttPosition.placement.split('-')[0]);
+                  // If the placement class is prefixed, still need
+                  // to remove the TWBS standard class.
+                  if (options.placementClassPrefix) {
+                    tooltip.removeClass('top bottom left right');
                   }
 
-                  if (!tooltip.hasClass(options.placementClassPrefix + ttPosition.placement)) {
-                    tooltip.removeClass(options.placementClassPrefix + lastPlacement);
-                    tooltip.addClass(options.placementClassPrefix + ttPosition.placement);
-                  }
+                  tooltip.removeClass(
+                    options.placementClassPrefix + 'top ' +
+                    options.placementClassPrefix + 'top-left ' +
+                    options.placementClassPrefix + 'top-right ' +
+                    options.placementClassPrefix + 'bottom ' +
+                    options.placementClassPrefix + 'bottom-left ' +
+                    options.placementClassPrefix + 'bottom-right ' +
+                    options.placementClassPrefix + 'left ' +
+                    options.placementClassPrefix + 'left-top ' +
+                    options.placementClassPrefix + 'left-bottom ' +
+                    options.placementClassPrefix + 'right ' +
+                    options.placementClassPrefix + 'right-top ' +
+                    options.placementClassPrefix + 'right-bottom');
 
-                  // first time through tt element will have the
-                  // uib-position-measure class or if the placement
-                  // has changed we need to position the arrow.
-                  if (tooltip.hasClass('uib-position-measure')) {
-                    $position.positionArrow(tooltip, ttPosition.placement);
-                    tooltip.removeClass('uib-position-measure');
-                  } else if (lastPlacement !== ttPosition.placement) {
-                    $position.positionArrow(tooltip, ttPosition.placement);
-                  }
-                  lastPlacement = ttPosition.placement;
+                  var placement = ttPosition.placement.split('-');
+                  tooltip.addClass(placement[0] + ' ' + options.placementClassPrefix + ttPosition.placement);
+                  $position.positionArrow(tooltip, ttPosition.placement);
 
                   positionTimeout = null;
                 }, 0, false);
@@ -31449,8 +31325,6 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
 
               ttScope.popupClass = attrs[prefix + 'Class'];
               ttScope.placement = angular.isDefined(attrs[prefix + 'Placement']) ? attrs[prefix + 'Placement'] : options.placement;
-              var placement = $position.parsePlacement(ttScope.placement);
-              lastPlacement = placement[1] ? placement[0] + '-' + placement[1] : placement[0];
 
               var delay = parseInt(attrs[prefix + 'PopupDelay'], 10);
               var closeDelay = parseInt(attrs[prefix + 'PopupCloseDelay'], 10);
@@ -31540,8 +31414,6 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
               observers.push(
                 attrs.$observe(prefix + 'Placement', function(val) {
                   ttScope.placement = val ? val : options.placement;
-                  var placement = $position.parsePlacement(ttScope.placement);
-                  lastPlacement = placement[1] ? placement[0] + '-' + placement[1] : placement[0];
                   if (ttScope.isOpen) {
                     positionTooltip();
                   }
@@ -31628,7 +31500,7 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
             }
 
             appendToBody = angular.isDefined(appendToBodyVal) ? appendToBodyVal : appendToBody;
-
+            
             // Make sure tooltip is destroyed and removed.
             scope.$on('$destroy', function onDestroyTooltip() {
               unregisterTriggers();
@@ -31730,6 +31602,8 @@ function ($animate, $sce, $compile, $templateRequest) {
         // // in TWBS, so we need the primary position.
         var position = $uibPosition.parsePlacement(scope.placement);
         element.addClass(position[0]);
+      } else {
+        element.addClass('top');
       }
 
       if (scope.popupClass) {
@@ -31844,7 +31718,7 @@ angular.module('ui.bootstrap.progressbar', [])
       animate = angular.isDefined($attrs.animate) ? $scope.$parent.$eval($attrs.animate) : progressConfig.animate;
 
   this.bars = [];
-  $scope.max = getMaxOrDefault();
+  $scope.max = angular.isDefined($scope.max) ? $scope.max : progressConfig.max;
 
   this.addBar = function(bar, element, attrs) {
     if (!animate) {
@@ -31853,7 +31727,7 @@ angular.module('ui.bootstrap.progressbar', [])
 
     this.bars.push(bar);
 
-    bar.max = getMaxOrDefault();
+    bar.max = $scope.max;
     bar.title = attrs && angular.isDefined(attrs.title) ? attrs.title : 'progressbar';
 
     bar.$watch('value', function(value) {
@@ -31884,17 +31758,12 @@ angular.module('ui.bootstrap.progressbar', [])
     });
   };
 
-  //$attrs.$observe('maxParam', function(maxParam) {
-  $scope.$watch('maxParam', function(maxParam) {
+  $scope.$watch('max', function(max) {
     self.bars.forEach(function(bar) {
-      bar.max = getMaxOrDefault();
+      bar.max = $scope.max;
       bar.recalculatePercentage();
     });
   });
-
-  function getMaxOrDefault () {
-    return angular.isDefined($scope.maxParam) ? $scope.maxParam : progressConfig.max;
-  }
 }])
 
 .directive('uibProgress', function() {
@@ -31904,7 +31773,7 @@ angular.module('ui.bootstrap.progressbar', [])
     controller: 'UibProgressController',
     require: 'uibProgress',
     scope: {
-      maxParam: '=?max'
+      max: '=?'
     },
     templateUrl: 'uib/template/progressbar/progress.html'
   };
@@ -31933,7 +31802,7 @@ angular.module('ui.bootstrap.progressbar', [])
     controller: 'UibProgressController',
     scope: {
       value: '=',
-      maxParam: '=?max',
+      max: '=?',
       type: '@'
     },
     templateUrl: 'uib/template/progressbar/progressbar.html',
@@ -32030,7 +31899,7 @@ angular.module('ui.bootstrap.rating', [])
   return {
     require: ['uibRating', 'ngModel'],
     scope: {
-      readonly: '=?readOnly',
+      readonly: '=?',
       onHover: '&',
       onLeave: '&'
     },
@@ -32048,108 +31917,66 @@ angular.module('ui.bootstrap.tabs', [])
 
 .controller('UibTabsetController', ['$scope', function ($scope) {
   var ctrl = this,
-    oldIndex;
-  ctrl.tabs = [];
+      tabs = ctrl.tabs = $scope.tabs = [];
 
-  ctrl.select = function(index) {
-    if (!destroyed) {
-      var previousIndex = findTabIndex(oldIndex);
-      var previousSelected = ctrl.tabs[previousIndex];
-      if (previousSelected) {
-        previousSelected.tab.onDeselect();
-        previousSelected.tab.active = false;
+  ctrl.select = function(selectedTab) {
+    angular.forEach(tabs, function(tab) {
+      if (tab.active && tab !== selectedTab) {
+        tab.active = false;
+        tab.onDeselect();
+        selectedTab.selectCalled = false;
       }
-
-      var selected = ctrl.tabs[index];
-      if (selected) {
-        selected.tab.onSelect();
-        selected.tab.active = true;
-        ctrl.active = selected.index;
-        oldIndex = selected.index;
-      } else if (!selected && angular.isNumber(oldIndex)) {
-        ctrl.active = null;
-        oldIndex = null;
-      }
+    });
+    selectedTab.active = true;
+    // only call select if it has not already been called
+    if (!selectedTab.selectCalled) {
+      selectedTab.onSelect();
+      selectedTab.selectCalled = true;
     }
   };
 
   ctrl.addTab = function addTab(tab) {
-    ctrl.tabs.push({
-      tab: tab,
-      index: tab.index
-    });
-    ctrl.tabs.sort(function(t1, t2) {
-      if (t1.index > t2.index) {
-        return 1;
-      }
-
-      if (t1.index < t2.index) {
-        return -1;
-      }
-
-      return 0;
-    });
-
-    if (tab.index === ctrl.active || !angular.isNumber(ctrl.active) && ctrl.tabs.length === 1) {
-      var newActiveIndex = findTabIndex(tab.index);
-      ctrl.select(newActiveIndex);
+    tabs.push(tab);
+    // we can't run the select function on the first tab
+    // since that would select it twice
+    if (tabs.length === 1 && tab.active !== false) {
+      tab.active = true;
+    } else if (tab.active) {
+      ctrl.select(tab);
+    } else {
+      tab.active = false;
     }
   };
 
   ctrl.removeTab = function removeTab(tab) {
-    var index = findTabIndex(tab.index);
-
-    if (tab.index === ctrl.active) {
-      var newActiveTabIndex = index === ctrl.tabs.length - 1 ?
-        index - 1 : index + 1 % ctrl.tabs.length;
-      ctrl.select(newActiveTabIndex);
+    var index = tabs.indexOf(tab);
+    //Select a new tab if the tab to be removed is selected and not destroyed
+    if (tab.active && tabs.length > 1 && !destroyed) {
+      //If this is the last tab, select the previous tab. else, the next tab.
+      var newActiveIndex = index === tabs.length - 1 ? index - 1 : index + 1;
+      ctrl.select(tabs[newActiveIndex]);
     }
-
-    ctrl.tabs.splice(index, 1);
+    tabs.splice(index, 1);
   };
-
-  $scope.$watch('tabset.active', function(val) {
-    if (angular.isNumber(val) && val !== oldIndex) {
-      ctrl.select(findTabIndex(val));
-    }
-  });
 
   var destroyed;
   $scope.$on('$destroy', function() {
     destroyed = true;
   });
-
-  function findTabIndex(index) {
-    for (var i = 0; i < ctrl.tabs.length; i++) {
-      if (ctrl.tabs[i].index === index) {
-        return i;
-      }
-    }
-  }
 }])
 
 .directive('uibTabset', function() {
   return {
     transclude: true,
     replace: true,
-    scope: {},
-    bindToController: {
-      active: '=?',
+    scope: {
       type: '@'
     },
     controller: 'UibTabsetController',
-    controllerAs: 'tabset',
-    templateUrl: function(element, attrs) {
-      return attrs.templateUrl || 'uib/template/tabs/tabset.html';
-    },
+    templateUrl: 'uib/template/tabs/tabset.html',
     link: function(scope, element, attrs) {
-      scope.vertical = angular.isDefined(attrs.vertical) ?
-        scope.$parent.$eval(attrs.vertical) : false;
-      scope.justified = angular.isDefined(attrs.justified) ?
-        scope.$parent.$eval(attrs.justified) : false;
-      if (angular.isUndefined(attrs.active)) {
-        scope.active = 0;
-      }
+      scope.vertical = angular.isDefined(attrs.vertical) ? scope.$parent.$eval(attrs.vertical) : false;
+      scope.justified = angular.isDefined(attrs.justified) ? scope.$parent.$eval(attrs.justified) : false;
     }
   };
 })
@@ -32158,14 +31985,11 @@ angular.module('ui.bootstrap.tabs', [])
   return {
     require: '^uibTabset',
     replace: true,
-    templateUrl: function(element, attrs) {
-      return attrs.templateUrl || 'uib/template/tabs/tab.html';
-    },
+    templateUrl: 'uib/template/tabs/tab.html',
     transclude: true,
     scope: {
+      active: '=?',
       heading: '@',
-      index: '=?',
-      classes: '@?',
       onSelect: '&select', //This callback is called in contentHeadingTransclude
                           //once it inserts the tab's content into the dom
       onDeselect: '&deselect'
@@ -32175,6 +31999,12 @@ angular.module('ui.bootstrap.tabs', [])
     },
     controllerAs: 'tab',
     link: function(scope, elm, attrs, tabsetCtrl, transclude) {
+      scope.$watch('active', function(active) {
+        if (active) {
+          tabsetCtrl.select(scope);
+        }
+      });
+
       scope.disabled = false;
       if (attrs.disable) {
         scope.$parent.$watch($parse(attrs.disable), function(value) {
@@ -32182,29 +32012,9 @@ angular.module('ui.bootstrap.tabs', [])
         });
       }
 
-      if (angular.isUndefined(attrs.index)) {
-        if (tabsetCtrl.tabs && tabsetCtrl.tabs.length) {
-          scope.index = Math.max.apply(null, tabsetCtrl.tabs.map(function(t) { return t.index; })) + 1;
-        } else {
-          scope.index = 0;
-        }
-      }
-
-      if (angular.isUndefined(attrs.classes)) {
-        scope.classes = '';
-      }
-
       scope.select = function() {
         if (!scope.disabled) {
-          var index;
-          for (var i = 0; i < tabsetCtrl.tabs.length; i++) {
-            if (tabsetCtrl.tabs[i].tab === scope) {
-              index = i;
-              break;
-            }
-          }
-
-          tabsetCtrl.select(index);
+          scope.active = true;
         }
       };
 
@@ -32240,7 +32050,7 @@ angular.module('ui.bootstrap.tabs', [])
     restrict: 'A',
     require: '^uibTabset',
     link: function(scope, elm, attrs) {
-      var tab = scope.$eval(attrs.uibTabContentTransclude).tab;
+      var tab = scope.$eval(attrs.uibTabContentTransclude);
 
       //Now our tab is ready to be transcluded: both the tab heading area
       //and the tab content area are loaded.  Transclude 'em both.
@@ -32859,10 +32669,6 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.debounce', 'ui.bootstrap
       minLength = 1;
     }
 
-    originalScope.$watch(attrs.typeaheadMinLength, function (newVal) {
-        minLength = !newVal && newVal !== 0 ? 1 : newVal;
-    });
-    
     //minimal wait time after last character typed before typeahead kicks-in
     var waitTime = originalScope.$eval(attrs.typeaheadWaitMs) || 0;
 
@@ -32949,7 +32755,6 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.debounce', 'ui.bootstrap
       element.after(inputsContainer);
       hintInputElem = element.clone();
       hintInputElem.attr('placeholder', '');
-      hintInputElem.attr('tabindex', '-1');
       hintInputElem.val('');
       hintInputElem.css({
         'position': 'absolute',
@@ -33190,13 +32995,8 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.debounce', 'ui.bootstrap
         return;
       }
 
-      /**
-       * if there's nothing selected (i.e. focusFirst) and enter or tab is hit
-       * or
-       * shift + tab is pressed to bring focus to the previous element
-       * then clear the results
-       */
-      if (scope.activeIdx === -1 && (evt.which === 9 || evt.which === 13) || evt.which === 9 && !!evt.shiftKey) {
+      // if there's nothing selected (i.e. focusFirst) and enter or tab is hit, clear the results
+      if (scope.activeIdx === -1 && (evt.which === 9 || evt.which === 13)) {
         resetMatches();
         scope.$digest();
         return;
@@ -33482,7 +33282,7 @@ angular.module("uib/template/accordion/accordion-group.html", []).run(["$templat
     "<div class=\"panel\" ng-class=\"panelClass || 'panel-default'\">\n" +
     "  <div role=\"tab\" id=\"{{::headingId}}\" aria-selected=\"{{isOpen}}\" class=\"panel-heading\" ng-keypress=\"toggleOpen($event)\">\n" +
     "    <h4 class=\"panel-title\">\n" +
-    "      <a role=\"button\" data-toggle=\"collapse\" href aria-expanded=\"{{isOpen}}\" aria-controls=\"{{::panelId}}\" tabindex=\"0\" class=\"accordion-toggle\" ng-click=\"toggleOpen()\" uib-accordion-transclude=\"heading\"><span uib-accordion-header ng-class=\"{'text-muted': isDisabled}\">{{heading}}</span></a>\n" +
+    "      <a role=\"button\" data-toggle=\"collapse\" href aria-expanded=\"{{isOpen}}\" aria-controls=\"{{::panelId}}\" tabindex=\"0\" class=\"accordion-toggle\" ng-click=\"toggleOpen()\" uib-accordion-transclude=\"heading\"><span ng-class=\"{'text-muted': isDisabled}\">{{heading}}</span></a>\n" +
     "    </h4>\n" +
     "  </div>\n" +
     "  <div id=\"{{::panelId}}\" aria-labelledby=\"{{::headingId}}\" aria-hidden=\"{{!isOpen}}\" role=\"tabpanel\" class=\"panel-collapse collapse\" uib-collapse=\"!isOpen\">\n" +
@@ -33526,8 +33326,7 @@ angular.module("uib/template/carousel/carousel.html", []).run(["$templateCache",
     "      <span class=\"sr-only\">slide {{ $index + 1 }} of {{ slides.length }}<span ng-if=\"isActive(slide)\">, currently active</span></span>\n" +
     "    </li>\n" +
     "  </ol>\n" +
-    "</div>\n" +
-    "");
+    "</div>");
 }]);
 
 angular.module("uib/template/carousel/slide.html", []).run(["$templateCache", function($templateCache) {
@@ -33544,8 +33343,7 @@ angular.module("uib/template/datepicker/datepicker.html", []).run(["$templateCac
     "  <uib-daypicker ng-switch-when=\"day\" tabindex=\"0\"></uib-daypicker>\n" +
     "  <uib-monthpicker ng-switch-when=\"month\" tabindex=\"0\"></uib-monthpicker>\n" +
     "  <uib-yearpicker ng-switch-when=\"year\" tabindex=\"0\"></uib-yearpicker>\n" +
-    "</div>\n" +
-    "");
+    "</div>");
 }]);
 
 angular.module("uib/template/datepicker/day.html", []).run(["$templateCache", function($templateCache) {
@@ -33616,14 +33414,14 @@ angular.module("uib/template/datepicker/month.html", []).run(["$templateCache", 
 angular.module("uib/template/datepicker/popup.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("uib/template/datepicker/popup.html",
     "<div>\n" +
-    "  <ul class=\"uib-datepicker-popup dropdown-menu uib-position-measure\" dropdown-nested ng-if=\"isOpen\" ng-keydown=\"keydown($event)\" ng-click=\"$event.stopPropagation()\">\n" +
+    "  <ul class=\"uib-datepicker-popup dropdown-menu\" dropdown-nested ng-if=\"isOpen\" ng-style=\"{top: position.top+'px', left: position.left+'px'}\" ng-keydown=\"keydown($event)\" ng-click=\"$event.stopPropagation()\">\n" +
     "    <li ng-transclude></li>\n" +
     "    <li ng-if=\"showButtonBar\" class=\"uib-button-bar\">\n" +
-    "      <span class=\"btn-group pull-left\">\n" +
-    "        <button type=\"button\" class=\"btn btn-sm btn-info uib-datepicker-current\" ng-click=\"select('today', $event)\" ng-disabled=\"isDisabled('today')\">{{ getText('current') }}</button>\n" +
-    "        <button type=\"button\" class=\"btn btn-sm btn-danger uib-clear\" ng-click=\"select(null, $event)\">{{ getText('clear') }}</button>\n" +
-    "      </span>\n" +
-    "      <button type=\"button\" class=\"btn btn-sm btn-success pull-right uib-close\" ng-click=\"close($event)\">{{ getText('close') }}</button>\n" +
+    "    <span class=\"btn-group pull-left\">\n" +
+    "      <button type=\"button\" class=\"btn btn-sm btn-info uib-datepicker-current\" ng-click=\"select('today')\" ng-disabled=\"isDisabled('today')\">{{ getText('current') }}</button>\n" +
+    "      <button type=\"button\" class=\"btn btn-sm btn-danger uib-clear\" ng-click=\"select(null)\">{{ getText('clear') }}</button>\n" +
+    "    </span>\n" +
+    "      <button type=\"button\" class=\"btn btn-sm btn-success pull-right uib-close\" ng-click=\"close()\">{{ getText('close') }}</button>\n" +
     "    </li>\n" +
     "  </ul>\n" +
     "</div>\n" +
@@ -33683,15 +33481,6 @@ angular.module("uib/template/modal/window.html", []).run(["$templateCache", func
 
 angular.module("uib/template/pager/pager.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("uib/template/pager/pager.html",
-    "<ul class=\"pager\">\n" +
-    "  <li ng-class=\"{disabled: noPrevious()||ngDisabled, previous: align}\"><a href ng-click=\"selectPage(page - 1, $event)\">{{::getText('previous')}}</a></li>\n" +
-    "  <li ng-class=\"{disabled: noNext()||ngDisabled, next: align}\"><a href ng-click=\"selectPage(page + 1, $event)\">{{::getText('next')}}</a></li>\n" +
-    "</ul>\n" +
-    "");
-}]);
-
-angular.module("uib/template/pagination/pager.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("uib/template/pagination/pager.html",
     "<ul class=\"pager\">\n" +
     "  <li ng-class=\"{disabled: noPrevious()||ngDisabled, previous: align}\"><a href ng-click=\"selectPage(page - 1, $event)\">{{::getText('previous')}}</a></li>\n" +
     "  <li ng-class=\"{disabled: noNext()||ngDisabled, next: align}\"><a href ng-click=\"selectPage(page + 1, $event)\">{{::getText('next')}}</a></li>\n" +
@@ -33829,8 +33618,8 @@ angular.module("uib/template/rating/rating.html", []).run(["$templateCache", fun
 
 angular.module("uib/template/tabs/tab.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("uib/template/tabs/tab.html",
-    "<li ng-class=\"[{active: active, disabled: disabled}, classes]\" class=\"uib-tab nav-item\">\n" +
-    "  <a href ng-click=\"select()\" class=\"nav-link\" uib-tab-heading-transclude>{{heading}}</a>\n" +
+    "<li ng-class=\"{active: active, disabled: disabled}\" class=\"uib-tab\">\n" +
+    "  <a href ng-click=\"select()\" uib-tab-heading-transclude>{{heading}}</a>\n" +
     "</li>\n" +
     "");
 }]);
@@ -33838,11 +33627,11 @@ angular.module("uib/template/tabs/tab.html", []).run(["$templateCache", function
 angular.module("uib/template/tabs/tabset.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("uib/template/tabs/tabset.html",
     "<div>\n" +
-    "  <ul class=\"nav nav-{{tabset.type || 'tabs'}}\" ng-class=\"{'nav-stacked': vertical, 'nav-justified': justified}\" ng-transclude></ul>\n" +
+    "  <ul class=\"nav nav-{{type || 'tabs'}}\" ng-class=\"{'nav-stacked': vertical, 'nav-justified': justified}\" ng-transclude></ul>\n" +
     "  <div class=\"tab-content\">\n" +
-    "    <div class=\"tab-pane\"\n" +
-    "         ng-repeat=\"tab in tabset.tabs\"\n" +
-    "         ng-class=\"{active: tabset.active === tab.index}\"\n" +
+    "    <div class=\"tab-pane\" \n" +
+    "         ng-repeat=\"tab in tabs\" \n" +
+    "         ng-class=\"{active: tab.active}\"\n" +
     "         uib-tab-content-transclude=\"tab\">\n" +
     "    </div>\n" +
     "  </div>\n" +
@@ -33908,20 +33697,18 @@ angular.module("uib/template/typeahead/typeahead-popup.html", []).run(["$templat
     "");
 }]);
 angular.module('ui.bootstrap.carousel').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.ng-animate.item:not(.left):not(.right){-webkit-transition:0s ease-in-out left;transition:0s ease-in-out left}</style>'); });
-angular.module('ui.bootstrap.position').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-position-measure{display:block !important;visibility:hidden !important;position:absolute !important;top:-9999px !important;left:-9999px !important;}.uib-position-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll;}</style>'); });
-angular.module('ui.bootstrap.datepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-datepicker .uib-title{width:100%;}.uib-day button,.uib-month button,.uib-year button{min-width:100%;}.uib-datepicker-popup.dropdown-menu{display:block;float:none;margin:0;}.uib-button-bar{padding:10px 9px 2px;}.uib-left,.uib-right{width:100%}</style>'); });
-angular.module('ui.bootstrap.tooltip').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow,[uib-popover-popup].popover.top-left > .arrow,[uib-popover-popup].popover.top-right > .arrow,[uib-popover-popup].popover.bottom-left > .arrow,[uib-popover-popup].popover.bottom-right > .arrow,[uib-popover-popup].popover.left-top > .arrow,[uib-popover-popup].popover.left-bottom > .arrow,[uib-popover-popup].popover.right-top > .arrow,[uib-popover-popup].popover.right-bottom > .arrow{top:auto;bottom:auto;left:auto;right:auto;margin:0;}[uib-popover-popup].popover,[uib-popover-template-popup].popover{display:block !important;}</style>'); });
+angular.module('ui.bootstrap.datepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-datepicker .uib-title{width:100%;}.uib-day button,.uib-month button,.uib-year button{min-width:100%;}.uib-datepicker-popup.dropdown-menu{display:block;}.uib-button-bar{padding:10px 9px 2px;}</style>'); });
 angular.module('ui.bootstrap.timepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-time input{width:50px;}</style>'); });
 angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); });
-},{}],182:[function(require,module,exports){
+},{}],187:[function(require,module,exports){
 require('./dist/ui-bootstrap-tpls');
 
 module.exports = 'ui.bootstrap';
 
-},{"./dist/ui-bootstrap-tpls":181}],183:[function(require,module,exports){
+},{"./dist/ui-bootstrap-tpls":186}],188:[function(require,module,exports){
 /**
- * @license Angular UI Tree v2.14.0
- * (c) 2010-2015. https://github.com/angular-ui-tree/angular-ui-tree
+ * @license Angular UI Tree v2.15.0
+ * (c) 2010-2016. https://github.com/angular-ui-tree/angular-ui-tree
  * License: MIT
  */
 (function () {
@@ -34251,27 +34038,6 @@ module.exports = 'ui.bootstrap';
         };
 
         $scope.resetEmptyElement = this.resetEmptyElement;
-
-        var collapseOrExpand = function (scope, collapsed) {
-          var i, subScope,
-              nodes = scope.childNodes();
-          for (i = 0; i < nodes.length; i++) {
-            collapsed ? nodes[i].collapse() : nodes[i].expand();
-            subScope = nodes[i].$childNodesScope;
-            if (subScope) {
-              collapseOrExpand(subScope, collapsed);
-            }
-          }
-        };
-
-        $scope.collapseAll = function () {
-          collapseOrExpand($scope.$nodesScope, true);
-        };
-
-        $scope.expandAll = function () {
-          collapseOrExpand($scope.$nodesScope, false);
-        };
-
       }
     ]);
 })();
@@ -34522,7 +34288,10 @@ module.exports = 'ui.bootstrap';
               bindDragMoveEvents,
               unbindDragMoveEvents,
               keydownHandler,
-              outOfBounds;
+              outOfBounds,
+              isHandleChild,
+              el;
+
             angular.extend(config, treeConfig);
             if (config.nodeClass) {
               element.addClass(config.nodeClass);
@@ -34543,34 +34312,52 @@ module.exports = 'ui.bootstrap';
               attrs.$set('collapsed', val);
             });
 
+            scope.$on('angular-ui-tree:collapse-all', function () {
+              scope.collapsed = true;
+            });
+
+            scope.$on('angular-ui-tree:expand-all', function () {
+              scope.collapsed = false;
+            });
+
             /**
              * Called when the user has grabbed a node and started dragging it
              * @param e
              */
             dragStart = function (e) {
-              if (!hasTouch && (e.button == 2 || e.which == 3)) {
-                // disable right click
+              // disable right click
+              if (!hasTouch && (e.button === 2 || e.which === 3)) {
                 return;
               }
-              if (e.uiTreeDragging || (e.originalEvent && e.originalEvent.uiTreeDragging)) { // event has already fired in other scope.
+
+              // event has already fired in other scope
+              if (e.uiTreeDragging || (e.originalEvent && e.originalEvent.uiTreeDragging)) {
                 return;
               }
 
               // the node being dragged
               var eventElm = angular.element(e.target),
-                eventScope = eventElm.scope(),
-                cloneElm = element.clone(),
-                eventElmTagName, tagName,
-                eventObj, tdElm, hStyle;
-              if (!eventScope || !eventScope.$type) {
+                isHandleChild, cloneElm, eventElmTagName, tagName,
+                eventObj, tdElm, hStyle,
+                isTreeNode,
+                isTreeNodeHandle;
+
+              // if the target element is a child element of a ui-tree-handle,
+              // use the containing handle element as target element
+              isHandleChild = UiTreeHelper.treeNodeHandlerContainerOfElement(eventElm);
+              if (isHandleChild) {
+                eventElm = angular.element(isHandleChild);
+              }
+
+              cloneElm = element.clone();
+              isTreeNode = UiTreeHelper.elementIsTreeNode(eventElm);
+              isTreeNodeHandle = UiTreeHelper.elementIsTreeNodeHandle(eventElm);
+
+              if (!isTreeNode && !isTreeNodeHandle) {
                 return;
               }
-              if (eventScope.$type != 'uiTreeNode'
-                && eventScope.$type != 'uiTreeHandle') { // Check if it is a node or a handle
-                return;
-              }
-              if (eventScope.$type == 'uiTreeNode'
-                && eventScope.$handleScope) { // If the node has a handle, then it should be clicked by the handle
+
+              if (isTreeNode && UiTreeHelper.elementContainsTreeNodeHandler(eventElm)) {
                 return;
               }
 
@@ -34583,11 +34370,12 @@ module.exports = 'ui.bootstrap';
               }
 
               // check if it or it's parents has a 'data-nodrag' attribute
-              while (eventElm && eventElm[0] && eventElm[0] != element) {
-                if (UiTreeHelper.nodrag(eventElm)) { // if the node mark as `nodrag`, DONOT drag it.
+              el = angular.element(e.target);
+              while (el && el[0] && el[0] !== element) {
+                if (UiTreeHelper.nodrag(el)) { // if the node mark as `nodrag`, DONOT drag it.
                   return;
                 }
-                eventElm = eventElm.parent();
+                el = el.parent();
               }
 
               if (!scope.beforeDrag(scope)) {
@@ -34773,13 +34561,24 @@ module.exports = 'ui.bootstrap';
 
                 targetElm = angular.element($window.document.elementFromPoint(targetX, targetY));
 
+                // if the target element is a child element of a ui-tree-handle,
+                // use the containing handle element as target element
+                isHandleChild = UiTreeHelper.treeNodeHandlerContainerOfElement(targetElm);
+                if (isHandleChild) {
+                  targetElm = angular.element(isHandleChild);
+                }
+
                 if (angular.isFunction(dragElm.show)) {
                   dragElm.show();
                 } else {
                   dragElm[0].style.display = displayElm;
                 }
 
-                outOfBounds = !targetElm.scope() || !(targetElm.scope().$type);
+                outOfBounds = !UiTreeHelper.elementIsTreeNodeHandle(targetElm) &&
+                              !UiTreeHelper.elementIsTreeNode(targetElm) &&
+                              !UiTreeHelper.elementIsTreeNodes(targetElm) &&
+                              !UiTreeHelper.elementIsTree(targetElm) &&
+                              !UiTreeHelper.elementIsPlaceholder(targetElm);
 
                 // Detect out of bounds condition, update drop target display, and prevent drop
                 if (outOfBounds) {
@@ -34825,8 +34624,22 @@ module.exports = 'ui.bootstrap';
 
                 // move vertical
                 if (!pos.dirAx) {
+                  if (UiTreeHelper.elementIsTree(targetElm)) {
+                    targetNode = targetElm.controller('uiTree').scope;
+                  } else if (UiTreeHelper.elementIsTreeNodeHandle(targetElm)) {
+                    targetNode = targetElm.controller('uiTreeHandle').scope;
+                  } else if (UiTreeHelper.elementIsTreeNode(targetElm)) {
+                    targetNode = targetElm.controller('uiTreeNode').scope;
+                  } else if (UiTreeHelper.elementIsTreeNodes(targetElm)) {
+                    targetNode = targetElm.controller('uiTreeNodes').scope;
+                  } else if (UiTreeHelper.elementIsPlaceholder(targetElm)) {
+                    targetNode = targetElm.controller('uiTreeNodes').scope;
+                  } else if (targetElm.controller('uiTreeNode')) {
+                    // is a child element of a node
+                    targetNode = targetElm.controller('uiTreeNode').scope;
+                  }
+
                   // check it's new position
-                  targetNode = targetElm.scope();
                   isEmpty = false;
                   if (!targetNode) {
                     return;
@@ -35107,8 +34920,8 @@ module.exports = 'ui.bootstrap';
    * @description
    * angular-ui-tree.
    */
-    .factory('UiTreeHelper', ['$document', '$window',
-      function ($document, $window) {
+    .factory('UiTreeHelper', ['$document', '$window', 'treeConfig',
+      function ($document, $window, treeConfig) {
         return {
 
           /**
@@ -35410,19 +35223,64 @@ module.exports = 'ui.bootstrap';
             }
 
             pos.dirAx = newAx;
+          },
+
+          elementIsTreeNode: function (element) {
+            return typeof element.attr('ui-tree-node') !== 'undefined';
+          },
+
+          elementIsTreeNodeHandle: function (element) {
+            return typeof element.attr('ui-tree-handle') !== 'undefined';
+          },
+          elementIsTree: function (element) {
+            return typeof element.attr('ui-tree') !== 'undefined';
+          },
+          elementIsTreeNodes: function (element) {
+            return typeof element.attr('ui-tree-nodes') !== 'undefined';
+          },
+          elementIsPlaceholder: function (element) {
+            return element.hasClass(treeConfig.placeholderClass);
+          },
+          elementContainsTreeNodeHandler: function (element) {
+            return element[0].querySelectorAll('[ui-tree-handle]').length >= 1;
+          },
+          treeNodeHandlerContainerOfElement: function (element) {
+            return findFirstParentElementWithAttribute('ui-tree-handle', element[0]);
           }
         };
       }
-
     ]);
+
+  // TODO: optimize this loop
+  function findFirstParentElementWithAttribute(attributeName, childObj) {
+    // undefined if the mouse leaves the browser window
+    if (childObj === undefined) {
+      return null;
+    }
+    var testObj = childObj.parentNode,
+      count = 1,
+      // check for setAttribute due to exception thrown by Firefox when a node is dragged outside the browser window
+      res = (typeof testObj.setAttribute === 'function' && testObj.hasAttribute(attributeName)) ? testObj : null;
+    while (testObj && typeof testObj.setAttribute === 'function' && !testObj.hasAttribute(attributeName)) {
+      testObj = testObj.parentNode;
+      res = testObj;
+      if (testObj === document.documentElement) {
+        res = null;
+        break;
+      }
+      count++;
+    }
+
+    return res;
+  }
 
 })();
 
-},{}],184:[function(require,module,exports){
+},{}],189:[function(require,module,exports){
 require('./dist/angular-ui-tree');
 module.exports = 'ui.tree';
 
-},{"./dist/angular-ui-tree":183}],185:[function(require,module,exports){
+},{"./dist/angular-ui-tree":188}],190:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.9
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -65080,13 +64938,550 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],186:[function(require,module,exports){
+},{}],191:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":185}],187:[function(require,module,exports){
+},{"./angular":190}],192:[function(require,module,exports){
+(function (global){
+/*! https://mths.be/punycode v1.4.0 by @mathias */
+;(function(root) {
+
+	/** Detect free variables */
+	var freeExports = typeof exports == 'object' && exports &&
+		!exports.nodeType && exports;
+	var freeModule = typeof module == 'object' && module &&
+		!module.nodeType && module;
+	var freeGlobal = typeof global == 'object' && global;
+	if (
+		freeGlobal.global === freeGlobal ||
+		freeGlobal.window === freeGlobal ||
+		freeGlobal.self === freeGlobal
+	) {
+		root = freeGlobal;
+	}
+
+	/**
+	 * The `punycode` object.
+	 * @name punycode
+	 * @type Object
+	 */
+	var punycode,
+
+	/** Highest positive signed 32-bit float value */
+	maxInt = 2147483647, // aka. 0x7FFFFFFF or 2^31-1
+
+	/** Bootstring parameters */
+	base = 36,
+	tMin = 1,
+	tMax = 26,
+	skew = 38,
+	damp = 700,
+	initialBias = 72,
+	initialN = 128, // 0x80
+	delimiter = '-', // '\x2D'
+
+	/** Regular expressions */
+	regexPunycode = /^xn--/,
+	regexNonASCII = /[^\x20-\x7E]/, // unprintable ASCII chars + non-ASCII chars
+	regexSeparators = /[\x2E\u3002\uFF0E\uFF61]/g, // RFC 3490 separators
+
+	/** Error messages */
+	errors = {
+		'overflow': 'Overflow: input needs wider integers to process',
+		'not-basic': 'Illegal input >= 0x80 (not a basic code point)',
+		'invalid-input': 'Invalid input'
+	},
+
+	/** Convenience shortcuts */
+	baseMinusTMin = base - tMin,
+	floor = Math.floor,
+	stringFromCharCode = String.fromCharCode,
+
+	/** Temporary variable */
+	key;
+
+	/*--------------------------------------------------------------------------*/
+
+	/**
+	 * A generic error utility function.
+	 * @private
+	 * @param {String} type The error type.
+	 * @returns {Error} Throws a `RangeError` with the applicable error message.
+	 */
+	function error(type) {
+		throw new RangeError(errors[type]);
+	}
+
+	/**
+	 * A generic `Array#map` utility function.
+	 * @private
+	 * @param {Array} array The array to iterate over.
+	 * @param {Function} callback The function that gets called for every array
+	 * item.
+	 * @returns {Array} A new array of values returned by the callback function.
+	 */
+	function map(array, fn) {
+		var length = array.length;
+		var result = [];
+		while (length--) {
+			result[length] = fn(array[length]);
+		}
+		return result;
+	}
+
+	/**
+	 * A simple `Array#map`-like wrapper to work with domain name strings or email
+	 * addresses.
+	 * @private
+	 * @param {String} domain The domain name or email address.
+	 * @param {Function} callback The function that gets called for every
+	 * character.
+	 * @returns {Array} A new string of characters returned by the callback
+	 * function.
+	 */
+	function mapDomain(string, fn) {
+		var parts = string.split('@');
+		var result = '';
+		if (parts.length > 1) {
+			// In email addresses, only the domain name should be punycoded. Leave
+			// the local part (i.e. everything up to `@`) intact.
+			result = parts[0] + '@';
+			string = parts[1];
+		}
+		// Avoid `split(regex)` for IE8 compatibility. See #17.
+		string = string.replace(regexSeparators, '\x2E');
+		var labels = string.split('.');
+		var encoded = map(labels, fn).join('.');
+		return result + encoded;
+	}
+
+	/**
+	 * Creates an array containing the numeric code points of each Unicode
+	 * character in the string. While JavaScript uses UCS-2 internally,
+	 * this function will convert a pair of surrogate halves (each of which
+	 * UCS-2 exposes as separate characters) into a single code point,
+	 * matching UTF-16.
+	 * @see `punycode.ucs2.encode`
+	 * @see <https://mathiasbynens.be/notes/javascript-encoding>
+	 * @memberOf punycode.ucs2
+	 * @name decode
+	 * @param {String} string The Unicode input string (UCS-2).
+	 * @returns {Array} The new array of code points.
+	 */
+	function ucs2decode(string) {
+		var output = [],
+		    counter = 0,
+		    length = string.length,
+		    value,
+		    extra;
+		while (counter < length) {
+			value = string.charCodeAt(counter++);
+			if (value >= 0xD800 && value <= 0xDBFF && counter < length) {
+				// high surrogate, and there is a next character
+				extra = string.charCodeAt(counter++);
+				if ((extra & 0xFC00) == 0xDC00) { // low surrogate
+					output.push(((value & 0x3FF) << 10) + (extra & 0x3FF) + 0x10000);
+				} else {
+					// unmatched surrogate; only append this code unit, in case the next
+					// code unit is the high surrogate of a surrogate pair
+					output.push(value);
+					counter--;
+				}
+			} else {
+				output.push(value);
+			}
+		}
+		return output;
+	}
+
+	/**
+	 * Creates a string based on an array of numeric code points.
+	 * @see `punycode.ucs2.decode`
+	 * @memberOf punycode.ucs2
+	 * @name encode
+	 * @param {Array} codePoints The array of numeric code points.
+	 * @returns {String} The new Unicode string (UCS-2).
+	 */
+	function ucs2encode(array) {
+		return map(array, function(value) {
+			var output = '';
+			if (value > 0xFFFF) {
+				value -= 0x10000;
+				output += stringFromCharCode(value >>> 10 & 0x3FF | 0xD800);
+				value = 0xDC00 | value & 0x3FF;
+			}
+			output += stringFromCharCode(value);
+			return output;
+		}).join('');
+	}
+
+	/**
+	 * Converts a basic code point into a digit/integer.
+	 * @see `digitToBasic()`
+	 * @private
+	 * @param {Number} codePoint The basic numeric code point value.
+	 * @returns {Number} The numeric value of a basic code point (for use in
+	 * representing integers) in the range `0` to `base - 1`, or `base` if
+	 * the code point does not represent a value.
+	 */
+	function basicToDigit(codePoint) {
+		if (codePoint - 48 < 10) {
+			return codePoint - 22;
+		}
+		if (codePoint - 65 < 26) {
+			return codePoint - 65;
+		}
+		if (codePoint - 97 < 26) {
+			return codePoint - 97;
+		}
+		return base;
+	}
+
+	/**
+	 * Converts a digit/integer into a basic code point.
+	 * @see `basicToDigit()`
+	 * @private
+	 * @param {Number} digit The numeric value of a basic code point.
+	 * @returns {Number} The basic code point whose value (when used for
+	 * representing integers) is `digit`, which needs to be in the range
+	 * `0` to `base - 1`. If `flag` is non-zero, the uppercase form is
+	 * used; else, the lowercase form is used. The behavior is undefined
+	 * if `flag` is non-zero and `digit` has no uppercase form.
+	 */
+	function digitToBasic(digit, flag) {
+		//  0..25 map to ASCII a..z or A..Z
+		// 26..35 map to ASCII 0..9
+		return digit + 22 + 75 * (digit < 26) - ((flag != 0) << 5);
+	}
+
+	/**
+	 * Bias adaptation function as per section 3.4 of RFC 3492.
+	 * https://tools.ietf.org/html/rfc3492#section-3.4
+	 * @private
+	 */
+	function adapt(delta, numPoints, firstTime) {
+		var k = 0;
+		delta = firstTime ? floor(delta / damp) : delta >> 1;
+		delta += floor(delta / numPoints);
+		for (/* no initialization */; delta > baseMinusTMin * tMax >> 1; k += base) {
+			delta = floor(delta / baseMinusTMin);
+		}
+		return floor(k + (baseMinusTMin + 1) * delta / (delta + skew));
+	}
+
+	/**
+	 * Converts a Punycode string of ASCII-only symbols to a string of Unicode
+	 * symbols.
+	 * @memberOf punycode
+	 * @param {String} input The Punycode string of ASCII-only symbols.
+	 * @returns {String} The resulting string of Unicode symbols.
+	 */
+	function decode(input) {
+		// Don't use UCS-2
+		var output = [],
+		    inputLength = input.length,
+		    out,
+		    i = 0,
+		    n = initialN,
+		    bias = initialBias,
+		    basic,
+		    j,
+		    index,
+		    oldi,
+		    w,
+		    k,
+		    digit,
+		    t,
+		    /** Cached calculation results */
+		    baseMinusT;
+
+		// Handle the basic code points: let `basic` be the number of input code
+		// points before the last delimiter, or `0` if there is none, then copy
+		// the first basic code points to the output.
+
+		basic = input.lastIndexOf(delimiter);
+		if (basic < 0) {
+			basic = 0;
+		}
+
+		for (j = 0; j < basic; ++j) {
+			// if it's not a basic code point
+			if (input.charCodeAt(j) >= 0x80) {
+				error('not-basic');
+			}
+			output.push(input.charCodeAt(j));
+		}
+
+		// Main decoding loop: start just after the last delimiter if any basic code
+		// points were copied; start at the beginning otherwise.
+
+		for (index = basic > 0 ? basic + 1 : 0; index < inputLength; /* no final expression */) {
+
+			// `index` is the index of the next character to be consumed.
+			// Decode a generalized variable-length integer into `delta`,
+			// which gets added to `i`. The overflow checking is easier
+			// if we increase `i` as we go, then subtract off its starting
+			// value at the end to obtain `delta`.
+			for (oldi = i, w = 1, k = base; /* no condition */; k += base) {
+
+				if (index >= inputLength) {
+					error('invalid-input');
+				}
+
+				digit = basicToDigit(input.charCodeAt(index++));
+
+				if (digit >= base || digit > floor((maxInt - i) / w)) {
+					error('overflow');
+				}
+
+				i += digit * w;
+				t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
+
+				if (digit < t) {
+					break;
+				}
+
+				baseMinusT = base - t;
+				if (w > floor(maxInt / baseMinusT)) {
+					error('overflow');
+				}
+
+				w *= baseMinusT;
+
+			}
+
+			out = output.length + 1;
+			bias = adapt(i - oldi, out, oldi == 0);
+
+			// `i` was supposed to wrap around from `out` to `0`,
+			// incrementing `n` each time, so we'll fix that now:
+			if (floor(i / out) > maxInt - n) {
+				error('overflow');
+			}
+
+			n += floor(i / out);
+			i %= out;
+
+			// Insert `n` at position `i` of the output
+			output.splice(i++, 0, n);
+
+		}
+
+		return ucs2encode(output);
+	}
+
+	/**
+	 * Converts a string of Unicode symbols (e.g. a domain name label) to a
+	 * Punycode string of ASCII-only symbols.
+	 * @memberOf punycode
+	 * @param {String} input The string of Unicode symbols.
+	 * @returns {String} The resulting Punycode string of ASCII-only symbols.
+	 */
+	function encode(input) {
+		var n,
+		    delta,
+		    handledCPCount,
+		    basicLength,
+		    bias,
+		    j,
+		    m,
+		    q,
+		    k,
+		    t,
+		    currentValue,
+		    output = [],
+		    /** `inputLength` will hold the number of code points in `input`. */
+		    inputLength,
+		    /** Cached calculation results */
+		    handledCPCountPlusOne,
+		    baseMinusT,
+		    qMinusT;
+
+		// Convert the input in UCS-2 to Unicode
+		input = ucs2decode(input);
+
+		// Cache the length
+		inputLength = input.length;
+
+		// Initialize the state
+		n = initialN;
+		delta = 0;
+		bias = initialBias;
+
+		// Handle the basic code points
+		for (j = 0; j < inputLength; ++j) {
+			currentValue = input[j];
+			if (currentValue < 0x80) {
+				output.push(stringFromCharCode(currentValue));
+			}
+		}
+
+		handledCPCount = basicLength = output.length;
+
+		// `handledCPCount` is the number of code points that have been handled;
+		// `basicLength` is the number of basic code points.
+
+		// Finish the basic string - if it is not empty - with a delimiter
+		if (basicLength) {
+			output.push(delimiter);
+		}
+
+		// Main encoding loop:
+		while (handledCPCount < inputLength) {
+
+			// All non-basic code points < n have been handled already. Find the next
+			// larger one:
+			for (m = maxInt, j = 0; j < inputLength; ++j) {
+				currentValue = input[j];
+				if (currentValue >= n && currentValue < m) {
+					m = currentValue;
+				}
+			}
+
+			// Increase `delta` enough to advance the decoder's <n,i> state to <m,0>,
+			// but guard against overflow
+			handledCPCountPlusOne = handledCPCount + 1;
+			if (m - n > floor((maxInt - delta) / handledCPCountPlusOne)) {
+				error('overflow');
+			}
+
+			delta += (m - n) * handledCPCountPlusOne;
+			n = m;
+
+			for (j = 0; j < inputLength; ++j) {
+				currentValue = input[j];
+
+				if (currentValue < n && ++delta > maxInt) {
+					error('overflow');
+				}
+
+				if (currentValue == n) {
+					// Represent delta as a generalized variable-length integer
+					for (q = delta, k = base; /* no condition */; k += base) {
+						t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
+						if (q < t) {
+							break;
+						}
+						qMinusT = q - t;
+						baseMinusT = base - t;
+						output.push(
+							stringFromCharCode(digitToBasic(t + qMinusT % baseMinusT, 0))
+						);
+						q = floor(qMinusT / baseMinusT);
+					}
+
+					output.push(stringFromCharCode(digitToBasic(q, 0)));
+					bias = adapt(delta, handledCPCountPlusOne, handledCPCount == basicLength);
+					delta = 0;
+					++handledCPCount;
+				}
+			}
+
+			++delta;
+			++n;
+
+		}
+		return output.join('');
+	}
+
+	/**
+	 * Converts a Punycode string representing a domain name or an email address
+	 * to Unicode. Only the Punycoded parts of the input will be converted, i.e.
+	 * it doesn't matter if you call it on a string that has already been
+	 * converted to Unicode.
+	 * @memberOf punycode
+	 * @param {String} input The Punycoded domain name or email address to
+	 * convert to Unicode.
+	 * @returns {String} The Unicode representation of the given Punycode
+	 * string.
+	 */
+	function toUnicode(input) {
+		return mapDomain(input, function(string) {
+			return regexPunycode.test(string)
+				? decode(string.slice(4).toLowerCase())
+				: string;
+		});
+	}
+
+	/**
+	 * Converts a Unicode string representing a domain name or an email address to
+	 * Punycode. Only the non-ASCII parts of the domain name will be converted,
+	 * i.e. it doesn't matter if you call it with a domain that's already in
+	 * ASCII.
+	 * @memberOf punycode
+	 * @param {String} input The domain name or email address to convert, as a
+	 * Unicode string.
+	 * @returns {String} The Punycode representation of the given domain name or
+	 * email address.
+	 */
+	function toASCII(input) {
+		return mapDomain(input, function(string) {
+			return regexNonASCII.test(string)
+				? 'xn--' + encode(string)
+				: string;
+		});
+	}
+
+	/*--------------------------------------------------------------------------*/
+
+	/** Define the public API */
+	punycode = {
+		/**
+		 * A string representing the current Punycode.js version number.
+		 * @memberOf punycode
+		 * @type String
+		 */
+		'version': '1.3.2',
+		/**
+		 * An object of methods to convert from JavaScript's internal character
+		 * representation (UCS-2) to Unicode code points, and back.
+		 * @see <https://mathiasbynens.be/notes/javascript-encoding>
+		 * @memberOf punycode
+		 * @type Object
+		 */
+		'ucs2': {
+			'decode': ucs2decode,
+			'encode': ucs2encode
+		},
+		'decode': decode,
+		'encode': encode,
+		'toASCII': toASCII,
+		'toUnicode': toUnicode
+	};
+
+	/** Expose `punycode` */
+	// Some AMD build optimizers, like r.js, check for specific condition patterns
+	// like the following:
+	if (
+		typeof define == 'function' &&
+		typeof define.amd == 'object' &&
+		define.amd
+	) {
+		define('punycode', function() {
+			return punycode;
+		});
+	} else if (freeExports && freeModule) {
+		if (module.exports == freeExports) {
+			// in Node.js, io.js, or RingoJS v0.8.0+
+			freeModule.exports = punycode;
+		} else {
+			// in Narwhal or RingoJS v0.7.0-
+			for (key in punycode) {
+				punycode.hasOwnProperty(key) && (freeExports[key] = punycode[key]);
+			}
+		}
+	} else {
+		// in Rhino or a web browser
+		root.punycode = punycode;
+	}
+
+}(this));
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],193:[function(require,module,exports){
 /*!
- * jQuery JavaScript Library v2.2.1
+ * jQuery JavaScript Library v2.2.0
  * http://jquery.com/
  *
  * Includes Sizzle.js
@@ -65096,7 +65491,7 @@ module.exports = angular;
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2016-02-22T19:11Z
+ * Date: 2016-01-08T20:02Z
  */
 
 (function( global, factory ) {
@@ -65152,7 +65547,7 @@ var support = {};
 
 
 var
-	version = "2.2.1",
+	version = "2.2.0",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -69566,7 +69961,7 @@ function on( elem, types, selector, data, fn, one ) {
 	if ( fn === false ) {
 		fn = returnFalse;
 	} else if ( !fn ) {
-		return elem;
+		return this;
 	}
 
 	if ( one === 1 ) {
@@ -70215,14 +70610,14 @@ var
 	rscriptTypeMasked = /^true\/(.*)/,
 	rcleanScript = /^\s*<!(?:\[CDATA\[|--)|(?:\]\]|--)>\s*$/g;
 
-// Manipulating tables requires a tbody
 function manipulationTarget( elem, content ) {
-	return jQuery.nodeName( elem, "table" ) &&
-		jQuery.nodeName( content.nodeType !== 11 ? content : content.firstChild, "tr" ) ?
+	if ( jQuery.nodeName( elem, "table" ) &&
+		jQuery.nodeName( content.nodeType !== 11 ? content : content.firstChild, "tr" ) ) {
 
-		elem.getElementsByTagName( "tbody" )[ 0 ] ||
-			elem.appendChild( elem.ownerDocument.createElement( "tbody" ) ) :
-		elem;
+		return elem.getElementsByTagName( "tbody" )[ 0 ] || elem;
+	}
+
+	return elem;
 }
 
 // Replace/restore the type attribute of script elements for safe DOM manipulation
@@ -70729,7 +71124,7 @@ var getStyles = function( elem ) {
 		// FF meanwhile throws on frame elements through "defaultView.getComputedStyle"
 		var view = elem.ownerDocument.defaultView;
 
-		if ( !view || !view.opener ) {
+		if ( !view.opener ) {
 			view = window;
 		}
 
@@ -70878,18 +71273,15 @@ function curCSS( elem, name, computed ) {
 		style = elem.style;
 
 	computed = computed || getStyles( elem );
-	ret = computed ? computed.getPropertyValue( name ) || computed[ name ] : undefined;
-
-	// Support: Opera 12.1x only
-	// Fall back to style even without computed
-	// computed is undefined for elems on document fragments
-	if ( ( ret === "" || ret === undefined ) && !jQuery.contains( elem.ownerDocument, elem ) ) {
-		ret = jQuery.style( elem, name );
-	}
 
 	// Support: IE9
 	// getPropertyValue is only needed for .css('filter') (#12537)
 	if ( computed ) {
+		ret = computed.getPropertyValue( name ) || computed[ name ];
+
+		if ( ret === "" && !jQuery.contains( elem.ownerDocument, elem ) ) {
+			ret = jQuery.style( elem, name );
+		}
 
 		// A tribute to the "awesome hack by Dean Edwards"
 		// Android Browser returns percentage for some values,
@@ -72939,7 +73331,7 @@ jQuery.extend( jQuery.event, {
 				// But now, this "simulate" function is used only for events
 				// for which stopPropagation() is noop, so there is no need for that anymore.
 				//
-				// For the 1.x branch though, guard for "click" and "submit"
+				// For the compat branch though, guard for "click" and "submit"
 				// events is still used, but was moved to jQuery.event.stopPropagation function
 				// because `originalEvent` should point to the original event for the constancy
 				// with other events and for more focused logic
@@ -74709,8 +75101,11 @@ jQuery.fn.extend( {
 			}
 
 			// Add offsetParent borders
-			parentOffset.top += jQuery.css( offsetParent[ 0 ], "borderTopWidth", true );
-			parentOffset.left += jQuery.css( offsetParent[ 0 ], "borderLeftWidth", true );
+			// Subtract offsetParent scroll positions
+			parentOffset.top += jQuery.css( offsetParent[ 0 ], "borderTopWidth", true ) -
+				offsetParent.scrollTop();
+			parentOffset.left += jQuery.css( offsetParent[ 0 ], "borderLeftWidth", true ) -
+				offsetParent.scrollLeft();
 		}
 
 		// Subtract parent offsets and element margins
@@ -74917,12 +75312,12 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],188:[function(require,module,exports){
+},{}],194:[function(require,module,exports){
 (function (global){
 /**
  * @license
- * lodash 4.6.1 (Custom Build) <https://lodash.com/>
- * Build: `lodash -d -o ./foo/lodash.js`
+ * lodash 4.0.1 (Custom Build) <https://lodash.com/>
+ * Build: `lodash -d -o ./lodash.js`
  * Copyright 2012-2016 The Dojo Foundation <http://dojofoundation.org/>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright 2009-2016 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -74934,19 +75329,7 @@ return jQuery;
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.6.1';
-
-  /** Used as the size to enable large array optimizations. */
-  var LARGE_ARRAY_SIZE = 200;
-
-  /** Used as the `TypeError` message for "Functions" methods. */
-  var FUNC_ERROR_TEXT = 'Expected a function';
-
-  /** Used to stand-in for `undefined` hash values. */
-  var HASH_UNDEFINED = '__lodash_hash_undefined__';
-
-  /** Used as the internal argument placeholder. */
-  var PLACEHOLDER = '__lodash_placeholder__';
+  var VERSION = '4.0.1';
 
   /** Used to compose bitmasks for wrapper metadata. */
   var BIND_FLAG = 1,
@@ -74972,10 +75355,19 @@ return jQuery;
   var HOT_COUNT = 150,
       HOT_SPAN = 16;
 
+  /** Used as the size to enable large array optimizations. */
+  var LARGE_ARRAY_SIZE = 200;
+
   /** Used to indicate the type of lazy iteratees. */
   var LAZY_FILTER_FLAG = 1,
       LAZY_MAP_FLAG = 2,
       LAZY_WHILE_FLAG = 3;
+
+  /** Used as the `TypeError` message for "Functions" methods. */
+  var FUNC_ERROR_TEXT = 'Expected a function';
+
+  /** Used to stand-in for `undefined` hash values. */
+  var HASH_UNDEFINED = '__lodash_hash_undefined__';
 
   /** Used as references for various `Number` constants. */
   var INFINITY = 1 / 0,
@@ -74987,6 +75379,9 @@ return jQuery;
   var MAX_ARRAY_LENGTH = 4294967295,
       MAX_ARRAY_INDEX = MAX_ARRAY_LENGTH - 1,
       HALF_MAX_ARRAY_LENGTH = MAX_ARRAY_LENGTH >>> 1;
+
+  /** Used as the internal argument placeholder. */
+  var PLACEHOLDER = '__lodash_placeholder__';
 
   /** `Object#toString` result references. */
   var argsTag = '[object Arguments]',
@@ -75003,8 +75398,7 @@ return jQuery;
       setTag = '[object Set]',
       stringTag = '[object String]',
       symbolTag = '[object Symbol]',
-      weakMapTag = '[object WeakMap]',
-      weakSetTag = '[object WeakSet]';
+      weakMapTag = '[object WeakMap]';
 
   var arrayBufferTag = '[object ArrayBuffer]',
       float32Tag = '[object Float32Array]',
@@ -75153,8 +75547,8 @@ return jQuery;
 
   /** Used to assign default `context` object properties. */
   var contextProps = [
-    'Array', 'Buffer', 'Date', 'Error', 'Float32Array', 'Float64Array',
-    'Function', 'Int8Array', 'Int16Array', 'Int32Array', 'Map', 'Math', 'Object',
+    'Array', 'Date', 'Error', 'Float32Array', 'Float64Array', 'Function',
+    'Int8Array', 'Int16Array', 'Int32Array', 'Map', 'Math', 'Object',
     'Reflect', 'RegExp', 'Set', 'String', 'Symbol', 'TypeError', 'Uint8Array',
     'Uint8ClampedArray', 'Uint16Array', 'Uint32Array', 'WeakMap', '_',
     'clearTimeout', 'isFinite', 'parseInt', 'setTimeout'
@@ -75256,19 +75650,10 @@ return jQuery;
       freeParseInt = parseInt;
 
   /** Detect free variable `exports`. */
-  var freeExports = (objectTypes[typeof exports] && exports && !exports.nodeType)
-    ? exports
-    : undefined;
+  var freeExports = (objectTypes[typeof exports] && exports && !exports.nodeType) ? exports : null;
 
   /** Detect free variable `module`. */
-  var freeModule = (objectTypes[typeof module] && module && !module.nodeType)
-    ? module
-    : undefined;
-
-  /** Detect the popular CommonJS extension `module.exports`. */
-  var moduleExports = (freeModule && freeModule.exports === freeExports)
-    ? freeExports
-    : undefined;
+  var freeModule = (objectTypes[typeof module] && module && !module.nodeType) ? module : null;
 
   /** Detect free variable `global` from Node.js. */
   var freeGlobal = checkGlobal(freeExports && freeModule && typeof global == 'object' && global);
@@ -75279,6 +75664,9 @@ return jQuery;
   /** Detect free variable `window`. */
   var freeWindow = checkGlobal(objectTypes[typeof window] && window);
 
+  /** Detect the popular CommonJS extension `module.exports`. */
+  var moduleExports = (freeModule && freeModule.exports === freeExports) ? freeExports : null;
+
   /** Detect `this` as the global object. */
   var thisGlobal = checkGlobal(objectTypes[typeof this] && this);
 
@@ -75288,9 +75676,7 @@ return jQuery;
    * The `this` value is used if it's the global object to avoid Greasemonkey's
    * restricted `window` object, otherwise the `window` object is used.
    */
-  var root = freeGlobal ||
-    ((freeWindow !== (thisGlobal && thisGlobal.window)) && freeWindow) ||
-      freeSelf || thisGlobal || Function('return this')();
+  var root = freeGlobal || ((freeWindow !== (thisGlobal && thisGlobal.window)) && freeWindow) || freeSelf || thisGlobal || Function('return this')();
 
   /*--------------------------------------------------------------------------*/
 
@@ -75303,7 +75689,6 @@ return jQuery;
    * @returns {Object} Returns `map`.
    */
   function addMapEntry(map, pair) {
-    // Don't return `Map#set` because it doesn't return the map instance in IE 11.
     map.set(pair[0], pair[1]);
     return map;
   }
@@ -75328,11 +75713,11 @@ return jQuery;
    * @private
    * @param {Function} func The function to invoke.
    * @param {*} thisArg The `this` binding of `func`.
-   * @param {...*} args The arguments to invoke `func` with.
+   * @param {...*} [args] The arguments to invoke `func` with.
    * @returns {*} Returns the result of `func`.
    */
   function apply(func, thisArg, args) {
-    var length = args.length;
+    var length = args ? args.length : 0;
     switch (length) {
       case 0: return func.call(thisArg);
       case 1: return func.call(thisArg, args[0]);
@@ -75340,27 +75725,6 @@ return jQuery;
       case 3: return func.call(thisArg, args[0], args[1], args[2]);
     }
     return func.apply(thisArg, args);
-  }
-
-  /**
-   * A specialized version of `baseAggregator` for arrays.
-   *
-   * @private
-   * @param {Array} array The array to iterate over.
-   * @param {Function} setter The function to set `accumulator` values.
-   * @param {Function} iteratee The iteratee to transform keys.
-   * @param {Object} accumulator The initial aggregated object.
-   * @returns {Function} Returns `accumulator`.
-   */
-  function arrayAggregator(array, setter, iteratee, accumulator) {
-    var index = -1,
-        length = array.length;
-
-    while (++index < length) {
-      var value = array[index];
-      setter(accumulator, value, iteratee(value), array);
-    }
-    return accumulator;
   }
 
   /**
@@ -75461,13 +75825,13 @@ return jQuery;
   function arrayFilter(array, predicate) {
     var index = -1,
         length = array.length,
-        resIndex = 0,
+        resIndex = -1,
         result = [];
 
     while (++index < length) {
       var value = array[index];
       if (predicate(value, index, array)) {
-        result[resIndex++] = value;
+        result[++resIndex] = value;
       }
     }
     return result;
@@ -75487,7 +75851,8 @@ return jQuery;
   }
 
   /**
-   * This function is like `arrayIncludes` except that it accepts a comparator.
+   * A specialized version of `_.includesWith` for arrays without support for
+   * specifying an index to search from.
    *
    * @private
    * @param {Array} array The array to search.
@@ -75712,28 +76077,6 @@ return jQuery;
   }
 
   /**
-   * This function is like `baseIndexOf` except that it accepts a comparator.
-   *
-   * @private
-   * @param {Array} array The array to search.
-   * @param {*} value The value to search for.
-   * @param {number} fromIndex The index to search from.
-   * @param {Function} comparator The comparator invoked per element.
-   * @returns {number} Returns the index of the matched value, else `-1`.
-   */
-  function baseIndexOfWith(array, value, fromIndex, comparator) {
-    var index = fromIndex - 1,
-        length = array.length;
-
-    while (++index < length) {
-      if (comparator(array[index], value)) {
-        return index;
-      }
-    }
-    return -1;
-  }
-
-  /**
    * The base implementation of `_.reduce` and `_.reduceRight`, without support
    * for iteratee shorthands, which iterates over `collection` using `eachFunc`.
    *
@@ -75755,9 +76098,9 @@ return jQuery;
   }
 
   /**
-   * The base implementation of `_.sortBy` which uses `comparer` to define the
-   * sort order of `array` and replaces criteria objects with their corresponding
-   * values.
+   * The base implementation of `_.sortBy` which uses `comparer` to define
+   * the sort order of `array` and replaces criteria objects with their
+   * corresponding values.
    *
    * @private
    * @param {Array} array The array to sort.
@@ -75977,26 +76320,6 @@ return jQuery;
   }
 
   /**
-   * Gets the number of `placeholder` occurrences in `array`.
-   *
-   * @private
-   * @param {Array} array The array to inspect.
-   * @param {*} placeholder The placeholder to search for.
-   * @returns {number} Returns the placeholder count.
-   */
-  function countHolders(array, placeholder) {
-    var length = array.length,
-        result = 0;
-
-    while (length--) {
-      if (array[length] === placeholder) {
-        result++;
-      }
-    }
-    return result;
-  }
-
-  /**
    * Used by `_.deburr` to convert latin-1 supplementary letters to basic latin letters.
    *
    * @private
@@ -76130,14 +76453,13 @@ return jQuery;
   function replaceHolders(array, placeholder) {
     var index = -1,
         length = array.length,
-        resIndex = 0,
+        resIndex = -1,
         result = [];
 
     while (++index < length) {
-      var value = array[index];
-      if (value === placeholder || value === PLACEHOLDER) {
+      if (array[index] === placeholder) {
         array[index] = PLACEHOLDER;
-        result[resIndex++] = index;
+        result[++resIndex] = index;
       }
     }
     return result;
@@ -76227,14 +76549,14 @@ return jQuery;
    * lodash.isFunction(lodash.bar);
    * // => true
    *
-   * // Use `context` to mock `Date#getTime` use in `_.now`.
+   * // using `context` to mock `Date#getTime` use in `_.now`
    * var mock = _.runInContext({
    *   'Date': function() {
    *     return { 'getTime': getTimeMock };
    *   }
    * });
    *
-   * // Create a suped-up `defer` in Node.js.
+   * // or creating a suped-up `defer` in Node.js
    * var defer = _.runInContext({ 'setTimeout': setImmediate }).defer;
    */
   function runInContext(context) {
@@ -76279,8 +76601,7 @@ return jQuery;
     );
 
     /** Built-in value references. */
-    var Buffer = moduleExports ? context.Buffer : undefined,
-        Reflect = context.Reflect,
+    var Reflect = context.Reflect,
         Symbol = context.Symbol,
         Uint8Array = context.Uint8Array,
         clearTimeout = context.clearTimeout,
@@ -76288,7 +76609,6 @@ return jQuery;
         getPrototypeOf = Object.getPrototypeOf,
         getOwnPropertySymbols = Object.getOwnPropertySymbols,
         iteratorSymbol = typeof (iteratorSymbol = Symbol && Symbol.iterator) == 'symbol' ? iteratorSymbol : undefined,
-        objectCreate = Object.create,
         propertyIsEnumerable = objectProto.propertyIsEnumerable,
         setTimeout = context.setTimeout,
         splice = arrayProto.splice;
@@ -76314,21 +76634,17 @@ return jQuery;
     /** Used to store function metadata. */
     var metaMap = WeakMap && new WeakMap;
 
-    /** Detect if properties shadowing those on `Object.prototype` are non-enumerable. */
-    var nonEnumShadows = !propertyIsEnumerable.call({ 'valueOf': 1 }, 'valueOf');
-
-    /** Used to lookup unminified function names. */
-    var realNames = {};
-
-    /** Used to detect maps, sets, and weakmaps. */
+    /** Used to detect maps and sets. */
     var mapCtorString = Map ? funcToString.call(Map) : '',
-        setCtorString = Set ? funcToString.call(Set) : '',
-        weakMapCtorString = WeakMap ? funcToString.call(WeakMap) : '';
+        setCtorString = Set ? funcToString.call(Set) : '';
 
     /** Used to convert symbols to primitives and strings. */
     var symbolProto = Symbol ? Symbol.prototype : undefined,
-        symbolValueOf = symbolProto ? symbolProto.valueOf : undefined,
-        symbolToString = symbolProto ? symbolProto.toString : undefined;
+        symbolValueOf = Symbol ? symbolProto.valueOf : undefined,
+        symbolToString = Symbol ? symbolProto.toString : undefined;
+
+    /** Used to lookup unminified function names. */
+    var realNames = {};
 
     /*------------------------------------------------------------------------*/
 
@@ -76371,54 +76687,50 @@ return jQuery;
      * `tail`, `take`, `takeRight`, `takeRightWhile`, `takeWhile`, and `toArray`
      *
      * The chainable wrapper methods are:
-     * `after`, `ary`, `assign`, `assignIn`, `assignInWith`, `assignWith`, `at`,
-     * `before`, `bind`, `bindAll`, `bindKey`, `castArray`, `chain`, `chunk`,
-     * `commit`, `compact`, `concat`, `conforms`, `constant`, `countBy`, `create`,
-     * `curry`, `debounce`, `defaults`, `defaultsDeep`, `defer`, `delay`,
-     * `difference`, `differenceBy`, `differenceWith`, `drop`, `dropRight`,
-     * `dropRightWhile`, `dropWhile`, `extend`, `extendWith`, `fill`, `filter`,
-     * `flatten`, `flattenDeep`, `flattenDepth`, `flip`, `flow`, `flowRight`,
-     * `fromPairs`, `functions`, `functionsIn`, `groupBy`, `initial`, `intersection`,
-     * `intersectionBy`, `intersectionWith`, `invert`, `invertBy`, `invokeMap`,
+     * `after`, `ary`, `assign`, `assignIn`, `assignInWith`, `assignWith`,
+     * `at`, `before`, `bind`, `bindAll`, `bindKey`, `chain`, `chunk`, `commit`,
+     * `compact`, `concat`, `conforms`, `constant`, `countBy`, `create`, `curry`,
+     * `debounce`, `defaults`, `defaultsDeep`, `defer`, `delay`, `difference`,
+     * `differenceBy`, `differenceWith`, `drop`, `dropRight`, `dropRightWhile`,
+     * `dropWhile`, `fill`, `filter`, `flatten`, `flattenDeep`, `flip`, `flow`,
+     * `flowRight`, `fromPairs`, `functions`, `functionsIn`, `groupBy`, `initial`,
+     * `intersection`, `intersectionBy`, `intersectionWith`, `invert`, `invokeMap`,
      * `iteratee`, `keyBy`, `keys`, `keysIn`, `map`, `mapKeys`, `mapValues`,
      * `matches`, `matchesProperty`, `memoize`, `merge`, `mergeWith`, `method`,
      * `methodOf`, `mixin`, `negate`, `nthArg`, `omit`, `omitBy`, `once`, `orderBy`,
      * `over`, `overArgs`, `overEvery`, `overSome`, `partial`, `partialRight`,
      * `partition`, `pick`, `pickBy`, `plant`, `property`, `propertyOf`, `pull`,
-     * `pullAll`, `pullAllBy`, `pullAllWith`, `pullAt`, `push`, `range`,
-     * `rangeRight`, `rearg`, `reject`, `remove`, `rest`, `reverse`, `sampleSize`,
-     * `set`, `setWith`, `shuffle`, `slice`, `sort`, `sortBy`, `splice`, `spread`,
-     * `tail`, `take`, `takeRight`, `takeRightWhile`, `takeWhile`, `tap`, `throttle`,
-     * `thru`, `toArray`, `toPairs`, `toPairsIn`, `toPath`, `toPlainObject`,
-     * `transform`, `unary`, `union`, `unionBy`, `unionWith`, `uniq`, `uniqBy`,
-     * `uniqWith`, `unset`, `unshift`, `unzip`, `unzipWith`, `update`, `values`,
-     * `valuesIn`, `without`, `wrap`, `xor`, `xorBy`, `xorWith`, `zip`, `zipObject`,
-     * `zipObjectDeep`, and `zipWith`
+     * `pullAll`, `pullAllBy`, `pullAt`, `push`, `range`, `rangeRight`, `rearg`,
+     * `reject`, `remove`, `rest`, `reverse`, `sampleSize`, `set`, `setWith`,
+     * `shuffle`, `slice`, `sort`, `sortBy`, `splice`, `spread`, `tail`, `take`,
+     * `takeRight`, `takeRightWhile`, `takeWhile`, `tap`, `throttle`, `thru`,
+     * `toArray`, `toPairs`, `toPairsIn`, `toPath`, `toPlainObject`, `transform`,
+     * `unary`, `union`, `unionBy`, `unionWith`, `uniq`, `uniqBy`, `uniqWith`,
+     * `unset`, `unshift`, `unzip`, `unzipWith`, `values`, `valuesIn`, `without`,
+     * `wrap`, `xor`, `xorBy`, `xorWith`, `zip`, `zipObject`, and `zipWith`
      *
      * The wrapper methods that are **not** chainable by default are:
      * `add`, `attempt`, `camelCase`, `capitalize`, `ceil`, `clamp`, `clone`,
-     * `cloneDeep`, `cloneDeepWith`, `cloneWith`, `deburr`, `each`, `eachRight`,
-     * `endsWith`, `eq`, `escape`, `escapeRegExp`, `every`, `find`, `findIndex`,
-     * `findKey`, `findLast`, `findLastIndex`, `findLastKey`, `first`, `floor`,
-     * `forEach`, `forEachRight`, `forIn`, `forInRight`, `forOwn`, `forOwnRight`,
-     * `get`, `gt`, `gte`, `has`, `hasIn`, `head`, `identity`, `includes`,
-     * `indexOf`, `inRange`, `invoke`, `isArguments`, `isArray`, `isArrayBuffer`,
-     * `isArrayLike`, `isArrayLikeObject`, `isBoolean`, `isBuffer`, `isDate`,
-     * `isElement`, `isEmpty`, `isEqual`, `isEqualWith`, `isError`, `isFinite`,
-     * `isFunction`, `isInteger`, `isLength`, `isMap`, `isMatch`, `isMatchWith`,
+     * `cloneDeep`, `cloneDeepWith`, `cloneWith`, `deburr`, `endsWith`, `eq`,
+     * `escape`, `escapeRegExp`, `every`, `find`, `findIndex`, `findKey`,
+     * `findLast`, `findLastIndex`, `findLastKey`, `floor`, `forEach`, `forEachRight`,
+     * `forIn`, `forInRight`, `forOwn`, `forOwnRight`, `get`, `gt`, `gte`, `has`,
+     * `hasIn`, `head`, `identity`, `includes`, `indexOf`, `inRange`, `invoke`,
+     * `isArguments`, `isArray`, `isArrayLike`, `isArrayLikeObject`, `isBoolean`,
+     * `isDate`, `isElement`, `isEmpty`, `isEqual`, `isEqualWith`, `isError`,
+     * `isFinite`, `isFunction`, `isInteger`, `isLength`, `isMatch`, `isMatchWith`,
      * `isNaN`, `isNative`, `isNil`, `isNull`, `isNumber`, `isObject`, `isObjectLike`,
-     * `isPlainObject`, `isRegExp`, `isSafeInteger`, `isSet`, `isString`,
-     * `isUndefined`, `isTypedArray`, `isWeakMap`, `isWeakSet`, `join`, `kebabCase`,
-     * `last`, `lastIndexOf`, `lowerCase`, `lowerFirst`, `lt`, `lte`, `max`,
-     * `maxBy`, `mean`, `min`, `minBy`, `noConflict`, `noop`, `now`, `pad`,
-     * `padEnd`, `padStart`, `parseInt`, `pop`, `random`, `reduce`, `reduceRight`,
-     * `repeat`, `result`, `round`, `runInContext`, `sample`, `shift`, `size`,
-     * `snakeCase`, `some`, `sortedIndex`, `sortedIndexBy`, `sortedLastIndex`,
-     * `sortedLastIndexBy`, `startCase`, `startsWith`, `subtract`, `sum`, `sumBy`,
-     * `template`, `times`, `toInteger`, `toJSON`, `toLength`, `toLower`,
-     * `toNumber`, `toSafeInteger`, `toString`, `toUpper`, `trim`, `trimEnd`,
-     * `trimStart`, `truncate`, `unescape`, `uniqueId`, `upperCase`, `upperFirst`,
-     * `value`, and `words`
+     * `isPlainObject`, `isRegExp`, `isSafeInteger`, `isString`, `isUndefined`,
+     * `isTypedArray`, `join`, `kebabCase`, `last`, `lastIndexOf`, `lowerCase`,
+     * `lowerFirst`, `lt`, `lte`, `max`, `maxBy`, `mean`, `min`, `minBy`,
+     * `noConflict`, `noop`, `now`, `pad`, `padEnd`, `padStart`, `parseInt`,
+     * `pop`, `random`, `reduce`, `reduceRight`, `repeat`, `result`, `round`,
+     * `runInContext`, `sample`, `shift`, `size`, `snakeCase`, `some`, `sortedIndex`,
+     * `sortedIndexBy`, `sortedLastIndex`, `sortedLastIndexBy`, `startCase`,
+     * `startsWith`, `subtract`, `sum`, `sumBy`, `template`, `times`, `toLower`,
+     * `toInteger`, `toLength`, `toNumber`, `toSafeInteger`, `toString`, `toUpper`,
+     * `trim`, `trimEnd`, `trimStart`, `truncate`, `unescape`, `uniqueId`,
+     * `upperCase`, `upperFirst`, `value`, and `words`
      *
      * @name _
      * @constructor
@@ -76433,11 +76745,11 @@ return jQuery;
      *
      * var wrapped = _([1, 2, 3]);
      *
-     * // Returns an unwrapped value.
+     * // returns an unwrapped value
      * wrapped.reduce(_.add);
      * // => 6
      *
-     * // Returns a wrapped value.
+     * // returns a wrapped value
      * var squares = wrapped.map(square);
      *
      * _.isArray(squares);
@@ -76489,7 +76801,7 @@ return jQuery;
      *
      * @static
      * @memberOf _
-     * @type {Object}
+     * @type Object
      */
     lodash.templateSettings = {
 
@@ -76497,7 +76809,7 @@ return jQuery;
        * Used to detect `data` property values to be HTML-escaped.
        *
        * @memberOf _.templateSettings
-       * @type {RegExp}
+       * @type RegExp
        */
       'escape': reEscape,
 
@@ -76505,7 +76817,7 @@ return jQuery;
        * Used to detect code to be evaluated.
        *
        * @memberOf _.templateSettings
-       * @type {RegExp}
+       * @type RegExp
        */
       'evaluate': reEvaluate,
 
@@ -76513,7 +76825,7 @@ return jQuery;
        * Used to detect `data` property values to inject.
        *
        * @memberOf _.templateSettings
-       * @type {RegExp}
+       * @type RegExp
        */
       'interpolate': reInterpolate,
 
@@ -76521,7 +76833,7 @@ return jQuery;
        * Used to reference the data object in the template text.
        *
        * @memberOf _.templateSettings
-       * @type {string}
+       * @type string
        */
       'variable': '',
 
@@ -76529,7 +76841,7 @@ return jQuery;
        * Used to import variables into the compiled template.
        *
        * @memberOf _.templateSettings
-       * @type {Object}
+       * @type Object
        */
       'imports': {
 
@@ -76537,7 +76849,7 @@ return jQuery;
          * A reference to the `lodash` function.
          *
          * @memberOf _.templateSettings.imports
-         * @type {Function}
+         * @type Function
          */
         '_': lodash
       }
@@ -76549,7 +76861,6 @@ return jQuery;
      * Creates a lazy wrapper object which wraps `value` to enable lazy evaluation.
      *
      * @private
-     * @constructor
      * @param {*} value The value to wrap.
      */
     function LazyWrapper(value) {
@@ -76625,8 +76936,7 @@ return jQuery;
           resIndex = 0,
           takeCount = nativeMin(length, this.__takeCount__);
 
-      if (!isArr || arrLength < LARGE_ARRAY_SIZE ||
-          (arrLength == length && takeCount == length)) {
+      if (!isArr || arrLength < LARGE_ARRAY_SIZE || (arrLength == length && takeCount == length)) {
         return baseWrapperValue(array, this.__actions__);
       }
       var result = [];
@@ -76665,7 +76975,6 @@ return jQuery;
      * Creates an hash object.
      *
      * @private
-     * @constructor
      * @returns {Object} Returns the new hash object.
      */
     function Hash() {}
@@ -76728,7 +77037,6 @@ return jQuery;
      * Creates a map cache object to store key-value pairs.
      *
      * @private
-     * @constructor
      * @param {Array} [values] The values to cache.
      */
     function MapCache(values) {
@@ -76750,11 +77058,7 @@ return jQuery;
      * @memberOf MapCache
      */
     function mapClear() {
-      this.__data__ = {
-        'hash': new Hash,
-        'map': Map ? new Map : [],
-        'string': new Hash
-      };
+      this.__data__ = { 'hash': new Hash, 'map': Map ? new Map : [], 'string': new Hash };
     }
 
     /**
@@ -76837,7 +77141,6 @@ return jQuery;
      * Creates a set cache object to store unique values.
      *
      * @private
-     * @constructor
      * @param {Array} [values] The values to cache.
      */
     function SetCache(values) {
@@ -76896,7 +77199,6 @@ return jQuery;
      * Creates a stack cache object to store key-value pairs.
      *
      * @private
-     * @constructor
      * @param {Array} [values] The values to cache.
      */
     function Stack(values) {
@@ -77104,8 +77406,7 @@ return jQuery;
     }
 
     /**
-     * This function is like `assignValue` except that it doesn't assign
-     * `undefined` values.
+     * This function is like `assignValue` except that it doesn't assign `undefined` values.
      *
      * @private
      * @param {Object} object The object to modify.
@@ -77131,28 +77432,11 @@ return jQuery;
      */
     function assignValue(object, key, value) {
       var objValue = object[key];
-      if (!(hasOwnProperty.call(object, key) && eq(objValue, value)) ||
+      if ((!eq(objValue, value) ||
+            (eq(objValue, objectProto[key]) && !hasOwnProperty.call(object, key))) ||
           (value === undefined && !(key in object))) {
         object[key] = value;
       }
-    }
-
-    /**
-     * Aggregates elements of `collection` on `accumulator` with keys transformed
-     * by `iteratee` and values set by `setter`.
-     *
-     * @private
-     * @param {Array|Object} collection The collection to iterate over.
-     * @param {Function} setter The function to set `accumulator` values.
-     * @param {Function} iteratee The iteratee to transform keys.
-     * @param {Object} accumulator The initial aggregated object.
-     * @returns {Function} Returns `accumulator`.
-     */
-    function baseAggregator(collection, setter, iteratee, accumulator) {
-      baseEach(collection, function(value, key, collection) {
-        setter(accumulator, value, iteratee(value), collection);
-      });
-      return accumulator;
     }
 
     /**
@@ -77189,39 +77473,6 @@ return jQuery;
     }
 
     /**
-     * Casts `value` to an empty array if it's not an array like object.
-     *
-     * @private
-     * @param {*} value The value to inspect.
-     * @returns {Array} Returns the array-like object.
-     */
-    function baseCastArrayLikeObject(value) {
-      return isArrayLikeObject(value) ? value : [];
-    }
-
-    /**
-     * Casts `value` to `identity` if it's not a function.
-     *
-     * @private
-     * @param {*} value The value to inspect.
-     * @returns {Array} Returns the array-like object.
-     */
-    function baseCastFunction(value) {
-      return typeof value == 'function' ? value : identity;
-    }
-
-    /**
-     * Casts `value` to a path array if it's not one.
-     *
-     * @private
-     * @param {*} value The value to inspect.
-     * @returns {Array} Returns the cast property path array.
-     */
-    function baseCastPath(value) {
-      return isArray(value) ? value : stringToPath(value);
-    }
-
-    /**
      * The base implementation of `_.clamp` which doesn't coerce arguments to numbers.
      *
      * @private
@@ -77249,14 +77500,13 @@ return jQuery;
      * @private
      * @param {*} value The value to clone.
      * @param {boolean} [isDeep] Specify a deep clone.
-     * @param {boolean} [isFull] Specify a clone including symbols.
      * @param {Function} [customizer] The function to customize cloning.
      * @param {string} [key] The key of `value`.
      * @param {Object} [object] The parent object of `value`.
      * @param {Object} [stack] Tracks traversed objects and their clone counterparts.
      * @returns {*} Returns the cloned value.
      */
-    function baseClone(value, isDeep, isFull, customizer, key, object, stack) {
+    function baseClone(value, isDeep, customizer, key, object, stack) {
       var result;
       if (customizer) {
         result = object ? customizer(value, key, object, stack) : customizer(value);
@@ -77277,23 +77527,18 @@ return jQuery;
         var tag = getTag(value),
             isFunc = tag == funcTag || tag == genTag;
 
-        if (isBuffer(value)) {
-          return cloneBuffer(value, isDeep);
-        }
         if (tag == objectTag || tag == argsTag || (isFunc && !object)) {
           if (isHostObject(value)) {
             return object ? value : {};
           }
           result = initCloneObject(isFunc ? {} : value);
           if (!isDeep) {
-            result = baseAssign(result, value);
-            return isFull ? copySymbols(value, result) : result;
+            return copySymbols(value, baseAssign(result, value));
           }
         } else {
-          if (!cloneableTags[tag]) {
-            return object ? value : {};
-          }
-          result = initCloneByTag(value, tag, isDeep);
+          return cloneableTags[tag]
+            ? initCloneByTag(value, tag, isDeep)
+            : (object ? value : {});
         }
       }
       // Check for circular references and return its corresponding clone.
@@ -77306,9 +77551,9 @@ return jQuery;
 
       // Recursively populate clone (susceptible to call stack limits).
       (isArr ? arrayEach : baseForOwn)(value, function(subValue, key) {
-        assignValue(result, key, baseClone(subValue, isDeep, isFull, customizer, key, value, stack));
+        assignValue(result, key, baseClone(subValue, isDeep, customizer, key, value, stack));
       });
-      return (isFull && !isArr) ? copySymbols(value, result) : result;
+      return isArr ? result : copySymbols(value, result);
     }
 
     /**
@@ -77348,9 +77593,17 @@ return jQuery;
      * @param {Object} prototype The object to inherit from.
      * @returns {Object} Returns the new object.
      */
-    function baseCreate(proto) {
-      return isObject(proto) ? objectCreate(proto) : {};
-    }
+    var baseCreate = (function() {
+      function object() {}
+      return function(prototype) {
+        if (isObject(prototype)) {
+          object.prototype = prototype;
+          var result = new object;
+          object.prototype = undefined;
+        }
+        return result || {};
+      };
+    }());
 
     /**
      * The base implementation of `_.delay` and `_.defer` which accepts an array
@@ -77359,7 +77612,7 @@ return jQuery;
      * @private
      * @param {Function} func The function to delay.
      * @param {number} wait The number of milliseconds to delay invocation.
-     * @param {Object} args The arguments to provide to `func`.
+     * @param {Object} args The arguments provide to `func`.
      * @returns {number} Returns the timer id.
      */
     function baseDelay(func, wait, args) {
@@ -77512,12 +77765,12 @@ return jQuery;
      *
      * @private
      * @param {Array} array The array to flatten.
-     * @param {number} depth The maximum recursion depth.
+     * @param {boolean} [isDeep] Specify a deep flatten.
      * @param {boolean} [isStrict] Restrict flattening to arrays-like objects.
      * @param {Array} [result=[]] The initial result value.
      * @returns {Array} Returns the new flattened array.
      */
-    function baseFlatten(array, depth, isStrict, result) {
+    function baseFlatten(array, isDeep, isStrict, result) {
       result || (result = []);
 
       var index = -1,
@@ -77525,11 +77778,11 @@ return jQuery;
 
       while (++index < length) {
         var value = array[index];
-        if (depth > 0 && isArrayLikeObject(value) &&
+        if (isArrayLikeObject(value) &&
             (isStrict || isArray(value) || isArguments(value))) {
-          if (depth > 1) {
+          if (isDeep) {
             // Recursively flatten arrays (susceptible to call stack limits).
-            baseFlatten(value, depth - 1, isStrict, result);
+            baseFlatten(value, isDeep, isStrict, result);
           } else {
             arrayPush(result, value);
           }
@@ -77604,7 +77857,7 @@ return jQuery;
 
     /**
      * The base implementation of `_.functions` which creates an array of
-     * `object` function property names filtered from `props`.
+     * `object` function property names filtered from those provided.
      *
      * @private
      * @param {Object} object The object to inspect.
@@ -77626,7 +77879,7 @@ return jQuery;
      * @returns {*} Returns the resolved value.
      */
     function baseGet(object, path) {
-      path = isKey(path, object) ? [path + ''] : baseCastPath(path);
+      path = isKey(path, object) ? [path + ''] : baseToPath(path);
 
       var index = 0,
           length = path.length;
@@ -77690,11 +77943,9 @@ return jQuery;
      */
     function baseIntersection(arrays, iteratee, comparator) {
       var includes = comparator ? arrayIncludesWith : arrayIncludes,
-          length = arrays[0].length,
           othLength = arrays.length,
           othIndex = othLength,
           caches = Array(othLength),
-          maxLength = Infinity,
           result = [];
 
       while (othIndex--) {
@@ -77702,32 +77953,26 @@ return jQuery;
         if (othIndex && iteratee) {
           array = arrayMap(array, baseUnary(iteratee));
         }
-        maxLength = nativeMin(array.length, maxLength);
-        caches[othIndex] = !comparator && (iteratee || (length >= 120 && array.length >= 120))
+        caches[othIndex] = !comparator && (iteratee || array.length >= 120)
           ? new SetCache(othIndex && array)
           : undefined;
       }
       array = arrays[0];
 
       var index = -1,
+          length = array.length,
           seen = caches[0];
 
       outer:
-      while (++index < length && result.length < maxLength) {
+      while (++index < length) {
         var value = array[index],
             computed = iteratee ? iteratee(value) : value;
 
-        if (!(seen
-              ? cacheHas(seen, computed)
-              : includes(result, computed, comparator)
-            )) {
-          othIndex = othLength;
+        if (!(seen ? cacheHas(seen, computed) : includes(result, computed, comparator))) {
+          var othIndex = othLength;
           while (--othIndex) {
             var cache = caches[othIndex];
-            if (!(cache
-                  ? cacheHas(cache, computed)
-                  : includes(arrays[othIndex], computed, comparator))
-                ) {
+            if (!(cache ? cacheHas(cache, computed) : includes(arrays[othIndex], computed, comparator))) {
               continue outer;
             }
           }
@@ -77738,24 +77983,6 @@ return jQuery;
         }
       }
       return result;
-    }
-
-    /**
-     * The base implementation of `_.invert` and `_.invertBy` which inverts
-     * `object` with values transformed by `iteratee` and set by `setter`.
-     *
-     * @private
-     * @param {Object} object The object to iterate over.
-     * @param {Function} setter The function to set `accumulator` values.
-     * @param {Function} iteratee The iteratee to transform values.
-     * @param {Object} accumulator The initial inverted object.
-     * @returns {Function} Returns `accumulator`.
-     */
-    function baseInverter(object, setter, iteratee, accumulator) {
-      baseForOwn(object, function(value, key, object) {
-        setter(accumulator, iteratee(value), key, object);
-      });
-      return accumulator;
     }
 
     /**
@@ -77770,7 +77997,7 @@ return jQuery;
      */
     function baseInvoke(object, path, args) {
       if (!isKey(path, object)) {
-        path = baseCastPath(path);
+        path = baseToPath(path);
         object = parent(object, path);
         path = last(path);
       }
@@ -77825,28 +78052,33 @@ return jQuery;
 
       if (!objIsArr) {
         objTag = getTag(object);
-        objTag = objTag == argsTag ? objectTag : objTag;
+        if (objTag == argsTag) {
+          objTag = objectTag;
+        } else if (objTag != objectTag) {
+          objIsArr = isTypedArray(object);
+        }
       }
       if (!othIsArr) {
         othTag = getTag(other);
-        othTag = othTag == argsTag ? objectTag : othTag;
+        if (othTag == argsTag) {
+          othTag = objectTag;
+        } else if (othTag != objectTag) {
+          othIsArr = isTypedArray(other);
+        }
       }
       var objIsObj = objTag == objectTag && !isHostObject(object),
           othIsObj = othTag == objectTag && !isHostObject(other),
           isSameTag = objTag == othTag;
 
-      if (isSameTag && !objIsObj) {
-        stack || (stack = new Stack);
-        return (objIsArr || isTypedArray(object))
-          ? equalArrays(object, other, equalFunc, customizer, bitmask, stack)
-          : equalByTag(object, other, objTag, equalFunc, customizer, bitmask, stack);
+      if (isSameTag && !(objIsArr || objIsObj)) {
+        return equalByTag(object, other, objTag, equalFunc, customizer, bitmask);
       }
-      if (!(bitmask & PARTIAL_COMPARE_FLAG)) {
+      var isPartial = bitmask & PARTIAL_COMPARE_FLAG;
+      if (!isPartial) {
         var objIsWrapped = objIsObj && hasOwnProperty.call(object, '__wrapped__'),
             othIsWrapped = othIsObj && hasOwnProperty.call(other, '__wrapped__');
 
         if (objIsWrapped || othIsWrapped) {
-          stack || (stack = new Stack);
           return equalFunc(objIsWrapped ? object.value() : object, othIsWrapped ? other.value() : other, customizer, bitmask, stack);
         }
       }
@@ -77854,7 +78086,7 @@ return jQuery;
         return false;
       }
       stack || (stack = new Stack);
-      return equalObjects(object, other, equalFunc, customizer, bitmask, stack);
+      return (objIsArr ? equalArrays : equalObjects)(object, other, equalFunc, customizer, bitmask, stack);
     }
 
     /**
@@ -77938,6 +78170,7 @@ return jQuery;
      * property of prototypes or treat sparse arrays as dense.
      *
      * @private
+     * @type Function
      * @param {Object} object The object to query.
      * @returns {Array} Returns the array of property names.
      */
@@ -78045,10 +78278,7 @@ return jQuery;
       if (object === source) {
         return;
       }
-      var props = (isArray(source) || isTypedArray(source))
-        ? undefined
-        : keysIn(source);
-
+      var props = (isArray(source) || isTypedArray(source)) ? undefined : keysIn(source);
       arrayEach(props || source, function(srcValue, key) {
         if (props) {
           key = srcValue;
@@ -78059,10 +78289,7 @@ return jQuery;
           baseMergeDeep(object, source, key, srcIndex, baseMerge, customizer, stack);
         }
         else {
-          var newValue = customizer
-            ? customizer(object[key], srcValue, (key + ''), object, source, stack)
-            : undefined;
-
+          var newValue = customizer ? customizer(object[key], srcValue, (key + ''), object, source, stack) : undefined;
           if (newValue === undefined) {
             newValue = srcValue;
           }
@@ -78088,30 +78315,26 @@ return jQuery;
     function baseMergeDeep(object, source, key, srcIndex, mergeFunc, customizer, stack) {
       var objValue = object[key],
           srcValue = source[key],
-          stacked = stack.get(srcValue);
+          stacked = stack.get(srcValue) || stack.get(objValue);
 
       if (stacked) {
         assignMergeValue(object, key, stacked);
         return;
       }
-      var newValue = customizer
-        ? customizer(objValue, srcValue, (key + ''), object, source, stack)
-        : undefined;
-
-      var isCommon = newValue === undefined;
+      var newValue = customizer ? customizer(objValue, srcValue, (key + ''), object, source, stack) : undefined,
+          isCommon = newValue === undefined;
 
       if (isCommon) {
         newValue = srcValue;
         if (isArray(srcValue) || isTypedArray(srcValue)) {
           if (isArray(objValue)) {
-            newValue = objValue;
+            newValue = srcIndex ? copyArray(objValue) : objValue;
           }
           else if (isArrayLikeObject(objValue)) {
             newValue = copyArray(objValue);
           }
           else {
-            isCommon = false;
-            newValue = baseClone(srcValue, !customizer);
+            newValue = baseClone(srcValue);
           }
         }
         else if (isPlainObject(srcValue) || isArguments(srcValue)) {
@@ -78119,11 +78342,10 @@ return jQuery;
             newValue = toPlainObject(objValue);
           }
           else if (!isObject(objValue) || (srcIndex && isFunction(objValue))) {
-            isCommon = false;
-            newValue = baseClone(srcValue, !customizer);
+            newValue = baseClone(srcValue);
           }
           else {
-            newValue = objValue;
+            newValue = srcIndex ? baseClone(objValue) : objValue;
           }
         }
         else {
@@ -78136,7 +78358,6 @@ return jQuery;
         // Recursively merge objects and arrays (susceptible to call stack limits).
         mergeFunc(newValue, srcValue, srcIndex, customizer, stack);
       }
-      stack['delete'](srcValue);
       assignMergeValue(object, key, newValue);
     }
 
@@ -78150,8 +78371,12 @@ return jQuery;
      * @returns {Array} Returns the new sorted array.
      */
     function baseOrderBy(collection, iteratees, orders) {
-      var index = -1;
-      iteratees = arrayMap(iteratees.length ? iteratees : Array(1), getIteratee());
+      var index = -1,
+          toIteratee = getIteratee();
+
+      iteratees = arrayMap(iteratees.length ? iteratees : Array(1), function(iteratee) {
+        return toIteratee(iteratee);
+      });
 
       var result = baseMap(collection, function(value, key, collection) {
         var criteria = arrayMap(iteratees, function(iteratee) {
@@ -78229,6 +78454,18 @@ return jQuery;
     }
 
     /**
+     * The base implementation of `_.pullAll`.
+     *
+     * @private
+     * @param {Array} array The array to modify.
+     * @param {Array} values The values to remove.
+     * @returns {Array} Returns `array`.
+     */
+    function basePullAll(array, values) {
+      return basePullAllBy(array, values);
+    }
+
+    /**
      * The base implementation of `_.pullAllBy` without support for iteratee
      * shorthands.
      *
@@ -78236,24 +78473,22 @@ return jQuery;
      * @param {Array} array The array to modify.
      * @param {Array} values The values to remove.
      * @param {Function} [iteratee] The iteratee invoked per element.
-     * @param {Function} [comparator] The comparator invoked per element.
      * @returns {Array} Returns `array`.
      */
-    function basePullAll(array, values, iteratee, comparator) {
-      var indexOf = comparator ? baseIndexOfWith : baseIndexOf,
-          index = -1,
+    function basePullAllBy(array, values, iteratee) {
+      var index = -1,
           length = values.length,
           seen = array;
 
       if (iteratee) {
-        seen = arrayMap(array, baseUnary(iteratee));
+        seen = arrayMap(array, function(value) { return iteratee(value); });
       }
       while (++index < length) {
         var fromIndex = 0,
             value = values[index],
             computed = iteratee ? iteratee(value) : value;
 
-        while ((fromIndex = indexOf(seen, computed, fromIndex, comparator)) > -1) {
+        while ((fromIndex = baseIndexOf(seen, computed, fromIndex)) > -1) {
           if (seen !== array) {
             splice.call(seen, fromIndex, 1);
           }
@@ -78284,7 +78519,7 @@ return jQuery;
             splice.call(array, index, 1);
           }
           else if (!isKey(index, array)) {
-            var path = baseCastPath(index),
+            var path = baseToPath(index),
                 object = parent(array, path);
 
             if (object != null) {
@@ -78346,7 +78581,7 @@ return jQuery;
      * @returns {Object} Returns `object`.
      */
     function baseSet(object, path, value, customizer) {
-      path = isKey(path, object) ? [path + ''] : baseCastPath(path);
+      path = isKey(path, object) ? [path + ''] : baseToPath(path);
 
       var index = -1,
           length = path.length,
@@ -78361,9 +78596,7 @@ return jQuery;
             var objValue = nested[key];
             newValue = customizer ? customizer(objValue, key, nested) : undefined;
             if (newValue === undefined) {
-              newValue = objValue == null
-                ? (isIndex(path[index + 1]) ? [] : {})
-                : objValue;
+              newValue = objValue == null ? (isIndex(path[index + 1]) ? [] : {}) : objValue;
             }
           }
           assignValue(nested, key, newValue);
@@ -78539,7 +78772,7 @@ return jQuery;
           value = array[0],
           computed = iteratee ? iteratee(value) : value,
           seen = computed,
-          resIndex = 1,
+          resIndex = 0,
           result = [value];
 
       while (++index < length) {
@@ -78548,10 +78781,22 @@ return jQuery;
 
         if (!eq(computed, seen)) {
           seen = computed;
-          result[resIndex++] = value;
+          result[++resIndex] = value;
         }
       }
       return result;
+    }
+
+    /**
+     * The base implementation of `_.toPath` which only converts `value` to a
+     * path if it's not one.
+     *
+     * @private
+     * @param {*} value The value to process.
+     * @returns {Array} Returns the property path array.
+     */
+    function baseToPath(value) {
+      return isArray(value) ? value : stringToPath(value);
     }
 
     /**
@@ -78623,24 +78868,10 @@ return jQuery;
      * @returns {boolean} Returns `true` if the property is deleted, else `false`.
      */
     function baseUnset(object, path) {
-      path = isKey(path, object) ? [path + ''] : baseCastPath(path);
+      path = isKey(path, object) ? [path + ''] : baseToPath(path);
       object = parent(object, path);
       var key = last(path);
       return (object != null && has(object, key)) ? delete object[key] : true;
-    }
-
-    /**
-     * The base implementation of `_.update`.
-     *
-     * @private
-     * @param {Object} object The object to query.
-     * @param {Array|string} path The path of the property to update.
-     * @param {Function} updater The function to produce the updated value.
-     * @param {Function} [customizer] The function to customize path creation.
-     * @returns {Object} Returns `object`.
-     */
-    function baseUpdate(object, path, updater, customizer) {
-      return baseSet(object, path, updater(baseGet(object, path)), customizer);
     }
 
     /**
@@ -78712,53 +78943,18 @@ return jQuery;
     }
 
     /**
-     * This base implementation of `_.zipObject` which assigns values using `assignFunc`.
+     * Creates a clone of `buffer`.
      *
      * @private
-     * @param {Array} props The property names.
-     * @param {Array} values The property values.
-     * @param {Function} assignFunc The function to assign values.
-     * @returns {Object} Returns the new object.
-     */
-    function baseZipObject(props, values, assignFunc) {
-      var index = -1,
-          length = props.length,
-          valsLength = values.length,
-          result = {};
-
-      while (++index < length) {
-        assignFunc(result, props[index], index < valsLength ? values[index] : undefined);
-      }
-      return result;
-    }
-
-    /**
-     * Creates a clone of  `buffer`.
-     *
-     * @private
-     * @param {Buffer} buffer The buffer to clone.
-     * @param {boolean} [isDeep] Specify a deep clone.
-     * @returns {Buffer} Returns the cloned buffer.
-     */
-    function cloneBuffer(buffer, isDeep) {
-      if (isDeep) {
-        return buffer.slice();
-      }
-      var result = new buffer.constructor(buffer.length);
-      buffer.copy(result);
-      return result;
-    }
-
-    /**
-     * Creates a clone of `arrayBuffer`.
-     *
-     * @private
-     * @param {ArrayBuffer} arrayBuffer The array buffer to clone.
+     * @param {ArrayBuffer} buffer The array buffer to clone.
      * @returns {ArrayBuffer} Returns the cloned array buffer.
      */
-    function cloneArrayBuffer(arrayBuffer) {
-      var result = new arrayBuffer.constructor(arrayBuffer.byteLength);
-      new Uint8Array(result).set(new Uint8Array(arrayBuffer));
+    function cloneBuffer(buffer) {
+      var Ctor = buffer.constructor,
+          result = new Ctor(buffer.byteLength),
+          view = new Uint8Array(result);
+
+      view.set(new Uint8Array(buffer));
       return result;
     }
 
@@ -78770,7 +78966,8 @@ return jQuery;
      * @returns {Object} Returns the cloned map.
      */
     function cloneMap(map) {
-      return arrayReduce(mapToArray(map), addMapEntry, new map.constructor);
+      var Ctor = map.constructor;
+      return arrayReduce(mapToArray(map), addMapEntry, new Ctor);
     }
 
     /**
@@ -78781,7 +78978,9 @@ return jQuery;
      * @returns {Object} Returns the cloned regexp.
      */
     function cloneRegExp(regexp) {
-      var result = new regexp.constructor(regexp.source, reFlags.exec(regexp));
+      var Ctor = regexp.constructor,
+          result = new Ctor(regexp.source, reFlags.exec(regexp));
+
       result.lastIndex = regexp.lastIndex;
       return result;
     }
@@ -78794,7 +78993,8 @@ return jQuery;
      * @returns {Object} Returns the cloned set.
      */
     function cloneSet(set) {
-      return arrayReduce(setToArray(set), addSetEntry, new set.constructor);
+      var Ctor = set.constructor;
+      return arrayReduce(setToArray(set), addSetEntry, new Ctor);
     }
 
     /**
@@ -78805,7 +79005,7 @@ return jQuery;
      * @returns {Object} Returns the cloned symbol object.
      */
     function cloneSymbol(symbol) {
-      return symbolValueOf ? Object(symbolValueOf.call(symbol)) : {};
+      return Symbol ? Object(symbolValueOf.call(symbol)) : {};
     }
 
     /**
@@ -78817,8 +79017,10 @@ return jQuery;
      * @returns {Object} Returns the cloned typed array.
      */
     function cloneTypedArray(typedArray, isDeep) {
-      var buffer = isDeep ? cloneArrayBuffer(typedArray.buffer) : typedArray.buffer;
-      return new typedArray.constructor(buffer, typedArray.byteOffset, typedArray.length);
+      var buffer = typedArray.buffer,
+          Ctor = typedArray.constructor;
+
+      return new Ctor(isDeep ? cloneBuffer(buffer) : buffer, typedArray.byteOffset, typedArray.length);
     }
 
     /**
@@ -78829,28 +79031,23 @@ return jQuery;
      * @param {Array|Object} args The provided arguments.
      * @param {Array} partials The arguments to prepend to those provided.
      * @param {Array} holders The `partials` placeholder indexes.
-     * @params {boolean} [isCurried] Specify composing for a curried function.
      * @returns {Array} Returns the new array of composed arguments.
      */
-    function composeArgs(args, partials, holders, isCurried) {
-      var argsIndex = -1,
-          argsLength = args.length,
-          holdersLength = holders.length,
+    function composeArgs(args, partials, holders) {
+      var holdersLength = holders.length,
+          argsIndex = -1,
+          argsLength = nativeMax(args.length - holdersLength, 0),
           leftIndex = -1,
           leftLength = partials.length,
-          rangeLength = nativeMax(argsLength - holdersLength, 0),
-          result = Array(leftLength + rangeLength),
-          isUncurried = !isCurried;
+          result = Array(leftLength + argsLength);
 
       while (++leftIndex < leftLength) {
         result[leftIndex] = partials[leftIndex];
       }
       while (++argsIndex < holdersLength) {
-        if (isUncurried || argsIndex < argsLength) {
-          result[holders[argsIndex]] = args[argsIndex];
-        }
+        result[holders[argsIndex]] = args[argsIndex];
       }
-      while (rangeLength--) {
+      while (argsLength--) {
         result[leftIndex++] = args[argsIndex++];
       }
       return result;
@@ -78864,21 +79061,18 @@ return jQuery;
      * @param {Array|Object} args The provided arguments.
      * @param {Array} partials The arguments to append to those provided.
      * @param {Array} holders The `partials` placeholder indexes.
-     * @params {boolean} [isCurried] Specify composing for a curried function.
      * @returns {Array} Returns the new array of composed arguments.
      */
-    function composeArgsRight(args, partials, holders, isCurried) {
-      var argsIndex = -1,
-          argsLength = args.length,
-          holdersIndex = -1,
+    function composeArgsRight(args, partials, holders) {
+      var holdersIndex = -1,
           holdersLength = holders.length,
+          argsIndex = -1,
+          argsLength = nativeMax(args.length - holdersLength, 0),
           rightIndex = -1,
           rightLength = partials.length,
-          rangeLength = nativeMax(argsLength - holdersLength, 0),
-          result = Array(rangeLength + rightLength),
-          isUncurried = !isCurried;
+          result = Array(argsLength + rightLength);
 
-      while (++argsIndex < rangeLength) {
+      while (++argsIndex < argsLength) {
         result[argsIndex] = args[argsIndex];
       }
       var offset = argsIndex;
@@ -78886,9 +79080,7 @@ return jQuery;
         result[offset + rightIndex] = partials[rightIndex];
       }
       while (++holdersIndex < holdersLength) {
-        if (isUncurried || argsIndex < argsLength) {
-          result[offset + holders[holdersIndex]] = args[argsIndex++];
-        }
+        result[offset + holders[holdersIndex]] = args[argsIndex++];
       }
       return result;
     }
@@ -78943,11 +79135,8 @@ return jQuery;
           length = props.length;
 
       while (++index < length) {
-        var key = props[index];
-
-        var newValue = customizer
-          ? customizer(object[key], source[key], key, object, source)
-          : source[key];
+        var key = props[index],
+            newValue = customizer ? customizer(object[key], source[key], key, object, source) : source[key];
 
         assignValue(object, key, newValue);
       }
@@ -78970,16 +79159,29 @@ return jQuery;
      * Creates a function like `_.groupBy`.
      *
      * @private
-     * @param {Function} setter The function to set accumulator values.
-     * @param {Function} [initializer] The accumulator object initializer.
+     * @param {Function} setter The function to set keys and values of the accumulator object.
+     * @param {Function} [initializer] The function to initialize the accumulator object.
      * @returns {Function} Returns the new aggregator function.
      */
     function createAggregator(setter, initializer) {
       return function(collection, iteratee) {
-        var func = isArray(collection) ? arrayAggregator : baseAggregator,
-            accumulator = initializer ? initializer() : {};
+        var result = initializer ? initializer() : {};
+        iteratee = getIteratee(iteratee);
 
-        return func(collection, setter, getIteratee(iteratee), accumulator);
+        if (isArray(collection)) {
+          var index = -1,
+              length = collection.length;
+
+          while (++index < length) {
+            var value = collection[index];
+            setter(result, value, iteratee(value), collection);
+          }
+        } else {
+          baseEach(collection, function(value, key, collection) {
+            setter(result, value, iteratee(value), collection);
+          });
+        }
+        return result;
       };
     }
 
@@ -78997,10 +79199,7 @@ return jQuery;
             customizer = length > 1 ? sources[length - 1] : undefined,
             guard = length > 2 ? sources[2] : undefined;
 
-        customizer = typeof customizer == 'function'
-          ? (length--, customizer)
-          : undefined;
-
+        customizer = typeof customizer == 'function' ? (length--, customizer) : undefined;
         if (guard && isIterateeCall(sources[0], sources[1], guard)) {
           customizer = length < 3 ? undefined : customizer;
           length = 1;
@@ -79101,11 +79300,8 @@ return jQuery;
       return function(string) {
         string = toString(string);
 
-        var strSymbols = reHasComplexSymbol.test(string)
-          ? stringToArray(string)
-          : undefined;
-
-        var chr = strSymbols ? strSymbols[0] : string.charAt(0),
+        var strSymbols = reHasComplexSymbol.test(string) ? stringToArray(string) : undefined,
+            chr = strSymbols ? strSymbols[0] : string.charAt(0),
             trailing = strSymbols ? strSymbols.slice(1).join('') : string.slice(1);
 
         return chr[methodName]() + trailing;
@@ -79172,9 +79368,10 @@ return jQuery;
 
       function wrapper() {
         var length = arguments.length,
-            args = Array(length),
             index = length,
-            placeholder = getPlaceholder(wrapper);
+            args = Array(length),
+            fn = (this && this !== root && this instanceof wrapper) ? Ctor : func,
+            placeholder = wrapper.placeholder;
 
         while (index--) {
           args[index] = arguments[index];
@@ -79184,13 +79381,9 @@ return jQuery;
           : replaceHolders(args, placeholder);
 
         length -= holders.length;
-        if (length < arity) {
-          return createRecurryWrapper(
-            func, bitmask, createHybridWrapper, wrapper.placeholder, undefined,
-            args, holders, undefined, undefined, arity - length);
-        }
-        var fn = (this && this !== root && this instanceof wrapper) ? Ctor : func;
-        return apply(fn, this, args);
+        return length < arity
+          ? createRecurryWrapper(func, bitmask, createHybridWrapper, placeholder, undefined, args, holders, undefined, undefined, arity - length)
+          : apply(fn, this, args);
       }
       return wrapper;
     }
@@ -79204,7 +79397,7 @@ return jQuery;
      */
     function createFlow(fromRight) {
       return rest(function(funcs) {
-        funcs = baseFlatten(funcs, 1);
+        funcs = baseFlatten(funcs);
 
         var length = funcs.length,
             index = length,
@@ -79229,10 +79422,7 @@ return jQuery;
           var funcName = getFuncName(func),
               data = funcName == 'wrapper' ? getData(func) : undefined;
 
-          if (data && isLaziable(data[0]) &&
-                data[1] == (ARY_FLAG | CURRY_FLAG | PARTIAL_FLAG | REARG_FLAG) &&
-                !data[4].length && data[9] == 1
-              ) {
+          if (data && isLaziable(data[0]) && data[1] == (ARY_FLAG | CURRY_FLAG | PARTIAL_FLAG | REARG_FLAG) && !data[4].length && data[9] == 1) {
             wrapper = wrapper[getFuncName(data[0])].apply(wrapper, data[3]);
           } else {
             wrapper = (func.length == 1 && isLaziable(func)) ? wrapper[funcName]() : wrapper.thru(func);
@@ -79242,8 +79432,7 @@ return jQuery;
           var args = arguments,
               value = args[0];
 
-          if (wrapper && args.length == 1 &&
-              isArray(value) && value.length >= LARGE_ARRAY_SIZE) {
+          if (wrapper && args.length == 1 && isArray(value) && value.length >= LARGE_ARRAY_SIZE) {
             return wrapper.plant(value).value();
           }
           var index = 0,
@@ -79278,7 +79467,8 @@ return jQuery;
       var isAry = bitmask & ARY_FLAG,
           isBind = bitmask & BIND_FLAG,
           isBindKey = bitmask & BIND_KEY_FLAG,
-          isCurried = bitmask & (CURRY_FLAG | CURRY_RIGHT_FLAG),
+          isCurry = bitmask & CURRY_FLAG,
+          isCurryRight = bitmask & CURRY_RIGHT_FLAG,
           isFlip = bitmask & FLIP_FLAG,
           Ctor = isBindKey ? undefined : createCtorWrapper(func);
 
@@ -79290,34 +79480,30 @@ return jQuery;
         while (index--) {
           args[index] = arguments[index];
         }
-        if (isCurried) {
-          var placeholder = getPlaceholder(wrapper),
-              holdersCount = countHolders(args, placeholder);
-        }
         if (partials) {
-          args = composeArgs(args, partials, holders, isCurried);
+          args = composeArgs(args, partials, holders);
         }
         if (partialsRight) {
-          args = composeArgsRight(args, partialsRight, holdersRight, isCurried);
+          args = composeArgsRight(args, partialsRight, holdersRight);
         }
-        length -= holdersCount;
-        if (isCurried && length < arity) {
-          var newHolders = replaceHolders(args, placeholder);
-          return createRecurryWrapper(
-            func, bitmask, createHybridWrapper, wrapper.placeholder, thisArg,
-            args, newHolders, argPos, ary, arity - length
-          );
+        if (isCurry || isCurryRight) {
+          var placeholder = wrapper.placeholder,
+              argsHolders = replaceHolders(args, placeholder);
+
+          length -= argsHolders.length;
+          if (length < arity) {
+            return createRecurryWrapper(func, bitmask, createHybridWrapper, placeholder, thisArg, args, argsHolders, argPos, ary, arity - length);
+          }
         }
         var thisBinding = isBind ? thisArg : this,
             fn = isBindKey ? thisBinding[func] : func;
 
-        length = args.length;
         if (argPos) {
           args = reorder(args, argPos);
-        } else if (isFlip && length > 1) {
+        } else if (isFlip && args.length > 1) {
           args.reverse();
         }
-        if (isAry && ary < length) {
+        if (isAry && ary < args.length) {
           args.length = ary;
         }
         if (this && this !== root && this instanceof wrapper) {
@@ -79329,20 +79515,6 @@ return jQuery;
     }
 
     /**
-     * Creates a function like `_.invertBy`.
-     *
-     * @private
-     * @param {Function} setter The function to set accumulator values.
-     * @param {Function} toIteratee The function to resolve iteratees.
-     * @returns {Function} Returns the new inverter function.
-     */
-    function createInverter(setter, toIteratee) {
-      return function(object, iteratee) {
-        return baseInverter(object, setter, toIteratee(iteratee), {});
-      };
-    }
-
-    /**
      * Creates a function like `_.over`.
      *
      * @private
@@ -79351,7 +79523,7 @@ return jQuery;
      */
     function createOver(arrayFunc) {
       return rest(function(iteratees) {
-        iteratees = arrayMap(baseFlatten(iteratees, 1), getIteratee());
+        iteratees = arrayMap(baseFlatten(iteratees), getIteratee());
         return rest(function(args) {
           var thisArg = this;
           return arrayFunc(iteratees, function(iteratee) {
@@ -79455,7 +79627,7 @@ return jQuery;
      * @param {Function} func The function to wrap.
      * @param {number} bitmask The bitmask of wrapper flags. See `createWrapper` for more details.
      * @param {Function} wrapFunc The function to create the `func` wrapper.
-     * @param {*} placeholder The placeholder value.
+     * @param {*} placeholder The placeholder to replace.
      * @param {*} [thisArg] The `this` binding of `func`.
      * @param {Array} [partials] The arguments to prepend to those provided to the new function.
      * @param {Array} [holders] The `partials` placeholder indexes.
@@ -79467,7 +79639,7 @@ return jQuery;
     function createRecurryWrapper(func, bitmask, wrapFunc, placeholder, thisArg, partials, holders, argPos, ary, arity) {
       var isCurry = bitmask & CURRY_FLAG,
           newArgPos = argPos ? copyArray(argPos) : undefined,
-          newHolders = isCurry ? holders : undefined,
+          newsHolders = isCurry ? holders : undefined,
           newHoldersRight = isCurry ? undefined : holders,
           newPartials = isCurry ? partials : undefined,
           newPartialsRight = isCurry ? undefined : partials;
@@ -79478,12 +79650,9 @@ return jQuery;
       if (!(bitmask & CURRY_BOUND_FLAG)) {
         bitmask &= ~(BIND_FLAG | BIND_KEY_FLAG);
       }
-      var newData = [
-        func, bitmask, thisArg, newPartials, newHolders, newPartialsRight,
-        newHoldersRight, newArgPos, ary, arity
-      ];
+      var newData = [func, bitmask, thisArg, newPartials, newsHolders, newPartialsRight, newHoldersRight, newArgPos, ary, arity],
+          result = wrapFunc.apply(undefined, newData);
 
-      var result = wrapFunc.apply(undefined, newData);
       if (isLaziable(func)) {
         setData(result, newData);
       }
@@ -79572,12 +79741,8 @@ return jQuery;
 
         partials = holders = undefined;
       }
-      var data = isBindKey ? undefined : getData(func);
-
-      var newData = [
-        func, bitmask, thisArg, partials, holders, partialsRight, holdersRight,
-        argPos, ary, arity
-      ];
+      var data = isBindKey ? undefined : getData(func),
+          newData = [func, bitmask, thisArg, partials, holders, partialsRight, holdersRight, argPos, ary, arity];
 
       if (data) {
         mergeData(newData, data);
@@ -79615,9 +79780,9 @@ return jQuery;
      * @param {Array} array The array to compare.
      * @param {Array} other The other array to compare.
      * @param {Function} equalFunc The function to determine equivalents of values.
-     * @param {Function} customizer The function to customize comparisons.
-     * @param {number} bitmask The bitmask of comparison flags. See `baseIsEqual` for more details.
-     * @param {Object} stack Tracks traversed `array` and `other` objects.
+     * @param {Function} [customizer] The function to customize comparisons.
+     * @param {number} [bitmask] The bitmask of comparison flags. See `baseIsEqual` for more details.
+     * @param {Object} [stack] Tracks traversed `array` and `other` objects.
      * @returns {boolean} Returns `true` if the arrays are equivalent, else `false`.
      */
     function equalArrays(array, other, equalFunc, customizer, bitmask, stack) {
@@ -79684,12 +79849,11 @@ return jQuery;
      * @param {Object} other The other object to compare.
      * @param {string} tag The `toStringTag` of the objects to compare.
      * @param {Function} equalFunc The function to determine equivalents of values.
-     * @param {Function} customizer The function to customize comparisons.
-     * @param {number} bitmask The bitmask of comparison flags. See `baseIsEqual` for more details.
-     * @param {Object} stack Tracks traversed `object` and `other` objects.
+     * @param {Function} [customizer] The function to customize comparisons.
+     * @param {number} [bitmask] The bitmask of comparison flags. See `baseIsEqual` for more details.
      * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
      */
-    function equalByTag(object, other, tag, equalFunc, customizer, bitmask, stack) {
+    function equalByTag(object, other, tag, equalFunc, customizer, bitmask) {
       switch (tag) {
         case arrayBufferTag:
           if ((object.byteLength != other.byteLength) ||
@@ -79724,21 +79888,12 @@ return jQuery;
           var isPartial = bitmask & PARTIAL_COMPARE_FLAG;
           convert || (convert = setToArray);
 
-          if (object.size != other.size && !isPartial) {
-            return false;
-          }
-          // Assume cyclic values are equal.
-          var stacked = stack.get(object);
-          if (stacked) {
-            return stacked == other;
-          }
           // Recursively compare objects (susceptible to call stack limits).
-          return equalArrays(convert(object), convert(other), equalFunc, customizer, bitmask | UNORDERED_COMPARE_FLAG, stack.set(object, other));
+          return (isPartial || object.size == other.size) &&
+            equalFunc(convert(object), convert(other), customizer, bitmask | UNORDERED_COMPARE_FLAG);
 
         case symbolTag:
-          if (symbolValueOf) {
-            return symbolValueOf.call(object) == symbolValueOf.call(other);
-          }
+          return !!Symbol && (symbolValueOf.call(object) == symbolValueOf.call(other));
       }
       return false;
     }
@@ -79751,9 +79906,9 @@ return jQuery;
      * @param {Object} object The object to compare.
      * @param {Object} other The other object to compare.
      * @param {Function} equalFunc The function to determine equivalents of values.
-     * @param {Function} customizer The function to customize comparisons.
-     * @param {number} bitmask The bitmask of comparison flags. See `baseIsEqual` for more details.
-     * @param {Object} stack Tracks traversed `object` and `other` objects.
+     * @param {Function} [customizer] The function to customize comparisons.
+     * @param {number} [bitmask] The bitmask of comparison flags. See `baseIsEqual` for more details.
+     * @param {Object} [stack] Tracks traversed `object` and `other` objects.
      * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
      */
     function equalObjects(object, other, equalFunc, customizer, bitmask, stack) {
@@ -79906,20 +80061,8 @@ return jQuery;
      * @returns {*} Returns the function if it's native, else `undefined`.
      */
     function getNative(object, key) {
-      var value = object[key];
+      var value = object == null ? undefined : object[key];
       return isNative(value) ? value : undefined;
-    }
-
-    /**
-     * Gets the argument placeholder value for `func`.
-     *
-     * @private
-     * @param {Function} func The function to inspect.
-     * @returns {*} Returns the placeholder value.
-     */
-    function getPlaceholder(func) {
-      var object = hasOwnProperty.call(lodash, 'placeholder') ? lodash : func;
-      return object.placeholder;
     }
 
     /**
@@ -79944,20 +80087,19 @@ return jQuery;
       return objectToString.call(value);
     }
 
-    // Fallback for IE 11 providing `toStringTag` values for maps, sets, and weakmaps.
-    if ((Map && getTag(new Map) != mapTag) ||
-        (Set && getTag(new Set) != setTag) ||
-        (WeakMap && getTag(new WeakMap) != weakMapTag)) {
+    // Fallback for IE 11 providing `toStringTag` values for maps and sets.
+    if ((Map && getTag(new Map) != mapTag) || (Set && getTag(new Set) != setTag)) {
       getTag = function(value) {
         var result = objectToString.call(value),
             Ctor = result == objectTag ? value.constructor : null,
             ctorString = typeof Ctor == 'function' ? funcToString.call(Ctor) : '';
 
         if (ctorString) {
-          switch (ctorString) {
-            case mapCtorString: return mapTag;
-            case setCtorString: return setTag;
-            case weakMapCtorString: return weakMapTag;
+          if (ctorString == mapCtorString) {
+            return mapTag;
+          }
+          if (ctorString == setCtorString) {
+            return setTag;
           }
         }
         return result;
@@ -80007,18 +80149,15 @@ return jQuery;
       }
       var result = hasFunc(object, path);
       if (!result && !isKey(path)) {
-        path = baseCastPath(path);
+        path = baseToPath(path);
         object = parent(object, path);
         if (object != null) {
           path = last(path);
           result = hasFunc(object, path);
         }
       }
-      var length = object ? object.length : undefined;
-      return result || (
-        !!length && isLength(length) && isIndex(path, length) &&
-        (isArray(object) || isString(object) || isArguments(object))
-      );
+      return result || (isLength(object && object.length) && isIndex(path, object.length) &&
+        (isArray(object) || isString(object) || isArguments(object)));
     }
 
     /**
@@ -80048,9 +80187,8 @@ return jQuery;
      * @returns {Object} Returns the initialized clone.
      */
     function initCloneObject(object) {
-      return (typeof object.constructor == 'function' && !isPrototype(object))
-        ? baseCreate(getPrototypeOf(object))
-        : {};
+      var Ctor = object.constructor;
+      return baseCreate(isFunction(Ctor) ? Ctor.prototype : undefined);
     }
 
     /**
@@ -80069,7 +80207,7 @@ return jQuery;
       var Ctor = object.constructor;
       switch (tag) {
         case arrayBufferTag:
-          return cloneArrayBuffer(object);
+          return cloneBuffer(object);
 
         case boolTag:
         case dateTag:
@@ -80108,15 +80246,13 @@ return jQuery;
      */
     function indexKeys(object) {
       var length = object ? object.length : undefined;
-      if (isLength(length) &&
-          (isArray(object) || isString(object) || isArguments(object))) {
-        return baseTimes(length, String);
-      }
-      return null;
+      return (isLength(length) && (isArray(object) || isString(object) || isArguments(object)))
+        ? baseTimes(length, String)
+        : null;
     }
 
     /**
-     * Checks if the given arguments are from an iteratee call.
+     * Checks if the provided arguments are from an iteratee call.
      *
      * @private
      * @param {*} value The potential iteratee value argument.
@@ -80164,7 +80300,7 @@ return jQuery;
     function isKeyable(value) {
       var type = typeof value;
       return type == 'number' || type == 'boolean' ||
-        (type == 'string' && value != '__proto__') || value == null;
+        (type == 'string' && value !== '__proto__') || value == null;
     }
 
     /**
@@ -80236,9 +80372,9 @@ return jQuery;
           isCommon = newBitmask < (BIND_FLAG | BIND_KEY_FLAG | ARY_FLAG);
 
       var isCombo =
-        ((srcBitmask == ARY_FLAG) && (bitmask == CURRY_FLAG)) ||
-        ((srcBitmask == ARY_FLAG) && (bitmask == REARG_FLAG) && (data[7].length <= source[8])) ||
-        ((srcBitmask == (ARY_FLAG | REARG_FLAG)) && (source[7].length <= source[8]) && (bitmask == CURRY_FLAG));
+        (srcBitmask == ARY_FLAG && (bitmask == CURRY_FLAG)) ||
+        (srcBitmask == ARY_FLAG && (bitmask == REARG_FLAG) && (data[7].length <= source[8])) ||
+        (srcBitmask == (ARY_FLAG | REARG_FLAG) && (source[7].length <= source[8]) && (bitmask == CURRY_FLAG));
 
       // Exit early if metadata can't be merged.
       if (!(isCommon || isCombo)) {
@@ -80248,7 +80384,7 @@ return jQuery;
       if (srcBitmask & BIND_FLAG) {
         data[2] = source[2];
         // Set when currying a bound function.
-        newBitmask |= bitmask & BIND_FLAG ? 0 : CURRY_BOUND_FLAG;
+        newBitmask |= (bitmask & BIND_FLAG) ? 0 : CURRY_BOUND_FLAG;
       }
       // Compose partial arguments.
       var value = source[3];
@@ -80298,7 +80434,8 @@ return jQuery;
      */
     function mergeDefaults(objValue, srcValue, key, object, source, stack) {
       if (isObject(objValue) && isObject(srcValue)) {
-        baseMerge(objValue, srcValue, undefined, mergeDefaults, stack.set(srcValue, objValue));
+        stack.set(srcValue, objValue);
+        baseMerge(objValue, srcValue, undefined, mergeDefaults, stack);
       }
       return objValue;
     }
@@ -80386,6 +80523,28 @@ return jQuery;
     }
 
     /**
+     * Converts `value` to an array-like object if it's not one.
+     *
+     * @private
+     * @param {*} value The value to process.
+     * @returns {Array} Returns the array-like object.
+     */
+    function toArrayLikeObject(value) {
+      return isArrayLikeObject(value) ? value : [];
+    }
+
+    /**
+     * Converts `value` to a function if it's not one.
+     *
+     * @private
+     * @param {*} value The value to process.
+     * @returns {Function} Returns the function.
+     */
+    function toFunction(value) {
+      return typeof value == 'function' ? value : identity;
+    }
+
+    /**
      * Creates a clone of `wrapper`.
      *
      * @private
@@ -80432,11 +80591,11 @@ return jQuery;
         return [];
       }
       var index = 0,
-          resIndex = 0,
+          resIndex = -1,
           result = Array(nativeCeil(length / size));
 
       while (index < length) {
-        result[resIndex++] = baseSlice(array, index, (index += size));
+        result[++resIndex] = baseSlice(array, index, (index += size));
       }
       return result;
     }
@@ -80458,13 +80617,13 @@ return jQuery;
     function compact(array) {
       var index = -1,
           length = array ? array.length : 0,
-          resIndex = 0,
+          resIndex = -1,
           result = [];
 
       while (++index < length) {
         var value = array[index];
         if (value) {
-          result[resIndex++] = value;
+          result[++resIndex] = value;
         }
       }
       return result;
@@ -80495,15 +80654,14 @@ return jQuery;
       if (!isArray(array)) {
         array = array == null ? [] : [Object(array)];
       }
-      values = baseFlatten(values, 1);
+      values = baseFlatten(values);
       return arrayConcat(array, values);
     });
 
     /**
      * Creates an array of unique `array` values not included in the other
-     * given arrays using [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
-     * for equality comparisons. The order of result values is determined by the
-     * order they occur in the first array.
+     * provided arrays using [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
+     * for equality comparisons.
      *
      * @static
      * @memberOf _
@@ -80518,15 +80676,14 @@ return jQuery;
      */
     var difference = rest(function(array, values) {
       return isArrayLikeObject(array)
-        ? baseDifference(array, baseFlatten(values, 1, true))
+        ? baseDifference(array, baseFlatten(values, false, true))
         : [];
     });
 
     /**
      * This method is like `_.difference` except that it accepts `iteratee` which
      * is invoked for each element of `array` and `values` to generate the criterion
-     * by which they're compared. Result values are chosen from the first array.
-     * The iteratee is invoked with one argument: (value).
+     * by which uniqueness is computed. The iteratee is invoked with one argument: (value).
      *
      * @static
      * @memberOf _
@@ -80540,7 +80697,7 @@ return jQuery;
      * _.differenceBy([3.1, 2.2, 1.3], [4.4, 2.5], Math.floor);
      * // => [3.1, 1.3]
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.differenceBy([{ 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }], 'x');
      * // => [{ 'x': 2 }]
      */
@@ -80550,15 +80707,14 @@ return jQuery;
         iteratee = undefined;
       }
       return isArrayLikeObject(array)
-        ? baseDifference(array, baseFlatten(values, 1, true), getIteratee(iteratee))
+        ? baseDifference(array, baseFlatten(values, false, true), getIteratee(iteratee))
         : [];
     });
 
     /**
      * This method is like `_.difference` except that it accepts `comparator`
-     * which is invoked to compare elements of `array` to `values`. Result values
-     * are chosen from the first array. The comparator is invoked with two arguments:
-     * (arrVal, othVal).
+     * which is invoked to compare elements of `array` to `values`. The comparator
+     * is invoked with two arguments: (arrVal, othVal).
      *
      * @static
      * @memberOf _
@@ -80580,7 +80736,7 @@ return jQuery;
         comparator = undefined;
       }
       return isArrayLikeObject(array)
-        ? baseDifference(array, baseFlatten(values, 1, true), undefined, comparator)
+        ? baseDifference(array, baseFlatten(values, false, true), undefined, comparator)
         : [];
     });
 
@@ -80673,15 +80829,15 @@ return jQuery;
      * _.dropRightWhile(users, function(o) { return !o.active; });
      * // => objects for ['barney']
      *
-     * // The `_.matches` iteratee shorthand.
+     * // using the `_.matches` iteratee shorthand
      * _.dropRightWhile(users, { 'user': 'pebbles', 'active': false });
      * // => objects for ['barney', 'fred']
      *
-     * // The `_.matchesProperty` iteratee shorthand.
+     * // using the `_.matchesProperty` iteratee shorthand
      * _.dropRightWhile(users, ['active', false]);
      * // => objects for ['barney']
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.dropRightWhile(users, 'active');
      * // => objects for ['barney', 'fred', 'pebbles']
      */
@@ -80713,15 +80869,15 @@ return jQuery;
      * _.dropWhile(users, function(o) { return !o.active; });
      * // => objects for ['pebbles']
      *
-     * // The `_.matches` iteratee shorthand.
+     * // using the `_.matches` iteratee shorthand
      * _.dropWhile(users, { 'user': 'barney', 'active': false });
      * // => objects for ['fred', 'pebbles']
      *
-     * // The `_.matchesProperty` iteratee shorthand.
+     * // using the `_.matchesProperty` iteratee shorthand
      * _.dropWhile(users, ['active', false]);
      * // => objects for ['pebbles']
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.dropWhile(users, 'active');
      * // => objects for ['barney', 'fred', 'pebbles']
      */
@@ -80792,15 +80948,15 @@ return jQuery;
      * _.findIndex(users, function(o) { return o.user == 'barney'; });
      * // => 0
      *
-     * // The `_.matches` iteratee shorthand.
+     * // using the `_.matches` iteratee shorthand
      * _.findIndex(users, { 'user': 'fred', 'active': false });
      * // => 1
      *
-     * // The `_.matchesProperty` iteratee shorthand.
+     * // using the `_.matchesProperty` iteratee shorthand
      * _.findIndex(users, ['active', false]);
      * // => 0
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.findIndex(users, 'active');
      * // => 2
      */
@@ -80831,15 +80987,15 @@ return jQuery;
      * _.findLastIndex(users, function(o) { return o.user == 'pebbles'; });
      * // => 2
      *
-     * // The `_.matches` iteratee shorthand.
+     * // using the `_.matches` iteratee shorthand
      * _.findLastIndex(users, { 'user': 'barney', 'active': true });
      * // => 0
      *
-     * // The `_.matchesProperty` iteratee shorthand.
+     * // using the `_.matchesProperty` iteratee shorthand
      * _.findLastIndex(users, ['active', false]);
      * // => 2
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.findLastIndex(users, 'active');
      * // => 0
      */
@@ -80850,7 +81006,32 @@ return jQuery;
     }
 
     /**
-     * Flattens `array` a single level deep.
+     * Creates an array of flattened values by running each element in `array`
+     * through `iteratee` and concating its result to the other mapped values.
+     * The iteratee is invoked with three arguments: (value, index|key, array).
+     *
+     * @static
+     * @memberOf _
+     * @category Array
+     * @param {Array} array The array to iterate over.
+     * @param {Function|Object|string} [iteratee=_.identity] The function invoked per iteration.
+     * @returns {Array} Returns the new array.
+     * @example
+     *
+     * function duplicate(n) {
+     *   return [n, n];
+     * }
+     *
+     * _.flatMap([1, 2], duplicate);
+     * // => [1, 1, 2, 2]
+     */
+    function flatMap(array, iteratee) {
+      var length = array ? array.length : 0;
+      return length ? baseFlatten(arrayMap(array, getIteratee(iteratee, 3))) : [];
+    }
+
+    /**
+     * Flattens `array` a single level.
      *
      * @static
      * @memberOf _
@@ -80859,58 +81040,30 @@ return jQuery;
      * @returns {Array} Returns the new flattened array.
      * @example
      *
-     * _.flatten([1, [2, [3, [4]], 5]]);
-     * // => [1, 2, [3, [4]], 5]
+     * _.flatten([1, [2, 3, [4]]]);
+     * // => [1, 2, 3, [4]]
      */
     function flatten(array) {
       var length = array ? array.length : 0;
-      return length ? baseFlatten(array, 1) : [];
+      return length ? baseFlatten(array) : [];
     }
 
     /**
-     * Recursively flattens `array`.
+     * This method is like `_.flatten` except that it recursively flattens `array`.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to flatten.
+     * @param {Array} array The array to recursively flatten.
      * @returns {Array} Returns the new flattened array.
      * @example
      *
-     * _.flattenDeep([1, [2, [3, [4]], 5]]);
-     * // => [1, 2, 3, 4, 5]
+     * _.flattenDeep([1, [2, 3, [4]]]);
+     * // => [1, 2, 3, 4]
      */
     function flattenDeep(array) {
       var length = array ? array.length : 0;
-      return length ? baseFlatten(array, INFINITY) : [];
-    }
-
-    /**
-     * Recursively flatten `array` up to `depth` times.
-     *
-     * @static
-     * @memberOf _
-     * @category Array
-     * @param {Array} array The array to flatten.
-     * @param {number} [depth=1] The maximum recursion depth.
-     * @returns {Array} Returns the new flattened array.
-     * @example
-     *
-     * var array = [1, [2, [3, [4]], 5]];
-     *
-     * _.flattenDepth(array, 1);
-     * // => [1, 2, [3, [4]], 5]
-     *
-     * _.flattenDepth(array, 2);
-     * // => [1, 2, 3, [4], 5]
-     */
-    function flattenDepth(array, depth) {
-      var length = array ? array.length : 0;
-      if (!length) {
-        return [];
-      }
-      depth = depth === undefined ? 1 : toInteger(depth);
-      return baseFlatten(array, depth);
+      return length ? baseFlatten(array, true) : [];
     }
 
     /**
@@ -80964,7 +81117,8 @@ return jQuery;
      * Gets the index at which the first occurrence of `value` is found in `array`
      * using [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
      * for equality comparisons. If `fromIndex` is negative, it's used as the offset
-     * from the end of `array`.
+     * from the end of `array`. If `array` is sorted providing `true` for `fromIndex`
+     * performs a faster binary search.
      *
      * @static
      * @memberOf _
@@ -80978,7 +81132,7 @@ return jQuery;
      * _.indexOf([1, 2, 1, 2], 2);
      * // => 1
      *
-     * // Search from the `fromIndex`.
+     * // using `fromIndex`
      * _.indexOf([1, 2, 1, 2], 2, 2);
      * // => 3
      */
@@ -81012,23 +81166,22 @@ return jQuery;
     }
 
     /**
-     * Creates an array of unique values that are included in all given arrays
-     * using [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
-     * for equality comparisons. The order of result values is determined by the
-     * order they occur in the first array.
+     * Creates an array of unique values that are included in all of the provided
+     * arrays using [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
+     * for equality comparisons.
      *
      * @static
      * @memberOf _
      * @category Array
      * @param {...Array} [arrays] The arrays to inspect.
-     * @returns {Array} Returns the new array of intersecting values.
+     * @returns {Array} Returns the new array of shared values.
      * @example
      *
      * _.intersection([2, 1], [4, 2], [1, 2]);
      * // => [2]
      */
     var intersection = rest(function(arrays) {
-      var mapped = arrayMap(arrays, baseCastArrayLikeObject);
+      var mapped = arrayMap(arrays, toArrayLikeObject);
       return (mapped.length && mapped[0] === arrays[0])
         ? baseIntersection(mapped)
         : [];
@@ -81037,27 +81190,26 @@ return jQuery;
     /**
      * This method is like `_.intersection` except that it accepts `iteratee`
      * which is invoked for each element of each `arrays` to generate the criterion
-     * by which they're compared. Result values are chosen from the first array.
-     * The iteratee is invoked with one argument: (value).
+     * by which uniqueness is computed. The iteratee is invoked with one argument: (value).
      *
      * @static
      * @memberOf _
      * @category Array
      * @param {...Array} [arrays] The arrays to inspect.
      * @param {Function|Object|string} [iteratee=_.identity] The iteratee invoked per element.
-     * @returns {Array} Returns the new array of intersecting values.
+     * @returns {Array} Returns the new array of shared values.
      * @example
      *
      * _.intersectionBy([2.1, 1.2], [4.3, 2.4], Math.floor);
      * // => [2.1]
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.intersectionBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
      * // => [{ 'x': 1 }]
      */
     var intersectionBy = rest(function(arrays) {
       var iteratee = last(arrays),
-          mapped = arrayMap(arrays, baseCastArrayLikeObject);
+          mapped = arrayMap(arrays, toArrayLikeObject);
 
       if (iteratee === last(mapped)) {
         iteratee = undefined;
@@ -81071,16 +81223,15 @@ return jQuery;
 
     /**
      * This method is like `_.intersection` except that it accepts `comparator`
-     * which is invoked to compare elements of `arrays`. Result values are chosen
-     * from the first array. The comparator is invoked with two arguments:
-     * (arrVal, othVal).
+     * which is invoked to compare elements of `arrays`. The comparator is invoked
+     * with two arguments: (arrVal, othVal).
      *
      * @static
      * @memberOf _
      * @category Array
      * @param {...Array} [arrays] The arrays to inspect.
      * @param {Function} [comparator] The comparator invoked per element.
-     * @returns {Array} Returns the new array of intersecting values.
+     * @returns {Array} Returns the new array of shared values.
      * @example
      *
      * var objects = [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }];
@@ -81091,7 +81242,7 @@ return jQuery;
      */
     var intersectionWith = rest(function(arrays) {
       var comparator = last(arrays),
-          mapped = arrayMap(arrays, baseCastArrayLikeObject);
+          mapped = arrayMap(arrays, toArrayLikeObject);
 
       if (comparator === last(mapped)) {
         comparator = undefined;
@@ -81155,7 +81306,7 @@ return jQuery;
      * _.lastIndexOf([1, 2, 1, 2], 2);
      * // => 3
      *
-     * // Search from the `fromIndex`.
+     * // using `fromIndex`
      * _.lastIndexOf([1, 2, 1, 2], 2, 2);
      * // => 1
      */
@@ -81181,12 +81332,11 @@ return jQuery;
     }
 
     /**
-     * Removes all given values from `array` using
+     * Removes all provided values from `array` using
      * [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
      * for equality comparisons.
      *
-     * **Note:** Unlike `_.without`, this method mutates `array`. Use `_.remove`
-     * to remove elements from an array by predicate.
+     * **Note:** Unlike `_.without`, this method mutates `array`.
      *
      * @static
      * @memberOf _
@@ -81231,8 +81381,8 @@ return jQuery;
 
     /**
      * This method is like `_.pullAll` except that it accepts `iteratee` which is
-     * invoked for each element of `array` and `values` to generate the criterion
-     * by which they're compared. The iteratee is invoked with one argument: (value).
+     * invoked for each element of `array` and `values` to to generate the criterion
+     * by which uniqueness is computed. The iteratee is invoked with one argument: (value).
      *
      * **Note:** Unlike `_.differenceBy`, this method mutates `array`.
      *
@@ -81253,35 +81403,7 @@ return jQuery;
      */
     function pullAllBy(array, values, iteratee) {
       return (array && array.length && values && values.length)
-        ? basePullAll(array, values, getIteratee(iteratee))
-        : array;
-    }
-
-    /**
-     * This method is like `_.pullAll` except that it accepts `comparator` which
-     * is invoked to compare elements of `array` to `values`. The comparator is
-     * invoked with two arguments: (arrVal, othVal).
-     *
-     * **Note:** Unlike `_.differenceWith`, this method mutates `array`.
-     *
-     * @static
-     * @memberOf _
-     * @category Array
-     * @param {Array} array The array to modify.
-     * @param {Array} values The values to remove.
-     * @param {Function} [comparator] The comparator invoked per element.
-     * @returns {Array} Returns `array`.
-     * @example
-     *
-     * var array = [{ 'x': 1, 'y': 2 }, { 'x': 3, 'y': 4 }, { 'x': 5, 'y': 6 }];
-     *
-     * _.pullAllWith(array, [{ 'x': 3, 'y': 4 }], _.isEqual);
-     * console.log(array);
-     * // => [{ 'x': 1, 'y': 2 }, { 'x': 5, 'y': 6 }]
-     */
-    function pullAllWith(array, values, comparator) {
-      return (array && array.length && values && values.length)
-        ? basePullAll(array, values, undefined, comparator)
+        ? basePullAllBy(array, values, getIteratee(iteratee))
         : array;
     }
 
@@ -81310,7 +81432,7 @@ return jQuery;
      * // => [10, 20]
      */
     var pullAt = rest(function(array, indexes) {
-      indexes = arrayMap(baseFlatten(indexes, 1), String);
+      indexes = arrayMap(baseFlatten(indexes), String);
 
       var result = baseAt(array, indexes);
       basePullAt(array, indexes.sort(compareAscending));
@@ -81319,11 +81441,10 @@ return jQuery;
 
     /**
      * Removes all elements from `array` that `predicate` returns truthy for
-     * and returns an array of the removed elements. The predicate is invoked
-     * with three arguments: (value, index, array).
+     * and returns an array of the removed elements. The predicate is invoked with
+     * three arguments: (value, index, array).
      *
-     * **Note:** Unlike `_.filter`, this method mutates `array`. Use `_.pull`
-     * to pull elements from an array by value.
+     * **Note:** Unlike `_.filter`, this method mutates `array`.
      *
      * @static
      * @memberOf _
@@ -81461,7 +81582,7 @@ return jQuery;
      * _.sortedIndexBy(['thirty', 'fifty'], 'forty', _.propertyOf(dict));
      * // => 1
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.sortedIndexBy([{ 'x': 4 }, { 'x': 5 }], { 'x': 4 }, 'x');
      * // => 0
      */
@@ -81529,7 +81650,7 @@ return jQuery;
      * @returns {number} Returns the index at which `value` should be inserted into `array`.
      * @example
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.sortedLastIndexBy([{ 'x': 4 }, { 'x': 5 }], { 'x': 4 }, 'x');
      * // => 1
      */
@@ -81596,7 +81717,7 @@ return jQuery;
      * @example
      *
      * _.sortedUniqBy([1.1, 1.2, 2.3, 2.4], Math.floor);
-     * // => [1.1, 2.3]
+     * // => [1.1, 2.2]
      */
     function sortedUniqBy(array, iteratee) {
       return (array && array.length)
@@ -81709,15 +81830,15 @@ return jQuery;
      * _.takeRightWhile(users, function(o) { return !o.active; });
      * // => objects for ['fred', 'pebbles']
      *
-     * // The `_.matches` iteratee shorthand.
+     * // using the `_.matches` iteratee shorthand
      * _.takeRightWhile(users, { 'user': 'pebbles', 'active': false });
      * // => objects for ['pebbles']
      *
-     * // The `_.matchesProperty` iteratee shorthand.
+     * // using the `_.matchesProperty` iteratee shorthand
      * _.takeRightWhile(users, ['active', false]);
      * // => objects for ['fred', 'pebbles']
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.takeRightWhile(users, 'active');
      * // => []
      */
@@ -81749,15 +81870,15 @@ return jQuery;
      * _.takeWhile(users, function(o) { return !o.active; });
      * // => objects for ['barney', 'fred']
      *
-     * // The `_.matches` iteratee shorthand.
+     * // using the `_.matches` iteratee shorthand
      * _.takeWhile(users, { 'user': 'barney', 'active': false });
      * // => objects for ['barney']
      *
-     * // The `_.matchesProperty` iteratee shorthand.
+     * // using the `_.matchesProperty` iteratee shorthand
      * _.takeWhile(users, ['active', false]);
      * // => objects for ['barney', 'fred']
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.takeWhile(users, 'active');
      * // => []
      */
@@ -81768,8 +81889,8 @@ return jQuery;
     }
 
     /**
-     * Creates an array of unique values, in order, from all given arrays using
-     * [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
+     * Creates an array of unique values, in order, from all of the provided arrays
+     * using [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
      * for equality comparisons.
      *
      * @static
@@ -81783,7 +81904,7 @@ return jQuery;
      * // => [2, 1, 4]
      */
     var union = rest(function(arrays) {
-      return baseUniq(baseFlatten(arrays, 1, true));
+      return baseUniq(baseFlatten(arrays, false, true));
     });
 
     /**
@@ -81802,7 +81923,7 @@ return jQuery;
      * _.unionBy([2.1, 1.2], [4.3, 2.4], Math.floor);
      * // => [2.1, 1.2, 4.3]
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.unionBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
      * // => [{ 'x': 1 }, { 'x': 2 }]
      */
@@ -81811,7 +81932,7 @@ return jQuery;
       if (isArrayLikeObject(iteratee)) {
         iteratee = undefined;
       }
-      return baseUniq(baseFlatten(arrays, 1, true), getIteratee(iteratee));
+      return baseUniq(baseFlatten(arrays, false, true), getIteratee(iteratee));
     });
 
     /**
@@ -81838,7 +81959,7 @@ return jQuery;
       if (isArrayLikeObject(comparator)) {
         comparator = undefined;
       }
-      return baseUniq(baseFlatten(arrays, 1, true), undefined, comparator);
+      return baseUniq(baseFlatten(arrays, false, true), undefined, comparator);
     });
 
     /**
@@ -81879,7 +82000,7 @@ return jQuery;
      * _.uniqBy([2.1, 1.2, 2.3], Math.floor);
      * // => [2.1, 1.2]
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.uniqBy([{ 'x': 1 }, { 'x': 2 }, { 'x': 1 }], 'x');
      * // => [{ 'x': 1 }, { 'x': 2 }]
      */
@@ -81980,7 +82101,7 @@ return jQuery;
     }
 
     /**
-     * Creates an array excluding all given values using
+     * Creates an array excluding all provided values using
      * [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
      * for equality comparisons.
      *
@@ -82003,8 +82124,7 @@ return jQuery;
 
     /**
      * Creates an array of unique values that is the [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference)
-     * of the given arrays. The order of result values is determined by the order
-     * they occur in the arrays.
+     * of the provided arrays.
      *
      * @static
      * @memberOf _
@@ -82023,7 +82143,7 @@ return jQuery;
     /**
      * This method is like `_.xor` except that it accepts `iteratee` which is
      * invoked for each element of each `arrays` to generate the criterion by which
-     * by which they're compared. The iteratee is invoked with one argument: (value).
+     * uniqueness is computed. The iteratee is invoked with one argument: (value).
      *
      * @static
      * @memberOf _
@@ -82036,7 +82156,7 @@ return jQuery;
      * _.xorBy([2.1, 1.2], [4.3, 2.4], Math.floor);
      * // => [1.2, 4.3]
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.xorBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
      * // => [{ 'x': 2 }]
      */
@@ -82104,29 +82224,19 @@ return jQuery;
      * @returns {Object} Returns the new object.
      * @example
      *
-     * _.zipObject(['a', 'b'], [1, 2]);
-     * // => { 'a': 1, 'b': 2 }
+     * _.zipObject(['fred', 'barney'], [30, 40]);
+     * // => { 'fred': 30, 'barney': 40 }
      */
     function zipObject(props, values) {
-      return baseZipObject(props || [], values || [], assignValue);
-    }
+      var index = -1,
+          length = props ? props.length : 0,
+          valsLength = values ? values.length : 0,
+          result = {};
 
-    /**
-     * This method is like `_.zipObject` except that it supports property paths.
-     *
-     * @static
-     * @memberOf _
-     * @category Array
-     * @param {Array} [props=[]] The property names.
-     * @param {Array} [values=[]] The property values.
-     * @returns {Object} Returns the new object.
-     * @example
-     *
-     * _.zipObjectDeep(['a.b[0].c', 'a.b[1].d'], [1, 2]);
-     * // => { 'a': { 'b': [{ 'c': 1 }, { 'd': 2 }] } }
-     */
-    function zipObjectDeep(props, values) {
-      return baseZipObject(props || [], values || [], baseSet);
+      while (++index < length) {
+        baseSet(result, props[index], index < valsLength ? values[index] : undefined);
+      }
+      return result;
     }
 
     /**
@@ -82191,9 +82301,10 @@ return jQuery;
     }
 
     /**
-     * This method invokes `interceptor` and returns `value`. The interceptor
-     * is invoked with one argument; (value). The purpose of this method is to
-     * "tap into" a method chain in order to modify intermediate results.
+     * This method invokes `interceptor` and returns `value`. The interceptor is
+     * invoked with one argument; (value). The purpose of this method is to "tap into"
+     * a method chain in order to perform operations on intermediate results within
+     * the chain.
      *
      * @static
      * @memberOf _
@@ -82205,7 +82316,6 @@ return jQuery;
      *
      * _([1, 2, 3])
      *  .tap(function(array) {
-     *    // Mutate input array.
      *    array.pop();
      *  })
      *  .reverse()
@@ -82219,8 +82329,6 @@ return jQuery;
 
     /**
      * This method is like `_.tap` except that it returns the result of `interceptor`.
-     * The purpose of this method is to "pass thru" values replacing intermediate
-     * results in a method chain.
      *
      * @static
      * @memberOf _
@@ -82263,22 +82371,17 @@ return jQuery;
      * // => ['a', 'c']
      */
     var wrapperAt = rest(function(paths) {
-      paths = baseFlatten(paths, 1);
+      paths = baseFlatten(paths);
       var length = paths.length,
           start = length ? paths[0] : 0,
           value = this.__wrapped__,
           interceptor = function(object) { return baseAt(object, paths); };
 
-      if (length > 1 || this.__actions__.length ||
-          !(value instanceof LazyWrapper) || !isIndex(start)) {
+      if (length > 1 || this.__actions__.length || !(value instanceof LazyWrapper) || !isIndex(start)) {
         return this.thru(interceptor);
       }
       value = value.slice(start, +start + (length ? 1 : 0));
-      value.__actions__.push({
-        'func': thru,
-        'args': [interceptor],
-        'thisArg': undefined
-      });
+      value.__actions__.push({ 'func': thru, 'args': [interceptor], 'thisArg': undefined });
       return new LodashWrapper(value, this.__chain__).thru(function(array) {
         if (length && !array.length) {
           array.push(undefined);
@@ -82301,11 +82404,11 @@ return jQuery;
      *   { 'user': 'fred',   'age': 40 }
      * ];
      *
-     * // A sequence without explicit chaining.
+     * // without explicit chaining
      * _(users).head();
      * // => { 'user': 'barney', 'age': 36 }
      *
-     * // A sequence with explicit chaining.
+     * // with explicit chaining
      * _(users)
      *   .chain()
      *   .head()
@@ -82489,11 +82592,7 @@ return jQuery;
           wrapped = new LazyWrapper(this);
         }
         wrapped = wrapped.reverse();
-        wrapped.__actions__.push({
-          'func': thru,
-          'args': [reverse],
-          'thisArg': undefined
-        });
+        wrapped.__actions__.push({ 'func': thru, 'args': [reverse], 'thisArg': undefined });
         return new LodashWrapper(wrapped, this.__chain__);
       }
       return this.thru(reverse);
@@ -82564,15 +82663,15 @@ return jQuery;
      *   { 'user': 'fred',   'active': false }
      * ];
      *
-     * // The `_.matches` iteratee shorthand.
+     * // using the `_.matches` iteratee shorthand
      * _.every(users, { 'user': 'barney', 'active': false });
      * // => false
      *
-     * // The `_.matchesProperty` iteratee shorthand.
+     * // using the `_.matchesProperty` iteratee shorthand
      * _.every(users, ['active', false]);
      * // => true
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.every(users, 'active');
      * // => false
      */
@@ -82605,15 +82704,15 @@ return jQuery;
      * _.filter(users, function(o) { return !o.active; });
      * // => objects for ['fred']
      *
-     * // The `_.matches` iteratee shorthand.
+     * // using the `_.matches` iteratee shorthand
      * _.filter(users, { 'age': 36, 'active': true });
      * // => objects for ['barney']
      *
-     * // The `_.matchesProperty` iteratee shorthand.
+     * // using the `_.matchesProperty` iteratee shorthand
      * _.filter(users, ['active', false]);
      * // => objects for ['fred']
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.filter(users, 'active');
      * // => objects for ['barney']
      */
@@ -82644,15 +82743,15 @@ return jQuery;
      * _.find(users, function(o) { return o.age < 40; });
      * // => object for 'barney'
      *
-     * // The `_.matches` iteratee shorthand.
+     * // using the `_.matches` iteratee shorthand
      * _.find(users, { 'age': 1, 'active': true });
      * // => object for 'pebbles'
      *
-     * // The `_.matchesProperty` iteratee shorthand.
+     * // using the `_.matchesProperty` iteratee shorthand
      * _.find(users, ['active', false]);
      * // => object for 'fred'
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.find(users, 'active');
      * // => object for 'barney'
      */
@@ -82692,30 +82791,6 @@ return jQuery;
     }
 
     /**
-     * Creates an array of flattened values by running each element in `collection`
-     * through `iteratee` and concating its result to the other mapped values.
-     * The iteratee is invoked with three arguments: (value, index|key, collection).
-     *
-     * @static
-     * @memberOf _
-     * @category Collection
-     * @param {Array|Object} collection The collection to iterate over.
-     * @param {Function|Object|string} [iteratee=_.identity] The function invoked per iteration.
-     * @returns {Array} Returns the new flattened array.
-     * @example
-     *
-     * function duplicate(n) {
-     *   return [n, n];
-     * }
-     *
-     * _.flatMap([1, 2], duplicate);
-     * // => [1, 1, 2, 2]
-     */
-    function flatMap(collection, iteratee) {
-      return baseFlatten(map(collection, iteratee), 1);
-    }
-
-    /**
      * Iterates over elements of `collection` invoking `iteratee` for each element.
      * The iteratee is invoked with three arguments: (value, index|key, collection).
      * Iteratee functions may exit iteration early by explicitly returning `false`.
@@ -82746,7 +82821,7 @@ return jQuery;
     function forEach(collection, iteratee) {
       return (typeof iteratee == 'function' && isArray(collection))
         ? arrayEach(collection, iteratee)
-        : baseEach(collection, baseCastFunction(iteratee));
+        : baseEach(collection, toFunction(iteratee));
     }
 
     /**
@@ -82770,7 +82845,7 @@ return jQuery;
     function forEachRight(collection, iteratee) {
       return (typeof iteratee == 'function' && isArray(collection))
         ? arrayEachRight(collection, iteratee)
-        : baseEachRight(collection, baseCastFunction(iteratee));
+        : baseEachRight(collection, toFunction(iteratee));
     }
 
     /**
@@ -82790,7 +82865,7 @@ return jQuery;
      * _.groupBy([6.1, 4.2, 6.3], Math.floor);
      * // => { '4': [4.2], '6': [6.1, 6.3] }
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.groupBy(['one', 'two', 'three'], 'length');
      * // => { '3': ['one', 'two'], '5': ['three'] }
      */
@@ -82892,17 +82967,17 @@ return jQuery;
      * @returns {Object} Returns the composed aggregate object.
      * @example
      *
-     * var array = [
+     * var keyData = [
      *   { 'dir': 'left', 'code': 97 },
      *   { 'dir': 'right', 'code': 100 }
      * ];
      *
-     * _.keyBy(array, function(o) {
+     * _.keyBy(keyData, function(o) {
      *   return String.fromCharCode(o.code);
      * });
      * // => { 'a': { 'dir': 'left', 'code': 97 }, 'd': { 'dir': 'right', 'code': 100 } }
      *
-     * _.keyBy(array, 'dir');
+     * _.keyBy(keyData, 'dir');
      * // => { 'left': { 'dir': 'left', 'code': 97 }, 'right': { 'dir': 'right', 'code': 100 } }
      */
     var keyBy = createAggregator(function(result, value, key) {
@@ -82946,7 +83021,7 @@ return jQuery;
      *   { 'user': 'fred' }
      * ];
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.map(users, 'user');
      * // => ['barney', 'fred']
      */
@@ -82978,7 +83053,7 @@ return jQuery;
      *   { 'user': 'barney', 'age': 36 }
      * ];
      *
-     * // Sort by `user` in ascending order and by `age` in descending order.
+     * // sort by `user` in ascending order and by `age` in descending order
      * _.orderBy(users, ['user', 'age'], ['asc', 'desc']);
      * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 42]]
      */
@@ -83019,15 +83094,15 @@ return jQuery;
      * _.partition(users, function(o) { return o.active; });
      * // => objects for [['fred'], ['barney', 'pebbles']]
      *
-     * // The `_.matches` iteratee shorthand.
+     * // using the `_.matches` iteratee shorthand
      * _.partition(users, { 'age': 1, 'active': false });
      * // => objects for [['pebbles'], ['barney', 'fred']]
      *
-     * // The `_.matchesProperty` iteratee shorthand.
+     * // using the `_.matchesProperty` iteratee shorthand
      * _.partition(users, ['active', false]);
      * // => objects for [['barney', 'pebbles'], ['fred']]
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.partition(users, 'active');
      * // => objects for [['fred'], ['barney', 'pebbles']]
      */
@@ -83039,7 +83114,7 @@ return jQuery;
      * Reduces `collection` to a value which is the accumulated result of running
      * each element in `collection` through `iteratee`, where each successive
      * invocation is supplied the return value of the previous. If `accumulator`
-     * is not given the first element of `collection` is used as the initial
+     * is not provided the first element of `collection` is used as the initial
      * value. The iteratee is invoked with four arguments:
      * (accumulator, value, index|key, collection).
      *
@@ -83061,7 +83136,7 @@ return jQuery;
      *
      * _.reduce([1, 2], function(sum, n) {
      *   return sum + n;
-     * }, 0);
+     * });
      * // => 3
      *
      * _.reduce({ 'a': 1, 'b': 2, 'c': 1 }, function(result, value, key) {
@@ -83124,15 +83199,15 @@ return jQuery;
      * _.reject(users, function(o) { return !o.active; });
      * // => objects for ['fred']
      *
-     * // The `_.matches` iteratee shorthand.
+     * // using the `_.matches` iteratee shorthand
      * _.reject(users, { 'age': 40, 'active': true });
      * // => objects for ['barney']
      *
-     * // The `_.matchesProperty` iteratee shorthand.
+     * // using the `_.matchesProperty` iteratee shorthand
      * _.reject(users, ['active', false]);
      * // => objects for ['fred']
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.reject(users, 'active');
      * // => objects for ['barney']
      */
@@ -83271,15 +83346,15 @@ return jQuery;
      *   { 'user': 'fred',   'active': false }
      * ];
      *
-     * // The `_.matches` iteratee shorthand.
+     * // using the `_.matches` iteratee shorthand
      * _.some(users, { 'user': 'barney', 'active': false });
      * // => false
      *
-     * // The `_.matchesProperty` iteratee shorthand.
+     * // using the `_.matchesProperty` iteratee shorthand
      * _.some(users, ['active', false]);
      * // => true
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.some(users, 'active');
      * // => true
      */
@@ -83334,7 +83409,7 @@ return jQuery;
       } else if (length > 2 && isIterateeCall(iteratees[0], iteratees[1], iteratees[2])) {
         iteratees.length = 1;
       }
-      return baseOrderBy(collection, baseFlatten(iteratees, 1), []);
+      return baseOrderBy(collection, baseFlatten(iteratees), []);
     });
 
     /*------------------------------------------------------------------------*/
@@ -83345,7 +83420,7 @@ return jQuery;
      *
      * @static
      * @memberOf _
-     * @type {Function}
+     * @type Function
      * @category Date
      * @returns {number} Returns the timestamp.
      * @example
@@ -83479,7 +83554,7 @@ return jQuery;
      * bound('!');
      * // => 'hi fred!'
      *
-     * // Bound with placeholders.
+     * // using placeholders
      * var bound = _.bind(greet, object, _, '!');
      * bound('hi');
      * // => 'hi fred!'
@@ -83487,7 +83562,7 @@ return jQuery;
     var bind = rest(function(func, thisArg, partials) {
       var bitmask = BIND_FLAG;
       if (partials.length) {
-        var holders = replaceHolders(partials, getPlaceholder(bind));
+        var holders = replaceHolders(partials, bind.placeholder);
         bitmask |= PARTIAL_FLAG;
       }
       return createWrapper(func, bitmask, thisArg, partials, holders);
@@ -83532,7 +83607,7 @@ return jQuery;
      * bound('!');
      * // => 'hiya fred!'
      *
-     * // Bound with placeholders.
+     * // using placeholders
      * var bound = _.bindKey(object, 'greet', _, '!');
      * bound('hi');
      * // => 'hiya fred!'
@@ -83540,7 +83615,7 @@ return jQuery;
     var bindKey = rest(function(object, key, partials) {
       var bitmask = BIND_FLAG | BIND_KEY_FLAG;
       if (partials.length) {
-        var holders = replaceHolders(partials, getPlaceholder(bindKey));
+        var holders = replaceHolders(partials, bindKey.placeholder);
         bitmask |= PARTIAL_FLAG;
       }
       return createWrapper(key, bitmask, object, partials, holders);
@@ -83582,7 +83657,7 @@ return jQuery;
      * curried(1, 2, 3);
      * // => [1, 2, 3]
      *
-     * // Curried with placeholders.
+     * // using placeholders
      * curried(1)(_, 3)(2);
      * // => [1, 2, 3]
      */
@@ -83626,7 +83701,7 @@ return jQuery;
      * curried(1, 2, 3);
      * // => [1, 2, 3]
      *
-     * // Curried with placeholders.
+     * // using placeholders
      * curried(3)(1, _)(2);
      * // => [1, 2, 3]
      */
@@ -83648,7 +83723,7 @@ return jQuery;
      * to the debounced function return the result of the last `func` invocation.
      *
      * **Note:** If `leading` and `trailing` options are `true`, `func` is invoked
-     * on the trailing edge of the timeout only if the debounced function is
+     * on the trailing edge of the timeout only if the the debounced function is
      * invoked more than once during the `wait` timeout.
      *
      * See [David Corbacho's article](http://drupalmotion.com/article/debounce-and-throttle-visual-explanation)
@@ -83669,21 +83744,21 @@ return jQuery;
      * @returns {Function} Returns the new debounced function.
      * @example
      *
-     * // Avoid costly calculations while the window size is in flux.
+     * // avoid costly calculations while the window size is in flux
      * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
      *
-     * // Invoke `sendMail` when clicked, debouncing subsequent calls.
+     * // invoke `sendMail` when clicked, debouncing subsequent calls
      * jQuery(element).on('click', _.debounce(sendMail, 300, {
      *   'leading': true,
      *   'trailing': false
      * }));
      *
-     * // Ensure `batchLog` is invoked once after 1 second of debounced calls.
+     * // ensure `batchLog` is invoked once after 1 second of debounced calls
      * var debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });
      * var source = new EventSource('/stream');
      * jQuery(source).on('message', debounced);
      *
-     * // Cancel the trailing debounced invocation.
+     * // cancel a trailing debounced invocation
      * jQuery(window).on('popstate', debounced.cancel);
      */
     function debounce(func, wait, options) {
@@ -83764,13 +83839,11 @@ return jQuery;
         if (maxWait === false) {
           var leadingCall = leading && !timeoutId;
         } else {
-          if (!lastCalled && !maxTimeoutId && !leading) {
+          if (!maxTimeoutId && !leading) {
             lastCalled = stamp;
           }
-          var remaining = maxWait - (stamp - lastCalled);
-
-          var isCalled = (remaining <= 0 || remaining > maxWait) &&
-            (leading || maxTimeoutId);
+          var remaining = maxWait - (stamp - lastCalled),
+              isCalled = remaining <= 0 || remaining > maxWait;
 
           if (isCalled) {
             if (maxTimeoutId) {
@@ -83818,7 +83891,7 @@ return jQuery;
      * _.defer(function(text) {
      *   console.log(text);
      * }, 'deferred');
-     * // => logs 'deferred' after one or more milliseconds
+     * // logs 'deferred' after one or more milliseconds
      */
     var defer = rest(function(func, args) {
       return baseDelay(func, 1, args);
@@ -83901,12 +83974,12 @@ return jQuery;
      * values(object);
      * // => [1, 2]
      *
-     * // Modify the result cache.
+     * // modifying the result cache
      * values.cache.set(object, ['a', 'b']);
      * values(object);
      * // => ['a', 'b']
      *
-     * // Replace `_.memoize.Cache`.
+     * // replacing `_.memoize.Cache`
      * _.memoize.Cache = WeakMap;
      */
     function memoize(func, resolver) {
@@ -84010,7 +84083,7 @@ return jQuery;
      * // => [100, 10]
      */
     var overArgs = rest(function(func, transforms) {
-      transforms = arrayMap(baseFlatten(transforms, 1), getIteratee());
+      transforms = arrayMap(baseFlatten(transforms), getIteratee());
 
       var funcsLength = transforms.length;
       return rest(function(args) {
@@ -84051,13 +84124,13 @@ return jQuery;
      * sayHelloTo('fred');
      * // => 'hello fred'
      *
-     * // Partially applied with placeholders.
+     * // using placeholders
      * var greetFred = _.partial(greet, _, 'fred');
      * greetFred('hi');
      * // => 'hi fred'
      */
     var partial = rest(function(func, partials) {
-      var holders = replaceHolders(partials, getPlaceholder(partial));
+      var holders = replaceHolders(partials, partial.placeholder);
       return createWrapper(func, PARTIAL_FLAG, undefined, partials, holders);
     });
 
@@ -84087,13 +84160,13 @@ return jQuery;
      * greetFred('hi');
      * // => 'hi fred'
      *
-     * // Partially applied with placeholders.
+     * // using placeholders
      * var sayHelloTo = _.partialRight(greet, 'hello', _);
      * sayHelloTo('fred');
      * // => 'hello fred'
      */
     var partialRight = rest(function(func, partials) {
-      var holders = replaceHolders(partials, getPlaceholder(partialRight));
+      var holders = replaceHolders(partials, partialRight.placeholder);
       return createWrapper(func, PARTIAL_RIGHT_FLAG, undefined, partials, holders);
     });
 
@@ -84120,7 +84193,7 @@ return jQuery;
      * // => ['a', 'b', 'c']
      */
     var rearg = rest(function(func, indexes) {
-      return createWrapper(func, REARG_FLAG, undefined, undefined, undefined, baseFlatten(indexes, 1));
+      return createWrapper(func, REARG_FLAG, undefined, undefined, undefined, baseFlatten(indexes));
     });
 
     /**
@@ -84184,7 +84257,6 @@ return jQuery;
      * @memberOf _
      * @category Function
      * @param {Function} func The function to spread arguments over.
-     * @param {number} [start=0] The start position of the spread.
      * @returns {Function} Returns the new function.
      * @example
      *
@@ -84195,6 +84267,7 @@ return jQuery;
      * say(['fred', 'hello']);
      * // => 'fred says hello'
      *
+     * // with a Promise
      * var numbers = Promise.all([
      *   Promise.resolve(40),
      *   Promise.resolve(36)
@@ -84205,20 +84278,13 @@ return jQuery;
      * }));
      * // => a Promise of 76
      */
-    function spread(func, start) {
+    function spread(func) {
       if (typeof func != 'function') {
         throw new TypeError(FUNC_ERROR_TEXT);
       }
-      start = start === undefined ? 0 : nativeMax(toInteger(start), 0);
-      return rest(function(args) {
-        var array = args[start],
-            otherArgs = args.slice(0, start);
-
-        if (array) {
-          arrayPush(otherArgs, array);
-        }
-        return apply(func, this, otherArgs);
-      });
+      return function(array) {
+        return apply(func, this, array);
+      };
     }
 
     /**
@@ -84232,7 +84298,7 @@ return jQuery;
      * result of the last `func` invocation.
      *
      * **Note:** If `leading` and `trailing` options are `true`, `func` is invoked
-     * on the trailing edge of the timeout only if the throttled function is
+     * on the trailing edge of the timeout only if the the throttled function is
      * invoked more than once during the `wait` timeout.
      *
      * See [David Corbacho's article](http://drupalmotion.com/article/debounce-and-throttle-visual-explanation)
@@ -84251,14 +84317,14 @@ return jQuery;
      * @returns {Function} Returns the new throttled function.
      * @example
      *
-     * // Avoid excessively updating the position while scrolling.
+     * // avoid excessively updating the position while scrolling
      * jQuery(window).on('scroll', _.throttle(updatePosition, 100));
      *
-     * // Invoke `renewToken` when the click event is fired, but not more than once every 5 minutes.
+     * // invoke `renewToken` when the click event is fired, but not more than once every 5 minutes
      * var throttled = _.throttle(renewToken, 300000, { 'trailing': false });
      * jQuery(element).on('click', throttled);
      *
-     * // Cancel the trailing throttled invocation.
+     * // cancel a trailing throttled invocation
      * jQuery(window).on('popstate', throttled.cancel);
      */
     function throttle(func, wait, options) {
@@ -84272,11 +84338,7 @@ return jQuery;
         leading = 'leading' in options ? !!options.leading : leading;
         trailing = 'trailing' in options ? !!options.trailing : trailing;
       }
-      return debounce(func, wait, {
-        'leading': leading,
-        'maxWait': wait,
-        'trailing': trailing
-      });
+      return debounce(func, wait, { 'leading': leading, 'maxWait': wait, 'trailing': trailing });
     }
 
     /**
@@ -84307,7 +84369,7 @@ return jQuery;
      * @memberOf _
      * @category Function
      * @param {*} value The value to wrap.
-     * @param {Function} [wrapper=identity] The wrapper function.
+     * @param {Function} wrapper The wrapper function.
      * @returns {Function} Returns the new function.
      * @example
      *
@@ -84324,46 +84386,6 @@ return jQuery;
     }
 
     /*------------------------------------------------------------------------*/
-
-    /**
-     * Casts `value` as an array if it's not one.
-     *
-     * @static
-     * @memberOf _
-     * @category Lang
-     * @param {*} value The value to inspect.
-     * @returns {Array} Returns the cast array.
-     * @example
-     *
-     * _.castArray(1);
-     * // => [1]
-     *
-     * _.castArray({ 'a': 1 });
-     * // => [{ 'a': 1 }]
-     *
-     * _.castArray('abc');
-     * // => ['abc']
-     *
-     * _.castArray(null);
-     * // => [null]
-     *
-     * _.castArray(undefined);
-     * // => [undefined]
-     *
-     * _.castArray();
-     * // => []
-     *
-     * var array = [1, 2, 3];
-     * console.log(_.castArray(array) === array);
-     * // => true
-     */
-    function castArray() {
-      if (!arguments.length) {
-        return [];
-      }
-      var value = arguments[0];
-      return isArray(value) ? value : [value];
-    }
 
     /**
      * Creates a shallow clone of `value`.
@@ -84390,7 +84412,7 @@ return jQuery;
      * // => true
      */
     function clone(value) {
-      return baseClone(value, false, true);
+      return baseClone(value);
     }
 
     /**
@@ -84423,7 +84445,7 @@ return jQuery;
      * // => 0
      */
     function cloneWith(value, customizer) {
-      return baseClone(value, false, true, customizer);
+      return baseClone(value, false, customizer);
     }
 
     /**
@@ -84443,7 +84465,7 @@ return jQuery;
      * // => false
      */
     function cloneDeep(value) {
-      return baseClone(value, true, true);
+      return baseClone(value, true);
     }
 
     /**
@@ -84473,7 +84495,7 @@ return jQuery;
      * // => 20
      */
     function cloneDeepWith(value, customizer) {
-      return baseClone(value, true, true, customizer);
+      return baseClone(value, true, customizer);
     }
 
     /**
@@ -84585,7 +84607,7 @@ return jQuery;
      *
      * @static
      * @memberOf _
-     * @type {Function}
+     * @type Function
      * @category Lang
      * @param {*} value The value to check.
      * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
@@ -84606,32 +84628,13 @@ return jQuery;
     var isArray = Array.isArray;
 
     /**
-     * Checks if `value` is classified as an `ArrayBuffer` object.
-     *
-     * @static
-     * @memberOf _
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
-     * @example
-     *
-     * _.isArrayBuffer(new ArrayBuffer(2));
-     * // => true
-     *
-     * _.isArrayBuffer(new Array(2));
-     * // => false
-     */
-    function isArrayBuffer(value) {
-      return isObjectLike(value) && objectToString.call(value) == arrayBufferTag;
-    }
-
-    /**
      * Checks if `value` is array-like. A value is considered array-like if it's
      * not a function and has a `value.length` that's an integer greater than or
      * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
      *
      * @static
      * @memberOf _
+     * @type Function
      * @category Lang
      * @param {*} value The value to check.
      * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
@@ -84650,7 +84653,8 @@ return jQuery;
      * // => false
      */
     function isArrayLike(value) {
-      return value != null && isLength(getLength(value)) && !isFunction(value);
+      return value != null &&
+        !(typeof value == 'function' && isFunction(value)) && isLength(getLength(value));
     }
 
     /**
@@ -84659,6 +84663,7 @@ return jQuery;
      *
      * @static
      * @memberOf _
+     * @type Function
      * @category Lang
      * @param {*} value The value to check.
      * @returns {boolean} Returns `true` if `value` is an array-like object, else `false`.
@@ -84702,26 +84707,6 @@ return jQuery;
     }
 
     /**
-     * Checks if `value` is a buffer.
-     *
-     * @static
-     * @memberOf _
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is a buffer, else `false`.
-     * @example
-     *
-     * _.isBuffer(new Buffer(2));
-     * // => true
-     *
-     * _.isBuffer(new Uint8Array(2));
-     * // => false
-     */
-    var isBuffer = !Buffer ? constant(false) : function(value) {
-      return value instanceof Buffer;
-    };
-
-    /**
      * Checks if `value` is classified as a `Date` object.
      *
      * @static
@@ -84762,14 +84747,14 @@ return jQuery;
     }
 
     /**
-     * Checks if `value` is an empty collection or object. A value is considered
-     * empty if it's an `arguments` object, array, string, or jQuery-like collection
-     * with a length of `0` or has no own enumerable properties.
+     * Checks if `value` is empty. A value is considered empty unless it's an
+     * `arguments` object, array, string, or jQuery-like collection with a length
+     * greater than `0` or an object with own enumerable properties.
      *
      * @static
      * @memberOf _
      * @category Lang
-     * @param {*} value The value to check.
+     * @param {Array|Object|string} value The value to inspect.
      * @returns {boolean} Returns `true` if `value` is empty, else `false`.
      * @example
      *
@@ -84789,17 +84774,9 @@ return jQuery;
      * // => false
      */
     function isEmpty(value) {
-      if (isArrayLike(value) &&
-          (isArray(value) || isString(value) ||
-            isFunction(value.splice) || isArguments(value))) {
-        return !value.length;
-      }
-      for (var key in value) {
-        if (hasOwnProperty.call(value, key)) {
-          return false;
-        }
-      }
-      return true;
+      return (!isObjectLike(value) || isFunction(value.splice))
+        ? !size(value)
+        : !keys(value).length;
     }
 
     /**
@@ -84834,10 +84811,10 @@ return jQuery;
     }
 
     /**
-     * This method is like `_.isEqual` except that it accepts `customizer` which
-     * is invoked to compare values. If `customizer` returns `undefined` comparisons
-     * are handled by the method instead. The `customizer` is invoked with up to
-     * six arguments: (objValue, othValue [, index|key, object, other, stack]).
+     * This method is like `_.isEqual` except that it accepts `customizer` which is
+     * invoked to compare values. If `customizer` returns `undefined` comparisons are
+     * handled by the method instead. The `customizer` is invoked with up to six arguments:
+     * (objValue, othValue [, index|key, object, other, stack]).
      *
      * @static
      * @memberOf _
@@ -84888,11 +84865,8 @@ return jQuery;
      * // => false
      */
     function isError(value) {
-      if (!isObjectLike(value)) {
-        return false;
-      }
-      return (objectToString.call(value) == errorTag) ||
-        (typeof value.message == 'string' && typeof value.name == 'string');
+      return isObjectLike(value) &&
+        typeof value.message == 'string' && objectToString.call(value) == errorTag;
     }
 
     /**
@@ -84941,8 +84915,8 @@ return jQuery;
      */
     function isFunction(value) {
       // The use of `Object#toString` avoids issues with the `typeof` operator
-      // in Safari 8 which returns 'object' for typed array and weak map constructors,
-      // and PhantomJS 1.9 which returns 'function' for `NodeList` instances.
+      // in Safari 8 which returns 'object' for typed array constructors, and
+      // PhantomJS 1.9 which returns 'function' for `NodeList` instances.
       var tag = isObject(value) ? objectToString.call(value) : '';
       return tag == funcTag || tag == genTag;
     }
@@ -85000,8 +84974,7 @@ return jQuery;
      * // => false
      */
     function isLength(value) {
-      return typeof value == 'number' &&
-        value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+      return typeof value == 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
     }
 
     /**
@@ -85028,6 +85001,8 @@ return jQuery;
      * // => false
      */
     function isObject(value) {
+      // Avoid a V8 JIT bug in Chrome 19-20.
+      // See https://code.google.com/p/v8/issues/detail?id=2291 for more details.
       var type = typeof value;
       return !!value && (type == 'object' || type == 'function');
     }
@@ -85060,29 +85035,8 @@ return jQuery;
     }
 
     /**
-     * Checks if `value` is classified as a `Map` object.
-     *
-     * @static
-     * @memberOf _
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
-     * @example
-     *
-     * _.isMap(new Map);
-     * // => true
-     *
-     * _.isMap(new WeakMap);
-     * // => false
-     */
-    function isMap(value) {
-      return isObjectLike(value) && getTag(value) == mapTag;
-    }
-
-    /**
-     * Performs a partial deep comparison between `object` and `source` to
-     * determine if `object` contains equivalent property values. This method is
-     * equivalent to a `_.matches` function when `source` is partially applied.
+     * Performs a deep comparison between `object` and `source` to determine if
+     * `object` contains equivalent property values.
      *
      * **Note:** This method supports comparing the same values as `_.isEqual`.
      *
@@ -85301,11 +85255,13 @@ return jQuery;
      * // => true
      */
     function isPlainObject(value) {
-      if (!isObjectLike(value) ||
-          objectToString.call(value) != objectTag || isHostObject(value)) {
+      if (!isObjectLike(value) || objectToString.call(value) != objectTag || isHostObject(value)) {
         return false;
       }
-      var proto = getPrototypeOf(value);
+      var proto = objectProto;
+      if (typeof value.constructor == 'function') {
+        proto = getPrototypeOf(value);
+      }
       if (proto === null) {
         return true;
       }
@@ -85361,26 +85317,6 @@ return jQuery;
      */
     function isSafeInteger(value) {
       return isInteger(value) && value >= -MAX_SAFE_INTEGER && value <= MAX_SAFE_INTEGER;
-    }
-
-    /**
-     * Checks if `value` is classified as a `Set` object.
-     *
-     * @static
-     * @memberOf _
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
-     * @example
-     *
-     * _.isSet(new Set);
-     * // => true
-     *
-     * _.isSet(new WeakSet);
-     * // => false
-     */
-    function isSet(value) {
-      return isObjectLike(value) && getTag(value) == setTag;
     }
 
     /**
@@ -85442,8 +85378,7 @@ return jQuery;
      * // => false
      */
     function isTypedArray(value) {
-      return isObjectLike(value) &&
-        isLength(value.length) && !!typedArrayTags[objectToString.call(value)];
+      return isObjectLike(value) && isLength(value.length) && !!typedArrayTags[objectToString.call(value)];
     }
 
     /**
@@ -85464,46 +85399,6 @@ return jQuery;
      */
     function isUndefined(value) {
       return value === undefined;
-    }
-
-    /**
-     * Checks if `value` is classified as a `WeakMap` object.
-     *
-     * @static
-     * @memberOf _
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
-     * @example
-     *
-     * _.isWeakMap(new WeakMap);
-     * // => true
-     *
-     * _.isWeakMap(new Map);
-     * // => false
-     */
-    function isWeakMap(value) {
-      return isObjectLike(value) && getTag(value) == weakMapTag;
-    }
-
-    /**
-     * Checks if `value` is classified as a `WeakSet` object.
-     *
-     * @static
-     * @memberOf _
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
-     * @example
-     *
-     * _.isWeakSet(new WeakSet);
-     * // => true
-     *
-     * _.isWeakSet(new Set);
-     * // => false
-     */
-    function isWeakSet(value) {
-      return isObjectLike(value) && objectToString.call(value) == weakSetTag;
     }
 
     /**
@@ -85778,7 +85673,7 @@ return jQuery;
         return '';
       }
       if (isSymbol(value)) {
-        return symbolToString ? symbolToString.call(value) : '';
+        return Symbol ? symbolToString.call(value) : '';
       }
       var result = (value + '');
       return (result == '0' && (1 / value) == -INFINITY) ? '-0' : result;
@@ -85817,15 +85712,7 @@ return jQuery;
      * // => { 'a': 1, 'c': 3, 'e': 5 }
      */
     var assign = createAssigner(function(object, source) {
-      if (nonEnumShadows || isPrototype(source) || isArrayLike(source)) {
-        copyObject(source, keys(source), object);
-        return;
-      }
-      for (var key in source) {
-        if (hasOwnProperty.call(source, key)) {
-          assignValue(object, key, source[key]);
-        }
-      }
+      copyObject(source, keys(source), object);
     });
 
     /**
@@ -85858,13 +85745,7 @@ return jQuery;
      * // => { 'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5 }
      */
     var assignIn = createAssigner(function(object, source) {
-      if (nonEnumShadows || isPrototype(source) || isArrayLike(source)) {
-        copyObject(source, keysIn(source), object);
-        return;
-      }
-      for (var key in source) {
-        assignValue(object, key, source[key]);
-      }
+      copyObject(source, keysIn(source), object);
     });
 
     /**
@@ -85949,12 +85830,12 @@ return jQuery;
      * // => ['a', 'c']
      */
     var at = rest(function(object, paths) {
-      return baseAt(object, baseFlatten(paths, 1));
+      return baseAt(object, baseFlatten(paths));
     });
 
     /**
      * Creates an object that inherits from the `prototype` object. If a `properties`
-     * object is given its own enumerable properties are assigned to the created object.
+     * object is provided its own enumerable properties are assigned to the created object.
      *
      * @static
      * @memberOf _
@@ -86057,15 +85938,15 @@ return jQuery;
      * _.findKey(users, function(o) { return o.age < 40; });
      * // => 'barney' (iteration order is not guaranteed)
      *
-     * // The `_.matches` iteratee shorthand.
+     * // using the `_.matches` iteratee shorthand
      * _.findKey(users, { 'age': 1, 'active': true });
      * // => 'pebbles'
      *
-     * // The `_.matchesProperty` iteratee shorthand.
+     * // using the `_.matchesProperty` iteratee shorthand
      * _.findKey(users, ['active', false]);
      * // => 'fred'
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.findKey(users, 'active');
      * // => 'barney'
      */
@@ -86094,15 +85975,15 @@ return jQuery;
      * _.findLastKey(users, function(o) { return o.age < 40; });
      * // => returns 'pebbles' assuming `_.findKey` returns 'barney'
      *
-     * // The `_.matches` iteratee shorthand.
+     * // using the `_.matches` iteratee shorthand
      * _.findLastKey(users, { 'age': 36, 'active': true });
      * // => 'barney'
      *
-     * // The `_.matchesProperty` iteratee shorthand.
+     * // using the `_.matchesProperty` iteratee shorthand
      * _.findLastKey(users, ['active', false]);
      * // => 'fred'
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.findLastKey(users, 'active');
      * // => 'pebbles'
      */
@@ -86137,9 +86018,7 @@ return jQuery;
      * // => logs 'a', 'b', then 'c' (iteration order is not guaranteed)
      */
     function forIn(object, iteratee) {
-      return object == null
-        ? object
-        : baseFor(object, baseCastFunction(iteratee), keysIn);
+      return object == null ? object : baseFor(object, toFunction(iteratee), keysIn);
     }
 
     /**
@@ -86167,9 +86046,7 @@ return jQuery;
      * // => logs 'c', 'b', then 'a' assuming `_.forIn` logs 'a', 'b', then 'c'
      */
     function forInRight(object, iteratee) {
-      return object == null
-        ? object
-        : baseForRight(object, baseCastFunction(iteratee), keysIn);
+      return object == null ? object : baseForRight(object, toFunction(iteratee), keysIn);
     }
 
     /**
@@ -86199,7 +86076,7 @@ return jQuery;
      * // => logs 'a' then 'b' (iteration order is not guaranteed)
      */
     function forOwn(object, iteratee) {
-      return object && baseForOwn(object, baseCastFunction(iteratee));
+      return object && baseForOwn(object, toFunction(iteratee));
     }
 
     /**
@@ -86227,7 +86104,7 @@ return jQuery;
      * // => logs 'b' then 'a' assuming `_.forOwn` logs 'a' then 'b'
      */
     function forOwnRight(object, iteratee) {
-      return object && baseForOwnRight(object, baseCastFunction(iteratee));
+      return object && baseForOwnRight(object, toFunction(iteratee));
     }
 
     /**
@@ -86371,12 +86248,14 @@ return jQuery;
     /**
      * Creates an object composed of the inverted keys and values of `object`.
      * If `object` contains duplicate values, subsequent values overwrite property
-     * assignments of previous values.
+     * assignments of previous values unless `multiVal` is `true`.
      *
      * @static
      * @memberOf _
      * @category Object
      * @param {Object} object The object to invert.
+     * @param {boolean} [multiVal] Allow multiple values per key.
+     * @param- {Object} [guard] Enables use as an iteratee for functions like `_.map`.
      * @returns {Object} Returns the new inverted object.
      * @example
      *
@@ -86384,43 +86263,27 @@ return jQuery;
      *
      * _.invert(object);
      * // => { '1': 'c', '2': 'b' }
-     */
-    var invert = createInverter(function(result, value, key) {
-      result[value] = key;
-    }, constant(identity));
-
-    /**
-     * This method is like `_.invert` except that the inverted object is generated
-     * from the results of running each element of `object` through `iteratee`.
-     * The corresponding inverted value of each inverted key is an array of keys
-     * responsible for generating the inverted value. The iteratee is invoked
-     * with one argument: (value).
      *
-     * @static
-     * @memberOf _
-     * @category Object
-     * @param {Object} object The object to invert.
-     * @param {Function|Object|string} [iteratee=_.identity] The iteratee invoked per element.
-     * @returns {Object} Returns the new inverted object.
-     * @example
-     *
-     * var object = { 'a': 1, 'b': 2, 'c': 1 };
-     *
-     * _.invertBy(object);
+     * // with `multiVal`
+     * _.invert(object, true);
      * // => { '1': ['a', 'c'], '2': ['b'] }
-     *
-     * _.invertBy(object, function(value) {
-     *   return 'group' + value;
-     * });
-     * // => { 'group1': ['a', 'c'], 'group2': ['b'] }
      */
-    var invertBy = createInverter(function(result, value, key) {
-      if (hasOwnProperty.call(result, value)) {
-        result[value].push(key);
-      } else {
-        result[value] = [key];
-      }
-    }, getIteratee);
+    function invert(object, multiVal, guard) {
+      return arrayReduce(keys(object), function(result, key) {
+        var value = object[key];
+        if (multiVal && !guard) {
+          if (hasOwnProperty.call(result, value)) {
+            result[value].push(key);
+          } else {
+            result[value] = [key];
+          }
+        }
+        else {
+          result[value] = key;
+        }
+        return result;
+      }, {});
+    }
 
     /**
      * Invokes the method at `path` of `object`.
@@ -86533,8 +86396,7 @@ return jQuery;
     /**
      * The opposite of `_.mapValues`; this method creates an object with the
      * same values as `object` and keys generated by running each own enumerable
-     * property of `object` through `iteratee`. The iteratee is invoked with
-     * three arguments: (value, key, object).
+     * property of `object` through `iteratee`.
      *
      * @static
      * @memberOf _
@@ -86562,7 +86424,7 @@ return jQuery;
     /**
      * Creates an object with the same keys as `object` and values generated by
      * running each own enumerable property of `object` through `iteratee`. The
-     * iteratee is invoked with three arguments: (value, key, object).
+     * iteratee function is invoked with three arguments: (value, key, object).
      *
      * @static
      * @memberOf _
@@ -86580,7 +86442,7 @@ return jQuery;
      * _.mapValues(users, function(o) { return o.age; });
      * // => { 'fred': 40, 'pebbles': 1 } (iteration order is not guaranteed)
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.mapValues(users, 'age');
      * // => { 'fred': 40, 'pebbles': 1 } (iteration order is not guaranteed)
      */
@@ -86595,13 +86457,12 @@ return jQuery;
     }
 
     /**
-     * This method is like `_.assign` except that it recursively merges own and
-     * inherited enumerable properties of source objects into the destination
-     * object. Source properties that resolve to `undefined` are skipped if a
-     * destination value exists. Array and plain object properties are merged
-     * recursively.Other objects and value types are overridden by assignment.
-     * Source objects are applied from left to right. Subsequent sources
-     * overwrite property assignments of previous sources.
+     * Recursively merges own and inherited enumerable properties of source
+     * objects into the destination object, skipping source properties that resolve
+     * to `undefined`. Array and plain object properties are merged recursively.
+     * Other objects and value types are overridden by assignment. Source objects
+     * are applied from left to right. Subsequent sources overwrite property
+     * assignments of previous sources.
      *
      * **Note:** This method mutates `object`.
      *
@@ -86634,8 +86495,6 @@ return jQuery;
      * properties. If `customizer` returns `undefined` merging is handled by the
      * method instead. The `customizer` is invoked with seven arguments:
      * (objValue, srcValue, key, object, source, stack).
-     *
-     * **Note:** This method mutates `object`.
      *
      * @static
      * @memberOf _
@@ -86678,7 +86537,7 @@ return jQuery;
      * @category Object
      * @param {Object} object The source object.
      * @param {...(string|string[])} [props] The property names to omit, specified
-     *  individually or in arrays.
+     *  individually or in arrays..
      * @returns {Object} Returns the new object.
      * @example
      *
@@ -86691,15 +86550,14 @@ return jQuery;
       if (object == null) {
         return {};
       }
-      props = arrayMap(baseFlatten(props, 1), String);
+      props = arrayMap(baseFlatten(props), String);
       return basePick(object, baseDifference(keysIn(object), props));
     });
 
     /**
-     * The opposite of `_.pickBy`; this method creates an object composed of
-     * the own and inherited enumerable properties of `object` that `predicate`
-     * doesn't return truthy for. The predicate is invoked with two arguments:
-     * (value, key).
+     * The opposite of `_.pickBy`; this method creates an object composed of the
+     * own and inherited enumerable properties of `object` that `predicate`
+     * doesn't return truthy for.
      *
      * @static
      * @memberOf _
@@ -86715,7 +86573,7 @@ return jQuery;
      * // => { 'b': '2' }
      */
     function omitBy(object, predicate) {
-      predicate = getIteratee(predicate);
+      predicate = getIteratee(predicate, 2);
       return basePickBy(object, function(value, key) {
         return !predicate(value, key);
       });
@@ -86739,12 +86597,12 @@ return jQuery;
      * // => { 'a': 1, 'c': 3 }
      */
     var pick = rest(function(object, props) {
-      return object == null ? {} : basePick(object, baseFlatten(props, 1));
+      return object == null ? {} : basePick(object, baseFlatten(props));
     });
 
     /**
      * Creates an object composed of the `object` properties `predicate` returns
-     * truthy for. The predicate is invoked with two arguments: (value, key).
+     * truthy for. The predicate is invoked with one argument: (value).
      *
      * @static
      * @memberOf _
@@ -86760,7 +86618,7 @@ return jQuery;
      * // => { 'a': 1, 'c': 3 }
      */
     function pickBy(object, predicate) {
-      return object == null ? {} : basePickBy(object, getIteratee(predicate));
+      return object == null ? {} : basePickBy(object, getIteratee(predicate, 2));
     }
 
     /**
@@ -86793,7 +86651,7 @@ return jQuery;
      */
     function result(object, path, defaultValue) {
       if (!isKey(path, object)) {
-        path = baseCastPath(path);
+        path = baseToPath(path);
         var result = get(object, path);
         object = parent(object, path);
       } else {
@@ -86810,8 +86668,6 @@ return jQuery;
      * it's created. Arrays are created for missing index properties while objects
      * are created for all other missing properties. Use `_.setWith` to customize
      * `path` creation.
-     *
-     * **Note:** This method mutates `object`.
      *
      * @static
      * @memberOf _
@@ -86842,8 +86698,6 @@ return jQuery;
      * path creation is handled by the method instead. The `customizer` is invoked
      * with three arguments: (nsValue, key, nsObject).
      *
-     * **Note:** This method mutates `object`.
-     *
      * @static
      * @memberOf _
      * @category Object
@@ -86854,10 +86708,8 @@ return jQuery;
      * @returns {Object} Returns `object`.
      * @example
      *
-     * var object = {};
-     *
-     * _.setWith(object, '[0][1]', 'a', Object);
-     * // => { '0': { '1': 'a' } }
+     * _.setWith({ '0': { 'length': 2 } }, '[0][1][2]', 3, Object);
+     * // => { '0': { '1': { '2': 3 }, 'length': 2 } }
      */
     function setWith(object, path, value, customizer) {
       customizer = typeof customizer == 'function' ? customizer : undefined;
@@ -86865,8 +86717,7 @@ return jQuery;
     }
 
     /**
-     * Creates an array of own enumerable key-value pairs for `object` which
-     * can be consumed by `_.fromPairs`.
+     * Creates an array of own enumerable key-value pairs for `object`.
      *
      * @static
      * @memberOf _
@@ -86890,8 +86741,7 @@ return jQuery;
     }
 
     /**
-     * Creates an array of own and inherited enumerable key-value pairs for
-     * `object` which can be consumed by `_.fromPairs`.
+     * Creates an array of own and inherited enumerable key-value pairs for `object`.
      *
      * @static
      * @memberOf _
@@ -86934,12 +86784,12 @@ return jQuery;
      * _.transform([2, 3, 4], function(result, n) {
      *   result.push(n *= n);
      *   return n % 2 == 0;
-     * }, []);
+     * });
      * // => [4, 9]
      *
      * _.transform({ 'a': 1, 'b': 2, 'c': 1 }, function(result, value, key) {
      *   (result[value] || (result[value] = [])).push(key);
-     * }, {});
+     * });
      * // => { '1': ['a', 'c'], '2': ['b'] }
      */
     function transform(object, iteratee, accumulator) {
@@ -86952,7 +86802,7 @@ return jQuery;
           if (isArr) {
             accumulator = isArray(object) ? new Ctor : [];
           } else {
-            accumulator = isFunction(Ctor) ? baseCreate(getPrototypeOf(object)) : {};
+            accumulator = baseCreate(isFunction(Ctor) ? Ctor.prototype : undefined);
           }
         } else {
           accumulator = {};
@@ -86966,8 +86816,6 @@ return jQuery;
 
     /**
      * Removes the property at `path` of `object`.
-     *
-     * **Note:** This method mutates `object`.
      *
      * @static
      * @memberOf _
@@ -86992,64 +86840,6 @@ return jQuery;
      */
     function unset(object, path) {
       return object == null ? true : baseUnset(object, path);
-    }
-
-    /**
-     * This method is like `_.set` except that accepts `updater` to produce the
-     * value to set. Use `_.updateWith` to customize `path` creation. The `updater`
-     * is invoked with one argument: (value).
-     *
-     * **Note:** This method mutates `object`.
-     *
-     * @static
-     * @memberOf _
-     * @category Object
-     * @param {Object} object The object to modify.
-     * @param {Array|string} path The path of the property to set.
-     * @param {Function} updater The function to produce the updated value.
-     * @returns {Object} Returns `object`.
-     * @example
-     *
-     * var object = { 'a': [{ 'b': { 'c': 3 } }] };
-     *
-     * _.update(object, 'a[0].b.c', function(n) { return n * n; });
-     * console.log(object.a[0].b.c);
-     * // => 9
-     *
-     * _.update(object, 'x[0].y.z', function(n) { return n ? n + 1 : 0; });
-     * console.log(object.x[0].y.z);
-     * // => 0
-     */
-    function update(object, path, updater) {
-      return object == null ? object : baseUpdate(object, path, baseCastFunction(updater));
-    }
-
-    /**
-     * This method is like `_.update` except that it accepts `customizer` which is
-     * invoked to produce the objects of `path`.  If `customizer` returns `undefined`
-     * path creation is handled by the method instead. The `customizer` is invoked
-     * with three arguments: (nsValue, key, nsObject).
-     *
-     * **Note:** This method mutates `object`.
-     *
-     * @static
-     * @memberOf _
-     * @category Object
-     * @param {Object} object The object to modify.
-     * @param {Array|string} path The path of the property to set.
-     * @param {Function} updater The function to produce the updated value.
-     * @param {Function} [customizer] The function to customize assigned values.
-     * @returns {Object} Returns `object`.
-     * @example
-     *
-     * var object = {};
-     *
-     * _.updateWith(object, '[0][1]', _.constant('a'), Object);
-     * // => { '0': { '1': 'a' } }
-     */
-    function updateWith(object, path, updater, customizer) {
-      customizer = typeof customizer == 'function' ? customizer : undefined;
-      return object == null ? object : baseUpdate(object, path, baseCastFunction(updater), customizer);
     }
 
     /**
@@ -87104,7 +86894,7 @@ return jQuery;
      * // => [1, 2, 3] (iteration order is not guaranteed)
      */
     function valuesIn(object) {
-      return object == null ? [] : baseValues(object, keysIn(object));
+      return object == null ? baseValues(object, keysIn(object)) : [];
     }
 
     /*------------------------------------------------------------------------*/
@@ -87602,7 +87392,7 @@ return jQuery;
      * @memberOf _
      * @category String
      * @param {string} string The string to convert.
-     * @param {number} [radix=10] The radix to interpret `value` by.
+     * @param {number} [radix] The radix to interpret `value` by.
      * @param- {Object} [guard] Enables use as an iteratee for functions like `_.map`.
      * @returns {number} Returns the converted integer.
      * @example
@@ -87789,7 +87579,7 @@ return jQuery;
      * in "interpolate" delimiters, HTML-escape interpolated data properties in
      * "escape" delimiters, and execute JavaScript in "evaluate" delimiters. Data
      * properties may be accessed as free variables in the template. If a setting
-     * object is given it takes precedence over `_.templateSettings` values.
+     * object is provided it takes precedence over `_.templateSettings` values.
      *
      * **Note:** In the development build `_.template` utilizes
      * [sourceURLs](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/#toc-sourceurl)
@@ -87816,54 +87606,54 @@ return jQuery;
      * @returns {Function} Returns the compiled template function.
      * @example
      *
-     * // Use the "interpolate" delimiter to create a compiled template.
+     * // using the "interpolate" delimiter to create a compiled template
      * var compiled = _.template('hello <%= user %>!');
      * compiled({ 'user': 'fred' });
      * // => 'hello fred!'
      *
-     * // Use the HTML "escape" delimiter to escape data property values.
+     * // using the HTML "escape" delimiter to escape data property values
      * var compiled = _.template('<b><%- value %></b>');
      * compiled({ 'value': '<script>' });
      * // => '<b>&lt;script&gt;</b>'
      *
-     * // Use the "evaluate" delimiter to execute JavaScript and generate HTML.
+     * // using the "evaluate" delimiter to execute JavaScript and generate HTML
      * var compiled = _.template('<% _.forEach(users, function(user) { %><li><%- user %></li><% }); %>');
      * compiled({ 'users': ['fred', 'barney'] });
      * // => '<li>fred</li><li>barney</li>'
      *
-     * // Use the internal `print` function in "evaluate" delimiters.
+     * // using the internal `print` function in "evaluate" delimiters
      * var compiled = _.template('<% print("hello " + user); %>!');
      * compiled({ 'user': 'barney' });
      * // => 'hello barney!'
      *
-     * // Use the ES delimiter as an alternative to the default "interpolate" delimiter.
+     * // using the ES delimiter as an alternative to the default "interpolate" delimiter
      * var compiled = _.template('hello ${ user }!');
      * compiled({ 'user': 'pebbles' });
      * // => 'hello pebbles!'
      *
-     * // Use custom template delimiters.
+     * // using custom template delimiters
      * _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
      * var compiled = _.template('hello {{ user }}!');
      * compiled({ 'user': 'mustache' });
      * // => 'hello mustache!'
      *
-     * // Use backslashes to treat delimiters as plain text.
+     * // using backslashes to treat delimiters as plain text
      * var compiled = _.template('<%= "\\<%- value %\\>" %>');
      * compiled({ 'value': 'ignored' });
      * // => '<%- value %>'
      *
-     * // Use the `imports` option to import `jQuery` as `jq`.
+     * // using the `imports` option to import `jQuery` as `jq`
      * var text = '<% jq.each(users, function(user) { %><li><%- user %></li><% }); %>';
      * var compiled = _.template(text, { 'imports': { 'jq': jQuery } });
      * compiled({ 'users': ['fred', 'barney'] });
      * // => '<li>fred</li><li>barney</li>'
      *
-     * // Use the `sourceURL` option to specify a custom sourceURL for the template.
+     * // using the `sourceURL` option to specify a custom sourceURL for the template
      * var compiled = _.template('hello <%= user %>!', { 'sourceURL': '/basic/greeting.jst' });
      * compiled(data);
      * // => find the source of "greeting.jst" under the Sources tab or Resources panel of the web inspector
      *
-     * // Use the `variable` option to ensure a with-statement isn't used in the compiled template.
+     * // using the `variable` option to ensure a with-statement isn't used in the compiled template
      * var compiled = _.template('hi <%= data.user %>!', { 'variable': 'data' });
      * compiled.source;
      * // => function(data) {
@@ -87872,8 +87662,8 @@ return jQuery;
      * //   return __p;
      * // }
      *
-     * // Use the `source` property to inline compiled templates for meaningful
-     * // line numbers in error messages and stack traces.
+     * // using the `source` property to inline compiled templates for meaningful
+     * // line numbers in error messages and a stack trace
      * fs.writeFileSync(path.join(cwd, 'jst.js'), '\
      *   var JST = {\
      *     "main": ' + _.template(mainText).source + '\
@@ -87974,8 +87764,7 @@ return jQuery;
         'return __p\n}';
 
       var result = attempt(function() {
-        return Function(importsKeys, sourceURL + 'return ' + source)
-          .apply(undefined, importsValues);
+        return Function(importsKeys, sourceURL + 'return ' + source).apply(undefined, importsValues);
       });
 
       // Provide the compiled function's source by its `toString` method or
@@ -87988,8 +87777,7 @@ return jQuery;
     }
 
     /**
-     * Converts `string`, as a whole, to lower case just like
-     * [String#toLowerCase](https://mdn.io/toLowerCase).
+     * Converts `string`, as a whole, to lower case.
      *
      * @static
      * @memberOf _
@@ -88012,8 +87800,7 @@ return jQuery;
     }
 
     /**
-     * Converts `string`, as a whole, to upper case just like
-     * [String#toUpperCase](https://mdn.io/toUpperCase).
+     * Converts `string`, as a whole, to upper case.
      *
      * @static
      * @memberOf _
@@ -88071,9 +87858,7 @@ return jQuery;
       var strSymbols = stringToArray(string),
           chrSymbols = stringToArray(chars);
 
-      return strSymbols
-        .slice(charsStartIndex(strSymbols, chrSymbols), charsEndIndex(strSymbols, chrSymbols) + 1)
-        .join('');
+      return strSymbols.slice(charsStartIndex(strSymbols, chrSymbols), charsEndIndex(strSymbols, chrSymbols) + 1).join('');
     }
 
     /**
@@ -88107,9 +87892,7 @@ return jQuery;
         return string;
       }
       var strSymbols = stringToArray(string);
-      return strSymbols
-        .slice(0, charsEndIndex(strSymbols, stringToArray(chars)) + 1)
-        .join('');
+      return strSymbols.slice(0, charsEndIndex(strSymbols, stringToArray(chars)) + 1).join('');
     }
 
     /**
@@ -88143,9 +87926,7 @@ return jQuery;
         return string;
       }
       var strSymbols = stringToArray(string);
-      return strSymbols
-        .slice(charsStartIndex(strSymbols, stringToArray(chars)))
-        .join('');
+      return strSymbols.slice(charsStartIndex(strSymbols, stringToArray(chars))).join('');
     }
 
     /**
@@ -88157,7 +87938,7 @@ return jQuery;
      * @memberOf _
      * @category String
      * @param {string} [string=''] The string to truncate.
-     * @param {Object} [options=({})] The options object.
+     * @param {Object} [options] The options object.
      * @param {number} [options.length=30] The maximum string length.
      * @param {string} [options.omission='...'] The string to indicate text is omitted.
      * @param {RegExp|string} [options.separator] The separator pattern to truncate to.
@@ -88329,7 +88110,7 @@ return jQuery;
      * @returns {*} Returns the `func` result or error object.
      * @example
      *
-     * // Avoid throwing errors for invalid selectors.
+     * // avoid throwing errors for invalid selectors
      * var elements = _.attempt(function(selector) {
      *   return document.querySelectorAll(selector);
      * }, '>_>');
@@ -88373,7 +88154,7 @@ return jQuery;
      * // => logs 'clicked docs' when clicked
      */
     var bindAll = rest(function(object, methodNames) {
-      arrayEach(baseFlatten(methodNames, 1), function(key) {
+      arrayEach(baseFlatten(methodNames), function(key) {
         object[key] = bind(object[key], object);
       });
       return object;
@@ -88476,9 +88257,9 @@ return jQuery;
     }
 
     /**
-     * Creates a function that returns the result of invoking the given functions
-     * with the `this` binding of the created function, where each successive
-     * invocation is supplied the return value of the previous.
+     * Creates a function that returns the result of invoking the provided
+     * functions with the `this` binding of the created function, where each
+     * successive invocation is supplied the return value of the previous.
      *
      * @static
      * @memberOf _
@@ -88499,7 +88280,7 @@ return jQuery;
 
     /**
      * This method is like `_.flow` except that it creates a function that
-     * invokes the given functions from right to left.
+     * invokes the provided functions from right to left.
      *
      * @static
      * @memberOf _
@@ -88519,7 +88300,7 @@ return jQuery;
     var flowRight = createFlow(true);
 
     /**
-     * This method returns the first argument given to it.
+     * This method returns the first argument provided to it.
      *
      * @static
      * @memberOf _
@@ -88541,8 +88322,7 @@ return jQuery;
      * Creates a function that invokes `func` with the arguments of the created
      * function. If `func` is a property name the created callback returns the
      * property value for a given element. If `func` is an object the created
-     * callback returns `true` for elements that contain the equivalent object
-     * properties, otherwise it returns `false`.
+     * callback returns `true` for elements that contain the equivalent object properties, otherwise it returns `false`.
      *
      * @static
      * @memberOf _
@@ -88556,7 +88336,7 @@ return jQuery;
      *   { 'user': 'fred',   'age': 40 }
      * ];
      *
-     * // Create custom iteratee shorthands.
+     * // create custom iteratee shorthands
      * _.iteratee = _.wrap(_.iteratee, function(callback, func) {
      *   var p = /^(\S+)\s*([<>])\s*(\S+)$/.exec(func);
      *   return !p ? callback(func) : function(object) {
@@ -88568,14 +88348,15 @@ return jQuery;
      * // => [{ 'user': 'fred', 'age': 40 }]
      */
     function iteratee(func) {
-      return baseIteratee(typeof func == 'function' ? func : baseClone(func, true));
+      return (isObjectLike(func) && !isArray(func))
+        ? matches(func)
+        : baseIteratee(func);
     }
 
     /**
-     * Creates a function that performs a partial deep comparison between a given
+     * Creates a function that performs a deep partial comparison between a given
      * object and `source`, returning `true` if the given object has equivalent
-     * property values, else `false`. The created function is equivalent to
-     * `_.isMatch` with a `source` partially applied.
+     * property values, else `false`.
      *
      * **Note:** This method supports comparing the same values as `_.isEqual`.
      *
@@ -88599,7 +88380,7 @@ return jQuery;
     }
 
     /**
-     * Creates a function that performs a partial deep comparison between the
+     * Creates a function that performs a deep partial comparison between the
      * value at `path` of a given object to `srcValue`, returning `true` if the
      * object value is equivalent, else `false`.
      *
@@ -89008,8 +88789,8 @@ return jQuery;
     var rangeRight = createRange(true);
 
     /**
-     * Invokes the iteratee `n` times, returning an array of the results of
-     * each invocation. The iteratee is invoked with one argument; (index).
+     * Invokes the iteratee function `n` times, returning an array of the results
+     * of each invocation. The iteratee is invoked with one argument; (index).
      *
      * @static
      * @memberOf _
@@ -89033,7 +88814,7 @@ return jQuery;
       var index = MAX_ARRAY_LENGTH,
           length = nativeMin(n, MAX_ARRAY_LENGTH);
 
-      iteratee = baseCastFunction(iteratee);
+      iteratee = toFunction(iteratee);
       n -= MAX_ARRAY_LENGTH;
 
       var result = baseTimes(length, iteratee);
@@ -89073,12 +88854,12 @@ return jQuery;
     }
 
     /**
-     * Generates a unique ID. If `prefix` is given the ID is appended to it.
+     * Generates a unique ID. If `prefix` is provided the ID is appended to it.
      *
      * @static
      * @memberOf _
      * @category Util
-     * @param {string} [prefix=''] The value to prefix the ID with.
+     * @param {string} [prefix] The value to prefix the ID with.
      * @returns {string} Returns the unique ID.
      * @example
      *
@@ -89111,9 +88892,6 @@ return jQuery;
      */
     function add(augend, addend) {
       var result;
-      if (augend === undefined && addend === undefined) {
-        return 0;
-      }
       if (augend !== undefined) {
         result = augend;
       }
@@ -89208,7 +88986,7 @@ return jQuery;
      * _.maxBy(objects, function(o) { return o.n; });
      * // => { 'n': 2 }
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.maxBy(objects, 'n');
      * // => { 'n': 2 }
      */
@@ -89276,7 +89054,7 @@ return jQuery;
      * _.minBy(objects, function(o) { return o.n; });
      * // => { 'n': 1 }
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.minBy(objects, 'n');
      * // => { 'n': 1 }
      */
@@ -89324,9 +89102,6 @@ return jQuery;
      */
     function subtract(minuend, subtrahend) {
       var result;
-      if (minuend === undefined && subtrahend === undefined) {
-        return 0;
-      }
       if (minuend !== undefined) {
         result = minuend;
       }
@@ -89352,7 +89127,7 @@ return jQuery;
     function sum(array) {
       return (array && array.length)
         ? baseSum(array, identity)
-        : 0;
+        : undefined;
     }
 
     /**
@@ -89373,21 +89148,20 @@ return jQuery;
      * _.sumBy(objects, function(o) { return o.n; });
      * // => 20
      *
-     * // The `_.property` iteratee shorthand.
+     * // using the `_.property` iteratee shorthand
      * _.sumBy(objects, 'n');
      * // => 20
      */
     function sumBy(array, iteratee) {
       return (array && array.length)
         ? baseSum(array, getIteratee(iteratee))
-        : 0;
+        : undefined;
     }
 
     /*------------------------------------------------------------------------*/
 
     // Ensure wrappers are instances of `baseLodash`.
     lodash.prototype = baseLodash.prototype;
-    lodash.prototype.constructor = lodash;
 
     LodashWrapper.prototype = baseCreate(baseLodash.prototype);
     LodashWrapper.prototype.constructor = LodashWrapper;
@@ -89430,7 +89204,6 @@ return jQuery;
     lodash.bind = bind;
     lodash.bindAll = bindAll;
     lodash.bindKey = bindKey;
-    lodash.castArray = castArray;
     lodash.chain = chain;
     lodash.chunk = chunk;
     lodash.compact = compact;
@@ -89459,7 +89232,6 @@ return jQuery;
     lodash.flatMap = flatMap;
     lodash.flatten = flatten;
     lodash.flattenDeep = flattenDeep;
-    lodash.flattenDepth = flattenDepth;
     lodash.flip = flip;
     lodash.flow = flow;
     lodash.flowRight = flowRight;
@@ -89472,7 +89244,6 @@ return jQuery;
     lodash.intersectionBy = intersectionBy;
     lodash.intersectionWith = intersectionWith;
     lodash.invert = invert;
-    lodash.invertBy = invertBy;
     lodash.invokeMap = invokeMap;
     lodash.iteratee = iteratee;
     lodash.keyBy = keyBy;
@@ -89509,7 +89280,6 @@ return jQuery;
     lodash.pull = pull;
     lodash.pullAll = pullAll;
     lodash.pullAllBy = pullAllBy;
-    lodash.pullAllWith = pullAllWith;
     lodash.pullAt = pullAt;
     lodash.range = range;
     lodash.rangeRight = rangeRight;
@@ -89552,8 +89322,6 @@ return jQuery;
     lodash.unset = unset;
     lodash.unzip = unzip;
     lodash.unzipWith = unzipWith;
-    lodash.update = update;
-    lodash.updateWith = updateWith;
     lodash.values = values;
     lodash.valuesIn = valuesIn;
     lodash.without = without;
@@ -89564,7 +89332,6 @@ return jQuery;
     lodash.xorWith = xorWith;
     lodash.zip = zip;
     lodash.zipObject = zipObject;
-    lodash.zipObjectDeep = zipObjectDeep;
     lodash.zipWith = zipWith;
 
     // Add aliases.
@@ -89619,11 +89386,9 @@ return jQuery;
     lodash.invoke = invoke;
     lodash.isArguments = isArguments;
     lodash.isArray = isArray;
-    lodash.isArrayBuffer = isArrayBuffer;
     lodash.isArrayLike = isArrayLike;
     lodash.isArrayLikeObject = isArrayLikeObject;
     lodash.isBoolean = isBoolean;
-    lodash.isBuffer = isBuffer;
     lodash.isDate = isDate;
     lodash.isElement = isElement;
     lodash.isEmpty = isEmpty;
@@ -89634,7 +89399,6 @@ return jQuery;
     lodash.isFunction = isFunction;
     lodash.isInteger = isInteger;
     lodash.isLength = isLength;
-    lodash.isMap = isMap;
     lodash.isMatch = isMatch;
     lodash.isMatchWith = isMatchWith;
     lodash.isNaN = isNaN;
@@ -89647,13 +89411,10 @@ return jQuery;
     lodash.isPlainObject = isPlainObject;
     lodash.isRegExp = isRegExp;
     lodash.isSafeInteger = isSafeInteger;
-    lodash.isSet = isSet;
     lodash.isString = isString;
     lodash.isSymbol = isSymbol;
     lodash.isTypedArray = isTypedArray;
     lodash.isUndefined = isUndefined;
-    lodash.isWeakMap = isWeakMap;
-    lodash.isWeakSet = isWeakSet;
     lodash.join = join;
     lodash.kebabCase = kebabCase;
     lodash.last = last;
@@ -89737,7 +89498,7 @@ return jQuery;
      *
      * @static
      * @memberOf _
-     * @type {string}
+     * @type string
      */
     lodash.VERSION = VERSION;
 
@@ -89759,10 +89520,7 @@ return jQuery;
         if (filtered) {
           result.__takeCount__ = nativeMin(n, result.__takeCount__);
         } else {
-          result.__views__.push({
-            'size': nativeMin(n, MAX_ARRAY_LENGTH),
-            'type': methodName + (result.__dir__ < 0 ? 'Right' : '')
-          });
+          result.__views__.push({ 'size': nativeMin(n, MAX_ARRAY_LENGTH), 'type': methodName + (result.__dir__ < 0 ? 'Right' : '') });
         }
         return result;
       };
@@ -89779,10 +89537,7 @@ return jQuery;
 
       LazyWrapper.prototype[methodName] = function(iteratee) {
         var result = this.clone();
-        result.__iteratees__.push({
-          'iteratee': getIteratee(iteratee, 3),
-          'type': type
-        });
+        result.__iteratees__.push({ 'iteratee': getIteratee(iteratee, 3), 'type': type });
         result.__filtered__ = result.__filtered__ || isFilter;
         return result;
       };
@@ -89934,10 +89689,7 @@ return jQuery;
       }
     });
 
-    realNames[createHybridWrapper(undefined, BIND_KEY_FLAG).name] = [{
-      'name': 'wrapper',
-      'func': undefined
-    }];
+    realNames[createHybridWrapper(undefined, BIND_KEY_FLAG).name] = [{ 'name': 'wrapper', 'func': undefined }];
 
     // Add functions to the lazy wrapper.
     LazyWrapper.prototype.clone = lazyClone;
@@ -89994,7 +89746,7 @@ return jQuery;
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],189:[function(require,module,exports){
+},{}],195:[function(require,module,exports){
 /**!
  * AngularJS file upload directives and services. Supoorts: file upload/drop/paste, resume, cancel/abort,
  * progress, resize, thumbnail, preview, validation and CORS
@@ -92773,14 +92525,1094 @@ ngFileUpload.service('UploadExif', ['UploadResize', '$q', function (UploadResize
 }]);
 
 
-},{}],190:[function(require,module,exports){
+},{}],196:[function(require,module,exports){
 require('./dist/ng-file-upload-all');
 module.exports = 'ngFileUpload';
-},{"./dist/ng-file-upload-all":189}],191:[function(require,module,exports){
+},{"./dist/ng-file-upload-all":195}],197:[function(require,module,exports){
+var validators = require('./validators'),
+	validationContext = require('./validation-context'),
+	jsonRefs = require('skeemas-json-refs');
+
+var protoValidator = {
+	addRef: function(uri, ref) {
+		if(typeof uri === 'object') {
+			ref = uri;
+			uri = null;
+		}
+		uri = uri || ref.id;
+
+		if(!uri) throw new Error('Cannot add a json schema reference without a uri/id.');
+
+		this._refs.add(uri, ref);
+
+		return this;
+	},
+	validate: function(instance, schema, options) {
+		if(instance === undefined) throw new Error('Instance undefined in call to validate.');
+		if(!schema) throw new Error('No schema specified in call to validate.');
+
+		if(typeof schema === 'string') {
+			var uri = schema;
+			schema = this._refs.get(uri);
+
+			if(!schema) throw new Error('Unable to locate schema (' + uri + '). Did you call addRef with this schema?');
+		}
+
+		var context = validationContext(schema, {
+			instance: instance,
+			refs: this._refs,
+			breakOnError: options && options.breakOnError,
+			cleanWithDefaults: options && options.cleanWithDefaults
+		});
+		validators.base(context, instance, schema);
+		if(context.result.valid) context.result.cleanInstance = context.cleanSubject;
+		return context.result;
+	}
+};
+
+function makeValidator() {
+	return Object.create(protoValidator, {
+		_refs: { enumerable:false, writable:false, value:jsonRefs() }
+	});
+}
+
+module.exports = makeValidator;
+
+module.exports.validate = function(instance, schema, options) {
+	if(instance === undefined) throw new Error('Instance undefined in call to validate.');
+	if(!schema) throw new Error('No schema specified in call to validate.');
+
+	var context = validationContext(schema, {
+		instance: instance,
+		breakOnError: options && options.breakOnError,
+		cleanWithDefaults: options && options.cleanWithDefaults
+	});
+	validators.base(context, instance, schema);
+	if(context.result.valid) context.result.cleanInstance = context.cleanSubject;
+	return context.result;
+};
+
+module.exports.use = function(plugin) {
+	if(typeof plugin !== 'function') throw new Error('skeemas.use called with non-function. Plugins are in the form function(skeemas){}.');
+	plugin(protoValidator);
+	return this;
+};
+
+},{"./validation-context":200,"./validators":206,"skeemas-json-refs":199}],198:[function(require,module,exports){
+function fastMap(array, fn) {
+	var len = array.length,
+		result = new Array(len);
+
+	for(var i = 0; i < len; i++) result[i] = fn(array[i]);
+
+	return result;
+}
+
+function decodeToken(ref) {
+	return decodeURI(ref.replace(/~1/g, '/').replace(/~0/g, '~'));
+}
+
+function parse(strPointer) {
+	if(typeof strPointer !== 'string')
+		throw new Error('Invalid JSON Pointer: invalid type (' + (typeof strPointer) + ')');
+
+	// Remove the leading hash if it exists
+	var arrPointer = fastMap((strPointer[0] === '#' ? strPointer.substr(1) : strPointer).split('/'), decodeToken);
+
+	if(arrPointer[0] !== '')
+		throw new Error('Invalid JSON Pointer ("' + strPointer + '"): non-empty pointers must begin with "/" or "#/"');
+
+	return arrPointer;
+}
+
+function get(arrPointer, subject) {
+	for(var i = 1, len = arrPointer.length; i < len; i++) {
+		subject = subject && subject[arrPointer[i]];
+		if(subject === undefined) return;
+	}
+	return subject;
+}
+
+function set(arrPointer, subject, value) {
+	for(var i = 1, len = arrPointer.length - 1; i < len; i++) {
+		subject = (subject || undefined) && subject[arrPointer[i]];
+		if(subject === undefined) return false;
+	}
+
+	if(typeof subject !== 'object') return false;
+
+	var key = arrPointer[i];
+	if(key === '-') {
+		if(!Array.isArray(subject)) return false;
+		subject[subject.length] = value;
+		return true;
+	}
+
+	subject[key] = value;
+	return true;
+}
+
+var protoPointer = {
+	get: function(subject) {
+		return get(this.__arrPointer, subject);
+	},
+	set: function(subject, value) {
+		return set(this.__arrPointer, subject, value);
+	}
+};
+
+module.exports = function(sPointer) {
+	return Object.create(protoPointer, {
+		__sPointer: { writable:false, configurable:false, enumerable:false, value: sPointer },
+		__arrPointer: { writable:false, configurable:false, enumerable:false, value: parse(sPointer) }
+	});
+};
+
+},{}],199:[function(require,module,exports){
+var jsonPointer = require('skeemas-json-pointer');
+
+var protoJsonRefs = {
+	add: function(uri, subject) {
+		if(typeof uri !== 'string')
+			throw new Error('Unable to add JSON Ref: uri must be of type "string"');
+
+		if(~uri.indexOf('#'))
+			throw new Error('Unable to add JSON Ref (' + uri + '): uri cannot include a fragment identifier (#)');
+
+		this.__refs[uri] = subject;
+		return this;
+	},
+
+	remove: function(uri) {
+		delete this.__refs[uri];
+		return this;
+	},
+
+	get: function(uri, subject, ignoreFragment) {
+		if(typeof uri !== 'string')
+			throw new Error('Unable to get JSON Ref: uri must be of type "string"');
+
+		var parts = uri.split('#');
+
+		if(parts.length > 2)
+			throw new Error('Unable to get JSON Ref (' + uri + '): uri cannot contain multiple fragment identifiers (#)');
+
+		if(parts[0])
+			subject = this.__refs[parts[0]];
+
+		if(!subject)
+			throw new Error('Unable to locate JSON Ref (' + parts[0] + ')');
+
+		if(parts.length === 1 || ignoreFragment)
+			return subject;
+
+		return jsonPointer(parts[1]).get(subject);
+	}
+};
+
+module.exports = function() {
+	return Object.create(protoJsonRefs, {
+		__refs: { writable:false, configurable:false, enumerable:false, value: {} }
+	});
+};
+
+},{"skeemas-json-pointer":198}],200:[function(require,module,exports){
+var validationResult = require('./validation-result'),
+	jsonRefs = require('skeemas-json-refs');
+
+var protoContext = {
+	addError: function(message, subject, criteria) {
+		if(!this.silent) this.result.addError(message, subject, criteria, this);
+		return this;
+	},
+	silently: function(fn) {
+		this.silent = true;
+		var result = fn();
+		this.silent = false;
+		return result;
+	},
+	subcontext: function(schema) {
+		return makeContext(schema, this, this.silent);
+	},
+	runValidations: function(validations, subject, schema) {
+		var breakOnError = this.breakOnError,
+			args = Array.prototype.slice.call(arguments),
+			valid = true,
+			validation;
+
+		args[0] = this;
+
+		for(var i = 0, len = validations.length; i < len; i++) {
+			validation = validations[i];
+			if(!validation[0]) continue;
+			valid = validation[1].apply(null, args) && valid;
+			if(breakOnError && !valid) return false;
+		}
+
+		return valid;
+	}
+};
+
+var makeContext = module.exports = function(schema, context, forceNewResult) {
+	context = context || {};
+	return Object.create(protoContext, {
+		id: { enumerable:true, writable:false, value: [] },
+		schema: { enumerable:true, writable:false, value: schema || context.schema },
+		path: { enumerable:true, writable:false, value: context.path && context.path.slice() || ['#'] },
+		result: { enumerable:true, writable:false, value: (!forceNewResult && context.result) || validationResult(context.instance) },
+		refs: { enumerable:true, writable:false, value: context.refs || jsonRefs() },
+		silent: { enumerable:true, writable:true, value: false },
+		breakOnError: { enumerable:true, writable:true, value: context.breakOnError || false },
+		cleanWithDefaults: { enumerable:true, writable:true, value: context.cleanWithDefaults || false },
+		cleanSubject: { enumerable:true, writable:true, value: undefined }
+	});
+};
+
+},{"./validation-result":201,"skeemas-json-refs":199}],201:[function(require,module,exports){
+function errorToString() {
+	return this.message + ' (pointer: ' + this.context + ')';
+}
+
+var protoValidationResult = {
+	addError: function(message, subject, criteria, context) {
+		this.errors.push({
+			message: message,
+			context: context.path.join('/'),
+			value: subject,
+			criteria: criteria,
+			toString: errorToString
+		});
+		this.valid = false;
+		return this;
+	}
+};
+
+module.exports = function(instance) {
+	return Object.create(protoValidationResult, {
+		instance: { enumerable:true, writable:false, value:instance },
+		cleanInstance: { enumerable:true, writable:true, value: undefined },
+		valid: { enumerable:true, writable:true, value:true },
+		errors: { enumerable:true, writable:false, value:[] }
+	});
+};
+
+},{}],202:[function(require,module,exports){
+var validateBase = require('./base'),
+	deepEqual = require('./deep-equal');
+
+function items(context, subject, schema, cleanItems) {
+	var valid = true;
+
+	if(Array.isArray(schema.items)) {
+		valid = tupleItems(context, subject, schema, cleanItems);
+		if('additionalItems' in schema) valid = additionalItems(context, subject, schema, cleanItems) && valid;
+	} else if(schema.items) {
+		valid = itemSchema(context, subject, schema, cleanItems);
+	}
+
+	return valid;
+}
+
+function itemSchema(context, subject, schema, cleanItems) {
+	var items = schema.items;
+
+	if(typeof items !== 'object')
+		throw new Error('Invalid schema: invalid "items"');
+
+	var lastPath = context.path.length;
+	for(var i = 0, len = subject.length; i < len; i++) {
+		context.path[lastPath] = i;
+		if(!validateBase(context, subject[i], items)) {
+			context.addError('Failed "items" criteria', subject, items);
+			context.path.length = lastPath;
+			return false;
+		}
+		cleanItems.push(context.cleanSubject);
+	}
+	context.path.length = lastPath;
+
+	return true;
+}
+
+function tupleItems(context, subject, schema, cleanItems) {
+	var items = schema.items,
+		lastPath = context.path.length;
+	for(var i = 0, len = items.length; i < len; i++) {
+		context.path[lastPath] = i;
+		if(!validateBase(context, subject[i], items[i])) {
+			context.addError('Failed "items" criteria', subject, items);
+			context.path.length = lastPath;
+			return false;
+		}
+		cleanItems.push(context.cleanSubject);
+	}
+	context.path.length = lastPath;
+
+	return true;
+}
+
+function additionalItems(context, subject, schema, cleanItems) {
+	var i = schema.items.length,
+		len = subject.length,
+		additionalItemSchema = schema.additionalItems;
+
+	if(additionalItemSchema === false) {
+		if(len <= i) return true;
+
+		context.addError('Failed "additionalItems" criteria: no additional items are allowed', subject, schema);
+		return false;
+	}
+
+	if(typeof additionalItemSchema !== 'object')
+		throw new Error('Invalid schema: invalid "additionalItems"');
+
+	var lastPath = context.path.length;
+	for(; i < len; i++) {
+		context.path[lastPath] = i;
+		if(!validateBase(context, subject[i], additionalItemSchema)) {
+			context.addError('Failed "additionalItems" criteria', subject, schema);
+			context.path.length = lastPath;
+			return false;
+		}
+		cleanItems.push(context.cleanSubject);
+	}
+	context.path.length = lastPath;
+
+	return true;
+}
+
+function minItems(context, subject, schema) {
+	if(subject.length < schema.minItems) {
+		context.addError('Failed "minItems" criteria', subject, schema);
+		return false;
+	}
+
+	return true;
+}
+
+function maxItems(context, subject, schema) {
+	if(subject.length > schema.maxItems) {
+		context.addError('Failed "maxItems" criteria', subject, schema);
+		return false;
+	}
+
+	return true;
+}
+
+function uniqueItems(context, subject, schema) {
+	var i = subject.length, j;
+
+	while(i--) {
+		j = i;
+		while(j--) {
+			if(deepEqual(subject[i], subject[j])) {
+				context.addError('Failed "uniqueItems" criteria', subject, schema);
+				return false;
+			}
+		}
+	}
+
+	return true;
+}
+
+
+module.exports = function(context, subject, schema) {
+	if(!Array.isArray(subject)) {
+		context.addError('Failed type:array criteria', schema);
+		return false;
+	}
+
+	var cleanItems = [],
+		valid = context.runValidations([
+			[ 'minItems' in schema, minItems ],
+			[ 'maxItems' in schema, maxItems ],
+			[ 'uniqueItems' in schema, uniqueItems ],
+			[ 'items' in schema, items ]
+		], subject, schema, cleanItems);
+
+	if('items' in schema)
+		context.cleanSubject = cleanItems;
+	else
+		context.cleanSubject = subject.slice();
+
+	return valid;
+};
+
+},{"./base":203,"./deep-equal":205}],203:[function(require,module,exports){
+var validators = require('./'),
+	formats = {
+		'date-time': /^\d{4}-(0[0-9]{1}|1[0-2]{1})-[0-9]{2}[t ]\d{2}:\d{2}:\d{2}(\.\d+)?([zZ]|[+-]\d{2}:\d{2})$/i,
+		'date': /^\d{4}-(0[0-9]{1}|1[0-2]{1})-[0-9]{2}$/,
+		'time': /^\d{2}:\d{2}:\d{2}$/,
+		'color': /^(#[0-9a-f]{3}|#[0-9a-f]{6}|aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white|yellow)$/i,
+		'style': /^(?:\s*-?[_A-Z]+[_A-Z0-9-]*:[^\n\r\f;]+;)*\s*-?[_A-Z]+[_A-Z0-9-]*:[^\n\r\f;]+;?\s*$/i,
+		'phone': /^(?:(?:\(?(?:00|\+)(?:[1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?(?:(?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(?:\d+))?$/i,
+		'uri': /^(?:([a-z0-9+.-]+:\/\/)((?:(?:[a-z0-9-._~!$&'()*+,;=:]|%[0-9A-F]{2})*)@)?((?:[a-z0-9-._~!$&'()*+,;=]|%[0-9A-F]{2})*)(:(?:\d*))?(\/(?:[a-z0-9-._~!$&'()*+,;=:@\/]|%[0-9A-F]{2})*)?|([a-z0-9+.-]+:)(\/?(?:[a-z0-9-._~!$&'()*+,;=:@]|%[0-9A-F]{2})+(?:[a-z0-9-._~!$&'()*+,;=:@\/]|%[0-9A-F]{2})*)?)(\?(?:[a-z0-9-._~!$&'()*+,;=:\/?@]|%[0-9A-F]{2})*)?(#(?:[a-z0-9-._~!$&'()*+,;=:\/?@]|%[0-9A-F]{2})*)?$/i,
+		'email': /^[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,}$/i,
+		'ipv4': /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/,
+		'ipv6': /^\s*((([0-9A-F]{1,4}:){7}([0-9A-F]{1,4}|:))|(([0-9A-F]{1,4}:){6}(:[0-9A-F]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-F]{1,4}:){5}(((:[0-9A-F]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-F]{1,4}:){4}(((:[0-9A-F]{1,4}){1,3})|((:[0-9A-F]{1,4})((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-F]{1,4}:){3}(((:[0-9A-F]{1,4}){1,4})|((:[0-9A-F]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-F]{1,4}:){2}(((:[0-9A-F]{1,4}){1,5})|((:[0-9A-F]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-F]{1,4}:){1}(((:[0-9A-F]{1,4}){1,6})|((:[0-9A-F]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-F]{1,4}){1,7})|((:[0-9A-F]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$/i,
+
+		// hostname regex from: http://stackoverflow.com/a/1420225/5628
+		'hostname': /^(?=.{1,255}$)[0-9A-Z](?:(?:[0-9A-Z]|-){0,61}[0-9A-Z])?(?:\.[0-9A-Z](?:(?:[0-9A-Z]|-){0,61}[0-9A-Z])?)*\.?$/i,
+
+		'utc-millisec': function(subject) {
+			var parsed = parseInt(subject, 10);
+			return !isNaN(parsed) && parsed.toString() === subject.toString();
+		},
+		'regex': function (subject) {
+			try { new RegExp(subject); }
+			catch(e) { return false; }
+			return true;
+		}
+	};
+
+// aliases
+formats['host-name'] = formats.hostname;
+formats['ip-address'] = formats.ipv4;
+
+
+function getType(subject) {
+	var type = typeof subject;
+
+	if(type === 'object') {
+		if(subject === null) return 'null';
+		if(Array.isArray(subject)) return 'array';
+	}
+
+	if(type === 'number' && subject === Math.round(subject)) return 'integer';
+
+	return type;
+}
+
+function format(context, subject, schema) {
+	var fmt = schema.format,
+		validator = formats[fmt];
+
+	if(!validator)
+		throw new Error('Invalid schema: unknown format (' + fmt + ')');
+
+	var valid = validator.test ? validator.test(subject) : validator(subject);
+	if(!valid) {
+		context.addError('Failed "format" criteria (' + fmt + ')', subject, schema);
+	}
+
+	return valid;
+}
+
+function validateTypes(context, subject, type, validTypes) {
+	var i = validTypes.length,
+		validType, valid;
+	while(i--) {
+		validType = validTypes[i];
+
+		if(validType === 'any') return true;
+
+		if(typeof validType === 'object') {
+			valid = context.silently(function() {
+				return validateBase(context, subject, validType);
+			}); // jshint ignore:line
+			if(valid) return true;
+			else continue;
+		}
+
+		if(!(validType in validators.types))
+			throw new Error('Invalid schema: invalid type (' + validType + ')');
+
+		if(validType === 'number' && type === 'integer') return true;
+
+		if(type === validType) return true;
+	}
+
+	return false;
+}
+
+function allOf(context, subject, schema) {
+	var schemas = schema.allOf;
+
+	if(!Array.isArray(schemas))
+		throw new Error('Invalid schema: "allOf" value must be an array');
+
+	var i = schemas.length,
+		invalidCount = 0;
+	while(i--) {
+		if(!validateBase(context, subject, schemas[i])) {
+			invalidCount += 1;
+		}
+	}
+
+	if(invalidCount === 0) return true;
+
+	context.addError('Failed "allOf" criteria', subject, schemas);
+	return false;
+}
+
+function anyOf(context, subject, schema) {
+	var schemas = schema.anyOf;
+
+	if(!Array.isArray(schemas))
+		throw new Error('Invalid schema: "anyOf" value must be an array');
+
+	var matched = context.silently(function() {
+		var i = schemas.length;
+		while(i--) {
+			if(validateBase(context, subject, schemas[i])) return true;
+		}
+		return false;
+	});
+
+	if(matched) return true;
+
+	context.addError('Failed "anyOf" criteria', subject, schemas);
+	return false;
+}
+
+function oneOf(context, subject, schema) {
+	var schemas = schema.oneOf;
+
+	if(!Array.isArray(schemas))
+		throw new Error('Invalid schema: "oneOf" value must be an array');
+
+	var i = schemas.length,
+		validCount = 0;
+	context.silently(function() {
+		while(i--) {
+			if(validateBase(context, subject, schemas[i])) validCount += 1;
+		}
+	});
+
+	if(validCount === 1) return true;
+
+	context.addError('Failed "oneOf" criteria', subject, schemas);
+	return false;
+}
+
+function not(context, subject, schema) {
+	var badSchema = schema.not,
+		valid = context.silently(function() {
+			return !validateBase(context, subject, badSchema);
+		});
+
+	if(valid) return true;
+
+	context.addError('Failed "not" criteria', subject, schema);
+	return false;
+}
+
+function disallow(context, subject, schema, type) {
+	var invalidTypes = Array.isArray(schema.disallow) ? schema.disallow : [ schema.disallow ],
+		valid = !validateTypes(context, subject, type, invalidTypes);
+
+	if(!valid) {
+		context.addError('Failed "disallow" criteria: expecting ' + invalidTypes.join(' or ') + ', found ' + type, subject, schema);
+	}
+
+	return valid;
+}
+
+function validateExtends(context, subject, schema) {
+	var schemas = Array.isArray(schema["extends"]) ? schema["extends"] : [ schema["extends"] ];
+
+	var i = schemas.length,
+		invalidCount = 0;
+	while(i--) {
+		if(!validateBase(context, subject, schemas[i])) {
+			invalidCount += 1;
+		}
+	}
+
+	return invalidCount === 0;
+}
+
+function validateEnum(context, subject, schema) {
+	var values = schema['enum'];
+
+	if(!Array.isArray(values))
+		throw new Error('Invalid schema: "enum" value must be an array');
+
+	var i = values.length;
+	while(i--) {
+		if(validators.deepEqual(subject, values[i])) return true;
+	}
+
+	context.addError('Failed "enum" criteria', subject, values);
+	return false;
+}
+
+function validateType(context, subject, schema, type) {
+	var validTypes = Array.isArray(schema.type) ? schema.type : [ schema.type ],
+		valid = validateTypes(context, subject, type, validTypes);
+
+	if(!valid) {
+		context.addError('Failed "type" criteria: expecting ' + validTypes.join(' or ') + ', found ' + type, subject, schema);
+	}
+
+	return valid;
+}
+
+function typeValidations(context, subject, schema, type) {
+	return validators.types[type](context, subject, schema);
+}
+
+function $ref(context, subject, schema) {
+	var absolute = /^#|\//.test(schema.$ref),
+		ref = absolute ? schema.$ref : context.id.join('') + schema.$ref,
+		refSchema = context.refs.get(ref, context.schema),
+		ctx = context;
+
+	if(schema.$ref[0] !== '#') {
+		ctx = context.subcontext(context.refs.get(ref, context.schema, true));
+	}
+
+	var valid = validateBase(ctx, subject, refSchema);
+
+	context.cleanSubject = ctx.cleanSubject;
+
+	return valid;
+}
+
+
+
+function validateBase(context, subject, schema) {
+	if(schema.$ref) {
+		return $ref(context, subject, schema);
+	}
+
+	if(schema.id) context.id.push(schema.id);
+
+	var valid = context.runValidations([
+		[ 'type' in schema, validateType ],
+		[ 'disallow' in schema, disallow ],
+		[ 'enum' in schema, validateEnum ],
+		[ true, typeValidations ],
+		[ 'format' in schema, format ],
+		[ 'extends' in schema, validateExtends ],
+		[ 'allOf' in schema, allOf ],
+		[ 'anyOf' in schema, anyOf ],
+		[ 'oneOf' in schema, oneOf ],
+		[ 'not' in schema, not ]
+	], subject, schema, getType(subject));
+
+	if(schema.id) context.id.pop();
+
+	return valid;
+}
+
+module.exports = validateBase;
+
+},{"./":206}],204:[function(require,module,exports){
+function validateBoolean(context, subject, schema) {
+	if(typeof subject !== 'boolean') {
+		context.addError('Failed type:boolean criteria', subject, schema);
+		return false;
+	}
+
+	context.cleanSubject = subject;
+
+	return true;
+}
+
+module.exports = validateBoolean;
+
+},{}],205:[function(require,module,exports){
+function getType(subject) {
+	var type = typeof subject;
+
+	if(type === 'object') {
+		if(subject === null) return 'null';
+		if(Array.isArray(subject)) return 'array';
+	}
+	return type;
+}
+
+function arrayEqual(a, b) {
+	var i = a.length;
+
+	if(i !== b.length) return false;
+
+	while(i--) {
+		if(!deepEqual(a[i], b[i])) return false;
+	}
+
+	return true;
+}
+
+function objectEqual(a, b) {
+	var keys = Object.keys(a),
+		i = keys.length;
+
+	if(i !== Object.keys(b).length) return false;
+
+	while(i--) {
+		if(!deepEqual(a[keys[i]], b[keys[i]])) return false;
+	}
+
+	return true;
+}
+
+var deepEqual = module.exports = function(a, b) {
+	if(a === b) return true;
+
+	var t = getType(a);
+
+	if(t !== getType(b)) return false;
+
+	if(t === 'array') return arrayEqual(a, b);
+	if(t === 'object') return objectEqual(a, b);
+
+	return false;
+};
+
+},{}],206:[function(require,module,exports){
+exports.types = {
+	'any': function() { return true; },
+	'array': require('./array'),
+	'boolean': require('./boolean'),
+	'integer': require('./number'),
+	'null': require('./null'),
+	'number': require('./number'),
+	'object': require('./object'),
+	'string': require('./string')
+};
+
+exports.deepEqual = require('./deep-equal');
+
+// base cannot be required until other validators are added
+exports.base = require('./base');
+
+},{"./array":202,"./base":203,"./boolean":204,"./deep-equal":205,"./null":207,"./number":208,"./object":209,"./string":210}],207:[function(require,module,exports){
+function validateNull(context, subject, schema) {
+	if(subject !== null) {
+		context.addError('Failed type:null criteria', subject, schema);
+		return false;
+	}
+
+	context.cleanSubject = subject;
+
+	return true;
+}
+
+module.exports = validateNull;
+
+},{}],208:[function(require,module,exports){
+function validateNumber(context, subject, schema) {
+	if(typeof subject !== 'number') {
+		context.addError('Failed type:number criteria', subject, schema);
+		return false;
+	}
+
+	return true;
+}
+
+function validateInteger(context, subject, schema) {
+	if(typeof subject !== 'number' || subject !== Math.round(subject)) {
+		context.addError('Failed type:integer criteria', subject, schema);
+		return false;
+	}
+
+	return true;
+}
+
+function minimum(context, subject, schema) {
+	var valid = (schema.exclusiveMinimum) ? subject > schema.minimum : subject >= schema.minimum;
+
+	if(!valid) context.addError('Failed "minimum" criteria', subject, schema);
+
+	return valid;
+}
+
+function maximum(context, subject, schema) {
+	var valid = (schema.exclusiveMaximum) ? subject < schema.maximum : subject <= schema.maximum;
+
+	if(!valid) context.addError('Failed "maximum" criteria', subject, schema);
+
+	return valid;
+}
+
+function multipleOf(context, subject, schema, key) {
+	key = key || 'multipleOf';
+
+	var valid = (subject / schema[key] % 1) === 0;
+
+	if(!valid) context.addError('Failed "' + key + '" criteria', subject, schema);
+
+	return valid;
+}
+
+function divisibleBy(context, subject, schema) {
+	return multipleOf(context, subject, schema, 'divisibleBy');
+}
+
+
+
+module.exports = function(context, subject, schema) {
+	var valid = true,
+		isType = true;
+
+	if(schema.type === 'number') isType = validateNumber(context, subject, schema);
+	if(schema.type === 'integer') isType = validateInteger(context, subject, schema);
+
+	context.cleanSubject = subject;
+
+	return isType && context.runValidations([
+		[ 'minimum' in schema, minimum ],
+		[ 'maximum' in schema, maximum ],
+		[ 'multipleOf' in schema, multipleOf ],
+		[ 'divisibleBy' in schema, divisibleBy ]
+	], subject, schema);
+};
+
+},{}],209:[function(require,module,exports){
+var validateBase = require('./base');
+
+function properties(context, subject, schema, handledProps) {
+	var props = schema.properties,
+		valid = true;
+	for(var key in props) {
+		if(key in subject) {
+			context.path.push(key);
+			valid = validateBase(context, subject[key], props[key]) && valid;
+			context.path.pop();
+			handledProps[key] = context.cleanSubject;
+		} else if(props[key].required === true) {
+			context.addError('Failed "required" criteria: missing property (' + key + ')', subject, props);
+			valid = false;
+		}
+	}
+
+	return valid;
+}
+
+function patternProperties(context, subject, schema, handledProps) {
+	var patternProps = schema.patternProperties;
+
+	if(typeof patternProps !== 'object')
+		throw new Error('Invalid schema: "patternProperties" must be an object');
+
+	var valid = true,
+		patterns = Object.keys(patternProps),
+		len = patterns.length,
+		keys = Object.keys(subject),
+		i = keys.length,
+		j, key;
+
+	while(i--) {
+		key = keys[i];
+
+		j = len;
+		while(j--) {
+			if(key.match(patterns[j])) {
+				context.path.push(key);
+				valid = validateBase(context, subject[key], patternProps[patterns[j]]) && valid;
+				context.path.pop();
+				if(!(key in handledProps)) handledProps[key] = context.cleanSubject;
+			}
+		}
+	}
+
+	return valid;
+}
+
+function additionalProperties(context, subject, schema, handledProps) {
+	var additionalProps = schema.additionalProperties;
+
+	if(additionalProps === true) return true;
+
+	var keys = Object.keys(subject),
+		i = keys.length;
+	if(additionalProps === false) {
+		while(i--) {
+			if(!(keys[i] in handledProps)) {
+				context.addError('Failed "additionalProperties" criteria: unexpected property (' + keys[i] + ')', subject, schema);
+				return false;
+			}
+		}
+		return true;
+	}
+
+	if(typeof additionalProps !== 'object')
+		throw new Error('Invalid schema: "additionalProperties" must be a valid schema');
+
+	var valid;
+	while(i--) {
+		if(keys[i] in handledProps) continue;
+
+		context.path.push(keys[i]);
+		valid = validateBase(context, subject[keys[i]], additionalProps) && valid;
+		context.path.pop();
+		handledProps[keys[i]] = context.cleanSubject;
+	}
+
+	return valid;
+}
+
+function minProperties(context, subject, schema) {
+	var keys = Object.keys(subject);
+	if(keys.length < schema.minProperties) {
+		context.addError('Failed "minProperties" criteria', subject, schema);
+		return false;
+	}
+	return true;
+}
+
+function maxProperties(context, subject, schema) {
+	var keys = Object.keys(subject);
+	if(keys.length > schema.maxProperties) {
+		context.addError('Failed "maxProperties" criteria', subject, schema);
+		return false;
+	}
+	return true;
+}
+
+function required(context, subject, schema) {
+	var requiredProps = schema.required;
+
+	if(!Array.isArray(requiredProps))
+		throw new Error('Invalid schema: "required" must be an array');
+
+	var valid = true,
+		i = requiredProps.length;
+	while(i--) {
+		if(!(requiredProps[i] in subject)) {
+			context.addError('Missing required property "' + requiredProps[i] + '"', subject, requiredProps[i]);
+			valid = false;
+		}
+	}
+
+	return valid;
+}
+
+function dependencies(context, subject, schema) {
+	var deps = schema.dependencies;
+
+	if(typeof deps !== 'object')
+		throw new Error('Invalid schema: "dependencies" must be an object');
+
+	var valid = true,
+		keys = Object.keys(deps),
+		i = keys.length,
+		requiredProps, j;
+
+	while(i--) {
+		if(!(keys[i] in subject)) continue;
+
+		requiredProps = deps[keys[i]];
+
+		if(typeof requiredProps === 'string') requiredProps = [ requiredProps ];
+
+		if(Array.isArray(requiredProps)) {
+			j = requiredProps.length;
+			while(j--) {
+				if(!(requiredProps[j] in subject)) {
+					context.addError('Missing required property "' + requiredProps[j] + '"', subject, requiredProps[j]);
+					valid = false;
+				}
+			}
+		} else if(typeof requiredProps === 'object') {
+			valid = validateBase(context, subject, requiredProps) && valid;
+		} else {
+			throw new Error('Invalid schema: dependencies must be string, array, or object');
+		}
+	}
+
+	return valid;
+}
+
+function addDefaults(subject, schema) {
+	var props = schema.properties;
+
+	if(!props) return;
+
+	for(var key in props) {
+		if('default' in props[key] && !(key in subject)) {
+			subject[key] = props[key].default;
+		}
+	}
+}
+
+
+function validateObject(context, subject, schema) {
+	if(typeof subject !== 'object') {
+		context.addError('Failed type:object criteria', subject, schema);
+		return false;
+	}
+
+	var handledProps = {},
+		valid = context.runValidations([
+			[ 'properties' in schema, properties ],
+			[ 'patternProperties' in schema, patternProperties ],
+			[ 'additionalProperties' in schema, additionalProperties ],
+			[ 'minProperties' in schema, minProperties ],
+			[ 'maxProperties' in schema, maxProperties ],
+			[ Array.isArray(schema.required), required ],
+			[ 'dependencies' in schema, dependencies ]
+		], subject, schema, handledProps);
+
+	if(context.cleanWithDefaults) addDefaults(handledProps, schema);
+
+	context.cleanSubject = handledProps;
+
+	return valid;
+}
+
+module.exports = validateObject;
+
+},{"./base":203}],210:[function(require,module,exports){
+var decode = require('punycode').ucs2.decode;
+
+
+function minLength(context, subject, schema) {
+	if(decode(subject).length < schema.minLength) {
+		context.addError('Failed "minLength" criteria', subject, schema);
+		return false;
+	}
+
+	return true;
+}
+
+function maxLength(context, subject, schema) {
+	if(decode(subject).length > schema.maxLength) {
+		context.addError('Failed "maxLength" criteria', subject, schema);
+		return false;
+	}
+
+	return true;
+}
+
+function pattern(context, subject, schema) {
+	var strPattern = schema.pattern;
+
+	if(!subject.match(strPattern)) {
+		context.addError('Failed "pattern" criteria (' + strPattern + ')', subject, strPattern);
+		return false;
+	}
+
+	return true;
+}
+
+
+
+function validateString(context, subject, schema) {
+	if(typeof subject !== 'string') {
+		context.addError('Failed type:string criteria', schema);
+		return false;
+	}
+
+	context.cleanSubject = subject;
+
+	return context.runValidations([
+		[ 'minLength' in schema, minLength ],
+		[ 'maxLength' in schema, maxLength ],
+		[ 'pattern' in schema, pattern ]
+	], subject, schema);
+}
+
+module.exports = validateString;
+
+},{"punycode":192}],211:[function(require,module,exports){
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
- * Version: 0.14.2 - 2016-02-18T10:06:20.436Z
+ * Version: 0.14.2 - 2016-03-08T08:15:30.053Z
  * License: MIT
  */
 
@@ -93558,7 +94390,7 @@ uis.controller('uiSelectCtrl',
     if (data && data.length > 0 && ctrl.taggingTokens.isActivated) {
       // split by first token only
       var separator = KEY.toSeparator(ctrl.taggingTokens.tokens[0]);
-      var items = data.split(separator); 
+      var items = data.split(separator);
       if (items && items.length > 0) {
         var oldsearch = ctrl.search;
         angular.forEach(items, function (item) {
@@ -93682,6 +94514,14 @@ uis.directive('uiSelect',
 
         $select.onSelectCallback = $parse(attrs.onSelect);
         $select.onRemoveCallback = $parse(attrs.onRemove);
+
+        if(attrs.loading){
+          scope.$watch(function(){
+            return scope.$eval(attrs.loading);
+          }, function(value){
+              $select.loading = value;
+          });
+        }
 
         //Limit the number of selections allowed
         $select.limit = (angular.isDefined(attrs.limit)) ? parseInt(attrs.limit, 10) : undefined;
@@ -94799,16 +95639,16 @@ $templateCache.put("bootstrap/match-multiple.tpl.html","<span class=\"ui-select-
 $templateCache.put("bootstrap/match.tpl.html","<div class=\"ui-select-match\" ng-hide=\"$select.open\" ng-disabled=\"$select.disabled\" ng-class=\"{\'btn-default-focus\':$select.focus}\"><span tabindex=\"-1\" class=\"btn btn-default form-control ui-select-toggle\" aria-label=\"{{ $select.baseTitle }} activate\" ng-disabled=\"$select.disabled\" ng-click=\"$select.activate()\" style=\"outline: 0;\"><span ng-show=\"$select.isEmpty()\" class=\"ui-select-placeholder text-muted\">{{$select.placeholder}}</span> <span ng-hide=\"$select.isEmpty()\" class=\"ui-select-match-text pull-left\" ng-class=\"{\'ui-select-allow-clear\': $select.allowClear && !$select.isEmpty()}\" ng-transclude=\"\"></span> <i class=\"caret pull-right\" ng-click=\"$select.toggle($event)\"></i> <a ng-show=\"$select.allowClear && !$select.isEmpty()\" aria-label=\"{{ $select.baseTitle }} clear\" style=\"margin-right: 10px\" ng-click=\"$select.clear($event)\" class=\"btn btn-xs btn-link pull-right\"><i class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></i></a></span></div>");
 $templateCache.put("bootstrap/select-multiple.tpl.html","<div class=\"ui-select-container ui-select-multiple ui-select-bootstrap dropdown form-control\" ng-class=\"{open: $select.open}\"><div><div class=\"ui-select-match\"></div><input type=\"text\" autocomplete=\"false\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" class=\"ui-select-search input-xs\" placeholder=\"{{$selectMultiple.getPlaceholder()}}\" ng-disabled=\"$select.disabled\" ng-hide=\"$select.disabled\" ng-click=\"$select.activate()\" ng-model=\"$select.search\" role=\"combobox\" aria-label=\"{{ $select.baseTitle }}\" ondrop=\"return false;\"></div><div class=\"ui-select-choices\"></div></div>");
 $templateCache.put("bootstrap/select.tpl.html","<div class=\"ui-select-container ui-select-bootstrap dropdown\" ng-class=\"{open: $select.open}\"><div class=\"ui-select-match\"></div><input type=\"text\" autocomplete=\"false\" tabindex=\"-1\" aria-expanded=\"true\" aria-label=\"{{ $select.baseTitle }}\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"form-control ui-select-search\" placeholder=\"{{$select.placeholder}}\" ng-model=\"$select.search\" ng-show=\"$select.searchEnabled && $select.open\"><div class=\"ui-select-choices\"></div></div>");
-$templateCache.put("selectize/choices.tpl.html","<div ng-show=\"$select.open\" class=\"ui-select-choices ui-select-dropdown selectize-dropdown single\"><div class=\"ui-select-choices-content selectize-dropdown-content\"><div class=\"ui-select-choices-group optgroup\" role=\"listbox\"><div ng-show=\"$select.isGrouped\" class=\"ui-select-choices-group-label optgroup-header\" ng-bind=\"$group.name\"></div><div role=\"option\" class=\"ui-select-choices-row\" ng-class=\"{active: $select.isActive(this), disabled: $select.isDisabled(this)}\"><div class=\"option ui-select-choices-row-inner\" data-selectable=\"\"></div></div></div></div></div>");
-$templateCache.put("selectize/match.tpl.html","<div ng-hide=\"($select.open || $select.isEmpty())\" class=\"ui-select-match\" ng-transclude=\"\"></div>");
-$templateCache.put("selectize/select.tpl.html","<div class=\"ui-select-container selectize-control single\" ng-class=\"{\'open\': $select.open}\"><div class=\"selectize-input\" ng-class=\"{\'focus\': $select.open, \'disabled\': $select.disabled, \'selectize-focus\' : $select.focus}\" ng-click=\"$select.open && !$select.searchEnabled ? $select.toggle($event) : $select.activate()\"><div class=\"ui-select-match\"></div><input type=\"text\" autocomplete=\"false\" tabindex=\"-1\" class=\"ui-select-search ui-select-toggle\" ng-click=\"$select.toggle($event)\" placeholder=\"{{$select.placeholder}}\" ng-model=\"$select.search\" ng-hide=\"!$select.searchEnabled || ($select.selected && !$select.open)\" ng-disabled=\"$select.disabled\" aria-label=\"{{ $select.baseTitle }}\"></div><div class=\"ui-select-choices\"></div></div>");
 $templateCache.put("select2/choices.tpl.html","<ul class=\"ui-select-choices ui-select-choices-content select2-results\"><li class=\"ui-select-choices-group\" ng-class=\"{\'select2-result-with-children\': $select.choiceGrouped($group) }\"><div ng-show=\"$select.choiceGrouped($group)\" class=\"ui-select-choices-group-label select2-result-label\" ng-bind=\"$group.name\"></div><ul role=\"listbox\" id=\"ui-select-choices-{{ $select.generatedId }}\" ng-class=\"{\'select2-result-sub\': $select.choiceGrouped($group), \'select2-result-single\': !$select.choiceGrouped($group) }\"><li role=\"option\" id=\"ui-select-choices-row-{{ $select.generatedId }}-{{$index}}\" class=\"ui-select-choices-row\" ng-class=\"{\'select2-highlighted\': $select.isActive(this), \'select2-disabled\': $select.isDisabled(this)}\"><div class=\"select2-result-label ui-select-choices-row-inner\"></div></li></ul></li></ul>");
 $templateCache.put("select2/match-multiple.tpl.html","<span class=\"ui-select-match\"><li class=\"ui-select-match-item select2-search-choice\" ng-repeat=\"$item in $select.selected\" ng-class=\"{\'select2-search-choice-focus\':$selectMultiple.activeMatchIndex === $index, \'select2-locked\':$select.isLocked(this, $index)}\" ui-select-sort=\"$select.selected\"><span uis-transclude-append=\"\"></span> <a href=\"javascript:;\" class=\"ui-select-match-close select2-search-choice-close\" ng-click=\"$selectMultiple.removeChoice($index)\" tabindex=\"-1\"></a></li></span>");
 $templateCache.put("select2/match.tpl.html","<a class=\"select2-choice ui-select-match\" ng-class=\"{\'select2-default\': $select.isEmpty()}\" ng-click=\"$select.toggle($event)\" aria-label=\"{{ $select.baseTitle }} select\"><span ng-show=\"$select.isEmpty()\" class=\"select2-chosen\">{{$select.placeholder}}</span> <span ng-hide=\"$select.isEmpty()\" class=\"select2-chosen\" ng-transclude=\"\"></span> <abbr ng-if=\"$select.allowClear && !$select.isEmpty()\" class=\"select2-search-choice-close\" ng-click=\"$select.clear($event)\"></abbr> <span class=\"select2-arrow ui-select-toggle\"><b></b></span></a>");
 $templateCache.put("select2/select-multiple.tpl.html","<div class=\"ui-select-container ui-select-multiple select2 select2-container select2-container-multi\" ng-class=\"{\'select2-container-active select2-dropdown-open open\': $select.open, \'select2-container-disabled\': $select.disabled}\"><ul class=\"select2-choices\"><span class=\"ui-select-match\"></span><li class=\"select2-search-field\"><input type=\"text\" autocomplete=\"false\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" role=\"combobox\" aria-expanded=\"true\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-label=\"{{ $select.baseTitle }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"select2-input ui-select-search\" placeholder=\"{{$selectMultiple.getPlaceholder()}}\" ng-disabled=\"$select.disabled\" ng-hide=\"$select.disabled\" ng-model=\"$select.search\" ng-click=\"$select.activate()\" style=\"width: 34px;\" ondrop=\"return false;\"></li></ul><div class=\"ui-select-dropdown select2-drop select2-with-searchbox select2-drop-active\" ng-class=\"{\'select2-display-none\': !$select.open}\"><div class=\"ui-select-choices\"></div></div></div>");
-$templateCache.put("select2/select.tpl.html","<div class=\"ui-select-container select2 select2-container\" ng-class=\"{\'select2-container-active select2-dropdown-open open\': $select.open, \'select2-container-disabled\': $select.disabled, \'select2-container-active\': $select.focus, \'select2-allowclear\': $select.allowClear && !$select.isEmpty()}\"><div class=\"ui-select-match\"></div><div class=\"ui-select-dropdown select2-drop select2-with-searchbox select2-drop-active\" ng-class=\"{\'select2-display-none\': !$select.open}\"><div class=\"select2-search\" ng-show=\"$select.searchEnabled\"><input type=\"text\" autocomplete=\"false\" autocorrect=\"false\" autocapitalize=\"off\" spellcheck=\"false\" role=\"combobox\" aria-expanded=\"true\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-label=\"{{ $select.baseTitle }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"ui-select-search select2-input\" ng-model=\"$select.search\"></div><div class=\"ui-select-choices\"></div></div></div>");}]);
-},{}],192:[function(require,module,exports){
+$templateCache.put("select2/select.tpl.html","<div class=\"ui-select-container select2 select2-container\" ng-class=\"{\'select2-container-active select2-dropdown-open open\': $select.open, \'select2-container-disabled\': $select.disabled, \'select2-container-active\': $select.focus, \'select2-allowclear\': $select.allowClear && !$select.isEmpty()}\"><div class=\"ui-select-match\"></div><div class=\"ui-select-dropdown select2-drop select2-with-searchbox select2-drop-active\" ng-class=\"{\'select2-display-none\': !$select.open}\"><div class=\"select2-search\" ng-show=\"$select.searchEnabled\"><input type=\"text\" autocomplete=\"false\" autocorrect=\"false\" autocapitalize=\"off\" spellcheck=\"false\" role=\"combobox\" aria-expanded=\"true\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-label=\"{{ $select.baseTitle }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"ui-select-search select2-input\" ng-model=\"$select.search\"></div><div class=\"ui-select-choices\"></div></div></div>");
+$templateCache.put("selectize/choices.tpl.html","<div ng-show=\"$select.open\" class=\"ui-select-choices ui-select-dropdown selectize-dropdown single\"><div class=\"ui-select-choices-content selectize-dropdown-content\"><div class=\"ui-select-choices-group optgroup\" role=\"listbox\"><div ng-show=\"$select.isGrouped\" class=\"ui-select-choices-group-label optgroup-header\" ng-bind=\"$group.name\"></div><div role=\"option\" class=\"ui-select-choices-row\" ng-class=\"{active: $select.isActive(this), disabled: $select.isDisabled(this)}\"><div class=\"option ui-select-choices-row-inner\" data-selectable=\"\"></div></div></div></div></div>");
+$templateCache.put("selectize/match.tpl.html","<div ng-hide=\"($select.open || $select.isEmpty())\" class=\"ui-select-match\" ng-transclude=\"\"></div>");
+$templateCache.put("selectize/select.tpl.html","<div class=\"ui-select-container selectize-control single\" ng-class=\"{\'open\': $select.open}\"><div class=\"row\"><div class=\"col-md-11\"><div class=\"selectize-input\" ng-class=\"{\'focus\': $select.open, \'disabled\': $select.disabled, \'selectize-focus\' : $select.focus}\" ng-click=\"$select.open && !$select.searchEnabled ? $select.toggle($event) : $select.activate()\"><div class=\"ui-select-match\"></div><input type=\"text\" autocomplete=\"false\" tabindex=\"-1\" class=\"ui-select-search ui-select-toggle\" ng-click=\"$select.toggle($event)\" placeholder=\"{{$select.placeholder}}\" ng-model=\"$select.search\" ng-hide=\"!$select.searchEnabled || ($select.selected && !$select.open)\" ng-disabled=\"$select.disabled\" aria-label=\"{{ $select.baseTitle }}\"></div></div><div class=\"col-md-1\"><img ng-if=\"$select.loading\" width=\"30\" src=\"data:image/gif;base64,R0lGODlhlACUAPeAAEuW34q76prE7Wem5GWl5G6q5Wqo5Xyz6FCZ4E6Y4Hmx53Cr5lme4pTA7Fqf4nKt5lyg4kyX30qW31Sb4abL71id4eDt+YK26Y2960yX4LHS8anM8Nnp+K7Q8fz9/k2X4MHa9I++60+Y4EqV38Xd9Xiw58rg9rjV8nav51Wc4aTK72up5WOk41Ka4NPl94a56p7G7rXU8oS46fn7/v3+/lKa4ZfC7GGj41+i4+zz+/r8/n606PD2/HWv5t7r+bzX80yW32Ci44O36c7i9mCj412h41Sc4cPc9NHk9+Tv+r7Z86vO8Obw+rvX89bn9/T4/ejy+6LI7lac4Z/H7lie4e71/H+16FGZ4JC/6/7+/l6h4/X5/Vug4uz0/FGa4KPJ79Xm+Nzq+LnW88/i9snf9vb6/efx+7PT8ePu+ZXC7czh9vL3/azO8PH3/Mje9ery+9zr+ZzF7uLt+s/j97fU8v7+/7TS8qDH7srg9fj7/evz/Njn9+fw+vj6/vr7/f///////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/wtYTVAgRGF0YVhNUDw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NzQ4RDczNjVBRDM0MTFFNTg0ODlGMDgwQkJDRjVCMDAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NzQ4RDczNjZBRDM0MTFFNTg0ODlGMDgwQkJDRjVCMDAiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3NDhENzM2M0FEMzQxMUU1ODQ4OUYwODBCQkNGNUIwMCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo3NDhENzM2NEFEMzQxMUU1ODQ4OUYwODBCQkNGNUIwMCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAUFAIAALAAAAACUAJQAAAj/AAEJHEiwoMGDCBMqXMiwocOHECNKnEixosWLGDNq3Mixo8ePIEOKHEmypMmTKFOqXMmypcuXMGPKnEmzps2bOHPq3Mmzp8+fQIMKHUq0qNGjSJMqXcq0qdOnUKNKnUq1qtWrWLNq3cq1q9evYMOKHUu2rNmzaNOqXcu2rdu3Kv/InUu3rt27ePPqzUt1r98/PJwo0WDjxYUDJQ5ceAFDA5k3f/f2jWy3C4koIV5ovsAZ8QEFKEqgWIDiggoOlO1OTv3HyRIbIUJg0Gy4c2LQohcUWGBgxYUYHlj/WR3ZhQoBAhrExsC89uHEB1BIX7CCN4EVBAqomJGa+N4kHaII/4Bho4Fy5rM5P/88WvqK6gauEyCwgARl73g9kFGhAgYMATYkF1tmi9n2WQkLkMZbb/MZEAQBEGDwxF/42fXECfxFEcV/5JnXwGy0radAbgliZ0B880EAYQGoSTbVXnLEsMQS/PX3nw3lydacgSOOtsJu2BHg4IMQBOFAEDG4KJVeMXbQwRIbqKDhf8gpp2NtiJXQIwoFnLhCfA8GUeSRFUCwhF4VypXECRpo4OQGUWooXnlWpvdcCaJN92WDEEIYRBBllrkBXy/e9cYPJ7Dp5pMZUpkjiIdlOV2Jez7oJwQOQFCmEWbiVeEWJPyAaAxtPgmllHOeRxsGsV0AGnUnxv9KgJgQZhqoA0Y44MRd+NEwhBJKiBrDsG5CGaWjAmjgQhU01FUFCQIocOKsYUJg7aYQ5GpEEFWoVihdcJBAArDCEvtknFF0wEGzfpFwAYpFWmsrrrhWgMAB3i5JFw9kkCEuuaPG4CSN6gr3wwJFGjlvBRUYYa+9J9RFnAdO9Ovvv6ImuigZ3An3xxMYKKypAw0bYbIRCHBaBl3EveHCEENYjLESGu/qMV1RyFtBvQg0nDICCDTA8retuWA0zP3+G+wJSdxslwYk1+vwzz9X0PFw31bBgRNGv4z0xUrI4fRdMJBscsooo/yzDXOtxsTWW3f9NQktjm3XBQ6frbbaCAT/we5kOsAhOAdbc300zDrYfdcT2VLNdwQZIDCEXJM9Icflgg/uhOFdKI5XB3sDjUAEomeAL9b6dsFEEklgnjnhcGThOV4EAM03AhmQ3jPlL9LwxhtMBL+663BMOPtdHYwOdO6jZ+B8BKj1pUMX1P8u/PBNH4+XA7pDzrzzGQwqPQ88VGF+9b+/0a32d5Xg/PLge38B6lH9ocMT+ONPfhVd8H81+3TZQPy8B74MrIB+UPmDB2bAwDKUYQsQ1F9wAFgXOTwvdwR0nhEQ+JQ/0IAGHgihDkbIwBmsjIJ2KaAKn8dBp8glCzCM4QdniEK74G6FBWxhU2ooHCPgMIdp4mFeyTKIQx0yRYipueEPM2DEpSCRNRxQwhJeUAIIGQFyTVTKE48XxC2ypotevA/RwngzMJLRL2Y8I5rGqMbusLGNkUkjHPNVvzl+8Y12XKO+8hhHPPKRV378o8QCKci2EbKQWUwKIpVUx0V66pCFlOMfJclHSubRknbE5Bw1CUdOttGTagTlGUVJRriY8pSoTKUqV8nKVrrylbCMpSxnScta2vKWuMylLnfJy1768pfADKYwh0nMYhrzmMhMpjKXycxmOvOZ0IymNI8SEAAh+QQFBQCAACwrACsAPgAsAAAI/wD/CBxIsKBBgVt8DDlBIUoDLFgwNJhCQYyTGQczatyoscocOyqmTBFAEmLEABhkXFDZwI4cjjBjCrSgZMMGFThHloSIIYDPC0APCMXgBqPMowOTiLGjgc1NFVF0CsDysOdPKxcOKND64IISpDKruDlxgqmGDRQaihTwsKrPADKsWNG69YHdCy7AaqTBAYQYMSc0CLapdmSDwydlKJ47V4FjuwUKCCijt2CZISSUKPlbtunTkGwR91SsUqtQuw8KPFhRQEGYygJ5mHBDAgQIzYEHpwV92K1KoFYcP4b8wABrE5U9DpldezPgwWijhq6a8oJcoQpQRy5goMAAAwPEgP/l4WLOchMkmivpfLZw6IijswrPDpn1gBUEDBCwc3QLByflzWECerdxxhRaUOlEHVxZcfWAAtutcF9+BAwQBAkxzWABB/+Vd556nTlVWBQUqDBVAMBhl1pqBhhHoYUWcsBRFkxY4EMYHZrHnGaAmUVCGDzQUJBHG1zwWHYrsAaefhYSEAQBK2yxEQ9JyGEjjgDOIWB6folBggVCwjQHBqltt2SFTj4JAQEBaOQBFFAwIYccN+a4XHpuQKGXG1ZENsCEA6QZBARBOBAECBnxUEUOcc7pgw92msCBB7B5IIBxTDqZJgSEMrACpQXNoGgXjEJR5aM5QpEFbAPZUQABFar/WWihDATBgAoGlfHEE6PGKeeVHHTBakEn/BnEsYNCUKsDDBBKGUEzzLDFrjzkwCgTSdjIw7AGaXAsAYY6AAGzylbgwAYF0eBBtNPywAOpTDAhLLcGBTCoA+I2ywADDkghxQAFZUGDujpIy2sVVXQRJr0ElbGCofry6y+zNcxxkMA0FNzuswwXJEa++EpRAQNS1CAFAxhwpO4MOnScUQHMnsyAySTXUAMBM2Ls8kEa7OtvzSJXUAMCeu5cmQe2llyB0AiYXDIFRsMmQwVSNO1vDQkkYHObUeulwdUIWD101gV0rZccJg/dtM1sO2C2XkJjHcHcCTSNgNtvI+WAzWEjiTD33xHkjRQBfRce9tyCHxVE3YYXnrhMFfidwN8ARABA5Y/HJLnlEnTeOQA1ZM5RGHQD4Hnlc+MtekYUVH65BJbPbTrOq2e0wuWm4+65BAfUntHuEph+OgC4+l6QG8DvLrwFxhs0xwrJex568wdVcQECya9A/UZTQLA7G9tz5EQBEkwfPkceCRQQACH5BAUFAIAALC4AKwA7ADQAAAj/AP8IHEiwYEEPUDiYOBKjw4aHGzo0OQInj8GLGDNq3GJBDYgmMU5o6ODw4ZcpceIIaLDhSBWNMGP+8dCFA4kjID6eiDGy5JeTAlQ2aBAiwBQ1HmQqHVhTjYmFOJuA7GkSqNAQDQJoDXAky1KYHDkgQeL0JgglTUSOrDpFgFuiWwPIkNGAw1eMXSxwcDLW6cKzU9du+IlyJVytc2XskPHlyd2BCNFYgMNBLFmoZ2Pw9Dml8NCsW+fuGB0AzWM/XaCgkUyZLxITZtNuNtn5alG5ohXvUKDAxFcPVVIzWa3XslOcaHdyVmk4dOLRvEuUUKLUw5M2waEMn7z38k20swe3/30boujz0SV2lFDQowcJmX7yXBe+nXLf2JqXr7yNW7SCHT2U0N4CPagBEw0exNdGG6mphkZrlx1xBEgnnJBWB19chdh5ALLXwwIglmDBgTTokMeCwrHW3VMcoPGEVwS14cQJAoQ22m7rtfchiAbs4JhGWZQoH4Nd1OcEHF3QEBMNcEzxHG8e7gjiAgY0EFOQJs6nnWQv3uVECNBFSSCPBhgwABIyIXgig0wk+ZhAeUyxm44EGkDlAgOUucAWV6p5HZ9vEtSEgDvaWWaeAxBgwAZLeaBDUoEWdISUhpapKAE3LKCDUjBGalATPOJpAAEDDMBCojdo4OmqcVBpZqksjP96AwEE9KDkqoHq0IOZo8pqKg4sEIAmroGCMOoAsyLLAgs3cMGFlcQGukOwBADLgrM3sIDDANEGGkO22nJxQ7Nc4GAuE90+5oEBOIyLLQ5cUEEFFzGk+1gI5cI7b7nOUhGAvXedkK+++zpbAsBfoeHswlRI4bC83CK8FLwLxyvFBBhzIfFSLMjr8ccNb6zUAiCXLLJMBmA8QQsst8zyyTHh4DLLKk8gBcwwUcFyAi3UjDEOOGdkwco896xyAgloHPRFHbSAdM8tI52AAUtfpEALERSdQAQRQC1D1QdNsDXPY7ccAaNgDxTD1lmXzXYC6KYtEBcRAJG13Uhn3QLQcv9l0YHdQCQAROB1Zx3B13K3McHggHON9+BO9E0F44PXbXfhSqcdAuWUW263AH1DIQXnlTcOqNxb4EA65SH0TdAAqwMhxemu/1HC6mjXPtAUnEesO0EaUG7a7wWBMHi9xBvEQe4EBQQAIfkEBQUAgAAsMgArADcAOgAACP8A/wgcSLDgHxpPoFhw4sLEkYcg3JhwImeGwYsYMxr0sIaJBQ4Mh5hweATEDzExNGjoIGZIFY0wNc6oAiWJnI8hR0I8ibJDhyUqVMQA4yGm0T86nlTRU/MmHA4u5ojciXLlz6BfpqgYouNoRhoz1vBgysQpVKkkTaKM0WHDBhVfsqaZMkWOV4NZwJZZs7TpUzBoqaps6zbrlDSIQ4ixeHcgDQ8znoyFUnYhwzlpT1p9a3gu4jQhpkBp7FjHXrI3QbqYWvJHDLZLCtM9DDpEiAAhnJD+kwWy5CpMkliAk5MqW7dwZ4NOg6F5AAxzdtPQEZZm2b8i3Rw5mfLnBsO0a2P/CBDgxQs3u32voSycA5js26t675z49njzQoREb9y7enA5xEU1xxxuuOZdcuGF4Bx++QnBBGlgSaYHE1CswRhBZSRhQgf0gdaceS80mF8AZZDmQRlP6JCFUXBoQJttIYAoRIj5KaDAF6StSBoHhylIXog0KiCEjQrst1tjNIixoIhCEqlAAF0dSZoJGNDYoJM2PiCGlLvNIeKQTj5AZFFcNgbClUSKqcACDzzwQ5mkfRGmjWw+UEABL8DZWBkvOFlnAW2usEISet41B51tAlrACgUssMIGhd4VwAMLsCnoAosyqkCkXs2BaaOCMroCAQSsoAenRmWhwKJ3jhoqqW+i/xpTGgWUKiippAo6hawxHTGqrb8SQQQBefKqERS/4oqrsAsYC1OtwhIwrLIFOKvRAtJCoC0EOAg7rLUZKSAsDjhsay64GInr7breonvRCtyyS6627hpULrfbOkDFvjjUS1ASVOS778AQrODvQBpI4YC2VEih8LabHvyHEFLs67DCDugrRQASewBBxVS0ULEDF1PRgcQbtCCyFC3sqzIV+tp1MAEqs+xwzQ1DIHEHNfe8ssrF1lsGyyp/oLLIR1NhwsEKtGC00U4XLTIRNPibxgdYRw311rvWO8UHEWD9tNROQ1CiuwEAEAEAAHzQttEZOG10CO5CQQTbarMN9gdxZ2EtxRPoQpEB3mxnMLjbYreQQazoOkA422sPbjjfD/jrxOOET56BA6P5q8DjgxcOQAtLH/wE5pK3fbLEf4SAOd5dsz7D6wCkwTpBU2CO4+0EOc426bwXdPnocARvUABLHBUQACH5BAUFAIAALDkAKwAwAD4AAAj/AP8IHEjwD40ta6pAQYMmjEMLTKroKEixokWKNDzMeFKly8KGHPa4GDLExBALTy6qVJmFxkYeXZgwASkSSckjR0C4seBhpU+CLrfAhDIzTEgXNk3gBNGkiZIwP322nIHQY1GRI02QyKmkaRMNTaBEVUlDR5mERBvWLLn1iFcNcDW4mTiWYhYdM9ZYVYv0Zs63cJcs0dClLsazCq8iNeHmb9O4giksoWDBMFAdHNOGEVmyMdPHgSlQ+PIFxh7LA3UI1cxZq2PIk0nDuGPjtOUsHlYzsRAyqeOvGiKPvgOjuA2olnMnjImGgwvGf+MGF/3lDnEYNrKLRU1RRxULbroC/588urrx7DZg0OVO0QMTEl8jk76OHr0G9iqZNIltHnt9GwEEgBx+FXlAwnDn1RdgADD0RKBFe5TmH3oLLmjCgxftMWEAAFYowws2zIChRUhQ6OELAVxwwRAjWtREhwG+IOMFMshghQ0tFgjDgijSKMMOVthYWY4F7RFAjy/YKMMFOyiww31EFgRDjVbQuMOVViigQABRFhnkBU42qaWYVXRJ0AtXjtnkAw9oeaGZAlGQZptaKsDmA0vAKdAQdd7Z5wM46tlFnwsUeucDL+gpkJ13FuroAgoo+scOhz66wgoLSCrDo5wWqmmhl4a6ggGkSqrApaQaMMCqrEq6AKkExP8a6wCkPqAoFKsSwAIBtKY6gK16KsErC7uySiwLieppg6447MosDrzCoKcHBrCAQ7PEXjtsE3pqwAUO31rLxbHXFgbnAuB+C26z6QJrZhNUcCEvF/Gm22ygXW5BQAr04lAvFVRcy4ULcO6QAsDx8gswuFRkauYXKRxcAxUKx7twnl1CnEINEUdMMb31phSlDSlcwfEVVEw8ccRcpPBFlGU8kIDJJtfAscr8pjCAgy0uwcUVVySQQA01c+zxxErkqAEOAAABBNBBE72xzRtTscOIPicAwNZCAzGz0CkMfUXJ/PIwIhVbNw0E10J/XUMCYW+MRIsvpJ12Ak53/fbeCXBb27PdTnPt9RVPD53AyzlCYXfaa3sNxNtAU9BlDYA3rjXeM0MZJQGLb7325VS82WUAnTe+9QNmwzlE52mn4LeirKcQoqQCpWB3DTasQftACmxNAAi7F2TBkOwFBAAh+QQFBQCAACxCACsAJwA+AAAI/wD/CBxIkIaOGToSElzIsKFDgVlozNjSpkqOKm10PNy4MYuHGU8qmkkix4KcKhxTEvQIskqVkXJ8hOHgBAoNlRw9lmmTI4eZkj5ouhiKEqdDlhWh/JTpZKgLMmTCeDDKMIuOnS/NoAna9CnUI2S2UF2og6LPJBZmOv16RIkSM2MFStxikWRQDkPZuv0hRk5ciUnRcs1L5kjbHz/o0LEwVuKTKlDQqvVqWAlixXZiMDZKA+tSoU8r88Vs50yMNnFntEETputXy4nplD5zhkKMGXEFPvFB+bAY2TFoUxhOJvfAKi4qK/kdXPjw4X6N/6ERxjJz58+Hn5kq/Y+F37RrZ/8fHidO8e5/koQfT6F8eQo30YcRn919eQEu0AskU9++DRsCUKDfHzrUdp8AcQAoQAMMwqWfD/4JYAODE2Lww4B/nCHAhv9NyCCDcWAYhocNYIBBiSaaWJR+cZyIYooYyCCDExjSAeONMSqBoQs3yugjBgIO+ISPRMpgxZE2YPiHkUXKeKQMSmJw5JRT+qhkAwdkqeWWB1xZwpdghlmCkjKAqcCZCmyppAI9oIACmnBagWEVPTzQQwkofNnDnj1ggOERDxRgJwp1PvBAniEOGEcBghrK6KAPnIGhAgYIymijgRZwHnpHGFBpAZVm+qiD6FnhKaifnvqAnPr9YAABnsL/+mqlniba3RMFEHDDq7DCCioBBXCgHwYQ6KrrrLwWcEAW6FFwww1aQEuAsdO+Kml3Z0AAgRbRakGAt9UCq5F0cTCghblaQHBDsc8aG2RubcjAQAXmMrBtt8VG+wBuuZ2hhRH0MmDvwOmu+62OcZ1hgBEM12CEwAQzcIPEEPhplBwUlMAAAgjU0DHDD88LQQXnplvAig59AIARCAAAwAcwA/CxETXUwADD82pBssTCcjTCzz+//AHHNXMMcA30GgGBETprYUdKHAA9gsswc1w1zQhUgLPSSr+70RFASyA0zDAXjQDNR98MgdcbUQD02FRb7fDHNtewtlENhO0yACMMX43A0B7PTfMN+Rllhd4fSEB21UMb8QHLB+QwFgFSq6y4ykOX3bEWMeSmxdt8963y3x/U8EEFDTxhnBGgT/1B338joIUA/Br3utR98336AWTE193tIyhuRAEyUEBjdwEBACH5BAUFAIAALD0AKwAsAD4AAAj/AP8IHEiwoMGDCBMqXMiwocOHECMKzEJjRhkdEjMKpOFhxhoeazxojFhxy8ccOXiIHMkwS8cnPFDmSJIEI0uFNHSYjDkziQULW24mrLhmDUqaFsJw4MBD6EGdPHuGUerERQ6nAyl6jIk0KQcwSJCMaYrVpcmjPqm6GMPWRFCnFWFKVQpWrIm7JlberMg1LYeqdvGa4ID1j46ZXp2EHSP4h+OrhXOobYvXsWMThQXy4OAi8F3LjmNYyPyHB5LGoGOo/qEXa47KqVVriBGG9B8OJmLHmN2hww/bNHL/UL1bQ+8ObDZAzpyDuAbjvTdI3zDG9h8TMY532JB8gwoVMaxb/4g+/bt5FW9Ja/B+vj1h2ybafxcg4Dtm22HM01dBv39420/w19+A+1n3B4EIqmCggAI04OCDDhq4AYQUYoHFghZmaCGEBgqAARYYhCiiiAZiEQAGAaT4woorNmBdDiy+IMOML6SIgQDWISHEjEJcQCOLG1i3wQU9XuCjDEVe8B9pRSpgZJI+VkfaGCgoYKWTVhppJFmZYXHll0ZaeSFpJqCwgAJVovmlAh2Q5sEFC6Agp5p0KjBaZgIsUICeZlY5pwIBqDdAAYQuwGecaKJwH1YxFGCAAY7yuWefQqQnVAcDEGDAAJBCWuikvznVRwAEDJDppo8+6qiZQrQ20g8F3P+Aww2ZlqrpoAMsACkSCYW6kAcdLMAAA7PKaqsBtzpaAI4IjTGCBAao4IKrSWjwAg4VQAABDtriQMANtp7KqQJPJFTACOgCkUACFcwKQQUTTFBBBcPOu+22BHg7AK2lFuBEQjkk8CwQ6q6bAAI11BDvwvRqS+wNENwALgGlDrDoQRegKwHBBh+McA0IICBvvcRqK6u3tN7gK0I1PJtuwSEjsC7C9MLLgMPczoqyBgttgO7Az84s88EKw1sDyTgQy+23KyOEg8YEAyGB0OsqPEHC9E5w87Dc3mCACwy58DO6607tcdVXIzBvvO8SS6wMlia0wNgjqAvECGcnkLDeFSRSzIDW7xrQNMASQE22wAcbPIHM8daw9rYquKqQCxO4vHHdAgMxNMJ6L+54DQOosEZGGiwwAcFBEzw0yHqDTAAGUt6UQwcK5FtD4gncXEAAyt0UEAAh+QQFBQCAACw1AC4ANAA7AAAI/wD/CBxIsKDBgwgTKlzIsKHDhxAjSpxIsWJEGhYzFqThQQdGjRaz0NDRZ40HkBRFknzCg4cOlBJH9nmypovNkzAbivRQZk3NLm+C5mzIcebPoBYsvBm60MNMHkCRJrXQh+nBLDxpRn0z1QIYC1YP6tAqdSqYs13CFtQBtazXs0jO4lQrsIzbs2DiDhmylO5AHmbxIkGy1wSYLH4FZkkqmPAQE2TIkFiTWOAauHsfRybBGWzlPxYKb+ZMmsznP10gk17N+UTVyh5MsCZxonbtvpXBkLbN+wSY0296Czf9uYxwDciRnzj9p3by58qZn4CefIN16daza79++gSF7+DDU/9gvkFFFBXo06v4ztw8DBhR4ptHv+E0j/cCBLyHH+V9/c8WCNBAfjDol19+y312QgMMHthgfiR8RoMAIYTA4IUO/laZBRV2aCGDHz7xGQwBlBhCAB5aqMJnYMgQgIsmnthhhIn1EYIVMuQII4onBpBWYiocYAWOOL5YYokwVHbCAUIKSaSLMJqQGAklMFmCFU4+WeJcBr0RwEsWnYDCmCVUyWSTRNJ40BMpZMAAbhHpIMADD4yJwgFVXunkAQ2AeRAOGQQqwgZcNkRlAQU8kOiYeOKJpZAaHjRAoJRGwIAGfibkwZIGGDCAAYnWSeadZq6IkBWUphqBCCmgoIIFHw3/FFwIBuDAAgufFgCqonaWcOcBMoh4EAypFvuBCKymwAAOoLKAAwQMQGDrp56CiiidvVbpmUEaFOttBKsim4Ky0Upr6623dtqponSKigJxBpHgrarIinBssgyUi8O++7Lgqb+6XoutmgWBMW8GEVBa78LkQiCtw9Om62nAvBJcULcHZyCCoOOmIG6+Dufbr63/FpCrASXAi9AJ3wZ676odI5vvzOZCgGu6/nZ6wLYKdWGAtx9ozLDHIsys7L7SojsArp428KNDGjCQ6gcfhHvsuDJDMO6y0d6Kw9IADzGRBw1QLWjVRMec77gh22qzsw9QsIVFcrKQwbEap+3x2lwvLeswCw9oICxIFgSAg7ji7s1ACiE7PEADQ8Q6VBcbyFDAs3szPkAJAWgA50QBAQAh+QQFBQCAACwvADIAOgA3AAAI/wD/CBxIsKDBgwgTKlzIsKHDhxAjSpxIsaLFixgzatzIsePFOh411qnjIaTFkR5mzChpUiJJlTO2bGkJ8aXKLTx4VJlBs6FNnDqr5KjSU+HPnFWEQuFjhmXRgzGRCjVDNUkSHk8R4lTKh49VNGCTZIWaY2kSsGB9qPVBY6xBq2fXquVAF6tbgjnk0t1L18xdgjz48h1D2MffgR72El68mMPhgYwjkyH8WOAYMpgzayZT+c9lEqBDi+48BoTp06hBdCbx4/SP1qg7/2hCu8ns169VP95Cp7fv3010H0bTQYPx4785PyazpINz58bpGHf8uMOS69efP0fzmIOK7yqwZ/93PvNwBxjgw3/HrmGh35AcYMiXnx688oMcGAAw3NEDDAEC/DdffTkctEUJACR4g0dNNNAAgAEGSJ8K7RU0AwxAJKhhAByREcKHDkIooHzUDaRChhpq+IEAGo0RQgAfhhAigPIJoIJT+aWoIwAfhOAURSC8EMCQMYYgwIM0jjFQADumCMSTHzxgl0QzqHDBlULCCKOMIcLAk0BNNJngB2N+UEMKHUg0RgAHHHDBCxcMqWWMDnJHkH4pkvmBnnuaWcMAKnxp1JoltNnmm2/KWSQdBkFRg5gfAOFnDX4WcUEHHIBEkBkgCFDCAw+UIKqbbsIpp5xeHjQGihpKCkANlML/moKsKaTAwA0DfLrAAgYYsOuuobZZ6AUHmJplA+8dtMSYPPa5J6xm1srAtEVUe8O1A2Q7gK+gflrooYgG8EIIJSIkQIaR7gkEtGfSykC11lqLq68LPFCvqN+6Ga6SDKnAp5l+RjtrrfAWca3B2/ra6wKfBlsCsViS8BAdlPYZ66xn1mrruwcXkW2v29bb7agPX8nvQ/kBDHC7ZzIgrcE3VJtwtr+K/MAB3wYglkQ8lKDyxS27zHHMHmtLrwGgMjwqDOVRRMKsk9Zaw7vT3hozrtryyi3DoAZwskUzCFDEBxi7nEK10x6M9Q0gK9wtHT9i5IEKNzDQsq1FUHv1ANeCKaz1BU0I6hEZAdTtMtoGI9z3tgeoYOdTfGgQwgEGXO1xvS8I0ESBFgUEACH5BAUFAIAALCsAOQA+ADAAAAj/AP8IHEiwoMGDCBMqXMiwocOHECNKnEixosWLGDNq3Mixo8ePIEOKpJjlTxYaIyuepMHSQ0qIJVnqmElTx8uGHjzMLMOTZ5s2ZW4uzNKzzM+jR4UuRJqjqdOmShU6NUO1atWoCXNQTcK1a1esCM1YGEvWApqzaMAetBAmjI+3cOGqNeiEA4e6du06cTuXoA4kSFwEduGksF0fYdm8cBAlZQ41aoYABuyisgsLBIeEGOBlhOcRFVL6IEOaTOTIkpFQVVDhs+sRAD7YDOmBzJEjJEiUhgw5h47XngEEH8FGpBklyJXcxq1bDRmbH14DmA57BASXIEmI2Z58+e0hAgt8/6Y+4kPs2CpAmrEjhr2Y5N0R/1EjPPh08+dTtPHoQQwbO+y5xx1y+wnU2nTnnffBByI84BEJbLChgQZ2UCigEmQQpIJw+Jm3IINeiCAARxyooMIGG0gI4IrspTWQDincN50IDH7ghY0pwKCRE1GYiGKKE04IoBLYDSSAeeUtSGOIIqQgghcwoGTREDAIAEMUUWygAhtA/meHfAVVcB6NIjxpZgpoKlCgRP3ZYKWVWPoIpAZiIKSEkjYCEGKIaHqRQgUs2CGRCzCE0EADbsLZ44lcsmFGQgoseOOeTXrhZwUVpOBAARrMtpATMLwQQACI2mBDlVeaaCIbGSZUhgNL2v9YqReZ/gkBBDhAMEAIYqBREkGPbfCCFUKIGsKxpp5q5ZU9droQEpbKmoKl02qKqQO4ssDCAAMUgIIQQhxwAAriEvvCuQEca6gAysIAg4k5NCSGpWb6+SeaDuSKLQ7bDmCAAQUU8AAKKChwgBUIFzsqqYeyK8CyLjbERpOzVkCrA5riisPG/QIsMMEKhHxwscam27CyLkSkQqVoapqxAxXwy4LM/gY88MDkEguuqOke27AATkwkxp/2VgABpvryO4C2LHj8wNMFH3zwuTz3bCqYEjmBg8UYY+tAvrn2u7THNkdtMLgKvxBCujA8alEZQmR6dMxGz8zvv9va/LECBSNubG7Vdnh60REGGF1Bvvna7W/eAX9MsNQ6nytAGB5tMHPMYc/cNLcCB1zwAwafTWwDahTZkQcaPOAAC7gu3bQBNQNMMOgHKIBwA8+9xIEADyj9euzePj1uCBpghlUOYqjwAsE1F3DACw2wGq9FAQEAIfkEBQUAgAAsKwBCAD4AJwAACP8A/wgcSLCgwYMIEypcyLChw4cQI0qcSLGixYsYFUYAMIHLgB1YNohxMSOjSQAoU6oEgMAkxpUwAbi8GFPlhJkWa6ZsiRMhjZ80/mQZSvTPRpRHV3roebDMDB1PdejwQPWnFJURsm7MyoGpwTZP2mzZUqbsjLM6HiQFoFVrFK8EZ+To0oUHjzZ4n+jV8aLt0QgIsj6AO7ANFCZQoNCla7eNjg5ItbJFEFjKUsJMkmhGnFgxXQ8WAiMNDBgByw2En4RZbUFzEs6Il3KhnJWybcoDCFvgwGF1GAutN3cReKF2YAQTKCefgJopjzEuXPD2Dbw1D4FjSNNOjhx5kBw9aYz/MTEGuvTprHUMZJE8AvflE6RMuNAzDAkT+M2f752EIIzu3U2QnBQIUEGFADNZoAQIJNxHnn7SXTeQB1QAOGB8UnBhYAcmJSGGGAs2iN+D0XVVkADKCUggFRNQIQUVQXCB4EUcxGAjiEo06OCDUBjkQRDwtfiigVwUGUQAbVCkgwkddHAjiCAwuKMLCImBAIFSvJghjFRwEUSMK4iRRURhdEDBBh1ooMGTIYo4HEIXFCikhnR+GQQLAxhwgBJjMlQmDFFQcGaaNsagBI4NhqHQEwO02NGWRXrJwqR5roCCACD0WFAbLsQQhQ0CwADomWiqyaYSJqinUBhcPBoEjJJ+/5nnAJUW8MADKFyAhQ0YBOArBlhgEWoUxJKa5poxfAjCEw1pwMWWr37JBZ54GrBCAdjaiisKB+xwwQsBAAuqAMMKiuaxNzLxUAfRwnpnELOyYIC226LA7QUXhAvsrjaIWuyg6FoQEbvuejlAtSsYMG+99h7wrb4YYDBuqBQECnAMAksUAwteTnsnrQNcu8IK2x7Q8MO/8guqv+ZuoEHGE1lQgMcHh2zAALZii+sBJjv8ArjhBrsrucRGsQEFMUhY0RMYvAtywgvbym3P3/4MsbArAxoFCWWYRMIDeK6QZwHW3roz1S98G7G4NowbRQcwm6TDBgWEHHIBJKNwK8/34kb7wtpCC2BDFKl65UEMOyT8ALb2PsC3w/j6GrTEFIwRFGEChRHFBYvj6jjVkf8qgBjqYn5QFyRoAEMAO6BtwwZKcPBmRQEBACH5BAUFAIAALCsAPQA+ACwAAAj/AP/8GQJFoMGDCBMqXMiwYUIHAAqAcEixokWFYkZoHOHgy8WPIBU+2LgRwY6CIVNadDACgEuSIwwMUUlz4QyXOFvCVFKzp0E6AEjiDKpxhk+fQjbm1OjSwFGfBFwmSPByqMenNbVMpTp0KxisNY0QbSl1q1GwKrlS3brVAVqaCBAkiEt3q5a3abfS3csCb0q2bOO2cOsXpIMWcgEjaGGERuGPDha3mIw4AWMjYR5fLDB1sREjiBF83qDZIobJUy8j/ryjdMUNqj1/NuJAy1nXDKHEnc3YwWcHDjo8pkEjSxaHBCbP/k3bQYHHM2Z48FCcIQbfv30Dr+2Ajl8da9Zs/5mhg/jxhGAGY9+uhbuBNXiryBc/Xrr58wINfG5vpD13LUQI8VYVTDCRQw5VhFcfdQhtAFx/wLVHBIBEsCAcVmtYkEQSTEBxYHjiRYeQBxNGWJsWFBJBAAHeHZUDBxxYoGGHHiIYXh8JOegfEQ5MSIAWKxJggAY+QTEEEmDEOGOHB+awhg4KFdCjhA6woOKKBmSZBo4p0cCBCUeCkWQYMnIIBRTyLeQGjxNqYWWQBghZwAM7gICfRVC4AYIbYA4hJhhhkGkmEx4wFAALPRJRIZZyFuAoChgMcSdDFrhBhxIg7AkmkmOWmUQVDfVRwJtwymlAASig8EAJKOxAAUGOHf+0hQUmaNCBBnSIIYYSbvAZpphkWsAERWGwQICKLBjAQgFZPvDAnCUccMAOOwgRAAZpfEHBFzDAoO0Gt+KqBKYgmLAppzHe1pAbxgq57KmOPqAqCtFWa+21DTSQhgDeUkABuLjqmmm5m4rJwRYX0eFunMzOCe0BJZRg77UY5Ltvt9+Gm+u4mfqKBBKgfqRElgQw+yyq8kpMbbUB4KvvxV9sIPOtG5PLpwlI5JCSCcyeaoCzqx6AwrQTu5wGzP4CHLDNfMKnkgUHxIvy0BDbK4S1FVvM7xcZ07xxpkM4TZMOMMS7Kr3TTns11vnqu/W3StcMRqFHgSHEvBCrzHLLWbtQjXHSHXjths5oKXF3tBILsbfLbm8N+K1iWFCYB25gkHbRLbe979v/bqBEGHRrloQGDViNAeMCwPyFBkOEjJtBW4BBBwUwpNG3tnSYcHBPAQEAIfkEBQUAgAAsKwA1ADwANAAACP8A/wgc+GfDEIIIEypcyLDhwiYAAPxwSLGiRYRtIkZUcbGjx4QrNEYU8LHkxTMZREY8YLIlQw8MVGokkselzYENZIpksOWmyzwJAKTUCUBKEp8mBWRIuZQoBqQliTCN2HRnTagdOaRM8EEo06FXoGD1GCDBlaAJEiz9umGsRyJXPmQwK5crgA8Mrrqt2ObKUrNq02b4kKDD3otNCF85OzdtWillDluUsTiu4sUfrvSQbLHHWbOLpcQ1y5EzRSJpQ4uufIWDaYoQpMiWvRg0AxqvHa5mzRpCboe8K89e8bshg+PIkzMoUJxhcgfKGRBpvjD2bAYOHEDITgQ3dYQLoDP/mK0dwnY43xEeMA8hOXsGhtPjPF6+vQMiRCA8lS+wSfvjEOR3H34DzMDfH20ESAR3+RExAH5nHPhHePiZV+EADx7gwYECWHjhgxiuAMKBYDwY4IMOErHCACv00BN/PWDoIIgrrlgASfydMaODNa7g4wIFRIhVFhfp0AOPIQ5QwAoLNNnDiD7poMOGF7GxIoss+liAkz30cAKRLulQxRNleEADmA7psICPSg6wZg8LdNnDAQfc8YRJWVQBhR5tPDGDmRaV6COTLcbZJZ10YoAEmha1YYEFSezZ5ww6nFmRAFpuaeiccx5wwQUyCMCBdw15oAccYMDxKBNQVNFnGZUy/7rQFgcwySWniIIaAAYYCHACGFUkVAYTHLihxhBIcACHqqzy2QasZsqaUBIHbIornaDKIAOvDTQggAAqsHHCD02ccEITIJDgBrJgKAvpnq62McOfpDKEhJxyHjDnpxfsymsI3gpwhwoqbNDBGeOma+wQ7apqQbNjkmlgRWrgi6in2m4LcLfeDlzwweeCkO6xSDQMKcRttFGvQyAcmuunAcSMAcDfCjzwBmwg3AS66g7BMAfuPtxqFVRehMTFFxyQMa8zB3yHxzifgfAPCpPcsMN76lASFAFgCzMGu3L87dMERz11uiSoQTLQqkZa9EdlqJC0DAHQza3YZBfMBshUV2zNLttQrFwSBw30G3MITQvQsQo3s5HzuVSrS3KycLzoUxZu8Bp2tzV7rDfITfSd9rFgiOWWB2qogIHYY0O9N8IhKwyGHm/vVQUJKnAuMMGfwx66G3C0IS1nZXBAwgkdsLGB3mf8oAYYTERmUkAAIfkEBQUAgAAsKwAvADcAOgAACP8A/wgcSJDgDxkFEypcyLBhwhwMJEgw4bCiRYsuREiUUOGix48D2QDYKFEAyJMOBUQgKTFCFZQwC1KIMJKlBIQxY8bQCKAnS5c5UTpp0XOkz5oSFgQFyQNCBBEAVkrwSZLi0oslnkbY2pMmUo5XLR55ChUqza1TawKwELbhjAotRGiVazYtACI+2jYUMEGEiBZk6Z6N8MKDXoYeiPjt6xdAWbkRTB5mSOFv3xaA4/qVG2JyQwITLl/W7LiEYc8KXVToG9ry378VXqJWGALzBLgtJtj+22H2wgEVGOBeLaI1ARq+E1ZhIDx389u6vyRP+INB6ODCb6+GMGN6wRDBIUD/yM5c+AXvBQ+IF18h/PgJbNATXMAe+/rxHOQPJFJePBEi6xGBnH5/APjfgQdCMACBAiHo4H8lMPjHffcdGCGDBBDw4IFKMbhAhgMMkGGGRBCwQhYMlvAfASGGCKIBaDD4goYlDmDAjRka8AODcdxowIgGrLDCACtIpp8JLAZpQIgLLGDAAiXoQOAWQxLZZJBNQmmVfhcsMGSWK2RZwgsDysdGmF5C2WQJUJawJXpMCJmlmiXUecALTxD4gphtlnCAnwdMQeAPdfZp5wE7HHDBjvLR8GedkP65ww4XXCDDm9MR6iegiFIqwwUvvOBGmcllEYKdJSR6wQ6fhvpCCDGc/zadCwf8eYGilsrgagghNDBFfiehCBIFiOLaaqi89ipAHB04QSpDOmwxg6wezRBCpZaCiiyvDQjg7RRfdOCGBXkWpMMTOTCRAw/SPmsRFJ8e+2qvDXQbB7hfbMBGBzH8cMQQSCDhggscWIAGFFXwMIMOwn7khLzcKvvtFxToy+8PP4BwhAkCO+EDGupW8cQM7lrkxgsyhDCvxPeCS8G+F2e88RAueGwwwiPrUHJFLqicbL3eCuByxfz2K7MJNHv8MRTrjrxzRT408LO3LedrcQz9gqAx0kg4wcHHIef8tEM5TEHvskJ/QTHMWGe8NcA1g800DyN7MLZbMXT7LbgbEG9dtNszD2zzwTi32/BJTHwRh9Aub7BB0Vlr7AbHNRcMcg4J1x0UDUOwge/L+2Id+RGTC8zB1yAzXcUW1AblRAx9s9221qTD7fXHB1fR3WQ5DBFDB38DPrntPjDBw91XbYGGEyYcofXWXVtgfOsOBQQAIfkEBQUAgAAsKwArADAAPgAACP8A/wgcSLCgQYEzkhxcyLAhwyEFEgDo4bCiRYIzKFQAwBFAgosgG8LY2LHjjJAoByohWbJjk5Qhy5SQSLMlgB0wLyJhUFOiTRw5KzaZkKCox5olPwZl2MGLl6JQPdoEwGHpQQpOEzx9alRqSQpWC57wQpQoV58+S6IIOxDMhLIJzEJFW3IC2z9bcFQgG7fv3K4cKwi4u4OBl70T+BLV2rVIh5N3jxiu8DbxW76MK8CAfPfPgAkMKIsmW/ZpjzWdB2oMDdoLgwmILQ9OLdADiyIMGBQBXaF3bBi0B2rArTv36+NvZwf/UyA3ceKhQ5eos/wPhyJFcDjfXqQCAR7V/8D/YKE9O27sxWOE/9MDexHyussXKbC+Cw4cBAjgwE7evIb1TbCQ32343fbeADqsR8EABJAnYIPvsRDAen8EwMKDAzB4YX4nUNhDhiAOsGGGFlBYAoj5pZhhAdStx6CKIBZQQAkUejaAjDjmiBOFOfYo447r+VhAD0T2AGR4O/jYAwpMluABhQEsSSSOS5ZQgkLrpUGklVZuaSUeFMZQJAol7FACmTvsANZ6YJh5ZpluprnDk+F5YKWbcMq5AxgUpnGnnmkGsIMALVanAaCB7hDAokisxweggi4qqQCcLZeGopFKKmkDHYaHRKCabtpAGkPU2UCoizagagMCCMBndUOg/6pqGqy2CsOry8EQwKmrpuErDALAQAEFRyQYnA+87jpqGsAKO2wHMWBJ2wmrsspssDA42wG0JPBRKFsewECrANdmq20HGsTQRBMkcNBFpQJ9C1IXrZbrLAXbapBuEyAcgccQSIDhAx9ddPHEFnSiZEGw2A6Lb74nrNvvvwH7YAEfb/CwhQ7yXsRBww7jq6+6SoBAAsUCW5BExk/AGxIH9z6LbgwR93tywCmv3MUaM3QMkgUObzszyRMPMQQYHFis8xplJAwTDxp08HC6EZfsL8BIK/3GzjN44DNIHuCRbwzq8nvEyVgnrTLBTHMc1htKpEs0CWgHrHYSBGvc89co+TiwbhNW/4t1znlv0XNqSZDQ79V2J50E3jvz7DVtW1iABMoc3J13y24vp0MXfFjgw+gqZ7zGxg4FBAAh+QQFBQCAACwrACsAJwA+AAAI/wD/CBxIsKBBgRY6vHiQIsGIhyMAHJxI8Y+TFxCuRHQIAABEiRVDehBw40qCBB5RRvT4sEVIiiMrXGlx8gqAkxIiQhzh4OXBEyUT0Exg8mYCCRIA5HxIwCfBLUJa0Gxh0uTJo0mPQuzhVKAPAldkprgys6bJrB0hvuh6BkILsWTH1kR5Mi1ECk6XuHXQIgXVsTOtXlUJ8YTPJTdS8HWQIoVMqYKtJt3p5GWMGxUgKH47tgLVwFbtQpwR0gKBzJkVN/Z8xS/Zuh1vtgBwJeSWBQ4wQ0DtoMLqz2QrPKDAwUNXDBBu5Eat2QFjzi1ubCDdVSCIGwSSQ4DgYPfuCr1bQP9YYry6QB09st/Yvn57994OhLwxT3AJAew3sCd//14AfYIeFHDDAPdlp95+DnTwH0ExELDCfQPkV2ByN/i34EBCPOggAQREOCEGFw5kQQEdrkDgACdit0IXIQpEwQArFPDgCg+i2KFhLf4hxAILmBgjij4qoEOOXfQg4wo8mlhAATCCkOMfYyy5wAMPyFjAAjIqUF6LZzzQQw8PYDlllStYmKMAX4Y5ZZpTOvkkBl/GqcCcYD5gxpM6zqmnnl8qUAeeewaqQA9C4PmHoIFiYSiieyqKpxCQRiqpECDi+UKkl75wKaQv0ICnAJJq+kIAAYzK4pMKlaopqRhgEAAGLuD/CQKrrtLa6hl4cmBrqxhg4auZLfKABa+9DouFAMdygCcFvhrbrADQLiFrr8geC+21FITxpBnVXoutABR0QF2LS3jrLQXoUoDHky6YC266FCzRgbI5UnAuuhvE20EHZ1iQY7vvUpDvBhvse0YMJ/iQYwfwbrCEvBqcccLEIBQXYhICC/xwBxEjDMLHIIxx6oJ4xCsvxwdT/DEeY7jgwxYLehBDwSjH4PHKLLvAQRhJ8DDDlk61cQa/EscAwgkg5+yCEz5YYMYbPJTxZ1dJxFC0yiDgkfPOTZvRRRszTN2VBScgjDTOY7TMtAVJvPG1DmJTjXXWaevMgQ9JPM3DFmH/XWcGyFnn7ATXeXexN9wLboFH4HUP3nThh4dYRxhat7x0GHi3/XUZiIfIgwtq383201//HHfMb3DA9eiG8+3B6Z5bkLnXPID9uqHn8fCG23uHDTueHuigwwxw/y5QQAAh+QQFBQCAACwrACsALAA+AAAI/wD/CBxIsKBBgWbYhCjgwEEEESIitChC4AKbJwczavzDIcSAFi1SiAD5UAQAABEkSDhZ4cGJjRo9sDGQogLIFC1GtigJQEKEnj1VSqhgAmbBDTcc1LSZQqQIkSVTRkgpVKgZowJJFKhQpEIKByFtjoQKsefUoEILYC0TggBXBxWU1hQZcmdUlT+rSgBh1EIBAg6KNOz6FWfdnRDL+qSq0oFREgQIFLkhWDBXpl5zloTIGC0MmCcIDJhcZHJcwU0riE3MmrFKERg1ghB9I/KNpKVVN2yqE2RrtBJ2bDQxwADt26S5om7K3DfnvFY1+h1AwMAN6rVLU9YN12tTB7crRP9Ea0CjjgMGilcXTaB20sCWi+zYwEFHQQ4UDKgcoxFGAQMFqGccdZNR1pABbNhn1EsZufDfAwMEmN6AA9x2gwEMYgXTBQU8AKABIE4oWoUyrKGhUSA88ECHBbT4YXEDDMAGDSfC5IEMKpaw4or/SYhhjUaZoKOOKrbI438ZAqlRCCUcMOSKJbBYgA1KwmTGATuU0OSTD0S5Q2xVZnRClk06eYCTRPIVpkY2YHlBlmeaWUIIHqyZkQcX5LnDmReY6aQadmbEgQxv7rCDnlgeWmegBoGQ5wUyRPrmoxQwetAGMgSgqaSQEgqopQXdEYKmAUQaKalXgUqQDaS2GkAIsC7/qqpAsNZqK6xUzjrQrbx+oeuutdog7LA2bPCrQMQmK6yvx36hrLAw2HDHsX9QAC0M2GZ7xx08HHtCtjBsewe2X1DAwbEmbIvtHeV+US4FJBzLwR0UUOBuuRvku8EJNOpahrv1BqwvG2xY4G29+bKxAcEEnxDvr3MsvDDDbJxg8QmpzsrDxA1fbDEIJMiqKggdewzCySCcq6sFHn98wskkkGBCxqq2jDLIMqsxRg4rX4xyzDnPgQQH3c5Kws0xm2DCGHO4wAEHFuQgcqA5/Czz0k07bYEFZuRQhqocAK000y44DTXXOfCgQ7+B0jDG1WMgYfbWaPOwxgxsB1rG2EjIX/301l2n/YQHWajKg9Bl/81113bPMDWjOSR+9uI5rFHG2r/yoDjljdNQ+K9P0G3G6JVfnreuM5hB+Rp3E06tQFmsEfgaT+D9OkE68NC4B6ffrkMZeH9++0HCD2/88QEBACH5BAUFAIAALCsAKwA0ADwAAAj/AP8IHEiwoEGBa5pgObCgCAMGXhgUKfLgwpkcBzNq1OhDwIIgDos4mPDQy4QJIkSg9BJEho+NMA3qOKGAQJEgQRg4cEgS4smUKAF4EQGgiIAtMTfqWIIiCAEWRaBKLHLSgc8JQ714AZASgFcAWDwkNejigQEWBGzidLBzpM6rWEUM9SpCglcJDJaMFbjFxgADaQcEYQH1psOHVrWeHCqXKFG7ACRIGAAlKZMLAwoY+Iv26c0gVtkmNvmTK9GvdiVLPgPThQIDmjMTGDCAxWCpO0VCVIyV7uO7kVXrzWgCRYEFmgv8PTu78ESRVrFq1doVdWrVEoZkBKFgwQPkCzID/6atFudEqwykp6Qe/C52CU0yukaBYoH94wZgD3j61Db0h4vNlVJ110kWRUZQHICCAvR990ABENK22VMgsRVVfiLFdRpk79mQURkYKCAigyg4mNyEhA0QwBI+6FCQD0sogNKG2KGg0RIHHKCAggqWaN8C+eWnwBllxOTBGUVYJwELeWTkwwU56qggid/d9wAIYu31xxITqMZAkwdl0cAFZB5wwY4L0lffAjYgpeVAPDAgwQRPaOQGmVBCmaOIPaJwRhZvGoQFExp5gEUAMlyQaJln5oiCEoEGOkQAiMqQ6KJ7HnBCpIFGQSmlll5a5hSAcrpXFRgEgEGqoCJKJgZ1mv+6FwlYYLHqqp/KgKgLsmq5RAO21poqqwHEkWWvMelgQ60NAIuBsKvyimxSPtggwLXANgssFgIcO+1GJMQRhw3kWiuAtpt+G1MTcVwrgLjtmiutuhudMcW9+E4BbxxV0AvTElEEHMUUA+N7oL8bASzwwgEPh3BGDDe8BMDpPnzQxBhnPHF8Fl+sMcZnLFFxxwSdkPEZKKc8MskCgZDyyyfEfEKsLAtkgsw4N6FzE5XVLJAPMeusxM5KgADCvDXnsHMTRRsNAgkkmOCzQB4o0fTTUJPghgkmYDT1EFhD7cbWJgwxhA+l1oyG2FyXbbYLcPMw9RNtuz0E3C74oPfUf7iKYPbbcOutNxr9+pzD3XgHPjgTUBRZswc+JC44GmgwXgUP3nacQ96C+0A5FFBUscYTM0zdOeWMQ5EDD2uU4UHaJJcxeOWqX/6E63z/UcXntY8+gwc05P4H6L23rgMNsPvsQQ5VVPGE8cELL9AMzt9+fPK5e9D679gL78Hv0UtvEPLil2/++ein/21AACH5BAUFAIAALCsAKwA6ADcAAAj/AP8IHEiwoEGBZdRMCYBiAQsHQSIuOIAhBo+DGDNqLGhmiZACLFawCDIgCEQtFbRokeKgwgAMSDbK1OjhR4ACKwoMGCCSpMkgKB2sZDkBgRQWU8rMXPonyw8FDQssWMFzAIudP4NUcMB1QoUKCCZM+OAAyxOmGpFgeMC2wAOcOVlcHaAFosmtDqRM0BsWQdgJP9AaLEPhAAoUChawzYlzLou6EVGydCCWb9EPCCI8yCFYoBkMB6AeeHB4gWmqVR9riVxBylawRv2O9RvBQUy0Tl5YOcAbhWHFb3muoKo6csu9rWUjwBzhw4cICDQwJaF7txUFoUlHzUkc6GqVdfWK/y3aFzqA5+enzEQSQIgQK9ahQgW+oLHciJFVti4qdjlt9AAAEIENG/mAwQvtvScEb9mh8EB9qFk1kndctVQBeWE5h8B5EQQYIAUZ5WBDAAEgKMQLB+yG3W+mQZjTAoiV1JoU4vWH2XMfBNihh2ocpMMUGGBAIoknwnfdYQ7CaIMYFnhQkBwxWKEFhn7hqKOHASLwhkEnYIFFkEIS+V6KvQWghg4yeUABC5fdGMGOWAY4QUFMYGHDl1+GmSB8B7yghpNodQDbc2/GiWUHA9EQhQ134hnkkO4JMcVZnf2RhwLNCWgolkIMhIQAjDbq5aNE/pBFpQTZAOCmUpBA0BICxP8aqp0Y5IlBj6gWNMWmAtqQB0FOTCFsrKAK4OWoruZqEAZxRmDFlgXFEEUUwk5BLKNexkCDsgcF4eEC0BaUAwUUTEvtsKDaMAWa3Br0RgStZoQEueSae26sYbSLERO/ZvTDEgDTW+60UyCqb2d5aNABwAwLHIUTB3eWhMIdVLxww0sAGjFTTmgQQwwaUGzxEsluzJQaJ6R8QsgsK+yDyWiRIIbKNJ/wMaUwz0TCDzz3zLMYYgSW81I77+xzzyUPvREJTDftNAm3Kb30009HLXVGapCgxtZcc2311Qch0fXYSHwNdkFOqCF22WyX7QS7ZxtkQdtIOGG33WFcFLe7d9+IHUYYPvhgQbh7D/SEE38HrrgFciTBxKmFE7Q4440nYYYZb/QbuUBMyOG540xgnkMOPOC8OQ9yMBG66KSXnse2m//hweVvvDE6D67n4QHksY9++xNPlJGHDrDHLlAeuAMvPPG8Gy+Q8sPTULzzA+mQh+7TU0+Q9NlrT1Dz3ocv/vjkl2/++ZsHBAAh+QQFBQCAACwrACsAPgAwAAAI/wD/CBxIsKBBgR7AxEgT4MCCBSsI9OjxAkaTHAczatyokUmMBgcUTOyxYgVEAgMG3BjAQssCAU44ypz5x4OaNFasKFBwYCTEkylvECCgxcENBys2bKHJlKCaBhesXDhAdaLInxEHRBRKwIGWolpuqKDRdKYPGAFeXFB7QGePnT0eniSwVWjRo14rDDhSVqOHGCECpA0QNerOkHLnpmx5o6VXB5CNOLDCo2/BHFECB057oXPIqolXDBg6+usNvEUlT6igZY5lgRYENAjRIEDgF7hzWgkZNy7E0UMJOP4K2YGRChVWT4hhOYyANA3ShJguWG1ntz4hRiTQmMWNoo8lG/8Zj8AIAhVlncCAkUY2dOq4X+wOCfdhydHfTWtB7iB5BfMTIBDgBkxZEEUUArAnWwO1VRdVTvT5dt9ojnmVGnITGBHghggwJxMPG6gAA4LPPTfdZpzttpMCUl2ggGhDnVZUBZEpNwGHAqrBkQcaqBCFiCSm8R588r0QhRtMeFAQE0o0MABx/a2W3I0CRoCAlRVUppEJIfroY5BDCgYDGEruGMMC/SFXgYAbRjCBlVb2oFEOHWxgpwp4HpggdNAJMEeZTDVBQHLl4QjnlRE0kZESHdR5Z54wJChbDDO8tsUB/+GIwJUIANBpBZUW5IMGGjTqaIgHRgqDjq8NpIJ55m3/CmcEEQBQaxoGKRHDrqWe+mUUYLRa0KsBcuqprbVGYISWAjHRxK689mpniMEKW5AAstIKhK3IAgAADASZ0MS40MZAaqMb8GWtQT0Ym2ytAGw7wUBbHHGEEuM+C22pMeiwrkFbOAAErbR6u623AKhrgb1K3JuvvjFY8O9BHXgLL8IYDyCQC/Z23DC+47oxcUZaHIzxyX/oYMLKbrhhr8tKxMzEyBSfbDMAPuQwhxors2yCy0e4QRbNBl1sMwILOMHEHEwzrQbPPcNB9EEOYBzBDQc0EeofFrjgtddNO43R1AVtMMECKjixNUFwOOEEGHCD8bXXa5NNExxh5O323nvbdd0XHIAHHgbgPoThg99lWaD44oxbMDPiTDEh+eSUMzE25DPlUHkOnHeOOU08dC56DjyU/vlMpaee+hasbzH06RqxzgPrM8ywRe06AAp7Rh7UjrsHHpCVxe4y5U7D8cMTT9PQySvv/PPQRy/99NRXb/312DsfEAA7\"></div></div><div class=\"ui-select-choices\"></div></div>");}]);
+},{}],212:[function(require,module,exports){
 require('./dist/select.js');
 module.exports = 'ui.select';
 
-},{"./dist/select.js":191}]},{},[1]);
+},{"./dist/select.js":211}]},{},[1]);

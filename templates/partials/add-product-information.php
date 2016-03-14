@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-xs-12">
                 <div class="form-section">
@@ -125,13 +125,13 @@
                         <h2>Description</h2></div>
                     <div class="form-section-content">
 
-                            
-                            <div nc-template="common/input/form-group-with-label" nc-label="Description (English)" 
-                                nc-template-options-path="addProductForm/MasterVariant_DescriptionFull" 
+
+                            <div nc-template="common/input/form-group-with-label" nc-label="Description (English)"
+                                nc-template-options-path="addProductForm/MasterVariant_DescriptionFull"
                                 nc-template-form="addProductForm.MasterVariant_DescriptionFullEn">
                                <textarea
                                ng-ckeditor="ckOptions"
-                               class="form-control" maxlength="500" 
+                               class="form-control" maxlength="500"
                                name="MasterVariant_DescriptionFullEn" ng-model="formData.MasterVariant.DescriptionFullEn" />
                                </textarea>
                             </div>
@@ -140,20 +140,20 @@
                                 <textarea ng-pattern="/^[^<>ก-๙]+$/" class="form-control" maxlength="500" name="MasterVariant_DescriptionShortEn" ng-model="formData.MasterVariant.DescriptionShortEn" />
                                 </textarea>
                             </div>
-                            
-                            
 
-                            <div nc-template="common/input/form-group-with-label" nc-label="Description (ไทย)" 
-                                nc-template-options-path="addProductForm/MasterVariant_DescriptionFull" 
+
+
+                            <div nc-template="common/input/form-group-with-label" nc-label="Description (ไทย)"
+                                nc-template-options-path="addProductForm/MasterVariant_DescriptionFull"
                                 nc-template-form="addProductForm.MasterVariant_DescriptionFullTh">
-                               <textarea 
+                               <textarea
                                ng-ckeditor="ckOptions"
-                               class="form-control" maxlength="500" 
+                               class="form-control" maxlength="500"
                                name="MasterVariant_DescriptionFullTh" ng-model="formData.MasterVariant.DescriptionFullTh" />
                                </textarea>
                             </div>
-                                        
-                             
+
+
                             <div nc-template="common/input/form-group-with-label" nc-label="Short Description (ไทย)" nc-template-options-path="addProductForm/MasterVariant_DescriptionShortTh" nc-template-form="addProductForm.MasterVariant_DescriptionShortTh">
                                <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="MasterVariant_DescriptionShortTh" ng-model="formData.MasterVariant.DescriptionShortTh" />
                                </textarea>
@@ -274,8 +274,8 @@
                         <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.MasterVariant_SafetyStock" nc-template-options-path="addProductForm/MasterVariant_SafetyStock" nc-label="Safety Stock Amount">
                             <input class="form-control" name="MasterVariant_SafetyStock" ng-pattern-restrict="^[0-9]*$" maxlength="10" ng-model="formData.MasterVariant.SafetyStock" />
                         </div>
-                        
-                        <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.MasterVariant_StockType" 
+
+                        <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.MasterVariant_StockType"
                         nc-template-options-path="addProductForm/MasterVariant_StockType" nc-label="Stock Type">
                             <select ng-model="formData.MasterVariant.StockType" class="form-control" name="MasterVariant_StockType">
                                 <option selected disabled>- Select Stock Type -</option>
@@ -283,7 +283,7 @@
                                 <option>Pre-Order</option>
                             </select>
                         </div>
-                       
+
                     </div>
                 </div>
                 <div class="form-section">
@@ -291,7 +291,7 @@
                         <h2>Shipping Detail</h2></div>
                     <div class="form-section-content">
 
-                            
+
                             <div class="form-group ">
                                 <div class="width-label"><label class="control-label">Shipping Method</label></div>
                                 <div class="width-field-normal">
@@ -313,25 +313,25 @@
                                 <div class="width-field-xxl">
                                     <div class="multiple-input">
                                         <div class="input-column">
-                                             <div nc-template="common/input/div-with-label" nc-label="Length" nc-template-options-path="addProductForm/MasterVariant_Dimension" 
+                                             <div nc-template="common/input/div-with-label" nc-label="Length" nc-template-options-path="addProductForm/MasterVariant_Dimension"
                                              nc-template-form="addProductForm.MasterVariant_Length">
-                                                <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11"  ng-required="onPublishing" 
+                                                <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11"  ng-required="onPublishing"
                                                 name="MasterVariant_Length" ng-model="formData.MasterVariant.Length" />
                                             </div>
                                         </div>
 
                                         <div class="input-column">
-                                             <div nc-template="common/input/div-with-label" nc-label="Height" nc-template-options-path="addProductForm/MasterVariant_Dimension" 
+                                             <div nc-template="common/input/div-with-label" nc-label="Height" nc-template-options-path="addProductForm/MasterVariant_Dimension"
                                              nc-template-form="addProductForm.MasterVariant_Height">
-                                                <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11"  ng-required="onPublishing" 
+                                                <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11"  ng-required="onPublishing"
                                                 name="MasterVariant_Height" ng-model="formData.MasterVariant.Height" />
                                             </div>
                                         </div>
 
                                         <div class="input-column">
-                                             <div nc-template="common/input/div-with-label" nc-label="Width" nc-template-options-path="addProductForm/MasterVariant_Dimension" 
+                                             <div nc-template="common/input/div-with-label" nc-label="Width" nc-template-options-path="addProductForm/MasterVariant_Dimension"
                                              nc-template-form="addProductForm.MasterVariant_Width">
-                                                <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11"  ng-required="onPublishing" 
+                                                <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11"  ng-required="onPublishing"
                                                 name="MasterVariant_Width" ng-model="formData.MasterVariant.Width" />
                                             </div>
                                         </div>
@@ -355,13 +355,13 @@
                                 </div>
                                 <div class="width-field-xxl">
                                     <div class="multiple-input">
-                                        
-                                        <div nc-template="common/input/text-column-no-label" nc-label="" nc-template-options-path="addProductForm/MasterVariant_Dimension" 
+
+                                        <div nc-template="common/input/text-column-no-label" nc-label="" nc-template-options-path="addProductForm/MasterVariant_Dimension"
                                              nc-template-form="addProductForm.MasterVariant_Weight">
-                                                <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11"  ng-required="onPublishing" 
+                                                <input type="text" ng-pattern-restrict="^[0-9\.]*$" class="form-control" maxlength="11"  ng-required="onPublishing"
                                                 name="MasterVariant_Weight" ng-model="formData.MasterVariant.Weight" />
                                         </div>
-                                            
+
 
                                         <div class="input-column select input-xl">
                                             <div class="ah-select2-dropdown">
