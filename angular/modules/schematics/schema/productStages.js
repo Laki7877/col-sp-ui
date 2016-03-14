@@ -1,5 +1,5 @@
 module.exports = {
-  "title": "Product Stage Schema V3 Rev B",
+  "title": "Product Stage Schema V3 Rev C",
   "type": "object",
   "properties": {
     "ProductId": {

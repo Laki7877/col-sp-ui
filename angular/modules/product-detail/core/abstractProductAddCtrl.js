@@ -25,7 +25,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         id: null
       },
       TheOneCardEarn: 1,
-      GiftWrap: 'No',
+      GiftWrap: 'N',
       AttributeSet: {
         AttributeSetTagMaps: []
       },
@@ -66,7 +66,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       console.log("Schema validation result: ", validation);
       if(!validation.valid){
         $scope.devAlert.error('<strong>Warning</strong> Automated API structure pre-check procedure failed. ' +
-        'Format does not comply with the <strong>Ahancer Product Add Exchange Protocol (A-PAEP)</strong> V3 Rev B. ' +
+        'Format does not comply with the <strong>Ahancer Product Add Exchange Protocol (A-PAEP)</strong> V3 Rev C. ' +
         'For more detail, look for <i>schema validation result</i> in your js console.');
       }
     };
@@ -528,7 +528,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $scope.pairIndex = index;
 
           $scope.uploaderModal.queue = $scope.pairModal.queue;
-          // ImageService.assignUploaderEvents($scope.uploaderModal, $scope.pairModal.Images, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
 
           var variantModal = $uibModal.open({
             animation: false,

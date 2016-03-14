@@ -1,5 +1,5 @@
 module.exports = {
-  "title": "Attribute Value Map Schema V3 Rev B",
+  "title": "Attribute Value Map Schema V3 Rev C",
   "type": "object",
   "properties": {
     "AttributeValueId": { "type": "integer" },

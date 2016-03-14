@@ -1,5 +1,5 @@
 module.exports = {
-  "title": "Nth Attribute Schema V3 Rev B",
+  "title": "Nth Attribute Schema V3 Rev C",
   "type": "object",
   "properties": {
     "ValueEn": {

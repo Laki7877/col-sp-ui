@@ -1,5 +1,5 @@
 module.exports =  {
-  "title": "Variant Schema V3 Rev B",
+  "title": "Variant Schema V3 Rev C",
   "type": "object",
   "properties": {
     "Length": {

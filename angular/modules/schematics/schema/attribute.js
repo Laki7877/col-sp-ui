@@ -1,5 +1,5 @@
 module.exports = {
-  "title": "Attribute Schema V3 Rev B",
+  "title": "Attribute Schema V3 Rev C",
   "type": "object",
   "properties": {
     "AttributeValueMaps": {
