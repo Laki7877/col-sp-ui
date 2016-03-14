@@ -16,12 +16,9 @@
 					<button type="button" class="btn-white btn btn-width-xl margin-right-10" ng-click="collapseAll()">
 						Collapse All
 					</button>
-		    	<button type="button" class="btn-white btn btn-width-xl margin-right-10">
-		          <span class="">Export</span>
-		        </button>
-		        <button type="button" class="btn-blue btn btn-width-xxl" ng-click="open()">
-		          Add Category
-		        </button>
+	        <button type="button" class="btn-blue btn btn-width-xxl" ng-click="open()">
+	          Add Category
+	        </button>
 		    </span>
 		</div>
 		<div ng-show="!loading && categories.length > 0" class="row">
