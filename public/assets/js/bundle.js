@@ -7638,7 +7638,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       MainGlobalCategory: null,
       MainLocalCategory: null,
       Tags: [],
-      ControlFlags: [],
+      ControlFlags: {
+        Flag1: false,
+        Flag2: false,
+        Flag3: false
+      },
       Brand: {
         id: null
       },
