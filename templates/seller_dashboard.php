@@ -247,24 +247,14 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
           <span class="font-size-18 header_name_space">Top Selling This Month</span>
         </div>
 
-        <div class="group_container top_selling_field">
-            <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
-            <div class="column-text-ellipsis"><a href="#">Chanel, the cheetah</a></div>
+        <div ng-repeat="product in topSellingItemsData  | limitTo:maxTopSellingItems" ng-show="topSellingItemsData.length != 0" class="group_container top_selling_field">
+            <img class="logo-img" src="{{product.img_path}}" />
+            <div class="column-text-ellipsis"><a href="#">{{product.name}}</a></div>
         </div>
-        <div class="group_container top_selling_field">
-            <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
-            <div class="column-text-ellipsis"><a href="#">French Connection, Sunday - high quality product</a></div>
+        <div ng-show="topSellingItemsData.length == 0" class="group_container top_selling_field">
+            <!-- <img class="logo-img" src="{{product.img_path}}" /> -->
+            <div class="text-center">- No Top Selling Product -</div>
         </div>
-        <div class="group_container top_selling_field">
-            <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
-            <div class="column-text-ellipsis"><a href="#">French Connection, Sunday - high quality product</a></div>
-        </div>
-        <div class="group_container top_selling_field">
-            <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
-            <div class="column-text-ellipsis"><a href="#">French Connection, Sunday - high quality product</a></div>
-        </div>
-
-
       </div>
 
     </div>

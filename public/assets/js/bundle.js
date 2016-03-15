@@ -3600,6 +3600,26 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", funct
 		{inventory:'Inventory: ' + '10', p_id:'ID: ' + '5323312', name:'Jordan Nike Super Shoe' }
 	];
 
+	$scope.maxTopSellingItems = 10;
+	$scope.topSellingItemsData = [
+		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'Chanel, the cheetah' },
+		{img_path:'/assets/img/img40.png', name:'1 French Connection, Sunday - high quality product' },		
+		{img_path:'/assets/img/img40.png', name:'2 French Connection, Sunday - high quality product' },		
+		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'3 French Connection, Sunday - high quality product' },		
+		{img_path:'/assets/img/img40.png', name:'4 French Connection, Sunday - high quality product' },
+		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'Chanel, the cheetah' },
+		{img_path:'/assets/img/img40.png', name:'1 French Connection, Sunday - high quality product' },		
+		{img_path:'/assets/img/img40.png', name:'2 French Connection, Sunday - high quality product' },		
+		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'3 French Connection, Sunday - high quality product' },		
+		{img_path:'/assets/img/img40.png', name:'4 French Connection, Sunday - high quality product' },
+		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'Chanel, the cheetah' },
+		{img_path:'/assets/img/img40.png', name:'1 French Connection, Sunday - high quality product' },		
+		{img_path:'/assets/img/img40.png', name:'2 French Connection, Sunday - high quality product' },		
+		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'3 French Connection, Sunday - high quality product' },		
+		{img_path:'/assets/img/img40.png', name:'4 French Connection, Sunday - high quality product' }
+
+	];
+
 	getColoredRank = function(type, data) {
 		switch(type){
 			case 'Product Rating':
@@ -3692,7 +3712,7 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", funct
 	        default:
         }
 	};
-	
+
 }];
 
 },{}],44:[function(require,module,exports){
