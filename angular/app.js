@@ -107,6 +107,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .factory('OnTopCreditService', services.OnTopCreditService)
   .factory('OnTopCredit', services.OnTopCredit)
   .factory('Onboarding', services.Onboarding)
+  .factory('Dashboard', services.Dashboard)
 
   // Directives
   .directive('ncTradableSelect', directives.ncTradableSelect)

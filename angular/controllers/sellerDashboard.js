@@ -1,6 +1,11 @@
 
-module.exports = function($scope, $rootScope, Onboarding, $log, $window){
+module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModal, NewsletterService){
 	'ngInject';
+
+	Dashboard.getNewsLetter()
+		.then(function(data) {
+			return $scope.newsLetterData = data;
+		});
 
 	$scope.maxNewOrders = 10;
 	$scope.newOrdersData = [
@@ -125,6 +130,25 @@ module.exports = function($scope, $rootScope, Onboarding, $log, $window){
 	            break;
 	        default:
         }
+	};
+
+	$scope.open = function(item) {
+		NewsletterService.get(item.NewsletterId)
+			.then(function(data) {
+				$uibModal.open({
+					size: 'lg',
+					templateUrl: 'newsletter/modalSeller',
+					controller: function($scope, item) {
+						'ngInject';
+						$scope.item = item;
+					},
+					resolve: {
+						item: function() {
+							return data;
+						}
+					}
+				});
+			});
 	};
 
 };
