@@ -13737,6 +13737,7 @@ form h6 {
 }
 /* line 227, ../../../assets/_form.sass */
 .ah-form.sticky-mainform-action .main-form-action {
+  z-index: 9;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -13744,7 +13745,7 @@ form h6 {
   background: #fff;
 }
 
-/* line 235, ../../../assets/_form.sass */
+/* line 236, ../../../assets/_form.sass */
 .form-inline .width-field-small-input {
   width: 230px;
 }

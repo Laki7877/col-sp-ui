@@ -3864,6 +3864,10 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", funct
     	$window.location.href = 'shops/appearance';
     }
 
+		$scope.redirectToUserAccounts = function() {
+			$window.location.href = '/accounts';
+		}
+
     //Init
     $scope.load();
 }];
@@ -7737,8 +7741,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     };
 
     $scope.onImageUploadFail = function(item, filter) {
-      console.log(filter);
-      $scope.image_alert.error(item.Message || 'Maximum 10 images can be uploaded.');
+      $scope.image_alert.error(item.Message || 'Maximum ' + filter + ' images can be uploaded.');
     }
 
     $scope.onImageUploadSuccess = function() {
