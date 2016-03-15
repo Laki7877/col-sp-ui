@@ -51,7 +51,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
       $ncPaginationProvider.paginationSizes = [10, 20, 50, 100]
       uiSelectConfig.taggingTokens = '[ENTER|,]'
     }
-  ])ธรรมเนียมรายปีอีกด้วย ทำไว้เผื่อฉุกเฉินต้องการสภาพคล่องด่วนไรงี้ก็ได้นะจ๊ะ
+  ])
 
   // App template cache load
   .run(template)
