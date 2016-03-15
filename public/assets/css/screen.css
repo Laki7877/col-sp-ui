@@ -12249,6 +12249,11 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 
 /* line 93, ../../../assets/_override_bootstrap.scss */
+.alert .close {
+  margin-top: -2px;
+}
+
+/* line 98, ../../../assets/_override_bootstrap.scss */
 .alert-green {
   background-color: #BEEEBB;
   border-color: #BEEEBB;
@@ -12263,7 +12268,7 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
   color: #1b1c20;
 }
 
-/* line 96, ../../../assets/_override_bootstrap.scss */
+/* line 101, ../../../assets/_override_bootstrap.scss */
 .alert-red {
   background-color: #ffc0c0;
   border-color: #ffc0c0;
@@ -12278,7 +12283,7 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
   color: #1b1c20;
 }
 
-/* line 99, ../../../assets/_override_bootstrap.scss */
+/* line 104, ../../../assets/_override_bootstrap.scss */
 .alert-yellow {
   background-color: #fffdeb;
   border-color: #fffdeb;
@@ -12293,12 +12298,12 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
   color: #1b1c20;
 }
 
-/* line 102, ../../../assets/_override_bootstrap.scss */
+/* line 107, ../../../assets/_override_bootstrap.scss */
 .alert .close {
   text-shadow: none;
 }
 
-/* line 106, ../../../assets/_override_bootstrap.scss */
+/* line 111, ../../../assets/_override_bootstrap.scss */
 .table > thead > tr > th {
   border-bottom-width: 1px;
 }
@@ -13415,6 +13420,11 @@ label.css-label {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* line 419, ../../../assets/_table.scss */
+.table > thead > tr > th {
+  border-color: #BCC7D5;
 }
 
 /* line 2, ../../../assets/_form.sass */
