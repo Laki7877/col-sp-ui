@@ -9,24 +9,30 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 	<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Shop Accounts/{{title}}", 'urls' => ['/admin/shops']]) ?>
 	<div ng-show="loading" nc-loading="Loading Shop Account.."></div>
 	<div ng-show="saving" nc-loading="Saving Shop Account.."></div>
-	<form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
+	<form ng-show="!saving && !loading" name="form" class="ah-form margin-top-20 sticky-mainform-action" novalidate>
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="required active">
+				<a href="#shop_account" data-id="shop_account" aria-controls="shop_account" role="tab" data-toggle="tab">Vital Information</a>
+			</li>
+			<li role="presentation" class="require">
+				<a href="#shop_profile" data-id="shop_profile" aria-controls="shop_profile" role="tab" data-toggle="tab">Shop Profile</a>
+			</li>
+		</ul>
 		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
+			<div role="tabpanel" class="tab-pane margin-top-20 active" id="shop_account">
 				<div id="add-product-more-option-tab-content">
 					<div class="row">
 						<div class="col-xs-12">
 							<div class="form-section">
 								<div class="form-section-header"><h2>Shop Account Information</h2></div>
 								<div class="form-section-content">
-									<!-- Shop ID -->
-									<div ng-template="common/input/label"
-										ng-template-options="{
-										'label': 'Shop ID'
-										}"
-										ng-show="formData.ShopId"
-										>
-										{{formData.ShopId}}
-									</div>
+				                	<!-- Shop Id -->
+				                    <div ng-show="id != 0"
+					                    nc-template="common/input/form-group-with-label" 
+					                    nc-label="Shop ID" 
+					                    nc-template-options-path="shopSettingForm/ShopId">
+				                        <input class="form-control" type="text" ng-model="formData.ShopId" readonly value="DE39222" disabled/>
+				                    </div>
 									<!-- Shop Name -->
 									<div ng-template="common/input/text2"
 										ng-template-options="{
@@ -354,6 +360,120 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 							</div>
 						</div>
 					</div>
+				</div>
+			</div>
+			<div role="tabpanel" class="tab-pane margin-top-20" id="shop_profile">
+				<div id="shop-setting-content">
+				    <div class="row">
+				        <div class="col-xs-12">
+				            <div class="form-section">
+				                <div class="form-section-header">
+				                    <h2>Shop Information</h2></div>
+				                <div class="form-section-content">
+				                    <!-- Shop Logo -->
+						            <div nc-template="common/input/form-group-with-label" 
+						              nc-template-form="form.Logo"
+						              nc-label="Shop Logo File">
+						                <button 
+						                type="button"
+						                name="Logo"
+						                class="btn btn-default"
+						                ngf-accept="'.png,.jpg,.jpeg'"
+						                ngf-select="uploadLogo($file)"
+						                ng-class="{'has-error-btn' : isInvalid(form.Logo)}"
+						                required>Choose File</button>
+						            </div>
+						            <div ng-show="formData.Logo"
+						              nc-template="common/input/form-group-with-label" 
+						              nc-label="Shop Logo Preview">
+						                <img
+						                  ng-src="{{formData.Logo.url}}"
+						                  width="160"
+						                  />
+						                <a style="display:block;" class="margin-top-5" ng-click="formData.Logo=null"><i class="fa-trash fa"></i> Delete this image</a>
+						            </div>
+
+				                    <div nc-template="common/input/form-group-with-label" nc-label="Shop Description (English)" nc-template-options-path="shopSettingForm/ShopDescriptionEn">
+				                        <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopDescriptionEn"></textarea>
+				                    </div>
+
+				                    <div nc-template="common/input/form-group-with-label" nc-label="Shop Description (ไทย)" nc-template-options-path="shopSettingForm/ShopDescriptionTh">
+				                        <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopDescriptionTh"></textarea>
+				                    </div>
+
+				                    <div nc-template="common/input/form-group-with-label" nc-label="Float Message (English)" nc-template-options-path="shopSettingForm/FloatMessageEn">
+				                        <input class="form-control" type="text" ng-model="formData.FloatMessageEn" />
+				                    </div>
+
+				                    <div nc-template="common/input/form-group-with-label" nc-label="Float Message (ไทย)" nc-template-options-path="shopSettingForm/FloatMessageTh">
+				                        <input class="form-control" type="text" ng-model="formData.FloatMessageTh" />
+				                    </div>
+
+				                    <div nc-template="common/input/form-group-with-label" nc-label="Shop Address" nc-template-options-path="shopSettingForm/ShopAddress">
+				                        <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopAddress" /></textarea>
+				                    </div>
+
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				    <div class="row">
+				        <div class="col-xs-12">
+				            <div class="form-section">
+				                <div class="form-section-header">
+				                    <h2>Social Media Link</h2></div>
+				                <div class="form-section-content">
+
+				                    <div nc-template="common/input/form-group-with-label" nc-label="Facebook" nc-template-options-path="shopSettingForm/Facebook">
+				                        <input class="form-control" type="text" ng-model="formData.Facebook" />
+				                    </div>
+				                    <div nc-template="common/input/form-group-with-label" nc-label="YouTube" nc-template-options-path="shopSettingForm/YouTube">
+				                        <input class="form-control" type="text" ng-model="formData.YouTube" />
+				                    </div>
+				                    <div nc-template="common/input/form-group-with-label" nc-label="Twitter" nc-template-options-path="shopSettingForm/Twitter">
+				                        <input class="form-control" type="text" ng-model="formData.Twitter" />
+				                    </div>
+				                    <div nc-template="common/input/form-group-with-label" nc-label="Instagram" nc-template-options-path="shopSettingForm/Instagram">
+				                        <input class="form-control" type="text" ng-model="formData.Instagram" />
+				                    </div>
+				                    <div nc-template="common/input/form-group-with-label" nc-label="Pinterest" nc-template-options-path="shopSettingForm/Pinterest">
+				                        <input class="form-control" type="text" ng-model="formData.Pinterest" />
+				                    </div>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				    <div class="row">
+				        <div class="col-xs-12">
+				            <div class="form-section">
+				                <div class="form-section-header">
+				                    <h2>More Options</h2></div>
+				                <div class="form-section-content">
+				                    <div nc-template="common/input/form-group-with-label" nc-label="Gift Wrap" nc-template-options-path="shopSettingForm/GiftWrap">
+				                        <select class="form-control" ng-model="formData.GiftWrap">
+				                            <option value='N'>Not Available</option>
+				                            <option value='Y'>Available</option>
+				                        </select>
+				                    </div>
+				                    <div nc-template="common/input/form-group-with-label" nc-label="Tax Invoice" nc-template-options-path="shopSettingForm/TaxInvoice">
+				                        <select class="form-control" ng-model="formData.TaxInvoice">
+				                            <option value='N'>Not Available</option>
+				                            <option value='Y'>Available</option>
+				                        </select>
+				                    </div>
+				                    <div nc-template="common/input/form-group-with-label" nc-label="Stock Alert" nc-template-options-path="shopSettingForm/StockAlert">
+				                        <input class="form-control" type="text" ng-model="formData.StockAlert" ng-pattern-restrict="^[0-9]*$" />
+				                    </div>
+
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				    <div class="row">
+				        <div class="col-xs-12">
+				            <p class="text-align-right"><span class="color-red"><i class="fa fa-asterisk"></i></span> - Required Field</p>
+				        </div>
+				    </div>
 				</div>
 			</div>
 		</div>
