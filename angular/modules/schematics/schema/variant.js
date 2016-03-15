@@ -111,8 +111,13 @@ module.exports =  {
       "type": "integer",
       "enum": [0, 1]
     },
-    "VideoLinks": {},
-    "SEO": {},
+    "VideoLinks": {
+      "type" : "array",
+      "items": {
+        "required" : ["Url"]
+      }
+    },
+    "SEO": require('./seo'),
     "LimitIndividualDay": {
       "type": "boolean"
     },
@@ -121,14 +126,18 @@ module.exports =  {
     },
     "FirstAttribute": require('./nthAttribute'),
     "SecondAttribute": require('./nthAttribute'),
-    "Display": {},
-    "Visibility": {},
+    "Display": {
+      "enum": ['GROUP', 'INDIVIDUAL']
+    },
+    "Visibility": {
+      "type": "boolean"
+    },
     "IsVariant": {
       "type": "boolean"
     }
   },
   "required": ["ShippingMethod", "ProductNameEn", "ProductNameTh",
-    "StockType", "DimensionUnit", "SEO", "VideoLinks", "Images",
-    "Installment", "PrepareDay", "LimitIndividualDay"
-  ]
+    "StockType", "DimensionUnit", "SEO", "VideoLinks", "Images", "GiftWrap",
+    "FirstAttribute", "SecondAttribute",
+    "Installment", "PrepareDay", "LimitIndividualDay", "Display", "IsVariant"]
 };

@@ -5,14 +5,10 @@ module.exports = {
     "ProductId": {
       "type": "integer"
     },
-    "MasterVariant": {
-      "$ref": "#/defs/ProductVariant"
-    },
+    "MasterVariant": require('./variant'),
     "Variants": {
       "type": "array",
-      "items": {
-        "$ref": "#/defs/ProductVariant"
-      }
+      "items": require('./variant')
     },
     "Status": {
       "enum": ["DF", "WA"]
@@ -60,9 +56,7 @@ module.exports = {
     },
     "MasterAttribute": {
       "type": "array",
-      "items": {
-        "$ref": "#/defs/Attribute"
-      }
+      "items": require('./attribute')
     },
     "RelatedProducts": {
       "type": "array",
@@ -106,8 +100,6 @@ module.exports = {
   },
   "required": ["GiftWrap"],
   "defs": {
-    "Attribute": require('./attribute'),
-    "ProductVariant": require('./variant'),
     "Image": {
       "properties": {
         "position": {

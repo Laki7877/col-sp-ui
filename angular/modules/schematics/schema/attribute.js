@@ -17,7 +17,14 @@ module.exports = {
     },
     "Required": {
       "type": "boolean"
+    },
+    "AttributeValues": {
+      "type": "array",
+      "items": require('./attributeValue')
     }
   },
-  "required": ["AttributeValueMaps", "AttributeId", "DataType", "Required", "AttributeNameEn"]
+  "oneOf": [
+    {"required": ["AttributeValues", "AttributeId", "DataType", "Required", "AttributeNameEn"]},
+    {"required": ["AttributeValueMaps", "AttributeId", "DataType", "Required", "AttributeNameEn"]}
+  ]
 };
