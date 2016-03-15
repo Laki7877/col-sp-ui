@@ -267,12 +267,12 @@
                     <div class="form-section-content">
 
                         <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.MasterVariant_Quantity" nc-template-options-path="addProductForm/MasterVariant_Quantity" nc-label="Inventory Amount">
-                            <input class="form-control" name="MasterVariant_Quantity" ng-pattern-restrict="^[0-9]*$" maxlength="10" ng-model="formData.MasterVariant.Quantity" />
+                            <input class="form-control" name="MasterVariant_Quantity" type="number" maxlength="10" ng-model="formData.MasterVariant.Quantity" />
                         </div>
 
 
                         <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.MasterVariant_SafetyStock" nc-template-options-path="addProductForm/MasterVariant_SafetyStock" nc-label="Safety Stock Amount">
-                            <input class="form-control" name="MasterVariant_SafetyStock" ng-pattern-restrict="^[0-9]*$" maxlength="10" ng-model="formData.MasterVariant.SafetyStock" />
+                            <input class="form-control" name="MasterVariant_SafetyStock" type="number" maxlength="10" ng-model="formData.MasterVariant.SafetyStock" />
                         </div>
 
                         <div nc-template="common/input/form-group-with-label" nc-template-form="addProductForm.MasterVariant_StockType"
@@ -303,7 +303,7 @@
                             </div>
 
                             <div nc-template="common/input/form-group-with-label" nc-label="Preparation Time" nc-template-form="addProductForm.PrepareDay" nc-template-options-path="addProductForm/PrepareDay">
-                                <input class="form-control width-field-normal" name="PrepareDay" ng-pattern-restrict="^[0-9]*$" ng-required="onPublishing" maxlength="5" ng-model="formData.PrepareDay" />
+                                <input class="form-control width-field-normal" name="PrepareDay" type="number" ng-required="onPublishing" maxlength="5" ng-model="formData.PrepareDay" />
                             </div>
 
                             <div class="form-group">

@@ -49,29 +49,28 @@
                                     }
                                     }">
 
-                            <ui-select on-select="variantFactorAdded($item, dataset.attributeOptions[jth])"
-                            on-remove="variantFactorRemoved($item, dataset.attributeOptions[jth])"
+                            <ui-select
                             ng-if="isListInput(dataset.attributeOptions[jth].Attribute.DataType)"
                             multiple ng-model="dataset.attributeOptions[jth].options">
-                                <ui-select-match placeholder="Select variant">
+                                <ui-select-match ui-lock-choice="$item._locked" placeholder="Select variant">
                                     {{ $item.AttributeValue.AttributeValueEn }}
                                 </ui-select-match>
                                 <ui-select-choices repeat="i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps | exclude: dataset.attributeOptions[jth].options : 'AttributeValue.AttributeValueId' ) | filter:$select.search">
                                     {{ i.AttributeValue.AttributeValueEn }}
                                 </ui-select-choices>
                             </ui-select>
-
-                            <ui-select on-select="variantFactorAdded($item, dataset.attributeOptions[jth])"
-                            on-remove="variantFactorRemoved($item, dataset.attributeOptions[jth])"
-                            ng-if="isFreeTextInput(dataset.attributeOptions[jth].Attribute.DataType)"
-                            multiple tagging tagging-label="" tagging-tokens=",|ENTER"
-                            name="attributeOptions{{jth}}" nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30"
-                            nc-tag-pattern="^[a-zA-Z0-9ก-๙\s\-]+$" ng-model="dataset.attributeOptions[jth].options">
-                                <ui-select-match placeholder="Input variant">
-                                    {{ $item }}
+                            <!--nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30"
+                            nc-tag-pattern="^[a-zA-Z0-9ก-๙\s\-]+$"  This breaks on-select -->
+                            <ui-select ng-if="isFreeTextInput(dataset.attributeOptions[jth].Attribute.DataType)"
+                            nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30"
+                            nc-tag-pattern="^[a-zA-Z0-9ก-๙\s\-]+$"
+                            multiple tagging="tagTransform" tagging-label="" tagging-tokens=",|ENTER"
+                            name="attributeOptions{{jth}}"  ng-model="dataset.attributeOptions[jth].options">
+                                <ui-select-match ui-lock-choice="$item._locked" placeholder="Input variant">
+                                    {{ $item.ValueEn }}
                                 </ui-select-match>
                                 <ui-select-choices repeat="i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps) | filter:$select.search">
-                                    {{ i }}
+                                    {{ i.ValueEn }}
                                 </ui-select-choices>
                             </ui-select>
 
@@ -182,7 +181,7 @@
                                             'conditions' : addProductForm['pair_Quantity' + $index].$error
                                         }
                                     }">
-                                    <input type="text" ng-model="pair.Quantity" maxlength="5" ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Quantity{{$index}}) }"
+                                    <input type="number" ng-model="pair.Quantity" maxlength="5" ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Quantity{{$index}}) }"
                                     ng-disabled='!pair.Visibility' ng-pattern="/^[0-9]+$/" name="pair_Quantity{{$index}}"
                                     class="form-control" />
                                 </td>

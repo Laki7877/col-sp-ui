@@ -348,20 +348,6 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
       var invFd = angular.copy(pap);
       //Load attribute set (TODO: we won't have to do this in future)
       invFd.AttributeSet = FullAttributeSet;
-      //Load full Brand (TODO: we won't have to do this in future)
-      // var BrandId = invFd.Brand.BrandId;
-      // invFd.Brand = {
-      //   BrandId: null,
-      //   BrandNameEn: 'Search brand by name or id..'
-      // };
-      //
-      // if(BrandId > 0){
-      //   Brand.getOne(BrandId).then(function(data) {
-      //     invFd.Brand = data;
-      //     delete invFd.Brand.$id;
-      //     invFd.Brand.id = BrandId;
-      //   });
-      // }
 
       //Find which variant is default
       try {
@@ -503,11 +489,15 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
           if (variant.FirstAttribute.AttributeValues.length > 0) {
             return {
               'AttributeValue': variant.FirstAttribute.AttributeValues[0],
-              'AttributeId': variant.FirstAttribute.AttributeId
+              'AttributeId': variant.FirstAttribute.AttributeId,
+              '_locked': true
             }
           }
 
-          return variant.FirstAttribute.ValueEn.trim();
+          return {
+            'ValueEn': variant.FirstAttribute.ValueEn.trim(),
+            '_locked': true
+          }
         })
 
         if (HasTwoAttr) {
@@ -515,29 +505,37 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             if (variant.SecondAttribute.AttributeValues.length > 0) {
               return {
                 'AttributeValue': variant.SecondAttribute.AttributeValues[0],
-                'AttributeId': variant.SecondAttribute.AttributeId
+                'AttributeId': variant.SecondAttribute.AttributeId,
+                '_locked': true
               }
             }
-            return variant.SecondAttribute.ValueEn.trim();
+            return {
+              'ValueEn': variant.SecondAttribute.ValueEn.trim(),
+              '_locked': true
+            }
           })
         }
 
         // Get updated map from invFd.AttributeSet
         // and load factorization array
         var uniqueFirst = util.uniqueSet(FirstArray, 'AttributeValue.AttributeValueId');
+        if(_.has(FirstArray[0], 'ValueEn')){
+          uniqueFirst = util.uniqueSet(FirstArray, 'ValueEn');
+        }
 
         transformed.attributeOptions = [{
           Attribute: FullAttributeSet.AttributeSetMaps[map0_index].Attribute,
-          options: uniqueFirst,
-          lockedOptions: angular.copy(uniqueFirst)
+          options: uniqueFirst
         }];
 
         if (HasTwoAttr) {
           var uniqueSecond = util.uniqueSet(SecondArray, 'AttributeValue.AttributeValueId');
+          if(_.has(SecondArray[0], 'ValueEn')){
+            uniqueSecond = util.uniqueSet(SecondArray, 'ValueEn');
+          }
           transformed.attributeOptions.push({
             Attribute: FullAttributeSet.AttributeSetMaps[map1_index].Attribute,
-            options: uniqueSecond,
-            lockedOptions: angular.copy(uniqueSecond)
+            options: uniqueSecond
           });
         } else {
           transformed.attributeOptions.push({

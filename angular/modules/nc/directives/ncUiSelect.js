@@ -10,7 +10,6 @@ angular.module('nc')
 
                 var $select = ctrl[1];
                 var $model = ctrl[0];
-
                 $select.onSelectCallback = function () {
                     var array = ($model.$modelValue || []);
                     var item = (array[array.length - 1] || "");
@@ -27,7 +26,7 @@ angular.module('nc')
                         _pass = false;
                     };
 
-                    if (tagPattern && !item.match(tagPattern)) {
+                    if (tagPattern && !item.ValueEn.match(tagPattern)) {
                         $model.$error.pattern = true;
                         _pass = false;
                     }

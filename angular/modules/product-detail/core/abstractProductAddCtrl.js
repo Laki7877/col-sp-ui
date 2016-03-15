@@ -140,11 +140,18 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.asStatus = Product.getStatus;
     $scope.refresher = {};
 
-    // var watchVariantFactorChanges = function() {
-    //   $scope.$watch('dataset.attributeOptions', function() {
-    //     $productAdd.generateVariants($scope.formData, $scope.dataset)
-    //   }, true);
-    // };
+    var watchVariantFactorChanges = function() {
+      $scope.$watch('dataset.attributeOptions', function() {
+        $productAdd.generateVariants($scope.formData, $scope.dataset)
+      }, true);
+    };
+
+    $scope.tagTransform = function (newTag) {
+      return {
+        ValueEn: newTag
+      }
+    };
+
 
     // CK editor options
     $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
@@ -354,7 +361,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           if ($scope.addProductForm.SalePrice.$invalid) {
             errorList.push('Sale Price');
           }
-          errorList.push('Master Attributes')
 
           $scope.alert.error('Unable to save. Please make sure that ' + errorList.join(' and ') + ' are filled correctly.')
         } else if (Status == 'WA' && requiredMissing) {
@@ -396,25 +402,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       });
 
     }
-
-    $scope.variantFactorRemoved = function(item, aopt){
-      console.log(item, aopt);
-      var f = _.find(aopt.lockedOptions, function(o) {
-        return (_.get(o, 'AttributeValue.AttributeValueId') || o) == (_.get(o, 'AttributeValue.AttributeValueId') || item)
-      });
-      if(f){
-        //restore te item
-        aopt.options.push(item);
-        return;
-      }
-
-      $productAdd.generateVariants($scope.formData, $scope.dataset);
-    }
-
-    $scope.variantFactorAdded = function(item,aopt){
-      $productAdd.generateVariants($scope.formData, $scope.dataset);
-    }
-
     $scope.init = function(viewBag) {
       if (!angular.isObject(viewBag)) throw new KnownException('View bag is corrupted');
 
@@ -441,7 +428,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 $scope.variantPtr = $scope.formData.MasterVariant;
                 $scope.formData.ProductId = Number(productId);
                 $scope.pageState.reset();
-                // watchVariantFactorChanges();
+                watchVariantFactorChanges();
 
                 LocalCategoryService.getAllByShopId($scope.formData.ShopId).then(function(data) {
                   $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data);
@@ -463,7 +450,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         $productAdd.fill(checkSchema, catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb,
           $scope.controlFlags, $scope.variationFactorIndices).then(function() {
           $scope.pageState.reset();
-          // watchVariantFactorChanges();
+          watchVariantFactorChanges();
           // ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
         })
       } else {

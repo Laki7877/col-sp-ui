@@ -53,7 +53,7 @@ factory('$productAdd', function(Product, AttributeSet, ImageService, GlobalCateg
         AttributeValues: (!AVId ? [] : [{
           AttributeValueId: AVId
         }]),
-        ValueEn: A
+        ValueEn: A.ValueEn || A
       };
 
       var secondAttribute = {
@@ -61,7 +61,7 @@ factory('$productAdd', function(Product, AttributeSet, ImageService, GlobalCateg
         AttributeValues: (!BVId ? [] : [{
           AttributeValueId: BVId
         }]),
-        ValueEn: B
+        ValueEn: B.ValueEn || B
       };
 
       kpair.FirstAttribute = firstAttribute;
