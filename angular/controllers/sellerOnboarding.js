@@ -83,6 +83,10 @@ module.exports = function($scope, $rootScope, Onboarding, $log, $window){
     	$window.location.href = 'shops/appearance';
     }
 
+		$scope.redirectToUserAccounts = function() {
+			$window.location.href = '/accounts';
+		}
+
     //Init
     $scope.load();
 };

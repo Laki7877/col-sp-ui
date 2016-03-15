@@ -25,7 +25,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
             "button_text" => "Check Profile",
             "image_name" => "icon-onboard-setting",
             "task_display" => "ng-hide='Completed[1]'",
-            "type" => "redirectShopSetting"]) ?> 
+            "type" => "redirectShopSetting"]) ?>
 
         <? $this->insert('components/forms/seller_task',
           ["field_header" => "{{productFieldContent.title}}",
@@ -51,9 +51,19 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "disble_status" => "disabled",
            "type" => "launch"]) ?>
 
-        <div class="complete_line home_task_space" ng-show='checkIfHaveCompleted'>
+        <div class="complete_line home_task_space">
+          <!-- ng-show='checkIfHaveCompleted' -->
           <span class="complte_line_text">Completed</span>
         </div>
+
+        <? $this->insert('components/forms/seller_task',
+          ["field_header" => "Successfully, set up your account",
+           "field_text" => "We have set up the account for you",
+           "button_text" => "View Account",
+           "image_name" => "icon-onboard-account",
+           "home_task_container_class" => "background_blue",
+           "type" => "redirectUserAccounts"]) ?>
+
 
         <? $this->insert('components/forms/seller_task',
           ["field_header" => "Change password",
