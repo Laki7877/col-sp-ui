@@ -1,7 +1,7 @@
 <?= $this->layout('layouts/page-with-sidebar', ['title' => 'Administration System']) ?>
 
 <?php $this->start('page-body') ?>
-	<div ng-controller="">
+	<div ng-controller="SellerShopAppearanceCtrl">
 		<div ng-show="loading" nc-loading="Loading Shop Settings.."></div>
 		<nc-alert nc-model="alert"></nc-alert>
         <form class="ah-form sticky-mainform-action" name="form" ng-submit="save()" ng-show="!loading">
@@ -23,14 +23,14 @@
 												<div class="radio multiple-radio">
 													<label class="label_width" ng-repeat="theme in formData.Themes">
 														<input type="radio" name="theme{{$index+1}}">Theme {{$index+1}}
-														<img class="image_radion_thumbnail" ng-src="{{ theme.Image.url | /assets/img/200x112.png}}" alt="Can't open image" >
+														<img class="image_radion_thumbnail" ng-src="{{ theme.Image.url || '/assets/img/200x112.png'}}" alt="Can't open image" >
 													</label> 
 												</div>
 											</div>
 										</div>
 									</div>
 					            </div>          
-					            <nc-image-banner name="Banner" nc-model="formData.Banner" title="Banner Upload" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner> 
+          						<nc-image-banner name="Banner" nc-model="formData.Banner" title="Banner Upload" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner> 
 					            <div class="form-section">
 					                <div class="form-section-header">
 					                    <h2>Layouts</h2>
@@ -60,13 +60,11 @@
 					                            <input name="VideoLink1" ng-model="formData.VideoLink1"class="form-control" type="text" />
 					                        </div>
 					                        <div nc-template="common/input/form-group-with-label" 
-					                        	nc-label="Description" 
-					                        	nc-template-options-path="addShopAppearanceForm/Description">
+					                        	nc-label="Description">
 					                            <textarea class="form-control" rows="4" type="text" ng-model="formData.Description1"></textarea>
 					                        </div>
 					                       	<div nc-template="common/input/form-group-with-label" 
 								                nc-template-form="form.Thumbnail1"
-								                nc-template-options-path="addBrandForm/Thumbnail1"
 								                nc-label="Thumbnail Image">
 								                  <button 
 								                  type="button"
@@ -76,7 +74,7 @@
 								                  ngf-select="uploadLogo($file)"
 								                  ng-model="formData.thumbnail1"
 								                  ng-class="{'has-error-btn' : isInvalid(form.Thumbnail1)}"
-								                  required>Choose File</button>
+								                  >Choose File</button>
 								              </div>
 								              <div ng-show="formData.Thumbnail1"
 								                nc-template="common/input/form-group-with-label" 
@@ -96,13 +94,11 @@
 					                            <input name="VideoLink2" ng-model="formData.VideoLink2"class="form-control" type="text" />
 					                        </div>
 					                        <div nc-template="common/input/form-group-with-label" 
-					                        	nc-label="Description" 
-					                        	nc-template-options-path="addShopAppearanceForm/Description">
+					                        	nc-label="Description">
 					                            <textarea class="form-control" rows="4" type="text" ng-model="formData.Description2"></textarea>
 					                        </div>
 					                       	<div nc-template="common/input/form-group-with-label" 
 								                nc-template-form="form.Thumbnail2"
-								                nc-template-options-path="addBrandForm/Thumbnail2"
 								                nc-label="Thumbnail Image">
 								                  <button 
 								                  type="button"
@@ -112,7 +108,7 @@
 								                  ngf-select="uploadLogo($file)"
 								                  ng-model="formData.thumbnail2"
 								                  ng-class="{'has-error-btn' : isInvalid(form.Thumbnail2)}"
-								                  required>Choose File</button>
+								                  >Choose File</button>
 								              </div>
 								              <div ng-show="formData.Thumbnail2"
 								                nc-template="common/input/form-group-with-label" 

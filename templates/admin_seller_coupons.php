@@ -1,10 +1,8 @@
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System']) ?>
 
 <?php $this->start('page-body') ?>
-  <div ng-controller="AdminGlobalCouponCtrl">
-    <nc-page-title nc-title="Global Coupons">
-    	  <a ng-href="/admin/coupons/global/create" class="btn ng-scope btn-blue btn-width-xxl">Create Coupon</a>
-    </nc-page-title>
+  <div ng-controller="AdminSellerCouponCtrl">
+    <nc-page-title nc-title="All Seller Coupons"></nc-page-title>
     <div class="row search-section-wrapper">
         <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Coupon Code'"></nc-search>
     </div>
@@ -24,14 +22,18 @@
   		        </thead>
   		        <tbody>
   		            <tr ng-repeat="row in list.data">
-  		                <td class="column-text-ellipsis width_200" nc-link="/admin/coupons/global/{{row.CouponId}}">
+  		                <td class="column-text-ellipsis width_200" nc-link="/admin/coupons/seller/{{row.CouponId}}">
   		                    {{row.CouponCode}}
   		                </td>
   		                <td>{{row.CouponName}}</td>
   		                <td class="width_120">{{row.Remaining | number: 2 }}</td>
-  		                <td class="width_150">{{ row.StartDate | dateTh }}</td>
+  		                <td class="width_150">
+  		                   {{ row.StartDate | dateTh }}
+  		                </td>
   		                <td class="width_150">{{ row.ExpireDate | dateTh }}</td>
-  		                <td class="width_100"> {{ row.Status | mapDropdown: statusDropdown }}</td>
+  		                <td class="width_100">
+  		                    {{ row.Status }}
+  		                </td>
                       <td class="width_100"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
   		            </tr>
   		        </tbody>

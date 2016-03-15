@@ -62,6 +62,7 @@
               </div>
             </div>
           </div>
+          <!-- Logo -->
           <div class="form-section">
             <div class="form-section-header"><h2>Logo</h2></div>
             <div class="form-section-content">
@@ -90,6 +91,7 @@
               </div>
             </div>
           </div>
+          <!-- Banner -->
           <nc-image-banner name="BrandBannerEn" nc-model="formData.BrandBannerEn" title="Banner Upload (English)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner> 
           <nc-image-banner name="BrandBannerTh" nc-model="formData.BrandBannerTh" title="Banner Upload (ไทย)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner> 
           <!-- Description -->
