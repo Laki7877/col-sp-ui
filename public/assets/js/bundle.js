@@ -7843,23 +7843,23 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     //Initialize Pointers
     $scope.variantPtr = $scope.formData.MasterVariant;
 
-    var checkSchema = function(data, schemaName, code){
+    var checkSchema = function(data, schemaName, code) {
       //Perform schema check
       var schema = JSONCache.get(schemaName || 'productStages');
-      if(!code) code = "(RX)";
+      if (!code) code = "(RX)";
       var validation = skeemas.validate(data, schema);
       console.log("Schema validation result: ", validation);
-      if(!validation.valid){
+      if (!validation.valid) {
         $scope.devAlert.error('<strong>Warning ' + code + '</strong> Automated API structure pre-check procedure failed. ' +
-        'Format does not comply with the <strong>Ahancer Product Add Exchange Protocol (A-PAEP)</strong> V3 Rev C. ' +
-        'For more detail, look for <i>schema validation result</i> in your js console.');
+          'Format does not comply with the <strong>Ahancer Product Add Exchange Protocol (A-PAEP)</strong> V3 Rev C. ' +
+          'For more detail, look for <i>schema validation result</i> in your js console.');
       }
     };
 
     //Open modal for cat selector
     $scope.openCategorySelectorModal = function(ith, key, title) {
-      if(!key){
-        key= 'GlobalCategories';
+      if (!key) {
+        key = 'GlobalCategories';
       }
 
       var modalInstance = $uibModal.open({
@@ -7886,13 +7886,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           tree: function() {
             return $scope.dataset[key];
           },
-          disable: function(){
-            return function(m){
-              if(m.nodes.length == 0) return false;
+          disable: function() {
+            return function(m) {
+              if (m.nodes.length == 0) return false;
               return true;
             }
           },
-          exclude: function(){
+          exclude: function() {
             console.log('will exclude', $scope.formData[key])
             return $scope.formData[key];
           }
@@ -7919,11 +7919,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.asStatus = Product.getStatus;
     $scope.refresher = {};
 
-    var watchVariantFactorChanges = function() {
-      $scope.$watch('dataset.attributeOptions', function() {
-        $productAdd.generateVariants($scope.formData, $scope.dataset)
-      }, true);
-    };
+    // var watchVariantFactorChanges = function() {
+    //   $scope.$watch('dataset.attributeOptions', function() {
+    //     $productAdd.generateVariants($scope.formData, $scope.dataset)
+    //   }, true);
+    // };
 
     // CK editor options
     $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
@@ -8108,7 +8108,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
 
       $scope.onPublishing = (Status == 'WA');
-        // On click validation
+      // On click validation
       var validateMat = manualValidate(Status);
       if (validateMat.length > 0) {
         $scope.pageState.reset();
@@ -8176,7 +8176,23 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     }
 
+    $scope.variantFactorRemoved = function(item, aopt){
+      console.log(item, aopt);
+      var f = _.find(aopt.lockedOptions, function(o) {
+        return (_.get(o, 'AttributeValue.AttributeValueId') || o) == (_.get(o, 'AttributeValue.AttributeValueId') || item)
+      });
+      if(f){
+        //restore te item
+        aopt.options.push(item);
+        return;
+      }
 
+      $productAdd.generateVariants($scope.formData, $scope.dataset);
+    }
+
+    $scope.variantFactorAdded = function(item,aopt){
+      $productAdd.generateVariants($scope.formData, $scope.dataset);
+    }
 
     $scope.init = function(viewBag) {
       if (!angular.isObject(viewBag)) throw new KnownException('View bag is corrupted');
@@ -8195,26 +8211,23 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             $scope.overview = angular.copy(inverseFormData);
             var catId = Number(inverseFormData.MainGlobalCategory.CategoryId);
 
-
-
             //Fill the page with data
             $productAdd.fill(checkSchema, catId,
-              $scope.pageState, $scope.dataset,
-              $scope.formData, $scope.breadcrumb, $scope.controlFlags,
-              $scope.variationFactorIndices, inverseFormData)
-							.then(function() {
-								$scope.variantPtr = $scope.formData.MasterVariant;
-	              $scope.formData.ProductId = Number(productId);
-	              $scope.pageState.reset();
-	              watchVariantFactorChanges();
+                $scope.pageState, $scope.dataset,
+                $scope.formData, $scope.breadcrumb, $scope.controlFlags,
+                $scope.variationFactorIndices, inverseFormData)
+              .then(function() {
+                $scope.variantPtr = $scope.formData.MasterVariant;
+                $scope.formData.ProductId = Number(productId);
+                $scope.pageState.reset();
+                // watchVariantFactorChanges();
 
-	              LocalCategoryService.getAllByShopId($scope.formData.ShopId).then(function(data) {
-	                $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data);
-	              });
+                LocalCategoryService.getAllByShopId($scope.formData.ShopId).then(function(data) {
+                  $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data);
+                });
 
                 checkSchema(inverseFormData);
-
-            });
+              });
 
           }, function(error) {
             throw new KnownException('Unable to fetch product with id ' + productId);
@@ -8229,17 +8242,16 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         $productAdd.fill(checkSchema, catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb,
           $scope.controlFlags, $scope.variationFactorIndices).then(function() {
           $scope.pageState.reset();
-          watchVariantFactorChanges();
+          // watchVariantFactorChanges();
           // ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
         })
       } else {
         throw new KnownException('Invalid mode, viewBag garbage')
       }
 
-
     }
 
-    var tabPage = {}
+    var tabPage = {};
 
     tabPage.images = {
       angular: function() {
@@ -8376,11 +8388,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.protoAttributeOptions = {
       0: {
         Attribute: false,
-        options: []
+        options: [],
+        lockedOptions: []
       },
       1: {
         Attribute: false,
-        options: []
+        options: [],
+        lockedOptions: []
       }
     };
 
@@ -8587,6 +8601,7 @@ factory('$productAdd', ["Product", "AttributeSet", "ImageService", "GlobalCatego
       kpair.Visibility = true;
       kpair.SEO.ProductUrlKeyEn = "";
       kpair.Sku = "";
+      kpair.Pid = null;
 
       if (kpair.text in vHashSet) {
         //Replace with value from vHashSet
@@ -8868,7 +8883,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
     "\n" +
     "                                    }\r" +
     "\n" +
-    "                                    }\"><ui-select ng-if=isListInput(dataset.attributeOptions[jth].Attribute.DataType) multiple ng-model=dataset.attributeOptions[jth].options><ui-select-match placeholder=\"Select variant\">{{ $item.AttributeValue.AttributeValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps | exclude: dataset.attributeOptions[jth].options : 'AttributeValue.AttributeValueId' ) | filter:$select.search\">{{ i.AttributeValue.AttributeValueEn }}</ui-select-choices></ui-select><ui-select ng-if=isFreeTextInput(dataset.attributeOptions[jth].Attribute.DataType) multiple tagging tagging-label=\"\" tagging-tokens=,|ENTER name=attributeOptions{{jth}} nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 nc-tag-pattern=^[a-zA-Z0-9ก-๙\\s\\-]+$ ng-model=dataset.attributeOptions[jth].options><ui-select-match placeholder=\"Input variant\">{{ $item }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps) | filter:$select.search\">{{ i }}</ui-select-choices></ui-select><input ng-if=!dataset.attributeOptions[jth].Attribute.DataType disabled class=\"form-control\"></div><a class=\"like-text form-text\" ng-click=variationFactorIndices.pushSecond() ng-if=\"dataset.attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1\"><i class=\"fa fa-plus-circle color-theme\"></i> Add another option</a> <a class=\"like-text form-text\" ng-click=variationFactorIndices.popSecond() ng-if=\"variationFactorIndices.length() == 2 && jth == 1\"><i class=\"fa fa-trash color-theme icon-size-20\"></i></a></div><div class=form-group ng-show=\"formData.Variants.length > 0\"><div class=width-label><label class=control-label>Default Variant</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-model=formData.DefaultVariant class=form-control ng-options=\"i as i.text for i in formData.Variants track by i.text\" required></select></div></div></div></div></div><div class=form-section ng-if=\"formData.AttributeSet && formData.Variants.length > 0\" ng-show=\"controlFlags.variation == 'enable'\"><div class=form-section-header>Variant ({{ formData.Variants.length }})</div><div class=\"form-section-content padding-left-30 padding-right-30\"><table class=\"table ah-table variation-table\"><thead><tr><th class=column-variant>Variant</th><th ng-if=\"formData.Variants.length > 0 && formData.Variants[0].Pid\">PID</th><th class=column-sku>SKU</th><th class=column-sale-price><label class=required>Sale Price</label></th><th class=column-price>Original Price</th><th class=column-inventory>Inventory</th><th class=\"column-detail text-center\">Detail</th><th class=column-visibility>Visibility</th></tr></thead><tbody><tr ng-repeat=\"pair in formData.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td ng-if=\"formData.Variants.length > 0 && formData.Variants[0].Pid\">{{pair.Pid }}</td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
+    "                                    }\"><ui-select on-select=\"variantFactorAdded($item, dataset.attributeOptions[jth])\" on-remove=\"variantFactorRemoved($item, dataset.attributeOptions[jth])\" ng-if=isListInput(dataset.attributeOptions[jth].Attribute.DataType) multiple ng-model=dataset.attributeOptions[jth].options><ui-select-match placeholder=\"Select variant\">{{ $item.AttributeValue.AttributeValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps | exclude: dataset.attributeOptions[jth].options : 'AttributeValue.AttributeValueId' ) | filter:$select.search\">{{ i.AttributeValue.AttributeValueEn }}</ui-select-choices></ui-select><ui-select on-select=\"variantFactorAdded($item, dataset.attributeOptions[jth])\" on-remove=\"variantFactorRemoved($item, dataset.attributeOptions[jth])\" ng-if=isFreeTextInput(dataset.attributeOptions[jth].Attribute.DataType) multiple tagging tagging-label=\"\" tagging-tokens=,|ENTER name=attributeOptions{{jth}} nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 nc-tag-pattern=^[a-zA-Z0-9ก-๙\\s\\-]+$ ng-model=dataset.attributeOptions[jth].options><ui-select-match placeholder=\"Input variant\">{{ $item }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps) | filter:$select.search\">{{ i }}</ui-select-choices></ui-select><input ng-if=!dataset.attributeOptions[jth].Attribute.DataType disabled class=\"form-control\"></div><a class=\"like-text form-text\" ng-click=variationFactorIndices.pushSecond() ng-if=\"dataset.attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1\"><i class=\"fa fa-plus-circle color-theme\"></i> Add another option</a> <a class=\"like-text form-text\" ng-click=variationFactorIndices.popSecond() ng-if=\"variationFactorIndices.length() == 2 && jth == 1\"><i class=\"fa fa-trash color-theme icon-size-20\"></i></a></div><div class=form-group ng-show=\"formData.Variants.length > 0\"><div class=width-label><label class=control-label>Default Variant</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-model=formData.DefaultVariant class=form-control ng-options=\"i as i.text for i in formData.Variants track by i.text\" required></select></div></div></div></div></div><div class=form-section ng-if=\"formData.AttributeSet && formData.Variants.length > 0\" ng-show=\"controlFlags.variation == 'enable'\"><div class=form-section-header>Variant ({{ formData.Variants.length }})</div><div class=\"form-section-content padding-left-30 padding-right-30\"><table class=\"table ah-table variation-table\"><thead><tr><th class=column-variant>Variant</th><th ng-if=\"formData.Variants.length > 0 && formData.Variants[0].Pid\">PID</th><th class=column-sku>SKU</th><th class=column-sale-price><label class=required>Sale Price</label></th><th class=column-price>Original Price</th><th class=column-inventory>Inventory</th><th class=\"column-detail text-center\">Detail</th><th class=column-visibility>Visibility</th></tr></thead><tbody><tr ng-repeat=\"pair in formData.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td ng-if=\"formData.Variants.length > 0 && formData.Variants[0].Pid\">{{pair.Pid }}</td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
     "\n" +
     "                                        'error' : {\r" +
     "\n" +
@@ -12010,13 +12025,13 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         // Generate attributeOptions
         var map0_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
           return a.Attribute.AttributeId
-        }).indexOf(invFd.Variants[0].FirstAttribute.AttributeId)
+        }).indexOf(invFd.Variants[0].FirstAttribute.AttributeId);
 
         var map1_index, SecondArray
         if (HasTwoAttr) {
           map1_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
             return a.Attribute.AttributeId
-          }).indexOf(invFd.Variants[0].SecondAttribute.AttributeId)
+          }).indexOf(invFd.Variants[0].SecondAttribute.AttributeId);
         }
 
         // Find array of values to populate factors array that can be used to reproduce
@@ -12029,7 +12044,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             }
           }
 
-          return variant.FirstAttribute.ValueEn.trim()
+          return variant.FirstAttribute.ValueEn.trim();
         })
 
         if (HasTwoAttr) {
@@ -12040,31 +12055,32 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                 'AttributeId': variant.SecondAttribute.AttributeId
               }
             }
-            return variant.SecondAttribute.ValueEn.trim()
+            return variant.SecondAttribute.ValueEn.trim();
           })
         }
 
         // Get updated map from invFd.AttributeSet
         // and load factorization array
-        var uniqueFirst = util.uniqueSet(FirstArray, 'AttributeValue.AttributeValueId')
-        console.log('ufirst', uniqueFirst)
+        var uniqueFirst = util.uniqueSet(FirstArray, 'AttributeValue.AttributeValueId');
+
         transformed.attributeOptions = [{
           Attribute: FullAttributeSet.AttributeSetMaps[map0_index].Attribute,
-          options: uniqueFirst
-        }]
+          options: uniqueFirst,
+          lockedOptions: angular.copy(uniqueFirst)
+        }];
 
         if (HasTwoAttr) {
-          var uniqueSecond = util.uniqueSet(SecondArray, 'AttributeValue.AttributeValueId')
-          console.log(uniqueSecond)
+          var uniqueSecond = util.uniqueSet(SecondArray, 'AttributeValue.AttributeValueId');
           transformed.attributeOptions.push({
             Attribute: FullAttributeSet.AttributeSetMaps[map1_index].Attribute,
-            options: uniqueSecond
-          })
+            options: uniqueSecond,
+            lockedOptions: angular.copy(uniqueSecond)
+          });
         } else {
           transformed.attributeOptions.push({
             Attribute: null,
             options: []
-          })
+          });
         }
 
       }

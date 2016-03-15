@@ -488,13 +488,13 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         // Generate attributeOptions
         var map0_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
           return a.Attribute.AttributeId
-        }).indexOf(invFd.Variants[0].FirstAttribute.AttributeId)
+        }).indexOf(invFd.Variants[0].FirstAttribute.AttributeId);
 
         var map1_index, SecondArray
         if (HasTwoAttr) {
           map1_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
             return a.Attribute.AttributeId
-          }).indexOf(invFd.Variants[0].SecondAttribute.AttributeId)
+          }).indexOf(invFd.Variants[0].SecondAttribute.AttributeId);
         }
 
         // Find array of values to populate factors array that can be used to reproduce
@@ -507,7 +507,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
             }
           }
 
-          return variant.FirstAttribute.ValueEn.trim()
+          return variant.FirstAttribute.ValueEn.trim();
         })
 
         if (HasTwoAttr) {
@@ -518,31 +518,32 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
                 'AttributeId': variant.SecondAttribute.AttributeId
               }
             }
-            return variant.SecondAttribute.ValueEn.trim()
+            return variant.SecondAttribute.ValueEn.trim();
           })
         }
 
         // Get updated map from invFd.AttributeSet
         // and load factorization array
-        var uniqueFirst = util.uniqueSet(FirstArray, 'AttributeValue.AttributeValueId')
-        console.log('ufirst', uniqueFirst)
+        var uniqueFirst = util.uniqueSet(FirstArray, 'AttributeValue.AttributeValueId');
+
         transformed.attributeOptions = [{
           Attribute: FullAttributeSet.AttributeSetMaps[map0_index].Attribute,
-          options: uniqueFirst
-        }]
+          options: uniqueFirst,
+          lockedOptions: angular.copy(uniqueFirst)
+        }];
 
         if (HasTwoAttr) {
-          var uniqueSecond = util.uniqueSet(SecondArray, 'AttributeValue.AttributeValueId')
-          console.log(uniqueSecond)
+          var uniqueSecond = util.uniqueSet(SecondArray, 'AttributeValue.AttributeValueId');
           transformed.attributeOptions.push({
             Attribute: FullAttributeSet.AttributeSetMaps[map1_index].Attribute,
-            options: uniqueSecond
-          })
+            options: uniqueSecond,
+            lockedOptions: angular.copy(uniqueSecond)
+          });
         } else {
           transformed.attributeOptions.push({
             Attribute: null,
             options: []
-          })
+          });
         }
 
       }

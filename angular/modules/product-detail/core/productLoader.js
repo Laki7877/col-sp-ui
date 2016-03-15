@@ -71,6 +71,7 @@ factory('$productAdd', function(Product, AttributeSet, ImageService, GlobalCateg
       kpair.Visibility = true;
       kpair.SEO.ProductUrlKeyEn = "";
       kpair.Sku = "";
+      kpair.Pid = null;
 
       if (kpair.text in vHashSet) {
         //Replace with value from vHashSet

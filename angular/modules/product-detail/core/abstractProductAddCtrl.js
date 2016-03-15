@@ -64,23 +64,23 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     //Initialize Pointers
     $scope.variantPtr = $scope.formData.MasterVariant;
 
-    var checkSchema = function(data, schemaName, code){
+    var checkSchema = function(data, schemaName, code) {
       //Perform schema check
       var schema = JSONCache.get(schemaName || 'productStages');
-      if(!code) code = "(RX)";
+      if (!code) code = "(RX)";
       var validation = skeemas.validate(data, schema);
       console.log("Schema validation result: ", validation);
-      if(!validation.valid){
+      if (!validation.valid) {
         $scope.devAlert.error('<strong>Warning ' + code + '</strong> Automated API structure pre-check procedure failed. ' +
-        'Format does not comply with the <strong>Ahancer Product Add Exchange Protocol (A-PAEP)</strong> V3 Rev C. ' +
-        'For more detail, look for <i>schema validation result</i> in your js console.');
+          'Format does not comply with the <strong>Ahancer Product Add Exchange Protocol (A-PAEP)</strong> V3 Rev C. ' +
+          'For more detail, look for <i>schema validation result</i> in your js console.');
       }
     };
 
     //Open modal for cat selector
     $scope.openCategorySelectorModal = function(ith, key, title) {
-      if(!key){
-        key= 'GlobalCategories';
+      if (!key) {
+        key = 'GlobalCategories';
       }
 
       var modalInstance = $uibModal.open({
@@ -107,13 +107,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           tree: function() {
             return $scope.dataset[key];
           },
-          disable: function(){
-            return function(m){
-              if(m.nodes.length == 0) return false;
+          disable: function() {
+            return function(m) {
+              if (m.nodes.length == 0) return false;
               return true;
             }
           },
-          exclude: function(){
+          exclude: function() {
             console.log('will exclude', $scope.formData[key])
             return $scope.formData[key];
           }
@@ -140,11 +140,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.asStatus = Product.getStatus;
     $scope.refresher = {};
 
-    var watchVariantFactorChanges = function() {
-      $scope.$watch('dataset.attributeOptions', function() {
-        $productAdd.generateVariants($scope.formData, $scope.dataset)
-      }, true);
-    };
+    // var watchVariantFactorChanges = function() {
+    //   $scope.$watch('dataset.attributeOptions', function() {
+    //     $productAdd.generateVariants($scope.formData, $scope.dataset)
+    //   }, true);
+    // };
 
     // CK editor options
     $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
@@ -329,7 +329,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
 
       $scope.onPublishing = (Status == 'WA');
-        // On click validation
+      // On click validation
       var validateMat = manualValidate(Status);
       if (validateMat.length > 0) {
         $scope.pageState.reset();
@@ -397,7 +397,23 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     }
 
+    $scope.variantFactorRemoved = function(item, aopt){
+      console.log(item, aopt);
+      var f = _.find(aopt.lockedOptions, function(o) {
+        return (_.get(o, 'AttributeValue.AttributeValueId') || o) == (_.get(o, 'AttributeValue.AttributeValueId') || item)
+      });
+      if(f){
+        //restore te item
+        aopt.options.push(item);
+        return;
+      }
 
+      $productAdd.generateVariants($scope.formData, $scope.dataset);
+    }
+
+    $scope.variantFactorAdded = function(item,aopt){
+      $productAdd.generateVariants($scope.formData, $scope.dataset);
+    }
 
     $scope.init = function(viewBag) {
       if (!angular.isObject(viewBag)) throw new KnownException('View bag is corrupted');
@@ -416,26 +432,23 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             $scope.overview = angular.copy(inverseFormData);
             var catId = Number(inverseFormData.MainGlobalCategory.CategoryId);
 
-
-
             //Fill the page with data
             $productAdd.fill(checkSchema, catId,
-              $scope.pageState, $scope.dataset,
-              $scope.formData, $scope.breadcrumb, $scope.controlFlags,
-              $scope.variationFactorIndices, inverseFormData)
-							.then(function() {
-								$scope.variantPtr = $scope.formData.MasterVariant;
-	              $scope.formData.ProductId = Number(productId);
-	              $scope.pageState.reset();
-	              watchVariantFactorChanges();
+                $scope.pageState, $scope.dataset,
+                $scope.formData, $scope.breadcrumb, $scope.controlFlags,
+                $scope.variationFactorIndices, inverseFormData)
+              .then(function() {
+                $scope.variantPtr = $scope.formData.MasterVariant;
+                $scope.formData.ProductId = Number(productId);
+                $scope.pageState.reset();
+                // watchVariantFactorChanges();
 
-	              LocalCategoryService.getAllByShopId($scope.formData.ShopId).then(function(data) {
-	                $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data);
-	              });
+                LocalCategoryService.getAllByShopId($scope.formData.ShopId).then(function(data) {
+                  $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data);
+                });
 
                 checkSchema(inverseFormData);
-
-            });
+              });
 
           }, function(error) {
             throw new KnownException('Unable to fetch product with id ' + productId);
@@ -450,17 +463,16 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         $productAdd.fill(checkSchema, catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb,
           $scope.controlFlags, $scope.variationFactorIndices).then(function() {
           $scope.pageState.reset();
-          watchVariantFactorChanges();
+          // watchVariantFactorChanges();
           // ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
         })
       } else {
         throw new KnownException('Invalid mode, viewBag garbage')
       }
 
-
     }
 
-    var tabPage = {}
+    var tabPage = {};
 
     tabPage.images = {
       angular: function() {
@@ -597,11 +609,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.protoAttributeOptions = {
       0: {
         Attribute: false,
-        options: []
+        options: [],
+        lockedOptions: []
       },
       1: {
         Attribute: false,
-        options: []
+        options: [],
+        lockedOptions: []
       }
     };
 
