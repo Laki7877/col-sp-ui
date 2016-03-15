@@ -14,6 +14,26 @@ module.exports = {
 	TYPEAHEAD_IMPORT_GUIDELINE_LIMIT: 8,
 	TYPEAHEAD_DELAY: 150,
 	DROPDOWN: {
+		COUPON_CRITERIA: [
+			{
+				name: 'No filter',
+				value: 'No filter'
+			},
+			{
+				name: 'Total price is more than..',
+				value: 'Total price is more than'
+			}
+		],
+		COUPON_GLOBAL_FILTER: [
+			{
+				name: 'No Filter',
+				value: 'No filter'
+			},
+			{
+				name: 'Global Category',
+				value: 'Global Category'
+			}
+		],
 		SHOP_GROUP_DROPDOWN: [
 			{
 				name: 'All',

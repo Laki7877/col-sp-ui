@@ -20,8 +20,6 @@ angular.module('nc')
                     return templateHTML;
                 },
                 link: function (scope, element, attrs, ctrl, transclude) {
-
-
                     scope.isInvalid = function(form) {
                         if(angular.isDefined(form) &&
                             angular.isDefined(form.$invalid) &&

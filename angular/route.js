@@ -61,7 +61,7 @@ var seller = {
 		'Dashboard': '/dashboard'
 	},
 	'Orders|fa-inbox': {
-
+		
 	},
 	'Product|fa-tag': {
 	  	'View': '/products',
@@ -112,7 +112,7 @@ var admin = {
 		'Admin Roles': ['/admin/roles', '/admin/roles/add']
 	},
 	'Promotion|fa-bookmark': {
-		'Global Coupons': '/admin/coupons/admin',
+		'Global Coupons': '/admin/coupons/global',
 		'Seller Coupons': '/admin/coupons/seller'
 	},
 	'Reports|fa-line-chart': {

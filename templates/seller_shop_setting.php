@@ -5,7 +5,7 @@
 			  <div ng-show="loading" nc-loading="Loading Shop Settings.."></div>
 				<nc-alert nc-model="alert"></nc-alert>
         <form class="ah-form sticky-mainform-action" name="form" ng-submit="save()" ng-show="!loading">
-            <nc-page-title nc-title="Shop Profile Setting">
+            <nc-page-title nc-title="Shop Profile">
                 <button type="button" class="btn btn-white btn-width-xl margin-right-10">Preview</button>
                 <button class="btn btn-blue btn-width-xl">Save</button>
             </nc-page-title>
@@ -19,21 +19,20 @@
 						                <div class="form-section-header">
 						                    <h2>Shop Information</h2></div>
 						                <div class="form-section-content">
-						                    <!-- Shop Status -->
-						                    <div ng-template="common/input/dropdown" ng-template-options="{
-						                      'label' : 'Shop Status',
-						                      'labelClass' : 'required'
-						                      }">
-						                        <ui-select ng-model="formData.Status" search-enabled="false" required>
-						                            <ui-select-match placeholder="- Select Shop Status -">
-						                                <span ng-bind="$select.selected.name"></span>
-						                            </ui-select-match>
-						                            <ui-select-choices repeat="item in statusDropdown">
-						                                <span ng-bind="item.name"></span>
-						                            </ui-select-choices>
-						                        </ui-select>
-						                    </div>
-
+											<!-- Shop Status -->
+											<div ng-template="common/input/dropdown"
+												ng-template-options="{
+												'label' : 'Shop Status',
+												}">
+												<ui-select ng-model="formData.Status" search-enabled="false" required>
+												<ui-select-match placeholder="- Select Shop Status -">
+												<span ng-bind="$select.selected.name"></span>
+												</ui-select-match>
+												<ui-select-choices repeat="item.value as item in statusDropdown">
+												<span ng-bind="item.name"></span>
+												</ui-select-choices>
+												</ui-select>
+											</div>
 						                    <!-- Shop Logo -->
 								            <div nc-template="common/input/form-group-with-label" 
 								              nc-template-form="form.Logo"
@@ -47,16 +46,15 @@
 								                ng-class="{'has-error-btn' : isInvalid(form.Logo)}"
 								                required>Choose File</button>
 								            </div>
-								            <div ng-show="formData.Logo"
+								            <div ng-show="formData.ShopImage.url"
 								              nc-template="common/input/form-group-with-label" 
 								              nc-label="Logo Preview">
 								                <img
-								                  ng-src="{{formData.Logo.url}}"
+								                  ng-src="{{formData.ShopImage.url}}"
 								                  width="160"
 								                  />
 								                <a style="display:block;" class="margin-top-5" ng-click="formData.Logo=null"><i class="fa-trash fa"></i> Delete this image</a>
-								            </div>
-
+								            </div>	
 						                    <div nc-template="common/input/form-group-with-label" nc-label="Shop Name" nc-template-options-path="shopSettingForm/ShopNameEn">
 						                        <input class="form-control" type="text" ng-model="formData.ShopNameEn" ng-pattern="/^[^<>]+$/" required/>
 						                    </div>
@@ -119,14 +117,14 @@
 						                <div class="form-section-content">
 						                    <div nc-template="common/input/form-group-with-label" nc-label="Gift Wrap" nc-template-options-path="shopSettingForm/GiftWrap">
 						                        <select class="form-control" ng-model="formData.GiftWrap">
-						                            <option value='NotAvailable'>Not Available</option>
-						                            <option value='Available'>Available</option>
+						                            <option value='N'>Not Available</option>
+						                            <option value='Y'>Available</option>
 						                        </select>
 						                    </div>
 						                    <div nc-template="common/input/form-group-with-label" nc-label="Tax Invoice" nc-template-options-path="shopSettingForm/TaxInvoice">
 						                        <select class="form-control" ng-model="formData.TaxInvoice">
-						                            <option value='NotAvailable'>Not Available</option>
-						                            <option value='Available'>Available</option>
+						                            <option value='N'>Not Available</option>
+						                            <option value='Y'>Available</option>
 						                        </select>
 						                    </div>
 						                    <div nc-template="common/input/form-group-with-label" nc-label="Stock Alert" nc-template-options-path="shopSettingForm/StockAlert">
@@ -149,54 +147,56 @@
 							                    nc-template-options-path="shopSettingForm/ShopId">
 						                        <input class="form-control" type="text" ng-model="formData.ShopId" readonly value="DE39222" disabled/>
 						                    </div>
-						                    <!-- Shop Status -->
-						                    <div ng-template="common/input/dropdown" ng-template-options="{
-						                      'label' : 'Shop Status',
-						                      'labelClass' : 'required'
-						                      }">
-						                        <ui-select ng-model="formData.Status" search-enabled="false" required>
-						                            <ui-select-match placeholder="- Select Shop Status -">
-						                                <span ng-bind="$select.selected.name"></span>
-						                            </ui-select-match>
-						                            <ui-select-choices repeat="item in statusDropdown">
-						                                <span ng-bind="item.name"></span>
-						                            </ui-select-choices>
-						                        </ui-select>
-						                    </div>
 
-						                    <div class="form-group">
-						                        <div class="width-label">
-						                            <label class="control-label">Shop Logo</label>
+											<!-- Shop Group -->
+											<div ng-template="common/input/dropdown"
+												ng-template-options="{
+													'label' : 'Shop Group'
+												}">
+												<ui-select ng-model="formData.ShopGroup" search-enabled="false" ng-disabled="true">
+													<ui-select-match placeholder="- Select Shop Group -">
+													<span ng-bind="$select.selected.name"></span>
+													</ui-select-match>
+													<ui-select-choices repeat="item.value as item in shopGroupDropdown">
+													<span ng-bind="item.name"></span>
+													</ui-select-choices>
+												</ui-select>
+											</div>
+											<!-- Shop Type -->
+											<div ng-template="common/input/dropdown"
+												ng-template-options="{
+													'label' : 'Shop Type',
+												}">
+												<ui-select name="ShopType" ng-model="formData.ShopType" search-enabled="false" ng-disabled="true">
+													<ui-select-match placeholder="- Select Shop Type -">
+														<span ng-bind="$select.selected.ShopTypeNameEn"></span>
+													</ui-select-match>
+													<ui-select-choices repeat="item in shoptypes">
+														<span ng-bind="item.ShopTypeNameEn"></span>
+													</ui-select-choices>
+												</ui-select>
+											</div>
+											<!-- Max local cat -->
+											<div ng-template="common/input/text2"
+												ng-template-options="{
+												'label': 'Max Local Category (LV1)',
+												}">
+												<input
+												class="form-control"
+												name="MaxLocalCategory"
+												ng-model="formData.MaxLocalCategory"
+												readonly
+												disabled
+												/>
+											</div>
+											<!-- Commission -->
+											<div ng-show="formData.Commissions.length > 0" 
+												nc-template="common/input/form-group-with-label"
+												nc-label="Commission by Category">
+						                        <div class="width-field-normal" ng-repeat="item in formData.Commissions track by $index">
+						                        	<span class="form-text">{{item.Commission}}% for {{item.NameEn}}</span>
 						                        </div>
-						                        <div class="width-field-normal">
-						                            <div nc-template="components/single-upload" nc-view-bag="uploadViewBag"></div>
-						                        </div>
-						                    </div>
-
-						                    <div nc-template="common/input/form-group-with-label" nc-label="Shop Name" nc-template-options-path="shopSettingForm/ShopNameEn">
-						                        <input class="form-control" type="text" ng-model="formData.ShopNameEn" ng-pattern="/^[^<>]+$/" required/>
-						                    </div>
-
-						                    <div nc-template="common/input/form-group-with-label" nc-label="Shop Description (English)" nc-template-options-path="shopSettingForm/ShopDescriptionEn">
-						                        <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopDescriptionEn"></textarea>
-						                    </div>
-
-						                    <div nc-template="common/input/form-group-with-label" nc-label="Shop Description (ไทย)" nc-template-options-path="shopSettingForm/ShopDescriptionTh">
-						                        <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopDescriptionTh"></textarea>
-						                    </div>
-
-						                    <div nc-template="common/input/form-group-with-label" nc-label="Float Message (English)" nc-template-options-path="shopSettingForm/FloatMessageEn">
-						                        <input class="form-control" type="text" ng-model="formData.FloatMessageEn" />
-						                    </div>
-
-						                    <div nc-template="common/input/form-group-with-label" nc-label="Float Message (ไทย)" nc-template-options-path="shopSettingForm/FloatMessageTh">
-						                        <input class="form-control" type="text" ng-model="formData.FloatMessageTh" />
-						                    </div>
-
-						                    <div nc-template="common/input/form-group-with-label" nc-label="Shop Address" nc-template-options-path="shopSettingForm/ShopAddress">
-						                        <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopAddress" /></textarea>
-						                    </div>
-
+											</div>
 						                </div>
 						            </div>
 						        </div>

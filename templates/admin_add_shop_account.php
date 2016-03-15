@@ -54,7 +54,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										maxlength="100"
 										required />
 									</div>
-									<!-- Shop Status -->
+									<!-- Shop Group -->
 									<div ng-template="common/input/dropdown"
 										ng-template-options="{
 										'label' : 'Shop Group',
@@ -64,7 +64,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										<ui-select-match placeholder="- Select Shop Group -">
 										<span ng-bind="$select.selected.name"></span>
 										</ui-select-match>
-										<ui-select-choices repeat="item in shopGroupDropdown">
+										<ui-select-choices repeat="item.value as item in shopGroupDropdown">
 										<span ng-bind="item.name"></span>
 										</ui-select-choices>
 										</ui-select>
@@ -107,7 +107,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										<ui-select-match placeholder="- Select Shop Status -">
 										<span ng-bind="$select.selected.name"></span>
 										</ui-select-match>
-										<ui-select-choices repeat="item in statusDropdown">
+										<ui-select-choices repeat="item.value as item in statusDropdown">
 										<span ng-bind="item.name"></span>
 										</ui-select-choices>
 										</ui-select>
@@ -130,6 +130,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										placeholder="8"
 										/>
 									</div>
+									<!-- Comission -->
 									<div nc-template="common/input/form-group-with-label"
 										nc-label="Commission by Category">
 				                        <div class="width-field-normal" ng-repeat="item in formData.Commissions track by $index">
@@ -383,11 +384,11 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 						                ng-class="{'has-error-btn' : isInvalid(form.Logo)}"
 						                required>Choose File</button>
 						            </div>
-						            <div ng-show="formData.Logo"
+						            <div ng-show="formData.ShopImage.url"
 						              nc-template="common/input/form-group-with-label" 
 						              nc-label="Shop Logo Preview">
 						                <img
-						                  ng-src="{{formData.Logo.url}}"
+						                  ng-src="{{formData.ShopImage.url}}"
 						                  width="160"
 						                  />
 						                <a style="display:block;" class="margin-top-5" ng-click="formData.Logo=null"><i class="fa-trash fa"></i> Delete this image</a>

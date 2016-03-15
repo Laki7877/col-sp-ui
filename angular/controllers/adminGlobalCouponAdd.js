@@ -1,122 +1,27 @@
-module.exports = function($scope, $controller, CouponService, config, Brand, Shop, Product) {
-  $scope.formData = {
-    ExpireDate: null,
-    StartDate: null,
-    CouponName: null,
-    CouponCode: null,
-    StartDate: null,
-    ExpireDate: null,
-    Status: null,
-    Action: {
-      Type: null,
-      DiscountAmount: 0,
-      MaximumAmount: 0
-    },
-    UsagePerCustomer: 0,
-    MaximumUser: 0,
-    Conditions: {
-      Order: [{
-        Type: null,
-        Value: null
-      }],
-      FilterBy: {
-        Type: null,
-        Brands: [],
-        Emails: [],
-        LocalCategories: [],
-        GlobalCategories: [],
-        Shops: []
-      },
-      Include: [],
-      Exclude: []
-    }
-  };
-  $scope.preview = function() {
-    console.log($scope.formData);
-  }
+module.exports = function($scope, $controller, GlobalCouponService, GlobalCategoryService, config, Category) {
+  $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
+  $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
+  $scope.filters = config.DROPDOWN.COUPON_GLOBAL_FILTER;
 
-  $scope.CF_NO_FILTER = 'No filter';
-  $scope.CF_TOTAL_PRICE_MT = 'Total price is more than';
-  $scope.dataSet = {
-    criteria: [{
-      value: $scope.CF_NO_FILTER,
-      text: 'No filter'
-    }, {
-      value: $scope.CF_TOTAL_PRICE_MT,
-      text: 'Total price is more than..'
-    }],
-    filters: [{
-      value: $scope.CF_NO_FILTER,
-      text: 'No filter'
-    }, {
-      text: 'Brand',
-      value: 'Brand'
-    }, {
-      text: 'Global Category',
-      value: 'GlobalCategory'
-    }, {
-      text: 'Shop',
-      value: 'Shop'
-    }, {
-      text: 'Email',
-      value: 'Email'
-    }],
-    Brands: [],
-    Products: [],
-    Shops: []
-  }
-
-  $scope.refreshProducts = function(q) {
-    Product.list({
-      limit: 10,
-      order: 'ProductId',
-      offset: 0,
-      direction: 'asc',
-      searchText: (q || '')
-    }).then(function(ds) {
-      $scope.dataSet.Products = ds.data;
-    });
-  };
-
-  $scope.refreshShops = function(q) {
-    Shop.list({
-      limit: 10,
-      order: 'ShopId',
-      offset: 0,
-      direction: 'asc',
-      searchText: (q || '')
-    }).then(function(ds) {
-      $scope.dataSet.Shops = ds.data;
-    });
-  };
-
-  $scope.refreshBrands = function(q) {
-    Brand.getAll({
-      pageSize: 10,
-      searchText: (q || '')
-    }).then(function(ds) {
-      $scope.dataSet.Brands = ds.data;
-    });
-  };
-
-  $scope.refreshShops();
-  $scope.refreshBrands();
-  $scope.refreshProducts();
-
+  //Abstract Add Ctrl
   $controller('AbstractAddCtrl', {
     $scope: $scope,
     options: {
       id: 'CouponId',
-      url: '/admin/coupons/admin',
+      url: '/admin/coupons/global',
       item: 'Coupon',
-      service: CouponService,
+      service: GlobalCouponService,
       dateFields: ['StartDate', 'ExpireDate'],
       onLoad: function(){
-        //map dropdonws
+        GlobalCategoryService.list()
+          .then(function(data) {
+            $scope.categories = Category.transformNestedSetToUITree(data);
+          });
       },
       onSave: function(scope) {
-        //hacky speed fix
-        scope.formData.Conditions.Order = [scope.formData.Conditions.Order["0"]];
+        if(scope.formData.ExpireDate < scope.formData.StartDate) {
+          return true;
+        }
       }
     }
   });

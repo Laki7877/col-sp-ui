@@ -369,7 +369,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       $scope.pageState.load('Saving..');
 
       var apiRequest = Product.serialize($scope.formData);
-      checkSchema(apiRequest, 'productStages', '(TX)');
+      // checkSchema(apiRequest, 'productStages', '(TX)');
 
       Product.publish(apiRequest, Status).then(function(res) {
         $scope.pageState.reset();
