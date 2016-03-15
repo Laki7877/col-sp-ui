@@ -139,5 +139,5 @@ module.exports =  {
   "required": ["ShippingMethod", "ProductNameEn", "ProductNameTh",
     "StockType", "DimensionUnit", "SEO", "VideoLinks", "Images", "GiftWrap",
     "FirstAttribute", "SecondAttribute",
-    "Installment", "PrepareDay", "LimitIndividualDay", "Display", "IsVariant"]
+    "Installment", "PrepareDay", "LimitIndividualDay", "Display"]
 };
