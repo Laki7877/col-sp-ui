@@ -12965,7 +12965,11 @@ ul.sub-sidebar .item > a {
 .form-section .form-section-content .two-columns label {
   margin-bottom: 10px;
 }
-/* line 46, ../../../assets/_form-section.sass */
+/* line 45, ../../../assets/_form-section.sass */
+.form-section .form-section-content .two-columns textarea {
+  max-width: 100%;
+}
+/* line 48, ../../../assets/_form-section.sass */
 .form-section .section-break {
   width: 100%;
   border-bottom: 1px solid #BCC7D5;
