@@ -11632,19 +11632,19 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
       //Load attribute set (TODO: we won't have to do this in future)
       invFd.AttributeSet = FullAttributeSet;
       //Load full Brand (TODO: we won't have to do this in future)
-      var BrandId = invFd.Brand.BrandId;
-      invFd.Brand = {
-        BrandId: null,
-        BrandNameEn: 'Search brand by name or id..'
-      };
-
-      if(BrandId > 0){
-        Brand.getOne(BrandId).then(function(data) {
-          invFd.Brand = data;
-          delete invFd.Brand.$id;
-          invFd.Brand.id = BrandId;
-        });
-      }
+      // var BrandId = invFd.Brand.BrandId;
+      // invFd.Brand = {
+      //   BrandId: null,
+      //   BrandNameEn: 'Search brand by name or id..'
+      // };
+      //
+      // if(BrandId > 0){
+      //   Brand.getOne(BrandId).then(function(data) {
+      //     invFd.Brand = data;
+      //     delete invFd.Brand.$id;
+      //     invFd.Brand.id = BrandId;
+      //   });
+      // }
 
       //Find which variant is default
       try {
