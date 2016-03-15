@@ -28,6 +28,25 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 		}
 	});
 
+	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
+		data: { IsLogo: true }
+	});
+	$scope.uploadLogo = function(file) {
+		if(_.isNil(file)) {
+			return;
+		}
+		$scope.formData.BrandImage = {
+			url: '/assets/img/loader.gif'
+		};
+		$scope.logoUploader.upload(file)
+			.then(function(response) {
+				$scope.formData.BrandImage = response.data;
+			}, function(err) {
+				$scope.formData.BrandImage = null;
+				$scope.alert.error(common.getError(err.data));
+			});
+	};	
+
 	$scope.loginAs = function(user){
 		$scope.alert.close();
 		Credential.loginAs(user).then(function(){

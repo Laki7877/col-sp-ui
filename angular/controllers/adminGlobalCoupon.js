@@ -1,4 +1,5 @@
-module.exports = function($scope, $controller, CouponService, config) {
+module.exports = function($scope, $controller, GlobalCouponService, config) {
+  'ngInject';
   $controller('AbstractListCtrl', {
     $scope: $scope,
     options: {
