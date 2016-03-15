@@ -261,8 +261,35 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         MasterAttribute: {
           serialize: function(ma) {
             var t = [];
+
             Object.keys(ma).forEach(function(key) {
-              if (ma[key].AttributeValueId) {
+              //key is essentially Attribute Id
+              if(ma[key]._checkbox){
+
+                var g = {
+                  AttributeValues: [],
+                  AttributeId: Number(key),
+                  ValueEn: ""
+                };
+
+                //xKey is a essentially a list of ValueIds
+                var xKey = Object.keys(ma[key]);
+                for(var x = 0; x < xKey.length; x++){
+                  if(xKey[x] == "_checkbox") continue;
+                  if(_.isNaN(Number(xKey[x]))) continue;
+
+
+                  var valueId = xKey[x];
+                  var valueTf = ma[key][valueId];
+
+                  g.AttributeValues.push({
+                    AttributeValueId: Number(valueId),
+                    CheckboxValue: valueTf
+                  });
+                }
+
+                t.push(g);
+              }else if (ma[key].AttributeValueId) {
                 var g = {
                   AttributeValues: [],
                   AttributeId: ma[key].AttributeId,
@@ -322,19 +349,19 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
       //Load attribute set (TODO: we won't have to do this in future)
       invFd.AttributeSet = FullAttributeSet;
       //Load full Brand (TODO: we won't have to do this in future)
-      var BrandId = invFd.Brand.BrandId;
-      invFd.Brand = {
-        BrandId: null,
-        BrandNameEn: 'Search brand by name or id..'
-      };
-
-      if(BrandId > 0){
-        Brand.getOne(BrandId).then(function(data) {
-          invFd.Brand = data;
-          delete invFd.Brand.$id;
-          invFd.Brand.id = BrandId;
-        });
-      }
+      // var BrandId = invFd.Brand.BrandId;
+      // invFd.Brand = {
+      //   BrandId: null,
+      //   BrandNameEn: 'Search brand by name or id..'
+      // };
+      //
+      // if(BrandId > 0){
+      //   Brand.getOne(BrandId).then(function(data) {
+      //     invFd.Brand = data;
+      //     delete invFd.Brand.$id;
+      //     invFd.Brand.id = BrandId;
+      //   });
+      // }
 
       //Find which variant is default
       try {
@@ -350,14 +377,28 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
       var MasterAttribute = {};
       try {
         invFd.MasterAttribute.forEach(function(ma) {
-          var k = {
-            'AttributeValue': ma.AttributeValues[0]
+          if(ma.DataType == "CB"){
+            for(var i = 0; i < ma.AttributeValues.length; i++){
+              var item  = ma.AttributeValues[i];
+
+              if(!MasterAttribute[ma.AttributeId]){
+                MasterAttribute[ma.AttributeId] = {
+                  _checkbox : true
+                };
+              }
+
+              MasterAttribute[ma.AttributeId][item.AttributeValueId] = item.CheckboxValue;
+            }
+          }else{
+            var k = {
+              'AttributeValue': ma.AttributeValues[0]
+            }
+            if (ma.AttributeValues.length > 0 && ma.AttributeValues[0].AttributeValueId) {
+              k.AttributeId = ma.AttributeId;
+              k.AttributeValueId = ma.AttributeValues[0].AttributeValueId;
+            }
+            MasterAttribute[ma.AttributeId] = ma.ValueEn || k;
           }
-          if (ma.AttributeValues.length > 0 && ma.AttributeValues[0].AttributeValueId) {
-            k.AttributeId = ma.AttributeId;
-            k.AttributeValueId = ma.AttributeValues[0].AttributeValueId;
-          }
-          MasterAttribute[ma.AttributeId] = ma.ValueEn || k;
         });
       } catch (ex) {
         console.warn('Unable to set MasterAttribute', ex);
@@ -378,8 +419,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         }
       }
 
-      if (invFd.LocalCategory) {
-        LocalCategory.getOne(invFd.LocalCategory).then(function(locat) {
+      if (invFd.MainLocalCategory) {
+        LocalCategory.getOne(invFd.MainLocalCategory.CategoryId).then(function(locat) {
           invFd.LocalCategories.unshift(locat);
           if (invFd.LocalCategories.length > 3) {
             invFd.LocalCategories.pop();
@@ -412,15 +453,15 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
       }
 
       invFd.GlobalCategories.unshift({
-        CategoryId: invFd.GlobalCategory
+        CategoryId: invFd.MainGlobalCategory
       })
 
       if (invFd.GlobalCategories.length > 3) {
         invFd.GlobalCategories.pop()
       }
 
-      delete invFd.GlobalCategory;
-      delete invFd.LocalCategory;
+      delete invFd.MainGlobalCategory;
+      delete invFd.MainLocalCategory;
 
       try {
         var _split = invFd.Keywords.trim().split(',');

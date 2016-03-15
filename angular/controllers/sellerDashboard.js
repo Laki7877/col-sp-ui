@@ -14,28 +14,94 @@ module.exports = function($scope, $rootScope, Onboarding, $log, $window){
 		{inventory:'Inventory: ' + '10', p_id:'ID: ' + '5323312', name:'Jordan Nike Super Shoe' }
 	];
 
-	getProductRatingRank = function(data) {
+	$scope.maxTopSellingItems = 10;
+	$scope.topSellingItemsData = [
+		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'Chanel, the cheetah' },
+		{img_path:'/assets/img/img40.png', name:'1 French Connection, Sunday - high quality product' },		
+		{img_path:'/assets/img/img40.png', name:'2 French Connection, Sunday - high quality product' },		
+		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'3 French Connection, Sunday - high quality product' },		
+		{img_path:'/assets/img/img40.png', name:'4 French Connection, Sunday - high quality product' },
+		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'Chanel, the cheetah' },
+		{img_path:'/assets/img/img40.png', name:'1 French Connection, Sunday - high quality product' },		
+		{img_path:'/assets/img/img40.png', name:'2 French Connection, Sunday - high quality product' },		
+		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'3 French Connection, Sunday - high quality product' },		
+		{img_path:'/assets/img/img40.png', name:'4 French Connection, Sunday - high quality product' },
+		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'Chanel, the cheetah' },
+		{img_path:'/assets/img/img40.png', name:'1 French Connection, Sunday - high quality product' },		
+		{img_path:'/assets/img/img40.png', name:'2 French Connection, Sunday - high quality product' },		
+		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'3 French Connection, Sunday - high quality product' },		
+		{img_path:'/assets/img/img40.png', name:'4 French Connection, Sunday - high quality product' }
 
-		if (data >= 0 && data <= 2.4) {
-			return 'red';
+	];
+
+	getColoredRank = function(type, data) {
+		switch(type){
+			case 'Product Rating':
+				if (data >= 0 && data <= 2.4) {
+				return 'red';
+				}
+				else if (data > 2.4 && data <= 4.0) {
+					return 'yellow';
+				}
+				else if (data > 4.0 && data <= 5.0) {
+					return 'green';
+				}
+				else {
+					return 'n/a';
+				}
+				break;
+
+			case 'On Time Delivery':
+				if (data >= 0 && data <= 69) {
+				return 'red';
+				}
+				else if (data >= 70 && data <= 89) {
+					return 'yellow';
+				}
+				else if (data >= 90 && data <= 100) {
+					return 'green';
+				}
+				else {
+					return 'n/a';
+				}
+				break;
+
+			case 'Return Rate':
+				if (data >= 11 && data <= 100) {
+				return 'red';
+				}
+				else if (data > 1 && data < 11) {
+					return 'yellow';
+				}
+				else if (data >= 0 && data <= 1) {
+					return 'green';
+				}
+				else {
+					return 'n/a';
+				}
+				break;
+
+			default:
+				return 'n/a'
 		}
-		else if (data > 2.4 && data <= 4.0) {
-			return 'yellow';
-		}
-		else if (data > 4.0 && data <= 5.0) {
-			return 'green';
-		}
-		else {
-			return 'n/a';
-		}
+
+		
 	};
 
 	// temp rating  score
 	// input api for product rating score
 
-	var pRating = 4.5;
+	var pRating = 2.4;
 	$scope.productRatingScore = pRating + ' / 5.0';
-	$scope.productRatingRank = getProductRatingRank(pRating);
+	$scope.productRatingRank = getColoredRank('Product Rating',pRating);
+
+	var otdRating = 92;
+	$scope.onTimeDeliveryScore = otdRating + '%';
+	$scope.onTimeDeliveryRank = getColoredRank('On Time Delivery',otdRating);
+
+	var rRating = 10.88;
+	$scope.returnScore = rRating + '%';
+	$scope.returnRank = getColoredRank('Return Rate',rRating);
 
 	$scope.getColorClass = function(status) {
 		switch (status) {
@@ -61,25 +127,4 @@ module.exports = function($scope, $rootScope, Onboarding, $log, $window){
         }
 	};
 
-
-
-	// $scope.getAccountHealthColorClass = function(type, data) {
-	// 	switch (type) {
-	//         case 'Product Rating':
-	//         	switch(data) {
-
-	//         		case (data >= 0 && data <= 2.4)
-	//             		return 'color-red';
-	//             		break;
-
-	//             	default:
-	//         	}
-	//             break;
-	//         case '2':
-	//             alert("Selected Case Number is 2");
-	//             break;
-	//         default:
-
- //        }
-	// }	
 };

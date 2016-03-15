@@ -23,8 +23,9 @@ module.exports = {
       "items": require('./attributeValue')
     }
   },
-  "oneOf": [
+  "anyOf": [
     {"required": ["AttributeValues", "AttributeId", "DataType", "Required", "AttributeNameEn"]},
-    {"required": ["AttributeValueMaps", "AttributeId", "DataType", "Required", "AttributeNameEn"]}
+    {"required": ["AttributeValueMaps", "AttributeId", "DataType", "Required", "AttributeNameEn"]},
+    {"required": ["AttributeValues", "AttributeId", "ValueEn"]}
   ]
 };

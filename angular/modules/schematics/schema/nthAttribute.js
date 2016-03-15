@@ -6,11 +6,15 @@ module.exports = {
       "type": "string"
     },
     "AttributeId": {
-      "type": "integer"
+      "oneOf" : [
+        {"type": "integer"},
+        {"type": "null"}
+      ]
     },
     "AttributeValues": {
       "type": "array",
       "items": require('./attributeValue')
     }
-  }
+  },
+  "required": ["ValueEn", "AttributeId", "AttributeValues"]
 }

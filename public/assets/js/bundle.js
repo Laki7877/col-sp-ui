@@ -1247,7 +1247,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 		//Open add or edit one category
 		var modal = $uibModal.open({
 			animation: true,
-			size: 'lg',
+			size: 'xl',
 			keyboard: false,
 			templateUrl: 'global_category/modal',
 			controller: ["$scope", "$uibModalInstance", "$timeout", "GlobalCategoryService", "NcAlert", "config", "id", "attributeSetOptions", "Product", "ImageService", function($scope, $uibModalInstance, $timeout, GlobalCategoryService, NcAlert, config, id, attributeSetOptions, Product, ImageService) {
@@ -1292,7 +1292,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 						searchText: text
 					}).then(function(response) {
 						$scope.products = response.data;
-					});	
+					});
 				};
 				$scope.uploadBannerFail = function(e, response) {
 					if(e == 'onmaxsize') {
@@ -2146,7 +2146,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 	util.warningOnLeave(function() {
 		var modalDirty = $scope.modalScope == null ? false : $scope.modalScope.form.$dirty;
 		return $scope.saving || $scope.dirty || modalDirty;
-	});	
+	});
 	//Expand and collapse all
 	$scope.collapseAll = function() {
 		$rootScope.$broadcast('angular-ui-tree:collapse-all');
@@ -2235,8 +2235,8 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 	};
 
 	//Condition at which tradable select will lock attributeset
-	$scope.lockAttributeset = function(i) {		
-		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);		
+	$scope.lockAttributeset = function(i) {
+		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);
 	};
 
 	//Open category modal
@@ -2244,7 +2244,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 		//Open add or edit one category
 	var modal = $uibModal.open({
 			animation: true,
-			size: 'lg',
+			size: 'xl',
 			keyboard: false,
 			templateUrl: 'local_category/modal',
 			controller: ["$scope", "$uibModalInstance", "$timeout", "LocalCategoryService", "NcAlert", "config", "id", "Product", "ImageService", function($scope, $uibModalInstance, $timeout, LocalCategoryService, NcAlert, config, id, Product, ImageService) {
@@ -2287,7 +2287,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 						searchText: text
 					}).then(function(response) {
 						$scope.products = response.data;
-					});	
+					});
 				};
 				$scope.uploadBannerFail = function(e, response) {
 					if(e == 'onmaxsize') {
@@ -2308,7 +2308,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 						} else {
 							$scope.$parent.modalScope = null;
 						}
-					} 
+					}
 				});
 				$scope.save = function() {
 					$scope.alert.close();
@@ -2382,6 +2382,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 	};
 
 }];
+
 },{}],32:[function(require,module,exports){
   module.exports = ["$scope", "Credential", "$window", "NcAlert", "$uibModal", "storage", "config", function ($scope, Credential, $window, NcAlert, $uibModal, storage, config) {
     'ngInject';
@@ -3538,28 +3539,94 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", funct
 		{inventory:'Inventory: ' + '10', p_id:'ID: ' + '5323312', name:'Jordan Nike Super Shoe' }
 	];
 
-	getProductRatingRank = function(data) {
+	$scope.maxTopSellingItems = 10;
+	$scope.topSellingItemsData = [
+		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'Chanel, the cheetah' },
+		{img_path:'/assets/img/img40.png', name:'1 French Connection, Sunday - high quality product' },		
+		{img_path:'/assets/img/img40.png', name:'2 French Connection, Sunday - high quality product' },		
+		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'3 French Connection, Sunday - high quality product' },		
+		{img_path:'/assets/img/img40.png', name:'4 French Connection, Sunday - high quality product' },
+		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'Chanel, the cheetah' },
+		{img_path:'/assets/img/img40.png', name:'1 French Connection, Sunday - high quality product' },		
+		{img_path:'/assets/img/img40.png', name:'2 French Connection, Sunday - high quality product' },		
+		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'3 French Connection, Sunday - high quality product' },		
+		{img_path:'/assets/img/img40.png', name:'4 French Connection, Sunday - high quality product' },
+		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'Chanel, the cheetah' },
+		{img_path:'/assets/img/img40.png', name:'1 French Connection, Sunday - high quality product' },		
+		{img_path:'/assets/img/img40.png', name:'2 French Connection, Sunday - high quality product' },		
+		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'3 French Connection, Sunday - high quality product' },		
+		{img_path:'/assets/img/img40.png', name:'4 French Connection, Sunday - high quality product' }
 
-		if (data >= 0 && data <= 2.4) {
-			return 'red';
+	];
+
+	getColoredRank = function(type, data) {
+		switch(type){
+			case 'Product Rating':
+				if (data >= 0 && data <= 2.4) {
+				return 'red';
+				}
+				else if (data > 2.4 && data <= 4.0) {
+					return 'yellow';
+				}
+				else if (data > 4.0 && data <= 5.0) {
+					return 'green';
+				}
+				else {
+					return 'n/a';
+				}
+				break;
+
+			case 'On Time Delivery':
+				if (data >= 0 && data <= 69) {
+				return 'red';
+				}
+				else if (data >= 70 && data <= 89) {
+					return 'yellow';
+				}
+				else if (data >= 90 && data <= 100) {
+					return 'green';
+				}
+				else {
+					return 'n/a';
+				}
+				break;
+
+			case 'Return Rate':
+				if (data >= 11 && data <= 100) {
+				return 'red';
+				}
+				else if (data > 1 && data < 11) {
+					return 'yellow';
+				}
+				else if (data >= 0 && data <= 1) {
+					return 'green';
+				}
+				else {
+					return 'n/a';
+				}
+				break;
+
+			default:
+				return 'n/a'
 		}
-		else if (data > 2.4 && data <= 4.0) {
-			return 'yellow';
-		}
-		else if (data > 4.0 && data <= 5.0) {
-			return 'green';
-		}
-		else {
-			return 'n/a';
-		}
+
+		
 	};
 
 	// temp rating  score
 	// input api for product rating score
 
-	var pRating = 4.5;
+	var pRating = 2.4;
 	$scope.productRatingScore = pRating + ' / 5.0';
-	$scope.productRatingRank = getProductRatingRank(pRating);
+	$scope.productRatingRank = getColoredRank('Product Rating',pRating);
+
+	var otdRating = 92;
+	$scope.onTimeDeliveryScore = otdRating + '%';
+	$scope.onTimeDeliveryRank = getColoredRank('On Time Delivery',otdRating);
+
+	var rRating = 10.88;
+	$scope.returnScore = rRating + '%';
+	$scope.returnRank = getColoredRank('Return Rate',rRating);
 
 	$scope.getColorClass = function(status) {
 		switch (status) {
@@ -3585,27 +3652,6 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", funct
         }
 	};
 
-
-
-	// $scope.getAccountHealthColorClass = function(type, data) {
-	// 	switch (type) {
-	//         case 'Product Rating':
-	//         	switch(data) {
-
-	//         		case (data >= 0 && data <= 2.4)
-	//             		return 'color-red';
-	//             		break;
-
-	//             	default:
-	//         	}
-	//             break;
-	//         case '2':
-	//             alert("Selected Case Number is 2");
-	//             break;
-	//         default:
-
- //        }
-	// }	
 }];
 
 },{}],45:[function(require,module,exports){
@@ -3801,6 +3847,10 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", funct
     $scope.redirectToShopAppearance = function() {
     	$window.location.href = 'shops/appearance';
     }
+
+		$scope.redirectToUserAccounts = function() {
+			$window.location.href = '/accounts';
+		}
 
     //Init
     $scope.load();
@@ -7276,6 +7326,19 @@ angular.module('nc')
 				if(!scope.excludeBy){
 					scope.excludeBy = [];
 				}
+
+				scope.anyHas = function(a, B, path) {
+		      // Check if a[path] matches any of b[path] in B
+		      var aP = _.get(a, path);
+		      for(var i = 0; i < B.length; i++){
+						var b = B[i];
+		        var bP = _.get(b, path);
+		        if(bP == aP) return true;
+		      }
+
+		      return false;
+		    };
+
 				// Directive options
 				scope.options = _.defaults(scope.options, {
 					columnSize: 4,
@@ -7652,7 +7715,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncTreeSelect',
-    "<div class=category-section-border-box><div class=category-header>{{title}}</div><div class=\"category-content no-padding\"><ul ng-repeat=\"column in (columns.list()) track by $index\" ng-class=\"{'empty-column': column.list().length <= 0 }\" class=content-column><li ng-repeat=\"$item in (column.list() | nexclude: excludeBy : 'CategoryId') track by $index\" ng-class=\"{'category-active' : $index == column.active() }\" ng-click=setModel($item)>{{getContent($item)}}</li></ul></div></div>"
+    "<div class=category-section-border-box><div class=category-header>{{title}}</div><div class=\"category-content no-padding\"><ul ng-repeat=\"column in (columns.list()) track by $index\" ng-class=\"{'empty-column': column.list().length <= 0 }\" class=content-column><li ng-repeat=\"$item in (column.list()) track by $index\" ng-class=\"{'category-active' : $index == column.active() , 'disabled': anyHas($item, excludeBy, 'CategoryId') }\" ng-click=\"!anyHas($item, excludeBy, 'CategoryId') && setModel($item)\">{{getContent($item)}}</li></ul></div></div>"
   );
 
 
@@ -7703,7 +7766,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       MainGlobalCategory: null,
       MainLocalCategory: null,
       Tags: [],
-      ControlFlags: [],
+      ControlFlags: {
+        Flag1: false,
+        Flag2: false,
+        Flag3: false
+      },
       Brand: {
         id: null
       },
@@ -7718,6 +7785,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       ExpireDate: null,
       LimitIndividualDay: false,
       MasterVariant: {
+        Display: 'GROUP',
         ProductNameEn: '',
         ProductNameTh: '',
         Sku: '',
@@ -7742,13 +7810,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     //Initialize Pointers
     $scope.variantPtr = $scope.formData.MasterVariant;
 
-    var checkSchema = function(data, schemaName){
+    var checkSchema = function(data, schemaName, code){
       //Perform schema check
       var schema = JSONCache.get(schemaName || 'productStages');
+      if(!code) code = "(RX)";
       var validation = skeemas.validate(data, schema);
       console.log("Schema validation result: ", validation);
       if(!validation.valid){
-        $scope.devAlert.error('<strong>Warning</strong> Automated API structure pre-check procedure failed. ' +
+        $scope.devAlert.error('<strong>Warning ' + code + '</strong> Automated API structure pre-check procedure failed. ' +
         'Format does not comply with the <strong>Ahancer Product Add Exchange Protocol (A-PAEP)</strong> V3 Rev C. ' +
         'For more detail, look for <i>schema validation result</i> in your js console.');
       }
@@ -7804,7 +7873,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     };
 
     $scope.onImageUploadFail = function(item, filter) {
-      $scope.image_alert.error(item.Message || 'Your image does not meet guideline. Images must be smaller than 5 MB, with square size larger than 1500x1500.');
+      $scope.image_alert.error(item.Message || 'Maximum ' + filter + ' images can be uploaded.');
     }
 
     $scope.onImageUploadSuccess = function() {
@@ -8046,6 +8115,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       $scope.pageState.load('Saving..');
 
       var apiRequest = Product.serialize($scope.formData);
+      // checkSchema(apiRequest, 'productStages', '(TX)');
+
       Product.publish(apiRequest, Status).then(function(res) {
         $scope.pageState.reset();
         if (res.ProductId) {
@@ -8057,7 +8128,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             $scope.formData.ProductId = Number(res.ProductId);
             $scope.pageState.reset();
             $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
-
           });
 
           $scope.addProductForm.$setPristine(true);
@@ -8670,12 +8740,12 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-detail',
-    "<div class=form-section><div class=form-section-header><h2>Detail</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Attribute Set</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-if=\"controlFlags.variation == 'enable'\" class=form-control disabled><option disabled>{{ formData.AttributeSet.AttributeSetNameEn }}</option></select><ui-select theme=selectize loading=refresher.AttributeSetsLoading ng-if=\"controlFlags.variation != 'enable'\" ng-model=formData.AttributeSet ng-show=\"dataset.AttributeSets.length > 0\"><ui-select-match placeholder=\"Search Attribute Set\"><span ng-bind=$select.selected.AttributeSetNameEn></span> <span ng-show=!$select.selected.AttributeSetNameEn>- Select Attribute Set -</span></ui-select-match><ui-select-choices group-by=\"'_group'\" refresh=refresher.AttributeSets($select.search) refresh-delay=1000 repeat=\"item in ($select.search != '' ? dataset.CombinedAttributeSets : dataset.AttributeSets) | filter : $select.search track by item.AttributeSetId\"><span ng-bind=item.AttributeSetNameEn></span></ui-select-choices></ui-select><select class=form-control ng-if=\"dataset.AttributeSets.length == 0\" disabled><option disabled>This category has no attribute sets</option></select></div></div><a class=\"like-text form-text\" ng-if=\"formData.AttributeSet.AttributeSetId && controlFlags.variation != 'enable'\" ng-click=\"formData.AttributeSet = {}\"><i class=\"fa fa-minus-circle color-theme\"></i></a></div><div class=form-group ng-repeat=\"amap in formData.AttributeSet.AttributeSetMaps\"><div class=width-label><label class=control-label ng-class=\"{'required': amap.Attribute.Required}\">{{ amap.Attribute.AttributeNameEn }}</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(amap.Attribute.DataType), 'width-field-xxl': isHtmlInput(amap.Attribute.DataType)}\"><select ng-if=isListInput(amap.Attribute.DataType) ng-required=\"amap.Attribute.Required && onPublishing\" class=form-control ng-model=formData.MasterAttribute[amap.Attribute.AttributeId] ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" name=AmapInput{{$index}} ng-options=\"item as item.AttributeValue.AttributeValueEn for item in amap.Attribute.AttributeValueMaps track by item.AttributeValueId\"><option disabled value=\"\" selected>- Select option -</option></select><div ng-if=isHtmlInput(amap.Attribute.DataType)><textarea ng-required=\"amap.Attribute.Required && onPublishing\" ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" ng-model=formData.MasterAttribute[amap.Attribute.AttributeId] name=AmapInput{{$index}} class=form-control ng-ckeditor=ckOptions></textarea></div><input ng-if=isFreeTextInput(amap.Attribute.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" ng-required=\"amap.Attribute.Required && onPublishing\" class=form-control name=AmapInput{{$index}} ng-model=\"formData.MasterAttribute[amap.Attribute.AttributeId]\"><div ng-if=isCheckboxInput(amap.Attribute.DataType) ng-init=\"formData.MasterAttribute[amap.Attribute.AttributeId] = {}\"><div class=checkbox ng-repeat=\"vmap in amap.Attribute.AttributeValueMaps\"><label><input type=checkbox ng-model=\"formData.MasterAttribute[amap.Attribute.AttributeId][vmap.AttributeValueId]\"> {{ vmap.AttributeValue.AttributeValueEn }}</label></div></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Detail</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Attribute Set</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-if=\"controlFlags.variation == 'enable'\" class=form-control disabled><option disabled>{{ formData.AttributeSet.AttributeSetNameEn }}</option></select><ui-select theme=selectize loading=refresher.AttributeSetsLoading ng-if=\"controlFlags.variation != 'enable'\" ng-model=formData.AttributeSet ng-show=\"dataset.AttributeSets.length > 0\"><ui-select-match placeholder=\"Search Attribute Set\"><span ng-bind=$select.selected.AttributeSetNameEn></span> <span ng-show=!$select.selected.AttributeSetNameEn>- Select Attribute Set -</span></ui-select-match><ui-select-choices group-by=\"'_group'\" refresh=refresher.AttributeSets($select.search) refresh-delay=1000 repeat=\"item in ($select.search != '' ? dataset.CombinedAttributeSets : dataset.AttributeSets) | filter : $select.search track by item.AttributeSetId\"><span ng-bind=item.AttributeSetNameEn></span></ui-select-choices></ui-select><select class=form-control ng-if=\"dataset.AttributeSets.length == 0\" disabled><option disabled>This category has no attribute sets</option></select></div></div><a class=\"like-text form-text\" ng-if=\"formData.AttributeSet.AttributeSetId && controlFlags.variation != 'enable'\" ng-click=\"formData.AttributeSet = {}\"><i class=\"fa fa-minus-circle color-theme\"></i></a></div><div class=form-group ng-repeat=\"amap in formData.AttributeSet.AttributeSetMaps\"><div class=width-label><label class=control-label ng-class=\"{'required': amap.Attribute.Required}\">{{ amap.Attribute.AttributeNameEn }}</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(amap.Attribute.DataType), 'width-field-xxl': isHtmlInput(amap.Attribute.DataType)}\"><select ng-if=isListInput(amap.Attribute.DataType) ng-required=\"amap.Attribute.Required && onPublishing\" class=form-control ng-model=formData.MasterAttribute[amap.Attribute.AttributeId] ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" name=AmapInput{{$index}} ng-options=\"item as item.AttributeValue.AttributeValueEn for item in amap.Attribute.AttributeValueMaps track by item.AttributeValueId\"><option disabled value=\"\" selected>- Select option -</option></select><div ng-if=isHtmlInput(amap.Attribute.DataType)><textarea ng-required=\"amap.Attribute.Required && onPublishing\" ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" ng-model=formData.MasterAttribute[amap.Attribute.AttributeId] name=AmapInput{{$index}} class=form-control ng-ckeditor=ckOptions></textarea></div><input ng-if=isFreeTextInput(amap.Attribute.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" ng-required=\"amap.Attribute.Required && onPublishing\" class=form-control name=AmapInput{{$index}} ng-model=\"formData.MasterAttribute[amap.Attribute.AttributeId]\"><div ng-if=isCheckboxInput(amap.Attribute.DataType)><div class=checkbox ng-repeat=\"vmap in amap.Attribute.AttributeValueMaps\"><label><input type=checkbox ng-init=\"formData.MasterAttribute[amap.Attribute.AttributeId]._checkbox = true\" ng-model=\"formData.MasterAttribute[amap.Attribute.AttributeId][vmap.AttributeValueId]\"> {{ vmap.AttributeValue.AttributeValueEn }}</label></div></div></div></div></div></div>"
   );
 
 
   $templateCache.put('ap/section-image-video',
-    "<div><nc-image-block options=\"{height: '150px', width: '150px'}\" name=Images nc-model=variantPtr.Images title=\"Product Images\" uploader=uploader on-fail=onImageUploadFail size=120></nc-image-block><div class=form-section ng-show=\"variantPtr.Images.length > 0\"><div class=form-section-header>Embed Video</div><div class=form-section-content><div ng-repeat=\"i in variantPtr.Images\"><div nc-template=common/input/form-group-with-label nc-label=\"Video Link {{$index + 1}}\" nc-template-form=\"form['VideoLinks' + $index]\" nc-template-options-path=addProductForm/VideoLink><input class=\"form-control width-field-normal\" name=VideoLinks{{$index}} type=url ng-init=\"variantPtr.VideoLinks[$index] = { Url : null }\" maxlength=500 ng-model=\"variantPtr.VideoLinks[$index].Url\"></div></div></div></div></div>"
+    "<div><nc-image-block options=\"{height: '150px', width: '150px'}\" name=Images nc-model=variantPtr.Images title=\"Product Images\" uploader=uploader on-fail=onImageUploadFail size=10><div>Choose images that clearly represent your product. Images must meet the following requirements:</div><ul class=margin-top-10><li>Image width or height must be between at least <strong>1500px</strong> but not larger than <strong>2000px</strong></li><li>Image portion must be in square format.</li><li>File size must not be larger than 5MB and.</li><li>File format must be JPG or PNG.</li></ul></nc-image-block><div class=form-section ng-show=\"variantPtr.Images.length > 0\"><div class=form-section-header>Embed Video</div><div class=form-section-content><div ng-repeat=\"i in variantPtr.Images\"><div nc-template=common/input/form-group-with-label nc-label=\"Video Link {{$index + 1}}\" nc-template-form=\"form['VideoLinks' + $index]\" nc-template-options-path=addProductForm/VideoLink><input class=\"form-control width-field-normal\" name=VideoLinks{{$index}} type=url ng-init=\"variantPtr.VideoLinks[$index] = { Url : null }\" maxlength=500 ng-model=\"variantPtr.VideoLinks[$index].Url\"></div></div></div></div></div>"
   );
 
 
@@ -8874,9 +8944,10 @@ module.exports = {
       "items": require('./attributeValue')
     }
   },
-  "oneOf": [
+  "anyOf": [
     {"required": ["AttributeValues", "AttributeId", "DataType", "Required", "AttributeNameEn"]},
-    {"required": ["AttributeValueMaps", "AttributeId", "DataType", "Required", "AttributeNameEn"]}
+    {"required": ["AttributeValueMaps", "AttributeId", "DataType", "Required", "AttributeNameEn"]},
+    {"required": ["AttributeValues", "AttributeId", "ValueEn"]}
   ]
 };
 
@@ -8943,7 +9014,7 @@ module.exports = {
         "type": "string"
       }
     },
-    "required":  ["AttributeValueEn", "AttributeValueId", "AttributeValueTh"]
+    "required": ["AttributeValueId"]
 };
 
 },{}],120:[function(require,module,exports){
@@ -8966,13 +9037,17 @@ module.exports = {
       "type": "string"
     },
     "AttributeId": {
-      "type": "integer"
+      "oneOf" : [
+        {"type": "integer"},
+        {"type": "null"}
+      ]
     },
     "AttributeValues": {
       "type": "array",
       "items": require('./attributeValue')
     }
-  }
+  },
+  "required": ["ValueEn", "AttributeId", "AttributeValues"]
 }
 
 },{"./attributeValue":119}],122:[function(require,module,exports){
@@ -9275,7 +9350,7 @@ module.exports =  {
   "required": ["ShippingMethod", "ProductNameEn", "ProductNameTh",
     "StockType", "DimensionUnit", "SEO", "VideoLinks", "Images", "GiftWrap",
     "FirstAttribute", "SecondAttribute",
-    "Installment", "PrepareDay", "LimitIndividualDay", "Display", "IsVariant"]
+    "Installment", "PrepareDay", "LimitIndividualDay", "Display"]
 };
 
 },{"./nthAttribute":121,"./seo":123}],125:[function(require,module,exports){
@@ -11644,8 +11719,35 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         MasterAttribute: {
           serialize: function(ma) {
             var t = [];
+
             Object.keys(ma).forEach(function(key) {
-              if (ma[key].AttributeValueId) {
+              //key is essentially Attribute Id
+              if(ma[key]._checkbox){
+
+                var g = {
+                  AttributeValues: [],
+                  AttributeId: Number(key),
+                  ValueEn: ""
+                };
+
+                //xKey is a essentially a list of ValueIds
+                var xKey = Object.keys(ma[key]);
+                for(var x = 0; x < xKey.length; x++){
+                  if(xKey[x] == "_checkbox") continue;
+                  if(_.isNaN(Number(xKey[x]))) continue;
+
+
+                  var valueId = xKey[x];
+                  var valueTf = ma[key][valueId];
+
+                  g.AttributeValues.push({
+                    AttributeValueId: Number(valueId),
+                    CheckboxValue: valueTf
+                  });
+                }
+
+                t.push(g);
+              }else if (ma[key].AttributeValueId) {
                 var g = {
                   AttributeValues: [],
                   AttributeId: ma[key].AttributeId,
@@ -11705,19 +11807,19 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
       //Load attribute set (TODO: we won't have to do this in future)
       invFd.AttributeSet = FullAttributeSet;
       //Load full Brand (TODO: we won't have to do this in future)
-      var BrandId = invFd.Brand.BrandId;
-      invFd.Brand = {
-        BrandId: null,
-        BrandNameEn: 'Search brand by name or id..'
-      };
-
-      if(BrandId > 0){
-        Brand.getOne(BrandId).then(function(data) {
-          invFd.Brand = data;
-          delete invFd.Brand.$id;
-          invFd.Brand.id = BrandId;
-        });
-      }
+      // var BrandId = invFd.Brand.BrandId;
+      // invFd.Brand = {
+      //   BrandId: null,
+      //   BrandNameEn: 'Search brand by name or id..'
+      // };
+      //
+      // if(BrandId > 0){
+      //   Brand.getOne(BrandId).then(function(data) {
+      //     invFd.Brand = data;
+      //     delete invFd.Brand.$id;
+      //     invFd.Brand.id = BrandId;
+      //   });
+      // }
 
       //Find which variant is default
       try {
@@ -11733,14 +11835,28 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
       var MasterAttribute = {};
       try {
         invFd.MasterAttribute.forEach(function(ma) {
-          var k = {
-            'AttributeValue': ma.AttributeValues[0]
+          if(ma.DataType == "CB"){
+            for(var i = 0; i < ma.AttributeValues.length; i++){
+              var item  = ma.AttributeValues[i];
+
+              if(!MasterAttribute[ma.AttributeId]){
+                MasterAttribute[ma.AttributeId] = {
+                  _checkbox : true
+                };
+              }
+
+              MasterAttribute[ma.AttributeId][item.AttributeValueId] = item.CheckboxValue;
+            }
+          }else{
+            var k = {
+              'AttributeValue': ma.AttributeValues[0]
+            }
+            if (ma.AttributeValues.length > 0 && ma.AttributeValues[0].AttributeValueId) {
+              k.AttributeId = ma.AttributeId;
+              k.AttributeValueId = ma.AttributeValues[0].AttributeValueId;
+            }
+            MasterAttribute[ma.AttributeId] = ma.ValueEn || k;
           }
-          if (ma.AttributeValues.length > 0 && ma.AttributeValues[0].AttributeValueId) {
-            k.AttributeId = ma.AttributeId;
-            k.AttributeValueId = ma.AttributeValues[0].AttributeValueId;
-          }
-          MasterAttribute[ma.AttributeId] = ma.ValueEn || k;
         });
       } catch (ex) {
         console.warn('Unable to set MasterAttribute', ex);
@@ -11761,8 +11877,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         }
       }
 
-      if (invFd.LocalCategory) {
-        LocalCategory.getOne(invFd.LocalCategory).then(function(locat) {
+      if (invFd.MainLocalCategory) {
+        LocalCategory.getOne(invFd.MainLocalCategory.CategoryId).then(function(locat) {
           invFd.LocalCategories.unshift(locat);
           if (invFd.LocalCategories.length > 3) {
             invFd.LocalCategories.pop();
@@ -11795,15 +11911,15 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
       }
 
       invFd.GlobalCategories.unshift({
-        CategoryId: invFd.GlobalCategory
+        CategoryId: invFd.MainGlobalCategory
       })
 
       if (invFd.GlobalCategories.length > 3) {
         invFd.GlobalCategories.pop()
       }
 
-      delete invFd.GlobalCategory;
-      delete invFd.LocalCategory;
+      delete invFd.MainGlobalCategory;
+      delete invFd.MainLocalCategory;
 
       try {
         var _split = invFd.Keywords.trim().split(',');
@@ -12363,7 +12479,7 @@ module.exports = {
 },{}],171:[function(require,module,exports){
 module.exports = {
   KillerPointTh: {
-    divClass: 'col-sm-6',
+    divClass: 'col-xs-6',
     error: {
       messages: {
         required: 'This is a required field',
@@ -12372,7 +12488,7 @@ module.exports = {
     }
   },
   KillerPointEn: {
-    'divClass': 'col-sm-6',
+    'divClass': 'col-xs-6',
     'error': {
       'messages': {
         'required': 'This is a required field',
@@ -12408,7 +12524,7 @@ module.exports = {
   },
   StockType: {},
   DescriptionFull: {
-    'divClass': 'col-sm-6',
+    'divClass': 'col-xs-6',
     'formGroupClass': 'margin-top-40',
     'labelClass': 'required',
     'inputSize': 'xxl'
@@ -12457,7 +12573,7 @@ module.exports = {
     }
   },
   DescriptionShortTh: {
-    'divClass': 'col-sm-6',
+    'divClass': 'col-xs-6',
     'inputSize': 'xxl',
     'formGroupClass': 'margin-top-30',
     'error': {
@@ -12467,7 +12583,7 @@ module.exports = {
     }
   },
   DescriptionShortEn: {
-    'divClass': 'col-sm-6',
+    'divClass': 'col-xs-6',
     'inputSize': 'xxl',
     'formGroupClass': 'margin-top-30',
     'error': {
@@ -13097,7 +13213,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "\n" +
     "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=formData.DescriptionShortTh>\r" +
     "\n" +
-    "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Feature Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Feature Products\"><span class=form-text>There are no products in this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=\"params.FeatureTitle\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=\"col-xs-12 text-align-left\" style=\"margin-top:-15px; margin-bottom:0px\"><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
+    "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Featured Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Featured Products\"><span class=form-text>will be available after adding product into this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=\"params.FeatureTitle\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=\"col-xs-12 text-align-left\" style=\"margin-top:-15px; margin-bottom:0px\"><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
@@ -13124,7 +13240,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "\n" +
     "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=formData.DescriptionShortTh>\r" +
     "\n" +
-    "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Feature Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Feature Products\"><span class=form-text>There are no products in this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=\"params.FeatureTitle\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=\"col-xs-12 text-align-left\" style=\"margin-top:-15px; margin-bottom:0px\"><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
+    "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Featured Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Featured Products\"><span class=form-text>will be available after adding product into this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=\"params.FeatureTitle\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=\"col-xs-12 text-align-left\" style=\"margin-top:-15px; margin-bottom:0px\"><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 

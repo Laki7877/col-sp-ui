@@ -214,7 +214,13 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <div class="width_150">
               Ontime Delivery
             </div>
-            <div class="font-size-16 color-yellow">75%</div>
+            <!-- <div class="font-size-16 color-yellow">75%</div> -->
+            <div ng-switch on="onTimeDeliveryRank">
+              <div class="font-size-16 color-green" ng-switch-when="green">{{onTimeDeliveryScore}}</div>
+              <div class="font-size-16 color-yellow" ng-switch-when="yellow">{{onTimeDeliveryScore}}</div>
+              <div class="font-size-16 color-red" ng-switch-when="red">{{onTimeDeliveryScore}}</div>
+              <div class="font-size-16" ng-switch-default>n/a</div>
+            </div>
           </div>
         </div>
         <div class="group_container">
@@ -222,7 +228,13 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <div class="width_150">
               Return Rate
             </div>
-            <div class="font-size-16 color-green">0%</div>
+            <!-- <div class="font-size-16 color-green">0%</div> -->
+            <div ng-switch on="returnRank">
+              <div class="font-size-16 color-green" ng-switch-when="green">{{returnScore}}</div>
+              <div class="font-size-16 color-yellow" ng-switch-when="yellow">{{returnScore}}</div>
+              <div class="font-size-16 color-red" ng-switch-when="red">{{returnScore}}</div>
+              <div class="font-size-16" ng-switch-default>n/a</div>
+            </div>
           </div>
         </div>
       </div>
@@ -235,24 +247,14 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
           <span class="font-size-18 header_name_space">Top Selling This Month</span>
         </div>
 
-        <div class="group_container top_selling_field">
-            <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
-            <div class="column-text-ellipsis"><a href="#">Chanel, the cheetah</a></div>
+        <div ng-repeat="product in topSellingItemsData  | limitTo:maxTopSellingItems" ng-show="topSellingItemsData.length != 0" class="group_container top_selling_field">
+            <img class="logo-img" src="{{product.img_path}}" />
+            <div class="column-text-ellipsis"><a href="#">{{product.name}}</a></div>
         </div>
-        <div class="group_container top_selling_field">
-            <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
-            <div class="column-text-ellipsis"><a href="#">French Connection, Sunday - high quality product</a></div>
+        <div ng-show="topSellingItemsData.length == 0" class="group_container top_selling_field">
+            <!-- <img class="logo-img" src="{{product.img_path}}" /> -->
+            <div class="text-center">- No Top Selling Product -</div>
         </div>
-        <div class="group_container top_selling_field">
-            <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
-            <div class="column-text-ellipsis"><a href="#">French Connection, Sunday - high quality product</a></div>
-        </div>
-        <div class="group_container top_selling_field">
-            <img class="logo-img" src="<?= $this->asset('/assets/img/img40.png') ?>" />
-            <div class="column-text-ellipsis"><a href="#">French Connection, Sunday - high quality product</a></div>
-        </div>
-
-
       </div>
 
     </div>

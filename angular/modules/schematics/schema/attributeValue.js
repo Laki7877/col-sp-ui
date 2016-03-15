@@ -12,5 +12,5 @@ module.exports = {
         "type": "string"
       }
     },
-    "required":  ["AttributeValueEn", "AttributeValueId", "AttributeValueTh"]
+    "required": ["AttributeValueId"]
 };
