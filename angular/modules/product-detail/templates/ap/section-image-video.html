@@ -1,12 +1,13 @@
 <div>
     <nc-image-block options="{height: '150px', width: '150px'}" name="Images" nc-model="variantPtr.Images"
     title="Product Images" uploader="uploader" on-fail="onImageUploadFail" size="10">
-      <strong> Dear P Natt </strong>
-      Please navigate to <code>section-image-video.html</code> and look for this block of HTML,
-      to insert correct HTML.
-
-      Sincerely,
-      Dev Team
+    <div>Choose images that clearly  represent your product. Images must meet the following requirements:</div>
+    <ul class="margin-top-10">
+      <li>Image width or height must be between at least <strong>1500px</strong> but not larger than <strong>2000px</strong></li>
+      <li>Image portion must be in square format.</li>
+      <li>File size must not be larger than 5MB and.</li>
+      <li>File format must be JPG or PNG.</li>
+    </ul>
     </nc-image-block>
 
     <div class="form-section" ng-show="variantPtr.Images.length > 0">
