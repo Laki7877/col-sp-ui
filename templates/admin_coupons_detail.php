@@ -87,10 +87,10 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
                     <div class="form-section-header"><h2>More Options</h2></div>
                     <div class="form-section-content">
                       <div nc-template="common/input/form-group-with-label" nc-label="Usage per Customer" nc-template-options-path="couponForm/UsagePerCustomer">
-                          <input type="text" class="form-control" ng-model="formData.UsagePerCustomer"/>
+                          <input type="text" class="form-control" ng-model="formData.UsagePerCustomer" ng-pattern-restrict="^[0-9]*$"/>
                       </div>
                       <div nc-template="common/input/form-group-with-label" nc-label="Maximum Users" nc-template-options-path="couponForm/MaximumUsers">
-                          <input type="text" class="form-control" ng-model="formData.MaximumUser"/>
+                          <input type="text" class="form-control" ng-model="formData.MaximumUser" ng-pattern-restrict="^[0-9]*$"/>
                       </div>
                     </div>
                   </div>
