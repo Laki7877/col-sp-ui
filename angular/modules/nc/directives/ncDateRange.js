@@ -7,6 +7,7 @@ angular.module('nc')
                 priority: 1010,
                 scope: {
                     optionsPath: '@ncTemplateOptionsPath',
+                    templateField: '&ncTemplateForm',
                     startLabel: '@?ncStartLabel',
                     startDate: '=ncModelStart',
                     endLabel: '@?ncEndLabel',
@@ -39,8 +40,14 @@ angular.module('nc')
                     if(!('error' in opt)){
                         opt.error = {};
                     };
-
-
+                    scope.isInvalid = function(form) {
+                        if(angular.isDefined(form) &&
+                            angular.isDefined(form.$invalid) &&
+                            angular.isDefined(form.$dirty)) {
+                            return form.$invalid && (form.$dirty || form.$$parentForm.$submitted);
+                        }
+                        return false;
+                    };                    
                     scope.options = opt;
                     scope.config1 = { dropdownSelector: '#date_range_vertical_dropdown1', minView: (scope.startMinView || 'hour') }
                     scope.config2 = { dropdownSelector: '#date_range_vertical_dropdown2', minView: (scope.endMinView || 'hour') }

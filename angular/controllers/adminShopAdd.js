@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, $uibModal, AdminShopService, AdminShoptypeService, GlobalCategoryService, Category, config, common, Credential, $rootScope, $window) {
+module.exports = function($scope, $controller, $uibModal, AdminShopService, AdminShoptypeService, GlobalCategoryService, ImageService, Category, config, common, Credential, $window) {
 	'ngInject';
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -35,14 +35,14 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 		if(_.isNil(file)) {
 			return;
 		}
-		$scope.formData.BrandImage = {
+		$scope.formData.ShopImage = {
 			url: '/assets/img/loader.gif'
 		};
 		$scope.logoUploader.upload(file)
 			.then(function(response) {
-				$scope.formData.BrandImage = response.data;
+				$scope.formData.ShopImage = response.data;
 			}, function(err) {
-				$scope.formData.BrandImage = null;
+				$scope.formData.ShopImage = null;
 				$scope.alert.error(common.getError(err.data));
 			});
 	};	

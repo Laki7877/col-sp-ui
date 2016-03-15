@@ -19,7 +19,14 @@ module.exports = {
       }
     }
   },
-  DateRange: {},
+  DateRange: {
+    labelClass: "required",
+    error: {
+      messages: {
+        required: 'This is a required field'
+      }
+    }
+  },
   DiscountAmount: {
     labelClass: "required",
     hint: {
