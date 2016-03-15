@@ -54,6 +54,7 @@ Route::add('/roles/:id', 'SellerController::editRole');
 Route::add('/inventory', 'SellerController::listInventory');
 Route::add('/newsletters', 'SellerController::listNewsletter');
 Route::add('/onboarding', 'SellerController::onboarding');
+Route::add('/dashboard', 'SellerController::dashboard');
 
 
 //admin routing

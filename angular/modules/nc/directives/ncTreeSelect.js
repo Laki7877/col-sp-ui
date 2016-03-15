@@ -162,10 +162,14 @@ angular.module('nc')
 				model: '=ncModel',
 				tree: '=ncTreeSelectTree',
 				title: '@ncTreeSelectTitle',
-				options: '=?ncTreeSelectOptions'
+				options: '=?ncTreeSelectOptions',
+				excludeBy: '=?ncExclude'
 			},
 			template: $templateCache.get('common/ncTreeSelect'),
 			link: function(scope, element, attrs) {
+				if(!scope.excludeBy){
+					scope.excludeBy = [];
+				}
 				// Directive options
 				scope.options = _.defaults(scope.options, {
 					columnSize: 4,

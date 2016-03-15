@@ -91,16 +91,16 @@
 					<div nc-template="common/input/form-group-with-label" nc-template-options-path="addProductForm/TheOneCardEarn"
 							   nc-template-form="form.TheOneCardEarn"
 	  nc-label="The One Card earn">
-						<input type="text" disabled class="form-control" ng-restrict="[0-9]*" 
+						<input type="text" disabled class="form-control" ng-restrict="[0-9]*"
 						       name="TheOneCardEarn" ng-model="formData.TheOneCardEarn"
 				   />
 					</div>
 
 					<div nc-template="common/input/form-group-with-label" nc-template-options-path="addProductForm/Nothing" nc-template-form="form.GiftWrap"
 													     nc-label="Gift Wrap">
-						<select class="form-control" name="formData.GiftWrap">
-							<option>No</option>
-							<option>Yes</option>
+						<select class="form-control" ng-model="formData.GiftWrap">
+							<option value="N">No</option>
+							<option value="Y">Yes</option>
 						</select>
 					</div>
 

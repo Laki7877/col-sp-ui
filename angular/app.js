@@ -7,6 +7,7 @@ var bulk = require('bulk-require')(__dirname, ['controllers/*.js', 'services/*.j
 var config = require('./config')
 var route = require('./route')
 var template = require('./template')
+var skeemas = require('skeemas');
 
 // External dependencies
 global._ = require('lodash')
@@ -27,6 +28,7 @@ require('angular-chart.js')
 // Nc package
 require('./modules/nc')
 require('./modules/product-detail')
+require('./modules/schematics')
 
 // Internal dependencies
 var controllers = bulk.controllers
@@ -39,7 +41,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   'nc', 'ui.bootstrap.datetimepicker',
   'duScroll', 'ngSanitize', 'ngAnimate',
   'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select',
-  'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail', 'ngFileUpload'
+  'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail', 'ngFileUpload',
+  'schematics'
 ])
 
   // App config
@@ -59,6 +62,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .value('$templateOptionsCache', bulk['template-options'])
 
   // Helpers
+  .factory('skeemas', skeemas)
   .factory('common', helpers.common)
   .factory('storage', helpers.storage)
   .factory('util', helpers.util)
@@ -152,6 +156,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('SellerInventoryListCtrl', controllers.sellerInventoryList)
   .controller('SellerOnboardingCtrl', controllers.sellerOnboarding)
   .controller('SellerNewsletterCtrl', controllers.sellerNewsletter)
+  .controller('SellerDashboardCtrl', controllers.sellerDashboard)
 
 
   .controller('AdminAttributeCtrl', controllers.adminAttribute)
