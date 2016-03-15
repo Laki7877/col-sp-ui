@@ -1,6 +1,6 @@
 <div>
     <nc-image-block options="{height: '150px', width: '150px'}" name="Images" nc-model="variantPtr.Images"
-    title="Product Images" uploader="uploader" on-fail="onImageUploadFail" size="120"></nc-image-block>
+    title="Product Images" uploader="uploader" on-fail="onImageUploadFail" size="10"></nc-image-block>
 
     <div class="form-section" ng-show="variantPtr.Images.length > 0">
         <div class="form-section-header">
@@ -8,11 +8,11 @@
         </div>
         <div class="form-section-content">
             <div ng-repeat="i in variantPtr.Images">
-                <div nc-template="common/input/form-group-with-label" 
-                nc-label="Video Link {{$index + 1}}" 
+                <div nc-template="common/input/form-group-with-label"
+                nc-label="Video Link {{$index + 1}}"
                 nc-template-form="form['VideoLinks' + $index]" nc-template-options-path="addProductForm/VideoLink">
-                    <input class="form-control width-field-normal" 
-                    name="VideoLinks{{$index}}" type="url" 
+                    <input class="form-control width-field-normal"
+                    name="VideoLinks{{$index}}" type="url"
 		    ng-init="variantPtr.VideoLinks[$index] = { Url : null }"
                     maxlength="500" ng-model="variantPtr.VideoLinks[$index].Url"/>
                 </div>

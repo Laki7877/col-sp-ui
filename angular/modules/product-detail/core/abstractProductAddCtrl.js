@@ -60,13 +60,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     //Initialize Pointers
     $scope.variantPtr = $scope.formData.MasterVariant;
 
-    var checkSchema = function(data, schemaName){
+    var checkSchema = function(data, schemaName, code){
       //Perform schema check
       var schema = JSONCache.get(schemaName || 'productStages');
+      if(!code) code = "(RX)";
       var validation = skeemas.validate(data, schema);
       console.log("Schema validation result: ", validation);
       if(!validation.valid){
-        $scope.devAlert.error('<strong>Warning</strong> Automated API structure pre-check procedure failed. ' +
+        $scope.devAlert.error('<strong>Warning ' + code + '</strong> Automated API structure pre-check procedure failed. ' +
         'Format does not comply with the <strong>Ahancer Product Add Exchange Protocol (A-PAEP)</strong> V3 Rev C. ' +
         'For more detail, look for <i>schema validation result</i> in your js console.');
       }
@@ -122,7 +123,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     };
 
     $scope.onImageUploadFail = function(item, filter) {
-      $scope.image_alert.error(item.Message || 'Your image does not meet guideline. Images must be smaller than 5 MB, with square size larger than 1500x1500.');
+      $scope.image_alert.error(item.Message || 'Maximum ' + filter + ' images can be uploaded.');
     }
 
     $scope.onImageUploadSuccess = function() {
@@ -364,6 +365,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       $scope.pageState.load('Saving..');
 
       var apiRequest = Product.serialize($scope.formData);
+      checkSchema(apiRequest, 'productStages', '(TX)');
+
       Product.publish(apiRequest, Status).then(function(res) {
         $scope.pageState.reset();
         if (res.ProductId) {
@@ -375,7 +378,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             $scope.formData.ProductId = Number(res.ProductId);
             $scope.pageState.reset();
             $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
-
           });
 
           $scope.addProductForm.$setPristine(true);
