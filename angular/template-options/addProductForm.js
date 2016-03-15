@@ -1,6 +1,6 @@
 module.exports = {
   KillerPointTh: {
-    divClass: 'col-sm-6',
+    divClass: 'col-xs-6',
     error: {
       messages: {
         required: 'This is a required field',
@@ -9,7 +9,7 @@ module.exports = {
     }
   },
   KillerPointEn: {
-    'divClass': 'col-sm-6',
+    'divClass': 'col-xs-6',
     'error': {
       'messages': {
         'required': 'This is a required field',
@@ -45,7 +45,7 @@ module.exports = {
   },
   StockType: {},
   DescriptionFull: {
-    'divClass': 'col-sm-6',
+    'divClass': 'col-xs-6',
     'formGroupClass': 'margin-top-40',
     'labelClass': 'required',
     'inputSize': 'xxl'
@@ -94,7 +94,7 @@ module.exports = {
     }
   },
   DescriptionShortTh: {
-    'divClass': 'col-sm-6',
+    'divClass': 'col-xs-6',
     'inputSize': 'xxl',
     'formGroupClass': 'margin-top-30',
     'error': {
@@ -104,7 +104,7 @@ module.exports = {
     }
   },
   DescriptionShortEn: {
-    'divClass': 'col-sm-6',
+    'divClass': 'col-xs-6',
     'inputSize': 'xxl',
     'formGroupClass': 'margin-top-30',
     'error': {

@@ -12,7 +12,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 	util.warningOnLeave(function() {
 		var modalDirty = $scope.modalScope == null ? false : $scope.modalScope.form.$dirty;
 		return $scope.saving || $scope.dirty || modalDirty;
-	});	
+	});
 	//Expand and collapse all
 	$scope.collapseAll = function() {
 		$rootScope.$broadcast('angular-ui-tree:collapse-all');
@@ -101,8 +101,8 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 	};
 
 	//Condition at which tradable select will lock attributeset
-	$scope.lockAttributeset = function(i) {		
-		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);		
+	$scope.lockAttributeset = function(i) {
+		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);
 	};
 
 	//Open category modal
@@ -110,7 +110,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 		//Open add or edit one category
 	var modal = $uibModal.open({
 			animation: true,
-			size: 'lg',
+			size: 'xl',
 			keyboard: false,
 			templateUrl: 'local_category/modal',
 			controller: function($scope, $uibModalInstance, $timeout, LocalCategoryService, NcAlert, config, id, Product, ImageService) {
@@ -153,7 +153,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 						searchText: text
 					}).then(function(response) {
 						$scope.products = response.data;
-					});	
+					});
 				};
 				$scope.uploadBannerFail = function(e, response) {
 					if(e == 'onmaxsize') {
@@ -174,7 +174,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 						} else {
 							$scope.$parent.modalScope = null;
 						}
-					} 
+					}
 				});
 				$scope.save = function() {
 					$scope.alert.close();
