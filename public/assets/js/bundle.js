@@ -7607,7 +7607,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncTreeSelect',
-    "<div class=category-section-border-box><div class=category-header>{{title}}</div><div class=\"category-content no-padding\"><ul ng-repeat=\"column in (columns.list()) track by $index\" ng-class=\"{'empty-column': column.list().length <= 0 }\" class=content-column><li ng-repeat=\"$item in (column.list()) track by $index\" ng-class=\"{'category-active' : $index == column.active() }\" ng-click=setModel($item)>{{getContent($item)}} <span ng-if=\"anyHas($item, excludeBy, 'CategoryId')\">(Disabled)</span></li></ul></div></div>"
+    "<div class=category-section-border-box><div class=category-header>{{title}}</div><div class=\"category-content no-padding\"><ul ng-repeat=\"column in (columns.list()) track by $index\" ng-class=\"{'empty-column': column.list().length <= 0 }\" class=content-column><li ng-repeat=\"$item in (column.list()) track by $index\" ng-class=\"{'category-active' : $index == column.active() , 'disabled': anyHas($item, excludeBy, 'CategoryId') }\" ng-click=\"!anyHas($item, excludeBy, 'CategoryId') && setModel($item)\">{{getContent($item)}}</li></ul></div></div>"
   );
 
 
