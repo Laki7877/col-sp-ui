@@ -81,11 +81,13 @@
 					background: $color-blue;
 					color: $color-white;
 				}
+				&.disabled{
+					cursor: not-allowed;
+					color: $color-grey;
+					text-decoration: line-through;
+				}
 			}
-			> li.disabled {
-				color: $color-light-grey;
-			}
-
+			
 			&.empty-column {
 				background: $color-light-blue;
 			}

@@ -15072,19 +15072,21 @@ html, body {
   background: #4899DD;
   color: #FFFFFF;
 }
-/* line 85, ../../../assets/_global_category.scss */
+/* line 84, ../../../assets/_global_category.scss */
 .category-section .category-content > .content-column > li.disabled {
-  color: #EDF2F9;
+  cursor: not-allowed;
+  color: #BCC7D5;
+  text-decoration: line-through;
 }
-/* line 89, ../../../assets/_global_category.scss */
+/* line 91, ../../../assets/_global_category.scss */
 .category-section .category-content > .content-column.empty-column {
   background: #edf2f9;
 }
-/* line 93, ../../../assets/_global_category.scss */
+/* line 95, ../../../assets/_global_category.scss */
 .category-section .category-content > .content-column:not(.empty-column) {
   background: #FFFFFF;
 }
-/* line 99, ../../../assets/_global_category.scss */
+/* line 101, ../../../assets/_global_category.scss */
 .category-section .category-footer {
   margin-top: 15px;
 }
@@ -15097,29 +15099,29 @@ html, body {
 .category-section .category-footer:after {
   clear: both;
 }
-/* line 104, ../../../assets/_global_category.scss */
+/* line 106, ../../../assets/_global_category.scss */
 .category-section.column-1 {
   width: 238px;
 }
-/* line 108, ../../../assets/_global_category.scss */
+/* line 110, ../../../assets/_global_category.scss */
 .category-section.column-2 {
   width: 474px;
 }
-/* line 112, ../../../assets/_global_category.scss */
+/* line 114, ../../../assets/_global_category.scss */
 .category-section.column-3 {
   width: 710px;
 }
-/* line 116, ../../../assets/_global_category.scss */
+/* line 118, ../../../assets/_global_category.scss */
 .category-section.column-4 {
   width: 946px;
 }
-/* line 120, ../../../assets/_global_category.scss */
+/* line 122, ../../../assets/_global_category.scss */
 .category-section.column-5 {
   width: 1182px;
 }
 
 /* Source */
-/* line 129, ../../../assets/_global_category.scss */
+/* line 131, ../../../assets/_global_category.scss */
 .angular-ui-tree-empty {
   border: 1px dashed #bbb;
   min-height: 100px;
@@ -15131,7 +15133,7 @@ html, body {
   background-position: 0 0, 30px 30px;
 }
 
-/* line 140, ../../../assets/_global_category.scss */
+/* line 142, ../../../assets/_global_category.scss */
 .angular-ui-tree-nodes {
   position: relative;
   margin: 0;
@@ -15139,12 +15141,12 @@ html, body {
   list-style: none;
 }
 
-/* line 147, ../../../assets/_global_category.scss */
+/* line 149, ../../../assets/_global_category.scss */
 .angular-ui-tree-nodes .angular-ui-tree-nodes {
   padding-left: 20px;
 }
 
-/* line 151, ../../../assets/_global_category.scss */
+/* line 153, ../../../assets/_global_category.scss */
 .angular-ui-tree-node, .angular-ui-tree-placeholder {
   position: relative;
   margin: 0;
@@ -15153,19 +15155,19 @@ html, body {
   line-height: 20px;
 }
 
-/* line 159, ../../../assets/_global_category.scss */
+/* line 161, ../../../assets/_global_category.scss */
 .angular-ui-tree-hidden {
   display: none;
 }
 
-/* line 163, ../../../assets/_global_category.scss */
+/* line 165, ../../../assets/_global_category.scss */
 .angular-ui-tree-placeholder {
   margin: 0px 0;
   padding: 0;
   min-height: 30px;
 }
 
-/* line 169, ../../../assets/_global_category.scss */
+/* line 171, ../../../assets/_global_category.scss */
 .angular-ui-tree-handle {
   cursor: move;
   text-decoration: none;
@@ -15177,7 +15179,7 @@ html, body {
   line-height: 20px;
 }
 
-/* line 180, ../../../assets/_global_category.scss */
+/* line 182, ../../../assets/_global_category.scss */
 .angular-ui-tree-drag {
   position: absolute;
   pointer-events: none;
@@ -15187,7 +15189,7 @@ html, body {
 }
 
 /* More Style */
-/* line 189, ../../../assets/_global_category.scss */
+/* line 191, ../../../assets/_global_category.scss */
 .angular-ui-tree-handle {
   background: #f8faff;
   border: 1px solid #dae2ea;
@@ -15195,14 +15197,14 @@ html, body {
   padding: 10px 10px;
 }
 
-/* line 196, ../../../assets/_global_category.scss */
+/* line 198, ../../../assets/_global_category.scss */
 .angular-ui-tree-handle:hover {
   color: #438eb9;
   background: #f4f6f7;
   border-color: #dce2e8;
 }
 
-/* line 202, ../../../assets/_global_category.scss */
+/* line 204, ../../../assets/_global_category.scss */
 .angular-ui-tree-placeholder {
   background: #f0f9ff;
   border: 2px dashed #bed2db;
@@ -15211,36 +15213,36 @@ html, body {
   box-sizing: border-box;
 }
 
-/* line 210, ../../../assets/_global_category.scss */
+/* line 212, ../../../assets/_global_category.scss */
 tr.angular-ui-tree-empty {
   height: 100px;
 }
 
-/* line 214, ../../../assets/_global_category.scss */
+/* line 216, ../../../assets/_global_category.scss */
 .group-title {
   background-color: #687074 !important;
   color: #FFF !important;
 }
 
 /* --- Tree --- */
-/* line 221, ../../../assets/_global_category.scss */
+/* line 223, ../../../assets/_global_category.scss */
 .tree-node {
   border: 1px solid #dae2ea;
   background: #f8faff;
   color: #7c9eb2;
 }
 
-/* line 227, ../../../assets/_global_category.scss */
+/* line 229, ../../../assets/_global_category.scss */
 .nodrop {
   background-color: #f2dede;
 }
 
-/* line 231, ../../../assets/_global_category.scss */
+/* line 233, ../../../assets/_global_category.scss */
 .tree-node-content {
   margin: 10px;
 }
 
-/* line 234, ../../../assets/_global_category.scss */
+/* line 236, ../../../assets/_global_category.scss */
 .tree-handle {
   padding: 10px;
   background: #428bca;
@@ -15248,7 +15250,7 @@ tr.angular-ui-tree-empty {
   margin-right: 10px;
 }
 
-/* line 241, ../../../assets/_global_category.scss */
+/* line 243, ../../../assets/_global_category.scss */
 .angular-ui-tree-placeholder {
   background: #f0f9ff;
   border: 2px dashed #bed2db !important;
@@ -15258,7 +15260,7 @@ tr.angular-ui-tree-empty {
 }
 
 /*-- New Style --*/
-/* line 252, ../../../assets/_global_category.scss */
+/* line 254, ../../../assets/_global_category.scss */
 .category-column-header {
   margin-top: 30px;
   padding: 5px 10px 5px 10px;
@@ -15267,39 +15269,39 @@ tr.angular-ui-tree-empty {
   border-radius: 2px;
 }
 
-/* line 259, ../../../assets/_global_category.scss */
+/* line 261, ../../../assets/_global_category.scss */
 .category-column {
   text-align: center;
   width: 100px;
 }
 
-/* line 263, ../../../assets/_global_category.scss */
+/* line 265, ../../../assets/_global_category.scss */
 .category-action-gear {
   width: 40px;
 }
 
-/* line 266, ../../../assets/_global_category.scss */
+/* line 268, ../../../assets/_global_category.scss */
 .btn-collapse {
   color: #4891d2;
   margin-right: 3px;
 }
 
-/* line 270, ../../../assets/_global_category.scss */
+/* line 272, ../../../assets/_global_category.scss */
 .btn-collapse:hover {
   color: #4891d2;
 }
 
-/* line 273, ../../../assets/_global_category.scss */
+/* line 275, ../../../assets/_global_category.scss */
 .angular-ui-tree-nodes .angular-ui-tree-nodes {
   padding-left: 40px;
 }
 
-/* line 276, ../../../assets/_global_category.scss */
+/* line 278, ../../../assets/_global_category.scss */
 .angular-ui-tree-handle {
   padding: 5px 10px;
 }
 
-/* line 279, ../../../assets/_global_category.scss */
+/* line 281, ../../../assets/_global_category.scss */
 .tree-node {
   font-weight: normal;
   border: 1px solid #EDF2F9;
@@ -15308,16 +15310,16 @@ tr.angular-ui-tree-empty {
   color: #32343C;
 }
 
-/* line 286, ../../../assets/_global_category.scss */
+/* line 288, ../../../assets/_global_category.scss */
 .tree-node-content {
   margin: 5px 0px;
 }
 
-/* line 289, ../../../assets/_global_category.scss */
+/* line 291, ../../../assets/_global_category.scss */
 .angular-ui-tree-drag {
   border: 0px !important;
 }
-/* line 291, ../../../assets/_global_category.scss */
+/* line 293, ../../../assets/_global_category.scss */
 .angular-ui-tree-drag .tree-node-content {
   margin: 2px 0px 3px 0px;
 }
