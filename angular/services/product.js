@@ -420,7 +420,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
       }
 
       if (invFd.MainLocalCategory) {
-        LocalCategory.getOne(invFd.MainLocalCategory).then(function(locat) {
+        LocalCategory.getOne(invFd.MainLocalCategory.CategoryId).then(function(locat) {
           invFd.LocalCategories.unshift(locat);
           if (invFd.LocalCategories.length > 3) {
             invFd.LocalCategories.pop();
