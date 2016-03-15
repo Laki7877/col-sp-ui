@@ -67,15 +67,16 @@
                 ng-required="amap.Attribute.Required && onPublishing" type="text" class="form-control" name="AmapInput{{$index}}"
                 ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" />
 
-		<div ng-if="isCheckboxInput(amap.Attribute.DataType)"
-		       ng-init="formData.MasterAttribute[amap.Attribute.AttributeId] = {}">
-			<div class="checkbox" ng-repeat="vmap in amap.Attribute.AttributeValueMaps">
-			<label>
-				<input type="checkbox" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId][vmap.AttributeValueId]"/>
-				{{ vmap.AttributeValue.AttributeValueEn }}
-			</label>
-			</div>
-		</div>
+            		<div ng-if="isCheckboxInput(amap.Attribute.DataType)">
+            			<div class="checkbox" ng-repeat="vmap in amap.Attribute.AttributeValueMaps">
+              			<label>
+              				<input type="checkbox"
+                      ng-init="formData.MasterAttribute[amap.Attribute.AttributeId]._checkbox = true"
+                      ng-model="formData.MasterAttribute[amap.Attribute.AttributeId][vmap.AttributeValueId]"/>
+              				{{ vmap.AttributeValue.AttributeValueEn }}
+              			</label>
+            			</div>
+            		</div>
 
             </div>
         </div>

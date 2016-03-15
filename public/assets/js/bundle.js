@@ -7218,16 +7218,14 @@ angular.module('nc')
 				}
 
 				scope.anyHas = function(a, B, path) {
-					console.log('anyHas fields', a, B, path);
 		      // Check if a[path] matches any of b[path] in B
 		      var aP = _.get(a, path);
 		      for(var i = 0; i < B.length; i++){
 						var b = B[i];
 		        var bP = _.get(b, path);
-		        console.log('anyHas comparing', aP, bP, bP == aP);
 		        if(bP == aP) return true;
 		      }
-					
+
 		      return false;
 		    };
 
@@ -8002,7 +8000,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       $scope.pageState.load('Saving..');
 
       var apiRequest = Product.serialize($scope.formData);
-      checkSchema(apiRequest, 'productStages', '(TX)');
+      // checkSchema(apiRequest, 'productStages', '(TX)');
 
       Product.publish(apiRequest, Status).then(function(res) {
         $scope.pageState.reset();
@@ -8627,7 +8625,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-detail',
-    "<div class=form-section><div class=form-section-header><h2>Detail</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Attribute Set</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-if=\"controlFlags.variation == 'enable'\" class=form-control disabled><option disabled>{{ formData.AttributeSet.AttributeSetNameEn }}</option></select><ui-select theme=selectize loading=refresher.AttributeSetsLoading ng-if=\"controlFlags.variation != 'enable'\" ng-model=formData.AttributeSet ng-show=\"dataset.AttributeSets.length > 0\"><ui-select-match placeholder=\"Search Attribute Set\"><span ng-bind=$select.selected.AttributeSetNameEn></span> <span ng-show=!$select.selected.AttributeSetNameEn>- Select Attribute Set -</span></ui-select-match><ui-select-choices group-by=\"'_group'\" refresh=refresher.AttributeSets($select.search) refresh-delay=1000 repeat=\"item in ($select.search != '' ? dataset.CombinedAttributeSets : dataset.AttributeSets) | filter : $select.search track by item.AttributeSetId\"><span ng-bind=item.AttributeSetNameEn></span></ui-select-choices></ui-select><select class=form-control ng-if=\"dataset.AttributeSets.length == 0\" disabled><option disabled>This category has no attribute sets</option></select></div></div><a class=\"like-text form-text\" ng-if=\"formData.AttributeSet.AttributeSetId && controlFlags.variation != 'enable'\" ng-click=\"formData.AttributeSet = {}\"><i class=\"fa fa-minus-circle color-theme\"></i></a></div><div class=form-group ng-repeat=\"amap in formData.AttributeSet.AttributeSetMaps\"><div class=width-label><label class=control-label ng-class=\"{'required': amap.Attribute.Required}\">{{ amap.Attribute.AttributeNameEn }}</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(amap.Attribute.DataType), 'width-field-xxl': isHtmlInput(amap.Attribute.DataType)}\"><select ng-if=isListInput(amap.Attribute.DataType) ng-required=\"amap.Attribute.Required && onPublishing\" class=form-control ng-model=formData.MasterAttribute[amap.Attribute.AttributeId] ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" name=AmapInput{{$index}} ng-options=\"item as item.AttributeValue.AttributeValueEn for item in amap.Attribute.AttributeValueMaps track by item.AttributeValueId\"><option disabled value=\"\" selected>- Select option -</option></select><div ng-if=isHtmlInput(amap.Attribute.DataType)><textarea ng-required=\"amap.Attribute.Required && onPublishing\" ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" ng-model=formData.MasterAttribute[amap.Attribute.AttributeId] name=AmapInput{{$index}} class=form-control ng-ckeditor=ckOptions></textarea></div><input ng-if=isFreeTextInput(amap.Attribute.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" ng-required=\"amap.Attribute.Required && onPublishing\" class=form-control name=AmapInput{{$index}} ng-model=\"formData.MasterAttribute[amap.Attribute.AttributeId]\"><div ng-if=isCheckboxInput(amap.Attribute.DataType) ng-init=\"formData.MasterAttribute[amap.Attribute.AttributeId] = {}\"><div class=checkbox ng-repeat=\"vmap in amap.Attribute.AttributeValueMaps\"><label><input type=checkbox ng-model=\"formData.MasterAttribute[amap.Attribute.AttributeId][vmap.AttributeValueId]\"> {{ vmap.AttributeValue.AttributeValueEn }}</label></div></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Detail</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Attribute Set</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-if=\"controlFlags.variation == 'enable'\" class=form-control disabled><option disabled>{{ formData.AttributeSet.AttributeSetNameEn }}</option></select><ui-select theme=selectize loading=refresher.AttributeSetsLoading ng-if=\"controlFlags.variation != 'enable'\" ng-model=formData.AttributeSet ng-show=\"dataset.AttributeSets.length > 0\"><ui-select-match placeholder=\"Search Attribute Set\"><span ng-bind=$select.selected.AttributeSetNameEn></span> <span ng-show=!$select.selected.AttributeSetNameEn>- Select Attribute Set -</span></ui-select-match><ui-select-choices group-by=\"'_group'\" refresh=refresher.AttributeSets($select.search) refresh-delay=1000 repeat=\"item in ($select.search != '' ? dataset.CombinedAttributeSets : dataset.AttributeSets) | filter : $select.search track by item.AttributeSetId\"><span ng-bind=item.AttributeSetNameEn></span></ui-select-choices></ui-select><select class=form-control ng-if=\"dataset.AttributeSets.length == 0\" disabled><option disabled>This category has no attribute sets</option></select></div></div><a class=\"like-text form-text\" ng-if=\"formData.AttributeSet.AttributeSetId && controlFlags.variation != 'enable'\" ng-click=\"formData.AttributeSet = {}\"><i class=\"fa fa-minus-circle color-theme\"></i></a></div><div class=form-group ng-repeat=\"amap in formData.AttributeSet.AttributeSetMaps\"><div class=width-label><label class=control-label ng-class=\"{'required': amap.Attribute.Required}\">{{ amap.Attribute.AttributeNameEn }}</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(amap.Attribute.DataType), 'width-field-xxl': isHtmlInput(amap.Attribute.DataType)}\"><select ng-if=isListInput(amap.Attribute.DataType) ng-required=\"amap.Attribute.Required && onPublishing\" class=form-control ng-model=formData.MasterAttribute[amap.Attribute.AttributeId] ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" name=AmapInput{{$index}} ng-options=\"item as item.AttributeValue.AttributeValueEn for item in amap.Attribute.AttributeValueMaps track by item.AttributeValueId\"><option disabled value=\"\" selected>- Select option -</option></select><div ng-if=isHtmlInput(amap.Attribute.DataType)><textarea ng-required=\"amap.Attribute.Required && onPublishing\" ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" ng-model=formData.MasterAttribute[amap.Attribute.AttributeId] name=AmapInput{{$index}} class=form-control ng-ckeditor=ckOptions></textarea></div><input ng-if=isFreeTextInput(amap.Attribute.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" ng-required=\"amap.Attribute.Required && onPublishing\" class=form-control name=AmapInput{{$index}} ng-model=\"formData.MasterAttribute[amap.Attribute.AttributeId]\"><div ng-if=isCheckboxInput(amap.Attribute.DataType)><div class=checkbox ng-repeat=\"vmap in amap.Attribute.AttributeValueMaps\"><label><input type=checkbox ng-init=\"formData.MasterAttribute[amap.Attribute.AttributeId]._checkbox = true\" ng-model=\"formData.MasterAttribute[amap.Attribute.AttributeId][vmap.AttributeValueId]\"> {{ vmap.AttributeValue.AttributeValueEn }}</label></div></div></div></div></div></div>"
   );
 
 
@@ -11586,8 +11584,35 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         MasterAttribute: {
           serialize: function(ma) {
             var t = [];
+
             Object.keys(ma).forEach(function(key) {
-              if (ma[key].AttributeValueId) {
+              //key is essentially Attribute Id
+              if(ma[key]._checkbox){
+
+                var g = {
+                  AttributeValues: [],
+                  AttributeId: Number(key),
+                  ValueEn: ""
+                };
+
+                //xKey is a essentially a list of ValueIds
+                var xKey = Object.keys(ma[key]);
+                for(var x = 0; x < xKey.length; x++){
+                  if(xKey[x] == "_checkbox") continue;
+                  if(_.isNaN(Number(xKey[x]))) continue;
+
+
+                  var valueId = xKey[x];
+                  var valueTf = ma[key][valueId];
+
+                  g.AttributeValues.push({
+                    AttributeValueId: Number(valueId),
+                    CheckboxValue: valueTf
+                  });
+                }
+
+                t.push(g);
+              }else if (ma[key].AttributeValueId) {
                 var g = {
                   AttributeValues: [],
                   AttributeId: ma[key].AttributeId,
@@ -11675,14 +11700,28 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
       var MasterAttribute = {};
       try {
         invFd.MasterAttribute.forEach(function(ma) {
-          var k = {
-            'AttributeValue': ma.AttributeValues[0]
+          if(ma.DataType == "CB"){
+            for(var i = 0; i < ma.AttributeValues.length; i++){
+              var item  = ma.AttributeValues[i];
+
+              if(!MasterAttribute[ma.AttributeId]){
+                MasterAttribute[ma.AttributeId] = {
+                  _checkbox : true
+                };
+              }
+
+              MasterAttribute[ma.AttributeId][item.AttributeValueId] = item.CheckboxValue;
+            }
+          }else{
+            var k = {
+              'AttributeValue': ma.AttributeValues[0]
+            }
+            if (ma.AttributeValues.length > 0 && ma.AttributeValues[0].AttributeValueId) {
+              k.AttributeId = ma.AttributeId;
+              k.AttributeValueId = ma.AttributeValues[0].AttributeValueId;
+            }
+            MasterAttribute[ma.AttributeId] = ma.ValueEn || k;
           }
-          if (ma.AttributeValues.length > 0 && ma.AttributeValues[0].AttributeValueId) {
-            k.AttributeId = ma.AttributeId;
-            k.AttributeValueId = ma.AttributeValues[0].AttributeValueId;
-          }
-          MasterAttribute[ma.AttributeId] = ma.ValueEn || k;
         });
       } catch (ex) {
         console.warn('Unable to set MasterAttribute', ex);
@@ -11703,8 +11742,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
         }
       }
 
-      if (invFd.LocalCategory) {
-        LocalCategory.getOne(invFd.LocalCategory).then(function(locat) {
+      if (invFd.MainLocalCategory) {
+        LocalCategory.getOne(invFd.MainLocalCategory).then(function(locat) {
           invFd.LocalCategories.unshift(locat);
           if (invFd.LocalCategories.length > 3) {
             invFd.LocalCategories.pop();
@@ -11737,15 +11776,15 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
       }
 
       invFd.GlobalCategories.unshift({
-        CategoryId: invFd.GlobalCategory
+        CategoryId: invFd.MainGlobalCategory
       })
 
       if (invFd.GlobalCategories.length > 3) {
         invFd.GlobalCategories.pop()
       }
 
-      delete invFd.GlobalCategory;
-      delete invFd.LocalCategory;
+      delete invFd.MainGlobalCategory;
+      delete invFd.MainLocalCategory;
 
       try {
         var _split = invFd.Keywords.trim().split(',');
