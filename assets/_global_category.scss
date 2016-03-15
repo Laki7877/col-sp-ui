@@ -82,6 +82,9 @@
 					color: $color-white;
 				}
 			}
+			> li.disabled {
+				color: $color-light-grey;
+			}
 
 			&.empty-column {
 				background: $color-light-blue;
