@@ -7690,6 +7690,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       ExpireDate: null,
       LimitIndividualDay: false,
       MasterVariant: {
+        Display: 'GROUP',
         ProductNameEn: '',
         ProductNameTh: '',
         Sku: '',
