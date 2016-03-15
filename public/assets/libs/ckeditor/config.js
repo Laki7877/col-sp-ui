@@ -17,6 +17,7 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'forms' },
 		{ name: 'others' },
 		{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+		'/',
 		{ name: 'styles' },
 		{ name: 'colors' },
 		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },

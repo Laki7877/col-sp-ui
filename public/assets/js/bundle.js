@@ -1223,7 +1223,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 		//Open add or edit one category
 		var modal = $uibModal.open({
 			animation: true,
-			size: 'lg',
+			size: 'xl',
 			keyboard: false,
 			templateUrl: 'global_category/modal',
 			controller: ["$scope", "$uibModalInstance", "$timeout", "GlobalCategoryService", "NcAlert", "config", "id", "attributeSetOptions", "Product", "ImageService", function($scope, $uibModalInstance, $timeout, GlobalCategoryService, NcAlert, config, id, attributeSetOptions, Product, ImageService) {
@@ -1268,7 +1268,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 						searchText: text
 					}).then(function(response) {
 						$scope.products = response.data;
-					});	
+					});
 				};
 				$scope.uploadBannerFail = function(e, response) {
 					if(e == 'onmaxsize') {
@@ -2208,7 +2208,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 	util.warningOnLeave(function() {
 		var modalDirty = $scope.modalScope == null ? false : $scope.modalScope.form.$dirty;
 		return $scope.saving || $scope.dirty || modalDirty;
-	});	
+	});
 	//Expand and collapse all
 	$scope.collapseAll = function() {
 		$rootScope.$broadcast('angular-ui-tree:collapse-all');
@@ -2297,8 +2297,8 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 	};
 
 	//Condition at which tradable select will lock attributeset
-	$scope.lockAttributeset = function(i) {		
-		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);		
+	$scope.lockAttributeset = function(i) {
+		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);
 	};
 
 	//Open category modal
@@ -2306,7 +2306,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 		//Open add or edit one category
 	var modal = $uibModal.open({
 			animation: true,
-			size: 'lg',
+			size: 'xl',
 			keyboard: false,
 			templateUrl: 'local_category/modal',
 			controller: ["$scope", "$uibModalInstance", "$timeout", "LocalCategoryService", "NcAlert", "config", "id", "Product", "ImageService", function($scope, $uibModalInstance, $timeout, LocalCategoryService, NcAlert, config, id, Product, ImageService) {
@@ -2349,7 +2349,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 						searchText: text
 					}).then(function(response) {
 						$scope.products = response.data;
-					});	
+					});
 				};
 				$scope.uploadBannerFail = function(e, response) {
 					if(e == 'onmaxsize') {
@@ -2370,7 +2370,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 						} else {
 							$scope.$parent.modalScope = null;
 						}
-					} 
+					}
 				});
 				$scope.save = function() {
 					$scope.alert.close();
@@ -2444,6 +2444,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 	};
 
 }];
+
 },{}],31:[function(require,module,exports){
   module.exports = ["$scope", "Credential", "$window", "NcAlert", "$uibModal", "storage", "config", function ($scope, Credential, $window, NcAlert, $uibModal, storage, config) {
     'ngInject';
@@ -12277,7 +12278,7 @@ module.exports = {
 },{}],168:[function(require,module,exports){
 module.exports = {
   KillerPointTh: {
-    divClass: 'col-sm-6',
+    divClass: 'col-xs-6',
     error: {
       messages: {
         required: 'This is a required field',
@@ -12286,7 +12287,7 @@ module.exports = {
     }
   },
   KillerPointEn: {
-    'divClass': 'col-sm-6',
+    'divClass': 'col-xs-6',
     'error': {
       'messages': {
         'required': 'This is a required field',
@@ -12322,7 +12323,7 @@ module.exports = {
   },
   StockType: {},
   DescriptionFull: {
-    'divClass': 'col-sm-6',
+    'divClass': 'col-xs-6',
     'formGroupClass': 'margin-top-40',
     'labelClass': 'required',
     'inputSize': 'xxl'
@@ -12371,7 +12372,7 @@ module.exports = {
     }
   },
   DescriptionShortTh: {
-    'divClass': 'col-sm-6',
+    'divClass': 'col-xs-6',
     'inputSize': 'xxl',
     'formGroupClass': 'margin-top-30',
     'error': {
@@ -12381,7 +12382,7 @@ module.exports = {
     }
   },
   DescriptionShortEn: {
-    'divClass': 'col-sm-6',
+    'divClass': 'col-xs-6',
     'inputSize': 'xxl',
     'formGroupClass': 'margin-top-30',
     'error': {
@@ -12958,7 +12959,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\n" +
     "\t\t                          </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=genericForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=formData.DescriptionShortEn>\n" +
     "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=formData.DescriptionShortTh>\n" +
-    "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Feature Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Feature Products\"><span class=form-text>There are no products in this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=\"params.FeatureTitle\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=\"col-xs-12 text-align-left\" style=\"margin-top:-15px; margin-bottom:0px\"><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
+    "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Featured Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Featured Products\"><span class=form-text>will be available after adding product into this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=\"params.FeatureTitle\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=\"col-xs-12 text-align-left\" style=\"margin-top:-15px; margin-bottom:0px\"><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
@@ -12979,7 +12980,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\n" +
     "\t\t                          </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=genericForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=formData.DescriptionShortEn>\n" +
     "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=formData.DescriptionShortTh>\n" +
-    "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Feature Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Feature Products\"><span class=form-text>There are no products in this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=\"params.FeatureTitle\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=\"col-xs-12 text-align-left\" style=\"margin-top:-15px; margin-bottom:0px\"><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
+    "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Featured Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Featured Products\"><span class=form-text>will be available after adding product into this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=\"params.FeatureTitle\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=\"col-xs-12 text-align-left\" style=\"margin-top:-15px; margin-bottom:0px\"><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 

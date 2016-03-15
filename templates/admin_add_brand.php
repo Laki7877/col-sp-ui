@@ -65,11 +65,11 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Logo</h2></div>
             <div class="form-section-content">
-              <div nc-template="common/input/form-group-with-label" 
+              <div nc-template="common/input/form-group-with-label"
                 nc-template-form="form.BrandImage"
                 nc-template-options-path="addBrandForm/BrandImage"
                 nc-label="Logo File">
-                  <button 
+                  <button
                   type="button"
                   name="BrandImage"
                   class="btn btn-default"
@@ -80,7 +80,7 @@
                   required>Choose File</button>
               </div>
               <div ng-show="formData.BrandImage"
-                nc-template="common/input/form-group-with-label" 
+                nc-template="common/input/form-group-with-label"
                 nc-label="Logo Preview">
                   <img
                     ng-src="{{formData.BrandImage.url}}"
@@ -90,8 +90,8 @@
               </div>
             </div>
           </div>
-          <nc-image-banner name="BrandBannerEn" nc-model="formData.BrandBannerEn" title="Banner Upload (English)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner> 
-          <nc-image-banner name="BrandBannerTh" nc-model="formData.BrandBannerTh" title="Banner Upload (ไทย)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner> 
+          <nc-image-banner name="BrandBannerEn" nc-model="formData.BrandBannerEn" title="Banner Upload (English)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
+          <nc-image-banner name="BrandBannerTh" nc-model="formData.BrandBannerTh" title="Banner Upload (ไทย)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
           <!-- Description -->
           <div class="form-section">
             <div class="form-section-header">
@@ -128,12 +128,12 @@
           </div>
           <!-- Feature product -->
           <div class="form-section">
-            <div class="form-section-header"><h2>Feature Products</h2></div>
+            <div class="form-section-header"><h2>Featured Products</h2></div>
             <div class="form-section-content">
               <div ng-if="availableProducts == 0 || id == 0">
                 <div nc-template="common/input/form-group-with-label"
-                  nc-label="Feature Products">
-                  <span class="form-text">There are no products in this brand</span>
+                  nc-label="Featured Products">
+                  <span class="form-text">will be available after adding product under this brand</span>
                 </div>
               </div>
               <div ng-if="availableProducts > 0">
@@ -143,7 +143,7 @@
                   <input type="text" class="form-control" ng-model="params.FeatureTitle"/>
                 </div>
                 <div nc-template="common/input/form-group-with-label"
-                  nc-label=""><input type="checkbox" ng-model="TitleShowcase"/> Title = Showcase 
+                  nc-label=""><input type="checkbox" ng-model="TitleShowcase"/> Title = Showcase
                 </div>
                 <div nc-template="common/input/form-group-with-label"
                   nc-template-form="form.FeatureProducts"
