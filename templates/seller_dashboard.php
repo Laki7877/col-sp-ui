@@ -214,7 +214,13 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <div class="width_150">
               Ontime Delivery
             </div>
-            <div class="font-size-16 color-yellow">75%</div>
+            <!-- <div class="font-size-16 color-yellow">75%</div> -->
+            <div ng-switch on="onTimeDeliveryRank">
+              <div class="font-size-16 color-green" ng-switch-when="green">{{onTimeDeliveryScore}}</div>
+              <div class="font-size-16 color-yellow" ng-switch-when="yellow">{{onTimeDeliveryScore}}</div>
+              <div class="font-size-16 color-red" ng-switch-when="red">{{onTimeDeliveryScore}}</div>
+              <div class="font-size-16" ng-switch-default>n/a</div>
+            </div>
           </div>
         </div>
         <div class="group_container">
@@ -222,7 +228,13 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <div class="width_150">
               Return Rate
             </div>
-            <div class="font-size-16 color-green">0%</div>
+            <!-- <div class="font-size-16 color-green">0%</div> -->
+            <div ng-switch on="returnRank">
+              <div class="font-size-16 color-green" ng-switch-when="green">{{returnScore}}</div>
+              <div class="font-size-16 color-yellow" ng-switch-when="yellow">{{returnScore}}</div>
+              <div class="font-size-16 color-red" ng-switch-when="red">{{returnScore}}</div>
+              <div class="font-size-16" ng-switch-default>n/a</div>
+            </div>
           </div>
         </div>
       </div>
