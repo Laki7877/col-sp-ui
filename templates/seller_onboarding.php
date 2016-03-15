@@ -66,7 +66,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
 
 
         <? $this->insert('components/forms/seller_task',
-          ["field_header" => "Change password",
+          ["field_header" => "Successfully, change password",
            "field_text" => "In order for you to remember password easier",
            "button_text" => "Change Password",
            "image_name" => "icon-onboard-password",
@@ -75,7 +75,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "type" => "changePassword"]) ?>
 
         <? $this->insert('components/forms/seller_task',
-          ["field_header" => "Add Description",
+          ["field_header" => "Successfully, add Description",
            "field_text" => "Tell customers what your shop is about",
            "button_text" => "Check Profile",
            "image_name" => "icon-onboard-setting",
@@ -93,7 +93,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "type" => "redirectProduct"]) ?>
 
         <? $this->insert('components/forms/seller_task',
-          ["field_header" => "Decorate your store",
+          ["field_header" => "Successfully, decorate your store",
            "field_text" => "Add at least one banner to make your store unique",
            "button_text" => "Set Appearance",
            "image_name" => "icon-onboard-decorate",
