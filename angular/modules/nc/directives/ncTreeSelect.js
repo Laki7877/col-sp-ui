@@ -170,6 +170,21 @@ angular.module('nc')
 				if(!scope.excludeBy){
 					scope.excludeBy = [];
 				}
+
+				scope.anyHas = function(a, B, path) {
+					console.log('anyHas fields', a, B, path);
+		      // Check if a[path] matches any of b[path] in B
+		      var aP = _.get(a, path);
+		      for(var i = 0; i < B.length; i++){
+						var b = B[i];
+		        var bP = _.get(b, path);
+		        console.log('anyHas comparing', aP, bP, bP == aP);
+		        if(bP == aP) return true;
+		      }
+					
+		      return false;
+		    };
+
 				// Directive options
 				scope.options = _.defaults(scope.options, {
 					columnSize: 4,
