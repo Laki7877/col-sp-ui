@@ -106,11 +106,11 @@
             <div class="form-section" ng-if="formData.AttributeSet && formData.Variants.length > 0" ng-show="controlFlags.variation == 'enable'">
                 <div class="form-section-header">Variant ({{ formData.Variants.length }})</div>
                 <div class="form-section-content padding-left-30 padding-right-30">
-                    <table class="table ah-table variation-table">
+                    <table class="table variation-table">
                         <thead>
                             <tr>
                                 <th class="column-variant">Variant</th>
-                                <th ng-if="formData.Variants.length > 0 && formData.Variants[0].Pid">PID</th>
+                                <th class="column-pid" ng-if="formData.Variants.length > 0 && formData.Variants[0].Pid">PID</th>
                                 <th class="column-sku">SKU</th>
 
                                 <th class="column-sale-price">
@@ -119,7 +119,7 @@
                                 <th class="column-price">Original Price</th>
 
                                 <th class="column-inventory">Inventory</th>
-                                <th class="column-detail text-center">Detail</th>
+                                <th class="column-detail">More Detail</th>
                                 <th class="column-visibility">Visibility</th>
                             </tr>
                         </thead>
