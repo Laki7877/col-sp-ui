@@ -125,7 +125,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
                   <div class="newsletter_date">Publish on {{letter.PublishedDt | date:"MM/dd/yyyy 'at' HH:mm"}}</div>
                 </td>
                 <td>
-                  <button class="btn btn-white btn-width-default">Read</button>
+                  <button class="btn btn-white btn-width-default" ng-click="open(letter)">Read</button>
                 </td>
               </tr>
               <tr ng-show="newsLettersData.length == 0">
