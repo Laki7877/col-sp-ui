@@ -84,15 +84,15 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         <div class="group_container">
           <table class="table table_dashboard table_lsa">
             <tbody>
-              <tr ng-repeat="product in lowStockAlertData | orderBy: 'date' | limitTo:maxLowStockAlert" ng-show="lowStockAlertData.length != 0">
+              <tr ng-repeat="product in lowStockAlertData | orderBy: 'Pid':true | limitTo:maxLowStockAlert" ng-show="lowStockAlertData.length != 0">
                 <td>
-                  {{product.inventory}}
+                  {{product.Quantity}}
                 </td>
                 <td>
-                  {{product.p_id}}
+                  {{product.Pid}}
                 </td>
                 <td class="column-text-ellipsis">
-                  {{product.name}}
+                  {{product.ProductNameEn}}
                 </td>
                 <td>
                   <button class="btn btn-white btn-width-default">View</button>
