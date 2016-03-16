@@ -3542,16 +3542,22 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$window", "$uibM
 			return $scope.newsLettersData = data;
 		});
 
+	Dashboard.getLowStockAlert()
+		.then(function(query) {
+			$scope.maxLowStockAlert = 10;
+			$scope.lowStockAlertData = query.data;
+
+			for (var i = $scope.lowStockAlertData.length - 1; i >= 0; i--) {
+				$scope.lowStockAlertData[i].Pid = 'ID: ' + $scope.lowStockAlertData[i].Pid;
+				$scope.lowStockAlertData[i].Quantity = 'Inventory: ' + $scope.lowStockAlertData[i].Quantity;
+			};
+			return $scope.lowStockAlertData;
+		});
+
 	$scope.maxNewOrders = 10;
 	$scope.newOrdersData = [
 		{date:'13/12/2015', id:'ID: 1231499', amount:'226.00', status:'Payment Confirmed' },
 		{date:'10/12/2015', id:'ID: 1231413', amount:'112,226.00', status:'Payment Confirmed' }
-	];
-
-	$scope.maxLowStockAlert = 10;
-	$scope.lowStockAlertData = [
-		{inventory:'Inventory: ' + '5', p_id:'ID: ' + '1234567', name:'Nanyang Original Footwear T-model x10 Limited Edition for Thailand sale only' },
-		{inventory:'Inventory: ' + '10', p_id:'ID: ' + '5323312', name:'Jordan Nike Super Shoe' }
 	];
 
 	$scope.maxTopSellingItems = 10;
@@ -9491,6 +9497,13 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
     service.getNewsLetter = function () {
         return common.makeRequest({
             url: '/newsletters',
+            method: 'GET'
+        });
+    }
+
+    service.getLowStockAlert = function () {
+        return common.makeRequest({
+            url: '/Inventories?_direction=desc&_filter=LowStock&_limit=10&_offset=0&_order=Pid',
             method: 'GET'
         });
     }
