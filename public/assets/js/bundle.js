@@ -7949,8 +7949,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.dataset.LocalCategories = [];
     $scope.dataset.BrandsEmpty = [{
       BrandId: null,
-      _group: 'No Result',
-      BrandNameEn: 'Search by brand by name or Brand id...',
+      _group: 'Search by Brand Name or Brand ID...',
+      BrandNameEn: 'No Result',
       disabled: true
     }];
     $scope.dataset.Brands = [];
