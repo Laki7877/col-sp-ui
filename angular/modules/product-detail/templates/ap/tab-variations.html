@@ -28,7 +28,9 @@
                 <div class="form-section-content" ng-if="!(formData.AttributeSet && !formData.AttributeSet['AttributeSetId']) && controlFlags.variation == 'enable'">
                     <div class="form-group" ng-repeat="jth in variationFactorIndices.iterator" ng-show="(dataset.attributeOptions[0].options.length > 0) || (jth == 0)">
                         <div class="width-label">
-                            <select class="form-control" ng-options="i as i.Attribute.AttributeNameEn
+                            <select class="form-control"
+                            ng-disabled="formData.ProductId"
+                            ng-options="i as i.Attribute.AttributeNameEn
 								for i in formData.AttributeSet.AttributeSetMaps |
 								truth: 'Attribute.VariantStatus' |
 								exclude: dataset.attributeOptions[1 - jth].Attribute : 'AttributeId'
@@ -82,7 +84,7 @@
                         <a class="like-text form-text" ng-click="variationFactorIndices.pushSecond()" ng-if="dataset.attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1">
                             <i class="fa fa-plus-circle color-theme"></i> Add another option
                         </a>
-                        <a class="like-text form-text" ng-click="variationFactorIndices.popSecond()" ng-if="variationFactorIndices.length() == 2 && jth == 1">
+                        <a ng-show="!formData.ProductId" class="like-text form-text" ng-click="variationFactorIndices.popSecond()" ng-if="variationFactorIndices.length() == 2 && jth == 1">
                             <i class="fa fa-trash color-theme icon-size-20"></i>
                         </a>
                     </div>
