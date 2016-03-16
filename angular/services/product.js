@@ -539,7 +539,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
           });
         } else {
           transformed.attributeOptions.push({
-            Attribute: null,
+            Attribute: 0,
             options: []
           });
         }

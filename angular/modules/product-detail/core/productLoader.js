@@ -49,7 +49,7 @@ factory('$productAdd', function(Product, AttributeSet, ImageService, GlobalCateg
 
       var kpair = angular.copy(formData.MasterVariant);
       var firstAttribute = {
-        AttributeId: !dataSet.attributeOptions[0].Attribute ? null : dataSet.attributeOptions[0].Attribute.AttributeId,
+        AttributeId: !dataSet.attributeOptions[0].Attribute ? 0 : dataSet.attributeOptions[0].Attribute.AttributeId,
         AttributeValues: (!AVId ? [] : [{
           AttributeValueId: AVId
         }]),
@@ -57,7 +57,7 @@ factory('$productAdd', function(Product, AttributeSet, ImageService, GlobalCateg
       };
 
       var secondAttribute = {
-        AttributeId: !dataSet.attributeOptions[1].Attribute ? null : dataSet.attributeOptions[1].Attribute.AttributeId,
+        AttributeId: !dataSet.attributeOptions[1].Attribute ? 0 : dataSet.attributeOptions[1].Attribute.AttributeId,
         AttributeValues: (!BVId ? [] : [{
           AttributeValueId: BVId
         }]),
