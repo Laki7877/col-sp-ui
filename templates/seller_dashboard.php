@@ -119,32 +119,17 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         <div class="group_container">
           <table class="table table_dashboard table_newsletter">
             <tbody>
-              <tr>
+              <tr ng-repeat="letter in newsLettersData | orderBy: 'PublishedDt' | limitTo:maxNewsLetters" ng-show="newsLettersData.length != 0">
                 <td class="column-text-ellipsis">
-                  Some thing happens in this world and no body knows about it becuase everyone is playing DotA 2. Damn that game need to be shut down.
-                  <div class="newsletter_date">Publish on 19/12/15 at 10:00</div>
+                  <div>{{letter.Subject}}</div>
+                  <div class="newsletter_date">Publish on {{letter.PublishedDt | date:"MM/dd/yyyy 'at' HH:mm"}}</div>
                 </td>
                 <td>
                   <button class="btn btn-white btn-width-default">Read</button>
                 </td>
               </tr>
-              <tr>
-                <td class="column-text-ellipsis">
-                  Some thing happens in this world and no body knows about it becuase everyone is playing DotA 2. Damn that game need to be shut down.
-                  <div class="newsletter_date">Publish on 15/12/15 at 10:00</div>
-                </td>
-                <td>
-                  <button class="btn btn-white btn-width-default">Read</button>
-                </td>
-              </tr>
-              <tr>
-                <td class="column-text-ellipsis">
-                  Some thing happens in this world and no body knows about it becuase everyone is playing DotA 2. Damn that game need to be shut down.
-                  <div class="newsletter_date">Publish on 10/12/15 at 10:00</div>
-                </td>
-                <td>
-                  <button class="btn btn-white btn-width-default">Read</button>
-                </td>
+              <tr ng-show="newsLettersData.length == 0">
+                <td class="empty_data">- No Newsletters -</td>
               </tr>
             </tbody>
           </table>

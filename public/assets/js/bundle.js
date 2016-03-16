@@ -3538,7 +3538,8 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$window", "$uibM
 
 	Dashboard.getNewsLetter()
 		.then(function(data) {
-			return $scope.newsLetterData = data;
+			$scope.maxNewsLetters =10;
+			return $scope.newsLettersData = data;
 		});
 
 	$scope.maxNewOrders = 10;
