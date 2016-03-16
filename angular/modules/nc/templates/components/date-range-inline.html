@@ -8,7 +8,7 @@
                  ng-class="{'has-error': endDate <= startDate }"
                  placeholder="{{ startPlaceholder || 'Select start date' }}"
                  class="form-control width-field-large"
-                 value="{{ startDate | date: 'dd/MM/yy HH:mm' }}" />
+                 value="{{ startDate | datetimeTh }}" />
             </a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                 <datetimepicker data-ng-model="startDate" data-datetimepicker-config="{ dropdownSelector: '#date_range_vertical_dropdown1', minView: 'minute' }" />
@@ -24,7 +24,7 @@
                  ng-class="{'has-error': endDate <= startDate }"
                  placeholder="{{ endPlaceholder || 'Select end date' }}"
                  class="form-control width-field-large"
-                 value="{{ endDate | date: 'dd/MM/yy HH:mm' }}" />
+                 value="{{ endDate | datetimeTh }}" />
             </a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel2">
                 <datetimepicker data-ng-model="endDate" data-datetimepicker-config="{ dropdownSelector: '#date_range_vertical_dropdown2', minView: 'minute' }" />

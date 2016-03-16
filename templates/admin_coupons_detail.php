@@ -4,7 +4,8 @@ $menus = [
   ["id" => "conditions", "name" => 'Conditions'],
 ];
 
-$this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
+$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System']);
+
 ?>
 
 <?php $this->start('page-body') ?>
@@ -78,7 +79,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
                           </div>
 
                           <div nc-template="common/input/form-group-with-label" nc-label="Maximum Amount" nc-template-options-path="couponForm/MaximumAmount">
-                              <input type="text" class="form-control" ng-model="formData.Action.MaximumAmount" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"/>
+                              <input type="text" class="form-control" ng-model="formData.Action.MaximumAmount" ng-pattern-restrict="^[0-9]*$"/>
                           </div>
 
                     </div>
@@ -114,7 +115,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
                       <div ng-show="formData.Conditions.Order[0].Type != 'No filter'"
                        nc-template="common/input/form-group-with-label" nc-label="Price" 
                        nc-template-options-path="couponForm/ConditionValue">
-                        <input ng-model="formData.Conditions.Order[0].Value" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"/>
+                        <input class="form-control" ng-model="formData.Conditions.Order[0].Value" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"/>
                       </div>
                     </div>
                   </div>
@@ -127,7 +128,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'User Profile'])
                             <ui-select-choices repeat="i.value as i in filters">{{ i.name }}</ui-select-choices>
                         </ui-select>
                       </div>
-                      <div ng-show="formData.Conditions.FilterBy.Type != 'No filter'" 
+                      <div ng-show="formData.Conditions.FilterBy.Type == 'GlobalCategory'" 
                         nc-template="common/input/form-group-with-label" 
                         nc-template-options-path="couponForm/FilterByValue"
                         nc-label="Include">

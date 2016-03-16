@@ -87,7 +87,7 @@ var seller = {
 	},
 
 	'Report|fa-line-chart': {
-
+		
 	},
 	'Account|fa-user': {
 		'User Accounts': '/accounts',

@@ -28,6 +28,19 @@ class SellerController extends Controller
     {
         return View::render('user_add_role',  ['params' => json_encode_n($params)]);
     }
+    //Coupons
+    public static function listCoupon($params)
+    {
+        return View::render('seller_coupons');
+    }
+    public static function addCoupon($params)
+    {
+        return View::render('seller_coupons_detail');
+    }
+    public static function editCoupon($params)
+    {
+        return View::render('seller_coupons_detail',  ['params' => json_encode_n($params)]);
+    }
     //Inventory
     public static function listInventory($params)
     {

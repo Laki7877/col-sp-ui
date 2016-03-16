@@ -169,6 +169,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('SellerOnboardingCtrl', controllers.sellerOnboarding)
   .controller('SellerNewsletterCtrl', controllers.sellerNewsletter)
   .controller('SellerDashboardCtrl', controllers.sellerDashboard)
+  .controller('SellerCouponCtrl', controllers.sellerCoupon)
+  .controller('SellerCouponAddCtrl', controllers.sellerCouponAdd)
 
 
   .controller('AdminAttributeCtrl', controllers.adminAttribute)
@@ -189,6 +191,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('AdminGlobalCouponCtrl', controllers.adminGlobalCoupon)
   .controller('AdminGlobalCouponAddCtrl', controllers.adminGlobalCouponAdd)
   .controller('AdminSellerCouponCtrl', controllers.adminSellerCoupon)
+  .controller('AdminSellerCouponAddCtrl', controllers.adminSellerCouponAdd)
   .controller('AdminNewsletterCtrl', controllers.adminNewsletter)
 
   .controller('AdminProductApprovalListCtrl', controllers.adminProductApprovalList)
