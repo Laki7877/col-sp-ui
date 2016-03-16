@@ -129,7 +129,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
                 </td>
               </tr>
               <tr ng-show="newsLettersData.length == 0">
-                <td class="empty_data">- No Newsletters -</td>
+                <td class="empty_data">- No Newsletter -</td>
               </tr>
             </tbody>
           </table>
