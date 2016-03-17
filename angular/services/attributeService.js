@@ -9,6 +9,7 @@ module.exports = function(common, config) {
 			return false;
 		});
 	};
+	var visibleToOptions = config.DROPDOWN.DEFAULT_ATTRIBUTE_VISIBLE_DROPDOWN;
 	var boolOptions = config.DROPDOWN.YES_NO_DROPDOWN;
 	var variantOptions = config.DROPDOWN.VARIANT_DROPDOWN;
 	var dataTypeOptions = config.DROPDOWN.DATA_TYPE_DROPDOWN;
@@ -39,6 +40,8 @@ module.exports = function(common, config) {
 				DefaultValue: '',
 				AttributeValues: [{}]
 			},
+			DefaultAttribute: false,
+			VisibleTo: visibleToOptions[0],
 			ShowGlobalSearchFlag: false,
 			ShowLocalSearchFlag: false,
 			VariantDataType: variantOptions[0].value

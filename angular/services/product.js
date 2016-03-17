@@ -3,7 +3,13 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
   function($http, common, util, LocalCategory, Brand, config, KnownException) {
     'use strict'
     var service = common.Rest('/ProductStages')
-
+    service.addTags = function(arr) {
+      return common.makeRequest({
+        method: 'PUT',
+        url: '/ProductStages/Tags',
+        data: arr
+      })
+    };
     service.getExportableFields = function() {
       var req = {
         method: 'GET',

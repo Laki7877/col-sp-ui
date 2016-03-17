@@ -54,6 +54,20 @@ class AdminController extends Controller
 	{
         return View::render('admin_seller_coupons_detail', ['params' => json_encode_n($params)]);
 	}
+	//Master product
+	public static function listMaster($params)
+	{
+		return View::render('admin_master_product');
+	}
+	public static function addMaster($params)
+	{
+		return View::render('admin_add_master_product');
+	}
+	public static function editMaster($params)
+	{
+        return View::render('admin_add_master_product', ['params' => json_encode_n($params)]);
+	}
+
 	//Attribute
 	public static function listAttribute($params)
 	{
@@ -99,6 +113,10 @@ class AdminController extends Controller
 	}
 
 	//Account
+	public static function listSeller($params)
+	{
+		return View::render('admin_seller_account');
+	}
 	public static function listAccount($params)
 	{
 		return View::render('admin_account');

@@ -45,7 +45,24 @@ angular.module('nc')
 						modal.result.then(function() {
 							action.fn(scope.model);
 						});
-					} else {
+					} else if(action.modal) {
+							var modal = $uibModal.open(_.merge({}, action.modal, {
+								resolve: {
+									data: function() {
+										return scope.model;
+									}
+								}
+							}));
+							//Modal
+							modal.result.then(function(data) {
+								var processed = scope.model;
+								if(!_.isNil(data)) {
+									processed = data;
+								}
+								action.fn(scope.model);
+							});
+						}
+					else {
 						action.fn(scope.model);
 					}
 				};

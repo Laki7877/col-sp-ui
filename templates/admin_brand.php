@@ -2,10 +2,11 @@
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminBrandCtrl">
-    <nc-alert nc-model="alert"></nc-alert>
-    <? $this->insert('components/page-title-with-one-button', ['text' => 'Brands','button' => 'Add Brand', 'button_class' => 'btn-width-xxl', 'link' => '/admin/brands/add']) ?>
+    <nc-page-title nc-title="Brands">
+      <a class="btn btn-blue btn-width-xl" ng-href="{{url}}/add">Add {{item}}</a>
+    </nc-page-title>
     <div class="row search-section-wrapper">
-      <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="BrandId"></nc-bulk>
+      <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="{{id}}"></nc-bulk>
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Brand Name'"></nc-search>
     </div>
     <nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="isSearching()" >

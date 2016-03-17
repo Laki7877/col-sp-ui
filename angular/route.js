@@ -61,7 +61,7 @@ var seller = {
 		'Dashboard': '/dashboard'
 	},
 	'Orders|fa-inbox': {
-		
+		'Return Requests': '/returns'
 	},
 	'Product|fa-tag': {
 	  	'View': '/products',
@@ -106,6 +106,7 @@ var admin = {
 		'Global Category': '/admin/categories'
 	},
 	'Accounts|fa-user': {
+		'Seller Accounts': '/admin/sellers',
 		'Shop Accounts': ['/admin/shops', '/admin/shops/add'],
 		'Shop Types': ['/admin/shoptypes', '/admin/shoptypes/add'],
 		'Admin Accounts': ['/admin/accounts', '/admin/accounts/add'],

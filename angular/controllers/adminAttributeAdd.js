@@ -4,6 +4,7 @@ module.exports = function($scope, $controller, AttributeService, ImageService, c
 	$scope.variantOptions = config.DROPDOWN.VARIANT_DROPDOWN;
 	$scope.boolOptions = config.DROPDOWN.YES_NO_DROPDOWN;
 	$scope.validationOptions = config.DROPDOWN.VALIDATION_DROPDOWN;
+	$scope.visibleToOptions = config.DROPDOWN.DEFAULT_ATTRIBUTE_VISIBLE_DROPDOWN;
 
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {

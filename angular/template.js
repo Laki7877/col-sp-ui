@@ -310,6 +310,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
   );
 
 
+  $templateCache.put('product/modalAddTags',
+    "<div class=\"modal-header no-border\"><button type=button class=close aria-label=Close ng-click=$dismiss()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">Add Tag</h2><ui-select ng-model=model.tags tagging-label=\"\" tagging-tokens=,|ENTER multiple tagging><ui-select-match placeholder=\"Separated by a comma\">{{$item}}</ui-select-match><ui-select-choices repeat=\"item in []\">{{item}}</ui-select-choices></ui-select></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn btn-white\" ng-click=$dismiss()>Cancel</button> <button type=button class=\"btn btn-blue\" ng-click=close()>Confirm</button></div></div></div>"
+  );
+
+
   $templateCache.put('product/modalCategorySelector',
     "<div class=modal-header><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>{{title}}</h3></div><div class=modal-body style=\"padding-top: 15px\"><div class=\"category-section column-4\"><nc-tree-select nc-model=model nc-tree-select-tree=tree nc-exclude=exclude nc-tree-select-title=\"{{categoryHeaderText || 'Global Category'}}\"></nc-tree-select><div class=\"category-footer no-padding\"><span class=float-right><button ng-click=select() class=\"btn btn-blue btn-width-xl\" ng-disabled=\"model == null || (disabledOn || _.noop)(model)\">Select</button></span></div></div></div>"
   );
@@ -325,7 +330,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
   );
 
 
-  $templateCache.put('product/productReviewModal',
+  $templateCache.put('product/modalReview',
     "<div class=modal-header><button type=button class=close aria-label=Close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Review Detail</h3></div><div class=modal-body><form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Review Detail</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-label=\"Date & Time :\"><p class=form-control-static>{{UpdatedDt | dateTh}} at {{UpdatedDt | timeTh}}</p></div><div nc-template=common/input/form-group-with-label nc-label=\"Customer :\"><p class=form-control-static>{{Customer}}</p></div><div nc-template=common/input/form-group-with-label nc-label=\"Comment :\"><p class=form-control-static>{{Comment}}</p></div></div></div><div class=form-section><div class=form-section-header><h2>Product Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-label=\"PID :\"><p class=form-control-static>{{Pid}}</p></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (English) :\"><p class=form-control-static>{{ProductNameEn}}</p></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย) :\"><p class=form-control-static>{{ProductNameTh}}</p></div><div nc-template=common/input/form-group-with-label nc-label=\"Brand :\"><p class=form-control-static>{{BrandNameEn}}</p></div></div></div></div></div></form></div>"
   );
 

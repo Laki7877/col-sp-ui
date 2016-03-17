@@ -41,6 +41,15 @@ class SellerController extends Controller
     {
         return View::render('seller_coupons_detail',  ['params' => json_encode_n($params)]);
     }
+    //Coupons
+    public static function listReturnRequest($params)
+    {
+        return View::render('seller_return');
+    }
+    public static function editReturnRequest($params)
+    {
+        return View::render('seller_return_detail',  ['params' => json_encode_n($params)]);
+    }
     //Inventory
     public static function listInventory($params)
     {
