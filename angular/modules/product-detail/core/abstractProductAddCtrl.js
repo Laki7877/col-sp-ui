@@ -1,7 +1,7 @@
 var angular = require('angular')
 
 angular.module('productDetail').controller('AbstractProductAddCtrl',
-  function($scope, $uibModal, $window, util, config, Product, ImageService, 
+  function($scope, $uibModal, $window, util, config, Product, ImageService,  AttributeService,
     AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
     KnownException, NcAlert, $productAdd, options, AttributeSetService, JSONCache, skeemas) {
     'ngInject';
@@ -20,6 +20,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.alert = new NcAlert();
     $scope.devAlert = new NcAlert();
     $scope.image_alert = new NcAlert();
+
+    $scope.defaultAttributes = [];
+    AttributeService.getDefaultAttributes().then(function(res){
+      $scope.defaultAttributes = res;
+    });
 
 
     $scope.adminMode = options.adminMode;
