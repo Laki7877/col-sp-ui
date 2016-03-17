@@ -3788,6 +3788,10 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$window", "$uibM
 			});
 	};
 
+	$scope.linkToAllNewsletters = function(){
+		$window.location.href = '/newsletters';
+	};
+
 }];
 
 },{}],49:[function(require,module,exports){

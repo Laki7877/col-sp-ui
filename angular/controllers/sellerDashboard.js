@@ -157,4 +157,8 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModa
 			});
 	};
 
+	$scope.linkToAllNewsletters = function(){
+		$window.location.href = '/newsletters';
+	};
+
 };

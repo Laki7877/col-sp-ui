@@ -113,7 +113,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
           </span>
           <span class="font-size-18 header_name_space">Newsletters</span>
           <span class="float-right group_span_right">
-            <span><a href="?p=seller_newsletters">View All</a></span>
+            <span><a ng-click="linkToAllNewsletters()">View All</a></span>
           </span>
         </div>
         <div class="group_container">
