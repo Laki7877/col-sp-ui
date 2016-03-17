@@ -36,6 +36,7 @@ Route::add('/products/export', 'ProductController::export');
 Route::add('/products/import/update', 'ProductController::importUpdate');
 Route::add('/products/import', 'ProductController::import');
 Route::add('/products/:productid', 'ProductController::edit');
+Route::add('/products/pending/group', 'ProductController::pendingGroup');
 
 //category routing
 Route::add('/categories', 'CategoryController::index');

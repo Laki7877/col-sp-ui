@@ -167,6 +167,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('SellerCouponAddCtrl', controllers.sellerCouponAdd)
   .controller('SellerReturnRequestCtrl', controllers.sellerReturnRequest)
   .controller('SellerReturnRequestAddCtrl', controllers.sellerReturnRequestAdd)
+  .controller('SellerPendingProductsGroupCtrl', controllers.sellerPendingProductsGroup)
 
 
   .controller('AdminAttributeCtrl', controllers.adminAttribute)

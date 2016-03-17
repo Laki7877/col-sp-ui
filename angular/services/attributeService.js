@@ -75,6 +75,14 @@ module.exports = function(common, config) {
 		}
 		return processed;
 	};
+
+	service.getDefaultAttributes = function(){
+		return common.makeRequest({
+			method: 'GET',
+			url: '/Attributes/DefaultAttribute'
+		});
+	}
+	
 	service.serialize = function(data) {
 		var processed = angular.extend(service.generate(), data);
 		switch(processed.DataType) {
