@@ -3634,9 +3634,8 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$window", "$uibM
 	'ngInject';
 
 	Dashboard.getNewsLetter()
-		.then(function(data) {
-			$scope.maxNewsLetters =10;
-			return $scope.newsLettersData = data;
+		.then(function(query) {
+			return $scope.newsLettersData = query.data;
 		});
 
 	Dashboard.getLowStockAlert()
@@ -9656,7 +9655,7 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
 
     service.getNewsLetter = function () {
         return common.makeRequest({
-            url: '/newsletters',
+            url: '/newsletters?_limit=10&_order=PublishedDt&_direction=desc',
             method: 'GET'
         });
     }

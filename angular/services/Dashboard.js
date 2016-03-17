@@ -20,7 +20,7 @@ module.exports = function (common, config, util, $log, $window) {
 
     service.getNewsLetter = function () {
         return common.makeRequest({
-            url: '/newsletters',
+            url: '/newsletters?_limit=10&_order=PublishedDt&_direction=desc',
             method: 'GET'
         });
     }

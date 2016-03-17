@@ -3,9 +3,8 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModa
 	'ngInject';
 
 	Dashboard.getNewsLetter()
-		.then(function(data) {
-			$scope.maxNewsLetters =10;
-			return $scope.newsLettersData = data;
+		.then(function(query) {
+			return $scope.newsLettersData = query.data;
 		});
 
 	Dashboard.getLowStockAlert()

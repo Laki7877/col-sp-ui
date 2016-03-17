@@ -119,7 +119,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         <div class="group_container">
           <table class="table table_dashboard table_newsletter">
             <tbody>
-              <tr ng-repeat="letter in newsLettersData | orderBy: 'PublishedDt':true | limitTo:maxNewsLetters" ng-show="newsLettersData.length != 0">
+              <tr ng-repeat="letter in newsLettersData" ng-show="newsLettersData.length != 0">
                 <td class="column-text-ellipsis">
                   <div>{{letter.Subject}}</div>
                   <div class="newsletter_date">Publish on {{letter.PublishedDt | date:"MM/dd/yyyy 'at' HH:mm"}}</div>
