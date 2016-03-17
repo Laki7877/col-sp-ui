@@ -3646,7 +3646,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$window", "$uibM
 
 			for (var i = $scope.lowStockAlertData.length - 1; i >= 0; i--) {
 				$scope.lowStockAlertData[i].Pid = 'ID: ' + $scope.lowStockAlertData[i].Pid;
-				$scope.lowStockAlertData[i].Quantity = 'Inventory: ' + $scope.lowStockAlertData[i].Quantity;
+				$scope.lowStockAlertData[i].Quantity = 'QTY: ' + $scope.lowStockAlertData[i].Quantity;
 			};
 			return $scope.lowStockAlertData;
 		});
@@ -9569,7 +9569,7 @@ module.exports =  {
  * Format:
  *
  * '<text title>|<css>' : '<startWith url>'
- * 
+ *
  * This is temporary solution
  */
 var _ = require('lodash');
@@ -9602,7 +9602,7 @@ function generateRouteArray(obj) {
 					url: url,
 					urls: urls
 				};
-				
+
 				if(token2.length > 1) {
 					submenuItem.css += token2[1];
 				}
@@ -9626,11 +9626,11 @@ var seller = {
 		'Dashboard': '/dashboard'
 	},
 	'Orders|fa-inbox': {
-		
+
 	},
 	'Product|fa-tag': {
 	  	'View': '/products',
-	  	'Add': ['/products/select', '/products/add'],	
+	  	'Add': ['/products/select', '/products/add'],
 	  	'Import': '/products/import',
 	  	'Export': '/products/export',
 	  	'Local Category|margin-top-30': '/categories',
@@ -9651,9 +9651,7 @@ var seller = {
 		'Shop Appearance': '/shops/appearance'
 	},
 
-	'Report|fa-line-chart': {
-		
-	},
+
 	'Account|fa-user': {
 		'User Accounts': '/accounts',
 		'User Roles': '/roles'
@@ -9692,6 +9690,7 @@ module.exports = {
   seller: generateRouteArray(seller),
   admin: generateRouteArray(admin)
 }
+
 },{"lodash":209}],131:[function(require,module,exports){
 module.exports = ["common", "config", "util", "$log", "$window", function (common, config, util, $log, $window) {
     'ngInject';
