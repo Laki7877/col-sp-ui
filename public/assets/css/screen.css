@@ -15992,11 +15992,6 @@ ng-transclude.has-error .form-control {
 }
 
 /* ui-select input fix */
-/* line 229, ../../../assets/screen.scss */
-.ui-select-multiple input.ui-select-search:not(.ng-touched) {
-  width: 100% !important;
-}
-
 /* line 233, ../../../assets/screen.scss */
 .ui-select-dropdown-hide .ui-select-dropdown {
   display: none !important;
@@ -16068,11 +16063,6 @@ ng-transclude.has-error .form-control {
   border: 1px solid #BCC7D5;
   border-radius: 3px;
   background-color: #EDF2F9;
-}
-
-/* line 294, ../../../assets/screen.scss */
-.ui-select-multiple.ui-select-bootstrap input.ui-select-search {
-  width: 100% !important;
 }
 
 /* Customize CK Editor */
