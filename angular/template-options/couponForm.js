@@ -49,9 +49,5 @@ module.exports = {
     }
   },
   FilterByValue: {
-    inputSize: 'xxl'
-  },
-  IncludeProducts: {
-    inputSize: 'xxl'
   }
 }

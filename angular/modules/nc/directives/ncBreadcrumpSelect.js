@@ -31,9 +31,13 @@ angular.module('nc')
 				name: '@name'
 			},
 			template: $templateCache.get('common/ncBreadcrumbSelect'),
-			link: function(scope) {
+			link: function(scope, elem, attrs) {
 				scope.searchable = [];
 				scope.model = {ptr: []};
+				scope.disabled = false;
+				if(!_.isNil(attrs.disabled)) {
+					scope.disabled = true;
+				}
 				scope.options = _.defaults(scope.options, {
 					nameKey: 'NameEn',
 					childrenKey: 'nodes',
@@ -70,6 +74,18 @@ angular.module('nc')
 				});
 				scope.$watchCollection('tree', function(newObj, oldObj) {
 					scope.searchable = constructBreadcrumbFromTree(scope.tree, []);
+					
+					if(_.isArray(scope.originalModel)) {
+						scope.model.ptr = [];
+						_.forEach(scope.originalModel, function(e) {
+							var search = { item: {} };
+							search['item'][scope.options.idKey] = e[scope.options.idKey];
+							var found = _.find(scope.searchable, search);
+							if(_.isObject(found)) {
+								scope.model.ptr.push(found);
+							}
+						});
+					}
 				});
 			}
 		};

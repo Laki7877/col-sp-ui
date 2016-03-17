@@ -27,11 +27,21 @@ module.exports = {
 		COUPON_GLOBAL_FILTER: [
 			{
 				name: 'No Filter',
-				value: 'No filter'
+				value: 'NoFilter'
 			},
 			{
 				name: 'Global Category',
-				value: 'Global Category'
+				value: 'GlobalCategory'
+			}
+		],
+		COUPON_SELLER_FILTER: [
+			{
+				name: 'No Filter',
+				value: 'No filter'
+			},
+			{
+				name: 'Local Category',
+				value: 'LocalCategory'
 			}
 		],
 		SHOP_GROUP_DROPDOWN: [

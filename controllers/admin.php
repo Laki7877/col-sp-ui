@@ -37,7 +37,7 @@ class AdminController extends Controller
 
 	public static function editGlobalCoupon($params)
 	{
-        return View::render('admin_coupons_detail');
+        return View::render('admin_coupons_detail', ['params' => json_encode_n($params)]);
 	}
 	//Seller Coupon
 	public static function listSellerCoupon($params)
@@ -52,7 +52,7 @@ class AdminController extends Controller
 
 	public static function editSellerCoupon($params)
 	{
-        return View::render('admin_seller_coupons_detail');
+        return View::render('admin_seller_coupons_detail', ['params' => json_encode_n($params)]);
 	}
 	//Attribute
 	public static function listAttribute($params)

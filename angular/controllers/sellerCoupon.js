@@ -4,12 +4,12 @@ module.exports = function($scope, $controller, SellerCouponService, config) {
   $controller('AbstractListCtrl', {
     $scope: $scope,
     options: {
-      url: '/admin/coupons/seller',
+      url: '/coupons',
       service: SellerCouponService,
       item: 'Coupon',
       order: 'ExpireDate',
       id: 'CouponId',
-      actions: ['View Only']
+      actions: ['View']
     }
   });
 }
